@@ -95,25 +95,26 @@ body
     align-items: center;
     justify-content: center;
     font-size: 5rem;
+    position: relative;
 }
 .main-img
 {
-    width: 50%;
+    width: var(--img-width, 50%);
     height: auto;
     object-fit: cover; /* Cover the area without distortion */
     position: relative;
-    left: 5%;
-    top: 15%;
+    left: var(--img-left, 5%);
+    top: var(--img-top, 15%);
     z-index: 1;
 }
 .text-1
 {
     font-family:Arial, Helvetica, sans-serif;
-    font-size: 6rem;
+    font-size: var(--btn-font-size, 6rem);
     text-transform: uppercase;
     position: relative;
-    top: 0%;
-    left: 5%;
+    top: var(--btn-top, 0%);
+    left: var(--btn-left, 5%);
     text-shadow: 10px 10px 20px #404040;
     object-fit: contain;
     color:white;

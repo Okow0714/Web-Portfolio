@@ -25,8 +25,12 @@ window.onclick = function(event) {
     }
   }
 }
-function myFunctionDescription() {
-  document.getElementById("myDescription").classList.toggle("showdescription");
+//function myFunctionDescription() {
+//  document.getElementById("myDescription").classList.toggle("showdescription");
+//}
+function myFunctionDescription(index) {
+  const desc = document.getElementById(`myDescription${index}`);
+  desc.classList.toggle("showdescription");
 }
 
 
