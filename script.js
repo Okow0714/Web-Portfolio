@@ -14,7 +14,7 @@ window.onclick = function(event) {
       }
     }
   }
-  if (!event.target.matches('.text-1') && !event.target.closest('#myDescription')) {
+  if (!event.target.matches('.text-1') && !event.target.closest('.mainbody-description')) {
     var descriptions = document.getElementsByClassName("mainbody-description");
     var i;
     for (i = 0; i < descriptions.length; i++) {
