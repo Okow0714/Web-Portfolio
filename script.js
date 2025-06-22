@@ -36,16 +36,19 @@ function myFunctionDescription(id, btn) {
     desc.style.left = '';
     desc.style.width = '';
     desc.style.height = '';
+    desc.style.position = '';
   } else {
     const rect = btn.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
 
-    desc.style.position = 'fixed';  // relative to viewport
-    desc.style.top = rect.top + 'px';    // align top to button top
-    desc.style.left = rect.left + 'px';  // align left to button left
+    // Position relative to document, so it scrolls away
+    desc.style.position = 'absolute';  
+    desc.style.top = (rect.top + scrollTop) + 'px';  
+    desc.style.left = (rect.left + scrollLeft) + 'px';
 
-    // Make popup fully cover the button size
-    desc.style.width = (rect.width * 2) + 'px';  // 2x wider
-    desc.style.height = (rect.height * 3) + 'px'; // 3x taller
+    desc.style.width = rect.width + 'px';
+    desc.style.height = rect.height + 'px';
 
     desc.classList.add('showdescription');
   }
