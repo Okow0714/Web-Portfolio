@@ -179,7 +179,7 @@ body
 } */
 
 .mainbody-description {
-  position: absolute;
+  position: fixed;
   background-color: #ede5f7;
   color: #2c1e4a;
   padding: 12px 16px;
