@@ -34,17 +34,19 @@ function myFunctionDescription(id, btn) {
     desc.classList.remove('showdescription');
     desc.style.top = '';
     desc.style.left = '';
+    desc.style.width = '';
+    desc.style.height = '';
   } else {
-    // Get button position
     const rect = btn.getBoundingClientRect();
 
-    // Position the popup relative to button
-    desc.style.position = 'fixed'; // fixed relative to viewport
-    desc.style.top = rect.bottom + 'px'; // just below button
-    desc.style.left = rect.left + 'px';  // align left edges
+    desc.style.position = 'fixed';  // relative to viewport
+    desc.style.top = rect.top + 'px';    // align top to button top
+    desc.style.left = rect.left + 'px';  // align left to button left
+
+    // Make popup fully cover the button size
+    desc.style.width = (rect.width * 2) + 'px';  // 2x wider
+    desc.style.height = (rect.height * 3) + 'px'; // 3x taller
 
     desc.classList.add('showdescription');
   }
 }
-
-
