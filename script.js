@@ -26,11 +26,33 @@ window.onclick = function(event) {
   }
 }
 
+// function myFunctionDescription(id) {
+//   const desc = document.getElementById(id);
+//   if (desc) {
+//     desc.classList.toggle('showdescription');
+//   }
+// }
 function myFunctionDescription(id) {
+  // Close all descriptions first
+  const allDescriptions = document.querySelectorAll('.mainbody-description');
+  allDescriptions.forEach(desc => {
+    desc.classList.remove('showdescription');
+    desc.style.top = '';
+    desc.style.left = '';
+  });
+
   const desc = document.getElementById(id);
-  if (desc) {
-    desc.classList.toggle('showdescription');
-  }
+  const button = document.querySelector(`[onclick="myFunctionDescription('${id}')"]`);
+
+  if (!desc || !button) return;
+
+  const rect = button.getBoundingClientRect();
+
+  // Position the description box slightly below the button
+  desc.style.top = `${rect.bottom + window.scrollY + 10}px`;
+  desc.style.left = `${rect.left + window.scrollX}px`;
+
+  desc.classList.add('showdescription');
 }
 
 
