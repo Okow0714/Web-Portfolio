@@ -157,9 +157,10 @@ body
     opacity: 0;
     overflow: hidden;
     position: absolute;
-    top: 0%;
+    top: 100%;
     left: 50%;
-    width: 140%;
+    width: 250px;
+    max-width: 90vw;
     background-color: #ede5f7; /* Light lavender */
     color: #2c1e4a;
     min-width: 200px;
@@ -184,6 +185,6 @@ body
 {
     opacity: 1;
     max-height: 500px; /* or enough to fit content */
-    transform: translateY(0);
+    transform: translate(-50%, 0) scale(1);
 }
 
