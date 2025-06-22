@@ -153,11 +153,12 @@ body
 }
 .mainbody-description {
   position: absolute;
-  top: 100%;          /* right below the button */
-  left: 50%;          /* horizontally center relative to button */
-  transform: translateX(-50%) translateY(-10px) scale(0.95);
+  top: 100%;               /* directly below the button */
+  left: 50%;               /* center horizontally relative to button */
+  transform: translateX(-50%) translateY(5px); /* slight downward offset */
   width: 250px;
   max-width: 90vw;
+  box-sizing: border-box;  /* include padding inside width */
   background-color: #ede5f7;
   padding: 10px;
   border-radius: 0 0 8px 8px;
@@ -167,6 +168,9 @@ body
   overflow: hidden;
   transition: opacity 0.3s ease, max-height 0.3s ease, transform 0.3s ease;
   z-index: 20;
+  word-wrap: break-word;   /* break long words */
+  white-space: normal;     /* allow text to wrap */
+  text-align: left;
 }
 .mainbody-description p 
 {
@@ -178,6 +182,5 @@ body
 .showdescription {
   opacity: 1;
   max-height: 500px;
-  transform: translateX(-50%) translateY(0) scale(1);
+  transform: translateX(-50%) translateY(5px);
 }
-

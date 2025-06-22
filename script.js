@@ -35,20 +35,33 @@ function myFunctionDescription(id, btn) {
     desc.style.top = '';
     desc.style.left = '';
     desc.style.width = '';
-    desc.style.height = '';
     desc.style.position = '';
   } else {
     const rect = btn.getBoundingClientRect();
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
 
-    // Position relative to document, so it scrolls away
-    desc.style.position = 'absolute';  
-    desc.style.top = (rect.top + scrollTop) + 'px';  
-    desc.style.left = (rect.left + scrollLeft) + 'px';
+    const popupMaxWidth = 300; // Max width in px, adjust as needed
+    const viewportWidth = window.innerWidth;
 
-    desc.style.width = rect.width + 'px';
-    desc.style.height = rect.height + 'px';
+    // Calculate left position but don’t let it overflow viewport on right or left
+    let leftPos = rect.left + scrollLeft;
+
+    // If popup would overflow viewport right edge, shift it left
+    if (leftPos + popupMaxWidth > scrollLeft + viewportWidth) {
+      leftPos = scrollLeft + viewportWidth - popupMaxWidth - 10; // 10px margin
+    }
+    // Prevent popup from going offscreen on the left
+    if (leftPos < scrollLeft + 10) {
+      leftPos = scrollLeft + 10;
+    }
+
+    desc.style.position = 'absolute';  
+    desc.style.top = (rect.bottom + scrollTop) + 'px';  
+    desc.style.left = leftPos + 'px';
+
+    desc.style.width = popupMaxWidth + 'px'; // fixed max width
+    desc.style.whiteSpace = 'normal'; // allow text wrap
 
     desc.classList.add('showdescription');
   }
