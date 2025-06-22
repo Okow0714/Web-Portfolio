@@ -148,7 +148,7 @@ body
 }
 .text-wrapper 
 {
-  position: static;
+  position: relative;
   display: inline-block;
 }
 .mainbody-description {
