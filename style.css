@@ -155,13 +155,11 @@ body
 {
     max-height: 0;
     opacity: 0;
-    transform: translate(0,-10px);
     overflow: hidden;
     position: absolute;
-    top: 0;
-    left: 0%;
+    top: 0%;
+    left: 50%;
     width: 140%;
-    transform: scale(0.95);
     background-color: #ede5f7; /* Light lavender */
     color: #2c1e4a;
     min-width: 200px;
@@ -170,10 +168,7 @@ body
     border-bottom-right-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
-
-    max-height: 0;
-    opacity: 0;
-    transform: translateY(-10px);
+    transform: translate(-50%, -10px) scale(0.95);
     transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
     z-index: 20;
     
