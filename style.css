@@ -173,9 +173,10 @@ body
 
     max-height: 0;
     opacity: 0;
-    transform: translate(-50%, -50%);
-    z-index: 20;
+    transform: translateY(-10px);
     transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+    z-index: 20;
+    
 }
 .mainbody-description p 
 {
