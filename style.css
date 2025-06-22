@@ -148,17 +148,15 @@ body
 }
 .text-wrapper 
 {
-  position: relative;
+  position: static;
   display: inline-block;
 }
 .mainbody-description {
   position: absolute;
-  top: 100%;               /* directly below the button */
-  left: 50%;               /* center horizontally relative to button */
-  transform: translateX(-50%) translateY(5px); /* slight downward offset */
-  width: 250px;
+  top: 0;
+  left: 0;
+  width: 300px; /* fixed width or adjust as needed */
   max-width: 90vw;
-  box-sizing: border-box;  /* include padding inside width */
   background-color: #ede5f7;
   padding: 10px;
   border-radius: 0 0 8px 8px;
@@ -166,10 +164,10 @@ body
   opacity: 0;
   max-height: 0;
   overflow: hidden;
-  transition: opacity 0.3s ease, max-height 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.3s ease, max-height 0.3s ease;
   z-index: 20;
-  word-wrap: break-word;   /* break long words */
-  white-space: normal;     /* allow text to wrap */
+  word-wrap: break-word;
+  white-space: normal;
   text-align: left;
 }
 .mainbody-description p 
@@ -182,5 +180,4 @@ body
 .showdescription {
   opacity: 1;
   max-height: 500px;
-  transform: translateX(-50%) translateY(5px);
 }

@@ -41,27 +41,23 @@ function myFunctionDescription(id, btn) {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
 
-    const popupMaxWidth = 300; // Max width in px, adjust as needed
+    const popupMaxWidth = 300; // match the CSS width
     const viewportWidth = window.innerWidth;
 
-    // Calculate left position but don’t let it overflow viewport on right or left
+    // Calculate left position (make sure popup fits in viewport)
     let leftPos = rect.left + scrollLeft;
-
-    // If popup would overflow viewport right edge, shift it left
     if (leftPos + popupMaxWidth > scrollLeft + viewportWidth) {
-      leftPos = scrollLeft + viewportWidth - popupMaxWidth - 10; // 10px margin
+      leftPos = scrollLeft + viewportWidth - popupMaxWidth - 10;
     }
-    // Prevent popup from going offscreen on the left
     if (leftPos < scrollLeft + 10) {
       leftPos = scrollLeft + 10;
     }
 
-    desc.style.position = 'absolute';  
-    desc.style.top = (rect.bottom + scrollTop) + 'px';  
+    desc.style.position = 'absolute';
+    desc.style.top = (rect.top + scrollTop) + 'px';  // align top with button
     desc.style.left = leftPos + 'px';
-
-    desc.style.width = popupMaxWidth + 'px'; // fixed max width
-    desc.style.whiteSpace = 'normal'; // allow text wrap
+    desc.style.width = popupMaxWidth + 'px';
+    desc.style.whiteSpace = 'normal';
 
     desc.classList.add('showdescription');
   }
