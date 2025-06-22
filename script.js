@@ -29,8 +29,36 @@ function myFunctionDescription(id, btn) {
   if (!desc) return;
 
   if (desc.classList.contains('showdescription')) {
+    // Hide popup and reset styles
     desc.classList.remove('showdescription');
+    desc.style.top = '';
+    desc.style.left = '';
+    desc.style.width = '';
+    desc.style.position = '';
   } else {
+    // Show popup and position it
+    const rect = btn.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+
+    const popupWidth = 300; // match your CSS width
+    const viewportWidth = window.innerWidth;
+
+    // Calculate left position so popup doesn't overflow viewport on right
+    let leftPos = rect.left + scrollLeft;
+    if (leftPos + popupWidth > scrollLeft + viewportWidth) {
+      leftPos = scrollLeft + viewportWidth - popupWidth - 10; // 10px padding from right edge
+    }
+    if (leftPos < scrollLeft + 10) {
+      leftPos = scrollLeft + 10; // 10px padding from left edge
+    }
+
+    desc.style.position = 'absolute';
+    desc.style.top = (rect.bottom + scrollTop) + 'px';  // place below the button
+    desc.style.left = leftPos + 'px';
+    desc.style.width = popupWidth + 'px';
+    desc.style.whiteSpace = 'normal';
+
     desc.classList.add('showdescription');
   }
 }
