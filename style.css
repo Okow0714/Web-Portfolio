@@ -71,9 +71,9 @@ body {
 }
 
 .portfolio-section img {
-    width: 50%; /* Increased from 40% */
-    max-width: 500px; /* Increased from 400px */
-    min-width: 300px; /* Ensures minimum size */
+    width: 60%; /* For very large images */
+    max-width: 600px;
+    min-width: 350px;
     height: auto;
     border-radius: 10px;
     object-fit: cover; /* Prevents distortion */
