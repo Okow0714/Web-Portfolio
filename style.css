@@ -138,16 +138,14 @@ body {
 @media (max-width: 768px) {
     .portfolio-section {
         flex-direction: column;
-        padding: 20px;
     }
     
-    .portfolio-section img,
-    .section-content {
-        width: 100%;
+    .portfolio-section img {
+        width: 80%; /* Larger image on mobile */
         max-width: 100%;
     }
     
     .section-content {
-        text-align: center;
+        width: 100%;
     }
 }
