@@ -85,6 +85,55 @@ body {
     text-align: left; /* Changed from center */
 }
 
+/* ===== NEW TITLE TOGGLE STYLES ===== */
+.section-title {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    text-align: left;
+    width: 100%; /* Ensure full width click area */
+}
+
+.section-title h2 {
+    margin: 0;
+    color: white;
+    font-size: 3rem;
+    transition: transform 0.2s;
+    display: inline-block; /* For proper hover scaling */
+}
+
+.section-title:hover h2 {
+    transform: scale(1.05);
+    color: #d4c4ff; /* Optional hover color */
+}
+
+.section-description {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    padding-left: 15px;
+    border-left: 3px solid #6a4dbb;
+    margin: 5px 0 0 0;
+}
+
+.section-description.show {
+    max-height: 500px; /* Adjust based on longest content */
+    margin-top: 15px;
+}
+
+.section-description p {
+    margin: 10px 0 0 0;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 /* Mobile responsiveness */
 @media (max-width: 768px) {
     .portfolio-section {
