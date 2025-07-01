@@ -21,10 +21,13 @@ body {
 }
 
 .menu-button {
+    position: relative; /* Needed for z-index */
+    width: 80px;
+    height: 80px;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 10px;
+    z-index: 101; /* Higher than dropdown */
     transition: transform 0.2s;
 }
 
@@ -33,13 +36,20 @@ body {
 }
 
 .dropdown-content {
-    display: none;
     position: absolute;
+    top: -20px; /* Cover the button area */
+    left: -20px;
+    width: 200px; /* Adjust width as needed */
     background-color: #7a63a0;
-    min-width: 160px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    padding: 80px 20px 20px 20px; /* Top padding covers button */
+    margin: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 100; /* Below button */
 }
 
 .dropdown-content a {
@@ -52,10 +62,13 @@ body {
 
 .dropdown-content a:hover {
     background-color: #5d4a7a;
+    border-radius: 4px;
 }
 
 .dropdown-content.show {
-    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 /* Portfolio Sections */
