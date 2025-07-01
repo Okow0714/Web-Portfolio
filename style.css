@@ -37,7 +37,7 @@ body {
     position: absolute;
     background-color: #7a63a0;
     min-width: 160px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     overflow: hidden;
 }
@@ -63,26 +63,31 @@ body {
 .portfolio-section {
     min-height: 100vh;
     display: flex;
-    flex-direction: row; /* Changed from column to row */
+    flex-direction: row;
+    /* Changed from column to row */
     align-items: center;
     justify-content: center;
     padding: 40px;
-    gap: 40px; /* Space between image and content */
+    gap: 40px;
+    /* Space between image and content */
 }
 
 .portfolio-section img {
-    width: 60%; /* For very large images */
+    width: 60%;
+    /* For very large images */
     max-width: 600px;
     min-width: 350px;
     height: auto;
     border-radius: 10px;
-    object-fit: cover; /* Prevents distortion */
+    object-fit: cover;
+    /* Prevents distortion */
 }
 
 .section-content {
     width: 35%;
     max-width: 500px;
-    text-align: left; /* Changed from center */
+    text-align: left;
+    /* Changed from center */
 }
 
 /* ===== NEW TITLE TOGGLE STYLES ===== */
@@ -92,7 +97,8 @@ body {
     cursor: pointer;
     padding: 0;
     text-align: left;
-    width: 100%; /* Ensure full width click area */
+    width: 100%;
+    /* Ensure full width click area */
 }
 
 .section-title h2 {
@@ -100,12 +106,14 @@ body {
     color: white;
     font-size: 3rem;
     transition: transform 0.2s;
-    display: inline-block; /* For proper hover scaling */
+    display: inline-block;
+    /* For proper hover scaling */
 }
 
 .section-title:hover h2 {
     transform: scale(1.05);
-    color: #d4c4ff; /* Optional hover color */
+    color: #d4c4ff;
+    /* Optional hover color */
 }
 
 .section-description {
@@ -118,7 +126,8 @@ body {
 }
 
 .section-description.show {
-    max-height: 500px; /* Adjust based on longest content */
+    max-height: 500px;
+    /* Adjust based on longest content */
     margin-top: 15px;
 }
 
@@ -130,28 +139,36 @@ body {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Add to your existing CSS */
 .portfolio-section.reversed-layout {
-    flex-direction: column; /* Stacks text above image */
-    align-items: center; /* Centers content */
+    flex-direction: column;
+    /* Stacks text above image */
+    align-items: center;
+    /* Centers content */
 }
 
 .reversed-layout .section-content {
-    order: 1; /* Forces text to top */
-    margin-bottom: 30px; /* Space between text and image */
+    margin-bottom: 30px;
+    /* Space between text and image */
 }
 
 .reversed-layout img {
-    width: 100%; /* For very large images */
-    max-width: 700px;
-    min-width: 550px;
-    height: 30%;
-    border-radius: 10px;
-    object-fit: cover; /* Prevents distortion */
+    width: 100%;
+    max-width: 800px;
+    height: 250px;  /* Short height */
+    object-fit: cover;
+    border-radius: 8px;
 }
 
 /* Mobile responsiveness */
@@ -159,12 +176,13 @@ body {
     .portfolio-section {
         flex-direction: column;
     }
-    
+
     .portfolio-section img {
-        width: 80%; /* Larger image on mobile */
+        width: 80%;
+        /* Larger image on mobile */
         max-width: 100%;
     }
-    
+
     .section-content {
         width: 100%;
     }
