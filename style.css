@@ -164,8 +164,8 @@ body {
 }
 
 .reversed-layout img {
-    width: 100%;
-    max-width: 800px;
+    width: 120%;
+    max-width: 1000px;
     height: 250px;  /* Short height */
     object-fit: cover;
     border-radius: 8px;
