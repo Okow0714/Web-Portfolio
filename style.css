@@ -183,6 +183,10 @@ body {
         max-width: 100%;
     }
 
+    .reversed-layout img {
+        height: 180px; /* Slightly shorter on mobile */
+    }
+
     .section-content {
         width: 100%;
     }
