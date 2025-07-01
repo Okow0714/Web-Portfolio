@@ -61,7 +61,7 @@ body {
 /* Portfolio Sections */
 /* Update the portfolio section layout */
 .portfolio-section {
-    min-height: calc(100vh - 40px); /* Slightly shorter sections */
+    min-height: calc(100vh - 60px); /* Slightly shorter sections */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -152,7 +152,7 @@ body {
 /* Add to your existing CSS */
 .portfolio-section.reversed-layout {
     flex-direction: column;
-    min-height: calc(100vh - 60px); /* Adjusted height */
+    min-height: calc(100vh - 80px); /* Adjusted height */
     padding: 10px 40px; /* Less vertical padding */
     margin-bottom: 10px;
     align-items: center;
