@@ -147,7 +147,7 @@ body {
 
 .reversed-layout img {
     order: 2; /* Forces image to bottom */
-    width: 80%; /* Adjust image width as needed */
+    width: 100%; /* Adjust image width as needed */
 }
 
 /* Mobile responsiveness */
