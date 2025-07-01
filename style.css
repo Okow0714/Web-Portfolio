@@ -61,15 +61,14 @@ body {
 /* Portfolio Sections */
 /* Update the portfolio section layout */
 .portfolio-section {
-    min-height: 100vh;
+    min-height: calc(100vh - 40px); /* Slightly shorter sections */
     display: flex;
     flex-direction: row;
-    /* Changed from column to row */
     align-items: center;
     justify-content: center;
-    padding: 40px;
+    padding: 20px 40px; /* Reduced vertical padding */
     gap: 40px;
-    /* Space between image and content */
+    margin-bottom: 20px; /* Adds space BETWEEN sections */
 }
 
 .portfolio-section img {
@@ -153,9 +152,10 @@ body {
 /* Add to your existing CSS */
 .portfolio-section.reversed-layout {
     flex-direction: column;
-    /* Stacks text above image */
+    min-height: calc(100vh - 60px); /* Adjusted height */
+    padding: 10px 40px; /* Less vertical padding */
+    margin-bottom: 10px;
     align-items: center;
-    /* Centers content */
 }
 
 .reversed-layout .section-content {
@@ -174,13 +174,19 @@ body {
 /* Mobile responsiveness */
 @media (max-width: 768px) {
     .portfolio-section {
-        flex-direction: column;
+        min-height: calc(100vh - 30px); /* Tighter on mobile */
+        padding: 10px 20px;
+        margin-bottom: 15px;
     }
 
     .portfolio-section img {
         width: 80%;
         /* Larger image on mobile */
         max-width: 100%;
+    }
+
+    .reversed-layout {
+        min-height: calc(100vh - 40px);
     }
 
     .reversed-layout img {
