@@ -6,7 +6,7 @@
     <title>Sarantsatsral Ganzorig</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -14,13 +14,15 @@
         <!-- Dropdown Menu -->
         <div class="dropdown">
             <button class="menu-button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24">
-                    <path fill="#4921f4" d="M4 11h12v2H4zm0-5h16v2H4zm0 12h7.235v-2H4z" />
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
+                    <path fill="white" d="M4 11h12v2H4zm0-5h16v2H4zm0 12h7.235v-2H4z" />
                 </svg>
             </button>
             <div class="dropdown-content">
                 <a href="#about">About</a>
                 <a href="#portfolio">Portfolio</a>
+                <a href="#qualifications">Qualifications</a>
+                <a href="#academic">Academic History</a>
                 <a href="#education">Education</a>
             </div>
         </div>
@@ -33,7 +35,7 @@
                     <h2>MY NAME IS GANZORIG</h2>
                 </button>
                 <div class="section-description">
-                    <p>My name is Ganzorig. I've been living in Japan for 2.5 years...</p>
+                    <p>My name is Ganzorig. I've been living in Japan for 2.5 years, embracing new challenges and continuously developing my skills in technology and language. I'm passionate about creating innovative solutions and building meaningful connections across cultures.</p>
                 </div>
             </div>
         </section>
@@ -45,26 +47,89 @@
                     <h2>MY PORTFOLIO</h2>
                 </button>
                 <div class="section-description">
-                    <p>Here are some of my recent projects...</p>
+                    <p>Here are some of my recent projects showcasing my skills in web development, design, and problem-solving. Each project represents my commitment to quality and innovation in the digital space.</p>
                 </div>
             </div>
             <img src="pexels-belle-co-99483-402028.jpg" alt="My Portfolio">
         </section>
 
-        <!-- Portfolio Section -->
+        <!-- Qualifications Section -->
+        <section id="qualifications" class="qualifications-section">
+            <button class="section-title">
+                <h2>QUALIFICATIONS</h2>
+            </button>
+            <div class="qualifications-grid">
+                <div class="qualification-card">
+                    <div class="qualification-title">TOEIC</div>
+                    <div class="qualification-score">785</div>
+                    <div class="qualification-details">
+                        Listening & Reading<br>
+                        Achieved: 2023
+                    </div>
+                </div>
+                <div class="qualification-card">
+                    <div class="qualification-title">JLPT N3</div>
+                    <div class="qualification-score">Passed</div>
+                    <div class="qualification-details">
+                        Japanese Language<br>
+                        Proficiency Test
+                    </div>
+                </div>
+                <div class="qualification-card">
+                    <div class="qualification-title">IT Fundamentals</div>
+                    <div class="qualification-score">Certified</div>
+                    <div class="qualification-details">
+                        CompTIA IT<br>
+                        Fundamentals+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Academic History Section -->
+        <section id="academic" class="academic-section">
+            <button class="section-title">
+                <h2>ACADEMIC HISTORY</h2>
+            </button>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="academic-title">Mongolian University of Education</div>
+                        <div class="academic-duration">2018 - 2022</div>
+                        <div class="qualification-details">
+                            Bachelor's Degree in Computer Science<br>
+                            Major: Information Technology
+                        </div>
+                        <div class="academic-score">GPA: 3.7/4.0</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="academic-title">17th School of Mongolia</div>
+                        <div class="academic-duration">2015 - 2018</div>
+                        <div class="qualification-details">
+                            High School Diploma<br>
+                            Focus: Mathematics and Sciences
+                        </div>
+                        <div class="academic-score">Score: 92.5%</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
         <section id="education" class="portfolio-section reversed-layout">
             <div class="section-content">
                 <button class="section-title">
-                    <h2>Academic background</h2>
+                    <h2>EDUCATION JOURNEY</h2>
                 </button>
                 <div class="section-description">
-                    <p>Full detail of my history of study is below as follows
-                        17th school of mongolia
-                        Mongolian University of education
-                    </p>
+                    <p>My educational background spans from foundational studies in Mongolia to specialized training in Japan. This journey has equipped me with both technical expertise and cross-cultural communication skills essential for today's global landscape.</p>
                 </div>
             </div>
-            <img src="pexels-evgeny-tchebotarev-1058775-2187605.jpg" alt="My Portfolio">
+            <img src="pexels-evgeny-tchebotarev-1058775-2187605.jpg" alt="Education Background">
         </section>
     </div>
     <script src="script.js"></script>
