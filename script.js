@@ -64,6 +64,11 @@ const observer = new IntersectionObserver(function(entries) {
         if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
+            
+            // Animate skill bars
+            if (entry.target.classList.contains('skills-section')) {
+                animateSkillBars();
+            }
         }
     });
 }, observerOptions);
@@ -75,6 +80,16 @@ document.querySelectorAll('section').forEach(section => {
     section.style.transition = 'all 0.6s ease-out';
     observer.observe(section);
 });
+
+// Animate skill bars
+function animateSkillBars() {
+    document.querySelectorAll('.skill-progress').forEach(bar => {
+        const progress = bar.getAttribute('data-progress');
+        setTimeout(() => {
+            bar.style.width = progress + '%';
+        }, 300);
+    });
+}
 
 // Copy contact info to clipboard
 document.querySelectorAll('.contact-item').forEach(item => {
