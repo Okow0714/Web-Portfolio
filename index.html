@@ -3,54 +3,157 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Sarantsatsral Ganzorig</title>
+    <title>Sarantsatsral Ganzorig - Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div class="container">
-        <!-- Dropdown Menu -->
-        <div class="dropdown">
-            <button class="menu-button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
-                    <path fill="white" d="M4 11h12v2H4zm0-5h16v2H4zm0 12h7.235v-2H4z" />
-                </svg>
-            </button>
-            <div class="dropdown-content">
-                <a href="#about">About</a>
-                <a href="#portfolio">Portfolio</a>
-                <a href="#qualifications">Qualifications</a>
-                <a href="#academic">Academic History</a>
-                <a href="#education">Education</a>
-            </div>
-        </div>
+    <!-- Animated Background -->
+    <div class="background-animation">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+        <div class="floating-shape shape-4"></div>
+    </div>
 
-        <!-- About Section -->
-        <section id="about" class="portfolio-section">
-            <img src="Main Page 1.jpg" alt="About me">
-            <div class="section-content">
-                <button class="section-title">
-                    <h2>MY NAME IS GANZORIG</h2>
+    <div class="container">
+        <!-- Header with Name Menu and Contact -->
+        <header class="header">
+            <div class="name-menu">
+                <button class="name-button">
+                    <span>GANZORIG</span>
+                    <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="white" d="M7 10l5 5 5-5z"/>
+                    </svg>
                 </button>
-                <div class="section-description">
-                    <p>My name is Ganzorig. I've been living in Japan for 2.5 years, embracing new challenges and continuously developing my skills in technology and language. I'm passionate about creating innovative solutions and building meaningful connections across cultures.</p>
+                <div class="dropdown-content">
+                    <a href="#about">About</a>
+                    <a href="#hobbies">Hobbies</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#qualifications">Qualifications</a>
+                    <a href="#academic">Academic History</a>
+                    <a href="#education">Education</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                    <span>your.email@example.com</span>
+                </div>
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white">
+                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                    </svg>
+                    <span>LinkedIn</span>
+                </div>
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white">
+                        <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.024-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.347-.09.375-.293 1.199-.334 1.363-.053.225-.174.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.748-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/>
+                    </svg>
+                    <span>@yourhandle</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero/About Section - Enhanced -->
+        <section id="about" class="hero-section">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="greeting">Hello, I'm</span>
+                        <span class="main-name">SARANTSATSRAL GANZORIG</span>
+                        <span class="subtitle">System Engineering Student & Developer</span>
+                    </h1>
+                    <button class="section-title">
+                        <h2>ABOUT ME</h2>
+                    </button>
+                    <div class="section-description">
+                        <p>My name is Ganzorig. I've been living in Japan for 2.5 years, embracing new challenges and continuously developing my skills in technology and language. I'm passionate about creating innovative solutions and building meaningful connections across cultures.</p>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-number">2.5+</div>
+                                <div class="stat-label">Years in Japan</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">3+</div>
+                                <div class="stat-label">Programming Languages</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">N2</div>
+                                <div class="stat-label">Japanese Level</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="Main Page 1.jpg" alt="Sarantsatsral Ganzorig">
+                    <div class="image-overlay"></div>
                 </div>
             </div>
         </section>
 
-        <!-- Portfolio Section -->
-        <section id="portfolio" class="portfolio-section">
+        <!-- Hobbies Section -->
+        <section id="hobbies" class="hobbies-section">
+            <button class="section-title">
+                <h2>MY HOBBIES</h2>
+            </button>
+            <div class="section-description">
+                <div class="hobbies-grid">
+                    <div class="hobby-card">
+                        <div class="hobby-icon">🎮</div>
+                        <h3>Gaming</h3>
+                        <p>Exploring virtual worlds and strategic thinking through various game genres.</p>
+                    </div>
+                    <div class="hobby-card">
+                        <div class="hobby-icon">💻</div>
+                        <h3>Coding</h3>
+                        <p>Building projects and learning new technologies in my free time.</p>
+                    </div>
+                    <div class="hobby-card">
+                        <div class="hobby-icon">📚</div>
+                        <h3>Learning Languages</h3>
+                        <p>Currently mastering Japanese while maintaining English proficiency.</p>
+                    </div>
+                    <div class="hobby-card">
+                        <div class="hobby-icon">🎵</div>
+                        <h3>Music</h3>
+                        <p>Listening to various genres and discovering new artists from different cultures.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section - Enhanced -->
+        <section id="portfolio" class="portfolio-main-section">
             <div class="section-content">
                 <button class="section-title">
                     <h2>MY PORTFOLIO</h2>
                 </button>
                 <div class="section-description">
                     <p>Here are some of my recent projects showcasing my skills in web development, design, and problem-solving. Each project represents my commitment to quality and innovation in the digital space.</p>
+                    <div class="portfolio-skills">
+                        <span class="skill-tag">Web Development</span>
+                        <span class="skill-tag">Java Programming</span>
+                        <span class="skill-tag">System Design</span>
+                        <span class="skill-tag">Database Management</span>
+                    </div>
                 </div>
             </div>
-            <img src="pexels-belle-co-99483-402028.jpg" alt="My Portfolio">
+            <div class="portfolio-image">
+                <img src="pexels-belle-co-99483-402028.jpg" alt="My Portfolio">
+                <div class="portfolio-overlay">
+                    <div class="portfolio-links">
+                        <a href="#" class="portfolio-link">View Projects</a>
+                        <a href="#" class="portfolio-link">GitHub</a>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Qualifications Section -->
@@ -76,17 +179,17 @@
                     </div>
                 </div>
                 <div class="qualification-card">
-                    <div class="qualification-title">Programming Proficiency Certification Exam</div>
-                    <div class="qualification-score">74</div>
+                    <div class="qualification-title">Java Programming</div>
+                    <div class="qualification-score">Level 3</div>
                     <div class="qualification-details">
-                        Java Programming<br>
-                        Class: 3rd Level
+                        Programming Proficiency<br>
+                        Certification Exam - Score: 74
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Academic History Section -->
+        <!-- Academic History Section - Fixed Timeline -->
         <section id="academic" class="academic-section">
             <button class="section-title">
                 <h2>ACADEMIC HISTORY</h2>
@@ -107,12 +210,12 @@
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <div class="academic-title">Mongolian University of Education</div>
-                        <div class="academic-duration">2021 - 2022"(paused due to studying overseas)"</div>
+                        <div class="academic-duration">2021 - 2022 (paused due to studying overseas)</div>
                         <div class="qualification-details">
                             Bachelor's Degree in Computer Science<br>
                             Major: Information Technology
                         </div>
-                        <div class="academic-score">GPA: 4.1/4.3"(First Semester)"</div>
+                        <div class="academic-score">GPA: 4.1/4.3 (First Semester)</div>
                     </div>
                     <div class="timeline-dot"></div>
                 </div>
@@ -122,21 +225,21 @@
                         <div class="academic-duration">2022 - 2024</div>
                         <div class="qualification-details">
                             Primary language education<br>
-                            Japanese proficency level: from N5 to N3
+                            Japanese proficiency level: from N5 to N3
                         </div>
-                        <div class="academic-score">Japanese Language Proficiency Test: N3 Level Passed</div>
+                        <div class="academic-score">JLPT: N3 Level Passed</div>
                     </div>
                     <div class="timeline-dot"></div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <div class="academic-title">Sundai IT & Business College</div>
-                        <div class="academic-duration">2024 - Current day</div>
+                        <div class="academic-duration">2024 - Present</div>
                         <div class="qualification-details">
                             Primary education in Information Technology<br>
                             Major: System Engineering
                         </div>
-                        <div class="academic-score">Average Score: AA(Attendance-100%)</div>
+                        <div class="academic-score">Average Score: AA (Attendance-100%)</div>
                     </div>
                     <div class="timeline-dot"></div>
                 </div>
@@ -154,6 +257,39 @@
                 </div>
             </div>
             <img src="pexels-evgeny-tchebotarev-1058775-2187605.jpg" alt="Education Background">
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <button class="section-title">
+                <h2>GET IN TOUCH</h2>
+            </button>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email</h3>
+                    <p>your.email@example.com</p>
+                    <a href="mailto:your.email@example.com" class="contact-link">Send Email</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">💼</div>
+                    <h3>LinkedIn</h3>
+                    <p>Connect with me professionally</p>
+                    <a href="https://linkedin.com/in/yourprofile" class="contact-link">Connect</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📱</div>
+                    <h3>LINE</h3>
+                    <p>@your-line-id</p>
+                    <a href="#" class="contact-link">Add Friend</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📘</div>
+                    <h3>Facebook</h3>
+                    <p>Follow my updates</p>
+                    <a href="https://facebook.com/yourprofile" class="contact-link">Follow</a>
+                </div>
+            </div>
         </section>
     </div>
     <script src="script.js"></script>
