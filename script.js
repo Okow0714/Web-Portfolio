@@ -105,3 +105,19 @@ document.querySelectorAll('.contact-item').forEach(item => {
         });
     });
 });
+
+// Tab functionality for About Me section
+document.querySelectorAll('.tab-button').forEach(button => {
+    button.addEventListener('click', function() {
+        // Remove active class from all buttons and panes
+        document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+        
+        // Add active class to clicked button
+        this.classList.add('active');
+        
+        // Show corresponding pane
+        const tabId = this.getAttribute('data-tab');
+        document.getElementById(tabId).classList.add('active');
+    });
+});
