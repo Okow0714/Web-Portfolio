@@ -45,10 +45,10 @@ document.querySelectorAll('.dropdown-content a').forEach(link => {
 window.addEventListener('scroll', function() {
     const header = document.querySelector('.header');
     if (window.scrollY > 50) {
-        header.style.background = 'rgba(41, 41, 41, 0.95)';
+        header.style.background = 'rgba(171, 171, 171, 0.95)';
         header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
     } else {
-        header.style.background = 'rgba(22, 22, 22, 0.9)';
+        header.style.background = 'rgba(235, 235, 235, 0.9)';
         header.style.boxShadow = 'none';
     }
 });
