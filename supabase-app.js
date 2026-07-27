@@ -130,10 +130,19 @@ function escapeHtml(str) {
     return div.innerHTML;
 }
 
+// Height is computed from actual content rather than a fixed CSS cap, so
+// comment threads of any length are never clipped.
+function syncPanelHeight(panel) {
+    if (panel.classList.contains('show')) {
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+    }
+}
+
 async function loadComments(block) {
     const projectId = block.dataset.projectId;
     const list = block.querySelector('.comments-list');
     const countEl = block.querySelector('.comments-count');
+    const panel = block.querySelector('.comments-panel');
 
     const { data, error } = await supabaseClient
         .from('comments')
@@ -143,12 +152,14 @@ async function loadComments(block) {
 
     if (error) {
         list.innerHTML = `<p class="comment-error">Couldn't load comments.</p>`;
+        syncPanelHeight(panel);
         return;
     }
 
     list.innerHTML = '';
     data.forEach(c => list.appendChild(renderComment(c)));
     countEl.textContent = `(${data.length})`;
+    syncPanelHeight(panel);
 }
 
 document.querySelectorAll('.comments-block').forEach(block => {
@@ -156,11 +167,19 @@ document.querySelectorAll('.comments-block').forEach(block => {
     const panel = block.querySelector('.comments-panel');
     let loaded = false;
 
-    toggle.addEventListener('click', () => {
-        panel.classList.toggle('show');
-        if (panel.classList.contains('show') && !loaded) {
+    toggle.addEventListener('click', async () => {
+        const isOpen = panel.classList.contains('show');
+        if (isOpen) {
+            panel.classList.remove('show');
+            panel.style.maxHeight = '';
+            return;
+        }
+        panel.classList.add('show');
+        if (!loaded) {
             loaded = true;
-            loadComments(block);
+            await loadComments(block);
+        } else {
+            syncPanelHeight(panel);
         }
     });
 

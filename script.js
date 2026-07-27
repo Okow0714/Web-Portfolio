@@ -2,29 +2,38 @@
 // Some section titles (About Me, Qualifications, Academic History, Contact) sit above
 // always-visible content rather than a collapsible .section-description, so their
 // click should do nothing instead of closing every other open section.
+// max-height is computed from the actual content (scrollHeight) rather than a fixed
+// CSS cap, so long content (e.g. the Academic History timeline) never gets clipped.
+function closeDescription(desc) {
+    desc.classList.remove('show');
+    desc.style.maxHeight = '';
+}
+
+function openDescription(desc) {
+    desc.classList.add('show');
+    desc.style.maxHeight = desc.scrollHeight + 'px';
+}
+
 document.querySelectorAll('.section-title').forEach(button => {
     button.addEventListener('click', function() {
         const description = this.nextElementSibling;
         if (!description || !description.classList.contains('section-description')) {
             return;
         }
-        description.classList.toggle('show');
+        const wasOpen = description.classList.contains('show');
 
-        // Optional: Close other open descriptions
-        document.querySelectorAll('.section-description').forEach(desc => {
-            if (desc !== description) {
-                desc.classList.remove('show');
-            }
-        });
+        document.querySelectorAll('.section-description').forEach(closeDescription);
+
+        if (!wasOpen) {
+            openDescription(description);
+        }
     });
 });
 
 // Close descriptions when clicking elsewhere
 document.addEventListener('click', function(event) {
     if (!event.target.closest('.section-title') && !event.target.closest('.section-description')) {
-        document.querySelectorAll('.section-description').forEach(desc => {
-            desc.classList.remove('show');
-        });
+        document.querySelectorAll('.section-description').forEach(closeDescription);
     }
 });
 

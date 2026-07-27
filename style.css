@@ -491,7 +491,7 @@ body {
 }
 
 .section-description.show {
-    max-height: 1000px;
+    /* max-height is set inline by script.js from the content's actual scrollHeight */
     margin-top: 20px;
     opacity: 1;
 }
@@ -747,7 +747,7 @@ body {
 }
 
 .comments-panel.show {
-    max-height: 600px;
+    /* max-height is set inline by supabase-app.js from the content's actual scrollHeight */
     opacity: 1;
     margin-top: 12px;
 }
