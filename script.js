@@ -37,9 +37,9 @@ document.addEventListener('click', function(event) {
     }
 });
 
-// Add scroll effect to header (background stays fully opaque; only the shadow reacts)
+// Add scroll effect to the header wrapper (background stays fully opaque; only the shadow reacts)
 window.addEventListener('scroll', function() {
-    const header = document.querySelector('.header');
+    const header = document.querySelector('.site-header-wrap');
     if (window.scrollY > 50) {
         header.style.boxShadow = '0 4px 20px rgba(20, 20, 43, 0.08)';
     } else {

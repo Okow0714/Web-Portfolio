@@ -19,18 +19,60 @@
     </div>
 
     <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <div class="auth-controls">
+        <!-- Header: 5 sections, each opening its own dropdown -->
+        <div class="site-header-wrap">
+            <header class="header">
+                <nav class="header-nav">
+                    <div class="nav-item">
+                        <button class="nav-trigger">Menu</button>
+                        <div class="nav-dropdown">
+                            <a href="#hobbies">Hobbies</a>
+                            <a href="#skills">My Skills</a>
+                            <a href="#portfolio">Project &amp; Learning</a>
+                            <a href="#qualifications">Qualifications</a>
+                            <a href="#academic">Academic History</a>
+                            <a href="#writing">Writing &amp; Creativity</a>
+                            <a href="#resume">Resume</a>
+                            <a href="#contact">Get In Touch</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <button class="nav-trigger">Section 2</button>
+                        <div class="nav-dropdown">
+                            <span class="nav-placeholder">Coming soon</span>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <button class="nav-trigger">Section 3</button>
+                        <div class="nav-dropdown">
+                            <span class="nav-placeholder">Coming soon</span>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <button class="nav-trigger">Section 4</button>
+                        <div class="nav-dropdown">
+                            <span class="nav-placeholder">Coming soon</span>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <button class="nav-trigger">Section 5</button>
+                        <div class="nav-dropdown">
+                            <span class="nav-placeholder">Coming soon</span>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="login-bar">
                 <div id="auth-anon">
-                    <button id="auth-login-btn" class="auth-btn">Log In</button>
+                    <button id="auth-login-btn" class="auth-btn auth-btn-cut">Log In</button>
                 </div>
                 <div id="auth-authed" class="hidden">
                     <span id="auth-user-email" class="auth-user-email"></span>
-                    <button id="auth-logout-btn" class="auth-btn auth-btn-outline">Log Out</button>
+                    <button id="auth-logout-btn" class="auth-btn auth-btn-outline auth-btn-cut">Log Out</button>
                 </div>
             </div>
-        </header>
+        </div>
 
         <!-- Auth Modal -->
         <div id="auth-modal" class="modal-overlay hidden">
