@@ -9,8 +9,11 @@
     --text-secondary: #5b616e;
     --text-muted: #8b909c;
     --accent: #2f6fed;
+    --accent-light: #5b8cff;
     --accent-dark: #2557c7;
     --accent-tint: #eef2ff;
+    --accent-gradient: linear-gradient(135deg, var(--accent-light), var(--accent));
+    --accent-gradient-hover: linear-gradient(135deg, var(--accent), var(--accent-dark));
     --radius-lg: 0px;
     --radius-md: 0px;
     --radius-sm: 0px;
@@ -240,7 +243,7 @@ body {
 .auth-btn {
     display: inline-block;
     padding: 10px 20px;
-    background: var(--accent);
+    background: var(--accent-gradient);
     border: 1px solid var(--accent);
     border-radius: var(--radius-sm);
     color: #ffffff;
@@ -252,7 +255,7 @@ body {
 }
 
 .auth-btn:hover {
-    background: var(--accent-dark);
+    background: var(--accent-gradient-hover);
     border-color: var(--accent-dark);
     transform: translateY(-1px);
     box-shadow: var(--shadow-md);
@@ -270,7 +273,7 @@ body {
 }
 
 .auth-btn-outline:hover {
-    background: var(--accent);
+    background: var(--accent-gradient);
     color: #ffffff;
 }
 
@@ -466,7 +469,7 @@ body {
 }
 
 .tab-button.active {
-    background: var(--accent);
+    background: var(--accent-gradient);
     border-color: var(--accent);
     color: #ffffff;
     box-shadow: var(--shadow-md);
@@ -906,7 +909,7 @@ body {
 .comment-form button {
     align-self: flex-end;
     padding: 8px 18px;
-    background: var(--accent);
+    background: var(--accent-gradient);
     border: none;
     border-radius: var(--radius-sm);
     color: #ffffff;
@@ -916,7 +919,7 @@ body {
 }
 
 .comment-form button:hover {
-    background: var(--accent-dark);
+    background: var(--accent-gradient-hover);
 }
 
 .comment-login-prompt {
@@ -1177,7 +1180,7 @@ body {
     align-items: center;
     gap: 10px;
     padding: 12px 24px;
-    background: var(--accent);
+    background: var(--accent-gradient);
     border: 1px solid var(--accent);
     border-radius: var(--radius-sm);
     color: #ffffff;
@@ -1189,7 +1192,7 @@ body {
 }
 
 .download-btn:hover {
-    background: var(--accent-dark);
+    background: var(--accent-gradient-hover);
     border-color: var(--accent-dark);
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
@@ -1252,7 +1255,7 @@ body {
 }
 
 .contact-link:hover {
-    background: var(--accent);
+    background: var(--accent-gradient);
     color: #ffffff;
     box-shadow: var(--shadow-md);
 }

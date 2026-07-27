@@ -32,9 +32,39 @@ document.querySelectorAll('.section-title').forEach(button => {
 
 // Close descriptions when clicking elsewhere
 document.addEventListener('click', function(event) {
-    if (!event.target.closest('.section-title') && !event.target.closest('.section-description')) {
+    if (!event.target.closest('.section-title') && !event.target.closest('.section-description') && !event.target.closest('.nav-dropdown')) {
         document.querySelectorAll('.section-description').forEach(closeDescription);
     }
+});
+
+// Auto-open a section's collapsible content when it's selected from the Menu dropdown.
+// The open/close here happens instantly (no CSS transition) instead of animating: animating
+// one section closed while another opens shifts the whole page layout while the browser's
+// scroll-to-target is still in flight, landing hundreds of pixels off. Settling the layout
+// first, then scrolling, keeps the landing position exact.
+document.querySelectorAll('.nav-dropdown a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href').slice(1);
+        const target = document.getElementById(targetId);
+        if (!target) {
+            return;
+        }
+        e.preventDefault();
+
+        const allDescriptions = document.querySelectorAll('.section-description');
+        allDescriptions.forEach(desc => { desc.style.transition = 'none'; });
+
+        allDescriptions.forEach(closeDescription);
+        const description = target.querySelector('.section-description');
+        if (description) {
+            openDescription(description);
+        }
+
+        void target.offsetHeight; // force reflow so the instant height change applies now
+        allDescriptions.forEach(desc => { desc.style.transition = ''; });
+
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
 });
 
 // Add scroll effect to the header wrapper (background stays fully opaque; only the shadow reacts)
