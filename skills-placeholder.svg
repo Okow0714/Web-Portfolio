@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#111111" stroke="#333333" stroke-width="2"/>
+  <g stroke="#333333" stroke-width="1">
+    <line x1="0" y1="0" x2="400" y2="300"/>
+    <line x1="400" y1="0" x2="0" y2="300"/>
+  </g>
+  <rect x="130" y="95" width="140" height="90" fill="none" stroke="#ffffff" stroke-width="2"/>
+  <circle cx="165" cy="125" r="9" fill="#ffffff"/>
+  <path d="M130 185 L178 142 L206 166 L236 132 L270 185 Z" fill="#ffffff" opacity="0.2"/>
+  <text x="200" y="225" text-anchor="middle" fill="#999999" font-family="Arial, sans-serif" font-size="13" letter-spacing="2">SKILLS</text>
+  <text x="200" y="245" text-anchor="middle" fill="#666666" font-family="Arial, sans-serif" font-size="11" letter-spacing="1">PLACEHOLDER IMAGE</text>
+</svg>

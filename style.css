@@ -457,21 +457,32 @@ body {
     display: none;
 }
 
-/* Hobbies Section: height follows content, not forced to fill the screen */
+/* Hobbies Section: side-by-side with a placeholder image, padding trimmed so it stays compact while collapsed */
 .hobbies-section {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 80px 40px;
+    padding: 50px 40px;
+    gap: 60px;
     background: #000000;
+}
+
+.hobbies-image {
+    flex: 1;
+    max-width: 400px;
+}
+
+.hobbies-image img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    background: #111111;
+    border: 1px solid #333333;
 }
 
 .hobbies-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 30px;
-    max-width: 1000px;
     margin-top: 40px;
 }
 
@@ -498,21 +509,32 @@ body {
     color: #cccccc;
 }
 
-/* Skills Section: height follows content, not forced to fill the screen */
+/* Skills Section: side-by-side with a placeholder image, padding trimmed so it stays compact while collapsed */
 .skills-section {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 80px 40px;
+    padding: 50px 40px;
+    gap: 60px;
     background: #000000;
+}
+
+.skills-image {
+    flex: 1;
+    max-width: 400px;
+}
+
+.skills-image img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    background: #111111;
+    border: 1px solid #333333;
 }
 
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 40px;
-    max-width: 1000px;
     width: 100%;
     margin-top: 20px;
 }
@@ -569,11 +591,11 @@ body {
     text-align: right;
 }
 
-/* Portfolio Section: height follows content (text + image), not forced to fill the screen */
+/* Portfolio Section: height follows content (text + image), padding trimmed so it stays compact while collapsed */
 .portfolio-main-section {
     display: flex;
     align-items: center;
-    padding: 80px 40px;
+    padding: 50px 40px;
     gap: 60px;
     background: #0a0a0a;
     border-top: 1px solid #333333;
@@ -625,18 +647,17 @@ body {
     font-style: italic;
 }
 
-/* Qualifications Section: height follows content, not forced to fill the screen */
+/* Qualifications Section: height follows content, padding trimmed so it stays compact while collapsed */
 .qualifications-section {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 80px 40px;
+    padding: 50px 40px;
     text-align: center;
     background: #000000;
 }
 
-/* Always visible (not wrapped in .section-description), the title button doesn't toggle it */
 .qualifications-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -988,9 +1009,16 @@ body {
         text-align: center;
     }
     
-    .portfolio-main-section {
+    .portfolio-main-section,
+    .hobbies-section,
+    .skills-section {
         flex-direction: column;
         gap: 40px;
+    }
+
+    .hobbies-image,
+    .skills-image {
+        max-width: 100%;
     }
     
     .resume-content {
