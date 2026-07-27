@@ -51,10 +51,10 @@ document.querySelectorAll('.dropdown-content a').forEach(link => {
 window.addEventListener('scroll', function() {
     const header = document.querySelector('.header');
     if (window.scrollY > 50) {
-        header.style.background = 'rgba(171, 171, 171, 0.95)';
-        header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
+        header.style.background = 'rgba(255, 255, 255, 0.97)';
+        header.style.boxShadow = '0 4px 20px rgba(20, 20, 43, 0.08)';
     } else {
-        header.style.background = 'rgba(235, 235, 235, 0.9)';
+        header.style.background = 'rgba(255, 255, 255, 0.85)';
         header.style.boxShadow = 'none';
     }
 });
