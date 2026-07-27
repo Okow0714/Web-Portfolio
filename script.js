@@ -1,9 +1,15 @@
 // Title toggle functionality
+// Some section titles (About Me, Qualifications, Academic History, Contact) sit above
+// always-visible content rather than a collapsible .section-description, so their
+// click should do nothing instead of closing every other open section.
 document.querySelectorAll('.section-title').forEach(button => {
     button.addEventListener('click', function() {
         const description = this.nextElementSibling;
+        if (!description || !description.classList.contains('section-description')) {
+            return;
+        }
         description.classList.toggle('show');
-        
+
         // Optional: Close other open descriptions
         document.querySelectorAll('.section-description').forEach(desc => {
             if (desc !== description) {

@@ -136,6 +136,14 @@ body {
     transition: all 0.3s ease;
 }
 
+/* Reveal the nav dropdown on hover/keyboard focus; without this it was never reachable */
+.name-menu:hover .dropdown-content,
+.name-menu:focus-within .dropdown-content {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
 .dropdown-content a {
     color: #ffffff;
     padding: 12px 20px;
@@ -172,7 +180,7 @@ body {
     border-color: #ffffff;
 }
 
-/* Hero Section */
+/* Hero Section: the only section kept at full viewport height, since it's the landing view */
 .hero-section {
     min-height: 100vh;
     display: flex;
@@ -237,7 +245,7 @@ body {
     border: 1px solid #333333;
 }
 
-/* About Me Tabs */
+/* About Me Tabs: always visible (not wrapped in .section-description), the title button doesn't toggle it */
 .about-content {
     display: flex;
     gap: 40px;
@@ -387,6 +395,7 @@ body {
     width: 100%;
 }
 
+/* Collapsible content wrapper: hidden until its .section-title button is clicked (adds .show) */
 .section-description {
     max-height: 0;
     overflow: hidden;
@@ -448,9 +457,8 @@ body {
     display: none;
 }
 
-/* Hobbies Section */
+/* Hobbies Section: height follows content, not forced to fill the screen */
 .hobbies-section {
-    min-height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -490,9 +498,8 @@ body {
     color: #cccccc;
 }
 
-/* Skills Section */
+/* Skills Section: height follows content, not forced to fill the screen */
 .skills-section {
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -562,9 +569,8 @@ body {
     text-align: right;
 }
 
-/* Portfolio Section */
+/* Portfolio Section: height follows content (text + image), not forced to fill the screen */
 .portfolio-main-section {
-    min-height: 100vh;
     display: flex;
     align-items: center;
     padding: 80px 40px;
@@ -619,9 +625,8 @@ body {
     font-style: italic;
 }
 
-/* Qualifications Section */
+/* Qualifications Section: height follows content, not forced to fill the screen */
 .qualifications-section {
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -631,6 +636,7 @@ body {
     background: #000000;
 }
 
+/* Always visible (not wrapped in .section-description), the title button doesn't toggle it */
 .qualifications-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -664,9 +670,8 @@ body {
     color: #cccccc;
 }
 
-/* Academic History Section */
+/* Academic History Section: height follows content (timeline), not forced to fill the screen */
 .academic-section {
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -675,6 +680,7 @@ body {
     background: #000000;
 }
 
+/* Always visible (not wrapped in .section-description), the title button doesn't toggle it */
 .timeline {
     max-width: 900px;
     margin-top: 40px;
@@ -749,9 +755,8 @@ body {
     margin-top: 10px;
 }
 
-/* Writing Section */
+/* Writing Section: height follows content, not forced to fill the screen */
 .writing-section {
-    min-height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -791,9 +796,8 @@ body {
     color: #cccccc;
 }
 
-/* Resume Section */
+/* Resume Section: height follows content, not forced to fill the screen */
 .resume-section {
-    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -878,9 +882,8 @@ body {
     border-color: #ffffff;
 }
 
-/* Contact Section */
+/* Contact Section: height follows content, not forced to fill the screen */
 .contact-section {
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -890,6 +893,7 @@ body {
     background: #000000;
 }
 
+/* Always visible (not wrapped in .section-description), the title button doesn't toggle it */
 .contact-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
