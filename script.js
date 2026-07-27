@@ -28,33 +28,12 @@ document.addEventListener('click', function(event) {
     }
 });
 
-// Smooth scrolling for navigation links
-document.querySelectorAll('.dropdown-content a').forEach(link => {
-    link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-        if (targetElement) {
-            // Account for fixed header height
-            const headerHeight = 80;
-            const elementPosition = targetElement.offsetTop - headerHeight;
-            
-            window.scrollTo({
-                top: elementPosition,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-// Add scroll effect to header
+// Add scroll effect to header (background stays fully opaque; only the shadow reacts)
 window.addEventListener('scroll', function() {
     const header = document.querySelector('.header');
     if (window.scrollY > 50) {
-        header.style.background = 'rgba(255, 255, 255, 0.97)';
         header.style.boxShadow = '0 4px 20px rgba(20, 20, 43, 0.08)';
     } else {
-        header.style.background = 'rgba(255, 255, 255, 0.85)';
         header.style.boxShadow = 'none';
     }
 });
@@ -96,21 +75,6 @@ function animateSkillBars() {
         }, 300);
     });
 }
-
-// Copy contact info to clipboard
-document.querySelectorAll('.contact-item').forEach(item => {
-    item.addEventListener('click', function() {
-        const text = this.querySelector('span').textContent;
-        navigator.clipboard.writeText(text).then(function() {
-            // Show a subtle feedback
-            const originalBg = item.style.background;
-            item.style.background = 'rgba(255, 255, 255, 0.2)';
-            setTimeout(() => {
-                item.style.background = originalBg;
-            }, 300);
-        });
-    });
-});
 
 // Tab functionality for About Me section
 document.querySelectorAll('.tab-button').forEach(button => {

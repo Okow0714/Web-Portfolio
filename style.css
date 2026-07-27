@@ -118,102 +118,12 @@ body {
     right: 0;
     z-index: 1000;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     padding: 20px 40px;
     background: var(--bg-surface);
     border-bottom: 1px solid var(--border);
     transition: all 0.3s ease;
-}
-
-/* Name Menu - Bright accent button */
-.name-button {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: var(--accent);
-    border: none;
-    border-radius: var(--radius-sm);
-    padding: 12px 20px;
-    color: #ffffff;
-    font-weight: 600;
-    font-size: 1.1rem;
-    cursor: pointer;
-    box-shadow: 0 4px 14px rgba(47, 111, 237, 0.35);
-    transition: all 0.3s ease;
-}
-
-.name-button:hover {
-    background: var(--accent-dark);
-    transform: translateY(-1px);
-    box-shadow: 0 6px 18px rgba(47, 111, 237, 0.4);
-}
-
-.dropdown-content {
-    position: absolute;
-    top: calc(100% + 5px);
-    left: 0;
-    min-width: 200px;
-    background: var(--bg-surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 10px 0;
-    opacity: 0;
-    transform: translateY(-10px);
-    pointer-events: none;
-    box-shadow: 0 12px 32px rgba(20, 20, 43, 0.12);
-    transition: all 0.3s ease;
-}
-
-/* Reveal the nav dropdown on hover/keyboard focus; without this it was never reachable */
-.name-menu:hover .dropdown-content,
-.name-menu:focus-within .dropdown-content {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-
-.dropdown-content a {
-    color: var(--text-primary);
-    padding: 12px 20px;
-    display: block;
-    text-decoration: none;
-    font-weight: 400;
-    transition: all 0.2s ease;
-    border-left: 2px solid transparent;
-}
-
-.dropdown-content a:hover {
-    background: var(--accent-tint);
-    border-left: 2px solid var(--accent);
-    color: var(--accent-dark);
-}
-
-/* Contact Info */
-.contact-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 12px;
-    background: var(--bg-surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    font-size: 0.9rem;
-    box-shadow: var(--shadow-sm);
-    transition: all 0.3s ease;
-    cursor: pointer;
-    color: var(--text-primary);
-}
-
-.contact-item:hover {
-    background: var(--accent-tint);
-    border-color: var(--accent);
-}
-
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 20px;
 }
 
 /* Auth controls (header) */
@@ -1305,10 +1215,6 @@ body {
 @media (max-width: 968px) {
     .header {
         padding: 15px 20px;
-    }
-
-    .contact-info {
-        display: none;
     }
 
     .hero-content {
