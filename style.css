@@ -228,15 +228,43 @@ body {
     padding: 12px 40px;
 }
 
-#auth-anon, #auth-authed {
+#auth-anon {
     display: flex;
     align-items: center;
-    gap: 20px;
+}
+
+/* One continuous shape for the logged-in state: background fades from white
+   behind the username to the blue gradient behind the Log Out text */
+#auth-authed {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 20px 10px 28px;
+    background: linear-gradient(90deg, #ffffff 0%, #ffffff 50%, var(--accent-light) 75%, var(--accent-dark) 100%);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
 }
 
 .auth-user-email {
     font-size: 0.9rem;
     color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+#auth-logout-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity 0.2s ease;
+}
+
+#auth-logout-btn:hover {
+    opacity: 0.75;
 }
 
 .auth-btn {
