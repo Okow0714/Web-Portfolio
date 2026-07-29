@@ -101,3 +101,23 @@ create policy "Users can view their own sent messages"
 
 -- Note: as the project owner you can read every row in the Supabase dashboard's
 -- Table Editor regardless of these policies (RLS only restricts the anon/client API).
+
+-- ---------------------------------------------------------------------------
+-- game_progress: per-user best result for each Word Match level (1-5, N5-N1)
+-- ---------------------------------------------------------------------------
+create table public.game_progress (
+    user_id uuid not null references auth.users on delete cascade,
+    level smallint not null check (level between 1 and 5),
+    completed boolean not null default false,
+    best_time_seconds integer,
+    best_moves integer,
+    updated_at timestamptz not null default now(),
+    primary key (user_id, level)
+);
+
+alter table public.game_progress enable row level security;
+
+create policy "Users manage their own game progress"
+    on public.game_progress for all
+    using (auth.uid() = user_id)
+    with check (auth.uid() = user_id);

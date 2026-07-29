@@ -157,6 +157,7 @@ body {
 }
 
 .nav-trigger {
+    display: block;
     width: 100%;
     background: none;
     border: none;
@@ -166,6 +167,7 @@ body {
     color: var(--text-primary);
     cursor: pointer;
     text-align: center;
+    text-decoration: none;
     transition: all 0.2s ease;
 }
 

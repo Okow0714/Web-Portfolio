@@ -1,0 +1,334 @@
+/* Japanese Word Match game — styles specific to game.html.
+   Reuses style.css tokens (--accent, --border, --radius-*, --shadow-*) for visual consistency. */
+
+:root {
+    --game-en-accent: #0e8a7d;
+}
+
+/* ---------------------------------------------------------------------
+   Header extras: active nav link + back-to-portfolio link
+   --------------------------------------------------------------------- */
+.nav-current {
+    background: var(--accent-tint);
+    color: var(--accent-dark);
+    box-shadow: inset 0 -3px 0 var(--accent);
+}
+
+.back-link {
+    margin-right: auto;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.back-link:hover {
+    color: var(--accent-dark);
+}
+
+/* ---------------------------------------------------------------------
+   Page shell
+   --------------------------------------------------------------------- */
+.game-main {
+    padding: 140px 40px 80px;
+    min-height: 100vh;
+}
+
+.game-title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin: 0 0 12px;
+}
+
+.game-subtitle {
+    color: var(--text-secondary);
+    max-width: 640px;
+    line-height: 1.6;
+    margin: 0 0 8px;
+}
+
+.game-guest-hint {
+    color: var(--accent-dark);
+    background: var(--accent-tint);
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    margin: 8px 0 30px;
+}
+
+.game-section.hidden {
+    display: none;
+}
+
+/* ---------------------------------------------------------------------
+   Level select
+   --------------------------------------------------------------------- */
+.level-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.level-card {
+    text-align: left;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    padding: 24px 22px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: inherit;
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.level-card:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+}
+
+.level-badge {
+    display: inline-block;
+    align-self: flex-start;
+    background: var(--accent-tint);
+    color: var(--accent-dark);
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+    padding: 4px 10px;
+}
+
+.level-card h3 {
+    margin: 0;
+    font-size: 1.15rem;
+}
+
+.level-meta {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.level-meta .completed {
+    color: var(--game-en-accent);
+    font-weight: 600;
+}
+
+/* ---------------------------------------------------------------------
+   Board
+   --------------------------------------------------------------------- */
+.board-toolbar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.board-level-label {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.board-stats {
+    display: flex;
+    gap: 18px;
+    margin-left: auto;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.board-stats span {
+    background: var(--bg-surface-alt);
+    padding: 6px 12px;
+}
+
+.ghost-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 8px 16px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ghost-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent-dark);
+    background: var(--accent-tint);
+}
+
+.board-wrap {
+    position: relative;
+    overflow-x: auto;
+    padding: 4px;
+}
+
+.board-grid {
+    display: grid;
+    gap: 6px;
+    width: 100%;
+    min-width: 920px;
+}
+
+.board-lines {
+    position: absolute;
+    inset: 4px;
+    pointer-events: none;
+    overflow: visible;
+}
+
+.board-lines path {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.grid-cell {
+    aspect-ratio: 1 / 1;
+}
+
+.tile {
+    width: 100%;
+    height: 100%;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    font-family: inherit;
+    color: var(--text-primary);
+    padding: 4px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.25s ease, border-color 0.15s ease;
+    border-top: 3px solid var(--accent);
+}
+
+.tile.tile-en {
+    border-top-color: var(--game-en-accent);
+}
+
+.tile-jp {
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+.tile-reading {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.tile-en-text {
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1.15;
+}
+
+.tile:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.tile.selected {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--accent);
+    background: var(--accent-tint);
+}
+
+.tile.matched {
+    opacity: 0;
+    transform: scale(0.5);
+    pointer-events: none;
+}
+
+.tile.shake {
+    animation: tile-shake 0.35s ease;
+    border-color: #d33f3f;
+}
+
+@keyframes tile-shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* ---------------------------------------------------------------------
+   Result modal
+   --------------------------------------------------------------------- */
+.result-stats {
+    display: flex;
+    gap: 20px;
+    margin: 10px 0 20px;
+}
+
+.result-stat {
+    flex: 1;
+    text-align: center;
+    background: var(--bg-surface-alt);
+    padding: 16px;
+}
+
+.result-value {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.result-label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 4px;
+}
+
+.result-best {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin: 0 0 16px;
+}
+
+.result-save-status {
+    color: var(--game-en-accent);
+    font-size: 0.9rem;
+    margin: 0 0 16px;
+}
+
+.result-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* ---------------------------------------------------------------------
+   Responsive
+   --------------------------------------------------------------------- */
+@media (max-width: 968px) {
+    .game-main {
+        padding: 130px 20px 60px;
+    }
+
+    .board-stats {
+        margin-left: 0;
+        width: 100%;
+        justify-content: space-between;
+    }
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Japanese Word Match - Sarantsatsral Ganzorig</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="game.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="background-animation">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+        <div class="floating-shape shape-4"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header: same 5-section nav as the portfolio page; Menu links jump back to index.html -->
+        <div class="site-header-wrap">
+            <header class="header">
+                <nav class="header-nav">
+                    <div class="nav-item">
+                        <button class="nav-trigger">Menu</button>
+                        <div class="nav-dropdown">
+                            <a href="index.html#hobbies">Hobbies</a>
+                            <a href="index.html#skills">My Skills</a>
+                            <a href="index.html#portfolio">Project &amp; Learning</a>
+                            <a href="index.html#qualifications">Qualifications</a>
+                            <a href="index.html#academic">Academic History</a>
+                            <a href="index.html#writing">Writing &amp; Creativity</a>
+                            <a href="index.html#resume">Resume</a>
+                            <a href="index.html#contact">Get In Touch</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="game.html" class="nav-trigger nav-current">Word Game</a>
+                    </div>
+                    <div class="nav-item">
+                        <button class="nav-trigger">Section 3</button>
+                        <div class="nav-dropdown">
+                            <span class="nav-placeholder">Coming soon</span>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <button class="nav-trigger">Section 4</button>
+                        <div class="nav-dropdown">
+                            <span class="nav-placeholder">Coming soon</span>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <button class="nav-trigger">Section 5</button>
+                        <div class="nav-dropdown">
+                            <span class="nav-placeholder">Coming soon</span>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="login-bar">
+                <a href="index.html" class="back-link">&larr; Portfolio</a>
+                <div id="auth-anon">
+                    <button id="auth-login-btn" class="auth-btn auth-btn-cut">Log In</button>
+                </div>
+                <div id="auth-authed" class="auth-btn-cut hidden">
+                    <span id="auth-user-email" class="auth-user-email"></span>
+                    <button id="auth-logout-btn">Log Out</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Auth Modal -->
+        <div id="auth-modal" class="modal-overlay hidden">
+            <div class="modal-card">
+                <button id="auth-modal-close" class="modal-close" type="button" aria-label="Close">&times;</button>
+                <h3 id="auth-modal-title">Log In</h3>
+                <form id="auth-form">
+                    <label for="auth-email">Email</label>
+                    <input type="email" id="auth-email" required autocomplete="email">
+                    <label for="auth-password">Password</label>
+                    <input type="password" id="auth-password" required autocomplete="current-password" minlength="6">
+                    <p id="auth-error" class="auth-error hidden"></p>
+                    <button type="submit" id="auth-submit-btn" class="auth-btn">Log In</button>
+                </form>
+                <button id="auth-mode-toggle" class="auth-mode-toggle" type="button">Need an account? Sign up</button>
+            </div>
+        </div>
+
+        <main class="game-main">
+            <!-- Level select -->
+            <section id="level-select-section" class="game-section">
+                <h1 class="game-title">Japanese Word Match</h1>
+                <p class="game-subtitle">Connect each Japanese word to its English meaning. Every level has 40 tiles (20 pairs) — N5 is beginner vocabulary, N1 is advanced.</p>
+                <p id="game-guest-hint" class="game-guest-hint hidden">Log in to save your best times and completions across visits.</p>
+                <div class="level-grid" id="level-grid"></div>
+            </section>
+
+            <!-- Board -->
+            <section id="board-section" class="game-section hidden">
+                <div class="board-toolbar">
+                    <button id="board-back-btn" class="ghost-btn" type="button">&larr; Levels</button>
+                    <div class="board-level-label" id="board-level-label"></div>
+                    <div class="board-stats">
+                        <span id="board-timer">00:00</span>
+                        <span id="board-pairs">0 / 20 pairs</span>
+                        <span id="board-moves">0 moves</span>
+                    </div>
+                    <button id="board-shuffle-btn" class="ghost-btn" type="button">Shuffle</button>
+                </div>
+                <div class="board-wrap">
+                    <div id="board-grid" class="board-grid"></div>
+                    <svg id="board-lines" class="board-lines"></svg>
+                </div>
+            </section>
+        </main>
+
+        <!-- Result Modal -->
+        <div id="result-modal" class="modal-overlay hidden">
+            <div class="modal-card">
+                <button id="result-modal-close" class="modal-close" type="button" aria-label="Close">&times;</button>
+                <h3 id="result-title">Level Complete!</h3>
+                <div class="result-stats">
+                    <div class="result-stat">
+                        <span class="result-label">Time</span>
+                        <span id="result-time" class="result-value"></span>
+                    </div>
+                    <div class="result-stat">
+                        <span class="result-label">Moves</span>
+                        <span id="result-moves" class="result-value"></span>
+                    </div>
+                </div>
+                <p id="result-best" class="result-best"></p>
+                <p id="result-save-status" class="result-save-status hidden"></p>
+                <div class="result-actions">
+                    <button id="result-login-btn" class="auth-btn hidden" type="button">Log In to Save</button>
+                    <button id="result-replay-btn" class="auth-btn" type="button">Play Again</button>
+                    <button id="result-levels-btn" class="auth-btn auth-btn-outline" type="button">Back to Levels</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script src="supabase-config.js"></script>
+    <script src="auth-shared.js"></script>
+    <script src="game-words.js"></script>
+    <script src="game.js"></script>
+</body>
+
+</html>
