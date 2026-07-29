@@ -26,6 +26,7 @@ let grid = [];      // GRID_ROWS x GRID_COLS, each cell null or a tile object
 let cellEls = [];   // GRID_ROWS x GRID_COLS, each cell's wrapper <div>
 let selected = null;
 let currentLevel = null;
+let matchStarted = false; // gates tile clicks/timer until the start modal's "Start Match" is clicked
 let matchedCount = 0;
 let totalPairs = 0;
 let moves = 0;
@@ -58,8 +59,11 @@ function shuffleArray(arr) {
 // Board construction
 // ---------------------------------------------------------------------------
 function buildBoard(level) {
+    // Each level has several word sets; picking one at random each play means
+    // replaying a level doesn't always show the same 20 pairs.
+    const set = level.sets[Math.floor(Math.random() * level.sets.length)];
     const tiles = [];
-    level.pairs.forEach((p, i) => {
+    set.forEach((p, i) => {
         tiles.push({ pairId: i, kind: 'jp', text: p.jp, sub: p.reading });
         tiles.push({ pairId: i, kind: 'en', text: p.en, sub: '' });
     });
@@ -218,9 +222,8 @@ function clearPathLine() {
 // Gameplay
 // ---------------------------------------------------------------------------
 function onTileClick(tile) {
+    if (!matchStarted) return; // still on the "get ready" screen
     if (!grid[tile.row][tile.col]) return; // already matched/removed
-
-    if (!startTime) startTimer();
 
     if (selected === tile) {
         selected.el.classList.remove('selected');
@@ -331,12 +334,13 @@ function updateStats() {
 // ---------------------------------------------------------------------------
 function startLevel(level) {
     currentLevel = level;
+    matchStarted = false;
     matchedCount = 0;
     moves = 0;
     elapsedSeconds = 0;
     startTime = null;
     selected = null;
-    totalPairs = level.pairs.length;
+    totalPairs = 20; // every word set has exactly 20 pairs
     stopTimer();
 
     buildBoard(level);
@@ -348,6 +352,9 @@ function startLevel(level) {
 
     hideEl(document.getElementById('level-select-section'));
     showEl(document.getElementById('board-section'));
+
+    document.getElementById('start-modal-title').textContent = level.title;
+    showEl(document.getElementById('start-modal'));
 }
 
 function backToLevels() {
@@ -462,6 +469,16 @@ function showResultModal(result) {
 document.getElementById('board-back-btn').addEventListener('click', backToLevels);
 document.getElementById('board-shuffle-btn').addEventListener('click', shuffleRemaining);
 
+document.getElementById('start-modal-btn').addEventListener('click', () => {
+    hideEl(document.getElementById('start-modal'));
+    matchStarted = true;
+    startTimer();
+});
+document.getElementById('start-modal-back-btn').addEventListener('click', () => {
+    hideEl(document.getElementById('start-modal'));
+    backToLevels();
+});
+
 document.getElementById('result-modal-close').addEventListener('click', () => hideEl(document.getElementById('result-modal')));
 document.getElementById('result-modal').addEventListener('click', (e) => {
     if (e.target === e.currentTarget) hideEl(document.getElementById('result-modal'));
@@ -484,3 +501,10 @@ window.onAuthChange(async (session) => {
         hideEl(document.getElementById('result-login-btn'));
     }
 });
+
+// Deep link support: game.html?level=3 jumps straight into that level's board instead of
+// showing the level-select screen first — used by the header dropdown's per-level links.
+// Runs independently of auth/progress loading so the board appears immediately.
+const requestedLevelNum = parseInt(new URLSearchParams(window.location.search).get('level'), 10);
+const requestedLevel = WORD_LEVELS.find(l => l.level === requestedLevelNum);
+if (requestedLevel) startLevel(requestedLevel);

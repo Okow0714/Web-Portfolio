@@ -38,7 +38,15 @@
                         </div>
                     </div>
                     <div class="nav-item">
-                        <a href="game.html" class="nav-trigger nav-current">Word Game</a>
+                        <button class="nav-trigger nav-current">Word Game</button>
+                        <div class="nav-dropdown">
+                            <a href="game.html">All Levels</a>
+                            <a href="game.html?level=1">N5 · Beginner</a>
+                            <a href="game.html?level=2">N4 · Elementary</a>
+                            <a href="game.html?level=3">N3 · Intermediate</a>
+                            <a href="game.html?level=4">N2 · Upper Intermediate</a>
+                            <a href="game.html?level=5">N1 · Advanced</a>
+                        </div>
                     </div>
                     <div class="nav-item">
                         <button class="nav-trigger">Section 3</button>
@@ -117,6 +125,20 @@
                 </div>
             </section>
         </main>
+
+        <!-- Start Modal: shown at the beginning of every match so jumping straight into a
+             board (e.g. from the header dropdown) doesn't start the timer before the player
+             is ready. -->
+        <div id="start-modal" class="modal-overlay hidden">
+            <div class="modal-card">
+                <h3 id="start-modal-title">N5 · Beginner</h3>
+                <p id="start-modal-desc">Connect each Japanese word to its English meaning. 20 pairs, 40 tiles. The timer starts when you hit Start.</p>
+                <div class="result-actions">
+                    <button id="start-modal-btn" class="auth-btn" type="button">Start Match</button>
+                    <button id="start-modal-back-btn" class="auth-btn auth-btn-outline" type="button">Back to Levels</button>
+                </div>
+            </div>
+        </div>
 
         <!-- Result Modal -->
         <div id="result-modal" class="modal-overlay hidden">
