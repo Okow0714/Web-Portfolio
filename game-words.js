@@ -9,590 +9,6469 @@
 // still reflects that dataset's tagging, not an official source. The 100 words featured per
 // level (out of hundreds tagged) are a curated subset picked for gameplay variety and
 // unambiguous single-gloss English meanings; readings and level tags are as sourced.
+//
+// `meanings` lists every gloss the source dataset gives for the word (not just the one shown
+// on the tile) for words with more than one sense. `example` is a real sentence pulled from
+// the Tatoeba corpus (tatoeba.org, CC-licensed) that actually uses the word, with its
+// translation — found by tokenizing the corpus and matching on dictionary form, not hand-
+// written. Some rarer words have no matching sentence in the corpus and get `example: null`.
 const WORD_LEVELS = [
     {
-        level: 1,
-        jlpt: 'N5',
-        title: 'N5 · Beginner',
-        sets: [
+        "level": 1,
+        "jlpt": "N5",
+        "title": "N5 · Beginner",
+        "sets": [
             [
-                { jp: "会う", reading: "あう", en: "to meet" },
-                { jp: "青", reading: "あお", en: "blue" },
-                { jp: "朝", reading: "あさ", en: "morning" },
-                { jp: "明日", reading: "あした", en: "tomorrow" },
-                { jp: "頭", reading: "あたま", en: "head" },
-                { jp: "新しい", reading: "あたらしい", en: "new" },
-                { jp: "危ない", reading: "あぶない", en: "dangerous" },
-                { jp: "雨", reading: "あめ", en: "rain" },
-                { jp: "歩く", reading: "あるく", en: "to walk" },
-                { jp: "家", reading: "いえ", en: "house" },
-                { jp: "忙しい", reading: "いそがしい", en: "busy" },
-                { jp: "犬", reading: "いぬ", en: "dog" },
-                { jp: "今", reading: "いま", en: "now" },
-                { jp: "色", reading: "いろ", en: "color" },
-                { jp: "歌う", reading: "うたう", en: "to sing" },
-                { jp: "海", reading: "うみ", en: "sea" },
-                { jp: "絵", reading: "え", en: "painting" },
-                { jp: "映画", reading: "えいが", en: "movie" },
-                { jp: "駅", reading: "えき", en: "station" },
-                { jp: "大きい", reading: "おおきい", en: "big" },
+                {
+                    "jp": "会う",
+                    "reading": "あう",
+                    "en": "to meet",
+                    "meanings": [
+                        "to meet",
+                        "to see"
+                    ],
+                    "example": {
+                        "jp": "来週、忘れずに父に会って下さい。",
+                        "en": "Please remember to see my father next week."
+                    }
+                },
+                {
+                    "jp": "青",
+                    "reading": "あお",
+                    "en": "blue",
+                    "meanings": [
+                        "blue"
+                    ],
+                    "example": {
+                        "jp": "彼の車は青で、彼女のは赤だった。",
+                        "en": "His car was blue; hers was red."
+                    }
+                },
+                {
+                    "jp": "朝",
+                    "reading": "あさ",
+                    "en": "morning",
+                    "meanings": [
+                        "morning"
+                    ],
+                    "example": {
+                        "jp": "例えば、ロンドンは今は朝７時です。",
+                        "en": "For example, it is 7:00 a.m. in London now."
+                    }
+                },
+                {
+                    "jp": "明日",
+                    "reading": "あした",
+                    "en": "tomorrow",
+                    "meanings": [
+                        "tomorrow"
+                    ],
+                    "example": {
+                        "jp": "明日図書館で勉強するつもりです。",
+                        "en": "Tomorrow, I'm going to study at the library."
+                    }
+                },
+                {
+                    "jp": "頭",
+                    "reading": "あたま",
+                    "en": "head",
+                    "meanings": [
+                        "head"
+                    ],
+                    "example": {
+                        "jp": "良い考えが彼の頭にふと浮かんだ。",
+                        "en": "A good idea crossed his mind."
+                    }
+                },
+                {
+                    "jp": "新しい",
+                    "reading": "あたらしい",
+                    "en": "new",
+                    "meanings": [
+                        "new"
+                    ],
+                    "example": {
+                        "jp": "あぁ私の白いズボンが！新しいのに。",
+                        "en": "Oh, my white pants! And they were new."
+                    }
+                },
+                {
+                    "jp": "危ない",
+                    "reading": "あぶない",
+                    "en": "dangerous",
+                    "meanings": [
+                        "dangerous",
+                        "critical"
+                    ],
+                    "example": {
+                        "jp": "彼は私を見て危ないといいました。",
+                        "en": "He looked at me and said, \"Watch out.\""
+                    }
+                },
+                {
+                    "jp": "雨",
+                    "reading": "あめ",
+                    "en": "rain",
+                    "meanings": [
+                        "rain"
+                    ],
+                    "example": {
+                        "jp": "六月は来る日も来る日も雨が降る。",
+                        "en": "In June, it rains day after day."
+                    }
+                },
+                {
+                    "jp": "歩く",
+                    "reading": "あるく",
+                    "en": "to walk",
+                    "meanings": [
+                        "to walk"
+                    ],
+                    "example": {
+                        "jp": "隣の村まで歩いて１時間かかった。",
+                        "en": "An hour's walk brought me to the next village."
+                    }
+                },
+                {
+                    "jp": "家",
+                    "reading": "いえ",
+                    "en": "house",
+                    "meanings": [
+                        "house",
+                        "home"
+                    ],
+                    "example": {
+                        "jp": "この土地とこの家は私の物ですよ。",
+                        "en": "This house and this land are mine."
+                    }
+                },
+                {
+                    "jp": "忙しい",
+                    "reading": "いそがしい",
+                    "en": "busy",
+                    "meanings": [
+                        "busy (people, days)"
+                    ],
+                    "example": {
+                        "jp": "万一彼が忙しいのなら、手伝いなさい。",
+                        "en": "If he should be busy, help him."
+                    }
+                },
+                {
+                    "jp": "犬",
+                    "reading": "いぬ",
+                    "en": "dog",
+                    "meanings": [
+                        "dog"
+                    ],
+                    "example": {
+                        "jp": "チューたろうは田中さんの犬です。",
+                        "en": "Chewtarou is Mrs Tanaka's dog."
+                    }
+                },
+                {
+                    "jp": "今",
+                    "reading": "いま",
+                    "en": "now",
+                    "meanings": [
+                        "now"
+                    ],
+                    "example": {
+                        "jp": "今までいったい何をしていたんだ！",
+                        "en": "What have you been getting up to till now?!"
+                    }
+                },
+                {
+                    "jp": "色",
+                    "reading": "いろ",
+                    "en": "color",
+                    "meanings": [
+                        "color"
+                    ],
+                    "example": {
+                        "jp": "明るい色が私たちの目を引いた。",
+                        "en": "The bright colors arrested our eyes."
+                    }
+                },
+                {
+                    "jp": "歌う",
+                    "reading": "うたう",
+                    "en": "to sing",
+                    "meanings": [
+                        "to sing"
+                    ],
+                    "example": {
+                        "jp": "彼は小節を利かして歌っています。",
+                        "en": "He is singing with a lot of ornamentation."
+                    }
+                },
+                {
+                    "jp": "海",
+                    "reading": "うみ",
+                    "en": "sea",
+                    "meanings": [
+                        "sea",
+                        "beach"
+                    ],
+                    "example": {
+                        "jp": "私の目は夢を反映する海である。",
+                        "en": "My eyes are an ocean in which my dreams are reflected."
+                    }
+                },
+                {
+                    "jp": "絵",
+                    "reading": "え",
+                    "en": "painting",
+                    "meanings": [
+                        "a painting",
+                        "a picture",
+                        "a drawing"
+                    ],
+                    "example": {
+                        "jp": "あれはさる年に因んだ猿の絵です。",
+                        "en": "That's a picture of a monkey associated with the Year of the Monkey."
+                    }
+                },
+                {
+                    "jp": "映画",
+                    "reading": "えいが",
+                    "en": "movie",
+                    "meanings": [
+                        "movie",
+                        "film"
+                    ],
+                    "example": {
+                        "jp": "妹と私はときどき映画に行きます。",
+                        "en": "My sister and I go to the movies from time to time."
+                    }
+                },
+                {
+                    "jp": "駅",
+                    "reading": "えき",
+                    "en": "station",
+                    "meanings": [
+                        "station"
+                    ],
+                    "example": {
+                        "jp": "私が駅を出た時、男の人を見た。",
+                        "en": "When I left the train station, I saw a man."
+                    }
+                },
+                {
+                    "jp": "大きい",
+                    "reading": "おおきい",
+                    "en": "big",
+                    "meanings": [
+                        "big",
+                        "large"
+                    ],
+                    "example": {
+                        "jp": "大きくなったら王様になりたい。",
+                        "en": "When I grow up, I want to be a king."
+                    }
+                }
             ],
             [
-                { jp: "外国", reading: "がいこく", en: "foreign country" },
-                { jp: "会社", reading: "かいしゃ", en: "company" },
-                { jp: "階段", reading: "かいだん", en: "stairs" },
-                { jp: "買い物", reading: "かいもの", en: "shopping" },
-                { jp: "買う", reading: "かう", en: "to buy" },
-                { jp: "帰る", reading: "かえる", en: "to go back" },
-                { jp: "顔", reading: "かお", en: "face" },
-                { jp: "鍵", reading: "かぎ", en: "key" },
-                { jp: "書く", reading: "かく", en: "to write" },
-                { jp: "学生", reading: "がくせい", en: "student" },
-                { jp: "傘", reading: "かさ", en: "umbrella" },
-                { jp: "貸す", reading: "かす", en: "to lend" },
-                { jp: "風", reading: "かぜ", en: "wind" },
-                { jp: "家族", reading: "かぞく", en: "family" },
-                { jp: "学校", reading: "がっこう", en: "school" },
-                { jp: "家庭", reading: "かてい", en: "home" },
-                { jp: "かばん", reading: "かばん", en: "bag" },
-                { jp: "紙", reading: "かみ", en: "paper" },
-                { jp: "カメラ", reading: "カメラ", en: "camera" },
-                { jp: "体", reading: "からだ", en: "body" },
+                {
+                    "jp": "外国",
+                    "reading": "がいこく",
+                    "en": "foreign country",
+                    "meanings": [
+                        "foreign country",
+                        "abroad"
+                    ],
+                    "example": {
+                        "jp": "裕子は外国人と話したことがない。",
+                        "en": "Yuko has never spoken with a foreigner."
+                    }
+                },
+                {
+                    "jp": "会社",
+                    "reading": "かいしゃ",
+                    "en": "company",
+                    "meanings": [
+                        "company",
+                        "corporation"
+                    ],
+                    "example": {
+                        "jp": "会社が日中合弁で経営しています。",
+                        "en": "The company is operating under joint Sino-Japanese management."
+                    }
+                },
+                {
+                    "jp": "階段",
+                    "reading": "かいだん",
+                    "en": "stairs",
+                    "meanings": [
+                        "stairs"
+                    ],
+                    "example": {
+                        "jp": "彼は階段の上に恐ろしい顔を見た。",
+                        "en": "He saw a horrible face at the top of the stairs."
+                    }
+                },
+                {
+                    "jp": "買い物",
+                    "reading": "かいもの",
+                    "en": "shopping",
+                    "meanings": [
+                        "shopping"
+                    ],
+                    "example": {
+                        "jp": "母は勤めの帰りに買い物をします。",
+                        "en": "My mother does her usual shopping on her way home from work."
+                    }
+                },
+                {
+                    "jp": "買う",
+                    "reading": "かう",
+                    "en": "to buy",
+                    "meanings": [
+                        "to buy"
+                    ],
+                    "example": {
+                        "jp": "新しいパソコンを買わねばなりません。",
+                        "en": "I have to get a new computer."
+                    }
+                },
+                {
+                    "jp": "帰る",
+                    "reading": "かえる",
+                    "en": "to go back",
+                    "meanings": [
+                        "to go back",
+                        "to go home",
+                        "to return"
+                    ],
+                    "example": {
+                        "jp": "「帰ろ」「マックよってかない？」",
+                        "en": "\"Let's head back.\" \"Shall we drop by McDonald's?\""
+                    }
+                },
+                {
+                    "jp": "顔",
+                    "reading": "かお",
+                    "en": "face",
+                    "meanings": [
+                        "face (body part)"
+                    ],
+                    "example": {
+                        "jp": "けいこは枕に顔をうずめて泣いた。",
+                        "en": "Keiko buried her head in the pillow and cried."
+                    }
+                },
+                {
+                    "jp": "鍵",
+                    "reading": "かぎ",
+                    "en": "key",
+                    "meanings": [
+                        "a lock",
+                        "a key"
+                    ],
+                    "example": {
+                        "jp": "忘れずにドアに鍵をかけて下さい。",
+                        "en": "Don't fail to lock the door."
+                    }
+                },
+                {
+                    "jp": "書く",
+                    "reading": "かく",
+                    "en": "to write",
+                    "meanings": [
+                        "to write"
+                    ],
+                    "example": {
+                        "jp": "多くの人が日常のことについて文を書く。",
+                        "en": "Most people write about their daily life."
+                    }
+                },
+                {
+                    "jp": "学生",
+                    "reading": "がくせい",
+                    "en": "student",
+                    "meanings": [
+                        "student"
+                    ],
+                    "example": {
+                        "jp": "利口な学生達は早くテストを終えた。",
+                        "en": "The clever student finished the test quickly."
+                    }
+                },
+                {
+                    "jp": "傘",
+                    "reading": "かさ",
+                    "en": "umbrella",
+                    "meanings": [
+                        "umbrella",
+                        "parasol"
+                    ],
+                    "example": {
+                        "jp": "用心に傘を持っていった方がいい。",
+                        "en": "You had better take your umbrella in case."
+                    }
+                },
+                {
+                    "jp": "貸す",
+                    "reading": "かす",
+                    "en": "to lend",
+                    "meanings": [
+                        "to lend"
+                    ],
+                    "example": {
+                        "jp": "ちょっと顔を貸してくれませんか。",
+                        "en": "Can I have a few words with you?"
+                    }
+                },
+                {
+                    "jp": "風",
+                    "reading": "かぜ",
+                    "en": "wind",
+                    "meanings": [
+                        "wind",
+                        "breeze"
+                    ],
+                    "example": {
+                        "jp": "私はそんな風には生きられない。",
+                        "en": "I can't live that kind of life."
+                    }
+                },
+                {
+                    "jp": "家族",
+                    "reading": "かぞく",
+                    "en": "family",
+                    "meanings": [
+                        "family",
+                        "members of a family"
+                    ],
+                    "example": {
+                        "jp": "来週になると一家族が入ってくる。",
+                        "en": "Next week a family will move in."
+                    }
+                },
+                {
+                    "jp": "学校",
+                    "reading": "がっこう",
+                    "en": "school",
+                    "meanings": [
+                        "a school"
+                    ],
+                    "example": {
+                        "jp": "理恵と私は同じ学校に通いました。",
+                        "en": "Rie and I went to the same school."
+                    }
+                },
+                {
+                    "jp": "家庭",
+                    "reading": "かてい",
+                    "en": "home",
+                    "meanings": [
+                        "home",
+                        "family"
+                    ],
+                    "example": {
+                        "jp": "僕は仕事より家庭の方が大事だ。",
+                        "en": "My family comes before my career."
+                    }
+                },
+                {
+                    "jp": "かばん",
+                    "reading": "かばん",
+                    "en": "bag",
+                    "meanings": [
+                        "bag",
+                        "basket"
+                    ],
+                    "example": {
+                        "jp": "僕はケンにそのかばんを返した。",
+                        "en": "I gave the bag back to Ken."
+                    }
+                },
+                {
+                    "jp": "紙",
+                    "reading": "かみ",
+                    "en": "paper",
+                    "meanings": [
+                        "paper"
+                    ],
+                    "example": {
+                        "jp": "この教科書って再生紙でできてんだ。",
+                        "en": "You know this textbook is made of recycled paper."
+                    }
+                },
+                {
+                    "jp": "カメラ",
+                    "reading": "カメラ",
+                    "en": "camera",
+                    "meanings": [
+                        "camera"
+                    ],
+                    "example": {
+                        "jp": "彼は息子にカメラを買ってやった。",
+                        "en": "He bought his son a camera."
+                    }
+                },
+                {
+                    "jp": "体",
+                    "reading": "からだ",
+                    "en": "body",
+                    "meanings": [
+                        "body",
+                        "health"
+                    ],
+                    "example": {
+                        "jp": "その細っこい体のどこに入るんだ？",
+                        "en": "In that slender body, where does it all go?"
+                    }
+                }
             ],
             [
-                { jp: "借りる", reading: "かりる", en: "to borrow" },
-                { jp: "軽い", reading: "かるい", en: "light" },
-                { jp: "川", reading: "かわ", en: "river" },
-                { jp: "可愛い", reading: "かわいい", en: "cute" },
-                { jp: "漢字", reading: "かんじ", en: "kanji" },
-                { jp: "木", reading: "き", en: "tree" },
-                { jp: "黄色", reading: "きいろ", en: "yellow" },
-                { jp: "聞く", reading: "きく", en: "to hear" },
-                { jp: "北", reading: "きた", en: "north" },
-                { jp: "ギター", reading: "ギター", en: "guitar" },
-                { jp: "汚い", reading: "きたない", en: "dirty" },
-                { jp: "喫茶店", reading: "きっさてん", en: "cafe" },
-                { jp: "切符", reading: "きっぷ", en: "ticket" },
-                { jp: "昨日", reading: "きのう", en: "yesterday" },
-                { jp: "九", reading: "く", en: "nine" },
-                { jp: "牛肉", reading: "ぎゅうにく", en: "beef" },
-                { jp: "牛乳", reading: "ぎゅうにゅう", en: "milk" },
-                { jp: "今日", reading: "きょう", en: "today" },
-                { jp: "教室", reading: "きょうしつ", en: "classroom" },
-                { jp: "兄弟", reading: "きょうだい", en: "siblings" },
+                {
+                    "jp": "借りる",
+                    "reading": "かりる",
+                    "en": "to borrow",
+                    "meanings": [
+                        "to borrow",
+                        "to owe"
+                    ],
+                    "example": {
+                        "jp": "明日、フォードを借りられますか。",
+                        "en": "Can I borrow your Ford for tomorrow?"
+                    }
+                },
+                {
+                    "jp": "軽い",
+                    "reading": "かるい",
+                    "en": "light",
+                    "meanings": [
+                        "light",
+                        "non-serious",
+                        "minor"
+                    ],
+                    "example": {
+                        "jp": "私は気が短いし、口も軽い男だ。",
+                        "en": "I'm short-tempered, and a loose-tongued man."
+                    }
+                },
+                {
+                    "jp": "川",
+                    "reading": "かわ",
+                    "en": "river",
+                    "meanings": [
+                        "river"
+                    ],
+                    "example": {
+                        "jp": "僕は川を泳いで渡ることが出来る。",
+                        "en": "I can swim across the river."
+                    }
+                },
+                {
+                    "jp": "可愛い",
+                    "reading": "かわいい",
+                    "en": "cute",
+                    "meanings": [
+                        "cute",
+                        "adorable"
+                    ],
+                    "example": {
+                        "jp": "女の子は可愛い人形を持っている。",
+                        "en": "That girl has a lovely doll."
+                    }
+                },
+                {
+                    "jp": "漢字",
+                    "reading": "かんじ",
+                    "en": "kanji",
+                    "meanings": [
+                        "kanji",
+                        "Chinese character"
+                    ],
+                    "example": {
+                        "jp": "この漢字はどういう意味ですか。",
+                        "en": "What does this kanji mean?"
+                    }
+                },
+                {
+                    "jp": "木",
+                    "reading": "き",
+                    "en": "tree",
+                    "meanings": [
+                        "tree",
+                        "wood",
+                        "timber"
+                    ],
+                    "example": {
+                        "jp": "木片は１本の留め木で留めてある。",
+                        "en": "The wooden pieces are fastened with a peg."
+                    }
+                },
+                {
+                    "jp": "黄色",
+                    "reading": "きいろ",
+                    "en": "yellow",
+                    "meanings": [
+                        "yellow"
+                    ],
+                    "example": {
+                        "jp": "彼等は自宅を明るい黄色に塗った。",
+                        "en": "They painted their house bright yellow."
+                    }
+                },
+                {
+                    "jp": "聞く",
+                    "reading": "きく",
+                    "en": "to hear",
+                    "meanings": [
+                        "to hear",
+                        "to listen",
+                        "to ask"
+                    ],
+                    "example": {
+                        "jp": "私の言う事を聞くべきだったのに。",
+                        "en": "You should have listened to me."
+                    }
+                },
+                {
+                    "jp": "北",
+                    "reading": "きた",
+                    "en": "north",
+                    "meanings": [
+                        "north"
+                    ],
+                    "example": {
+                        "jp": "北海道は日本の北に位置しています。",
+                        "en": "Hokkaido lies in the north of Japan."
+                    }
+                },
+                {
+                    "jp": "ギター",
+                    "reading": "ギター",
+                    "en": "guitar",
+                    "meanings": [
+                        "guitar"
+                    ],
+                    "example": {
+                        "jp": "彼らはギターを弾くことができる。",
+                        "en": "They can play the guitar."
+                    }
+                },
+                {
+                    "jp": "汚い",
+                    "reading": "きたない",
+                    "en": "dirty",
+                    "meanings": [
+                        "dirty",
+                        "unclean",
+                        "filthy"
+                    ],
+                    "example": {
+                        "jp": "地下室は汚くて、暗くて、臭いの。",
+                        "en": "The cellar is ugly, dark, and stinky."
+                    }
+                },
+                {
+                    "jp": "喫茶店",
+                    "reading": "きっさてん",
+                    "en": "cafe",
+                    "meanings": [
+                        "café"
+                    ],
+                    "example": {
+                        "jp": "昔は学校の近くに喫茶店があった。",
+                        "en": "There used to be a coffee shop near the school."
+                    }
+                },
+                {
+                    "jp": "切符",
+                    "reading": "きっぷ",
+                    "en": "ticket",
+                    "meanings": [
+                        "a ticket"
+                    ],
+                    "example": {
+                        "jp": "大阪までの往復切符を二枚下さい。",
+                        "en": "Two roundtrip tickets to Osaka, please."
+                    }
+                },
+                {
+                    "jp": "昨日",
+                    "reading": "きのう",
+                    "en": "yesterday",
+                    "meanings": [
+                        "yesterday"
+                    ],
+                    "example": {
+                        "jp": "僕は昨日空港で偶然彼に会った。",
+                        "en": "I met him by accident at the airport yesterday."
+                    }
+                },
+                {
+                    "jp": "九",
+                    "reading": "く",
+                    "en": "nine",
+                    "meanings": [
+                        "nine"
+                    ],
+                    "example": {
+                        "jp": "時を得た一針は九針の手間を省く。",
+                        "en": "A stitch in time saves nine."
+                    }
+                },
+                {
+                    "jp": "牛肉",
+                    "reading": "ぎゅうにく",
+                    "en": "beef",
+                    "meanings": [
+                        "beef"
+                    ],
+                    "example": {
+                        "jp": "私は牛肉より羊肉の方が好きだ。",
+                        "en": "I prefer mutton to beef."
+                    }
+                },
+                {
+                    "jp": "牛乳",
+                    "reading": "ぎゅうにゅう",
+                    "en": "milk",
+                    "meanings": [
+                        "milk"
+                    ],
+                    "example": {
+                        "jp": "彼女は毎朝牛乳を一ビン飲みます。",
+                        "en": "She has a bottle of milk every morning."
+                    }
+                },
+                {
+                    "jp": "今日",
+                    "reading": "きょう",
+                    "en": "today",
+                    "meanings": [
+                        "today",
+                        "this day"
+                    ],
+                    "example": {
+                        "jp": "今日は不燃物のゴミの日です。",
+                        "en": "Today is a non-burnable rubbish day."
+                    }
+                },
+                {
+                    "jp": "教室",
+                    "reading": "きょうしつ",
+                    "en": "classroom",
+                    "meanings": [
+                        "classroom"
+                    ],
+                    "example": {
+                        "jp": "彼女は教室の前の方に立っていた。",
+                        "en": "She was standing in the front of the classroom."
+                    }
+                },
+                {
+                    "jp": "兄弟",
+                    "reading": "きょうだい",
+                    "en": "siblings",
+                    "meanings": [
+                        "siblings (humble)",
+                        "brothers and sisters"
+                    ],
+                    "example": {
+                        "jp": "彼は私の兄弟より３才年下です。",
+                        "en": "He is junior to my brother by three years."
+                    }
+                }
             ],
             [
-                { jp: "去年", reading: "きょねん", en: "last year" },
-                { jp: "嫌い", reading: "きらい", en: "dislike" },
-                { jp: "切る", reading: "きる", en: "to cut" },
-                { jp: "綺麗", reading: "きれい", en: "pretty" },
-                { jp: "銀行", reading: "ぎんこう", en: "bank" },
-                { jp: "薬", reading: "くすり", en: "medicine" },
-                { jp: "果物", reading: "くだもの", en: "fruit" },
-                { jp: "靴", reading: "くつ", en: "shoes" },
-                { jp: "靴下", reading: "くつした", en: "socks" },
-                { jp: "国", reading: "くに", en: "country" },
-                { jp: "曇り", reading: "くもり", en: "cloudy" },
-                { jp: "暗い", reading: "くらい", en: "dark" },
-                { jp: "クラス", reading: "クラス", en: "class" },
-                { jp: "来る", reading: "くる", en: "to come" },
-                { jp: "車", reading: "くるま", en: "car" },
-                { jp: "黒", reading: "くろ", en: "black" },
-                { jp: "警官", reading: "けいかん", en: "police officer" },
-                { jp: "今朝", reading: "けさ", en: "this morning" },
-                { jp: "五", reading: "ご", en: "five" },
-                { jp: "元気", reading: "げんき", en: "healthy" },
+                {
+                    "jp": "去年",
+                    "reading": "きょねん",
+                    "en": "last year",
+                    "meanings": [
+                        "last year"
+                    ],
+                    "example": {
+                        "jp": "彼らの結婚生活は去年破たんした。",
+                        "en": "Their marriage broke up last year."
+                    }
+                },
+                {
+                    "jp": "嫌い",
+                    "reading": "きらい",
+                    "en": "dislike",
+                    "meanings": [
+                        "dislike"
+                    ],
+                    "example": {
+                        "jp": "ジムくんは行き過ぎの嫌いがある。",
+                        "en": "Jim tends to go too far."
+                    }
+                },
+                {
+                    "jp": "切る",
+                    "reading": "きる",
+                    "en": "to cut",
+                    "meanings": [
+                        "to cut",
+                        "to hang up (a phone)"
+                    ],
+                    "example": {
+                        "jp": "プチッ、と糸を犬歯で噛み切った。",
+                        "en": "I snapped the thread on my canine."
+                    }
+                },
+                {
+                    "jp": "綺麗",
+                    "reading": "きれい",
+                    "en": "pretty",
+                    "meanings": [
+                        "pretty",
+                        "clean",
+                        "tidy"
+                    ],
+                    "example": {
+                        "jp": "これらはなんて綺麗な花でしょう。",
+                        "en": "What lovely flowers these are!"
+                    }
+                },
+                {
+                    "jp": "銀行",
+                    "reading": "ぎんこう",
+                    "en": "bank",
+                    "meanings": [
+                        "bank"
+                    ],
+                    "example": {
+                        "jp": "彼女は銀行からお金を引き出した。",
+                        "en": "She drew out the money from the bank."
+                    }
+                },
+                {
+                    "jp": "薬",
+                    "reading": "くすり",
+                    "en": "medicine",
+                    "meanings": [
+                        "medicine"
+                    ],
+                    "example": {
+                        "jp": "お嬢様、薬を飲まないでください。",
+                        "en": "Princess, don't drink the potion."
+                    }
+                },
+                {
+                    "jp": "果物",
+                    "reading": "くだもの",
+                    "en": "fruit",
+                    "meanings": [
+                        "fruit"
+                    ],
+                    "example": {
+                        "jp": "日本でいちばんおいしい果物は何？",
+                        "en": "What's the most delicious fruit in Japan?"
+                    }
+                },
+                {
+                    "jp": "靴",
+                    "reading": "くつ",
+                    "en": "shoes",
+                    "meanings": [
+                        "shoes",
+                        "footwear"
+                    ],
+                    "example": {
+                        "jp": "母さんは彼の靴から泥を落とした。",
+                        "en": "Mother removed mud from his shoes."
+                    }
+                },
+                {
+                    "jp": "靴下",
+                    "reading": "くつした",
+                    "en": "socks",
+                    "meanings": [
+                        "socks"
+                    ],
+                    "example": {
+                        "jp": "靴下は適当な大きさのものがよい。",
+                        "en": "Stockings should be of the proper size."
+                    }
+                },
+                {
+                    "jp": "国",
+                    "reading": "くに",
+                    "en": "country",
+                    "meanings": [
+                        "country",
+                        "place of origin"
+                    ],
+                    "example": {
+                        "jp": "イタリアはとても美しい国です。",
+                        "en": "Italy is a very beautiful country."
+                    }
+                },
+                {
+                    "jp": "曇り",
+                    "reading": "くもり",
+                    "en": "cloudy",
+                    "meanings": [
+                        "cloudiness",
+                        "cloudy weather"
+                    ],
+                    "example": {
+                        "jp": "天気は晴れのち曇りでしょう。",
+                        "en": "The weather will be clear, followed by clouds later on."
+                    }
+                },
+                {
+                    "jp": "暗い",
+                    "reading": "くらい",
+                    "en": "dark",
+                    "meanings": [
+                        "dark",
+                        "gloomy"
+                    ],
+                    "example": {
+                        "jp": "彼女は暗くなってから家に帰った。",
+                        "en": "She came home after dark."
+                    }
+                },
+                {
+                    "jp": "クラス",
+                    "reading": "クラス",
+                    "en": "class",
+                    "meanings": [
+                        "a class"
+                    ],
+                    "example": {
+                        "jp": "３０年ぶりにクラス会があった。",
+                        "en": "There was a class reunion after 30 years."
+                    }
+                },
+                {
+                    "jp": "来る",
+                    "reading": "くる",
+                    "en": "to come",
+                    "meanings": [
+                        "to come"
+                    ],
+                    "example": {
+                        "jp": "あなたが戻って来てくれて嬉しいです。",
+                        "en": "I'm glad to see you back."
+                    }
+                },
+                {
+                    "jp": "車",
+                    "reading": "くるま",
+                    "en": "car",
+                    "meanings": [
+                        "car",
+                        "vehicle"
+                    ],
+                    "example": {
+                        "jp": "「車」は「自動車」の同意語です。",
+                        "en": "\"Car\" is a synonym of \"automobile\"."
+                    }
+                },
+                {
+                    "jp": "黒",
+                    "reading": "くろ",
+                    "en": "black",
+                    "meanings": [
+                        "black"
+                    ],
+                    "example": {
+                        "jp": "彼女は黒ずくめの服装をしていた。",
+                        "en": "She was dressed all in black."
+                    }
+                },
+                {
+                    "jp": "警官",
+                    "reading": "けいかん",
+                    "en": "police officer",
+                    "meanings": [
+                        "police officer"
+                    ],
+                    "example": {
+                        "jp": "彼らはその警官の命令を無視した。",
+                        "en": "They defied the policeman's order."
+                    }
+                },
+                {
+                    "jp": "今朝",
+                    "reading": "けさ",
+                    "en": "this morning",
+                    "meanings": [
+                        "this morning"
+                    ],
+                    "example": {
+                        "jp": "彼は今朝安らかに息を引き取った。",
+                        "en": "He breathed his last peacefully this morning."
+                    }
+                },
+                {
+                    "jp": "五",
+                    "reading": "ご",
+                    "en": "five",
+                    "meanings": [
+                        "five"
+                    ],
+                    "example": {
+                        "jp": "列車は五時ちょうどに発車した。",
+                        "en": "The train left at five o'clock to the minute."
+                    }
+                },
+                {
+                    "jp": "元気",
+                    "reading": "げんき",
+                    "en": "healthy",
+                    "meanings": [
+                        "health(y)",
+                        "energetic"
+                    ],
+                    "example": {
+                        "jp": "老人だが、彼はまだたいそう元気だ。",
+                        "en": "Although old, he is still very much alive."
+                    }
+                }
             ],
             [
-                { jp: "公園", reading: "こうえん", en: "park" },
-                { jp: "交差点", reading: "こうさてん", en: "intersection" },
-                { jp: "紅茶", reading: "こうちゃ", en: "black tea" },
-                { jp: "交番", reading: "こうばん", en: "police box" },
-                { jp: "声", reading: "こえ", en: "voice" },
-                { jp: "コーヒー", reading: "コーヒー", en: "coffee" },
-                { jp: "午後", reading: "ごご", en: "afternoon" },
-                { jp: "答える", reading: "こたえる", en: "to answer" },
-                { jp: "今年", reading: "ことし", en: "this year" },
-                { jp: "言葉", reading: "ことば", en: "language" },
-                { jp: "子供", reading: "こども", en: "child" },
-                { jp: "御飯", reading: "ごはん", en: "rice (cooked)" },
-                { jp: "困る", reading: "こまる", en: "to be bothered" },
-                { jp: "今月", reading: "こんげつ", en: "this month" },
-                { jp: "今週", reading: "こんしゅう", en: "this week" },
-                { jp: "今晩", reading: "こんばん", en: "tonight" },
-                { jp: "財布", reading: "さいふ", en: "wallet" },
-                { jp: "魚", reading: "さかな", en: "fish" },
-                { jp: "先", reading: "さき", en: "future" },
-                { jp: "咲く", reading: "さく", en: "to bloom" },
-            ],
-        ],
+                {
+                    "jp": "公園",
+                    "reading": "こうえん",
+                    "en": "park",
+                    "meanings": [
+                        "a park"
+                    ],
+                    "example": {
+                        "jp": "由美はテニスをしに公園へ行きます。",
+                        "en": "Yumi goes to the park to play tennis."
+                    }
+                },
+                {
+                    "jp": "交差点",
+                    "reading": "こうさてん",
+                    "en": "intersection",
+                    "meanings": [
+                        "intersection"
+                    ],
+                    "example": {
+                        "jp": "その事故はあの交差点で起こった。",
+                        "en": "The accident happened at that crossing."
+                    }
+                },
+                {
+                    "jp": "紅茶",
+                    "reading": "こうちゃ",
+                    "en": "black tea",
+                    "meanings": [
+                        "black tea"
+                    ],
+                    "example": {
+                        "jp": "私はコーヒーより紅茶の方を好む。",
+                        "en": "I prefer tea to coffee."
+                    }
+                },
+                {
+                    "jp": "交番",
+                    "reading": "こうばん",
+                    "en": "police box",
+                    "meanings": [
+                        "police box"
+                    ],
+                    "example": {
+                        "jp": "交番はどこにあるかわかりますか。",
+                        "en": "Do you know where the police station is?"
+                    }
+                },
+                {
+                    "jp": "声",
+                    "reading": "こえ",
+                    "en": "voice",
+                    "meanings": [
+                        "voice"
+                    ],
+                    "example": {
+                        "jp": "隣の部屋に彼女の声を聞いて驚いた。",
+                        "en": "I was surprised to hear her voice in the next room."
+                    }
+                },
+                {
+                    "jp": "コーヒー",
+                    "reading": "コーヒー",
+                    "en": "coffee",
+                    "meanings": [
+                        "coffee"
+                    ],
+                    "example": {
+                        "jp": "彼女は根っからのコーヒー党です。",
+                        "en": "She's die-hard coffee drinker."
+                    }
+                },
+                {
+                    "jp": "午後",
+                    "reading": "ごご",
+                    "en": "afternoon",
+                    "meanings": [
+                        "afternoon",
+                        "P.M."
+                    ],
+                    "example": {
+                        "jp": "明日の午後、テニスをしませんか。",
+                        "en": "Won't you play tennis tomorrow afternoon?"
+                    }
+                },
+                {
+                    "jp": "答える",
+                    "reading": "こたえる",
+                    "en": "to answer",
+                    "meanings": [
+                        "to answer",
+                        "to reply"
+                    ],
+                    "example": {
+                        "jp": "彼女は涙を流しながら答えました。",
+                        "en": "She answered with tears."
+                    }
+                },
+                {
+                    "jp": "今年",
+                    "reading": "ことし",
+                    "en": "this year",
+                    "meanings": [
+                        "this year"
+                    ],
+                    "example": {
+                        "jp": "両親は私の今年の成績に満足した。",
+                        "en": "My parents were satisfied with my grades this year."
+                    }
+                },
+                {
+                    "jp": "言葉",
+                    "reading": "ことば",
+                    "en": "language",
+                    "meanings": [
+                        "language",
+                        "word(s)",
+                        "expression(s)"
+                    ],
+                    "example": {
+                        "jp": "ヘレンの言葉で私は急に力づいた。",
+                        "en": "Helen's words suddenly filled me with new energy."
+                    }
+                },
+                {
+                    "jp": "子供",
+                    "reading": "こども",
+                    "en": "child",
+                    "meanings": [
+                        "child(ren)"
+                    ],
+                    "example": {
+                        "jp": "年明けに子供が産まれる予定です♪",
+                        "en": "I'm expecting a baby in the new year!"
+                    }
+                },
+                {
+                    "jp": "御飯",
+                    "reading": "ごはん",
+                    "en": "rice (cooked)",
+                    "meanings": [
+                        "rice (cooked)",
+                        "meal"
+                    ],
+                    "example": {
+                        "jp": "晩御飯までまだ時間がありますね。",
+                        "en": "There's still hours till dinner."
+                    }
+                },
+                {
+                    "jp": "困る",
+                    "reading": "こまる",
+                    "en": "to be bothered",
+                    "meanings": [
+                        "to be bothered",
+                        "to have difficulty"
+                    ],
+                    "example": {
+                        "jp": "労使紛争はいまだに困った問題だ。",
+                        "en": "Industrial disputes are still a problem."
+                    }
+                },
+                {
+                    "jp": "今月",
+                    "reading": "こんげつ",
+                    "en": "this month",
+                    "meanings": [
+                        "this month"
+                    ],
+                    "example": {
+                        "jp": "今月末で会社をやめることにした。",
+                        "en": "I've decided to quit my job at the end of this month."
+                    }
+                },
+                {
+                    "jp": "今週",
+                    "reading": "こんしゅう",
+                    "en": "this week",
+                    "meanings": [
+                        "this week"
+                    ],
+                    "example": {
+                        "jp": "彼は今週ずっと忙しくしています。",
+                        "en": "He has been busy this week."
+                    }
+                },
+                {
+                    "jp": "今晩",
+                    "reading": "こんばん",
+                    "en": "tonight",
+                    "meanings": [
+                        "tonight",
+                        "this evening"
+                    ],
+                    "example": {
+                        "jp": "彼は今晩ずっとここにいるだろう。",
+                        "en": "He will be here all evening."
+                    }
+                },
+                {
+                    "jp": "財布",
+                    "reading": "さいふ",
+                    "en": "wallet",
+                    "meanings": [
+                        "wallet"
+                    ],
+                    "example": {
+                        "jp": "旅の間の共通のお財布をつくろう。",
+                        "en": "Let's pool our money and travel as a group."
+                    }
+                },
+                {
+                    "jp": "魚",
+                    "reading": "さかな",
+                    "en": "fish",
+                    "meanings": [
+                        "fish"
+                    ],
+                    "example": {
+                        "jp": "彼女はその魚の料理方法を尋ねた。",
+                        "en": "She asked how to cook the fish."
+                    }
+                },
+                {
+                    "jp": "先",
+                    "reading": "さき",
+                    "en": "future",
+                    "meanings": [
+                        "future",
+                        "recent",
+                        "previous"
+                    ],
+                    "example": {
+                        "jp": "日本は先願主義を採用している。",
+                        "en": "Japan follows the principle of first-to-file."
+                    }
+                },
+                {
+                    "jp": "咲く",
+                    "reading": "さく",
+                    "en": "to bloom",
+                    "meanings": [
+                        "to bloom"
+                    ],
+                    "example": {
+                        "jp": "春にはたくさんの美しい花が咲く。",
+                        "en": "Many beautiful flowers bloom in spring."
+                    }
+                }
+            ]
+        ]
     },
     {
-        level: 2,
-        jlpt: 'N4',
-        title: 'N4 · Elementary',
-        sets: [
+        "level": 2,
+        "jlpt": "N4",
+        "title": "N4 · Elementary",
+        "sets": [
             [
-                { jp: "盗む", reading: "ぬすむ", en: "to steal" },
-                { jp: "生きる", reading: "いきる", en: "to live" },
-                { jp: "苦い", reading: "にがい", en: "bitter" },
-                { jp: "意見", reading: "いけん", en: "opinion" },
-                { jp: "漫画", reading: "まんが", en: "comic book" },
-                { jp: "必ず", reading: "かならず", en: "surely" },
-                { jp: "壊す", reading: "こわす", en: "to break" },
-                { jp: "怒る", reading: "おこる", en: "to get angry" },
-                { jp: "心配", reading: "しんぱい", en: "worry" },
-                { jp: "機会", reading: "きかい", en: "chance" },
-                { jp: "複雑", reading: "ふくざつ", en: "complexity" },
-                { jp: "大事", reading: "だいじ", en: "important" },
-                { jp: "台風", reading: "たいふう", en: "typhoon" },
-                { jp: "過ぎる", reading: "すぎる", en: "to exceed" },
-                { jp: "必要", reading: "ひつよう", en: "necessary" },
-                { jp: "地震", reading: "じしん", en: "earthquake" },
-                { jp: "厳しい", reading: "きびしい", en: "strict" },
-                { jp: "深い", reading: "ふかい", en: "deep" },
-                { jp: "悲しい", reading: "かなしい", en: "sad" },
-                { jp: "小説", reading: "しょうせつ", en: "novel" },
+                {
+                    "jp": "盗む",
+                    "reading": "ぬすむ",
+                    "en": "to steal",
+                    "meanings": [
+                        "to steal",
+                        "to rob"
+                    ],
+                    "example": {
+                        "jp": "彼女は何も盗まなかったと言った。",
+                        "en": "She denied that she had stolen anything."
+                    }
+                },
+                {
+                    "jp": "生きる",
+                    "reading": "いきる",
+                    "en": "to live",
+                    "meanings": [
+                        "to live"
+                    ],
+                    "example": {
+                        "jp": "僕は彼女無しに生きる術を学んだ。",
+                        "en": "I learned to live without her."
+                    }
+                },
+                {
+                    "jp": "苦い",
+                    "reading": "にがい",
+                    "en": "bitter",
+                    "meanings": [
+                        "bitter"
+                    ],
+                    "example": {
+                        "jp": "カカオはとても苦いことがある。",
+                        "en": "Cocoa can be very bitter."
+                    }
+                },
+                {
+                    "jp": "意見",
+                    "reading": "いけん",
+                    "en": "opinion",
+                    "meanings": [
+                        "opinion",
+                        "view",
+                        "idea"
+                    ],
+                    "example": {
+                        "jp": "はきはきと意見を言ってください。",
+                        "en": "Please state your opinion crisply and clearly."
+                    }
+                },
+                {
+                    "jp": "漫画",
+                    "reading": "まんが",
+                    "en": "comic book",
+                    "meanings": [
+                        "comic (book)",
+                        "cartoon"
+                    ],
+                    "example": {
+                        "jp": "彼女は漫画本に夢中になっていた。",
+                        "en": "She was absorbed in reading comic books."
+                    }
+                },
+                {
+                    "jp": "必ず",
+                    "reading": "かならず",
+                    "en": "surely",
+                    "meanings": [
+                        "surely",
+                        "certainly"
+                    ],
+                    "example": {
+                        "jp": "来週の月曜日に必ずお返しします。",
+                        "en": "I'll give it back next Monday without fail."
+                    }
+                },
+                {
+                    "jp": "壊す",
+                    "reading": "こわす",
+                    "en": "to break",
+                    "meanings": [
+                        "to break",
+                        "to break down"
+                    ],
+                    "example": {
+                        "jp": "彼女はまたトースターを壊した。",
+                        "en": "She has broken the toaster again."
+                    }
+                },
+                {
+                    "jp": "怒る",
+                    "reading": "おこる",
+                    "en": "to get angry",
+                    "meanings": [
+                        "to get angry",
+                        "to scold angrily"
+                    ],
+                    "example": {
+                        "jp": "侮辱されたと感じて彼は怒った。",
+                        "en": "Feeling himself insulted, he got angry."
+                    }
+                },
+                {
+                    "jp": "心配",
+                    "reading": "しんぱい",
+                    "en": "worry",
+                    "meanings": [
+                        "worry",
+                        "concern"
+                    ],
+                    "example": {
+                        "jp": "僕は君の健康を心配しているんだ。",
+                        "en": "I am concerned for your health."
+                    }
+                },
+                {
+                    "jp": "機会",
+                    "reading": "きかい",
+                    "en": "chance",
+                    "meanings": [
+                        "chance",
+                        "opportunity"
+                    ],
+                    "example": {
+                        "jp": "躊躇すれば機会は二度とこない。",
+                        "en": "He who hesitates is lost."
+                    }
+                },
+                {
+                    "jp": "複雑",
+                    "reading": "ふくざつ",
+                    "en": "complexity",
+                    "meanings": [
+                        "complexity",
+                        "complication"
+                    ],
+                    "example": {
+                        "jp": "複雑炭水化物って何か知ってますか。",
+                        "en": "Do you know anything about complex carbohydrates?"
+                    }
+                },
+                {
+                    "jp": "大事",
+                    "reading": "だいじ",
+                    "en": "important",
+                    "meanings": [
+                        "important",
+                        "valuable",
+                        "serious matter"
+                    ],
+                    "example": {
+                        "jp": "このうち大事なのは後者の方です。",
+                        "en": "Of these it is the latter one that is important."
+                    }
+                },
+                {
+                    "jp": "台風",
+                    "reading": "たいふう",
+                    "en": "typhoon",
+                    "meanings": [
+                        "typhoon"
+                    ],
+                    "example": {
+                        "jp": "毎年、日本には台風が上陸します。",
+                        "en": "Typhoons strike Japan every year."
+                    }
+                },
+                {
+                    "jp": "過ぎる",
+                    "reading": "すぎる",
+                    "en": "to exceed",
+                    "meanings": [
+                        "to exceed",
+                        "to go beyond"
+                    ],
+                    "example": {
+                        "jp": "料理がおいしくてつい食べ過ぎた。",
+                        "en": "The food was so good that I ate too much."
+                    }
+                },
+                {
+                    "jp": "必要",
+                    "reading": "ひつよう",
+                    "en": "necessary",
+                    "meanings": [
+                        "necessary"
+                    ],
+                    "example": {
+                        "jp": "痩せる必要がないというのは残念だ。",
+                        "en": "It's too bad that I don't need to lose weight."
+                    }
+                },
+                {
+                    "jp": "地震",
+                    "reading": "じしん",
+                    "en": "earthquake",
+                    "meanings": [
+                        "earthquake"
+                    ],
+                    "example": {
+                        "jp": "彼女は地震の時落ち着いています。",
+                        "en": "She stays calm through earthquakes."
+                    }
+                },
+                {
+                    "jp": "厳しい",
+                    "reading": "きびしい",
+                    "en": "strict",
+                    "meanings": [
+                        "hard",
+                        "rigorous",
+                        "strict"
+                    ],
+                    "example": {
+                        "jp": "母親の怒りの厳しさにびっくりした。",
+                        "en": "We were shocked by the intensity of our mother's anger."
+                    }
+                },
+                {
+                    "jp": "深い",
+                    "reading": "ふかい",
+                    "en": "deep",
+                    "meanings": [
+                        "deep",
+                        "profound"
+                    ],
+                    "example": {
+                        "jp": "野原は深い雪におおわれていた。",
+                        "en": "The fields lay covered with deep snow."
+                    }
+                },
+                {
+                    "jp": "悲しい",
+                    "reading": "かなしい",
+                    "en": "sad",
+                    "meanings": [
+                        "sad",
+                        "sorrowful"
+                    ],
+                    "example": {
+                        "jp": "悲しい時は友達が励ましてくれる。",
+                        "en": "When I'm sad, my friends encourage me."
+                    }
+                },
+                {
+                    "jp": "小説",
+                    "reading": "しょうせつ",
+                    "en": "novel",
+                    "meanings": [
+                        "novel"
+                    ],
+                    "example": {
+                        "jp": "来月号から新連載小説が始まります。",
+                        "en": "A new serial will begin in next month's issue."
+                    }
+                }
             ],
             [
-                { jp: "運動", reading: "うんどう", en: "exercise" },
-                { jp: "表", reading: "おもて", en: "surface" },
-                { jp: "大学生", reading: "だいがくせい", en: "college student" },
-                { jp: "運転手", reading: "うんてんしゅ", en: "driver" },
-                { jp: "別", reading: "べつ", en: "distinction" },
-                { jp: "非常に", reading: "ひじょうに", en: "extremely" },
-                { jp: "気", reading: "き", en: "spirit" },
-                { jp: "比べる", reading: "くらべる", en: "to compare" },
-                { jp: "郊外", reading: "こうがい", en: "suburb" },
-                { jp: "正月", reading: "しょうがつ", en: "New Year" },
-                { jp: "規則", reading: "きそく", en: "rule" },
-                { jp: "発音", reading: "はつおん", en: "pronunciation" },
-                { jp: "焼く", reading: "やく", en: "to bake" },
-                { jp: "失礼", reading: "しつれい", en: "discourtesy" },
-                { jp: "今度", reading: "こんど", en: "this time" },
-                { jp: "彼", reading: "かれ", en: "he" },
-                { jp: "布団", reading: "ふとん", en: "futon" },
-                { jp: "贈り物", reading: "おくりもの", en: "gift" },
-                { jp: "泥棒", reading: "どろぼう", en: "thief" },
-                { jp: "注意", reading: "ちゅうい", en: "caution" },
+                {
+                    "jp": "運動",
+                    "reading": "うんどう",
+                    "en": "exercise",
+                    "meanings": [
+                        "exercise"
+                    ],
+                    "example": {
+                        "jp": "毎日ある程度運動する事は必要だ。",
+                        "en": "It is necessary to do some exercise every day."
+                    }
+                },
+                {
+                    "jp": "表",
+                    "reading": "おもて",
+                    "en": "surface",
+                    "meanings": [
+                        "surface",
+                        "front",
+                        "outside"
+                    ],
+                    "example": {
+                        "jp": "ものにはたいてい表と裏がある。",
+                        "en": "With most things there's both what you see and what's behind it."
+                    }
+                },
+                {
+                    "jp": "大学生",
+                    "reading": "だいがくせい",
+                    "en": "college student",
+                    "meanings": [
+                        "college student",
+                        "university student"
+                    ],
+                    "example": {
+                        "jp": "彼が大学生かどうか私は知らない。",
+                        "en": "I don't know whether he's a college student or not."
+                    }
+                },
+                {
+                    "jp": "運転手",
+                    "reading": "うんてんしゅ",
+                    "en": "driver",
+                    "meanings": [
+                        "driver (by occupation)"
+                    ],
+                    "example": {
+                        "jp": "彼らの父はタクシーの運転手です。",
+                        "en": "Their father is a taxi driver."
+                    }
+                },
+                {
+                    "jp": "別",
+                    "reading": "べつ",
+                    "en": "distinction",
+                    "meanings": [
+                        "distinction",
+                        "different"
+                    ],
+                    "example": {
+                        "jp": "別の日をご指定いただけませんか。",
+                        "en": "Could you suggest an alternative date?"
+                    }
+                },
+                {
+                    "jp": "非常に",
+                    "reading": "ひじょうに",
+                    "en": "extremely",
+                    "meanings": [
+                        "extremely",
+                        "very"
+                    ],
+                    "example": {
+                        "jp": "病院は非常にお金がかかります。",
+                        "en": "Hospitals are very expensive."
+                    }
+                },
+                {
+                    "jp": "気",
+                    "reading": "き",
+                    "en": "spirit",
+                    "meanings": [
+                        "spirit",
+                        "mood"
+                    ],
+                    "example": {
+                        "jp": "私は気が短いし、口も軽い男だ。",
+                        "en": "I'm short-tempered, and a loose-tongued man."
+                    }
+                },
+                {
+                    "jp": "比べる",
+                    "reading": "くらべる",
+                    "en": "to compare",
+                    "meanings": [
+                        "to compare"
+                    ],
+                    "example": {
+                        "jp": "彼女は一般と比べてはいい先生だ。",
+                        "en": "She is a good teacher, as teachers go."
+                    }
+                },
+                {
+                    "jp": "郊外",
+                    "reading": "こうがい",
+                    "en": "suburb",
+                    "meanings": [
+                        "suburb",
+                        "outskirts"
+                    ],
+                    "example": {
+                        "jp": "彼はロンドンの郊外に住んでいる。",
+                        "en": "He lives in the suburbs of London."
+                    }
+                },
+                {
+                    "jp": "正月",
+                    "reading": "しょうがつ",
+                    "en": "New Year",
+                    "meanings": [
+                        "New Year",
+                        "New Year's Day"
+                    ],
+                    "example": {
+                        "jp": "日本では老いも若きも正月を祝います。",
+                        "en": "Young and old in Japan celebrate New Year's Day."
+                    }
+                },
+                {
+                    "jp": "規則",
+                    "reading": "きそく",
+                    "en": "rule",
+                    "meanings": [
+                        "rule",
+                        "regulation"
+                    ],
+                    "example": {
+                        "jp": "寮の規則は守らなければならない。",
+                        "en": "You must observe the rules of the dormitory."
+                    }
+                },
+                {
+                    "jp": "発音",
+                    "reading": "はつおん",
+                    "en": "pronunciation",
+                    "meanings": [
+                        "pronunciation"
+                    ],
+                    "example": {
+                        "jp": "彼女は昨日英語の発音を練習した。",
+                        "en": "She practiced her English pronunciation yesterday."
+                    }
+                },
+                {
+                    "jp": "焼く",
+                    "reading": "やく",
+                    "en": "to bake",
+                    "meanings": [
+                        "to bake",
+                        "to grill"
+                    ],
+                    "example": {
+                        "jp": "母は週末にパンとクッキーを焼く。",
+                        "en": "My mother bakes bread and cookies on weekends."
+                    }
+                },
+                {
+                    "jp": "失礼",
+                    "reading": "しつれい",
+                    "en": "discourtesy",
+                    "meanings": [
+                        "discourtesy",
+                        "impoliteness",
+                        "Excuse me"
+                    ],
+                    "example": {
+                        "jp": "彼らの失礼な態度には腹が立つ。",
+                        "en": "I resent their rude attitude."
+                    }
+                },
+                {
+                    "jp": "今度",
+                    "reading": "こんど",
+                    "en": "this time",
+                    "meanings": [
+                        "now",
+                        "this time",
+                        "near future",
+                        "one of these days",
+                        "next time"
+                    ],
+                    "example": {
+                        "jp": "彼女は今度は自分が罠にはまった。",
+                        "en": "She fell into a trap in her turn."
+                    }
+                },
+                {
+                    "jp": "彼",
+                    "reading": "かれ",
+                    "en": "he",
+                    "meanings": [
+                        "he",
+                        "boyfriend"
+                    ],
+                    "example": {
+                        "jp": "たぶん彼にしてみれば同じことよ。",
+                        "en": "Maybe it will be exactly the same for him."
+                    }
+                },
+                {
+                    "jp": "布団",
+                    "reading": "ふとん",
+                    "en": "futon",
+                    "meanings": [
+                        "futon"
+                    ],
+                    "example": {
+                        "jp": "あっ。布団取り込むの忘れてた。",
+                        "en": "Oh, I forgot to bring in the futons."
+                    }
+                },
+                {
+                    "jp": "贈り物",
+                    "reading": "おくりもの",
+                    "en": "gift",
+                    "meanings": [
+                        "a gift",
+                        "a present"
+                    ],
+                    "example": {
+                        "jp": "彼は彼女から贈り物を受け取った。",
+                        "en": "He accepted her gift."
+                    }
+                },
+                {
+                    "jp": "泥棒",
+                    "reading": "どろぼう",
+                    "en": "thief",
+                    "meanings": [
+                        "thief",
+                        "burglar"
+                    ],
+                    "example": {
+                        "jp": "目が覚めると部屋に泥棒がいた。",
+                        "en": "I awoke to find a burglar in my room."
+                    }
+                },
+                {
+                    "jp": "注意",
+                    "reading": "ちゅうい",
+                    "en": "caution",
+                    "meanings": [
+                        "caution",
+                        "attention"
+                    ],
+                    "example": {
+                        "jp": "卵を割らないように注意しなさい。",
+                        "en": "Take care not to break the eggs."
+                    }
+                }
             ],
             [
-                { jp: "通る", reading: "とおる", en: "to pass by" },
-                { jp: "葉", reading: "は", en: "leaf" },
-                { jp: "課長", reading: "かちょう", en: "section manager" },
-                { jp: "すると", reading: "すると", en: "then" },
-                { jp: "止める", reading: "とめる", en: "to end" },
-                { jp: "ガラス", reading: "ガラス", en: "glass" },
-                { jp: "エスカレーター", reading: "エスカレーター", en: "escalator" },
-                { jp: "人口", reading: "じんこう", en: "population" },
-                { jp: "月", reading: "つき", en: "moon" },
-                { jp: "絹", reading: "きぬ", en: "silk" },
-                { jp: "壊れる", reading: "こわれる", en: "to be broken" },
-                { jp: "揺れる", reading: "ゆれる", en: "to shake" },
-                { jp: "祈る", reading: "いのる", en: "to pray" },
-                { jp: "盛ん", reading: "さかん", en: "prosperous" },
-                { jp: "アルバイト", reading: "アルバイト", en: "part-time job" },
-                { jp: "起こす", reading: "おこす", en: "to wake someone" },
-                { jp: "噛む", reading: "かむ", en: "to bite" },
-                { jp: "赤ちゃん", reading: "あかちゃん", en: "baby" },
-                { jp: "浅い", reading: "あさい", en: "shallow" },
-                { jp: "親", reading: "おや", en: "parent" },
+                {
+                    "jp": "通る",
+                    "reading": "とおる",
+                    "en": "to pass by",
+                    "meanings": [
+                        "to pass (by)",
+                        "to go through"
+                    ],
+                    "example": {
+                        "jp": "夕べ１０時頃君の家のそばを通ったよ。",
+                        "en": "I passed by your house about 10 last night."
+                    }
+                },
+                {
+                    "jp": "葉",
+                    "reading": "は",
+                    "en": "leaf",
+                    "meanings": [
+                        "leaf"
+                    ],
+                    "example": {
+                        "jp": "お誕生日おめでとう相葉ちゃん！",
+                        "en": "Happy birthday, Miss Aiba!"
+                    }
+                },
+                {
+                    "jp": "課長",
+                    "reading": "かちょう",
+                    "en": "section manager",
+                    "meanings": [
+                        "section manager"
+                    ],
+                    "example": {
+                        "jp": "彼は課長に書類を点検させられた。",
+                        "en": "He was made to check his papers by the chief."
+                    }
+                },
+                {
+                    "jp": "すると",
+                    "reading": "すると",
+                    "en": "then",
+                    "meanings": [
+                        "and",
+                        "then"
+                    ],
+                    "example": {
+                        "jp": "するとあなたは幸せでしょう。",
+                        "en": "Then you will be happy."
+                    }
+                },
+                {
+                    "jp": "止める",
+                    "reading": "とめる",
+                    "en": "to end",
+                    "meanings": [
+                        "to end",
+                        "to stop"
+                    ],
+                    "example": {
+                        "jp": "父にとって酒を止めるのは難しい。",
+                        "en": "It's hard for my father to give up drinking."
+                    }
+                },
+                {
+                    "jp": "ガラス",
+                    "reading": "ガラス",
+                    "en": "glass",
+                    "meanings": [
+                        "glass",
+                        "pane"
+                    ],
+                    "example": {
+                        "jp": "彼女はガラスの破片で指を切った。",
+                        "en": "She cut her finger on the broken glass."
+                    }
+                },
+                {
+                    "jp": "エスカレーター",
+                    "reading": "エスカレーター",
+                    "en": "escalator",
+                    "meanings": [
+                        "escalator"
+                    ],
+                    "example": {
+                        "jp": "上りのエスカレーターはどこですか？",
+                        "en": "Where's the up-escalator?"
+                    }
+                },
+                {
+                    "jp": "人口",
+                    "reading": "じんこう",
+                    "en": "population",
+                    "meanings": [
+                        "population"
+                    ],
+                    "example": {
+                        "jp": "兵庫県の人口はどれぐらいですか。",
+                        "en": "What is the population of Hyogo prefecture?"
+                    }
+                },
+                {
+                    "jp": "月",
+                    "reading": "つき",
+                    "en": "moon",
+                    "meanings": [
+                        "moon"
+                    ],
+                    "example": {
+                        "jp": "妹は、月に１度家に必ず手紙を書く。",
+                        "en": "My sister never fails to write home once a month."
+                    }
+                },
+                {
+                    "jp": "絹",
+                    "reading": "きぬ",
+                    "en": "silk",
+                    "meanings": [
+                        "silk"
+                    ],
+                    "example": {
+                        "jp": "雌豚の耳から絹の財布は作れない。",
+                        "en": "You cannot make a silk purse out of a sow's ear."
+                    }
+                },
+                {
+                    "jp": "壊れる",
+                    "reading": "こわれる",
+                    "en": "to be broken",
+                    "meanings": [
+                        "to be broken",
+                        "to break"
+                    ],
+                    "example": {
+                        "jp": "夜中に台所で物が壊れる音がした。",
+                        "en": "I heard something crashing in the kitchen in the middle of the night."
+                    }
+                },
+                {
+                    "jp": "揺れる",
+                    "reading": "ゆれる",
+                    "en": "to shake",
+                    "meanings": [
+                        "to shake",
+                        "to sway"
+                    ],
+                    "example": {
+                        "jp": "道が悪くてバスがガタガタ揺れた。",
+                        "en": "The bus jolted over the rough road."
+                    }
+                },
+                {
+                    "jp": "祈る",
+                    "reading": "いのる",
+                    "en": "to pray",
+                    "meanings": [
+                        "to pray",
+                        "to wish"
+                    ],
+                    "example": {
+                        "jp": "彼らは私達の勝利を祈ってくれた。",
+                        "en": "They congratulated us on our victory."
+                    }
+                },
+                {
+                    "jp": "盛ん",
+                    "reading": "さかん",
+                    "en": "prosperous",
+                    "meanings": [
+                        "prosperous",
+                        "active",
+                        "thriving"
+                    ],
+                    "example": {
+                        "jp": "日本はカナダとの貿易が盛んだ。",
+                        "en": "Japan does a lot of trade with Canada."
+                    }
+                },
+                {
+                    "jp": "アルバイト",
+                    "reading": "アルバイト",
+                    "en": "part-time job",
+                    "meanings": [
+                        "part-time job"
+                    ],
+                    "example": {
+                        "jp": "何かアルバイトはしていますか。",
+                        "en": "Do you have a part-time job?"
+                    }
+                },
+                {
+                    "jp": "起こす",
+                    "reading": "おこす",
+                    "en": "to wake someone",
+                    "meanings": [
+                        "to wake (someone) up"
+                    ],
+                    "example": {
+                        "jp": "明日の朝6時に起こしてください。",
+                        "en": "Please wake me up at six tomorrow morning."
+                    }
+                },
+                {
+                    "jp": "噛む",
+                    "reading": "かむ",
+                    "en": "to bite",
+                    "meanings": [
+                        "to bite",
+                        "to chew"
+                    ],
+                    "example": {
+                        "jp": "プチッ、と糸を犬歯で噛み切った。",
+                        "en": "I snapped the thread on my canine."
+                    }
+                },
+                {
+                    "jp": "赤ちゃん",
+                    "reading": "あかちゃん",
+                    "en": "baby",
+                    "meanings": [
+                        "baby",
+                        "infant"
+                    ],
+                    "example": {
+                        "jp": "彼女は赤ちゃんを優しく愛撫した。",
+                        "en": "She caressed her baby lovingly."
+                    }
+                },
+                {
+                    "jp": "浅い",
+                    "reading": "あさい",
+                    "en": "shallow",
+                    "meanings": [
+                        "shallow",
+                        "superficial"
+                    ],
+                    "example": {
+                        "jp": "彼はその仕事にはまだ経験が浅い。",
+                        "en": "He is still green at the job."
+                    }
+                },
+                {
+                    "jp": "親",
+                    "reading": "おや",
+                    "en": "parent",
+                    "meanings": [
+                        "a parent"
+                    ],
+                    "example": {
+                        "jp": "私も親の面倒とか見られないですね。",
+                        "en": "I can't look after my parents and such either."
+                    }
+                }
             ],
             [
-                { jp: "それに", reading: "それに", en: "moreover" },
-                { jp: "西洋", reading: "せいよう", en: "the West" },
-                { jp: "思う", reading: "おもう", en: "to think" },
-                { jp: "時代", reading: "じだい", en: "era" },
-                { jp: "申し上げる", reading: "もうしあげる", en: "to say (humble)" },
-                { jp: "出席", reading: "しゅっせき", en: "attendance" },
-                { jp: "迎える", reading: "むかえる", en: "to welcome" },
-                { jp: "触る", reading: "さわる", en: "to touch" },
-                { jp: "社長", reading: "しゃちょう", en: "company president" },
-                { jp: "動物園", reading: "どうぶつえん", en: "zoo" },
-                { jp: "捕まえる", reading: "つかまえる", en: "to catch" },
-                { jp: "寄る", reading: "よる", en: "to stop by" },
-                { jp: "決まる", reading: "きまる", en: "to be decided" },
-                { jp: "開く", reading: "ひらく", en: "to open" },
-                { jp: "逃げる", reading: "にげる", en: "to escape" },
-                { jp: "だから", reading: "だから", en: "so" },
-                { jp: "残念", reading: "ざんねん", en: "regret" },
-                { jp: "丁寧", reading: "ていねい", en: "polite" },
-                { jp: "地理", reading: "ちり", en: "geography" },
-                { jp: "さっき", reading: "さっき", en: "a little while ago" },
+                {
+                    "jp": "それに",
+                    "reading": "それに",
+                    "en": "moreover",
+                    "meanings": [
+                        "moreover",
+                        "besides"
+                    ],
+                    "example": {
+                        "jp": "彼は私にパン、それに牛乳もくれた。",
+                        "en": "He gave me some bread, also some milk."
+                    }
+                },
+                {
+                    "jp": "西洋",
+                    "reading": "せいよう",
+                    "en": "the West",
+                    "meanings": [
+                        "the West",
+                        "Western countries"
+                    ],
+                    "example": {
+                        "jp": "西洋の世界では個性が強調される。",
+                        "en": "Individuality is stressed in the Western world."
+                    }
+                },
+                {
+                    "jp": "思う",
+                    "reading": "おもう",
+                    "en": "to think",
+                    "meanings": [
+                        "to think",
+                        "to feel"
+                    ],
+                    "example": {
+                        "jp": "わたしがいなくて淋しいと思った？",
+                        "en": "Did you miss me?"
+                    }
+                },
+                {
+                    "jp": "時代",
+                    "reading": "じだい",
+                    "en": "era",
+                    "meanings": [
+                        "age",
+                        "period",
+                        "epoch",
+                        "era"
+                    ],
+                    "example": {
+                        "jp": "漱石は鴎外と同時代の人であった。",
+                        "en": "Soseki was a contemporary of Ohgai."
+                    }
+                },
+                {
+                    "jp": "申し上げる",
+                    "reading": "もうしあげる",
+                    "en": "to say (humble)",
+                    "meanings": [
+                        "(humble)to say",
+                        "to tell"
+                    ],
+                    "example": {
+                        "jp": "日頃のご愛顧にお礼申し上げます。",
+                        "en": "We really thank you for your patronage."
+                    }
+                },
+                {
+                    "jp": "出席",
+                    "reading": "しゅっせき",
+                    "en": "attendance",
+                    "meanings": [
+                        "attendance"
+                    ],
+                    "example": {
+                        "jp": "彼女は朝の礼拝に出席できなかった。",
+                        "en": "She missed the morning service."
+                    }
+                },
+                {
+                    "jp": "迎える",
+                    "reading": "むかえる",
+                    "en": "to welcome",
+                    "meanings": [
+                        "to welcome",
+                        "to meet",
+                        "to greet"
+                    ],
+                    "example": {
+                        "jp": "妹に車で駅まで迎えに行かせます。",
+                        "en": "I will have my sister pick you up at the station."
+                    }
+                },
+                {
+                    "jp": "触る",
+                    "reading": "さわる",
+                    "en": "to touch",
+                    "meanings": [
+                        "to touch",
+                        "to feel"
+                    ],
+                    "example": {
+                        "jp": "触らずそのままにしておきなさい。",
+                        "en": "Don't touch it. Leave it as it is."
+                    }
+                },
+                {
+                    "jp": "社長",
+                    "reading": "しゃちょう",
+                    "en": "company president",
+                    "meanings": [
+                        "president of a company"
+                    ],
+                    "example": {
+                        "jp": "彼らは社長に退陣するよう求めた。",
+                        "en": "They demanded that the president resign."
+                    }
+                },
+                {
+                    "jp": "動物園",
+                    "reading": "どうぶつえん",
+                    "en": "zoo",
+                    "meanings": [
+                        "zoo"
+                    ],
+                    "example": {
+                        "jp": "彼らは昨日バスで動物園へ行った。",
+                        "en": "They went to the zoo by bus yesterday."
+                    }
+                },
+                {
+                    "jp": "捕まえる",
+                    "reading": "つかまえる",
+                    "en": "to catch",
+                    "meanings": [
+                        "to catch",
+                        "to arrest"
+                    ],
+                    "example": {
+                        "jp": "彼らはわなでキツネを捕まえた。",
+                        "en": "They captured foxes with snares."
+                    }
+                },
+                {
+                    "jp": "寄る",
+                    "reading": "よる",
+                    "en": "to stop by",
+                    "meanings": [
+                        "to stop by"
+                    ],
+                    "example": {
+                        "jp": "彼は家に帰る途中パン屋に寄った。",
+                        "en": "He called at the baker's on the way home."
+                    }
+                },
+                {
+                    "jp": "決まる",
+                    "reading": "きまる",
+                    "en": "to be decided",
+                    "meanings": [
+                        "to be set",
+                        "fixed (v.i.)"
+                    ],
+                    "example": {
+                        "jp": "明日は予定が決まっていますか。",
+                        "en": "Are you booked for tomorrow?"
+                    }
+                },
+                {
+                    "jp": "開く",
+                    "reading": "ひらく",
+                    "en": "to open",
+                    "meanings": [
+                        "to open",
+                        "to become open"
+                    ],
+                    "example": {
+                        "jp": "薬局は何時まで開いていますか。",
+                        "en": "Until what time does your pharmacy stay open?"
+                    }
+                },
+                {
+                    "jp": "逃げる",
+                    "reading": "にげる",
+                    "en": "to escape",
+                    "meanings": [
+                        "to escape",
+                        "to run away"
+                    ],
+                    "example": {
+                        "jp": "のいて・・・奴らは逃げちゃうよ。",
+                        "en": "Get out the way ... they'll escape!"
+                    }
+                },
+                {
+                    "jp": "だから",
+                    "reading": "だから",
+                    "en": "so",
+                    "meanings": [
+                        "so",
+                        "therefore"
+                    ],
+                    "example": {
+                        "jp": "彼一人だけ余る、だから審判させよう。",
+                        "en": "He's an odd man; so we'll have him referee."
+                    }
+                },
+                {
+                    "jp": "残念",
+                    "reading": "ざんねん",
+                    "en": "regret",
+                    "meanings": [
+                        "regret",
+                        "regrettable"
+                    ],
+                    "example": {
+                        "jp": "離婚されたと聞き残念に思います。",
+                        "en": "I'm sorry to hear that you got a divorce."
+                    }
+                },
+                {
+                    "jp": "丁寧",
+                    "reading": "ていねい",
+                    "en": "polite",
+                    "meanings": [
+                        "polite",
+                        "courteous",
+                        "careful"
+                    ],
+                    "example": {
+                        "jp": "彼に丁寧な返事を書くつもりです。",
+                        "en": "I will write him a civil answer."
+                    }
+                },
+                {
+                    "jp": "地理",
+                    "reading": "ちり",
+                    "en": "geography",
+                    "meanings": [
+                        "geography"
+                    ],
+                    "example": {
+                        "jp": "彼は東京の地理に精通している。",
+                        "en": "He is at home with the geography of Tokyo."
+                    }
+                },
+                {
+                    "jp": "さっき",
+                    "reading": "さっき",
+                    "en": "a little while ago",
+                    "meanings": [
+                        "a little while ago"
+                    ],
+                    "example": {
+                        "jp": "さっきまでの快晴がうそのようだ。",
+                        "en": "It's hard to believe it was so clear and sunny up to just now."
+                    }
+                }
             ],
             [
-                { jp: "怖い", reading: "こわい", en: "scary" },
-                { jp: "包む", reading: "つつむ", en: "to wrap" },
-                { jp: "なるべく", reading: "なるべく", en: "if possible" },
-                { jp: "無理", reading: "むり", en: "unreasonable" },
-                { jp: "サンドイッチ", reading: "サンドイッチ", en: "sandwich" },
-                { jp: "会議室", reading: "かいぎしつ", en: "conference room" },
-                { jp: "品物", reading: "しなもの", en: "goods" },
-                { jp: "人形", reading: "にんぎょう", en: "doll" },
-                { jp: "利用", reading: "りよう", en: "use" },
-                { jp: "飾る", reading: "かざる", en: "to decorate" },
-                { jp: "恥ずかしい", reading: "はずかしい", en: "ashamed" },
-                { jp: "頑張る", reading: "がんばる", en: "to try one's best" },
-                { jp: "投げる", reading: "なげる", en: "to pitch" },
-                { jp: "力", reading: "ちから", en: "strength" },
-                { jp: "気分", reading: "きぶん", en: "feeling" },
-                { jp: "間違える", reading: "まちがえる", en: "to make a mistake" },
-                { jp: "星", reading: "ほし", en: "star" },
-                { jp: "場合", reading: "ばあい", en: "case" },
-                { jp: "やっと", reading: "やっと", en: "at last" },
-                { jp: "足りる", reading: "たりる", en: "to be sufficient" },
-            ],
-        ],
+                {
+                    "jp": "怖い",
+                    "reading": "こわい",
+                    "en": "scary",
+                    "meanings": [
+                        "scary",
+                        "frightening"
+                    ],
+                    "example": {
+                        "jp": "彼女は怖い顔をして彼を黙らせた。",
+                        "en": "She frowned him into silence."
+                    }
+                },
+                {
+                    "jp": "包む",
+                    "reading": "つつむ",
+                    "en": "to wrap",
+                    "meanings": [
+                        "to wrap",
+                        "to cover"
+                    ],
+                    "example": {
+                        "jp": "美しい包装紙に包んでもらえますか。",
+                        "en": "Could you gift wrap it?"
+                    }
+                },
+                {
+                    "jp": "なるべく",
+                    "reading": "なるべく",
+                    "en": "if possible",
+                    "meanings": [
+                        "if possible",
+                        "as much as possible"
+                    ],
+                    "example": {
+                        "jp": "彼は技術者になるべく生まれてきた。",
+                        "en": "He was born to be a technician."
+                    }
+                },
+                {
+                    "jp": "無理",
+                    "reading": "むり",
+                    "en": "unreasonable",
+                    "meanings": [
+                        "unreasonable",
+                        "impossible"
+                    ],
+                    "example": {
+                        "jp": "両親は無理に私をそこへ行かせた。",
+                        "en": "My parents made me go there."
+                    }
+                },
+                {
+                    "jp": "サンドイッチ",
+                    "reading": "サンドイッチ",
+                    "en": "sandwich",
+                    "meanings": [
+                        "sandwich"
+                    ],
+                    "example": {
+                        "jp": "いくつサンドイッチ残ってるの？",
+                        "en": "How many sandwiches are there left?"
+                    }
+                },
+                {
+                    "jp": "会議室",
+                    "reading": "かいぎしつ",
+                    "en": "conference room",
+                    "meanings": [
+                        "conference room"
+                    ],
+                    "example": {
+                        "jp": "クラブの会員は会議室に集まった。",
+                        "en": "The club members assembled in the meeting room."
+                    }
+                },
+                {
+                    "jp": "品物",
+                    "reading": "しなもの",
+                    "en": "goods",
+                    "meanings": [
+                        "goods"
+                    ],
+                    "example": {
+                        "jp": "品物は代金引換でお送りいたします。",
+                        "en": "The article will be sent cash on delivery."
+                    }
+                },
+                {
+                    "jp": "人形",
+                    "reading": "にんぎょう",
+                    "en": "doll",
+                    "meanings": [
+                        "doll",
+                        "figure"
+                    ],
+                    "example": {
+                        "jp": "彼女は余暇を人形を作って過ごす。",
+                        "en": "She spends her leisure time making dolls."
+                    }
+                },
+                {
+                    "jp": "利用",
+                    "reading": "りよう",
+                    "en": "use",
+                    "meanings": [
+                        "use",
+                        "utilization"
+                    ],
+                    "example": {
+                        "jp": "余暇をできるだけ利用しなさい。",
+                        "en": "Make the best of your time."
+                    }
+                },
+                {
+                    "jp": "飾る",
+                    "reading": "かざる",
+                    "en": "to decorate",
+                    "meanings": [
+                        "to decorate",
+                        "to adorn"
+                    ],
+                    "example": {
+                        "jp": "彼女は自分の部屋をバラで飾った。",
+                        "en": "She decorated her room with roses."
+                    }
+                },
+                {
+                    "jp": "恥ずかしい",
+                    "reading": "はずかしい",
+                    "en": "ashamed",
+                    "meanings": [
+                        "ashamed",
+                        "embarrassed"
+                    ],
+                    "example": {
+                        "jp": "彼女は恥ずかしさで顔を赤らめた。",
+                        "en": "She blushed with shame."
+                    }
+                },
+                {
+                    "jp": "頑張る",
+                    "reading": "がんばる",
+                    "en": "to try one's best",
+                    "meanings": [
+                        "to try one's best",
+                        "to try hard",
+                        "to persist"
+                    ],
+                    "example": {
+                        "jp": "彼女は見かけによらず頑張りやだ。",
+                        "en": "She is persistent though she doesn't look so."
+                    }
+                },
+                {
+                    "jp": "投げる",
+                    "reading": "なげる",
+                    "en": "to pitch",
+                    "meanings": [
+                        "to pitch",
+                        "to cast away"
+                    ],
+                    "example": {
+                        "jp": "彼女は橋から身を投げて自殺した。",
+                        "en": "She committed suicide by jumping off the bridge."
+                    }
+                },
+                {
+                    "jp": "力",
+                    "reading": "ちから",
+                    "en": "strength",
+                    "meanings": [
+                        "strength",
+                        "power"
+                    ],
+                    "example": {
+                        "jp": "すぐに集中力を無くしてしまった。",
+                        "en": "I immediately lost my concentration."
+                    }
+                },
+                {
+                    "jp": "気分",
+                    "reading": "きぶん",
+                    "en": "feeling",
+                    "meanings": [
+                        "feeling",
+                        "mood"
+                    ],
+                    "example": {
+                        "jp": "「気分はどうですか」と彼は尋ねた。",
+                        "en": "\"How do you feel?\" he inquired."
+                    }
+                },
+                {
+                    "jp": "間違える",
+                    "reading": "まちがえる",
+                    "en": "to make a mistake",
+                    "meanings": [
+                        "to make a mistake"
+                    ],
+                    "example": {
+                        "jp": "彼は私を姉と間違えたに違いない。",
+                        "en": "I'm sure he mistook me for my sister."
+                    }
+                },
+                {
+                    "jp": "星",
+                    "reading": "ほし",
+                    "en": "star",
+                    "meanings": [
+                        "star"
+                    ],
+                    "example": {
+                        "jp": "夜空に星がきらきら輝いていた。",
+                        "en": "Stars were twinkling in the sky."
+                    }
+                },
+                {
+                    "jp": "場合",
+                    "reading": "ばあい",
+                    "en": "case",
+                    "meanings": [
+                        "case",
+                        "situation"
+                    ],
+                    "example": {
+                        "jp": "場合によっては腕力に訴えてもよい。",
+                        "en": "It is sometimes acceptable to resort to violence."
+                    }
+                },
+                {
+                    "jp": "やっと",
+                    "reading": "やっと",
+                    "en": "at last",
+                    "meanings": [
+                        "at last",
+                        "finally"
+                    ],
+                    "example": {
+                        "jp": "彼女はやっとそのホテルに着いた。",
+                        "en": "She finally reached the hotel."
+                    }
+                },
+                {
+                    "jp": "足りる",
+                    "reading": "たりる",
+                    "en": "to be sufficient",
+                    "meanings": [
+                        "to be sufficient",
+                        "to be enough"
+                    ],
+                    "example": {
+                        "jp": "彼は努力が足りないので失敗した。",
+                        "en": "He failed due to lack of effort."
+                    }
+                }
+            ]
+        ]
     },
     {
-        level: 3,
-        jlpt: 'N3',
-        title: 'N3 · Intermediate',
-        sets: [
+        "level": 3,
+        "jlpt": "N3",
+        "title": "N3 · Intermediate",
+        "sets": [
             [
-                { jp: "様々", reading: "さまざま", en: "various" },
-                { jp: "幸せ", reading: "しあわせ", en: "happiness" },
-                { jp: "事件", reading: "じけん", en: "incident" },
-                { jp: "事実", reading: "じじつ", en: "fact" },
-                { jp: "自然", reading: "しぜん", en: "nature" },
-                { jp: "実験", reading: "じっけん", en: "experiment" },
-                { jp: "実際", reading: "じっさい", en: "actually" },
-                { jp: "実力", reading: "じつりょく", en: "ability" },
-                { jp: "指導", reading: "しどう", en: "guidance" },
-                { jp: "宗教", reading: "しゅうきょう", en: "religion" },
-                { jp: "就職", reading: "しゅうしょく", en: "employment" },
-                { jp: "集中", reading: "しゅうちゅう", en: "concentration" },
-                { jp: "収入", reading: "しゅうにゅう", en: "income" },
-                { jp: "重要", reading: "じゅうよう", en: "important" },
-                { jp: "主張", reading: "しゅちょう", en: "claim" },
-                { jp: "出版", reading: "しゅっぱん", en: "publication" },
-                { jp: "主婦", reading: "しゅふ", en: "housewife" },
-                { jp: "種類", reading: "しゅるい", en: "variety" },
-                { jp: "順番", reading: "じゅんばん", en: "turn (in line)" },
-                { jp: "参加", reading: "さんか", en: "participation" },
+                {
+                    "jp": "様々",
+                    "reading": "さまざま",
+                    "en": "various",
+                    "meanings": [
+                        "varied",
+                        "various"
+                    ],
+                    "example": {
+                        "jp": "道路は様々な乗物で混雑していた。",
+                        "en": "The road was crowded with various vehicles."
+                    }
+                },
+                {
+                    "jp": "幸せ",
+                    "reading": "しあわせ",
+                    "en": "happiness",
+                    "meanings": [
+                        "happiness",
+                        "blessing"
+                    ],
+                    "example": {
+                        "jp": "彼女は彼の子を妊娠して幸せです。",
+                        "en": "She is happy to have conceived a baby by him."
+                    }
+                },
+                {
+                    "jp": "事件",
+                    "reading": "じけん",
+                    "en": "incident",
+                    "meanings": [
+                        "event",
+                        "affair",
+                        "incident"
+                    ],
+                    "example": {
+                        "jp": "彼女はその事件を裁判ざたにした。",
+                        "en": "She took the case to court."
+                    }
+                },
+                {
+                    "jp": "事実",
+                    "reading": "じじつ",
+                    "en": "fact",
+                    "meanings": [
+                        "fact",
+                        "truth",
+                        "reality"
+                    ],
+                    "example": {
+                        "jp": "彼女に事実を隠すことはできない。",
+                        "en": "There is no disguising the fact from her."
+                    }
+                },
+                {
+                    "jp": "自然",
+                    "reading": "しぜん",
+                    "en": "nature",
+                    "meanings": [
+                        "nature",
+                        "spontaneous"
+                    ],
+                    "example": {
+                        "jp": "物理学は基本的な自然科学である。",
+                        "en": "Physics is a fundamental natural science."
+                    }
+                },
+                {
+                    "jp": "実験",
+                    "reading": "じっけん",
+                    "en": "experiment",
+                    "meanings": [
+                        "lab work",
+                        "experiment"
+                    ],
+                    "example": {
+                        "jp": "彼は実験の失敗の理由を説明した。",
+                        "en": "He explained why the experiment failed."
+                    }
+                },
+                {
+                    "jp": "実際",
+                    "reading": "じっさい",
+                    "en": "actually",
+                    "meanings": [
+                        "in fact",
+                        "in actuality"
+                    ],
+                    "example": {
+                        "jp": "理論と実際を結び付けるべきだ。",
+                        "en": "You should combine theory with practice."
+                    }
+                },
+                {
+                    "jp": "実力",
+                    "reading": "じつりょく",
+                    "en": "ability",
+                    "meanings": [
+                        "ability",
+                        "force"
+                    ],
+                    "example": {
+                        "jp": "我々の稼ぎは実力に比例している。",
+                        "en": "Our earnings are in proportion to our real ability."
+                    }
+                },
+                {
+                    "jp": "指導",
+                    "reading": "しどう",
+                    "en": "guidance",
+                    "meanings": [
+                        "leadership",
+                        "guidance",
+                        "coaching"
+                    ],
+                    "example": {
+                        "jp": "彼女はクラブの指導者をつとめた。",
+                        "en": "She acted as leader of our club."
+                    }
+                },
+                {
+                    "jp": "宗教",
+                    "reading": "しゅうきょう",
+                    "en": "religion",
+                    "meanings": [
+                        "religion"
+                    ],
+                    "example": {
+                        "jp": "両地域は宗教と文化が違っている。",
+                        "en": "The two regions differ in religion and culture."
+                    }
+                },
+                {
+                    "jp": "就職",
+                    "reading": "しゅうしょく",
+                    "en": "employment",
+                    "meanings": [
+                        "finding employment"
+                    ],
+                    "example": {
+                        "jp": "彼女はタイピストとして就職した。",
+                        "en": "She found employment as a typist."
+                    }
+                },
+                {
+                    "jp": "集中",
+                    "reading": "しゅうちゅう",
+                    "en": "concentration",
+                    "meanings": [
+                        "concentration",
+                        "focusing the mind"
+                    ],
+                    "example": {
+                        "jp": "すぐに集中力を無くしてしまった。",
+                        "en": "I immediately lost my concentration."
+                    }
+                },
+                {
+                    "jp": "収入",
+                    "reading": "しゅうにゅう",
+                    "en": "income",
+                    "meanings": [
+                        "income",
+                        "revenue"
+                    ],
+                    "example": {
+                        "jp": "僕は収入を越えた生活をしている。",
+                        "en": "I live above my means."
+                    }
+                },
+                {
+                    "jp": "重要",
+                    "reading": "じゅうよう",
+                    "en": "important",
+                    "meanings": [
+                        "important",
+                        "essential"
+                    ],
+                    "example": {
+                        "jp": "貴職らにとっては重要なことです。",
+                        "en": "This is an important thing for all of you."
+                    }
+                },
+                {
+                    "jp": "主張",
+                    "reading": "しゅちょう",
+                    "en": "claim",
+                    "meanings": [
+                        "claim",
+                        "insistence",
+                        "assertion"
+                    ],
+                    "example": {
+                        "jp": "弁護士は彼の無罪を強く主張した。",
+                        "en": "The lawyer insisted on his innocence."
+                    }
+                },
+                {
+                    "jp": "出版",
+                    "reading": "しゅっぱん",
+                    "en": "publication",
+                    "meanings": [
+                        "publication"
+                    ],
+                    "example": {
+                        "jp": "彼女は自分の負担で本を出版した。",
+                        "en": "She published the book at her own expense."
+                    }
+                },
+                {
+                    "jp": "主婦",
+                    "reading": "しゅふ",
+                    "en": "housewife",
+                    "meanings": [
+                        "housewife"
+                    ],
+                    "example": {
+                        "jp": "主婦は家庭の仕事がたくさんある。",
+                        "en": "A housewife has many domestic duties."
+                    }
+                },
+                {
+                    "jp": "種類",
+                    "reading": "しゅるい",
+                    "en": "variety",
+                    "meanings": [
+                        "variety",
+                        "kind"
+                    ],
+                    "example": {
+                        "jp": "彼はあらゆる種類の人と接触する。",
+                        "en": "He comes into contact with all kinds of people."
+                    }
+                },
+                {
+                    "jp": "順番",
+                    "reading": "じゅんばん",
+                    "en": "turn (in line)",
+                    "meanings": [
+                        "turn (in line)",
+                        "order of things"
+                    ],
+                    "example": {
+                        "jp": "君達全部のいう事を順番に聞こう。",
+                        "en": "I'll hear all of you in turn."
+                    }
+                },
+                {
+                    "jp": "参加",
+                    "reading": "さんか",
+                    "en": "participation",
+                    "meanings": [
+                        "participation"
+                    ],
+                    "example": {
+                        "jp": "彼女は美人コンテストに参加した。",
+                        "en": "She participated in the beauty contest."
+                    }
+                }
             ],
             [
-                { jp: "作法", reading: "さほう", en: "manners" },
-                { jp: "左右", reading: "さゆう", en: "left and right" },
-                { jp: "皿", reading: "さら", en: "plate" },
-                { jp: "参考", reading: "さんこう", en: "reference" },
-                { jp: "賛成", reading: "さんせい", en: "approval" },
-                { jp: "酸素", reading: "さんそ", en: "oxygen" },
-                { jp: "詩", reading: "し", en: "poem" },
-                { jp: "四季", reading: "しき", en: "four seasons" },
-                { jp: "資源", reading: "しげん", en: "resources" },
-                { jp: "自殺", reading: "じさつ", en: "suicide" },
-                { jp: "自身", reading: "じしん", en: "oneself" },
-                { jp: "沈む", reading: "しずむ", en: "to sink" },
-                { jp: "舌", reading: "した", en: "tongue" },
-                { jp: "親しい", reading: "したしい", en: "intimate" },
-                { jp: "質", reading: "しつ", en: "quality" },
-                { jp: "失業", reading: "しつぎょう", en: "unemployment" },
-                { jp: "実現", reading: "じつげん", en: "implementation" },
-                { jp: "実は", reading: "じつは", en: "in fact" },
-                { jp: "失望", reading: "しつぼう", en: "disappointment" },
-                { jp: "支店", reading: "してん", en: "branch office" },
+                {
+                    "jp": "作法",
+                    "reading": "さほう",
+                    "en": "manners",
+                    "meanings": [
+                        "manners",
+                        "etiquette",
+                        "propriety"
+                    ],
+                    "example": {
+                        "jp": "彼の貴族的な作法には感心する。",
+                        "en": "I admire his aristocratic manners."
+                    }
+                },
+                {
+                    "jp": "左右",
+                    "reading": "さゆう",
+                    "en": "left and right",
+                    "meanings": [
+                        "left and right",
+                        "influence"
+                    ],
+                    "example": {
+                        "jp": "彼の返事は彼の気分に左右される。",
+                        "en": "His answer depends on his mood."
+                    }
+                },
+                {
+                    "jp": "皿",
+                    "reading": "さら",
+                    "en": "plate",
+                    "meanings": [
+                        "plate",
+                        "dish"
+                    ],
+                    "example": {
+                        "jp": "彼女はテーブルの上に皿を置いた。",
+                        "en": "She set the tray down on the table."
+                    }
+                },
+                {
+                    "jp": "参考",
+                    "reading": "さんこう",
+                    "en": "reference",
+                    "meanings": [
+                        "reference",
+                        "consultation"
+                    ],
+                    "example": {
+                        "jp": "私は批評を参考にして本を読んだ。",
+                        "en": "I read the book in the light of criticism."
+                    }
+                },
+                {
+                    "jp": "賛成",
+                    "reading": "さんせい",
+                    "en": "approval",
+                    "meanings": [
+                        "approval",
+                        "agreement"
+                    ],
+                    "example": {
+                        "jp": "母はついに私達の計画に賛成した。",
+                        "en": "My mother finally approved of our plan."
+                    }
+                },
+                {
+                    "jp": "酸素",
+                    "reading": "さんそ",
+                    "en": "oxygen",
+                    "meanings": [
+                        "oxygen"
+                    ],
+                    "example": {
+                        "jp": "生物は酸素なしでは生きられない。",
+                        "en": "No living things could live without oxygen."
+                    }
+                },
+                {
+                    "jp": "詩",
+                    "reading": "し",
+                    "en": "poem",
+                    "meanings": [
+                        "poem",
+                        "poetry"
+                    ],
+                    "example": {
+                        "jp": "来週までにその詩を暗記しなさい。",
+                        "en": "Memorize the poem by next week."
+                    }
+                },
+                {
+                    "jp": "四季",
+                    "reading": "しき",
+                    "en": "four seasons",
+                    "meanings": [
+                        "four seasons"
+                    ],
+                    "example": {
+                        "jp": "私は四季の中で夏が一番好きだ。",
+                        "en": "I like summer best of the four seasons."
+                    }
+                },
+                {
+                    "jp": "資源",
+                    "reading": "しげん",
+                    "en": "resources",
+                    "meanings": [
+                        "resources"
+                    ],
+                    "example": {
+                        "jp": "日本は天然資源に富んでいない。",
+                        "en": "Japan is not abundant in natural resources."
+                    }
+                },
+                {
+                    "jp": "自殺",
+                    "reading": "じさつ",
+                    "en": "suicide",
+                    "meanings": [
+                        "suicide"
+                    ],
+                    "example": {
+                        "jp": "彼女は橋から身を投げて自殺した。",
+                        "en": "She committed suicide by jumping off the bridge."
+                    }
+                },
+                {
+                    "jp": "自身",
+                    "reading": "じしん",
+                    "en": "oneself",
+                    "meanings": [
+                        "oneself"
+                    ],
+                    "example": {
+                        "jp": "妹はそれを自分自身の目で見た。",
+                        "en": "My sister saw it with her own eyes."
+                    }
+                },
+                {
+                    "jp": "沈む",
+                    "reading": "しずむ",
+                    "en": "to sink",
+                    "meanings": [
+                        "to sink",
+                        "to feel depressed"
+                    ],
+                    "example": {
+                        "jp": "陽は知らぬ間に地平線下に沈んだ。",
+                        "en": "The sun sank below the horizon before I knew it."
+                    }
+                },
+                {
+                    "jp": "舌",
+                    "reading": "した",
+                    "en": "tongue",
+                    "meanings": [
+                        "tongue"
+                    ],
+                    "example": {
+                        "jp": "彼は鏡をとって舌をよく観察した。",
+                        "en": "He picked up a mirror and examined his tongue."
+                    }
+                },
+                {
+                    "jp": "親しい",
+                    "reading": "したしい",
+                    "en": "intimate",
+                    "meanings": [
+                        "intimate",
+                        "close (e.g., friend)"
+                    ],
+                    "example": {
+                        "jp": "彼は会う人とは誰でも親しくなる。",
+                        "en": "He makes friends with everybody he meets."
+                    }
+                },
+                {
+                    "jp": "質",
+                    "reading": "しつ",
+                    "en": "quality",
+                    "meanings": [
+                        "quality",
+                        "nature (of person)"
+                    ],
+                    "example": {
+                        "jp": "質より量の方がむしろ重要である。",
+                        "en": "Quantity rather than quality is important."
+                    }
+                },
+                {
+                    "jp": "失業",
+                    "reading": "しつぎょう",
+                    "en": "unemployment",
+                    "meanings": [
+                        "unemployment"
+                    ],
+                    "example": {
+                        "jp": "討論での重点は失業問題であった。",
+                        "en": "In the discussion the accent was on unemployment."
+                    }
+                },
+                {
+                    "jp": "実現",
+                    "reading": "じつげん",
+                    "en": "implementation",
+                    "meanings": [
+                        "implementation",
+                        "materialization",
+                        "realization"
+                    ],
+                    "example": {
+                        "jp": "彼女の夢はいつか実現するだろう。",
+                        "en": "Her dream will one day come true."
+                    }
+                },
+                {
+                    "jp": "実は",
+                    "reading": "じつは",
+                    "en": "in fact",
+                    "meanings": [
+                        "actually",
+                        "in fact"
+                    ],
+                    "example": {
+                        "jp": "実はこれで４度目の質問になります。",
+                        "en": "Actually this will be my fourth question."
+                    }
+                },
+                {
+                    "jp": "失望",
+                    "reading": "しつぼう",
+                    "en": "disappointment",
+                    "meanings": [
+                        "disappointment",
+                        "despair"
+                    ],
+                    "example": {
+                        "jp": "彼らは互いに失望を感じている。",
+                        "en": "They are disappointed with each other."
+                    }
+                },
+                {
+                    "jp": "支店",
+                    "reading": "してん",
+                    "en": "branch office",
+                    "meanings": [
+                        "branch store (office)"
+                    ],
+                    "example": {
+                        "jp": "新しい支店が来月シカゴに開店する。",
+                        "en": "A new branch will be opened in Chicago next month."
+                    }
+                }
             ],
             [
-                { jp: "自動", reading: "じどう", en: "automatic" },
-                { jp: "児童", reading: "じどう", en: "children" },
-                { jp: "支配", reading: "しはい", en: "rule" },
-                { jp: "芝居", reading: "しばい", en: "drama" },
-                { jp: "支払う", reading: "しはらう", en: "to pay" },
-                { jp: "死亡", reading: "しぼう", en: "death" },
-                { jp: "資本", reading: "しほん", en: "funds" },
-                { jp: "姉妹", reading: "しまい", en: "sisters" },
-                { jp: "自慢", reading: "じまん", en: "pride" },
-                { jp: "地味", reading: "じみ", en: "plain" },
-                { jp: "示す", reading: "しめす", en: "to show" },
-                { jp: "占める", reading: "しめる", en: "to take up" },
-                { jp: "借金", reading: "しゃっきん", en: "debt" },
-                { jp: "週", reading: "しゅう", en: "week" },
-                { jp: "州", reading: "しゅう", en: "state" },
-                { jp: "銃", reading: "じゅう", en: "gun" },
-                { jp: "周囲", reading: "しゅうい", en: "surroundings" },
-                { jp: "収穫", reading: "しゅうかく", en: "harvest" },
-                { jp: "重視", reading: "じゅうし", en: "importance" },
-                { jp: "修正", reading: "しゅうせい", en: "amendment" },
+                {
+                    "jp": "自動",
+                    "reading": "じどう",
+                    "en": "automatic",
+                    "meanings": [
+                        "automatic",
+                        "self-motion"
+                    ],
+                    "example": {
+                        "jp": "この自動販売機は故障しています。",
+                        "en": "This vending machine is out of order."
+                    }
+                },
+                {
+                    "jp": "児童",
+                    "reading": "じどう",
+                    "en": "children",
+                    "meanings": [
+                        "children",
+                        "juvenile"
+                    ],
+                    "example": {
+                        "jp": "図書館にはたくさんの児童書がある。",
+                        "en": "We have a lot of children's books in the library."
+                    }
+                },
+                {
+                    "jp": "支配",
+                    "reading": "しはい",
+                    "en": "rule",
+                    "meanings": [
+                        "rule",
+                        "control",
+                        "direction"
+                    ],
+                    "example": {
+                        "jp": "脳が私たちの活動を支配している。",
+                        "en": "Our brains control our activities."
+                    }
+                },
+                {
+                    "jp": "芝居",
+                    "reading": "しばい",
+                    "en": "drama",
+                    "meanings": [
+                        "play",
+                        "drama"
+                    ],
+                    "example": {
+                        "jp": "彼は芝居を見に行くのが大好きだ。",
+                        "en": "He adores going to the theater."
+                    }
+                },
+                {
+                    "jp": "支払う",
+                    "reading": "しはらう",
+                    "en": "to pay",
+                    "meanings": [
+                        "to pay"
+                    ],
+                    "example": {
+                        "jp": "彼女はまさしく支払わされたのだ。",
+                        "en": "She was jolly well made to pay."
+                    }
+                },
+                {
+                    "jp": "死亡",
+                    "reading": "しぼう",
+                    "en": "death",
+                    "meanings": [
+                        "death"
+                    ],
+                    "example": {
+                        "jp": "飛行機事故で多くの人が死亡した。",
+                        "en": "Many people were killed in the plane accident."
+                    }
+                },
+                {
+                    "jp": "資本",
+                    "reading": "しほん",
+                    "en": "funds",
+                    "meanings": [
+                        "funds",
+                        "capital"
+                    ],
+                    "example": {
+                        "jp": "会社はその事業に資本参加した。",
+                        "en": "The company bought shares in the venture."
+                    }
+                },
+                {
+                    "jp": "姉妹",
+                    "reading": "しまい",
+                    "en": "sisters",
+                    "meanings": [
+                        "sisters"
+                    ],
+                    "example": {
+                        "jp": "私たちは姉妹３人で喫茶店を始めた。",
+                        "en": "We three sisters opened a coffee shop."
+                    }
+                },
+                {
+                    "jp": "自慢",
+                    "reading": "じまん",
+                    "en": "pride",
+                    "meanings": [
+                        "pride",
+                        "boast"
+                    ],
+                    "example": {
+                        "jp": "父はハンサムなのを自慢している。",
+                        "en": "My father is proud of being handsome."
+                    }
+                },
+                {
+                    "jp": "地味",
+                    "reading": "じみ",
+                    "en": "plain",
+                    "meanings": [
+                        "quiet",
+                        "plain",
+                        "conservative"
+                    ],
+                    "example": {
+                        "jp": "大学生のときに地味に始める年金納付。",
+                        "en": "Around the time you go to college, you start having to pay contributions to the National Pension."
+                    }
+                },
+                {
+                    "jp": "示す",
+                    "reading": "しめす",
+                    "en": "to show",
+                    "meanings": [
+                        "to show",
+                        "to indicate"
+                    ],
+                    "example": {
+                        "jp": "彼女はピアノに非凡な腕を示した。",
+                        "en": "She showed great skill on the piano."
+                    }
+                },
+                {
+                    "jp": "占める",
+                    "reading": "しめる",
+                    "en": "to take up",
+                    "meanings": [
+                        "to take up",
+                        "to account for"
+                    ],
+                    "example": {
+                        "jp": "与党は前の選挙で過半数を占めた。",
+                        "en": "The government got their majority at the last election."
+                    }
+                },
+                {
+                    "jp": "借金",
+                    "reading": "しゃっきん",
+                    "en": "debt",
+                    "meanings": [
+                        "debt",
+                        "loan",
+                        "liabilities"
+                    ],
+                    "example": {
+                        "jp": "彼女は彼の借金の保証人になった。",
+                        "en": "She guaranteed his debts."
+                    }
+                },
+                {
+                    "jp": "週",
+                    "reading": "しゅう",
+                    "en": "week",
+                    "meanings": [
+                        "week"
+                    ],
+                    "example": {
+                        "jp": "彼女は週に１度両親に手紙を出す。",
+                        "en": "She writes to her parents once a week."
+                    }
+                },
+                {
+                    "jp": "州",
+                    "reading": "しゅう",
+                    "en": "state",
+                    "meanings": [
+                        "state",
+                        "province"
+                    ],
+                    "example": {
+                        "jp": "州知事は囚人達を自由の身にした。",
+                        "en": "The governor set the prisoners free."
+                    }
+                },
+                {
+                    "jp": "銃",
+                    "reading": "じゅう",
+                    "en": "gun",
+                    "meanings": [
+                        "gun"
+                    ],
+                    "example": {
+                        "jp": "猟師たちは銃でその象をねらった。",
+                        "en": "The hunters aimed at the elephant."
+                    }
+                },
+                {
+                    "jp": "周囲",
+                    "reading": "しゅうい",
+                    "en": "surroundings",
+                    "meanings": [
+                        "surroundings",
+                        "circumference",
+                        "environs"
+                    ],
+                    "example": {
+                        "jp": "僕らの周囲で水はよどんでいた。",
+                        "en": "The water was dead around us."
+                    }
+                },
+                {
+                    "jp": "収穫",
+                    "reading": "しゅうかく",
+                    "en": "harvest",
+                    "meanings": [
+                        "harvest",
+                        "crop",
+                        "ingathering"
+                    ],
+                    "example": {
+                        "jp": "私たちはみな収穫の手伝いをした。",
+                        "en": "We all helped with the harvest."
+                    }
+                },
+                {
+                    "jp": "重視",
+                    "reading": "じゅうし",
+                    "en": "importance",
+                    "meanings": [
+                        "importance",
+                        "stress"
+                    ],
+                    "example": {
+                        "jp": "彼らは私の意見を重視しなかった。",
+                        "en": "They didn't take much account of my opinion."
+                    }
+                },
+                {
+                    "jp": "修正",
+                    "reading": "しゅうせい",
+                    "en": "amendment",
+                    "meanings": [
+                        "amendment",
+                        "correction"
+                    ],
+                    "example": {
+                        "jp": "・テキストデータの誤字脱字を修正。",
+                        "en": "・ Corrected mistaken/missing characters in the text data."
+                    }
+                }
             ],
             [
-                { jp: "集団", reading: "しゅうだん", en: "group" },
-                { jp: "住民", reading: "じゅうみん", en: "inhabitants" },
-                { jp: "修理", reading: "しゅうり", en: "repairing" },
-                { jp: "主義", reading: "しゅぎ", en: "doctrine" },
-                { jp: "宿泊", reading: "しゅくはく", en: "lodging" },
-                { jp: "手術", reading: "しゅじゅつ", en: "surgical operation" },
-                { jp: "首相", reading: "しゅしょう", en: "Prime Minister" },
-                { jp: "手段", reading: "しゅだん", en: "means" },
-                { jp: "出身", reading: "しゅっしん", en: "hometown" },
-                { jp: "首都", reading: "しゅと", en: "capital city" },
-                { jp: "主要", reading: "しゅよう", en: "main" },
-                { jp: "需要", reading: "じゅよう", en: "demand" },
-                { jp: "瞬間", reading: "しゅんかん", en: "moment" },
-                { jp: "順調", reading: "じゅんちょう", en: "going well" },
-                { jp: "賞", reading: "しょう", en: "prize" },
-                { jp: "障害", reading: "しょうがい", en: "obstacle" },
-                { jp: "奨学金", reading: "しょうがくきん", en: "scholarship" },
-                { jp: "乗客", reading: "じょうきゃく", en: "passenger" },
-                { jp: "状況", reading: "じょうきょう", en: "situation" },
-                { jp: "条件", reading: "じょうけん", en: "condition" },
+                {
+                    "jp": "集団",
+                    "reading": "しゅうだん",
+                    "en": "group",
+                    "meanings": [
+                        "group",
+                        "mass"
+                    ],
+                    "example": {
+                        "jp": "君はいまやエリート集団の一員だ。",
+                        "en": "You are now among the elite."
+                    }
+                },
+                {
+                    "jp": "住民",
+                    "reading": "じゅうみん",
+                    "en": "inhabitants",
+                    "meanings": [
+                        "inhabitants",
+                        "residents"
+                    ],
+                    "example": {
+                        "jp": "住民は低空飛行訓練に抗議を行った。",
+                        "en": "The people protested against the low altitude flight training."
+                    }
+                },
+                {
+                    "jp": "修理",
+                    "reading": "しゅうり",
+                    "en": "repairing",
+                    "meanings": [
+                        "repairing",
+                        "mending"
+                    ],
+                    "example": {
+                        "jp": "父は器用で何でも修理してしまう。",
+                        "en": "My father is good with tools and does almost all the repairs."
+                    }
+                },
+                {
+                    "jp": "主義",
+                    "reading": "しゅぎ",
+                    "en": "doctrine",
+                    "meanings": [
+                        "doctrine",
+                        "cause",
+                        "principle"
+                    ],
+                    "example": {
+                        "jp": "民主主義は政治形態の一つである。",
+                        "en": "Democracy is one form of government."
+                    }
+                },
+                {
+                    "jp": "宿泊",
+                    "reading": "しゅくはく",
+                    "en": "lodging",
+                    "meanings": [
+                        "lodging"
+                    ],
+                    "example": {
+                        "jp": "彼はホテルに電話で宿泊を頼んだ。",
+                        "en": "He called a hotel for accommodations."
+                    }
+                },
+                {
+                    "jp": "手術",
+                    "reading": "しゅじゅつ",
+                    "en": "surgical operation",
+                    "meanings": [
+                        "surgical operation"
+                    ],
+                    "example": {
+                        "jp": "父は手術を受ける事になっている。",
+                        "en": "Father is going to undergo an operation."
+                    }
+                },
+                {
+                    "jp": "首相",
+                    "reading": "しゅしょう",
+                    "en": "Prime Minister",
+                    "meanings": [
+                        "Prime Minister"
+                    ],
+                    "example": {
+                        "jp": "彼は首相を辞めざるを得なかった。",
+                        "en": "He was forced to resign as prime minister."
+                    }
+                },
+                {
+                    "jp": "手段",
+                    "reading": "しゅだん",
+                    "en": "means",
+                    "meanings": [
+                        "means",
+                        "way",
+                        "measure"
+                    ],
+                    "example": {
+                        "jp": "目的は手段を正当化するだろうか。",
+                        "en": "Does the end justify the means?"
+                    }
+                },
+                {
+                    "jp": "出身",
+                    "reading": "しゅっしん",
+                    "en": "hometown",
+                    "meanings": [
+                        "come from"
+                    ],
+                    "example": {
+                        "jp": "彼女はカリフォルニアの出身です。",
+                        "en": "She comes from California."
+                    }
+                },
+                {
+                    "jp": "首都",
+                    "reading": "しゅと",
+                    "en": "capital city",
+                    "meanings": [
+                        "capital city"
+                    ],
+                    "example": {
+                        "jp": "彼はフランスの首都パリへ行った。",
+                        "en": "He went to Paris, which is the capital of France."
+                    }
+                },
+                {
+                    "jp": "主要",
+                    "reading": "しゅよう",
+                    "en": "main",
+                    "meanings": [
+                        "chief",
+                        "main"
+                    ],
+                    "example": {
+                        "jp": "米はそれら主要商品の一つだ。",
+                        "en": "Rice is one of those staple commodities."
+                    }
+                },
+                {
+                    "jp": "需要",
+                    "reading": "じゅよう",
+                    "en": "demand",
+                    "meanings": [
+                        "demand"
+                    ],
+                    "example": {
+                        "jp": "輸入の増加によって需要は下がった。",
+                        "en": "The demand was brought down by increases in imports."
+                    }
+                },
+                {
+                    "jp": "瞬間",
+                    "reading": "しゅんかん",
+                    "en": "moment",
+                    "meanings": [
+                        "moment",
+                        "second"
+                    ],
+                    "example": {
+                        "jp": "その瞬間、大音響とともに爆発した。",
+                        "en": "At that instant it exploded with a great noise."
+                    }
+                },
+                {
+                    "jp": "順調",
+                    "reading": "じゅんちょう",
+                    "en": "going well",
+                    "meanings": [
+                        "doing well"
+                    ],
+                    "example": {
+                        "jp": "猛吹雪に遭うまでは順調に進んだ。",
+                        "en": "We made good time until we ran into a blizzard."
+                    }
+                },
+                {
+                    "jp": "賞",
+                    "reading": "しょう",
+                    "en": "prize",
+                    "meanings": [
+                        "prize",
+                        "award"
+                    ],
+                    "example": {
+                        "jp": "彼女は全部の賞をさらって行った。",
+                        "en": "She carried off all the prizes."
+                    }
+                },
+                {
+                    "jp": "障害",
+                    "reading": "しょうがい",
+                    "en": "obstacle",
+                    "meanings": [
+                        "obstacle",
+                        "impediment"
+                    ],
+                    "example": {
+                        "jp": "貧困は幸福への障害とはならない。",
+                        "en": "Poverty is not a bar to happiness."
+                    }
+                },
+                {
+                    "jp": "奨学金",
+                    "reading": "しょうがくきん",
+                    "en": "scholarship",
+                    "meanings": [
+                        "scholarship"
+                    ],
+                    "example": {
+                        "jp": "奨学金のおかげで彼女は留学した。",
+                        "en": "The scholarship enabled her to study abroad."
+                    }
+                },
+                {
+                    "jp": "乗客",
+                    "reading": "じょうきゃく",
+                    "en": "passenger",
+                    "meanings": [
+                        "passenger"
+                    ],
+                    "example": {
+                        "jp": "列車は乗客でいっぱいだった。",
+                        "en": "The train was full of passengers."
+                    }
+                },
+                {
+                    "jp": "状況",
+                    "reading": "じょうきょう",
+                    "en": "situation",
+                    "meanings": [
+                        "state of affairs",
+                        "situation"
+                    ],
+                    "example": {
+                        "jp": "状況証拠としちゃあ、十分だね。",
+                        "en": "For circumstantial evidence, that's plenty."
+                    }
+                },
+                {
+                    "jp": "条件",
+                    "reading": "じょうけん",
+                    "en": "condition",
+                    "meanings": [
+                        "conditions",
+                        "terms"
+                    ],
+                    "example": {
+                        "jp": "彼女は条件が不公平だと言い張る。",
+                        "en": "She will have it that the conditions are unfair."
+                    }
+                }
             ],
             [
-                { jp: "正午", reading: "しょうご", en: "noon" },
-                { jp: "正直", reading: "しょうじき", en: "honesty" },
-                { jp: "常識", reading: "じょうしき", en: "common sense" },
-                { jp: "少女", reading: "しょうじょ", en: "young girl" },
-                { jp: "症状", reading: "しょうじょう", en: "symptoms" },
-                { jp: "状態", reading: "じょうたい", en: "state" },
-                { jp: "上達", reading: "じょうたつ", en: "improvement" },
-                { jp: "冗談", reading: "じょうだん", en: "a joke" },
-                { jp: "衝突", reading: "しょうとつ", en: "collision" },
-                { jp: "商売", reading: "しょうばい", en: "business" },
-                { jp: "消費", reading: "しょうひ", en: "consumption" },
-                { jp: "商品", reading: "しょうひん", en: "commodity" },
-                { jp: "情報", reading: "じょうほう", en: "information" },
-                { jp: "証明", reading: "しょうめい", en: "proof" },
-                { jp: "職業", reading: "しょくぎょう", en: "occupation" },
-                { jp: "植物", reading: "しょくぶつ", en: "plant" },
-                { jp: "食欲", reading: "しょくよく", en: "appetite" },
-                { jp: "女優", reading: "じょゆう", en: "actress" },
-                { jp: "処理", reading: "しょり", en: "processing" },
-                { jp: "書類", reading: "しょるい", en: "documents" },
-            ],
-        ],
+                {
+                    "jp": "正午",
+                    "reading": "しょうご",
+                    "en": "noon",
+                    "meanings": [
+                        "noon",
+                        "mid-day"
+                    ],
+                    "example": {
+                        "jp": "彼は正午までここにいるでしょう。",
+                        "en": "He'll be here until noon."
+                    }
+                },
+                {
+                    "jp": "正直",
+                    "reading": "しょうじき",
+                    "en": "honesty",
+                    "meanings": [
+                        "honesty",
+                        "integrity",
+                        "frankness"
+                    ],
+                    "example": {
+                        "jp": "彼女は彼が正直であると納得した。",
+                        "en": "She was satisfied that he was honest."
+                    }
+                },
+                {
+                    "jp": "常識",
+                    "reading": "じょうしき",
+                    "en": "common sense",
+                    "meanings": [
+                        "common sense"
+                    ],
+                    "example": {
+                        "jp": "彼は常識に欠けているに違いない。",
+                        "en": "He must be lacking in common sense."
+                    }
+                },
+                {
+                    "jp": "少女",
+                    "reading": "しょうじょ",
+                    "en": "young girl",
+                    "meanings": [
+                        "young girl"
+                    ],
+                    "example": {
+                        "jp": "本を読んでいる少女はケートだ。",
+                        "en": "The girl reading a book is Kate."
+                    }
+                },
+                {
+                    "jp": "症状",
+                    "reading": "しょうじょう",
+                    "en": "symptoms",
+                    "meanings": [
+                        "symptoms",
+                        "condition"
+                    ],
+                    "example": {
+                        "jp": "高熱がこの病気の顕著な症状だ。",
+                        "en": "High fever is a prominent symptom of this disease."
+                    }
+                },
+                {
+                    "jp": "状態",
+                    "reading": "じょうたい",
+                    "en": "state",
+                    "meanings": [
+                        "condition",
+                        "situation"
+                    ],
+                    "example": {
+                        "jp": "横には喧嘩状態の妻が眠っている。",
+                        "en": "To my side, my wife, who I'm presently at odds with, lies sleeping."
+                    }
+                },
+                {
+                    "jp": "上達",
+                    "reading": "じょうたつ",
+                    "en": "improvement",
+                    "meanings": [
+                        "improvement",
+                        "advance"
+                    ],
+                    "example": {
+                        "jp": "彼もやがて英語が上達するであろう。",
+                        "en": "His English will improve in the course of time."
+                    }
+                },
+                {
+                    "jp": "冗談",
+                    "reading": "じょうだん",
+                    "en": "a joke",
+                    "meanings": [
+                        "a joke"
+                    ],
+                    "example": {
+                        "jp": "彼女はその冗談をおもしろがった。",
+                        "en": "She was amused at the joke."
+                    }
+                },
+                {
+                    "jp": "衝突",
+                    "reading": "しょうとつ",
+                    "en": "collision",
+                    "meanings": [
+                        "collision",
+                        "conflict"
+                    ],
+                    "example": {
+                        "jp": "上海で二つの旅客列車が衝突した。",
+                        "en": "Two passenger trains crashed in Shanghai."
+                    }
+                },
+                {
+                    "jp": "商売",
+                    "reading": "しょうばい",
+                    "en": "business",
+                    "meanings": [
+                        "trade",
+                        "business",
+                        "commerce"
+                    ],
+                    "example": {
+                        "jp": "彼は父からその商売を引き継いだ。",
+                        "en": "He took over the business from his father."
+                    }
+                },
+                {
+                    "jp": "消費",
+                    "reading": "しょうひ",
+                    "en": "consumption",
+                    "meanings": [
+                        "consumption",
+                        "expenditure"
+                    ],
+                    "example": {
+                        "jp": "日本の米の消費は減少している。",
+                        "en": "Japan's consumption of rice is decreasing."
+                    }
+                },
+                {
+                    "jp": "商品",
+                    "reading": "しょうひん",
+                    "en": "commodity",
+                    "meanings": [
+                        "commodity",
+                        "merchandise"
+                    ],
+                    "example": {
+                        "jp": "彼女の商品の半分は安く売られた。",
+                        "en": "Half her goods were sold cheap."
+                    }
+                },
+                {
+                    "jp": "情報",
+                    "reading": "じょうほう",
+                    "en": "information",
+                    "meanings": [
+                        "information",
+                        "(military) intelligence"
+                    ],
+                    "example": {
+                        "jp": "舞踊がみたいのですが情報をください。",
+                        "en": "I'd like to see some dancing. Do you have any information?"
+                    }
+                },
+                {
+                    "jp": "証明",
+                    "reading": "しょうめい",
+                    "en": "proof",
+                    "meanings": [
+                        "proof",
+                        "verification"
+                    ],
+                    "example": {
+                        "jp": "身分証明書を二枚拝見できますか。",
+                        "en": "May I see two pieces of identification?"
+                    }
+                },
+                {
+                    "jp": "職業",
+                    "reading": "しょくぎょう",
+                    "en": "occupation",
+                    "meanings": [
+                        "occupation",
+                        "business"
+                    ],
+                    "example": {
+                        "jp": "婦人に開放されている職業は多い。",
+                        "en": "There are many careers open to women."
+                    }
+                },
+                {
+                    "jp": "植物",
+                    "reading": "しょくぶつ",
+                    "en": "plant",
+                    "meanings": [
+                        "plant",
+                        "vegetation"
+                    ],
+                    "example": {
+                        "jp": "動物と植物がこの惑星にはすんでいる。",
+                        "en": "Animals and plants live on this planet."
+                    }
+                },
+                {
+                    "jp": "食欲",
+                    "reading": "しょくよく",
+                    "en": "appetite",
+                    "meanings": [
+                        "appetite (for food)"
+                    ],
+                    "example": {
+                        "jp": "あんたのせいで食欲をなくしたよ。",
+                        "en": "Thanks to you I've lost my appetite."
+                    }
+                },
+                {
+                    "jp": "女優",
+                    "reading": "じょゆう",
+                    "en": "actress",
+                    "meanings": [
+                        "actress"
+                    ],
+                    "example": {
+                        "jp": "彼女は女優になることを志した。",
+                        "en": "She aimed to become an actress."
+                    }
+                },
+                {
+                    "jp": "処理",
+                    "reading": "しょり",
+                    "en": "processing",
+                    "meanings": [
+                        "processing",
+                        "treatment",
+                        "disposition"
+                    ],
+                    "example": {
+                        "jp": "彼は難問をうまく処理するだろう。",
+                        "en": "He'll cope with difficult problems."
+                    }
+                },
+                {
+                    "jp": "書類",
+                    "reading": "しょるい",
+                    "en": "documents",
+                    "meanings": [
+                        "documents",
+                        "official papers"
+                    ],
+                    "example": {
+                        "jp": "彼は書類を折り畳んで時計を見た。",
+                        "en": "He folded his paper, consulting his watch."
+                    }
+                }
+            ]
+        ]
     },
     {
-        level: 4,
-        jlpt: 'N2',
-        title: 'N2 · Upper Intermediate',
-        sets: [
+        "level": 4,
+        "jlpt": "N2",
+        "title": "N2 · Upper Intermediate",
+        "sets": [
             [
-                { jp: "終了", reading: "しゅうりょう", en: "end" },
-                { jp: "縮小", reading: "しゅくしょう", en: "reduction" },
-                { jp: "受験", reading: "じゅけん", en: "taking an exam" },
-                { jp: "出張", reading: "しゅっちょう", en: "business trip" },
-                { jp: "順序", reading: "じゅんじょ", en: "order" },
-                { jp: "純粋", reading: "じゅんすい", en: "pure" },
-                { jp: "消化", reading: "しょうか", en: "digestion" },
-                { jp: "商業", reading: "しょうぎょう", en: "commerce" },
-                { jp: "上級", reading: "じょうきゅう", en: "advanced level" },
-                { jp: "賞金", reading: "しょうきん", en: "prize money" },
-                { jp: "商店", reading: "しょうてん", en: "shop" },
-                { jp: "焦点", reading: "しょうてん", en: "focus" },
-                { jp: "正面", reading: "しょうめん", en: "front" },
-                { jp: "職場", reading: "しょくば", en: "workplace" },
-                { jp: "資料", reading: "しりょう", en: "materials" },
-                { jp: "新幹線", reading: "しんかんせん", en: "bullet train" },
-                { jp: "申請", reading: "しんせい", en: "application" },
-                { jp: "診断", reading: "しんだん", en: "diagnosis" },
-                { jp: "森林", reading: "しんりん", en: "forest" },
-                { jp: "水平線", reading: "すいへいせん", en: "horizon" },
+                {
+                    "jp": "終了",
+                    "reading": "しゅうりょう",
+                    "en": "end",
+                    "meanings": [
+                        "end",
+                        "close",
+                        "termination"
+                    ],
+                    "example": {
+                        "jp": "彼の講演終了後、数人が拍手した。",
+                        "en": "A few people clapped after his lecture."
+                    }
+                },
+                {
+                    "jp": "縮小",
+                    "reading": "しゅくしょう",
+                    "en": "reduction",
+                    "meanings": [
+                        "reduction",
+                        "curtailment"
+                    ],
+                    "example": {
+                        "jp": "工場は生産を縮小せざるをえなかった。",
+                        "en": "The factory had to cut back its production."
+                    }
+                },
+                {
+                    "jp": "受験",
+                    "reading": "じゅけん",
+                    "en": "taking an exam",
+                    "meanings": [
+                        "taking an examination"
+                    ],
+                    "example": {
+                        "jp": "受験地獄での戦いが終わりました。",
+                        "en": "My fight in our examination hell is over!"
+                    }
+                },
+                {
+                    "jp": "出張",
+                    "reading": "しゅっちょう",
+                    "en": "business trip",
+                    "meanings": [
+                        "official tour",
+                        "business trip"
+                    ],
+                    "example": {
+                        "jp": "ロス出張をキャンセルしようかな。",
+                        "en": "Should I cancel my business trip to LA?"
+                    }
+                },
+                {
+                    "jp": "順序",
+                    "reading": "じゅんじょ",
+                    "en": "order",
+                    "meanings": [
+                        "order",
+                        "sequence",
+                        "procedure"
+                    ],
+                    "example": {
+                        "jp": "何をするにも順序を踏んでやりなさい。",
+                        "en": "No matter what you do, you must follow the correct order."
+                    }
+                },
+                {
+                    "jp": "純粋",
+                    "reading": "じゅんすい",
+                    "en": "pure",
+                    "meanings": [
+                        "pure",
+                        "genuine",
+                        "unmixed"
+                    ],
+                    "example": {
+                        "jp": "今日の純粋数学は明日の応用数学。",
+                        "en": "Today's pure mathematics is tomorrow's applied mathematics."
+                    }
+                },
+                {
+                    "jp": "消化",
+                    "reading": "しょうか",
+                    "en": "digestion",
+                    "meanings": [
+                        "digestion"
+                    ],
+                    "example": {
+                        "jp": "自然食は人間の消化に合っている。",
+                        "en": "A natural diet is suitable for human digestion."
+                    }
+                },
+                {
+                    "jp": "商業",
+                    "reading": "しょうぎょう",
+                    "en": "commerce",
+                    "meanings": [
+                        "commerce",
+                        "trade",
+                        "business"
+                    ],
+                    "example": {
+                        "jp": "大阪は日本の商業の中心地です。",
+                        "en": "Osaka is the center of commerce in Japan."
+                    }
+                },
+                {
+                    "jp": "上級",
+                    "reading": "じょうきゅう",
+                    "en": "advanced level",
+                    "meanings": [
+                        "advanced level",
+                        "high grade",
+                        "senior"
+                    ],
+                    "example": {
+                        "jp": "被告は上級裁判所に控訴するだろう。",
+                        "en": "The defendant will appeal to a higher court."
+                    }
+                },
+                {
+                    "jp": "賞金",
+                    "reading": "しょうきん",
+                    "en": "prize money",
+                    "meanings": [
+                        "prize",
+                        "monetary award"
+                    ],
+                    "example": {
+                        "jp": "協力者に対しては賞金が出ます。",
+                        "en": "You'll get a reward for your cooperation."
+                    }
+                },
+                {
+                    "jp": "商店",
+                    "reading": "しょうてん",
+                    "en": "shop",
+                    "meanings": [
+                        "shop",
+                        "business firm"
+                    ],
+                    "example": {
+                        "jp": "商店も彼を欲しがりませんでした。",
+                        "en": "The shop did not want him."
+                    }
+                },
+                {
+                    "jp": "焦点",
+                    "reading": "しょうてん",
+                    "en": "focus",
+                    "meanings": [
+                        "focus",
+                        "point"
+                    ],
+                    "example": {
+                        "jp": "話の焦点は内容に置かれている。",
+                        "en": "The focus of the talk is put on the content."
+                    }
+                },
+                {
+                    "jp": "正面",
+                    "reading": "しょうめん",
+                    "en": "front",
+                    "meanings": [
+                        "front"
+                    ],
+                    "example": {
+                        "jp": "正面近くの席に座りたいのですが。",
+                        "en": "I'd like to sit near the front."
+                    }
+                },
+                {
+                    "jp": "職場",
+                    "reading": "しょくば",
+                    "en": "workplace",
+                    "meanings": [
+                        "workplace"
+                    ],
+                    "example": {
+                        "jp": "私は職場から１時間の所に住んでいる。",
+                        "en": "I live an hour away from work."
+                    }
+                },
+                {
+                    "jp": "資料",
+                    "reading": "しりょう",
+                    "en": "materials",
+                    "meanings": [
+                        "materials",
+                        "data"
+                    ],
+                    "example": {
+                        "jp": "資料不足のため調査は中止された。",
+                        "en": "In the absence of sufficient data, the survey was given up."
+                    }
+                },
+                {
+                    "jp": "新幹線",
+                    "reading": "しんかんせん",
+                    "en": "bullet train",
+                    "meanings": [
+                        "Shinkansen",
+                        "\"Bullet Train\""
+                    ],
+                    "example": {
+                        "jp": "次の新幹線は９時ちょうどに出ます。",
+                        "en": "The next Shinkansen train leaves at just nine o'clock."
+                    }
+                },
+                {
+                    "jp": "申請",
+                    "reading": "しんせい",
+                    "en": "application",
+                    "meanings": [
+                        "application",
+                        "request",
+                        "petition"
+                    ],
+                    "example": {
+                        "jp": "もうパスポートを申請しましたか。",
+                        "en": "Have you applied for a passport yet?"
+                    }
+                },
+                {
+                    "jp": "診断",
+                    "reading": "しんだん",
+                    "en": "diagnosis",
+                    "meanings": [
+                        "diagnosis"
+                    ],
+                    "example": {
+                        "jp": "飼鳥の医学―病気の診断とその治療。",
+                        "en": "Avian medicine - diagnosis and treatment of illnesses."
+                    }
+                },
+                {
+                    "jp": "森林",
+                    "reading": "しんりん",
+                    "en": "forest",
+                    "meanings": [
+                        "forest",
+                        "woods"
+                    ],
+                    "example": {
+                        "jp": "当森林内でごみを捨てないで下さい。",
+                        "en": "The public is requested not to litter in these woods."
+                    }
+                },
+                {
+                    "jp": "水平線",
+                    "reading": "すいへいせん",
+                    "en": "horizon",
+                    "meanings": [
+                        "horizon"
+                    ],
+                    "example": {
+                        "jp": "水平線に漁船がいくつか見えます。",
+                        "en": "I see some fishing boats on the horizon."
+                    }
+                }
             ],
             [
-                { jp: "就任", reading: "しゅうにん", en: "inauguration" },
-                { jp: "周辺", reading: "しゅうへん", en: "vicinity" },
-                { jp: "重役", reading: "じゅうやく", en: "director" },
-                { jp: "重量", reading: "じゅうりょう", en: "weight" },
-                { jp: "重力", reading: "じゅうりょく", en: "gravity" },
-                { jp: "熟語", reading: "じゅくご", en: "idiom" },
-                { jp: "祝日", reading: "しゅくじつ", en: "national holiday" },
-                { jp: "主語", reading: "しゅご", en: "subject (grammar)" },
-                { jp: "寿命", reading: "じゅみょう", en: "life span" },
-                { jp: "主役", reading: "しゅやく", en: "leading role" },
-                { jp: "受話器", reading: "じゅわき", en: "telephone receiver" },
-                { jp: "循環", reading: "じゅんかん", en: "circulation" },
-                { jp: "巡査", reading: "じゅんさ", en: "policeman" },
-                { jp: "順々", reading: "じゅんじゅん", en: "in order" },
-                { jp: "純情", reading: "じゅんじょう", en: "pure heart" },
-                { jp: "将棋", reading: "しょうぎ", en: "Japanese chess" },
-                { jp: "蒸気", reading: "じょうき", en: "steam" },
-                { jp: "定規", reading: "じょうぎ", en: "ruler" },
-                { jp: "消極的", reading: "しょうきょくてき", en: "passive" },
-                { jp: "上下", reading: "じょうげ", en: "up and down" },
+                {
+                    "jp": "就任",
+                    "reading": "しゅうにん",
+                    "en": "inauguration",
+                    "meanings": [
+                        "inauguration",
+                        "assumption of office"
+                    ],
+                    "example": {
+                        "jp": "彼らは彼を委員会の議長に就任させた。",
+                        "en": "They installed him as chairman of the committee."
+                    }
+                },
+                {
+                    "jp": "周辺",
+                    "reading": "しゅうへん",
+                    "en": "vicinity",
+                    "meanings": [
+                        "circumference",
+                        "peripheral"
+                    ],
+                    "example": {
+                        "jp": "彼は南極周辺の地域を探検した。",
+                        "en": "He explored the region around the South Pole."
+                    }
+                },
+                {
+                    "jp": "重役",
+                    "reading": "じゅうやく",
+                    "en": "director",
+                    "meanings": [
+                        "director",
+                        "high executive"
+                    ],
+                    "example": {
+                        "jp": "重役たちは朝食会に集まっています。",
+                        "en": "The top execs are gathering for a power breakfast."
+                    }
+                },
+                {
+                    "jp": "重量",
+                    "reading": "じゅうりょう",
+                    "en": "weight",
+                    "meanings": [
+                        "heavyweight"
+                    ],
+                    "example": {
+                        "jp": "重い金庫の重量で床がぬけ落ちた。",
+                        "en": "The floor gave in under the weight of the heavy safe."
+                    }
+                },
+                {
+                    "jp": "重力",
+                    "reading": "じゅうりょく",
+                    "en": "gravity",
+                    "meanings": [
+                        "gravity"
+                    ],
+                    "example": {
+                        "jp": "月の重力は地球の６分の１である。",
+                        "en": "The gravity of the moon is one-sixth of that of the earth."
+                    }
+                },
+                {
+                    "jp": "熟語",
+                    "reading": "じゅくご",
+                    "en": "idiom",
+                    "meanings": [
+                        "idiom",
+                        "kanji compound"
+                    ],
+                    "example": {
+                        "jp": "日本語は四字熟語って結構あるね。",
+                        "en": "There are lots of four-character compound words in Japanese, huh?"
+                    }
+                },
+                {
+                    "jp": "祝日",
+                    "reading": "しゅくじつ",
+                    "en": "national holiday",
+                    "meanings": [
+                        "national holiday"
+                    ],
+                    "example": {
+                        "jp": "私たちは国民の祝日に旗を立てる。",
+                        "en": "We put up the flags on national holidays."
+                    }
+                },
+                {
+                    "jp": "主語",
+                    "reading": "しゅご",
+                    "en": "subject (grammar)",
+                    "meanings": [
+                        "(gram) subject"
+                    ],
+                    "example": {
+                        "jp": "文には普通、主語と動詞がある。",
+                        "en": "A sentence normally has a subject and a verb."
+                    }
+                },
+                {
+                    "jp": "寿命",
+                    "reading": "じゅみょう",
+                    "en": "life span",
+                    "meanings": [
+                        "life span"
+                    ],
+                    "example": {
+                        "jp": "日本人の平均寿命は大いに伸びた。",
+                        "en": "The average life span of the Japanese has lengthened to a great extent."
+                    }
+                },
+                {
+                    "jp": "主役",
+                    "reading": "しゅやく",
+                    "en": "leading role",
+                    "meanings": [
+                        "leading part"
+                    ],
+                    "example": {
+                        "jp": "ボブは今度の学園祭で初めて主役を演じる。",
+                        "en": "Bob will play the leading role for the first time in the next school festival."
+                    }
+                },
+                {
+                    "jp": "受話器",
+                    "reading": "じゅわき",
+                    "en": "telephone receiver",
+                    "meanings": [
+                        "(telephone) receiver"
+                    ],
+                    "example": {
+                        "jp": "彼は座るとすぐに受話器をとった。",
+                        "en": "As soon as he sat down, he picked up the telephone."
+                    }
+                },
+                {
+                    "jp": "循環",
+                    "reading": "じゅんかん",
+                    "en": "circulation",
+                    "meanings": [
+                        "circulation",
+                        "rotation",
+                        "cycle"
+                    ],
+                    "example": {
+                        "jp": "経済は今景気循環の頂点にある。",
+                        "en": "The economy is at peak of a business cycle at present."
+                    }
+                },
+                {
+                    "jp": "巡査",
+                    "reading": "じゅんさ",
+                    "en": "policeman",
+                    "meanings": [
+                        "policeman"
+                    ],
+                    "example": {
+                        "jp": "彼は巡査部長の地位に昇った。",
+                        "en": "He rose to the rank of sergeant."
+                    }
+                },
+                {
+                    "jp": "順々",
+                    "reading": "じゅんじゅん",
+                    "en": "in order",
+                    "meanings": [
+                        "in order",
+                        "in turn"
+                    ],
+                    "example": {
+                        "jp": "少年たちは順々にしゃべった。",
+                        "en": "All the boys spoke each in turn."
+                    }
+                },
+                {
+                    "jp": "純情",
+                    "reading": "じゅんじょう",
+                    "en": "pure heart",
+                    "meanings": [
+                        "pure heart"
+                    ],
+                    "example": {
+                        "jp": "君って、意外に純情だね。",
+                        "en": "I'm surprised that you're so naïve."
+                    }
+                },
+                {
+                    "jp": "将棋",
+                    "reading": "しょうぎ",
+                    "en": "Japanese chess",
+                    "meanings": [
+                        "Japanese chess"
+                    ],
+                    "example": {
+                        "jp": "日本の「将棋」は、チェスに相当する。",
+                        "en": "Japanese shogi corresponds to chess."
+                    }
+                },
+                {
+                    "jp": "蒸気",
+                    "reading": "じょうき",
+                    "en": "steam",
+                    "meanings": [
+                        "steam",
+                        "vapor"
+                    ],
+                    "example": {
+                        "jp": "彼は蒸気で船を動かすのに成功した。",
+                        "en": "He succeeded in applying steam to navigation."
+                    }
+                },
+                {
+                    "jp": "定規",
+                    "reading": "じょうぎ",
+                    "en": "ruler",
+                    "meanings": [
+                        "(measuring) ruler"
+                    ],
+                    "example": {
+                        "jp": "私は本を買い、彼は定規を買った。",
+                        "en": "I bought a book and he a ruler."
+                    }
+                },
+                {
+                    "jp": "消極的",
+                    "reading": "しょうきょくてき",
+                    "en": "passive",
+                    "meanings": [
+                        "passive"
+                    ],
+                    "example": {
+                        "jp": "警察が医療事故の立件に消極的だ。",
+                        "en": "The police are reluctant to pursue criminal charges in medical cases."
+                    }
+                },
+                {
+                    "jp": "上下",
+                    "reading": "じょうげ",
+                    "en": "up and down",
+                    "meanings": [
+                        "high and low",
+                        "up and down"
+                    ],
+                    "example": {
+                        "jp": "それ、上下逆に持っちゃ駄目だよ。",
+                        "en": "Don't hold it upside down."
+                    }
+                }
             ],
             [
-                { jp: "障子", reading: "しょうじ", en: "sliding door" },
-                { jp: "商社", reading: "しょうしゃ", en: "trading company" },
-                { jp: "乗車", reading: "じょうしゃ", en: "boarding a train" },
-                { jp: "上旬", reading: "じょうじゅん", en: "early part of month" },
-                { jp: "生ずる", reading: "しょうずる", en: "to cause" },
-                { jp: "小数", reading: "しょうすう", en: "fraction" },
-                { jp: "消毒", reading: "しょうどく", en: "disinfection" },
-                { jp: "勝敗", reading: "しょうはい", en: "win or loss" },
-                { jp: "蒸発", reading: "じょうはつ", en: "evaporation" },
-                { jp: "上品", reading: "じょうひん", en: "refined" },
-                { jp: "消防署", reading: "しょうぼうしょ", en: "fire station" },
-                { jp: "正味", reading: "しょうみ", en: "net weight" },
-                { jp: "消耗", reading: "しょうもう", en: "exhaustion" },
-                { jp: "初級", reading: "しょきゅう", en: "beginner level" },
-                { jp: "助教授", reading: "じょきょうじゅ", en: "assistant professor" },
-                { jp: "食塩", reading: "しょくえん", en: "table salt" },
-                { jp: "職人", reading: "しょくにん", en: "artisan" },
-                { jp: "書籍", reading: "しょせき", en: "book" },
-                { jp: "食器", reading: "しょっき", en: "tableware" },
-                { jp: "書店", reading: "しょてん", en: "bookshop" },
+                {
+                    "jp": "障子",
+                    "reading": "しょうじ",
+                    "en": "sliding door",
+                    "meanings": [
+                        "paper sliding door"
+                    ],
+                    "example": {
+                        "jp": "壁に耳あり、障子に目あり。",
+                        "en": "Walls have ears, shoji have eyes."
+                    }
+                },
+                {
+                    "jp": "商社",
+                    "reading": "しょうしゃ",
+                    "en": "trading company",
+                    "meanings": [
+                        "trading company"
+                    ],
+                    "example": {
+                        "jp": "私のおじは商社を経営しています。",
+                        "en": "My uncle manages a firm."
+                    }
+                },
+                {
+                    "jp": "乗車",
+                    "reading": "じょうしゃ",
+                    "en": "boarding a train",
+                    "meanings": [
+                        "taking a train",
+                        "entraining"
+                    ],
+                    "example": {
+                        "jp": "この列車乗車券は３カ月有効だ。",
+                        "en": "This ticket is valid for three months."
+                    }
+                },
+                {
+                    "jp": "上旬",
+                    "reading": "じょうじゅん",
+                    "en": "early part of month",
+                    "meanings": [
+                        "first 10 days of month"
+                    ],
+                    "example": {
+                        "jp": "トムは１０月上旬からここにいます。",
+                        "en": "Tom has been here since early October."
+                    }
+                },
+                {
+                    "jp": "生ずる",
+                    "reading": "しょうずる",
+                    "en": "to cause",
+                    "meanings": [
+                        "to cause",
+                        "to arise",
+                        "to be generated"
+                    ],
+                    "example": {
+                        "jp": "再開発によって地域に便益が生ずる。",
+                        "en": "Benefits accrue to the community from reconstruction."
+                    }
+                },
+                {
+                    "jp": "小数",
+                    "reading": "しょうすう",
+                    "en": "fraction",
+                    "meanings": [
+                        "fraction (part of)",
+                        "decimal"
+                    ],
+                    "example": {
+                        "jp": "次の分数を小数に直しなさい。",
+                        "en": "Convert the following fractions to decimals."
+                    }
+                },
+                {
+                    "jp": "消毒",
+                    "reading": "しょうどく",
+                    "en": "disinfection",
+                    "meanings": [
+                        "disinfection"
+                    ],
+                    "example": {
+                        "jp": "ほ乳瓶を煮沸消毒しなさい。",
+                        "en": "Boil the milk bottles."
+                    }
+                },
+                {
+                    "jp": "勝敗",
+                    "reading": "しょうはい",
+                    "en": "win or loss",
+                    "meanings": [
+                        "victory or defeat",
+                        "issue (of battle)"
+                    ],
+                    "example": {
+                        "jp": "喧嘩の勝敗は腕力では決まらない。",
+                        "en": "Whether you win or lose the fight is not determined by your physical strength."
+                    }
+                },
+                {
+                    "jp": "蒸発",
+                    "reading": "じょうはつ",
+                    "en": "evaporation",
+                    "meanings": [
+                        "evaporation",
+                        "unexplained disappearance"
+                    ],
+                    "example": {
+                        "jp": "水分は温められると蒸発する。",
+                        "en": "Water evaporates when it is heated."
+                    }
+                },
+                {
+                    "jp": "上品",
+                    "reading": "じょうひん",
+                    "en": "refined",
+                    "meanings": [
+                        "refined",
+                        "elegant",
+                        "well-mannered"
+                    ],
+                    "example": {
+                        "jp": "彼女は上品な態度をしています。",
+                        "en": "She has an elegant manner."
+                    }
+                },
+                {
+                    "jp": "消防署",
+                    "reading": "しょうぼうしょ",
+                    "en": "fire station",
+                    "meanings": [
+                        "fire station"
+                    ],
+                    "example": {
+                        "jp": "消防署は空港のすぐ隣にあります。",
+                        "en": "The fire department is located right next to the airport."
+                    }
+                },
+                {
+                    "jp": "正味",
+                    "reading": "しょうみ",
+                    "en": "net weight",
+                    "meanings": [
+                        "net (weight)"
+                    ],
+                    "example": {
+                        "jp": "このジャムの正味重量は２００グラムです。",
+                        "en": "The net weight of this jam is 200 grams."
+                    }
+                },
+                {
+                    "jp": "消耗",
+                    "reading": "しょうもう",
+                    "en": "exhaustion",
+                    "meanings": [
+                        "exhaustion",
+                        "consumption"
+                    ],
+                    "example": {
+                        "jp": "プリンターは、消耗品ですか？",
+                        "en": "Are printers a non-durable good?"
+                    }
+                },
+                {
+                    "jp": "初級",
+                    "reading": "しょきゅう",
+                    "en": "beginner level",
+                    "meanings": [
+                        "elementary level"
+                    ],
+                    "example": {
+                        "jp": "これは初級の教科書です。",
+                        "en": "This is a beginner's textbook."
+                    }
+                },
+                {
+                    "jp": "助教授",
+                    "reading": "じょきょうじゅ",
+                    "en": "assistant professor",
+                    "meanings": [
+                        "assistant professor"
+                    ],
+                    "example": {
+                        "jp": "私は教授です、いやもっと正確に言えば、助教授です。",
+                        "en": "I'm a professor, or rather an associate professor, to be exact."
+                    }
+                },
+                {
+                    "jp": "食塩",
+                    "reading": "しょくえん",
+                    "en": "table salt",
+                    "meanings": [
+                        "table salt"
+                    ],
+                    "example": {
+                        "jp": "めんどうですが食塩をとっていただけませんか。",
+                        "en": "May I trouble you for the salt?"
+                    }
+                },
+                {
+                    "jp": "職人",
+                    "reading": "しょくにん",
+                    "en": "artisan",
+                    "meanings": [
+                        "artisan",
+                        "craftsman"
+                    ],
+                    "example": {
+                        "jp": "下手な職人は道具にけちをつける。",
+                        "en": "A bad workman blames his tools."
+                    }
+                },
+                {
+                    "jp": "書籍",
+                    "reading": "しょせき",
+                    "en": "book",
+                    "meanings": [
+                        "book",
+                        "publication"
+                    ],
+                    "example": {
+                        "jp": "自然と書籍はそれを見る眼のものだ。",
+                        "en": "Nature and books belong to the eyes that see them."
+                    }
+                },
+                {
+                    "jp": "食器",
+                    "reading": "しょっき",
+                    "en": "tableware",
+                    "meanings": [
+                        "tableware"
+                    ],
+                    "example": {
+                        "jp": "トムは犬の食器に食べ物を入れた。",
+                        "en": "Tom put some food into the dog's dish."
+                    }
+                },
+                {
+                    "jp": "書店",
+                    "reading": "しょてん",
+                    "en": "bookshop",
+                    "meanings": [
+                        "bookshop"
+                    ],
+                    "example": {
+                        "jp": "この本は駅前の書店で買ったんだ。",
+                        "en": "I bought this book at the bookstore in front of the station."
+                    }
+                }
             ],
             [
-                { jp: "書道", reading: "しょどう", en: "calligraphy" },
-                { jp: "白髪", reading: "しらが", en: "gray hair" },
-                { jp: "素人", reading: "しろうと", en: "amateur" },
-                { jp: "芯", reading: "しん", en: "core" },
-                { jp: "真空", reading: "しんくう", en: "vacuum" },
-                { jp: "人事", reading: "じんじ", en: "personnel" },
-                { jp: "心身", reading: "しんしん", en: "mind and body" },
-                { jp: "人造", reading: "じんぞう", en: "man-made" },
-                { jp: "寝台", reading: "しんだい", en: "berth" },
-                { jp: "侵入", reading: "しんにゅう", en: "invasion" },
-                { jp: "人文科学", reading: "じんぶんかがく", en: "humanities" },
-                { jp: "人命", reading: "じんめい", en: "human life" },
-                { jp: "深夜", reading: "しんや", en: "late at night" },
-                { jp: "針路", reading: "しんろ", en: "course" },
-                { jp: "神話", reading: "しんわ", en: "myth" },
-                { jp: "水産", reading: "すいさん", en: "marine products" },
-                { jp: "炊事", reading: "すいじ", en: "cooking" },
-                { jp: "水蒸気", reading: "すいじょうき", en: "water vapor" },
-                { jp: "水素", reading: "すいそ", en: "hydrogen" },
-                { jp: "垂直", reading: "すいちょく", en: "vertical" },
+                {
+                    "jp": "書道",
+                    "reading": "しょどう",
+                    "en": "calligraphy",
+                    "meanings": [
+                        "calligraphy"
+                    ],
+                    "example": {
+                        "jp": "書道は少しかじったことがある。",
+                        "en": "I know a bit about calligraphy."
+                    }
+                },
+                {
+                    "jp": "白髪",
+                    "reading": "しらが",
+                    "en": "gray hair",
+                    "meanings": [
+                        "white or grey hair",
+                        "trendy hair bleaching"
+                    ],
+                    "example": {
+                        "jp": "白髪が知恵を生み出すわけではない。",
+                        "en": "It is not white hair that engenders wisdom."
+                    }
+                },
+                {
+                    "jp": "素人",
+                    "reading": "しろうと",
+                    "en": "amateur",
+                    "meanings": [
+                        "layman",
+                        "amateur",
+                        "novice"
+                    ],
+                    "example": {
+                        "jp": "法律用語の大半は素人にはわかりにくい。",
+                        "en": "Much legal language is obscure to a layman."
+                    }
+                },
+                {
+                    "jp": "芯",
+                    "reading": "しん",
+                    "en": "core",
+                    "meanings": [
+                        "core",
+                        "heart",
+                        "wick"
+                    ],
+                    "example": {
+                        "jp": "体の芯まで冷え切ってしまった。",
+                        "en": "I'm chilled to the bone."
+                    }
+                },
+                {
+                    "jp": "真空",
+                    "reading": "しんくう",
+                    "en": "vacuum",
+                    "meanings": [
+                        "vacuum"
+                    ],
+                    "example": {
+                        "jp": "その爆発で真空管は粉々になった。",
+                        "en": "The tube was shattered by the explosion."
+                    }
+                },
+                {
+                    "jp": "人事",
+                    "reading": "じんじ",
+                    "en": "personnel",
+                    "meanings": [
+                        "human resources",
+                        "personnel management"
+                    ],
+                    "example": {
+                        "jp": "人事を尽くして天命を待つ。",
+                        "en": "Man proposes, God disposes."
+                    }
+                },
+                {
+                    "jp": "心身",
+                    "reading": "しんしん",
+                    "en": "mind and body",
+                    "meanings": [
+                        "mind and body"
+                    ],
+                    "example": {
+                        "jp": "青年時代は心身の発達が著しい。",
+                        "en": "Moral and physical development are remarkable in the youth."
+                    }
+                },
+                {
+                    "jp": "人造",
+                    "reading": "じんぞう",
+                    "en": "man-made",
+                    "meanings": [
+                        "man-made",
+                        "synthetic",
+                        "artificial"
+                    ],
+                    "example": {
+                        "jp": "人造皮革は本物の皮にかなわない。",
+                        "en": "Artificial leather can't compare with the real thing."
+                    }
+                },
+                {
+                    "jp": "寝台",
+                    "reading": "しんだい",
+                    "en": "berth",
+                    "meanings": [
+                        "bed"
+                    ],
+                    "example": {
+                        "jp": "寝台車を予約したいのですが。",
+                        "en": "I'd like to reserve a sleeping berth."
+                    }
+                },
+                {
+                    "jp": "侵入",
+                    "reading": "しんにゅう",
+                    "en": "invasion",
+                    "meanings": [
+                        "invasion",
+                        "raid",
+                        "trespass"
+                    ],
+                    "example": {
+                        "jp": "彼らは土地を侵入者に明け渡した。",
+                        "en": "They yielded their land to the invaders."
+                    }
+                },
+                {
+                    "jp": "人文科学",
+                    "reading": "じんぶんかがく",
+                    "en": "humanities",
+                    "meanings": [
+                        "social sciences",
+                        "humanities"
+                    ],
+                    "example": {
+                        "jp": "歴史学は人文科学の一部門である。",
+                        "en": "History is a branch of the humanities."
+                    }
+                },
+                {
+                    "jp": "人命",
+                    "reading": "じんめい",
+                    "en": "human life",
+                    "meanings": [
+                        "(human) life"
+                    ],
+                    "example": {
+                        "jp": "どんな大金も人命には換えられない。",
+                        "en": "Even a large sum of money cannot take the place of a man's life."
+                    }
+                },
+                {
+                    "jp": "深夜",
+                    "reading": "しんや",
+                    "en": "late at night",
+                    "meanings": [
+                        "late at night"
+                    ],
+                    "example": {
+                        "jp": "深夜シャワーを浴びたことあるの？",
+                        "en": "Have you ever taken a shower in the middle of the night?"
+                    }
+                },
+                {
+                    "jp": "針路",
+                    "reading": "しんろ",
+                    "en": "course",
+                    "meanings": [
+                        "course",
+                        "direction"
+                    ],
+                    "example": null
+                },
+                {
+                    "jp": "神話",
+                    "reading": "しんわ",
+                    "en": "myth",
+                    "meanings": [
+                        "myth",
+                        "legend"
+                    ],
+                    "example": {
+                        "jp": "彼は古代神話に基づく小説を書いた。",
+                        "en": "He wrote a novel based on ancient myths."
+                    }
+                },
+                {
+                    "jp": "水産",
+                    "reading": "すいさん",
+                    "en": "marine products",
+                    "meanings": [
+                        "marine products",
+                        "fisheries"
+                    ],
+                    "example": null
+                },
+                {
+                    "jp": "炊事",
+                    "reading": "すいじ",
+                    "en": "cooking",
+                    "meanings": [
+                        "cooking"
+                    ],
+                    "example": {
+                        "jp": "私は炊事が全然できない。",
+                        "en": "I'm all thumbs in the kitchen."
+                    }
+                },
+                {
+                    "jp": "水蒸気",
+                    "reading": "すいじょうき",
+                    "en": "water vapor",
+                    "meanings": [
+                        "water vapor",
+                        "steam"
+                    ],
+                    "example": {
+                        "jp": "水は沸騰すると水蒸気になる。",
+                        "en": "Water turns into steam when it is boiled."
+                    }
+                },
+                {
+                    "jp": "水素",
+                    "reading": "すいそ",
+                    "en": "hydrogen",
+                    "meanings": [
+                        "hydrogen"
+                    ],
+                    "example": {
+                        "jp": "水は水素と酸素で構成されている。",
+                        "en": "Water consists of hydrogen and oxygen."
+                    }
+                },
+                {
+                    "jp": "垂直",
+                    "reading": "すいちょく",
+                    "en": "vertical",
+                    "meanings": [
+                        "vertical",
+                        "perpendicular"
+                    ],
+                    "example": {
+                        "jp": "その柱は垂直になっていない。",
+                        "en": "That pole is not quite vertical."
+                    }
+                }
             ],
             [
-                { jp: "推定", reading: "すいてい", en: "presumption" },
-                { jp: "水筒", reading: "すいとう", en: "water bottle" },
-                { jp: "随筆", reading: "ずいひつ", en: "essay" },
-                { jp: "水分", reading: "すいぶん", en: "moisture" },
-                { jp: "水平", reading: "すいへい", en: "horizontal" },
-                { jp: "水面", reading: "すいめん", en: "water surface" },
-                { jp: "頭脳", reading: "ずのう", en: "brain" },
-                { jp: "隙間", reading: "すきま", en: "gap" },
-                { jp: "鈴", reading: "すず", en: "bell" },
-                { jp: "涼む", reading: "すずむ", en: "to cool oneself" },
-                { jp: "素直", reading: "すなお", en: "obedient" },
-                { jp: "寸法", reading: "すんぽう", en: "measurement" },
-                { jp: "税関", reading: "ぜいかん", en: "customs" },
-                { jp: "製作", reading: "せいさく", en: "production" },
-                { jp: "清書", reading: "せいしょ", en: "clean copy" },
-                { jp: "整数", reading: "せいすう", en: "integer" },
-                { jp: "清掃", reading: "せいそう", en: "cleaning" },
-                { jp: "生存", reading: "せいぞん", en: "existence" },
-                { jp: "性能", reading: "せいのう", en: "performance" },
-                { jp: "整備", reading: "せいび", en: "maintenance" },
-            ],
-        ],
+                {
+                    "jp": "推定",
+                    "reading": "すいてい",
+                    "en": "presumption",
+                    "meanings": [
+                        "presumption",
+                        "assumption",
+                        "estimation"
+                    ],
+                    "example": {
+                        "jp": "彼女は３０歳過ぎだと推定する。",
+                        "en": "I guess that she is over thirty."
+                    }
+                },
+                {
+                    "jp": "水筒",
+                    "reading": "すいとう",
+                    "en": "water bottle",
+                    "meanings": [
+                        "canteen",
+                        "flask",
+                        "water bottle"
+                    ],
+                    "example": {
+                        "jp": "水筒にはほとんど水が残っていない。",
+                        "en": "There is little water left in the canteen."
+                    }
+                },
+                {
+                    "jp": "随筆",
+                    "reading": "ずいひつ",
+                    "en": "essay",
+                    "meanings": [
+                        "essays",
+                        "miscellaneous writings"
+                    ],
+                    "example": {
+                        "jp": "彼女は随筆を書き始めた。",
+                        "en": "She set about writing the essay."
+                    }
+                },
+                {
+                    "jp": "水分",
+                    "reading": "すいぶん",
+                    "en": "moisture",
+                    "meanings": [
+                        "moisture"
+                    ],
+                    "example": {
+                        "jp": "水分をたくさん取ってください。",
+                        "en": "You should drink a lot of liquid."
+                    }
+                },
+                {
+                    "jp": "水平",
+                    "reading": "すいへい",
+                    "en": "horizontal",
+                    "meanings": [
+                        "level",
+                        "horizontal"
+                    ],
+                    "example": {
+                        "jp": "水平線に漁船がいくつか見えます。",
+                        "en": "I see some fishing boats on the horizon."
+                    }
+                },
+                {
+                    "jp": "水面",
+                    "reading": "すいめん",
+                    "en": "water surface",
+                    "meanings": [
+                        "water's surface"
+                    ],
+                    "example": {
+                        "jp": "１枚の落ち葉が水面に浮かんでいた。",
+                        "en": "A fallen leaf floated on the surface of the water."
+                    }
+                },
+                {
+                    "jp": "頭脳",
+                    "reading": "ずのう",
+                    "en": "brain",
+                    "meanings": [
+                        "head",
+                        "brains",
+                        "intellect"
+                    ],
+                    "example": {
+                        "jp": "彼は我が国有数の頭脳の一人だ。",
+                        "en": "He is one of the best brains in our country."
+                    }
+                },
+                {
+                    "jp": "隙間",
+                    "reading": "すきま",
+                    "en": "gap",
+                    "meanings": [
+                        "crack",
+                        "gap",
+                        "opening"
+                    ],
+                    "example": {
+                        "jp": "カーテンの隙間から光が差し込む。",
+                        "en": "Light flows in through a gap in the curtain."
+                    }
+                },
+                {
+                    "jp": "鈴",
+                    "reading": "すず",
+                    "en": "bell",
+                    "meanings": [
+                        "bell"
+                    ],
+                    "example": {
+                        "jp": "だれがその猫に鈴をつけられるか。",
+                        "en": "Who can put a bell on the cat?"
+                    }
+                },
+                {
+                    "jp": "涼む",
+                    "reading": "すずむ",
+                    "en": "to cool oneself",
+                    "meanings": [
+                        "to cool oneself",
+                        "to cool off"
+                    ],
+                    "example": {
+                        "jp": "ここは風通しが良くて、涼むにはもってこいの場所なんだ。",
+                        "en": "It's well-ventilated and an ideal place to cool down."
+                    }
+                },
+                {
+                    "jp": "素直",
+                    "reading": "すなお",
+                    "en": "obedient",
+                    "meanings": [
+                        "obedient",
+                        "meek",
+                        "docile"
+                    ],
+                    "example": {
+                        "jp": "素直に言えば、君は誤りを犯した。",
+                        "en": "Frankly speaking, you made a mistake."
+                    }
+                },
+                {
+                    "jp": "寸法",
+                    "reading": "すんぽう",
+                    "en": "measurement",
+                    "meanings": [
+                        "measurement",
+                        "size",
+                        "dimension"
+                    ],
+                    "example": {
+                        "jp": "これらの寸法は設計図に一致する。",
+                        "en": "These measurements conform to the blueprints."
+                    }
+                },
+                {
+                    "jp": "税関",
+                    "reading": "ぜいかん",
+                    "en": "customs",
+                    "meanings": [
+                        "customs"
+                    ],
+                    "example": {
+                        "jp": "税関申告書に記入してください。",
+                        "en": "Please fill out the Customs Declaration Form."
+                    }
+                },
+                {
+                    "jp": "製作",
+                    "reading": "せいさく",
+                    "en": "production",
+                    "meanings": [
+                        "manufacture",
+                        "production"
+                    ],
+                    "example": {
+                        "jp": "小説をもとに製作された映画です。",
+                        "en": "This film is based on a novel."
+                    }
+                },
+                {
+                    "jp": "清書",
+                    "reading": "せいしょ",
+                    "en": "clean copy",
+                    "meanings": [
+                        "clean copy"
+                    ],
+                    "example": {
+                        "jp": "作文を清書する必要はありません。",
+                        "en": "You don't have to write out a clean copy of your composition."
+                    }
+                },
+                {
+                    "jp": "整数",
+                    "reading": "せいすう",
+                    "en": "integer",
+                    "meanings": [
+                        "integer"
+                    ],
+                    "example": null
+                },
+                {
+                    "jp": "清掃",
+                    "reading": "せいそう",
+                    "en": "cleaning",
+                    "meanings": [
+                        "cleaning"
+                    ],
+                    "example": {
+                        "jp": "洗面所をつかった後には、清掃すること。",
+                        "en": "Clean up after you have finished using the bathroom."
+                    }
+                },
+                {
+                    "jp": "生存",
+                    "reading": "せいぞん",
+                    "en": "existence",
+                    "meanings": [
+                        "existence",
+                        "being",
+                        "survival"
+                    ],
+                    "example": {
+                        "jp": "その地震の生存者は２名だけだった。",
+                        "en": "Only two people survived the earthquake."
+                    }
+                },
+                {
+                    "jp": "性能",
+                    "reading": "せいのう",
+                    "en": "performance",
+                    "meanings": [
+                        "ability",
+                        "capability"
+                    ],
+                    "example": {
+                        "jp": "電気自動車の性能はよくなっている。",
+                        "en": "The performance of electric cars has improved."
+                    }
+                },
+                {
+                    "jp": "整備",
+                    "reading": "せいび",
+                    "en": "maintenance",
+                    "meanings": [
+                        "maintenance",
+                        "overhaul"
+                    ],
+                    "example": {
+                        "jp": "彼は自分の車をよく整備している。",
+                        "en": "He maintains his car well."
+                    }
+                }
+            ]
+        ]
     },
     {
-        level: 5,
-        jlpt: 'N1',
-        title: 'N1 · Advanced',
-        sets: [
+        "level": 5,
+        "jlpt": "N1",
+        "title": "N1 · Advanced",
+        "sets": [
             [
-                { jp: "原則", reading: "げんそく", en: "principle" },
-                { jp: "見地", reading: "けんち", en: "viewpoint" },
-                { jp: "厳密", reading: "げんみつ", en: "rigorous" },
-                { jp: "賢明", reading: "けんめい", en: "wise" },
-                { jp: "権力", reading: "けんりょく", en: "power" },
-                { jp: "語彙", reading: "ごい", en: "vocabulary" },
-                { jp: "好意", reading: "こうい", en: "goodwill" },
-                { jp: "抗議", reading: "こうぎ", en: "protest" },
-                { jp: "交渉", reading: "こうしょう", en: "negotiation" },
-                { jp: "向上", reading: "こうじょう", en: "improvement" },
-                { jp: "購入", reading: "こうにゅう", en: "purchase" },
-                { jp: "効率", reading: "こうりつ", en: "efficiency" },
-                { jp: "告白", reading: "こくはく", en: "confession" },
-                { jp: "国防", reading: "こくぼう", en: "national defense" },
-                { jp: "心得", reading: "こころえ", en: "knowledge" },
-                { jp: "誤差", reading: "ごさ", en: "error" },
-                { jp: "孤独", reading: "こどく", en: "loneliness" },
-                { jp: "誇張", reading: "こちょう", en: "exaggeration" },
-                { jp: "個性", reading: "こせい", en: "individuality" },
-                { jp: "固定", reading: "こてい", en: "fixed" },
+                {
+                    "jp": "原則",
+                    "reading": "げんそく",
+                    "en": "principle",
+                    "meanings": [
+                        "principle",
+                        "general rule"
+                    ],
+                    "example": {
+                        "jp": "この店は現金取り引きが原則です。",
+                        "en": "This store is operated on a cash basis."
+                    }
+                },
+                {
+                    "jp": "見地",
+                    "reading": "けんち",
+                    "en": "viewpoint",
+                    "meanings": [
+                        "point of view"
+                    ],
+                    "example": {
+                        "jp": "彼は人生を全て、金銭の見地から見る。",
+                        "en": "He sees all life in terms of money."
+                    }
+                },
+                {
+                    "jp": "厳密",
+                    "reading": "げんみつ",
+                    "en": "rigorous",
+                    "meanings": [
+                        "strict",
+                        "close"
+                    ],
+                    "example": {
+                        "jp": "厳密に言うと、トマトは果物です。",
+                        "en": "Strictly speaking, a tomato is a fruit."
+                    }
+                },
+                {
+                    "jp": "賢明",
+                    "reading": "けんめい",
+                    "en": "wise",
+                    "meanings": [
+                        "wisdom",
+                        "intelligence",
+                        "prudence"
+                    ],
+                    "example": {
+                        "jp": "彼女の忠告に従うとは賢明ですね。",
+                        "en": "It is sensible of you to follow her advice."
+                    }
+                },
+                {
+                    "jp": "権力",
+                    "reading": "けんりょく",
+                    "en": "power",
+                    "meanings": [
+                        "(political) power",
+                        "authority",
+                        "influence"
+                    ],
+                    "example": {
+                        "jp": "彼には権力も能力も備わっている。",
+                        "en": "He has got both authority and ability."
+                    }
+                },
+                {
+                    "jp": "語彙",
+                    "reading": "ごい",
+                    "en": "vocabulary",
+                    "meanings": [
+                        "vocabulary",
+                        "glossary"
+                    ],
+                    "example": {
+                        "jp": "読書は語彙を増やすのに役に立つ。",
+                        "en": "Reading helps you build up your vocabulary."
+                    }
+                },
+                {
+                    "jp": "好意",
+                    "reading": "こうい",
+                    "en": "goodwill",
+                    "meanings": [
+                        "good will",
+                        "favor",
+                        "courtesy"
+                    ],
+                    "example": {
+                        "jp": "彼は彼女の好意を得ようと願った。",
+                        "en": "He besought her to favor him."
+                    }
+                },
+                {
+                    "jp": "抗議",
+                    "reading": "こうぎ",
+                    "en": "protest",
+                    "meanings": [
+                        "protest",
+                        "objection"
+                    ],
+                    "example": {
+                        "jp": "彼は指を立てて抗議の意を示した。",
+                        "en": "He raised a finger in protest."
+                    }
+                },
+                {
+                    "jp": "交渉",
+                    "reading": "こうしょう",
+                    "en": "negotiation",
+                    "meanings": [
+                        "negotiation"
+                    ],
+                    "example": {
+                        "jp": "労働組合は経営陣と交渉している。",
+                        "en": "The labor union is negotiating with the owners."
+                    }
+                },
+                {
+                    "jp": "向上",
+                    "reading": "こうじょう",
+                    "en": "improvement",
+                    "meanings": [
+                        "rise",
+                        "improvement",
+                        "progress"
+                    ],
+                    "example": {
+                        "jp": "彼女達は社会的地位の向上を願った。",
+                        "en": "The women longed to climb up the social ladder."
+                    }
+                },
+                {
+                    "jp": "購入",
+                    "reading": "こうにゅう",
+                    "en": "purchase",
+                    "meanings": [
+                        "purchase",
+                        "buy"
+                    ],
+                    "example": {
+                        "jp": "私はその品物を半額で購入した。",
+                        "en": "I purchased the goods for half price."
+                    }
+                },
+                {
+                    "jp": "効率",
+                    "reading": "こうりつ",
+                    "en": "efficiency",
+                    "meanings": [
+                        "efficiency"
+                    ],
+                    "example": {
+                        "jp": "勉強は効率的にしなくてはいけない。",
+                        "en": "You should study in an efficient manner."
+                    }
+                },
+                {
+                    "jp": "告白",
+                    "reading": "こくはく",
+                    "en": "confession",
+                    "meanings": [
+                        "confession",
+                        "acknowledgment"
+                    ],
+                    "example": {
+                        "jp": "彼は自分が無神論者だと告白した。",
+                        "en": "He avowed himself an atheist."
+                    }
+                },
+                {
+                    "jp": "国防",
+                    "reading": "こくぼう",
+                    "en": "national defense",
+                    "meanings": [
+                        "national defense"
+                    ],
+                    "example": {
+                        "jp": "国防のため大きな額が計上された。",
+                        "en": "A considerable amount of money was appropriated for the national defense."
+                    }
+                },
+                {
+                    "jp": "心得",
+                    "reading": "こころえ",
+                    "en": "knowledge",
+                    "meanings": [
+                        "knowledge",
+                        "information"
+                    ],
+                    "example": {
+                        "jp": "彼は中庸を心得たじんぶつである。",
+                        "en": "He is man of moderate views."
+                    }
+                },
+                {
+                    "jp": "誤差",
+                    "reading": "ごさ",
+                    "en": "error",
+                    "meanings": [
+                        "error"
+                    ],
+                    "example": {
+                        "jp": "我々は誤差を見込んで余裕をとっておいた。",
+                        "en": "We left a margin for error in our estimates."
+                    }
+                },
+                {
+                    "jp": "孤独",
+                    "reading": "こどく",
+                    "en": "loneliness",
+                    "meanings": [
+                        "isolation",
+                        "loneliness",
+                        "solitude"
+                    ],
+                    "example": {
+                        "jp": "富と名声はあるのに、彼は孤独だ。",
+                        "en": "For all his wealth and fame, he is a lonely man."
+                    }
+                },
+                {
+                    "jp": "誇張",
+                    "reading": "こちょう",
+                    "en": "exaggeration",
+                    "meanings": [
+                        "exaggeration"
+                    ],
+                    "example": {
+                        "jp": "彼を天才と呼んでも誇張ではない。",
+                        "en": "It is no exaggeration to call him a genius."
+                    }
+                },
+                {
+                    "jp": "個性",
+                    "reading": "こせい",
+                    "en": "individuality",
+                    "meanings": [
+                        "individuality",
+                        "personality",
+                        "idiosyncrasy"
+                    ],
+                    "example": {
+                        "jp": "彼女は個性的な話し方をしていた。",
+                        "en": "She had an individual style of speaking."
+                    }
+                },
+                {
+                    "jp": "固定",
+                    "reading": "こてい",
+                    "en": "fixed",
+                    "meanings": [
+                        "fixation",
+                        "fixing (e.g., salary, capital)"
+                    ],
+                    "example": {
+                        "jp": "階級組織は長い間固定されてきた。",
+                        "en": "The hierarchy of rank has long been fixed."
+                    }
+                }
             ],
             [
-                { jp: "限定", reading: "げんてい", en: "limit" },
-                { jp: "原油", reading: "げんゆ", en: "crude oil" },
-                { jp: "言論", reading: "げんろん", en: "discussion" },
-                { jp: "行為", reading: "こうい", en: "act" },
-                { jp: "合意", reading: "ごうい", en: "agreement" },
-                { jp: "工学", reading: "こうがく", en: "engineering" },
-                { jp: "皇居", reading: "こうきょ", en: "Imperial Palace" },
-                { jp: "鉱業", reading: "こうぎょう", en: "mining industry" },
-                { jp: "高原", reading: "こうげん", en: "highland" },
-                { jp: "考古学", reading: "こうこがく", en: "archaeology" },
-                { jp: "工作", reading: "こうさく", en: "handicraft" },
-                { jp: "鉱山", reading: "こうざん", en: "mine" },
-                { jp: "講習", reading: "こうしゅう", en: "short course" },
-                { jp: "口述", reading: "こうじゅつ", en: "oral statement" },
-                { jp: "高尚", reading: "こうしょう", en: "refined" },
-                { jp: "行進", reading: "こうしん", en: "march" },
-                { jp: "香辛料", reading: "こうしんりょう", en: "spices" },
-                { jp: "洪水", reading: "こうずい", en: "flood" },
-                { jp: "構想", reading: "こうそう", en: "concept" },
-                { jp: "後退", reading: "こうたい", en: "retreat" },
+                {
+                    "jp": "限定",
+                    "reading": "げんてい",
+                    "en": "limit",
+                    "meanings": [
+                        "limit",
+                        "restriction"
+                    ],
+                    "example": {
+                        "jp": "開店と同時に限定品に客が殺到した。",
+                        "en": "As soon as the store opened, customers rushed in towards the limited edition."
+                    }
+                },
+                {
+                    "jp": "原油",
+                    "reading": "げんゆ",
+                    "en": "crude oil",
+                    "meanings": [
+                        "crude oil"
+                    ],
+                    "example": {
+                        "jp": "原油価格の値下がりが続いている。",
+                        "en": "The crude oil price is falling further."
+                    }
+                },
+                {
+                    "jp": "言論",
+                    "reading": "げんろん",
+                    "en": "discussion",
+                    "meanings": [
+                        "discussion",
+                        "speech"
+                    ],
+                    "example": {
+                        "jp": "私はあらゆる言論の自由に賛成だ。",
+                        "en": "I stand for freedom of speech for everyone."
+                    }
+                },
+                {
+                    "jp": "行為",
+                    "reading": "こうい",
+                    "en": "act",
+                    "meanings": [
+                        "act",
+                        "deed",
+                        "conduct"
+                    ],
+                    "example": {
+                        "jp": "盲人に手を貸すのは親切な行為だ。",
+                        "en": "Helping a blind man is an act of kindness."
+                    }
+                },
+                {
+                    "jp": "合意",
+                    "reading": "ごうい",
+                    "en": "agreement",
+                    "meanings": [
+                        "agreement",
+                        "consent",
+                        "mutual understanding"
+                    ],
+                    "example": {
+                        "jp": "彼らはそれで合意に達するだろう。",
+                        "en": "They will agree on that."
+                    }
+                },
+                {
+                    "jp": "工学",
+                    "reading": "こうがく",
+                    "en": "engineering",
+                    "meanings": [
+                        "engineering"
+                    ],
+                    "example": {
+                        "jp": "電子工学の専門用語がわからない。",
+                        "en": "I don't understand electronics shoptalk."
+                    }
+                },
+                {
+                    "jp": "皇居",
+                    "reading": "こうきょ",
+                    "en": "Imperial Palace",
+                    "meanings": [
+                        "Imperial Palace"
+                    ],
+                    "example": {
+                        "jp": "最高裁判所は皇居の近くにある。",
+                        "en": "The Supreme Court is located near the Imperial Palace."
+                    }
+                },
+                {
+                    "jp": "鉱業",
+                    "reading": "こうぎょう",
+                    "en": "mining industry",
+                    "meanings": [
+                        "mining industry"
+                    ],
+                    "example": {
+                        "jp": "鉱業はチリの主要な収入源の一つである。",
+                        "en": "Mining is one of the main sources of wealth in Chile."
+                    }
+                },
+                {
+                    "jp": "高原",
+                    "reading": "こうげん",
+                    "en": "highland",
+                    "meanings": [
+                        "tableland",
+                        "plateau"
+                    ],
+                    "example": {
+                        "jp": "高原を散歩するのは楽しい。",
+                        "en": "It's pleasant to take a walk on the plateau."
+                    }
+                },
+                {
+                    "jp": "考古学",
+                    "reading": "こうこがく",
+                    "en": "archaeology",
+                    "meanings": [
+                        "archeology"
+                    ],
+                    "example": {
+                        "jp": "考古学は人類が残した痕跡の研究を通し、人類の活動とその変化を研究する学問である。",
+                        "en": "Archeology is a science that studies the activities of human beings and their changes through the study of the traces left by them."
+                    }
+                },
+                {
+                    "jp": "工作",
+                    "reading": "こうさく",
+                    "en": "handicraft",
+                    "meanings": [
+                        "handicraft",
+                        "maneuvering"
+                    ],
+                    "example": {
+                        "jp": "この手の工作はすぐにバレる。",
+                        "en": "It won't be long before they find out what we're trying to do here."
+                    }
+                },
+                {
+                    "jp": "鉱山",
+                    "reading": "こうざん",
+                    "en": "mine",
+                    "meanings": [
+                        "mine"
+                    ],
+                    "example": {
+                        "jp": "２年間、鉱山作業員だったんだ。",
+                        "en": "I was a miner for two years."
+                    }
+                },
+                {
+                    "jp": "講習",
+                    "reading": "こうしゅう",
+                    "en": "short course",
+                    "meanings": [
+                        "short course",
+                        "training"
+                    ],
+                    "example": {
+                        "jp": "彼女は週に一度料理の講習を受ける。",
+                        "en": "She takes cooking lessons once a week."
+                    }
+                },
+                {
+                    "jp": "口述",
+                    "reading": "こうじゅつ",
+                    "en": "oral statement",
+                    "meanings": [
+                        "verbal statement"
+                    ],
+                    "example": {
+                        "jp": "秘書はボスが口述するのを受けた。",
+                        "en": "The secretary took dictation from her boss."
+                    }
+                },
+                {
+                    "jp": "高尚",
+                    "reading": "こうしょう",
+                    "en": "refined",
+                    "meanings": [
+                        "high",
+                        "noble",
+                        "refined"
+                    ],
+                    "example": {
+                        "jp": "彼は趣味が高尚です。",
+                        "en": "He has elegant tastes."
+                    }
+                },
+                {
+                    "jp": "行進",
+                    "reading": "こうしん",
+                    "en": "march",
+                    "meanings": [
+                        "march",
+                        "parade"
+                    ],
+                    "example": {
+                        "jp": "隊長は兵士たちを従えて行進した。",
+                        "en": "The commanding officer marched, with soldiers following behind."
+                    }
+                },
+                {
+                    "jp": "香辛料",
+                    "reading": "こうしんりょう",
+                    "en": "spices",
+                    "meanings": [
+                        "spices"
+                    ],
+                    "example": {
+                        "jp": "韓国料理は、香辛料のきいた味でよく知られている。",
+                        "en": "Korean food is noted for its spicy flavor."
+                    }
+                },
+                {
+                    "jp": "洪水",
+                    "reading": "こうずい",
+                    "en": "flood",
+                    "meanings": [
+                        "flood"
+                    ],
+                    "example": {
+                        "jp": "大洪水で現地の交通網が麻痺した。",
+                        "en": "The massive flood paralyzed the local transportation network."
+                    }
+                },
+                {
+                    "jp": "構想",
+                    "reading": "こうそう",
+                    "en": "concept",
+                    "meanings": [
+                        "plan",
+                        "plot",
+                        "idea",
+                        "conception"
+                    ],
+                    "example": {
+                        "jp": "彼女が建設的な構想を持つ。",
+                        "en": "She has constructive ideas."
+                    }
+                },
+                {
+                    "jp": "後退",
+                    "reading": "こうたい",
+                    "en": "retreat",
+                    "meanings": [
+                        "retreat",
+                        "backspace"
+                    ],
+                    "example": {
+                        "jp": "彼は前進も後退もすまいと決めた。",
+                        "en": "He decided neither to advance nor to retreat."
+                    }
+                }
             ],
             [
-                { jp: "光沢", reading: "こうたく", en: "luster" },
-                { jp: "公団", reading: "こうだん", en: "public corporation" },
-                { jp: "好調", reading: "こうちょう", en: "favorable" },
-                { jp: "口頭", reading: "こうとう", en: "oral" },
-                { jp: "購読", reading: "こうどく", en: "subscription" },
-                { jp: "公認", reading: "こうにん", en: "official recognition" },
-                { jp: "光熱費", reading: "こうねつひ", en: "utility costs" },
-                { jp: "好評", reading: "こうひょう", en: "popularity" },
-                { jp: "交付", reading: "こうふ", en: "issuance" },
-                { jp: "公募", reading: "こうぼ", en: "public appeal" },
-                { jp: "巧妙", reading: "こうみょう", en: "ingenious" },
-                { jp: "公用", reading: "こうよう", en: "official use" },
-                { jp: "小売", reading: "こうり", en: "retail" },
-                { jp: "公立", reading: "こうりつ", en: "public institution" },
-                { jp: "護衛", reading: "ごえい", en: "escort" },
-                { jp: "小柄", reading: "こがら", en: "small build" },
-                { jp: "小切手", reading: "こぎって", en: "cheque" },
-                { jp: "国産", reading: "こくさん", en: "domestic product" },
-                { jp: "国定", reading: "こくてい", en: "state-sponsored" },
-                { jp: "国有", reading: "こくゆう", en: "national ownership" },
+                {
+                    "jp": "光沢",
+                    "reading": "こうたく",
+                    "en": "luster",
+                    "meanings": [
+                        "luster",
+                        "glossy finish (of photographs)"
+                    ],
+                    "example": {
+                        "jp": "この指輪は光沢をうしなった。",
+                        "en": "This ring lost its luster."
+                    }
+                },
+                {
+                    "jp": "公団",
+                    "reading": "こうだん",
+                    "en": "public corporation",
+                    "meanings": [
+                        "public corporation"
+                    ],
+                    "example": {
+                        "jp": "公団は建設計画の入札を募集した。",
+                        "en": "The corporation invited bids for the construction project."
+                    }
+                },
+                {
+                    "jp": "好調",
+                    "reading": "こうちょう",
+                    "en": "favorable",
+                    "meanings": [
+                        "satisfactory",
+                        "in good shape"
+                    ],
+                    "example": {
+                        "jp": "売上が右肩上がりで好調を裏づけた。",
+                        "en": "Growing sales gave support to the idea that all was well."
+                    }
+                },
+                {
+                    "jp": "口頭",
+                    "reading": "こうとう",
+                    "en": "oral",
+                    "meanings": [
+                        "oral"
+                    ],
+                    "example": {
+                        "jp": "彼女は英語の口頭試験を受けた。",
+                        "en": "She had an oral examination in English."
+                    }
+                },
+                {
+                    "jp": "購読",
+                    "reading": "こうどく",
+                    "en": "subscription",
+                    "meanings": [
+                        "subscription"
+                    ],
+                    "example": {
+                        "jp": "彼はタイム誌を予約購読している。",
+                        "en": "He subscribed to Time magazine."
+                    }
+                },
+                {
+                    "jp": "公認",
+                    "reading": "こうにん",
+                    "en": "official recognition",
+                    "meanings": [
+                        "official recognition",
+                        "authorization"
+                    ],
+                    "example": {
+                        "jp": "トムは公認会計士なんですよね？",
+                        "en": "Tom is a CPA, isn't he?"
+                    }
+                },
+                {
+                    "jp": "光熱費",
+                    "reading": "こうねつひ",
+                    "en": "utility costs",
+                    "meanings": [
+                        "cost of fuel and light"
+                    ],
+                    "example": null
+                },
+                {
+                    "jp": "好評",
+                    "reading": "こうひょう",
+                    "en": "popularity",
+                    "meanings": [
+                        "popularity",
+                        "favorable reputation"
+                    ],
+                    "example": {
+                        "jp": "劇の批評はおしなべて好評だった。",
+                        "en": "Almost all of the reviews of the play were favorable."
+                    }
+                },
+                {
+                    "jp": "交付",
+                    "reading": "こうふ",
+                    "en": "issuance",
+                    "meanings": [
+                        "delivering",
+                        "furnishing (with copies)"
+                    ],
+                    "example": {
+                        "jp": "市長は私に身分証明書を交付した。",
+                        "en": "The mayor provided me with an identity card."
+                    }
+                },
+                {
+                    "jp": "公募",
+                    "reading": "こうぼ",
+                    "en": "public appeal",
+                    "meanings": [
+                        "public appeal",
+                        "public contribution"
+                    ],
+                    "example": null
+                },
+                {
+                    "jp": "巧妙",
+                    "reading": "こうみょう",
+                    "en": "ingenious",
+                    "meanings": [
+                        "ingenious",
+                        "skillful",
+                        "clever"
+                    ],
+                    "example": {
+                        "jp": "人工内耳は技術的に巧妙な機器です。",
+                        "en": "The cochlea implant is a technically ingenious device."
+                    }
+                },
+                {
+                    "jp": "公用",
+                    "reading": "こうよう",
+                    "en": "official use",
+                    "meanings": [
+                        "government business",
+                        "public use",
+                        "public expense"
+                    ],
+                    "example": {
+                        "jp": "スイスには幾つかの公用語がある。",
+                        "en": "Switzerland has several official languages."
+                    }
+                },
+                {
+                    "jp": "小売",
+                    "reading": "こうり",
+                    "en": "retail",
+                    "meanings": [
+                        "retail"
+                    ],
+                    "example": {
+                        "jp": "小売部門は厳しい四半期を迎えた。",
+                        "en": "The retail sector had a rough quarter."
+                    }
+                },
+                {
+                    "jp": "公立",
+                    "reading": "こうりつ",
+                    "en": "public institution",
+                    "meanings": [
+                        "public institution"
+                    ],
+                    "example": {
+                        "jp": "この町には大きな公立図書館がある。",
+                        "en": "This town boasts a large public library."
+                    }
+                },
+                {
+                    "jp": "護衛",
+                    "reading": "ごえい",
+                    "en": "escort",
+                    "meanings": [
+                        "guard",
+                        "convoy",
+                        "escort"
+                    ],
+                    "example": {
+                        "jp": "彼は多数の護衛を連れて旅行した。",
+                        "en": "He traveled with a large escort."
+                    }
+                },
+                {
+                    "jp": "小柄",
+                    "reading": "こがら",
+                    "en": "small build",
+                    "meanings": [
+                        "small",
+                        "diminutive"
+                    ],
+                    "example": {
+                        "jp": "彼らはその少女は小柄だと言った。",
+                        "en": "They described the girl as being small."
+                    }
+                },
+                {
+                    "jp": "小切手",
+                    "reading": "こぎって",
+                    "en": "cheque",
+                    "meanings": [
+                        "cheque",
+                        "check"
+                    ],
+                    "example": {
+                        "jp": "旅行小切手で払ってもいいですか。",
+                        "en": "May I pay with a travelers' check?"
+                    }
+                },
+                {
+                    "jp": "国産",
+                    "reading": "こくさん",
+                    "en": "domestic product",
+                    "meanings": [
+                        "domestic products"
+                    ],
+                    "example": {
+                        "jp": "政府は国産品の愛用を奨励している。",
+                        "en": "The government is promoting the use of home products."
+                    }
+                },
+                {
+                    "jp": "国定",
+                    "reading": "こくてい",
+                    "en": "state-sponsored",
+                    "meanings": [
+                        "state-sponsored",
+                        "national"
+                    ],
+                    "example": null
+                },
+                {
+                    "jp": "国有",
+                    "reading": "こくゆう",
+                    "en": "national ownership",
+                    "meanings": [
+                        "national ownership"
+                    ],
+                    "example": {
+                        "jp": "彼は我が国有数の頭脳の一人だ。",
+                        "en": "He is one of the best brains in our country."
+                    }
+                }
             ],
             [
-                { jp: "極楽", reading: "ごくらく", en: "paradise" },
-                { jp: "国連", reading: "こくれん", en: "United Nations" },
-                { jp: "語源", reading: "ごげん", en: "etymology" },
-                { jp: "心地", reading: "ここち", en: "feeling" },
-                { jp: "心掛け", reading: "こころがけ", en: "readiness" },
-                { jp: "志", reading: "こころざし", en: "ambition" },
-                { jp: "心強い", reading: "こころづよい", en: "reassuring" },
-                { jp: "心細い", reading: "こころぼそい", en: "helpless" },
-                { jp: "試み", reading: "こころみ", en: "attempt" },
-                { jp: "快い", reading: "こころよい", en: "pleasant" },
-                { jp: "孤児", reading: "こじ", en: "orphan" },
-                { jp: "戸籍", reading: "こせき", en: "family register" },
-                { jp: "古代", reading: "こだい", en: "ancient times" },
-                { jp: "滑稽", reading: "こっけい", en: "funny" },
-                { jp: "国交", reading: "こっこう", en: "diplomatic relations" },
-                { jp: "骨董品", reading: "こっとうひん", en: "antique" },
-                { jp: "事柄", reading: "ことがら", en: "matter" },
-                { jp: "個別", reading: "こべつ", en: "individual case" },
-                { jp: "言付け", reading: "ことづけ", en: "message" },
-                { jp: "殊に", reading: "ことに", en: "especially" },
+                {
+                    "jp": "極楽",
+                    "reading": "ごくらく",
+                    "en": "paradise",
+                    "meanings": [
+                        "paradise"
+                    ],
+                    "example": {
+                        "jp": "地獄極楽は心にあり。",
+                        "en": "Heaven and hell exist in the hearts of man."
+                    }
+                },
+                {
+                    "jp": "国連",
+                    "reading": "こくれん",
+                    "en": "United Nations",
+                    "meanings": [
+                        "U.N.",
+                        "United Nations"
+                    ],
+                    "example": {
+                        "jp": "日本は国連総会で米国側に立った。",
+                        "en": "Japan stood with the United States at the U. N. Assembly."
+                    }
+                },
+                {
+                    "jp": "語源",
+                    "reading": "ごげん",
+                    "en": "etymology",
+                    "meanings": [
+                        "word root",
+                        "word derivation",
+                        "etymology"
+                    ],
+                    "example": {
+                        "jp": "これらの語は同じ語源から出ている。",
+                        "en": "These words are derived from the same root."
+                    }
+                },
+                {
+                    "jp": "心地",
+                    "reading": "ここち",
+                    "en": "feeling",
+                    "meanings": [
+                        "feeling",
+                        "sensation",
+                        "mood"
+                    ],
+                    "example": {
+                        "jp": "その家は全然住み心地がよくない。",
+                        "en": "The house is anything but comfortable to live in."
+                    }
+                },
+                {
+                    "jp": "心掛け",
+                    "reading": "こころがけ",
+                    "en": "readiness",
+                    "meanings": [
+                        "readiness",
+                        "intention",
+                        "aim"
+                    ],
+                    "example": {
+                        "jp": "身の丈に合った生活を心掛けなさい。",
+                        "en": "Try to live within your means."
+                    }
+                },
+                {
+                    "jp": "志",
+                    "reading": "こころざし",
+                    "en": "ambition",
+                    "meanings": [
+                        "will",
+                        "intention",
+                        "motive"
+                    ],
+                    "example": {
+                        "jp": "何事をするにも志が大切。",
+                        "en": "The will is as good as the deed."
+                    }
+                },
+                {
+                    "jp": "心強い",
+                    "reading": "こころづよい",
+                    "en": "reassuring",
+                    "meanings": [
+                        "heartening",
+                        "reassuring"
+                    ],
+                    "example": {
+                        "jp": "ありがとう。本当に心強いです。",
+                        "en": "Thank you. That's very reassuring."
+                    }
+                },
+                {
+                    "jp": "心細い",
+                    "reading": "こころぼそい",
+                    "en": "helpless",
+                    "meanings": [
+                        "helpless",
+                        "hopeless",
+                        "discouraging"
+                    ],
+                    "example": {
+                        "jp": "あなたがいなくて、心細い。",
+                        "en": "Without you, I'm very lonely."
+                    }
+                },
+                {
+                    "jp": "試み",
+                    "reading": "こころみ",
+                    "en": "attempt",
+                    "meanings": [
+                        "trial",
+                        "experiment"
+                    ],
+                    "example": {
+                        "jp": "彼女は何度か試みたが、失敗した。",
+                        "en": "She tried several times but failed."
+                    }
+                },
+                {
+                    "jp": "快い",
+                    "reading": "こころよい",
+                    "en": "pleasant",
+                    "meanings": [
+                        "pleasant",
+                        "agreeable"
+                    ],
+                    "example": {
+                        "jp": "彼は私の申し込みを快く承諾した。",
+                        "en": "He readily agreed to my proposal."
+                    }
+                },
+                {
+                    "jp": "孤児",
+                    "reading": "こじ",
+                    "en": "orphan",
+                    "meanings": [
+                        "orphan"
+                    ],
+                    "example": {
+                        "jp": "彼は孤児院にその包みを配達した。",
+                        "en": "He delivered the package to the orphanage."
+                    }
+                },
+                {
+                    "jp": "戸籍",
+                    "reading": "こせき",
+                    "en": "family register",
+                    "meanings": [
+                        "census",
+                        "family register"
+                    ],
+                    "example": {
+                        "jp": "彼女はまだ夫の戸籍に入っていない。",
+                        "en": "She has not yet had her name entered in her husband's family."
+                    }
+                },
+                {
+                    "jp": "古代",
+                    "reading": "こだい",
+                    "en": "ancient times",
+                    "meanings": [
+                        "ancient times"
+                    ],
+                    "example": {
+                        "jp": "民主主義は古代ギリシャに始まった。",
+                        "en": "Democracy originated in Ancient Greece."
+                    }
+                },
+                {
+                    "jp": "滑稽",
+                    "reading": "こっけい",
+                    "en": "funny",
+                    "meanings": [
+                        "funny",
+                        "humorous",
+                        "comical"
+                    ],
+                    "example": {
+                        "jp": "彼の気取った話し方がとても滑稽におもえた。",
+                        "en": "His affected manner of speaking seemed very absurd to me."
+                    }
+                },
+                {
+                    "jp": "国交",
+                    "reading": "こっこう",
+                    "en": "diplomatic relations",
+                    "meanings": [
+                        "diplomatic relations"
+                    ],
+                    "example": {
+                        "jp": "それ以来カナダとイランの国交は断絶している。",
+                        "en": "Since then, diplomatic relations between Canada and Iran have been suspended."
+                    }
+                },
+                {
+                    "jp": "骨董品",
+                    "reading": "こっとうひん",
+                    "en": "antique",
+                    "meanings": [
+                        "curio"
+                    ],
+                    "example": {
+                        "jp": "彼は大阪で骨董品を扱っている。",
+                        "en": "He deals antiques in Osaka."
+                    }
+                },
+                {
+                    "jp": "事柄",
+                    "reading": "ことがら",
+                    "en": "matter",
+                    "meanings": [
+                        "matter",
+                        "thing",
+                        "affair",
+                        "circumstance"
+                    ],
+                    "example": {
+                        "jp": "彼らはその事柄を調査している。",
+                        "en": "They are inquiring into the matter."
+                    }
+                },
+                {
+                    "jp": "個別",
+                    "reading": "こべつ",
+                    "en": "individual case",
+                    "meanings": [
+                        "particular case"
+                    ],
+                    "example": {
+                        "jp": "あらゆる事態を個別に分析する必要がある。",
+                        "en": "Every situation requires individual analysis."
+                    }
+                },
+                {
+                    "jp": "言付け",
+                    "reading": "ことづけ",
+                    "en": "message",
+                    "meanings": [
+                        "to leave a message"
+                    ],
+                    "example": {
+                        "jp": "私の言付けがあったでしょうね。",
+                        "en": "There was a message for me, wasn't there?"
+                    }
+                },
+                {
+                    "jp": "殊に",
+                    "reading": "ことに",
+                    "en": "especially",
+                    "meanings": [
+                        "especially",
+                        "above all"
+                    ],
+                    "example": {
+                        "jp": "ロックは殊に若者に人気だ。",
+                        "en": "Rock music is especially popular among young people."
+                    }
+                }
             ],
             [
-                { jp: "好ましい", reading: "このましい", en: "desirable" },
-                { jp: "碁盤", reading: "ごばん", en: "Go board" },
-                { jp: "ごまかす", reading: "ごまかす", en: "to deceive" },
-                { jp: "細やか", reading: "こまやか", en: "delicate" },
-                { jp: "込める", reading: "こめる", en: "to include" },
-                { jp: "固有", reading: "こゆう", en: "characteristic" },
-                { jp: "暦", reading: "こよみ", en: "calendar" },
-                { jp: "凝らす", reading: "こらす", en: "to concentrate" },
-                { jp: "懲りる", reading: "こりる", en: "to learn a lesson" },
-                { jp: "根気", reading: "こんき", en: "patience" },
-                { jp: "根拠", reading: "こんきょ", en: "basis" },
-                { jp: "混血", reading: "こんけつ", en: "mixed race" },
-                { jp: "昆虫", reading: "こんちゅう", en: "insect" },
-                { jp: "根底", reading: "こんてい", en: "root" },
-                { jp: "混同", reading: "こんどう", en: "confusion" },
-                { jp: "根本", reading: "こんぽん", en: "fundamental" },
-                { jp: "財", reading: "ざい", en: "wealth" },
-                { jp: "再会", reading: "さいかい", en: "reunion" },
-                { jp: "災害", reading: "さいがい", en: "disaster" },
-                { jp: "細菌", reading: "さいきん", en: "bacteria" },
-            ],
-        ],
-    },
+                {
+                    "jp": "好ましい",
+                    "reading": "このましい",
+                    "en": "desirable",
+                    "meanings": [
+                        "nice",
+                        "likable",
+                        "desirable"
+                    ],
+                    "example": {
+                        "jp": "その志望者は試験官に好ましい印象を与えた。",
+                        "en": "The applicant impressed the examiner favorably."
+                    }
+                },
+                {
+                    "jp": "碁盤",
+                    "reading": "ごばん",
+                    "en": "Go board",
+                    "meanings": [
+                        "Go board"
+                    ],
+                    "example": null
+                },
+                {
+                    "jp": "ごまかす",
+                    "reading": "ごまかす",
+                    "en": "to deceive",
+                    "meanings": [
+                        "to deceive",
+                        "to falsify",
+                        "to misrepresent"
+                    ],
+                    "example": {
+                        "jp": "彼はそのことを笑ってごまかした。",
+                        "en": "He laughed the matter away."
+                    }
+                },
+                {
+                    "jp": "細やか",
+                    "reading": "こまやか",
+                    "en": "delicate",
+                    "meanings": [
+                        "meager",
+                        "modest"
+                    ],
+                    "example": {
+                        "jp": "細やかなお心遣いに感謝いたします。",
+                        "en": "I appreciate your attention to detail."
+                    }
+                },
+                {
+                    "jp": "込める",
+                    "reading": "こめる",
+                    "en": "to include",
+                    "meanings": [
+                        "to include",
+                        "to put into"
+                    ],
+                    "example": {
+                        "jp": "怒りを込めて告発人の方に向き直った。",
+                        "en": "He turned angrily on his accusers."
+                    }
+                },
+                {
+                    "jp": "固有",
+                    "reading": "こゆう",
+                    "en": "characteristic",
+                    "meanings": [
+                        "characteristic",
+                        "tradition",
+                        "peculiar"
+                    ],
+                    "example": {
+                        "jp": "言語は人間固有の性質である。",
+                        "en": "Language is a specifically human characteristic."
+                    }
+                },
+                {
+                    "jp": "暦",
+                    "reading": "こよみ",
+                    "en": "calendar",
+                    "meanings": [
+                        "calendar",
+                        "almanac"
+                    ],
+                    "example": {
+                        "jp": "マヤ暦には、19の月があります。",
+                        "en": "The Mayan calendar has 19 months."
+                    }
+                },
+                {
+                    "jp": "凝らす",
+                    "reading": "こらす",
+                    "en": "to concentrate",
+                    "meanings": [
+                        "to concentrate",
+                        "to devote",
+                        "to peer into"
+                    ],
+                    "example": {
+                        "jp": "その部屋は装飾を凝らしている。",
+                        "en": "The room is richly ornamented."
+                    }
+                },
+                {
+                    "jp": "懲りる",
+                    "reading": "こりる",
+                    "en": "to learn a lesson",
+                    "meanings": [
+                        "to learn by experience",
+                        "to be disgusted with"
+                    ],
+                    "example": {
+                        "jp": "これに懲りずにまたやれよ。",
+                        "en": "Don't let this discourage you from trying it again."
+                    }
+                },
+                {
+                    "jp": "根気",
+                    "reading": "こんき",
+                    "en": "patience",
+                    "meanings": [
+                        "patience",
+                        "perseverance",
+                        "energy"
+                    ],
+                    "example": {
+                        "jp": "アンは根気よく編み物をしている。",
+                        "en": "Anne is patiently knitting."
+                    }
+                },
+                {
+                    "jp": "根拠",
+                    "reading": "こんきょ",
+                    "en": "basis",
+                    "meanings": [
+                        "basis",
+                        "foundation"
+                    ],
+                    "example": {
+                        "jp": "それは全く根拠のないうわさです。",
+                        "en": "That's a completely unfounded rumor."
+                    }
+                },
+                {
+                    "jp": "混血",
+                    "reading": "こんけつ",
+                    "en": "mixed race",
+                    "meanings": [
+                        "mixed race",
+                        "mixed parentage"
+                    ],
+                    "example": {
+                        "jp": "高橋君は完全なアジア人に見えても、混血なのだと聞いた。",
+                        "en": "Although Takahashi looks completely Asian, I've heard he's of mixed blood."
+                    }
+                },
+                {
+                    "jp": "昆虫",
+                    "reading": "こんちゅう",
+                    "en": "insect",
+                    "meanings": [
+                        "insect",
+                        "bug"
+                    ],
+                    "example": {
+                        "jp": "彼は昆虫採集に興味を持っている。",
+                        "en": "He has an interest in collecting insects."
+                    }
+                },
+                {
+                    "jp": "根底",
+                    "reading": "こんてい",
+                    "en": "root",
+                    "meanings": [
+                        "root",
+                        "basis",
+                        "foundation"
+                    ],
+                    "example": {
+                        "jp": "この議論の根底には、問題としている規則が言語に存在するという仮説がある。",
+                        "en": "Basic to the argument is the assumption that the rules in question are present in the language."
+                    }
+                },
+                {
+                    "jp": "混同",
+                    "reading": "こんどう",
+                    "en": "confusion",
+                    "meanings": [
+                        "confusion",
+                        "mixing",
+                        "merger"
+                    ],
+                    "example": {
+                        "jp": "ｄａｒｅとｄｅａｒとを混同するな。",
+                        "en": "Don't confuse \"dare\" and \"dear\"."
+                    }
+                },
+                {
+                    "jp": "根本",
+                    "reading": "こんぽん",
+                    "en": "fundamental",
+                    "meanings": [
+                        "foundation",
+                        "root",
+                        "base"
+                    ],
+                    "example": {
+                        "jp": "多数決原理が民主主義の根本原則だ。",
+                        "en": "Majority rule is a basic principle of democracy."
+                    }
+                },
+                {
+                    "jp": "財",
+                    "reading": "ざい",
+                    "en": "wealth",
+                    "meanings": [
+                        "fortune",
+                        "riches"
+                    ],
+                    "example": {
+                        "jp": "財を成すため、彼は地位を利用した。",
+                        "en": "He exploited his position to build up his fortune."
+                    }
+                },
+                {
+                    "jp": "再会",
+                    "reading": "さいかい",
+                    "en": "reunion",
+                    "meanings": [
+                        "meeting again",
+                        "reunion"
+                    ],
+                    "example": {
+                        "jp": "私は君との再会を待ち望んでいる。",
+                        "en": "I am looking forward to seeing you again."
+                    }
+                },
+                {
+                    "jp": "災害",
+                    "reading": "さいがい",
+                    "en": "disaster",
+                    "meanings": [
+                        "calamity",
+                        "disaster",
+                        "misfortune"
+                    ],
+                    "example": {
+                        "jp": "嵐は、多くの災害を引き起こした。",
+                        "en": "The storm caused a lot of damage."
+                    }
+                },
+                {
+                    "jp": "細菌",
+                    "reading": "さいきん",
+                    "en": "bacteria",
+                    "meanings": [
+                        "bacillus",
+                        "bacterium",
+                        "germ"
+                    ],
+                    "example": {
+                        "jp": "細菌が病気を引き起こすことがある。",
+                        "en": "Germs can cause sickness."
+                    }
+                }
+            ]
+        ]
+    }
 ];

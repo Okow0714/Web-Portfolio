@@ -197,6 +197,76 @@
     stroke-linejoin: round;
 }
 
+/* ---------------------------------------------------------------------
+   Example sentence panel — shown below the board, updates on each match
+   --------------------------------------------------------------------- */
+.example-panel {
+    margin-top: 20px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    padding: 20px 24px;
+    max-width: 920px;
+}
+
+.example-panel h3 {
+    margin: 0 0 10px;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+.example-empty {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.example-head {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.example-jp {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.example-reading {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.example-meanings {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.example-sentence-block {
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
+}
+
+.example-sentence-jp {
+    margin: 0 0 4px;
+    font-size: 1.05rem;
+}
+
+.example-sentence-en {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.example-none {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
 .grid-cell {
     aspect-ratio: 1 / 1;
 }

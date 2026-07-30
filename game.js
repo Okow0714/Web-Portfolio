@@ -35,6 +35,7 @@ let startTime = null;
 let elapsedSeconds = 0;
 let lastResult = null;    // result earned as a guest, pending save once they log in
 let progressCache = {};   // level number -> game_progress row
+let currentSet = [];      // this play's chosen 20-pair word set, indexed by pairId
 
 function escapeHtml(str) {
     const div = document.createElement('div');
@@ -62,6 +63,7 @@ function buildBoard(level) {
     // Each level has several word sets; picking one at random each play means
     // replaying a level doesn't always show the same 20 pairs.
     const set = level.sets[Math.floor(Math.random() * level.sets.length)];
+    currentSet = set;
     const tiles = [];
     set.forEach((p, i) => {
         tiles.push({ pairId: i, kind: 'jp', text: p.jp, sub: p.reading });
@@ -247,6 +249,7 @@ function onTileClick(tile) {
         const path = findPath(prev, tile);
         if (path) {
             drawPathLine(path);
+            showExample(prev.pairId);
             setTimeout(() => {
                 removeTile(prev);
                 removeTile(tile);
@@ -330,6 +333,39 @@ function updateStats() {
 }
 
 // ---------------------------------------------------------------------------
+// Example sentence panel — updates whenever a pair is matched, for memorization
+// ---------------------------------------------------------------------------
+function resetExamplePanel() {
+    hideEl(document.getElementById('example-content'));
+    showEl(document.getElementById('example-empty'));
+}
+
+function showExample(pairId) {
+    const pair = currentSet[pairId];
+    if (!pair) return;
+
+    document.getElementById('example-jp').textContent = pair.jp;
+    document.getElementById('example-reading').textContent = pair.reading;
+    const meanings = pair.meanings && pair.meanings.length ? pair.meanings : [pair.en];
+    document.getElementById('example-meanings').textContent = meanings.join(', ');
+
+    const sentenceBlock = document.getElementById('example-sentence-block');
+    const noneEl = document.getElementById('example-none');
+    if (pair.example) {
+        document.getElementById('example-sentence-jp').textContent = pair.example.jp;
+        document.getElementById('example-sentence-en').textContent = pair.example.en;
+        showEl(sentenceBlock);
+        hideEl(noneEl);
+    } else {
+        hideEl(sentenceBlock);
+        showEl(noneEl);
+    }
+
+    hideEl(document.getElementById('example-empty'));
+    showEl(document.getElementById('example-content'));
+}
+
+// ---------------------------------------------------------------------------
 // Level select <-> board screens
 // ---------------------------------------------------------------------------
 function startLevel(level) {
@@ -345,6 +381,7 @@ function startLevel(level) {
 
     buildBoard(level);
     renderBoard();
+    resetExamplePanel();
 
     document.getElementById('board-timer').textContent = '00:00';
     document.getElementById('board-level-label').textContent = level.title;
