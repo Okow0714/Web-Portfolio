@@ -1,0 +1,361 @@
+/* Dokkai Reader — styles specific to reading.html.
+   Reuses style.css tokens (--accent, --border, --radius-*, --shadow-*) for visual consistency. */
+
+/* ---------------------------------------------------------------------
+   Header extras: active nav link + back-to-portfolio link (same pattern as game.css)
+   --------------------------------------------------------------------- */
+.nav-current {
+    background: var(--accent-tint);
+    color: var(--accent-dark);
+    box-shadow: inset 0 -3px 0 var(--accent);
+}
+
+.back-link {
+    margin-right: auto;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.back-link:hover {
+    color: var(--accent-dark);
+}
+
+/* ---------------------------------------------------------------------
+   Page shell
+   --------------------------------------------------------------------- */
+.reading-main {
+    padding: 140px 40px 80px;
+    min-height: 100vh;
+}
+
+.reading-title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin: 0 0 12px;
+}
+
+.reading-subtitle {
+    color: var(--text-secondary);
+    max-width: 680px;
+    line-height: 1.6;
+    margin: 0 0 8px;
+}
+
+.reading-mic-hint {
+    color: var(--accent-dark);
+    background: var(--accent-tint);
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    margin: 8px 0 8px;
+}
+
+.reading-guest-hint {
+    color: var(--accent-dark);
+    background: var(--accent-tint);
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    margin: 0 0 30px;
+}
+
+.reading-section.hidden {
+    display: none;
+}
+
+/* ---------------------------------------------------------------------
+   Track select
+   --------------------------------------------------------------------- */
+.track-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+    max-width: 700px;
+}
+
+.track-card {
+    text-align: left;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    padding: 28px 24px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: inherit;
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.track-card:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+}
+
+.track-card h3 {
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.track-meta {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* ---------------------------------------------------------------------
+   Level select (mirrors the Word Match level cards)
+   --------------------------------------------------------------------- */
+.level-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.level-card {
+    text-align: left;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    padding: 24px 22px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: inherit;
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.level-card:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+}
+
+.level-card.locked {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+.level-card.locked:hover {
+    border-color: var(--border);
+    box-shadow: var(--shadow-sm);
+    transform: none;
+}
+
+.level-lock-note {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.level-badge {
+    display: inline-block;
+    align-self: flex-start;
+    background: var(--accent-tint);
+    color: var(--accent-dark);
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+    padding: 4px 10px;
+}
+
+.level-card h3 {
+    margin: 0;
+    font-size: 1.15rem;
+}
+
+.level-meta {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* ---------------------------------------------------------------------
+   Text list
+   --------------------------------------------------------------------- */
+.text-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+    max-width: 560px;
+}
+
+.text-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    padding: 16px 20px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+}
+
+.text-item:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.text-item-check {
+    color: var(--game-en-accent, #0e8a7d);
+    font-weight: 700;
+    margin-right: 8px;
+}
+
+.text-item .text-item-len {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+/* ---------------------------------------------------------------------
+   Reader
+   --------------------------------------------------------------------- */
+.reader-toolbar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.reader-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.reader-progress {
+    margin-left: auto;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    background: var(--bg-surface-alt);
+    padding: 6px 12px;
+}
+
+.ghost-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 8px 16px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ghost-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent-dark);
+    background: var(--accent-tint);
+}
+
+.reader-passage-wrap {
+    position: relative;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    padding: 40px;
+    max-width: 720px;
+}
+
+.reader-passage {
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 2.4;
+    letter-spacing: 0.02em;
+}
+
+.reader-word {
+    padding: 2px 1px;
+    border-radius: 2px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.reader-word.read {
+    color: var(--text-muted);
+}
+
+.reader-word.current {
+    background: var(--accent-tint);
+    color: var(--accent-dark);
+    font-weight: 700;
+    box-shadow: inset 0 -3px 0 var(--accent);
+}
+
+.hint-popup {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    pointer-events: none;
+    background: var(--text-primary);
+    color: #ffffff;
+    padding: 10px 16px;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    max-width: calc(100% - 28px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    z-index: 5;
+}
+
+.hint-reading {
+    font-weight: 700;
+}
+
+.hint-en {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.reader-controls {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.reader-status {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* ---------------------------------------------------------------------
+   Responsive
+   --------------------------------------------------------------------- */
+@media (max-width: 968px) {
+    .reading-main {
+        padding: 130px 20px 60px;
+    }
+
+    .reader-passage-wrap {
+        padding: 24px;
+    }
+
+    .reader-passage {
+        font-size: 1.25rem;
+        line-height: 2.2;
+    }
+
+    .hint-popup {
+        left: 24px;
+    }
+}

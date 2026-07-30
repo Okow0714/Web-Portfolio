@@ -121,3 +121,27 @@ create policy "Users manage their own game progress"
     on public.game_progress for all
     using (auth.uid() = user_id)
     with check (auth.uid() = user_id);
+
+-- ---------------------------------------------------------------------------
+-- reading_progress: per-user completed texts in the Dokkai Reader.
+--
+-- Keyed by (track, text_id) rather than just text_id: N3 content is shared between
+-- the two tracks (Foundation N5->N3 and Advanced N3->N1), but each track unlocks
+-- independently, so completing N3 while going up the Foundation track shouldn't
+-- retroactively unlock N2 on the Advanced track (which starts at N3 anyway) or vice
+-- versa. text_id matches the ids in reading-texts.js (e.g. 'n3-1').
+-- ---------------------------------------------------------------------------
+create table public.reading_progress (
+    user_id uuid not null references auth.users on delete cascade,
+    track text not null check (track in ('foundation', 'advanced')),
+    text_id text not null,
+    completed_at timestamptz not null default now(),
+    primary key (user_id, track, text_id)
+);
+
+alter table public.reading_progress enable row level security;
+
+create policy "Users manage their own reading progress"
+    on public.reading_progress for all
+    using (auth.uid() = user_id)
+    with check (auth.uid() = user_id);
