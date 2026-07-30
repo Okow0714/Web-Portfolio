@@ -19,6 +19,7 @@
 const sb = window.supabaseClient;
 
 const SpeechRecognitionCtor = window.SpeechRecognition || window.webkitSpeechRecognition;
+const READ_AHEAD_WORDS = 6; // how far past the current word onresult is allowed to catch up in one match
 
 let currentTrack = null;
 let currentLevel = null;
@@ -33,6 +34,8 @@ let autoAdvanceTimer = null;
 
 let progressCache = new Set();   // "trackId:textId" of completed texts (from the server, if logged in)
 let pendingGuestCompletions = []; // [{trackId, textId}] earned as a guest, saved once they log in
+
+let skippedWords = []; // words this text's cursor passed without the ASR chunk matching them directly
 
 function progressKey(trackId, textId) { return `${trackId}:${textId}`; }
 
@@ -200,6 +203,8 @@ function startText(track, level, textIndex) {
     currentIdx = firstNonSymbolIndex(words, 0);
     listening = false;
     clearTimeout(autoAdvanceTimer);
+    skippedWords = [];
+    renderSkippedList();
 
     document.getElementById('reader-title').textContent = `Level ${level.levelNum} — ${text.title}`;
     renderPassage();
@@ -249,6 +254,25 @@ function updateProgress() {
     document.getElementById('reader-progress').textContent = `${doneCount} / ${speakable} words`;
 }
 
+function recordSkipped(word) {
+    skippedWords.push(word);
+    renderSkippedList();
+}
+
+function renderSkippedList() {
+    const list = document.getElementById('skipped-list');
+    const empty = document.getElementById('skipped-empty');
+    list.innerHTML = '';
+    skippedWords.forEach(w => {
+        const li = document.createElement('li');
+        li.innerHTML = `<span class="skipped-word-surface">${escapeHtml(w.surface)}</span>` +
+            `<span class="skipped-word-reading">${escapeHtml(w.reading)}</span>` +
+            (w.en ? `<span class="skipped-word-en">${escapeHtml(w.en)}</span>` : '');
+        list.appendChild(li);
+    });
+    if (skippedWords.length) hideEl(empty); else showEl(empty);
+}
+
 function resetStallTimer() {
     clearTimeout(stallTimer);
     hideEl(document.getElementById('hint-popup'));
@@ -264,8 +288,11 @@ function showHint() {
     showEl(document.getElementById('hint-popup'));
 }
 
-function advanceWord() {
-    currentIdx = firstNonSymbolIndex(words, currentIdx + 1);
+// Jumps the cursor to word index `idx` (rounding forward past any symbol), marking
+// everything before it as read. Used both for a normal single-word advance and for
+// catching up several words at once when speech recognition confirms a later word.
+function advanceTo(idx) {
+    currentIdx = firstNonSymbolIndex(words, idx);
     updateHighlight();
     updateProgress();
     if (currentIdx >= words.length) {
@@ -273,6 +300,22 @@ function advanceWord() {
         return;
     }
     resetStallTimer();
+}
+
+function advanceWord() {
+    advanceTo(currentIdx + 1);
+}
+
+// Positions (indices into `words`, skipping symbols) of the next `count` speakable words
+// starting at `fromIdx`, inclusive.
+function nextWordPositions(fromIdx, count) {
+    const positions = [];
+    let idx = firstNonSymbolIndex(words, fromIdx);
+    while (idx < words.length && positions.length < count) {
+        positions.push(idx);
+        idx = firstNonSymbolIndex(words, idx + 1);
+    }
+    return positions;
 }
 
 function onTextComplete() {
@@ -332,18 +375,29 @@ function startRecognition() {
         for (let i = event.resultIndex; i < event.results.length; i++) {
             chunk += event.results[i][0].transcript;
         }
-        // A single utterance can cover several words at once — keep advancing while the
-        // recognized chunk still contains the (new) current word, capped to avoid runaway.
-        let guard = 0;
-        while (currentIdx < words.length && guard < 8) {
-            const w = words[currentIdx];
+        // Search a window of upcoming words (not just the immediate next one) and jump to the
+        // furthest one found in the recognized chunk. Matching only the next word meant a single
+        // word ASR misheard — an unusual kanji reading, an okurigana form it didn't expect —
+        // would stall the reader forever even after the user kept reading past it out loud.
+        // Looking ahead lets a later, correctly-recognized word pull the cursor forward and
+        // catch up; anything strictly between the old and new position wasn't itself heard in
+        // the transcript, so it's logged in the skipped-words panel rather than silently lost.
+        const positions = nextWordPositions(currentIdx, READ_AHEAD_WORDS);
+        let matchPos = -1;
+        for (const pos of positions) {
+            const w = words[pos];
             if (chunk.includes(w.surface) || (w.reading && chunk.includes(w.reading))) {
-                advanceWord();
-                guard++;
-                if (currentIdx >= words.length) break;
-            } else {
-                break;
+                matchPos = pos; // keep the furthest (last) match in the window, not the first
             }
+        }
+        if (matchPos !== -1) {
+            let idx = currentIdx;
+            while (idx < matchPos) {
+                if (!words[idx].sym) skippedWords.push(words[idx]);
+                idx = firstNonSymbolIndex(words, idx + 1);
+            }
+            renderSkippedList();
+            advanceTo(matchPos + 1);
         }
     };
 
@@ -393,6 +447,14 @@ document.getElementById('reader-mic-btn').addEventListener('click', () => {
         startRecognition();
         resetStallTimer();
     }
+});
+
+// Manual escape hatch: if ASR just won't catch a word (rare vocabulary, background noise,
+// an accent it struggles with), the reader shouldn't be a dead end.
+document.getElementById('reader-skip-btn').addEventListener('click', () => {
+    if (currentIdx >= words.length) return;
+    recordSkipped(words[currentIdx]);
+    advanceWord();
 });
 
 // ---------------------------------------------------------------------------

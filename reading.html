@@ -126,15 +126,23 @@
                     <div class="reader-title" id="reader-title"></div>
                     <div class="reader-progress" id="reader-progress"></div>
                 </div>
-                <div class="reader-passage-wrap">
-                    <p id="reader-passage" class="reader-passage"></p>
-                    <div id="hint-popup" class="hint-popup hidden">
-                        <span id="hint-reading" class="hint-reading"></span>
-                        <span id="hint-en" class="hint-en"></span>
+                <div class="reader-body">
+                    <div class="reader-passage-wrap">
+                        <p id="reader-passage" class="reader-passage"></p>
+                        <div id="hint-popup" class="hint-popup hidden">
+                            <span id="hint-reading" class="hint-reading"></span>
+                            <span id="hint-en" class="hint-en"></span>
+                        </div>
                     </div>
+                    <aside id="skipped-panel" class="skipped-panel">
+                        <h3>Skipped Words</h3>
+                        <p id="skipped-empty" class="skipped-empty">Words the voice matcher jumps past without hearing directly will show up here.</p>
+                        <ul id="skipped-list" class="skipped-list"></ul>
+                    </aside>
                 </div>
                 <div class="reader-controls">
                     <button id="reader-mic-btn" class="auth-btn" type="button">&#127908; Start Reading</button>
+                    <button id="reader-skip-btn" class="ghost-btn" type="button">Skip Word &rarr;</button>
                     <p id="reader-status" class="reader-status"></p>
                 </div>
             </section>
