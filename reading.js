@@ -372,17 +372,22 @@ function startRecognition() {
 
     recognition.onresult = (event) => {
         let chunk = '';
+        let isFinal = false;
         for (let i = event.resultIndex; i < event.results.length; i++) {
             chunk += event.results[i][0].transcript;
+            isFinal = event.results[i].isFinal;
         }
-        // Search a window of upcoming words (not just the immediate next one) and jump to the
-        // furthest one found in the recognized chunk. Matching only the next word meant a single
-        // word ASR misheard — an unusual kanji reading, an okurigana form it didn't expect —
-        // would stall the reader forever even after the user kept reading past it out loud.
-        // Looking ahead lets a later, correctly-recognized word pull the cursor forward and
-        // catch up; anything strictly between the old and new position wasn't itself heard in
-        // the transcript, so it's logged in the skipped-words panel rather than silently lost.
-        const positions = nextWordPositions(currentIdx, READ_AHEAD_WORDS);
+        // Interim results are the recognizer's still-changing, speculative guess about an
+        // utterance in progress — it can predict text ahead of what's actually been said yet.
+        // Searching several words ahead against THAT was causing the cursor to fast-forward
+        // mid-word, before the reader had even finished speaking. So: while a result is still
+        // interim, only match the exact current word (the original, conservative behavior).
+        // Only once the recognizer commits to a final transcript for a phrase do we widen the
+        // search and catch up on anything genuinely missed within it — a single word ASR
+        // misheard (an unusual kanji reading, an okurigana form it didn't expect) would
+        // otherwise stall the reader forever even after reading straight past it out loud.
+        const windowSize = isFinal ? READ_AHEAD_WORDS : 1;
+        const positions = nextWordPositions(currentIdx, windowSize);
         let matchPos = -1;
         for (const pos of positions) {
             const w = words[pos];
