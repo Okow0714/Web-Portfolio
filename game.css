@@ -31,7 +31,7 @@
    Page shell
    --------------------------------------------------------------------- */
 .game-main {
-    padding: 140px 40px 80px;
+    padding: 140px 40px 140px;
     min-height: 100vh;
 }
 
@@ -198,21 +198,32 @@
 }
 
 /* ---------------------------------------------------------------------
-   Example sentence panel — shown below the board, updates on each match
+   Example sentence panel — a fixed footer bar so it's always visible
+   without scrolling, updates on each match
    --------------------------------------------------------------------- */
 .example-panel {
-    margin-top: 20px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
     background: var(--bg-surface);
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow-sm);
-    padding: 20px 24px;
-    max-width: 920px;
+    border-top: 1px solid var(--border);
+    box-shadow: 0 -4px 16px rgba(20, 20, 43, 0.1);
+    padding: 12px 40px;
+}
+
+.example-panel-inner {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .example-panel h3 {
-    margin: 0 0 10px;
-    font-size: 0.95rem;
-    color: var(--text-primary);
+    margin: 0 0 6px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
 }
 
 .example-empty {
@@ -226,11 +237,11 @@
     align-items: baseline;
     flex-wrap: wrap;
     gap: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
 }
 
 .example-jp {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 700;
 }
 
@@ -240,24 +251,29 @@
 }
 
 .example-meanings {
-    color: var(--text-secondary);
+    color: var(--text-primary);
+    font-weight: 700;
     font-size: 0.9rem;
 }
 
 .example-sentence-block {
     border-top: 1px solid var(--border);
-    padding-top: 10px;
+    padding-top: 6px;
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px 10px;
 }
 
 .example-sentence-jp {
-    margin: 0 0 4px;
-    font-size: 1.05rem;
+    margin: 0;
+    font-size: 0.95rem;
 }
 
 .example-sentence-en {
     margin: 0;
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 .example-none {
@@ -393,12 +409,16 @@
    --------------------------------------------------------------------- */
 @media (max-width: 968px) {
     .game-main {
-        padding: 130px 20px 60px;
+        padding: 130px 20px 160px;
     }
 
     .board-stats {
         margin-left: 0;
         width: 100%;
         justify-content: space-between;
+    }
+
+    .example-panel {
+        padding: 10px 20px;
     }
 }
