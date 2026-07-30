@@ -19,7 +19,7 @@
 const sb = window.supabaseClient;
 
 const SpeechRecognitionCtor = window.SpeechRecognition || window.webkitSpeechRecognition;
-const READ_AHEAD_WORDS = 6; // how far past the current word onresult is allowed to catch up in one match
+const READ_AHEAD_WORDS = 3; // window checked on a finalized result: current word + up to 2 ahead
 
 let currentTrack = null;
 let currentLevel = null;
