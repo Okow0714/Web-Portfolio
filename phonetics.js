@@ -179,11 +179,7 @@ function showFamilyTree(levelKey, family) {
                 <span class="tree-root-reading">${family.reading ? escapeHtml(family.reading) : 'shared'}</span>
             </div>
             ${family.members.map((m, i) => chipHtml(m, i, m.level === levelKey)).join('')}
-        </div>
-        <div class="tree-detail-wrap" id="tree-detail-wrap">
-            <div class="tree-detail-inner">
-                <div class="tree-detail" id="tree-detail"></div>
-            </div>
+            <div class="tree-popover" id="tree-popover"></div>
         </div>
     `;
 
@@ -202,14 +198,13 @@ function showFamilyTree(levelKey, family) {
 }
 
 function onChipClick(chip, family) {
-    const wrapEl = document.getElementById('tree-detail-wrap');
-    const detailEl = document.getElementById('tree-detail');
+    const popover = document.getElementById('tree-popover');
 
     if (activeChipEl === chip) {
-        // Same chip clicked again: collapse.
+        // Same chip clicked again: collapse back into it.
         chip.classList.remove('active');
         activeChipEl = null;
-        wrapEl.classList.remove('open');
+        popover.classList.remove('open');
         return;
     }
 
@@ -219,15 +214,108 @@ function onChipClick(chip, family) {
 
     const index = Number(chip.dataset.index);
     const member = family.members[index];
+    popover.innerHTML = detailHtml(member);
 
-    // Re-trigger the fade-in animation even when switching directly between two
-    // already-open chips: strip the animation class, force a reflow, then add it
-    // back with the new content so treeDetailIn plays again.
-    detailEl.classList.remove('tree-detail-fade');
-    void detailEl.offsetWidth;
-    detailEl.innerHTML = detailHtml(member);
-    detailEl.classList.add('tree-detail-fade');
-    wrapEl.classList.add('open');
+    // Position (and re-measure, since content just changed its height) before
+    // revealing, so it opens exactly in place at the chip rather than flashing
+    // at a stale position first — this also handles switching directly from one
+    // open chip to another, sliding smoothly to the new spot.
+    positionPopoverAt(chip);
+    popover.classList.add('open');
+}
+
+// ---------------------------------------------------------------------------
+// Positions the popover so it opens in place at the clicked chip instead of a
+// separate panel elsewhere: anchored to the chip's own --tx/--ty circle
+// position, pushed further outward along the same angle from the root so it
+// reads as that chip expanding outward rather than sitting on top of it, then
+// clamped to the viewport so chips near the edge of the circle never produce
+// a popover that clips off-screen.
+// ---------------------------------------------------------------------------
+function positionPopoverAt(chip) {
+    const canvas = document.getElementById('tree-canvas');
+    const popover = document.getElementById('tree-popover');
+    if (!canvas || !popover) return;
+
+    const canvasRect = canvas.getBoundingClientRect();
+    const chipStyle = getComputedStyle(chip);
+    const tx = parseFloat(chipStyle.getPropertyValue('--tx')) || 0;
+    const ty = parseFloat(chipStyle.getPropertyValue('--ty')) || 0;
+    const chipCenterX = canvasRect.width / 2 + tx;
+    const chipCenterY = canvasRect.height / 2 + ty;
+    const angle = Math.atan2(ty, tx);
+    const cos = Math.cos(angle);
+    const sin = Math.sin(angle);
+
+    const pw = popover.offsetWidth;
+    const ph = popover.offsetHeight;
+    const chipRadius = chip.offsetWidth / 2;
+    const gap = 14;
+    const margin = 12;
+
+    // Distance from the popover's own center to its nearest edge along a given
+    // push direction (ray-vs-rectangle), so the push clears the box regardless
+    // of the direction — a fixed push distance overlapped the anchor chip
+    // whenever the popover was taller/wider than that fixed value in that
+    // direction, which made that chip unclickable (couldn't re-click it to
+    // collapse).
+    function pushedPosition(cosDir, sinDir) {
+        const halfExtent = Math.min(
+            cosDir !== 0 ? (pw / 2) / Math.abs(cosDir) : Infinity,
+            sinDir !== 0 ? (ph / 2) / Math.abs(sinDir) : Infinity
+        );
+        const push = chipRadius + gap + halfExtent;
+        return {
+            left: chipCenterX + cosDir * push - pw / 2,
+            top: chipCenterY + sinDir * push - ph / 2,
+        };
+    }
+
+    // Usable bounds, converted into canvas-local coordinates: never above the
+    // canvas's own top (the heading/subtitle sits just above it) horizontally/
+    // below/right bounded by the viewport itself.
+    const localMinX = margin - canvasRect.left;
+    const localMaxX = window.innerWidth - margin - canvasRect.left;
+    const localMinY = Math.max(margin - canvasRect.top, 0);
+    const localMaxY = window.innerHeight - margin - canvasRect.top;
+
+    // Pick which side of the chip to push toward per axis based on which side
+    // actually has more room, rather than blindly trusting the chip's own
+    // outward angle — a chip near the top/bottom/left/right of the viewport
+    // can have its "natural" outward direction run out of room, and simply
+    // clamping the final box back into bounds (without re-choosing direction)
+    // can leave it overlapping the very chip it's meant to clear.
+    const roomRight = localMaxX - chipCenterX;
+    const roomLeft = chipCenterX - localMinX;
+    const roomBelow = localMaxY - chipCenterY;
+    const roomAbove = chipCenterY - localMinY;
+    const signX = roomRight >= roomLeft ? 1 : -1;
+    const signY = roomBelow >= roomAbove ? 1 : -1;
+
+    const effCos = cos === 0 ? 0 : (Math.sign(cos) === signX ? cos : -cos);
+    const effSin = sin === 0 ? 0 : (Math.sign(sin) === signY ? sin : -sin);
+
+    let { left, top } = pushedPosition(effCos, effSin);
+
+    // Final safety-net clamp for anything still outside the usable bounds
+    // (e.g. a popover simply too large for a very narrow viewport).
+    const viewportLeft = canvasRect.left + left;
+    const viewportTop = canvasRect.top + top;
+    const clampedViewportLeft = Math.min(Math.max(viewportLeft, margin), window.innerWidth - pw - margin);
+    const clampedViewportTop = Math.min(Math.max(viewportTop, Math.max(margin, canvasRect.top)), window.innerHeight - ph - margin);
+    left += clampedViewportLeft - viewportLeft;
+    top += clampedViewportTop - viewportTop;
+
+    popover.style.left = `${left}px`;
+    popover.style.top = `${top}px`;
+
+    // Keep the scale-in transform-origin pointed at the chip's own center
+    // (not the popover's own center) so it still visibly emerges from the
+    // chip even after edge-clamping shifts the box.
+    const originX = pw ? ((chipCenterX - left) / pw) * 100 : 50;
+    const originY = ph ? ((chipCenterY - top) / ph) * 100 : 50;
+    popover.style.setProperty('--pop-origin-x', `${Math.max(0, Math.min(100, originX))}%`);
+    popover.style.setProperty('--pop-origin-y', `${Math.max(0, Math.min(100, originY))}%`);
 }
 
 // ---------------------------------------------------------------------------
@@ -328,6 +416,7 @@ function startTreeResize() {
     treeResizeHandler = () => {
         layoutRadialTree();
         drawTreeLines();
+        if (activeChipEl) positionPopoverAt(activeChipEl);
     };
     window.addEventListener('resize', treeResizeHandler);
 }
@@ -398,3 +487,8 @@ document.getElementById('phonetics-info-modal').addEventListener('click', (e) =>
 });
 
 renderLevelSelect();
+
+// Show the "what's a phonetic component?" explainer automatically on entering
+// this page, in addition to it staying reachable later via the H1/info-button
+// triggers above — it's a one-time-per-load primer, not tied to browsing.
+openInfoModal();

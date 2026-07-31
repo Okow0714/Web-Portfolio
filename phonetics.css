@@ -94,8 +94,7 @@
 @media (prefers-reduced-motion: reduce) {
     .phonetics-section,
     .tree-chip,
-    .tree-detail-wrap,
-    .tree-detail,
+    .tree-popover,
     .morph-stage {
         transition: none !important;
         animation: none !important;
@@ -439,47 +438,40 @@
 .tree-chip-dot[data-level="N1"] { background: #d3494e; }
 
 /* ---------------------------------------------------------------------
-   Member detail panel — opens smoothly below the diagram on chip click.
-   Uses the grid-template-rows 0fr->1fr trick so it animates height without
-   ever touching display:none/block, plus an inner opacity/translate fade
-   that re-triggers (via a reflow-forced class swap in JS) on every click,
-   including switching directly from one open chip to another.
+   Member popover — opens in place at the clicked chip's own position on
+   the circle (phonetics.js: positionPopoverAt), instead of a separate
+   panel elsewhere on the page. Positioned via left/top in JS, pushed
+   outward along the chip's own angle from the root, and clamped to the
+   viewport so chips near the edge of the circle never clip off-screen.
+   Left/top are included in the transition so switching directly from one
+   open chip to another slides smoothly to the new spot.
    --------------------------------------------------------------------- */
-.tree-detail-wrap {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows 0.3s ease;
-    max-width: 560px;
-    margin: 0 auto;
-}
-
-.tree-detail-wrap.open {
-    grid-template-rows: 1fr;
-}
-
-.tree-detail-inner {
-    overflow: hidden;
-    min-height: 0;
-}
-
-.tree-detail {
+.tree-popover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 280px;
+    max-width: min(300px, 86vw);
     background: var(--bg-surface);
     border: 1px solid var(--border);
-    box-shadow: var(--shadow-sm);
     border-top: 3px solid var(--accent);
+    box-shadow: var(--shadow-md);
     padding: 18px 20px;
-    margin-top: 20px;
+    z-index: 5;
     opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: scale(0.4);
+    transform-origin: var(--pop-origin-x, 50%) var(--pop-origin-y, 50%);
+    transition: opacity 0.24s ease, transform 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+        left 0.24s ease, top 0.24s ease;
 }
 
-.tree-detail.tree-detail-fade {
-    animation: treeDetailIn 0.3s ease;
+.tree-popover.open {
     opacity: 1;
-}
-
-@keyframes treeDetailIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
+    visibility: visible;
+    pointer-events: auto;
+    transform: scale(1);
 }
 
 .tree-detail-head {
@@ -693,7 +685,8 @@
         --root-size: 62px;
     }
 
-    .tree-detail {
+    .tree-popover {
+        width: 240px;
         padding: 16px;
     }
 }
