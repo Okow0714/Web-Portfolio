@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Kanji Phonetics - Sarantsatsral Ganzorig</title>
+    <title>Phonetics Family - Sarantsatsral Ganzorig</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Explore kanji grouped by shared phonetic component (on'yomi-sharing families), split by JLPT level and ranked by real usage frequency.">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -54,7 +54,7 @@
                         <a href="reading.html" class="nav-trigger">Dokkai Reader</a>
                     </div>
                     <div class="nav-item">
-                        <a href="phonetics.html" class="nav-trigger nav-current">Kanji Phonetics</a>
+                        <a href="phonetics.html" class="nav-trigger nav-current">Phonetics Family</a>
                     </div>
                     <div class="nav-item">
                         <button class="nav-trigger">Section 5</button>
@@ -124,8 +124,12 @@
         <main class="phonetics-main">
             <!-- Level select -->
             <section id="level-select-section" class="phonetics-section">
-                <h1 class="phonetics-title">Kanji Phonetics</h1>
+                <button type="button" id="phonetics-title-trigger" class="phonetics-title-trigger" aria-haspopup="dialog" title="What's a phonetic component?">
+                    <h1 class="phonetics-title">Phonetics Family</h1>
+                    <span class="phonetics-title-info" aria-hidden="true">&#9432;</span>
+                </button>
                 <p class="phonetics-subtitle">Kanji that share a phonetic component often share an on'yomi reading too — learn one, and you get a running start on the rest of its family. Pick a JLPT level to see its phonetic families, ranked by how often their most common member actually shows up in real Japanese text.</p>
+                <button type="button" id="phonetics-info-btn" class="ghost-btn phonetics-info-btn">&#9432; What's a phonetic component?</button>
                 <div class="level-grid" id="phonetics-level-grid"></div>
                 <p class="phonetics-credit">Data sources: <a href="https://github.com/mifunetoshiro/kanjium" target="_blank" rel="noopener">Kanjium</a> (CC BY-SA 4.0) for kanji &amp; phonetic-family data &middot; <a href="https://github.com/scriptin/kanji-frequency" target="_blank" rel="noopener">scriptin/kanji-frequency</a> (CC BY 4.0) for usage ranking &middot; <a href="https://tatoeba.org" target="_blank" rel="noopener">Tatoeba</a> (CC BY / CC0) for example sentences.</p>
             </section>
@@ -144,6 +148,45 @@
                 <div class="tree-wrap" id="tree-wrap"></div>
             </section>
         </main>
+
+        <!-- Phonetic component explainer modal — trigger: page H1 or the dedicated info button only -->
+        <div id="phonetics-info-modal" class="modal-overlay hidden">
+            <div class="modal-card phonetics-info-card">
+                <button id="phonetics-info-close" class="modal-close" type="button" aria-label="Close">&times;</button>
+                <h3>What's a Phonetic Component?</h3>
+                <div class="morph-demo">
+                    <div class="morph-stages" id="morph-stages">
+                        <div class="morph-stage" data-stage="component">
+                            <div class="morph-glyph morph-glyph-component">相</div>
+                            <p class="morph-caption">component</p>
+                        </div>
+                        <div class="morph-stage" data-stage="phonetic">
+                            <div class="morph-glyph-row">
+                                <div class="morph-glyph">相</div>
+                                <div class="morph-reading">ソウ</div>
+                            </div>
+                            <p class="morph-caption">phonetic (相 &middot; ソウ)</p>
+                        </div>
+                        <div class="morph-stage" data-stage="kanji">
+                            <p class="morph-sub">相 + 心</p>
+                            <div class="morph-glyph">想</div>
+                            <p class="morph-caption">kanji (想 &middot; そう &middot; to think/imagine)</p>
+                        </div>
+                        <div class="morph-stage" data-stage="combination">
+                            <div class="morph-glyph morph-glyph-word">想像</div>
+                            <p class="morph-caption">combination (想像 &middot; そうぞう &middot; imagination)</p>
+                        </div>
+                    </div>
+                    <div class="morph-dots" id="morph-dots">
+                        <span class="morph-dot" data-dot="0"></span>
+                        <span class="morph-dot" data-dot="1"></span>
+                        <span class="morph-dot" data-dot="2"></span>
+                        <span class="morph-dot" data-dot="3"></span>
+                    </div>
+                </div>
+                <p class="phonetics-info-text">A "phonetic component" is a recurring part inside a kanji that hints at its Chinese-derived on'yomi reading, rather than its meaning. Kanji sharing the same phonetic component — like 相, 想, and 霜 above — often sound alike even though they mean very different things, because the component was originally chosen for its sound. A separate "meaning radical" (like 心, heart, tucked into 想) is what actually carries the sense.</p>
+            </div>
+        </div>
 
         <footer class="site-footer">
             <p>&copy; 2026 Sarantsatsral Ganzorig. Personal portfolio &amp; educational project.</p>

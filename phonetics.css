@@ -67,6 +67,82 @@
     display: none;
 }
 
+/* ---------------------------------------------------------------------
+   Screen transitions (level-select <-> family-list <-> family-tree)
+   0.28s / ease matches the site's existing 0.2s-0.3s ease transition
+   convention (see .level-card, .family-item, .modal-card usage in style.css).
+   `.hidden` still does the final display:none (kept for a11y / no layout
+   cost when off-screen); these classes drive the opacity/transform tween
+   that happens before `.hidden` is (re)applied.
+   --------------------------------------------------------------------- */
+.phonetics-section {
+    transition: opacity 0.28s ease, transform 0.28s ease;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.phonetics-section.phonetics-section-enter {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+}
+
+.phonetics-section.phonetics-section-leave {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .phonetics-section,
+    .tree-chip,
+    .tree-detail-wrap,
+    .tree-detail,
+    .morph-stage {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* ---------------------------------------------------------------------
+   Clickable page title -> explainer modal trigger
+   --------------------------------------------------------------------- */
+.phonetics-title-trigger {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0 0 12px;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 10px;
+    cursor: pointer;
+    font-family: inherit;
+    color: inherit;
+    text-align: left;
+}
+
+.phonetics-title-trigger .phonetics-title {
+    margin: 0;
+    transition: color 0.2s ease;
+}
+
+.phonetics-title-trigger:hover .phonetics-title {
+    color: var(--accent-dark);
+}
+
+.phonetics-title-info {
+    font-size: 1.3rem;
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+}
+
+.phonetics-title-trigger:hover .phonetics-title-info {
+    color: var(--accent);
+}
+
+.phonetics-info-btn {
+    margin: 4px 0 20px;
+    display: inline-block;
+}
+
 .ghost-btn {
     background: none;
     border: 1px solid var(--border);
@@ -223,110 +299,218 @@
     color: var(--accent-dark);
 }
 
+/* Radial diagram: root phonetic in the center, member kanji as chips arranged
+   in a circle (or two concentric rings for large families) around it, joined
+   to the center by straight SVG spoke lines. Positions are computed in JS
+   (phonetics.js: layoutRadialTree) via trigonometry off the canvas's own
+   measured size, then applied as --tx/--ty custom properties consumed here. */
 .tree-canvas {
     position: relative;
-    margin-top: 20px;
+    width: 100%;
+    max-width: 560px;
+    aspect-ratio: 1 / 1;
+    margin: 36px auto 0;
+    --chip-size: 64px;
+    --root-size: 96px;
+}
+
+.tree-canvas[data-tier="cozy"] {
+    --chip-size: 54px;
+    --root-size: 86px;
+}
+
+.tree-canvas[data-tier="dense"] {
+    --chip-size: 44px;
+    --root-size: 74px;
 }
 
 .tree-lines {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
     overflow: visible;
-    z-index: 0;
+    z-index: 1;
 }
 
 .tree-line {
     fill: none;
     stroke: var(--border-strong);
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+    stroke-width: 1.5;
 }
 
-.tree-root-row {
+.tree-root-node {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: var(--root-size);
+    height: var(--root-size);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: var(--accent-tint);
+    border: 3px solid var(--accent);
+    box-shadow: var(--shadow-md);
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    position: relative;
-    z-index: 1;
-    margin-bottom: 56px;
+    gap: 2px;
+    text-align: center;
+    padding: 4px;
+    z-index: 3;
 }
 
-.tree-members-row {
+.tree-root-kanji {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--accent-dark);
+    line-height: 1.1;
+}
+
+.tree-root-reading {
+    font-size: 0.64rem;
+    font-weight: 600;
+    color: var(--accent-dark);
+    letter-spacing: 0.02em;
+}
+
+.tree-chip {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: var(--chip-size);
+    height: var(--chip-size);
+    transform: translate(-50%, -50%) translate(var(--tx, 0px), var(--ty, 0px));
+    border-radius: 50%;
+    background: var(--bg-surface);
+    border: 2px solid var(--border-strong);
+    box-shadow: var(--shadow-sm);
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
-    gap: 24px;
-    position: relative;
-    z-index: 1;
+    font-family: inherit;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, transform 0.2s ease;
+    z-index: 2;
+    padding: 0;
 }
 
-.tree-card {
+.tree-canvas[data-tier="dense"] .tree-chip {
+    font-size: 1rem;
+}
+
+.tree-chip:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-md);
+}
+
+.tree-chip.active {
+    border-color: var(--accent);
+    background: var(--accent-tint);
+    box-shadow: 0 0 0 4px var(--accent-tint), var(--shadow-md);
+    color: var(--accent-dark);
+    transform: translate(-50%, -50%) translate(var(--tx, 0px), var(--ty, 0px)) scale(1.15);
+}
+
+.tree-chip-current-level {
+    border-width: 3px;
+    border-color: var(--accent-light);
+}
+
+.tree-chip-dot {
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    border: 2px solid var(--bg-surface);
+    background: var(--text-muted);
+}
+
+.tree-chip-dot[data-level="N5"] { background: #4caf7d; }
+.tree-chip-dot[data-level="N4"] { background: #4f9de0; }
+.tree-chip-dot[data-level="N3"] { background: #e0a940; }
+.tree-chip-dot[data-level="N2"] { background: #e0793f; }
+.tree-chip-dot[data-level="N1"] { background: #d3494e; }
+
+/* ---------------------------------------------------------------------
+   Member detail panel — opens smoothly below the diagram on chip click.
+   Uses the grid-template-rows 0fr->1fr trick so it animates height without
+   ever touching display:none/block, plus an inner opacity/translate fade
+   that re-triggers (via a reflow-forced class swap in JS) on every click,
+   including switching directly from one open chip to another.
+   --------------------------------------------------------------------- */
+.tree-detail-wrap {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
+    max-width: 560px;
+    margin: 0 auto;
+}
+
+.tree-detail-wrap.open {
+    grid-template-rows: 1fr;
+}
+
+.tree-detail-inner {
+    overflow: hidden;
+    min-height: 0;
+}
+
+.tree-detail {
     background: var(--bg-surface);
     border: 1px solid var(--border);
     box-shadow: var(--shadow-sm);
-    padding: 16px 18px;
-    width: 220px;
-    transition: all 0.25s ease;
-    border-top: 3px solid var(--border-strong);
-}
-
-.tree-card:hover {
-    border-color: var(--accent);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-3px);
-}
-
-.tree-root {
-    width: 200px;
     border-top: 3px solid var(--accent);
-    background: var(--accent-tint);
-    text-align: center;
+    padding: 18px 20px;
+    margin-top: 20px;
+    opacity: 0;
 }
 
-.tree-card-current-level {
-    border-top-color: var(--accent);
+.tree-detail.tree-detail-fade {
+    animation: treeDetailIn 0.3s ease;
+    opacity: 1;
 }
 
-.tree-card-head {
+@keyframes treeDetailIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.tree-detail-head {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
     gap: 10px;
 }
 
-.tree-root .tree-card-head {
-    justify-content: center;
-}
-
-.tree-card-kanji {
-    font-size: 2rem;
+.tree-detail-kanji {
+    font-size: 2.1rem;
     font-weight: 700;
     line-height: 1.1;
 }
 
-.tree-card-level {
+.tree-detail-level {
     flex: 0 0 auto;
-    background: var(--bg-surface-alt);
-    color: var(--text-secondary);
+    background: var(--accent);
+    color: #ffffff;
     font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.03em;
     padding: 3px 8px;
 }
 
-.tree-card-current-level .tree-card-level {
-    background: var(--accent);
-    color: #ffffff;
-}
-
-.tree-card-readings {
+.tree-detail-readings {
     display: flex;
     flex-direction: column;
     gap: 2px;
-    margin-top: 6px;
-    font-size: 0.82rem;
+    margin-top: 8px;
+    font-size: 0.86rem;
 }
 
 .tree-reading-on {
@@ -338,39 +522,146 @@
     color: var(--text-secondary);
 }
 
-.tree-card-meaning {
-    margin: 8px 0 0;
-    font-size: 0.85rem;
+.tree-detail-meaning {
+    margin: 10px 0 0;
+    font-size: 0.9rem;
     color: var(--text-secondary);
     line-height: 1.4;
 }
 
 .tree-example {
     border-top: 1px solid var(--border);
-    margin-top: 10px;
-    padding-top: 8px;
+    margin-top: 12px;
+    padding-top: 10px;
 }
 
 .tree-example-jp {
     margin: 0 0 3px;
-    font-size: 0.88rem;
+    font-size: 0.92rem;
     line-height: 1.4;
 }
 
 .tree-example-en {
     margin: 0;
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     color: var(--text-muted);
     line-height: 1.4;
 }
 
 .tree-example-none {
     border-top: 1px solid var(--border);
-    margin: 10px 0 0;
-    padding-top: 8px;
-    font-size: 0.78rem;
+    margin: 12px 0 0;
+    padding-top: 10px;
+    font-size: 0.8rem;
     color: var(--text-muted);
     font-style: italic;
+}
+
+/* ---------------------------------------------------------------------
+   Explainer modal: component -> phonetic -> kanji -> combination morph
+   --------------------------------------------------------------------- */
+.phonetics-info-card {
+    max-width: 460px;
+}
+
+.morph-demo {
+    margin: 4px 0 18px;
+}
+
+.morph-stages {
+    position: relative;
+    height: 170px;
+}
+
+.morph-stage {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none;
+}
+
+.morph-stage.active {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+.morph-glyph {
+    font-size: 3.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+.morph-glyph-component {
+    opacity: 0.35;
+    font-weight: 400;
+}
+
+.morph-glyph-word {
+    font-size: 2.5rem;
+    color: var(--accent-dark);
+}
+
+.morph-glyph-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.morph-reading {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent-dark);
+}
+
+.morph-sub {
+    margin: 0;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+}
+
+.morph-caption {
+    margin: 4px 0 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.morph-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.morph-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--border-strong);
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.morph-dot.active {
+    background: var(--accent);
+    transform: scale(1.35);
+}
+
+.phonetics-info-text {
+    margin: 4px 0 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
 }
 
 /* ---------------------------------------------------------------------
@@ -386,12 +677,23 @@
         padding: 12px 14px;
     }
 
-    .tree-card {
-        width: 100%;
-        max-width: 260px;
+    .tree-canvas {
+        max-width: 360px;
+        --chip-size: 52px;
+        --root-size: 80px;
     }
 
-    .tree-lines {
-        display: none;
+    .tree-canvas[data-tier="cozy"] {
+        --chip-size: 44px;
+        --root-size: 72px;
+    }
+
+    .tree-canvas[data-tier="dense"] {
+        --chip-size: 36px;
+        --root-size: 62px;
+    }
+
+    .tree-detail {
+        padding: 16px;
     }
 }
