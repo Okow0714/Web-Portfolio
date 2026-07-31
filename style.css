@@ -251,6 +251,18 @@ body {
     font-size: 0.9rem;
     color: var(--text-secondary);
     white-space: nowrap;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    transition: text-decoration-color 0.2s ease;
+}
+
+.auth-user-email:hover {
+    text-decoration-color: currentColor;
 }
 
 #auth-logout-btn {
@@ -385,6 +397,114 @@ body {
 
 .auth-error.auth-info {
     color: var(--accent-dark);
+}
+
+.auth-forgot-link {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    padding: 0;
+    margin-top: 6px;
+    color: var(--accent);
+    font-size: 0.82rem;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.auth-forgot-link:hover {
+    color: var(--accent-dark);
+    text-decoration: underline;
+}
+
+.auth-terms-row {
+    margin-top: 10px;
+}
+
+.auth-checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    cursor: pointer;
+}
+
+.auth-checkbox-label input[type="checkbox"] {
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.auth-checkbox-label a {
+    color: var(--accent);
+}
+
+/* Account modal */
+.account-email {
+    color: var(--text-secondary);
+    margin: 0 0 24px;
+    word-break: break-all;
+}
+
+.account-danger-zone {
+    border: 1px solid #e6b3b3;
+    background: #fff5f5;
+    padding: 16px 18px;
+}
+
+.account-danger-zone h4 {
+    margin: 0 0 8px;
+    color: #b23b3b;
+    font-size: 0.95rem;
+}
+
+.account-danger-zone p {
+    margin: 0 0 14px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.account-delete-btn {
+    background: #d33f3f;
+    border-color: #d33f3f;
+}
+
+.account-delete-btn:hover:not(:disabled) {
+    background: #b23b3b;
+    border-color: #b23b3b;
+}
+
+.account-delete-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.account-delete-confirm {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.account-delete-confirm label {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+
+.account-delete-confirm input {
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+}
+
+.account-delete-status {
+    margin: 10px 0 0;
+    font-size: 0.85rem;
+    color: #d33f3f;
 }
 
 .auth-mode-toggle {

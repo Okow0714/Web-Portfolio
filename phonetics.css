@@ -1,0 +1,397 @@
+/* Kanji Phonetics — styles specific to phonetics.html.
+   Reuses style.css tokens (--accent, --border, --radius-*, --shadow-*) for visual consistency. */
+
+/* ---------------------------------------------------------------------
+   Header extras: active nav link + back-to-portfolio link (same pattern as game.css/reading.css)
+   --------------------------------------------------------------------- */
+.nav-current {
+    background: var(--accent-tint);
+    color: var(--accent-dark);
+    box-shadow: inset 0 -3px 0 var(--accent);
+}
+
+.back-link {
+    margin-right: auto;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.back-link:hover {
+    color: var(--accent-dark);
+}
+
+/* ---------------------------------------------------------------------
+   Page shell
+   --------------------------------------------------------------------- */
+.phonetics-main {
+    padding: 140px 40px 100px;
+    min-height: 100vh;
+}
+
+.phonetics-title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin: 0 0 12px;
+}
+
+.phonetics-subtitle {
+    color: var(--text-secondary);
+    max-width: 720px;
+    line-height: 1.6;
+    margin: 0 0 8px;
+}
+
+.phonetics-credit {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 30px 0 0;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+}
+
+.phonetics-credit a {
+    color: var(--text-muted);
+    text-decoration: underline;
+}
+
+.phonetics-credit a:hover {
+    color: var(--accent-dark);
+}
+
+.phonetics-section.hidden {
+    display: none;
+}
+
+.ghost-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 8px 16px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ghost-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent-dark);
+    background: var(--accent-tint);
+}
+
+/* ---------------------------------------------------------------------
+   Level select (mirrors the Word Match / Dokkai Reader level cards)
+   --------------------------------------------------------------------- */
+.level-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.level-card {
+    text-align: left;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    padding: 24px 22px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: inherit;
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.level-card:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+}
+
+.level-badge {
+    display: inline-block;
+    align-self: flex-start;
+    background: var(--accent-tint);
+    color: var(--accent-dark);
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+    padding: 4px 10px;
+}
+
+.level-card h3 {
+    margin: 0;
+    font-size: 1.15rem;
+}
+
+.level-meta {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* ---------------------------------------------------------------------
+   Family list (ranked phonetic families within a level)
+   --------------------------------------------------------------------- */
+.family-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    max-width: 640px;
+}
+
+.family-item {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    text-align: left;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    padding: 14px 20px;
+    cursor: pointer;
+    font-family: inherit;
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+}
+
+.family-item:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.family-rank {
+    flex: 0 0 auto;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    min-width: 28px;
+}
+
+.family-phonetic {
+    flex: 0 0 auto;
+    font-size: 1.8rem;
+    font-weight: 700;
+    min-width: 48px;
+    text-align: center;
+}
+
+.family-info {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.family-reading {
+    font-weight: 600;
+    color: var(--accent-dark);
+    font-size: 0.95rem;
+}
+
+.family-count {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+
+/* ---------------------------------------------------------------------
+   Family tree
+   --------------------------------------------------------------------- */
+.tree-header {
+    margin-top: 16px;
+}
+
+.tree-title {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+}
+
+.tree-title-reading {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--accent-dark);
+}
+
+.tree-canvas {
+    position: relative;
+    margin-top: 20px;
+}
+
+.tree-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    overflow: visible;
+    z-index: 0;
+}
+
+.tree-line {
+    fill: none;
+    stroke: var(--border-strong);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.tree-root-row {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 56px;
+}
+
+.tree-members-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+}
+
+.tree-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    padding: 16px 18px;
+    width: 220px;
+    transition: all 0.25s ease;
+    border-top: 3px solid var(--border-strong);
+}
+
+.tree-card:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+}
+
+.tree-root {
+    width: 200px;
+    border-top: 3px solid var(--accent);
+    background: var(--accent-tint);
+    text-align: center;
+}
+
+.tree-card-current-level {
+    border-top-color: var(--accent);
+}
+
+.tree-card-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.tree-root .tree-card-head {
+    justify-content: center;
+}
+
+.tree-card-kanji {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.tree-card-level {
+    flex: 0 0 auto;
+    background: var(--bg-surface-alt);
+    color: var(--text-secondary);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 3px 8px;
+}
+
+.tree-card-current-level .tree-card-level {
+    background: var(--accent);
+    color: #ffffff;
+}
+
+.tree-card-readings {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 6px;
+    font-size: 0.82rem;
+}
+
+.tree-reading-on {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.tree-reading-kun {
+    color: var(--text-secondary);
+}
+
+.tree-card-meaning {
+    margin: 8px 0 0;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.tree-example {
+    border-top: 1px solid var(--border);
+    margin-top: 10px;
+    padding-top: 8px;
+}
+
+.tree-example-jp {
+    margin: 0 0 3px;
+    font-size: 0.88rem;
+    line-height: 1.4;
+}
+
+.tree-example-en {
+    margin: 0;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+.tree-example-none {
+    border-top: 1px solid var(--border);
+    margin: 10px 0 0;
+    padding-top: 8px;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* ---------------------------------------------------------------------
+   Responsive
+   --------------------------------------------------------------------- */
+@media (max-width: 968px) {
+    .phonetics-main {
+        padding: 130px 20px 80px;
+    }
+
+    .family-item {
+        gap: 12px;
+        padding: 12px 14px;
+    }
+
+    .tree-card {
+        width: 100%;
+        max-width: 260px;
+    }
+
+    .tree-lines {
+        display: none;
+    }
+}

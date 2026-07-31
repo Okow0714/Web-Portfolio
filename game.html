@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <title>Japanese Word Match - Sarantsatsral Ganzorig</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A Connect-2 style Japanese vocabulary matching game across all five JLPT levels, with example sentences and saved progress.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="game.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -52,10 +54,7 @@
                         <a href="reading.html" class="nav-trigger">Dokkai Reader</a>
                     </div>
                     <div class="nav-item">
-                        <button class="nav-trigger">Section 4</button>
-                        <div class="nav-dropdown">
-                            <span class="nav-placeholder">Coming soon</span>
-                        </div>
+                        <a href="phonetics.html" class="nav-trigger">Kanji Phonetics</a>
                     </div>
                     <div class="nav-item">
                         <button class="nav-trigger">Section 5</button>
@@ -72,7 +71,7 @@
                     <button id="auth-login-btn" class="auth-btn auth-btn-cut">Log In</button>
                 </div>
                 <div id="auth-authed" class="auth-btn-cut hidden">
-                    <span id="auth-user-email" class="auth-user-email"></span>
+                    <button id="auth-user-email" class="auth-user-email" type="button"></button>
                     <button id="auth-logout-btn">Log Out</button>
                 </div>
             </div>
@@ -88,10 +87,37 @@
                     <input type="email" id="auth-email" required autocomplete="email">
                     <label for="auth-password">Password</label>
                     <input type="password" id="auth-password" required autocomplete="current-password" minlength="6">
+                    <button type="button" id="auth-forgot-btn" class="auth-forgot-link">Forgot password?</button>
+                    <div id="auth-terms-row" class="auth-terms-row hidden">
+                        <label class="auth-checkbox-label">
+                            <input type="checkbox" id="auth-terms-checkbox">
+                            I agree to the <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
+                        </label>
+                    </div>
                     <p id="auth-error" class="auth-error hidden"></p>
                     <button type="submit" id="auth-submit-btn" class="auth-btn">Log In</button>
                 </form>
                 <button id="auth-mode-toggle" class="auth-mode-toggle" type="button">Need an account? Sign up</button>
+            </div>
+        </div>
+
+        <!-- Account Modal -->
+        <div id="account-modal" class="modal-overlay hidden">
+            <div class="modal-card">
+                <button id="account-modal-close" class="modal-close" type="button" aria-label="Close">&times;</button>
+                <h3>Your Account</h3>
+                <p id="account-modal-email" class="account-email"></p>
+                <div class="account-danger-zone">
+                    <h4>Danger Zone</h4>
+                    <p>Deleting your account permanently removes your profile, comments, bookmarks, messages, and study progress. This can't be undone.</p>
+                    <button id="account-delete-start-btn" class="auth-btn account-delete-btn" type="button">Delete My Account</button>
+                    <div id="account-delete-confirm" class="account-delete-confirm hidden">
+                        <label for="account-delete-input">Type DELETE to confirm:</label>
+                        <input type="text" id="account-delete-input" autocomplete="off">
+                        <button id="account-delete-confirm-btn" class="auth-btn account-delete-btn" type="button" disabled>Yes, permanently delete my account</button>
+                    </div>
+                    <p id="account-delete-status" class="account-delete-status hidden"></p>
+                </div>
             </div>
         </div>
 
@@ -179,6 +205,15 @@
                 </div>
             </div>
         </div>
+
+        <footer class="site-footer">
+            <p>&copy; 2026 Sarantsatsral Ganzorig. Personal portfolio &amp; educational project.</p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+        </footer>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>

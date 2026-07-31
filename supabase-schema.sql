@@ -145,3 +145,25 @@ create policy "Users manage their own reading progress"
     on public.reading_progress for all
     using (auth.uid() = user_id)
     with check (auth.uid() = user_id);
+
+-- ---------------------------------------------------------------------------
+-- delete_own_account: lets a logged-in user permanently delete their own
+-- account. Runs as SECURITY DEFINER (elevated privileges) because the
+-- anon/authenticated roles can't delete from auth.users directly — but the
+-- auth.uid() check means it only ever touches the caller's own row. Deleting
+-- from auth.users cascades to profiles/comments/bookmarks/contact_messages/
+-- game_progress/reading_progress via the "on delete cascade" foreign keys
+-- already on those tables, so this one call removes everything.
+-- ---------------------------------------------------------------------------
+create or replace function public.delete_own_account()
+returns void
+language plpgsql
+security definer
+set search_path = public
+as $$
+begin
+    delete from auth.users where id = auth.uid();
+end;
+$$;
+
+grant execute on function public.delete_own_account() to authenticated;
