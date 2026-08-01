@@ -1,30 +1,23 @@
-// Japanese Word Match — a Connect-2 style tile game. Two tiles can be cleared when they
-// share a pairId (one Japanese word tile + its English translation tile) AND a straight
-// path with at most 2 turns connects them through empty cells (classic "Lianliankan" rule).
+// Japanese Word Match — click a Japanese-word tile and its English-meaning tile to clear a
+// pair, laid out as an interlocking honeycomb of hexagon tiles. A second move is also valid:
+// click any two Japanese-word tiles whose representative kanji share a phonetic component
+// ("lightning connect") to chain-clear every tile on the board belonging to that phonetic
+// family in one go. Consecutive clears build a combo streak; every 3rd clear is a bigger,
+// score-multiplying "tier hit".
 //
 // Depends on auth-shared.js (window.supabaseClient, window.getCurrentSession(), the
-// 'wp:authchange' event, and the global showEl/hideEl helpers it defines) and
-// game-words.js (WORD_LEVELS) having already run.
+// 'wp:authchange' event, and the global showEl/hideEl helpers it defines) and game-words.js
+// (WORD_LEVELS, each word annotated with `phonetic`/`phoneticReading` from the Kanjium data
+// also used by the Phonetics Family page) having already run.
 
 // Aliased as `sb`, not `supabaseClient` — see the note in supabase-app.js about why
 // reusing that identifier across <script> tags would throw a SyntaxError.
 const sb = window.supabaseClient;
 
-// The 40 tiles live on an 8x10 inner grid (80 cells, 50% filled) with the 40 empty
-// gaps scattered randomly throughout — not just packed edge-to-edge — plus a 1-cell
-// empty border for routing around the outside. Packing 40 tiles into an exactly-40-cell
-// grid leaves almost no room for a <=2-turn connect path, so most pairs would be
-// unsolvable at any given moment; scattering real gaps through the interior (as real
-// Mahjong/Lianliankan boards do) keeps the board reliably clearable in one pass.
-const INNER_ROWS = 8;
-const INNER_COLS = 10;
-const PAD = 1;
-const GRID_COLS = INNER_COLS + PAD * 2;
-const GRID_ROWS = INNER_ROWS + PAD * 2;
+const PER_ROW = 8; // 40 tiles / 8 = 5 clean honeycomb rows, no partial last row
+const STREAK_TIER = 3;
+const SUIT_COLORS = ['#c0435a', '#3d7a5c', '#5b57a6', '#d97a3f']; // hanafuda-suit accents, cycled per pair
 
-let grid = [];      // GRID_ROWS x GRID_COLS, each cell null or a tile object
-let cellEls = [];   // GRID_ROWS x GRID_COLS, each cell's wrapper <div>
-let selected = null;
 let currentLevel = null;
 let matchStarted = false; // gates tile clicks/timer until the start modal's "Start Match" is clicked
 let matchedCount = 0;
@@ -36,6 +29,14 @@ let elapsedSeconds = 0;
 let lastResult = null;    // result earned as a guest, pending save once they log in
 let progressCache = {};   // level number -> game_progress row
 let currentSet = [];      // this play's chosen 20-pair word set, indexed by pairId
+
+let tiles = [];           // all 40 tile objects for the current board
+let tilesByPairId = {};   // pairId -> { jp: tileObj, en: tileObj }
+let selected = [];        // up to 2 currently-selected tile objects
+let locked = false;
+
+let score = 0;
+let streak = 0;
 
 function escapeHtml(str) {
     const div = document.createElement('div');
@@ -56,259 +57,546 @@ function shuffleArray(arr) {
     }
 }
 
-// ---------------------------------------------------------------------------
-// Board construction
-// ---------------------------------------------------------------------------
-function buildBoard(level) {
-    // Each level has several word sets; picking one at random each play means
-    // replaying a level doesn't always show the same 20 pairs.
-    const set = level.sets[Math.floor(Math.random() * level.sets.length)];
-    currentSet = set;
-    const tiles = [];
-    set.forEach((p, i) => {
-        tiles.push({ pairId: i, kind: 'jp', text: p.jp, sub: p.reading });
-        tiles.push({ pairId: i, kind: 'en', text: p.en, sub: '' });
-    });
+function hexToRgb(hex) {
+    hex = hex.replace('#', '');
+    const num = parseInt(hex, 16);
+    return [(num >> 16) & 255, (num >> 8) & 255, num & 255].join(',');
+}
 
-    // 40 tiles + (INNER_ROWS*INNER_COLS - 40) empty gaps, shuffled together so the
-    // gaps land scattered throughout the inner grid rather than at one end.
-    const slots = tiles.map(t => t);
-    while (slots.length < INNER_ROWS * INNER_COLS) slots.push(null);
-    shuffleArray(slots);
+function midpoint(p1, p2) { return { x: (p1.x + p2.x) / 2, y: (p1.y + p2.y) / 2 }; }
 
-    grid = Array.from({ length: GRID_ROWS }, () => Array(GRID_COLS).fill(null));
-    let idx = 0;
-    for (let r = 0; r < INNER_ROWS; r++) {
-        for (let c = 0; c < INNER_COLS; c++) {
-            const tile = slots[idx++];
-            if (!tile) continue;
-            tile.row = r + PAD;
-            tile.col = c + PAD;
-            grid[tile.row][tile.col] = tile;
+// ---------------------------------------------------------------------------
+// Particle system — one canvas per layer (ambient drift + finite-life bursts/bolts), scoped
+// to the .game-main container's own box (not the viewport) so the effects stay inside the
+// dark game area and never bleed over the light site header/footer.
+// ---------------------------------------------------------------------------
+function ParticleField(canvas, container) {
+    this.canvas = canvas;
+    this.container = container;
+    this.ctx = canvas.getContext('2d');
+    this.particles = [];
+    this.bolts = [];
+    this.dpr = Math.min(window.devicePixelRatio || 1, 2);
+    this.resize();
+}
+
+ParticleField.prototype.resize = function () {
+    const rect = this.container.getBoundingClientRect();
+    this.w = Math.max(rect.width, 1);
+    this.h = Math.max(rect.height, 1);
+    this.canvas.width = this.w * this.dpr;
+    this.canvas.height = this.h * this.dpr;
+    this.ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+};
+
+ParticleField.prototype.spawnAmbient = function (n) {
+    for (let i = 0; i < n; i++) {
+        this.particles.push({
+            kind: 'ambient',
+            x: Math.random() * this.w,
+            y: Math.random() * this.h,
+            vx: (Math.random() - 0.5) * 6,
+            vy: -6 - Math.random() * 10,
+            r: 0.6 + Math.random() * 1.6,
+            color: Math.random() < 0.7 ? '212,166,75' : '244,206,122',
+            alpha: 0.12 + Math.random() * 0.22,
+            drift: Math.random() * Math.PI * 2,
+        });
+    }
+};
+
+ParticleField.prototype.spawnBurst = function (x, y, opts) {
+    opts = opts || {};
+    const count = opts.count || 26;
+    const colors = opts.colors || ['212,166,75', '244,206,122'];
+    const speed = opts.speed || 180;
+    const life = opts.life || 0.9;
+    for (let i = 0; i < count; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const v = speed * (0.35 + Math.random() * 0.75);
+        this.particles.push({
+            kind: 'burst',
+            x, y,
+            vx: Math.cos(angle) * v,
+            vy: Math.sin(angle) * v - 60,
+            gravity: 420,
+            r: 1.4 + Math.random() * 2.6,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            life: life * (0.7 + Math.random() * 0.6),
+            age: 0,
+        });
+    }
+};
+
+// Jagged animated connector line between two points, for the phonetic-chain "lightning
+// connect" move — a distinct visual from the round particle bursts used elsewhere.
+ParticleField.prototype.spawnBolt = function (p1, p2, opts) {
+    opts = opts || {};
+    const segments = 7;
+    const points = [];
+    const dx = p2.x - p1.x, dy = p2.y - p1.y;
+    const len = Math.hypot(dx, dy) || 1;
+    const nx = -dy / len, ny = dx / len;
+    for (let i = 0; i <= segments; i++) {
+        const t = i / segments;
+        const jitter = (i === 0 || i === segments) ? 0 : (Math.random() - 0.5) * 24;
+        points.push({ x: p1.x + dx * t + nx * jitter, y: p1.y + dy * t + ny * jitter });
+    }
+    this.bolts.push({ points, life: opts.life || 0.5, age: 0, color: opts.color || '127,224,255' });
+};
+
+ParticleField.prototype.update = function (dt) {
+    const next = [];
+    for (let i = 0; i < this.particles.length; i++) {
+        const p = this.particles[i];
+        if (p.kind === 'ambient') {
+            p.drift += dt * 0.6;
+            p.x += (p.vx + Math.sin(p.drift) * 6) * dt * 0.1;
+            p.y += p.vy * dt * 0.1;
+            if (p.y < -20) { p.y = this.h + 20; p.x = Math.random() * this.w; }
+            if (p.x < -20) p.x = this.w + 20;
+            if (p.x > this.w + 20) p.x = -20;
+            next.push(p);
+        } else {
+            p.age += dt;
+            if (p.age >= p.life) continue;
+            p.vy += p.gravity * dt;
+            p.x += p.vx * dt;
+            p.y += p.vy * dt;
+            next.push(p);
         }
     }
+    this.particles = next;
+    this.bolts = this.bolts.filter(b => { b.age += dt; return b.age < b.life; });
+};
+
+ParticleField.prototype.draw = function () {
+    const ctx = this.ctx;
+    ctx.clearRect(0, 0, this.w, this.h);
+    for (let i = 0; i < this.particles.length; i++) {
+        const p = this.particles[i];
+        let alpha, r;
+        if (p.kind === 'ambient') { alpha = p.alpha; r = p.r; }
+        else { const t = p.age / p.life; alpha = 1 - t; r = p.r * (1 - t * 0.4); }
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(${p.color},${Math.max(alpha, 0)})`;
+        ctx.arc(p.x, p.y, Math.max(r, 0), 0, Math.PI * 2);
+        ctx.fill();
+    }
+    this.bolts.forEach(b => {
+        const t = b.age / b.life;
+        const alpha = Math.max(1 - t, 0);
+        ctx.save();
+        ctx.strokeStyle = `rgba(${b.color},${alpha})`;
+        ctx.lineWidth = 2.5;
+        ctx.shadowColor = `rgba(${b.color},${Math.min(alpha + 0.3, 1)})`;
+        ctx.shadowBlur = 14;
+        ctx.beginPath();
+        b.points.forEach((p, i) => (i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y)));
+        ctx.stroke();
+        ctx.restore();
+    });
+};
+
+const gameMain = document.querySelector('.game-main');
+const boardWrapEl = document.getElementById('board-wrap');
+const fxTextLayer = document.getElementById('fx-text-layer');
+const ambientField = new ParticleField(document.getElementById('ambient-canvas'), gameMain);
+const fxField = new ParticleField(document.getElementById('fx-canvas'), gameMain);
+ambientField.spawnAmbient(50);
+
+function resizeCanvases() { ambientField.resize(); fxField.resize(); }
+window.addEventListener('resize', resizeCanvases);
+if (window.ResizeObserver) {
+    new ResizeObserver(() => resizeCanvases()).observe(gameMain);
+}
+
+let lastFrameT = performance.now();
+function fxLoop(t) {
+    const dt = Math.min((t - lastFrameT) / 1000, 0.05);
+    lastFrameT = t;
+    ambientField.update(dt); ambientField.draw();
+    fxField.update(dt); fxField.draw();
+    requestAnimationFrame(fxLoop);
+}
+requestAnimationFrame(fxLoop);
+
+function centerOf(el) {
+    const r = el.getBoundingClientRect();
+    const mainRect = gameMain.getBoundingClientRect();
+    return { x: r.left + r.width / 2 - mainRect.left, y: r.top + r.height / 2 - mainRect.top };
+}
+
+function tween(from, to, duration, onUpdate) {
+    const start = performance.now();
+    const ease = t => 1 - Math.pow(1 - t, 3);
+    function step(now) {
+        const t = Math.min((now - start) / duration, 1);
+        onUpdate(from + (to - from) * ease(t));
+        if (t < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+}
+
+function floatText(x, y, text, big, lightning) {
+    const el = document.createElement('div');
+    el.className = 'float-text' + (big ? ' streak-text' : '') + (lightning ? ' lightning-text' : '');
+    el.style.left = x + 'px';
+    el.style.top = y + 'px';
+    el.style.fontSize = big ? '1.5rem' : '1.05rem';
+    el.textContent = text;
+    fxTextLayer.appendChild(el);
+    window.setTimeout(() => el.remove(), 1150);
+}
+
+// ---------------------------------------------------------------------------
+// Audio — synthesized at runtime with the Web Audio API (no sourced audio files), built
+// around the Japanese "in" (陰) pentatonic scale (semitone offsets 0,1,5,7,8 from the root).
+// Sound starts off; the speaker toggle is the explicit opt-in.
+// ---------------------------------------------------------------------------
+const GameAudio = (function () {
+    let ctx = null;
+    let masterGain = null;
+    let sfxGain = null;
+    let ambientGain = null;
+    let enabled = false;
+    let ambientNodes = null;
+    let pluckTimer = null;
+    let noiseBuffer = null;
+
+    const ROOT = 220; // A3
+    const IN_SCALE = [0, 1, 5, 7, 8]; // semitone offsets, Japanese "in" mode
+
+    function noteFreq(degree, octave) {
+        octave = octave || 0;
+        const len = IN_SCALE.length;
+        const idx = ((degree % len) + len) % len;
+        const octShift = Math.floor(degree / len) + octave;
+        const semitone = IN_SCALE[idx] + octShift * 12;
+        return ROOT * Math.pow(2, semitone / 12);
+    }
+
+    function ensureContext() {
+        if (ctx) return;
+        const AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return;
+        ctx = new AC();
+        masterGain = ctx.createGain();
+        masterGain.gain.value = 1;
+        masterGain.connect(ctx.destination);
+        sfxGain = ctx.createGain();
+        sfxGain.gain.value = 0.5;
+        sfxGain.connect(masterGain);
+        ambientGain = ctx.createGain();
+        ambientGain.gain.value = 0;
+        ambientGain.connect(masterGain);
+    }
+
+    function getNoiseBuffer() {
+        if (noiseBuffer) return noiseBuffer;
+        const len = Math.floor(ctx.sampleRate * 0.5);
+        noiseBuffer = ctx.createBuffer(1, len, ctx.sampleRate);
+        const data = noiseBuffer.getChannelData(0);
+        for (let i = 0; i < len; i++) data[i] = Math.random() * 2 - 1;
+        return noiseBuffer;
+    }
+
+    // One synthesized tone with a fast exponential attack/release envelope — the shared
+    // building block behind every chime, blip, and thud below.
+    function tone(freq, opts) {
+        opts = opts || {};
+        const type = opts.type || 'sine';
+        const dur = opts.duration || 0.25;
+        const peak = opts.gain != null ? opts.gain : 0.2;
+        const delay = opts.delay || 0;
+        const t0 = ctx.currentTime + delay;
+
+        const osc = ctx.createOscillator();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, t0);
+        if (opts.glideTo) osc.frequency.exponentialRampToValueAtTime(opts.glideTo, t0 + dur);
+
+        const g = ctx.createGain();
+        g.gain.setValueAtTime(0.0001, t0);
+        g.gain.exponentialRampToValueAtTime(peak, t0 + (opts.attack || 0.008));
+        g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+
+        if (opts.filterFreq) {
+            const filter = ctx.createBiquadFilter();
+            filter.type = 'lowpass';
+            filter.frequency.value = opts.filterFreq;
+            osc.connect(filter);
+            filter.connect(g);
+        } else {
+            osc.connect(g);
+        }
+        g.connect(sfxGain);
+
+        osc.start(t0);
+        osc.stop(t0 + dur + 0.05);
+    }
+
+    function sfxSelect() {
+        if (!enabled) return;
+        tone(noteFreq(3, 1), { type: 'sine', duration: 0.09, gain: 0.14, attack: 0.004 });
+    }
+
+    function sfxMatch(tier) {
+        if (!enabled) return;
+        const base = 5 + Math.min(tier, 3) * 2;
+        tone(noteFreq(base, 0), { type: 'triangle', duration: 0.16, gain: 0.16 });
+        tone(noteFreq(base + 2, 1), { type: 'sine', duration: 0.22, gain: 0.14, delay: 0.05 });
+    }
+
+    function sfxStreak() {
+        if (!enabled) return;
+        [0, 2, 4, 7].forEach((d, i) => {
+            tone(noteFreq(d, 1), { type: 'triangle', duration: 0.3, gain: 0.15, delay: i * 0.08, attack: 0.006 });
+            tone(noteFreq(d, 2), { type: 'sine', duration: 0.35, gain: 0.08, delay: i * 0.08 + 0.02 });
+        });
+    }
+
+    function sfxMismatch() {
+        if (!enabled) return;
+        const f = noteFreq(0, -1);
+        tone(f, { type: 'sawtooth', duration: 0.18, gain: 0.1, glideTo: f * 0.7, filterFreq: 900 });
+    }
+
+    // Lightning connect: a fast noise crackle swept through a rising bandpass filter, plus a
+    // short ascending pentatonic sparkle (one note per chained pair) — distinct in timbre from
+    // the plain triangle/sine match chime, but still built from oscillators/noise and still on
+    // the same "in" scale.
+    function sfxLightning(chainSize) {
+        if (!enabled) return;
+        const t0 = ctx.currentTime;
+        const src = ctx.createBufferSource();
+        src.buffer = getNoiseBuffer();
+        const bp = ctx.createBiquadFilter();
+        bp.type = 'bandpass';
+        bp.frequency.setValueAtTime(1600, t0);
+        bp.frequency.exponentialRampToValueAtTime(5200, t0 + 0.17);
+        bp.Q.value = 7;
+        const ng = ctx.createGain();
+        ng.gain.setValueAtTime(0.0001, t0);
+        ng.gain.exponentialRampToValueAtTime(0.24, t0 + 0.012);
+        ng.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.24);
+        src.connect(bp); bp.connect(ng); ng.connect(sfxGain);
+        src.start(t0);
+        src.stop(t0 + 0.26);
+
+        const count = Math.max(2, Math.min(chainSize || 2, 6));
+        for (let i = 0; i < count; i++) {
+            tone(noteFreq(7 + i * 2, 1), { type: 'square', duration: 0.13, gain: 0.09, delay: 0.03 + i * 0.055, attack: 0.002, filterFreq: 4200 });
+        }
+    }
+
+    function sfxWin() {
+        if (!enabled) return;
+        [0, 2, 4, 7, 9, 12].forEach((d, i) => {
+            tone(noteFreq(d, 0), { type: 'triangle', duration: 0.4, gain: 0.15, delay: i * 0.1 });
+        });
+        tone(noteFreq(12, 0), { type: 'sine', duration: 1.4, gain: 0.1, delay: 0.65 });
+        tone(noteFreq(7, 1), { type: 'sine', duration: 1.4, gain: 0.08, delay: 0.68 });
+    }
+
+    // Generative ambient pad: a few detuned low oscillators through a slowly modulated
+    // lowpass filter, plus occasional soft plucked notes — procedurally generated for as long
+    // as sound stays on, never a fixed sourced loop.
+    function startAmbient() {
+        if (ambientNodes) return;
+        const osc1 = ctx.createOscillator(); osc1.type = 'sine'; osc1.frequency.value = noteFreq(0, -1);
+        const osc2 = ctx.createOscillator(); osc2.type = 'sine'; osc2.frequency.value = noteFreq(4, -1); osc2.detune.value = 6;
+        const osc3 = ctx.createOscillator(); osc3.type = 'triangle'; osc3.frequency.value = noteFreq(0, 0); osc3.detune.value = -5;
+
+        const filter = ctx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.value = 700;
+
+        const lfo = ctx.createOscillator();
+        lfo.type = 'sine';
+        lfo.frequency.value = 0.045;
+        const lfoGain = ctx.createGain();
+        lfoGain.gain.value = 260;
+        lfo.connect(lfoGain);
+        lfoGain.connect(filter.frequency);
+
+        // The drone gets its OWN gain stage (padGain), separate from the shared ambientGain the
+        // plucks also use — 3 unscaled oscillators summed are already ~3x amplitude, so without
+        // this the pad drowns out the plucks even though the pluck envelope peaks higher on
+        // paper. ambientGain is purely an on/off fader for the whole ambient system.
+        const padGain = ctx.createGain();
+        padGain.gain.value = 0.02;
+
+        [osc1, osc2, osc3].forEach(o => o.connect(filter));
+        filter.connect(padGain);
+        padGain.connect(ambientGain);
+
+        osc1.start(); osc2.start(); osc3.start(); lfo.start();
+        ambientGain.gain.cancelScheduledValues(ctx.currentTime);
+        ambientGain.gain.setValueAtTime(ambientGain.gain.value, ctx.currentTime);
+        ambientGain.gain.linearRampToValueAtTime(1, ctx.currentTime + 1.4);
+
+        ambientNodes = { osc1, osc2, osc3, lfo, padGain };
+        schedulePluck();
+    }
+
+    function schedulePluck() {
+        if (pluckTimer) window.clearTimeout(pluckTimer);
+        pluckTimer = window.setTimeout(() => {
+            if (enabled && ambientNodes) {
+                const degree = [0, 2, 4, 7, 9][Math.floor(Math.random() * 5)];
+                const freq = noteFreq(degree, 1);
+                const t0 = ctx.currentTime;
+                const osc = ctx.createOscillator();
+                osc.type = 'sine';
+                osc.frequency.value = freq;
+                const g = ctx.createGain();
+                g.gain.setValueAtTime(0.0001, t0);
+                g.gain.exponentialRampToValueAtTime(0.13, t0 + 0.01);
+                g.gain.exponentialRampToValueAtTime(0.0001, t0 + 1.8);
+                if (window.StereoPannerNode) {
+                    const pan = ctx.createStereoPanner();
+                    pan.pan.value = (Math.random() - 0.5) * 0.8;
+                    osc.connect(g);
+                    g.connect(pan);
+                    pan.connect(ambientGain);
+                } else {
+                    osc.connect(g);
+                    g.connect(ambientGain);
+                }
+                osc.start(t0);
+                osc.stop(t0 + 1.9);
+            }
+            schedulePluck();
+        }, 2400 + Math.random() * 2600);
+    }
+
+    function stopAmbient() {
+        if (pluckTimer) { window.clearTimeout(pluckTimer); pluckTimer = null; }
+        if (!ambientNodes) return;
+        const t0 = ctx.currentTime;
+        ambientGain.gain.cancelScheduledValues(t0);
+        ambientGain.gain.setValueAtTime(ambientGain.gain.value, t0);
+        ambientGain.gain.linearRampToValueAtTime(0, t0 + 0.5);
+        const nodes = ambientNodes;
+        window.setTimeout(() => {
+            [nodes.osc1, nodes.osc2, nodes.osc3, nodes.lfo].forEach(n => {
+                try { n.stop(); } catch (e) { /* already stopped */ }
+            });
+        }, 600);
+        ambientNodes = null;
+    }
+
+    function setEnabled(next) {
+        ensureContext();
+        if (!ctx) return false;
+        enabled = next;
+        if (enabled) {
+            if (ctx.state === 'suspended') ctx.resume();
+            startAmbient();
+        } else {
+            stopAmbient();
+        }
+        return enabled;
+    }
+
+    return {
+        toggle: () => setEnabled(!enabled),
+        isEnabled: () => enabled,
+        select: sfxSelect,
+        match: sfxMatch,
+        streak: sfxStreak,
+        mismatch: sfxMismatch,
+        lightning: sfxLightning,
+        win: sfxWin,
+    };
+})();
+
+function syncSoundButtons(on) {
+    [
+        [document.getElementById('sound-toggle'), document.getElementById('sound-icon')],
+        [document.getElementById('board-sound-toggle'), document.getElementById('board-sound-icon')],
+    ].forEach(([btn, icon]) => {
+        btn.classList.toggle('on', on);
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        btn.title = on ? 'Turn sound off' : 'Turn sound on';
+        icon.textContent = on ? '\u{1F50A}' : '\u{1F507}';
+    });
+}
+document.getElementById('sound-toggle').addEventListener('click', () => syncSoundButtons(GameAudio.toggle()));
+document.getElementById('board-sound-toggle').addEventListener('click', () => syncSoundButtons(GameAudio.toggle()));
+
+// ---------------------------------------------------------------------------
+// Board construction — a honeycomb of hexagon tiles, no grid/pathfinding: any two tiles can
+// be clicked regardless of position, so the board can never get "stuck".
+// ---------------------------------------------------------------------------
+function buildTiles(level) {
+    // Each level has several word sets; picking one at random each play means replaying a
+    // level doesn't always show the same 20 pairs.
+    const set = level.sets[Math.floor(Math.random() * level.sets.length)];
+    currentSet = set;
+    const list = [];
+    set.forEach((p, i) => {
+        list.push({ pairId: i, kind: 'jp', text: p.jp, sub: p.reading, phonetic: p.phonetic || null, cleared: false });
+        list.push({ pairId: i, kind: 'en', text: p.en, sub: '', phonetic: null, cleared: false });
+    });
+    shuffleArray(list);
+    return list;
+}
+
+function layoutTiles(tileList) {
+    const grid = document.getElementById('tile-grid');
+    grid.innerHTML = '';
+    let rowEl = null;
+    let rowIndex = -1;
+    tileList.forEach((t, i) => {
+        if (i % PER_ROW === 0) {
+            rowIndex++;
+            rowEl = document.createElement('div');
+            rowEl.className = 'hex-row' + (rowIndex % 2 === 1 ? ' offset' : '');
+            grid.appendChild(rowEl);
+        }
+        rowEl.appendChild(t.el);
+    });
 }
 
 function renderBoard() {
-    const boardGrid = document.getElementById('board-grid');
-    boardGrid.innerHTML = '';
-    boardGrid.style.gridTemplateColumns = `repeat(${GRID_COLS}, 1fr)`;
-    boardGrid.style.gridTemplateRows = `repeat(${GRID_ROWS}, 1fr)`;
-
-    cellEls = Array.from({ length: GRID_ROWS }, () => Array(GRID_COLS).fill(null));
-
-    for (let r = 0; r < GRID_ROWS; r++) {
-        for (let c = 0; c < GRID_COLS; c++) {
-            const cellDiv = document.createElement('div');
-            cellDiv.className = 'grid-cell';
-
-            const tile = grid[r][c];
-            if (tile) {
-                const btn = document.createElement('button');
-                btn.type = 'button';
-                btn.className = `tile tile-${tile.kind}`;
-                if (tile.kind === 'jp') {
-                    btn.innerHTML = `<span class="tile-jp">${escapeHtml(tile.text)}</span>` +
-                        `<span class="tile-reading">${escapeHtml(tile.sub)}</span>`;
-                } else {
-                    btn.innerHTML = `<span class="tile-en-text">${escapeHtml(tile.text)}</span>`;
-                }
-                btn.addEventListener('click', () => onTileClick(tile));
-                tile.el = btn;
-                cellDiv.appendChild(btn);
-            }
-
-            boardGrid.appendChild(cellDiv);
-            cellEls[r][c] = cellDiv;
+    tiles = buildTiles(currentLevel);
+    tilesByPairId = {};
+    tiles.forEach(t => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `tile tile-${t.kind}`;
+        btn.style.setProperty('--suit-color', SUIT_COLORS[t.pairId % SUIT_COLORS.length]);
+        if (t.kind === 'jp') {
+            btn.innerHTML = `<span class="tile-jp">${escapeHtml(t.text)}</span>` +
+                `<span class="tile-reading">${escapeHtml(t.sub)}</span>`;
+        } else {
+            btn.innerHTML = `<span class="tile-en-text">${escapeHtml(t.text)}</span>`;
         }
-    }
+        const dot = document.createElement('span');
+        dot.className = 'tile-dot';
+        btn.appendChild(dot);
+        btn.addEventListener('click', () => onTileClick(t));
+        t.el = btn;
 
-    clearPathLine();
-}
-
-// ---------------------------------------------------------------------------
-// Connect-2 pathfinding: straight line with at most 2 turns, through empty cells only.
-// ---------------------------------------------------------------------------
-function isClearHorizontal(row, c1, c2) {
-    const lo = Math.min(c1, c2), hi = Math.max(c1, c2);
-    for (let c = lo + 1; c < hi; c++) {
-        if (grid[row][c] !== null) return false;
-    }
-    return true;
-}
-
-function isClearVertical(col, r1, r2) {
-    const lo = Math.min(r1, r2), hi = Math.max(r1, r2);
-    for (let r = lo + 1; r < hi; r++) {
-        if (grid[r][col] !== null) return false;
-    }
-    return true;
-}
-
-function findPath(a, b) {
-    // 0 turns
-    if (a.row === b.row && isClearHorizontal(a.row, a.col, b.col)) {
-        return [{ row: a.row, col: a.col }, { row: b.row, col: b.col }];
-    }
-    if (a.col === b.col && isClearVertical(a.col, a.row, b.row)) {
-        return [{ row: a.row, col: a.col }, { row: b.row, col: b.col }];
-    }
-
-    // 1 turn: corner at (a.row, b.col) or (b.row, a.col)
-    const corner1 = { row: a.row, col: b.col };
-    if (grid[corner1.row][corner1.col] === null &&
-        isClearHorizontal(a.row, a.col, corner1.col) &&
-        isClearVertical(corner1.col, corner1.row, b.row)) {
-        return [{ row: a.row, col: a.col }, corner1, { row: b.row, col: b.col }];
-    }
-    const corner2 = { row: b.row, col: a.col };
-    if (grid[corner2.row][corner2.col] === null &&
-        isClearVertical(corner2.col, a.row, corner2.row) &&
-        isClearHorizontal(b.row, corner2.col, b.col)) {
-        return [{ row: a.row, col: a.col }, corner2, { row: b.row, col: b.col }];
-    }
-
-    // 2 turns: try every empty cell in a's row, then every empty cell in a's column
-    for (let c = 0; c < GRID_COLS; c++) {
-        if (c === a.col || grid[a.row][c] !== null) continue;
-        if (!isClearHorizontal(a.row, a.col, c)) continue;
-        const mid = { row: a.row, col: c };
-        const corner = { row: b.row, col: c };
-        if (grid[corner.row][corner.col] === null &&
-            isClearVertical(corner.col, mid.row, corner.row) &&
-            isClearHorizontal(b.row, corner.col, b.col)) {
-            return [{ row: a.row, col: a.col }, mid, corner, { row: b.row, col: b.col }];
-        }
-    }
-    for (let r = 0; r < GRID_ROWS; r++) {
-        if (r === a.row || grid[r][a.col] !== null) continue;
-        if (!isClearVertical(a.col, a.row, r)) continue;
-        const mid = { row: r, col: a.col };
-        const corner = { row: r, col: b.col };
-        if (grid[corner.row][corner.col] === null &&
-            isClearHorizontal(corner.row, mid.col, corner.col) &&
-            isClearVertical(corner.col, corner.row, b.row)) {
-            return [{ row: a.row, col: a.col }, mid, corner, { row: b.row, col: b.col }];
-        }
-    }
-
-    return null;
-}
-
-// ---------------------------------------------------------------------------
-// Connector line drawing
-// ---------------------------------------------------------------------------
-function drawPathLine(path) {
-    const svg = document.getElementById('board-lines');
-    const svgRect = svg.getBoundingClientRect();
-    const points = path.map(p => {
-        const rect = cellEls[p.row][p.col].getBoundingClientRect();
-        const x = rect.left + rect.width / 2 - svgRect.left;
-        const y = rect.top + rect.height / 2 - svgRect.top;
-        return `${x},${y}`;
-    }).join(' L ');
-
-    clearPathLine();
-    const pathEl = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    pathEl.setAttribute('id', 'active-connect-line');
-    pathEl.setAttribute('d', `M ${points}`);
-    svg.appendChild(pathEl);
-}
-
-function clearPathLine() {
-    const el = document.getElementById('active-connect-line');
-    if (el) el.remove();
-}
-
-// ---------------------------------------------------------------------------
-// Gameplay
-// ---------------------------------------------------------------------------
-function onTileClick(tile) {
-    if (!matchStarted) return; // still on the "get ready" screen
-    if (!grid[tile.row][tile.col]) return; // already matched/removed
-
-    if (selected === tile) {
-        selected.el.classList.remove('selected');
-        selected = null;
-        return;
-    }
-
-    if (!selected) {
-        selected = tile;
-        tile.el.classList.add('selected');
-        return;
-    }
-
-    const prev = selected;
-    selected = null;
-    prev.el.classList.remove('selected');
-    moves++;
-    updateStats();
-
-    if (prev.pairId === tile.pairId) {
-        const path = findPath(prev, tile);
-        if (path) {
-            drawPathLine(path);
-            showExample(prev.pairId);
-            setTimeout(() => {
-                removeTile(prev);
-                removeTile(tile);
-                clearPathLine();
-                matchedCount++;
-                updateStats();
-                if (matchedCount === totalPairs) finishLevel();
-            }, 260);
-            return;
-        }
-    }
-
-    prev.el.classList.add('shake');
-    tile.el.classList.add('shake');
-    setTimeout(() => {
-        prev.el.classList.remove('shake');
-        tile.el.classList.remove('shake');
-    }, 350);
-}
-
-function removeTile(tile) {
-    grid[tile.row][tile.col] = null;
-    tile.el.classList.add('matched');
-    setTimeout(() => {
-        if (tile.el && tile.el.parentNode) tile.el.remove();
-    }, 260);
-}
-
-function shuffleRemaining() {
-    const remaining = [];
-    for (let r = PAD; r < PAD + INNER_ROWS; r++) {
-        for (let c = PAD; c < PAD + INNER_COLS; c++) {
-            if (grid[r][c]) remaining.push(grid[r][c]);
-        }
-    }
-    if (remaining.length === 0) return;
-
-    const positions = [];
-    for (let r = PAD; r < PAD + INNER_ROWS; r++) {
-        for (let c = PAD; c < PAD + INNER_COLS; c++) {
-            positions.push({ row: r, col: c });
-        }
-    }
-    shuffleArray(positions);
-
-    for (let r = PAD; r < PAD + INNER_ROWS; r++) {
-        for (let c = PAD; c < PAD + INNER_COLS; c++) {
-            grid[r][c] = null;
-        }
-    }
-    remaining.forEach((tile, i) => {
-        const pos = positions[i];
-        tile.row = pos.row;
-        tile.col = pos.col;
-        grid[pos.row][pos.col] = tile;
+        if (!tilesByPairId[t.pairId]) tilesByPairId[t.pairId] = {};
+        tilesByPairId[t.pairId][t.kind] = t;
     });
+    layoutTiles(tiles);
+    resizeCanvases();
+}
 
-    selected = null;
-    renderBoard();
+// Cosmetic reshuffle of the remaining (uncleared) tiles' honeycomb positions — reuses the
+// existing tile elements (and their listeners), just re-lays them out in a new random order.
+function shuffleRemaining() {
+    const remaining = tiles.filter(t => !t.cleared);
+    if (!remaining.length) return;
+    selected.forEach(t => t.el.classList.remove('selected'));
+    selected = [];
+    locked = false;
+    shuffleArray(remaining);
+    layoutTiles(remaining);
 }
 
 // ---------------------------------------------------------------------------
@@ -330,6 +618,25 @@ function stopTimer() {
 function updateStats() {
     document.getElementById('board-pairs').textContent = `${matchedCount} / ${totalPairs} pairs`;
     document.getElementById('board-moves').textContent = `${moves} moves`;
+}
+
+function setScore(newScore) {
+    const scoreEl = document.getElementById('score-value');
+    tween(score, newScore, 380, v => { scoreEl.textContent = Math.round(v).toString(); });
+    score = newScore;
+}
+
+function updateStreakMeter(tierHit) {
+    const streakFill = document.getElementById('streak-fill');
+    let pct = ((streak % STREAK_TIER) / STREAK_TIER) * 100;
+    if (tierHit) pct = 100;
+    streakFill.style.width = pct + '%';
+    if (tierHit) {
+        streakFill.classList.remove('tier-flash');
+        void streakFill.offsetWidth;
+        streakFill.classList.add('tier-flash');
+        window.setTimeout(() => { streakFill.style.width = '0%'; }, 260);
+    }
 }
 
 // ---------------------------------------------------------------------------
@@ -366,6 +673,165 @@ function showExample(pairId) {
 }
 
 // ---------------------------------------------------------------------------
+// Gameplay
+// ---------------------------------------------------------------------------
+function onTileClick(tile) {
+    if (!matchStarted || locked) return;
+    if (tile.cleared) return;
+
+    if (selected.includes(tile)) {
+        tile.el.classList.remove('selected');
+        selected = selected.filter(t => t !== tile);
+        return;
+    }
+    if (selected.length >= 2) return;
+
+    tile.el.classList.add('selected');
+    selected.push(tile);
+    GameAudio.select();
+
+    if (selected.length === 2) {
+        locked = true;
+        moves++;
+        updateStats();
+        const [a, b] = selected;
+        window.setTimeout(() => resolveSelection(a, b), 200);
+    }
+}
+
+function resolveSelection(a, b) {
+    if (a.pairId === b.pairId && a.kind !== b.kind) {
+        handleMatch(a, b);
+        return;
+    }
+    if (a.kind === 'jp' && b.kind === 'jp' && a.phonetic && a.phonetic === b.phonetic) {
+        handleLightningChain(a.phonetic);
+        return;
+    }
+    handleMismatch(a, b);
+}
+
+function handleMatch(a, b) {
+    streak += 1;
+    const gained = 10 * (1 + Math.floor(streak / STREAK_TIER));
+    setScore(score + gained);
+    GameAudio.match(Math.floor(streak / STREAK_TIER));
+
+    [a, b].forEach(t => {
+        t.el.classList.add('match-pop');
+        const c = centerOf(t.el);
+        const rgb = hexToRgb(SUIT_COLORS[a.pairId % SUIT_COLORS.length]);
+        fxField.spawnBurst(c.x, c.y, { count: 22, colors: ['212,166,75', '244,206,122', rgb], speed: 190, life: 0.85 });
+    });
+
+    const mid = midpoint(centerOf(a.el), centerOf(b.el));
+    floatText(mid.x, mid.y, '+' + gained);
+
+    const tierHit = streak % STREAK_TIER === 0;
+    updateStreakMeter(tierHit);
+    if (tierHit) {
+        window.setTimeout(() => {
+            floatText(mid.x, mid.y - 40, 'STREAK x' + streak, true);
+            fxField.spawnBurst(mid.x, mid.y, { count: 60, speed: 260, life: 1.1, colors: ['212,166,75', '244,206,122', '255,255,255'] });
+            GameAudio.streak();
+        }, 200);
+    }
+
+    showExample(a.pairId);
+
+    window.setTimeout(() => {
+        [a, b].forEach(t => { t.el.classList.remove('match-pop', 'selected'); t.el.classList.add('cleared'); t.cleared = true; });
+        matchedCount++;
+        selected = [];
+        locked = false;
+        updateStats();
+        if (matchedCount === totalPairs) finishLevel();
+    }, 520);
+}
+
+// Phonetic-chain "lightning connect": every still-on-board word sharing this phonetic value
+// (both its jp tile AND its en tile) clears together in one combo, each pair counting toward
+// the streak — a 3-pair chain can trigger a tier bonus mid-chain just like 3 separate matches.
+function handleLightningChain(phonetic) {
+    const memberPairIds = [];
+    currentSet.forEach((p, pairId) => {
+        if (p.phonetic !== phonetic) return;
+        const pt = tilesByPairId[pairId];
+        if (pt && pt.jp && !pt.jp.cleared) memberPairIds.push(pairId);
+    });
+    if (memberPairIds.length < 2) { handleMismatch(selected[0], selected[1]); return; }
+
+    const chainTiles = [];
+    memberPairIds.forEach(pairId => {
+        const pt = tilesByPairId[pairId];
+        if (pt.jp && !pt.jp.cleared) chainTiles.push(pt.jp);
+        if (pt.en && !pt.en.cleared) chainTiles.push(pt.en);
+    });
+
+    GameAudio.lightning(memberPairIds.length);
+
+    const centers = chainTiles.map(t => centerOf(t.el));
+    for (let i = 0; i < centers.length - 1; i++) fxField.spawnBolt(centers[i], centers[i + 1], { color: '127,224,255' });
+    if (centers.length > 2) fxField.spawnBolt(centers[centers.length - 1], centers[0], { color: '127,224,255', life: 0.4 });
+
+    let gainedTotal = 0;
+    const tierHits = [];
+    memberPairIds.forEach(pairId => {
+        streak += 1;
+        gainedTotal += 10 * (1 + Math.floor(streak / STREAK_TIER));
+        if (streak % STREAK_TIER === 0) tierHits.push(streak);
+    });
+    setScore(score + gainedTotal);
+    updateStreakMeter(tierHits.length > 0);
+    tierHits.forEach((s, idx) => {
+        window.setTimeout(() => GameAudio.streak(), 180 + idx * 140);
+    });
+
+    chainTiles.forEach(t => {
+        t.el.classList.add('lightning-pop');
+        const c = centerOf(t.el);
+        fxField.spawnBurst(c.x, c.y, { count: 24, colors: ['127,224,255', '244,206,122', '255,255,255'], speed: 210, life: 0.9 });
+    });
+
+    const midPt = centers.reduce((acc, c) => ({ x: acc.x + c.x, y: acc.y + c.y }), { x: 0, y: 0 });
+    midPt.x /= centers.length; midPt.y /= centers.length;
+    floatText(midPt.x, midPt.y, `LIGHTNING x${memberPairIds.length}`, true, true);
+    if (tierHits.length) {
+        window.setTimeout(() => floatText(midPt.x, midPt.y - 44, 'STREAK x' + streak, true), 220);
+    }
+
+    showExample(memberPairIds[0]);
+
+    window.setTimeout(() => {
+        chainTiles.forEach(t => { t.el.classList.remove('lightning-pop', 'selected'); t.el.classList.add('cleared'); t.cleared = true; });
+        matchedCount += memberPairIds.length;
+        selected = [];
+        locked = false;
+        updateStats();
+        if (matchedCount === totalPairs) finishLevel();
+    }, 580);
+}
+
+function handleMismatch(a, b) {
+    streak = 0;
+    updateStreakMeter(false);
+    GameAudio.mismatch();
+    boardWrapEl.classList.remove('board-shake');
+    void boardWrapEl.offsetWidth;
+    boardWrapEl.classList.add('board-shake');
+    [a, b].forEach(t => t.el.classList.add('mismatch'));
+
+    window.setTimeout(() => {
+        [a, b].forEach(t => {
+            t.el.classList.remove('mismatch', 'selected');
+            t.el.style.backgroundImage = '';
+        });
+        selected = [];
+        locked = false;
+    }, 430);
+}
+
+// ---------------------------------------------------------------------------
 // Level select <-> board screens
 // ---------------------------------------------------------------------------
 function startLevel(level) {
@@ -375,20 +841,25 @@ function startLevel(level) {
     moves = 0;
     elapsedSeconds = 0;
     startTime = null;
-    selected = null;
+    selected = [];
+    locked = false;
+    score = 0;
+    streak = 0;
     totalPairs = 20; // every word set has exactly 20 pairs
     stopTimer();
 
-    buildBoard(level);
     renderBoard();
     resetExamplePanel();
 
+    document.getElementById('score-value').textContent = '0';
+    document.getElementById('streak-fill').style.width = '0%';
     document.getElementById('board-timer').textContent = '00:00';
     document.getElementById('board-level-label').textContent = level.title;
     updateStats();
 
     hideEl(document.getElementById('level-select-section'));
     showEl(document.getElementById('board-section'));
+    resizeCanvases();
 
     document.getElementById('start-modal-title').textContent = level.title;
     showEl(document.getElementById('start-modal'));
@@ -399,6 +870,7 @@ function backToLevels() {
     hideEl(document.getElementById('board-section'));
     showEl(document.getElementById('level-select-section'));
     renderLevelSelect();
+    resizeCanvases();
 }
 
 function renderLevelSelect() {
@@ -475,6 +947,11 @@ async function saveProgress(session, result) {
 function finishLevel() {
     stopTimer();
     const result = { level: currentLevel.level, timeSeconds: elapsedSeconds, moves };
+
+    const c = centerOf(boardWrapEl);
+    fxField.spawnBurst(c.x, c.y, { count: 90, speed: 320, life: 1.3, colors: ['212,166,75', '244,206,122', '255,255,255', '192,67,90'] });
+    GameAudio.win();
+
     showResultModal(result);
 
     const session = window.getCurrentSession();

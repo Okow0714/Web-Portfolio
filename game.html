@@ -9,7 +9,7 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="game.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700;900&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700;900&family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Serif+JP:wght@600;700;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -122,10 +122,20 @@
         </div>
 
         <main class="game-main">
+            <canvas id="ambient-canvas" class="game-fx-canvas"></canvas>
+            <canvas id="fx-canvas" class="game-fx-canvas"></canvas>
+
             <!-- Level select -->
             <section id="level-select-section" class="game-section">
-                <h1 class="game-title">Japanese Word Match</h1>
-                <p class="game-subtitle">Connect each Japanese word to its English meaning. Every level has 40 tiles (20 pairs) — N5 is beginner vocabulary, N1 is advanced.</p>
+                <div class="game-hud-row">
+                    <div>
+                        <h1 class="game-title">言葉合わせ<span class="game-title-sub">Japanese Word Match</span></h1>
+                        <p class="game-subtitle">Connect each Japanese word to its English meaning. Every level has 40 tiles (20 pairs) — N5 is beginner vocabulary, N1 is advanced. Kanji sharing a phonetic component can also be chained together for a lightning-fast multi-clear.</p>
+                    </div>
+                    <button class="sound-toggle" id="sound-toggle" type="button" aria-pressed="false" title="Turn sound on">
+                        <span id="sound-icon" aria-hidden="true">&#128263;</span>
+                    </button>
+                </div>
                 <p id="game-guest-hint" class="game-guest-hint hidden">Log in to save your best times and completions across visits.</p>
                 <div class="level-grid" id="level-grid"></div>
             </section>
@@ -139,12 +149,22 @@
                         <span id="board-timer">00:00</span>
                         <span id="board-pairs">0 / 20 pairs</span>
                         <span id="board-moves">0 moves</span>
+                        <span class="hud-stat">
+                            <span class="hud-label">Score</span>
+                            <span class="hud-value" id="score-value">0</span>
+                        </span>
+                        <span class="hud-stat streak-stat">
+                            <span class="hud-label">Streak</span>
+                            <span class="streak-meter"><span class="streak-fill" id="streak-fill"></span></span>
+                        </span>
                     </div>
+                    <button class="sound-toggle" id="board-sound-toggle" type="button" aria-pressed="false" title="Turn sound on">
+                        <span id="board-sound-icon" aria-hidden="true">&#128263;</span>
+                    </button>
                     <button id="board-shuffle-btn" class="ghost-btn" type="button">Shuffle</button>
                 </div>
-                <div class="board-wrap">
-                    <div id="board-grid" class="board-grid"></div>
-                    <svg id="board-lines" class="board-lines"></svg>
+                <div class="board-wrap" id="board-wrap">
+                    <div id="tile-grid" class="tile-grid"></div>
                 </div>
                 <div id="example-panel" class="example-panel">
                     <div class="example-panel-inner">
@@ -165,6 +185,8 @@
                     </div>
                 </div>
             </section>
+
+            <div class="fx-text-layer" id="fx-text-layer"></div>
         </main>
 
         <!-- Start Modal: shown at the beginning of every match so jumping straight into a
