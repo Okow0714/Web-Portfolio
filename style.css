@@ -1,24 +1,37 @@
-/* Base Styles - Light & Bright, with a tactile accent color */
+/* Base Styles - Light & Bright, with a tactile accent color.
+   Palette is neutral-biased toward the accent hue (cool blue-gray, not flat
+   gray) rather than a plain generic gray scale — see style guide notes in
+   the design pass that introduced --ease-out/--ease-pop below. */
 :root {
-    --bg-page: #f4f5f8;
+    --bg-page: #f6f7fb;
     --bg-surface: #ffffff;
-    --bg-surface-alt: #eef1f6;
-    --border: #e3e6ec;
-    --border-strong: #c7cee0;
-    --text-primary: #1c1f26;
-    --text-secondary: #5b616e;
-    --text-muted: #8b909c;
-    --accent: #2f6fed;
-    --accent-light: #5b8cff;
-    --accent-dark: #2557c7;
-    --accent-tint: #eef2ff;
+    --bg-surface-alt: #eef0f7;
+    --border: #dde2ee;
+    --border-strong: #b7c0d9;
+    --text-primary: #161a24;
+    --text-secondary: #4d5568;
+    --text-muted: #838b9e;
+    --accent: #3452e0;
+    --accent-light: #6b82f0;
+    --accent-dark: #263bb0;
+    --accent-tint: #eceffd;
     --accent-gradient: linear-gradient(135deg, var(--accent-light), var(--accent));
     --accent-gradient-hover: linear-gradient(135deg, var(--accent), var(--accent-dark));
     --radius-lg: 0px;
     --radius-md: 0px;
     --radius-sm: 0px;
-    --shadow-sm: 0 2px 10px rgba(20, 20, 43, 0.05);
-    --shadow-md: 0 10px 28px rgba(47, 111, 237, 0.15);
+    --shadow-sm: 0 2px 12px rgba(22, 26, 45, 0.06);
+    --shadow-md: 0 14px 34px rgba(52, 82, 224, 0.16);
+
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'IBM Plex Sans', -apple-system, sans-serif;
+
+    /* Shared easing curves — a snappy "pop" for anything that lifts/grows on
+       hover or entrance, a softer settle for fades/reveals — replacing the
+       generic `ease` used throughout so motion reads intentional rather
+       than default. */
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-pop: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 *, *::before, *::after {
@@ -44,10 +57,19 @@ body {
     margin: 0;
     min-height: 100vh;
     background: var(--bg-page);
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     color: var(--text-primary);
     overflow-x: hidden;
     position: relative;
+}
+
+/* Display face for headline-weight text — a warm, characterful serif in
+   place of running the whole site through one workhorse sans, used with
+   restraint on names/section titles/big numbers rather than everywhere. */
+.main-name,
+.section-title h2,
+.stat-number {
+    font-family: var(--font-display);
 }
 
 .container {
@@ -72,7 +94,7 @@ body {
     position: absolute;
     opacity: 0.4;
     animation: float 30s infinite linear;
-    border: 1px solid rgba(47, 111, 237, 0.18);
+    border: 1px solid rgba(52, 82, 224, 0.18);
 }
 
 .shape-1 {
@@ -131,7 +153,7 @@ body {
     left: 0;
     right: 0;
     z-index: 1000;
-    transition: all 0.3s ease;
+    transition: all 0.3s var(--ease-out);
 }
 
 .header {
@@ -168,7 +190,7 @@ body {
     cursor: pointer;
     text-align: center;
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition: all 0.2s var(--ease-out);
 }
 
 .nav-trigger:hover {
@@ -188,7 +210,7 @@ body {
     transform: translateY(-8px);
     pointer-events: none;
     box-shadow: var(--shadow-md);
-    transition: all 0.3s ease;
+    transition: all 0.3s var(--ease-out);
     z-index: 10;
 }
 
@@ -207,7 +229,7 @@ body {
     text-decoration: none;
     font-size: 0.9rem;
     border-left: 2px solid transparent;
-    transition: all 0.2s ease;
+    transition: all 0.2s var(--ease-out);
 }
 
 .nav-dropdown a:hover {
@@ -292,7 +314,7 @@ body {
     font-size: 0.95rem;
     cursor: pointer;
     box-shadow: var(--shadow-sm);
-    transition: all 0.3s ease;
+    transition: all 0.3s var(--ease-out);
 }
 
 .auth-btn:hover {
@@ -607,7 +629,7 @@ body {
     text-align: left;
     cursor: pointer;
     box-shadow: var(--shadow-sm);
-    transition: all 0.3s ease;
+    transition: all 0.3s var(--ease-out);
     font-size: 1rem;
     font-weight: 500;
 }
@@ -667,7 +689,7 @@ body {
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
-    transition: all 0.3s ease;
+    transition: all 0.3s var(--ease-out);
     cursor: pointer;
 }
 
@@ -682,13 +704,13 @@ body {
     font-weight: 700;
     color: var(--accent);
     margin-bottom: 8px;
-    transition: all 0.3s ease;
+    transition: all 0.3s var(--ease-out);
 }
 
 .stat-label {
     font-size: 1rem;
     color: var(--text-secondary);
-    transition: all 0.3s ease;
+    transition: all 0.3s var(--ease-out);
 }
 
 .stat-item:hover .stat-label {
@@ -775,7 +797,7 @@ body {
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
-    transition: all 0.3s ease;
+    transition: all 0.3s var(--ease-out);
     position: relative;
 }
 
@@ -962,7 +984,7 @@ body {
     line-height: 1;
     cursor: pointer;
     opacity: 0.5;
-    transition: all 0.3s ease;
+    transition: all 0.3s var(--ease-out);
 }
 
 .bookmark-btn:hover {
@@ -995,7 +1017,7 @@ body {
     max-height: 0;
     overflow: hidden;
     opacity: 0;
-    transition: all 0.4s ease;
+    transition: all 0.4s var(--ease-out);
 }
 
 .comments-panel.show {
@@ -1064,7 +1086,7 @@ body {
     color: #ffffff;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s var(--ease-out);
 }
 
 .comment-form button:hover {
@@ -1193,7 +1215,7 @@ body {
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
-    box-shadow: 0 0 0 3px rgba(47, 111, 237, 0.18);
+    box-shadow: 0 0 0 3px rgba(52, 82, 224, 0.18);
 }
 
 .academic-title {
@@ -1336,7 +1358,7 @@ body {
     text-decoration: none;
     font-weight: 600;
     box-shadow: var(--shadow-sm);
-    transition: all 0.3s ease;
+    transition: all 0.3s var(--ease-out);
     cursor: pointer;
 }
 
@@ -1400,7 +1422,7 @@ body {
     color: var(--accent);
     text-decoration: none;
     font-weight: 500;
-    transition: all 0.3s ease;
+    transition: all 0.3s var(--ease-out);
 }
 
 .contact-link:hover {
