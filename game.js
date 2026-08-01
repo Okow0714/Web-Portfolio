@@ -402,41 +402,17 @@ const GameAudio = (function () {
     // Generative ambient pad: a few detuned low oscillators through a slowly modulated
     // lowpass filter, plus occasional soft plucked notes — procedurally generated for as long
     // as sound stays on, never a fixed sourced loop.
+    // No sustained drone here on purpose — an earlier version had a continuous 3-oscillator pad
+    // under the plucked notes, but a held background tone reads as a constant note and gets
+    // fatiguing over a full level. Just the occasional plucks now; ambientGain is still the
+    // shared on/off fader they route through.
     function startAmbient() {
         if (ambientNodes) return;
-        const osc1 = ctx.createOscillator(); osc1.type = 'sine'; osc1.frequency.value = noteFreq(0, -1);
-        const osc2 = ctx.createOscillator(); osc2.type = 'sine'; osc2.frequency.value = noteFreq(4, -1); osc2.detune.value = 6;
-        const osc3 = ctx.createOscillator(); osc3.type = 'triangle'; osc3.frequency.value = noteFreq(0, 0); osc3.detune.value = -5;
-
-        const filter = ctx.createBiquadFilter();
-        filter.type = 'lowpass';
-        filter.frequency.value = 700;
-
-        const lfo = ctx.createOscillator();
-        lfo.type = 'sine';
-        lfo.frequency.value = 0.045;
-        const lfoGain = ctx.createGain();
-        lfoGain.gain.value = 260;
-        lfo.connect(lfoGain);
-        lfoGain.connect(filter.frequency);
-
-        // The drone gets its OWN gain stage (padGain), separate from the shared ambientGain the
-        // plucks also use — 3 unscaled oscillators summed are already ~3x amplitude, so without
-        // this the pad drowns out the plucks even though the pluck envelope peaks higher on
-        // paper. ambientGain is purely an on/off fader for the whole ambient system.
-        const padGain = ctx.createGain();
-        padGain.gain.value = 0.02;
-
-        [osc1, osc2, osc3].forEach(o => o.connect(filter));
-        filter.connect(padGain);
-        padGain.connect(ambientGain);
-
-        osc1.start(); osc2.start(); osc3.start(); lfo.start();
         ambientGain.gain.cancelScheduledValues(ctx.currentTime);
         ambientGain.gain.setValueAtTime(ambientGain.gain.value, ctx.currentTime);
         ambientGain.gain.linearRampToValueAtTime(1, ctx.currentTime + 1.4);
 
-        ambientNodes = { osc1, osc2, osc3, lfo, padGain };
+        ambientNodes = {};
         schedulePluck();
     }
 
@@ -478,12 +454,6 @@ const GameAudio = (function () {
         ambientGain.gain.cancelScheduledValues(t0);
         ambientGain.gain.setValueAtTime(ambientGain.gain.value, t0);
         ambientGain.gain.linearRampToValueAtTime(0, t0 + 0.5);
-        const nodes = ambientNodes;
-        window.setTimeout(() => {
-            [nodes.osc1, nodes.osc2, nodes.osc3, nodes.lfo].forEach(n => {
-                try { n.stop(); } catch (e) { /* already stopped */ }
-            });
-        }, 600);
         ambientNodes = null;
     }
 
@@ -859,6 +829,10 @@ function startLevel(level) {
 
     hideEl(document.getElementById('level-select-section'));
     showEl(document.getElementById('board-section'));
+    // Full-screen "playing" mode: hides the shared site header and lets .game-main break out
+    // of .container's max-width, so the board fills the whole viewport instead of sitting in
+    // a boxed page column — only while a board is actually up, not on level-select.
+    document.body.classList.add('game-playing');
     resizeCanvases();
 
     document.getElementById('start-modal-title').textContent = level.title;
@@ -869,6 +843,7 @@ function backToLevels() {
     stopTimer();
     hideEl(document.getElementById('board-section'));
     showEl(document.getElementById('level-select-section'));
+    document.body.classList.remove('game-playing');
     renderLevelSelect();
     resizeCanvases();
 }

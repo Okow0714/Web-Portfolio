@@ -37,6 +37,25 @@
     overflow: hidden;
 }
 
+/* Full-screen "playing" mode (like slither.io — the play area fills the whole browser
+   window, no site chrome around it), active only while a board is actually up. Toggled by
+   game.js adding/removing .game-playing on <body> in startLevel()/backToLevels(). The site
+   header/login-bar hide entirely; .game-main breaks out of .container's max-width:1200px
+   centering to span the true viewport width instead of sitting in a boxed page column.
+   body already has overflow-x:hidden (style.css) so the 100vw breakout can't cause a
+   horizontal scrollbar even where a vertical scrollbar is present. */
+body.game-playing .site-header-wrap {
+    display: none;
+}
+
+body.game-playing .game-main {
+    position: relative;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    padding: 20px 24px 40px;
+}
+
 .game-fx-canvas {
     position: absolute;
     inset: 0;
