@@ -1,27 +1,52 @@
 /* Kanji Phonetics — styles specific to phonetics.html.
-   Reuses style.css tokens (--accent, --border, --radius-*, --shadow-*) for visual consistency. */
+   "Bronze Seal" theme: this page's own scoped color palette, entirely separate from the
+   shared style.css :root tokens (same pattern as game.css's .game-main "digital hanafuda"
+   theme). Phonetic components trace back to bronze inscriptions and carved seal script, and
+   vermillion is the actual ink color used to stamp a hanko/inkan name seal — an aged-bronze/
+   patina ground with a seal-ink red accent, grounded in the page's own subject matter rather
+   than a generic dark reskin.
 
-/* ---------------------------------------------------------------------
-   Header extras: active nav link + back-to-portfolio link (same pattern as game.css/reading.css)
-   --------------------------------------------------------------------- */
-.nav-current {
-    background: var(--accent-tint);
-    color: var(--accent-dark);
-    box-shadow: inset 0 -3px 0 var(--accent);
+   Scoped to .phonetics-main (this page's whole content area) AND #phonetics-info-modal (the
+   explainer modal). The modal is a DOM sibling of .phonetics-main, not a descendant — it lives
+   at the .container level in phonetics.html, same as every page's modal-overlay — so it needs
+   the palette named on it explicitly too. Its position:fixed layout doesn't care where it sits
+   in the DOM, so this is purely about which element the CSS custom properties are declared on;
+   custom properties cascade to descendants of whichever selector defines them, not by DOM
+   proximity to .phonetics-main. body:has(.phonetics-main) additionally repaints the page's own
+   <body> (shared style.css rule: `body { background: var(--bg-page); }`) so the dark theme is
+   full-bleed instead of a boxed dark column on a light body outside .container's 1200px width —
+   :has() here only ever matches on this page, since .phonetics-main only exists in phonetics.html.
+
+   The shared header/nav/login-bar keep their own separate --header- dark masthead (untouched).
+   The auth-modal/account-modal keep the shared light style.css tokens (untouched, they're not
+   named in the selector below). The JLPT level tokens and the rank-intensity mechanism are
+   untouched too — see their own comments further down this file. */
+body:has(.phonetics-main),
+.phonetics-main,
+#phonetics-info-modal {
+    --bg-page: #1a1d19;
+    --bg-surface: #232821;
+    --bg-surface-alt: #2a3029;
+    --border: #3a4136;
+    --border-strong: #4d564a;
+    --text-primary: #eee8dc;
+    --text-secondary: #a8a08e;
+    --text-muted: #6f6a5c;
+    --accent: #c23b2f;
+    --accent-light: #d9604f;
+    --accent-dark: #8f2a20;
+    --accent-tint: rgba(194, 59, 47, 0.14);
+    --accent-gradient: linear-gradient(135deg, var(--accent-light), var(--accent));
+    --accent-gradient-hover: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    --shadow-sm: 0 2px 14px rgba(0, 0, 0, 0.35);
+    --shadow-md: 0 16px 38px rgba(0, 0, 0, 0.5);
 }
 
-.back-link {
-    margin-right: auto;
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 600;
-    transition: color 0.2s ease;
+body:has(.phonetics-main) {
+    background: var(--bg-page);
 }
 
-.back-link:hover {
-    color: var(--accent-dark);
-}
+/* .nav-current / .back-link now live in style.css (shared header styling). */
 
 /* ---------------------------------------------------------------------
    Page shell
@@ -29,6 +54,10 @@
 .phonetics-main {
     padding: 140px 40px 100px;
     min-height: 100vh;
+    background:
+        radial-gradient(ellipse 90% 50% at 50% -8%, #2c3327 0%, transparent 60%),
+        var(--bg-page);
+    color: var(--text-primary);
 }
 
 .phonetics-title {
@@ -61,7 +90,7 @@
 }
 
 .phonetics-credit a:hover {
-    color: var(--accent-dark);
+    color: var(--accent-light);
 }
 
 .phonetics-section.hidden {
@@ -125,7 +154,7 @@
 }
 
 .phonetics-title-trigger:hover .phonetics-title {
-    color: var(--accent-dark);
+    color: var(--accent-light);
 }
 
 .phonetics-title-info {
@@ -135,7 +164,7 @@
 }
 
 .phonetics-title-trigger:hover .phonetics-title-info {
-    color: var(--accent);
+    color: var(--accent-light);
 }
 
 .phonetics-info-btn {
@@ -157,7 +186,7 @@
 
 .ghost-btn:hover {
     border-color: var(--accent);
-    color: var(--accent-dark);
+    color: var(--accent-light);
     background: var(--accent-tint);
 }
 
@@ -173,7 +202,7 @@
 
 .level-card {
     text-align: left;
-    background: var(--bg-surface);
+    background: linear-gradient(160deg, var(--bg-surface-alt), var(--bg-surface) 55%);
     border: 1px solid var(--border);
     box-shadow: var(--shadow-sm);
     padding: 24px 22px;
@@ -196,7 +225,7 @@
     display: inline-block;
     align-self: flex-start;
     background: var(--accent-tint);
-    color: var(--accent-dark);
+    color: var(--accent-light);
     font-weight: 700;
     font-size: 0.8rem;
     letter-spacing: 0.03em;
@@ -212,6 +241,20 @@
     font-size: 0.85rem;
     color: var(--text-secondary);
 }
+
+/* JLPT badge/top-border colors come from the shared style.css [data-level] rules
+   (--jlpt-n5..--jlpt-n1, untouched — see style.css's own comment on that block). The flat
+   pastel --jlpt-*-tint badge backgrounds were designed for the site's light pages; mirroring
+   the header nav dropdown's own dark-mode treatment of these same tokens, the badge here swaps
+   the flat tint for a low-opacity mix of the level's own hue against transparent, so the
+   per-level color language stays legible (not washed out, not a jarring pastel patch) on this
+   page's dark bronze ground. Text stays the shared rule's var(--jlpt-nX) (untouched, still the
+   saturated hue) — only the background differs. */
+.level-card[data-level="N5"] .level-badge { background: color-mix(in srgb, var(--jlpt-n5) 24%, transparent); }
+.level-card[data-level="N4"] .level-badge { background: color-mix(in srgb, var(--jlpt-n4) 24%, transparent); }
+.level-card[data-level="N3"] .level-badge { background: color-mix(in srgb, var(--jlpt-n3) 24%, transparent); }
+.level-card[data-level="N2"] .level-badge { background: color-mix(in srgb, var(--jlpt-n2) 24%, transparent); }
+.level-card[data-level="N1"] .level-badge { background: color-mix(in srgb, var(--jlpt-n1) 24%, transparent); }
 
 /* ---------------------------------------------------------------------
    Family list (ranked phonetic families within a level)
@@ -236,7 +279,7 @@
     align-items: center;
     gap: 18px;
     text-align: left;
-    background: var(--bg-surface);
+    background: linear-gradient(160deg, var(--bg-surface-alt), var(--bg-surface) 55%);
     border: 1px solid var(--border);
     box-shadow: var(--shadow-sm);
     padding: 14px 20px 14px 24px;
@@ -290,7 +333,7 @@
 
 .family-reading {
     font-weight: 600;
-    color: var(--accent-dark);
+    color: var(--accent-light);
     font-size: 0.95rem;
 }
 
@@ -315,7 +358,7 @@
 .tree-title-reading {
     font-size: 1.2rem;
     font-weight: 600;
-    color: var(--accent-dark);
+    color: var(--accent-light);
 }
 
 /* Radial diagram: root phonetic in the center, member kanji as chips arranged
@@ -367,9 +410,11 @@
     height: var(--root-size);
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    background: var(--accent-tint);
-    border: 3px solid var(--accent);
-    box-shadow: var(--shadow-md);
+    /* Reads like a stamped seal face: a warm vermillion fill under a carved rim, with an inset
+       highlight/shadow pair standing in for a bevel cut into stone rather than a flat disc. */
+    background: radial-gradient(circle at 34% 28%, var(--accent-light), var(--accent) 70%);
+    border: 3px solid var(--accent-dark);
+    box-shadow: var(--shadow-md), inset 0 2px 3px rgba(255, 255, 255, 0.18), inset 0 -4px 8px rgba(0, 0, 0, 0.35);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -383,14 +428,18 @@
 .tree-root-kanji {
     font-size: 1.7rem;
     font-weight: 700;
-    color: var(--accent-dark);
+    /* Cream-on-vermillion, like the negative-space characters cut into a hanko seal face,
+       rather than a same-hue dark-on-red pairing that would fight the seal disc's own fill. */
+    color: var(--text-primary);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
     line-height: 1.1;
 }
 
 .tree-root-reading {
     font-size: 0.64rem;
     font-weight: 600;
-    color: var(--accent-dark);
+    color: var(--text-primary);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
     letter-spacing: 0.02em;
 }
 
@@ -402,9 +451,9 @@
     height: var(--chip-size);
     transform: translate(-50%, -50%) translate(var(--tx, 0px), var(--ty, 0px));
     border-radius: 50%;
-    background: var(--bg-surface);
+    background: linear-gradient(160deg, var(--bg-surface-alt), var(--bg-surface) 60%);
     border: 2px solid var(--border-strong);
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-sm), inset 0 1px 2px rgba(255, 255, 255, 0.05), inset 0 -3px 6px rgba(0, 0, 0, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -431,7 +480,7 @@
     border-color: var(--accent);
     background: var(--accent-tint);
     box-shadow: 0 0 0 4px var(--accent-tint), var(--shadow-md);
-    color: var(--accent-dark);
+    color: var(--accent-light);
     transform: translate(-50%, -50%) translate(var(--tx, 0px), var(--ty, 0px)) scale(1.15);
 }
 
@@ -625,7 +674,7 @@
 
 .morph-glyph-word {
     font-size: 2.5rem;
-    color: var(--accent-dark);
+    color: var(--accent-light);
 }
 
 .morph-glyph-row {
@@ -637,7 +686,7 @@
 .morph-reading {
     font-size: 1.1rem;
     font-weight: 600;
-    color: var(--accent-dark);
+    color: var(--accent-light);
 }
 
 .morph-sub {

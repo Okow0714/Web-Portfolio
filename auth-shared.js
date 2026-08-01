@@ -187,6 +187,40 @@ accountDeleteConfirmBtn.addEventListener('click', async () => {
 });
 
 // ---------------------------------------------------------------------------
+// Account menu — the single top-right avatar/icon button that expands into a
+// dropdown panel (replaces the old bare Log In button / email-and-Log-Out
+// pair that just sat unstyled in the login bar).
+// ---------------------------------------------------------------------------
+const accountMenu = document.getElementById('account-menu');
+const accountMenuTrigger = document.getElementById('account-menu-trigger');
+const accountMenuAvatar = document.getElementById('account-menu-avatar');
+const GUEST_AVATAR_HTML = accountMenuAvatar.innerHTML; // the generic person icon, to restore on logout
+
+function closeAccountMenu() {
+    accountMenu.classList.remove('open');
+    accountMenuTrigger.setAttribute('aria-expanded', 'false');
+}
+
+accountMenuTrigger.addEventListener('click', () => {
+    const nowOpen = !accountMenu.classList.contains('open');
+    accountMenu.classList.toggle('open', nowOpen);
+    accountMenuTrigger.setAttribute('aria-expanded', String(nowOpen));
+});
+
+document.addEventListener('click', (e) => {
+    if (!accountMenu.contains(e.target)) closeAccountMenu();
+});
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeAccountMenu();
+});
+
+// Opening the auth modal, the account-settings modal, or logging out should all close the
+// dropdown panel first rather than leaving it open behind/beside whatever comes next.
+document.getElementById('auth-login-btn').addEventListener('click', closeAccountMenu);
+document.getElementById('auth-user-email').addEventListener('click', closeAccountMenu);
+document.getElementById('auth-logout-btn').addEventListener('click', closeAccountMenu);
+
+// ---------------------------------------------------------------------------
 // Header auth state
 // ---------------------------------------------------------------------------
 function updateAuthUI(session) {
@@ -199,9 +233,13 @@ function updateAuthUI(session) {
         hideEl(anonEl);
         showEl(authedEl);
         document.getElementById('auth-user-email').textContent = session.user.email;
+        // Avatar becomes the first letter of the email, like a typical account-menu avatar,
+        // instead of the generic guest icon.
+        accountMenuAvatar.textContent = session.user.email.charAt(0).toUpperCase();
     } else {
         showEl(anonEl);
         hideEl(authedEl);
+        accountMenuAvatar.innerHTML = GUEST_AVATAR_HTML;
     }
 
     authChangeListeners.forEach(fn => fn(session));

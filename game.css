@@ -7,6 +7,17 @@
    All dark tokens live under .game-main / #start-modal / #result-modal, not :root, so nothing
    here leaks into the shared header, footer, or the auth/account modals (which stay light). */
 
+/* Makes the level-select screen's dark theme full-bleed instead of a boxed dark column with
+   the shared light :root --bg-page peeking through past .container's 1200px cap on wide
+   viewports (the "playing" full-screen mode above already handles this differently via the
+   100vw breakout). Only needs the single deepest gradient stop, not the whole token block,
+   since it's just painting a seamless edge color, not reproducing the radial gradient itself.
+   :has() here only ever matches game.html, since .game-main only exists there. */
+body:has(.game-main) {
+    --ground-deep: #0d0c12;
+    background: var(--ground-deep);
+}
+
 .game-main {
     --ground: #15131c;
     --ground-deep: #0d0c12;
@@ -87,28 +98,7 @@ body.game-playing .game-main {
     }
 }
 
-/* ---------------------------------------------------------------------
-   Header extras: active nav link + back-to-portfolio link (site chrome,
-   stays in the light theme -- these rules use the site's own light tokens)
-   --------------------------------------------------------------------- */
-.nav-current {
-    background: var(--accent-tint);
-    color: var(--accent-dark);
-    box-shadow: inset 0 -3px 0 var(--accent);
-}
-
-.back-link {
-    margin-right: auto;
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 600;
-    transition: color 0.2s ease;
-}
-
-.back-link:hover {
-    color: var(--accent-dark);
-}
+/* .nav-current / .back-link now live in style.css (shared header styling, not game-specific). */
 
 /* ---------------------------------------------------------------------
    Page shell / HUD row

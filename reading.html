@@ -67,12 +67,23 @@
 
             <div class="login-bar">
                 <a href="index.html" class="back-link">&larr; Portfolio</a>
-                <div id="auth-anon">
-                    <button id="auth-login-btn" class="auth-btn auth-btn-cut">Log In</button>
-                </div>
-                <div id="auth-authed" class="auth-btn-cut hidden">
-                    <button id="auth-user-email" class="auth-user-email" type="button"></button>
-                    <button id="auth-logout-btn">Log Out</button>
+                <div class="account-menu" id="account-menu">
+                    <button class="account-menu-trigger" id="account-menu-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Account menu">
+                        <span id="account-menu-avatar">
+                            <svg viewBox="0 0 24 24"><path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9Zm0 2c-4 0-8 2-8 5v2h16v-2c0-3-4-5-8-5Z"/></svg>
+                        </span>
+                    </button>
+                    <div class="account-menu-panel" id="account-menu-panel">
+                        <div id="auth-anon">
+                            <p class="account-menu-note">Log in to save your progress across visits.</p>
+                            <button id="auth-login-btn" class="auth-btn account-menu-cta" type="button">Log In</button>
+                        </div>
+                        <div id="auth-authed" class="hidden">
+                            <p class="account-menu-label">Signed in as</p>
+                            <button id="auth-user-email" class="auth-user-email" type="button"></button>
+                            <button id="auth-logout-btn" type="button">Log Out</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

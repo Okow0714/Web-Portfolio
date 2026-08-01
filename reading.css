@@ -1,32 +1,57 @@
 /* Dokkai Reader — styles specific to reading.html.
-   Reuses style.css tokens (--accent, --border, --radius-*, --shadow-*) for visual consistency. */
+   "Ink & Lamplight": a quiet reading-lamp glow against a deep night-study
+   backdrop, distinct from Word Match's hanafuda dark theme and the shared
+   header's own dark masthead (--header-* tokens, untouched here). All of
+   this page's color/shadow tokens are scoped to .reading-main — same
+   token NAMES as style.css's shared :root (--accent, --bg-surface, etc.)
+   but redefined locally, so every rule below that still reads var(--x)
+   picks up this page's palette via normal CSS custom-property inheritance
+   through the DOM, with no need to re-scope each selector under
+   .reading-main. Typography/motion tokens (--font-display, --font-body,
+   --ease-out, --ease-pop) are intentionally left shared. */
 
-/* ---------------------------------------------------------------------
-   Header extras: active nav link + back-to-portfolio link (same pattern as game.css)
-   --------------------------------------------------------------------- */
-.nav-current {
-    background: var(--accent-tint);
-    color: var(--accent-dark);
-    box-shadow: inset 0 -3px 0 var(--accent);
-}
-
-.back-link {
-    margin-right: auto;
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 600;
-    transition: color 0.2s ease;
-}
-
-.back-link:hover {
-    color: var(--accent-dark);
-}
+/* .nav-current / .back-link now live in style.css (shared header styling). */
 
 /* ---------------------------------------------------------------------
    Page shell
    --------------------------------------------------------------------- */
+/* body:has(.reading-main) gets the same token block as .reading-main itself (not a hardcoded
+   background hex) so the full-bleed body color can't drift out of sync with the theme — body
+   is an ancestor, and custom properties only cascade down the DOM, so body needs its own copy
+   to reference via var(). Makes the theme full-bleed instead of a boxed dark column with the
+   shared light :root --bg-page peeking through past .container's 1200px cap on wide viewports.
+   :has() here only ever matches reading.html, since .reading-main only exists there. */
+body:has(.reading-main),
 .reading-main {
+    --bg-page: #14131c;
+    --bg-surface: #1d1c28;
+    --bg-surface-alt: #242332;
+    --border: #322f42;
+    --border-strong: #453f5c;
+    --text-primary: #f2ede0;
+    --text-secondary: #a89f8c;
+    --text-muted: #6e6858;
+    --accent: #e0a84f;
+    --accent-light: #eec178;
+    --accent-dark: #b8822f;
+    --accent-tint: rgba(224, 168, 79, 0.14);
+    --accent-gradient: linear-gradient(135deg, var(--accent-light), var(--accent));
+    --accent-gradient-hover: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    --shadow-sm: 0 2px 14px rgba(0, 0, 0, 0.35);
+    --shadow-md: 0 16px 38px rgba(0, 0, 0, 0.5);
+}
+
+body:has(.reading-main) {
+    background: var(--bg-page);
+}
+
+.reading-main {
+    position: relative;
+    isolation: isolate;
+    background:
+        radial-gradient(ellipse 70% 40% at 18% 0%, rgba(224, 168, 79, 0.09) 0%, transparent 60%),
+        var(--bg-page);
+    color: var(--text-primary);
     padding: 140px 40px 80px;
     min-height: 100vh;
 }
@@ -46,8 +71,9 @@
 }
 
 .reading-mic-hint {
-    color: var(--accent-dark);
+    color: var(--accent-light);
     background: var(--accent-tint);
+    border: 1px solid var(--border);
     display: inline-block;
     padding: 8px 16px;
     font-size: 0.9rem;
@@ -55,8 +81,9 @@
 }
 
 .reading-guest-hint {
-    color: var(--accent-dark);
+    color: var(--accent-light);
     background: var(--accent-tint);
+    border: 1px solid var(--border);
     display: inline-block;
     padding: 8px 16px;
     font-size: 0.9rem;
@@ -161,7 +188,7 @@
     display: inline-block;
     align-self: flex-start;
     background: var(--accent-tint);
-    color: var(--accent-dark);
+    color: var(--accent-light);
     font-weight: 700;
     font-size: 0.8rem;
     letter-spacing: 0.03em;
@@ -261,7 +288,7 @@
 
 .ghost-btn:hover {
     border-color: var(--accent);
-    color: var(--accent-dark);
+    color: var(--accent-light);
     background: var(--accent-tint);
 }
 
@@ -346,18 +373,26 @@
 .reader-word {
     padding: 2px 1px;
     border-radius: 2px;
-    transition: background 0.2s ease, color 0.2s ease;
+    transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, text-shadow 0.25s ease;
 }
 
 .reader-word.read {
     color: var(--text-muted);
 }
 
+/* Currently-spoken word: a soft warm lamp-glow rather than a flat recolor —
+   a gentle halo plus a lit underline, like the word is sitting under a
+   reading lamp. */
 .reader-word.current {
     background: var(--accent-tint);
-    color: var(--accent-dark);
+    color: var(--accent-light);
     font-weight: 700;
-    box-shadow: inset 0 -3px 0 var(--accent);
+    border-radius: 4px;
+    text-shadow: 0 0 16px var(--accent-tint);
+    box-shadow:
+        0 0 0 3px var(--accent-tint),
+        0 4px 20px var(--accent-tint),
+        inset 0 -3px 0 var(--accent);
 }
 
 .hint-popup {
@@ -365,10 +400,11 @@
     top: 14px;
     left: 14px;
     pointer-events: none;
-    background: var(--text-primary);
-    color: #ffffff;
+    background: var(--bg-surface-alt);
+    border: 1px solid var(--accent);
+    color: var(--text-primary);
     padding: 10px 16px;
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-md), 0 0 30px var(--accent-tint);
     display: flex;
     gap: 10px;
     align-items: baseline;
@@ -382,10 +418,11 @@
 
 .hint-reading {
     font-weight: 700;
+    color: var(--accent-light);
 }
 
 .hint-en {
-    color: rgba(255, 255, 255, 0.75);
+    color: var(--text-secondary);
 }
 
 .reader-controls {
