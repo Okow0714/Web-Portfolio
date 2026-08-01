@@ -224,7 +224,14 @@
     max-width: 640px;
 }
 
+/* Rank gradation: a single-hue sequential ramp (the site accent, at
+   decreasing opacity) rather than five arbitrary colors — rank is a
+   continuous "how far down the list" quantity, not a category, so it gets
+   one hue that fades rather than distinct hues. --rank-intensity is set
+   per item in phonetics.js (1.0 at #1, fading to a 0.12 floor by ~18th
+   place so a 300+ item list doesn't stretch to invisible). */
 .family-item {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 18px;
@@ -232,11 +239,23 @@
     background: var(--bg-surface);
     border: 1px solid var(--border);
     box-shadow: var(--shadow-sm);
-    padding: 14px 20px;
+    padding: 14px 20px 14px 24px;
     cursor: pointer;
     font-family: inherit;
     color: var(--text-primary);
     transition: all 0.2s ease;
+    overflow: hidden;
+}
+
+.family-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--accent);
+    opacity: var(--rank-intensity, 1);
 }
 
 .family-item:hover {
@@ -432,11 +451,11 @@
     background: var(--text-muted);
 }
 
-.tree-chip-dot[data-level="N5"] { background: #4caf7d; }
-.tree-chip-dot[data-level="N4"] { background: #4f9de0; }
-.tree-chip-dot[data-level="N3"] { background: #e0a940; }
-.tree-chip-dot[data-level="N2"] { background: #e0793f; }
-.tree-chip-dot[data-level="N1"] { background: #d3494e; }
+.tree-chip-dot[data-level="N5"] { background: var(--jlpt-n5); }
+.tree-chip-dot[data-level="N4"] { background: var(--jlpt-n4); }
+.tree-chip-dot[data-level="N3"] { background: var(--jlpt-n3); }
+.tree-chip-dot[data-level="N2"] { background: var(--jlpt-n2); }
+.tree-chip-dot[data-level="N1"] { background: var(--jlpt-n1); }
 
 /* ---------------------------------------------------------------------
    Member popover — opens in place at the clicked chip's own position on
@@ -497,6 +516,12 @@
     letter-spacing: 0.03em;
     padding: 3px 8px;
 }
+
+.tree-detail-level[data-level="N5"] { background: var(--jlpt-n5); }
+.tree-detail-level[data-level="N4"] { background: var(--jlpt-n4); }
+.tree-detail-level[data-level="N3"] { background: var(--jlpt-n3); }
+.tree-detail-level[data-level="N2"] { background: var(--jlpt-n2); }
+.tree-detail-level[data-level="N1"] { background: var(--jlpt-n1); }
 
 .tree-detail-readings {
     display: flex;

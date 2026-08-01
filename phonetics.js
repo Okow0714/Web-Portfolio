@@ -68,6 +68,7 @@ function renderLevelSelect() {
         const card = document.createElement('button');
         card.type = 'button';
         card.className = 'level-card';
+        card.dataset.level = level.key;
         card.innerHTML = `
             <span class="level-badge">${escapeHtml(level.key)}</span>
             <h3>${escapeHtml(level.title)}</h3>
@@ -90,10 +91,16 @@ function showFamilyList(levelKey) {
 
     const list = document.getElementById('family-list');
     list.innerHTML = '';
+    // Rank gradation: fades linearly from full intensity at #1 down to a
+    // 0.12 floor by RANK_FADE_STEPS, then stays flat — a list of 300+
+    // families shouldn't stretch the gradient to invisible by the bottom.
+    const RANK_FADE_STEPS = 18;
     families.forEach((family, i) => {
         const item = document.createElement('button');
         item.type = 'button';
         item.className = 'family-item';
+        const intensity = Math.max(1 - i / RANK_FADE_STEPS, 0.12);
+        item.style.setProperty('--rank-intensity', intensity.toFixed(2));
         item.innerHTML = `
             <span class="family-rank">#${i + 1}</span>
             <span class="family-phonetic">${escapeHtml(family.phonetic)}</span>
@@ -149,7 +156,7 @@ function detailHtml(member) {
     return `
         <div class="tree-detail-head">
             <span class="tree-detail-kanji">${escapeHtml(member.kanji)}</span>
-            <span class="tree-detail-level">${member.level ? escapeHtml(member.level) : '?'}</span>
+            <span class="tree-detail-level" data-level="${escapeHtml(member.level || '')}">${member.level ? escapeHtml(member.level) : '?'}</span>
         </div>
         <div class="tree-detail-readings">
             ${member.onyomi ? `<span class="tree-reading-on">${escapeHtml(member.onyomi)}</span>` : ''}

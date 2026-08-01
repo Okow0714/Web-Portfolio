@@ -409,6 +409,7 @@ function renderLevelSelect() {
         const card = document.createElement('button');
         card.type = 'button';
         card.className = 'level-card';
+        card.dataset.level = level.jlpt;
 
         const progress = progressCache[level.level];
         let metaHtml = '<span>Not played yet</span>';

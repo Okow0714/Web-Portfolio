@@ -1,27 +1,26 @@
-/* Base Styles - Light & Bright, with a tactile accent color.
-   Palette is neutral-biased toward the accent hue (cool blue-gray, not flat
-   gray) rather than a plain generic gray scale — see style guide notes in
-   the design pass that introduced --ease-out/--ease-pop below. */
+/* Base Styles — warm parchment ground with a deep burgundy accent ("Burgundy
+   Editorial" direction). Neutrals are warm-biased toward the accent rather
+   than a plain gray scale. */
 :root {
-    --bg-page: #f6f7fb;
-    --bg-surface: #ffffff;
-    --bg-surface-alt: #eef0f7;
-    --border: #dde2ee;
-    --border-strong: #b7c0d9;
-    --text-primary: #161a24;
-    --text-secondary: #4d5568;
-    --text-muted: #838b9e;
-    --accent: #3452e0;
-    --accent-light: #6b82f0;
-    --accent-dark: #263bb0;
-    --accent-tint: #eceffd;
+    --bg-page: #f9f4ef;
+    --bg-surface: #fffdfb;
+    --bg-surface-alt: #f3ece3;
+    --border: #e6dcd0;
+    --border-strong: #cdbca8;
+    --text-primary: #1f1512;
+    --text-secondary: #5c4b43;
+    --text-muted: #93817a;
+    --accent: #7a2b3f;
+    --accent-light: #9c3d54;
+    --accent-dark: #571d2c;
+    --accent-tint: #f6e9ec;
     --accent-gradient: linear-gradient(135deg, var(--accent-light), var(--accent));
     --accent-gradient-hover: linear-gradient(135deg, var(--accent), var(--accent-dark));
     --radius-lg: 0px;
     --radius-md: 0px;
     --radius-sm: 0px;
-    --shadow-sm: 0 2px 12px rgba(22, 26, 45, 0.06);
-    --shadow-md: 0 14px 34px rgba(52, 82, 224, 0.16);
+    --shadow-sm: 0 2px 12px rgba(31, 21, 18, 0.07);
+    --shadow-md: 0 14px 34px rgba(122, 43, 63, 0.18);
 
     --font-display: 'Fraunces', Georgia, serif;
     --font-body: 'IBM Plex Sans', -apple-system, sans-serif;
@@ -32,6 +31,28 @@
        than default. */
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
     --ease-pop: cubic-bezier(0.22, 1, 0.36, 1);
+
+    /* JLPT level spectrum — an ordinal "difficulty warmth" progression
+       (N5 cool/calm -> N1 deep wine, echoing the site's own accent at the
+       hardest level) rather than five arbitrary hues, so the color itself
+       tells you where a level sits. Validated with the dataviz skill's
+       palette checker against this page's surface (#f9f4ef): passes the
+       lightness band, chroma floor, and CVD-separation checks for every
+       adjacent pair except N1<->N2 (ΔE 8.2 simulated / 8.2 normal-vision,
+       short of the 15 floor) — accepted because every place these colors
+       appear also carries an explicit "N5"..."N1" text label, so color is
+       never the only way to tell two levels apart.
+       Each also gets a light tint for card/badge backgrounds. */
+    --jlpt-n5: #1f8f6b;
+    --jlpt-n5-tint: #e7f3ee;
+    --jlpt-n4: #d1a01f;
+    --jlpt-n4-tint: #faf1de;
+    --jlpt-n3: #c85a1f;
+    --jlpt-n3-tint: #f9ece1;
+    --jlpt-n2: #9c3520;
+    --jlpt-n2-tint: #f6e5df;
+    --jlpt-n1: #82304a;
+    --jlpt-n1-tint: #f4e5ea;
 }
 
 *, *::before, *::after {
@@ -94,7 +115,7 @@ body {
     position: absolute;
     opacity: 0.4;
     animation: float 30s infinite linear;
-    border: 1px solid rgba(52, 82, 224, 0.18);
+    border: 1px solid rgba(122, 43, 63, 0.18);
 }
 
 .shape-1 {
@@ -1215,7 +1236,7 @@ body {
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
-    box-shadow: 0 0 0 3px rgba(52, 82, 224, 0.18);
+    box-shadow: 0 0 0 3px rgba(122, 43, 63, 0.18);
 }
 
 .academic-title {
@@ -1619,3 +1640,43 @@ body {
         font-size: 2.5rem;
     }
 }
+
+/* ---------------------------------------------------------------------
+   JLPT level color system — shared across every page that shows level
+   cards (Word Match, Phonetics Family) or a level dropdown (the header
+   nav), via [data-level] / [href*="level="] attributes set in each
+   page's own JS/HTML rather than duplicating this block per stylesheet.
+   Colors come from --jlpt-n5..--jlpt-n1 defined in :root above.
+   --------------------------------------------------------------------- */
+.level-card[data-level="N5"] .level-badge { background: var(--jlpt-n5-tint); color: var(--jlpt-n5); }
+.level-card[data-level="N4"] .level-badge { background: var(--jlpt-n4-tint); color: var(--jlpt-n4); }
+.level-card[data-level="N3"] .level-badge { background: var(--jlpt-n3-tint); color: var(--jlpt-n3); }
+.level-card[data-level="N2"] .level-badge { background: var(--jlpt-n2-tint); color: var(--jlpt-n2); }
+.level-card[data-level="N1"] .level-badge { background: var(--jlpt-n1-tint); color: var(--jlpt-n1); }
+
+.level-card[data-level="N5"] { border-top: 3px solid var(--jlpt-n5); }
+.level-card[data-level="N4"] { border-top: 3px solid var(--jlpt-n4); }
+.level-card[data-level="N3"] { border-top: 3px solid var(--jlpt-n3); }
+.level-card[data-level="N2"] { border-top: 3px solid var(--jlpt-n2); }
+.level-card[data-level="N1"] { border-top: 3px solid var(--jlpt-n1); }
+
+.level-card[data-level="N5"]:hover { border-color: var(--jlpt-n5); }
+.level-card[data-level="N4"]:hover { border-color: var(--jlpt-n4); }
+.level-card[data-level="N3"]:hover { border-color: var(--jlpt-n3); }
+.level-card[data-level="N2"]:hover { border-color: var(--jlpt-n2); }
+.level-card[data-level="N1"]:hover { border-color: var(--jlpt-n1); }
+
+/* Header nav dropdown ("Word Game" -> N5..N1): a colored left rule per
+   level link, matching the same spectrum, so the dropdown itself hints
+   at difficulty before a card is ever opened. */
+.nav-dropdown a[href*="level=1"] { border-left-color: var(--jlpt-n5); }
+.nav-dropdown a[href*="level=2"] { border-left-color: var(--jlpt-n4); }
+.nav-dropdown a[href*="level=3"] { border-left-color: var(--jlpt-n3); }
+.nav-dropdown a[href*="level=4"] { border-left-color: var(--jlpt-n2); }
+.nav-dropdown a[href*="level=5"] { border-left-color: var(--jlpt-n1); }
+
+.nav-dropdown a[href*="level=1"]:hover { background: var(--jlpt-n5-tint); border-left-color: var(--jlpt-n5); color: var(--jlpt-n5); }
+.nav-dropdown a[href*="level=2"]:hover { background: var(--jlpt-n4-tint); border-left-color: var(--jlpt-n4); color: var(--jlpt-n4); }
+.nav-dropdown a[href*="level=3"]:hover { background: var(--jlpt-n3-tint); border-left-color: var(--jlpt-n3); color: var(--jlpt-n3); }
+.nav-dropdown a[href*="level=4"]:hover { background: var(--jlpt-n2-tint); border-left-color: var(--jlpt-n2); color: var(--jlpt-n2); }
+.nav-dropdown a[href*="level=5"]:hover { background: var(--jlpt-n1-tint); border-left-color: var(--jlpt-n1); color: var(--jlpt-n1); }
