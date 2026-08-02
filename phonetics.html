@@ -133,31 +133,36 @@
         </div>
 
         <main class="phonetics-main">
-            <!-- Level select -->
-            <section id="level-select-section" class="phonetics-section">
-                <button type="button" id="phonetics-title-trigger" class="phonetics-title-trigger" aria-haspopup="dialog" title="What's a phonetic component?">
-                    <h1 class="phonetics-title">Phonetics Family</h1>
-                    <span class="phonetics-title-info" aria-hidden="true">&#9432;</span>
-                </button>
-                <p class="phonetics-subtitle">Kanji that share a phonetic component often share an on'yomi reading too — learn one, and you get a running start on the rest of its family. Pick a JLPT level to see its phonetic families, ranked by how often their most common member actually shows up in real Japanese text.</p>
-                <button type="button" id="phonetics-info-btn" class="ghost-btn phonetics-info-btn">&#9432; What's a phonetic component?</button>
-                <div class="level-grid" id="phonetics-level-grid"></div>
-                <p class="phonetics-credit">Data sources: <a href="https://github.com/mifunetoshiro/kanjium" target="_blank" rel="noopener">Kanjium</a> (CC BY-SA 4.0) for kanji &amp; phonetic-family data &middot; <a href="https://github.com/scriptin/kanji-frequency" target="_blank" rel="noopener">scriptin/kanji-frequency</a> (CC BY 4.0) for usage ranking &middot; <a href="https://tatoeba.org" target="_blank" rel="noopener">Tatoeba</a> (CC BY / CC0) for example sentences.</p>
-            </section>
+            <div class="phonetics-layout">
+                <!-- Sidebar: page intro + persistent JLPT level nav. Stays visible/usable from
+                     both the family-list view and the family-tree view — clicking a level here
+                     always jumps straight to that level's family list. -->
+                <aside class="phonetics-sidebar">
+                    <button type="button" id="phonetics-title-trigger" class="phonetics-title-trigger" aria-haspopup="dialog" title="What's a phonetic component?">
+                        <h1 class="phonetics-title">Phonetics Family</h1>
+                        <span class="phonetics-title-info" aria-hidden="true">&#9432;</span>
+                    </button>
+                    <p class="phonetics-subtitle">Kanji that share a phonetic component often share an on'yomi reading too — learn one, and you get a running start on the rest of its family. Pick a JLPT level to see its phonetic families, ranked by how often their most common member actually shows up in real Japanese text.</p>
+                    <button type="button" id="phonetics-info-btn" class="ghost-btn phonetics-info-btn">&#9432; What's a phonetic component?</button>
+                    <nav class="level-nav" id="phonetics-level-nav" aria-label="JLPT level"></nav>
+                    <p class="phonetics-credit">Data sources: <a href="https://github.com/mifunetoshiro/kanjium" target="_blank" rel="noopener">Kanjium</a> (CC BY-SA 4.0) for kanji &amp; phonetic-family data &middot; <a href="https://github.com/scriptin/kanji-frequency" target="_blank" rel="noopener">scriptin/kanji-frequency</a> (CC BY 4.0) for usage ranking &middot; <a href="https://tatoeba.org" target="_blank" rel="noopener">Tatoeba</a> (CC BY / CC0) for example sentences.</p>
+                </aside>
 
-            <!-- Family list within a level -->
-            <section id="family-list-section" class="phonetics-section hidden">
-                <button id="family-list-back-btn" class="ghost-btn" type="button">&larr; Levels</button>
-                <h2 id="family-list-title" class="phonetics-title" style="margin-top:16px;"></h2>
-                <p id="family-list-subtitle" class="phonetics-subtitle"></p>
-                <div class="family-list" id="family-list"></div>
-            </section>
+                <div class="phonetics-content">
+                    <!-- Family list within a level -->
+                    <section id="family-list-section" class="phonetics-section">
+                        <h2 id="family-list-title" class="phonetics-title"></h2>
+                        <p id="family-list-subtitle" class="phonetics-subtitle"></p>
+                        <div class="family-list" id="family-list"></div>
+                    </section>
 
-            <!-- Family tree -->
-            <section id="family-tree-section" class="phonetics-section hidden">
-                <button id="family-tree-back-btn" class="ghost-btn" type="button">&larr; Families</button>
-                <div class="tree-wrap" id="tree-wrap"></div>
-            </section>
+                    <!-- Family tree -->
+                    <section id="family-tree-section" class="phonetics-section hidden">
+                        <button id="family-tree-back-btn" class="ghost-btn" type="button">&larr; Families</button>
+                        <div class="tree-wrap" id="tree-wrap"></div>
+                    </section>
+                </div>
+            </div>
         </main>
 
         <!-- Phonetic component explainer modal — trigger: page H1 or the dedicated info button only -->

@@ -1,14 +1,24 @@
 /* Dokkai Reader — styles specific to reading.html.
-   "Ink & Lamplight": a quiet reading-lamp glow against a deep night-study
-   backdrop, distinct from Word Match's hanafuda dark theme and the shared
-   header's own dark masthead (--header-* tokens, untouched here). All of
-   this page's color/shadow tokens are scoped to .reading-main — same
-   token NAMES as style.css's shared :root (--accent, --bg-surface, etc.)
-   but redefined locally, so every rule below that still reads var(--x)
-   picks up this page's palette via normal CSS custom-property inheritance
-   through the DOM, with no need to re-scope each selector under
-   .reading-main. Typography/motion tokens (--font-display, --font-body,
-   --ease-out, --ease-pop) are intentionally left shared. */
+   "Golden Page": a light, fully warm honey-gold reading surface — background
+   and ink both living in the same warm gold family, distinct from Word
+   Match's hanafuda dark theme, the portfolio page's own dark-ish mood, and
+   the shared header's own dark masthead (--header-* tokens, untouched
+   here). All of this page's color/shadow tokens are scoped to .reading-main
+   — same token NAMES as style.css's shared :root (--accent, --bg-surface,
+   etc.) but redefined locally, so every rule below that still reads
+   var(--x) picks up this page's palette via normal CSS custom-property
+   inheritance through the DOM, with no need to re-scope each selector
+   under .reading-main. Typography/motion tokens (--font-display,
+   --font-body, --ease-out, --ease-pop) are intentionally left shared.
+
+   Because this was originally written as a DARK theme, going light meant
+   more than swapping the token values: anywhere text sat on an
+   accent-colored fill, dark-on-light legibility had to be re-checked
+   (light-on-dark accent text like --accent-light is low-contrast against
+   a pale accent-tint chip once the page itself is light, so hint chips /
+   badges were flipped to --accent-dark), and .auth-btn's hardcoded white
+   label (style.css, not editable here) needed a scoped override since it
+   now sits on a light gold gradient instead of a dark one. */
 
 /* .nav-current / .back-link now live in style.css (shared header styling). */
 
@@ -23,22 +33,22 @@
    :has() here only ever matches reading.html, since .reading-main only exists there. */
 body:has(.reading-main),
 .reading-main {
-    --bg-page: #14131c;
-    --bg-surface: #1d1c28;
-    --bg-surface-alt: #242332;
-    --border: #322f42;
-    --border-strong: #453f5c;
-    --text-primary: #f2ede0;
-    --text-secondary: #a89f8c;
-    --text-muted: #6e6858;
-    --accent: #e0a84f;
-    --accent-light: #eec178;
-    --accent-dark: #b8822f;
-    --accent-tint: rgba(224, 168, 79, 0.14);
+    --bg-page: #f7ecd2;
+    --bg-surface: #fdf6e6;
+    --bg-surface-alt: #f0e0bc;
+    --border: #e0c690;
+    --border-strong: #c9a563;
+    --text-primary: #4a3510;
+    --text-secondary: #7a6435;
+    --text-muted: #a08a5c;
+    --accent: #b8791f;
+    --accent-light: #d99f3f;
+    --accent-dark: #8f5c14;
+    --accent-tint: rgba(184, 121, 31, 0.16);
     --accent-gradient: linear-gradient(135deg, var(--accent-light), var(--accent));
     --accent-gradient-hover: linear-gradient(135deg, var(--accent), var(--accent-dark));
-    --shadow-sm: 0 2px 14px rgba(0, 0, 0, 0.35);
-    --shadow-md: 0 16px 38px rgba(0, 0, 0, 0.5);
+    --shadow-sm: 0 2px 10px rgba(74, 53, 16, 0.10);
+    --shadow-md: 0 14px 32px rgba(74, 53, 16, 0.18);
 }
 
 body:has(.reading-main) {
@@ -49,11 +59,23 @@ body:has(.reading-main) {
     position: relative;
     isolation: isolate;
     background:
-        radial-gradient(ellipse 70% 40% at 18% 0%, rgba(224, 168, 79, 0.09) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 40% at 18% 0%, rgba(184, 121, 31, 0.10) 0%, transparent 60%),
         var(--bg-page);
     color: var(--text-primary);
     padding: 140px 40px 80px;
     min-height: 100vh;
+}
+
+/* .auth-btn (style.css, shared sitewide — not editable here) hardcodes a white label on
+   var(--accent-gradient). That reads fine against the old dark theme's gradient but not
+   against this page's light gold one, so the label color is overridden here, scoped to
+   this page only via body:has(.reading-main). Dark ink reads better across the gradient's
+   light-to-mid gold range than white does (which fails contrast at the gradient's lighter
+   end); it isn't a perfect ratio at the gradient's darkest hover corner either, but it's
+   the better tradeoff of the two, and it keeps the "ink on gold" theme consistent. */
+body:has(.reading-main) .auth-btn,
+body:has(.reading-main) .auth-btn-outline:hover {
+    color: var(--text-primary);
 }
 
 .reading-title {
@@ -71,7 +93,7 @@ body:has(.reading-main) {
 }
 
 .reading-mic-hint {
-    color: var(--accent-light);
+    color: var(--accent-dark);
     background: var(--accent-tint);
     border: 1px solid var(--border);
     display: inline-block;
@@ -81,7 +103,7 @@ body:has(.reading-main) {
 }
 
 .reading-guest-hint {
-    color: var(--accent-light);
+    color: var(--accent-dark);
     background: var(--accent-tint);
     border: 1px solid var(--border);
     display: inline-block;
@@ -95,12 +117,14 @@ body:has(.reading-main) {
 }
 
 /* ---------------------------------------------------------------------
-   Track select
+   Track select — a linear table-of-contents list, not a card grid
+   (matches the .text-list pattern below: full-width rows, not boxes
+   that wrap into a dashboard-like grid).
    --------------------------------------------------------------------- */
 .track-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
     margin-top: 20px;
     max-width: 700px;
 }
@@ -110,40 +134,47 @@ body:has(.reading-main) {
     background: var(--bg-surface);
     border: 1px solid var(--border);
     box-shadow: var(--shadow-sm);
-    padding: 28px 24px;
+    padding: 20px 24px;
     cursor: pointer;
-    transition: all 0.25s ease;
+    transition: all 0.2s ease;
     font-family: inherit;
     color: var(--text-primary);
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
 }
 
 .track-card:hover {
     border-color: var(--accent);
     box-shadow: var(--shadow-md);
-    transform: translateY(-3px);
+    transform: translateY(-2px);
 }
 
 .track-card h3 {
     margin: 0;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 
 .track-meta {
     font-size: 0.9rem;
     color: var(--text-secondary);
+    white-space: nowrap;
+    flex: 0 0 auto;
 }
 
 /* ---------------------------------------------------------------------
-   Level select (mirrors the Word Match level cards)
+   Level select — same linear list pattern as the track list above
+   (was a wrapping card grid mirroring Word Match's level cards; now
+   reads as a table of contents, one row per level).
    --------------------------------------------------------------------- */
 .level-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
     margin-top: 20px;
+    max-width: 700px;
 }
 
 .level-card {
@@ -151,20 +182,22 @@ body:has(.reading-main) {
     background: var(--bg-surface);
     border: 1px solid var(--border);
     box-shadow: var(--shadow-sm);
-    padding: 24px 22px;
+    padding: 16px 24px;
     cursor: pointer;
-    transition: all 0.25s ease;
+    transition: all 0.2s ease;
     font-family: inherit;
     color: var(--text-primary);
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
 }
 
 .level-card:hover {
     border-color: var(--accent);
     box-shadow: var(--shadow-md);
-    transform: translateY(-3px);
+    transform: translateY(-2px);
 }
 
 .level-card.locked {
@@ -182,13 +215,14 @@ body:has(.reading-main) {
     font-size: 0.8rem;
     color: var(--text-muted);
     font-style: italic;
+    flex-basis: 100%;
 }
 
 .level-badge {
     display: inline-block;
-    align-self: flex-start;
+    flex: 0 0 auto;
     background: var(--accent-tint);
-    color: var(--accent-light);
+    color: var(--accent-dark);
     font-weight: 700;
     font-size: 0.8rem;
     letter-spacing: 0.03em;
@@ -197,12 +231,16 @@ body:has(.reading-main) {
 
 .level-card h3 {
     margin: 0;
-    font-size: 1.15rem;
+    font-size: 1.1rem;
+    flex: 0 0 auto;
 }
 
 .level-meta {
     font-size: 0.85rem;
     color: var(--text-secondary);
+    margin-left: auto;
+    white-space: nowrap;
+    flex: 0 0 auto;
 }
 
 /* ---------------------------------------------------------------------
@@ -288,7 +326,7 @@ body:has(.reading-main) {
 
 .ghost-btn:hover {
     border-color: var(--accent);
-    color: var(--accent-light);
+    color: var(--accent-dark);
     background: var(--accent-tint);
 }
 
@@ -297,6 +335,10 @@ body:has(.reading-main) {
     align-items: flex-start;
     gap: 20px;
     max-width: 940px;
+    /* Room for the floating bottom control bar (~64px tall, 22px off the viewport
+       edge) so it never overlaps the bottom of the passage or the skipped-words
+       panel, even when either has scrolled fully into view. */
+    margin-bottom: 110px;
 }
 
 .reader-passage-wrap {
@@ -380,19 +422,17 @@ body:has(.reading-main) {
     color: var(--text-muted);
 }
 
-/* Currently-spoken word: a soft warm lamp-glow rather than a flat recolor —
-   a gentle halo plus a lit underline, like the word is sitting under a
-   reading lamp. */
+/* Currently-spoken word: on the old near-black theme a soft layered glow read as a lit
+   halo; against cream paper that same glow just looks washed out (light-colored text and
+   a faint tinted halo both have too little contrast to read as "lit"). A solid
+   highlighter-style fill with dark ink reads far more clearly on a light page — like a
+   marker stroke on paper — with a crisp accent underline for definition instead of a blur. */
 .reader-word.current {
-    background: var(--accent-tint);
-    color: var(--accent-light);
+    background: var(--accent-light);
+    color: var(--text-primary);
     font-weight: 700;
-    border-radius: 4px;
-    text-shadow: 0 0 16px var(--accent-tint);
-    box-shadow:
-        0 0 0 3px var(--accent-tint),
-        0 4px 20px var(--accent-tint),
-        inset 0 -3px 0 var(--accent);
+    border-radius: 3px;
+    box-shadow: inset 0 -3px 0 var(--accent-dark);
 }
 
 .hint-popup {
@@ -418,24 +458,58 @@ body:has(.reading-main) {
 
 .hint-reading {
     font-weight: 700;
-    color: var(--accent-light);
+    color: var(--accent-dark);
 }
 
 .hint-en {
     color: var(--text-secondary);
 }
 
+/* Floating bottom control bar — a podcast/audiobook-player style dock rather than the
+   inline row under the passage the other pages' top-toolbar pattern would suggest. Mic
+   and skip are the controls you reach for while your hands (and eyes) are busy with the
+   passage/mic, so they live anchored to the bottom edge instead of scrolling away with
+   the page. Left at document position (after .reader-body in the DOM); only taken out of
+   flow visually via position:fixed, so nothing about reading.js's element lookups moves. */
 .reader-controls {
-    margin-top: 24px;
+    position: fixed;
+    left: 50%;
+    bottom: 22px;
+    transform: translateX(-50%);
+    z-index: 40;
+    width: min(680px, calc(100% - 32px));
+    margin: 0;
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 14px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-strong);
+    box-shadow: var(--shadow-md);
+    padding: 14px 20px;
+}
+
+.reader-controls #reader-mic-btn {
+    flex: 0 0 auto;
+    font-size: 1rem;
+    padding: 12px 22px;
+    white-space: nowrap;
+}
+
+.reader-controls #reader-skip-btn {
+    flex: 0 0 auto;
+    white-space: nowrap;
 }
 
 .reader-status {
+    flex: 1 1 auto;
+    min-width: 0;
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     margin: 0;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 /* ---------------------------------------------------------------------
@@ -448,6 +522,7 @@ body:has(.reading-main) {
 
     .reader-body {
         flex-direction: column;
+        margin-bottom: 130px;
     }
 
     .skipped-panel {
@@ -468,5 +543,26 @@ body:has(.reading-main) {
 
     .hint-popup {
         left: 24px;
+    }
+
+    .track-card,
+    .level-card {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 560px) {
+    .reader-controls {
+        flex-wrap: wrap;
+        justify-content: center;
+        bottom: 12px;
+        padding: 12px 16px;
+        gap: 10px;
+    }
+
+    .reader-status {
+        flex-basis: 100%;
+        order: 3;
+        white-space: normal;
     }
 }

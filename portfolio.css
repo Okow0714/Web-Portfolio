@@ -4,10 +4,11 @@
    using style.css's shared light "Burgundy Editorial" :root tokens untouched — neither is
    redefined here. Only this page's own content (everything wrapped in <main
    class="portfolio-main"> in index.html: hero through contact, plus the footer) switches to
-   a deep ink-blue ground with two considered accents: cyan "drafting ink" as the dominant
-   interactive color, and a warm copper reserved for a couple of deliberate CTA/highlight
-   moments (.stat-number, .download-btn) so the second hue reads as an intentional accent
-   pairing rather than noise. Typography (--font-display/--font-body) and motion
+   a light drafting-table ground (cool blue-gray paper) with two considered accents: a
+   cyan-leaning "drafting ink" blue as the dominant interactive color, and a warm copper/rust
+   reserved for a couple of deliberate CTA/highlight moments (.stat-number, .download-btn) so
+   the second hue reads as an intentional accent pairing rather than noise. Typography
+   (--font-display/--font-body) and motion
    (--ease-out/--ease-pop) tokens are NOT redefined here — those stay global from style.css's
    :root so the page still feels like one connected system across the site's different
    per-page color moods. --radius-* also stays global (0px), keeping the sitewide
@@ -20,27 +21,27 @@
    :has() here only ever matches index.html, since .portfolio-main only exists there. */
 body:has(.portfolio-main),
 .portfolio-main {
-    --bg-page: #12161c;
-    --bg-surface: #1a2029;
-    --bg-surface-alt: #212934;
-    --border: #2c3540;
-    --border-strong: #3d4a58;
-    --text-primary: #eef1f5;
-    --text-secondary: #9aa7b5;
-    --text-muted: #67737f;
-    --accent: #4fb8d1;
-    --accent-light: #7dd0e3;
-    --accent-dark: #2f8fa8;
-    --accent-tint: rgba(79, 184, 209, 0.12);
+    --bg-page: #eef1f5;
+    --bg-surface: #ffffff;
+    --bg-surface-alt: #e4e9f0;
+    --border: #c3ccd9;
+    --border-strong: #9fb0c4;
+    --text-primary: #1a2634;
+    --text-secondary: #56626f;
+    --text-muted: #8592a0;
+    --accent: #2f5fa8;
+    --accent-light: #6a8fc9;
+    --accent-dark: #21447a;
+    --accent-tint: rgba(47, 95, 168, 0.10);
     --accent-gradient: linear-gradient(135deg, var(--accent-light), var(--accent));
     --accent-gradient-hover: linear-gradient(135deg, var(--accent), var(--accent-dark));
-    --accent-warm: #d98b3f;
-    --accent-warm-light: #e8a862;
-    --accent-warm-dark: #b06f2c;
+    --accent-warm: #c0472f;
+    --accent-warm-light: #d97a5f;
+    --accent-warm-dark: #963820;
     --accent-warm-gradient: linear-gradient(135deg, var(--accent-warm-light), var(--accent-warm));
     --accent-warm-gradient-hover: linear-gradient(135deg, var(--accent-warm), var(--accent-warm-dark));
-    --shadow-sm: 0 2px 14px rgba(0, 0, 0, 0.35);
-    --shadow-md: 0 16px 38px rgba(0, 0, 0, 0.5);
+    --shadow-sm: 0 2px 10px rgba(26, 38, 52, 0.08);
+    --shadow-md: 0 14px 32px rgba(26, 38, 52, 0.14);
 }
 
 body:has(.portfolio-main) {
@@ -160,7 +161,7 @@ body:has(.portfolio-main) {
 .tab-button.active {
     background: var(--accent-gradient);
     border-color: var(--accent);
-    color: #0d1116;
+    color: #ffffff;
     box-shadow: var(--shadow-md);
 }
 
@@ -606,7 +607,7 @@ body:has(.portfolio-main) {
     background: var(--accent-gradient);
     border: none;
     border-radius: var(--radius-sm);
-    color: #0d1116;
+    color: #ffffff;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s var(--ease-out);
@@ -738,7 +739,7 @@ body:has(.portfolio-main) {
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
-    box-shadow: 0 0 0 3px rgba(79, 184, 209, 0.25);
+    box-shadow: 0 0 0 3px rgba(47, 95, 168, 0.18);
 }
 
 .academic-title {
@@ -954,7 +955,7 @@ body:has(.portfolio-main) {
 
 .contact-link:hover {
     background: var(--accent-gradient);
-    color: #0d1116;
+    color: #ffffff;
     box-shadow: var(--shadow-md);
 }
 

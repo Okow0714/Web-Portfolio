@@ -4,8 +4,9 @@
 // auth-shared.js for the shared header login bar.
 //
 // Depends on phonetics-data.js (PHONETICS_DATA — already ranked, do not re-sort) having run
-// first. Flow mirrors reading.js's track->level->text drill-down structurally: level select ->
-// ranked family list -> a family's radial tree view.
+// first. Layout: a persistent sidebar (JLPT level nav, always visible) drives a content pane
+// that swaps between two views per the level currently picked — a ranked family list, or (once
+// a family's picked) that family's radial tree view.
 
 const LEVEL_META = [
     { key: 'N5', title: 'N5 · Beginner' },
@@ -57,30 +58,43 @@ function switchScreen(hideIds, showId) {
 }
 
 // ---------------------------------------------------------------------------
-// Level select -> family list -> family tree
+// Sidebar level nav -> family list -> family tree
+//
+// The sidebar (level nav) is rendered once and stays mounted for the whole
+// page life; only the content pane (family-list-section / family-tree-section)
+// swaps. That's what lets a level be picked directly from either the list or
+// the tree view without a separate "back to levels" step.
 // ---------------------------------------------------------------------------
-function renderLevelSelect() {
-    const container = document.getElementById('phonetics-level-grid');
-    container.innerHTML = '';
+function renderLevelSidebar() {
+    const nav = document.getElementById('phonetics-level-nav');
+    nav.innerHTML = '';
     LEVEL_META.forEach(level => {
-        const families = PHONETICS_DATA[level.key] || [];
-        const memberKanjiCount = new Set(families.flatMap(f => f.members.map(m => m.kanji))).size;
-        const card = document.createElement('button');
-        card.type = 'button';
-        card.className = 'level-card';
-        card.dataset.level = level.key;
-        card.innerHTML = `
-            <span class="level-badge">${escapeHtml(level.key)}</span>
-            <h3>${escapeHtml(level.title)}</h3>
-            <div class="level-meta">${families.length} phonetic families &middot; ${memberKanjiCount} related kanji</div>
+        const label = level.title.split(' · ')[1] || level.title;
+        const item = document.createElement('button');
+        item.type = 'button';
+        item.className = 'level-nav-item';
+        item.dataset.level = level.key;
+        item.setAttribute('aria-current', 'false');
+        item.innerHTML = `
+            <span class="level-nav-code">${escapeHtml(level.key)}</span>
+            <span class="level-nav-label">${escapeHtml(label)}</span>
         `;
-        card.addEventListener('click', () => showFamilyList(level.key));
-        container.appendChild(card);
+        item.addEventListener('click', () => showFamilyList(level.key));
+        nav.appendChild(item);
+    });
+}
+
+function updateLevelNavActive(levelKey) {
+    document.querySelectorAll('.level-nav-item').forEach(item => {
+        const isActive = item.dataset.level === levelKey;
+        item.classList.toggle('active', isActive);
+        item.setAttribute('aria-current', isActive ? 'true' : 'false');
     });
 }
 
 function showFamilyList(levelKey) {
     currentLevelKey = levelKey;
+    updateLevelNavActive(levelKey);
     const level = LEVEL_META.find(l => l.key === levelKey);
     const families = PHONETICS_DATA[levelKey] || [];
 
@@ -113,12 +127,13 @@ function showFamilyList(levelKey) {
         list.appendChild(item);
     });
 
-    switchScreen(['level-select-section', 'family-tree-section'], 'family-list-section');
-}
-
-function backToLevelSelect() {
+    // Only the tree section ever needs hiding here — the list section is the
+    // content pane's resting state, and switchScreen() is a no-op for an id
+    // that's already visible/already hidden, so this is safe to call whether
+    // we're coming from the tree view, from a different level's list, or
+    // re-picking the level that's already showing.
     stopTreeResize();
-    switchScreen(['family-list-section', 'family-tree-section'], 'level-select-section');
+    switchScreen(['family-tree-section'], 'family-list-section');
 }
 
 function backToFamilyList() {
@@ -190,7 +205,8 @@ function showFamilyTree(levelKey, family) {
         </div>
     `;
 
-    switchScreen(['level-select-section', 'family-list-section'], 'family-tree-section');
+    updateLevelNavActive(levelKey);
+    switchScreen(['family-list-section'], 'family-tree-section');
 
     wrap.querySelectorAll('.tree-chip').forEach(chip => {
         chip.addEventListener('click', () => onChipClick(chip, family));
@@ -483,7 +499,6 @@ function closeInfoModal() {
 // ---------------------------------------------------------------------------
 // Wiring
 // ---------------------------------------------------------------------------
-document.getElementById('family-list-back-btn').addEventListener('click', backToLevelSelect);
 document.getElementById('family-tree-back-btn').addEventListener('click', backToFamilyList);
 
 document.getElementById('phonetics-title-trigger').addEventListener('click', openInfoModal);
@@ -493,7 +508,11 @@ document.getElementById('phonetics-info-modal').addEventListener('click', (e) =>
     if (e.target.id === 'phonetics-info-modal') closeInfoModal();
 });
 
-renderLevelSelect();
+renderLevelSidebar();
+// Default to N5 on load so the content pane never sits blank waiting for a
+// pick — the sidebar itself makes it obvious four other levels are one
+// click away.
+showFamilyList(LEVEL_META[0].key);
 
 // Show the "what's a phonetic component?" explainer automatically on entering
 // this page, in addition to it staying reachable later via the H1/info-button
