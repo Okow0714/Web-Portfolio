@@ -138,8 +138,8 @@ body:has(.phonetics-main) {
 .phonetics-title-trigger {
     background: none;
     border: none;
-    padding: 0;
-    margin: 0 0 12px;
+    padding: 8px 0;
+    margin: -8px 0 4px;
     display: inline-flex;
     align-items: baseline;
     gap: 10px;

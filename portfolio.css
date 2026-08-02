@@ -532,7 +532,10 @@ body:has(.portfolio-main) {
     font-weight: 600;
     font-size: 0.9rem;
     cursor: pointer;
-    padding: 0;
+    padding: 12px 0;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
 }
 
 .comments-panel {
@@ -1053,10 +1056,18 @@ body:has(.portfolio-main) {
 
     .hero-text {
         order: 2;
+        width: 100%;
+        max-width: 100%;
     }
 
     .hero-image {
         order: 1;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .hero-image img {
+        height: 320px;
     }
 
     .main-name {
@@ -1068,7 +1079,8 @@ body:has(.portfolio-main) {
     }
 
     .about-tabs {
-        min-width: 100%;
+        width: 100%;
+        max-width: 100%;
         flex-direction: row;
         overflow-x: auto;
         padding-bottom: 10px;
