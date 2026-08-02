@@ -163,7 +163,7 @@ function detailHtml(member) {
     const meanings = member.meanings && member.meanings.length ? member.meanings.join(', ') : '';
     const exampleHtml = member.example
         ? `<div class="tree-example">
-               <p class="tree-example-jp">${escapeHtml(member.example.jp)}</p>
+               <p class="tree-example-jp">${member.example.furigana || escapeHtml(member.example.jp)}</p>
                <p class="tree-example-en">${escapeHtml(member.example.en)}</p>
            </div>`
         : `<p class="tree-example-none">No example sentence found for this kanji in the source data.</p>`;

@@ -629,7 +629,12 @@ function showExample(pairId) {
     const sentenceBlock = document.getElementById('example-sentence-block');
     const noneEl = document.getElementById('example-none');
     if (pair.example) {
-        document.getElementById('example-sentence-jp').textContent = pair.example.jp;
+        const jpEl = document.getElementById('example-sentence-jp');
+        if (pair.example.furigana) {
+            jpEl.innerHTML = pair.example.furigana;
+        } else {
+            jpEl.textContent = pair.example.jp;
+        }
         document.getElementById('example-sentence-en').textContent = pair.example.en;
         showEl(sentenceBlock);
         hideEl(noneEl);

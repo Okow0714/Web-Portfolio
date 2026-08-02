@@ -635,6 +635,14 @@ body.game-playing .game-main {
     font-family: var(--font-jp);
     font-size: 0.95rem;
     color: var(--paper);
+    line-height: 2.2;
+}
+
+.example-sentence-jp rt {
+    font-size: 0.55em;
+    font-weight: 400;
+    color: var(--ink-soft);
+    user-select: none;
 }
 
 .example-sentence-en {
