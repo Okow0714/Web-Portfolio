@@ -85,6 +85,9 @@ const MUSIC_POOLS = {
     N4: LOFI_JAZZ_POOL,
     N5: LOFI_JAZZ_POOL,
 };
+// Plays on the level-select screen (all tiers, before a level is chosen) -- separate from any
+// tier's in-level pool above.
+const LEVEL_SELECT_TRACK = 'sound/game-music/all-levels-jazzy-pop-piano.mp3';
 
 const PER_ROW = 5; // 20 tiles / 5 = 4 clean honeycomb rows, no partial last row. Penalties
                     // restore an already-existing pair rather than adding new tiles, so the
@@ -346,7 +349,9 @@ const GameAudio = (function () {
     let ctx = null;
     let masterGain = null;
     let sfxGain = null;
-    let enabled = false;
+    let enabled = true; // music/sound on by default; browsers still block the very first
+                         // play() until a user gesture happens, see the document-level
+                         // fallback listener near setLevelTrack's call site below
     let noiseBuffer = null;
 
     const ROOT = 220; // A3
@@ -373,6 +378,12 @@ const GameAudio = (function () {
         sfxGain.gain.value = 0.5;
         sfxGain.connect(masterGain);
     }
+    // Sound defaults to on (see `enabled` above), so the audio graph needs to exist from the
+    // start rather than waiting for a toggle-button click to call ensureContext() -- otherwise
+    // every sfx function below would dereference a still-null `ctx` on first use. The context
+    // itself can be constructed without a user gesture; it just starts 'suspended' until one
+    // arrives, which retryOnFirstGesture() below resumes.
+    ensureContext();
 
     function getNoiseBuffer() {
         if (noiseBuffer) return noiseBuffer;
@@ -580,6 +591,23 @@ const GameAudio = (function () {
         if (!musicEl) return;
         fadeMusicTo(0, 400);
     }
+
+    // Music defaults to on, but browsers block the very first play() call without a user
+    // gesture -- so the level-select track's initial play() attempt (fired from setTrack()
+    // at page load, before any click has happened) can get silently rejected. Retry once on
+    // the page's first real interaction so it isn't stuck silent all session.
+    (function retryOnFirstGesture() {
+        const kick = () => {
+            if (ctx && ctx.state === 'suspended') ctx.resume();
+            if (enabled && musicEl && musicEl.paused && musicEl.src) {
+                musicEl.play().catch(() => {});
+            }
+            document.removeEventListener('pointerdown', kick);
+            document.removeEventListener('keydown', kick);
+        };
+        document.addEventListener('pointerdown', kick, { once: true });
+        document.addEventListener('keydown', kick, { once: true });
+    })();
 
     function setEnabled(next) {
         ensureContext();
@@ -1131,6 +1159,7 @@ function backToLevels() {
     hideEl(document.getElementById('board-section'));
     showEl(document.getElementById('level-select-section'));
     document.body.classList.remove('game-playing');
+    GameAudio.setLevelTrack(LEVEL_SELECT_TRACK);
     renderLevelSelect();
     resizeCanvases();
 }
@@ -1259,6 +1288,9 @@ function finishLevel() {
 // won=true: cleared the level (existing behaviour). won=false: the 5-minute clock ran out --
 // an honest failure state, not just a quieter version of winning. No progress is ever saved
 // for a timeout since best_time_seconds/best_moves are only meaningful for an actual clear.
+let resultPrimaryTarget = null; // level object the result modal's primary button should open;
+                                 // null means "replay the level just played" (result-replay-btn's
+                                 // click handler falls back to currentLevel in that case)
 function showResultModal(result, won) {
     document.getElementById('result-title').textContent = won ? 'Level Complete!' : "Time's Up!";
     document.getElementById('result-time').textContent = formatTime(result.timeSeconds);
@@ -1273,6 +1305,11 @@ function showResultModal(result, won) {
         document.getElementById('result-best').textContent =
             `Matched ${matchedCount} / ${totalPairs} pairs before time ran out.`;
     }
+
+    // On a win, offer the next level in sequence instead of replaying the one just cleared --
+    // there's no "next" after the last level (50), so that case falls back to Play Again.
+    resultPrimaryTarget = won ? WORD_LEVELS.find(l => l.level === result.level + 1) || null : null;
+    document.getElementById('result-replay-btn').textContent = resultPrimaryTarget ? 'Next Level' : 'Play Again';
 
     hideEl(document.getElementById('result-login-btn'));
     hideEl(document.getElementById('result-save-status'));
@@ -1301,7 +1338,7 @@ document.getElementById('result-modal').addEventListener('click', (e) => {
 });
 document.getElementById('result-replay-btn').addEventListener('click', () => {
     hideEl(document.getElementById('result-modal'));
-    startLevel(currentLevel);
+    startLevel(resultPrimaryTarget || currentLevel);
 });
 document.getElementById('result-levels-btn').addEventListener('click', () => {
     hideEl(document.getElementById('result-modal'));
@@ -1323,4 +1360,8 @@ window.onAuthChange(async (session) => {
 // Runs independently of auth/progress loading so the board appears immediately.
 const requestedLevelNum = parseInt(new URLSearchParams(window.location.search).get('level'), 10);
 const requestedLevel = WORD_LEVELS.find(l => l.level === requestedLevelNum);
-if (requestedLevel) startLevel(requestedLevel);
+if (requestedLevel) {
+    startLevel(requestedLevel);
+} else {
+    GameAudio.setLevelTrack(LEVEL_SELECT_TRACK); // level-select screen's own ambient track
+}
