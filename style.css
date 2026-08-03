@@ -63,11 +63,12 @@ html {
     scroll-behavior: smooth;
 }
 
-/* 118px header height + 30px to offset the scroll-reveal animation's translateY(30px) in
+/* 64px header height + 30px to offset the scroll-reveal animation's translateY(30px) in
    script.js: an off-screen section is still in that pre-reveal, shifted-down state at the
-   moment a nav link is clicked, so the browser's scroll target needs the extra headroom. */
+   moment a nav link is clicked, so the browser's scroll target needs the extra headroom.
+   (Was 148px when the masthead was two rows tall.) */
 section[id] {
-    scroll-margin-top: 148px;
+    scroll-margin-top: 94px;
 }
 
 .hidden {
@@ -167,65 +168,151 @@ body {
     }
 }
 
-/* Header: fixed wrapper holding the 5-section nav row and the login bar, so both stick together
-   on scroll. This is a deliberately self-contained "masthead" — its own dark, colored tokens
-   (--header-*) rather than the page's --accent/--bg-surface — so it reads as one consistent,
-   confident bar across every page regardless of that page's own theme underneath it. Previously
-   the login bar had no background of its own and just sat as bare text/buttons on the page's
-   plain background below the nav row, which is what read as "hovering in the air alone". */
-.site-header-wrap {
-    --header-bg: #1c0f16;
-    --header-bg-elevated: #2a1620;
-    --header-border: rgba(217, 165, 82, 0.25);
-    --header-text: #f3e6d8;
-    --header-text-muted: #b89a86;
-    --header-accent: #d9a552;
-    --header-accent-dark: #b9822f;
-    --header-accent-tint: rgba(217, 165, 82, 0.14);
+/* ---------------------------------------------------------------------
+   Masthead + footer chrome tokens.
 
+   "Lifted wine": the previous --header-bg (#1c0f16) was so near-black that on the site's
+   light-themed pages it read as a heavy lid clamped over the page rather than a masthead.
+   These values lift it into an actual plum while keeping the same wine-and-gold identity.
+
+   The block is declared on .site-header-wrap AND .site-footer together — rather than in
+   :root, or duplicated onto each — so header and footer are literally the same palette and
+   can never drift apart: the page ends up bookended by one chrome color. Keeping it off
+   :root also means a per-page theme block (portfolio/reading/phonetics/game) can never
+   accidentally shadow these, which is the whole point of the chrome having its own tokens
+   rather than reusing the page's --accent/--bg-surface.
+   --------------------------------------------------------------------- */
+.site-header-wrap,
+.site-footer {
+    --header-bg: #4a2c3a;
+    --header-bg-elevated: #5c3a49;
+    --header-border: rgba(232, 189, 109, 0.32);
+    --header-text: #f9efe3;
+    --header-text-muted: #d3b9ab;
+    --header-accent: #e8bd6d;
+    --header-accent-dark: #c99a45;
+    --header-accent-tint: rgba(232, 189, 109, 0.16);
+}
+
+/* Header: one fixed row — brand at the far left, section nav in the middle, account menu
+   pinned right. It replaces the old two-row masthead (a five-cell nav row whose items each
+   stretched to a fifth of the viewport, plus a separate login bar underneath holding a
+   "back to Portfolio" link and the account menu), which cost 115px of permanent chrome.
+   One row is ~64px, so the pages below it get 50px of their own space back. */
+.site-header-wrap {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
-    transition: all 0.3s var(--ease-out);
+    transition: box-shadow 0.3s var(--ease-out);
 }
 
 .header {
     display: flex;
     align-items: stretch;
+    gap: 20px;
+    min-height: 64px;
+    padding: 0 40px;
     background: var(--header-bg);
     border-bottom: 1px solid var(--header-border);
 }
 
+/* Brand: gold seal chip carrying 言 — the first character of 言葉合わせ, the word game's
+   Japanese name — plus the name and a role line. The whole block is one link home, which
+   is what the old login bar's "← Portfolio" back-link used to do on its own row. */
+.site-brand {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    gap: 12px;
+    flex: 0 0 auto;
+    padding: 5px 4px;
+    margin-left: -4px;
+    text-decoration: none;
+    color: var(--header-text);
+}
+
+.brand-seal {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    background: linear-gradient(150deg, var(--header-accent), var(--header-accent-dark));
+    color: var(--header-bg);
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1;
+    transition: box-shadow 0.2s var(--ease-out);
+}
+
+.site-brand:hover .brand-seal {
+    box-shadow: 0 0 0 3px var(--header-accent-tint);
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.brand-name {
+    font-family: var(--font-display);
+    font-size: 0.98rem;
+    font-weight: 600;
+    line-height: 1.15;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+}
+
+.site-brand:hover .brand-name {
+    color: var(--header-accent);
+}
+
+.brand-role {
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--header-text-muted);
+    line-height: 1.15;
+    white-space: nowrap;
+}
+
+/* Nav items now size to their own labels and sit centered in the space between brand and
+   account, instead of each stretching to a fifth of the bar. */
 .header-nav {
     display: flex;
-    width: 100%;
+    align-items: stretch;
+    gap: 2px;
+    margin: 0 auto;
+    min-width: 0;
 }
 
 .nav-item {
     position: relative;
-    flex: 1;
-    border-right: 1px solid var(--header-border);
-}
-
-.nav-item:first-child {
-    border-left: 1px solid var(--header-border);
+    display: flex;
 }
 
 .nav-trigger {
-    display: block;
-    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     background: none;
     border: none;
-    padding: 18px 16px;
-    font-size: 0.95rem;
+    border-bottom: 2px solid transparent;
+    padding: 0 14px;
+    font-family: inherit;
+    font-size: 0.9rem;
     font-weight: 600;
     color: var(--header-text);
     cursor: pointer;
-    text-align: center;
     text-decoration: none;
-    transition: all 0.2s var(--ease-out);
+    white-space: nowrap;
+    transition: color 0.2s var(--ease-out), background 0.2s var(--ease-out), border-color 0.2s var(--ease-out);
 }
 
 .nav-trigger:hover {
@@ -233,11 +320,39 @@ body {
     color: var(--header-accent);
 }
 
-/* Marks the nav item for the page currently open (set directly in each page's own header markup). */
+/* Caret appears only on the two items that actually own a dropdown, so the affordance is
+   visible rather than something you have to discover by hovering. */
+.nav-caret {
+    font-size: 0.6rem;
+    line-height: 1;
+    opacity: 0.75;
+    transition: transform 0.2s var(--ease-out);
+}
+
+.nav-item:hover .nav-caret,
+.nav-item:focus-within .nav-caret {
+    transform: translateY(2px);
+}
+
+/* Marks the nav item for the page currently open (set directly in each page's own header
+   markup). A gold rule along the bottom edge of the bar now that the trigger fills the
+   header's full height, instead of the old inset box-shadow. */
 .nav-current {
     background: var(--header-accent-tint);
     color: var(--header-accent);
-    box-shadow: inset 0 -3px 0 var(--header-accent);
+    border-bottom-color: var(--header-accent);
+}
+
+/* Keyboard focus has to stay visible on a dark ground, and the dropdowns open on :focus-within
+   as well as :hover, so tabbing through the bar is a real path. */
+.site-brand:focus-visible,
+.nav-trigger:focus-visible,
+.nav-dropdown a:focus-visible,
+.account-menu-trigger:focus-visible,
+.account-menu-panel button:focus-visible,
+.site-footer a:focus-visible {
+    outline: 2px solid var(--header-accent);
+    outline-offset: -2px;
 }
 
 .nav-dropdown {
@@ -263,8 +378,7 @@ body {
     pointer-events: auto;
 }
 
-.nav-dropdown a,
-.nav-placeholder {
+.nav-dropdown a {
     display: block;
     padding: 12px 20px;
     color: var(--header-text);
@@ -280,34 +394,9 @@ body {
     color: var(--header-accent);
 }
 
-.nav-placeholder {
-    color: var(--header-text-muted);
-    font-style: italic;
-}
-
-/* Login bar now shares the header's own dark background (instead of sitting bare on the page),
-   so the nav row and login row read as one continuous masthead. */
-.login-bar {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 16px;
-    padding: 10px 40px;
-    background: var(--header-bg);
-}
-
-.back-link {
-    margin-right: auto;
-    color: var(--header-text-muted);
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 600;
-    transition: color 0.2s ease;
-}
-
-.back-link:hover {
-    color: var(--header-accent);
-}
+/* (.login-bar / .back-link / .nav-placeholder are gone: the login bar's second row was folded
+   into the single header row, its back-link replaced by the brand block, and the empty
+   "Section 5 -> Coming soon" nav item removed rather than shipping a visible placeholder.) */
 
 /* ---------------------------------------------------------------------
    Account menu — a single compact avatar/icon trigger in the top-right
@@ -315,16 +404,23 @@ body {
    signed in: email + account settings + log out), replacing the old
    bare inline Log In / email-and-Log-Out pair.
    --------------------------------------------------------------------- */
+/* Now pinned to the right of the single header row (it used to sit in the second "login bar"
+   row underneath the nav). */
+/* No margin-left:auto here — .header-nav's own `margin: 0 auto` already eats all the free
+   space on both sides, which centers the nav between brand and account and pushes this to
+   the far right. A second auto margin would split that free space three ways instead. */
 .account-menu {
     position: relative;
+    flex: 0 0 auto;
+    align-self: center;
 }
 
 .account-menu-trigger {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     border: 1px solid var(--header-border);
     background: var(--header-bg-elevated);
@@ -686,30 +782,270 @@ body {
     font-size: 0.9rem;
 }
 
-/* Home page content (hero through contact + footer) moved to portfolio.css, scoped to
+/* Home page content (hero through contact) moved to portfolio.css, scoped to
    .portfolio-main with its own "Engineering Blueprint" dark theme tokens — see that file.
    Kept out of :root here since privacy.html/terms.html/reset-password.html still use these
    shared light tokens directly for their own plain content. */
 
-/* Mobile Responsiveness */
-@media (max-width: 968px) {
-    .header-nav {
-        overflow-x: auto;
-    }
+/* ---------------------------------------------------------------------
+   Site footer — shared by every page.
 
-    .nav-item {
-        flex: 0 0 auto;
-        min-width: 110px;
+   It used to be styled only in portfolio.css, which only index.html loads, so the other five
+   pages shipped the same <footer class="site-footer"> markup and rendered it with browser
+   defaults: rgb(0,0,238) underlined links, no padding, left-aligned — and on game.html's
+   near-black ground the inherited near-black ink was effectively invisible. Styling it here
+   fixes all five at once (the now-duplicate rules were deleted from portfolio.css).
+
+   It reuses the masthead's own --header-* tokens (declared on the shared selector list at the
+   top of this file) so the page is bookended by one chrome color rather than the footer
+   quietly picking up whatever theme the page above it happens to run.
+
+   Full-bleed: the <footer> now sits *outside* .container in every page's markup, so the dark
+   ground reaches the viewport edges instead of being a boxed 1200px strip with page ground
+   showing either side on wide screens. .footer-inner re-establishes that same 1200px measure
+   for the content, so the columns still line up with the page above. No width:100vw — that
+   reintroduces a horizontal scrollbar wherever a vertical one is present.
+   --------------------------------------------------------------------- */
+.site-footer {
+    /* .background-animation is position:fixed at z-index:1, and .container sits above it at
+       z-index:2. Now that the footer lives outside .container it needs its own positioned
+       stacking above the shapes — otherwise they'd float over the footer and swallow clicks
+       on its links. */
+    position: relative;
+    z-index: 2;
+    background: var(--header-bg);
+    border-top: 1px solid var(--header-border);
+    color: var(--header-text-muted);
+    font-size: 0.9rem;
+    padding: 56px 40px 26px;
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1.1fr 1.5fr;
+    gap: 36px 32px;
+}
+
+.footer-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    /* keeps the link's hit area past 40px tall around the 36px seal */
+    padding: 3px 0;
+    text-decoration: none;
+    color: var(--header-text);
+}
+
+.footer-brand .brand-seal {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+}
+
+.footer-brand-name {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.footer-blurb {
+    margin: 14px 0 0;
+    max-width: 34ch;
+    font-size: 0.86rem;
+    line-height: 1.65;
+    color: var(--header-text-muted);
+}
+
+.footer-heading {
+    margin: 0 0 14px;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--header-accent);
+}
+
+.footer-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.site-footer a {
+    color: var(--header-text);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.site-footer a:hover {
+    color: var(--header-accent);
+    text-decoration: underline;
+}
+
+.footer-list a {
+    display: inline-block;
+    padding: 7px 0;
+}
+
+/* Attribution column. Kanjium / Tatoeba / kanji-frequency are CC BY and CC BY-SA licensed,
+   so crediting them is a license obligation, not a courtesy. These credits used to live only
+   in the Phonetics Family sidebar even though Word Match uses the same Tatoeba sentences —
+   putting them in the sitewide footer means every page that ships the data also carries the
+   attribution. */
+.footer-attrib {
+    line-height: 1.4;
+}
+
+.footer-attrib-meta {
+    display: block;
+    font-size: 0.76rem;
+    color: var(--header-text-muted);
+}
+
+.footer-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px 24px;
+    margin-top: 40px;
+    padding-top: 18px;
+    border-top: 1px solid var(--header-border);
+}
+
+.footer-copy {
+    margin: 0;
+    font-size: 0.84rem;
+    color: var(--header-text-muted);
+}
+
+.site-footer .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 22px;
+    font-size: 0.84rem;
+}
+
+.site-footer .footer-links a {
+    display: inline-block;
+    padding: 6px 0;
+}
+
+/* ---------------------------------------------------------------------
+   Responsive chrome
+   --------------------------------------------------------------------- */
+/* Intermediate step: the full brand text plus four label-sized nav items plus the account
+   trigger still fit under ~1080px, but only once the bar's own padding and type tighten. */
+@media (max-width: 1080px) {
+    .header {
+        padding: 0 20px;
+        gap: 12px;
     }
 
     .nav-trigger {
-        padding: 14px 12px;
-        font-size: 0.85rem;
-        white-space: nowrap;
+        padding: 0 10px;
+        font-size: 0.86rem;
     }
 
-    .login-bar {
-        padding: 10px 20px;
+    .brand-name {
+        font-size: 0.92rem;
+    }
+}
+
+/* Narrow widths: a single row holding brand + 4 nav items + account will not fit a 360px
+   phone, so the brand drops to just its 言 seal (still the link home) and the nav itself
+   becomes the scrolling element. .header-nav gets min-width:0 + flex:1 so it can shrink
+   below its content width instead of forcing the bar — and therefore the page — wider. */
+@media (max-width: 860px) {
+    .header {
+        min-height: 56px;
+        padding: 0 12px;
+        gap: 8px;
+    }
+
+    .brand-text {
+        display: none;
+    }
+
+    .header-nav {
+        flex: 1 1 auto;
+        min-width: 0;
+        margin: 0;
+        /* a little breathing room so a mid-scroll clipped label doesn't butt straight up
+           against the account avatar */
+        padding-right: 6px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: thin;
+        scrollbar-color: var(--header-border) transparent;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .header-nav::-webkit-scrollbar {
+        height: 3px;
+    }
+
+    .header-nav::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .header-nav::-webkit-scrollbar-thumb {
+        background: var(--header-border);
+    }
+
+    .nav-trigger {
+        padding: 0 10px;
+        font-size: 0.84rem;
+    }
+
+    /* overflow-x:auto on the nav makes overflow-y compute to auto too, which would clip the
+       dropdowns inside the scrolling strip. position:fixed takes them out of that clip
+       entirely (no ancestor here creates a containing block for fixed elements) and turns
+       them into full-width sheets pinned under the 56px bar. */
+    .nav-dropdown {
+        position: fixed;
+        top: 56px;
+        left: 0;
+        right: 0;
+        min-width: 0;
+    }
+
+    .site-footer {
+        padding: 44px 20px 22px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px 24px;
+    }
+}
+
+@media (max-width: 560px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .footer-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Roomier tap targets once the links are the only thing in a column — 11px of padding
+       around a ~19px line box clears the ~40px minimum. */
+    .footer-list a,
+    .site-footer .footer-links a {
+        padding: 11px 0;
     }
 }
 

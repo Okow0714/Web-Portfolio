@@ -20,7 +20,8 @@
    label (style.css, not editable here) needed a scoped override since it
    now sits on a light gold gradient instead of a dark one. */
 
-/* .nav-current / .back-link now live in style.css (shared header styling). */
+/* .nav-current lives in style.css (shared header styling), along with the brand block that
+   replaced the old .back-link and the sitewide .site-footer. */
 
 /* ---------------------------------------------------------------------
    Page shell
@@ -62,7 +63,9 @@ body:has(.reading-main) {
         radial-gradient(ellipse 70% 40% at 18% 0%, rgba(184, 121, 31, 0.10) 0%, transparent 60%),
         var(--bg-page);
     color: var(--text-primary);
-    padding: 140px 40px 80px;
+    /* Top padding = the fixed masthead's rendered height + the ~25px of clearance the page
+       has always had; the masthead is now one 64px row rather than two totalling 115px. */
+    padding: 89px 40px 80px;
     min-height: 100vh;
 }
 
@@ -517,7 +520,8 @@ body:has(.reading-main) .auth-btn-outline:hover {
    --------------------------------------------------------------------- */
 @media (max-width: 968px) {
     .reading-main {
-        padding: 130px 20px 60px;
+        /* 56px mobile masthead + the same ~25px clearance (was 130px for the 105px bar). */
+        padding: 81px 20px 60px;
     }
 
     .reader-body {

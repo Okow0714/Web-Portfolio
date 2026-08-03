@@ -1,9 +1,9 @@
 /* Home page content — "Engineering Blueprint" theme, scoped to .portfolio-main.
-   The shared header/nav/login-bar/account-menu above it stays in its own dark masthead
-   tokens (--header-*, style.css) and privacy.html/terms.html/reset-password.html keep
-   using style.css's shared light "Burgundy Editorial" :root tokens untouched — neither is
+   The shared header/nav/account-menu above it and the shared footer below it stay in their
+   own masthead tokens (--header-*, style.css) and privacy.html/terms.html/reset-password.html
+   keep using style.css's shared light "Burgundy Editorial" :root tokens untouched — neither is
    redefined here. Only this page's own content (everything wrapped in <main
-   class="portfolio-main"> in index.html: hero through contact, plus the footer) switches to
+   class="portfolio-main"> in index.html: hero through contact) switches to
    a light drafting-table ground (cool blue-gray paper) with two considered accents: a
    cyan-leaning "drafting ink" blue as the dominant interactive color, and a warm copper/rust
    reserved for a couple of deliberate CTA/highlight moments (.stat-number, .download-btn) so
@@ -60,12 +60,14 @@ body:has(.portfolio-main) {
         var(--bg-page);
 }
 
-/* Hero Section: the only section kept at full viewport height, since it's the landing view */
+/* Hero Section: the only section kept at full viewport height, since it's the landing view.
+   Top padding = the fixed masthead's rendered height + the ~25px of clearance the page has
+   always had; the masthead is now one 64px row rather than two rows totalling 115px. */
 .hero-section {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 140px 40px 60px;
+    padding: 89px 40px 60px;
     position: relative;
 }
 
@@ -91,6 +93,20 @@ body:has(.portfolio-main) {
     font-weight: 400;
     margin-bottom: 10px;
     color: var(--text-secondary);
+}
+
+/* Two-tier name: the given name sits smaller and letterspaced above the surname, which
+   carries the display weight. "SARANTSATSRAL" set at the surname's size is 462px wide — 65%
+   past the 280px a 360px phone actually offers — so setting both lines at one size would mean
+   either slicing the name or shrinking the whole hero to ~1.8rem. Splitting the tiers keeps
+   the full name and lets GANZORIG stay large. */
+.given-name {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
 }
 
 .main-name {
@@ -1018,35 +1034,13 @@ body:has(.portfolio-main) {
     font-style: italic;
 }
 
-/* Footer: shares the page's ground/text tokens instead of the generic browser defaults it
-   had before (style.css never styled .site-footer at all — it just inherited body's shared
-   light-theme text color), so it now visually belongs to the section above it. */
-.site-footer {
-    background: var(--bg-page);
-    color: var(--text-muted);
-    text-align: center;
-    padding: 30px 40px 40px;
-    font-size: 0.9rem;
-}
+/* The footer's rules used to live here — which meant only index.html (the one page that
+   loads portfolio.css) ever got a styled footer, while the other five shipped the same
+   markup with browser defaults. It's now styled in style.css on the shared masthead's own
+   --header-* tokens, and its markup sits outside .container so it can go full-bleed. */
 
-.site-footer .footer-links {
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.site-footer a {
-    color: var(--text-secondary);
-    text-decoration: none;
-}
-
-.site-footer a:hover {
-    color: var(--accent);
-}
-
-/* Mobile Responsiveness (index-only rules; shared header/nav/login-bar responsiveness
-   stays in style.css's own media query) */
+/* Mobile Responsiveness (index-only rules; shared header/nav/footer responsiveness
+   stays in style.css's own media queries) */
 @media (max-width: 968px) {
     .hero-content {
         flex-direction: column;
@@ -1070,8 +1064,14 @@ body:has(.portfolio-main) {
         height: 320px;
     }
 
+    .given-name {
+        font-size: 1.2rem;
+        letter-spacing: 0.14em;
+    }
+
+    /* 2.9rem, not 3rem: "GANZORIG" measures 282px at 48px, and a 360px phone offers 280px. */
     .main-name {
-        font-size: 3rem;
+        font-size: 2.9rem;
     }
 
     .about-content {

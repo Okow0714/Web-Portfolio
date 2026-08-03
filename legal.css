@@ -1,7 +1,8 @@
 /* Privacy Policy / Terms of Service — plain, readable document styling. */
 
 .legal-main {
-    padding: 140px 40px 100px;
+    /* 64px one-row masthead + the ~25px clearance (was 140px for the old 115px two-row bar). */
+    padding: 89px 40px 100px;
     min-height: 100vh;
     max-width: 760px;
     margin: 0 auto;
@@ -52,6 +53,6 @@
 
 @media (max-width: 968px) {
     .legal-main {
-        padding: 130px 20px 60px;
+        padding: 81px 20px 60px;
     }
 }

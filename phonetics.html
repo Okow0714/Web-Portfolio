@@ -22,12 +22,20 @@
     </div>
 
     <div class="container">
-        <!-- Header: same 5-section nav as the rest of the site -->
+        <!-- Header: one row - brand (home link), section nav, account menu -->
         <div class="site-header-wrap">
             <header class="header">
-                <nav class="header-nav">
+                <a href="index.html" class="site-brand" aria-label="Sarantsatsral Ganzorig - home">
+                    <span class="brand-seal" aria-hidden="true">言</span>
+                    <span class="brand-text">
+                        <span class="brand-name">Sarantsatsral Ganzorig</span>
+                        <span class="brand-role">Japanese study tools</span>
+                    </span>
+                </a>
+
+                <nav class="header-nav" aria-label="Main">
                     <div class="nav-item">
-                        <button class="nav-trigger">Menu</button>
+                        <button class="nav-trigger" type="button" aria-haspopup="true">Portfolio<span class="nav-caret" aria-hidden="true">&#9662;</span></button>
                         <div class="nav-dropdown">
                             <a href="index.html#hobbies">Hobbies</a>
                             <a href="index.html#skills">My Skills</a>
@@ -40,7 +48,7 @@
                         </div>
                     </div>
                     <div class="nav-item">
-                        <a href="game.html" class="nav-trigger">Word Game</a>
+                        <a href="game.html" class="nav-trigger">Word Game<span class="nav-caret" aria-hidden="true">&#9662;</span></a>
                         <div class="nav-dropdown">
                             <a href="game.html">All Levels</a>
                             <a href="game.html?level=1">N5 · Beginner</a>
@@ -56,17 +64,8 @@
                     <div class="nav-item">
                         <a href="phonetics.html" class="nav-trigger nav-current">Phonetics Family</a>
                     </div>
-                    <div class="nav-item">
-                        <button class="nav-trigger">Section 5</button>
-                        <div class="nav-dropdown">
-                            <span class="nav-placeholder">Coming soon</span>
-                        </div>
-                    </div>
                 </nav>
-            </header>
 
-            <div class="login-bar">
-                <a href="index.html" class="back-link">&larr; Portfolio</a>
                 <div class="account-menu" id="account-menu">
                     <button class="account-menu-trigger" id="account-menu-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Account menu">
                         <span id="account-menu-avatar">
@@ -85,7 +84,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </header>
         </div>
 
         <!-- Auth Modal -->
@@ -145,7 +144,9 @@
                     <p class="phonetics-subtitle">Kanji that share a phonetic component often share an on'yomi reading too — learn one, and you get a running start on the rest of its family. Pick a JLPT level to see its phonetic families, ranked by how often their most common member actually shows up in real Japanese text.</p>
                     <button type="button" id="phonetics-info-btn" class="ghost-btn phonetics-info-btn">&#9432; What's a phonetic component?</button>
                     <nav class="level-nav" id="phonetics-level-nav" aria-label="JLPT level"></nav>
-                    <p class="phonetics-credit">Data sources: <a href="https://github.com/mifunetoshiro/kanjium" target="_blank" rel="noopener">Kanjium</a> (CC BY-SA 4.0) for kanji &amp; phonetic-family data &middot; <a href="https://github.com/scriptin/kanji-frequency" target="_blank" rel="noopener">scriptin/kanji-frequency</a> (CC BY 4.0) for usage ranking &middot; <a href="https://tatoeba.org" target="_blank" rel="noopener">Tatoeba</a> (CC BY / CC0) for example sentences.</p>
+                    <!-- Data-source attributions moved to the sitewide footer: Word Match uses the
+                         same Tatoeba sentences, so CC BY / CC BY-SA credit belongs on every page,
+                         not only in this sidebar. -->
                 </aside>
 
                 <div class="phonetics-content">
@@ -203,16 +204,63 @@
                 <p class="phonetics-info-text">A "phonetic component" is a recurring part inside a kanji that hints at its Chinese-derived on'yomi reading, rather than its meaning. Kanji sharing the same phonetic component — like 相, 想, and 霜 above — often sound alike even though they mean very different things, because the component was originally chosen for its sound. A separate "meaning radical" (like 心, heart, tucked into 想) is what actually carries the sense.</p>
             </div>
         </div>
-
-        <footer class="site-footer">
-            <p>&copy; 2026 Sarantsatsral Ganzorig. Personal portfolio &amp; educational project.</p>
-            <div class="footer-links">
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="terms.html">Terms of Service</a>
-                <a href="index.html#contact">Contact</a>
-            </div>
-        </footer>
     </div>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="footer-brand" aria-label="Sarantsatsral Ganzorig - home">
+                        <span class="brand-seal" aria-hidden="true">言</span>
+                        <span class="footer-brand-name">Sarantsatsral Ganzorig</span>
+                    </a>
+                    <p class="footer-blurb">System engineering student in Japan, building tools for learning the language.</p>
+                </div>
+                <div class="footer-col">
+                    <h2 class="footer-heading">Study tools</h2>
+                    <ul class="footer-list">
+                        <li><a href="game.html">Word Game</a></li>
+                        <li><a href="reading.html">Dokkai Reader</a></li>
+                        <li><a href="phonetics.html">Phonetics Family</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h2 class="footer-heading">Portfolio</h2>
+                    <ul class="footer-list">
+                        <li><a href="index.html#portfolio">Projects &amp; learning</a></li>
+                        <li><a href="index.html#qualifications">Qualifications</a></li>
+                        <li><a href="index.html#resume">Resume</a></li>
+                        <li><a href="index.html#contact">Get in touch</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h2 class="footer-heading">Data &amp; licensing</h2>
+                    <ul class="footer-list">
+                        <li class="footer-attrib">
+                            <a href="https://github.com/mifunetoshiro/kanjium" target="_blank" rel="noopener">Kanjium</a>
+                            <span class="footer-attrib-meta">CC BY-SA 4.0 · kanji &amp; phonetic families</span>
+                        </li>
+                        <li class="footer-attrib">
+                            <a href="https://tatoeba.org" target="_blank" rel="noopener">Tatoeba</a>
+                            <span class="footer-attrib-meta">CC BY / CC0 · example sentences</span>
+                        </li>
+                        <li class="footer-attrib">
+                            <a href="https://github.com/scriptin/kanji-frequency" target="_blank" rel="noopener">kanji-frequency</a>
+                            <span class="footer-attrib-meta">CC BY 4.0 · usage ranking</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bar">
+                <p class="footer-copy">&copy; 2026 Sarantsatsral Ganzorig</p>
+                <div class="footer-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <script src="supabase-config.js"></script>

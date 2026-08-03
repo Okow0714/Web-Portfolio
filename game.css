@@ -41,7 +41,8 @@ body:has(.game-main) {
 
     position: relative;
     isolation: isolate;
-    padding: 140px 40px 60px;
+    /* 64px one-row masthead + the ~25px clearance (was 140px for the old 115px two-row bar). */
+    padding: 89px 40px 60px;
     min-height: 100vh;
     background: radial-gradient(ellipse 120% 60% at 50% -10%, #241f34 0%, var(--ground) 45%, var(--ground-deep) 100%);
     color: var(--paper);
@@ -781,7 +782,8 @@ body.game-playing .game-main {
    --------------------------------------------------------------------- */
 @media (max-width: 968px) {
     .game-main {
-        padding: 130px 20px 160px;
+        /* 56px mobile masthead + the same ~25px clearance (was 130px for the 105px bar). */
+        padding: 81px 20px 160px;
     }
 
     .game-hud-row {

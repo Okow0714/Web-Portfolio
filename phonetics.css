@@ -1,11 +1,10 @@
 /* Kanji Phonetics — styles specific to phonetics.html.
-   "Verdigris" theme: this page's own scoped color palette, entirely separate from the
+   "Light jade" theme: this page's own scoped color palette, entirely separate from the
    shared style.css :root tokens (same pattern as game.css's .game-main "digital hanafuda"
-   theme). Verdigris is the blue-green patina that forms on oxidized bronze — apt for a page
-   about phonetic components, which trace back to bronze inscriptions and carved seal script —
-   paired with a warm copper accent (the metal's own un-oxidized color) rather than the old
-   seal-ink vermillion, so this reads distinctly from Word Match's burgundy/gold page instead
-   of doubling up on a red accent.
+   theme). A pale jade/celadon paper ground — the color of aged bronze seen as glaze rather
+   than as patina on dark metal — paired with the same warm copper accent (the un-oxidized
+   metal), so this still reads distinctly from Word Match's burgundy/gold page without
+   doubling up on a red accent.
 
    Scoped to .phonetics-main (this page's whole content area) AND #phonetics-info-modal (the
    explainer modal). The modal is a DOM sibling of .phonetics-main, not a descendant — it lives
@@ -14,49 +13,68 @@
    in the DOM, so this is purely about which element the CSS custom properties are declared on;
    custom properties cascade to descendants of whichever selector defines them, not by DOM
    proximity to .phonetics-main. body:has(.phonetics-main) additionally repaints the page's own
-   <body> (shared style.css rule: `body { background: var(--bg-page); }`) so the dark theme is
-   full-bleed instead of a boxed dark column on a light body outside .container's 1200px width —
-   :has() here only ever matches on this page, since .phonetics-main only exists in phonetics.html.
+   <body> (shared style.css rule: `body { background: var(--bg-page); }`) so the theme is
+   full-bleed instead of a boxed column on a differently-colored body outside .container's
+   1200px width — :has() here only ever matches on this page, since .phonetics-main only
+   exists in phonetics.html.
 
-   The shared header/nav/login-bar keep their own separate --header- dark masthead (untouched).
-   The auth-modal/account-modal keep the shared light style.css tokens (untouched, they're not
-   named in the selector below). The JLPT level tokens and the rank-intensity mechanism are
-   untouched too — see their own comments further down this file. */
+   The shared header/footer keep their own separate --header-* masthead tokens (untouched).
+   The JLPT level tokens (--jlpt-n5..--jlpt-n1) and the rank-intensity mechanism are untouched
+   too — see their own comments further down this file.
+
+   This file was originally authored as a DARK theme, so going light was not just a token
+   swap. Everything that assumed a dark ground had to be re-checked and, where it failed,
+   changed — each such spot is commented inline below with the measured contrast ratio.
+   The recurring pattern (same as the earlier reading.css light-flip) is light-on-dark accent
+   text: --accent-light reads fine as text on a dark panel but lands around 2.2-2.6:1 on this
+   page's pale surfaces, so text that used it is now --accent-dark (5.2-6.7:1). */
 body:has(.phonetics-main),
 .phonetics-main,
 #phonetics-info-modal {
-    --bg-page: #0f1d17;
-    --bg-surface: #182a22;
-    --bg-surface-alt: #1f342a;
-    --border: #2f4a3c;
-    --border-strong: #3f6350;
-    --text-primary: #e8ecdf;
-    --text-secondary: #a3b5a5;
-    --text-muted: #6f8074;
-    --accent: #c96f3f;
-    --accent-light: #dd9264;
-    --accent-dark: #a1552c;
-    --accent-tint: rgba(201, 111, 63, 0.14);
-    --accent-gradient: linear-gradient(135deg, var(--accent-light), var(--accent));
-    --accent-gradient-hover: linear-gradient(135deg, var(--accent), var(--accent-dark));
-    --shadow-sm: 0 2px 14px rgba(0, 0, 0, 0.35);
-    --shadow-md: 0 16px 38px rgba(0, 0, 0, 0.5);
+    --bg-page: #eaf1ec;
+    --bg-surface: #f7fbf8;
+    --bg-surface-alt: #dde9e0;
+    --border: #c6d8cb;
+    --border-strong: #a8c0af;
+    --text-primary: #1c2f25;
+    --text-secondary: #566b5d;
+    --text-muted: #6a7f72;
+    --accent: #b35f2f;
+    --accent-light: #d1834f;
+    --accent-dark: #8c4620;
+    --accent-tint: rgba(179, 95, 47, 0.12);
+    /* Deliberately NOT the usual (--accent-light -> --accent) pair used on the other pages.
+       .auth-btn (style.css, shared sitewide, not editable here) hardcodes a white label on
+       var(--accent-gradient); white on --accent-light is only 2.97:1, so the canonical pair
+       would fail at the gradient's light end. Shifting the ramp one notch darker
+       (--accent -> --accent-dark) keeps white at 4.57:1 -> 6.97:1 across the whole fill,
+       which is a cleaner fix than overriding the button's label color per-page. */
+    --accent-gradient: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    --accent-gradient-hover: linear-gradient(135deg, var(--accent-dark), #6f3618);
+    --shadow-sm: 0 2px 10px rgba(28, 47, 37, 0.08);
+    --shadow-md: 0 14px 32px rgba(28, 47, 37, 0.16);
 }
 
 body:has(.phonetics-main) {
     background: var(--bg-page);
 }
 
-/* .nav-current / .back-link now live in style.css (shared header styling). */
+/* .nav-current now lives in style.css (shared header styling). */
 
 /* ---------------------------------------------------------------------
    Page shell
    --------------------------------------------------------------------- */
+/* Top padding = the fixed masthead's rendered height + the ~25px of visual clearance the
+   page has always had. The masthead is now one 64px row instead of two rows totalling
+   115px, so this drops from 140px. */
 .phonetics-main {
-    padding: 140px 40px 100px;
+    padding: 89px 40px 100px;
     min-height: 100vh;
+    /* The top wash was a dark olive (#2c3327) that only made sense against the old near-black
+       ground — on the pale jade it would read as a dirty smear. Same gesture, rebuilt as a
+       faint warm copper haze off the page's own accent. */
     background:
-        radial-gradient(ellipse 90% 50% at 50% -8%, #2c3327 0%, transparent 60%),
+        radial-gradient(ellipse 90% 50% at 50% -8%, rgba(179, 95, 47, 0.10) 0%, transparent 60%),
         var(--bg-page);
     color: var(--text-primary);
 }
@@ -75,24 +93,9 @@ body:has(.phonetics-main) {
     margin: 0 0 8px;
 }
 
-.phonetics-credit {
-    color: var(--text-muted);
-    font-size: 0.8rem;
-    line-height: 1.6;
-    max-width: 800px;
-    margin: 30px 0 0;
-    padding-top: 16px;
-    border-top: 1px solid var(--border);
-}
-
-.phonetics-credit a {
-    color: var(--text-muted);
-    text-decoration: underline;
-}
-
-.phonetics-credit a:hover {
-    color: var(--accent-light);
-}
+/* (.phonetics-credit is gone — the Kanjium / Tatoeba / kanji-frequency attributions it held
+   are now in the sitewide footer, since Word Match ships the same Tatoeba sentences and the
+   CC BY / CC BY-SA credit is a license obligation on every page, not just this one.) */
 
 .phonetics-section.hidden {
     display: none;
@@ -154,8 +157,9 @@ body:has(.phonetics-main) {
     transition: color 0.2s ease;
 }
 
+/* Light-flip: --accent-light on the page ground is 2.59:1. --accent-dark is 6.07:1. */
 .phonetics-title-trigger:hover .phonetics-title {
-    color: var(--accent-light);
+    color: var(--accent-dark);
 }
 
 .phonetics-title-info {
@@ -165,7 +169,7 @@ body:has(.phonetics-main) {
 }
 
 .phonetics-title-trigger:hover .phonetics-title-info {
-    color: var(--accent-light);
+    color: var(--accent-dark);
 }
 
 .phonetics-info-btn {
@@ -173,9 +177,12 @@ body:has(.phonetics-main) {
     display: inline-block;
 }
 
+/* Light-flip: --border against the page ground is only 1.30:1, so a 1px --border outline left
+   this button with no perceptible edge at all. --text-muted gives 3.74:1, which is the 3:1
+   floor for a control boundary while still reading as a quiet "ghost" outline. */
 .ghost-btn {
     background: none;
-    border: 1px solid var(--border);
+    border: 1px solid var(--text-muted);
     color: var(--text-primary);
     padding: 8px 16px;
     font-family: inherit;
@@ -185,9 +192,11 @@ body:has(.phonetics-main) {
     transition: all 0.2s ease;
 }
 
+/* Light-flip: this is the textbook failure — --accent-light text on an --accent-tint chip is
+   fine on a dark ground but 2.23:1 here. --accent-dark on the same chip is 5.24:1. */
 .ghost-btn:hover {
     border-color: var(--accent);
-    color: var(--accent-light);
+    color: var(--accent-dark);
     background: var(--accent-tint);
 }
 
@@ -208,8 +217,9 @@ body:has(.phonetics-main) {
     flex: 0 0 216px;
     width: 216px;
     position: sticky;
-    top: 112px;
-    max-height: calc(100vh - 132px);
+    /* Clears the fixed masthead, which is now one 64px row rather than two totalling 115px. */
+    top: 84px;
+    max-height: calc(100vh - 104px);
     overflow-y: auto;
     display: flex;
     flex-direction: column;
@@ -281,11 +291,18 @@ body:has(.phonetics-main) {
     color: var(--text-muted);
 }
 
-.level-nav-item[data-level="N5"] { border-left-color: color-mix(in srgb, var(--jlpt-n5) 45%, var(--border)); }
-.level-nav-item[data-level="N4"] { border-left-color: color-mix(in srgb, var(--jlpt-n4) 45%, var(--border)); }
-.level-nav-item[data-level="N3"] { border-left-color: color-mix(in srgb, var(--jlpt-n3) 45%, var(--border)); }
-.level-nav-item[data-level="N2"] { border-left-color: color-mix(in srgb, var(--jlpt-n2) 45%, var(--border)); }
-.level-nav-item[data-level="N1"] { border-left-color: color-mix(in srgb, var(--jlpt-n1) 45%, var(--border)); }
+/* Inactive rows carry a muted version of their level's hue. On the old dark theme "muted"
+   meant mixing 45% of the hue into the dark --border, which landed around 2.7:1. Doing the
+   same thing now that --border is a pale jade LIGHTENS the hue instead, dropping N5 to
+   2.00:1 and N4 (a mid gold) to 1.82:1 — five near-identical pastels. On a light ground the
+   equivalent of "muted" is desaturating toward the ink, so the mix base is --text-secondary
+   and the hue's share goes up: that restores 2.7-6.9:1 and keeps five separable hues
+   (green / gold / orange / rust / plum). Active rows still use the pure --jlpt-* token. */
+.level-nav-item[data-level="N5"] { border-left-color: color-mix(in srgb, var(--jlpt-n5) 70%, var(--text-secondary)); }
+.level-nav-item[data-level="N4"] { border-left-color: color-mix(in srgb, var(--jlpt-n4) 70%, var(--text-secondary)); }
+.level-nav-item[data-level="N3"] { border-left-color: color-mix(in srgb, var(--jlpt-n3) 70%, var(--text-secondary)); }
+.level-nav-item[data-level="N2"] { border-left-color: color-mix(in srgb, var(--jlpt-n2) 70%, var(--text-secondary)); }
+.level-nav-item[data-level="N1"] { border-left-color: color-mix(in srgb, var(--jlpt-n1) 70%, var(--text-secondary)); }
 
 .level-nav-item.active[data-level="N5"] { border-left-color: var(--jlpt-n5); }
 .level-nav-item.active[data-level="N4"] { border-left-color: var(--jlpt-n4); }
@@ -368,9 +385,10 @@ body:has(.phonetics-main) {
     min-width: 0;
 }
 
+/* Light-flip: --accent-light on the card's own pale fill is 2.38:1; --accent-dark is 5.58:1. */
 .family-reading {
     font-weight: 600;
-    color: var(--accent-light);
+    color: var(--accent-dark);
     font-size: 0.95rem;
 }
 
@@ -392,10 +410,11 @@ body:has(.phonetics-main) {
     gap: 14px;
 }
 
+/* Light-flip: --accent-light on the page ground is 2.59:1; --accent-dark is 6.07:1. */
 .tree-title-reading {
     font-size: 1.2rem;
     font-weight: 600;
-    color: var(--accent-light);
+    color: var(--accent-dark);
 }
 
 /* Radial diagram: root phonetic in the center, member kanji as chips arranged
@@ -433,9 +452,12 @@ body:has(.phonetics-main) {
     z-index: 1;
 }
 
+/* Light-flip: the spokes were --border-strong, which read at 2.58:1 against the old dark
+   ground but collapses to 1.69:1 on the pale one — the radial diagram lost its connecting
+   lines entirely. --text-muted puts them back at 3.74:1. */
 .tree-line {
     fill: none;
-    stroke: var(--border-strong);
+    stroke: var(--text-muted);
     stroke-width: 1.5;
 }
 
@@ -448,8 +470,12 @@ body:has(.phonetics-main) {
     transform: translate(-50%, -50%);
     border-radius: 50%;
     /* Reads like a stamped seal face: a warm copper fill under a carved rim, with an inset
-       highlight/shadow pair standing in for a bevel cut into stone rather than a flat disc. */
-    background: radial-gradient(circle at 34% 28%, var(--accent-light), var(--accent) 70%);
+       highlight/shadow pair standing in for a bevel cut into stone rather than a flat disc.
+       Light-flip: the fill ramp moved one notch darker (was --accent-light -> --accent). On a
+       pale page a light copper disc barely separates from the ground, and the cream glyph on
+       it only made 4.38:1; against this ramp the glyph is 6.68:1 and the disc reads as a
+       solid stamp pressed onto the paper. */
+    background: radial-gradient(circle at 34% 28%, var(--accent), var(--accent-dark) 70%);
     border: 3px solid var(--accent-dark);
     box-shadow: var(--shadow-md), inset 0 2px 3px rgba(255, 255, 255, 0.18), inset 0 -4px 8px rgba(0, 0, 0, 0.35);
     display: flex;
@@ -462,12 +488,16 @@ body:has(.phonetics-main) {
     z-index: 3;
 }
 
+/* Cream-on-copper, like the negative-space characters cut into a hanko seal face, rather than
+   a same-hue dark-on-copper pairing that would fight the seal disc's own fill.
+   Light-flip: this used to be var(--text-primary), which WAS the cream on the dark theme —
+   after the flip that token is near-black ink, which would have turned the seal inside out
+   (and only reached 3.10:1 on the copper). --bg-surface is this theme's near-white, so the
+   intent survives the flip literally instead of by accident. */
 .tree-root-kanji {
     font-size: 1.7rem;
     font-weight: 700;
-    /* Cream-on-copper, like the negative-space characters cut into a hanko seal face,
-       rather than a same-hue dark-on-copper pairing that would fight the seal disc's own fill. */
-    color: var(--text-primary);
+    color: var(--bg-surface);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
     line-height: 1.1;
 }
@@ -475,7 +505,7 @@ body:has(.phonetics-main) {
 .tree-root-reading {
     font-size: 0.64rem;
     font-weight: 600;
-    color: var(--text-primary);
+    color: var(--bg-surface);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
     letter-spacing: 0.02em;
 }
@@ -490,7 +520,11 @@ body:has(.phonetics-main) {
     border-radius: 50%;
     background: linear-gradient(160deg, var(--bg-surface-alt), var(--bg-surface) 60%);
     border: 2px solid var(--border-strong);
-    box-shadow: var(--shadow-sm), inset 0 1px 2px rgba(255, 255, 255, 0.05), inset 0 -3px 6px rgba(0, 0, 0, 0.3);
+    /* Light-flip: the inset bevel was tuned for a dark chip — a 30%-black inner shade under a
+       5%-white highlight. On a near-white chip that black wash just reads as grime, so the
+       shade drops to a 10% wash of the page's own ink and the highlight comes up to be
+       visible at all. */
+    box-shadow: var(--shadow-sm), inset 0 1px 2px rgba(255, 255, 255, 0.7), inset 0 -3px 6px rgba(28, 47, 37, 0.10);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -513,17 +547,21 @@ body:has(.phonetics-main) {
     box-shadow: var(--shadow-md);
 }
 
+/* Light-flip: accent text on an accent-tint chip again — --accent-light was 2.2:1 here. */
 .tree-chip.active {
     border-color: var(--accent);
     background: var(--accent-tint);
     box-shadow: 0 0 0 4px var(--accent-tint), var(--shadow-md);
-    color: var(--accent-light);
+    color: var(--accent-dark);
     transform: translate(-50%, -50%) translate(var(--tx, 0px), var(--ty, 0px)) scale(1.15);
 }
 
+/* Light-flip: --accent-light as a rim is 2.84:1 against the chip fill, under the 3:1 floor for
+   a non-text indicator. --accent-dark is 6.68:1 and still reads as a different state from the
+   plain --accent rim used on hover/active (which it also outranks in weight, at 3px vs 2px). */
 .tree-chip-current-level {
     border-width: 3px;
-    border-color: var(--accent-light);
+    border-color: var(--accent-dark);
 }
 
 .tree-chip-dot {
@@ -711,14 +749,19 @@ body:has(.phonetics-main) {
     line-height: 1;
 }
 
+/* Light-flip: 0.35 alpha of the old cream ink on the dark card gave ~2.8:1 for this
+   deliberately-faint "before" glyph. The same alpha of dark ink on a near-white card is only
+   2.0:1 — too faint to register at all. 0.5 restores ~3.0:1, i.e. the original impression. */
 .morph-glyph-component {
-    opacity: 0.35;
+    opacity: 0.5;
     font-weight: 400;
 }
 
+/* Light-flip: --accent-light is 2.84:1 on the modal card, below even the 3:1 large-text
+   floor; --accent is 4.38:1, which this 2.5rem display glyph clears comfortably. */
 .morph-glyph-word {
     font-size: 2.5rem;
-    color: var(--accent-light);
+    color: var(--accent);
 }
 
 .morph-glyph-row {
@@ -727,10 +770,12 @@ body:has(.phonetics-main) {
     gap: 10px;
 }
 
+/* Light-flip: 1.1rem body-weight text needs the full 4.5:1, so --accent-dark (6.68:1) rather
+   than --accent-light (2.84:1) or even --accent (4.38:1). */
 .morph-reading {
     font-size: 1.1rem;
     font-weight: 600;
-    color: var(--accent-light);
+    color: var(--accent-dark);
 }
 
 .morph-sub {
@@ -818,11 +863,11 @@ body:has(.phonetics-main) {
         border-bottom-width: 4px;
     }
 
-    .level-nav-item[data-level="N5"] { border-left-color: initial; border-bottom-color: color-mix(in srgb, var(--jlpt-n5) 45%, var(--border)); }
-    .level-nav-item[data-level="N4"] { border-left-color: initial; border-bottom-color: color-mix(in srgb, var(--jlpt-n4) 45%, var(--border)); }
-    .level-nav-item[data-level="N3"] { border-left-color: initial; border-bottom-color: color-mix(in srgb, var(--jlpt-n3) 45%, var(--border)); }
-    .level-nav-item[data-level="N2"] { border-left-color: initial; border-bottom-color: color-mix(in srgb, var(--jlpt-n2) 45%, var(--border)); }
-    .level-nav-item[data-level="N1"] { border-left-color: initial; border-bottom-color: color-mix(in srgb, var(--jlpt-n1) 45%, var(--border)); }
+    .level-nav-item[data-level="N5"] { border-left-color: initial; border-bottom-color: color-mix(in srgb, var(--jlpt-n5) 70%, var(--text-secondary)); }
+    .level-nav-item[data-level="N4"] { border-left-color: initial; border-bottom-color: color-mix(in srgb, var(--jlpt-n4) 70%, var(--text-secondary)); }
+    .level-nav-item[data-level="N3"] { border-left-color: initial; border-bottom-color: color-mix(in srgb, var(--jlpt-n3) 70%, var(--text-secondary)); }
+    .level-nav-item[data-level="N2"] { border-left-color: initial; border-bottom-color: color-mix(in srgb, var(--jlpt-n2) 70%, var(--text-secondary)); }
+    .level-nav-item[data-level="N1"] { border-left-color: initial; border-bottom-color: color-mix(in srgb, var(--jlpt-n1) 70%, var(--text-secondary)); }
 
     .level-nav-item.active[data-level="N5"] { border-bottom-color: var(--jlpt-n5); }
     .level-nav-item.active[data-level="N4"] { border-bottom-color: var(--jlpt-n4); }
@@ -830,14 +875,12 @@ body:has(.phonetics-main) {
     .level-nav-item.active[data-level="N2"] { border-bottom-color: var(--jlpt-n2); }
     .level-nav-item.active[data-level="N1"] { border-bottom-color: var(--jlpt-n1); }
 
-    .phonetics-credit {
-        margin-top: 20px;
-    }
 }
 
 @media (max-width: 968px) {
     .phonetics-main {
-        padding: 130px 20px 80px;
+        /* 56px mobile masthead + the same ~25px clearance (was 130px for the 105px bar). */
+        padding: 81px 20px 80px;
     }
 
     .family-item {
