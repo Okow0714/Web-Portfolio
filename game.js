@@ -14,9 +14,37 @@
 // reusing that identifier across <script> tags would throw a SyntaxError.
 const sb = window.supabaseClient;
 
-const PER_ROW = 8; // 40 tiles / 8 = 5 clean honeycomb rows, no partial last row
+// Decorative board backgrounds: real castle/mountain photography, cycled per level so
+// adjacent levels don't repeat the same scene, rendered at low opacity behind the tiles (see
+// .board-bg-photo in game.css). All sourced from Wikimedia Commons; full attribution in the
+// "Photo credits" details block on the level-select screen and in the shared site footer.
+// Licenses are a mix of CC0, public domain, and CC BY / CC BY-SA 2.5-4.0 -- never CC BY-NC or
+// anything requiring share-alike on the whole site, consistent with this project's existing
+// data-licensing discipline (see the Kanjium/Tatoeba notes elsewhere in this codebase).
+const BOARD_BG_IMAGES = [
+    'images/game-bg/himeji.jpg',
+    'images/game-bg/mount-tate.jpg',
+    'images/game-bg/matsumoto.jpg',
+    'images/game-bg/kawaguchiko-fuji.jpg',
+    'images/game-bg/osaka.jpg',
+    'images/game-bg/shirouma.jpg',
+    'images/game-bg/kumamoto.jpg',
+    'images/game-bg/fuji-unsplash.jpg',
+    'images/game-bg/nagoya.jpg',
+    'images/game-bg/hikone.jpg',
+];
+
+const PER_ROW = 5; // 20 tiles / 5 = 4 clean honeycomb rows, no partial last row. Penalties
+                    // restore an already-existing pair rather than adding new tiles, so the
+                    // board's total tile count never changes mid-level -- PER_ROW can stay a
+                    // fixed, clean divisor of 20 rather than needing to handle a partial row.
 const STREAK_TIER = 3;
 const SUIT_COLORS = ['#c0435a', '#3d7a5c', '#5b57a6', '#d97a3f']; // hanafuda-suit accents, cycled per pair
+
+const MATCH_DURATION = 300;   // 5-minute clock, in seconds
+const TIME_BONUS_PER_PAIR = 20; // seconds added per pair cleared (lightning chains add this once per pair in the chain)
+const LOW_TIME_THRESHOLD = 30;  // seconds remaining at which the timer gets a warning treatment
+const MISTAKES_PER_PENALTY = 2; // consecutive-since-last-penalty mismatches before a cleared pair returns
 
 let currentLevel = null;
 let matchStarted = false; // gates tile clicks/timer until the start modal's "Start Match" is clicked
@@ -25,15 +53,20 @@ let totalPairs = 0;
 let moves = 0;
 let timerInterval = null;
 let startTime = null;
-let elapsedSeconds = 0;
+let elapsedSeconds = 0;   // real seconds played -- still tracked for best-time comparisons,
+                          // independent of the on-screen countdown display below
+let bonusSeconds = 0;     // accumulated +20s-per-pair bonuses, extends the 5-minute clock
+let timeRemaining = MATCH_DURATION; // what's actually shown on #board-timer
+let mismatchStreak = 0;  // mismatches since the last penalty (or level start); see applyPenalty()
 let lastResult = null;    // result earned as a guest, pending save once they log in
 let progressCache = {};   // level number -> game_progress row
-let currentSet = [];      // this play's chosen 20-pair word set, indexed by pairId
+let currentSet = [];      // this play's chosen 10-pair word set, indexed by pairId
+let activeJlptTab = 'N5'; // level-select screen: which JLPT tier's 10 levels are shown
 let familiesFound = new Set(); // phonetic components ("lightning connect" families) chained
                                 // this round -- rendered as chips in the side panel, wide
                                 // layout only (see renderFamiliesFound())
 
-let tiles = [];           // all 40 tile objects for the current board
+let tiles = [];           // all 20 tile objects for the current board
 let tilesByPairId = {};   // pairId -> { jp: tileObj, en: tileObj }
 let selected = [];        // up to 2 currently-selected tile objects
 let locked = false;
@@ -241,9 +274,9 @@ function tween(from, to, duration, onUpdate) {
     requestAnimationFrame(step);
 }
 
-function floatText(x, y, text, big, lightning) {
+function floatText(x, y, text, big, lightning, extraClass) {
     const el = document.createElement('div');
-    el.className = 'float-text' + (big ? ' streak-text' : '') + (lightning ? ' lightning-text' : '');
+    el.className = 'float-text' + (big ? ' streak-text' : '') + (lightning ? ' lightning-text' : '') + (extraClass ? ' ' + extraClass : '');
     el.style.left = x + 'px';
     el.style.top = y + 'px';
     el.style.fontSize = big ? '1.5rem' : '1.05rem';
@@ -264,7 +297,6 @@ const GameAudio = (function () {
     let ambientGain = null;
     let enabled = false;
     let ambientNodes = null;
-    let pluckTimer = null;
     let noiseBuffer = null;
 
     const ROOT = 220; // A3
@@ -402,13 +434,146 @@ const GameAudio = (function () {
         tone(noteFreq(7, 1), { type: 'sine', duration: 1.4, gain: 0.08, delay: 0.68 });
     }
 
-    // Generative ambient pad: a few detuned low oscillators through a slowly modulated
-    // lowpass filter, plus occasional soft plucked notes — procedurally generated for as long
-    // as sound stays on, never a fixed sourced loop.
-    // No sustained drone here on purpose — an earlier version had a continuous 3-oscillator pad
-    // under the plucked notes, but a held background tone reads as a constant note and gets
-    // fatiguing over a full level. Just the occasional plucks now; ambientGain is still the
-    // shared on/off fader they route through.
+    // Descending run in the low register -- the inverse shape of sfxWin's rising, bright one,
+    // so a timeout reads as a distinct outcome rather than a quieter win.
+    function sfxTimeUp() {
+        if (!enabled) return;
+        [12, 9, 7, 4, 2, 0].forEach((d, i) => {
+            tone(noteFreq(d, -1), { type: 'triangle', duration: 0.45, gain: 0.14, delay: i * 0.12 });
+        });
+        tone(noteFreq(0, -2), { type: 'sine', duration: 1.6, gain: 0.12, delay: 0.75 });
+    }
+
+    // Penalty ("a cleared pair returns"): a falling noise sweep -- the same bandpass-swept
+    // noise burst sfxLightning uses, but ramped DOWN instead of up, so it reads as the
+    // rewind/undo counterpart to that rising "connect" sound -- plus a low descending blip,
+    // distinct from both sfxMismatch's quick sawtooth blip and sfxLightning's rising sparkle.
+    function sfxPenalty() {
+        if (!enabled) return;
+        const t0 = ctx.currentTime;
+        const src = ctx.createBufferSource();
+        src.buffer = getNoiseBuffer();
+        const bp = ctx.createBiquadFilter();
+        bp.type = 'bandpass';
+        bp.frequency.setValueAtTime(4200, t0);
+        bp.frequency.exponentialRampToValueAtTime(700, t0 + 0.3);
+        bp.Q.value = 6;
+        const ng = ctx.createGain();
+        ng.gain.setValueAtTime(0.0001, t0);
+        ng.gain.exponentialRampToValueAtTime(0.22, t0 + 0.015);
+        ng.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.34);
+        src.connect(bp); bp.connect(ng); ng.connect(sfxGain);
+        src.start(t0);
+        src.stop(t0 + 0.36);
+
+        tone(noteFreq(0, -1), { type: 'sawtooth', duration: 0.3, gain: 0.13, delay: 0.05, glideTo: noteFreq(0, -1) * 0.6, filterFreq: 700 });
+    }
+
+    // Background music: a handful of short, pre-composed phrases in the same "in" scale used
+    // throughout this file, styled after the spacious, sparse phrasing of traditional koto/
+    // shamisen music -- real melodic shape and rests between notes, cycling in a shuffled loop
+    // (no phrase repeats back-to-back), not a single random note picked every few seconds.
+    // Replaces the old schedulePluck() scheduler, which the site owner said didn't read as
+    // actual music. An earlier version of this ALSO tried a sustained multi-oscillator pad
+    // under the plucks and that was removed for being a fatiguing constant held tone -- this
+    // still avoids that failure mode the same way the old scheduler did: every note fully
+    // decays to silence before the next one starts, so there's never a continuous tone, just a
+    // slow, breathing sequence of them. ambientGain is still the shared on/off fader.
+    const MELODY_PHRASES = [
+        [0, 2, 4, 2, 0],
+        [7, 9, 7, 4],
+        [4, 7, 9, 12, 9, 7],
+        [9, 7, 4, 2, 4],
+        [2, 4, 7, 4, 2, 0],
+    ];
+    let phraseBag = [];
+    let phraseTimer = null;
+    let phrasesSincePhrase = 0;
+
+    function drawPhrase() {
+        if (!phraseBag.length) {
+            phraseBag = MELODY_PHRASES.map((_, i) => i);
+            shuffleArray(phraseBag);
+        }
+        return MELODY_PHRASES[phraseBag.pop()];
+    }
+
+    // One plucked note: the same soft sine pluck the old scheduler used, plus a quiet fifth
+    // above it (noteFreq(degree + 3, octave), since the "in" scale is 5 degrees per octave) for
+    // a slightly richer, more string-like timbre than a single bare sine.
+    function pluckNote(degree, octave, gain) {
+        const freq = noteFreq(degree, octave);
+        const t0 = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        osc.type = 'sine';
+        osc.frequency.value = freq;
+        const g = ctx.createGain();
+        g.gain.setValueAtTime(0.0001, t0);
+        g.gain.exponentialRampToValueAtTime(gain, t0 + 0.012);
+        g.gain.exponentialRampToValueAtTime(0.0001, t0 + 1.8);
+
+        const overtone = ctx.createOscillator();
+        overtone.type = 'sine';
+        overtone.frequency.value = noteFreq(degree + 3, octave);
+        const og = ctx.createGain();
+        og.gain.setValueAtTime(0.0001, t0);
+        og.gain.exponentialRampToValueAtTime(gain * 0.22, t0 + 0.012);
+        og.gain.exponentialRampToValueAtTime(0.0001, t0 + 1.1);
+
+        if (window.StereoPannerNode) {
+            const pan = ctx.createStereoPanner();
+            pan.pan.value = (Math.random() - 0.5) * 0.7;
+            osc.connect(g); g.connect(pan);
+            overtone.connect(og); og.connect(pan);
+            pan.connect(ambientGain);
+        } else {
+            osc.connect(g); g.connect(ambientGain);
+            overtone.connect(og); og.connect(ambientGain);
+        }
+        osc.start(t0); osc.stop(t0 + 1.9);
+        overtone.start(t0); overtone.stop(t0 + 1.2);
+    }
+
+    // A distant, soft temple-bell -- a long, slow-swelling low sine, much quieter and longer
+    // than a melody note. Every 2-4 phrases, never on top of a phrase's own notes (scheduled
+    // into the pause between them) so it never competes with the melody for attention.
+    function bellHit() {
+        const t0 = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        osc.type = 'sine';
+        osc.frequency.value = noteFreq(0, -1);
+        const g = ctx.createGain();
+        g.gain.setValueAtTime(0.0001, t0);
+        g.gain.exponentialRampToValueAtTime(0.07, t0 + 0.5);
+        g.gain.exponentialRampToValueAtTime(0.0001, t0 + 3.6);
+        osc.connect(g); g.connect(ambientGain);
+        osc.start(t0);
+        osc.stop(t0 + 3.7);
+    }
+
+    function scheduleNextPhrase() {
+        if (phraseTimer) window.clearTimeout(phraseTimer);
+        phraseTimer = window.setTimeout(() => {
+            if (!enabled || !ambientNodes) return;
+            const phrase = drawPhrase();
+            const octave = Math.random() < 0.3 ? 0 : 1;
+            phrase.forEach((degree, i) => {
+                window.setTimeout(() => {
+                    if (enabled && ambientNodes) pluckNote(degree, octave, 0.1 + Math.random() * 0.03);
+                }, i * (650 + Math.random() * 200));
+            });
+
+            phrasesSincePhrase++;
+            if (phrasesSincePhrase >= 2 + Math.floor(Math.random() * 3)) {
+                phrasesSincePhrase = 0;
+                const phraseDuration = phrase.length * 750;
+                window.setTimeout(() => { if (enabled && ambientNodes) bellHit(); }, phraseDuration + 900);
+            }
+
+            scheduleNextPhrase();
+        }, 4200 + Math.random() * 2600);
+    }
+
     function startAmbient() {
         if (ambientNodes) return;
         ambientGain.gain.cancelScheduledValues(ctx.currentTime);
@@ -416,42 +581,11 @@ const GameAudio = (function () {
         ambientGain.gain.linearRampToValueAtTime(1, ctx.currentTime + 1.4);
 
         ambientNodes = {};
-        schedulePluck();
-    }
-
-    function schedulePluck() {
-        if (pluckTimer) window.clearTimeout(pluckTimer);
-        pluckTimer = window.setTimeout(() => {
-            if (enabled && ambientNodes) {
-                const degree = [0, 2, 4, 7, 9][Math.floor(Math.random() * 5)];
-                const freq = noteFreq(degree, 1);
-                const t0 = ctx.currentTime;
-                const osc = ctx.createOscillator();
-                osc.type = 'sine';
-                osc.frequency.value = freq;
-                const g = ctx.createGain();
-                g.gain.setValueAtTime(0.0001, t0);
-                g.gain.exponentialRampToValueAtTime(0.13, t0 + 0.01);
-                g.gain.exponentialRampToValueAtTime(0.0001, t0 + 1.8);
-                if (window.StereoPannerNode) {
-                    const pan = ctx.createStereoPanner();
-                    pan.pan.value = (Math.random() - 0.5) * 0.8;
-                    osc.connect(g);
-                    g.connect(pan);
-                    pan.connect(ambientGain);
-                } else {
-                    osc.connect(g);
-                    g.connect(ambientGain);
-                }
-                osc.start(t0);
-                osc.stop(t0 + 1.9);
-            }
-            schedulePluck();
-        }, 2400 + Math.random() * 2600);
+        scheduleNextPhrase();
     }
 
     function stopAmbient() {
-        if (pluckTimer) { window.clearTimeout(pluckTimer); pluckTimer = null; }
+        if (phraseTimer) { window.clearTimeout(phraseTimer); phraseTimer = null; }
         if (!ambientNodes) return;
         const t0 = ctx.currentTime;
         ambientGain.gain.cancelScheduledValues(t0);
@@ -482,6 +616,8 @@ const GameAudio = (function () {
         mismatch: sfxMismatch,
         lightning: sfxLightning,
         win: sfxWin,
+        timeUp: sfxTimeUp,
+        penalty: sfxPenalty,
     };
 })();
 
@@ -575,17 +711,48 @@ function shuffleRemaining() {
 // ---------------------------------------------------------------------------
 // Timer & stats
 // ---------------------------------------------------------------------------
+function renderTimer() {
+    const el = document.getElementById('board-timer');
+    el.textContent = formatTime(timeRemaining);
+    el.classList.toggle('low-time', timeRemaining <= LOW_TIME_THRESHOLD && timeRemaining > 0);
+}
+
 function startTimer() {
     startTime = Date.now();
     timerInterval = setInterval(() => {
         elapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
-        document.getElementById('board-timer').textContent = formatTime(elapsedSeconds);
+        timeRemaining = Math.max(0, MATCH_DURATION + bonusSeconds - elapsedSeconds);
+        renderTimer();
+        if (timeRemaining <= 0) timeUp();
     }, 250);
 }
 
 function stopTimer() {
     clearInterval(timerInterval);
     timerInterval = null;
+}
+
+// Called once per pair cleared (handleMatch, or once per member of a lightning chain) --
+// extends the 5-minute clock rather than just cosmetically ticking a bonus number, so a chain
+// of N pairs is worth N x TIME_BONUS_PER_PAIR seconds of real breathing room.
+function addTimeBonus(pairCount, atX, atY) {
+    bonusSeconds += TIME_BONUS_PER_PAIR * pairCount;
+    timeRemaining = Math.max(0, MATCH_DURATION + bonusSeconds - elapsedSeconds);
+    renderTimer();
+    if (atX != null) floatText(atX, atY, '+' + (TIME_BONUS_PER_PAIR * pairCount) + 's', false, false, 'time-text');
+}
+
+// Time ran out before the level was cleared -- a distinct, honest failure path from
+// finishLevel()'s success path: no win fanfare, no progress save (best_time_seconds is only
+// ever meant to record an actual clear, not an incomplete attempt).
+function timeUp() {
+    stopTimer();
+    matchStarted = false;
+    locked = true;
+    selected.forEach(t => t.el.classList.remove('selected'));
+    selected = [];
+    GameAudio.timeUp();
+    showResultModal({ level: currentLevel.level, timeSeconds: elapsedSeconds, moves }, false);
 }
 
 function updateStats() {
@@ -754,6 +921,7 @@ function handleMatch(a, b) {
 
     const mid = midpoint(centerOf(a.el), centerOf(b.el));
     floatText(mid.x, mid.y, '+' + gained);
+    addTimeBonus(1, mid.x, mid.y + 24);
 
     const tierHit = streak % STREAK_TIER === 0;
     updateStreakMeter(tierHit);
@@ -829,6 +997,7 @@ function handleLightningChain(phonetic) {
     const midPt = centers.reduce((acc, c) => ({ x: acc.x + c.x, y: acc.y + c.y }), { x: 0, y: 0 });
     midPt.x /= centers.length; midPt.y /= centers.length;
     floatText(midPt.x, midPt.y, `LIGHTNING x${memberPairIds.length}`, true, true);
+    addTimeBonus(memberPairIds.length, midPt.x, midPt.y + 30);
     if (tierHits.length) {
         window.setTimeout(() => floatText(midPt.x, midPt.y - 44, 'STREAK x' + streak, true), 220);
     }
@@ -854,6 +1023,8 @@ function handleMismatch(a, b) {
     boardWrapEl.classList.add('board-shake');
     [a, b].forEach(t => t.el.classList.add('mismatch'));
 
+    mismatchStreak++;
+
     window.setTimeout(() => {
         [a, b].forEach(t => {
             t.el.classList.remove('mismatch', 'selected');
@@ -861,7 +1032,55 @@ function handleMismatch(a, b) {
         });
         selected = [];
         locked = false;
+
+        if (mismatchStreak >= MISTAKES_PER_PENALTY) {
+            mismatchStreak = 0;
+            applyPenalty();
+        }
     }, 430);
+}
+
+// Every MISTAKES_PER_PENALTY mismatches, a previously-cleared pair reappears on the board --
+// a real setback (matchedCount drops, the pair has to be re-cleared), not just a cosmetic
+// scold. Picks a random cleared pair rather than "the most recent" since tiles only track a
+// cleared boolean, not a clear-order log, and which specific pair returns doesn't materially
+// change the mechanic. No-op if nothing's been cleared yet (can't penalize progress that
+// doesn't exist) -- the two mistakes are simply forgiven in that case.
+function applyPenalty() {
+    const clearedPairIds = Object.keys(tilesByPairId)
+        .map(Number)
+        .filter(pairId => {
+            const pt = tilesByPairId[pairId];
+            return pt.jp && pt.jp.cleared && pt.en && pt.en.cleared;
+        });
+    if (!clearedPairIds.length) return;
+
+    const pairId = clearedPairIds[Math.floor(Math.random() * clearedPairIds.length)];
+    const pt = tilesByPairId[pairId];
+    pt.jp.cleared = false;
+    pt.en.cleared = false;
+    pt.jp.el.classList.remove('cleared');
+    pt.en.el.classList.remove('cleared');
+    matchedCount--;
+    updateStats();
+
+    // layoutTiles rebuilds the honeycomb from whichever tiles are currently uncleared, which
+    // is also how the Shuffle button repositions tiles -- reusing it here is what makes
+    // reinserting a pair that may have been detached from #tile-grid (by an earlier shuffle)
+    // possible at all, at the cost of the rest of the board's tiles visually reshuffling too.
+    // The penalty float-text below is what tells the player that's a consequence of the
+    // penalty, not an unrelated glitch.
+    layoutTiles(tiles.filter(t => !t.cleared));
+    resizeCanvases();
+
+    [pt.jp, pt.en].forEach(t => {
+        t.el.classList.add('penalty-return');
+        window.setTimeout(() => t.el.classList.remove('penalty-return'), 700);
+    });
+
+    const c = centerOf(boardWrapEl);
+    floatText(c.x, c.y, 'PENALTY — pair returned', true);
+    GameAudio.penalty();
 }
 
 // ---------------------------------------------------------------------------
@@ -869,18 +1088,24 @@ function handleMismatch(a, b) {
 // ---------------------------------------------------------------------------
 function startLevel(level) {
     currentLevel = level;
+    activeJlptTab = level.jlpt; // so "back to levels" lands on the tier just played
     matchStarted = false;
     matchedCount = 0;
     moves = 0;
-    elapsedSeconds = 0;
-    startTime = null;
     selected = [];
     locked = false;
     score = 0;
     streak = 0;
+    mismatchStreak = 0;
+    elapsedSeconds = 0;
+    bonusSeconds = 0;
+    timeRemaining = MATCH_DURATION;
     familiesFound.clear(); // fresh-level reset, not shuffleRemaining() -- that keeps the round
-    totalPairs = 20; // every word set has exactly 20 pairs
+    totalPairs = 10; // every level is exactly 10 pairs now (see game-words.js header)
     stopTimer();
+
+    const bgImage = BOARD_BG_IMAGES[(level.level - 1) % BOARD_BG_IMAGES.length];
+    gameMain.style.setProperty('--board-bg-image', `url(${bgImage})`);
 
     renderBoard();
     resetExamplePanel();
@@ -890,7 +1115,7 @@ function startLevel(level) {
     document.getElementById('streak-fill').style.width = '0%';
     const panelStreakFill = document.getElementById('panel-streak-fill');
     if (panelStreakFill) panelStreakFill.style.width = '0%';
-    document.getElementById('board-timer').textContent = '00:00';
+    renderTimer();
     document.getElementById('board-level-label').textContent = level.title;
     updateStats();
 
@@ -915,11 +1140,35 @@ function backToLevels() {
     resizeCanvases();
 }
 
-function renderLevelSelect() {
+const JLPT_TABS = ['N5', 'N4', 'N3', 'N2', 'N1'];
+
+function renderJlptTabs() {
+    const container = document.getElementById('jlpt-tabs');
+    container.innerHTML = '';
+    JLPT_TABS.forEach(jlpt => {
+        const tab = document.createElement('button');
+        tab.type = 'button';
+        tab.className = 'jlpt-tab';
+        tab.dataset.level = jlpt;
+        tab.setAttribute('role', 'tab');
+        tab.setAttribute('aria-selected', String(jlpt === activeJlptTab));
+        tab.textContent = jlpt;
+        if (jlpt === activeJlptTab) tab.classList.add('active');
+        tab.addEventListener('click', () => {
+            if (activeJlptTab === jlpt) return;
+            activeJlptTab = jlpt;
+            renderJlptTabs();
+            renderLevelGrid();
+        });
+        container.appendChild(tab);
+    });
+}
+
+function renderLevelGrid() {
     const container = document.getElementById('level-grid');
     container.innerHTML = '';
 
-    WORD_LEVELS.forEach(level => {
+    WORD_LEVELS.filter(level => level.jlpt === activeJlptTab).forEach(level => {
         const card = document.createElement('button');
         card.type = 'button';
         card.className = 'level-card';
@@ -940,6 +1189,11 @@ function renderLevelSelect() {
         card.addEventListener('click', () => startLevel(level));
         container.appendChild(card);
     });
+}
+
+function renderLevelSelect() {
+    renderJlptTabs();
+    renderLevelGrid();
 
     const guestHint = document.getElementById('game-guest-hint');
     if (window.getCurrentSession()) hideEl(guestHint); else showEl(guestHint);
@@ -988,13 +1242,14 @@ async function saveProgress(session, result) {
 
 function finishLevel() {
     stopTimer();
+    matchStarted = false;
     const result = { level: currentLevel.level, timeSeconds: elapsedSeconds, moves };
 
     const c = centerOf(boardWrapEl);
     fxField.spawnBurst(c.x, c.y, { count: 90, speed: 320, life: 1.3, colors: ['212,166,75', '244,206,122', '255,255,255', '192,67,90'] });
     GameAudio.win();
 
-    showResultModal(result);
+    showResultModal(result, true);
 
     const session = window.getCurrentSession();
     if (session) {
@@ -1006,14 +1261,23 @@ function finishLevel() {
     }
 }
 
-function showResultModal(result) {
+// won=true: cleared the level (existing behaviour). won=false: the 5-minute clock ran out --
+// an honest failure state, not just a quieter version of winning. No progress is ever saved
+// for a timeout since best_time_seconds/best_moves are only meaningful for an actual clear.
+function showResultModal(result, won) {
+    document.getElementById('result-title').textContent = won ? 'Level Complete!' : "Time's Up!";
     document.getElementById('result-time').textContent = formatTime(result.timeSeconds);
     document.getElementById('result-moves').textContent = result.moves;
 
     const prevBest = progressCache[result.level];
-    document.getElementById('result-best').textContent = (prevBest && prevBest.completed)
-        ? `Previous best: ${formatTime(prevBest.best_time_seconds)} · ${prevBest.best_moves} moves`
-        : 'First clear on this level!';
+    if (won) {
+        document.getElementById('result-best').textContent = (prevBest && prevBest.completed)
+            ? `Previous best: ${formatTime(prevBest.best_time_seconds)} · ${prevBest.best_moves} moves`
+            : 'First clear on this level!';
+    } else {
+        document.getElementById('result-best').textContent =
+            `Matched ${matchedCount} / ${totalPairs} pairs before time ran out.`;
+    }
 
     hideEl(document.getElementById('result-login-btn'));
     hideEl(document.getElementById('result-save-status'));
