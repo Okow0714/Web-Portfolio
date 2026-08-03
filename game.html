@@ -173,24 +173,45 @@
                     </button>
                     <button id="board-shuffle-btn" class="ghost-btn" type="button">Shuffle</button>
                 </div>
-                <div class="board-wrap" id="board-wrap">
-                    <div id="tile-grid" class="tile-grid"></div>
-                </div>
-                <div id="example-panel" class="example-panel">
-                    <div class="example-panel-inner">
-                        <h3>Last Match</h3>
-                        <p id="example-empty" class="example-empty">Connect a pair to see an example sentence here.</p>
-                        <div id="example-content" class="example-content hidden">
-                            <div class="example-head">
-                                <span id="example-jp" class="example-jp"></span>
-                                <span id="example-reading" class="example-reading"></span>
-                                <span id="example-meanings" class="example-meanings"></span>
+                <div class="board-layout">
+                    <div class="board-wrap" id="board-wrap">
+                        <div id="tile-grid" class="tile-grid"></div>
+                    </div>
+                    <div id="example-panel" class="example-panel">
+                        <div class="example-panel-inner">
+                            <!-- Wide layout only (see .panel-wide-only, hidden under the
+                                 968px breakpoint alongside the panel reverting to a fixed
+                                 bottom bar) -- mirrors #board-pairs and the toolbar streak
+                                 meter, doesn't replace them. -->
+                            <div class="panel-block panel-progress panel-wide-only" id="panel-progress">
+                                <h3>Progress</h3>
+                                <p id="panel-pairs-mirror" class="panel-progress-pairs">0 / 20 pairs</p>
+                                <span class="panel-progress-label">Streak</span>
+                                <span class="streak-meter"><span id="panel-streak-fill" class="streak-fill"></span></span>
                             </div>
-                            <div id="example-sentence-block" class="example-sentence-block">
-                                <p id="example-sentence-jp" class="example-sentence-jp"></p>
-                                <p id="example-sentence-en" class="example-sentence-en"></p>
+                            <!-- Wide layout only -- tracks phonetic "lightning connect" families
+                                 cleared this round (see familiesFound in game.js). -->
+                            <div class="panel-block panel-families panel-wide-only" id="panel-families">
+                                <h3>Families Found</h3>
+                                <p id="families-empty" class="families-empty">Chain 2+ words sharing a phonetic component for a lightning-fast clear.</p>
+                                <div id="families-found-list" class="families-found-list"></div>
                             </div>
-                            <p id="example-none" class="example-none hidden">No example sentence found for this word in the source data.</p>
+                            <div class="panel-block panel-example">
+                                <h3>Last Match</h3>
+                                <p id="example-empty" class="example-empty">Connect a pair to see an example sentence here.</p>
+                                <div id="example-content" class="example-content hidden">
+                                    <div class="example-head">
+                                        <span id="example-jp" class="example-jp"></span>
+                                        <span id="example-reading" class="example-reading"></span>
+                                        <span id="example-meanings" class="example-meanings"></span>
+                                    </div>
+                                    <div id="example-sentence-block" class="example-sentence-block">
+                                        <p id="example-sentence-jp" class="example-sentence-jp"></p>
+                                        <p id="example-sentence-en" class="example-sentence-en"></p>
+                                    </div>
+                                    <p id="example-none" class="example-none hidden">No example sentence found for this word in the source data.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

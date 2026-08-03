@@ -29,6 +29,9 @@ let elapsedSeconds = 0;
 let lastResult = null;    // result earned as a guest, pending save once they log in
 let progressCache = {};   // level number -> game_progress row
 let currentSet = [];      // this play's chosen 20-pair word set, indexed by pairId
+let familiesFound = new Set(); // phonetic components ("lightning connect" families) chained
+                                // this round -- rendered as chips in the side panel, wide
+                                // layout only (see renderFamiliesFound())
 
 let tiles = [];           // all 40 tile objects for the current board
 let tilesByPairId = {};   // pairId -> { jp: tileObj, en: tileObj }
@@ -586,8 +589,14 @@ function stopTimer() {
 }
 
 function updateStats() {
-    document.getElementById('board-pairs').textContent = `${matchedCount} / ${totalPairs} pairs`;
+    const pairsText = `${matchedCount} / ${totalPairs} pairs`;
+    document.getElementById('board-pairs').textContent = pairsText;
     document.getElementById('board-moves').textContent = `${moves} moves`;
+    // Side-panel mirror (wide layout only, see .panel-wide-only) -- same values, same format
+    // as #board-pairs above, just rendered a second time next to the board. Guarded since the
+    // element is always in the DOM (mobile just hides it via CSS) but doesn't hurt to check.
+    const panelPairsMirror = document.getElementById('panel-pairs-mirror');
+    if (panelPairsMirror) panelPairsMirror.textContent = pairsText;
 }
 
 function setScore(newScore) {
@@ -607,6 +616,50 @@ function updateStreakMeter(tierHit) {
         streakFill.classList.add('tier-flash');
         window.setTimeout(() => { streakFill.style.width = '0%'; }, 260);
     }
+
+    // Side-panel mirror (wide layout only) -- reuses the same .streak-meter/.streak-fill
+    // classes as the toolbar original so it gets identical track/fill/flash styling for free;
+    // just re-applies the same width/flash sequence to the second element.
+    const panelStreakFill = document.getElementById('panel-streak-fill');
+    if (panelStreakFill) {
+        panelStreakFill.style.width = pct + '%';
+        if (tierHit) {
+            panelStreakFill.classList.remove('tier-flash');
+            void panelStreakFill.offsetWidth;
+            panelStreakFill.classList.add('tier-flash');
+            window.setTimeout(() => { panelStreakFill.style.width = '0%'; }, 260);
+        }
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Families-found chips (side panel, wide layout only) — tracks which phonetic "lightning
+// connect" families have been chained this round, distinct from the ordinary pairs counter:
+// the point is celebrating the phonetic-family mechanic specifically, not re-showing
+// matchedCount under a different label.
+// ---------------------------------------------------------------------------
+function renderFamiliesFound() {
+    const listEl = document.getElementById('families-found-list');
+    const emptyEl = document.getElementById('families-empty');
+    if (!listEl || !emptyEl) return;
+
+    listEl.innerHTML = '';
+    if (familiesFound.size === 0) {
+        showEl(emptyEl);
+        return;
+    }
+    hideEl(emptyEl);
+
+    familiesFound.forEach(phonetic => {
+        const pair = currentSet.find(p => p.phonetic === phonetic);
+        const reading = pair ? pair.phoneticReading : '';
+        const chip = document.createElement('span');
+        chip.className = 'family-chip';
+        chip.innerHTML = `<span class="family-chip-kanji">${escapeHtml(phonetic)}</span>` +
+            (reading ? `<span class="family-chip-reading">${escapeHtml(reading)}</span>` : '') +
+            `<span class="family-chip-label">found</span>`;
+        listEl.appendChild(chip);
+    });
 }
 
 // ---------------------------------------------------------------------------
@@ -736,6 +789,11 @@ function handleLightningChain(phonetic) {
     });
     if (memberPairIds.length < 2) { handleMismatch(selected[0], selected[1]); return; }
 
+    // Chain confirmed (past the early-return above, so this is never recorded for a false
+    // attempt) -- track it for the side panel's "families found" chip list.
+    familiesFound.add(phonetic);
+    renderFamiliesFound();
+
     const chainTiles = [];
     memberPairIds.forEach(pairId => {
         const pt = tilesByPairId[pairId];
@@ -820,14 +878,18 @@ function startLevel(level) {
     locked = false;
     score = 0;
     streak = 0;
+    familiesFound.clear(); // fresh-level reset, not shuffleRemaining() -- that keeps the round
     totalPairs = 20; // every word set has exactly 20 pairs
     stopTimer();
 
     renderBoard();
     resetExamplePanel();
+    renderFamiliesFound();
 
     document.getElementById('score-value').textContent = '0';
     document.getElementById('streak-fill').style.width = '0%';
+    const panelStreakFill = document.getElementById('panel-streak-fill');
+    if (panelStreakFill) panelStreakFill.style.width = '0%';
     document.getElementById('board-timer').textContent = '00:00';
     document.getElementById('board-level-label').textContent = level.title;
     updateStats();
