@@ -489,6 +489,28 @@ body {
     text-align: center;
 }
 
+/* The account panel hangs off the masthead, so its CTA should wear the masthead's gold, not
+   the page's. .auth-btn paints var(--accent-gradient), and every page-theme block redefines
+   that token on body -- so the identical button came out blue on the portfolio and copper on
+   Phonetics Family, which undercut the idea of one consistent bar. Scoped to the panel alone:
+   .auth-btn inside #auth-modal / #account-modal is page-level UI and keeps the page accent.
+   Dark wine on gold rather than the base rule's white, which would sit at ~1.9:1 here.
+   Qualified by .site-header-wrap purely for specificity: reading.css sets its own
+   body:has(.reading-main) .auth-btn colour (0,2,1) as part of that page's light flip, which
+   would otherwise outrank a bare .account-menu-panel .auth-btn (0,2,0) and leave the reader
+   page's panel button a different ink from the other five. */
+.site-header-wrap .account-menu-panel .auth-btn {
+    background: linear-gradient(135deg, var(--header-accent), var(--header-accent-dark));
+    border-color: var(--header-accent-dark);
+    color: var(--header-bg);
+}
+
+.site-header-wrap .account-menu-panel .auth-btn:hover {
+    background: linear-gradient(135deg, var(--header-accent-dark), var(--header-accent));
+    border-color: var(--header-accent);
+    color: var(--header-bg);
+}
+
 #auth-authed {
     display: flex;
     flex-direction: column;
