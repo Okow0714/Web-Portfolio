@@ -34,6 +34,58 @@ const BOARD_BG_IMAGES = [
     'images/game-bg/hikone.jpg',
 ];
 
+// Background music, one pool per JLPT tier (N4 and N5 share the lofi pool) -- real licensed
+// tracks, not synthesized, per the site owner's explicit direction. All from the "alex-morgan"
+// modern-jazz collection on Pixabay Music, under Pixabay's site-wide Content License (verified:
+// permits commercial/game use, no attribution required; only forbids reselling the bare audio
+// file standalone, which doesn't apply to embedding it as game background music). Re-encoded
+// from the 256kbps originals down to 112kbps to cut ~159MB of source audio to a fraction of
+// that -- background music doesn't need studio-grade fidelity. Full credits in the "Photo
+// credits" details block (renamed in spirit, not name, to cover both images and music) on the
+// level-select screen and in the shared site footer.
+const LOFI_JAZZ_POOL = [
+    'sound/game-music/lofi-jazz-trio-sunny-cafe.mp3',
+    'sound/game-music/lofi-jazz-study.mp3',
+    'sound/game-music/lofi-jazz-retro-coffee-shop.mp3',
+    'sound/game-music/lofi-jazz-melody-restaurant.mp3',
+    'sound/game-music/lofi-jazz-soulful-midnight-club.mp3',
+    'sound/game-music/lofi-jazz-swing-cocktail-bar.mp3',
+    'sound/game-music/lofi-jazz-smooth-study-session.mp3',
+];
+const MUSIC_POOLS = {
+    N1: [
+        'sound/game-music/n1-soul-jazz-restaurant.mp3',
+        'sound/game-music/n1-soul-jazz-coffee-shop.mp3',
+        'sound/game-music/n1-soul-jazz-study-session.mp3',
+        'sound/game-music/n1-soul-jazz-rainy-night.mp3',
+        'sound/game-music/n1-soul-jazz-midnight-club.mp3',
+        'sound/game-music/n1-soul-jazz-sunny-cafe.mp3',
+        'sound/game-music/n1-soul-jazz-cocktail-bar.mp3',
+    ],
+    N2: [
+        'sound/game-music/n2-jazz-study-1.mp3',
+        'sound/game-music/n2-jazz-study-2.mp3',
+        'sound/game-music/n2-jazz-study-3.mp3',
+        'sound/game-music/n2-saxophone-jazz-study.mp3',
+        'sound/game-music/n2-samba-jazz-study.mp3',
+        'sound/game-music/n2-jazz-study-session.mp3',
+        'sound/game-music/n2-jazz-lounge-study.mp3',
+        'sound/game-music/n2-swing-jazz-study.mp3',
+    ],
+    N3: [
+        'sound/game-music/n3-smooth-jazz-restaurant.mp3',
+        'sound/game-music/n3-smooth-jazz-coffee-shop-1.mp3',
+        'sound/game-music/n3-smooth-jazz-lounge-evening.mp3',
+        'sound/game-music/n3-smooth-jazz-midnight-club.mp3',
+        'sound/game-music/n3-smooth-jazz-coffee-shop-2.mp3',
+        'sound/game-music/n3-smooth-jazz-rainy-night.mp3',
+        'sound/game-music/n3-smooth-jazz-study-session.mp3',
+        'sound/game-music/n3-smooth-jazz-cocktail-bar.mp3',
+    ],
+    N4: LOFI_JAZZ_POOL,
+    N5: LOFI_JAZZ_POOL,
+};
+
 const PER_ROW = 5; // 20 tiles / 5 = 4 clean honeycomb rows, no partial last row. Penalties
                     // restore an already-existing pair rather than adding new tiles, so the
                     // board's total tile count never changes mid-level -- PER_ROW can stay a
@@ -294,9 +346,7 @@ const GameAudio = (function () {
     let ctx = null;
     let masterGain = null;
     let sfxGain = null;
-    let ambientGain = null;
     let enabled = false;
-    let ambientNodes = null;
     let noiseBuffer = null;
 
     const ROOT = 220; // A3
@@ -322,9 +372,6 @@ const GameAudio = (function () {
         sfxGain = ctx.createGain();
         sfxGain.gain.value = 0.5;
         sfxGain.connect(masterGain);
-        ambientGain = ctx.createGain();
-        ambientGain.gain.value = 0;
-        ambientGain.connect(masterGain);
     }
 
     function getNoiseBuffer() {
@@ -469,129 +516,69 @@ const GameAudio = (function () {
         tone(noteFreq(0, -1), { type: 'sawtooth', duration: 0.3, gain: 0.13, delay: 0.05, glideTo: noteFreq(0, -1) * 0.6, filterFreq: 700 });
     }
 
-    // Background music: a handful of short, pre-composed phrases in the same "in" scale used
-    // throughout this file, styled after the spacious, sparse phrasing of traditional koto/
-    // shamisen music -- real melodic shape and rests between notes, cycling in a shuffled loop
-    // (no phrase repeats back-to-back), not a single random note picked every few seconds.
-    // Replaces the old schedulePluck() scheduler, which the site owner said didn't read as
-    // actual music. An earlier version of this ALSO tried a sustained multi-oscillator pad
-    // under the plucks and that was removed for being a fatiguing constant held tone -- this
-    // still avoids that failure mode the same way the old scheduler did: every note fully
-    // decays to silence before the next one starts, so there's never a continuous tone, just a
-    // slow, breathing sequence of them. ambientGain is still the shared on/off fader.
-    const MELODY_PHRASES = [
-        [0, 2, 4, 2, 0],
-        [7, 9, 7, 4],
-        [4, 7, 9, 12, 9, 7],
-        [9, 7, 4, 2, 4],
-        [2, 4, 7, 4, 2, 0],
-    ];
-    let phraseBag = [];
-    let phraseTimer = null;
-    let phrasesSincePhrase = 0;
+    // Background music: real licensed jazz tracks (soul jazz / jazz-study / smooth jazz / lofi
+    // jazz per JLPT tier -- see MUSIC_POOLS below), not synthesized. Replaces the earlier
+    // pre-composed-phrase scheme entirely, per the site owner's explicit direction to use real
+    // music instead. Plays via a plain HTMLAudioElement (a second, independent audio pipeline
+    // from the Web Audio API graph every sfx above uses) -- the two mix fine at the OS level,
+    // no need to route the file through ctx at all. A fade in .volume gives toggling sound the
+    // same fade-not-a-hard-cut feel the old synthesized ambient pad had.
+    let musicEl = null;
+    let musicFadeTimer = null;
+    const MUSIC_VOLUME = 0.35;
 
-    function drawPhrase() {
-        if (!phraseBag.length) {
-            phraseBag = MELODY_PHRASES.map((_, i) => i);
-            shuffleArray(phraseBag);
-        }
-        return MELODY_PHRASES[phraseBag.pop()];
+    function ensureMusicEl() {
+        if (musicEl) return musicEl;
+        musicEl = new Audio();
+        musicEl.loop = true;
+        musicEl.volume = 0;
+        musicEl.preload = 'none';
+        return musicEl;
     }
 
-    // One plucked note: the same soft sine pluck the old scheduler used, plus a quiet fifth
-    // above it (noteFreq(degree + 3, octave), since the "in" scale is 5 degrees per octave) for
-    // a slightly richer, more string-like timbre than a single bare sine.
-    function pluckNote(degree, octave, gain) {
-        const freq = noteFreq(degree, octave);
-        const t0 = ctx.currentTime;
-        const osc = ctx.createOscillator();
-        osc.type = 'sine';
-        osc.frequency.value = freq;
-        const g = ctx.createGain();
-        g.gain.setValueAtTime(0.0001, t0);
-        g.gain.exponentialRampToValueAtTime(gain, t0 + 0.012);
-        g.gain.exponentialRampToValueAtTime(0.0001, t0 + 1.8);
-
-        const overtone = ctx.createOscillator();
-        overtone.type = 'sine';
-        overtone.frequency.value = noteFreq(degree + 3, octave);
-        const og = ctx.createGain();
-        og.gain.setValueAtTime(0.0001, t0);
-        og.gain.exponentialRampToValueAtTime(gain * 0.22, t0 + 0.012);
-        og.gain.exponentialRampToValueAtTime(0.0001, t0 + 1.1);
-
-        if (window.StereoPannerNode) {
-            const pan = ctx.createStereoPanner();
-            pan.pan.value = (Math.random() - 0.5) * 0.7;
-            osc.connect(g); g.connect(pan);
-            overtone.connect(og); og.connect(pan);
-            pan.connect(ambientGain);
-        } else {
-            osc.connect(g); g.connect(ambientGain);
-            overtone.connect(og); og.connect(ambientGain);
-        }
-        osc.start(t0); osc.stop(t0 + 1.9);
-        overtone.start(t0); overtone.stop(t0 + 1.2);
-    }
-
-    // A distant, soft temple-bell -- a long, slow-swelling low sine, much quieter and longer
-    // than a melody note. Every 2-4 phrases, never on top of a phrase's own notes (scheduled
-    // into the pause between them) so it never competes with the melody for attention.
-    function bellHit() {
-        const t0 = ctx.currentTime;
-        const osc = ctx.createOscillator();
-        osc.type = 'sine';
-        osc.frequency.value = noteFreq(0, -1);
-        const g = ctx.createGain();
-        g.gain.setValueAtTime(0.0001, t0);
-        g.gain.exponentialRampToValueAtTime(0.07, t0 + 0.5);
-        g.gain.exponentialRampToValueAtTime(0.0001, t0 + 3.6);
-        osc.connect(g); g.connect(ambientGain);
-        osc.start(t0);
-        osc.stop(t0 + 3.7);
-    }
-
-    function scheduleNextPhrase() {
-        if (phraseTimer) window.clearTimeout(phraseTimer);
-        phraseTimer = window.setTimeout(() => {
-            if (!enabled || !ambientNodes) return;
-            const phrase = drawPhrase();
-            const octave = Math.random() < 0.3 ? 0 : 1;
-            phrase.forEach((degree, i) => {
-                window.setTimeout(() => {
-                    if (enabled && ambientNodes) pluckNote(degree, octave, 0.1 + Math.random() * 0.03);
-                }, i * (650 + Math.random() * 200));
-            });
-
-            phrasesSincePhrase++;
-            if (phrasesSincePhrase >= 2 + Math.floor(Math.random() * 3)) {
-                phrasesSincePhrase = 0;
-                const phraseDuration = phrase.length * 750;
-                window.setTimeout(() => { if (enabled && ambientNodes) bellHit(); }, phraseDuration + 900);
+    function fadeMusicTo(target, ms) {
+        if (musicFadeTimer) { window.clearInterval(musicFadeTimer); musicFadeTimer = null; }
+        const el = ensureMusicEl();
+        const start = el.volume;
+        const steps = Math.max(1, Math.round(ms / 50));
+        let i = 0;
+        musicFadeTimer = window.setInterval(() => {
+            i++;
+            el.volume = start + (target - start) * (i / steps);
+            if (i >= steps) {
+                el.volume = target;
+                window.clearInterval(musicFadeTimer);
+                musicFadeTimer = null;
+                if (target === 0) el.pause();
             }
+        }, 50);
+    }
 
-            scheduleNextPhrase();
-        }, 4200 + Math.random() * 2600);
+    // Called once per level start (see startLevel() / setLevelTrack below) -- always resets
+    // playback to the start of the chosen track for that level, rather than continuing
+    // wherever the previous level's track left off.
+    function setTrack(src) {
+        const el = ensureMusicEl();
+        const absoluteSrc = new URL(src, window.location.href).href;
+        if (el.src === absoluteSrc && !el.paused) return; // same track already playing, leave it
+        el.src = src;
+        el.currentTime = 0;
+        if (enabled) {
+            el.volume = 0;
+            el.play().catch(() => {});
+            fadeMusicTo(MUSIC_VOLUME, 900);
+        }
     }
 
     function startAmbient() {
-        if (ambientNodes) return;
-        ambientGain.gain.cancelScheduledValues(ctx.currentTime);
-        ambientGain.gain.setValueAtTime(ambientGain.gain.value, ctx.currentTime);
-        ambientGain.gain.linearRampToValueAtTime(1, ctx.currentTime + 1.4);
-
-        ambientNodes = {};
-        scheduleNextPhrase();
+        if (!musicEl || !musicEl.src) return; // no level track chosen yet (e.g. level-select screen)
+        musicEl.play().catch(() => {});
+        fadeMusicTo(MUSIC_VOLUME, 900);
     }
 
     function stopAmbient() {
-        if (phraseTimer) { window.clearTimeout(phraseTimer); phraseTimer = null; }
-        if (!ambientNodes) return;
-        const t0 = ctx.currentTime;
-        ambientGain.gain.cancelScheduledValues(t0);
-        ambientGain.gain.setValueAtTime(ambientGain.gain.value, t0);
-        ambientGain.gain.linearRampToValueAtTime(0, t0 + 0.5);
-        ambientNodes = null;
+        if (!musicEl) return;
+        fadeMusicTo(0, 400);
     }
 
     function setEnabled(next) {
@@ -610,6 +597,7 @@ const GameAudio = (function () {
     return {
         toggle: () => setEnabled(!enabled),
         isEnabled: () => enabled,
+        setLevelTrack: setTrack,
         select: sfxSelect,
         match: sfxMatch,
         streak: sfxStreak,
@@ -1106,6 +1094,13 @@ function startLevel(level) {
 
     const bgImage = BOARD_BG_IMAGES[(level.level - 1) % BOARD_BG_IMAGES.length];
     gameMain.style.setProperty('--board-bg-image', `url(${bgImage})`);
+
+    // Music pool is per JLPT tier (N4/N5 share one); cycle by position WITHIN that tier
+    // (0-9), not the global level number, so N4 and N5 each start their own pass through the
+    // shared lofi pool from track 0 rather than picking up wherever the other tier left off.
+    const musicPool = MUSIC_POOLS[level.jlpt];
+    const withinTierIndex = (level.level - 1) % 10;
+    GameAudio.setLevelTrack(musicPool[withinTierIndex % musicPool.length]);
 
     renderBoard();
     resetExamplePanel();
