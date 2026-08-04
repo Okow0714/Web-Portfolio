@@ -3,24 +3,16 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Phonetics Family - Sarantsatsral Ganzorig</title>
+    <title>Grammar Connect - Sarantsatsral Ganzorig</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Explore kanji grouped by shared phonetic component (on'yomi-sharing families), split by JLPT level and ranked by real usage frequency.">
+    <meta name="description" content="Transform a Japanese sentence's grammar into a same-meaning alternative, picked from a bank of real JLPT grammar points. Foundation (N5-N3) and Advanced (N2-N1) tracks, 20 levels each.">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="phonetics.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700;900&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="grammar.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700;900&family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Serif+JP:wght@600;700;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Animated Background -->
-    <div class="background-animation">
-        <div class="floating-shape shape-1"></div>
-        <div class="floating-shape shape-2"></div>
-        <div class="floating-shape shape-3"></div>
-        <div class="floating-shape shape-4"></div>
-    </div>
-
     <div class="container">
         <!-- Header: one row - brand (home link), section nav, account menu -->
         <div class="site-header-wrap">
@@ -62,10 +54,10 @@
                         <a href="reading.html" class="nav-trigger">Dokkai Reader</a>
                     </div>
                     <div class="nav-item">
-                        <a href="phonetics.html" class="nav-trigger nav-current">Phonetics Family</a>
+                        <a href="phonetics.html" class="nav-trigger">Phonetics Family</a>
                     </div>
                     <div class="nav-item">
-                        <a href="grammar.html" class="nav-trigger">Grammar Connect<span class="nav-caret" aria-hidden="true">&#9662;</span></a>
+                        <a href="grammar.html" class="nav-trigger nav-current">Grammar Connect<span class="nav-caret" aria-hidden="true">&#9662;</span></a>
                         <div class="nav-dropdown">
                             <a href="grammar.html">All Levels</a>
                             <a href="grammar.html?track=foundation">Foundation · N5-N3</a>
@@ -139,77 +131,97 @@
             </div>
         </div>
 
-        <main class="phonetics-main">
-            <div class="phonetics-layout">
-                <!-- Sidebar: page intro + persistent JLPT level nav. Stays visible/usable from
-                     both the family-list view and the family-tree view — clicking a level here
-                     always jumps straight to that level's family list. -->
-                <aside class="phonetics-sidebar">
-                    <button type="button" id="phonetics-title-trigger" class="phonetics-title-trigger" aria-haspopup="dialog" title="What's a phonetic component?">
-                        <h1 class="phonetics-title">Phonetics Family</h1>
-                        <span class="phonetics-title-info" aria-hidden="true">&#9432;</span>
-                    </button>
-                    <p class="phonetics-subtitle">Kanji that share a phonetic component often share an on'yomi reading too — learn one, and you get a running start on the rest of its family. Pick a JLPT level to see its phonetic families, ranked by how often their most common member actually shows up in real Japanese text.</p>
-                    <button type="button" id="phonetics-info-btn" class="ghost-btn phonetics-info-btn">&#9432; What's a phonetic component?</button>
-                    <nav class="level-nav" id="phonetics-level-nav" aria-label="JLPT level"></nav>
-                    <!-- Data-source attributions moved to the sitewide footer: Word Match uses the
-                         same Tatoeba sentences, so CC BY / CC BY-SA credit belongs on every page,
-                         not only in this sidebar. -->
-                </aside>
-
-                <div class="phonetics-content">
-                    <!-- Family list within a level -->
-                    <section id="family-list-section" class="phonetics-section">
-                        <h2 id="family-list-title" class="phonetics-title"></h2>
-                        <p id="family-list-subtitle" class="phonetics-subtitle"></p>
-                        <div class="family-list" id="family-list"></div>
-                    </section>
-
-                    <!-- Family tree -->
-                    <section id="family-tree-section" class="phonetics-section hidden">
-                        <button id="family-tree-back-btn" class="ghost-btn" type="button">&larr; Families</button>
-                        <div class="tree-wrap" id="tree-wrap"></div>
-                    </section>
+        <main class="grammar-main">
+            <!-- Level select -->
+            <section id="gc-select-section" class="gc-section">
+                <div class="gc-night-sky" aria-hidden="true">
+                    <div class="gc-stars" id="gc-stars"></div>
+                    <div class="gc-moon"></div>
                 </div>
-            </div>
+                <div class="gc-select-content">
+                    <div class="gc-hud-row">
+                        <div>
+                            <h1 class="gc-title">文法つなぎ<span class="gc-title-sub">Grammar Connect</span></h1>
+                            <p class="gc-subtitle">A sentence appears with one grammar point underlined. Tap the tile that replaces it without changing what the sentence means — the word transforms in place, and the finished sentence (with its translation) drops into the cleared list at the side. Ten sentences a level, twenty options a sentence, twenty levels a track.</p>
+                        </div>
+                    </div>
+                    <p id="gc-guest-hint" class="gc-guest-hint hidden">Log in to save your progress across visits.</p>
+
+                    <div class="gc-diff-tabs" id="gc-diff-tabs" role="tablist" aria-label="Difficulty track"></div>
+                    <div class="gc-level-grid" id="gc-level-grid"></div>
+
+                    <details class="photo-credits" id="gc-photo-credits">
+                        <summary>Photo credits — night skyline photography</summary>
+                        <ul id="gc-photo-credits-list"></ul>
+                        <p class="photo-credits-note">All sourced from Wikimedia Commons, resized and re-compressed for use here; no other changes made.</p>
+                    </details>
+                </div>
+            </section>
+
+            <!-- Match -->
+            <section id="gc-match-section" class="gc-section hidden">
+                <div class="gc-topbar">
+                    <div class="gc-topbar-left">
+                        <button id="gc-back-btn" class="ghost-btn" type="button">&larr; Levels</button>
+                        <div class="gc-level-label" id="gc-level-label"></div>
+                    </div>
+                    <div class="gc-topbar-stats">
+                        <span class="gc-stat gc-stat-timer"><span class="v" id="gc-timer">03:00</span><span class="k">Time</span></span>
+                        <span class="gc-stat"><span class="v" id="gc-cleared-count">0/10</span><span class="k">Cleared</span></span>
+                        <span class="gc-stat"><span class="v" id="gc-mistake-count">0</span><span class="k">Mistakes</span></span>
+                    </div>
+                </div>
+                <div class="gc-match-body">
+                    <div class="gc-match-main">
+                        <div class="gc-progress-dots" id="gc-progress-dots"></div>
+                        <div class="gc-sentence-card">
+                            <p class="gc-sentence-jp" id="gc-sentence-jp"></p>
+                        </div>
+                        <p class="gc-tile-hint" id="gc-tile-hint"></p>
+                        <div class="gc-tile-bank" id="gc-tile-bank"></div>
+                    </div>
+                    <div class="gc-match-side">
+                        <div class="gc-side-label">Cleared</div>
+                        <div id="gc-cleared-list" class="gc-cleared-list"></div>
+                    </div>
+                </div>
+            </section>
         </main>
 
-        <!-- Phonetic component explainer modal — trigger: page H1 or the dedicated info button only -->
-        <div id="phonetics-info-modal" class="modal-overlay hidden">
-            <div class="modal-card phonetics-info-card">
-                <button id="phonetics-info-close" class="modal-close" type="button" aria-label="Close">&times;</button>
-                <h3>What's a Phonetic Component?</h3>
-                <div class="morph-demo">
-                    <div class="morph-stages" id="morph-stages">
-                        <div class="morph-stage" data-stage="component">
-                            <div class="morph-glyph morph-glyph-component">相</div>
-                            <p class="morph-caption">component</p>
-                        </div>
-                        <div class="morph-stage" data-stage="phonetic">
-                            <div class="morph-glyph-row">
-                                <div class="morph-glyph">相</div>
-                                <div class="morph-reading">ソウ</div>
-                            </div>
-                            <p class="morph-caption">phonetic (相 &middot; ソウ)</p>
-                        </div>
-                        <div class="morph-stage" data-stage="kanji">
-                            <p class="morph-sub">相 + 心</p>
-                            <div class="morph-glyph">想</div>
-                            <p class="morph-caption">kanji (想 &middot; そう &middot; to think/imagine)</p>
-                        </div>
-                        <div class="morph-stage" data-stage="combination">
-                            <div class="morph-glyph morph-glyph-word">想像</div>
-                            <p class="morph-caption">combination (想像 &middot; そうぞう &middot; imagination)</p>
-                        </div>
+        <!-- Start Modal -->
+        <div id="gc-start-modal" class="modal-overlay hidden">
+            <div class="modal-card">
+                <h3 id="gc-start-modal-title">Foundation · Level 1</h3>
+                <p id="gc-start-modal-desc">Ten sentences, twenty grammar tiles each. Tap the tile that keeps the sentence's meaning unchanged. The timer starts when you hit Start.</p>
+                <div class="result-actions">
+                    <button id="gc-start-modal-btn" class="auth-btn" type="button">Start Match</button>
+                    <button id="gc-start-modal-back-btn" class="auth-btn auth-btn-outline" type="button">Back to Levels</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Result Modal -->
+        <div id="gc-result-modal" class="modal-overlay hidden">
+            <div class="modal-card">
+                <button id="gc-result-modal-close" class="modal-close" type="button" aria-label="Close">&times;</button>
+                <h3 id="gc-result-title">Level Complete!</h3>
+                <div class="result-stats">
+                    <div class="result-stat">
+                        <span class="result-label">Time</span>
+                        <span id="gc-result-time" class="result-value"></span>
                     </div>
-                    <div class="morph-dots" id="morph-dots">
-                        <span class="morph-dot" data-dot="0"></span>
-                        <span class="morph-dot" data-dot="1"></span>
-                        <span class="morph-dot" data-dot="2"></span>
-                        <span class="morph-dot" data-dot="3"></span>
+                    <div class="result-stat">
+                        <span class="result-label">Mistakes</span>
+                        <span id="gc-result-mistakes" class="result-value"></span>
                     </div>
                 </div>
-                <p class="phonetics-info-text">A "phonetic component" is a recurring part inside a kanji that hints at its Chinese-derived on'yomi reading, rather than its meaning. Kanji sharing the same phonetic component — like 相, 想, and 霜 above — often sound alike even though they mean very different things, because the component was originally chosen for its sound. A separate "meaning radical" (like 心, heart, tucked into 想) is what actually carries the sense.</p>
+                <p id="gc-result-best" class="result-best"></p>
+                <p id="gc-result-save-status" class="result-save-status hidden"></p>
+                <div class="result-actions">
+                    <button id="gc-result-login-btn" class="auth-btn hidden" type="button">Log In to Save</button>
+                    <button id="gc-result-replay-btn" class="auth-btn" type="button">Play Again</button>
+                    <button id="gc-result-levels-btn" class="auth-btn auth-btn-outline" type="button">Back to Levels</button>
+                </div>
             </div>
         </div>
     </div>
@@ -257,6 +269,14 @@
                             <a href="https://github.com/scriptin/kanji-frequency" target="_blank" rel="noopener">kanji-frequency</a>
                             <span class="footer-attrib-meta">CC BY 4.0 · usage ranking</span>
                         </li>
+                        <li class="footer-attrib">
+                            <a href="game.html#photo-credits">Castle &amp; mountain photography</a>
+                            <span class="footer-attrib-meta">CC0 / CC BY / CC BY-SA · Wikimedia Commons, full credits on the Word Game page</span>
+                        </li>
+                        <li class="footer-attrib">
+                            <a href="grammar.html#gc-photo-credits">Night skyline photography</a>
+                            <span class="footer-attrib-meta">CC0 / CC BY / CC BY-SA · Wikimedia Commons, full credits on the Grammar Connect page</span>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -274,8 +294,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <script src="supabase-config.js"></script>
     <script src="auth-shared.js"></script>
-    <script src="phonetics-data.js"></script>
-    <script src="phonetics.js"></script>
+    <script src="grammar-data.js"></script>
+    <script src="grammar.js"></script>
 </body>
 
 </html>

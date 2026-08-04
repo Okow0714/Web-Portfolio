@@ -1,0 +1,581 @@
+/* Grammar Connect — styles specific to grammar.html.
+   "Ai to Shu" (藍と朱, indigo and vermillion): a deep indigo-dye ground with a hanko-stamp
+   red accent, distinct from Word Match's violet/gold hanafuda theme, Phonetics' light
+   jade/copper, the Reader's warm gold, and the portfolio's cool blue-gray. Like game.css this
+   page commits to its own semantically-named token set (--ai/--shu/--washi/--sumi/...) rather
+   than reusing style.css's generic --accent/--bg-page names, since "ink on dyed cloth" is a
+   distinct enough visual identity to deserve its own vocabulary (see game.css's --gold/
+   --crimson/--wisteria for the same reasoning). All tokens live under .grammar-main, not
+   :root, so nothing leaks into the shared header, footer, or the light auth/account modals. */
+
+/* Full-bleed body background, same reasoning as game.css's body:has(.game-main) rule: body
+   can't read a descendant's custom properties, so it needs the single deepest color directly
+   rather than the whole token block. */
+body:has(.grammar-main) {
+    background: #12192b;
+}
+
+.grammar-main {
+    --ai: #1f2f52;
+    --ai-light: #4a63a0;
+    --ai-pale: #7d93c9;
+    --shu: #bc4430;
+    --shu-light: #e0705a;
+    --washi: #ece5d3;
+    --card: #241f38;
+    --card-edge: rgba(241, 237, 224, 0.14);
+    --ink: #f1ede0;
+    --ink-soft: rgba(241, 237, 224, 0.55);
+    --ink-faint: rgba(241, 237, 224, 0.32);
+    --good: #4f8a68;
+    --good-bright: #7fbf9e;
+
+    --font-jp: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "MS Mincho", serif;
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-pop: cubic-bezier(0.22, 1, 0.36, 1);
+
+    position: relative;
+    isolation: isolate;
+    padding: 89px 40px 60px;
+    min-height: 100vh;
+    background: radial-gradient(ellipse 120% 60% at 50% -10%, #1c2542 0%, #161d38 45%, #12192b 100%);
+    color: var(--ink);
+}
+
+.gc-section.hidden { display: none; }
+
+/* ---------------------------------------------------------------------
+   Level select — night Tokyo skyline
+   --------------------------------------------------------------------- */
+#gc-select-section {
+    position: relative;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 40px clamp(20px, 4vw, 48px) 48px;
+    overflow: hidden;
+}
+
+.gc-night-sky {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+        linear-gradient(180deg, rgba(18, 25, 43, 0.35) 0%, rgba(18, 25, 43, 0.72) 55%, #12192b 100%),
+        url('images/grammar-bg/tokyo-night.jpg');
+    background-size: cover;
+    background-position: center 30%;
+}
+
+.gc-stars span {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.65);
+}
+
+.gc-moon {
+    position: absolute;
+    top: 28px;
+    right: 56px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #f3e6c8;
+    box-shadow: 0 0 36px 6px rgba(243, 230, 200, 0.3);
+}
+
+.gc-select-content {
+    position: relative;
+    z-index: 1;
+}
+
+.gc-hud-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.gc-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+    margin: 0 0 10px;
+    color: var(--ink);
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.4);
+}
+
+.gc-title-sub {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--shu-light);
+    letter-spacing: 0.04em;
+    margin-top: 4px;
+}
+
+.gc-subtitle {
+    max-width: 62ch;
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.gc-guest-hint {
+    margin: 16px 0 0;
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+}
+
+.gc-diff-tabs {
+    display: flex;
+    gap: 12px;
+    margin: 28px 0 28px;
+    flex-wrap: wrap;
+}
+
+.gc-diff-swatch {
+    flex: 1;
+    min-width: 220px;
+    background: rgba(20, 27, 51, 0.72);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    border: 1px solid var(--card-edge);
+    border-left: 4px solid var(--card-edge);
+    padding: 16px 20px;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    color: inherit;
+    transition: border-color 0.2s var(--ease-out);
+}
+
+.gc-diff-swatch.active { border-left-color: var(--shu-light); }
+
+.gc-diff-swatch .dname {
+    display: block;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    margin-bottom: 3px;
+}
+
+.gc-diff-swatch.active .dname { color: var(--ink); }
+
+.gc-diff-swatch .drange {
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.02em;
+}
+
+.gc-level-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 14px;
+}
+
+.gc-level-card {
+    background: rgba(20, 27, 51, 0.72);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    border: 1px solid var(--card-edge);
+    padding: 16px 14px;
+    cursor: pointer;
+    position: relative;
+    text-align: left;
+    font-family: inherit;
+    color: inherit;
+    transition: transform 0.15s var(--ease-out), border-color 0.15s var(--ease-out);
+}
+
+.gc-level-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(241, 237, 224, 0.3);
+}
+
+.gc-level-card .lnum {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.4rem;
+    color: var(--ink);
+}
+
+.gc-level-card .lname {
+    font-size: 0.7rem;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 2px;
+}
+
+.gc-level-card .lstamp {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--good-bright);
+    color: var(--good-bright);
+    font-family: var(--font-jp);
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ---------------------------------------------------------------------
+   Photo credits — reuses game.css's pattern (page-scoped, not shared in
+   style.css), recolored for this page's ink/washi palette.
+   --------------------------------------------------------------------- */
+.gc-select-content .photo-credits {
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(241, 237, 224, 0.14);
+}
+
+.gc-select-content .photo-credits summary {
+    cursor: pointer;
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+    font-weight: 600;
+    user-select: none;
+}
+
+.gc-select-content .photo-credits summary:hover { color: var(--ink); }
+
+.gc-select-content .photo-credits ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 6px 24px;
+    margin: 14px 0 0;
+    padding: 0;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+}
+
+.gc-select-content .photo-credits ul a { color: var(--ink); text-decoration: none; }
+.gc-select-content .photo-credits ul a:hover { color: var(--shu-light); text-decoration: underline; }
+
+.gc-select-content .photo-credits-note {
+    margin: 14px 0 0;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    max-width: 62ch;
+}
+
+/* ---------------------------------------------------------------------
+   Match screen
+   --------------------------------------------------------------------- */
+#gc-match-section {
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.gc-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--card-edge);
+    margin-bottom: 24px;
+}
+
+.gc-topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.gc-level-label {
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.gc-topbar-stats {
+    display: flex;
+    gap: 24px;
+    font-variant-numeric: tabular-nums;
+}
+
+.gc-stat { text-align: right; }
+
+.gc-stat .v {
+    display: block;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.2rem;
+    color: var(--ink);
+}
+
+.gc-stat .k {
+    font-size: 0.63rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-faint);
+}
+
+.gc-stat-timer .v { color: var(--shu-light); }
+.gc-stat-timer.low-time .v { animation: gc-pulse 1s ease-in-out infinite; color: var(--shu-light); }
+
+@keyframes gc-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+.gc-match-body {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 32px;
+    align-items: start;
+}
+
+.gc-match-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 40px;
+}
+
+.gc-progress-dots {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 28px;
+}
+
+.gc-progress-dots span {
+    width: 7px;
+    height: 7px;
+    background: rgba(241, 237, 224, 0.22);
+    transition: background 0.2s var(--ease-out);
+}
+
+.gc-progress-dots span.done { background: var(--good-bright); }
+.gc-progress-dots span.now { background: var(--shu-light); }
+
+.gc-sentence-card {
+    background: var(--card);
+    border: 1px solid var(--card-edge);
+    padding: 36px 40px;
+    max-width: 640px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 20px 50px -24px rgba(0, 0, 0, 0.6);
+}
+
+.gc-sentence-jp {
+    font-family: var(--font-jp);
+    font-size: clamp(1.25rem, 2.4vw, 1.55rem);
+    line-height: 2.5;
+    letter-spacing: 0.02em;
+    margin: 0;
+}
+
+.gc-sentence-jp rt {
+    font-size: 0.5rem;
+    color: var(--ink-soft);
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.gc-old-grammar {
+    border-bottom: 2px solid var(--shu-light);
+    padding-bottom: 3px;
+    transition: color 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
+}
+
+.gc-old-grammar.swapping {
+    color: var(--good-bright);
+    border-color: var(--good-bright);
+}
+
+.gc-tile-hint {
+    margin: 26px 0 16px;
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-faint);
+    text-align: center;
+}
+
+.gc-tile-bank {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    width: 100%;
+    max-width: 640px;
+}
+
+.gc-tile {
+    background: var(--card);
+    border: 1px solid var(--card-edge);
+    color: var(--ink);
+    padding: 12px 6px;
+    font-family: var(--font-jp);
+    font-size: 0.96rem;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.12s var(--ease-out), transform 0.12s var(--ease-out), opacity 0.2s var(--ease-out), background 0.15s var(--ease-out);
+}
+
+.gc-tile:hover:not(.gc-tile-wrong):not(.gc-tile-disabled) {
+    border-color: var(--shu-light);
+    transform: translateY(-1px);
+}
+
+.gc-tile.gc-tile-wrong {
+    animation: gc-shake 0.35s var(--ease-out);
+    border-color: var(--shu);
+    background: rgba(188, 68, 48, 0.18);
+}
+
+.gc-tile.gc-tile-disabled {
+    opacity: 0.25;
+    pointer-events: none;
+}
+
+.gc-tile.gc-tile-correct {
+    border-color: var(--good-bright);
+    background: rgba(79, 138, 104, 0.3);
+    pointer-events: none;
+}
+
+@keyframes gc-shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
+}
+
+.gc-match-side {
+    background: rgba(0, 0, 0, 0.18);
+    border: 1px solid var(--card-edge);
+    padding: 22px 20px;
+    max-height: 640px;
+    overflow-y: auto;
+}
+
+.gc-side-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-faint);
+    margin-bottom: 14px;
+}
+
+.gc-cleared-empty {
+    font-size: 0.82rem;
+    color: var(--ink-faint);
+    line-height: 1.5;
+}
+
+.gc-cleared-item {
+    padding: 13px 0;
+    border-bottom: 1px solid rgba(241, 237, 224, 0.1);
+    animation: gc-drop-in 0.4s var(--ease-pop);
+}
+
+.gc-cleared-item:first-child { padding-top: 0; }
+
+@keyframes gc-drop-in {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.gc-cleared-item .swap-line {
+    font-size: 0.85rem;
+    font-family: var(--font-jp);
+    margin-bottom: 6px;
+}
+
+.gc-cleared-item .old { color: var(--ink-faint); text-decoration: line-through; }
+.gc-cleared-item .arrow { color: var(--shu-light); margin: 0 6px; font-family: 'IBM Plex Sans', sans-serif; }
+.gc-cleared-item .new { color: var(--good-bright); font-weight: 600; }
+.gc-cleared-item .en {
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin: 0 0 4px;
+}
+.gc-cleared-item .why {
+    font-size: 0.73rem;
+    color: var(--ink-faint);
+    line-height: 1.45;
+    margin: 0;
+}
+
+/* ---------------------------------------------------------------------
+   Start / Result modals — dark themed, scoped by ID (same pattern as
+   game.css's #start-modal/#result-modal) so the shared light auth/account
+   modals elsewhere on this page are untouched.
+   --------------------------------------------------------------------- */
+#gc-start-modal .modal-card,
+#gc-result-modal .modal-card {
+    background: linear-gradient(180deg, #241f38, #1a1730);
+    border: 1px solid #bc4430;
+    box-shadow: 0 0 60px rgba(188, 68, 48, 0.18), 0 30px 70px -20px rgba(0, 0, 0, 0.8);
+    color: #f1ede0;
+}
+
+#gc-start-modal .modal-card h3,
+#gc-result-modal .modal-card h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    color: #e0705a;
+}
+
+#gc-start-modal .modal-card p,
+#gc-result-modal .modal-card p {
+    color: rgba(241, 237, 224, 0.6);
+}
+
+#gc-result-modal .modal-close { color: rgba(241, 237, 224, 0.6); }
+
+#gc-result-modal .result-stat {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(241, 237, 224, 0.14);
+}
+
+#gc-result-modal .result-value { color: #e0705a; }
+#gc-result-modal .result-label { color: rgba(241, 237, 224, 0.6); }
+#gc-result-modal .result-best { color: rgba(241, 237, 224, 0.6); }
+#gc-result-modal .result-save-status { color: #7fbf9e; }
+
+#gc-start-modal .auth-btn,
+#gc-result-modal .auth-btn {
+    background: linear-gradient(135deg, #bc4430, #8f3122);
+    border: 1px solid #bc4430;
+    color: #f1ede0;
+}
+
+#gc-start-modal .auth-btn:hover,
+#gc-result-modal .auth-btn:hover {
+    background: linear-gradient(135deg, #e0705a, #bc4430);
+}
+
+#gc-start-modal .auth-btn-outline,
+#gc-result-modal .auth-btn-outline {
+    background: transparent;
+    color: #e0705a;
+    border-color: #bc4430;
+}
+
+#gc-start-modal .auth-btn-outline:hover,
+#gc-result-modal .auth-btn-outline:hover {
+    background: rgba(188, 68, 48, 0.15);
+    color: #e0705a;
+}
+
+/* ---------------------------------------------------------------------
+   Responsive
+   --------------------------------------------------------------------- */
+@media (max-width: 968px) {
+    .gc-match-body { grid-template-columns: 1fr; }
+    .gc-match-side { max-height: none; }
+    .gc-tile-bank { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 620px) {
+    .grammar-main { padding: 89px 18px 48px; }
+    .gc-tile-bank { grid-template-columns: repeat(3, 1fr); }
+    .gc-sentence-card { padding: 26px 22px; }
+}

@@ -149,13 +149,37 @@ create policy "Users manage their own reading progress"
     with check (auth.uid() = user_id);
 
 -- ---------------------------------------------------------------------------
+-- grammar_progress: per-user best result for each Grammar Connect level. Two tracks
+-- (foundation = N5-N3, advanced = N2-N1), 20 levels each, same track vocabulary as
+-- reading_progress above but its own table since level numbering restarts per track
+-- (1-20 on each) rather than sharing one global range like game_progress's 1-50.
+-- ---------------------------------------------------------------------------
+create table public.grammar_progress (
+    user_id uuid not null references auth.users on delete cascade,
+    track text not null check (track in ('foundation', 'advanced')),
+    level smallint not null check (level between 1 and 20),
+    completed boolean not null default false,
+    best_time_seconds integer,
+    best_mistakes integer,
+    updated_at timestamptz not null default now(),
+    primary key (user_id, track, level)
+);
+
+alter table public.grammar_progress enable row level security;
+
+create policy "Users manage their own grammar progress"
+    on public.grammar_progress for all
+    using (auth.uid() = user_id)
+    with check (auth.uid() = user_id);
+
+-- ---------------------------------------------------------------------------
 -- delete_own_account: lets a logged-in user permanently delete their own
 -- account. Runs as SECURITY DEFINER (elevated privileges) because the
 -- anon/authenticated roles can't delete from auth.users directly — but the
 -- auth.uid() check means it only ever touches the caller's own row. Deleting
 -- from auth.users cascades to profiles/comments/bookmarks/contact_messages/
--- game_progress/reading_progress via the "on delete cascade" foreign keys
--- already on those tables, so this one call removes everything.
+-- game_progress/reading_progress/grammar_progress via the "on delete cascade" foreign
+-- keys already on those tables, so this one call removes everything.
 -- ---------------------------------------------------------------------------
 create or replace function public.delete_own_account()
 returns void
