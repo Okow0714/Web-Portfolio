@@ -3,24 +3,16 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Phonetics Family - Sarantsatsral Ganzorig</title>
+    <title>Wakan Dictionary - Sarantsatsral Ganzorig</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Explore kanji grouped by shared phonetic component (on'yomi-sharing families), split by JLPT level and ranked by real usage frequency.">
+    <meta name="description" content="Look up the Sino-Japanese (kango) counterpart to a native Japanese (wago) word, or vice versa, with irregular sonkeigo/kenjougo honorific forms for verbs that have them.">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="phonetics.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700;900&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dictionary.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700;900&family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Serif+JP:wght@600;700;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Animated Background -->
-    <div class="background-animation">
-        <div class="floating-shape shape-1"></div>
-        <div class="floating-shape shape-2"></div>
-        <div class="floating-shape shape-3"></div>
-        <div class="floating-shape shape-4"></div>
-    </div>
-
     <div class="container">
         <!-- Header: one row - brand (home link), section nav, account menu -->
         <div class="site-header-wrap">
@@ -62,7 +54,7 @@
                         <a href="reading.html" class="nav-trigger">Dokkai Reader</a>
                     </div>
                     <div class="nav-item">
-                        <a href="phonetics.html" class="nav-trigger nav-current">Phonetics Family</a>
+                        <a href="phonetics.html" class="nav-trigger">Phonetics Family</a>
                     </div>
                     <div class="nav-item">
                         <a href="grammar.html" class="nav-trigger">Grammar Connect<span class="nav-caret" aria-hidden="true">&#9662;</span></a>
@@ -73,7 +65,7 @@
                         </div>
                     </div>
                     <div class="nav-item">
-                        <a href="dictionary.html" class="nav-trigger">Wakan Dictionary</a>
+                        <a href="dictionary.html" class="nav-trigger nav-current">Wakan Dictionary</a>
                     </div>
                 </nav>
 
@@ -142,79 +134,25 @@
             </div>
         </div>
 
-        <main class="phonetics-main">
-            <div class="phonetics-layout">
-                <!-- Sidebar: page intro + persistent JLPT level nav. Stays visible/usable from
-                     both the family-list view and the family-tree view — clicking a level here
-                     always jumps straight to that level's family list. -->
-                <aside class="phonetics-sidebar">
-                    <button type="button" id="phonetics-title-trigger" class="phonetics-title-trigger" aria-haspopup="dialog" title="What's a phonetic component?">
-                        <h1 class="phonetics-title">Phonetics Family</h1>
-                        <span class="phonetics-title-info" aria-hidden="true">&#9432;</span>
-                    </button>
-                    <p class="phonetics-subtitle">Kanji that share a phonetic component often share an on'yomi reading too — learn one, and you get a running start on the rest of its family. Pick a JLPT level to see its phonetic families, ranked by how often their most common member actually shows up in real Japanese text.</p>
-                    <button type="button" id="phonetics-info-btn" class="ghost-btn phonetics-info-btn">&#9432; What's a phonetic component?</button>
-                    <nav class="level-nav" id="phonetics-level-nav" aria-label="JLPT level"></nav>
-                    <!-- Data-source attributions moved to the sitewide footer: Word Match uses the
-                         same Tatoeba sentences, so CC BY / CC BY-SA credit belongs on every page,
-                         not only in this sidebar. -->
-                </aside>
-
-                <div class="phonetics-content">
-                    <!-- Family list within a level -->
-                    <section id="family-list-section" class="phonetics-section">
-                        <h2 id="family-list-title" class="phonetics-title"></h2>
-                        <p id="family-list-subtitle" class="phonetics-subtitle"></p>
-                        <div class="family-list" id="family-list"></div>
-                    </section>
-
-                    <!-- Family tree -->
-                    <section id="family-tree-section" class="phonetics-section hidden">
-                        <button id="family-tree-back-btn" class="ghost-btn" type="button">&larr; Families</button>
-                        <div class="tree-wrap" id="tree-wrap"></div>
-                    </section>
+        <main class="dictionary-main">
+            <div class="dict-hud-row">
+                <div>
+                    <h1 class="dict-title">和漢辞典<span class="dict-title-sub">Wakan Dictionary</span></h1>
+                    <p class="dict-subtitle">Every entry pairs a Sino-Japanese word (漢語, kango) with its native-Japanese equivalent (和語, wago) — search or filter to browse. Verbs with an irregular respectful (尊敬語) or humble (謙譲語) form show it alongside the plain word.</p>
                 </div>
             </div>
+
+            <div class="dict-controls">
+                <div class="dict-search-wrap">
+                    <input type="text" id="dict-search" class="dict-search" placeholder="Search by kanji, kana, or English…" autocomplete="off">
+                    <span class="dict-search-count" id="dict-count"></span>
+                </div>
+                <div class="dict-filters" id="dict-filters" role="tablist" aria-label="Filter by part of speech"></div>
+            </div>
+
+            <div class="dict-list" id="dict-list"></div>
+            <p class="dict-empty hidden" id="dict-empty">No entries match your search.</p>
         </main>
-
-        <!-- Phonetic component explainer modal — trigger: page H1 or the dedicated info button only -->
-        <div id="phonetics-info-modal" class="modal-overlay hidden">
-            <div class="modal-card phonetics-info-card">
-                <button id="phonetics-info-close" class="modal-close" type="button" aria-label="Close">&times;</button>
-                <h3>What's a Phonetic Component?</h3>
-                <div class="morph-demo">
-                    <div class="morph-stages" id="morph-stages">
-                        <div class="morph-stage" data-stage="component">
-                            <div class="morph-glyph morph-glyph-component">相</div>
-                            <p class="morph-caption">component</p>
-                        </div>
-                        <div class="morph-stage" data-stage="phonetic">
-                            <div class="morph-glyph-row">
-                                <div class="morph-glyph">相</div>
-                                <div class="morph-reading">ソウ</div>
-                            </div>
-                            <p class="morph-caption">phonetic (相 &middot; ソウ)</p>
-                        </div>
-                        <div class="morph-stage" data-stage="kanji">
-                            <p class="morph-sub">相 + 心</p>
-                            <div class="morph-glyph">想</div>
-                            <p class="morph-caption">kanji (想 &middot; そう &middot; to think/imagine)</p>
-                        </div>
-                        <div class="morph-stage" data-stage="combination">
-                            <div class="morph-glyph morph-glyph-word">想像</div>
-                            <p class="morph-caption">combination (想像 &middot; そうぞう &middot; imagination)</p>
-                        </div>
-                    </div>
-                    <div class="morph-dots" id="morph-dots">
-                        <span class="morph-dot" data-dot="0"></span>
-                        <span class="morph-dot" data-dot="1"></span>
-                        <span class="morph-dot" data-dot="2"></span>
-                        <span class="morph-dot" data-dot="3"></span>
-                    </div>
-                </div>
-                <p class="phonetics-info-text">A "phonetic component" is a recurring part inside a kanji that hints at its Chinese-derived on'yomi reading, rather than its meaning. Kanji sharing the same phonetic component — like 相, 想, and 霜 above — often sound alike even though they mean very different things, because the component was originally chosen for its sound. A separate "meaning radical" (like 心, heart, tucked into 想) is what actually carries the sense.</p>
-            </div>
-        </div>
     </div>
 
     <footer class="site-footer">
@@ -261,6 +199,14 @@
                             <a href="https://github.com/scriptin/kanji-frequency" target="_blank" rel="noopener">kanji-frequency</a>
                             <span class="footer-attrib-meta">CC BY 4.0 · usage ranking</span>
                         </li>
+                        <li class="footer-attrib">
+                            <a href="game.html#photo-credits">Castle &amp; mountain photography</a>
+                            <span class="footer-attrib-meta">CC0 / CC BY / CC BY-SA · Wikimedia Commons, full credits on the Word Game page</span>
+                        </li>
+                        <li class="footer-attrib">
+                            <a href="grammar.html#gc-photo-credits">Night skyline photography</a>
+                            <span class="footer-attrib-meta">CC0 / CC BY / CC BY-SA · Wikimedia Commons, full credits on the Grammar Connect page</span>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -278,8 +224,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <script src="supabase-config.js"></script>
     <script src="auth-shared.js"></script>
-    <script src="phonetics-data.js"></script>
-    <script src="phonetics.js"></script>
+    <script src="dictionary-data.js"></script>
+    <script src="dictionary.js"></script>
 </body>
 
 </html>
