@@ -22,7 +22,8 @@ const TIME_PENALTY_PER_MISTAKE = 10; // seconds removed for a wrong tile tap
 const LOW_TIME_THRESHOLD = 30;
 const SENTENCES_PER_LEVEL = 10;
 const TRACKS = ['foundation', 'advanced'];
-const TRACK_LABEL = { foundation: 'Foundation', advanced: 'Advanced' };
+const TRACK_LABEL_KEY = { foundation: 'grammar.foundation', advanced: 'grammar.advanced' };
+function trackLabel(track) { return window.t(TRACK_LABEL_KEY[track]); }
 const TRACK_RANGE = { foundation: 'N5 – N3', advanced: 'N2 – N1' };
 
 let activeTrack = 'foundation'; // level-select screen: which track's 20 levels are shown
@@ -79,7 +80,7 @@ function renderDiffTabs() {
         tab.setAttribute('role', 'tab');
         tab.setAttribute('aria-selected', String(track === activeTrack));
         if (track === activeTrack) tab.classList.add('active');
-        tab.innerHTML = `<span class="dname">${TRACK_LABEL[track]}</span><span class="drange">${TRACK_RANGE[track]} · 20 levels</span>`;
+        tab.innerHTML = `<span class="dname">${escapeHtml(trackLabel(track))}</span><span class="drange">${TRACK_RANGE[track]} · ${escapeHtml(window.tf('grammar.levelsCount', { n: 20 }))}</span>`;
         tab.addEventListener('click', () => {
             if (activeTrack === track) return;
             activeTrack = track;
@@ -106,7 +107,7 @@ function renderLevelGrid() {
 
         card.innerHTML = `
             <span class="lnum">${String(levelNum).padStart(2, '0')}</span>
-            <span class="lname">${levelObj ? 'Level ' + levelNum : 'Coming soon'}</span>
+            <span class="lname">${escapeHtml(levelObj ? window.tf('game.levelN', { n: levelNum }) : window.t('grammar.comingSoon'))}</span>
             ${stamp}
         `;
         if (levelObj) {
@@ -140,8 +141,8 @@ function openLevel(track, levelNum) {
     clearedCount = 0;
     timeRemaining = MATCH_DURATION;
 
-    document.getElementById('gc-cleared-list').innerHTML = '<p class="gc-cleared-empty">Solved sentences (with their translation) will appear here as you go.</p>';
-    document.getElementById('gc-level-label').textContent = `${TRACK_LABEL[track]} · Level ${levelNum}`;
+    document.getElementById('gc-cleared-list').innerHTML = `<p class="gc-cleared-empty">${escapeHtml(window.t('grammar.clearedEmptyHint'))}</p>`;
+    document.getElementById('gc-level-label').textContent = window.tf('grammar.trackLevel', { track: trackLabel(track), n: levelNum });
     updateTopStats();
     renderTimerDisplay();
     renderSentence(0);
@@ -149,7 +150,7 @@ function openLevel(track, levelNum) {
     hideEl(document.getElementById('gc-select-section'));
     showEl(document.getElementById('gc-match-section'));
 
-    document.getElementById('gc-start-modal-title').textContent = `${TRACK_LABEL[track]} · Level ${levelNum}`;
+    document.getElementById('gc-start-modal-title').textContent = window.tf('grammar.trackLevel', { track: trackLabel(track), n: levelNum });
     showEl(document.getElementById('gc-start-modal'));
 }
 
@@ -208,8 +209,7 @@ function renderSentence(index) {
     const s = currentLevel.sentences[index];
     document.getElementById('gc-sentence-jp').innerHTML =
         s.prefix + `<span class="gc-old-grammar" id="gc-old-grammar">${s.old}</span>` + s.suffix;
-    document.getElementById('gc-tile-hint').textContent =
-        'Tap the tile that replaces the underlined part without changing the meaning';
+    document.getElementById('gc-tile-hint').textContent = window.t('grammar.tileHint');
     renderProgressDots();
     renderTileBank(s);
 }
@@ -324,23 +324,23 @@ function timeUp() {
 // state. No progress is ever saved on a timeout, matching Word Match's rule that best_time/
 // best_mistakes are only meaningful for an actual clear.
 function showResultModal(result, won) {
-    document.getElementById('gc-result-title').textContent = won ? 'Level Complete!' : "Time's Up!";
+    document.getElementById('gc-result-title').textContent = won ? window.t('game.levelComplete') : window.t('game.timesUp');
     document.getElementById('gc-result-time').textContent = formatTime(result.timeSeconds);
     document.getElementById('gc-result-mistakes').textContent = result.mistakes;
 
     const prevBest = progressCache[`${result.track}:${result.level}`];
     if (won) {
         document.getElementById('gc-result-best').textContent = (prevBest && prevBest.completed)
-            ? `Previous best: ${formatTime(prevBest.best_time_seconds)} · ${prevBest.best_mistakes} mistakes`
-            : 'First clear on this level!';
+            ? window.tf('grammar.previousBestMistakes', { time: formatTime(prevBest.best_time_seconds), mistakes: prevBest.best_mistakes })
+            : window.t('game.firstClear');
     } else {
         document.getElementById('gc-result-best').textContent =
-            `Cleared ${clearedCount} / ${SENTENCES_PER_LEVEL} sentences before time ran out.`;
+            window.tf('grammar.clearedBeforeTimeOut', { n: clearedCount, total: SENTENCES_PER_LEVEL });
     }
 
     const nextLevelObj = won ? getLevelData(result.track, result.level + 1) : null;
     resultPrimaryTarget = nextLevelObj ? { track: result.track, levelObj: nextLevelObj } : null;
-    document.getElementById('gc-result-replay-btn').textContent = resultPrimaryTarget ? 'Next Level' : 'Play Again';
+    document.getElementById('gc-result-replay-btn').textContent = resultPrimaryTarget ? window.t('game.nextLevel') : window.t('game.playAgain');
 
     hideEl(document.getElementById('gc-result-login-btn'));
     hideEl(document.getElementById('gc-result-save-status'));
@@ -381,7 +381,7 @@ async function saveProgress(session, result) {
     const { error } = await sb.from('grammar_progress').upsert(row, { onConflict: 'user_id,track,level' });
     if (!error) {
         progressCache[key] = row;
-        statusEl.textContent = isBetter ? 'New best saved!' : 'Result saved.';
+        statusEl.textContent = isBetter ? window.t('game.newBestSaved') : window.t('game.resultSaved');
         showEl(statusEl);
     }
 }
@@ -410,6 +410,12 @@ document.getElementById('gc-photo-credits-list').innerHTML = `
 // ---------------------------------------------------------------------------
 // Wiring
 // ---------------------------------------------------------------------------
+// See game.js's identical comment: data-i18n only covers text set once at parse time, so a
+// language switch needs these re-run to refresh JS-rendered dynamic text immediately.
+document.addEventListener('sitelangchange', () => {
+    if (!document.getElementById('gc-select-section').classList.contains('hidden')) renderLevelSelect();
+});
+
 document.getElementById('gc-back-btn').addEventListener('click', backToLevels);
 
 document.getElementById('gc-start-modal-btn').addEventListener('click', () => {

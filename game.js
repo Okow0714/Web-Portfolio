@@ -772,9 +772,9 @@ function timeUp() {
 }
 
 function updateStats() {
-    const pairsText = `${matchedCount} / ${totalPairs} pairs`;
+    const pairsText = window.tf('game.pairsCount', { n: matchedCount, total: totalPairs });
     document.getElementById('board-pairs').textContent = pairsText;
-    document.getElementById('board-moves').textContent = `${moves} moves`;
+    document.getElementById('board-moves').textContent = window.tf('game.movesCount', { n: moves });
     // Side-panel mirror (wide layout only, see .panel-wide-only) -- same values, same format
     // as #board-pairs above, just rendered a second time next to the board. Guarded since the
     // element is always in the DOM (mobile just hides it via CSS) but doesn't hurt to check.
@@ -1199,10 +1199,10 @@ function renderLevelGrid() {
         card.dataset.level = level.jlpt;
 
         const progress = progressCache[level.level];
-        let metaHtml = '<span>Not played yet</span>';
+        let metaHtml = `<span>${escapeHtml(window.t('game.notPlayedYet'))}</span>`;
         if (progress && progress.completed) {
-            metaHtml = `<span class="completed">&#10003; Completed</span>` +
-                `<span>Best: ${formatTime(progress.best_time_seconds)} &middot; ${progress.best_moves} moves</span>`;
+            metaHtml = `<span class="completed">&#10003; ${escapeHtml(window.t('game.completed'))}</span>` +
+                `<span>${escapeHtml(window.tf('game.bestTimeMoves', { time: formatTime(progress.best_time_seconds), moves: progress.best_moves }))}</span>`;
         }
 
         card.innerHTML = `
@@ -1257,9 +1257,9 @@ async function saveProgress(session, result) {
     const { error } = await sb.from('game_progress').upsert(row, { onConflict: 'user_id,level' });
     if (!error) {
         progressCache[result.level] = row;
-        statusEl.textContent = isBetter ? 'New best saved!' : 'Result saved.';
+        statusEl.textContent = isBetter ? window.t('game.newBestSaved') : window.t('game.resultSaved');
     } else {
-        statusEl.textContent = "Couldn't save your result — try again later.";
+        statusEl.textContent = window.t('game.saveResultFailed');
     }
     showEl(statusEl);
 }
@@ -1292,24 +1292,24 @@ let resultPrimaryTarget = null; // level object the result modal's primary butto
                                  // null means "replay the level just played" (result-replay-btn's
                                  // click handler falls back to currentLevel in that case)
 function showResultModal(result, won) {
-    document.getElementById('result-title').textContent = won ? 'Level Complete!' : "Time's Up!";
+    document.getElementById('result-title').textContent = won ? window.t('game.levelComplete') : window.t('game.timesUp');
     document.getElementById('result-time').textContent = formatTime(result.timeSeconds);
     document.getElementById('result-moves').textContent = result.moves;
 
     const prevBest = progressCache[result.level];
     if (won) {
         document.getElementById('result-best').textContent = (prevBest && prevBest.completed)
-            ? `Previous best: ${formatTime(prevBest.best_time_seconds)} · ${prevBest.best_moves} moves`
-            : 'First clear on this level!';
+            ? window.tf('game.previousBest', { time: formatTime(prevBest.best_time_seconds), moves: prevBest.best_moves })
+            : window.t('game.firstClear');
     } else {
         document.getElementById('result-best').textContent =
-            `Matched ${matchedCount} / ${totalPairs} pairs before time ran out.`;
+            window.tf('game.matchedBeforeTimeOut', { n: matchedCount, total: totalPairs });
     }
 
     // On a win, offer the next level in sequence instead of replaying the one just cleared --
     // there's no "next" after the last level (50), so that case falls back to Play Again.
     resultPrimaryTarget = won ? WORD_LEVELS.find(l => l.level === result.level + 1) || null : null;
-    document.getElementById('result-replay-btn').textContent = resultPrimaryTarget ? 'Next Level' : 'Play Again';
+    document.getElementById('result-replay-btn').textContent = resultPrimaryTarget ? window.t('game.nextLevel') : window.t('game.playAgain');
 
     hideEl(document.getElementById('result-login-btn'));
     hideEl(document.getElementById('result-save-status'));
@@ -1319,6 +1319,14 @@ function showResultModal(result, won) {
 // ---------------------------------------------------------------------------
 // Wiring
 // ---------------------------------------------------------------------------
+// i18n.js's data-i18n attributes only cover text set once at parse time -- these are
+// re-rendered by JS on every state change, so a language switch mid-game needs to re-run the
+// same render functions to pick up the new strings immediately, not just on next page load.
+document.addEventListener('sitelangchange', () => {
+    if (currentLevel) updateStats();
+    if (!document.getElementById('level-select-section').classList.contains('hidden')) renderLevelGrid();
+});
+
 document.getElementById('board-back-btn').addEventListener('click', backToLevels);
 document.getElementById('board-shuffle-btn').addEventListener('click', shuffleRemaining);
 

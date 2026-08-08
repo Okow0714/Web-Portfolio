@@ -35,45 +35,45 @@
 
                 <nav class="header-nav" aria-label="Main">
                     <div class="nav-item">
-                        <button class="nav-trigger" type="button" aria-haspopup="true">Portfolio<span class="nav-caret" aria-hidden="true">&#9662;</span></button>
+                        <button class="nav-trigger" type="button" aria-haspopup="true"><span data-i18n="nav.portfolio">Portfolio</span><span class="nav-caret" aria-hidden="true">&#9662;</span></button>
                         <div class="nav-dropdown">
-                            <a href="index.html#hobbies">Hobbies</a>
-                            <a href="index.html#skills">My Skills</a>
-                            <a href="index.html#portfolio">Project &amp; Learning</a>
-                            <a href="index.html#qualifications">Qualifications</a>
-                            <a href="index.html#academic">Academic History</a>
-                            <a href="index.html#writing">Writing &amp; Creativity</a>
-                            <a href="index.html#resume">Resume</a>
-                            <a href="index.html#contact">Get In Touch</a>
+                            <a href="index.html#hobbies" data-i18n="nav.hobbies">Hobbies</a>
+                            <a href="index.html#skills" data-i18n="nav.mySkills">My Skills</a>
+                            <a href="index.html#portfolio" data-i18n="nav.projectLearning">Project &amp; Learning</a>
+                            <a href="index.html#qualifications" data-i18n="nav.qualifications">Qualifications</a>
+                            <a href="index.html#academic" data-i18n="nav.academicHistory">Academic History</a>
+                            <a href="index.html#writing" data-i18n="nav.writingCreativity">Writing &amp; Creativity</a>
+                            <a href="index.html#resume" data-i18n="nav.resume">Resume</a>
+                            <a href="index.html#contact" data-i18n="nav.getInTouch">Get In Touch</a>
                         </div>
                     </div>
                     <div class="nav-item">
-                        <a href="game.html" class="nav-trigger">Word Game<span class="nav-caret" aria-hidden="true">&#9662;</span></a>
+                        <a href="game.html" class="nav-trigger"><span data-i18n="nav.wordGame">Word Game</span><span class="nav-caret" aria-hidden="true">&#9662;</span></a>
                         <div class="nav-dropdown">
-                            <a href="game.html">All Levels</a>
-                            <a href="game.html?level=1">N5 · Beginner</a>
-                            <a href="game.html?level=11">N4 · Elementary</a>
-                            <a href="game.html?level=21">N3 · Intermediate</a>
-                            <a href="game.html?level=31">N2 · Upper Intermediate</a>
-                            <a href="game.html?level=41">N1 · Advanced</a>
+                            <a href="game.html" data-i18n="nav.allLevels">All Levels</a>
+                            <a href="game.html?level=1" data-i18n="nav.n5Beginner">N5 · Beginner</a>
+                            <a href="game.html?level=11" data-i18n="nav.n4Elementary">N4 · Elementary</a>
+                            <a href="game.html?level=21" data-i18n="nav.n3Intermediate">N3 · Intermediate</a>
+                            <a href="game.html?level=31" data-i18n="nav.n2UpperIntermediate">N2 · Upper Intermediate</a>
+                            <a href="game.html?level=41" data-i18n="nav.n1Advanced">N1 · Advanced</a>
                         </div>
                     </div>
                     <div class="nav-item">
-                        <a href="reading.html" class="nav-trigger nav-current">Dokkai Reader</a>
+                        <a href="reading.html" class="nav-trigger nav-current" data-i18n="nav.dokkaiReader">Dokkai Reader</a>
                     </div>
                     <div class="nav-item">
-                        <a href="phonetics.html" class="nav-trigger">Phonetics Family</a>
+                        <a href="phonetics.html" class="nav-trigger" data-i18n="nav.phoneticsFamily">Phonetics Family</a>
                     </div>
                     <div class="nav-item">
-                        <a href="grammar.html" class="nav-trigger">Grammar Connect<span class="nav-caret" aria-hidden="true">&#9662;</span></a>
+                        <a href="grammar.html" class="nav-trigger"><span data-i18n="nav.grammarConnect">Grammar Connect</span><span class="nav-caret" aria-hidden="true">&#9662;</span></a>
                         <div class="nav-dropdown">
-                            <a href="grammar.html">All Levels</a>
-                            <a href="grammar.html?track=foundation">Foundation · N5-N3</a>
-                            <a href="grammar.html?track=advanced">Advanced · N2-N1</a>
+                            <a href="grammar.html" data-i18n="nav.allLevels">All Levels</a>
+                            <a href="grammar.html?track=foundation" data-i18n="nav.foundationN5N3">Foundation · N5-N3</a>
+                            <a href="grammar.html?track=advanced" data-i18n="nav.advancedN2N1">Advanced · N2-N1</a>
                         </div>
                     </div>
                     <div class="nav-item">
-                        <a href="dictionary.html" class="nav-trigger">Wakan Dictionary</a>
+                        <a href="dictionary.html" class="nav-trigger" data-i18n="nav.wakanDictionary">Wakan Dictionary</a>
                     </div>
                 </nav>
 
@@ -84,14 +84,21 @@
                         </span>
                     </button>
                     <div class="account-menu-panel" id="account-menu-panel">
+                        <div class="lang-toggle-row">
+                            <p class="account-menu-label" data-i18n="lang.label">Language</p>
+                            <div class="lang-toggle" role="group" aria-label="Language">
+                                <button type="button" class="lang-toggle-btn" data-lang="en">EN</button>
+                                <button type="button" class="lang-toggle-btn" data-lang="mn">МН</button>
+                            </div>
+                        </div>
                         <div id="auth-anon">
-                            <p class="account-menu-note">Log in to save your progress across visits.</p>
-                            <button id="auth-login-btn" class="auth-btn account-menu-cta" type="button">Log In</button>
+                            <p class="account-menu-note" data-i18n="auth.loginHint">Log in to save your progress across visits.</p>
+                            <button id="auth-login-btn" class="auth-btn account-menu-cta" type="button" data-i18n="auth.logIn">Log In</button>
                         </div>
                         <div id="auth-authed" class="hidden">
-                            <p class="account-menu-label">Signed in as</p>
+                            <p class="account-menu-label" data-i18n="auth.signedInAs">Signed in as</p>
                             <button id="auth-user-email" class="auth-user-email" type="button"></button>
-                            <button id="auth-logout-btn" type="button">Log Out</button>
+                            <button id="auth-logout-btn" type="button" data-i18n="auth.logOut">Log Out</button>
                         </div>
                     </div>
                 </div>
@@ -102,23 +109,23 @@
         <div id="auth-modal" class="modal-overlay hidden">
             <div class="modal-card">
                 <button id="auth-modal-close" class="modal-close" type="button" aria-label="Close">&times;</button>
-                <h3 id="auth-modal-title">Log In</h3>
+                <h3 id="auth-modal-title" data-i18n="auth.logIn">Log In</h3>
                 <form id="auth-form">
-                    <label for="auth-email">Email</label>
+                    <label for="auth-email" data-i18n="auth.email">Email</label>
                     <input type="email" id="auth-email" required autocomplete="email">
-                    <label for="auth-password">Password</label>
+                    <label for="auth-password" data-i18n="auth.password">Password</label>
                     <input type="password" id="auth-password" required autocomplete="current-password" minlength="6">
-                    <button type="button" id="auth-forgot-btn" class="auth-forgot-link">Forgot password?</button>
+                    <button type="button" id="auth-forgot-btn" class="auth-forgot-link" data-i18n="auth.forgotPassword">Forgot password?</button>
                     <div id="auth-terms-row" class="auth-terms-row hidden">
                         <label class="auth-checkbox-label">
                             <input type="checkbox" id="auth-terms-checkbox">
-                            I agree to the <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
+                            <span data-i18n-html="auth.agreeToTerms">I agree to the <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a></span>
                         </label>
                     </div>
                     <p id="auth-error" class="auth-error hidden"></p>
-                    <button type="submit" id="auth-submit-btn" class="auth-btn">Log In</button>
+                    <button type="submit" id="auth-submit-btn" class="auth-btn" data-i18n="auth.logIn">Log In</button>
                 </form>
-                <button id="auth-mode-toggle" class="auth-mode-toggle" type="button">Need an account? Sign up</button>
+                <button id="auth-mode-toggle" class="auth-mode-toggle" type="button" data-i18n="auth.needAccount">Need an account? Sign up</button>
             </div>
         </div>
 
@@ -126,16 +133,16 @@
         <div id="account-modal" class="modal-overlay hidden">
             <div class="modal-card">
                 <button id="account-modal-close" class="modal-close" type="button" aria-label="Close">&times;</button>
-                <h3>Your Account</h3>
+                <h3 data-i18n="account.yourAccount">Your Account</h3>
                 <p id="account-modal-email" class="account-email"></p>
                 <div class="account-danger-zone">
-                    <h4>Danger Zone</h4>
-                    <p>Deleting your account permanently removes your profile, comments, bookmarks, messages, and study progress. This can't be undone.</p>
-                    <button id="account-delete-start-btn" class="auth-btn account-delete-btn" type="button">Delete My Account</button>
+                    <h4 data-i18n="account.dangerZone">Danger Zone</h4>
+                    <p data-i18n="account.deleteWarning">Deleting your account permanently removes your profile, comments, bookmarks, messages, and study progress. This can't be undone.</p>
+                    <button id="account-delete-start-btn" class="auth-btn account-delete-btn" type="button" data-i18n="account.deleteMyAccount">Delete My Account</button>
                     <div id="account-delete-confirm" class="account-delete-confirm hidden">
-                        <label for="account-delete-input">Type DELETE to confirm:</label>
+                        <label for="account-delete-input" data-i18n="account.typeDeleteToConfirm">Type DELETE to confirm:</label>
                         <input type="text" id="account-delete-input" autocomplete="off">
-                        <button id="account-delete-confirm-btn" class="auth-btn account-delete-btn" type="button" disabled>Yes, permanently delete my account</button>
+                        <button id="account-delete-confirm-btn" class="auth-btn account-delete-btn" type="button" disabled data-i18n="account.yesPermanentlyDelete">Yes, permanently delete my account</button>
                     </div>
                     <p id="account-delete-status" class="account-delete-status hidden"></p>
                 </div>
@@ -145,23 +152,23 @@
         <main class="reading-main">
             <!-- Level select -->
             <section id="track-select-section" class="reading-section">
-                <h1 class="reading-title">Dokkai Reader</h1>
-                <p class="reading-subtitle">Read passages aloud and watch the highlight follow your voice. Any reasonable pronunciation is accepted — pause for 3 seconds on a word and its reading and meaning pop up. Finishing a text moves you straight into the next one, and clearing a level unlocks the next.</p>
-                <p class="reading-mic-hint">Needs microphone access and works best in Chrome or Edge — other browsers don't support live speech recognition.</p>
-                <p id="reading-guest-hint" class="reading-guest-hint hidden">Log in to save which texts you've completed across visits.</p>
+                <h1 class="reading-title" data-i18n="reading.title">Dokkai Reader</h1>
+                <p class="reading-subtitle" data-i18n="reading.subtitle">Read passages aloud and watch the highlight follow your voice. Any reasonable pronunciation is accepted — pause for 3 seconds on a word and its reading and meaning pop up. Finishing a text moves you straight into the next one, and clearing a level unlocks the next.</p>
+                <p class="reading-mic-hint" data-i18n="reading.micHint">Needs microphone access and works best in Chrome or Edge — other browsers don't support live speech recognition.</p>
+                <p id="reading-guest-hint" class="reading-guest-hint hidden" data-i18n="reading.guestHint">Log in to save which texts you've completed across visits.</p>
                 <div class="track-grid" id="track-grid"></div>
             </section>
 
             <!-- Level list within a track -->
             <section id="level-select-section" class="reading-section hidden">
-                <button id="level-select-back-btn" class="ghost-btn" type="button">&larr; Tracks</button>
+                <button id="level-select-back-btn" class="ghost-btn" type="button"><span aria-hidden="true">&larr;</span> <span data-i18n="reading.tracks">Tracks</span></button>
                 <h2 id="level-select-title" class="reading-title" style="margin-top:16px;"></h2>
                 <div class="level-grid" id="reading-level-grid"></div>
             </section>
 
             <!-- Text list for a level -->
             <section id="text-list-section" class="reading-section hidden">
-                <button id="text-list-back-btn" class="ghost-btn" type="button">&larr; Levels</button>
+                <button id="text-list-back-btn" class="ghost-btn" type="button"><span aria-hidden="true">&larr;</span> <span data-i18n="game.levels">Levels</span></button>
                 <h2 id="text-list-title" class="reading-title" style="margin-top:16px;"></h2>
                 <div class="text-list" id="text-list"></div>
             </section>
@@ -169,7 +176,7 @@
             <!-- Reader -->
             <section id="reader-section" class="reading-section hidden">
                 <div class="reader-toolbar">
-                    <button id="reader-back-btn" class="ghost-btn" type="button">&larr; Texts</button>
+                    <button id="reader-back-btn" class="ghost-btn" type="button"><span aria-hidden="true">&larr;</span> <span data-i18n="reading.texts">Texts</span></button>
                     <div class="reader-title" id="reader-title"></div>
                     <div class="reader-progress" id="reader-progress"></div>
                 </div>
@@ -182,14 +189,14 @@
                         </div>
                     </div>
                     <aside id="skipped-panel" class="skipped-panel">
-                        <h3>Skipped Words</h3>
-                        <p id="skipped-empty" class="skipped-empty">Words the voice matcher jumps past without hearing directly will show up here.</p>
+                        <h3 data-i18n="reading.skippedWords">Skipped Words</h3>
+                        <p id="skipped-empty" class="skipped-empty" data-i18n="reading.skippedEmptyHint">Words the voice matcher jumps past without hearing directly will show up here.</p>
                         <ul id="skipped-list" class="skipped-list"></ul>
                     </aside>
                 </div>
                 <div class="reader-controls">
-                    <button id="reader-mic-btn" class="auth-btn" type="button">&#127908; Start Reading</button>
-                    <button id="reader-skip-btn" class="ghost-btn" type="button">Skip Word &rarr;</button>
+                    <button id="reader-mic-btn" class="auth-btn" type="button"><span aria-hidden="true">&#127908;</span> <span data-i18n="reading.startReading">Start Reading</span></button>
+                    <button id="reader-skip-btn" class="ghost-btn" type="button"><span data-i18n="reading.skipWord">Skip Word</span> <span aria-hidden="true">&rarr;</span></button>
                     <p id="reader-status" class="reader-status"></p>
                 </div>
             </section>
@@ -198,11 +205,11 @@
         <!-- Text Complete Modal -->
         <div id="complete-modal" class="modal-overlay hidden">
             <div class="modal-card">
-                <h3 id="complete-title">Text Complete!</h3>
-                <p id="complete-desc">Nice reading. Moving on to the next text&hellip;</p>
+                <h3 id="complete-title" data-i18n="reading.textComplete">Text Complete!</h3>
+                <p id="complete-desc" data-i18n="reading.textCompleteDesc">Nice reading. Moving on to the next text&hellip;</p>
                 <div class="result-actions">
-                    <button id="complete-next-btn" class="auth-btn" type="button">Continue Now</button>
-                    <button id="complete-levels-btn" class="auth-btn auth-btn-outline" type="button">Back to Levels</button>
+                    <button id="complete-next-btn" class="auth-btn" type="button" data-i18n="reading.continueNow">Continue Now</button>
+                    <button id="complete-levels-btn" class="auth-btn auth-btn-outline" type="button" data-i18n="game.backToLevels">Back to Levels</button>
                 </div>
             </div>
         </div>
@@ -216,29 +223,29 @@
                         <span class="brand-seal" aria-hidden="true">言</span>
                         <span class="footer-brand-name">Sarantsatsral Ganzorig</span>
                     </a>
-                    <p class="footer-blurb">System engineering student in Japan, building tools for learning the language.</p>
+                    <p class="footer-blurb" data-i18n="footer.blurb">System engineering student in Japan, building tools for learning the language.</p>
                 </div>
                 <div class="footer-col">
-                    <h2 class="footer-heading">Study tools</h2>
+                    <h2 class="footer-heading" data-i18n="footer.studyTools">Study tools</h2>
                     <ul class="footer-list">
-                        <li><a href="game.html">Word Game</a></li>
-                        <li><a href="reading.html">Dokkai Reader</a></li>
-                        <li><a href="phonetics.html">Phonetics Family</a></li>
-                        <li><a href="grammar.html">Grammar Connect</a></li>
-                        <li><a href="dictionary.html">Wakan Dictionary</a></li>
+                        <li><a href="game.html" data-i18n="nav.wordGame">Word Game</a></li>
+                        <li><a href="reading.html" data-i18n="nav.dokkaiReader">Dokkai Reader</a></li>
+                        <li><a href="phonetics.html" data-i18n="nav.phoneticsFamily">Phonetics Family</a></li>
+                        <li><a href="grammar.html" data-i18n="nav.grammarConnect">Grammar Connect</a></li>
+                        <li><a href="dictionary.html" data-i18n="nav.wakanDictionary">Wakan Dictionary</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h2 class="footer-heading">Portfolio</h2>
+                    <h2 class="footer-heading" data-i18n="nav.portfolio">Portfolio</h2>
                     <ul class="footer-list">
-                        <li><a href="index.html#portfolio">Projects &amp; learning</a></li>
-                        <li><a href="index.html#qualifications">Qualifications</a></li>
-                        <li><a href="index.html#resume">Resume</a></li>
-                        <li><a href="index.html#contact">Get in touch</a></li>
+                        <li><a href="index.html#portfolio" data-i18n="footer.projectsLearning">Projects &amp; learning</a></li>
+                        <li><a href="index.html#qualifications" data-i18n="nav.qualifications">Qualifications</a></li>
+                        <li><a href="index.html#resume" data-i18n="nav.resume">Resume</a></li>
+                        <li><a href="index.html#contact" data-i18n="footer.getInTouch">Get in touch</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h2 class="footer-heading">Data &amp; licensing</h2>
+                    <h2 class="footer-heading" data-i18n="footer.dataLicensing">Data &amp; licensing</h2>
                     <ul class="footer-list">
                         <li class="footer-attrib">
                             <a href="https://github.com/mifunetoshiro/kanjium" target="_blank" rel="noopener">Kanjium</a>
@@ -258,14 +265,17 @@
             <div class="footer-bar">
                 <p class="footer-copy">&copy; 2026 Sarantsatsral Ganzorig</p>
                 <div class="footer-links">
-                    <a href="privacy.html">Privacy Policy</a>
-                    <a href="terms.html">Terms of Service</a>
-                    <a href="index.html#contact">Contact</a>
+                    <a href="privacy.html" data-i18n="footer.privacyPolicy">Privacy Policy</a>
+                    <a href="terms.html" data-i18n="footer.termsOfService">Terms of Service</a>
+                    <a href="index.html#contact" data-i18n="footer.contact">Contact</a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <script src="i18n-strings-shared.js"></script>
+    <script src="reading-i18n-strings.js"></script>
+    <script src="i18n.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <script src="supabase-config.js"></script>
     <script src="auth-shared.js"></script>

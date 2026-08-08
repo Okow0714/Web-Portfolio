@@ -484,6 +484,48 @@ body {
     color: var(--header-text-muted);
 }
 
+/* Language toggle: lives inside the account panel rather than as its own header button so it
+   doesn't add a third control to the already-tight horizontal-scroll mobile nav (see
+   .header-nav's max-width:860px comment). Sits above #auth-anon/#auth-authed since it's
+   independent of login state -- always visible regardless of which of those two is showing.
+   Portfolio (index.html) never gets this markup at all, so it stays English-only by design;
+   every other page includes it. */
+.lang-toggle-row {
+    margin: 0 0 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--header-border);
+}
+
+.lang-toggle {
+    display: flex;
+    gap: 4px;
+}
+
+.lang-toggle-btn {
+    flex: 1;
+    background: none;
+    border: 1px solid var(--header-border);
+    color: var(--header-text-muted);
+    padding: 6px 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.lang-toggle-btn:hover {
+    border-color: var(--header-accent);
+    color: var(--header-text);
+}
+
+.lang-toggle-btn.active {
+    background: var(--header-accent);
+    border-color: var(--header-accent);
+    color: var(--header-bg);
+    cursor: default;
+}
+
 #auth-anon .account-menu-cta {
     width: 100%;
     text-align: center;

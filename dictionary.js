@@ -33,18 +33,23 @@ function escapeHtml(str) {
     return div.innerHTML;
 }
 
-const POS_LABELS = { all: 'All', verb: 'Verbs', noun: 'Nouns', adjective: 'Adjectives', honorific: 'Has honorific form' };
+// POS_KEY_ORDER fixes the filter tab order (Object.keys order on an i18n-populated map isn't
+// guaranteed to match insertion order across the two languages' string tables); POS_LABEL_KEY
+// maps each filter to its i18n key, resolved fresh on every render so a language switch updates
+// the tab labels without needing its own sitelangchange handler.
+const POS_KEY_ORDER = ['all', 'verb', 'noun', 'adjective', 'honorific'];
+const POS_LABEL_KEY = { all: 'dict.posAll', verb: 'dict.posVerb', noun: 'dict.posNoun', adjective: 'dict.posAdjective', honorific: 'dict.posHonorific' };
 let activeFilter = 'all';
 let searchQuery = '';
 
 function renderFilters() {
     const container = document.getElementById('dict-filters');
     container.innerHTML = '';
-    Object.keys(POS_LABELS).forEach(key => {
+    POS_KEY_ORDER.forEach(key => {
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'dict-filter' + (key === activeFilter ? ' active' : '');
-        btn.textContent = POS_LABELS[key];
+        btn.textContent = window.t(POS_LABEL_KEY[key]);
         btn.addEventListener('click', () => {
             activeFilter = key;
             renderFilters();
@@ -87,18 +92,18 @@ function renderEntry(entry) {
     card.innerHTML = `
         <div class="dict-entry-main">
             <div class="dict-side kango">
-                <span class="label">漢語 Kango</span>
+                <span class="label">漢語 ${escapeHtml(window.t('dict.kango'))}</span>
                 <span class="term">${furigana(entry.kango.text, entry.kango.reading)}</span>
             </div>
             <div class="dict-bridge" aria-hidden="true">=</div>
             <div class="dict-side wago">
-                <span class="label">和語 Wago</span>
+                <span class="label">和語 ${escapeHtml(window.t('dict.wago'))}</span>
                 <span class="term">${furigana(entry.wago.text, entry.wago.reading)}</span>
             </div>
         </div>
         <div class="dict-meaning-row">
             <span class="dict-meaning">${escapeHtml(entry.meaning)}</span>
-            <span class="dict-pos">${escapeHtml(entry.pos)}</span>
+            <span class="dict-pos">${escapeHtml(window.t(POS_LABEL_KEY[entry.pos] || 'dict.posAll'))}</span>
         </div>
         ${honorificsHtml}
     `;
@@ -127,6 +132,11 @@ function renderList() {
 
 document.getElementById('dict-search').addEventListener('input', (e) => {
     searchQuery = e.target.value.trim();
+    renderList();
+});
+
+document.addEventListener('sitelangchange', () => {
+    renderFilters();
     renderList();
 });
 

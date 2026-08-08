@@ -115,7 +115,7 @@ function renderTrackSelect() {
         card.className = 'track-card';
         card.innerHTML = `
             <h3>${escapeHtml(track.title)}</h3>
-            <div class="track-meta">${done} / ${total} texts complete</div>
+            <div class="track-meta">${escapeHtml(window.tf('reading.textsComplete', { done, total }))}</div>
         `;
         card.addEventListener('click', () => showLevelSelect(track));
         container.appendChild(card);
@@ -146,10 +146,10 @@ function showLevelSelect(track) {
         card.type = 'button';
         card.className = 'level-card' + (unlocked ? '' : ' locked');
         card.innerHTML = `
-            <span class="level-badge">~${level.hint}</span>
-            <h3>Level ${level.levelNum}</h3>
-            <div class="level-meta">${done} / ${total} texts complete</div>
-            ${unlocked ? '' : '<div class="level-lock-note">&#128274; Finish the previous level to unlock</div>'}
+            <span class="level-badge">~${escapeHtml(level.hint)}</span>
+            <h3>${escapeHtml(window.tf('game.levelN', { n: level.levelNum }))}</h3>
+            <div class="level-meta">${escapeHtml(window.tf('reading.textsComplete', { done, total }))}</div>
+            ${unlocked ? '' : `<div class="level-lock-note">&#128274; ${escapeHtml(window.t('reading.finishPreviousToUnlock'))}</div>`}
         `;
         if (unlocked) card.addEventListener('click', () => showTextList(track, level));
         else card.disabled = true;
@@ -173,7 +173,7 @@ function backToLevelSelect() {
 function showTextList(track, level) {
     currentTrack = track;
     currentLevel = level;
-    document.getElementById('text-list-title').textContent = `${track.title.split('·')[0].trim()} — Level ${level.levelNum} (~${level.hint})`;
+    document.getElementById('text-list-title').textContent = window.tf('reading.trackLevelHint', { track: track.title.split('·')[0].trim(), n: level.levelNum, hint: level.hint });
     const list = document.getElementById('text-list');
     list.innerHTML = '';
     level.texts.forEach((text, i) => {
@@ -182,7 +182,7 @@ function showTextList(track, level) {
         item.className = 'text-item';
         const charCount = text.words.reduce((sum, w) => sum + w.surface.length, 0);
         const done = progressCache.has(progressKey(track.id, text.id));
-        item.innerHTML = `<span>${done ? '<span class="text-item-check">&#10003;</span>' : ''}${escapeHtml(text.title)}</span><span class="text-item-len">~${charCount} chars</span>`;
+        item.innerHTML = `<span>${done ? '<span class="text-item-check">&#10003;</span>' : ''}${escapeHtml(text.title)}</span><span class="text-item-len">${escapeHtml(window.tf('reading.charsCount', { n: charCount }))}</span>`;
         item.addEventListener('click', () => startText(track, level, i));
         list.appendChild(item);
     });
@@ -206,7 +206,7 @@ function startText(track, level, textIndex) {
     skippedWords = [];
     renderSkippedList();
 
-    document.getElementById('reader-title').textContent = `Level ${level.levelNum} — ${text.title}`;
+    document.getElementById('reader-title').textContent = window.tf('reading.levelDashTitle', { n: level.levelNum, title: text.title });
     renderPassage();
     updateProgress();
     hideEl(document.getElementById('hint-popup'));
@@ -214,11 +214,10 @@ function startText(track, level, textIndex) {
     const micBtn = document.getElementById('reader-mic-btn');
     if (!SpeechRecognitionCtor) {
         micBtn.disabled = true;
-        document.getElementById('reader-status').textContent =
-            "Speech recognition isn't supported in this browser — try Chrome or Edge.";
+        document.getElementById('reader-status').textContent = window.t('reading.speechNotSupported');
     } else {
         micBtn.disabled = false;
-        micBtn.innerHTML = '&#127908; Start Reading';
+        micBtn.innerHTML = `&#127908; ${escapeHtml(window.t('reading.startReading'))}`;
         document.getElementById('reader-status').textContent = '';
     }
 
@@ -251,7 +250,7 @@ function updateHighlight() {
 function updateProgress() {
     const speakable = words.filter(w => !w.sym).length;
     const doneCount = words.slice(0, currentIdx).filter(w => !w.sym).length;
-    document.getElementById('reader-progress').textContent = `${doneCount} / ${speakable} words`;
+    document.getElementById('reader-progress').textContent = window.tf('reading.wordsCount', { n: doneCount, total: speakable });
 }
 
 function recordSkipped(word) {
@@ -330,19 +329,19 @@ function onTextComplete() {
     const position = currentTrack.levels.indexOf(currentLevel);
     const moreLevelsInTrack = position < currentTrack.levels.length - 1;
 
-    document.getElementById('complete-title').textContent = 'Text Complete!';
+    document.getElementById('complete-title').textContent = window.t('reading.textComplete');
     if (moreTextsInLevel) {
-        document.getElementById('complete-desc').textContent = 'Nice reading. Moving on to the next text…';
-        document.getElementById('complete-next-btn').textContent = 'Continue Now';
+        document.getElementById('complete-desc').textContent = window.t('reading.textCompleteDesc');
+        document.getElementById('complete-next-btn').textContent = window.t('reading.continueNow');
     } else if (moreLevelsInTrack) {
         const nextLevel = currentTrack.levels[position + 1];
         document.getElementById('complete-desc').textContent =
-            `Level complete! Level ${nextLevel.levelNum} is now unlocked.`;
-        document.getElementById('complete-next-btn').textContent = 'View Levels';
+            window.tf('reading.levelCompleteUnlocked', { n: nextLevel.levelNum });
+        document.getElementById('complete-next-btn').textContent = window.t('reading.viewLevels');
     } else {
         document.getElementById('complete-desc').textContent =
-            `You've completed the entire ${currentTrack.title} track!`;
-        document.getElementById('complete-next-btn').textContent = 'View Levels';
+            window.tf('reading.trackComplete', { track: currentTrack.title });
+        document.getElementById('complete-next-btn').textContent = window.t('reading.viewLevels');
     }
     showEl(document.getElementById('complete-modal'));
 
@@ -416,7 +415,7 @@ function startRecognition() {
     recognition.onerror = (event) => {
         if (event.error === 'not-allowed' || event.error === 'service-not-allowed') {
             listening = false;
-            document.getElementById('reader-status').textContent = 'Microphone access was denied.';
+            document.getElementById('reader-status').textContent = window.t('reading.micDenied');
             updateMicButton();
         }
     };
@@ -437,7 +436,9 @@ function stopRecognition() {
 
 function updateMicButton() {
     const btn = document.getElementById('reader-mic-btn');
-    btn.innerHTML = listening ? '&#9724; Stop' : '&#127908; Start Reading';
+    btn.innerHTML = listening
+        ? `&#9724; ${escapeHtml(window.t('reading.stop'))}`
+        : `&#127908; ${escapeHtml(window.t('reading.startReading'))}`;
 }
 
 document.getElementById('reader-mic-btn').addEventListener('click', () => {
@@ -448,7 +449,7 @@ document.getElementById('reader-mic-btn').addEventListener('click', () => {
     } else {
         listening = true;
         updateMicButton();
-        document.getElementById('reader-status').textContent = 'Listening…';
+        document.getElementById('reader-status').textContent = window.t('reading.listening');
         startRecognition();
         resetStallTimer();
     }
@@ -465,6 +466,21 @@ document.getElementById('reader-skip-btn').addEventListener('click', () => {
 // ---------------------------------------------------------------------------
 // Wiring
 // ---------------------------------------------------------------------------
+// See game.js's identical comment: data-i18n only covers text set once at parse time, so a
+// language switch needs the currently-visible dynamic pane re-rendered to pick up the change.
+document.addEventListener('sitelangchange', () => {
+    if (!document.getElementById('track-select-section').classList.contains('hidden')) renderTrackSelect();
+    else if (!document.getElementById('level-select-section').classList.contains('hidden')) showLevelSelect(currentTrack);
+    else if (!document.getElementById('text-list-section').classList.contains('hidden')) showTextList(currentTrack, currentLevel);
+    else if (!document.getElementById('reader-section').classList.contains('hidden')) {
+        document.getElementById('reader-progress').textContent = window.tf('reading.wordsCount', {
+            n: words.slice(0, currentIdx).filter(w => !w.sym).length,
+            total: words.filter(w => !w.sym).length,
+        });
+        updateMicButton();
+    }
+});
+
 document.getElementById('level-select-back-btn').addEventListener('click', backToTrackSelect);
 document.getElementById('text-list-back-btn').addEventListener('click', backToLevelSelect);
 document.getElementById('reader-back-btn').addEventListener('click', () => {

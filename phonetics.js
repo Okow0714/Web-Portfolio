@@ -8,12 +8,15 @@
 // that swaps between two views per the level currently picked — a ranked family list, or (once
 // a family's picked) that family's radial tree view.
 
+// title reuses the exact same JLPT-tier labels already translated for the header nav dropdown
+// (nav.n5Beginner etc, in i18n-strings-shared.js) -- a getter, not a static string, so it stays
+// in sync with the active language on every render rather than only at file-load time.
 const LEVEL_META = [
-    { key: 'N5', title: 'N5 · Beginner' },
-    { key: 'N4', title: 'N4 · Elementary' },
-    { key: 'N3', title: 'N3 · Intermediate' },
-    { key: 'N2', title: 'N2 · Upper Intermediate' },
-    { key: 'N1', title: 'N1 · Advanced' },
+    { key: 'N5', get title() { return window.t('nav.n5Beginner'); } },
+    { key: 'N4', get title() { return window.t('nav.n4Elementary'); } },
+    { key: 'N3', get title() { return window.t('nav.n3Intermediate'); } },
+    { key: 'N2', get title() { return window.t('nav.n2UpperIntermediate'); } },
+    { key: 'N1', get title() { return window.t('nav.n1Advanced'); } },
 ];
 
 const SCREEN_TRANSITION_MS = 280;
@@ -98,10 +101,10 @@ function showFamilyList(levelKey) {
     const level = LEVEL_META.find(l => l.key === levelKey);
     const families = PHONETICS_DATA[levelKey] || [];
 
-    document.getElementById('family-list-title').textContent = `${level.title} — Phonetic Families`;
+    document.getElementById('family-list-title').textContent = window.tf('phonetics.levelFamiliesTitle', { level: level.title });
     document.getElementById('family-list-subtitle').textContent = families.length
-        ? `${families.length} families, ranked by how often their most-used ${levelKey} member appears in real Japanese text.`
-        : "No phonetic-bearing kanji are tagged at this level in the source data.";
+        ? window.tf('phonetics.familiesRankedHint', { n: families.length, level: levelKey })
+        : window.t('phonetics.noPhoneticKanjiHint');
 
     const list = document.getElementById('family-list');
     list.innerHTML = '';
@@ -120,7 +123,7 @@ function showFamilyList(levelKey) {
             <span class="family-phonetic">${escapeHtml(family.phonetic)}</span>
             <span class="family-info">
                 <span class="family-reading">${family.reading ? escapeHtml(family.reading) : '&mdash;'}</span>
-                <span class="family-count">${family.members.length} kanji in this family</span>
+                <span class="family-count">${escapeHtml(window.tf('phonetics.kanjiInFamily', { n: family.members.length }))}</span>
             </span>
         `;
         item.addEventListener('click', () => showFamilyTree(levelKey, family));
@@ -166,7 +169,7 @@ function detailHtml(member) {
                <p class="tree-example-jp">${member.example.furigana || escapeHtml(member.example.jp)}</p>
                <p class="tree-example-en">${escapeHtml(member.example.en)}</p>
            </div>`
-        : `<p class="tree-example-none">No example sentence found for this kanji in the source data.</p>`;
+        : `<p class="tree-example-none">${escapeHtml(window.t('phonetics.noExampleForKanji'))}</p>`;
 
     return `
         <div class="tree-detail-head">
@@ -192,13 +195,13 @@ function showFamilyTree(levelKey, family) {
     wrap.innerHTML = `
         <div class="tree-header">
             <h2 class="phonetics-title tree-title">${escapeHtml(family.phonetic)} <span class="tree-title-reading">${family.reading ? escapeHtml(family.reading) : ''}</span></h2>
-            <p class="phonetics-subtitle">Phonetic family for ${escapeHtml(level.title)} &middot; ${family.members.length} kanji share this component dictionary-wide. Tap a kanji to see its details.</p>
+            <p class="phonetics-subtitle">${escapeHtml(window.tf('phonetics.familyForLevelHint', { level: level.title, n: family.members.length }))}</p>
         </div>
         <div class="tree-canvas" id="tree-canvas">
             <svg id="tree-lines" class="tree-lines"></svg>
             <div class="tree-root-node" id="tree-root-node">
                 <span class="tree-root-kanji">${escapeHtml(family.phonetic)}</span>
-                <span class="tree-root-reading">${family.reading ? escapeHtml(family.reading) : 'shared'}</span>
+                <span class="tree-root-reading">${family.reading ? escapeHtml(family.reading) : escapeHtml(window.t('phonetics.shared'))}</span>
             </div>
             ${family.members.map((m, i) => chipHtml(m, i, m.level === levelKey)).join('')}
             <div class="tree-popover" id="tree-popover"></div>
@@ -499,6 +502,18 @@ function closeInfoModal() {
 // ---------------------------------------------------------------------------
 // Wiring
 // ---------------------------------------------------------------------------
+// See game.js's identical comment: data-i18n only covers text set once at parse time, so a
+// language switch needs the currently-visible dynamic panes re-rendered to pick up the change.
+document.addEventListener('sitelangchange', () => {
+    renderLevelSidebar();
+    updateLevelNavActive(currentLevelKey);
+    if (!document.getElementById('family-tree-section').classList.contains('hidden')) {
+        showFamilyTree(currentLevelKey, currentFamily);
+    } else {
+        showFamilyList(currentLevelKey);
+    }
+});
+
 document.getElementById('family-tree-back-btn').addEventListener('click', backToFamilyList);
 
 document.getElementById('phonetics-title-trigger').addEventListener('click', openInfoModal);

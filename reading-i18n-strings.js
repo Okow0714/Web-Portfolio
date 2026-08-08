@@ -1,0 +1,34 @@
+// Dokkai Reader (reading.html)-specific translation strings. Extends window.I18N_STRINGS,
+// which i18n-strings-shared.js must have already created (loaded first in reading.html).
+Object.assign(window.I18N_STRINGS, {
+    'reading.title': { en: 'Dokkai Reader', mn: 'Уншлагын дадлага' },
+    'reading.subtitle': {
+        en: "Read passages aloud and watch the highlight follow your voice. Any reasonable pronunciation is accepted — pause for 3 seconds on a word and its reading and meaning pop up. Finishing a text moves you straight into the next one, and clearing a level unlocks the next.",
+        mn: 'Хэсгүүдийг чангаар уншиж, тодотгол таны дуу хоолойг дагахыг ажиглаарай. Ямар ч оновчтой дуудлагыг хүлээн зөвшөөрдөг — үг дээр 3 секунд түр зогсвол уншлага, утга нь гарч ирнэ. Нэг текстийг дуусгамагц дараагийнх нь шууд эхэлнэ, түвшнийг дуусгавал дараагийнх нь нээгдэнэ.'
+    },
+    'reading.micHint': { en: "Needs microphone access and works best in Chrome or Edge — other browsers don't support live speech recognition.", mn: 'Микрофоны хандалт шаардлагатай бөгөөд Chrome эсвэл Edge дээр хамгийн сайн ажилладаг — бусад хөтчүүд бодит цагийн дуу таних функцийг дэмждэггүй.' },
+    'reading.guestHint': { en: "Log in to save which texts you've completed across visits.", mn: 'Дуусгасан текстүүдээ хадгалахын тулд нэвтэрнэ үү.' },
+    'reading.tracks': { en: 'Tracks', mn: 'Эрэмбэ' },
+    'reading.texts': { en: 'Texts', mn: 'Текстүүд' },
+    'reading.skippedWords': { en: 'Skipped Words', mn: 'Алгассан үгс' },
+    'reading.skippedEmptyHint': { en: 'Words the voice matcher jumps past without hearing directly will show up here.', mn: 'Дуу таних систем шууд сонсохгүй алгассан үгс энд харагдана.' },
+    'reading.startReading': { en: 'Start Reading', mn: 'Унших эхлэх' },
+    'reading.skipWord': { en: 'Skip Word', mn: 'Үг алгасах' },
+    'reading.textComplete': { en: 'Text Complete!', mn: 'Текст дууслаа!' },
+    'reading.textCompleteDesc': { en: 'Nice reading. Moving on to the next text…', mn: 'Сайхан уншлаа. Дараагийн текст рүү шилжиж байна…' },
+    'reading.continueNow': { en: 'Continue Now', mn: 'Одоо үргэлжлүүлэх' },
+
+    'reading.textsComplete': { en: '{done} / {total} texts complete', mn: '{done} / {total} текст дууссан' },
+    'reading.finishPreviousToUnlock': { en: 'Finish the previous level to unlock', mn: 'Нээхийн тулд өмнөх түвшнийг дуусгана уу' },
+    'reading.trackLevelHint': { en: '{track} — Level {n} (~{hint})', mn: '{track} — {n}-р түвшин (~{hint})' },
+    'reading.charsCount': { en: '~{n} chars', mn: '~{n} тэмдэгт' },
+    'reading.levelDashTitle': { en: 'Level {n} — {title}', mn: '{n}-р түвшин — {title}' },
+    'reading.speechNotSupported': { en: "Speech recognition isn't supported in this browser — try Chrome or Edge.", mn: 'Энэ хөтөч дуу таних функцийг дэмждэггүй — Chrome эсвэл Edge ашиглана уу.' },
+    'reading.wordsCount': { en: '{n} / {total} words', mn: '{n} / {total} үг' },
+    'reading.levelCompleteUnlocked': { en: 'Level complete! Level {n} is now unlocked.', mn: 'Түвшин дууслаа! {n}-р түвшин нээгдлээ.' },
+    'reading.trackComplete': { en: "You've completed the entire {track} track!", mn: 'Та {track} эрэмбийг бүхэлд нь дуусгалаа!' },
+    'reading.viewLevels': { en: 'View Levels', mn: 'Түвшингүүдийг харах' },
+    'reading.micDenied': { en: 'Microphone access was denied.', mn: 'Микрофоны хандалтыг татгалзсан байна.' },
+    'reading.stop': { en: 'Stop', mn: 'Зогсоох' },
+    'reading.listening': { en: 'Listening…', mn: 'Сонсож байна…' },
+});

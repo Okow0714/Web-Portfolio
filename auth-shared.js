@@ -26,6 +26,12 @@ window.onAuthChange = function (fn) {
 function showEl(el) { el.classList.remove('hidden'); }
 function hideEl(el) { el.classList.add('hidden'); }
 
+// Falls back to the English literal if i18n.js hasn't run yet (shouldn't happen given script
+// order, but keeps this file safe to load standalone, e.g. in isolation during development).
+// Named `tr`, not `t` -- a top-level `function t(){}` in a non-module script attaches itself to
+// `window.t`, which would shadow (and infinitely recurse into) i18n.js's own window.t.
+function tr(key, fallback) { return window.t ? window.t(key) : fallback; }
+
 // ---------------------------------------------------------------------------
 // Auth modal
 // ---------------------------------------------------------------------------
@@ -43,9 +49,9 @@ let authMode = 'login';
 function setAuthMode(mode) {
     authMode = mode;
     const isLogin = mode === 'login';
-    authModalTitle.textContent = isLogin ? 'Log In' : 'Sign Up';
-    authSubmitBtn.textContent = isLogin ? 'Log In' : 'Sign Up';
-    authModeToggle.textContent = isLogin ? "Need an account? Sign up" : 'Already have an account? Log in';
+    authModalTitle.textContent = isLogin ? tr('auth.logIn', 'Log In') : tr('auth.signUp', 'Sign Up');
+    authSubmitBtn.textContent = isLogin ? tr('auth.logIn', 'Log In') : tr('auth.signUp', 'Sign Up');
+    authModeToggle.textContent = isLogin ? tr('auth.needAccount', 'Need an account? Sign up') : tr('auth.haveAccount', 'Already have an account? Log in');
     hideEl(authError);
 
     // Terms/privacy agreement is only required (and only shown) when signing up.
@@ -84,7 +90,7 @@ authForgotBtn.addEventListener('click', async () => {
     hideEl(authError);
     authError.classList.remove('auth-info');
     if (!email) {
-        authError.textContent = 'Enter your email above first, then click "Forgot password?" again.';
+        authError.textContent = tr('auth.enterEmailFirst', 'Enter your email above first, then click "Forgot password?" again.');
         showEl(authError);
         return;
     }
@@ -93,7 +99,7 @@ authForgotBtn.addEventListener('click', async () => {
     });
     authError.textContent = error
         ? error.message
-        : 'If that email has an account, a password reset link is on its way.';
+        : tr('auth.resetLinkSent', 'If that email has an account, a password reset link is on its way.');
     authError.classList.toggle('auth-info', !error);
     showEl(authError);
 });
@@ -117,7 +123,7 @@ authForm.addEventListener('submit', async (e) => {
 
     // If email confirmation is required, signUp succeeds but returns no session yet.
     if (authMode === 'signup' && !data.session) {
-        authError.textContent = 'Check your email to confirm your account, then log in.';
+        authError.textContent = tr('auth.checkEmailToConfirm', 'Check your email to confirm your account, then log in.');
         authError.classList.add('auth-info');
         showEl(authError);
         setAuthMode('login');
@@ -172,12 +178,12 @@ accountDeleteInput.addEventListener('input', () => {
 
 accountDeleteConfirmBtn.addEventListener('click', async () => {
     accountDeleteConfirmBtn.disabled = true;
-    accountDeleteConfirmBtn.textContent = 'Deleting…';
+    accountDeleteConfirmBtn.textContent = tr('account.deleting', 'Deleting…');
     const { error } = await supabaseClient.rpc('delete_own_account');
     if (error) {
-        accountDeleteStatus.textContent = "Couldn't delete your account — try again later.";
+        accountDeleteStatus.textContent = tr('account.deleteFailed', "Couldn't delete your account — try again later.");
         showEl(accountDeleteStatus);
-        accountDeleteConfirmBtn.textContent = 'Yes, permanently delete my account';
+        accountDeleteConfirmBtn.textContent = tr('account.yesPermanentlyDelete', 'Yes, permanently delete my account');
         accountDeleteConfirmBtn.disabled = accountDeleteInput.value.trim() !== 'DELETE';
         return;
     }
