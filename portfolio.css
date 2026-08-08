@@ -1170,3 +1170,37 @@ body:has(.portfolio-main) {
         font-size: 2.5rem;
     }
 }
+
+/* Phones: the 968px breakpoint above only handles stacking layout, so every section still
+   carried its desktop/tablet 40px horizontal padding down to 375px-wide screens — on a phone
+   that's over a fifth of the viewport lost to padding on each side, and the generous 80px
+   vertical padding compounds into a lot of empty scroll between sections. Trims both without
+   touching the stacking logic already handled above. */
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 89px 20px 44px;
+    }
+
+    .hobbies-section,
+    .skills-section,
+    .portfolio-main-section,
+    .qualifications-section,
+    .academic-section {
+        padding: 36px 20px;
+        gap: 28px;
+    }
+
+    .writing-section,
+    .resume-section,
+    .contact-section {
+        padding: 56px 20px;
+    }
+
+    .stat-item {
+        padding: 18px 16px;
+    }
+
+    .tab-pane {
+        padding: 22px;
+    }
+}

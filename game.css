@@ -641,11 +641,23 @@ body.game-playing .game-main {
     opacity: 0.6;
 }
 
+/* .tile-jp/.tile-reading/.tile-en-text share a max-width:100% + ellipsis clamp: game-words.js's
+   `en` field ranges from single words up to full disambiguating phrases like "bright (in
+   reference to personality or weather)" (50 chars) -- no font-size floor can fit that on a
+   38-148px hex tile, and unconstrained text was overflowing the tile's clip-path edge and
+   overlapping neighboring tiles (confirmed by measuring rendered text width against tile width
+   on real game-words.js entries, not just visually). These are flex column children, so
+   max-width:100% resolves against .tile's own content-box width (padding already excluded) and
+   actually constrains them despite align-items:center's default shrink-to-fit sizing. */
 .tile-jp {
     font-family: var(--font-jp);
     font-size: clamp(1rem, 2.6cqw, 1.6rem);
     font-weight: 700;
     line-height: 1.15;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .tile-reading {
@@ -653,14 +665,25 @@ body.game-playing .game-main {
     /* was --ink-soft (~2.2:1 on this dark tile face, see the contrast note further up this
        file) -- --paper-muted is the same verified-6.39:1 replacement used in the side panel. */
     color: var(--paper-muted);
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .tile-en-text {
     font-family: 'IBM Plex Sans', sans-serif;
-    font-size: clamp(0.78rem, 2cqw, 1.15rem);
+    /* lower floor than .tile-jp's 1rem -- English glosses run far longer than Japanese headwords
+       (up to 50 chars vs. a handful of kana/kanji), so they need more shrink room before ellipsis
+       has to take over at the smallest tile sizes. */
+    font-size: clamp(0.62rem, 2cqw, 1.15rem);
     font-weight: 600;
     line-height: 1.15;
     text-transform: lowercase;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .tile:not(.cleared):hover {
