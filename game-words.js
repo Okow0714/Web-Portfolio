@@ -1025,7 +1025,7 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "кандзи"
+                    "enMn": "ханз"
                 },
                 {
                     "jp": "帰る",

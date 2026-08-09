@@ -314,7 +314,7 @@ const GRAMMAR_LEVELS = {
                     "translation": "I don't know how to read this kanji.",
                     "explanation": "んです and plain ません both simply state the fact — んです just frames it as an explanation for something, which ません doesn't add.",
                     "oldCore": null,
-                    "translationMn": "Энэ кандзийг хэрхэн уншихыг би мэдэхгүй байна."
+                    "translationMn": "Энэ ханзыг хэрхэн уншихыг би мэдэхгүй байна."
                 },
                 {
                     "prefix": "<ruby>宿題<rp>(</rp><rt>しゅくだい</rt><rp>)</rp></ruby>を",
