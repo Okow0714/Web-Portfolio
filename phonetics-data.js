@@ -18684,7 +18684,11 @@ const PHONETICS_DATA = {
                         "jp": "たぶん彼にしてみれば同じことよ。",
                         "en": "Maybe it will be exactly the same for him.",
                         "furigana": "たぶん<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>にしてみれば<ruby>同<rp>(</rp><rt>おな</rt><rp>)</rp></ruby>じことよ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "тэр",
+                        "гуравдагч этгээдийн төлөөний үг"
+                    ]
                 },
                 {
                     "kanji": "波",
@@ -18698,7 +18702,10 @@ const PHONETICS_DATA = {
                         "jp": "先程のはＰ波でした。Ｓ波が来ます。",
                         "en": "That was the P-wave just now. The S-wave is coming.",
                         "furigana": "<ruby>先程<rp>(</rp><rt>さきほど</rt><rp>)</rp></ruby>のはＰ<ruby>波<rp>(</rp><rt>なみ</rt><rp>)</rp></ruby>でした。Ｓ<ruby>波<rp>(</rp><rt>なみ</rt><rp>)</rp></ruby>が<ruby>来<rp>(</rp><rt>き</rt><rp>)</rp></ruby>ます。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "давалгаа"
+                    ]
                 },
                 {
                     "kanji": "破",
@@ -18713,7 +18720,11 @@ const PHONETICS_DATA = {
                         "jp": "お父さんの破産は家名の汚れでした。",
                         "en": "Father's bankruptcy was a blot on the family's reputation.",
                         "furigana": "お<ruby>父<rp>(</rp><rt>とう</rt><rp>)</rp></ruby>さんの<ruby>破産<rp>(</rp><rt>はさん</rt><rp>)</rp></ruby>は<ruby>家名<rp>(</rp><rt>かめい</rt><rp>)</rp></ruby>の<ruby>汚<rp>(</rp><rt>よご</rt><rp>)</rp></ruby>れでした。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "урах",
+                        "эвдэх"
+                    ]
                 },
                 {
                     "kanji": "被",
@@ -18728,7 +18739,11 @@ const PHONETICS_DATA = {
                         "jp": "被弾しました。ダメージは軽微です。",
                         "en": "We've taken a hit. Trivial damage.",
                         "furigana": "<ruby>被弾<rp>(</rp><rt>ひだん</rt><rp>)</rp></ruby>しました。ダメージは<ruby>軽微<rp>(</rp><rt>けいび</rt><rp>)</rp></ruby>です。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хүлээх",
+                        "өртөх"
+                    ]
                 },
                 {
                     "kanji": "皮",
@@ -18743,7 +18758,11 @@ const PHONETICS_DATA = {
                         "jp": "毎日皮膚がなくなるって知ってた？",
                         "en": "Did you know we lose skin every day?",
                         "furigana": "<ruby>毎日<rp>(</rp><rt>まいにち</rt><rp>)</rp></ruby><ruby>皮膚<rp>(</rp><rt>ひふ</rt><rp>)</rp></ruby>がなくなるって<ruby>知<rp>(</rp><rt>し</rt><rp>)</rp></ruby>ってた？"
-                    }
+                    },
+                    "meaningsMn": [
+                        "арьс",
+                        "арьс"
+                    ]
                 },
                 {
                     "kanji": "疲",
@@ -18758,7 +18777,11 @@ const PHONETICS_DATA = {
                         "jp": "うんざりするのにももう疲れた。",
                         "en": "I'm sick and tired of being sick and tired.",
                         "furigana": "うんざりするのにももう<ruby>疲<rp>(</rp><rt>つか</rt><rp>)</rp></ruby>れた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "ядарсан",
+                        "ядрах"
+                    ]
                 },
                 {
                     "kanji": "披",
@@ -18773,7 +18796,11 @@ const PHONETICS_DATA = {
                         "jp": "彼は結婚披露宴でスピーチをした。",
                         "en": "He made a speech at the wedding feast.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>結婚<rp>(</rp><rt>けっこん</rt><rp>)</rp></ruby><ruby>披露宴<rp>(</rp><rt>ひろうえん</rt><rp>)</rp></ruby>でスピーチをした。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "ил гаргах",
+                        "нээх"
+                    ]
                 }
             ]
         },
@@ -18796,7 +18823,12 @@ const PHONETICS_DATA = {
                         "jp": "時々感情が抑えられないことがある。",
                         "en": "Sometimes I can't help showing emotions.",
                         "furigana": "<ruby>時々<rp>(</rp><rt>ときどき</rt><rp>)</rp></ruby><ruby>感情<rp>(</rp><rt>かんじょう</rt><rp>)</rp></ruby>が<ruby>抑<rp>(</rp><rt>おさ</rt><rp>)</rp></ruby>えられないことがある。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "мэдрэмж",
+                        "сэтгэл хөдлөл",
+                        "бодит байдал"
+                    ]
                 },
                 {
                     "kanji": "青",
@@ -18811,7 +18843,11 @@ const PHONETICS_DATA = {
                         "jp": "母親の青い目を受け継いでいる。",
                         "en": "She inherited her mother's blue eyes.",
                         "furigana": "<ruby>母親<rp>(</rp><rt>ははおや</rt><rp>)</rp></ruby>の<ruby>青<rp>(</rp><rt>あお</rt><rp>)</rp></ruby>い<ruby>目<rp>(</rp><rt>め</rt><rp>)</rp></ruby>を<ruby>受<rp>(</rp><rt>う</rt><rp>)</rp></ruby>け<ruby>継<rp>(</rp><rt>つ</rt><rp>)</rp></ruby>いでいる。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хөх",
+                        "ногоон"
+                    ]
                 },
                 {
                     "kanji": "清",
@@ -18826,7 +18862,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女は彼の部屋を清潔にしている。",
                         "en": "His room is kept clean by her.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>部屋<rp>(</rp><rt>へや</rt><rp>)</rp></ruby>を<ruby>清潔<rp>(</rp><rt>せいけつ</rt><rp>)</rp></ruby>にしている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "цэвэр",
+                        "тунгалаг"
+                    ]
                 },
                 {
                     "kanji": "精",
@@ -18842,7 +18882,12 @@ const PHONETICS_DATA = {
                         "jp": "精液は瓶詰めにする価値はあるよ。",
                         "en": "Semen is worth bottling.",
                         "furigana": "<ruby>精液<rp>(</rp><rt>せいえき</rt><rp>)</rp></ruby>は<ruby>瓶詰<rp>(</rp><rt>びんづ</rt><rp>)</rp></ruby>めにする<ruby>価値<rp>(</rp><rt>かち</rt><rp>)</rp></ruby>はあるよ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "цэвэршүүлэх",
+                        "мөн чанар",
+                        "сүнс"
+                    ]
                 },
                 {
                     "kanji": "静",
@@ -18856,7 +18901,10 @@ const PHONETICS_DATA = {
                         "jp": "「先生の容態は？」「絶対安静だ」",
                         "en": "\"How is her condition?\" \"She must have absolute bed rest.\"",
                         "furigana": "「<ruby>先生<rp>(</rp><rt>せんせい</rt><rp>)</rp></ruby>の<ruby>容態<rp>(</rp><rt>ようだい</rt><rp>)</rp></ruby>は？」「<ruby>絶対<rp>(</rp><rt>ぜったい</rt><rp>)</rp></ruby><ruby>安静<rp>(</rp><rt>あんせい</rt><rp>)</rp></ruby>だ」"
-                    }
+                    },
+                    "meaningsMn": [
+                        "нам гүм"
+                    ]
                 },
                 {
                     "kanji": "晴",
@@ -18871,7 +18919,11 @@ const PHONETICS_DATA = {
                         "jp": "明日晴れるかどうか分かりません。",
                         "en": "I don't know if it will be fine tomorrow.",
                         "furigana": "<ruby>明日<rp>(</rp><rt>あした</rt><rp>)</rp></ruby><ruby>晴<rp>(</rp><rt>は</rt><rp>)</rp></ruby>れるかどうか<ruby>分<rp>(</rp><rt>わ</rt><rp>)</rp></ruby>かりません。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "цэлмэх",
+                        "цэлмэг цаг агаар"
+                    ]
                 },
                 {
                     "kanji": "請",
@@ -18886,7 +18938,11 @@ const PHONETICS_DATA = {
                         "jp": "姫君は皇帝に寛恕を請いました。",
                         "en": "The princess begged forgiveness from the emperor.",
                         "furigana": "<ruby>姫君<rp>(</rp><rt>ひめぎみ</rt><rp>)</rp></ruby>は<ruby>皇帝<rp>(</rp><rt>こうてい</rt><rp>)</rp></ruby>に<ruby>寛恕<rp>(</rp><rt>かんじょ</rt><rp>)</rp></ruby>を<ruby>請<rp>(</rp><rt>こ</rt><rp>)</rp></ruby>いました。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хүсэлт гаргах",
+                        "хүсэх"
+                    ]
                 }
             ]
         },
@@ -18907,7 +18963,10 @@ const PHONETICS_DATA = {
                         "jp": "要するに彼らは若すぎるということだ。",
                         "en": "The point is they're too young.",
                         "furigana": "<ruby>要<rp>(</rp><rt>よう</rt><rp>)</rp></ruby>するに<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>若<rp>(</rp><rt>わか</rt><rp>)</rp></ruby>すぎるということだ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "залуу"
+                    ]
                 }
             ]
         },
@@ -18930,7 +18989,12 @@ const PHONETICS_DATA = {
                         "jp": "勿論最初の約束優先ということで謝ったわ。",
                         "en": "Of course I apologised, saying that the first appointment had priority.",
                         "furigana": "<ruby>勿論<rp>(</rp><rt>もちろん</rt><rp>)</rp></ruby><ruby>最初<rp>(</rp><rt>さいしょ</rt><rp>)</rp></ruby>の<ruby>約束<rp>(</rp><rt>やくそく</rt><rp>)</rp></ruby><ruby>優先<rp>(</rp><rt>ゆうせん</rt><rp>)</rp></ruby>ということで<ruby>謝<rp>(</rp><rt>あやま</rt><rp>)</rp></ruby>ったわ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "эелдэг зөөлөн",
+                        "давуу",
+                        "жүжигчин"
+                    ]
                 },
                 {
                     "kanji": "憂",
@@ -18945,7 +19009,11 @@ const PHONETICS_DATA = {
                         "jp": "憂いの反面には喜びがあるものだ。",
                         "en": "Every cloud has a silver lining.",
                         "furigana": "<ruby>憂<rp>(</rp><rt>うれ</rt><rp>)</rp></ruby>いの<ruby>反面<rp>(</rp><rt>はんめん</rt><rp>)</rp></ruby>には<ruby>喜<rp>(</rp><rt>よろこ</rt><rp>)</rp></ruby>びがあるものだ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "гуниг",
+                        "санаа зовох"
+                    ]
                 }
             ]
         },
@@ -18967,7 +19035,11 @@ const PHONETICS_DATA = {
                         "jp": "贅沢品の市場は急速に成長している。",
                         "en": "The market for luxury goods is growing fast.",
                         "furigana": "<ruby>贅沢<rp>(</rp><rt>ぜいたく</rt><rp>)</rp></ruby><ruby>品<rp>(</rp><rt>ひん</rt><rp>)</rp></ruby>の<ruby>市場<rp>(</rp><rt>しじょう</rt><rp>)</rp></ruby>は<ruby>急速<rp>(</rp><rt>きゅうそく</rt><rp>)</rp></ruby>に<ruby>成長<rp>(</rp><rt>せいちょう</rt><rp>)</rp></ruby>している。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "зах",
+                        "хот"
+                    ]
                 },
                 {
                     "kanji": "師",
@@ -18982,7 +19054,11 @@ const PHONETICS_DATA = {
                         "jp": "猟師たちは銃でその象をねらった。",
                         "en": "The hunters aimed at the elephant.",
                         "furigana": "<ruby>猟師<rp>(</rp><rt>りょうし</rt><rp>)</rp></ruby>たちは<ruby>銃<rp>(</rp><rt>じゅう</rt><rp>)</rp></ruby>でその<ruby>象<rp>(</rp><rt>ぞう</rt><rp>)</rp></ruby>をねらった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "мэргэжилтэн",
+                        "багш"
+                    ]
                 },
                 {
                     "kanji": "姉",
@@ -18997,7 +19073,11 @@ const PHONETICS_DATA = {
                         "jp": "料理は姉を先生にして習いました。",
                         "en": "I learned cooking under my sister's tuition.",
                         "furigana": "<ruby>料理<rp>(</rp><rt>りょうり</rt><rp>)</rp></ruby>は<ruby>姉<rp>(</rp><rt>あね</rt><rp>)</rp></ruby>を<ruby>先生<rp>(</rp><rt>せんせい</rt><rp>)</rp></ruby>にして<ruby>習<rp>(</rp><rt>なら</rt><rp>)</rp></ruby>いました。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "эгч",
+                        "том эгч"
+                    ]
                 },
                 {
                     "kanji": "刺",
@@ -19012,7 +19092,11 @@ const PHONETICS_DATA = {
                         "jp": "夕食には刺し身をつくりましょう。",
                         "en": "I'll prepare sashimi for dinner.",
                         "furigana": "<ruby>夕食<rp>(</rp><rt>ゆうしょく</rt><rp>)</rp></ruby>には<ruby>刺<rp>(</rp><rt>さ</rt><rp>)</rp></ruby>し<ruby>身<rp>(</rp><rt>み</rt><rp>)</rp></ruby>をつくりましょう。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "зүү",
+                        "хатгах"
+                    ]
                 }
             ]
         },
@@ -19035,7 +19119,12 @@ const PHONETICS_DATA = {
                         "jp": "畑違いの品質管理課は如何ですか？",
                         "en": "How are you finding the Quality Control department?",
                         "furigana": "<ruby>畑違<rp>(</rp><rt>はたけちが</rt><rp>)</rp></ruby>いの<ruby>品質<rp>(</rp><rt>ひんしつ</rt><rp>)</rp></ruby><ruby>管理<rp>(</rp><rt>かんり</rt><rp>)</rp></ruby><ruby>課<rp>(</rp><rt>か</rt><rp>)</rp></ruby>は<ruby>如何<rp>(</rp><rt>いかが</rt><rp>)</rp></ruby>ですか？"
-                    }
+                    },
+                    "meaningsMn": [
+                        "ялгаа",
+                        "ялгаатай байх",
+                        "зөрчих"
+                    ]
                 },
                 {
                     "kanji": "偉",
@@ -19050,7 +19139,11 @@ const PHONETICS_DATA = {
                         "jp": "彼は偉大な詩人として知られている。",
                         "en": "He is known as a great poet.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>偉大<rp>(</rp><rt>いだい</rt><rp>)</rp></ruby>な<ruby>詩人<rp>(</rp><rt>しじん</rt><rp>)</rp></ruby>として<ruby>知<rp>(</rp><rt>し</rt><rp>)</rp></ruby>られている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "гайхамшигтай",
+                        "агуу"
+                    ]
                 },
                 {
                     "kanji": "緯",
@@ -19065,7 +19158,11 @@ const PHONETICS_DATA = {
                         "jp": "これが事故が発生した経緯です。",
                         "en": "This is how the accident happened.",
                         "furigana": "これが<ruby>事故<rp>(</rp><rt>じこ</rt><rp>)</rp></ruby>が<ruby>発生<rp>(</rp><rt>はっせい</rt><rp>)</rp></ruby>した<ruby>経緯<rp>(</rp><rt>けいい</rt><rp>)</rp></ruby>です。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хөндлөн",
+                        "өргөрөг"
+                    ]
                 }
             ]
         },
@@ -19087,7 +19184,11 @@ const PHONETICS_DATA = {
                         "jp": "旅の間の共通のお財布をつくろう。",
                         "en": "Let's pool our money and travel as a group.",
                         "furigana": "<ruby>旅<rp>(</rp><rt>たび</rt><rp>)</rp></ruby>の<ruby>間<rp>(</rp><rt>ま</rt><rp>)</rp></ruby>の<ruby>共通<rp>(</rp><rt>きょうつう</rt><rp>)</rp></ruby>のお<ruby>財布<rp>(</rp><rt>さいふ</rt><rp>)</rp></ruby>をつくろう。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хамтдаа",
+                        "хамтын"
+                    ]
                 },
                 {
                     "kanji": "供",
@@ -19102,7 +19203,11 @@ const PHONETICS_DATA = {
                         "jp": "年明けに子供が産まれる予定です♪",
                         "en": "I'm expecting a baby in the new year!",
                         "furigana": "<ruby>年明<rp>(</rp><rt>としあ</rt><rp>)</rp></ruby>けに<ruby>子供<rp>(</rp><rt>こども</rt><rp>)</rp></ruby>が<ruby>産<rp>(</rp><rt>う</rt><rp>)</rp></ruby>まれる<ruby>予定<rp>(</rp><rt>よてい</rt><rp>)</rp></ruby>です♪"
-                    }
+                    },
+                    "meaningsMn": [
+                        "өргөх",
+                        "санал болгох"
+                    ]
                 },
                 {
                     "kanji": "港",
@@ -19117,7 +19222,11 @@ const PHONETICS_DATA = {
                         "jp": "飛行機は離陸後に空港を二周した。",
                         "en": "The plane circled the airport twice after taking off.",
                         "furigana": "<ruby>飛行機<rp>(</rp><rt>ひこうき</rt><rp>)</rp></ruby>は<ruby>離陸<rp>(</rp><rt>りりく</rt><rp>)</rp></ruby><ruby>後<rp>(</rp><rt>ご</rt><rp>)</rp></ruby>に<ruby>空港<rp>(</rp><rt>くうこう</rt><rp>)</rp></ruby>を<ruby>二<rp>(</rp><rt>に</rt><rp>)</rp></ruby><ruby>周<rp>(</rp><rt>しゅう</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "боомт",
+                        "боомт"
+                    ]
                 },
                 {
                     "kanji": "恭",
@@ -19132,7 +19241,11 @@ const PHONETICS_DATA = {
                         "jp": "恭子は鼻歌を歌いながら行ってしまった。",
                         "en": "Kyoko went away, humming a song.",
                         "furigana": "<ruby>恭子<rp>(</rp><rt>きょうこ</rt><rp>)</rp></ruby>は<ruby>鼻歌<rp>(</rp><rt>はなうた</rt><rp>)</rp></ruby>を<ruby>歌<rp>(</rp><rt>うた</rt><rp>)</rp></ruby>いながら<ruby>行<rp>(</rp><rt>おこな</rt><rp>)</rp></ruby>ってしまった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хүндэтгэл",
+                        "хүндэтгэлтэй"
+                    ]
                 },
                 {
                     "kanji": "洪",
@@ -19147,7 +19260,11 @@ const PHONETICS_DATA = {
                         "jp": "大洪水で現地の交通網が麻痺した。",
                         "en": "The massive flood paralyzed the local transportation network.",
                         "furigana": "<ruby>大<rp>(</rp><rt>だい</rt><rp>)</rp></ruby><ruby>洪水<rp>(</rp><rt>こうずい</rt><rp>)</rp></ruby>で<ruby>現地<rp>(</rp><rt>げんち</rt><rp>)</rp></ruby>の<ruby>交通<rp>(</rp><rt>こうつう</rt><rp>)</rp></ruby><ruby>網<rp>(</rp><rt>もう</rt><rp>)</rp></ruby>が<ruby>麻痺<rp>(</rp><rt>まひ</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "үер",
+                        "үер"
+                    ]
                 }
             ]
         },
@@ -19171,7 +19288,13 @@ const PHONETICS_DATA = {
                         "jp": "自分のウェブサイトの構成を変えた。",
                         "en": "I've changed my website's layout.",
                         "furigana": "<ruby>自分<rp>(</rp><rt>じぶん</rt><rp>)</rp></ruby>のウェブサイトの<ruby>構成<rp>(</rp><rt>こうせい</rt><rp>)</rp></ruby>を<ruby>変<rp>(</rp><rt>か</rt><rp>)</rp></ruby>えた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хувирах",
+                        "бүрэлдэх",
+                        "биелүүлэх",
+                        "болох"
+                    ]
                 },
                 {
                     "kanji": "城",
@@ -19185,7 +19308,10 @@ const PHONETICS_DATA = {
                         "jp": "朝日で城が燃えるように輝いた。",
                         "en": "The castle shone in the rising sun as if it were on fire.",
                         "furigana": "<ruby>朝日<rp>(</rp><rt>あさひ</rt><rp>)</rp></ruby>で<ruby>城<rp>(</rp><rt>しろ</rt><rp>)</rp></ruby>が<ruby>燃<rp>(</rp><rt>も</rt><rp>)</rp></ruby>えるように<ruby>輝<rp>(</rp><rt>かがや</rt><rp>)</rp></ruby>いた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "цайз"
+                    ]
                 },
                 {
                     "kanji": "盛",
@@ -19201,7 +19327,12 @@ const PHONETICS_DATA = {
                         "jp": "母は家事を切り盛りするのに忙しい。",
                         "en": "Mother is busy keeping house.",
                         "furigana": "<ruby>母<rp>(</rp><rt>はは</rt><rp>)</rp></ruby>は<ruby>家事<rp>(</rp><rt>かじ</rt><rp>)</rp></ruby>を<ruby>切<rp>(</rp><rt>き</rt><rp>)</rp></ruby>り<ruby>盛<rp>(</rp><rt>も</rt><rp>)</rp></ruby>りするのに<ruby>忙<rp>(</rp><rt>いそが</rt><rp>)</rp></ruby>しい。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "цэцэглэлт",
+                        "хөгжсөн",
+                        "цэцэглэх"
+                    ]
                 },
                 {
                     "kanji": "誠",
@@ -19215,7 +19346,10 @@ const PHONETICS_DATA = {
                         "jp": "彼女が誠実だなんてとんでもない。",
                         "en": "She is by no means honest.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>が<ruby>誠実<rp>(</rp><rt>せいじつ</rt><rp>)</rp></ruby>だなんてとんでもない。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "чин сэтгэл"
+                    ]
                 }
             ]
         },
@@ -19237,7 +19371,11 @@ const PHONETICS_DATA = {
                         "jp": "ウサギには長い耳と短い尾がある。",
                         "en": "A rabbit has long ears and a short tail.",
                         "furigana": "ウサギには<ruby>長<rp>(</rp><rt>なが</rt><rp>)</rp></ruby>い<ruby>耳<rp>(</rp><rt>みみ</rt><rp>)</rp></ruby>と<ruby>短<rp>(</rp><rt>みじか</rt><rp>)</rp></ruby>い<ruby>尾<rp>(</rp><rt>お</rt><rp>)</rp></ruby>がある。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "урт",
+                        "дарга"
+                    ]
                 },
                 {
                     "kanji": "張",
@@ -19254,7 +19392,13 @@ const PHONETICS_DATA = {
                         "jp": "本当の自信と空威張りは別問題だ。",
                         "en": "True bravery is quite another thing from bravado.",
                         "furigana": "<ruby>本当<rp>(</rp><rt>ほんとう</rt><rp>)</rp></ruby>の<ruby>自信<rp>(</rp><rt>じしん</rt><rp>)</rp></ruby>と<ruby>空威張<rp>(</rp><rt>からいば</rt><rp>)</rp></ruby>りは<ruby>別<rp>(</rp><rt>べつ</rt><rp>)</rp></ruby><ruby>問題<rp>(</rp><rt>もんだい</rt><rp>)</rp></ruby>だ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "сунгах",
+                        "тархах",
+                        "чангаруулах",
+                        "суналт"
+                    ]
                 },
                 {
                     "kanji": "帳",
@@ -19269,7 +19413,11 @@ const PHONETICS_DATA = {
                         "jp": "負債は帳消しにするしかなかった。",
                         "en": "We had to write off the debt.",
                         "furigana": "<ruby>負債<rp>(</rp><rt>ふさい</rt><rp>)</rp></ruby>は<ruby>帳消<rp>(</rp><rt>ちょうけ</rt><rp>)</rp></ruby>しにするしかなかった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дэвтэр",
+                        "тооцооны дэвтэр"
+                    ]
                 }
             ]
         },
@@ -19292,7 +19440,12 @@ const PHONETICS_DATA = {
                         "jp": "老人はたったひとりで座っていた。",
                         "en": "The old man sat all alone.",
                         "furigana": "<ruby>老人<rp>(</rp><rt>ろうじん</rt><rp>)</rp></ruby>はたったひとりで<ruby>座<rp>(</rp><rt>すわ</rt><rp>)</rp></ruby>っていた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хумхийх",
+                        "суух",
+                        "суудал"
+                    ]
                 },
                 {
                     "kanji": "挫",
@@ -19306,7 +19459,10 @@ const PHONETICS_DATA = {
                         "jp": "病気で彼の旅行の計画は挫折した。",
                         "en": "Illness frustrated his plans for the trip.",
                         "furigana": "<ruby>病気<rp>(</rp><rt>びょうき</rt><rp>)</rp></ruby>で<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>旅行<rp>(</rp><rt>りょこう</rt><rp>)</rp></ruby>の<ruby>計画<rp>(</rp><rt>けいかく</rt><rp>)</rp></ruby>は<ruby>挫折<rp>(</rp><rt>ざせつ</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "мултрах"
+                    ]
                 }
             ]
         },
@@ -19328,7 +19484,11 @@ const PHONETICS_DATA = {
                         "jp": "毎日ある程度運動する事は必要だ。",
                         "en": "It is necessary to do some exercise every day.",
                         "furigana": "<ruby>毎日<rp>(</rp><rt>まいにち</rt><rp>)</rp></ruby>ある<ruby>程度<rp>(</rp><rt>ていど</rt><rp>)</rp></ruby><ruby>運動<rp>(</rp><rt>うんどう</rt><rp>)</rp></ruby>する<ruby>事<rp>(</rp><rt>こと</rt><rp>)</rp></ruby>は<ruby>必要<rp>(</rp><rt>ひつよう</rt><rp>)</rp></ruby>だ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хэмжээ",
+                        "тогтсон хэлбэр"
+                    ]
                 },
                 {
                     "kanji": "呈",
@@ -19343,7 +19503,11 @@ const PHONETICS_DATA = {
                         "jp": "その界隈は行事で活気を呈している。",
                         "en": "The neighborhood is alive with activities.",
                         "furigana": "その<ruby>界隈<rp>(</rp><rt>かいわい</rt><rp>)</rp></ruby>は<ruby>行事<rp>(</rp><rt>ぎょうじ</rt><rp>)</rp></ruby>で<ruby>活気<rp>(</rp><rt>かっき</rt><rp>)</rp></ruby>を<ruby>呈<rp>(</rp><rt>てい</rt><rp>)</rp></ruby>している。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "харуулах",
+                        "өргөх"
+                    ]
                 }
             ]
         },
@@ -19366,7 +19530,12 @@ const PHONETICS_DATA = {
                         "jp": "非の打ち所がない計画は、窮屈だなあ。",
                         "en": "A faultless plan is stifling, isn't it?",
                         "furigana": "<ruby>非<rp>(</rp><rt>ひ</rt><rp>)</rp></ruby>の<ruby>打<rp>(</rp><rt>う</rt><rp>)</rp></ruby>ち<ruby>所<rp>(</rp><rt>どころ</rt><rp>)</rp></ruby>がない<ruby>計画<rp>(</rp><rt>けいかく</rt><rp>)</rp></ruby>は、<ruby>窮屈<rp>(</rp><rt>きゅうくつ</rt><rp>)</rp></ruby>だなあ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "-үгүй",
+                        "биш",
+                        "сөрөг"
+                    ]
                 },
                 {
                     "kanji": "悲",
@@ -19380,7 +19549,10 @@ const PHONETICS_DATA = {
                         "jp": "忙しい蜂は悲しんでいる暇がない。",
                         "en": "The busy bee has no time for sorrow.",
                         "furigana": "<ruby>忙<rp>(</rp><rt>いそが</rt><rp>)</rp></ruby>しい<ruby>蜂<rp>(</rp><rt>はち</rt><rp>)</rp></ruby>は<ruby>悲<rp>(</rp><rt>かな</rt><rp>)</rp></ruby>しんでいる<ruby>暇<rp>(</rp><rt>ひま</rt><rp>)</rp></ruby>がない。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "гунигтай"
+                    ]
                 },
                 {
                     "kanji": "俳",
@@ -19394,7 +19566,10 @@ const PHONETICS_DATA = {
                         "jp": "彼は映画俳優から政治家になった。",
                         "en": "From a movie star he became a statesman.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>映画<rp>(</rp><rt>えいが</rt><rp>)</rp></ruby><ruby>俳優<rp>(</rp><rt>はいゆう</rt><rp>)</rp></ruby>から<ruby>政治<rp>(</rp><rt>せいじ</rt><rp>)</rp></ruby><ruby>家<rp>(</rp><rt>か</rt><rp>)</rp></ruby>になった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хайку"
+                    ]
                 },
                 {
                     "kanji": "輩",
@@ -19409,7 +19584,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女は先輩を追い越して昇進した。",
                         "en": "She was promoted over the heads of her seniors.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>先輩<rp>(</rp><rt>せんぱい</rt><rp>)</rp></ruby>を<ruby>追<rp>(</rp><rt>お</rt><rp>)</rp></ruby>い<ruby>越<rp>(</rp><rt>こ</rt><rp>)</rp></ruby>して<ruby>昇進<rp>(</rp><rt>しょうしん</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "нөхөр",
+                        "анд"
+                    ]
                 },
                 {
                     "kanji": "扉",
@@ -19424,7 +19603,11 @@ const PHONETICS_DATA = {
                         "jp": "出て行くなら、扉を閉めてください。",
                         "en": "If you're leaving, please close the door.",
                         "furigana": "<ruby>出<rp>(</rp><rt>で</rt><rp>)</rp></ruby>て<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>くなら、<ruby>扉<rp>(</rp><rt>とびら</rt><rp>)</rp></ruby>を<ruby>閉<rp>(</rp><rt>し</rt><rp>)</rp></ruby>めてください。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "гол хаалга",
+                        "шаантаг хаалга"
+                    ]
                 },
                 {
                     "kanji": "排",
@@ -19440,7 +19623,12 @@ const PHONETICS_DATA = {
                         "jp": "排尿の終わり頃に痛みがあります。",
                         "en": "I have pain toward the end of urination.",
                         "furigana": "<ruby>排尿<rp>(</rp><rt>はいにょう</rt><rp>)</rp></ruby>の<ruby>終<rp>(</rp><rt>お</rt><rp>)</rp></ruby>わり<ruby>頃<rp>(</rp><rt>ころ</rt><rp>)</rp></ruby>に<ruby>痛<rp>(</rp><rt>いた</rt><rp>)</rp></ruby>みがあります。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "үгүйсгэх",
+                        "хасах",
+                        "гадагшлуулах"
+                    ]
                 }
             ]
         },
@@ -19462,7 +19650,11 @@ const PHONETICS_DATA = {
                         "jp": "赤道における経度1度当たりの長さ。",
                         "en": "Distance per degree of longitude at equator.",
                         "furigana": "<ruby>赤道<rp>(</rp><rt>せきどう</rt><rp>)</rp></ruby>における<ruby>経度<rp>(</rp><rt>けいど</rt><rp>)</rp></ruby>1<ruby>度<rp>(</rp><rt>ど</rt><rp>)</rp></ruby><ruby>当<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>たりの<ruby>長<rp>(</rp><rt>なが</rt><rp>)</rp></ruby>さ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хэм",
+                        "удаа"
+                    ]
                 },
                 {
                     "kanji": "渡",
@@ -19477,7 +19669,11 @@ const PHONETICS_DATA = {
                         "jp": "僕は川を泳いで渡ることが出来る。",
                         "en": "I can swim across the river.",
                         "furigana": "<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>は<ruby>川<rp>(</rp><rt>かわ</rt><rp>)</rp></ruby>を<ruby>泳<rp>(</rp><rt>およ</rt><rp>)</rp></ruby>いで<ruby>渡<rp>(</rp><rt>わた</rt><rp>)</rp></ruby>ることが<ruby>出来<rp>(</rp><rt>でき</rt><rp>)</rp></ruby>る。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дамжин өнгөрөх",
+                        "гатлах"
+                    ]
                 }
             ]
         },
@@ -19499,7 +19695,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女から久しぶりに電話があった。",
                         "en": "I had a call from her for the first time in a long time.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>から<ruby>久<rp>(</rp><rt>ひさ</rt><rp>)</rp></ruby>しぶりに<ruby>電話<rp>(</rp><rt>でんわ</rt><rp>)</rp></ruby>があった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "урт хугацаа",
+                        "удаан үргэлжлэх"
+                    ]
                 }
             ]
         },
@@ -19521,7 +19721,11 @@ const PHONETICS_DATA = {
                         "jp": "「先生の容態は？」「絶対安静だ」",
                         "en": "\"How is her condition?\" \"She must have absolute bed rest.\"",
                         "furigana": "「<ruby>先生<rp>(</rp><rt>せんせい</rt><rp>)</rp></ruby>の<ruby>容態<rp>(</rp><rt>ようだい</rt><rp>)</rp></ruby>は？」「<ruby>絶対<rp>(</rp><rt>ぜったい</rt><rp>)</rp></ruby><ruby>安静<rp>(</rp><rt>あんせい</rt><rp>)</rp></ruby>だ」"
-                    }
+                    },
+                    "meaningsMn": [
+                        "багтаах",
+                        "төрх байдал"
+                    ]
                 },
                 {
                     "kanji": "溶",
@@ -19536,7 +19740,11 @@ const PHONETICS_DATA = {
                         "jp": "彼はコーヒーに砂糖を溶かした。",
                         "en": "He dissolved some sugar in his coffee.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>はコーヒーに<ruby>砂糖<rp>(</rp><rt>さとう</rt><rp>)</rp></ruby>を<ruby>溶<rp>(</rp><rt>と</rt><rp>)</rp></ruby>かした。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хайлах",
+                        "уусах"
+                    ]
                 }
             ]
         },
@@ -19559,7 +19767,12 @@ const PHONETICS_DATA = {
                         "jp": "立ち寄り時間はどれくらいですか。",
                         "en": "How long is the stopover?",
                         "furigana": "<ruby>立<rp>(</rp><rt>た</rt><rp>)</rp></ruby>ち<ruby>寄<rp>(</rp><rt>よ</rt><rp>)</rp></ruby>り<ruby>時間<rp>(</rp><rt>じかん</rt><rp>)</rp></ruby>はどれくらいですか。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "ойртох",
+                        "хувь нэмэр оруулах",
+                        "ойртох"
+                    ]
                 },
                 {
                     "kanji": "奇",
@@ -19574,7 +19787,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女は自分の奇妙な経験を語った。",
                         "en": "She gave a narrative of her strange experience.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>自分<rp>(</rp><rt>じぶん</rt><rp>)</rp></ruby>の<ruby>奇妙<rp>(</rp><rt>きみょう</rt><rp>)</rp></ruby>な<ruby>経験<rp>(</rp><rt>けいけん</rt><rp>)</rp></ruby>を<ruby>語<rp>(</rp><rt>かた</rt><rp>)</rp></ruby>った。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хачирхалтай",
+                        "ер бусын"
+                    ]
                 },
                 {
                     "kanji": "騎",
@@ -19589,7 +19806,11 @@ const PHONETICS_DATA = {
                         "jp": "騎士が王への忠誠を誓った。",
                         "en": "The knight swore an oath of allegiance to the king.",
                         "furigana": "<ruby>騎士<rp>(</rp><rt>きし</rt><rp>)</rp></ruby>が<ruby>王<rp>(</rp><rt>おう</rt><rp>)</rp></ruby>への<ruby>忠誠<rp>(</rp><rt>ちゅうせい</rt><rp>)</rp></ruby>を<ruby>誓<rp>(</rp><rt>ちか</rt><rp>)</rp></ruby>った。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "морьтон",
+                        "морь унах"
+                    ]
                 }
             ]
         },
@@ -19611,7 +19832,11 @@ const PHONETICS_DATA = {
                         "jp": "何と言ったら良いか分かりません。",
                         "en": "I'm at a loss for words.",
                         "furigana": "<ruby>何<rp>(</rp><rt>なに</rt><rp>)</rp></ruby>と<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>ったら<ruby>良<rp>(</rp><rt>よ</rt><rp>)</rp></ruby>いか<ruby>分<rp>(</rp><rt>わ</rt><rp>)</rp></ruby>かりません。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "юу",
+                        "хэдэн"
+                    ]
                 },
                 {
                     "kanji": "歌",
@@ -19625,7 +19850,10 @@ const PHONETICS_DATA = {
                         "jp": "彼は小節を利かして歌っています。",
                         "en": "He is singing with a lot of ornamentation.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>小節<rp>(</rp><rt>しょうせつ</rt><rp>)</rp></ruby>を<ruby>利<rp>(</rp><rt>き</rt><rp>)</rp></ruby>かして<ruby>歌<rp>(</rp><rt>うた</rt><rp>)</rp></ruby>っています。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дуу"
+                    ]
                 },
                 {
                     "kanji": "可",
@@ -19642,7 +19870,13 @@ const PHONETICS_DATA = {
                         "jp": "この赤ちゃんペンギンとっても可愛い！",
                         "en": "This baby penguin is too cute!",
                         "furigana": "この<ruby>赤<rp>(</rp><rt>あか</rt><rp>)</rp></ruby>ちゃんペンギンとっても<ruby>可愛<rp>(</rp><rt>かわい</rt><rp>)</rp></ruby>い！"
-                    }
+                    },
+                    "meaningsMn": [
+                        "чадах",
+                        "-ж болох",
+                        "зөвшөөрөх",
+                        "боломжтой"
+                    ]
                 },
                 {
                     "kanji": "河",
@@ -19656,7 +19890,10 @@ const PHONETICS_DATA = {
                         "jp": "駿河湾から見た富士山は美しい。",
                         "en": "Mt. Fuji as seen from Suruga Bay is beautiful.",
                         "furigana": "<ruby>駿河湾<rp>(</rp><rt>するがわん</rt><rp>)</rp></ruby>から<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>た<ruby>富士山<rp>(</rp><rt>ふじさん</rt><rp>)</rp></ruby>は<ruby>美<rp>(</rp><rt>うつく</rt><rp>)</rp></ruby>しい。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "гол"
+                    ]
                 },
                 {
                     "kanji": "荷",
@@ -19672,7 +19909,12 @@ const PHONETICS_DATA = {
                         "jp": "彼女は手荷物を２個持っていった。",
                         "en": "She took two pieces of baggage with her.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>手荷物<rp>(</rp><rt>てにもつ</rt><rp>)</rp></ruby>を２<ruby>個<rp>(</rp><rt>こ</rt><rp>)</rp></ruby><ruby>持<rp>(</rp><rt>も</rt><rp>)</rp></ruby>っていった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "ачаа",
+                        "ачаалал",
+                        "ачаа тээш"
+                    ]
                 },
                 {
                     "kanji": "苛",
@@ -19686,7 +19928,10 @@ const PHONETICS_DATA = {
                         "jp": "彼の無能ぶりに誰もが苛立ち始めた。",
                         "en": "His incompetence began to irritate everyone.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>無能<rp>(</rp><rt>むのう</rt><rp>)</rp></ruby>ぶりに<ruby>誰<rp>(</rp><rt>だれ</rt><rp>)</rp></ruby>もが<ruby>苛立<rp>(</rp><rt>いらだ</rt><rp>)</rp></ruby>ち<ruby>始<rp>(</rp><rt>はじ</rt><rp>)</rp></ruby>めた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дээрэлхэх"
+                    ]
                 }
             ]
         },
@@ -19708,7 +19953,11 @@ const PHONETICS_DATA = {
                         "jp": "予約を３泊から５泊に変更したい。",
                         "en": "I'd like to change my reservation for three to five nights.",
                         "furigana": "<ruby>予約<rp>(</rp><rt>よやく</rt><rp>)</rp></ruby>を３<ruby>泊<rp>(</rp><rt>はく</rt><rp>)</rp></ruby>から５<ruby>泊<rp>(</rp><rt>はく</rt><rp>)</rp></ruby>に<ruby>変更<rp>(</rp><rt>へんこう</rt><rp>)</rp></ruby>したい。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "оройтох",
+                        "шинэчлэх"
+                    ]
                 },
                 {
                     "kanji": "硬",
@@ -19723,7 +19972,11 @@ const PHONETICS_DATA = {
                         "jp": "彼は自分の意見を強硬に主張した。",
                         "en": "He strongly persisted in arguing his opinion.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>自分<rp>(</rp><rt>じぶん</rt><rp>)</rp></ruby>の<ruby>意見<rp>(</rp><rt>いけん</rt><rp>)</rp></ruby>を<ruby>強硬<rp>(</rp><rt>きょうこう</rt><rp>)</rp></ruby>に<ruby>主張<rp>(</rp><rt>しゅちょう</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хатуу",
+                        "хатуу"
+                    ]
                 },
                 {
                     "kanji": "梗",
@@ -19737,7 +19990,10 @@ const PHONETICS_DATA = {
                         "jp": "睡眠不足で、心筋梗塞リスクが上昇。",
                         "en": "Sleep deprivation increases risk of heart attacks.",
                         "furigana": "<ruby>睡眠<rp>(</rp><rt>すいみん</rt><rp>)</rp></ruby><ruby>不足<rp>(</rp><rt>ふそく</rt><rp>)</rp></ruby>で、<ruby>心筋梗塞<rp>(</rp><rt>しんきんこうそく</rt><rp>)</rp></ruby>リスクが<ruby>上昇<rp>(</rp><rt>じょうしょう</rt><rp>)</rp></ruby>。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "сүрэлт"
+                    ]
                 }
             ]
         },
@@ -19759,7 +20015,11 @@ const PHONETICS_DATA = {
                         "jp": "急所を除くすべての攻撃を認める。",
                         "en": "I'm allowing all attacks except on vital organs.",
                         "furigana": "<ruby>急所<rp>(</rp><rt>きゅうしょ</rt><rp>)</rp></ruby>を<ruby>除<rp>(</rp><rt>のぞ</rt><rp>)</rp></ruby>くすべての<ruby>攻撃<rp>(</rp><rt>こうげき</rt><rp>)</rp></ruby>を<ruby>認<rp>(</rp><rt>みと</rt><rp>)</rp></ruby>める。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хүлээн зөвшөөрөх",
+                        "таних"
+                    ]
                 },
                 {
                     "kanji": "忍",
@@ -19774,7 +20034,11 @@ const PHONETICS_DATA = {
                         "jp": "捕虜を虐殺したのは残忍な行為だ。",
                         "en": "The slaughter of the prisoners was a barbarous act.",
                         "furigana": "<ruby>捕虜<rp>(</rp><rt>ほりょ</rt><rp>)</rp></ruby>を<ruby>虐殺<rp>(</rp><rt>ぎゃくさつ</rt><rp>)</rp></ruby>したのは<ruby>残忍<rp>(</rp><rt>ざんにん</rt><rp>)</rp></ruby>な<ruby>行為<rp>(</rp><rt>こうい</rt><rp>)</rp></ruby>だ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "тэвчих",
+                        "тэсвэрлэх"
+                    ]
                 }
             ]
         },
@@ -19797,7 +20061,12 @@ const PHONETICS_DATA = {
                         "jp": "服装に関する特別な規則はない。",
                         "en": "There are no special rules as regards what clothes we should wear.",
                         "furigana": "<ruby>服装<rp>(</rp><rt>ふくそう</rt><rp>)</rp></ruby>に<ruby>関<rp>(</rp><rt>かん</rt><rp>)</rp></ruby>する<ruby>特別<rp>(</rp><rt>とくべつ</rt><rp>)</rp></ruby>な<ruby>規則<rp>(</rp><rt>きそく</rt><rp>)</rp></ruby>はない。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хувцас",
+                        "хувцаслах",
+                        "тоноглох"
+                    ]
                 },
                 {
                     "kanji": "荘",
@@ -19812,7 +20081,11 @@ const PHONETICS_DATA = {
                         "jp": "その別荘は清潔で整然としていた。",
                         "en": "The cottage was clean and tidy.",
                         "furigana": "その<ruby>別荘<rp>(</rp><rt>べっそう</rt><rp>)</rp></ruby>は<ruby>清潔<rp>(</rp><rt>せいけつ</rt><rp>)</rp></ruby>で<ruby>整然<rp>(</rp><rt>せいぜん</rt><rp>)</rp></ruby>としていた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "байшин",
+                        "сүрлэг"
+                    ]
                 },
                 {
                     "kanji": "壮",
@@ -19828,7 +20101,12 @@ const PHONETICS_DATA = {
                         "jp": "王室の結婚式は大変な壮観だった。",
                         "en": "The royal wedding was a great spectacle.",
                         "furigana": "<ruby>王室<rp>(</rp><rt>おうしつ</rt><rp>)</rp></ruby>の<ruby>結婚式<rp>(</rp><rt>けっこんしき</rt><rp>)</rp></ruby>は<ruby>大変<rp>(</rp><rt>たいへん</rt><rp>)</rp></ruby>な<ruby>壮観<rp>(</rp><rt>そうかん</rt><rp>)</rp></ruby>だった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хүчирхэг",
+                        "эрч хүчтэй",
+                        "сүр жавхлантай"
+                    ]
                 }
             ]
         },
@@ -19850,7 +20128,11 @@ const PHONETICS_DATA = {
                         "jp": "彼は将来国家の棟梁たるべき器だ。",
                         "en": "He has the capacity to be a future leader of the nation.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>将来<rp>(</rp><rt>しょうらい</rt><rp>)</rp></ruby><ruby>国家<rp>(</rp><rt>こっか</rt><rp>)</rp></ruby>の<ruby>棟梁<rp>(</rp><rt>とうりょう</rt><rp>)</rp></ruby>たるべき<ruby>器<rp>(</rp><rt>うつわ</rt><rp>)</rp></ruby>だ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "удирдагч",
+                        "жанжин"
+                    ]
                 },
                 {
                     "kanji": "奨",
@@ -19865,7 +20147,11 @@ const PHONETICS_DATA = {
                         "jp": "奨学金のおかげで彼女は留学した。",
                         "en": "The scholarship enabled her to study abroad.",
                         "furigana": "<ruby>奨学<rp>(</rp><rt>しょうがく</rt><rp>)</rp></ruby><ruby>金<rp>(</rp><rt>きん</rt><rp>)</rp></ruby>のおかげで<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>留学<rp>(</rp><rt>りゅうがく</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дэмжих",
+                        "урамшуулах"
+                    ]
                 }
             ]
         },
@@ -19888,7 +20174,12 @@ const PHONETICS_DATA = {
                         "jp": "冷蔵庫に何か飲み物がありますか。",
                         "en": "Is there anything to drink in the refrigerator?",
                         "furigana": "<ruby>冷蔵庫<rp>(</rp><rt>れいぞうこ</rt><rp>)</rp></ruby>に<ruby>何<rp>(</rp><rt>なに</rt><rp>)</rp></ruby>か<ruby>飲<rp>(</rp><rt>の</rt><rp>)</rp></ruby>み<ruby>物<rp>(</rp><rt>もの</rt><rp>)</rp></ruby>がありますか。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "агуулах",
+                        "хадгалах",
+                        "агуулах"
+                    ]
                 },
                 {
                     "kanji": "臓",
@@ -19903,7 +20194,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女の心臓は恐怖で早鐘を打った。",
                         "en": "Her heart beat quickly out of fear.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>の<ruby>心臓<rp>(</rp><rt>しんぞう</rt><rp>)</rp></ruby>は<ruby>恐怖<rp>(</rp><rt>きょうふ</rt><rp>)</rp></ruby>で<ruby>早鐘<rp>(</rp><rt>はやがね</rt><rp>)</rp></ruby>を<ruby>打<rp>(</rp><rt>う</rt><rp>)</rp></ruby>った。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дотоод эрхтэн",
+                        "дотоод эрхтэн"
+                    ]
                 }
             ]
         },
@@ -19926,7 +20221,12 @@ const PHONETICS_DATA = {
                         "jp": "自分自身に疑問を持つことは良識の第一歩だ。",
                         "en": "To have doubts about oneself is the first sign of intelligence.",
                         "furigana": "<ruby>自分<rp>(</rp><rt>じぶん</rt><rp>)</rp></ruby><ruby>自身<rp>(</rp><rt>じしん</rt><rp>)</rp></ruby>に<ruby>疑問<rp>(</rp><rt>ぎもん</rt><rp>)</rp></ruby>を<ruby>持<rp>(</rp><rt>も</rt><rp>)</rp></ruby>つことは<ruby>良識<rp>(</rp><rt>りょうしき</rt><rp>)</rp></ruby>の<ruby>第一歩<rp>(</rp><rt>だいいっぽ</rt><rp>)</rp></ruby>だ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "ялгах чадвартай",
+                        "ялгах",
+                        "мэдлэг"
+                    ]
                 },
                 {
                     "kanji": "職",
@@ -19941,7 +20241,11 @@ const PHONETICS_DATA = {
                         "jp": "貴職らにとっては重要なことです。",
                         "en": "This is an important thing for all of you.",
                         "furigana": "<ruby>貴<rp>(</rp><rt>き</rt><rp>)</rp></ruby><ruby>職<rp>(</rp><rt>しょく</rt><rp>)</rp></ruby>らにとっては<ruby>重要<rp>(</rp><rt>じゅうよう</rt><rp>)</rp></ruby>なことです。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "албан тушаал",
+                        "ажил эрхлэлт"
+                    ]
                 },
                 {
                     "kanji": "織",
@@ -19955,7 +20259,10 @@ const PHONETICS_DATA = {
                         "jp": "彼女は織田家と関係があるんです。",
                         "en": "She is connected with the Oda's by marriage.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>織田<rp>(</rp><rt>おだ</rt><rp>)</rp></ruby><ruby>家<rp>(</rp><rt>か</rt><rp>)</rp></ruby>と<ruby>関係<rp>(</rp><rt>かんけい</rt><rp>)</rp></ruby>があるんです。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "нэхэх"
+                    ]
                 }
             ]
         },
@@ -19976,7 +20283,10 @@ const PHONETICS_DATA = {
                         "jp": "名古屋は東京と大阪の間にあります。",
                         "en": "Nagoya is between Tokyo and Osaka.",
                         "furigana": "<ruby>名古屋<rp>(</rp><rt>なごや</rt><rp>)</rp></ruby>は<ruby>東京<rp>(</rp><rt>とうきょう</rt><rp>)</rp></ruby>と<ruby>大阪<rp>(</rp><rt>おおさか</rt><rp>)</rp></ruby>の<ruby>間<rp>(</rp><rt>ま</rt><rp>)</rp></ruby>にあります。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хуучин"
+                    ]
                 },
                 {
                     "kanji": "故",
@@ -19993,7 +20303,13 @@ const PHONETICS_DATA = {
                         "jp": "警察が医療事故の立件に消極的だ。",
                         "en": "The police are reluctant to pursue criminal charges in medical cases.",
                         "furigana": "<ruby>警察<rp>(</rp><rt>けいさつ</rt><rp>)</rp></ruby>が<ruby>医療<rp>(</rp><rt>いりょう</rt><rp>)</rp></ruby><ruby>事故<rp>(</rp><rt>じこ</rt><rp>)</rp></ruby>の<ruby>立件<rp>(</rp><rt>りっけん</rt><rp>)</rp></ruby>に<ruby>消極<rp>(</rp><rt>しょうきょく</rt><rp>)</rp></ruby><ruby>的<rp>(</rp><rt>てき</rt><rp>)</rp></ruby>だ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "санамсаргүй явдал",
+                        "хуучин",
+                        "нас барсан",
+                        "нөхцөл байдал"
+                    ]
                 },
                 {
                     "kanji": "個",
@@ -20008,7 +20324,11 @@ const PHONETICS_DATA = {
                         "jp": "ケーキ一個で手を打ってあげるよ。",
                         "en": "I'll do it for a cake.",
                         "furigana": "ケーキ<ruby>一<rp>(</rp><rt>いち</rt><rp>)</rp></ruby><ruby>個<rp>(</rp><rt>こ</rt><rp>)</rp></ruby>で<ruby>手<rp>(</rp><rt>て</rt><rp>)</rp></ruby>を<ruby>打<rp>(</rp><rt>う</rt><rp>)</rp></ruby>ってあげるよ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хувь хүн",
+                        "ерөнхий тоолуур"
+                    ]
                 },
                 {
                     "kanji": "固",
@@ -20025,7 +20345,13 @@ const PHONETICS_DATA = {
                         "jp": "卵をあまり固くゆでないでください。",
                         "en": "Please don't boil the eggs so hard.",
                         "furigana": "<ruby>卵<rp>(</rp><rt>たまご</rt><rp>)</rp></ruby>をあまり<ruby>固<rp>(</rp><rt>かた</rt><rp>)</rp></ruby>くゆでないでください。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хатуурах",
+                        "хатуу",
+                        "бат бөх",
+                        "хатуу"
+                    ]
                 },
                 {
                     "kanji": "湖",
@@ -20039,7 +20365,10 @@ const PHONETICS_DATA = {
                         "jp": "琵琶湖は日本で一番大きな湖です。",
                         "en": "Lake Biwa is the largest lake in Japan.",
                         "furigana": "<ruby>琵琶湖<rp>(</rp><rt>びわこ</rt><rp>)</rp></ruby>は<ruby>日本<rp>(</rp><rt>にっぽん</rt><rp>)</rp></ruby>で<ruby>一番<rp>(</rp><rt>いちばん</rt><rp>)</rp></ruby><ruby>大<rp>(</rp><rt>おお</rt><rp>)</rp></ruby>きな<ruby>湖<rp>(</rp><rt>みずうみ</rt><rp>)</rp></ruby>です。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "нуур"
+                    ]
                 },
                 {
                     "kanji": "枯",
@@ -20053,7 +20382,10 @@ const PHONETICS_DATA = {
                         "jp": "彼の庭の花はいま枯れてしまった。",
                         "en": "The flowers in his garden have withered.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>庭<rp>(</rp><rt>にわ</rt><rp>)</rp></ruby>の<ruby>花<rp>(</rp><rt>はな</rt><rp>)</rp></ruby>はいま<ruby>枯<rp>(</rp><rt>か</rt><rp>)</rp></ruby>れてしまった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хатах"
+                    ]
                 },
                 {
                     "kanji": "錮",
@@ -20064,7 +20396,11 @@ const PHONETICS_DATA = {
                         "imprisonment",
                         "weld"
                     ],
-                    "example": null
+                    "example": null,
+                    "meaningsMn": [
+                        "хорих",
+                        "гагнах"
+                    ]
                 }
             ]
         },
@@ -20086,7 +20422,11 @@ const PHONETICS_DATA = {
                         "jp": "パリは世界で最も美しい街である。",
                         "en": "Paris is the most beautiful city in the world.",
                         "furigana": "パリは<ruby>世界<rp>(</rp><rt>せかい</rt><rp>)</rp></ruby>で<ruby>最<rp>(</rp><rt>もっと</rt><rp>)</rp></ruby>も<ruby>美<rp>(</rp><rt>うつく</rt><rp>)</rp></ruby>しい<ruby>街<rp>(</rp><rt>まち</rt><rp>)</rp></ruby>である。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "ертөнц",
+                        "хил хязгаар"
+                    ]
                 },
                 {
                     "kanji": "介",
@@ -20101,7 +20441,11 @@ const PHONETICS_DATA = {
                         "jp": "うまくいったら連ドラを紹介してあげる。",
                         "en": "If it goes well, I'll put you forward for a drama serial.",
                         "furigana": "うまくいったら<ruby>連<rp>(</rp><rt>れん</rt><rp>)</rp></ruby>ドラを<ruby>紹介<rp>(</rp><rt>しょうかい</rt><rp>)</rp></ruby>してあげる。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дундуур орох",
+                        "зуучлах"
+                    ]
                 }
             ]
         },
@@ -20124,7 +20468,12 @@ const PHONETICS_DATA = {
                         "jp": "警察が医療事故の立件に消極的だ。",
                         "en": "The police are reluctant to pursue criminal charges in medical cases.",
                         "furigana": "<ruby>警察<rp>(</rp><rt>けいさつ</rt><rp>)</rp></ruby>が<ruby>医療<rp>(</rp><rt>いりょう</rt><rp>)</rp></ruby><ruby>事故<rp>(</rp><rt>じこ</rt><rp>)</rp></ruby>の<ruby>立件<rp>(</rp><rt>りっけん</rt><rp>)</rp></ruby>に<ruby>消極<rp>(</rp><rt>しょうきょく</rt><rp>)</rp></ruby><ruby>的<rp>(</rp><rt>てき</rt><rp>)</rp></ruby>だ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "сануулах",
+                        "болгоомжлох",
+                        "анхааруулах"
+                    ]
                 },
                 {
                     "kanji": "敬",
@@ -20139,7 +20488,11 @@ const PHONETICS_DATA = {
                         "jp": "両親は私に老人を敬うように言った。",
                         "en": "My parents told me that we should respect the elderly.",
                         "furigana": "<ruby>両親<rp>(</rp><rt>りょうしん</rt><rp>)</rp></ruby>は<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>に<ruby>老人<rp>(</rp><rt>ろうじん</rt><rp>)</rp></ruby>を<ruby>敬<rp>(</rp><rt>うやま</rt><rp>)</rp></ruby>うように<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>った。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хүндлэл",
+                        "хүндэтгэл"
+                    ]
                 }
             ]
         },
@@ -20161,7 +20514,11 @@ const PHONETICS_DATA = {
                         "jp": "猟師たちは銃でその象をねらった。",
                         "en": "The hunters aimed at the elephant.",
                         "furigana": "<ruby>猟師<rp>(</rp><rt>りょうし</rt><rp>)</rp></ruby>たちは<ruby>銃<rp>(</rp><rt>じゅう</rt><rp>)</rp></ruby>でその<ruby>象<rp>(</rp><rt>ぞう</rt><rp>)</rp></ruby>をねらった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "заан",
+                        "үзэгдэл"
+                    ]
                 },
                 {
                     "kanji": "像",
@@ -20176,7 +20533,11 @@ const PHONETICS_DATA = {
                         "jp": "老人の肖像画が壁に掛かっていた。",
                         "en": "A portrait of an old man was hanging on the wall.",
                         "furigana": "<ruby>老人<rp>(</rp><rt>ろうじん</rt><rp>)</rp></ruby>の<ruby>肖像<rp>(</rp><rt>しょうぞう</rt><rp>)</rp></ruby><ruby>画<rp>(</rp><rt>が</rt><rp>)</rp></ruby>が<ruby>壁<rp>(</rp><rt>かべ</rt><rp>)</rp></ruby>に<ruby>掛<rp>(</rp><rt>か</rt><rp>)</rp></ruby>かっていた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хөшөө",
+                        "дүрс"
+                    ]
                 }
             ]
         },
@@ -20198,7 +20559,11 @@ const PHONETICS_DATA = {
                         "jp": "私は一時期、天体物理学者になりたかった。",
                         "en": "I once wanted to be an astrophysicist.",
                         "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>は<ruby>一時期<rp>(</rp><rt>いちじき</rt><rp>)</rp></ruby>、<ruby>天体<rp>(</rp><rt>てんたい</rt><rp>)</rp></ruby><ruby>物理<rp>(</rp><rt>ぶつり</rt><rp>)</rp></ruby><ruby>学者<rp>(</rp><rt>がくしゃ</rt><rp>)</rp></ruby>になりたかった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хэн нэгэн",
+                        "хүн"
+                    ]
                 },
                 {
                     "kanji": "都",
@@ -20213,7 +20578,11 @@ const PHONETICS_DATA = {
                         "jp": "洋子は来週京都へ行くだろう。",
                         "en": "Yoko will go to Kyoto next week.",
                         "furigana": "<ruby>洋子<rp>(</rp><rt>ようこ</rt><rp>)</rp></ruby>は<ruby>来週<rp>(</rp><rt>らいしゅう</rt><rp>)</rp></ruby><ruby>京都<rp>(</rp><rt>きょうと</rt><rp>)</rp></ruby>へ<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>くだろう。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "нийслэл",
+                        "Токиогийн нийслэл"
+                    ]
                 },
                 {
                     "kanji": "著",
@@ -20229,7 +20598,12 @@ const PHONETICS_DATA = {
                         "jp": "両者の間には著しい違いがある。",
                         "en": "There are noticeable differences between the two.",
                         "furigana": "<ruby>両者<rp>(</rp><rt>りょうしゃ</rt><rp>)</rp></ruby>の<ruby>間<rp>(</rp><rt>ま</rt><rp>)</rp></ruby>には<ruby>著<rp>(</rp><rt>いちじる</rt><rp>)</rp></ruby>しい<ruby>違<rp>(</rp><rt>ちが</rt><rp>)</rp></ruby>いがある。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "алдартай",
+                        "зохиогч",
+                        "тод харагдах"
+                    ]
                 },
                 {
                     "kanji": "諸",
@@ -20243,7 +20617,10 @@ const PHONETICS_DATA = {
                         "jp": "貿易は諸国の発展を促進する。",
                         "en": "Trade helps nations develop.",
                         "furigana": "<ruby>貿易<rp>(</rp><rt>ぼうえき</rt><rp>)</rp></ruby>は<ruby>諸国<rp>(</rp><rt>しょこく</rt><rp>)</rp></ruby>の<ruby>発展<rp>(</rp><rt>はってん</rt><rp>)</rp></ruby>を<ruby>促進<rp>(</rp><rt>そくしん</rt><rp>)</rp></ruby>する。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "янз бүрийн"
+                    ]
                 },
                 {
                     "kanji": "緒",
@@ -20258,7 +20635,11 @@ const PHONETICS_DATA = {
                         "jp": "彼らは仲良く一緒に暮らしている。",
                         "en": "They live together in unity.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>仲良<rp>(</rp><rt>なかよ</rt><rp>)</rp></ruby>く<ruby>一緒<rp>(</rp><rt>いっしょ</rt><rp>)</rp></ruby>に<ruby>暮<rp>(</rp><rt>く</rt><rp>)</rp></ruby>らしている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "оосор",
+                        "эхлэл"
+                    ]
                 },
                 {
                     "kanji": "署",
@@ -20274,7 +20655,12 @@ const PHONETICS_DATA = {
                         "jp": "彼は署名集めで近所を歩き回った。",
                         "en": "He went around the neighborhood collecting signatures.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>署名<rp>(</rp><rt>しょめい</rt><rp>)</rp></ruby><ruby>集<rp>(</rp><rt>あつ</rt><rp>)</rp></ruby>めで<ruby>近所<rp>(</rp><rt>きんじょ</rt><rp>)</rp></ruby>を<ruby>歩<rp>(</rp><rt>ある</rt><rp>)</rp></ruby>き<ruby>回<rp>(</rp><rt>まわ</rt><rp>)</rp></ruby>った。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "гарын үсэг",
+                        "төрийн үйлчилгээний газар",
+                        "засгийн газрын алба"
+                    ]
                 },
                 {
                     "kanji": "暑",
@@ -20290,7 +20676,12 @@ const PHONETICS_DATA = {
                         "jp": "明日はまた暑くなるでしょうか。",
                         "en": "Will it be hot again tomorrow?",
                         "furigana": "<ruby>明日<rp>(</rp><rt>あした</rt><rp>)</rp></ruby>はまた<ruby>暑<rp>(</rp><rt>あつ</rt><rp>)</rp></ruby>くなるでしょうか。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "халуун чийглэг",
+                        "зуны халуун",
+                        "халуун"
+                    ]
                 },
                 {
                     "kanji": "煮",
@@ -20304,7 +20695,10 @@ const PHONETICS_DATA = {
                         "jp": "私の十八番、チキンのレモン煮よ。",
                         "en": "Just my old standby: lemon chicken.",
                         "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>の<ruby>十<rp>(</rp><rt>じゅう</rt><rp>)</rp></ruby><ruby>八<rp>(</rp><rt>はち</rt><rp>)</rp></ruby><ruby>番<rp>(</rp><rt>ばん</rt><rp>)</rp></ruby>、チキンのレモン<ruby>煮<rp>(</rp><rt>に</rt><rp>)</rp></ruby>よ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "буцалгах"
+                    ]
                 },
                 {
                     "kanji": "賭",
@@ -20318,7 +20712,10 @@ const PHONETICS_DATA = {
                         "jp": "僕ならその馬に賭けたりはしない。",
                         "en": "I wouldn't bet on that horse if I were you.",
                         "furigana": "<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>ならその<ruby>馬<rp>(</rp><rt>うま</rt><rp>)</rp></ruby>に<ruby>賭<rp>(</rp><rt>か</rt><rp>)</rp></ruby>けたりはしない。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "мөрийтэй тоглох"
+                    ]
                 }
             ]
         },
@@ -20341,7 +20738,12 @@ const PHONETICS_DATA = {
                         "jp": "富士山に登った後で一首浮かんだ。",
                         "en": "After climbing Mt. Fuji, I got the inspiration for a poem.",
                         "furigana": "<ruby>富士山<rp>(</rp><rt>ふじさん</rt><rp>)</rp></ruby>に<ruby>登<rp>(</rp><rt>のぼ</rt><rp>)</rp></ruby>った<ruby>後<rp>(</rp><rt>のち</rt><rp>)</rp></ruby>で<ruby>一<rp>(</rp><rt>いち</rt><rp>)</rp></ruby><ruby>首<rp>(</rp><rt>しゅ</rt><rp>)</rp></ruby><ruby>浮<rp>(</rp><rt>う</rt><rp>)</rp></ruby>かんだ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "эрхэм",
+                        "цэрэг",
+                        "мэргэжлийн дагавар"
+                    ]
                 },
                 {
                     "kanji": "仕",
@@ -20357,7 +20759,12 @@ const PHONETICS_DATA = {
                         "jp": "私は自分の仕事を気に入っています。",
                         "en": "I like my job very much.",
                         "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>は<ruby>自分<rp>(</rp><rt>じぶん</rt><rp>)</rp></ruby>の<ruby>仕事<rp>(</rp><rt>しごと</rt><rp>)</rp></ruby>を<ruby>気<rp>(</rp><rt>き</rt><rp>)</rp></ruby>に<ruby>入<rp>(</rp><rt>い</rt><rp>)</rp></ruby>っています。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "үйлчлэх",
+                        "ажиллах",
+                        "хийх"
+                    ]
                 },
                 {
                     "kanji": "志",
@@ -20372,7 +20779,11 @@ const PHONETICS_DATA = {
                         "jp": "今回の模試も志望校合格範囲内か。",
                         "en": "Was your mock exam score this time within the pass range for your preferred school?",
                         "furigana": "<ruby>今回<rp>(</rp><rt>こんかい</rt><rp>)</rp></ruby>の<ruby>模試<rp>(</rp><rt>もし</rt><rp>)</rp></ruby>も<ruby>志望校<rp>(</rp><rt>しぼうこう</rt><rp>)</rp></ruby><ruby>合格<rp>(</rp><rt>ごうかく</rt><rp>)</rp></ruby><ruby>範囲<rp>(</rp><rt>はんい</rt><rp>)</rp></ruby><ruby>内<rp>(</rp><rt>ない</rt><rp>)</rp></ruby>か。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "зорилго",
+                        "тэмүүлэл"
+                    ]
                 },
                 {
                     "kanji": "誌",
@@ -20387,7 +20798,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女は雑誌にざっと目を通した。",
                         "en": "She glanced through the magazine.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>雑誌<rp>(</rp><rt>ざっし</rt><rp>)</rp></ruby>にざっと<ruby>目<rp>(</rp><rt>め</rt><rp>)</rp></ruby>を<ruby>通<rp>(</rp><rt>とお</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "баримт бичиг",
+                        "сэтгүүл"
+                    ]
                 }
             ]
         },
@@ -20410,7 +20825,12 @@ const PHONETICS_DATA = {
                         "jp": "良質の品を買うのは経済的である。",
                         "en": "It is an economy to buy good quality goods.",
                         "furigana": "<ruby>良質<rp>(</rp><rt>りょうしつ</rt><rp>)</rp></ruby>の<ruby>品<rp>(</rp><rt>しな</rt><rp>)</rp></ruby>を<ruby>買<rp>(</rp><rt>か</rt><rp>)</rp></ruby>うのは<ruby>経済<rp>(</rp><rt>けいざい</rt><rp>)</rp></ruby><ruby>的<rp>(</rp><rt>てき</rt><rp>)</rp></ruby>である。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дуусгах",
+                        "шийдвэрлэх",
+                        "хөнгөвчлөх"
+                    ]
                 },
                 {
                     "kanji": "斎",
@@ -20425,7 +20845,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女は書斎で何か書き物をしている。",
                         "en": "She's writing something in her study.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>書斎<rp>(</rp><rt>しょさい</rt><rp>)</rp></ruby>で<ruby>何<rp>(</rp><rt>なに</rt><rp>)</rp></ruby>か<ruby>書<rp>(</rp><rt>か</rt><rp>)</rp></ruby>き<ruby>物<rp>(</rp><rt>もの</rt><rp>)</rp></ruby>をしている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "ариусгал",
+                        "шашны хориг сахих"
+                    ]
                 }
             ]
         },
@@ -20446,7 +20870,10 @@ const PHONETICS_DATA = {
                         "jp": "「いつ戻りますか」「天候次第です」",
                         "en": "\"When will you be back?\" \"It all depends on the weather.\"",
                         "furigana": "「いつ<ruby>戻<rp>(</rp><rt>もど</rt><rp>)</rp></ruby>りますか」「<ruby>天候<rp>(</rp><rt>てんこう</rt><rp>)</rp></ruby><ruby>次第<rp>(</rp><rt>しだい</rt><rp>)</rp></ruby>です」"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дараагийн"
+                    ]
                 },
                 {
                     "kanji": "姿",
@@ -20460,7 +20887,10 @@ const PHONETICS_DATA = {
                         "jp": "富士山は姿が美しいので有名です。",
                         "en": "Mt. Fuji is noted for its beautiful shape.",
                         "furigana": "<ruby>富士山<rp>(</rp><rt>ふじさん</rt><rp>)</rp></ruby>は<ruby>姿<rp>(</rp><rt>すがた</rt><rp>)</rp></ruby>が<ruby>美<rp>(</rp><rt>うつく</rt><rp>)</rp></ruby>しいので<ruby>有名<rp>(</rp><rt>ゆうめい</rt><rp>)</rp></ruby>です。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дүр төрх"
+                    ]
                 },
                 {
                     "kanji": "資",
@@ -20475,7 +20905,11 @@ const PHONETICS_DATA = {
                         "jp": "問題はいかにして資金を集めるかである。",
                         "en": "The problem is how to raise the funds.",
                         "furigana": "<ruby>問題<rp>(</rp><rt>もんだい</rt><rp>)</rp></ruby>はいかにして<ruby>資金<rp>(</rp><rt>しきん</rt><rp>)</rp></ruby>を<ruby>集<rp>(</rp><rt>あつ</rt><rp>)</rp></ruby>めるかである。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хөрөнгө",
+                        "нөөц"
+                    ]
                 },
                 {
                     "kanji": "諮",
@@ -20490,7 +20924,11 @@ const PHONETICS_DATA = {
                         "jp": "顧問は学長を推戴し、本会の重要事項に関し諮問に応じる。",
                         "en": "The consultant, who is under the authority of the Chancellor, gives the committee advice on important questions.",
                         "furigana": "<ruby>顧問<rp>(</rp><rt>こもん</rt><rp>)</rp></ruby>は<ruby>学長<rp>(</rp><rt>がくちょう</rt><rp>)</rp></ruby>を<ruby>推戴<rp>(</rp><rt>すいたい</rt><rp>)</rp></ruby>し、<ruby>本会<rp>(</rp><rt>ほんかい</rt><rp>)</rp></ruby>の<ruby>重要<rp>(</rp><rt>じゅうよう</rt><rp>)</rp></ruby><ruby>事項<rp>(</rp><rt>じこう</rt><rp>)</rp></ruby>に<ruby>関<rp>(</rp><rt>かん</rt><rp>)</rp></ruby>し<ruby>諮問<rp>(</rp><rt>しもん</rt><rp>)</rp></ruby>に<ruby>応<rp>(</rp><rt>おう</rt><rp>)</rp></ruby>じる。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "зөвлөлдөх",
+                        "зөвлөх"
+                    ]
                 },
                 {
                     "kanji": "恣",
@@ -20501,7 +20939,11 @@ const PHONETICS_DATA = {
                         "arbitrary",
                         "selfish"
                     ],
-                    "example": null
+                    "example": null,
+                    "meaningsMn": [
+                        "дур зоргоороо",
+                        "өөрөө хүссэнээрээ"
+                    ]
                 }
             ]
         },
@@ -20524,7 +20966,12 @@ const PHONETICS_DATA = {
                         "jp": "彼女は良い奥さんになるでしょう。",
                         "en": "She'll make a good wife.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>良<rp>(</rp><rt>よ</rt><rp>)</rp></ruby>い<ruby>奥<rp>(</rp><rt>おく</rt><rp>)</rp></ruby>さんになるでしょう。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "цөм",
+                        "дотоод хэсэг",
+                        "зүрх"
+                    ]
                 }
             ]
         },
@@ -20545,7 +20992,10 @@ const PHONETICS_DATA = {
                         "jp": "それに比べ最近彼女のお天気は良好。",
                         "en": "In comparison to which she's been in a really good mood recently.",
                         "furigana": "それに<ruby>比<rp>(</rp><rt>くら</rt><rp>)</rp></ruby>べ<ruby>最近<rp>(</rp><rt>さいきん</rt><rp>)</rp></ruby><ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>のお<ruby>天気<rp>(</rp><rt>てんき</rt><rp>)</rp></ruby>は<ruby>良好<rp>(</rp><rt>りょうこう</rt><rp>)</rp></ruby>。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "харьцуулах"
+                    ]
                 },
                 {
                     "kanji": "批",
@@ -20560,7 +21010,11 @@ const PHONETICS_DATA = {
                         "jp": "劇の批評はおしなべて好評だった。",
                         "en": "Almost all of the reviews of the play were favorable.",
                         "furigana": "<ruby>劇<rp>(</rp><rt>げき</rt><rp>)</rp></ruby>の<ruby>批評<rp>(</rp><rt>ひひょう</rt><rp>)</rp></ruby>はおしなべて<ruby>好評<rp>(</rp><rt>こうひょう</rt><rp>)</rp></ruby>だった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "шүүмж",
+                        "шүүмжлэх"
+                    ]
                 }
             ]
         },
@@ -20583,7 +21037,12 @@ const PHONETICS_DATA = {
                         "jp": "報復のおどかしが交渉を妨げています。",
                         "en": "Threats of retaliation are blocking negotiations.",
                         "furigana": "<ruby>報復<rp>(</rp><rt>ほうふく</rt><rp>)</rp></ruby>のおどかしが<ruby>交渉<rp>(</rp><rt>こうしょう</rt><rp>)</rp></ruby>を<ruby>妨<rp>(</rp><rt>さまた</rt><rp>)</rp></ruby>げています。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "сэргээх",
+                        "буцах",
+                        "дахин"
+                    ]
                 },
                 {
                     "kanji": "腹",
@@ -20598,7 +21057,11 @@ const PHONETICS_DATA = {
                         "jp": "いつご飯食べるの？お腹空いたよ。",
                         "en": "When are we eating? I'm hungry!",
                         "furigana": "いつご<ruby>飯<rp>(</rp><rt>はん</rt><rp>)</rp></ruby><ruby>食<rp>(</rp><rt>た</rt><rp>)</rp></ruby>べるの？お<ruby>腹<rp>(</rp><rt>なか</rt><rp>)</rp></ruby><ruby>空<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>いたよ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хэвлий",
+                        "гэдэс"
+                    ]
                 },
                 {
                     "kanji": "複",
@@ -20613,7 +21076,11 @@ const PHONETICS_DATA = {
                         "jp": "複雑炭水化物って何か知ってますか。",
                         "en": "Do you know anything about complex carbohydrates?",
                         "furigana": "<ruby>複雑<rp>(</rp><rt>ふくざつ</rt><rp>)</rp></ruby><ruby>炭水化物<rp>(</rp><rt>たんすいかぶつ</rt><rp>)</rp></ruby>って<ruby>何<rp>(</rp><rt>なに</rt><rp>)</rp></ruby>か<ruby>知<rp>(</rp><rt>し</rt><rp>)</rp></ruby>ってますか。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хуулбар",
+                        "нийлмэл"
+                    ]
                 },
                 {
                     "kanji": "覆",
@@ -20629,7 +21096,12 @@ const PHONETICS_DATA = {
                         "jp": "富士山の頂上は雪で覆われていた。",
                         "en": "The top of Mt. Fuji was covered with snow.",
                         "furigana": "<ruby>富士山<rp>(</rp><rt>ふじさん</rt><rp>)</rp></ruby>の<ruby>頂上<rp>(</rp><rt>ちょうじょう</rt><rp>)</rp></ruby>は<ruby>雪<rp>(</rp><rt>ゆき</rt><rp>)</rp></ruby>で<ruby>覆<rp>(</rp><rt>おお</rt><rp>)</rp></ruby>われていた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хөмрөх",
+                        "бүрхэх",
+                        "эргүүлэх"
+                    ]
                 }
             ]
         },
@@ -20651,7 +21123,11 @@ const PHONETICS_DATA = {
                         "jp": "寝具も土埃で汚してしまいました。",
                         "en": "Also my bedding got dirt on it.",
                         "furigana": "<ruby>寝具<rp>(</rp><rt>しんぐ</rt><rp>)</rp></ruby>も<ruby>土埃<rp>(</rp><rt>つちぼこり</rt><rp>)</rp></ruby>で<ruby>汚<rp>(</rp><rt>よご</rt><rp>)</rp></ruby>してしまいました。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хэвтэх",
+                        "унтах"
+                    ]
                 },
                 {
                     "kanji": "侵",
@@ -20666,7 +21142,11 @@ const PHONETICS_DATA = {
                         "jp": "彼らは土地を侵入者に明け渡した。",
                         "en": "They yielded their land to the invaders.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>土地<rp>(</rp><rt>とち</rt><rp>)</rp></ruby>を<ruby>侵入<rp>(</rp><rt>しんにゅう</rt><rp>)</rp></ruby><ruby>者<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby>に<ruby>明<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>け<ruby>渡<rp>(</rp><rt>わた</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "халдах",
+                        "довтлох"
+                    ]
                 },
                 {
                     "kanji": "浸",
@@ -20681,7 +21161,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女は汚れた皿を流しに浸けた。",
                         "en": "She put the dirty dishes in the sink.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>汚<rp>(</rp><rt>よご</rt><rp>)</rp></ruby>れた<ruby>皿<rp>(</rp><rt>さら</rt><rp>)</rp></ruby>を<ruby>流<rp>(</rp><rt>なが</rt><rp>)</rp></ruby>しに<ruby>浸<rp>(</rp><rt>つ</rt><rp>)</rp></ruby>けた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "норсон",
+                        "норгох"
+                    ]
                 }
             ]
         },
@@ -20704,7 +21188,12 @@ const PHONETICS_DATA = {
                         "jp": "一立方メートルは千リットルにあたる。",
                         "en": "A cubic meter corresponds to 1000 liters.",
                         "furigana": "<ruby>一<rp>(</rp><rt>いち</rt><rp>)</rp></ruby><ruby>立方<rp>(</rp><rt>りっぽう</rt><rp>)</rp></ruby>メートルは<ruby>千<rp>(</rp><rt>せん</rt><rp>)</rp></ruby>リットルにあたる。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "чиглэл",
+                        "арга",
+                        "дөрвөлжин"
+                    ]
                 },
                 {
                     "kanji": "放",
@@ -20720,7 +21209,12 @@ const PHONETICS_DATA = {
                         "jp": "いい球を放るようになったな、恵一君。",
                         "en": "You throw a good ball nowadays, Keiichi.",
                         "furigana": "いい<ruby>球<rp>(</rp><rt>たま</rt><rp>)</rp></ruby>を<ruby>放<rp>(</rp><rt>ほう</rt><rp>)</rp></ruby>るようになったな、<ruby>恵一<rp>(</rp><rt>けいいち</rt><rp>)</rp></ruby><ruby>君<rp>(</rp><rt>くん</rt><rp>)</rp></ruby>。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "чөлөөлөх",
+                        "явуулах",
+                        "суллах"
+                    ]
                 },
                 {
                     "kanji": "防",
@@ -20735,7 +21229,11 @@ const PHONETICS_DATA = {
                         "jp": "流感の予防ワクチンの注射をした。",
                         "en": "I was vaccinated against the flu.",
                         "furigana": "<ruby>流感<rp>(</rp><rt>りゅうかん</rt><rp>)</rp></ruby>の<ruby>予防<rp>(</rp><rt>よぼう</rt><rp>)</rp></ruby>ワクチンの<ruby>注射<rp>(</rp><rt>ちゅうしゃ</rt><rp>)</rp></ruby>をした。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хамгаалах",
+                        "сэргийлэх"
+                    ]
                 },
                 {
                     "kanji": "房",
@@ -20750,7 +21248,11 @@ const PHONETICS_DATA = {
                         "jp": "今日は暖房器具を使っていません。",
                         "en": "I'm not using my home heater today.",
                         "furigana": "<ruby>今日<rp>(</rp><rt>きょう</rt><rp>)</rp></ruby>は<ruby>暖房<rp>(</rp><rt>だんぼう</rt><rp>)</rp></ruby><ruby>器具<rp>(</rp><rt>きぐ</rt><rp>)</rp></ruby>を<ruby>使<rp>(</rp><rt>つか</rt><rp>)</rp></ruby>っていません。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "занга",
+                        "танхим"
+                    ]
                 },
                 {
                     "kanji": "訪",
@@ -20765,7 +21267,11 @@ const PHONETICS_DATA = {
                         "jp": "夜遅く人を訪問するのは無作法だ。",
                         "en": "It is bad manners to visit late at night.",
                         "furigana": "<ruby>夜<rp>(</rp><rt>よる</rt><rp>)</rp></ruby><ruby>遅<rp>(</rp><rt>おそ</rt><rp>)</rp></ruby>く<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>を<ruby>訪問<rp>(</rp><rt>ほうもん</rt><rp>)</rp></ruby>するのは<ruby>無作法<rp>(</rp><rt>ぶさほう</rt><rp>)</rp></ruby>だ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "зочлох",
+                        "айлчлах"
+                    ]
                 },
                 {
                     "kanji": "坊",
@@ -20781,7 +21287,12 @@ const PHONETICS_DATA = {
                         "jp": "赤ん坊の世話を焼けるのが嬉しい。",
                         "en": "I'm very happy that I can take care of the baby.",
                         "furigana": "<ruby>赤<rp>(</rp><rt>あか</rt><rp>)</rp></ruby>ん<ruby>坊<rp>(</rp><rt>ぼう</rt><rp>)</rp></ruby>の<ruby>世話<rp>(</rp><rt>せわ</rt><rp>)</rp></ruby>を<ruby>焼<rp>(</rp><rt>や</rt><rp>)</rp></ruby>けるのが<ruby>嬉<rp>(</rp><rt>うれ</rt><rp>)</rp></ruby>しい。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хүү",
+                        "хүүхэн",
+                        "хүний нэрэнд залгах дагавар"
+                    ]
                 },
                 {
                     "kanji": "傍",
@@ -20796,7 +21307,11 @@ const PHONETICS_DATA = {
                         "jp": "傍観者にはゲームの大部分がみえる。",
                         "en": "Onlookers see most of the game.",
                         "furigana": "<ruby>傍観<rp>(</rp><rt>ぼうかん</rt><rp>)</rp></ruby><ruby>者<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby>にはゲームの<ruby>大<rp>(</rp><rt>だい</rt><rp>)</rp></ruby><ruby>部分<rp>(</rp><rt>ぶぶん</rt><rp>)</rp></ruby>がみえる。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хажуугаас харагч",
+                        "хажууд"
+                    ]
                 },
                 {
                     "kanji": "芳",
@@ -20811,7 +21326,11 @@ const PHONETICS_DATA = {
                         "jp": "現在のその市の財政は芳しくない。",
                         "en": "The present state of the city's finances is not good.",
                         "furigana": "<ruby>現在<rp>(</rp><rt>げんざい</rt><rp>)</rp></ruby>のその<ruby>市<rp>(</rp><rt>し</rt><rp>)</rp></ruby>の<ruby>財政<rp>(</rp><rt>ざいせい</rt><rp>)</rp></ruby>は<ruby>芳<rp>(</rp><rt>かんば</rt><rp>)</rp></ruby>しくない。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "үнэр",
+                        "анхилуун"
+                    ]
                 },
                 {
                     "kanji": "妨",
@@ -20826,7 +21345,11 @@ const PHONETICS_DATA = {
                         "jp": "霧で飛行機は離陸を妨げられた。",
                         "en": "The fog prevented the planes from taking off.",
                         "furigana": "<ruby>霧<rp>(</rp><rt>きり</rt><rp>)</rp></ruby>で<ruby>飛行機<rp>(</rp><rt>ひこうき</rt><rp>)</rp></ruby>は<ruby>離陸<rp>(</rp><rt>りりく</rt><rp>)</rp></ruby>を<ruby>妨<rp>(</rp><rt>さまた</rt><rp>)</rp></ruby>げられた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "саад учруулах",
+                        "саатуулах"
+                    ]
                 },
                 {
                     "kanji": "倣",
@@ -20841,7 +21364,11 @@ const PHONETICS_DATA = {
                         "jp": "全ての子供には、尊敬し模倣する人が必要だ。",
                         "en": "Every child needs someone to look up to and copy.",
                         "furigana": "<ruby>全<rp>(</rp><rt>すべ</rt><rp>)</rp></ruby>ての<ruby>子供<rp>(</rp><rt>こども</rt><rp>)</rp></ruby>には、<ruby>尊敬<rp>(</rp><rt>そんけい</rt><rp>)</rp></ruby>し<ruby>模倣<rp>(</rp><rt>もほう</rt><rp>)</rp></ruby>する<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>が<ruby>必要<rp>(</rp><rt>ひつよう</rt><rp>)</rp></ruby>だ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дуурайх",
+                        "хуулбарлах"
+                    ]
                 },
                 {
                     "kanji": "紡",
@@ -20856,7 +21383,11 @@ const PHONETICS_DATA = {
                         "jp": "私はおばあちゃんがするのを見てウールの紡ぎ方を覚えました。",
                         "en": "I learned how to spin wool from watching my grandmother.",
                         "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>はおばあちゃんがするのを<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>てウールの<ruby>紡<rp>(</rp><rt>つむ</rt><rp>)</rp></ruby>ぎ<ruby>方<rp>(</rp><rt>かた</rt><rp>)</rp></ruby>を<ruby>覚<rp>(</rp><rt>おぼ</rt><rp>)</rp></ruby>えました。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "ээрэх",
+                        "ээрэх утас"
+                    ]
                 },
                 {
                     "kanji": "肪",
@@ -20871,7 +21402,11 @@ const PHONETICS_DATA = {
                         "jp": "脂肪分は減らしたほうがいいですね。",
                         "en": "You had better cut out the fat.",
                         "furigana": "<ruby>脂肪<rp>(</rp><rt>しぼう</rt><rp>)</rp></ruby><ruby>分<rp>(</rp><rt>ぶん</rt><rp>)</rp></ruby>は<ruby>減<rp>(</rp><rt>へ</rt><rp>)</rp></ruby>らしたほうがいいですね。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "таргалалт",
+                        "амьтны өөх"
+                    ]
                 }
             ]
         },
@@ -20893,7 +21428,11 @@ const PHONETICS_DATA = {
                         "jp": "僕は彼女無しに生きる術を学んだ。",
                         "en": "I learned to live without her.",
                         "furigana": "<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>は<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby><ruby>無<rp>(</rp><rt>な</rt><rp>)</rp></ruby>しに<ruby>生<rp>(</rp><rt>い</rt><rp>)</rp></ruby>きる<ruby>術<rp>(</rp><rt>じゅつ</rt><rp>)</rp></ruby>を<ruby>学<rp>(</rp><rt>まな</rt><rp>)</rp></ruby>んだ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "урлаг",
+                        "практик урлаг"
+                    ]
                 },
                 {
                     "kanji": "述",
@@ -20908,7 +21447,11 @@ const PHONETICS_DATA = {
                         "jp": "秘書はボスが口述するのを受けた。",
                         "en": "The secretary took dictation from her boss.",
                         "furigana": "<ruby>秘書<rp>(</rp><rt>ひしょ</rt><rp>)</rp></ruby>はボスが<ruby>口述<rp>(</rp><rt>こうじゅつ</rt><rp>)</rp></ruby>するのを<ruby>受<rp>(</rp><rt>う</rt><rp>)</rp></ruby>けた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дурдах",
+                        "мэдэгдэх"
+                    ]
                 }
             ]
         },
@@ -20931,7 +21474,12 @@ const PHONETICS_DATA = {
                         "jp": "両親は私が留学することに反対した。",
                         "en": "My parents objected to my studying abroad.",
                         "furigana": "<ruby>両親<rp>(</rp><rt>りょうしん</rt><rp>)</rp></ruby>は<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>が<ruby>留学<rp>(</rp><rt>りゅうがく</rt><rp>)</rp></ruby>することに<ruby>反対<rp>(</rp><rt>はんたい</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "саатуулах",
+                        "хадгалах",
+                        "байх"
+                    ]
                 },
                 {
                     "kanji": "柳",
@@ -20945,7 +21493,10 @@ const PHONETICS_DATA = {
                         "jp": "いつも柳の下に泥鰌は居らぬ。",
                         "en": "A fox is not caught twice in the same snare.",
                         "furigana": "いつも<ruby>柳<rp>(</rp><rt>やなぎ</rt><rp>)</rp></ruby>の<ruby>下<rp>(</rp><rt>した</rt><rp>)</rp></ruby>に<ruby>泥鰌<rp>(</rp><rt>どじょう</rt><rp>)</rp></ruby>は<ruby>居<rp>(</rp><rt>お</rt><rp>)</rp></ruby>らぬ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "бургас"
+                    ]
                 },
                 {
                     "kanji": "瑠",
@@ -20960,7 +21511,11 @@ const PHONETICS_DATA = {
                         "jp": "瑠璃鶇が空を背負っている。",
                         "en": "The bluebird carries the sky on his back.",
                         "furigana": "<ruby>瑠璃<rp>(</rp><rt>るり</rt><rp>)</rp></ruby><ruby>鶇<rp>(</rp><rt>鶇</rt><rp>)</rp></ruby>が<ruby>空<rp>(</rp><rt>そら</rt><rp>)</rp></ruby>を<ruby>背負<rp>(</rp><rt>せお</rt><rp>)</rp></ruby>っている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "тэнгисийн хөх",
+                        "лазурит"
+                    ]
                 },
                 {
                     "kanji": "貿",
@@ -20974,7 +21529,10 @@ const PHONETICS_DATA = {
                         "jp": "貿易の活動は最近衰えてきている。",
                         "en": "The activity of foreign trade has been declining of late.",
                         "furigana": "<ruby>貿易<rp>(</rp><rt>ぼうえき</rt><rp>)</rp></ruby>の<ruby>活動<rp>(</rp><rt>かつどう</rt><rp>)</rp></ruby>は<ruby>最近<rp>(</rp><rt>さいきん</rt><rp>)</rp></ruby><ruby>衰<rp>(</rp><rt>おとろ</rt><rp>)</rp></ruby>えてきている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "худалдаа"
+                    ]
                 }
             ]
         },
@@ -20995,7 +21553,10 @@ const PHONETICS_DATA = {
                         "jp": "非会員は50ドル増しとなります。",
                         "en": "Non-members pay an additional 50 dollars.",
                         "furigana": "<ruby>非<rp>(</rp><rt>ひ</rt><rp>)</rp></ruby><ruby>会員<rp>(</rp><rt>かいいん</rt><rp>)</rp></ruby>は50ドル<ruby>増<rp>(</rp><rt>ま</rt><rp>)</rp></ruby>しとなります。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "нэмэгдэх"
+                    ]
                 },
                 {
                     "kanji": "層",
@@ -21009,7 +21570,10 @@ const PHONETICS_DATA = {
                         "jp": "この板状の固い岩石の層をプレートと呼ぶ。",
                         "en": "We call these slabs of the solid-rock layer 'plates'.",
                         "furigana": "この<ruby>板<rp>(</rp><rt>いた</rt><rp>)</rp></ruby><ruby>状<rp>(</rp><rt>じょう</rt><rp>)</rp></ruby>の<ruby>固<rp>(</rp><rt>かた</rt><rp>)</rp></ruby>い<ruby>岩石<rp>(</rp><rt>がんせき</rt><rp>)</rp></ruby>の<ruby>層<rp>(</rp><rt>そう</rt><rp>)</rp></ruby>をプレートと<ruby>呼<rp>(</rp><rt>よ</rt><rp>)</rp></ruby>ぶ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "давхарга"
+                    ]
                 },
                 {
                     "kanji": "僧",
@@ -21024,7 +21588,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女は腕白小僧に腹を立てている。",
                         "en": "She got angry with the naughty boy.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>腕白<rp>(</rp><rt>わんぱく</rt><rp>)</rp></ruby><ruby>小僧<rp>(</rp><rt>こぞう</rt><rp>)</rp></ruby>に<ruby>腹<rp>(</rp><rt>はら</rt><rp>)</rp></ruby>を<ruby>立<rp>(</rp><rt>た</rt><rp>)</rp></ruby>てている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "лам",
+                        "буддын санваартан"
+                    ]
                 },
                 {
                     "kanji": "憎",
@@ -21038,7 +21606,10 @@ const PHONETICS_DATA = {
                         "jp": "恋は盲目。憎しみもまたしかり。",
                         "en": "Love is blind. Hatred is also blind.",
                         "furigana": "<ruby>恋<rp>(</rp><rt>こい</rt><rp>)</rp></ruby>は<ruby>盲目<rp>(</rp><rt>もうもく</rt><rp>)</rp></ruby>。<ruby>憎<rp>(</rp><rt>にく</rt><rp>)</rp></ruby>しみもまたしかり。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "үзэн ядах"
+                    ]
                 },
                 {
                     "kanji": "贈",
@@ -21053,7 +21624,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女は彼の贈り物を受け取った。",
                         "en": "She accepted his gift.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>贈<rp>(</rp><rt>おく</rt><rp>)</rp></ruby>り<ruby>物<rp>(</rp><rt>もの</rt><rp>)</rp></ruby>を<ruby>受<rp>(</rp><rt>う</rt><rp>)</rp></ruby>け<ruby>取<rp>(</rp><rt>と</rt><rp>)</rp></ruby>った。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "бэлэг",
+                        "бэлэг өгөх"
+                    ]
                 },
                 {
                     "kanji": "曽",
@@ -21067,7 +21642,10 @@ const PHONETICS_DATA = {
                         "jp": "曽根崎には心中が多いと聞きました。",
                         "en": "I heard there were many double suicides in Sonezaki.",
                         "furigana": "<ruby>曽根崎<rp>(</rp><rt>そねざき</rt><rp>)</rp></ruby>には<ruby>心中<rp>(</rp><rt>しんじゅう</rt><rp>)</rp></ruby>が<ruby>多<rp>(</rp><rt>おお</rt><rp>)</rp></ruby>いと<ruby>聞<rp>(</rp><rt>き</rt><rp>)</rp></ruby>きました。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "урьд нь"
+                    ]
                 }
             ]
         },
@@ -21089,7 +21667,11 @@ const PHONETICS_DATA = {
                         "jp": "満ち足りた心は永遠の祝宴である。",
                         "en": "A contented mind is a perpetual feast.",
                         "furigana": "<ruby>満<rp>(</rp><rt>み</rt><rp>)</rp></ruby>ち<ruby>足<rp>(</rp><rt>た</rt><rp>)</rp></ruby>りた<ruby>心<rp>(</rp><rt>こころ</rt><rp>)</rp></ruby>は<ruby>永遠<rp>(</rp><rt>えいえん</rt><rp>)</rp></ruby>の<ruby>祝宴<rp>(</rp><rt>しゅくえん</rt><rp>)</rp></ruby>である。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "мөнхжилт",
+                        "мөнхийн"
+                    ]
                 },
                 {
                     "kanji": "泳",
@@ -21103,7 +21685,10 @@ const PHONETICS_DATA = {
                         "jp": "僕は川を泳いで渡ることが出来る。",
                         "en": "I can swim across the river.",
                         "furigana": "<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>は<ruby>川<rp>(</rp><rt>かわ</rt><rp>)</rp></ruby>を<ruby>泳<rp>(</rp><rt>およ</rt><rp>)</rp></ruby>いで<ruby>渡<rp>(</rp><rt>わた</rt><rp>)</rp></ruby>ることが<ruby>出来<rp>(</rp><rt>でき</rt><rp>)</rp></ruby>る。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "сэлэх"
+                    ]
                 },
                 {
                     "kanji": "詠",
@@ -21118,7 +21703,11 @@ const PHONETICS_DATA = {
                         "jp": "その詩は無名の著者が詠んだ。",
                         "en": "The poem was composed by an anonymous author.",
                         "furigana": "その<ruby>詩<rp>(</rp><rt>し</rt><rp>)</rp></ruby>は<ruby>無名<rp>(</rp><rt>むめい</rt><rp>)</rp></ruby>の<ruby>著者<rp>(</rp><rt>ちょしゃ</rt><rp>)</rp></ruby>が<ruby>詠<rp>(</rp><rt>よ</rt><rp>)</rp></ruby>んだ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "уншлага",
+                        "шүлэг унших"
+                    ]
                 }
             ]
         },
@@ -21139,7 +21728,10 @@ const PHONETICS_DATA = {
                         "jp": "のいて・・・奴らは逃げちゃうよ。",
                         "en": "Get out the way ... they'll escape!",
                         "furigana": "のいて・・・<ruby>奴<rp>(</rp><rt>やつ</rt><rp>)</rp></ruby>らは<ruby>逃<rp>(</rp><rt>に</rt><rp>)</rp></ruby>げちゃうよ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "зугтах"
+                    ]
                 },
                 {
                     "kanji": "眺",
@@ -21154,7 +21746,11 @@ const PHONETICS_DATA = {
                         "jp": "富士山がすばらしい眺めだった。",
                         "en": "I had a marvelous view of Mt. Fuji.",
                         "furigana": "<ruby>富士山<rp>(</rp><rt>ふじさん</rt><rp>)</rp></ruby>がすばらしい<ruby>眺<rp>(</rp><rt>なが</rt><rp>)</rp></ruby>めだった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "ширтэх",
+                        "харах"
+                    ]
                 },
                 {
                     "kanji": "桃",
@@ -21169,7 +21765,11 @@ const PHONETICS_DATA = {
                         "jp": "この木には毎年おいしい桃が実る。",
                         "en": "This tree bears good peaches every year.",
                         "furigana": "この<ruby>木<rp>(</rp><rt>き</rt><rp>)</rp></ruby>には<ruby>毎年<rp>(</rp><rt>まいとし</rt><rp>)</rp></ruby>おいしい<ruby>桃<rp>(</rp><rt>もも</rt><rp>)</rp></ruby>が<ruby>実<rp>(</rp><rt>みの</rt><rp>)</rp></ruby>る。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "шаргал алимны мод",
+                        "шаргал алим"
+                    ]
                 },
                 {
                     "kanji": "挑",
@@ -21184,7 +21784,11 @@ const PHONETICS_DATA = {
                         "jp": "魔王が神に野球で勝負を挑んだ。",
                         "en": "The devil challenged God to a baseball game.",
                         "furigana": "<ruby>魔王<rp>(</rp><rt>まおう</rt><rp>)</rp></ruby>が<ruby>神<rp>(</rp><rt>かみ</rt><rp>)</rp></ruby>に<ruby>野球<rp>(</rp><rt>やきゅう</rt><rp>)</rp></ruby>で<ruby>勝負<rp>(</rp><rt>しょうぶ</rt><rp>)</rp></ruby>を<ruby>挑<rp>(</rp><rt>いど</rt><rp>)</rp></ruby>んだ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "сорилт тавих",
+                        "өдөөх"
+                    ]
                 },
                 {
                     "kanji": "跳",
@@ -21199,7 +21803,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女はもう一度跳び上がろうとした。",
                         "en": "She tried to jump up a second time.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はもう<ruby>一度<rp>(</rp><rt>いちど</rt><rp>)</rp></ruby><ruby>跳<rp>(</rp><rt>と</rt><rp>)</rp></ruby>び<ruby>上<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>がろうとした。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "үсрэх",
+                        "харайх"
+                    ]
                 },
                 {
                     "kanji": "兆",
@@ -21215,7 +21823,12 @@ const PHONETICS_DATA = {
                         "jp": "事が起こる時は前兆があるものだ。",
                         "en": "Coming events cast their shadows before them.",
                         "furigana": "<ruby>事<rp>(</rp><rt>こと</rt><rp>)</rp></ruby>が<ruby>起<rp>(</rp><rt>お</rt><rp>)</rp></ruby>こる<ruby>時<rp>(</rp><rt>とき</rt><rp>)</rp></ruby>は<ruby>前兆<rp>(</rp><rt>ぜんちょう</rt><rp>)</rp></ruby>があるものだ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "шинж тэмдэг",
+                        "ёр",
+                        "их наяд"
+                    ]
                 }
             ]
         },
@@ -21237,7 +21850,11 @@ const PHONETICS_DATA = {
                         "jp": "勇気を持って逆境に立ち向かう。",
                         "en": "Face adversity with courage.",
                         "furigana": "<ruby>勇気<rp>(</rp><rt>ゆうき</rt><rp>)</rp></ruby>を<ruby>持<rp>(</rp><rt>も</rt><rp>)</rp></ruby>って<ruby>逆境<rp>(</rp><rt>ぎゃっきょう</rt><rp>)</rp></ruby>に<ruby>立<rp>(</rp><rt>た</rt><rp>)</rp></ruby>ち<ruby>向<rp>(</rp><rt>む</rt><rp>)</rp></ruby>かう。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хил",
+                        "нөхцөл байдал"
+                    ]
                 },
                 {
                     "kanji": "鏡",
@@ -21252,7 +21869,11 @@ const PHONETICS_DATA = {
                         "jp": "一日に何回鏡で自分を見ているの？",
                         "en": "How many times a day do you look at yourself in the mirror?",
                         "furigana": "<ruby>一<rp>(</rp><rt>いち</rt><rp>)</rp></ruby><ruby>日<rp>(</rp><rt>にち</rt><rp>)</rp></ruby>に<ruby>何<rp>(</rp><rt>なん</rt><rp>)</rp></ruby><ruby>回<rp>(</rp><rt>かい</rt><rp>)</rp></ruby><ruby>鏡<rp>(</rp><rt>きょう</rt><rp>)</rp></ruby>で<ruby>自分<rp>(</rp><rt>じぶん</rt><rp>)</rp></ruby>を<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>ているの？"
-                    }
+                    },
+                    "meaningsMn": [
+                        "толь",
+                        "оптик хэрэгсэл"
+                    ]
                 }
             ]
         },
@@ -21274,7 +21895,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女は香港に友人がいっぱいいる。",
                         "en": "She has many friends in Hong Kong.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>香港<rp>(</rp><rt>ほんこん</rt><rp>)</rp></ruby>に<ruby>友人<rp>(</rp><rt>ゆうじん</rt><rp>)</rp></ruby>がいっぱいいる。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хүж",
+                        "анхилуун үнэр"
+                    ]
                 }
             ]
         },
@@ -21297,7 +21922,12 @@ const PHONETICS_DATA = {
                         "jp": "母は担任の先生と会う予定である。",
                         "en": "My mother is to meet with my homeroom teacher tomorrow.",
                         "furigana": "<ruby>母<rp>(</rp><rt>はは</rt><rp>)</rp></ruby>は<ruby>担任<rp>(</rp><rt>たんにん</rt><rp>)</rp></ruby>の<ruby>先生<rp>(</rp><rt>せんせい</rt><rp>)</rp></ruby>と<ruby>会<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>う<ruby>予定<rp>(</rp><rt>よてい</rt><rp>)</rp></ruby>である。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "үүрэх",
+                        "мөрөн дээрээ үүрэх",
+                        "хариуцах"
+                    ]
                 },
                 {
                     "kanji": "旦",
@@ -21312,7 +21942,11 @@ const PHONETICS_DATA = {
                         "jp": "旦那様をしっかり捕まえていなさい。",
                         "en": "Hold onto your husband.",
                         "furigana": "<ruby>旦那<rp>(</rp><rt>だんな</rt><rp>)</rp></ruby><ruby>様<rp>(</rp><rt>さま</rt><rp>)</rp></ruby>をしっかり<ruby>捕<rp>(</rp><rt>つか</rt><rp>)</rp></ruby>まえていなさい。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "шөнийн төгсгөл",
+                        "үүр цайх"
+                    ]
                 },
                 {
                     "kanji": "壇",
@@ -21327,7 +21961,11 @@ const PHONETICS_DATA = {
                         "jp": "彼は祭壇の上をあちこちに歩いた。",
                         "en": "He walked to and fro on the stage.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>祭壇<rp>(</rp><rt>さいだん</rt><rp>)</rp></ruby>の<ruby>上<rp>(</rp><rt>うえ</rt><rp>)</rp></ruby>をあちこちに<ruby>歩<rp>(</rp><rt>ある</rt><rp>)</rp></ruby>いた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "индэр",
+                        "тавцан"
+                    ]
                 },
                 {
                     "kanji": "胆",
@@ -21342,7 +21980,11 @@ const PHONETICS_DATA = {
                         "jp": "彼の大勝利に競争相手は落胆した。",
                         "en": "His rival was discouraged by his triumph.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>大<rp>(</rp><rt>だい</rt><rp>)</rp></ruby><ruby>勝利<rp>(</rp><rt>しょうり</rt><rp>)</rp></ruby>に<ruby>競争<rp>(</rp><rt>きょうそう</rt><rp>)</rp></ruby><ruby>相手<rp>(</rp><rt>あいて</rt><rp>)</rp></ruby>は<ruby>落胆<rp>(</rp><rt>らくたん</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "цөс",
+                        "цөсний хүүдий"
+                    ]
                 }
             ]
         },
@@ -21365,7 +22007,12 @@ const PHONETICS_DATA = {
                         "jp": "赤道における経度1度当たりの長さ。",
                         "en": "Distance per degree of longitude at equator.",
                         "furigana": "<ruby>赤道<rp>(</rp><rt>せきどう</rt><rp>)</rp></ruby>における<ruby>経度<rp>(</rp><rt>けいど</rt><rp>)</rp></ruby>1<ruby>度<rp>(</rp><rt>ど</rt><rp>)</rp></ruby><ruby>当<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>たりの<ruby>長<rp>(</rp><rt>なが</rt><rp>)</rp></ruby>さ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "зам",
+                        "арга",
+                        "зам"
+                    ]
                 },
                 {
                     "kanji": "導",
@@ -21380,7 +22027,11 @@ const PHONETICS_DATA = {
                         "jp": "盲導犬は目の見えない人を助ける。",
                         "en": "Guide dogs help blind people.",
                         "furigana": "<ruby>盲導犬<rp>(</rp><rt>もうどうけん</rt><rp>)</rp></ruby>は<ruby>目<rp>(</rp><rt>め</rt><rp>)</rp></ruby>の<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>えない<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>を<ruby>助<rp>(</rp><rt>たす</rt><rp>)</rp></ruby>ける。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "удирдамж",
+                        "чиглүүлэх"
+                    ]
                 }
             ]
         },
@@ -21402,7 +22053,11 @@ const PHONETICS_DATA = {
                         "jp": "私は結婚していて子どもが二人いる。",
                         "en": "I am married and have two children.",
                         "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>は<ruby>結婚<rp>(</rp><rt>けっこん</rt><rp>)</rp></ruby>していて<ruby>子<rp>(</rp><rt>こ</rt><rp>)</rp></ruby>どもが<ruby>二<rp>(</rp><rt>に</rt><rp>)</rp></ruby><ruby>人<rp>(</rp><rt>にん</rt><rp>)</rp></ruby>いる。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "гэрлэлт",
+                        "гэрлэх"
+                    ]
                 }
             ]
         },
@@ -21424,7 +22079,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女は寿司が好きではありません。",
                         "en": "She doesn't care for sushi.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>寿司<rp>(</rp><rt>すし</rt><rp>)</rp></ruby>が<ruby>好<rp>(</rp><rt>す</rt><rp>)</rp></ruby>きではありません。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "захирал",
+                        "ёслол удирдах"
+                    ]
                 },
                 {
                     "kanji": "詞",
@@ -21440,7 +22099,12 @@ const PHONETICS_DATA = {
                         "jp": "不規則動詞の勉強は好きではない。",
                         "en": "I don't like learning irregular verbs.",
                         "furigana": "<ruby>不規則<rp>(</rp><rt>ふきそく</rt><rp>)</rp></ruby><ruby>動詞<rp>(</rp><rt>どうし</rt><rp>)</rp></ruby>の<ruby>勉強<rp>(</rp><rt>べんきょう</rt><rp>)</rp></ruby>は<ruby>好<rp>(</rp><rt>す</rt><rp>)</rp></ruby>きではない。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "үгийн ангилал",
+                        "үг",
+                        "шүлэг"
+                    ]
                 },
                 {
                     "kanji": "飼",
@@ -21455,7 +22119,11 @@ const PHONETICS_DATA = {
                         "jp": "彼等はたくさんの羊を飼っている。",
                         "en": "They keep numbers of sheep.",
                         "furigana": "<ruby>彼等<rp>(</rp><rt>かれら</rt><rp>)</rp></ruby>はたくさんの<ruby>羊<rp>(</rp><rt>ひつじ</rt><rp>)</rp></ruby>を<ruby>飼<rp>(</rp><rt>か</rt><rp>)</rp></ruby>っている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "гэршүүлэх",
+                        "мал маллах"
+                    ]
                 },
                 {
                     "kanji": "伺",
@@ -21470,7 +22138,11 @@ const PHONETICS_DATA = {
                         "jp": "明日お伺いしてもよろしいですか。",
                         "en": "Do you mind if I call on you tomorrow?",
                         "furigana": "<ruby>明日<rp>(</rp><rt>あした</rt><rp>)</rp></ruby>お<ruby>伺<rp>(</rp><rt>うかが</rt><rp>)</rp></ruby>いしてもよろしいですか。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хүндэтгэл үзүүлэх",
+                        "асуух"
+                    ]
                 },
                 {
                     "kanji": "嗣",
@@ -21480,7 +22152,10 @@ const PHONETICS_DATA = {
                     "meanings": [
                         "heir"
                     ],
-                    "example": null
+                    "example": null,
+                    "meaningsMn": [
+                        "өв залгамжлагч"
+                    ]
                 }
             ]
         },
@@ -21502,7 +22177,11 @@ const PHONETICS_DATA = {
                         "jp": "名前を呼ばれて胸がどきどきした。",
                         "en": "My heart beat when I heard my name called.",
                         "furigana": "<ruby>名前<rp>(</rp><rt>なまえ</rt><rp>)</rp></ruby>を<ruby>呼<rp>(</rp><rt>よ</rt><rp>)</rp></ruby>ばれて<ruby>胸<rp>(</rp><rt>むね</rt><rp>)</rp></ruby>がどきどきした。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "цээж",
+                        "цээж"
+                    ]
                 },
                 {
                     "kanji": "凶",
@@ -21518,7 +22197,12 @@ const PHONETICS_DATA = {
                         "jp": "トムは凶悪犯罪の被害者になった。",
                         "en": "Tom was the victim of a heinous crime.",
                         "furigana": "トムは<ruby>凶悪<rp>(</rp><rt>きょうあく</rt><rp>)</rp></ruby><ruby>犯罪<rp>(</rp><rt>はんざい</rt><rp>)</rp></ruby>の<ruby>被害<rp>(</rp><rt>ひがい</rt><rp>)</rp></ruby><ruby>者<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby>になった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хорон санаат",
+                        "муу азтай",
+                        "харгис"
+                    ]
                 }
             ]
         },
@@ -21540,7 +22224,11 @@ const PHONETICS_DATA = {
                         "jp": "僕はまだ三途の川を見たくはない。",
                         "en": "I still don't wish to see the Styx.",
                         "furigana": "<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>はまだ<ruby>三途<rp>(</rp><rt>さんず</rt><rp>)</rp></ruby>の<ruby>川<rp>(</rp><rt>かわ</rt><rp>)</rp></ruby>を<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>たくはない。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "зам",
+                        "арга зам"
+                    ]
                 },
                 {
                     "kanji": "除",
@@ -21555,7 +22243,11 @@ const PHONETICS_DATA = {
                         "jp": "急所を除くすべての攻撃を認める。",
                         "en": "I'm allowing all attacks except on vital organs.",
                         "furigana": "<ruby>急所<rp>(</rp><rt>きゅうしょ</rt><rp>)</rp></ruby>を<ruby>除<rp>(</rp><rt>のぞ</rt><rp>)</rp></ruby>くすべての<ruby>攻撃<rp>(</rp><rt>こうげき</rt><rp>)</rp></ruby>を<ruby>認<rp>(</rp><rt>みと</rt><rp>)</rp></ruby>める。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хасах",
+                        "арилгах"
+                    ]
                 },
                 {
                     "kanji": "塗",
@@ -21570,7 +22262,11 @@ const PHONETICS_DATA = {
                         "jp": "彼等は自宅を明るい黄色に塗った。",
                         "en": "They painted their house bright yellow.",
                         "furigana": "<ruby>彼等<rp>(</rp><rt>かれら</rt><rp>)</rp></ruby>は<ruby>自宅<rp>(</rp><rt>じたく</rt><rp>)</rp></ruby>を<ruby>明<rp>(</rp><rt>あか</rt><rp>)</rp></ruby>るい<ruby>黄色<rp>(</rp><rt>きいろ</rt><rp>)</rp></ruby>に<ruby>塗<rp>(</rp><rt>ぬ</rt><rp>)</rp></ruby>った。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "будах",
+                        "гадаргуу дээр түрхэх"
+                    ]
                 },
                 {
                     "kanji": "徐",
@@ -21585,7 +22281,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女は徐々に快方に向かっている。",
                         "en": "She is getting better by slow degrees.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>徐々に<rp>(</rp><rt>じょじょに</rt><rp>)</rp></ruby><ruby>快方<rp>(</rp><rt>かいほう</rt><rp>)</rp></ruby>に<ruby>向<rp>(</rp><rt>む</rt><rp>)</rp></ruby>かっている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "аажмаар",
+                        "удаан"
+                    ]
                 },
                 {
                     "kanji": "叙",
@@ -21600,7 +22300,11 @@ const PHONETICS_DATA = {
                         "jp": "私は叙事詩よりも叙情詩の方が好きだ。",
                         "en": "I like lyric better than epic.",
                         "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>は<ruby>叙事詩<rp>(</rp><rt>じょじし</rt><rp>)</rp></ruby>よりも<ruby>叙情詩<rp>(</rp><rt>じょじょうし</rt><rp>)</rp></ruby>の<ruby>方<rp>(</rp><rt>ほう</rt><rp>)</rp></ruby>が<ruby>好<rp>(</rp><rt>す</rt><rp>)</rp></ruby>きだ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "олгох",
+                        "тодорхойлох"
+                    ]
                 }
             ]
         },
@@ -21623,7 +22327,12 @@ const PHONETICS_DATA = {
                         "jp": "彼女は急いで階段を上がって行った。",
                         "en": "She quickly went up the stairs.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>急<rp>(</rp><rt>いそ</rt><rp>)</rp></ruby>いで<ruby>階段<rp>(</rp><rt>かいだん</rt><rp>)</rp></ruby>を<ruby>上<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>がって<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>った。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "давхар",
+                        "шал",
+                        "зэрэглэл"
+                    ]
                 },
                 {
                     "kanji": "皆",
@@ -21637,7 +22346,10 @@ const PHONETICS_DATA = {
                         "jp": "皆さんネチケットはしっかり。",
                         "en": "Everyone, please keep to netiquette.",
                         "furigana": "<ruby>皆<rp>(</rp><rt>みな</rt><rp>)</rp></ruby>さんネチケットはしっかり。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "бүгд"
+                    ]
                 },
                 {
                     "kanji": "諧",
@@ -21648,7 +22360,11 @@ const PHONETICS_DATA = {
                         "humour",
                         "orderliness"
                     ],
-                    "example": null
+                    "example": null,
+                    "meaningsMn": [
+                        "хошин шог",
+                        "дэг журам"
+                    ]
                 },
                 {
                     "kanji": "楷",
@@ -21659,7 +22375,11 @@ const PHONETICS_DATA = {
                         "square character style",
                         "block letters"
                     ],
-                    "example": null
+                    "example": null,
+                    "meaningsMn": [
+                        "дөрвөлжин хэв",
+                        "блок үсэг"
+                    ]
                 }
             ]
         },
@@ -21682,7 +22402,12 @@ const PHONETICS_DATA = {
                         "jp": "旅行の準備はすべて終わりましたか。",
                         "en": "Are you all set for the trip?",
                         "furigana": "<ruby>旅行<rp>(</rp><rt>りょこう</rt><rp>)</rp></ruby>の<ruby>準備<rp>(</rp><rt>じゅんび</rt><rp>)</rp></ruby>はすべて<ruby>終<rp>(</rp><rt>お</rt><rp>)</rp></ruby>わりましたか。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хагас-",
+                        "стандарт",
+                        "хагас-"
+                    ]
                 }
             ]
         },
@@ -21705,7 +22430,12 @@ const PHONETICS_DATA = {
                         "jp": "労働者は一般に１日に８時間働く。",
                         "en": "The workman, as a rule, works eight hours a day.",
                         "furigana": "<ruby>労働<rp>(</rp><rt>ろうどう</rt><rp>)</rp></ruby><ruby>者<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby>は<ruby>一般<rp>(</rp><rt>いっぱん</rt><rp>)</rp></ruby>に１<ruby>日<rp>(</rp><rt>にち</rt><rp>)</rp></ruby>に８<ruby>時間<rp>(</rp><rt>じかん</rt><rp>)</rp></ruby><ruby>働<rp>(</rp><rt>はたら</rt><rp>)</rp></ruby>く。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "зөөгч",
+                        "төрөл",
+                        "ерөнхийдөө"
+                    ]
                 },
                 {
                     "kanji": "盤",
@@ -21721,7 +22451,12 @@ const PHONETICS_DATA = {
                         "jp": "自由諸国の基盤は民主主義である。",
                         "en": "The foundation of free nations is democracy.",
                         "furigana": "<ruby>自由<rp>(</rp><rt>じゆう</rt><rp>)</rp></ruby><ruby>諸国<rp>(</rp><rt>しょこく</rt><rp>)</rp></ruby>の<ruby>基盤<rp>(</rp><rt>きばん</rt><rp>)</rp></ruby>は<ruby>民主<rp>(</rp><rt>みんしゅ</rt><rp>)</rp></ruby><ruby>主義<rp>(</rp><rt>しゅぎ</rt><rp>)</rp></ruby>である。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "тавиур",
+                        "диск",
+                        "хавтан"
+                    ]
                 },
                 {
                     "kanji": "搬",
@@ -21736,7 +22471,11 @@ const PHONETICS_DATA = {
                         "jp": "この後、ミキは病院へ搬送された。",
                         "en": "After this, Miki was taken to the hospital.",
                         "furigana": "この<ruby>後<rp>(</rp><rt>のち</rt><rp>)</rp></ruby>、ミキは<ruby>病院<rp>(</rp><rt>びょういん</rt><rp>)</rp></ruby>へ<ruby>搬送<rp>(</rp><rt>はんそう</rt><rp>)</rp></ruby>された。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "зөөгч",
+                        "зөөх"
+                    ]
                 }
             ]
         },
@@ -21757,7 +22496,10 @@ const PHONETICS_DATA = {
                         "jp": "容疑者は逮捕を免れたいと思った。",
                         "en": "The suspect wanted to avoid being arrested.",
                         "furigana": "<ruby>容疑<rp>(</rp><rt>ようぎ</rt><rp>)</rp></ruby><ruby>者<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby>は<ruby>逮捕<rp>(</rp><rt>たいほ</rt><rp>)</rp></ruby>を<ruby>免<rp>(</rp><rt>まぬか</rt><rp>)</rp></ruby>れたいと<ruby>思<rp>(</rp><rt>おも</rt><rp>)</rp></ruby>った。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "эргэлзэх"
+                    ]
                 },
                 {
                     "kanji": "擬",
@@ -21772,7 +22514,11 @@ const PHONETICS_DATA = {
                         "jp": "未来のパイロットは模擬操縦室で訓練される。",
                         "en": "The future pilot is trained in a mock cockpit.",
                         "furigana": "<ruby>未来<rp>(</rp><rt>みらい</rt><rp>)</rp></ruby>のパイロットは<ruby>模擬<rp>(</rp><rt>もぎ</rt><rp>)</rp></ruby><ruby>操縦<rp>(</rp><rt>そうじゅう</rt><rp>)</rp></ruby><ruby>室<rp>(</rp><rt>しつ</rt><rp>)</rp></ruby>で<ruby>訓練<rp>(</rp><rt>くんれん</rt><rp>)</rp></ruby>される。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дуурайх",
+                        "дуурайлган хийх"
+                    ]
                 }
             ]
         },
@@ -21794,7 +22540,11 @@ const PHONETICS_DATA = {
                         "jp": "日本語検定の二級に受かった。",
                         "en": "I passed the second level of the Japanese language examination.",
                         "furigana": "<ruby>日本語<rp>(</rp><rt>にほんご</rt><rp>)</rp></ruby><ruby>検定<rp>(</rp><rt>けんてい</rt><rp>)</rp></ruby>の<ruby>二<rp>(</rp><rt>に</rt><rp>)</rp></ruby><ruby>級<rp>(</rp><rt>きゅう</rt><rp>)</rp></ruby>に<ruby>受<rp>(</rp><rt>う</rt><rp>)</rp></ruby>かった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хүлээн зөвшөөрөх",
+                        "хүлээн авах"
+                    ]
                 },
                 {
                     "kanji": "授",
@@ -21810,7 +22560,12 @@ const PHONETICS_DATA = {
                         "jp": "授業は八時三十分から始まるから。",
                         "en": "Class doesn't begin until eight-thirty.",
                         "furigana": "<ruby>授業<rp>(</rp><rt>じゅぎょう</rt><rp>)</rp></ruby>は<ruby>八<rp>(</rp><rt>はち</rt><rp>)</rp></ruby><ruby>時<rp>(</rp><rt>じ</rt><rp>)</rp></ruby><ruby>三<rp>(</rp><rt>さん</rt><rp>)</rp></ruby><ruby>十<rp>(</rp><rt>じゅう</rt><rp>)</rp></ruby><ruby>分<rp>(</rp><rt>ふん</rt><rp>)</rp></ruby>から<ruby>始<rp>(</rp><rt>はじ</rt><rp>)</rp></ruby>まるから。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дамжуулах",
+                        "олгох",
+                        "заах"
+                    ]
                 }
             ]
         },
@@ -21832,7 +22587,11 @@ const PHONETICS_DATA = {
                         "jp": "選挙に勝つには「見た目」が何割？",
                         "en": "How much of winning an election is down to looks?",
                         "furigana": "<ruby>選挙<rp>(</rp><rt>せんきょ</rt><rp>)</rp></ruby>に<ruby>勝<rp>(</rp><rt>か</rt><rp>)</rp></ruby>つには「<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>た<ruby>目<rp>(</rp><rt>め</rt><rp>)</rp></ruby>」が<ruby>何<rp>(</rp><rt>なん</rt><rp>)</rp></ruby><ruby>割<rp>(</rp><rt>わり</rt><rp>)</rp></ruby>？"
-                    }
+                    },
+                    "meaningsMn": [
+                        "харьцаа",
+                        "хуваах"
+                    ]
                 },
                 {
                     "kanji": "轄",
@@ -21847,7 +22606,11 @@ const PHONETICS_DATA = {
                         "jp": "その件は通産省の管轄下にある。",
                         "en": "The matter comes under MITI.",
                         "furigana": "その<ruby>件<rp>(</rp><rt>けん</rt><rp>)</rp></ruby>は<ruby>通産省<rp>(</rp><rt>つうさんしょう</rt><rp>)</rp></ruby>の<ruby>管轄<rp>(</rp><rt>かんかつ</rt><rp>)</rp></ruby><ruby>下<rp>(</rp><rt>か</rt><rp>)</rp></ruby>にある。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хяналт",
+                        "харьяалах"
+                    ]
                 }
             ]
         },
@@ -21868,7 +22631,10 @@ const PHONETICS_DATA = {
                         "jp": "日本の子午線は東経１３５度です。",
                         "en": "Japan is on the 135th meridian East.",
                         "furigana": "<ruby>日本<rp>(</rp><rt>にっぽん</rt><rp>)</rp></ruby>の<ruby>子午線<rp>(</rp><rt>しごせん</rt><rp>)</rp></ruby>は<ruby>東経<rp>(</rp><rt>とうけい</rt><rp>)</rp></ruby>１３５<ruby>度<rp>(</rp><rt>ど</rt><rp>)</rp></ruby>です。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "шугам"
+                    ]
                 },
                 {
                     "kanji": "泉",
@@ -21882,7 +22648,10 @@ const PHONETICS_DATA = {
                         "jp": "自民党が小泉人気の尻馬に乗った。",
                         "en": "The LDP rode on the wave of Koizumi's popularity.",
                         "furigana": "<ruby>自民党<rp>(</rp><rt>じみんとう</rt><rp>)</rp></ruby>が<ruby>小泉<rp>(</rp><rt>こいずみ</rt><rp>)</rp></ruby><ruby>人気<rp>(</rp><rt>にんき</rt><rp>)</rp></ruby>の<ruby>尻馬<rp>(</rp><rt>しりうま</rt><rp>)</rp></ruby>に<ruby>乗<rp>(</rp><rt>の</rt><rp>)</rp></ruby>った。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "рашаан"
+                    ]
                 },
                 {
                     "kanji": "腺",
@@ -21896,7 +22665,10 @@ const PHONETICS_DATA = {
                         "jp": "涙腺が詰まっていると言われました。",
                         "en": "I was told my tear duct was blocked.",
                         "furigana": "<ruby>涙腺<rp>(</rp><rt>るいせん</rt><rp>)</rp></ruby>が<ruby>詰<rp>(</rp><rt>つ</rt><rp>)</rp></ruby>まっていると<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>われました。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "булчирхай"
+                    ]
                 }
             ]
         },
@@ -21918,7 +22690,11 @@ const PHONETICS_DATA = {
                         "jp": "宇宙は無限に膨張し続けるのか？",
                         "en": "Will the universe expand indefinitely?",
                         "furigana": "<ruby>宇宙<rp>(</rp><rt>うちゅう</rt><rp>)</rp></ruby>は<ruby>無限<rp>(</rp><rt>むげん</rt><rp>)</rp></ruby>に<ruby>膨張<rp>(</rp><rt>ぼうちょう</rt><rp>)</rp></ruby>し<ruby>続<rp>(</rp><rt>つづ</rt><rp>)</rp></ruby>けるのか？"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дээвэр",
+                        "орчлон"
+                    ]
                 }
             ]
         },
@@ -21941,7 +22717,12 @@ const PHONETICS_DATA = {
                         "jp": "彼らは、橋本を総理大臣に選んだ。",
                         "en": "They elected Hashimoto the Prime Minister.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは、<ruby>橋本<rp>(</rp><rt>はしもと</rt><rp>)</rp></ruby>を<ruby>総理<rp>(</rp><rt>そうり</rt><rp>)</rp></ruby><ruby>大臣<rp>(</rp><rt>だいじん</rt><rp>)</rp></ruby>に<ruby>選<rp>(</rp><rt>えら</rt><rp>)</rp></ruby>んだ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "ерөнхий",
+                        "нийт",
+                        "бүхэл"
+                    ]
                 },
                 {
                     "kanji": "窓",
@@ -21955,7 +22736,10 @@ const PHONETICS_DATA = {
                         "jp": "父は私に窓を開けるように頼んだ。",
                         "en": "My father asked me to open the window.",
                         "furigana": "<ruby>父<rp>(</rp><rt>ちち</rt><rp>)</rp></ruby>は<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>に<ruby>窓<rp>(</rp><rt>まど</rt><rp>)</rp></ruby>を<ruby>開<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>けるように<ruby>頼<rp>(</rp><rt>たの</rt><rp>)</rp></ruby>んだ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "цонх"
+                    ]
                 }
             ]
         },
@@ -21978,7 +22762,12 @@ const PHONETICS_DATA = {
                         "jp": "今回の模試も志望校合格範囲内か。",
                         "en": "Was your mock exam score this time within the pass range for your preferred school?",
                         "furigana": "<ruby>今回<rp>(</rp><rt>こんかい</rt><rp>)</rp></ruby>の<ruby>模試<rp>(</rp><rt>もし</rt><rp>)</rp></ruby>も<ruby>志望校<rp>(</rp><rt>しぼうこう</rt><rp>)</rp></ruby><ruby>合格<rp>(</rp><rt>ごうかく</rt><rp>)</rp></ruby><ruby>範囲<rp>(</rp><rt>はんい</rt><rp>)</rp></ruby><ruby>内<rp>(</rp><rt>ない</rt><rp>)</rp></ruby>か。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "тэмүүлэл",
+                        "найдвар",
+                        "алсыг харах"
+                    ]
                 },
                 {
                     "kanji": "忘",
@@ -21992,7 +22781,10 @@ const PHONETICS_DATA = {
                         "jp": "来週、忘れずに父に会って下さい。",
                         "en": "Please remember to see my father next week.",
                         "furigana": "<ruby>来週<rp>(</rp><rt>らいしゅう</rt><rp>)</rp></ruby>、<ruby>忘<rp>(</rp><rt>わす</rt><rp>)</rp></ruby>れずに<ruby>父<rp>(</rp><rt>ちち</rt><rp>)</rp></ruby>に<ruby>会<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>って<ruby>下<rp>(</rp><rt>くだ</rt><rp>)</rp></ruby>さい。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "мартах"
+                    ]
                 },
                 {
                     "kanji": "亡",
@@ -22006,7 +22798,10 @@ const PHONETICS_DATA = {
                         "jp": "亡くなったスミス氏は医者でした。",
                         "en": "The late Mr Smith was a doctor.",
                         "furigana": "<ruby>亡<rp>(</rp><rt>な</rt><rp>)</rp></ruby>くなったスミス<ruby>氏<rp>(</rp><rt>し</rt><rp>)</rp></ruby>は<ruby>医者<rp>(</rp><rt>いしゃ</rt><rp>)</rp></ruby>でした。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "нас барсан"
+                    ]
                 },
                 {
                     "kanji": "網",
@@ -22021,7 +22816,11 @@ const PHONETICS_DATA = {
                         "jp": "大洪水で現地の交通網が麻痺した。",
                         "en": "The massive flood paralyzed the local transportation network.",
                         "furigana": "<ruby>大<rp>(</rp><rt>だい</rt><rp>)</rp></ruby><ruby>洪水<rp>(</rp><rt>こうずい</rt><rp>)</rp></ruby>で<ruby>現地<rp>(</rp><rt>げんち</rt><rp>)</rp></ruby>の<ruby>交通<rp>(</rp><rt>こうつう</rt><rp>)</rp></ruby><ruby>網<rp>(</rp><rt>もう</rt><rp>)</rp></ruby>が<ruby>麻痺<rp>(</rp><rt>まひ</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "тор",
+                        "сүлжээ"
+                    ]
                 },
                 {
                     "kanji": "忙",
@@ -22035,7 +22834,10 @@ const PHONETICS_DATA = {
                         "jp": "万一彼が忙しいのなら、手伝いなさい。",
                         "en": "If he should be busy, help him.",
                         "furigana": "<ruby>万一<rp>(</rp><rt>まんいち</rt><rp>)</rp></ruby><ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>が<ruby>忙<rp>(</rp><rt>いそが</rt><rp>)</rp></ruby>しいのなら、<ruby>手伝<rp>(</rp><rt>てつだ</rt><rp>)</rp></ruby>いなさい。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "завгүй"
+                    ]
                 },
                 {
                     "kanji": "盲",
@@ -22049,7 +22851,10 @@ const PHONETICS_DATA = {
                         "jp": "盲導犬は目の見えない人を助ける。",
                         "en": "Guide dogs help blind people.",
                         "furigana": "<ruby>盲導犬<rp>(</rp><rt>もうどうけん</rt><rp>)</rp></ruby>は<ruby>目<rp>(</rp><rt>め</rt><rp>)</rp></ruby>の<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>えない<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>を<ruby>助<rp>(</rp><rt>たす</rt><rp>)</rp></ruby>ける。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "сохор"
+                    ]
                 },
                 {
                     "kanji": "妄",
@@ -22064,7 +22869,11 @@ const PHONETICS_DATA = {
                         "jp": "君は完全な妄想状態にあるんです。",
                         "en": "You're completely delusional.",
                         "furigana": "<ruby>君<rp>(</rp><rt>きみ</rt><rp>)</rp></ruby>は<ruby>完全<rp>(</rp><rt>かんぜん</rt><rp>)</rp></ruby>な<ruby>妄想<rp>(</rp><rt>もうそう</rt><rp>)</rp></ruby><ruby>状態<rp>(</rp><rt>じょうたい</rt><rp>)</rp></ruby>にあるんです。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хий үзэгдэл",
+                        "бодлогогүй"
+                    ]
                 }
             ]
         },
@@ -22086,7 +22895,11 @@ const PHONETICS_DATA = {
                         "jp": "富士山に登るのに丸一晩かかった。",
                         "en": "It took all night to climb Mt Fuji.",
                         "furigana": "<ruby>富士山<rp>(</rp><rt>ふじさん</rt><rp>)</rp></ruby>に<ruby>登<rp>(</rp><rt>のぼ</rt><rp>)</rp></ruby>るのに<ruby>丸<rp>(</rp><rt>まる</rt><rp>)</rp></ruby><ruby>一<rp>(</rp><rt>いち</rt><rp>)</rp></ruby><ruby>晩<rp>(</rp><rt>ばん</rt><rp>)</rp></ruby>かかった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "үдэш",
+                        "орой"
+                    ]
                 },
                 {
                     "kanji": "勉",
@@ -22101,7 +22914,11 @@ const PHONETICS_DATA = {
                         "jp": "不規則動詞の勉強は好きではない。",
                         "en": "I don't like learning irregular verbs.",
                         "furigana": "<ruby>不規則<rp>(</rp><rt>ふきそく</rt><rp>)</rp></ruby><ruby>動詞<rp>(</rp><rt>どうし</rt><rp>)</rp></ruby>の<ruby>勉強<rp>(</rp><rt>べんきょう</rt><rp>)</rp></ruby>は<ruby>好<rp>(</rp><rt>す</rt><rp>)</rp></ruby>きではない。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хичээл зүтгэл",
+                        "хөдөлмөрлөх"
+                    ]
                 }
             ]
         },
@@ -22122,7 +22939,10 @@ const PHONETICS_DATA = {
                         "jp": "これは二戸郡の地図である。",
                         "en": "This is a map of Ninohe District.",
                         "furigana": "これは<ruby>二戸<rp>(</rp><rt>ふたど</rt><rp>)</rp></ruby><ruby>郡<rp>(</rp><rt>ぐん</rt><rp>)</rp></ruby>の<ruby>地図<rp>(</rp><rt>ちず</rt><rp>)</rp></ruby>である。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дүүрэг"
+                    ]
                 },
                 {
                     "kanji": "群",
@@ -22137,7 +22957,11 @@ const PHONETICS_DATA = {
                         "jp": "牧童たちは牛の群れを駆り集めた。",
                         "en": "The cowboys rounded up the herd of cattle.",
                         "furigana": "<ruby>牧童<rp>(</rp><rt>ぼくどう</rt><rp>)</rp></ruby>たちは<ruby>牛<rp>(</rp><rt>うし</rt><rp>)</rp></ruby>の<ruby>群<rp>(</rp><rt>む</rt><rp>)</rp></ruby>れを<ruby>駆<rp>(</rp><rt>か</rt><rp>)</rp></ruby>り<ruby>集<rp>(</rp><rt>あつ</rt><rp>)</rp></ruby>めた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "сүрэг",
+                        "бүлэг"
+                    ]
                 }
             ]
         },
@@ -22159,7 +22983,11 @@ const PHONETICS_DATA = {
                         "jp": "私も親の面倒とか見られないですね。",
                         "en": "I can't look after my parents and such either.",
                         "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>も<ruby>親<rp>(</rp><rt>おや</rt><rp>)</rp></ruby>の<ruby>面倒<rp>(</rp><rt>めんどう</rt><rp>)</rp></ruby>とか<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>られないですね。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "унагаах",
+                        "нурах"
+                    ]
                 },
                 {
                     "kanji": "到",
@@ -22174,7 +23002,11 @@ const PHONETICS_DATA = {
                         "jp": "列車は１０番ホームに到着します。",
                         "en": "The train will come in at platform ten.",
                         "furigana": "<ruby>列車<rp>(</rp><rt>れっしゃ</rt><rp>)</rp></ruby>は１０<ruby>番<rp>(</rp><rt>ばん</rt><rp>)</rp></ruby>ホームに<ruby>到着<rp>(</rp><rt>とうちゃく</rt><rp>)</rp></ruby>します。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "ирэлт",
+                        "ирэх"
+                    ]
                 }
             ]
         },
@@ -22197,7 +23029,12 @@ const PHONETICS_DATA = {
                         "jp": "率直に言って彼女は好きではない。",
                         "en": "Frankly speaking, I don't like her.",
                         "furigana": "<ruby>率直<rp>(</rp><rt>そっちょく</rt><rp>)</rp></ruby>に<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>って<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>好<rp>(</rp><rt>す</rt><rp>)</rp></ruby>きではない。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "харьцаа",
+                        "хувь хэмжээ",
+                        "удирдах"
+                    ]
                 },
                 {
                     "kanji": "卒",
@@ -22211,7 +23048,10 @@ const PHONETICS_DATA = {
                         "jp": "彼は優等でハーバードを卒業した。",
                         "en": "He graduated from Harvard University with honors.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>優等<rp>(</rp><rt>ゆうとう</rt><rp>)</rp></ruby>でハーバードを<ruby>卒業<rp>(</rp><rt>そつぎょう</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "төгсөх"
+                    ]
                 }
             ]
         },
@@ -22234,7 +23074,12 @@ const PHONETICS_DATA = {
                         "jp": "旅の間の共通のお財布をつくろう。",
                         "en": "Let's pool our money and travel as a group.",
                         "furigana": "<ruby>旅<rp>(</rp><rt>たび</rt><rp>)</rp></ruby>の<ruby>間<rp>(</rp><rt>ま</rt><rp>)</rp></ruby>の<ruby>共通<rp>(</rp><rt>きょうつう</rt><rp>)</rp></ruby>のお<ruby>財布<rp>(</rp><rt>さいふ</rt><rp>)</rp></ruby>をつくろう。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "даавуу",
+                        "даавуу",
+                        "тараах"
+                    ]
                 },
                 {
                     "kanji": "怖",
@@ -22249,7 +23094,11 @@ const PHONETICS_DATA = {
                         "jp": "雷鳴を聞いて動物たちは怖がった。",
                         "en": "The animals were scared by the thunder.",
                         "furigana": "<ruby>雷鳴<rp>(</rp><rt>らいめい</rt><rp>)</rp></ruby>を<ruby>聞<rp>(</rp><rt>き</rt><rp>)</rp></ruby>いて<ruby>動物<rp>(</rp><rt>どうぶつ</rt><rp>)</rp></ruby>たちは<ruby>怖<rp>(</rp><rt>こわ</rt><rp>)</rp></ruby>がった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "аймшигтай",
+                        "айдастай"
+                    ]
                 }
             ]
         },
@@ -22271,7 +23120,11 @@ const PHONETICS_DATA = {
                         "jp": "母親は赤ん坊を両腕で抱きしめた。",
                         "en": "The mother folded her baby in her arms.",
                         "furigana": "<ruby>母親<rp>(</rp><rt>ははおや</rt><rp>)</rp></ruby>は<ruby>赤<rp>(</rp><rt>あか</rt><rp>)</rp></ruby>ん<ruby>坊<rp>(</rp><rt>ぼう</rt><rp>)</rp></ruby>を<ruby>両<rp>(</rp><rt>りょう</rt><rp>)</rp></ruby><ruby>腕<rp>(</rp><rt>うで</rt><rp>)</rp></ruby>で<ruby>抱<rp>(</rp><rt>だ</rt><rp>)</rp></ruby>きしめた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "тэвэрэх",
+                        "тэврэх"
+                    ]
                 },
                 {
                     "kanji": "砲",
@@ -22286,7 +23139,11 @@ const PHONETICS_DATA = {
                         "jp": "彼は発砲したが当たらなかった。",
                         "en": "He fired but missed.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>発砲<rp>(</rp><rt>はっぽう</rt><rp>)</rp></ruby>したが<ruby>当<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>たらなかった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "их буу",
+                        "хүнд буу"
+                    ]
                 },
                 {
                     "kanji": "包",
@@ -22301,7 +23158,11 @@ const PHONETICS_DATA = {
                         "jp": "包帯をする前に彼は傷を洗浄した。",
                         "en": "He cleansed the wound before putting on a bandage.",
                         "furigana": "<ruby>包帯<rp>(</rp><rt>ほうたい</rt><rp>)</rp></ruby>をする<ruby>前<rp>(</rp><rt>まえ</rt><rp>)</rp></ruby>に<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>傷<rp>(</rp><rt>きず</rt><rp>)</rp></ruby>を<ruby>洗浄<rp>(</rp><rt>せんじょう</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "боох",
+                        "багтаах"
+                    ]
                 },
                 {
                     "kanji": "胞",
@@ -22316,7 +23177,11 @@ const PHONETICS_DATA = {
                         "jp": "人体は無数の細胞からなっている。",
                         "en": "A human body consists of a countless number of cells.",
                         "furigana": "<ruby>人体<rp>(</rp><rt>じんたい</rt><rp>)</rp></ruby>は<ruby>無数<rp>(</rp><rt>むすう</rt><rp>)</rp></ruby>の<ruby>細胞<rp>(</rp><rt>さいぼう</rt><rp>)</rp></ruby>からなっている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "ханган",
+                        "мембран уут"
+                    ]
                 },
                 {
                     "kanji": "飽",
@@ -22331,7 +23196,11 @@ const PHONETICS_DATA = {
                         "jp": "要するに彼は何にでも飽きるのだ。",
                         "en": "In a word, he tires of everything.",
                         "furigana": "<ruby>要<rp>(</rp><rt>よう</rt><rp>)</rp></ruby>するに<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>何<rp>(</rp><rt>なに</rt><rp>)</rp></ruby>にでも<ruby>飽<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>きるのだ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "цатгалан",
+                        "цадсан"
+                    ]
                 },
                 {
                     "kanji": "泡",
@@ -22345,7 +23214,10 @@ const PHONETICS_DATA = {
                         "jp": "彼の努力はすべて水の泡に帰した。",
                         "en": "All his endeavors ended in failure.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>努力<rp>(</rp><rt>どりょく</rt><rp>)</rp></ruby>はすべて<ruby>水<rp>(</rp><rt>みず</rt><rp>)</rp></ruby>の<ruby>泡<rp>(</rp><rt>あわ</rt><rp>)</rp></ruby>に<ruby>帰<rp>(</rp><rt>かえ</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хөөс"
+                    ]
                 }
             ]
         },
@@ -22367,7 +23239,11 @@ const PHONETICS_DATA = {
                         "jp": "試験が教育を駄目にしていると思う。",
                         "en": "I think exams are ruining education.",
                         "furigana": "<ruby>試験<rp>(</rp><rt>しけん</rt><rp>)</rp></ruby>が<ruby>教育<rp>(</rp><rt>きょういく</rt><rp>)</rp></ruby>を<ruby>駄目<rp>(</rp><rt>だめ</rt><rp>)</rp></ruby>にしていると<ruby>思<rp>(</rp><rt>おも</rt><rp>)</rp></ruby>う。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "баталгаажуулалт",
+                        "шалгалт"
+                    ]
                 },
                 {
                     "kanji": "検",
@@ -22382,7 +23258,11 @@ const PHONETICS_DATA = {
                         "jp": "この百科事典は検索に便利である。",
                         "en": "This encyclopaedia is convenient for looking up things.",
                         "furigana": "この<ruby>百科<rp>(</rp><rt>ひゃっか</rt><rp>)</rp></ruby><ruby>事典<rp>(</rp><rt>じてん</rt><rp>)</rp></ruby>は<ruby>検索<rp>(</rp><rt>けんさく</rt><rp>)</rp></ruby>に<ruby>便利<rp>(</rp><rt>べんり</rt><rp>)</rp></ruby>である。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "шалгалт",
+                        "шалгах"
+                    ]
                 },
                 {
                     "kanji": "険",
@@ -22398,7 +23278,12 @@ const PHONETICS_DATA = {
                         "jp": "落石は登山者にとって危険である。",
                         "en": "Falling rocks present a danger to climbers.",
                         "furigana": "<ruby>落石<rp>(</rp><rt>らくせき</rt><rp>)</rp></ruby>は<ruby>登山<rp>(</rp><rt>とざん</rt><rp>)</rp></ruby><ruby>者<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby>にとって<ruby>危険<rp>(</rp><rt>きけん</rt><rp>)</rp></ruby>である。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "эгц",
+                        "аюул",
+                        "эгц"
+                    ]
                 },
                 {
                     "kanji": "剣",
@@ -22413,7 +23298,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女はいつも真剣な表情をしている。",
                         "en": "She always has a serious look on her face.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はいつも<ruby>真剣<rp>(</rp><rt>しんけん</rt><rp>)</rp></ruby>な<ruby>表情<rp>(</rp><rt>ひょうじょう</rt><rp>)</rp></ruby>をしている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "сэлэм",
+                        "илд"
+                    ]
                 },
                 {
                     "kanji": "倹",
@@ -22427,7 +23316,10 @@ const PHONETICS_DATA = {
                         "jp": "彼は控え目に言っても倹約家だ。",
                         "en": "He is frugal, to say the least of it.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>控<rp>(</rp><rt>ひか</rt><rp>)</rp></ruby>え<ruby>目<rp>(</rp><rt>め</rt><rp>)</rp></ruby>に<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>っても<ruby>倹約<rp>(</rp><rt>けんやく</rt><rp>)</rp></ruby><ruby>家<rp>(</rp><rt>か</rt><rp>)</rp></ruby>だ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хэмнэлттэй"
+                    ]
                 }
             ]
         },
@@ -22450,7 +23342,12 @@ const PHONETICS_DATA = {
                         "jp": "彼らは仲良く一緒に暮らしている。",
                         "en": "They live together in unity.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>仲良<rp>(</rp><rt>なかよ</rt><rp>)</rp></ruby>く<ruby>一緒<rp>(</rp><rt>いっしょ</rt><rp>)</rp></ruby>に<ruby>暮<rp>(</rp><rt>く</rt><rp>)</rp></ruby>らしている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "амьжиргаа",
+                        "бүрий",
+                        "амьдрах"
+                    ]
                 },
                 {
                     "kanji": "幕",
@@ -22465,7 +23362,11 @@ const PHONETICS_DATA = {
                         "jp": "記念式典は閉会の辞で幕を閉じた。",
                         "en": "The commemorative ceremony ended with the closing address.",
                         "furigana": "<ruby>記念<rp>(</rp><rt>きねん</rt><rp>)</rp></ruby><ruby>式典<rp>(</rp><rt>しきてん</rt><rp>)</rp></ruby>は<ruby>閉会<rp>(</rp><rt>へいかい</rt><rp>)</rp></ruby>の<ruby>辞<rp>(</rp><rt>じ</rt><rp>)</rp></ruby>で<ruby>幕<rp>(</rp><rt>まく</rt><rp>)</rp></ruby>を<ruby>閉<rp>(</rp><rt>と</rt><rp>)</rp></ruby>じた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хөшиг",
+                        "сёгуны засаг"
+                    ]
                 },
                 {
                     "kanji": "模",
@@ -22480,7 +23381,11 @@ const PHONETICS_DATA = {
                         "jp": "今回の模試も志望校合格範囲内か。",
                         "en": "Was your mock exam score this time within the pass range for your preferred school?",
                         "furigana": "<ruby>今回<rp>(</rp><rt>こんかい</rt><rp>)</rp></ruby>の<ruby>模試<rp>(</rp><rt>もし</rt><rp>)</rp></ruby>も<ruby>志望校<rp>(</rp><rt>しぼうこう</rt><rp>)</rp></ruby><ruby>合格<rp>(</rp><rt>ごうかく</rt><rp>)</rp></ruby><ruby>範囲<rp>(</rp><rt>はんい</rt><rp>)</rp></ruby><ruby>内<rp>(</rp><rt>ない</rt><rp>)</rp></ruby>か。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дуурайлга",
+                        "хээ маяг"
+                    ]
                 },
                 {
                     "kanji": "墓",
@@ -22494,7 +23399,10 @@ const PHONETICS_DATA = {
                         "jp": "お墓には供花が供えられていた。",
                         "en": "An offering of flowers had been placed at the grave.",
                         "furigana": "お<ruby>墓<rp>(</rp><rt>はか</rt><rp>)</rp></ruby>には<ruby>供花<rp>(</rp><rt>きょうか</rt><rp>)</rp></ruby>が<ruby>供<rp>(</rp><rt>そな</rt><rp>)</rp></ruby>えられていた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "бунхан"
+                    ]
                 },
                 {
                     "kanji": "募",
@@ -22509,7 +23417,11 @@ const PHONETICS_DATA = {
                         "jp": "夫婦でその仕事に応募できます。",
                         "en": "Married couples can apply for the post.",
                         "furigana": "<ruby>夫婦<rp>(</rp><rt>ふうふ</rt><rp>)</rp></ruby>でその<ruby>仕事<rp>(</rp><rt>しごと</rt><rp>)</rp></ruby>に<ruby>応募<rp>(</rp><rt>おうぼ</rt><rp>)</rp></ruby>できます。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "элсүүлэх",
+                        "цуглуулах"
+                    ]
                 },
                 {
                     "kanji": "慕",
@@ -22524,7 +23436,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女は両親をとても慕っている。",
                         "en": "She is deeply attached to her parents.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>両親<rp>(</rp><rt>りょうしん</rt><rp>)</rp></ruby>をとても<ruby>慕<rp>(</rp><rt>した</rt><rp>)</rp></ruby>っている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "санаж зовох",
+                        "биширэх"
+                    ]
                 },
                 {
                     "kanji": "漠",
@@ -22540,7 +23456,12 @@ const PHONETICS_DATA = {
                         "jp": "その部族は年中砂漠に住んでいる。",
                         "en": "Those tribes inhabit the desert all year round.",
                         "furigana": "その<ruby>部族<rp>(</rp><rt>ぶぞく</rt><rp>)</rp></ruby>は<ruby>年中<rp>(</rp><rt>ねんじゅう</rt><rp>)</rp></ruby><ruby>砂漠<rp>(</rp><rt>さばく</rt><rp>)</rp></ruby>に<ruby>住<rp>(</rp><rt>す</rt><rp>)</rp></ruby>んでいる。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "бүрхэг",
+                        "цөл",
+                        "бүдэг"
+                    ]
                 },
                 {
                     "kanji": "膜",
@@ -22554,7 +23475,10 @@ const PHONETICS_DATA = {
                         "jp": "５年前に網膜剥離を起こしました。",
                         "en": "I had retinal detachment five years ago.",
                         "furigana": "５<ruby>年<rp>(</rp><rt>ねん</rt><rp>)</rp></ruby><ruby>前<rp>(</rp><rt>まえ</rt><rp>)</rp></ruby>に<ruby>網膜<rp>(</rp><rt>もうまく</rt><rp>)</rp></ruby><ruby>剥離<rp>(</rp><rt>はくり</rt><rp>)</rp></ruby>を<ruby>起<rp>(</rp><rt>お</rt><rp>)</rp></ruby>こしました。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "мембран"
+                    ]
                 }
             ]
         },
@@ -22577,7 +23501,12 @@ const PHONETICS_DATA = {
                         "jp": "面白ければどんな本でも結構です。",
                         "en": "Any book will do as long as it is interesting.",
                         "furigana": "<ruby>面白<rp>(</rp><rt>おもしろ</rt><rp>)</rp></ruby>ければどんな<ruby>本<rp>(</rp><rt>ほん</rt><rp>)</rp></ruby>でも<ruby>結構<rp>(</rp><rt>けっこう</rt><rp>)</rp></ruby>です。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "байрлал",
+                        "санаа",
+                        "барих"
+                    ]
                 },
                 {
                     "kanji": "講",
@@ -22591,7 +23520,10 @@ const PHONETICS_DATA = {
                         "jp": "彼女は護身術の夜間講座を取った。",
                         "en": "She took night classes in the art of self-defense.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>護身<rp>(</rp><rt>ごしん</rt><rp>)</rp></ruby><ruby>術<rp>(</rp><rt>じゅつ</rt><rp>)</rp></ruby>の<ruby>夜間<rp>(</rp><rt>やかん</rt><rp>)</rp></ruby><ruby>講座<rp>(</rp><rt>こうざ</rt><rp>)</rp></ruby>を<ruby>取<rp>(</rp><rt>と</rt><rp>)</rp></ruby>った。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "лекц"
+                    ]
                 },
                 {
                     "kanji": "購",
@@ -22606,7 +23538,11 @@ const PHONETICS_DATA = {
                         "jp": "彼はタイム誌を予約購読している。",
                         "en": "He subscribed to Time magazine.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>はタイム<ruby>誌<rp>(</rp><rt>し</rt><rp>)</rp></ruby>を<ruby>予約<rp>(</rp><rt>よやく</rt><rp>)</rp></ruby><ruby>購読<rp>(</rp><rt>こうどく</rt><rp>)</rp></ruby>している。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "захиалга",
+                        "худалдан авах"
+                    ]
                 },
                 {
                     "kanji": "溝",
@@ -22621,7 +23557,11 @@ const PHONETICS_DATA = {
                         "jp": "恐くてその溝は跳び越せないよ。",
                         "en": "I am afraid to jump over the ditch.",
                         "furigana": "<ruby>恐<rp>(</rp><rt>こわ</rt><rp>)</rp></ruby>くてその<ruby>溝<rp>(</rp><rt>みぞ</rt><rp>)</rp></ruby>は<ruby>跳<rp>(</rp><rt>と</rt><rp>)</rp></ruby>び<ruby>越<rp>(</rp><rt>こ</rt><rp>)</rp></ruby>せないよ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "шүүр",
+                        "суваг"
+                    ]
                 }
             ]
         },
@@ -22643,7 +23583,11 @@ const PHONETICS_DATA = {
                         "jp": "美しいものは必ずしも善ではない。",
                         "en": "What is beautiful is not always good.",
                         "furigana": "<ruby>美<rp>(</rp><rt>うつく</rt><rp>)</rp></ruby>しいものは<ruby>必<rp>(</rp><rt>かなら</rt><rp>)</rp></ruby>ずしも<ruby>善<rp>(</rp><rt>ぜん</rt><rp>)</rp></ruby>ではない。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "буянтай",
+                        "сайн"
+                    ]
                 },
                 {
                     "kanji": "膳",
@@ -22657,7 +23601,10 @@ const PHONETICS_DATA = {
                         "jp": "旅館は、上げ膳据え膳がうれしいね。",
                         "en": "At a Japanese-style inn, they take care of your every need, so you don't have to lift a finger.",
                         "furigana": "<ruby>旅館<rp>(</rp><rt>りょかん</rt><rp>)</rp></ruby>は、<ruby>上<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>げ<ruby>膳<rp>(</rp><rt>ぜん</rt><rp>)</rp></ruby><ruby>据<rp>(</rp><rt>す</rt><rp>)</rp></ruby>え<ruby>膳<rp>(</rp><rt>ぜん</rt><rp>)</rp></ruby>がうれしいね。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хоолны тавцан"
+                    ]
                 },
                 {
                     "kanji": "繕",
@@ -22672,7 +23619,11 @@ const PHONETICS_DATA = {
                         "jp": "彼らに私の車を修繕してもらおう。",
                         "en": "I'll have them repair my car.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らに<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>の<ruby>車<rp>(</rp><rt>くるま</rt><rp>)</rp></ruby>を<ruby>修繕<rp>(</rp><rt>しゅうぜん</rt><rp>)</rp></ruby>してもらおう。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "оёх",
+                        "засварлах"
+                    ]
                 }
             ]
         },
@@ -22693,7 +23644,10 @@ const PHONETICS_DATA = {
                         "jp": "あれはさる年に因んだ猿の絵です。",
                         "en": "That's a picture of a monkey associated with the Year of the Monkey.",
                         "furigana": "あれはさる<ruby>年<rp>(</rp><rt>とし</rt><rp>)</rp></ruby>に<ruby>因<rp>(</rp><rt>ちな</rt><rp>)</rp></ruby>んだ<ruby>猿<rp>(</rp><rt>さる</rt><rp>)</rp></ruby>の<ruby>絵<rp>(</rp><rt>え</rt><rp>)</rp></ruby>です。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "шалтгаан"
+                    ]
                 },
                 {
                     "kanji": "咽",
@@ -22707,7 +23661,10 @@ const PHONETICS_DATA = {
                         "jp": "トムは、耳鼻咽喉科の先生です。",
                         "en": "Tom is an otorhinolaryngologist.",
                         "furigana": "トムは、<ruby>耳鼻咽喉科<rp>(</rp><rt>じびいんこうか</rt><rp>)</rp></ruby>の<ruby>先生<rp>(</rp><rt>せんせい</rt><rp>)</rp></ruby>です。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дуу хоолой"
+                    ]
                 },
                 {
                     "kanji": "姻",
@@ -22722,7 +23679,11 @@ const PHONETICS_DATA = {
                         "jp": "２人は２月５日に婚姻届を出した。",
                         "en": "They had their marriage registered on February 5.",
                         "furigana": "２<ruby>人<rp>(</rp><rt>にん</rt><rp>)</rp></ruby>は<ruby>２月<rp>(</rp><rt>にがつ</rt><rp>)</rp></ruby>５<ruby>日<rp>(</rp><rt>にち</rt><rp>)</rp></ruby>に<ruby>婚姻<rp>(</rp><rt>こんいん</rt><rp>)</rp></ruby><ruby>届<rp>(</rp><rt>とどけ</rt><rp>)</rp></ruby>を<ruby>出<rp>(</rp><rt>だ</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "гэрлэлт",
+                        "гэрлэлт"
+                    ]
                 }
             ]
         },
@@ -22744,7 +23705,11 @@ const PHONETICS_DATA = {
                         "jp": "特に理解力がある訳でもない普通の中学生です。",
                         "en": "He's just a normal junior high school student, not particularly intelligent.",
                         "furigana": "<ruby>特<rp>(</rp><rt>とく</rt><rp>)</rp></ruby>に<ruby>理解<rp>(</rp><rt>りかい</rt><rp>)</rp></ruby><ruby>力<rp>(</rp><rt>りょく</rt><rp>)</rp></ruby>がある<ruby>訳<rp>(</rp><rt>わけ</rt><rp>)</rp></ruby>でもない<ruby>普通<rp>(</rp><rt>ふつう</rt><rp>)</rp></ruby>の<ruby>中学生<rp>(</rp><rt>ちゅうがくせい</rt><rp>)</rp></ruby>です。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "нийтлэг",
+                        "өргөн тархсан"
+                    ]
                 },
                 {
                     "kanji": "譜",
@@ -22759,7 +23724,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女は楽譜なしにピアノを弾く。",
                         "en": "She plays the piano by ear.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>楽譜<rp>(</rp><rt>がくふ</rt><rp>)</rp></ruby>なしにピアノを<ruby>弾<rp>(</rp><rt>ひ</rt><rp>)</rp></ruby>く。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "ноот",
+                        "системчилсэн тэмдэглэл"
+                    ]
                 }
             ]
         },
@@ -22781,7 +23750,11 @@ const PHONETICS_DATA = {
                         "jp": "スキーをしたら、足を骨折したんだ。",
                         "en": "I broke my leg skiing.",
                         "furigana": "スキーをしたら、<ruby>足<rp>(</rp><rt>あし</rt><rp>)</rp></ruby>を<ruby>骨折<rp>(</rp><rt>こっせつ</rt><rp>)</rp></ruby>したんだ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "араг яс",
+                        "яс"
+                    ]
                 },
                 {
                     "kanji": "滑",
@@ -22797,7 +23770,12 @@ const PHONETICS_DATA = {
                         "jp": "列車は滑るように駅からでていった。",
                         "en": "The train rolled out of the station.",
                         "furigana": "<ruby>列車<rp>(</rp><rt>れっしゃ</rt><rp>)</rp></ruby>は<ruby>滑<rp>(</rp><rt>すべ</rt><rp>)</rp></ruby>るように<ruby>駅<rp>(</rp><rt>えき</rt><rp>)</rp></ruby>からでていった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "гулгамтгай",
+                        "гулгах",
+                        "гөлгөр"
+                    ]
                 }
             ]
         },
@@ -22819,7 +23797,11 @@ const PHONETICS_DATA = {
                         "jp": "旅の間の共通のお財布をつくろう。",
                         "en": "Let's pool our money and travel as a group.",
                         "furigana": "<ruby>旅<rp>(</rp><rt>たび</rt><rp>)</rp></ruby>の<ruby>間<rp>(</rp><rt>ま</rt><rp>)</rp></ruby>の<ruby>共通<rp>(</rp><rt>きょうつう</rt><rp>)</rp></ruby>のお<ruby>財布<rp>(</rp><rt>さいふ</rt><rp>)</rp></ruby>をつくろう。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "эд хөрөнгө",
+                        "баялаг"
+                    ]
                 },
                 {
                     "kanji": "材",
@@ -22835,7 +23817,12 @@ const PHONETICS_DATA = {
                         "jp": "彼は新素材の開発に従事している。",
                         "en": "He is engaged in developing new materials.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>新<rp>(</rp><rt>しん</rt><rp>)</rp></ruby><ruby>素材<rp>(</rp><rt>そざい</rt><rp>)</rp></ruby>の<ruby>開発<rp>(</rp><rt>かいはつ</rt><rp>)</rp></ruby>に<ruby>従事<rp>(</rp><rt>じゅうじ</rt><rp>)</rp></ruby>している。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "модон материал",
+                        "мод",
+                        "материал"
+                    ]
                 },
                 {
                     "kanji": "才",
@@ -22851,7 +23838,12 @@ const PHONETICS_DATA = {
                         "jp": "僕は生まれつき数学の才能がある。",
                         "en": "I have a natural ability in mathematics.",
                         "furigana": "<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>は<ruby>生<rp>(</rp><rt>う</rt><rp>)</rp></ruby>まれつき<ruby>数学<rp>(</rp><rt>すうがく</rt><rp>)</rp></ruby>の<ruby>才能<rp>(</rp><rt>さいのう</rt><rp>)</rp></ruby>がある。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "суут ухаан",
+                        "авьяас",
+                        "насны дагавар"
+                    ]
                 }
             ]
         },
@@ -22873,7 +23865,11 @@ const PHONETICS_DATA = {
                         "jp": "彼は新築の家に火災保険をかけた。",
                         "en": "He insured his new house against fire.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>新築<rp>(</rp><rt>しんちく</rt><rp>)</rp></ruby>の<ruby>家<rp>(</rp><rt>いえ</rt><rp>)</rp></ruby>に<ruby>火災<rp>(</rp><rt>かさい</rt><rp>)</rp></ruby><ruby>保険<rp>(</rp><rt>ほけん</rt><rp>)</rp></ruby>をかけた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "бүтээх",
+                        "барих"
+                    ]
                 }
             ]
         },
@@ -22895,7 +23891,11 @@ const PHONETICS_DATA = {
                         "jp": "夜遅くまで彼は帰宅しなかった。",
                         "en": "Not until late at night did he come home.",
                         "furigana": "<ruby>夜<rp>(</rp><rt>よる</rt><rp>)</rp></ruby><ruby>遅<rp>(</rp><rt>おそ</rt><rp>)</rp></ruby>くまで<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>帰宅<rp>(</rp><rt>きたく</rt><rp>)</rp></ruby>しなかった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "гэр",
+                        "орон сууц"
+                    ]
                 },
                 {
                     "kanji": "託",
@@ -22910,7 +23910,11 @@ const PHONETICS_DATA = {
                         "jp": "僕は、有り金をすべて彼に委託した。",
                         "en": "I trusted him with all the money I had.",
                         "furigana": "<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>は、<ruby>有<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>り<ruby>金<rp>(</rp><rt>がね</rt><rp>)</rp></ruby>をすべて<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>に<ruby>委託<rp>(</rp><rt>いたく</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "даатгах",
+                        "итгэмжлэх"
+                    ]
                 }
             ]
         },
@@ -22932,7 +23936,11 @@ const PHONETICS_DATA = {
                         "jp": "初詣、ご利益があるのはどこの神社？",
                         "en": "New Year shrine visit; which shrines are potent?",
                         "furigana": "<ruby>初詣<rp>(</rp><rt>はつもうで</rt><rp>)</rp></ruby>、ご<ruby>利益<rp>(</rp><rt>りやく</rt><rp>)</rp></ruby>があるのはどこの<ruby>神社<rp>(</rp><rt>じんじゃ</rt><rp>)</rp></ruby>？"
-                    }
+                    },
+                    "meaningsMn": [
+                        "бурхад",
+                        "сэтгэл"
+                    ]
                 },
                 {
                     "kanji": "申",
@@ -22949,7 +23957,13 @@ const PHONETICS_DATA = {
                         "jp": "迷惑をおかけして申し訳ありません。",
                         "en": "I'm sorry to trouble you.",
                         "furigana": "<ruby>迷惑<rp>(</rp><rt>めいわく</rt><rp>)</rp></ruby>をおかけして<ruby>申<rp>(</rp><rt>もう</rt><rp>)</rp></ruby>し<ruby>訳<rp>(</rp><rt>わけ</rt><rp>)</rp></ruby>ありません。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хэлэх",
+                        "мэдээлэх",
+                        "даруухнаар хэлэх",
+                        "хэлэх"
+                    ]
                 },
                 {
                     "kanji": "伸",
@@ -22965,7 +23979,12 @@ const PHONETICS_DATA = {
                         "jp": "父は夕食がすんでから伸びをした。",
                         "en": "Dad stretched after dinner.",
                         "furigana": "<ruby>父<rp>(</rp><rt>ちち</rt><rp>)</rp></ruby>は<ruby>夕食<rp>(</rp><rt>ゆうしょく</rt><rp>)</rp></ruby>がすんでから<ruby>伸<rp>(</rp><rt>の</rt><rp>)</rp></ruby>びをした。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "тэлэх",
+                        "сунгах",
+                        "уртасгах"
+                    ]
                 },
                 {
                     "kanji": "紳",
@@ -22980,7 +23999,11 @@ const PHONETICS_DATA = {
                         "jp": "彼は成長して立派な紳士になった。",
                         "en": "He has grown up to be a fine gentleman.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>成長<rp>(</rp><rt>せいちょう</rt><rp>)</rp></ruby>して<ruby>立派<rp>(</rp><rt>りっぱ</rt><rp>)</rp></ruby>な<ruby>紳士<rp>(</rp><rt>しんし</rt><rp>)</rp></ruby>になった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "эрхэм",
+                        "ноён"
+                    ]
                 }
             ]
         },
@@ -23004,7 +24027,13 @@ const PHONETICS_DATA = {
                         "jp": "約１年半で約２２億通の迷惑メールを送りました。",
                         "en": "He sent about 2.2 billion spam emails over a period of around one and a half years.",
                         "furigana": "<ruby>約<rp>(</rp><rt>やく</rt><rp>)</rp></ruby>１<ruby>年<rp>(</rp><rt>ねん</rt><rp>)</rp></ruby><ruby>半<rp>(</rp><rt>はん</rt><rp>)</rp></ruby>で<ruby>約<rp>(</rp><rt>やく</rt><rp>)</rp></ruby>２２<ruby>億<rp>(</rp><rt>おく</rt><rp>)</rp></ruby><ruby>通<rp>(</rp><rt>つう</rt><rp>)</rp></ruby>の<ruby>迷惑<rp>(</rp><rt>めいわく</rt><rp>)</rp></ruby>メールを<ruby>送<rp>(</rp><rt>おく</rt><rp>)</rp></ruby>りました。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хөдөлгөөн",
+                        "өнгөрөх",
+                        "харилцах",
+                        "дамжин өнгөрөх"
+                    ]
                 },
                 {
                     "kanji": "痛",
@@ -23018,7 +24047,10 @@ const PHONETICS_DATA = {
                         "jp": "最近、以前からある痔が痛みます。",
                         "en": "Recently my haemorrhoids, which I've had from before, are painful.",
                         "furigana": "<ruby>最近<rp>(</rp><rt>さいきん</rt><rp>)</rp></ruby>、<ruby>以前<rp>(</rp><rt>いぜん</rt><rp>)</rp></ruby>からある<ruby>痔<rp>(</rp><rt>じ</rt><rp>)</rp></ruby>が<ruby>痛<rp>(</rp><rt>いた</rt><rp>)</rp></ruby>みます。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "өвдөлт"
+                    ]
                 }
             ]
         },
@@ -23041,7 +24073,12 @@ const PHONETICS_DATA = {
                         "jp": "彼は博物館へ行く道を私に聞いた。",
                         "en": "He asked me the way to the museum.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>博物館<rp>(</rp><rt>はくぶつかん</rt><rp>)</rp></ruby>へ<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>く<ruby>道<rp>(</rp><rt>みち</rt><rp>)</rp></ruby>を<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>に<ruby>聞<rp>(</rp><rt>き</rt><rp>)</rp></ruby>いた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "доктор",
+                        "өргөн хүрээтэй",
+                        "эмч"
+                    ]
                 },
                 {
                     "kanji": "薄",
@@ -23056,7 +24093,11 @@ const PHONETICS_DATA = {
                         "jp": "氷が薄いから君の体重では無理だ。",
                         "en": "The ice is too thin to bear your weight.",
                         "furigana": "<ruby>氷<rp>(</rp><rt>こおり</rt><rp>)</rp></ruby>が<ruby>薄<rp>(</rp><rt>うす</rt><rp>)</rp></ruby>いから<ruby>君<rp>(</rp><rt>きみ</rt><rp>)</rp></ruby>の<ruby>体重<rp>(</rp><rt>たいじゅう</rt><rp>)</rp></ruby>では<ruby>無理<rp>(</rp><rt>むり</rt><rp>)</rp></ruby>だ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "шингэлэх",
+                        "нимгэн"
+                    ]
                 },
                 {
                     "kanji": "縛",
@@ -23071,7 +24112,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女のフェチが緊縛と支配でしょう。",
                         "en": "I guess she's into bondage and domination.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>のフェチが<ruby>緊縛<rp>(</rp><rt>きんばく</rt><rp>)</rp></ruby>と<ruby>支配<rp>(</rp><rt>しはい</rt><rp>)</rp></ruby>でしょう。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "боох",
+                        "уях"
+                    ]
                 }
             ]
         },
@@ -23092,7 +24137,10 @@ const PHONETICS_DATA = {
                         "jp": "容疑者は逮捕を免れたいと思った。",
                         "en": "The suspect wanted to avoid being arrested.",
                         "furigana": "<ruby>容疑<rp>(</rp><rt>ようぎ</rt><rp>)</rp></ruby><ruby>者<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby>は<ruby>逮捕<rp>(</rp><rt>たいほ</rt><rp>)</rp></ruby>を<ruby>免<rp>(</rp><rt>まぬか</rt><rp>)</rp></ruby>れたいと<ruby>思<rp>(</rp><rt>おも</rt><rp>)</rp></ruby>った。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "барих"
+                    ]
                 },
                 {
                     "kanji": "補",
@@ -23106,7 +24154,10 @@ const PHONETICS_DATA = {
                         "jp": "補給はまもなく不足するでしょう。",
                         "en": "The supplies will give out soon.",
                         "furigana": "<ruby>補給<rp>(</rp><rt>ほきゅう</rt><rp>)</rp></ruby>はまもなく<ruby>不足<rp>(</rp><rt>ふそく</rt><rp>)</rp></ruby>するでしょう。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "нөхөх"
+                    ]
                 },
                 {
                     "kanji": "舗",
@@ -23122,7 +24173,12 @@ const PHONETICS_DATA = {
                         "jp": "この道路は未舗装で凸凹している。",
                         "en": "This road is unpaved and uneven.",
                         "furigana": "この<ruby>道路<rp>(</rp><rt>どうろ</rt><rp>)</rp></ruby>は<ruby>未<rp>(</rp><rt>み</rt><rp>)</rp></ruby><ruby>舗装<rp>(</rp><rt>ほそう</rt><rp>)</rp></ruby>で<ruby>凸凹<rp>(</rp><rt>でこぼこ</rt><rp>)</rp></ruby>している。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дэлгүүр",
+                        "зам тавих",
+                        "явган зам"
+                    ]
                 },
                 {
                     "kanji": "哺",
@@ -23136,7 +24192,10 @@ const PHONETICS_DATA = {
                         "jp": "鯨は海に住む巨大な哺乳類である。",
                         "en": "The whale is a very large mammal which lives in the sea.",
                         "furigana": "<ruby>鯨<rp>(</rp><rt>くじら</rt><rp>)</rp></ruby>は<ruby>海<rp>(</rp><rt>うみ</rt><rp>)</rp></ruby>に<ruby>住<rp>(</rp><rt>す</rt><rp>)</rp></ruby>む<ruby>巨大<rp>(</rp><rt>きょだい</rt><rp>)</rp></ruby>な<ruby>哺乳類<rp>(</rp><rt>ほにゅうるい</rt><rp>)</rp></ruby>である。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хөхүүлэх"
+                    ]
                 }
             ]
         },
@@ -23159,7 +24218,12 @@ const PHONETICS_DATA = {
                         "jp": "労働組合は経営陣と交渉している。",
                         "en": "The labor union is negotiating with the owners.",
                         "furigana": "<ruby>労働<rp>(</rp><rt>ろうどう</rt><rp>)</rp></ruby><ruby>組合<rp>(</rp><rt>くみあい</rt><rp>)</rp></ruby>は<ruby>経営<rp>(</rp><rt>けいえい</rt><rp>)</rp></ruby><ruby>陣<rp>(</rp><rt>じん</rt><rp>)</rp></ruby>と<ruby>交渉<rp>(</rp><rt>こうしょう</rt><rp>)</rp></ruby>している。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "холбоо",
+                        "зохион байгуулах",
+                        "угсрах"
+                    ]
                 },
                 {
                     "kanji": "祖",
@@ -23173,7 +24237,10 @@ const PHONETICS_DATA = {
                         "jp": "お祖父さんがかなり老衰している。",
                         "en": "Grandfather is quite senile.",
                         "furigana": "お<ruby>祖父<rp>(</rp><rt>じい</rt><rp>)</rp></ruby>さんがかなり<ruby>老衰<rp>(</rp><rt>ろうすい</rt><rp>)</rp></ruby>している。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "өвөг дээдэс"
+                    ]
                 },
                 {
                     "kanji": "狙",
@@ -23187,7 +24254,10 @@ const PHONETICS_DATA = {
                         "jp": "私達はみんな成功を狙っている。",
                         "en": "All of us aim at success.",
                         "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby><ruby>達<rp>(</rp><rt>たち</rt><rp>)</rp></ruby>はみんな<ruby>成功<rp>(</rp><rt>せいこう</rt><rp>)</rp></ruby>を<ruby>狙<rp>(</rp><rt>ねら</rt><rp>)</rp></ruby>っている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "чиглэх"
+                    ]
                 },
                 {
                     "kanji": "粗",
@@ -23201,7 +24271,10 @@ const PHONETICS_DATA = {
                         "jp": "粗品ですがお受け取りください。",
                         "en": "This is just a small gift, but please accept it.",
                         "furigana": "<ruby>粗品<rp>(</rp><rt>そしな</rt><rp>)</rp></ruby>ですがお<ruby>受<rp>(</rp><rt>う</rt><rp>)</rp></ruby>け<ruby>取<rp>(</rp><rt>と</rt><rp>)</rp></ruby>りください。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "бүдүүн"
+                    ]
                 },
                 {
                     "kanji": "阻",
@@ -23216,7 +24289,11 @@ const PHONETICS_DATA = {
                         "jp": "彼らは大きな川に前進を阻まれた。",
                         "en": "Their progress was stopped by a wide river.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>大<rp>(</rp><rt>おお</rt><rp>)</rp></ruby>きな<ruby>川<rp>(</rp><rt>かわ</rt><rp>)</rp></ruby>に<ruby>前進<rp>(</rp><rt>ぜんしん</rt><rp>)</rp></ruby>を<ruby>阻<rp>(</rp><rt>はば</rt><rp>)</rp></ruby>まれた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хойргоор нь боох",
+                        "саад учруулах"
+                    ]
                 },
                 {
                     "kanji": "租",
@@ -23227,7 +24304,11 @@ const PHONETICS_DATA = {
                         "tariff",
                         "land tax"
                     ],
-                    "example": null
+                    "example": null,
+                    "meaningsMn": [
+                        "гаалийн татвар",
+                        "газрын татвар"
+                    ]
                 }
             ]
         },
@@ -23248,7 +24329,10 @@ const PHONETICS_DATA = {
                         "jp": "場合によっては腕力に訴えてもよい。",
                         "en": "It is sometimes acceptable to resort to violence.",
                         "furigana": "<ruby>場合<rp>(</rp><rt>ばあい</rt><rp>)</rp></ruby>によっては<ruby>腕力<rp>(</rp><rt>わんりょく</rt><rp>)</rp></ruby>に<ruby>訴<rp>(</rp><rt>うった</rt><rp>)</rp></ruby>えてもよい。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "гар"
+                    ]
                 },
                 {
                     "kanji": "怨",
@@ -23262,7 +24346,10 @@ const PHONETICS_DATA = {
                         "jp": "怨みは怨みによって果たされず。",
                         "en": "Hatred is never appeased by hatred in this world.",
                         "furigana": "<ruby>怨<rp>(</rp><rt>うら</rt><rp>)</rp></ruby>みは<ruby>怨<rp>(</rp><rt>うら</rt><rp>)</rp></ruby>みによって<ruby>果<rp>(</rp><rt>は</rt><rp>)</rp></ruby>たされず。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "өшөө хорсол"
+                    ]
                 }
             ]
         },
@@ -23283,7 +24370,10 @@ const PHONETICS_DATA = {
                         "jp": "選挙の結果は夕刊に載るでしょう。",
                         "en": "The results of the election will appear in the evening paper.",
                         "furigana": "<ruby>選挙<rp>(</rp><rt>せんきょ</rt><rp>)</rp></ruby>の<ruby>結果<rp>(</rp><rt>けっか</rt><rp>)</rp></ruby>は<ruby>夕刊<rp>(</rp><rt>ゆうかん</rt><rp>)</rp></ruby>に<ruby>載<rp>(</rp><rt>の</rt><rp>)</rp></ruby>るでしょう。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хэвлэн нийтлэх"
+                    ]
                 },
                 {
                     "kanji": "干",
@@ -23297,7 +24387,10 @@ const PHONETICS_DATA = {
                         "jp": "日照り続きでその池は干上がった。",
                         "en": "The pond dried up in hot weather.",
                         "furigana": "<ruby>日照<rp>(</rp><rt>ひで</rt><rp>)</rp></ruby>り<ruby>続<rp>(</rp><rt>つづ</rt><rp>)</rp></ruby>きでその<ruby>池<rp>(</rp><rt>いけ</rt><rp>)</rp></ruby>は<ruby>干上<rp>(</rp><rt>ひあ</rt><rp>)</rp></ruby>がった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хатаах"
+                    ]
                 },
                 {
                     "kanji": "汗",
@@ -23311,7 +24404,10 @@ const PHONETICS_DATA = {
                         "jp": "彼女の顔は汗でびっしょりだった。",
                         "en": "Her face was drenched with sweat.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>の<ruby>顔<rp>(</rp><rt>かお</rt><rp>)</rp></ruby>は<ruby>汗<rp>(</rp><rt>あせ</rt><rp>)</rp></ruby>でびっしょりだった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хөлс"
+                    ]
                 },
                 {
                     "kanji": "肝",
@@ -23325,7 +24421,10 @@ const PHONETICS_DATA = {
                         "jp": "その光景を見て私は肝をつぶした。",
                         "en": "I was much frightened at the sight.",
                         "furigana": "その<ruby>光景<rp>(</rp><rt>こうけい</rt><rp>)</rp></ruby>を<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>て<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>は<ruby>肝<rp>(</rp><rt>きも</rt><rp>)</rp></ruby>をつぶした。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "элэг"
+                    ]
                 }
             ]
         },
@@ -23349,7 +24448,13 @@ const PHONETICS_DATA = {
                         "jp": "痩せる必要がないというのは残念だ。",
                         "en": "It's too bad that I don't need to lose weight.",
                         "furigana": "<ruby>痩<rp>(</rp><rt>や</rt><rp>)</rp></ruby>せる<ruby>必要<rp>(</rp><rt>ひつよう</rt><rp>)</rp></ruby>がないというのは<ruby>残念<rp>(</rp><rt>ざんねん</rt><rp>)</rp></ruby>だ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хэрэгцээ",
+                        "чухал",
+                        "товчлох",
+                        "шаардах"
+                    ]
                 },
                 {
                     "kanji": "腰",
@@ -23364,7 +24469,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女は腰に革のベルトをしている。",
                         "en": "She is wearing a leather belt around her waist.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>腰<rp>(</rp><rt>こし</rt><rp>)</rp></ruby>に<ruby>革<rp>(</rp><rt>かわ</rt><rp>)</rp></ruby>のベルトをしている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "бэлхүүс",
+                        "бүсэлхий"
+                    ]
                 }
             ]
         },
@@ -23386,7 +24495,11 @@ const PHONETICS_DATA = {
                         "jp": "農夫は荒くれ馬にじっと我慢した。",
                         "en": "The farmer was patient with the unruly horse.",
                         "furigana": "<ruby>農夫<rp>(</rp><rt>のうふ</rt><rp>)</rp></ruby>は<ruby>荒<rp>(</rp><rt>あら</rt><rp>)</rp></ruby>くれ<ruby>馬<rp>(</rp><rt>ば</rt><rp>)</rp></ruby>にじっと<ruby>我慢<rp>(</rp><rt>がまん</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "сүйрсэн",
+                        "зэрлэг"
+                    ]
                 },
                 {
                     "kanji": "慌",
@@ -23401,7 +24514,11 @@ const PHONETICS_DATA = {
                         "jp": "彼は列車に乗るために慌てている。",
                         "en": "He is in a hurry to catch the train.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>列車<rp>(</rp><rt>れっしゃ</rt><rp>)</rp></ruby>に<ruby>乗<rp>(</rp><rt>の</rt><rp>)</rp></ruby>るために<ruby>慌<rp>(</rp><rt>あわ</rt><rp>)</rp></ruby>てている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "сандарсан",
+                        "яаравчилсан"
+                    ]
                 }
             ]
         },
@@ -23424,7 +24541,12 @@ const PHONETICS_DATA = {
                         "jp": "トランプを樫のテーブルに置いて。",
                         "en": "Place the deck of cards on the oaken table.",
                         "furigana": "トランプを<ruby>樫<rp>(</rp><rt>かし</rt><rp>)</rp></ruby>のテーブルに<ruby>置<rp>(</rp><rt>お</rt><rp>)</rp></ruby>いて。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "байрлал",
+                        "байрлуулах",
+                        "тавих"
+                    ]
                 },
                 {
                     "kanji": "植",
@@ -23438,7 +24560,10 @@ const PHONETICS_DATA = {
                         "jp": "彼女は植木鉢に新しい土を入れた。",
                         "en": "She put new soil in the flower pot.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>植木鉢<rp>(</rp><rt>うえきばち</rt><rp>)</rp></ruby>に<ruby>新<rp>(</rp><rt>あたら</rt><rp>)</rp></ruby>しい<ruby>土<rp>(</rp><rt>ど</rt><rp>)</rp></ruby>を<ruby>入<rp>(</rp><rt>い</rt><rp>)</rp></ruby>れた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "тарих"
+                    ]
                 },
                 {
                     "kanji": "値",
@@ -23453,7 +24578,11 @@ const PHONETICS_DATA = {
                         "jp": "精液は瓶詰めにする価値はあるよ。",
                         "en": "Semen is worth bottling.",
                         "furigana": "<ruby>精液<rp>(</rp><rt>せいえき</rt><rp>)</rp></ruby>は<ruby>瓶詰<rp>(</rp><rt>びんづ</rt><rp>)</rp></ruby>めにする<ruby>価値<rp>(</rp><rt>かち</rt><rp>)</rp></ruby>はあるよ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "үнэ",
+                        "үнэ цэнэ"
+                    ]
                 },
                 {
                     "kanji": "殖",
@@ -23468,7 +24597,11 @@ const PHONETICS_DATA = {
                         "jp": "ネズミはどんどん繁殖する。",
                         "en": "Rats breed rapidly.",
                         "furigana": "ネズミはどんどん<ruby>繁殖<rp>(</rp><rt>はんしょく</rt><rp>)</rp></ruby>する。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "нэмэгдүүлэх",
+                        "үржих"
+                    ]
                 }
             ]
         },
@@ -23490,7 +24623,11 @@ const PHONETICS_DATA = {
                         "jp": "妹と私は交換で部屋を掃除します。",
                         "en": "My sister and I take turns in cleaning our room.",
                         "furigana": "<ruby>妹<rp>(</rp><rt>いもうと</rt><rp>)</rp></ruby>と<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>は<ruby>交換<rp>(</rp><rt>こうかん</rt><rp>)</rp></ruby>で<ruby>部屋<rp>(</rp><rt>へや</rt><rp>)</rp></ruby>を<ruby>掃除<rp>(</rp><rt>そうじ</rt><rp>)</rp></ruby>します。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "сольж солих",
+                        "солилцох"
+                    ]
                 },
                 {
                     "kanji": "喚",
@@ -23505,7 +24642,11 @@ const PHONETICS_DATA = {
                         "jp": "彼は証言をするために召喚された。",
                         "en": "He was called to give evidence.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>証言<rp>(</rp><rt>しょうげん</rt><rp>)</rp></ruby>をするために<ruby>召喚<rp>(</rp><rt>しょうかん</rt><rp>)</rp></ruby>された。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хашгирах",
+                        "дуудах"
+                    ]
                 }
             ]
         },
@@ -23526,7 +24667,10 @@ const PHONETICS_DATA = {
                         "jp": "データ化して、壁紙も作ってある。",
                         "en": "I also digitized it and made a desktop image.",
                         "furigana": "データ<ruby>化<rp>(</rp><rt>か</rt><rp>)</rp></ruby>して、<ruby>壁紙<rp>(</rp><rt>かべがみ</rt><rp>)</rp></ruby>も<ruby>作<rp>(</rp><rt>つく</rt><rp>)</rp></ruby>ってある。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хана"
+                    ]
                 },
                 {
                     "kanji": "癖",
@@ -23541,7 +24685,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女は急にふさぎ込む性癖がある。",
                         "en": "She is apt to fits of depression.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>急<rp>(</rp><rt>きゅう</rt><rp>)</rp></ruby>にふさぎ<ruby>込<rp>(</rp><rt>こ</rt><rp>)</rp></ruby>む<ruby>性癖<rp>(</rp><rt>せいへき</rt><rp>)</rp></ruby>がある。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "зуршил",
+                        "ааш зан"
+                    ]
                 },
                 {
                     "kanji": "璧",
@@ -23556,7 +24704,11 @@ const PHONETICS_DATA = {
                         "jp": "そのソフトは完璧からほど遠い。",
                         "en": "That program is still far from perfect.",
                         "furigana": "そのソフトは<ruby>完璧<rp>(</rp><rt>かんぺき</rt><rp>)</rp></ruby>からほど<ruby>遠<rp>(</rp><rt>とお</rt><rp>)</rp></ruby>い。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "сүрлэг",
+                        "нүхтэй эрдэнэ"
+                    ]
                 }
             ]
         },
@@ -23578,7 +24730,11 @@ const PHONETICS_DATA = {
                         "jp": "彼は新しい環境にすばやく慣れた。",
                         "en": "He quickly accustomed himself to his new surroundings.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>新<rp>(</rp><rt>あたら</rt><rp>)</rp></ruby>しい<ruby>環境<rp>(</rp><rt>かんきょう</rt><rp>)</rp></ruby>にすばやく<ruby>慣<rp>(</rp><rt>な</rt><rp>)</rp></ruby>れた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "цагираг",
+                        "хүрээлэх"
+                    ]
                 },
                 {
                     "kanji": "還",
@@ -23593,7 +24749,11 @@ const PHONETICS_DATA = {
                         "jp": "大使はワルシャワから召還された。",
                         "en": "The ambassador was recalled from Warsaw.",
                         "furigana": "<ruby>大使<rp>(</rp><rt>たいし</rt><rp>)</rp></ruby>はワルシャワから<ruby>召還<rp>(</rp><rt>しょうかん</rt><rp>)</rp></ruby>された。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "буцаах",
+                        "буцах"
+                    ]
                 }
             ]
         },
@@ -23615,7 +24775,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女のフェチが緊縛と支配でしょう。",
                         "en": "I guess she's into bondage and domination.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>のフェチが<ruby>緊縛<rp>(</rp><rt>きんばく</rt><rp>)</rp></ruby>と<ruby>支配<rp>(</rp><rt>しはい</rt><rp>)</rp></ruby>でしょう。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "салбар",
+                        "дэмжлэг"
+                    ]
                 },
                 {
                     "kanji": "枝",
@@ -23630,7 +24794,11 @@ const PHONETICS_DATA = {
                         "jp": "彼は木の枝を何本か切り落とした。",
                         "en": "He cut some branches off the tree.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>木<rp>(</rp><rt>き</rt><rp>)</rp></ruby>の<ruby>枝<rp>(</rp><rt>えだ</rt><rp>)</rp></ruby>を<ruby>何<rp>(</rp><rt>なん</rt><rp>)</rp></ruby><ruby>本<rp>(</rp><rt>ほん</rt><rp>)</rp></ruby>か<ruby>切<rp>(</rp><rt>き</rt><rp>)</rp></ruby>り<ruby>落<rp>(</rp><rt>お</rt><rp>)</rp></ruby>とした。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "мөчир",
+                        "салаа"
+                    ]
                 },
                 {
                     "kanji": "岐",
@@ -23645,7 +24813,11 @@ const PHONETICS_DATA = {
                         "jp": "岐阜県の県庁所在地は岐阜市です。",
                         "en": "Gifu Prefecture's capital is Gifu City.",
                         "furigana": "<ruby>岐阜<rp>(</rp><rt>ぎふ</rt><rp>)</rp></ruby><ruby>県<rp>(</rp><rt>けん</rt><rp>)</rp></ruby>の<ruby>県庁<rp>(</rp><rt>けんちょう</rt><rp>)</rp></ruby><ruby>所在地<rp>(</rp><rt>しょざいち</rt><rp>)</rp></ruby>は<ruby>岐阜<rp>(</rp><rt>ぎふ</rt><rp>)</rp></ruby><ruby>市<rp>(</rp><rt>し</rt><rp>)</rp></ruby>です。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "салаалах",
+                        "тархах"
+                    ]
                 },
                 {
                     "kanji": "伎",
@@ -23659,7 +24831,10 @@ const PHONETICS_DATA = {
                         "jp": "歌舞伎は古くからの日本の芸術だ。",
                         "en": "Kabuki is an old Japanese art.",
                         "furigana": "<ruby>歌舞伎<rp>(</rp><rt>かぶき</rt><rp>)</rp></ruby>は<ruby>古<rp>(</rp><rt>ふる</rt><rp>)</rp></ruby>くからの<ruby>日本<rp>(</rp><rt>にっぽん</rt><rp>)</rp></ruby>の<ruby>芸術<rp>(</rp><rt>げいじゅつ</rt><rp>)</rp></ruby>だ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "жүжигчин"
+                    ]
                 },
                 {
                     "kanji": "肢",
@@ -23673,7 +24848,10 @@ const PHONETICS_DATA = {
                         "jp": "どちらの選択肢も慎重に検討した。",
                         "en": "We have given careful thought to both alternatives.",
                         "furigana": "どちらの<ruby>選択肢<rp>(</rp><rt>せんたくし</rt><rp>)</rp></ruby>も<ruby>慎重<rp>(</rp><rt>しんちょう</rt><rp>)</rp></ruby>に<ruby>検討<rp>(</rp><rt>けんとう</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "мөч"
+                    ]
                 }
             ]
         },
@@ -23694,7 +24872,10 @@ const PHONETICS_DATA = {
                         "jp": "自民党が小泉人気の尻馬に乗った。",
                         "en": "The LDP rode on the wave of Koizumi's popularity.",
                         "furigana": "<ruby>自民党<rp>(</rp><rt>じみんとう</rt><rp>)</rp></ruby>が<ruby>小泉<rp>(</rp><rt>こいずみ</rt><rp>)</rp></ruby><ruby>人気<rp>(</rp><rt>にんき</rt><rp>)</rp></ruby>の<ruby>尻馬<rp>(</rp><rt>しりうま</rt><rp>)</rp></ruby>に<ruby>乗<rp>(</rp><rt>の</rt><rp>)</rp></ruby>った。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "ард түмэн"
+                    ]
                 },
                 {
                     "kanji": "眠",
@@ -23708,7 +24889,10 @@ const PHONETICS_DATA = {
                         "jp": "横には喧嘩状態の妻が眠っている。",
                         "en": "To my side, my wife, who I'm presently at odds with, lies sleeping.",
                         "furigana": "<ruby>横<rp>(</rp><rt>よこ</rt><rp>)</rp></ruby>には<ruby>喧嘩<rp>(</rp><rt>けんか</rt><rp>)</rp></ruby><ruby>状態<rp>(</rp><rt>じょうたい</rt><rp>)</rp></ruby>の<ruby>妻<rp>(</rp><rt>つま</rt><rp>)</rp></ruby>が<ruby>眠<rp>(</rp><rt>ねむ</rt><rp>)</rp></ruby>っている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "унтах"
+                    ]
                 }
             ]
         },
@@ -23731,7 +24915,12 @@ const PHONETICS_DATA = {
                         "jp": "高校生の時は毎朝6時に起きていた。",
                         "en": "Back in high school, I got up at 6 a.m. every morning.",
                         "furigana": "<ruby>高校生<rp>(</rp><rt>こうこうせい</rt><rp>)</rp></ruby>の<ruby>時<rp>(</rp><rt>とき</rt><rp>)</rp></ruby>は<ruby>毎朝<rp>(</rp><rt>まいあさ</rt><rp>)</rp></ruby>6<ruby>時<rp>(</rp><rt>じ</rt><rp>)</rp></ruby>に<ruby>起<rp>(</rp><rt>お</rt><rp>)</rp></ruby>きていた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "шалгалт",
+                        "сургууль",
+                        "тулгах"
+                    ]
                 },
                 {
                     "kanji": "交",
@@ -23748,7 +24937,13 @@ const PHONETICS_DATA = {
                         "jp": "約束やぶったら、絶交ですからね？",
                         "en": "If you break your promise, we're through, you hear?",
                         "furigana": "<ruby>約束<rp>(</rp><rt>やくそく</rt><rp>)</rp></ruby>やぶったら、<ruby>絶交<rp>(</rp><rt>ぜっこう</rt><rp>)</rp></ruby>ですからね？"
-                    }
+                    },
+                    "meaningsMn": [
+                        "холилдох",
+                        "харилцаа",
+                        "солилцох",
+                        "хольх"
+                    ]
                 },
                 {
                     "kanji": "効",
@@ -23763,7 +24958,11 @@ const PHONETICS_DATA = {
                         "jp": "食物繊維はダイエットに効果的だ。",
                         "en": "Dietary fibre is good for losing weight.",
                         "furigana": "<ruby>食物<rp>(</rp><rt>しょくもつ</rt><rp>)</rp></ruby><ruby>繊維<rp>(</rp><rt>せんい</rt><rp>)</rp></ruby>はダイエットに<ruby>効果<rp>(</rp><rt>こうか</rt><rp>)</rp></ruby><ruby>的<rp>(</rp><rt>てき</rt><rp>)</rp></ruby>だ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "үр дүн",
+                        "нөлөө"
+                    ]
                 },
                 {
                     "kanji": "郊",
@@ -23778,7 +24977,11 @@ const PHONETICS_DATA = {
                         "jp": "彼はロンドンの郊外に住んでいる。",
                         "en": "He lives in the suburbs of London.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>はロンドンの<ruby>郊外<rp>(</rp><rt>こうがい</rt><rp>)</rp></ruby>に<ruby>住<rp>(</rp><rt>す</rt><rp>)</rp></ruby>んでいる。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "захын хороолол",
+                        "гэр хороолол"
+                    ]
                 },
                 {
                     "kanji": "絞",
@@ -23793,7 +24996,11 @@ const PHONETICS_DATA = {
                         "jp": "彼は殺人罪で絞首刑に処せられた。",
                         "en": "He was hanged for murder.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>殺人<rp>(</rp><rt>さつじん</rt><rp>)</rp></ruby><ruby>罪<rp>(</rp><rt>ざい</rt><rp>)</rp></ruby>で<ruby>絞首刑<rp>(</rp><rt>こうしゅけい</rt><rp>)</rp></ruby>に<ruby>処<rp>(</rp><rt>しょ</rt><rp>)</rp></ruby>せられた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "боох",
+                        "шахах"
+                    ]
                 }
             ]
         },
@@ -23815,7 +25022,11 @@ const PHONETICS_DATA = {
                         "jp": "民主主義は自由を積極的に認める。",
                         "en": "Democracy encourages freedom.",
                         "furigana": "<ruby>民主<rp>(</rp><rt>みんしゅ</rt><rp>)</rp></ruby><ruby>主義<rp>(</rp><rt>しゅぎ</rt><rp>)</rp></ruby>は<ruby>自由<rp>(</rp><rt>じゆう</rt><rp>)</rp></ruby>を<ruby>積極<rp>(</rp><rt>せっきょく</rt><rp>)</rp></ruby><ruby>的<rp>(</rp><rt>てき</rt><rp>)</rp></ruby>に<ruby>認<rp>(</rp><rt>みと</rt><rp>)</rp></ruby>める。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "эзэлхүүн",
+                        "хуримтлуулах"
+                    ]
                 },
                 {
                     "kanji": "績",
@@ -23830,7 +25041,11 @@ const PHONETICS_DATA = {
                         "jp": "両親は私の今年の成績に満足した。",
                         "en": "My parents were satisfied with my grades this year.",
                         "furigana": "<ruby>両親<rp>(</rp><rt>りょうしん</rt><rp>)</rp></ruby>は<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>の<ruby>今年<rp>(</rp><rt>ことし</rt><rp>)</rp></ruby>の<ruby>成績<rp>(</rp><rt>せいせき</rt><rp>)</rp></ruby>に<ruby>満足<rp>(</rp><rt>まんぞく</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "гавьяа",
+                        "амжилт"
+                    ]
                 },
                 {
                     "kanji": "責",
@@ -23845,7 +25060,11 @@ const PHONETICS_DATA = {
                         "jp": "両親は子供達の教育に責任を負う。",
                         "en": "Parents are responsible for their children's education.",
                         "furigana": "<ruby>両親<rp>(</rp><rt>りょうしん</rt><rp>)</rp></ruby>は<ruby>子供<rp>(</rp><rt>こども</rt><rp>)</rp></ruby><ruby>達<rp>(</rp><rt>たち</rt><rp>)</rp></ruby>の<ruby>教育<rp>(</rp><rt>きょういく</rt><rp>)</rp></ruby>に<ruby>責任<rp>(</rp><rt>せきにん</rt><rp>)</rp></ruby>を<ruby>負<rp>(</rp><rt>お</rt><rp>)</rp></ruby>う。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "зэмлэх",
+                        "хариуцлага"
+                    ]
                 }
             ]
         },
@@ -23867,7 +25086,11 @@ const PHONETICS_DATA = {
                         "jp": "容疑者はその罪を犯していなかった。",
                         "en": "The suspect was innocent of the crime.",
                         "furigana": "<ruby>容疑<rp>(</rp><rt>ようぎ</rt><rp>)</rp></ruby><ruby>者<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby>はその<ruby>罪<rp>(</rp><rt>つみ</rt><rp>)</rp></ruby>を<ruby>犯<rp>(</rp><rt>おか</rt><rp>)</rp></ruby>していなかった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "гэмт хэрэг",
+                        "зөрчил"
+                    ]
                 },
                 {
                     "kanji": "氾",
@@ -23881,7 +25104,10 @@ const PHONETICS_DATA = {
                         "jp": "街には奇妙な外国語が氾濫していた。",
                         "en": "The town was flooded with strange foreign words.",
                         "furigana": "<ruby>街<rp>(</rp><rt>まち</rt><rp>)</rp></ruby>には<ruby>奇妙<rp>(</rp><rt>きみょう</rt><rp>)</rp></ruby>な<ruby>外国<rp>(</rp><rt>がいこく</rt><rp>)</rp></ruby><ruby>語<rp>(</rp><rt>ご</rt><rp>)</rp></ruby>が<ruby>氾濫<rp>(</rp><rt>はんらん</rt><rp>)</rp></ruby>していた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "цутгах"
+                    ]
                 }
             ]
         },
@@ -23903,7 +25129,11 @@ const PHONETICS_DATA = {
                         "jp": "当時の農家の暴利はすさまじかった。",
                         "en": "The bloated profits of farmers at the time were something again.",
                         "furigana": "<ruby>当時<rp>(</rp><rt>とうじ</rt><rp>)</rp></ruby>の<ruby>農家<rp>(</rp><rt>のうか</rt><rp>)</rp></ruby>の<ruby>暴利<rp>(</rp><rt>ぼうり</rt><rp>)</rp></ruby>はすさまじかった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дэлбэрэлт",
+                        "хүчирхийллийн"
+                    ]
                 },
                 {
                     "kanji": "爆",
@@ -23918,7 +25148,11 @@ const PHONETICS_DATA = {
                         "jp": "飛行機はその町に爆弾を落とした。",
                         "en": "The plane dropped bombs on the city.",
                         "furigana": "<ruby>飛行機<rp>(</rp><rt>ひこうき</rt><rp>)</rp></ruby>はその<ruby>町<rp>(</rp><rt>まち</rt><rp>)</rp></ruby>に<ruby>爆弾<rp>(</rp><rt>ばくだん</rt><rp>)</rp></ruby>を<ruby>落<rp>(</rp><rt>お</rt><rp>)</rp></ruby>とした。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "бөмбөг",
+                        "дэлбэрэх"
+                    ]
                 }
             ]
         },
@@ -23940,7 +25174,11 @@ const PHONETICS_DATA = {
                         "jp": "のいて・・・奴らは逃げちゃうよ。",
                         "en": "Get out the way ... they'll escape!",
                         "furigana": "のいて・・・<ruby>奴<rp>(</rp><rt>やつ</rt><rp>)</rp></ruby>らは<ruby>逃<rp>(</rp><rt>に</rt><rp>)</rp></ruby>げちゃうよ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "залуу",
+                        "боол"
+                    ]
                 },
                 {
                     "kanji": "怒",
@@ -23955,7 +25193,11 @@ const PHONETICS_DATA = {
                         "jp": "母親の怒りの厳しさにびっくりした。",
                         "en": "We were shocked by the intensity of our mother's anger.",
                         "furigana": "<ruby>母親<rp>(</rp><rt>ははおや</rt><rp>)</rp></ruby>の<ruby>怒<rp>(</rp><rt>いか</rt><rp>)</rp></ruby>りの<ruby>厳<rp>(</rp><rt>きび</rt><rp>)</rp></ruby>しさにびっくりした。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "уурлах",
+                        "уурлах"
+                    ]
                 },
                 {
                     "kanji": "努",
@@ -23970,7 +25212,11 @@ const PHONETICS_DATA = {
                         "jp": "努力なくしては何も得られない。",
                         "en": "Nothing is achieved without effort.",
                         "furigana": "<ruby>努力<rp>(</rp><rt>どりょく</rt><rp>)</rp></ruby>なくしては<ruby>何<rp>(</rp><rt>なに</rt><rp>)</rp></ruby>も<ruby>得<rp>(</rp><rt>え</rt><rp>)</rp></ruby>られない。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хөдөлмөрлөх",
+                        "хичээх"
+                    ]
                 }
             ]
         },
@@ -23992,7 +25238,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女は答案の採点に没頭していた。",
                         "en": "She was up to her eyes grading the papers.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>答案<rp>(</rp><rt>とうあん</rt><rp>)</rp></ruby>の<ruby>採点<rp>(</rp><rt>さいてん</rt><rp>)</rp></ruby>に<ruby>没頭<rp>(</rp><rt>ぼっとう</rt><rp>)</rp></ruby>していた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "түүх",
+                        "цуглуулах"
+                    ]
                 },
                 {
                     "kanji": "菜",
@@ -24006,7 +25256,10 @@ const PHONETICS_DATA = {
                         "jp": "毎日新鮮な野菜サラダを食べてます。",
                         "en": "We eat a fresh, green salad every day.",
                         "furigana": "<ruby>毎日<rp>(</rp><rt>まいにち</rt><rp>)</rp></ruby><ruby>新鮮<rp>(</rp><rt>しんせん</rt><rp>)</rp></ruby>な<ruby>野菜<rp>(</rp><rt>やさい</rt><rp>)</rp></ruby>サラダを<ruby>食<rp>(</rp><rt>た</rt><rp>)</rp></ruby>べてます。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хүнсний ногоо"
+                    ]
                 },
                 {
                     "kanji": "彩",
@@ -24021,7 +25274,11 @@ const PHONETICS_DATA = {
                         "jp": "彼は学校時代から異彩をはなっていた。",
                         "en": "He made a figure in his school days.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>学校<rp>(</rp><rt>がっこう</rt><rp>)</rp></ruby><ruby>時代<rp>(</rp><rt>じだい</rt><rp>)</rp></ruby>から<ruby>異彩<rp>(</rp><rt>いさい</rt><rp>)</rp></ruby>をはなっていた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "будаг",
+                        "сайхан будаг"
+                    ]
                 },
                 {
                     "kanji": "采",
@@ -24035,7 +25292,10 @@ const PHONETICS_DATA = {
                         "jp": "ディックは風采が母親に似ている。",
                         "en": "Dick takes after his mother in appearance.",
                         "furigana": "ディックは<ruby>風采<rp>(</rp><rt>ふうさい</rt><rp>)</rp></ruby>が<ruby>母親<rp>(</rp><rt>ははおや</rt><rp>)</rp></ruby>に<ruby>似<rp>(</rp><rt>に</rt><rp>)</rp></ruby>ている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "барих"
+                    ]
                 }
             ]
         },
@@ -24057,7 +25317,11 @@ const PHONETICS_DATA = {
                         "jp": "老人は過去を振り返りがちである。",
                         "en": "Old people are inclined to look back on the past.",
                         "furigana": "<ruby>老人<rp>(</rp><rt>ろうじん</rt><rp>)</rp></ruby>は<ruby>過去<rp>(</rp><rt>かこ</rt><rp>)</rp></ruby>を<ruby>振<rp>(</rp><rt>ふ</rt><rp>)</rp></ruby>り<ruby>返<rp>(</rp><rt>かえ</rt><rp>)</rp></ruby>りがちである。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "сэгсрэх",
+                        "даллах"
+                    ]
                 },
                 {
                     "kanji": "震",
@@ -24071,7 +25335,10 @@ const PHONETICS_DATA = {
                         "jp": "彼女は地震の時落ち着いています。",
                         "en": "She stays calm through earthquakes.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>地震<rp>(</rp><rt>じしん</rt><rp>)</rp></ruby>の<ruby>時<rp>(</rp><rt>とき</rt><rp>)</rp></ruby><ruby>落<rp>(</rp><rt>お</rt><rp>)</rp></ruby>ち<ruby>着<rp>(</rp><rt>つ</rt><rp>)</rp></ruby>いています。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "чичрэх"
+                    ]
                 },
                 {
                     "kanji": "唇",
@@ -24085,7 +25352,10 @@ const PHONETICS_DATA = {
                         "jp": "彼は軽蔑したように唇をゆがめた。",
                         "en": "He curled his lip in a sneer.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>軽蔑<rp>(</rp><rt>けいべつ</rt><rp>)</rp></ruby>したように<ruby>唇<rp>(</rp><rt>くちびる</rt><rp>)</rp></ruby>をゆがめた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "уруул"
+                    ]
                 },
                 {
                     "kanji": "娠",
@@ -24100,7 +25370,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女は彼の子を妊娠して幸せです。",
                         "en": "She is happy to have conceived a baby by him.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>子<rp>(</rp><rt>こ</rt><rp>)</rp></ruby>を<ruby>妊娠<rp>(</rp><rt>にんしん</rt><rp>)</rp></ruby>して<ruby>幸<rp>(</rp><rt>しあわ</rt><rp>)</rp></ruby>せです。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "жирэмсэн",
+                        "жирэмслэх"
+                    ]
                 }
             ]
         },
@@ -24121,7 +25395,10 @@ const PHONETICS_DATA = {
                         "jp": "力で彼に匹敵するものはいない。",
                         "en": "Nobody equals him in strength.",
                         "furigana": "<ruby>力<rp>(</rp><rt>ちから</rt><rp>)</rp></ruby>で<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>に<ruby>匹敵<rp>(</rp><rt>ひってき</rt><rp>)</rp></ruby>するものはいない。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дайсан"
+                    ]
                 },
                 {
                     "kanji": "適",
@@ -24135,7 +25412,10 @@ const PHONETICS_DATA = {
                         "jp": "体温を適温に保つということは大切なことです。",
                         "en": "It is important to maintain your body temperature at a suitable level.",
                         "furigana": "<ruby>体温<rp>(</rp><rt>たいおん</rt><rp>)</rp></ruby>を<ruby>適温<rp>(</rp><rt>てきおん</rt><rp>)</rp></ruby>に<ruby>保<rp>(</rp><rt>たも</rt><rp>)</rp></ruby>つということは<ruby>大切<rp>(</rp><rt>たいせつ</rt><rp>)</rp></ruby>なことです。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "тохиромжтой"
+                    ]
                 },
                 {
                     "kanji": "摘",
@@ -24150,7 +25430,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女は美しい花をたくさん摘んだ。",
                         "en": "She picked a lot of beautiful flowers.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>美<rp>(</rp><rt>うつく</rt><rp>)</rp></ruby>しい<ruby>花<rp>(</rp><rt>はな</rt><rp>)</rp></ruby>をたくさん<ruby>摘<rp>(</rp><rt>つ</rt><rp>)</rp></ruby>んだ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "чимхэх",
+                        "түүх"
+                    ]
                 },
                 {
                     "kanji": "滴",
@@ -24165,7 +25449,11 @@ const PHONETICS_DATA = {
                         "jp": "ひさしから雨水が滴り落ちている。",
                         "en": "The eaves are dripping.",
                         "furigana": "ひさしから<ruby>雨水<rp>(</rp><rt>あまみず</rt><rp>)</rp></ruby>が<ruby>滴<rp>(</rp><rt>したた</rt><rp>)</rp></ruby>り<ruby>落<rp>(</rp><rt>お</rt><rp>)</rp></ruby>ちている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дуслах",
+                        "дусал"
+                    ]
                 }
             ]
         },
@@ -24188,7 +25476,12 @@ const PHONETICS_DATA = {
                         "jp": "イタリア語では何て言うんですか。",
                         "en": "How do you say that in Italian?",
                         "furigana": "イタリア<ruby>語<rp>(</rp><rt>ご</rt><rp>)</rp></ruby>では<ruby>何<rp>(</rp><rt>なに</rt><rp>)</rp></ruby>て<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>うんですか。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "үг",
+                        "хэл",
+                        "өгүүлэх"
+                    ]
                 },
                 {
                     "kanji": "五",
@@ -24202,7 +25495,10 @@ const PHONETICS_DATA = {
                         "jp": "列車は五時ちょうどに発車した。",
                         "en": "The train left at five o'clock to the minute.",
                         "furigana": "<ruby>列車<rp>(</rp><rt>れっしゃ</rt><rp>)</rp></ruby>は<ruby>五<rp>(</rp><rt>ご</rt><rp>)</rp></ruby><ruby>時<rp>(</rp><rt>じ</rt><rp>)</rp></ruby>ちょうどに<ruby>発車<rp>(</rp><rt>はっしゃ</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "тав"
+                    ]
                 },
                 {
                     "kanji": "互",
@@ -24217,7 +25513,11 @@ const PHONETICS_DATA = {
                         "jp": "両国はお互いに密接な関係がある。",
                         "en": "The two countries are closely related to each other.",
                         "furigana": "<ruby>両国<rp>(</rp><rt>りょうこく</rt><rp>)</rp></ruby>はお<ruby>互<rp>(</rp><rt>たが</rt><rp>)</rp></ruby>いに<ruby>密接<rp>(</rp><rt>みっせつ</rt><rp>)</rp></ruby>な<ruby>関係<rp>(</rp><rt>かんけい</rt><rp>)</rp></ruby>がある。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "харилцан",
+                        "харилцан"
+                    ]
                 },
                 {
                     "kanji": "悟",
@@ -24232,7 +25532,11 @@ const PHONETICS_DATA = {
                         "jp": "彼は犯した罪の大きさを悟った。",
                         "en": "He realized the magnitude of his crime.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>犯<rp>(</rp><rt>おか</rt><rp>)</rp></ruby>した<ruby>罪<rp>(</rp><rt>つみ</rt><rp>)</rp></ruby>の<ruby>大<rp>(</rp><rt>おお</rt><rp>)</rp></ruby>きさを<ruby>悟<rp>(</rp><rt>さと</rt><rp>)</rp></ruby>った。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "гэгээрэл",
+                        "ухаарах"
+                    ]
                 }
             ]
         },
@@ -24255,7 +25559,12 @@ const PHONETICS_DATA = {
                         "jp": "勧工場には約２０の出店が並んだ。",
                         "en": "There was a row of about 20 stalls at the fair.",
                         "furigana": "<ruby>勧工場<rp>(</rp><rt>かんこうば</rt><rp>)</rp></ruby>には<ruby>約<rp>(</rp><rt>やく</rt><rp>)</rp></ruby>２０の<ruby>出店<rp>(</rp><rt>しゅってん</rt><rp>)</rp></ruby>が<ruby>並<rp>(</rp><rt>なら</rt><rp>)</rp></ruby>んだ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "урлал",
+                        "үйлдвэрлэл",
+                        "барилга"
+                    ]
                 },
                 {
                     "kanji": "江",
@@ -24270,7 +25579,11 @@ const PHONETICS_DATA = {
                         "jp": "この習慣は江戸時代からのものだ。",
                         "en": "This custom dates from the Edo period.",
                         "furigana": "この<ruby>習慣<rp>(</rp><rt>しゅうかん</rt><rp>)</rp></ruby>は<ruby>江戸<rp>(</rp><rt>えど</rt><rp>)</rp></ruby><ruby>時代<rp>(</rp><rt>じだい</rt><rp>)</rp></ruby>からのものだ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "горхи",
+                        "булан"
+                    ]
                 },
                 {
                     "kanji": "項",
@@ -24285,7 +25598,11 @@ const PHONETICS_DATA = {
                         "jp": "最初の条項には何と書いてあるか。",
                         "en": "How does the first article run?",
                         "furigana": "<ruby>最初<rp>(</rp><rt>さいしょ</rt><rp>)</rp></ruby>の<ruby>条項<rp>(</rp><rt>じょうこう</rt><rp>)</rp></ruby>には<ruby>何<rp>(</rp><rt>なん</rt><rp>)</rp></ruby>と<ruby>書<rp>(</rp><rt>か</rt><rp>)</rp></ruby>いてあるか。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хэсэг",
+                        "заалт"
+                    ]
                 },
                 {
                     "kanji": "攻",
@@ -24302,7 +25619,13 @@ const PHONETICS_DATA = {
                         "jp": "急所を除くすべての攻撃を認める。",
                         "en": "I'm allowing all attacks except on vital organs.",
                         "furigana": "<ruby>急所<rp>(</rp><rt>きゅうしょ</rt><rp>)</rp></ruby>を<ruby>除<rp>(</rp><rt>のぞ</rt><rp>)</rp></ruby>くすべての<ruby>攻撃<rp>(</rp><rt>こうげき</rt><rp>)</rp></ruby>を<ruby>認<rp>(</rp><rt>みと</rt><rp>)</rp></ruby>める。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "түрэмгийлэл",
+                        "довтлох",
+                        "шүүмжлэх",
+                        "гялалзуулах"
+                    ]
                 },
                 {
                     "kanji": "功",
@@ -24317,7 +25640,11 @@ const PHONETICS_DATA = {
                         "jp": "友人達が私の成功を祝ってくれた。",
                         "en": "My friends congratulated me on my success.",
                         "furigana": "<ruby>友人<rp>(</rp><rt>ゆうじん</rt><rp>)</rp></ruby><ruby>達<rp>(</rp><rt>たち</rt><rp>)</rp></ruby>が<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>の<ruby>成功<rp>(</rp><rt>せいこう</rt><rp>)</rp></ruby>を<ruby>祝<rp>(</rp><rt>いわ</rt><rp>)</rp></ruby>ってくれた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "амжилт",
+                        "гавьяа"
+                    ]
                 },
                 {
                     "kanji": "紅",
@@ -24332,7 +25659,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女は口紅をたくさんつけていた。",
                         "en": "There was much lipstick on her lips.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>口紅<rp>(</rp><rt>くちべに</rt><rp>)</rp></ruby>をたくさんつけていた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "час улаан",
+                        "гүн улаан"
+                    ]
                 },
                 {
                     "kanji": "巧",
@@ -24347,7 +25678,11 @@ const PHONETICS_DATA = {
                         "jp": "巧みな経営で事業は成功した。",
                         "en": "Skillful management made a success of the business.",
                         "furigana": "<ruby>巧<rp>(</rp><rt>たく</rt><rp>)</rp></ruby>みな<ruby>経営<rp>(</rp><rt>けいえい</rt><rp>)</rp></ruby>で<ruby>事業<rp>(</rp><rt>じぎょう</rt><rp>)</rp></ruby>は<ruby>成功<rp>(</rp><rt>せいこう</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "ур чадвартай",
+                        "чадварлаг"
+                    ]
                 },
                 {
                     "kanji": "貢",
@@ -24361,7 +25696,10 @@ const PHONETICS_DATA = {
                         "jp": "彼の努力は会社の成長に貢献した。",
                         "en": "His effort contributed to my company's growth.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>努力<rp>(</rp><rt>どりょく</rt><rp>)</rp></ruby>は<ruby>会社<rp>(</rp><rt>かいしゃ</rt><rp>)</rp></ruby>の<ruby>成長<rp>(</rp><rt>せいちょう</rt><rp>)</rp></ruby>に<ruby>貢献<rp>(</rp><rt>こうけん</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "алба гувчуур"
+                    ]
                 },
                 {
                     "kanji": "控",
@@ -24376,7 +25714,11 @@ const PHONETICS_DATA = {
                         "jp": "彼の背後には資産家が控えている。",
                         "en": "He has a wealthy supporter behind him.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>背後<rp>(</rp><rt>はいご</rt><rp>)</rp></ruby>には<ruby>資産<rp>(</rp><rt>しさん</rt><rp>)</rp></ruby><ruby>家<rp>(</rp><rt>か</rt><rp>)</rp></ruby>が<ruby>控<rp>(</rp><rt>ひか</rt><rp>)</rp></ruby>えている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "буцаах",
+                        "барих"
+                    ]
                 }
             ]
         },
@@ -24398,7 +25740,11 @@ const PHONETICS_DATA = {
                         "jp": "法王は赤い法衣をまとって現れた。",
                         "en": "The pope appeared in his red robe.",
                         "furigana": "<ruby>法王<rp>(</rp><rt>ほうおう</rt><rp>)</rp></ruby>は<ruby>赤<rp>(</rp><rt>あか</rt><rp>)</rp></ruby>い<ruby>法衣<rp>(</rp><rt>ほうえ</rt><rp>)</rp></ruby>をまとって<ruby>現<rp>(</rp><rt>あらわ</rt><rp>)</rp></ruby>れた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хувцас",
+                        "хувцас"
+                    ]
                 },
                 {
                     "kanji": "依",
@@ -24413,7 +25759,11 @@ const PHONETICS_DATA = {
                         "jp": "弁護士は依頼人の無罪を主張した。",
                         "en": "The lawyer insisted on the client's innocence.",
                         "furigana": "<ruby>弁護士<rp>(</rp><rt>べんごし</rt><rp>)</rp></ruby>は<ruby>依頼<rp>(</rp><rt>いらい</rt><rp>)</rp></ruby><ruby>人<rp>(</rp><rt>じん</rt><rp>)</rp></ruby>の<ruby>無罪<rp>(</rp><rt>むざい</rt><rp>)</rp></ruby>を<ruby>主張<rp>(</rp><rt>しゅちょう</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "түшиглэсэн",
+                        "найдах"
+                    ]
                 }
             ]
         },
@@ -24434,7 +25784,10 @@ const PHONETICS_DATA = {
                         "jp": "君が側にいてくれれば何もいらない。",
                         "en": "You're by my side; everything's fine now.",
                         "furigana": "<ruby>君<rp>(</rp><rt>きみ</rt><rp>)</rp></ruby>が<ruby>側<rp>(</rp><rt>がわ</rt><rp>)</rp></ruby>にいてくれれば<ruby>何<rp>(</rp><rt>なに</rt><rp>)</rp></ruby>もいらない。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "тал"
+                    ]
                 },
                 {
                     "kanji": "則",
@@ -24448,7 +25801,10 @@ const PHONETICS_DATA = {
                         "jp": "不規則動詞の勉強は好きではない。",
                         "en": "I don't like learning irregular verbs.",
                         "furigana": "<ruby>不規則<rp>(</rp><rt>ふきそく</rt><rp>)</rp></ruby><ruby>動詞<rp>(</rp><rt>どうし</rt><rp>)</rp></ruby>の<ruby>勉強<rp>(</rp><rt>べんきょう</rt><rp>)</rp></ruby>は<ruby>好<rp>(</rp><rt>す</rt><rp>)</rp></ruby>きではない。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дүрэм"
+                    ]
                 },
                 {
                     "kanji": "測",
@@ -24464,7 +25820,12 @@ const PHONETICS_DATA = {
                         "jp": "彼の行為の理由は推測できない。",
                         "en": "I can't guess the reason for his conduct.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>行為<rp>(</rp><rt>こうい</rt><rp>)</rp></ruby>の<ruby>理由<rp>(</rp><rt>りゆう</rt><rp>)</rp></ruby>は<ruby>推測<rp>(</rp><rt>すいそく</rt><rp>)</rp></ruby>できない。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "гүнзгийрүүлэх",
+                        "хэмжих",
+                        "таамаглах"
+                    ]
                 }
             ]
         },
@@ -24486,7 +25847,11 @@ const PHONETICS_DATA = {
                         "jp": "母は勤めの帰りに買い物をします。",
                         "en": "My mother does her usual shopping on her way home from work.",
                         "furigana": "<ruby>母<rp>(</rp><rt>はは</rt><rp>)</rp></ruby>は<ruby>勤<rp>(</rp><rt>つと</rt><rp>)</rp></ruby>めの<ruby>帰<rp>(</rp><rt>かえ</rt><rp>)</rp></ruby>りに<ruby>買<rp>(</rp><rt>か</rt><rp>)</rp></ruby>い<ruby>物<rp>(</rp><rt>もの</rt><rp>)</rp></ruby>をします。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хичээнгүй байдал",
+                        "алба хаах"
+                    ]
                 },
                 {
                     "kanji": "僅",
@@ -24500,7 +25865,10 @@ const PHONETICS_DATA = {
                         "jp": "その列車の乗客はほんの僅かしかいない。",
                         "en": "There are very few passengers in the train.",
                         "furigana": "その<ruby>列車<rp>(</rp><rt>れっしゃ</rt><rp>)</rp></ruby>の<ruby>乗客<rp>(</rp><rt>じょうきゃく</rt><rp>)</rp></ruby>はほんの<ruby>僅<rp>(</rp><rt>わず</rt><rp>)</rp></ruby>かしかいない。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "өчүүхэн"
+                    ]
                 },
                 {
                     "kanji": "謹",
@@ -24515,7 +25883,11 @@ const PHONETICS_DATA = {
                         "jp": "彼は口を謹んで何も語らなかった。",
                         "en": "He kept his tongue under a bridle.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>口<rp>(</rp><rt>くち</rt><rp>)</rp></ruby>を<ruby>謹<rp>(</rp><rt>つつし</rt><rp>)</rp></ruby>んで<ruby>何<rp>(</rp><rt>なに</rt><rp>)</rp></ruby>も<ruby>語<rp>(</rp><rt>かた</rt><rp>)</rp></ruby>らなかった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "болгоомжтой",
+                        "хүндэтгэлтэйгээр"
+                    ]
                 }
             ]
         },
@@ -24537,7 +25909,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女を支えているのは自尊心です。",
                         "en": "It's pride that drives her.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>を<ruby>支<rp>(</rp><rt>ささ</rt><rp>)</rp></ruby>えているのは<ruby>自尊心<rp>(</rp><rt>じそんしん</rt><rp>)</rp></ruby>です。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хүндэтгэсэн",
+                        "хүндлэх"
+                    ]
                 }
             ]
         },
@@ -24559,7 +25935,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女は母親にはとても及ばない。",
                         "en": "She is not anything like her mother.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>母親<rp>(</rp><rt>ははおや</rt><rp>)</rp></ruby>にはとても<ruby>及<rp>(</rp><rt>およ</rt><rp>)</rp></ruby>ばない。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хүрэх",
+                        "хүртэл хүрэх"
+                    ]
                 },
                 {
                     "kanji": "級",
@@ -24575,7 +25955,12 @@ const PHONETICS_DATA = {
                         "jp": "彼女は最高級のものしか好まない。",
                         "en": "She likes nothing but the best.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>最<rp>(</rp><rt>さい</rt><rp>)</rp></ruby><ruby>高級<rp>(</rp><rt>こうきゅう</rt><rp>)</rp></ruby>のものしか<ruby>好<rp>(</rp><rt>この</rt><rp>)</rp></ruby>まない。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "анги",
+                        "зэрэг",
+                        "зиндаа"
+                    ]
                 },
                 {
                     "kanji": "吸",
@@ -24590,7 +25975,11 @@ const PHONETICS_DATA = {
                         "jp": "泳者の呼吸機能の特性について。",
                         "en": "Concerning the characteristics of respiratory function in swimmers.",
                         "furigana": "<ruby>泳者<rp>(</rp><rt>えいしゃ</rt><rp>)</rp></ruby>の<ruby>呼吸<rp>(</rp><rt>こきゅう</rt><rp>)</rp></ruby><ruby>機能<rp>(</rp><rt>きのう</rt><rp>)</rp></ruby>の<ruby>特性<rp>(</rp><rt>とくせい</rt><rp>)</rp></ruby>について。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "сорох",
+                        "амьсгалах"
+                    ]
                 }
             ]
         },
@@ -24612,7 +26001,11 @@ const PHONETICS_DATA = {
                         "jp": "警察が医療事故の立件に消極的だ。",
                         "en": "The police are reluctant to pursue criminal charges in medical cases.",
                         "furigana": "<ruby>警察<rp>(</rp><rt>けいさつ</rt><rp>)</rp></ruby>が<ruby>医療<rp>(</rp><rt>いりょう</rt><rp>)</rp></ruby><ruby>事故<rp>(</rp><rt>じこ</rt><rp>)</rp></ruby>の<ruby>立件<rp>(</rp><rt>りっけん</rt><rp>)</rp></ruby>に<ruby>消極<rp>(</rp><rt>しょうきょく</rt><rp>)</rp></ruby><ruby>的<rp>(</rp><rt>てき</rt><rp>)</rp></ruby>だ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "эдгээх",
+                        "эмчлэх"
+                    ]
                 },
                 {
                     "kanji": "僚",
@@ -24626,7 +26019,10 @@ const PHONETICS_DATA = {
                         "jp": "彼は同僚となかなか打ち解けない。",
                         "en": "He is hardly friendly with his fellow workers.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>同僚<rp>(</rp><rt>どうりょう</rt><rp>)</rp></ruby>となかなか<ruby>打<rp>(</rp><rt>う</rt><rp>)</rp></ruby>ち<ruby>解<rp>(</rp><rt>と</rt><rp>)</rp></ruby>けない。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хамт олон"
+                    ]
                 },
                 {
                     "kanji": "寮",
@@ -24640,7 +26036,10 @@ const PHONETICS_DATA = {
                         "jp": "寮の規則は守らなければならない。",
                         "en": "You must observe the rules of the dormitory.",
                         "furigana": "<ruby>寮<rp>(</rp><rt>りょう</rt><rp>)</rp></ruby>の<ruby>規則<rp>(</rp><rt>きそく</rt><rp>)</rp></ruby>は<ruby>守<rp>(</rp><rt>まも</rt><rp>)</rp></ruby>らなければならない。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дотуур байр"
+                    ]
                 },
                 {
                     "kanji": "瞭",
@@ -24654,7 +26053,10 @@ const PHONETICS_DATA = {
                         "jp": "その人たちは明瞭さをよしとする。",
                         "en": "Those people appreciate clarity.",
                         "furigana": "その<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>たちは<ruby>明瞭<rp>(</rp><rt>めいりょう</rt><rp>)</rp></ruby>さをよしとする。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "тодорхой"
+                    ]
                 }
             ]
         },
@@ -24676,7 +26078,11 @@ const PHONETICS_DATA = {
                         "jp": "母は田舎で一人暮らしをしている。",
                         "en": "My mother lives a lonely life in the country.",
                         "furigana": "<ruby>母<rp>(</rp><rt>はは</rt><rp>)</rp></ruby>は<ruby>田舎<rp>(</rp><rt>いなか</rt><rp>)</rp></ruby>で<ruby>一人暮<rp>(</rp><rt>ひとりぐ</rt><rp>)</rp></ruby>らしをしている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "байшин",
+                        "барилга"
+                    ]
                 },
                 {
                     "kanji": "捨",
@@ -24691,7 +26097,11 @@ const PHONETICS_DATA = {
                         "jp": "本当に捨てるわけにはいかないよ。",
                         "en": "We can't really throw it away!",
                         "furigana": "<ruby>本当<rp>(</rp><rt>ほんとう</rt><rp>)</rp></ruby>に<ruby>捨<rp>(</rp><rt>す</rt><rp>)</rp></ruby>てるわけにはいかないよ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хаях",
+                        "хаях"
+                    ]
                 }
             ]
         },
@@ -24713,7 +26123,11 @@ const PHONETICS_DATA = {
                         "jp": "あんたのせいで食欲をなくしたよ。",
                         "en": "Thanks to you I've lost my appetite.",
                         "furigana": "あんたのせいで<ruby>食欲<rp>(</rp><rt>しょくよく</rt><rp>)</rp></ruby>をなくしたよ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "тэмүүлэл",
+                        "хүсэл"
+                    ]
                 },
                 {
                     "kanji": "浴",
@@ -24727,7 +26141,10 @@ const PHONETICS_DATA = {
                         "jp": "浴室付きの二人部屋をお願いします。",
                         "en": "We'd like a double room with bath.",
                         "furigana": "<ruby>浴室<rp>(</rp><rt>よくしつ</rt><rp>)</rp></ruby><ruby>付<rp>(</rp><rt>つ</rt><rp>)</rp></ruby>きの<ruby>二<rp>(</rp><rt>に</rt><rp>)</rp></ruby><ruby>人<rp>(</rp><rt>にん</rt><rp>)</rp></ruby><ruby>部屋<rp>(</rp><rt>へや</rt><rp>)</rp></ruby>をお<ruby>願<rp>(</rp><rt>ねが</rt><rp>)</rp></ruby>いします。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "усанд орох"
+                    ]
                 }
             ]
         },
@@ -24749,7 +26166,11 @@ const PHONETICS_DATA = {
                         "jp": "夕方になって少し雲が出てきました。",
                         "en": "By evening, a few clouds had formed.",
                         "furigana": "<ruby>夕方<rp>(</rp><rt>ゆうがた</rt><rp>)</rp></ruby>になって<ruby>少<rp>(</rp><rt>すこ</rt><rp>)</rp></ruby>し<ruby>雲<rp>(</rp><rt>くも</rt><rp>)</rp></ruby>が<ruby>出<rp>(</rp><rt>で</rt><rp>)</rp></ruby>てきました。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "цөөн",
+                        "бага"
+                    ]
                 },
                 {
                     "kanji": "省",
@@ -24766,7 +26187,13 @@ const PHONETICS_DATA = {
                         "jp": "彼女は自分がしたことを反省した。",
                         "en": "She reflected on what she had done.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>自分<rp>(</rp><rt>じぶん</rt><rp>)</rp></ruby>がしたことを<ruby>反省<rp>(</rp><rt>はんせい</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "анхаарал төвлөрүүлэх",
+                        "яам",
+                        "хэмнэх",
+                        "өөрийгөө шинжих"
+                    ]
                 },
                 {
                     "kanji": "砂",
@@ -24780,7 +26207,10 @@ const PHONETICS_DATA = {
                         "jp": "卵に砂糖を入れてかき混ぜなさい。",
                         "en": "Mix eggs with sugar.",
                         "furigana": "<ruby>卵<rp>(</rp><rt>たまご</rt><rp>)</rp></ruby>に<ruby>砂糖<rp>(</rp><rt>さとう</rt><rp>)</rp></ruby>を<ruby>入<rp>(</rp><rt>い</rt><rp>)</rp></ruby>れてかき<ruby>混<rp>(</rp><rt>ま</rt><rp>)</rp></ruby>ぜなさい。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "элс"
+                    ]
                 },
                 {
                     "kanji": "渉",
@@ -24795,7 +26225,11 @@ const PHONETICS_DATA = {
                         "jp": "労働組合は経営陣と交渉している。",
                         "en": "The labor union is negotiating with the owners.",
                         "furigana": "<ruby>労働<rp>(</rp><rt>ろうどう</rt><rp>)</rp></ruby><ruby>組合<rp>(</rp><rt>くみあい</rt><rp>)</rp></ruby>は<ruby>経営<rp>(</rp><rt>けいえい</rt><rp>)</rp></ruby><ruby>陣<rp>(</rp><rt>じん</rt><rp>)</rp></ruby>と<ruby>交渉<rp>(</rp><rt>こうしょう</rt><rp>)</rp></ruby>している。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "гатлах",
+                        "харилцаатай байх"
+                    ]
                 },
                 {
                     "kanji": "抄",
@@ -24810,7 +26244,11 @@ const PHONETICS_DATA = {
                         "jp": "昨日、ひょんなことで父親の戸籍抄本のコピーを見てしまいました。",
                         "en": "Yesterday I stumbled across a copy of my father's family register.",
                         "furigana": "<ruby>昨日<rp>(</rp><rt>きのう</rt><rp>)</rp></ruby>、ひょんなことで<ruby>父親<rp>(</rp><rt>ちちおや</rt><rp>)</rp></ruby>の<ruby>戸籍<rp>(</rp><rt>こせき</rt><rp>)</rp></ruby><ruby>抄本<rp>(</rp><rt>しょうほん</rt><rp>)</rp></ruby>のコピーを<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>てしまいました。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "ишлэл",
+                        "хэсэг"
+                    ]
                 }
             ]
         },
@@ -24832,7 +26270,11 @@ const PHONETICS_DATA = {
                         "jp": "彼は彼らに船の操縦法を教えた。",
                         "en": "He taught them how to sail ships.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らに<ruby>船<rp>(</rp><rt>ふね</rt><rp>)</rp></ruby>の<ruby>操縦<rp>(</rp><rt>そうじゅう</rt><rp>)</rp></ruby><ruby>法<rp>(</rp><rt>ほう</rt><rp>)</rp></ruby>を<ruby>教<rp>(</rp><rt>おし</rt><rp>)</rp></ruby>えた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "жолоодох",
+                        "удирдах"
+                    ]
                 },
                 {
                     "kanji": "藻",
@@ -24847,7 +26289,11 @@ const PHONETICS_DATA = {
                         "jp": "海藻は身体にいいですか？",
                         "en": "Is seaweed good for you?",
                         "furigana": "<ruby>海藻<rp>(</rp><rt>かいそう</rt><rp>)</rp></ruby>は<ruby>身体<rp>(</rp><rt>しんたい</rt><rp>)</rp></ruby>にいいですか？"
-                    }
+                    },
+                    "meaningsMn": [
+                        "далайн замаг",
+                        "замаг"
+                    ]
                 },
                 {
                     "kanji": "燥",
@@ -24862,7 +26308,11 @@ const PHONETICS_DATA = {
                         "jp": "椎茸を乾燥させて保存します。",
                         "en": "We keep shiitake mushrooms dry.",
                         "furigana": "<ruby>椎茸<rp>(</rp><rt>しいたけ</rt><rp>)</rp></ruby>を<ruby>乾燥<rp>(</rp><rt>かんそう</rt><rp>)</rp></ruby>させて<ruby>保存<rp>(</rp><rt>ほぞん</rt><rp>)</rp></ruby>します。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хатах",
+                        "ширгэх"
+                    ]
                 }
             ]
         },
@@ -24885,7 +26335,12 @@ const PHONETICS_DATA = {
                         "jp": "魅力的なホステスのために乾杯！",
                         "en": "Let's drink to our charming hostess!",
                         "furigana": "<ruby>魅力<rp>(</rp><rt>みりょく</rt><rp>)</rp></ruby><ruby>的<rp>(</rp><rt>てき</rt><rp>)</rp></ruby>なホステスのために<ruby>乾杯<rp>(</rp><rt>かんぱい</rt><rp>)</rp></ruby>！"
-                    }
+                    },
+                    "meaningsMn": [
+                        "аяга дүүрэн",
+                        "аяга",
+                        "аяга тоолох нэгж"
+                    ]
                 }
             ]
         },
@@ -24907,7 +26362,11 @@ const PHONETICS_DATA = {
                         "jp": "町中で、珍しい物を見つけました。",
                         "en": "I found something interesting in the town.",
                         "furigana": "<ruby>町中<rp>(</rp><rt>まちなか</rt><rp>)</rp></ruby>で、<ruby>珍<rp>(</rp><rt>めずら</rt><rp>)</rp></ruby>しい<ruby>物<rp>(</rp><rt>もの</rt><rp>)</rp></ruby>を<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>つけました。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "тосгон",
+                        "хот"
+                    ]
                 },
                 {
                     "kanji": "丁",
@@ -24923,7 +26382,12 @@ const PHONETICS_DATA = {
                         "jp": "彼は目上の人に対して丁重である。",
                         "en": "He behaves respectfully toward his superiors.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>目上<rp>(</rp><rt>めうえ</rt><rp>)</rp></ruby>の<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>に<ruby>対<rp>(</rp><rt>たい</rt><rp>)</rp></ruby>して<ruby>丁重<rp>(</rp><rt>ていちょう</rt><rp>)</rp></ruby>である。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "гудамж",
+                        "хотын дэд хэсэг",
+                        "янз бүрийн зүйл тоолох нэгж"
+                    ]
                 },
                 {
                     "kanji": "庁",
@@ -24938,7 +26402,11 @@ const PHONETICS_DATA = {
                         "jp": "彼は官庁で相当な職についている。",
                         "en": "He has a good position in a government office.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>官庁<rp>(</rp><rt>かんちょう</rt><rp>)</rp></ruby>で<ruby>相当<rp>(</rp><rt>そうとう</rt><rp>)</rp></ruby>な<ruby>職<rp>(</rp><rt>しょく</rt><rp>)</rp></ruby>についている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "засгийн газрын алба",
+                        "төрийн байгууллага"
+                    ]
                 },
                 {
                     "kanji": "頂",
@@ -24954,7 +26422,12 @@ const PHONETICS_DATA = {
                         "jp": "富士山の頂上は雪で覆われていた。",
                         "en": "The top of Mt. Fuji was covered with snow.",
                         "furigana": "<ruby>富士山<rp>(</rp><rt>ふじさん</rt><rp>)</rp></ruby>の<ruby>頂上<rp>(</rp><rt>ちょうじょう</rt><rp>)</rp></ruby>は<ruby>雪<rp>(</rp><rt>ゆき</rt><rp>)</rp></ruby>で<ruby>覆<rp>(</rp><rt>おお</rt><rp>)</rp></ruby>われていた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "толгой дээр тавих",
+                        "оргил",
+                        "даруухнаар хүлээн авах"
+                    ]
                 },
                 {
                     "kanji": "訂",
@@ -24968,7 +26441,10 @@ const PHONETICS_DATA = {
                         "jp": "この辞書の改訂には６年かかった。",
                         "en": "The revision of this dictionary took six years.",
                         "furigana": "この<ruby>辞書<rp>(</rp><rt>じしょ</rt><rp>)</rp></ruby>の<ruby>改訂<rp>(</rp><rt>かいてい</rt><rp>)</rp></ruby>には６<ruby>年<rp>(</rp><rt>ねん</rt><rp>)</rp></ruby>かかった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "засварлах"
+                    ]
                 }
             ]
         },
@@ -24991,7 +26467,12 @@ const PHONETICS_DATA = {
                         "jp": "彼女は自分の負担で本を出版した。",
                         "en": "She published the book at her own expense.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>自分<rp>(</rp><rt>じぶん</rt><rp>)</rp></ruby>の<ruby>負担<rp>(</rp><rt>ふたん</rt><rp>)</rp></ruby>で<ruby>本<rp>(</rp><rt>ほん</rt><rp>)</rp></ruby>を<ruby>出版<rp>(</rp><rt>しゅっぱん</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хэвлэлийн хавтан",
+                        "хэвлэх хавтан",
+                        "хэвлэл"
+                    ]
                 },
                 {
                     "kanji": "反",
@@ -25006,7 +26487,11 @@ const PHONETICS_DATA = {
                         "jp": "私の目は夢を反映する海である。",
                         "en": "My eyes are an ocean in which my dreams are reflected.",
                         "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>の<ruby>目<rp>(</rp><rt>め</rt><rp>)</rp></ruby>は<ruby>夢<rp>(</rp><rt>ゆめ</rt><rp>)</rp></ruby>を<ruby>反映<rp>(</rp><rt>はんえい</rt><rp>)</rp></ruby>する<ruby>海<rp>(</rp><rt>うみ</rt><rp>)</rp></ruby>である。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "эсрэг",
+                        "эсрэг тал"
+                    ]
                 },
                 {
                     "kanji": "阪",
@@ -25021,7 +26506,11 @@ const PHONETICS_DATA = {
                         "jp": "彼らは５月の初めに大阪に着いた。",
                         "en": "They arrived in Osaka at the beginning of May.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>５月<rp>(</rp><rt>ごがつ</rt><rp>)</rp></ruby>の<ruby>初<rp>(</rp><rt>はじ</rt><rp>)</rp></ruby>めに<ruby>大阪<rp>(</rp><rt>おおさか</rt><rp>)</rp></ruby>に<ruby>着<rp>(</rp><rt>つ</rt><rp>)</rp></ruby>いた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "өндөрлөг",
+                        "Осака"
+                    ]
                 },
                 {
                     "kanji": "坂",
@@ -25035,7 +26524,10 @@ const PHONETICS_DATA = {
                         "jp": "道は上り坂になってその村に出る。",
                         "en": "The road ascends to the village.",
                         "furigana": "<ruby>道<rp>(</rp><rt>みち</rt><rp>)</rp></ruby>は<ruby>上<rp>(</rp><rt>のぼ</rt><rp>)</rp></ruby>り<ruby>坂<rp>(</rp><rt>ざか</rt><rp>)</rp></ruby>になってその<ruby>村<rp>(</rp><rt>むら</rt><rp>)</rp></ruby>に<ruby>出<rp>(</rp><rt>で</rt><rp>)</rp></ruby>る。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "налуу"
+                    ]
                 },
                 {
                     "kanji": "板",
@@ -25051,7 +26543,12 @@ const PHONETICS_DATA = {
                         "jp": "彼は黒板に正方形を二つ書いた。",
                         "en": "He drew two squares on the blackboard.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>黒板<rp>(</rp><rt>こくばん</rt><rp>)</rp></ruby>に<ruby>正方形<rp>(</rp><rt>せいほうけい</rt><rp>)</rp></ruby>を<ruby>二<rp>(</rp><rt>ふた</rt><rp>)</rp></ruby>つ<ruby>書<rp>(</rp><rt>か</rt><rp>)</rp></ruby>いた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "тавцан",
+                        "банз",
+                        "хавтан"
+                    ]
                 },
                 {
                     "kanji": "飯",
@@ -25066,7 +26563,11 @@ const PHONETICS_DATA = {
                         "jp": "いつご飯食べるの？お腹空いたよ。",
                         "en": "When are we eating? I'm hungry!",
                         "furigana": "いつご<ruby>飯<rp>(</rp><rt>はん</rt><rp>)</rp></ruby><ruby>食<rp>(</rp><rt>た</rt><rp>)</rp></ruby>べるの？お<ruby>腹<rp>(</rp><rt>なか</rt><rp>)</rp></ruby><ruby>空<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>いたよ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хоол",
+                        "буцалгасан цагаан будаа"
+                    ]
                 },
                 {
                     "kanji": "販",
@@ -25081,7 +26582,11 @@ const PHONETICS_DATA = {
                         "jp": "販売用に装飾品が棚に広げられた。",
                         "en": "Accessories were laid out on the shelf for sale.",
                         "furigana": "<ruby>販売<rp>(</rp><rt>はんばい</rt><rp>)</rp></ruby><ruby>用<rp>(</rp><rt>よう</rt><rp>)</rp></ruby>に<ruby>装飾<rp>(</rp><rt>そうしょく</rt><rp>)</rp></ruby><ruby>品<rp>(</rp><rt>ひん</rt><rp>)</rp></ruby>が<ruby>棚<rp>(</rp><rt>たな</rt><rp>)</rp></ruby>に<ruby>広<rp>(</rp><rt>ひろ</rt><rp>)</rp></ruby>げられた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "маркетинг",
+                        "худалдаа хийх"
+                    ]
                 }
             ]
         },
@@ -25102,7 +26607,10 @@ const PHONETICS_DATA = {
                         "jp": "卵に砂糖を入れてかき混ぜなさい。",
                         "en": "Mix eggs with sugar.",
                         "furigana": "<ruby>卵<rp>(</rp><rt>たまご</rt><rp>)</rp></ruby>に<ruby>砂糖<rp>(</rp><rt>さとう</rt><rp>)</rp></ruby>を<ruby>入<rp>(</rp><rt>い</rt><rp>)</rp></ruby>れてかき<ruby>混<rp>(</rp><rt>ま</rt><rp>)</rp></ruby>ぜなさい。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хольх"
+                    ]
                 },
                 {
                     "kanji": "昆",
@@ -25117,7 +26625,11 @@ const PHONETICS_DATA = {
                         "jp": "彼は昆虫採集に興味を持っている。",
                         "en": "He has an interest in collecting insects.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>昆虫<rp>(</rp><rt>こんちゅう</rt><rp>)</rp></ruby><ruby>採集<rp>(</rp><rt>さいしゅう</rt><rp>)</rp></ruby>に<ruby>興味<rp>(</rp><rt>きょうみ</rt><rp>)</rp></ruby>を<ruby>持<rp>(</rp><rt>も</rt><rp>)</rp></ruby>っている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "үр удам",
+                        "шавьж"
+                    ]
                 }
             ]
         },
@@ -25139,7 +26651,11 @@ const PHONETICS_DATA = {
                         "jp": "渋谷駅で偶然吉行さんに会ってね。",
                         "en": "I ran into Mr Yoshiyuki at Shibuya station.",
                         "furigana": "<ruby>渋谷<rp>(</rp><rt>しぶや</rt><rp>)</rp></ruby><ruby>駅<rp>(</rp><rt>えき</rt><rp>)</rp></ruby>で<ruby>偶然<rp>(</rp><rt>ぐうぜん</rt><rp>)</rp></ruby><ruby>吉行<rp>(</rp><rt>よしゆき</rt><rp>)</rp></ruby>さんに<ruby>会<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>ってね。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "сайн ерөөл",
+                        "азтай"
+                    ]
                 },
                 {
                     "kanji": "詰",
@@ -25155,7 +26671,12 @@ const PHONETICS_DATA = {
                         "jp": "精液は瓶詰めにする価値はあるよ。",
                         "en": "Semen is worth bottling.",
                         "furigana": "<ruby>精液<rp>(</rp><rt>せいえき</rt><rp>)</rp></ruby>は<ruby>瓶詰<rp>(</rp><rt>びんづ</rt><rp>)</rp></ruby>めにする<ruby>価値<rp>(</rp><rt>かち</rt><rp>)</rp></ruby>はあるよ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "шигүү дүүргэсэн",
+                        "занах",
+                        "дүүргэх"
+                    ]
                 }
             ]
         },
@@ -25177,7 +26698,11 @@ const PHONETICS_DATA = {
                         "jp": "自由について私に話したかったの？",
                         "en": "You wanted to tell me about freedom?",
                         "furigana": "<ruby>自由<rp>(</rp><rt>じゆう</rt><rp>)</rp></ruby>について<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>に<ruby>話<rp>(</rp><rt>はな</rt><rp>)</rp></ruby>したかったの？"
-                    }
+                    },
+                    "meaningsMn": [
+                        "шалтгаан",
+                        "учир"
+                    ]
                 },
                 {
                     "kanji": "油",
@@ -25191,7 +26716,10 @@ const PHONETICS_DATA = {
                         "jp": "列車は石油で走らせるのですか。",
                         "en": "Do the trains run on diesel oil?",
                         "furigana": "<ruby>列車<rp>(</rp><rt>れっしゃ</rt><rp>)</rp></ruby>は<ruby>石油<rp>(</rp><rt>せきゆ</rt><rp>)</rp></ruby>で<ruby>走<rp>(</rp><rt>はし</rt><rp>)</rp></ruby>らせるのですか。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "тос"
+                    ]
                 },
                 {
                     "kanji": "宙",
@@ -25206,7 +26734,11 @@ const PHONETICS_DATA = {
                         "jp": "彼らは宇宙のなぞを追究している。",
                         "en": "They are investigating the mystery of the universe thoroughly.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>宇宙<rp>(</rp><rt>うちゅう</rt><rp>)</rp></ruby>のなぞを<ruby>追究<rp>(</rp><rt>ついきゅう</rt><rp>)</rp></ruby>している。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "агаарт",
+                        "сансар"
+                    ]
                 },
                 {
                     "kanji": "笛",
@@ -25220,7 +26752,10 @@ const PHONETICS_DATA = {
                         "jp": "彼はメロディーを口笛で吹き始めた。",
                         "en": "He began to whistle a tune.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>はメロディーを<ruby>口笛<rp>(</rp><rt>くちぶえ</rt><rp>)</rp></ruby>で<ruby>吹<rp>(</rp><rt>ふ</rt><rp>)</rp></ruby>き<ruby>始<rp>(</rp><rt>はじ</rt><rp>)</rp></ruby>めた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "лимбэ"
+                    ]
                 },
                 {
                     "kanji": "抽",
@@ -25235,7 +26770,11 @@ const PHONETICS_DATA = {
                         "jp": "幸福の観念はきわめて抽象的だ。",
                         "en": "The idea of happiness is extremely abstract.",
                         "furigana": "<ruby>幸福<rp>(</rp><rt>こうふく</rt><rp>)</rp></ruby>の<ruby>観念<rp>(</rp><rt>かんねん</rt><rp>)</rp></ruby>はきわめて<ruby>抽象<rp>(</rp><rt>ちゅうしょう</rt><rp>)</rp></ruby><ruby>的<rp>(</rp><rt>てき</rt><rp>)</rp></ruby>だ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "зулгаах",
+                        "татаж гаргах"
+                    ]
                 }
             ]
         },
@@ -25258,7 +26797,12 @@ const PHONETICS_DATA = {
                         "jp": "毎年今頃、台風がその島を襲う。",
                         "en": "About this time of the year typhoons visit the island.",
                         "furigana": "<ruby>毎年<rp>(</rp><rt>まいとし</rt><rp>)</rp></ruby><ruby>今頃<rp>(</rp><rt>いまごろ</rt><rp>)</rp></ruby>、<ruby>台風<rp>(</rp><rt>たいふう</rt><rp>)</rp></ruby>がその<ruby>島<rp>(</rp><rt>しま</rt><rp>)</rp></ruby>を<ruby>襲<rp>(</rp><rt>おそ</rt><rp>)</rp></ruby>う。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "тэр үед",
+                        "цаг үе",
+                        "орчим"
+                    ]
                 },
                 {
                     "kanji": "傾",
@@ -25273,7 +26817,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女は人の悪口を言う傾向がある。",
                         "en": "She tends to speak ill of others.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>の<ruby>悪口<rp>(</rp><rt>わるぐち</rt><rp>)</rp></ruby>を<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>う<ruby>傾向<rp>(</rp><rt>けいこう</rt><rp>)</rp></ruby>がある。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хазайх",
+                        "налах"
+                    ]
                 }
             ]
         },
@@ -25295,7 +26843,11 @@ const PHONETICS_DATA = {
                         "jp": "睡眠不足で、心筋梗塞リスクが上昇。",
                         "en": "Sleep deprivation increases risk of heart attacks.",
                         "furigana": "<ruby>睡眠<rp>(</rp><rt>すいみん</rt><rp>)</rp></ruby><ruby>不足<rp>(</rp><rt>ふそく</rt><rp>)</rp></ruby>で、<ruby>心筋梗塞<rp>(</rp><rt>しんきんこうそく</rt><rp>)</rp></ruby>リスクが<ruby>上昇<rp>(</rp><rt>じょうしょう</rt><rp>)</rp></ruby>。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "өргөгдөх",
+                        "авирах"
+                    ]
                 },
                 {
                     "kanji": "升",
@@ -25306,7 +26858,11 @@ const PHONETICS_DATA = {
                         "measuring box",
                         "sho"
                     ],
-                    "example": null
+                    "example": null,
+                    "meaningsMn": [
+                        "хэмжих сав",
+                        "шоо"
+                    ]
                 }
             ]
         },
@@ -25328,7 +26884,11 @@ const PHONETICS_DATA = {
                         "jp": "対外貿易は巨額の収入をもたらす。",
                         "en": "Foreign trade brings in a large income.",
                         "furigana": "<ruby>対外<rp>(</rp><rt>たいがい</rt><rp>)</rp></ruby><ruby>貿易<rp>(</rp><rt>ぼうえき</rt><rp>)</rp></ruby>は<ruby>巨額<rp>(</rp><rt>きょがく</rt><rp>)</rp></ruby>の<ruby>収入<rp>(</rp><rt>しゅうにゅう</rt><rp>)</rp></ruby>をもたらす。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "аварга том",
+                        "асар том"
+                    ]
                 },
                 {
                     "kanji": "距",
@@ -25343,7 +26903,11 @@ const PHONETICS_DATA = {
                         "jp": "遠距離恋愛をしたことはありますか。",
                         "en": "Have you ever been in a long distance relationship?",
                         "furigana": "<ruby>遠距離<rp>(</rp><rt>えんきょり</rt><rp>)</rp></ruby><ruby>恋愛<rp>(</rp><rt>れんあい</rt><rp>)</rp></ruby>をしたことはありますか。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "урт зайн",
+                        "зай"
+                    ]
                 },
                 {
                     "kanji": "拒",
@@ -25358,7 +26922,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女は施しを受けることを拒んだ。",
                         "en": "She refused to accept charity.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>施<rp>(</rp><rt>ほどこ</rt><rp>)</rp></ruby>しを<ruby>受<rp>(</rp><rt>う</rt><rp>)</rp></ruby>けることを<ruby>拒<rp>(</rp><rt>こば</rt><rp>)</rp></ruby>んだ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "няцаах",
+                        "татгалзах"
+                    ]
                 }
             ]
         },
@@ -25380,7 +26948,11 @@ const PHONETICS_DATA = {
                         "jp": "授業が全然無いとでも言うの？！",
                         "en": "You never have class or what?!",
                         "furigana": "<ruby>授業<rp>(</rp><rt>じゅぎょう</rt><rp>)</rp></ruby>が<ruby>全然<rp>(</rp><rt>ぜんぜん</rt><rp>)</rp></ruby><ruby>無<rp>(</rp><rt>な</rt><rp>)</rp></ruby>いとでも<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>うの？！"
-                    }
+                    },
+                    "meaningsMn": [
+                        "тийм зүйл",
+                        "тийм"
+                    ]
                 },
                 {
                     "kanji": "燃",
@@ -25394,7 +26966,10 @@ const PHONETICS_DATA = {
                         "jp": "今日は不燃物のゴミの日です。",
                         "en": "Today is a non-burnable rubbish day.",
                         "furigana": "<ruby>今日<rp>(</rp><rt>きょう</rt><rp>)</rp></ruby>は<ruby>不燃<rp>(</rp><rt>ふねん</rt><rp>)</rp></ruby><ruby>物<rp>(</rp><rt>ぶつ</rt><rp>)</rp></ruby>のゴミの<ruby>日<rp>(</rp><rt>ひ</rt><rp>)</rp></ruby>です。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "шатах"
+                    ]
                 }
             ]
         },
@@ -25417,7 +26992,12 @@ const PHONETICS_DATA = {
                         "jp": "僕は彼女無しに生きる術を学んだ。",
                         "en": "I learned to live without her.",
                         "furigana": "<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>は<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby><ruby>無<rp>(</rp><rt>な</rt><rp>)</rp></ruby>しに<ruby>生<rp>(</rp><rt>い</rt><rp>)</rp></ruby>きる<ruby>術<rp>(</rp><rt>じゅつ</rt><rp>)</rp></ruby>を<ruby>学<rp>(</rp><rt>まな</rt><rp>)</rp></ruby>んだ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "амьдрал",
+                        "төрөх",
+                        "оюутан"
+                    ]
                 },
                 {
                     "kanji": "性",
@@ -25434,7 +27014,13 @@ const PHONETICS_DATA = {
                         "jp": "男性は色っぽい女性が大好きなのです。",
                         "en": "Men love amorous women.",
                         "furigana": "<ruby>男性<rp>(</rp><rt>だんせい</rt><rp>)</rp></ruby>は<ruby>色<rp>(</rp><rt>いろ</rt><rp>)</rp></ruby>っぽい<ruby>女性<rp>(</rp><rt>じょせい</rt><rp>)</rp></ruby>が<ruby>大好<rp>(</rp><rt>だいす</rt><rp>)</rp></ruby>きなのです。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хүйс",
+                        "мөн чанар",
+                        "-чанар",
+                        "хүйс"
+                    ]
                 },
                 {
                     "kanji": "星",
@@ -25448,7 +27034,10 @@ const PHONETICS_DATA = {
                         "jp": "他の惑星に知的生命体はいるか？",
                         "en": "Is there intelligent life on other planets?",
                         "furigana": "<ruby>他<rp>(</rp><rt>た</rt><rp>)</rp></ruby>の<ruby>惑星<rp>(</rp><rt>わくせい</rt><rp>)</rp></ruby>に<ruby>知的<rp>(</rp><rt>ちてき</rt><rp>)</rp></ruby><ruby>生命<rp>(</rp><rt>せいめい</rt><rp>)</rp></ruby><ruby>体<rp>(</rp><rt>たい</rt><rp>)</rp></ruby>はいるか？"
-                    }
+                    },
+                    "meaningsMn": [
+                        "од"
+                    ]
                 },
                 {
                     "kanji": "姓",
@@ -25462,7 +27051,10 @@ const PHONETICS_DATA = {
                         "jp": "あなたの姓はどう発音するのですか。",
                         "en": "How do you pronounce your last name?",
                         "furigana": "あなたの<ruby>姓<rp>(</rp><rt>せい</rt><rp>)</rp></ruby>はどう<ruby>発音<rp>(</rp><rt>はつおん</rt><rp>)</rp></ruby>するのですか。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "овог"
+                    ]
                 },
                 {
                     "kanji": "牲",
@@ -25477,7 +27069,11 @@ const PHONETICS_DATA = {
                         "jp": "彼等はいわゆる戦争の犠牲者だ。",
                         "en": "They are victims of the so-called war.",
                         "furigana": "<ruby>彼等<rp>(</rp><rt>かれら</rt><rp>)</rp></ruby>はいわゆる<ruby>戦争<rp>(</rp><rt>せんそう</rt><rp>)</rp></ruby>の<ruby>犠牲<rp>(</rp><rt>ぎせい</rt><rp>)</rp></ruby><ruby>者<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby>だ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "малын тахил",
+                        "тахил өргөх"
+                    ]
                 },
                 {
                     "kanji": "醒",
@@ -25491,7 +27087,10 @@ const PHONETICS_DATA = {
                         "jp": "おそらく自分には半覚醒の時間があり、そのため１日を短く感じている。",
                         "en": "It's quite possible that there are times I am half awake, and thus the day feels shorter.",
                         "furigana": "おそらく<ruby>自分<rp>(</rp><rt>じぶん</rt><rp>)</rp></ruby>には<ruby>半<rp>(</rp><rt>はん</rt><rp>)</rp></ruby><ruby>覚醒<rp>(</rp><rt>かくせい</rt><rp>)</rp></ruby>の<ruby>時間<rp>(</rp><rt>じかん</rt><rp>)</rp></ruby>があり、そのため１<ruby>日<rp>(</rp><rt>にち</rt><rp>)</rp></ruby>を<ruby>短<rp>(</rp><rt>みじか</rt><rp>)</rp></ruby>く<ruby>感<rp>(</rp><rt>かん</rt><rp>)</rp></ruby>じている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "сэрэлт"
+                    ]
                 }
             ]
         },
@@ -25512,7 +27111,10 @@ const PHONETICS_DATA = {
                         "jp": "輸入規制は最近だいぶ緩められた。",
                         "en": "Import restrictions have been greatly loosened of late.",
                         "furigana": "<ruby>輸入<rp>(</rp><rt>ゆにゅう</rt><rp>)</rp></ruby><ruby>規制<rp>(</rp><rt>きせい</rt><rp>)</rp></ruby>は<ruby>最近<rp>(</rp><rt>さいきん</rt><rp>)</rp></ruby>だいぶ<ruby>緩<rp>(</rp><rt>ゆる</rt><rp>)</rp></ruby>められた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "тээвэрлэх"
+                    ]
                 },
                 {
                     "kanji": "愉",
@@ -25527,7 +27129,11 @@ const PHONETICS_DATA = {
                         "jp": "愉快な夏休みでありますように！",
                         "en": "Have fun this summer!",
                         "furigana": "<ruby>愉快<rp>(</rp><rt>ゆかい</rt><rp>)</rp></ruby>な<ruby>夏休<rp>(</rp><rt>なつやす</rt><rp>)</rp></ruby>みでありますように！"
-                    }
+                    },
+                    "meaningsMn": [
+                        "баясал",
+                        "сэтгэл хангалуун"
+                    ]
                 },
                 {
                     "kanji": "癒",
@@ -25542,7 +27148,11 @@ const PHONETICS_DATA = {
                         "jp": "時はどんな悲しみも癒してくれる。",
                         "en": "Time tames the strongest grief.",
                         "furigana": "<ruby>時<rp>(</rp><rt>とき</rt><rp>)</rp></ruby>はどんな<ruby>悲<rp>(</rp><rt>かな</rt><rp>)</rp></ruby>しみも<ruby>癒<rp>(</rp><rt>いや</rt><rp>)</rp></ruby>してくれる。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "эдгэрэлт",
+                        "эдгээх"
+                    ]
                 },
                 {
                     "kanji": "諭",
@@ -25557,7 +27167,11 @@ const PHONETICS_DATA = {
                         "jp": "先生は生徒たちに不注意を諭した。",
                         "en": "The teacher admonished his pupils for carelessness.",
                         "furigana": "<ruby>先生<rp>(</rp><rt>せんせい</rt><rp>)</rp></ruby>は<ruby>生徒<rp>(</rp><rt>せいと</rt><rp>)</rp></ruby>たちに<ruby>不注意<rp>(</rp><rt>ふちゅうい</rt><rp>)</rp></ruby>を<ruby>諭<rp>(</rp><rt>さと</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "зэмлэх",
+                        "сануулах"
+                    ]
                 },
                 {
                     "kanji": "喩",
@@ -25571,7 +27185,10 @@ const PHONETICS_DATA = {
                         "jp": "その比喩的意味はもはや使われていない。",
                         "en": "The figurative meaning is no longer in current use.",
                         "furigana": "その<ruby>比喩<rp>(</rp><rt>ひゆ</rt><rp>)</rp></ruby><ruby>的<rp>(</rp><rt>てき</rt><rp>)</rp></ruby><ruby>意味<rp>(</rp><rt>いみ</rt><rp>)</rp></ruby>はもはや<ruby>使<rp>(</rp><rt>つか</rt><rp>)</rp></ruby>われていない。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "зүйрлэл"
+                    ]
                 }
             ]
         },
@@ -25593,7 +27210,11 @@ const PHONETICS_DATA = {
                         "jp": "未成年者は喫煙を禁じられている。",
                         "en": "Persons under age are prohibited from smoking.",
                         "furigana": "<ruby>未成年<rp>(</rp><rt>みせいねん</rt><rp>)</rp></ruby><ruby>者<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby>は<ruby>喫煙<rp>(</rp><rt>きつえん</rt><rp>)</rp></ruby>を<ruby>禁<rp>(</rp><rt>きん</rt><rp>)</rp></ruby>じられている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хориглолт",
+                        "хориглох"
+                    ]
                 },
                 {
                     "kanji": "襟",
@@ -25607,7 +27228,10 @@ const PHONETICS_DATA = {
                         "jp": "見知らぬ男が私の襟をつかんだ。",
                         "en": "A strange man caught me by the collar.",
                         "furigana": "<ruby>見知<rp>(</rp><rt>みし</rt><rp>)</rp></ruby>らぬ<ruby>男<rp>(</rp><rt>おとこ</rt><rp>)</rp></ruby>が<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>の<ruby>襟<rp>(</rp><rt>えり</rt><rp>)</rp></ruby>をつかんだ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "захын хэсэг"
+                    ]
                 }
             ]
         },
@@ -25629,7 +27253,11 @@ const PHONETICS_DATA = {
                         "jp": "１０年は待つには長い時間だ。",
                         "en": "Ten years is a long time to wait.",
                         "furigana": "１０<ruby>年<rp>(</rp><rt>ねん</rt><rp>)</rp></ruby>は<ruby>待<rp>(</rp><rt>ま</rt><rp>)</rp></ruby>つには<ruby>長<rp>(</rp><rt>なが</rt><rp>)</rp></ruby>い<ruby>時間<rp>(</rp><rt>じかん</rt><rp>)</rp></ruby>だ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "завсар",
+                        "хооронд"
+                    ]
                 },
                 {
                     "kanji": "関",
@@ -25646,7 +27274,13 @@ const PHONETICS_DATA = {
                         "jp": "男女関係なく、行くべきでしょうね。",
                         "en": "They should go, regardless of whether they're men or women.",
                         "furigana": "<ruby>男女<rp>(</rp><rt>だんじょ</rt><rp>)</rp></ruby><ruby>関係<rp>(</rp><rt>かんけい</rt><rp>)</rp></ruby>なく、<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>くべきでしょうね。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "холбоо",
+                        "санаа зовнил",
+                        "саад",
+                        "холбоотой"
+                    ]
                 },
                 {
                     "kanji": "聞",
@@ -25660,7 +27294,10 @@ const PHONETICS_DATA = {
                         "jp": "私の言う事を聞くべきだったのに。",
                         "en": "You should have listened to me.",
                         "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>の<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>う<ruby>事<rp>(</rp><rt>こと</rt><rp>)</rp></ruby>を<ruby>聞<rp>(</rp><rt>き</rt><rp>)</rp></ruby>くべきだったのに。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "сонсох"
+                    ]
                 },
                 {
                     "kanji": "門",
@@ -25674,7 +27311,10 @@ const PHONETICS_DATA = {
                         "jp": "歴史学は人文科学の一部門である。",
                         "en": "History is a branch of the humanities.",
                         "furigana": "<ruby>歴史<rp>(</rp><rt>れきし</rt><rp>)</rp></ruby><ruby>学<rp>(</rp><rt>がく</rt><rp>)</rp></ruby>は<ruby>人文<rp>(</rp><rt>じんぶん</rt><rp>)</rp></ruby><ruby>科学<rp>(</rp><rt>かがく</rt><rp>)</rp></ruby>の<ruby>一<rp>(</rp><rt>いち</rt><rp>)</rp></ruby><ruby>部門<rp>(</rp><rt>ぶもん</rt><rp>)</rp></ruby>である。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хаалга"
+                    ]
                 },
                 {
                     "kanji": "問",
@@ -25688,7 +27328,10 @@ const PHONETICS_DATA = {
                         "jp": "君の気付いていない問題がある。",
                         "en": "There's a problem there that you don't see.",
                         "furigana": "<ruby>君<rp>(</rp><rt>きみ</rt><rp>)</rp></ruby>の<ruby>気付<rp>(</rp><rt>きづ</rt><rp>)</rp></ruby>いていない<ruby>問題<rp>(</rp><rt>もんだい</rt><rp>)</rp></ruby>がある。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "асуулт"
+                    ]
                 },
                 {
                     "kanji": "簡",
@@ -25703,7 +27346,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女はそのパズルを簡単に解いた。",
                         "en": "She solved the puzzle with ease.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はそのパズルを<ruby>簡単<rp>(</rp><rt>かんたん</rt><rp>)</rp></ruby>に<ruby>解<rp>(</rp><rt>と</rt><rp>)</rp></ruby>いた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "энгийн байдал",
+                        "энгийн"
+                    ]
                 },
                 {
                     "kanji": "閑",
@@ -25718,7 +27365,11 @@ const PHONETICS_DATA = {
                         "jp": "彼はジョンを閑職に祭り上げた。",
                         "en": "He kicked John upstairs.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>はジョンを<ruby>閑職<rp>(</rp><rt>かんしょく</rt><rp>)</rp></ruby>に<ruby>祭<rp>(</rp><rt>まつ</rt><rp>)</rp></ruby>り<ruby>上<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>げた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "амралт",
+                        "тайван"
+                    ]
                 }
             ]
         },
@@ -25740,7 +27391,11 @@ const PHONETICS_DATA = {
                         "jp": "彼らは農場で幸せな日々を送った。",
                         "en": "They led a happy life on their farm.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>農場<rp>(</rp><rt>のうじょう</rt><rp>)</rp></ruby>で<ruby>幸<rp>(</rp><rt>しあわ</rt><rp>)</rp></ruby>せな<ruby>日々<rp>(</rp><rt>ひび</rt><rp>)</rp></ruby>を<ruby>送<rp>(</rp><rt>おく</rt><rp>)</rp></ruby>った。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хөдөө аж ахуй",
+                        "тариалан"
+                    ]
                 },
                 {
                     "kanji": "濃",
@@ -25755,7 +27410,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女は濃い茶色の靴を履いていた。",
                         "en": "She was wearing dark brown shoes.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>濃<rp>(</rp><rt>こ</rt><rp>)</rp></ruby>い<ruby>茶色<rp>(</rp><rt>ちゃいろ</rt><rp>)</rp></ruby>の<ruby>靴<rp>(</rp><rt>くつ</rt><rp>)</rp></ruby>を<ruby>履<rp>(</rp><rt>は</rt><rp>)</rp></ruby>いていた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "шингэрүүлээгүй",
+                        "зузаан"
+                    ]
                 }
             ]
         },
@@ -25777,7 +27436,11 @@ const PHONETICS_DATA = {
                         "jp": "昭和１０年は西暦１９３５年です。",
                         "en": "The 10th year of Showa is 1935 in the Western calendar.",
                         "furigana": "<ruby>昭和<rp>(</rp><rt>しょうわ</rt><rp>)</rp></ruby>１０<ruby>年<rp>(</rp><rt>ねん</rt><rp>)</rp></ruby>は<ruby>西暦<rp>(</rp><rt>せいれき</rt><rp>)</rp></ruby>１９３５<ruby>年<rp>(</rp><rt>ねん</rt><rp>)</rp></ruby>です。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "гэрэлтэй",
+                        "гялалзсан"
+                    ]
                 },
                 {
                     "kanji": "照",
@@ -25791,7 +27454,10 @@ const PHONETICS_DATA = {
                         "jp": "５ページ脚注を参照してください。",
                         "en": "See the footnote on page 5.",
                         "furigana": "５ページ<ruby>脚注<rp>(</rp><rt>きゃくちゅう</rt><rp>)</rp></ruby>を<ruby>参照<rp>(</rp><rt>さんしょう</rt><rp>)</rp></ruby>してください。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "гэрэлтүүлэх"
+                    ]
                 },
                 {
                     "kanji": "紹",
@@ -25805,7 +27471,10 @@ const PHONETICS_DATA = {
                         "jp": "彼女は私をお兄さんに紹介してくれた。",
                         "en": "She introduced me to her brother.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>をお<ruby>兄<rp>(</rp><rt>にい</rt><rp>)</rp></ruby>さんに<ruby>紹介<rp>(</rp><rt>しょうかい</rt><rp>)</rp></ruby>してくれた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "танилцуулах"
+                    ]
                 },
                 {
                     "kanji": "沼",
@@ -25820,7 +27489,11 @@ const PHONETICS_DATA = {
                         "jp": "私たちは書類事務の泥沼に陥っていた。",
                         "en": "We were bogged down in a morass of paperwork.",
                         "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>たちは<ruby>書類<rp>(</rp><rt>しょるい</rt><rp>)</rp></ruby><ruby>事務<rp>(</rp><rt>じむ</rt><rp>)</rp></ruby>の<ruby>泥沼<rp>(</rp><rt>どろぬま</rt><rp>)</rp></ruby>に<ruby>陥<rp>(</rp><rt>おちい</rt><rp>)</rp></ruby>っていた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "намаг",
+                        "шаварлаг цөөрөм"
+                    ]
                 },
                 {
                     "kanji": "招",
@@ -25835,7 +27508,11 @@ const PHONETICS_DATA = {
                         "jp": "竹内だけは招待に応じなかった。",
                         "en": "Only Takeuchi didn't accept the invitation.",
                         "furigana": "<ruby>竹内<rp>(</rp><rt>たけうち</rt><rp>)</rp></ruby>だけは<ruby>招待<rp>(</rp><rt>しょうたい</rt><rp>)</rp></ruby>に<ruby>応<rp>(</rp><rt>おう</rt><rp>)</rp></ruby>じなかった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дуудах",
+                        "урих"
+                    ]
                 },
                 {
                     "kanji": "召",
@@ -25850,7 +27527,11 @@ const PHONETICS_DATA = {
                         "jp": "彼は証言をするために召喚された。",
                         "en": "He was called to give evidence.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>証言<rp>(</rp><rt>しょうげん</rt><rp>)</rp></ruby>をするために<ruby>召喚<rp>(</rp><rt>しょうかん</rt><rp>)</rp></ruby>された。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "татах",
+                        "дуудах"
+                    ]
                 },
                 {
                     "kanji": "詔",
@@ -25860,7 +27541,10 @@ const PHONETICS_DATA = {
                     "meanings": [
                         "imperial edict"
                     ],
-                    "example": null
+                    "example": null,
+                    "meaningsMn": [
+                        "эзэн хааны зарлиг"
+                    ]
                 }
             ]
         },
@@ -25883,7 +27567,12 @@ const PHONETICS_DATA = {
                         "jp": "弁償代きっちり耳そろえて払わんかい。",
                         "en": "Aren't you paying for the damages in full?",
                         "furigana": "<ruby>弁償<rp>(</rp><rt>べんしょう</rt><rp>)</rp></ruby><ruby>代<rp>(</rp><rt>だい</rt><rp>)</rp></ruby>きっちり<ruby>耳<rp>(</rp><rt>みみ</rt><rp>)</rp></ruby>そろえて<ruby>払<rp>(</rp><rt>はら</rt><rp>)</rp></ruby>わんかい。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "орлогч",
+                        "үе",
+                        "төлбөр"
+                    ]
                 },
                 {
                     "kanji": "袋",
@@ -25898,7 +27587,11 @@ const PHONETICS_DATA = {
                         "jp": "彼は胃袋に食べ物を詰め込んだ。",
                         "en": "He loaded his stomach with food.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>胃袋<rp>(</rp><rt>いぶくろ</rt><rp>)</rp></ruby>に<ruby>食<rp>(</rp><rt>た</rt><rp>)</rp></ruby>べ<ruby>物<rp>(</rp><rt>もの</rt><rp>)</rp></ruby>を<ruby>詰<rp>(</rp><rt>つ</rt><rp>)</rp></ruby>め<ruby>込<rp>(</rp><rt>こ</rt><rp>)</rp></ruby>んだ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "уут",
+                        "цүнх"
+                    ]
                 },
                 {
                     "kanji": "貸",
@@ -25912,7 +27605,10 @@ const PHONETICS_DATA = {
                         "jp": "ちょっと顔を貸してくれませんか。",
                         "en": "Can I have a few words with you?",
                         "furigana": "ちょっと<ruby>顔<rp>(</rp><rt>かお</rt><rp>)</rp></ruby>を<ruby>貸<rp>(</rp><rt>か</rt><rp>)</rp></ruby>してくれませんか。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "зээлдүүлэх"
+                    ]
                 }
             ]
         },
@@ -25935,7 +27631,12 @@ const PHONETICS_DATA = {
                         "jp": "私の心は幸福感でいっぱいだった。",
                         "en": "My heart was filled with happiness.",
                         "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>の<ruby>心<rp>(</rp><rt>こころ</rt><rp>)</rp></ruby>は<ruby>幸福<rp>(</rp><rt>こうふく</rt><rp>)</rp></ruby><ruby>感<rp>(</rp><rt>かん</rt><rp>)</rp></ruby>でいっぱいだった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "ерөөл",
+                        "азын жаргал",
+                        "азтай"
+                    ]
                 },
                 {
                     "kanji": "幅",
@@ -25951,7 +27652,12 @@ const PHONETICS_DATA = {
                         "jp": "彼は幅広い経験を積んでいる人だ。",
                         "en": "He is a man of wide experience.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>幅広<rp>(</rp><rt>はばひろ</rt><rp>)</rp></ruby>い<ruby>経験<rp>(</rp><rt>けいけん</rt><rp>)</rp></ruby>を<ruby>積<rp>(</rp><rt>つ</rt><rp>)</rp></ruby>んでいる<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>だ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "өлгөгдсөн зураг",
+                        "өргөн",
+                        "өргөн хэмжээ"
+                    ]
                 },
                 {
                     "kanji": "副",
@@ -25967,7 +27673,12 @@ const PHONETICS_DATA = {
                         "jp": "副官は戦術の変更を彼に提案した。",
                         "en": "The aide suggested a change in tactics to him.",
                         "furigana": "<ruby>副官<rp>(</rp><rt>ふっかん</rt><rp>)</rp></ruby>は<ruby>戦術<rp>(</rp><rt>せんじゅつ</rt><rp>)</rp></ruby>の<ruby>変更<rp>(</rp><rt>へんこう</rt><rp>)</rp></ruby>を<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>に<ruby>提案<rp>(</rp><rt>ていあん</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "орлогч",
+                        "туслах",
+                        "орлогч дарга"
+                    ]
                 }
             ]
         },
@@ -25988,7 +27699,10 @@ const PHONETICS_DATA = {
                         "jp": "潔白であることは美しいことだ。",
                         "en": "Innocence is a beautiful thing.",
                         "furigana": "<ruby>潔白<rp>(</rp><rt>けっぱく</rt><rp>)</rp></ruby>であることは<ruby>美<rp>(</rp><rt>うつく</rt><rp>)</rp></ruby>しいことだ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "цагаан"
+                    ]
                 },
                 {
                     "kanji": "伯",
@@ -26003,7 +27717,11 @@ const PHONETICS_DATA = {
                         "jp": "伯父さんが僕を雇ってくれたんだ。",
                         "en": "I was hired by my uncle.",
                         "furigana": "<ruby>伯父<rp>(</rp><rt>おじ</rt><rp>)</rp></ruby>さんが<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>を<ruby>雇<rp>(</rp><rt>やと</rt><rp>)</rp></ruby>ってくれたんだ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "тэргүүн",
+                        "эцэг эхийн ах эгч"
+                    ]
                 },
                 {
                     "kanji": "迫",
@@ -26018,7 +27736,11 @@ const PHONETICS_DATA = {
                         "jp": "物価の高騰が家計を圧迫している。",
                         "en": "The rise in prices is pressing our family budget.",
                         "furigana": "<ruby>物価<rp>(</rp><rt>ぶっか</rt><rp>)</rp></ruby>の<ruby>高騰<rp>(</rp><rt>こうとう</rt><rp>)</rp></ruby>が<ruby>家計<rp>(</rp><rt>かけい</rt><rp>)</rp></ruby>を<ruby>圧迫<rp>(</rp><rt>あっぱく</rt><rp>)</rp></ruby>している。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "яаравчлах",
+                        "дарамтлах"
+                    ]
                 },
                 {
                     "kanji": "泊",
@@ -26033,7 +27755,11 @@ const PHONETICS_DATA = {
                         "jp": "予約を３泊から５泊に変更したい。",
                         "en": "I'd like to change my reservation for three to five nights.",
                         "furigana": "<ruby>予約<rp>(</rp><rt>よやく</rt><rp>)</rp></ruby>を３<ruby>泊<rp>(</rp><rt>はく</rt><rp>)</rp></ruby>から５<ruby>泊<rp>(</rp><rt>はく</rt><rp>)</rp></ruby>に<ruby>変更<rp>(</rp><rt>へんこう</rt><rp>)</rp></ruby>したい。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хонох",
+                        "шөнөжих"
+                    ]
                 },
                 {
                     "kanji": "拍",
@@ -26048,7 +27774,11 @@ const PHONETICS_DATA = {
                         "jp": "素晴らしい業績に拍手を送ります。",
                         "en": "Kudos for your outstanding achievement!",
                         "furigana": "<ruby>素晴<rp>(</rp><rt>すば</rt><rp>)</rp></ruby>らしい<ruby>業績<rp>(</rp><rt>ぎょうせき</rt><rp>)</rp></ruby>に<ruby>拍手<rp>(</rp><rt>はくしゅ</rt><rp>)</rp></ruby>を<ruby>送<rp>(</rp><rt>おく</rt><rp>)</rp></ruby>ります。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "алгадах",
+                        "цохилт"
+                    ]
                 },
                 {
                     "kanji": "舶",
@@ -26063,7 +27793,11 @@ const PHONETICS_DATA = {
                         "jp": "舶来品は何でも国産品より優れていると思っている人が少なくない。",
                         "en": "Not a few people think that all foreign-made articles are superior to ones made in this country.",
                         "furigana": "<ruby>舶来<rp>(</rp><rt>はくらい</rt><rp>)</rp></ruby><ruby>品<rp>(</rp><rt>ひん</rt><rp>)</rp></ruby>は<ruby>何<rp>(</rp><rt>なに</rt><rp>)</rp></ruby>でも<ruby>国産<rp>(</rp><rt>こくさん</rt><rp>)</rp></ruby><ruby>品<rp>(</rp><rt>ひん</rt><rp>)</rp></ruby>より<ruby>優<rp>(</rp><rt>すぐ</rt><rp>)</rp></ruby>れていると<ruby>思<rp>(</rp><rt>おも</rt><rp>)</rp></ruby>っている<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>が<ruby>少<rp>(</rp><rt>すく</rt><rp>)</rp></ruby>なくない。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "далайн хөлөг",
+                        "том хөлөг онгоц"
+                    ]
                 }
             ]
         },
@@ -26085,7 +27819,11 @@ const PHONETICS_DATA = {
                         "jp": "山羽さんが乞食に胡桃を呉れてやりました。",
                         "en": "Mr Yamaha gave some walnuts to a beggar.",
                         "furigana": "<ruby>山<rp>(</rp><rt>やま</rt><rp>)</rp></ruby><ruby>羽<rp>(</rp><rt>わ</rt><rp>)</rp></ruby>さんが<ruby>乞食<rp>(</rp><rt>こじき</rt><rp>)</rp></ruby>に<ruby>胡桃<rp>(</rp><rt>くるみ</rt><rp>)</rp></ruby>を<ruby>呉<rp>(</rp><rt>く</rt><rp>)</rp></ruby>れてやりました。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "өгөх",
+                        "У улс"
+                    ]
                 },
                 {
                     "kanji": "誤",
@@ -26099,7 +27837,10 @@ const PHONETICS_DATA = {
                         "jp": "本能に従うと道を誤ることが多い。",
                         "en": "Instinct is often a poor guide.",
                         "furigana": "<ruby>本能<rp>(</rp><rt>ほんのう</rt><rp>)</rp></ruby>に<ruby>従<rp>(</rp><rt>したが</rt><rp>)</rp></ruby>うと<ruby>道<rp>(</rp><rt>みち</rt><rp>)</rp></ruby>を<ruby>誤<rp>(</rp><rt>あやま</rt><rp>)</rp></ruby>ることが<ruby>多<rp>(</rp><rt>おお</rt><rp>)</rp></ruby>い。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "алдаа"
+                    ]
                 },
                 {
                     "kanji": "娯",
@@ -26114,7 +27855,11 @@ const PHONETICS_DATA = {
                         "jp": "大都市には多くの娯楽があります。",
                         "en": "Big cities have lots of amusements.",
                         "furigana": "<ruby>大都市<rp>(</rp><rt>だいとし</rt><rp>)</rp></ruby>には<ruby>多<rp>(</rp><rt>おお</rt><rp>)</rp></ruby>くの<ruby>娯楽<rp>(</rp><rt>ごらく</rt><rp>)</rp></ruby>があります。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "амралт зугаа",
+                        "таашаал"
+                    ]
                 }
             ]
         },
@@ -26136,7 +27881,11 @@ const PHONETICS_DATA = {
                         "jp": "これは兄です。かっこいいですね。",
                         "en": "This is my brother. Handsome, isn't he?",
                         "furigana": "これは<ruby>兄<rp>(</rp><rt>あに</rt><rp>)</rp></ruby>です。かっこいいですね。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "ах",
+                        "том ах"
+                    ]
                 },
                 {
                     "kanji": "競",
@@ -26151,7 +27900,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女は大食い競争で一番になった。",
                         "en": "She got first prize in the eating contest.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>大<rp>(</rp><rt>だい</rt><rp>)</rp></ruby><ruby>食<rp>(</rp><rt>ぐ</rt><rp>)</rp></ruby>い<ruby>競争<rp>(</rp><rt>きょうそう</rt><rp>)</rp></ruby>で<ruby>一番<rp>(</rp><rt>いちばん</rt><rp>)</rp></ruby>になった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "уралдах",
+                        "өрсөлдөх"
+                    ]
                 },
                 {
                     "kanji": "況",
@@ -26166,7 +27919,11 @@ const PHONETICS_DATA = {
                         "jp": "状況証拠としちゃあ、十分だね。",
                         "en": "For circumstantial evidence, that's plenty.",
                         "furigana": "<ruby>状況<rp>(</rp><rt>じょうきょう</rt><rp>)</rp></ruby><ruby>証拠<rp>(</rp><rt>しょうこ</rt><rp>)</rp></ruby>としちゃあ、<ruby>十分<rp>(</rp><rt>じゅうぶん</rt><rp>)</rp></ruby>だね。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "мэдээж",
+                        "нөхцөл байдал"
+                    ]
                 }
             ]
         },
@@ -26188,7 +27945,11 @@ const PHONETICS_DATA = {
                         "jp": "理想を絵に描いたような男性だった。",
                         "en": "He was a man who was the very picture of her ideals.",
                         "furigana": "<ruby>理想<rp>(</rp><rt>りそう</rt><rp>)</rp></ruby>を<ruby>絵<rp>(</rp><rt>え</rt><rp>)</rp></ruby>に<ruby>描<rp>(</rp><rt>えが</rt><rp>)</rp></ruby>いたような<ruby>男性<rp>(</rp><rt>だんせい</rt><rp>)</rp></ruby>だった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "зурах",
+                        "дүрслэх"
+                    ]
                 },
                 {
                     "kanji": "猫",
@@ -26202,7 +27963,10 @@ const PHONETICS_DATA = {
                         "jp": "木の上の猫が私の所へ降りてきた。",
                         "en": "The cat on the tree came down to me.",
                         "furigana": "<ruby>木<rp>(</rp><rt>き</rt><rp>)</rp></ruby>の<ruby>上<rp>(</rp><rt>うえ</rt><rp>)</rp></ruby>の<ruby>猫<rp>(</rp><rt>ねこ</rt><rp>)</rp></ruby>が<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>の<ruby>所<rp>(</rp><rt>ところ</rt><rp>)</rp></ruby>へ<ruby>降<rp>(</rp><rt>お</rt><rp>)</rp></ruby>りてきた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "муур"
+                    ]
                 },
                 {
                     "kanji": "苗",
@@ -26216,7 +27980,10 @@ const PHONETICS_DATA = {
                         "jp": "池田が苗字で、かず子が名前です。",
                         "en": "Ikeda is my last name, and Kazuko is my first name.",
                         "furigana": "<ruby>池田<rp>(</rp><rt>いけだ</rt><rp>)</rp></ruby>が<ruby>苗字<rp>(</rp><rt>みょうじ</rt><rp>)</rp></ruby>で、かず<ruby>子<rp>(</rp><rt>こ</rt><rp>)</rp></ruby>が<ruby>名前<rp>(</rp><rt>なまえ</rt><rp>)</rp></ruby>です。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "суулгац"
+                    ]
                 }
             ]
         },
@@ -26238,7 +28005,11 @@ const PHONETICS_DATA = {
                         "jp": "僕が捜していたのはこれなんです。",
                         "en": "This is what I have been looking for.",
                         "furigana": "<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>が<ruby>捜<rp>(</rp><rt>さが</rt><rp>)</rp></ruby>していたのはこれなんです。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хайх",
+                        "эрэлхийлэх"
+                    ]
                 },
                 {
                     "kanji": "痩",
@@ -26252,7 +28023,10 @@ const PHONETICS_DATA = {
                         "jp": "彼女はレールのように痩せていた。",
                         "en": "She was as thin as a rail.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はレールのように<ruby>痩<rp>(</rp><rt>や</rt><rp>)</rp></ruby>せていた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "турах"
+                    ]
                 }
             ]
         },
@@ -26274,7 +28048,11 @@ const PHONETICS_DATA = {
                         "jp": "彼は店の奥の暗い隅に姿を消した。",
                         "en": "He disappeared into a dark corner at the back of the shop.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>店<rp>(</rp><rt>みせ</rt><rp>)</rp></ruby>の<ruby>奥<rp>(</rp><rt>おく</rt><rp>)</rp></ruby>の<ruby>暗<rp>(</rp><rt>くら</rt><rp>)</rp></ruby>い<ruby>隅<rp>(</rp><rt>すみ</rt><rp>)</rp></ruby>に<ruby>姿<rp>(</rp><rt>すがた</rt><rp>)</rp></ruby>を<ruby>消<rp>(</rp><rt>け</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "булан",
+                        "тохой"
+                    ]
                 },
                 {
                     "kanji": "偶",
@@ -26290,7 +28068,12 @@ const PHONETICS_DATA = {
                         "jp": "非配偶者間人工授精を受けました。",
                         "en": "I had an artificial insemination by donor.",
                         "furigana": "<ruby>非<rp>(</rp><rt>ひ</rt><rp>)</rp></ruby><ruby>配偶<rp>(</rp><rt>はいぐう</rt><rp>)</rp></ruby><ruby>者<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby><ruby>間<rp>(</rp><rt>かん</rt><rp>)</rp></ruby><ruby>人工<rp>(</rp><rt>じんこう</rt><rp>)</rp></ruby><ruby>授精<rp>(</rp><rt>じゅせい</rt><rp>)</rp></ruby>を<ruby>受<rp>(</rp><rt>う</rt><rp>)</rp></ruby>けました。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "санамсаргүй",
+                        "туйлын санамсаргүй",
+                        "хос"
+                    ]
                 },
                 {
                     "kanji": "遇",
@@ -26306,7 +28089,12 @@ const PHONETICS_DATA = {
                         "jp": "彼女は貧しい境遇で暮らしている。",
                         "en": "She lives in poor circumstances.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>貧<rp>(</rp><rt>まず</rt><rp>)</rp></ruby>しい<ruby>境遇<rp>(</rp><rt>きょうぐう</rt><rp>)</rp></ruby>で<ruby>暮<rp>(</rp><rt>く</rt><rp>)</rp></ruby>らしている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "ярилцлага",
+                        "хандах",
+                        "тааралдах"
+                    ]
                 }
             ]
         },
@@ -26328,7 +28116,11 @@ const PHONETICS_DATA = {
                         "jp": "彼は双方の候補者から票を奪った。",
                         "en": "He attracted votes away from both candidates.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>双方<rp>(</rp><rt>そうほう</rt><rp>)</rp></ruby>の<ruby>候補<rp>(</rp><rt>こうほ</rt><rp>)</rp></ruby><ruby>者<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby>から<ruby>票<rp>(</rp><rt>ひょう</rt><rp>)</rp></ruby>を<ruby>奪<rp>(</rp><rt>うば</rt><rp>)</rp></ruby>った。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хос",
+                        "хоёрын иж бүрдэл"
+                    ]
                 },
                 {
                     "kanji": "桑",
@@ -26342,7 +28134,10 @@ const PHONETICS_DATA = {
                         "jp": "仏桑花が咲いています。",
                         "en": "The China roses are in bloom.",
                         "furigana": "<ruby>仏<rp>(</rp><rt>ふつ</rt><rp>)</rp></ruby><ruby>桑<rp>(</rp><rt>くわ</rt><rp>)</rp></ruby><ruby>花<rp>(</rp><rt>はな</rt><rp>)</rp></ruby>が<ruby>咲<rp>(</rp><rt>さ</rt><rp>)</rp></ruby>いています。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "тут"
+                    ]
                 }
             ]
         },
@@ -26364,7 +28159,11 @@ const PHONETICS_DATA = {
                         "jp": "町に入ると塔を見失ってしまった。",
                         "en": "We lost sight of the tower as we entered the town.",
                         "furigana": "<ruby>町<rp>(</rp><rt>まち</rt><rp>)</rp></ruby>に<ruby>入<rp>(</rp><rt>はい</rt><rp>)</rp></ruby>ると<ruby>塔<rp>(</rp><rt>とう</rt><rp>)</rp></ruby>を<ruby>見失<rp>(</rp><rt>みうしな</rt><rp>)</rp></ruby>ってしまった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "суварга",
+                        "цамхаг"
+                    ]
                 },
                 {
                     "kanji": "搭",
@@ -26378,7 +28177,10 @@ const PHONETICS_DATA = {
                         "jp": "搭乗手続きをするのはどこですか。",
                         "en": "Where is the check-in counter?",
                         "furigana": "<ruby>搭乗<rp>(</rp><rt>とうじょう</rt><rp>)</rp></ruby><ruby>手続<rp>(</rp><rt>てつづ</rt><rp>)</rp></ruby>きをするのはどこですか。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "суух"
+                    ]
                 }
             ]
         },
@@ -26400,7 +28202,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女の考え方は首尾一貫している。",
                         "en": "She is consistent in her opinions.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>の<ruby>考<rp>(</rp><rt>かんが</rt><rp>)</rp></ruby>え<ruby>方<rp>(</rp><rt>かた</rt><rp>)</rp></ruby>は<ruby>首尾<rp>(</rp><rt>しゅび</rt><rp>)</rp></ruby><ruby>一貫<rp>(</rp><rt>いっかん</rt><rp>)</rp></ruby>している。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "шингээх",
+                        "нэвтрэх"
+                    ]
                 },
                 {
                     "kanji": "慣",
@@ -26415,7 +28221,11 @@ const PHONETICS_DATA = {
                         "jp": "兵士たちは危険な事に慣れている。",
                         "en": "Soldiers are used to danger.",
                         "furigana": "<ruby>兵士<rp>(</rp><rt>へいし</rt><rp>)</rp></ruby>たちは<ruby>危険<rp>(</rp><rt>きけん</rt><rp>)</rp></ruby>な<ruby>事<rp>(</rp><rt>こと</rt><rp>)</rp></ruby>に<ruby>慣<rp>(</rp><rt>な</rt><rp>)</rp></ruby>れている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дассан",
+                        "зуршил"
+                    ]
                 }
             ]
         },
@@ -26439,7 +28249,13 @@ const PHONETICS_DATA = {
                         "jp": "説明してくれてありがとう。",
                         "en": "Thanks for your explanation.",
                         "furigana": "<ruby>説明<rp>(</rp><rt>せつめい</rt><rp>)</rp></ruby>してくれてありがとう。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "цуу яриа",
+                        "тайлбар",
+                        "тайлбарлах",
+                        "онол"
+                    ]
                 },
                 {
                     "kanji": "税",
@@ -26453,7 +28269,10 @@ const PHONETICS_DATA = {
                         "jp": "税金を払ったら実生活の始まりだ。",
                         "en": "Life begins when you pay taxes.",
                         "furigana": "<ruby>税金<rp>(</rp><rt>ぜいきん</rt><rp>)</rp></ruby>を<ruby>払<rp>(</rp><rt>はら</rt><rp>)</rp></ruby>ったら<ruby>実生活<rp>(</rp><rt>じっせいかつ</rt><rp>)</rp></ruby>の<ruby>始<rp>(</rp><rt>はじ</rt><rp>)</rp></ruby>まりだ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "татвар"
+                    ]
                 },
                 {
                     "kanji": "悦",
@@ -26468,7 +28287,11 @@ const PHONETICS_DATA = {
                         "jp": "お褒めの言葉を頂き、恐悦至極に存じます。",
                         "en": "I am extremely honoured to receive your praise.",
                         "furigana": "お<ruby>褒<rp>(</rp><rt>ほ</rt><rp>)</rp></ruby>めの<ruby>言葉<rp>(</rp><rt>ことば</rt><rp>)</rp></ruby>を<ruby>頂<rp>(</rp><rt>いただ</rt><rp>)</rp></ruby>き、<ruby>恐悦<rp>(</rp><rt>きょうえつ</rt><rp>)</rp></ruby><ruby>至極<rp>(</rp><rt>しごく</rt><rp>)</rp></ruby>に<ruby>存<rp>(</rp><rt>ぞん</rt><rp>)</rp></ruby>じます。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "баяр хөөр",
+                        "баясах"
+                    ]
                 },
                 {
                     "kanji": "閲",
@@ -26482,7 +28305,10 @@ const PHONETICS_DATA = {
                         "jp": "定期雑誌類は閲覧室より帯出禁止。",
                         "en": "Periodicals may not be removed from the reading room.",
                         "furigana": "<ruby>定期<rp>(</rp><rt>ていき</rt><rp>)</rp></ruby><ruby>雑誌<rp>(</rp><rt>ざっし</rt><rp>)</rp></ruby><ruby>類<rp>(</rp><rt>るい</rt><rp>)</rp></ruby>は<ruby>閲覧<rp>(</rp><rt>えつらん</rt><rp>)</rp></ruby><ruby>室<rp>(</rp><rt>しつ</rt><rp>)</rp></ruby>より<ruby>帯出<rp>(</rp><rt>たいしゅつ</rt><rp>)</rp></ruby><ruby>禁止<rp>(</rp><rt>きんし</rt><rp>)</rp></ruby>。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хянах"
+                    ]
                 }
             ]
         },
@@ -26504,7 +28330,11 @@ const PHONETICS_DATA = {
                         "jp": "彼の上役は狭量さを軽蔑している。",
                         "en": "He is contemptuous of his boss's narrow mind.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>上役<rp>(</rp><rt>うわやく</rt><rp>)</rp></ruby>は<ruby>狭量<rp>(</rp><rt>きょうりょう</rt><rp>)</rp></ruby>さを<ruby>軽蔑<rp>(</rp><rt>けいべつ</rt><rp>)</rp></ruby>している。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "нарийхан",
+                        "нарийн"
+                    ]
                 },
                 {
                     "kanji": "挟",
@@ -26520,7 +28350,12 @@ const PHONETICS_DATA = {
                         "jp": "彼女はドアに指を挟んでしまった。",
                         "en": "She shut the door on her finger.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はドアに<ruby>指<rp>(</rp><rt>ゆび</rt><rp>)</rp></ruby>を<ruby>挟<rp>(</rp><rt>はさ</rt><rp>)</rp></ruby>んでしまった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хавчуулсан",
+                        "завсарт барих",
+                        "чимхэх"
+                    ]
                 },
                 {
                     "kanji": "峡",
@@ -26534,7 +28369,10 @@ const PHONETICS_DATA = {
                         "jp": "その海峡に長い橋を建設中です。",
                         "en": "They are building a long bridge across the channel.",
                         "furigana": "その<ruby>海峡<rp>(</rp><rt>かいきょう</rt><rp>)</rp></ruby>に<ruby>長<rp>(</rp><rt>なが</rt><rp>)</rp></ruby>い<ruby>橋<rp>(</rp><rt>はし</rt><rp>)</rp></ruby>を<ruby>建設<rp>(</rp><rt>けんせつ</rt><rp>)</rp></ruby><ruby>中<rp>(</rp><rt>ちゅう</rt><rp>)</rp></ruby>です。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хавцал"
+                    ]
                 }
             ]
         },
@@ -26556,7 +28394,11 @@ const PHONETICS_DATA = {
                         "jp": "私は暫く待つように言われた。",
                         "en": "I was told to wait for a while.",
                         "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>は<ruby>暫<rp>(</rp><rt>しばら</rt><rp>)</rp></ruby>く<ruby>待<rp>(</rp><rt>ま</rt><rp>)</rp></ruby>つように<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>われた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "түр зуур",
+                        "бага зуур"
+                    ]
                 },
                 {
                     "kanji": "斬",
@@ -26570,7 +28412,10 @@ const PHONETICS_DATA = {
                         "jp": "これはいわゆる斬新なアイデアです。",
                         "en": "This is what we call a \"brand new idea\".",
                         "furigana": "これはいわゆる<ruby>斬新<rp>(</rp><rt>ざんしん</rt><rp>)</rp></ruby>なアイデアです。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "огтлох"
+                    ]
                 }
             ]
         },
@@ -26591,7 +28436,10 @@ const PHONETICS_DATA = {
                         "jp": "彼女は彼の甘い言葉にだまされた。",
                         "en": "She was beguiled by his sweet words.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>甘<rp>(</rp><rt>あま</rt><rp>)</rp></ruby>い<ruby>言葉<rp>(</rp><rt>ことば</rt><rp>)</rp></ruby>にだまされた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "чихэрлэг"
+                    ]
                 }
             ]
         },
@@ -26613,7 +28461,11 @@ const PHONETICS_DATA = {
                         "jp": "ねぇ遊んでよ、とっても退屈なの！",
                         "en": "Come on, play with me, I'm so bored!",
                         "furigana": "ねぇ<ruby>遊<rp>(</rp><rt>あそ</rt><rp>)</rp></ruby>んでよ、とっても<ruby>退屈<rp>(</rp><rt>たいくつ</rt><rp>)</rp></ruby>なの！"
-                    }
+                    },
+                    "meaningsMn": [
+                        "бууж өгөх",
+                        "нугарах"
+                    ]
                 },
                 {
                     "kanji": "掘",
@@ -26627,7 +28479,10 @@ const PHONETICS_DATA = {
                         "jp": "彼らは宝物を求めてあちこち掘った。",
                         "en": "They dug here and there for treasure.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>宝物<rp>(</rp><rt>ほうもつ</rt><rp>)</rp></ruby>を<ruby>求<rp>(</rp><rt>もと</rt><rp>)</rp></ruby>めてあちこち<ruby>掘<rp>(</rp><rt>ほ</rt><rp>)</rp></ruby>った。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "малтах"
+                    ]
                 },
                 {
                     "kanji": "窟",
@@ -26641,7 +28496,10 @@ const PHONETICS_DATA = {
                         "jp": "その洞窟が私たちの隠れ家になった。",
                         "en": "The cave did for our hiding place.",
                         "furigana": "その<ruby>洞窟<rp>(</rp><rt>どうくつ</rt><rp>)</rp></ruby>が<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>たちの<ruby>隠<rp>(</rp><rt>かく</rt><rp>)</rp></ruby>れ<ruby>家<rp>(</rp><rt>が</rt><rp>)</rp></ruby>になった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "агуй"
+                    ]
                 }
             ]
         },
@@ -26663,7 +28521,11 @@ const PHONETICS_DATA = {
                         "jp": "羊と山羊の区別がわかりますか。",
                         "en": "Can you tell a sheep from a goat?",
                         "furigana": "<ruby>羊<rp>(</rp><rt>ひつじ</rt><rp>)</rp></ruby>と<ruby>山羊<rp>(</rp><rt>やぎ</rt><rp>)</rp></ruby>の<ruby>区別<rp>(</rp><rt>くべつ</rt><rp>)</rp></ruby>がわかりますか。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дүүрэг",
+                        "хороо"
+                    ]
                 },
                 {
                     "kanji": "駆",
@@ -26677,7 +28539,10 @@ const PHONETICS_DATA = {
                         "jp": "牧童たちは牛の群れを駆り集めた。",
                         "en": "The cowboys rounded up the herd of cattle.",
                         "furigana": "<ruby>牧童<rp>(</rp><rt>ぼくどう</rt><rp>)</rp></ruby>たちは<ruby>牛<rp>(</rp><rt>うし</rt><rp>)</rp></ruby>の<ruby>群<rp>(</rp><rt>む</rt><rp>)</rp></ruby>れを<ruby>駆<rp>(</rp><rt>か</rt><rp>)</rp></ruby>り<ruby>集<rp>(</rp><rt>あつ</rt><rp>)</rp></ruby>めた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "туух"
+                    ]
                 },
                 {
                     "kanji": "欧",
@@ -26691,7 +28556,10 @@ const PHONETICS_DATA = {
                         "jp": "欧米では犬を家族の一員とみなす。",
                         "en": "In Europe and America they regard the dog as a member of the family.",
                         "furigana": "<ruby>欧米<rp>(</rp><rt>おうべい</rt><rp>)</rp></ruby>では<ruby>犬<rp>(</rp><rt>いぬ</rt><rp>)</rp></ruby>を<ruby>家族<rp>(</rp><rt>かぞく</rt><rp>)</rp></ruby>の<ruby>一員<rp>(</rp><rt>いちいん</rt><rp>)</rp></ruby>とみなす。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "Европ"
+                    ]
                 },
                 {
                     "kanji": "殴",
@@ -26706,7 +28574,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女はハンマーで私の頭を殴った。",
                         "en": "She hit me on the head with a hammer.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はハンマーで<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>の<ruby>頭<rp>(</rp><rt>あたま</rt><rp>)</rp></ruby>を<ruby>殴<rp>(</rp><rt>なぐ</rt><rp>)</rp></ruby>った。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "зодох",
+                        "цохих"
+                    ]
                 }
             ]
         },
@@ -26727,7 +28599,10 @@ const PHONETICS_DATA = {
                         "jp": "彼らは遅くまで首脳会談を続けた。",
                         "en": "They carried on the summit conference till late.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>遅<rp>(</rp><rt>おそ</rt><rp>)</rp></ruby>くまで<ruby>首脳<rp>(</rp><rt>しゅのう</rt><rp>)</rp></ruby><ruby>会談<rp>(</rp><rt>かいだん</rt><rp>)</rp></ruby>を<ruby>続<rp>(</rp><rt>つづ</rt><rp>)</rp></ruby>けた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "тархи"
+                    ]
                 },
                 {
                     "kanji": "悩",
@@ -26742,7 +28617,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女は悩ましい目つきで僕を見た。",
                         "en": "She looked at me seductively.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>悩<rp>(</rp><rt>なや</rt><rp>)</rp></ruby>ましい<ruby>目<rp>(</rp><rt>め</rt><rp>)</rp></ruby>つきで<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>を<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>た。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "зовох",
+                        "зовиурлах"
+                    ]
                 }
             ]
         },
@@ -26764,7 +28643,11 @@ const PHONETICS_DATA = {
                         "jp": "来年は帽子が流行してくるだろう。",
                         "en": "Hats should be popular next year.",
                         "furigana": "<ruby>来年<rp>(</rp><rt>らいねん</rt><rp>)</rp></ruby>は<ruby>帽子<rp>(</rp><rt>ぼうし</rt><rp>)</rp></ruby>が<ruby>流行<rp>(</rp><rt>りゅうこう</rt><rp>)</rp></ruby>してくるだろう。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "малгай",
+                        "толгойн хэрэгсэл"
+                    ]
                 },
                 {
                     "kanji": "冒",
@@ -26778,7 +28661,10 @@ const PHONETICS_DATA = {
                         "jp": "冒険をしなければ何も得られない。",
                         "en": "Nothing ventured, nothing gained.",
                         "furigana": "<ruby>冒険<rp>(</rp><rt>ぼうけん</rt><rp>)</rp></ruby>をしなければ<ruby>何<rp>(</rp><rt>なに</rt><rp>)</rp></ruby>も<ruby>得<rp>(</rp><rt>え</rt><rp>)</rp></ruby>られない。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "эрсдэл"
+                    ]
                 }
             ]
         },
@@ -26800,7 +28686,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女は見かけよりもずっと賢い。",
                         "en": "She is much cleverer than she looks.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>かけよりもずっと<ruby>賢<rp>(</rp><rt>かしこ</rt><rp>)</rp></ruby>い。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "ухаалаг",
+                        "мэргэн"
+                    ]
                 },
                 {
                     "kanji": "堅",
@@ -26815,7 +28705,11 @@ const PHONETICS_DATA = {
                         "jp": "僕は彼の無実を堅く信じている。",
                         "en": "I have a firm belief in his innocence.",
                         "furigana": "<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>は<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>無実<rp>(</rp><rt>むじつ</rt><rp>)</rp></ruby>を<ruby>堅<rp>(</rp><rt>かた</rt><rp>)</rp></ruby>く<ruby>信<rp>(</rp><rt>しん</rt><rp>)</rp></ruby>じている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хатуу",
+                        "бат бөх"
+                    ]
                 }
             ]
         },
@@ -26837,7 +28731,11 @@ const PHONETICS_DATA = {
                         "jp": "次の新幹線は９時ちょうどに出ます。",
                         "en": "The next Shinkansen train leaves at just nine o'clock.",
                         "furigana": "<ruby>次<rp>(</rp><rt>つぎ</rt><rp>)</rp></ruby>の<ruby>新幹線<rp>(</rp><rt>しんかんせん</rt><rp>)</rp></ruby>は９<ruby>時<rp>(</rp><rt>じ</rt><rp>)</rp></ruby>ちょうどに<ruby>出<rp>(</rp><rt>で</rt><rp>)</rp></ruby>ます。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "модны их бие",
+                        "их бие"
+                    ]
                 },
                 {
                     "kanji": "韓",
@@ -26852,7 +28750,11 @@ const PHONETICS_DATA = {
                         "jp": "私は辛いので韓国料理が好きです。",
                         "en": "I love Korean food because of the hot spices.",
                         "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>は<ruby>辛<rp>(</rp><rt>つら</rt><rp>)</rp></ruby>いので<ruby>韓国<rp>(</rp><rt>かんこく</rt><rp>)</rp></ruby><ruby>料理<rp>(</rp><rt>りょうり</rt><rp>)</rp></ruby>が<ruby>好<rp>(</rp><rt>す</rt><rp>)</rp></ruby>きです。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "Солонгос",
+                        "Өмнөд Солонгос"
+                    ]
                 },
                 {
                     "kanji": "乾",
@@ -26867,7 +28769,11 @@ const PHONETICS_DATA = {
                         "jp": "魅力的なホステスのために乾杯！",
                         "en": "Let's drink to our charming hostess!",
                         "furigana": "<ruby>魅力<rp>(</rp><rt>みりょく</rt><rp>)</rp></ruby><ruby>的<rp>(</rp><rt>てき</rt><rp>)</rp></ruby>なホステスのために<ruby>乾杯<rp>(</rp><rt>かんぱい</rt><rp>)</rp></ruby>！"
-                    }
+                    },
+                    "meaningsMn": [
+                        "ган гачиг",
+                        "хуурай"
+                    ]
                 }
             ]
         },
@@ -26889,7 +28795,11 @@ const PHONETICS_DATA = {
                         "jp": "彼らは命令に従う事になっている。",
                         "en": "They are supposed to obey the orders.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>命令<rp>(</rp><rt>めいれい</rt><rp>)</rp></ruby>に<ruby>従<rp>(</rp><rt>したが</rt><rp>)</rp></ruby>う<ruby>事<rp>(</rp><rt>こと</rt><rp>)</rp></ruby>になっている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "тушаал",
+                        "зарлиг"
+                    ]
                 },
                 {
                     "kanji": "冷",
@@ -26904,7 +28814,11 @@ const PHONETICS_DATA = {
                         "jp": "赤い冷蔵庫を見たことがない。",
                         "en": "I have never seen a red refrigerator.",
                         "furigana": "<ruby>赤<rp>(</rp><rt>あか</rt><rp>)</rp></ruby>い<ruby>冷蔵庫<rp>(</rp><rt>れいぞうこ</rt><rp>)</rp></ruby>を<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>たことがない。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "сэрүүн",
+                        "хүйтэн"
+                    ]
                 },
                 {
                     "kanji": "鈴",
@@ -26919,7 +28833,11 @@ const PHONETICS_DATA = {
                         "jp": "本状の持参人は友人の鈴木君です。",
                         "en": "The bearer of this letter is my friend Suzuki.",
                         "furigana": "<ruby>本状<rp>(</rp><rt>ほんじょう</rt><rp>)</rp></ruby>の<ruby>持参<rp>(</rp><rt>じさん</rt><rp>)</rp></ruby><ruby>人<rp>(</rp><rt>じん</rt><rp>)</rp></ruby>は<ruby>友人<rp>(</rp><rt>ゆうじん</rt><rp>)</rp></ruby>の<ruby>鈴木<rp>(</rp><rt>すずき</rt><rp>)</rp></ruby><ruby>君<rp>(</rp><rt>くん</rt><rp>)</rp></ruby>です。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "жижиг хонх",
+                        "хонх"
+                    ]
                 },
                 {
                     "kanji": "齢",
@@ -26933,7 +28851,10 @@ const PHONETICS_DATA = {
                         "jp": "来年私はあなたの３倍の年齢になる。",
                         "en": "Next year I will be three times as old as you.",
                         "furigana": "<ruby>来年<rp>(</rp><rt>らいねん</rt><rp>)</rp></ruby><ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>はあなたの３<ruby>倍<rp>(</rp><rt>ばい</rt><rp>)</rp></ruby>の<ruby>年齢<rp>(</rp><rt>ねんれい</rt><rp>)</rp></ruby>になる。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "нас"
+                    ]
                 },
                 {
                     "kanji": "零",
@@ -26947,7 +28868,10 @@ const PHONETICS_DATA = {
                         "jp": "昨日は気温が零下５度に下がった。",
                         "en": "The temperature fell five degrees centigrade below zero yesterday.",
                         "furigana": "<ruby>昨日<rp>(</rp><rt>きのう</rt><rp>)</rp></ruby>は<ruby>気温<rp>(</rp><rt>きおん</rt><rp>)</rp></ruby>が<ruby>零下<rp>(</rp><rt>れいか</rt><rp>)</rp></ruby>５<ruby>度<rp>(</rp><rt>ど</rt><rp>)</rp></ruby>に<ruby>下<rp>(</rp><rt>さ</rt><rp>)</rp></ruby>がった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "тэг"
+                    ]
                 }
             ]
         },
@@ -26969,7 +28893,11 @@ const PHONETICS_DATA = {
                         "jp": "５ページ脚注を参照してください。",
                         "en": "See the footnote on page 5.",
                         "furigana": "５ページ<ruby>脚注<rp>(</rp><rt>きゃくちゅう</rt><rp>)</rp></ruby>を<ruby>参照<rp>(</rp><rt>さんしょう</rt><rp>)</rp></ruby>してください。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "асгах",
+                        "төвлөрүүлэх"
+                    ]
                 },
                 {
                     "kanji": "柱",
@@ -26983,7 +28911,10 @@ const PHONETICS_DATA = {
                         "jp": "大きな柱が湖水の眺めを遮っている。",
                         "en": "A large pillar obstructs the view of the lake.",
                         "furigana": "<ruby>大<rp>(</rp><rt>おお</rt><rp>)</rp></ruby>きな<ruby>柱<rp>(</rp><rt>はしら</rt><rp>)</rp></ruby>が<ruby>湖水<rp>(</rp><rt>こすい</rt><rp>)</rp></ruby>の<ruby>眺<rp>(</rp><rt>なが</rt><rp>)</rp></ruby>めを<ruby>遮<rp>(</rp><rt>さえぎ</rt><rp>)</rp></ruby>っている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "багана"
+                    ]
                 },
                 {
                     "kanji": "駐",
@@ -26999,7 +28930,12 @@ const PHONETICS_DATA = {
                         "jp": "通りのどちら側にも駐車できます。",
                         "en": "You can park on either side of the street.",
                         "furigana": "<ruby>通<rp>(</rp><rt>とお</rt><rp>)</rp></ruby>りのどちら<ruby>側<rp>(</rp><rt>がわ</rt><rp>)</rp></ruby>にも<ruby>駐車<rp>(</rp><rt>ちゅうしゃ</rt><rp>)</rp></ruby>できます。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "зогсох",
+                        "зогсоол",
+                        "байрлуулах"
+                    ]
                 }
             ]
         },
@@ -27020,7 +28956,10 @@ const PHONETICS_DATA = {
                         "jp": "彼女はインクを机の上にこぼした。",
                         "en": "She spilt ink on the desk.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はインクを<ruby>机<rp>(</rp><rt>つくえ</rt><rp>)</rp></ruby>の<ruby>上<rp>(</rp><rt>うえ</rt><rp>)</rp></ruby>にこぼした。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "ширээ"
+                    ]
                 },
                 {
                     "kanji": "軌",
@@ -27035,7 +28974,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女の行動は常軌を逸したものだ。",
                         "en": "Her behavior was a departure from the normal.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>の<ruby>行動<rp>(</rp><rt>こうどう</rt><rp>)</rp></ruby>は<ruby>常軌<rp>(</rp><rt>じょうき</rt><rp>)</rp></ruby>を<ruby>逸<rp>(</rp><rt>いっ</rt><rp>)</rp></ruby>したものだ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "тэрэгний мөр",
+                        "зам"
+                    ]
                 },
                 {
                     "kanji": "飢",
@@ -27050,7 +28993,11 @@ const PHONETICS_DATA = {
                         "jp": "世界には飢えに苦しむ人々も居る。",
                         "en": "Some people in the world suffer from hunger.",
                         "furigana": "<ruby>世界<rp>(</rp><rt>せかい</rt><rp>)</rp></ruby>には<ruby>飢<rp>(</rp><rt>う</rt><rp>)</rp></ruby>えに<ruby>苦<rp>(</rp><rt>くる</rt><rp>)</rp></ruby>しむ<ruby>人々<rp>(</rp><rt>ひとびと</rt><rp>)</rp></ruby>も<ruby>居<rp>(</rp><rt>い</rt><rp>)</rp></ruby>る。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "өлссөн",
+                        "өлсгөлөнд нэрвэгдэх"
+                    ]
                 }
             ]
         },
@@ -27071,7 +29018,10 @@ const PHONETICS_DATA = {
                         "jp": "その瞳から一粒の涙が、流れ落ちた。",
                         "en": "A tear ran down from that eye.",
                         "furigana": "その<ruby>瞳<rp>(</rp><rt>ひとみ</rt><rp>)</rp></ruby>から<ruby>一<rp>(</rp><rt>いち</rt><rp>)</rp></ruby><ruby>粒<rp>(</rp><rt>つぶ</rt><rp>)</rp></ruby>の<ruby>涙<rp>(</rp><rt>なみだ</rt><rp>)</rp></ruby>が、<ruby>流<rp>(</rp><rt>なが</rt><rp>)</rp></ruby>れ<ruby>落<rp>(</rp><rt>お</rt><rp>)</rp></ruby>ちた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "унах"
+                    ]
                 },
                 {
                     "kanji": "格",
@@ -27086,7 +29036,11 @@ const PHONETICS_DATA = {
                         "jp": "今回の模試も志望校合格範囲内か。",
                         "en": "Was your mock exam score this time within the pass range for your preferred school?",
                         "furigana": "<ruby>今回<rp>(</rp><rt>こんかい</rt><rp>)</rp></ruby>の<ruby>模試<rp>(</rp><rt>もし</rt><rp>)</rp></ruby>も<ruby>志望校<rp>(</rp><rt>しぼうこう</rt><rp>)</rp></ruby><ruby>合格<rp>(</rp><rt>ごうかく</rt><rp>)</rp></ruby><ruby>範囲<rp>(</rp><rt>はんい</rt><rp>)</rp></ruby><ruby>内<rp>(</rp><rt>ない</rt><rp>)</rp></ruby>か。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "статус",
+                        "норм"
+                    ]
                 },
                 {
                     "kanji": "客",
@@ -27102,7 +29056,12 @@ const PHONETICS_DATA = {
                         "jp": "春先だから客もあまりいませんでした。",
                         "en": "It was early spring, so there weren't many customers.",
                         "furigana": "<ruby>春先<rp>(</rp><rt>はるさき</rt><rp>)</rp></ruby>だから<ruby>客<rp>(</rp><rt>きゃく</rt><rp>)</rp></ruby>もあまりいませんでした。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "зочин",
+                        "айлчлагч",
+                        "үйлчлүүлэгч"
+                    ]
                 },
                 {
                     "kanji": "各",
@@ -27116,7 +29075,10 @@ const PHONETICS_DATA = {
                         "jp": "大雪のため各所で電線が切れた。",
                         "en": "Electric wires were broken in many places from the heavy snowfall.",
                         "furigana": "<ruby>大雪<rp>(</rp><rt>おおゆき</rt><rp>)</rp></ruby>のため<ruby>各所<rp>(</rp><rt>かくしょ</rt><rp>)</rp></ruby>で<ruby>電線<rp>(</rp><rt>でんせん</rt><rp>)</rp></ruby>が<ruby>切<rp>(</rp><rt>き</rt><rp>)</rp></ruby>れた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "тус бүр"
+                    ]
                 },
                 {
                     "kanji": "閣",
@@ -27133,7 +29095,13 @@ const PHONETICS_DATA = {
                         "jp": "内閣は倒れるだろうということだ。",
                         "en": "They say that the cabinet will fall.",
                         "furigana": "<ruby>内閣<rp>(</rp><rt>ないかく</rt><rp>)</rp></ruby>は<ruby>倒<rp>(</rp><rt>たお</rt><rp>)</rp></ruby>れるだろうということだ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "цамхаг",
+                        "сүрлэг барилга",
+                        "засгийн газрын танхим",
+                        "өндөр"
+                    ]
                 },
                 {
                     "kanji": "絡",
@@ -27148,7 +29116,11 @@ const PHONETICS_DATA = {
                         "jp": "連絡するなら電話でお願いします。",
                         "en": "When you contact me, please do so by phone.",
                         "furigana": "<ruby>連絡<rp>(</rp><rt>れんらく</rt><rp>)</rp></ruby>するなら<ruby>電話<rp>(</rp><rt>でんわ</rt><rp>)</rp></ruby>でお<ruby>願<rp>(</rp><rt>ねが</rt><rp>)</rp></ruby>いします。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "ороолт",
+                        "холбогдох"
+                    ]
                 },
                 {
                     "kanji": "酪",
@@ -27158,7 +29130,10 @@ const PHONETICS_DATA = {
                     "meanings": [
                         "dairy products"
                     ],
-                    "example": null
+                    "example": null,
+                    "meaningsMn": [
+                        "сүүн бүтээгдэхүүн"
+                    ]
                 }
             ]
         },
@@ -27180,7 +29155,11 @@ const PHONETICS_DATA = {
                         "jp": "保険証券番号はＰＣ２３５７です。",
                         "en": "The policy number of my insurance is PC-two-three-five-seven.",
                         "furigana": "<ruby>保険<rp>(</rp><rt>ほけん</rt><rp>)</rp></ruby><ruby>証券<rp>(</rp><rt>しょうけん</rt><rp>)</rp></ruby><ruby>番号<rp>(</rp><rt>ばんごう</rt><rp>)</rp></ruby>はＰＣ２３５７です。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "тасалбар",
+                        "гэрчилгээ"
+                    ]
                 },
                 {
                     "kanji": "圏",
@@ -27194,7 +29173,10 @@ const PHONETICS_DATA = {
                         "jp": "学校から徒歩圏内に住んでいます。",
                         "en": "I live within walking distance of school.",
                         "furigana": "<ruby>学校<rp>(</rp><rt>がっこう</rt><rp>)</rp></ruby>から<ruby>徒歩<rp>(</rp><rt>とほ</rt><rp>)</rp></ruby><ruby>圏内<rp>(</rp><rt>けんない</rt><rp>)</rp></ruby>に<ruby>住<rp>(</rp><rt>す</rt><rp>)</rp></ruby>んでいます。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хүрээ"
+                    ]
                 },
                 {
                     "kanji": "拳",
@@ -27208,7 +29190,10 @@ const PHONETICS_DATA = {
                         "jp": "おまえも決して戦う拳を忘れるな。",
                         "en": "Never lose your fighting fists.",
                         "furigana": "おまえも<ruby>決<rp>(</rp><rt>けっ</rt><rp>)</rp></ruby>して<ruby>戦<rp>(</rp><rt>たたか</rt><rp>)</rp></ruby>う<ruby>拳<rp>(</rp><rt>こぶし</rt><rp>)</rp></ruby>を<ruby>忘<rp>(</rp><rt>わす</rt><rp>)</rp></ruby>れるな。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "нүдэн атга"
+                    ]
                 }
             ]
         },
@@ -27229,7 +29214,10 @@ const PHONETICS_DATA = {
                         "jp": "たぶん彼にしてみれば同じことよ。",
                         "en": "Maybe it will be exactly the same for him.",
                         "furigana": "たぶん<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>にしてみれば<ruby>同<rp>(</rp><rt>おな</rt><rp>)</rp></ruby>じことよ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "адилхан"
+                    ]
                 },
                 {
                     "kanji": "洞",
@@ -27244,7 +29232,11 @@ const PHONETICS_DATA = {
                         "jp": "政治家には洞察力が不可欠である。",
                         "en": "Vision is indispensable to a statesman.",
                         "furigana": "<ruby>政治<rp>(</rp><rt>せいじ</rt><rp>)</rp></ruby><ruby>家<rp>(</rp><rt>か</rt><rp>)</rp></ruby>には<ruby>洞察<rp>(</rp><rt>どうさつ</rt><rp>)</rp></ruby><ruby>力<rp>(</rp><rt>りょく</rt><rp>)</rp></ruby>が<ruby>不可欠<rp>(</rp><rt>ふかけつ</rt><rp>)</rp></ruby>である。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "агуй",
+                        "нүх"
+                    ]
                 },
                 {
                     "kanji": "銅",
@@ -27258,7 +29250,10 @@ const PHONETICS_DATA = {
                         "jp": "彼らはその英雄の銅像を建てた。",
                         "en": "They set up a bronze statue of the hero.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らはその<ruby>英雄<rp>(</rp><rt>えいゆう</rt><rp>)</rp></ruby>の<ruby>銅像<rp>(</rp><rt>どうぞう</rt><rp>)</rp></ruby>を<ruby>建<rp>(</rp><rt>た</rt><rp>)</rp></ruby>てた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "зэс"
+                    ]
                 },
                 {
                     "kanji": "筒",
@@ -27273,7 +29268,11 @@ const PHONETICS_DATA = {
                         "jp": "封筒にもう１枚切手をはりなさい。",
                         "en": "Stick another stamp on the envelope.",
                         "furigana": "<ruby>封筒<rp>(</rp><rt>ふうとう</rt><rp>)</rp></ruby>にもう１<ruby>枚<rp>(</rp><rt>まい</rt><rp>)</rp></ruby><ruby>切手<rp>(</rp><rt>きって</rt><rp>)</rp></ruby>をはりなさい。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "цилиндр",
+                        "хоолой"
+                    ]
                 },
                 {
                     "kanji": "胴",
@@ -27287,7 +29286,10 @@ const PHONETICS_DATA = {
                         "jp": "座席の下に救命胴衣があります。",
                         "en": "There are life jackets under your seats.",
                         "furigana": "<ruby>座席<rp>(</rp><rt>ざせき</rt><rp>)</rp></ruby>の<ruby>下<rp>(</rp><rt>した</rt><rp>)</rp></ruby>に<ruby>救命胴衣<rp>(</rp><rt>きゅうめいどうい</rt><rp>)</rp></ruby>があります。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "их бие"
+                    ]
                 }
             ]
         },
@@ -27309,7 +29311,11 @@ const PHONETICS_DATA = {
                         "jp": "あの人は化け物のような力持ちだ。",
                         "en": "That man's monstrously strong.",
                         "furigana": "あの<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>は<ruby>化<rp>(</rp><rt>ば</rt><rp>)</rp></ruby>け<ruby>物<rp>(</rp><rt>もの</rt><rp>)</rp></ruby>のような<ruby>力持<rp>(</rp><rt>ちからも</rt><rp>)</rp></ruby>ちだ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "өөрчлөлт",
+                        "өөрчлөгдөх"
+                    ]
                 },
                 {
                     "kanji": "花",
@@ -27323,7 +29329,10 @@ const PHONETICS_DATA = {
                         "jp": "お墓には供花が供えられていた。",
                         "en": "An offering of flowers had been placed at the grave.",
                         "furigana": "お<ruby>墓<rp>(</rp><rt>はか</rt><rp>)</rp></ruby>には<ruby>供花<rp>(</rp><rt>きょうか</rt><rp>)</rp></ruby>が<ruby>供<rp>(</rp><rt>そな</rt><rp>)</rp></ruby>えられていた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "цэцэг"
+                    ]
                 },
                 {
                     "kanji": "貨",
@@ -27339,7 +29348,12 @@ const PHONETICS_DATA = {
                         "jp": "彼女の父は雑貨店を所有している。",
                         "en": "Her father has a general store.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>の<ruby>父<rp>(</rp><rt>ちち</rt><rp>)</rp></ruby>は<ruby>雑貨<rp>(</rp><rt>ざっか</rt><rp>)</rp></ruby><ruby>店<rp>(</rp><rt>てん</rt><rp>)</rp></ruby>を<ruby>所有<rp>(</rp><rt>しょゆう</rt><rp>)</rp></ruby>している。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "ачаа тээш",
+                        "мөнгө",
+                        "бараа"
+                    ]
                 },
                 {
                     "kanji": "靴",
@@ -27353,7 +29367,10 @@ const PHONETICS_DATA = {
                         "jp": "母さんは彼の靴から泥を落とした。",
                         "en": "Mother removed mud from his shoes.",
                         "furigana": "<ruby>母<rp>(</rp><rt>かあ</rt><rp>)</rp></ruby>さんは<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>靴<rp>(</rp><rt>くつ</rt><rp>)</rp></ruby>から<ruby>泥<rp>(</rp><rt>どろ</rt><rp>)</rp></ruby>を<ruby>落<rp>(</rp><rt>お</rt><rp>)</rp></ruby>とした。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "гутал"
+                    ]
                 }
             ]
         },
@@ -27376,7 +29393,12 @@ const PHONETICS_DATA = {
                         "jp": "母はついに私達の計画に賛成した。",
                         "en": "My mother finally approved of our plan.",
                         "furigana": "<ruby>母<rp>(</rp><rt>はは</rt><rp>)</rp></ruby>はついに<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby><ruby>達<rp>(</rp><rt>たち</rt><rp>)</rp></ruby>の<ruby>計画<rp>(</rp><rt>けいかく</rt><rp>)</rp></ruby>に<ruby>賛成<rp>(</rp><rt>さんせい</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "зөвшөөрөх",
+                        "дэмжих",
+                        "магтах"
+                    ]
                 }
             ]
         },
@@ -27398,7 +29420,11 @@ const PHONETICS_DATA = {
                         "jp": "本の貸出しは１度に５冊までですよ。",
                         "en": "You are allowed to check out not more than five books at a time.",
                         "furigana": "<ruby>本<rp>(</rp><rt>ほん</rt><rp>)</rp></ruby>の<ruby>貸出<rp>(</rp><rt>かしだ</rt><rp>)</rp></ruby>しは１<ruby>度<rp>(</rp><rt>ど</rt><rp>)</rp></ruby>に５<ruby>冊<rp>(</rp><rt>さつ</rt><rp>)</rp></ruby>までですよ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "боть",
+                        "ном тоолох нэгж"
+                    ]
                 },
                 {
                     "kanji": "柵",
@@ -27412,7 +29438,10 @@ const PHONETICS_DATA = {
                         "jp": "少年はらくらくと柵を飛び越えた。",
                         "en": "The boy skipped over the fence.",
                         "furigana": "<ruby>少年<rp>(</rp><rt>しょうねん</rt><rp>)</rp></ruby>はらくらくと<ruby>柵<rp>(</rp><rt>しがらみ</rt><rp>)</rp></ruby>を<ruby>飛<rp>(</rp><rt>と</rt><rp>)</rp></ruby>び<ruby>越<rp>(</rp><rt>こ</rt><rp>)</rp></ruby>えた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хашаа мод"
+                    ]
                 }
             ]
         },
@@ -27434,7 +29463,11 @@ const PHONETICS_DATA = {
                         "jp": "離れて邪魔にならないようにする。",
                         "en": "Go jump in the lake.",
                         "furigana": "<ruby>離<rp>(</rp><rt>はな</rt><rp>)</rp></ruby>れて<ruby>邪魔<rp>(</rp><rt>じゃま</rt><rp>)</rp></ruby>にならないようにする。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "шулам",
+                        "чөтгөр"
+                    ]
                 },
                 {
                     "kanji": "麻",
@@ -27449,7 +29482,11 @@ const PHONETICS_DATA = {
                         "jp": "麻薬中毒で多くの人が堕落した。",
                         "en": "Drug addiction degraded many people.",
                         "furigana": "<ruby>麻薬<rp>(</rp><rt>まやく</rt><rp>)</rp></ruby><ruby>中毒<rp>(</rp><rt>ちゅうどく</rt><rp>)</rp></ruby>で<ruby>多<rp>(</rp><rt>おお</rt><rp>)</rp></ruby>くの<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>が<ruby>堕落<rp>(</rp><rt>だらく</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "олс",
+                        "мэдээ алдах"
+                    ]
                 },
                 {
                     "kanji": "摩",
@@ -27464,7 +29501,11 @@ const PHONETICS_DATA = {
                         "jp": "この薩摩芋は生焼けでがりがりする。",
                         "en": "This sweet potato is only half-baked and is still crunchy.",
                         "furigana": "この<ruby>薩摩芋<rp>(</rp><rt>さつまいも</rt><rp>)</rp></ruby>は<ruby>生焼<rp>(</rp><rt>なまや</rt><rp>)</rp></ruby>けでがりがりする。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "үрэх",
+                        "үрэлдэх"
+                    ]
                 },
                 {
                     "kanji": "磨",
@@ -27479,7 +29520,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女の車はぴかぴかに磨いてある。",
                         "en": "Her car has a nice polish.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>の<ruby>車<rp>(</rp><rt>くるま</rt><rp>)</rp></ruby>はぴかぴかに<ruby>磨<rp>(</rp><rt>みが</rt><rp>)</rp></ruby>いてある。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "нунтаглах",
+                        "өнгөлөх"
+                    ]
                 }
             ]
         },
@@ -27502,7 +29547,12 @@ const PHONETICS_DATA = {
                         "jp": "東京ミッドタウンは緑がいっぱい！",
                         "en": "There's a lot of greenery in Tokyo Midtown!",
                         "furigana": "<ruby>東京<rp>(</rp><rt>とうきょう</rt><rp>)</rp></ruby>ミッドタウンは<ruby>緑<rp>(</rp><rt>みどり</rt><rp>)</rp></ruby>がいっぱい！"
-                    }
+                    },
+                    "meaningsMn": [
+                        "нийслэл",
+                        "Токио",
+                        "Киото"
+                    ]
                 },
                 {
                     "kanji": "景",
@@ -27517,7 +29567,11 @@ const PHONETICS_DATA = {
                         "jp": "不景気になってきているみたいね。",
                         "en": "We're in store for a recession.",
                         "furigana": "<ruby>不景気<rp>(</rp><rt>ふけいき</rt><rp>)</rp></ruby>になってきているみたいね。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "байгалийн үзэсгэлэн",
+                        "дүр зураг"
+                    ]
                 },
                 {
                     "kanji": "涼",
@@ -27532,7 +29586,11 @@ const PHONETICS_DATA = {
                         "jp": "当地では夕方によく涼しい風が吹く。",
                         "en": "There is usually a cool breeze here in the evening.",
                         "furigana": "<ruby>当地<rp>(</rp><rt>とうち</rt><rp>)</rp></ruby>では<ruby>夕方<rp>(</rp><rt>ゆうがた</rt><rp>)</rp></ruby>によく<ruby>涼<rp>(</rp><rt>すず</rt><rp>)</rp></ruby>しい<ruby>風<rp>(</rp><rt>かぜ</rt><rp>)</rp></ruby>が<ruby>吹<rp>(</rp><rt>ふ</rt><rp>)</rp></ruby>く。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "сэргээгч",
+                        "сэрүүн"
+                    ]
                 },
                 {
                     "kanji": "憬",
@@ -27543,7 +29601,11 @@ const PHONETICS_DATA = {
                         "desire",
                         "hanker"
                     ],
-                    "example": null
+                    "example": null,
+                    "meaningsMn": [
+                        "хүсэл",
+                        "тэмүүлэх"
+                    ]
                 }
             ]
         },
@@ -27565,7 +29627,11 @@ const PHONETICS_DATA = {
                         "jp": "年明けに子供が産まれる予定です♪",
                         "en": "I'm expecting a baby in the new year!",
                         "furigana": "<ruby>年明<rp>(</rp><rt>としあ</rt><rp>)</rp></ruby>けに<ruby>子供<rp>(</rp><rt>こども</rt><rp>)</rp></ruby>が<ruby>産<rp>(</rp><rt>う</rt><rp>)</rp></ruby>まれる<ruby>予定<rp>(</rp><rt>よてい</rt><rp>)</rp></ruby>です♪"
-                    }
+                    },
+                    "meaningsMn": [
+                        "урьдчилан",
+                        "өмнөх"
+                    ]
                 },
                 {
                     "kanji": "預",
@@ -27579,7 +29645,10 @@ const PHONETICS_DATA = {
                         "jp": "明日まで犬をお預かりしましょう。",
                         "en": "I'll take care of the dog till tomorrow.",
                         "furigana": "<ruby>明日<rp>(</rp><rt>あした</rt><rp>)</rp></ruby>まで<ruby>犬<rp>(</rp><rt>いぬ</rt><rp>)</rp></ruby>をお<ruby>預<rp>(</rp><rt>あず</rt><rp>)</rp></ruby>かりしましょう。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хадгаламж"
+                    ]
                 }
             ]
         },
@@ -27600,7 +29669,10 @@ const PHONETICS_DATA = {
                         "jp": "日頃のご愛顧にお礼申し上げます。",
                         "en": "We really thank you for your patronage.",
                         "furigana": "<ruby>日頃<rp>(</rp><rt>ひごろ</rt><rp>)</rp></ruby>のご<ruby>愛顧<rp>(</rp><rt>あいこ</rt><rp>)</rp></ruby>にお<ruby>礼<rp>(</rp><rt>れい</rt><rp>)</rp></ruby><ruby>申<rp>(</rp><rt>もう</rt><rp>)</rp></ruby>し<ruby>上<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>げます。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "эргэн харах"
+                    ]
                 },
                 {
                     "kanji": "雇",
@@ -27614,7 +29686,10 @@ const PHONETICS_DATA = {
                         "jp": "労働者は３週間一時解雇された。",
                         "en": "The workers were laid off for three weeks.",
                         "furigana": "<ruby>労働<rp>(</rp><rt>ろうどう</rt><rp>)</rp></ruby><ruby>者<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby>は３<ruby>週間<rp>(</rp><rt>しゅうかん</rt><rp>)</rp></ruby><ruby>一時<rp>(</rp><rt>いちじ</rt><rp>)</rp></ruby><ruby>解雇<rp>(</rp><rt>かいこ</rt><rp>)</rp></ruby>された。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "ажилд авах"
+                    ]
                 }
             ]
         },
@@ -27635,7 +29710,10 @@ const PHONETICS_DATA = {
                         "jp": "実験の結果は今ひとつぱっとしなかった。",
                         "en": "Our experimental results left something to be desired.",
                         "furigana": "<ruby>実験<rp>(</rp><rt>じっけん</rt><rp>)</rp></ruby>の<ruby>結果<rp>(</rp><rt>けっか</rt><rp>)</rp></ruby>は<ruby>今<rp>(</rp><rt>いま</rt><rp>)</rp></ruby>ひとつぱっとしなかった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "жимс"
+                    ]
                 },
                 {
                     "kanji": "課",
@@ -27651,7 +29729,12 @@ const PHONETICS_DATA = {
                         "jp": "畑違いの品質管理課は如何ですか？",
                         "en": "How are you finding the Quality Control department?",
                         "furigana": "<ruby>畑違<rp>(</rp><rt>はたけちが</rt><rp>)</rp></ruby>いの<ruby>品質<rp>(</rp><rt>ひんしつ</rt><rp>)</rp></ruby><ruby>管理<rp>(</rp><rt>かんり</rt><rp>)</rp></ruby><ruby>課<rp>(</rp><rt>か</rt><rp>)</rp></ruby>は<ruby>如何<rp>(</rp><rt>いかが</rt><rp>)</rp></ruby>ですか？"
-                    }
+                    },
+                    "meaningsMn": [
+                        "бүлэг",
+                        "хэсэг",
+                        "хичээл"
+                    ]
                 },
                 {
                     "kanji": "菓",
@@ -27667,7 +29750,12 @@ const PHONETICS_DATA = {
                         "jp": "菓子類は歯に悪いとよく言われる。",
                         "en": "It is often said that sweets are bad for your teeth.",
                         "furigana": "<ruby>菓子<rp>(</rp><rt>かし</rt><rp>)</rp></ruby><ruby>類<rp>(</rp><rt>るい</rt><rp>)</rp></ruby>は<ruby>歯<rp>(</rp><rt>は</rt><rp>)</rp></ruby>に<ruby>悪<rp>(</rp><rt>わる</rt><rp>)</rp></ruby>いとよく<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>われる。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "чихэр",
+                        "амттан",
+                        "амттан"
+                    ]
                 }
             ]
         },
@@ -27688,7 +29776,10 @@ const PHONETICS_DATA = {
                         "jp": "彼はくたくたの背広を着ていた。",
                         "en": "He was wearing a threadbare suit.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>はくたくたの<ruby>背広<rp>(</rp><rt>せびろ</rt><rp>)</rp></ruby>を<ruby>着<rp>(</rp><rt>き</rt><rp>)</rp></ruby>ていた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "өргөн"
+                    ]
                 },
                 {
                     "kanji": "鉱",
@@ -27704,7 +29795,12 @@ const PHONETICS_DATA = {
                         "jp": "その州は鉱物資源が比較的豊富だ。",
                         "en": "The province is relatively rich in mineral resources.",
                         "furigana": "その<ruby>州<rp>(</rp><rt>しゅう</rt><rp>)</rp></ruby>は<ruby>鉱物<rp>(</rp><rt>こうぶつ</rt><rp>)</rp></ruby><ruby>資源<rp>(</rp><rt>しげん</rt><rp>)</rp></ruby>が<ruby>比較的<rp>(</rp><rt>ひかくてき</rt><rp>)</rp></ruby><ruby>豊富<rp>(</rp><rt>ほうふ</rt><rp>)</rp></ruby>だ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "эрдэс",
+                        "хүдэр",
+                        "уурхай"
+                    ]
                 }
             ]
         },
@@ -27726,7 +29822,11 @@ const PHONETICS_DATA = {
                         "jp": "彼は蒸気で船を動かすのに成功した。",
                         "en": "He succeeded in applying steam to navigation.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>蒸気<rp>(</rp><rt>じょうき</rt><rp>)</rp></ruby>で<ruby>船<rp>(</rp><rt>ふね</rt><rp>)</rp></ruby>を<ruby>動<rp>(</rp><rt>うご</rt><rp>)</rp></ruby>かすのに<ruby>成功<rp>(</rp><rt>せいこう</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "уур",
+                        "уурших"
+                    ]
                 }
             ]
         },
@@ -27749,7 +29849,12 @@ const PHONETICS_DATA = {
                         "jp": "私はもっと自立したいと思っている。",
                         "en": "I want to be more independent.",
                         "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>はもっと<ruby>自立<rp>(</rp><rt>じりつ</rt><rp>)</rp></ruby>したいと<ruby>思<rp>(</rp><rt>おも</rt><rp>)</rp></ruby>っている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "босох",
+                        "зогсох",
+                        "байгуулах"
+                    ]
                 },
                 {
                     "kanji": "竜",
@@ -27763,7 +29868,10 @@ const PHONETICS_DATA = {
                         "jp": "恐竜は現在では死滅してしまった。",
                         "en": "Dinosaurs are now extinct.",
                         "furigana": "<ruby>恐竜<rp>(</rp><rt>きょうりゅう</rt><rp>)</rp></ruby>は<ruby>現在<rp>(</rp><rt>げんざい</rt><rp>)</rp></ruby>では<ruby>死滅<rp>(</rp><rt>しめつ</rt><rp>)</rp></ruby>してしまった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "луу"
+                    ]
                 },
                 {
                     "kanji": "粒",
@@ -27777,7 +29885,10 @@ const PHONETICS_DATA = {
                         "jp": "大粒の涙が頬を伝って流れ落ちた。",
                         "en": "A big tear rolled down my cheek.",
                         "furigana": "<ruby>大粒<rp>(</rp><rt>おおつぶ</rt><rp>)</rp></ruby>の<ruby>涙<rp>(</rp><rt>なみだ</rt><rp>)</rp></ruby>が<ruby>頬<rp>(</rp><rt>ほお</rt><rp>)</rp></ruby>を<ruby>伝<rp>(</rp><rt>つた</rt><rp>)</rp></ruby>って<ruby>流<rp>(</rp><rt>なが</rt><rp>)</rp></ruby>れ<ruby>落<rp>(</rp><rt>お</rt><rp>)</rp></ruby>ちた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "ширхэг"
+                    ]
                 }
             ]
         },
@@ -27799,7 +29910,11 @@ const PHONETICS_DATA = {
                         "jp": "彼女はタイピストとして就職した。",
                         "en": "She found employment as a typist.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はタイピストとして<ruby>就職<rp>(</rp><rt>しゅうしょく</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "холбоотой",
+                        "эхлэх"
+                    ]
                 },
                 {
                     "kanji": "蹴",
@@ -27813,7 +29928,10 @@ const PHONETICS_DATA = {
                         "jp": "彼はボールを運動場の外へ蹴った。",
                         "en": "He kicked the ball out of the ground.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>はボールを<ruby>運動<rp>(</rp><rt>うんどう</rt><rp>)</rp></ruby><ruby>場<rp>(</rp><rt>じょう</rt><rp>)</rp></ruby>の<ruby>外<rp>(</rp><rt>そと</rt><rp>)</rp></ruby>へ<ruby>蹴<rp>(</rp><rt>け</rt><rp>)</rp></ruby>った。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "өшиглөх"
+                    ]
                 }
             ]
         },
@@ -27834,7 +29952,10 @@ const PHONETICS_DATA = {
                         "jp": "食糧不足のため、家畜が餓死した。",
                         "en": "Because of the famine, the cattle starved to death.",
                         "furigana": "<ruby>食糧<rp>(</rp><rt>しょくりょう</rt><rp>)</rp></ruby><ruby>不足<rp>(</rp><rt>ふそく</rt><rp>)</rp></ruby>のため、<ruby>家畜<rp>(</rp><rt>かちく</rt><rp>)</rp></ruby>が<ruby>餓死<rp>(</rp><rt>がし</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "мал"
+                    ]
                 },
                 {
                     "kanji": "蓄",
@@ -27849,7 +29970,11 @@ const PHONETICS_DATA = {
                         "jp": "彼らは大量の穀物を蓄えている。",
                         "en": "They have plenty of grain in store.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>大量<rp>(</rp><rt>たいりょう</rt><rp>)</rp></ruby>の<ruby>穀物<rp>(</rp><rt>こくもつ</rt><rp>)</rp></ruby>を<ruby>蓄<rp>(</rp><rt>たくわ</rt><rp>)</rp></ruby>えている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хуримтлуулах",
+                        "нөөцлөх"
+                    ]
                 }
             ]
         },
@@ -27871,7 +29996,11 @@ const PHONETICS_DATA = {
                         "jp": "君の気付いていない問題がある。",
                         "en": "There's a problem there that you don't see.",
                         "furigana": "<ruby>君<rp>(</rp><rt>きみ</rt><rp>)</rp></ruby>の<ruby>気付<rp>(</rp><rt>きづ</rt><rp>)</rp></ruby>いていない<ruby>問題<rp>(</rp><rt>もんだい</rt><rp>)</rp></ruby>がある。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "наалдах",
+                        "хавсаргах"
+                    ]
                 },
                 {
                     "kanji": "府",
@@ -27887,7 +30016,12 @@ const PHONETICS_DATA = {
                         "jp": "郵政事業は政府の独占事業です。",
                         "en": "Postal services are a government monopoly.",
                         "furigana": "<ruby>郵政<rp>(</rp><rt>ゆうせい</rt><rp>)</rp></ruby><ruby>事業<rp>(</rp><rt>じぎょう</rt><rp>)</rp></ruby>は<ruby>政府<rp>(</rp><rt>せいふ</rt><rp>)</rp></ruby>の<ruby>独占<rp>(</rp><rt>どくせん</rt><rp>)</rp></ruby><ruby>事業<rp>(</rp><rt>じぎょう</rt><rp>)</rp></ruby>です。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дүүрэг",
+                        "хотын захиргаа",
+                        "хотын мужийн нэгж"
+                    ]
                 },
                 {
                     "kanji": "附",
@@ -27902,7 +30036,11 @@ const PHONETICS_DATA = {
                         "jp": "小沢の顔を見て、耳の附根まで赧くなった。",
                         "en": "When she saw Ozawa's face, she became red up to the base of her ears.",
                         "furigana": "<ruby>小沢<rp>(</rp><rt>おざわ</rt><rp>)</rp></ruby>の<ruby>顔<rp>(</rp><rt>かお</rt><rp>)</rp></ruby>を<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>て、<ruby>耳<rp>(</rp><rt>みみ</rt><rp>)</rp></ruby>の<ruby>附<rp>(</rp><rt>つけたり</rt><rp>)</rp></ruby><ruby>根<rp>(</rp><rt>ね</rt><rp>)</rp></ruby>まで<ruby>赧<rp>(</rp><rt>赧</rt><rp>)</rp></ruby>くなった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хавсаргасан",
+                        "хавсаргах"
+                    ]
                 },
                 {
                     "kanji": "腐",
@@ -27916,7 +30054,10 @@ const PHONETICS_DATA = {
                         "jp": "その土壌は腐植に富んでいます。",
                         "en": "That soil is rich in humus.",
                         "furigana": "その<ruby>土壌<rp>(</rp><rt>どじょう</rt><rp>)</rp></ruby>は<ruby>腐植<rp>(</rp><rt>ふしょく</rt><rp>)</rp></ruby>に<ruby>富<rp>(</rp><rt>と</rt><rp>)</rp></ruby>んでいます。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "муудах"
+                    ]
                 },
                 {
                     "kanji": "符",
@@ -27931,7 +30072,11 @@ const PHONETICS_DATA = {
                         "jp": "友達から切符が２枚手に入ったんだ。",
                         "en": "I came into a pair of tickets from a friend.",
                         "furigana": "<ruby>友達<rp>(</rp><rt>ともだち</rt><rp>)</rp></ruby>から<ruby>切符<rp>(</rp><rt>きっぷ</rt><rp>)</rp></ruby>が２<ruby>枚<rp>(</rp><rt>まい</rt><rp>)</rp></ruby><ruby>手<rp>(</rp><rt>しゅ</rt><rp>)</rp></ruby>に<ruby>入<rp>(</rp><rt>はい</rt><rp>)</rp></ruby>ったんだ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "тэмдэг",
+                        "бэлгэдэл"
+                    ]
                 }
             ]
         },
@@ -27952,7 +30097,10 @@ const PHONETICS_DATA = {
                         "jp": "東京ミッドタウンは緑がいっぱい！",
                         "en": "There's a lot of greenery in Tokyo Midtown!",
                         "furigana": "<ruby>東京<rp>(</rp><rt>とうきょう</rt><rp>)</rp></ruby>ミッドタウンは<ruby>緑<rp>(</rp><rt>みどり</rt><rp>)</rp></ruby>がいっぱい！"
-                    }
+                    },
+                    "meaningsMn": [
+                        "зүүн"
+                    ]
                 },
                 {
                     "kanji": "練",
@@ -27967,7 +30115,11 @@ const PHONETICS_DATA = {
                         "jp": "毎日練習することが極めて重要です。",
                         "en": "It is essential for you to practice every day.",
                         "furigana": "<ruby>毎日<rp>(</rp><rt>まいにち</rt><rp>)</rp></ruby><ruby>練習<rp>(</rp><rt>れんしゅう</rt><rp>)</rp></ruby>することが<ruby>極<rp>(</rp><rt>きわ</rt><rp>)</rp></ruby>めて<ruby>重要<rp>(</rp><rt>じゅうよう</rt><rp>)</rp></ruby>です。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дасгал хийх",
+                        "сургах"
+                    ]
                 },
                 {
                     "kanji": "棟",
@@ -27982,7 +30134,11 @@ const PHONETICS_DATA = {
                         "jp": "彼は将来国家の棟梁たるべき器だ。",
                         "en": "He has the capacity to be a future leader of the nation.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>将来<rp>(</rp><rt>しょうらい</rt><rp>)</rp></ruby><ruby>国家<rp>(</rp><rt>こっか</rt><rp>)</rp></ruby>の<ruby>棟梁<rp>(</rp><rt>とうりょう</rt><rp>)</rp></ruby>たるべき<ruby>器<rp>(</rp><rt>うつわ</rt><rp>)</rp></ruby>だ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "тааз мод",
+                        "блок"
+                    ]
                 },
                 {
                     "kanji": "凍",
@@ -27997,7 +30153,11 @@ const PHONETICS_DATA = {
                         "jp": "無謀な男達が南極探検中に凍死した。",
                         "en": "The reckless men froze to death during their expedition to the Antarctic.",
                         "furigana": "<ruby>無謀<rp>(</rp><rt>むぼう</rt><rp>)</rp></ruby>な<ruby>男<rp>(</rp><rt>おとこ</rt><rp>)</rp></ruby><ruby>達<rp>(</rp><rt>たち</rt><rp>)</rp></ruby>が<ruby>南極<rp>(</rp><rt>なんきょく</rt><rp>)</rp></ruby><ruby>探検<rp>(</rp><rt>たんけん</rt><rp>)</rp></ruby><ruby>中<rp>(</rp><rt>ちゅう</rt><rp>)</rp></ruby>に<ruby>凍死<rp>(</rp><rt>とうし</rt><rp>)</rp></ruby>した。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хөлдсөн",
+                        "хөлдөх"
+                    ]
                 },
                 {
                     "kanji": "錬",
@@ -28012,7 +30172,11 @@ const PHONETICS_DATA = {
                         "jp": "わが腎と心とを錬りきよめたまへ。",
                         "en": "Try out my reins and my heart.",
                         "furigana": "わが<ruby>腎<rp>(</rp><rt>じん</rt><rp>)</rp></ruby>と<ruby>心<rp>(</rp><rt>こころ</rt><rp>)</rp></ruby>とを<ruby>錬<rp>(</rp><rt>ね</rt><rp>)</rp></ruby>りきよめたまへ。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хатууруулах",
+                        "цэвэршүүлэх"
+                    ]
                 }
             ]
         },
@@ -28034,7 +30198,11 @@ const PHONETICS_DATA = {
                         "jp": "その小国は隣の大国に併合された。",
                         "en": "The small country was annexed to its larger neighbor.",
                         "furigana": "その<ruby>小国<rp>(</rp><rt>しょうこく</rt><rp>)</rp></ruby>は<ruby>隣<rp>(</rp><rt>となり</rt><rp>)</rp></ruby>の<ruby>大国<rp>(</rp><rt>たいこく</rt><rp>)</rp></ruby>に<ruby>併合<rp>(</rp><rt>へいごう</rt><rp>)</rp></ruby>された。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "нэгтгэх",
+                        "хамтдаа"
+                    ]
                 },
                 {
                     "kanji": "餅",
@@ -28048,7 +30216,10 @@ const PHONETICS_DATA = {
                         "jp": "彼は餅をすっかり食べたわけではない。",
                         "en": "He didn't eat all of the rice cakes.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>餅<rp>(</rp><rt>もち</rt><rp>)</rp></ruby>をすっかり<ruby>食<rp>(</rp><rt>た</rt><rp>)</rp></ruby>べたわけではない。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "мочи"
+                    ]
                 },
                 {
                     "kanji": "塀",
@@ -28062,7 +30233,10 @@ const PHONETICS_DATA = {
                         "jp": "ヒラリさんは塀にはしごをかけた。",
                         "en": "Hillary rested the ladder against the wall.",
                         "furigana": "ヒラリさんは<ruby>塀<rp>(</rp><rt>へい</rt><rp>)</rp></ruby>にはしごをかけた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хашаа"
+                    ]
                 }
             ]
         },
@@ -28084,7 +30258,11 @@ const PHONETICS_DATA = {
                         "jp": "俺は葵の指さした場所に胡坐をかく。",
                         "en": "I sit down crosslegged where Aoi points.",
                         "furigana": "<ruby>俺<rp>(</rp><rt>おれ</rt><rp>)</rp></ruby>は<ruby>葵<rp>(</rp><rt>あおい</rt><rp>)</rp></ruby>の<ruby>指<rp>(</rp><rt>ゆび</rt><rp>)</rp></ruby>さした<ruby>場所<rp>(</rp><rt>ばしょ</rt><rp>)</rp></ruby>に<ruby>胡坐<rp>(</rp><rt>こざ</rt><rp>)</rp></ruby>をかく。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хуруу",
+                        "заах"
+                    ]
                 },
                 {
                     "kanji": "旨",
@@ -28099,7 +30277,11 @@ const PHONETICS_DATA = {
                         "jp": "土壇場で言葉が旨く言えなかった。",
                         "en": "Words failed me at the last minute.",
                         "furigana": "<ruby>土壇場<rp>(</rp><rt>どたんば</rt><rp>)</rp></ruby>で<ruby>言葉<rp>(</rp><rt>ことば</rt><rp>)</rp></ruby>が<ruby>旨<rp>(</rp><rt>うま</rt><rp>)</rp></ruby>く<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>えなかった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "амттай",
+                        "агуулга"
+                    ]
                 },
                 {
                     "kanji": "稽",
@@ -28113,7 +30295,10 @@ const PHONETICS_DATA = {
                         "jp": "彼の気取った話し方がとても滑稽におもえた。",
                         "en": "His affected manner of speaking seemed very absurd to me.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>気取<rp>(</rp><rt>きど</rt><rp>)</rp></ruby>った<ruby>話<rp>(</rp><rt>はな</rt><rp>)</rp></ruby>し<ruby>方<rp>(</rp><rt>かた</rt><rp>)</rp></ruby>がとても<ruby>滑稽<rp>(</rp><rt>こっけい</rt><rp>)</rp></ruby>におもえた。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дасгал сургуулилт"
+                    ]
                 },
                 {
                     "kanji": "脂",
@@ -28127,7 +30312,10 @@ const PHONETICS_DATA = {
                         "jp": "脂肪分は減らしたほうがいいですね。",
                         "en": "You had better cut out the fat.",
                         "furigana": "<ruby>脂肪<rp>(</rp><rt>しぼう</rt><rp>)</rp></ruby><ruby>分<rp>(</rp><rt>ぶん</rt><rp>)</rp></ruby>は<ruby>減<rp>(</rp><rt>へ</rt><rp>)</rp></ruby>らしたほうがいいですね。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "өөх тос"
+                    ]
                 },
                 {
                     "kanji": "詣",
@@ -28141,7 +30329,10 @@ const PHONETICS_DATA = {
                         "jp": "初詣、ご利益があるのはどこの神社？",
                         "en": "New Year shrine visit; which shrines are potent?",
                         "furigana": "<ruby>初詣<rp>(</rp><rt>はつもうで</rt><rp>)</rp></ruby>、ご<ruby>利益<rp>(</rp><rt>りやく</rt><rp>)</rp></ruby>があるのはどこの<ruby>神社<rp>(</rp><rt>じんじゃ</rt><rp>)</rp></ruby>？"
-                    }
+                    },
+                    "meaningsMn": [
+                        "сүмд зочлох"
+                    ]
                 }
             ]
         },
@@ -28164,7 +30355,12 @@ const PHONETICS_DATA = {
                         "jp": "大きくなったら王様になりたい。",
                         "en": "When I grow up, I want to be a king.",
                         "furigana": "<ruby>大<rp>(</rp><rt>おお</rt><rp>)</rp></ruby>きくなったら<ruby>王様<rp>(</rp><rt>おうさま</rt><rp>)</rp></ruby>になりたい。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хүндэтгэлийн дагавар",
+                        "хэлбэр",
+                        "албан ёсны цол"
+                    ]
                 },
                 {
                     "kanji": "洋",
@@ -28179,7 +30375,11 @@ const PHONETICS_DATA = {
                         "jp": "洋子はそれらのいくつかを買った。",
                         "en": "Yoko bought some of them.",
                         "furigana": "<ruby>洋子<rp>(</rp><rt>ようこ</rt><rp>)</rp></ruby>はそれらのいくつかを<ruby>買<rp>(</rp><rt>か</rt><rp>)</rp></ruby>った。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "далай",
+                        "барууны"
+                    ]
                 },
                 {
                     "kanji": "養",
@@ -28193,7 +30393,10 @@ const PHONETICS_DATA = {
                         "jp": "彼女は子供の栄養に気をつけている。",
                         "en": "She is careful about her child's nutrition.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>子供<rp>(</rp><rt>こども</rt><rp>)</rp></ruby>の<ruby>栄養<rp>(</rp><rt>えいよう</rt><rp>)</rp></ruby>に<ruby>気<rp>(</rp><rt>き</rt><rp>)</rp></ruby>をつけている。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "тэжээх"
+                    ]
                 },
                 {
                     "kanji": "鮮",
@@ -28208,7 +30411,11 @@ const PHONETICS_DATA = {
                         "jp": "毎日新鮮な野菜サラダを食べてます。",
                         "en": "We eat a fresh, green salad every day.",
                         "furigana": "<ruby>毎日<rp>(</rp><rt>まいにち</rt><rp>)</rp></ruby><ruby>新鮮<rp>(</rp><rt>しんせん</rt><rp>)</rp></ruby>な<ruby>野菜<rp>(</rp><rt>やさい</rt><rp>)</rp></ruby>サラダを<ruby>食<rp>(</rp><rt>た</rt><rp>)</rp></ruby>べてます。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "шинэхэн",
+                        "тод"
+                    ]
                 },
                 {
                     "kanji": "詳",
@@ -28222,7 +30429,10 @@ const PHONETICS_DATA = {
                         "jp": "僕は問題のこの部分には詳しくない。",
                         "en": "I'm not familiar with this part of the subject.",
                         "furigana": "<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>は<ruby>問題<rp>(</rp><rt>もんだい</rt><rp>)</rp></ruby>のこの<ruby>部分<rp>(</rp><rt>ぶぶん</rt><rp>)</rp></ruby>には<ruby>詳<rp>(</rp><rt>くわ</rt><rp>)</rp></ruby>しくない。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дэлгэрэнгүй"
+                    ]
                 },
                 {
                     "kanji": "羊",
@@ -28236,7 +30446,10 @@ const PHONETICS_DATA = {
                         "jp": "父のしごとは羊毛の買い付けです。",
                         "en": "My father's work is to buy wool.",
                         "furigana": "<ruby>父<rp>(</rp><rt>ちち</rt><rp>)</rp></ruby>のしごとは<ruby>羊毛<rp>(</rp><rt>ようもう</rt><rp>)</rp></ruby>の<ruby>買<rp>(</rp><rt>か</rt><rp>)</rp></ruby>い<ruby>付<rp>(</rp><rt>つ</rt><rp>)</rp></ruby>けです。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "хонь"
+                    ]
                 },
                 {
                     "kanji": "祥",
@@ -28250,7 +30463,10 @@ const PHONETICS_DATA = {
                         "jp": "その不祥事は出世の妨げとなった。",
                         "en": "The scandal was an obstacle to his promotion.",
                         "furigana": "その<ruby>不祥事<rp>(</rp><rt>ふしょうじ</rt><rp>)</rp></ruby>は<ruby>出世<rp>(</rp><rt>しゅっせ</rt><rp>)</rp></ruby>の<ruby>妨<rp>(</rp><rt>さまた</rt><rp>)</rp></ruby>げとなった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "буянтай"
+                    ]
                 },
                 {
                     "kanji": "羨",
@@ -28264,7 +30480,10 @@ const PHONETICS_DATA = {
                         "jp": "彼は友人たちの羨望の的であった。",
                         "en": "He was the envy of his friends.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>友人<rp>(</rp><rt>ゆうじん</rt><rp>)</rp></ruby>たちの<ruby>羨望<rp>(</rp><rt>せんぼう</rt><rp>)</rp></ruby>の<ruby>的<rp>(</rp><rt>てき</rt><rp>)</rp></ruby>であった。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "атаархах"
+                    ]
                 },
                 {
                     "kanji": "窯",
@@ -28274,7 +30493,10 @@ const PHONETICS_DATA = {
                     "meanings": [
                         "kiln"
                     ],
-                    "example": null
+                    "example": null,
+                    "meaningsMn": [
+                        "зуух"
+                    ]
                 }
             ]
         },
@@ -28295,7 +30517,10 @@ const PHONETICS_DATA = {
                         "jp": "このお茶は、１０分間煎じなさい。",
                         "en": "Let the tea draw for ten minutes.",
                         "furigana": "このお<ruby>茶<rp>(</rp><rt>ちゃ</rt><rp>)</rp></ruby>は、１０<ruby>分間<rp>(</rp><rt>ふんかん</rt><rp>)</rp></ruby><ruby>煎<rp>(</rp><rt>せん</rt><rp>)</rp></ruby>じなさい。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "шарах"
+                    ]
                 }
             ]
         },
@@ -28316,7 +30541,10 @@ const PHONETICS_DATA = {
                         "jp": "映画は第二次世界大戦に遡る。",
                         "en": "The film takes us back to World War II.",
                         "furigana": "<ruby>映画<rp>(</rp><rt>えいが</rt><rp>)</rp></ruby>は<ruby>第<rp>(</rp><rt>だい</rt><rp>)</rp></ruby><ruby>二<rp>(</rp><rt>に</rt><rp>)</rp></ruby><ruby>次<rp>(</rp><rt>じ</rt><rp>)</rp></ruby><ruby>世界<rp>(</rp><rt>せかい</rt><rp>)</rp></ruby><ruby>大戦<rp>(</rp><rt>たいせん</rt><rp>)</rp></ruby>に<ruby>遡<rp>(</rp><rt>さかのぼ</rt><rp>)</rp></ruby>る。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дээшээ явах"
+                    ]
                 },
                 {
                     "kanji": "塑",
@@ -28330,7 +30558,10 @@ const PHONETICS_DATA = {
                         "jp": "彼は柔らかい粘土で小さな塑像を作った。",
                         "en": "He made a little statue out of soft clay.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>柔<rp>(</rp><rt>やわ</rt><rp>)</rp></ruby>らかい<ruby>粘土<rp>(</rp><rt>ねんど</rt><rp>)</rp></ruby>で<ruby>小<rp>(</rp><rt>ちい</rt><rp>)</rp></ruby>さな<ruby>塑像<rp>(</rp><rt>そぞう</rt><rp>)</rp></ruby>を<ruby>作<rp>(</rp><rt>つく</rt><rp>)</rp></ruby>った。"
-                    }
+                    },
+                    "meaningsMn": [
+                        "дүрслэх"
+                    ]
                 }
             ]
         }
