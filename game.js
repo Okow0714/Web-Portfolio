@@ -661,9 +661,10 @@ function buildTiles(level) {
     const set = level.sets[Math.floor(Math.random() * level.sets.length)];
     currentSet = set;
     const list = [];
+    const useMn = window.siteLang() === 'mn';
     set.forEach((p, i) => {
         list.push({ pairId: i, kind: 'jp', text: p.jp, sub: p.reading, phonetic: p.phonetic || null, cleared: false });
-        list.push({ pairId: i, kind: 'en', text: p.en, sub: '', phonetic: null, cleared: false });
+        list.push({ pairId: i, kind: 'en', text: (useMn && p.enMn) ? p.enMn : p.en, sub: '', phonetic: null, cleared: false });
     });
     shuffleArray(list);
     return list;
