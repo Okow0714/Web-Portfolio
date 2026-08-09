@@ -163,7 +163,9 @@ function chipHtml(member, index, isRootLevel) {
 }
 
 function detailHtml(member) {
-    const meanings = member.meanings && member.meanings.length ? member.meanings.join(', ') : '';
+    const useMn = window.siteLang() === 'mn' && member.meaningsMn && member.meaningsMn.length;
+    const meaningsList = useMn ? member.meaningsMn : member.meanings;
+    const meanings = meaningsList && meaningsList.length ? meaningsList.join(', ') : '';
     const exampleHtml = member.example
         ? `<div class="tree-example">
                <p class="tree-example-jp">${member.example.furigana || escapeHtml(member.example.jp)}</p>
