@@ -64,7 +64,8 @@ function matchesSearch(entry, q) {
     q = q.toLowerCase();
     return entry.kango.text.includes(q) || entry.kango.reading.includes(q) ||
         entry.wago.text.includes(q) || entry.wago.reading.includes(q) ||
-        entry.meaning.toLowerCase().includes(q);
+        entry.meaning.toLowerCase().includes(q) ||
+        (entry.meaningMn && entry.meaningMn.toLowerCase().includes(q));
 }
 
 function matchesFilter(entry) {
@@ -102,7 +103,7 @@ function renderEntry(entry) {
             </div>
         </div>
         <div class="dict-meaning-row">
-            <span class="dict-meaning">${escapeHtml(entry.meaning)}</span>
+            <span class="dict-meaning">${escapeHtml((window.siteLang() === 'mn' && entry.meaningMn) ? entry.meaningMn : entry.meaning)}</span>
             <span class="dict-pos">${escapeHtml(window.t(POS_LABEL_KEY[entry.pos] || 'dict.posAll'))}</span>
         </div>
         ${honorificsHtml}

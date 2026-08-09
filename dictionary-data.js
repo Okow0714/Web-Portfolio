@@ -26,7 +26,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "つかう"
         },
         "meaning": "to use",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хэрэглэх"
     },
     {
         "kango": {
@@ -38,7 +39,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "つかう"
         },
         "meaning": "to utilize",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "ашиглах"
     },
     {
         "kango": {
@@ -50,7 +52,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "かう"
         },
         "meaning": "to purchase",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "худалдаж авах"
     },
     {
         "kango": {
@@ -62,7 +65,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "はじめる"
         },
         "meaning": "to start",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "эхлэх"
     },
     {
         "kango": {
@@ -74,7 +78,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "おわる"
         },
         "meaning": "to end",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "дуусах"
     },
     {
         "kango": {
@@ -86,7 +91,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "つく"
         },
         "meaning": "to arrive",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "ирэх"
     },
     {
         "kango": {
@@ -98,7 +104,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "たつ"
         },
         "meaning": "to depart",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хөдлөх"
     },
     {
         "kango": {
@@ -110,7 +117,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "かえる"
         },
         "meaning": "to go home",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "гэр лүүгээ харих"
     },
     {
         "kango": {
@@ -122,7 +130,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "おとずれる"
         },
         "meaning": "to visit",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "зочлох"
     },
     {
         "kango": {
@@ -134,7 +143,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "うごく"
         },
         "meaning": "to move",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хөдлөх, зөөх"
     },
     {
         "kango": {
@@ -146,7 +156,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "とまる"
         },
         "meaning": "to stop",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "зогсох"
     },
     {
         "kango": {
@@ -158,7 +169,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ふえる"
         },
         "meaning": "to increase",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "нэмэгдэх"
     },
     {
         "kango": {
@@ -170,7 +182,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "へる"
         },
         "meaning": "to decrease",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "буурах"
     },
     {
         "kango": {
@@ -182,7 +195,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "おこる"
         },
         "meaning": "to occur",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "тохиолдох"
     },
     {
         "kango": {
@@ -194,7 +208,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "きえる"
         },
         "meaning": "to disappear",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "алга болох"
     },
     {
         "kango": {
@@ -206,7 +221,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "しあがる"
         },
         "meaning": "to be completed",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "дуусах, биелэх"
     },
     {
         "kango": {
@@ -218,7 +234,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "きめる"
         },
         "meaning": "to decide",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "шийдэх"
     },
     {
         "kango": {
@@ -230,7 +247,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "おもいえがく"
         },
         "meaning": "to imagine",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "төсөөлөх"
     },
     {
         "kango": {
@@ -242,7 +260,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "わかる"
         },
         "meaning": "to understand",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "ойлгох"
     },
     {
         "kango": {
@@ -264,7 +283,8 @@ const DICTIONARY_ENTRIES = [
                 "text": "申し上げる",
                 "reading": "もうしあげる"
             }
-        }
+        },
+        "meaningMn": "хэлэх"
     },
     {
         "kango": {
@@ -286,7 +306,8 @@ const DICTIONARY_ENTRIES = [
                 "text": "拝見する",
                 "reading": "はいけんする"
             }
-        }
+        },
+        "meaningMn": "харах, үзэх"
     },
     {
         "kango": {
@@ -308,7 +329,8 @@ const DICTIONARY_ENTRIES = [
                 "text": "いただく",
                 "reading": "いただく"
             }
-        }
+        },
+        "meaningMn": "идэх"
     },
     {
         "kango": {
@@ -330,7 +352,8 @@ const DICTIONARY_ENTRIES = [
                 "text": "いただく",
                 "reading": "いただく"
             }
-        }
+        },
+        "meaningMn": "уух"
     },
     {
         "kango": {
@@ -348,7 +371,8 @@ const DICTIONARY_ENTRIES = [
                 "text": "お休みになる",
                 "reading": "おやすみになる"
             }
-        }
+        },
+        "meaningMn": "унтах"
     },
     {
         "kango": {
@@ -360,7 +384,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "おきる"
         },
         "meaning": "to get up",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "босох"
     },
     {
         "kango": {
@@ -382,7 +407,8 @@ const DICTIONARY_ENTRIES = [
                 "text": "おる",
                 "reading": "おる"
             }
-        }
+        },
+        "meaningMn": "байх (амьд биет)"
     },
     {
         "kango": {
@@ -404,7 +430,8 @@ const DICTIONARY_ENTRIES = [
                 "text": "いたす",
                 "reading": "いたす"
             }
-        }
+        },
+        "meaningMn": "хийх"
     },
     {
         "kango": {
@@ -426,7 +453,8 @@ const DICTIONARY_ENTRIES = [
                 "text": "参る",
                 "reading": "まいる"
             }
-        }
+        },
+        "meaningMn": "ирэх"
     },
     {
         "kango": {
@@ -448,7 +476,8 @@ const DICTIONARY_ENTRIES = [
                 "text": "存じる",
                 "reading": "ぞんじる"
             }
-        }
+        },
+        "meaningMn": "мэдэх"
     },
     {
         "kango": {
@@ -466,7 +495,8 @@ const DICTIONARY_ENTRIES = [
                 "text": "いただく",
                 "reading": "いただく"
             }
-        }
+        },
+        "meaningMn": "хүлээн авах"
     },
     {
         "kango": {
@@ -484,7 +514,8 @@ const DICTIONARY_ENTRIES = [
                 "text": "くださる",
                 "reading": "くださる"
             }
-        }
+        },
+        "meaningMn": "надад өгөх"
     },
     {
         "kango": {
@@ -502,7 +533,8 @@ const DICTIONARY_ENTRIES = [
                 "text": "差し上げる",
                 "reading": "さしあげる"
             }
-        }
+        },
+        "meaningMn": "өгөх"
     },
     {
         "kango": {
@@ -520,7 +552,8 @@ const DICTIONARY_ENTRIES = [
                 "text": "お目にかかる",
                 "reading": "おめにかかる"
             }
-        }
+        },
+        "meaningMn": "уулзах"
     },
     {
         "kango": {
@@ -538,7 +571,8 @@ const DICTIONARY_ENTRIES = [
                 "text": "お亡くなりになる",
                 "reading": "おなくなりになる"
             }
-        }
+        },
+        "meaningMn": "нас барах"
     },
     {
         "kango": {
@@ -556,7 +590,8 @@ const DICTIONARY_ENTRIES = [
                 "text": "お召しになる",
                 "reading": "おめしになる"
             }
-        }
+        },
+        "meaningMn": "өмсөх"
     },
     {
         "kango": {
@@ -574,7 +609,8 @@ const DICTIONARY_ENTRIES = [
                 "text": "拝借する",
                 "reading": "はいしゃくする"
             }
-        }
+        },
+        "meaningMn": "зээлэх"
     },
     {
         "kango": {
@@ -592,7 +628,8 @@ const DICTIONARY_ENTRIES = [
                 "text": "拝読する",
                 "reading": "はいどくする"
             }
-        }
+        },
+        "meaningMn": "унших"
     },
     {
         "kango": {
@@ -610,7 +647,8 @@ const DICTIONARY_ENTRIES = [
                 "text": "おかけになる",
                 "reading": "おかけになる"
             }
-        }
+        },
+        "meaningMn": "суух"
     },
     {
         "kango": {
@@ -622,7 +660,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "たつ"
         },
         "meaning": "to stand",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "зогсох"
     },
     {
         "kango": {
@@ -634,7 +673,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "うまれる"
         },
         "meaning": "to be born",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "төрөх"
     },
     {
         "kango": {
@@ -646,7 +686,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "よむ"
         },
         "meaning": "to subscribe (and read)",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "захиалж унших"
     },
     {
         "kango": {
@@ -658,7 +699,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "もつ"
         },
         "meaning": "to own, hold",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "эзэмших, барих"
     },
     {
         "kango": {
@@ -670,7 +712,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "もつ"
         },
         "meaning": "to carry",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "зөөх, авч явах"
     },
     {
         "kango": {
@@ -682,7 +725,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "たしかめる"
         },
         "meaning": "to confirm",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "баталгаажуулах"
     },
     {
         "kango": {
@@ -694,7 +738,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "しらべる"
         },
         "meaning": "to investigate",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "судлах, шалгах"
     },
     {
         "kango": {
@@ -706,7 +751,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "えらぶ"
         },
         "meaning": "to choose",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "сонгох"
     },
     {
         "kango": {
@@ -718,7 +764,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "かえる"
         },
         "meaning": "to change",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "өөрчлөх"
     },
     {
         "kango": {
@@ -730,7 +777,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "つづける"
         },
         "meaning": "to continue",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "үргэлжлүүлэх"
     },
     {
         "kango": {
@@ -742,7 +790,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "やめる"
         },
         "meaning": "to interrupt, halt",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "тасалдуулах, зогсоох"
     },
     {
         "kango": {
@@ -754,7 +803,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "とめる"
         },
         "meaning": "to forbid",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хориглох"
     },
     {
         "kango": {
@@ -766,7 +816,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ゆるす"
         },
         "meaning": "to permit",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "зөвшөөрөх"
     },
     {
         "kango": {
@@ -778,7 +829,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ことわる"
         },
         "meaning": "to refuse",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "татгалзах"
     },
     {
         "kango": {
@@ -790,7 +842,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ひきうける"
         },
         "meaning": "to accept, consent",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "зөвшөөрч хүлээх"
     },
     {
         "kango": {
@@ -802,7 +855,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "のぞむ"
         },
         "meaning": "to hope, wish",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хүсэх, найдах"
     },
     {
         "kango": {
@@ -814,7 +868,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "まちのぞむ"
         },
         "meaning": "to expect, look forward to",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "тэсэн ядан хүлээх"
     },
     {
         "kango": {
@@ -826,7 +881,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "くやむ"
         },
         "meaning": "to regret",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "харамсах"
     },
     {
         "kango": {
@@ -838,7 +894,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "あんじる"
         },
         "meaning": "to worry",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "санаа зовох"
     },
     {
         "kango": {
@@ -850,7 +907,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "れいをいう"
         },
         "meaning": "to thank",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "талархах"
     },
     {
         "kango": {
@@ -862,7 +920,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "わびる"
         },
         "meaning": "to apologize",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "уучлал гуйх"
     },
     {
         "kango": {
@@ -874,7 +933,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "しかる"
         },
         "meaning": "to scold",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "загнах"
     },
     {
         "kango": {
@@ -886,7 +946,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ほめる"
         },
         "meaning": "to praise",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "магтах"
     },
     {
         "kango": {
@@ -898,7 +959,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "おしえる"
         },
         "meaning": "to teach",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "заах"
     },
     {
         "kango": {
@@ -910,7 +972,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "まなぶ"
         },
         "meaning": "to learn, study",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "суралцах"
     },
     {
         "kango": {
@@ -922,7 +985,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "おぼえる"
         },
         "meaning": "to memorize",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "цээжлэх"
     },
     {
         "kango": {
@@ -934,7 +998,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "わすれる"
         },
         "meaning": "to forget",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "мартах"
     },
     {
         "kango": {
@@ -946,7 +1011,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "さがす"
         },
         "meaning": "to search for",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хайх"
     },
     {
         "kango": {
@@ -958,7 +1024,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "みつける"
         },
         "meaning": "to discover",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "нээх, олж мэдэх"
     },
     {
         "kango": {
@@ -970,7 +1037,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "なくす"
         },
         "meaning": "to lose (an object)",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "гээх, алдах"
     },
     {
         "kango": {
@@ -982,7 +1050,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "こわれる"
         },
         "meaning": "to break, be damaged",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "эвдрэх"
     },
     {
         "kango": {
@@ -994,7 +1063,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "なおす"
         },
         "meaning": "to repair",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "засварлах"
     },
     {
         "kango": {
@@ -1006,7 +1076,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "つくる"
         },
         "meaning": "to manufacture",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "үйлдвэрлэх"
     },
     {
         "kango": {
@@ -1018,7 +1089,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "たてる"
         },
         "meaning": "to build",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "барих"
     },
     {
         "kango": {
@@ -1030,7 +1102,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "こわす"
         },
         "meaning": "to destroy",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "сүйтгэх"
     },
     {
         "kango": {
@@ -1042,7 +1115,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "やく"
         },
         "meaning": "to incinerate",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "шатаах"
     },
     {
         "kango": {
@@ -1054,7 +1128,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "あらう"
         },
         "meaning": "to wash, cleanse",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "угаах"
     },
     {
         "kango": {
@@ -1066,7 +1141,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "はく"
         },
         "meaning": "to clean, sweep",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "цэвэрлэх"
     },
     {
         "kango": {
@@ -1078,7 +1154,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "かたづける"
         },
         "meaning": "to tidy up, organize",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "цэгцлэх"
     },
     {
         "kango": {
@@ -1090,7 +1167,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "あつめる"
         },
         "meaning": "to collect",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "цуглуулах"
     },
     {
         "kango": {
@@ -1102,7 +1180,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "わける"
         },
         "meaning": "to distribute, divide",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хуваарилах"
     },
     {
         "kango": {
@@ -1114,7 +1193,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "つなぐ"
         },
         "meaning": "to join, connect",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "холбох"
     },
     {
         "kango": {
@@ -1126,7 +1206,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "はなす"
         },
         "meaning": "to separate",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "салгах"
     },
     {
         "kango": {
@@ -1138,7 +1219,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "まぜる"
         },
         "meaning": "to mix",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хутгах, холих"
     },
     {
         "kango": {
@@ -1150,7 +1232,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "わく"
         },
         "meaning": "to boil",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "буцалгах"
     },
     {
         "kango": {
@@ -1162,7 +1245,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ひやす"
         },
         "meaning": "to cool, chill",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хөргөх"
     },
     {
         "kango": {
@@ -1174,7 +1258,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "かわく"
         },
         "meaning": "to dry",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хатаах"
     },
     {
         "kango": {
@@ -1186,7 +1271,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "しめる"
         },
         "meaning": "to become damp",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "норох, чийглэх"
     },
     {
         "kango": {
@@ -1198,7 +1284,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "あがる"
         },
         "meaning": "to rise",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "өсөх, дээшлэх"
     },
     {
         "kango": {
@@ -1210,7 +1297,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "さがる"
         },
         "meaning": "to descend, fall",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "буух, унах"
     },
     {
         "kango": {
@@ -1222,7 +1310,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "まわる"
         },
         "meaning": "to rotate",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "эргэх"
     },
     {
         "kango": {
@@ -1234,7 +1323,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "おちる"
         },
         "meaning": "to fall",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "унах"
     },
     {
         "kango": {
@@ -1246,7 +1336,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "うく"
         },
         "meaning": "to float up, surface",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "усан дээр гарч ирэх"
     },
     {
         "kango": {
@@ -1258,7 +1349,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "しずむ"
         },
         "meaning": "to sink",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "живэх"
     },
     {
         "kango": {
@@ -1270,7 +1362,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "あらわれる"
         },
         "meaning": "to appear",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "гарч ирэх"
     },
     {
         "kango": {
@@ -1282,7 +1375,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "かくす"
         },
         "meaning": "to conceal",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "нуух"
     },
     {
         "kango": {
@@ -1294,7 +1388,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "あける"
         },
         "meaning": "to open (up)",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "нээх"
     },
     {
         "kango": {
@@ -1306,7 +1401,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "しめる"
         },
         "meaning": "to close",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хаах"
     },
     {
         "kango": {
@@ -1318,7 +1414,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ふれる"
         },
         "meaning": "to touch, contact",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хүрэх, холбоо барих"
     },
     {
         "kango": {
@@ -1330,7 +1427,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ぶつかる"
         },
         "meaning": "to collide",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "мөргөлдөх"
     },
     {
         "kango": {
@@ -1342,7 +1440,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "さける"
         },
         "meaning": "to avoid",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "зайлсхийх"
     },
     {
         "kango": {
@@ -1354,7 +1453,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "おう"
         },
         "meaning": "to chase, pursue",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хөөх"
     },
     {
         "kango": {
@@ -1366,7 +1466,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "にげる"
         },
         "meaning": "to flee",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "зугтах"
     },
     {
         "kango": {
@@ -1378,7 +1479,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "つかまえる"
         },
         "meaning": "to capture",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "барих, эзлэх"
     },
     {
         "kango": {
@@ -1390,7 +1492,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "はなす"
         },
         "meaning": "to release, let go",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "суллах"
     },
     {
         "kango": {
@@ -1402,7 +1505,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "かす"
         },
         "meaning": "to lend",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "зээлдүүлэх"
     },
     {
         "kango": {
@@ -1414,7 +1518,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "かえす"
         },
         "meaning": "to return (something)",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "буцаах"
     },
     {
         "kango": {
@@ -1426,7 +1531,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "はらう"
         },
         "meaning": "to pay",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "төлөх"
     },
     {
         "kango": {
@@ -1438,7 +1544,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "うる"
         },
         "meaning": "to sell",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "зарах"
     },
     {
         "kango": {
@@ -1450,7 +1557,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "おく"
         },
         "meaning": "to install, set up",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "суурилуулах"
     },
     {
         "kango": {
@@ -1462,7 +1570,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "とりのぞく"
         },
         "meaning": "to remove",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "зайлуулах"
     },
     {
         "kango": {
@@ -1474,7 +1583,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "くわえる"
         },
         "meaning": "to add",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "нэмэх"
     },
     {
         "kango": {
@@ -1486,7 +1596,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "けす"
         },
         "meaning": "to delete",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "устгах"
     },
     {
         "kango": {
@@ -1498,7 +1609,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "なおす"
         },
         "meaning": "to correct",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "засах, залруулах"
     },
     {
         "kango": {
@@ -1510,7 +1622,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "つくる"
         },
         "meaning": "to create (a document etc.)",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "үүсгэх, зохиох"
     },
     {
         "kango": {
@@ -1522,7 +1635,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "だす"
         },
         "meaning": "to submit",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хүргүүлэх"
     },
     {
         "kango": {
@@ -1534,7 +1648,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "くばる"
         },
         "meaning": "to distribute, hand out",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "тараах"
     },
     {
         "kango": {
@@ -1546,7 +1661,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "かきこむ"
         },
         "meaning": "to fill in, write in",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "бөглөх"
     },
     {
         "kango": {
@@ -1558,7 +1674,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "さいんする"
         },
         "meaning": "to sign",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "гарын үсэг зурах"
     },
     {
         "kango": {
@@ -1570,7 +1687,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "はんをおす"
         },
         "meaning": "to stamp a seal",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "тамга дарах"
     },
     {
         "kango": {
@@ -1582,7 +1700,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "かんがえる"
         },
         "meaning": "to consider, examine",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "авч үзэх, эргэцүүлэх"
     },
     {
         "kango": {
@@ -1594,7 +1713,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "かなえる"
         },
         "meaning": "to realize, bring about",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "биелүүлэх"
     },
     {
         "kango": {
@@ -1606,7 +1726,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "なしとげる"
         },
         "meaning": "to succeed",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "амжилтад хүрэх"
     },
     {
         "kango": {
@@ -1618,7 +1739,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "しくじる"
         },
         "meaning": "to fail",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "бүтэлгүйтэх"
     },
     {
         "kango": {
@@ -1630,7 +1752,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "はげむ"
         },
         "meaning": "to make an effort",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хичээх"
     },
     {
         "kango": {
@@ -1642,7 +1765,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "あきらめる"
         },
         "meaning": "to give up",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "орхих"
     },
     {
         "kango": {
@@ -1654,7 +1778,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "とく"
         },
         "meaning": "to resolve, solve",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "шийдвэрлэх"
     },
     {
         "kango": {
@@ -1666,7 +1791,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ときふせる"
         },
         "meaning": "to persuade",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "ятгах"
     },
     {
         "kango": {
@@ -1678,7 +1804,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "はなしあう"
         },
         "meaning": "to consult, discuss",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "зөвлөлдөх"
     },
     {
         "kango": {
@@ -1690,7 +1817,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "いいつける"
         },
         "meaning": "to order, command",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "тушаах, захирах"
     },
     {
         "kango": {
@@ -1702,7 +1830,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "たのむ"
         },
         "meaning": "to request",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хүсэлт гаргах"
     },
     {
         "kango": {
@@ -1714,7 +1843,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "まねく"
         },
         "meaning": "to invite",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "урих"
     },
     {
         "kango": {
@@ -1726,7 +1856,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "くわわる"
         },
         "meaning": "to participate",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "оролцох"
     },
     {
         "kango": {
@@ -1738,7 +1869,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "しりぞく"
         },
         "meaning": "to leave, withdraw",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "гарах"
     },
     {
         "kango": {
@@ -1750,7 +1882,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ぞくする"
         },
         "meaning": "to belong to",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "харьяалагдах"
     },
     {
         "kango": {
@@ -1762,7 +1895,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ぞくする"
         },
         "meaning": "to be affiliated with",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "нэгдмэл байх"
     },
     {
         "kango": {
@@ -1774,7 +1908,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "いえ"
         },
         "meaning": "house",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "байшин"
     },
     {
         "kango": {
@@ -1786,7 +1921,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "かわ"
         },
         "meaning": "river",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "гол"
     },
     {
         "kango": {
@@ -1798,7 +1934,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "やま"
         },
         "meaning": "mountain",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "уул"
     },
     {
         "kango": {
@@ -1810,7 +1947,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "うみ"
         },
         "meaning": "ocean",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "далай"
     },
     {
         "kango": {
@@ -1822,7 +1960,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "もり"
         },
         "meaning": "forest",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "ой"
     },
     {
         "kango": {
@@ -1834,7 +1973,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ひ"
         },
         "meaning": "sun",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "нар"
     },
     {
         "kango": {
@@ -1846,7 +1986,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "つきあかり"
         },
         "meaning": "moonlight",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "сарны гэрэл"
     },
     {
         "kango": {
@@ -1858,7 +1999,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "あめ"
         },
         "meaning": "rainfall",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "бороо"
     },
     {
         "kango": {
@@ -1870,7 +2012,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ゆき"
         },
         "meaning": "snowfall",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "цас"
     },
     {
         "kango": {
@@ -1882,7 +2025,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "つよいかぜ"
         },
         "meaning": "strong wind",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "хүчтэй салхи"
     },
     {
         "kango": {
@@ -1894,7 +2038,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "おとうさん"
         },
         "meaning": "father",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "аав"
     },
     {
         "kango": {
@@ -1906,7 +2051,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "おかあさん"
         },
         "meaning": "mother",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "ээж"
     },
     {
         "kango": {
@@ -1918,7 +2064,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ともだち"
         },
         "meaning": "friend",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "найз"
     },
     {
         "kango": {
@@ -1930,7 +2077,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "めおと"
         },
         "meaning": "married couple",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "хос (эхнэр нөхөр)"
     },
     {
         "kango": {
@@ -1942,7 +2090,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "こども"
         },
         "meaning": "children",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "хүүхдүүд"
     },
     {
         "kango": {
@@ -1954,7 +2103,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "しごと"
         },
         "meaning": "occupation, work",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "ажил, мэргэжил"
     },
     {
         "kango": {
@@ -1966,7 +2116,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "すまい"
         },
         "meaning": "residence",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "оршин суух газар"
     },
     {
         "kango": {
@@ -1978,7 +2129,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "たべもの"
         },
         "meaning": "food",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "хоол"
     },
     {
         "kango": {
@@ -1990,7 +2142,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "のみもの"
         },
         "meaning": "beverage",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "ундаа"
     },
     {
         "kango": {
@@ -2002,7 +2155,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "きもの"
         },
         "meaning": "clothing",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "хувцас"
     },
     {
         "kango": {
@@ -2014,7 +2168,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ほん"
         },
         "meaning": "book",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "ном"
     },
     {
         "kango": {
@@ -2026,7 +2181,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ふみ"
         },
         "meaning": "letter",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "захидал"
     },
     {
         "kango": {
@@ -2038,7 +2194,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ことば"
         },
         "meaning": "language",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "хэл"
     },
     {
         "kango": {
@@ -2050,7 +2207,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "こえ"
         },
         "meaning": "voice, sound",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "дуу хоолой, чимээ"
     },
     {
         "kango": {
@@ -2062,7 +2220,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "わらいがお"
         },
         "meaning": "smiling face",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "инээмсэглэсэн царай"
     },
     {
         "kango": {
@@ -2074,7 +2233,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ねむり"
         },
         "meaning": "sleep",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "нойр"
     },
     {
         "kango": {
@@ -2086,7 +2246,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ゆめ"
         },
         "meaning": "dream, reverie",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "зүүд, мөрөөдөл"
     },
     {
         "kango": {
@@ -2098,7 +2259,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "のぞみ"
         },
         "meaning": "hope",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "найдвар"
     },
     {
         "kango": {
@@ -2110,7 +2272,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "よろこび"
         },
         "meaning": "joy",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "баяр баясгалан"
     },
     {
         "kango": {
@@ -2122,7 +2285,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "かなしみ"
         },
         "meaning": "sorrow",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "уй гашуу"
     },
     {
         "kango": {
@@ -2134,7 +2298,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "いかり"
         },
         "meaning": "anger",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "уур"
     },
     {
         "kango": {
@@ -2146,7 +2311,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "おそれ"
         },
         "meaning": "fear",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "айдас"
     },
     {
         "kango": {
@@ -2158,7 +2324,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "おどろき"
         },
         "meaning": "astonishment",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "гайхшрал"
     },
     {
         "kango": {
@@ -2170,7 +2337,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "つかれ"
         },
         "meaning": "fatigue",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "ядрал"
     },
     {
         "kango": {
@@ -2182,7 +2350,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "はらへり"
         },
         "meaning": "hunger",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "өлсгөлөн"
     },
     {
         "kango": {
@@ -2194,7 +2363,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "のどのかわき"
         },
         "meaning": "thirst",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "цангалт"
     },
     {
         "kango": {
@@ -2206,7 +2376,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "びょうき"
         },
         "meaning": "illness",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "өвчин"
     },
     {
         "kango": {
@@ -2218,7 +2389,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "けが"
         },
         "meaning": "injury",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "гэмтэл"
     },
     {
         "kango": {
@@ -2230,7 +2402,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ねだん"
         },
         "meaning": "price",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "үнэ"
     },
     {
         "kango": {
@@ -2242,7 +2415,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "おかね"
         },
         "meaning": "money",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "мөнгө"
     },
     {
         "kango": {
@@ -2254,7 +2428,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "みせ"
         },
         "meaning": "shop",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "дэлгүүр"
     },
     {
         "kango": {
@@ -2266,7 +2441,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "みち"
         },
         "meaning": "road",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "зам"
     },
     {
         "kango": {
@@ -2278,7 +2454,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "はし"
         },
         "meaning": "bridge",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "гүүр"
     },
     {
         "kango": {
@@ -2290,7 +2467,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "さかい"
         },
         "meaning": "boundary",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "хил, зааг"
     },
     {
         "kango": {
@@ -2302,7 +2480,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "はじまり"
         },
         "meaning": "starting point",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "эхлэл цэг"
     },
     {
         "kango": {
@@ -2314,7 +2493,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "おわり"
         },
         "meaning": "end point, terminus",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "төгсгөлийн цэг"
     },
     {
         "kango": {
@@ -2326,7 +2506,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "むかし"
         },
         "meaning": "the past",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "өнгөрсөн үе"
     },
     {
         "kango": {
@@ -2338,7 +2519,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ゆくすえ"
         },
         "meaning": "the future",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "ирээдүй"
     },
     {
         "kango": {
@@ -2350,7 +2532,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "いま"
         },
         "meaning": "the present",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "одоо, өнөө үе"
     },
     {
         "kango": {
@@ -2362,7 +2545,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "あくるひ"
         },
         "meaning": "the next day",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "дараа өдөр"
     },
     {
         "kango": {
@@ -2374,7 +2558,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "あさはやく"
         },
         "meaning": "early morning",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "өглөөний эрт"
     },
     {
         "kango": {
@@ -2386,7 +2571,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "よふけ"
         },
         "meaning": "late at night",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "шөнө орой"
     },
     {
         "kango": {
@@ -2398,7 +2584,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "いっしょう"
         },
         "meaning": "one's whole life",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "насан туршдаа"
     },
     {
         "kango": {
@@ -2410,7 +2597,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "とこしえ"
         },
         "meaning": "eternity",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "мөнхийн"
     },
     {
         "kango": {
@@ -2422,7 +2610,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "わけ"
         },
         "meaning": "reason",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "шалтгаан"
     },
     {
         "kango": {
@@ -2434,7 +2623,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "やりかた"
         },
         "meaning": "method",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "арга"
     },
     {
         "kango": {
@@ -2446,7 +2636,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "めあて"
         },
         "meaning": "purpose, goal",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "зорилго"
     },
     {
         "kango": {
@@ -2458,7 +2649,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "なりゆき"
         },
         "meaning": "result, outcome",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "үр дүн"
     },
     {
         "kango": {
@@ -2470,7 +2662,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "しきたり"
         },
         "meaning": "custom, habit",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "зан заншил, дадал"
     },
     {
         "kango": {
@@ -2482,7 +2675,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "きまり"
         },
         "meaning": "rule",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "дүрэм"
     },
     {
         "kango": {
@@ -2494,7 +2688,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "かくしごと"
         },
         "meaning": "secret",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "нууц"
     },
     {
         "kango": {
@@ -2506,7 +2701,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "まこと"
         },
         "meaning": "truth",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "үнэн"
     },
     {
         "kango": {
@@ -2518,7 +2714,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "まがいもの"
         },
         "meaning": "fake, imitation",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "хуурамч, дуурайлга"
     },
     {
         "kango": {
@@ -2530,7 +2727,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "おおきい"
         },
         "meaning": "huge",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "асар том"
     },
     {
         "kango": {
@@ -2542,7 +2740,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ちいさい"
         },
         "meaning": "tiny",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "жижигхэн"
     },
     {
         "kango": {
@@ -2554,7 +2753,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "うつくしい"
         },
         "meaning": "beautiful",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "үзэсгэлэнтэй"
     },
     {
         "kango": {
@@ -2566,7 +2766,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "みにくい"
         },
         "meaning": "ugly",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "муухай"
     },
     {
         "kango": {
@@ -2578,7 +2779,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ねだんがたかい"
         },
         "meaning": "expensive",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "үнэтэй"
     },
     {
         "kango": {
@@ -2590,7 +2792,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "やすい"
         },
         "meaning": "cheap",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "хямд"
     },
     {
         "kango": {
@@ -2602,7 +2805,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "だいじな"
         },
         "meaning": "important",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "чухал"
     },
     {
         "kango": {
@@ -2614,7 +2818,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "むずかしい"
         },
         "meaning": "difficult",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "хэцүү"
     },
     {
         "kango": {
@@ -2626,7 +2831,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "やさしい"
         },
         "meaning": "easy",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "амархан"
     },
     {
         "kango": {
@@ -2638,7 +2844,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "あぶない"
         },
         "meaning": "dangerous",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "аюултай"
     },
     {
         "kango": {
@@ -2650,7 +2857,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "あぶなくない"
         },
         "meaning": "safe",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "аюулгүй"
     },
     {
         "kango": {
@@ -2662,7 +2870,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "あたらしい"
         },
         "meaning": "fresh",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "шинэхэн"
     },
     {
         "kango": {
@@ -2674,7 +2883,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ふるくさい"
         },
         "meaning": "stale, trite",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "хуучин, сонирхолгүй болсон"
     },
     {
         "kango": {
@@ -2686,7 +2896,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "すばやい"
         },
         "meaning": "swift",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "хурдан"
     },
     {
         "kango": {
@@ -2698,7 +2909,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "おそい"
         },
         "meaning": "slow, sluggish",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "удаан"
     },
     {
         "kango": {
@@ -2710,7 +2922,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "つよい"
         },
         "meaning": "tough, resilient",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "бат бөх, тэсвэртэй"
     },
     {
         "kango": {
@@ -2722,7 +2935,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "よわい"
         },
         "meaning": "fragile, weak",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "сул, эмзэг"
     },
     {
         "kango": {
@@ -2734,7 +2948,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "しずかな"
         },
         "meaning": "quiet, hushed",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "нам гүм"
     },
     {
         "kango": {
@@ -2746,7 +2961,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "さわがしい"
         },
         "meaning": "noisy",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "чимээ шуугиантай"
     },
     {
         "kango": {
@@ -2758,7 +2974,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "おおい"
         },
         "meaning": "abundant",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "элбэг"
     },
     {
         "kango": {
@@ -2770,7 +2987,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "すくない"
         },
         "meaning": "scarce, rare",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "ховор"
     },
     {
         "kango": {
@@ -2782,7 +3000,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "いそがしい"
         },
         "meaning": "busy",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "завгүй"
     },
     {
         "kango": {
@@ -2794,7 +3013,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "たのしい"
         },
         "meaning": "pleasant, delightful",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "тааламжтай"
     },
     {
         "kango": {
@@ -2806,7 +3026,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "くらい"
         },
         "meaning": "gloomy",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "гунигтай"
     },
     {
         "kango": {
@@ -2818,7 +3039,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "でる"
         },
         "meaning": "to attend",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "ирэх, хүрэлцэн ирэх"
     },
     {
         "kango": {
@@ -2830,7 +3052,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "やすむ"
         },
         "meaning": "to be absent",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "тасалах"
     },
     {
         "kango": {
@@ -2842,7 +3065,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "うりだす"
         },
         "meaning": "to release for sale",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "худалдаанд гаргах"
     },
     {
         "kango": {
@@ -2854,7 +3078,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "だす"
         },
         "meaning": "to publish",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хэвлүүлэх"
     },
     {
         "kango": {
@@ -2866,7 +3091,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "する"
         },
         "meaning": "to print",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хэвлэх"
     },
     {
         "kango": {
@@ -2878,7 +3104,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "とる"
         },
         "meaning": "to photograph",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "зураг авах"
     },
     {
         "kango": {
@@ -2890,7 +3117,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "かなでる"
         },
         "meaning": "to perform music",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хөгжим тоглох"
     },
     {
         "kango": {
@@ -2902,7 +3130,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "うたう"
         },
         "meaning": "to sing",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "дуулах"
     },
     {
         "kango": {
@@ -2914,7 +3143,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "いいあらそう"
         },
         "meaning": "to argue, debate",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "маргах"
     },
     {
         "kango": {
@@ -2926,7 +3156,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "さからう"
         },
         "meaning": "to oppose",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "эсэргүүцэх"
     },
     {
         "kango": {
@@ -2938,7 +3169,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "したがう"
         },
         "meaning": "to obey",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "дуулгавартай байх"
     },
     {
         "kango": {
@@ -2950,7 +3182,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "おさめる"
         },
         "meaning": "to govern, rule",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "захирах, удирдах"
     },
     {
         "kango": {
@@ -2962,7 +3195,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "したがえる"
         },
         "meaning": "to conquer",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "байлдан дагуулах"
     },
     {
         "kango": {
@@ -2974,7 +3208,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "かつ"
         },
         "meaning": "to win",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "ялах"
     },
     {
         "kango": {
@@ -2986,7 +3221,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "まける"
         },
         "meaning": "to lose",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хожигдох"
     },
     {
         "kango": {
@@ -2998,7 +3234,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "せめる"
         },
         "meaning": "to attack",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "дайрах"
     },
     {
         "kango": {
@@ -3010,7 +3247,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ふせぐ"
         },
         "meaning": "to defend",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хамгаалж тэмцэх"
     },
     {
         "kango": {
@@ -3022,7 +3260,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "まもる"
         },
         "meaning": "to protect",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хамгаалах"
     },
     {
         "kango": {
@@ -3034,7 +3273,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "きずつける"
         },
         "meaning": "to damage, harm",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хохироох"
     },
     {
         "kango": {
@@ -3046,7 +3286,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "なおす"
         },
         "meaning": "to treat, cure",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "эмчлэх"
     },
     {
         "kango": {
@@ -3058,7 +3299,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "なおる"
         },
         "meaning": "to recover",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "сэргэх, эдгэрэх"
     },
     {
         "kango": {
@@ -3070,7 +3312,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ひどくなる"
         },
         "meaning": "to worsen",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "дордох"
     },
     {
         "kango": {
@@ -3082,7 +3325,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "よくする"
         },
         "meaning": "to improve",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "сайжрах"
     },
     {
         "kango": {
@@ -3094,7 +3338,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "あがる"
         },
         "meaning": "to improve, rise (skill)",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "дэвших, ур чадвар нэмэгдэх"
     },
     {
         "kango": {
@@ -3106,7 +3351,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ます"
         },
         "meaning": "to grow, increase",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "өсөх"
     },
     {
         "kango": {
@@ -3118,7 +3364,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ちぢむ"
         },
         "meaning": "to shrink",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "агших, буурах"
     },
     {
         "kango": {
@@ -3130,7 +3377,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ひろがる"
         },
         "meaning": "to expand",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "тэлэх"
     },
     {
         "kango": {
@@ -3142,7 +3390,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ひろげる"
         },
         "meaning": "to extend, broaden",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "өргөжүүлэх"
     },
     {
         "kango": {
@@ -3154,7 +3403,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ちぢめる"
         },
         "meaning": "to shorten",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "богиносгох"
     },
     {
         "kango": {
@@ -3166,7 +3416,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "のばす"
         },
         "meaning": "to extend, lengthen",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "уртасгах"
     },
     {
         "kango": {
@@ -3178,7 +3429,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "たどりつく"
         },
         "meaning": "to reach, arrive at",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хүрэх"
     },
     {
         "kango": {
@@ -3190,7 +3442,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "とおる"
         },
         "meaning": "to pass through",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "дамжин өнгөрөх"
     },
     {
         "kango": {
@@ -3202,7 +3455,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "わたる"
         },
         "meaning": "to cross",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "гаталах"
     },
     {
         "kango": {
@@ -3214,7 +3468,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "のる"
         },
         "meaning": "to board, ride",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "суух (унаанд)"
     },
     {
         "kango": {
@@ -3226,7 +3481,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "おりる"
         },
         "meaning": "to get off",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "буух"
     },
     {
         "kango": {
@@ -3238,7 +3494,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "あやつる"
         },
         "meaning": "to pilot, operate",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "жолоодох, ажиллуулах"
     },
     {
         "kango": {
@@ -3250,7 +3507,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "はこぶ"
         },
         "meaning": "to carry, transport",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "тээвэрлэх"
     },
     {
         "kango": {
@@ -3262,7 +3520,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "うむ"
         },
         "meaning": "to give birth",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "төрүүлэх"
     },
     {
         "kango": {
@@ -3274,7 +3533,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "そだてる"
         },
         "meaning": "to raise, nurture",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "өсгөх"
     },
     {
         "kango": {
@@ -3286,7 +3546,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "そだつ"
         },
         "meaning": "to grow up",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "өсч том болох"
     },
     {
         "kango": {
@@ -3298,7 +3559,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "おいる"
         },
         "meaning": "to age",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хөгших"
     },
     {
         "kango": {
@@ -3310,7 +3572,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ほうむる"
         },
         "meaning": "to bury",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "оршуулах"
     },
     {
         "kango": {
@@ -3322,7 +3585,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "つくる"
         },
         "meaning": "to cook",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хоол хийх"
     },
     {
         "kango": {
@@ -3334,7 +3598,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "とりいれる"
         },
         "meaning": "to harvest",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хураах"
     },
     {
         "kango": {
@@ -3346,7 +3611,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "そだてる"
         },
         "meaning": "to cultivate (plants)",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "тарималжуулах"
     },
     {
         "kango": {
@@ -3358,7 +3624,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "たがやす"
         },
         "meaning": "to till, cultivate",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "тариалах, хагалах"
     },
     {
         "kango": {
@@ -3370,7 +3637,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "しまう"
         },
         "meaning": "to put away, store",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хадгалах"
     },
     {
         "kango": {
@@ -3382,7 +3650,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "たくわえる"
         },
         "meaning": "to store up",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хуримтлуулах"
     },
     {
         "kango": {
@@ -3394,7 +3663,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "つかいはたす"
         },
         "meaning": "to squander",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "үрэх, дэмий үрэгдүүлэх"
     },
     {
         "kango": {
@@ -3406,7 +3676,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "たくわえる"
         },
         "meaning": "to save money",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "мөнгө хуримтлуулах"
     },
     {
         "kango": {
@@ -3418,7 +3689,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "かえる"
         },
         "meaning": "to return to one's country",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "эх орондоо буцах"
     },
     {
         "kango": {
@@ -3430,7 +3702,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "みつめる"
         },
         "meaning": "to stare at",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "ширтэх"
     },
     {
         "kango": {
@@ -3442,7 +3715,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ふりかえる"
         },
         "meaning": "to reflect on, reconsider",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "эргэцүүлэх"
     },
     {
         "kango": {
@@ -3454,7 +3728,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "うたがう"
         },
         "meaning": "to doubt",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "эргэлзэх"
     },
     {
         "kango": {
@@ -3466,7 +3741,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "しんじる"
         },
         "meaning": "to trust, believe",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "итгэх"
     },
     {
         "kango": {
@@ -3478,7 +3754,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "うやまう"
         },
         "meaning": "to respect",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хүндэтгэх"
     },
     {
         "kango": {
@@ -3490,7 +3767,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "みくだす"
         },
         "meaning": "to despise, look down on",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "басамжлах"
     },
     {
         "kango": {
@@ -3502,7 +3780,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "このむ"
         },
         "meaning": "to like, be fond of",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "дуртай байх"
     },
     {
         "kango": {
@@ -3514,7 +3793,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "きらう"
         },
         "meaning": "to hate, dislike",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "үзэн ядах, дургүй байх"
     },
     {
         "kango": {
@@ -3526,7 +3806,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "みちたりる"
         },
         "meaning": "to be satisfied",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "сэтгэл ханах"
     },
     {
         "kango": {
@@ -3538,7 +3819,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "がっかりする"
         },
         "meaning": "to be discouraged",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "урам хугарах"
     },
     {
         "kango": {
@@ -3550,7 +3832,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "おもんじる"
         },
         "meaning": "to value, respect",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "үнэлэх, эрхэмлэх"
     },
     {
         "kango": {
@@ -3562,7 +3845,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "あなどる"
         },
         "meaning": "to make light of",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "үл тоомсорлох"
     },
     {
         "kango": {
@@ -3574,7 +3858,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "こたえる"
         },
         "meaning": "to answer, respond",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хариулах"
     },
     {
         "kango": {
@@ -3586,7 +3871,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "たずねる"
         },
         "meaning": "to ask a question",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "асуулт асуух"
     },
     {
         "kango": {
@@ -3598,7 +3884,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "みとめる"
         },
         "meaning": "to approve, acknowledge",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хүлээн зөвшөөрөх"
     },
     {
         "kango": {
@@ -3610,7 +3897,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "いいはる"
         },
         "meaning": "to assert, insist",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "шаардах, батлан хэлэх"
     },
     {
         "kango": {
@@ -3622,7 +3910,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "いいきる"
         },
         "meaning": "to declare firmly",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "тодорхой мэдэгдэх"
     },
     {
         "kango": {
@@ -3634,7 +3923,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "うちけす"
         },
         "meaning": "to deny",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "үгүйсгэх"
     },
     {
         "kango": {
@@ -3646,7 +3936,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ゆずる"
         },
         "meaning": "to compromise, yield",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "буулт хийх"
     },
     {
         "kango": {
@@ -3658,7 +3949,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "かけあう"
         },
         "meaning": "to negotiate",
-        "pos": "verb"
+        "pos": "verb",
+        "meaningMn": "хэлэлцээр хийх"
     },
     {
         "kango": {
@@ -3676,7 +3968,8 @@ const DICTIONARY_ENTRIES = [
                 "text": "ご覧に入れる",
                 "reading": "ごらんにいれる"
             }
-        }
+        },
+        "meaningMn": "үзүүлэх"
     },
     {
         "kango": {
@@ -3688,7 +3981,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "おじいさん"
         },
         "meaning": "grandfather",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "өвөө"
     },
     {
         "kango": {
@@ -3700,7 +3994,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "おばあさん"
         },
         "meaning": "grandmother",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "эмээ"
     },
     {
         "kango": {
@@ -3712,7 +4007,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "みうち"
         },
         "meaning": "relatives",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "төрөл садан"
     },
     {
         "kango": {
@@ -3724,7 +4020,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "となりのひと"
         },
         "meaning": "neighbor",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "хөрш"
     },
     {
         "kango": {
@@ -3736,7 +4033,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "あるじ"
         },
         "meaning": "master, husband",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "эзэн, нөхөр"
     },
     {
         "kango": {
@@ -3748,7 +4046,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "はたらきて"
         },
         "meaning": "employee",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "ажилтан"
     },
     {
         "kango": {
@@ -3760,7 +4059,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "そらもよう"
         },
         "meaning": "weather",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "цаг агаар"
     },
     {
         "kango": {
@@ -3772,7 +4072,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "あさごはん"
         },
         "meaning": "breakfast",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "өглөөний хоол"
     },
     {
         "kango": {
@@ -3784,7 +4085,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ひるごはん"
         },
         "meaning": "lunch",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "өдрийн хоол"
     },
     {
         "kango": {
@@ -3796,7 +4098,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ばんごはん"
         },
         "meaning": "dinner",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "оройн хоол"
     },
     {
         "kango": {
@@ -3808,7 +4111,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "しおけ"
         },
         "meaning": "saltiness",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "давслаг"
     },
     {
         "kango": {
@@ -3820,7 +4124,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "あまさ"
         },
         "meaning": "sweetness",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "амттан, чихэрлэг"
     },
     {
         "kango": {
@@ -3832,7 +4137,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "にがさ"
         },
         "meaning": "bitterness",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "гашуун"
     },
     {
         "kango": {
@@ -3844,7 +4150,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "すっぱさ"
         },
         "meaning": "sourness",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "хүчиллэг"
     },
     {
         "kango": {
@@ -3856,7 +4163,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "かおり"
         },
         "meaning": "fragrance",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "сайхан үнэр"
     },
     {
         "kango": {
@@ -3868,7 +4176,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "におい"
         },
         "meaning": "odor, smell",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "үнэр"
     },
     {
         "kango": {
@@ -3880,7 +4189,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "いろ"
         },
         "meaning": "color",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "өнгө"
     },
     {
         "kango": {
@@ -3892,7 +4202,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "かたち"
         },
         "meaning": "shape",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "хэлбэр"
     },
     {
         "kango": {
@@ -3904,7 +4215,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "おおきさ"
         },
         "meaning": "measurements, dimensions",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "хэмжээ"
     },
     {
         "kango": {
@@ -3916,7 +4228,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "おもさ"
         },
         "meaning": "weight",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "жин"
     },
     {
         "kango": {
@@ -3928,7 +4241,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "はやさ"
         },
         "meaning": "speed",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "хурд"
     },
     {
         "kango": {
@@ -3940,7 +4254,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ひろさ"
         },
         "meaning": "area",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "талбай"
     },
     {
         "kango": {
@@ -3952,7 +4267,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "なりゆき"
         },
         "meaning": "course of events, progress",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "явц"
     },
     {
         "kango": {
@@ -3964,7 +4280,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ようす"
         },
         "meaning": "situation, circumstances",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "нөхцөл байдал"
     },
     {
         "kango": {
@@ -3976,7 +4293,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ありさま"
         },
         "meaning": "state, condition",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "байдал"
     },
     {
         "kango": {
@@ -3988,7 +4306,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "たち"
         },
         "meaning": "nature, disposition",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "зан чанар"
     },
     {
         "kango": {
@@ -4000,7 +4319,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ひとがら"
         },
         "meaning": "personality",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "зан төлөв"
     },
     {
         "kango": {
@@ -4012,7 +4332,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "かおだち"
         },
         "meaning": "appearance, looks",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "төрх байдал"
     },
     {
         "kango": {
@@ -4024,7 +4345,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "からだつき"
         },
         "meaning": "physique",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "биеийн бүтэц"
     },
     {
         "kango": {
@@ -4036,7 +4358,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "うまれつき"
         },
         "meaning": "natural gift",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "байгалиас заяасан авьяас"
     },
     {
         "kango": {
@@ -4048,7 +4371,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "きもち"
         },
         "meaning": "emotion, feeling",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "сэтгэл хөдлөл"
     },
     {
         "kango": {
@@ -4060,7 +4384,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ここち"
         },
         "meaning": "sensation, feeling",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "мэдрэмж"
     },
     {
         "kango": {
@@ -4072,7 +4397,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "しごとはじめ"
         },
         "meaning": "start of work/business",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "ажил/бизнес эхлэх"
     },
     {
         "kango": {
@@ -4084,7 +4410,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ひまなじかん"
         },
         "meaning": "leisure time",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "амралтын цаг"
     },
     {
         "kango": {
@@ -4096,7 +4423,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "みいり"
         },
         "meaning": "income",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "орлого"
     },
     {
         "kango": {
@@ -4108,7 +4436,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "もうけ"
         },
         "meaning": "profit",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "ашиг"
     },
     {
         "kango": {
@@ -4120,7 +4449,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "そん"
         },
         "meaning": "loss",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "алдагдал"
     },
     {
         "kango": {
@@ -4132,7 +4462,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "かり"
         },
         "meaning": "debt",
-        "pos": "noun"
+        "pos": "noun",
+        "meaningMn": "өр"
     },
     {
         "kango": {
@@ -4144,7 +4475,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "あたたかい"
         },
         "meaning": "warm (climate)",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "дулаан"
     },
     {
         "kango": {
@@ -4156,7 +4488,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "さむい"
         },
         "meaning": "cold",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "хүйтэн"
     },
     {
         "kango": {
@@ -4168,7 +4501,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "きれいな"
         },
         "meaning": "clean",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "цэвэр"
     },
     {
         "kango": {
@@ -4180,7 +4514,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "きたない"
         },
         "meaning": "dirty, unclean",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "бохир"
     },
     {
         "kango": {
@@ -4192,7 +4527,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "はっきりした"
         },
         "meaning": "clear, distinct",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "тодорхой"
     },
     {
         "kango": {
@@ -4204,7 +4540,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "あやふやな"
         },
         "meaning": "vague, ambiguous",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "тодорхой бус"
     },
     {
         "kango": {
@@ -4216,7 +4553,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "こみいった"
         },
         "meaning": "complicated",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "нарийн төвөгтэй"
     },
     {
         "kango": {
@@ -4228,7 +4566,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ただしい"
         },
         "meaning": "accurate, correct",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "зөв, нарийвчлалтай"
     },
     {
         "kango": {
@@ -4240,7 +4579,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "まちがった"
         },
         "meaning": "inaccurate",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "буруу, нарийвчлалгүй"
     },
     {
         "kango": {
@@ -4252,7 +4592,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "もうしぶんない"
         },
         "meaning": "perfect, flawless",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "төгс"
     },
     {
         "kango": {
@@ -4264,7 +4605,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "たりない"
         },
         "meaning": "incomplete",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "төгс бус, дутуу"
     },
     {
         "kango": {
@@ -4276,7 +4618,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "たっぷりな"
         },
         "meaning": "sufficient, ample",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "хангалттай"
     },
     {
         "kango": {
@@ -4288,7 +4631,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ふさわしい"
         },
         "meaning": "appropriate, fitting",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "тохиромжтой"
     },
     {
         "kango": {
@@ -4300,7 +4644,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ふさわしくない"
         },
         "meaning": "inappropriate",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "тохиромжгүй"
     },
     {
         "kango": {
@@ -4312,7 +4657,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ふつうの"
         },
         "meaning": "normal",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "хэвийн"
     },
     {
         "kango": {
@@ -4324,7 +4670,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "おかしな"
         },
         "meaning": "abnormal, strange",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "хэвийн бус"
     },
     {
         "kango": {
@@ -4336,7 +4683,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "かわった"
         },
         "meaning": "unusual, peculiar",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "ер бусын"
     },
     {
         "kango": {
@@ -4348,7 +4696,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "それぞれの"
         },
         "meaning": "individual, respective",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "тус тусын"
     },
     {
         "kango": {
@@ -4360,7 +4709,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ありふれた"
         },
         "meaning": "mundane, ordinary",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "энгийн"
     },
     {
         "kango": {
@@ -4372,7 +4722,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "なみはずれた"
         },
         "meaning": "extraordinary",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "онцгой"
     },
     {
         "kango": {
@@ -4384,7 +4735,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "すぐれた"
         },
         "meaning": "excellent, superior",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "шилдэг"
     },
     {
         "kango": {
@@ -4396,7 +4748,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ひどい"
         },
         "meaning": "terrible, poor quality",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "муу чанартай"
     },
     {
         "kango": {
@@ -4408,7 +4761,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ためになる"
         },
         "meaning": "beneficial, useful",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "ашигтай"
     },
     {
         "kango": {
@@ -4420,7 +4774,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "むだな"
         },
         "meaning": "useless, futile",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "дэмий, ашиггүй"
     },
     {
         "kango": {
@@ -4432,7 +4787,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "おだやかな"
         },
         "meaning": "gentle, mild-mannered",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "дөлгөөн"
     },
     {
         "kango": {
@@ -4444,7 +4800,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "あらっぽい"
         },
         "meaning": "rough, violent",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "ширүүн"
     },
     {
         "kango": {
@@ -4456,7 +4813,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "いさましい"
         },
         "meaning": "brave",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "зоригтой"
     },
     {
         "kango": {
@@ -4468,7 +4826,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "きがちいさい"
         },
         "meaning": "faint-hearted, cowardly",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "цайрдаг, зоригүй"
     },
     {
         "kango": {
@@ -4480,7 +4839,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "まじめな"
         },
         "meaning": "sincere, earnest",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "чин сэтгэлтэй"
     },
     {
         "kango": {
@@ -4492,7 +4852,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "ずるい"
         },
         "meaning": "insincere, sly",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "хуурамч, зальтай"
     },
     {
         "kango": {
@@ -4504,7 +4865,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "かたくなな"
         },
         "meaning": "stubborn",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "зөрүүд"
     },
     {
         "kango": {
@@ -4516,7 +4878,8 @@ const DICTIONARY_ENTRIES = [
             "reading": "しなやかな"
         },
         "meaning": "flexible, supple",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "уян хатан"
     },
     {
         "kango": {
@@ -4528,6 +4891,7 @@ const DICTIONARY_ENTRIES = [
             "reading": "おちついた"
         },
         "meaning": "calm, composed",
-        "pos": "adjective"
+        "pos": "adjective",
+        "meaningMn": "тайван"
     }
 ];
