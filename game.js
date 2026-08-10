@@ -644,7 +644,7 @@ function syncSoundButtons(on) {
     ].forEach(([btn, icon]) => {
         btn.classList.toggle('on', on);
         btn.setAttribute('aria-pressed', on ? 'true' : 'false');
-        btn.title = on ? 'Turn sound off' : 'Turn sound on';
+        btn.title = on ? window.t('game.soundOff') : window.t('game.soundOn');
         icon.textContent = on ? '\u{1F50A}' : '\u{1F507}';
     });
 }
@@ -756,7 +756,7 @@ function addTimeBonus(pairCount, atX, atY) {
     bonusSeconds += TIME_BONUS_PER_PAIR * pairCount;
     timeRemaining = Math.max(0, MATCH_DURATION + bonusSeconds - elapsedSeconds);
     renderTimer();
-    if (atX != null) floatText(atX, atY, '+' + (TIME_BONUS_PER_PAIR * pairCount) + 's', false, false, 'time-text');
+    if (atX != null) floatText(atX, atY, '+' + (TIME_BONUS_PER_PAIR * pairCount) + window.t('game.secAbbr'), false, false, 'time-text');
 }
 
 // Time ran out before the level was cleared -- a distinct, honest failure path from
@@ -841,7 +841,7 @@ function renderFamiliesFound() {
         chip.className = 'family-chip';
         chip.innerHTML = `<span class="family-chip-kanji">${escapeHtml(phonetic)}</span>` +
             (reading ? `<span class="family-chip-reading">${escapeHtml(reading)}</span>` : '') +
-            `<span class="family-chip-label">found</span>`;
+            `<span class="family-chip-label">${escapeHtml(window.t('game.foundChipLabel'))}</span>`;
         listEl.appendChild(chip);
     });
 }
@@ -953,7 +953,7 @@ function handleMatch(a, b) {
     updateStreakMeter(tierHit);
     if (tierHit) {
         window.setTimeout(() => {
-            floatText(mid.x, mid.y - 40, 'STREAK x' + streak, true);
+            floatText(mid.x, mid.y - 40, window.tf('game.streakFloat', { n: streak }), true);
             fxField.spawnBurst(mid.x, mid.y, { count: 60, speed: 260, life: 1.1, colors: ['212,166,75', '244,206,122', '255,255,255'] });
             GameAudio.streak();
         }, 200);
@@ -1022,10 +1022,10 @@ function handleLightningChain(phonetic) {
 
     const midPt = centers.reduce((acc, c) => ({ x: acc.x + c.x, y: acc.y + c.y }), { x: 0, y: 0 });
     midPt.x /= centers.length; midPt.y /= centers.length;
-    floatText(midPt.x, midPt.y, `LIGHTNING x${memberPairIds.length}`, true, true);
+    floatText(midPt.x, midPt.y, window.tf('game.lightningFloat', { n: memberPairIds.length }), true, true);
     addTimeBonus(memberPairIds.length, midPt.x, midPt.y + 30);
     if (tierHits.length) {
-        window.setTimeout(() => floatText(midPt.x, midPt.y - 44, 'STREAK x' + streak, true), 220);
+        window.setTimeout(() => floatText(midPt.x, midPt.y - 44, window.tf('game.streakFloat', { n: streak }), true), 220);
     }
 
     showExample(memberPairIds[0]);
@@ -1105,13 +1105,21 @@ function applyPenalty() {
     });
 
     const c = centerOf(boardWrapEl);
-    floatText(c.x, c.y, 'PENALTY — pair returned', true);
+    floatText(c.x, c.y, window.t('game.penaltyFloat'), true);
     GameAudio.penalty();
 }
 
 // ---------------------------------------------------------------------------
 // Level select <-> board screens
 // ---------------------------------------------------------------------------
+// level.title (from game-words.js) is English-only, e.g. "N5 · Level 1" — built here from
+// i18n instead, the same way grammar.js/reading.js build their level titles, rather than
+// reading the raw data-file field directly.
+function levelTitle(level) {
+    const withinTier = ((level.level - 1) % 10) + 1;
+    return `${level.jlpt} · ${window.tf('game.levelN', { n: withinTier })}`;
+}
+
 function startLevel(level) {
     currentLevel = level;
     activeJlptTab = level.jlpt; // so "back to levels" lands on the tier just played
@@ -1149,7 +1157,7 @@ function startLevel(level) {
     const panelStreakFill = document.getElementById('panel-streak-fill');
     if (panelStreakFill) panelStreakFill.style.width = '0%';
     renderTimer();
-    document.getElementById('board-level-label').textContent = level.title;
+    document.getElementById('board-level-label').textContent = levelTitle(level);
     updateStats();
 
     hideEl(document.getElementById('level-select-section'));
@@ -1160,7 +1168,7 @@ function startLevel(level) {
     document.body.classList.add('game-playing');
     resizeCanvases();
 
-    document.getElementById('start-modal-title').textContent = level.title;
+    document.getElementById('start-modal-title').textContent = levelTitle(level);
     showEl(document.getElementById('start-modal'));
 }
 
@@ -1217,7 +1225,7 @@ function renderLevelGrid() {
 
         card.innerHTML = `
             <span class="level-badge">${escapeHtml(level.jlpt)}</span>
-            <h3>${escapeHtml(level.title)}</h3>
+            <h3>${escapeHtml(levelTitle(level))}</h3>
             <div class="level-meta">${metaHtml}</div>
         `;
         card.addEventListener('click', () => startLevel(level));

@@ -34,4 +34,15 @@ Object.assign(window.I18N_STRINGS, {
     'game.saveResultFailed': { en: "Couldn't save your result — try again later.", mn: 'Үр дүнг хадгалж чадсангүй — дараа дахин оролдоно уу.' },
     'game.previousBest': { en: 'Previous best: {time} · {moves} moves', mn: 'Өмнөх шилдэг: {time} · {moves} хөдөлгөөн' },
     'game.matchedBeforeTimeOut': { en: 'Matched {n} / {total} pairs before time ran out.', mn: 'Цаг дуусахаас өмнө {n} / {total} хосыг тохируулсан.' },
+
+    // Floating combat-text and other small dynamic strings set via direct DOM assignment
+    // rather than data-i18n (so a missing key here fails silently, not loudly -- checked with
+    // the key-coverage script same as everywhere else).
+    'game.streakFloat': { en: 'STREAK x{n}', mn: 'ДАРААЛАЛ x{n}' },
+    'game.lightningFloat': { en: 'LIGHTNING x{n}', mn: 'АЯНГА x{n}' },
+    'game.penaltyFloat': { en: 'PENALTY — pair returned', mn: 'ТОРГУУЛЬ — хос буцаж ирэв' },
+    'game.foundChipLabel': { en: 'found', mn: 'олдсон' },
+    'game.soundOff': { en: 'Turn sound off', mn: 'Дууг унтраах' },
+    'game.soundOn': { en: 'Turn sound on', mn: 'Дууг асаах' },
+    'game.secAbbr': { en: 's', mn: 'сек' },
 });
