@@ -57,7 +57,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "今",
                     "phoneticReading": "キン",
-                    "enMn": "одоо"
+                    "enMn": "одоо",
+                    "meaningsMn": [
+                        "одоо"
+                    ]
                 },
                 {
                     "jp": "今日",
@@ -75,7 +78,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "今",
                     "phoneticReading": "キン",
-                    "enMn": "өнөөдөр"
+                    "enMn": "өнөөдөр",
+                    "meaningsMn": [
+                        "өнөөдөр",
+                        "энэ өдөр"
+                    ]
                 },
                 {
                     "jp": "今晩",
@@ -93,7 +100,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "今",
                     "phoneticReading": "キン",
-                    "enMn": "өнөө орой"
+                    "enMn": "өнөө орой",
+                    "meaningsMn": [
+                        "өнөө орой",
+                        "энэ орой"
+                    ]
                 },
                 {
                     "jp": "家庭",
@@ -111,7 +122,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "家",
                     "phoneticReading": "カ",
-                    "enMn": "гэр"
+                    "enMn": "гэр",
+                    "meaningsMn": [
+                        "гэр",
+                        "гэр бүл"
+                    ]
                 },
                 {
                     "jp": "紙",
@@ -128,7 +143,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "氏",
                     "phoneticReading": "シ",
-                    "enMn": "цаас"
+                    "enMn": "цаас",
+                    "meaningsMn": [
+                        "цаас"
+                    ]
                 },
                 {
                     "jp": "昨日",
@@ -145,7 +163,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "乍",
                     "phoneticReading": "サク",
-                    "enMn": "өчигдөр"
+                    "enMn": "өчигдөр",
+                    "meaningsMn": [
+                        "өчигдөр"
+                    ]
                 },
                 {
                     "jp": "黄色",
@@ -162,7 +183,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "黄",
                     "phoneticReading": "オウ、コウ",
-                    "enMn": "шар"
+                    "enMn": "шар",
+                    "meaningsMn": [
+                        "шар"
+                    ]
                 },
                 {
                     "jp": "借りる",
@@ -180,7 +204,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "昔",
                     "phoneticReading": "セキ、シャク",
-                    "enMn": "зээлэх"
+                    "enMn": "зээлэх",
+                    "meaningsMn": [
+                        "зээлэх",
+                        "өртэй байх"
+                    ]
                 },
                 {
                     "jp": "会社",
@@ -198,7 +226,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "会",
                     "phoneticReading": "カイ、エ",
-                    "enMn": "компани"
+                    "enMn": "компани",
+                    "meaningsMn": [
+                        "компани",
+                        "корпораци"
+                    ]
                 },
                 {
                     "jp": "映画",
@@ -216,7 +248,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "央",
                     "phoneticReading": "エイ",
-                    "enMn": "кино"
+                    "enMn": "кино",
+                    "meaningsMn": [
+                        "кино",
+                        "кино"
+                    ]
                 }
             ]
         ]
@@ -242,7 +278,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "朝",
                     "phoneticReading": "チョウ",
-                    "enMn": "өглөө"
+                    "enMn": "өглөө",
+                    "meaningsMn": [
+                        "өглөө"
+                    ]
                 },
                 {
                     "jp": "朝御飯",
@@ -259,7 +298,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "朝",
                     "phoneticReading": "チョウ",
-                    "enMn": "өглөөний хоол"
+                    "enMn": "өглөөний хоол",
+                    "meaningsMn": [
+                        "өглөөний хоол"
+                    ]
                 },
                 {
                     "jp": "聞く",
@@ -278,7 +320,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "門",
                     "phoneticReading": "モン、カン",
-                    "enMn": "сонсох"
+                    "enMn": "сонсох",
+                    "meaningsMn": [
+                        "сонсох",
+                        "сонсох",
+                        "асуух"
+                    ]
                 },
                 {
                     "jp": "門",
@@ -295,7 +342,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "門",
                     "phoneticReading": "モン、カン",
-                    "enMn": "хаалга"
+                    "enMn": "хаалга",
+                    "meaningsMn": [
+                        "хаалга"
+                    ]
                 },
                 {
                     "jp": "鍵",
@@ -313,7 +363,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "建",
                     "phoneticReading": "ケン",
-                    "enMn": "түлхүүр"
+                    "enMn": "түлхүүр",
+                    "meaningsMn": [
+                        "цоож",
+                        "түлхүүр"
+                    ]
                 },
                 {
                     "jp": "階段",
@@ -330,7 +384,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "皆",
                     "phoneticReading": "カイ",
-                    "enMn": "шат"
+                    "enMn": "шат",
+                    "meaningsMn": [
+                        "шат"
+                    ]
                 },
                 {
                     "jp": "風",
@@ -348,7 +405,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "風",
                     "phoneticReading": "フウ",
-                    "enMn": "салхи"
+                    "enMn": "салхи",
+                    "meaningsMn": [
+                        "салхи",
+                        "сэвшээ салхи"
+                    ]
                 },
                 {
                     "jp": "貸す",
@@ -365,7 +426,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "代",
                     "phoneticReading": "タイ",
-                    "enMn": "зээлдүүлэх"
+                    "enMn": "зээлдүүлэх",
+                    "meaningsMn": [
+                        "зээлдүүлэх"
+                    ]
                 },
                 {
                     "jp": "軽い",
@@ -384,7 +448,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "圣",
                     "phoneticReading": "ケイ",
-                    "enMn": "хөнгөн"
+                    "enMn": "хөнгөн",
+                    "meaningsMn": [
+                        "хөнгөн",
+                        "ноцтой бус",
+                        "бага ач холбогдолтой"
+                    ]
                 },
                 {
                     "jp": "海",
@@ -402,7 +471,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "毎",
                     "phoneticReading": "カイ",
-                    "enMn": "тэнгис"
+                    "enMn": "тэнгис",
+                    "meaningsMn": [
+                        "тэнгис",
+                        "далайн эрэг"
+                    ]
                 }
             ]
         ]
@@ -428,7 +501,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "今",
                     "phoneticReading": "キン",
-                    "enMn": "өнөө өглөө"
+                    "enMn": "өнөө өглөө",
+                    "meaningsMn": [
+                        "өнөө өглөө"
+                    ]
                 },
                 {
                     "jp": "今年",
@@ -445,7 +521,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "今",
                     "phoneticReading": "キン",
-                    "enMn": "энэ жил"
+                    "enMn": "энэ жил",
+                    "meaningsMn": [
+                        "энэ жил"
+                    ]
                 },
                 {
                     "jp": "切符",
@@ -462,7 +541,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "切",
                     "phoneticReading": "セツ",
-                    "enMn": "тасалбар"
+                    "enMn": "тасалбар",
+                    "meaningsMn": [
+                        "тасалбар"
+                    ]
                 },
                 {
                     "jp": "切る",
@@ -480,7 +562,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "切",
                     "phoneticReading": "セツ",
-                    "enMn": "огтлох"
+                    "enMn": "огтлох",
+                    "meaningsMn": [
+                        "огтлох",
+                        "утсаа таслах"
+                    ]
                 },
                 {
                     "jp": "警官",
@@ -497,7 +583,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "敬",
                     "phoneticReading": "ケイ",
-                    "enMn": "цагдаа"
+                    "enMn": "цагдаа",
+                    "meaningsMn": [
+                        "цагдаа"
+                    ]
                 },
                 {
                     "jp": "紅茶",
@@ -514,7 +603,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "工",
                     "phoneticReading": "コウ、ク",
-                    "enMn": "хар цай"
+                    "enMn": "хар цай",
+                    "meaningsMn": [
+                        "хар цай"
+                    ]
                 },
                 {
                     "jp": "綺麗",
@@ -533,7 +625,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "奇",
                     "phoneticReading": "キ",
-                    "enMn": "үзэсгэлэнтэй"
+                    "enMn": "үзэсгэлэнтэй",
+                    "meaningsMn": [
+                        "үзэсгэлэнтэй",
+                        "цэвэрхэн",
+                        "эмх цэгцтэй"
+                    ]
                 },
                 {
                     "jp": "嫌い",
@@ -550,7 +647,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "兼",
                     "phoneticReading": "ケン、レン",
-                    "enMn": "дургүй"
+                    "enMn": "дургүй",
+                    "meaningsMn": [
+                        "дургүй"
+                    ]
                 },
                 {
                     "jp": "果物",
@@ -567,7 +667,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "果",
                     "phoneticReading": "カ",
-                    "enMn": "жимс"
+                    "enMn": "жимс",
+                    "meaningsMn": [
+                        "жимс"
+                    ]
                 },
                 {
                     "jp": "九",
@@ -584,7 +687,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "九",
                     "phoneticReading": "キュウ",
-                    "enMn": "ес"
+                    "enMn": "ес",
+                    "meaningsMn": [
+                        "ес"
+                    ]
                 }
             ]
         ]
@@ -610,7 +716,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "明",
                     "phoneticReading": "メイ",
-                    "enMn": "маргааш"
+                    "enMn": "маргааш",
+                    "meaningsMn": [
+                        "маргааш"
+                    ]
                 },
                 {
                     "jp": "明るい",
@@ -628,7 +737,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "明",
                     "phoneticReading": "メイ",
-                    "enMn": "цовоо"
+                    "enMn": "цовоо",
+                    "meaningsMn": [
+                        "цовоо",
+                        "хөгжилтэй"
+                    ]
                 },
                 {
                     "jp": "五",
@@ -645,7 +758,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "五",
                     "phoneticReading": "ゴ",
-                    "enMn": "тав"
+                    "enMn": "тав",
+                    "meaningsMn": [
+                        "тав"
+                    ]
                 },
                 {
                     "jp": "外国",
@@ -663,7 +779,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "гадаад улс"
+                    "enMn": "гадаад улс",
+                    "meaningsMn": [
+                        "гадаад улс",
+                        "гадаад орон"
+                    ]
                 },
                 {
                     "jp": "色",
@@ -680,7 +800,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "өнгө"
+                    "enMn": "өнгө",
+                    "meaningsMn": [
+                        "өнгө"
+                    ]
                 },
                 {
                     "jp": "財布",
@@ -697,7 +820,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "才",
                     "phoneticReading": "サイ、ザイ",
-                    "enMn": "түрийвч"
+                    "enMn": "түрийвч",
+                    "meaningsMn": [
+                        "түрийвч"
+                    ]
                 },
                 {
                     "jp": "元気",
@@ -715,7 +841,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "元",
                     "phoneticReading": "ガン",
-                    "enMn": "эрүүл"
+                    "enMn": "эрүүл",
+                    "meaningsMn": [
+                        "эрүүл (энх)",
+                        "эрч хүчтэй"
+                    ]
                 },
                 {
                     "jp": "先",
@@ -734,7 +864,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "先",
                     "phoneticReading": "セン",
-                    "enMn": "ирээдүй"
+                    "enMn": "ирээдүй",
+                    "meaningsMn": [
+                        "ирээдүй",
+                        "саяхны",
+                        "өмнөх"
+                    ]
                 },
                 {
                     "jp": "駅",
@@ -751,7 +886,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "буудал"
+                    "enMn": "буудал",
+                    "meaningsMn": [
+                        "буудал"
+                    ]
                 },
                 {
                     "jp": "大きい",
@@ -769,7 +907,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "том"
+                    "enMn": "том",
+                    "meaningsMn": [
+                        "том",
+                        "том"
+                    ]
                 }
             ]
         ]
@@ -795,7 +937,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "今",
                     "phoneticReading": "キン",
-                    "enMn": "энэ сар"
+                    "enMn": "энэ сар",
+                    "meaningsMn": [
+                        "энэ сар"
+                    ]
                 },
                 {
                     "jp": "今週",
@@ -812,7 +957,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "今",
                     "phoneticReading": "キン",
-                    "enMn": "энэ долоо хоног"
+                    "enMn": "энэ долоо хоног",
+                    "meaningsMn": [
+                        "энэ долоо хоног"
+                    ]
                 },
                 {
                     "jp": "兄弟",
@@ -830,7 +978,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "兄",
                     "phoneticReading": "キョウ",
-                    "enMn": "ах дүү"
+                    "enMn": "ах дүү",
+                    "meaningsMn": [
+                        "ах эгч дүү нар (даруу)",
+                        "ах эгч дүү нар"
+                    ]
                 },
                 {
                     "jp": "兄",
@@ -847,7 +999,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "兄",
                     "phoneticReading": "キョウ",
-                    "enMn": "ах (даруу)"
+                    "enMn": "ах (даруу)",
+                    "meaningsMn": [
+                        "ах (даруу)"
+                    ]
                 },
                 {
                     "jp": "学生",
@@ -864,7 +1019,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "оюутан"
+                    "enMn": "оюутан",
+                    "meaningsMn": [
+                        "оюутан"
+                    ]
                 },
                 {
                     "jp": "かばん",
@@ -882,7 +1040,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "цүнх"
+                    "enMn": "цүнх",
+                    "meaningsMn": [
+                        "цүнх",
+                        "сагс"
+                    ]
                 },
                 {
                     "jp": "傘",
@@ -900,7 +1062,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "шүхэр"
+                    "enMn": "шүхэр",
+                    "meaningsMn": [
+                        "шүхэр",
+                        "нарны шүхэр"
+                    ]
                 },
                 {
                     "jp": "学校",
@@ -917,7 +1083,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "сургууль"
+                    "enMn": "сургууль",
+                    "meaningsMn": [
+                        "сургууль"
+                    ]
                 },
                 {
                     "jp": "書く",
@@ -934,7 +1103,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "бичих"
+                    "enMn": "бичих",
+                    "meaningsMn": [
+                        "бичих"
+                    ]
                 },
                 {
                     "jp": "顔",
@@ -951,7 +1123,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "царай"
+                    "enMn": "царай",
+                    "meaningsMn": [
+                        "нүүр"
+                    ]
                 }
             ]
         ]
@@ -977,7 +1152,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "亲",
                     "phoneticReading": "シン",
-                    "enMn": "шинэ"
+                    "enMn": "шинэ",
+                    "meaningsMn": [
+                        "шинэ"
+                    ]
                 },
                 {
                     "jp": "新聞",
@@ -994,7 +1172,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "亲",
                     "phoneticReading": "シン",
-                    "enMn": "сонин"
+                    "enMn": "сонин",
+                    "meaningsMn": [
+                        "сонин"
+                    ]
                 },
                 {
                     "jp": "買う",
@@ -1011,7 +1192,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "худалдаж авах"
+                    "enMn": "худалдаж авах",
+                    "meaningsMn": [
+                        "худалдаж авах"
+                    ]
                 },
                 {
                     "jp": "カメラ",
@@ -1028,7 +1212,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "камер"
+                    "enMn": "камер",
+                    "meaningsMn": [
+                        "камер"
+                    ]
                 },
                 {
                     "jp": "木",
@@ -1047,7 +1234,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "мод"
+                    "enMn": "мод",
+                    "meaningsMn": [
+                        "мод",
+                        "мод",
+                        "модон материал"
+                    ]
                 },
                 {
                     "jp": "買い物",
@@ -1064,7 +1256,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "дэлгүүр хэсэх"
+                    "enMn": "дэлгүүр хэсэх",
+                    "meaningsMn": [
+                        "дэлгүүр хэсэх"
+                    ]
                 },
                 {
                     "jp": "漢字",
@@ -1082,7 +1277,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "ханз"
+                    "enMn": "ханз",
+                    "meaningsMn": [
+                        "ханз",
+                        "ханз"
+                    ]
                 },
                 {
                     "jp": "帰る",
@@ -1101,7 +1300,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "буцах"
+                    "enMn": "буцах",
+                    "meaningsMn": [
+                        "буцах",
+                        "гэртээ харих",
+                        "буцах"
+                    ]
                 },
                 {
                     "jp": "体",
@@ -1119,7 +1323,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "бие"
+                    "enMn": "бие",
+                    "meaningsMn": [
+                        "бие",
+                        "эрүүл мэнд"
+                    ]
                 },
                 {
                     "jp": "川",
@@ -1136,7 +1344,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "гол"
+                    "enMn": "гол",
+                    "meaningsMn": [
+                        "гол"
+                    ]
                 }
             ]
         ]
@@ -1163,7 +1374,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "会",
                     "phoneticReading": "カイ、エ",
-                    "enMn": "уулзах"
+                    "enMn": "уулзах",
+                    "meaningsMn": [
+                        "уулзах",
+                        "харах"
+                    ]
                 },
                 {
                     "jp": "絵",
@@ -1182,7 +1397,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "会",
                     "phoneticReading": "カイ、エ",
-                    "enMn": "зураг"
+                    "enMn": "зураг",
+                    "meaningsMn": [
+                        "зурган бүтээл",
+                        "зураг",
+                        "зураг"
+                    ]
                 },
                 {
                     "jp": "靴",
@@ -1200,7 +1420,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "化",
                     "phoneticReading": "カ",
-                    "enMn": "гутал"
+                    "enMn": "гутал",
+                    "meaningsMn": [
+                        "гутал",
+                        "гутал"
+                    ]
                 },
                 {
                     "jp": "靴下",
@@ -1217,7 +1441,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "化",
                     "phoneticReading": "カ",
-                    "enMn": "оймс"
+                    "enMn": "оймс",
+                    "meaningsMn": [
+                        "оймс"
+                    ]
                 },
                 {
                     "jp": "北",
@@ -1234,7 +1461,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хойд"
+                    "enMn": "хойд",
+                    "meaningsMn": [
+                        "хойд"
+                    ]
                 },
                 {
                     "jp": "ギター",
@@ -1251,7 +1481,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "гитар"
+                    "enMn": "гитар",
+                    "meaningsMn": [
+                        "гитар"
+                    ]
                 },
                 {
                     "jp": "曇り",
@@ -1269,7 +1502,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "үүлэрхэг"
+                    "enMn": "үүлэрхэг",
+                    "meaningsMn": [
+                        "үүлэрхэг байдал",
+                        "үүлэрхэг цаг агаар"
+                    ]
                 },
                 {
                     "jp": "喫茶店",
@@ -1286,7 +1523,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "кафе"
+                    "enMn": "кафе",
+                    "meaningsMn": [
+                        "кафе"
+                    ]
                 },
                 {
                     "jp": "牛乳",
@@ -1303,7 +1543,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "сүү"
+                    "enMn": "сүү",
+                    "meaningsMn": [
+                        "сүү"
+                    ]
                 },
                 {
                     "jp": "クラス",
@@ -1320,7 +1563,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "анги"
+                    "enMn": "анги",
+                    "meaningsMn": [
+                        "анги"
+                    ]
                 }
             ]
         ]
@@ -1346,7 +1592,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "亡",
                     "phoneticReading": "ボウ、モウ",
-                    "enMn": "завгүй"
+                    "enMn": "завгүй",
+                    "meaningsMn": [
+                        "завгүй (хүн, өдөр)"
+                    ]
                 },
                 {
                     "jp": "忘れる",
@@ -1363,7 +1612,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "亡",
                     "phoneticReading": "ボウ、モウ",
-                    "enMn": "мартах"
+                    "enMn": "мартах",
+                    "meaningsMn": [
+                        "мартах"
+                    ]
                 },
                 {
                     "jp": "牛肉",
@@ -1380,7 +1632,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "үхрийн мах"
+                    "enMn": "үхрийн мах",
+                    "meaningsMn": [
+                        "үхрийн мах"
+                    ]
                 },
                 {
                     "jp": "銀行",
@@ -1397,7 +1652,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "банк"
+                    "enMn": "банк",
+                    "meaningsMn": [
+                        "банк"
+                    ]
                 },
                 {
                     "jp": "汚い",
@@ -1416,7 +1674,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "бохир"
+                    "enMn": "бохир",
+                    "meaningsMn": [
+                        "бохир",
+                        "бохир",
+                        "маш бохир"
+                    ]
                 },
                 {
                     "jp": "暗い",
@@ -1434,7 +1697,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "харанхуй"
+                    "enMn": "харанхуй",
+                    "meaningsMn": [
+                        "харанхуй",
+                        "гунигтай"
+                    ]
                 },
                 {
                     "jp": "去年",
@@ -1451,7 +1718,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "өнгөрсөн жил"
+                    "enMn": "өнгөрсөн жил",
+                    "meaningsMn": [
+                        "өнгөрсөн жил"
+                    ]
                 },
                 {
                     "jp": "国",
@@ -1469,7 +1739,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "улс"
+                    "enMn": "улс",
+                    "meaningsMn": [
+                        "улс",
+                        "гарал үүслийн газар"
+                    ]
                 },
                 {
                     "jp": "薬",
@@ -1486,7 +1760,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "эм"
+                    "enMn": "эм",
+                    "meaningsMn": [
+                        "эм"
+                    ]
                 },
                 {
                     "jp": "教室",
@@ -1503,7 +1780,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "ангийн өрөө"
+                    "enMn": "ангийн өрөө",
+                    "meaningsMn": [
+                        "ангийн өрөө"
+                    ]
                 }
             ]
         ]
@@ -1530,7 +1810,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "家",
                     "phoneticReading": "カ",
-                    "enMn": "байшин"
+                    "enMn": "байшин",
+                    "meaningsMn": [
+                        "байшин",
+                        "гэр"
+                    ]
                 },
                 {
                     "jp": "家族",
@@ -1548,7 +1832,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "家",
                     "phoneticReading": "カ",
-                    "enMn": "гэр бүл"
+                    "enMn": "гэр бүл",
+                    "meaningsMn": [
+                        "гэр бүл",
+                        "гэр бүлийн гишүүд"
+                    ]
                 },
                 {
                     "jp": "交差点",
@@ -1565,7 +1853,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "交",
                     "phoneticReading": "コウ",
-                    "enMn": "уулзвар"
+                    "enMn": "уулзвар",
+                    "meaningsMn": [
+                        "уулзвар"
+                    ]
                 },
                 {
                     "jp": "交番",
@@ -1582,7 +1873,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "交",
                     "phoneticReading": "コウ",
-                    "enMn": "цагдаагийн харуул"
+                    "enMn": "цагдаагийн харуул",
+                    "meaningsMn": [
+                        "цагдаагийн харуул"
+                    ]
                 },
                 {
                     "jp": "車",
@@ -1600,7 +1894,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "машин"
+                    "enMn": "машин",
+                    "meaningsMn": [
+                        "машин",
+                        "тээврийн хэрэгсэл"
+                    ]
                 },
                 {
                     "jp": "困る",
@@ -1618,7 +1916,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "зовох"
+                    "enMn": "зовох",
+                    "meaningsMn": [
+                        "зовох",
+                        "хүндрэлтэй байх"
+                    ]
                 },
                 {
                     "jp": "午後",
@@ -1636,7 +1938,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "өдийн хойно"
+                    "enMn": "өдийн хойно",
+                    "meaningsMn": [
+                        "өдийн хойно",
+                        "үдээс хойш"
+                    ]
                 },
                 {
                     "jp": "言葉",
@@ -1655,7 +1961,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хэл"
+                    "enMn": "хэл",
+                    "meaningsMn": [
+                        "хэл",
+                        "үг(с)",
+                        "хэллэг(үүд)"
+                    ]
                 },
                 {
                     "jp": "魚",
@@ -1672,7 +1983,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "загас"
+                    "enMn": "загас",
+                    "meaningsMn": [
+                        "загас"
+                    ]
                 },
                 {
                     "jp": "御飯",
@@ -1690,7 +2004,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "будаа"
+                    "enMn": "будаа",
+                    "meaningsMn": [
+                        "будаа",
+                        "хоол"
+                    ]
                 }
             ]
         ]
@@ -1716,7 +2034,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "可",
                     "phoneticReading": "カ",
-                    "enMn": "дуулах"
+                    "enMn": "дуулах",
+                    "meaningsMn": [
+                        "дуулах"
+                    ]
                 },
                 {
                     "jp": "可愛い",
@@ -1734,7 +2055,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "可",
                     "phoneticReading": "カ",
-                    "enMn": "хөөрхөн"
+                    "enMn": "хөөрхөн",
+                    "meaningsMn": [
+                        "хөөрхөн",
+                        "хайрлууштай"
+                    ]
                 },
                 {
                     "jp": "答える",
@@ -1752,7 +2077,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хариулах"
+                    "enMn": "хариулах",
+                    "meaningsMn": [
+                        "хариулах",
+                        "хариулах"
+                    ]
                 },
                 {
                     "jp": "来る",
@@ -1769,7 +2098,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "ирэх"
+                    "enMn": "ирэх",
+                    "meaningsMn": [
+                        "ирэх"
+                    ]
                 },
                 {
                     "jp": "声",
@@ -1786,7 +2118,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "дуу хоолой"
+                    "enMn": "дуу хоолой",
+                    "meaningsMn": [
+                        "дуу хоолой"
+                    ]
                 },
                 {
                     "jp": "公園",
@@ -1803,7 +2138,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "цэцэрлэгт хүрээлэн"
+                    "enMn": "цэцэрлэгт хүрээлэн",
+                    "meaningsMn": [
+                        "цэцэрлэгт хүрээлэн"
+                    ]
                 },
                 {
                     "jp": "黒",
@@ -1820,7 +2158,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хар"
+                    "enMn": "хар",
+                    "meaningsMn": [
+                        "хар"
+                    ]
                 },
                 {
                     "jp": "コーヒー",
@@ -1837,7 +2178,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "кофе"
+                    "enMn": "кофе",
+                    "meaningsMn": [
+                        "кофе"
+                    ]
                 },
                 {
                     "jp": "子供",
@@ -1854,7 +2198,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хүүхэд"
+                    "enMn": "хүүхэд",
+                    "meaningsMn": [
+                        "хүүхэд(хүүхдүүд)"
+                    ]
                 },
                 {
                     "jp": "咲く",
@@ -1871,7 +2218,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "цэцэглэх"
+                    "enMn": "цэцэглэх",
+                    "meaningsMn": [
+                        "цэцэглэх"
+                    ]
                 }
             ]
         ]
@@ -1897,7 +2247,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "生",
                     "phoneticReading": "セイ、ショウ",
-                    "enMn": "амьдрах"
+                    "enMn": "амьдрах",
+                    "meaningsMn": [
+                        "амьдрах"
+                    ]
                 },
                 {
                     "jp": "星",
@@ -1914,7 +2267,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "生",
                     "phoneticReading": "セイ、ショウ",
-                    "enMn": "од"
+                    "enMn": "од",
+                    "meaningsMn": [
+                        "од"
+                    ]
                 },
                 {
                     "jp": "通る",
@@ -1932,7 +2288,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "甬",
                     "phoneticReading": "ツウ",
-                    "enMn": "өнгөрөх"
+                    "enMn": "өнгөрөх",
+                    "meaningsMn": [
+                        "өнгөрөх",
+                        "дамжин өнгөрөх"
+                    ]
                 },
                 {
                     "jp": "通う",
@@ -1950,7 +2310,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "甬",
                     "phoneticReading": "ツウ",
-                    "enMn": "давтан явж ирэх"
+                    "enMn": "давтан явж ирэх",
+                    "meaningsMn": [
+                        "давтан явж ирэх",
+                        "тогтмол явж ирэх"
+                    ]
                 },
                 {
                     "jp": "課長",
@@ -1967,7 +2331,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "果",
                     "phoneticReading": "カ",
-                    "enMn": "тасгийн дарга"
+                    "enMn": "тасгийн дарга",
+                    "meaningsMn": [
+                        "тасгийн дарга"
+                    ]
                 },
                 {
                     "jp": "比べる",
@@ -1984,7 +2351,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "比",
                     "phoneticReading": "ヒ",
-                    "enMn": "харьцуулах"
+                    "enMn": "харьцуулах",
+                    "meaningsMn": [
+                        "харьцуулах"
+                    ]
                 },
                 {
                     "jp": "台風",
@@ -2001,7 +2371,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "台",
                     "phoneticReading": "タイ",
-                    "enMn": "тайфун"
+                    "enMn": "тайфун",
+                    "meaningsMn": [
+                        "тайфун"
+                    ]
                 },
                 {
                     "jp": "揺れる",
@@ -2019,7 +2392,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "䍃",
                     "phoneticReading": "ヨウ",
-                    "enMn": "чичрэх"
+                    "enMn": "чичрэх",
+                    "meaningsMn": [
+                        "чичрэх",
+                        "чичрэх"
+                    ]
                 },
                 {
                     "jp": "贈り物",
@@ -2037,7 +2414,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "曽",
                     "phoneticReading": "ソウ、ゾウ",
-                    "enMn": "бэлэг"
+                    "enMn": "бэлэг",
+                    "meaningsMn": [
+                        "бэлэг",
+                        "бэлэг"
+                    ]
                 },
                 {
                     "jp": "浅い",
@@ -2055,7 +2436,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "㦮",
                     "phoneticReading": "セン",
-                    "enMn": "гүехэн"
+                    "enMn": "гүехэн",
+                    "meaningsMn": [
+                        "гүехэн",
+                        "хөнгөвчилсөн"
+                    ]
                 }
             ]
         ]
@@ -2082,7 +2467,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "气",
                     "phoneticReading": "キ",
-                    "enMn": "сэтгэл"
+                    "enMn": "сэтгэл",
+                    "meaningsMn": [
+                        "сэтгэл",
+                        "сэтгэл санаа"
+                    ]
                 },
                 {
                     "jp": "気分",
@@ -2100,7 +2489,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "气",
                     "phoneticReading": "キ",
-                    "enMn": "сэтгэл санаа"
+                    "enMn": "сэтгэл санаа",
+                    "meaningsMn": [
+                        "мэдрэмж",
+                        "сэтгэл санаа"
+                    ]
                 },
                 {
                     "jp": "時代",
@@ -2120,7 +2513,13 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "寺",
                     "phoneticReading": "ジ",
-                    "enMn": "эрин үе"
+                    "enMn": "эрин үе",
+                    "meaningsMn": [
+                        "эрин үе",
+                        "үе шат",
+                        "эрин үе",
+                        "эрин үе"
+                    ]
                 },
                 {
                     "jp": "規則",
@@ -2138,7 +2537,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "規",
                     "phoneticReading": "キ",
-                    "enMn": "дүрэм"
+                    "enMn": "дүрэм",
+                    "meaningsMn": [
+                        "засаглал",
+                        "журам"
+                    ]
                 },
                 {
                     "jp": "表",
@@ -2157,7 +2560,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "表",
                     "phoneticReading": "ヒョウ",
-                    "enMn": "гадаргуу"
+                    "enMn": "гадаргуу",
+                    "meaningsMn": [
+                        "гадаргуу",
+                        "урд тал",
+                        "гадна"
+                    ]
                 },
                 {
                     "jp": "盛ん",
@@ -2176,7 +2584,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "成",
                     "phoneticReading": "ジョウ、セイ",
-                    "enMn": "цэцэглэн хөгжсөн"
+                    "enMn": "цэцэглэн хөгжсөн",
+                    "meaningsMn": [
+                        "цэцэглэн хөгжсөн",
+                        "идэвхтэй",
+                        "цэцэглэн хөгжиж буй"
+                    ]
                 },
                 {
                     "jp": "注意",
@@ -2194,7 +2607,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "主",
                     "phoneticReading": "チュウ",
-                    "enMn": "болгоомжлол"
+                    "enMn": "болгоомжлол",
+                    "meaningsMn": [
+                        "болгоомжлол",
+                        "анхаарал"
+                    ]
                 },
                 {
                     "jp": "過ぎる",
@@ -2212,7 +2629,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "咼",
                     "phoneticReading": "カ",
-                    "enMn": "хэтрэх"
+                    "enMn": "хэтрэх",
+                    "meaningsMn": [
+                        "хэтрэх",
+                        "хэтрэх"
+                    ]
                 },
                 {
                     "jp": "起こす",
@@ -2229,7 +2650,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "己",
                     "phoneticReading": "キ",
-                    "enMn": "сэрээх"
+                    "enMn": "сэрээх",
+                    "meaningsMn": [
+                        "сэрээх"
+                    ]
                 },
                 {
                     "jp": "今度",
@@ -2250,7 +2674,14 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "今",
                     "phoneticReading": "キン",
-                    "enMn": "энэ удаа"
+                    "enMn": "энэ удаа",
+                    "meaningsMn": [
+                        "одоо",
+                        "энэ удаа",
+                        "ойрын ирээдүйд",
+                        "ойрын өдрүүдэд",
+                        "дараагийн удаа"
+                    ]
                 }
             ]
         ]
@@ -2277,7 +2708,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "必",
                     "phoneticReading": "ヒ、ヒツ",
-                    "enMn": "заавал"
+                    "enMn": "заавал",
+                    "meaningsMn": [
+                        "заавал",
+                        "мэдээж"
+                    ]
                 },
                 {
                     "jp": "必要",
@@ -2294,7 +2729,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "必",
                     "phoneticReading": "ヒ、ヒツ",
-                    "enMn": "шаардлагатай"
+                    "enMn": "шаардлагатай",
+                    "meaningsMn": [
+                        "шаардлагатай"
+                    ]
                 },
                 {
                     "jp": "親",
@@ -2311,7 +2749,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "亲",
                     "phoneticReading": "シン",
-                    "enMn": "эцэг эх"
+                    "enMn": "эцэг эх",
+                    "meaningsMn": [
+                        "эцэг эх"
+                    ]
                 },
                 {
                     "jp": "親切",
@@ -2328,7 +2769,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "亲",
                     "phoneticReading": "シン",
-                    "enMn": "эелдэг зан"
+                    "enMn": "эелдэг зан",
+                    "meaningsMn": [
+                        "эелдэг зан"
+                    ]
                 },
                 {
                     "jp": "決まる",
@@ -2346,7 +2790,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "夬",
                     "phoneticReading": "ケツ",
-                    "enMn": "шийдэгдэх"
+                    "enMn": "шийдэгдэх",
+                    "meaningsMn": [
+                        "тогтоогдох",
+                        "тогтсон"
+                    ]
                 },
                 {
                     "jp": "捕まえる",
@@ -2364,7 +2812,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "甫",
                     "phoneticReading": "ホ",
-                    "enMn": "барих"
+                    "enMn": "барих",
+                    "meaningsMn": [
+                        "барих",
+                        "баривчлах"
+                    ]
                 },
                 {
                     "jp": "無理",
@@ -2382,7 +2834,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "無",
                     "phoneticReading": "ブ",
-                    "enMn": "боломжгүй"
+                    "enMn": "боломжгүй",
+                    "meaningsMn": [
+                        "боломжгүй",
+                        "боломжгүй"
+                    ]
                 },
                 {
                     "jp": "包む",
@@ -2400,7 +2856,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "包",
                     "phoneticReading": "ホウ",
-                    "enMn": "боох"
+                    "enMn": "боох",
+                    "meaningsMn": [
+                        "боох",
+                        "боох"
+                    ]
                 },
                 {
                     "jp": "逃げる",
@@ -2418,7 +2878,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "兆",
                     "phoneticReading": "チョウ、トウ",
-                    "enMn": "зугтах"
+                    "enMn": "зугтах",
+                    "meaningsMn": [
+                        "зугтах",
+                        "зугтах"
+                    ]
                 },
                 {
                     "jp": "厳しい",
@@ -2437,7 +2901,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хатуу чанга"
+                    "enMn": "хатуу чанга",
+                    "meaningsMn": [
+                        "хатуу",
+                        "нарийн чанд",
+                        "хатуу чанга"
+                    ]
                 }
             ]
         ]
@@ -2464,7 +2933,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "交",
                     "phoneticReading": "コウ",
-                    "enMn": "хот орчмын бүс"
+                    "enMn": "хот орчмын бүс",
+                    "meaningsMn": [
+                        "хот орчмын бүс",
+                        "захын хороолол"
+                    ]
                 },
                 {
                     "jp": "交通",
@@ -2482,7 +2955,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "交",
                     "phoneticReading": "コウ",
-                    "enMn": "тээвэр"
+                    "enMn": "тээвэр",
+                    "meaningsMn": [
+                        "тээвэр",
+                        "тээвэр"
+                    ]
                 },
                 {
                     "jp": "大事",
@@ -2501,7 +2978,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "чухал"
+                    "enMn": "чухал",
+                    "meaningsMn": [
+                        "чухал",
+                        "үнэ цэнэтэй",
+                        "ноцтой асуудал"
+                    ]
                 },
                 {
                     "jp": "会議室",
@@ -2518,7 +3000,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "会",
                     "phoneticReading": "カイ、エ",
-                    "enMn": "хурлын танхим"
+                    "enMn": "хурлын танхим",
+                    "meaningsMn": [
+                        "хурлын танхим"
+                    ]
                 },
                 {
                     "jp": "間違える",
@@ -2535,7 +3020,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "門",
                     "phoneticReading": "モン、カン",
-                    "enMn": "алдаа гаргах"
+                    "enMn": "алдаа гаргах",
+                    "meaningsMn": [
+                        "алдаа гаргах"
+                    ]
                 },
                 {
                     "jp": "寄る",
@@ -2552,7 +3040,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "奇",
                     "phoneticReading": "キ",
-                    "enMn": "дайрч орох"
+                    "enMn": "дайрч орох",
+                    "meaningsMn": [
+                        "дайрч орох"
+                    ]
                 },
                 {
                     "jp": "利用",
@@ -2570,7 +3061,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "利",
                     "phoneticReading": "リ",
-                    "enMn": "ашиглалт"
+                    "enMn": "ашиглалт",
+                    "meaningsMn": [
+                        "ашиглалт",
+                        "ашиглалт"
+                    ]
                 },
                 {
                     "jp": "丁寧",
@@ -2589,7 +3084,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "丁",
                     "phoneticReading": "チョウ、テイ",
-                    "enMn": "эелдэг"
+                    "enMn": "эелдэг",
+                    "meaningsMn": [
+                        "эелдэг",
+                        "эелдэг",
+                        "болгоомжтой"
+                    ]
                 },
                 {
                     "jp": "申し上げる",
@@ -2607,7 +3107,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "申",
                     "phoneticReading": "シン",
-                    "enMn": "хэлэх (даруу)"
+                    "enMn": "хэлэх (даруу)",
+                    "meaningsMn": [
+                        "хэлэх (даруу)",
+                        "хэлэх"
+                    ]
                 },
                 {
                     "jp": "頑張る",
@@ -2626,7 +3130,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "元",
                     "phoneticReading": "ガン",
-                    "enMn": "чармайх"
+                    "enMn": "чармайх",
+                    "meaningsMn": [
+                        "чармайх",
+                        "чармайх",
+                        "тэвчиж үргэлжлүүлэх"
+                    ]
                 }
             ]
         ]
@@ -2653,7 +3162,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "褱",
                     "phoneticReading": "カイ",
-                    "enMn": "эвдэх"
+                    "enMn": "эвдэх",
+                    "meaningsMn": [
+                        "эвдэх",
+                        "эвдрэх"
+                    ]
                 },
                 {
                     "jp": "壊れる",
@@ -2671,7 +3184,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "褱",
                     "phoneticReading": "カイ",
-                    "enMn": "эвдрэх"
+                    "enMn": "эвдрэх",
+                    "meaningsMn": [
+                        "эвдрэх",
+                        "эвдэх"
+                    ]
                 },
                 {
                     "jp": "思う",
@@ -2689,7 +3206,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "思",
                     "phoneticReading": "シ",
-                    "enMn": "бодох"
+                    "enMn": "бодох",
+                    "meaningsMn": [
+                        "бодох",
+                        "мэдрэх"
+                    ]
                 },
                 {
                     "jp": "思い出す",
@@ -2707,7 +3228,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "思",
                     "phoneticReading": "シ",
-                    "enMn": "санах"
+                    "enMn": "санах",
+                    "meaningsMn": [
+                        "санах",
+                        "санах"
+                    ]
                 },
                 {
                     "jp": "深い",
@@ -2725,7 +3250,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "гүн"
+                    "enMn": "гүн",
+                    "meaningsMn": [
+                        "гүн",
+                        "гүн"
+                    ]
                 },
                 {
                     "jp": "焼く",
@@ -2743,7 +3272,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "жигнэх"
+                    "enMn": "жигнэх",
+                    "meaningsMn": [
+                        "жигнэх",
+                        "шарах"
+                    ]
                 },
                 {
                     "jp": "ガラス",
@@ -2761,7 +3294,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "шил"
+                    "enMn": "шил",
+                    "meaningsMn": [
+                        "шил",
+                        "цонхны шил"
+                    ]
                 },
                 {
                     "jp": "発音",
@@ -2778,7 +3315,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "дуудлага"
+                    "enMn": "дуудлага",
+                    "meaningsMn": [
+                        "дуудлага"
+                    ]
                 },
                 {
                     "jp": "泥棒",
@@ -2796,7 +3336,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хулгайч"
+                    "enMn": "хулгайч",
+                    "meaningsMn": [
+                        "хулгайч",
+                        "хулгайч"
+                    ]
                 },
                 {
                     "jp": "大学生",
@@ -2814,7 +3358,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "коллежийн оюутан"
+                    "enMn": "коллежийн оюутан",
+                    "meaningsMn": [
+                        "коллежийн оюутан",
+                        "их сургуулийн оюутан"
+                    ]
                 }
             ]
         ]
@@ -2841,7 +3389,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "正",
                     "phoneticReading": "ショウ、セイ",
-                    "enMn": "шинэ жил"
+                    "enMn": "шинэ жил",
+                    "meaningsMn": [
+                        "шинэ жил",
+                        "шинэ жилийн өдөр"
+                    ]
                 },
                 {
                     "jp": "正しい",
@@ -2858,7 +3410,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "正",
                     "phoneticReading": "ショウ、セイ",
-                    "enMn": "зөв"
+                    "enMn": "зөв",
+                    "meaningsMn": [
+                        "зөв"
+                    ]
                 },
                 {
                     "jp": "失礼",
@@ -2877,7 +3432,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "эелдэг бус"
+                    "enMn": "эелдэг бус",
+                    "meaningsMn": [
+                        "эелдэг бус",
+                        "эелдэг бус байдал",
+                        "Уучлаарай"
+                    ]
                 },
                 {
                     "jp": "運転手",
@@ -2894,7 +3454,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "жолооч"
+                    "enMn": "жолооч",
+                    "meaningsMn": [
+                        "жолооч (мэргэжлээр)"
+                    ]
                 },
                 {
                     "jp": "別",
@@ -2912,7 +3475,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "ялгаа"
+                    "enMn": "ялгаа",
+                    "meaningsMn": [
+                        "ялгаа",
+                        "өөр"
+                    ]
                 },
                 {
                     "jp": "小説",
@@ -2929,7 +3496,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "роман"
+                    "enMn": "роман",
+                    "meaningsMn": [
+                        "роман"
+                    ]
                 },
                 {
                     "jp": "運動",
@@ -2946,7 +3516,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "дасгал"
+                    "enMn": "дасгал",
+                    "meaningsMn": [
+                        "дасгал"
+                    ]
                 },
                 {
                     "jp": "止める",
@@ -2964,7 +3537,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "дуусгах"
+                    "enMn": "дуусгах",
+                    "meaningsMn": [
+                        "дуусгах",
+                        "зогсоох"
+                    ]
                 },
                 {
                     "jp": "葉",
@@ -2981,7 +3558,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "навч"
+                    "enMn": "навч",
+                    "meaningsMn": [
+                        "навч"
+                    ]
                 },
                 {
                     "jp": "すると",
@@ -2999,7 +3579,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "дараа нь"
+                    "enMn": "дараа нь",
+                    "meaningsMn": [
+                        "тэгээд",
+                        "дараа нь"
+                    ]
                 }
             ]
         ]
@@ -3025,7 +3609,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "也",
                     "phoneticReading": "チ",
-                    "enMn": "газар хөдлөлт"
+                    "enMn": "газар хөдлөлт",
+                    "meaningsMn": [
+                        "газар хөдлөлт"
+                    ]
                 },
                 {
                     "jp": "地理",
@@ -3042,7 +3629,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "也",
                     "phoneticReading": "チ",
-                    "enMn": "газарзүй"
+                    "enMn": "газарзүй",
+                    "meaningsMn": [
+                        "газарзүй"
+                    ]
                 },
                 {
                     "jp": "動物園",
@@ -3059,7 +3649,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "動",
                     "phoneticReading": "ドウ",
-                    "enMn": "амьтны хүрээлэн"
+                    "enMn": "амьтны хүрээлэн",
+                    "meaningsMn": [
+                        "амьтны хүрээлэн"
+                    ]
                 },
                 {
                     "jp": "動く",
@@ -3076,7 +3669,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "動",
                     "phoneticReading": "ドウ",
-                    "enMn": "хөдлөх"
+                    "enMn": "хөдлөх",
+                    "meaningsMn": [
+                        "хөдлөх"
+                    ]
                 },
                 {
                     "jp": "迎える",
@@ -3095,7 +3691,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "угтах"
+                    "enMn": "угтах",
+                    "meaningsMn": [
+                        "угтах",
+                        "уулзах",
+                        "угтан авах"
+                    ]
                 },
                 {
                     "jp": "祈る",
@@ -3113,7 +3714,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "залбирах"
+                    "enMn": "залбирах",
+                    "meaningsMn": [
+                        "залбирах",
+                        "хүсэх"
+                    ]
                 },
                 {
                     "jp": "噛む",
@@ -3131,7 +3736,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хазах"
+                    "enMn": "хазах",
+                    "meaningsMn": [
+                        "хазах",
+                        "зажлах"
+                    ]
                 },
                 {
                     "jp": "触る",
@@ -3149,7 +3758,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хүрэх"
+                    "enMn": "хүрэх",
+                    "meaningsMn": [
+                        "хүрэх",
+                        "мэдрэх"
+                    ]
                 },
                 {
                     "jp": "西洋",
@@ -3167,7 +3780,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "Барын орнууд"
+                    "enMn": "Барын орнууд",
+                    "meaningsMn": [
+                        "Барын орнууд",
+                        "барууны орнууд"
+                    ]
                 },
                 {
                     "jp": "社長",
@@ -3184,7 +3801,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "компанийн ерөнхийлөгч"
+                    "enMn": "компанийн ерөнхийлөгч",
+                    "meaningsMn": [
+                        "компанийн ерөнхийлөгч"
+                    ]
                 }
             ]
         ]
@@ -3211,7 +3831,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "皮",
                     "phoneticReading": "ハ、ヒ",
-                    "enMn": "тэр"
+                    "enMn": "тэр",
+                    "meaningsMn": [
+                        "тэр",
+                        "найз залуу"
+                    ]
                 },
                 {
                     "jp": "彼ら",
@@ -3228,7 +3852,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "皮",
                     "phoneticReading": "ハ、ヒ",
-                    "enMn": "тэд (ихэвчлэн эрэгтэй)"
+                    "enMn": "тэд (ихэвчлэн эрэгтэй)",
+                    "meaningsMn": [
+                        "тэд (ихэвчлэн эрэгтэй)"
+                    ]
                 },
                 {
                     "jp": "人口",
@@ -3245,7 +3872,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хүн ам"
+                    "enMn": "хүн ам",
+                    "meaningsMn": [
+                        "хүн ам"
+                    ]
                 },
                 {
                     "jp": "アルバイト",
@@ -3262,7 +3892,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "цагийн ажил"
+                    "enMn": "цагийн ажил",
+                    "meaningsMn": [
+                        "цагийн ажил"
+                    ]
                 },
                 {
                     "jp": "月",
@@ -3279,7 +3912,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "сар"
+                    "enMn": "сар",
+                    "meaningsMn": [
+                        "сар"
+                    ]
                 },
                 {
                     "jp": "出席",
@@ -3296,7 +3932,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "ирц"
+                    "enMn": "ирц",
+                    "meaningsMn": [
+                        "ирц"
+                    ]
                 },
                 {
                     "jp": "それに",
@@ -3314,7 +3953,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "түүнчлэн"
+                    "enMn": "түүнчлэн",
+                    "meaningsMn": [
+                        "түүнчлэн",
+                        "түүнчлэн"
+                    ]
                 },
                 {
                     "jp": "赤ちゃん",
@@ -3332,7 +3975,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "нялх хүүхэд"
+                    "enMn": "нялх хүүхэд",
+                    "meaningsMn": [
+                        "нялх хүүхэд",
+                        "нярай"
+                    ]
                 },
                 {
                     "jp": "エスカレーター",
@@ -3349,7 +3996,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "эскалатор"
+                    "enMn": "эскалатор",
+                    "meaningsMn": [
+                        "эскалатор"
+                    ]
                 },
                 {
                     "jp": "絹",
@@ -3366,7 +4016,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "торго"
+                    "enMn": "торго",
+                    "meaningsMn": [
+                        "торго"
+                    ]
                 }
             ]
         ]
@@ -3393,7 +4046,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "非",
                     "phoneticReading": "ハイ、ヒ",
-                    "enMn": "гунигтай"
+                    "enMn": "гунигтай",
+                    "meaningsMn": [
+                        "гунигтай",
+                        "гунигтай"
+                    ]
                 },
                 {
                     "jp": "非常に",
@@ -3411,7 +4068,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "非",
                     "phoneticReading": "ハイ、ヒ",
-                    "enMn": "маш их"
+                    "enMn": "маш их",
+                    "meaningsMn": [
+                        "маш их",
+                        "маш"
+                    ]
                 },
                 {
                     "jp": "足りる",
@@ -3429,7 +4090,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "足",
                     "phoneticReading": "ソク",
-                    "enMn": "хангалттай"
+                    "enMn": "хангалттай",
+                    "meaningsMn": [
+                        "хангалттай",
+                        "хангалттай байх"
+                    ]
                 },
                 {
                     "jp": "足す",
@@ -3446,7 +4111,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "足",
                     "phoneticReading": "ソク",
-                    "enMn": "нэмэх"
+                    "enMn": "нэмэх",
+                    "meaningsMn": [
+                        "нэмэх"
+                    ]
                 },
                 {
                     "jp": "人形",
@@ -3464,7 +4132,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хүүхэлдэй"
+                    "enMn": "хүүхэлдэй",
+                    "meaningsMn": [
+                        "хүүхэлдэй",
+                        "хүүхэлдэй"
+                    ]
                 },
                 {
                     "jp": "開く",
@@ -3482,7 +4154,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "нээх"
+                    "enMn": "нээх",
+                    "meaningsMn": [
+                        "нээх",
+                        "нээгдэх"
+                    ]
                 },
                 {
                     "jp": "飾る",
@@ -3500,7 +4176,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "чимэглэх"
+                    "enMn": "чимэглэх",
+                    "meaningsMn": [
+                        "чимэглэх",
+                        "чимэглэх"
+                    ]
                 },
                 {
                     "jp": "サンドイッチ",
@@ -3517,7 +4197,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "сэндвич"
+                    "enMn": "сэндвич",
+                    "meaningsMn": [
+                        "сэндвич"
+                    ]
                 },
                 {
                     "jp": "場合",
@@ -3535,7 +4218,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "тохиолдол"
+                    "enMn": "тохиолдол",
+                    "meaningsMn": [
+                        "тохиолдол",
+                        "нөхцөл байдал"
+                    ]
                 },
                 {
                     "jp": "投げる",
@@ -3553,7 +4240,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "шидэх"
+                    "enMn": "шидэх",
+                    "meaningsMn": [
+                        "шидэх",
+                        "шидэх"
+                    ]
                 }
             ]
         ]
@@ -3579,7 +4270,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "布",
                     "phoneticReading": "フ",
-                    "enMn": "ор (футон)"
+                    "enMn": "ор (футон)",
+                    "meaningsMn": [
+                        "ор (футон)"
+                    ]
                 },
                 {
                     "jp": "怖い",
@@ -3597,7 +4291,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "布",
                     "phoneticReading": "フ",
-                    "enMn": "аймшигтай"
+                    "enMn": "аймшигтай",
+                    "meaningsMn": [
+                        "аймшигтай",
+                        "аймшигтай"
+                    ]
                 },
                 {
                     "jp": "残念",
@@ -3615,7 +4313,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "харамсал"
+                    "enMn": "харамсал",
+                    "meaningsMn": [
+                        "харамсал",
+                        "харамсалтай"
+                    ]
                 },
                 {
                     "jp": "品物",
@@ -3632,7 +4334,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "бараа"
+                    "enMn": "бараа",
+                    "meaningsMn": [
+                        "бараа"
+                    ]
                 },
                 {
                     "jp": "恥ずかしい",
@@ -3650,7 +4355,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "ичиж буй"
+                    "enMn": "ичиж буй",
+                    "meaningsMn": [
+                        "ичиж буй",
+                        "ичиж зовсон"
+                    ]
                 },
                 {
                     "jp": "力",
@@ -3668,7 +4377,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хүч"
+                    "enMn": "хүч",
+                    "meaningsMn": [
+                        "хүч",
+                        "эрх мэдэл"
+                    ]
                 },
                 {
                     "jp": "なるべく",
@@ -3686,7 +4399,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "боломжтой бол"
+                    "enMn": "боломжтой бол",
+                    "meaningsMn": [
+                        "боломжтой бол",
+                        "аль болох"
+                    ]
                 },
                 {
                     "jp": "やっと",
@@ -3704,7 +4421,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "эцэст нь"
+                    "enMn": "эцэст нь",
+                    "meaningsMn": [
+                        "эцэст нь",
+                        "эцэст нь"
+                    ]
                 },
                 {
                     "jp": "だから",
@@ -3722,7 +4443,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "тиймээс"
+                    "enMn": "тиймээс",
+                    "meaningsMn": [
+                        "тиймээс",
+                        "тиймээс"
+                    ]
                 },
                 {
                     "jp": "さっき",
@@ -3739,7 +4464,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "саяхан"
+                    "enMn": "саяхан",
+                    "meaningsMn": [
+                        "саяхан"
+                    ]
                 }
             ]
         ]
@@ -3766,7 +4494,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "正",
                     "phoneticReading": "ショウ、セイ",
-                    "enMn": "үдийн цаг"
+                    "enMn": "үдийн цаг",
+                    "meaningsMn": [
+                        "үдийн цаг",
+                        "үд дунд"
+                    ]
                 },
                 {
                     "jp": "正直",
@@ -3785,7 +4517,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "正",
                     "phoneticReading": "ショウ、セイ",
-                    "enMn": "шударга байдал"
+                    "enMn": "шударга байдал",
+                    "meaningsMn": [
+                        "шударга байдал",
+                        "шударга зан",
+                        "нээлттэй зан"
+                    ]
                 },
                 {
                     "jp": "宿泊",
@@ -3802,7 +4539,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "宿",
                     "phoneticReading": "シュク",
-                    "enMn": "байрлал"
+                    "enMn": "байрлал",
+                    "meaningsMn": [
+                        "байрлал"
+                    ]
                 },
                 {
                     "jp": "宿",
@@ -3820,7 +4560,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "宿",
                     "phoneticReading": "シュク",
-                    "enMn": "зочид буудал"
+                    "enMn": "зочид буудал",
+                    "meaningsMn": [
+                        "зочид буудал",
+                        "байрлал"
+                    ]
                 },
                 {
                     "jp": "地味",
@@ -3839,7 +4583,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "也",
                     "phoneticReading": "チ",
-                    "enMn": "энгийн"
+                    "enMn": "энгийн",
+                    "meaningsMn": [
+                        "чимээгүй",
+                        "энгийн",
+                        "даруухан"
+                    ]
                 },
                 {
                     "jp": "支払う",
@@ -3856,7 +4605,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "支",
                     "phoneticReading": "シ、キ",
-                    "enMn": "төлөх"
+                    "enMn": "төлөх",
+                    "meaningsMn": [
+                        "төлөх"
+                    ]
                 },
                 {
                     "jp": "借金",
@@ -3875,7 +4627,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "昔",
                     "phoneticReading": "セキ、シャク",
-                    "enMn": "өр"
+                    "enMn": "өр",
+                    "meaningsMn": [
+                        "өр",
+                        "зээл",
+                        "өр төлбөр"
+                    ]
                 },
                 {
                     "jp": "銃",
@@ -3892,7 +4649,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "充",
                     "phoneticReading": "ジュウ",
-                    "enMn": "буу"
+                    "enMn": "буу",
+                    "meaningsMn": [
+                        "буу"
+                    ]
                 },
                 {
                     "jp": "賛成",
@@ -3910,7 +4670,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "賛",
                     "phoneticReading": "サン",
-                    "enMn": "зөвшөөрөл"
+                    "enMn": "зөвшөөрөл",
+                    "meaningsMn": [
+                        "зөвшөөрөл",
+                        "тохиролцоо"
+                    ]
                 },
                 {
                     "jp": "障害",
@@ -3928,7 +4692,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "章",
                     "phoneticReading": "ショウ",
-                    "enMn": "саад"
+                    "enMn": "саад",
+                    "meaningsMn": [
+                        "саад",
+                        "саад"
+                    ]
                 }
             ]
         ]
@@ -3954,7 +4722,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "参",
                     "phoneticReading": "サン",
-                    "enMn": "оролцоо"
+                    "enMn": "оролцоо",
+                    "meaningsMn": [
+                        "оролцоо"
+                    ]
                 },
                 {
                     "jp": "参考",
@@ -3972,7 +4743,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "参",
                     "phoneticReading": "サン",
-                    "enMn": "лавлагаа"
+                    "enMn": "лавлагаа",
+                    "meaningsMn": [
+                        "лавлагаа",
+                        "зөвлөлдөх"
+                    ]
                 },
                 {
                     "jp": "奨学金",
@@ -3989,7 +4764,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "将",
                     "phoneticReading": "ショウ",
-                    "enMn": "тэтгэлэг"
+                    "enMn": "тэтгэлэг",
+                    "meaningsMn": [
+                        "тэтгэлэг"
+                    ]
                 },
                 {
                     "jp": "情報",
@@ -4007,7 +4785,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "青",
                     "phoneticReading": "セイ、ショウ、ジョウ",
-                    "enMn": "мэдээлэл"
+                    "enMn": "мэдээлэл",
+                    "meaningsMn": [
+                        "мэдээлэл",
+                        "(цэргийн) тагнуул"
+                    ]
                 },
                 {
                     "jp": "姉妹",
@@ -4024,7 +4806,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "市",
                     "phoneticReading": "シ",
-                    "enMn": "эгч дүү"
+                    "enMn": "эгч дүү",
+                    "meaningsMn": [
+                        "эгч дүү"
+                    ]
                 },
                 {
                     "jp": "消費",
@@ -4042,7 +4827,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "肖",
                     "phoneticReading": "ショウ",
-                    "enMn": "хэрэглээ"
+                    "enMn": "хэрэглээ",
+                    "meaningsMn": [
+                        "хэрэглээ",
+                        "зарлага"
+                    ]
                 },
                 {
                     "jp": "就職",
@@ -4059,7 +4848,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "就",
                     "phoneticReading": "シュウ",
-                    "enMn": "ажил эрхлэлт"
+                    "enMn": "ажил эрхлэлт",
+                    "meaningsMn": [
+                        "ажилд орох"
+                    ]
                 },
                 {
                     "jp": "作法",
@@ -4078,7 +4870,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "乍",
                     "phoneticReading": "サク",
-                    "enMn": "зан төлөв"
+                    "enMn": "зан төлөв",
+                    "meaningsMn": [
+                        "зан төлөв",
+                        "ёс зүй",
+                        "зохистой байдал"
+                    ]
                 },
                 {
                     "jp": "需要",
@@ -4095,7 +4892,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "需",
                     "phoneticReading": "ジュ",
-                    "enMn": "эрэлт"
+                    "enMn": "эрэлт",
+                    "meaningsMn": [
+                        "эрэлт"
+                    ]
                 },
                 {
                     "jp": "州",
@@ -4113,7 +4913,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "州",
                     "phoneticReading": "シュウ",
-                    "enMn": "муж"
+                    "enMn": "муж",
+                    "meaningsMn": [
+                        "байдал",
+                        "муж"
+                    ]
                 }
             ]
         ]
@@ -4140,7 +4944,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "正",
                     "phoneticReading": "ショウ、セイ",
-                    "enMn": "шинж тэмдэг"
+                    "enMn": "шинж тэмдэг",
+                    "meaningsMn": [
+                        "шинж тэмдэг",
+                        "нөхцөл"
+                    ]
                 },
                 {
                     "jp": "証明",
@@ -4158,7 +4966,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "正",
                     "phoneticReading": "ショウ、セイ",
-                    "enMn": "нотолгоо"
+                    "enMn": "нотолгоо",
+                    "meaningsMn": [
+                        "нотолгоо",
+                        "баталгаажуулалт"
+                    ]
                 },
                 {
                     "jp": "賞",
@@ -4176,7 +4988,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "尚",
                     "phoneticReading": "ショウ",
-                    "enMn": "шагнал"
+                    "enMn": "шагнал",
+                    "meaningsMn": [
+                        "шагнал",
+                        "шагнал"
+                    ]
                 },
                 {
                     "jp": "賞品",
@@ -4194,7 +5010,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "尚",
                     "phoneticReading": "ショウ",
-                    "enMn": "цом"
+                    "enMn": "цом",
+                    "meaningsMn": [
+                        "шагнал",
+                        "цом"
+                    ]
                 },
                 {
                     "jp": "集中",
@@ -4212,7 +5032,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "төвлөрөл"
+                    "enMn": "төвлөрөл",
+                    "meaningsMn": [
+                        "төвлөрөл",
+                        "анхаарлаа төвлөрүүлэх"
+                    ]
                 },
                 {
                     "jp": "収入",
@@ -4230,7 +5054,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "орлого"
+                    "enMn": "орлого",
+                    "meaningsMn": [
+                        "орлого",
+                        "орлого"
+                    ]
                 },
                 {
                     "jp": "自殺",
@@ -4247,7 +5075,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "амиа хорлолт"
+                    "enMn": "амиа хорлолт",
+                    "meaningsMn": [
+                        "амиа хорлолт"
+                    ]
                 },
                 {
                     "jp": "出版",
@@ -4264,7 +5095,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хэвлэл"
+                    "enMn": "хэвлэл",
+                    "meaningsMn": [
+                        "хэвлэл"
+                    ]
                 },
                 {
                     "jp": "主婦",
@@ -4281,7 +5115,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "гэрийн эзэгтэй"
+                    "enMn": "гэрийн эзэгтэй",
+                    "meaningsMn": [
+                        "гэрийн эзэгтэй"
+                    ]
                 },
                 {
                     "jp": "自身",
@@ -4298,7 +5135,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "өөрөө"
+                    "enMn": "өөрөө",
+                    "meaningsMn": [
+                        "өөрөө"
+                    ]
                 }
             ]
         ]
@@ -4325,7 +5165,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "左",
                     "phoneticReading": "サ",
-                    "enMn": "зүүн баруун"
+                    "enMn": "зүүн баруун",
+                    "meaningsMn": [
+                        "зүүн баруун",
+                        "нөлөө"
+                    ]
                 },
                 {
                     "jp": "差",
@@ -4343,7 +5187,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "左",
                     "phoneticReading": "サ",
-                    "enMn": "ялгаа"
+                    "enMn": "ялгаа",
+                    "meaningsMn": [
+                        "ялгаа",
+                        "зөрүү"
+                    ]
                 },
                 {
                     "jp": "四季",
@@ -4360,7 +5208,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "дөрвөн улирал"
+                    "enMn": "дөрвөн улирал",
+                    "meaningsMn": [
+                        "дөрвөн улирал"
+                    ]
                 },
                 {
                     "jp": "皿",
@@ -4378,7 +5229,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "таваг"
+                    "enMn": "таваг",
+                    "meaningsMn": [
+                        "таваг",
+                        "таваг"
+                    ]
                 },
                 {
                     "jp": "順番",
@@ -4396,7 +5251,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "дараалал"
+                    "enMn": "дараалал",
+                    "meaningsMn": [
+                        "дараалал",
+                        "дараалал"
+                    ]
                 },
                 {
                     "jp": "重要",
@@ -4414,7 +5273,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "чухал"
+                    "enMn": "чухал",
+                    "meaningsMn": [
+                        "чухал",
+                        "зайлшгүй чухал"
+                    ]
                 },
                 {
                     "jp": "植物",
@@ -4432,7 +5295,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "直",
                     "phoneticReading": "ショク、チ",
-                    "enMn": "ургамал"
+                    "enMn": "ургамал",
+                    "meaningsMn": [
+                        "ургамал",
+                        "ургамалжилт"
+                    ]
                 },
                 {
                     "jp": "主張",
@@ -4451,7 +5318,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "шаардлага"
+                    "enMn": "шаардлага",
+                    "meaningsMn": [
+                        "шаардлага",
+                        "тууштай байдал",
+                        "мэдэгдэл"
+                    ]
                 },
                 {
                     "jp": "詩",
@@ -4469,7 +5341,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "шүлэг"
+                    "enMn": "шүлэг",
+                    "meaningsMn": [
+                        "шүлэг",
+                        "яруу найраг"
+                    ]
                 },
                 {
                     "jp": "酸素",
@@ -4486,7 +5362,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хүчилтөрөгч"
+                    "enMn": "хүчилтөрөгч",
+                    "meaningsMn": [
+                        "хүчилтөрөгч"
+                    ]
                 }
             ]
         ]
@@ -4512,7 +5391,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "支",
                     "phoneticReading": "シ、キ",
-                    "enMn": "салбар оффис"
+                    "enMn": "салбар оффис",
+                    "meaningsMn": [
+                        "салбар (алба)"
+                    ]
                 },
                 {
                     "jp": "支配",
@@ -4531,7 +5413,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "支",
                     "phoneticReading": "シ、キ",
-                    "enMn": "засаглал"
+                    "enMn": "засаглал",
+                    "meaningsMn": [
+                        "засаглал",
+                        "удирдлага",
+                        "удирдлага"
+                    ]
                 },
                 {
                     "jp": "乗客",
@@ -4548,7 +5435,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "乗",
                     "phoneticReading": "ジョウ",
-                    "enMn": "зорчигч"
+                    "enMn": "зорчигч",
+                    "meaningsMn": [
+                        "зорчигч"
+                    ]
                 },
                 {
                     "jp": "乗せる",
@@ -4566,7 +5456,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "乗",
                     "phoneticReading": "ジョウ",
-                    "enMn": "дээр нь тавих"
+                    "enMn": "дээр нь тавих",
+                    "meaningsMn": [
+                        "дээр нь тавих",
+                        "суулгах"
+                    ]
                 },
                 {
                     "jp": "自慢",
@@ -4584,7 +5478,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "бахархал"
+                    "enMn": "бахархал",
+                    "meaningsMn": [
+                        "бахархал",
+                        "сайрхал"
+                    ]
                 },
                 {
                     "jp": "芝居",
@@ -4602,7 +5500,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "жүжиг"
+                    "enMn": "жүжиг",
+                    "meaningsMn": [
+                        "жүжиг",
+                        "жүжиг"
+                    ]
                 },
                 {
                     "jp": "質",
@@ -4620,7 +5522,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "чанар"
+                    "enMn": "чанар",
+                    "meaningsMn": [
+                        "чанар",
+                        "зан чанар"
+                    ]
                 },
                 {
                     "jp": "占める",
@@ -4638,7 +5544,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "эзлэх"
+                    "enMn": "эзлэх",
+                    "meaningsMn": [
+                        "эзлэх",
+                        "эзлэх"
+                    ]
                 },
                 {
                     "jp": "失望",
@@ -4656,7 +5566,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "гутрал"
+                    "enMn": "гутрал",
+                    "meaningsMn": [
+                        "гутрал",
+                        "цөхрөл"
+                    ]
                 },
                 {
                     "jp": "沈む",
@@ -4674,7 +5588,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "живэх"
+                    "enMn": "живэх",
+                    "meaningsMn": [
+                        "живэх",
+                        "гуниглах"
+                    ]
                 }
             ]
         ]
@@ -4700,7 +5618,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "次",
                     "phoneticReading": "シ",
-                    "enMn": "нөөц баялаг"
+                    "enMn": "нөөц баялаг",
+                    "meaningsMn": [
+                        "нөөц баялаг"
+                    ]
                 },
                 {
                     "jp": "資本",
@@ -4718,7 +5639,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "次",
                     "phoneticReading": "シ",
-                    "enMn": "хөрөнгө"
+                    "enMn": "хөрөнгө",
+                    "meaningsMn": [
+                        "хөрөнгө",
+                        "хөрөнгө"
+                    ]
                 },
                 {
                     "jp": "示す",
@@ -4736,7 +5661,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "үзүүлэх"
+                    "enMn": "үзүүлэх",
+                    "meaningsMn": [
+                        "үзүүлэх",
+                        "заах"
+                    ]
                 },
                 {
                     "jp": "実現",
@@ -4755,7 +5684,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хэрэгжилт"
+                    "enMn": "хэрэгжилт",
+                    "meaningsMn": [
+                        "хэрэгжилт",
+                        "биелэлт",
+                        "биелэл"
+                    ]
                 },
                 {
                     "jp": "実は",
@@ -4773,7 +5707,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "үнэндээ"
+                    "enMn": "үнэндээ",
+                    "meaningsMn": [
+                        "үнэндээ",
+                        "үнэндээ"
+                    ]
                 },
                 {
                     "jp": "自動",
@@ -4791,7 +5729,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "автомат"
+                    "enMn": "автомат",
+                    "meaningsMn": [
+                        "автомат",
+                        "өөрөө хөдлөх"
+                    ]
                 },
                 {
                     "jp": "舌",
@@ -4808,7 +5750,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хэл (амны)"
+                    "enMn": "хэл (амны)",
+                    "meaningsMn": [
+                        "хэл (амны)"
+                    ]
                 },
                 {
                     "jp": "児童",
@@ -4826,7 +5771,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хүүхдүүд"
+                    "enMn": "хүүхдүүд",
+                    "meaningsMn": [
+                        "хүүхдүүд",
+                        "бага насны"
+                    ]
                 },
                 {
                     "jp": "死亡",
@@ -4843,7 +5792,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "нас барах"
+                    "enMn": "нас барах",
+                    "meaningsMn": [
+                        "нас барах"
+                    ]
                 },
                 {
                     "jp": "失業",
@@ -4860,7 +5812,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "ажилгүйдэл"
+                    "enMn": "ажилгүйдэл",
+                    "meaningsMn": [
+                        "ажилгүйдэл"
+                    ]
                 }
             ]
         ]
@@ -4887,7 +5842,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "幸",
                     "phoneticReading": "コウ",
-                    "enMn": "аз жаргал"
+                    "enMn": "аз жаргал",
+                    "meaningsMn": [
+                        "аз жаргал",
+                        "ерөөл"
+                    ]
                 },
                 {
                     "jp": "幸運",
@@ -4905,7 +5864,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "幸",
                     "phoneticReading": "コウ",
-                    "enMn": "азтай явдал"
+                    "enMn": "азтай явдал",
+                    "meaningsMn": [
+                        "азтай явдал",
+                        "азын жаргал"
+                    ]
                 },
                 {
                     "jp": "少女",
@@ -4922,7 +5885,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "少",
                     "phoneticReading": "ショウ、サ",
-                    "enMn": "залуу охин"
+                    "enMn": "залуу охин",
+                    "meaningsMn": [
+                        "залуу охин"
+                    ]
                 },
                 {
                     "jp": "少々",
@@ -4940,7 +5906,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "少",
                     "phoneticReading": "ショウ、サ",
-                    "enMn": "бага зэрэг"
+                    "enMn": "бага зэрэг",
+                    "meaningsMn": [
+                        "бага зэрэг",
+                        "багахан (少し-ийн албан ёсны хэлбэр)"
+                    ]
                 },
                 {
                     "jp": "住民",
@@ -4958,7 +5928,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "оршин суугчид"
+                    "enMn": "оршин суугчид",
+                    "meaningsMn": [
+                        "оршин суугчид",
+                        "оршин суугчид"
+                    ]
                 },
                 {
                     "jp": "主義",
@@ -4977,7 +5951,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "сургаал"
+                    "enMn": "сургаал",
+                    "meaningsMn": [
+                        "сургаал",
+                        "шалтгаан",
+                        "зарчим"
+                    ]
                 },
                 {
                     "jp": "瞬間",
@@ -4995,7 +5974,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "агшин зуур"
+                    "enMn": "агшин зуур",
+                    "meaningsMn": [
+                        "агшин зуур",
+                        "мөч"
+                    ]
                 },
                 {
                     "jp": "首都",
@@ -5012,7 +5995,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "нийслэл хот"
+                    "enMn": "нийслэл хот",
+                    "meaningsMn": [
+                        "нийслэл хот"
+                    ]
                 },
                 {
                     "jp": "重視",
@@ -5030,7 +6016,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "ач холбогдол"
+                    "enMn": "ач холбогдол",
+                    "meaningsMn": [
+                        "ач холбогдол",
+                        "стресс"
+                    ]
                 },
                 {
                     "jp": "手術",
@@ -5047,7 +6037,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "мэс засал"
+                    "enMn": "мэс засал",
+                    "meaningsMn": [
+                        "мэс засал"
+                    ]
                 }
             ]
         ]
@@ -5074,7 +6067,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "亲",
                     "phoneticReading": "シン",
-                    "enMn": "дотно"
+                    "enMn": "дотно",
+                    "meaningsMn": [
+                        "дотно",
+                        "дотно (найз гэх мэт)"
+                    ]
                 },
                 {
                     "jp": "親戚",
@@ -5091,7 +6088,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "亲",
                     "phoneticReading": "シン",
-                    "enMn": "төрөл садан"
+                    "enMn": "төрөл садан",
+                    "meaningsMn": [
+                        "төрөл садан"
+                    ]
                 },
                 {
                     "jp": "手段",
@@ -5110,7 +6110,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "арга зам"
+                    "enMn": "арга зам",
+                    "meaningsMn": [
+                        "арга зам",
+                        "арга",
+                        "арга хэмжээ"
+                    ]
                 },
                 {
                     "jp": "修理",
@@ -5128,7 +6133,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "засвар"
+                    "enMn": "засвар",
+                    "meaningsMn": [
+                        "засвар",
+                        "засвар"
+                    ]
                 },
                 {
                     "jp": "出身",
@@ -5145,7 +6154,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "төрсөн нутаг"
+                    "enMn": "төрсөн нутаг",
+                    "meaningsMn": [
+                        "гаралтай"
+                    ]
                 },
                 {
                     "jp": "収穫",
@@ -5164,7 +6176,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "ургац хураалт"
+                    "enMn": "ургац хураалт",
+                    "meaningsMn": [
+                        "ургац хураалт",
+                        "ургац",
+                        "хураалт"
+                    ]
                 },
                 {
                     "jp": "集団",
@@ -5182,7 +6199,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "бүлэг"
+                    "enMn": "бүлэг",
+                    "meaningsMn": [
+                        "бүлэг",
+                        "бөөгнөрөл"
+                    ]
                 },
                 {
                     "jp": "修正",
@@ -5200,7 +6221,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "залруулга"
+                    "enMn": "залруулга",
+                    "meaningsMn": [
+                        "залруулга",
+                        "засвар"
+                    ]
                 },
                 {
                     "jp": "首相",
@@ -5217,7 +6242,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "ерөнхий сайд"
+                    "enMn": "ерөнхий сайд",
+                    "meaningsMn": [
+                        "ерөнхий сайд"
+                    ]
                 },
                 {
                     "jp": "主要",
@@ -5235,7 +6263,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "гол"
+                    "enMn": "гол",
+                    "meaningsMn": [
+                        "гол",
+                        "гол"
+                    ]
                 }
             ]
         ]
@@ -5262,7 +6294,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "重",
                     "phoneticReading": "シュ",
-                    "enMn": "төрөл зүйл"
+                    "enMn": "төрөл зүйл",
+                    "meaningsMn": [
+                        "төрөл зүйл",
+                        "төрөл"
+                    ]
                 },
                 {
                     "jp": "種",
@@ -5281,7 +6317,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "重",
                     "phoneticReading": "シュ",
-                    "enMn": "үр"
+                    "enMn": "үр",
+                    "meaningsMn": [
+                        "үр",
+                        "материал",
+                        "шалтгаан"
+                    ]
                 },
                 {
                     "jp": "職業",
@@ -5299,7 +6340,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "戠",
                     "phoneticReading": "シキ、ショク",
-                    "enMn": "мэргэжил"
+                    "enMn": "мэргэжил",
+                    "meaningsMn": [
+                        "мэргэжил",
+                        "худалдаа"
+                    ]
                 },
                 {
                     "jp": "職",
@@ -5316,7 +6361,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "戠",
                     "phoneticReading": "シキ、ショク",
-                    "enMn": "ажил эрхлэлт"
+                    "enMn": "ажил эрхлэлт",
+                    "meaningsMn": [
+                        "ажил эрхлэлт"
+                    ]
                 },
                 {
                     "jp": "書類",
@@ -5334,7 +6382,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "бичиг баримт"
+                    "enMn": "бичиг баримт",
+                    "meaningsMn": [
+                        "бичиг баримт",
+                        "албан бичиг"
+                    ]
                 },
                 {
                     "jp": "商売",
@@ -5353,7 +6405,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "худалдаа"
+                    "enMn": "худалдаа",
+                    "meaningsMn": [
+                        "худалдаа",
+                        "худалдаа",
+                        "худалдаа"
+                    ]
                 },
                 {
                     "jp": "食欲",
@@ -5370,7 +6427,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хоолны дуршил"
+                    "enMn": "хоолны дуршил",
+                    "meaningsMn": [
+                        "хоолны дур"
+                    ]
                 },
                 {
                     "jp": "上達",
@@ -5388,7 +6448,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "дэвшил"
+                    "enMn": "дэвшил",
+                    "meaningsMn": [
+                        "сайжруулалт",
+                        "ахиц дэвшил"
+                    ]
                 },
                 {
                     "jp": "条件",
@@ -5406,7 +6470,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "нөхцөл"
+                    "enMn": "нөхцөл",
+                    "meaningsMn": [
+                        "нөхцөл",
+                        "нөхцөлүүд"
+                    ]
                 },
                 {
                     "jp": "冗談",
@@ -5423,7 +6491,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "шог үг"
+                    "enMn": "шог үг",
+                    "meaningsMn": [
+                        "шог үг"
+                    ]
                 }
             ]
         ]
@@ -5449,7 +6520,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "周",
                     "phoneticReading": "シュウ、チョウ",
-                    "enMn": "долоо хоног"
+                    "enMn": "долоо хоног",
+                    "meaningsMn": [
+                        "долоо хоног"
+                    ]
                 },
                 {
                     "jp": "周囲",
@@ -5468,7 +6542,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "周",
                     "phoneticReading": "シュウ、チョウ",
-                    "enMn": "орчин тойрон"
+                    "enMn": "орчин тойрон",
+                    "meaningsMn": [
+                        "орчин тойрон",
+                        "орчим",
+                        "орчин тойрон"
+                    ]
                 },
                 {
                     "jp": "処理",
@@ -5487,7 +6566,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "боловсруулалт"
+                    "enMn": "боловсруулалт",
+                    "meaningsMn": [
+                        "боловсруулалт",
+                        "боловсруулалт",
+                        "зохицуулалт"
+                    ]
                 },
                 {
                     "jp": "商品",
@@ -5505,7 +6589,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "бараа бүтээгдэхүүн"
+                    "enMn": "бараа бүтээгдэхүүн",
+                    "meaningsMn": [
+                        "бараа бүтээгдэхүүн",
+                        "бараа бүтээгдэхүүн"
+                    ]
                 },
                 {
                     "jp": "常識",
@@ -5522,7 +6610,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "эгэл ойлголт"
+                    "enMn": "эгэл ойлголт",
+                    "meaningsMn": [
+                        "эгэл ойлголт"
+                    ]
                 },
                 {
                     "jp": "衝突",
@@ -5540,7 +6631,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "мөргөлдөөн"
+                    "enMn": "мөргөлдөөн",
+                    "meaningsMn": [
+                        "мөргөлдөөн",
+                        "мөргөлдөөн"
+                    ]
                 },
                 {
                     "jp": "女優",
@@ -5557,7 +6652,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "жүжигчин эмэгтэй"
+                    "enMn": "жүжигчин эмэгтэй",
+                    "meaningsMn": [
+                        "жүжигчин эмэгтэй"
+                    ]
                 },
                 {
                     "jp": "状態",
@@ -5575,7 +6673,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "байдал"
+                    "enMn": "байдал",
+                    "meaningsMn": [
+                        "нөхцөл",
+                        "нөхцөл байдал"
+                    ]
                 },
                 {
                     "jp": "順調",
@@ -5592,7 +6694,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "амжилттай явж буй"
+                    "enMn": "амжилттай явж буй",
+                    "meaningsMn": [
+                        "сайн явж байгаа"
+                    ]
                 },
                 {
                     "jp": "状況",
@@ -5610,7 +6715,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "нөхцөл байдал"
+                    "enMn": "нөхцөл байдал",
+                    "meaningsMn": [
+                        "нөхцөл байдал",
+                        "нөхцөл байдал"
+                    ]
                 }
             ]
         ]
@@ -5636,7 +6745,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "肖",
                     "phoneticReading": "ショウ",
-                    "enMn": "хоол боловсруулалт"
+                    "enMn": "хоол боловсруулалт",
+                    "meaningsMn": [
+                        "хоол боловсруулалт"
+                    ]
                 },
                 {
                     "jp": "消極的",
@@ -5653,7 +6765,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "肖",
                     "phoneticReading": "ショウ",
-                    "enMn": "идэвхгүй"
+                    "enMn": "идэвхгүй",
+                    "meaningsMn": [
+                        "идэвхгүй"
+                    ]
                 },
                 {
                     "jp": "消耗",
@@ -5671,7 +6786,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "肖",
                     "phoneticReading": "ショウ",
-                    "enMn": "ядрал"
+                    "enMn": "ядрал",
+                    "meaningsMn": [
+                        "ядрал",
+                        "хэрэглээ"
+                    ]
                 },
                 {
                     "jp": "将棋",
@@ -5688,7 +6807,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "将",
                     "phoneticReading": "ショウ",
-                    "enMn": "шоги"
+                    "enMn": "шоги",
+                    "meaningsMn": [
+                        "шоги"
+                    ]
                 },
                 {
                     "jp": "乗車",
@@ -5706,7 +6828,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "乗",
                     "phoneticReading": "ジョウ",
-                    "enMn": "галт тэрэгт суух"
+                    "enMn": "галт тэрэгт суух",
+                    "meaningsMn": [
+                        "галт тэрэгт суух",
+                        "галт тэрэгт суух"
+                    ]
                 },
                 {
                     "jp": "性能",
@@ -5724,7 +6850,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "生",
                     "phoneticReading": "セイ、ショウ",
-                    "enMn": "гүйцэтгэл"
+                    "enMn": "гүйцэтгэл",
+                    "meaningsMn": [
+                        "чадвар",
+                        "чадамж"
+                    ]
                 },
                 {
                     "jp": "賞金",
@@ -5742,7 +6872,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "尚",
                     "phoneticReading": "ショウ",
-                    "enMn": "шагналын мөнгө"
+                    "enMn": "шагналын мөнгө",
+                    "meaningsMn": [
+                        "шагнал",
+                        "мөнгөн шагнал"
+                    ]
                 },
                 {
                     "jp": "就任",
@@ -5760,7 +6894,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "就",
                     "phoneticReading": "シュウ",
-                    "enMn": "албан тушаалд томилогдох"
+                    "enMn": "албан тушаалд томилогдох",
+                    "meaningsMn": [
+                        "албан тушаалд томилогдох",
+                        "албан тушаалд орох"
+                    ]
                 },
                 {
                     "jp": "熟語",
@@ -5778,7 +6916,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "孰",
                     "phoneticReading": "ジュク",
-                    "enMn": "хэлц үг"
+                    "enMn": "хэлц үг",
+                    "meaningsMn": [
+                        "хэлц үг",
+                        "ханзан нийлмэл үг"
+                    ]
                 },
                 {
                     "jp": "垂直",
@@ -5796,7 +6938,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "垂",
                     "phoneticReading": "スイ",
-                    "enMn": "босоо"
+                    "enMn": "босоо",
+                    "meaningsMn": [
+                        "босоо",
+                        "перпендикуляр"
+                    ]
                 }
             ]
         ]
@@ -5822,7 +6968,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "受",
                     "phoneticReading": "ジュ",
-                    "enMn": "шалгалт өгөх"
+                    "enMn": "шалгалт өгөх",
+                    "meaningsMn": [
+                        "шалгалт өгөх"
+                    ]
                 },
                 {
                     "jp": "受話器",
@@ -5839,7 +6988,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "受",
                     "phoneticReading": "ジュ",
-                    "enMn": "утасны сонсгуур"
+                    "enMn": "утасны сонсгуур",
+                    "meaningsMn": [
+                        "(утасны) сонсгол"
+                    ]
                 },
                 {
                     "jp": "定規",
@@ -5856,7 +7008,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "定",
                     "phoneticReading": "ジョウ、テイ",
-                    "enMn": "шугам"
+                    "enMn": "шугам",
+                    "meaningsMn": [
+                        "(хэмжих) шугам"
+                    ]
                 },
                 {
                     "jp": "定員",
@@ -5874,7 +7029,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "定",
                     "phoneticReading": "ジョウ、テイ",
-                    "enMn": "тогтмол ажилтны тоо"
+                    "enMn": "тогтмол ажилтны тоо",
+                    "meaningsMn": [
+                        "тогтмол ажилтны тоо",
+                        "багтаамж (жишээ нь завины)"
+                    ]
                 },
                 {
                     "jp": "資料",
@@ -5892,7 +7051,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "次",
                     "phoneticReading": "シ",
-                    "enMn": "материал"
+                    "enMn": "материал",
+                    "meaningsMn": [
+                        "материал",
+                        "мэдээлэл"
+                    ]
                 },
                 {
                     "jp": "障子",
@@ -5909,7 +7072,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "章",
                     "phoneticReading": "ショウ",
-                    "enMn": "шургуулах хаалга"
+                    "enMn": "шургуулах хаалга",
+                    "meaningsMn": [
+                        "цаасан шюжи хаалга"
+                    ]
                 },
                 {
                     "jp": "新幹線",
@@ -5927,7 +7093,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "亲",
                     "phoneticReading": "シン",
-                    "enMn": "хурдны галт тэрэг"
+                    "enMn": "хурдны галт тэрэг",
+                    "meaningsMn": [
+                        "Шинкансэн",
+                        "\"Сумин галт тэрэг\""
+                    ]
                 },
                 {
                     "jp": "循環",
@@ -5946,7 +7116,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "盾",
                     "phoneticReading": "ジュン",
-                    "enMn": "эргэлт"
+                    "enMn": "эргэлт",
+                    "meaningsMn": [
+                        "эргэлт",
+                        "эргэлт",
+                        "мөчлөг"
+                    ]
                 },
                 {
                     "jp": "周辺",
@@ -5964,7 +7139,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "周",
                     "phoneticReading": "シュウ、チョウ",
-                    "enMn": "орчин"
+                    "enMn": "орчин",
+                    "meaningsMn": [
+                        "орчим",
+                        "захын"
+                    ]
                 },
                 {
                     "jp": "白髪",
@@ -5982,7 +7161,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "白",
                     "phoneticReading": "ハク",
-                    "enMn": "буурал үс"
+                    "enMn": "буурал үс",
+                    "meaningsMn": [
+                        "цайрсан үс",
+                        "моод үс цайруулалт"
+                    ]
                 }
             ]
         ]
@@ -6008,7 +7191,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "肖",
                     "phoneticReading": "ショウ",
-                    "enMn": "ариутгал"
+                    "enMn": "ариутгал",
+                    "meaningsMn": [
+                        "ариутгал"
+                    ]
                 },
                 {
                     "jp": "消防署",
@@ -6025,7 +7211,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "肖",
                     "phoneticReading": "ショウ",
-                    "enMn": "гал команд"
+                    "enMn": "гал команд",
+                    "meaningsMn": [
+                        "гал команд"
+                    ]
                 },
                 {
                     "jp": "真空",
@@ -6042,7 +7231,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "真",
                     "phoneticReading": "シン、テン",
-                    "enMn": "хоосон орон зай"
+                    "enMn": "хоосон орон зай",
+                    "meaningsMn": [
+                        "хоосон орон зай"
+                    ]
                 },
                 {
                     "jp": "真っ暗",
@@ -6059,7 +7251,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "真",
                     "phoneticReading": "シン、テン",
-                    "enMn": "бүрэн харанхуй"
+                    "enMn": "бүрэн харанхуй",
+                    "meaningsMn": [
+                        "бүрэн харанхуй"
+                    ]
                 },
                 {
                     "jp": "頭脳",
@@ -6078,7 +7273,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "豆",
                     "phoneticReading": "トウ、ト、ズ",
-                    "enMn": "тархи"
+                    "enMn": "тархи",
+                    "meaningsMn": [
+                        "толгой",
+                        "оюун ухаан",
+                        "оюун бодол"
+                    ]
                 },
                 {
                     "jp": "診断",
@@ -6095,7 +7295,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "оношилгоо"
+                    "enMn": "оношилгоо",
+                    "meaningsMn": [
+                        "оношилгоо"
+                    ]
                 },
                 {
                     "jp": "森林",
@@ -6113,7 +7316,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "ой"
+                    "enMn": "ой",
+                    "meaningsMn": [
+                        "ой",
+                        "ой"
+                    ]
                 },
                 {
                     "jp": "純粋",
@@ -6132,7 +7339,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "цэвэр"
+                    "enMn": "цэвэр",
+                    "meaningsMn": [
+                        "цэвэр",
+                        "жинхэнэ",
+                        "холилдоогүй"
+                    ]
                 },
                 {
                     "jp": "商業",
@@ -6151,7 +7363,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "худалдаа"
+                    "enMn": "худалдаа",
+                    "meaningsMn": [
+                        "худалдаа",
+                        "худалдаа",
+                        "худалдаа"
+                    ]
                 },
                 {
                     "jp": "重役",
@@ -6169,7 +7386,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "захирал"
+                    "enMn": "захирал",
+                    "meaningsMn": [
+                        "захирал",
+                        "дээд удирдлага"
+                    ]
                 }
             ]
         ]
@@ -6196,7 +7417,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "焦",
                     "phoneticReading": "ショウ",
-                    "enMn": "фокус"
+                    "enMn": "фокус",
+                    "meaningsMn": [
+                        "фокус",
+                        "цэг"
+                    ]
                 },
                 {
                     "jp": "焦がす",
@@ -6214,7 +7439,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "焦",
                     "phoneticReading": "ショウ",
-                    "enMn": "шатаах"
+                    "enMn": "шатаах",
+                    "meaningsMn": [
+                        "шатаах",
+                        "шатаах"
+                    ]
                 },
                 {
                     "jp": "随筆",
@@ -6232,7 +7461,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "迶",
                     "phoneticReading": "ズイ",
-                    "enMn": "эссэ"
+                    "enMn": "эссэ",
+                    "meaningsMn": [
+                        "эссэ бичвэрүүд",
+                        "төрөл бүрийн бичвэр"
+                    ]
                 },
                 {
                     "jp": "商店",
@@ -6250,7 +7483,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "дэлгүүр"
+                    "enMn": "дэлгүүр",
+                    "meaningsMn": [
+                        "дэлгүүр",
+                        "худалдааны байгууллага"
+                    ]
                 },
                 {
                     "jp": "重量",
@@ -6267,7 +7504,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "жин"
+                    "enMn": "жин",
+                    "meaningsMn": [
+                        "хүнд жинтэй"
+                    ]
                 },
                 {
                     "jp": "鈴",
@@ -6284,7 +7524,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "令",
                     "phoneticReading": "レイ",
-                    "enMn": "хонх"
+                    "enMn": "хонх",
+                    "meaningsMn": [
+                        "хонх"
+                    ]
                 },
                 {
                     "jp": "水平線",
@@ -6301,7 +7544,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "тэнгэрийн хаяа"
+                    "enMn": "тэнгэрийн хаяа",
+                    "meaningsMn": [
+                        "тэнгэрийн хаяа"
+                    ]
                 },
                 {
                     "jp": "涼む",
@@ -6319,7 +7565,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "京",
                     "phoneticReading": "ケイ、リョウ",
-                    "enMn": "сэрүүцэх"
+                    "enMn": "сэрүүцэх",
+                    "meaningsMn": [
+                        "сэрүүцэх",
+                        "сэрүүцэх"
+                    ]
                 },
                 {
                     "jp": "上級",
@@ -6338,7 +7588,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "ахисан түвшин"
+                    "enMn": "ахисан түвшин",
+                    "meaningsMn": [
+                        "ахисан түвшин",
+                        "өндөр зэрэглэл",
+                        "ахлах"
+                    ]
                 },
                 {
                     "jp": "税関",
@@ -6355,7 +7610,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "兑",
                     "phoneticReading": "エツ、ゼイ",
-                    "enMn": "гааль"
+                    "enMn": "гааль",
+                    "meaningsMn": [
+                        "гааль"
+                    ]
                 }
             ]
         ]
@@ -6381,7 +7639,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "正",
                     "phoneticReading": "ショウ、セイ",
-                    "enMn": "урд тал"
+                    "enMn": "урд тал",
+                    "meaningsMn": [
+                        "урд тал"
+                    ]
                 },
                 {
                     "jp": "正味",
@@ -6398,7 +7659,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "正",
                     "phoneticReading": "ショウ、セイ",
-                    "enMn": "цэвэр жин"
+                    "enMn": "цэвэр жин",
+                    "meaningsMn": [
+                        "цэвэр (жин)"
+                    ]
                 },
                 {
                     "jp": "寝台",
@@ -6415,7 +7679,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "𠬶",
                     "phoneticReading": "シン",
-                    "enMn": "унтлагын ор"
+                    "enMn": "унтлагын ор",
+                    "meaningsMn": [
+                        "ор"
+                    ]
                 },
                 {
                     "jp": "侵入",
@@ -6434,7 +7701,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "𠬶",
                     "phoneticReading": "シン",
-                    "enMn": "довтолгоо"
+                    "enMn": "довтолгоо",
+                    "meaningsMn": [
+                        "довтолгоо",
+                        "довтолгоо",
+                        "хууль бусаар нэвтрэх"
+                    ]
                 },
                 {
                     "jp": "順々",
@@ -6452,7 +7724,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "дараалан"
+                    "enMn": "дараалан",
+                    "meaningsMn": [
+                        "дараалан",
+                        "ээлжлэн"
+                    ]
                 },
                 {
                     "jp": "主語",
@@ -6469,7 +7745,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "өгүүлэгдэхүүн"
+                    "enMn": "өгүүлэгдэхүүн",
+                    "meaningsMn": [
+                        "(дүрмийн) эзэн"
+                    ]
                 },
                 {
                     "jp": "小数",
@@ -6487,7 +7766,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "бутархай"
+                    "enMn": "бутархай",
+                    "meaningsMn": [
+                        "бутархай",
+                        "аравтын бутархай"
+                    ]
                 },
                 {
                     "jp": "巡査",
@@ -6504,7 +7787,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "цагдаа"
+                    "enMn": "цагдаа",
+                    "meaningsMn": [
+                        "цагдаа"
+                    ]
                 },
                 {
                     "jp": "上下",
@@ -6522,7 +7808,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "дээш доош"
+                    "enMn": "дээш доош",
+                    "meaningsMn": [
+                        "дээд, доод",
+                        "дээш доош"
+                    ]
                 },
                 {
                     "jp": "寿命",
@@ -6539,7 +7829,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "наслалт"
+                    "enMn": "наслалт",
+                    "meaningsMn": [
+                        "наслалт"
+                    ]
                 }
             ]
         ]
@@ -6565,7 +7858,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "戠",
                     "phoneticReading": "シキ、ショク",
-                    "enMn": "ажлын байр"
+                    "enMn": "ажлын байр",
+                    "meaningsMn": [
+                        "ажлын байр"
+                    ]
                 },
                 {
                     "jp": "職人",
@@ -6583,7 +7879,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "戠",
                     "phoneticReading": "シキ、ショク",
-                    "enMn": "гар урчин"
+                    "enMn": "гар урчин",
+                    "meaningsMn": [
+                        "гар урчин",
+                        "гар урчин"
+                    ]
                 },
                 {
                     "jp": "主役",
@@ -6600,7 +7900,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "гол дүр"
+                    "enMn": "гол дүр",
+                    "meaningsMn": [
+                        "гол дүр"
+                    ]
                 },
                 {
                     "jp": "上旬",
@@ -6617,7 +7920,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "сарын эхэн"
+                    "enMn": "сарын эхэн",
+                    "meaningsMn": [
+                        "сарын эхний 10 хоног"
+                    ]
                 },
                 {
                     "jp": "商社",
@@ -6634,7 +7940,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "худалдааны компани"
+                    "enMn": "худалдааны компани",
+                    "meaningsMn": [
+                        "худалдааны компани"
+                    ]
                 },
                 {
                     "jp": "勝敗",
@@ -6652,7 +7961,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "ялалт эсвэл ялагдал"
+                    "enMn": "ялалт эсвэл ялагдал",
+                    "meaningsMn": [
+                        "ялалт эсвэл ялагдал",
+                        "тулааны үр дүн"
+                    ]
                 },
                 {
                     "jp": "重力",
@@ -6669,7 +7982,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "таталцал"
+                    "enMn": "таталцал",
+                    "meaningsMn": [
+                        "таталцал"
+                    ]
                 },
                 {
                     "jp": "上品",
@@ -6688,7 +8004,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "эрхэмсэг"
+                    "enMn": "эрхэмсэг",
+                    "meaningsMn": [
+                        "эрхэмсэг",
+                        "дэгжин",
+                        "зан авиртай сайн"
+                    ]
                 },
                 {
                     "jp": "純情",
@@ -6705,7 +8026,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "цэвэр сэтгэл"
+                    "enMn": "цэвэр сэтгэл",
+                    "meaningsMn": [
+                        "цэвэр сэтгэл"
+                    ]
                 },
                 {
                     "jp": "祝日",
@@ -6722,7 +8046,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "улсын баяр"
+                    "enMn": "улсын баяр",
+                    "meaningsMn": [
+                        "улсын баяр"
+                    ]
                 }
             ]
         ]
@@ -6743,7 +8070,10 @@ const WORD_LEVELS = [
                     "example": null,
                     "phonetic": "正",
                     "phoneticReading": "ショウ、セイ",
-                    "enMn": "бүхэл тоо"
+                    "enMn": "бүхэл тоо",
+                    "meaningsMn": [
+                        "бүхэл тоо"
+                    ]
                 },
                 {
                     "jp": "整備",
@@ -6761,7 +8091,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "正",
                     "phoneticReading": "ショウ、セイ",
-                    "enMn": "засвар үйлчилгээ"
+                    "enMn": "засвар үйлчилгээ",
+                    "meaningsMn": [
+                        "засвар үйлчилгээ",
+                        "их засвар"
+                    ]
                 },
                 {
                     "jp": "製作",
@@ -6779,7 +8113,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "制",
                     "phoneticReading": "セイ",
-                    "enMn": "үйлдвэрлэл"
+                    "enMn": "үйлдвэрлэл",
+                    "meaningsMn": [
+                        "үйлдвэрлэл",
+                        "үйлдвэрлэл"
+                    ]
                 },
                 {
                     "jp": "制作",
@@ -6796,7 +8134,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "制",
                     "phoneticReading": "セイ",
-                    "enMn": "бүтээл"
+                    "enMn": "бүтээл",
+                    "meaningsMn": [
+                        "бүтээл"
+                    ]
                 },
                 {
                     "jp": "食塩",
@@ -6813,7 +8154,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "давс"
+                    "enMn": "давс",
+                    "meaningsMn": [
+                        "давс"
+                    ]
                 },
                 {
                     "jp": "書籍",
@@ -6831,7 +8175,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "ном"
+                    "enMn": "ном",
+                    "meaningsMn": [
+                        "ном",
+                        "хэвлэл"
+                    ]
                 },
                 {
                     "jp": "書道",
@@ -6848,7 +8196,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "каллиграфи"
+                    "enMn": "каллиграфи",
+                    "meaningsMn": [
+                        "каллиграфи"
+                    ]
                 },
                 {
                     "jp": "人文科学",
@@ -6866,7 +8217,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хүмүүнлэгийн ухаан"
+                    "enMn": "хүмүүнлэгийн ухаан",
+                    "meaningsMn": [
+                        "нийгмийн ухаанууд",
+                        "хүмүүнлэгийн ухаан"
+                    ]
                 },
                 {
                     "jp": "初級",
@@ -6883,7 +8238,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "анхан шат"
+                    "enMn": "анхан шат",
+                    "meaningsMn": [
+                        "анхан шат"
+                    ]
                 },
                 {
                     "jp": "書店",
@@ -6900,7 +8258,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "номын дэлгүүр"
+                    "enMn": "номын дэлгүүр",
+                    "meaningsMn": [
+                        "номын дэлгүүр"
+                    ]
                 }
             ]
         ]
@@ -6928,7 +8289,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "申",
                     "phoneticReading": "シン",
-                    "enMn": "өргөдөл"
+                    "enMn": "өргөдөл",
+                    "meaningsMn": [
+                        "өргөдөл",
+                        "хүсэлт",
+                        "өргөдөл"
+                    ]
                 },
                 {
                     "jp": "神話",
@@ -6946,7 +8312,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "申",
                     "phoneticReading": "シン",
-                    "enMn": "домог"
+                    "enMn": "домог",
+                    "meaningsMn": [
+                        "домог",
+                        "домог"
+                    ]
                 },
                 {
                     "jp": "人造",
@@ -6965,7 +8335,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хүний гараар хийсэн"
+                    "enMn": "хүний гараар хийсэн",
+                    "meaningsMn": [
+                        "хүний гараар хийсэн",
+                        "синтетик",
+                        "хиймэл"
+                    ]
                 },
                 {
                     "jp": "素人",
@@ -6984,7 +8359,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "сонирхогч"
+                    "enMn": "сонирхогч",
+                    "meaningsMn": [
+                        "энгийн иргэн",
+                        "сонирхогч",
+                        "шинэхэн хүн"
+                    ]
                 },
                 {
                     "jp": "人事",
@@ -7002,7 +8382,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "боловсон хүчин"
+                    "enMn": "боловсон хүчин",
+                    "meaningsMn": [
+                        "хүний нөөц",
+                        "боловсон хүчний удирдлага"
+                    ]
                 },
                 {
                     "jp": "心身",
@@ -7019,7 +8403,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "сэтгэл ба бие"
+                    "enMn": "сэтгэл ба бие",
+                    "meaningsMn": [
+                        "сэтгэл ба бие"
+                    ]
                 },
                 {
                     "jp": "食器",
@@ -7036,7 +8423,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "сав суулга"
+                    "enMn": "сав суулга",
+                    "meaningsMn": [
+                        "сав суулга"
+                    ]
                 },
                 {
                     "jp": "芯",
@@ -7055,7 +8445,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "цөм"
+                    "enMn": "цөм",
+                    "meaningsMn": [
+                        "цөм",
+                        "зүрх",
+                        "гуйлин"
+                    ]
                 },
                 {
                     "jp": "人命",
@@ -7072,7 +8467,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хүний амь нас"
+                    "enMn": "хүний амь нас",
+                    "meaningsMn": [
+                        "(хүний) амь"
+                    ]
                 },
                 {
                     "jp": "助教授",
@@ -7089,7 +8487,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "дэд профессор"
+                    "enMn": "дэд профессор",
+                    "meaningsMn": [
+                        "дэд профессор"
+                    ]
                 }
             ]
         ]
@@ -7117,7 +8518,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "生",
                     "phoneticReading": "セイ、ショウ",
-                    "enMn": "учруулах"
+                    "enMn": "учруулах",
+                    "meaningsMn": [
+                        "учруулах",
+                        "үүсэх",
+                        "бий болох"
+                    ]
                 },
                 {
                     "jp": "生存",
@@ -7136,7 +8542,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "生",
                     "phoneticReading": "セイ、ショウ",
-                    "enMn": "оршин тогтнол"
+                    "enMn": "оршин тогтнол",
+                    "meaningsMn": [
+                        "оршин тогтнол",
+                        "оршин байх",
+                        "амьд үлдэлт"
+                    ]
                 },
                 {
                     "jp": "清書",
@@ -7153,7 +8564,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "青",
                     "phoneticReading": "セイ、ショウ、ジョウ",
-                    "enMn": "цэвэр хувилбар"
+                    "enMn": "цэвэр хувилбар",
+                    "meaningsMn": [
+                        "цэвэр хувилбар"
+                    ]
                 },
                 {
                     "jp": "清掃",
@@ -7170,7 +8584,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "青",
                     "phoneticReading": "セイ、ショウ、ジョウ",
-                    "enMn": "цэвэрлэгээ"
+                    "enMn": "цэвэрлэгээ",
+                    "meaningsMn": [
+                        "цэвэрлэгээ"
+                    ]
                 },
                 {
                     "jp": "深夜",
@@ -7187,7 +8604,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "шөнө орой"
+                    "enMn": "шөнө орой",
+                    "meaningsMn": [
+                        "шөнө орой"
+                    ]
                 },
                 {
                     "jp": "水筒",
@@ -7206,7 +8626,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "усны сав"
+                    "enMn": "усны сав",
+                    "meaningsMn": [
+                        "усны сав",
+                        "хоол",
+                        "усны сав"
+                    ]
                 },
                 {
                     "jp": "水分",
@@ -7223,7 +8648,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "чийг"
+                    "enMn": "чийг",
+                    "meaningsMn": [
+                        "чийг"
+                    ]
                 },
                 {
                     "jp": "針路",
@@ -7236,7 +8664,11 @@ const WORD_LEVELS = [
                     "example": null,
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "чиглэл"
+                    "enMn": "чиглэл",
+                    "meaningsMn": [
+                        "чиглэл",
+                        "удирдлага"
+                    ]
                 },
                 {
                     "jp": "水平",
@@ -7254,7 +8686,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хэвтээ"
+                    "enMn": "хэвтээ",
+                    "meaningsMn": [
+                        "хэвтээ",
+                        "хэвтээ"
+                    ]
                 },
                 {
                     "jp": "水素",
@@ -7271,7 +8707,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "устөрөгч"
+                    "enMn": "устөрөгч",
+                    "meaningsMn": [
+                        "устөрөгч"
+                    ]
                 }
             ]
         ]
@@ -7298,7 +8737,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "丞",
                     "phoneticReading": "ジョウ",
-                    "enMn": "уур"
+                    "enMn": "уур",
+                    "meaningsMn": [
+                        "уур",
+                        "уур"
+                    ]
                 },
                 {
                     "jp": "蒸発",
@@ -7316,7 +8759,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "丞",
                     "phoneticReading": "ジョウ",
-                    "enMn": "ууршилт"
+                    "enMn": "ууршилт",
+                    "meaningsMn": [
+                        "ууршилт",
+                        "тайлбарлагдаагүй алга болсон явдал"
+                    ]
                 },
                 {
                     "jp": "素直",
@@ -7335,7 +8782,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "дуулгавартай"
+                    "enMn": "дуулгавартай",
+                    "meaningsMn": [
+                        "дуулгавартай",
+                        "номхон",
+                        "дуулгавартай"
+                    ]
                 },
                 {
                     "jp": "炊事",
@@ -7352,7 +8804,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хоол хийх"
+                    "enMn": "хоол хийх",
+                    "meaningsMn": [
+                        "хоол хийх"
+                    ]
                 },
                 {
                     "jp": "水蒸気",
@@ -7370,7 +8825,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "усны уур"
+                    "enMn": "усны уур",
+                    "meaningsMn": [
+                        "усны уур",
+                        "уур"
+                    ]
                 },
                 {
                     "jp": "水面",
@@ -7387,7 +8846,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "усны гадаргуу"
+                    "enMn": "усны гадаргуу",
+                    "meaningsMn": [
+                        "усны гадаргуу"
+                    ]
                 },
                 {
                     "jp": "隙間",
@@ -7406,7 +8868,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "зай завсар"
+                    "enMn": "зай завсар",
+                    "meaningsMn": [
+                        "ан цав",
+                        "зай завсар",
+                        "нүх"
+                    ]
                 },
                 {
                     "jp": "推定",
@@ -7425,7 +8892,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "таамаглал"
+                    "enMn": "таамаглал",
+                    "meaningsMn": [
+                        "таамаглал",
+                        "таамаглал",
+                        "тооцоолол"
+                    ]
                 },
                 {
                     "jp": "水産",
@@ -7438,7 +8910,11 @@ const WORD_LEVELS = [
                     "example": null,
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "далайн бүтээгдэхүүн"
+                    "enMn": "далайн бүтээгдэхүүн",
+                    "meaningsMn": [
+                        "далайн бүтээгдэхүүн",
+                        "загас агнуур"
+                    ]
                 },
                 {
                     "jp": "寸法",
@@ -7457,7 +8933,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хэмжилт"
+                    "enMn": "хэмжилт",
+                    "meaningsMn": [
+                        "хэмжилт",
+                        "хэмжээ",
+                        "хэмжигдэхүүн"
+                    ]
                 }
             ]
         ]
@@ -7485,7 +8966,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "古",
                     "phoneticReading": "コ",
-                    "enMn": "онцлог"
+                    "enMn": "онцлог",
+                    "meaningsMn": [
+                        "онцлог",
+                        "зан чанар",
+                        "өвөрмөц зан"
+                    ]
                 },
                 {
                     "jp": "固定",
@@ -7503,7 +8989,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "古",
                     "phoneticReading": "コ",
-                    "enMn": "тогтмол"
+                    "enMn": "тогтмол",
+                    "meaningsMn": [
+                        "тогтоолт",
+                        "тогтоох (жишээ нь цалин, хөрөнгө)"
+                    ]
                 },
                 {
                     "jp": "固有",
@@ -7522,7 +9012,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "古",
                     "phoneticReading": "コ",
-                    "enMn": "өвөрмөц шинж"
+                    "enMn": "өвөрмөц шинж",
+                    "meaningsMn": [
+                        "өвөрмөц шинж",
+                        "заншил",
+                        "өвөрмөц"
+                    ]
                 },
                 {
                     "jp": "滑稽",
@@ -7541,7 +9036,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "骨",
                     "phoneticReading": "コツ",
-                    "enMn": "хөгжилтэй"
+                    "enMn": "хөгжилтэй",
+                    "meaningsMn": [
+                        "хөгжилтэй",
+                        "хошин шог",
+                        "инээдтэй"
+                    ]
                 },
                 {
                     "jp": "骨董品",
@@ -7558,7 +9058,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "骨",
                     "phoneticReading": "コツ",
-                    "enMn": "эртний эдлэл"
+                    "enMn": "эртний эдлэл",
+                    "meaningsMn": [
+                        "эртний үнэт зүйл"
+                    ]
                 },
                 {
                     "jp": "誇張",
@@ -7575,7 +9078,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "夸",
                     "phoneticReading": "コ、ケ",
-                    "enMn": "хэтрүүлэг"
+                    "enMn": "хэтрүүлэг",
+                    "meaningsMn": [
+                        "хэтрүүлэг"
+                    ]
                 },
                 {
                     "jp": "混同",
@@ -7594,7 +9100,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "昆",
                     "phoneticReading": "コン",
-                    "enMn": "будилал"
+                    "enMn": "будилал",
+                    "meaningsMn": [
+                        "будилал",
+                        "холих",
+                        "нэгдэл"
+                    ]
                 },
                 {
                     "jp": "抗議",
@@ -7612,7 +9123,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "亢",
                     "phoneticReading": "コウ",
-                    "enMn": "эсэргүүцэл"
+                    "enMn": "эсэргүүцэл",
+                    "meaningsMn": [
+                        "эсэргүүцэл",
+                        "эсэргүүцэл"
+                    ]
                 },
                 {
                     "jp": "巧妙",
@@ -7631,7 +9146,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "工",
                     "phoneticReading": "コウ、ク",
-                    "enMn": "овсгоотой"
+                    "enMn": "овсгоотой",
+                    "meaningsMn": [
+                        "овсгоотой",
+                        "ур чадвартай",
+                        "ухаалаг"
+                    ]
                 },
                 {
                     "jp": "誤差",
@@ -7648,7 +9168,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "呉",
                     "phoneticReading": "ゴ",
-                    "enMn": "алдаа"
+                    "enMn": "алдаа",
+                    "meaningsMn": [
+                        "алдаа"
+                    ]
                 }
             ]
         ]
@@ -7676,7 +9199,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "艮",
                     "phoneticReading": "コン",
-                    "enMn": "үндэс"
+                    "enMn": "үндэс",
+                    "meaningsMn": [
+                        "үндэс",
+                        "үндэслэл",
+                        "суурь"
+                    ]
                 },
                 {
                     "jp": "根本",
@@ -7695,7 +9223,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "艮",
                     "phoneticReading": "コン",
-                    "enMn": "суурь"
+                    "enMn": "суурь",
+                    "meaningsMn": [
+                        "суурь",
+                        "үндэс",
+                        "суурь"
+                    ]
                 },
                 {
                     "jp": "語彙",
@@ -7713,7 +9246,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "五",
                     "phoneticReading": "ゴ",
-                    "enMn": "үгийн сан"
+                    "enMn": "үгийн сан",
+                    "meaningsMn": [
+                        "үгийн сан",
+                        "толь бичиг"
+                    ]
                 },
                 {
                     "jp": "語源",
@@ -7732,7 +9269,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "五",
                     "phoneticReading": "ゴ",
-                    "enMn": "үг гарлын судлал"
+                    "enMn": "үг гарлын судлал",
+                    "meaningsMn": [
+                        "үгийн язгуур",
+                        "үгийн гарал үүсэл",
+                        "үг гарлын судлал"
+                    ]
                 },
                 {
                     "jp": "告白",
@@ -7750,7 +9292,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "告",
                     "phoneticReading": "コク、コウ",
-                    "enMn": "наминчлал"
+                    "enMn": "наминчлал",
+                    "meaningsMn": [
+                        "наминчлал",
+                        "хүлээн зөвшөөрөлт"
+                    ]
                 },
                 {
                     "jp": "考古学",
@@ -7767,7 +9313,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "耂",
                     "phoneticReading": "コウ",
-                    "enMn": "археологи"
+                    "enMn": "археологи",
+                    "meaningsMn": [
+                        "археологи"
+                    ]
                 },
                 {
                     "jp": "皇居",
@@ -7784,7 +9333,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "皇",
                     "phoneticReading": "コウ",
-                    "enMn": "эзэн хааны ордон"
+                    "enMn": "эзэн хааны ордон",
+                    "meaningsMn": [
+                        "эзэн хааны ордон"
+                    ]
                 },
                 {
                     "jp": "香辛料",
@@ -7801,7 +9353,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "香",
                     "phoneticReading": "キョウ",
-                    "enMn": "амтлагч"
+                    "enMn": "амтлагч",
+                    "meaningsMn": [
+                        "амтлагч"
+                    ]
                 },
                 {
                     "jp": "交付",
@@ -7819,7 +9374,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "交",
                     "phoneticReading": "コウ",
-                    "enMn": "олголт"
+                    "enMn": "олголт",
+                    "meaningsMn": [
+                        "хүргэх",
+                        "олгох (хуулбараар)"
+                    ]
                 },
                 {
                     "jp": "賢明",
@@ -7838,7 +9397,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "臤",
                     "phoneticReading": "ケン",
-                    "enMn": "ухаалаг"
+                    "enMn": "ухаалаг",
+                    "meaningsMn": [
+                        "ухаан билэг",
+                        "оюун ухаан",
+                        "болгоомжтой байдал"
+                    ]
                 }
             ]
         ]
@@ -7864,7 +9428,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "古",
                     "phoneticReading": "コ",
-                    "enMn": "эртний үе"
+                    "enMn": "эртний үе",
+                    "meaningsMn": [
+                        "эртний үе"
+                    ]
                 },
                 {
                     "jp": "個別",
@@ -7881,7 +9448,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "古",
                     "phoneticReading": "コ",
-                    "enMn": "тухайн тохиолдол"
+                    "enMn": "тухайн тохиолдол",
+                    "meaningsMn": [
+                        "тодорхой тохиолдол"
+                    ]
                 },
                 {
                     "jp": "孤独",
@@ -7900,7 +9470,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "瓜",
                     "phoneticReading": "コ",
-                    "enMn": "ганцаардал"
+                    "enMn": "ганцаардал",
+                    "meaningsMn": [
+                        "тусгаарлагдсан байдал",
+                        "ганцаардал",
+                        "ганцаардал"
+                    ]
                 },
                 {
                     "jp": "孤児",
@@ -7917,7 +9492,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "瓜",
                     "phoneticReading": "コ",
-                    "enMn": "өнчин хүүхэд"
+                    "enMn": "өнчин хүүхэд",
+                    "meaningsMn": [
+                        "өнчин хүүхэд"
+                    ]
                 },
                 {
                     "jp": "洪水",
@@ -7934,7 +9512,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "共",
                     "phoneticReading": "キョウ、コウ",
-                    "enMn": "үер"
+                    "enMn": "үер",
+                    "meaningsMn": [
+                        "үер"
+                    ]
                 },
                 {
                     "jp": "向上",
@@ -7953,7 +9534,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "сайжруулалт"
+                    "enMn": "сайжруулалт",
+                    "meaningsMn": [
+                        "өсөлт",
+                        "сайжруулалт",
+                        "ахиц дэвшил"
+                    ]
                 },
                 {
                     "jp": "国防",
@@ -7970,7 +9556,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "батлан хамгаалалт"
+                    "enMn": "батлан хамгаалалт",
+                    "meaningsMn": [
+                        "батлан хамгаалалт"
+                    ]
                 },
                 {
                     "jp": "碁盤",
@@ -7982,7 +9571,10 @@ const WORD_LEVELS = [
                     "example": null,
                     "phonetic": "其",
                     "phoneticReading": "キ、ギ、ゴ",
-                    "enMn": "го тоглоомын хөлөг"
+                    "enMn": "го тоглоомын хөлөг",
+                    "meaningsMn": [
+                        "го тоглоомын хөлөг"
+                    ]
                 },
                 {
                     "jp": "懲りる",
@@ -8000,7 +9592,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "徴",
                     "phoneticReading": "チョウ",
-                    "enMn": "сургамж авах"
+                    "enMn": "сургамж авах",
+                    "meaningsMn": [
+                        "туршлагаас сурах",
+                        "залхах"
+                    ]
                 },
                 {
                     "jp": "暦",
@@ -8018,7 +9614,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "𠩵",
                     "phoneticReading": "レキ",
-                    "enMn": "хуанли"
+                    "enMn": "хуанли",
+                    "meaningsMn": [
+                        "хуанли",
+                        "хуанли"
+                    ]
                 }
             ]
         ]
@@ -8044,7 +9644,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "交",
                     "phoneticReading": "コウ",
-                    "enMn": "хэлэлцээр"
+                    "enMn": "хэлэлцээр",
+                    "meaningsMn": [
+                        "хэлэлцээр"
+                    ]
                 },
                 {
                     "jp": "効率",
@@ -8061,7 +9664,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "交",
                     "phoneticReading": "コウ",
-                    "enMn": "үр ашиг"
+                    "enMn": "үр ашиг",
+                    "meaningsMn": [
+                        "үр ашиг"
+                    ]
                 },
                 {
                     "jp": "殊に",
@@ -8079,7 +9685,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "朱",
                     "phoneticReading": "シュ",
-                    "enMn": "ялангуяа"
+                    "enMn": "ялангуяа",
+                    "meaningsMn": [
+                        "ялангуяа",
+                        "юуны түрүүнд"
+                    ]
                 },
                 {
                     "jp": "厳密",
@@ -8097,7 +9707,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "нарийн чанд"
+                    "enMn": "нарийн чанд",
+                    "meaningsMn": [
+                        "хатуу чанга",
+                        "нарийн"
+                    ]
                 },
                 {
                     "jp": "好意",
@@ -8116,7 +9730,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "сайхан санаа"
+                    "enMn": "сайхан санаа",
+                    "meaningsMn": [
+                        "сайн санаа",
+                        "тааллаа хайрлах",
+                        "хүндэтгэл"
+                    ]
                 },
                 {
                     "jp": "権力",
@@ -8135,7 +9754,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "эрх мэдэл"
+                    "enMn": "эрх мэдэл",
+                    "meaningsMn": [
+                        "(улс төрийн) эрх мэдэл",
+                        "эрх мэдэл",
+                        "нөлөө"
+                    ]
                 },
                 {
                     "jp": "心得",
@@ -8153,7 +9777,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "мэдлэг"
+                    "enMn": "мэдлэг",
+                    "meaningsMn": [
+                        "мэдлэг",
+                        "мэдээлэл"
+                    ]
                 },
                 {
                     "jp": "財",
@@ -8171,7 +9799,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "才",
                     "phoneticReading": "サイ、ザイ",
-                    "enMn": "баялаг"
+                    "enMn": "баялаг",
+                    "meaningsMn": [
+                        "азын жаргал",
+                        "баялаг"
+                    ]
                 },
                 {
                     "jp": "志",
@@ -8190,7 +9822,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "士",
                     "phoneticReading": "シ",
-                    "enMn": "тэмүүлэл"
+                    "enMn": "тэмүүлэл",
+                    "meaningsMn": [
+                        "хүсэл зориг",
+                        "зорилго",
+                        "сэдэл"
+                    ]
                 },
                 {
                     "jp": "見地",
@@ -8207,7 +9844,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "үзэл бодол"
+                    "enMn": "үзэл бодол",
+                    "meaningsMn": [
+                        "үзэл бодол"
+                    ]
                 }
             ]
         ]
@@ -8234,7 +9874,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "冓",
                     "phoneticReading": "コウ",
-                    "enMn": "худалдан авалт"
+                    "enMn": "худалдан авалт",
+                    "meaningsMn": [
+                        "худалдан авалт",
+                        "худалдан авах"
+                    ]
                 },
                 {
                     "jp": "講習",
@@ -8252,7 +9896,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "冓",
                     "phoneticReading": "コウ",
-                    "enMn": "богино курс"
+                    "enMn": "богино курс",
+                    "meaningsMn": [
+                        "богино курс",
+                        "сургалт"
+                    ]
                 },
                 {
                     "jp": "鉱業",
@@ -8269,7 +9917,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "広",
                     "phoneticReading": "コウ",
-                    "enMn": "уул уурхайн салбар"
+                    "enMn": "уул уурхайн салбар",
+                    "meaningsMn": [
+                        "уул уурхайн салбар"
+                    ]
                 },
                 {
                     "jp": "鉱山",
@@ -8286,7 +9937,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "広",
                     "phoneticReading": "コウ",
-                    "enMn": "уурхай"
+                    "enMn": "уурхай",
+                    "meaningsMn": [
+                        "уурхай"
+                    ]
                 },
                 {
                     "jp": "公認",
@@ -8304,7 +9958,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "албан хүлээн зөвшөөрөл"
+                    "enMn": "албан хүлээн зөвшөөрөл",
+                    "meaningsMn": [
+                        "албан хүлээн зөвшөөрөл",
+                        "зөвшөөрөл"
+                    ]
                 },
                 {
                     "jp": "公募",
@@ -8317,7 +9975,11 @@ const WORD_LEVELS = [
                     "example": null,
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "олон нийтийн уриалга"
+                    "enMn": "олон нийтийн уриалга",
+                    "meaningsMn": [
+                        "олон нийтийн уриалга",
+                        "олон нийтийн хандив"
+                    ]
                 },
                 {
                     "jp": "好調",
@@ -8335,7 +9997,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "таатай"
+                    "enMn": "таатай",
+                    "meaningsMn": [
+                        "хангалттай сайн",
+                        "сайн байдалтай"
+                    ]
                 },
                 {
                     "jp": "後退",
@@ -8353,7 +10019,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "ухрах"
+                    "enMn": "ухрах",
+                    "meaningsMn": [
+                        "ухрах",
+                        "ухрах зай"
+                    ]
                 },
                 {
                     "jp": "公団",
@@ -8370,7 +10040,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "төрийн корпораци"
+                    "enMn": "төрийн корпораци",
+                    "meaningsMn": [
+                        "төрийн корпораци"
+                    ]
                 },
                 {
                     "jp": "口頭",
@@ -8387,7 +10060,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "амаар"
+                    "enMn": "амаар",
+                    "meaningsMn": [
+                        "амаар"
+                    ]
                 }
             ]
         ]
@@ -8413,7 +10089,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "工",
                     "phoneticReading": "コウ、ク",
-                    "enMn": "инженерчлэл"
+                    "enMn": "инженерчлэл",
+                    "meaningsMn": [
+                        "инженерчлэл"
+                    ]
                 },
                 {
                     "jp": "工作",
@@ -8431,7 +10110,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "工",
                     "phoneticReading": "コウ、ク",
-                    "enMn": "гар урлал"
+                    "enMn": "гар урлал",
+                    "meaningsMn": [
+                        "гар урлал",
+                        "маневр хийх"
+                    ]
                 },
                 {
                     "jp": "行為",
@@ -8450,7 +10133,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "үйлдэл"
+                    "enMn": "үйлдэл",
+                    "meaningsMn": [
+                        "үйлдэл",
+                        "үйлдэл",
+                        "зан төлөв"
+                    ]
                 },
                 {
                     "jp": "公用",
@@ -8469,7 +10157,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "албан хэрэгцээ"
+                    "enMn": "албан хэрэгцээ",
+                    "meaningsMn": [
+                        "төрийн ажил хэрэг",
+                        "нийтийн хэрэглээ",
+                        "нийтийн зардал"
+                    ]
                 },
                 {
                     "jp": "行進",
@@ -8487,7 +10180,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "жагсаал"
+                    "enMn": "жагсаал",
+                    "meaningsMn": [
+                        "жагсаал",
+                        "жагсаал"
+                    ]
                 },
                 {
                     "jp": "言論",
@@ -8505,7 +10202,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хэлэлцүүлэг"
+                    "enMn": "хэлэлцүүлэг",
+                    "meaningsMn": [
+                        "хэлэлцүүлэг",
+                        "үг хэллэг"
+                    ]
                 },
                 {
                     "jp": "合意",
@@ -8524,7 +10225,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "тохиролцоо"
+                    "enMn": "тохиролцоо",
+                    "meaningsMn": [
+                        "тохиролцоо",
+                        "зөвшөөрөл",
+                        "харилцан ойлголцол"
+                    ]
                 },
                 {
                     "jp": "好評",
@@ -8542,7 +10248,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "алдар нэр"
+                    "enMn": "алдар нэр",
+                    "meaningsMn": [
+                        "алдар нэр",
+                        "эерэг нэр хүнд"
+                    ]
                 },
                 {
                     "jp": "口述",
@@ -8559,7 +10269,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "амаар мэдэгдэл"
+                    "enMn": "амаар мэдэгдэл",
+                    "meaningsMn": [
+                        "аман мэдэгдэл"
+                    ]
                 },
                 {
                     "jp": "限定",
@@ -8577,7 +10290,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хязгаар"
+                    "enMn": "хязгаар",
+                    "meaningsMn": [
+                        "хязгаар",
+                        "хязгаарлалт"
+                    ]
                 }
             ]
         ]
@@ -8606,7 +10323,13 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "冓",
                     "phoneticReading": "コウ",
-                    "enMn": "үзэл баримтлал"
+                    "enMn": "үзэл баримтлал",
+                    "meaningsMn": [
+                        "төлөвлөгөө",
+                        "уран сайхны зохиомж",
+                        "санаа",
+                        "ойлголт"
+                    ]
                 },
                 {
                     "jp": "購読",
@@ -8623,7 +10346,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "冓",
                     "phoneticReading": "コウ",
-                    "enMn": "захиалга"
+                    "enMn": "захиалга",
+                    "meaningsMn": [
+                        "захиалга"
+                    ]
                 },
                 {
                     "jp": "高原",
@@ -8641,7 +10367,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "高",
                     "phoneticReading": "コウ",
-                    "enMn": "өндөрлөг"
+                    "enMn": "өндөрлөг",
+                    "meaningsMn": [
+                        "өндөрлөг",
+                        "тавиур газар"
+                    ]
                 },
                 {
                     "jp": "高尚",
@@ -8660,7 +10390,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "高",
                     "phoneticReading": "コウ",
-                    "enMn": "эрхэмсэг"
+                    "enMn": "эрхэмсэг",
+                    "meaningsMn": [
+                        "өндөр",
+                        "эрхэм",
+                        "эрхэмсэг"
+                    ]
                 },
                 {
                     "jp": "小切手",
@@ -8678,7 +10413,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "чек"
+                    "enMn": "чек",
+                    "meaningsMn": [
+                        "чек",
+                        "чек"
+                    ]
                 },
                 {
                     "jp": "極楽",
@@ -8695,7 +10434,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "диваажин"
+                    "enMn": "диваажин",
+                    "meaningsMn": [
+                        "диваажин"
+                    ]
                 },
                 {
                     "jp": "心強い",
@@ -8713,7 +10455,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "итгэл төрүүлэм"
+                    "enMn": "итгэл төрүүлэм",
+                    "meaningsMn": [
+                        "урамшуулам",
+                        "итгэл төрүүлэм"
+                    ]
                 },
                 {
                     "jp": "護衛",
@@ -8732,7 +10478,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "эскорт"
+                    "enMn": "эскорт",
+                    "meaningsMn": [
+                        "хамгаалагч",
+                        "хамгаалалттай цуваа",
+                        "эскорт"
+                    ]
                 },
                 {
                     "jp": "心掛け",
@@ -8751,7 +10502,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "бэлэн байдал"
+                    "enMn": "бэлэн байдал",
+                    "meaningsMn": [
+                        "бэлэн байдал",
+                        "зорилго",
+                        "зорилго"
+                    ]
                 },
                 {
                     "jp": "国連",
@@ -8769,7 +10525,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "НҮБ"
+                    "enMn": "НҮБ",
+                    "meaningsMn": [
+                        "НҮБ",
+                        "НҮБ"
+                    ]
                 }
             ]
         ]
@@ -8796,7 +10556,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "昆",
                     "phoneticReading": "コン",
-                    "enMn": "холимог үндэстэн"
+                    "enMn": "холимог үндэстэн",
+                    "meaningsMn": [
+                        "холимог үндэстэн",
+                        "холимог гарал"
+                    ]
                 },
                 {
                     "jp": "昆虫",
@@ -8814,7 +10578,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "昆",
                     "phoneticReading": "コン",
-                    "enMn": "шавьж"
+                    "enMn": "шавьж",
+                    "meaningsMn": [
+                        "шавьж",
+                        "шавьж"
+                    ]
                 },
                 {
                     "jp": "国有",
@@ -8831,7 +10599,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "төрийн өмч"
+                    "enMn": "төрийн өмч",
+                    "meaningsMn": [
+                        "төрийн өмч"
+                    ]
                 },
                 {
                     "jp": "小売",
@@ -8848,7 +10619,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "жижиглэн худалдаа"
+                    "enMn": "жижиглэн худалдаа",
+                    "meaningsMn": [
+                        "жижиглэн худалдаа"
+                    ]
                 },
                 {
                     "jp": "国産",
@@ -8865,7 +10639,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "дотоодын бүтээгдэхүүн"
+                    "enMn": "дотоодын бүтээгдэхүүн",
+                    "meaningsMn": [
+                        "дотоодын бүтээгдэхүүн"
+                    ]
                 },
                 {
                     "jp": "小柄",
@@ -8883,7 +10660,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "жижигхэн бие бүтэц"
+                    "enMn": "жижигхэн бие бүтэц",
+                    "meaningsMn": [
+                        "жижиг",
+                        "жижигхэн биетэй"
+                    ]
                 },
                 {
                     "jp": "公立",
@@ -8900,7 +10681,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "төрийн байгууллага"
+                    "enMn": "төрийн байгууллага",
+                    "meaningsMn": [
+                        "төрийн байгууллага"
+                    ]
                 },
                 {
                     "jp": "心細い",
@@ -8919,7 +10703,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "эрх мэдэлгүй"
+                    "enMn": "эрх мэдэлгүй",
+                    "meaningsMn": [
+                        "эрх мэдэлгүй",
+                        "найдваргүй",
+                        "урам хугарам"
+                    ]
                 },
                 {
                     "jp": "心地",
@@ -8938,7 +10727,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "мэдрэмж"
+                    "enMn": "мэдрэмж",
+                    "meaningsMn": [
+                        "мэдрэмж",
+                        "мэдрэмж",
+                        "сэтгэл санаа"
+                    ]
                 },
                 {
                     "jp": "国定",
@@ -8951,7 +10745,11 @@ const WORD_LEVELS = [
                     "example": null,
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "төрөөс дэмжсэн"
+                    "enMn": "төрөөс дэмжсэн",
+                    "meaningsMn": [
+                        "төрөөс дэмжсэн",
+                        "үндэсний"
+                    ]
                 }
             ]
         ]
@@ -8979,7 +10777,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "艮",
                     "phoneticReading": "コン",
-                    "enMn": "тэвчээр"
+                    "enMn": "тэвчээр",
+                    "meaningsMn": [
+                        "тэвчээр",
+                        "тэвчээр",
+                        "эрч хүч"
+                    ]
                 },
                 {
                     "jp": "根拠",
@@ -8997,7 +10800,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "艮",
                     "phoneticReading": "コン",
-                    "enMn": "үндэслэл"
+                    "enMn": "үндэслэл",
+                    "meaningsMn": [
+                        "үндэслэл",
+                        "суурь"
+                    ]
                 },
                 {
                     "jp": "光沢",
@@ -9015,7 +10822,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "光",
                     "phoneticReading": "コウ",
-                    "enMn": "гялбаа"
+                    "enMn": "гялбаа",
+                    "meaningsMn": [
+                        "гялбаа",
+                        "гялгар өнгөлгөө (гэрэл зургийн)"
+                    ]
                 },
                 {
                     "jp": "光熱費",
@@ -9027,7 +10838,10 @@ const WORD_LEVELS = [
                     "example": null,
                     "phonetic": "光",
                     "phoneticReading": "コウ",
-                    "enMn": "коммунал төлбөр"
+                    "enMn": "коммунал төлбөр",
+                    "meaningsMn": [
+                        "түлш, гэрлийн зардал"
+                    ]
                 },
                 {
                     "jp": "国交",
@@ -9044,7 +10858,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "дипломат харилцаа"
+                    "enMn": "дипломат харилцаа",
+                    "meaningsMn": [
+                        "дипломат харилцаа"
+                    ]
                 },
                 {
                     "jp": "再会",
@@ -9062,7 +10879,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "дахин уулзалт"
+                    "enMn": "дахин уулзалт",
+                    "meaningsMn": [
+                        "дахин уулзалт",
+                        "дахин уулзалт"
+                    ]
                 },
                 {
                     "jp": "戸籍",
@@ -9080,7 +10901,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "гэр бүлийн бүртгэл"
+                    "enMn": "гэр бүлийн бүртгэл",
+                    "meaningsMn": [
+                        "хүн амын тооллого",
+                        "гэр бүлийн бүртгэл"
+                    ]
                 },
                 {
                     "jp": "ごまかす",
@@ -9099,7 +10924,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хуурах"
+                    "enMn": "хуурах",
+                    "meaningsMn": [
+                        "хуурах",
+                        "хуурамчаар үзүүлэх",
+                        "буруу төлөөлж харуулах"
+                    ]
                 },
                 {
                     "jp": "好ましい",
@@ -9118,7 +10948,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хүсүүштэй"
+                    "enMn": "хүсүүштэй",
+                    "meaningsMn": [
+                        "тааламжтай",
+                        "таашаагдам",
+                        "хүсүүштэй"
+                    ]
                 },
                 {
                     "jp": "細やか",
@@ -9136,7 +10971,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "нарийн мэдрэмжтэй"
+                    "enMn": "нарийн мэдрэмжтэй",
+                    "meaningsMn": [
+                        "дутмаг",
+                        "даруухан"
+                    ]
                 }
             ]
         ]
@@ -9163,7 +11002,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "原",
                     "phoneticReading": "ゲン",
-                    "enMn": "зарчим"
+                    "enMn": "зарчим",
+                    "meaningsMn": [
+                        "зарчим",
+                        "ерөнхий дүрэм"
+                    ]
                 },
                 {
                     "jp": "原油",
@@ -9180,7 +11023,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "原",
                     "phoneticReading": "ゲン",
-                    "enMn": "түүхий нефть"
+                    "enMn": "түүхий нефть",
+                    "meaningsMn": [
+                        "түүхий нефть"
+                    ]
                 },
                 {
                     "jp": "快い",
@@ -9198,7 +11044,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "тааламжтай"
+                    "enMn": "тааламжтай",
+                    "meaningsMn": [
+                        "тааламжтай",
+                        "тааламжтай"
+                    ]
                 },
                 {
                     "jp": "細菌",
@@ -9217,7 +11067,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "бактери"
+                    "enMn": "бактери",
+                    "meaningsMn": [
+                        "савхин нянгийн нэг зүйл",
+                        "нян",
+                        "нян"
+                    ]
                 },
                 {
                     "jp": "災害",
@@ -9236,7 +11091,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "гамшиг"
+                    "enMn": "гамшиг",
+                    "meaningsMn": [
+                        "гай зовлон",
+                        "гамшиг",
+                        "золгүй явдал"
+                    ]
                 },
                 {
                     "jp": "事柄",
@@ -9256,7 +11116,13 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "асуудал"
+                    "enMn": "асуудал",
+                    "meaningsMn": [
+                        "асуудал",
+                        "зүйл",
+                        "хэрэг явдал",
+                        "нөхцөл байдал"
+                    ]
                 },
                 {
                     "jp": "凝らす",
@@ -9275,7 +11141,12 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "төвлөрөх"
+                    "enMn": "төвлөрөх",
+                    "meaningsMn": [
+                        "төвлөрөх",
+                        "зориулах",
+                        "нягт харах"
+                    ]
                 },
                 {
                     "jp": "試み",
@@ -9293,7 +11164,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "оролдлого"
+                    "enMn": "оролдлого",
+                    "meaningsMn": [
+                        "туршилт",
+                        "туршилт"
+                    ]
                 },
                 {
                     "jp": "言付け",
@@ -9310,7 +11185,10 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "зурвас"
+                    "enMn": "зурвас",
+                    "meaningsMn": [
+                        "мессеж үлдээх"
+                    ]
                 },
                 {
                     "jp": "込める",
@@ -9328,7 +11206,11 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "оруулах"
+                    "enMn": "оруулах",
+                    "meaningsMn": [
+                        "оруулах",
+                        "оруулах"
+                    ]
                 }
             ]
         ]

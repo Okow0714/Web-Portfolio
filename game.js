@@ -860,7 +860,15 @@ function showExample(pairId) {
 
     document.getElementById('example-jp').textContent = pair.jp;
     document.getElementById('example-reading').textContent = pair.reading;
-    const meanings = pair.meanings && pair.meanings.length ? pair.meanings : [pair.en];
+    const useMn = window.siteLang() === 'mn';
+    let meanings;
+    if (useMn && pair.meaningsMn && pair.meaningsMn.length) {
+        meanings = pair.meaningsMn;
+    } else if (pair.meanings && pair.meanings.length) {
+        meanings = pair.meanings;
+    } else {
+        meanings = [(useMn && pair.enMn) ? pair.enMn : pair.en];
+    }
     document.getElementById('example-meanings').textContent = meanings.join(', ');
 
     const sentenceBlock = document.getElementById('example-sentence-block');
