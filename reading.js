@@ -18,6 +18,14 @@
 // reusing that identifier across <script> tags would throw a SyntaxError.
 const sb = window.supabaseClient;
 
+// Track titles live in i18n (keyed by track.id) rather than reading-texts.js, matching how
+// other page chrome is translated. The data file's own `title` field stays English-only and
+// is used only as a fallback if a track.id somehow has no matching i18n key.
+const TRACK_TITLE_KEY = { foundation: 'reading.trackFoundation', advanced: 'reading.trackAdvanced' };
+const TRACK_TITLE_SHORT_KEY = { foundation: 'reading.trackFoundationShort', advanced: 'reading.trackAdvancedShort' };
+function trackTitle(track) { return window.t(TRACK_TITLE_KEY[track.id]) || track.title; }
+function trackTitleShort(track) { return window.t(TRACK_TITLE_SHORT_KEY[track.id]) || track.title.split('·')[0].trim(); }
+
 const SpeechRecognitionCtor = window.SpeechRecognition || window.webkitSpeechRecognition;
 const READ_AHEAD_WORDS = 3; // window checked on a finalized result: current word + up to 2 ahead
 
@@ -114,7 +122,7 @@ function renderTrackSelect() {
         card.type = 'button';
         card.className = 'track-card';
         card.innerHTML = `
-            <h3>${escapeHtml(track.title)}</h3>
+            <h3>${escapeHtml(trackTitle(track))}</h3>
             <div class="track-meta">${escapeHtml(window.tf('reading.textsComplete', { done, total }))}</div>
         `;
         card.addEventListener('click', () => showLevelSelect(track));
@@ -136,7 +144,7 @@ function backToTrackSelect() {
 
 function showLevelSelect(track) {
     currentTrack = track;
-    document.getElementById('level-select-title').textContent = track.title;
+    document.getElementById('level-select-title').textContent = trackTitle(track);
     const container = document.getElementById('reading-level-grid');
     container.innerHTML = '';
     track.levels.forEach((level, position) => {
@@ -173,7 +181,7 @@ function backToLevelSelect() {
 function showTextList(track, level) {
     currentTrack = track;
     currentLevel = level;
-    document.getElementById('text-list-title').textContent = window.tf('reading.trackLevelHint', { track: track.title.split('·')[0].trim(), n: level.levelNum, hint: level.hint });
+    document.getElementById('text-list-title').textContent = window.tf('reading.trackLevelHint', { track: trackTitleShort(track), n: level.levelNum, hint: level.hint });
     const list = document.getElementById('text-list');
     list.innerHTML = '';
     level.texts.forEach((text, i) => {
@@ -342,7 +350,7 @@ function onTextComplete() {
         document.getElementById('complete-next-btn').textContent = window.t('reading.viewLevels');
     } else {
         document.getElementById('complete-desc').textContent =
-            window.tf('reading.trackComplete', { track: currentTrack.title });
+            window.tf('reading.trackComplete', { track: trackTitle(currentTrack) });
         document.getElementById('complete-next-btn').textContent = window.t('reading.viewLevels');
     }
     showEl(document.getElementById('complete-modal'));
