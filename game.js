@@ -872,7 +872,8 @@ function showExample(pairId) {
         } else {
             jpEl.textContent = pair.example.jp;
         }
-        document.getElementById('example-sentence-en').textContent = pair.example.en;
+        const exampleEnText = (window.siteLang() === 'mn' && pair.example.enMn) ? pair.example.enMn : pair.example.en;
+        document.getElementById('example-sentence-en').textContent = exampleEnText;
         showEl(sentenceBlock);
         hideEl(noneEl);
     } else {
