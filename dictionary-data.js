@@ -4893,5 +4893,2553 @@ const DICTIONARY_ENTRIES = [
         "meaning": "calm, composed",
         "pos": "adjective",
         "meaningMn": "тайван"
+    },
+    {
+        "kango": {
+            "text": "開放する",
+            "reading": "かいほうする"
+        },
+        "wago": {
+            "text": "開く",
+            "reading": "ひらく"
+        },
+        "meaning": "to open",
+        "pos": "verb",
+        "meaningMn": "нээх"
+    },
+    {
+        "kango": {
+            "text": "抱擁する",
+            "reading": "ほうようする"
+        },
+        "wago": {
+            "text": "抱く",
+            "reading": "いだく"
+        },
+        "meaning": "to hold in one's arms",
+        "pos": "verb",
+        "meaningMn": "тэвэрч авах"
+    },
+    {
+        "kango": {
+            "text": "打撲する",
+            "reading": "だぼくする"
+        },
+        "wago": {
+            "text": "打つ",
+            "reading": "うつ"
+        },
+        "meaning": "to hit",
+        "pos": "verb",
+        "meaningMn": "цохих"
+    },
+    {
+        "kango": {
+            "text": "飛躍する",
+            "reading": "ひやくする"
+        },
+        "wago": {
+            "text": "飛ぶ",
+            "reading": "とぶ"
+        },
+        "meaning": "to jump",
+        "pos": "verb",
+        "meaningMn": "үсрэх"
+    },
+    {
+        "kango": {
+            "text": "貼付する",
+            "reading": "ちょうふする"
+        },
+        "wago": {
+            "text": "付ける",
+            "reading": "つける"
+        },
+        "meaning": "to attach",
+        "pos": "verb",
+        "meaningMn": "наах, хавсаргах"
+    },
+    {
+        "kango": {
+            "text": "滑走する",
+            "reading": "かっそうする"
+        },
+        "wago": {
+            "text": "滑る",
+            "reading": "すべる"
+        },
+        "meaning": "to slide",
+        "pos": "verb",
+        "meaningMn": "гулгах"
+    },
+    {
+        "kango": {
+            "text": "号泣する",
+            "reading": "ごうきゅうする"
+        },
+        "wago": {
+            "text": "泣く",
+            "reading": "なく"
+        },
+        "meaning": "to cry",
+        "pos": "verb",
+        "meaningMn": "уйлах"
+    },
+    {
+        "kango": {
+            "text": "吃驚する",
+            "reading": "びっくりする"
+        },
+        "wago": {
+            "text": "驚く",
+            "reading": "おどろく"
+        },
+        "meaning": "to be surprised",
+        "pos": "verb",
+        "meaningMn": "гайхах"
+    },
+    {
+        "kango": {
+            "text": "湾曲する",
+            "reading": "わんきょくする"
+        },
+        "wago": {
+            "text": "曲げる",
+            "reading": "まげる"
+        },
+        "meaning": "to bend",
+        "pos": "verb",
+        "meaningMn": "нугалах"
+    },
+    {
+        "kango": {
+            "text": "傾斜する",
+            "reading": "けいしゃする"
+        },
+        "wago": {
+            "text": "傾ける",
+            "reading": "かたむける"
+        },
+        "meaning": "to lean",
+        "pos": "verb",
+        "meaningMn": "хазайлгах"
+    },
+    {
+        "kango": {
+            "text": "表示する",
+            "reading": "ひょうじする"
+        },
+        "wago": {
+            "text": "表す",
+            "reading": "あらわす"
+        },
+        "meaning": "to show",
+        "pos": "verb",
+        "meaningMn": "үзүүлэх"
+    },
+    {
+        "kango": {
+            "text": "表示する",
+            "reading": "ひょうじする"
+        },
+        "wago": {
+            "text": "示す",
+            "reading": "しめす"
+        },
+        "meaning": "to (take out and) show",
+        "pos": "verb",
+        "meaningMn": "харуулах"
+    },
+    {
+        "kango": {
+            "text": "拾得する",
+            "reading": "しゅうとくする"
+        },
+        "wago": {
+            "text": "拾う",
+            "reading": "ひろう"
+        },
+        "meaning": "to pick up",
+        "pos": "verb",
+        "meaningMn": "түүж авах"
+    },
+    {
+        "kango": {
+            "text": "進出する",
+            "reading": "しんしゅつする"
+        },
+        "wago": {
+            "text": "進める",
+            "reading": "すすめる"
+        },
+        "meaning": "to advance",
+        "pos": "verb",
+        "meaningMn": "урагшлуулах"
+    },
+    {
+        "kango": {
+            "text": "捻挫する",
+            "reading": "ねんざする"
+        },
+        "wago": {
+            "text": "捻る",
+            "reading": "ひねる"
+        },
+        "meaning": "to twist",
+        "pos": "verb",
+        "meaningMn": "мушгих"
+    },
+    {
+        "kango": {
+            "text": "遊戯する",
+            "reading": "ゆうぎする"
+        },
+        "wago": {
+            "text": "遊ぶ",
+            "reading": "あそぶ"
+        },
+        "meaning": "to play",
+        "pos": "verb",
+        "meaningMn": "тоглох"
+    },
+    {
+        "kango": {
+            "text": "合戦する",
+            "reading": "かっせんする"
+        },
+        "wago": {
+            "text": "戦う",
+            "reading": "たたかう"
+        },
+        "meaning": "to fight",
+        "pos": "verb",
+        "meaningMn": "тулалдах"
+    },
+    {
+        "kango": {
+            "text": "尊敬する",
+            "reading": "そんけいする"
+        },
+        "wago": {
+            "text": "尊ぶ",
+            "reading": "とうとぶ"
+        },
+        "meaning": "to esteem",
+        "pos": "verb",
+        "meaningMn": "хүндэтгэх"
+    },
+    {
+        "kango": {
+            "text": "入門する",
+            "reading": "にゅうもんする"
+        },
+        "wago": {
+            "text": "入る",
+            "reading": "いる"
+        },
+        "meaning": "to enter",
+        "pos": "verb",
+        "meaningMn": "орох"
+    },
+    {
+        "kango": {
+            "text": "競走する",
+            "reading": "きょうそうする"
+        },
+        "wago": {
+            "text": "走る",
+            "reading": "はしる"
+        },
+        "meaning": "to run",
+        "pos": "verb",
+        "meaningMn": "гүйх"
+    },
+    {
+        "kango": {
+            "text": "転移する",
+            "reading": "てんいする"
+        },
+        "wago": {
+            "text": "移る",
+            "reading": "うつる"
+        },
+        "meaning": "to change",
+        "pos": "verb",
+        "meaningMn": "шилжих"
+    },
+    {
+        "kango": {
+            "text": "急行する",
+            "reading": "きゅうこうする"
+        },
+        "wago": {
+            "text": "急ぐ",
+            "reading": "いそぐ"
+        },
+        "meaning": "to hurry",
+        "pos": "verb",
+        "meaningMn": "яарах"
+    },
+    {
+        "kango": {
+            "text": "絶叫する",
+            "reading": "ぜっきょうする"
+        },
+        "wago": {
+            "text": "叫ぶ",
+            "reading": "さけぶ"
+        },
+        "meaning": "to shout",
+        "pos": "verb",
+        "meaningMn": "хашгирах"
+    },
+    {
+        "kango": {
+            "text": "掲揚する",
+            "reading": "けいようする"
+        },
+        "wago": {
+            "text": "掲げる",
+            "reading": "かかげる"
+        },
+        "meaning": "to put up",
+        "pos": "verb",
+        "meaningMn": "мандуулах, өргөх"
+    },
+    {
+        "kango": {
+            "text": "彩色する",
+            "reading": "さいしきする"
+        },
+        "wago": {
+            "text": "彩る",
+            "reading": "いろどる"
+        },
+        "meaning": "to colour",
+        "pos": "verb",
+        "meaningMn": "будах, өнгөлөх"
+    },
+    {
+        "kango": {
+            "text": "粉砕する",
+            "reading": "ふんさいする"
+        },
+        "wago": {
+            "text": "砕く",
+            "reading": "くだく"
+        },
+        "meaning": "to smash",
+        "pos": "verb",
+        "meaningMn": "хэмхлэх"
+    },
+    {
+        "kango": {
+            "text": "取材する",
+            "reading": "しゅざいする"
+        },
+        "wago": {
+            "text": "取り上げる",
+            "reading": "とりあげる"
+        },
+        "meaning": "to report",
+        "pos": "verb",
+        "meaningMn": "сурвалжлах"
+    },
+    {
+        "kango": {
+            "text": "買取する",
+            "reading": "かいとりする"
+        },
+        "wago": {
+            "text": "取る",
+            "reading": "とる"
+        },
+        "meaning": "to buy",
+        "pos": "verb",
+        "meaningMn": "худалдан авах"
+    },
+    {
+        "kango": {
+            "text": "上昇する",
+            "reading": "じょうしょうする"
+        },
+        "wago": {
+            "text": "上る",
+            "reading": "のぼる"
+        },
+        "meaning": "to ascend",
+        "pos": "verb",
+        "meaningMn": "өгсөх"
+    },
+    {
+        "kango": {
+            "text": "移植する",
+            "reading": "いしょくする"
+        },
+        "wago": {
+            "text": "植える",
+            "reading": "うえる"
+        },
+        "meaning": "to transplant",
+        "pos": "verb",
+        "meaningMn": "шилжүүлэн суулгах"
+    },
+    {
+        "kango": {
+            "text": "矯正する",
+            "reading": "きょうせいする"
+        },
+        "wago": {
+            "text": "正す",
+            "reading": "ただす"
+        },
+        "meaning": "to reform",
+        "pos": "verb",
+        "meaningMn": "засах, залруулах"
+    },
+    {
+        "kango": {
+            "text": "待望する",
+            "reading": "たいぼうする"
+        },
+        "wago": {
+            "text": "待つ",
+            "reading": "まつ"
+        },
+        "meaning": "to wait",
+        "pos": "verb",
+        "meaningMn": "хүлээх"
+    },
+    {
+        "kango": {
+            "text": "跳躍する",
+            "reading": "ちょうやくする"
+        },
+        "wago": {
+            "text": "跳ねる",
+            "reading": "はねる"
+        },
+        "meaning": "to jump",
+        "pos": "verb",
+        "meaningMn": "үсрэх"
+    },
+    {
+        "kango": {
+            "text": "打倒する",
+            "reading": "だとうする"
+        },
+        "wago": {
+            "text": "倒す",
+            "reading": "たおす"
+        },
+        "meaning": "to bring down",
+        "pos": "verb",
+        "meaningMn": "унагах"
+    },
+    {
+        "kango": {
+            "text": "逃亡する",
+            "reading": "とうぼうする"
+        },
+        "wago": {
+            "text": "逃げ出す",
+            "reading": "にげだす"
+        },
+        "meaning": "to run away",
+        "pos": "verb",
+        "meaningMn": "зугтах"
+    },
+    {
+        "kango": {
+            "text": "破綻する",
+            "reading": "はたんする"
+        },
+        "wago": {
+            "text": "破れる",
+            "reading": "やぶれる"
+        },
+        "meaning": "to tear",
+        "pos": "verb",
+        "meaningMn": "урагдах"
+    },
+    {
+        "kango": {
+            "text": "負荷する",
+            "reading": "ふかする"
+        },
+        "wago": {
+            "text": "負う",
+            "reading": "おう"
+        },
+        "meaning": "to bear",
+        "pos": "verb",
+        "meaningMn": "үүрэх"
+    },
+    {
+        "kango": {
+            "text": "軽蔑する",
+            "reading": "けいべつする"
+        },
+        "wago": {
+            "text": "蔑む",
+            "reading": "さげすむ"
+        },
+        "meaning": "to scorn",
+        "pos": "verb",
+        "meaningMn": "басамжлах"
+    },
+    {
+        "kango": {
+            "text": "研磨する",
+            "reading": "けんまする"
+        },
+        "wago": {
+            "text": "磨く",
+            "reading": "みがく"
+        },
+        "meaning": "to polish",
+        "pos": "verb",
+        "meaningMn": "өнгөлөх"
+    },
+    {
+        "kango": {
+            "text": "向上する",
+            "reading": "こうじょうする"
+        },
+        "wago": {
+            "text": "立ち上がる",
+            "reading": "たちあがる"
+        },
+        "meaning": "to rise",
+        "pos": "verb",
+        "meaningMn": "босох"
+    },
+    {
+        "kango": {
+            "text": "傾斜する",
+            "reading": "けいしゃする"
+        },
+        "wago": {
+            "text": "傾げる",
+            "reading": "かしげる"
+        },
+        "meaning": "to tilt",
+        "pos": "verb",
+        "meaningMn": "хазайлгах"
+    },
+    {
+        "kango": {
+            "text": "聴聞する",
+            "reading": "ちょうもんする"
+        },
+        "wago": {
+            "text": "聞く",
+            "reading": "きく"
+        },
+        "meaning": "to hear",
+        "pos": "verb",
+        "meaningMn": "сонсох"
+    },
+    {
+        "kango": {
+            "text": "負担する",
+            "reading": "ふたんする"
+        },
+        "wago": {
+            "text": "担う",
+            "reading": "になう"
+        },
+        "meaning": "to carry on one's shoulder",
+        "pos": "verb",
+        "meaningMn": "үүрэх"
+    },
+    {
+        "kango": {
+            "text": "把握する",
+            "reading": "はあくする"
+        },
+        "wago": {
+            "text": "握る",
+            "reading": "にぎる"
+        },
+        "meaning": "to grasp",
+        "pos": "verb",
+        "meaningMn": "барих, ойлгох"
+    },
+    {
+        "kango": {
+            "text": "叫喚する",
+            "reading": "きょうかんする"
+        },
+        "wago": {
+            "text": "喚く",
+            "reading": "わめく"
+        },
+        "meaning": "to shout",
+        "pos": "verb",
+        "meaningMn": "хашгирах"
+    },
+    {
+        "kango": {
+            "text": "受検する",
+            "reading": "じゅけんする"
+        },
+        "wago": {
+            "text": "受ける",
+            "reading": "うける"
+        },
+        "meaning": "to undergo",
+        "pos": "verb",
+        "meaningMn": "шалгуулах"
+    },
+    {
+        "kango": {
+            "text": "吹奏する",
+            "reading": "すいそうする"
+        },
+        "wago": {
+            "text": "吹く",
+            "reading": "ふく"
+        },
+        "meaning": "to blow",
+        "pos": "verb",
+        "meaningMn": "үлээх"
+    },
+    {
+        "kango": {
+            "text": "被覆する",
+            "reading": "ひふくする"
+        },
+        "wago": {
+            "text": "被せる",
+            "reading": "かぶせる"
+        },
+        "meaning": "to cover",
+        "pos": "verb",
+        "meaningMn": "бүрхэх"
+    },
+    {
+        "kango": {
+            "text": "玩味する",
+            "reading": "がんみする"
+        },
+        "wago": {
+            "text": "味わう",
+            "reading": "あじわう"
+        },
+        "meaning": "to savor",
+        "pos": "verb",
+        "meaningMn": "амтлах"
+    },
+    {
+        "kango": {
+            "text": "昇温する",
+            "reading": "しょうおんする"
+        },
+        "wago": {
+            "text": "温める",
+            "reading": "あたためる"
+        },
+        "meaning": "to warm",
+        "pos": "verb",
+        "meaningMn": "дулаацуулах"
+    },
+    {
+        "kango": {
+            "text": "始動する",
+            "reading": "しどうする"
+        },
+        "wago": {
+            "text": "始まる",
+            "reading": "はじまる"
+        },
+        "meaning": "to begin",
+        "pos": "verb",
+        "meaningMn": "эхлэх"
+    },
+    {
+        "kango": {
+            "text": "支持する",
+            "reading": "しじする"
+        },
+        "wago": {
+            "text": "支える",
+            "reading": "ささえる"
+        },
+        "meaning": "to support",
+        "pos": "verb",
+        "meaningMn": "дэмжих"
+    },
+    {
+        "kango": {
+            "text": "労働する",
+            "reading": "ろうどうする"
+        },
+        "wago": {
+            "text": "働く",
+            "reading": "はたらく"
+        },
+        "meaning": "to work",
+        "pos": "verb",
+        "meaningMn": "ажиллах"
+    },
+    {
+        "kango": {
+            "text": "頂戴する",
+            "reading": "ちょうだいする"
+        },
+        "wago": {
+            "text": "頂く",
+            "reading": "いただく"
+        },
+        "meaning": "to get",
+        "pos": "verb",
+        "meaningMn": "хүлээн авах"
+    },
+    {
+        "kango": {
+            "text": "取得する",
+            "reading": "しゅとくする"
+        },
+        "wago": {
+            "text": "得る",
+            "reading": "える"
+        },
+        "meaning": "to get",
+        "pos": "verb",
+        "meaningMn": "олж авах"
+    },
+    {
+        "kango": {
+            "text": "抑制する",
+            "reading": "よくせいする"
+        },
+        "wago": {
+            "text": "抑える",
+            "reading": "おさえる"
+        },
+        "meaning": "to control",
+        "pos": "verb",
+        "meaningMn": "дарах, хязгаарлах"
+    },
+    {
+        "kango": {
+            "text": "転移する",
+            "reading": "てんいする"
+        },
+        "wago": {
+            "text": "移す",
+            "reading": "うつす"
+        },
+        "meaning": "to transfer",
+        "pos": "verb",
+        "meaningMn": "шилжүүлэх"
+    },
+    {
+        "kango": {
+            "text": "共演する",
+            "reading": "きょうえんする"
+        },
+        "wago": {
+            "text": "演じる",
+            "reading": "えんじる"
+        },
+        "meaning": "to act",
+        "pos": "verb",
+        "meaningMn": "тоглох"
+    },
+    {
+        "kango": {
+            "text": "共演する",
+            "reading": "きょうえんする"
+        },
+        "wago": {
+            "text": "演ずる",
+            "reading": "えんずる"
+        },
+        "meaning": "to act",
+        "pos": "verb",
+        "meaningMn": "тоглох"
+    },
+    {
+        "kango": {
+            "text": "準拠する",
+            "reading": "じゅんきょする"
+        },
+        "wago": {
+            "text": "準じる",
+            "reading": "じゅんじる"
+        },
+        "meaning": "to follow",
+        "pos": "verb",
+        "meaningMn": "дагах, баримтлах"
+    },
+    {
+        "kango": {
+            "text": "準拠する",
+            "reading": "じゅんきょする"
+        },
+        "wago": {
+            "text": "準ずる",
+            "reading": "じゅんずる"
+        },
+        "meaning": "to follow",
+        "pos": "verb",
+        "meaningMn": "дагах, баримтлах"
+    },
+    {
+        "kango": {
+            "text": "送付する",
+            "reading": "そうふする"
+        },
+        "wago": {
+            "text": "送る",
+            "reading": "おくる"
+        },
+        "meaning": "to send",
+        "pos": "verb",
+        "meaningMn": "илгээх"
+    },
+    {
+        "kango": {
+            "text": "貫通する",
+            "reading": "かんつうする"
+        },
+        "wago": {
+            "text": "通じる",
+            "reading": "つうじる"
+        },
+        "meaning": "to go",
+        "pos": "verb",
+        "meaningMn": "нэвтрэх"
+    },
+    {
+        "kango": {
+            "text": "練習する",
+            "reading": "れんしゅうする"
+        },
+        "wago": {
+            "text": "練る",
+            "reading": "ねる"
+        },
+        "meaning": "to train",
+        "pos": "verb",
+        "meaningMn": "дасгал хийх"
+    },
+    {
+        "kango": {
+            "text": "破棄する",
+            "reading": "はきする"
+        },
+        "wago": {
+            "text": "破る",
+            "reading": "やぶる"
+        },
+        "meaning": "to tear",
+        "pos": "verb",
+        "meaningMn": "цуцлах, устгах"
+    },
+    {
+        "kango": {
+            "text": "付着する",
+            "reading": "ふちゃくする"
+        },
+        "wago": {
+            "text": "くっ付く",
+            "reading": "くっつく"
+        },
+        "meaning": "to stick to",
+        "pos": "verb",
+        "meaningMn": "наалдах"
+    },
+    {
+        "kango": {
+            "text": "派遣する",
+            "reading": "はけんする"
+        },
+        "wago": {
+            "text": "遣る",
+            "reading": "やる"
+        },
+        "meaning": "to dispatch",
+        "pos": "verb",
+        "meaningMn": "томилон явуулах"
+    },
+    {
+        "kango": {
+            "text": "押捺する",
+            "reading": "おうなつする"
+        },
+        "wago": {
+            "text": "押す",
+            "reading": "おす"
+        },
+        "meaning": "to stamp",
+        "pos": "verb",
+        "meaningMn": "тамга дарах"
+    },
+    {
+        "kango": {
+            "text": "覚醒する",
+            "reading": "かくせいする"
+        },
+        "wago": {
+            "text": "覚ます",
+            "reading": "さます"
+        },
+        "meaning": "to awaken",
+        "pos": "verb",
+        "meaningMn": "сэрээх"
+    },
+    {
+        "kango": {
+            "text": "分割する",
+            "reading": "ぶんかつする"
+        },
+        "wago": {
+            "text": "割れる",
+            "reading": "われる"
+        },
+        "meaning": "to split",
+        "pos": "verb",
+        "meaningMn": "хуваагдах"
+    },
+    {
+        "kango": {
+            "text": "感覚する",
+            "reading": "かんかくする"
+        },
+        "wago": {
+            "text": "感じる",
+            "reading": "かんじる"
+        },
+        "meaning": "to feel",
+        "pos": "verb",
+        "meaningMn": "мэдрэх"
+    },
+    {
+        "kango": {
+            "text": "感覚する",
+            "reading": "かんかくする"
+        },
+        "wago": {
+            "text": "感じ取る",
+            "reading": "かんじとる"
+        },
+        "meaning": "to sense",
+        "pos": "verb",
+        "meaningMn": "мэдрэх"
+    },
+    {
+        "kango": {
+            "text": "願望する",
+            "reading": "がんぼうする"
+        },
+        "wago": {
+            "text": "願う",
+            "reading": "ねがう"
+        },
+        "meaning": "to desire",
+        "pos": "verb",
+        "meaningMn": "хүсэх"
+    },
+    {
+        "kango": {
+            "text": "企画する",
+            "reading": "きかくする"
+        },
+        "wago": {
+            "text": "企てる",
+            "reading": "くわだてる"
+        },
+        "meaning": "to plan",
+        "pos": "verb",
+        "meaningMn": "төлөвлөх"
+    },
+    {
+        "kango": {
+            "text": "企図する",
+            "reading": "きとする"
+        },
+        "wago": {
+            "text": "企む",
+            "reading": "たくらむ"
+        },
+        "meaning": "to scheme",
+        "pos": "verb",
+        "meaningMn": "заваардах, санаархах"
+    },
+    {
+        "kango": {
+            "text": "遊戯する",
+            "reading": "ゆうぎする"
+        },
+        "wago": {
+            "text": "戯れる",
+            "reading": "たわむれる"
+        },
+        "meaning": "to be playful",
+        "pos": "verb",
+        "meaningMn": "хөгжилдөх"
+    },
+    {
+        "kango": {
+            "text": "急行する",
+            "reading": "きゅうこうする"
+        },
+        "wago": {
+            "text": "急かす",
+            "reading": "せかす"
+        },
+        "meaning": "to hurry",
+        "pos": "verb",
+        "meaningMn": "яаруулах"
+    },
+    {
+        "kango": {
+            "text": "救済する",
+            "reading": "きゅうさいする"
+        },
+        "wago": {
+            "text": "救う",
+            "reading": "すくう"
+        },
+        "meaning": "to rescue",
+        "pos": "verb",
+        "meaningMn": "аврах"
+    },
+    {
+        "kango": {
+            "text": "請求する",
+            "reading": "せいきゅうする"
+        },
+        "wago": {
+            "text": "求める",
+            "reading": "もとめる"
+        },
+        "meaning": "to request",
+        "pos": "verb",
+        "meaningMn": "шаардах, хүсэх"
+    },
+    {
+        "kango": {
+            "text": "曲折する",
+            "reading": "きょくせつする"
+        },
+        "wago": {
+            "text": "曲がる",
+            "reading": "まがる"
+        },
+        "meaning": "to bend",
+        "pos": "verb",
+        "meaningMn": "муруйх"
+    },
+    {
+        "kango": {
+            "text": "努力する",
+            "reading": "どりょくする"
+        },
+        "wago": {
+            "text": "努める",
+            "reading": "つとめる"
+        },
+        "meaning": "to endeavor",
+        "pos": "verb",
+        "meaningMn": "хичээх"
+    },
+    {
+        "kango": {
+            "text": "苦渋する",
+            "reading": "くじゅうする"
+        },
+        "wago": {
+            "text": "苦しめる",
+            "reading": "くるしめる"
+        },
+        "meaning": "to pain",
+        "pos": "verb",
+        "meaningMn": "зовоох"
+    },
+    {
+        "kango": {
+            "text": "発掘する",
+            "reading": "はっくつする"
+        },
+        "wago": {
+            "text": "掘る",
+            "reading": "ほる"
+        },
+        "meaning": "to dig",
+        "pos": "verb",
+        "meaningMn": "ухах"
+    },
+    {
+        "kango": {
+            "text": "経由する",
+            "reading": "けいゆする"
+        },
+        "wago": {
+            "text": "経る",
+            "reading": "へる"
+        },
+        "meaning": "to go through",
+        "pos": "verb",
+        "meaningMn": "дамжих"
+    },
+    {
+        "kango": {
+            "text": "射撃する",
+            "reading": "しゃげきする"
+        },
+        "wago": {
+            "text": "撃つ",
+            "reading": "うつ"
+        },
+        "meaning": "to shoot",
+        "pos": "verb",
+        "meaningMn": "буудах"
+    },
+    {
+        "kango": {
+            "text": "交流する",
+            "reading": "こうりゅうする"
+        },
+        "wago": {
+            "text": "交える",
+            "reading": "まじえる"
+        },
+        "meaning": "to mix",
+        "pos": "verb",
+        "meaningMn": "холих, солилцох"
+    },
+    {
+        "kango": {
+            "text": "構想する",
+            "reading": "こうそうする"
+        },
+        "wago": {
+            "text": "構える",
+            "reading": "かまえる"
+        },
+        "meaning": "to plan",
+        "pos": "verb",
+        "meaningMn": "төлөвлөх"
+    },
+    {
+        "kango": {
+            "text": "合戦する",
+            "reading": "かっせんする"
+        },
+        "wago": {
+            "text": "合わす",
+            "reading": "あわす"
+        },
+        "meaning": "to fight",
+        "pos": "verb",
+        "meaningMn": "тулалдах"
+    },
+    {
+        "kango": {
+            "text": "合戦する",
+            "reading": "かっせんする"
+        },
+        "wago": {
+            "text": "合わせる",
+            "reading": "あわせる"
+        },
+        "meaning": "to fight",
+        "pos": "verb",
+        "meaningMn": "тулалдах"
+    },
+    {
+        "kango": {
+            "text": "現有する",
+            "reading": "げんゆうする"
+        },
+        "wago": {
+            "text": "有る",
+            "reading": "ある"
+        },
+        "meaning": "to exist",
+        "pos": "verb",
+        "meaningMn": "байх"
+    },
+    {
+        "kango": {
+            "text": "摩擦する",
+            "reading": "まさつする"
+        },
+        "wago": {
+            "text": "擦る",
+            "reading": "こする"
+        },
+        "meaning": "to rub",
+        "pos": "verb",
+        "meaningMn": "үрэх"
+    },
+    {
+        "kango": {
+            "text": "残存する",
+            "reading": "ざんぞんする"
+        },
+        "wago": {
+            "text": "残る",
+            "reading": "のこる"
+        },
+        "meaning": "to remain",
+        "pos": "verb",
+        "meaningMn": "үлдэх"
+    },
+    {
+        "kango": {
+            "text": "購入する",
+            "reading": "こうにゅうする"
+        },
+        "wago": {
+            "text": "仕入れる",
+            "reading": "しいれる"
+        },
+        "meaning": "to buy",
+        "pos": "verb",
+        "meaningMn": "худалдан авах"
+    },
+    {
+        "kango": {
+            "text": "指摘する",
+            "reading": "してきする"
+        },
+        "wago": {
+            "text": "指す",
+            "reading": "さす"
+        },
+        "meaning": "to point",
+        "pos": "verb",
+        "meaningMn": "заах"
+    },
+    {
+        "kango": {
+            "text": "試験する",
+            "reading": "しけんする"
+        },
+        "wago": {
+            "text": "試す",
+            "reading": "ためす"
+        },
+        "meaning": "to test",
+        "pos": "verb",
+        "meaningMn": "сорих, шалгах"
+    },
+    {
+        "kango": {
+            "text": "授与する",
+            "reading": "じゅよする"
+        },
+        "wago": {
+            "text": "授ける",
+            "reading": "さずける"
+        },
+        "meaning": "to grant",
+        "pos": "verb",
+        "meaningMn": "олгох, шагнах"
+    },
+    {
+        "kango": {
+            "text": "就労する",
+            "reading": "しゅうろうする"
+        },
+        "wago": {
+            "text": "就く",
+            "reading": "つく"
+        },
+        "meaning": "to be hired",
+        "pos": "verb",
+        "meaningMn": "ажилд орох"
+    },
+    {
+        "kango": {
+            "text": "尊重する",
+            "reading": "そんちょうする"
+        },
+        "wago": {
+            "text": "重んずる",
+            "reading": "おもんずる"
+        },
+        "meaning": "to respect",
+        "pos": "verb",
+        "meaningMn": "хүндэтгэх"
+    },
+    {
+        "kango": {
+            "text": "向上する",
+            "reading": "こうじょうする"
+        },
+        "wago": {
+            "text": "上げる",
+            "reading": "あげる"
+        },
+        "meaning": "to rise",
+        "pos": "verb",
+        "meaningMn": "дээшлэх"
+    },
+    {
+        "kango": {
+            "text": "乗車する",
+            "reading": "じょうしゃする"
+        },
+        "wago": {
+            "text": "乗り込む",
+            "reading": "のりこむ"
+        },
+        "meaning": "to board",
+        "pos": "verb",
+        "meaningMn": "суух"
+    },
+    {
+        "kango": {
+            "text": "接触する",
+            "reading": "せっしょくする"
+        },
+        "wago": {
+            "text": "触る",
+            "reading": "さわる"
+        },
+        "meaning": "to touch",
+        "pos": "verb",
+        "meaningMn": "хүрэх"
+    },
+    {
+        "kango": {
+            "text": "接触する",
+            "reading": "せっしょくする"
+        },
+        "wago": {
+            "text": "触れ合う",
+            "reading": "ふれあう"
+        },
+        "meaning": "to touch",
+        "pos": "verb",
+        "meaningMn": "хүрэлцэх"
+    },
+    {
+        "kango": {
+            "text": "侵入する",
+            "reading": "しんにゅうする"
+        },
+        "wago": {
+            "text": "侵す",
+            "reading": "おかす"
+        },
+        "meaning": "to raid",
+        "pos": "verb",
+        "meaningMn": "түрэмгийлэх, довтлох"
+    },
+    {
+        "kango": {
+            "text": "振動する",
+            "reading": "しんどうする"
+        },
+        "wago": {
+            "text": "振り回す",
+            "reading": "ふりまわす"
+        },
+        "meaning": "to swing",
+        "pos": "verb",
+        "meaningMn": "савлуулах"
+    },
+    {
+        "kango": {
+            "text": "振動する",
+            "reading": "しんどうする"
+        },
+        "wago": {
+            "text": "振る",
+            "reading": "ふる"
+        },
+        "meaning": "to swing",
+        "pos": "verb",
+        "meaningMn": "савлах"
+    },
+    {
+        "kango": {
+            "text": "進出する",
+            "reading": "しんしゅつする"
+        },
+        "wago": {
+            "text": "進む",
+            "reading": "すすむ"
+        },
+        "meaning": "to advance",
+        "pos": "verb",
+        "meaningMn": "урагшлах"
+    },
+    {
+        "kango": {
+            "text": "衰退する",
+            "reading": "すいたいする"
+        },
+        "wago": {
+            "text": "衰える",
+            "reading": "おとろえる"
+        },
+        "meaning": "to decline",
+        "pos": "verb",
+        "meaningMn": "суларах"
+    },
+    {
+        "kango": {
+            "text": "成人する",
+            "reading": "せいじんする"
+        },
+        "wago": {
+            "text": "成る",
+            "reading": "なる"
+        },
+        "meaning": "to grow",
+        "pos": "verb",
+        "meaningMn": "болох, өсөх"
+    },
+    {
+        "kango": {
+            "text": "整頓する",
+            "reading": "せいとんする"
+        },
+        "wago": {
+            "text": "整える",
+            "reading": "ととのえる"
+        },
+        "meaning": "to put in order",
+        "pos": "verb",
+        "meaningMn": "цэгцлэх"
+    },
+    {
+        "kango": {
+            "text": "誓約する",
+            "reading": "せいやくする"
+        },
+        "wago": {
+            "text": "誓う",
+            "reading": "ちかう"
+        },
+        "meaning": "to vow",
+        "pos": "verb",
+        "meaningMn": "тангараглах"
+    },
+    {
+        "kango": {
+            "text": "新設する",
+            "reading": "しんせつする"
+        },
+        "wago": {
+            "text": "設ける",
+            "reading": "もうける"
+        },
+        "meaning": "to set up",
+        "pos": "verb",
+        "meaningMn": "байгуулах"
+    },
+    {
+        "kango": {
+            "text": "占領する",
+            "reading": "せんりょうする"
+        },
+        "wago": {
+            "text": "占める",
+            "reading": "しめる"
+        },
+        "meaning": "to occupy",
+        "pos": "verb",
+        "meaningMn": "эзлэх"
+    },
+    {
+        "kango": {
+            "text": "感染する",
+            "reading": "かんせんする"
+        },
+        "wago": {
+            "text": "染みる",
+            "reading": "しみる"
+        },
+        "meaning": "to be infected",
+        "pos": "verb",
+        "meaningMn": "халдвар авах"
+    },
+    {
+        "kango": {
+            "text": "修繕する",
+            "reading": "しゅうぜんする"
+        },
+        "wago": {
+            "text": "繕う",
+            "reading": "つくろう"
+        },
+        "meaning": "to mend",
+        "pos": "verb",
+        "meaningMn": "засах"
+    },
+    {
+        "kango": {
+            "text": "待望する",
+            "reading": "たいぼうする"
+        },
+        "wago": {
+            "text": "待ち構える",
+            "reading": "まちかまえる"
+        },
+        "meaning": "to lie in wait",
+        "pos": "verb",
+        "meaningMn": "хүлээх"
+    },
+    {
+        "kango": {
+            "text": "貸借する",
+            "reading": "たいしゃくする"
+        },
+        "wago": {
+            "text": "貸し出す",
+            "reading": "かしだす"
+        },
+        "meaning": "to lend",
+        "pos": "verb",
+        "meaningMn": "зээлдүүлэх"
+    },
+    {
+        "kango": {
+            "text": "換算する",
+            "reading": "かんさんする"
+        },
+        "wago": {
+            "text": "置き換える",
+            "reading": "おきかえる"
+        },
+        "meaning": "to exchange",
+        "pos": "verb",
+        "meaningMn": "сольж тавих, хөрвүүлэх"
+    },
+    {
+        "kango": {
+            "text": "構築する",
+            "reading": "こうちくする"
+        },
+        "wago": {
+            "text": "築き上げる",
+            "reading": "きずきあげる"
+        },
+        "meaning": "to build",
+        "pos": "verb",
+        "meaningMn": "байгуулах"
+    },
+    {
+        "kango": {
+            "text": "構築する",
+            "reading": "こうちくする"
+        },
+        "wago": {
+            "text": "築く",
+            "reading": "きずく"
+        },
+        "meaning": "to build",
+        "pos": "verb",
+        "meaningMn": "барих, байгуулах"
+    },
+    {
+        "kango": {
+            "text": "萎縮する",
+            "reading": "いしゅくする"
+        },
+        "wago": {
+            "text": "萎む",
+            "reading": "しぼむ"
+        },
+        "meaning": "to wither",
+        "pos": "verb",
+        "meaningMn": "хатах, хумигдах"
+    },
+    {
+        "kango": {
+            "text": "通用する",
+            "reading": "つうようする"
+        },
+        "wago": {
+            "text": "通す",
+            "reading": "とおす"
+        },
+        "meaning": "to let pass",
+        "pos": "verb",
+        "meaningMn": "нэвтрүүлэх"
+    },
+    {
+        "kango": {
+            "text": "摘出する",
+            "reading": "てきしゅつする"
+        },
+        "wago": {
+            "text": "摘む",
+            "reading": "つむ"
+        },
+        "meaning": "to pick",
+        "pos": "verb",
+        "meaningMn": "түүх, авах"
+    },
+    {
+        "kango": {
+            "text": "転向する",
+            "reading": "てんこうする"
+        },
+        "wago": {
+            "text": "転じる",
+            "reading": "てんじる"
+        },
+        "meaning": "to shift",
+        "pos": "verb",
+        "meaningMn": "хандлагаа өөрчлөх"
+    },
+    {
+        "kango": {
+            "text": "嘔吐する",
+            "reading": "おうとする"
+        },
+        "wago": {
+            "text": "吐く",
+            "reading": "つく"
+        },
+        "meaning": "to vomit",
+        "pos": "verb",
+        "meaningMn": "бөөлжих"
+    },
+    {
+        "kango": {
+            "text": "転倒する",
+            "reading": "てんとうする"
+        },
+        "wago": {
+            "text": "倒れる",
+            "reading": "たおれる"
+        },
+        "meaning": "to fall",
+        "pos": "verb",
+        "meaningMn": "унах"
+    },
+    {
+        "kango": {
+            "text": "投棄する",
+            "reading": "とうきする"
+        },
+        "wago": {
+            "text": "投げる",
+            "reading": "なげる"
+        },
+        "meaning": "to throw",
+        "pos": "verb",
+        "meaningMn": "шидэх"
+    },
+    {
+        "kango": {
+            "text": "窃盗する",
+            "reading": "せっとうする"
+        },
+        "wago": {
+            "text": "盗む",
+            "reading": "ぬすむ"
+        },
+        "meaning": "to steal",
+        "pos": "verb",
+        "meaningMn": "хулгайлах"
+    },
+    {
+        "kango": {
+            "text": "当選する",
+            "reading": "とうせんする"
+        },
+        "wago": {
+            "text": "当たる",
+            "reading": "あたる"
+        },
+        "meaning": "to be selected",
+        "pos": "verb",
+        "meaningMn": "сонгогдох"
+    },
+    {
+        "kango": {
+            "text": "衝突する",
+            "reading": "しょうとつする"
+        },
+        "wago": {
+            "text": "突き当たる",
+            "reading": "つきあたる"
+        },
+        "meaning": "to run into",
+        "pos": "verb",
+        "meaningMn": "мөргөлдөх"
+    },
+    {
+        "kango": {
+            "text": "抜粋する",
+            "reading": "ばっすいする"
+        },
+        "wago": {
+            "text": "抜く",
+            "reading": "ぬく"
+        },
+        "meaning": "to extract",
+        "pos": "verb",
+        "meaningMn": "сугалж авах"
+    },
+    {
+        "kango": {
+            "text": "同伴する",
+            "reading": "どうはんする"
+        },
+        "wago": {
+            "text": "伴う",
+            "reading": "ともなう"
+        },
+        "meaning": "to accompany",
+        "pos": "verb",
+        "meaningMn": "дагалдах"
+    },
+    {
+        "kango": {
+            "text": "出没する",
+            "reading": "しゅつぼつする"
+        },
+        "wago": {
+            "text": "飛び出す",
+            "reading": "とびだす"
+        },
+        "meaning": "to appear",
+        "pos": "verb",
+        "meaningMn": "гарч ирэх"
+    },
+    {
+        "kango": {
+            "text": "漂流する",
+            "reading": "ひょうりゅうする"
+        },
+        "wago": {
+            "text": "漂う",
+            "reading": "ただよう"
+        },
+        "meaning": "to drift",
+        "pos": "verb",
+        "meaningMn": "хөвөх"
+    },
+    {
+        "kango": {
+            "text": "付着する",
+            "reading": "ふちゃくする"
+        },
+        "wago": {
+            "text": "付く",
+            "reading": "つく"
+        },
+        "meaning": "to stick",
+        "pos": "verb",
+        "meaningMn": "наалдах"
+    },
+    {
+        "kango": {
+            "text": "腐食する",
+            "reading": "ふしょくする"
+        },
+        "wago": {
+            "text": "腐る",
+            "reading": "くさる"
+        },
+        "meaning": "to rot",
+        "pos": "verb",
+        "meaningMn": "ялзрах"
+    },
+    {
+        "kango": {
+            "text": "転覆する",
+            "reading": "てんぷくする"
+        },
+        "wago": {
+            "text": "覆す",
+            "reading": "くつがえす"
+        },
+        "meaning": "to overturn",
+        "pos": "verb",
+        "meaningMn": "хөмрөх, эргүүлэх"
+    },
+    {
+        "kango": {
+            "text": "歩行する",
+            "reading": "ほこうする"
+        },
+        "wago": {
+            "text": "歩く",
+            "reading": "あるく"
+        },
+        "meaning": "to walk",
+        "pos": "verb",
+        "meaningMn": "алхах"
+    },
+    {
+        "kango": {
+            "text": "歩行する",
+            "reading": "ほこうする"
+        },
+        "wago": {
+            "text": "歩む",
+            "reading": "あゆむ"
+        },
+        "meaning": "to walk",
+        "pos": "verb",
+        "meaningMn": "алхах"
+    },
+    {
+        "kango": {
+            "text": "報道する",
+            "reading": "ほうどうする"
+        },
+        "wago": {
+            "text": "報じる",
+            "reading": "ほうじる"
+        },
+        "meaning": "to report",
+        "pos": "verb",
+        "meaningMn": "мэдээлэх"
+    },
+    {
+        "kango": {
+            "text": "崩壊する",
+            "reading": "ほうかいする"
+        },
+        "wago": {
+            "text": "崩れる",
+            "reading": "くずれる"
+        },
+        "meaning": "to collapse",
+        "pos": "verb",
+        "meaningMn": "нурах"
+    },
+    {
+        "kango": {
+            "text": "解放する",
+            "reading": "かいほうする"
+        },
+        "wago": {
+            "text": "放つ",
+            "reading": "はなつ"
+        },
+        "meaning": "to set free",
+        "pos": "verb",
+        "meaningMn": "суллах"
+    },
+    {
+        "kango": {
+            "text": "放置する",
+            "reading": "ほうちする"
+        },
+        "wago": {
+            "text": "放る",
+            "reading": "ほうる"
+        },
+        "meaning": "to neglect",
+        "pos": "verb",
+        "meaningMn": "орхигдуулах, тоохгүй орхих"
+    },
+    {
+        "kango": {
+            "text": "冒険する",
+            "reading": "ぼうけんする"
+        },
+        "wago": {
+            "text": "冒す",
+            "reading": "おかす"
+        },
+        "meaning": "to risk",
+        "pos": "verb",
+        "meaningMn": "эрсдэлд орох"
+    },
+    {
+        "kango": {
+            "text": "埋蔵する",
+            "reading": "まいぞうする"
+        },
+        "wago": {
+            "text": "埋める",
+            "reading": "うずめる"
+        },
+        "meaning": "to bury",
+        "pos": "verb",
+        "meaningMn": "оршуулах, булах"
+    },
+    {
+        "kango": {
+            "text": "命令する",
+            "reading": "めいれいする"
+        },
+        "wago": {
+            "text": "命じる",
+            "reading": "めいじる"
+        },
+        "meaning": "to order",
+        "pos": "verb",
+        "meaningMn": "тушаах"
+    },
+    {
+        "kango": {
+            "text": "命令する",
+            "reading": "めいれいする"
+        },
+        "wago": {
+            "text": "命ずる",
+            "reading": "めいずる"
+        },
+        "meaning": "to order",
+        "pos": "verb",
+        "meaningMn": "тушаах"
+    },
+    {
+        "kango": {
+            "text": "給与する",
+            "reading": "きゅうよする"
+        },
+        "wago": {
+            "text": "与える",
+            "reading": "あたえる"
+        },
+        "meaning": "to grant",
+        "pos": "verb",
+        "meaningMn": "олгох"
+    },
+    {
+        "kango": {
+            "text": "溶解する",
+            "reading": "ようかいする"
+        },
+        "wago": {
+            "text": "溶かす",
+            "reading": "とかす"
+        },
+        "meaning": "to melt",
+        "pos": "verb",
+        "meaningMn": "хайлуулах"
+    },
+    {
+        "kango": {
+            "text": "溶解する",
+            "reading": "ようかいする"
+        },
+        "wago": {
+            "text": "溶く",
+            "reading": "とく"
+        },
+        "meaning": "to melt",
+        "pos": "verb",
+        "meaningMn": "хайлуулах, уусгах"
+    },
+    {
+        "kango": {
+            "text": "溶解する",
+            "reading": "ようかいする"
+        },
+        "wago": {
+            "text": "溶ける",
+            "reading": "とける"
+        },
+        "meaning": "to melt",
+        "pos": "verb",
+        "meaningMn": "хайлах"
+    },
+    {
+        "kango": {
+            "text": "養育する",
+            "reading": "よういくする"
+        },
+        "wago": {
+            "text": "養う",
+            "reading": "やしなう"
+        },
+        "meaning": "to bring up",
+        "pos": "verb",
+        "meaningMn": "тэжээн өсгөх"
+    },
+    {
+        "kango": {
+            "text": "流出する",
+            "reading": "りゅうしゅつする"
+        },
+        "wago": {
+            "text": "流す",
+            "reading": "ながす"
+        },
+        "meaning": "to drain",
+        "pos": "verb",
+        "meaningMn": "урсгах"
+    },
+    {
+        "kango": {
+            "text": "漂流する",
+            "reading": "ひょうりゅうする"
+        },
+        "wago": {
+            "text": "流れる",
+            "reading": "ながれる"
+        },
+        "meaning": "to drift",
+        "pos": "verb",
+        "meaningMn": "хөвөх, урсах"
+    },
+    {
+        "kango": {
+            "text": "連係する",
+            "reading": "れんけいする"
+        },
+        "wago": {
+            "text": "連ねる",
+            "reading": "つらねる"
+        },
+        "meaning": "to link",
+        "pos": "verb",
+        "meaningMn": "холбох"
+    },
+    {
+        "kango": {
+            "text": "翻弄する",
+            "reading": "ほんろうする"
+        },
+        "wago": {
+            "text": "弄る",
+            "reading": "いじる"
+        },
+        "meaning": "to play with",
+        "pos": "verb",
+        "meaningMn": "тоглох (хэн нэгнийг)"
+    },
+    {
+        "kango": {
+            "text": "漏洩する",
+            "reading": "ろうえいする"
+        },
+        "wago": {
+            "text": "漏る",
+            "reading": "もる"
+        },
+        "meaning": "to leak",
+        "pos": "verb",
+        "meaningMn": "алдагдах, гоожих"
+    },
+    {
+        "kango": {
+            "text": "会話する",
+            "reading": "かいわする"
+        },
+        "wago": {
+            "text": "話す",
+            "reading": "はなす"
+        },
+        "meaning": "to talk",
+        "pos": "verb",
+        "meaningMn": "ярих"
+    },
+    {
+        "kango": {
+            "text": "注入する",
+            "reading": "ちゅうにゅうする"
+        },
+        "wago": {
+            "text": "注ぐ",
+            "reading": "そそぐ"
+        },
+        "meaning": "to pour",
+        "pos": "verb",
+        "meaningMn": "цутгах"
+    },
+    {
+        "kango": {
+            "text": "位置する",
+            "reading": "いちする"
+        },
+        "wago": {
+            "text": "位置付ける",
+            "reading": "いちづける"
+        },
+        "meaning": "to place",
+        "pos": "verb",
+        "meaningMn": "байрлуулах"
+    },
+    {
+        "kango": {
+            "text": "鋳造する",
+            "reading": "ちゅうぞうする"
+        },
+        "wago": {
+            "text": "鋳る",
+            "reading": "いる"
+        },
+        "meaning": "to cast",
+        "pos": "verb",
+        "meaningMn": "цутгах (металл)"
+    },
+    {
+        "kango": {
+            "text": "複写する",
+            "reading": "ふくしゃする"
+        },
+        "wago": {
+            "text": "写す",
+            "reading": "うつす"
+        },
+        "meaning": "to copy",
+        "pos": "verb",
+        "meaningMn": "хуулах"
+    },
+    {
+        "kango": {
+            "text": "脱落する",
+            "reading": "だつらくする"
+        },
+        "wago": {
+            "text": "落とす",
+            "reading": "おとす"
+        },
+        "meaning": "to drop",
+        "pos": "verb",
+        "meaningMn": "унагах"
+    },
+    {
+        "kango": {
+            "text": "思考する",
+            "reading": "しこうする"
+        },
+        "wago": {
+            "text": "思う",
+            "reading": "おもう"
+        },
+        "meaning": "to think",
+        "pos": "verb",
+        "meaningMn": "бодох"
+    },
+    {
+        "kango": {
+            "text": "下降する",
+            "reading": "かこうする"
+        },
+        "wago": {
+            "text": "下ろす",
+            "reading": "おろす"
+        },
+        "meaning": "to drop",
+        "pos": "verb",
+        "meaningMn": "буулгах"
+    },
+    {
+        "kango": {
+            "text": "関係する",
+            "reading": "かんけいする"
+        },
+        "wago": {
+            "text": "関わる",
+            "reading": "かかわる"
+        },
+        "meaning": "to concern oneself",
+        "pos": "verb",
+        "meaningMn": "холбогдох"
+    },
+    {
+        "kango": {
+            "text": "鎮静する",
+            "reading": "ちんせいする"
+        },
+        "wago": {
+            "text": "静まる",
+            "reading": "しずまる"
+        },
+        "meaning": "to quiet down",
+        "pos": "verb",
+        "meaningMn": "тайвшрах"
+    },
+    {
+        "kango": {
+            "text": "鎮静する",
+            "reading": "ちんせいする"
+        },
+        "wago": {
+            "text": "静める",
+            "reading": "しずめる"
+        },
+        "meaning": "to quiet",
+        "pos": "verb",
+        "meaningMn": "тайвшруулах"
+    },
+    {
+        "kango": {
+            "text": "添乗する",
+            "reading": "てんじょうする"
+        },
+        "wago": {
+            "text": "添える",
+            "reading": "そえる"
+        },
+        "meaning": "to accompany",
+        "pos": "verb",
+        "meaningMn": "дагалдах"
+    },
+    {
+        "kango": {
+            "text": "毀損する",
+            "reading": "きそんする"
+        },
+        "wago": {
+            "text": "損なう",
+            "reading": "そこなう"
+        },
+        "meaning": "to harm",
+        "pos": "verb",
+        "meaningMn": "гэмтээх"
+    },
+    {
+        "kango": {
+            "text": "自炊する",
+            "reading": "じすいする"
+        },
+        "wago": {
+            "text": "炊く",
+            "reading": "たく"
+        },
+        "meaning": "to cook",
+        "pos": "verb",
+        "meaningMn": "хоол хийх"
+    },
+    {
+        "kango": {
+            "text": "研磨する",
+            "reading": "けんまする"
+        },
+        "wago": {
+            "text": "研ぐ",
+            "reading": "とぐ"
+        },
+        "meaning": "to grind",
+        "pos": "verb",
+        "meaningMn": "хурцлах, өнгөлөх"
+    },
+    {
+        "kango": {
+            "text": "捕捉する",
+            "reading": "ほそくする"
+        },
+        "wago": {
+            "text": "捉える",
+            "reading": "とらえる"
+        },
+        "meaning": "to capture",
+        "pos": "verb",
+        "meaningMn": "барих, олж харах"
+    },
+    {
+        "kango": {
+            "text": "換算する",
+            "reading": "かんさんする"
+        },
+        "wago": {
+            "text": "乗り換える",
+            "reading": "のりかえる"
+        },
+        "meaning": "to change",
+        "pos": "verb",
+        "meaningMn": "шилжих, хөрвүүлэх"
+    },
+    {
+        "kango": {
+            "text": "企図する",
+            "reading": "きとする"
+        },
+        "wago": {
+            "text": "図る",
+            "reading": "はかる"
+        },
+        "meaning": "to plan",
+        "pos": "verb",
+        "meaningMn": "төлөвлөх"
+    },
+    {
+        "kango": {
+            "text": "養育する",
+            "reading": "よういくする"
+        },
+        "wago": {
+            "text": "育む",
+            "reading": "はぐくむ"
+        },
+        "meaning": "to bring up",
+        "pos": "verb",
+        "meaningMn": "тэжээн өсгөх"
+    },
+    {
+        "kango": {
+            "text": "貼付する",
+            "reading": "ちょうふする"
+        },
+        "wago": {
+            "text": "貼り付ける",
+            "reading": "はりつける"
+        },
+        "meaning": "to stick",
+        "pos": "verb",
+        "meaningMn": "наах"
+    },
+    {
+        "kango": {
+            "text": "漏洩する",
+            "reading": "ろうえいする"
+        },
+        "wago": {
+            "text": "漏らす",
+            "reading": "もらす"
+        },
+        "meaning": "to let leak",
+        "pos": "verb",
+        "meaningMn": "алдах, гоожуулах"
+    },
+    {
+        "kango": {
+            "text": "雇用する",
+            "reading": "こようする"
+        },
+        "wago": {
+            "text": "雇う",
+            "reading": "やとう"
+        },
+        "meaning": "to hire",
+        "pos": "verb",
+        "meaningMn": "ажилд авах"
+    },
+    {
+        "kango": {
+            "text": "感覚する",
+            "reading": "かんかくする"
+        },
+        "wago": {
+            "text": "感ずる",
+            "reading": "かんずる"
+        },
+        "meaning": "to feel",
+        "pos": "verb",
+        "meaningMn": "мэдрэх"
+    },
+    {
+        "kango": {
+            "text": "付着する",
+            "reading": "ふちゃくする"
+        },
+        "wago": {
+            "text": "引っ付く",
+            "reading": "ひっつく"
+        },
+        "meaning": "to stick to",
+        "pos": "verb",
+        "meaningMn": "наалдах"
+    },
+    {
+        "kango": {
+            "text": "人選する",
+            "reading": "じんせんする"
+        },
+        "wago": {
+            "text": "選る",
+            "reading": "よる"
+        },
+        "meaning": "to select",
+        "pos": "verb",
+        "meaningMn": "сонгох"
+    },
+    {
+        "kango": {
+            "text": "封鎖する",
+            "reading": "ふうさする"
+        },
+        "wago": {
+            "text": "封じる",
+            "reading": "ふうじる"
+        },
+        "meaning": "to seal",
+        "pos": "verb",
+        "meaningMn": "хаах, бөглөх"
+    },
+    {
+        "kango": {
+            "text": "利用する",
+            "reading": "りようする"
+        },
+        "wago": {
+            "text": "利かせる",
+            "reading": "きかせる"
+        },
+        "meaning": "to put to good use",
+        "pos": "verb",
+        "meaningMn": "ашиглах"
+    },
+    {
+        "kango": {
+            "text": "覚醒する",
+            "reading": "かくせいする"
+        },
+        "wago": {
+            "text": "目が覚める",
+            "reading": "めがさめる"
+        },
+        "meaning": "to awaken",
+        "pos": "verb",
+        "meaningMn": "сэрэх"
+    },
+    {
+        "kango": {
+            "text": "回転する",
+            "reading": "かいてんする"
+        },
+        "wago": {
+            "text": "回す",
+            "reading": "まわす"
+        },
+        "meaning": "to turn",
+        "pos": "verb",
+        "meaningMn": "эргүүлэх"
+    },
+    {
+        "kango": {
+            "text": "合流する",
+            "reading": "ごうりゅうする"
+        },
+        "wago": {
+            "text": "落ち合う",
+            "reading": "おちあう"
+        },
+        "meaning": "to join",
+        "pos": "verb",
+        "meaningMn": "уулзах, нийлэх"
+    },
+    {
+        "kango": {
+            "text": "牽引する",
+            "reading": "けんいんする"
+        },
+        "wago": {
+            "text": "引っ張る",
+            "reading": "ひっぱる"
+        },
+        "meaning": "to draw",
+        "pos": "verb",
+        "meaningMn": "татах"
+    },
+    {
+        "kango": {
+            "text": "惹起する",
+            "reading": "じゃっきする"
+        },
+        "wago": {
+            "text": "引き起こす",
+            "reading": "ひきおこす"
+        },
+        "meaning": "to cause",
+        "pos": "verb",
+        "meaningMn": "үүсгэх"
+    },
+    {
+        "kango": {
+            "text": "経営する",
+            "reading": "けいえいする"
+        },
+        "wago": {
+            "text": "営む",
+            "reading": "いとなむ"
+        },
+        "meaning": "to run",
+        "pos": "verb",
+        "meaningMn": "удирдах, эрхлэх"
+    },
+    {
+        "kango": {
+            "text": "独泳する",
+            "reading": "どくえいする"
+        },
+        "wago": {
+            "text": "泳ぐ",
+            "reading": "およぐ"
+        },
+        "meaning": "to swim",
+        "pos": "verb",
+        "meaningMn": "сэлэх"
+    },
+    {
+        "kango": {
+            "text": "汚損する",
+            "reading": "おそんする"
+        },
+        "wago": {
+            "text": "汚す",
+            "reading": "よごす"
+        },
+        "meaning": "to soil",
+        "pos": "verb",
+        "meaningMn": "бохирдуулах"
+    },
+    {
+        "kango": {
+            "text": "改心する",
+            "reading": "かいしんする"
+        },
+        "wago": {
+            "text": "改める",
+            "reading": "あらためる"
+        },
+        "meaning": "to reform",
+        "pos": "verb",
+        "meaningMn": "засрах, өөрчлөгдөх"
+    },
+    {
+        "kango": {
+            "text": "標記する",
+            "reading": "ひょうきする"
+        },
+        "wago": {
+            "text": "記す",
+            "reading": "しるす"
+        },
+        "meaning": "to mark",
+        "pos": "verb",
+        "meaningMn": "тэмдэглэх"
+    },
+    {
+        "kango": {
+            "text": "惹起する",
+            "reading": "じゃっきする"
+        },
+        "wago": {
+            "text": "起こす",
+            "reading": "おこす"
+        },
+        "meaning": "to cause",
+        "pos": "verb",
+        "meaningMn": "үүсгэх"
+    },
+    {
+        "kango": {
+            "text": "仰望する",
+            "reading": "ぎょうぼうする"
+        },
+        "wago": {
+            "text": "仰ぐ",
+            "reading": "あおぐ"
+        },
+        "meaning": "to look up",
+        "pos": "verb",
+        "meaningMn": "дээш харах, хүндэтгэх"
+    },
+    {
+        "kango": {
+            "text": "近接する",
+            "reading": "きんせつする"
+        },
+        "wago": {
+            "text": "近づく",
+            "reading": "ちかづく"
+        },
+        "meaning": "to approach",
+        "pos": "verb",
+        "meaningMn": "ойртох"
     }
 ];
