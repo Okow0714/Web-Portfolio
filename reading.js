@@ -263,10 +263,11 @@ function renderSkippedList() {
     const empty = document.getElementById('skipped-empty');
     list.innerHTML = '';
     skippedWords.forEach(w => {
+        const gloss = (window.siteLang() === 'mn' && w.enMn) ? w.enMn : w.en;
         const li = document.createElement('li');
         li.innerHTML = `<span class="skipped-word-surface">${escapeHtml(w.surface)}</span>` +
             `<span class="skipped-word-reading">${escapeHtml(w.reading)}</span>` +
-            (w.en ? `<span class="skipped-word-en">${escapeHtml(w.en)}</span>` : '');
+            (gloss ? `<span class="skipped-word-en">${escapeHtml(gloss)}</span>` : '');
         list.appendChild(li);
     });
     if (skippedWords.length) hideEl(empty); else showEl(empty);
@@ -282,8 +283,9 @@ function resetStallTimer() {
 function showHint() {
     if (currentIdx >= words.length) return;
     const w = words[currentIdx];
+    const gloss = (window.siteLang() === 'mn' && w.enMn) ? w.enMn : w.en;
     document.getElementById('hint-reading').textContent = w.reading;
-    document.getElementById('hint-en').textContent = w.en ? `— ${w.en}` : '';
+    document.getElementById('hint-en').textContent = gloss ? `— ${gloss}` : '';
     showEl(document.getElementById('hint-popup'));
 }
 
@@ -478,6 +480,7 @@ document.addEventListener('sitelangchange', () => {
             total: words.filter(w => !w.sym).length,
         });
         updateMicButton();
+        renderSkippedList();
     }
 });
 
