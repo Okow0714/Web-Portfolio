@@ -282,10 +282,11 @@ function addClearedItem(s) {
     const item = document.createElement('div');
     item.className = 'gc-cleared-item';
     const translationText = (window.siteLang() === 'mn' && s.translationMn) ? s.translationMn : s.translation;
+    const explanationText = (window.siteLang() === 'mn' && s.explanationMn) ? s.explanationMn : s.explanation;
     item.innerHTML = `
         <div class="swap-line"><span class="old">${s.old}</span><span class="arrow">&rarr;</span><span class="new">${s.new}</span></div>
         <p class="en">&ldquo;${escapeHtml(translationText)}&rdquo;</p>
-        <p class="why">${escapeHtml(s.explanation)}</p>
+        <p class="why">${escapeHtml(explanationText)}</p>
     `;
     list.appendChild(item);
     list.scrollTop = list.scrollHeight;
