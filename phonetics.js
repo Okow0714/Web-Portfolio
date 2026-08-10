@@ -166,10 +166,11 @@ function detailHtml(member) {
     const useMn = window.siteLang() === 'mn' && member.meaningsMn && member.meaningsMn.length;
     const meaningsList = useMn ? member.meaningsMn : member.meanings;
     const meanings = meaningsList && meaningsList.length ? meaningsList.join(', ') : '';
+    const exampleEn = (useMn && member.example && member.example.enMn) ? member.example.enMn : (member.example ? member.example.en : '');
     const exampleHtml = member.example
         ? `<div class="tree-example">
                <p class="tree-example-jp">${member.example.furigana || escapeHtml(member.example.jp)}</p>
-               <p class="tree-example-en">${escapeHtml(member.example.en)}</p>
+               <p class="tree-example-en">${escapeHtml(exampleEn)}</p>
            </div>`
         : `<p class="tree-example-none">${escapeHtml(window.t('phonetics.noExampleForKanji'))}</p>`;
 
