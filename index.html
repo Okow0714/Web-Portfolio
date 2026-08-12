@@ -3,10 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Sarantsatsral Ganzorig - Portfolio</title>
+    <title>Khan Japanese - About Me</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Personal portfolio of Sarantsatsral Ganzorig, with free Japanese-learning tools including a vocabulary matching game and a voice-driven reading practice app.">
+    <meta name="description" content="Khan Japanese: free Japanese-learning tools including a vocabulary matching game and a voice-driven reading practice app, built by Sarantsatsral Ganzorig.">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4a2c3a">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="portfolio.css">
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700;900&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -25,17 +30,17 @@
         <!-- Header: one row - brand (home link), section nav, account menu -->
         <div class="site-header-wrap">
             <header class="header">
-                <a href="index.html" class="site-brand" aria-label="Sarantsatsral Ganzorig - home">
+                <a href="index.html" class="site-brand" aria-label="Khan Japanese - home">
                     <span class="brand-seal" aria-hidden="true">言</span>
                     <span class="brand-text">
-                        <span class="brand-name">Sarantsatsral Ganzorig</span>
+                        <span class="brand-name">Khan Japanese</span>
                         <span class="brand-role">Japanese study tools</span>
                     </span>
                 </a>
 
                 <nav class="header-nav" aria-label="Main">
                     <div class="nav-item">
-                        <button class="nav-trigger nav-current" type="button" aria-haspopup="true">Portfolio<span class="nav-caret" aria-hidden="true">&#9662;</span></button>
+                        <button class="nav-trigger nav-current" type="button" aria-haspopup="true">About Me<span class="nav-caret" aria-hidden="true">&#9662;</span></button>
                         <div class="nav-dropdown">
                             <a href="#hobbies">Hobbies</a>
                             <a href="#skills">My Skills</a>
@@ -627,9 +632,9 @@
         <div class="footer-inner">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <a href="index.html" class="footer-brand" aria-label="Sarantsatsral Ganzorig - home">
+                    <a href="index.html" class="footer-brand" aria-label="Khan Japanese - home">
                         <span class="brand-seal" aria-hidden="true">言</span>
-                        <span class="footer-brand-name">Sarantsatsral Ganzorig</span>
+                        <span class="footer-brand-name">Khan Japanese</span>
                     </a>
                     <p class="footer-blurb">System engineering student in Japan, building tools for learning the language.</p>
                 </div>
@@ -644,7 +649,7 @@
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h2 class="footer-heading">Portfolio</h2>
+                    <h2 class="footer-heading">About Me</h2>
                     <ul class="footer-list">
                         <li><a href="index.html#portfolio">Projects &amp; learning</a></li>
                         <li><a href="index.html#qualifications">Qualifications</a></li>
@@ -671,7 +676,7 @@
                 </div>
             </div>
             <div class="footer-bar">
-                <p class="footer-copy">&copy; 2026 Sarantsatsral Ganzorig</p>
+                <p class="footer-copy">&copy; 2026 Khan Japanese</p>
                 <div class="footer-links">
                     <a href="privacy.html">Privacy Policy</a>
                     <a href="terms.html">Terms of Service</a>
@@ -686,6 +691,7 @@
     <script src="auth-shared.js"></script>
     <script src="supabase-app.js"></script>
     <script src="script.js"></script>
+    <script src="pwa-register.js"></script>
 </body>
 
 </html>

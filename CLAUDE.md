@@ -1,6 +1,9 @@
 # Web-Portfolio
 
-Personal portfolio + three Japanese-learning tools, built by Sarantsatsral Ganzorig.
+Site brand: **Khan Japanese**. Personal "About Me" page + Japanese-learning tools, built by
+Sarantsatsral Ganzorig. The nav item and browser tab titles say "Khan Japanese" / "About Me" —
+the person's real name only still appears where it's a factual credit (photo alt text, the
+privacy policy's legal disclosure of who operates the site), not as site branding.
 Static site — plain HTML/CSS/JS, no bundler, no build step, no `package.json`. Backed by
 Supabase (Postgres + Auth). Hosted on GitHub Pages. Git repo on `main`.
 
@@ -8,7 +11,7 @@ Supabase (Postgres + Auth). Hosted on GitHub Pages. Git repo on `main`.
 
 | Page | Purpose |
 |---|---|
-| `index.html` | Portfolio home. Content wrapped in `<main class="portfolio-main">`. |
+| `index.html` | About Me / portfolio home — nav label is "About Me". Content wrapped in `<main class="portfolio-main">` (internal class name, unchanged). |
 | `game.html` | Word Match ("言葉合わせ") — hex-tile vocabulary matching game, JLPT N5–N1. |
 | `phonetics.html` | Phonetics Family — kanji grouped by shared phonetic component, ranked by usage. |
 | `reading.html` | Dokkai Reader — speech-recognition-driven reading practice. |

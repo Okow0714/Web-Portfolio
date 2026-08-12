@@ -22,7 +22,7 @@ window.I18N_STRINGS = {
     'game.resultSaved': { en: 'Result saved.', mn: 'Үр дүн хадгалагдлаа.' },
     'game.levelN': { en: 'Level {n}', mn: '{n}-р түвшин' },
 
-    'nav.portfolio': { en: 'Portfolio', mn: 'Профайл' },
+    'nav.portfolio': { en: 'About Me', mn: 'Миний тухай' },
     'nav.hobbies': { en: 'Hobbies', mn: 'Сонирхол' },
     'nav.mySkills': { en: 'My Skills', mn: 'Миний ур чадвар' },
     'nav.projectLearning': { en: 'Project & Learning', mn: 'Төсөл ба сургалт' },

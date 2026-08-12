@@ -6,8 +6,8 @@ Object.assign(window.I18N_STRINGS, {
 
     'privacy.whoThisIs.h': { en: 'Who this is', mn: 'Энэ хэн бэ' },
     'privacy.whoThisIs.p': {
-        en: 'This site is a personal portfolio and a set of free Japanese-learning tools built and run by one individual (Sarantsatsral Ganzorig), not a company. This policy explains what happens to your information when you use it.',
-        mn: 'Энэ сайт нь компани биш, ганц хүний (Sarantsatsral Ganzorig) бүтээж ажиллуулдаг хувийн профайл болон үнэгүй япон хэл сурах хэрэгслүүдийн цуглуулга юм. Энэ бодлого нь та сайтыг ашиглах үед таны мэдээлэлд юу тохиолддогийг тайлбарладаг.'
+        en: 'This site (Khan Japanese) is a personal portfolio and a set of free Japanese-learning tools built and run by one individual (Sarantsatsral Ganzorig), not a company. This policy explains what happens to your information when you use it.',
+        mn: 'Энэ сайт (Khan Japanese) нь компани биш, ганц хүний (Sarantsatsral Ganzorig) бүтээж ажиллуулдаг хувийн профайл болон үнэгүй япон хэл сурах хэрэгслүүдийн цуглуулга юм. Энэ бодлого нь та сайтыг ашиглах үед таны мэдээлэлд юу тохиолддогийг тайлбарладаг.'
     },
 
     'privacy.whatICollect.h': { en: 'What I collect', mn: 'Юу цуглуулдаг вэ' },
