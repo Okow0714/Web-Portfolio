@@ -916,6 +916,16 @@ body:has(.portfolio-main) {
     box-shadow: var(--shadow-md);
 }
 
+.download-btn-disabled, .download-btn-disabled:hover {
+    background: none;
+    border-color: var(--border);
+    color: var(--text-muted);
+    box-shadow: none;
+    cursor: default;
+    opacity: 0.7;
+    transform: none;
+}
+
 /* Contact Section: height follows content, not forced to fill the screen */
 .contact-section {
     display: flex;

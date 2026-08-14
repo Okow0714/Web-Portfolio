@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://okow0714.github.io/Web-Portfolio/sitemap.xml

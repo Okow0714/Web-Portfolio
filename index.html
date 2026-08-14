@@ -6,6 +6,17 @@
     <title>Khan Japanese - About Me</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Khan Japanese: free Japanese-learning tools including a vocabulary matching game and a voice-driven reading practice app, built by Sarantsatsral Ganzorig.">
+    <link rel="canonical" href="https://okow0714.github.io/Web-Portfolio/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Khan Japanese">
+    <meta property="og:title" content="Khan Japanese - About Me">
+    <meta property="og:description" content="Khan Japanese: free Japanese-learning tools including a vocabulary matching game and a voice-driven reading practice app, built by Sarantsatsral Ganzorig.">
+    <meta property="og:url" content="https://okow0714.github.io/Web-Portfolio/">
+    <meta property="og:image" content="https://okow0714.github.io/Web-Portfolio/images/about/hero.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Khan Japanese - About Me">
+    <meta name="twitter:description" content="Khan Japanese: free Japanese-learning tools including a vocabulary matching game and a voice-driven reading practice app, built by Sarantsatsral Ganzorig.">
+    <meta name="twitter:image" content="https://okow0714.github.io/Web-Portfolio/images/about/hero.jpg">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#4a2c3a">
@@ -15,6 +26,26 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="portfolio.css">
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700;900&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Sarantsatsral Ganzorig",
+        "url": "https://okow0714.github.io/Web-Portfolio/",
+        "image": "https://okow0714.github.io/Web-Portfolio/images/about/hero.jpg",
+        "jobTitle": "System Engineering Student & Developer",
+        "email": "mailto:ganzorig2003@gmail.com",
+        "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "Sundai IT & Business College"
+        },
+        "knowsLanguage": ["en", "ja", "mn"],
+        "sameAs": [
+            "https://www.linkedin.com/in/%D1%81%D0%B0%D1%80%D0%B0%D0%BD%D1%86%D0%B0%D1%86%D1%80%D0%B0%D0%BB-%D0%B3%D0%B0%D0%BD%D0%B7%D0%BE%D1%80%D0%B8%D0%B3-77041237a/",
+            "https://www.facebook.com/profile.php?id=100004245198090"
+        ]
+    }
+    </script>
 </head>
 
 <body>
@@ -202,7 +233,7 @@
             </div>
         </div>
         <div class="hero-image">
-            <img src="Main Page 1.jpg" alt="Sarantsatsral Ganzorig">
+            <img src="images/about/hero.jpg" alt="Sarantsatsral Ganzorig">
         </div>
     </div>
 </section>
@@ -239,7 +270,7 @@
                 </div>
             </div>
             <div class="hobbies-image">
-                <img src="hobbies-placeholder.svg" alt="Hobbies placeholder">
+                <img src="images/about/hobbies.jpg" alt="Illuminated by a blue neon lightning display" loading="lazy">
             </div>
         </section>
 
@@ -307,7 +338,7 @@
                 </div>
             </div>
             <div class="skills-image">
-                <img src="skills-placeholder.svg" alt="Skills placeholder">
+                <img src="images/about/skills.jpg" alt="Wearing headphones under an autumn tree, Tokyo Tower in the background" loading="lazy">
             </div>
         </section>
 
@@ -435,7 +466,7 @@
                 </div>
             </div>
             <div class="qualifications-image">
-                <img src="qualifications-placeholder.svg" alt="Qualifications placeholder">
+                <img src="images/about/qualifications.jpg" alt="Standing on an Odaiba rooftop overlooking Rainbow Bridge and the Tokyo skyline" loading="lazy">
             </div>
         </section>
 
@@ -559,7 +590,7 @@
                         <div class="download-icon">📄</div>
                         <h3>履歴書 (Japanese)</h3>
                         <p>Standard Japanese format resume</p>
-                        <a href="./rirekisho.pdf" class="download-btn" onclick="alert('Japanese version')">
+                        <a href="./rirekisho.pdf" class="download-btn" download>
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
                             </svg>
@@ -569,13 +600,13 @@
                     <div class="download-card">
                         <div class="download-icon">📄</div>
                         <h3>Resume (English)</h3>
-                        <p>International format resume</p>
-                        <a href="#" class="download-btn" onclick="alert('English version not available yet')">
+                        <p>Coming soon</p>
+                        <span class="download-btn download-btn-disabled" aria-disabled="true">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
                             </svg>
-                            Download PDF
-                        </a>
+                            Not available yet
+                        </span>
                     </div>
                 </div>
             </div>
@@ -592,7 +623,7 @@
                     <div class="contact-icon">📧</div>
                     <h3>Email</h3>
                     <p>ganzorig2003@gmail.com</p>
-                    <a href="https://mail.google.com/" class="contact-link">Send Email</a>
+                    <a href="mailto:ganzorig2003@gmail.com" class="contact-link">Send Email</a>
                 </div>
                 <div class="contact-card">
                     <div class="contact-icon">💼</div>
