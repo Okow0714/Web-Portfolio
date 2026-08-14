@@ -3,15 +3,23 @@
 Object.assign(window.I18N_STRINGS, {
     'grammar.titleSub': { en: 'Grammar Connect', mn: 'Дүрэм холбох' },
     'grammar.subtitle': {
-        en: "A sentence appears with one grammar point underlined. Tap the tile that replaces it without changing what the sentence means — the word transforms in place, and the finished sentence (with its translation) drops into the cleared list at the side. Ten sentences a level, twenty options a sentence, twenty levels a track.",
-        mn: 'Өгүүлбэрт нэг дүрмийн цэг доогуур зураастай гарч ирнэ. Өгүүлбэрийн утгыг өөрчлөхгүйгээр орлуулах хавтанг дарна уу — үг тэр дороо солигдож, дуусгасан өгүүлбэр (орчуулгын хамт) хажуугийн жагсаалт руу орно. Түвшин бүрт арван өгүүлбэр, өгүүлбэр бүрт хорин сонголт, эрэмбэ бүрт хорин түвшин байна.'
+        en: "A sentence appears with one grammar point underlined. Tap the tile that replaces it without changing what the sentence means — the word transforms in place, and the finished sentence (with its translation) drops into the cleared list at the side. Ten sentences a level, ten options a sentence, twenty levels a track.",
+        mn: 'Өгүүлбэрт нэг дүрмийн цэг доогуур зураастай гарч ирнэ. Өгүүлбэрийн утгыг өөрчлөхгүйгээр орлуулах хавтанг дарна уу — үг тэр дороо солигдож, дуусгасан өгүүлбэр (орчуулгын хамт) хажуугийн жагсаалт руу орно. Түвшин бүрт арван өгүүлбэр, өгүүлбэр бүрт арван сонголт, эрэмбэ бүрт хорин түвшин байна.'
     },
-    'grammar.creditsSummary': { en: 'Photo credits — night skyline photography', mn: 'Гэрэл зургийн эх сурвалж — шөнийн тэнгэрийн шугамын гэрэл зураг' },
+    'grammar.creditsSummary': { en: 'Photo & music credits — night skyline photography and soundtrack', mn: 'Гэрэл зураг ба хөгжмийн эх сурвалж — шөнийн тэнгэрийн шугамын гэрэл зураг ба хөгжим' },
     'grammar.creditsNote': { en: 'All sourced from Wikimedia Commons, resized and re-compressed for use here; no other changes made.', mn: 'Бүгд Wikimedia Commons-оос авсан, энд ашиглахын тулд хэмжээг өөрчилж, дахин шахсан; өөр өөрчлөлт хийгээгүй.' },
+    'grammar.creditsPhotoSubhead': { en: 'Background photography', mn: 'Дэвсгэр гэрэл зураг' },
+    'grammar.creditsMusicSubhead': { en: 'Background music (Japanese lofi)', mn: 'Дэвсгэр хөгжим (Япон lofi)' },
+    'grammar.creditsMusicNote': {
+        en: 'All 16 tracks via <a href="https://pixabay.com/music/" target="_blank" rel="noopener">Pixabay Music</a>, used under the Pixabay Content License (free for commercial use, no attribution required — credited here anyway). Three tracks cycle per JLPT tier (N5 through N1); Zen Garden Beats by eggshy plays on the level-select screen while browsing between levels.',
+        mn: '16 бичлэг бүгд <a href="https://pixabay.com/music/" target="_blank" rel="noopener">Pixabay Music</a>-с авсан бөгөөд Pixabay-н контентийн зөвшөөрлийн дагуу ашигласан (арилжааны зориулалтаар үнэгүй, эх сурвалж заавал дурдах шаардлагагүй — гэсэн хэдий ч энд дурдав). JLPT түвшин бүрт (N5-с N1 хүртэл) гурван бичлэг эргэлддэг; eggshy-н Zen Garden Beats нь түвшин сонгох дэлгэц дээр тоглоно.'
+    },
     'grammar.cleared': { en: 'Cleared', mn: 'Дуусгасан' },
     'grammar.mistakes': { en: 'Mistakes', mn: 'Алдаа' },
-    'grammar.startModalDesc': { en: "Ten sentences, twenty grammar tiles each. Tap the tile that keeps the sentence's meaning unchanged. The timer starts when you hit Start.", mn: 'Арван өгүүлбэр, тус бүрт хорин дүрмийн хавтан. Өгүүлбэрийн утгыг өөрчлөхгүй хавтанг дарна уу. Эхлүүлэх товч дарахад цаг эхэлнэ.' },
+    'grammar.startModalDesc': { en: "Ten sentences, ten grammar tiles each. Tap the tile that keeps the sentence's meaning unchanged. The timer starts when you hit Start.", mn: 'Арван өгүүлбэр, тус бүрт арван дүрмийн хавтан. Өгүүлбэрийн утгыг өөрчлөхгүй хавтанг дарна уу. Эхлүүлэх товч дарахад цаг эхэлнэ.' },
     'grammar.tileHint': { en: 'Tap the tile that replaces the underlined part without changing the meaning', mn: 'Утгыг өөрчлөхгүйгээр доогуур зураастай хэсгийг орлуулах хавтанг дарна уу' },
+    'grammar.soundOff': { en: 'Turn sound off', mn: 'Дууг унтраах' },
+    'grammar.soundOn': { en: 'Turn sound on', mn: 'Дууг асаах' },
     'grammar.previousBestMistakes': { en: 'Previous best: {time} · {mistakes} mistakes', mn: 'Өмнөх шилдэг: {time} · {mistakes} алдаа' },
     'grammar.clearedBeforeTimeOut': { en: 'Cleared {n} / {total} sentences before time ran out.', mn: 'Цаг дуусахаас өмнө {n} / {total} өгүүлбэрийг дуусгасан.' },
     'grammar.foundation': { en: 'Foundation', mn: 'Суурь' },

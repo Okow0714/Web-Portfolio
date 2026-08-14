@@ -1,5 +1,5 @@
 // Grammar Connect — shown a sentence with one grammar point underlined, the player taps the
-// tile (out of a ~20-tile bank) that swaps in without changing the sentence's meaning. A
+// tile (out of a ~10-tile bank) that swaps in without changing the sentence's meaning. A
 // correct tap morphs the underlined text in place, then the sentence drops into a "cleared"
 // side rail (translation + a short explanation revealed there for the first time — nothing
 // English-language is ever shown before a sentence is solved) and the next sentence appears.
@@ -26,6 +26,32 @@ const TRACK_LABEL_KEY = { foundation: 'grammar.foundation', advanced: 'grammar.a
 function trackLabel(track) { return window.t(TRACK_LABEL_KEY[track]); }
 const TRACK_RANGE = { foundation: 'N5 – N3', advanced: 'N2 – N1' };
 
+// Grammar Connect's tracks span a JLPT *range* (foundation = N5-N3, advanced = N2-N1) rather
+// than one tier per track the way Word Match's WORD_LEVELS does, so there's no per-level tier
+// tag in grammar-data.js to key music off of. Splitting each 20-level track into thirds (or
+// halves) reproduces that same five-tier structure for music purposes only -- it doesn't
+// change anything about how levels/tracks are actually played.
+const JLPT_TIER_BOUNDARIES = {
+    foundation: [{ tier: 'N5', max: 7 }, { tier: 'N4', max: 14 }, { tier: 'N3', max: 20 }],
+    advanced: [{ tier: 'N2', max: 10 }, { tier: 'N1', max: 20 }],
+};
+function levelToJlptTier(track, levelNum) {
+    const bounds = JLPT_TIER_BOUNDARIES[track];
+    return (bounds.find(b => levelNum <= b.max) || bounds[bounds.length - 1]).tier;
+}
+// Position within that tier's own level range (0-indexed), so each tier cycles through its
+// 3-track music pool starting from track 0 rather than picking up wherever the level number
+// happens to land -- e.g. foundation's N4 tier (levels 8-14) starts its own pass at level 8.
+function withinTierIndex(track, levelNum) {
+    const bounds = JLPT_TIER_BOUNDARIES[track];
+    let prevMax = 0;
+    for (const b of bounds) {
+        if (levelNum <= b.max) return levelNum - prevMax - 1;
+        prevMax = b.max;
+    }
+    return 0;
+}
+
 let activeTrack = 'foundation'; // level-select screen: which track's 20 levels are shown
 let currentTrack = null;
 let currentLevel = null;        // the level object currently being played
@@ -41,6 +67,127 @@ let elapsedSeconds = 0;
 let progressCache = {};         // "track:level" -> grammar_progress row
 let lastResult = null;          // result earned as a guest, pending save once they log in
 let resultPrimaryTarget = null; // { track, levelObj } the result modal's primary button opens
+
+// Background music: real licensed Japanese lofi tracks from Pixabay Music (same source/license
+// as Word Match's jazz playlist -- see game.js's GameAudio for the identical reasoning), three
+// per JLPT tier plus one ambient track for the level-select screen. Roughly graded lighter/
+// cozier for N5 through moodier/nighttime for N1, same gradient idea as Word Match's jazz
+// subgenre-per-tier pool. Full attribution in the level-select credits block.
+const MUSIC_POOLS = {
+    N5: [
+        'sound/grammar-music/n5-cozy-vlog-chill.mp3',
+        'sound/grammar-music/n5-ancient-garden-zen.mp3',
+        'sound/grammar-music/n5-zen-drift.mp3',
+    ],
+    N4: [
+        'sound/grammar-music/n4-japanese-lofi-vlog.mp3',
+        'sound/grammar-music/n4-lofimercurius.mp3',
+        'sound/grammar-music/n4-lost-train.mp3',
+    ],
+    N3: [
+        'sound/grammar-music/n3-slowburn-relaxing.mp3',
+        'sound/grammar-music/n3-japanese-lofi-jazz-piano.mp3',
+        'sound/grammar-music/n3-japan-japanese-music.mp3',
+    ],
+    N2: [
+        'sound/grammar-music/n2-asian-lofi-hiphop-04.mp3',
+        'sound/grammar-music/n2-asian-lofi-hiphop-08.mp3',
+        'sound/grammar-music/n2-asian-lofi-hiphop-10.mp3',
+    ],
+    N1: [
+        'sound/grammar-music/n1-fireflies-in-the-city.mp3',
+        'sound/grammar-music/n1-petals-on-the-water.mp3',
+        'sound/grammar-music/n1-tokyo-bridge-dream.mp3',
+    ],
+};
+const LEVEL_SELECT_TRACK = 'sound/grammar-music/all-levels-zen-garden-beats.mp3';
+
+// Music-only subset of game.js's GameAudio module (Grammar Connect has no synthesized sound
+// effects to carry alongside it, just the background track) -- same fade-in/out-via-plain-
+// HTMLAudioElement approach, same reasoning throughout.
+const GrammarAudio = (function () {
+    let enabled = true;
+    let musicEl = null;
+    let musicFadeTimer = null;
+    const MUSIC_VOLUME = 0.35;
+
+    function ensureMusicEl() {
+        if (musicEl) return musicEl;
+        musicEl = new Audio();
+        musicEl.loop = true;
+        musicEl.volume = 0;
+        musicEl.preload = 'none';
+        return musicEl;
+    }
+
+    function fadeMusicTo(target, ms) {
+        if (musicFadeTimer) { window.clearInterval(musicFadeTimer); musicFadeTimer = null; }
+        const el = ensureMusicEl();
+        const start = el.volume;
+        const steps = Math.max(1, Math.round(ms / 50));
+        let i = 0;
+        musicFadeTimer = window.setInterval(() => {
+            i++;
+            el.volume = start + (target - start) * (i / steps);
+            if (i >= steps) {
+                el.volume = target;
+                window.clearInterval(musicFadeTimer);
+                musicFadeTimer = null;
+                if (target === 0) el.pause();
+            }
+        }, 50);
+    }
+
+    function setTrack(src) {
+        const el = ensureMusicEl();
+        const absoluteSrc = new URL(src, window.location.href).href;
+        if (el.src === absoluteSrc && !el.paused) return;
+        el.src = src;
+        el.currentTime = 0;
+        if (enabled) {
+            el.volume = 0;
+            el.play().catch(() => {});
+            fadeMusicTo(MUSIC_VOLUME, 900);
+        }
+    }
+
+    function startAmbient() {
+        if (!musicEl || !musicEl.src) return;
+        musicEl.play().catch(() => {});
+        fadeMusicTo(MUSIC_VOLUME, 900);
+    }
+
+    function stopAmbient() {
+        if (!musicEl) return;
+        fadeMusicTo(0, 400);
+    }
+
+    // Same first-gesture retry as GameAudio -- browsers block the level-select track's very
+    // first play() call since it fires before any click has happened.
+    (function retryOnFirstGesture() {
+        const kick = () => {
+            if (enabled && musicEl && musicEl.paused && musicEl.src) {
+                musicEl.play().catch(() => {});
+            }
+            document.removeEventListener('pointerdown', kick);
+            document.removeEventListener('keydown', kick);
+        };
+        document.addEventListener('pointerdown', kick, { once: true });
+        document.addEventListener('keydown', kick, { once: true });
+    })();
+
+    function setEnabled(next) {
+        enabled = next;
+        if (enabled) startAmbient(); else stopAmbient();
+        return enabled;
+    }
+
+    return {
+        toggle: () => setEnabled(!enabled),
+        isEnabled: () => enabled,
+        setLevelTrack: setTrack,
+    };
+})();
 
 function escapeHtml(str) {
     const div = document.createElement('div');
@@ -141,6 +288,10 @@ function openLevel(track, levelNum) {
     clearedCount = 0;
     timeRemaining = MATCH_DURATION;
 
+    const jlptTier = levelToJlptTier(track, levelNum);
+    const musicPool = MUSIC_POOLS[jlptTier];
+    GrammarAudio.setLevelTrack(musicPool[withinTierIndex(track, levelNum) % musicPool.length]);
+
     document.getElementById('gc-cleared-list').innerHTML = `<p class="gc-cleared-empty">${escapeHtml(window.t('grammar.clearedEmptyHint'))}</p>`;
     document.getElementById('gc-level-label').textContent = window.tf('grammar.trackLevel', { track: trackLabel(track), n: levelNum });
     updateTopStats();
@@ -158,6 +309,7 @@ function backToLevels() {
     stopTimer();
     hideEl(document.getElementById('gc-match-section'));
     showEl(document.getElementById('gc-select-section'));
+    GrammarAudio.setLevelTrack(LEVEL_SELECT_TRACK);
     renderLevelSelect();
 }
 
@@ -218,7 +370,7 @@ function buildTileOptions(s) {
     const pool = GRAMMAR_POOLS[currentTrack];
     const exclude = new Set([s.new, s.newCore, s.old, s.oldCore].filter(Boolean));
     const filtered = pool.filter(g => !exclude.has(g));
-    const distractors = shuffleArray(filtered).slice(0, 19);
+    const distractors = shuffleArray(filtered).slice(0, 9);
     return shuffleArray([s.new, ...distractors]);
 }
 
@@ -403,10 +555,27 @@ async function saveProgress(session, result) {
 })();
 
 // ---------------------------------------------------------------------------
-// Photo credits
+// Photo & music credits
 // ---------------------------------------------------------------------------
 document.getElementById('gc-photo-credits-list').innerHTML = `
     <li><a href="https://commons.wikimedia.org/wiki/File:Tokyo_by_night_2011.jpg" target="_blank" rel="noopener">Tokyo by Night</a> — Nalilord, CC BY-SA 3.0</li>
+`;
+document.getElementById('gc-music-credits-list').innerHTML = `
+    <li>Cozy Lofi Chill — Soft Vlog Beat, Smooth Relaxation — Music_for_Videos</li>
+    <li>Ancient Garden — Zen Lofi — Turning Pages</li>
+    <li>Zen Drift — Turning Pages</li>
+    <li>Japanese Lofi Beat — Cozy Chill Vlog, Soft and Smooth — Music_for_Videos</li>
+    <li>Lofimercurius — lofi_nemuko</li>
+    <li>Lost Train — Papulina (Ivan Luzan)</li>
+    <li>Slowburn — Relaxing Lofi Background Music — joelfazhari</li>
+    <li>Japanese Lofi Jazz — Calm Piano Beats, Chill and Smooth — Music_for_Videos</li>
+    <li>Japan — Japanese Music — Mirostar</li>
+    <li>Asian Lofi Hip Hop 04 — VJGalaxy</li>
+    <li>Asian Lofi Hip Hop 08 — VJGalaxy</li>
+    <li>Asian Lofi Hip Hop 10 — VJGalaxy</li>
+    <li>Fireflies in the City (1 Min Edit) — Japanese Fusion Lofi — Kaazoom</li>
+    <li>Petals on the Water (Full Version) — Japanese Fusion Lofi — Kaazoom</li>
+    <li>Tokyo Bridge Dream — Lofi Chill Music with Bells — Monkey Bandito</li>
 `;
 
 // ---------------------------------------------------------------------------
@@ -419,6 +588,20 @@ document.addEventListener('sitelangchange', () => {
 });
 
 document.getElementById('gc-back-btn').addEventListener('click', backToLevels);
+
+function syncSoundButtons(on) {
+    [
+        [document.getElementById('gc-sound-toggle'), document.getElementById('gc-sound-icon')],
+        [document.getElementById('gc-board-sound-toggle'), document.getElementById('gc-board-sound-icon')],
+    ].forEach(([btn, icon]) => {
+        btn.classList.toggle('on', on);
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        btn.title = on ? window.t('grammar.soundOff') : window.t('grammar.soundOn');
+        icon.textContent = on ? '\u{1F50A}' : '\u{1F507}';
+    });
+}
+document.getElementById('gc-sound-toggle').addEventListener('click', () => syncSoundButtons(GrammarAudio.toggle()));
+document.getElementById('gc-board-sound-toggle').addEventListener('click', () => syncSoundButtons(GrammarAudio.toggle()));
 
 document.getElementById('gc-start-modal-btn').addEventListener('click', () => {
     hideEl(document.getElementById('gc-start-modal'));
@@ -463,3 +646,4 @@ const requestedTrack = new URLSearchParams(window.location.search).get('track');
 if (requestedTrack === 'foundation' || requestedTrack === 'advanced') {
     activeTrack = requestedTrack;
 }
+GrammarAudio.setLevelTrack(LEVEL_SELECT_TRACK); // level-select screen's own ambient track

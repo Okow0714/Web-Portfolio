@@ -157,8 +157,11 @@
                     <div class="gc-hud-row">
                         <div>
                             <h1 class="gc-title">文法つなぎ<span class="gc-title-sub" data-i18n="grammar.titleSub">Grammar Connect</span></h1>
-                            <p class="gc-subtitle" data-i18n="grammar.subtitle">A sentence appears with one grammar point underlined. Tap the tile that replaces it without changing what the sentence means — the word transforms in place, and the finished sentence (with its translation) drops into the cleared list at the side. Ten sentences a level, twenty options a sentence, twenty levels a track.</p>
+                            <p class="gc-subtitle" data-i18n="grammar.subtitle">A sentence appears with one grammar point underlined. Tap the tile that replaces it without changing what the sentence means — the word transforms in place, and the finished sentence (with its translation) drops into the cleared list at the side. Ten sentences a level, ten options a sentence, twenty levels a track.</p>
                         </div>
+                        <button class="sound-toggle on" id="gc-sound-toggle" type="button" aria-pressed="true" title="Turn sound off">
+                            <span id="gc-sound-icon" aria-hidden="true">&#128266;</span>
+                        </button>
                     </div>
                     <p id="gc-guest-hint" class="gc-guest-hint hidden" data-i18n="auth.loginHint">Log in to save your progress across visits.</p>
 
@@ -166,9 +169,13 @@
                     <div class="gc-level-grid" id="gc-level-grid"></div>
 
                     <details class="photo-credits" id="gc-photo-credits">
-                        <summary data-i18n="grammar.creditsSummary">Photo credits — night skyline photography</summary>
+                        <summary data-i18n="grammar.creditsSummary">Photo &amp; music credits — night skyline photography and soundtrack</summary>
+                        <h4 class="credits-subhead" data-i18n="grammar.creditsPhotoSubhead">Background photography</h4>
                         <ul id="gc-photo-credits-list"></ul>
                         <p class="photo-credits-note" data-i18n="grammar.creditsNote">All sourced from Wikimedia Commons, resized and re-compressed for use here; no other changes made.</p>
+                        <h4 class="credits-subhead" data-i18n="grammar.creditsMusicSubhead">Background music (Japanese lofi)</h4>
+                        <ul id="gc-music-credits-list"></ul>
+                        <p class="photo-credits-note" data-i18n-html="grammar.creditsMusicNote">All 16 tracks via <a href="https://pixabay.com/music/" target="_blank" rel="noopener">Pixabay Music</a>, used under the Pixabay Content License (free for commercial use, no attribution required — credited here anyway). Three tracks cycle per JLPT tier (N5 through N1); Zen Garden Beats by eggshy plays on the level-select screen while browsing between levels.</p>
                     </details>
                 </div>
             </section>
@@ -184,6 +191,9 @@
                         <span class="gc-stat gc-stat-timer"><span class="v" id="gc-timer">03:00</span><span class="k" data-i18n="game.time">Time</span></span>
                         <span class="gc-stat"><span class="v" id="gc-cleared-count">0/10</span><span class="k" data-i18n="grammar.cleared">Cleared</span></span>
                         <span class="gc-stat"><span class="v" id="gc-mistake-count">0</span><span class="k" data-i18n="grammar.mistakes">Mistakes</span></span>
+                        <button class="sound-toggle on" id="gc-board-sound-toggle" type="button" aria-pressed="true" title="Turn sound off">
+                            <span id="gc-board-sound-icon" aria-hidden="true">&#128266;</span>
+                        </button>
                     </div>
                 </div>
                 <div class="gc-match-body">
@@ -207,7 +217,7 @@
         <div id="gc-start-modal" class="modal-overlay hidden">
             <div class="modal-card">
                 <h3 id="gc-start-modal-title">Foundation · Level 1</h3>
-                <p id="gc-start-modal-desc" data-i18n="grammar.startModalDesc">Ten sentences, twenty grammar tiles each. Tap the tile that keeps the sentence's meaning unchanged. The timer starts when you hit Start.</p>
+                <p id="gc-start-modal-desc" data-i18n="grammar.startModalDesc">Ten sentences, ten grammar tiles each. Tap the tile that keeps the sentence's meaning unchanged. The timer starts when you hit Start.</p>
                 <div class="result-actions">
                     <button id="gc-start-modal-btn" class="auth-btn" type="button" data-i18n="game.startMatch">Start Match</button>
                     <button id="gc-start-modal-back-btn" class="auth-btn auth-btn-outline" type="button" data-i18n="game.backToLevels">Back to Levels</button>
