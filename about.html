@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>About Me - Khan Japanese</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="About Sarantsatsral Ganzorig: a system engineering student from Mongolia living in Japan, and the developer behind Khan Japanese's free Japanese-learning tools.">
+    <link rel="canonical" href="https://okow0714.github.io/Web-Portfolio/about.html">
+    <meta property="og:type" content="profile">
+    <meta property="og:site_name" content="Khan Japanese">
+    <meta property="og:title" content="About Me - Khan Japanese">
+    <meta property="og:description" content="About Sarantsatsral Ganzorig: a system engineering student from Mongolia living in Japan, and the developer behind Khan Japanese's free Japanese-learning tools.">
+    <meta property="og:url" content="https://okow0714.github.io/Web-Portfolio/about.html">
+    <meta property="og:image" content="https://okow0714.github.io/Web-Portfolio/images/about/hero.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About Me - Khan Japanese">
+    <meta name="twitter:description" content="About Sarantsatsral Ganzorig: a system engineering student from Mongolia living in Japan, and the developer behind Khan Japanese's free Japanese-learning tools.">
+    <meta name="twitter:image" content="https://okow0714.github.io/Web-Portfolio/images/about/hero.jpg">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4a2c3a">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="about.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700;900&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Sarantsatsral Ganzorig",
+        "url": "https://okow0714.github.io/Web-Portfolio/about.html",
+        "image": "https://okow0714.github.io/Web-Portfolio/images/about/hero.jpg",
+        "jobTitle": "System Engineering Student & Developer",
+        "email": "mailto:ganzorig2003@gmail.com",
+        "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "Sundai IT & Business College"
+        },
+        "knowsLanguage": ["en", "ja", "mn"],
+        "sameAs": [
+            "https://www.linkedin.com/in/%D1%81%D0%B0%D1%80%D0%B0%D0%BD%D1%86%D0%B0%D1%86%D1%80%D0%B0%D0%BB-%D0%B3%D0%B0%D0%BD%D0%B7%D0%BE%D1%80%D0%B8%D0%B3-77041237a/",
+            "https://www.facebook.com/profile.php?id=100004245198090"
+        ]
+    }
+    </script>
+</head>
+
+<body>
+    <div class="about-page">
+        <!-- Auth Modal -->
+        <div id="auth-modal" class="modal-overlay hidden">
+            <div class="modal-card">
+                <button id="auth-modal-close" class="modal-close" type="button" aria-label="Close">&times;</button>
+                <h3 id="auth-modal-title">Log In</h3>
+                <form id="auth-form">
+                    <label for="auth-email">Email</label>
+                    <input type="email" id="auth-email" required autocomplete="email">
+                    <label for="auth-password">Password</label>
+                    <input type="password" id="auth-password" required autocomplete="current-password" minlength="6">
+                    <button type="button" id="auth-forgot-btn" class="auth-forgot-link">Forgot password?</button>
+                    <div id="auth-terms-row" class="auth-terms-row hidden">
+                        <label class="auth-checkbox-label">
+                            <input type="checkbox" id="auth-terms-checkbox">
+                            I agree to the <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
+                        </label>
+                    </div>
+                    <p id="auth-error" class="auth-error hidden"></p>
+                    <button type="submit" id="auth-submit-btn" class="auth-btn">Log In</button>
+                </form>
+                <button id="auth-mode-toggle" class="auth-mode-toggle" type="button">Need an account? Sign up</button>
+            </div>
+        </div>
+
+        <!-- Account Modal -->
+        <div id="account-modal" class="modal-overlay hidden">
+            <div class="modal-card">
+                <button id="account-modal-close" class="modal-close" type="button" aria-label="Close">&times;</button>
+                <h3>Your Account</h3>
+                <p id="account-modal-email" class="account-email"></p>
+                <div class="account-danger-zone">
+                    <h4>Danger Zone</h4>
+                    <p>Deleting your account permanently removes your profile, comments, bookmarks, messages, and study progress. This can't be undone.</p>
+                    <button id="account-delete-start-btn" class="auth-btn account-delete-btn" type="button">Delete My Account</button>
+                    <div id="account-delete-confirm" class="account-delete-confirm hidden">
+                        <label for="account-delete-input">Type DELETE to confirm:</label>
+                        <input type="text" id="account-delete-input" autocomplete="off">
+                        <button id="account-delete-confirm-btn" class="auth-btn account-delete-btn" type="button" disabled>Yes, permanently delete my account</button>
+                    </div>
+                    <p id="account-delete-status" class="account-delete-status hidden"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Me / portfolio content: "Field Dossier" theme, scoped via .about-main
+             (see about.css). Sticky left index rail + a single scrolling ledger column,
+             replacing the old blueprint-grid split-image sections. -->
+        <main class="about-main">
+            <div class="about-shell">
+                <aside class="about-rail">
+                    <div class="about-rail-id">
+                        <div class="about-rail-seal" aria-hidden="true">境</div>
+                        <div>
+                            <p class="about-rail-name">Sarantsatsral<br>Ganzorig</p>
+                            <p class="about-rail-role">System Engineering Student</p>
+                        </div>
+                    </div>
+                    <ul class="about-rail-index">
+                        <li><a href="#about" class="current"><span class="num">01</span> Introduction</a></li>
+                        <li><a href="#hobbies"><span class="num">02</span> Hobbies</a></li>
+                        <li><a href="#skills"><span class="num">03</span> Skills</a></li>
+                        <li><a href="#portfolio"><span class="num">04</span> Projects &amp; Learning</a></li>
+                        <li><a href="#qualifications"><span class="num">05</span> Qualifications</a></li>
+                        <li><a href="#academic"><span class="num">06</span> Academic History</a></li>
+                        <li><a href="#writing"><span class="num">07</span> Writing</a></li>
+                        <li><a href="#resume"><span class="num">08</span> Resume</a></li>
+                        <li><a href="#contact"><span class="num">09</span> Contact</a></li>
+                    </ul>
+                    <div class="about-rail-foot">
+                        <p class="about-back-link"><a href="index.html">&larr; Khan Japanese</a> — one of my projects</p>
+                        <div class="about-account" id="account-menu">
+                            <button class="about-account-trigger" id="account-menu-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+                                <span id="account-menu-avatar">
+                                    <svg viewBox="0 0 24 24"><path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9Zm0 2c-4 0-8 2-8 5v2h16v-2c0-3-4-5-8-5Z"/></svg>
+                                </span>
+                                Account
+                            </button>
+                            <div class="about-account-panel" id="account-menu-panel">
+                                <div id="auth-anon">
+                                    <p class="about-account-note">Log in to comment or send a message.</p>
+                                    <button id="auth-login-btn" class="auth-btn" type="button" style="width:100%;text-align:center;">Log In</button>
+                                </div>
+                                <div id="auth-authed" class="hidden">
+                                    <button id="auth-user-email" class="auth-user-email" type="button"></button>
+                                    <button id="auth-logout-btn" type="button">Log Out</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <div class="about-content">
+                    <!-- 01 Introduction -->
+                    <section id="about" class="about-hero">
+                        <div>
+                            <p class="about-hero-eyebrow">Portfolio &amp; About</p>
+                            <h1>Building tools across<br>a <em>language, and a country.</em></h1>
+                            <p class="lede">My name is Ganzorig. I've been living in Japan for 2.5 years, embracing new challenges and continuously developing my skills in technology and language. I'm passionate about creating innovative solutions and building meaningful connections across cultures.</p>
+                            <div class="about-hero-stats">
+                                <div class="about-hero-stat"><b>2.5+</b><span>Years in Japan</span></div>
+                                <div class="about-hero-stat"><b>3+</b><span>Programming Languages</span></div>
+                                <div class="about-hero-stat"><b>N2</b><span>Japanese Level</span></div>
+                            </div>
+                            <dl class="about-notes">
+                                <div class="about-note">
+                                    <dt>Background</dt>
+                                    <dd>Originally from Mongolia, I moved to Japan to pursue better educational opportunities and immerse myself in a technologically advanced environment. My journey has been focused on bridging cultural gaps through technology.</dd>
+                                </div>
+                                <div class="about-note">
+                                    <dt>Goals</dt>
+                                    <dd>My goal is to become a proficient system engineer while continuing to develop my language skills, and to work on projects that combine my technical abilities with my cross-cultural communication skills.</dd>
+                                </div>
+                            </dl>
+                        </div>
+                        <div class="about-hero-portrait">
+                            <img src="images/about/hero.jpg" alt="Sarantsatsral Ganzorig">
+                        </div>
+                    </section>
+
+                    <!-- 02 Hobbies -->
+                    <section id="hobbies" class="about-entry">
+                        <div class="about-entry-head"><span class="about-entry-num">02</span><h2>Hobbies</h2></div>
+                        <div class="about-hobbies-layout">
+                            <div class="hobby-grid">
+                                <div class="hobby-card">
+                                    <span class="icon" aria-hidden="true">🎮</span>
+                                    <h3>Gaming</h3>
+                                    <p>Exploring virtual worlds and strategic thinking through RTS and MOBA genres.</p>
+                                </div>
+                                <div class="hobby-card">
+                                    <span class="icon" aria-hidden="true">💻</span>
+                                    <h3>Coding</h3>
+                                    <p>Building small projects and learning new technologies in my free time.</p>
+                                </div>
+                                <div class="hobby-card">
+                                    <span class="icon" aria-hidden="true">📚</span>
+                                    <h3>Learning Languages</h3>
+                                    <p>Currently studying Advanced level Japanese while maintaining English proficiency.</p>
+                                </div>
+                                <div class="hobby-card">
+                                    <span class="icon" aria-hidden="true">🎵</span>
+                                    <h3>Music</h3>
+                                    <p>Listening to various genres and discovering new artists from different cultures and eras.</p>
+                                </div>
+                            </div>
+                            <div class="about-accent-photo">
+                                <img src="images/about/hobbies.jpg" alt="Illuminated by a blue neon lightning display" loading="lazy">
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 03 Skills -->
+                    <section id="skills" class="about-entry">
+                        <div class="about-entry-head"><span class="about-entry-num">03</span><h2>My Skills</h2></div>
+                        <div class="skill-groups">
+                            <div class="skill-group">
+                                <h3>Programming Languages</h3>
+                                <div class="skill-row"><span class="name">Java</span><div class="skill-dots"><span class="filled"></span><span class="filled"></span><span class="filled"></span><span></span><span></span></div><span class="tag">Basic</span></div>
+                                <div class="skill-row"><span class="name">HTML / CSS</span><div class="skill-dots"><span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span><span></span></div><span class="tag">Good</span></div>
+                                <div class="skill-row"><span class="name">JavaScript</span><div class="skill-dots"><span class="filled"></span><span class="filled"></span><span></span><span></span><span></span></div><span class="tag">Learning</span></div>
+                            </div>
+                            <div class="skill-group">
+                                <h3>Tools &amp; Software</h3>
+                                <div class="skill-row"><span class="name">Microsoft Excel</span><div class="skill-dots"><span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span><span></span></div><span class="tag">MOS Certified</span></div>
+                                <div class="skill-row"><span class="name">Git / GitHub</span><div class="skill-dots"><span class="filled"></span><span class="filled"></span><span></span><span></span><span></span></div><span class="tag">Learning</span></div>
+                                <div class="skill-row"><span class="name">VS Code</span><div class="skill-dots"><span class="filled"></span><span class="filled"></span><span class="filled"></span><span></span><span></span></div><span class="tag">Good</span></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 04 Projects & Learning -->
+                    <section id="portfolio" class="about-entry">
+                        <div class="about-entry-head"><span class="about-entry-num">04</span><h2>Projects &amp; Learning</h2></div>
+                        <p class="about-entry-lede">As a student, I focus on learning through hands-on projects and coursework. Here are some areas I'm actively developing skills in:</p>
+                        <div class="project-list">
+                            <div class="project-item" data-project-id="portfolio-website">
+                                <div class="project-item-header">
+                                    <h4>📝 Personal Portfolio Website</h4>
+                                    <button type="button" class="bookmark-btn" data-project-id="portfolio-website" aria-label="Save this project">🔖</button>
+                                </div>
+                                <p>This website you're viewing - built from scratch by integrating VSCode, Github, and Claude.ai environment within 24 hours</p>
+                                <div class="project-tech">HTML • CSS • JavaScript • Git</div>
+                                <div class="comments-block" data-project-id="portfolio-website">
+                                    <button type="button" class="comments-toggle">💬 Comments <span class="comments-count">(0)</span></button>
+                                    <div class="comments-panel">
+                                        <div class="comments-list"></div>
+                                        <form class="comment-form hidden">
+                                            <textarea rows="2" placeholder="Add a comment..." required></textarea>
+                                            <button type="submit">Post</button>
+                                        </form>
+                                        <p class="comment-login-prompt">Log in to leave a comment.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-item" data-project-id="java-coursework">
+                                <div class="project-item-header">
+                                    <h4>☕ Java Programming Coursework</h4>
+                                    <button type="button" class="bookmark-btn" data-project-id="java-coursework" aria-label="Save this project">🔖</button>
+                                </div>
+                                <p>Various programming exercises and projects completed during my System Engineering studies</p>
+                                <div class="project-tech">Java • Object-Oriented Programming</div>
+                                <div class="comments-block" data-project-id="java-coursework">
+                                    <button type="button" class="comments-toggle">💬 Comments <span class="comments-count">(0)</span></button>
+                                    <div class="comments-panel">
+                                        <div class="comments-list"></div>
+                                        <form class="comment-form hidden">
+                                            <textarea rows="2" placeholder="Add a comment..." required></textarea>
+                                            <button type="submit">Post</button>
+                                        </form>
+                                        <p class="comment-login-prompt">Log in to leave a comment.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-item" data-project-id="excel-analysis">
+                                <div class="project-item-header">
+                                    <h4>📊 Data Analysis with Excel</h4>
+                                    <button type="button" class="bookmark-btn" data-project-id="excel-analysis" aria-label="Save this project">🔖</button>
+                                </div>
+                                <p>Academic projects involving data organization, analysis, and visualization using Excel</p>
+                                <div class="project-tech">Microsoft Excel • Data Analysis • MOS Certified</div>
+                                <div class="comments-block" data-project-id="excel-analysis">
+                                    <button type="button" class="comments-toggle">💬 Comments <span class="comments-count">(0)</span></button>
+                                    <div class="comments-panel">
+                                        <div class="comments-list"></div>
+                                        <form class="comment-form hidden">
+                                            <textarea rows="2" placeholder="Add a comment..." required></textarea>
+                                            <button type="submit">Post</button>
+                                        </form>
+                                        <p class="comment-login-prompt">Log in to leave a comment.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 05 Qualifications -->
+                    <section id="qualifications" class="about-entry">
+                        <div class="about-entry-head"><span class="about-entry-num">05</span><h2>Qualifications</h2></div>
+                        <div class="stamp-grid">
+                            <div class="stamp"><div class="title">TOEIC</div><div class="score">915</div><div class="meta">Listening &amp; Reading<br>Achieved 2025</div></div>
+                            <div class="stamp"><div class="title">JLPT</div><div class="score">N2</div><div class="meta">Japanese Language<br>Proficiency Test</div></div>
+                            <div class="stamp"><div class="title">Java</div><div class="score">Lv.3</div><div class="meta">Programming Proficiency<br>Score: 74</div></div>
+                            <div class="stamp"><div class="title">MOS Excel</div><div class="score">✓</div><div class="meta">Microsoft Office Specialist<br>Excel Basic Level</div></div>
+                        </div>
+                    </section>
+
+                    <!-- 06 Academic History -->
+                    <section id="academic" class="about-entry">
+                        <div class="about-entry-head"><span class="about-entry-num">06</span><h2>Academic History</h2></div>
+                        <div class="about-academic-layout">
+                            <div>
+                                <div class="ledger-item">
+                                    <div class="when">2024 — Present</div>
+                                    <div>
+                                        <h4>Sundai IT &amp; Business College</h4>
+                                        <p>Primary education in Information Technology. Major: System Engineering.</p>
+                                        <span class="score">Average Score: AA · 100% Attendance</span>
+                                    </div>
+                                </div>
+                                <div class="ledger-item">
+                                    <div class="when">2022 — 2024</div>
+                                    <div>
+                                        <h4>Daiki Japanese Language School</h4>
+                                        <p>Primary language education. Japanese proficiency level: from N5 to N3.</p>
+                                        <span class="score">JLPT N3 Passed</span>
+                                    </div>
+                                </div>
+                                <div class="ledger-item">
+                                    <div class="when">2021 — 2022</div>
+                                    <div>
+                                        <h4>Mongolian University of Education</h4>
+                                        <p>Bachelor's Degree in Computer Science, Major: Information Technology (paused due to studying overseas).</p>
+                                        <span class="score">GPA: 4.1/4.3 (First Semester)</span>
+                                    </div>
+                                </div>
+                                <div class="ledger-item">
+                                    <div class="when">2015 — 2018</div>
+                                    <div>
+                                        <h4>17th School of Mongolia</h4>
+                                        <p>High School Diploma. Focus: Secondary education.</p>
+                                        <span class="score">Average Score: 92.5%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="about-accent-photo">
+                                <img src="academic-history.jpg" alt="Graduation ceremony, holding my diploma from Sundai IT & Business College" loading="lazy">
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 07 Writing & Creativity -->
+                    <section id="writing" class="about-entry">
+                        <div class="about-entry-head"><span class="about-entry-num">07</span><h2>Writing &amp; Creativity</h2></div>
+                        <div class="writing-grid">
+                            <div class="writing-card">
+                                <span class="icon" aria-hidden="true">📝</span>
+                                <h3>Academic Essays</h3>
+                                <p>Experience writing structured academic essays and reports for coursework, demonstrating analytical thinking and clear communication.</p>
+                            </div>
+                            <div class="writing-card">
+                                <span class="icon" aria-hidden="true">✨</span>
+                                <h3>Creative Writing</h3>
+                                <p>Enjoy crafting short fantasy stories as a hobby, exploring imagination and narrative structure in creative writing.</p>
+                            </div>
+                            <div class="writing-card">
+                                <span class="icon" aria-hidden="true">🌐</span>
+                                <h3>Cross-Cultural Communication</h3>
+                                <p>Bilingual writing ability in English and Japanese.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 08 Resume -->
+                    <section id="resume" class="about-entry">
+                        <div class="about-entry-head"><span class="about-entry-num">08</span><h2>Resume</h2></div>
+                        <div class="about-resume-layout">
+                            <div>
+                                <p class="about-entry-lede" style="margin-top:0;">Download my complete resume (履歴書) for detailed information about my academic background, skills, and qualifications. Available in both Japanese and English formats.</p>
+                                <div class="resume-stats">
+                                    <div class="about-hero-stat"><b>100%</b><span>Attendance Rate</span></div>
+                                    <div class="about-hero-stat"><b>4+</b><span>Certifications</span></div>
+                                    <div class="about-hero-stat"><b>2.5+</b><span>Years in Japan</span></div>
+                                </div>
+                            </div>
+                            <div class="resume-cards">
+                                <div class="download-card">
+                                    <span class="download-icon" aria-hidden="true">📄</span>
+                                    <div>
+                                        <h3>履歴書 (Japanese)</h3>
+                                        <p>Standard Japanese format resume</p>
+                                        <a href="./rirekisho.pdf" class="download-btn" download>
+                                            <svg viewBox="0 0 24 24"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/></svg>
+                                            Download PDF
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="download-card">
+                                    <span class="download-icon" aria-hidden="true">📄</span>
+                                    <div>
+                                        <h3>Resume (English)</h3>
+                                        <p>Coming soon</p>
+                                        <span class="download-btn download-btn-disabled" aria-disabled="true">
+                                            <svg viewBox="0 0 24 24"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/></svg>
+                                            Not available yet
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 09 Contact -->
+                    <section id="contact" class="about-entry">
+                        <div class="about-entry-head"><span class="about-entry-num">09</span><h2>Get in Touch</h2></div>
+                        <div class="about-contact-row">
+                            <a class="about-contact-chip" href="mailto:ganzorig2003@gmail.com">📧 ganzorig2003@gmail.com</a>
+                            <a class="about-contact-chip" href="https://www.linkedin.com/in/%D1%81%D0%B0%D1%80%D0%B0%D0%BD%D1%86%D0%B0%D1%86%D1%80%D0%B0%D0%BB-%D0%B3%D0%B0%D0%BD%D0%B7%D0%BE%D1%80%D0%B8%D0%B3-77041237a/">💼 LinkedIn</a>
+                            <a class="about-contact-chip" href="https://line.me/ti/p/AR9Ki3uC0m">📱 LINE · @Ganzorig ganzo</a>
+                            <a class="about-contact-chip" href="https://www.facebook.com/profile.php?id=100004245198090">📘 Facebook</a>
+                        </div>
+                        <div class="about-contact-form-card">
+                            <h3>Send a Message</h3>
+                            <p>Sent from your account, so I know who to reply to.</p>
+                            <form id="contact-form" class="hidden">
+                                <textarea id="contact-message" rows="4" placeholder="Your message..." required></textarea>
+                                <button type="submit" class="auth-btn">Send Message</button>
+                                <p id="contact-form-status" class="hidden"></p>
+                            </form>
+                            <p id="contact-login-prompt">Log in to send a message directly from your account.</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="about-footer">
+        <p>&copy; 2026 Sarantsatsral Ganzorig</p>
+        <div class="about-footer-links">
+            <a href="index.html">Khan Japanese (my project)</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script src="supabase-config.js"></script>
+    <script src="auth-shared.js"></script>
+    <script src="supabase-app.js"></script>
+    <script src="about.js"></script>
+    <script src="pwa-register.js"></script>
+</body>
+
+</html>
