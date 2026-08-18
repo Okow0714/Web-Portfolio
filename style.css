@@ -248,6 +248,13 @@ body {
     transition: box-shadow 0.2s var(--ease-out);
 }
 
+.brand-seal img {
+    width: 62%;
+    height: 62%;
+    object-fit: contain;
+    display: block;
+}
+
 .site-brand:hover .brand-seal {
     box-shadow: 0 0 0 3px var(--header-accent-tint);
 }
