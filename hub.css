@@ -1,0 +1,97 @@
+/* Entrance hall / landing hub — styles specific to index.html.
+   The site header/nav/login-bar stays in the shared light burgundy theme (style.css tokens,
+   untouched here). Only the hub's own content, wrapped in <main class="hub-main">, gets this
+   theme: deep wine ground with a radial highlight, gold accents -- the same wine/gold family
+   as the shared masthead, since this page IS effectively the front door of the site rather
+   than a themed tool page that needs to read as visually distinct from the masthead. */
+
+/* Full-bleed pattern (see CLAUDE.md): same token block on body:has() and the wrapper class,
+   since body is an ancestor and can't read a descendant's custom properties. Without this the
+   shared light :root --bg-page shows as margins outside .container's 1200px cap on wide
+   viewports. */
+body:has(.hub-main) {
+    --wine: #4a2c3a;
+    --wine-deep: #2f1c26;
+    background: var(--wine-deep);
+}
+
+.hub-main {
+    --wine: #4a2c3a;
+    --wine-deep: #2f1c26;
+    --wine-elevated: #5c3a49;
+    --gold: #e8bd6d;
+    --gold-dark: #c99a45;
+    --paper: #f4e9d8;
+    --paper-soft: rgba(244, 233, 216, 0.62);
+    --paper-faint: rgba(244, 233, 216, 0.32);
+    --rule: rgba(232, 189, 109, 0.22);
+
+    display: block;
+    background: radial-gradient(120% 60% at 50% -10%, var(--wine-elevated), var(--wine) 45%, var(--wine-deep) 100%);
+    color: var(--paper);
+}
+
+.hub-main a { color: inherit; }
+
+.hub-wrap { max-width: 1040px; margin: 0 auto; padding: 56px 28px 100px; display: flex; flex-direction: column; gap: 60px; }
+
+.hub-hero { max-width: 680px; display: flex; flex-direction: column; gap: 18px; }
+.hub-hero-eyebrow { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin: 0; }
+.hub-hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.08; margin: 0; text-wrap: balance; }
+.hub-hero p { font-size: 1.08rem; line-height: 1.65; color: var(--paper-soft); margin: 0; max-width: 58ch; }
+
+/* --- rooms: a real screenshot "peephole" beside elaborated copy, alternating sides so the eye
+   doesn't fall into a rigid left-image/right-text rhythm for five rows straight --- */
+.hub-rooms { display: flex; flex-direction: column; gap: 4px; }
+.hub-room {
+    display: grid; grid-template-columns: 300px 1fr; gap: 40px; align-items: center;
+    padding: 36px 0; border-top: 1px solid var(--rule);
+    text-decoration: none; color: inherit;
+}
+.hub-room:last-child { border-bottom: 1px solid var(--rule); }
+.hub-room.flip { grid-template-columns: 1fr 300px; }
+.hub-room.flip .hub-room-clip { order: 2; }
+.hub-room-clip {
+    position: relative; border-radius: 6px; overflow: hidden; aspect-ratio: 4 / 3;
+    border: 1px solid var(--room-accent); box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.4s var(--ease-out);
+}
+.hub-room:hover .hub-room-clip { transform: scale(1.02); }
+.hub-room-clip img { width: 100%; height: 100%; object-fit: contain; display: block; background: var(--room-bg); }
+.hub-room-body { display: flex; flex-direction: column; gap: 12px; }
+.hub-room-glyph {
+    width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-jp, 'Noto Serif JP', 'Hiragino Mincho ProN', serif); font-size: 1.2rem; font-weight: 700;
+    background: rgba(244, 233, 216, 0.08); color: var(--room-accent);
+}
+.hub-room-name { font-family: var(--font-display); font-size: 1.7rem; font-weight: 700; margin: 0; }
+.hub-room-desc { font-size: 0.98rem; line-height: 1.65; color: var(--paper-soft); margin: 0; max-width: 46ch; }
+.hub-room-stat { font-size: 0.76rem; font-weight: 700; letter-spacing: 0.04em; color: var(--room-accent); font-variant-numeric: tabular-nums; }
+.hub-room-cta { font-size: 0.85rem; font-weight: 600; color: var(--gold); display: inline-flex; align-items: center; gap: 6px; margin-top: 4px; }
+.hub-room-cta svg { width: 14px; height: 14px; transition: transform 0.3s var(--ease-out); }
+.hub-room:hover .hub-room-cta svg { transform: translateX(3px); }
+
+/* --- sources & contact --- */
+.hub-foot { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding-top: 44px; border-top: 1px solid var(--rule); }
+.hub-foot h2 { font-family: var(--font-display); font-size: 1.5rem; margin: 0 0 6px; }
+.hub-dev-card {
+    display: flex; align-items: center; gap: 16px; background: rgba(244, 233, 216, 0.05);
+    border: 1px solid var(--rule); border-radius: 6px; padding: 20px;
+    text-decoration: none; color: inherit; transition: border-color 0.3s var(--ease-out), background 0.3s var(--ease-out);
+}
+.hub-dev-card:hover { border-color: var(--gold); background: rgba(244, 233, 216, 0.08); }
+.hub-dev-avatar { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(150deg, var(--gold), var(--gold-dark)); flex: 0 0 auto; }
+.hub-dev-card-name { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; }
+.hub-dev-card-role { font-size: 0.85rem; color: var(--paper-soft); margin-top: 2px; }
+.hub-dev-card-link { font-size: 0.78rem; color: var(--gold); margin-top: 6px; font-weight: 600; }
+.hub-sources-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+.hub-sources-list li { font-size: 0.86rem; color: var(--paper-soft); display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px dashed var(--rule); padding-bottom: 9px; }
+.hub-sources-list b { color: var(--paper); font-weight: 600; }
+.hub-sources-list span { color: var(--paper-faint); font-size: 0.78rem; white-space: nowrap; }
+
+@media (max-width: 760px) {
+    .hub-room, .hub-room.flip { grid-template-columns: 1fr; gap: 18px; }
+    .hub-room.flip .hub-room-clip { order: 0; }
+    .hub-room-clip { aspect-ratio: 16/10; }
+    .hub-foot { grid-template-columns: 1fr; }
+}

@@ -1,17 +1,21 @@
-// Shared language toggle engine for every page except index.html (portfolio stays English-only
-// by design -- see the .lang-toggle-row comment in style.css). Each page defines its own
-// `I18N_STRINGS = { key: { en: "...", mn: "..." } }` object (in a <page>-i18n.js file loaded
-// before this script) and marks translatable elements with data-i18n="key" (swaps textContent),
-// data-i18n-html="key" (swaps innerHTML, for strings containing inline markup like <a> tags),
-// or data-i18n-placeholder="key" (swaps an input's placeholder). Selection persists in
-// localStorage so it carries across page loads and matches the pattern already used elsewhere
-// on this site (e.g. reading progress, sound toggle state).
+// Shared language toggle engine for every page carrying the site masthead. Each page defines
+// its own `I18N_STRINGS = { key: { en: "...", mn: "..." } }` object (in a <page>-i18n.js file
+// loaded before this script) and marks translatable elements with data-i18n="key" (swaps
+// textContent), data-i18n-html="key" (swaps innerHTML, for strings containing inline markup
+// like <a> tags), or data-i18n-placeholder="key" (swaps an input's placeholder). Selection
+// persists in localStorage so it carries across page loads and matches the pattern already
+// used elsewhere on this site (e.g. reading progress, sound toggle state).
 (function () {
     const STORAGE_KEY = 'site-lang';
 
+    // First-time visitors (nothing in localStorage yet) get English everywhere except where a
+    // page opts into a different default via <html data-default-lang="mn">, e.g. index.html's
+    // Mongolian-first entrance hall. Once a visitor picks a language explicitly, that choice
+    // is sitewide and overrides any page's default.
     function currentLang() {
         const stored = localStorage.getItem(STORAGE_KEY);
-        return stored === 'mn' ? 'mn' : 'en';
+        if (stored === 'mn' || stored === 'en') return stored;
+        return document.documentElement.dataset.defaultLang === 'mn' ? 'mn' : 'en';
     }
 
     function applyLang(lang) {
