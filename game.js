@@ -96,7 +96,8 @@ const PER_ROW = 5; // 20 tiles / 5 = 4 clean honeycomb rows, no partial last row
 const STREAK_TIER = 3;
 const SUIT_COLORS = ['#c0435a', '#3d7a5c', '#5b57a6', '#d97a3f']; // hanafuda-suit accents, cycled per pair
 
-const MATCH_DURATION = 300;   // 5-minute clock, in seconds
+const SECONDS_PER_PAIR = 30;  // match clock scales with a level's actual pair count, so levels
+                               // don't all have to hold exactly 10 pairs (see totalPairs below)
 const TIME_BONUS_PER_PAIR = 20; // seconds added per pair cleared (lightning chains add this once per pair in the chain)
 const LOW_TIME_THRESHOLD = 30;  // seconds remaining at which the timer gets a warning treatment
 const MISTAKES_PER_PENALTY = 2; // consecutive-since-last-penalty mismatches before a cleared pair returns
@@ -111,7 +112,8 @@ let startTime = null;
 let elapsedSeconds = 0;   // real seconds played -- still tracked for best-time comparisons,
                           // independent of the on-screen countdown display below
 let bonusSeconds = 0;     // accumulated +20s-per-pair bonuses, extends the 5-minute clock
-let timeRemaining = MATCH_DURATION; // what's actually shown on #board-timer
+let matchDuration = 0;   // this level's clock length (SECONDS_PER_PAIR * totalPairs), set in startLevel()
+let timeRemaining = 0;   // what's actually shown on #board-timer
 let mismatchStreak = 0;  // mismatches since the last penalty (or level start); see applyPenalty()
 let lastResult = null;    // result earned as a guest, pending save once they log in
 let progressCache = {};   // level number -> game_progress row
@@ -738,7 +740,7 @@ function startTimer() {
     startTime = Date.now();
     timerInterval = setInterval(() => {
         elapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
-        timeRemaining = Math.max(0, MATCH_DURATION + bonusSeconds - elapsedSeconds);
+        timeRemaining = Math.max(0, matchDuration + bonusSeconds - elapsedSeconds);
         renderTimer();
         if (timeRemaining <= 0) timeUp();
     }, 250);
@@ -754,7 +756,7 @@ function stopTimer() {
 // of N pairs is worth N x TIME_BONUS_PER_PAIR seconds of real breathing room.
 function addTimeBonus(pairCount, atX, atY) {
     bonusSeconds += TIME_BONUS_PER_PAIR * pairCount;
-    timeRemaining = Math.max(0, MATCH_DURATION + bonusSeconds - elapsedSeconds);
+    timeRemaining = Math.max(0, matchDuration + bonusSeconds - elapsedSeconds);
     renderTimer();
     if (atX != null) floatText(atX, atY, '+' + (TIME_BONUS_PER_PAIR * pairCount) + window.t('game.secAbbr'), false, false, 'time-text');
 }
@@ -1133,9 +1135,12 @@ function startLevel(level) {
     mismatchStreak = 0;
     elapsedSeconds = 0;
     bonusSeconds = 0;
-    timeRemaining = MATCH_DURATION;
     familiesFound.clear(); // fresh-level reset, not shuffleRemaining() -- that keeps the round
-    totalPairs = 10; // every level is exactly 10 pairs now (see game-words.js header)
+    // Pair count now comes from the data itself rather than an assumed constant, so levels can
+    // hold different amounts of words (e.g. while some are still being expanded from 10 to 25).
+    totalPairs = level.sets[0].length;
+    matchDuration = SECONDS_PER_PAIR * totalPairs;
+    timeRemaining = matchDuration;
     stopTimer();
 
     const bgImage = BOARD_BG_IMAGES[(level.level - 1) % BOARD_BG_IMAGES.length];

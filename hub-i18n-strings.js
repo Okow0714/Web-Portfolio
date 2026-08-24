@@ -13,7 +13,7 @@ Object.assign(window.I18N_STRINGS, {
         en: 'An online exercise that connects each kanji to the Mongolian word with the matching meaning. Connect several kanji that share a phonetic reading at once and multiple words clear together. Each level is timed at 3 minutes, and two wrong guesses bring an already-cleared pair back.',
         mn: 'Ханзыг ижил утгатай монгол үгтэй холбох онлайн дасгал. Ижил дуудлагын язгуур бүхий хэд хэдэн ханзыг зэрэг холбосноор олон үгийг нэгэн зэрэг арилгах боломжтой. Үе болгон 3 минутын хугацаатай, хоёр удаа буруу дарвал өмнө нь арилсан хос буцаж гарч ирнэ.'
     },
-    'hub.game.stat': { en: '50 LEVELS · 5 JLPT TIERS · ~500 WORDS', mn: '50 ШАТ · 5 JLPT ЗЭРЭГЛЭЛ · ОЙРОЛЦООГООР 500 ҮГ' },
+    'hub.game.stat': { en: '50 LEVELS · 5 JLPT TIERS · ~1,250 WORDS', mn: '50 ШАТ · 5 JLPT ЗЭРЭГЛЭЛ · ОЙРОЛЦООГООР 1,250 ҮГ' },
     'hub.game.cta': { en: 'Play →', mn: 'Тоглох →' },
 
     'hub.phonetics.name': { en: 'Phonetics Family', mn: 'Ханз Дуудлагын Бүлгүүд' },

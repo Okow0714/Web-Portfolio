@@ -9,10 +9,10 @@
 Object.assign(window.I18N_STRINGS, {
     'game.titleSub': { en: 'Japanese Word Match', mn: 'Япон үг холбох' },
     'game.subtitle': {
-        en: 'Connect each Japanese word to its English meaning. Every level has 20 tiles (10 pairs), a 5-minute clock (+20s per pair matched), and 10 levels per JLPT tier — N5 is beginner vocabulary, N1 is advanced. Kanji sharing a phonetic component can also be chained together for a lightning-fast multi-clear. Two mistakes brings a cleared pair back as a penalty, so slow down and look before you click.',
-        mn: 'Япон үг бүрийг тохирох утгатай нь холбоно уу. Түвшин болгонд 20 хавтан (10 хос), 5 минутын цаг (хос бүр таарах тутам +20 секунд), JLPT түвшин тус бүрт 10 дэд түвшин байна — N5 нь анхан шатны үг хэллэг, N1 нь гүнзгийрүүлсэн түвшин. Ижил дуудлагын язгуур бүхий ханзыг хооронд нь холбовол богино хугацаанд олон хосыг нэгэн зэрэг арилгаж болно. Хоёр удаа буруу дарвал арилсан хос торгуулийн байдлаар буцаж ирэх тул яарахгүй, сайн ажиглаад дарна уу.'
+        en: 'Connect each Japanese word to its English meaning. Every level has 50 tiles (25 pairs), a 12.5-minute clock (+20s per pair matched), and 10 levels per JLPT tier — N5 is beginner vocabulary, N1 is advanced. Kanji sharing a phonetic component can also be chained together for a lightning-fast multi-clear. Two mistakes brings a cleared pair back as a penalty, so slow down and look before you click.',
+        mn: 'Япон үг бүрийг тохирох утгатай нь холбоно уу. Шат болгонд 50 хавтан (25 хос), 12.5 минутын цаг (хос бүр таарах тутам +20 секунд), JLPT түвшин тус бүрт 10 дэд шат байна — N5 нь анхан шатны үг хэллэг, N1 нь гүнзгийрүүлсэн түвшин. Ижил дуудлагын язгуур бүхий ханзыг хооронд нь холбовол богино хугацаанд олон хосыг нэгэн зэрэг арилгаж болно. Хоёр удаа буруу дарвал арилсан хос торгуулийн байдлаар буцаж ирэх тул яарахгүй, сайн ажиглаад дарна уу.'
     },
-    'game.guestHint': { en: 'Log in to save your best times and completions across visits.', mn: 'Шилдэг цаг болон дуусгасан түвшнүүдээ хадгалахын тулд нэвтэрнэ үү.' },
+    'game.guestHint': { en: 'Log in to save your best times and completions across visits.', mn: 'Шилдэг цаг болон дуусгасан шатуудаа хадгалахын тулд нэвтэрнэ үү.' },
     'game.creditsSummary': { en: 'Photo & music credits — background art and soundtrack', mn: 'Гэрэл зураг ба хөгжмийн эх сурвалж — дэвсгэр зураг, хөгжим' },
     'game.score': { en: 'Score', mn: 'Оноо' },
     'game.streak': { en: 'Streak', mn: 'Дараалал' },
