@@ -4,7 +4,7 @@ Object.assign(window.I18N_STRINGS, {
     'grammar.titleSub': { en: 'Grammar Connect', mn: 'Дүрэм холбох' },
     'grammar.subtitle': {
         en: "A sentence appears with one grammar point underlined. Tap the tile that replaces it without changing what the sentence means — the word transforms in place, and the finished sentence (with its translation) drops into the cleared list at the side. Ten sentences a level, ten options a sentence, twenty levels a track.",
-        mn: 'Өгүүлбэрт нэг дүрмийн цэг доогуур зураастай гарч ирнэ. Өгүүлбэрийн утгыг өөрчлөхгүйгээр орлуулах хавтанг дарна уу — үг тэр дороо солигдож, дуусгасан өгүүлбэр (орчуулгын хамт) хажуугийн жагсаалт руу орно. Түвшин бүрт арван өгүүлбэр, өгүүлбэр бүрт арван сонголт, эрэмбэ бүрт хорин түвшин байна.'
+        mn: 'Өгүүлбэрт нэг дүрмийн цэг доогуур зураастай гарч ирнэ. Өгүүлбэрийн утгыг өөрчлөхгүйгээр орлуулах хавтанг дарна уу — үг тэр дороо солигдож, дуусгасан өгүүлбэр (орчуулгын хамт) хажуугийн жагсаалт руу орно. Шат бүрт арван өгүүлбэр, өгүүлбэр бүрт арван сонголт, эрэмбэ бүрт хорин шат байна.'
     },
     'grammar.creditsSummary': { en: 'Photo & music credits — night skyline photography and soundtrack', mn: 'Гэрэл зураг ба хөгжмийн эх сурвалж — шөнийн тэнгэрийн шугамын гэрэл зураг ба хөгжим' },
     'grammar.creditsNote': { en: 'All sourced from Wikimedia Commons, resized and re-compressed for use here; no other changes made.', mn: 'Бүгд Wikimedia Commons-оос авсан, энд ашиглахын тулд хэмжээг өөрчилж, дахин шахсан; өөр өөрчлөлт хийгээгүй.' },
@@ -12,7 +12,7 @@ Object.assign(window.I18N_STRINGS, {
     'grammar.creditsMusicSubhead': { en: 'Background music (Japanese lofi)', mn: 'Дэвсгэр хөгжим (Япон lofi)' },
     'grammar.creditsMusicNote': {
         en: 'All 16 tracks via <a href="https://pixabay.com/music/" target="_blank" rel="noopener">Pixabay Music</a>, used under the Pixabay Content License (free for commercial use, no attribution required — credited here anyway). Three tracks cycle per JLPT tier (N5 through N1); Zen Garden Beats by eggshy plays on the level-select screen while browsing between levels.',
-        mn: '16 бичлэг бүгд <a href="https://pixabay.com/music/" target="_blank" rel="noopener">Pixabay Music</a>-с авсан бөгөөд Pixabay-н контентийн зөвшөөрлийн дагуу ашигласан (арилжааны зориулалтаар үнэгүй, эх сурвалж заавал дурдах шаардлагагүй — гэсэн хэдий ч энд дурдав). JLPT түвшин бүрт (N5-с N1 хүртэл) гурван бичлэг эргэлддэг; eggshy-н Zen Garden Beats нь түвшин сонгох дэлгэц дээр тоглоно.'
+        mn: '16 бичлэг бүгд <a href="https://pixabay.com/music/" target="_blank" rel="noopener">Pixabay Music</a>-с авсан бөгөөд Pixabay-н контентийн зөвшөөрлийн дагуу ашигласан (арилжааны зориулалтаар үнэгүй, эх сурвалж заавал дурдах шаардлагагүй — гэсэн хэдий ч энд дурдав). JLPT түвшин бүрт (N5-с N1 хүртэл) гурван бичлэг эргэлддэг; eggshy-н Zen Garden Beats нь шат сонгох дэлгэц дээр тоглоно.'
     },
     'grammar.cleared': { en: 'Cleared', mn: 'Дуусгасан' },
     'grammar.mistakes': { en: 'Mistakes', mn: 'Алдаа' },
@@ -24,8 +24,8 @@ Object.assign(window.I18N_STRINGS, {
     'grammar.clearedBeforeTimeOut': { en: 'Cleared {n} / {total} sentences before time ran out.', mn: 'Цаг дуусахаас өмнө {n} / {total} өгүүлбэрийг дуусгасан.' },
     'grammar.foundation': { en: 'Foundation', mn: 'Суурь' },
     'grammar.advanced': { en: 'Advanced', mn: 'Ахисан' },
-    'grammar.levelsCount': { en: '{n} levels', mn: '{n} түвшин' },
-    'grammar.trackLevel': { en: '{track} · Level {n}', mn: '{track} · {n}-р түвшин' },
+    'grammar.levelsCount': { en: '{n} levels', mn: '{n} шат' },
+    'grammar.trackLevel': { en: '{track} · Level {n}', mn: '{track} · {n}-р шат' },
     'grammar.clearedEmptyHint': { en: 'Solved sentences (with their translation) will appear here as you go.', mn: 'Шийдсэн өгүүлбэрүүд (орчуулгын хамт) энд алхам алхмаар гарч ирнэ.' },
     'grammar.comingSoon': { en: 'Coming soon', mn: 'Удахгүй' },
 });
