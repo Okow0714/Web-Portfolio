@@ -1,0 +1,126 @@
+/* Dashboard — styles specific to dashboard.html.
+   The site header/nav/login-bar stays in the shared light burgundy theme (style.css tokens,
+   untouched here). Only the dashboard's own content, wrapped in <main class="dash-main">, gets
+   this theme: cool slate/blue, a data-and-account utility page rather than a themed "room" like
+   the five study tools, so it reads as calm and scannable instead of another game-toolbar page. */
+
+/* Full-bleed pattern (see CLAUDE.md): same token block on body:has() and the wrapper class,
+   since body is an ancestor and can't read a descendant's custom properties. */
+body:has(.dash-main) {
+    --bg-page: #eef1f4;
+    background: var(--bg-page);
+}
+
+.dash-main {
+    --bg-page: #eef1f4;
+    --surface: #ffffff;
+    --surface-edge: #dbe1e8;
+    --ink: #1c2733;
+    --ink-soft: #55636f;
+    --ink-faint: #8996a3;
+    --rule: #dbe1e8;
+    --accent: #2f6fed;
+    --accent-light: #6d97f2;
+    --accent-dark: #1f4fb8;
+    --accent-tint: rgba(47, 111, 237, 0.08);
+    --average: #d99a3d;
+    --average-tint: rgba(217, 154, 61, 0.12);
+
+    display: block;
+    background: var(--bg-page);
+    color: var(--ink);
+    font-family: var(--font-body);
+}
+
+.dash-main a { color: inherit; }
+
+.dash-wrap { max-width: 1080px; margin: 0 auto; padding: 44px 28px 100px; display: flex; flex-direction: column; gap: 36px; }
+
+/* ---- guest state ---- */
+.dash-guest { text-align: center; padding: 100px 20px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.dash-guest h1 { font-family: var(--font-display); font-size: 1.7rem; margin: 0; }
+.dash-guest p { color: var(--ink-soft); max-width: 44ch; margin: 0; }
+
+/* ---- profile header ---- */
+.dash-profile { display: flex; align-items: center; gap: 20px; }
+.dash-avatar {
+    width: 64px; height: 64px; border-radius: 50%; flex: 0 0 auto;
+    background: linear-gradient(150deg, var(--accent-light), var(--accent-dark));
+    color: #fff; display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-size: 1.6rem; font-weight: 700;
+}
+.dash-profile-name-row { display: flex; align-items: center; gap: 10px; }
+.dash-profile-name { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; margin: 0; }
+.dash-name-edit-btn {
+    background: none; border: none; cursor: pointer; color: var(--ink-faint); padding: 4px;
+    display: inline-flex; align-items: center;
+}
+.dash-name-edit-btn:hover { color: var(--accent); }
+.dash-name-edit-btn svg { width: 16px; height: 16px; }
+.dash-profile-email { color: var(--ink-faint); font-size: 0.88rem; margin: 2px 0 0; }
+.dash-name-form { display: flex; gap: 8px; align-items: center; }
+.dash-name-form input {
+    font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--ink);
+    border: none; border-bottom: 2px solid var(--accent); background: transparent; padding: 0 2px;
+    max-width: 280px;
+}
+.dash-name-form input:focus { outline: none; }
+.dash-name-save-btn, .dash-name-cancel-btn {
+    font-family: inherit; font-size: 0.82rem; font-weight: 700; border-radius: 4px; border: none;
+    padding: 6px 12px; cursor: pointer;
+}
+.dash-name-save-btn { background: var(--accent); color: #fff; }
+.dash-name-save-btn:hover { background: var(--accent-dark); }
+.dash-name-cancel-btn { background: none; color: var(--ink-faint); }
+.dash-name-status { font-size: 0.8rem; color: var(--accent-dark); margin-left: 4px; }
+
+/* ---- score hero ---- */
+.dash-score-card {
+    background: var(--surface); border: 1px solid var(--surface-edge); border-radius: 10px;
+    padding: 28px 32px;
+}
+.dash-score-top { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+.dash-score-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-faint); font-weight: 700; }
+.dash-score-value { font-family: var(--font-display); font-size: 2.4rem; font-weight: 700; color: var(--accent-dark); font-variant-numeric: tabular-nums; }
+.dash-score-value span { font-size: 1.1rem; color: var(--ink-faint); font-weight: 600; }
+.dash-score-bars { display: flex; flex-direction: column; gap: 10px; }
+.dash-score-bar-row { display: grid; grid-template-columns: 90px 1fr 70px; align-items: center; gap: 12px; }
+.dash-score-bar-label { font-size: 0.85rem; font-weight: 600; color: var(--ink-soft); }
+.dash-score-bar-track { height: 10px; border-radius: 999px; background: var(--rule); overflow: hidden; }
+.dash-score-bar-fill { height: 100%; border-radius: 999px; transition: width 0.6s var(--ease-out); }
+.dash-score-bar-fill.mine { background: var(--accent); }
+.dash-score-bar-fill.avg { background: var(--average); }
+.dash-score-bar-num { font-size: 0.85rem; font-variant-numeric: tabular-nums; color: var(--ink-faint); text-align: right; }
+.dash-score-note { font-size: 0.78rem; color: var(--ink-faint); margin: 14px 0 0; }
+
+/* ---- tool progress cards ---- */
+.dash-tools { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.dash-tool-card {
+    background: var(--surface); border: 1px solid var(--surface-edge); border-radius: 10px;
+    padding: 22px; display: flex; flex-direction: column; gap: 12px; text-decoration: none; color: inherit;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.dash-tool-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.dash-tool-head { display: flex; align-items: center; gap: 10px; }
+.dash-tool-glyph {
+    width: 34px; height: 34px; border-radius: 6px; display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-jp, serif); font-weight: 700; background: var(--accent-tint); color: var(--accent-dark);
+}
+.dash-tool-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; margin: 0; }
+.dash-tool-fraction { font-size: 0.82rem; color: var(--ink-faint); font-variant-numeric: tabular-nums; }
+.dash-tool-track { height: 8px; border-radius: 999px; background: var(--rule); overflow: hidden; }
+.dash-tool-fill { height: 100%; background: var(--accent); border-radius: 999px; transition: width 0.6s var(--ease-out); }
+.dash-tool-cta { font-size: 0.82rem; font-weight: 600; color: var(--accent-dark); margin-top: auto; }
+
+/* ---- account settings ---- */
+.dash-account-card {
+    background: var(--surface); border: 1px solid var(--surface-edge); border-radius: 10px;
+    padding: 22px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+}
+.dash-account-card h2 { font-family: var(--font-display); font-size: 1.05rem; margin: 0 0 4px; }
+.dash-account-card p { margin: 0; color: var(--ink-soft); font-size: 0.88rem; }
+
+@media (max-width: 760px) {
+    .dash-tools { grid-template-columns: 1fr; }
+    .dash-score-bar-row { grid-template-columns: 70px 1fr 60px; }
+}

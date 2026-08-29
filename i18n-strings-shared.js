@@ -44,6 +44,7 @@ window.I18N_STRINGS = {
     'nav.foundationN5N3': { en: 'Foundation · N5-N3', mn: 'Суурь · N5-N3' },
     'nav.advancedN2N1': { en: 'Advanced · N2-N1', mn: 'Ахисан · N2-N1' },
     'nav.wakanDictionary': { en: 'Wakan Dictionary', mn: 'Вакан толь бичиг' },
+    'dash.titleSub': { en: 'Dashboard', mn: 'Хянах самбар' },
 
     'auth.loginHint': { en: 'Log in to save your progress across visits.', mn: 'Явцаа хадгалахын тулд нэвтэрнэ үү.' },
     'auth.logIn': { en: 'Log In', mn: 'Нэвтрэх' },

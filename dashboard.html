@@ -3,20 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Dokkai Reader - Khan Japanese</title>
+    <title>Dashboard - Khan Japanese</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Voice-driven Japanese reading practice — read passages aloud and watch the highlight follow your speech, across Foundation and Advanced progression tracks.">
-    <link rel="canonical" href="https://okow0714.github.io/Web-Portfolio/reading.html">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Khan Japanese">
-    <meta property="og:title" content="Dokkai Reader - Khan Japanese">
-    <meta property="og:description" content="Voice-driven Japanese reading practice — read passages aloud and watch the highlight follow your speech, across Foundation and Advanced progression tracks.">
-    <meta property="og:url" content="https://okow0714.github.io/Web-Portfolio/reading.html">
-    <meta property="og:image" content="https://okow0714.github.io/Web-Portfolio/images/about/hero.jpg">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Dokkai Reader - Khan Japanese">
-    <meta name="twitter:description" content="Voice-driven Japanese reading practice — read passages aloud and watch the highlight follow your speech, across Foundation and Advanced progression tracks.">
-    <meta name="twitter:image" content="https://okow0714.github.io/Web-Portfolio/images/about/hero.jpg">
+    <meta name="robots" content="noindex">
+    <link rel="canonical" href="https://okow0714.github.io/Web-Portfolio/dashboard.html">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#4a2c3a">
@@ -24,19 +14,11 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="reading.css">
+    <link rel="stylesheet" href="dashboard.css">
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700;900&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Animated Background -->
-    <div class="background-animation">
-        <div class="floating-shape shape-1"></div>
-        <div class="floating-shape shape-2"></div>
-        <div class="floating-shape shape-3"></div>
-        <div class="floating-shape shape-4"></div>
-    </div>
-
     <div class="container">
         <!-- Header: one row - brand (home link), section nav, account menu -->
         <div class="site-header-wrap">
@@ -62,7 +44,7 @@
                         </div>
                     </div>
                     <div class="nav-item">
-                        <a href="reading.html" class="nav-trigger nav-current" data-i18n="nav.dokkaiReader">Dokkai Reader</a>
+                        <a href="reading.html" class="nav-trigger" data-i18n="nav.dokkaiReader">Dokkai Reader</a>
                     </div>
                     <div class="nav-item">
                         <a href="phonetics.html" class="nav-trigger" data-i18n="nav.phoneticsFamily">Phonetics Family</a>
@@ -79,7 +61,7 @@
                         <a href="dictionary.html" class="nav-trigger" data-i18n="nav.wakanDictionary">Wakan Dictionary</a>
                     </div>
                     <div class="nav-item">
-                        <a href="dashboard.html" class="nav-trigger" data-i18n="dash.titleSub">Dashboard</a>
+                        <a href="dashboard.html" class="nav-trigger nav-current" data-i18n="dash.titleSub">Dashboard</a>
                     </div>
                 </nav>
 
@@ -155,70 +137,98 @@
             </div>
         </div>
 
-        <main class="reading-main">
-            <!-- Level select -->
-            <section id="track-select-section" class="reading-section">
-                <h1 class="reading-title" data-i18n="reading.title">Dokkai Reader</h1>
-                <p class="reading-subtitle" data-i18n="reading.subtitle">Read passages aloud and watch the highlight follow your voice. Any reasonable pronunciation is accepted — pause for 3 seconds on a word and its reading and meaning pop up. Finishing a text moves you straight into the next one, and clearing a level unlocks the next.</p>
-                <p class="reading-mic-hint" data-i18n="reading.micHint">Needs microphone access and works best in Chrome or Edge — other browsers don't support live speech recognition.</p>
-                <p id="reading-guest-hint" class="reading-guest-hint hidden" data-i18n="reading.guestHint">Log in to save which texts you've completed across visits.</p>
-                <div class="track-grid" id="track-grid"></div>
-            </section>
+        <!-- Dashboard content: cool slate/blue utility theme, scoped via .dash-main (see
+             dashboard.css). Progress + score-vs-average + account settings, in front of a
+             guest-state prompt when logged out. -->
+        <main class="dash-main">
+            <div class="dash-wrap">
+                <section id="dash-guest" class="dash-guest">
+                    <h1 data-i18n="dash.guestTitle">Log in to see your dashboard</h1>
+                    <p data-i18n="dash.guestBody">Your progress, score, and account settings all live here once you have an account.</p>
+                    <button class="auth-btn" type="button" onclick="document.getElementById('auth-login-btn').click()" data-i18n="auth.logIn">Log In</button>
+                </section>
 
-            <!-- Level list within a track -->
-            <section id="level-select-section" class="reading-section hidden">
-                <button id="level-select-back-btn" class="ghost-btn" type="button"><span aria-hidden="true">&larr;</span> <span data-i18n="reading.tracks">Tracks</span></button>
-                <h2 id="level-select-title" class="reading-title" style="margin-top:16px;"></h2>
-                <div class="level-grid" id="reading-level-grid"></div>
-            </section>
-
-            <!-- Text list for a level -->
-            <section id="text-list-section" class="reading-section hidden">
-                <button id="text-list-back-btn" class="ghost-btn" type="button"><span aria-hidden="true">&larr;</span> <span data-i18n="game.levels">Levels</span></button>
-                <h2 id="text-list-title" class="reading-title" style="margin-top:16px;"></h2>
-                <div class="text-list" id="text-list"></div>
-            </section>
-
-            <!-- Reader -->
-            <section id="reader-section" class="reading-section hidden">
-                <div class="reader-toolbar">
-                    <button id="reader-back-btn" class="ghost-btn" type="button"><span aria-hidden="true">&larr;</span> <span data-i18n="reading.texts">Texts</span></button>
-                    <div class="reader-title" id="reader-title"></div>
-                    <div class="reader-progress" id="reader-progress"></div>
-                </div>
-                <div class="reader-body">
-                    <div class="reader-passage-wrap">
-                        <p id="reader-passage" class="reader-passage"></p>
-                        <div id="hint-popup" class="hint-popup hidden">
-                            <span id="hint-reading" class="hint-reading"></span>
-                            <span id="hint-en" class="hint-en"></span>
+                <div id="dash-content" class="hidden" style="display:flex; flex-direction:column; gap:36px;">
+                    <section class="dash-profile">
+                        <div class="dash-avatar" id="dash-avatar"></div>
+                        <div>
+                            <div class="dash-profile-name-row">
+                                <h1 class="dash-profile-name" id="dash-profile-name"></h1>
+                                <button class="dash-name-edit-btn" id="dash-name-edit-btn" type="button" aria-label="Edit display name">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                                </button>
+                            </div>
+                            <form id="dash-name-form" class="dash-name-form hidden">
+                                <input type="text" id="dash-name-input" maxlength="40" required>
+                                <button type="submit" class="dash-name-save-btn" data-i18n="dash.save">Save</button>
+                                <button type="button" id="dash-name-cancel-btn" class="dash-name-cancel-btn" data-i18n="dash.cancel">Cancel</button>
+                                <span id="dash-name-status" class="dash-name-status hidden"></span>
+                            </form>
+                            <p class="dash-profile-email" id="dash-profile-email"></p>
                         </div>
-                    </div>
-                    <aside id="skipped-panel" class="skipped-panel">
-                        <h3 data-i18n="reading.skippedWords">Skipped Words</h3>
-                        <p id="skipped-empty" class="skipped-empty" data-i18n="reading.skippedEmptyHint">Words the voice matcher jumps past without hearing directly will show up here.</p>
-                        <ul id="skipped-list" class="skipped-list"></ul>
-                    </aside>
-                </div>
-                <div class="reader-controls">
-                    <button id="reader-mic-btn" class="auth-btn" type="button"><span aria-hidden="true">&#127908;</span> <span data-i18n="reading.startReading">Start Reading</span></button>
-                    <button id="reader-skip-btn" class="ghost-btn" type="button"><span data-i18n="reading.skipWord">Skip Word</span> <span aria-hidden="true">&rarr;</span></button>
-                    <p id="reader-status" class="reader-status"></p>
-                </div>
-            </section>
-        </main>
+                    </section>
 
-        <!-- Text Complete Modal -->
-        <div id="complete-modal" class="modal-overlay hidden">
-            <div class="modal-card">
-                <h3 id="complete-title" data-i18n="reading.textComplete">Text Complete!</h3>
-                <p id="complete-desc" data-i18n="reading.textCompleteDesc">Nice reading. Moving on to the next text&hellip;</p>
-                <div class="result-actions">
-                    <button id="complete-next-btn" class="auth-btn" type="button" data-i18n="reading.continueNow">Continue Now</button>
-                    <button id="complete-levels-btn" class="auth-btn auth-btn-outline" type="button" data-i18n="game.backToLevels">Back to Levels</button>
+                    <section class="dash-score-card">
+                        <div class="dash-score-top">
+                            <span class="dash-score-label" data-i18n="dash.yourScore">Your Score</span>
+                            <span class="dash-score-value"><span id="dash-score-total">0</span> <span>/ 3000</span></span>
+                        </div>
+                        <div class="dash-score-bars">
+                            <div class="dash-score-bar-row">
+                                <span class="dash-score-bar-label" data-i18n="dash.you">You</span>
+                                <div class="dash-score-bar-track"><div class="dash-score-bar-fill mine" id="dash-score-mine-fill" style="width:0%"></div></div>
+                                <span class="dash-score-bar-num" id="dash-score-mine-num">0</span>
+                            </div>
+                            <div class="dash-score-bar-row">
+                                <span class="dash-score-bar-label" data-i18n="dash.average">Average</span>
+                                <div class="dash-score-bar-track"><div class="dash-score-bar-fill avg" id="dash-score-avg-fill" style="width:0%"></div></div>
+                                <span class="dash-score-bar-num" id="dash-score-avg-num">0</span>
+                            </div>
+                        </div>
+                        <p class="dash-score-note" id="dash-score-formula-note"></p>
+                        <p class="dash-score-note" id="dash-users-counted"></p>
+                    </section>
+
+                    <section class="dash-tools">
+                        <a class="dash-tool-card" href="game.html">
+                            <div class="dash-tool-head">
+                                <span class="dash-tool-glyph" aria-hidden="true">遊</span>
+                                <h2 class="dash-tool-name" data-i18n="dash.tools.game">Word Match</h2>
+                            </div>
+                            <span class="dash-tool-fraction" id="dash-game-fraction">0 / 50 levels</span>
+                            <div class="dash-tool-track"><div class="dash-tool-fill" id="dash-game-fill" style="width:0%"></div></div>
+                            <span class="dash-tool-cta" data-i18n="dash.continue">Continue →</span>
+                        </a>
+                        <a class="dash-tool-card" href="grammar.html">
+                            <div class="dash-tool-head">
+                                <span class="dash-tool-glyph" aria-hidden="true">文</span>
+                                <h2 class="dash-tool-name" data-i18n="dash.tools.grammar">Grammar Connect</h2>
+                            </div>
+                            <span class="dash-tool-fraction" id="dash-grammar-fraction">0 / 40 levels</span>
+                            <div class="dash-tool-track"><div class="dash-tool-fill" id="dash-grammar-fill" style="width:0%"></div></div>
+                            <span class="dash-tool-cta" data-i18n="dash.continue">Continue →</span>
+                        </a>
+                        <a class="dash-tool-card" href="reading.html">
+                            <div class="dash-tool-head">
+                                <span class="dash-tool-glyph" aria-hidden="true">読</span>
+                                <h2 class="dash-tool-name" data-i18n="dash.tools.reading">Dokkai Reader</h2>
+                            </div>
+                            <span class="dash-tool-fraction" id="dash-reading-fraction">0 / 60 texts</span>
+                            <div class="dash-tool-track"><div class="dash-tool-fill" id="dash-reading-fill" style="width:0%"></div></div>
+                            <span class="dash-tool-cta" data-i18n="dash.continue">Continue →</span>
+                        </a>
+                    </section>
+
+                    <section class="dash-account-card">
+                        <div>
+                            <h2 data-i18n="dash.accountTitle">Account settings</h2>
+                            <p data-i18n="dash.accountBody">Password, sessions, and account deletion are managed from the account menu.</p>
+                        </div>
+                        <button class="auth-btn auth-btn-outline" id="dash-open-account-btn" type="button" data-i18n="dash.openAccountMenu">Open Account Menu</button>
+                    </section>
                 </div>
             </div>
-        </div>
+        </main>
     </div>
 
     <footer class="site-footer">
@@ -280,13 +290,12 @@
     </footer>
 
     <script src="i18n-strings-shared.js"></script>
-    <script src="reading-i18n-strings.js"></script>
+    <script src="dashboard-i18n-strings.js"></script>
     <script src="i18n.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <script src="supabase-config.js"></script>
     <script src="auth-shared.js"></script>
-    <script src="reading-texts.js"></script>
-    <script src="reading.js"></script>
+    <script src="dashboard.js"></script>
     <script src="pwa-register.js"></script>
 </body>
 
