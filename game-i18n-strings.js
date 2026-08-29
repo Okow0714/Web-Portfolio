@@ -9,7 +9,7 @@
 Object.assign(window.I18N_STRINGS, {
     'game.titleSub': { en: 'Japanese Word Match', mn: 'Япон үг холбох' },
     'game.subtitle': {
-        en: 'Connect each Japanese word to its English meaning. Every level has 50 tiles (25 pairs), a 12.5-minute clock (+20s per pair matched), and 10 levels per JLPT tier — N5 is beginner vocabulary, N1 is advanced. Kanji sharing a phonetic component can also be chained together for a lightning-fast multi-clear. Two mistakes brings a cleared pair back as a penalty, so slow down and look before you click.',
+        en: 'Connect each Japanese word to its English meaning. Every level has 50 tiles (25 pairs), a 12.5-minute clock (+20s per pair matched), and 10 levels per JLPT tier — N5 is beginner vocabulary, N1 is advanced. Kanji sharing a phonetic component can also be chained together for a lightning-fast multi-clear. Two mistakes bring a cleared pair back as a penalty, so slow down and look before you click.',
         mn: 'Япон үг бүрийг тохирох утгатай нь холбоно уу. Шат болгонд 50 хавтан (25 хос), 12.5 минутын цаг (хос бүр таарах тутам +20 секунд), JLPT түвшин тус бүрт 10 дэд шат байна — N5 нь анхан шатны үг хэллэг, N1 нь гүнзгийрүүлсэн түвшин. Ижил дуудлагын язгуур бүхий ханзыг хооронд нь холбовол богино хугацаанд олон хосыг нэгэн зэрэг арилгаж болно. Хоёр удаа буруу дарвал арилсан хос торгуулийн байдлаар буцаж ирэх тул яарахгүй, сайн ажиглаад дарна уу.'
     },
     'game.guestHint': { en: 'Log in to save your best times and completions across visits.', mn: 'Шилдэг цаг болон дуусгасан шатуудаа хадгалахын тулд нэвтэрнэ үү.' },
@@ -23,7 +23,7 @@ Object.assign(window.I18N_STRINGS, {
     'game.lastMatch': { en: 'Last Match', mn: 'Сүүлийн тохирол' },
     'game.exampleEmptyHint': { en: 'Connect a pair to see an example sentence here.', mn: 'Жишээ өгүүлбэр харахын тулд нэг хосыг холбоно уу.' },
     'game.exampleNoneHint': { en: 'No example sentence found for this word in the source data.', mn: 'Энэ үгийн жишээ өгүүлбэр эх өгөгдөлд олдсонгүй.' },
-    'game.startModalDesc': { en: 'Connect each Japanese word to its English meaning. 20 pairs, 40 tiles. The timer starts when you hit Start.', mn: 'Япон үг бүрийг тохирох утгатай нь холбоно уу. 20 хос, 40 хавтан. Эхлүүлэх товч дарахад цаг эхэлнэ.' },
+    'game.startModalDesc': { en: 'Connect each Japanese word to its English meaning. 25 pairs, 50 tiles. The timer starts when you hit Start.', mn: 'Япон үг бүрийг тохирох утгатай нь холбоно уу. 25 хос, 50 хавтан. Эхлүүлэх товч дарахад цаг эхэлнэ.' },
     'game.moves': { en: 'Moves', mn: 'Хөдөлгөөн' },
 
     'game.pairsCount': { en: '{n} / {total} pairs', mn: '{n} / {total} хос' },

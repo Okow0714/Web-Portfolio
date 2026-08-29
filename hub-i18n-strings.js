@@ -4,7 +4,7 @@ Object.assign(window.I18N_STRINGS, {
     'hub.eyebrow': { en: 'Curious. Creative. Diligent.', mn: 'Сониуч. Бүтээлч. Шаргуу.' },
     'hub.heroTitle': { en: "Let's Make Friends with Japanese", mn: 'Япон хэлтэй найзалцгаая' },
     'hub.heroBody': {
-        en: 'This site is made up of five distinct sections built to learn Japanese from the fundamentals — not the easy way.',
+        en: 'This site is made up of five distinct sections built for learning Japanese from the fundamentals — not the easy way.',
         mn: 'Уг цахим хуудас нь япон хэлийг амархнаас нь биш үндсээс нь эхэлж суралцахад чиглэсэн таван төрлийн өвөрмөц хэсгүүдээс бүрдэнэ.'
     },
 
