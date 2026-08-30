@@ -5238,7 +5238,7 @@ const WORD_LEVELS = [
                     ],
                     "example": {
                         "jp": "流感で死ぬ人は少ない。",
-                        "en": "Few people die away at the approach of winter.",
+                        "en": "Few people die of the flu.",
                         "furigana": "<ruby>流感<rp>(</rp><rt>りゅうかん</rt><rp>)</rp></ruby>で<ruby>死<rp>(</rp><rt>し</rt><rp>)</rp></ruby>ぬ<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>は<ruby>少<rp>(</rp><rt>すく</rt><rp>)</rp></ruby>ない。",
                         "enMn": "Томуугаар нас барах хүн цөөн."
                     },
@@ -15855,10 +15855,10 @@ const WORD_LEVELS = [
                         "birth"
                     ],
                     "example": {
-                        "jp": "ゴムをすると確かに性感が落ちるので、出来れば生でしたいです。",
-                        "en": "The sensitivity certainly drops if I use a condom, so if possible I'd like to do it bareback.",
-                        "furigana": "ゴムをすると<ruby>確<rp>(</rp><rt>たし</rt><rp>)</rp></ruby>かに<ruby>性感<rp>(</rp><rt>せいかん</rt><rp>)</rp></ruby>が<ruby>落<rp>(</rp><rt>お</rt><rp>)</rp></ruby>ちるので、<ruby>出来<rp>(</rp><rt>でき</rt><rp>)</rp></ruby>れば<ruby>生<rp>(</rp><rt>なま</rt><rp>)</rp></ruby>でしたいです。",
-                        "enMn": "Бэлгэвч хэрэглэвэл мэдрэмж буурдаг тул боломжтой бол бэлгэвчгүй байхыг хүсдэг."
+                        "jp": "ここに生年月日を書いてください。",
+                        "en": "Write down your date of birth here.",
+                        "furigana": "ここに<ruby>生年月日<rp>(</rp><rt>せいねんがっぴ</rt><rp>)</rp></ruby>を<ruby>書<rp>(</rp><rt>か</rt><rp>)</rp></ruby>いてください。",
+                        "enMn": "Энд төрсөн он сар өдрөө бичнэ үү."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -20145,10 +20145,10 @@ const WORD_LEVELS = [
                         "a lot"
                     ],
                     "example": {
-                        "jp": "彼女は大分に行く予定です。",
-                        "en": "She's going to Ooita.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>大分<rp>(</rp><rt>おおいた</rt><rp>)</rp></ruby>に<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>く<ruby>予定<rp>(</rp><rt>よてい</rt><rp>)</rp></ruby>です。",
-                        "enMn": "Тэр Оита руу явахаар төлөвлөж байна."
+                        "jp": "今日は大分暖かいね。",
+                        "en": "It's fairly warm today.",
+                        "furigana": "<ruby>今日<rp>(</rp><rt>きょう</rt><rp>)</rp></ruby>は<ruby>大分<rp>(</rp><rt>だいぶ</rt><rp>)</rp></ruby><ruby>暖<rp>(</rp><rt>あたた</rt><rp>)</rp></ruby>かいね。",
+                        "enMn": "Өнөөдөр нэлээд дулаахан байна шүү."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
