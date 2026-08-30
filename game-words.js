@@ -5501,7 +5501,7 @@ const WORD_LEVELS = [
                         "jp": "足を踏むつもりはなかったのです。",
                         "en": "I didn't mean to step on your foot.",
                         "furigana": "<ruby>足<rp>(</rp><rt>あし</rt><rp>)</rp></ruby>を<ruby>踏<rp>(</rp><rt>ふ</rt><rp>)</rp></ruby>むつもりはなかったのです。",
-                        "enMn": "Би чиний хөл дээр гишгэх бодолгүй байсан юм."
+                        "enMn": "Хөл дээр чинь санаатай гишгээгүй ээ."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -8880,7 +8880,7 @@ const WORD_LEVELS = [
                         "jp": "明日歯医者さんに診てもらおうと思っています。",
                         "en": "I am going to see the dentist tomorrow.",
                         "furigana": "<ruby>明日<rp>(</rp><rt>あした</rt><rp>)</rp></ruby><ruby>歯医者<rp>(</rp><rt>はいしゃ</rt><rp>)</rp></ruby>さんに<ruby>診<rp>(</rp><rt>み</rt><rp>)</rp></ruby>てもらおうと<ruby>思<rp>(</rp><rt>おも</rt><rp>)</rp></ruby>っています。",
-                        "enMn": "Маргааш шүдний эмчид үзүүлэх бодолтой байна."
+                        "enMn": "Маргааш шүдний эмчид үзүүлэх гэж байна."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -10494,7 +10494,7 @@ const WORD_LEVELS = [
                         "jp": "壁を塗るつもりです。",
                         "en": "We're going to paint the wall.",
                         "furigana": "<ruby>壁<rp>(</rp><rt>かべ</rt><rp>)</rp></ruby>を<ruby>塗<rp>(</rp><rt>ぬ</rt><rp>)</rp></ruby>るつもりです。",
-                        "enMn": "Бид ханыг будах бодолтой байна."
+                        "enMn": "Бид хана будах гэж байна."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -26473,7 +26473,7 @@ const WORD_LEVELS = [
                         "jp": "ごめん！蹴飛ばすつもりじゃなかったんだ。",
                         "en": "I'm so sorry. I didn't mean to kick you.",
                         "furigana": "ごめん！<ruby>蹴飛<rp>(</rp><rt>けと</rt><rp>)</rp></ruby>ばすつもりじゃなかったんだ。",
-                        "enMn": "Уучлаарай! Би чамайг өшиглөх бодолгүй байсан юм."
+                        "enMn": "Уучлаарай! Санаатай өшиглөөгүй ээ."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
