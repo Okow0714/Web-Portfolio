@@ -2282,10 +2282,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "起きる",
                     "reading": "おきる",
-                    "en": "to get up (e.g.",
+                    "en": "to get up (e.g., from sleeping); to happen",
                     "meanings": [
-                        "to get up (e.g.",
-                        "from sleeping); to happen"
+                        "to get up (e.g., from sleeping); to happen"
                     ],
                     "example": {
                         "jp": "連日交通事故が起きる。",
@@ -2377,8 +2376,7 @@ const WORD_LEVELS = [
                     "meanings": [
                         "to push",
                         "to press",
-                        "to stamp (e.g.",
-                        "a passport)"
+                        "to stamp (e.g., a passport)"
                     ],
                     "example": {
                         "jp": "ボタンを押すだけで出窓はあく。",
@@ -3192,10 +3190,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "かかる",
                     "reading": "かかる",
-                    "en": "it takes (amount of time",
+                    "en": "it takes (amount of time, money) (v.i.)",
                     "meanings": [
-                        "it takes (amount of time",
-                        "money) (v.i.)"
+                        "it takes (amount of time, money) (v.i.)"
                     ],
                     "example": {
                         "jp": "どれくらいかかるのかしら。",
@@ -3208,11 +3205,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "掛ける",
                     "reading": "かける",
-                    "en": "to put on (e.g.",
+                    "en": "to put on (e.g., glasses); to hang (e.g., on a wall)",
                     "meanings": [
-                        "to put on (e.g.",
-                        "glasses); to hang (e.g.",
-                        "on a wall)"
+                        "to put on (e.g., glasses); to hang (e.g., on a wall)"
                     ],
                     "example": {
                         "jp": "必ずドアに鍵を掛けるようにして下さい。",
@@ -3225,10 +3220,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "かける",
                     "reading": "かける",
-                    "en": "to dial/call (e.g.",
+                    "en": "to dial/call (e.g., phone); to sit down",
                     "meanings": [
-                        "to dial/call (e.g.",
-                        "phone); to sit down"
+                        "to dial/call (e.g., phone); to sit down"
                     ],
                     "example": {
                         "jp": "あんな二股かける女なんか忘れたわ、ボケ。",
@@ -3297,8 +3291,7 @@ const WORD_LEVELS = [
                     "en": "to wear",
                     "meanings": [
                         "to wear",
-                        "to put on (e.g.",
-                        "a hat on the head)"
+                        "to put on (e.g., a hat on the head)"
                     ],
                     "example": {
                         "jp": "父は外泊するときはたいてい帽子をかぶる。",
@@ -4047,8 +4040,7 @@ const WORD_LEVELS = [
                     "reading": "コート",
                     "en": "coat",
                     "meanings": [
-                        "coat; court (e.g.",
-                        "tennis)"
+                        "coat; court (e.g., tennis)"
                     ],
                     "example": {
                         "jp": "冷たい風が彼のコートを通して身にしみた。",
@@ -4222,8 +4214,7 @@ const WORD_LEVELS = [
                     "en": "to raise (stretch out) hands",
                     "meanings": [
                         "to raise (stretch out) hands",
-                        "to raise (e.g.",
-                        "umbrella)"
+                        "to raise (e.g. an umbrella)"
                     ],
                     "example": {
                         "jp": "彼の言動には嫌気が差す。",
@@ -6573,11 +6564,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "受ける",
                     "reading": "うける",
-                    "en": "to take (an examination",
+                    "en": "to take (an examination, interview, etc.); to receive",
                     "meanings": [
-                        "to take (an examination",
-                        "interview",
-                        "etc.); to receive"
+                        "to take (an examination, interview, etc.); to receive"
                     ],
                     "example": {
                         "jp": "父は手術を受ける事になっている。",
@@ -10638,8 +10627,7 @@ const WORD_LEVELS = [
                     "en": "practice",
                     "meanings": [
                         "practice",
-                        "execution (e.g.",
-                        "program)",
+                        "execution (e.g., program)",
                         "realization"
                     ],
                     "example": {
@@ -11156,10 +11144,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "渋滞",
                     "reading": "じゅうたい",
-                    "en": "congestion (e.g.",
+                    "en": "congestion (e.g., traffic)",
                     "meanings": [
-                        "congestion (e.g.",
-                        "traffic)",
+                        "congestion (e.g., traffic)",
                         "delay"
                     ],
                     "example": {
@@ -12497,10 +12484,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "人生",
                     "reading": "じんせい",
-                    "en": "(human) life (e.g.",
+                    "en": "(human) life (e.g., conception to death)",
                     "meanings": [
-                        "(human) life (e.g.",
-                        "conception to death)"
+                        "(human) life (e.g., conception to death)"
                     ],
                     "example": {
                         "jp": "君はただ人生の問題から逃げているだけだよ。",
@@ -18151,11 +18137,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "発",
                     "reading": "はつ",
-                    "en": "to depart (e.g.",
+                    "en": "to depart (e.g., on a plane, train)",
                     "meanings": [
-                        "to depart (e.g.",
-                        "on a plane",
-                        "train)"
+                        "to depart (e.g., on a plane, train)"
                     ],
                     "example": {
                         "jp": "１発目のローキックはこの布石か！？",
@@ -18958,10 +18942,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "原点",
                     "reading": "げんてん",
-                    "en": "origin (coordinates",
+                    "en": "origin (coordinates, starting point)",
                     "meanings": [
-                        "origin (coordinates",
-                        "starting point)"
+                        "origin (coordinates, starting point)"
                     ],
                     "example": {
                         "jp": "原点を中心とする半径2の円と，直線 y = x − 1 の交点を求めよ。",
@@ -20454,8 +20437,7 @@ const WORD_LEVELS = [
                     "en": "rod",
                     "meanings": [
                         "rod",
-                        "pole (e.g.",
-                        "for drying laundry)"
+                        "pole (e.g., for drying laundry)"
                     ],
                     "example": {
                         "jp": "竿にシーツを全部干しました。",
