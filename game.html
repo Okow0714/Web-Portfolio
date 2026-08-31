@@ -164,7 +164,7 @@
                 <div class="game-hud-row">
                     <div>
                         <h1 class="game-title">言葉合わせ<span class="game-title-sub" data-i18n="game.titleSub">Japanese Word Match</span></h1>
-                        <p class="game-subtitle" data-i18n="game.subtitle">Connect each Japanese word to its English meaning. Every level has 50 tiles (25 pairs), a 12.5-minute clock (+20s per pair matched), and 10 levels per JLPT tier — N5 is beginner vocabulary, N1 is advanced. Kanji sharing a phonetic component can also be chained together for a lightning-fast multi-clear. Two mistakes brings a cleared pair back as a penalty, so slow down and look before you click.</p>
+                        <p class="game-subtitle" data-i18n="game.subtitle">Connect each Japanese word to its English meaning. Every level puts 20 pairs in play on a flat 4-minute clock (+20s per pair matched), and there are 10 levels per JLPT tier — N5 is beginner vocabulary, N1 is advanced. Kanji sharing a phonetic component can be chained together for a lightning-fast multi-clear, and 4 correct pairs in a row banks a powerup you can spend on a free clear or swapping in new words. Two mistakes bring a cleared pair back as a penalty, so slow down and look before you click.</p>
                     </div>
                     <button class="sound-toggle on" id="sound-toggle" type="button" aria-pressed="true" title="Turn sound off">
                         <span id="sound-icon" aria-hidden="true">&#128266;</span>
@@ -247,6 +247,18 @@
                             <span class="streak-meter"><span class="streak-fill" id="streak-fill"></span></span>
                         </span>
                     </div>
+                    <div class="powerup-controls" id="powerup-controls">
+                        <button id="powerup-clear-btn" class="powerup-btn" type="button" disabled>
+                            <span class="powerup-icon" aria-hidden="true">&#10022;</span>
+                            <span class="powerup-label" data-i18n="game.powerupClearBtn">Clear</span>
+                            <span class="powerup-charge-badge" id="powerup-clear-badge">0</span>
+                        </button>
+                        <button id="powerup-swap-btn" class="powerup-btn" type="button" disabled>
+                            <span class="powerup-icon" aria-hidden="true">&#8646;</span>
+                            <span class="powerup-label" data-i18n="game.powerupSwapBtn">Swap</span>
+                            <span class="powerup-charge-badge" id="powerup-swap-badge">0</span>
+                        </button>
+                    </div>
                     <button class="sound-toggle on" id="board-sound-toggle" type="button" aria-pressed="true" title="Turn sound off">
                         <span id="board-sound-icon" aria-hidden="true">&#128266;</span>
                     </button>
@@ -305,7 +317,7 @@
         <div id="start-modal" class="modal-overlay hidden">
             <div class="modal-card">
                 <h3 id="start-modal-title">N5 · Beginner</h3>
-                <p id="start-modal-desc" data-i18n="game.startModalDesc">Connect each Japanese word to its English meaning. 20 pairs, 40 tiles. The timer starts when you hit Start.</p>
+                <p id="start-modal-desc" data-i18n="game.startModalDesc">Connect each Japanese word to its English meaning. 20 pairs, 4 minutes. The timer starts when you hit Start.</p>
                 <div class="result-actions">
                     <button id="start-modal-btn" class="auth-btn" type="button" data-i18n="game.startMatch">Start Match</button>
                     <button id="start-modal-back-btn" class="auth-btn auth-btn-outline" type="button" data-i18n="game.backToLevels">Back to Levels</button>

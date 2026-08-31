@@ -172,9 +172,14 @@ let powerupFuel = [];     // pairIds excluded from this round's LEVEL_PAIR_COUNT
 
 let score = 0;
 let streak = 0;
-let lastPowerupStreak = 0; // highest streak value a powerup has already fired at this level, so
-                            // a streak sitting AT a multiple of 4 (e.g. after a penalty rolls it
-                            // back down to exactly 4) can't re-trigger on every subsequent clear
+let lastPowerupStreak = 0; // highest streak value a charge has already been granted at this
+                            // level, so a streak sitting AT a multiple of 4 (e.g. after a
+                            // penalty rolls it back down to exactly 4) can't re-grant on every
+                            // subsequent clear
+let powerupCharges = 0;    // banked, spendable on either effect via the toolbar buttons -- see
+                            // maybeGrantPowerup/updatePowerupUI. Not two separate pools: earning
+                            // a charge is automatic, spending it (and choosing which effect) is
+                            // always the player's call.
 
 // Wakan "winged tile" bonus event state -- see the constants block above for the rules.
 let wakanMap = null;         // built once from DICTIONARY_ENTRIES on first use, see buildWakanMap()
@@ -1299,12 +1304,15 @@ function applyPenalty() {
 
 // ---------------------------------------------------------------------------
 // Streak powerups. Every STREAK_POWERUP_INTERVAL (4) consecutive pairs cleared without a
-// mismatch in between, one of two random bonus effects fires: an extra free pair-clear, or a
-// reshuffle of 3 random on-board pairs into 3 fresh ones drawn from this round's unused fuel
-// (see LEVEL_PAIR_COUNT/powerupFuel). `lastPowerupStreak` guards against firing again on every
-// subsequent clear once the streak is sitting AT a multiple of 4 -- it only fires the instant
-// the streak first REACHES that multiple, and resets to 0 on any mismatch (see handleMismatch)
-// so a later run can trigger at the same tier again.
+// mismatch in between banks one charge, spendable at any later moment on whichever of the two
+// toolbar buttons the player picks -- a free pair-clear, or a swap of 3 active pairs for 3
+// fresh ones drawn from this round's unused fuel (see LEVEL_PAIR_COUNT/powerupFuel). Earning is
+// automatic; spending, and which effect to spend it on, is always the player's call (see
+// #powerup-clear-btn/#powerup-swap-btn's click handlers below). `lastPowerupStreak` guards
+// against banking a second charge on every subsequent clear once the streak is sitting AT a
+// multiple of 4 -- it only grants the instant the streak first REACHES that multiple, and
+// resets to 0 on any mismatch (see handleMismatch) so a later run can grant at the same tier
+// again.
 // ---------------------------------------------------------------------------
 
 function maybeGrantPowerup() {
@@ -1312,17 +1320,36 @@ function maybeGrantPowerup() {
     if (streak % STREAK_POWERUP_INTERVAL !== 0) return;
     if (streak <= lastPowerupStreak) return;
     lastPowerupStreak = streak;
-    // Small delay so the powerup's own burst reads as a distinct follow-up beat after the
-    // match/chain clear that triggered it, not a simultaneous jumble of two effects at once.
-    window.setTimeout(() => {
-        if (Math.random() < 0.5) grantFreeClearPowerup();
-        else grantSwapPowerup();
-    }, 550);
+    powerupCharges++;
+    updatePowerupUI();
+    GameAudio.powerup();
+    const c = centerOf(boardWrapEl);
+    floatText(c.x, c.y - 40, window.t('game.powerupReadyFloat'), true);
 }
 
-// Auto-clears one random still-active pair, same as landing a real match -- counts toward
-// matchedCount and can finish the level. Never targets the current Wakan flyer's pair: that
-// tile's board copy needs to stay put for the flyer event still in flight/held above it.
+// Reflects powerupCharges (and whether powerupFuel can still fund a swap) onto the two toolbar
+// buttons -- called whenever either changes: a new charge banked, a charge spent, or a level
+// start/restart. Doesn't gate on `locked`/flyerHeld -- a charge stays visibly available through
+// a brief clear animation, the click handlers below are what actually reject a click mid-lock.
+function updatePowerupUI() {
+    const clearBtn = document.getElementById('powerup-clear-btn');
+    const swapBtn = document.getElementById('powerup-swap-btn');
+    const canUseAny = powerupCharges > 0;
+    const canSwap = canUseAny && powerupFuel.length > 0;
+    document.getElementById('powerup-clear-badge').textContent = String(powerupCharges);
+    document.getElementById('powerup-swap-badge').textContent = String(powerupCharges);
+    clearBtn.disabled = !canUseAny;
+    swapBtn.disabled = !canSwap;
+    clearBtn.classList.toggle('ready', canUseAny);
+    swapBtn.classList.toggle('ready', canSwap);
+    clearBtn.title = canUseAny ? window.t('game.powerupClearTitle') : window.t('game.powerupNoChargeTitle');
+    swapBtn.title = canSwap ? window.t('game.powerupSwapTitle')
+        : (canUseAny ? window.t('game.powerupSwapNoFuelTitle') : window.t('game.powerupNoChargeTitle'));
+}
+
+// Spends one charge to clear a random still-active pair, same as landing a real match -- counts
+// toward matchedCount and can finish the level. Never targets the current Wakan flyer's pair:
+// that tile's board copy needs to stay put for the flyer event still in flight/held above it.
 function grantFreeClearPowerup() {
     const activePairIds = [...new Set(tiles.filter(t => !t.cleared && t.pairId !== flyerTargetPairId).map(t => t.pairId))];
     if (!activePairIds.length) return;
@@ -1330,6 +1357,7 @@ function grantFreeClearPowerup() {
     const pt = tilesByPairId[pairId];
     if (!pt || !pt.jp || !pt.en) return;
 
+    locked = true;
     GameAudio.powerup();
     const mid = midpoint(centerOf(pt.jp.el), centerOf(pt.en.el));
     floatText(mid.x, mid.y - 30, window.t('game.powerupFreeFloat'), true);
@@ -1342,6 +1370,7 @@ function grantFreeClearPowerup() {
     window.setTimeout(() => {
         [pt.jp, pt.en].forEach(t => { t.el.classList.remove('powerup-pop'); t.el.classList.add('cleared'); t.cleared = true; });
         matchedCount++;
+        locked = false;
         updateStats();
         if (matchedCount === totalPairs) { finishLevel(); return; }
         maybeRefill();
@@ -1349,17 +1378,18 @@ function grantFreeClearPowerup() {
     }, 520);
 }
 
-// Swaps POWERUP_SWAP_COUNT random active pairs for the same number of fresh ones drawn from
-// powerupFuel (this round's un-dealt leftovers -- see pickWordSet). Neither side counts toward
-// matchedCount: the outgoing pairs aren't matched, they're discarded, and totalPairs doesn't
-// change -- 3 of the 20 words in play just became 3 different words. Falls back to a free
-// clear if powerupFuel is already exhausted (a level can only fund one swap; see
-// LEVEL_PAIR_COUNT's comment) so a streak-4 still always grants *something*.
+// Spends one charge to swap POWERUP_SWAP_COUNT random active pairs for the same number of fresh
+// ones drawn from powerupFuel (this round's un-dealt leftovers -- see pickWordSet). Neither side
+// counts toward matchedCount: the outgoing pairs aren't matched, they're discarded, and
+// totalPairs doesn't change -- 3 of the 20 words in play just became 3 different words. The
+// swap button is disabled once powerupFuel runs dry (see updatePowerupUI), so the `n <= 0`
+// bail below is only a defensive backstop, not a normal path.
 function grantSwapPowerup() {
     const activePairIds = [...new Set(tiles.filter(t => !t.cleared && t.pairId !== flyerTargetPairId).map(t => t.pairId))];
     const n = Math.min(POWERUP_SWAP_COUNT, activePairIds.length, powerupFuel.length);
-    if (n <= 0) { grantFreeClearPowerup(); return; }
+    if (n <= 0) return;
 
+    locked = true;
     shuffleArray(activePairIds);
     const outgoing = activePairIds.slice(0, n);
     const incoming = powerupFuel.splice(0, n);
@@ -1384,9 +1414,24 @@ function grantSwapPowerup() {
         tiles = tiles.filter(t => !outgoing.includes(t.pairId));
         outgoing.forEach(pairId => { delete tilesByPairId[pairId]; });
         dealPairs(incoming, true, false);
+        locked = false;
+        updatePowerupUI(); // powerupFuel just shrank -- the swap button may need to disable
         maybeArmFlyer();
     }, 420);
 }
+
+document.getElementById('powerup-clear-btn').addEventListener('click', () => {
+    if (powerupCharges <= 0 || locked || flyerHeld) return;
+    powerupCharges--;
+    updatePowerupUI();
+    grantFreeClearPowerup();
+});
+document.getElementById('powerup-swap-btn').addEventListener('click', () => {
+    if (powerupCharges <= 0 || powerupFuel.length <= 0 || locked || flyerHeld) return;
+    powerupCharges--;
+    updatePowerupUI();
+    grantSwapPowerup();
+});
 
 // ---------------------------------------------------------------------------
 // Wakan "winged tile" bonus event.
@@ -1702,6 +1747,8 @@ function startLevel(level) {
     score = 0;
     streak = 0;
     lastPowerupStreak = 0;
+    powerupCharges = 0;
+    updatePowerupUI();
     mismatchStreak = 0;
     elapsedSeconds = 0;
     bonusSeconds = 0;

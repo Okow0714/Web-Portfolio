@@ -473,6 +473,78 @@ body.game-playing .game-main {
     transform: translateY(-1px);
 }
 
+/* Powerup toolbar buttons (see maybeGrantPowerup/updatePowerupUI in game.js). Charges are
+   earned automatically but always spent by an explicit click -- disabled/muted with no charge,
+   a soft pulsing gold ring once at least one is banked, so "you have something to use" reads at
+   a glance without stealing focus from the board. */
+.powerup-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.powerup-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(212, 166, 75, 0.06);
+    border: 1px solid rgba(212, 166, 75, 0.35);
+    color: var(--gold-bright);
+    padding: 7px 12px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.powerup-icon { font-size: 1rem; line-height: 1; }
+
+.powerup-charge-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.35);
+    font-size: 0.68rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--paper-muted);
+}
+
+.powerup-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.powerup-btn:not(:disabled):hover {
+    border-color: var(--gold);
+    background: rgba(212, 166, 75, 0.16);
+    transform: translateY(-1px);
+}
+
+.powerup-btn.ready {
+    border-color: var(--gold-bright);
+    background: rgba(244, 206, 122, 0.12);
+    animation: powerupReadyPulse 1.8s ease-in-out infinite;
+}
+
+.powerup-btn.ready .powerup-charge-badge {
+    background: var(--gold);
+    color: var(--ground-deep);
+}
+
+@keyframes powerupReadyPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(244, 206, 122, 0.35); }
+    50% { box-shadow: 0 0 0 5px rgba(244, 206, 122, 0); }
+}
+
+.powerup-btn:not(:disabled):active {
+    transform: translateY(0) scale(0.94);
+}
+
 /* ---------------------------------------------------------------------
    Board + honeycomb tile grid
    --------------------------------------------------------------------- */
