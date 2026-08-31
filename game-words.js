@@ -979,7 +979,7 @@ const WORD_LEVELS = [
                         "jp": "飴がほしい。",
                         "en": "I want a piece of candy.",
                         "furigana": "<ruby>飴<rp>(</rp><rt>あめ</rt><rp>)</rp></ruby>がほしい。",
-                        "enMn": "Надад чихэр хэрэгтэй байна."
+                        "enMn": "Чихэр идмээр байна."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -1297,7 +1297,7 @@ const WORD_LEVELS = [
                         "jp": "「兄弟はいますか？」「いいえ、一人っ子です」",
                         "en": "\"Do you have any siblings?\" \"No, I'm an only child.\"",
                         "furigana": "「<ruby>兄弟<rp>(</rp><rt>きょうだい</rt><rp>)</rp></ruby>はいますか？」「いいえ、<ruby>一人<rp>(</rp><rt>ひとり</rt><rp>)</rp></ruby>っ<ruby>子<rp>(</rp><rt>こ</rt><rp>)</rp></ruby>です」",
-                        "enMn": "«Ах дүү байдаг уу?» «Үгүй, би цорын ганц хүүхэд.»"
+                        "enMn": "«Ах дүүтэй юу?» «Үгүй, би ганцхан хүүхэд.»"
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -1844,7 +1844,7 @@ const WORD_LEVELS = [
                         "jp": "妹の咲子です。俺と年子で、今受験生です。",
                         "en": "This is my little sister Sakiko. She was born the same year as me and is now studying for her exams.",
                         "furigana": "<ruby>妹<rp>(</rp><rt>いもうと</rt><rp>)</rp></ruby>の<ruby>咲子<rp>(</rp><rt>さきこ</rt><rp>)</rp></ruby>です。<ruby>俺<rp>(</rp><rt>おれ</rt><rp>)</rp></ruby>と<ruby>年子<rp>(</rp><rt>としご</rt><rp>)</rp></ruby>で、<ruby>今<rp>(</rp><rt>こん</rt><rp>)</rp></ruby><ruby>受験生<rp>(</rp><rt>じゅけんせい</rt><rp>)</rp></ruby>です。",
-                        "enMn": "Энэ бол миний охин дүү Сакико. Надтай нэг жилийн зөрүүтэй, одоо шалгалтдаа бэлдэж байгаа."
+                        "enMn": "Энэ бол дүү Сакико маань. Бид нэг насны зөрүүтэй, одоо шалгалтдаа бэлдэж байгаа."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -2011,7 +2011,7 @@ const WORD_LEVELS = [
                         "jp": "由美の趣味は流行歌をうたうことです。",
                         "en": "Yumi's hobby is singing popular songs.",
                         "furigana": "<ruby>由美<rp>(</rp><rt>ゆみ</rt><rp>)</rp></ruby>の<ruby>趣味<rp>(</rp><rt>しゅみ</rt><rp>)</rp></ruby>は<ruby>流行<rp>(</rp><rt>りゅうこう</rt><rp>)</rp></ruby><ruby>歌<rp>(</rp><rt>か</rt><rp>)</rp></ruby>をうたうことです。",
-                        "enMn": "Юмигийн сонирхол бол алдартай дуу дуулах явдал юм."
+                        "enMn": "Юми алдартай дуу дуулах дуртай."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -3104,7 +3104,7 @@ const WORD_LEVELS = [
                         "jp": "物を視覚的に覚える器官は視床下部の下にある。",
                         "en": "The sight memory organ is below the hypothalamus.",
                         "furigana": "<ruby>物<rp>(</rp><rt>もの</rt><rp>)</rp></ruby>を<ruby>視覚<rp>(</rp><rt>しかく</rt><rp>)</rp></ruby><ruby>的<rp>(</rp><rt>てき</rt><rp>)</rp></ruby>に<ruby>覚<rp>(</rp><rt>おぼ</rt><rp>)</rp></ruby>える<ruby>器官<rp>(</rp><rt>きかん</rt><rp>)</rp></ruby>は<ruby>視床<rp>(</rp><rt>ししょう</rt><rp>)</rp></ruby><ruby>下部<rp>(</rp><rt>かぶ</rt><rp>)</rp></ruby>の<ruby>下<rp>(</rp><rt>した</rt><rp>)</rp></ruby>にある。",
-                        "enMn": "Юмсыг харааны замаар цээжилдэг эрхтэн гипоталамусын доор байрладаг."
+                        "enMn": "Харснаа цээжилдэг эрхтэн гипоталамусын доор байрладаг."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -3566,7 +3566,7 @@ const WORD_LEVELS = [
                         "jp": "あんな二股かける女なんか忘れたわ、ボケ。",
                         "en": "Idiot, I've forgotten that two-timing bitch.",
                         "furigana": "あんな<ruby>二股<rp>(</rp><rt>ふたまた</rt><rp>)</rp></ruby>かける<ruby>女<rp>(</rp><rt>おんな</rt><rp>)</rp></ruby>なんか<ruby>忘<rp>(</rp><rt>わす</rt><rp>)</rp></ruby>れたわ、ボケ。",
-                        "enMn": "Тэр хоёр нүүртэй эмэгтэйг би мартсан шүү, тэнэг."
+                        "enMn": "Тэр хоёр эрэгтэйтэй явдаг эмэгтэйг мартчихсан, тэнэг юм аа."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -4046,7 +4046,7 @@ const WORD_LEVELS = [
                         "jp": "「塩を取って下さい」「はい、どうぞ」",
                         "en": "\"Pass me the salt, please.\" \"Here you are.\"",
                         "furigana": "「<ruby>塩<rp>(</rp><rt>しお</rt><rp>)</rp></ruby>を<ruby>取<rp>(</rp><rt>と</rt><rp>)</rp></ruby>って<ruby>下<rp>(</rp><rt>くだ</rt><rp>)</rp></ruby>さい」「はい、どうぞ」",
-                        "enMn": "«Давсыг дамжуулж өгнө үү.» «Тэгье, энэ байна.»"
+                        "enMn": "«Давс дамжуулж өгөөч.» «Тэгье, энэ байна.»"
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -4107,7 +4107,7 @@ const WORD_LEVELS = [
                         "jp": "妻が早産で１５００グラムの女の子を授かった。",
                         "en": "My wife gave birth prematurely to a 1,500-gram baby girl.",
                         "furigana": "<ruby>妻<rp>(</rp><rt>つま</rt><rp>)</rp></ruby>が<ruby>早産<rp>(</rp><rt>そうざん</rt><rp>)</rp></ruby>で１５００グラムの<ruby>女<rp>(</rp><rt>おんな</rt><rp>)</rp></ruby>の<ruby>子<rp>(</rp><rt>こ</rt><rp>)</rp></ruby>を<ruby>授<rp>(</rp><rt>さず</rt><rp>)</rp></ruby>かった。",
-                        "enMn": "Эхнэр маань дутуу төрж 1500 граммын охинтой болов."
+                        "enMn": "Эхнэр маань дутуу төрөөд 1500 граммын охин төрүүлэв."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -5522,7 +5522,7 @@ const WORD_LEVELS = [
                         "jp": "彼の首筋を血がすっと伝った。",
                         "en": "A trickle of blood ran down his neck.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>首筋<rp>(</rp><rt>くびすじ</rt><rp>)</rp></ruby>を<ruby>血<rp>(</rp><rt>ち</rt><rp>)</rp></ruby>がすっと<ruby>伝<rp>(</rp><rt>つた</rt><rp>)</rp></ruby>った。",
-                        "enMn": "Түүний хүзүүг даган цус нимгэхэн урсав."
+                        "enMn": "Хүзүүгээр нь цус нимгэн урсаж буув."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -5647,7 +5647,7 @@ const WORD_LEVELS = [
                         "jp": "皆さんネチケットはしっかり。",
                         "en": "Everyone, please keep to netiquette.",
                         "furigana": "<ruby>皆<rp>(</rp><rt>みな</rt><rp>)</rp></ruby>さんネチケットはしっかり。",
-                        "enMn": "Хүмүүс ээ, сүлжээний ёс зүйгээ бат сахиарай."
+                        "enMn": "Хүмүүс ээ, сүлжээний ёс зүйгээ сайн баримтлаарай."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -7272,7 +7272,7 @@ const WORD_LEVELS = [
                         "jp": "彼は畳の上に大の字になった。",
                         "en": "He lay on the mat at full length.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>畳<rp>(</rp><rt>たたみ</rt><rp>)</rp></ruby>の<ruby>上<rp>(</rp><rt>うえ</rt><rp>)</rp></ruby>に<ruby>大<rp>(</rp><rt>だい</rt><rp>)</rp></ruby>の<ruby>字<rp>(</rp><rt>じ</rt><rp>)</rp></ruby>になった。",
-                        "enMn": "Тэр татами дээр дэлгэрэн хэвтэв."
+                        "enMn": "Тэр татами дээр гар хөлөө дэлгээд хэвтэв."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -7292,7 +7292,7 @@ const WORD_LEVELS = [
                         "jp": "用事以外は入場お断り。",
                         "en": "No admittance except on business.",
                         "furigana": "<ruby>用事<rp>(</rp><rt>ようじ</rt><rp>)</rp></ruby><ruby>以外<rp>(</rp><rt>いがい</rt><rp>)</rp></ruby>は<ruby>入場<rp>(</rp><rt>にゅうじょう</rt><rp>)</rp></ruby>お<ruby>断<rp>(</rp><rt>ことわ</rt><rp>)</rp></ruby>り。",
-                        "enMn": "Ажил хэргээс өөр тохиолдолд орохыг хориглоно."
+                        "enMn": "Ажил хэрэггүй хүн нэвтрэхийг хориглоно."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -7742,7 +7742,7 @@ const WORD_LEVELS = [
                         "jp": "再来月は１２月だ。",
                         "en": "The month after next is December.",
                         "furigana": "<ruby>再来月<rp>(</rp><rt>さらいげつ</rt><rp>)</rp></ruby>は<ruby>１２月<rp>(</rp><rt>じゅうにがつ</rt><rp>)</rp></ruby>だ。",
-                        "enMn": "Дараа дараагийн сар бол 12-р сар."
+                        "enMn": "Хоёр сарын дараа арванхоёрдугаар сар болно."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -7924,7 +7924,7 @@ const WORD_LEVELS = [
                         "jp": "夫と娘はぐっすりと眠っている。",
                         "en": "My husband and daughter are fast asleep.",
                         "furigana": "<ruby>夫<rp>(</rp><rt>おっと</rt><rp>)</rp></ruby>と<ruby>娘<rp>(</rp><rt>むすめ</rt><rp>)</rp></ruby>はぐっすりと<ruby>眠<rp>(</rp><rt>ねむ</rt><rp>)</rp></ruby>っている。",
-                        "enMn": "Нөхөр охин хоёр маань гүн нойрсож байна."
+                        "enMn": "Нөхөр, охин хоёр минь гүн нойронд автсан байна."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -8779,7 +8779,7 @@ const WORD_LEVELS = [
                         "jp": "入学式も終わりました。同じ沿線の大学です。",
                         "en": "I've already had the entrance ceremony. It's a university alongside the same railway line.",
                         "furigana": "<ruby>入学<rp>(</rp><rt>にゅうがく</rt><rp>)</rp></ruby><ruby>式<rp>(</rp><rt>しき</rt><rp>)</rp></ruby>も<ruby>終<rp>(</rp><rt>お</rt><rp>)</rp></ruby>わりました。<ruby>同<rp>(</rp><rt>おな</rt><rp>)</rp></ruby>じ<ruby>沿線<rp>(</rp><rt>えんせん</rt><rp>)</rp></ruby>の<ruby>大学<rp>(</rp><rt>だいがく</rt><rp>)</rp></ruby>です。",
-                        "enMn": "Элсэлтийн ёслол ч дууслаа. Мөн адил төмөр замын дагуух их сургууль юм."
+                        "enMn": "Элсэлтийн ёслол ч болж өнгөрлөө. Ижил төмөр замын дагуух их сургууль шүү."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -8799,7 +8799,7 @@ const WORD_LEVELS = [
                         "jp": "彼は壁一面にポスターをべたべた張った。",
                         "en": "He plastered the wall with posters.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>壁<rp>(</rp><rt>かべ</rt><rp>)</rp></ruby><ruby>一<rp>(</rp><rt>いち</rt><rp>)</rp></ruby><ruby>面<rp>(</rp><rt>めん</rt><rp>)</rp></ruby>にポスターをべたべた<ruby>張<rp>(</rp><rt>は</rt><rp>)</rp></ruby>った。",
-                        "enMn": "Тэр ханыг дүүрэн зурагт хуудсаар нааж дүүргэв."
+                        "enMn": "Тэр ханыг чихэлдтэл зурагт хуудас наав."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -8921,7 +8921,7 @@ const WORD_LEVELS = [
                         "jp": "問題はいつ始めるかだ。",
                         "en": "The question is when to start.",
                         "furigana": "<ruby>問題<rp>(</rp><rt>もんだい</rt><rp>)</rp></ruby>はいつ<ruby>始<rp>(</rp><rt>はじ</rt><rp>)</rp></ruby>めるかだ。",
-                        "enMn": "Асуудал бол хэзээ эхлэх вэ гэдэгт байна."
+                        "enMn": "Асуудал нь хэзээ эхлэх вэ гэдэгт л байна."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -9919,7 +9919,7 @@ const WORD_LEVELS = [
                         "jp": "除草剤耐性品種でなぜ収量が増えるのか？",
                         "en": "Why do yields increase with herbicide-resistant varieties?",
                         "furigana": "<ruby>除草<rp>(</rp><rt>じょそう</rt><rp>)</rp></ruby><ruby>剤<rp>(</rp><rt>ざい</rt><rp>)</rp></ruby><ruby>耐性<rp>(</rp><rt>たいせい</rt><rp>)</rp></ruby><ruby>品種<rp>(</rp><rt>ひんしゅ</rt><rp>)</rp></ruby>でなぜ<ruby>収量<rp>(</rp><rt>しゅうりょう</rt><rp>)</rp></ruby>が<ruby>増<rp>(</rp><rt>ふ</rt><rp>)</rp></ruby>えるのか？",
-                        "enMn": "Хогийн ургамлын хор тэсвэртэй сортод яагаад ургац нэмэгддэг вэ?"
+                        "enMn": "Хогийн ургамлын хорд тэсвэртэй сортын ургац яагаад нэмэгддэг вэ?"
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -11491,7 +11491,7 @@ const WORD_LEVELS = [
                         "jp": "彼女は入試の結果をしきりに知りたがっていた。",
                         "en": "She was anxious to know the entrance exam results.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>入試<rp>(</rp><rt>にゅうし</rt><rp>)</rp></ruby>の<ruby>結果<rp>(</rp><rt>けっか</rt><rp>)</rp></ruby>をしきりに<ruby>知<rp>(</rp><rt>し</rt><rp>)</rp></ruby>りたがっていた。",
-                        "enMn": "Тэр элсэлтийн шалгалтын дүнг дахин дахин мэдэхийг хүсэж байв."
+                        "enMn": "Тэр элсэлтийн шалгалтын дүнгээ тэсэн ядан хүлээж байлаа."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -12470,7 +12470,7 @@ const WORD_LEVELS = [
                         "jp": "手形は来月１日が支払日になっている。",
                         "en": "The bill is due on the 1st of next month.",
                         "furigana": "<ruby>手形<rp>(</rp><rt>てがた</rt><rp>)</rp></ruby>は<ruby>来月<rp>(</rp><rt>らいげつ</rt><rp>)</rp></ruby>１<ruby>日<rp>(</rp><rt>にち</rt><rp>)</rp></ruby>が<ruby>支払<rp>(</rp><rt>しはらい</rt><rp>)</rp></ruby><ruby>日<rp>(</rp><rt>び</rt><rp>)</rp></ruby>になっている。",
-                        "enMn": "Вексел ирэх сарын 1-нд төлбөрийн хугацаатай."
+                        "enMn": "Төлбөрийг ирэх сарын 1-нд төлөх ёстой."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -12492,7 +12492,7 @@ const WORD_LEVELS = [
                         "jp": "投稿一覧の下の凡例を見て原因が分かりました。",
                         "en": "When I looked at the explanatory notes under the posts list I realized what was causing it.",
                         "furigana": "<ruby>投稿<rp>(</rp><rt>とうこう</rt><rp>)</rp></ruby><ruby>一覧<rp>(</rp><rt>いちらん</rt><rp>)</rp></ruby>の<ruby>下<rp>(</rp><rt>した</rt><rp>)</rp></ruby>の<ruby>凡例<rp>(</rp><rt>はんれい</rt><rp>)</rp></ruby>を<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>て<ruby>原因<rp>(</rp><rt>げんいん</rt><rp>)</rp></ruby>が<ruby>分<rp>(</rp><rt>わ</rt><rp>)</rp></ruby>かりました。",
-                        "enMn": "Нийтлэлийн жагсаалтын доорх тайлбарыг харж шалтгааныг ойлголоо."
+                        "enMn": "Нийтлэлийн жагсаалтын доор байх тайлбарыг хараад шалтгаан нь ойлгогдлоо."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -12700,7 +12700,7 @@ const WORD_LEVELS = [
                         "jp": "順を追って基本的なタグを覚えていこう。",
                         "en": "Let's learn the basic tags in order.",
                         "furigana": "<ruby>順<rp>(</rp><rt>じゅん</rt><rp>)</rp></ruby>を<ruby>追<rp>(</rp><rt>お</rt><rp>)</rp></ruby>って<ruby>基本<rp>(</rp><rt>きほん</rt><rp>)</rp></ruby><ruby>的<rp>(</rp><rt>てき</rt><rp>)</rp></ruby>なタグを<ruby>覚<rp>(</rp><rt>おぼ</rt><rp>)</rp></ruby>えていこう。",
-                        "enMn": "Дэс дараалан үндсэн шошгуудыг цээжилье."
+                        "enMn": "Үндсэн шошгуудыг дэс дараалан нь цээжилье."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -12743,7 +12743,7 @@ const WORD_LEVELS = [
                         "jp": "「状況報告を」「現在目標は目視４。最大７か。小口径火器を所有」",
                         "en": "\"Situation report.\" \"At present 4 in sight. At most probably 7. Holding small calibre arms.\"",
                         "furigana": "「<ruby>状況<rp>(</rp><rt>じょうきょう</rt><rp>)</rp></ruby><ruby>報告<rp>(</rp><rt>ほうこく</rt><rp>)</rp></ruby>を」「<ruby>現在<rp>(</rp><rt>げんざい</rt><rp>)</rp></ruby><ruby>目標<rp>(</rp><rt>もくひょう</rt><rp>)</rp></ruby>は<ruby>目視<rp>(</rp><rt>もくし</rt><rp>)</rp></ruby>４。<ruby>最大<rp>(</rp><rt>さいだい</rt><rp>)</rp></ruby>７か。<ruby>小<rp>(</rp><rt>しょう</rt><rp>)</rp></ruby><ruby>口径<rp>(</rp><rt>こうけい</rt><rp>)</rp></ruby><ruby>火器<rp>(</rp><rt>かき</rt><rp>)</rp></ruby>を<ruby>所有<rp>(</rp><rt>しょゆう</rt><rp>)</rp></ruby>」",
-                        "enMn": "«Нөхцөл байдлын мэдээлэл өг.» «Одоогоор нүдэнд харагдах бай 4. Дээд тал нь 7 байх. Жижиг калибрын галт зэвсэгтэй.»"
+                        "enMn": "«Нөхцөл байдлаа мэдээл.» «Одоогоор 4 бай харагдаж байна. Дээд тал нь 7. Жижиг калибрын галт зэвсэгтэй.»"
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -13138,7 +13138,7 @@ const WORD_LEVELS = [
                         "jp": "中国のＧＤＰ統計はオオカミ少年か。",
                         "en": "Are the Chinese GDP figures a case of the boy crying wolf?",
                         "furigana": "<ruby>中国<rp>(</rp><rt>ちゅうごく</rt><rp>)</rp></ruby>のＧＤＰ<ruby>統計<rp>(</rp><rt>とうけい</rt><rp>)</rp></ruby>はオオカミ<ruby>少年<rp>(</rp><rt>しょうねん</rt><rp>)</rp></ruby>か。",
-                        "enMn": "Хятадын ДНБ-ий статистик чоно хашгирсан хүү шиг үү?"
+                        "enMn": "Хятадын ДНБ-ийн тоо баримт «чоно ирлээ» гэж хашгирсан хүүтэй адил уу?"
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -13838,7 +13838,7 @@ const WORD_LEVELS = [
                         "jp": "非配偶者間人工授精を受けました。",
                         "en": "I had an artificial insemination by donor.",
                         "furigana": "<ruby>非<rp>(</rp><rt>ひ</rt><rp>)</rp></ruby><ruby>配偶<rp>(</rp><rt>はいぐう</rt><rp>)</rp></ruby><ruby>者<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby><ruby>間<rp>(</rp><rt>かん</rt><rp>)</rp></ruby><ruby>人工<rp>(</rp><rt>じんこう</rt><rp>)</rp></ruby><ruby>授精<rp>(</rp><rt>じゅせい</rt><rp>)</rp></ruby>を<ruby>受<rp>(</rp><rt>う</rt><rp>)</rp></ruby>けました。",
-                        "enMn": "Би донорын хиймэл хээлтүүлэг хийлгэсэн."
+                        "enMn": "Би донорын зохиомол хээлтүүлэгт хамрагдсан."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -14331,7 +14331,7 @@ const WORD_LEVELS = [
                         "jp": "親友は何人いる？",
                         "en": "How many close friends do you have?",
                         "furigana": "<ruby>親友<rp>(</rp><rt>しんゆう</rt><rp>)</rp></ruby>は<ruby>何<rp>(</rp><rt>なん</rt><rp>)</rp></ruby><ruby>人<rp>(</rp><rt>にん</rt><rp>)</rp></ruby>いる？",
-                        "enMn": "Чамд хэдэн дотно найз байдаг вэ?"
+                        "enMn": "Чи хэдэн дотно найзтай вэ?"
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -14663,7 +14663,7 @@ const WORD_LEVELS = [
                         "jp": "世界は奇人の巣だ。",
                         "en": "The world is a den of crazies.",
                         "furigana": "<ruby>世界<rp>(</rp><rt>せかい</rt><rp>)</rp></ruby>は<ruby>奇人<rp>(</rp><rt>きじん</rt><rp>)</rp></ruby>の<ruby>巣<rp>(</rp><rt>す</rt><rp>)</rp></ruby>だ。",
-                        "enMn": "Ертөнц бол хачин хүмүүсийн үүр юм."
+                        "enMn": "Ертөнц бол солиотнуудын үүр."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -15756,7 +15756,7 @@ const WORD_LEVELS = [
                         "jp": "カタツムリがすっと角を出した。",
                         "en": "The snail shot out its horns.",
                         "furigana": "カタツムリがすっと<ruby>角<rp>(</rp><rt>かく</rt><rp>)</rp></ruby>を<ruby>出<rp>(</rp><rt>だ</rt><rp>)</rp></ruby>した。",
-                        "enMn": "Эмгэн хумс шууд эврээ гаргав."
+                        "enMn": "Эмгэн хумс эврээ цухуйлгав."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -16312,7 +16312,7 @@ const WORD_LEVELS = [
                         "jp": "動詞は述語動詞のことです。述語動詞は、主語や表す時によって形を変えます。",
                         "en": "'Verb' refers to the predicate verb. Predicate verbs change their form depending on the subject and the time expressed.",
                         "furigana": "<ruby>動詞<rp>(</rp><rt>どうし</rt><rp>)</rp></ruby>は<ruby>述語<rp>(</rp><rt>じゅつご</rt><rp>)</rp></ruby><ruby>動詞<rp>(</rp><rt>どうし</rt><rp>)</rp></ruby>のことです。<ruby>述語<rp>(</rp><rt>じゅつご</rt><rp>)</rp></ruby><ruby>動詞<rp>(</rp><rt>どうし</rt><rp>)</rp></ruby>は、<ruby>主語<rp>(</rp><rt>しゅご</rt><rp>)</rp></ruby>や<ruby>表<rp>(</rp><rt>あらわ</rt><rp>)</rp></ruby>す<ruby>時<rp>(</rp><rt>とき</rt><rp>)</rp></ruby>によって<ruby>形<rp>(</rp><rt>かたち</rt><rp>)</rp></ruby>を<ruby>変<rp>(</rp><rt>か</rt><rp>)</rp></ruby>えます。",
-                        "enMn": "Үйл үг гэдэг нь өгүүлэхүүн үйл үгийг хэлнэ. Өгүүлэхүүн үйл үг нь өгүүлэгдэхүүн болон илэрхийлж буй цагаас хамааран хэлбэрээ өөрчилдөг."
+                        "enMn": "Үйл үг гэдэг нь өгүүлэхүүн үйл үгийг хэлнэ. Өгүүлэхүүн үйл үг нь өгүүлэгдэхүүн болон цагаасаа хамаарч хэлбэрээ өөрчилдөг."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -16498,7 +16498,7 @@ const WORD_LEVELS = [
                         "jp": "アトランタ・ブレーブスは、ワールドシリーズで優勝できると思いますか。",
                         "en": "Do you think the Braves will take the series?",
                         "furigana": "アトランタ・ブレーブスは、ワールドシリーズで<ruby>優勝<rp>(</rp><rt>ゆうしょう</rt><rp>)</rp></ruby>できると<ruby>思<rp>(</rp><rt>おも</rt><rp>)</rp></ruby>いますか。",
-                        "enMn": "Атланта Брэйвс дэлхийн цуврал тэмцээнд түрүүлж чадна гэж бодож байна уу?"
+                        "enMn": "Атланта Брэйвс Дэлхийн цувралд түрүүлнэ гэж бодож байна уу?"
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -16863,7 +16863,7 @@ const WORD_LEVELS = [
                         "jp": "両親は、末っ子をえこひいきするかもしれない。",
                         "en": "Parents may favor the youngest child in the family.",
                         "furigana": "<ruby>両親<rp>(</rp><rt>りょうしん</rt><rp>)</rp></ruby>は、<ruby>末<rp>(</rp><rt>すえ</rt><rp>)</rp></ruby>っ<ruby>子<rp>(</rp><rt>こ</rt><rp>)</rp></ruby>をえこひいきするかもしれない。",
-                        "enMn": "Эцэг эх нь отгон хүүхдээ илүүд үзэж магадгүй."
+                        "enMn": "Эцэг эхчүүд отгон хүүхдээ илүүд үздэг байж мэднэ."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -17332,7 +17332,7 @@ const WORD_LEVELS = [
                         "jp": "やだストッキング伝線しちゃってる。",
                         "en": "Fudge! My stocking's run.",
                         "furigana": "やだストッキング<ruby>伝<rp>(</rp><rt>でん</rt><rp>)</rp></ruby><ruby>線<rp>(</rp><rt>せん</rt><rp>)</rp></ruby>しちゃってる。",
-                        "enMn": "Өө яамай, урт оймс минь татагдчихаж."
+                        "enMn": "Өө новш, оймс минь цоороод."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -17394,7 +17394,7 @@ const WORD_LEVELS = [
                         "jp": "図表２を見ると、これらの貿易サイクルのいくつかは非常に短期のものであることが判明する。",
                         "en": "A glance at Chart 2 will reveal that some of these trade cycles are very short-lived.",
                         "furigana": "<ruby>図表<rp>(</rp><rt>ずひょう</rt><rp>)</rp></ruby>２を<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>ると、これらの<ruby>貿易<rp>(</rp><rt>ぼうえき</rt><rp>)</rp></ruby>サイクルのいくつかは<ruby>非常<rp>(</rp><rt>ひじょう</rt><rp>)</rp></ruby>に<ruby>短期<rp>(</rp><rt>たんき</rt><rp>)</rp></ruby>のものであることが<ruby>判明<rp>(</rp><rt>はんめい</rt><rp>)</rp></ruby>する。",
-                        "enMn": "Хүснэгт 2-ыг харвал эдгээр худалдааны мөчлөгүүдийн зарим нь маш богино хугацаатай болох нь тодорхой болно."
+                        "enMn": "Хүснэгт 2-ыг харвал эдгээр худалдааны мөчлөгийн зарим нь маш богино настай нь харагдана."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -17888,7 +17888,7 @@ const WORD_LEVELS = [
                         "jp": "昭和１０年は西暦１９３５年です。",
                         "en": "The 10th year of Showa is 1935 in the Western calendar.",
                         "furigana": "<ruby>昭和<rp>(</rp><rt>しょうわ</rt><rp>)</rp></ruby>１０<ruby>年<rp>(</rp><rt>ねん</rt><rp>)</rp></ruby>は<ruby>西暦<rp>(</rp><rt>せいれき</rt><rp>)</rp></ruby>１９３５<ruby>年<rp>(</rp><rt>ねん</rt><rp>)</rp></ruby>です。",
-                        "enMn": "Шёва 10 он бол манай эриний 1935 он юм."
+                        "enMn": "Сёвагийн 10 дугаар он бол манай эриний 1935 он юм."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -18099,7 +18099,7 @@ const WORD_LEVELS = [
                         "jp": "「あっ、時間ないし。やけっぱちよ。ぶっつけ本番でいこう。明日、がんばろう。もう、どうにでもなれってんだ」「どうしたの？」「明日、ゼミのプレゼンがあるの。資料が今できたんだけど、まだ一度も通してやってないの。どうしよう」「どうにもならないね」",
                         "en": "\"Oh no, there's not enough time. This is hopeless, I'm just gonna wing it and try my best tomorrow, I don't care anymore.\" \"What's the problem?\" \"I have an in-class presentation tomorrow, and I have all the materials ready, but I haven't gone over them yet. I've really messed up this time.\" \"Well, no help for it.\"",
                         "furigana": "「あっ、<ruby>時間<rp>(</rp><rt>じかん</rt><rp>)</rp></ruby>ないし。やけっぱちよ。ぶっつけ<ruby>本番<rp>(</rp><rt>ほんばん</rt><rp>)</rp></ruby>でいこう。<ruby>明日<rp>(</rp><rt>あした</rt><rp>)</rp></ruby>、がんばろう。もう、どうにでもなれってんだ」「どうしたの？」「<ruby>明日<rp>(</rp><rt>あした</rt><rp>)</rp></ruby>、ゼミのプレゼンがあるの。<ruby>資料<rp>(</rp><rt>しりょう</rt><rp>)</rp></ruby>が<ruby>今<rp>(</rp><rt>いま</rt><rp>)</rp></ruby>できたんだけど、まだ<ruby>一<rp>(</rp><rt>いち</rt><rp>)</rp></ruby><ruby>度<rp>(</rp><rt>ど</rt><rp>)</rp></ruby>も<ruby>通<rp>(</rp><rt>とお</rt><rp>)</rp></ruby>してやってないの。どうしよう」「どうにもならないね」",
-                        "enMn": "«Өө, цаг алга. Найдваргүй боллоо. Бэлтгэлгүйгээр орж, маргааш чадах чинээгээрээ хийе. Яахав ээ.» «Юу болов?» «Маргааш семинарын илтгэл тавих ёстой. Материалаа бэлдчихсэн ч ганц ч удаа давтаж үзээгүй. Яах вэ?» «Яах ч аргагүй байна даа.»"
+                        "enMn": "«Өө, цаг алга. Яамаргүй боллоо. Бэлтгэлгүй орж, маргааш чадах чинээгээрээ хийнэ дээ. Яахав дээ.» «Юу болоо вэ?» «Маргааш семинарт илтгэл тавих ёстой юм. Материалаа дөнгөж бэлдсэн ч ганц ч удаа давтаагүй. Яая даа?» «Яах ч аргагүй юм байна.»"
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -18381,7 +18381,7 @@ const WORD_LEVELS = [
                         "jp": "それは私の台詞だよ！",
                         "en": "That's MY line!",
                         "furigana": "それは<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>の<ruby>台詞<rp>(</rp><rt>だいし</rt><rp>)</rp></ruby>だよ！",
-                        "enMn": "Тэр бол миний хэлэх үг шүү дээ!"
+                        "enMn": "Түүнийг би хэлэх учиртай шүү дээ!"
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -18403,7 +18403,7 @@ const WORD_LEVELS = [
                         "jp": "洗面所の栓を抜くと、水がガバガバ流れ出した。",
                         "en": "When I unplugged the bathroom sink, the water gushed down the drain.",
                         "furigana": "<ruby>洗面<rp>(</rp><rt>せんめん</rt><rp>)</rp></ruby><ruby>所<rp>(</rp><rt>しょ</rt><rp>)</rp></ruby>の<ruby>栓<rp>(</rp><rt>せん</rt><rp>)</rp></ruby>を<ruby>抜<rp>(</rp><rt>ぬ</rt><rp>)</rp></ruby>くと、<ruby>水<rp>(</rp><rt>みず</rt><rp>)</rp></ruby>がガバガバ<ruby>流<rp>(</rp><rt>なが</rt><rp>)</rp></ruby>れ<ruby>出<rp>(</rp><rt>だ</rt><rp>)</rp></ruby>した。",
-                        "enMn": "Угаалтуурын бөглөөг сугалахад ус шуугин урсаж эхлэв."
+                        "enMn": "Угаалтуурын бөглөөг сугалахад ус хүчтэй цутган урсав."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -19102,7 +19102,7 @@ const WORD_LEVELS = [
                         "jp": "僕はそうっと自分の寝室に行った。",
                         "en": "I went up to my bedroom on tiptoe.",
                         "furigana": "<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>はそうっと<ruby>自分<rp>(</rp><rt>じぶん</rt><rp>)</rp></ruby>の<ruby>寝室<rp>(</rp><rt>しんしつ</rt><rp>)</rp></ruby>に<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>った。",
-                        "enMn": "Би зөөлхөн унтлагын өрөө рүүгээ оров."
+                        "enMn": "Би чимээгүйхэн унтлагынхаа өрөө рүү оров."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -19418,7 +19418,7 @@ const WORD_LEVELS = [
                         "jp": "今私の家の付近に住宅が続々建っている。",
                         "en": "In my neighborhood, houses are now being built one after another.",
                         "furigana": "<ruby>今<rp>(</rp><rt>いま</rt><rp>)</rp></ruby><ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>の<ruby>家<rp>(</rp><rt>いえ</rt><rp>)</rp></ruby>の<ruby>付近<rp>(</rp><rt>ふきん</rt><rp>)</rp></ruby>に<ruby>住宅<rp>(</rp><rt>じゅうたく</rt><rp>)</rp></ruby>が<ruby>続々<rp>(</rp><rt>ぞくぞく</rt><rp>)</rp></ruby><ruby>建<rp>(</rp><rt>た</rt><rp>)</rp></ruby>っている。",
-                        "enMn": "Одоо манай гэрийн ойролцоо орон байр дараа дараагаар баригдаж байна."
+                        "enMn": "Одоо манай гэрийн ойролцоо шинэ байшингууд ар араасаа баригдаж байна."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -19480,7 +19480,7 @@ const WORD_LEVELS = [
                         "jp": "英国の測量法では４クオートは１ガロンだ。",
                         "en": "In the imperial measurement system, four quarts equals one gallon.",
                         "furigana": "<ruby>英国<rp>(</rp><rt>えいこく</rt><rp>)</rp></ruby>の<ruby>測量<rp>(</rp><rt>そくりょう</rt><rp>)</rp></ruby><ruby>法<rp>(</rp><rt>ほう</rt><rp>)</rp></ruby>では４クオートは１ガロンだ。",
-                        "enMn": "Британийн хэмжлийн системд 4 кварт нь 1 галлон болно."
+                        "enMn": "Английн хэмжих системд 4 кварт 1 галлонтой тэнцэнэ."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -19957,7 +19957,7 @@ const WORD_LEVELS = [
                         "jp": "日本語の表記体系は不満かい？",
                         "en": "Are you not satisfied with the Japanese writing system?",
                         "furigana": "<ruby>日本語<rp>(</rp><rt>にほんご</rt><rp>)</rp></ruby>の<ruby>表記<rp>(</rp><rt>ひょうき</rt><rp>)</rp></ruby><ruby>体系<rp>(</rp><rt>たいけい</rt><rp>)</rp></ruby>は<ruby>不満<rp>(</rp><rt>ふまん</rt><rp>)</rp></ruby>かい？",
-                        "enMn": "Япон хэлний бичгийн тогтолцоонд сэтгэл дундуур байна уу?"
+                        "enMn": "Япон хэлний бичгийн системд сэтгэл ханамжгүй байна уу?"
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -20572,7 +20572,7 @@ const WORD_LEVELS = [
                         "jp": "男が１人滝に打たれていた。",
                         "en": "A man was hit by a waterfall.",
                         "furigana": "<ruby>男<rp>(</rp><rt>おとこ</rt><rp>)</rp></ruby>が１<ruby>人<rp>(</rp><rt>にん</rt><rp>)</rp></ruby><ruby>滝<rp>(</rp><rt>たき</rt><rp>)</rp></ruby>に<ruby>打<rp>(</rp><rt>う</rt><rp>)</rp></ruby>たれていた。",
-                        "enMn": "Нэг эрэгтэй хүн хүрхрээний усанд цохиулж байв."
+                        "enMn": "Нэг эрэгтэй хүрхрээний усан дор зогсож байлаа."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -20699,7 +20699,7 @@ const WORD_LEVELS = [
                         "jp": "１発目のローキックはこの布石か！？",
                         "en": "The first low kick was the set-up for this!?",
                         "furigana": "１<ruby>発<rp>(</rp><rt>はつ</rt><rp>)</rp></ruby><ruby>目<rp>(</rp><rt>め</rt><rp>)</rp></ruby>のローキックはこの<ruby>布石<rp>(</rp><rt>ふせき</rt><rp>)</rp></ruby>か！？",
-                        "enMn": "Эхний намхан өшиглөлт нь энэ бэлтгэл байсан юм уу!?"
+                        "enMn": "Эхний намхан өшиглөлт нь үүний бэлтгэл байсан юм уу!?"
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -21113,7 +21113,7 @@ const WORD_LEVELS = [
                         "jp": "賢者はひと言にして足る。",
                         "en": "A word to the wise is sufficient.",
                         "furigana": "<ruby>賢者<rp>(</rp><rt>けんじゃ</rt><rp>)</rp></ruby>はひと<ruby>言<rp>(</rp><rt>こと</rt><rp>)</rp></ruby>にして<ruby>足<rp>(</rp><rt>た</rt><rp>)</rp></ruby>る。",
-                        "enMn": "Мэргэн хүнд нэг үг хүрэлцэнэ."
+                        "enMn": "Мэргэн хүнд ганц үг хангалттай."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -21276,7 +21276,7 @@ const WORD_LEVELS = [
                         "jp": "紳士の人からお先にどうぞ。",
                         "en": "Gentlemen first.",
                         "furigana": "<ruby>紳士<rp>(</rp><rt>しんし</rt><rp>)</rp></ruby>の<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>からお<ruby>先<rp>(</rp><rt>さき</rt><rp>)</rp></ruby>にどうぞ。",
-                        "enMn": "Ноёд түрүүлж морилно уу."
+                        "enMn": "Ноёд түрүүлж орно уу."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -22260,7 +22260,7 @@ const WORD_LEVELS = [
                         "jp": "こたつで寝ちゃったら風邪引くのはあたりまえ。自己管理がなっていない。",
                         "en": "Of course you'll catch a cold if you fall asleep under the kotatsu. You have to learn to take care of yourself.",
                         "furigana": "こたつで<ruby>寝<rp>(</rp><rt>ね</rt><rp>)</rp></ruby>ちゃったら<ruby>風邪<rp>(</rp><rt>かぜ</rt><rp>)</rp></ruby><ruby>引<rp>(</rp><rt>ひ</rt><rp>)</rp></ruby>くのはあたりまえ。<ruby>自己<rp>(</rp><rt>じこ</rt><rp>)</rp></ruby><ruby>管理<rp>(</rp><rt>かんり</rt><rp>)</rp></ruby>がなっていない。",
-                        "enMn": "Халаагууртай ширээнд унтчихвал ханиад хүрэх нь мэдээж. Өөрийгөө зохицуулж чаддаггүй юм."
+                        "enMn": "Халаагууртай ширээнд унтвал ханиад хүрэх нь мэдээж. Биеэ хамгаалж чаддаггүй юм."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -22404,7 +22404,7 @@ const WORD_LEVELS = [
                         "jp": "彼女は肩が凝る本を読む気にはなれなかった。",
                         "en": "She was not in the mood for serious books.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>肩<rp>(</rp><rt>かた</rt><rp>)</rp></ruby>が<ruby>凝<rp>(</rp><rt>こ</rt><rp>)</rp></ruby>る<ruby>本<rp>(</rp><rt>ほん</rt><rp>)</rp></ruby>を<ruby>読<rp>(</rp><rt>よ</rt><rp>)</rp></ruby>む<ruby>気<rp>(</rp><rt>き</rt><rp>)</rp></ruby>にはなれなかった。",
-                        "enMn": "Тэр хүнд хэцүү ном унших сэтгэлгүй байв."
+                        "enMn": "Тэр толгой ажиллуулах ном уншмааргүй байлаа."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -22827,7 +22827,7 @@ const WORD_LEVELS = [
                         "jp": "地方の道路整備のための財源確保が必要です。",
                         "en": "It is necessary to secure financing for local road maintenance.",
                         "furigana": "<ruby>地方<rp>(</rp><rt>ちほう</rt><rp>)</rp></ruby>の<ruby>道路<rp>(</rp><rt>どうろ</rt><rp>)</rp></ruby><ruby>整備<rp>(</rp><rt>せいび</rt><rp>)</rp></ruby>のための<ruby>財源<rp>(</rp><rt>ざいげん</rt><rp>)</rp></ruby><ruby>確保<rp>(</rp><rt>かくほ</rt><rp>)</rp></ruby>が<ruby>必要<rp>(</rp><rt>ひつよう</rt><rp>)</rp></ruby>です。",
-                        "enMn": "Орон нутгийн замын засварт зориулсан эх үүсвэрийг баталгаажуулах шаардлагатай."
+                        "enMn": "Орон нутгийн зам засварын санхүүжилтийн эх үүсвэрийг бүрдүүлэх шаардлагатай."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -23456,7 +23456,7 @@ const WORD_LEVELS = [
                         "jp": "最近、タチの悪い詐欺事件が多いわね。",
                         "en": "Recently there have been a lot of nasty incidents with fraud.",
                         "furigana": "<ruby>最近<rp>(</rp><rt>さいきん</rt><rp>)</rp></ruby>、タチの<ruby>悪<rp>(</rp><rt>わる</rt><rp>)</rp></ruby>い<ruby>詐欺<rp>(</rp><rt>さぎ</rt><rp>)</rp></ruby><ruby>事件<rp>(</rp><rt>じけん</rt><rp>)</rp></ruby>が<ruby>多<rp>(</rp><rt>おお</rt><rp>)</rp></ruby>いわね。",
-                        "enMn": "Сүүлийн үед муу санаатай залилангийн хэрэг их болжээ."
+                        "enMn": "Сүүлийн үед новшийн залилан их гарах боллоо."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -23887,7 +23887,7 @@ const WORD_LEVELS = [
                         "jp": "彼は仕事が雑だ。",
                         "en": "He is careless and untidy in his work.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>仕事<rp>(</rp><rt>しごと</rt><rp>)</rp></ruby>が<ruby>雑<rp>(</rp><rt>ざつ</rt><rp>)</rp></ruby>だ。",
-                        "enMn": "Тэр ажилдаа бүдүүлэг ханддаг."
+                        "enMn": "Тэр ажлаа замбараагүй хийдэг."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -23928,7 +23928,7 @@ const WORD_LEVELS = [
                         "jp": "殺人犯は有罪判決を受けて終身刑に処せられた。",
                         "en": "The murderer was convicted and sentenced to life in prison.",
                         "furigana": "<ruby>殺人<rp>(</rp><rt>さつじん</rt><rp>)</rp></ruby><ruby>犯<rp>(</rp><rt>はん</rt><rp>)</rp></ruby>は<ruby>有罪<rp>(</rp><rt>ゆうざい</rt><rp>)</rp></ruby><ruby>判決<rp>(</rp><rt>はんけつ</rt><rp>)</rp></ruby>を<ruby>受<rp>(</rp><rt>う</rt><rp>)</rp></ruby>けて<ruby>終身<rp>(</rp><rt>しゅうしん</rt><rp>)</rp></ruby><ruby>刑<rp>(</rp><rt>けい</rt><rp>)</rp></ruby>に<ruby>処<rp>(</rp><rt>しょ</rt><rp>)</rp></ruby>せられた。",
-                        "enMn": "Аллага үйлдэгч гэм буруутайд тооцогдож бүх насаар нь хорих ял оногдуулав."
+                        "enMn": "Алуурчин гэм буруутай нь тогтоогдож, бүх насаар нь хорих ял авав."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -23992,7 +23992,7 @@ const WORD_LEVELS = [
                         "jp": "彼は絵筆をカンバスにさっと走らせた。",
                         "en": "He swept his brush across the canvas.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>絵筆<rp>(</rp><rt>えふで</rt><rp>)</rp></ruby>をカンバスにさっと<ruby>走<rp>(</rp><rt>はし</rt><rp>)</rp></ruby>らせた。",
-                        "enMn": "Тэр бийрээ зотон дээгүүр шуурхай гүйлгэв."
+                        "enMn": "Тэр бийрээ зотон дээгүүр нэг татав."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -24368,7 +24368,7 @@ const WORD_LEVELS = [
                         "jp": "『うぐいす侍』人間愛とユーモア溢れる侍物語。",
                         "en": "\"The Nightingale Samurai\" is a samurai tale full of humanity and humour.",
                         "furigana": "『うぐいす<ruby>侍<rp>(</rp><rt>さむらい</rt><rp>)</rp></ruby>』<ruby>人間<rp>(</rp><rt>にんげん</rt><rp>)</rp></ruby><ruby>愛<rp>(</rp><rt>あい</rt><rp>)</rp></ruby>とユーモア<ruby>溢<rp>(</rp><rt>あふ</rt><rp>)</rp></ruby>れる<ruby>侍<rp>(</rp><rt>さむらい</rt><rp>)</rp></ruby><ruby>物語<rp>(</rp><rt>ものがたり</rt><rp>)</rp></ruby>。",
-                        "enMn": "«Булбул самурай» бол хүнлэг энэрэл, хошин шогоор дүүрэн самурайн түүх."
+                        "enMn": "«Булбул самурай» бол хүн чанар, хошин шогоор дүүрэн самурайн өгүүллэг."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -24513,7 +24513,7 @@ const WORD_LEVELS = [
                         "jp": "彼女は来週から産休に入る。",
                         "en": "She will start her maternity leave next week.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>来週<rp>(</rp><rt>らいしゅう</rt><rp>)</rp></ruby>から<ruby>産休<rp>(</rp><rt>さんきゅう</rt><rp>)</rp></ruby>に<ruby>入<rp>(</rp><rt>はい</rt><rp>)</rp></ruby>る。",
-                        "enMn": "Тэр ирэх долоо хоногоос жирэмсний амралтад гарна."
+                        "enMn": "Тэр ирэх долоо хоногоос жирэмсний амралтаа авна."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -25449,7 +25449,7 @@ const WORD_LEVELS = [
                         "jp": "女として自覚なさ過ぎて怖い。",
                         "en": "It's scary how little consideration she gives to being a woman.",
                         "furigana": "<ruby>女<rp>(</rp><rt>おんな</rt><rp>)</rp></ruby>として<ruby>自覚<rp>(</rp><rt>じかく</rt><rp>)</rp></ruby>なさ<ruby>過<rp>(</rp><rt>す</rt><rp>)</rp></ruby>ぎて<ruby>怖<rp>(</rp><rt>こわ</rt><rp>)</rp></ruby>い。",
-                        "enMn": "Эмэгтэй хүн гэдгээ хэтэрхий бага ухамсарладаг нь аймаар."
+                        "enMn": "Эмэгтэй хүн гэдгээ хэт бага боддог нь аймаар юм."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -25556,7 +25556,7 @@ const WORD_LEVELS = [
                         "jp": "彼は臍を固めて一世一代の大事業に乗り出した。",
                         "en": "He resolved to embark on a once-in-a-lifetime enterprise.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>臍<rp>(</rp><rt>ほぞ</rt><rp>)</rp></ruby>を<ruby>固<rp>(</rp><rt>かた</rt><rp>)</rp></ruby>めて<ruby>一世一代<rp>(</rp><rt>いっせいちだい</rt><rp>)</rp></ruby>の<ruby>大<rp>(</rp><rt>だい</rt><rp>)</rp></ruby><ruby>事業<rp>(</rp><rt>じぎょう</rt><rp>)</rp></ruby>に<ruby>乗<rp>(</rp><rt>の</rt><rp>)</rp></ruby>り<ruby>出<rp>(</rp><rt>だ</rt><rp>)</rp></ruby>した。",
-                        "enMn": "Тэр шийдэмгий болж, амьдралдаа нэг удаагийн том үйл ажиллагаанд оров."
+                        "enMn": "Тэр зориг шулуудаж, амьдралдаа ганц удаа тохиох том хэрэгт оров."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -25620,7 +25620,7 @@ const WORD_LEVELS = [
                         "jp": "彼は１人で飛ぶことに慣れていた。そして彼は想像の中で何度もこの経路を飛んでいたのだ。",
                         "en": "He was accustomed to flying alone, and he had flown this route in his imagination many times.",
                         "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は１<ruby>人<rp>(</rp><rt>にん</rt><rp>)</rp></ruby>で<ruby>飛<rp>(</rp><rt>と</rt><rp>)</rp></ruby>ぶことに<ruby>慣<rp>(</rp><rt>な</rt><rp>)</rp></ruby>れていた。そして<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>想像<rp>(</rp><rt>そうぞう</rt><rp>)</rp></ruby>の<ruby>中<rp>(</rp><rt>なか</rt><rp>)</rp></ruby>で<ruby>何<rp>(</rp><rt>なん</rt><rp>)</rp></ruby><ruby>度<rp>(</rp><rt>ど</rt><rp>)</rp></ruby>もこの<ruby>経路<rp>(</rp><rt>けいろ</rt><rp>)</rp></ruby>を<ruby>飛<rp>(</rp><rt>と</rt><rp>)</rp></ruby>んでいたのだ。",
-                        "enMn": "Тэр ганцаараа нисэхэд дассан байв. Мөн төсөөлөлдөө энэ замаар олон удаа нисч байсан юм."
+                        "enMn": "Тэр ганцаараа нисэхэд дассан байлаа. Бас төсөөлөлдөө энэ замаар олон удаа нисч байжээ."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -25990,7 +25990,7 @@ const WORD_LEVELS = [
                         "jp": "何年か前には、結核にかかっていると知らされることは死の宣告を聞くのに等しかった。",
                         "en": "Some years ago, learning that one had tuberculosis amounted to hearing a sentence of death.",
                         "furigana": "<ruby>何<rp>(</rp><rt>なん</rt><rp>)</rp></ruby><ruby>年<rp>(</rp><rt>ねん</rt><rp>)</rp></ruby>か<ruby>前<rp>(</rp><rt>まえ</rt><rp>)</rp></ruby>には、<ruby>結核<rp>(</rp><rt>けっかく</rt><rp>)</rp></ruby>にかかっていると<ruby>知<rp>(</rp><rt>し</rt><rp>)</rp></ruby>らされることは<ruby>死<rp>(</rp><rt>し</rt><rp>)</rp></ruby>の<ruby>宣告<rp>(</rp><rt>せんこく</rt><rp>)</rp></ruby>を<ruby>聞<rp>(</rp><rt>き</rt><rp>)</rp></ruby>くのに<ruby>等<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>しかった。",
-                        "enMn": "Хэдэн жилийн өмнө сүрьеэ туссан гэдгээ мэдэх нь үхлийн ялыг сонсохтой адил байлаа."
+                        "enMn": "Хэдэн жилийн өмнө сүрьеэ туссан гэж сонсох нь үхлийн ял сонсохтой ижил байсан."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -26054,7 +26054,7 @@ const WORD_LEVELS = [
                         "jp": "水増し決算の噂で株価は上がりませんでした。",
                         "en": "The stock got creamed when they got wind of the dilution.",
                         "furigana": "<ruby>水増<rp>(</rp><rt>みずま</rt><rp>)</rp></ruby>し<ruby>決算<rp>(</rp><rt>けっさん</rt><rp>)</rp></ruby>の<ruby>噂<rp>(</rp><rt>うわさ</rt><rp>)</rp></ruby>で<ruby>株価<rp>(</rp><rt>かぶか</rt><rp>)</rp></ruby>は<ruby>上<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>がりませんでした。",
-                        "enMn": "Хуурамч тооцоо бодолтын цуурхлаас болж хувьцааны үнэ өсөөгүй."
+                        "enMn": "Тооцоог хуурамчаар гаргасан гэх цуурхлаас болж хувьцааны ханш өсөөгүй."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -26156,7 +26156,7 @@ const WORD_LEVELS = [
                         "jp": "彼女、しばらく見ない間にげっそりと痩せちゃったけど、何か大きな病気でもしたのかな。",
                         "en": "She's become very thin in the long time since I last saw her. I wonder if she's fallen seriously ill or something.",
                         "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>、しばらく<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>ない<ruby>間<rp>(</rp><rt>ま</rt><rp>)</rp></ruby>にげっそりと<ruby>痩<rp>(</rp><rt>や</rt><rp>)</rp></ruby>せちゃったけど、<ruby>何<rp>(</rp><rt>なに</rt><rp>)</rp></ruby>か<ruby>大<rp>(</rp><rt>おお</rt><rp>)</rp></ruby>きな<ruby>病気<rp>(</rp><rt>びょうき</rt><rp>)</rp></ruby>でもしたのかな。",
-                        "enMn": "Тэр охиныг хэсэг хугацаанд хараагүй байтал их турчихаж, ямар нэг хүнд өвчин тусчихав уу даа."
+                        "enMn": "Түүнийг хэсэг хугацаанд хараагүй байтал их турсан байна. Ямар нэгэн хүнд өвчин туссан юм болов уу."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -26514,7 +26514,7 @@ const WORD_LEVELS = [
                         "jp": "あの人は煙たい。",
                         "en": "I feel awkward in his presence.",
                         "furigana": "あの<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>は<ruby>煙<rp>(</rp><rt>けむ</rt><rp>)</rp></ruby>たい。",
-                        "enMn": "Тэр хүний дэргэд эвгүй санагддаг."
+                        "enMn": "Тэр хүнтэй хамт байхад эвгүй байдаг."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -26556,7 +26556,7 @@ const WORD_LEVELS = [
                         "jp": "下痢気味です。",
                         "en": "I have a touch of diarrhea.",
                         "furigana": "<ruby>下痢<rp>(</rp><rt>げり</rt><rp>)</rp></ruby><ruby>気味<rp>(</rp><rt>ぎみ</rt><rp>)</rp></ruby>です。",
-                        "enMn": "Би бага зэрэг суулгалттай байна."
+                        "enMn": "Гэдэс жаахан гүйлгэж байна."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
@@ -26599,7 +26599,7 @@ const WORD_LEVELS = [
                         "jp": "toのつかない不定詞を原形不定詞と言う。",
                         "en": "An infinitive without a 'to' attached is called a bare infinitive.",
                         "furigana": "toのつかない<ruby>不定<rp>(</rp><rt>ふてい</rt><rp>)</rp></ruby><ruby>詞<rp>(</rp><rt>ことば</rt><rp>)</rp></ruby>を<ruby>原形<rp>(</rp><rt>げんけい</rt><rp>)</rp></ruby><ruby>不定<rp>(</rp><rt>ふてい</rt><rp>)</rp></ruby><ruby>詞<rp>(</rp><rt>ことば</rt><rp>)</rp></ruby>と<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>う。",
-                        "enMn": "to залгаагүй тодорхойгүй хэлбэрийг уг хэлбэрийн тодорхойгүй үйл үг гэдэг."
+                        "enMn": "to урдаа авахгүй тодорхойгүй үйл үгийг уг хэлбэр гэж нэрлэдэг."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
