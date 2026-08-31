@@ -1340,7 +1340,13 @@ function spawnFlyer(targetTile) {
         const wrapWidth = boardWrapEl.clientWidth;
         el.style.left = '-140px';
         tween(-140, wrapWidth + 140, 7000, v => {
-            if (flyerEl !== el) return; // caught, shattered, or the level moved on mid-flight
+            // flyerEl !== el: shattered, or the level moved on mid-flight. flyerHeld: THIS tile
+            // was caught -- catchFlyer() has already taken over positioning it (position:fixed,
+            // following the pointer), and tween's own rAF loop runs for the full 7000ms
+            // regardless of being caught, so without this check it would keep overwriting
+            // el.style.left with the flight path's position on every subsequent frame, right on
+            // top of wherever the pointer actually is.
+            if (flyerEl !== el || flyerHeld) return;
             el.style.left = v + 'px';
         });
     }
@@ -1359,6 +1365,13 @@ function catchFlyer(e) {
 
     const el = flyerEl;
     el.classList.add('held');
+    // Clear the top/left the flight phase set inline (a random top%, and left tweened from
+    // -140px across the board) -- .flyer.held's own top:0/left:0 in CSS can't override an
+    // inline style, so without this the translate() below stacked on top of wherever the
+    // flight happened to leave it, and the tile snapped further from the cursor the later into
+    // the flight it was caught.
+    el.style.top = '0px';
+    el.style.left = '0px';
     el.style.transform = '';
     moveFlyerTo(e.clientX, e.clientY);
     flyerPointerMoveHandler = ev => moveFlyerTo(ev.clientX, ev.clientY);
