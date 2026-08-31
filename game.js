@@ -1459,6 +1459,15 @@ function handleFlyerDrop(tile) {
     }
     const pairIds = computeBlastPairIds(tile);
     killFlyer();
+    // Every other clear path (handleMatch, handleLightningChain) is only ever entered with
+    // the board already locked -- they're reached through onTileClick's normal two-tile-click
+    // flow, which sets `locked = true` before the resolve delay even starts, and each one resets
+    // it at the end of its own animation. The blast is reached through the separate flyerHeld
+    // branch instead, which never locked anything, so without this the board stayed fully
+    // clickable for the whole pending-clear window -- long enough to start a second, overlapping
+    // clear on one of the very tiles already mid-blast, corrupting matchedCount and leaving that
+    // tile in a state neither clear path expected.
+    locked = true;
     resolveWakanBlast(pairIds, tile.pairId);
 }
 
