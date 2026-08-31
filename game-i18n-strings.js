@@ -40,6 +40,7 @@ Object.assign(window.I18N_STRINGS, {
     // the key-coverage script same as everywhere else).
     'game.streakFloat': { en: 'STREAK x{n}', mn: 'ДАРААЛАЛ x{n}' },
     'game.lightningFloat': { en: 'LIGHTNING x{n}', mn: 'АЯНГА x{n}' },
+    'game.wakanFloat': { en: 'WAKAN LINK x{n}', mn: 'ХОЛБОЛТ x{n}' },
     'game.penaltyFloat': { en: 'PENALTY — pair returned', mn: 'ТОРГУУЛЬ — хос буцаж ирэв' },
     'game.foundChipLabel': { en: 'found', mn: 'олдсон' },
     'game.soundOff': { en: 'Turn sound off', mn: 'Дууг унтраах' },

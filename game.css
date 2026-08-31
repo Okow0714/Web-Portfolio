@@ -717,6 +717,19 @@ body.game-playing .game-main {
     100% { transform: translateY(-7px) scale(calc(var(--tile-inset) * 1.06)); filter: var(--tile-shadow) drop-shadow(0 0 9px var(--lightning)); }
 }
 
+/* Wakan blast (winged-tile bonus): the dropped-on pair plus its blast-radius neighbours --
+   violet-tinted (--wisteria, otherwise only ever a per-pair suit-dot accent) so it's visually
+   distinct from a gold ordinary match and a cyan lightning chain, but built from the exact same
+   pop shape as both. */
+.tile.wakan-pop { animation: wakanPop 0.62s var(--ease-pop); }
+
+@keyframes wakanPop {
+    0% { transform: translateY(-7px) scale(calc(var(--tile-inset) * 1.06)); filter: var(--tile-shadow) drop-shadow(0 0 10px var(--wisteria)); }
+    30% { transform: translateY(-18px) scale(calc(var(--tile-inset) * 1.3)); filter: var(--tile-shadow) drop-shadow(0 0 22px var(--wisteria)) brightness(1.5) saturate(1.3); }
+    60% { transform: translateY(-10px) scale(calc(var(--tile-inset) * 0.92)); filter: var(--tile-shadow) drop-shadow(0 0 14px var(--wisteria)); }
+    100% { transform: translateY(-7px) scale(calc(var(--tile-inset) * 1.06)); filter: var(--tile-shadow) drop-shadow(0 0 9px var(--wisteria)); }
+}
+
 .tile.mismatch { animation: mismatchShake 0.42s var(--ease-out); }
 
 @keyframes mismatchShake {
@@ -735,6 +748,15 @@ body.game-playing .game-main {
 @keyframes tileClear {
     0% { opacity: 1; transform: translateY(-7px) scale(calc(var(--tile-inset) * 1.06)); }
     100% { opacity: 0; transform: translateY(-7px) scale(calc(var(--tile-inset) * 0.4)) rotate(8deg); }
+}
+
+/* A refill batch arriving (see dealPairs() in game.js) -- a small pop-in so new cards visibly
+   arrive rather than the board silently changing shape between clicks. */
+.tile.dealt-in { animation: tileDealIn 0.34s var(--ease-pop); }
+
+@keyframes tileDealIn {
+    0% { opacity: 0; transform: translateY(0) scale(calc(var(--tile-inset) * 0.35)) rotate(-6deg); }
+    100% { opacity: 1; transform: translateY(0) scale(var(--tile-inset)) rotate(0deg); }
 }
 
 /* ---------------------------------------------------------------------
@@ -777,6 +799,11 @@ body.game-playing .game-main {
     font-size: 0.85em;
 }
 
+.float-text.wakan-text {
+    color: var(--wisteria);
+    text-shadow: 0 0 20px rgba(91, 87, 166, 0.65), 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
 /* Penalty return: a cleared pair reappearing mid-round. Distinct from .match-pop (gold, tiles
    leaving) and .cleared (fading out) -- this is a tile arriving with a warning-red flash, the
    visual inverse of clearing. */
@@ -796,6 +823,152 @@ body.game-playing .game-main {
     18% { opacity: 1; transform: translate(-50%, -70%) scale(1.08); }
     30% { transform: translate(-50%, -78%) scale(1); }
     100% { opacity: 0; transform: translate(-50%, -140%) scale(1); }
+}
+
+/* ---------------------------------------------------------------------
+   Wakan winged-tile bonus event (see the JS section of the same name in game.js).
+   The flyer is a sibling of #tile-grid, not a child of it -- #tile-grid's innerHTML gets wiped
+   and rebuilt on every ordinary relayout (a match, a refill, a shuffle), which would silently
+   delete the flyer out from under its own JS state if it lived inside that subtree. Its own
+   --flyer-w/-h duplicate .tile-grid's --hex-w/-h clamp formula rather than inheriting it (an
+   element can only inherit a custom property from its own ancestors, and .tile-grid is a
+   sibling here, not one) -- .board-wrap already being a container (container-type: inline-size,
+   set for that same --hex-w formula) means 100cqw resolves the same way regardless of which of
+   its descendants declares the variable, so the two stay visually in sync without depending on
+   DOM position.
+   --------------------------------------------------------------------- */
+.flyer {
+    --flyer-w: clamp(38px, calc(100cqw / 6), 148px);
+    --flyer-h: calc(var(--flyer-w) * 1.017);
+    position: absolute;
+    top: 40%;
+    left: -140px;
+    width: var(--flyer-w);
+    height: var(--flyer-h);
+    z-index: 5;
+    cursor: pointer;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+}
+
+.flyer.held {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 60;
+    pointer-events: none; /* lets the click that lands the drop pass straight through to the board tile underneath */
+}
+
+.flyer-body {
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    background:
+        radial-gradient(140% 120% at 15% 10%, rgba(255, 255, 255, 0.5), transparent 55%),
+        linear-gradient(165deg, var(--paper), var(--paper-edge) 130%);
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 4px 6px;
+    text-align: center;
+}
+
+.flyer.held .flyer-body {
+    animation: flyerShake var(--shake-dur, 0.44s) linear infinite;
+}
+
+@keyframes flyerShake {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    20% { transform: translate(calc(var(--shake-amp, 1.5px) * -1), 0) rotate(calc(var(--shake-rot, 0.6deg) * -1)); }
+    45% { transform: translate(var(--shake-amp, 1.5px), 0) rotate(var(--shake-rot, 0.6deg)); }
+    70% { transform: translate(calc(var(--shake-amp, 1.5px) * -0.6), 0) rotate(calc(var(--shake-rot, 0.6deg) * -0.6)); }
+}
+
+.flyer-reading {
+    font-size: clamp(0.7rem, 1.4cqw, 0.9rem);
+    color: var(--ink-soft);
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.flyer-text {
+    font-family: var(--font-jp);
+    font-size: clamp(1rem, 2.6cqw, 1.6rem);
+    font-weight: 700;
+    line-height: 1.15;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.flyer-wing {
+    position: absolute;
+    top: 24%;
+    width: 44%;
+    height: 52%;
+    background: var(--gold-bright);
+    clip-path: polygon(100% 0, 0 38%, 28% 52%, 0 74%, 100% 100%);
+    opacity: 0.92;
+}
+
+.flyer-wing.l { left: -38%; animation: flyerWingL 0.34s ease-in-out infinite alternate; }
+.flyer-wing.r { right: -38%; transform: scaleX(-1); animation: flyerWingR 0.34s ease-in-out infinite alternate; }
+
+.flyer.held .flyer-wing { opacity: 0.32; transform: scale(0.72); animation: none; }
+.flyer.held .flyer-wing.r { transform: scaleX(-1) scale(0.72); }
+
+@keyframes flyerWingL {
+    from { transform: rotate(-14deg) scaleY(0.82); }
+    to { transform: rotate(12deg) scaleY(1.06); }
+}
+@keyframes flyerWingR {
+    from { transform: scaleX(-1) rotate(-14deg) scaleY(0.82); }
+    to { transform: scaleX(-1) rotate(12deg) scaleY(1.06); }
+}
+
+.flyer-clock {
+    position: absolute;
+    left: 50%;
+    top: -22px;
+    transform: translateX(-50%);
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--gold-bright);
+    font-variant-numeric: tabular-nums;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+    opacity: 0;
+}
+
+.flyer.held .flyer-clock { opacity: 1; }
+
+/* While carrying: hide the system cursor over the board so the tile itself reads as the
+   pointer (see .flyer.held above having pointer-events: none -- the cursor still needs to be
+   suppressed separately since the underlying board tiles remain clickable/hoverable). */
+.board-wrap.carrying-flyer { cursor: none; }
+.board-wrap.carrying-flyer .tile { cursor: none; }
+
+/* Shatter: the caught tile breaking apart on a miss or a wrong drop (see spawnShards() in
+   game.js). Fixed-positioned like .flyer.held, since shatter only ever happens to a tile that
+   was already being carried. Six wedges of the same hexagon clip-path split apart, distinct
+   from .tile.cleared's plain fade-and-shrink -- this is meant to read as breaking, not clearing. */
+.flyer-shard {
+    position: fixed;
+    background:
+        radial-gradient(140% 120% at 15% 10%, rgba(255, 255, 255, 0.5), transparent 55%),
+        linear-gradient(165deg, var(--paper), var(--paper-edge) 130%);
+    pointer-events: none;
+    z-index: 61;
+    animation: flyerShardFly 0.7s var(--ease-out) forwards;
+}
+
+@keyframes flyerShardFly {
+    0% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+    100% { transform: translate(var(--dx), var(--dy)) rotate(var(--rot)); opacity: 0; }
 }
 
 /* ---------------------------------------------------------------------

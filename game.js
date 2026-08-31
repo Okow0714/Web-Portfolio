@@ -89,11 +89,34 @@ const MUSIC_POOLS = {
 // tier's in-level pool above.
 const LEVEL_SELECT_TRACK = 'sound/game-music/all-levels-jazzy-pop-piano.mp3';
 
-const PER_ROW = 5; // 20 tiles / 5 = 4 clean honeycomb rows, no partial last row. Penalties
-                    // restore an already-existing pair rather than adding new tiles, so the
-                    // board's total tile count never changes mid-level -- PER_ROW can stay a
-                    // fixed, clean divisor of 20 rather than needing to handle a partial row.
+const PER_ROW = 5; // a full 10-pair board (20 tiles) is 4 clean rows. A penalty can push the
+                    // board to 11+ pairs (see applyPenalty) -- the resulting partial last row
+                    // is accepted, not avoided (VISIBLE_TARGET/REFILL_BATCH below only manage
+                    // the *base* count, not what mistakes add back on top of it).
 const STREAK_TIER = 3;
+
+// Only VISIBLE_TARGET pairs of the level's full set are ever dealt onto the board at once --
+// the rest sit in a shuffled reserve and get dealt in batches once enough gaps open up. This
+// keeps the board at its designed size (see PER_ROW/--hex-w in game.css, both tuned for a
+// ~20-tile board) instead of the 50-tile, 10-row wall a full 25-pair level would otherwise be,
+// while never risking a deadlock: pairs are always dealt whole, so every visible tile's partner
+// is always visible too -- there is no state where a legal move doesn't exist.
+const VISIBLE_TARGET = 10;
+const REFILL_BATCH = 5;
+
+// The bonus "winged tile" event: a Sino-Japanese/native-Japanese (Wakan) partner of a word
+// currently on the board flies across it. Catch it and you're carrying it on your pointer;
+// drop it on its partner within WAKAN_CATCH_MS and the pair -- plus every tile touching it,
+// and THEIR partners -- blast-clears together. Miss the window, or drop it on the wrong tile,
+// and it shatters with no penalty; it was a free bonus, not a trap.
+// Fires at most once per level, no earlier than the 50% mark, and only once a Wakan-linked
+// word is actually dealt onto the board -- so it can never target something the player can't
+// see (see maybeArmFlyer). Not every level has a linked word yet (13 of 50 currently have
+// none, 8 have exactly one) -- authoring more dictionary-data.js pairs for those is tracked
+// separately; the event simply never fires on a level with zero.
+const WAKAN_TRIGGER_FRACTION = 0.5;
+const WAKAN_CATCH_MS = 4000;
+const WAKAN_BLAST_EXTRA = 3; // neighbour pairs pulled in alongside the one dropped on
 const SUIT_COLORS = ['#c0435a', '#3d7a5c', '#5b57a6', '#d97a3f']; // hanafuda-suit accents, cycled per pair
 
 const SECONDS_PER_PAIR = 30;  // match clock scales with a level's actual pair count, so levels
@@ -123,13 +146,26 @@ let familiesFound = new Set(); // phonetic components ("lightning connect" famil
                                 // this round -- rendered as chips in the side panel, wide
                                 // layout only (see renderFamiliesFound())
 
-let tiles = [];           // all 20 tile objects for the current board
-let tilesByPairId = {};   // pairId -> { jp: tileObj, en: tileObj }
+let tiles = [];           // every tile object DEALT so far this level (active or cleared) --
+                          // NOT the full level set; undealt pairs live only in reserveQueue
+let tilesByPairId = {};   // pairId -> { jp: tileObj, en: tileObj }, only for dealt pairs
 let selected = [];        // up to 2 currently-selected tile objects
 let locked = false;
 
+let reserveQueue = [];    // pairIds not yet dealt this level, shuffled
+let dealtCount = 0;       // pairs dealt so far (VISIBLE_TARGET, then +REFILL_BATCH at a time)
+
 let score = 0;
 let streak = 0;
+
+// Wakan "winged tile" bonus event state -- see the constants block above for the rules.
+let wakanMap = null;         // built once from DICTIONARY_ENTRIES on first use, see buildWakanMap()
+let flyerFiredThisLevel = false;
+let flyerEl = null;          // the winged-tile DOM element, while one is on screen (any phase)
+let flyerHeld = false;       // true once caught -- gates onTileClick to route into handleFlyerDrop
+let flyerTargetPairId = null;
+let flyerTimerRAF = null;
+let flyerPointerMoveHandler = null;
 
 function escapeHtml(str) {
     const div = document.createElement('div');
@@ -529,6 +565,70 @@ const GameAudio = (function () {
         tone(noteFreq(0, -1), { type: 'sawtooth', duration: 0.3, gain: 0.13, delay: 0.05, glideTo: noteFreq(0, -1) * 0.6, filterFreq: 700 });
     }
 
+    // Winged-tile "catch": a quick two-note upward chirp, brighter and quicker than sfxSelect
+    // (which is what an ordinary tile pick sounds like) -- this is a reflex event, not a
+    // deliberate choice, so the sound reads as "got it" rather than "selected".
+    function sfxFlyerCatch() {
+        if (!enabled) return;
+        tone(noteFreq(6, 1), { type: 'square', duration: 0.07, gain: 0.13, attack: 0.002, filterFreq: 5000 });
+        tone(noteFreq(9, 1), { type: 'square', duration: 0.1, gain: 0.12, delay: 0.05, attack: 0.002, filterFreq: 5000 });
+    }
+
+    // Shatter (missed the 4s window, or dropped on the wrong tile): a harsh, fast noise crack
+    // with no tonal component at all -- deliberately the most "broken"-sounding effect in the
+    // game, distinct from sfxMismatch's plain sawtooth blip (that's an ordinary wrong guess;
+    // this is a bonus opportunity breaking apart).
+    function sfxShatter() {
+        if (!enabled) return;
+        const t0 = ctx.currentTime;
+        const src = ctx.createBufferSource();
+        src.buffer = getNoiseBuffer();
+        const hp = ctx.createBiquadFilter();
+        hp.type = 'highpass';
+        hp.frequency.setValueAtTime(300, t0);
+        const bp = ctx.createBiquadFilter();
+        bp.type = 'bandpass';
+        bp.frequency.setValueAtTime(2400, t0);
+        bp.frequency.exponentialRampToValueAtTime(300, t0 + 0.16);
+        bp.Q.value = 3;
+        const ng = ctx.createGain();
+        ng.gain.setValueAtTime(0.0001, t0);
+        ng.gain.exponentialRampToValueAtTime(0.26, t0 + 0.006);
+        ng.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.2);
+        src.connect(hp); hp.connect(bp); bp.connect(ng); ng.connect(sfxGain);
+        src.start(t0);
+        src.stop(t0 + 0.22);
+    }
+
+    // Wakan blast: sfxLightning's rising noise-crackle shape, but wider (more Q, more spread)
+    // and paired with a falling-then-rising sparkle instead of a plain ascending one -- reads as
+    // a bigger, more chaotic hit than a lightning chain, matching that it can clear several
+    // pairs from a single catch rather than one shared phonetic family.
+    function sfxWakanBlast(pairCount) {
+        if (!enabled) return;
+        const t0 = ctx.currentTime;
+        const src = ctx.createBufferSource();
+        src.buffer = getNoiseBuffer();
+        const bp = ctx.createBiquadFilter();
+        bp.type = 'bandpass';
+        bp.frequency.setValueAtTime(900, t0);
+        bp.frequency.exponentialRampToValueAtTime(6000, t0 + 0.22);
+        bp.Q.value = 3.5;
+        const ng = ctx.createGain();
+        ng.gain.setValueAtTime(0.0001, t0);
+        ng.gain.exponentialRampToValueAtTime(0.28, t0 + 0.015);
+        ng.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.32);
+        src.connect(bp); bp.connect(ng); ng.connect(sfxGain);
+        src.start(t0);
+        src.stop(t0 + 0.34);
+
+        const count = Math.max(2, Math.min(pairCount || 2, 8));
+        const shape = [4, 1, 6, 3, 8, 5, 10, 7]; // falling-then-rising, distinct from lightning's plain ascent
+        for (let i = 0; i < count; i++) {
+            tone(noteFreq(shape[i % shape.length], 1), { type: 'triangle', duration: 0.16, gain: 0.12, delay: 0.04 + i * 0.05, attack: 0.003, filterFreq: 4600 });
+        }
+    }
+
     // Background music: real licensed jazz tracks (soul jazz / jazz-study / smooth jazz / lofi
     // jazz per JLPT tier -- see MUSIC_POOLS below), not synthesized. Replaces the earlier
     // pre-composed-phrase scheme entirely, per the site owner's explicit direction to use real
@@ -636,6 +736,9 @@ const GameAudio = (function () {
         win: sfxWin,
         timeUp: sfxTimeUp,
         penalty: sfxPenalty,
+        flyerCatch: sfxFlyerCatch,
+        shatter: sfxShatter,
+        wakanBlast: sfxWakanBlast,
     };
 })();
 
@@ -657,19 +760,14 @@ document.getElementById('board-sound-toggle').addEventListener('click', () => sy
 // Board construction — a honeycomb of hexagon tiles, no grid/pathfinding: any two tiles can
 // be clicked regardless of position, so the board can never get "stuck".
 // ---------------------------------------------------------------------------
-function buildTiles(level) {
-    // Each level has several word sets; picking one at random each play means replaying a
-    // level doesn't always show the same 20 pairs.
-    const set = level.sets[Math.floor(Math.random() * level.sets.length)];
-    currentSet = set;
-    const list = [];
-    const useMn = window.siteLang() === 'mn';
-    set.forEach((p, i) => {
-        list.push({ pairId: i, kind: 'jp', text: p.jp, sub: p.reading, phonetic: p.phonetic || null, cleared: false });
-        list.push({ pairId: i, kind: 'en', text: (useMn && p.enMn) ? p.enMn : p.en, sub: '', phonetic: null, cleared: false });
-    });
-    shuffleArray(list);
-    return list;
+// Picks this playthrough's word set (levels hold several; replaying doesn't always show the
+// same 25 words) and returns a shuffled deal order over its pairIds -- the order pairs get
+// dealt onto the board in, first VISIBLE_TARGET immediately, the rest via dealPairs() below.
+function pickWordSet(level) {
+    currentSet = level.sets[Math.floor(Math.random() * level.sets.length)];
+    const order = currentSet.map((_, i) => i);
+    shuffleArray(order);
+    return order;
 }
 
 function layoutTiles(tileList) {
@@ -688,31 +786,69 @@ function layoutTiles(tileList) {
     });
 }
 
-function renderBoard() {
-    tiles = buildTiles(currentLevel);
-    tilesByPairId = {};
-    tiles.forEach(t => {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = `tile tile-${t.kind}`;
-        btn.style.setProperty('--suit-color', SUIT_COLORS[t.pairId % SUIT_COLORS.length]);
-        if (t.kind === 'jp') {
-            btn.innerHTML = `<span class="tile-jp">${escapeHtml(t.text)}</span>` +
-                `<span class="tile-reading">${escapeHtml(t.sub)}</span>`;
-        } else {
-            btn.innerHTML = `<span class="tile-en-text">${escapeHtml(t.text)}</span>`;
-        }
-        const dot = document.createElement('span');
-        dot.className = 'tile-dot';
-        btn.appendChild(dot);
-        btn.addEventListener('click', () => onTileClick(t));
-        t.el = btn;
+// Materializes DOM tile objects for the given pairIds (from currentSet) and adds them to the
+// board -- used both for the initial deal and for every later refill. `fresh` marks the newly
+// dealt tiles with a "deal-in" pop (see .tile.dealt-in in game.css) so a refill visibly reads
+// as new cards arriving, not just a silent relayout.
+function dealPairs(pairIds, fresh) {
+    const useMn = window.siteLang() === 'mn';
+    pairIds.forEach(pairId => {
+        const p = currentSet[pairId];
+        [
+            { kind: 'jp', text: p.jp, sub: p.reading, phonetic: p.phonetic || null },
+            { kind: 'en', text: (useMn && p.enMn) ? p.enMn : p.en, sub: '', phonetic: null },
+        ].forEach(spec => {
+            const t = { pairId, kind: spec.kind, text: spec.text, sub: spec.sub, phonetic: spec.phonetic, cleared: false };
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = `tile tile-${t.kind}` + (fresh ? ' dealt-in' : '');
+            btn.style.setProperty('--suit-color', SUIT_COLORS[t.pairId % SUIT_COLORS.length]);
+            if (t.kind === 'jp') {
+                btn.innerHTML = `<span class="tile-jp">${escapeHtml(t.text)}</span>` +
+                    `<span class="tile-reading">${escapeHtml(t.sub)}</span>`;
+            } else {
+                btn.innerHTML = `<span class="tile-en-text">${escapeHtml(t.text)}</span>`;
+            }
+            const dot = document.createElement('span');
+            dot.className = 'tile-dot';
+            btn.appendChild(dot);
+            btn.addEventListener('click', () => onTileClick(t));
+            t.el = btn;
 
-        if (!tilesByPairId[t.pairId]) tilesByPairId[t.pairId] = {};
-        tilesByPairId[t.pairId][t.kind] = t;
+            tiles.push(t);
+            if (!tilesByPairId[pairId]) tilesByPairId[pairId] = {};
+            tilesByPairId[pairId][t.kind] = t;
+        });
     });
-    layoutTiles(tiles);
+    dealtCount += pairIds.length;
+    layoutTiles(tiles.filter(t => !t.cleared));
     resizeCanvases();
+}
+
+// Tops the board back up to VISIBLE_TARGET whenever REFILL_BATCH-or-more spots have opened up
+// (recomputed fresh from `tiles` each time rather than hand-tracked, so it can't drift out of
+// sync with what a blast/penalty/lightning-chain actually did to the board). Looped so a single
+// big clear -- a lightning chain, or a Wakan blast -- can trigger more than one batch at once.
+function maybeRefill() {
+    let dealtAny = false;
+    for (; ;) {
+        const activePairs = new Set(tiles.filter(t => !t.cleared).map(t => t.pairId)).size;
+        const gap = VISIBLE_TARGET - activePairs;
+        const room = totalPairs - dealtCount;
+        if (gap < REFILL_BATCH || room <= 0) break;
+        const n = Math.min(REFILL_BATCH, room);
+        dealPairs(reserveQueue.splice(0, n), true);
+        dealtAny = true;
+    }
+    return dealtAny;
+}
+
+function renderBoard() {
+    tiles = [];
+    tilesByPairId = {};
+    dealtCount = 0;
+    reserveQueue = pickWordSet(currentLevel);
+    dealPairs(reserveQueue.splice(0, Math.min(VISIBLE_TARGET, totalPairs)), false);
 }
 
 // Cosmetic reshuffle of the remaining (uncleared) tiles' honeycomb positions — reuses the
@@ -899,6 +1035,10 @@ function showExample(pairId) {
 // Gameplay
 // ---------------------------------------------------------------------------
 function onTileClick(tile) {
+    // While a caught winged tile is being carried, every board click is a drop attempt on it,
+    // regardless of matchStarted/locked -- see handleFlyerDrop. Ordinary tile selection is
+    // fully suspended for the four seconds the catch window lasts.
+    if (flyerHeld) { handleFlyerDrop(tile); return; }
     if (!matchStarted || locked) return;
     if (tile.cleared) return;
 
@@ -969,7 +1109,9 @@ function handleMatch(a, b) {
         selected = [];
         locked = false;
         updateStats();
-        if (matchedCount === totalPairs) finishLevel();
+        if (matchedCount === totalPairs) { finishLevel(); return; }
+        maybeRefill();
+        maybeArmFlyer();
     }, 520);
 }
 
@@ -1038,7 +1180,9 @@ function handleLightningChain(phonetic) {
         selected = [];
         locked = false;
         updateStats();
-        if (matchedCount === totalPairs) finishLevel();
+        if (matchedCount === totalPairs) { finishLevel(); return; }
+        maybeRefill();
+        maybeArmFlyer();
     }, 580);
 }
 
@@ -1092,13 +1236,13 @@ function applyPenalty() {
     matchedCount--;
     updateStats();
 
-    // layoutTiles rebuilds the honeycomb from whichever tiles are currently uncleared, which
-    // is also how the Shuffle button repositions tiles -- reusing it here is what makes
-    // reinserting a pair that may have been detached from #tile-grid (by an earlier shuffle)
-    // possible at all, at the cost of the rest of the board's tiles visually reshuffling too.
-    // The penalty float-text below is what tells the player that's a consequence of the
-    // penalty, not an unrelated glitch.
-    layoutTiles(tiles.filter(t => !t.cleared));
+    // Reshuffle the whole board on a penalty, not just reinsert the returned pair where it used
+    // to sit -- makes the setback register as touching the whole board, not one tile quietly
+    // reappearing. The penalty float-text below is what tells the player that's a consequence
+    // of the penalty, not an unrelated glitch.
+    const activeNow = tiles.filter(t => !t.cleared);
+    shuffleArray(activeNow);
+    layoutTiles(activeNow);
     resizeCanvases();
 
     [pt.jp, pt.en].forEach(t => {
@@ -1109,6 +1253,266 @@ function applyPenalty() {
     const c = centerOf(boardWrapEl);
     floatText(c.x, c.y, window.t('game.penaltyFloat'), true);
     GameAudio.penalty();
+}
+
+// ---------------------------------------------------------------------------
+// Wakan "winged tile" bonus event.
+//
+// A Sino-Japanese/native-Japanese partner (see dictionary-data.js -- the same kango/wago pairs
+// behind the Wakan Dictionary page) of a word currently dealt on the board flies across it.
+// Click it to catch it -- it comes off the board onto the pointer -- then drop it on its
+// partner within WAKAN_CATCH_MS. A correct drop blast-clears that pair plus up to
+// WAKAN_BLAST_EXTRA neighbouring pairs (and, always, THEIR partners too -- a neighbour is never
+// cleared without its own match, or a tile would be stranded with nothing left to pair with,
+// breaking the board's "always a legal move" guarantee the same way a naive positional clear
+// would). A miss -- wrong tile, or the window running out -- shatters the tile with no penalty;
+// it was a free bonus, not a trap.
+// ---------------------------------------------------------------------------
+
+// Built once, lazily, from DICTIONARY_ENTRIES (dictionary-data.js, loaded before this file --
+// see game.html) -- word text -> its Wakan partner. Looked up by either side (kango or wago),
+// since a word dealt on the board could be either half of a pair.
+function buildWakanMap() {
+    if (wakanMap) return wakanMap;
+    wakanMap = new Map();
+    DICTIONARY_ENTRIES.forEach(p => {
+        if (!wakanMap.has(p.kango.text)) {
+            wakanMap.set(p.kango.text, { partner: p.wago.text, partnerReading: p.wago.reading, meaning: p.meaning, meaningMn: p.meaningMn });
+        }
+        if (!wakanMap.has(p.wago.text)) {
+            wakanMap.set(p.wago.text, { partner: p.kango.text, partnerReading: p.kango.reading, meaning: p.meaning, meaningMn: p.meaningMn });
+        }
+    });
+    return wakanMap;
+}
+
+// Checked after every clear (a match, a lightning chain, or a refill uncovering a new word).
+// Fires at most once per level: no earlier than WAKAN_TRIGGER_FRACTION cleared, and only once
+// at least one currently-active (dealt, uncleared) word actually has a Wakan partner -- so the
+// event can never target something that isn't on screen. If the fraction is already past but
+// nothing eligible is active yet, this just tries again on the next clear/refill; it does not
+// wait or poll on its own.
+function maybeArmFlyer() {
+    if (flyerFiredThisLevel || flyerEl) return;
+    if (matchedCount < Math.floor(totalPairs * WAKAN_TRIGGER_FRACTION)) return;
+    const map = buildWakanMap();
+    const candidates = tiles.filter(t => t.kind === 'jp' && !t.cleared && map.has(t.text));
+    if (!candidates.length) return;
+    flyerFiredThisLevel = true;
+    spawnFlyer(candidates[Math.floor(Math.random() * candidates.length)]);
+}
+
+function prefersReducedMotion() {
+    return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+function spawnFlyer(targetTile) {
+    const wk = wakanMap.get(targetTile.text);
+    flyerTargetPairId = targetTile.pairId;
+
+    const el = document.createElement('div');
+    el.className = 'flyer';
+    el.innerHTML = '<div class="flyer-clock"></div>' +
+        '<div class="flyer-wing l"></div><div class="flyer-wing r"></div>' +
+        `<div class="flyer-body"><span class="flyer-reading">${escapeHtml(wk.partnerReading)}</span>` +
+        `<span class="flyer-text">${escapeHtml(wk.partner)}</span></div>`;
+    el.addEventListener('click', catchFlyer);
+    boardWrapEl.appendChild(el);
+    flyerEl = el;
+
+    const reduced = prefersReducedMotion();
+    const topPct = 18 + Math.random() * 55;
+    if (reduced) {
+        el.style.top = topPct + '%';
+        el.style.left = '50%';
+        el.style.transform = 'translateX(-50%)';
+    } else {
+        el.style.top = topPct + '%';
+        const wrapWidth = boardWrapEl.clientWidth;
+        el.style.left = '-140px';
+        tween(-140, wrapWidth + 140, 7000, v => {
+            if (flyerEl !== el) return; // caught, shattered, or the level moved on mid-flight
+            el.style.left = v + 'px';
+        });
+    }
+
+    window.setTimeout(() => {
+        if (flyerEl !== el || flyerHeld) return; // already caught (or already gone)
+        killFlyer(); // flew across untouched -- not a miss worth a shatter, just gone
+    }, 7000);
+}
+
+function catchFlyer(e) {
+    if (!flyerEl || flyerHeld) return;
+    e.stopPropagation();
+    flyerHeld = true;
+    GameAudio.flyerCatch();
+
+    const el = flyerEl;
+    el.classList.add('held');
+    el.style.transform = '';
+    moveFlyerTo(e.clientX, e.clientY);
+    flyerPointerMoveHandler = ev => moveFlyerTo(ev.clientX, ev.clientY);
+    window.addEventListener('pointermove', flyerPointerMoveHandler, { passive: true });
+    boardWrapEl.classList.add('carrying-flyer');
+
+    const t0 = performance.now();
+    const clock = el.querySelector('.flyer-clock');
+    const tick = () => {
+        if (flyerEl !== el || !flyerHeld) return;
+        const left = WAKAN_CATCH_MS - (performance.now() - t0);
+        if (left <= 0) { shatterFlyer(); return; }
+        if (clock) clock.textContent = (left / 1000).toFixed(1) + window.t('game.secAbbr');
+        const gone = 1 - left / WAKAN_CATCH_MS; // 0 at catch -> 1 at timeout
+        el.style.setProperty('--shake-dur', (0.44 - 0.3 * gone).toFixed(3) + 's');
+        el.style.setProperty('--shake-amp', (1.5 + 5.5 * gone).toFixed(2) + 'px');
+        el.style.setProperty('--shake-rot', (0.6 + 3.4 * gone).toFixed(2) + 'deg');
+        flyerTimerRAF = requestAnimationFrame(tick);
+    };
+    flyerTimerRAF = requestAnimationFrame(tick);
+}
+
+function moveFlyerTo(x, y) {
+    if (flyerEl) flyerEl.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
+}
+
+// Tears down the winged-tile DOM/listeners with no visual "failure" effect -- used both when a
+// flyer crosses the board unclicked (nothing was attempted, nothing to punish) and when a
+// level ends with one in flight.
+function killFlyer() {
+    if (flyerTimerRAF) cancelAnimationFrame(flyerTimerRAF);
+    flyerTimerRAF = null;
+    if (flyerPointerMoveHandler) window.removeEventListener('pointermove', flyerPointerMoveHandler);
+    flyerPointerMoveHandler = null;
+    boardWrapEl.classList.remove('carrying-flyer');
+    if (flyerEl) flyerEl.remove();
+    flyerEl = null;
+    flyerHeld = false;
+    flyerTargetPairId = null;
+}
+
+// A caught tile broke apart -- either the 4s window ran out, or it was dropped on the wrong
+// tile (see handleFlyerDrop). No score/time/streak penalty either way: it was a free bonus
+// opportunity, not a trap, so failing it should only cost the bonus itself.
+function shatterFlyer() {
+    if (!flyerEl) return;
+    const rect = flyerEl.getBoundingClientRect();
+    spawnShards(rect);
+    GameAudio.shatter();
+    killFlyer();
+}
+
+function spawnShards(rect) {
+    const cx = rect.left + rect.width / 2, cy = rect.top + rect.height / 2;
+    const cuts = [
+        ['polygon(50% 0,100% 25%,50% 50%)', 55, -64, -30],
+        ['polygon(100% 25%,100% 75%,50% 50%)', 85, 18, 40],
+        ['polygon(100% 75%,50% 100%,50% 50%)', 32, 80, 110],
+        ['polygon(50% 100%,0 75%,50% 50%)', -50, 72, 170],
+        ['polygon(0 75%,0 25%,50% 50%)', -86, 9, -160],
+        ['polygon(0 25%,50% 0,50% 50%)', -40, -68, -100],
+    ];
+    cuts.forEach(([clip, dx, dy, rot]) => {
+        const s = document.createElement('div');
+        s.className = 'flyer-shard';
+        s.style.left = (cx - rect.width / 2) + 'px';
+        s.style.top = (cy - rect.height / 2) + 'px';
+        s.style.width = rect.width + 'px';
+        s.style.height = rect.height + 'px';
+        s.style.clipPath = clip;
+        s.style.setProperty('--dx', dx + 'px');
+        s.style.setProperty('--dy', dy + 'px');
+        s.style.setProperty('--rot', rot + 'deg');
+        document.body.appendChild(s);
+        window.setTimeout(() => s.remove(), 750);
+    });
+}
+
+// A tile was dropped while a flyer was being carried -- routed here from onTileClick, which
+// suspends ordinary selection entirely for the duration of the catch window (see flyerHeld).
+function handleFlyerDrop(tile) {
+    if (tile.kind !== 'jp' || tile.cleared || tile.pairId !== flyerTargetPairId) {
+        shatterFlyer();
+        return;
+    }
+    const pairIds = computeBlastPairIds(tile);
+    killFlyer();
+    resolveWakanBlast(pairIds, tile.pairId);
+}
+
+// The dropped-on pair, plus up to WAKAN_BLAST_EXTRA more pairs physically touching it on the
+// honeycomb (nearest first) -- and, for every one of those, its partner too, whether or not the
+// partner itself was within reach. Clearing a neighbour without its partner would strand a tile
+// with no match left on the board, so partners are never optional.
+function computeBlastPairIds(dropTile) {
+    const homeRect = dropTile.el.getBoundingClientRect();
+    const home = { x: homeRect.left + homeRect.width / 2, y: homeRect.top + homeRect.height / 2 };
+    const reach = homeRect.width * 1.35; // one ring of neighbouring hexes
+    const others = tiles
+        .filter(t => !t.cleared && t.pairId !== dropTile.pairId)
+        .map(t => {
+            const r = t.el.getBoundingClientRect();
+            const c = { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+            return { t, d: Math.hypot(c.x - home.x, c.y - home.y) };
+        })
+        .filter(o => o.d <= reach)
+        .sort((a, b) => a.d - b.d);
+
+    const pairIds = new Set([dropTile.pairId]);
+    for (const o of others) {
+        if (pairIds.size > WAKAN_BLAST_EXTRA) break;
+        pairIds.add(o.t.pairId);
+    }
+    return pairIds;
+}
+
+function resolveWakanBlast(pairIds, targetPairId) {
+    const clearTiles = [];
+    pairIds.forEach(pairId => {
+        const pt = tilesByPairId[pairId];
+        if (pt.jp && !pt.jp.cleared) clearTiles.push(pt.jp);
+        if (pt.en && !pt.en.cleared) clearTiles.push(pt.en);
+    });
+
+    GameAudio.wakanBlast(pairIds.size);
+
+    let gainedTotal = 0;
+    const tierHits = [];
+    pairIds.forEach(() => {
+        streak += 1;
+        gainedTotal += 10 * (1 + Math.floor(streak / STREAK_TIER));
+        if (streak % STREAK_TIER === 0) tierHits.push(streak);
+    });
+    setScore(score + gainedTotal);
+    updateStreakMeter(tierHits.length > 0);
+    tierHits.forEach((s, idx) => window.setTimeout(() => GameAudio.streak(), 180 + idx * 140));
+
+    clearTiles.forEach(t => {
+        t.el.classList.add('wakan-pop');
+        const c = centerOf(t.el);
+        fxField.spawnBurst(c.x, c.y, { count: 26, colors: ['138,131,190', '244,206,122', '255,255,255'], speed: 220, life: 0.95 });
+    });
+
+    const centers = clearTiles.map(t => centerOf(t.el));
+    const midPt = centers.reduce((acc, c) => ({ x: acc.x + c.x, y: acc.y + c.y }), { x: 0, y: 0 });
+    midPt.x /= centers.length; midPt.y /= centers.length;
+    floatText(midPt.x, midPt.y, window.tf('game.wakanFloat', { n: pairIds.size }), true, false, 'wakan-text');
+    addTimeBonus(pairIds.size, midPt.x, midPt.y + 30);
+    if (tierHits.length) {
+        window.setTimeout(() => floatText(midPt.x, midPt.y - 44, window.tf('game.streakFloat', { n: streak }), true), 220);
+    }
+
+    showExample(targetPairId);
+
+    window.setTimeout(() => {
+        clearTiles.forEach(t => { t.el.classList.remove('wakan-pop', 'selected'); t.el.classList.add('cleared'); t.cleared = true; });
+        matchedCount += pairIds.size;
+        selected = [];
+        locked = false;
+        updateStats();
+        if (matchedCount === totalPairs) { finishLevel(); return; }
+        maybeRefill();
+    }, 620);
 }
 
 // ---------------------------------------------------------------------------
@@ -1135,6 +1539,8 @@ function startLevel(level) {
     mismatchStreak = 0;
     elapsedSeconds = 0;
     bonusSeconds = 0;
+    killFlyer(); // discard any in-progress winged-tile event from the level just left
+    flyerFiredThisLevel = false;
     familiesFound.clear(); // fresh-level reset, not shuffleRemaining() -- that keeps the round
     // Pair count now comes from the data itself rather than an assumed constant, so levels can
     // hold different amounts of words (e.g. while some are still being expanded from 10 to 25).
