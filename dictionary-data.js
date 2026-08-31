@@ -7441,5 +7441,174 @@ const DICTIONARY_ENTRIES = [
         "meaning": "to approach",
         "pos": "verb",
         "meaningMn": "ойртох"
+    },
+    {
+        "kango": {
+            "text": "循環する",
+            "reading": "じゅんかんする"
+        },
+        "wago": {
+            "text": "巡る",
+            "reading": "めぐる"
+        },
+        "meaning": "to circulate",
+        "pos": "verb",
+        "meaningMn": "эргэлдэх"
+    },
+    {
+        "kango": {
+            "text": "製作する",
+            "reading": "せいさくする"
+        },
+        "wago": {
+            "text": "こしらえる",
+            "reading": "こしらえる"
+        },
+        "meaning": "to make, create",
+        "pos": "verb",
+        "meaningMn": "бүтээх"
+    },
+    {
+        "kango": {
+            "text": "申請する",
+            "reading": "しんせいする"
+        },
+        "wago": {
+            "text": "申し込む",
+            "reading": "もうしこむ"
+        },
+        "meaning": "to apply for",
+        "pos": "verb",
+        "meaningMn": "өргөдөл гаргах"
+    },
+    {
+        "kango": {
+            "text": "告白する",
+            "reading": "こくはくする"
+        },
+        "wago": {
+            "text": "打ち明ける",
+            "reading": "うちあける"
+        },
+        "meaning": "to confess",
+        "pos": "verb",
+        "meaningMn": "нээлттэй хэлэх"
+    },
+    {
+        "kango": {
+            "text": "災害",
+            "reading": "さいがい"
+        },
+        "wago": {
+            "text": "災い",
+            "reading": "わざわい"
+        },
+        "meaning": "disaster",
+        "pos": "noun",
+        "meaningMn": "гамшиг"
+    },
+    {
+        "kango": {
+            "text": "苦痛な",
+            "reading": "くつうな"
+        },
+        "wago": {
+            "text": "痛い",
+            "reading": "いたい"
+        },
+        "meaning": "painful",
+        "pos": "adjective",
+        "meaningMn": "өвдөлттэй"
+    },
+    {
+        "kango": {
+            "text": "消費する",
+            "reading": "しょうひする"
+        },
+        "wago": {
+            "text": "使い切る",
+            "reading": "つかいきる"
+        },
+        "meaning": "to use up",
+        "pos": "verb",
+        "meaningMn": "хэрэглэж дуусгах"
+    },
+    {
+        "kango": {
+            "text": "先頭",
+            "reading": "せんとう"
+        },
+        "wago": {
+            "text": "先",
+            "reading": "さき"
+        },
+        "meaning": "front, head",
+        "pos": "noun",
+        "meaningMn": "тэргүүн"
+    },
+    {
+        "kango": {
+            "text": "補充する",
+            "reading": "ほじゅうする"
+        },
+        "wago": {
+            "text": "補う",
+            "reading": "おぎなう"
+        },
+        "meaning": "to supplement, replenish",
+        "pos": "verb",
+        "meaningMn": "нөхөн дүүргэх"
+    },
+    {
+        "kango": {
+            "text": "誇張する",
+            "reading": "こちょうする"
+        },
+        "wago": {
+            "text": "言い過ぎる",
+            "reading": "いいすぎる"
+        },
+        "meaning": "to exaggerate",
+        "pos": "verb",
+        "meaningMn": "хэтрүүлэх"
+    },
+    {
+        "kango": {
+            "text": "採掘する",
+            "reading": "さいくつする"
+        },
+        "wago": {
+            "text": "掘り出す",
+            "reading": "ほりだす"
+        },
+        "meaning": "to mine, dig out",
+        "pos": "verb",
+        "meaningMn": "малтан гаргах"
+    },
+    {
+        "kango": {
+            "text": "限定する",
+            "reading": "げんていする"
+        },
+        "wago": {
+            "text": "限る",
+            "reading": "かぎる"
+        },
+        "meaning": "to limit",
+        "pos": "verb",
+        "meaningMn": "хязгаарлах"
+    },
+    {
+        "kango": {
+            "text": "決意する",
+            "reading": "けついする"
+        },
+        "wago": {
+            "text": "心に決める",
+            "reading": "こころにきめる"
+        },
+        "meaning": "to resolve",
+        "pos": "verb",
+        "meaningMn": "эрс шийдэх"
     }
 ];

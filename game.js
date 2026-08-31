@@ -1275,13 +1275,22 @@ function applyPenalty() {
 function buildWakanMap() {
     if (wakanMap) return wakanMap;
     wakanMap = new Map();
+    const add = (key, info) => { if (!wakanMap.has(key)) wakanMap.set(key, info); };
     DICTIONARY_ENTRIES.forEach(p => {
-        if (!wakanMap.has(p.kango.text)) {
-            wakanMap.set(p.kango.text, { partner: p.wago.text, partnerReading: p.wago.reading, meaning: p.meaning, meaningMn: p.meaningMn });
-        }
-        if (!wakanMap.has(p.wago.text)) {
-            wakanMap.set(p.wago.text, { partner: p.kango.text, partnerReading: p.kango.reading, meaning: p.meaning, meaningMn: p.meaningMn });
-        }
+        const kInfo = { partner: p.wago.text, partnerReading: p.wago.reading, meaning: p.meaning, meaningMn: p.meaningMn };
+        const wInfo = { partner: p.kango.text, partnerReading: p.kango.reading, meaning: p.meaning, meaningMn: p.meaningMn };
+        add(p.kango.text, kInfo);
+        add(p.wago.text, wInfo);
+        // dictionary-data.js cites a suru-verb in full dictionary form ("終了する") and every
+        // na-adjective with its trailing な ("綺麗な"), but game-words.js often deals the same
+        // word bare ("終了", "綺麗") -- the two datasets were built independently and never
+        // reconciled on this. Indexing the stripped form too means the board word still links;
+        // the flyer itself always shows wk.partner/partnerReading, unaffected either way and
+        // always the correct full form.
+        [[p.kango.text, kInfo], [p.wago.text, wInfo]].forEach(([text, info]) => {
+            if (text.endsWith('する')) add(text.slice(0, -2), info);
+            else if (p.pos === 'adjective' && text.endsWith('な')) add(text.slice(0, -1), info);
+        });
     });
     return wakanMap;
 }
