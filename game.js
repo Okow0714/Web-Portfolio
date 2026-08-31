@@ -228,6 +228,7 @@ function ParticleField(canvas, container) {
     this.ctx = canvas.getContext('2d');
     this.particles = [];
     this.bolts = [];
+    this.rings = [];
     this.dpr = Math.min(window.devicePixelRatio || 1, 2);
     this.resize();
 }
@@ -297,6 +298,80 @@ ParticleField.prototype.spawnBolt = function (p1, p2, opts) {
     this.bolts.push({ points, life: opts.life || 0.5, age: 0, color: opts.color || '127,224,255' });
 };
 
+// A plain expanding ring for an ordinary match's "confirmed" ripple, or (shape:'hex') a
+// six-sided ring echoing the board's own honeycomb tiles for the Wakan blast -- visually
+// distinct from the round burst/jagged bolt used elsewhere, and from each other.
+ParticleField.prototype.spawnRing = function (x, y, opts) {
+    opts = opts || {};
+    this.rings.push({
+        x, y,
+        shape: opts.shape || 'circle',
+        r0: opts.r0 != null ? opts.r0 : 6,
+        r1: opts.r1 != null ? opts.r1 : 70,
+        width: opts.width || 3,
+        rotation: opts.rotation || 0,
+        color: opts.color || '212,166,75',
+        life: opts.life || 0.5,
+        age: 0,
+    });
+};
+
+// Four-point glints (a magic-sparkle silhouette, not a circle) scattered around a point --
+// the powerup family's signature, distinct from every tile-clear burst.
+ParticleField.prototype.spawnSparkle = function (x, y, opts) {
+    opts = opts || {};
+    const count = opts.count || 10;
+    const spread = opts.spread || 46;
+    const size = opts.size || 10;
+    const color = opts.color || '255,255,255';
+    const life = opts.life || 0.6;
+    for (let i = 0; i < count; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const dist = Math.random() * spread;
+        this.particles.push({
+            kind: 'sparkle',
+            x: x + Math.cos(angle) * dist,
+            y: y + Math.sin(angle) * dist,
+            vx: 0, vy: 0, gravity: 0,
+            size: size * (0.6 + Math.random() * 0.8),
+            rot: Math.random() * Math.PI,
+            spin: (Math.random() - 0.5) * 5,
+            color,
+            life: life * (0.75 + Math.random() * 0.5),
+            age: 0,
+        });
+    }
+};
+
+// Heavier, desaturated motes drifting mostly DOWNWARD instead of the upward "reward" arc every
+// other burst uses -- the mismatch/penalty family's signature: a setback should read as things
+// falling, not popping.
+ParticleField.prototype.spawnDust = function (x, y, opts) {
+    opts = opts || {};
+    const count = opts.count || 14;
+    const colors = opts.colors || ['138,74,64'];
+    const spread = opts.spread || 30;
+    const speed = opts.speed || 55;
+    const life = opts.life || 0.7;
+    const size = opts.size || 3;
+    for (let i = 0; i < count; i++) {
+        const angle = Math.PI * 0.5 + (Math.random() - 0.5) * 1.5; // a downward-biased cone
+        const v = speed * (0.4 + Math.random() * 0.9);
+        this.particles.push({
+            kind: 'burst',
+            x: x + (Math.random() - 0.5) * spread,
+            y,
+            vx: Math.cos(angle) * v * 0.4,
+            vy: Math.sin(angle) * v,
+            gravity: opts.gravity != null ? opts.gravity : 220,
+            r: size * (0.55 + Math.random() * 0.7),
+            color: colors[Math.floor(Math.random() * colors.length)],
+            life: life * (0.7 + Math.random() * 0.5),
+            age: 0,
+        });
+    }
+};
+
 ParticleField.prototype.update = function (dt) {
     const next = [];
     for (let i = 0; i < this.particles.length; i++) {
@@ -320,6 +395,7 @@ ParticleField.prototype.update = function (dt) {
     }
     this.particles = next;
     this.bolts = this.bolts.filter(b => { b.age += dt; return b.age < b.life; });
+    this.rings = this.rings.filter(r => { r.age += dt; return r.age < r.life; });
 };
 
 ParticleField.prototype.draw = function () {
@@ -327,6 +403,26 @@ ParticleField.prototype.draw = function () {
     ctx.clearRect(0, 0, this.w, this.h);
     for (let i = 0; i < this.particles.length; i++) {
         const p = this.particles[i];
+        if (p.kind === 'sparkle') {
+            const t = p.age / p.life;
+            const alpha = 1 - t;
+            // quick pop to full size, then a gentle shrink -- distinct silhouette AND motion
+            // from the round burst dots (which only ever shrink).
+            const scale = Math.sin(Math.min(t * 3, 1) * Math.PI / 2) * (1 - t * 0.25);
+            const s = p.size;
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate(p.rot + p.spin * p.age);
+            ctx.scale(scale, scale);
+            ctx.fillStyle = `rgba(${p.color},${Math.max(alpha, 0)})`;
+            ctx.beginPath();
+            ctx.moveTo(0, -s); ctx.lineTo(s * 0.28, -s * 0.28); ctx.lineTo(s, 0); ctx.lineTo(s * 0.28, s * 0.28);
+            ctx.lineTo(0, s); ctx.lineTo(-s * 0.28, s * 0.28); ctx.lineTo(-s, 0); ctx.lineTo(-s * 0.28, -s * 0.28);
+            ctx.closePath();
+            ctx.fill();
+            ctx.restore();
+            continue;
+        }
         let alpha, r;
         if (p.kind === 'ambient') { alpha = p.alpha; r = p.r; }
         else { const t = p.age / p.life; alpha = 1 - t; r = p.r * (1 - t * 0.4); }
@@ -335,6 +431,30 @@ ParticleField.prototype.draw = function () {
         ctx.arc(p.x, p.y, Math.max(r, 0), 0, Math.PI * 2);
         ctx.fill();
     }
+    this.rings.forEach(r => {
+        const t = r.age / r.life;
+        const rad = r.r0 + (r.r1 - r.r0) * t;
+        const alpha = Math.max(1 - t, 0);
+        ctx.save();
+        ctx.strokeStyle = `rgba(${r.color},${alpha})`;
+        ctx.lineWidth = r.width;
+        ctx.shadowColor = `rgba(${r.color},${Math.min(alpha + 0.3, 1)})`;
+        ctx.shadowBlur = 12;
+        ctx.beginPath();
+        if (r.shape === 'hex') {
+            for (let i = 0; i < 6; i++) {
+                const ang = (Math.PI / 3) * i - Math.PI / 2 + r.rotation;
+                const px = r.x + Math.cos(ang) * rad;
+                const py = r.y + Math.sin(ang) * rad;
+                if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+            }
+            ctx.closePath();
+        } else {
+            ctx.arc(r.x, r.y, Math.max(rad, 0), 0, Math.PI * 2);
+        }
+        ctx.stroke();
+        ctx.restore();
+    });
     this.bolts.forEach(b => {
         const t = b.age / b.life;
         const alpha = Math.max(1 - t, 0);
@@ -346,6 +466,18 @@ ParticleField.prototype.draw = function () {
         ctx.beginPath();
         b.points.forEach((p, i) => (i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y)));
         ctx.stroke();
+        // A bright pulse riding the bolt from end to end over its lifetime -- real traveling
+        // current, not just a static jagged line.
+        const segT = Math.min(t, 1) * (b.points.length - 1);
+        const i0 = Math.min(Math.floor(segT), b.points.length - 2);
+        const localT = segT - i0;
+        const pA = b.points[i0], pB = b.points[i0 + 1];
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(255,255,255,${alpha})`;
+        ctx.shadowColor = `rgba(${b.color},1)`;
+        ctx.shadowBlur = 18;
+        ctx.arc(pA.x + (pB.x - pA.x) * localT, pA.y + (pB.y - pA.y) * localT, 3.5, 0, Math.PI * 2);
+        ctx.fill();
         ctx.restore();
     });
 };
@@ -825,12 +957,14 @@ function layoutTiles(tileList) {
 
 // Materializes DOM tile objects for the given pairIds (from currentSet) and adds them to the
 // board -- used both for the initial deal and for every later refill. `fresh` marks the newly
-// dealt tiles with a "deal-in" pop (see .tile.dealt-in in game.css) so a refill visibly reads
-// as new cards arriving, not just a silent relayout. `countsTowardDeal` (default true) gates
+// dealt tiles with an entrance pop (see .tile.dealt-in in game.css) so a refill visibly reads
+// as new cards arriving, not just a silent relayout -- `entranceClass` swaps in a different
+// entrance (e.g. 'swap-in', a card-flip, for the swap-3 powerup's incoming tiles) instead of
+// the default scale pop; ignored when `fresh` is false. `countsTowardDeal` (default true) gates
 // whether this batch advances dealtCount -- the swap-3 powerup deals pairs pulled from
 // powerupFuel, outside reserveQueue entirely, and must pass false so maybeRefill's "how much
 // of reserveQueue is left" bookkeeping doesn't think reserveQueue is emptier than it is.
-function dealPairs(pairIds, fresh, countsTowardDeal) {
+function dealPairs(pairIds, fresh, countsTowardDeal, entranceClass) {
     if (countsTowardDeal === undefined) countsTowardDeal = true;
     const useMn = window.siteLang() === 'mn';
     pairIds.forEach(pairId => {
@@ -842,7 +976,7 @@ function dealPairs(pairIds, fresh, countsTowardDeal) {
             const t = { pairId, kind: spec.kind, text: spec.text, sub: spec.sub, phonetic: spec.phonetic, cleared: false };
             const btn = document.createElement('button');
             btn.type = 'button';
-            btn.className = `tile tile-${t.kind}` + (fresh ? ' dealt-in' : '');
+            btn.className = `tile tile-${t.kind}` + (fresh ? ' ' + (entranceClass || 'dealt-in') : '');
             btn.style.setProperty('--suit-color', SUIT_COLORS[t.pairId % SUIT_COLORS.length]);
             if (t.kind === 'jp') {
                 btn.innerHTML = `<span class="tile-jp">${escapeHtml(t.text)}</span>` +
@@ -1123,14 +1257,19 @@ function handleMatch(a, b) {
     setScore(score + gained);
     GameAudio.match(Math.floor(streak / STREAK_TIER));
 
+    const mid = midpoint(centerOf(a.el), centerOf(b.el));
+    // A single gold ripple ring expanding from the midpoint between the two tiles is the
+    // ordinary match's own signature -- reads as "these two just connected" as one event,
+    // distinct from lightning's traveling bolts and Wakan's hex ring. The per-tile burst stays,
+    // just smaller, as texture rather than the whole effect.
+    fxField.spawnRing(mid.x, mid.y, { r0: 8, r1: 62, width: 3, color: '244,206,122', life: 0.42 });
     [a, b].forEach(t => {
         t.el.classList.add('match-pop');
         const c = centerOf(t.el);
         const rgb = hexToRgb(SUIT_COLORS[a.pairId % SUIT_COLORS.length]);
-        fxField.spawnBurst(c.x, c.y, { count: 22, colors: ['212,166,75', '244,206,122', rgb], speed: 190, life: 0.85 });
+        fxField.spawnBurst(c.x, c.y, { count: 12, colors: ['212,166,75', '244,206,122', rgb], speed: 170, life: 0.75 });
     });
 
-    const mid = midpoint(centerOf(a.el), centerOf(b.el));
     floatText(mid.x, mid.y, '+' + gained);
     addTimeBonus(1, mid.x, mid.y + 24);
 
@@ -1189,6 +1328,16 @@ function handleLightningChain(phonetic) {
     for (let i = 0; i < centers.length - 1; i++) fxField.spawnBolt(centers[i], centers[i + 1], { color: '127,224,255' });
     if (centers.length > 2) fxField.spawnBolt(centers[centers.length - 1], centers[0], { color: '127,224,255', life: 0.4 });
 
+    // A 3+ pair chain is a bigger event than an ordinary match -- a brief cyan flash across the
+    // whole board (see .board-wrap.lightning-flash in game.css) makes that difference felt
+    // structurally, not just via a bigger number, the same way a penalty touches the whole
+    // board rather than one tile.
+    if (memberPairIds.length >= 3) {
+        boardWrapEl.classList.remove('lightning-flash');
+        void boardWrapEl.offsetWidth;
+        boardWrapEl.classList.add('lightning-flash');
+    }
+
     let gainedTotal = 0;
     const tierHits = [];
     memberPairIds.forEach(pairId => {
@@ -1240,7 +1389,14 @@ function handleMismatch(a, b) {
     boardWrapEl.classList.remove('board-shake');
     void boardWrapEl.offsetWidth;
     boardWrapEl.classList.add('board-shake');
-    [a, b].forEach(t => t.el.classList.add('mismatch'));
+    [a, b].forEach(t => {
+        t.el.classList.add('mismatch');
+        // A mismatch had no particle effect at all before -- a few motes falling FROM the tile
+        // (the burst/ring family everywhere else arcs upward) is a cheap but real "this failed"
+        // signature, distinct in motion, not just color, from every reward effect.
+        const c = centerOf(t.el);
+        fxField.spawnDust(c.x, c.y - 14, { count: 14, colors: ['214,104,86', '150,66,58'], spread: 30, speed: 60, life: 0.65, size: 4.5 });
+    });
 
     mismatchStreak++;
 
@@ -1300,6 +1456,18 @@ function applyPenalty() {
     const c = centerOf(boardWrapEl);
     floatText(c.x, c.y, window.t('game.penaltyFloat'), true);
     GameAudio.penalty();
+
+    // Dust falling across the whole board width (not just the returned pair) -- the shuffle
+    // already makes the setback touch every tile; this makes it READ as a board-wide event
+    // from the first frame, in the same falling-motes language as an ordinary mismatch but
+    // wider and heavier, rather than reusing a reward-shaped burst for a punishment.
+    const wrapRect = boardWrapEl.getBoundingClientRect();
+    const mainRect = gameMain.getBoundingClientRect();
+    const topY = wrapRect.top - mainRect.top + 10;
+    for (let i = 0; i < 5; i++) {
+        const x = wrapRect.left - mainRect.left + (wrapRect.width * (i + 0.5)) / 5;
+        fxField.spawnDust(x, topY, { count: 14, colors: ['224,130,70', '196,90,74'], spread: wrapRect.width / 5, speed: 65, life: 0.95, gravity: 260, size: 4.5 });
+    }
 }
 
 // ---------------------------------------------------------------------------
@@ -1361,10 +1529,14 @@ function grantFreeClearPowerup() {
     GameAudio.powerup();
     const mid = midpoint(centerOf(pt.jp.el), centerOf(pt.en.el));
     floatText(mid.x, mid.y - 30, window.t('game.powerupFreeFloat'), true);
+    // Star-shaped sparkle glints, not round burst dots -- the powerup family's own silhouette,
+    // shared with (but colored apart from) the swap effect below, distinct from every tile-clear
+    // burst/ring used elsewhere.
+    fxField.spawnRing(mid.x, mid.y, { r0: 4, r1: 46, width: 2, color: '110,224,165', life: 0.35 });
     [pt.jp, pt.en].forEach(t => {
         t.el.classList.add('powerup-pop');
         const c = centerOf(t.el);
-        fxField.spawnBurst(c.x, c.y, { count: 26, colors: ['110,224,165', '244,206,122', '255,255,255'], speed: 220, life: 0.9 });
+        fxField.spawnSparkle(c.x, c.y, { count: 14, color: '110,224,165', size: 11, spread: 34, life: 0.65 });
     });
 
     window.setTimeout(() => {
@@ -1401,10 +1573,14 @@ function grantSwapPowerup() {
         if (pt.jp) outTiles.push(pt.jp);
         if (pt.en) outTiles.push(pt.en);
     });
+    // Outgoing tiles get a 3D card-flip away (see .tile.powerup-swap-out in game.css) instead of
+    // a plain shrink/fade -- reads literally as "this card is being swapped out", and the
+    // pink sparkle (vs. the clear powerup's mint) keeps the two effects tellable apart at a
+    // glance despite sharing the same star silhouette as one "powerup family".
     outTiles.forEach(t => {
         t.el.classList.add('powerup-swap-out');
         const c = centerOf(t.el);
-        fxField.spawnBurst(c.x, c.y, { count: 18, colors: ['224,110,190', '244,206,122', '255,255,255'], speed: 180, life: 0.7 });
+        fxField.spawnSparkle(c.x, c.y, { count: 10, color: '224,110,190', size: 9, spread: 26, life: 0.5 });
     });
     const mid = centerOf(boardWrapEl);
     floatText(mid.x, mid.y, window.t('game.powerupSwapFloat'), true);
@@ -1413,7 +1589,9 @@ function grantSwapPowerup() {
         outTiles.forEach(t => t.el.remove());
         tiles = tiles.filter(t => !outgoing.includes(t.pairId));
         outgoing.forEach(pairId => { delete tilesByPairId[pairId]; });
-        dealPairs(incoming, true, false);
+        // 'swap-in' flips the new cards in from the opposite face instead of the ordinary
+        // scale-pop deal -- reads as the other half of the same flip the outgoing tiles just did.
+        dealPairs(incoming, true, false, 'swap-in');
         locked = false;
         updatePowerupUI(); // powerupFuel just shrank -- the swap button may need to disable
         maybeArmFlyer();
@@ -1696,15 +1874,22 @@ function resolveWakanBlast(pairIds, targetPairId) {
     updateStreakMeter(tierHits.length > 0);
     tierHits.forEach((s, idx) => window.setTimeout(() => GameAudio.streak(), 180 + idx * 140));
 
-    clearTiles.forEach(t => {
-        t.el.classList.add('wakan-pop');
-        const c = centerOf(t.el);
-        fxField.spawnBurst(c.x, c.y, { count: 26, colors: ['138,131,190', '244,206,122', '255,255,255'], speed: 220, life: 0.95 });
-    });
-
     const centers = clearTiles.map(t => centerOf(t.el));
     const midPt = centers.reduce((acc, c) => ({ x: acc.x + c.x, y: acc.y + c.y }), { x: 0, y: 0 });
     midPt.x /= centers.length; midPt.y /= centers.length;
+
+    // A honeycomb ring is the Wakan blast's own signature -- echoes the board's own hex tiles
+    // rather than a generic circle, distinct from match's round ripple and lightning's bolts.
+    // Two nested rings at slightly different rotations/timing read as a "linking" pulse rather
+    // than a single flat pop.
+    fxField.spawnRing(midPt.x, midPt.y, { shape: 'hex', r0: 12, r1: 130, width: 3, color: '138,131,190', life: 0.68 });
+    fxField.spawnRing(midPt.x, midPt.y, { shape: 'hex', r0: 6, r1: 90, width: 2, color: '244,206,122', life: 0.5, rotation: Math.PI / 6 });
+    clearTiles.forEach(t => {
+        t.el.classList.add('wakan-pop');
+        const c = centerOf(t.el);
+        fxField.spawnBurst(c.x, c.y, { count: 12, colors: ['138,131,190', '244,206,122', '255,255,255'], speed: 190, life: 0.8 });
+    });
+
     floatText(midPt.x, midPt.y, window.tf('game.wakanFloat', { n: pairIds.size }), true, false, 'wakan-text');
     addTimeBonus(pairIds.size, midPt.x, midPt.y + 30);
     if (tierHits.length) {

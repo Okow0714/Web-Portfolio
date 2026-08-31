@@ -590,6 +590,27 @@ body.game-playing .game-main {
 
 .board-wrap.board-shake { animation: boardShake 0.34s var(--ease-out); }
 
+/* A 3+ pair lightning chain flashes the whole board, not just the chained tiles -- the same
+   "this touched everything" structural cue .board-shake already gives a mismatch and the
+   penalty dust gives a penalty, so a big combo reads as a board-wide event too, not merely a
+   bigger version of an ordinary match. Sits under #fx-canvas/.flyer's z-index:5 so the bolt
+   particles still render on top of it. */
+.board-wrap.lightning-flash::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 4;
+    background: radial-gradient(ellipse at center, rgba(127, 224, 255, 0.32), transparent 68%);
+    animation: lightningFlash 0.4s ease-out;
+}
+
+@keyframes lightningFlash {
+    0% { opacity: 0; }
+    18% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
 @keyframes boardShake {
     0% { transform: translateX(0); }
     20% { transform: translateX(-8px) rotate(-0.3deg); }
@@ -814,18 +835,20 @@ body.game-playing .game-main {
     100% { transform: translateY(-7px) scale(calc(var(--tile-inset) * 1.06)); filter: var(--tile-shadow) drop-shadow(0 0 9px var(--wisteria)); }
 }
 
-/* Streak-4 powerups (maybeGrantPowerup in game.js). Free-clear: a mint-green pop, same shape
-   as match/lightning/wakan but a hue none of those three use, so a bonus clear reads as its
-   own event. Swap-out: the losing 3 pairs shrink/spin away in pink-magenta -- deliberately NOT
-   reusing .tile.cleared's fade, since these tiles aren't "matched", they're being discarded --
-   their replacements arrive through the existing .tile.dealt-in pop (see grantSwapPowerup). */
+/* Streak-4 powerups (maybeGrantPowerup in game.js). Free-clear: a full spin-in-place while it
+   pops, distinct MOTION (not just color) from match/lightning/wakan's shared vertical
+   lift-bounce -- the star-sparkle burst (see spawnSparkle in game.js) doing the rest of the
+   "magic" reading. Swap: a real 3D card-flip -- the outgoing tile rotates away face-first
+   (perspective() is set per-keyframe, so no ancestor needs its own perspective/preserve-3d),
+   its replacement flips in from the opposite face (.tile.swap-in, passed as dealPairs'
+   entranceClass in grantSwapPowerup) -- reads literally as "this card got swapped", not a
+   generic entrance/exit. */
 .tile.powerup-pop { animation: powerupPop 0.6s var(--ease-pop); }
 
 @keyframes powerupPop {
-    0% { transform: translateY(-7px) scale(calc(var(--tile-inset) * 1.06)); filter: var(--tile-shadow) drop-shadow(0 0 10px rgb(110, 224, 165)); }
-    30% { transform: translateY(-20px) scale(calc(var(--tile-inset) * 1.32)); filter: var(--tile-shadow) drop-shadow(0 0 24px rgb(110, 224, 165)) brightness(1.5) saturate(1.3); }
-    60% { transform: translateY(-10px) scale(calc(var(--tile-inset) * 0.92)); filter: var(--tile-shadow) drop-shadow(0 0 14px rgb(110, 224, 165)); }
-    100% { transform: translateY(-7px) scale(calc(var(--tile-inset) * 1.06)); filter: var(--tile-shadow) drop-shadow(0 0 9px rgb(110, 224, 165)); }
+    0% { transform: translateY(-7px) scale(calc(var(--tile-inset) * 1.06)) rotate(0deg); filter: var(--tile-shadow) drop-shadow(0 0 10px rgb(110, 224, 165)); }
+    50% { transform: translateY(-16px) scale(calc(var(--tile-inset) * 1.26)) rotate(180deg); filter: var(--tile-shadow) drop-shadow(0 0 22px rgb(110, 224, 165)) brightness(1.5) saturate(1.3); }
+    100% { transform: translateY(-7px) scale(calc(var(--tile-inset) * 1.06)) rotate(360deg); filter: var(--tile-shadow) drop-shadow(0 0 9px rgb(110, 224, 165)); }
 }
 
 .tile.powerup-swap-out {
@@ -834,8 +857,17 @@ body.game-playing .game-main {
 }
 
 @keyframes powerupSwapOut {
-    0% { opacity: 1; transform: translateY(-7px) scale(calc(var(--tile-inset) * 1.06)) rotate(0deg); filter: var(--tile-shadow) drop-shadow(0 0 12px rgb(224, 110, 190)); }
-    100% { opacity: 0; transform: translateY(6px) scale(calc(var(--tile-inset) * 0.3)) rotate(-18deg); filter: var(--tile-shadow) drop-shadow(0 0 4px rgb(224, 110, 190)); }
+    0% { opacity: 1; transform: perspective(700px) rotateY(0deg) scale(var(--tile-inset)); filter: var(--tile-shadow) drop-shadow(0 0 10px rgb(224, 110, 190)); }
+    55% { opacity: 1; transform: perspective(700px) rotateY(78deg) scale(calc(var(--tile-inset) * 0.94)); filter: var(--tile-shadow) drop-shadow(0 0 18px rgb(224, 110, 190)) brightness(1.3); }
+    100% { opacity: 0; transform: perspective(700px) rotateY(112deg) scale(calc(var(--tile-inset) * 0.82)); filter: var(--tile-shadow) drop-shadow(0 0 4px rgb(224, 110, 190)); }
+}
+
+.tile.swap-in { animation: swapIn 0.42s var(--ease-pop); }
+
+@keyframes swapIn {
+    0% { opacity: 0; transform: perspective(700px) rotateY(-112deg) scale(calc(var(--tile-inset) * 0.82)); filter: var(--tile-shadow) drop-shadow(0 0 4px rgb(110, 224, 165)); }
+    45% { opacity: 1; transform: perspective(700px) rotateY(-70deg) scale(calc(var(--tile-inset) * 0.94)); filter: var(--tile-shadow) drop-shadow(0 0 18px rgb(110, 224, 165)) brightness(1.3); }
+    100% { opacity: 1; transform: perspective(700px) rotateY(0deg) scale(var(--tile-inset)); filter: var(--tile-shadow); }
 }
 
 .tile.mismatch { animation: mismatchShake 0.42s var(--ease-out); }
