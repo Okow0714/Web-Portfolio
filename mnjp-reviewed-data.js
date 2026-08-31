@@ -5,13 +5,15 @@
 // loose match, narrower or off sense -- usable with caution, not a confident dictionary entry),
 // or 'bad' (wrong, discard).
 //
-// NOT currently wired into any page. Two uses so far:
+// Two uses so far:
 // 1. Cross-matched by japanese against game-words.js entries missing a Mongolian translation
 //    (filled 33 of 750 new Word Match words added in the August 2026 25-pairs-per-level
 //    expansion -- the two pools only coincidentally overlap, most new words still lack enMn).
-// 2. Reserved for a possible future standalone Mongolian<->Japanese dictionary page (not
-//    dictionary-data.js/Wakan Dictionary -- that file pairs kango<->wago, both Japanese, and
-//    doesn't fit this shape at all).
+// 2. Source data for mnjp-data.js: the 691 'good'-marked entries here are enriched (romanization,
+//    full gloss list, Japanese reading -- pulled from the pipeline's raw candidate batches, not
+//    carried in this file) and merged with game-words.js and dictionary-data.js into
+//    MNJP_ENTRIES, which powers dictionary.html's primary "Монгол ⇄ 日本語" tab. That file pairs
+//    kango<->wago (both Japanese) and remains a separate, unmerged tab on the same page.
 const MNJP_REVIEWED =
 [
     {

@@ -3,19 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Wakan Dictionary - Khan Japanese</title>
+    <title>Mongol-Japan Dictionary - Khan Japanese</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Look up the Sino-Japanese (kango) counterpart to a native Japanese (wago) word, or vice versa, with irregular sonkeigo/kenjougo honorific forms for verbs that have them.">
+    <meta name="description" content="Look up a word between Mongolian and Japanese, or between a Sino-Japanese (kango) word and its native-Japanese (wago) counterpart, with irregular sonkeigo/kenjougo honorific forms for verbs that have them.">
     <link rel="canonical" href="https://okow0714.github.io/Web-Portfolio/dictionary.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Khan Japanese">
-    <meta property="og:title" content="Wakan Dictionary - Khan Japanese">
-    <meta property="og:description" content="Look up the Sino-Japanese (kango) counterpart to a native Japanese (wago) word, or vice versa, with irregular sonkeigo/kenjougo honorific forms for verbs that have them.">
+    <meta property="og:title" content="Mongol-Japan Dictionary - Khan Japanese">
+    <meta property="og:description" content="Look up a word between Mongolian and Japanese, or between a Sino-Japanese (kango) word and its native-Japanese (wago) counterpart, with irregular sonkeigo/kenjougo honorific forms for verbs that have them.">
     <meta property="og:url" content="https://okow0714.github.io/Web-Portfolio/dictionary.html">
     <meta property="og:image" content="https://okow0714.github.io/Web-Portfolio/images/about/hero.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Wakan Dictionary - Khan Japanese">
-    <meta name="twitter:description" content="Look up the Sino-Japanese (kango) counterpart to a native Japanese (wago) word, or vice versa, with irregular sonkeigo/kenjougo honorific forms for verbs that have them.">
+    <meta name="twitter:title" content="Mongol-Japan Dictionary - Khan Japanese">
+    <meta name="twitter:description" content="Look up a word between Mongolian and Japanese, or between a Sino-Japanese (kango) word and its native-Japanese (wago) counterpart, with irregular sonkeigo/kenjougo honorific forms for verbs that have them.">
     <meta name="twitter:image" content="https://okow0714.github.io/Web-Portfolio/images/about/hero.jpg">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="manifest" href="manifest.json">
@@ -68,7 +68,7 @@
                         </div>
                     </div>
                     <div class="nav-item">
-                        <a href="dictionary.html" class="nav-trigger nav-current" data-i18n="nav.wakanDictionary">Wakan Dictionary</a>
+                        <a href="dictionary.html" class="nav-trigger nav-current" data-i18n="nav.dictionary">Dictionary</a>
                     </div>
                     <div class="nav-item">
                         <a href="dashboard.html" class="nav-trigger" data-i18n="dash.titleSub">Dashboard</a>
@@ -150,21 +150,38 @@
         <main class="dictionary-main">
             <div class="dict-hud-row">
                 <div>
-                    <h1 class="dict-title">和漢辞典<span class="dict-title-sub" data-i18n="dict.titleSub">Wakan Dictionary</span></h1>
-                    <p class="dict-subtitle" data-i18n="dict.subtitle">Every entry pairs a Sino-Japanese word (漢語, kango) with its native-Japanese equivalent (和語, wago) — search or filter to browse. Verbs with an irregular respectful (尊敬語) or humble (謙譲語) form show it alongside the plain word.</p>
+                    <h1 class="dict-title">蒙日辞典<span class="dict-title-sub" data-i18n="dict.titleSub">Mongol-Japan Dictionary</span></h1>
+                    <p class="dict-subtitle" data-i18n="dict.subtitle">Search a Mongolian or Japanese word and see its counterpart on the other side — merged from Word Match's translated vocabulary, a human-reviewed bridge dictionary, and the Kango ⇄ Wago pairs below, so most words are confirmed by more than one source. Click a result to see its example sentence. The Kango ⇄ Wago tab holds the original Sino-Japanese/native-Japanese dictionary, honorific forms included.</p>
                 </div>
             </div>
 
-            <div class="dict-controls">
-                <div class="dict-search-wrap">
-                    <input type="text" id="dict-search" class="dict-search" data-i18n-placeholder="dict.searchPlaceholder" placeholder="Search by kanji, kana, or English…" autocomplete="off">
-                    <span class="dict-search-count" id="dict-count"></span>
-                </div>
-                <div class="dict-filters" id="dict-filters" role="tablist" aria-label="Filter by part of speech"></div>
+            <div class="dict-tabs" role="tablist" aria-label="Dictionary section">
+                <button type="button" class="dict-tab active" id="dict-tab-mnjp" role="tab" aria-selected="true">Монгол ⇄ 日本語</button>
+                <button type="button" class="dict-tab" id="dict-tab-wakan" role="tab" aria-selected="false">漢語 ⇄ 和語</button>
             </div>
 
-            <div class="dict-list" id="dict-list"></div>
-            <p class="dict-empty hidden" id="dict-empty" data-i18n="dict.noMatches">No entries match your search.</p>
+            <section class="dict-panel" id="dict-panel-mnjp">
+                <div class="dict-controls">
+                    <div class="dict-search-wrap">
+                        <input type="text" id="mnjp-search" class="dict-search" data-i18n-placeholder="dict.mnjpSearchPlaceholder" placeholder="Search by Mongolian, kanji, kana, or English…" autocomplete="off">
+                        <span class="dict-search-count" id="mnjp-count"></span>
+                    </div>
+                </div>
+                <div class="dict-list" id="mnjp-list"></div>
+                <p class="dict-empty hidden" id="mnjp-empty" data-i18n="dict.noMatches">No entries match your search.</p>
+            </section>
+
+            <section class="dict-panel hidden" id="dict-panel-wakan">
+                <div class="dict-controls">
+                    <div class="dict-search-wrap">
+                        <input type="text" id="dict-search" class="dict-search" data-i18n-placeholder="dict.searchPlaceholder" placeholder="Search by kanji, kana, or English…" autocomplete="off">
+                        <span class="dict-search-count" id="dict-count"></span>
+                    </div>
+                    <div class="dict-filters" id="dict-filters" role="tablist" aria-label="Filter by part of speech"></div>
+                </div>
+                <div class="dict-list" id="dict-list"></div>
+                <p class="dict-empty hidden" id="dict-empty" data-i18n="dict.noMatches">No entries match your search.</p>
+            </section>
         </main>
     </div>
 
@@ -185,7 +202,7 @@
                         <li><a href="reading.html" data-i18n="nav.dokkaiReader">Dokkai Reader</a></li>
                         <li><a href="phonetics.html" data-i18n="nav.phoneticsFamily">Phonetics Family</a></li>
                         <li><a href="grammar.html" data-i18n="nav.grammarConnect">Grammar Connect</a></li>
-                        <li><a href="dictionary.html" data-i18n="nav.wakanDictionary">Wakan Dictionary</a></li>
+                        <li><a href="dictionary.html" data-i18n="nav.dictionary">Dictionary</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -241,6 +258,7 @@
     <script src="supabase-config.js"></script>
     <script src="auth-shared.js"></script>
     <script src="dictionary-data.js"></script>
+    <script src="mnjp-data.js"></script>
     <script src="dictionary.js"></script>
     <script src="pwa-register.js"></script>
 </body>

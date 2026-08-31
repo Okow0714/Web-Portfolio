@@ -40,12 +40,12 @@ Object.assign(window.I18N_STRINGS, {
     'hub.reading.stat': { en: '60 TEXTS · 2 TRACKS', mn: '60 ТЕКСТ · 2 ЗАМ' },
     'hub.reading.cta': { en: 'Read →', mn: 'Унших →' },
 
-    'hub.dictionary.name': { en: 'Wa-kan Dictionary', mn: 'Ва-кан толь бичиг' },
+    'hub.dictionary.name': { en: 'Mongol-Japan Dictionary', mn: 'Монгол-Япон толь бичиг' },
     'hub.dictionary.desc': {
-        en: "Speaking Japanese, writing letters, and writing reports all require knowing both the formal Sino-Japanese (kango, 漢語) and native-Japanese (wago, 和語) forms, so this is a small dictionary that gives you both forms for whatever kanji you search. It also shows the respectful (尊敬語) and humble (謙譲語) verb forms used in sentences, alongside the plain word.",
-        mn: 'Япон хэлээр харилцах, захидал болон тайлан бичвэр бичихэд хүндэтгэлийн буюу канго (漢語), уламжлалт буюу ваго (和語) хэлбэрүүдийг мэдэх зайлсгүй шаардлагатай тул таны хайсан ханзны дараах хоёр хэлбэрийг олж өгөх бяцхан толь бичиг юм. Дээрээс нь өгүүлбэрт хэрэглэгдэх хүндэтгэлийн (尊敬語) болон даруу (謙譲語) хэлбэртэй үйл үгсийг ч мөн хамт харуулна.'
+        en: "Look up a word in Mongolian or Japanese and see its counterpart, drawn from Word Match's translated vocabulary and a human-reviewed bridge dictionary. A second tab holds the original Kango ⇄ Wago dictionary — the formal Sino-Japanese (kango, 漢語) and native-Japanese (wago, 和語) form of whatever kanji you search, plus the respectful (尊敬語) and humble (謙譲語) verb forms used in sentences.",
+        mn: 'Монгол эсвэл Япон үгээр хайж, түүний хос үгийг олж хараарай — эх сурвалж нь Үг холбох тоглоомын орчуулгатай үгсийн сан болон гараар хянасан гүүр толь бичиг юм. Хоёр дахь таб нь Канго ⇄ Ваго толь бичгийг агуулна — таны хайсан ханзны хүндэтгэлийн буюу канго (漢語), уламжлалт буюу ваго (和語) хэлбэр, мөн өгүүлбэрт хэрэглэгдэх хүндэтгэлийн (尊敬語) болон даруу (謙譲語) үйл үгийн хэлбэрүүд.'
     },
-    'hub.dictionary.stat': { en: '560 WORD PAIRS', mn: '560 ҮГИЙН ХОС' },
+    'hub.dictionary.stat': { en: '2,781 WORDS', mn: '2,781 ҮГ' },
     'hub.dictionary.cta': { en: 'Search →', mn: 'Хайх →' },
 
     'hub.foot.developer': { en: 'Developer', mn: 'Хөгжүүлэгч' },

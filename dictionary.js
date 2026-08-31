@@ -1,6 +1,10 @@
-// Wakan Dictionary — a searchable/filterable list pairing kango (Sino-Japanese) and wago
-// (native Japanese) vocabulary. Depends on dictionary-data.js (DICTIONARY_ENTRIES) having
-// already run. No Supabase progress tracking -- this is a static reference tool, not a game.
+// Dictionary (dictionary.html) — two tabs sharing one page. The primary "Монгол ⇄ 日本語" tab
+// is a Mongolian<->Japanese lookup built from mnjp-data.js (MNJP_ENTRIES, 2,781 words merged
+// from three sources -- see that file's header comment). The secondary "漢語 ⇄ 和語" tab is the
+// original Kango<->Wago dictionary, depending on dictionary-data.js (DICTIONARY_ENTRIES) exactly
+// as before -- that file is untouched by this rework, since Word Match's Wakan winged-tile bonus
+// event still reads kango/wago pairs directly from it, independent of this page.
+// No Supabase progress tracking on either tab -- this is a static reference tool, not a game.
 
 function isKana(ch) {
     return /[぀-ゟ゠-ヿ]/.test(ch);
@@ -11,7 +15,7 @@ function isKana(ch) {
 // okurigana" shape every dictionary entry here has; a word with an internal kana gap between
 // two kanji (e.g. 召し上がる) gets one combined ruby span rather than one per kanji -- a
 // known, acceptable simplification (the reading shown is still correct, just grouped at
-// word-chunk granularity).
+// word-chunk granularity). Shared by both tabs.
 function furigana(text, reading) {
     let start = 0;
     while (start < text.length && start < reading.length && text[start] === reading[start] && isKana(text[start])) start++;
@@ -32,6 +36,131 @@ function escapeHtml(str) {
     div.textContent = str;
     return div.innerHTML;
 }
+
+// ---------------------------------------------------------------------------
+// Tab switching
+// ---------------------------------------------------------------------------
+let activeTab = 'mnjp';
+
+function switchTab(tab) {
+    activeTab = tab;
+    const mnjpBtn = document.getElementById('dict-tab-mnjp');
+    const wakanBtn = document.getElementById('dict-tab-wakan');
+    mnjpBtn.classList.toggle('active', tab === 'mnjp');
+    mnjpBtn.setAttribute('aria-selected', tab === 'mnjp' ? 'true' : 'false');
+    wakanBtn.classList.toggle('active', tab === 'wakan');
+    wakanBtn.setAttribute('aria-selected', tab === 'wakan' ? 'true' : 'false');
+    document.getElementById('dict-panel-mnjp').classList.toggle('hidden', tab !== 'mnjp');
+    document.getElementById('dict-panel-wakan').classList.toggle('hidden', tab !== 'wakan');
+}
+
+document.getElementById('dict-tab-mnjp').addEventListener('click', () => switchTab('mnjp'));
+document.getElementById('dict-tab-wakan').addEventListener('click', () => switchTab('wakan'));
+
+// ---------------------------------------------------------------------------
+// Монгол ⇄ 日本語 tab (mnjp-data.js)
+// ---------------------------------------------------------------------------
+let mnjpQuery = '';
+const SOURCE_LABEL_KEY = { gamewords: 'dict.sourceGamewords', bridge: 'dict.sourceBridge', kangowago: 'dict.sourceKangowago' };
+
+function matchesMnjpSearch(entry, q) {
+    if (!q) return true;
+    q = q.toLowerCase();
+    return entry.mn.toLowerCase().includes(q) || entry.jp.includes(q) || entry.reading.includes(q) ||
+        (entry.glosses && entry.glosses.toLowerCase().includes(q));
+}
+
+// Builds the expanded detail (source tags, extra glosses, example sentence, kango/wago
+// cross-link) -- called lazily on first expand rather than for every one of the 2,781 rows up
+// front, since most of them are never opened in a given visit.
+function buildMnjpDetail(entry) {
+    const sourceTags = entry.sources
+        .map(s => `<span class="mnjp-source-tag${entry.sources.length > 1 ? ' confirmed' : ''}">${escapeHtml(window.t(SOURCE_LABEL_KEY[s]))}</span>`)
+        .join('');
+    const glossesHtml = entry.glosses ? `<p class="mnjp-glosses">${escapeHtml(entry.glosses)}</p>` : '';
+    let exampleHtml = '';
+    if (entry.example) {
+        const mnText = (window.siteLang() === 'mn') ? entry.example.enMn : entry.example.en;
+        exampleHtml = `<div class="mnjp-example"><p class="ex-jp">${entry.example.furigana}</p><p class="ex-mn">${escapeHtml(mnText)}</p></div>`;
+    }
+    let kangowagoHtml = '';
+    if (entry.kangowago) {
+        const partner = `${entry.kangowago.text} (${escapeHtml(window.t(entry.kangowago.role === 'kango' ? 'dict.kango' : 'dict.wago'))})`;
+        kangowagoHtml = `<p class="mnjp-kango-link">${window.tf('dict.alsoInKangowago', { word: partner })}</p>`;
+    }
+    return `<div class="mnjp-source-tags">${sourceTags}</div>${glossesHtml}${exampleHtml}${kangowagoHtml}`;
+}
+
+function renderMnjpEntry(entry) {
+    const card = document.createElement('div');
+    card.className = 'mnjp-entry';
+    card.innerHTML = `
+        <button type="button" class="mnjp-entry-main" aria-expanded="false">
+            <span class="mnjp-side mn">
+                <span class="label">Монгол</span>
+                <span class="term">${escapeHtml(entry.mn)}</span>
+            </span>
+            <span class="mnjp-bridge" aria-hidden="true">=</span>
+            <span class="mnjp-side jp">
+                <span class="label">日本語</span>
+                <span class="term">${furigana(entry.jp, entry.reading)}</span>
+            </span>
+            <span class="mnjp-expand-hint" aria-hidden="true">&#9662;</span>
+        </button>
+        <div class="mnjp-detail"></div>
+    `;
+    const btn = card.querySelector('.mnjp-entry-main');
+    const detail = card.querySelector('.mnjp-detail');
+    let built = false;
+    btn.addEventListener('click', () => {
+        if (!built) { built = true; detail.innerHTML = buildMnjpDetail(entry); }
+        const open = card.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    return card;
+}
+
+// At 2,781 entries, building every matching card on every keystroke got visibly laggy
+// (~500ms measured for a broad query) -- nobody scans a list that long anyway, so results
+// beyond this cap just don't render; the count line says so and asks for a narrower search.
+const MNJP_RENDER_CAP = 150;
+
+function renderMnjpList() {
+    const list = document.getElementById('mnjp-list');
+    const empty = document.getElementById('mnjp-empty');
+    const countEl = document.getElementById('mnjp-count');
+    list.innerHTML = '';
+
+    const filtered = MNJP_ENTRIES.filter(e => matchesMnjpSearch(e, mnjpQuery));
+    const shown = filtered.slice(0, MNJP_RENDER_CAP);
+    countEl.textContent = filtered.length > shown.length
+        ? window.tf('dict.mnjpTruncated', { shown: shown.length, total: filtered.length })
+        : `${filtered.length} / ${MNJP_ENTRIES.length}`;
+
+    if (filtered.length === 0) {
+        showEl(empty);
+        return;
+    }
+    hideEl(empty);
+
+    const frag = document.createDocumentFragment();
+    shown.forEach(entry => frag.appendChild(renderMnjpEntry(entry)));
+    list.appendChild(frag);
+}
+
+let mnjpSearchDebounce = null;
+document.getElementById('mnjp-search').addEventListener('input', (e) => {
+    const value = e.target.value;
+    clearTimeout(mnjpSearchDebounce);
+    mnjpSearchDebounce = window.setTimeout(() => {
+        mnjpQuery = value.trim();
+        renderMnjpList();
+    }, 120);
+});
+
+// ---------------------------------------------------------------------------
+// 漢語 ⇄ 和語 tab (dictionary-data.js) -- unchanged from the original single-tab page.
+// ---------------------------------------------------------------------------
 
 // POS_KEY_ORDER fixes the filter tab order (Object.keys order on an i18n-populated map isn't
 // guaranteed to match insertion order across the two languages' string tables); POS_LABEL_KEY
@@ -139,7 +268,9 @@ document.getElementById('dict-search').addEventListener('input', (e) => {
 document.addEventListener('sitelangchange', () => {
     renderFilters();
     renderList();
+    renderMnjpList();
 });
 
 renderFilters();
 renderList();
+renderMnjpList();

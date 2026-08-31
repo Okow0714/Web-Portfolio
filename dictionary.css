@@ -1,9 +1,13 @@
-/* Wakan Dictionary — styles specific to dictionary.html.
-   "Sumi & Terracotta": each entry splits into a kango (漢語) half in near-black sumi ink and
-   a wago (和語) half in warm terracotta clay, on a pale neutral washi ground — the two lexical
-   strata of Japanese vocabulary rendered as two visually distinct "inks" side by side. Distinct
-   from Word Match's dark violet/gold, Phonetics' jade/copper, the Reader's warm gold, and
-   Grammar Connect's dark indigo/vermillion — this is the only OTHER light page besides
+/* Dictionary — styles specific to dictionary.html.
+   "Sumi & Terracotta" (now with a third ink): the page's original kango/wago split -- a kango
+   (漢語) half in near-black sumi ink and a wago (和語) half in warm terracotta clay, on a pale
+   neutral washi ground -- lives on unchanged as the secondary "漢語 ⇄ 和語" tab. The new primary
+   "Монгол ⇄ 日本語" tab adds a third ink, --khukh (a deep cobalt blue evoking Munkh Khukh
+   Tenger, the "eternal blue sky" of the Mongolian flag) for the Mongolian half, paired against
+   the SAME sumi ink for Japanese -- the two tabs share sumi as their one constant, so the page
+   still reads as one dictionary with two lenses rather than two unrelated tools glued together.
+   Distinct from Word Match's dark violet/gold, Phonetics' jade/copper, the Reader's warm gold,
+   and Grammar Connect's dark indigo/vermillion -- this is the only OTHER light page besides
    Phonetics/Reading/Portfolio, and the only one built around a strict two-column split-card
    list rather than a board, sidebar, or sentence-card layout. All tokens scoped to
    .dictionary-main, following the same page-scoped-token pattern as every other page's CSS. */
@@ -20,10 +24,13 @@ body:has(.dictionary-main) {
     --sumi-tint: #eae6de;
     --terracotta: #b5502e;
     --terracotta-tint: #f6e8de;
+    --khukh: #2a4d73;
+    --khukh-tint: #e4ebf1;
     --ink: #3a352c;
     --ink-soft: #7a7261;
     --ink-faint: #a89e88;
     --good: #4f7a5e;
+    --good-tint: #e6efe6;
 
     --font-jp: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "MS Mincho", serif;
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -63,6 +70,37 @@ body:has(.dictionary-main) {
     line-height: 1.6;
     margin: 0;
 }
+
+/* Segmented control, not pills -- reads as "one dictionary, two lenses" sharing a border,
+   rather than two competing destinations. */
+.dict-tabs {
+    max-width: 1100px;
+    margin: 26px auto 0;
+    display: flex;
+    gap: 4px;
+    padding: 4px;
+    background: var(--card-edge);
+    width: fit-content;
+}
+
+.dict-tab {
+    appearance: none;
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 0.92rem;
+    font-weight: 650;
+    padding: 10px 20px;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: background 0.18s var(--ease-out), color 0.18s var(--ease-out);
+}
+
+.dict-tab.active { background: var(--card); color: var(--sumi); }
+#dict-tab-mnjp.active { color: var(--khukh); }
+#dict-tab-wakan.active { color: var(--terracotta); }
+
+.dict-panel.hidden { display: none; }
 
 .dict-controls {
     max-width: 1100px;
@@ -147,6 +185,106 @@ body:has(.dictionary-main) {
     color: var(--ink-faint);
 }
 
+/* ---------------------------------------------------------------------
+   Монгол ⇄ 日本語 tab -- click-to-expand cards (mnjp-data.js via dictionary.js)
+   --------------------------------------------------------------------- */
+.mnjp-entry {
+    background: var(--card);
+    border: 1px solid var(--card-edge);
+}
+
+.mnjp-entry-main {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto;
+    align-items: center;
+    width: 100%;
+    padding: 16px 22px;
+    background: none;
+    border: none;
+    font-family: inherit;
+    text-align: inherit;
+    cursor: pointer;
+    gap: 10px;
+}
+
+.mnjp-side {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.mnjp-side.jp { text-align: right; }
+
+.mnjp-side .label {
+    font-size: 0.66rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+}
+
+.mnjp-side.mn .label { color: var(--khukh); }
+.mnjp-side.jp .label { color: var(--sumi); }
+
+.mnjp-side .term {
+    font-size: 1.15rem;
+    font-weight: 650;
+    line-height: 1.3;
+}
+
+.mnjp-side.mn .term { color: var(--khukh); }
+.mnjp-side.jp .term { color: var(--ink); font-family: var(--font-jp); }
+.mnjp-side .term rt { font-size: 0.5rem; color: var(--ink-soft); font-family: 'IBM Plex Sans', sans-serif; }
+
+.mnjp-bridge { color: var(--ink-faint); font-size: 1.1rem; }
+
+.mnjp-expand-hint {
+    color: var(--ink-faint);
+    font-size: 0.8rem;
+    transition: transform 0.15s var(--ease-out);
+}
+
+.mnjp-entry.open .mnjp-expand-hint { transform: rotate(180deg); }
+
+.mnjp-detail { display: none; padding: 0 22px 18px; }
+.mnjp-entry.open .mnjp-detail { display: block; }
+
+.mnjp-source-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+
+.mnjp-source-tag {
+    font-size: 0.68rem;
+    padding: 3px 9px;
+    background: var(--sumi-tint);
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.mnjp-source-tag.confirmed { background: var(--good-tint); color: var(--good); }
+
+.mnjp-glosses { font-size: 0.85rem; color: var(--ink-soft); margin: 0 0 10px; line-height: 1.5; }
+
+.mnjp-example {
+    background: var(--sumi-tint);
+    padding: 12px 14px;
+    font-size: 0.9rem;
+}
+
+.mnjp-example .ex-jp { color: var(--sumi); font-family: var(--font-jp); margin: 0 0 6px; line-height: 1.6; }
+.mnjp-example .ex-jp rt { font-size: 0.55em; color: var(--ink-faint); font-family: 'IBM Plex Sans', sans-serif; }
+.mnjp-example .ex-mn { color: var(--khukh); margin: 0; font-weight: 500; }
+
+.mnjp-kango-link { margin: 10px 0 0; font-size: 0.82rem; color: var(--terracotta); }
+
+@media (max-width: 640px) {
+    .mnjp-entry-main { grid-template-columns: 1fr auto 1fr; }
+    .mnjp-expand-hint { grid-column: 1 / -1; text-align: center; }
+    .mnjp-side.jp { text-align: left; }
+}
+
+/* ---------------------------------------------------------------------
+   漢語 ⇄ 和語 tab (dictionary-data.js) -- unchanged from the original page
+   --------------------------------------------------------------------- */
 .dict-entry {
     background: var(--card);
     border: 1px solid var(--card-edge);

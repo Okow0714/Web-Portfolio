@@ -1615,7 +1615,8 @@ document.getElementById('powerup-swap-btn').addEventListener('click', () => {
 // Wakan "winged tile" bonus event.
 //
 // A Sino-Japanese/native-Japanese partner (see dictionary-data.js -- the same kango/wago pairs
-// behind the Wakan Dictionary page) of a word currently dealt on the board flies across it.
+// behind the Kango<->Wago tab on dictionary.html) of a word currently dealt on the board flies
+// across it.
 // Click it to catch it -- it comes off the board onto the pointer -- then drop it on its
 // partner within WAKAN_CATCH_MS. A correct drop blast-clears that pair plus up to
 // WAKAN_BLAST_EXTRA neighbouring pairs (and, always, THEIR partners too -- a neighbour is never
