@@ -45,7 +45,7 @@ Object.assign(window.I18N_STRINGS, {
         en: "Look up a word in Mongolian or Japanese and see its counterpart, drawn from Word Match's translated vocabulary and a human-reviewed bridge dictionary. A second tab holds the original Kango ⇄ Wago dictionary — the formal Sino-Japanese (kango, 漢語) and native-Japanese (wago, 和語) form of whatever kanji you search, plus the respectful (尊敬語) and humble (謙譲語) verb forms used in sentences.",
         mn: 'Монгол эсвэл Япон үгээр хайж, түүний хос үгийг олж хараарай — эх сурвалж нь Үг холбох тоглоомын орчуулгатай үгсийн сан болон гараар хянасан гүүр толь бичиг юм. Хоёр дахь таб нь Канго ⇄ Ваго толь бичгийг агуулна — таны хайсан ханзны хүндэтгэлийн буюу канго (漢語), уламжлалт буюу ваго (和語) хэлбэр, мөн өгүүлбэрт хэрэглэгдэх хүндэтгэлийн (尊敬語) болон даруу (謙譲語) үйл үгийн хэлбэрүүд.'
     },
-    'hub.dictionary.stat': { en: '2,781 WORDS', mn: '2,781 ҮГ' },
+    'hub.dictionary.stat': { en: '3,112 WORDS', mn: '3,112 ҮГ' },
     'hub.dictionary.cta': { en: 'Search →', mn: 'Хайх →' },
 
     'hub.foot.developer': { en: 'Developer', mn: 'Хөгжүүлэгч' },

@@ -25,5 +25,6 @@ Object.assign(window.I18N_STRINGS, {
     'dict.sourceGamewords': { en: 'Word Match', mn: 'Үг холбох' },
     'dict.sourceBridge': { en: 'Bridge review', mn: 'Гүүр толь бичиг' },
     'dict.sourceKangowago': { en: 'Kango ⇄ Wago', mn: 'Канго ⇄ Ваго' },
+    'dict.sourceCore': { en: 'Core N5', mn: 'N5 үндсэн' },
     'dict.alsoInKangowago': { en: 'Also in Kango ⇄ Wago, paired with {word}', mn: 'Канго ⇄ Ваго-д {word}-тай хослон орсон байдаг' },
 });

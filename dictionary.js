@@ -1,6 +1,6 @@
 // Dictionary (dictionary.html) — two tabs sharing one page. The primary "Монгол ⇄ 日本語" tab
-// is a Mongolian<->Japanese lookup built from mnjp-data.js (MNJP_ENTRIES, 2,781 words merged
-// from three sources -- see that file's header comment). The secondary "漢語 ⇄ 和語" tab is the
+// is a Mongolian<->Japanese lookup built from mnjp-data.js (MNJP_ENTRIES, 3,112 words merged
+// from four sources -- see that file's header comment). The secondary "漢語 ⇄ 和語" tab is the
 // original Kango<->Wago dictionary, depending on dictionary-data.js (DICTIONARY_ENTRIES) exactly
 // as before -- that file is untouched by this rework, since Word Match's Wakan winged-tile bonus
 // event still reads kango/wago pairs directly from it, independent of this page.
@@ -61,7 +61,7 @@ document.getElementById('dict-tab-wakan').addEventListener('click', () => switch
 // Монгол ⇄ 日本語 tab (mnjp-data.js)
 // ---------------------------------------------------------------------------
 let mnjpQuery = '';
-const SOURCE_LABEL_KEY = { gamewords: 'dict.sourceGamewords', bridge: 'dict.sourceBridge', kangowago: 'dict.sourceKangowago' };
+const SOURCE_LABEL_KEY = { gamewords: 'dict.sourceGamewords', bridge: 'dict.sourceBridge', kangowago: 'dict.sourceKangowago', core: 'dict.sourceCore' };
 
 function matchesMnjpSearch(entry, q) {
     if (!q) return true;
@@ -71,7 +71,7 @@ function matchesMnjpSearch(entry, q) {
 }
 
 // Builds the expanded detail (source tags, extra glosses, example sentence, kango/wago
-// cross-link) -- called lazily on first expand rather than for every one of the 2,781 rows up
+// cross-link) -- called lazily on first expand rather than for every one of the 3,112 rows up
 // front, since most of them are never opened in a given visit.
 function buildMnjpDetail(entry) {
     const sourceTags = entry.sources
@@ -120,7 +120,7 @@ function renderMnjpEntry(entry) {
     return card;
 }
 
-// At 2,781 entries, building every matching card on every keystroke got visibly laggy
+// At 3,112 entries, building every matching card on every keystroke got visibly laggy
 // (~500ms measured for a broad query) -- nobody scans a list that long anyway, so results
 // beyond this cap just don't render; the count line says so and asks for a narrower search.
 const MNJP_RENDER_CAP = 150;
@@ -132,7 +132,14 @@ function renderMnjpList() {
     list.innerHTML = '';
 
     const filtered = MNJP_ENTRIES.filter(e => matchesMnjpSearch(e, mnjpQuery));
-    const shown = filtered.slice(0, MNJP_RENDER_CAP);
+    // Without this, searching a common single kanji like 人 buries the exact word under 30+
+    // compounds that merely contain it (人生, 外国人, 殺人...), sorted alphabetically -- rank
+    // an exact jp/mn match to the top first, matching the render cap's "top 150" being the
+    // ones actually worth showing, not just whichever sorted first.
+    const q = mnjpQuery.toLowerCase();
+    const rank = e => (e.jp === mnjpQuery || e.mn.toLowerCase() === q) ? 0 : 1;
+    const ranked = mnjpQuery ? filtered.slice().sort((a, b) => rank(a) - rank(b)) : filtered;
+    const shown = ranked.slice(0, MNJP_RENDER_CAP);
     countEl.textContent = filtered.length > shown.length
         ? window.tf('dict.mnjpTruncated', { shown: shown.length, total: filtered.length })
         : `${filtered.length} / ${MNJP_ENTRIES.length}`;

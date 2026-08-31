@@ -1,13 +1,16 @@
 // Mongolian <-> Japanese dictionary data for dictionary.html's primary MN/JP tab. Merges
-// three already-reviewed sources, deduplicated by Japanese word (2,781 distinct words):
-//   1. 'gamewords'  -- Word Match's game-words.js (1,250 words, each with a human-translated
-//      Mongolian gloss and 1,243 with a Mongolian-translated example sentence). Most reliable
-//      single source, used as the primary mn/reading/example whenever present.
+// FOUR already-reviewed sources, deduplicated by Japanese word (3112 distinct words):
+//   1. 'gamewords'  -- Word Match's game-words.js (1,250 words, human-translated + 1,243 with
+//      a Mongolian-translated example sentence). Most reliable single source.
 //   2. 'bridge'     -- mnjp-reviewed-data.js's 691 'good'-marked pairs from the MN-JP bridge
-//      pipeline (pivot-matched through shared English glosses, human-reviewed). Enriched here
-//      with romanization/full gloss list pulled from the pipeline's raw candidate batches.
+//      pipeline (pivot-matched through shared English glosses, human-reviewed).
 //   3. 'kangowago'  -- dictionary-data.js's 573 kango/wago pairs, each word's own meaningMn.
-// 187 words are confirmed by 2+ sources independently (see the sources array on each entry).
+//   4. 'core'       -- 331 plain N5 words (elzup/jlpt-word-list, the same source
+//      game-words.js was built from) that were missing from all three sources above --
+//      person/water/cat/father-level basics a matching game had no reason to include. Machine-
+//      translated, then human-reviewed (26 flagged as uncertain were corrected or confirmed;
+//      the rest were spot-checked as straightforward single-word translations).
+// 187+ words are confirmed by 2+ sources independently (see the sources array on each entry).
 // Entries with a kangowago partner carry a 'kangowago' field ({text, role}) cross-linking to
 // that pair's OTHER half, shown as a link over to the Kango<->Wago tab. dictionary-data.js
 // itself is untouched by this file -- Word Match's Wakan winged-tile bonus event still reads
@@ -15,8 +18,8 @@
 //
 // Schema per entry: { jp, reading, mn, sources[], glosses?, example?: {jp,en,furigana,enMn},
 // kangowago?: {text, role} }. glosses is a short supplementary string (extra Mongolian
-// synonyms for gamewords entries, or the bridging English definition(s) for bridge/kangowago-
-// only entries) -- omitted when there's nothing beyond the primary mn to add.
+// synonyms for gamewords entries, or the bridging English definition(s) for bridge/kangowago/
+// core-only entries) -- omitted when there's nothing beyond the primary mn to add.
 const MNJP_ENTRIES = [
     {
         "jp": "ＢＢＱ",
@@ -220,6 +223,22 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "あれ",
+        "reading": "あれ",
+        "mn": "тэр",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "いい",
+        "reading": "いい",
+        "mn": "сайн",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "いいえ",
         "reading": "いいえ",
         "mn": "үгүй",
@@ -320,6 +339,14 @@ const MNJP_ENTRIES = [
             "furigana": "いつまでかかっても<ruby>全部<rp>(</rp><rt>ぜんぶ</rt><rp>)</rp></ruby>を<ruby>説明<rp>(</rp><rt>せつめい</rt><rp>)</rp></ruby>するのは<ruby>無理<rp>(</rp><rt>むり</rt><rp>)</rp></ruby>だ。",
             "enMn": "Хэдий удсан ч бүгдийг тайлбарлах боломжгүй."
         }
+    },
+    {
+        "jp": "いつも",
+        "reading": "いつも",
+        "mn": "үргэлж",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "いらっしゃる",
@@ -709,6 +736,38 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "お皿",
+        "reading": "おさら",
+        "mn": "таваг",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "お姉さん",
+        "reading": "おねえさん",
+        "mn": "эгч (хүндэтгэлийн)",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "お手洗い",
+        "reading": "おてあらい",
+        "mn": "бие засах газар",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "お酒",
+        "reading": "おさけ",
+        "mn": "архи, сакэ",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "お嬢さん",
         "reading": "おじょうさん",
         "mn": "таны охин",
@@ -821,6 +880,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "お風呂",
+        "reading": "おふろ",
+        "mn": "халуун ус, ванн",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "お腹",
         "reading": "おなか",
         "mn": "гэдэс",
@@ -833,6 +900,14 @@ const MNJP_ENTRIES = [
             "furigana": "いつご<ruby>飯<rp>(</rp><rt>はん</rt><rp>)</rp></ruby><ruby>食<rp>(</rp><rt>た</rt><rp>)</rp></ruby>べるの？お<ruby>腹<rp>(</rp><rt>なか</rt><rp>)</rp></ruby><ruby>空<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>いたよ。",
             "enMn": "Хэзээ хоол идэх вэ? Гэдэс өлслөө шүү."
         }
+    },
+    {
+        "jp": "お弁当",
+        "reading": "おべんとう",
+        "mn": "бэнто хоол",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "お母さん",
@@ -1092,6 +1167,14 @@ const MNJP_ENTRIES = [
             "text": "清潔な",
             "role": "kango"
         }
+    },
+    {
+        "jp": "キロ",
+        "reading": "キロ",
+        "mn": "кг/км (товчлол)",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "くっ付く",
@@ -1377,6 +1460,14 @@ const MNJP_ENTRIES = [
         "glosses": "to knead; to mix; to lock (of jaws); to clutch at, to cling to"
     },
     {
+        "jp": "この",
+        "reading": "この",
+        "mn": "энэ",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "この頃",
         "reading": "このごろ",
         "mn": "одоо",
@@ -1384,6 +1475,14 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "now"
+    },
+    {
+        "jp": "コピーする",
+        "reading": "コピーする",
+        "mn": "хуулбарлах",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "コマーシャル",
@@ -1702,6 +1801,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "さ来年",
+        "reading": "さらいねん",
+        "mn": "ирэх ирэх жил",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "シート",
         "reading": "シート",
         "mn": "төв",
@@ -1927,6 +2034,22 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "じゃ",
+        "reading": "じゃ",
+        "mn": "тэгвэл",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "シャツ",
+        "reading": "シャツ",
+        "mn": "цамц",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "しゃべる",
         "reading": "しゃべる",
         "mn": "ярих",
@@ -1939,6 +2062,14 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>たちの<ruby>計画<rp>(</rp><rt>けいかく</rt><rp>)</rp></ruby>を<ruby>誰<rp>(</rp><rt>だれ</rt><rp>)</rp></ruby>にもしゃべるなよ。",
             "enMn": "Манай төлөвлөгөөг хэнд ч бүү ярь."
         }
+    },
+    {
+        "jp": "シャワー",
+        "reading": "シャワー",
+        "mn": "шүршүүр",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "ジュース",
@@ -2012,6 +2143,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "スカート",
+        "reading": "スカート",
+        "mn": "банзал",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "スカーフ",
         "reading": "スカーフ",
         "mn": "ороолт",
@@ -2075,6 +2214,14 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>弟<rp>(</rp><rt>おとうと</rt><rp>)</rp></ruby>は<ruby>超<rp>(</rp><rt>ちょう</rt><rp>)</rp></ruby><ruby>重要<rp>(</rp><rt>じゅうよう</rt><rp>)</rp></ruby><ruby>人物<rp>(</rp><rt>じんぶつ</rt><rp>)</rp></ruby>だ。すくなくとも<ruby>奴<rp>(</rp><rt>やつ</rt><rp>)</rp></ruby>はそう<ruby>思<rp>(</rp><rt>おも</rt><rp>)</rp></ruby>っている。",
             "enMn": "Дүү маань туйлын чухал хүн. Ядаж л тэр өөрөө тэгж боддог."
         }
+    },
+    {
+        "jp": "すぐに",
+        "reading": "すぐに",
+        "mn": "даруй, шууд",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "スクリーン",
@@ -2287,6 +2434,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "ストーブ",
+        "reading": "ストーブ",
+        "mn": "зуух",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "ストッキング",
         "reading": "ストッキング",
         "mn": "урт оймс",
@@ -2355,6 +2510,30 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>率直<rp>(</rp><rt>そっちょく</rt><rp>)</rp></ruby>に<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>うと、<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>のスピーチはいつも<ruby>退屈<rp>(</rp><rt>たいくつ</rt><rp>)</rp></ruby>だ。",
             "enMn": "Шулуухан хэлэхэд түүний илтгэл үргэлж уйтгартай."
         }
+    },
+    {
+        "jp": "スプーン",
+        "reading": "スプーン",
+        "mn": "халбага",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "スポーツ",
+        "reading": "スポーツ",
+        "mn": "спорт",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "ズボン",
+        "reading": "ズボン",
+        "mn": "өмд",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "スマート",
@@ -2452,6 +2631,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "セーター",
+        "reading": "セーター",
+        "mn": "свэдр",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "せっせと",
         "reading": "せっせと",
         "mn": "шаргуу",
@@ -2522,6 +2709,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "ゼロ",
+        "reading": "ゼロ",
+        "mn": "тэг",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "センチ",
         "reading": "センチ",
         "mn": "сантиметр",
@@ -2550,6 +2745,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "そうして",
+        "reading": "そうして",
+        "mn": "тэгээд",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "そうっと",
         "reading": "そうっと",
         "mn": "зөөлхөн",
@@ -2562,6 +2765,14 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>はそうっと<ruby>自分<rp>(</rp><rt>じぶん</rt><rp>)</rp></ruby>の<ruby>寝室<rp>(</rp><rt>しんしつ</rt><rp>)</rp></ruby>に<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>った。",
             "enMn": "Би чимээгүйхэн унтлагынхаа өрөө рүү оров."
         }
+    },
+    {
+        "jp": "そこ",
+        "reading": "そこ",
+        "mn": "тэнд",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "そそっかしい",
@@ -2578,6 +2789,30 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "そちら",
+        "reading": "そちら",
+        "mn": "тэр тал",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "そっち",
+        "reading": "そっち",
+        "mn": "тэр тал",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "その",
+        "reading": "その",
+        "mn": "тэр",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "その他",
         "reading": "そのほか",
         "mn": "бусад",
@@ -2592,6 +2827,30 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "そば",
+        "reading": "そば",
+        "mn": "хажууд; соба гурил",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "それ",
+        "reading": "それ",
+        "mn": "тэр",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "それから",
+        "reading": "それから",
+        "mn": "тэгээд",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "それぞれの",
         "reading": "それぞれの",
         "mn": "тус тусын",
@@ -2602,6 +2861,14 @@ const MNJP_ENTRIES = [
             "text": "個別の",
             "role": "kango"
         }
+    },
+    {
+        "jp": "それでは",
+        "reading": "それでは",
+        "mn": "тэгвэл",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "それなのに",
@@ -2713,6 +2980,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "タクシー",
+        "reading": "タクシー",
+        "mn": "такси",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "たくわえる",
         "reading": "たくわえる",
         "mn": "мөнгө хуримтлуулах",
@@ -2786,6 +3061,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "たて",
+        "reading": "たて",
+        "mn": "урт, өндөр (босоо)",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "たどり着く",
         "reading": "たどりつく",
         "mn": "хүрэх",
@@ -2796,6 +3079,14 @@ const MNJP_ENTRIES = [
             "text": "到達する",
             "role": "kango"
         }
+    },
+    {
+        "jp": "たばこ",
+        "reading": "たばこ",
+        "mn": "тамхи",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "ダブル",
@@ -2899,6 +3190,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "ちょっと",
+        "reading": "ちょっと",
+        "mn": "бага зэрэг, түр",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "ちんちん",
         "reading": "ちんちん",
         "mn": "эрхтэн",
@@ -2906,6 +3205,14 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "organ; limb; penis."
+    },
+    {
+        "jp": "つける",
+        "reading": "つける",
+        "mn": "асаах",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "つなぐ",
@@ -2918,6 +3225,14 @@ const MNJP_ENTRIES = [
             "text": "結合する",
             "role": "kango"
         }
+    },
+    {
+        "jp": "つまらない",
+        "reading": "つまらない",
+        "mn": "уйтгартай",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "つもり",
@@ -2934,6 +3249,30 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "テープ",
+        "reading": "テープ",
+        "mn": "соронзон хальс",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "テーブル",
+        "reading": "テーブル",
+        "mn": "ширээ",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "テープレコーダー",
+        "reading": "テープレコーダー",
+        "mn": "соронзон хальсны бичигч",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "テキスト",
         "reading": "テキスト",
         "mn": "текст",
@@ -2948,6 +3287,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "できる",
+        "reading": "できる",
+        "mn": "чадах",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "できるだけ",
         "reading": "できるだけ",
         "mn": "аль болох",
@@ -2960,6 +3307,86 @@ const MNJP_ENTRIES = [
             "furigana": "できるだけ<ruby>君<rp>(</rp><rt>きみ</rt><rp>)</rp></ruby><ruby>本人<rp>(</rp><rt>ほんにん</rt><rp>)</rp></ruby>が<ruby>行<rp>(</rp><rt>おこな</rt><rp>)</rp></ruby>って<ruby>調<rp>(</rp><rt>しら</rt><rp>)</rp></ruby>べたほうがいいよ。",
             "enMn": "Аль болох чи өөрөө очиж шалгасан нь дээр шүү."
         }
+    },
+    {
+        "jp": "テスト",
+        "reading": "テスト",
+        "mn": "шалгалт",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "では",
+        "reading": "では",
+        "mn": "тэгвэл",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "デパート",
+        "reading": "デパート",
+        "mn": "их дэлгүүр",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "でも",
+        "reading": "でも",
+        "mn": "гэхдээ",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "テレビ",
+        "reading": "テレビ",
+        "mn": "телевиз",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "ドア",
+        "reading": "ドア",
+        "mn": "хаалга",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "トイレ",
+        "reading": "トイレ",
+        "mn": "бие засах газар",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "どう",
+        "reading": "どう",
+        "mn": "яаж",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "どうして",
+        "reading": "どうして",
+        "mn": "яагаад",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "どうぞ",
+        "reading": "どうぞ",
+        "mn": "залуур байгаарай, авна уу",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "とうとう",
@@ -2985,6 +3412,14 @@ const MNJP_ENTRIES = [
         "glosses": "thank you"
     },
     {
+        "jp": "どこ",
+        "reading": "どこ",
+        "mn": "хаана",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "とこしえ",
         "reading": "とこしえ",
         "mn": "мөнхийн",
@@ -2997,6 +3432,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "どちら",
+        "reading": "どちら",
+        "mn": "аль тал",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "どちらからとも無く",
         "reading": "どちらからともなく",
         "mn": "зэрэг",
@@ -3004,6 +3447,30 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "degreed, graded; simultaneous; adjacent; grade, degree, rank; class, category, sort, kind"
+    },
+    {
+        "jp": "どっち",
+        "reading": "どっち",
+        "mn": "аль тал",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "とても",
+        "reading": "とても",
+        "mn": "их, маш",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "どなた",
+        "reading": "どなた",
+        "mn": "хэн (хүндэтгэлийн)",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "となる",
@@ -3015,6 +3482,30 @@ const MNJP_ENTRIES = [
         "glosses": "to become; to occur, to happen; to be done, to be ready, to ripen; to fit, to be acceptable, will do, to be allowed, to be enough, to be okay; to comply with, to follow"
     },
     {
+        "jp": "どの",
+        "reading": "どの",
+        "mn": "аль",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "どれ",
+        "reading": "どれ",
+        "mn": "алийг нь",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "どんな",
+        "reading": "どんな",
+        "mn": "ямар",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "と言う",
         "reading": "という",
         "mn": "гэдэг",
@@ -3022,6 +3513,22 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "called; iterative verbal noun of гэх (gex)"
+    },
+    {
+        "jp": "ない",
+        "reading": "ない",
+        "mn": "байхгүй",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "ナイフ",
+        "reading": "ナイフ",
+        "mn": "хутга",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "なくす",
@@ -3050,6 +3557,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "なぜ",
+        "reading": "なぜ",
+        "mn": "яагаад",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "なら",
         "reading": "なら",
         "mn": "бол",
@@ -3057,6 +3572,14 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "if; I wonder if (paired with уу); as for; imperative of болох (bolox, “to become”)"
+    },
+    {
+        "jp": "なる",
+        "reading": "なる",
+        "mn": "болох",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "なるべく",
@@ -3086,6 +3609,22 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "にぎやか",
+        "reading": "にぎやか",
+        "mn": "чимээ шуугиантай",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "ニュース",
+        "reading": "ニュース",
+        "mn": "мэдээ",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "に因って",
         "reading": "によって",
         "mn": "үндсэн дээр",
@@ -3104,6 +3643,14 @@ const MNJP_ENTRIES = [
         "glosses": "occasion, time; about; for (the sake of)"
     },
     {
+        "jp": "ネクタイ",
+        "reading": "ネクタイ",
+        "mn": "зангиа",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "ねた",
         "reading": "ねた",
         "mn": "өгөгдөл",
@@ -3113,6 +3660,38 @@ const MNJP_ENTRIES = [
         "glosses": "information"
     },
     {
+        "jp": "ノート",
+        "reading": "ノート",
+        "mn": "дэвтэр",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "パーティー",
+        "reading": "パーティー",
+        "mn": "үдэшлэг",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "はい",
+        "reading": "はい",
+        "mn": "тийм",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "はく",
+        "reading": "はく",
+        "mn": "өмсөх (доод бие)",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "ハサミを入れる",
         "reading": "はさみをいれる",
         "mn": "хайчлах",
@@ -3120,6 +3699,22 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "to cut with scissors; to hold with pliers"
+    },
+    {
+        "jp": "バス",
+        "reading": "バス",
+        "mn": "автобус",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "バター",
+        "reading": "バター",
+        "mn": "цөцгийн тос",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "はっきりした",
@@ -3155,6 +3750,22 @@ const MNJP_ENTRIES = [
             "furigana": "パパはラテン<ruby>語<rp>(</rp><rt>ご</rt><rp>)</rp></ruby>の<ruby>素養<rp>(</rp><rt>そよう</rt><rp>)</rp></ruby>もあったのです。",
             "enMn": "Аав минь латин хэлний мэдлэгтэй байсан юм."
         }
+    },
+    {
+        "jp": "パン",
+        "reading": "パン",
+        "mn": "талх",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "ハンカチ",
+        "reading": "ハンカチ",
+        "mn": "алчуур",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "パン屋",
@@ -3213,6 +3824,30 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "フィルム",
+        "reading": "フィルム",
+        "mn": "хальс",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "プール",
+        "reading": "プール",
+        "mn": "усан сан",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "フォーク",
+        "reading": "フォーク",
+        "mn": "сэрээ",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "ふさわしい",
         "reading": "ふさわしい",
         "mn": "тохиромжтой",
@@ -3263,6 +3898,30 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "ページ",
+        "reading": "ページ",
+        "mn": "хуудас",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "ベッド",
+        "reading": "ベッド",
+        "mn": "ор",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "ペット",
+        "reading": "ペット",
+        "mn": "гэрийн тэжээвэр амьтан",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "ヘラ鹿",
         "reading": "へらじか",
         "mn": "хандгай",
@@ -3284,6 +3943,54 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>万一<rp>(</rp><rt>まんいち</rt><rp>)</rp></ruby>の<ruby>場合<rp>(</rp><rt>ばあい</rt><rp>)</rp></ruby>にはベルを<ruby>鳴<rp>(</rp><rt>な</rt><rp>)</rp></ruby>らしなさい。",
             "enMn": "Онцгой тохиолдолд хонх дуугарга."
         }
+    },
+    {
+        "jp": "ペン",
+        "reading": "ペン",
+        "mn": "үзэг",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "ボールペン",
+        "reading": "ボールペン",
+        "mn": "бал үзэг",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "ポケット",
+        "reading": "ポケット",
+        "mn": "халаас",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "ポスト",
+        "reading": "ポスト",
+        "mn": "шуудангийн хайрцаг",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "ボタン",
+        "reading": "ボタン",
+        "mn": "товч",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "ホテル",
+        "reading": "ホテル",
+        "mn": "зочид буудал",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "ほとんど",
@@ -3348,6 +4055,30 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "まずい",
+        "reading": "まずい",
+        "mn": "амтгүй",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "また",
+        "reading": "また",
+        "mn": "дахин",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "まだ",
+        "reading": "まだ",
+        "mn": "одоохондоо",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "または",
         "reading": "または",
         "mn": "эсвэл",
@@ -3362,6 +4093,22 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "まっすぐ",
+        "reading": "まっすぐ",
+        "mn": "чигээрээ",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "マッチ",
+        "reading": "マッチ",
+        "mn": "шүдэнз",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "マニ車",
         "reading": "マニぐるま",
         "mn": "мөргөлийн хүрд",
@@ -3369,6 +4116,22 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "prayer wheel"
+    },
+    {
+        "jp": "みんな",
+        "reading": "みんな",
+        "mn": "бүгд",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "メートル",
+        "reading": "メートル",
+        "mn": "метр",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "めおと",
@@ -3390,6 +4153,14 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "The twenty-seventh letter of the Mongolian alphabet, called чэ (če) and written in the Cyrillic script.; even; too (also); marking the topic of the sentence; no-, any- (after interrogative pronouns, used with a negative verb)"
+    },
+    {
+        "jp": "もう",
+        "reading": "もう",
+        "mn": "аль хэдийн",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "もうけ",
@@ -3418,6 +4189,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "もしもし",
+        "reading": "もしもし",
+        "mn": "алло",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "もちろん",
         "reading": "もちろん",
         "mn": "мэдээж",
@@ -3430,6 +4209,14 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>足<rp>(</rp><rt>あし</rt><rp>)</rp></ruby>が<ruby>遅<rp>(</rp><rt>おそ</rt><rp>)</rp></ruby>い<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は、もちろんすでに2m<ruby>差<rp>(</rp><rt>さ</rt><rp>)</rp></ruby>がついた。",
             "enMn": "Хөл удаантай тэрээр мэдээж аль хэдийн 2 метрээр хоцорчээ."
         }
+    },
+    {
+        "jp": "もっと",
+        "reading": "もっと",
+        "mn": "илүү",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "もらう",
@@ -3487,6 +4274,70 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "やる",
+        "reading": "やる",
+        "mn": "хийх, өгөх",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "ゆっくりと",
+        "reading": "ゆっくりと",
+        "mn": "аажуухан",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "よく",
+        "reading": "よく",
+        "mn": "байнга, сайн",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "ラジオ",
+        "reading": "ラジオ",
+        "mn": "радио",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "ラジオカセ",
+        "reading": "ラジオカセ",
+        "mn": "радио кассет",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "りっぱ",
+        "reading": "りっぱ",
+        "mn": "сайхан, гоёмсог",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "レコード",
+        "reading": "レコード",
+        "mn": "дуу бичлэг",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "レストラン",
+        "reading": "レストラン",
+        "mn": "ресторан",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "ローマ字",
         "reading": "ローマじ",
         "mn": "латин цагаан толгой",
@@ -3494,6 +4345,14 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "Latin alphabet"
+    },
+    {
+        "jp": "ワイシャツ",
+        "reading": "ワイシャツ",
+        "mn": "цамц",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "わけ",
@@ -3554,6 +4413,14 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "greeting"
+    },
+    {
+        "jp": "悪い",
+        "reading": "わるい",
+        "mn": "муу",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "悪化する",
@@ -3938,6 +4805,14 @@ const MNJP_ENTRIES = [
         "glosses": "distinction; difference"
     },
     {
+        "jp": "違う",
+        "reading": "ちがう",
+        "mn": "өөр, буруу",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "遺骸",
         "reading": "いがい",
         "mn": "цогцос",
@@ -4046,6 +4921,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "一つ",
+        "reading": "ひとつ",
+        "mn": "нэг зүйл",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "一億",
         "reading": "いちおく",
         "mn": "дүнчүүр",
@@ -4053,6 +4936,14 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "one hundred million"
+    },
+    {
+        "jp": "一月",
+        "reading": "ひとつき",
+        "mn": "нэг сар",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "一昨日",
@@ -4067,6 +4958,22 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>一昨日<rp>(</rp><rt>おととい</rt><rp>)</rp></ruby><ruby>成田<rp>(</rp><rt>なりた</rt><rp>)</rp></ruby>に<ruby>着<rp>(</rp><rt>つ</rt><rp>)</rp></ruby>きました。",
             "enMn": "Уржигдар Наритад ирлээ."
         }
+    },
+    {
+        "jp": "一緒",
+        "reading": "いっしょ",
+        "mn": "хамт",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "一人",
+        "reading": "ひとり",
+        "mn": "ганц хүн",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "一生",
@@ -4116,6 +5023,14 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>週<rp>(</rp><rt>しゅう</rt><rp>)</rp></ruby>に<ruby>一度<rp>(</rp><rt>いちど</rt><rp>)</rp></ruby><ruby>料理<rp>(</rp><rt>りょうり</rt><rp>)</rp></ruby>の<ruby>講習<rp>(</rp><rt>こうしゅう</rt><rp>)</rp></ruby>を<ruby>受<rp>(</rp><rt>う</rt><rp>)</rp></ruby>ける。",
             "enMn": "Тэр долоо хоногт нэг удаа хоол хийх хичээлд суудаг."
         }
+    },
+    {
+        "jp": "一日",
+        "reading": "いちにち",
+        "mn": "нэг өдөр",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "一般",
@@ -4383,6 +5298,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "右",
+        "reading": "みぎ",
+        "mn": "баруун",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "宇宙船",
         "reading": "うちゅうせん",
         "mn": "сансрын хөлөг",
@@ -4540,6 +5463,14 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>妹<rp>(</rp><rt>いもうと</rt><rp>)</rp></ruby>と<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>はときどき<ruby>映画<rp>(</rp><rt>えいが</rt><rp>)</rp></ruby>に<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>きます。",
             "enMn": "Дүү охин бид хааяа кино үздэг."
         }
+    },
+    {
+        "jp": "映画館",
+        "reading": "えいがかん",
+        "mn": "кино театр",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "栄える",
@@ -4955,6 +5886,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "横",
+        "reading": "よこ",
+        "mn": "хажуу тал",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "横たわる",
         "reading": "よこたわる",
         "mn": "хэвтэх",
@@ -5088,6 +6027,14 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "service, work, duty, job; obligation"
+    },
+    {
+        "jp": "温い",
+        "reading": "ぬるい",
+        "mn": "дулаахан",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "温める",
@@ -5249,6 +6196,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "下手",
+        "reading": "へた",
+        "mn": "муу чадвартай",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "下痢",
         "reading": "げり",
         "mn": "суулгалт",
@@ -5339,6 +6294,22 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>女<rp>(</rp><rt>おんな</rt><rp>)</rp></ruby>の<ruby>子<rp>(</rp><rt>こ</rt><rp>)</rp></ruby>は<ruby>可愛<rp>(</rp><rt>かわい</rt><rp>)</rp></ruby>い<ruby>人形<rp>(</rp><rt>にんぎょう</rt><rp>)</rp></ruby>を<ruby>持<rp>(</rp><rt>も</rt><rp>)</rp></ruby>っている。",
             "enMn": "Тэр охин хөөрхөн хүүхэлдэйтэй."
         }
+    },
+    {
+        "jp": "夏",
+        "reading": "なつ",
+        "mn": "зун",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "夏休み",
+        "reading": "なつやすみ",
+        "mn": "зуны амралт",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "嫁",
@@ -5433,6 +6404,14 @@ const MNJP_ENTRIES = [
             "furigana": "ハンプダンプティは<ruby>塀<rp>(</rp><rt>へい</rt><rp>)</rp></ruby>の<ruby>上<rp>(</rp><rt>うえ</rt><rp>)</rp></ruby>；ハンプダンプティは<ruby>落<rp>(</rp><rt>お</rt><rp>)</rp></ruby>っこった；<ruby>王様<rp>(</rp><rt>おうさま</rt><rp>)</rp></ruby>の<ruby>馬<rp>(</rp><rt>うま</rt><rp>)</rp></ruby>と<ruby>王様<rp>(</rp><rt>おうさま</rt><rp>)</rp></ruby>の<ruby>家来<rp>(</rp><rt>けらい</rt><rp>)</rp></ruby>を<ruby>連<rp>(</rp><rt>つ</rt><rp>)</rp></ruby>れてくる；ハンプダンプティを<ruby>元通<rp>(</rp><rt>もとどお</rt><rp>)</rp></ruby>りにできなかった。",
             "enMn": "Хампти Дампти хананд суув; Хампти Дампти унав; Хааны бүх морь, хааны бүх зарц ирсэн ч Хампти Дамптиг хуучин хэвэнд нь оруулж чадсангүй."
         }
+    },
+    {
+        "jp": "暇",
+        "reading": "ひま",
+        "mn": "чөлөөт цаг",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "暇な時間",
@@ -5566,6 +6545,14 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>要約<rp>(</rp><rt>ようやく</rt><rp>)</rp></ruby>を<ruby>火曜日<rp>(</rp><rt>かようび</rt><rp>)</rp></ruby>までに<ruby>提出<rp>(</rp><rt>ていしゅつ</rt><rp>)</rp></ruby>しなさい。",
             "enMn": "Хураангуйгаа мягмар гарагт багтаан ирүүлнэ үү."
         }
+    },
+    {
+        "jp": "花",
+        "reading": "はな",
+        "mn": "цэцэг",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "花瓶",
@@ -6056,6 +7043,22 @@ const MNJP_ENTRIES = [
         "glosses": "ash"
     },
     {
+        "jp": "灰皿",
+        "reading": "はいざら",
+        "mn": "тамхины сав",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "皆さん",
+        "reading": "みなさん",
+        "mn": "та бүхэн",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "絵",
         "reading": "え",
         "mn": "зураг",
@@ -6159,6 +7162,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "外",
+        "reading": "そと",
+        "mn": "гадаа",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "外国",
         "reading": "がいこく",
         "mn": "гадаад улс",
@@ -6172,6 +7183,14 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>裕子<rp>(</rp><rt>ゆうこ</rt><rp>)</rp></ruby>は<ruby>外国<rp>(</rp><rt>がいこく</rt><rp>)</rp></ruby><ruby>人<rp>(</rp><rt>じん</rt><rp>)</rp></ruby>と<ruby>話<rp>(</rp><rt>はな</rt><rp>)</rp></ruby>したことがない。",
             "enMn": "Юко хэзээ ч гадаадынхантай ярилцаж байгаагүй."
         }
+    },
+    {
+        "jp": "外国人",
+        "reading": "がいこくじん",
+        "mn": "гадаад хүн",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "咳",
@@ -7069,6 +8088,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "丸い",
+        "reading": "まるい",
+        "mn": "дугуй хэлбэртэй",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "丸め込む",
         "reading": "まるめこむ",
         "mn": "авайлах",
@@ -7106,6 +8133,14 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "frog, toad; small; cancer"
+    },
+    {
+        "jp": "眼鏡",
+        "reading": "めがね",
+        "mn": "нүдний шил",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "岩屋",
@@ -7384,6 +8419,14 @@ const MNJP_ENTRIES = [
             "text": "望む",
             "role": "wago"
         }
+    },
+    {
+        "jp": "机",
+        "reading": "つくえ",
+        "mn": "ширээ",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "既に",
@@ -7888,6 +8931,14 @@ const MNJP_ENTRIES = [
         "glosses": "hill"
     },
     {
+        "jp": "休み",
+        "reading": "やすみ",
+        "mn": "амралт",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "休む",
         "reading": "やすむ",
         "mn": "тасалах",
@@ -7898,6 +8949,14 @@ const MNJP_ENTRIES = [
             "text": "欠席する",
             "role": "kango"
         }
+    },
+    {
+        "jp": "吸う",
+        "reading": "すう",
+        "mn": "татах, амьсгалах",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "急かす",
@@ -8480,6 +9539,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "狭い",
+        "reading": "せまい",
+        "mn": "нарийхан, багтаамжгүй",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "矯正する",
         "reading": "きょうせいする",
         "mn": "засах, залруулах",
@@ -8634,6 +9701,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "曲る",
+        "reading": "まがる",
+        "mn": "эргэх",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "曲折する",
         "reading": "きょくせつする",
         "mn": "муруйх",
@@ -8678,6 +9753,14 @@ const MNJP_ENTRIES = [
         "glosses": "football, soccer"
     },
     {
+        "jp": "勤める",
+        "reading": "つとめる",
+        "mn": "ажиллах (байгууллагад)",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "禁止する",
         "reading": "きんしする",
         "mn": "хориглох",
@@ -8711,6 +9794,22 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "around, about (approximately); nearby; around, about; near"
+    },
+    {
+        "jp": "近い",
+        "reading": "ちかい",
+        "mn": "ойрхон",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "近く",
+        "reading": "ちかく",
+        "mn": "ойролцоо",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "近づく",
@@ -8823,6 +9922,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "九日",
+        "reading": "ここのか",
+        "mn": "есөн хоног; сарын есний өдөр",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "句",
         "reading": "く",
         "mn": "өгүүлбэр",
@@ -8922,6 +10029,14 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "instrumental case"
+    },
+    {
+        "jp": "空",
+        "reading": "そら",
+        "mn": "тэнгэр",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "空気",
@@ -9424,6 +10539,14 @@ const MNJP_ENTRIES = [
             "text": "見下す",
             "role": "wago"
         }
+    },
+    {
+        "jp": "鶏肉",
+        "reading": "とりにく",
+        "mn": "тахианы мах",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "迎える",
@@ -10133,6 +11256,14 @@ const MNJP_ENTRIES = [
             "text": "建てる",
             "role": "wago"
         }
+    },
+    {
+        "jp": "建物",
+        "reading": "たてもの",
+        "mn": "барилга",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "拳",
@@ -10958,6 +12089,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "古い",
+        "reading": "ふるい",
+        "mn": "хуучин",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "古臭い",
         "reading": "ふるくさい",
         "mn": "хуучин, сонирхолгүй болсон",
@@ -10982,6 +12121,14 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>民主<rp>(</rp><rt>みんしゅ</rt><rp>)</rp></ruby><ruby>主義<rp>(</rp><rt>しゅぎ</rt><rp>)</rp></ruby>は<ruby>古代<rp>(</rp><rt>こだい</rt><rp>)</rp></ruby>ギリシャに<ruby>始<rp>(</rp><rt>はじ</rt><rp>)</rp></ruby>まった。",
             "enMn": "Ардчилал эртний Грекээс үүсэлтэй."
         }
+    },
+    {
+        "jp": "呼ぶ",
+        "reading": "よぶ",
+        "mn": "дуудах",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "呼格",
@@ -11082,6 +12229,14 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>はいつも<ruby>同僚<rp>(</rp><rt>どうりょう</rt><rp>)</rp></ruby>から<ruby>孤立<rp>(</rp><rt>こりつ</rt><rp>)</rp></ruby>している。",
             "enMn": "Тэр үргэлж хамт олноосоо тусгаарлагдсан байдаг."
         }
+    },
+    {
+        "jp": "戸",
+        "reading": "と",
+        "mn": "хаалга (япон маягийн)",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "戸籍",
@@ -11200,6 +12355,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "五日",
+        "reading": "いつか",
+        "mn": "таван хоног; сарын тавны өдөр",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "午後",
         "reading": "ごご",
         "mn": "өдийн хойно",
@@ -11236,6 +12399,14 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "material (substance out of which a thing is made); matter, substance; textile; goods, property; item"
+    },
+    {
+        "jp": "後",
+        "reading": "あと",
+        "mn": "дараа",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "後ろ",
@@ -11786,6 +12957,14 @@ const MNJP_ENTRIES = [
         "glosses": "to kiss"
     },
     {
+        "jp": "向こう",
+        "reading": "むこう",
+        "mn": "тэр талд",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "向上",
         "reading": "こうじょう",
         "mn": "сайжруулалт",
@@ -11823,6 +13002,14 @@ const MNJP_ENTRIES = [
             "text": "渇望",
             "role": "kango"
         }
+    },
+    {
+        "jp": "好き",
+        "reading": "すき",
+        "mn": "дуртай",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "好き嫌い",
@@ -12020,6 +13207,14 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>隣<rp>(</rp><rt>となり</rt><rp>)</rp></ruby>の<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>の<ruby>幸運<rp>(</rp><rt>こううん</rt><rp>)</rp></ruby>を<ruby>妬<rp>(</rp><rt>ねた</rt><rp>)</rp></ruby>んでいた。",
             "enMn": "Тэр хөршийнхөө азад атаархаж байв."
         }
+    },
+    {
+        "jp": "広い",
+        "reading": "ひろい",
+        "mn": "өргөн",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "広がる",
@@ -12587,6 +13782,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "降る",
+        "reading": "ふる",
+        "mn": "орох (бороо, цас)",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "降雨",
         "reading": "こうう",
         "mn": "бороо",
@@ -12665,6 +13868,14 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>韓国<rp>(</rp><rt>かんこく</rt><rp>)</rp></ruby><ruby>料理<rp>(</rp><rt>りょうり</rt><rp>)</rp></ruby>は、<ruby>香辛料<rp>(</rp><rt>こうしんりょう</rt><rp>)</rp></ruby>のきいた<ruby>味<rp>(</rp><rt>あじ</rt><rp>)</rp></ruby>でよく<ruby>知<rp>(</rp><rt>し</rt><rp>)</rp></ruby>られている。",
             "enMn": "Солонгос хоол халуун амтлагчаараа алдартай."
         }
+    },
+    {
+        "jp": "高い",
+        "reading": "たかい",
+        "mn": "өндөр; үнэтэй",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "高価な",
@@ -13366,6 +14577,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "左",
+        "reading": "ひだり",
+        "mn": "зүүн",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "左右",
         "reading": "さゆう",
         "mn": "зүүн баруун",
@@ -13865,6 +15084,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "細い",
+        "reading": "ほそい",
+        "mn": "нарийн",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "細かい",
         "reading": "こまかい",
         "mn": "нарийн",
@@ -14213,6 +15440,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "昨夜",
+        "reading": "ゆうべ",
+        "mn": "өнгөрсөн шөнө",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "刷る",
         "reading": "する",
         "mn": "хэвлэх",
@@ -14434,6 +15669,14 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "triple"
+    },
+    {
+        "jp": "三日",
+        "reading": "みっか",
+        "mn": "гурван хоног; сарын гурваны өдөр",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "傘",
@@ -15155,6 +16398,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "四つ",
+        "reading": "よっつ",
+        "mn": "дөрвөн зүйл",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "四角",
         "reading": "しかく",
         "mn": "дөрвөлжин",
@@ -15182,6 +16433,14 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>は<ruby>四季<rp>(</rp><rt>しき</rt><rp>)</rp></ruby>の<ruby>中<rp>(</rp><rt>なか</rt><rp>)</rp></ruby>で<ruby>夏<rp>(</rp><rt>なつ</rt><rp>)</rp></ruby>が<ruby>一番<rp>(</rp><rt>いちばん</rt><rp>)</rp></ruby><ruby>好<rp>(</rp><rt>す</rt><rp>)</rp></ruby>きだ。",
             "enMn": "Дөрвөн улирлаас би зунд хамгийн их дуртай."
         }
+    },
+    {
+        "jp": "四日",
+        "reading": "よっか",
+        "mn": "дөрвөн хоног; сарын дөрөвний өдөр",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "始まり",
@@ -15780,6 +17039,14 @@ const MNJP_ENTRIES = [
         "glosses": "wild (not domesticated); savage, barbaric; ferocious"
     },
     {
+        "jp": "私",
+        "reading": "わたし",
+        "mn": "би",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "私たち",
         "reading": "わたしたち",
         "mn": "бид нар",
@@ -16231,6 +17498,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "時々",
+        "reading": "ときどき",
+        "mn": "заримдаа",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "時間",
         "reading": "じかん",
         "mn": "цаг",
@@ -16257,6 +17532,14 @@ const MNJP_ENTRIES = [
             "furigana": "しかるべき<ruby>時期<rp>(</rp><rt>じき</rt><rp>)</rp></ruby>にお<ruby>支払<rp>(</rp><rt>しはら</rt><rp>)</rp></ruby>いいたしました。",
             "enMn": "Зохих хугацаанд нь төлбөрөө төлсөн."
         }
+    },
+    {
+        "jp": "時計",
+        "reading": "とけい",
+        "mn": "цаг",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "時刻",
@@ -16286,6 +17569,14 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>漱石<rp>(</rp><rt>そうせき</rt><rp>)</rp></ruby>は<ruby>鴎外<rp>(</rp><rt>おうがい</rt><rp>)</rp></ruby>と<ruby>同<rp>(</rp><rt>どう</rt><rp>)</rp></ruby><ruby>時代<rp>(</rp><rt>じだい</rt><rp>)</rp></ruby>の<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>であった。",
             "enMn": "Сосэки бол Огайтай нэг үеийн хүн байсан."
         }
+    },
+    {
+        "jp": "次",
+        "reading": "つぎ",
+        "mn": "дараагийн",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "次第",
@@ -16530,6 +17821,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "自分",
+        "reading": "じぶん",
+        "mn": "өөрөө",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "自慢",
         "reading": "じまん",
         "mn": "бахархал",
@@ -16585,6 +17884,22 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>父<rp>(</rp><rt>ちち</rt><rp>)</rp></ruby>は<ruby>会社<rp>(</rp><rt>かいしゃ</rt><rp>)</rp></ruby>へ<ruby>七<rp>(</rp><rt>なな</rt><rp>)</rp></ruby><ruby>時<rp>(</rp><rt>じ</rt><rp>)</rp></ruby>の<ruby>地下鉄<rp>(</rp><rt>ちかてつ</rt><rp>)</rp></ruby>で<ruby>通<rp>(</rp><rt>かよ</rt><rp>)</rp></ruby>っている。",
             "enMn": "Аав долоон цагийн метрогоор ажилдаа явдаг."
         }
+    },
+    {
+        "jp": "七つ",
+        "reading": "ななつ",
+        "mn": "долоон зүйл",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "七日",
+        "reading": "なのか",
+        "mn": "долоо хоног; сарын долооны өдөр",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "叱る",
@@ -17132,6 +18447,14 @@ const MNJP_ENTRIES = [
         "glosses": "criterion"
     },
     {
+        "jp": "若い",
+        "reading": "わかい",
+        "mn": "залуу",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "弱い",
         "reading": "よわい",
         "mn": "сул, эмзэг",
@@ -17671,6 +18994,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "授業",
+        "reading": "じゅぎょう",
+        "mn": "хичээл",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "授与する",
         "reading": "じゅよする",
         "mn": "олгох, шагнах",
@@ -18095,6 +19426,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "習う",
+        "reading": "ならう",
+        "mn": "сурах",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "習慣",
         "reading": "しゅうかん",
         "mn": "зан заншил, дадал",
@@ -18232,6 +19571,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "住む",
+        "reading": "すむ",
+        "mn": "амьдрах",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "住居",
         "reading": "じゅうきょ",
         "mn": "оршин суух газар",
@@ -18296,6 +19643,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "十",
+        "reading": "じゅう",
+        "mn": "арав",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "十九",
         "reading": "じゅうきゅう",
         "mn": "арван ес",
@@ -18330,6 +19685,14 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "fourteen"
+    },
+    {
+        "jp": "十日",
+        "reading": "とおか",
+        "mn": "арван хоног; сарын аравны өдөр",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "十分な",
@@ -18478,6 +19841,14 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>原始<rp>(</rp><rt>げんし</rt><rp>)</rp></ruby><ruby>人<rp>(</rp><rt>じん</rt><rp>)</rp></ruby>はどう<ruby>猛<rp>(</rp><rt>もう</rt><rp>)</rp></ruby>な<ruby>獣<rp>(</rp><rt>しし</rt><rp>)</rp></ruby>を<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>ておびえた。",
             "enMn": "Эртний хүн харгис араатныг хараад айв."
         }
+    },
+    {
+        "jp": "重い",
+        "reading": "おもい",
+        "mn": "хүнд",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "重さ",
@@ -18678,6 +20049,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "宿題",
+        "reading": "しゅくだい",
+        "mn": "гэрийн даалгавар",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "宿泊",
         "reading": "しゅくはく",
         "mn": "байрлал",
@@ -18780,6 +20159,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "出かける",
+        "reading": "でかける",
+        "mn": "гарах, явах",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "出す",
         "reading": "だす",
         "mn": "хүргүүлэх",
@@ -18828,6 +20215,14 @@ const MNJP_ENTRIES = [
             "text": "現れる",
             "role": "wago"
         }
+    },
+    {
+        "jp": "出口",
+        "reading": "でぐち",
+        "mn": "гарц",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "出産する",
@@ -18973,6 +20368,14 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>動詞<rp>(</rp><rt>どうし</rt><rp>)</rp></ruby>は<ruby>述語<rp>(</rp><rt>じゅつご</rt><rp>)</rp></ruby><ruby>動詞<rp>(</rp><rt>どうし</rt><rp>)</rp></ruby>のことです。<ruby>述語<rp>(</rp><rt>じゅつご</rt><rp>)</rp></ruby><ruby>動詞<rp>(</rp><rt>どうし</rt><rp>)</rp></ruby>は、<ruby>主語<rp>(</rp><rt>しゅご</rt><rp>)</rp></ruby>や<ruby>表<rp>(</rp><rt>あらわ</rt><rp>)</rp></ruby>す<ruby>時<rp>(</rp><rt>とき</rt><rp>)</rp></ruby>によって<ruby>形<rp>(</rp><rt>かたち</rt><rp>)</rp></ruby>を<ruby>変<rp>(</rp><rt>か</rt><rp>)</rp></ruby>えます。",
             "enMn": "Үйл үг гэдэг нь өгүүлэхүүн үйл үгийг хэлнэ. Өгүүлэхүүн үйл үг нь өгүүлэгдэхүүн болон цагаасаа хамаарч хэлбэрээ өөрчилдөг."
         }
+    },
+    {
+        "jp": "春",
+        "reading": "はる",
+        "mn": "хавар",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "春節",
@@ -19227,6 +20630,22 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "初め",
+        "reading": "はじめ",
+        "mn": "эхлэл",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "初めて",
+        "reading": "はじめて",
+        "mn": "анх удаа",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "初級",
         "reading": "しょきゅう",
         "mn": "анхан шат",
@@ -19267,6 +20686,14 @@ const MNJP_ENTRIES = [
             "furigana": "こんな<ruby>初歩<rp>(</rp><rt>しょほ</rt><rp>)</rp></ruby><ruby>的<rp>(</rp><rt>てき</rt><rp>)</rp></ruby>なところでつまずいてるようじゃ<ruby>先<rp>(</rp><rt>さき</rt><rp>)</rp></ruby>が<ruby>思<rp>(</rp><rt>おも</rt><rp>)</rp></ruby>いやられるよ。",
             "enMn": "Ийм анхан шатны зүйл дээр бүдэрч байвал цаашдаа юу болох нь харагдаж байна шүү."
         }
+    },
+    {
+        "jp": "所",
+        "reading": "ところ",
+        "mn": "газар",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "所為",
@@ -19819,6 +21246,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "小さな",
+        "reading": "ちいさな",
+        "mn": "жижиг",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "小学校",
         "reading": "しょうがっこう",
         "mn": "бага сургууль",
@@ -19965,6 +21400,14 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>の<ruby>態度<rp>(</rp><rt>たいど</rt><rp>)</rp></ruby>は<ruby>少々<rp>(</rp><rt>しょうしょう</rt><rp>)</rp></ruby><ruby>腹<rp>(</rp><rt>はら</rt><rp>)</rp></ruby>にすえかねる。",
             "enMn": "Түүний зан авир надад бага зэрэг хүлцэхэд хэцүү санагддаг."
         }
+    },
+    {
+        "jp": "少し",
+        "reading": "すこし",
+        "mn": "бага зэрэг",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "少ない",
@@ -20552,6 +21995,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "醤油",
+        "reading": "しょうゆ",
+        "mn": "соёны соус",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "障る",
         "reading": "さわる",
         "mn": "саад болох",
@@ -20696,6 +22147,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "上手",
+        "reading": "じょうず",
+        "mn": "чадварлаг",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "上旬",
         "reading": "じょうじゅん",
         "mn": "сарын эхэн",
@@ -20787,6 +22246,14 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>上品<rp>(</rp><rt>じょうひん</rt><rp>)</rp></ruby>な<ruby>態度<rp>(</rp><rt>たいど</rt><rp>)</rp></ruby>をしています。",
             "enMn": "Тэр дэгжин зан ааштай."
         }
+    },
+    {
+        "jp": "丈夫",
+        "reading": "じょうぶ",
+        "mn": "бөх бат (зүйлийн); эрүүл, чийрэг (хүний)",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "乗じる",
@@ -21401,6 +22868,14 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>母<rp>(</rp><rt>はは</rt><rp>)</rp></ruby>は<ruby>食卓<rp>(</rp><rt>しょくたく</rt><rp>)</rp></ruby>の<ruby>準備<rp>(</rp><rt>じゅんび</rt><rp>)</rp></ruby>をした。",
             "enMn": "Ээж хоолны ширээгээ бэлдэв."
         }
+    },
+    {
+        "jp": "食堂",
+        "reading": "しょくどう",
+        "mn": "хоолны газар",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "食品",
@@ -22593,6 +24068,14 @@ const MNJP_ENTRIES = [
         "glosses": "чиглэл, удирдлага"
     },
     {
+        "jp": "人",
+        "reading": "ひと",
+        "mn": "хүн",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "人為的",
         "reading": "じんいてき",
         "mn": "хиймэл",
@@ -22877,6 +24360,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "図書館",
+        "reading": "としょかん",
+        "mn": "номын сан",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "図表",
         "reading": "ずひょう",
         "mn": "хүснэгт",
@@ -22957,6 +24448,14 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は３０<ruby>歳<rp>(</rp><rt>さい</rt><rp>)</rp></ruby><ruby>過<rp>(</rp><rt>す</rt><rp>)</rp></ruby>ぎだと<ruby>推定<rp>(</rp><rt>すいてい</rt><rp>)</rp></ruby>する。",
             "enMn": "Тэр гучаас дээш байх гэж би таамаглаж байна."
         }
+    },
+    {
+        "jp": "水",
+        "reading": "みず",
+        "mn": "ус",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "水たまり",
@@ -23136,6 +24635,14 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "Wednesday; Mercury"
+    },
+    {
+        "jp": "水曜日",
+        "reading": "すいようび",
+        "mn": "лхагва гараг",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "炊く",
@@ -23654,6 +25161,22 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "晴れ",
+        "reading": "はれ",
+        "mn": "цэлмэг цаг агаар",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "晴れる",
+        "reading": "はれる",
+        "mn": "цэлмэх",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "正しい",
         "reading": "ただしい",
         "mn": "зөв",
@@ -23986,6 +25509,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "生徒",
+        "reading": "せいと",
+        "mn": "сурагч",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "生物",
         "reading": "せいぶつ",
         "mn": "амьтан",
@@ -24155,6 +25686,22 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "青",
+        "reading": "あお",
+        "mn": "хөх",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "青い",
+        "reading": "あおい",
+        "mn": "хөх",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "青少年",
         "reading": "せいしょうねん",
         "mn": "өсвөр үе",
@@ -24321,6 +25868,14 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "lime; chalk"
+    },
+    {
+        "jp": "石鹸",
+        "reading": "せっけん",
+        "mn": "саван",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "石炭",
@@ -24707,6 +26262,30 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "先月",
+        "reading": "せんげつ",
+        "mn": "өнгөрсөн сар",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "先週",
+        "reading": "せんしゅう",
+        "mn": "өнгөрсөн долоо хоног",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "先生",
+        "reading": "せんせい",
+        "mn": "багш",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "先祖",
         "reading": "せんぞ",
         "mn": "өвөг дээдэс",
@@ -24952,6 +26531,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "洗濯",
+        "reading": "せんたく",
+        "mn": "угаалга",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "洗面",
         "reading": "せんめん",
         "mn": "нүүр угаах",
@@ -25062,6 +26649,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "前",
+        "reading": "まえ",
+        "mn": "өмнө",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "前後",
         "reading": "ぜんご",
         "mn": "урд хойд",
@@ -25125,6 +26720,14 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>全般<rp>(</rp><rt>ぜんぱん</rt><rp>)</rp></ruby><ruby>的<rp>(</rp><rt>てき</rt><rp>)</rp></ruby>に<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はとても<ruby>信頼<rp>(</rp><rt>しんらい</rt><rp>)</rp></ruby>のおける<ruby>人間<rp>(</rp><rt>にんげん</rt><rp>)</rp></ruby>だ。",
             "enMn": "Ерөнхийдөө тэр маш найдвартай хүн юм."
         }
+    },
+    {
+        "jp": "全部",
+        "reading": "ぜんぶ",
+        "mn": "бүгд",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "全力",
@@ -25374,6 +26977,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "掃除",
+        "reading": "そうじ",
+        "mn": "цэвэрлэгээ",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "掃除する",
         "reading": "そうじする",
         "mn": "цэвэрлэх",
@@ -25426,6 +27037,14 @@ const MNJP_ENTRIES = [
             "text": "操る",
             "role": "wago"
         }
+    },
+    {
+        "jp": "早い",
+        "reading": "はやい",
+        "mn": "эрт",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "早め",
@@ -25538,6 +27157,14 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>大<rp>(</rp><rt>だい</rt><rp>)</rp></ruby>の<ruby>相撲<rp>(</rp><rt>すもう</rt><rp>)</rp></ruby><ruby>狂<rp>(</rp><rt>きょう</rt><rp>)</rp></ruby>だ。",
             "enMn": "Тэр бол сумогийн галзуу шүтэн бишрэгч."
         }
+    },
+    {
+        "jp": "窓",
+        "reading": "まど",
+        "mn": "цонх",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "草",
@@ -25880,6 +27507,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "足",
+        "reading": "あし",
+        "mn": "хөл",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "足す",
         "reading": "たす",
         "mn": "нэмэх",
@@ -25942,6 +27577,14 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "ankle; shagai (ankle bone of a sheep or goat which used in traditional Mongolian games and divination practices as a die)"
+    },
+    {
+        "jp": "速い",
+        "reading": "はやい",
+        "mn": "хурдан",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "速さ",
@@ -26146,6 +27789,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "村",
+        "reading": "むら",
+        "mn": "тосгон",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "多い",
         "reading": "おおい",
         "mn": "элбэг",
@@ -26165,6 +27816,14 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "plural"
+    },
+    {
+        "jp": "多分",
+        "reading": "たぶん",
+        "mn": "магадгүй",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "多忙な",
@@ -26672,6 +28331,14 @@ const MNJP_ENTRIES = [
         "glosses": "cart; motorcar; rook"
     },
     {
+        "jp": "台所",
+        "reading": "だいどころ",
+        "mn": "гал тогоо",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "台帳",
         "reading": "だいちょう",
         "mn": "данс",
@@ -26755,6 +28422,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "大学",
+        "reading": "だいがく",
+        "mn": "их сургууль",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "大学院",
         "reading": "だいがくいん",
         "mn": "магистрантур",
@@ -26782,6 +28457,14 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>が<ruby>大学生<rp>(</rp><rt>だいがくせい</rt><rp>)</rp></ruby>かどうか<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>は<ruby>知<rp>(</rp><rt>し</rt><rp>)</rp></ruby>らない。",
             "enMn": "Тэр их сургуулийн оюутан эсэхийг би мэдэхгүй."
         }
+    },
+    {
+        "jp": "大好き",
+        "reading": "だいすき",
+        "mn": "маш их дуртай",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "大工",
@@ -26849,6 +28532,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "大丈夫",
+        "reading": "だいじょうぶ",
+        "mn": "болно, зүгээр",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "大人",
         "reading": "おとな",
         "mn": "насанд хүрэгч",
@@ -26875,6 +28566,14 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>大勢<rp>(</rp><rt>たいせい</rt><rp>)</rp></ruby>の<ruby>新聞<rp>(</rp><rt>しんぶん</rt><rp>)</rp></ruby><ruby>記者<rp>(</rp><rt>きしゃ</rt><rp>)</rp></ruby>にとり<ruby>囲<rp>(</rp><rt>かこ</rt><rp>)</rp></ruby>まれた。",
             "enMn": "Түүнийг олон сэтгүүлч бүслэн авав."
         }
+    },
+    {
+        "jp": "大切",
+        "reading": "たいせつ",
+        "mn": "чухал",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "大層",
@@ -26949,6 +28648,14 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>今日<rp>(</rp><rt>きょう</rt><rp>)</rp></ruby>は<ruby>大分<rp>(</rp><rt>だいぶ</rt><rp>)</rp></ruby><ruby>暖<rp>(</rp><rt>あたた</rt><rp>)</rp></ruby>かいね。",
             "enMn": "Өнөөдөр нэлээд дулаахан байна шүү."
         }
+    },
+    {
+        "jp": "大変",
+        "reading": "たいへん",
+        "mn": "маш; хэцүү",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "大木",
@@ -27043,6 +28750,14 @@ const MNJP_ENTRIES = [
         "glosses": "empty, hollow; spacious; away, apart; aloof; unsociable, withdrawn, arrogant, cold"
     },
     {
+        "jp": "沢山",
+        "reading": "たくさん",
+        "mn": "их олон",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "蛸",
         "reading": "タコ",
         "mn": "наймалж",
@@ -27050,6 +28765,14 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "octopus; crab"
+    },
+    {
+        "jp": "脱ぐ",
+        "reading": "ぬぐ",
+        "mn": "тайлах",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "脱線",
@@ -27078,6 +28801,22 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "誰",
+        "reading": "だれ",
+        "mn": "хэн",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "誰か",
+        "reading": "だれか",
+        "mn": "хэн нэгэн",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "担う",
         "reading": "になう",
         "mn": "үүрэх",
@@ -27097,6 +28836,14 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "light blue"
+    },
+    {
+        "jp": "短い",
+        "reading": "みじかい",
+        "mn": "богино",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "短縮する",
@@ -27121,6 +28868,22 @@ const MNJP_ENTRIES = [
             "text": "生まれる",
             "role": "wago"
         }
+    },
+    {
+        "jp": "誕生日",
+        "reading": "たんじょうび",
+        "mn": "төрсөн өдөр",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "弾く",
+        "reading": "ひく",
+        "mn": "тоглох (хөгжмийн зэмсэг)",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "断る",
@@ -27176,6 +28939,14 @@ const MNJP_ENTRIES = [
             "text": "温暖な",
             "role": "kango"
         }
+    },
+    {
+        "jp": "段々",
+        "reading": "だんだん",
+        "mn": "аажмаар",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "男",
@@ -27280,6 +29051,14 @@ const MNJP_ENTRIES = [
         "glosses": "soil"
     },
     {
+        "jp": "地下鉄",
+        "reading": "ちかてつ",
+        "mn": "метро",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "地獄",
         "reading": "じごく",
         "mn": "там",
@@ -27301,6 +29080,14 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>地震<rp>(</rp><rt>じしん</rt><rp>)</rp></ruby>の<ruby>時<rp>(</rp><rt>とき</rt><rp>)</rp></ruby><ruby>落<rp>(</rp><rt>お</rt><rp>)</rp></ruby>ち<ruby>着<rp>(</rp><rt>つ</rt><rp>)</rp></ruby>いています。",
             "enMn": "Тэр газар хөдлөлтийн үед тайван байдаг."
         }
+    },
+    {
+        "jp": "地図",
+        "reading": "ちず",
+        "mn": "газрын зураг",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "地帯",
@@ -27493,6 +29280,22 @@ const MNJP_ENTRIES = [
         "glosses": "tea house; café; cafeteria"
     },
     {
+        "jp": "茶色",
+        "reading": "ちゃいろ",
+        "mn": "хүрэн",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "茶碗",
+        "reading": "ちゃわん",
+        "mn": "будаа идэх аяга",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "着く",
         "reading": "つく",
         "mn": "ирэх",
@@ -27604,6 +29407,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "昼",
+        "reading": "ひる",
+        "mn": "өдөр",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "昼ご飯",
         "reading": "ひるごはん",
         "mn": "өдрийн хоол",
@@ -27614,6 +29425,14 @@ const MNJP_ENTRIES = [
             "text": "昼食",
             "role": "kango"
         }
+    },
+    {
+        "jp": "昼御飯",
+        "reading": "ひるごはん",
+        "mn": "өдрийн хоол",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "昼食",
@@ -27722,6 +29541,14 @@ const MNJP_ENTRIES = [
             "text": "蓄える",
             "role": "wago"
         }
+    },
+    {
+        "jp": "丁度",
+        "reading": "ちょうど",
+        "mn": "яг",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "丁寧",
@@ -27852,6 +29679,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "町",
+        "reading": "まち",
+        "mn": "хот, тосгон",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "聴聞する",
         "reading": "ちょうもんする",
         "mn": "сонсох",
@@ -27928,6 +29763,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "長い",
+        "reading": "ながい",
+        "mn": "урт",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "頂く",
         "reading": "いただく",
         "mn": "хүлээн авах",
@@ -27950,6 +29793,14 @@ const MNJP_ENTRIES = [
             "text": "頂く",
             "role": "wago"
         }
+    },
+    {
+        "jp": "鳥",
+        "reading": "とり",
+        "mn": "шувуу, тахиа",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "直",
@@ -28259,6 +30110,14 @@ const MNJP_ENTRIES = [
         "glosses": "fishing rod"
     },
     {
+        "jp": "低い",
+        "reading": "ひくい",
+        "mn": "намхан",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "停止する",
         "reading": "ていしする",
         "mn": "зогсох",
@@ -28351,6 +30210,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "庭",
+        "reading": "にわ",
+        "mn": "цэцэрлэг",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "弟",
         "reading": "おとうと",
         "mn": "хүү дүү",
@@ -28387,6 +30254,14 @@ const MNJP_ENTRIES = [
             "text": "出す",
             "role": "wago"
         }
+    },
+    {
+        "jp": "締める",
+        "reading": "しめる",
+        "mn": "чангалах, боох",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "訂正する",
@@ -28508,6 +30383,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "天気",
+        "reading": "てんき",
+        "mn": "цаг агаар",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "天候",
         "reading": "てんこう",
         "mn": "цаг агаар",
@@ -28587,6 +30470,14 @@ const MNJP_ENTRIES = [
             "text": "貼付する",
             "role": "kango"
         }
+    },
+    {
+        "jp": "貼る",
+        "reading": "はる",
+        "mn": "наах",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "貼付する",
@@ -28726,6 +30617,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "電気",
+        "reading": "でんき",
+        "mn": "цахилгаан, гэрэл",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "電子レンジ",
         "reading": "でんしレンジ",
         "mn": "богино долгионы зуух",
@@ -28742,6 +30641,22 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "electromagnetism; electromagnetic"
+    },
+    {
+        "jp": "電車",
+        "reading": "でんしゃ",
+        "mn": "цахилгаан галт тэрэг",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "電話",
+        "reading": "でんわ",
+        "mn": "утас",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "吐き出す",
@@ -28779,6 +30694,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "渡す",
+        "reading": "わたす",
+        "mn": "өгөх, дамжуулах",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "渡る",
         "reading": "わたる",
         "mn": "гаталах",
@@ -28789,6 +30712,14 @@ const MNJP_ENTRIES = [
             "text": "横断する",
             "role": "kango"
         }
+    },
+    {
+        "jp": "登る",
+        "reading": "のぼる",
+        "mn": "авирах",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "努める",
@@ -28831,6 +30762,14 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "Saturday"
+    },
+    {
+        "jp": "土曜日",
+        "reading": "どようび",
+        "mn": "бямба гараг",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "奴隷",
@@ -28902,6 +30841,14 @@ const MNJP_ENTRIES = [
             "text": "転倒する",
             "role": "kango"
         }
+    },
+    {
+        "jp": "冬",
+        "reading": "ふゆ",
+        "mn": "өвөл",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "刀剣",
@@ -29306,6 +31253,14 @@ const MNJP_ENTRIES = [
         "glosses": "verb"
     },
     {
+        "jp": "動物",
+        "reading": "どうぶつ",
+        "mn": "амьтан",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "動物園",
         "reading": "どうぶつえん",
         "mn": "амьтны хүрээлэн",
@@ -29484,6 +31439,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "豚肉",
+        "reading": "ぶたにく",
+        "mn": "гахайн мах",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "曇り",
         "reading": "くもり",
         "mn": "үүлэрхэг",
@@ -29539,6 +31502,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "南",
+        "reading": "みなみ",
+        "mn": "өмнөд",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "軟骨",
         "reading": "なんこつ",
         "mn": "мөгөөрс",
@@ -29567,6 +31538,46 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "two"
+    },
+    {
+        "jp": "二つ",
+        "reading": "ふたつ",
+        "mn": "хоёр зүйл",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "二十歳",
+        "reading": "はたち",
+        "mn": "хорин нас",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "二十日",
+        "reading": "はつか",
+        "mn": "хорин хоног; сарын хорины өдөр",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "二人",
+        "reading": "ふたり",
+        "mn": "хоёр хүн",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "二日",
+        "reading": "ふつか",
+        "mn": "хоёр хоног; сарын хоёрны өдөр",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "二日酔い",
@@ -29599,6 +31610,14 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>猟犬<rp>(</rp><rt>りょうけん</rt><rp>)</rp></ruby>たちはキツネの<ruby>匂<rp>(</rp><rt>にお</rt><rp>)</rp></ruby>いの<ruby>跡<rp>(</rp><rt>あと</rt><rp>)</rp></ruby>をたどった。",
             "enMn": "Анчин нохойнууд үнэгний үнэрийн мөрөөр дагав."
         }
+    },
+    {
+        "jp": "肉",
+        "reading": "にく",
+        "mn": "мах",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "肉屋",
@@ -29675,6 +31694,14 @@ const MNJP_ENTRIES = [
         "glosses": "Sunday"
     },
     {
+        "jp": "日曜日",
+        "reading": "にちようび",
+        "mn": "ням гараг",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "乳首",
         "reading": "ちくび",
         "mn": "хөхний товч",
@@ -29712,6 +31739,14 @@ const MNJP_ENTRIES = [
             "text": "入門する",
             "role": "kango"
         }
+    },
+    {
+        "jp": "入れる",
+        "reading": "いれる",
+        "mn": "хийх, дотогш хийх",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "入口",
@@ -29771,6 +31806,14 @@ const MNJP_ENTRIES = [
             "text": "知る",
             "role": "wago"
         }
+    },
+    {
+        "jp": "猫",
+        "reading": "ねこ",
+        "mn": "муур",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "熱",
@@ -30066,6 +32109,22 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "背",
+        "reading": "せい",
+        "mn": "өндөр (биеийн)",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "背広",
+        "reading": "せびろ",
+        "mn": "хүрэм костюм",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "肺臓",
         "reading": "はいぞう",
         "mn": "уушги",
@@ -30239,6 +32298,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "伯母さん",
+        "reading": "おばさん",
+        "mn": "авга эгч, нагац эгч",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "剥ぐ",
         "reading": "はぐ",
         "mn": "хуцах",
@@ -30246,6 +32313,14 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "to bark; to babble"
+    },
+    {
+        "jp": "白",
+        "reading": "しろ",
+        "mn": "цагаан",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "白い",
@@ -30308,6 +32383,54 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "barley; a small domestic breed of horse"
+    },
+    {
+        "jp": "箱",
+        "reading": "はこ",
+        "mn": "хайрцаг",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "箸",
+        "reading": "はし",
+        "mn": "савх",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "八",
+        "reading": "はち",
+        "mn": "найм",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "八つ",
+        "reading": "やっつ",
+        "mn": "найман зүйл",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "八日",
+        "reading": "ようか",
+        "mn": "найман хоног; сарын наймны өдөр",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "八百屋",
+        "reading": "やおや",
+        "mn": "хүнсний ногооны дэлгүүр",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "発",
@@ -30476,6 +32599,22 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "半",
+        "reading": "はん",
+        "mn": "хагас",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "半分",
+        "reading": "はんぶん",
+        "mn": "хагас",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "反省する",
         "reading": "はんせいする",
         "mn": "эргэцүүлэх",
@@ -30537,6 +32676,22 @@ const MNJP_ENTRIES = [
             "text": "夕食",
             "role": "kango"
         }
+    },
+    {
+        "jp": "晩御飯",
+        "reading": "ばんごはん",
+        "mn": "оройн хоол",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "番号",
+        "reading": "ばんごう",
+        "mn": "дугаар",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "卑劣漢",
@@ -30672,6 +32827,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "疲れる",
+        "reading": "つかれる",
+        "mn": "ядрах",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "疲労",
         "reading": "ひろう",
         "mn": "ядрал",
@@ -30792,6 +32955,14 @@ const MNJP_ENTRIES = [
             "text": "飛躍する",
             "role": "kango"
         }
+    },
+    {
+        "jp": "飛行機",
+        "reading": "ひこうき",
+        "mn": "онгоц",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "飛行場",
@@ -30984,6 +33155,14 @@ const MNJP_ENTRIES = [
         "glosses": "pencil case"
     },
     {
+        "jp": "百",
+        "reading": "ひゃく",
+        "mn": "зуу",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "標記する",
         "reading": "ひょうきする",
         "mn": "тэмдэглэх",
@@ -31066,6 +33245,14 @@ const MNJP_ENTRIES = [
             "text": "表す",
             "role": "wago"
         }
+    },
+    {
+        "jp": "病院",
+        "reading": "びょういん",
+        "mn": "эмнэлэг",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "病気",
@@ -31313,6 +33500,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "父",
+        "reading": "ちち",
+        "mn": "аав",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "父親",
         "reading": "ちちおや",
         "mn": "аав",
@@ -31439,6 +33634,14 @@ const MNJP_ENTRIES = [
         "glosses": "grape; raisin"
     },
     {
+        "jp": "部屋",
+        "reading": "へや",
+        "mn": "өрөө",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "封じる",
         "reading": "ふうじる",
         "mn": "хаах, бөглөх",
@@ -31463,6 +33666,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "封筒",
+        "reading": "ふうとう",
+        "mn": "дугтуй",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "風",
         "reading": "かぜ",
         "mn": "салхи",
@@ -31478,6 +33689,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "風邪",
+        "reading": "かぜ",
+        "mn": "ханиад",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "副詞",
         "reading": "ふくし",
         "mn": "дайвар үг",
@@ -31485,6 +33704,14 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "adverb"
+    },
+    {
+        "jp": "服",
+        "reading": "ふく",
+        "mn": "хувцас",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "服従する",
@@ -31611,6 +33838,14 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "Buddhism"
+    },
+    {
+        "jp": "物",
+        "reading": "もの",
+        "mn": "зүйл",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "分からん",
@@ -31768,6 +34003,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "文章",
+        "reading": "ぶんしょう",
+        "mn": "өгүүлбэр, бичвэр",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "文法",
         "reading": "ぶんぽう",
         "mn": "хэл зүй",
@@ -31825,6 +34068,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "平仮名",
+        "reading": "ひらがな",
+        "mn": "хирагана",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "平凡な",
         "reading": "へいぼんな",
         "mn": "энгийн",
@@ -31837,6 +34088,22 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "並ぶ",
+        "reading": "ならぶ",
+        "mn": "эгнэх",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "並べる",
+        "reading": "ならべる",
+        "mn": "эгнүүлэх",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "並外れた",
         "reading": "なみはずれた",
         "mn": "онцгой",
@@ -31847,6 +34114,14 @@ const MNJP_ENTRIES = [
             "text": "非凡な",
             "role": "kango"
         }
+    },
+    {
+        "jp": "閉まる",
+        "reading": "しまる",
+        "mn": "хаагдах",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "閉める",
@@ -31991,6 +34266,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "辺",
+        "reading": "へん",
+        "mn": "орчим",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "返す",
         "reading": "かえす",
         "mn": "буцаах",
@@ -32022,6 +34305,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "便利",
+        "reading": "べんり",
+        "mn": "тохиромжтой",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "便箋",
         "reading": "びんせん",
         "mn": "бичгийн цаас",
@@ -32029,6 +34320,14 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "writing paper"
+    },
+    {
+        "jp": "勉強",
+        "reading": "べんきょう",
+        "mn": "хичээл, суралцах",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "弁じる",
@@ -32207,6 +34506,14 @@ const MNJP_ENTRIES = [
         "glosses": "headstone"
     },
     {
+        "jp": "母",
+        "reading": "はは",
+        "mn": "ээж",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "母親",
         "reading": "ははおや",
         "mn": "ээж",
@@ -32377,6 +34684,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "方",
+        "reading": "かた",
+        "mn": "хүн (хүндэтгэлийн); арга",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "方法",
         "reading": "ほうほう",
         "mn": "арга",
@@ -32477,6 +34792,14 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "child; son"
+    },
+    {
+        "jp": "帽子",
+        "reading": "ぼうし",
+        "mn": "малгай",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "忘れる",
@@ -32683,6 +35006,22 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "本棚",
+        "reading": "ほんだな",
+        "mn": "номын шүүгээ",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "本当",
+        "reading": "ほんとう",
+        "mn": "үнэн",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "翻弄する",
         "reading": "ほんろうする",
         "mn": "тоглох (хэн нэгнийг)",
@@ -32769,6 +35108,54 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "毎月",
+        "reading": "まいげつ",
+        "mn": "сар бүр",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "毎週",
+        "reading": "まいしゅう",
+        "mn": "долоо хоног бүр",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "毎朝",
+        "reading": "まいあさ",
+        "mn": "өглөө бүр",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "毎日",
+        "reading": "まいにち",
+        "mn": "өдөр бүр",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "毎年",
+        "reading": "まいねん",
+        "mn": "жил бүр",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "毎晩",
+        "reading": "まいばん",
+        "mn": "орой бүр",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "膜",
         "reading": "まく",
         "mn": "бүрхэвч",
@@ -32822,6 +35209,14 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "ten thousand"
+    },
+    {
+        "jp": "万年筆",
+        "reading": "まんねんひつ",
+        "mn": "мөнгөн үзэг",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "満ち足りる",
@@ -32926,6 +35321,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "無くす",
+        "reading": "なくす",
+        "mn": "алдах",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "無くなる",
         "reading": "なくなる",
         "mn": "алга болох",
@@ -32977,6 +35380,14 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>両親<rp>(</rp><rt>りょうしん</rt><rp>)</rp></ruby>は<ruby>無理<rp>(</rp><rt>むり</rt><rp>)</rp></ruby>に<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>をそこへ<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>かせた。",
             "enMn": "Эцэг эх минь намайг хүчээр тэнд явуулсан."
         }
+    },
+    {
+        "jp": "名前",
+        "reading": "なまえ",
+        "mn": "нэр",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "命じる",
@@ -33099,6 +35510,14 @@ const MNJP_ENTRIES = [
             "text": "はっきりした",
             "role": "wago"
         }
+    },
+    {
+        "jp": "鳴く",
+        "reading": "なく",
+        "mn": "дуугарах (амьтан)",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "鳴る",
@@ -33240,6 +35659,22 @@ const MNJP_ENTRIES = [
         "glosses": "Thursday"
     },
     {
+        "jp": "木曜日",
+        "reading": "もくようび",
+        "mn": "пүрэв гараг",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "目",
+        "reading": "め",
+        "mn": "нүд",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "目が覚める",
         "reading": "めがさめる",
         "mn": "сэрэх",
@@ -33276,6 +35711,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "問題",
+        "reading": "もんだい",
+        "mn": "асуудал",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "紋章",
         "reading": "もんしょう",
         "mn": "сүлд",
@@ -33299,6 +35742,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "夜",
+        "reading": "よる",
+        "mn": "шөнө",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "夜更け",
         "reading": "よふけ",
         "mn": "шөнө орой",
@@ -33309,6 +35760,14 @@ const MNJP_ENTRIES = [
             "text": "深夜",
             "role": "kango"
         }
+    },
+    {
+        "jp": "野菜",
+        "reading": "やさい",
+        "mn": "хүнсний ногоо",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "薬",
@@ -33436,6 +35895,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "友達",
+        "reading": "ともだち",
+        "mn": "найз",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "有る",
         "reading": "ある",
         "mn": "байх",
@@ -33474,6 +35941,14 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "salted; pickled"
+    },
+    {
+        "jp": "有名",
+        "reading": "ゆうめい",
+        "mn": "алдартай",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "有様",
@@ -33519,6 +35994,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "郵便局",
+        "reading": "ゆうびんきょく",
+        "mn": "шуудангийн газар",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "雄",
         "reading": "お",
         "mn": "эр",
@@ -33538,6 +36021,22 @@ const MNJP_ENTRIES = [
             "text": "晩ご飯",
             "role": "wago"
         }
+    },
+    {
+        "jp": "夕飯",
+        "reading": "ゆうはん",
+        "mn": "оройн хоол",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "夕方",
+        "reading": "ゆうがた",
+        "mn": "үдэш",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "予習",
@@ -33703,6 +36202,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "洋服",
+        "reading": "ようふく",
+        "mn": "европ маягийн хувцас",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "溶かす",
         "reading": "とかす",
         "mn": "хайлуулах",
@@ -33808,6 +36315,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "葉書",
+        "reading": "はがき",
+        "mn": "шуудангийн карт",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "要る",
         "reading": "いる",
         "mn": "хэрэгтэй",
@@ -33884,6 +36399,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "欲しい",
+        "reading": "ほしい",
+        "mn": "хүсэх",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "浴びる",
         "reading": "あびる",
         "mn": "усанд орох",
@@ -33936,6 +36459,22 @@ const MNJP_ENTRIES = [
             "text": "来訪する",
             "role": "kango"
         }
+    },
+    {
+        "jp": "来月",
+        "reading": "らいげつ",
+        "mn": "ирэх сар",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "来週",
+        "reading": "らいしゅう",
+        "mn": "ирэх долоо хоног",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "来年",
@@ -34298,6 +36837,38 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "留学生",
+        "reading": "りゅうがくせい",
+        "mn": "гадаадад суралцагч",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "旅行",
+        "reading": "りょこう",
+        "mn": "аялал",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "両親",
+        "reading": "りょうしん",
+        "mn": "эцэг эх",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "料理",
+        "reading": "りょうり",
+        "mn": "хоол",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "料理する",
         "reading": "りょうりする",
         "mn": "хоол хийх",
@@ -34308,6 +36879,14 @@ const MNJP_ENTRIES = [
             "text": "作る",
             "role": "wago"
         }
+    },
+    {
+        "jp": "涼しい",
+        "reading": "すずしい",
+        "mn": "сэрүүн",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "涼む",
@@ -34370,6 +36949,22 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "緑",
+        "reading": "みどり",
+        "mn": "ногоон",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "隣",
+        "reading": "となり",
+        "mn": "хажуу",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "隣の人",
         "reading": "となりのひと",
         "mn": "хөрш",
@@ -34426,6 +37021,14 @@ const MNJP_ENTRIES = [
             "furigana": "<ruby>読書<rp>(</rp><rt>どくしょ</rt><rp>)</rp></ruby>は<ruby>旅<rp>(</rp><rt>たび</rt><rp>)</rp></ruby>に<ruby>例<rp>(</rp><rt>たと</rt><rp>)</rp></ruby>えることができる。",
             "enMn": "Ном унших нь аялалтай зүйрлэж болно."
         }
+    },
+    {
+        "jp": "冷たい",
+        "reading": "つめたい",
+        "mn": "хүйтэн",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "冷ます",
@@ -34640,6 +37243,14 @@ const MNJP_ENTRIES = [
         }
     },
     {
+        "jp": "練習",
+        "reading": "れんしゅう",
+        "mn": "дадлага",
+        "sources": [
+            "core"
+        ]
+    },
+    {
         "jp": "練習する",
         "reading": "れんしゅうする",
         "mn": "дасгал хийх",
@@ -34718,6 +37329,14 @@ const MNJP_ENTRIES = [
             "text": "働く",
             "role": "wago"
         }
+    },
+    {
+        "jp": "廊下",
+        "reading": "ろうか",
+        "mn": "дамжлага",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "弄る",
@@ -34820,6 +37439,38 @@ const MNJP_ENTRIES = [
             "bridge"
         ],
         "glosses": "wax; surely, certainly, doubtless; profoundly, in-depth; firmly; presumably"
+    },
+    {
+        "jp": "六",
+        "reading": "ろく",
+        "mn": "зургаа",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "六つ",
+        "reading": "むっつ",
+        "mn": "зургаан зүйл",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "六日",
+        "reading": "むいか",
+        "mn": "зургаан хоног; сарын зургаагийн өдөр",
+        "sources": [
+            "core"
+        ]
+    },
+    {
+        "jp": "話",
+        "reading": "はなし",
+        "mn": "яриа",
+        "sources": [
+            "core"
+        ]
     },
     {
         "jp": "話し合う",
