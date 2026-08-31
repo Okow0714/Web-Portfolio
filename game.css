@@ -621,6 +621,18 @@ body.game-playing .game-main {
     filter: var(--tile-shadow);
 }
 
+/* JP-side vs. meaning-side tiles get their own resting shadow tint so the two halves of a pair
+   read as visually distinct families at a glance, not just by which edge of the board they're
+   on. Overriding --tile-shadow here (rather than each state's own filter rule) propagates
+   automatically into hover/selected/match-pop/etc., since they all compose var(--tile-shadow)
+   into their own filter -- one override point, no risk of the two drifting out of sync. Colors
+   reuse the existing indigo/amber suit hues (SUIT_COLORS in game.js) rather than introducing new
+   ones. The compound selector (.tile.tile-jp, not bare .tile-jp) matters: .tile-jp is reused as
+   the *inner* reading span's class too (see dealPairs' btn.innerHTML) -- .tile.tile-jp only ever
+   matches the outer button. */
+.tile.tile-jp { --tile-shadow: drop-shadow(0 3px 4px rgba(91, 87, 166, 0.45)); }
+.tile.tile-en { --tile-shadow: drop-shadow(0 3px 4px rgba(217, 122, 63, 0.45)); }
+
 .tile:focus-visible {
     outline: 2px solid var(--gold-bright);
     outline-offset: 3px;
@@ -728,6 +740,30 @@ body.game-playing .game-main {
     30% { transform: translateY(-18px) scale(calc(var(--tile-inset) * 1.3)); filter: var(--tile-shadow) drop-shadow(0 0 22px var(--wisteria)) brightness(1.5) saturate(1.3); }
     60% { transform: translateY(-10px) scale(calc(var(--tile-inset) * 0.92)); filter: var(--tile-shadow) drop-shadow(0 0 14px var(--wisteria)); }
     100% { transform: translateY(-7px) scale(calc(var(--tile-inset) * 1.06)); filter: var(--tile-shadow) drop-shadow(0 0 9px var(--wisteria)); }
+}
+
+/* Streak-4 powerups (maybeGrantPowerup in game.js). Free-clear: a mint-green pop, same shape
+   as match/lightning/wakan but a hue none of those three use, so a bonus clear reads as its
+   own event. Swap-out: the losing 3 pairs shrink/spin away in pink-magenta -- deliberately NOT
+   reusing .tile.cleared's fade, since these tiles aren't "matched", they're being discarded --
+   their replacements arrive through the existing .tile.dealt-in pop (see grantSwapPowerup). */
+.tile.powerup-pop { animation: powerupPop 0.6s var(--ease-pop); }
+
+@keyframes powerupPop {
+    0% { transform: translateY(-7px) scale(calc(var(--tile-inset) * 1.06)); filter: var(--tile-shadow) drop-shadow(0 0 10px rgb(110, 224, 165)); }
+    30% { transform: translateY(-20px) scale(calc(var(--tile-inset) * 1.32)); filter: var(--tile-shadow) drop-shadow(0 0 24px rgb(110, 224, 165)) brightness(1.5) saturate(1.3); }
+    60% { transform: translateY(-10px) scale(calc(var(--tile-inset) * 0.92)); filter: var(--tile-shadow) drop-shadow(0 0 14px rgb(110, 224, 165)); }
+    100% { transform: translateY(-7px) scale(calc(var(--tile-inset) * 1.06)); filter: var(--tile-shadow) drop-shadow(0 0 9px rgb(110, 224, 165)); }
+}
+
+.tile.powerup-swap-out {
+    animation: powerupSwapOut 0.4s var(--ease-pop) forwards;
+    pointer-events: none;
+}
+
+@keyframes powerupSwapOut {
+    0% { opacity: 1; transform: translateY(-7px) scale(calc(var(--tile-inset) * 1.06)) rotate(0deg); filter: var(--tile-shadow) drop-shadow(0 0 12px rgb(224, 110, 190)); }
+    100% { opacity: 0; transform: translateY(6px) scale(calc(var(--tile-inset) * 0.3)) rotate(-18deg); filter: var(--tile-shadow) drop-shadow(0 0 4px rgb(224, 110, 190)); }
 }
 
 .tile.mismatch { animation: mismatchShake 0.42s var(--ease-out); }

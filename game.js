@@ -111,19 +111,31 @@ const REFILL_BATCH = 5;
 // and it shatters with no penalty; it was a free bonus, not a trap.
 // Fires at most once per level, no earlier than the 50% mark, and only once a Wakan-linked
 // word is actually dealt onto the board -- so it can never target something the player can't
-// see (see maybeArmFlyer). Not every level has a linked word yet (13 of 50 currently have
-// none, 8 have exactly one) -- authoring more dictionary-data.js pairs for those is tracked
-// separately; the event simply never fires on a level with zero.
+// see (see maybeArmFlyer).
 const WAKAN_TRIGGER_FRACTION = 0.5;
-const WAKAN_CATCH_MS = 4000;
+const WAKAN_CATCH_MS = 5500; // 4s base + a 1.5s extension (was too tight to react to the shake)
 const WAKAN_BLAST_EXTRA = 3; // neighbour pairs pulled in alongside the one dropped on
 const SUIT_COLORS = ['#c0435a', '#3d7a5c', '#5b57a6', '#d97a3f']; // hanafuda-suit accents, cycled per pair
 
-const SECONDS_PER_PAIR = 30;  // match clock scales with a level's actual pair count, so levels
-                               // don't all have to hold exactly 10 pairs (see totalPairs below)
+// A level's data file entry (game-words.js) still holds all 25 words per level -- only
+// LEVEL_PAIR_COUNT of them are actually put in play for a given round (see pickWordSet), chosen
+// fresh each playthrough for replay variety. The rest aren't wasted: they're held aside as
+// POWERUP_SWAP_FUEL, the only source the "swap 3" powerup below draws its replacements from.
+// 25 - 20 = 5, which happens to be exactly one POWERUP_SWAP_COUNT batch -- the powerup can only
+// ever be used once per level before that fuel runs out, which is fine; see maybeGrantPowerup.
+const LEVEL_PAIR_COUNT = 20;
+
+const MATCH_DURATION_SECONDS = 240; // flat 4-minute clock, not scaled by pair count
 const TIME_BONUS_PER_PAIR = 20; // seconds added per pair cleared (lightning chains add this once per pair in the chain)
 const LOW_TIME_THRESHOLD = 30;  // seconds remaining at which the timer gets a warning treatment
 const MISTAKES_PER_PENALTY = 2; // consecutive-since-last-penalty mismatches before a cleared pair returns
+
+// Powerups: every time the streak reaches a multiple of STREAK_POWERUP_INTERVAL, one of the two
+// effects below fires automatically (no menu, no banking a charge for later -- consistent with
+// how lightning-connect and the Wakan event are both immediate, reactive bonuses rather than an
+// inventory system). Which of the two fires is random each time; see maybeGrantPowerup.
+const STREAK_POWERUP_INTERVAL = 4;
+const POWERUP_SWAP_COUNT = 3;
 
 let currentLevel = null;
 let matchStarted = false; // gates tile clicks/timer until the start modal's "Start Match" is clicked
@@ -134,8 +146,8 @@ let timerInterval = null;
 let startTime = null;
 let elapsedSeconds = 0;   // real seconds played -- still tracked for best-time comparisons,
                           // independent of the on-screen countdown display below
-let bonusSeconds = 0;     // accumulated +20s-per-pair bonuses, extends the 5-minute clock
-let matchDuration = 0;   // this level's clock length (SECONDS_PER_PAIR * totalPairs), set in startLevel()
+let bonusSeconds = 0;     // accumulated +20s-per-pair bonuses, extends the base 4-minute clock
+let matchDuration = 0;   // this level's clock length (MATCH_DURATION_SECONDS), set in startLevel()
 let timeRemaining = 0;   // what's actually shown on #board-timer
 let mismatchStreak = 0;  // mismatches since the last penalty (or level start); see applyPenalty()
 let lastResult = null;    // result earned as a guest, pending save once they log in
@@ -152,11 +164,17 @@ let tilesByPairId = {};   // pairId -> { jp: tileObj, en: tileObj }, only for de
 let selected = [];        // up to 2 currently-selected tile objects
 let locked = false;
 
-let reserveQueue = [];    // pairIds not yet dealt this level, shuffled
+let reserveQueue = [];    // pairIds not yet dealt this level (within the LEVEL_PAIR_COUNT in
+                           // play), shuffled
 let dealtCount = 0;       // pairs dealt so far (VISIBLE_TARGET, then +REFILL_BATCH at a time)
+let powerupFuel = [];     // pairIds excluded from this round's LEVEL_PAIR_COUNT -- untouched by
+                           // normal dealing, the "swap 3" powerup's only supply (see startLevel)
 
 let score = 0;
 let streak = 0;
+let lastPowerupStreak = 0; // highest streak value a powerup has already fired at this level, so
+                            // a streak sitting AT a multiple of 4 (e.g. after a penalty rolls it
+                            // back down to exactly 4) can't re-trigger on every subsequent clear
 
 // Wakan "winged tile" bonus event state -- see the constants block above for the rules.
 let wakanMap = null;         // built once from DICTIONARY_ENTRIES on first use, see buildWakanMap()
@@ -711,6 +729,17 @@ const GameAudio = (function () {
         document.addEventListener('keydown', kick, { once: true });
     })();
 
+    // Streak-4 powerup grant: a bright rising major-feel arpeggio (outside the "in" scale on
+    // purpose) so it reads as a distinct reward chime, not another variant of the match/streak
+    // sounds it's layered right after.
+    function sfxPowerup() {
+        if (!enabled) return;
+        const t0 = ctx.currentTime;
+        [261.6, 329.6, 392.0, 523.3].forEach((f, i) => {
+            tone(f, { type: 'square', duration: 0.22, gain: 0.09, delay: i * 0.055, attack: 0.005, filterFreq: 3200 });
+        });
+    }
+
     function setEnabled(next) {
         ensureContext();
         if (!ctx) return false;
@@ -739,6 +768,7 @@ const GameAudio = (function () {
         flyerCatch: sfxFlyerCatch,
         shatter: sfxShatter,
         wakanBlast: sfxWakanBlast,
+        powerup: sfxPowerup,
     };
 })();
 
@@ -761,13 +791,15 @@ document.getElementById('board-sound-toggle').addEventListener('click', () => sy
 // be clicked regardless of position, so the board can never get "stuck".
 // ---------------------------------------------------------------------------
 // Picks this playthrough's word set (levels hold several; replaying doesn't always show the
-// same 25 words) and returns a shuffled deal order over its pairIds -- the order pairs get
-// dealt onto the board in, first VISIBLE_TARGET immediately, the rest via dealPairs() below.
+// same words) and splits its pairIds into two pools: `dealOrder`, shuffled and truncated to
+// LEVEL_PAIR_COUNT -- the pairs actually in play, dealt VISIBLE_TARGET at a time via
+// dealPairs() below -- and `fuel`, everything left over (25 - 20 = 5 pairs), which normal
+// dealing never touches and only the "swap 3" powerup can draw from (see maybeGrantPowerup).
 function pickWordSet(level) {
     currentSet = level.sets[Math.floor(Math.random() * level.sets.length)];
     const order = currentSet.map((_, i) => i);
     shuffleArray(order);
-    return order;
+    return { dealOrder: order.slice(0, LEVEL_PAIR_COUNT), fuel: order.slice(LEVEL_PAIR_COUNT) };
 }
 
 function layoutTiles(tileList) {
@@ -789,8 +821,12 @@ function layoutTiles(tileList) {
 // Materializes DOM tile objects for the given pairIds (from currentSet) and adds them to the
 // board -- used both for the initial deal and for every later refill. `fresh` marks the newly
 // dealt tiles with a "deal-in" pop (see .tile.dealt-in in game.css) so a refill visibly reads
-// as new cards arriving, not just a silent relayout.
-function dealPairs(pairIds, fresh) {
+// as new cards arriving, not just a silent relayout. `countsTowardDeal` (default true) gates
+// whether this batch advances dealtCount -- the swap-3 powerup deals pairs pulled from
+// powerupFuel, outside reserveQueue entirely, and must pass false so maybeRefill's "how much
+// of reserveQueue is left" bookkeeping doesn't think reserveQueue is emptier than it is.
+function dealPairs(pairIds, fresh, countsTowardDeal) {
+    if (countsTowardDeal === undefined) countsTowardDeal = true;
     const useMn = window.siteLang() === 'mn';
     pairIds.forEach(pairId => {
         const p = currentSet[pairId];
@@ -820,7 +856,7 @@ function dealPairs(pairIds, fresh) {
             tilesByPairId[pairId][t.kind] = t;
         });
     });
-    dealtCount += pairIds.length;
+    if (countsTowardDeal) dealtCount += pairIds.length;
     layoutTiles(tiles.filter(t => !t.cleared));
     resizeCanvases();
 }
@@ -847,7 +883,9 @@ function renderBoard() {
     tiles = [];
     tilesByPairId = {};
     dealtCount = 0;
-    reserveQueue = pickWordSet(currentLevel);
+    const picked = pickWordSet(currentLevel);
+    reserveQueue = picked.dealOrder;
+    powerupFuel = picked.fuel;
     dealPairs(reserveQueue.splice(0, Math.min(VISIBLE_TARGET, totalPairs)), false);
 }
 
@@ -1112,6 +1150,7 @@ function handleMatch(a, b) {
         if (matchedCount === totalPairs) { finishLevel(); return; }
         maybeRefill();
         maybeArmFlyer();
+        maybeGrantPowerup();
     }, 520);
 }
 
@@ -1183,11 +1222,14 @@ function handleLightningChain(phonetic) {
         if (matchedCount === totalPairs) { finishLevel(); return; }
         maybeRefill();
         maybeArmFlyer();
+        maybeGrantPowerup();
     }, 580);
 }
 
 function handleMismatch(a, b) {
     streak = 0;
+    lastPowerupStreak = 0; // a fresh streak run starting over should be able to re-trigger a
+    // powerup at the same tier number (e.g. 4) it already fired at earlier this level
     updateStreakMeter(false);
     GameAudio.mismatch();
     boardWrapEl.classList.remove('board-shake');
@@ -1253,6 +1295,97 @@ function applyPenalty() {
     const c = centerOf(boardWrapEl);
     floatText(c.x, c.y, window.t('game.penaltyFloat'), true);
     GameAudio.penalty();
+}
+
+// ---------------------------------------------------------------------------
+// Streak powerups. Every STREAK_POWERUP_INTERVAL (4) consecutive pairs cleared without a
+// mismatch in between, one of two random bonus effects fires: an extra free pair-clear, or a
+// reshuffle of 3 random on-board pairs into 3 fresh ones drawn from this round's unused fuel
+// (see LEVEL_PAIR_COUNT/powerupFuel). `lastPowerupStreak` guards against firing again on every
+// subsequent clear once the streak is sitting AT a multiple of 4 -- it only fires the instant
+// the streak first REACHES that multiple, and resets to 0 on any mismatch (see handleMismatch)
+// so a later run can trigger at the same tier again.
+// ---------------------------------------------------------------------------
+
+function maybeGrantPowerup() {
+    if (streak < STREAK_POWERUP_INTERVAL) return;
+    if (streak % STREAK_POWERUP_INTERVAL !== 0) return;
+    if (streak <= lastPowerupStreak) return;
+    lastPowerupStreak = streak;
+    // Small delay so the powerup's own burst reads as a distinct follow-up beat after the
+    // match/chain clear that triggered it, not a simultaneous jumble of two effects at once.
+    window.setTimeout(() => {
+        if (Math.random() < 0.5) grantFreeClearPowerup();
+        else grantSwapPowerup();
+    }, 550);
+}
+
+// Auto-clears one random still-active pair, same as landing a real match -- counts toward
+// matchedCount and can finish the level. Never targets the current Wakan flyer's pair: that
+// tile's board copy needs to stay put for the flyer event still in flight/held above it.
+function grantFreeClearPowerup() {
+    const activePairIds = [...new Set(tiles.filter(t => !t.cleared && t.pairId !== flyerTargetPairId).map(t => t.pairId))];
+    if (!activePairIds.length) return;
+    const pairId = activePairIds[Math.floor(Math.random() * activePairIds.length)];
+    const pt = tilesByPairId[pairId];
+    if (!pt || !pt.jp || !pt.en) return;
+
+    GameAudio.powerup();
+    const mid = midpoint(centerOf(pt.jp.el), centerOf(pt.en.el));
+    floatText(mid.x, mid.y - 30, window.t('game.powerupFreeFloat'), true);
+    [pt.jp, pt.en].forEach(t => {
+        t.el.classList.add('powerup-pop');
+        const c = centerOf(t.el);
+        fxField.spawnBurst(c.x, c.y, { count: 26, colors: ['110,224,165', '244,206,122', '255,255,255'], speed: 220, life: 0.9 });
+    });
+
+    window.setTimeout(() => {
+        [pt.jp, pt.en].forEach(t => { t.el.classList.remove('powerup-pop'); t.el.classList.add('cleared'); t.cleared = true; });
+        matchedCount++;
+        updateStats();
+        if (matchedCount === totalPairs) { finishLevel(); return; }
+        maybeRefill();
+        maybeArmFlyer();
+    }, 520);
+}
+
+// Swaps POWERUP_SWAP_COUNT random active pairs for the same number of fresh ones drawn from
+// powerupFuel (this round's un-dealt leftovers -- see pickWordSet). Neither side counts toward
+// matchedCount: the outgoing pairs aren't matched, they're discarded, and totalPairs doesn't
+// change -- 3 of the 20 words in play just became 3 different words. Falls back to a free
+// clear if powerupFuel is already exhausted (a level can only fund one swap; see
+// LEVEL_PAIR_COUNT's comment) so a streak-4 still always grants *something*.
+function grantSwapPowerup() {
+    const activePairIds = [...new Set(tiles.filter(t => !t.cleared && t.pairId !== flyerTargetPairId).map(t => t.pairId))];
+    const n = Math.min(POWERUP_SWAP_COUNT, activePairIds.length, powerupFuel.length);
+    if (n <= 0) { grantFreeClearPowerup(); return; }
+
+    shuffleArray(activePairIds);
+    const outgoing = activePairIds.slice(0, n);
+    const incoming = powerupFuel.splice(0, n);
+
+    GameAudio.powerup();
+    const outTiles = [];
+    outgoing.forEach(pairId => {
+        const pt = tilesByPairId[pairId];
+        if (pt.jp) outTiles.push(pt.jp);
+        if (pt.en) outTiles.push(pt.en);
+    });
+    outTiles.forEach(t => {
+        t.el.classList.add('powerup-swap-out');
+        const c = centerOf(t.el);
+        fxField.spawnBurst(c.x, c.y, { count: 18, colors: ['224,110,190', '244,206,122', '255,255,255'], speed: 180, life: 0.7 });
+    });
+    const mid = centerOf(boardWrapEl);
+    floatText(mid.x, mid.y, window.t('game.powerupSwapFloat'), true);
+
+    window.setTimeout(() => {
+        outTiles.forEach(t => t.el.remove());
+        tiles = tiles.filter(t => !outgoing.includes(t.pairId));
+        outgoing.forEach(pairId => { delete tilesByPairId[pairId]; });
+        dealPairs(incoming, true, false);
+        maybeArmFlyer();
+    }, 420);
 }
 
 // ---------------------------------------------------------------------------
@@ -1543,6 +1676,7 @@ function resolveWakanBlast(pairIds, targetPairId) {
         updateStats();
         if (matchedCount === totalPairs) { finishLevel(); return; }
         maybeRefill();
+        maybeGrantPowerup();
     }, 620);
 }
 
@@ -1567,16 +1701,18 @@ function startLevel(level) {
     locked = false;
     score = 0;
     streak = 0;
+    lastPowerupStreak = 0;
     mismatchStreak = 0;
     elapsedSeconds = 0;
     bonusSeconds = 0;
     killFlyer(); // discard any in-progress winged-tile event from the level just left
     flyerFiredThisLevel = false;
     familiesFound.clear(); // fresh-level reset, not shuffleRemaining() -- that keeps the round
-    // Pair count now comes from the data itself rather than an assumed constant, so levels can
-    // hold different amounts of words (e.g. while some are still being expanded from 10 to 25).
-    totalPairs = level.sets[0].length;
-    matchDuration = SECONDS_PER_PAIR * totalPairs;
+    // Levels hold up to 25 words but only LEVEL_PAIR_COUNT (20) go into play per round -- the
+    // rest become powerupFuel (see pickWordSet). A handful of levels are still short of 25
+    // (mid-expansion data), so this floors at whatever the data actually has.
+    totalPairs = Math.min(LEVEL_PAIR_COUNT, level.sets[0].length);
+    matchDuration = MATCH_DURATION_SECONDS;
     timeRemaining = matchDuration;
     stopTimer();
 

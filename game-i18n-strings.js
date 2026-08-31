@@ -42,6 +42,8 @@ Object.assign(window.I18N_STRINGS, {
     'game.lightningFloat': { en: 'LIGHTNING x{n}', mn: 'АЯНГА x{n}' },
     'game.wakanFloat': { en: 'WAKAN LINK x{n}', mn: 'ХОЛБОЛТ x{n}' },
     'game.penaltyFloat': { en: 'PENALTY — pair returned', mn: 'ТОРГУУЛЬ — хос буцаж ирэв' },
+    'game.powerupFreeFloat': { en: 'BONUS CLEAR', mn: 'БОНУС ЦЭВЭРЛЭГЭЭ' },
+    'game.powerupSwapFloat': { en: 'WORDS SWAPPED x3', mn: 'ҮГ СОЛИГДЛОО x3' },
     'game.foundChipLabel': { en: 'found', mn: 'олдсон' },
     'game.soundOff': { en: 'Turn sound off', mn: 'Дууг унтраах' },
     'game.soundOn': { en: 'Turn sound on', mn: 'Дууг асаах' },
