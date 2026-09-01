@@ -880,6 +880,21 @@ body.game-playing .game-main {
     80% { transform: translateX(3px) scale(var(--tile-inset)); }
 }
 
+/* A refill batch arriving (see dealPairs() in game.js) -- a small pop-in so new cards visibly
+   arrive rather than the board silently changing shape between clicks. */
+.tile.dealt-in { animation: tileDealIn 0.34s var(--ease-pop); }
+
+@keyframes tileDealIn {
+    0% { opacity: 0; transform: translateY(0) scale(calc(var(--tile-inset) * 0.35)) rotate(-6deg); }
+    100% { opacity: 1; transform: translateY(0) scale(var(--tile-inset)) rotate(0deg); }
+}
+
+/* Declared after every entrance animation (.swap-in, .dealt-in) despite matching specificity, so
+   a clear always wins the cascade even when a tile is matched right after being dealt/swapped
+   in -- before this rule moved last, a freshly dealt tile that got matched immediately kept its
+   .dealt-in class, and .dealt-in's later-declared `animation` shorthand overrode .cleared's,
+   leaving the tile frozen at full opacity (pointer-events: none still applied, so it read as a
+   stuck, unclickable "ghost" tile) forever instead of fading out. */
 .tile.cleared {
     animation: tileClear 0.5s var(--ease-pop) forwards;
     pointer-events: none;
@@ -888,15 +903,6 @@ body.game-playing .game-main {
 @keyframes tileClear {
     0% { opacity: 1; transform: translateY(-7px) scale(calc(var(--tile-inset) * 1.06)); }
     100% { opacity: 0; transform: translateY(-7px) scale(calc(var(--tile-inset) * 0.4)) rotate(8deg); }
-}
-
-/* A refill batch arriving (see dealPairs() in game.js) -- a small pop-in so new cards visibly
-   arrive rather than the board silently changing shape between clicks. */
-.tile.dealt-in { animation: tileDealIn 0.34s var(--ease-pop); }
-
-@keyframes tileDealIn {
-    0% { opacity: 0; transform: translateY(0) scale(calc(var(--tile-inset) * 0.35)) rotate(-6deg); }
-    100% { opacity: 1; transform: translateY(0) scale(var(--tile-inset)) rotate(0deg); }
 }
 
 /* ---------------------------------------------------------------------
