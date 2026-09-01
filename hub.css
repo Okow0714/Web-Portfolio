@@ -40,6 +40,57 @@ body:has(.hub-main) {
 .hub-hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.08; margin: 0; text-wrap: balance; }
 .hub-hero p { font-size: 1.08rem; line-height: 1.65; color: var(--paper-soft); margin: 0; max-width: 58ch; }
 
+/* --- dictionary search: the front door's own lookup, not tucked into the masthead nav --
+   submits to dictionary.html?q=... (see dictionary.js's initialQuery handling). --- */
+.hub-search { display: flex; align-items: center; gap: 10px; max-width: 560px; margin-top: -6px;
+    background: rgba(244, 233, 216, 0.08); border: 1px solid var(--rule); border-radius: 999px; padding: 6px 8px 6px 18px;
+    transition: border-color 0.2s var(--ease-out), background 0.2s var(--ease-out); }
+.hub-search:focus-within { border-color: var(--gold); background: rgba(244, 233, 216, 0.12); }
+.hub-search svg { width: 18px; height: 18px; flex: 0 0 auto; stroke: var(--paper-soft); fill: none; stroke-width: 2; }
+.hub-search input { flex: 1; min-width: 0; background: none; border: none; color: var(--paper); font-family: inherit; font-size: 0.94rem; padding: 8px 0; }
+.hub-search input::placeholder { color: var(--paper-soft); }
+.hub-search input:focus { outline: none; }
+.hub-search button { flex: 0 0 auto; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border: none; color: var(--wine-deep);
+    font-family: inherit; font-weight: 700; font-size: 0.84rem; padding: 10px 20px; border-radius: 999px; cursor: pointer; }
+
+/* --- progress: a slice of the Dashboard (score + per-tool bars) for a signed-in visitor,
+   right on the front door instead of making them go find it -- same blue accent as
+   dashboard.css's .dash-main, since this genuinely is that page's own data. --- */
+.hub-progress, .hub-progress-guest {
+    --progress-surface: #ffffff; --progress-edge: #dbe1e8; --progress-ink: #1c2733;
+    --progress-ink-soft: #55636f; --progress-ink-faint: #8996a3;
+    --progress-accent: #2f6fed; --progress-accent-dark: #1f4fb8; --progress-accent-tint: rgba(47, 111, 237, 0.08);
+    color: var(--progress-ink); font-family: var(--font-body);
+    background: var(--progress-surface); border-radius: 10px; box-shadow: 0 20px 40px -18px rgba(0, 0, 0, 0.4);
+}
+.hub-progress { padding: 24px 26px; display: flex; flex-direction: column; gap: 20px; }
+.hub-progress-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.hub-progress-title { display: flex; align-items: center; gap: 12px; }
+.hub-progress-avatar { width: 38px; height: 38px; border-radius: 50%; flex: 0 0 auto;
+    background: linear-gradient(150deg, var(--progress-accent) 30%, var(--progress-accent-dark)); color: #fff;
+    display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; }
+.hub-progress-title h2 { font-family: var(--font-display); font-size: 1.1rem; margin: 0; }
+.hub-progress-title span { font-size: 0.8rem; color: var(--progress-ink-faint); }
+.hub-progress-score { font-family: var(--font-display); font-size: 1.7rem; font-weight: 700; color: var(--progress-accent-dark); font-variant-numeric: tabular-nums; }
+.hub-progress-score span:last-child { font-size: 0.9rem; color: var(--progress-ink-faint); font-weight: 600; }
+.hub-progress-link { font-size: 0.82rem; font-weight: 700; color: var(--progress-accent-dark); text-decoration: none; white-space: nowrap; }
+.hub-progress-link:hover { text-decoration: underline; }
+.hub-progress-tools { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.hub-progress-tool { background: var(--bg-page, #f4f1ea); border: 1px solid var(--progress-edge); border-radius: 8px; padding: 14px 16px; }
+.hub-progress-tool-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.hub-progress-tool-glyph { width: 24px; height: 24px; border-radius: 5px; background: var(--progress-accent-tint); color: var(--progress-accent-dark);
+    display: flex; align-items: center; justify-content: center; font-family: var(--font-jp, serif); font-weight: 700; font-size: 0.8rem; }
+.hub-progress-tool-head span:last-child { font-size: 0.86rem; font-weight: 700; }
+.hub-progress-tool-frac { font-size: 0.74rem; color: var(--progress-ink-faint); font-variant-numeric: tabular-nums; margin-bottom: 6px; display: block; }
+.hub-progress-tool-track { height: 6px; border-radius: 999px; background: var(--progress-edge); overflow: hidden; }
+.hub-progress-tool-fill { height: 100%; background: var(--progress-accent); border-radius: 999px; transition: width 0.6s var(--ease-out); }
+
+.hub-progress-guest { padding: 26px 28px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.hub-progress-guest p { margin: 0 0 4px; font-family: var(--font-display); font-size: 1.05rem; }
+.hub-progress-guest span { font-size: 0.86rem; color: var(--progress-ink-soft); }
+.hub-progress-guest-btn { flex: 0 0 auto; background: linear-gradient(135deg, var(--progress-accent), var(--progress-accent-dark)); border: none; color: #fff;
+    font-family: inherit; font-weight: 700; font-size: 0.86rem; padding: 11px 22px; border-radius: 6px; cursor: pointer; white-space: nowrap; }
+
 /* --- rooms: a real screenshot "peephole" beside elaborated copy, alternating sides so the eye
    doesn't fall into a rigid left-image/right-text rhythm for five rows straight --- */
 .hub-rooms { display: flex; flex-direction: column; gap: 4px; }
@@ -94,4 +145,6 @@ body:has(.hub-main) {
     .hub-room.flip .hub-room-clip { order: 0; }
     .hub-room-clip { aspect-ratio: 16/10; }
     .hub-foot { grid-template-columns: 1fr; }
+    .hub-progress-tools { grid-template-columns: 1fr; }
+    .hub-progress-guest { flex-direction: column; align-items: flex-start; }
 }

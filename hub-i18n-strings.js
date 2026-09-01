@@ -7,6 +7,16 @@ Object.assign(window.I18N_STRINGS, {
         en: 'This site is made up of five distinct sections built for learning Japanese from the fundamentals — not the easy way.',
         mn: 'Уг цахим хуудас нь япон хэлийг амархнаас нь биш үндсээс нь эхэлж суралцахад чиглэсэн таван төрлийн өвөрмөц хэсгүүдээс бүрдэнэ.'
     },
+    'hub.searchPlaceholder': { en: 'Look up a word — Mongolian, kanji, kana, or English…', mn: 'Үг хайх — монгол, ханз, кана, эсвэл англи…' },
+    'hub.searchButton': { en: 'Search', mn: 'Хайх' },
+
+    'hub.progress.welcome': { en: 'Welcome back', mn: 'Тавтай морил' },
+    'hub.progress.pointsOf': { en: '/ 3000 pts', mn: '/ 3000 оноо' },
+    'hub.progress.fullDashboard': { en: 'Full dashboard →', mn: 'Бүрэн хянах самбар →' },
+    'hub.progress.levelsDone': { en: '{done} / {total} levels', mn: '{done} / {total} шат' },
+    'hub.progress.textsDone': { en: '{done} / {total} texts', mn: '{done} / {total} текст' },
+    'hub.progress.guestTitle': { en: 'Log in to track your progress', mn: 'Явцаа хянахын тулд нэвтэрнэ үү' },
+    'hub.progress.guestBody': { en: 'Your score and per-tool progress will show up right here.', mn: 'Таны оноо болон хэрэгсэл тус бүрийн явц энд харагдана.' },
 
     'hub.game.name': { en: 'Word Match', mn: 'Үгийн Холбоос' },
     'hub.game.desc': {

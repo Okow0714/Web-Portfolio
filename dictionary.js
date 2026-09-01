@@ -312,3 +312,12 @@ document.addEventListener('sitelangchange', () => {
 });
 
 renderMnjpList();
+
+// The home page's search bar links here as dictionary.html?q=<word> -- pre-fill and filter the
+// primary MN<->JP tab (the one that search bar searches) with whatever was typed there.
+const initialQuery = new URLSearchParams(window.location.search).get('q');
+if (initialQuery) {
+    document.getElementById('mnjp-search').value = initialQuery;
+    mnjpQuery = initialQuery.trim();
+    renderMnjpList();
+}

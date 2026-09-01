@@ -193,6 +193,51 @@
                     <p data-i18n="hub.heroBody">Each of the five tools below has its own little world — a game, a phonetics browser, a grammar drill, a reading coach, a dictionary. See exactly what each one does, in a real screenshot.</p>
                 </section>
 
+                <form class="hub-search" id="hub-search" role="search">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+                    <input type="text" id="hub-search-input" data-i18n-placeholder="hub.searchPlaceholder" placeholder="Look up a word — Mongolian, kanji, kana, or English…" autocomplete="off">
+                    <button type="submit" data-i18n="hub.searchButton">Search</button>
+                </form>
+
+                <section class="hub-progress hidden" id="hub-progress-authed">
+                    <div class="hub-progress-top">
+                        <div class="hub-progress-title">
+                            <div class="hub-progress-avatar" id="hub-progress-avatar"></div>
+                            <div>
+                                <h2 data-i18n="hub.progress.welcome">Welcome back</h2>
+                                <span id="hub-progress-name"></span>
+                            </div>
+                        </div>
+                        <div class="hub-progress-score"><span id="hub-progress-score">0</span> <span data-i18n="hub.progress.pointsOf">/ 3000 pts</span></div>
+                        <a href="dashboard.html" class="hub-progress-link" data-i18n="hub.progress.fullDashboard">Full dashboard →</a>
+                    </div>
+                    <div class="hub-progress-tools">
+                        <div class="hub-progress-tool">
+                            <div class="hub-progress-tool-head"><span class="hub-progress-tool-glyph">遊</span><span data-i18n="hub.game.name">Word Match</span></div>
+                            <span class="hub-progress-tool-frac" id="hub-progress-game-frac">0 / 50 levels</span>
+                            <div class="hub-progress-tool-track"><div class="hub-progress-tool-fill" id="hub-progress-game-fill" style="width:0%"></div></div>
+                        </div>
+                        <div class="hub-progress-tool">
+                            <div class="hub-progress-tool-head"><span class="hub-progress-tool-glyph">文</span><span data-i18n="hub.grammar.name">Grammar Connect</span></div>
+                            <span class="hub-progress-tool-frac" id="hub-progress-grammar-frac">0 / 40 levels</span>
+                            <div class="hub-progress-tool-track"><div class="hub-progress-tool-fill" id="hub-progress-grammar-fill" style="width:0%"></div></div>
+                        </div>
+                        <div class="hub-progress-tool">
+                            <div class="hub-progress-tool-head"><span class="hub-progress-tool-glyph">読</span><span data-i18n="hub.reading.name">Dokkai Reader</span></div>
+                            <span class="hub-progress-tool-frac" id="hub-progress-reading-frac">0 / 60 texts</span>
+                            <div class="hub-progress-tool-track"><div class="hub-progress-tool-fill" id="hub-progress-reading-fill" style="width:0%"></div></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="hub-progress-guest" id="hub-progress-guest">
+                    <div>
+                        <p data-i18n="hub.progress.guestTitle">Log in to track your progress</p>
+                        <span data-i18n="hub.progress.guestBody">Your score and per-tool progress will show up right here.</span>
+                    </div>
+                    <button type="button" class="hub-progress-guest-btn" data-i18n="auth.logIn" onclick="document.getElementById('auth-login-btn').click()">Log In</button>
+                </section>
+
                 <div class="hub-rooms">
                     <a class="hub-room" style="--room-accent:#8f8be0; --room-bg:#0d0c12;" href="game.html">
                         <div class="hub-room-clip"><img src="images/hub/game-match.jpg" alt=""></div>
@@ -342,6 +387,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <script src="supabase-config.js"></script>
     <script src="auth-shared.js"></script>
+    <script src="hub-home.js"></script>
     <script src="pwa-register.js"></script>
 </body>
 
