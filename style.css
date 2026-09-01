@@ -915,7 +915,7 @@ body {
 
 .footer-grid {
     display: grid;
-    grid-template-columns: 1.6fr 1fr 1.1fr 1.5fr;
+    grid-template-columns: 1.6fr 1fr 1.1fr;
     gap: 36px 32px;
 }
 
@@ -998,6 +998,57 @@ body {
     display: block;
     font-size: 0.76rem;
     color: var(--header-text-muted);
+}
+
+/* Same license-obligation content as .footer-attrib above, but tucked behind a disclosure
+   instead of sitting open as its own footer-grid column on every page -- a reader who wants
+   the source list can still get to it in one click, but it no longer competes for attention
+   with the brand/nav columns by default. */
+.footer-credits {
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 1px solid var(--header-border);
+}
+
+.footer-credits summary {
+    cursor: pointer;
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--header-accent);
+}
+
+.footer-credits summary::-webkit-details-marker {
+    display: none;
+}
+
+.footer-credits summary::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 4px 0 4px 6px;
+    border-color: transparent transparent transparent currentColor;
+    transition: transform 0.2s ease;
+}
+
+.footer-credits[open] summary::before {
+    transform: rotate(90deg);
+}
+
+.footer-credits-list {
+    list-style: none;
+    margin: 16px 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px 32px;
 }
 
 .footer-bar {
