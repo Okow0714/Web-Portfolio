@@ -184,47 +184,6 @@ body.game-playing .game-main {
     margin: 8px 0 30px;
 }
 
-.photo-credits {
-    margin-top: 32px;
-    padding-top: 16px;
-    border-top: 1px solid rgba(212, 166, 75, 0.15);
-}
-
-.photo-credits summary {
-    cursor: pointer;
-    color: var(--paper-muted);
-    font-size: 0.85rem;
-    font-weight: 600;
-    user-select: none;
-}
-
-.photo-credits summary:hover { color: var(--paper); }
-
-.photo-credits ul {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 6px 24px;
-    margin: 14px 0 0;
-    padding: 0;
-    font-size: 0.82rem;
-    color: var(--paper-muted);
-}
-
-.photo-credits ul a {
-    color: var(--paper);
-    text-decoration: none;
-}
-
-.photo-credits ul a:hover { color: var(--gold-bright); text-decoration: underline; }
-
-.photo-credits-note {
-    margin: 14px 0 0;
-    font-size: 0.78rem;
-    color: var(--paper-muted);
-    max-width: 62ch;
-}
-
 .game-section.hidden {
     display: none;
 }
