@@ -73,12 +73,21 @@
             </div>
         </div>
 
-        <!-- Account Modal -->
-        <div id="account-modal" class="modal-overlay hidden">
+        <!-- Account Details Modal -->
+        <div id="account-details-modal" class="modal-overlay hidden">
             <div class="modal-card">
-                <button id="account-modal-close" class="modal-close" type="button" aria-label="Close">&times;</button>
-                <h3>Your Account</h3>
-                <p id="account-modal-email" class="account-email"></p>
+                <button id="account-details-modal-close" class="modal-close" type="button" aria-label="Close">&times;</button>
+                <h3>Account details</h3>
+                <p class="modal-label">Email</p>
+                <p id="account-details-email" class="account-email"></p>
+            </div>
+        </div>
+
+        <!-- Settings Modal -->
+        <div id="account-settings-modal" class="modal-overlay hidden">
+            <div class="modal-card">
+                <button id="account-settings-modal-close" class="modal-close" type="button" aria-label="Close">&times;</button>
+                <h3>Settings</h3>
                 <div class="account-danger-zone">
                     <h4>Danger Zone</h4>
                     <p>Deleting your account permanently removes your profile, comments, bookmarks, messages, and study progress. This can't be undone.</p>
@@ -132,7 +141,15 @@
                                     <button id="auth-login-btn" class="auth-btn" type="button" style="width:100%;text-align:center;">Log In</button>
                                 </div>
                                 <div id="auth-authed" class="hidden">
-                                    <button id="auth-user-email" class="auth-user-email" type="button" aria-label="Signed-in account"></button>
+                                    <div class="about-account-profile">
+                                        <div class="about-account-avatar" id="account-menu-profile-avatar"></div>
+                                        <p id="auth-user-email" class="auth-user-email"></p>
+                                    </div>
+                                    <nav class="about-account-nav">
+                                        <a href="dashboard.html">Dashboard</a>
+                                        <button type="button" id="account-details-btn">Account details</button>
+                                        <button type="button" id="account-settings-btn">Settings</button>
+                                    </nav>
                                     <button id="auth-logout-btn" type="button">Log Out</button>
                                 </div>
                             </div>

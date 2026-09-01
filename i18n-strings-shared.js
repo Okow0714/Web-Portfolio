@@ -64,6 +64,8 @@ window.I18N_STRINGS = {
     'auth.resetLinkSent': { en: 'If that email has an account, a password reset link is on its way.', mn: 'Хэрэв энэ и-мэйлээр бүртгэл байгаа бол нууц үг сэргээх холбоос очих болно.' },
     'auth.checkEmailToConfirm': { en: 'Check your email to confirm your account, then log in.', mn: 'Бүртгэлээ баталгаажуулахын тулд и-мэйлээ шалгаад дараа нь нэвтэрнэ үү.' },
 
+    'account.details': { en: 'Account details', mn: 'Бүртгэлийн мэдээлэл' },
+    'account.settings': { en: 'Settings', mn: 'Тохиргоо' },
     'account.yourAccount': { en: 'Your Account', mn: 'Таны бүртгэл' },
     'account.dangerZone': { en: 'Danger Zone', mn: 'Аюултай бүс' },
     'account.deleteWarning': { en: "Deleting your account permanently removes your profile, comments, bookmarks, messages, and study progress. This can't be undone.", mn: 'Бүртгэлээ устгавал профайл, сэтгэгдэл, хадгалсан зүйлс, зурвас, суралцах явц бүрмөсөн устана. Үүнийг буцаах боломжгүй.' },

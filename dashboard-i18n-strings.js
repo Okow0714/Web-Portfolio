@@ -27,5 +27,5 @@ Object.assign(window.I18N_STRINGS, {
 
     'dash.accountTitle': { en: 'Account settings', mn: 'Бүртгэлийн тохиргоо' },
     'dash.accountBody': { en: 'Password, sessions, and account deletion are managed from the account menu.', mn: 'Нууц үг, сешн, бүртгэл устгах зэргийг бүртгэлийн цэснээс удирдана.' },
-    'dash.openAccountMenu': { en: 'Open Account Menu', mn: 'Бүртгэлийн цэс нээх' },
+    'dash.openAccountMenu': { en: 'Open Settings', mn: 'Тохиргоо нээх' },
 });

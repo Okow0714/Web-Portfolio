@@ -96,22 +96,26 @@
                             <svg viewBox="0 0 24 24"><path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9Zm0 2c-4 0-8 2-8 5v2h16v-2c0-3-4-5-8-5Z"/></svg>
                         </span>
                     </button>
+                    <div class="account-menu-scrim" id="account-menu-scrim"></div>
                     <div class="account-menu-panel" id="account-menu-panel">
-                        <div class="lang-toggle-row">
-                            <p class="account-menu-label" data-i18n="lang.label">Language</p>
-                            <div class="lang-toggle" role="group" aria-label="Language">
-                                <button type="button" class="lang-toggle-btn" data-lang="en">EN</button>
-                                <button type="button" class="lang-toggle-btn" data-lang="mn">МН</button>
-                            </div>
-                        </div>
                         <div id="auth-anon">
                             <p class="account-menu-note" data-i18n="auth.loginHint">Log in to save your progress across visits.</p>
                             <button id="auth-login-btn" class="auth-btn account-menu-cta" type="button" data-i18n="auth.logIn">Log In</button>
                         </div>
                         <div id="auth-authed" class="hidden">
-                            <p class="account-menu-label" data-i18n="auth.signedInAs">Signed in as</p>
-                            <button id="auth-user-email" class="auth-user-email" type="button" aria-label="Signed-in account"></button>
-                            <button id="auth-logout-btn" type="button" data-i18n="auth.logOut">Log Out</button>
+                            <div class="account-menu-profile">
+                                <div class="account-menu-profile-avatar" id="account-menu-profile-avatar"></div>
+                                <div class="account-menu-profile-text">
+                                    <p class="account-menu-label" data-i18n="auth.signedInAs">Signed in as</p>
+                                    <p id="auth-user-email" class="auth-user-email"></p>
+                                </div>
+                            </div>
+                            <nav class="account-menu-nav">
+                                <a href="dashboard.html" class="account-menu-nav-item" data-i18n="dash.titleSub">Dashboard</a>
+                                <button type="button" class="account-menu-nav-item" id="account-details-btn" data-i18n="account.details">Account details</button>
+                                <button type="button" class="account-menu-nav-item" id="account-settings-btn" data-i18n="account.settings">Settings</button>
+                            </nav>
+                            <button id="auth-logout-btn" class="account-menu-logout" type="button" data-i18n="auth.logOut">Log Out</button>
                         </div>
                     </div>
                 </div>
@@ -142,12 +146,28 @@
             </div>
         </div>
 
-        <!-- Account Modal -->
-        <div id="account-modal" class="modal-overlay hidden">
+        <!-- Account Details Modal -->
+        <div id="account-details-modal" class="modal-overlay hidden">
             <div class="modal-card">
-                <button id="account-modal-close" class="modal-close" type="button" aria-label="Close">&times;</button>
-                <h3 data-i18n="account.yourAccount">Your Account</h3>
-                <p id="account-modal-email" class="account-email"></p>
+                <button id="account-details-modal-close" class="modal-close" type="button" aria-label="Close">&times;</button>
+                <h3 data-i18n="account.details">Account details</h3>
+                <p class="modal-label" data-i18n="auth.email">Email</p>
+                <p id="account-details-email" class="account-email"></p>
+            </div>
+        </div>
+
+        <!-- Settings Modal -->
+        <div id="account-settings-modal" class="modal-overlay hidden">
+            <div class="modal-card">
+                <button id="account-settings-modal-close" class="modal-close" type="button" aria-label="Close">&times;</button>
+                <h3 data-i18n="account.settings">Settings</h3>
+                <div class="settings-lang-row">
+                    <p class="modal-label" data-i18n="lang.label">Language</p>
+                    <div class="lang-toggle" role="group" aria-label="Language">
+                        <button type="button" class="lang-toggle-btn" data-lang="en">🇬🇧 EN</button>
+                        <button type="button" class="lang-toggle-btn" data-lang="mn">🇲🇳 МН</button>
+                    </div>
+                </div>
                 <div class="account-danger-zone">
                     <h4 data-i18n="account.dangerZone">Danger Zone</h4>
                     <p data-i18n="account.deleteWarning">Deleting your account permanently removes your profile, comments, bookmarks, messages, and study progress. This can't be undone.</p>

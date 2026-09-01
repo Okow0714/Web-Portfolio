@@ -138,9 +138,13 @@ document.getElementById('auth-logout-btn').addEventListener('click', async () =>
 });
 
 // ---------------------------------------------------------------------------
-// Account modal (view email, delete account)
+// Account details modal (view email) + Settings modal (language, delete account)
+// -- split from the single "Your Account" modal this used to be, so the account panel's
+// "Account details" and "Settings" nav items each open something specific rather than both
+// landing on the same everything-in-one-place screen.
 // ---------------------------------------------------------------------------
-const accountModal = document.getElementById('account-modal');
+const accountDetailsModal = document.getElementById('account-details-modal');
+const accountSettingsModal = document.getElementById('account-settings-modal');
 const accountDeleteStartBtn = document.getElementById('account-delete-start-btn');
 const accountDeleteConfirmRow = document.getElementById('account-delete-confirm');
 const accountDeleteInput = document.getElementById('account-delete-input');
@@ -155,15 +159,24 @@ function resetAccountDeleteUI() {
     showEl(accountDeleteStartBtn);
 }
 
-document.getElementById('auth-user-email').addEventListener('click', () => {
+document.getElementById('account-details-btn').addEventListener('click', () => {
     if (!currentSession) return;
-    document.getElementById('account-modal-email').textContent = currentSession.user.email;
-    resetAccountDeleteUI();
-    showEl(accountModal);
+    document.getElementById('account-details-email').textContent = currentSession.user.email;
+    showEl(accountDetailsModal);
 });
-document.getElementById('account-modal-close').addEventListener('click', () => hideEl(accountModal));
-accountModal.addEventListener('click', (e) => {
-    if (e.target === accountModal) hideEl(accountModal);
+document.getElementById('account-details-modal-close').addEventListener('click', () => hideEl(accountDetailsModal));
+accountDetailsModal.addEventListener('click', (e) => {
+    if (e.target === accountDetailsModal) hideEl(accountDetailsModal);
+});
+
+document.getElementById('account-settings-btn').addEventListener('click', () => {
+    if (!currentSession) return;
+    resetAccountDeleteUI();
+    showEl(accountSettingsModal);
+});
+document.getElementById('account-settings-modal-close').addEventListener('click', () => hideEl(accountSettingsModal));
+accountSettingsModal.addEventListener('click', (e) => {
+    if (e.target === accountSettingsModal) hideEl(accountSettingsModal);
 });
 
 accountDeleteStartBtn.addEventListener('click', () => {
@@ -188,7 +201,7 @@ accountDeleteConfirmBtn.addEventListener('click', async () => {
         return;
     }
     await supabaseClient.auth.signOut();
-    hideEl(accountModal);
+    hideEl(accountSettingsModal);
     window.location.href = 'index.html';
 });
 
@@ -200,6 +213,7 @@ accountDeleteConfirmBtn.addEventListener('click', async () => {
 const accountMenu = document.getElementById('account-menu');
 const accountMenuTrigger = document.getElementById('account-menu-trigger');
 const accountMenuAvatar = document.getElementById('account-menu-avatar');
+const accountMenuProfileAvatar = document.getElementById('account-menu-profile-avatar');
 const GUEST_AVATAR_HTML = accountMenuAvatar.innerHTML; // the generic person icon, to restore on logout
 
 function closeAccountMenu() {
@@ -213,6 +227,10 @@ accountMenuTrigger.addEventListener('click', () => {
     accountMenuTrigger.setAttribute('aria-expanded', String(nowOpen));
 });
 
+// Not every page's account menu has a full-viewport scrim (about.html's is a small popover off
+// its sidebar rail, not a side drawer) -- the generic outside-click check is the one handler
+// that works everywhere; the scrim listener is just a more direct hit target where it exists.
+document.getElementById('account-menu-scrim')?.addEventListener('click', closeAccountMenu);
 document.addEventListener('click', (e) => {
     if (!accountMenu.contains(e.target)) closeAccountMenu();
 });
@@ -220,10 +238,11 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeAccountMenu();
 });
 
-// Opening the auth modal, the account-settings modal, or logging out should all close the
-// dropdown panel first rather than leaving it open behind/beside whatever comes next.
+// Opening the auth modal, a details/settings modal, or logging out should all close the side
+// panel first rather than leaving it open behind whatever comes next.
 document.getElementById('auth-login-btn').addEventListener('click', closeAccountMenu);
-document.getElementById('auth-user-email').addEventListener('click', closeAccountMenu);
+document.getElementById('account-details-btn').addEventListener('click', closeAccountMenu);
+document.getElementById('account-settings-btn').addEventListener('click', closeAccountMenu);
 document.getElementById('auth-logout-btn').addEventListener('click', closeAccountMenu);
 
 // ---------------------------------------------------------------------------
@@ -240,8 +259,11 @@ function updateAuthUI(session) {
         showEl(authedEl);
         document.getElementById('auth-user-email').textContent = session.user.email;
         // Avatar becomes the first letter of the email, like a typical account-menu avatar,
-        // instead of the generic guest icon.
-        accountMenuAvatar.textContent = session.user.email.charAt(0).toUpperCase();
+        // instead of the generic guest icon -- shown both on the trigger button and again in
+        // the panel's own profile header.
+        const initial = session.user.email.charAt(0).toUpperCase();
+        accountMenuAvatar.textContent = initial;
+        accountMenuProfileAvatar.textContent = initial;
     } else {
         showEl(anonEl);
         hideEl(authedEl);

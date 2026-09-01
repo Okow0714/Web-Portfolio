@@ -1,7 +1,7 @@
 // Dashboard (dashboard.html) — profile summary, per-tool progress, score vs. average, and a
-// display-name editor. Password/session/account-deletion stays in the existing account modal
+// display-name editor. Password/session/account-deletion stays in the existing Settings modal
 // (auth-shared.js) rather than being rebuilt here; the "Open Account Menu" button just triggers
-// that modal's existing open path (clicking #auth-user-email) instead of duplicating it.
+// that modal's existing open path (clicking #account-settings-btn) instead of duplicating it.
 (function () {
     const sb = window.supabaseClient;
 
@@ -119,7 +119,7 @@
     });
 
     document.getElementById('dash-open-account-btn').addEventListener('click', () => {
-        document.getElementById('auth-user-email').click();
+        document.getElementById('account-settings-btn').click();
     });
 
     window.onAuthChange((session) => {

@@ -374,6 +374,7 @@ body {
 .nav-dropdown a:focus-visible,
 .account-menu-trigger:focus-visible,
 .account-menu-panel button:focus-visible,
+.account-menu-panel a:focus-visible,
 .site-footer a:focus-visible {
     outline: 2px solid var(--header-accent);
     outline-offset: -2px;
@@ -470,26 +471,47 @@ body {
     stroke-width: 1.8;
 }
 
-.account-menu-panel {
-    position: absolute;
-    top: calc(100% + 10px);
-    right: 0;
-    min-width: 240px;
-    background: var(--header-bg-elevated);
-    border: 1px solid var(--header-border);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
-    padding: 16px;
+.account-menu-scrim {
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 12, 10, 0.45);
     opacity: 0;
-    transform: translateY(-8px) scale(0.98);
-    transform-origin: top right;
     pointer-events: none;
-    transition: opacity 0.2s var(--ease-out), transform 0.2s var(--ease-pop);
-    z-index: 20;
+    transition: opacity 0.25s var(--ease-out);
+    z-index: 999;
+}
+
+.account-menu.open .account-menu-scrim {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* A side panel fixed to the viewport edge -- not the trigger button -- so it spans the full
+   height regardless of scroll position, wide enough to hold real navigation (Dashboard /
+   Account details / Settings) instead of the small dropdown this used to be, which only had
+   room for the language toggle and Log Out. */
+.account-menu-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 320px;
+    max-width: 86vw;
+    background: var(--header-bg-elevated);
+    border-left: 1px solid var(--header-border);
+    box-shadow: -24px 0 50px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    padding: 76px 22px 22px;
+    overflow-y: auto;
+    transform: translateX(100%);
+    pointer-events: none;
+    transition: transform 0.32s var(--ease-pop);
+    z-index: 1000;
 }
 
 .account-menu.open .account-menu-panel {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateX(0);
     pointer-events: auto;
 }
 
@@ -508,16 +530,160 @@ body {
     color: var(--header-text-muted);
 }
 
-/* Language toggle: lives inside the account panel rather than as its own header button so it
-   doesn't add a third control to the already-tight horizontal-scroll mobile nav (see
-   .header-nav's max-width:860px comment). Sits above #auth-anon/#auth-authed since it's
-   independent of login state -- always visible regardless of which of those two is showing.
-   Portfolio (index.html) never gets this markup at all, so it stays English-only by design;
-   every other page includes it. */
-.lang-toggle-row {
-    margin: 0 0 14px;
-    padding-bottom: 14px;
+#auth-anon .account-menu-cta {
+    width: 100%;
+    text-align: center;
+}
+
+/* The account panel hangs off the masthead, so its CTA should wear the masthead's gold, not
+   the page's. .auth-btn paints var(--accent-gradient), and every page-theme block redefines
+   that token on body -- so the identical button came out blue on the portfolio and copper on
+   Phonetics Family, which undercut the idea of one consistent bar. Scoped to the panel alone:
+   .auth-btn inside #auth-modal / #account-details-modal / #account-settings-modal is page-level
+   UI and keeps the page accent. Dark wine on gold rather than the base rule's white, which would
+   sit at ~1.9:1 here. Qualified by .site-header-wrap purely for specificity: reading.css sets
+   its own body:has(.reading-main) .auth-btn colour (0,2,1) as part of that page's light flip,
+   which would otherwise outrank a bare .account-menu-panel .auth-btn (0,2,0) and leave the
+   reader page's panel button a different ink from the other pages. */
+.site-header-wrap .account-menu-panel .auth-btn {
+    background: linear-gradient(135deg, var(--header-accent), var(--header-accent-dark));
+    border-color: var(--header-accent-dark);
+    color: var(--header-bg);
+}
+
+.site-header-wrap .account-menu-panel .auth-btn:hover {
+    background: linear-gradient(135deg, var(--header-accent-dark), var(--header-accent));
+    border-color: var(--header-accent);
+    color: var(--header-bg);
+}
+
+#auth-authed {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    flex: 1;
+}
+
+.account-menu-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 18px;
+    margin-bottom: 8px;
     border-bottom: 1px solid var(--header-border);
+}
+
+.account-menu-profile-avatar {
+    flex: 0 0 auto;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(150deg, var(--header-accent), var(--header-accent-dark));
+    color: var(--header-bg);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.account-menu-profile-text {
+    min-width: 0;
+}
+
+.auth-user-email {
+    display: block;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--header-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+}
+
+.account-menu-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 10px;
+}
+
+.account-menu-nav-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    color: var(--header-text);
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 11px 10px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.account-menu-nav-item::after {
+    content: '\203a';
+    margin-left: auto;
+    opacity: 0.5;
+    font-size: 1rem;
+}
+
+.account-menu-nav-item:hover {
+    background: var(--header-accent-tint);
+    color: var(--header-accent);
+}
+
+.account-menu-logout {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    border-top: 1px solid var(--header-border);
+    margin-top: auto;
+    padding: 16px 10px 0;
+    color: var(--header-text-muted);
+    font-weight: 600;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.account-menu-logout:hover {
+    color: var(--header-accent);
+}
+
+/* Settings modal's language toggle: same .lang-toggle-btn markup as before, but now living
+   inside a page-level modal (a sibling of .site-header-wrap, not a descendant) instead of the
+   header-scoped account panel -- the base rule's --header-* tokens don't cascade there, so this
+   overrides with the page's own tokens instead. Higher specificity than the base rule wins
+   regardless of source order. */
+.settings-lang-row {
+    margin: 0 0 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.settings-lang-row .lang-toggle-btn {
+    border-color: var(--border-strong);
+    color: var(--text-secondary);
+}
+
+.settings-lang-row .lang-toggle-btn:hover {
+    border-color: var(--accent);
+    color: var(--text-primary);
+}
+
+.settings-lang-row .lang-toggle-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #ffffff;
 }
 
 .lang-toggle {
@@ -550,81 +716,12 @@ body {
     cursor: default;
 }
 
-#auth-anon .account-menu-cta {
-    width: 100%;
-    text-align: center;
-}
-
-/* The account panel hangs off the masthead, so its CTA should wear the masthead's gold, not
-   the page's. .auth-btn paints var(--accent-gradient), and every page-theme block redefines
-   that token on body -- so the identical button came out blue on the portfolio and copper on
-   Phonetics Family, which undercut the idea of one consistent bar. Scoped to the panel alone:
-   .auth-btn inside #auth-modal / #account-modal is page-level UI and keeps the page accent.
-   Dark wine on gold rather than the base rule's white, which would sit at ~1.9:1 here.
-   Qualified by .site-header-wrap purely for specificity: reading.css sets its own
-   body:has(.reading-main) .auth-btn colour (0,2,1) as part of that page's light flip, which
-   would otherwise outrank a bare .account-menu-panel .auth-btn (0,2,0) and leave the reader
-   page's panel button a different ink from the other five. */
-.site-header-wrap .account-menu-panel .auth-btn {
-    background: linear-gradient(135deg, var(--header-accent), var(--header-accent-dark));
-    border-color: var(--header-accent-dark);
-    color: var(--header-bg);
-}
-
-.site-header-wrap .account-menu-panel .auth-btn:hover {
-    background: linear-gradient(135deg, var(--header-accent-dark), var(--header-accent));
-    border-color: var(--header-accent);
-    color: var(--header-bg);
-}
-
-#auth-authed {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-}
-
-.auth-user-email {
-    display: block;
-    width: 100%;
-    text-align: left;
-    font-size: 0.92rem;
-    font-weight: 600;
-    color: var(--header-text);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    background: none;
-    border: none;
-    padding: 8px 10px;
-    margin: 0 0 6px;
-    font-family: inherit;
-    cursor: pointer;
-    transition: background 0.2s ease, color 0.2s ease;
-}
-
-.auth-user-email:hover {
-    background: var(--header-accent-tint);
-    color: var(--header-accent);
-}
-
-#auth-logout-btn {
-    display: block;
-    width: 100%;
-    text-align: left;
-    background: none;
-    border: none;
-    border-top: 1px solid var(--header-border);
-    padding: 10px 10px 0;
-    margin-top: 4px;
-    color: var(--header-text-muted);
-    font-weight: 600;
-    font-size: 0.88rem;
-    cursor: pointer;
-    transition: color 0.2s ease;
-}
-
-#auth-logout-btn:hover {
-    color: var(--header-accent);
+.modal-label {
+    margin: 0 0 4px;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted);
 }
 
 .auth-btn {
