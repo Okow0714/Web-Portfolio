@@ -1,5 +1,5 @@
 // Dictionary (dictionary.html) — two tabs sharing one page. The primary "Монгол ⇄ 日本語" tab
-// is a Mongolian<->Japanese lookup built from mnjp-data.js (MNJP_ENTRIES, 3,112 words merged
+// is a Mongolian<->Japanese lookup built from mnjp-data.js (MNJP_ENTRIES, 3,427 words merged
 // from four sources -- see that file's header comment). The secondary "漢語 ⇄ 和語" tab is the
 // original Kango<->Wago dictionary, depending on dictionary-data.js (DICTIONARY_ENTRIES) exactly
 // as before -- that file is untouched by this rework, since Word Match's Wakan winged-tile bonus
@@ -42,6 +42,24 @@ function escapeHtml(str) {
 // ---------------------------------------------------------------------------
 let activeTab = 'mnjp';
 
+// dictionary-data.js (183KB) is only needed for the secondary Kango<->Wago tab -- most visits
+// only ever touch the primary MN<->JP tab, so it's not loaded until the Wakan tab is actually
+// opened, instead of eagerly on every page load. wakanDataPromise memoizes the fetch so
+// switching tabs back and forth doesn't re-inject the script.
+let wakanDataPromise = null;
+function loadWakanData() {
+    if (wakanDataPromise) return wakanDataPromise;
+    wakanDataPromise = new Promise((resolve, reject) => {
+        if (typeof DICTIONARY_ENTRIES !== 'undefined') { resolve(); return; }
+        const script = document.createElement('script');
+        script.src = 'dictionary-data.js';
+        script.onload = () => resolve();
+        script.onerror = () => reject(new Error('dictionary-data.js failed to load'));
+        document.body.appendChild(script);
+    });
+    return wakanDataPromise;
+}
+
 function switchTab(tab) {
     activeTab = tab;
     const mnjpBtn = document.getElementById('dict-tab-mnjp');
@@ -52,6 +70,19 @@ function switchTab(tab) {
     wakanBtn.setAttribute('aria-selected', tab === 'wakan' ? 'true' : 'false');
     document.getElementById('dict-panel-mnjp').classList.toggle('hidden', tab !== 'mnjp');
     document.getElementById('dict-panel-wakan').classList.toggle('hidden', tab !== 'wakan');
+
+    if (tab === 'wakan' && !wakanDataPromise) {
+        const list = document.getElementById('dict-list');
+        list.innerHTML = '';
+        showEl(document.getElementById('dict-empty'));
+        document.getElementById('dict-empty').textContent = window.t('dict.loadingWakan');
+        loadWakanData().then(() => {
+            hideEl(document.getElementById('dict-empty'));
+            document.getElementById('dict-empty').textContent = window.t('dict.noMatches');
+            renderFilters();
+            renderList();
+        });
+    }
 }
 
 document.getElementById('dict-tab-mnjp').addEventListener('click', () => switchTab('mnjp'));
@@ -71,7 +102,7 @@ function matchesMnjpSearch(entry, q) {
 }
 
 // Builds the expanded detail (source tags, extra glosses, example sentence, kango/wago
-// cross-link) -- called lazily on first expand rather than for every one of the 3,112 rows up
+// cross-link) -- called lazily on first expand rather than for every one of the 3,427 rows up
 // front, since most of them are never opened in a given visit.
 function buildMnjpDetail(entry) {
     const sourceTags = entry.sources
@@ -120,7 +151,7 @@ function renderMnjpEntry(entry) {
     return card;
 }
 
-// At 3,112 entries, building every matching card on every keystroke got visibly laggy
+// At 3,427 entries, building every matching card on every keystroke got visibly laggy
 // (~500ms measured for a broad query) -- nobody scans a list that long anyway, so results
 // beyond this cap just don't render; the count line says so and asks for a narrower search.
 const MNJP_RENDER_CAP = 150;
@@ -273,11 +304,11 @@ document.getElementById('dict-search').addEventListener('input', (e) => {
 });
 
 document.addEventListener('sitelangchange', () => {
-    renderFilters();
-    renderList();
+    if (typeof DICTIONARY_ENTRIES !== 'undefined') {
+        renderFilters();
+        renderList();
+    }
     renderMnjpList();
 });
 
-renderFilters();
-renderList();
 renderMnjpList();

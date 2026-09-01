@@ -95,7 +95,7 @@
                         </div>
                         <div id="auth-authed" class="hidden">
                             <p class="account-menu-label" data-i18n="auth.signedInAs">Signed in as</p>
-                            <button id="auth-user-email" class="auth-user-email" type="button"></button>
+                            <button id="auth-user-email" class="auth-user-email" type="button" aria-label="Signed-in account"></button>
                             <button id="auth-logout-btn" type="button" data-i18n="auth.logOut">Log Out</button>
                         </div>
                     </div>
@@ -166,6 +166,7 @@
                     </div>
                     <p id="gc-guest-hint" class="gc-guest-hint hidden" data-i18n="auth.loginHint">Log in to save your progress across visits.</p>
 
+                    <h2 class="sr-only" data-i18n="game.levels">Levels</h2>
                     <div class="gc-diff-tabs" id="gc-diff-tabs" role="tablist" aria-label="Difficulty track"></div>
                     <div class="gc-level-grid" id="gc-level-grid"></div>
 

@@ -1,0 +1,4 @@
+# tests/ installs Playwright locally via `npm install --no-save` (see tests/README.md) --
+# deliberately not part of the site itself, and not committed. No package.json on purpose:
+# this project has no build step, and node_modules/ here is just test tooling.
+node_modules/

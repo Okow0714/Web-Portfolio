@@ -75,6 +75,23 @@ section[id] {
     display: none !important;
 }
 
+/* Visually hidden but still reachable by screen readers -- unlike .hidden (display:none, which
+   removes an element from the accessibility tree too), this keeps content announced while
+   taking it out of the visual layout. Used for section headings that exist purely to fix a
+   heading-level skip (H1 straight to H3, with no visible H2 the design calls for) without
+   introducing a redundant visible label. */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 body {
     margin: 0;
     min-height: 100vh;

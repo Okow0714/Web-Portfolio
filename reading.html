@@ -103,7 +103,7 @@
                         </div>
                         <div id="auth-authed" class="hidden">
                             <p class="account-menu-label" data-i18n="auth.signedInAs">Signed in as</p>
-                            <button id="auth-user-email" class="auth-user-email" type="button"></button>
+                            <button id="auth-user-email" class="auth-user-email" type="button" aria-label="Signed-in account"></button>
                             <button id="auth-logout-btn" type="button" data-i18n="auth.logOut">Log Out</button>
                         </div>
                     </div>
@@ -162,6 +162,7 @@
                 <p class="reading-subtitle" data-i18n="reading.subtitle">Read passages aloud and watch the highlight follow your voice. Any reasonable pronunciation is accepted — pause for 3 seconds on a word and its reading and meaning pop up. Finishing a text moves you straight into the next one, and clearing a level unlocks the next.</p>
                 <p class="reading-mic-hint" data-i18n="reading.micHint">Needs microphone access and works best in Chrome or Edge — other browsers don't support live speech recognition.</p>
                 <p id="reading-guest-hint" class="reading-guest-hint hidden" data-i18n="reading.guestHint">Log in to save which texts you've completed across visits.</p>
+                <h2 class="sr-only" data-i18n="reading.tracks">Tracks</h2>
                 <div class="track-grid" id="track-grid"></div>
             </section>
 

@@ -12,6 +12,7 @@ Object.assign(window.I18N_STRINGS, {
     'dict.mnjpTruncated': { en: '{shown} of {total} shown — refine your search', mn: '{total}-с {shown} харуулж байна — хайлтаа тодруулна уу' },
     'dict.searchPlaceholder': { en: 'Search by kanji, kana, or English…', mn: 'Ханз, кана, эсвэл англи үгээр хайх…' },
     'dict.noMatches': { en: 'No entries match your search.', mn: 'Таны хайлттай тохирох бичлэг олдсонгүй.' },
+    'dict.loadingWakan': { en: 'Loading…', mn: 'Ачааллаж байна…' },
     'dict.kango': { en: 'Kango', mn: 'Канго' },
     'dict.wago': { en: 'Wago', mn: 'Ваго' },
     'dict.posAll': { en: 'All', mn: 'Бүгд' },

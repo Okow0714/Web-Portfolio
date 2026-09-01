@@ -1,0 +1,34 @@
+name: Regression tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  playwright-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Playwright
+        # --no-save: this repo has no package.json and shouldn't gain one -- npm can still
+        # install straight into node_modules/ without one. `npx playwright install` alone
+        # isn't enough: it fetches the CLI into npx's own cache, which `require('playwright')`
+        # from tests/run-all.js can't resolve, so the package itself has to land in a real
+        # node_modules/ that Node's normal resolution will find.
+        run: |
+          npm install --no-save playwright
+          ./node_modules/.bin/playwright install --with-deps chromium
+
+      - name: Run tests
+        run: node tests/run-all.js
