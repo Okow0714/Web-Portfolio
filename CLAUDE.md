@@ -69,8 +69,9 @@ bookmarks, account-linked contact form (depends on `auth-shared.js` having run f
 
 ## Working conventions
 
-- **Never `git commit` or `git push` without an explicit "yes" first.** Not implied by
-  approving the plan — a separate ask each time.
+- **Standing authorization to `git commit` and `git push` to `main`.** No need to ask first —
+  regular commits/pushes are pre-approved (changed 2026-09-01, was previously "ask every time").
+  Still never force-push, rewrite history, or skip hooks without being asked explicitly for that.
 - **Verify with a real browser, not self-reports.** `python -m http.server 8123` from the repo
   root, then Playwright against it. This has caught real bugs almost every round (a hex-tile
   tessellation gap, invisible tree spokes after a theme flip, a malformed CSS comment eating
