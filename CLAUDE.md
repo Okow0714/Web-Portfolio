@@ -11,10 +11,14 @@ Supabase (Postgres + Auth). Hosted on GitHub Pages. Git repo on `main`.
 
 | Page | Purpose |
 |---|---|
-| `index.html` | About Me / portfolio home — nav label is "About Me". Content wrapped in `<main class="portfolio-main">` (internal class name, unchanged). |
-| `game.html` | Word Match ("言葉合わせ") — hex-tile vocabulary matching game, JLPT N5–N1. |
-| `phonetics.html` | Phonetics Family — kanji grouped by shared phonetic component, ranked by usage. |
-| `reading.html` | Dokkai Reader — speech-recognition-driven reading practice. |
+| `index.html` | The "entrance hall" / hub — site home, nav-brand target. Five tool cards (screenshot + description) plus a developer card linking to `about.html` and a home-page dictionary search bar + Dashboard progress widget for signed-in visitors. `<main class="hub-main">`, themed via `hub.css` (deep wine/gold, matches the masthead). Mongolian by default (`<html data-default-lang="mn">`). |
+| `about.html` | Sarantsatsral's personal "About Me" resume/portfolio page — reached via the footer's "About Me" column or the hub's developer card, not the top nav. Fully standalone: its own `about.css` (forest-teal "Field Dossier" theme), no shared `style.css`, no masthead/footer, a sticky left index-rail layout instead. English only, no i18n. Has its own compact account popover (`.about-account*` classes) rather than the shared masthead's side drawer, but wired through the same `auth-shared.js` and load-bearing IDs (see Account menu below). |
+| `game.html` | Word Match ("言葉合わせ") — hex-tile vocabulary matching game, JLPT N5–N1. `<main class="game-main">` / `game.css` (dark hanafuda violet/gold). |
+| `phonetics.html` | Phonetics Family — kanji grouped by shared phonetic component, ranked by usage. `<main class="phonetics-main">` / `phonetics.css` (light jade/copper). |
+| `grammar.html` | Grammar Connect — sentence-swap grammar drill, two tracks (foundation/advanced). `<main class="grammar-main">` / `grammar.css`. |
+| `reading.html` | Dokkai Reader — speech-recognition-driven reading practice. `<main class="reading-main">` / `reading.css` (warm gold, light). |
+| `dictionary.html` | Mongol-Japan Dictionary — two tabs: primary Монгол⇄日本語 (`mnjp-data.js`), secondary 漢語⇄和語 Kango/Wago (`dictionary-data.js`, lazy-loaded only when that tab opens). Reads a `?q=` URL param on load to pre-fill/filter the primary tab — the target of the home page's search bar. `<main class="dictionary-main">` / `dictionary.css`. |
+| `dashboard.html` | Signed-in-only progress page — profile (avatar, editable display name), score vs. site average, per-tool level/text completion, and a link into the Settings modal for account management. `<main class="dash-main">` / `dashboard.css` (cool slate/blue utility theme). A condensed version of the score + per-tool bars also appears on `index.html`, sourced with the same Supabase queries (`hub-home.js`). |
 | `privacy.html`, `terms.html` | Legal pages, plain styling via `legal.css`. |
 | `reset-password.html` | Standalone, no shared header/footer. |
 
@@ -24,43 +28,70 @@ Supabase (Postgres + Auth). Hosted on GitHub Pages. Git repo on `main`.
 the legal pages) plus the JLPT color spectrum (`--jlpt-n5`…`--jlpt-n1`, green→wine, used
 wherever a level badge or dropdown link appears — do not touch without checking all five hues
 stay visually distinct). It also owns the shared masthead (`.site-header-wrap`, single-row:
-言 seal + wordmark + nav + account menu, "lifted wine" `#4a2c3a`) and the shared 4-column
-footer (`.site-footer`, same `--header-*` tokens as the masthead so they bookend the page).
-Both are identical across all six pages.
+言 seal + wordmark + nav + account menu, "lifted wine" `#4a2c3a`) and the shared footer
+(`.site-footer`, same `--header-*` tokens as the masthead so they bookend the page): a 3-column
+grid (brand, study tools, About Me) plus a `<details class="footer-credits">` disclosure,
+collapsed by default, holding the CC-licensed data/photo/music attributions — a license
+obligation, so it stays reachable on every page, just not permanently open as chrome. Both the
+masthead and footer are identical across the nine pages that carry them (every page above
+except `about.html`, which has no shared header/footer at all, and `reset-password.html`).
 
-**Page-scoped theme files** (`portfolio.css`, `phonetics.css`, `reading.css`, `game.css`):
-each defines its own token block (same variable *names* as `style.css`'s `:root` — `--bg-page`,
-`--accent`, etc. — different values) on that page's own wrapper class (`.portfolio-main`,
-`.phonetics-main`, `.reading-main`, `.game-main`). CSS custom-property inheritance means every
-`var(--x)` in that file picks up the page-local value automatically. Current palette: portfolio
-cool blue-gray (light), phonetics light jade/copper, reading warm gold (light), game dark
-hanafuda violet/gold. **Each page's colors and layout are deliberately distinct — don't
-reintroduce a shared template between them.**
+**Page-scoped theme files** (`hub.css`, `phonetics.css`, `reading.css`, `grammar.css`,
+`dictionary.css`, `dashboard.css`, `game.css`, `about.css`): each defines its own token block
+(same variable *names* as `style.css`'s `:root` — `--bg-page`, `--accent`, etc. — different
+values) on that page's own wrapper class (see the Pages table). CSS custom-property inheritance
+means every `var(--x)` in that file picks up the page-local value automatically. `about.css` is
+the one exception — it doesn't load `style.css` at all, so its tokens live on a real `:root`
+instead of being scoped to its wrapper class. Current palette: hub deep wine/gold (dark),
+phonetics light jade/copper, reading warm gold (light), grammar its own accent, dictionary its
+own accent, dashboard cool slate/blue, game dark hanafuda violet/gold, about forest-teal.
+**Each page's colors and layout are deliberately distinct — don't reintroduce a shared template
+between them.**
 
 **Full-bleed pattern**: the same token block is defined on both `body:has(.wrapper-class)` and
 `.wrapper-class` (body is an ancestor and can't read a descendant's custom properties), then
 `body:has(.wrapper) { background: var(--bg-page); }`. Without this, the shared light `:root
 --bg-page` shows as margins outside `.container`'s 1200px cap on wide viewports.
 
-**Account menu**: `auth-shared.js` wires up `#account-menu` / `#account-menu-trigger` /
-`#account-menu-panel` / `#auth-anon` / `#auth-authed` / `#auth-login-btn` /
-`#auth-logout-btn` / `#auth-user-email`, plus `#auth-modal` and `#account-modal`. These IDs
-and their nesting (`#auth-anon`/`#auth-authed` inside `#account-menu-panel`) are load-bearing —
-don't rename or re-nest without updating `auth-shared.js`. `.auth-btn` is shared across the
-account panel and both modals; the panel's copy is pinned to masthead gold via
+**Account menu**: a full-height side panel (`.account-menu-panel`, fixed to the viewport's right
+edge, not a small dropdown), sliding in over a `.account-menu-scrim` backdrop. `auth-shared.js`
+wires up `#account-menu` / `#account-menu-trigger` / `#account-menu-scrim` /
+`#account-menu-panel` / `#auth-anon` / `#auth-authed` / `#account-menu-profile-avatar` /
+`#auth-login-btn` / `#auth-logout-btn` / `#auth-user-email` (a plain, non-interactive `<p>` now,
+not a button) / `#account-details-btn` / `#account-settings-btn`, plus `#auth-modal`,
+`#account-details-modal`, and `#account-settings-modal`. These IDs and their nesting
+(`#auth-anon`/`#auth-authed` inside `#account-menu-panel`) are load-bearing — don't rename or
+re-nest without updating `auth-shared.js`. The panel's signed-in state is a profile header
+(avatar + email) then real navigation: a `Dashboard` link, `Account details` (opens
+`#account-details-modal` — just the email), and `Settings` (opens `#account-settings-modal` —
+the language toggle, now with flag emoji, plus the delete-account danger zone), with Log Out
+pinned to the bottom via `margin-top: auto`. `.lang-toggle-btn` is shared between the two
+contexts it appears in (the old always-visible panel row is gone; it only lives in the Settings
+modal now) — its default rule uses the masthead's `--header-*` tokens, and `.settings-lang-row
+.lang-toggle-btn` overrides with page-level tokens since a modal is a sibling of
+`.site-header-wrap`, not a descendant, so `--header-*` doesn't cascade there. `.auth-btn` is
+shared across the account panel and every modal; the panel's copy is pinned to masthead gold via
 `.site-header-wrap .account-menu-panel .auth-btn` (see `style.css`), the modals keep the page
-accent.
+accent. `about.html` mirrors this same ID contract (it shares `auth-shared.js`) but with its own
+compact `.about-account*` markup/CSS sized for its sidebar rail rather than a full drawer.
 
-**Large data files — never `Read` whole**: `phonetics-data.js` (2.2MB), `reading-texts.js`
-(980KB), `game-words.js` (424KB) are JS files assigning one `const` to a JSON-shaped literal.
-Query them with `grep`/`node -e`, not the Read tool. To bulk-edit, parse with
-`JSON.parse(text after "const NAME = ", trailing ";" stripped)`, edit, `JSON.stringify(data,
-null, 4)` back — this round-trips cleanly since the files are strict JSON.
+**Large data files — never `Read` whole**: `phonetics-data.js` (~2.8MB), `game-words.js`
+(~1.4MB), `mnjp-data.js` (~1.4MB, `MNJP_ENTRIES` — dictionary.html's primary tab, 3,427 words
+merged from four sources, see its own header comment), `reading-texts.js` (~1.1MB),
+`dictionary-data.js` (~185KB, `DICTIONARY_ENTRIES` — dictionary.html's secondary Kango⇄Wago tab,
+lazy-loaded) are JS files assigning one `const` to a JSON-shaped literal. Query them with
+`grep`/`node -e`, not the Read tool. To bulk-edit, parse with `JSON.parse(text after "const
+NAME = ", trailing ";" stripped)`, edit, `JSON.stringify(data, null, 4)` back — this round-trips
+cleanly since the files are strict JSON. (Sizes drift as content grows — treat them as
+ballpark, not exact; the point is these are all too big to `Read` in one shot.)
 
-**Data licensing** (attributed in the shared footer): Kanjium (CC BY-SA 4.0) for kanji &
-phonetic-family data, Tatoeba (CC BY / CC0) for example sentences, scriptin/kanji-frequency
-(CC BY 4.0) for usage ranking, elzup/jlpt-word-list for vocabulary curation. Never republish
-curated third-party content beyond what these licenses allow — only derive from raw data.
+**Data licensing** (attributed in the shared footer's collapsed `.footer-credits` disclosure):
+Kanjium (CC BY-SA 4.0) for kanji & phonetic-family data, Tatoeba (CC BY / CC0) for example
+sentences, scriptin/kanji-frequency (CC BY 4.0) for usage ranking, elzup/jlpt-word-list for
+vocabulary curation, Pixabay Music (Content License) and Wikimedia Commons (CC0/CC BY/CC BY-SA)
+for game.html's background photos and soundtrack — full photo/music credits live in that same
+footer disclosure on `game.html` itself (other pages link to it). Never republish curated
+third-party content beyond what these licenses allow — only derive from raw data.
 
 **Supabase**: `supabase-config.js` holds the project URL and anon/publishable key (safe to
 expose — access is enforced by RLS policies in `supabase-schema.sql`, not key secrecy).
