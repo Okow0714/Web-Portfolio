@@ -4,7 +4,7 @@ Object.assign(window.I18N_STRINGS, {
     'grammar.titleSub': { en: 'Grammar Connect', mn: 'Дүрэм холбох' },
     'grammar.subtitle': {
         en: "A sentence appears with one grammar point underlined. Tap the tile that replaces it without changing what the sentence means — the word transforms in place, and the finished sentence (with its translation) drops into the cleared list at the side. Ten sentences a level, five options a sentence, twenty levels a track.",
-        mn: 'Өгүүлбэрт нэг дүрмийн цэг доогуур зураастай гарч ирнэ. Өгүүлбэрийн утгыг өөрчлөхгүйгээр орлуулах хавтанг дарна уу — үг тэр дороо солигдож, дуусгасан өгүүлбэр (орчуулгын хамт) хажуугийн жагсаалт руу орно. Шат бүрт арван өгүүлбэр, өгүүлбэр бүрт таван сонголт, зам бүрт хорин шат байна.'
+        mn: 'Өгүүлбэрийн нэг дүрэм доогуур зураастай гарч ирнэ. Утгыг нь өөрчлөхгүйгээр орлуулах хавтанг дарна уу — үг шууд солигдож, гүйцээсэн өгүүлбэр орчуулгынхаа хамт хажуугийн жагсаалтад нэмэгдэнэ. Шат бүрт арван өгүүлбэр, өгүүлбэр бүрт таван сонголт, зам бүрт хорин шат.'
     },
     'grammar.cleared': { en: 'Cleared', mn: 'Дуусгасан' },
     'grammar.mistakes': { en: 'Mistakes', mn: 'Алдаа' },

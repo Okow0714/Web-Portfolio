@@ -10,7 +10,7 @@ Object.assign(window.I18N_STRINGS, {
     'game.titleSub': { en: 'Japanese Word Match', mn: 'Япон үг холбох тоглоом' },
     'game.subtitle': {
         en: 'Connect each Japanese word to its English meaning. Every level puts 20 pairs in play on a flat 4-minute clock (+20s per pair matched), and there are 10 levels per JLPT tier — N5 is beginner vocabulary, N1 is advanced. Kanji sharing a phonetic component can be chained together for a lightning-fast multi-clear, and 4 correct pairs in a row banks a powerup you can spend on a free clear or swapping in new words. Two mistakes bring a cleared pair back as a penalty, so slow down and look before you click.',
-        mn: 'Япон үг бүрийг тохирох утгатай нь холбоно уу. Шат болгонд 20 хос, 4 минутын цаг (хос бүр таарах тутам +20 секунд) байна, JLPT түвшин тус бүрт 10 шат байна — N5 нь анхан шатны үг хэллэг, N1 нь гүнзгийрүүлсэн түвшин. Ижил дуудлагын язгуур бүхий ханзыг хооронд нь холбовол богино хугацаанд олон хосыг нэгэн зэрэг арилгаж болно, мөн алдаагүй дараалан 4 хос холбовол бонус цэнэг хуримтлагдаж, үүнийг үнэгүй цэвэрлэгээ эсвэл шинэ үгээр солиход зарцуулж болно. Хоёр удаа буруу дарвал арилсан хос торгуулийн байдлаар буцаж ирэх тул яарахгүй, сайн ажиглаад дарна уу.'
+        mn: 'Япон үг бүрийг утга нь тохирох үгтэй холбоно уу. Шат бүрт 20 хос, 4 минутын цаг байна (хос таарах бүрд +20 секунд). JLPT түвшин бүрт 10 шат — N5 нь анхан шат, N1 нь хамгийн гүнзгий. Ижил дуудлагын язгууртай ханзуудыг хооронд нь холбовол хэд хэдэн хос нэг дор арилна. Алдаагүй дараалан 4 хос холбовол бонус авах бөгөөд үүгээр нэг хос хасах, эсвэл шинэ үгээр солиж болно. Хоёр удаа буруу дарвал арилсан хос торгууль болж эргэж ирнэ — тиймээс яаралгүй, сайн хараад дараарай.'
     },
     'game.guestHint': { en: 'Log in to save your best times and completions across visits.', mn: 'Шилдэг цаг болон дуусгасан шатуудаа хадгалахын тулд нэвтэрнэ үү.' },
     'game.score': { en: 'Score', mn: 'Оноо' },
@@ -41,15 +41,15 @@ Object.assign(window.I18N_STRINGS, {
     'game.lightningFloat': { en: 'LIGHTNING x{n}', mn: 'АЯНГА x{n}' },
     'game.wakanFloat': { en: 'WAKAN LINK x{n}', mn: 'ХОЛБОЛТ x{n}' },
     'game.penaltyFloat': { en: 'PENALTY — pair returned', mn: 'ТОРГУУЛЬ — хос буцаж ирэв' },
-    'game.powerupFreeFloat': { en: 'BONUS CLEAR', mn: 'БОНУС ЦЭВЭРЛЭГЭЭ' },
+    'game.powerupFreeFloat': { en: 'BONUS CLEAR', mn: 'БОНУС ХАСАЛТ' },
     'game.powerupSwapFloat': { en: 'WORDS SWAPPED x3', mn: 'ҮГ СОЛИГДЛОО x3' },
     'game.powerupReadyFloat': { en: 'POWERUP READY!', mn: 'БОНУС БЭЛЭН БОЛЛОО!' },
-    'game.powerupClearBtn': { en: 'Clear', mn: 'Цэвэрлэх' },
+    'game.powerupClearBtn': { en: 'Clear', mn: 'Хасах' },
     'game.powerupSwapBtn': { en: 'Swap', mn: 'Солих' },
-    'game.powerupClearTitle': { en: 'Use powerup: clear one random pair', mn: 'Бонус ашиглах: санамсаргүй нэг хосыг цэвэрлэнэ' },
+    'game.powerupClearTitle': { en: 'Use powerup: clear one random pair', mn: 'Бонус ашиглах: санамсаргүй нэг хосыг хасна' },
     'game.powerupSwapTitle': { en: 'Use powerup: swap 3 random pairs for new ones', mn: 'Бонус ашиглах: 3 санамсаргүй хосыг шинэ үгээр солино' },
     'game.powerupSwapNoFuelTitle': { en: 'No spare words left to swap in this level', mn: 'Энэ шатанд солих нэмэлт үг үлдээгүй байна' },
-    'game.powerupNoChargeTitle': { en: 'Clear 4 pairs in a row (no mistakes) to earn a powerup', mn: 'Алдаагүй дараалан 4 хос холбож бонус цэнэг ол' },
+    'game.powerupNoChargeTitle': { en: 'Clear 4 pairs in a row (no mistakes) to earn a powerup', mn: 'Алдаагүй дараалан 4 хос холбовол бонус авна' },
     'game.foundChipLabel': { en: 'found', mn: 'олдсон' },
     'game.soundOff': { en: 'Turn sound off', mn: 'Дууг унтраах' },
     'game.soundOn': { en: 'Turn sound on', mn: 'Дууг асаах' },

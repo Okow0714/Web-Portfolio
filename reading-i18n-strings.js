@@ -4,7 +4,7 @@ Object.assign(window.I18N_STRINGS, {
     'reading.title': { en: 'Dokkai Reader', mn: 'Уншлагын дадлага' },
     'reading.subtitle': {
         en: "Read passages aloud and watch the highlight follow your voice. Any reasonable pronunciation is accepted — pause for 3 seconds on a word and its reading and meaning pop up. Finishing a text moves you straight into the next one, and clearing a level unlocks the next.",
-        mn: 'Хэсгүүдийг чангаар уншиж, тодотгол таны дуу хоолойг дагахыг ажиглаарай. Ямар ч оновчтой дуудлагыг хүлээн зөвшөөрдөг — үг дээр 3 секунд түр зогсвол уншлага, утга нь гарч ирнэ. Нэг текстийг дуусгамагц дараагийнх нь шууд эхэлнэ, шатыг дуусгавал дараагийнх нь нээгдэнэ.'
+        mn: 'Текстийг чангаар уншихад тодотгол дуу хоолойг чинь дагана. Дуудлага яг таг байх албагүй — үг дээр 3 секунд гацвал уншлага, утга нь гарч ирнэ. Нэг текстийг дуусгамагц дараагийнх нь эхэлж, шатыг гүйцээвэл дараагийн шат нээгдэнэ.'
     },
     'reading.micHint': { en: "Needs microphone access and works best in Chrome or Edge — other browsers don't support live speech recognition.", mn: 'Микрофоны хандалт шаардлагатай бөгөөд Chrome эсвэл Edge дээр хамгийн сайн ажилладаг — бусад хөтчүүд бодит цагийн дуу таних функцийг дэмждэггүй.' },
     'reading.guestHint': { en: "Log in to save which texts you've completed across visits.", mn: 'Дуусгасан текстүүдээ хадгалахын тулд нэвтэрнэ үү.' },

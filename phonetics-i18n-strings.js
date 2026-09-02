@@ -4,7 +4,7 @@ Object.assign(window.I18N_STRINGS, {
     'phonetics.titleMain': { en: 'Phonetics Family', mn: 'Дуудлагын бүлэг' },
     'phonetics.subtitle': {
         en: "Kanji that share a phonetic component often share an on'yomi reading too — learn one, and you get a running start on the rest of its family. Pick a JLPT level to see its phonetic families, ranked by how often their most common member actually shows up in real Japanese text.",
-        mn: 'Ижил дуудлагын язгуур бүхий ханз ихэвчлэн ижил онёми дуудлагатай байдаг — нэгийг нь сурвал бусад нь суралцахад амархан болно. JLPT түвшин сонгож, тухайн түвшний дуудлагын бүлгүүдийг үзнэ үү, эдгээр нь хамгийн түгээмэл гишүүн нь бодит япон бичвэрт хэр олон удаа гардагаар эрэмбэлэгдсэн.'
+        mn: 'Ижил дуудлагын язгууртай ханзууд ихэвчлэн онёми дуудлага нь ч ижил байдаг — нэгийг нь сурвал бусад нь амар болно. JLPT түвшингээ сонгоод тэр түвшний дуудлагын бүлгүүдийг үзээрэй. Бүлгүүд нь хамгийн түгээмэл гишүүн нь япон бичвэрт хэр их тааралддагаар эрэмбэлэгдсэн байгаа.'
     },
     'phonetics.whatIsPhoneticComponent': { en: "What's a phonetic component?", mn: 'Дуудлагын язгуур гэж юу вэ?' },
     'phonetics.families': { en: 'Families', mn: 'Бүлгүүд' },
