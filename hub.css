@@ -123,8 +123,8 @@ body:has(.hub-main) {
 .hub-room:hover .hub-room-cta svg { transform: translateX(3px); }
 
 /* --- developer credit: the hub's own footer content is just this now -- data/photo/music
-   credits live in the shared site-footer's collapsed .footer-credits disclosure below, not
-   duplicated here as a second, always-open copy. --- */
+   credits live on the dedicated credits.html page (linked from the shared site-footer below),
+   not duplicated here as a second, always-open copy. --- */
 .hub-foot { padding-top: 44px; border-top: 1px solid var(--rule); }
 .hub-foot h2 { font-family: var(--font-display); font-size: 1.5rem; margin: 0 0 6px; }
 .hub-dev-card {

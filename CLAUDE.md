@@ -20,6 +20,7 @@ Supabase (Postgres + Auth). Hosted on GitHub Pages. Git repo on `main`.
 | `dictionary.html` | Mongol-Japan Dictionary — two tabs: primary Монгол⇄日本語 (`mnjp-data.js`), secondary 漢語⇄和語 Kango/Wago (`dictionary-data.js`, lazy-loaded only when that tab opens). Reads a `?q=` URL param on load to pre-fill/filter the primary tab — the target of the home page's search bar. `<main class="dictionary-main">` / `dictionary.css`. |
 | `dashboard.html` | Signed-in-only progress page — profile (avatar, editable display name), score vs. site average, per-tool level/text completion, and a link into the Settings modal for account management. `<main class="dash-main">` / `dashboard.css` (cool slate/blue utility theme). A condensed version of the score + per-tool bars also appears on `index.html`, sourced with the same Supabase queries (`hub-home.js`). |
 | `privacy.html`, `terms.html` | Legal pages, plain styling via `legal.css`. |
+| `credits.html` | Full data/photo/music credits for every tool, one page, `legal.css` styling like the pages above — the destination for every page's footer "Data & licensing" link. Sectioned with anchor ids (`#word-game-photos`, `#word-game-music`, `#grammar-connect-photos`, `#grammar-connect-music`) in case a page ever wants to deep-link to one part instead of the whole page. |
 | `reset-password.html` | Standalone, no shared header/footer. |
 
 ## Architecture
@@ -30,11 +31,15 @@ wherever a level badge or dropdown link appears — do not touch without checkin
 stay visually distinct). It also owns the shared masthead (`.site-header-wrap`, single-row:
 言 seal + wordmark + nav + account menu, "lifted wine" `#4a2c3a`) and the shared footer
 (`.site-footer`, same `--header-*` tokens as the masthead so they bookend the page): a 3-column
-grid (brand, study tools, About Me) plus a `<details class="footer-credits">` disclosure,
-collapsed by default, holding the CC-licensed data/photo/music attributions — a license
-obligation, so it stays reachable on every page, just not permanently open as chrome. Both the
-masthead and footer are identical across the nine pages that carry them (every page above
-except `about.html`, which has no shared header/footer at all, and `reset-password.html`).
+grid (brand, study tools, About Me), then a footer-bar whose links row includes "Data &
+licensing" pointing to `credits.html` — a real page, not an inline disclosure (an earlier
+version tucked the credits behind a `<details>` right in the footer; the user asked for a proper
+separate page instead, both because Word Game's and Grammar Connect's full photo/music lists
+made that disclosure huge, and because those two tools were *also* independently duplicating
+their own credits in-page, under their level-select grids, which is what prompted consolidating
+everything onto one dedicated page). Both the masthead and footer are identical across the nine
+pages that carry them (every page above except `about.html`, which has no shared header/footer
+at all, and `reset-password.html`); `credits.html` itself carries the masthead+footer too.
 
 **Page-scoped theme files** (`hub.css`, `phonetics.css`, `reading.css`, `grammar.css`,
 `dictionary.css`, `dashboard.css`, `game.css`, `about.css`): each defines its own token block
@@ -89,18 +94,30 @@ derivative of `phonetics-data.js` — see its own header) is small enough to `Re
 needed; it's listed here mainly so a future edit to `phonetics-data.js`'s kanji membership
 remembers to regenerate it too, or the dictionary's phonetic-family links go stale.
 
-**Data licensing** (attributed in the shared footer's collapsed `.footer-credits` disclosure):
-Kanjium (CC BY-SA 4.0) for kanji & phonetic-family data, Tatoeba (CC BY / CC0) for example
-sentences, scriptin/kanji-frequency (CC BY 4.0) for usage ranking, elzup/jlpt-word-list for
-vocabulary curation, Pixabay Music (Content License) and Wikimedia Commons (CC0/CC BY/CC BY-SA)
-for game.html's background photos and soundtrack — full photo/music credits live in that same
-footer disclosure on `game.html` itself (other pages link to it). Never republish curated
+**Data licensing** (all attributed on `credits.html`, linked from every page's footer): Kanjium
+(CC BY-SA 4.0) for kanji & phonetic-family data, Tatoeba (CC BY / CC0) for example sentences,
+scriptin/kanji-frequency (CC BY 4.0) for usage ranking, elzup/jlpt-word-list for vocabulary
+curation, Pixabay Music (Content License) and Wikimedia Commons (CC0/CC BY/CC BY-SA) for Word
+Game's and Grammar Connect's background photos and soundtracks. Adding a new photo or music
+track to either tool means adding its credit to `credits.html` too — nothing else attributes
+them anymore now that the old page-local disclosures are gone. Never republish curated
 third-party content beyond what these licenses allow — only derive from raw data.
 
 **Supabase**: `supabase-config.js` holds the project URL and anon/publishable key (safe to
 expose — access is enforced by RLS policies in `supabase-schema.sql`, not key secrecy).
 `auth-shared.js` = auth/session plumbing used sitewide; `supabase-app.js` = comments,
 bookmarks, account-linked contact form (depends on `auth-shared.js` having run first).
+
+**PWA / `sw.js`**: precaches an `APP_SHELL` list (every page, its CSS, and its non-data JS —
+large per-tool data files are deliberately excluded, see the file's own header) via
+`cache.addAll()`, which is atomic — one 404 anywhere in the list fails the *entire* install
+silently (`pwa-register.js` swallows the rejection), so the PWA just never installs rather than
+installing-but-slightly-stale. Found this the hard way: `portfolio.css` lingered in the list
+long after that file was renamed to `hub.css`, and `dashboard.html`/`about.html`/`credits.html`
+plus their CSS/JS were simply never added when those pages shipped. **Adding a new page means
+adding it (and its CSS/JS/i18n-strings file) to `APP_SHELL` and bumping `CACHE_VERSION`** — the
+version bump forces every client through a fresh install with the corrected list rather than
+silently keeping whatever (possibly broken) cache they already had.
 
 ## Working conventions
 

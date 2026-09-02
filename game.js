@@ -16,8 +16,8 @@ const sb = window.supabaseClient;
 
 // Decorative board backgrounds: real castle/mountain photography, cycled per level so
 // adjacent levels don't repeat the same scene, rendered at low opacity behind the tiles (see
-// .board-bg-photo in game.css). All sourced from Wikimedia Commons; full attribution in the
-// "Photo credits" details block on the level-select screen and in the shared site footer.
+// .board-bg-photo in game.css). All sourced from Wikimedia Commons; full attribution on
+// credits.html (#word-game-photos), linked from every page's footer.
 // Licenses are a mix of CC0, public domain, and CC BY / CC BY-SA 2.5-4.0 -- never CC BY-NC or
 // anything requiring share-alike on the whole site, consistent with this project's existing
 // data-licensing discipline (see the Kanjium/Tatoeba notes elsewhere in this codebase).
@@ -40,9 +40,8 @@ const BOARD_BG_IMAGES = [
 // permits commercial/game use, no attribution required; only forbids reselling the bare audio
 // file standalone, which doesn't apply to embedding it as game background music). Re-encoded
 // from the 256kbps originals down to 112kbps to cut ~159MB of source audio to a fraction of
-// that -- background music doesn't need studio-grade fidelity. Full credits in the "Photo
-// credits" details block (renamed in spirit, not name, to cover both images and music) on the
-// level-select screen and in the shared site footer.
+// that -- background music doesn't need studio-grade fidelity. Full credits on credits.html
+// (#word-game-music), linked from every page's footer.
 const LOFI_JAZZ_POOL = [
     'sound/game-music/lofi-jazz-trio-sunny-cafe.mp3',
     'sound/game-music/lofi-jazz-study.mp3',

@@ -246,57 +246,6 @@ body:has(.grammar-main) {
 }
 
 /* ---------------------------------------------------------------------
-   Photo credits — reuses game.css's pattern (page-scoped, not shared in
-   style.css), recolored for this page's ink/washi palette.
-   --------------------------------------------------------------------- */
-.gc-select-content .photo-credits {
-    margin-top: 32px;
-    padding-top: 16px;
-    border-top: 1px solid rgba(241, 237, 224, 0.14);
-}
-
-.gc-select-content .photo-credits summary {
-    cursor: pointer;
-    color: var(--ink-soft);
-    font-size: 0.85rem;
-    font-weight: 600;
-    user-select: none;
-}
-
-.gc-select-content .photo-credits summary:hover { color: var(--ink); }
-
-.gc-select-content .photo-credits ul {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 6px 24px;
-    margin: 14px 0 0;
-    padding: 0;
-    font-size: 0.82rem;
-    color: var(--ink-soft);
-}
-
-.gc-select-content .photo-credits ul a { color: var(--ink); text-decoration: none; }
-.gc-select-content .photo-credits ul a:hover { color: var(--shu-light); text-decoration: underline; }
-
-.gc-select-content .photo-credits-note {
-    margin: 14px 0 0;
-    font-size: 0.78rem;
-    color: var(--ink-soft);
-    max-width: 62ch;
-}
-
-.gc-select-content .credits-subhead {
-    margin: 18px 0 0;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    color: var(--shu-light);
-}
-.gc-select-content .credits-subhead:first-of-type { margin-top: 14px; }
-
-/* ---------------------------------------------------------------------
    Match screen
    --------------------------------------------------------------------- */
 #gc-match-section {

@@ -3,19 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Japanese Word Match - Khan Japanese</title>
+    <title>Credits &amp; Sources - Khan Japanese</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="A Connect-2 style Japanese vocabulary matching game across all five JLPT levels, with example sentences and saved progress.">
-    <link rel="canonical" href="https://okow0714.github.io/Web-Portfolio/game.html">
+    <meta name="description" content="Data, photo, and music credits for Khan Japanese's Japanese-learning tools.">
+    <link rel="canonical" href="https://okow0714.github.io/Web-Portfolio/credits.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Khan Japanese">
-    <meta property="og:title" content="Japanese Word Match - Khan Japanese">
-    <meta property="og:description" content="A Connect-2 style Japanese vocabulary matching game across all five JLPT levels, with example sentences and saved progress.">
-    <meta property="og:url" content="https://okow0714.github.io/Web-Portfolio/game.html">
+    <meta property="og:title" content="Credits &amp; Sources - Khan Japanese">
+    <meta property="og:description" content="Data, photo, and music credits for Khan Japanese's Japanese-learning tools.">
+    <meta property="og:url" content="https://okow0714.github.io/Web-Portfolio/credits.html">
     <meta property="og:image" content="https://okow0714.github.io/Web-Portfolio/images/about/hero.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Japanese Word Match - Khan Japanese">
-    <meta name="twitter:description" content="A Connect-2 style Japanese vocabulary matching game across all five JLPT levels, with example sentences and saved progress.">
+    <meta name="twitter:title" content="Credits &amp; Sources - Khan Japanese">
+    <meta name="twitter:description" content="Data, photo, and music credits for Khan Japanese's Japanese-learning tools.">
     <meta name="twitter:image" content="https://okow0714.github.io/Web-Portfolio/images/about/hero.jpg">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="manifest" href="manifest.json">
@@ -24,12 +24,11 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="game.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700;900&family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Serif+JP:wght@600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="legal.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700;900&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Animated Background -->
     <div class="background-animation">
         <div class="floating-shape shape-1"></div>
         <div class="floating-shape shape-2"></div>
@@ -51,7 +50,7 @@
 
                 <nav class="header-nav" aria-label="Main">
                     <div class="nav-item">
-                        <a href="game.html" class="nav-trigger nav-current"><span data-i18n="nav.wordGame">Word Game</span><span class="nav-caret" aria-hidden="true">&#9662;</span></a>
+                        <a href="game.html" class="nav-trigger"><span data-i18n="nav.wordGame">Word Game</span><span class="nav-caret" aria-hidden="true">&#9662;</span></a>
                         <div class="nav-dropdown">
                             <a href="game.html" data-i18n="nav.allLevels">All Levels</a>
                             <a href="game.html?level=1" data-i18n="nav.n5Beginner">N5 · Beginner</a>
@@ -115,7 +114,6 @@
             </header>
         </div>
 
-        <!-- Auth Modal -->
         <div id="auth-modal" class="modal-overlay hidden">
             <div class="modal-card">
                 <button id="auth-modal-close" class="modal-close" type="button" aria-label="Close">&times;</button>
@@ -175,147 +173,106 @@
             </div>
         </div>
 
-        <main class="game-main">
-            <canvas id="ambient-canvas" class="game-fx-canvas"></canvas>
-            <canvas id="fx-canvas" class="game-fx-canvas"></canvas>
+        <main class="legal-main">
+            <h1 class="legal-title" data-i18n="credits.title">Credits &amp; Sources</h1>
+            <p class="legal-updated" data-i18n="credits.intro">Every dataset, photo, and music track used across this site's tools, credited in one place — the short version lives in every page's footer, this is the full version.</p>
 
-            <!-- Level select -->
-            <section id="level-select-section" class="game-section">
-                <div class="game-hud-row">
-                    <div>
-                        <h1 class="game-title">言葉合わせ<span class="game-title-sub" data-i18n="game.titleSub">Japanese Word Match</span></h1>
-                        <p class="game-subtitle" data-i18n="game.subtitle">Connect each Japanese word to its English meaning. Every level puts 20 pairs in play on a flat 4-minute clock (+20s per pair matched), and there are 10 levels per JLPT tier — N5 is beginner vocabulary, N1 is advanced. Kanji sharing a phonetic component can be chained together for a lightning-fast multi-clear, and 4 correct pairs in a row banks a powerup you can spend on a free clear or swapping in new words. Two mistakes bring a cleared pair back as a penalty, so slow down and look before you click.</p>
-                    </div>
-                    <button class="sound-toggle on" id="sound-toggle" type="button" aria-pressed="true" title="Turn sound off">
-                        <span id="sound-icon" aria-hidden="true">&#128266;</span>
-                    </button>
-                </div>
-                <p id="game-guest-hint" class="game-guest-hint hidden" data-i18n="game.guestHint">Log in to save your best times and completions across visits.</p>
-                <h2 class="sr-only" data-i18n="game.levels">Levels</h2>
-                <div class="jlpt-tabs" id="jlpt-tabs" role="tablist" aria-label="JLPT level"></div>
-                <div class="level-grid" id="level-grid"></div>
+            <section class="legal-section">
+                <h2 data-i18n="credits.dataSources.h">Dictionary &amp; language data</h2>
+                <ul>
+                    <li><a href="https://github.com/mifunetoshiro/kanjium" target="_blank" rel="noopener">Kanjium</a> — CC BY-SA 4.0 · <span data-i18n="credits.kanjiumMeta">kanji &amp; phonetic-family data</span></li>
+                    <li><a href="https://tatoeba.org" target="_blank" rel="noopener">Tatoeba</a> — CC BY / CC0 · <span data-i18n="credits.tatoebaMeta">example sentences</span></li>
+                    <li><a href="https://github.com/scriptin/kanji-frequency" target="_blank" rel="noopener">scriptin/kanji-frequency</a> — CC BY 4.0 · <span data-i18n="credits.kanjiFreqMeta">usage ranking</span></li>
+                    <li><a href="https://github.com/elzup/jlpt-word-list" target="_blank" rel="noopener">elzup/jlpt-word-list</a> — <span data-i18n="footer.vocabCuration">vocabulary curation</span></li>
+                </ul>
             </section>
 
-            <!-- Board -->
-            <section id="board-section" class="game-section hidden">
-                <div class="board-toolbar">
-                    <button id="board-back-btn" class="ghost-btn" type="button"><span aria-hidden="true">&larr;</span> <span data-i18n="game.levels">Levels</span></button>
-                    <div class="board-level-label" id="board-level-label"></div>
-                    <div class="board-stats">
-                        <span id="board-timer">05:00</span>
-                        <span id="board-pairs">0 / 10 pairs</span>
-                        <span id="board-moves">0 moves</span>
-                        <span class="hud-stat">
-                            <span class="hud-label" data-i18n="game.score">Score</span>
-                            <span class="hud-value" id="score-value">0</span>
-                        </span>
-                        <span class="hud-stat streak-stat">
-                            <span class="hud-label" data-i18n="game.streak">Streak</span>
-                            <span class="streak-meter"><span class="streak-fill" id="streak-fill"></span></span>
-                        </span>
-                    </div>
-                    <div class="powerup-controls" id="powerup-controls">
-                        <button id="powerup-clear-btn" class="powerup-btn" type="button" disabled>
-                            <span class="powerup-icon" aria-hidden="true">&#10022;</span>
-                            <span class="powerup-label" data-i18n="game.powerupClearBtn">Clear</span>
-                            <span class="powerup-charge-badge" id="powerup-clear-badge">0</span>
-                        </button>
-                        <button id="powerup-swap-btn" class="powerup-btn" type="button" disabled>
-                            <span class="powerup-icon" aria-hidden="true">&#8646;</span>
-                            <span class="powerup-label" data-i18n="game.powerupSwapBtn">Swap</span>
-                            <span class="powerup-charge-badge" id="powerup-swap-badge">0</span>
-                        </button>
-                    </div>
-                    <button class="sound-toggle on" id="board-sound-toggle" type="button" aria-pressed="true" title="Turn sound off">
-                        <span id="board-sound-icon" aria-hidden="true">&#128266;</span>
-                    </button>
-                    <button id="board-shuffle-btn" class="ghost-btn" type="button" data-i18n="game.shuffle">Shuffle</button>
-                </div>
-                <div class="board-layout">
-                    <div class="board-wrap" id="board-wrap">
-                        <div id="tile-grid" class="tile-grid"></div>
-                    </div>
-                    <div id="example-panel" class="example-panel">
-                        <div class="example-panel-inner">
-                            <!-- Wide layout only (see .panel-wide-only, hidden under the
-                                 968px breakpoint alongside the panel reverting to a fixed
-                                 bottom bar) -- mirrors #board-pairs and the toolbar streak
-                                 meter, doesn't replace them. -->
-                            <div class="panel-block panel-progress panel-wide-only" id="panel-progress">
-                                <h3 data-i18n="game.progress">Progress</h3>
-                                <p id="panel-pairs-mirror" class="panel-progress-pairs">0 / 10 pairs</p>
-                                <span class="panel-progress-label" data-i18n="game.streak">Streak</span>
-                                <span class="streak-meter"><span id="panel-streak-fill" class="streak-fill"></span></span>
-                            </div>
-                            <!-- Wide layout only -- tracks phonetic "lightning connect" families
-                                 cleared this round (see familiesFound in game.js). -->
-                            <div class="panel-block panel-families panel-wide-only" id="panel-families">
-                                <h3 data-i18n="game.familiesFound">Families Found</h3>
-                                <p id="families-empty" class="families-empty" data-i18n="game.familiesEmptyHint">Chain 2+ words sharing a phonetic component for a lightning-fast clear.</p>
-                                <div id="families-found-list" class="families-found-list"></div>
-                            </div>
-                            <div class="panel-block panel-example">
-                                <h3 data-i18n="game.lastMatch">Last Match</h3>
-                                <p id="example-empty" class="example-empty" data-i18n="game.exampleEmptyHint">Connect a pair to see an example sentence here.</p>
-                                <div id="example-content" class="example-content hidden">
-                                    <div class="example-head">
-                                        <span id="example-jp" class="example-jp"></span>
-                                        <span id="example-reading" class="example-reading"></span>
-                                        <span id="example-meanings" class="example-meanings"></span>
-                                    </div>
-                                    <div id="example-sentence-block" class="example-sentence-block">
-                                        <p id="example-sentence-jp" class="example-sentence-jp"></p>
-                                        <p id="example-sentence-en" class="example-sentence-en"></p>
-                                    </div>
-                                    <p id="example-none" class="example-none hidden" data-i18n="game.exampleNoneHint">No example sentence found for this word in the source data.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <section class="legal-section" id="word-game-photos">
+                <h2 data-i18n="credits.wgPhotos.h">Word Game — background photography</h2>
+                <ul>
+                    <li><a href="https://commons.wikimedia.org/wiki/File:Himeji_Castle_0804_1.jpg" target="_blank" rel="noopener">Himeji Castle</a> — Gorgo, public domain</li>
+                    <li><a href="https://commons.wikimedia.org/wiki/File:Matsumoto_Castle05s5s4592.jpg" target="_blank" rel="noopener">Matsumoto Castle</a> — 663highland, CC BY 2.5</li>
+                    <li><a href="https://commons.wikimedia.org/wiki/File:Osaka_Castle_01bs3200.jpg" target="_blank" rel="noopener">Osaka Castle</a> — 663highland, CC BY 2.5</li>
+                    <li><a href="https://commons.wikimedia.org/wiki/File:Kumamoto_Castle_07n3200.jpg" target="_blank" rel="noopener">Kumamoto Castle</a> — 663highland, CC BY 2.5</li>
+                    <li><a href="https://commons.wikimedia.org/wiki/File:Nagoya_castle1.JPG" target="_blank" rel="noopener">Nagoya Castle</a> — Bariston, CC BY-SA 4.0</li>
+                    <li><a href="https://commons.wikimedia.org/wiki/File:Hikonejyo.jpg" target="_blank" rel="noopener">Hikone Castle</a> — <span style="font-family: 'Noto Serif JP', 'Hiragino Mincho ProN', 'Yu Mincho', 'MS Mincho', serif;">ロロ</span> (Roro), CC BY-SA 3.0</li>
+                    <li><a href="https://commons.wikimedia.org/wiki/File:Mount_Fuji,_Japan_(Unsplash).jpg" target="_blank" rel="noopener">Mount Fuji (aerial)</a> — Hghask Ekorb, CC0</li>
+                    <li><a href="https://commons.wikimedia.org/wiki/File:Lake_Kawaguchiko_Sakura_Mount_Fuji_4.JPG" target="_blank" rel="noopener">Mount Fuji &amp; Lake Kawaguchiko</a> — Midori, CC BY 3.0</li>
+                    <li><a href="https://commons.wikimedia.org/wiki/File:Mount_Tate_and_Mount_Tsurugi_from_Mount_Asahi_2000-07-30.jpg" target="_blank" rel="noopener">Mount Tate &amp; Mount Tsurugi</a> — Alpsdake, CC0</li>
+                    <li><a href="https://commons.wikimedia.org/wiki/File:Shiroumadake_from_maruyama_26_2000_7_30.jpg" target="_blank" rel="noopener">Mount Shirouma</a> — Alpsdake, public domain</li>
+                </ul>
+                <p data-i18n="credits.wgPhotos.note">All sourced from Wikimedia Commons, resized and re-compressed for use here; no other changes made. Each level uses one of the ten photos above, cycling every 10 levels, shown faded behind the board.</p>
             </section>
 
-            <div class="fx-text-layer" id="fx-text-layer"></div>
+            <section class="legal-section" id="word-game-music">
+                <h2 data-i18n="credits.wgMusic.h">Word Game — background music</h2>
+                <ul>
+                    <li><a href="https://pixabay.com/music/modern-jazz-soul-jazz-restaurant-568171/" target="_blank" rel="noopener">Soul Jazz Restaurant</a></li>
+                    <li><a href="https://pixabay.com/music/modern-jazz-soul-jazz-coffee-shop-568168/" target="_blank" rel="noopener">Soul Jazz Coffee Shop</a></li>
+                    <li><a href="https://pixabay.com/music/modern-jazz-soul-jazz-study-session-568182/" target="_blank" rel="noopener">Soul Jazz Study Session</a></li>
+                    <li><a href="https://pixabay.com/music/modern-jazz-soul-jazz-rainy-night-568174/" target="_blank" rel="noopener">Soul Jazz Rainy Night</a></li>
+                    <li><a href="https://pixabay.com/music/modern-jazz-soul-jazz-midnight-club-568183/" target="_blank" rel="noopener">Soul Jazz Midnight Club</a></li>
+                    <li><a href="https://pixabay.com/music/modern-jazz-soul-jazz-sunny-cafe-568181/" target="_blank" rel="noopener">Soul Jazz Sunny Cafe</a></li>
+                    <li><a href="https://pixabay.com/music/modern-jazz-soul-jazz-cocktail-bar-568178/" target="_blank" rel="noopener">Soul Jazz Cocktail Bar</a></li>
+                    <li><a href="https://pixabay.com/music/modern-jazz-jazz-study-study-music-564266/" target="_blank" rel="noopener">Jazz Study — Study Music</a></li>
+                    <li><a href="https://pixabay.com/music/modern-jazz-study-jazz-study-music-564277/" target="_blank" rel="noopener">Study Jazz — Study Music</a></li>
+                    <li><a href="https://pixabay.com/music/modern-jazz-jazz-study-music-563581/" target="_blank" rel="noopener">Jazz Study Music</a></li>
+                    <li><a href="https://pixabay.com/music/modern-jazz-saxophone-jazz-study-session-567544/" target="_blank" rel="noopener">Saxophone Jazz Study Session</a></li>
+                    <li><a href="https://pixabay.com/music/modern-jazz-samba-jazz-study-session-567536/" target="_blank" rel="noopener">Samba Jazz Study Session</a></li>
+                    <li><a href="https://pixabay.com/music/modern-jazz-jazz-study-session-music-556241/" target="_blank" rel="noopener">Jazz Study Session Music</a></li>
+                    <li><a href="https://pixabay.com/music/modern-jazz-jazz-lounge-study-music-563575/" target="_blank" rel="noopener">Jazz Lounge Study Music</a></li>
+                    <li><a href="https://pixabay.com/music/modern-jazz-swing-jazz-study-session-568162/" target="_blank" rel="noopener">Swing Jazz Study Session</a></li>
+                    <li><a href="https://pixabay.com/music/modern-jazz-smooth-jazz-restaurant-568175/" target="_blank" rel="noopener">Smooth Jazz Restaurant</a></li>
+                    <li><a href="https://pixabay.com/music/modern-jazz-smooth-jazz-coffee-shop-music-564264/" target="_blank" rel="noopener">Smooth Jazz — Coffee Shop Music</a></li>
+                    <li><a href="https://pixabay.com/music/bossa-nova-smooth-jazz-lounge-relaxing-evening-537465/" target="_blank" rel="noopener">Smooth Jazz Lounge — Relaxing Evening</a></li>
+                    <li><a href="https://pixabay.com/music/modern-jazz-smooth-jazz-midnight-club-568179/" target="_blank" rel="noopener">Smooth Jazz Midnight Club</a></li>
+                    <li><a href="https://pixabay.com/music/modern-jazz-smooth-jazz-coffee-shop-568173/" target="_blank" rel="noopener">Smooth Jazz Coffee Shop</a></li>
+                    <li><a href="https://pixabay.com/music/modern-jazz-smooth-jazz-rainy-night-568169/" target="_blank" rel="noopener">Smooth Jazz Rainy Night</a></li>
+                    <li><a href="https://pixabay.com/music/modern-jazz-smooth-jazz-study-session-568172/" target="_blank" rel="noopener">Smooth Jazz Study Session</a></li>
+                    <li><a href="https://pixabay.com/music/modern-jazz-smooth-jazz-cocktail-bar-568176/" target="_blank" rel="noopener">Smooth Jazz Cocktail Bar</a></li>
+                    <li><a href="https://pixabay.com/music/lofi-lofi-jazz-trio-sunny-cafe-560051/" target="_blank" rel="noopener">Lofi Jazz Trio Sunny Cafe</a></li>
+                    <li><a href="https://pixabay.com/music/modern-jazz-lofi-jazz-study-music-564256/" target="_blank" rel="noopener">Lofi Jazz — Study Music</a></li>
+                    <li><a href="https://pixabay.com/music/cafe-lofi-jazz-retro-coffee-shop-560042/" target="_blank" rel="noopener">Lofi Jazz Retro Coffee Shop</a></li>
+                    <li><a href="https://pixabay.com/music/lofi-lofi-jazz-melody-restaurant-560048/" target="_blank" rel="noopener">Lofi Jazz Melody Restaurant</a></li>
+                    <li><a href="https://pixabay.com/music/lofi-lofi-jazz-soulful-midnight-club-560063/" target="_blank" rel="noopener">Lofi Jazz Soulful Midnight Club</a></li>
+                    <li><a href="https://pixabay.com/music/traditional-jazz-lofi-jazz-swing-cocktail-bar-560067/" target="_blank" rel="noopener">Lofi Jazz Swing Cocktail Bar</a></li>
+                    <li><a href="https://pixabay.com/music/electronic-lofi-jazz-smooth-study-session-560046/" target="_blank" rel="noopener">Lofi Jazz Smooth Study Session</a></li>
+                    <li><a href="https://pixabay.com/music/traditional-jazz-18021603-jazzy-pop-piano-japan-city-155528/" target="_blank" rel="noopener">Jazzy Pop Piano / Japan City</a> — WELC0MEИ0</li>
+                </ul>
+                <p data-i18n="credits.wgMusic.note">All 31 tracks via <a href="https://pixabay.com/music/" target="_blank" rel="noopener">Pixabay Music</a>, used under the Pixabay Content License (free for commercial use, no attribution required — credited here anyway). Re-encoded to 112kbps for file size; no other changes made. Soul jazz plays on N1, jazz-study on N2, smooth jazz on N3, and lofi jazz on N4 &amp; N5 (shared pool), cycling by level within each tier; the 30 tier tracks are by Alex-Beats (Alex Morgan), except Jazzy Pop Piano / Japan City by WELC0MEИ0, which plays on the level-select screen while browsing between levels.</p>
+            </section>
+
+            <section class="legal-section" id="grammar-connect-photos">
+                <h2 data-i18n="credits.gcPhotos.h">Grammar Connect — background photography</h2>
+                <ul>
+                    <li><a href="https://commons.wikimedia.org/wiki/File:Tokyo_by_night_2011.jpg" target="_blank" rel="noopener">Tokyo by Night</a> — Nalilord, CC BY-SA 3.0</li>
+                </ul>
+                <p data-i18n="credits.gcPhotos.note">Sourced from Wikimedia Commons, resized and re-compressed for use here; no other changes made.</p>
+            </section>
+
+            <section class="legal-section" id="grammar-connect-music">
+                <h2 data-i18n="credits.gcMusic.h">Grammar Connect — background music</h2>
+                <ul>
+                    <li>Cozy Lofi Chill — Soft Vlog Beat, Smooth Relaxation — Music_for_Videos</li>
+                    <li>Ancient Garden — Zen Lofi — Turning Pages</li>
+                    <li>Zen Drift — Turning Pages</li>
+                    <li>Japanese Lofi Beat — Cozy Chill Vlog, Soft and Smooth — Music_for_Videos</li>
+                    <li>Lofimercurius — lofi_nemuko</li>
+                    <li>Lost Train — Papulina (Ivan Luzan)</li>
+                    <li>Slowburn — Relaxing Lofi Background Music — joelfazhari</li>
+                    <li>Japanese Lofi Jazz — Calm Piano Beats, Chill and Smooth — Music_for_Videos</li>
+                    <li>Japan — Japanese Music — Mirostar</li>
+                    <li>Asian Lofi Hip Hop 04 — VJGalaxy</li>
+                    <li>Asian Lofi Hip Hop 08 — VJGalaxy</li>
+                    <li>Asian Lofi Hip Hop 10 — VJGalaxy</li>
+                    <li>Fireflies in the City (1 Min Edit) — Japanese Fusion Lofi — Kaazoom</li>
+                    <li>Petals on the Water (Full Version) — Japanese Fusion Lofi — Kaazoom</li>
+                    <li>Tokyo Bridge Dream — Lofi Chill Music with Bells — Monkey Bandito</li>
+                    <li>Zen Garden Beats — eggshy</li>
+                </ul>
+                <p data-i18n="credits.gcMusic.note">All 16 tracks via <a href="https://pixabay.com/music/" target="_blank" rel="noopener">Pixabay Music</a>, used under the Pixabay Content License (free for commercial use, no attribution required — credited here anyway). Three tracks cycle per JLPT tier (N5 through N1); Zen Garden Beats by eggshy plays on the level-select screen while browsing between levels.</p>
+            </section>
         </main>
-
-        <!-- Start Modal: shown at the beginning of every match so jumping straight into a
-             board (e.g. from the header dropdown) doesn't start the timer before the player
-             is ready. -->
-        <div id="start-modal" class="modal-overlay hidden">
-            <div class="modal-card">
-                <h3 id="start-modal-title">N5 · Beginner</h3>
-                <p id="start-modal-desc" data-i18n="game.startModalDesc">Connect each Japanese word to its English meaning. 20 pairs, 4 minutes. The timer starts when you hit Start.</p>
-                <div class="result-actions">
-                    <button id="start-modal-btn" class="auth-btn" type="button" data-i18n="game.startMatch">Start Match</button>
-                    <button id="start-modal-back-btn" class="auth-btn auth-btn-outline" type="button" data-i18n="game.backToLevels">Back to Levels</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Result Modal -->
-        <div id="result-modal" class="modal-overlay hidden">
-            <div class="modal-card">
-                <button id="result-modal-close" class="modal-close" type="button" aria-label="Close">&times;</button>
-                <h3 id="result-title">Level Complete!</h3>
-                <div class="result-stats">
-                    <div class="result-stat">
-                        <span class="result-label" data-i18n="game.time">Time</span>
-                        <span id="result-time" class="result-value"></span>
-                    </div>
-                    <div class="result-stat">
-                        <span class="result-label" data-i18n="game.moves">Moves</span>
-                        <span id="result-moves" class="result-value"></span>
-                    </div>
-                </div>
-                <p id="result-best" class="result-best"></p>
-                <p id="result-save-status" class="result-save-status hidden"></p>
-                <div class="result-actions">
-                    <button id="result-login-btn" class="auth-btn hidden" type="button" data-i18n="game.logInToSave">Log In to Save</button>
-                    <button id="result-replay-btn" class="auth-btn" type="button">Play Again</button>
-                    <button id="result-levels-btn" class="auth-btn auth-btn-outline" type="button" data-i18n="game.backToLevels">Back to Levels</button>
-                </div>
-            </div>
-        </div>
     </div>
 
     <footer class="site-footer">
@@ -361,14 +318,11 @@
     </footer>
 
     <script src="i18n-strings-shared.js"></script>
-    <script src="game-i18n-strings.js"></script>
+    <script src="credits-i18n-strings.js"></script>
     <script src="i18n.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <script src="supabase-config.js"></script>
     <script src="auth-shared.js"></script>
-    <script src="game-words.js"></script>
-    <script src="dictionary-data.js"></script>
-    <script src="game.js"></script>
     <script src="pwa-register.js"></script>
 </body>
 

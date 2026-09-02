@@ -554,29 +554,8 @@ async function saveProgress(session, result) {
     }
 })();
 
-// ---------------------------------------------------------------------------
-// Photo & music credits
-// ---------------------------------------------------------------------------
-document.getElementById('gc-photo-credits-list').innerHTML = `
-    <li><a href="https://commons.wikimedia.org/wiki/File:Tokyo_by_night_2011.jpg" target="_blank" rel="noopener">Tokyo by Night</a> — Nalilord, CC BY-SA 3.0</li>
-`;
-document.getElementById('gc-music-credits-list').innerHTML = `
-    <li>Cozy Lofi Chill — Soft Vlog Beat, Smooth Relaxation — Music_for_Videos</li>
-    <li>Ancient Garden — Zen Lofi — Turning Pages</li>
-    <li>Zen Drift — Turning Pages</li>
-    <li>Japanese Lofi Beat — Cozy Chill Vlog, Soft and Smooth — Music_for_Videos</li>
-    <li>Lofimercurius — lofi_nemuko</li>
-    <li>Lost Train — Papulina (Ivan Luzan)</li>
-    <li>Slowburn — Relaxing Lofi Background Music — joelfazhari</li>
-    <li>Japanese Lofi Jazz — Calm Piano Beats, Chill and Smooth — Music_for_Videos</li>
-    <li>Japan — Japanese Music — Mirostar</li>
-    <li>Asian Lofi Hip Hop 04 — VJGalaxy</li>
-    <li>Asian Lofi Hip Hop 08 — VJGalaxy</li>
-    <li>Asian Lofi Hip Hop 10 — VJGalaxy</li>
-    <li>Fireflies in the City (1 Min Edit) — Japanese Fusion Lofi — Kaazoom</li>
-    <li>Petals on the Water (Full Version) — Japanese Fusion Lofi — Kaazoom</li>
-    <li>Tokyo Bridge Dream — Lofi Chill Music with Bells — Monkey Bandito</li>
-`;
+// Photo & music credits for this page live on credits.html (#grammar-connect-photos /
+// #grammar-connect-music), linked from every page's footer -- no longer rendered in-page here.
 
 // ---------------------------------------------------------------------------
 // Wiring

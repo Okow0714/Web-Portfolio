@@ -1,29 +1,42 @@
 // Service worker for the Khan Japanese PWA. Precaches the app shell (pages, styles, non-data
 // JS) so the site opens instantly and works offline; the large per-tool data files
-// (phonetics-data.js 2.8MB, reading-texts.js 1.1MB, game-words.js 589KB, grammar-data.js
-// 543KB) are deliberately left out of the precache list -- eagerly downloading ~5MB on first
-// install would be a bad experience on mobile data. Those get cached lazily instead, the first
-// time each one is actually requested (see the runtime fetch handler below), so only the tools
-// someone actually opens end up cached.
-const CACHE_VERSION = 'khan-japanese-v1';
+// (phonetics-data.js ~2.8MB, game-words.js ~1.4MB, mnjp-data.js ~1.4MB, reading-texts.js
+// ~1.1MB, grammar-data.js ~545KB, dictionary-data.js ~185KB) are deliberately left out of the
+// precache list -- eagerly downloading several MB on first install would be a bad experience on
+// mobile data. Those get cached lazily instead, the first time each one is actually requested
+// (see the runtime fetch handler below), so only the tools someone actually opens end up cached.
+//
+// Bump CACHE_VERSION whenever APP_SHELL's file list changes (new page added, a file renamed) --
+// install() below uses cache.addAll(), which is atomic: one 404 in the list (this happened for
+// real -- portfolio.css lingered here well after that file was renamed to hub.css) fails the
+// whole install silently (pwa-register.js swallows the rejection), leaving the PWA never
+// actually installed rather than installed-but-slightly-stale. A version bump forces every
+// client through a fresh install with the corrected list; activate() then deletes the old,
+// possibly-broken cache.
+const CACHE_VERSION = 'khan-japanese-v2';
 
 const APP_SHELL = [
     './',
     './index.html',
+    './about.html',
     './game.html',
     './phonetics.html',
     './reading.html',
     './grammar.html',
     './dictionary.html',
+    './dashboard.html',
+    './credits.html',
     './privacy.html',
     './terms.html',
     './style.css',
-    './portfolio.css',
+    './hub.css',
+    './about.css',
     './game.css',
     './phonetics.css',
     './reading.css',
     './grammar.css',
     './dictionary.css',
+    './dashboard.css',
     './legal.css',
     './manifest.json',
     './favicon.svg',
@@ -36,16 +49,22 @@ const APP_SHELL = [
     './auth-shared.js',
     './supabase-config.js',
     './supabase-app.js',
+    './hub-home.js',
+    './about.js',
     './game.js',
     './phonetics.js',
     './reading.js',
     './grammar.js',
     './dictionary.js',
+    './dashboard.js',
+    './hub-i18n-strings.js',
     './game-i18n-strings.js',
     './phonetics-i18n-strings.js',
     './reading-i18n-strings.js',
     './grammar-i18n-strings.js',
     './dictionary-i18n-strings.js',
+    './dashboard-i18n-strings.js',
+    './credits-i18n-strings.js',
     './privacy-i18n-strings.js',
     './terms-i18n-strings.js',
 ];
