@@ -28,4 +28,5 @@ Object.assign(window.I18N_STRINGS, {
     'dict.sourceKangowago': { en: 'Kango ⇄ Wago', mn: 'Канго ⇄ Ваго' },
     'dict.sourceCore': { en: 'Core N5', mn: 'N5 үндсэн' },
     'dict.alsoInKangowago': { en: 'Also in Kango ⇄ Wago, paired with {word}', mn: 'Канго ⇄ Ваго-д {word}-тай хослон орсон байдаг' },
+    'dict.phoneticFamily': { en: 'Phonetic family', mn: 'Дуудлагын бүлэг' },
 });

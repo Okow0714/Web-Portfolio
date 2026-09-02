@@ -83,7 +83,11 @@ lazy-loaded) are JS files assigning one `const` to a JSON-shaped literal. Query 
 `grep`/`node -e`, not the Read tool. To bulk-edit, parse with `JSON.parse(text after "const
 NAME = ", trailing ";" stripped)`, edit, `JSON.stringify(data, null, 4)` back — this round-trips
 cleanly since the files are strict JSON. (Sizes drift as content grows — treat them as
-ballpark, not exact; the point is these are all too big to `Read` in one shot.)
+ballpark, not exact; the point is these are all too big to `Read` in one shot.) `phonetics-
+kanji-index.js` (~65KB, `PHONETICS_KANJI_INDEX`, a `{kanji: {phonetic, reading, count}}`
+derivative of `phonetics-data.js` — see its own header) is small enough to `Read` directly if
+needed; it's listed here mainly so a future edit to `phonetics-data.js`'s kanji membership
+remembers to regenerate it too, or the dictionary's phonetic-family links go stale.
 
 **Data licensing** (attributed in the shared footer's collapsed `.footer-credits` disclosure):
 Kanjium (CC BY-SA 4.0) for kanji & phonetic-family data, Tatoeba (CC BY / CC0) for example

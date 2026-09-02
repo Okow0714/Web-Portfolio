@@ -222,6 +222,19 @@ function showFamilyTree(levelKey, family) {
     requestAnimationFrame(() => {
         layoutRadialTree();
         drawTreeLines();
+        // A page-load deep link (phonetics.html?kanji=...) auto-opens its target kanji's detail
+        // popover once positions are final -- tied to this render completing rather than a fixed
+        // delay, since i18n.js's sitelangchange fires once on every load (even without a real
+        // language switch, see i18n.js's applyLang) and re-runs showFamilyTree (see the
+        // sitelangchange listener below) shortly after this same initial render, tearing down
+        // and rebuilding the exact chips/popover just clicked. Deliberately never cleared to a
+        // one-shot flag: since that second render is guaranteed to be the last one for a given
+        // load, only re-applying unconditionally on every render (rather than once and hoping
+        // it "wins") reliably survives it, regardless of which render finishes first.
+        if (deepLinkKanji && family.members.some(m => m.kanji === deepLinkKanji)) {
+            const chip = wrap.querySelector(`.tree-chip[data-kanji="${CSS.escape(deepLinkKanji)}"]`);
+            if (chip) chip.click();
+        }
     });
     startTreeResize();
 }
@@ -526,13 +539,37 @@ document.getElementById('phonetics-info-modal').addEventListener('click', (e) =>
     if (e.target.id === 'phonetics-info-modal') closeInfoModal();
 });
 
-renderLevelSidebar();
-// Default to N5 on load so the content pane never sits blank waiting for a
-// pick — the sidebar itself makes it obvious four other levels are one
-// click away.
-showFamilyList(LEVEL_META[0].key);
+// ---------------------------------------------------------------------------
+// Deep link from the dictionary's phonetic-family chips: phonetics.html?kanji=<kanji> jumps
+// straight to that kanji's family and opens its detail popover, instead of landing on the
+// default N5 family list. A family is re-listed under every level one of its members belongs
+// to (see phonetics-data.js's own header comment) with an identical member array each time, so
+// the first level found (N5 first, per LEVEL_META's order) is as good as any other -- there's
+// no "more correct" level to prefer.
+// ---------------------------------------------------------------------------
+function findFamilyForKanji(kanji) {
+    for (const level of LEVEL_META) {
+        const family = (PHONETICS_DATA[level.key] || []).find(f => f.members.some(m => m.kanji === kanji));
+        if (family) return { levelKey: level.key, family };
+    }
+    return null;
+}
 
-// Show the "what's a phonetic component?" explainer automatically on entering
-// this page, in addition to it staying reachable later via the H1/info-button
-// triggers above — it's a one-time-per-load primer, not tied to browsing.
-openInfoModal();
+const deepLinkKanji = new URLSearchParams(window.location.search).get('kanji');
+const deepLinkTarget = deepLinkKanji ? findFamilyForKanji(deepLinkKanji) : null;
+
+renderLevelSidebar();
+if (deepLinkTarget) {
+    showFamilyTree(deepLinkTarget.levelKey, deepLinkTarget.family);
+} else {
+    // Default to N5 on load so the content pane never sits blank waiting for a
+    // pick — the sidebar itself makes it obvious four other levels are one
+    // click away.
+    showFamilyList(LEVEL_META[0].key);
+
+    // Show the "what's a phonetic component?" explainer automatically on entering
+    // this page, in addition to it staying reachable later via the H1/info-button
+    // triggers above — it's a one-time-per-load primer, not tied to browsing. Skipped on a
+    // deep link, since the visitor arrived with clear intent, not to browse cold.
+    openInfoModal();
+}

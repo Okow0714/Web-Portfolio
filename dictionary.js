@@ -101,6 +101,36 @@ function matchesMnjpSearch(entry, q) {
         (entry.glosses && entry.glosses.toLowerCase().includes(q));
 }
 
+// ---------------------------------------------------------------------------
+// Phonetic family cross-links -- for any kanji in an entry that Phonetics Family covers, a
+// small chip linking to that kanji's family on phonetics.html (see phonetics-kanji-index.js,
+// a lightweight {kanji: {phonetic, reading, count}} derived from phonetics-data.js, cheap
+// enough to load eagerly here unlike the ~2.8MB full file). Scans one or more source strings --
+// a dictionary entry may split its kanji text across separate fields (kango.text/wago.text) --
+// and dedupes by kanji so a repeated character only gets one chip.
+// ---------------------------------------------------------------------------
+function phoneticChipsHtml(...texts) {
+    if (typeof PHONETICS_KANJI_INDEX === 'undefined') return '';
+    const seen = new Set();
+    const chips = [];
+    texts.forEach(text => {
+        if (!text) return;
+        for (const ch of text) {
+            if (seen.has(ch) || !PHONETICS_KANJI_INDEX[ch]) continue;
+            seen.add(ch);
+            const info = PHONETICS_KANJI_INDEX[ch];
+            chips.push(`<a class="phonetic-chip" href="phonetics.html?kanji=${encodeURIComponent(ch)}">
+                <span class="kanji">${escapeHtml(ch)}</span><span class="reading">${escapeHtml(info.reading)}</span>
+            </a>`);
+        }
+    });
+    if (!chips.length) return '';
+    return `<div class="phonetic-chip-row">
+        <span class="phonetic-chip-label">${escapeHtml(window.t('dict.phoneticFamily'))}</span>
+        ${chips.join('')}
+    </div>`;
+}
+
 // Builds the expanded detail (source tags, extra glosses, example sentence, kango/wago
 // cross-link) -- called lazily on first expand rather than for every one of the 3,427 rows up
 // front, since most of them are never opened in a given visit.
@@ -119,7 +149,7 @@ function buildMnjpDetail(entry) {
         const partner = `${entry.kangowago.text} (${escapeHtml(window.t(entry.kangowago.role === 'kango' ? 'dict.kango' : 'dict.wago'))})`;
         kangowagoHtml = `<p class="mnjp-kango-link">${window.tf('dict.alsoInKangowago', { word: partner })}</p>`;
     }
-    return `<div class="mnjp-source-tags">${sourceTags}</div>${glossesHtml}${exampleHtml}${kangowagoHtml}`;
+    return `<div class="mnjp-source-tags">${sourceTags}</div>${glossesHtml}${exampleHtml}${kangowagoHtml}${phoneticChipsHtml(entry.jp)}`;
 }
 
 function renderMnjpEntry(entry) {
@@ -274,6 +304,7 @@ function renderEntry(entry) {
             <span class="dict-pos">${escapeHtml(window.t(POS_LABEL_KEY[entry.pos] || 'dict.posAll'))}</span>
         </div>
         ${honorificsHtml}
+        ${phoneticChipsHtml(entry.kango.text, entry.wago.text)}
     `;
     return card;
 }
