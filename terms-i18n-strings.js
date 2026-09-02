@@ -1,11 +1,12 @@
 // Terms of Service (terms.html)-specific translation strings. Extends window.I18N_STRINGS,
 // which i18n-strings-shared.js must have already created (loaded first in terms.html).
-// Reuses 'privacy.lastUpdated' and 'privacy.contact.h' from privacy-i18n-strings.js -- NOT
-// loaded on this page, so those two keys are also defined directly below as a safety net in
-// case privacy-i18n-strings.js's ordering ever changes; harmless duplication either way since
-// Object.assign here runs after i18n-strings-shared.js regardless.
+// 'privacy.contact.h' is reused from privacy-i18n-strings.js, which is NOT loaded on this
+// page, so it's defined directly below too; harmless duplication since Object.assign here runs
+// after i18n-strings-shared.js regardless. The last-updated date is deliberately this page's
+// OWN key rather than privacy's: the two documents change independently, and sharing one key
+// meant editing the privacy policy silently restamped this page as "updated" as well.
 Object.assign(window.I18N_STRINGS, {
-    'privacy.lastUpdated': { en: 'Last updated: July 31, 2026', mn: 'Сүүлд шинэчилсэн: 2026 оны 7-р сарын 31' },
+    'terms.lastUpdated': { en: 'Last updated: July 31, 2026', mn: 'Сүүлд шинэчилсэн: 2026 оны 7-р сарын 31' },
     'privacy.contact.h': { en: 'Contact', mn: 'Холбоо барих' },
 
     'terms.title': { en: 'Terms of Service', mn: 'Үйлчилгээний нөхцөл' },

@@ -26,6 +26,6 @@ Object.assign(window.I18N_STRINGS, {
     'dash.continue': { en: 'Continue →', mn: 'Үргэлжлүүлэх →' },
 
     'dash.accountTitle': { en: 'Account settings', mn: 'Бүртгэлийн тохиргоо' },
-    'dash.accountBody': { en: 'Password, sessions, and account deletion are managed from the account menu.', mn: 'Нууц үг, сешн, бүртгэл устгах зэргийг бүртгэлийн цэснээс удирдана.' },
+    'dash.accountBody': { en: 'Your email, language, and account deletion are managed from the account menu. Password resets go through "Forgot password?" on the log-in screen.', mn: 'И-мэйл, хэл, бүртгэл устгах зэргийг бүртгэлийн цэснээс удирдана. Нууц үгээ сэргээхийг нэвтрэх цонхны "Нууц үгээ мартсан уу?" холбоосоор хийнэ.' },
     'dash.openAccountMenu': { en: 'Open Settings', mn: 'Тохиргоо нээх' },
 });

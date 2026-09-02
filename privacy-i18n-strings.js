@@ -2,7 +2,7 @@
 // which i18n-strings-shared.js must have already created (loaded first in privacy.html).
 Object.assign(window.I18N_STRINGS, {
     'privacy.title': { en: 'Privacy Policy', mn: 'Нууцлалын бодлого' },
-    'privacy.lastUpdated': { en: 'Last updated: July 31, 2026', mn: 'Сүүлд шинэчилсэн: 2026 оны 7-р сарын 31' },
+    'privacy.lastUpdated': { en: 'Last updated: September 2, 2026', mn: 'Сүүлд шинэчилсэн: 2026 оны 9-р сарын 2' },
 
     'privacy.whoThisIs.h': { en: 'Who this is', mn: 'Энэ хэн бэ' },
     'privacy.whoThisIs.p': {
@@ -32,8 +32,8 @@ Object.assign(window.I18N_STRINGS, {
         mn: '"Зурвас илгээх" маягтаар та илгээсэн <strong>зурвасууд</strong>.'
     },
     'privacy.whatICollect.li5': {
-        en: "<strong>Study progress</strong> — which Word Match levels you've completed and your best time/moves, and which Dokkai Reader texts you've completed per track.",
-        mn: '<strong>Суралцах явц</strong> — таны дуусгасан Үг холбох тоглоомын шатууд, тэдгээрийн шилдэг хугацаа/хөдөлгөөн, мөн эрэмбэ бүрээр дуусгасан Уншлагын дадлагын текстүүд.'
+        en: "<strong>Study progress</strong> — which Word Match levels you've completed and your best time/moves, which Grammar Connect levels you've completed and your best time/mistakes, and which Dokkai Reader texts you've completed per track.",
+        mn: '<strong>Суралцах явц</strong> — таны дуусгасан Үг холбох тоглоомын шатууд, тэдгээрийн шилдэг хугацаа/хөдөлгөөн, дуусгасан Дүрэм холбохын шатууд, тэдгээрийн шилдэг хугацаа/алдаа, мөн эрэмбэ бүрээр дуусгасан Уншлагын дадлагын текстүүд.'
     },
 
     'privacy.whatIDontCollect.h': { en: "What I don't collect", mn: 'Юу цуглуулдаггүй вэ' },

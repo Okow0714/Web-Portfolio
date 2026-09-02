@@ -31,7 +31,7 @@ Object.assign(window.I18N_STRINGS, {
         en: "Memorizing kanji readings one by one is a huge undertaking, so this is a rule-based list built around phonetics — the pattern behind kanji readings — to help you understand them instead. Learn one phonetic component and you can start guessing the readings of a dozen other kanji at once.",
         mn: 'Ханзын дуудлагыг үг бүрчлэн цээжлэх нь ихээхэн хүндрэлтэй тул Phonetics буюу Дуудлагын Ханзын дүрмээр дамжуулан ойлгоход чиглэсэн дүрмийн жагсаалт. Нэг дуудлагын ханзыг сурснаар хэд хэдэн өөр өөр ханзны дуудлагыг нэгэн зэрэг таамаглах чадвартай болох боломжтой юм.'
     },
-    'hub.phonetics.stat': { en: '775 FAMILIES · 2,429 KANJI · 5 JLPT TIERS', mn: '775 БҮЛЭГ · 2,429 ХАНЗ · 5 JLPT ЗЭРЭГЛЭЛ' },
+    'hub.phonetics.stat': { en: '424 FAMILIES · 1,128 KANJI · 5 JLPT TIERS', mn: '424 БҮЛЭГ · 1,128 ХАНЗ · 5 JLPT ЗЭРЭГЛЭЛ' },
     'hub.phonetics.cta': { en: 'Browse →', mn: 'Үзэх →' },
 
     'hub.grammar.name': { en: 'Grammar Connect', mn: 'Дүрэм Орлуулалт' },
@@ -52,8 +52,8 @@ Object.assign(window.I18N_STRINGS, {
 
     'hub.dictionary.name': { en: 'Mongol-Japan Dictionary', mn: 'Монгол-Япон толь бичиг' },
     'hub.dictionary.desc': {
-        en: "Look up a word in Mongolian or Japanese and see its counterpart, drawn from Word Match's translated vocabulary and a human-reviewed bridge dictionary. A second tab holds the original Kango ⇄ Wago dictionary — the formal Sino-Japanese (kango, 漢語) and native-Japanese (wago, 和語) form of whatever kanji you search, plus the respectful (尊敬語) and humble (謙譲語) verb forms used in sentences.",
-        mn: 'Монгол эсвэл Япон үгээр хайж, түүний хос үгийг олж хараарай — эх сурвалж нь Үг холбох тоглоомын орчуулгатай үгсийн сан болон гараар хянасан гүүр толь бичиг юм. Хоёр дахь таб нь Канго ⇄ Ваго толь бичгийг агуулна — таны хайсан ханзны хүндэтгэлийн буюу канго (漢語), уламжлалт буюу ваго (和語) хэлбэр, мөн өгүүлбэрт хэрэглэгдэх хүндэтгэлийн (尊敬語) болон даруу (謙譲語) үйл үгийн хэлбэрүүд.'
+        en: "Look up a word in Mongolian or Japanese and see its counterpart, drawn from four merged sources — Word Match's translated vocabulary, a human-reviewed bridge dictionary, a core N5 list, and the Kango ⇄ Wago pairs. A second tab holds the original Kango ⇄ Wago dictionary — the formal Sino-Japanese (kango, 漢語) and native-Japanese (wago, 和語) form of whatever kanji you search, plus the respectful (尊敬語) and humble (謙譲語) verb forms used in sentences.",
+        mn: 'Монгол эсвэл Япон үгээр хайж, түүний хос үгийг олж хараарай — дөрвөн эх сурвалжийг нэгтгэсэн: Үг холбох тоглоомын орчуулгатай үгсийн сан, гараар хянасан гүүр толь бичиг, N5-ын үндсэн жагсаалт, мөн Канго ⇄ Ваго хосууд. Хоёр дахь таб нь Канго ⇄ Ваго толь бичгийг агуулна — таны хайсан ханзны хүндэтгэлийн буюу канго (漢語), уламжлалт буюу ваго (和語) хэлбэр, мөн өгүүлбэрт хэрэглэгдэх хүндэтгэлийн (尊敬語) болон даруу (謙譲語) үйл үгийн хэлбэрүүд.'
     },
     'hub.dictionary.stat': { en: '3,427 WORDS', mn: '3,427 ҮГ' },
     'hub.dictionary.cta': { en: 'Search →', mn: 'Хайх →' },
