@@ -145,3 +145,14 @@ silently keeping whatever (possibly broken) cache they already had.
 - **Windows/PowerShell path escaping breaks Node heredocs.** `cat > file.js << 'EOF'` via Bash
   on this machine has mangled backslash-heavy Windows paths (`C:\Users\...`) more than once.
   Prefer the `Write` tool for scratch Playwright scripts over shell heredocs.
+- **User-facing copy makes numeric claims that silently drift from the code.** A 2026-09-02
+  audit of every description/stat against the actual constants and data files found six wrong:
+  Word Match's hub card said "3 minutes" (clock is 240s), Phonetics' stat counted families and
+  kanji *with* the repeats phonetics-data.js has across levels (775/2,429 vs. the real
+  424/1,128) and promised "a dozen" per family (median is 2), the dictionary claimed "most
+  words are confirmed by more than one source" (5.5% are) and an example sentence on every
+  click (36% have one), the privacy policy's data list omitted `grammar_progress` entirely,
+  and the dashboard advertised password/session management that has never existed. **Changing
+  a mechanic means grepping the i18n files AND the inline HTML fallbacks for the old number** —
+  each string lives in both places, and MN as well as EN. Where a claim is measurable, measure
+  it with `node -e` against the data file rather than trusting the existing wording.
