@@ -33,7 +33,7 @@ Object.assign(window.I18N_STRINGS, {
     },
     'privacy.whatICollect.li5': {
         en: "<strong>Study progress</strong> — which Word Match levels you've completed and your best time/moves, which Grammar Connect levels you've completed and your best time/mistakes, and which Dokkai Reader texts you've completed per track.",
-        mn: '<strong>Суралцах явц</strong> — таны дуусгасан Үг холбох тоглоомын шатууд, тэдгээрийн шилдэг хугацаа/хөдөлгөөн, дуусгасан Дүрэм холбохын шатууд, тэдгээрийн шилдэг хугацаа/алдаа, мөн эрэмбэ бүрээр дуусгасан Уншлагын дадлагын текстүүд.'
+        mn: '<strong>Суралцах явц</strong> — таны дуусгасан Үг холбох тоглоомын шатууд, тэдгээрийн шилдэг хугацаа/хөдөлгөөн, дуусгасан Дүрэм холбохын шатууд, тэдгээрийн шилдэг хугацаа/алдаа, мөн зам бүрээр дуусгасан Уншлагын дадлагын текстүүд.'
     },
 
     'privacy.whatIDontCollect.h': { en: "What I don't collect", mn: 'Юу цуглуулдаггүй вэ' },

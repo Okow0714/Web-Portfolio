@@ -23,7 +23,7 @@ Object.assign(window.I18N_STRINGS, {
 
     // MN<->JP tab: source-tag labels (which of the three merged sources confirms this word),
     // and the cross-link over to a word's Kango<->Wago partner when it has one.
-    'dict.sourceGamewords': { en: 'Word Match', mn: 'Үг холбох' },
+    'dict.sourceGamewords': { en: 'Word Match', mn: 'Үг холбох тоглоом' },
     'dict.sourceBridge': { en: 'Bridge review', mn: 'Гүүр толь бичиг' },
     'dict.sourceKangowago': { en: 'Kango ⇄ Wago', mn: 'Канго ⇄ Ваго' },
     'dict.sourceCore': { en: 'Core N5', mn: 'N5 үндсэн' },
