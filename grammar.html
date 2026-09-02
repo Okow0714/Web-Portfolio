@@ -178,7 +178,7 @@
                     <div class="gc-hud-row">
                         <div>
                             <h1 class="gc-title">文法つなぎ<span class="gc-title-sub" data-i18n="grammar.titleSub">Grammar Connect</span></h1>
-                            <p class="gc-subtitle" data-i18n="grammar.subtitle">A sentence appears with one grammar point underlined. Tap the tile that replaces it without changing what the sentence means — the word transforms in place, and the finished sentence (with its translation) drops into the cleared list at the side. Ten sentences a level, ten options a sentence, twenty levels a track.</p>
+                            <p class="gc-subtitle" data-i18n="grammar.subtitle">A sentence appears with one grammar point underlined. Tap the tile that replaces it without changing what the sentence means — the word transforms in place, and the finished sentence (with its translation) drops into the cleared list at the side. Ten sentences a level, five options a sentence, twenty levels a track.</p>
                         </div>
                         <button class="sound-toggle on" id="gc-sound-toggle" type="button" aria-pressed="true" title="Turn sound off">
                             <span id="gc-sound-icon" aria-hidden="true">&#128266;</span>
@@ -194,6 +194,8 @@
 
             <!-- Match -->
             <section id="gc-match-section" class="gc-section hidden">
+                <canvas id="gc-fx-canvas" class="gc-fx-canvas" aria-hidden="true"></canvas>
+                <div class="gc-fx-text-layer" id="gc-fx-text-layer" aria-hidden="true"></div>
                 <div class="gc-topbar">
                     <div class="gc-topbar-left">
                         <button id="gc-back-btn" class="ghost-btn" type="button"><span aria-hidden="true">&larr;</span> <span data-i18n="game.levels">Levels</span></button>
@@ -229,7 +231,7 @@
         <div id="gc-start-modal" class="modal-overlay hidden">
             <div class="modal-card">
                 <h3 id="gc-start-modal-title">Foundation · Level 1</h3>
-                <p id="gc-start-modal-desc" data-i18n="grammar.startModalDesc">Ten sentences, ten grammar tiles each. Tap the tile that keeps the sentence's meaning unchanged. The timer starts when you hit Start.</p>
+                <p id="gc-start-modal-desc" data-i18n="grammar.startModalDesc">Ten sentences, five grammar tiles each. Tap the tile that keeps the sentence's meaning unchanged. The timer starts when you hit Start.</p>
                 <div class="result-actions">
                     <button id="gc-start-modal-btn" class="auth-btn" type="button" data-i18n="game.startMatch">Start Match</button>
                     <button id="gc-start-modal-back-btn" class="auth-btn auth-btn-outline" type="button" data-i18n="game.backToLevels">Back to Levels</button>

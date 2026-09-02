@@ -249,8 +249,45 @@ body:has(.grammar-main) {
    Match screen
    --------------------------------------------------------------------- */
 #gc-match-section {
+    position: relative;
     max-width: 1180px;
     margin: 0 auto;
+}
+
+/* Effects layer -- a canvas (particle bursts/rings/dust, see grammar.js's GrammarFx) plus a
+   plain DOM layer (floating "+30s" / "-10s" text) both sized to the whole match section rather
+   than just the tile bank, so a correct/wrong tap's effects can reach from the tapped tile up
+   to the sentence card without being clipped. pointer-events:none on both keeps every real
+   click going straight through to the tiles underneath. */
+.gc-fx-canvas, .gc-fx-text-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.gc-float-text {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--good-bright);
+    text-shadow: 0 0 18px rgba(127, 191, 158, 0.55), 0 2px 6px rgba(0, 0, 0, 0.5);
+    white-space: nowrap;
+    animation: gc-float-up 1.1s var(--ease-out) forwards;
+}
+
+.gc-float-text.penalty {
+    color: var(--shu-light);
+    text-shadow: 0 0 18px rgba(224, 112, 90, 0.55), 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes gc-float-up {
+    0% { opacity: 0; transform: translate(-50%, -40%) scale(0.7); }
+    18% { opacity: 1; transform: translate(-50%, -70%) scale(1.08); }
+    30% { transform: translate(-50%, -78%) scale(1); }
+    100% { opacity: 0; transform: translate(-50%, -140%) scale(1); }
 }
 
 .gc-topbar {
