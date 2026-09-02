@@ -20,16 +20,16 @@ Object.assign(window.I18N_STRINGS, {
 
     'hub.game.name': { en: 'Word Match', mn: 'Үгийн Холбоос' },
     'hub.game.desc': {
-        en: 'An online exercise that connects each kanji to the Mongolian word with the matching meaning. Connect several kanji that share a phonetic reading at once and multiple words clear together. Each level is timed at 3 minutes, and two wrong guesses bring an already-cleared pair back.',
-        mn: 'Ханзыг ижил утгатай монгол үгтэй холбох онлайн дасгал. Ижил дуудлагын язгуур бүхий хэд хэдэн ханзыг зэрэг холбосноор олон үгийг нэгэн зэрэг арилгах боломжтой. Үе болгон 3 минутын хугацаатай, хоёр удаа буруу дарвал өмнө нь арилсан хос буцаж гарч ирнэ.'
+        en: 'An online exercise that connects each Japanese word to the Mongolian word with the matching meaning. Connect several kanji that share a phonetic reading at once and multiple words clear together. Each level starts on a 4-minute clock that every matched pair extends, and two wrong guesses bring an already-cleared pair back.',
+        mn: 'Япон үгийг ижил утгатай монгол үгтэй холбох онлайн дасгал. Ижил дуудлагын язгуур бүхий хэд хэдэн ханзыг зэрэг холбосноор олон үгийг нэгэн зэрэг арилгах боломжтой. Үе болгон 4 минутын цагтай эхэлж, таарсан хос бүр цагийг уртасгана, хоёр удаа буруу дарвал өмнө нь арилсан хос буцаж гарч ирнэ.'
     },
     'hub.game.stat': { en: '50 LEVELS · 5 JLPT TIERS · ~1,250 WORDS', mn: '50 ШАТ · 5 JLPT ЗЭРЭГЛЭЛ · ОЙРОЛЦООГООР 1,250 ҮГ' },
     'hub.game.cta': { en: 'Play →', mn: 'Тоглох →' },
 
     'hub.phonetics.name': { en: 'Phonetics Family', mn: 'Ханз Дуудлагын Бүлгүүд' },
     'hub.phonetics.desc': {
-        en: "Memorizing kanji readings one by one is a huge undertaking, so this is a rule-based list built around phonetics — the pattern behind kanji readings — to help you understand them instead. Learn one phonetic component and you can start guessing the readings of a dozen other kanji at once.",
-        mn: 'Ханзын дуудлагыг үг бүрчлэн цээжлэх нь ихээхэн хүндрэлтэй тул Phonetics буюу Дуудлагын Ханзын дүрмээр дамжуулан ойлгоход чиглэсэн дүрмийн жагсаалт. Нэг дуудлагын ханзыг сурснаар хэд хэдэн өөр өөр ханзны дуудлагыг нэгэн зэрэг таамаглах чадвартай болох боломжтой юм.'
+        en: "Memorizing kanji readings one by one is a huge undertaking, so this is a rule-based list built around phonetics — the pattern behind kanji readings — to help you understand them instead. Learn one phonetic component and you get a head start on the rest of its family — usually two or three kanji, up to a dozen for the largest.",
+        mn: 'Ханзын дуудлагыг үг бүрчлэн цээжлэх нь ихээхэн хүндрэлтэй тул Phonetics буюу Дуудлагын Ханзын дүрмээр дамжуулан ойлгоход чиглэсэн дүрмийн жагсаалт. Нэг дуудлагын язгуурыг сурснаар тухайн бүлгийн бусад ханзыг таамаглаж эхэлнэ — ихэвчлэн хоёр, гурав, хамгийн том бүлэгт арав гаруй.'
     },
     'hub.phonetics.stat': { en: '424 FAMILIES · 1,128 KANJI · 5 JLPT TIERS', mn: '424 БҮЛЭГ · 1,128 ХАНЗ · 5 JLPT ЗЭРЭГЛЭЛ' },
     'hub.phonetics.cta': { en: 'Browse →', mn: 'Үзэх →' },
