@@ -122,12 +122,14 @@ body:has(.hub-main) {
 .hub-room-cta svg { width: 14px; height: 14px; transition: transform 0.3s var(--ease-out); }
 .hub-room:hover .hub-room-cta svg { transform: translateX(3px); }
 
-/* --- sources & contact --- */
-.hub-foot { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding-top: 44px; border-top: 1px solid var(--rule); }
+/* --- developer credit: the hub's own footer content is just this now -- data/photo/music
+   credits live in the shared site-footer's collapsed .footer-credits disclosure below, not
+   duplicated here as a second, always-open copy. --- */
+.hub-foot { padding-top: 44px; border-top: 1px solid var(--rule); }
 .hub-foot h2 { font-family: var(--font-display); font-size: 1.5rem; margin: 0 0 6px; }
 .hub-dev-card {
     display: flex; align-items: center; gap: 16px; background: rgba(244, 233, 216, 0.05);
-    border: 1px solid var(--rule); border-radius: 6px; padding: 20px;
+    border: 1px solid var(--rule); border-radius: 6px; padding: 20px; max-width: 480px;
     text-decoration: none; color: inherit; transition: border-color 0.3s var(--ease-out), background 0.3s var(--ease-out);
 }
 .hub-dev-card:hover { border-color: var(--gold); background: rgba(244, 233, 216, 0.08); }
@@ -135,16 +137,12 @@ body:has(.hub-main) {
 .hub-dev-card-name { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; }
 .hub-dev-card-role { font-size: 0.85rem; color: var(--paper-soft); margin-top: 2px; }
 .hub-dev-card-link { font-size: 0.78rem; color: var(--gold); margin-top: 6px; font-weight: 600; }
-.hub-sources-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
-.hub-sources-list li { font-size: 0.86rem; color: var(--paper-soft); display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px dashed var(--rule); padding-bottom: 9px; }
-.hub-sources-list b { color: var(--paper); font-weight: 600; }
-.hub-sources-list span { color: var(--paper-faint); font-size: 0.78rem; white-space: nowrap; }
 
 @media (max-width: 760px) {
     .hub-room, .hub-room.flip { grid-template-columns: 1fr; gap: 18px; }
     .hub-room.flip .hub-room-clip { order: 0; }
     .hub-room-clip { aspect-ratio: 16/10; }
-    .hub-foot { grid-template-columns: 1fr; }
+    .hub-dev-card { max-width: none; }
     .hub-progress-tools { grid-template-columns: 1fr; }
     .hub-progress-guest { flex-direction: column; align-items: flex-start; }
 }

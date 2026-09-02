@@ -61,7 +61,4 @@ Object.assign(window.I18N_STRINGS, {
     'hub.foot.developer': { en: 'Developer', mn: 'Хөгжүүлэгч' },
     'hub.foot.devRole': { en: 'System engineering student, living in Japan', mn: 'Систем инженерийн оюутан, Японд амьдардаг' },
     'hub.foot.devLink': { en: 'Portfolio, skills, and projects →', mn: 'Хувийн хуудас, ур чадвар, төслүүд →' },
-    'hub.foot.sources': { en: 'Data & Sources', mn: 'Өгөгдлийн эх сурвалж' },
-    'hub.foot.vocabCuration': { en: 'vocab curation', mn: 'сургалтад' },
-    'hub.foot.contentLicense': { en: 'Content License', mn: 'контентийн зөвшөөрөл' },
 });

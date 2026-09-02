@@ -80,6 +80,7 @@ window.I18N_STRINGS = {
     'footer.projectsLearning': { en: 'Projects & learning', mn: 'Төсөл ба сургалт' },
     'footer.getInTouch': { en: 'Get in touch', mn: 'Холбогдох' },
     'footer.dataLicensing': { en: 'Data & licensing', mn: 'Өгөгдөл ба лиценз' },
+    'footer.vocabCuration': { en: 'vocabulary curation', mn: 'үгсийн сангийн сонголт' },
     'footer.privacyPolicy': { en: 'Privacy Policy', mn: 'Нууцлалын бодлого' },
     'footer.termsOfService': { en: 'Terms of Service', mn: 'Үйлчилгээний нөхцөл' },
     'footer.contact': { en: 'Contact', mn: 'Холбоо барих' },
