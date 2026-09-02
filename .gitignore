@@ -2,3 +2,7 @@
 # deliberately not part of the site itself, and not committed. No package.json on purpose:
 # this project has no build step, and node_modules/ here is just test tooling.
 node_modules/
+
+# Local Claude Code MCP server config (e.g. chrome-devtools) -- personal dev tooling, not part
+# of the site's source, and not something other contributors need to inherit.
+.mcp.json
