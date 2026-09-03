@@ -518,6 +518,42 @@ body:has(.reading-main) .container {
     white-space: nowrap;
 }
 
+/* The reader's own read of the microphone, shown so "is it hearing me?" is answerable at a
+   glance -- the question the voice gate turns into a decision behind the scenes. Hidden until
+   listening starts, since an idle meter is just noise in the bar. */
+.reader-level {
+    order: 1;
+    display: none;
+    flex: 0 0 auto;
+    width: 54px;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--bg-surface-alt);
+    border: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.reader-level.active {
+    display: block;
+}
+
+.reader-level-fill {
+    display: block;
+    width: 0;
+    height: 100%;
+    background: var(--border-strong);
+    transition: width 80ms linear;
+}
+
+/* Over the threshold -- this is what the gate counts as speech rather than room noise. */
+.reader-level-fill.over {
+    background: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reader-level-fill { transition: none; }
+}
+
 /* Non-symbol words are click/Enter targets for jumpToWord, so they need to look like it --
    subtle enough not to compete with the .current cursor, which is the thing being read. */
 .reader-word[role='button'] { cursor: pointer; border-radius: 4px; }

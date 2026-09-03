@@ -33,6 +33,23 @@ const MIN_JUMP_TOKEN_LEN = 2;    // see the note on `distinctive` in onresult
 const MAX_RESTART_ATTEMPTS = 4;  // consecutive rapid onend restarts before we stop and say so
 const RESTART_STREAK_WINDOW_MS = 2000; // restarts further apart than this are silence gaps, not a failure loop
 
+// Voice gate. Chrome's recognizer will turn room noise -- a fan, a keyboard, a cough, a chair
+// -- into a short plausible utterance, and short is all it takes to do damage here: the word
+// under the cursor matches at any length (only read-ahead *jump* targets have to be
+// distinctive), so a hallucinated 「はい」 while the cursor sits on は advances it. A few of
+// those and the reader has silently lost a line without having said a word. So we listen to
+// the microphone ourselves, alongside the recognizer, and refuse to act on a transcript that
+// didn't arrive with real speech behind it.
+const VOICE_GRACE_MS = 2000;      // a result may lag the speech that produced it by this much
+const VOICE_CALIBRATION_MS = 700; // sampled at startup to learn the room's noise floor
+const VOICE_MARGIN = 2.5;         // speech has to beat the noise floor by this multiple
+const VOICE_FLOOR_MIN = 0.008;    // ...and this absolute RMS, so a silent room can't set a hair trigger
+const VOICE_FLOOR_CAP = 0.02;     // ...and the floor itself is capped, so calibrating while someone
+                                  //    is already talking can't ratchet the gate shut
+const VOICE_LEVEL_POLL_MS = 50;
+const VOICE_MAX_REJECTS = 5;      // consecutive rejections before the gate assumes it is the broken one
+const MIN_CONFIDENCE = 0.3;       // Chrome scores finals (interim are 0); a very low one is usually noise
+
 // ASR returns whatever script it feels like -- katakana for a passage written in kanji, kana
 // where the text has kanji, a long-vowel mark the reading doesn't carry. Folding both sides
 // down to bare hiragana lets those still line up instead of stalling the cursor.
@@ -61,6 +78,16 @@ let listening = false;
 let recognitionGeneration = 0;
 let restartAttempts = 0;
 let lastRestartAt = 0;
+
+let audioCtx = null;
+let micStream = null;
+let analyser = null;
+let levelTimer = null;
+let voiceGateReady = false;   // false until calibration finishes -- until then nothing is gated
+let voiceGateDisabled = false; // latched on if the gate looks wrong; see noteGateReject()
+let lastVoiceAt = 0;
+let noiseFloor = 0;
+let consecutiveGateRejects = 0;
 let autoAdvanceTimer = null;
 
 let progressCache = new Set();   // "trackId:textId" of completed texts (from the server, if logged in)
@@ -421,6 +448,104 @@ function goToNextText() {
 }
 
 // ---------------------------------------------------------------------------
+// Voice gate — our own read of the microphone, used to vet the recognizer's output
+// ---------------------------------------------------------------------------
+function voiceThreshold() {
+    return Math.max(Math.min(noiseFloor, VOICE_FLOOR_CAP) * VOICE_MARGIN, VOICE_FLOOR_MIN);
+}
+
+function voiceGateActive() {
+    return voiceGateReady && !voiceGateDisabled;
+}
+
+// The gate can only ever be a filter on top of recognition, never a prerequisite for it: if our
+// analyser reads silence while Chrome is plainly transcribing speech, the analyser is the thing
+// that's wrong (a different input device, a mic quieter than the threshold), and a reader who
+// can't advance at all is far worse off than one who occasionally skips a word. So after a run
+// of rejections it stands down for the session and says so.
+function noteGateReject() {
+    consecutiveGateRejects++;
+    if (consecutiveGateRejects < VOICE_MAX_REJECTS) return;
+    voiceGateDisabled = true;
+    document.getElementById('reader-status').textContent = window.t('reading.gateOff');
+}
+
+function renderLevel(rms) {
+    const fill = document.getElementById('reader-level-fill');
+    if (!fill) return;
+    const threshold = voiceThreshold();
+    // Scaled so the threshold sits at a third of the track: the bar is there to answer "is it
+    // hearing me, and is that enough?", which needs the threshold visible, not just the level.
+    const pct = Math.max(0, Math.min(1, rms / (threshold * 3))) * 100;
+    fill.style.width = pct.toFixed(1) + '%';
+    fill.classList.toggle('over', rms >= threshold);
+}
+
+async function startVoiceGate() {
+    const Ctx = window.AudioContext || window.webkitAudioContext;
+    if (!Ctx || !navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) return;
+    const generation = recognitionGeneration;
+    let stream;
+    try {
+        // autoGainControl off deliberately: it pulls quiet noise up toward speech level, which
+        // is the exact distinction this gate exists to make.
+        stream = await navigator.mediaDevices.getUserMedia({
+            audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: false },
+        });
+    } catch (e) {
+        return; // no gate, and recognition carries on exactly as it did before
+    }
+    if (generation !== recognitionGeneration || !listening) {
+        stream.getTracks().forEach(t => t.stop()); // stopped while we were awaiting permission
+        return;
+    }
+    micStream = stream;
+    audioCtx = new Ctx();
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    analyser = audioCtx.createAnalyser();
+    analyser.fftSize = 1024;
+    analyser.smoothingTimeConstant = 0.1;
+    audioCtx.createMediaStreamSource(micStream).connect(analyser);
+
+    const buf = new Float32Array(analyser.fftSize);
+    noiseFloor = 0;
+    voiceGateReady = false;
+    consecutiveGateRejects = 0;
+    const calibrationEndsAt = Date.now() + VOICE_CALIBRATION_MS;
+    document.getElementById('reader-level').classList.add('active');
+
+    levelTimer = setInterval(() => {
+        analyser.getFloatTimeDomainData(buf);
+        let sum = 0;
+        for (let i = 0; i < buf.length; i++) sum += buf[i] * buf[i];
+        const rms = Math.sqrt(sum / buf.length);
+        const now = Date.now();
+        if (now < calibrationEndsAt) {
+            noiseFloor = Math.max(noiseFloor, rms);
+            return;
+        }
+        voiceGateReady = true;
+        if (rms >= voiceThreshold()) lastVoiceAt = now;
+        renderLevel(rms);
+    }, VOICE_LEVEL_POLL_MS);
+}
+
+function stopVoiceGate() {
+    clearInterval(levelTimer);
+    levelTimer = null;
+    if (micStream) { micStream.getTracks().forEach(t => t.stop()); micStream = null; }
+    if (audioCtx) { audioCtx.close().catch(() => {}); audioCtx = null; }
+    analyser = null;
+    voiceGateReady = false;
+    voiceGateDisabled = false;
+    consecutiveGateRejects = 0;
+    const level = document.getElementById('reader-level');
+    if (level) level.classList.remove('active');
+    const fill = document.getElementById('reader-level-fill');
+    if (fill) { fill.style.width = '0%'; fill.classList.remove('over'); }
+}
+
+// ---------------------------------------------------------------------------
 // Speech recognition
 // ---------------------------------------------------------------------------
 function startRecognition() {
@@ -453,15 +578,28 @@ function startRecognition() {
         if (generation !== recognitionGeneration) return;
         restartAttempts = 0; // audio is flowing, so the restart budget is not being spent
 
+        // Nothing was actually said recently enough to explain this transcript, so it is the
+        // room, not the reader. Drop it rather than walk the cursor forward on a cough.
+        if (voiceGateActive() && Date.now() - lastVoiceAt > VOICE_GRACE_MS) {
+            noteGateReject();
+            return;
+        }
+        consecutiveGateRejects = 0;
+
         let primary = '';
         const alternates = [];
         let isFinal = false;
+        let confidence = 0;
         for (let i = event.resultIndex; i < event.results.length; i++) {
             const result = event.results[i];
             isFinal = result.isFinal;
+            confidence = Math.max(confidence, result[0].confidence || 0);
             primary += result[0].transcript;
             for (let a = 1; a < result.length; a++) alternates.push(normalizeForMatch(result[a].transcript));
         }
+        // Chrome scores finals and leaves interim at 0, so this only ever judges a committed
+        // transcript -- and only a badly unsure one, which is the shape noise takes.
+        if (isFinal && confidence > 0 && confidence < MIN_CONFIDENCE) return;
         const chunks = [normalizeForMatch(primary), ...alternates];
 
         // Interim results are the recognizer's still-changing, speculative guess about an
@@ -569,7 +707,9 @@ function startRecognition() {
         recognition.start();
     } catch (e) {
         failListening(window.t('reading.speechStalled'));
+        return;
     }
+    startVoiceGate(); // async, deliberately not awaited: recognition must not wait on it
 }
 
 function stopRecognition() {
@@ -585,6 +725,7 @@ function stopRecognition() {
         try { recognition.stop(); } catch (e) { /* never successfully started */ }
         recognition = null;
     }
+    stopVoiceGate();
     clearTimeout(stallTimer);
     hideEl(document.getElementById('hint-popup'));
     updateMicButton();
@@ -598,6 +739,8 @@ function failListening(message) {
 }
 
 function updateMicButton() {
+    const level = document.getElementById('reader-level');
+    if (level) level.title = window.t('reading.micLevel');
     const btn = document.getElementById('reader-mic-btn');
     btn.innerHTML = listening
         ? `&#9724; ${escapeHtml(window.t('reading.stop'))}`
