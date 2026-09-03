@@ -27,7 +27,13 @@ function trackTitle(track) { return window.t(TRACK_TITLE_KEY[track.id]) || track
 function trackTitleShort(track) { return window.t(TRACK_TITLE_SHORT_KEY[track.id]) || track.title.split('·')[0].trim(); }
 
 const SpeechRecognitionCtor = window.SpeechRecognition || window.webkitSpeechRecognition;
-const READ_AHEAD_WORDS = 3; // window checked on a finalized result: current word + up to 2 ahead
+// How many words a single finalized transcript may carry the cursor through. This used to be
+// 3, chosen when matching was a bare substring test and a wide window was genuinely dangerous.
+// Matching is positional now -- every word has to be found in order, each one after the last --
+// so the window is bounded by what the transcript actually contains, and 3 was simply too few:
+// one ordinary breath is 「とても忙しかったです」, four tokens, which left the cursor a word
+// behind however well the reader was doing.
+const READ_AHEAD_WORDS = 40;
 const MAX_ALTERNATIVES = 5;      // ASR's runner-up transcripts get checked too, not just its top guess
 const MIN_JUMP_TOKEN_LEN = 2;    // see the note on `distinctive` in onresult
 const MAX_RESTART_ATTEMPTS = 4;  // consecutive rapid onend restarts before we stop and say so
@@ -49,6 +55,13 @@ const VOICE_FLOOR_CAP = 0.02;     // ...and the floor itself is capped, so calib
 const VOICE_LEVEL_POLL_MS = 50;
 const VOICE_MAX_REJECTS = 5;      // consecutive rejections before the gate assumes it is the broken one
 const MIN_CONFIDENCE = 0.3;       // Chrome scores finals (interim are 0); a very low one is usually noise
+const ANCHOR_WORDS = 2;           // words behind the cursor consumed before matching; see matchTranscript()
+// How many breaks -- a word missing from the transcript, or one found but not where the phrase
+// left off -- a single match may absorb before it decides the spoken phrase has ended. Two
+// keeps the reader moving past the odd word the recognizer mangles; a third means we are no
+// longer following anything the reader actually said, and continuing would let a common word
+// turning up somewhere unrelated ("です" in any polite sentence at all) carry the cursor away.
+const MAX_CHAIN_GAPS = 2;
 
 // ASR returns whatever script it feels like -- katakana for a passage written in kanji, kana
 // where the text has kanji, a long-vowel mark the reading doesn't carry. Folding both sides
@@ -393,6 +406,111 @@ function jumpToWord(idx) {
     advanceTo(target);
 }
 
+// Earliest occurrence of a word in `text` at or after `from`, by surface or by reading,
+// whichever comes first. Returns null when the word isn't in the remaining text.
+function findWord(w, text, from) {
+    const surface = normalizeForMatch(w.surface);
+    const reading = normalizeForMatch(w.reading || '');
+    let at = -1, len = 0;
+    if (surface) {
+        const i = text.indexOf(surface, from);
+        if (i !== -1) { at = i; len = surface.length; }
+    }
+    if (reading) {
+        const i = text.indexOf(reading, from);
+        if (i !== -1 && (at === -1 || i < at)) { at = i; len = reading.length; }
+    }
+    return at === -1 ? null : { at, end: at + len };
+}
+
+// The last few speakable words the cursor has already passed, oldest first.
+function anchorIndices() {
+    const out = [];
+    let i = currentIdx - 1;
+    while (i >= 0 && out.length < ANCHOR_WORDS) {
+        if (!words[i].sym) out.unshift(i);
+        i--;
+    }
+    return out;
+}
+
+// How far through the passage one candidate transcript gets us.
+//
+// The search is positional, not a bare substring test, and it starts by consuming the words
+// already read. That is what stops a reader who repeats themselves from being carried forward:
+// the recognizer hands back the whole utterance again on every update, and a plain
+// `includes` has no way to tell "you said this" from "you said this, again". Say 「楽しかっ」
+// while the cursor is on it and the cursor moves to 「た」; say 「楽しかっ」 again because
+// nothing seemed to happen, and 「た」 is sitting right there inside it, so the old matcher
+// counted the repeat as progress and the reader lost a word without noticing. One in a
+// hundred positions in this corpus is that shape (友達→と, 日曜日→に, 電車→で). Consuming
+// 「楽しかっ」 first means the search for 「た」 begins after it, where it isn't.
+//
+// The same consumption applies within the window, so no stretch of transcript can satisfy two
+// cursor positions, however many times the recognizer re-delivers it.
+function matchTranscript(text, positions, allowJumps) {
+    if (!text) return -1;
+    // Consume any already-read words the transcript *opens* with. That is what a reader
+    // repeating themselves sounds like, and skipping past it is what stops the repeat being
+    // counted as progress. Each anchor has to sit exactly where the previous one left off,
+    // starting at the very beginning: an anchor allowed to match anywhere would hunt down a
+    // stray kana further along and skip the real content in front of it -- 「た」 finding
+    // itself inside 「たくさん」 pushed the search past 「仕事」 and stalled the reader for the
+    // rest of the passage.
+    let searchFrom = 0;
+    for (const idx of anchorIndices()) {
+        const hit = findWord(words[idx], text, searchFrom);
+        if (!hit || hit.at !== searchFrom) break;
+        searchFrom = hit.end;
+    }
+
+    let best = -1;
+    let gaps = 0;
+    for (let ordinal = 0; ordinal < positions.length; ordinal++) {
+        const pos = positions[ordinal];
+        const from = searchFrom;
+        const hit = findWord(words[pos], text, from);
+
+        // Word isn't in what's left of the transcript. A couple of those are tolerable -- the
+        // recognizer mangles the odd word, and stalling the reader on it forever is the worse
+        // failure -- but a run of them means the spoken phrase has simply ended here.
+        if (!hit) {
+            if (++gaps > MAX_CHAIN_GAPS) break;
+            continue;
+        }
+
+        // A token starting exactly where the previous one ended is the rest of the same spoken
+        // word, not a stray kana from elsewhere in the sentence.
+        //
+        // This matters more than it sounds. The corpus is tokenized by morpheme -- 今週 + は,
+        // 忙しかっ + た, 会お + う -- but the recognizer returns natural orthography, 「今週は」,
+        // one string holding both tokens, and 27.5% of adjacent positions here are that shape.
+        // With single kana barred from being jump targets, one utterance could only ever move
+        // the cursor one step, so saying 「今週は」 left the highlight on 「は」 -- a word
+        // already spoken. The reader ends up permanently ahead of the cursor; then repeating a
+        // word to see whether it registered matches the kana the cursor is stuck on and it
+        // lurches forward, which is what "it registers my repeat as the next word" looks like
+        // from the outside. Contiguity separates that from the stray case: 「は」 immediately
+        // after the 「今週」 just matched is the same breath; 「は」 further along is not.
+        const contiguous = hit.at === from;
+        if (!contiguous && ++gaps > MAX_CHAIN_GAPS) break;
+        searchFrom = hit.end;
+
+        // Nearly half of this corpus's speakable tokens are single characters, and the
+        // commonest are particles and inflection tails -- almost any Japanese transcript
+        // contains one. Letting those be reached across a gap meant one phrase read aloud
+        // could carry the cursor several words on and file words you had just read correctly
+        // under "Skipped Words". So across a gap a token has to be distinctive; contiguous, it
+        // doesn't need to be, because its position already vouches for it.
+        const w = words[pos];
+        const distinctive = Math.max(normalizeForMatch(w.surface).length,
+            normalizeForMatch(w.reading || '').length) >= MIN_JUMP_TOKEN_LEN;
+        if (pos === positions[0]) best = pos;
+        else if (allowJumps && (contiguous || distinctive)) best = pos;
+    }
+    return best;
+}
+
 // Positions (indices into `words`, skipping symbols) of the next `count` speakable words
 // starting at `fromIdx`, inclusive.
 function nextWordPositions(fromIdx, count) {
@@ -613,24 +731,14 @@ function startRecognition() {
         // otherwise stall the reader forever even after reading straight past it out loud.
         const windowSize = isFinal ? READ_AHEAD_WORDS : 1;
         const positions = nextWordPositions(currentIdx, windowSize);
-        let matchPos = -1;
-        for (const pos of positions) {
-            const w = words[pos];
-            const surface = normalizeForMatch(w.surface);
-            const reading = normalizeForMatch(w.reading || '');
-            // Nearly half of this corpus's speakable tokens are single characters, and the
-            // commonest of them are the particles and inflection tails -- almost any Japanese
-            // transcript contains one. Letting those serve as a *jump* target meant reading one
-            // phrase aloud could carry the cursor several words forward and file the words you
-            // had just read correctly under "Skipped Words". (Measured on the very first
-            // passage: saying it correctly filed its first two words as skipped.) So a token
-            // only earns a jump if it is long enough to mean something on its own; the word
-            // directly under the cursor still matches at any length, which is what keeps
-            // particles flowing.
-            const distinctive = Math.max(surface.length, reading.length) >= MIN_JUMP_TOKEN_LEN;
-            if (pos !== positions[0] && !distinctive) continue;
-            const hit = chunks.some(c => (surface && c.includes(surface)) || (reading && c.includes(reading)));
-            if (hit) matchPos = pos; // keep the furthest (last) match in the window, not the first
+        let matchPos = matchTranscript(chunks[0], positions, isFinal);
+        // The runner-up transcripts are a rescue for a script mismatch (コーヒー heard for a
+        // passage's こうひい), so they are only consulted when the recognizer's own best guess
+        // matched nothing, and they are never allowed to drive a multi-word jump.
+        if (matchPos === -1) {
+            for (let i = 1; i < chunks.length && matchPos === -1; i++) {
+                matchPos = matchTranscript(chunks[i], positions, false);
+            }
         }
         if (matchPos !== -1) {
             // Only file a passed-over word as skipped if this transcript doesn't contain it
