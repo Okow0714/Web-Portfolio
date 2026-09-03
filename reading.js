@@ -582,6 +582,17 @@ let ttsSpeaking = false;
 let ttsClearTimer = null;
 let jaVoice = null;
 let voicesSeen = false;
+// Windows lets the audio device sleep between utterances and swallows the first fraction of a
+// second on waking it. In Japanese that fraction is the opening mora, so こんしゅう arrives as
+// んしゅう -- not a clipped word, a different one, which defeats the entire point of playing it
+// back. A leading pause marker gives the device something to wake into. It is silent, so the
+// word is heard whole, just a beat later.
+const TTS_LEAD_IN = '、';
+
+// Retained on purpose -- see the note in speak().
+let ttsUtterance = null;
+let ttsKeepAlive = null;
+let ttsPlaying = false;
 
 // Pronunciation is the whole point of playback here, so the wrong voice is worse than none:
 // handed Japanese with only an English voice installed, the browser reads the kana as though
@@ -590,6 +601,7 @@ let voicesSeen = false;
 // than play something misleading.
 function refreshVoices() {
     if (!speechSynth) return;
+    if (!ttsPlaying && speechSynth.speaking) speechSynth.cancel(); // clear a queue wedged by an earlier page
     const voices = speechSynth.getVoices();
     if (!voices.length) return; // the list loads asynchronously; wait for voiceschanged
     voicesSeen = true;
@@ -637,17 +649,60 @@ function setTtsSpeaking(on) {
 // Speaks the word's *reading*, not its written form: the reading is the pronunciation this
 // passage intends, and handing a synthesizer bare kanji lets it choose a different one --
 // exactly the confusion the reader is trying to resolve.
+// Chrome's speech synthesizer needs more care than the API suggests, and every one of these
+// guards is for a way it truncates audio.
 function speak(text, rate) {
     if (!speechSynth || !text || speakUnavailable()) return;
-    speechSynth.cancel();
-    const utter = new SpeechSynthesisUtterance(text);
-    utter.lang = 'ja-JP';
-    if (jaVoice) utter.voice = jaVoice;
-    utter.rate = rate;
-    setTtsSpeaking(true);
-    utter.onend = () => setTtsSpeaking(false);
-    utter.onerror = () => setTtsSpeaking(false);
-    speechSynth.speak(utter);
+
+    const start = () => {
+        const utter = new SpeechSynthesisUtterance(TTS_LEAD_IN + text);
+        utter.lang = 'ja-JP';
+        if (jaVoice) utter.voice = jaVoice;
+        utter.rate = rate;
+        utter.onend = endPlayback;
+        utter.onerror = endPlayback;
+
+        // Held in a variable that outlives this function on purpose, and this is the big one.
+        // Chrome collects an utterance that nothing references while it is still being
+        // spoken: the audio stops dead partway through, or never starts at all if the collect
+        // beats the synthesizer to it. A local const is unreachable the moment speak()
+        // returns, so which of those happened came down to GC timing -- that is the reported
+        // "random": some words losing their end, some never playing.
+        ttsUtterance = utter;
+
+        ttsPlaying = true;
+        setTtsSpeaking(true);
+
+        // Chrome also pauses the synthesizer by itself partway through longer utterances.
+        // resume() on a timer is the standing workaround, and is a no-op when nothing is
+        // paused.
+        clearInterval(ttsKeepAlive);
+        ttsKeepAlive = setInterval(() => {
+            if (speechSynth.speaking) speechSynth.resume();
+            else clearInterval(ttsKeepAlive);
+        }, 4000);
+
+        speechSynth.speak(utter);
+    };
+
+    // cancel() immediately before speak() truncates the utterance that follows it, so it is
+    // only used to interrupt something genuinely playing, and the replacement waits for the
+    // queue to actually clear rather than racing it.
+    if (ttsPlaying) {
+        speechSynth.cancel();
+        ttsPlaying = false;
+        setTimeout(start, 120);
+    } else {
+        start();
+    }
+}
+
+function endPlayback() {
+    clearInterval(ttsKeepAlive);
+    ttsKeepAlive = null;
+    ttsPlaying = false;
+    ttsUtterance = null;
+    setTtsSpeaking(false);
 }
 
 // The word on its own, from its *reading* rather than its written form: the reading is the
@@ -970,6 +1025,7 @@ function stopRecognition() {
         try { recognition.stop(); } catch (e) { /* never successfully started */ }
         recognition = null;
     }
+    if (speechSynth && ttsPlaying) { speechSynth.cancel(); endPlayback(); }
     stopVoiceGate();
     clearTimeout(stallTimer);
     hideEl(document.getElementById('hint-popup'));
