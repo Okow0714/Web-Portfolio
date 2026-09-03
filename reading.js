@@ -591,6 +591,8 @@ const TTS_LEAD_IN = '、';
 
 // Retained on purpose -- see the note in speak().
 let ttsUtterance = null;
+let awakeCtx = null;
+let awakeOsc = null;
 let ttsKeepAlive = null;
 let ttsPlaying = false;
 
@@ -651,8 +653,46 @@ function setTtsSpeaking(on) {
 // exactly the confusion the reader is trying to resolve.
 // Chrome's speech synthesizer needs more care than the API suggests, and every one of these
 // guards is for a way it truncates audio.
+// Windows powers the audio output down after a short idle and swallows the first fraction of
+// a second on waking it. A Japanese word at teaching pace runs about a second, so that can be
+// most of it -- or all of it, leaving only the faint click of the device starting, which is
+// what "some words just aren't there" turned out to be. Losing the opening mora is worse than
+// losing any other part: こんしゅう arriving as んしゅう is not a clipped word, it is a
+// different one, which defeats the whole point of playing it back.
+//
+// A pause marker in front of the text buys a couple of hundred milliseconds and is not
+// reliably enough. Holding an inaudible tone on the output keeps the device awake so speech
+// starts the instant it is asked for. Set up from the button press, because that is the user
+// gesture the autoplay policy requires, and released when the page is hidden so nothing is
+// held open in a background tab.
+function ensureAudioAwake() {
+    const Ctx = window.AudioContext || window.webkitAudioContext;
+    if (!Ctx || awakeCtx) return;
+    try {
+        awakeCtx = new Ctx();
+        const gain = awakeCtx.createGain();
+        // Inaudible, but deliberately not zero: a truly silent stream is one the system is
+        // free to idle out again, which would put us back where we started.
+        gain.gain.value = 0.0001;
+        awakeOsc = awakeCtx.createOscillator();
+        awakeOsc.frequency.value = 60;
+        awakeOsc.connect(gain);
+        gain.connect(awakeCtx.destination);
+        awakeOsc.start();
+        if (awakeCtx.state === 'suspended') awakeCtx.resume();
+    } catch (e) {
+        releaseAudioAwake(); // no keep-alive; playback still works, it may just clip
+    }
+}
+
+function releaseAudioAwake() {
+    if (awakeOsc) { try { awakeOsc.stop(); } catch (e) { /* already stopped */ } awakeOsc = null; }
+    if (awakeCtx) { awakeCtx.close().catch(() => {}); awakeCtx = null; }
+}
+
 function speak(text, rate) {
     if (!speechSynth || !text || speakUnavailable()) return;
+    ensureAudioAwake();
 
     const start = () => {
         const utter = new SpeechSynthesisUtterance(TTS_LEAD_IN + text);
@@ -1100,6 +1140,15 @@ document.getElementById('reader-back-btn').addEventListener('click', () => {
     stopRecognition();
     showTextList(currentTrack, currentLevel);
 });
+// Nothing is held open in a background tab; the next press sets it up again.
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        if (speechSynth && ttsPlaying) { speechSynth.cancel(); endPlayback(); }
+        releaseAudioAwake();
+    }
+});
+window.addEventListener('pagehide', releaseAudioAwake);
+
 document.getElementById('hint-speak-btn').addEventListener('click', () => speakWord(words[currentIdx]));
 if (speechSynth) {
     refreshVoices();
