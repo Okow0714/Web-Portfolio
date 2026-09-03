@@ -332,8 +332,8 @@ function updateProgress() {
     document.getElementById('reader-progress').textContent = window.tf('reading.wordsCount', { n: doneCount, total: speakable });
 }
 
-function recordSkipped(word) {
-    skippedWords.push(word);
+function recordSkipped(idx) {
+    recordSkippedAt(idx);
     renderSkippedList();
 }
 
@@ -347,7 +347,15 @@ function renderSkippedList() {
         li.innerHTML = `<span class="skipped-word-surface">${escapeHtml(w.surface)}</span>` +
             `<span class="skipped-word-reading">${escapeHtml(w.reading)}</span>` +
             (gloss ? `<span class="skipped-word-en">${escapeHtml(gloss)}</span>` : '');
-        if (speechSynth) li.appendChild(speakButton(() => w));
+        if (!speakUnavailable()) {
+            // Grouped rather than appended straight to the row: each button carrying its own
+            // margin-left:auto in a wrapping flex row pushed them onto separate lines.
+            const group = document.createElement('span');
+            group.className = 'speak-group';
+            group.appendChild(speakButton('\u{1F50A}', 'reading.hearWord', () => speakWord(w)));
+            if (w.sentence) group.appendChild(speakButton('\u{1F4AC}', 'reading.hearSentence', () => speakSentence(w.sentence)));
+            li.appendChild(group);
+        }
         list.appendChild(li);
     });
     if (skippedWords.length) hideEl(empty); else showEl(empty);
@@ -399,7 +407,7 @@ function jumpToWord(idx) {
     if (target > currentIdx) {
         let i = currentIdx;
         while (i < target) {
-            if (!words[i].sym) skippedWords.push(words[i]);
+            if (!words[i].sym) recordSkippedAt(i);
             i = firstNonSymbolIndex(words, i + 1);
         }
         renderSkippedList();
@@ -572,6 +580,42 @@ function goToNextText() {
 const speechSynth = window.speechSynthesis || null;
 let ttsSpeaking = false;
 let ttsClearTimer = null;
+let jaVoice = null;
+let voicesSeen = false;
+
+// Pronunciation is the whole point of playback here, so the wrong voice is worse than none:
+// handed Japanese with only an English voice installed, the browser reads the kana as though
+// it were English and teaches a pronunciation that is simply wrong. So we pick a Japanese
+// voice explicitly, and if the device hasn't got one we say so and hide the buttons rather
+// than play something misleading.
+function refreshVoices() {
+    if (!speechSynth) return;
+    const voices = speechSynth.getVoices();
+    if (!voices.length) return; // the list loads asynchronously; wait for voiceschanged
+    voicesSeen = true;
+    jaVoice = voices.find(v => /^ja\b/i.test(v.lang || '')) || null;
+    updateSpeakAvailability();
+}
+
+// Only hide once we have actually seen a voice list and it had no Japanese in it. A browser
+// that never reports voices at all keeps the buttons: playback may still work, and removing a
+// working feature on a guess is the worse mistake.
+function speakUnavailable() {
+    return !speechSynth || (voicesSeen && !jaVoice);
+}
+
+function updateSpeakAvailability() {
+    const note = document.getElementById('speak-unavailable');
+    if (note) {
+        note.textContent = window.t('reading.noJaVoice');
+        if (speakUnavailable()) showEl(note); else hideEl(note);
+    }
+    const hintSpeak = document.getElementById('hint-speak-btn');
+    if (hintSpeak) {
+        if (speakUnavailable()) hideEl(hintSpeak); else showEl(hintSpeak);
+    }
+    renderSkippedList();
+}
 
 // Matching is suspended while we're the ones making noise. The microphone is usually still
 // open and the speakers are right next to it, so otherwise the page hears its own playback
@@ -593,27 +637,67 @@ function setTtsSpeaking(on) {
 // Speaks the word's *reading*, not its written form: the reading is the pronunciation this
 // passage intends, and handing a synthesizer bare kanji lets it choose a different one --
 // exactly the confusion the reader is trying to resolve.
-function speakWord(w) {
-    if (!speechSynth || !w) return;
+function speak(text, rate) {
+    if (!speechSynth || !text || speakUnavailable()) return;
     speechSynth.cancel();
-    const utter = new SpeechSynthesisUtterance(w.reading || w.surface);
+    const utter = new SpeechSynthesisUtterance(text);
     utter.lang = 'ja-JP';
-    utter.rate = 0.85; // a beat under conversational pace: this is a word being taught
+    if (jaVoice) utter.voice = jaVoice;
+    utter.rate = rate;
     setTtsSpeaking(true);
     utter.onend = () => setTtsSpeaking(false);
     utter.onerror = () => setTtsSpeaking(false);
     speechSynth.speak(utter);
 }
 
-function speakButton(getWord) {
+// The word on its own, from its *reading* rather than its written form: the reading is the
+// pronunciation this passage intends, and handing a synthesizer bare kanji lets it choose a
+// different one -- 行った alone could come back as itta or okonatta, which is exactly the
+// confusion the reader is trying to resolve. A beat under conversational pace, since this is
+// a word being taught rather than read out.
+function speakWord(w) {
+    if (!w) return;
+    speak(w.reading || w.surface, 0.85);
+}
+
+// The word in its sentence, from the written form. Japanese pitch accent and intonation are
+// contextual -- a word in isolation and the same word mid-sentence are not the same sound --
+// and the surrounding text is also what lets the synthesizer resolve the reading itself. Near
+// natural pace, because the point here is how it sounds in real speech.
+function speakSentence(sentence) {
+    if (!sentence) return;
+    speak(sentence, 0.95);
+}
+
+function speakButton(glyph, labelKey, onPlay) {
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'speak-btn';
-    btn.textContent = '\u{1F50A}';
-    btn.title = window.t('reading.hearWord');
-    btn.setAttribute('aria-label', window.t('reading.hearWord'));
-    btn.addEventListener('click', (e) => { e.stopPropagation(); speakWord(getWord()); });
+    btn.textContent = glyph;
+    btn.title = window.t(labelKey);
+    btn.setAttribute('aria-label', window.t(labelKey));
+    btn.addEventListener('click', (e) => { e.stopPropagation(); onPlay(); });
     return btn;
+}
+
+// The sentence a word sits in, for playback in context. Sentence boundaries are the passage's
+// own terminators; commas are not boundaries, since a clause on its own carries the wrong
+// intonation for the word inside it.
+function sentenceTextAt(idx) {
+    const isEnd = (w) => w.sym && /[。！？!?]/.test(w.surface);
+    let from = idx;
+    while (from > 0 && !isEnd(words[from - 1])) from--;
+    let to = idx;
+    while (to < words.length - 1 && !isEnd(words[to])) to++;
+    return words.slice(from, to + 1).map(w => w.surface).join('').trim();
+}
+
+// Records a skipped word together with the sentence it came from, so it can be played back
+// both ways later -- the list outlives the cursor, so the context has to be captured now.
+function recordSkippedAt(idx) {
+    const w = words[idx];
+    if (!w || w.sym) return;
+    skippedWords.push(Object.assign({}, w, { sentence: sentenceTextAt(idx) }));
 }
 
 // ---------------------------------------------------------------------------
@@ -807,7 +891,7 @@ function startRecognition() {
                     const surface = normalizeForMatch(w.surface);
                     const reading = normalizeForMatch(w.reading || '');
                     const heard = chunks.some(c => (surface && c.includes(surface)) || (reading && c.includes(reading)));
-                    if (!heard) skippedWords.push(w);
+                    if (!heard) recordSkippedAt(idx);
                 }
                 idx = firstNonSymbolIndex(words, idx + 1);
             }
@@ -926,7 +1010,7 @@ document.getElementById('reader-mic-btn').addEventListener('click', () => {
 // an accent it struggles with), the reader shouldn't be a dead end.
 document.getElementById('reader-skip-btn').addEventListener('click', () => {
     if (currentIdx >= words.length) return;
-    recordSkipped(words[currentIdx]);
+    recordSkipped(currentIdx);
     advanceWord();
 });
 
@@ -949,6 +1033,8 @@ document.addEventListener('sitelangchange', () => {
         const hintSpeak = document.getElementById('hint-speak-btn');
         hintSpeak.title = window.t('reading.hearWord');
         hintSpeak.setAttribute('aria-label', window.t('reading.hearWord'));
+        const note = document.getElementById('speak-unavailable');
+        if (note) note.textContent = window.t('reading.noJaVoice');
     }
 });
 
@@ -959,7 +1045,11 @@ document.getElementById('reader-back-btn').addEventListener('click', () => {
     showTextList(currentTrack, currentLevel);
 });
 document.getElementById('hint-speak-btn').addEventListener('click', () => speakWord(words[currentIdx]));
-if (!speechSynth) hideEl(document.getElementById('hint-speak-btn'));
+if (speechSynth) {
+    refreshVoices();
+    speechSynth.addEventListener('voiceschanged', refreshVoices);
+}
+if (speakUnavailable()) hideEl(document.getElementById('hint-speak-btn'));
 
 document.getElementById('complete-next-btn').addEventListener('click', goToNextText);
 document.getElementById('complete-levels-btn').addEventListener('click', () => {

@@ -48,5 +48,7 @@ Object.assign(window.I18N_STRINGS, {
     'reading.tapHint': { en: 'Tap any word to move the highlight there.', mn: 'Аль ч үг дээр дарвал тодотгол тэр үг рүү шилжинэ.' },
     'reading.micLevel': { en: 'Microphone level', mn: 'Микрофоны түвшин' },
     'reading.hearWord': { en: 'Hear this word', mn: 'Энэ үгийг сонсох' },
+    'reading.hearSentence': { en: 'Hear it in the sentence', mn: 'Өгүүлбэрт нь сонсох' },
+    'reading.noJaVoice': { en: "This device has no Japanese voice installed, so words can't be played back. Adding a Japanese language pack in your system settings enables it.", mn: 'Энэ төхөөрөмжид япон хэлний хоолой суугаагүй тул үгсийг сонсох боломжгүй. Системийнхээ тохиргооноос япон хэлний багц нэмбэл ажиллана.' },
     'reading.gateOff': { en: 'Noise filter off — your microphone reads as silent even while speech is getting through.', mn: 'Чимээний шүүлтүүр унтарлаа — яриа орж ирж байгаа ч микрофоны түвшин чимээгүй байна.' },
 });
