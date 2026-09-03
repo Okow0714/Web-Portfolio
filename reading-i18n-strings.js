@@ -35,4 +35,15 @@ Object.assign(window.I18N_STRINGS, {
     'reading.micDenied': { en: 'Microphone access was denied.', mn: 'Микрофоны хандалтыг татгалзсан байна.' },
     'reading.stop': { en: 'Stop', mn: 'Зогсоох' },
     'reading.listening': { en: 'Listening…', mn: 'Сонсож байна…' },
+
+    // Speech-recognition failure states. Every one of these used to be silent: the button sat
+    // on "Listening…" while nothing happened, which is exactly what the reader sees when the
+    // microphone is simply muted, so there was no telling a dead end from a quiet room.
+    'reading.noSpeech': { en: "Not picking anything up — check your microphone is on and selected.", mn: 'Дуу сонсогдохгүй байна — микрофоноо асаалттай, сонгогдсон эсэхийг шалгаарай.' },
+    'reading.noMic': { en: 'No microphone found. Connect one, or pick a different input device.', mn: 'Микрофон олдсонгүй. Микрофон холбох эсвэл өөр төхөөрөмж сонгоно уу.' },
+    'reading.speechOffline': { en: "Speech recognition needs an internet connection — it can't run offline.", mn: 'Дуу таних функц интернэт холболт шаарддаг — офлайн ажиллахгүй.' },
+    'reading.speechStalled': { en: 'Speech recognition keeps dropping out. Press Start Reading to try again.', mn: 'Дуу таних тасарсаар байна. «Унших эхлэх» дарж дахин оролдоно уу.' },
+    'reading.insecureOrigin': { en: 'Speech recognition only works over a secure (https) connection.', mn: 'Дуу таних функц зөвхөн https холболтоор ажиллана.' },
+    'reading.speechError': { en: 'Speech recognition stopped ({error}). Press Start Reading to try again.', mn: 'Дуу таних зогслоо ({error}). «Унших эхлэх» дарж дахин оролдоно уу.' },
+    'reading.tapHint': { en: 'Tap any word to move the highlight there.', mn: 'Аль ч үг дээр дарвал тодотгол тэр үг рүү шилжинэ.' },
 });

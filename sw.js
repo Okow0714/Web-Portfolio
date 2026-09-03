@@ -13,7 +13,11 @@
 // actually installed rather than installed-but-slightly-stale. A version bump forces every
 // client through a fresh install with the corrected list; activate() then deletes the old,
 // possibly-broken cache.
-const CACHE_VERSION = 'khan-japanese-v2';
+// Bump it for a meaningful *content* change too, not just a list change: fetch() below is
+// stale-while-revalidate, so it serves the cached copy first and only refreshes behind it --
+// without a bump, a returning PWA user runs the previous version of a fixed file for one more
+// visit. Whether that matters is a judgement call; for a correctness fix it generally does.
+const CACHE_VERSION = 'khan-japanese-v3';
 
 const APP_SHELL = [
     './',

@@ -117,7 +117,20 @@ long after that file was renamed to `hub.css`, and `dashboard.html`/`about.html`
 plus their CSS/JS were simply never added when those pages shipped. **Adding a new page means
 adding it (and its CSS/JS/i18n-strings file) to `APP_SHELL` and bumping `CACHE_VERSION`** — the
 version bump forces every client through a fresh install with the corrected list rather than
-silently keeping whatever (possibly broken) cache they already had.
+silently keeping whatever (possibly broken) cache they already had. Bump it for a significant
+*content* change as well: `fetch` is stale-while-revalidate (serve cached, refresh behind it),
+so without a bump a returning PWA user runs the old copy of a fixed file for one more visit.
+
+**Stacking contexts, not z-index, decide what's on top.** `.container` (`style.css`) and
+`.site-footer` are both `position: relative; z-index: 2` — an exact tie broken by DOM order, so
+the footer wins. Any page wrapper that also creates a stacking context (`.reading-main` sets
+`isolation: isolate`) seals its children's z-index inside `.container`'s level 2, so a big
+number on a descendant buys nothing against the footer. This shipped: Dokkai Reader's fixed
+`.reader-controls` bar (`z-index: 40`) was painted under the footer and the footer swallowed
+every click on Start Reading and Skip Word. Fixed page-scoped via
+`body:has(.reading-main) .container { z-index: 3 }`. Before trusting a z-index on a fixed
+overlay, check it with `document.elementFromPoint` at the element's own centre — Playwright
+reports this as "…subtree intercepts pointer events", which is easy to dismiss as a test bug.
 
 ## Working conventions
 

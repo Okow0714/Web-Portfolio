@@ -28,6 +28,23 @@ function trackTitleShort(track) { return window.t(TRACK_TITLE_SHORT_KEY[track.id
 
 const SpeechRecognitionCtor = window.SpeechRecognition || window.webkitSpeechRecognition;
 const READ_AHEAD_WORDS = 3; // window checked on a finalized result: current word + up to 2 ahead
+const MAX_ALTERNATIVES = 5;      // ASR's runner-up transcripts get checked too, not just its top guess
+const MIN_JUMP_TOKEN_LEN = 2;    // see the note on `distinctive` in onresult
+const MAX_RESTART_ATTEMPTS = 4;  // consecutive rapid onend restarts before we stop and say so
+const RESTART_STREAK_WINDOW_MS = 2000; // restarts further apart than this are silence gaps, not a failure loop
+
+// ASR returns whatever script it feels like -- katakana for a passage written in kanji, kana
+// where the text has kanji, a long-vowel mark the reading doesn't carry. Folding both sides
+// down to bare hiragana lets those still line up instead of stalling the cursor.
+function toHiragana(str) {
+    return str.replace(/[ァ-ヶ]/g, ch => String.fromCharCode(ch.charCodeAt(0) - 0x60));
+}
+// Strips what neither side should be compared on: the long-vowel mark (a reading spells it out,
+// katakana marks it), whitespace (ASR sprinkles it between phrases), and punctuation of both
+// widths. \s already covers the ideographic space.
+function normalizeForMatch(str) {
+    return toHiragana(str).replace(/[ー\s。、，．！？!?.,・「」『』（）()~〜]/g, '');
+}
 
 let currentTrack = null;
 let currentLevel = null;
@@ -38,6 +55,12 @@ let currentIdx = 0;
 let stallTimer = null;
 let recognition = null;
 let listening = false;
+// Bumped on every teardown so a callback from an instance we've already stopped -- Chrome can
+// still flush a final result after stop() -- can tell it's stale and bow out instead of moving
+// the cursor on a text the reader has already left.
+let recognitionGeneration = 0;
+let restartAttempts = 0;
+let lastRestartAt = 0;
 let autoAdvanceTimer = null;
 
 let progressCache = new Set();   // "trackId:textId" of completed texts (from the server, if logged in)
@@ -238,10 +261,18 @@ function startText(track, level, textIndex) {
 function renderPassage() {
     const passageEl = document.getElementById('reader-passage');
     passageEl.innerHTML = '';
-    wordEls = words.map((w) => {
+    wordEls = words.map((w, i) => {
         const span = document.createElement('span');
         span.className = 'reader-word' + (w.sym ? ' sym' : '');
         span.textContent = w.surface;
+        if (!w.sym) {
+            span.tabIndex = 0;
+            span.setAttribute('role', 'button');
+            span.addEventListener('click', () => jumpToWord(i));
+            span.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); jumpToWord(i); }
+            });
+        }
         passageEl.appendChild(span);
         return span;
     });
@@ -315,6 +346,26 @@ function advanceWord() {
     advanceTo(currentIdx + 1);
 }
 
+// Tapping a word moves the cursor to it. The matcher can desync in both directions -- a word
+// ASR keeps mishearing, a reader who skips a line or wants to re-read one -- and until now the
+// only way out was Skip Word, one word at a time and forwards only, which made a cursor that
+// had run ahead impossible to recover from without restarting the whole text. Jumping forward
+// still books the words passed over as skipped, exactly as Skip Word does; jumping back just
+// moves the cursor, since re-reading isn't a skip.
+function jumpToWord(idx) {
+    const target = firstNonSymbolIndex(words, idx);
+    if (target >= words.length || target === currentIdx) return;
+    if (target > currentIdx) {
+        let i = currentIdx;
+        while (i < target) {
+            if (!words[i].sym) skippedWords.push(words[i]);
+            i = firstNonSymbolIndex(words, i + 1);
+        }
+        renderSkippedList();
+    }
+    advanceTo(target);
+}
+
 // Positions (indices into `words`, skipping symbols) of the next `count` speakable words
 // starting at `fromIdx`, inclusive.
 function nextWordPositions(fromIdx, count) {
@@ -374,25 +425,52 @@ function goToNextText() {
 // ---------------------------------------------------------------------------
 function startRecognition() {
     if (!SpeechRecognitionCtor) return;
+    // SpeechRecognition needs a secure origin. Served over plain http on a LAN address the
+    // constructor still exists and start() fails as 'not-allowed' -- which reads as "you denied
+    // the microphone" and sends people into their browser settings for a permission that was
+    // never the problem. Checking up front lets us name the actual cause.
+    if (!window.isSecureContext) {
+        failListening(window.t('reading.insecureOrigin'));
+        return;
+    }
+    // Chrome streams the audio out to a remote service, so offline there is nothing to
+    // recognize -- and the PWA means this page opens offline perfectly happily.
+    if (navigator.onLine === false) {
+        failListening(window.t('reading.speechOffline'));
+        return;
+    }
+
+    const generation = ++recognitionGeneration;
     recognition = new SpeechRecognitionCtor();
     recognition.lang = 'ja-JP';
     recognition.continuous = true;
     recognition.interimResults = true;
+    // ASR's second and third guesses are often the one that matches the passage -- it hears a
+    // reading correctly but writes it in the wrong script, or picks the commoner homophone.
+    recognition.maxAlternatives = MAX_ALTERNATIVES;
 
     recognition.onresult = (event) => {
-        let chunk = '';
+        if (generation !== recognitionGeneration) return;
+        restartAttempts = 0; // audio is flowing, so the restart budget is not being spent
+
+        let primary = '';
+        const alternates = [];
         let isFinal = false;
         for (let i = event.resultIndex; i < event.results.length; i++) {
-            chunk += event.results[i][0].transcript;
-            isFinal = event.results[i].isFinal;
+            const result = event.results[i];
+            isFinal = result.isFinal;
+            primary += result[0].transcript;
+            for (let a = 1; a < result.length; a++) alternates.push(normalizeForMatch(result[a].transcript));
         }
+        const chunks = [normalizeForMatch(primary), ...alternates];
+
         // Interim results are the recognizer's still-changing, speculative guess about an
-        // utterance in progress — it can predict text ahead of what's actually been said yet.
+        // utterance in progress -- it can predict text ahead of what's actually been said yet.
         // Searching several words ahead against THAT was causing the cursor to fast-forward
         // mid-word, before the reader had even finished speaking. So: while a result is still
         // interim, only match the exact current word (the original, conservative behavior).
         // Only once the recognizer commits to a final transcript for a phrase do we widen the
-        // search and catch up on anything genuinely missed within it — a single word ASR
+        // search and catch up on anything genuinely missed within it -- a single word ASR
         // misheard (an unusual kanji reading, an okurigana form it didn't expect) would
         // otherwise stall the reader forever even after reading straight past it out loud.
         const windowSize = isFinal ? READ_AHEAD_WORDS : 1;
@@ -400,14 +478,38 @@ function startRecognition() {
         let matchPos = -1;
         for (const pos of positions) {
             const w = words[pos];
-            if (chunk.includes(w.surface) || (w.reading && chunk.includes(w.reading))) {
-                matchPos = pos; // keep the furthest (last) match in the window, not the first
-            }
+            const surface = normalizeForMatch(w.surface);
+            const reading = normalizeForMatch(w.reading || '');
+            // Nearly half of this corpus's speakable tokens are single characters, and the
+            // commonest of them are the particles and inflection tails -- almost any Japanese
+            // transcript contains one. Letting those serve as a *jump* target meant reading one
+            // phrase aloud could carry the cursor several words forward and file the words you
+            // had just read correctly under "Skipped Words". (Measured on the very first
+            // passage: saying it correctly filed its first two words as skipped.) So a token
+            // only earns a jump if it is long enough to mean something on its own; the word
+            // directly under the cursor still matches at any length, which is what keeps
+            // particles flowing.
+            const distinctive = Math.max(surface.length, reading.length) >= MIN_JUMP_TOKEN_LEN;
+            if (pos !== positions[0] && !distinctive) continue;
+            const hit = chunks.some(c => (surface && c.includes(surface)) || (reading && c.includes(reading)));
+            if (hit) matchPos = pos; // keep the furthest (last) match in the window, not the first
         }
         if (matchPos !== -1) {
+            // Only file a passed-over word as skipped if this transcript doesn't contain it
+            // either. Jumping to the furthest match is right, but the words between the cursor
+            // and that match were usually spoken in the very same breath -- the panel is
+            // headed "words the voice matcher jumps past without hearing directly", and
+            // recording ones it demonstrably did hear made it useless: reading the opening
+            // line of the first passage perfectly filed its first two words as skipped.
             let idx = currentIdx;
             while (idx < matchPos) {
-                if (!words[idx].sym) skippedWords.push(words[idx]);
+                const w = words[idx];
+                if (!w.sym) {
+                    const surface = normalizeForMatch(w.surface);
+                    const reading = normalizeForMatch(w.reading || '');
+                    const heard = chunks.some(c => (surface && c.includes(surface)) || (reading && c.includes(reading)));
+                    if (!heard) skippedWords.push(w);
+                }
                 idx = firstNonSymbolIndex(words, idx + 1);
             }
             renderSkippedList();
@@ -416,32 +518,83 @@ function startRecognition() {
     };
 
     recognition.onend = () => {
-        if (listening) {
-            // Chrome stops continuous recognition after a silence gap; restart to keep going.
-            try { recognition.start(); } catch (e) { /* already starting */ }
+        if (generation !== recognitionGeneration || !listening) return;
+        // Chrome ends continuous recognition after a silence gap, so restarting is normal and
+        // is what keeps a session alive. It used to be unconditional, which turned any
+        // permanently failing service (offline, no input device) into a silent infinite restart
+        // loop with the button still cheerfully reading "Listening...". Only *rapid* restarts
+        // count against the budget -- a reader pausing to work out a kanji leaves seconds
+        // between them, a failure loop leaves milliseconds.
+        const now = Date.now();
+        if (now - lastRestartAt > RESTART_STREAK_WINDOW_MS) restartAttempts = 0;
+        lastRestartAt = now;
+        if (restartAttempts >= MAX_RESTART_ATTEMPTS) {
+            failListening(window.t('reading.speechStalled'));
+            return;
+        }
+        restartAttempts++;
+        try {
+            recognition.start();
+        } catch (e) {
+            failListening(window.t('reading.speechStalled'));
         }
     };
 
     recognition.onerror = (event) => {
-        if (event.error === 'not-allowed' || event.error === 'service-not-allowed') {
-            listening = false;
-            document.getElementById('reader-status').textContent = window.t('reading.micDenied');
-            updateMicButton();
+        if (generation !== recognitionGeneration) return;
+        switch (event.error) {
+            case 'aborted':
+                break; // our own stop(), or a navigation -- nothing worth reporting
+            case 'no-speech':
+                // Not fatal (onend restarts us), but worth saying: a muted mic, or one pointed
+                // at the wrong input device, looks exactly like "listening" otherwise.
+                document.getElementById('reader-status').textContent = window.t('reading.noSpeech');
+                break;
+            case 'not-allowed':
+            case 'service-not-allowed':
+                failListening(window.t('reading.micDenied'));
+                break;
+            case 'audio-capture':
+                failListening(window.t('reading.noMic'));
+                break;
+            case 'network':
+                failListening(window.t('reading.speechOffline'));
+                break;
+            default:
+                failListening(window.tf('reading.speechError', { error: event.error }));
         }
     };
 
-    recognition.start();
+    try {
+        recognition.start();
+    } catch (e) {
+        failListening(window.t('reading.speechStalled'));
+    }
 }
 
 function stopRecognition() {
     listening = false;
+    recognitionGeneration++;
+    restartAttempts = 0;
     if (recognition) {
+        // Every handler is detached, not just onend: a late onresult from a stopped instance
+        // was still able to advance the cursor after the reader hit Stop or backed out.
         recognition.onend = null;
-        recognition.stop();
+        recognition.onresult = null;
+        recognition.onerror = null;
+        try { recognition.stop(); } catch (e) { /* never successfully started */ }
         recognition = null;
     }
     clearTimeout(stallTimer);
+    hideEl(document.getElementById('hint-popup'));
     updateMicButton();
+}
+
+// Stop listening and say why. Every dead end below routes through here so the mic button and
+// the status line can never disagree about whether we're still listening.
+function failListening(message) {
+    stopRecognition();
+    document.getElementById('reader-status').textContent = message;
 }
 
 function updateMicButton() {

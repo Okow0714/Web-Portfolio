@@ -474,6 +474,19 @@ body:has(.reading-main) .auth-btn-outline:hover {
    passage/mic, so they live anchored to the bottom edge instead of scrolling away with
    the page. Left at document position (after .reader-body in the DOM); only taken out of
    flow visually via position:fixed, so nothing about reading.js's element lookups moves. */
+/* .reader-controls is a fixed bar pinned to the bottom of the viewport, and its z-index:40
+   below is sealed inside .reading-main's 'isolation: isolate' -- so the level that actually
+   competes with the page footer is .container's. style.css gives .container AND .site-footer
+   z-index:2 apiece, an exact tie, broken by DOM order in the footer's favour since it comes
+   later. The footer therefore painted over the control bar and swallowed every click on Start
+   Reading and Skip Word wherever the two overlapped -- on a 950px-tall viewport, all of them.
+   (The footer's own z-index:2 was added so background shapes wouldn't swallow clicks on its
+   links: the same bug, one layer up.) Raising the level here only, on the one page carrying a
+   fixed bottom bar; the masthead sits outside .container at z-index:1000 and still wins. */
+body:has(.reading-main) .container {
+    z-index: 3;
+}
+
 .reader-controls {
     position: fixed;
     left: 50%;
@@ -484,7 +497,9 @@ body:has(.reading-main) .auth-btn-outline:hover {
     margin: 0;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 14px;
+    row-gap: 8px;
     background: var(--bg-surface);
     border: 1px solid var(--border-strong);
     box-shadow: var(--shadow-md);
@@ -503,16 +518,38 @@ body:has(.reading-main) .auth-btn-outline:hover {
     white-space: nowrap;
 }
 
-.reader-status {
+/* Non-symbol words are click/Enter targets for jumpToWord, so they need to look like it --
+   subtle enough not to compete with the .current cursor, which is the thing being read. */
+.reader-word[role='button'] { cursor: pointer; border-radius: 4px; }
+.reader-word[role='button']:hover { background: var(--accent-tint); }
+.reader-word[role='button']:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.reader-tap-hint {
+    order: 2;
     flex: 1 1 auto;
+    min-width: 0;
+    margin: 0;
+    font-size: .78rem;
+    color: var(--text-muted);
+    opacity: .8;
+}
+
+.reader-status {
+    /* Own full-width row (order puts it under the buttons and the hint), and allowed to wrap:
+       it now carries whole sentences explaining why recognition stopped, and the old
+       nowrap + ellipsis inside a 680px bar shared with two buttons clipped them to "List…". */
+    order: 3;
+    flex: 1 1 100%;
     min-width: 0;
     color: var(--text-secondary);
     font-size: 0.85rem;
     margin: 0;
-    text-align: center;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    text-align: left;
+}
+
+/* No message, no empty row -- otherwise the bar is permanently a line taller than it needs. */
+.reader-status:empty {
+    display: none;
 }
 
 /* ---------------------------------------------------------------------
