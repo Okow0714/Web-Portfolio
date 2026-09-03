@@ -102,9 +102,30 @@ Game's and Grammar Connect's background photos and soundtracks. Adding a new pho
 track to either tool means adding its credit to `credits.html` too — nothing else attributes
 them anymore now that the old page-local disclosures are gone. Never republish curated
 third-party content beyond what these licenses allow — only derive from raw data.
+The repo's own `LICENSE` splits this in two: code is MIT, but **`game-words.js`,
+`phonetics-data.js` and `phonetics-kanji-index.js` are CC BY-SA 4.0** — they carry
+Kanjium-derived phonetic-component data and ShareAlike is inherited by adaptations, so
+they cannot be relicensed and anyone redistributing them must keep those terms. The other
+data files (`mnjp-data.js`, `reading-texts.js`, `dictionary-data.js`) carry no Kanjium
+material and stay MIT — verified by grepping for the `phonetic` field, which is the marker.
+Adding Kanjium-derived data to a fourth file moves that file into CC BY-SA too, so check
+before merging phonetic data anywhere new. `credits.html#licensing` links the LICENSE, and
+elzup/jlpt-word-list is MIT, whose text must stay reproduced in LICENSE section 3.
+All of these permit commercial use, so ads or donations change none of these obligations.
 
 **Supabase**: `supabase-config.js` holds the project URL and anon/publishable key (safe to
 expose — access is enforced by RLS policies in `supabase-schema.sql`, not key secrecy).
+**`profiles` is world-readable on purpose** (the comment list embeds author names), which
+makes anything stored in it public to anonymous callers. That is why `handle_new_user()`
+must never derive `display_name` from the email address: it used to use
+`split_part(new.email, '@', 1)`, which published every user's email local-part — a trivial
+guess away from the full address for the common providers. The default is now a neutral
+`Reader NNNN`. Column grants restrict the table to `(id, display_name)`, so adding a
+column to `profiles` does not automatically expose it, but adding personal data there
+still needs thought. Every free-text column is length-bounded, since an insert policy
+proves who you are and not how much you may write. `supabase-migration-001-profile-privacy.sql`
+applies all of this to a project created before these fixes; a project set up fresh from
+`supabase-schema.sql` already has them.
 `auth-shared.js` = auth/session plumbing used sitewide; `supabase-app.js` = comments,
 bookmarks, account-linked contact form (depends on `auth-shared.js` having run first).
 

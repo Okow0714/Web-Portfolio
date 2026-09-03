@@ -6,7 +6,7 @@
 -- ---------------------------------------------------------------------------
 create table public.profiles (
     id uuid references auth.users on delete cascade primary key,
-    display_name text not null,
+    display_name text not null check (char_length(display_name) between 1 and 40),
     created_at timestamptz not null default now()
 );
 
@@ -16,19 +16,35 @@ create policy "Profiles are viewable by everyone"
     on public.profiles for select
     using (true);
 
+-- WITH CHECK as well as USING: USING decides which rows may be updated, WITH CHECK
+-- validates the row that gets written. Without it nothing re-examines the new row,
+-- which is a hole waiting for the next column added to this table.
 create policy "Users can update their own profile"
     on public.profiles for update
-    using (auth.uid() = id);
+    using (auth.uid() = id)
+    with check (auth.uid() = id);
+
+-- created_at is nobody else's business; the comment author embed only needs the name.
+revoke select on public.profiles from anon, authenticated;
+grant select (id, display_name) on public.profiles to anon, authenticated;
+grant update (display_name) on public.profiles to authenticated;
 
 -- Auto-create a profile row whenever someone signs up.
+--
+-- The display name is deliberately NOT derived from the email. It used to be
+-- split_part(new.email, '@', 1), and since profiles are world-readable (the comment
+-- list needs author names), that published every user's email local-part to anyone
+-- holding the anon key -- which is public by design. For the common providers that
+-- makes the full address a trivial guess. A neutral default costs nothing; people who
+-- want to be recognisable can set a real name from the dashboard.
 create function public.handle_new_user()
-returns trigger as $$
+returns trigger as $
 begin
     insert into public.profiles (id, display_name)
-    values (new.id, split_part(new.email, '@', 1));
+    values (new.id, 'Reader ' || lpad((abs(hashtext(new.id::text)) % 10000)::text, 4, '0'));
     return new;
 end;
-$$ language plpgsql security definer set search_path = public;
+$ language plpgsql security definer set search_path = public;
 
 create trigger on_auth_user_created
     after insert on auth.users
@@ -41,9 +57,11 @@ create trigger on_auth_user_created
 -- the comments -> profiles embed used to show each comment's author display name.
 create table public.comments (
     id uuid primary key default gen_random_uuid(),
-    project_id text not null,
+    project_id text not null check (char_length(project_id) between 1 and 100),
     user_id uuid not null references public.profiles(id) on delete cascade,
-    content text not null,
+    -- Bounded because the insert policy only proves who you are, not how much you may
+    -- write: unbounded text plus an automated client is a storage bill, not a comment.
+    content text not null check (char_length(content) between 1 and 2000),
     created_at timestamptz not null default now()
 );
 
@@ -85,7 +103,7 @@ create policy "Users manage their own bookmarks"
 create table public.contact_messages (
     id uuid primary key default gen_random_uuid(),
     user_id uuid not null references auth.users on delete cascade,
-    message text not null,
+    message text not null check (char_length(message) between 1 and 5000),
     created_at timestamptz not null default now()
 );
 

@@ -1,0 +1,124 @@
+Khan Japanese — licensing
+=========================
+
+This repository holds two kinds of material under two different licences.
+Which one applies depends on the file, so both are set out in full below.
+
+Per-source attribution for the data, photography and music is on the site
+itself, at credits.html.
+
+
+-------------------------------------------------------------------------------
+1. Source code — MIT
+-------------------------------------------------------------------------------
+
+Applies to everything in this repository EXCEPT the three data files named in
+section 2: all HTML, CSS and JavaScript, including the SQL schema.
+
+MIT License
+
+Copyright (c) 2026 Sarantsatsral Ganzorig
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+-------------------------------------------------------------------------------
+2. Derived data — CC BY-SA 4.0
+-------------------------------------------------------------------------------
+
+Applies to exactly these three files:
+
+    game-words.js
+    phonetics-data.js
+    phonetics-kanji-index.js
+
+Each carries kanji phonetic-component data derived from Kanjium, which is
+licensed CC BY-SA 4.0. ShareAlike is inherited by adaptations, so these files
+are offered under the same licence and not under the MIT terms above. Anyone
+redistributing them, modified or not, must do so under CC BY-SA 4.0 and keep
+the attribution below.
+
+    Creative Commons Attribution-ShareAlike 4.0 International
+    https://creativecommons.org/licenses/by-sa/4.0/
+
+    Contains data from Kanjium by Uros Ozvald and contributors
+    https://github.com/mifunetoshiro/kanjium — CC BY-SA 4.0
+
+phonetics-data.js additionally carries usage-frequency ranking derived from
+scriptin/kanji-frequency (CC BY 4.0), and phonetics-kanji-index.js is generated
+from phonetics-data.js.
+
+The remaining data files — mnjp-data.js, reading-texts.js and
+dictionary-data.js — carry no Kanjium-derived material and are covered by
+section 1, subject to the third-party notices in section 3.
+
+
+-------------------------------------------------------------------------------
+3. Third-party notices
+-------------------------------------------------------------------------------
+
+Kanjium — kanji and phonetic-family data
+    https://github.com/mifunetoshiro/kanjium
+    CC BY-SA 4.0. See section 2.
+
+Tatoeba — example sentences
+    https://tatoeba.org
+    Sentences are CC BY 2.0 FR, some CC0. Individual sentence authorship is
+    recorded upstream at Tatoeba.
+
+scriptin/kanji-frequency — kanji usage ranking
+    https://github.com/scriptin/kanji-frequency
+    CC BY 4.0.
+
+elzup/jlpt-word-list — JLPT vocabulary curation
+    https://github.com/elzup/jlpt-word-list
+    MIT License. Reproduced as required:
+
+        Copyright (c) 2020 Jamie Sinclair
+        Copyright (c) 2020 elzup
+
+        Permission is hereby granted, free of charge, to any person obtaining
+        a copy of this software and associated documentation files (the
+        "Software"), to deal in the Software without restriction, including
+        without limitation the rights to use, copy, modify, merge, publish,
+        distribute, sublicense, and/or sell copies of the Software, and to
+        permit persons to whom the Software is furnished to do so, subject to
+        the following conditions:
+
+        The above copyright notice and this permission notice shall be
+        included in all copies or substantial portions of the Software.
+
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+        EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+        MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+        NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+        LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+        OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+        WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Pixabay — background photography and music
+    https://pixabay.com
+    Pixabay Content License. Free for commercial use; the assets may not be
+    sold as-is or made the primary basis of a product for sale. Per-track and
+    per-photo credits are on credits.html.
+
+Wikimedia Commons — background photography
+    https://commons.wikimedia.org
+    Individual files are CC0, CC BY or CC BY-SA; each is credited with its own
+    licence on credits.html.

@@ -2,6 +2,11 @@
 // which i18n-strings-shared.js must have already created (loaded first in credits.html).
 Object.assign(window.I18N_STRINGS, {
     'credits.title': { en: 'Credits & Sources', mn: 'Эх сурвалж ба зохиогчийн эрх' },
+    'credits.licensing.h': { en: 'Licensing', mn: 'Лицензүүд' },
+    'credits.licensing.p': {
+        en: "This site's code is MIT licensed. Three of its data files — <code>game-words.js</code>, <code>phonetics-data.js</code> and <code>phonetics-kanji-index.js</code> — carry kanji phonetic-component data derived from Kanjium and are therefore offered under <a href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>, the same licence Kanjium uses. The full terms, including the third-party notices, are in the <a href=\"https://github.com/Okow0714/Web-Portfolio/blob/main/LICENSE\" target=\"_blank\" rel=\"noopener\">LICENSE file</a>.",
+        mn: "Энэ сайтын код MIT лицензтэй. Гурван өгөгдлийн файл — <code>game-words.js</code>, <code>phonetics-data.js</code>, <code>phonetics-kanji-index.js</code> — Kanjium-аас гаралтай ханзны дуудлагын язгуурын мэдээлэл агуулдаг тул Kanjium-тай ижил <a href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> лицензээр тархаана. Бүрэн нөхцөл, гуравдагч талын мэдэгдлүүдийг <a href=\"https://github.com/Okow0714/Web-Portfolio/blob/main/LICENSE\" target=\"_blank\" rel=\"noopener\">LICENSE файлаас</a> үзнэ үү.",
+    },
     'credits.intro': {
         en: "Every dataset, photo, and music track used across this site's tools, credited in one place — the short version lives in every page's footer, this is the full version.",
         mn: 'Энэ сайтын хэрэгслүүдэд ашигласан өгөгдөл, гэрэл зураг, хөгжмийн эх сурвалж бүрийг нэг дор жагсаав — товч хувилбар нь хуудас бүрийн хөл хэсэгт байдаг, энэ бол бүрэн хувилбар юм.',
