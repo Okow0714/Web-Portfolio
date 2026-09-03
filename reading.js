@@ -197,6 +197,7 @@ function renderTrackSelect() {
 }
 
 function backToTrackSelect() {
+    cancelPlayback();
     stopRecognition();
     hideEl(document.getElementById('level-select-section'));
     hideEl(document.getElementById('text-list-section'));
@@ -234,6 +235,7 @@ function showLevelSelect(track) {
 }
 
 function backToLevelSelect() {
+    cancelPlayback();
     stopRecognition();
     hideEl(document.getElementById('text-list-section'));
     hideEl(document.getElementById('reader-section'));
@@ -269,6 +271,7 @@ function startText(track, level, textIndex) {
     currentTrack = track;
     currentLevel = level;
     currentTextIndex = textIndex;
+    cancelPlayback(); // a word from the previous text must not talk over this one
     const text = level.texts[textIndex];
     words = text.words;
     currentIdx = firstNonSymbolIndex(words, 0);
@@ -341,7 +344,10 @@ function renderSkippedList() {
     const list = document.getElementById('skipped-list');
     const empty = document.getElementById('skipped-empty');
     list.innerHTML = '';
-    skippedWords.forEach(w => {
+    // Newest first. The list is kept in the order words were skipped, but it is read to find
+    // the word you just missed, and appending put that one at the bottom -- off the end of the
+    // panel once a few had built up, which is the one place it must never be.
+    skippedWords.slice().reverse().forEach(w => {
         const gloss = (window.siteLang() === 'mn' && w.enMn) ? w.enMn : w.en;
         const li = document.createElement('li');
         li.innerHTML = `<span class="skipped-word-surface">${escapeHtml(w.surface)}</span>` +
@@ -643,8 +649,13 @@ function setTtsSpeaking(on) {
         // switched off because a word failed to finish speaking.
         ttsClearTimer = setTimeout(() => { ttsSpeaking = false; }, 6000);
     } else {
-        // Let the tail of the audio die away before trusting the microphone again.
-        ttsClearTimer = setTimeout(() => { ttsSpeaking = false; }, 400);
+        // Long enough to cover the recognizer's own lag, not just the audio. Results arrive
+        // up to a second after the sound that produced them, so a short tail let a transcript
+        // *of our own playback* land just after the guard lifted -- harmless for one word, but
+        // sentence playback speaks words ahead of the cursor and could walk it through them.
+        // A reader resuming immediately loses nothing: interim results accumulate, so what
+        // they say during this window still arrives in the next one.
+        ttsClearTimer = setTimeout(() => { ttsSpeaking = false; }, 1200);
     }
 }
 
@@ -873,9 +884,22 @@ async function startVoiceGate() {
             return;
         }
         voiceGateReady = true;
-        if (rms >= voiceThreshold()) lastVoiceAt = now;
+        // The analyser hears the speakers as readily as it hears the reader, so playback would
+        // otherwise refresh lastVoiceAt and leave the gate wide open for a stray transcript
+        // arriving just after it. The meter still moves, which is honest: that really is sound
+        // in the room.
+        if (rms >= voiceThreshold() && !ttsSpeaking) lastVoiceAt = now;
         renderLevel(rms);
     }, VOICE_LEVEL_POLL_MS);
+}
+
+// Stopping recognition is not a reason to stop talking -- pressing Stop, or finishing a text
+// on a skip, should still let the word you just asked for finish. Leaving the passage is.
+function cancelPlayback() {
+    if (speechSynth && ttsPlaying) {
+        speechSynth.cancel();
+        endPlayback();
+    }
 }
 
 function stopVoiceGate() {
@@ -1065,7 +1089,6 @@ function stopRecognition() {
         try { recognition.stop(); } catch (e) { /* never successfully started */ }
         recognition = null;
     }
-    if (speechSynth && ttsPlaying) { speechSynth.cancel(); endPlayback(); }
     stopVoiceGate();
     clearTimeout(stallTimer);
     hideEl(document.getElementById('hint-popup'));
@@ -1106,7 +1129,12 @@ document.getElementById('reader-mic-btn').addEventListener('click', () => {
 // an accent it struggles with), the reader shouldn't be a dead end.
 document.getElementById('reader-skip-btn').addEventListener('click', () => {
     if (currentIdx >= words.length) return;
+    const skipped = words[currentIdx];
     recordSkipped(currentIdx);
+    // Skipping is the moment you most want to hear the word -- not being able to say it is
+    // why it was skipped. Spoken before advancing, so that finishing a text on a skip still
+    // plays it rather than being cut off by the completion.
+    speakWord(skipped);
     advanceWord();
 });
 
@@ -1137,6 +1165,7 @@ document.addEventListener('sitelangchange', () => {
 document.getElementById('level-select-back-btn').addEventListener('click', backToTrackSelect);
 document.getElementById('text-list-back-btn').addEventListener('click', backToLevelSelect);
 document.getElementById('reader-back-btn').addEventListener('click', () => {
+    cancelPlayback();
     stopRecognition();
     showTextList(currentTrack, currentLevel);
 });
