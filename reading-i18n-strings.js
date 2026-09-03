@@ -47,5 +47,6 @@ Object.assign(window.I18N_STRINGS, {
     'reading.speechError': { en: 'Speech recognition stopped ({error}). Press Start Reading to try again.', mn: 'Дуу таних зогслоо ({error}). «Унших эхлэх» дарж дахин оролдоно уу.' },
     'reading.tapHint': { en: 'Tap any word to move the highlight there.', mn: 'Аль ч үг дээр дарвал тодотгол тэр үг рүү шилжинэ.' },
     'reading.micLevel': { en: 'Microphone level', mn: 'Микрофоны түвшин' },
+    'reading.hearWord': { en: 'Hear this word', mn: 'Энэ үгийг сонсох' },
     'reading.gateOff': { en: 'Noise filter off — your microphone reads as silent even while speech is getting through.', mn: 'Чимээний шүүлтүүр унтарлаа — яриа орж ирж байгаа ч микрофоны түвшин чимээгүй байна.' },
 });

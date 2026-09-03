@@ -347,6 +347,7 @@ function renderSkippedList() {
         li.innerHTML = `<span class="skipped-word-surface">${escapeHtml(w.surface)}</span>` +
             `<span class="skipped-word-reading">${escapeHtml(w.reading)}</span>` +
             (gloss ? `<span class="skipped-word-en">${escapeHtml(gloss)}</span>` : '');
+        if (speechSynth) li.appendChild(speakButton(() => w));
         list.appendChild(li);
     });
     if (skippedWords.length) hideEl(empty); else showEl(empty);
@@ -566,6 +567,56 @@ function goToNextText() {
 }
 
 // ---------------------------------------------------------------------------
+// Speaking words back — hear the one you got stuck on
+// ---------------------------------------------------------------------------
+const speechSynth = window.speechSynthesis || null;
+let ttsSpeaking = false;
+let ttsClearTimer = null;
+
+// Matching is suspended while we're the ones making noise. The microphone is usually still
+// open and the speakers are right next to it, so otherwise the page hears its own playback
+// and walks the cursor forward on it -- the reader would tap "hear this word" and watch the
+// highlight move on its own.
+function setTtsSpeaking(on) {
+    clearTimeout(ttsClearTimer);
+    if (on) {
+        ttsSpeaking = true;
+        // Failsafe: not every browser fires onend reliably, and matching must never be left
+        // switched off because a word failed to finish speaking.
+        ttsClearTimer = setTimeout(() => { ttsSpeaking = false; }, 6000);
+    } else {
+        // Let the tail of the audio die away before trusting the microphone again.
+        ttsClearTimer = setTimeout(() => { ttsSpeaking = false; }, 400);
+    }
+}
+
+// Speaks the word's *reading*, not its written form: the reading is the pronunciation this
+// passage intends, and handing a synthesizer bare kanji lets it choose a different one --
+// exactly the confusion the reader is trying to resolve.
+function speakWord(w) {
+    if (!speechSynth || !w) return;
+    speechSynth.cancel();
+    const utter = new SpeechSynthesisUtterance(w.reading || w.surface);
+    utter.lang = 'ja-JP';
+    utter.rate = 0.85; // a beat under conversational pace: this is a word being taught
+    setTtsSpeaking(true);
+    utter.onend = () => setTtsSpeaking(false);
+    utter.onerror = () => setTtsSpeaking(false);
+    speechSynth.speak(utter);
+}
+
+function speakButton(getWord) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'speak-btn';
+    btn.textContent = '\u{1F50A}';
+    btn.title = window.t('reading.hearWord');
+    btn.setAttribute('aria-label', window.t('reading.hearWord'));
+    btn.addEventListener('click', (e) => { e.stopPropagation(); speakWord(getWord()); });
+    return btn;
+}
+
+// ---------------------------------------------------------------------------
 // Voice gate — our own read of the microphone, used to vet the recognizer's output
 // ---------------------------------------------------------------------------
 function voiceThreshold() {
@@ -695,6 +746,8 @@ function startRecognition() {
     recognition.onresult = (event) => {
         if (generation !== recognitionGeneration) return;
         restartAttempts = 0; // audio is flowing, so the restart budget is not being spent
+
+        if (ttsSpeaking) return; // that is the page's own playback, not the reader
 
         // Nothing was actually said recently enough to explain this transcript, so it is the
         // room, not the reader. Drop it rather than walk the cursor forward on a cough.
@@ -893,6 +946,9 @@ document.addEventListener('sitelangchange', () => {
         });
         updateMicButton();
         renderSkippedList();
+        const hintSpeak = document.getElementById('hint-speak-btn');
+        hintSpeak.title = window.t('reading.hearWord');
+        hintSpeak.setAttribute('aria-label', window.t('reading.hearWord'));
     }
 });
 
@@ -902,6 +958,9 @@ document.getElementById('reader-back-btn').addEventListener('click', () => {
     stopRecognition();
     showTextList(currentTrack, currentLevel);
 });
+document.getElementById('hint-speak-btn').addEventListener('click', () => speakWord(words[currentIdx]));
+if (!speechSynth) hideEl(document.getElementById('hint-speak-btn'));
+
 document.getElementById('complete-next-btn').addEventListener('click', goToNextText);
 document.getElementById('complete-levels-btn').addEventListener('click', () => {
     clearTimeout(autoAdvanceTimer);

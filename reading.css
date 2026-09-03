@@ -387,8 +387,18 @@ body:has(.reading-main) .auth-btn-outline:hover {
 }
 
 .skipped-list li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
     border-left: 2px solid var(--accent);
     padding: 2px 0 2px 10px;
+}
+
+/* Ordered so the row reads: surface, reading, [speaker pushed right], then the gloss on its
+   own line underneath -- the speaker belongs with the word, not stranded under the gloss. */
+.skipped-list .speak-btn {
+    order: 2;
+    margin-left: auto;
 }
 
 .skipped-word-surface {
@@ -403,7 +413,8 @@ body:has(.reading-main) .auth-btn-outline:hover {
 }
 
 .skipped-word-en {
-    display: block;
+    order: 3;
+    flex-basis: 100%;
     color: var(--text-secondary);
     font-size: 0.82rem;
 }
@@ -457,6 +468,13 @@ body:has(.reading-main) .auth-btn-outline:hover {
     overflow: hidden;
     text-overflow: ellipsis;
     z-index: 5;
+}
+
+/* The popup itself is pointer-events:none so it never intercepts a tap meant for the word
+   underneath it -- but the speaker inside it has to be clickable, so it opts back in. */
+.hint-popup .speak-btn {
+    pointer-events: auto;
+    margin-left: 4px;
 }
 
 .hint-reading {
@@ -552,6 +570,32 @@ body:has(.reading-main) .container {
 
 @media (prefers-reduced-motion: reduce) {
     .reader-level-fill { transition: none; }
+}
+
+/* Speak-this-word buttons, in the stall hint and on every skipped word. Sized to sit with
+   the text rather than compete with it -- the word is the content, this is an affordance. */
+.speak-btn {
+    flex: 0 0 auto;
+    margin-left: auto;
+    padding: 2px 6px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.4;
+    cursor: pointer;
+    transition: background 0.15s var(--ease-out), border-color 0.15s var(--ease-out);
+}
+
+.speak-btn:hover {
+    background: var(--accent-tint);
+    border-color: var(--border-strong);
+}
+
+.speak-btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
 }
 
 /* Non-symbol words are click/Enter targets for jumpToWord, so they need to look like it --

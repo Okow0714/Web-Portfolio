@@ -41,15 +41,10 @@ const READING_TRACKS = [
                                 "enMn": "маш их"
                             },
                             {
-                                "surface": "忙しかっ",
-                                "reading": "いそがしかっ",
+                                "surface": "忙しかった",
+                                "reading": "いそがしかった",
                                 "en": "busy (people, days)",
                                 "enMn": "завгүй (хүн, өдөр)"
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
-                                "en": null
                             },
                             {
                                 "surface": "です",
@@ -85,13 +80,8 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -239,13 +229,8 @@ const READING_TRACKS = [
                                 "enMn": "харах"
                             },
                             {
-                                "surface": "ましょ",
-                                "reading": "ましょ",
-                                "en": null
-                            },
-                            {
-                                "surface": "う",
-                                "reading": "う",
+                                "surface": "ましょう",
+                                "reading": "ましょう",
                                 "en": null
                             },
                             {
@@ -329,13 +314,8 @@ const READING_TRACKS = [
                                 "enMn": "өдөр"
                             },
                             {
-                                "surface": "でし",
-                                "reading": "でし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "でした",
+                                "reading": "でした",
                                 "en": null
                             },
                             {
@@ -363,13 +343,8 @@ const READING_TRACKS = [
                                 "enMn": "хийх"
                             },
                             {
-                                "surface": "ましょ",
-                                "reading": "ましょ",
-                                "en": null
-                            },
-                            {
-                                "surface": "う",
-                                "reading": "う",
+                                "surface": "ましょう",
+                                "reading": "ましょう",
                                 "en": null
                             },
                             {
@@ -407,13 +382,8 @@ const READING_TRACKS = [
                                 "enMn": "хэлэх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -467,13 +437,8 @@ const READING_TRACKS = [
                                 "enMn": "явах"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -517,13 +482,8 @@ const READING_TRACKS = [
                                 "enMn": "хүсэл зориг"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -556,13 +516,8 @@ const READING_TRACKS = [
                                 "enMn": "зураг авах"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -584,13 +539,8 @@ const READING_TRACKS = [
                                 "enMn": "алхалт"
                             },
                             {
-                                "surface": "でし",
-                                "reading": "でし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "でした",
+                                "reading": "でした",
                                 "en": null
                             },
                             {
@@ -1226,15 +1176,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "作っ",
-                                "reading": "つくっ",
+                                "surface": "作って",
+                                "reading": "つくって",
                                 "en": "to make",
                                 "enMn": "хийх"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "遊ん",
@@ -1299,13 +1244,8 @@ const READING_TRACKS = [
                                 "enMn": "тоглох"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -1416,15 +1356,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "降っ",
-                                "reading": "ふっ",
+                                "surface": "降って",
+                                "reading": "ふって",
                                 "en": "to precipitate",
                                 "enMn": "хур тунадас орох"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "い",
@@ -1461,15 +1396,10 @@ const READING_TRACKS = [
                                 "enMn": "хүчтэй"
                             },
                             {
-                                "surface": "なっ",
-                                "reading": "なっ",
+                                "surface": "なった",
+                                "reading": "なった",
                                 "en": "to become",
                                 "enMn": "болох"
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
-                                "en": null
                             },
                             {
                                 "surface": "。",
@@ -1512,13 +1442,8 @@ const READING_TRACKS = [
                                 "enMn": "маш"
                             },
                             {
-                                "surface": "でし",
-                                "reading": "でし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "でした",
+                                "reading": "でした",
                                 "en": null
                             },
                             {
@@ -1594,13 +1519,8 @@ const READING_TRACKS = [
                                 "enMn": "хийх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -1616,15 +1536,10 @@ const READING_TRACKS = [
                                 "enMn": "маш их"
                             },
                             {
-                                "surface": "楽しかっ",
-                                "reading": "たのしかっ",
+                                "surface": "楽しかった",
+                                "reading": "たのしかった",
                                 "en": "enjoyable",
                                 "enMn": "хөгжилтэй"
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
-                                "en": null
                             },
                             {
                                 "surface": "です",
@@ -1733,13 +1648,8 @@ const READING_TRACKS = [
                                 "enMn": "хүсэл зориг"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -1767,13 +1677,8 @@ const READING_TRACKS = [
                                 "enMn": "захидал"
                             },
                             {
-                                "surface": "でし",
-                                "reading": "でし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "でした",
+                                "reading": "でした",
                                 "en": null
                             },
                             {
@@ -1834,13 +1739,8 @@ const READING_TRACKS = [
                                 "enMn": "хэлэх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -1879,13 +1779,8 @@ const READING_TRACKS = [
                                 "enMn": "үнэхээр"
                             },
                             {
-                                "surface": "でし",
-                                "reading": "でし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "でした",
+                                "reading": "でした",
                                 "en": null
                             },
                             {
@@ -1917,13 +1812,8 @@ const READING_TRACKS = [
                                 "enMn": "явах"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -1978,13 +1868,8 @@ const READING_TRACKS = [
                                 "enMn": "орох"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -2004,15 +1889,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "眠っ",
-                                "reading": "ねむっ",
+                                "surface": "眠って",
+                                "reading": "ねむって",
                                 "en": "to sleep",
                                 "enMn": "унтах"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "しまい",
@@ -2021,13 +1901,8 @@ const READING_TRACKS = [
                                 "enMn": "эгч дүүс"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -2048,13 +1923,8 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "でし",
-                                "reading": "でし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "でした",
+                                "reading": "でした",
                                 "en": null
                             },
                             {
@@ -2104,13 +1974,8 @@ const READING_TRACKS = [
                                 "enMn": "гадагшаа гарах"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -2142,15 +2007,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "行っ",
-                                "reading": "いっ",
+                                "surface": "行った",
+                                "reading": "いった",
                                 "en": "to go",
                                 "enMn": "явах"
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
-                                "en": null
                             },
                             {
                                 "surface": "。",
@@ -2181,15 +2041,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "待っ",
-                                "reading": "まっ",
+                                "surface": "待って",
+                                "reading": "まって",
                                 "en": "to wait",
                                 "enMn": "хүлээх"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "い",
@@ -2198,13 +2053,8 @@ const READING_TRACKS = [
                                 "enMn": "хүсэл зориг"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -2248,13 +2098,8 @@ const READING_TRACKS = [
                                 "enMn": "хүсэл зориг"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -2309,13 +2154,8 @@ const READING_TRACKS = [
                                 "enMn": "хүлээх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -2337,13 +2177,8 @@ const READING_TRACKS = [
                                 "enMn": "цаг хугацаа"
                             },
                             {
-                                "surface": "でし",
-                                "reading": "でし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "でした",
+                                "reading": "でした",
                                 "en": null
                             },
                             {
@@ -2398,13 +2233,8 @@ const READING_TRACKS = [
                                 "enMn": "суух"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -2509,13 +2339,8 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -2531,15 +2356,10 @@ const READING_TRACKS = [
                                 "enMn": "маш их"
                             },
                             {
-                                "surface": "難しかっ",
-                                "reading": "むずかしかっ",
+                                "surface": "難しかった",
+                                "reading": "むずかしかった",
                                 "en": "difficult",
                                 "enMn": "хэцүү"
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
-                                "en": null
                             },
                             {
                                 "surface": "です",
@@ -2631,13 +2451,8 @@ const READING_TRACKS = [
                                 "enMn": "өгөх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -2720,13 +2535,8 @@ const READING_TRACKS = [
                                 "enMn": "өгөх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -2970,13 +2780,8 @@ const READING_TRACKS = [
                                 "enMn": "болох"
                             },
                             {
-                                "surface": "ましょ",
-                                "reading": "ましょ",
-                                "en": null
-                            },
-                            {
-                                "surface": "う",
-                                "reading": "う",
+                                "surface": "ましょう",
+                                "reading": "ましょう",
                                 "en": null
                             },
                             {
@@ -3042,13 +2847,8 @@ const READING_TRACKS = [
                                 "enMn": "таалагдах"
                             },
                             {
-                                "surface": "でし",
-                                "reading": "でし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "でした",
+                                "reading": "でした",
                                 "en": null
                             },
                             {
@@ -3114,13 +2914,8 @@ const READING_TRACKS = [
                                 "enMn": "өгөх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -3167,23 +2962,13 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "ませ",
-                                "reading": "ませ",
+                                "surface": "ません",
+                                "reading": "ません",
                                 "en": null
                             },
                             {
-                                "surface": "ん",
-                                "reading": "ん",
-                                "en": null
-                            },
-                            {
-                                "surface": "でし",
-                                "reading": "でし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "でした",
+                                "reading": "でした",
                                 "en": null
                             },
                             {
@@ -3226,13 +3011,8 @@ const READING_TRACKS = [
                                 "enMn": "болох"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -3565,15 +3345,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "寒かっ",
-                                "reading": "さむかっ",
+                                "surface": "寒かった",
+                                "reading": "さむかった",
                                 "en": "cold (in reference to weather)",
                                 "enMn": "хүйтэн (цаг агаар)"
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
-                                "en": null
                             },
                             {
                                 "surface": "です",
@@ -3599,15 +3374,10 @@ const READING_TRACKS = [
                                 "enMn": "хүйтэн (цаг агаар)"
                             },
                             {
-                                "surface": "なっ",
-                                "reading": "なっ",
+                                "surface": "なった",
+                                "reading": "なった",
                                 "en": "to become",
                                 "enMn": "болох"
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
-                                "en": null
                             },
                             {
                                 "surface": "。",
@@ -3661,13 +3431,8 @@ const READING_TRACKS = [
                                 "enMn": "ороох"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -3688,15 +3453,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "冷たかっ",
-                                "reading": "つめたかっ",
+                                "surface": "冷たかった",
+                                "reading": "つめたかった",
                                 "en": "cold (things, people)",
                                 "enMn": "хүйтэн (зүйл, хүн)"
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
-                                "en": null
                             },
                             {
                                 "surface": "です",
@@ -3733,13 +3493,8 @@ const READING_TRACKS = [
                                 "enMn": "буцах"
                             },
                             {
-                                "surface": "たかっ",
-                                "reading": "たかっ",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "たかった",
+                                "reading": "たかった",
                                 "en": null
                             },
                             {
@@ -3805,13 +3560,8 @@ const READING_TRACKS = [
                                 "enMn": "уух"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -3838,15 +3588,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "よかっ",
-                                "reading": "よかっ",
+                                "surface": "よかった",
+                                "reading": "よかった",
                                 "en": "good",
                                 "enMn": "сайн"
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
-                                "en": null
                             },
                             {
                                 "surface": "です",
@@ -3893,13 +3638,8 @@ const READING_TRACKS = [
                                 "enMn": "явах"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -3926,15 +3666,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "欲しかっ",
-                                "reading": "ほしかっ",
+                                "surface": "欲しかった",
+                                "reading": "ほしかった",
                                 "en": "to want",
                                 "enMn": "хүсэх"
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
-                                "en": null
                             },
                             {
                                 "surface": "です",
@@ -3976,13 +3711,8 @@ const READING_TRACKS = [
                                 "enMn": "олж илрүүлэх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -4050,23 +3780,13 @@ const READING_TRACKS = [
                                 "enMn": "худалдаж авах"
                             },
                             {
-                                "surface": "ませ",
-                                "reading": "ませ",
+                                "surface": "ません",
+                                "reading": "ません",
                                 "en": null
                             },
                             {
-                                "surface": "ん",
-                                "reading": "ん",
-                                "en": null
-                            },
-                            {
-                                "surface": "でし",
-                                "reading": "でし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "でした",
+                                "reading": "でした",
                                 "en": null
                             },
                             {
@@ -4127,13 +3847,8 @@ const READING_TRACKS = [
                                 "enMn": "худалдаж авах"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -4155,13 +3870,8 @@ const READING_TRACKS = [
                                 "enMn": "харамсал"
                             },
                             {
-                                "surface": "でし",
-                                "reading": "でし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "でした",
+                                "reading": "でした",
                                 "en": null
                             },
                             {
@@ -4206,13 +3916,8 @@ const READING_TRACKS = [
                                 "enMn": "босох"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -4278,13 +3983,8 @@ const READING_TRACKS = [
                                 "enMn": "явах"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -4305,15 +4005,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "忙しかっ",
-                                "reading": "いそがしかっ",
+                                "surface": "忙しかった",
+                                "reading": "いそがしかった",
                                 "en": "busy (people, days)",
                                 "enMn": "завгүй (хүн, өдөр)"
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
-                                "en": null
                             },
                             {
                                 "surface": "です",
@@ -4349,13 +4044,8 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -4461,13 +4151,8 @@ const READING_TRACKS = [
                                 "enMn": "чармайх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -4935,13 +4620,8 @@ const READING_TRACKS = [
                                 "enMn": "хүсэл зориг"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -5019,13 +4699,8 @@ const READING_TRACKS = [
                                 "enMn": "хүсэл зориг"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -5084,15 +4759,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "思っ",
-                                "reading": "おもっ",
+                                "surface": "思って",
+                                "reading": "おもって",
                                 "en": "to think",
                                 "enMn": "бодох"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "い",
@@ -5101,13 +4771,8 @@ const READING_TRACKS = [
                                 "enMn": "хүсэл зориг"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -5201,15 +4866,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "乗っ",
-                                "reading": "のっ",
+                                "surface": "乗って",
+                                "reading": "のって",
                                 "en": "to get on",
                                 "enMn": "суух"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "旅行",
@@ -5278,13 +4938,8 @@ const READING_TRACKS = [
                                 "enMn": "явах"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -5328,13 +4983,8 @@ const READING_TRACKS = [
                                 "enMn": "хүсэл зориг"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -5401,15 +5051,10 @@ const READING_TRACKS = [
                                 "enMn": "удаан хугацаанд"
                             },
                             {
-                                "surface": "思っ",
-                                "reading": "おもっ",
+                                "surface": "思って",
+                                "reading": "おもって",
                                 "en": "to think",
                                 "enMn": "бодох"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "い",
@@ -5418,13 +5063,8 @@ const READING_TRACKS = [
                                 "enMn": "хүсэл зориг"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -5491,13 +5131,8 @@ const READING_TRACKS = [
                                 "enMn": "олж илрүүлэх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -5518,15 +5153,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "帰っ",
-                                "reading": "かえっ",
+                                "surface": "帰って",
+                                "reading": "かえって",
                                 "en": "to go back",
                                 "enMn": "буцах"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "、",
@@ -5557,13 +5187,8 @@ const READING_TRACKS = [
                                 "enMn": "эхлэх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -5591,13 +5216,8 @@ const READING_TRACKS = [
                                 "enMn": "яриа"
                             },
                             {
-                                "surface": "でし",
-                                "reading": "でし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "でした",
+                                "reading": "でした",
                                 "en": null
                             },
                             {
@@ -5670,13 +5290,8 @@ const READING_TRACKS = [
                                 "enMn": "хүсэл зориг"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -5708,15 +5323,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "取っ",
-                                "reading": "とっ",
+                                "surface": "取った",
+                                "reading": "とった",
                                 "en": "to take (a class)",
                                 "enMn": "хичээл авах"
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
-                                "en": null
                             },
                             {
                                 "surface": "。",
@@ -5853,15 +5463,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "やっ",
-                                "reading": "やっ",
+                                "surface": "やって",
+                                "reading": "やって",
                                 "en": "to do",
                                 "enMn": "хийх"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "い",
@@ -6028,23 +5633,13 @@ const READING_TRACKS = [
                                 "enMn": "дуугарах"
                             },
                             {
-                                "surface": "ませ",
-                                "reading": "ませ",
+                                "surface": "ません",
+                                "reading": "ません",
                                 "en": null
                             },
                             {
-                                "surface": "ん",
-                                "reading": "ん",
-                                "en": null
-                            },
-                            {
-                                "surface": "でし",
-                                "reading": "でし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "でした",
+                                "reading": "でした",
                                 "en": null
                             },
                             {
@@ -6104,13 +5699,8 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "でし",
-                                "reading": "でし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "でした",
+                                "reading": "でした",
                                 "en": null
                             },
                             {
@@ -6148,13 +5738,8 @@ const READING_TRACKS = [
                                 "enMn": "хийх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -6175,23 +5760,13 @@ const READING_TRACKS = [
                                 "enMn": "цагт нь амжих"
                             },
                             {
-                                "surface": "ませ",
-                                "reading": "ませ",
+                                "surface": "ません",
+                                "reading": "ません",
                                 "en": null
                             },
                             {
-                                "surface": "ん",
-                                "reading": "ん",
-                                "en": null
-                            },
-                            {
-                                "surface": "でし",
-                                "reading": "でし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "でした",
+                                "reading": "でした",
                                 "en": null
                             },
                             {
@@ -6269,13 +5844,8 @@ const READING_TRACKS = [
                                 "enMn": "хийх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -6308,13 +5878,8 @@ const READING_TRACKS = [
                                 "enMn": "уурлах"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -6346,13 +5911,8 @@ const READING_TRACKS = [
                                 "enMn": "өгөх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -6542,13 +6102,8 @@ const READING_TRACKS = [
                                 "enMn": "хийх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -6576,13 +6131,8 @@ const READING_TRACKS = [
                                 "enMn": "үнэхээр"
                             },
                             {
-                                "surface": "でし",
-                                "reading": "でし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "でした",
+                                "reading": "でした",
                                 "en": null
                             },
                             {
@@ -6666,13 +6216,8 @@ const READING_TRACKS = [
                                 "enMn": "хэлэх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -6710,13 +6255,8 @@ const READING_TRACKS = [
                                 "enMn": "болох"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -7004,15 +6544,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "登っ",
-                                "reading": "のぼっ",
+                                "surface": "登ったり",
+                                "reading": "のぼったり",
                                 "en": "to climb",
                                 "enMn": "авирах"
-                            },
-                            {
-                                "surface": "たり",
-                                "reading": "たり",
-                                "en": null
                             },
                             {
                                 "surface": "、",
@@ -7138,15 +6673,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "行っ",
-                                "reading": "いっ",
+                                "surface": "行って",
+                                "reading": "いって",
                                 "en": "to go",
                                 "enMn": "явах"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "み",
@@ -7285,13 +6815,8 @@ const READING_TRACKS = [
                                 "enMn": "ирэх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -7509,13 +7034,8 @@ const READING_TRACKS = [
                                 "enMn": "болох"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -7626,13 +7146,8 @@ const READING_TRACKS = [
                                 "enMn": "явах"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -7705,13 +7220,8 @@ const READING_TRACKS = [
                                 "enMn": "хэлэх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -7749,15 +7259,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "手伝っ",
-                                "reading": "てつだっ",
+                                "surface": "手伝って",
+                                "reading": "てつだって",
                                 "en": "to help",
                                 "enMn": "туслах"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "くれ",
@@ -7766,13 +7271,8 @@ const READING_TRACKS = [
                                 "enMn": "өгөх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -7793,15 +7293,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "買っ",
-                                "reading": "かっ",
+                                "surface": "買って",
+                                "reading": "かって",
                                 "en": "to buy",
                                 "enMn": "худалдаж авах"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "、",
@@ -7827,13 +7322,8 @@ const READING_TRACKS = [
                                 "enMn": "гаргах"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -7893,13 +7383,8 @@ const READING_TRACKS = [
                                 "enMn": "бодох"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -7976,15 +7461,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "思っ",
-                                "reading": "おもっ",
+                                "surface": "思って",
+                                "reading": "おもって",
                                 "en": "to think",
                                 "enMn": "бодох"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "い",
@@ -7993,13 +7473,8 @@ const READING_TRACKS = [
                                 "enMn": "хүсэл зориг"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -8237,15 +7712,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "分かっ",
-                                "reading": "わかっ",
+                                "surface": "分かって",
+                                "reading": "わかって",
                                 "en": "to understand",
                                 "enMn": "ойлгох"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "い",
@@ -8286,13 +7756,8 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "ませ",
-                                "reading": "ませ",
-                                "en": null
-                            },
-                            {
-                                "surface": "ん",
-                                "reading": "ん",
+                                "surface": "ません",
+                                "reading": "ません",
                                 "en": null
                             },
                             {
@@ -8541,13 +8006,8 @@ const READING_TRACKS = [
                                 "enMn": "хүсэл зориг"
                             },
                             {
-                                "surface": "ませ",
-                                "reading": "ませ",
-                                "en": null
-                            },
-                            {
-                                "surface": "ん",
-                                "reading": "ん",
+                                "surface": "ません",
+                                "reading": "ません",
                                 "en": null
                             },
                             {
@@ -8591,15 +8051,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "持っ",
-                                "reading": "もっ",
+                                "surface": "持って",
+                                "reading": "もって",
                                 "en": "to hold",
                                 "enMn": "барих"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "いる",
@@ -8748,15 +8203,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "吸っ",
-                                "reading": "すっ",
+                                "surface": "吸って",
+                                "reading": "すって",
                                 "en": "to breathe in",
                                 "enMn": "амьсгалах"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "い",
@@ -8765,13 +8215,8 @@ const READING_TRACKS = [
                                 "enMn": "хүсэл зориг"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -8877,13 +8322,8 @@ const READING_TRACKS = [
                                 "enMn": "үнэхээр"
                             },
                             {
-                                "surface": "でし",
-                                "reading": "でし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "でした",
+                                "reading": "でした",
                                 "en": null
                             },
                             {
@@ -8925,15 +8365,10 @@ const READING_TRACKS = [
                                 "enMn": "байнга"
                             },
                             {
-                                "surface": "なっ",
-                                "reading": "なっ",
+                                "surface": "なって",
+                                "reading": "なって",
                                 "en": "to become",
                                 "enMn": "болох"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "いき",
@@ -8942,13 +8377,8 @@ const READING_TRACKS = [
                                 "enMn": "загварлаг"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -9333,15 +8763,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "思っ",
-                                "reading": "おもっ",
+                                "surface": "思って",
+                                "reading": "おもって",
                                 "en": "to think",
                                 "enMn": "бодох"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "い",
@@ -9505,13 +8930,8 @@ const READING_TRACKS = [
                                 "enMn": "болох"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -9671,13 +9091,8 @@ const READING_TRACKS = [
                                 "enMn": "хүсэл зориг"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -9771,13 +9186,8 @@ const READING_TRACKS = [
                                 "enMn": "хийх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -9861,13 +9271,8 @@ const READING_TRACKS = [
                                 "enMn": "хийх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -10290,15 +9695,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "上がっ",
-                                "reading": "あがっ",
+                                "surface": "上がった",
+                                "reading": "あがった",
                                 "en": "to rise",
                                 "enMn": "өсөх"
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
-                                "en": null
                             },
                             {
                                 "surface": "。",
@@ -10358,13 +9758,8 @@ const READING_TRACKS = [
                                 "enMn": "болох"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -10591,13 +9986,8 @@ const READING_TRACKS = [
                                 "enMn": "өгөх (шалгалт)"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -10691,13 +10081,8 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -10741,23 +10126,13 @@ const READING_TRACKS = [
                                 "enMn": "өгөх"
                             },
                             {
-                                "surface": "ませ",
-                                "reading": "ませ",
+                                "surface": "ません",
+                                "reading": "ません",
                                 "en": null
                             },
                             {
-                                "surface": "ん",
-                                "reading": "ん",
-                                "en": null
-                            },
-                            {
-                                "surface": "でし",
-                                "reading": "でし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "でした",
+                                "reading": "でした",
                                 "en": null
                             },
                             {
@@ -10783,13 +10158,8 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "あっ",
-                                "reading": "あっ",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "あった",
+                                "reading": "あった",
                                 "en": null
                             },
                             {
@@ -10815,13 +10185,8 @@ const READING_TRACKS = [
                                 "enMn": "мэдрэх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -10933,13 +10298,8 @@ const READING_TRACKS = [
                                 "enMn": "ойлгох"
                             },
                             {
-                                "surface": "ませ",
-                                "reading": "ませ",
-                                "en": null
-                            },
-                            {
-                                "surface": "ん",
-                                "reading": "ん",
+                                "surface": "ません",
+                                "reading": "ません",
                                 "en": null
                             },
                             {
@@ -11373,13 +10733,8 @@ const READING_TRACKS = [
                                 "enMn": "таалагдах"
                             },
                             {
-                                "surface": "でし",
-                                "reading": "でし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "でした",
+                                "reading": "でした",
                                 "en": null
                             },
                             {
@@ -11445,13 +10800,8 @@ const READING_TRACKS = [
                                 "enMn": "өгөх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -11498,23 +10848,13 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "ませ",
-                                "reading": "ませ",
+                                "surface": "ません",
+                                "reading": "ません",
                                 "en": null
                             },
                             {
-                                "surface": "ん",
-                                "reading": "ん",
-                                "en": null
-                            },
-                            {
-                                "surface": "でし",
-                                "reading": "でし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "でした",
+                                "reading": "でした",
                                 "en": null
                             },
                             {
@@ -11557,13 +10897,8 @@ const READING_TRACKS = [
                                 "enMn": "болох"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -11909,23 +11244,13 @@ const READING_TRACKS = [
                                 "enMn": "дуугарах"
                             },
                             {
-                                "surface": "ませ",
-                                "reading": "ませ",
+                                "surface": "ません",
+                                "reading": "ません",
                                 "en": null
                             },
                             {
-                                "surface": "ん",
-                                "reading": "ん",
-                                "en": null
-                            },
-                            {
-                                "surface": "でし",
-                                "reading": "でし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "でした",
+                                "reading": "でした",
                                 "en": null
                             },
                             {
@@ -11985,13 +11310,8 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "でし",
-                                "reading": "でし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "でした",
+                                "reading": "でした",
                                 "en": null
                             },
                             {
@@ -12029,13 +11349,8 @@ const READING_TRACKS = [
                                 "enMn": "хийх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -12056,23 +11371,13 @@ const READING_TRACKS = [
                                 "enMn": "цагт нь амжих"
                             },
                             {
-                                "surface": "ませ",
-                                "reading": "ませ",
+                                "surface": "ません",
+                                "reading": "ません",
                                 "en": null
                             },
                             {
-                                "surface": "ん",
-                                "reading": "ん",
-                                "en": null
-                            },
-                            {
-                                "surface": "でし",
-                                "reading": "でし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "でした",
+                                "reading": "でした",
                                 "en": null
                             },
                             {
@@ -12150,13 +11455,8 @@ const READING_TRACKS = [
                                 "enMn": "хийх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -12189,13 +11489,8 @@ const READING_TRACKS = [
                                 "enMn": "уурлах"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -12227,13 +11522,8 @@ const READING_TRACKS = [
                                 "enMn": "өгөх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -12513,15 +11803,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "登っ",
-                                "reading": "のぼっ",
+                                "surface": "登ったり",
+                                "reading": "のぼったり",
                                 "en": "to climb",
                                 "enMn": "авирах"
-                            },
-                            {
-                                "surface": "たり",
-                                "reading": "たり",
-                                "en": null
                             },
                             {
                                 "surface": "、",
@@ -12647,15 +11932,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "行っ",
-                                "reading": "いっ",
+                                "surface": "行って",
+                                "reading": "いって",
                                 "en": "to go",
                                 "enMn": "явах"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "み",
@@ -12881,15 +12161,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "降っ",
-                                "reading": "ふっ",
+                                "surface": "降って",
+                                "reading": "ふって",
                                 "en": "to precipitate",
                                 "enMn": "хур тунадас орох"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "いる",
@@ -13054,13 +12329,8 @@ const READING_TRACKS = [
                                 "enMn": "сайн"
                             },
                             {
-                                "surface": "でしょ",
-                                "reading": "でしょ",
-                                "en": null
-                            },
-                            {
-                                "surface": "う",
-                                "reading": "う",
+                                "surface": "でしょう",
+                                "reading": "でしょう",
                                 "en": null
                             },
                             {
@@ -13147,13 +12417,8 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "ませ",
-                                "reading": "ませ",
-                                "en": null
-                            },
-                            {
-                                "surface": "ん",
-                                "reading": "ん",
+                                "surface": "ません",
+                                "reading": "ません",
                                 "en": null
                             },
                             {
@@ -13376,13 +12641,8 @@ const READING_TRACKS = [
                                 "enMn": "гадагшаа гарах"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -13500,15 +12760,10 @@ const READING_TRACKS = [
                                 "enMn": "бага зэрэг"
                             },
                             {
-                                "surface": "怖かっ",
-                                "reading": "こわかっ",
+                                "surface": "怖かった",
+                                "reading": "こわかった",
                                 "en": "scary",
                                 "enMn": "аймшигтай"
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
-                                "en": null
                             },
                             {
                                 "surface": "です",
@@ -13584,13 +12839,8 @@ const READING_TRACKS = [
                                 "enMn": "чадах"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -13639,15 +12889,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "なっ",
-                                "reading": "なっ",
+                                "surface": "なって",
+                                "reading": "なって",
                                 "en": "to become",
                                 "enMn": "болох"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "い",
@@ -13734,15 +12979,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "思っ",
-                                "reading": "おもっ",
+                                "surface": "思って",
+                                "reading": "おもって",
                                 "en": "to think",
                                 "enMn": "бодох"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "い",
@@ -13751,13 +12991,8 @@ const READING_TRACKS = [
                                 "enMn": "хүсэл зориг"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -13995,15 +13230,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "分かっ",
-                                "reading": "わかっ",
+                                "surface": "分かって",
+                                "reading": "わかって",
                                 "en": "to understand",
                                 "enMn": "ойлгох"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "い",
@@ -14044,13 +13274,8 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "ませ",
-                                "reading": "ませ",
-                                "en": null
-                            },
-                            {
-                                "surface": "ん",
-                                "reading": "ん",
+                                "surface": "ません",
+                                "reading": "ません",
                                 "en": null
                             },
                             {
@@ -14299,13 +13524,8 @@ const READING_TRACKS = [
                                 "enMn": "хүсэл зориг"
                             },
                             {
-                                "surface": "ませ",
-                                "reading": "ませ",
-                                "en": null
-                            },
-                            {
-                                "surface": "ん",
-                                "reading": "ん",
+                                "surface": "ません",
+                                "reading": "ません",
                                 "en": null
                             },
                             {
@@ -14349,15 +13569,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "持っ",
-                                "reading": "もっ",
+                                "surface": "持って",
+                                "reading": "もって",
                                 "en": "to hold",
                                 "enMn": "барих"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "いる",
@@ -14623,13 +13838,8 @@ const READING_TRACKS = [
                                 "enMn": "хийх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -14722,13 +13932,8 @@ const READING_TRACKS = [
                                 "enMn": "таашаал"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -14761,13 +13966,8 @@ const READING_TRACKS = [
                                 "enMn": "өдөр"
                             },
                             {
-                                "surface": "でし",
-                                "reading": "でし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "でした",
+                                "reading": "でした",
                                 "en": null
                             },
                             {
@@ -14817,15 +14017,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "吸っ",
-                                "reading": "すっ",
+                                "surface": "吸って",
+                                "reading": "すって",
                                 "en": "to breathe in",
                                 "enMn": "амьсгалах"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "い",
@@ -14834,13 +14029,8 @@ const READING_TRACKS = [
                                 "enMn": "хүсэл зориг"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -14946,13 +14136,8 @@ const READING_TRACKS = [
                                 "enMn": "үнэхээр"
                             },
                             {
-                                "surface": "でし",
-                                "reading": "でし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "でした",
+                                "reading": "でした",
                                 "en": null
                             },
                             {
@@ -14994,15 +14179,10 @@ const READING_TRACKS = [
                                 "enMn": "байнга"
                             },
                             {
-                                "surface": "なっ",
-                                "reading": "なっ",
+                                "surface": "なって",
+                                "reading": "なって",
                                 "en": "to become",
                                 "enMn": "болох"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "いき",
@@ -15011,13 +14191,8 @@ const READING_TRACKS = [
                                 "enMn": "загварлаг"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -15342,13 +14517,8 @@ const READING_TRACKS = [
                                 "enMn": "чадах"
                             },
                             {
-                                "surface": "なかっ",
-                                "reading": "なかっ",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "なかった",
+                                "reading": "なかった",
                                 "en": null
                             },
                             {
@@ -15374,15 +14544,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "なっ",
-                                "reading": "なっ",
+                                "surface": "なって",
+                                "reading": "なって",
                                 "en": "to become",
                                 "enMn": "болох"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "、",
@@ -15419,13 +14584,8 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "あっ",
-                                "reading": "あっ",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "あった",
+                                "reading": "あった",
                                 "en": null
                             },
                             {
@@ -15440,15 +14600,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "知っ",
-                                "reading": "しっ",
+                                "surface": "知った",
+                                "reading": "しった",
                                 "en": "to know",
                                 "enMn": "мэдэх"
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
-                                "en": null
                             },
                             {
                                 "surface": "。",
@@ -15513,15 +14668,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "よかっ",
-                                "reading": "よかっ",
+                                "surface": "よかった",
+                                "reading": "よかった",
                                 "en": "good",
                                 "enMn": "сайн"
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
-                                "en": null
                             },
                             {
                                 "surface": "と",
@@ -15630,13 +14780,8 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "あっ",
-                                "reading": "あっ",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "あった",
+                                "reading": "あった",
                                 "en": null
                             },
                             {
@@ -15651,13 +14796,8 @@ const READING_TRACKS = [
                                 "enMn": "мэдэх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -15766,13 +14906,8 @@ const READING_TRACKS = [
                                 "enMn": "болох"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -15799,15 +14934,10 @@ const READING_TRACKS = [
                                 "enMn": "хараахан"
                             },
                             {
-                                "surface": "分かっ",
-                                "reading": "わかっ",
+                                "surface": "分かって",
+                                "reading": "わかって",
                                 "en": "to understand",
                                 "enMn": "ойлгох"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "い",
@@ -15816,13 +14946,8 @@ const READING_TRACKS = [
                                 "enMn": "хүсэл зориг"
                             },
                             {
-                                "surface": "ませ",
-                                "reading": "ませ",
-                                "en": null
-                            },
-                            {
-                                "surface": "ん",
-                                "reading": "ん",
+                                "surface": "ません",
+                                "reading": "ません",
                                 "en": null
                             },
                             {
@@ -15854,15 +14979,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "願っ",
-                                "reading": "ねがっ",
+                                "surface": "願って",
+                                "reading": "ねがって",
                                 "en": "to desire",
                                 "enMn": "хүсэх"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "い",
@@ -15904,13 +15024,8 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "あっ",
-                                "reading": "あっ",
-                                "en": null
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
+                                "surface": "あって",
+                                "reading": "あって",
                                 "en": null
                             },
                             {
@@ -16049,13 +15164,8 @@ const READING_TRACKS = [
                                 "enMn": "болох"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -16215,13 +15325,8 @@ const READING_TRACKS = [
                                 "enMn": "хүсэл зориг"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -16315,13 +15420,8 @@ const READING_TRACKS = [
                                 "enMn": "хийх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -16405,13 +15505,8 @@ const READING_TRACKS = [
                                 "enMn": "хийх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -16779,13 +15874,8 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -16834,15 +15924,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "困っ",
-                                "reading": "こまっ",
+                                "surface": "困って",
+                                "reading": "こまって",
                                 "en": "to be bothered",
                                 "enMn": "төвөгтэй санагдах"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "いる",
@@ -17007,13 +16092,8 @@ const READING_TRACKS = [
                                 "enMn": "хийх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -17060,15 +16140,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "思っ",
-                                "reading": "おもっ",
+                                "surface": "思って",
+                                "reading": "おもって",
                                 "en": "to think",
                                 "enMn": "бодох"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "い",
@@ -17152,13 +16227,8 @@ const READING_TRACKS = [
                                 "enMn": "болох"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -17239,13 +16309,8 @@ const READING_TRACKS = [
                                 "enMn": "хүсэл зориг"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -17277,15 +16342,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "なっ",
-                                "reading": "なっ",
+                                "surface": "なって",
+                                "reading": "なって",
                                 "en": "to become",
                                 "enMn": "болох"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "から",
@@ -17315,13 +16375,8 @@ const READING_TRACKS = [
                                 "enMn": "өөрчлөгдөх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -17425,13 +16480,8 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "ませ",
-                                "reading": "ませ",
-                                "en": null
-                            },
-                            {
-                                "surface": "ん",
-                                "reading": "ん",
+                                "surface": "ません",
+                                "reading": "ません",
                                 "en": null
                             },
                             {
@@ -17622,13 +16672,8 @@ const READING_TRACKS = [
                                 "enMn": "болох"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -17643,15 +16688,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "困っ",
-                                "reading": "こまっ",
+                                "surface": "困った",
+                                "reading": "こまった",
                                 "en": "to be bothered",
                                 "enMn": "төвөгтэй санагдах"
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
-                                "en": null
                             },
                             {
                                 "surface": "とき",
@@ -17847,15 +16887,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "上がっ",
-                                "reading": "あがっ",
+                                "surface": "上がった",
+                                "reading": "あがった",
                                 "en": "to rise",
                                 "enMn": "өсөх"
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
-                                "en": null
                             },
                             {
                                 "surface": "。",
@@ -17915,13 +16950,8 @@ const READING_TRACKS = [
                                 "enMn": "болох"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -18154,13 +17184,8 @@ const READING_TRACKS = [
                                 "enMn": "өгөх (шалгалт)"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -18254,13 +17279,8 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -18304,23 +17324,13 @@ const READING_TRACKS = [
                                 "enMn": "өгөх"
                             },
                             {
-                                "surface": "ませ",
-                                "reading": "ませ",
+                                "surface": "ません",
+                                "reading": "ません",
                                 "en": null
                             },
                             {
-                                "surface": "ん",
-                                "reading": "ん",
-                                "en": null
-                            },
-                            {
-                                "surface": "でし",
-                                "reading": "でし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "でした",
+                                "reading": "でした",
                                 "en": null
                             },
                             {
@@ -18346,13 +17356,8 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "あっ",
-                                "reading": "あっ",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "あった",
+                                "reading": "あった",
                                 "en": null
                             },
                             {
@@ -18378,13 +17383,8 @@ const READING_TRACKS = [
                                 "enMn": "мэдрэх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -18496,13 +17496,8 @@ const READING_TRACKS = [
                                 "enMn": "ойлгох"
                             },
                             {
-                                "surface": "ませ",
-                                "reading": "ませ",
-                                "en": null
-                            },
-                            {
-                                "surface": "ん",
-                                "reading": "ん",
+                                "surface": "ません",
+                                "reading": "ません",
                                 "en": null
                             },
                             {
@@ -18641,13 +17636,8 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -18822,13 +17812,8 @@ const READING_TRACKS = [
                                 "enMn": "бодох"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -18849,13 +17834,8 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "あっ",
-                                "reading": "あっ",
-                                "en": null
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
+                                "surface": "あって",
+                                "reading": "あって",
                                 "en": null
                             },
                             {
@@ -18897,13 +17877,8 @@ const READING_TRACKS = [
                                 "enMn": "мэдрэх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -19049,13 +18024,8 @@ const READING_TRACKS = [
                                 "enMn": "болох"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -19137,13 +18107,8 @@ const READING_TRACKS = [
                                 "enMn": "болох"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -19310,13 +18275,8 @@ const READING_TRACKS = [
                                 "enMn": "явах"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -19378,13 +18338,8 @@ const READING_TRACKS = [
                                 "enMn": "өдөр"
                             },
                             {
-                                "surface": "でし",
-                                "reading": "でし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "でした",
+                                "reading": "でした",
                                 "en": null
                             },
                             {
@@ -19619,13 +18574,8 @@ const READING_TRACKS = [
                                 "enMn": "гайхах"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -19812,15 +18762,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "思っ",
-                                "reading": "おもっ",
+                                "surface": "思って",
+                                "reading": "おもって",
                                 "en": "to think",
                                 "enMn": "бодох"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "い",
@@ -19884,13 +18829,8 @@ const READING_TRACKS = [
                                 "enMn": "сүнс (сэтгэл)"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -20346,13 +19286,8 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "いっ",
-                                "reading": "いっ",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "いった",
+                                "reading": "いった",
                                 "en": null
                             },
                             {
@@ -21467,13 +20402,8 @@ const READING_TRACKS = [
                                 "enMn": "урсах"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -21640,13 +20570,8 @@ const READING_TRACKS = [
                                 "enMn": "хүсэл зориг"
                             },
                             {
-                                "surface": "なかっ",
-                                "reading": "なかっ",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "なかった",
+                                "reading": "なかった",
                                 "en": null
                             },
                             {
@@ -21902,13 +20827,8 @@ const READING_TRACKS = [
                                 "enMn": "төөрөлдөх"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -21945,15 +20865,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "困っ",
-                                "reading": "こまっ",
+                                "surface": "困った",
+                                "reading": "こまった",
                                 "en": "to be bothered",
                                 "enMn": "төвөгтэй санагдах"
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
-                                "en": null
                             },
                             {
                                 "surface": "様子",
@@ -21978,15 +20893,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "立っ",
-                                "reading": "たっ",
+                                "surface": "立って",
+                                "reading": "たって",
                                 "en": "to stand up",
                                 "enMn": "босох"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "い",
@@ -21995,13 +20905,8 @@ const READING_TRACKS = [
                                 "enMn": "хүсэл зориг"
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -22117,13 +21022,8 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "まし",
-                                "reading": "まし",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "ました",
+                                "reading": "ました",
                                 "en": null
                             },
                             {
@@ -22273,15 +21173,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "高まっ",
-                                "reading": "たかまっ",
+                                "surface": "高まって",
+                                "reading": "たかまって",
                                 "en": "to rise",
                                 "enMn": "өсөх"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "いる",
@@ -22861,15 +21756,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "なっ",
-                                "reading": "なっ",
+                                "surface": "なって",
+                                "reading": "なって",
                                 "en": "to become",
                                 "enMn": "болох"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "い",
@@ -22951,13 +21841,8 @@ const READING_TRACKS = [
                                 "enMn": "шалтгаан"
                             },
                             {
-                                "surface": "だっ",
-                                "reading": "だっ",
-                                "en": null
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
+                                "surface": "だった",
+                                "reading": "だった",
                                 "en": null
                             },
                             {
@@ -22967,13 +21852,8 @@ const READING_TRACKS = [
                                 "enMn": "талбай"
                             },
                             {
-                                "surface": "だろ",
-                                "reading": "だろ",
-                                "en": null
-                            },
-                            {
-                                "surface": "う",
-                                "reading": "う",
+                                "surface": "だろう",
+                                "reading": "だろう",
                                 "en": null
                             },
                             {
@@ -22994,15 +21874,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "失っ",
-                                "reading": "うしなっ",
+                                "surface": "失って",
+                                "reading": "うしなって",
                                 "en": "to lose",
                                 "enMn": "алдах"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "初めて",
@@ -23949,15 +22824,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "伴っ",
-                                "reading": "ともなっ",
+                                "surface": "伴って",
+                                "reading": "ともなって",
                                 "en": "to accompany",
                                 "enMn": "хамт явах"
-                            },
-                            {
-                                "surface": "て",
-                                "reading": "て",
-                                "en": null
                             },
                             {
                                 "surface": "初めて",
@@ -24680,13 +23550,8 @@ const READING_TRACKS = [
                                 "enMn": "талбай"
                             },
                             {
-                                "surface": "だろ",
-                                "reading": "だろ",
-                                "en": null
-                            },
-                            {
-                                "surface": "う",
-                                "reading": "う",
+                                "surface": "だろう",
+                                "reading": "だろう",
                                 "en": null
                             },
                             {
@@ -25343,15 +24208,10 @@ const READING_TRACKS = [
                                 "en": null
                             },
                             {
-                                "surface": "治まっ",
-                                "reading": "おさまっ",
+                                "surface": "治まった",
+                                "reading": "おさまった",
                                 "en": "to be at peace",
                                 "enMn": "тайван байх"
-                            },
-                            {
-                                "surface": "た",
-                                "reading": "た",
-                                "en": null
                             },
                             {
                                 "surface": "。",
