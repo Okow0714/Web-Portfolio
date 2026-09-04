@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://okow0714.github.io/Web-Portfolio/</loc>
+        <loc>https://khan-japanese.org/</loc>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://okow0714.github.io/Web-Portfolio/game.html</loc>
+        <loc>https://khan-japanese.org/game.html</loc>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://okow0714.github.io/Web-Portfolio/reading.html</loc>
+        <loc>https://khan-japanese.org/reading.html</loc>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://okow0714.github.io/Web-Portfolio/phonetics.html</loc>
+        <loc>https://khan-japanese.org/phonetics.html</loc>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://okow0714.github.io/Web-Portfolio/grammar.html</loc>
+        <loc>https://khan-japanese.org/grammar.html</loc>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://okow0714.github.io/Web-Portfolio/dictionary.html</loc>
+        <loc>https://khan-japanese.org/dictionary.html</loc>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://okow0714.github.io/Web-Portfolio/about.html</loc>
+        <loc>https://khan-japanese.org/about.html</loc>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://okow0714.github.io/Web-Portfolio/privacy.html</loc>
+        <loc>https://khan-japanese.org/privacy.html</loc>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
     <url>
-        <loc>https://okow0714.github.io/Web-Portfolio/terms.html</loc>
+        <loc>https://khan-japanese.org/terms.html</loc>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
