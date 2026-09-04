@@ -12,7 +12,12 @@
 body:has(.hub-main) {
     --wine: #4a2c3a;
     --wine-deep: #2f1c26;
-    background: var(--wine-deep);
+    --wine-elevated: #5c3a49;
+    /* The gradient lives here, not on .hub-main. main sits inside .container and is capped at
+       1200px, so painting it there left the darker flat body showing as vertical bands down
+       both edges on any viewport wider than that -- two visible seams the full width of the
+       page. See the full-bleed note in CLAUDE.md. */
+    background: radial-gradient(120% 60% at 50% -10%, var(--wine-elevated), var(--wine) 45%, var(--wine-deep) 100%);
 }
 
 .hub-main {
@@ -27,7 +32,12 @@ body:has(.hub-main) {
     --rule: rgba(232, 189, 109, 0.22);
 
     display: block;
-    background: radial-gradient(120% 60% at 50% -10%, var(--wine-elevated), var(--wine) 45%, var(--wine-deep) 100%);
+    /* Clears the 64px fixed masthead, matching .legal-main and the five tool pages. Without it
+       the hero eyebrow sat at y=56 and was painted under the header. Padding rather than
+       margin so the wine gradient still bleeds to the top of the page. */
+    padding-top: 89px;
+    /* Transparent: the gradient is on the body so it reaches the viewport edges. */
+    background: transparent;
     color: var(--paper);
 }
 

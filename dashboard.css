@@ -29,6 +29,10 @@ body:has(.dash-main) {
     --average-tint: rgba(217, 154, 61, 0.12);
 
     display: block;
+    /* Same 89px masthead clearance as every other page. Its absence only showed when signed
+       in -- the profile avatar and name start at y=44 and were covered by the header, while
+       the signed-out guest panel happens to sit lower and looked fine. */
+    padding-top: 89px;
     background: var(--bg-page);
     color: var(--ink);
     font-family: var(--font-body);

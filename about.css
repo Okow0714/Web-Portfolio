@@ -290,6 +290,15 @@ body {
     .about-rail-index { display: none; }
     .about-rail-foot { margin-top: 0; flex-direction: row; align-items: center; gap: 20px; margin-left: auto; }
     .about-account { border-top: none; padding-top: 0; }
+    /* The rail turns into a right-aligned row here, so a panel anchored left:0 with a 220px
+       min-width hangs off the side of the page -- and an absolutely positioned box still
+       counts toward scroll width even while closed, so it made the whole document scroll
+       sideways. Anchor it to the right edge and cap it to the viewport instead. */
+    .about-account-panel {
+        left: auto;
+        right: 0;
+        max-width: calc(100vw - 40px);
+    }
     .about-content { padding: 0 20px 80px; }
     .about-hero, .about-hobbies-layout, .about-academic-layout, .about-resume-layout { grid-template-columns: 1fr; }
     .about-hero-portrait, .about-accent-photo { justify-self: start; }
