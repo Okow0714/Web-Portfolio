@@ -17,7 +17,7 @@
 // stale-while-revalidate, so it serves the cached copy first and only refreshes behind it --
 // without a bump, a returning PWA user runs the previous version of a fixed file for one more
 // visit. Whether that matters is a judgement call; for a correctness fix it generally does.
-const CACHE_VERSION = 'khan-japanese-v24';
+const CACHE_VERSION = 'khan-japanese-v25';
 
 const APP_SHELL = [
     './',
@@ -32,6 +32,7 @@ const APP_SHELL = [
     './credits.html',
     './privacy.html',
     './terms.html',
+    './reset-password.html',
     './style.css',
     './hub.css',
     './about.css',
@@ -47,6 +48,7 @@ const APP_SHELL = [
     './icons/icon-192.png',
     './icons/icon-512.png',
     './icons/icon-512-maskable.png',
+    './pwa-register.js',
     './script.js',
     './i18n.js',
     './i18n-strings-shared.js',
@@ -71,6 +73,7 @@ const APP_SHELL = [
     './credits-i18n-strings.js',
     './privacy-i18n-strings.js',
     './terms-i18n-strings.js',
+    './reset-password-i18n-strings.js',
 ];
 
 self.addEventListener('install', (event) => {
