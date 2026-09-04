@@ -14,7 +14,7 @@ Object.assign(window.I18N_STRINGS, {
     'terms.whatThisIs.h': { en: 'What this is', mn: 'Энэ юу вэ' },
     'terms.whatThisIs.p': {
         en: "This site is a personal portfolio and a set of free, educational Japanese-learning tools (a vocabulary matching game and a read-aloud practice tool, among others), built and maintained by one individual as a personal project. It isn't a company, and using it doesn't create any commercial relationship between us.",
-        mn: 'Энэ сайт нь хувь хүний төслийн хүрээнд бүтээж, арчилдаг хувийн профайл болон үнэгүй, боловсролын зориулалттай япон хэл сурах хэрэгслүүдийн цуглуулга юм (үг холбох тоглоом, дуудаж унших дадлагын хэрэгсэл гэх мэт). Энэ нь компани биш бөгөөд үүнийг ашиглах нь бидний хооронд ямар нэгэн арилжааны харилцаа үүсгэдэггүй.'
+        mn: 'Энэ бол миний өөрөө хийж, ажиллуулдаг хувийн сайт. Надтай танилцуулах хуудас, түүнчлэн япон хэл сурах үнэгүй хэрэгслүүд (үг холбох тоглоом, дуудаж унших дадлага гэх мэт) багтана. Энэ нь компани биш бөгөөд сайтыг ашигласнаар бидний хооронд арилжааны ямар ч харилцаа үүсэхгүй.'
     },
 
     'terms.accounts.h': { en: 'Accounts', mn: 'Бүртгэл' },
@@ -26,7 +26,7 @@ Object.assign(window.I18N_STRINGS, {
     'terms.acceptableUse.h': { en: 'Acceptable use', mn: 'Ашиглалтын хязгаарлалт' },
     'terms.acceptableUse.p': {
         en: "Don't send anything illegal, abusive, or harassing in messages; don't try to disrupt, scrape abusively, or gain unauthorized access to the site or its backend. I can remove content or suspend an account that violates this.",
-        mn: 'Зурваст хууль бус, доромжилсон, дарамталсан агуулга бүү бичээрэй; сайт болон түүний backend-д саад учруулах, хэт их scrape хийх, эрхгүйгээр нэвтрэхийг бүү оролдо. Үүнийг зөрчсөн контентыг устгах, бүртгэлийг түдгэлзүүлэх эрхийг би эдэлнэ.'
+        mn: 'Зурваст хууль бус, доромжилсон, дарамталсан агуулга бүү бичээрэй; сайт болон түүний сервер талд саад учруулах, автоматаар хэт их өгөгдөл татах, зөвшөөрөлгүй нэвтрэхийг бүү оролд. Үүнийг зөрчсөн контентыг устгах, бүртгэлийг түдгэлзүүлэх эрхийг би эдэлнэ.'
     },
 
     'terms.contentYouPost.h': { en: 'Content you post', mn: 'Таны нийтэлдэг контент' },

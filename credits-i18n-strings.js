@@ -25,7 +25,7 @@ Object.assign(window.I18N_STRINGS, {
     'credits.wgMusic.h': { en: 'Word Game — background music', mn: 'Үг холбох тоглоом — дэвсгэр хөгжим' },
     'credits.wgMusic.note': {
         en: 'All 31 tracks via Pixabay Music, used under the Pixabay Content License (free for commercial use, no attribution required — credited here anyway). Re-encoded to 112kbps for file size; no other changes made. Soul jazz plays on N1, jazz-study on N2, smooth jazz on N3, and lofi jazz on N4 & N5 (shared pool), cycling by level within each tier; the 30 tier tracks are by Alex-Beats (Alex Morgan), except Jazzy Pop Piano / Japan City by WELC0MEИ0, which plays on the level-select screen while browsing between levels.',
-        mn: 'Бүх 31 хөгжмийн бичлэг Pixabay Music-аас, Pixabay-ийн контентийн зөвшөөрлийн дагуу (арилжааны зориулалтаар үнэгүй ашиглаж болно, эх сурвалж заавал дурдах шаардлагагүй ч энд заасан болно). Файлын хэмжээг багасгахын тулд 112kbps болгож дахин кодлосноос өөр өөрчлөлт ороогүй. N1 дээр soul jazz, N2 дээр jazz-study, N3 дээр smooth jazz, N4 ба N5 дээр (нэг сан хуваалцдаг) lofi jazz эргэлдэж тоглоно; дээрх 30 бичлэгийг Alex-Beats (Alex Morgan) хийсэн бол Jazzy Pop Piano / Japan City-г WELC0MEИ0 хийсэн бөгөөд энэ нь шат сонгох дэлгэц дээр тоглоно.',
+        mn: 'Бүх 31 хөгжмийн бичлэг Pixabay Music-аас, Pixabay-ийн контентийн зөвшөөрлийн дагуу (арилжааны зориулалтаар үнэгүй ашиглаж болно, эх сурвалж заавал дурдах шаардлагагүй ч энд заасан болно). Файлын хэмжээг багасгахын тулд 112kbps болгож дахин кодлосноос өөр өөрчлөлт ороогүй. N1 дээр soul jazz, N2 дээр jazz-study, N3 дээр smooth jazz, N4 ба N5 дээр (нэг сан хуваалцдаг) lofi jazz ээлжлэн тоглоно; дээрх 30 бичлэгийг Alex-Beats (Alex Morgan) хийсэн бол Jazzy Pop Piano / Japan City-г WELC0MEИ0 хийсэн бөгөөд энэ нь шат сонгох дэлгэц дээр тоглоно.',
     },
 
     'credits.gcPhotos.h': { en: 'Grammar Connect — background photography', mn: 'Дүрэм холбох — дэвсгэр гэрэл зураг' },
@@ -36,6 +36,6 @@ Object.assign(window.I18N_STRINGS, {
     'credits.gcMusic.h': { en: 'Grammar Connect — background music', mn: 'Дүрэм холбох — дэвсгэр хөгжим' },
     'credits.gcMusic.note': {
         en: 'All 16 tracks via Pixabay Music, used under the Pixabay Content License (free for commercial use, no attribution required — credited here anyway). Three tracks cycle per JLPT tier (N5 through N1); Zen Garden Beats by eggshy plays on the level-select screen while browsing between levels.',
-        mn: 'Бүх 16 хөгжмийн бичлэг Pixabay Music-аас, Pixabay-ийн контентийн зөвшөөрлийн дагуу (арилжааны зориулалтаар үнэгүй ашиглаж болно, эх сурвалж заавал дурдах шаардлагагүй ч энд заасан болно). JLPT түвшин (N5-аас N1 хүртэл) тутамд гурван бичлэг эргэлдэж тоглоно; eggshy хийсэн Zen Garden Beats нь шат сонгох дэлгэц дээр тоглоно.',
+        mn: 'Бүх 16 хөгжмийн бичлэг Pixabay Music-аас, Pixabay-ийн контентийн зөвшөөрлийн дагуу (арилжааны зориулалтаар үнэгүй ашиглаж болно, эх сурвалж заавал дурдах шаардлагагүй ч энд заасан болно). JLPT түвшин (N5-аас N1 хүртэл) тутамд гурван бичлэг ээлжлэн тоглоно; eggshy хийсэн Zen Garden Beats нь шат сонгох дэлгэц дээр тоглоно.',
     },
 });

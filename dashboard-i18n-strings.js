@@ -16,7 +16,7 @@ Object.assign(window.I18N_STRINGS, {
     'dash.yourScore': { en: 'Your Score', mn: 'Таны оноо' },
     'dash.you': { en: 'You', mn: 'Та' },
     'dash.average': { en: 'Average', mn: 'Дундаж' },
-    'dash.scoreNote': { en: '{n} points per tool for full completion (Word Match, Grammar Connect, Dokkai Reader), 3,000 max. Compared against every registered user.', mn: 'Хэрэгсэл бүрийг бүрэн дуусгавал {n} оноо (Үг холбох тоглоом, Дүрэм холбох, Уншлагын дадлага), дээд тал нь 3,000. Бүх бүртгэлтэй хэрэглэгчтэй харьцуулсан.' },
+    'dash.scoreNote': { en: '{n} points per tool for full completion (Word Match, Grammar Connect, Dokkai Reader), 3,000 max. Compared against every registered user.', mn: 'Хэрэгсэл бүрийг бүрэн дуусгавал {n} оноо (Үг холбох тоглоом, Дүрэм холбох, Уншлагын дадлага), дээд тал нь 3,000. Бүх бүртгэлтэй хэрэглэгчийн дундажтай харьцуулж харуулав.' },
     'dash.usersCounted': { en: 'Based on {n} registered users.', mn: 'Бүртгэлтэй {n} хэрэглэгчийн дата дээр үндэслэсэн.' },
 
     'dash.tools.game': { en: 'Word Match', mn: 'Үг холбох тоглоом' },

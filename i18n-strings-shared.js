@@ -56,7 +56,7 @@ window.I18N_STRINGS = {
     'auth.forgotPassword': { en: 'Forgot password?', mn: 'Нууц үгээ мартсан уу?' },
     'auth.agreeToTerms': {
         en: 'I agree to the <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>',
-        mn: 'Би <a href="terms.html" target="_blank" rel="noopener">Үйлчилгээний нөхцөл</a> болон <a href="privacy.html" target="_blank" rel="noopener">Нууцлалын бодлого</a>-той зөвшөөрч байна'
+        mn: 'Би <a href="terms.html" target="_blank" rel="noopener">Үйлчилгээний нөхцөл</a> болон <a href="privacy.html" target="_blank" rel="noopener">Нууцлалын бодлого</a>-ыг зөвшөөрч байна'
     },
     'auth.needAccount': { en: 'Need an account? Sign up', mn: 'Бүртгэлгүй юу? Бүртгүүлэх' },
     'auth.haveAccount': { en: 'Already have an account? Log in', mn: 'Бүртгэлтэй юу? Нэвтрэх' },
@@ -68,7 +68,7 @@ window.I18N_STRINGS = {
     'account.settings': { en: 'Settings', mn: 'Тохиргоо' },
     'account.yourAccount': { en: 'Your Account', mn: 'Таны бүртгэл' },
     'account.dangerZone': { en: 'Danger Zone', mn: 'Аюултай бүс' },
-    'account.deleteWarning': { en: "Deleting your account permanently removes your profile, bookmarks, messages, and study progress. This can't be undone.", mn: 'Бүртгэлээ устгавал профайл, хадгалсан зүйлс, зурвас, суралцах явц бүрмөсөн устана. Үүнийг буцаах боломжгүй.' },
+    'account.deleteWarning': { en: "Deleting your account permanently removes your profile, bookmarks, messages, and study progress. This can't be undone.", mn: 'Бүртгэлээ устгавал профайл, тэмдэглэгээ, зурвас, суралцах явц бүрмөсөн устана. Үүнийг буцаах боломжгүй.' },
     'account.deleteMyAccount': { en: 'Delete My Account', mn: 'Бүртгэлээ устгах' },
     'account.typeDeleteToConfirm': { en: 'Type DELETE to confirm:', mn: 'Баталгаажуулахын тулд DELETE гэж бичнэ үү:' },
     'account.yesPermanentlyDelete': { en: 'Yes, permanently delete my account', mn: 'Тийм, бүртгэлээ бүрмөсөн устгана' },
