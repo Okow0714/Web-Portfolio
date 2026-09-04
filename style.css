@@ -1237,7 +1237,8 @@ body {
 /* ---------------------------------------------------------------------
    JLPT level color system — shared across every page that shows level
    cards (Word Match, Phonetics Family) or a level dropdown (the header
-   nav), via [data-level] / [href*="level="] attributes set in each
+   nav), via the data-jlpt attribute on each link (NOT [href*="level="] -- that is a
+   substring match, so "level=1" also matched "level=11" and shifted every tier by one)
    page's own JS/HTML rather than duplicating this block per stylesheet.
    Colors come from --jlpt-n5..--jlpt-n1 defined in :root above.
    --------------------------------------------------------------------- */
@@ -1262,18 +1263,18 @@ body {
 /* Header nav dropdown ("Word Game" -> N5..N1): a colored left rule per
    level link, matching the same spectrum, so the dropdown itself hints
    at difficulty before a card is ever opened. */
-.nav-dropdown a[href*="level=1"] { border-left-color: var(--jlpt-n5); }
-.nav-dropdown a[href*="level=2"] { border-left-color: var(--jlpt-n4); }
-.nav-dropdown a[href*="level=3"] { border-left-color: var(--jlpt-n3); }
-.nav-dropdown a[href*="level=4"] { border-left-color: var(--jlpt-n2); }
-.nav-dropdown a[href*="level=5"] { border-left-color: var(--jlpt-n1); }
+.nav-dropdown a[data-jlpt="N5"] { border-left-color: var(--jlpt-n5); }
+.nav-dropdown a[data-jlpt="N4"] { border-left-color: var(--jlpt-n4); }
+.nav-dropdown a[data-jlpt="N3"] { border-left-color: var(--jlpt-n3); }
+.nav-dropdown a[data-jlpt="N2"] { border-left-color: var(--jlpt-n2); }
+.nav-dropdown a[data-jlpt="N1"] { border-left-color: var(--jlpt-n1); }
 
 /* The light pastel --jlpt-*-tint backgrounds were designed for the site's light pages — on the
    header's own dark panel they'd read as a washed-out pale patch, so hover uses a low-opacity
    mix of the level's own hue against the dark panel instead, keeping the same per-level color
    language without fighting the masthead's own palette. */
-.nav-dropdown a[href*="level=1"]:hover { background: color-mix(in srgb, var(--jlpt-n5) 22%, transparent); border-left-color: var(--jlpt-n5); color: var(--jlpt-n5); }
-.nav-dropdown a[href*="level=2"]:hover { background: color-mix(in srgb, var(--jlpt-n4) 22%, transparent); border-left-color: var(--jlpt-n4); color: var(--jlpt-n4); }
-.nav-dropdown a[href*="level=3"]:hover { background: color-mix(in srgb, var(--jlpt-n3) 22%, transparent); border-left-color: var(--jlpt-n3); color: var(--jlpt-n3); }
-.nav-dropdown a[href*="level=4"]:hover { background: color-mix(in srgb, var(--jlpt-n2) 22%, transparent); border-left-color: var(--jlpt-n2); color: var(--jlpt-n2); }
-.nav-dropdown a[href*="level=5"]:hover { background: color-mix(in srgb, var(--jlpt-n1) 22%, transparent); border-left-color: var(--jlpt-n1); color: var(--jlpt-n1); }
+.nav-dropdown a[data-jlpt="N5"]:hover { background: color-mix(in srgb, var(--jlpt-n5) 22%, transparent); border-left-color: var(--jlpt-n5); color: var(--jlpt-n5); }
+.nav-dropdown a[data-jlpt="N4"]:hover { background: color-mix(in srgb, var(--jlpt-n4) 22%, transparent); border-left-color: var(--jlpt-n4); color: var(--jlpt-n4); }
+.nav-dropdown a[data-jlpt="N3"]:hover { background: color-mix(in srgb, var(--jlpt-n3) 22%, transparent); border-left-color: var(--jlpt-n3); color: var(--jlpt-n3); }
+.nav-dropdown a[data-jlpt="N2"]:hover { background: color-mix(in srgb, var(--jlpt-n2) 22%, transparent); border-left-color: var(--jlpt-n2); color: var(--jlpt-n2); }
+.nav-dropdown a[data-jlpt="N1"]:hover { background: color-mix(in srgb, var(--jlpt-n1) 22%, transparent); border-left-color: var(--jlpt-n1); color: var(--jlpt-n1); }
