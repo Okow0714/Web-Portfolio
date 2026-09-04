@@ -108,8 +108,17 @@
         const { error } = await sb.from('profiles').update({ display_name: newName }).eq('id', session.user.id);
         if (error) {
             nameStatusEl.textContent = window.t('dash.nameSaveFailed');
+            nameStatusEl.classList.remove('warn');
         } else {
-            nameStatusEl.textContent = window.t('dash.nameSaved');
+            // Display names are world-readable -- the comment list embeds them -- so a name
+            // that is also the email's local part hands out the address to anyone who asks,
+            // and for the common providers the rest is a guess. The signup default was changed
+            // away from the email for exactly this reason, so it would be odd to say nothing
+            // when someone types it back in. Said, not enforced: it is their name to choose.
+            const localPart = (session.user.email || '').split('@')[0];
+            const looksLikeEmail = !!localPart && newName.toLowerCase() === localPart.toLowerCase();
+            nameStatusEl.textContent = window.t(looksLikeEmail ? 'dash.namePublicWarning' : 'dash.nameSaved');
+            nameStatusEl.classList.toggle('warn', looksLikeEmail);
             nameDisplayEl.textContent = newName;
             avatarEl.textContent = initials(newName);
             showEl(nameDisplayEl.closest('.dash-profile-name-row'));

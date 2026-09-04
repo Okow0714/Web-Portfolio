@@ -11,6 +11,7 @@ Object.assign(window.I18N_STRINGS, {
     'dash.cancel': { en: 'Cancel', mn: 'Цуцлах' },
     'dash.nameSaved': { en: 'Saved', mn: 'Хадгалагдлаа' },
     'dash.nameSaveFailed': { en: "Couldn't save — try again.", mn: 'Хадгалж чадсангүй — дахин оролдоно уу.' },
+    'dash.namePublicWarning': { en: 'Saved — but this is your email address, and display names are public.', mn: 'Хадгалагдлаа — гэхдээ энэ таны и-мэйлтэй ижил байна. Харагдах нэрийг хэн ч харж болно.' },
 
     'dash.yourScore': { en: 'Your Score', mn: 'Таны оноо' },
     'dash.you': { en: 'You', mn: 'Та' },

@@ -24,6 +24,8 @@ body:has(.dash-main) {
     --accent-dark: #1f4fb8;
     --accent-tint: rgba(47, 111, 237, 0.08);
     --average: #d99a3d;
+    /* Darker than --average because this one carries text on white and has to pass AA. */
+    --warn: #b4690e;
     --average-tint: rgba(217, 154, 61, 0.12);
 
     display: block;
@@ -73,6 +75,8 @@ body:has(.dash-main) {
 .dash-name-save-btn:hover { background: var(--accent-dark); }
 .dash-name-cancel-btn { background: none; color: var(--ink-faint); }
 .dash-name-status { font-size: 0.8rem; color: var(--accent-dark); margin-left: 4px; }
+/* Not an error -- the name did save -- so this reads as a caution rather than a failure. */
+.dash-name-status.warn { color: var(--warn); }
 
 /* ---- score hero ---- */
 .dash-score-card {
