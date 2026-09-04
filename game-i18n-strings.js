@@ -18,7 +18,7 @@ Object.assign(window.I18N_STRINGS, {
     'game.shuffle': { en: 'Shuffle', mn: 'Холих' },
     'game.progress': { en: 'Progress', mn: 'Явц' },
     'game.familiesFound': { en: 'Families Found', mn: 'Олдсон бүлгүүд' },
-    'game.familiesEmptyHint': { en: 'Chain 2+ words sharing a phonetic component for a lightning-fast clear.', mn: 'Ижил дуудлагын язгуур бүхий 2+ үгийг холбовол богино хугацаанд олноор нь арилгана.' },
+    'game.familiesEmptyHint': { en: 'Chain 2+ words sharing a phonetic component for a lightning-fast clear.', mn: 'Ижил дуудлагын язгууртай 2 буюу түүнээс дээш үг холбовол олон үг нэг дор арилна.' },
     'game.lastMatch': { en: 'Last Match', mn: 'Сүүлийн тохирол' },
     'game.exampleEmptyHint': { en: 'Connect a pair to see an example sentence here.', mn: 'Жишээ өгүүлбэр харахын тулд нэг хосыг холбоно уу.' },
     'game.exampleNoneHint': { en: 'No example sentence found for this word in the source data.', mn: 'Энэ үгийн жишээ өгүүлбэр эх өгөгдөлд олдсонгүй.' },
