@@ -22,13 +22,13 @@ body:has(.dictionary-main) {
     --card-edge: #e0d8c3;
     --sumi: #262421;
     --sumi-tint: #eae6de;
-    --terracotta: #b5502e;
+    --terracotta: #a94b2b; /* was #b5502e: 4.14:1 on its own surface, under AA */
     --terracotta-tint: #f6e8de;
     --khukh: #2a4d73;
     --khukh-tint: #e4ebf1;
     --ink: #3a352c;
-    --ink-soft: #7a7261;
-    --ink-faint: #a89e88;
+    --ink-soft: #635d4f; /* was #7a7261: 3.35:1 on its own surface, under AA */
+    --ink-faint: #6f6651; /* was #a89e88: 2.17:1 on its own surface, under AA */
     --good: #4f7a5e;
     --good-tint: #e6efe6;
 

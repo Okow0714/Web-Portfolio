@@ -9,7 +9,7 @@
     --border-strong: #cdbca8;
     --text-primary: #1f1512;
     --text-secondary: #5c4b43;
-    --text-muted: #93817a;
+    --text-muted: #7c6b65; /* was #93817a: 3.39:1 on its own surface, under AA */
     --accent: #7a2b3f;
     --accent-light: #9c3d54;
     --accent-dark: #571d2c;
@@ -53,6 +53,17 @@
     --jlpt-n2-tint: #f6e5df;
     --jlpt-n1: #82304a;
     --jlpt-n1-tint: #f4e5ea;
+
+    /* Badge text sits on the matching tint above, where three of the five hues fell under
+       WCAG AA -- n4 at 2.14:1. The hues themselves are untouched, because they also draw card
+       borders and dropdown rails where contrast is not the constraint and where changing them
+       would disturb a spectrum that has to stay visually distinct across five steps. These are
+       the same hues, darkened only as far as legibility requires, and used only for text. */
+    --jlpt-n5-ink: #1a7a5b;
+    --jlpt-n4-ink: #886814;
+    --jlpt-n3-ink: #ae4e1b;
+    --jlpt-n2-ink: #9c3520;
+    --jlpt-n1-ink: #82304a;
 }
 
 *, *::before, *::after {
@@ -1230,11 +1241,11 @@ body {
    page's own JS/HTML rather than duplicating this block per stylesheet.
    Colors come from --jlpt-n5..--jlpt-n1 defined in :root above.
    --------------------------------------------------------------------- */
-.level-card[data-level="N5"] .level-badge { background: var(--jlpt-n5-tint); color: var(--jlpt-n5); }
-.level-card[data-level="N4"] .level-badge { background: var(--jlpt-n4-tint); color: var(--jlpt-n4); }
-.level-card[data-level="N3"] .level-badge { background: var(--jlpt-n3-tint); color: var(--jlpt-n3); }
-.level-card[data-level="N2"] .level-badge { background: var(--jlpt-n2-tint); color: var(--jlpt-n2); }
-.level-card[data-level="N1"] .level-badge { background: var(--jlpt-n1-tint); color: var(--jlpt-n1); }
+.level-card[data-level="N5"] .level-badge { background: var(--jlpt-n5-tint); color: var(--jlpt-n5-ink); }
+.level-card[data-level="N4"] .level-badge { background: var(--jlpt-n4-tint); color: var(--jlpt-n4-ink); }
+.level-card[data-level="N3"] .level-badge { background: var(--jlpt-n3-tint); color: var(--jlpt-n3-ink); }
+.level-card[data-level="N2"] .level-badge { background: var(--jlpt-n2-tint); color: var(--jlpt-n2-ink); }
+.level-card[data-level="N1"] .level-badge { background: var(--jlpt-n1-tint); color: var(--jlpt-n1-ink); }
 
 .level-card[data-level="N5"] { border-top: 3px solid var(--jlpt-n5); }
 .level-card[data-level="N4"] { border-top: 3px solid var(--jlpt-n4); }

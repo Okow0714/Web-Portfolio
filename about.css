@@ -13,7 +13,7 @@
     --surface-edge: #e2dac4;
     --ink: #232f2b;
     --ink-soft: #5f6b64;
-    --ink-faint: #8b9590;
+    --ink-faint: #646e69; /* was #8b9590: 2.71:1 on its own surface, under AA */
     --rule: #ddd3ba;
     --accent: #3d6b58;
     --accent-light: #6b9a84;
@@ -307,6 +307,20 @@ body {
 }
 
 @media (max-width: 560px) {
+    /* WCAG 2.2 asks for 24x24 on anything you tap. These are all standalone controls -- an
+       account trigger, a bookmark toggle, a comments toggle, a download link and the footer
+       links -- rendered as bare text at 15-22px tall, which on a phone means aiming at a line
+       of text. Padding rather than a height, so nothing reflows on wider screens. */
+    .about-account-trigger,
+    .bookmark-btn,
+    .comments-toggle,
+    .download-btn,
+    .about-footer-links a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 24px;
+    }
+
     .stamp-grid, .writing-grid { grid-template-columns: 1fr; }
     .about-hero-stats, .resume-stats { gap: 22px; }
 }
