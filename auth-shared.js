@@ -10,8 +10,55 @@
 // <script> tag executions — so a listener registered by a later script tag can miss it.)
 // window.getCurrentSession() is also available for one-off reads (e.g. inside a click handler).
 
-const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+// The Supabase library is loaded from a CDN, and a CDN can be unavailable: offline (the
+// service worker only caches same-origin requests, so the CDN script is never in the
+// precache), a network that blocks jsdelivr, or an outage at either end. This file used to go
+// straight into supabase.createClient(...), so when that happened it threw on its first
+// statement and took everything below it down with it -- showEl/hideEl, onAuthChange,
+// getCurrentSession and the whole account menu -- on every page of the site.
+//
+// None of the five study tools need an account. So when the library is missing the site should
+// lose the account and keep the rest, rather than throwing and hoping the tools cope. A stub
+// standing in for the client keeps every call site working without a null check at each one:
+// there is simply never a session, and any write reports the same clear error.
+const supabaseReady = typeof supabase !== 'undefined' && supabase && typeof supabase.createClient === 'function';
+
+function makeUnavailableClient() {
+    const error = { message: 'Account features are unavailable — could not reach the authentication service.', name: 'SupabaseUnavailable' };
+    const result = Promise.resolve({ data: null, error });
+    // A thenable that also answers the chained query builders (.select().eq().single() etc.)
+    // so nothing has to know it is talking to a stub.
+    const chain = () => new Proxy(function () { }, {
+        get: (_, prop) => {
+            if (prop === 'then') return result.then.bind(result);
+            if (prop === 'catch') return result.catch.bind(result);
+            if (prop === 'finally') return result.finally.bind(result);
+            return chain();
+        },
+        apply: () => chain(),
+    });
+    return {
+        auth: {
+            getSession: () => Promise.resolve({ data: { session: null }, error: null }),
+            onAuthStateChange: () => ({ data: { subscription: { unsubscribe() { } } } }),
+            signInWithPassword: () => Promise.resolve({ data: null, error }),
+            signUp: () => Promise.resolve({ data: null, error }),
+            signOut: () => Promise.resolve({ error: null }),
+            resetPasswordForEmail: () => Promise.resolve({ data: null, error }),
+        },
+        from: () => chain(),
+        rpc: () => Promise.resolve({ data: null, error }),
+    };
+}
+
+if (!supabaseReady) {
+    console.warn('[auth] Supabase library unavailable — the study tools still work; account features are disabled.');
+}
+const supabaseClient = supabaseReady
+    ? supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+    : makeUnavailableClient();
 window.supabaseClient = supabaseClient;
+window.supabaseReady = supabaseReady;
 
 let currentSession = null;
 let sessionKnown = false;

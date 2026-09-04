@@ -126,6 +126,13 @@ still needs thought. Every free-text column is length-bounded, since an insert p
 proves who you are and not how much you may write. `supabase-migration-001-profile-privacy.sql`
 applies all of this to a project created before these fixes; a project set up fresh from
 `supabase-schema.sql` already has them.
+The Supabase JS library comes from a CDN, which is **not** in `sw.js`'s precache (the fetch
+handler ignores cross-origin requests), so it is unavailable offline, on networks that block
+jsdelivr, and during a CDN outage. `auth-shared.js` therefore checks for it and falls back to a
+stub client rather than calling `supabase.createClient` unguarded — that call used to throw on
+the file's first statement and take `showEl`/`hideEl`, `onAuthChange` and the account menu down
+with it on every page. None of the five tools need an account, so the rule is: lose the
+account, keep the tools. `window.supabaseReady` says which mode you are in.
 `auth-shared.js` = auth/session plumbing used sitewide; `supabase-app.js` = bookmarks and the
 account-linked contact form on about.html (depends on `auth-shared.js` having run first).
 **The comments feature was removed** (`supabase-migration-002-drop-comments.sql`): it was the
