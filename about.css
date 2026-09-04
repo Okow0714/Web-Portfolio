@@ -184,7 +184,7 @@ body {
 
 /* ---- 04 projects & learning: ledger cards, same interactive hooks as before (comments,
    bookmarks) -- only the visual container changed, supabase-app.js still targets
-   .comments-block/.bookmark-btn/[data-project-id] unmodified. ---- */
+   .bookmark-btn/[data-project-id] unmodified. ---- */
 .project-list { display: flex; flex-direction: column; gap: 14px; }
 .project-item {
     border: 1px solid var(--surface-edge); background: var(--surface); border-radius: 6px; padding: 18px 20px;
@@ -195,33 +195,19 @@ body {
 .project-tech { font-size: var(--text-xs); color: var(--accent-dark); font-weight: 700; letter-spacing: 0.02em; }
 .bookmark-btn { background: none; border: none; cursor: pointer; font-size: var(--text-md); line-height: 1; padding: 2px; opacity: 0.55; transition: opacity 0.2s ease; }
 .bookmark-btn:hover, .bookmark-btn.bookmarked { opacity: 1; }
-.comments-block { margin-top: 14px; border-top: 1px dashed var(--rule); padding-top: 12px; }
-.comments-toggle { background: none; border: none; cursor: pointer; font-size: var(--text-sm); font-weight: 600; color: var(--accent-dark); padding: 0; }
-.comments-panel { max-height: 0; overflow: hidden; opacity: 0; transition: all 0.35s ease-out; }
-.comments-panel.show { opacity: 1; margin-top: 10px; } /* max-height set inline by supabase-app.js */
-.comments-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
-.comment-item { background: var(--bg-page); border: 1px solid var(--surface-edge); border-radius: 4px; padding: 8px 12px; }
-.comment-author { font-weight: 600; font-size: var(--text-sm); margin-right: 8px; }
-.comment-date { font-size: var(--text-xs); color: var(--ink-faint); }
-.comment-content { margin: 4px 0 0; color: var(--ink-soft); font-size: var(--text-sm); }
-.comment-form { display: flex; flex-direction: column; gap: 8px; }
-.comment-form textarea {
-    font-family: inherit; font-size: var(--text-sm); padding: 8px 10px; border: 1px solid var(--surface-edge);
-    border-radius: 4px; background: var(--bg-page); color: var(--ink); resize: vertical;
-}
-.comment-form button, .about-btn {
+.about-btn {
     align-self: flex-start; font-family: inherit; font-size: var(--text-sm); font-weight: 700;
     padding: 8px 16px; border-radius: 4px; border: none; background: var(--accent); color: var(--bg-page);
     cursor: pointer; transition: background 0.2s ease;
 }
-.comment-form button:hover, .about-btn:hover { background: var(--accent-dark); }
+.about-btn:hover { background: var(--accent-dark); }
 .auth-btn {
     display: inline-block; padding: 10px 20px; background: var(--accent); border: 1px solid var(--accent-dark);
     border-radius: 4px; color: var(--bg-page); font-family: inherit; font-weight: 600; font-size: var(--text-sm);
     cursor: pointer; transition: background 0.2s ease;
 }
 .auth-btn:hover { background: var(--accent-dark); }
-.comment-login-prompt, #contact-login-prompt { font-size: var(--text-sm); color: var(--ink-faint); font-style: italic; }
+#contact-login-prompt { font-size: var(--text-sm); color: var(--ink-faint); font-style: italic; }
 
 /* ---- 05 qualifications: stamped cards ---- */
 .stamp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
@@ -308,12 +294,11 @@ body {
 
 @media (max-width: 560px) {
     /* WCAG 2.2 asks for 24x24 on anything you tap. These are all standalone controls -- an
-       account trigger, a bookmark toggle, a comments toggle, a download link and the footer
+       account trigger, a bookmark toggle, a download link and the footer
        links -- rendered as bare text at 15-22px tall, which on a phone means aiming at a line
        of text. Padding rather than a height, so nothing reflows on wider screens. */
     .about-account-trigger,
     .bookmark-btn,
-    .comments-toggle,
     .download-btn,
     .about-footer-links a {
         display: inline-flex;

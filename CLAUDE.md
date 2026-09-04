@@ -126,8 +126,14 @@ still needs thought. Every free-text column is length-bounded, since an insert p
 proves who you are and not how much you may write. `supabase-migration-001-profile-privacy.sql`
 applies all of this to a project created before these fixes; a project set up fresh from
 `supabase-schema.sql` already has them.
-`auth-shared.js` = auth/session plumbing used sitewide; `supabase-app.js` = comments,
-bookmarks, account-linked contact form (depends on `auth-shared.js` having run first).
+`auth-shared.js` = auth/session plumbing used sitewide; `supabase-app.js` = bookmarks and the
+account-linked contact form on about.html (depends on `auth-shared.js` having run first).
+**The comments feature was removed** (`supabase-migration-002-drop-comments.sql`): it was the
+site's only user-generated content, and Google Play's UGC policy would have required reporting
+and moderation for something nobody had ever posted to. Its removal is what let `profiles` stop
+being world-readable — that policy existed solely so the comment list could embed author names,
+and every remaining query reads or writes the caller's own row. Don't reintroduce public reads
+on `profiles` without re-checking what would become enumerable.
 
 **PWA / `sw.js`**: precaches an `APP_SHELL` list (every page, its CSS, and its non-data JS —
 large per-tool data files are deliberately excluded, see the file's own header) via

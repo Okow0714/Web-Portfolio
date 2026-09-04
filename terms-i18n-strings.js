@@ -19,20 +19,20 @@ Object.assign(window.I18N_STRINGS, {
 
     'terms.accounts.h': { en: 'Accounts', mn: 'Бүртгэл' },
     'terms.accounts.p': {
-        en: "You need an account only to save progress, post comments, bookmark projects, or send a message. You must be at least 13 years old to create one. You're responsible for keeping your password secure and for anything done through your account. Give an email you actually control, since it's how you'd recover access.",
-        mn: 'Явц хадгалах, сэтгэгдэл бичих, төсөл тэмдэглэх, эсвэл зурвас илгээхийн тулд л бүртгэл шаардлагатай. Бүртгэл үүсгэхийн тулд та 13-аас дээш настай байх ёстой. Нууц үгээ хамгаалалттай байлгах, бүртгэлээрээ дамжуулан хийгдсэн бүх зүйлийг хариуцах нь таны үүрэг. Хандалтаа сэргээхэд хэрэг болох тул та бодитоор эзэмшдэг и-мэйл хаягаа өгнө үү.'
+        en: "You need an account only to save progress, bookmark projects, or send a message. You must be at least 13 years old to create one. You're responsible for keeping your password secure and for anything done through your account. Give an email you actually control, since it's how you'd recover access.",
+        mn: 'Явц хадгалах, төсөл тэмдэглэх, эсвэл зурвас илгээхийн тулд л бүртгэл шаардлагатай. Бүртгэл үүсгэхийн тулд та 13-аас дээш настай байх ёстой. Нууц үгээ хамгаалалттай байлгах, бүртгэлээрээ дамжуулан хийгдсэн бүх зүйлийг хариуцах нь таны үүрэг. Хандалтаа сэргээхэд хэрэг болох тул та бодитоор эзэмшдэг и-мэйл хаягаа өгнө үү.'
     },
 
     'terms.acceptableUse.h': { en: 'Acceptable use', mn: 'Ашиглалтын хязгаарлалт' },
     'terms.acceptableUse.p': {
-        en: "Don't post anything illegal, abusive, or harassing in comments or messages; don't try to disrupt, scrape abusively, or gain unauthorized access to the site or its backend. I can remove content or suspend an account that violates this.",
-        mn: 'Сэтгэгдэл, зурваст хууль бус, доромжилсон, дарамталсан агуулга бүү нийтэл; сайт болон түүний backend-д саад учруулах, хэт их scrape хийх, эрхгүйгээр нэвтрэхийг бүү оролдо. Үүнийг зөрчсөн контентыг устгах, бүртгэлийг түдгэлзүүлэх эрхийг би эдэлнэ.'
+        en: "Don't send anything illegal, abusive, or harassing in messages; don't try to disrupt, scrape abusively, or gain unauthorized access to the site or its backend. I can remove content or suspend an account that violates this.",
+        mn: 'Зурваст хууль бус, доромжилсон, дарамталсан агуулга бүү бичээрэй; сайт болон түүний backend-д саад учруулах, хэт их scrape хийх, эрхгүйгээр нэвтрэхийг бүү оролдо. Үүнийг зөрчсөн контентыг устгах, бүртгэлийг түдгэлзүүлэх эрхийг би эдэлнэ.'
     },
 
     'terms.contentYouPost.h': { en: 'Content you post', mn: 'Таны нийтэлдэг контент' },
     'terms.contentYouPost.p': {
-        en: "You keep ownership of comments and messages you submit, but by posting a comment you agree it's shown publicly next to your display name. Don't post anything you don't have the right to share.",
-        mn: 'Таны илгээсэн сэтгэгдэл, зурвасны эзэмшил тань дээр үлдэнэ, гэхдээ сэтгэгдэл бичснээр энэ нь таны харагдах нэрийн хажууд нийтэд харагдахыг зөвшөөрч байна гэсэн үг. Хуваалцах эрхгүй зүйлээ бүү нийтэл.'
+        en: "You keep ownership of the messages you send me. They are private — nothing you submit is published on the site. Don't send anything you don't have the right to share.",
+        mn: 'Таны илгээсэн зурвасны эзэмшил тань дээр үлдэнэ. Зурвас нь хувийн байдаг — таны илгээсэн юу ч сайт дээр нийтлэгдэхгүй. Хуваалцах эрхгүй зүйлээ бүү илгээгээрэй.'
     },
 
     'terms.studyAccuracy.h': { en: 'Study content accuracy', mn: 'Сургалтын агуулгын үнэн зөв байдал' },

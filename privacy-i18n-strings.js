@@ -20,12 +20,12 @@ Object.assign(window.I18N_STRINGS, {
         mn: '<strong>И-мэйл болон нууц үг</strong> — энэ сайтын ашигладаг нэвтрэлтийн үйлчилгээ Supabase бүрэн зохицуулдаг. Таны нууц үг надад уншигдах хэлбэрээр хэзээ ч хадгалагдахгүй, харагдахгүй; Supabase үүнийг хэш (шифрлэсэн) хэлбэрээр хадгалдаг.'
     },
     'privacy.whatICollect.li2': {
-        en: '<strong>Display name</strong> — a neutral one like "Reader 4821" is assigned when you sign up, and you can change it from your dashboard. It is shown next to any comments you post, so treat it as public and avoid putting your email address in it.',
-        mn: '<strong>Харагдах нэр</strong> — бүртгүүлэхэд «Reader 4821» гэх мэт энгийн нэр өгөгдөх бөгөөд хянах самбараасаа өөрчилж болно. Энэ нэр таны сэтгэгдлийн хажууд харагддаг тул нийтэд ил гэж үзээрэй, и-мэйл хаягаа бүү оруулаарай.'
+        en: '<strong>Display name</strong> — a neutral one like "Reader 4821" is assigned when you sign up, and you can change it from your dashboard. It is public, so avoid putting your email address in it.',
+        mn: '<strong>Харагдах нэр</strong> — бүртгүүлэхэд «Reader 4821» гэх мэт энгийн нэр өгөгдөх бөгөөд хянах самбараасаа өөрчилж болно. Энэ нэр нийтэд ил байдаг тул и-мэйл хаягаа бүү оруулаарай.'
     },
     'privacy.whatICollect.li3': {
-        en: '<strong>Comments</strong> you post on portfolio project entries, and <strong>bookmarks</strong> you save.',
-        mn: 'Профайлын төслүүд дээр таны бичсэн <strong>сэтгэгдэл</strong>, мөн таны хадгалсан <strong>тэмдэглэгээ (bookmark)</strong>.'
+        en: '<strong>Bookmarks</strong> you save on portfolio project entries.',
+        mn: 'Портфолиогийн төслүүд дээр таны хадгалсан <strong>тэмдэглэгээ (bookmark)</strong>.'
     },
     'privacy.whatICollect.li4': {
         en: '<strong>Messages</strong> you send through the "Send a Message" contact form.',
@@ -48,7 +48,7 @@ Object.assign(window.I18N_STRINGS, {
 
     'privacy.howUsed.h': { en: "How it's used", mn: 'Хэрхэн ашигладаг вэ' },
     'privacy.howUsed.p': {
-        en: "Solely to make the site work: signing you in, saving your progress and comments across visits, showing your display name next to things you post, and letting me reply if you send a message. Nothing here is used for advertising, and I don't sell or share it with anyone for marketing purposes.",
+        en: "Solely to make the site work: signing you in, saving your progress across visits and letting me reply if you send a message. Nothing here is used for advertising, and I don't sell or share it with anyone for marketing purposes.",
         mn: 'Зөвхөн сайтыг ажиллуулахад: таныг нэвтрүүлэх, явц болон сэтгэгдлийг тань хадгалах, таны бичсэн зүйлийн хажууд нэрийг тань харуулах, зурвас илгээвэл хариулах боломж олгох зэрэгт л ашигладаг. Энд юу ч сурталчилгаанд ашиглагддаггүй, зах зээлийн зорилгоор хэнд ч зарж, хуваалцдаггүй.'
     },
 
@@ -66,8 +66,8 @@ Object.assign(window.I18N_STRINGS, {
 
     'privacy.yourRights.h': { en: 'Your rights', mn: 'Таны эрх' },
     'privacy.yourRights.p': {
-        en: "You can delete your own account and everything tied to it at any time — from your account menu once logged in, or by emailing me at the address below. Deleting your account removes your profile, comments, bookmarks, messages, and study progress; nothing is kept afterward.",
-        mn: 'Та хүссэн үедээ өөрийн бүртгэл болон түүнтэй холбоотой бүх зүйлийг устгах боломжтой — нэвтэрсний дараа бүртгэлийн цэснээс, эсвэл доорх хаягаар надад и-мэйл бичих замаар. Бүртгэлээ устгавал профайл, сэтгэгдэл, тэмдэглэгээ, зурвас, суралцах явц бүгд устана; дараа нь юу ч үлдэхгүй.'
+        en: "You can delete your own account and everything tied to it at any time — from your account menu once logged in, or by emailing me at the address below. Deleting your account removes your profile, bookmarks, messages, and study progress; nothing is kept afterward.",
+        mn: 'Та хүссэн үедээ өөрийн бүртгэл болон түүнтэй холбоотой бүх зүйлийг устгах боломжтой — нэвтэрсний дараа бүртгэлийн цэснээс, эсвэл доорх хаягаар надад и-мэйл бичих замаар. Бүртгэлээ устгавал профайл, тэмдэглэгээ, зурвас, суралцах явц бүгд устана; дараа нь юу ч үлдэхгүй.'
     },
 
     'privacy.childrens.h': { en: "Children's privacy", mn: 'Хүүхдийн нууцлал' },

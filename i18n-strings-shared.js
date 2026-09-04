@@ -68,7 +68,7 @@ window.I18N_STRINGS = {
     'account.settings': { en: 'Settings', mn: 'Тохиргоо' },
     'account.yourAccount': { en: 'Your Account', mn: 'Таны бүртгэл' },
     'account.dangerZone': { en: 'Danger Zone', mn: 'Аюултай бүс' },
-    'account.deleteWarning': { en: "Deleting your account permanently removes your profile, comments, bookmarks, messages, and study progress. This can't be undone.", mn: 'Бүртгэлээ устгавал профайл, сэтгэгдэл, хадгалсан зүйлс, зурвас, суралцах явц бүрмөсөн устана. Үүнийг буцаах боломжгүй.' },
+    'account.deleteWarning': { en: "Deleting your account permanently removes your profile, bookmarks, messages, and study progress. This can't be undone.", mn: 'Бүртгэлээ устгавал профайл, хадгалсан зүйлс, зурвас, суралцах явц бүрмөсөн устана. Үүнийг буцаах боломжгүй.' },
     'account.deleteMyAccount': { en: 'Delete My Account', mn: 'Бүртгэлээ устгах' },
     'account.typeDeleteToConfirm': { en: 'Type DELETE to confirm:', mn: 'Баталгаажуулахын тулд DELETE гэж бичнэ үү:' },
     'account.yesPermanentlyDelete': { en: 'Yes, permanently delete my account', mn: 'Тийм, бүртгэлээ бүрмөсөн устгана' },

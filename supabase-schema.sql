@@ -12,9 +12,12 @@ create table public.profiles (
 
 alter table public.profiles enable row level security;
 
-create policy "Profiles are viewable by everyone"
+-- Own-row only. This was once "viewable by everyone" because the comment list embedded each
+-- author's display name, which meant anonymous callers had to be able to read the table. The
+-- comments feature is gone, and nothing else reads another user's profile, so the read closes.
+create policy "Users can view their own profile"
     on public.profiles for select
-    using (true);
+    using (auth.uid() = id);
 
 -- WITH CHECK as well as USING: USING decides which rows may be updated, WITH CHECK
 -- validates the row that gets written. Without it nothing re-examines the new row,
@@ -49,35 +52,6 @@ $ language plpgsql security definer set search_path = public;
 create trigger on_auth_user_created
     after insert on auth.users
     for each row execute procedure public.handle_new_user();
-
--- ---------------------------------------------------------------------------
--- comments: visitor comments on a project, identified by a text slug
--- ---------------------------------------------------------------------------
--- user_id references profiles (not auth.users directly) so PostgREST can resolve
--- the comments -> profiles embed used to show each comment's author display name.
-create table public.comments (
-    id uuid primary key default gen_random_uuid(),
-    project_id text not null check (char_length(project_id) between 1 and 100),
-    user_id uuid not null references public.profiles(id) on delete cascade,
-    -- Bounded because the insert policy only proves who you are, not how much you may
-    -- write: unbounded text plus an automated client is a storage bill, not a comment.
-    content text not null check (char_length(content) between 1 and 2000),
-    created_at timestamptz not null default now()
-);
-
-alter table public.comments enable row level security;
-
-create policy "Comments are viewable by everyone"
-    on public.comments for select
-    using (true);
-
-create policy "Authenticated users can add their own comments"
-    on public.comments for insert
-    with check (auth.uid() = user_id);
-
-create policy "Users can delete their own comments"
-    on public.comments for delete
-    using (auth.uid() = user_id);
 
 -- ---------------------------------------------------------------------------
 -- bookmarks: a user's saved projects (private to that user)
