@@ -291,7 +291,7 @@ body.game-playing .game-main {
     border: 1px solid rgba(212, 166, 75, 0.3);
 }
 
-.level-card h3 {
+.level-card h2 {
     margin: 0;
     font-size: 1.05rem;
     font-family: 'Fraunces', Georgia, serif;

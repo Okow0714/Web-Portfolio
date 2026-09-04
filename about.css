@@ -190,7 +190,7 @@ body {
     border: 1px solid var(--surface-edge); background: var(--surface); border-radius: 6px; padding: 18px 20px;
 }
 .project-item-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
-.project-item h4 { font-family: var(--font-display); font-size: var(--text-base); margin: 0 0 6px; }
+.project-item h3 { font-family: var(--font-display); font-size: var(--text-base); margin: 0 0 6px; }
 .project-item > p { margin: 0 0 10px; font-size: var(--text-sm); color: var(--ink-soft); line-height: 1.55; }
 .project-tech { font-size: var(--text-xs); color: var(--accent-dark); font-weight: 700; letter-spacing: 0.02em; }
 .bookmark-btn { background: none; border: none; cursor: pointer; font-size: var(--text-md); line-height: 1; padding: 2px; opacity: 0.55; transition: opacity 0.2s ease; }

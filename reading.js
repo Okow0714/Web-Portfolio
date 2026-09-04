@@ -185,7 +185,7 @@ function renderTrackSelect() {
         card.type = 'button';
         card.className = 'track-card';
         card.innerHTML = `
-            <h3>${escapeHtml(trackTitle(track))}</h3>
+            <h2>${escapeHtml(trackTitle(track))}</h2>
             <div class="track-meta">${escapeHtml(window.tf('reading.textsComplete', { done, total }))}</div>
         `;
         card.addEventListener('click', () => showLevelSelect(track));
@@ -219,7 +219,7 @@ function showLevelSelect(track) {
         card.className = 'level-card' + (unlocked ? '' : ' locked');
         card.innerHTML = `
             <span class="level-badge">~${escapeHtml(level.hint)}</span>
-            <h3>${escapeHtml(window.tf('game.levelN', { n: level.levelNum }))}</h3>
+            <h2>${escapeHtml(window.tf('game.levelN', { n: level.levelNum }))}</h2>
             <div class="level-meta">${escapeHtml(window.tf('reading.textsComplete', { done, total }))}</div>
             ${unlocked ? '' : `<div class="level-lock-note">&#128274; ${escapeHtml(window.t('reading.finishPreviousToUnlock'))}</div>`}
         `;

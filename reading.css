@@ -155,7 +155,7 @@ body:has(.reading-main) .auth-btn-outline:hover {
     transform: translateY(-2px);
 }
 
-.track-card h3 {
+.track-card h2 {
     margin: 0;
     font-size: 1.2rem;
 }
@@ -232,7 +232,7 @@ body:has(.reading-main) .auth-btn-outline:hover {
     padding: 4px 10px;
 }
 
-.level-card h3 {
+.level-card h2 {
     margin: 0;
     font-size: 1.1rem;
     flex: 0 0 auto;

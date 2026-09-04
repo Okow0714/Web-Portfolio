@@ -2035,7 +2035,7 @@ function renderLevelGrid() {
 
         card.innerHTML = `
             <span class="level-badge">${escapeHtml(level.jlpt)}</span>
-            <h3>${escapeHtml(levelTitle(level))}</h3>
+            <h2>${escapeHtml(levelTitle(level))}</h2>
             <div class="level-meta">${metaHtml}</div>
         `;
         card.addEventListener('click', () => startLevel(level));
