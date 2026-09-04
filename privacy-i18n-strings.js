@@ -2,7 +2,7 @@
 // which i18n-strings-shared.js must have already created (loaded first in privacy.html).
 Object.assign(window.I18N_STRINGS, {
     'privacy.title': { en: 'Privacy Policy', mn: 'Нууцлалын бодлого' },
-    'privacy.lastUpdated': { en: 'Last updated: September 2, 2026', mn: 'Сүүлд шинэчилсэн: 2026 оны 9-р сарын 2' },
+    'privacy.lastUpdated': { en: 'Last updated: September 4, 2026', mn: 'Сүүлд шинэчилсэн: 2026 оны 9-р сарын 4' },
 
     'privacy.whoThisIs.h': { en: 'Who this is', mn: 'Энэ хэн бэ' },
     'privacy.whoThisIs.p': {
@@ -20,8 +20,8 @@ Object.assign(window.I18N_STRINGS, {
         mn: '<strong>И-мэйл болон нууц үг</strong> — энэ сайтын ашигладаг нэвтрэлтийн үйлчилгээ Supabase бүрэн зохицуулдаг. Таны нууц үг надад уншигдах хэлбэрээр хэзээ ч хадгалагдахгүй, харагдахгүй; Supabase үүнийг хэш (шифрлэсэн) хэлбэрээр хадгалдаг.'
     },
     'privacy.whatICollect.li2': {
-        en: '<strong>Display name</strong> — auto-generated from your email when you sign up (the part before the @), shown next to any comments you post.',
-        mn: '<strong>Харагдах нэр</strong> — та бүртгүүлэхэд и-мэйл хаягийн @ тэмдгийн өмнөх хэсгээс автоматаар үүсдэг бөгөөд таны бичсэн сэтгэгдлийн хажууд харагдана.'
+        en: '<strong>Display name</strong> — a neutral one like "Reader 4821" is assigned when you sign up, and you can change it from your dashboard. It is shown next to any comments you post, so treat it as public and avoid putting your email address in it.',
+        mn: '<strong>Харагдах нэр</strong> — бүртгүүлэхэд «Reader 4821» гэх мэт энгийн нэр өгөгдөх бөгөөд хянах самбараасаа өөрчилж болно. Энэ нэр таны сэтгэгдлийн хажууд харагддаг тул нийтэд ил гэж үзээрэй, и-мэйл хаягаа бүү оруулаарай.'
     },
     'privacy.whatICollect.li3': {
         en: '<strong>Comments</strong> you post on portfolio project entries, and <strong>bookmarks</strong> you save.',
@@ -36,6 +36,10 @@ Object.assign(window.I18N_STRINGS, {
         mn: '<strong>Суралцах явц</strong> — таны дуусгасан Үг холбох тоглоомын шатууд, тэдгээрийн шилдэг хугацаа/хөдөлгөөн, дуусгасан Дүрэм холбохын шатууд, тэдгээрийн шилдэг хугацаа/алдаа, мөн зам бүрээр дуусгасан Уншлагын дадлагын текстүүд.'
     },
 
+    'privacy.whatICollect.li6': {
+        en: '<strong>Your voice, while Dokkai Reader is listening</strong> — the microphone is active only between pressing Start Reading and stopping it. The audio is never recorded, never stored, and never sent to this site. The recognition itself is done by your browser, and browsers generally do this by streaming the audio to their own vendor\'s speech service to transcribe it — that step is outside my control and is governed by your browser vendor\'s privacy policy.',
+        mn: '<strong>Таны дуу хоолой — Уншлагын дадлага сонсож байх үед</strong> — микрофон «Унших эхлэх» дарснаас зогсоох хүртэл л асаалттай байна. Дуу хоолойг бичиж хадгалахгүй, энэ сайт руу илгээхгүй. Дуу таних ажлыг таны хөтөч өөрөө хийдэг бөгөөд хөтчүүд ихэвчлэн дууг өөрсдийн дуу таних үйлчилгээ рүү илгээж бичвэр болгодог. Энэ алхам миний хяналтаас гадуур бөгөөд таны хөтчийн нууцлалын бодлогод захирагдана.'
+    },
     'privacy.whatIDontCollect.h': { en: "What I don't collect", mn: 'Юу цуглуулдаггүй вэ' },
     'privacy.whatIDontCollect.p': {
         en: "No analytics or tracking scripts, no advertising networks, no third-party cookies, and no payment information run on this site — there's nothing to sell and nothing behind a paywall. The only stored data is what's listed above.",
@@ -50,8 +54,8 @@ Object.assign(window.I18N_STRINGS, {
 
     'privacy.sharedWith.h': { en: "Who it's shared with", mn: 'Хэнтэй хуваалцдаг вэ' },
     'privacy.sharedWith.p': {
-        en: '<strong>Supabase</strong> (supabase.com) is the database and authentication provider behind this site — it processes and stores your account data and content on my behalf, under its own <a href="https://supabase.com/privacy" target="_blank" rel="noopener">privacy policy</a>. <strong>GitHub Pages</strong> hosts the site\'s files and, like any web host, sees standard request logs (IP address, browser type) as a normal part of serving web pages — I don\'t separately access or collect these. No one else receives your data.',
-        mn: '<strong>Supabase</strong> (supabase.com) нь энэ сайтын өгөгдлийн сан болон нэвтрэлтийн үйлчилгээг хариуцдаг — миний өмнөөс таны бүртгэлийн мэдээлэл, контентыг өөрийн <a href="https://supabase.com/privacy" target="_blank" rel="noopener">нууцлалын бодлогын</a> дагуу боловсруулж, хадгалдаг. <strong>GitHub Pages</strong> нь сайтын файлуудыг хостлодог бөгөөд ямар ч веб хостын адил стандарт хүсэлтийн лог (IP хаяг, хөтчийн төрөл) хардаг — эдгээрийг би тусад нь хандаж, цуглуулдаггүй. Өөр хэн ч таны мэдээллийг хүлээж авдаггүй.'
+        en: '<strong>Supabase</strong> (supabase.com) is the database and authentication provider behind this site — it processes and stores your account data and content on my behalf, under its own <a href="https://supabase.com/privacy" target="_blank" rel="noopener">privacy policy</a>. <strong>GitHub Pages</strong> hosts the site\'s files and, like any web host, sees standard request logs (IP address, browser type) as a normal part of serving web pages — I don\'t separately access or collect these. The one other thing that leaves this site is the audio your browser sends to its own speech service while Dokkai Reader is listening, described above — I neither receive nor store it. Nothing else is shared with anyone.',
+        mn: '<strong>Supabase</strong> (supabase.com) нь энэ сайтын өгөгдлийн сан болон нэвтрэлтийн үйлчилгээг хариуцдаг — миний өмнөөс таны бүртгэлийн мэдээлэл, контентыг өөрийн <a href="https://supabase.com/privacy" target="_blank" rel="noopener">нууцлалын бодлогын</a> дагуу боловсруулж, хадгалдаг. <strong>GitHub Pages</strong> нь сайтын файлуудыг хостлодог бөгөөд ямар ч веб хостын адил стандарт хүсэлтийн лог (IP хаяг, хөтчийн төрөл) хардаг — эдгээрийг би тусад нь хандаж, цуглуулдаггүй. Энэ сайтаас гарах цорын ганц зүйл бол Уншлагын дадлага сонсож байх үед хөтөч таны дууг өөрийн дуу таних үйлчилгээ рүү илгээдэг нь — үүнийг би хүлээж ч авахгүй, хадгалж ч үлдэхгүй. Өөр юу ч хэнд ч дамжуулагдахгүй.'
     },
 
     'privacy.cookies.h': { en: 'Cookies & local storage', mn: 'Күүки ба локал хадгалалт' },
