@@ -843,8 +843,12 @@ body {
     margin: 4px 0 0 0;
 }
 
+/* Deliberately NOT var(--accent-dark): the site palette is wine, so on most pages that
+   token is #571d2c and renders the *success* state in a colour indistinguishable from the
+   error red four lines above. A successful password-reset request read as a failure for as
+   long as it took to notice. Success needs a hue the error state can never take. */
 .auth-error.auth-info {
-    color: var(--accent-dark);
+    color: #1a7f4b;
 }
 
 .auth-forgot-link {
