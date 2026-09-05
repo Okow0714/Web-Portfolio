@@ -23,7 +23,7 @@ Object.assign(window.I18N_STRINGS, {
         en: 'An online exercise that connects each Japanese word to the Mongolian word with the matching meaning. Connect several kanji that share a phonetic reading at once and multiple words clear together. Each level starts on a 4-minute clock that every matched pair extends, and two wrong guesses bring an already-cleared pair back.',
         mn: 'Япон үгийг утга нь ижил монгол үгтэй холбох дасгал. Ижил дуудлагын язгууртай хэд хэдэн ханзыг зэрэг холбовол олон үг нэг дор арилна. Шат бүр 4 минутаас эхэлж, хос таарах бүрд цаг нэмэгдэнэ. Хоёр удаа буруу дарвал арилсан хос эргэж гарч ирнэ.'
     },
-    'hub.game.stat': { en: '50 LEVELS · 5 JLPT TIERS · ~1,250 WORDS', mn: '50 ШАТ · 5 JLPT ЗЭРЭГЛЭЛ · ОЙРОЛЦООГООР 1,250 ҮГ' },
+    'hub.game.stat': { en: '60 LEVELS · 5 JLPT TIERS · ~1,500 WORDS', mn: '60 ШАТ · 5 JLPT ЗЭРЭГЛЭЛ · ОЙРОЛЦООГООР 1,500 ҮГ' },
     'hub.game.cta': { en: 'Play →', mn: 'Тоглох →' },
 
     'hub.phonetics.name': { en: 'Phonetics Family', mn: 'Дуудлагын бүлэг' },

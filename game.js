@@ -152,7 +152,7 @@ let mismatchStreak = 0;  // mismatches since the last penalty (or level start); 
 let lastResult = null;    // result earned as a guest, pending save once they log in
 let progressCache = {};   // level number -> game_progress row
 let currentSet = [];      // this play's chosen 10-pair word set, indexed by pairId
-let activeJlptTab = 'N5'; // level-select screen: which JLPT tier's 10 levels are shown
+let activeJlptTab = 'N5'; // level-select screen: which JLPT tier's levels are shown
 let familiesFound = new Set(); // phonetic components ("lightning connect" families) chained
                                 // this round -- rendered as chips in the side panel, wide
                                 // layout only (see renderFamiliesFound())
@@ -1916,8 +1916,15 @@ function resolveWakanBlast(pairIds, targetPairId) {
 // level.title (from game-words.js) is English-only, e.g. "N5 · Level 1" — built here from
 // i18n instead, the same way grammar.js/reading.js build their level titles, rather than
 // reading the raw data-file field directly.
+// Derived from the data rather than hardcoded: the tier size changed from 10 to 12 when
+// the September 2026 expansion added two levels per tier, and a literal here is exactly the
+// kind of thing that silently mislabels every level above the first tier.
+function levelsPerTier() {
+    return WORD_LEVELS.filter(l => l.jlpt === WORD_LEVELS[0].jlpt).length;
+}
+
 function levelTitle(level) {
-    const withinTier = ((level.level - 1) % 10) + 1;
+    const withinTier = ((level.level - 1) % levelsPerTier()) + 1;
     return `${level.jlpt} · ${window.tf('game.levelN', { n: withinTier })}`;
 }
 
@@ -1952,10 +1959,10 @@ function startLevel(level) {
     gameMain.style.setProperty('--board-bg-image', `url(${bgImage})`);
 
     // Music pool is per JLPT tier (N4/N5 share one); cycle by position WITHIN that tier
-    // (0-9), not the global level number, so N4 and N5 each start their own pass through the
+    // (0-based within the tier), not the global level number, so N4 and N5 each start their own pass through the
     // shared lofi pool from track 0 rather than picking up wherever the other tier left off.
     const musicPool = MUSIC_POOLS[level.jlpt];
-    const withinTierIndex = (level.level - 1) % 10;
+    const withinTierIndex = (level.level - 1) % levelsPerTier();
     GameAudio.setLevelTrack(musicPool[withinTierIndex % musicPool.length]);
 
     renderBoard();
@@ -2135,7 +2142,7 @@ function showResultModal(result, won) {
     }
 
     // On a win, offer the next level in sequence instead of replaying the one just cleared --
-    // there's no "next" after the last level (50), so that case falls back to Play Again.
+    // there's no "next" after the last level, so that case falls back to Play Again.
     resultPrimaryTarget = won ? WORD_LEVELS.find(l => l.level === result.level + 1) || null : null;
     document.getElementById('result-replay-btn').textContent = resultPrimaryTarget ? window.t('game.nextLevel') : window.t('game.playAgain');
 

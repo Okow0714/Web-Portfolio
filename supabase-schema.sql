@@ -95,13 +95,15 @@ create policy "Users can view their own sent messages"
 -- Table Editor regardless of these policies (RLS only restricts the anon/client API).
 
 -- ---------------------------------------------------------------------------
--- game_progress: per-user best result for each Word Match level. 50 discrete levels,
--- 10 per JLPT tier (N5 1-10, N4 11-20, N3 21-30, N2 31-40, N1 41-50) -- was 1-5 (one
--- level per tier) before the game overhaul that split each tier into 10 sub-levels.
+-- game_progress: per-user best result for each Word Match level. 60 discrete levels,
+-- 12 per JLPT tier (N5 1-12, N4 13-24, N3 25-36, N2 37-48, N1 49-60). Was 50 levels of 10
+-- per tier until the September 2026 expansion, and 1-5 (one per tier) before the overhaul
+-- that split each tier into sub-levels. Renumbering a tier means migrating this column --
+-- see supabase-migration-003.
 -- ---------------------------------------------------------------------------
 create table public.game_progress (
     user_id uuid not null references auth.users on delete cascade,
-    level smallint not null check (level between 1 and 50),
+    level smallint not null check (level between 1 and 60),
     completed boolean not null default false,
     best_time_seconds integer,
     best_moves integer,

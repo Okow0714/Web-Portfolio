@@ -5275,6 +5275,809 @@ const WORD_LEVELS = [
     },
     {
         "level": 11,
+        "jlpt": "N5",
+        "title": "N5 · Level 11",
+        "sets": [
+            [
+                {
+                    "jp": "青",
+                    "reading": "あお",
+                    "en": "blue",
+                    "meanings": [
+                        "blue"
+                    ],
+                    "example": null,
+                    "phonetic": "青",
+                    "phoneticReading": "セイ、ショウ、ジョウ",
+                    "enMn": "хөх",
+                    "meaningsMn": [
+                        "хөх"
+                    ]
+                },
+                {
+                    "jp": "青い",
+                    "reading": "あおい",
+                    "en": "blue",
+                    "meanings": [
+                        "blue"
+                    ],
+                    "example": null,
+                    "phonetic": "青",
+                    "phoneticReading": "セイ、ショウ、ジョウ",
+                    "enMn": "хөх",
+                    "meaningsMn": [
+                        "хөх"
+                    ]
+                },
+                {
+                    "jp": "五日",
+                    "reading": "いつか",
+                    "en": "five days; fifth day of the month",
+                    "meanings": [
+                        "five days; fifth day of the month"
+                    ],
+                    "example": null,
+                    "phonetic": "五",
+                    "phoneticReading": "ゴ",
+                    "enMn": "таван хоног",
+                    "meaningsMn": [
+                        "таван хоног",
+                        "сарын тавны өдөр"
+                    ]
+                },
+                {
+                    "jp": "一緒",
+                    "reading": "いっしょ",
+                    "en": "together",
+                    "meanings": [
+                        "together"
+                    ],
+                    "example": null,
+                    "phonetic": "者",
+                    "phoneticReading": "シャ、ショ、チョ、ト",
+                    "enMn": "хамт",
+                    "meaningsMn": [
+                        "хамт"
+                    ]
+                },
+                {
+                    "jp": "映画館",
+                    "reading": "えいがかん",
+                    "en": "movie theater",
+                    "meanings": [
+                        "movie theater",
+                        "cinema"
+                    ],
+                    "example": null,
+                    "phonetic": "央",
+                    "phoneticReading": "エイ",
+                    "enMn": "кино театр",
+                    "meaningsMn": [
+                        "кино театр"
+                    ]
+                },
+                {
+                    "jp": "お金",
+                    "reading": "おかね",
+                    "en": "money",
+                    "meanings": [
+                        "money"
+                    ],
+                    "example": null,
+                    "phonetic": "金",
+                    "phoneticReading": "キン",
+                    "enMn": "мөнгө",
+                    "meaningsMn": [
+                        "мөнгө"
+                    ]
+                },
+                {
+                    "jp": "お手洗い",
+                    "reading": "おてあらい",
+                    "en": "toilet",
+                    "meanings": [
+                        "toilet",
+                        "restroom",
+                        "bathroom (lit.",
+                        "a place to wash one's hands)"
+                    ],
+                    "example": null,
+                    "phonetic": "先",
+                    "phoneticReading": "セン",
+                    "enMn": "бие засах газар",
+                    "meaningsMn": [
+                        "бие засах газар"
+                    ]
+                },
+                {
+                    "jp": "お兄さん",
+                    "reading": "おにいさん",
+                    "en": "(someone else's) older brother (formal)",
+                    "meanings": [
+                        "(someone else's) older brother (formal)"
+                    ],
+                    "example": null,
+                    "phonetic": "兄",
+                    "phoneticReading": "キョウ",
+                    "enMn": "ах",
+                    "meaningsMn": [
+                        "ах"
+                    ]
+                },
+                {
+                    "jp": "お姉さん",
+                    "reading": "おねえさん",
+                    "en": "older sister (formal)",
+                    "meanings": [
+                        "older sister (formal)"
+                    ],
+                    "example": null,
+                    "phonetic": "市",
+                    "phoneticReading": "シ",
+                    "enMn": "эгч (хүндэтгэлийн)",
+                    "meaningsMn": [
+                        "эгч (хүндэтгэлийн)"
+                    ]
+                },
+                {
+                    "jp": "お風呂",
+                    "reading": "おふろ",
+                    "en": "a bath",
+                    "meanings": [
+                        "a bath"
+                    ],
+                    "example": null,
+                    "phonetic": "風",
+                    "phoneticReading": "フウ",
+                    "enMn": "халуун ус",
+                    "meaningsMn": [
+                        "халуун ус",
+                        "ванн"
+                    ]
+                },
+                {
+                    "jp": "風邪",
+                    "reading": "かぜ",
+                    "en": "cold",
+                    "meanings": [
+                        "cold",
+                        "flu"
+                    ],
+                    "example": null,
+                    "phonetic": "風",
+                    "phoneticReading": "フウ",
+                    "enMn": "ханиад",
+                    "meaningsMn": [
+                        "ханиад"
+                    ]
+                },
+                {
+                    "jp": "方",
+                    "reading": "かた",
+                    "en": "-- honorific form for 人 (ひと) --; way of doing",
+                    "meanings": [
+                        "-- honorific form for 人 (ひと) --; way of doing"
+                    ],
+                    "example": null,
+                    "phonetic": "方",
+                    "phoneticReading": "ホウ、ボウ",
+                    "enMn": "хүн (хүндэтгэлийн)",
+                    "meaningsMn": [
+                        "хүн (хүндэтгэлийн)",
+                        "арга"
+                    ]
+                },
+                {
+                    "jp": "消える",
+                    "reading": "きえる",
+                    "en": "to vanish",
+                    "meanings": [
+                        "to vanish",
+                        "to disappear"
+                    ],
+                    "example": null,
+                    "phonetic": "肖",
+                    "phoneticReading": "ショウ",
+                    "enMn": "алга болох",
+                    "meaningsMn": [
+                        "алга болох"
+                    ]
+                },
+                {
+                    "jp": "九日",
+                    "reading": "ここのか",
+                    "en": "nine days; ninth day of the month",
+                    "meanings": [
+                        "nine days; ninth day of the month"
+                    ],
+                    "example": null,
+                    "phonetic": "九",
+                    "phoneticReading": "キュウ",
+                    "enMn": "есөн хоног",
+                    "meaningsMn": [
+                        "есөн хоног",
+                        "сарын есний өдөр"
+                    ]
+                },
+                {
+                    "jp": "自分",
+                    "reading": "じぶん",
+                    "en": "myself",
+                    "meanings": [
+                        "myself",
+                        "oneself"
+                    ],
+                    "example": null,
+                    "phonetic": "分",
+                    "phoneticReading": "フン",
+                    "enMn": "өөрөө",
+                    "meaningsMn": [
+                        "өөрөө"
+                    ]
+                },
+                {
+                    "jp": "締める",
+                    "reading": "しめる",
+                    "en": "to tie",
+                    "meanings": [
+                        "to tie",
+                        "to fasten",
+                        "to tighten"
+                    ],
+                    "example": null,
+                    "phonetic": "帝",
+                    "phoneticReading": "テイ",
+                    "enMn": "чангалах",
+                    "meaningsMn": [
+                        "чангалах",
+                        "боох"
+                    ]
+                },
+                {
+                    "jp": "写真",
+                    "reading": "しゃしん",
+                    "en": "a picture; a photograph",
+                    "meanings": [
+                        "a picture; a photograph"
+                    ],
+                    "example": null,
+                    "phonetic": "真",
+                    "phoneticReading": "シン、テン",
+                    "enMn": "гэрэл зураг",
+                    "meaningsMn": [
+                        "гэрэл зураг"
+                    ]
+                },
+                {
+                    "jp": "授業",
+                    "reading": "じゅぎょう",
+                    "en": "a class (of school)",
+                    "meanings": [
+                        "a class (of school)"
+                    ],
+                    "example": null,
+                    "phonetic": "受",
+                    "phoneticReading": "ジュ",
+                    "enMn": "хичээл",
+                    "meaningsMn": [
+                        "хичээл"
+                    ]
+                },
+                {
+                    "jp": "宿題",
+                    "reading": "しゅくだい",
+                    "en": "homework",
+                    "meanings": [
+                        "homework"
+                    ],
+                    "example": null,
+                    "phonetic": "宿",
+                    "phoneticReading": "シュク",
+                    "enMn": "гэрийн даалгавар",
+                    "meaningsMn": [
+                        "гэрийн даалгавар"
+                    ]
+                },
+                {
+                    "jp": "丈夫",
+                    "reading": "じょうぶ",
+                    "en": "strong",
+                    "meanings": [
+                        "strong",
+                        "solid",
+                        "durable"
+                    ],
+                    "example": null,
+                    "phonetic": "丈",
+                    "phoneticReading": "ジョウ",
+                    "enMn": "бөх бат (зүйлийн)",
+                    "meaningsMn": [
+                        "бөх бат (зүйлийн)",
+                        "эрүүл",
+                        "чийрэг (хүний)"
+                    ]
+                },
+                {
+                    "jp": "醤油",
+                    "reading": "しょうゆ",
+                    "en": "soy sauce",
+                    "meanings": [
+                        "soy sauce"
+                    ],
+                    "example": null,
+                    "phonetic": "由",
+                    "phoneticReading": "チュウ、ユ、テキ",
+                    "enMn": "соёны соус",
+                    "meaningsMn": [
+                        "соёны соус"
+                    ]
+                },
+                {
+                    "jp": "知る",
+                    "reading": "しる",
+                    "en": "to know",
+                    "meanings": [
+                        "to know",
+                        "to understand"
+                    ],
+                    "example": null,
+                    "phonetic": "知",
+                    "phoneticReading": "チ",
+                    "enMn": "мэдэх",
+                    "meaningsMn": [
+                        "мэдэх"
+                    ]
+                },
+                {
+                    "jp": "白",
+                    "reading": "しろ",
+                    "en": "white",
+                    "meanings": [
+                        "white"
+                    ],
+                    "example": null,
+                    "phonetic": "白",
+                    "phoneticReading": "ハク",
+                    "enMn": "цагаан",
+                    "meaningsMn": [
+                        "цагаан"
+                    ]
+                },
+                {
+                    "jp": "白い",
+                    "reading": "しろい",
+                    "en": "white",
+                    "meanings": [
+                        "white"
+                    ],
+                    "example": null,
+                    "phonetic": "白",
+                    "phoneticReading": "ハク",
+                    "enMn": "цагаан",
+                    "meaningsMn": [
+                        "цагаан"
+                    ]
+                },
+                {
+                    "jp": "水曜日",
+                    "reading": "すいようび",
+                    "en": "Wednesday",
+                    "meanings": [
+                        "Wednesday"
+                    ],
+                    "example": null,
+                    "phonetic": "翟",
+                    "phoneticReading": "ヨウ",
+                    "enMn": "лхагва гараг",
+                    "meaningsMn": [
+                        "лхагва гараг"
+                    ]
+                }
+            ]
+        ]
+    },
+    {
+        "level": 12,
+        "jlpt": "N5",
+        "title": "N5 · Level 12",
+        "sets": [
+            [
+                {
+                    "jp": "吸う",
+                    "reading": "すう",
+                    "en": "to breathe in",
+                    "meanings": [
+                        "to breathe in",
+                        "to suck"
+                    ],
+                    "example": null,
+                    "phonetic": "及",
+                    "phoneticReading": "キュウ",
+                    "enMn": "татах",
+                    "meaningsMn": [
+                        "татах",
+                        "амьсгалах"
+                    ]
+                },
+                {
+                    "jp": "少ない",
+                    "reading": "すくない",
+                    "en": "a little; a few",
+                    "meanings": [
+                        "a little; a few"
+                    ],
+                    "example": null,
+                    "phonetic": "少",
+                    "phoneticReading": "ショウ、サ",
+                    "enMn": "дутуу",
+                    "meaningsMn": [
+                        "дутуу"
+                    ]
+                },
+                {
+                    "jp": "少し",
+                    "reading": "すこし",
+                    "en": "little",
+                    "meanings": [
+                        "little",
+                        "few"
+                    ],
+                    "example": null,
+                    "phonetic": "少",
+                    "phoneticReading": "ショウ、サ",
+                    "enMn": "бага зэрэг",
+                    "meaningsMn": [
+                        "бага зэрэг"
+                    ]
+                },
+                {
+                    "jp": "涼しい",
+                    "reading": "すずしい",
+                    "en": "cool",
+                    "meanings": [
+                        "cool",
+                        "refreshing (in reference to weather)"
+                    ],
+                    "example": null,
+                    "phonetic": "京",
+                    "phoneticReading": "ケイ、リョウ",
+                    "enMn": "сэрүүн",
+                    "meaningsMn": [
+                        "сэрүүн"
+                    ]
+                },
+                {
+                    "jp": "座る",
+                    "reading": "すわる",
+                    "en": "to sit",
+                    "meanings": [
+                        "to sit"
+                    ],
+                    "example": null,
+                    "phonetic": "坐",
+                    "phoneticReading": "ザ",
+                    "enMn": "суух",
+                    "meaningsMn": [
+                        "суух"
+                    ]
+                },
+                {
+                    "jp": "生徒",
+                    "reading": "せいと",
+                    "en": "student; pupil",
+                    "meanings": [
+                        "student; pupil"
+                    ],
+                    "example": null,
+                    "phonetic": "生",
+                    "phoneticReading": "セイ、ショウ",
+                    "enMn": "сурагч",
+                    "meaningsMn": [
+                        "сурагч"
+                    ]
+                },
+                {
+                    "jp": "背広",
+                    "reading": "せびろ",
+                    "en": "men's suit",
+                    "meanings": [
+                        "men's suit"
+                    ],
+                    "example": null,
+                    "phonetic": "広",
+                    "phoneticReading": "コウ",
+                    "enMn": "хүрэм костюм",
+                    "meaningsMn": [
+                        "хүрэм костюм"
+                    ]
+                },
+                {
+                    "jp": "狭い",
+                    "reading": "せまい",
+                    "en": "narrow; not spacious",
+                    "meanings": [
+                        "narrow; not spacious"
+                    ],
+                    "example": null,
+                    "phonetic": "夹",
+                    "phoneticReading": "キョウ",
+                    "enMn": "нарийхан",
+                    "meaningsMn": [
+                        "нарийхан",
+                        "багтаамжгүй"
+                    ]
+                },
+                {
+                    "jp": "先月",
+                    "reading": "せんげつ",
+                    "en": "last month",
+                    "meanings": [
+                        "last month"
+                    ],
+                    "example": null,
+                    "phonetic": "先",
+                    "phoneticReading": "セン",
+                    "enMn": "өнгөрсөн сар",
+                    "meaningsMn": [
+                        "өнгөрсөн сар"
+                    ]
+                },
+                {
+                    "jp": "先週",
+                    "reading": "せんしゅう",
+                    "en": "last week",
+                    "meanings": [
+                        "last week"
+                    ],
+                    "example": null,
+                    "phonetic": "先",
+                    "phoneticReading": "セン",
+                    "enMn": "өнгөрсөн долоо хоног",
+                    "meaningsMn": [
+                        "өнгөрсөн долоо хоног"
+                    ]
+                },
+                {
+                    "jp": "先生",
+                    "reading": "せんせい",
+                    "en": "teacher",
+                    "meanings": [
+                        "teacher",
+                        "professor; master; doctor"
+                    ],
+                    "example": null,
+                    "phonetic": "先",
+                    "phoneticReading": "セン",
+                    "enMn": "багш",
+                    "meaningsMn": [
+                        "багш"
+                    ]
+                },
+                {
+                    "jp": "洗濯",
+                    "reading": "せんたく",
+                    "en": "washing",
+                    "meanings": [
+                        "washing",
+                        "laundry"
+                    ],
+                    "example": null,
+                    "phonetic": "先",
+                    "phoneticReading": "セン",
+                    "enMn": "угаалга",
+                    "meaningsMn": [
+                        "угаалга"
+                    ]
+                },
+                {
+                    "jp": "掃除",
+                    "reading": "そうじ (する)",
+                    "en": "cleaning",
+                    "meanings": [
+                        "cleaning",
+                        "sweeping"
+                    ],
+                    "example": null,
+                    "phonetic": "余",
+                    "phoneticReading": "ジョ、ト",
+                    "enMn": "цэвэрлэгээ",
+                    "meaningsMn": [
+                        "цэвэрлэгээ"
+                    ]
+                },
+                {
+                    "jp": "大使館",
+                    "reading": "たいしかん",
+                    "en": "embassy",
+                    "meanings": [
+                        "embassy"
+                    ],
+                    "example": null,
+                    "phonetic": "史",
+                    "phoneticReading": "シ",
+                    "enMn": "элчин сайдын яам",
+                    "meaningsMn": [
+                        "элчин сайдын яам"
+                    ]
+                },
+                {
+                    "jp": "大丈夫",
+                    "reading": "だいじょうぶ",
+                    "en": "It's ok (all right); No need to worry; Everything is under control",
+                    "meanings": [
+                        "It's ok (all right); No need to worry; Everything is under control"
+                    ],
+                    "example": null,
+                    "phonetic": "丈",
+                    "phoneticReading": "ジョウ",
+                    "enMn": "болно",
+                    "meaningsMn": [
+                        "болно",
+                        "зүгээр"
+                    ]
+                },
+                {
+                    "jp": "大切",
+                    "reading": "たいせつ",
+                    "en": "important",
+                    "meanings": [
+                        "important"
+                    ],
+                    "example": null,
+                    "phonetic": "切",
+                    "phoneticReading": "セツ",
+                    "enMn": "чухал",
+                    "meaningsMn": [
+                        "чухал"
+                    ]
+                },
+                {
+                    "jp": "台所",
+                    "reading": "だいどころ",
+                    "en": "kitchen",
+                    "meanings": [
+                        "kitchen"
+                    ],
+                    "example": null,
+                    "phonetic": "台",
+                    "phoneticReading": "タイ",
+                    "enMn": "гал тогоо",
+                    "meaningsMn": [
+                        "гал тогоо"
+                    ]
+                },
+                {
+                    "jp": "高い",
+                    "reading": "たかい",
+                    "en": "tall",
+                    "meanings": [
+                        "tall",
+                        "high; expensive"
+                    ],
+                    "example": null,
+                    "phonetic": "高",
+                    "phoneticReading": "コウ",
+                    "enMn": "өндөр",
+                    "meaningsMn": [
+                        "өндөр",
+                        "үнэтэй"
+                    ]
+                },
+                {
+                    "jp": "沢山",
+                    "reading": "たくさん",
+                    "en": "many",
+                    "meanings": [
+                        "many",
+                        "much"
+                    ],
+                    "example": null,
+                    "phonetic": "尺",
+                    "phoneticReading": "シャク、タク",
+                    "enMn": "их олон",
+                    "meaningsMn": [
+                        "их олон"
+                    ]
+                },
+                {
+                    "jp": "立つ",
+                    "reading": "たつ",
+                    "en": "to stand up",
+                    "meanings": [
+                        "to stand up"
+                    ],
+                    "example": null,
+                    "phonetic": "立",
+                    "phoneticReading": "リュウ",
+                    "enMn": "зогсох",
+                    "meaningsMn": [
+                        "зогсох"
+                    ]
+                },
+                {
+                    "jp": "建物",
+                    "reading": "たてもの",
+                    "en": "building",
+                    "meanings": [
+                        "building"
+                    ],
+                    "example": null,
+                    "phonetic": "建",
+                    "phoneticReading": "ケン",
+                    "enMn": "барилга",
+                    "meaningsMn": [
+                        "барилга"
+                    ]
+                },
+                {
+                    "jp": "多分",
+                    "reading": "たぶん",
+                    "en": "perhaps",
+                    "meanings": [
+                        "perhaps",
+                        "probably",
+                        "maybe"
+                    ],
+                    "example": null,
+                    "phonetic": "分",
+                    "phoneticReading": "フン",
+                    "enMn": "магадгүй",
+                    "meaningsMn": [
+                        "магадгүй"
+                    ]
+                },
+                {
+                    "jp": "誕生日",
+                    "reading": "たんじょうび",
+                    "en": "birthday",
+                    "meanings": [
+                        "birthday"
+                    ],
+                    "example": null,
+                    "phonetic": "生",
+                    "phoneticReading": "セイ、ショウ",
+                    "enMn": "төрсөн өдөр",
+                    "meaningsMn": [
+                        "төрсөн өдөр"
+                    ]
+                },
+                {
+                    "jp": "違う",
+                    "reading": "ちがう",
+                    "en": "to be different; to differ; wrong",
+                    "meanings": [
+                        "to be different; to differ; wrong"
+                    ],
+                    "example": null,
+                    "phonetic": "韋",
+                    "phoneticReading": "イ",
+                    "enMn": "өөр",
+                    "meaningsMn": [
+                        "өөр",
+                        "буруу"
+                    ]
+                },
+                {
+                    "jp": "地下鉄",
+                    "reading": "ちかてつ",
+                    "en": "underground train",
+                    "meanings": [
+                        "underground train",
+                        "subway"
+                    ],
+                    "example": null,
+                    "phonetic": "也",
+                    "phoneticReading": "チ",
+                    "enMn": "метро",
+                    "meaningsMn": [
+                        "метро"
+                    ]
+                }
+            ]
+        ]
+    },
+    {
+        "level": 13,
         "jlpt": "N4",
         "title": "N4 · Level 1",
         "sets": [
@@ -5804,7 +6607,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 12,
+        "level": 14,
         "jlpt": "N4",
         "title": "N4 · Level 2",
         "sets": [
@@ -6352,7 +7155,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 13,
+        "level": 15,
         "jlpt": "N4",
         "title": "N4 · Level 3",
         "sets": [
@@ -6894,7 +7697,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 14,
+        "level": 16,
         "jlpt": "N4",
         "title": "N4 · Level 4",
         "sets": [
@@ -7427,7 +8230,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 15,
+        "level": 17,
         "jlpt": "N4",
         "title": "N4 · Level 5",
         "sets": [
@@ -7957,7 +8760,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 16,
+        "level": 18,
         "jlpt": "N4",
         "title": "N4 · Level 6",
         "sets": [
@@ -8490,7 +9293,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 17,
+        "level": 19,
         "jlpt": "N4",
         "title": "N4 · Level 7",
         "sets": [
@@ -9015,7 +9818,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 18,
+        "level": 20,
         "jlpt": "N4",
         "title": "N4 · Level 8",
         "sets": [
@@ -9539,7 +10342,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 19,
+        "level": 21,
         "jlpt": "N4",
         "title": "N4 · Level 9",
         "sets": [
@@ -10076,7 +10879,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 20,
+        "level": 22,
         "jlpt": "N4",
         "title": "N4 · Level 10",
         "sets": [
@@ -10611,7 +11414,809 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 21,
+        "level": 23,
+        "jlpt": "N4",
+        "title": "N4 · Level 11",
+        "sets": [
+            [
+                {
+                    "jp": "漫画",
+                    "reading": "まんが",
+                    "en": "comic (book)",
+                    "meanings": [
+                        "comic (book)",
+                        "cartoon"
+                    ],
+                    "example": null,
+                    "phonetic": "曼",
+                    "phoneticReading": "マン",
+                    "enMn": "комик",
+                    "meaningsMn": [
+                        "комик",
+                        "зурагт үлгэр"
+                    ]
+                },
+                {
+                    "jp": "林",
+                    "reading": "はやし",
+                    "en": "woods",
+                    "meanings": [
+                        "woods",
+                        "forest"
+                    ],
+                    "example": null,
+                    "phonetic": "林",
+                    "phoneticReading": "リン",
+                    "enMn": "ой мод",
+                    "meaningsMn": [
+                        "ой мод"
+                    ]
+                },
+                {
+                    "jp": "線",
+                    "reading": "せん",
+                    "en": "line",
+                    "meanings": [
+                        "line",
+                        "wire"
+                    ],
+                    "example": null,
+                    "phonetic": "泉",
+                    "phoneticReading": "セン",
+                    "enMn": "шугам",
+                    "meaningsMn": [
+                        "шугам"
+                    ]
+                },
+                {
+                    "jp": "原因",
+                    "reading": "げんいん",
+                    "en": "cause",
+                    "meanings": [
+                        "cause",
+                        "origin",
+                        "source"
+                    ],
+                    "example": null,
+                    "phonetic": "原",
+                    "phoneticReading": "ゲン",
+                    "enMn": "шалтгаан",
+                    "meaningsMn": [
+                        "шалтгаан"
+                    ]
+                },
+                {
+                    "jp": "消しゴム",
+                    "reading": "けしゴム",
+                    "en": "eraser",
+                    "meanings": [
+                        "eraser"
+                    ],
+                    "example": null,
+                    "phonetic": "肖",
+                    "phoneticReading": "ショウ",
+                    "enMn": "баллуур",
+                    "meaningsMn": [
+                        "баллуур"
+                    ]
+                },
+                {
+                    "jp": "旅館",
+                    "reading": "りょかん",
+                    "en": "a Japanese inn",
+                    "meanings": [
+                        "a Japanese inn"
+                    ],
+                    "example": null,
+                    "phonetic": "官",
+                    "phoneticReading": "カン",
+                    "enMn": "япон маягийн зочид буудал",
+                    "meaningsMn": [
+                        "япон маягийн зочид буудал"
+                    ]
+                },
+                {
+                    "jp": "海岸",
+                    "reading": "かいがん",
+                    "en": "coast",
+                    "meanings": [
+                        "coast",
+                        "seashore"
+                    ],
+                    "example": null,
+                    "phonetic": "毎",
+                    "phoneticReading": "カイ",
+                    "enMn": "далайн эрэг",
+                    "meaningsMn": [
+                        "далайн эрэг"
+                    ]
+                },
+                {
+                    "jp": "味噌",
+                    "reading": "みそ",
+                    "en": "miso",
+                    "meanings": [
+                        "miso",
+                        "bean paste"
+                    ],
+                    "example": null,
+                    "phonetic": "未",
+                    "phoneticReading": "ミ、マイ",
+                    "enMn": "мисо",
+                    "meaningsMn": [
+                        "мисо"
+                    ]
+                },
+                {
+                    "jp": "乗り物",
+                    "reading": "のりもの",
+                    "en": "vehicle",
+                    "meanings": [
+                        "vehicle"
+                    ],
+                    "example": null,
+                    "phonetic": "乗",
+                    "phoneticReading": "ジョウ",
+                    "enMn": "тээврийн хэрэгсэл",
+                    "meaningsMn": [
+                        "тээврийн хэрэгсэл"
+                    ]
+                },
+                {
+                    "jp": "連れる",
+                    "reading": "つれる",
+                    "en": "to lead",
+                    "meanings": [
+                        "to lead",
+                        "to take (a person)"
+                    ],
+                    "example": null,
+                    "phonetic": "連",
+                    "phoneticReading": "レン",
+                    "enMn": "дагуулах",
+                    "meaningsMn": [
+                        "дагуулах"
+                    ]
+                },
+                {
+                    "jp": "技術",
+                    "reading": "ぎじゅつ",
+                    "en": "technique",
+                    "meanings": [
+                        "technique",
+                        "technology",
+                        "skill"
+                    ],
+                    "example": null,
+                    "phonetic": "朮",
+                    "phoneticReading": "ジュツ",
+                    "enMn": "технологи",
+                    "meaningsMn": [
+                        "технологи",
+                        "ур чадвар"
+                    ]
+                },
+                {
+                    "jp": "下宿",
+                    "reading": "げしゅく",
+                    "en": "lodging",
+                    "meanings": [
+                        "lodging",
+                        "boarding house"
+                    ],
+                    "example": null,
+                    "phonetic": "宿",
+                    "phoneticReading": "シュク",
+                    "enMn": "түрээсийн байр",
+                    "meaningsMn": [
+                        "түрээсийн байр"
+                    ]
+                },
+                {
+                    "jp": "鏡",
+                    "reading": "かがみ",
+                    "en": "mirror",
+                    "meanings": [
+                        "mirror"
+                    ],
+                    "example": null,
+                    "phonetic": "竟",
+                    "phoneticReading": "キョウ",
+                    "enMn": "толь",
+                    "meaningsMn": [
+                        "толь"
+                    ]
+                },
+                {
+                    "jp": "貿易",
+                    "reading": "ぼうえき",
+                    "en": "trade",
+                    "meanings": [
+                        "trade"
+                    ],
+                    "example": null,
+                    "phonetic": "卯",
+                    "phoneticReading": "リュウ、ル、ボウ",
+                    "enMn": "худалдаа",
+                    "meaningsMn": [
+                        "худалдаа"
+                    ]
+                },
+                {
+                    "jp": "反対",
+                    "reading": "はんたい",
+                    "en": "oppose",
+                    "meanings": [
+                        "oppose",
+                        "opposition",
+                        "resistance"
+                    ],
+                    "example": null,
+                    "phonetic": "反",
+                    "phoneticReading": "ハン",
+                    "enMn": "эсрэг",
+                    "meaningsMn": [
+                        "эсрэг",
+                        "эсэргүүцэх"
+                    ]
+                },
+                {
+                    "jp": "申す",
+                    "reading": "もうす",
+                    "en": "-- extra-modest (humble) expression for 言う (いう) --",
+                    "meanings": [
+                        "-- extra-modest (humble) expression for 言う (いう) --"
+                    ],
+                    "example": null,
+                    "phonetic": "申",
+                    "phoneticReading": "シン",
+                    "enMn": "хэлэх (даруу хэлбэр)",
+                    "meaningsMn": [
+                        "хэлэх (даруу хэлбэр)"
+                    ]
+                },
+                {
+                    "jp": "試験",
+                    "reading": "しけん",
+                    "en": "an exam",
+                    "meanings": [
+                        "an exam"
+                    ],
+                    "example": null,
+                    "phonetic": "㑒",
+                    "phoneticReading": "ケン",
+                    "enMn": "шалгалт",
+                    "meaningsMn": [
+                        "шалгалт"
+                    ]
+                },
+                {
+                    "jp": "真面目",
+                    "reading": "まじめ",
+                    "en": "diligent",
+                    "meanings": [
+                        "diligent",
+                        "serious"
+                    ],
+                    "example": null,
+                    "phonetic": "真",
+                    "phoneticReading": "シン、テン",
+                    "enMn": "хичээнгүй",
+                    "meaningsMn": [
+                        "хичээнгүй",
+                        "ноцтой"
+                    ]
+                },
+                {
+                    "jp": "店員",
+                    "reading": "てんいん",
+                    "en": "clerk; shop-employee",
+                    "meanings": [
+                        "clerk; shop-employee"
+                    ],
+                    "example": null,
+                    "phonetic": "占",
+                    "phoneticReading": "テン",
+                    "enMn": "худалдагч",
+                    "meaningsMn": [
+                        "худалдагч"
+                    ]
+                },
+                {
+                    "jp": "泊まる",
+                    "reading": "とまる",
+                    "en": "to stay (over night) (v.i.)",
+                    "meanings": [
+                        "to stay (over night) (v.i.)"
+                    ],
+                    "example": null,
+                    "phonetic": "白",
+                    "phoneticReading": "ハク",
+                    "enMn": "хонох",
+                    "meaningsMn": [
+                        "хонох"
+                    ]
+                },
+                {
+                    "jp": "今夜",
+                    "reading": "こんや",
+                    "en": "this evening",
+                    "meanings": [
+                        "this evening",
+                        "tonight"
+                    ],
+                    "example": null,
+                    "phonetic": "今",
+                    "phoneticReading": "キン",
+                    "enMn": "өнөө орой",
+                    "meaningsMn": [
+                        "өнөө орой"
+                    ]
+                },
+                {
+                    "jp": "会話",
+                    "reading": "かいわ",
+                    "en": "conversation",
+                    "meanings": [
+                        "conversation"
+                    ],
+                    "example": null,
+                    "phonetic": "会",
+                    "phoneticReading": "カイ、エ",
+                    "enMn": "яриа",
+                    "meaningsMn": [
+                        "яриа"
+                    ]
+                },
+                {
+                    "jp": "空気",
+                    "reading": "くうき",
+                    "en": "air",
+                    "meanings": [
+                        "air",
+                        "atmosphere"
+                    ],
+                    "example": null,
+                    "phonetic": "气",
+                    "phoneticReading": "キ",
+                    "enMn": "агаар",
+                    "meaningsMn": [
+                        "агаар"
+                    ]
+                },
+                {
+                    "jp": "喜ぶ",
+                    "reading": "よろこぶ",
+                    "en": "to rejoice",
+                    "meanings": [
+                        "to rejoice",
+                        "to be delighted",
+                        "to be glad"
+                    ],
+                    "example": null,
+                    "phonetic": "喜",
+                    "phoneticReading": "キ",
+                    "enMn": "баярлах",
+                    "meaningsMn": [
+                        "баярлах"
+                    ]
+                },
+                {
+                    "jp": "皆",
+                    "reading": "みな",
+                    "en": "everyone",
+                    "meanings": [
+                        "everyone"
+                    ],
+                    "example": null,
+                    "phonetic": "皆",
+                    "phoneticReading": "カイ",
+                    "enMn": "бүгд",
+                    "meaningsMn": [
+                        "бүгд"
+                    ]
+                }
+            ]
+        ]
+    },
+    {
+        "level": 24,
+        "jlpt": "N4",
+        "title": "N4 · Level 12",
+        "sets": [
+            [
+                {
+                    "jp": "味",
+                    "reading": "あじ",
+                    "en": "flavor",
+                    "meanings": [
+                        "flavor",
+                        "taste"
+                    ],
+                    "example": null,
+                    "phonetic": "未",
+                    "phoneticReading": "ミ、マイ",
+                    "enMn": "амт",
+                    "meaningsMn": [
+                        "амт"
+                    ]
+                },
+                {
+                    "jp": "空港",
+                    "reading": "くうこう",
+                    "en": "airport",
+                    "meanings": [
+                        "airport"
+                    ],
+                    "example": null,
+                    "phonetic": "共",
+                    "phoneticReading": "キョウ、コウ",
+                    "enMn": "нисэх буудал",
+                    "meaningsMn": [
+                        "нисэх буудал"
+                    ]
+                },
+                {
+                    "jp": "手袋",
+                    "reading": "てぶくろ",
+                    "en": "glove(s)",
+                    "meanings": [
+                        "glove(s)"
+                    ],
+                    "example": null,
+                    "phonetic": "代",
+                    "phoneticReading": "タイ",
+                    "enMn": "бээлий",
+                    "meaningsMn": [
+                        "бээлий"
+                    ]
+                },
+                {
+                    "jp": "校長",
+                    "reading": "こうちょう",
+                    "en": "principal",
+                    "meanings": [
+                        "principal",
+                        "headmaster"
+                    ],
+                    "example": null,
+                    "phonetic": "交",
+                    "phoneticReading": "コウ",
+                    "enMn": "сургуулийн захирал",
+                    "meaningsMn": [
+                        "сургуулийн захирал"
+                    ]
+                },
+                {
+                    "jp": "興味",
+                    "reading": "きょうみ",
+                    "en": "interest (in something)",
+                    "meanings": [
+                        "interest (in something)"
+                    ],
+                    "example": null,
+                    "phonetic": "未",
+                    "phoneticReading": "ミ、マイ",
+                    "enMn": "сонирхол",
+                    "meaningsMn": [
+                        "сонирхол"
+                    ]
+                },
+                {
+                    "jp": "冷房",
+                    "reading": "れいぼう",
+                    "en": "cooling",
+                    "meanings": [
+                        "cooling",
+                        "air conditioning"
+                    ],
+                    "example": null,
+                    "phonetic": "令",
+                    "phoneticReading": "レイ",
+                    "enMn": "агааржуулагч",
+                    "meaningsMn": [
+                        "агааржуулагч"
+                    ]
+                },
+                {
+                    "jp": "都合",
+                    "reading": "つごう",
+                    "en": "circumstances",
+                    "meanings": [
+                        "circumstances",
+                        "convenience"
+                    ],
+                    "example": null,
+                    "phonetic": "者",
+                    "phoneticReading": "シャ、ショ、チョ、ト",
+                    "enMn": "нөхцөл байдал",
+                    "meaningsMn": [
+                        "нөхцөл байдал"
+                    ]
+                },
+                {
+                    "jp": "亡くなる",
+                    "reading": "なくなる",
+                    "en": "to pass away",
+                    "meanings": [
+                        "to pass away"
+                    ],
+                    "example": null,
+                    "phonetic": "亡",
+                    "phoneticReading": "ボウ、モウ",
+                    "enMn": "нас барах",
+                    "meaningsMn": [
+                        "нас барах"
+                    ]
+                },
+                {
+                    "jp": "差し上げる",
+                    "reading": "さしあげる",
+                    "en": "-- humble expression for あげる --",
+                    "meanings": [
+                        "-- humble expression for あげる --"
+                    ],
+                    "example": null,
+                    "phonetic": "左",
+                    "phoneticReading": "サ",
+                    "enMn": "өгөх (даруу хэлбэр)",
+                    "meaningsMn": [
+                        "өгөх (даруу хэлбэр)"
+                    ]
+                },
+                {
+                    "jp": "気持ち",
+                    "reading": "きもち",
+                    "en": "feeling",
+                    "meanings": [
+                        "feeling",
+                        "sensation",
+                        "mood"
+                    ],
+                    "example": null,
+                    "phonetic": "气",
+                    "phoneticReading": "キ",
+                    "enMn": "сэтгэл хөдлөл",
+                    "meaningsMn": [
+                        "сэтгэл хөдлөл"
+                    ]
+                },
+                {
+                    "jp": "祖父",
+                    "reading": "そふ",
+                    "en": "grandfather",
+                    "meanings": [
+                        "grandfather"
+                    ],
+                    "example": null,
+                    "phonetic": "且",
+                    "phoneticReading": "ソ",
+                    "enMn": "өвөө",
+                    "meaningsMn": [
+                        "өвөө"
+                    ]
+                },
+                {
+                    "jp": "港",
+                    "reading": "みなと",
+                    "en": "harbor",
+                    "meanings": [
+                        "harbor",
+                        "port"
+                    ],
+                    "example": null,
+                    "phonetic": "共",
+                    "phoneticReading": "キョウ、コウ",
+                    "enMn": "боомт",
+                    "meaningsMn": [
+                        "боомт"
+                    ]
+                },
+                {
+                    "jp": "予約",
+                    "reading": "よやく",
+                    "en": "reservation",
+                    "meanings": [
+                        "reservation"
+                    ],
+                    "example": null,
+                    "phonetic": "予",
+                    "phoneticReading": "ヨ",
+                    "enMn": "захиалга",
+                    "meaningsMn": [
+                        "захиалга"
+                    ]
+                },
+                {
+                    "jp": "凄い",
+                    "reading": "すごい",
+                    "en": "terrific",
+                    "meanings": [
+                        "terrific",
+                        "great"
+                    ],
+                    "example": null,
+                    "phonetic": "妻",
+                    "phoneticReading": "セイ",
+                    "enMn": "гайхалтай",
+                    "meaningsMn": [
+                        "гайхалтай"
+                    ]
+                },
+                {
+                    "jp": "片付ける",
+                    "reading": "かたづける",
+                    "en": "to (clean) tidy up (v.t.)",
+                    "meanings": [
+                        "to (clean) tidy up (v.t.)",
+                        "to put away"
+                    ],
+                    "example": null,
+                    "phonetic": "付",
+                    "phoneticReading": "フ",
+                    "enMn": "цэгцлэх",
+                    "meaningsMn": [
+                        "цэгцлэх"
+                    ]
+                },
+                {
+                    "jp": "部長",
+                    "reading": "ぶちょう",
+                    "en": "department (division) manager",
+                    "meanings": [
+                        "department (division) manager"
+                    ],
+                    "example": null,
+                    "phonetic": "長",
+                    "phoneticReading": "チョウ",
+                    "enMn": "хэлтсийн дарга",
+                    "meaningsMn": [
+                        "хэлтсийн дарга"
+                    ]
+                },
+                {
+                    "jp": "教会",
+                    "reading": "きょうかい",
+                    "en": "church",
+                    "meanings": [
+                        "church"
+                    ],
+                    "example": null,
+                    "phonetic": "会",
+                    "phoneticReading": "カイ、エ",
+                    "enMn": "сүм",
+                    "meaningsMn": [
+                        "сүм"
+                    ]
+                },
+                {
+                    "jp": "男性",
+                    "reading": "だんせい",
+                    "en": "man; male",
+                    "meanings": [
+                        "man; male"
+                    ],
+                    "example": null,
+                    "phonetic": "生",
+                    "phoneticReading": "セイ、ショウ",
+                    "enMn": "эрэгтэй хүн",
+                    "meaningsMn": [
+                        "эрэгтэй хүн"
+                    ]
+                },
+                {
+                    "jp": "理由",
+                    "reading": "りゆう",
+                    "en": "reason",
+                    "meanings": [
+                        "reason"
+                    ],
+                    "example": null,
+                    "phonetic": "由",
+                    "phoneticReading": "チュウ、ユ、テキ",
+                    "enMn": "шалтгаан",
+                    "meaningsMn": [
+                        "шалтгаан"
+                    ]
+                },
+                {
+                    "jp": "暮れる",
+                    "reading": "くれる",
+                    "en": "to get dark",
+                    "meanings": [
+                        "to get dark",
+                        "to come to an end"
+                    ],
+                    "example": null,
+                    "phonetic": "莫",
+                    "phoneticReading": "ボ、モ、マク、バク",
+                    "enMn": "харанхуйлах",
+                    "meaningsMn": [
+                        "харанхуйлах"
+                    ]
+                },
+                {
+                    "jp": "謝る",
+                    "reading": "あやまる",
+                    "en": "to apologize",
+                    "meanings": [
+                        "to apologize"
+                    ],
+                    "example": null,
+                    "phonetic": "射",
+                    "phoneticReading": "シャ",
+                    "enMn": "уучлал гуйх",
+                    "meaningsMn": [
+                        "уучлал гуйх"
+                    ]
+                },
+                {
+                    "jp": "昼間",
+                    "reading": "ひるま",
+                    "en": "daytime",
+                    "meanings": [
+                        "daytime",
+                        "during the day"
+                    ],
+                    "example": null,
+                    "phonetic": "門",
+                    "phoneticReading": "モン、カン",
+                    "enMn": "өдрийн цагт",
+                    "meaningsMn": [
+                        "өдрийн цагт"
+                    ]
+                },
+                {
+                    "jp": "女性",
+                    "reading": "じょせい",
+                    "en": "woman",
+                    "meanings": [
+                        "woman"
+                    ],
+                    "example": null,
+                    "phonetic": "生",
+                    "phoneticReading": "セイ、ショウ",
+                    "enMn": "эмэгтэй хүн",
+                    "meaningsMn": [
+                        "эмэгтэй хүн"
+                    ]
+                },
+                {
+                    "jp": "邪魔",
+                    "reading": "じゃま",
+                    "en": "hindrance",
+                    "meanings": [
+                        "hindrance",
+                        "intrusion"
+                    ],
+                    "example": null,
+                    "phonetic": "麻",
+                    "phoneticReading": "マ",
+                    "enMn": "саад",
+                    "meaningsMn": [
+                        "саад"
+                    ]
+                },
+                {
+                    "jp": "国際",
+                    "reading": "こくさい",
+                    "en": "international",
+                    "meanings": [
+                        "international"
+                    ],
+                    "example": null,
+                    "phonetic": "祭",
+                    "phoneticReading": "サイ",
+                    "enMn": "олон улсын",
+                    "meaningsMn": [
+                        "олон улсын"
+                    ]
+                }
+            ]
+        ]
+    },
+    {
+        "level": 25,
         "jlpt": "N3",
         "title": "N3 · Level 1",
         "sets": [
@@ -11152,7 +12757,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 22,
+        "level": 26,
         "jlpt": "N3",
         "title": "N3 · Level 2",
         "sets": [
@@ -11697,7 +13302,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 23,
+        "level": 27,
         "jlpt": "N3",
         "title": "N3 · Level 3",
         "sets": [
@@ -12236,7 +13841,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 24,
+        "level": 28,
         "jlpt": "N3",
         "title": "N3 · Level 4",
         "sets": [
@@ -12777,7 +14382,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 25,
+        "level": 29,
         "jlpt": "N3",
         "title": "N3 · Level 5",
         "sets": [
@@ -13316,7 +14921,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 26,
+        "level": 30,
         "jlpt": "N3",
         "title": "N3 · Level 6",
         "sets": [
@@ -13851,7 +15456,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 27,
+        "level": 31,
         "jlpt": "N3",
         "title": "N3 · Level 7",
         "sets": [
@@ -14387,7 +15992,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 28,
+        "level": 32,
         "jlpt": "N3",
         "title": "N3 · Level 8",
         "sets": [
@@ -14925,7 +16530,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 29,
+        "level": 33,
         "jlpt": "N3",
         "title": "N3 · Level 9",
         "sets": [
@@ -15462,7 +17067,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 30,
+        "level": 34,
         "jlpt": "N3",
         "title": "N3 · Level 10",
         "sets": [
@@ -15998,7 +17603,832 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 31,
+        "level": 35,
+        "jlpt": "N3",
+        "title": "N3 · Level 11",
+        "sets": [
+            [
+                {
+                    "jp": "神経",
+                    "reading": "しんけい",
+                    "en": "nerve",
+                    "meanings": [
+                        "nerve",
+                        "sensitivity"
+                    ],
+                    "example": null,
+                    "phonetic": "申",
+                    "phoneticReading": "シン",
+                    "enMn": "мэдрэл",
+                    "meaningsMn": [
+                        "мэдрэл"
+                    ]
+                },
+                {
+                    "jp": "性質",
+                    "reading": "せいしつ",
+                    "en": "nature",
+                    "meanings": [
+                        "nature",
+                        "property",
+                        "disposition"
+                    ],
+                    "example": null,
+                    "phonetic": "生",
+                    "phoneticReading": "セイ、ショウ",
+                    "enMn": "зан чанар",
+                    "meaningsMn": [
+                        "зан чанар"
+                    ]
+                },
+                {
+                    "jp": "政府",
+                    "reading": "せいふ",
+                    "en": "government",
+                    "meanings": [
+                        "government",
+                        "administration"
+                    ],
+                    "example": null,
+                    "phonetic": "正",
+                    "phoneticReading": "ショウ、セイ",
+                    "enMn": "яам",
+                    "meaningsMn": [
+                        "яам"
+                    ]
+                },
+                {
+                    "jp": "生物",
+                    "reading": "せいぶつ",
+                    "en": "living thing",
+                    "meanings": [
+                        "living thing",
+                        "organism"
+                    ],
+                    "example": null,
+                    "phonetic": "生",
+                    "phoneticReading": "セイ、ショウ",
+                    "enMn": "амьтан",
+                    "meaningsMn": [
+                        "амьтан"
+                    ]
+                },
+                {
+                    "jp": "愛する",
+                    "reading": "あいする",
+                    "en": "to love",
+                    "meanings": [
+                        "to love"
+                    ],
+                    "example": null,
+                    "phonetic": "愛",
+                    "phoneticReading": "アイ",
+                    "enMn": "хайрлах",
+                    "meaningsMn": [
+                        "хайрлах"
+                    ]
+                },
+                {
+                    "jp": "諦める",
+                    "reading": "あきらめる",
+                    "en": "to give up",
+                    "meanings": [
+                        "to give up",
+                        "to abandon"
+                    ],
+                    "example": null,
+                    "phonetic": "帝",
+                    "phoneticReading": "テイ",
+                    "enMn": "орхих",
+                    "meaningsMn": [
+                        "орхих"
+                    ]
+                },
+                {
+                    "jp": "汗",
+                    "reading": "あせ",
+                    "en": "sweat",
+                    "meanings": [
+                        "sweat",
+                        "perspiration"
+                    ],
+                    "example": null,
+                    "phonetic": "干",
+                    "phoneticReading": "カン",
+                    "enMn": "хөлс",
+                    "meaningsMn": [
+                        "хөлс"
+                    ]
+                },
+                {
+                    "jp": "表す",
+                    "reading": "あらわす",
+                    "en": "to express",
+                    "meanings": [
+                        "to express",
+                        "to show"
+                    ],
+                    "example": null,
+                    "phonetic": "表",
+                    "phoneticReading": "ヒョウ",
+                    "enMn": "үзүүлэх",
+                    "meaningsMn": [
+                        "үзүүлэх"
+                    ]
+                },
+                {
+                    "jp": "安定",
+                    "reading": "あんてい",
+                    "en": "stability",
+                    "meanings": [
+                        "stability",
+                        "equilibrium"
+                    ],
+                    "example": null,
+                    "phonetic": "安",
+                    "phoneticReading": "アン",
+                    "enMn": "тогтвор",
+                    "meaningsMn": [
+                        "тогтвор"
+                    ]
+                },
+                {
+                    "jp": "抱く",
+                    "reading": "いだく",
+                    "en": "to hold (v.t.) (written expression)",
+                    "meanings": [
+                        "to hold (v.t.) (written expression)",
+                        "to embrace",
+                        "to harbor"
+                    ],
+                    "example": null,
+                    "phonetic": "包",
+                    "phoneticReading": "ホウ",
+                    "enMn": "тэвэрч авах",
+                    "meaningsMn": [
+                        "тэвэрч авах"
+                    ]
+                },
+                {
+                    "jp": "市",
+                    "reading": "いち",
+                    "en": "market",
+                    "meanings": [
+                        "market",
+                        "fair"
+                    ],
+                    "example": null,
+                    "phonetic": "市",
+                    "phoneticReading": "シ",
+                    "enMn": "хот",
+                    "meaningsMn": [
+                        "хот"
+                    ]
+                },
+                {
+                    "jp": "一生",
+                    "reading": "いっしょう",
+                    "en": "throughout (one's) life",
+                    "meanings": [
+                        "throughout (one's) life"
+                    ],
+                    "example": null,
+                    "phonetic": "生",
+                    "phoneticReading": "セイ、ショウ",
+                    "enMn": "насан туршдаа",
+                    "meaningsMn": [
+                        "насан туршдаа"
+                    ]
+                },
+                {
+                    "jp": "一般",
+                    "reading": "いっぱん",
+                    "en": "general",
+                    "meanings": [
+                        "general",
+                        "average"
+                    ],
+                    "example": null,
+                    "phonetic": "般",
+                    "phoneticReading": "ハン、バン",
+                    "enMn": "ерөнхий",
+                    "meaningsMn": [
+                        "ерөнхий"
+                    ]
+                },
+                {
+                    "jp": "衣服",
+                    "reading": "いふく",
+                    "en": "clothes",
+                    "meanings": [
+                        "clothes"
+                    ],
+                    "example": null,
+                    "phonetic": "衣",
+                    "phoneticReading": "イ",
+                    "enMn": "хувцас",
+                    "meaningsMn": [
+                        "хувцас"
+                    ]
+                },
+                {
+                    "jp": "疑う",
+                    "reading": "うたがう",
+                    "en": "to doubt",
+                    "meanings": [
+                        "to doubt",
+                        "to distrust"
+                    ],
+                    "example": null,
+                    "phonetic": "疑",
+                    "phoneticReading": "ギ",
+                    "enMn": "эргэлзэх",
+                    "meaningsMn": [
+                        "эргэлзэх"
+                    ]
+                },
+                {
+                    "jp": "映す",
+                    "reading": "うつす",
+                    "en": "to project",
+                    "meanings": [
+                        "to project",
+                        "to reflect",
+                        "to cast (shadow)"
+                    ],
+                    "example": null,
+                    "phonetic": "央",
+                    "phoneticReading": "エイ",
+                    "enMn": "ойлгох",
+                    "meaningsMn": [
+                        "ойлгох"
+                    ]
+                },
+                {
+                    "jp": "永遠",
+                    "reading": "えいえん",
+                    "en": "eternity",
+                    "meanings": [
+                        "eternity",
+                        "perpetuity",
+                        "immortality"
+                    ],
+                    "example": null,
+                    "phonetic": "永",
+                    "phoneticReading": "エイ",
+                    "enMn": "мөнхийн",
+                    "meaningsMn": [
+                        "мөнхийн"
+                    ]
+                },
+                {
+                    "jp": "追う",
+                    "reading": "おう",
+                    "en": "to chase",
+                    "meanings": [
+                        "to chase",
+                        "to run after"
+                    ],
+                    "example": null,
+                    "phonetic": "追",
+                    "phoneticReading": "ツイ",
+                    "enMn": "хөөх",
+                    "meaningsMn": [
+                        "хөөх"
+                    ]
+                },
+                {
+                    "jp": "起こる",
+                    "reading": "おこる",
+                    "en": "to occur",
+                    "meanings": [
+                        "to occur",
+                        "to happen"
+                    ],
+                    "example": null,
+                    "phonetic": "己",
+                    "phoneticReading": "キ",
+                    "enMn": "тохиолдох",
+                    "meaningsMn": [
+                        "тохиолдох"
+                    ]
+                },
+                {
+                    "jp": "飼う",
+                    "reading": "かう",
+                    "en": "to keep; to own (a pet); to raise; to feed",
+                    "meanings": [
+                        "to keep; to own (a pet); to raise; to feed"
+                    ],
+                    "example": null,
+                    "phonetic": "司",
+                    "phoneticReading": "シ",
+                    "enMn": "хооллох",
+                    "meaningsMn": [
+                        "хооллох"
+                    ]
+                },
+                {
+                    "jp": "香り",
+                    "reading": "かおり",
+                    "en": "aroma",
+                    "meanings": [
+                        "aroma",
+                        "fragrance"
+                    ],
+                    "example": null,
+                    "phonetic": "香",
+                    "phoneticReading": "キョウ",
+                    "enMn": "үнэрлэх чадвар",
+                    "meaningsMn": [
+                        "үнэрлэх чадвар"
+                    ]
+                },
+                {
+                    "jp": "価格",
+                    "reading": "かかく",
+                    "en": "price",
+                    "meanings": [
+                        "price",
+                        "value"
+                    ],
+                    "example": null,
+                    "phonetic": "各",
+                    "phoneticReading": "カク、ラク",
+                    "enMn": "үнэ",
+                    "meaningsMn": [
+                        "үнэ"
+                    ]
+                },
+                {
+                    "jp": "化学",
+                    "reading": "かがく",
+                    "en": "chemistry",
+                    "meanings": [
+                        "chemistry"
+                    ],
+                    "example": null,
+                    "phonetic": "化",
+                    "phoneticReading": "カ",
+                    "enMn": "хими",
+                    "meaningsMn": [
+                        "хими"
+                    ]
+                },
+                {
+                    "jp": "家具",
+                    "reading": "かぐ",
+                    "en": "furniture",
+                    "meanings": [
+                        "furniture"
+                    ],
+                    "example": null,
+                    "phonetic": "家",
+                    "phoneticReading": "カ",
+                    "enMn": "тавилга",
+                    "meaningsMn": [
+                        "тавилга"
+                    ]
+                },
+                {
+                    "jp": "過去",
+                    "reading": "かこ",
+                    "en": "past",
+                    "meanings": [
+                        "past"
+                    ],
+                    "example": null,
+                    "phonetic": "咼",
+                    "phoneticReading": "カ",
+                    "enMn": "өнгөрсөн үе",
+                    "meaningsMn": [
+                        "өнгөрсөн үе"
+                    ]
+                }
+            ]
+        ]
+    },
+    {
+        "level": 36,
+        "jlpt": "N3",
+        "title": "N3 · Level 12",
+        "sets": [
+            [
+                {
+                    "jp": "堅い",
+                    "reading": "かたい",
+                    "en": "hard",
+                    "meanings": [
+                        "hard",
+                        "firm",
+                        "solid"
+                    ],
+                    "example": null,
+                    "phonetic": "臤",
+                    "phoneticReading": "ケン",
+                    "enMn": "хатуу",
+                    "meaningsMn": [
+                        "хатуу"
+                    ]
+                },
+                {
+                    "jp": "皮",
+                    "reading": "かわ",
+                    "en": "skin",
+                    "meanings": [
+                        "skin",
+                        "hide",
+                        "leather"
+                    ],
+                    "example": null,
+                    "phonetic": "皮",
+                    "phoneticReading": "ハ、ヒ",
+                    "enMn": "үс",
+                    "meaningsMn": [
+                        "үс"
+                    ]
+                },
+                {
+                    "jp": "感覚",
+                    "reading": "かんかく",
+                    "en": "sense",
+                    "meanings": [
+                        "sense",
+                        "sensation"
+                    ],
+                    "example": null,
+                    "phonetic": "感",
+                    "phoneticReading": "カン",
+                    "enMn": "мэдрэмж",
+                    "meaningsMn": [
+                        "мэдрэмж"
+                    ]
+                },
+                {
+                    "jp": "感情",
+                    "reading": "かんじょう",
+                    "en": "emotion(s)",
+                    "meanings": [
+                        "emotion(s)",
+                        "feeling(s)",
+                        "sentiment"
+                    ],
+                    "example": null,
+                    "phonetic": "感",
+                    "phoneticReading": "カン",
+                    "enMn": "сэтгэл хөдлөл",
+                    "meaningsMn": [
+                        "сэтгэл хөдлөл"
+                    ]
+                },
+                {
+                    "jp": "感じる",
+                    "reading": "かんじる",
+                    "en": "to feel",
+                    "meanings": [
+                        "to feel",
+                        "to sense"
+                    ],
+                    "example": null,
+                    "phonetic": "感",
+                    "phoneticReading": "カン",
+                    "enMn": "мэдрэх",
+                    "meaningsMn": [
+                        "мэдрэх"
+                    ]
+                },
+                {
+                    "jp": "感心",
+                    "reading": "かんしん",
+                    "en": "admiration",
+                    "meanings": [
+                        "admiration"
+                    ],
+                    "example": null,
+                    "phonetic": "感",
+                    "phoneticReading": "カン",
+                    "enMn": "гайхал",
+                    "meaningsMn": [
+                        "гайхал"
+                    ]
+                },
+                {
+                    "jp": "気候",
+                    "reading": "きこう",
+                    "en": "climate",
+                    "meanings": [
+                        "climate"
+                    ],
+                    "example": null,
+                    "phonetic": "气",
+                    "phoneticReading": "キ",
+                    "enMn": "уур амьсгал",
+                    "meaningsMn": [
+                        "уур амьсгал"
+                    ]
+                },
+                {
+                    "jp": "希望",
+                    "reading": "きぼう",
+                    "en": "hope",
+                    "meanings": [
+                        "hope",
+                        "wish",
+                        "aspiration"
+                    ],
+                    "example": null,
+                    "phonetic": "希",
+                    "phoneticReading": "キ",
+                    "enMn": "найдвар",
+                    "meaningsMn": [
+                        "найдвар"
+                    ]
+                },
+                {
+                    "jp": "決まり",
+                    "reading": "きまり",
+                    "en": "settlement",
+                    "meanings": [
+                        "settlement",
+                        "conclusion",
+                        "rule"
+                    ],
+                    "example": null,
+                    "phonetic": "夬",
+                    "phoneticReading": "ケツ",
+                    "enMn": "дүрэм",
+                    "meaningsMn": [
+                        "дүрэм"
+                    ]
+                },
+                {
+                    "jp": "義務",
+                    "reading": "ぎむ",
+                    "en": "duty",
+                    "meanings": [
+                        "duty",
+                        "obligation",
+                        "responsibility"
+                    ],
+                    "example": null,
+                    "phonetic": "義",
+                    "phoneticReading": "ギ",
+                    "enMn": "хариуцлага",
+                    "meaningsMn": [
+                        "хариуцлага"
+                    ]
+                },
+                {
+                    "jp": "恐怖",
+                    "reading": "きょうふ",
+                    "en": "fear",
+                    "meanings": [
+                        "fear",
+                        "terror"
+                    ],
+                    "example": null,
+                    "phonetic": "布",
+                    "phoneticReading": "フ",
+                    "enMn": "айдас",
+                    "meaningsMn": [
+                        "айдас"
+                    ]
+                },
+                {
+                    "jp": "嫌う",
+                    "reading": "きらう",
+                    "en": "to hate",
+                    "meanings": [
+                        "to hate",
+                        "to dislike",
+                        "to loathe"
+                    ],
+                    "example": null,
+                    "phonetic": "兼",
+                    "phoneticReading": "ケン、レン",
+                    "enMn": "үзэн ядах",
+                    "meaningsMn": [
+                        "үзэн ядах",
+                        "дургүй байх"
+                    ]
+                },
+                {
+                    "jp": "切れる",
+                    "reading": "きれる",
+                    "en": "to cut well",
+                    "meanings": [
+                        "to cut well",
+                        "to be sharp; to break (off)"
+                    ],
+                    "example": null,
+                    "phonetic": "切",
+                    "phoneticReading": "セツ",
+                    "enMn": "хагарах",
+                    "meaningsMn": [
+                        "хагарах"
+                    ]
+                },
+                {
+                    "jp": "金銭",
+                    "reading": "きんせん",
+                    "en": "money",
+                    "meanings": [
+                        "money",
+                        "cash"
+                    ],
+                    "example": null,
+                    "phonetic": "金",
+                    "phoneticReading": "キン",
+                    "enMn": "мөнгө",
+                    "meaningsMn": [
+                        "мөнгө"
+                    ]
+                },
+                {
+                    "jp": "腐る",
+                    "reading": "くさる",
+                    "en": "to rot",
+                    "meanings": [
+                        "to rot",
+                        "to go bad"
+                    ],
+                    "example": null,
+                    "phonetic": "付",
+                    "phoneticReading": "フ",
+                    "enMn": "ялзрах",
+                    "meaningsMn": [
+                        "ялзрах"
+                    ]
+                },
+                {
+                    "jp": "加える",
+                    "reading": "くわえる",
+                    "en": "to append",
+                    "meanings": [
+                        "to append",
+                        "to sum up",
+                        "to add (up)"
+                    ],
+                    "example": null,
+                    "phonetic": "加",
+                    "phoneticReading": "カ、ガ",
+                    "enMn": "нэмэх",
+                    "meaningsMn": [
+                        "нэмэх"
+                    ]
+                },
+                {
+                    "jp": "加わる",
+                    "reading": "くわわる",
+                    "en": "to join in",
+                    "meanings": [
+                        "to join in",
+                        "to accede to"
+                    ],
+                    "example": null,
+                    "phonetic": "加",
+                    "phoneticReading": "カ、ガ",
+                    "enMn": "оролцох",
+                    "meaningsMn": [
+                        "оролцох"
+                    ]
+                },
+                {
+                    "jp": "結果",
+                    "reading": "けっか",
+                    "en": "result",
+                    "meanings": [
+                        "result",
+                        "consequence"
+                    ],
+                    "example": null,
+                    "phonetic": "果",
+                    "phoneticReading": "カ",
+                    "enMn": "үр дүн",
+                    "meaningsMn": [
+                        "үр дүн"
+                    ]
+                },
+                {
+                    "jp": "言語",
+                    "reading": "げんご",
+                    "en": "language",
+                    "meanings": [
+                        "language"
+                    ],
+                    "example": null,
+                    "phonetic": "五",
+                    "phoneticReading": "ゴ",
+                    "enMn": "хэл",
+                    "meaningsMn": [
+                        "хэл"
+                    ]
+                },
+                {
+                    "jp": "交際",
+                    "reading": "こうさい",
+                    "en": "friendship",
+                    "meanings": [
+                        "friendship",
+                        "association",
+                        "acquaintance"
+                    ],
+                    "example": null,
+                    "phonetic": "交",
+                    "phoneticReading": "コウ",
+                    "enMn": "найрамдал",
+                    "meaningsMn": [
+                        "найрамдал"
+                    ]
+                },
+                {
+                    "jp": "工場",
+                    "reading": "こうば",
+                    "en": "factory",
+                    "meanings": [
+                        "factory",
+                        "plant"
+                    ],
+                    "example": null,
+                    "phonetic": "工",
+                    "phoneticReading": "コウ、ク",
+                    "enMn": "үйлдвэр",
+                    "meaningsMn": [
+                        "үйлдвэр"
+                    ]
+                },
+                {
+                    "jp": "国民",
+                    "reading": "こくみん",
+                    "en": "national",
+                    "meanings": [
+                        "national",
+                        "people",
+                        "citizen"
+                    ],
+                    "example": null,
+                    "phonetic": "民",
+                    "phoneticReading": "ミン",
+                    "enMn": "үндэсний",
+                    "meaningsMn": [
+                        "үндэсний"
+                    ]
+                },
+                {
+                    "jp": "国家",
+                    "reading": "こっか",
+                    "en": "state",
+                    "meanings": [
+                        "state",
+                        "country",
+                        "nation"
+                    ],
+                    "example": null,
+                    "phonetic": "家",
+                    "phoneticReading": "カ",
+                    "enMn": "үндэстэн",
+                    "meaningsMn": [
+                        "үндэстэн"
+                    ]
+                },
+                {
+                    "jp": "粉",
+                    "reading": "こな",
+                    "en": "flour",
+                    "meanings": [
+                        "flour",
+                        "powder"
+                    ],
+                    "example": null,
+                    "phonetic": "分",
+                    "phoneticReading": "フン",
+                    "enMn": "гурил",
+                    "meaningsMn": [
+                        "гурил"
+                    ]
+                },
+                {
+                    "jp": "財産",
+                    "reading": "ざいさん",
+                    "en": "property",
+                    "meanings": [
+                        "property",
+                        "fortune",
+                        "assets"
+                    ],
+                    "example": null,
+                    "phonetic": "才",
+                    "phoneticReading": "サイ、ザイ",
+                    "enMn": "хөрөнгө хогшил",
+                    "meaningsMn": [
+                        "хөрөнгө хогшил"
+                    ]
+                }
+            ]
+        ]
+    },
+    {
+        "level": 37,
         "jlpt": "N2",
         "title": "N2 · Level 1",
         "sets": [
@@ -16531,7 +18961,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 32,
+        "level": 38,
         "jlpt": "N2",
         "title": "N2 · Level 2",
         "sets": [
@@ -17058,7 +19488,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 33,
+        "level": 39,
         "jlpt": "N2",
         "title": "N2 · Level 3",
         "sets": [
@@ -17594,7 +20024,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 34,
+        "level": 40,
         "jlpt": "N2",
         "title": "N2 · Level 4",
         "sets": [
@@ -18132,7 +20562,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 35,
+        "level": 41,
         "jlpt": "N2",
         "title": "N2 · Level 5",
         "sets": [
@@ -18664,7 +21094,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 36,
+        "level": 42,
         "jlpt": "N2",
         "title": "N2 · Level 6",
         "sets": [
@@ -19198,7 +21628,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 37,
+        "level": 43,
         "jlpt": "N2",
         "title": "N2 · Level 7",
         "sets": [
@@ -19720,7 +22150,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 38,
+        "level": 44,
         "jlpt": "N2",
         "title": "N2 · Level 8",
         "sets": [
@@ -20263,7 +22693,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 39,
+        "level": 45,
         "jlpt": "N2",
         "title": "N2 · Level 9",
         "sets": [
@@ -20796,7 +23226,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 40,
+        "level": 46,
         "jlpt": "N2",
         "title": "N2 · Level 10",
         "sets": [
@@ -21329,7 +23759,821 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 41,
+        "level": 47,
+        "jlpt": "N2",
+        "title": "N2 · Level 11",
+        "sets": [
+            [
+                {
+                    "jp": "海洋",
+                    "reading": "かいよう",
+                    "en": "ocean",
+                    "meanings": [
+                        "ocean"
+                    ],
+                    "example": null,
+                    "phonetic": "毎",
+                    "phoneticReading": "カイ",
+                    "enMn": "далай",
+                    "meaningsMn": [
+                        "далай"
+                    ]
+                },
+                {
+                    "jp": "家屋",
+                    "reading": "かおく",
+                    "en": "house",
+                    "meanings": [
+                        "house",
+                        "building"
+                    ],
+                    "example": null,
+                    "phonetic": "家",
+                    "phoneticReading": "カ",
+                    "enMn": "байшин",
+                    "meaningsMn": [
+                        "байшин"
+                    ]
+                },
+                {
+                    "jp": "被せる",
+                    "reading": "かぶせる",
+                    "en": "to cover (with something)",
+                    "meanings": [
+                        "to cover (with something)"
+                    ],
+                    "example": null,
+                    "phonetic": "皮",
+                    "phoneticReading": "ハ、ヒ",
+                    "enMn": "бүрхэх",
+                    "meaningsMn": [
+                        "бүрхэх"
+                    ]
+                },
+                {
+                    "jp": "神様",
+                    "reading": "かみさま",
+                    "en": "god",
+                    "meanings": [
+                        "god"
+                    ],
+                    "example": null,
+                    "phonetic": "申",
+                    "phoneticReading": "シン",
+                    "enMn": "бурхан",
+                    "meaningsMn": [
+                        "бурхан"
+                    ]
+                },
+                {
+                    "jp": "感ずる",
+                    "reading": "かんずる",
+                    "en": "to feel",
+                    "meanings": [
+                        "to feel",
+                        "to sense"
+                    ],
+                    "example": null,
+                    "phonetic": "感",
+                    "phoneticReading": "カン",
+                    "enMn": "мэдрэх",
+                    "meaningsMn": [
+                        "мэдрэх"
+                    ]
+                },
+                {
+                    "jp": "境界",
+                    "reading": "きょうかい",
+                    "en": "boundary",
+                    "meanings": [
+                        "boundary"
+                    ],
+                    "example": null,
+                    "phonetic": "竟",
+                    "phoneticReading": "キョウ",
+                    "enMn": "хил",
+                    "meaningsMn": [
+                        "хил",
+                        "зааг"
+                    ]
+                },
+                {
+                    "jp": "崩れる",
+                    "reading": "くずれる",
+                    "en": "to collapse",
+                    "meanings": [
+                        "to collapse",
+                        "to crumble"
+                    ],
+                    "example": null,
+                    "phonetic": "朋",
+                    "phoneticReading": "ホウ",
+                    "enMn": "нурах",
+                    "meaningsMn": [
+                        "нурах"
+                    ]
+                },
+                {
+                    "jp": "唇",
+                    "reading": "くちびる",
+                    "en": "lip",
+                    "meanings": [
+                        "lip"
+                    ],
+                    "example": null,
+                    "phonetic": "辰",
+                    "phoneticReading": "シン",
+                    "enMn": "уруул",
+                    "meaningsMn": [
+                        "уруул"
+                    ]
+                },
+                {
+                    "jp": "悔やむ",
+                    "reading": "くやむ",
+                    "en": "to regret",
+                    "meanings": [
+                        "to regret",
+                        "to mourn"
+                    ],
+                    "example": null,
+                    "phonetic": "毎",
+                    "phoneticReading": "カイ",
+                    "enMn": "харамсах",
+                    "meaningsMn": [
+                        "харамсах"
+                    ]
+                },
+                {
+                    "jp": "敬語",
+                    "reading": "けいご",
+                    "en": "honorific language (lit.",
+                    "meanings": [
+                        "honorific language (lit.",
+                        "respect language)"
+                    ],
+                    "example": null,
+                    "phonetic": "敬",
+                    "phoneticReading": "ケイ",
+                    "enMn": "хүндэтгэлийн үг",
+                    "meaningsMn": [
+                        "хүндэтгэлийн үг"
+                    ]
+                },
+                {
+                    "jp": "形容詞",
+                    "reading": "けいようし",
+                    "en": "adjective",
+                    "meanings": [
+                        "adjective"
+                    ],
+                    "example": null,
+                    "phonetic": "容",
+                    "phoneticReading": "ヨウ",
+                    "enMn": "тэмдэг нэр",
+                    "meaningsMn": [
+                        "тэмдэг нэр"
+                    ]
+                },
+                {
+                    "jp": "擦る",
+                    "reading": "こする",
+                    "en": "to rub",
+                    "meanings": [
+                        "to rub",
+                        "to chafe",
+                        "to file",
+                        "to frost (glass)",
+                        "to strike (match)"
+                    ],
+                    "example": null,
+                    "phonetic": "察",
+                    "phoneticReading": "サツ",
+                    "enMn": "саах",
+                    "meaningsMn": [
+                        "саах"
+                    ]
+                },
+                {
+                    "jp": "捜す",
+                    "reading": "さがす",
+                    "en": "to search",
+                    "meanings": [
+                        "to search",
+                        "to seek",
+                        "to look for"
+                    ],
+                    "example": null,
+                    "phonetic": "叟",
+                    "phoneticReading": "ソウ",
+                    "enMn": "хайх",
+                    "meaningsMn": [
+                        "хайх"
+                    ]
+                },
+                {
+                    "jp": "仕上がる",
+                    "reading": "しあがる",
+                    "en": "to be finished",
+                    "meanings": [
+                        "to be finished"
+                    ],
+                    "example": null,
+                    "phonetic": "士",
+                    "phoneticReading": "シ",
+                    "enMn": "дуусах",
+                    "meaningsMn": [
+                        "дуусах",
+                        "биелэх"
+                    ]
+                },
+                {
+                    "jp": "司会",
+                    "reading": "しかい",
+                    "en": "host",
+                    "meanings": [
+                        "host",
+                        "chairperson"
+                    ],
+                    "example": null,
+                    "phonetic": "司",
+                    "phoneticReading": "シ",
+                    "enMn": "эзэн",
+                    "meaningsMn": [
+                        "эзэн"
+                    ]
+                },
+                {
+                    "jp": "静まる",
+                    "reading": "しずまる",
+                    "en": "to quieten down",
+                    "meanings": [
+                        "to quieten down",
+                        "to calm down"
+                    ],
+                    "example": null,
+                    "phonetic": "青",
+                    "phoneticReading": "セイ、ショウ、ジョウ",
+                    "enMn": "тайвшрах",
+                    "meaningsMn": [
+                        "тайвшрах"
+                    ]
+                },
+                {
+                    "jp": "終点",
+                    "reading": "しゅうてん",
+                    "en": "terminus",
+                    "meanings": [
+                        "terminus",
+                        "last stop (e.g train)"
+                    ],
+                    "example": null,
+                    "phonetic": "占",
+                    "phoneticReading": "テン",
+                    "enMn": "төгсгөлийн цэг",
+                    "meaningsMn": [
+                        "төгсгөлийн цэг"
+                    ]
+                },
+                {
+                    "jp": "味わう",
+                    "reading": "あじわう",
+                    "en": "to taste",
+                    "meanings": [
+                        "to taste",
+                        "to savor"
+                    ],
+                    "example": null,
+                    "phonetic": "未",
+                    "phoneticReading": "ミ、マイ",
+                    "enMn": "амтлах",
+                    "meaningsMn": [
+                        "амтлах"
+                    ]
+                },
+                {
+                    "jp": "慌ただしい",
+                    "reading": "あわただしい",
+                    "en": "busy",
+                    "meanings": [
+                        "busy",
+                        "hurried"
+                    ],
+                    "example": null,
+                    "phonetic": "荒",
+                    "phoneticReading": "コウ",
+                    "enMn": "завгүй",
+                    "meaningsMn": [
+                        "завгүй"
+                    ]
+                },
+                {
+                    "jp": "勇ましい",
+                    "reading": "いさましい",
+                    "en": "brave",
+                    "meanings": [
+                        "brave",
+                        "valiant"
+                    ],
+                    "example": null,
+                    "phonetic": "勇",
+                    "phoneticReading": "ユウ",
+                    "enMn": "зоригтой",
+                    "meaningsMn": [
+                        "зоригтой"
+                    ]
+                },
+                {
+                    "jp": "打ち消す",
+                    "reading": "うちけす",
+                    "en": "to deny",
+                    "meanings": [
+                        "to deny",
+                        "to negate"
+                    ],
+                    "example": null,
+                    "phonetic": "肖",
+                    "phoneticReading": "ショウ",
+                    "enMn": "үгүйсгэх",
+                    "meaningsMn": [
+                        "үгүйсгэх"
+                    ]
+                },
+                {
+                    "jp": "敬う",
+                    "reading": "うやまう",
+                    "en": "to show respect",
+                    "meanings": [
+                        "to show respect",
+                        "to honor"
+                    ],
+                    "example": null,
+                    "phonetic": "敬",
+                    "phoneticReading": "ケイ",
+                    "enMn": "хүндэтгэх",
+                    "meaningsMn": [
+                        "хүндэтгэх"
+                    ]
+                },
+                {
+                    "jp": "透明",
+                    "reading": "とうめい",
+                    "en": "transparency",
+                    "meanings": [
+                        "transparency",
+                        "cleanness"
+                    ],
+                    "example": null,
+                    "phonetic": "明",
+                    "phoneticReading": "メイ",
+                    "enMn": "тунгалаг",
+                    "meaningsMn": [
+                        "тунгалаг"
+                    ]
+                },
+                {
+                    "jp": "溶かす",
+                    "reading": "とかす",
+                    "en": "to melt",
+                    "meanings": [
+                        "to melt",
+                        "to dissolve"
+                    ],
+                    "example": null,
+                    "phonetic": "容",
+                    "phoneticReading": "ヨウ",
+                    "enMn": "хайлуулах",
+                    "meaningsMn": [
+                        "хайлуулах"
+                    ]
+                },
+                {
+                    "jp": "取り入れる",
+                    "reading": "とりいれる",
+                    "en": "to harvest",
+                    "meanings": [
+                        "to harvest",
+                        "to take in",
+                        "to adopt"
+                    ],
+                    "example": null,
+                    "phonetic": "取",
+                    "phoneticReading": "シュ",
+                    "enMn": "хураах",
+                    "meaningsMn": [
+                        "хураах"
+                    ]
+                }
+            ]
+        ]
+    },
+    {
+        "level": 48,
+        "jlpt": "N2",
+        "title": "N2 · Level 12",
+        "sets": [
+            [
+                {
+                    "jp": "逃がす",
+                    "reading": "にがす",
+                    "en": "to let loose",
+                    "meanings": [
+                        "to let loose",
+                        "to set free",
+                        "to let escape"
+                    ],
+                    "example": null,
+                    "phonetic": "兆",
+                    "phoneticReading": "チョウ、トウ",
+                    "enMn": "гаргах",
+                    "meaningsMn": [
+                        "гаргах"
+                    ]
+                },
+                {
+                    "jp": "跳ねる",
+                    "reading": "はねる",
+                    "en": "to jump",
+                    "meanings": [
+                        "to jump",
+                        "to leap"
+                    ],
+                    "example": null,
+                    "phonetic": "兆",
+                    "phoneticReading": "チョウ、トウ",
+                    "enMn": "үсрэх",
+                    "meaningsMn": [
+                        "үсрэх"
+                    ]
+                },
+                {
+                    "jp": "捻る",
+                    "reading": "ひねる",
+                    "en": "to twist",
+                    "meanings": [
+                        "to twist",
+                        "to turn"
+                    ],
+                    "example": null,
+                    "phonetic": "念",
+                    "phoneticReading": "ネン",
+                    "enMn": "мушгих",
+                    "meaningsMn": [
+                        "мушгих"
+                    ]
+                },
+                {
+                    "jp": "広さ",
+                    "reading": "ひろさ",
+                    "en": "extent",
+                    "meanings": [
+                        "extent"
+                    ],
+                    "example": null,
+                    "phonetic": "広",
+                    "phoneticReading": "コウ",
+                    "enMn": "талбай",
+                    "meaningsMn": [
+                        "талбай"
+                    ]
+                },
+                {
+                    "jp": "便箋",
+                    "reading": "びんせん",
+                    "en": "writing paper",
+                    "meanings": [
+                        "writing paper",
+                        "stationery"
+                    ],
+                    "example": null,
+                    "phonetic": "便",
+                    "phoneticReading": "ベン",
+                    "enMn": "бичгийн цаас",
+                    "meaningsMn": [
+                        "бичгийн цаас"
+                    ]
+                },
+                {
+                    "jp": "副詞",
+                    "reading": "ふくし",
+                    "en": "adverb",
+                    "meanings": [
+                        "adverb"
+                    ],
+                    "example": null,
+                    "phonetic": "畐",
+                    "phoneticReading": "フク",
+                    "enMn": "дайвар үг",
+                    "meaningsMn": [
+                        "дайвар үг"
+                    ]
+                },
+                {
+                    "jp": "坊や",
+                    "reading": "ぼうや",
+                    "en": "boy",
+                    "meanings": [
+                        "boy"
+                    ],
+                    "example": null,
+                    "phonetic": "方",
+                    "phoneticReading": "ホウ、ボウ",
+                    "enMn": "хөвгүүн",
+                    "meaningsMn": [
+                        "хөвгүүн"
+                    ]
+                },
+                {
+                    "jp": "放る",
+                    "reading": "ほうる",
+                    "en": "to let go",
+                    "meanings": [
+                        "to let go"
+                    ],
+                    "example": null,
+                    "phonetic": "方",
+                    "phoneticReading": "ホウ、ボウ",
+                    "enMn": "орхигдуулах",
+                    "meaningsMn": [
+                        "орхигдуулах",
+                        "тоохгүй орхих"
+                    ]
+                },
+                {
+                    "jp": "解く",
+                    "reading": "ほどく",
+                    "en": "to unfasten",
+                    "meanings": [
+                        "to unfasten"
+                    ],
+                    "example": null,
+                    "phonetic": "解",
+                    "phoneticReading": "カイ",
+                    "enMn": "шийдвэрлэх",
+                    "meaningsMn": [
+                        "шийдвэрлэх"
+                    ]
+                },
+                {
+                    "jp": "掘る",
+                    "reading": "ほる",
+                    "en": "to dig",
+                    "meanings": [
+                        "to dig",
+                        "to excavate"
+                    ],
+                    "example": null,
+                    "phonetic": "屈",
+                    "phoneticReading": "クツ",
+                    "enMn": "малтах",
+                    "meaningsMn": [
+                        "малтах"
+                    ]
+                },
+                {
+                    "jp": "面積",
+                    "reading": "めんせき",
+                    "en": "area",
+                    "meanings": [
+                        "area"
+                    ],
+                    "example": null,
+                    "phonetic": "面",
+                    "phoneticReading": "メン",
+                    "enMn": "талбай",
+                    "meaningsMn": [
+                        "талбай"
+                    ]
+                },
+                {
+                    "jp": "誓う",
+                    "reading": "ちかう",
+                    "en": "to swear",
+                    "meanings": [
+                        "to swear",
+                        "to vow"
+                    ],
+                    "example": null,
+                    "phonetic": "折",
+                    "phoneticReading": "セイ",
+                    "enMn": "тангараглах",
+                    "meaningsMn": [
+                        "тангараглах"
+                    ]
+                },
+                {
+                    "jp": "地帯",
+                    "reading": "ちたい",
+                    "en": "area",
+                    "meanings": [
+                        "area",
+                        "zone"
+                    ],
+                    "example": null,
+                    "phonetic": "也",
+                    "phoneticReading": "チ",
+                    "enMn": "бүс",
+                    "meaningsMn": [
+                        "бүс"
+                    ]
+                },
+                {
+                    "jp": "縮む",
+                    "reading": "ちぢむ",
+                    "en": "to shrink",
+                    "meanings": [
+                        "to shrink",
+                        "to be contracted"
+                    ],
+                    "example": null,
+                    "phonetic": "宿",
+                    "phoneticReading": "シュク",
+                    "enMn": "агших",
+                    "meaningsMn": [
+                        "агших",
+                        "буурах"
+                    ]
+                },
+                {
+                    "jp": "縮める",
+                    "reading": "ちぢめる",
+                    "en": "to shorten",
+                    "meanings": [
+                        "to shorten",
+                        "to reduce",
+                        "to shrink"
+                    ],
+                    "example": null,
+                    "phonetic": "宿",
+                    "phoneticReading": "シュク",
+                    "enMn": "богиносгох",
+                    "meaningsMn": [
+                        "богиносгох"
+                    ]
+                },
+                {
+                    "jp": "努める",
+                    "reading": "つとめる",
+                    "en": "to try",
+                    "meanings": [
+                        "to try",
+                        "to aim"
+                    ],
+                    "example": null,
+                    "phonetic": "奴",
+                    "phoneticReading": "ド",
+                    "enMn": "хичээх",
+                    "meaningsMn": [
+                        "хичээх"
+                    ]
+                },
+                {
+                    "jp": "火山",
+                    "reading": "かざん",
+                    "en": "volcano",
+                    "meanings": [
+                        "volcano"
+                    ],
+                    "example": null,
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "галт уул",
+                    "meaningsMn": [
+                        "галт уул"
+                    ]
+                },
+                {
+                    "jp": "櫛",
+                    "reading": "くし",
+                    "en": "comb",
+                    "meanings": [
+                        "comb"
+                    ],
+                    "example": null,
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "сам",
+                    "meaningsMn": [
+                        "сам"
+                    ]
+                },
+                {
+                    "jp": "砕く",
+                    "reading": "くだく",
+                    "en": "to break",
+                    "meanings": [
+                        "to break",
+                        "to smash"
+                    ],
+                    "example": null,
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хэмхлэх",
+                    "meaningsMn": [
+                        "хэмхлэх"
+                    ]
+                },
+                {
+                    "jp": "配る",
+                    "reading": "くばる",
+                    "en": "to distribute",
+                    "meanings": [
+                        "to distribute",
+                        "to deliver"
+                    ],
+                    "example": null,
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "тараах",
+                    "meaningsMn": [
+                        "тараах"
+                    ]
+                },
+                {
+                    "jp": "桁",
+                    "reading": "けた",
+                    "en": "column",
+                    "meanings": [
+                        "column",
+                        "beam",
+                        "digit"
+                    ],
+                    "example": null,
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "жонш",
+                    "meaningsMn": [
+                        "жонш"
+                    ]
+                },
+                {
+                    "jp": "こしらえる",
+                    "reading": "こしらえる",
+                    "en": "to make",
+                    "meanings": [
+                        "to make",
+                        "to manufacture"
+                    ],
+                    "example": null,
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "бүтээх",
+                    "meaningsMn": [
+                        "бүтээх"
+                    ]
+                },
+                {
+                    "jp": "囁く",
+                    "reading": "ささやく",
+                    "en": "to whisper",
+                    "meanings": [
+                        "to whisper",
+                        "to murmur"
+                    ],
+                    "example": null,
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "шивнэх",
+                    "meaningsMn": [
+                        "шивнэх"
+                    ]
+                },
+                {
+                    "jp": "錆びる",
+                    "reading": "さびる",
+                    "en": "to rust",
+                    "meanings": [
+                        "to rust",
+                        "to become rusty"
+                    ],
+                    "example": null,
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "зэврэх",
+                    "meaningsMn": [
+                        "зэврэх"
+                    ]
+                },
+                {
+                    "jp": "騒がしい",
+                    "reading": "さわがしい",
+                    "en": "noisy",
+                    "meanings": [
+                        "noisy"
+                    ],
+                    "example": null,
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "чимээ шуугиантай",
+                    "meaningsMn": [
+                        "чимээ шуугиантай"
+                    ]
+                }
+            ]
+        ]
+    },
+    {
+        "level": 49,
         "jlpt": "N1",
         "title": "N1 · Level 1",
         "sets": [
@@ -21875,7 +25119,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 42,
+        "level": 50,
         "jlpt": "N1",
         "title": "N1 · Level 2",
         "sets": [
@@ -22417,7 +25661,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 43,
+        "level": 51,
         "jlpt": "N1",
         "title": "N1 · Level 3",
         "sets": [
@@ -22944,7 +26188,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 44,
+        "level": 52,
         "jlpt": "N1",
         "title": "N1 · Level 4",
         "sets": [
@@ -23490,7 +26734,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 45,
+        "level": 53,
         "jlpt": "N1",
         "title": "N1 · Level 5",
         "sets": [
@@ -24026,7 +27270,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 46,
+        "level": 54,
         "jlpt": "N1",
         "title": "N1 · Level 6",
         "sets": [
@@ -24567,7 +27811,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 47,
+        "level": 55,
         "jlpt": "N1",
         "title": "N1 · Level 7",
         "sets": [
@@ -25120,7 +28364,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 48,
+        "level": 56,
         "jlpt": "N1",
         "title": "N1 · Level 8",
         "sets": [
@@ -25654,7 +28898,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 49,
+        "level": 57,
         "jlpt": "N1",
         "title": "N1 · Level 9",
         "sets": [
@@ -26190,7 +29434,7 @@ const WORD_LEVELS = [
         ]
     },
     {
-        "level": 50,
+        "level": 58,
         "jlpt": "N1",
         "title": "N1 · Level 10",
         "sets": [
@@ -26731,6 +29975,842 @@ const WORD_LEVELS = [
                     "enMn": "атом",
                     "meaningsMn": [
                         "атом"
+                    ]
+                }
+            ]
+        ]
+    },
+    {
+        "level": 59,
+        "jlpt": "N1",
+        "title": "N1 · Level 11",
+        "sets": [
+            [
+                {
+                    "jp": "仕入れる",
+                    "reading": "しいれる",
+                    "en": "to lay in stock",
+                    "meanings": [
+                        "to lay in stock",
+                        "to replenish stock",
+                        "to procure"
+                    ],
+                    "example": null,
+                    "phonetic": "士",
+                    "phoneticReading": "シ",
+                    "enMn": "худалдан авах",
+                    "meaningsMn": [
+                        "худалдан авах"
+                    ]
+                },
+                {
+                    "jp": "尊ぶ",
+                    "reading": "とうとぶ",
+                    "en": "to value",
+                    "meanings": [
+                        "to value",
+                        "to prize",
+                        "to esteem"
+                    ],
+                    "example": null,
+                    "phonetic": "尊",
+                    "phoneticReading": "ソン",
+                    "enMn": "хүндэтгэх",
+                    "meaningsMn": [
+                        "хүндэтгэх"
+                    ]
+                },
+                {
+                    "jp": "整える",
+                    "reading": "ととのえる",
+                    "en": "to put in order",
+                    "meanings": [
+                        "to put in order",
+                        "to arrange",
+                        "to adjust; to get ready",
+                        "to prepare; to raise money"
+                    ],
+                    "example": null,
+                    "phonetic": "正",
+                    "phoneticReading": "ショウ、セイ",
+                    "enMn": "цэгцлэх",
+                    "meaningsMn": [
+                        "цэгцлэх"
+                    ]
+                },
+                {
+                    "jp": "扉",
+                    "reading": "とびら",
+                    "en": "door",
+                    "meanings": [
+                        "door",
+                        "opening"
+                    ],
+                    "example": null,
+                    "phonetic": "非",
+                    "phoneticReading": "ハイ、ヒ",
+                    "enMn": "хаалга",
+                    "meaningsMn": [
+                        "хаалга"
+                    ]
+                },
+                {
+                    "jp": "伴う",
+                    "reading": "ともなう",
+                    "en": "to accompany",
+                    "meanings": [
+                        "to accompany",
+                        "to bring with"
+                    ],
+                    "example": null,
+                    "phonetic": "半",
+                    "phoneticReading": "ハン",
+                    "enMn": "дагалдах",
+                    "meaningsMn": [
+                        "дагалдах"
+                    ]
+                },
+                {
+                    "jp": "取り扱う",
+                    "reading": "とりあつかう",
+                    "en": "to treat",
+                    "meanings": [
+                        "to treat",
+                        "to handle",
+                        "to deal in"
+                    ],
+                    "example": null,
+                    "phonetic": "取",
+                    "phoneticReading": "シュ",
+                    "enMn": "ашиглах",
+                    "meaningsMn": [
+                        "ашиглах"
+                    ]
+                },
+                {
+                    "jp": "取り除く",
+                    "reading": "とりのぞく",
+                    "en": "to remove",
+                    "meanings": [
+                        "to remove",
+                        "to take away",
+                        "to set apart"
+                    ],
+                    "example": null,
+                    "phonetic": "取",
+                    "phoneticReading": "シュ",
+                    "enMn": "зайлуулах",
+                    "meaningsMn": [
+                        "зайлуулах"
+                    ]
+                },
+                {
+                    "jp": "逃げ出す",
+                    "reading": "にげだす",
+                    "en": "to run away",
+                    "meanings": [
+                        "to run away",
+                        "to escape from"
+                    ],
+                    "example": null,
+                    "phonetic": "兆",
+                    "phoneticReading": "チョウ、トウ",
+                    "enMn": "зугтах",
+                    "meaningsMn": [
+                        "зугтах"
+                    ]
+                },
+                {
+                    "jp": "担う",
+                    "reading": "になう",
+                    "en": "to carry on shoulder",
+                    "meanings": [
+                        "to carry on shoulder",
+                        "to bear (burden)",
+                        "to shoulder (gun)"
+                    ],
+                    "example": null,
+                    "phonetic": "旦",
+                    "phoneticReading": "タン",
+                    "enMn": "үүрэх",
+                    "meaningsMn": [
+                        "үүрэх"
+                    ]
+                },
+                {
+                    "jp": "練る",
+                    "reading": "ねる",
+                    "en": "to knead",
+                    "meanings": [
+                        "to knead",
+                        "to work over",
+                        "to polish up"
+                    ],
+                    "example": null,
+                    "phonetic": "東",
+                    "phoneticReading": "トウ、レン",
+                    "enMn": "дасгал хийх",
+                    "meaningsMn": [
+                        "дасгал хийх"
+                    ]
+                },
+                {
+                    "jp": "乗っ取る",
+                    "reading": "のっとる",
+                    "en": "to capture",
+                    "meanings": [
+                        "to capture",
+                        "to occupy",
+                        "to take over"
+                    ],
+                    "example": null,
+                    "phonetic": "乗",
+                    "phoneticReading": "ジョウ",
+                    "enMn": "эзлэх",
+                    "meaningsMn": [
+                        "эзлэх"
+                    ]
+                },
+                {
+                    "jp": "乗り込む",
+                    "reading": "のりこむ",
+                    "en": "to board",
+                    "meanings": [
+                        "to board",
+                        "to get into (a car); to march into",
+                        "to enter"
+                    ],
+                    "example": null,
+                    "phonetic": "乗",
+                    "phoneticReading": "ジョウ",
+                    "enMn": "суух",
+                    "meaningsMn": [
+                        "суух"
+                    ]
+                },
+                {
+                    "jp": "一連",
+                    "reading": "いちれん",
+                    "en": "a series",
+                    "meanings": [
+                        "a series",
+                        "a chain",
+                        "a ream (of paper)"
+                    ],
+                    "example": null,
+                    "phonetic": "連",
+                    "phoneticReading": "レン",
+                    "enMn": "гинж",
+                    "meaningsMn": [
+                        "гинж"
+                    ]
+                },
+                {
+                    "jp": "打ち明ける",
+                    "reading": "うちあける",
+                    "en": "to confess",
+                    "meanings": [
+                        "to confess",
+                        "to be open"
+                    ],
+                    "example": null,
+                    "phonetic": "明",
+                    "phoneticReading": "メイ",
+                    "enMn": "нээлттэй хэлэх",
+                    "meaningsMn": [
+                        "нээлттэй хэлэх"
+                    ]
+                },
+                {
+                    "jp": "生まれつき",
+                    "reading": "うまれつき",
+                    "en": "by nature",
+                    "meanings": [
+                        "by nature",
+                        "by birth",
+                        "native"
+                    ],
+                    "example": null,
+                    "phonetic": "生",
+                    "phoneticReading": "セイ、ショウ",
+                    "enMn": "байгалиас заяасан авьяас",
+                    "meaningsMn": [
+                        "байгалиас заяасан авьяас"
+                    ]
+                },
+                {
+                    "jp": "沿岸",
+                    "reading": "えんがん",
+                    "en": "coast",
+                    "meanings": [
+                        "coast",
+                        "shore"
+                    ],
+                    "example": null,
+                    "phonetic": "㕣",
+                    "phoneticReading": "エン",
+                    "enMn": "далайн хөвөө",
+                    "meaningsMn": [
+                        "далайн хөвөө"
+                    ]
+                },
+                {
+                    "jp": "侵す",
+                    "reading": "おかす",
+                    "en": "to invade",
+                    "meanings": [
+                        "to invade",
+                        "to raid",
+                        "to trespass"
+                    ],
+                    "example": null,
+                    "phonetic": "𠬶",
+                    "phoneticReading": "シン",
+                    "enMn": "түрэмгийлэх",
+                    "meaningsMn": [
+                        "түрэмгийлэх",
+                        "довтлох"
+                    ]
+                },
+                {
+                    "jp": "臆病",
+                    "reading": "おくびょう",
+                    "en": "cowardice",
+                    "meanings": [
+                        "cowardice",
+                        "timidity"
+                    ],
+                    "example": null,
+                    "phonetic": "意",
+                    "phoneticReading": "オク",
+                    "enMn": "хулчгар",
+                    "meaningsMn": [
+                        "хулчгар"
+                    ]
+                },
+                {
+                    "jp": "訪れる",
+                    "reading": "おとずれる",
+                    "en": "to visit",
+                    "meanings": [
+                        "to visit"
+                    ],
+                    "example": null,
+                    "phonetic": "方",
+                    "phoneticReading": "ホウ、ボウ",
+                    "enMn": "зочлох",
+                    "meaningsMn": [
+                        "зочлох"
+                    ]
+                },
+                {
+                    "jp": "会見",
+                    "reading": "かいけん",
+                    "en": "interview",
+                    "meanings": [
+                        "interview",
+                        "conference"
+                    ],
+                    "example": null,
+                    "phonetic": "会",
+                    "phoneticReading": "カイ、エ",
+                    "enMn": "уулзалт",
+                    "meaningsMn": [
+                        "уулзалт"
+                    ]
+                },
+                {
+                    "jp": "確定",
+                    "reading": "かくてい",
+                    "en": "fixed",
+                    "meanings": [
+                        "fixed",
+                        "decision"
+                    ],
+                    "example": null,
+                    "phonetic": "定",
+                    "phoneticReading": "ジョウ、テイ",
+                    "enMn": "шийдвэр",
+                    "meaningsMn": [
+                        "шийдвэр"
+                    ]
+                },
+                {
+                    "jp": "河川",
+                    "reading": "かせん",
+                    "en": "rivers",
+                    "meanings": [
+                        "rivers"
+                    ],
+                    "example": null,
+                    "phonetic": "可",
+                    "phoneticReading": "カ",
+                    "enMn": "гол",
+                    "meaningsMn": [
+                        "гол"
+                    ]
+                },
+                {
+                    "jp": "傾ける",
+                    "reading": "かたむける",
+                    "en": "to incline",
+                    "meanings": [
+                        "to incline",
+                        "to tilt",
+                        "to bend"
+                    ],
+                    "example": null,
+                    "phonetic": "頃",
+                    "phoneticReading": "ケイ",
+                    "enMn": "хазайлгах",
+                    "meaningsMn": [
+                        "хазайлгах"
+                    ]
+                },
+                {
+                    "jp": "固める",
+                    "reading": "かためる",
+                    "en": "to harden",
+                    "meanings": [
+                        "to harden",
+                        "to freeze",
+                        "to fortify"
+                    ],
+                    "example": null,
+                    "phonetic": "古",
+                    "phoneticReading": "コ",
+                    "enMn": "хөлдөх",
+                    "meaningsMn": [
+                        "хөлдөх"
+                    ]
+                },
+                {
+                    "jp": "構える",
+                    "reading": "かまえる",
+                    "en": "to set up",
+                    "meanings": [
+                        "to set up"
+                    ],
+                    "example": null,
+                    "phonetic": "冓",
+                    "phoneticReading": "コウ",
+                    "enMn": "төлөвлөх",
+                    "meaningsMn": [
+                        "төлөвлөх"
+                    ]
+                }
+            ]
+        ]
+    },
+    {
+        "level": 60,
+        "jlpt": "N1",
+        "title": "N1 · Level 12",
+        "sets": [
+            [
+                {
+                    "jp": "簡潔",
+                    "reading": "かんけつ",
+                    "en": "brevity",
+                    "meanings": [
+                        "brevity",
+                        "concise",
+                        "simple"
+                    ],
+                    "example": null,
+                    "phonetic": "門",
+                    "phoneticReading": "モン、カン",
+                    "enMn": "хураангуй",
+                    "meaningsMn": [
+                        "хураангуй"
+                    ]
+                },
+                {
+                    "jp": "兆",
+                    "reading": "きざし",
+                    "en": "sign",
+                    "meanings": [
+                        "sign",
+                        "omen",
+                        "indication"
+                    ],
+                    "example": null,
+                    "phonetic": "兆",
+                    "phoneticReading": "チョウ、トウ",
+                    "enMn": "их наяд",
+                    "meaningsMn": [
+                        "их наяд"
+                    ]
+                },
+                {
+                    "jp": "軌道",
+                    "reading": "きどう",
+                    "en": "orbit; track",
+                    "meanings": [
+                        "orbit; track"
+                    ],
+                    "example": null,
+                    "phonetic": "几",
+                    "phoneticReading": "キ",
+                    "enMn": "тойрог",
+                    "meaningsMn": [
+                        "тойрог"
+                    ]
+                },
+                {
+                    "jp": "強制",
+                    "reading": "きょうせい",
+                    "en": "obligation",
+                    "meanings": [
+                        "obligation",
+                        "compulsion",
+                        "enforcement"
+                    ],
+                    "example": null,
+                    "phonetic": "制",
+                    "phoneticReading": "セイ",
+                    "enMn": "албадлага",
+                    "meaningsMn": [
+                        "албадлага"
+                    ]
+                },
+                {
+                    "jp": "行政",
+                    "reading": "ぎょうせい",
+                    "en": "administration",
+                    "meanings": [
+                        "administration"
+                    ],
+                    "example": null,
+                    "phonetic": "正",
+                    "phoneticReading": "ショウ、セイ",
+                    "enMn": "засаг",
+                    "meaningsMn": [
+                        "засаг"
+                    ]
+                },
+                {
+                    "jp": "空腹",
+                    "reading": "くうふく",
+                    "en": "hunger",
+                    "meanings": [
+                        "hunger"
+                    ],
+                    "example": null,
+                    "phonetic": "复",
+                    "phoneticReading": "フク",
+                    "enMn": "өлсгөлөн",
+                    "meaningsMn": [
+                        "өлсгөлөн"
+                    ]
+                },
+                {
+                    "jp": "覆す",
+                    "reading": "くつがえす",
+                    "en": "to overturn",
+                    "meanings": [
+                        "to overturn",
+                        "to upset",
+                        "to overthrow"
+                    ],
+                    "example": null,
+                    "phonetic": "复",
+                    "phoneticReading": "フク",
+                    "enMn": "хөмрөх",
+                    "meaningsMn": [
+                        "хөмрөх",
+                        "эргүүлэх"
+                    ]
+                },
+                {
+                    "jp": "経過",
+                    "reading": "けいか",
+                    "en": "passage",
+                    "meanings": [
+                        "passage",
+                        "progress"
+                    ],
+                    "example": null,
+                    "phonetic": "圣",
+                    "phoneticReading": "ケイ",
+                    "enMn": "явц",
+                    "meaningsMn": [
+                        "явц"
+                    ]
+                },
+                {
+                    "jp": "地獄",
+                    "reading": "じごく",
+                    "en": "hell",
+                    "meanings": [
+                        "hell"
+                    ],
+                    "example": null,
+                    "phonetic": "也",
+                    "phoneticReading": "チ",
+                    "enMn": "там",
+                    "meaningsMn": [
+                        "там"
+                    ]
+                },
+                {
+                    "jp": "網",
+                    "reading": "あみ",
+                    "en": "net",
+                    "meanings": [
+                        "net"
+                    ],
+                    "example": null,
+                    "phonetic": "亡",
+                    "phoneticReading": "ボウ、モウ",
+                    "enMn": "тор",
+                    "meaningsMn": [
+                        "тор"
+                    ]
+                },
+                {
+                    "jp": "操る",
+                    "reading": "あやつる",
+                    "en": "to manipulate",
+                    "meanings": [
+                        "to manipulate",
+                        "to operate",
+                        "to pull strings"
+                    ],
+                    "example": null,
+                    "phonetic": "喿",
+                    "phoneticReading": "ソウ",
+                    "enMn": "жолоодох",
+                    "meaningsMn": [
+                        "жолоодох",
+                        "ажиллуулах"
+                    ]
+                },
+                {
+                    "jp": "荒っぽい",
+                    "reading": "あらっぽい",
+                    "en": "rough",
+                    "meanings": [
+                        "rough",
+                        "rude"
+                    ],
+                    "example": null,
+                    "phonetic": "荒",
+                    "phoneticReading": "コウ",
+                    "enMn": "ширүүн",
+                    "meaningsMn": [
+                        "ширүүн"
+                    ]
+                },
+                {
+                    "jp": "案じる",
+                    "reading": "あんじる",
+                    "en": "to be anxious",
+                    "meanings": [
+                        "to be anxious",
+                        "to ponder"
+                    ],
+                    "example": null,
+                    "phonetic": "安",
+                    "phoneticReading": "アン",
+                    "enMn": "санаа зовох",
+                    "meaningsMn": [
+                        "санаа зовох"
+                    ]
+                },
+                {
+                    "jp": "準じる",
+                    "reading": "じゅんじる",
+                    "en": "to follow",
+                    "meanings": [
+                        "to follow",
+                        "to conform",
+                        "to apply to"
+                    ],
+                    "example": null,
+                    "phonetic": "隼",
+                    "phoneticReading": "ジュン",
+                    "enMn": "дагах",
+                    "meaningsMn": [
+                        "дагах",
+                        "баримтлах"
+                    ]
+                },
+                {
+                    "jp": "使用人",
+                    "reading": "しようにん",
+                    "en": "employee",
+                    "meanings": [
+                        "employee",
+                        "servant"
+                    ],
+                    "example": null,
+                    "phonetic": "史",
+                    "phoneticReading": "シ",
+                    "enMn": "зарц",
+                    "meaningsMn": [
+                        "зарц"
+                    ]
+                },
+                {
+                    "jp": "記す",
+                    "reading": "しるす",
+                    "en": "to note",
+                    "meanings": [
+                        "to note",
+                        "to write down"
+                    ],
+                    "example": null,
+                    "phonetic": "己",
+                    "phoneticReading": "キ",
+                    "enMn": "тэмдэглэх",
+                    "meaningsMn": [
+                        "тэмдэглэх"
+                    ]
+                },
+                {
+                    "jp": "真実",
+                    "reading": "しんじつ",
+                    "en": "truth",
+                    "meanings": [
+                        "truth",
+                        "reality"
+                    ],
+                    "example": null,
+                    "phonetic": "真",
+                    "phoneticReading": "シン、テン",
+                    "enMn": "үнэн",
+                    "meaningsMn": [
+                        "үнэн"
+                    ]
+                },
+                {
+                    "jp": "体格",
+                    "reading": "たいかく",
+                    "en": "physique",
+                    "meanings": [
+                        "physique",
+                        "constitution"
+                    ],
+                    "example": null,
+                    "phonetic": "各",
+                    "phoneticReading": "カク、ラク",
+                    "enMn": "биеийн бүтэц",
+                    "meaningsMn": [
+                        "биеийн бүтэц"
+                    ]
+                },
+                {
+                    "jp": "漂う",
+                    "reading": "ただよう",
+                    "en": "to drift about",
+                    "meanings": [
+                        "to drift about",
+                        "to float",
+                        "to hang in air"
+                    ],
+                    "example": null,
+                    "phonetic": "票",
+                    "phoneticReading": "ヒョウ",
+                    "enMn": "хөвөх",
+                    "meaningsMn": [
+                        "хөвөх"
+                    ]
+                },
+                {
+                    "jp": "中枢",
+                    "reading": "ちゅうすう",
+                    "en": "center",
+                    "meanings": [
+                        "center",
+                        "mainstay",
+                        "nucleus"
+                    ],
+                    "example": null,
+                    "phonetic": "中",
+                    "phoneticReading": "チュウ",
+                    "enMn": "төв",
+                    "meaningsMn": [
+                        "төв"
+                    ]
+                },
+                {
+                    "jp": "繕う",
+                    "reading": "つくろう",
+                    "en": "to mend",
+                    "meanings": [
+                        "to mend",
+                        "to repair"
+                    ],
+                    "example": null,
+                    "phonetic": "善",
+                    "phoneticReading": "ゼン",
+                    "enMn": "засах",
+                    "meaningsMn": [
+                        "засах"
+                    ]
+                },
+                {
+                    "jp": "連ねる",
+                    "reading": "つらねる",
+                    "en": "to link",
+                    "meanings": [
+                        "to link",
+                        "to join",
+                        "to put together"
+                    ],
+                    "example": null,
+                    "phonetic": "連",
+                    "phoneticReading": "レン",
+                    "enMn": "холбох",
+                    "meaningsMn": [
+                        "холбох"
+                    ]
+                },
+                {
+                    "jp": "惑星",
+                    "reading": "わくせい",
+                    "en": "planet",
+                    "meanings": [
+                        "planet"
+                    ],
+                    "example": null,
+                    "phonetic": "生",
+                    "phoneticReading": "セイ、ショウ",
+                    "enMn": "гараг",
+                    "meaningsMn": [
+                        "гараг"
+                    ]
+                },
+                {
+                    "jp": "蜂蜜",
+                    "reading": "はちみつ",
+                    "en": "honey",
+                    "meanings": [
+                        "honey"
+                    ],
+                    "example": null,
+                    "phonetic": "夆",
+                    "phoneticReading": "ホウ",
+                    "enMn": "бал",
+                    "meaningsMn": [
+                        "бал"
+                    ]
+                },
+                {
+                    "jp": "従業員",
+                    "reading": "じゅうぎょういん",
+                    "en": "employee",
+                    "meanings": [
+                        "employee",
+                        "worker"
+                    ],
+                    "example": null,
+                    "phonetic": "従",
+                    "phoneticReading": "ジュウ",
+                    "enMn": "ажилтан",
+                    "meaningsMn": [
+                        "ажилтан"
                     ]
                 }
             ]
