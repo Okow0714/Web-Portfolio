@@ -18,7 +18,58 @@ Object.assign(window.I18N_STRINGS, {
         mn: 'Япон хэл гурван өөр бичгийг зэрэг хэрэглэдэг ба шинэ суралцагч бүрд «ийм л юм, дассан нь дээр» гэж хэлдэг. Гэтэл дасах шаардлагагүй. Бичиг бүр тодорхой шалтгаанаар, тодорхой цагт бий болсон. Тэр шалтгааныг нь мэдвэл дүрмийг нь цээжлэх хэрэггүй болно — <em>англи үгсийг яагаад катаканагаар бичдэг нь ч бас ойлгомжтой болно</em>.'
     },
 
-    'origins.chronology.h': { en: '1 · The chronology', mn: '1 · Он цагийн дараалал' },
+    // --- the three scripts, up front ------------------------------------------
+    'origins.scripts.h': { en: '1 · The three scripts', mn: '1 · Гурван бичиг' },
+    'origins.scripts.sub': {
+        en: 'Before any history: what the three actually are, and what each one does inside a sentence. This is the whole system in about a minute.',
+        mn: 'Түүх рүү орохын өмнө: энэ гурав яг юу вэ, өгүүлбэр дотор ямар үүрэг гүйцэтгэдэг вэ. Бүх систем нь ойролцоогоор нэг минутад багтана.'
+    },
+    'origins.scripts.jobLabel': { en: 'Carries:', mn: 'Үүрэг:' },
+
+    'origins.scripts.kanji.name': { en: 'kanji', mn: 'ханз' },
+    'origins.scripts.kanji.what': {
+        en: 'Characters borrowed from Chinese. Each one carries a meaning of its own, and most carry more than one reading.',
+        mn: 'Хятадаас зээлж авсан тэмдэгтүүд. Тус бүр нь өөрийн гэсэн утгатай бөгөөд ихэнх нь нэгээс олон уншлагатай.'
+    },
+    'origins.scripts.kanji.job': {
+        en: 'the meaning — nouns, and the stem of verbs and adjectives.',
+        mn: 'утгыг — нэр үг, мөн үйл ба тэмдэг нэрийн үндэс.'
+    },
+    'origins.scripts.kanji.count': { en: '2,136 in daily use', mn: 'Өдөр тутам 2,136' },
+
+    'origins.scripts.hira.name': { en: 'hiragana', mn: 'хирагана' },
+    'origins.scripts.hira.what': {
+        en: 'Forty-six curved signs, one per sound. They mean nothing on their own — a kana is pure pronunciation.',
+        mn: 'Дуудлага тус бүрд нэг, нийт дөчин зургаан муруй тэмдэг. Өөрсдөө ямар ч утгагүй — кана бол цэвэр дуудлага.'
+    },
+    'origins.scripts.hira.job': {
+        en: 'the grammar — particles, endings, and any Japanese word not written in kanji.',
+        mn: 'дүрмийг — нөхцөл, сул үг, мөн ханзаар бичдэггүй бүх япон үг.'
+    },
+    'origins.scripts.hira.count': { en: '46 signs', mn: '46 тэмдэг' },
+
+    'origins.scripts.kata.name': { en: 'katakana', mn: 'катакана' },
+    'origins.scripts.kata.what': {
+        en: 'The same forty-six sounds again, drawn in straight lines. A second set of signs for sounds hiragana already covers.',
+        mn: 'Яг тэр дөчин зургаан дуудлага, гэхдээ шулуун шугамаар. Хирагана аль хэдийн бичдэг дуудлагуудад зориулсан хоёр дахь багц тэмдэг.'
+    },
+    'origins.scripts.kata.job': {
+        en: 'anything set apart — foreign words, names, sound effects, emphasis.',
+        mn: 'тусад нь ялгах бүхнийг — гадаад үг, нэр, дуу дуурайх үг, онцлол.'
+    },
+    'origins.scripts.kata.count': { en: '46 signs', mn: '46 тэмдэг' },
+
+    'origins.demo.reading': {
+        en: 'Watashi wa Mongoru de nihongo o benkyō shimasu.',
+        mn: 'Ваташи ва Монгору дэ нихонго о бэнкёо шимасу.'
+    },
+    'origins.demo.gloss': { en: '“I study Japanese in Mongolia.”', mn: '«Би Монголд япон хэл сурдаг.»' },
+    'origins.demo.read': {
+        en: 'The <b class="ss-kanji">kanji</b> carry the meanings — <em>I</em>, <em>Japanese</em>, <em>study</em>. The <b class="ss-hira">hiragana</b> between them say who is doing what to what. The one <b class="ss-kata">katakana</b> word is the one that came from outside. Every Japanese sentence you will ever read is this same division of labour.',
+        mn: '<b class="ss-kanji">Ханз</b> нь утгыг үүрнэ — <em>би</em>, <em>япон хэл</em>, <em>сурах</em>. Хооронд нь орсон <b class="ss-hira">хирагана</b> хэн юуг яаж хийж байгааг заана. Ганц <b class="ss-kata">катакана</b> үг нь гаднаас орж ирсэн үг. Таны цаашид унших бүх япон өгүүлбэр яг ийм үүрэг хуваарилалттай байна.'
+    },
+
+    'origins.chronology.h': { en: '2 · The chronology', mn: '2 · Он цагийн дараалал' },
     'origins.chronology.sub': {
         en: 'Nine moments, each adding exactly one piece of the modern writing system. Click a title to open it.',
         mn: 'Есөн үе шат. Тус бүр нь өнөөгийн бичигт яг нэг зүйл нэмж өгсөн. Гарчиг дээр дарж дэлгэрэнгүйг үзнэ үү.'
@@ -158,7 +209,7 @@ Object.assign(window.I18N_STRINGS, {
     },
 
     // --- kana section ---------------------------------------------------------
-    'origins.kana.h': { en: '2 · Every kana, in Mongolian', mn: '2 · Кана бүр, монголоор' },
+    'origins.kana.h': { en: '3 · Every kana, in Mongolian', mn: '3 · Кана бүр, монголоор' },
     'origins.kana.sub': {
         en: 'Tap any tile to see its romaji and the character it was cut down from. Hiragana and katakana share a sound, so they share a tile — but they were carved out of different kanji, which is why they look nothing alike.',
         mn: 'Аль нэг нүд дээр дарвал латин бичлэг, гарал үүслийн ханз нь харагдана. Хирагана, катакана хоёр нэг дуудлагатай учир нэг нүдэнд хамт байна — гэхдээ тус тусдаа өөр ханзнаас гаралтай болохоор хоорондоо огт төстэй биш.'
@@ -206,7 +257,7 @@ Object.assign(window.I18N_STRINGS, {
     },
 
     // --- why katakana ---------------------------------------------------------
-    'origins.why.h': { en: '3 · So why are English words in katakana?', mn: '3 · Тэгвэл яагаад англи үгс катаканагаар бичигддэг вэ?' },
+    'origins.why.h': { en: '4 · So why are English words in katakana?', mn: '4 · Тэгвэл яагаад англи үгс катаканагаар бичигддэг вэ?' },
     'origins.why.sub': {
         en: 'The usual answer is "that\'s the rule". The real answer is four steps, and once you\'ve seen them the rule is obvious.',
         mn: 'Ихэвчлэн «дүрэм нь тийм» гэж хариулдаг. Жинхэнэ хариулт нь дөрвөн алхамтай бөгөөд эдгээрийг харсны дараа дүрэм нь өөрөө ойлгомжтой болно.'

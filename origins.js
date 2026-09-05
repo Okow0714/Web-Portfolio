@@ -10,6 +10,27 @@
 // shared masthead, both loaded first.
 
 // ---------------------------------------------------------------------------
+// The three scripts
+// ---------------------------------------------------------------------------
+// The opening section: what the three scripts are, before any history explains why. The
+// colour language is established here and the kana table below reuses it -- kanji is ink
+// (the base text colour), hiragana vermilion, katakana grey. Indigo stays reserved for the
+// Mongolian side everywhere on this page, so it is deliberately not one of the three.
+const SCRIPTS = [
+    { id: 'kanji', jp: '漢字' },
+    { id: 'hira', jp: 'ひらがな' },
+    { id: 'kata', jp: 'カタカナ' },
+];
+
+// One sentence doing all three jobs at once. モンゴル is the katakana example on purpose: a
+// foreign place name is the commonest katakana a Mongolian beginner actually meets, and it
+// makes the point about loanwords before the page has argued it.
+const DEMO = [
+    ['私', 'kanji'], ['は', 'hira'], ['モンゴル', 'kata'], ['で', 'hira'],
+    ['日本語', 'kanji'], ['を', 'hira'], ['勉強', 'kanji'], ['します', 'hira'], ['。', 'plain'],
+];
+
+// ---------------------------------------------------------------------------
 // Chronology
 // ---------------------------------------------------------------------------
 // Each era is one datable moment that adds exactly one piece of the modern writing system.
@@ -118,6 +139,29 @@ function renderEras() {
     wireEras();
 }
 
+function renderScripts() {
+    document.getElementById('scripts-trio').innerHTML = SCRIPTS.map(sc =>
+        '<div class="script-card is-' + sc.id + '">' +
+            '<div class="sc-head">' +
+                '<span class="sc-jp" lang="ja">' + sc.jp + '</span>' +
+                '<span class="sc-name">' + esc(window.t('origins.scripts.' + sc.id + '.name')) + '</span>' +
+            '</div>' +
+            '<p class="sc-what">' + window.t('origins.scripts.' + sc.id + '.what') + '</p>' +
+            '<p class="sc-job"><b>' + esc(window.t('origins.scripts.jobLabel')) + '</b> ' +
+                window.t('origins.scripts.' + sc.id + '.job') + '</p>' +
+            '<span class="sc-count">' + esc(window.t('origins.scripts.' + sc.id + '.count')) + '</span>' +
+        '</div>'
+    ).join('');
+
+    document.getElementById('script-demo').innerHTML =
+        '<p class="demo-sentence" lang="ja">' +
+            DEMO.map(([txt, kind]) => '<span class="ss-' + kind + '">' + txt + '</span>').join('') +
+        '</p>' +
+        '<p class="demo-reading">' + esc(window.t('origins.demo.reading')) + '</p>' +
+        '<p class="demo-gloss">' + esc(window.t('origins.demo.gloss')) + '</p>' +
+        '<p class="demo-read">' + window.t('origins.demo.read') + '</p>';
+}
+
 function renderKana() {
     const grid = document.getElementById('kana-grid');
     grid.innerHTML = '';
@@ -215,6 +259,7 @@ function wireKana() {
 // Wiring
 // ---------------------------------------------------------------------------
 function renderAll() {
+    renderScripts();
     renderEras();
     renderKana();
     renderNotes();
