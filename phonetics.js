@@ -567,9 +567,8 @@ if (deepLinkTarget) {
     // click away.
     showFamilyList(LEVEL_META[0].key);
 
-    // Show the "what's a phonetic component?" explainer automatically on entering
-    // this page, in addition to it staying reachable later via the H1/info-button
-    // triggers above — it's a one-time-per-load primer, not tied to browsing. Skipped on a
-    // deep link, since the visitor arrived with clear intent, not to browse cold.
-    openInfoModal();
+    // The explainer used to pop open here on every single load, which was a nag by the
+    // second visit and, once page tours shipped, a second explainer competing with the
+    // first. The tour now primes a first-time visitor and its third step points at the
+    // info button, so the modal stays one click away instead of arriving uninvited.
 }
