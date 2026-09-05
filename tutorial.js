@@ -290,15 +290,81 @@
         if (!step.sel) { done(); return; }
         const el = document.querySelector(step.sel);
         if (!el) { done(); return; }
-        const r = el.getBoundingClientRect();
-        const top = window.scrollY + r.top - 110;
-        const below = r.bottom > window.innerHeight - 190;
-        if (r.top < 89 || below) {
+        const r = paintedRect(el);
+        const guard = topGuard();
+        const top = window.scrollY + r.top - guard - 56;
+        // Only scroll when the target is actually out of sight. Reserving room for the tip
+        // here meant a grid that was fully visible still scrolled, and on a short page that
+        // threw the reader down to the footer for no reason.
+        if (r.top < guard || r.bottom > window.innerHeight - 8) {
             window.scrollTo({ top: Math.max(0, top), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
             setTimeout(done, 380);
         } else {
             done();
         }
+    }
+
+    // A ring drawn on the element's own box is wrong whenever that box is a full-width
+    // container holding a short row of controls: #jlpt-tabs is 1132px wide around five tabs
+    // that occupy 350 of them, so the spotlight lands on mostly empty background. Measure what
+    // is actually painted instead — the union of the element's children, or of its text runs
+    // when it has none — and only prefer that when it is meaningfully tighter than the box.
+    // How much of the top of the viewport is covered by the fixed masthead right now. It is
+    // NOT always 64px: Word Match and Grammar Connect hide the site header entirely once you
+    // are inside a level, and their board toolbars then sit at y=36 — inside the reserve a
+    // hardcoded 89 would keep, which pushed the ring off its target and left it floating in
+    // empty space below the toolbar.
+    function topGuard() {
+        const h = document.querySelector('.site-header-wrap');
+        if (!h) return 8;
+        const cs = getComputedStyle(h);
+        if (cs.display === 'none' || cs.visibility === 'hidden') return 8;
+        const r = h.getBoundingClientRect();
+        if (r.height === 0) return 8;
+        // A static header that has scrolled away covers nothing.
+        return (cs.position === 'fixed' || r.bottom > 0) ? Math.max(r.bottom + 8, 8) : 8;
+    }
+
+    const INTERACTIVE = 'button, a, input, select, textarea, summary, [role="button"]';
+
+    function paintedRect(el) {
+        const box = el.getBoundingClientRect();
+        // A control's own box IS the thing you press, so never shrink one to its label: the
+        // ring should sit on the button, not on the word inside it. Same for anything that
+        // draws its own box -- a bordered hint, a tinted card -- where a tighter ring would
+        // read as a box drawn inside a box.
+        if (el.matches(INTERACTIVE)) return box;
+        const cs = getComputedStyle(el);
+        const painted = (cs.backgroundColor && !/^rgba\(0, 0, 0, 0\)$|^transparent$/.test(cs.backgroundColor)) ||
+            parseFloat(cs.borderTopWidth) > 0 || parseFloat(cs.borderLeftWidth) > 0 ||
+            (cs.backgroundImage && cs.backgroundImage !== 'none');
+        if (painted) return box;
+        const kids = [...el.children].filter(c => {
+            const r = c.getBoundingClientRect();
+            return r.width > 0 && r.height > 0 && getComputedStyle(c).position !== 'fixed';
+        });
+
+        let rects = kids.map(c => c.getBoundingClientRect());
+        if (!rects.length && el.textContent.trim()) {
+            const range = document.createRange();
+            range.selectNodeContents(el);
+            rects = [...range.getClientRects()].filter(r => r.width > 0 && r.height > 0);
+        }
+        if (!rects.length) return box;
+
+        const union = {
+            left: Math.min(...rects.map(r => r.left)),
+            top: Math.min(...rects.map(r => r.top)),
+            right: Math.max(...rects.map(r => r.right)),
+            bottom: Math.max(...rects.map(r => r.bottom)),
+        };
+        union.width = union.right - union.left;
+        union.height = union.bottom - union.top;
+        if (union.width <= 0 || union.height <= 0) return box;
+        // Only take the tighter rect when it is a real improvement, so a normal block element
+        // whose children fill it keeps its own box.
+        const tighter = union.width < box.width * 0.82 || union.height < box.height * 0.82;
+        return tighter ? union : box;
     }
 
     function reposition() {
@@ -320,9 +386,9 @@
 
         // Clamp to what is actually on screen: a list can be thousands of pixels tall, and a
         // ring running off the bottom of the page highlights nothing.
-        const raw = el.getBoundingClientRect();
+        const raw = paintedRect(el);
         const pad = 6;
-        const lit = Math.max(raw.top - pad, 89);
+        const lit = Math.max(raw.top - pad, topGuard());
         const litEnd = Math.min(raw.bottom + pad, window.innerHeight - 12);
         const r = { top: lit, left: raw.left, width: raw.width,
                     height: Math.max(litEnd - lit, 24), bottom: Math.max(litEnd, lit + 24) };
@@ -337,7 +403,8 @@
         let top = r.bottom + gap;
         if (top + th > window.innerHeight - 12) {
             const above = r.top - th - gap;
-            top = above > 89 ? above : Math.max(89, window.innerHeight - th - 12);
+            const guard = topGuard();
+            top = above > guard ? above : Math.max(guard, window.innerHeight - th - 12);
         }
         let left = r.left + r.width / 2 - tw / 2;
         left = Math.max(12, Math.min(left, window.innerWidth - tw - 12));
