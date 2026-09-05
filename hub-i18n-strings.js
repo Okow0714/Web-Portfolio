@@ -4,8 +4,8 @@ Object.assign(window.I18N_STRINGS, {
     'hub.eyebrow': { en: 'Curious. Creative. Diligent.', mn: 'Сониуч. Бүтээлч. Шаргуу.' },
     'hub.heroTitle': { en: "Let's Make Friends with Japanese", mn: 'Япон хэлтэй найзалцгаая' },
     'hub.heroBody': {
-        en: 'This site is made up of five distinct sections built for learning Japanese from the fundamentals — not the easy way.',
-        mn: 'Энэ сайт япон хэлийг амар замаар нь биш, үндсээс нь сурахад зориулсан таван өөр хэсгээс бүрдэнэ.'
+        en: 'This site is made up of six distinct sections built for learning Japanese from the fundamentals — not the easy way.',
+        mn: 'Энэ сайт япон хэлийг амар замаар нь биш, үндсээс нь сурахад зориулсан зургаан өөр хэсгээс бүрдэнэ.'
     },
     'hub.searchPlaceholder': { en: 'Look up a word — Mongolian, kanji, kana, or English…', mn: 'Үг хайх — монгол, ханз, кана, эсвэл англи…' },
     'hub.searchButton': { en: 'Search', mn: 'Хайх' },
@@ -17,6 +17,14 @@ Object.assign(window.I18N_STRINGS, {
     'hub.progress.textsDone': { en: '{done} / {total} texts', mn: '{done} / {total} текст' },
     'hub.progress.guestTitle': { en: 'Log in to track your progress', mn: 'Явцаа хянахын тулд нэвтэрнэ үү' },
     'hub.progress.guestBody': { en: 'Your score and per-tool progress will show up right here.', mn: 'Таны оноо болон хэрэгсэл тус бүрийн явц энд харагдана.' },
+
+    'hub.origins.name': { en: 'Kana Origins', mn: 'Канагийн үүсэл' },
+    'hub.origins.desc': {
+        en: 'Start here if Japanese writing still looks like three unrelated alphabets. A clickable chronology from the first writing in Japan to the post-war reforms, every one of the 46 kana with its Mongolian sound and the kanji it was cut down from, and a four-step answer to why English words are written in katakana.',
+        mn: 'Хэрэв япон бичиг чамд гурван хоорондоо хамааралгүй цагаан толгой мэт харагдсаар байвал эндээс эхэл. Япон дахь анхны бичгээс дайны дараах шинэчлэл хүртэлх товчлуур дарж дэлгэдэг он цагийн хэлхээс, 46 кана бүрийн монгол дуудлага, түүнийг гаргаж авсан ханз, мөн англи үгсийг яагаад катаканаар бичдэгийн дөрвөн алхамт хариулт.'
+    },
+    'hub.origins.stat': { en: '9 ERAS · 46 KANA · NO KANJI NEEDED', mn: '9 ҮЕ ШАТ · 46 КАНА · ХАНЗ МЭДЭХ ШААРДЛАГАГҮЙ' },
+    'hub.origins.cta': { en: 'Start →', mn: 'Эхлэх →' },
 
     'hub.game.name': { en: 'Word Match', mn: 'Үг холбох тоглоом' },
     'hub.game.desc': {

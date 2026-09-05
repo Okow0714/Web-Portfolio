@@ -1129,9 +1129,9 @@ body {
 /* ---------------------------------------------------------------------
    Responsive chrome
    --------------------------------------------------------------------- */
-/* Intermediate step: the full brand text plus four label-sized nav items plus the account
-   trigger still fit under ~1080px, but only once the bar's own padding and type tighten. */
-@media (max-width: 1080px) {
+/* Intermediate step: the full brand text plus the seven nav items plus the account trigger
+   still fit down to ~1280px, but only once the bar's own padding and type tighten. */
+@media (max-width: 1400px) {
     .header {
         padding: 0 20px;
         gap: 12px;
@@ -1151,6 +1151,47 @@ body {
    phone, so the brand drops to just its 言 seal (still the link home) and the nav itself
    becomes the scrolling element. .header-nav gets min-width:0 + flex:1 so it can shrink
    below its content width instead of forcing the bar — and therefore the page — wider. */
+/* Seven nav items in Mongolian stop fitting a 1280px bar. Scrolling keeps the last one
+   reachable instead of clipping it under the account trigger. It has to be a fallback, not
+   the default. The scrolling strip would clip the dropdowns with it, so they get the same
+   treatment as on phones: pinned under the bar as full-width sheets, outside the clip. */
+@media (max-width: 1280px) {
+    /* 64px = the bar's own min-height at these widths; the 860px block re-pins to 56px. */
+    .nav-dropdown {
+        position: fixed;
+        top: 64px;
+        left: 0;
+        right: 0;
+        min-width: 0;
+    }
+
+    .header-nav {
+        flex: 1 1 auto;
+        min-width: 0;
+        margin: 0;
+        /* a little breathing room so a mid-scroll clipped label doesn't butt straight up
+           against the account avatar */
+        padding-right: 6px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: thin;
+        scrollbar-color: var(--header-border) transparent;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .header-nav::-webkit-scrollbar {
+        height: 3px;
+    }
+
+    .header-nav::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .header-nav::-webkit-scrollbar-thumb {
+        background: var(--header-border);
+    }
+}
+
 @media (max-width: 860px) {
     .header {
         min-height: 56px;

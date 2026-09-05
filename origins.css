@@ -1,0 +1,618 @@
+/* Kana Origins — styles specific to origins.html.
+   "Vermilion and indigo" theme: this page's own scoped palette, entirely separate from the
+   shared style.css :root tokens (same pattern as game.css's .game-main and phonetics.css's
+   .phonetics-main). The two accents carry meaning rather than decoration — vermilion is the
+   Japanese side, the seal-red of a hanko; indigo is the Mongolian side. Wherever the page puts
+   the two writing systems next to each other, that pairing says which is which without a
+   label, so the colour is doing work no other page's accent does.
+
+   Ground is a cool paper grey rather than the warm cream a history page reaches for by
+   default, which also keeps it clear of Dokkai Reader's warm gold and the hub's wine.
+
+   Full-bleed pattern (see CLAUDE.md): the same token block sits on body:has() and on the
+   wrapper class, because body is an ancestor and cannot read a descendant's custom
+   properties. */
+body:has(.origins-main),
+.origins-main {
+    --bg-page: #eceef2;
+    --bg-surface: #fbfbfc;
+    --bg-sunk: #e3e6ec;
+    --border: #cdd2dc;
+    --border-strong: #aeb6c4;
+    --text-primary: #191c22;
+    --text-secondary: #464e5c;
+    --text-muted: #656d7d;
+    --accent: #a5391f;          /* vermilion — the Japanese side */
+    --accent-dark: #8a2f19;
+    --accent-tint: #f7e9e5;
+    --indigo: #2a4c7a;          /* indigo — the Mongolian side */
+    --indigo-tint: #e6ecf5;
+    --shadow-sm: 0 1px 2px rgba(25, 28, 34, 0.06);
+    --shadow-md: 0 1px 2px rgba(25, 28, 34, 0.06), 0 10px 26px -16px rgba(25, 28, 34, 0.32);
+    /* Same system stack game.css uses for its Japanese type -- no extra web font to load. */
+    --font-jp: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "MS Mincho", serif;
+    --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+body:has(.origins-main) {
+    background: var(--bg-page);
+}
+
+.origins-main {
+    display: block;
+    /* Clears the 64px fixed masthead, the same 89px every other page reserves. */
+    padding-top: 89px;
+    padding-bottom: 96px;
+    background: var(--bg-page);
+    color: var(--text-primary);
+}
+
+/* ---------------------------------------------------------------------------
+   Masthead of the page itself
+   --------------------------------------------------------------------------- */
+.origins-hero {
+    max-width: 760px;
+    padding: 8px 0 0;
+}
+
+.origins-eyebrow {
+    margin: 0 0 14px;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.origins-title {
+    margin: 0 0 18px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+}
+
+.origins-standfirst {
+    margin: 0;
+    font-size: 1.06rem;
+    color: var(--text-secondary);
+    max-width: 62ch;
+}
+
+.origins-standfirst em {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* ---------------------------------------------------------------------------
+   Sections
+   --------------------------------------------------------------------------- */
+.origins-section {
+    margin-top: 64px;
+}
+
+.origins-h2 {
+    margin: 0 0 8px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.55rem;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+}
+
+.origins-sub {
+    margin: 0 0 30px;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    max-width: 60ch;
+}
+
+/* ---------------------------------------------------------------------------
+   Chronology — one spine, dates hanging in the margin, titles as the control.
+   No boxes: the rule and its markers carry the sequence.
+   --------------------------------------------------------------------------- */
+.era {
+    position: relative;
+    padding-left: 146px;
+}
+
+.era::before {
+    /* the spine */
+    content: "";
+    position: absolute;
+    left: 130px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--border);
+}
+
+.era:first-of-type::before { top: 16px; }
+.era:last-of-type::before { bottom: auto; height: 22px; }
+
+.era > summary {
+    list-style: none;
+    display: block;
+    position: relative;
+    padding: 11px 0;
+    cursor: pointer;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: color 0.18s var(--ease-out);
+}
+
+.era > summary::-webkit-details-marker { display: none; }
+
+.era > summary::before {
+    /* the marker on the spine */
+    content: "";
+    position: absolute;
+    left: -20px;
+    top: 21px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--bg-page);
+    border: 1.5px solid var(--border-strong);
+    transition: background 0.22s var(--ease-out), border-color 0.22s var(--ease-out),
+        transform 0.22s var(--ease-out);
+}
+
+.era > summary::after {
+    /* the date, hanging in the left margin */
+    content: attr(data-when);
+    position: absolute;
+    left: -146px;
+    top: 13px;
+    width: 108px;
+    text-align: right;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+}
+
+.era > summary:hover { color: var(--accent); }
+.era > summary:hover::before { border-color: var(--accent); transform: scale(1.25); }
+.era > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.era[open] > summary { color: var(--accent); }
+.era[open] > summary::before {
+    background: var(--accent);
+    border-color: var(--accent);
+    transform: scale(1.15);
+}
+
+.era-when-sub {
+    display: block;
+    margin-top: 2px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+/* The open/close animation. A <details> element cannot transition its own height, so the body
+   is wrapped in a grid whose single row goes 0fr -> 1fr; that interpolates cleanly and needs
+   no measured pixel height. origins.js holds the element open for the duration of the closing
+   pass so the collapse is visible rather than instant. */
+.era-reveal {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.38s var(--ease-out), opacity 0.28s var(--ease-out);
+    opacity: 0;
+}
+
+.era.is-open .era-reveal {
+    grid-template-rows: 1fr;
+    opacity: 1;
+}
+
+.era-reveal > div { overflow: hidden; }
+
+.era-body {
+    padding: 2px 0 30px;
+}
+
+.era-body p {
+    margin: 0;
+    max-width: 64ch;
+    color: var(--text-secondary);
+    font-size: 0.96rem;
+}
+
+.era-body p + p { margin-top: 11px; }
+
+.era-pull {
+    display: block;
+    margin-top: 14px;
+    padding: 11px 15px;
+    max-width: 62ch;
+    background: var(--accent-tint);
+    border-left: 2px solid var(--accent);
+    font-size: 0.93rem;
+    color: var(--text-primary);
+}
+
+.era-figure {
+    margin: 20px 0 0;
+    max-width: 620px;
+}
+
+.era-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 460px;
+    object-fit: cover;
+    border: 1px solid var(--border);
+    background: var(--bg-sunk);
+}
+
+.era-figure figcaption {
+    margin-top: 8px;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+
+.era-figure figcaption em { font-style: normal; opacity: 0.85; }
+
+/* Redrawn kaeriten diagram. The characters sit in the order they are written; the numbers are
+   the order they are read. The gap between those two is the whole point of that era, and a
+   drawing states it more clearly than the scan did — the source is a tall vertical strip with
+   an alpha channel, which does not survive being fitted to a text column. */
+.kaeriten-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 18px 16px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+}
+
+.kaeriten-col {
+    flex: 1 1 auto;
+    min-width: 52px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.kaeriten-char {
+    font-family: var(--font-jp);
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--text-primary);
+}
+
+.kaeriten-num {
+    width: 100%;
+    padding-top: 5px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+}
+
+.era-figure figcaption strong {
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ---------------------------------------------------------------------------
+   Kana grid
+   --------------------------------------------------------------------------- */
+.kana-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    align-items: center;
+    margin-bottom: 16px;
+    font-size: 0.86rem;
+    color: var(--text-muted);
+}
+
+.kana-legend b { font-family: var(--font-jp); }
+.kana-legend .lg-h { color: var(--accent); }
+.kana-legend .lg-k { color: var(--text-muted); }
+.kana-legend .lg-m { color: var(--indigo); font-family: var(--font-body); }
+
+.kana-grid {
+    display: grid;
+    grid-template-columns: 46px repeat(5, 1fr);
+    gap: 6px;
+    align-items: start;
+}
+
+.kana-colhead,
+.kana-rowhead {
+    padding: 4px 0;
+    text-align: center;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.kana-rowhead {
+    align-self: center;
+    font-family: var(--font-jp);
+    font-size: 0.95rem;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--text-secondary);
+}
+
+.kana-tile {
+    width: 100%;
+    padding: 9px 4px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    font: inherit;
+    color: inherit;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.16s var(--ease-out), background 0.16s var(--ease-out),
+        transform 0.16s var(--ease-out);
+}
+
+.kana-tile:hover {
+    border-color: var(--accent);
+    background: var(--accent-tint);
+    transform: translateY(-1px);
+}
+
+.kana-tile:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.kana-pair {
+    font-family: var(--font-jp);
+    font-size: 1.24rem;
+    line-height: 1.15;
+    color: var(--accent);
+}
+
+.kana-pair i { font-style: normal; color: var(--text-muted); }
+
+.kana-mn {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--indigo);
+}
+
+/* Same 0fr -> 1fr technique as the chronology, so the tile grows into its detail rather than
+   snapping. */
+.kana-detail {
+    display: grid;
+    grid-template-rows: 0fr;
+    width: 100%;
+    opacity: 0;
+    transition: grid-template-rows 0.3s var(--ease-out), opacity 0.24s var(--ease-out);
+}
+
+.kana-tile[aria-expanded="true"] .kana-detail {
+    grid-template-rows: 1fr;
+    opacity: 1;
+}
+
+.kana-detail > span { overflow: hidden; }
+
+.kana-tile[aria-expanded="true"] {
+    border-color: var(--accent);
+    background: var(--accent-tint);
+}
+
+.kana-detail-inner {
+    display: block;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--border-strong);
+}
+
+.kana-romaji {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--text-primary);
+}
+
+.kana-from {
+    display: block;
+    font-size: 0.68rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+.kana-from b {
+    font-family: var(--font-jp);
+    font-size: 1.02rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.kana-tile.is-blank {
+    background: var(--bg-sunk);
+    border-style: dashed;
+    cursor: default;
+}
+
+.kana-tile.is-blank:hover {
+    border-color: var(--border);
+    background: var(--bg-sunk);
+    transform: none;
+}
+
+/* ---------------------------------------------------------------------------
+   Sound notes, causal chain, closing links
+   --------------------------------------------------------------------------- */
+.sound-notes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(252px, 1fr));
+    gap: 1px;
+    margin-top: 26px;
+    background: var(--border);
+    border: 1px solid var(--border);
+}
+
+.sound-note {
+    background: var(--bg-surface);
+    padding: 15px 17px;
+}
+
+.sound-note h3 {
+    display: flex;
+    align-items: baseline;
+    gap: 9px;
+    margin: 0 0 5px;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.sound-note .sn-k { font-family: var(--font-jp); font-size: 1.2rem; color: var(--accent); }
+.sound-note .sn-m { color: var(--indigo); }
+.sound-note p { margin: 0; font-size: 0.88rem; color: var(--text-secondary); }
+.sound-note.is-easy { border-top: 2px solid var(--indigo); }
+.sound-note.is-watch { border-top: 2px solid var(--accent); }
+
+.why-chain {
+    display: grid;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+}
+
+.why-link {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 18px;
+    align-items: start;
+    padding: 17px 20px;
+    background: var(--bg-surface);
+}
+
+.why-num {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.12rem;
+    line-height: 1.45;
+    color: var(--accent);
+}
+
+.why-link h3 { margin: 0 0 4px; font-size: 1rem; font-weight: 600; }
+.why-link p { margin: 0; font-size: 0.93rem; color: var(--text-secondary); max-width: 60ch; }
+
+.why-verdict {
+    margin-top: 22px;
+    padding: 19px 22px;
+    background: var(--accent-tint);
+    border-left: 3px solid var(--accent);
+}
+
+.why-verdict p { margin: 0; max-width: 66ch; }
+
+.next-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin-top: 4px;
+}
+
+.next-card {
+    display: block;
+    padding: 18px 20px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.18s var(--ease-out), transform 0.18s var(--ease-out),
+        box-shadow 0.18s var(--ease-out);
+}
+
+.next-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.next-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.next-card .nc-seal {
+    display: inline-block;
+    margin-bottom: 9px;
+    padding: 3px 9px;
+    font-family: var(--font-jp);
+    font-size: 1rem;
+    color: var(--accent);
+    background: var(--accent-tint);
+}
+
+.next-card h3 { margin: 0 0 5px; font-size: 1.02rem; font-weight: 600; }
+.next-card p { margin: 0; font-size: 0.89rem; color: var(--text-secondary); }
+
+/* ---------------------------------------------------------------------------
+   Entrance: sections rise on load, staggered. Deliberately from a *visible* resting
+   state on the first paint of anything above the fold, so nothing is ever stuck
+   invisible if the animation never runs.
+   --------------------------------------------------------------------------- */
+@keyframes originsRise {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: none; }
+}
+
+.origins-hero,
+.origins-section {
+    animation: originsRise 0.5s var(--ease-out) both;
+}
+
+.origins-section:nth-of-type(1) { animation-delay: 0.06s; }
+.origins-section:nth-of-type(2) { animation-delay: 0.12s; }
+.origins-section:nth-of-type(3) { animation-delay: 0.18s; }
+.origins-section:nth-of-type(4) { animation-delay: 0.24s; }
+
+@media (max-width: 700px) {
+    .era { padding-left: 22px; }
+    .era::before { left: 6px; }
+    .era > summary::before { left: -20px; }
+    .era > summary::after {
+        position: static;
+        display: block;
+        width: auto;
+        text-align: left;
+        margin-bottom: 2px;
+    }
+}
+
+@media (max-width: 620px) {
+    .kana-grid { grid-template-columns: 34px repeat(5, 1fr); gap: 4px; }
+    .kana-pair { font-size: 1.05rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .origins-hero,
+    .origins-section { animation: none; }
+    .era-reveal,
+    .kana-detail,
+    .kana-tile,
+    .next-card,
+    .era > summary,
+    .era > summary::before { transition: none; }
+}

@@ -31,6 +31,7 @@ window.I18N_STRINGS = {
     'nav.writingCreativity': { en: 'Writing & Creativity', mn: 'Бичвэр ба бүтээлч байдал' },
     'nav.resume': { en: 'Resume', mn: 'Намтар' },
     'nav.getInTouch': { en: 'Get In Touch', mn: 'Холбоо барих' },
+    'nav.kanaOrigins': { en: 'Kana Origins', mn: 'Канагийн үүсэл' },
     'nav.wordGame': { en: 'Word Game', mn: 'Үг холбох тоглоом' },
     'nav.allLevels': { en: 'All Levels', mn: 'Бүх шат' },
     'nav.n5Beginner': { en: 'N5 · Beginner', mn: 'N5 · Анхан шат' },

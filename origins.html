@@ -1,34 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-default-lang="mn">
 
 <head>
     <meta charset="UTF-8">
-    <title>Terms of Service - Khan Japanese</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Terms of Service for this personal portfolio and its Japanese-learning tools.">
-    <link rel="canonical" href="https://khan-japanese.org/terms.html">
+    <title>Kana Origins - Khan Japanese</title>
+    <meta name="description" content="Where hiragana, katakana and kanji came from, every kana with its Mongolian reading and origin character, and why Japanese writes loanwords in katakana.">
+    <link rel="canonical" href="https://khan-japanese.org/origins.html">
+    <meta name="theme-color" content="#4a2c3a">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Khan Japanese">
-    <meta property="og:title" content="Terms of Service - Khan Japanese">
-    <meta property="og:description" content="Terms of Service for this personal portfolio and its Japanese-learning tools.">
-    <meta property="og:url" content="https://khan-japanese.org/terms.html">
-    <meta property="og:image" content="https://khan-japanese.org/images/about/hero.jpg">
+    <meta property="og:title" content="Kana Origins - Khan Japanese">
+    <meta property="og:description" content="Where hiragana, katakana and kanji came from, every kana with its Mongolian reading and origin character, and why Japanese writes loanwords in katakana.">
+    <meta property="og:url" content="https://khan-japanese.org/origins.html">
+    <meta property="og:image" content="https://khan-japanese.org/images/origins/hiragana.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Terms of Service - Khan Japanese">
-    <meta name="twitter:description" content="Terms of Service for this personal portfolio and its Japanese-learning tools.">
-    <meta name="twitter:image" content="https://khan-japanese.org/images/about/hero.jpg">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta name="twitter:title" content="Kana Origins - Khan Japanese">
+    <meta name="twitter:description" content="Where the three Japanese scripts came from, and every kana in Mongolian.">
+    <meta name="twitter:image" content="https://khan-japanese.org/images/origins/hiragana.jpg">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#4a2c3a">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="legal.css">
+    <link rel="stylesheet" href="origins.css">
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700;900&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <!-- Animated Background -->
     <div class="background-animation">
         <div class="floating-shape shape-1"></div>
         <div class="floating-shape shape-2"></div>
@@ -50,7 +47,7 @@
 
                 <nav class="header-nav" aria-label="Main">
                     <div class="nav-item">
-                        <a href="origins.html" class="nav-trigger" data-i18n="nav.kanaOrigins">Kana Origins</a>
+                        <a href="origins.html" class="nav-trigger nav-current" data-i18n="nav.kanaOrigins">Kana Origins</a>
                     </div>
                     <div class="nav-item">
                         <a href="game.html" class="nav-trigger"><span data-i18n="nav.wordGame">Word Game</span><span class="nav-caret" aria-hidden="true">&#9662;</span></a>
@@ -117,6 +114,7 @@
             </header>
         </div>
 
+        <!-- Auth Modal -->
         <div id="auth-modal" class="modal-overlay hidden">
             <div class="modal-card">
                 <button id="auth-modal-close" class="modal-close" type="button" aria-label="Close">&times;</button>
@@ -176,60 +174,69 @@
             </div>
         </div>
 
-        <main class="legal-main">
-            <h1 class="legal-title" data-i18n="terms.title">Terms of Service</h1>
-            <p class="legal-updated" data-i18n="terms.lastUpdated">Last updated: July 31, 2026</p>
+        <main class="origins-main">
 
-            <section class="legal-section">
-                <h2 data-i18n="terms.whatThisIs.h">What this is</h2>
-                <p data-i18n="terms.whatThisIs.p">This site is a personal portfolio and a set of free, educational Japanese-learning tools (a vocabulary matching game and a read-aloud practice tool, among others), built and maintained by one individual as a personal project. It isn't a company, and using it doesn't create any commercial relationship between us.</p>
+            <header class="origins-hero">
+                <p class="origins-eyebrow" data-i18n="origins.eyebrow">Start here &middot; for absolute beginners</p>
+                <h1 class="origins-title" data-i18n="origins.title">Where kana came from</h1>
+                <p class="origins-standfirst" data-i18n-html="origins.standfirst">Japanese uses three scripts at once, and every beginner is told to just accept that. You don't have to. Each one arrived for a reason, at a datable moment, and once you know the reasons the rules stop needing to be memorised &mdash; <em>including why English words are written in katakana</em>.</p>
+            </header>
+
+            <section class="origins-section">
+                <h2 class="origins-h2" data-i18n="origins.chronology.h">1 &middot; The chronology</h2>
+                <p class="origins-sub" data-i18n="origins.chronology.sub">Nine moments, each adding exactly one piece of the modern writing system. Click a title to open it.</p>
+                <div id="origins-eras"></div>
             </section>
 
-            <section class="legal-section">
-                <h2 data-i18n="terms.accounts.h">Accounts</h2>
-                <p data-i18n="terms.accounts.p">You need an account only to save progress, bookmark projects, or send a message. You must be at least 13 years old to create one. You're responsible for keeping your password secure and for anything done through your account. Give an email you actually control, since it's how you'd recover access.</p>
+            <section class="origins-section">
+                <h2 class="origins-h2" data-i18n="origins.kana.h">2 &middot; Every kana, in Mongolian</h2>
+                <p class="origins-sub" data-i18n="origins.kana.sub">Tap any tile to see its romaji and the character it was cut down from. Hiragana and katakana share a sound, so they share a tile &mdash; but they were carved out of different kanji, which is why they look nothing alike.</p>
+                <p class="kana-legend">
+                    <span><b class="lg-h">&#12354;</b> <span data-i18n="origins.legend.hiragana">hiragana</span></span>
+                    <span><b class="lg-k">&#12450;</b> <span data-i18n="origins.legend.katakana">katakana</span></span>
+                    <span><b class="lg-m">&#1072;</b> <span data-i18n="origins.legend.mongolian">Mongolian</span></span>
+                </p>
+                <div class="kana-grid" id="kana-grid"></div>
+
+                <h2 class="origins-h2" style="margin-top:52px" data-i18n="origins.notes.h">The eight that need a note</h2>
+                <p class="origins-sub" data-i18n="origins.notes.sub">Most of the table is a clean swap. These are where the Mongolian letter is close but not exact &mdash; and three are places you have an advantage over English speakers.</p>
+                <div class="sound-notes" id="sound-notes"></div>
             </section>
 
-            <section class="legal-section">
-                <h2 data-i18n="terms.acceptableUse.h">Acceptable use</h2>
-                <p data-i18n="terms.acceptableUse.p">Don't send anything illegal, abusive, or harassing in messages; don't try to disrupt, scrape abusively, or gain unauthorized access to the site or its backend. I can remove content or suspend an account that violates this.</p>
+            <section class="origins-section">
+                <h2 class="origins-h2" data-i18n="origins.why.h">3 &middot; So why are English words in katakana?</h2>
+                <p class="origins-sub" data-i18n="origins.why.sub">The usual answer is "that's the rule". The real answer is four steps, and once you've seen them the rule is obvious.</p>
+                <div class="why-chain" id="why-chain"></div>
+                <div class="why-verdict">
+                    <p data-i18n-html="origins.why.verdict"><strong>So katakana doesn't mean "English".</strong> It means "this word is set apart" &mdash; which is also why it takes animal and plant names in biology, onomatopoeia like &#12489;&#12461;&#12489;&#12461;, company names, and emphasis, the way italics work in Mongolian or English. Foreign words are the biggest group in that category, not the definition of it.</p>
+                </div>
             </section>
 
-            <section class="legal-section">
-                <h2 data-i18n="terms.contentYouPost.h">Content you post</h2>
-                <p data-i18n="terms.contentYouPost.p">You keep ownership of the messages you send me. They are private — nothing you submit is published on the site. Don't send anything you don't have the right to share.</p>
+            <section class="origins-section">
+                <h2 class="origins-h2" data-i18n="origins.next.h">Where to go next</h2>
+                <p class="origins-sub" data-i18n="origins.next.sub">You now know what the three scripts are for. These are the tools that build on it.</p>
+                <div class="next-steps">
+                    <a class="next-card" href="game.html">
+                        <span class="nc-seal" aria-hidden="true">&#36938;</span>
+                        <h3 data-i18n="nav.wordGame">Word Match</h3>
+                        <p data-i18n="origins.next.game">Connect Japanese words to their Mongolian meanings. Start at N5.</p>
+                    </a>
+                    <a class="next-card" href="phonetics.html">
+                        <span class="nc-seal" aria-hidden="true">&#38899;</span>
+                        <h3 data-i18n="nav.phoneticsFamily">Phonetics Family</h3>
+                        <p data-i18n="origins.next.phonetics">Kanji that share a component usually share a reading. Learn them in groups.</p>
+                    </a>
+                    <a class="next-card" href="reading.html">
+                        <span class="nc-seal" aria-hidden="true">&#35712;</span>
+                        <h3 data-i18n="nav.dokkaiReader">Dokkai Reader</h3>
+                        <p data-i18n="origins.next.reading">Read passages aloud and watch the highlight follow your voice.</p>
+                    </a>
+                </div>
             </section>
 
-            <section class="legal-section">
-                <h2 data-i18n="terms.studyAccuracy.h">Study content accuracy</h2>
-                <p data-i18n-html="terms.studyAccuracy.p">The Japanese vocabulary, reading passages, and level classifications (N5–N1, etc.) in the learning tools are compiled from community and open-data sources for educational practice — they are <strong>not</strong> official JLPT materials, and I don't guarantee they're error-free or exam-accurate. Don't rely on them as your only source if you're preparing for an actual exam.</p>
-            </section>
-
-            <section class="legal-section">
-                <h2 data-i18n="terms.noWarranty.h">No warranty</h2>
-                <p data-i18n="terms.noWarranty.p">This is a personal project provided "as is," with no guarantee of uptime, availability, or that it's free of bugs. Features may change or be removed as it's developed further.</p>
-            </section>
-
-            <section class="legal-section">
-                <h2 data-i18n="terms.limitationLiability.h">Limitation of liability</h2>
-                <p data-i18n="terms.limitationLiability.p">To the extent the law allows, I'm not liable for any damages or losses arising from your use of this site. Use it at your own discretion.</p>
-            </section>
-
-            <section class="legal-section">
-                <h2 data-i18n="terms.termination.h">Termination</h2>
-                <p data-i18n="terms.termination.p">You can delete your own account at any time. I can remove or suspend an account that violates these terms.</p>
-            </section>
-
-            <section class="legal-section">
-                <h2 data-i18n="terms.changes.h">Changes to these terms</h2>
-                <p data-i18n="terms.changes.p">If these terms change, I'll update the date at the top of this page. Continuing to use the site after a change means you accept the update.</p>
-            </section>
-
-            <section class="legal-section">
-                <h2 data-i18n="privacy.contact.h">Contact</h2>
-                <p data-i18n-html="terms.contact.p">Questions about these terms: <a href="mailto:ganzorig2003@gmail.com">ganzorig2003@gmail.com</a></p>
-            </section>
         </main>
+
+        </div>
     </div>
 
     <footer class="site-footer">
@@ -276,11 +283,12 @@
     </footer>
 
     <script src="i18n-strings-shared.js"></script>
-    <script src="terms-i18n-strings.js"></script>
+    <script src="origins-i18n-strings.js"></script>
     <script src="i18n.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <script src="supabase-config.js"></script>
     <script src="auth-shared.js"></script>
+    <script src="origins.js"></script>
     <script src="pwa-register.js"></script>
 </body>
 

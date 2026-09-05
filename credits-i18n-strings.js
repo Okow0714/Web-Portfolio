@@ -17,6 +17,12 @@ Object.assign(window.I18N_STRINGS, {
     'credits.tatoebaMeta': { en: 'example sentences', mn: 'жишээ өгүүлбэрүүд' },
     'credits.kanjiFreqMeta': { en: 'usage ranking', mn: 'хэрэглээний зэрэглэл' },
 
+    'credits.origins.h': { en: 'Kana Origins — historical photography', mn: 'Канагийн үүсэл — түүхэн гэрэл зураг' },
+    'credits.origins.note': {
+        en: 'All sourced from Wikimedia Commons, resized and re-compressed for use here; no other changes made. The read-order diagram in the same section is drawn in HTML rather than reproduced from any source.',
+        mn: 'Бүгд Wikimedia Commons-оос авсан бөгөөд энд ашиглахын тулд хэмжээг нь өөрчилж, дахин шахсан; өөр ямар ч өөрчлөлт хийгээгүй. Мөн хэсэгт байгаа уншлагын дарааллын зургийг эх сурвалжаас хуулаагүй, HTML-ээр зурсан болно.'
+    },
+
     'credits.wgPhotos.h': { en: 'Word Game — background photography', mn: 'Үг холбох тоглоом — дэвсгэр гэрэл зураг' },
     'credits.wgPhotos.note': {
         en: 'All sourced from Wikimedia Commons, resized and re-compressed for use here; no other changes made. Each level uses one of the ten photos above, cycling every 10 levels, shown faded behind the board.',
