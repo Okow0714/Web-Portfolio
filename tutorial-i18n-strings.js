@@ -41,17 +41,33 @@ Object.assign(window.I18N_STRINGS, {
         en: 'Music and sound effects. They start on — tap here to mute.',
         mn: 'Хөгжим, дуу чимээ. Асаалттай эхэлдэг — дуугүй болгохыг хүсвэл эндээс дарна уу.'
     },
-    'tour.game.timer': {
-        en: 'Your clock. It starts at four minutes and every pair you match puts twenty seconds back on it.',
-        mn: 'Таны цаг. Дөрвөн минутаас эхлэх бөгөөд хос таарах бүрд 20 секунд нэмэгдэнэ.'
+    'tour.game.board': {
+        en: 'Tap a Japanese tile, then the tile that means the same. Ten pairs sit on the board at a time; clear them and the next batch is dealt, twenty pairs to a level.',
+        mn: 'Япон үгтэй нүдийг дараад, дараа нь утга нь ижил нүдийг дарна. Самбар дээр нэг дор арван хос байх ба тэдгээрийг арилгамагц дараагийн багц гарч ирнэ. Нэг шатад нийт хорин хос.'
     },
-    'tour.game.pairs': {
-        en: 'Pairs left, and mistakes made. Two mistakes bring an already-cleared pair back onto the board, so it is worth slowing down.',
-        mn: 'Үлдсэн хос, хийсэн алдааны тоо. Хоёр алдаа гаргавал арилсан хос самбар дээр эргэж ирнэ, тиймээс яарах хэрэггүй.'
+    'tour.game.timer': {
+        en: 'Your clock. It starts at four minutes, and every pair you clear puts twenty seconds back on it.',
+        mn: 'Таны цаг. Дөрвөн минутаас эхлэх бөгөөд хос арилгах бүрд 20 секунд нэмэгдэнэ.'
+    },
+    'tour.game.stats': {
+        en: 'The row the clock sits in carries the rest: pairs cleared out of twenty, moves taken, your score, and the streak bar. Two wrong guesses in a row bring a cleared pair back onto the board.',
+        mn: 'Цагны хажууд бусад үзүүлэлт байна: хориос хэдэн хос арилсан, хэдэн удаа дарсан, оноо, мөн дараалсан амжилтын шугам. Дараалан хоёр удаа буруу дарвал арилсан хос самбар дээр эргэж ирнэ.'
     },
     'tour.game.powerup': {
-        en: 'Four correct pairs in a row bank a powerup here — spend it on a free clear, or swap in new words.',
-        mn: 'Дараалан дөрвөн хос зөв холбовол энд бонус хуримтлагдана — нэг хосыг үнэгүй арилгах, эсвэл шинэ үгээр солиход зарцуулж болно.'
+        en: 'Every four correct pairs in a row banks a powerup here. One takes a pair off the board for free; the other trades three pairs for new words.',
+        mn: 'Дараалан дөрвөн хос зөв холбох бүрд энд бонус хуримтлагдана. Нэг нь хосыг үнэгүй арилгаж, нөгөө нь гурван хосыг шинэ үгээр солино.'
+    },
+    'tour.game.shuffle': {
+        en: 'Rearranges the tiles you have left. Nothing else changes — no time cost, no penalty.',
+        mn: 'Үлдсэн нүднүүдийн байрлалыг холино. Өөр юу ч өөрчлөгдөхгүй — цаг ч алдахгүй, торгууль ч байхгүй.'
+    },
+    'tour.game.families': {
+        en: 'Kanji that share a phonetic component chain together — connect two or more and they all clear at once. The families you find collect here.',
+        mn: 'Ижил дуудлагын язгуур бүхий ханзууд хооронд нь холбогдоно — хоёр буюу түүнээс дээшийг холбовол бүгд нэг дор арилна. Олсон бүлгүүд чинь энд хуримтлагдана.'
+    },
+    'tour.game.example': {
+        en: 'The pair you matched last, with an example sentence wherever the data has one.',
+        mn: 'Хамгийн сүүлд холбосон хос. Өгөгдөлд байгаа тохиолдолд жишээ өгүүлбэр нь ч бас энд гарна.'
     },
 
     // --- Dokkai Reader --------------------------------------------------------
@@ -119,13 +135,25 @@ Object.assign(window.I18N_STRINGS, {
         en: 'Pick the tile that takes its place without changing what the sentence means. Only one does.',
         mn: 'Өгүүлбэрийн утгыг өөрчлөхгүйгээр орлож чадах хавтанг сонгоно уу. Ганцхан нь тохирно.'
     },
+    'tour.grammar.dots': {
+        en: 'Ten sentences to a level. These dots are how far through them you are.',
+        mn: 'Нэг шатад арван өгүүлбэр байна. Эдгээр цэг нь хэдэн дэх өгүүлбэр дээрээ явааг чинь харуулна.'
+    },
     'tour.grammar.cleared': {
         en: 'Sentences you have finished collect here with their translation, so the level doubles as a list to read back.',
         mn: 'Дуусгасан өгүүлбэрүүд орчуулгынхаа хамт энд хуримтлагдах тул шат нь дараа нь эргэж уншиж болох жагсаалт болно.'
     },
     'tour.grammar.timer': {
-        en: 'Time is short on purpose, but every correct answer adds to it.',
-        mn: 'Цаг зориуд багатай, гэхдээ зөв хариулах бүрд нэмэгдэнэ.'
+        en: 'Three minutes on the clock. Each sentence you solve adds thirty seconds, and a wrong tile costs you ten.',
+        mn: 'Цаг гурван минутаас эхэлнэ. Өгүүлбэр бүрийг зөв бөглөх бүрд 30 секунд нэмэгдэж, буруу хавтан дарвал 10 секунд хасагдана.'
+    },
+    'tour.grammar.stats': {
+        en: 'Beside the clock: how many of the ten you have solved, and how many wrong tiles you have tapped.',
+        mn: 'Цагны хажууд: арваас хэдийг нь зөв бөглөснөө, мөн хэдэн удаа буруу хавтан дарснаа харна.'
+    },
+    'tour.grammar.sound': {
+        en: 'Music and sound effects for the level. They start on.',
+        mn: 'Тухайн шатны хөгжим, дуу чимээ. Асаалттай эхэлдэг.'
     },
 
     // --- Dictionary -----------------------------------------------------------

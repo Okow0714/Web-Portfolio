@@ -32,9 +32,15 @@
                 { sel: '#sound-toggle', k: 'tour.game.sound' },
             ] },
             { id: 'board', when: '#board-section', steps: [
+                { sel: '#tile-grid', k: 'tour.game.board' },
                 { sel: '#board-timer', k: 'tour.game.timer' },
-                { sel: '#board-pairs', k: 'tour.game.pairs' },
+                { sel: '.board-stats', k: 'tour.game.stats' },
                 { sel: '#powerup-controls', k: 'tour.game.powerup' },
+                { sel: '#board-shuffle-btn', k: 'tour.game.shuffle' },
+                // The two side panels are .panel-wide-only, so these two steps drop
+                // themselves on a narrow screen the same way any missing target does.
+                { sel: '#panel-families', k: 'tour.game.families' },
+                { sel: '#example-panel', k: 'tour.game.example' },
             ] },
         ],
         'reading.html': [
@@ -66,10 +72,13 @@
                 { sel: '#gc-level-grid', k: 'tour.grammar.levels' },
             ] },
             { id: 'match', when: '#gc-match-section', steps: [
+                { sel: '#gc-progress-dots', k: 'tour.grammar.dots' },
                 { sel: '#gc-sentence-jp', k: 'tour.grammar.sentence' },
                 { sel: '#gc-tile-bank', k: 'tour.grammar.tiles' },
-                { sel: '#gc-cleared-list', k: 'tour.grammar.cleared' },
                 { sel: '#gc-timer', k: 'tour.grammar.timer' },
+                { sel: '.gc-topbar-stats', k: 'tour.grammar.stats' },
+                { sel: '#gc-cleared-list', k: 'tour.grammar.cleared' },
+                { sel: '#gc-board-sound-toggle', k: 'tour.grammar.sound' },
             ] },
         ],
         'dictionary.html': [
@@ -390,11 +399,15 @@
         const pad = 6;
         const lit = Math.max(raw.top - pad, topGuard());
         const litEnd = Math.min(raw.bottom + pad, window.innerHeight - 12);
-        const r = { top: lit, left: raw.left, width: raw.width,
+        // Clamp sideways as well as vertically: a panel that runs the full width of a phone
+        // is wider than the viewport once padded, and the ring then hangs off both edges.
+        const litL = Math.max(raw.left - pad, 2);
+        const litR = Math.min(raw.right + pad, window.innerWidth - 2);
+        const r = { top: lit, left: litL, width: Math.max(litR - litL, 24),
                     height: Math.max(litEnd - lit, 24), bottom: Math.max(litEnd, lit + 24) };
         ring.style.top = r.top + 'px';
-        ring.style.left = (r.left - pad) + 'px';
-        ring.style.width = (r.width + pad * 2) + 'px';
+        ring.style.left = r.left + 'px';
+        ring.style.width = r.width + 'px';
         ring.style.height = r.height + 'px';
 
         // Prefer under the target; flip above when that would run off the bottom, and clamp
