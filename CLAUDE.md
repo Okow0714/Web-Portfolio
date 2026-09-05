@@ -42,9 +42,14 @@ pages that carry them (every page above except `about.html`, which has no shared
 at all, and `reset-password.html`); `credits.html` itself carries the masthead+footer too.
 
 **Page-scoped theme files** (`hub.css`, `phonetics.css`, `reading.css`, `grammar.css`,
-`dictionary.css`, `dashboard.css`, `game.css`, `about.css`): each defines its own token block
-(same variable *names* as `style.css`'s `:root` — `--bg-page`, `--accent`, etc. — different
-values) on that page's own wrapper class (see the Pages table). CSS custom-property inheritance
+`dictionary.css`, `dashboard.css`, `game.css`, `about.css`, `origins.css`): each defines its own
+token block on that page's own wrapper class (see the Pages table). **They do not agree on token
+names** — `phonetics.css`, `reading.css` and `origins.css` reuse `style.css`'s names
+(`--bg-page`, `--bg-surface`, `--accent`…), but `game.css` calls its surface `--panel` and its
+accent `--gold`, `grammar.css` uses `--card`/`--shu-light`, `dictionary.css` `--card`/
+`--terracotta`, `dashboard.css` `--surface`/`--accent`. Anything that has to theme itself against
+an arbitrary page therefore needs an explicit per-page map, not a copy of the shared names —
+see `tutorial.js`'s `THEME_MAP`, which exists for exactly this reason. CSS custom-property inheritance
 means every `var(--x)` in that file picks up the page-local value automatically. `about.css` is
 the one exception — it doesn't load `style.css` at all, so its tokens live on a real `:root`
 instead of being scoped to its wrapper class. Current palette: hub deep wine/gold (dark),
@@ -79,6 +84,21 @@ shared across the account panel and every modal; the panel's copy is pinned to m
 `.site-header-wrap .account-menu-panel .auth-btn` (see `style.css`), the modals keep the page
 accent. `about.html` mirrors this same ID contract (it shares `auth-shared.js`) but with its own
 compact `.about-account*` markup/CSS sized for its sidebar rail rather than a full drawer.
+
+**Page tours** (`tutorial.js` + `tutorial.css` + `tutorial-i18n-strings.js`, on the five tools
+and `dashboard.html`): first-visit coach marks that spotlight a page's real controls one at a
+time. A tour is a list of *scenes*; a scene runs the first time its `when` element is visible, so
+a page can teach its level grid on arrival and its board later, when a board exists.
+`localStorage` remembers each scene (`khanjp-tour-<page>-<scene>`), and the shared notation key
+(furigana, the Cyrillic readings, JLPT badges) is shown once for the whole site
+(`khanjp-tour-key`). **Every selector in `TOURS` is a real element on that page and nothing
+checks them but the tour itself** — a step whose element is missing is silently dropped, so
+renaming an id in a tool quietly removes a step rather than breaking anything visibly; the
+scratchpad's `verify-tour.js` walks all six and reports the step count. The overlay is appended
+to `<body>`, never inside the page, to stay clear of `.container`'s stacking context. The tour
+never starts on top of an open `.modal-overlay`. Adding a tool means adding its scenes here.
+Related: `phonetics.html` used to auto-open its "what's a phonetic component?" modal on *every*
+load; that is gone — the tour points at the button instead.
 
 **Large data files — never `Read` whole**: `phonetics-data.js` (~2.8MB), `game-words.js`
 (~1.4MB), `mnjp-data.js` (~1.4MB, `MNJP_ENTRIES` — dictionary.html's primary tab, 3,427 words
