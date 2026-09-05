@@ -61,7 +61,7 @@ Object.assign(window.I18N_STRINGS, {
     'hub.dictionary.name': { en: 'Mongol-Japan Dictionary', mn: 'Монгол-Япон толь бичиг' },
     'hub.dictionary.desc': {
         en: "Look up a word in Mongolian or Japanese and see its counterpart, drawn from four merged sources — Word Match's translated vocabulary, a human-reviewed bridge dictionary, a core N5 list, and the Kango ⇄ Wago pairs. A second tab holds the original Kango ⇄ Wago dictionary — the formal Sino-Japanese (kango, 漢語) and native-Japanese (wago, 和語) form of whatever kanji you search, plus the respectful (尊敬語) and humble (謙譲語) verb forms used in sentences.",
-        mn: 'Монгол эсвэл япон үг хайхад нөгөө талын хос үг нь гарч ирнэ. Дөрвөн эх сурвалжийг нэгтгэсэн: Үг холбох тоглоомын үгсийн сан, гараар хянасан гүүр толь, N5-ын үндсэн үгс, Канго ⇄ Ваго хосууд. Хоёр дахь таб нь Канго ⇄ Ваго толь бичгийг агуулна — таны хайсан ханзны хүндэтгэлийн буюу канго (漢語), уламжлалт буюу ваго (和語) хэлбэр, мөн өгүүлбэрт хэрэглэгдэх хүндэтгэлийн (尊敬語) болон даруу (謙譲語) үйл үгийн хэлбэрүүд.'
+        mn: 'Монгол эсвэл япон үг хайхад нөгөө талын хос үг нь гарч ирнэ. Дөрвөн эх сурвалжийг нэгтгэсэн: Үг холбох тоглоомын үгсийн сан, гараар хянасан гүүр толь, N5-ын үндсэн үгс, Канго ⇄ Ваго хосууд. Хоёр дахь таб нь Канго ⇄ Ваго толь бичгийг агуулна — таны хайсан ханзны хятад гаралтай, албан ёсны канго (漢語) хэлбэр, уугуул япон ваго (和語) хэлбэр, мөн өгүүлбэрт хэрэглэгдэх хүндэтгэлийн (尊敬語) болон даруу (謙譲語) үйл үгийн хэлбэрүүд.'
     },
     'hub.dictionary.stat': { en: '3,427 WORDS', mn: '3,427 ҮГ' },
     'hub.dictionary.cta': { en: 'Search →', mn: 'Хайх →' },

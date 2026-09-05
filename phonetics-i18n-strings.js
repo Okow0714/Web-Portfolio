@@ -4,7 +4,7 @@ Object.assign(window.I18N_STRINGS, {
     'phonetics.titleMain': { en: 'Phonetics Family', mn: 'Дуудлагын бүлэг' },
     'phonetics.subtitle': {
         en: "Kanji that share a phonetic component often share an on'yomi reading too — learn one, and you get a running start on the rest of its family. Pick a JLPT level to see its phonetic families, ranked by how often their most common member actually shows up in real Japanese text.",
-        mn: 'Ижил дуудлагын язгууртай ханзууд ихэвчлэн онёми дуудлага нь ч ижил байдаг — нэгийг нь сурвал бусад нь амар болно. JLPT түвшингээ сонгоод тэр түвшний дуудлагын бүлгүүдийг үзээрэй. Бүлгүүд нь хамгийн түгээмэл гишүүн нь япон бичвэрт хэр их тааралддагаар эрэмбэлэгдсэн байгаа.'
+        mn: 'Ижил дуудлагын язгууртай ханзууд ихэвчлэн онёми дуудлага нь ч ижил байдаг — нэгийг нь сурвал бусад нь амар болно. JLPT түвшингээ сонгоод тэр түвшний дуудлагын бүлгүүдийг үзээрэй. Бүлгүүдийг хамгийн түгээмэл гишүүн нь япон бичвэрт хэр олон тааралддагаар эрэмбэлсэн.'
     },
     'phonetics.whatIsPhoneticComponent': { en: "What's a phonetic component?", mn: 'Дуудлагын язгуур гэж юу вэ?' },
     'phonetics.families': { en: 'Families', mn: 'Бүлгүүд' },
@@ -15,7 +15,7 @@ Object.assign(window.I18N_STRINGS, {
     'phonetics.stageCombination': { en: 'combination (想像 &middot; そうぞう &middot; imagination)', mn: 'нийлбэр үг (想像 &middot; そうぞう &middot; төсөөлөл)' },
     'phonetics.explainerText': {
         en: 'A "phonetic component" is a recurring part inside a kanji that hints at its Chinese-derived on\'yomi reading, rather than its meaning. Kanji sharing the same phonetic component — like 相, 想, and 霜 above — often sound alike even though they mean very different things, because the component was originally chosen for its sound. A separate "meaning radical" (like 心, heart, tucked into 想) is what actually carries the sense.',
-        mn: '"Дуудлагын язгуур" гэдэг нь ханзны доторх давтагддаг хэсэг бөгөөд утгыг нь бус, харин Хятадаас гаралтай онёми дуудлагыг нь ишлэдэг. Ижил дуудлагын язгуур бүхий ханз — дээрх 相, 想, 霜 шиг — ихэвчлэн утга нь эрс өөр байсан ч дуудлага нь адилхан байдаг, учир нь язгуур нь эхнээсээ дуудлагынхаа төлөө сонгогдсон байдаг. Утгыг нь бодитоор дамжуулдаг зүйл нь тусдаа "утгын радикал" (想-д шингэсэн 心, зүрх, гэх мэт) юм.'
+        mn: '«Дуудлагын язгуур» гэдэг нь ханзны дотор давтагдан орох хэсэг бөгөөд утгыг нь бус, Хятадаас гаралтай онёми дуудлагыг нь заадаг. Ижил язгууртай ханзууд — дээрх 相, 想, 霜 шиг — утгаараа эрс өөр байсан ч дуудлага нь ойролцоо байдаг, учир нь язгуурыг нь анхнаасаа дуудлагаар нь сонгосон юм. Утгыг нь харин тусдаа «утгын радикал» илэрхийлдэг — жишээ нь 想 дотор багтсан 心, зүрх.'
     },
     'phonetics.levelFamiliesTitle': { en: '{level} — Phonetic Families', mn: '{level} — Дуудлагын бүлгүүд' },
     'phonetics.familiesRankedHint': {
