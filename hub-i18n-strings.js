@@ -21,7 +21,7 @@ Object.assign(window.I18N_STRINGS, {
     'hub.origins.name': { en: 'Kana Origins', mn: 'Канагийн үүсэл' },
     'hub.origins.desc': {
         en: 'Start here if Japanese writing still looks like three unrelated alphabets. A clickable chronology from the first writing in Japan to the post-war reforms, every one of the 46 kana with its Mongolian sound and the kanji it was cut down from, and a four-step answer to why English words are written in katakana.',
-        mn: 'Хэрэв япон бичиг чамд гурван хоорондоо хамааралгүй цагаан толгой мэт харагдсаар байвал эндээс эхэл. Япон дахь анхны бичгээс дайны дараах шинэчлэл хүртэлх товчлуур дарж дэлгэдэг он цагийн хэлхээс, 46 кана бүрийн монгол дуудлага, түүнийг гаргаж авсан ханз, мөн англи үгсийг яагаад катаканаар бичдэгийн дөрвөн алхамт хариулт.'
+        mn: 'Япон бичиг гурван хоорондоо хамааралгүй цагаан толгой мэт харагдсаар байвал эндээс эхэлнэ үү. Япон дахь анхны бичгээс дайны дараах шинэчлэл хүртэлх, дарж дэлгэдэг он цагийн хэлхээс; 46 кана тус бүрийн монгол дуудлага, гарал үүслийн ханз; мөн англи үгсийг яагаад катаканагаар бичдэгийн дөрвөн алхамт хариулт.'
     },
     'hub.origins.stat': { en: '9 ERAS · 46 KANA · NO KANJI NEEDED', mn: '9 ҮЕ ШАТ · 46 КАНА · ХАНЗ МЭДЭХ ШААРДЛАГАГҮЙ' },
     'hub.origins.cta': { en: 'Start →', mn: 'Эхлэх →' },

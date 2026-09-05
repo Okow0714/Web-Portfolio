@@ -20,7 +20,7 @@ Object.assign(window.I18N_STRINGS, {
     'credits.origins.h': { en: 'Kana Origins — historical photography', mn: 'Канагийн үүсэл — түүхэн гэрэл зураг' },
     'credits.origins.note': {
         en: 'All sourced from Wikimedia Commons, resized and re-compressed for use here; no other changes made. The read-order diagram in the same section is drawn in HTML rather than reproduced from any source.',
-        mn: 'Бүгд Wikimedia Commons-оос авсан бөгөөд энд ашиглахын тулд хэмжээг нь өөрчилж, дахин шахсан; өөр ямар ч өөрчлөлт хийгээгүй. Мөн хэсэгт байгаа уншлагын дарааллын зургийг эх сурвалжаас хуулаагүй, HTML-ээр зурсан болно.'
+        mn: 'Бүгд Wikimedia Commons-оос авсан бөгөөд энд ашиглахын тулд хэмжээг өөрчилж, дахин шахсанаас өөр өөрчлөлт ороогүй. Уг хэсэгт байгаа уншлагын дарааллын зургийг эх сурвалжаас хуулаагүй, HTML-ээр шинээр зуржээ.'
     },
 
     'credits.wgPhotos.h': { en: 'Word Game — background photography', mn: 'Үг холбох тоглоом — дэвсгэр гэрэл зураг' },
