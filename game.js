@@ -166,6 +166,10 @@ let activeJlptTab = 'N5'; // level-select screen: which JLPT tier's levels are s
 // safe pairs and keep it, or back your reading of the kanji and go again.
 let chainCombo = 0;
 const CHAIN_COMBO_MAX = 5;
+// Words this learner has actually got wrong (word_stats, written by word-stats.js). Used to
+// weight the deal, not to change what a level contains: a level's set is fixed, this only
+// decides which of it reaches the board first.
+let missedWords = new Set();
 let familiesFound = new Set(); // phonetic components ("lightning connect" families) chained
                                 // this round -- rendered as chips in the side panel, wide
                                 // layout only (see renderFamiliesFound())
@@ -974,11 +978,32 @@ function clusterConfusables(ids) {
     return out;
 }
 
+// A level holds 25 pairs and deals 20 of them, so five are dropped at random every time. If
+// some of those 25 are words this learner has already got wrong, dropping them is the worst
+// possible choice -- and a plain shuffle does it one time in five. This floats up to
+// MISSED_PRIORITY of them to the front, which both guarantees they are dealt and puts them in
+// the first batch. Everything else stays shuffled, so a board is still different every visit
+// and a learner with no history sees no change at all.
+const MISSED_PRIORITY = 6;
+
+function prioritiseMissed(order) {
+    if (!missedWords.size) return order;
+    const wanted = [];
+    const rest = [];
+    order.forEach(id => {
+        const w = currentSet[id];
+        if (wanted.length < MISSED_PRIORITY && w && missedWords.has(w.jp)) wanted.push(id);
+        else rest.push(id);
+    });
+    return wanted.concat(rest);
+}
+
 function pickWordSet(level) {
     currentSet = level.sets[Math.floor(Math.random() * level.sets.length)];
     const order = currentSet.map((_, i) => i);
     shuffleArray(order);
-    return { dealOrder: clusterConfusables(order.slice(0, LEVEL_PAIR_COUNT)), fuel: order.slice(LEVEL_PAIR_COUNT) };
+    const weighted = prioritiseMissed(order);
+    return { dealOrder: clusterConfusables(weighted.slice(0, LEVEL_PAIR_COUNT)), fuel: weighted.slice(LEVEL_PAIR_COUNT) };
 }
 
 function layoutTiles(tileList) {
@@ -2140,10 +2165,17 @@ async function loadProgress() {
     const session = window.getCurrentSession();
     progressCache = {};
     if (session) {
-        const { data, error } = await sb.from('game_progress').select('*').eq('user_id', session.user.id);
-        if (!error && data) {
-            data.forEach(row => { progressCache[row.level] = row; });
+        const [progressRes, missedRes] = await Promise.all([
+            sb.from('game_progress').select('*').eq('user_id', session.user.id),
+            sb.from('word_stats').select('word').eq('user_id', session.user.id)
+                .eq('source', 'game').gt('misses', 0).limit(400),
+        ]);
+        if (!progressRes.error && progressRes.data) {
+            progressRes.data.forEach(row => { progressCache[row.level] = row; });
         }
+        missedWords = new Set((!missedRes.error && missedRes.data ? missedRes.data : []).map(r => r.word));
+    } else {
+        missedWords = new Set();
     }
     renderLevelSelect();
 }
