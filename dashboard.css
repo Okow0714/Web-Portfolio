@@ -223,3 +223,14 @@ body:has(.dash-main) {
     .dash-missed-row { grid-template-columns: auto 1fr; }
     .dash-missed-count { grid-column: 2; justify-self: start; }
 }
+
+.dash-missed-practise {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.dash-missed-practise:hover { text-decoration: underline; }

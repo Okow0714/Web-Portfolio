@@ -26,6 +26,7 @@ Object.assign(window.I18N_STRINGS, {
     'dash.textsDone': { en: '{done} / {total} texts', mn: '{done} / {total} текст' },
     'dash.continue': { en: 'Continue →', mn: 'Үргэлжлүүлэх →' },
 
+    'dash.missed.practise': { en: 'Practise these in Word Match →', mn: 'Эдгээрийг «Үг холбох тоглоом» дээр давтах →' },
     'dash.missed.h': { en: 'Words you keep missing', mn: 'Байнга алддаг үгс' },
     'dash.missed.sub': {
         en: 'Counted from every wrong pair, wrong tile and skipped word across the tools.',

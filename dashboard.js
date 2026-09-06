@@ -86,12 +86,15 @@
             .order('misses', { ascending: false })
             .limit(MISSED_LIMIT);
 
+        const practiseEl = document.getElementById('dash-missed-practise');
         listEl.innerHTML = '';
         if (error || !data || !data.length) {
             showEl(emptyEl);
+            hideEl(practiseEl);
             return;
         }
         hideEl(emptyEl);
+        showEl(practiseEl);
         data.forEach(row => {
             const li = document.createElement('li');
             li.className = 'dash-missed-row';

@@ -1952,13 +1952,16 @@ function levelsPerTier() {
 }
 
 function levelTitle(level) {
+    if (level.review) return window.t('game.reviewTitle');
     const withinTier = ((level.level - 1) % levelsPerTier()) + 1;
     return `${level.jlpt} · ${window.tf('game.levelN', { n: withinTier })}`;
 }
 
 function startLevel(level) {
     currentLevel = level;
-    activeJlptTab = level.jlpt; // so "back to levels" lands on the tier just played
+    // so "back to levels" lands on the tier just played -- a review run belongs to no tier, so
+    // it leaves the tab where the learner last had it
+    if (!level.review) activeJlptTab = level.jlpt;
     matchStarted = false;
     matchedCount = 0;
     moves = 0;
@@ -1983,14 +1986,18 @@ function startLevel(level) {
     timeRemaining = matchDuration;
     stopTimer();
 
-    const bgImage = BOARD_BG_IMAGES[(level.level - 1) % BOARD_BG_IMAGES.length];
+    // A review board has no level number to cycle from, and (0 - 1) % n is -1 in JavaScript,
+    // not n-1 -- which indexed past the start of both this array and the music pool below and
+    // asked the server for a file literally named "undefined".
+    const cycleIndex = level.review ? 0 : level.level - 1;
+    const bgImage = BOARD_BG_IMAGES[cycleIndex % BOARD_BG_IMAGES.length];
     gameMain.style.setProperty('--board-bg-image', `url(${bgImage})`);
 
     // Music pool is per JLPT tier (N4/N5 share one); cycle by position WITHIN that tier
     // (0-based within the tier), not the global level number, so N4 and N5 each start their own pass through the
     // shared lofi pool from track 0 rather than picking up wherever the other tier left off.
     const musicPool = MUSIC_POOLS[level.jlpt];
-    const withinTierIndex = (level.level - 1) % levelsPerTier();
+    const withinTierIndex = cycleIndex % levelsPerTier();
     GameAudio.setLevelTrack(musicPool[withinTierIndex % musicPool.length]);
 
     renderBoard();
@@ -2137,7 +2144,11 @@ function finishLevel() {
     showResultModal(result, true);
 
     const session = window.getCurrentSession();
-    if (session) {
+    if (currentLevel && currentLevel.review) {
+        // Nothing to save: word_stats already recorded every pair as it was played, and there is
+        // no level number for a synthetic board to claim.
+        lastResult = null;
+    } else if (session) {
         lastResult = null;
         saveProgress(session, result);
     } else {
@@ -2224,12 +2235,75 @@ window.onAuthChange(async (session) => {
     }
 });
 
+// ---------------------------------------------------------------------------
+// Review mode: game.html?review=1
+// ---------------------------------------------------------------------------
+// Builds a board out of the words this learner has actually missed (word_stats, written by
+// word-stats.js) instead of a fixed level. It reuses the entire level machinery by handing
+// startLevel a synthetic level object -- the engine never asks where a set came from.
+//
+// Only words that exist in WORD_LEVELS can be used, since a board needs a meaning tile to pair
+// against: a grammar point or a skipped reading word has no such partner. Those still count on
+// the dashboard, they just cannot be played here.
+const REVIEW_MIN_WORDS = 4;
+
+function buildWordIndex() {
+    const idx = new Map();
+    WORD_LEVELS.forEach(l => l.sets.forEach(set => set.forEach(w => {
+        if (!idx.has(w.jp)) idx.set(w.jp, w);
+    })));
+    return idx;
+}
+
+async function startReviewRun(session) {
+    const { data, error } = await window.supabaseClient
+        .from('word_stats')
+        .select('word, misses')
+        .eq('user_id', session.user.id)
+        .gt('misses', 0)
+        .order('misses', { ascending: false })
+        .limit(80);
+    if (error || !data || !data.length) return false;
+
+    const idx = buildWordIndex();
+    const words = [];
+    const seen = new Set();
+    for (const row of data) {
+        const w = idx.get(row.word);
+        if (!w || seen.has(w.jp)) continue;
+        seen.add(w.jp);
+        words.push(w);
+        if (words.length >= LEVEL_PAIR_COUNT) break;
+    }
+    if (words.length < REVIEW_MIN_WORDS) return false;
+
+    startLevel({
+        level: 0,
+        jlpt: WORD_LEVELS[0].jlpt,   // only used for tile colouring; a review belongs to no tier
+        review: true,
+        title: window.t('game.reviewTitle'),
+        sets: [words],
+    });
+    return true;
+}
+
 // Deep link support: game.html?level=3 jumps straight into that level's board instead of
 // showing the level-select screen first — used by the header dropdown's per-level links.
 // Runs independently of auth/progress loading so the board appears immediately.
-const requestedLevelNum = parseInt(new URLSearchParams(window.location.search).get('level'), 10);
+const params = new URLSearchParams(window.location.search);
+const requestedLevelNum = parseInt(params.get('level'), 10);
 const requestedLevel = WORD_LEVELS.find(l => l.level === requestedLevelNum);
-if (requestedLevel) {
+if (params.get('review') === '1') {
+    // Needs a session and a round trip, so the level-select screen stays up until the board is
+    // ready. If there is nothing to review, the learner simply lands on the level select.
+    GameAudio.setLevelTrack(LEVEL_SELECT_TRACK);
+    let started = false;
+    window.onAuthChange((session) => {
+        if (!session || started) return;
+        started = true;
+        startReviewRun(session);
+    });
+} else if (requestedLevel) {
     startLevel(requestedLevel);
 } else {
     GameAudio.setLevelTrack(LEVEL_SELECT_TRACK); // level-select screen's own ambient track

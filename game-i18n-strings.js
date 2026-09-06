@@ -7,6 +7,7 @@
 // reused several game.* keys before this split existed, and they rendered as English-only since
 // this file was never loaded there).
 Object.assign(window.I18N_STRINGS, {
+    'game.reviewTitle': { en: 'Review · words you missed', mn: 'Давтлага · алдсан үгс' },
     'game.titleSub': { en: 'Japanese Word Match', mn: 'Япон үг холбох тоглоом' },
     'game.subtitle': {
         en: 'Connect each Japanese word to its English meaning. Every level puts 20 pairs in play on a flat 4-minute clock (+20s per pair matched), and there are 12 levels per JLPT tier — N5 is beginner vocabulary, N1 is advanced. Kanji sharing a phonetic component can be chained together for a lightning-fast multi-clear, and 4 correct pairs in a row banks a powerup you can spend on a free clear or swapping in new words. Two mistakes bring a cleared pair back as a penalty, so slow down and look before you click.',
