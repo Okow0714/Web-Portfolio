@@ -16,7 +16,6 @@ Object.assign(window.I18N_STRINGS, {
     'game.score': { en: 'Score', mn: 'Оноо' },
     'game.streak': { en: 'Streak', mn: 'Дараалал' },
     'game.shuffle': { en: 'Shuffle', mn: 'Холих' },
-    'game.progress': { en: 'Progress', mn: 'Явц' },
     'game.familiesFound': { en: 'Families Found', mn: 'Олдсон бүлгүүд' },
     'game.familiesEmptyHint': { en: 'Chain 2+ words sharing a phonetic component for a lightning-fast clear.', mn: 'Ижил дуудлагын язгууртай 2 буюу түүнээс дээш үг холбовол олон үг нэг дор арилна.' },
     'game.lastMatch': { en: 'Last Match', mn: 'Сүүлийн тохирол' },

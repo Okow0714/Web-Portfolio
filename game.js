@@ -92,7 +92,13 @@ const PER_ROW = 5; // a full 10-pair board (20 tiles) is 4 clean rows. A penalty
                     // board to 11+ pairs (see applyPenalty) -- the resulting partial last row
                     // is accepted, not avoided (VISIBLE_TARGET/REFILL_BATCH below only manage
                     // the *base* count, not what mistakes add back on top of it).
-const STREAK_TIER = 3;
+// Must stay equal to STREAK_POWERUP_INTERVAL below. This drives the streak meter, the score
+// multiplier step and the audio tier -- everything the player can see or hear about a streak --
+// while the powerup is granted on its own interval. At 3 against a powerup interval of 4 the bar
+// filled up and flashed with no reward, then the reward arrived mid-way through the next fill,
+// which reads as a broken meter. One rhythm, and 4 is the number every string on the site
+// already quotes.
+const STREAK_TIER = 4;
 
 // Only VISIBLE_TARGET pairs of the level's full set are ever dealt onto the board at once --
 // the rest sit in a shuffled reserve and get dealt in batches once enough gaps open up. This
@@ -133,7 +139,7 @@ const MISTAKES_PER_PENALTY = 2; // consecutive-since-last-penalty mismatches bef
 // effects below fires automatically (no menu, no banking a charge for later -- consistent with
 // how lightning-connect and the Wakan event are both immediate, reactive bonuses rather than an
 // inventory system). Which of the two fires is random each time; see maybeGrantPowerup.
-const STREAK_POWERUP_INTERVAL = 4;
+const STREAK_POWERUP_INTERVAL = 4; // keep STREAK_TIER above equal to this
 const POWERUP_SWAP_COUNT = 3;
 
 let currentLevel = null;
@@ -1090,11 +1096,6 @@ function updateStats() {
     const pairsText = window.tf('game.pairsCount', { n: matchedCount, total: totalPairs });
     document.getElementById('board-pairs').textContent = pairsText;
     document.getElementById('board-moves').textContent = window.tf('game.movesCount', { n: moves });
-    // Side-panel mirror (wide layout only, see .panel-wide-only) -- same values, same format
-    // as #board-pairs above, just rendered a second time next to the board. Guarded since the
-    // element is always in the DOM (mobile just hides it via CSS) but doesn't hurt to check.
-    const panelPairsMirror = document.getElementById('panel-pairs-mirror');
-    if (panelPairsMirror) panelPairsMirror.textContent = pairsText;
 }
 
 function setScore(newScore) {
@@ -1115,19 +1116,6 @@ function updateStreakMeter(tierHit) {
         window.setTimeout(() => { streakFill.style.width = '0%'; }, 260);
     }
 
-    // Side-panel mirror (wide layout only) -- reuses the same .streak-meter/.streak-fill
-    // classes as the toolbar original so it gets identical track/fill/flash styling for free;
-    // just re-applies the same width/flash sequence to the second element.
-    const panelStreakFill = document.getElementById('panel-streak-fill');
-    if (panelStreakFill) {
-        panelStreakFill.style.width = pct + '%';
-        if (tierHit) {
-            panelStreakFill.classList.remove('tier-flash');
-            void panelStreakFill.offsetWidth;
-            panelStreakFill.classList.add('tier-flash');
-            window.setTimeout(() => { panelStreakFill.style.width = '0%'; }, 260);
-        }
-    }
 }
 
 // ---------------------------------------------------------------------------
@@ -1971,8 +1959,6 @@ function startLevel(level) {
 
     document.getElementById('score-value').textContent = '0';
     document.getElementById('streak-fill').style.width = '0%';
-    const panelStreakFill = document.getElementById('panel-streak-fill');
-    if (panelStreakFill) panelStreakFill.style.width = '0%';
     renderTimer();
     document.getElementById('board-level-label').textContent = levelTitle(level);
     updateStats();
