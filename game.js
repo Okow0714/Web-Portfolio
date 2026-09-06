@@ -937,11 +937,41 @@ document.getElementById('board-sound-toggle').addEventListener('click', () => sy
 // LEVEL_PAIR_COUNT -- the pairs actually in play, dealt VISIBLE_TARGET at a time via
 // dealPairs() below -- and `fuel`, everything left over (25 - 20 = 5 pairs), which normal
 // dealing never touches and only the "swap 3" powerup can draw from (see maybeGrantPowerup).
+// A level's hardest words are the ones you can mix up, and a set usually contains a few: 暑い,
+// 熱い and 厚い are all あつい, 赤 and 赤い are both "red". They only teach anything when they are
+// on the board at the same time -- meet 暑い alone and you match the one tile saying "hot"
+// without ever reading the kanji. A plain shuffle leaves that to chance.
+//
+// This reorders the deal so one confusable partner follows its twin, which puts them in the same
+// batch since dealing takes the next N in order. It is a permutation and nothing else: the same
+// pairs, still dealt whole, so the no-deadlock guarantee above is untouched. Capped at one pull
+// per REFILL_BATCH-sized stretch, or a board of nothing but near-misses stops being a game.
+function clusterConfusables(ids) {
+    const keysOf = (w) => [w.reading, (w.en || '').toLowerCase()];
+    const out = [];
+    const taken = new Set();
+    let lastPull = -REFILL_BATCH;
+    ids.forEach(id => {
+        if (taken.has(id)) return;
+        out.push(id);
+        taken.add(id);
+        if (out.length - lastPull < REFILL_BATCH) return;
+        const mine = keysOf(currentSet[id]);
+        const partner = ids.find(other => !taken.has(other) &&
+            keysOf(currentSet[other]).some((k, n) => k && k === mine[n]));
+        if (partner === undefined) return;
+        out.push(partner);
+        taken.add(partner);
+        lastPull = out.length;
+    });
+    return out;
+}
+
 function pickWordSet(level) {
     currentSet = level.sets[Math.floor(Math.random() * level.sets.length)];
     const order = currentSet.map((_, i) => i);
     shuffleArray(order);
-    return { dealOrder: order.slice(0, LEVEL_PAIR_COUNT), fuel: order.slice(LEVEL_PAIR_COUNT) };
+    return { dealOrder: clusterConfusables(order.slice(0, LEVEL_PAIR_COUNT)), fuel: order.slice(LEVEL_PAIR_COUNT) };
 }
 
 function layoutTiles(tileList) {
