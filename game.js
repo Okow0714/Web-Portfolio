@@ -159,6 +159,13 @@ let lastResult = null;    // result earned as a guest, pending save once they lo
 let progressCache = {};   // level number -> game_progress row
 let currentSet = [];      // this play's chosen 10-pair word set, indexed by pairId
 let activeJlptTab = 'N5'; // level-select screen: which JLPT tier's levels are shown
+// Consecutive lightning chains, without a mismatch in between. Each one is worth more than the
+// last, which turns the chain from a bonus you take when you spot one into a stake you are
+// carrying: with a x3 running, attempting a family you are only half sure of costs you the
+// multiplier as well as the usual penalty. That is the decision the board was missing -- play
+// safe pairs and keep it, or back your reading of the kanji and go again.
+let chainCombo = 0;
+const CHAIN_COMBO_MAX = 5;
 let familiesFound = new Set(); // phonetic components ("lightning connect" families) chained
                                 // this round -- rendered as chips in the side panel, wide
                                 // layout only (see renderFamiliesFound())
@@ -1134,6 +1141,25 @@ function setScore(newScore) {
     score = newScore;
 }
 
+// Shows the multiplier only while one is being carried -- an always-visible "x1" would read as
+// a stat rather than as something at stake.
+function updateChainCombo(lost) {
+    const el = document.getElementById('chain-combo');
+    if (!el) return;
+    if (chainCombo > 1) {
+        el.textContent = window.tf('game.chainCombo', { n: chainCombo });
+        el.classList.remove('hidden', 'is-lost');
+        void el.offsetWidth;
+        el.classList.add('is-live');
+    } else if (lost && !el.classList.contains('hidden')) {
+        el.classList.remove('is-live');
+        el.classList.add('is-lost');
+        window.setTimeout(() => el.classList.add('hidden'), 420);
+    } else {
+        el.classList.add('hidden');
+    }
+}
+
 function updateStreakMeter(tierHit) {
     const streakFill = document.getElementById('streak-fill');
     let pct = ((streak % STREAK_TIER) / STREAK_TIER) * 100;
@@ -1357,6 +1383,9 @@ function handleLightningChain(phonetic) {
         boardWrapEl.classList.add('lightning-flash');
     }
 
+    chainCombo = Math.min(chainCombo + 1, CHAIN_COMBO_MAX);
+    updateChainCombo(false);
+
     let gainedTotal = 0;
     const tierHits = [];
     memberPairIds.forEach(pairId => {
@@ -1364,7 +1393,14 @@ function handleLightningChain(phonetic) {
         gainedTotal += 10 * (1 + Math.floor(streak / STREAK_TIER));
         if (streak % STREAK_TIER === 0) tierHits.push(streak);
     });
+    // The multiplier rides on the chain's own score, not on ordinary matches: it is payment for
+    // the risk of attempting a chain, so taking safe pairs neither earns nor spends it.
+    gainedTotal *= chainCombo;
     setScore(score + gainedTotal);
+    if (chainCombo > 1) {
+        const c0 = centerOf(chainTiles[0].el);
+        floatText(c0.x, c0.y - 60, window.tf('game.chainCombo', { n: chainCombo }), true, true);
+    }
     updateStreakMeter(tierHits.length > 0);
     tierHits.forEach((s, idx) => {
         window.setTimeout(() => GameAudio.streak(), 180 + idx * 140);
@@ -1407,6 +1443,10 @@ function handleMismatch(a, b) {
     const jpB = b.kind === 'jp' ? b : (currentSet[b.pairId] && { text: currentSet[b.pairId].jp });
     if (window.recordWordAttempt && jpA && jpB) {
         window.recordWordAttempt({ source: 'game', word: jpA.text, correct: false, confusedWith: jpB.text });
+    }
+    if (chainCombo > 0) {
+        chainCombo = 0;
+        updateChainCombo(true);
     }
     streak = 0;
     lastPowerupStreak = 0; // a fresh streak run starting over should be able to re-trigger a
@@ -2005,6 +2045,8 @@ function startLevel(level) {
     renderFamiliesFound();
 
     document.getElementById('score-value').textContent = '0';
+    chainCombo = 0;
+    updateChainCombo(false);
     document.getElementById('streak-fill').style.width = '0%';
     renderTimer();
     document.getElementById('board-level-label').textContent = levelTitle(level);

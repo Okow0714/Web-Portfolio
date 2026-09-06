@@ -1432,3 +1432,35 @@ body.game-playing .game-main {
         display: none;
     }
 }
+
+/* Chain combo — the multiplier carried between consecutive lightning chains. Deliberately not
+   part of .board-stats: it is not a statistic, it is a stake, and it appears only while one is
+   being held. */
+.chain-combo {
+    align-self: center;
+    padding: 4px 11px;
+    border: 1px solid var(--gold);
+    border-radius: 999px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--gold-bright);
+    background: rgba(212, 166, 75, 0.12);
+    white-space: nowrap;
+}
+
+.chain-combo.is-live { animation: chainComboIn 0.32s cubic-bezier(0.22, 0.61, 0.36, 1); }
+.chain-combo.is-lost { animation: chainComboOut 0.4s ease forwards; }
+
+@keyframes chainComboIn {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: none; opacity: 1; }
+}
+
+@keyframes chainComboOut {
+    to { transform: scale(0.9); opacity: 0; filter: grayscale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .chain-combo.is-live, .chain-combo.is-lost { animation: none; }
+}
