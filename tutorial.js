@@ -100,15 +100,18 @@
     // Where the "?" button is injected on each page. The masthead is byte-identical across
     // every page that carries it (see CLAUDE.md) and stays that way: the button is created
     // here and hung off the page's own title instead.
+    // One entry per screen a tour can run on, not one per page: the level-select title is
+    // hidden once you are inside a match, so anchoring only there left the in-play tours with
+    // no way back. Each visible anchor gets its own button.
     const HELP_ANCHOR = {
-        'game.html': '.game-title',
-        'reading.html': '.reading-title',
+        'game.html': ['.game-title', '.board-level-label'],
+        'reading.html': ['.reading-title', '.reader-title'],
         // Not .phonetics-title: that sits inside #phonetics-title-trigger, which opens the
         // info modal on click, and a button injected inside it inherits that click.
-        'phonetics.html': '#phonetics-title-trigger',
-        'grammar.html': '.gc-title',
-        'dictionary.html': '.dict-title',
-        'dashboard.html': '.dash-profile-name-row',
+        'phonetics.html': ['#phonetics-title-trigger'],
+        'grammar.html': ['.gc-title', '.gc-level-label'],
+        'dictionary.html': ['.dict-title'],
+        'dashboard.html': ['.dash-profile-name-row'],
     };
 
     // The notation key: one step, shown once for the whole site rather than once per page,
@@ -225,6 +228,10 @@
     // Running a scene
     // ----------------------------------------------------------------------
     let live = null;   // { steps, i, nodes } while a tour is on screen
+    // Scenes closed by clicking the background. They are not written to localStorage — the
+    // tour will offer itself again on a later visit — but they must not re-fire the moment
+    // they close, or the observer reopens them and the click appears to do nothing.
+    const dismissedThisView = new Set();
 
     const visible = (el) => !!el && !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
 
@@ -242,7 +249,7 @@
     }
 
     function start(sceneId, steps, opts) {
-        if (live) end(false);
+        if (live) { const keep = live.sceneId; end(false); dismissedThisView.delete(keep); }
         const resolved = resolve(steps);
         if (!resolved.length) return;
         if ((opts && opts.withKey) || (!seen('key') && !(opts && opts.replay))) resolved.push(buildKeyStep());
@@ -268,7 +275,10 @@
         window.addEventListener('resize', reposition);
         window.addEventListener('scroll', reposition, true);
         document.addEventListener('keydown', onKey, true);
-        scrim.addEventListener('click', () => end(true));
+        // end(false): a click on the background is "get out of my way", not "I have read
+        // this". Marking it seen there means one stray tap on the board during a match
+        // silently retires that tour for good, which is exactly how it goes missing.
+        scrim.addEventListener('click', () => end(false));
     }
 
     function paint() {
@@ -451,6 +461,7 @@
         document.body.classList.remove('tour-open');
         live = null;
         if (remember) { markSeen(sceneId); markSeen('key'); }
+        else dismissedThisView.add(sceneId);
         if (prev && prev.focus) prev.focus();
     }
 
@@ -470,7 +481,7 @@
         if ([...document.querySelectorAll('.modal-overlay')].some(visible)) return;
         for (const scene of scenes) {
             const id = page.replace('.html', '') + '-' + scene.id;
-            if (seen(id)) continue;
+            if (seen(id) || dismissedThisView.has(id)) continue;
             if (!visible(document.querySelector(scene.when))) continue;
             const steps = resolve(scene.steps);
             if (!steps.length) continue;   // trigger is up but its contents have not rendered yet
@@ -485,22 +496,25 @@
     }
 
     function injectHelp() {
-        if (document.getElementById('tour-help-btn')) return;
-        const anchor = document.querySelector(HELP_ANCHOR[page] || '');
-        if (!anchor || document.getElementById('tour-help-btn')) return;
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.id = 'tour-help-btn';
-        btn.className = 'tour-help-btn';
-        btn.innerHTML = '<span aria-hidden="true">?</span><span class="tour-help-label">' + window.t('tour.help') + '</span>';
-        btn.setAttribute('aria-label', window.t('tour.help'));
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const scene = scenes.find(s => visible(document.querySelector(s.when))) || scenes[0];
-            start(page.replace('.html', '') + '-' + scene.id, scene.steps, { replay: true, withKey: true });
+        (HELP_ANCHOR[page] || []).forEach(sel => {
+            const anchor = document.querySelector(sel);
+            if (!anchor) return;
+            const next = anchor.nextElementSibling;
+            if (next && next.classList.contains('tour-help-btn')) return;
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'tour-help-btn';
+            btn.innerHTML = '<span aria-hidden="true">?</span><span class="tour-help-label">' + window.t('tour.help') + '</span>';
+            btn.setAttribute('aria-label', window.t('tour.help'));
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                // Replay whichever scene belongs to the screen you are looking at.
+                const scene = scenes.find(sc => visible(document.querySelector(sc.when))) || scenes[0];
+                start(page.replace('.html', '') + '-' + scene.id, scene.steps, { replay: true, withKey: true });
+            });
+            anchor.insertAdjacentElement('afterend', btn);
+            applyTheme([btn]);
         });
-        anchor.insertAdjacentElement('afterend', btn);
-        applyTheme([btn]);
     }
 
     function init() {
@@ -509,11 +523,10 @@
         new MutationObserver(queueCheck).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'style', 'hidden'] });
         // Re-label the button and any live tour when the language flips.
         document.addEventListener('sitelangchange', () => {
-            const btn = document.getElementById('tour-help-btn');
-            if (btn) {
+            document.querySelectorAll('.tour-help-btn').forEach(btn => {
                 btn.querySelector('.tour-help-label').textContent = window.t('tour.help');
                 btn.setAttribute('aria-label', window.t('tour.help'));
-            }
+            });
             if (live) paint();
         });
     }
