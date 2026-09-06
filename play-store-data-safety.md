@@ -59,9 +59,17 @@ functionality, and say in the description that recognition is performed by the b
 service. It costs nothing and it cannot be read as hiding a mic. The first reading is arguable,
 and "arguable" is the wrong place to be with a microphone.
 
+**Why that does not contradict the privacy policy.** `privacy.html` lists the voice under *what
+I don't collect*, because that is the literal truth: nothing reaches this site and I never
+receive, record or store it. The Console form asks a different question — whether using the app
+causes the data to leave the device — and there the answer is yes, because calling the Web Speech
+API is what sends it. The policy describes who holds the data; the form describes what the app
+sets in motion. Both are true at once, and the policy names the browser-vendor step explicitly in
+two places so the two documents can be read side by side without looking evasive.
+
 The prominent-disclosure requirement is already met in the UI: the mic hint sits above the track
-list before anything starts listening, and `privacy.html`'s "What I collect" list explains the
-vendor-streaming step in full.
+list before anything starts listening, and `privacy.html` explains the vendor-streaming step in
+full under "What I don't collect" and again under "Who it's shared with".
 
 ## Security practices to tick
 

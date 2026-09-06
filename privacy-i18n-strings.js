@@ -36,11 +36,12 @@ Object.assign(window.I18N_STRINGS, {
         mn: '<strong>Суралцах явц</strong> — таны дуусгасан Үг холбох тоглоомын шатууд, тэдгээрийн шилдэг хугацаа/хөдөлгөөн, дуусгасан Дүрэм холбохын шатууд, тэдгээрийн шилдэг хугацаа/алдаа, мөн зам бүрээр дуусгасан Уншлагын дадлагын текстүүд.'
     },
 
-    'privacy.whatICollect.li6': {
-        en: '<strong>Your voice, while Dokkai Reader is listening</strong> — the microphone is active only between pressing Start Reading and stopping it. The audio is never recorded, never stored, and never sent to this site. The recognition itself is done by your browser, and browsers generally do this by streaming the audio to their own vendor\'s speech service to transcribe it — that step is outside my control and is governed by your browser vendor\'s privacy policy.',
-        mn: '<strong>Таны дуу хоолой — Уншлагын дадлага сонсож байх үед</strong> — микрофон «Унших эхлэх» дарснаас зогсоох хүртэл л асаалттай байна. Дуу хоолойг бичиж хадгалахгүй, энэ сайт руу илгээхгүй. Дуу таних ажлыг таны хөтөч өөрөө хийдэг бөгөөд хөтчүүд ихэвчлэн дууг өөрсдийн дуу таних үйлчилгээ рүү илгээж бичвэр болгодог. Энэ алхам миний хяналтаас гадуур бөгөөд таны хөтчийн нууцлалын бодлогод захирагдана.'
-    },
     'privacy.whatIDontCollect.h': { en: "What I don't collect", mn: 'Юу цуглуулдаггүй вэ' },
+    'privacy.whatIDontCollect.voice': {
+        en: '<strong>Your voice is not collected either.</strong> Dokkai Reader’s microphone is live only between pressing Start Reading and stopping it, and the audio never reaches this site — I never receive it, record it or store it. What does happen is that your browser transcribes it, and browsers generally do that by streaming the audio to their own vendor’s speech service. That step is the browser’s, not mine: it is outside my control and governed by your browser vendor’s privacy policy. It is listed again under who it’s shared with, because using the reader is what causes it.',
+        mn: '<strong>Таны дуу хоолойг ч мөн цуглуулдаггүй.</strong> «Уншлагын дадлага»-ын микрофон нь «Унших» товчийг дарснаас зогсоох хүртэл л асаалттай байх бөгөөд дуу нь энэ сайт руу огт ирдэггүй — би түүнийг хүлээж авдаггүй, бичиж авдаггүй, хадгалдаггүй. Харин таны хөтөч түүнийг бичвэр болгон хөрвүүлдэг ба хөтчүүд үүнийг ихэвчлэн дуу таних өөрсдийн үйлчилгээ рүү дуу бичлэгийг дамжуулж хийдэг. Тэр алхам бол миний биш, хөтчийнх: миний хяналтаас гадуур бөгөөд таны хөтчийн нууцлалын бодлогоор зохицуулагдана. Уншлагын хэрэгслийг ашигласнаас болж энэ явдал болдог тул «Хэнтэй хуваалцдаг вэ» хэсэгт дахин дурдсан болно.'
+    },
+
     'privacy.whatIDontCollect.p': {
         en: "No analytics or tracking scripts, no advertising networks, no third-party cookies, and no payment information run on this site — there's nothing to sell and nothing behind a paywall. The only stored data is what's listed above.",
         mn: 'Энэ сайтад аналитик болон хянах скрипт, зар сурталчилгааны сүлжээ, гуравдагч талын күүки, төлбөрийн мэдээлэл огт ажилладаггүй — юу ч зарахгүй, төлбөртэй хэсэг ч байхгүй. Дээр жагсаасан зүйлс л цорын ганц хадгалагддаг өгөгдөл юм.'
