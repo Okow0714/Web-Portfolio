@@ -25,7 +25,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="legal.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700;900&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/fonts.css">
 </head>
 
 <body>
@@ -195,6 +195,16 @@
                 </ul>
             </section>
 
+            <section class="legal-section" id="bundled-code">
+                <h2 data-i18n="credits.bundled.h">Bundled typefaces &amp; code</h2>
+                <ul>
+                    <li><a href="https://fonts.google.com/specimen/Fraunces" target="_blank" rel="noopener">Fraunces</a> &mdash; SIL Open Font License 1.1</li>
+                    <li><a href="https://fonts.google.com/specimen/IBM+Plex+Sans" target="_blank" rel="noopener">IBM Plex Sans</a> &mdash; SIL Open Font License 1.1</li>
+                    <li><a href="https://github.com/supabase/supabase-js" target="_blank" rel="noopener">supabase-js</a> 2.115.0 &mdash; MIT</li>
+                </ul>
+                <p data-i18n="credits.bundled.note">These are served from this site rather than from their vendors&rsquo; content networks, so that opening a page doesn&rsquo;t send your IP address to a third party. The font licence text ships alongside them in <code>fonts/OFL.txt</code>.</p>
+            </section>
+
             <section class="legal-section" id="kana-origins-photos">
                 <h2 data-i18n="credits.origins.h">Kana Origins &mdash; historical photography</h2>
                 <ul>
@@ -343,7 +353,7 @@
     <script src="i18n-strings-shared.js"></script>
     <script src="credits-i18n-strings.js"></script>
     <script src="i18n.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script src="vendor/supabase.min.js"></script>
     <script src="supabase-config.js"></script>
     <script src="auth-shared.js"></script>
     <script src="pwa-register.js"></script>

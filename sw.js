@@ -17,7 +17,7 @@
 // stale-while-revalidate, so it serves the cached copy first and only refreshes behind it --
 // without a bump, a returning PWA user runs the previous version of a fixed file for one more
 // visit. Whether that matters is a judgement call; for a correctness fix it generally does.
-const CACHE_VERSION = 'khan-japanese-v41';
+const CACHE_VERSION = 'khan-japanese-v42';
 
 const APP_SHELL = [
     './',
@@ -35,6 +35,21 @@ const APP_SHELL = [
     './terms.html',
     './reset-password.html',
     './style.css',
+
+    // Vendored third-party assets. These used to come from fonts.gstatic.com and jsDelivr,
+    // which meant the typography and the auth client both depended on someone else's CDN --
+    // and told that CDN a visitor's IP on every page load. Precached like any other shell file.
+    './fonts/fonts.css',
+    './fonts/fraunces-6NUu8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0K7iN7hzFUPJH58nib14c0qv86Rg.woff2',
+    './fonts/fraunces-6NUu8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0K7iN7hzFUPJH58nib14c1qv86Rg.woff2',
+    './fonts/fraunces-6NUu8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0K7iN7hzFUPJH58nib14c7qv8.woff2',
+    './fonts/ibmplexsans-zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA.woff2',
+    './fonts/ibmplexsans-zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA.woff2',
+    './fonts/ibmplexsans-zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxTKYbABA.woff2',
+    './fonts/ibmplexsans-zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxaKYbABA.woff2',
+    './fonts/ibmplexsans-zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxdKYbABA.woff2',
+    './fonts/ibmplexsans-zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.woff2',
+    './vendor/supabase.min.js',
     './hub.css',
     './origins.css',
     './tutorial.css',

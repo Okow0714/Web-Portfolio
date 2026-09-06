@@ -33,9 +33,10 @@ the `auth.users` row, which cascades to `profiles`, `bookmarks`, `contact_messag
 None of it is shared with anyone, sold, or used for ads or tracking. There is no ad SDK and no
 third-party analytics SDK in the project — check `sw.js`'s `APP_SHELL` if you ever doubt it.
 
-The two things that leave the site on every page load are Google Fonts and the Supabase library
-from jsDelivr. Requesting a file tells that server an IP and a user-agent, as any request does.
-That is not data *I* collect, and the privacy policy says so plainly.
+Nothing leaves the site on a page load any more. The typefaces and the Supabase library used to
+come from fonts.gstatic.com and jsDelivr, which handed those companies every visitor's IP before
+the visitor had done anything; both are now served from this origin (`fonts/`, `vendor/`). The
+only outbound connection a signed-in session makes is to Supabase itself.
 
 ## The microphone — the answer to get right
 

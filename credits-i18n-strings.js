@@ -17,6 +17,12 @@ Object.assign(window.I18N_STRINGS, {
     'credits.tatoebaMeta': { en: 'example sentences', mn: 'жишээ өгүүлбэрүүд' },
     'credits.kanjiFreqMeta': { en: 'usage ranking', mn: 'хэрэглээний зэрэглэл' },
 
+    'credits.bundled.h': { en: 'Bundled typefaces & code', mn: 'Хамт нийлүүлсэн фонт ба код' },
+    'credits.bundled.note': {
+        en: 'These are served from this site rather than from their vendors’ content networks, so that opening a page doesn’t send your IP address to a third party. The font licence text ships alongside them in <code>fonts/OFL.txt</code>.',
+        mn: 'Эдгээрийг үйлдвэрлэгчийнх нь сүлжээнээс биш, энэ сайтаас өөрөөс нь дуудаж байгаа тул хуудас нээхэд таны IP хаяг гуравдагч этгээдэд очихгүй. Фонтын лицензийн эх бичвэрийг <code>fonts/OFL.txt</code> дотор хамт нийлүүлсэн.'
+    },
+
     'credits.origins.h': { en: 'Kana Origins — historical photography', mn: 'Канагийн үүсэл — түүхэн гэрэл зураг' },
     'credits.origins.note': {
         en: 'All sourced from Wikimedia Commons, resized and re-compressed for use here; no other changes made. The read-order diagram in the same section is drawn in HTML rather than reproduced from any source.',

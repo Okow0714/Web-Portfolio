@@ -146,9 +146,15 @@ still needs thought. Every free-text column is length-bounded, since an insert p
 proves who you are and not how much you may write. `supabase-migration-001-profile-privacy.sql`
 applies all of this to a project created before these fixes; a project set up fresh from
 `supabase-schema.sql` already has them.
-The Supabase JS library comes from a CDN, which is **not** in `sw.js`'s precache (the fetch
-handler ignores cross-origin requests), so it is unavailable offline, on networks that block
-jsdelivr, and during a CDN outage. `auth-shared.js` therefore checks for it and falls back to a
+**The Supabase library and the webfonts are vendored, not fetched from a CDN** (`vendor/supabase.min.js`,
+`fonts/`), and both are in `sw.js`'s `APP_SHELL`. They used to come from jsDelivr and
+fonts.gstatic.com, which made the typography and the auth client depend on someone else's uptime
+and told those companies a visitor's IP on every page load — a data transfer `privacy.html` then
+had to disclose and could not control. Updating Supabase now means re-downloading that file
+deliberately (pinned at 2.115.0); nothing arrives on its own any more, which is the trade.
+Noto Serif JP is deliberately **not** vendored: Google serves it as 124 unicode-range subsets per
+weight, ~20MB for the three weights used, so the pages that want it fall back to the system stack
+already declared in `--font-jp`. `auth-shared.js` still checks for the library and falls back to a
 stub client rather than calling `supabase.createClient` unguarded — that call used to throw on
 the file's first statement and take `showEl`/`hideEl`, `onAuthChange` and the account menu down
 with it on every page. None of the five tools need an account, so the rule is: lose the
