@@ -179,6 +179,11 @@ Object.assign(window.I18N_STRINGS, {
         en: 'One score across all the tools, next to the site average. It moves when you clear a level or finish a text.',
         mn: 'Бүх хэрэгслийн нийлбэр оноо, хажууд нь сайтын дундаж. Шат гүйцээх, текст дуусгах бүрд өөрчлөгдөнө.'
     },
+    'tour.dash.missed': {
+        en: 'Every wrong pair, wrong tile and skipped word is counted here, worst first — along with what you picked instead, which is usually the more useful half.',
+        mn: 'Буруу холбосон хос, буруу дарсан хавтан, алгасасан үг бүрийг энд тоолж, хамгийн их алдсанаас нь эхлүүлж харуулна — мөн оронд нь юу сонгосныг чинь бас. Ихэвчлэн сүүлийнх нь илүү хэрэгтэй байдаг.'
+    },
+
     'tour.dash.tools': {
         en: 'And the same progress broken down per tool, so you can see which one you have been neglecting.',
         mn: 'Мөн ижил явцыг хэрэгсэл тус бүрээр задалж харуулна — алийг нь орхигдуулж байгаагаа шууд харна.'

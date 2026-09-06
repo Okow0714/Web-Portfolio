@@ -26,6 +26,18 @@ Object.assign(window.I18N_STRINGS, {
     'dash.textsDone': { en: '{done} / {total} texts', mn: '{done} / {total} текст' },
     'dash.continue': { en: 'Continue →', mn: 'Үргэлжлүүлэх →' },
 
+    'dash.missed.h': { en: 'Words you keep missing', mn: 'Байнга алддаг үгс' },
+    'dash.missed.sub': {
+        en: 'Counted from every wrong pair, wrong tile and skipped word across the tools.',
+        mn: 'Хэрэгслүүд дээр буруу холбосон хос, буруу дарсан хавтан, алгасасан үг бүрээс тоолсон.'
+    },
+    'dash.missed.empty': {
+        en: 'Nothing here yet. Play a level and anything you trip over will show up.',
+        mn: 'Одоохондоо юу ч алга. Нэг шат тоглоод үзвэл бүдэрсэн бүхэн чинь энд гарч ирнэ.'
+    },
+    'dash.missed.times': { en: 'missed {n}×', mn: '{n} удаа алдсан' },
+    'dash.missed.picked': { en: 'you picked {word}', mn: 'оронд нь {word} гэж сонгосон' },
+
     'dash.accountTitle': { en: 'Account settings', mn: 'Бүртгэлийн тохиргоо' },
     'dash.accountBody': { en: 'Your email, language, and account deletion are managed from the account menu. Password resets go through "Forgot password?" on the log-in screen.', mn: 'И-мэйл, хэл, бүртгэл устгах зэргийг бүртгэлийн цэснээс удирдана. Нууц үгээ сэргээхийг нэвтрэх цонхны "Нууц үгээ мартсан уу?" холбоосоор хийнэ.' },
     'dash.openAccountMenu': { en: 'Open Settings', mn: 'Тохиргоо нээх' },

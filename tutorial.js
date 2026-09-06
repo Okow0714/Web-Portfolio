@@ -93,6 +93,7 @@
                 { sel: '.dash-profile', k: 'tour.dash.profile' },
                 { sel: '.dash-score-card', k: 'tour.dash.score' },
                 { sel: '.dash-tool-card', k: 'tour.dash.tools' },
+                { sel: '.dash-missed', k: 'tour.dash.missed' },
             ] },
         ],
     };

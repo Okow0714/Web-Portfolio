@@ -70,12 +70,57 @@
         document.getElementById('dash-score-formula-note').textContent = window.tf('dash.scoreNote', { n: '1,000' });
     }
 
+    // The tools record a row per word met (see word-stats.js); this is the first place any of
+    // it is read back. Ordered by misses rather than recency, because the point is what keeps
+    // catching you out, not what caught you out last.
+    const MISSED_LIMIT = 8;
+    const SOURCE_KEY = { game: 'nav.wordGame', grammar: 'nav.grammarConnect', reading: 'nav.dokkaiReader' };
+
+    async function loadMissedWords(userId) {
+        const listEl = document.getElementById('dash-missed-list');
+        const emptyEl = document.getElementById('dash-missed-empty');
+        const { data, error } = await sb.from('word_stats')
+            .select('word, source, misses, confused_with')
+            .eq('user_id', userId)
+            .gt('misses', 0)
+            .order('misses', { ascending: false })
+            .limit(MISSED_LIMIT);
+
+        listEl.innerHTML = '';
+        if (error || !data || !data.length) {
+            showEl(emptyEl);
+            return;
+        }
+        hideEl(emptyEl);
+        data.forEach(row => {
+            const li = document.createElement('li');
+            li.className = 'dash-missed-row';
+            const times = window.tf('dash.missed.times', { n: row.misses });
+            const picked = row.confused_with
+                ? '<span class="dash-missed-confused">' + window.tf('dash.missed.picked', { word: escapeHtml(row.confused_with) }) + '</span>'
+                : '';
+            li.innerHTML =
+                '<span class="dash-missed-word" lang="ja">' + escapeHtml(row.word) + '</span>' +
+                '<span class="dash-missed-meta"><span class="dash-missed-source">' +
+                    escapeHtml(window.t(SOURCE_KEY[row.source] || row.source)) + '</span>' + picked + '</span>' +
+                '<span class="dash-missed-count">' + escapeHtml(times) + '</span>';
+            listEl.appendChild(li);
+        });
+    }
+
+    function escapeHtml(str) {
+        const d = document.createElement('div');
+        d.textContent = str == null ? '' : String(str);
+        return d.innerHTML;
+    }
+
     async function refreshDashboard(session) {
         renderStaticStrings();
         await Promise.all([
             loadProfile(session.user.id, session.user.email),
             loadToolProgress(session.user.id),
             loadScore(),
+            loadMissedWords(session.user.id),
         ]);
     }
 

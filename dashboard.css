@@ -132,3 +132,94 @@ body:has(.dash-main) {
     .dash-tools { grid-template-columns: 1fr; }
     .dash-score-bar-row { grid-template-columns: 70px 1fr 60px; }
 }
+
+/* ---------------------------------------------------------------------------
+   Words you keep missing — the first thing on the site that reads back what the
+   tools record about a particular learner (word-stats.js). Ordered by misses,
+   so the top row is the word that keeps catching you out.
+   --------------------------------------------------------------------------- */
+.dash-missed {
+    background: var(--surface);
+    border: 1px solid var(--surface-edge);
+    border-radius: 10px;
+    padding: 22px 24px;
+}
+
+.dash-missed h2 {
+    margin: 0 0 4px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--ink);
+}
+
+.dash-missed-sub {
+    margin: 0 0 16px;
+    font-size: 0.86rem;
+    color: var(--ink-faint);
+}
+
+.dash-missed-empty {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+}
+
+.dash-missed-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.dash-missed-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: baseline;
+    gap: 14px;
+    padding: 11px 14px;
+    background: var(--surface);
+}
+
+.dash-missed-word {
+    font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "MS Mincho", serif;
+    font-size: 1.18rem;
+    color: var(--ink);
+}
+
+.dash-missed-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 10px;
+    font-size: 0.82rem;
+    color: var(--ink-faint);
+    min-width: 0;
+}
+
+.dash-missed-source {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.dash-missed-confused { color: var(--ink-soft); }
+
+.dash-missed-count {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--warn);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+@media (max-width: 560px) {
+    .dash-missed-row { grid-template-columns: auto 1fr; }
+    .dash-missed-count { grid-column: 2; justify-self: start; }
+}
