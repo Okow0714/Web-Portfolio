@@ -18,7 +18,7 @@ what is deleted, and names what is outside my control. The `id` on that section 
 
 In-app deletion is real, not a sign-out: `delete_own_account()` in `supabase-schema.sql` deletes
 the `auth.users` row, which cascades to `profiles`, `bookmarks`, `contact_messages`,
-`game_progress`, `reading_progress` and `grammar_progress`.
+`game_progress`, `reading_progress`, `grammar_progress` and `word_stats`.
 
 ## What the app actually collects
 
@@ -28,7 +28,7 @@ the `auth.users` row, which cascades to `profiles`, `bookmarks`, `contact_messag
 | Display name | Personal info → Name | yes | no (defaults to `Reader NNNN`) | App functionality |
 | Contact-form messages | Messages → Other in-app messages | yes | no | App functionality (they reach me by email) |
 | Level completion, best times, texts finished | App activity → App interactions | yes | no | App functionality |
-| Per-word attempt counts *(only once `word_stats` ships)* | App activity → App interactions | yes | no | App functionality, Analytics |
+| Per-word attempt counts and what was picked instead (`word_stats`) | App activity → App interactions | yes | no | App functionality, Analytics |
 
 None of it is shared with anyone, sold, or used for ads or tracking. There is no ad SDK and no
 third-party analytics SDK in the project — check `sw.js`'s `APP_SHELL` if you ever doubt it.

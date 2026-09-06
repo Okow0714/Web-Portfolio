@@ -1269,6 +1269,8 @@ function resolveSelection(a, b) {
 }
 
 function handleMatch(a, b) {
+    const jp = a.kind === 'jp' ? a : b;
+    if (window.recordWordAttempt) window.recordWordAttempt({ source: 'game', word: jp.text, correct: true });
     streak += 1;
     const gained = 10 * (1 + Math.floor(streak / STREAK_TIER));
     setScore(score + gained);
@@ -1398,6 +1400,14 @@ function handleLightningChain(phonetic) {
 }
 
 function handleMismatch(a, b) {
+    // The one moment this tool learns something about a particular learner. `a` and `b` are the
+    // two tiles that did not go together, so the Japanese side of each is both the word missed
+    // and the thing it was confused with -- which is the fact worth keeping.
+    const jpA = a.kind === 'jp' ? a : (currentSet[a.pairId] && { text: currentSet[a.pairId].jp });
+    const jpB = b.kind === 'jp' ? b : (currentSet[b.pairId] && { text: currentSet[b.pairId].jp });
+    if (window.recordWordAttempt && jpA && jpB) {
+        window.recordWordAttempt({ source: 'game', word: jpA.text, correct: false, confusedWith: jpB.text });
+    }
     streak = 0;
     lastPowerupStreak = 0; // a fresh streak run starting over should be able to re-trigger a
     // powerup at the same tier number (e.g. 4) it already fired at earlier this level

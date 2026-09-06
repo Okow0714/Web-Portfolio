@@ -36,6 +36,11 @@ Object.assign(window.I18N_STRINGS, {
         mn: '<strong>Суралцах явц</strong> — таны дуусгасан Үг холбох тоглоомын шатууд, тэдгээрийн шилдэг хугацаа/хөдөлгөөн, дуусгасан Дүрэм холбохын шатууд, тэдгээрийн шилдэг хугацаа/алдаа, мөн зам бүрээр дуусгасан Уншлагын дадлагын текстүүд.'
     },
 
+    'privacy.whatICollect.words': {
+        en: '<strong>Which words you get wrong, and what you picked instead</strong> — when a pair, tile or reading trips you up, the word and the answer you chose are counted against your account, so the site can show you what you keep missing and bring it back for review. Counts only: there is no record of when you played or how long you took.',
+        mn: '<strong>Аль үгэнд алдаж байгаа, оронд нь юуг сонгосон</strong> — хос, хавтан, уншлагын аль нэгэнд алдвал тухайн үг болон таны сонгосон хариултыг бүртгэлд чинь тоолж тэмдэглэнэ. Ингэснээр байнга алддаг үгсийг чинь харуулж, давтахаар буцааж гаргаж ирнэ. Зөвхөн тоо: хэзээ тоглосон, хэр удсан тухай бичлэг үлддэггүй.'
+    },
+
     'privacy.whatIDontCollect.h': { en: "What I don't collect", mn: 'Юу цуглуулдаггүй вэ' },
     'privacy.whatIDontCollect.voice': {
         en: '<strong>Your voice is not collected either.</strong> Dokkai Reader’s microphone is live only between pressing Start Reading and stopping it, and the audio never reaches this site — I never receive it, record it or store it. What does happen is that your browser transcribes it, and browsers generally do that by streaming the audio to their own vendor’s speech service. That step is the browser’s, not mine: it is outside my control and governed by your browser vendor’s privacy policy. It is listed again under who it’s shared with, because using the reader is what causes it.',
@@ -81,8 +86,8 @@ Object.assign(window.I18N_STRINGS, {
         mn: '<strong>Юу ч суулгахгүйгээр:</strong> бүртгүүлсэн хаягаасаа <a href="mailto:ganzorig2003@gmail.com">ganzorig2003@gmail.com</a> руу захидал бичээрэй. Би аль болох хурдан, хамгийн оройдоо 30 хоногийн дотор устгана.'
     },
     'privacy.deleteAccount.whatGoes': {
-        en: '<strong>What is deleted:</strong> your account and everything tied to it — your profile and display name, saved bookmarks, any message you sent through the contact form, and your Word Match, Dokkai Reader and Grammar Connect progress. It is a single database deletion that cascades to all of them; nothing is held back.',
-        mn: '<strong>Юу устах вэ:</strong> таны бүртгэл, түүнд холбоотой бүх зүйл — хувийн мэдээлэл, харагдах нэр, хадгалсан хавчуургууд, холбоо барих маягтаар илгээсэн захидал, мөн «Үг холбох тоглоом», «Уншлагын дадлага», «Дүрэм холбох»-ын явц. Энэ бол өгөгдлийн сангийн ганц удаагийн устгал бөгөөд бүгдэд нь дамжин үйлчилнэ; юу ч үлдэхгүй.'
+        en: '<strong>What is deleted:</strong> your account and everything tied to it — your profile and display name, saved bookmarks, any message you sent through the contact form, your Word Match, Dokkai Reader and Grammar Connect progress, and the per-word counts behind your review list. It is a single database deletion that cascades to all of them; nothing is held back.',
+        mn: '<strong>Юу устах вэ:</strong> таны бүртгэл, түүнд холбоотой бүх зүйл — хувийн мэдээлэл, харагдах нэр, хадгалсан хавчуургууд, холбоо барих маягтаар илгээсэн захидал, «Үг холбох тоглоом», «Уншлагын дадлага», «Дүрэм холбох»-ын явц, мөн давтах жагсаалтын ард байгаа үг тус бүрийн тоолол. Энэ бол өгөгдлийн сангийн ганц удаагийн устгал бөгөөд бүгдэд нь дамжин үйлчилнэ; юу ч үлдэхгүй.'
     },
     'privacy.deleteAccount.whatStays': {
         en: '<strong>What isn’t mine to delete:</strong> my web host’s standard request logs and my database provider’s routine backups, which age out on their own schedules. I don’t read either one and can’t pick your rows out of them.',

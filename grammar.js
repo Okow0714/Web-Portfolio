@@ -698,6 +698,9 @@ function onTileClick(btn, opt, s) {
             gcFx.spawnSparkle(wordC.x, wordC.y, { count: 12, color: '236,229,211', size: 10, spread: 36, life: 0.6 });
         }, 180);
 
+        if (window.recordWordAttempt) {
+            window.recordWordAttempt({ source: 'grammar', word: s.newCore || s.new, correct: true });
+        }
         clearedCount++;
         timeRemaining += TIME_BONUS_PER_SENTENCE;
         renderTimerDisplay();
@@ -715,6 +718,12 @@ function onTileClick(btn, opt, s) {
 
         window.setTimeout(() => advanceSentence(), 900);
     } else {
+        // The grammar point is the item being learned; the tile tapped is what it was confused
+        // with. Cores where they exist, since 「そう」 is a more useful thing to count than
+        // 「降るそうです」.
+        if (window.recordWordAttempt) {
+            window.recordWordAttempt({ source: 'grammar', word: s.newCore || s.new, correct: false, confusedWith: opt });
+        }
         mistakeCount++;
         timeRemaining = Math.max(0, timeRemaining - TIME_PENALTY_PER_MISTAKE);
         renderTimerDisplay();

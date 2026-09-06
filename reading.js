@@ -1130,6 +1130,9 @@ document.getElementById('reader-mic-btn').addEventListener('click', () => {
 document.getElementById('reader-skip-btn').addEventListener('click', () => {
     if (currentIdx >= words.length) return;
     const skipped = words[currentIdx];
+    // A skip is the clearest failure signal on this page: the reader stopped because they could
+    // not say it.
+    if (window.recordWordAttempt) window.recordWordAttempt({ source: 'reading', word: skipped.surface, correct: false });
     recordSkipped(currentIdx);
     // Skipping is the moment you most want to hear the word -- not being able to say it is
     // why it was skipped. Spoken before advancing, so that finishing a text on a skip still
