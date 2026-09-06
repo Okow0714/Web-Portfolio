@@ -909,3 +909,27 @@ body:has(.phonetics-main) {
         padding: 16px;
     }
 }
+
+/* Kanji you have already met, from word_stats. Deliberately quiet: this is a second layer of
+   information over a map that has to stay readable as a map, so it reads as a highlight on the
+   chip rather than a badge beside it. */
+.tree-chip.is-met {
+    border-color: var(--accent);
+    box-shadow: inset 0 0 0 1px var(--accent);
+}
+
+.tree-chip.is-solid {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--bg-surface);
+}
+
+.tree-chip.is-solid .tree-chip-dot { outline: 1px solid var(--bg-surface); }
+
+.family-met {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+}

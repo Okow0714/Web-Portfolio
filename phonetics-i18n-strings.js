@@ -23,6 +23,7 @@ Object.assign(window.I18N_STRINGS, {
         mn: '{n} бүлэг. {level} түвшний хамгийн түгээмэл гишүүн нь япон бичвэрт хэр их тааралддагаар эрэмбэлэв.'
     },
     'phonetics.noPhoneticKanjiHint': { en: 'No phonetic-bearing kanji are tagged at this level in the source data.', mn: 'Энэ түвшинд дуудлагын язгууртай ханз эх өгөгдөлд тэмдэглэгдээгүй байна.' },
+    'phonetics.metInFamily': { en: '{n}/{total} met', mn: '{total}-аас {n}-г нь үзсэн' },
     'phonetics.kanjiInFamily': { en: '{n} kanji in this family', mn: 'энэ бүлэгт {n} ханз' },
     'phonetics.noExampleForKanji': { en: 'No example sentence found for this kanji in the source data.', mn: 'Энэ ханзны жишээ өгүүлбэр эх өгөгдөлд олдсонгүй.' },
     'phonetics.familyForLevelHint': { en: 'Phonetic family for {level} · {n} kanji share this component dictionary-wide. Tap a kanji to see its details.', mn: '{level} түвшний дуудлагын бүлэг · толь бичигт энэ язгууртай нийт {n} ханз байна. Дэлгэрэнгүйг харахын тулд ханз дээр дарна уу.' },

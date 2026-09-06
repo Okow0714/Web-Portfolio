@@ -124,6 +124,8 @@ function showFamilyList(levelKey) {
             <span class="family-info">
                 <span class="family-reading">${family.reading ? escapeHtml(family.reading) : '&mdash;'}</span>
                 <span class="family-count">${escapeHtml(window.tf('phonetics.kanjiInFamily', { n: family.members.length }))}</span>
+                ${metKanji.size ? `<span class="family-met">${escapeHtml(window.tf('phonetics.metInFamily', {
+                    n: family.members.filter(m => metKanji.has(m.kanji)).length, total: family.members.length }))}</span>` : ''}
             </span>
         `;
         item.addEventListener('click', () => showFamilyTree(levelKey, family));
@@ -151,9 +153,47 @@ function backToFamilyList() {
 // spoke lines. Clicking a chip opens a detail panel below the diagram instead
 // of every member always being fully expanded.
 // ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// Kanji you have already met
+// ---------------------------------------------------------------------------
+// word_stats records the words a signed-in learner has attempted in the tools; a kanji counts
+// as met if it appears in any of them. This page is a map of the writing system, and until now
+// it showed every visitor the identical map — marking what you have already handled turns it
+// into a map of your own progress through it.
+//
+// "Solid" means you have got that word right more often than wrong. Meeting a kanji once and
+// missing it every time is not the same as knowing it, and the map should not claim otherwise.
+const metKanji = new Set();
+const solidKanji = new Set();
+
+async function loadMetKanji() {
+    const session = window.getCurrentSession && window.getCurrentSession();
+    metKanji.clear();
+    solidKanji.clear();
+    if (!session || !window.supabaseReady) return;
+    const { data, error } = await window.supabaseClient
+        .from('word_stats').select('word, attempts, misses')
+        .eq('user_id', session.user.id).limit(1000);
+    if (error || !data) return;
+    data.forEach(row => {
+        const solid = (row.attempts - row.misses) > row.misses;
+        for (const ch of row.word) {
+            if (!/[一-龯]/.test(ch)) continue;
+            metKanji.add(ch);
+            if (solid) solidKanji.add(ch);
+        }
+    });
+}
+
+function metClass(kanji) {
+    if (solidKanji.has(kanji)) return ' is-solid';
+    if (metKanji.has(kanji)) return ' is-met';
+    return '';
+}
+
 function chipHtml(member, index, isRootLevel) {
     return `
-        <button type="button" class="tree-chip${isRootLevel ? ' tree-chip-current-level' : ''}"
+        <button type="button" class="tree-chip${isRootLevel ? ' tree-chip-current-level' : ''}${metClass(member.kanji)}"
                 data-index="${index}" data-kanji="${escapeHtml(member.kanji)}"
                 aria-label="${escapeHtml(member.kanji)} (${escapeHtml(member.level || '')})">
             ${escapeHtml(member.kanji)}
@@ -531,6 +571,18 @@ document.addEventListener('sitelangchange', () => {
 });
 
 document.getElementById('family-tree-back-btn').addEventListener('click', backToFamilyList);
+
+// Signing in mid-visit should light the map up without a reload; signing out should clear it.
+if (window.onAuthChange) {
+    window.onAuthChange(async () => {
+        await loadMetKanji();
+        if (!document.getElementById('family-tree-section').classList.contains('hidden')) {
+            showFamilyTree(currentLevelKey, currentFamily);
+        } else {
+            showFamilyList(currentLevelKey);
+        }
+    });
+}
 
 document.getElementById('phonetics-title-trigger').addEventListener('click', openInfoModal);
 document.getElementById('phonetics-info-btn').addEventListener('click', openInfoModal);

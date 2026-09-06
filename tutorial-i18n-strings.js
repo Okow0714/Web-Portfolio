@@ -110,8 +110,8 @@ Object.assign(window.I18N_STRINGS, {
         mn: 'Дуудлагын язгуур гэж юу болохыг мэдэхгүй байна уу? Энд нэг догол мөрөөр тайлбарласан байгаа.'
     },
     'tour.phonetics.tree': {
-        en: 'The component sits in the middle and its family radiates out. Tap any kanji for its readings, meaning and an example sentence.',
-        mn: 'Язгуур нь голдоо, бүлгийнх нь ханзууд эргэн тойрон нь байрлана. Аль нэг ханз дээр дарвал уншлага, утга, жишээ өгүүлбэр нь гарна.'
+        en: 'The component sits in the middle and its family radiates out. Tap any kanji for its readings, meaning and an example sentence. Once you are signed in, kanji you have already met in the tools are ringed, and ones you get right more often than wrong are filled in.',
+        mn: 'Язгуур нь голдоо, бүлгийнх нь ханзууд эргэн тойрон нь байрлана. Аль нэг ханз дээр дарвал уншлага, утга, жишээ өгүүлбэр нь гарна. Нэвтэрсэн үед хэрэгслүүд дээр аль хэдийн тааралдсан ханзыг тойруулж, буруугаас илүү олон удаа зөв хийсэн ханзыг дүүргэж тэмдэглэнэ.'
     },
     'tour.phonetics.readings': {
         en: 'Each kanji shows two kinds of reading. The <b>on\'yomi</b> came from Chinese and is what a phonetic family shares; the <b>kun\'yomi</b> is the native Japanese word the character was matched to, and it does not follow the family at all.',
