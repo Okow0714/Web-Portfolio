@@ -82,9 +82,13 @@
         // Clear first: a flush that fails halfway would otherwise double-count everything before
         // the failure on the next attempt. Losing a few counters beats inflating them.
         writeBuffer([]);
-        for (const row of rows) {
+        // In chunks rather than one at a time: a learner who played several sessions signed out
+        // can arrive with hundreds of buffered attempts, and a sequential await over all of them
+        // is minutes of round trips on their first sign-in.
+        const CHUNK = 12;
+        for (let i = 0; i < rows.length; i += CHUNK) {
             try {
-                await send(row);
+                await Promise.all(rows.slice(i, i + CHUNK).map(send));
             } catch (e) {
                 break;
             }

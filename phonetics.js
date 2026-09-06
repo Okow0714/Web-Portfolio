@@ -576,6 +576,10 @@ document.getElementById('family-tree-back-btn').addEventListener('click', backTo
 if (window.onAuthChange) {
     window.onAuthChange(async () => {
         await loadMetKanji();
+        // onAuthChange replays a known session the moment a listener registers, which is before
+        // the page's own init below has chosen a level. Re-rendering then would call
+        // showFamilyList(null), which throws; init is about to render anyway.
+        if (!currentLevelKey) return;
         if (!document.getElementById('family-tree-section').classList.contains('hidden')) {
             showFamilyTree(currentLevelKey, currentFamily);
         } else {

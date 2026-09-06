@@ -94,7 +94,11 @@
             return;
         }
         hideEl(emptyEl);
-        showEl(practiseEl);
+        // Only Word Match words can be played on a Word Match board. A learner whose misses are
+        // all grammar points or skipped reading words would otherwise follow this link and land
+        // on the level select with no explanation of why.
+        if (data.some(row => row.source === 'game')) showEl(practiseEl);
+        else hideEl(practiseEl);
         data.forEach(row => {
             const li = document.createElement('li');
             li.className = 'dash-missed-row';
