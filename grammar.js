@@ -593,11 +593,67 @@ function renderSentence(index) {
     renderTileBank(s);
 }
 
+// Distractors used to come from GRAMMAR_POOLS -- bare grammar points like そう and から. But 55%
+// of the answers are inflected surface forms carrying kanji (話せます, 吸わないでください), and not one
+// of the 132 pool entries has a kanji in it. That made the answer the only tile that could even
+// grammatically follow the sentence: on 日本語を[話すことができます]。you were choosing between 話せます
+// and そう/よう/みたい/らしい, so picking the one with a kanji won without reading the question.
+//
+// Distractors are drawn from other sentences' surface forms instead, so every tile is a phrase of
+// the same kind, and scored to match the answer's shape. GRAMMAR_POOLS is left in grammar-data.js
+// as the top-up when a track runs short, and because it is the right source if the tiles are ever
+// flipped to bare grammar points.
+const SURFACE_FORMS = {};
+const KANJI_RE = /[一-龯]/;
+
+// Rendered length, ignoring the furigana markup: <ruby>話<rt>はな</rt></ruby>せます is 3 characters
+// on screen, not 30.
+function plainLength(text) {
+    return text.replace(/<rp>.*?<\/rp>/g, '').replace(/<rt>.*?<\/rt>/g, '').replace(/<[^>]*>/g, '').length;
+}
+
+function buildSurfaceIndex() {
+    Object.keys(GRAMMAR_LEVELS).forEach(track => {
+        const seen = new Set();
+        SURFACE_FORMS[track] = [];
+        GRAMMAR_LEVELS[track].forEach(lv => lv.sentences.forEach(sn => {
+            // `old` counts too: it is the phrase the sentence is being changed *from*, so it is
+            // just as real a surface form as the answer.
+            [[sn.new, sn.newCore], [sn.old, sn.oldCore]].forEach(([text, core]) => {
+                if (!text || seen.has(text)) return;
+                seen.add(text);
+                SURFACE_FORMS[track].push({ text, core: core || null, kanji: KANJI_RE.test(text), len: plainLength(text) });
+            });
+        }));
+    });
+}
+buildSurfaceIndex();
+
 function buildTileOptions(s) {
-    const pool = GRAMMAR_POOLS[currentTrack];
     const exclude = new Set([s.new, s.newCore, s.old, s.oldCore].filter(Boolean));
-    const filtered = pool.filter(g => !exclude.has(g));
-    const distractors = shuffleArray(filtered).slice(0, 4);
+    // A distractor expressing the same grammar point as the answer is not a wrong answer, it is
+    // an unfair one, so same-core candidates are dropped rather than scored down.
+    const sameCore = new Set([s.newCore, s.oldCore].filter(Boolean));
+    const wantKanji = KANJI_RE.test(s.new);
+    const wantLen = plainLength(s.new);
+
+    const candidates = (SURFACE_FORMS[currentTrack] || []).filter(c =>
+        !exclude.has(c.text) && !(c.core && sameCore.has(c.core)));
+
+    // Shape first, then similar length, plus enough noise that a sentence does not always show
+    // the same four tiles.
+    const distractors = candidates
+        .map(c => ({ text: c.text, score: (c.kanji === wantKanji ? 3 : 0) - Math.abs(c.len - wantLen) * 0.25 + Math.random() * 1.5 }))
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 4)
+        .map(c => c.text);
+
+    // Top up from the bare pool only if a track somehow cannot field four, so a question never
+    // renders with fewer tiles than the player expects.
+    if (distractors.length < 4) {
+        const spare = shuffleArray(GRAMMAR_POOLS[currentTrack].filter(g => !exclude.has(g) && !distractors.includes(g)));
+        distractors.push(...spare.slice(0, 4 - distractors.length));
+    }
     return shuffleArray([s.new, ...distractors]);
 }
 
