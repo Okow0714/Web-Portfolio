@@ -70,6 +70,28 @@ Object.assign(window.I18N_STRINGS, {
         mn: 'Та хүссэн үедээ өөрийн бүртгэл болон түүнтэй холбоотой бүх зүйлийг устгах боломжтой — нэвтэрсний дараа бүртгэлийн цэснээс, эсвэл доорх хаягаар надад и-мэйл бичих замаар. Бүртгэлээ устгавал профайл, тэмдэглэгээ, зурвас, суралцах явц бүгд устана; дараа нь юу ч үлдэхгүй.'
     },
 
+    'privacy.deleteAccount.h': { en: 'Deleting your account', mn: 'Бүртгэлээ устгах' },
+    'privacy.deleteAccount.inApp': {
+        en: '<strong>On the site or in the app:</strong> open the account menu, choose Settings, then Delete My Account, and type DELETE to confirm. It takes effect immediately.',
+        mn: '<strong>Сайт дээр эсвэл аппаас:</strong> бүртгэлийн цэсээ нээж, «Тохиргоо» дотроос «Бүртгэлээ устгах»-ыг сонгоод, баталгаажуулахын тулд DELETE гэж бичнэ үү. Тэр даруй хүчин төгөлдөр болно.'
+    },
+    'privacy.deleteAccount.byEmail': {
+        en: '<strong>Without installing anything:</strong> email me at <a href="mailto:ganzorig2003@gmail.com">ganzorig2003@gmail.com</a> from the address you signed up with. I’ll delete the account as soon as I can, and within 30 days at the latest.',
+        mn: '<strong>Юу ч суулгахгүйгээр:</strong> бүртгүүлсэн хаягаасаа <a href="mailto:ganzorig2003@gmail.com">ganzorig2003@gmail.com</a> руу захидал бичээрэй. Би аль болох хурдан, хамгийн оройдоо 30 хоногийн дотор устгана.'
+    },
+    'privacy.deleteAccount.whatGoes': {
+        en: '<strong>What is deleted:</strong> your account and everything tied to it — your profile and display name, saved bookmarks, any message you sent through the contact form, and your Word Match, Dokkai Reader and Grammar Connect progress. It is a single database deletion that cascades to all of them; nothing is held back.',
+        mn: '<strong>Юу устах вэ:</strong> таны бүртгэл, түүнд холбоотой бүх зүйл — хувийн мэдээлэл, харагдах нэр, хадгалсан хавчуургууд, холбоо барих маягтаар илгээсэн захидал, мөн «Үг холбох тоглоом», «Уншлагын дадлага», «Дүрэм холбох»-ын явц. Энэ бол өгөгдлийн сангийн ганц удаагийн устгал бөгөөд бүгдэд нь дамжин үйлчилнэ; юу ч үлдэхгүй.'
+    },
+    'privacy.deleteAccount.whatStays': {
+        en: '<strong>What isn’t mine to delete:</strong> my web host’s standard request logs and my database provider’s routine backups, which age out on their own schedules. I don’t read either one and can’t pick your rows out of them.',
+        mn: '<strong>Миний устгах эрхгүй зүйл:</strong> вэб хостын энгийн хандалтын лог, өгөгдлийн сан хариуцагчийн ердийн нөөц хуулбар. Эдгээр нь тус тусын хугацаагаар аяндаа устдаг. Би аль алийг нь уншдаггүй, доторх таны мөрүүдийг ялгаж ч чадахгүй.'
+    },
+    'privacy.deleteAccount.note': {
+        en: 'You never needed an account to use the five study tools, and deleting yours leaves every one of them working.',
+        mn: 'Таван хэрэгслийг ашиглахад бүртгэл огт шаардлагагүй байсан бөгөөд бүртгэлээ устгасан ч бүгд хэвээрээ ажиллана.'
+    },
+
     'privacy.childrens.h': { en: "Children's privacy", mn: 'Хүүхдийн нууцлал' },
     'privacy.childrens.p': {
         en: "This site isn't directed at children under 13, and I don't knowingly collect information from anyone under that age.",
