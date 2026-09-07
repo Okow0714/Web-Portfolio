@@ -217,6 +217,26 @@ reports this as "…subtree intercepts pointer events", which is easy to dismiss
 - **Show a preview before a large rebuild.** An Artifact mockup (comparison of options, or a
   before/after toggle) before touching real files has repeatedly caught direction problems
   early and is the expected step before a multi-page change, not an optional extra.
+- **Never edit HTML or CSS structure with a regex.** Both failures on 2026-09-08 came from
+  this. A non-greedy `<div class="settings-lang-row">.*?</div>` stopped at the *nested*
+  `.lang-toggle` close and left the outer `</div>` behind, on eleven pages; the extra tag closed
+  `.modal-card` early and every close after it landed one level too high, until `.container`
+  closed before `<main>` — which cost the content its `z-index: 2` and left the fixed
+  `.background-animation` swallowing every click on four pages. The same batch started another
+  pattern *inside a comment*, leaving a dangling `/*` that ate the `.auth-btn` rule and the
+  `.modal-label` I then "found missing" and wrote a false commit message about. Instead: replace
+  an exact literal block, `assert` it was present, and for anything nested match balanced tags or
+  parse. After any structural edit, check `main` is still inside `.container` on every page — one
+  line in the browser, and it would have caught both instantly.
+- **A "regression" is only proven by comparing two builds.** My hit-test blamed
+  `.background-animation` on the pre-change stylesheet too, which nearly had me call the outage
+  pre-existing. What settled it was `git worktree add --detach <old-commit>` served on a second
+  port next to the current one: same page, one clicks and one does not. A check that fails
+  identically before and after is not evidence.
+- **Click things; do not just measure them.** `document.elementFromPoint` said the same thing on
+  the working and broken builds. Playwright's real `.click()` timed out only on the broken one,
+  and named the intercepting element in its error. Assert the *consequence* — the board opened,
+  the tree expanded — not that a hit-test looked plausible.
 - **Windows/PowerShell path escaping breaks Node heredocs.** `cat > file.js << 'EOF'` via Bash
   on this machine has mangled backslash-heavy Windows paths (`C:\Users\...`) more than once.
   Prefer the `Write` tool for scratch Playwright scripts over shell heredocs.
