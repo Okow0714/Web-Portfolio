@@ -353,10 +353,22 @@ body.game-playing .game-main {
     50% { opacity: 0.55; }
 }
 
-.board-stats span:not(.hud-stat) {
+/* Direct children only. Without the `>` this also matched the spans *inside* the score and
+   streak blocks -- the label, the number and the streak bar each got their own bordered pill,
+   which stacked them into a two-line tower that did not fit the toolbar row, floated the SCORE
+   and STREAK captions up over the board photo, and padded the 7px streak bar out to 14px. */
+.board-stats > span:not(.hud-stat) {
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid var(--panel-edge);
     padding: 6px 12px;
+}
+
+/* The two composite stats get the same pill as their single-line siblings, so the row reads as
+   one set of five rather than three pills and two loose stacks. */
+.board-stats > .hud-stat {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--panel-edge);
+    padding: 4px 12px;
 }
 
 .hud-stat {
