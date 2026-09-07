@@ -168,7 +168,9 @@ body.game-playing .game-main {
 }
 
 .game-subtitle {
-    color: var(--ink-soft);
+    /* Same trap as .hud-label: --ink-soft is for the light tiles, and this paragraph sits on
+       the dark ground, where it measured 2.43:1. */
+    color: var(--paper-muted);
     max-width: 680px;
     line-height: 1.6;
     margin: 0 0 8px;
@@ -382,7 +384,12 @@ body.game-playing .game-main {
     font-size: 0.6rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--ink-soft);
+    /* --paper-muted, not --ink-soft. --ink-soft is the muted BROWN meant for the light --paper
+       tiles; on this dark toolbar it measures 2.25:1, which is what made SCORE and STREAK read
+       as greyed out next to their neighbours at 6.64:1. The token block at the top of this file
+       says exactly this, and .board-stats was already corrected for it -- this child rule was
+       overriding the fix. */
+    color: var(--paper-muted);
 }
 
 .hud-value {
