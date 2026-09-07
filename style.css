@@ -1311,3 +1311,19 @@ body {
 .nav-dropdown a[data-jlpt="N3"]:hover { background: color-mix(in srgb, var(--jlpt-n3) 22%, transparent); border-left-color: var(--jlpt-n3); color: var(--jlpt-n3); }
 .nav-dropdown a[data-jlpt="N2"]:hover { background: color-mix(in srgb, var(--jlpt-n2) 22%, transparent); border-left-color: var(--jlpt-n2); color: var(--jlpt-n2); }
 .nav-dropdown a[data-jlpt="N1"]:hover { background: color-mix(in srgb, var(--jlpt-n1) 22%, transparent); border-left-color: var(--jlpt-n1); color: var(--jlpt-n1); }
+
+/* Darker ground (Settings -> Darker theme). The masthead and footer bookend every page, so they
+   move with it; the gold border and text are untouched. */
+/* On the elements themselves: --header-bg is declared on .site-header-wrap/.site-footer, so a
+   root-level override never reaches it. */
+html[data-contrast="darker"] .site-header-wrap,
+html[data-contrast="darker"] .site-footer {
+    --header-bg: #2b1a22;
+    --header-bg-elevated: #3a2430;
+}
+
+.auth-btn.is-on {
+    background: var(--accent, #7d2c3f);
+    color: #fff;
+    border-color: transparent;
+}

@@ -65,6 +65,14 @@ window.I18N_STRINGS = {
     'auth.checkEmailToConfirm': { en: 'Check your email to confirm your account, then log in.', mn: 'Бүртгэлээ баталгаажуулахын тулд и-мэйлээ шалгаад дараа нь нэвтэрнэ үү.' },
 
     'account.details': { en: 'Account details', mn: 'Бүртгэлийн мэдээлэл' },
+    'account.darkerLabel': { en: 'Darker theme', mn: 'Илүү бараан загвар' },
+    'account.darkerNote': {
+        en: 'Drops the dark pages and the site header to a midnight version of the same colours. Pages that are already light keep their own colours.',
+        mn: 'Бараан хуудсууд болон сайтын толгойг ижил өнгөнийх нь шөнийн хувилбар руу гүнзгийрүүлнэ. Аль хэдийн цайвар хуудсууд өөрийн өнгөө хадгална.'
+    },
+    'account.darkerOn': { en: 'On', mn: 'Асаалттай' },
+    'account.darkerOff': { en: 'Off', mn: 'Унтраалттай' },
+
     'account.tutorialsLabel': { en: 'Page tutorials', mn: 'Хуудасны заавар' },
     'account.tutorialsNote': {
         en: 'The first-visit walkthroughs on each tool. Showing them again also brings back the notation key.',

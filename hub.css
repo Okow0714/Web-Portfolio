@@ -156,3 +156,12 @@ body:has(.hub-main) {
     .hub-progress-tools { grid-template-columns: 1fr; }
     .hub-progress-guest { flex-direction: column; align-items: flex-start; }
 }
+
+/* Darker ground (Settings -> Darker theme). The entrance hall's wine goes to a midnight plum;
+   the gradient below is rebuilt from the same three tokens, so it follows automatically. */
+html[data-contrast="darker"] body:has(.hub-main),
+html[data-contrast="darker"] .hub-main {
+    --wine: #2b1a22;
+    --wine-deep: #150d12;
+    --wine-elevated: #3a2430;
+}

@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="origins.css">
     <link rel="stylesheet" href="fonts/fonts.css">
+    <!-- In <head> on purpose: it sets the ground colour before the first paint. -->
+    <script src="display-prefs.js"></script>
 </head>
 
 <body>
@@ -162,6 +164,13 @@
             <div class="modal-card">
                 <button id="account-settings-modal-close" class="modal-close" type="button" aria-label="Close">&times;</button>
                 <h3 data-i18n="account.settings">Settings</h3>
+                <div class="settings-row">
+                    <div>
+                        <p class="modal-label" data-i18n="account.darkerLabel">Darker theme</p>
+                        <p class="settings-row-note" data-i18n="account.darkerNote">Drops the dark pages and the site header to a midnight version of the same colours. Pages that are already light keep their own colours.</p>
+                    </div>
+                    <button type="button" class="auth-btn auth-btn-outline" id="darker-toggle-btn" aria-pressed="false" data-i18n="account.darkerOff">Off</button>
+                </div>
                 <div class="settings-row">
                     <div>
                         <p class="modal-label" data-i18n="account.tutorialsLabel">Page tutorials</p>

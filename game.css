@@ -1476,3 +1476,14 @@ body.game-playing .game-main {
 @media (prefers-reduced-motion: reduce) {
     .chain-combo.is-live, .chain-combo.is-lost { animation: none; }
 }
+
+/* Darker ground (Settings -> Darker theme). The hanafuda violet stays violet, it just drops to
+   a midnight version of itself: same hue, much less light. Only the grounds and edges move —
+   the gold accents are what the board is read by and are left exactly where they are. */
+html[data-contrast="darker"] body:has(.game-main),
+html[data-contrast="darker"] .game-main {
+    --ground: #0b0a10;
+    --ground-deep: #050409;
+    --panel: #14121c;
+    --panel-edge: #221d31;
+}

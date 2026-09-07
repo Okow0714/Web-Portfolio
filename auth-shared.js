@@ -217,6 +217,25 @@ if (accountSettingsBtnAnon) {
     });
 }
 
+// Darker theme. display-prefs.js owns the preference and applied it before the first paint;
+// this is only the control that flips it.
+const darkerToggleBtn = document.getElementById('darker-toggle-btn');
+function renderDarkerToggle() {
+    if (!darkerToggleBtn) return;
+    const on = window.getDarkerTheme && window.getDarkerTheme();
+    darkerToggleBtn.textContent = on ? tr('account.darkerOn', 'On') : tr('account.darkerOff', 'Off');
+    darkerToggleBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    darkerToggleBtn.classList.toggle('is-on', !!on);
+}
+if (darkerToggleBtn) {
+    renderDarkerToggle();
+    darkerToggleBtn.addEventListener('click', () => {
+        window.setDarkerTheme(!window.getDarkerTheme());
+        renderDarkerToggle();
+    });
+    document.addEventListener('sitelangchange', renderDarkerToggle);
+}
+
 // Clears every khanjp-tour-* flag, so the first-visit walkthroughs and the shared notation key
 // are all offered again. Local to this browser, like the flags themselves.
 const tutorialResetBtn = document.getElementById('tutorial-reset-btn');

@@ -596,3 +596,16 @@ body:has(.grammar-main) {
     .gc-tile-bank { grid-template-columns: repeat(3, 1fr); }
     .gc-sentence-card { padding: 26px 22px; }
 }
+
+/* Darker ground (Settings -> Darker theme) — see the note in game.css. */
+html[data-contrast="darker"] body:has(.grammar-main),
+html[data-contrast="darker"] .grammar-main {
+    --card: #171327;
+    --ai: #16223c;
+    --ai-light: #33477a;
+}
+
+/* The page ground is a literal here rather than a token, so it has to be restated. */
+html[data-contrast="darker"] body:has(.grammar-main) {
+    background: #0b0f1a;
+}
