@@ -1,48 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- The shared page chrome: masthead, account panel, modals, footer.
+     This file is the single source of truth. It is NOT served to visitors — build-chrome.js
+     writes it into every page listed there, and GitHub Pages serves the resulting plain HTML.
 
-<head>
-    <meta charset="UTF-8">
-    <title>Phonetics Family - Khan Japanese</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Explore kanji grouped by shared phonetic component (on'yomi-sharing families), split by JLPT level and ranked by real usage frequency.">
-    <link rel="canonical" href="https://khan-japanese.org/phonetics.html">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Khan Japanese">
-    <meta property="og:title" content="Phonetics Family - Khan Japanese">
-    <meta property="og:description" content="Explore kanji grouped by shared phonetic component (on'yomi-sharing families), split by JLPT level and ranked by real usage frequency.">
-    <meta property="og:url" content="https://khan-japanese.org/phonetics.html">
-    <meta property="og:image" content="https://khan-japanese.org/images/about/hero.jpg">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Phonetics Family - Khan Japanese">
-    <meta name="twitter:description" content="Explore kanji grouped by shared phonetic component (on'yomi-sharing families), split by JLPT level and ranked by real usage frequency.">
-    <meta name="twitter:image" content="https://khan-japanese.org/images/about/hero.jpg">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#4a2c3a">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="phonetics.css">
-    <link rel="stylesheet" href="tutorial.css">
-    <link rel="stylesheet" href="fonts/fonts.css">
-    <!-- In <head> on purpose: it sets the ground colour before the first paint. -->
-    <script src="display-prefs.js"></script>
-</head>
-
-<body>
-    <!-- Animated Background -->
-    <div class="background-animation">
-        <div class="floating-shape shape-1"></div>
-        <div class="floating-shape shape-2"></div>
-        <div class="floating-shape shape-3"></div>
-        <div class="floating-shape shape-4"></div>
-    </div>
-
-    <div class="container">
-        <!-- Header: one row - brand (home link), section nav, account menu -->
-        <!-- chrome:header -->
+     Edit here, then run:  node build-chrome.js
+     Editing the chrome inside a page directly will be overwritten on the next run. -->
+<!-- chrome:header -->
         <div class="site-header-wrap">
             <header class="header">
                 <a href="index.html" class="site-brand" aria-label="Khan Japanese - home">
@@ -72,7 +34,7 @@
                         <a href="reading.html" class="nav-trigger" data-i18n="nav.dokkaiReader">Dokkai Reader</a>
                     </div>
                     <div class="nav-item">
-                        <a href="phonetics.html" class="nav-trigger nav-current" data-i18n="nav.phoneticsFamily">Phonetics Family</a>
+                        <a href="phonetics.html" class="nav-trigger" data-i18n="nav.phoneticsFamily">Phonetics Family</a>
                     </div>
                     <div class="nav-item">
                         <a href="grammar.html" class="nav-trigger"><span data-i18n="nav.grammarConnect">Grammar Connect</span><span class="nav-caret" aria-hidden="true">&#9662;</span></a>
@@ -208,84 +170,8 @@
                 </div>
             </div>
         </div>
-        <!-- /chrome:header -->
-
-        <main class="phonetics-main">
-            <div class="phonetics-layout">
-                <!-- Sidebar: page intro + persistent JLPT level nav. Stays visible/usable from
-                     both the family-list view and the family-tree view — clicking a level here
-                     always jumps straight to that level's family list. -->
-                <aside class="phonetics-sidebar">
-                    <button type="button" id="phonetics-title-trigger" class="phonetics-title-trigger" aria-haspopup="dialog" title="What's a phonetic component?">
-                        <h1 class="phonetics-title" data-i18n="phonetics.titleMain">Phonetics Family</h1>
-                        <span class="phonetics-title-info" aria-hidden="true">&#9432;</span>
-                    </button>
-                    <p class="phonetics-subtitle" data-i18n="phonetics.subtitle">Kanji that share a phonetic component often share an on'yomi reading too — learn one, and you get a running start on the rest of its family. Pick a JLPT level to see its phonetic families, ranked by how often their most common member actually shows up in real Japanese text.</p>
-                    <button type="button" id="phonetics-info-btn" class="ghost-btn phonetics-info-btn"><span aria-hidden="true">&#9432;</span> <span data-i18n="phonetics.whatIsPhoneticComponent">What's a phonetic component?</span></button>
-                    <nav class="level-nav" id="phonetics-level-nav" aria-label="JLPT level"></nav>
-                    <!-- Data-source attributions moved to the sitewide footer: Word Match uses the
-                         same Tatoeba sentences, so CC BY / CC BY-SA credit belongs on every page,
-                         not only in this sidebar. -->
-                </aside>
-
-                <div class="phonetics-content">
-                    <!-- Family list within a level -->
-                    <section id="family-list-section" class="phonetics-section">
-                        <h2 id="family-list-title" class="phonetics-title"></h2>
-                        <p id="family-list-subtitle" class="phonetics-subtitle"></p>
-                        <div class="family-list" id="family-list"></div>
-                    </section>
-
-                    <!-- Family tree -->
-                    <section id="family-tree-section" class="phonetics-section hidden">
-                        <button id="family-tree-back-btn" class="ghost-btn" type="button"><span aria-hidden="true">&larr;</span> <span data-i18n="phonetics.families">Families</span></button>
-                        <div class="tree-wrap" id="tree-wrap"></div>
-                    </section>
-                </div>
-            </div>
-        </main>
-
-        <!-- Phonetic component explainer modal — trigger: page H1 or the dedicated info button only -->
-        <div id="phonetics-info-modal" class="modal-overlay hidden">
-            <div class="modal-card phonetics-info-card">
-                <button id="phonetics-info-close" class="modal-close" type="button" aria-label="Close">&times;</button>
-                <h3 data-i18n="phonetics.modalTitle">What's a Phonetic Component?</h3>
-                <div class="morph-demo">
-                    <div class="morph-stages" id="morph-stages">
-                        <div class="morph-stage" data-stage="component">
-                            <div class="morph-glyph morph-glyph-component">相</div>
-                            <p class="morph-caption" data-i18n="phonetics.stageComponent">component</p>
-                        </div>
-                        <div class="morph-stage" data-stage="phonetic">
-                            <div class="morph-glyph-row">
-                                <div class="morph-glyph">相</div>
-                                <div class="morph-reading">ソウ</div>
-                            </div>
-                            <p class="morph-caption" data-i18n-html="phonetics.stagePhonetic">phonetic (相 &middot; ソウ)</p>
-                        </div>
-                        <div class="morph-stage" data-stage="kanji">
-                            <p class="morph-sub">相 + 心</p>
-                            <div class="morph-glyph">想</div>
-                            <p class="morph-caption" data-i18n-html="phonetics.stageKanji">kanji (想 &middot; そう &middot; to think/imagine)</p>
-                        </div>
-                        <div class="morph-stage" data-stage="combination">
-                            <div class="morph-glyph morph-glyph-word">想像</div>
-                            <p class="morph-caption" data-i18n-html="phonetics.stageCombination">combination (想像 &middot; そうぞう &middot; imagination)</p>
-                        </div>
-                    </div>
-                    <div class="morph-dots" id="morph-dots">
-                        <span class="morph-dot" data-dot="0"></span>
-                        <span class="morph-dot" data-dot="1"></span>
-                        <span class="morph-dot" data-dot="2"></span>
-                        <span class="morph-dot" data-dot="3"></span>
-                    </div>
-                </div>
-                <p class="phonetics-info-text" data-i18n="phonetics.explainerText">A "phonetic component" is a recurring part inside a kanji that hints at its Chinese-derived on'yomi reading, rather than its meaning. Kanji sharing the same phonetic component — like 相, 想, and 霜 above — often sound alike even though they mean very different things, because the component was originally chosen for its sound. A separate "meaning radical" (like 心, heart, tucked into 想) is what actually carries the sense.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- chrome:footer -->
+<!-- /chrome:header -->
+<!-- chrome:footer -->
     <footer class="site-footer">
         <div class="footer-inner">
             <div class="footer-grid">
@@ -328,20 +214,4 @@
             </div>
         </div>
     </footer>
-    <!-- /chrome:footer -->
-
-    <script src="i18n-strings-shared.js"></script>
-    <script src="phonetics-i18n-strings.js"></script>
-    <script src="tutorial-i18n-strings.js"></script>
-    <script src="i18n.js"></script>
-    <script src="reading-style.js"></script>
-    <script src="vendor/supabase.min.js"></script>
-    <script src="supabase-config.js"></script>
-    <script src="auth-shared.js"></script>
-    <script src="phonetics-data.js"></script>
-    <script src="phonetics.js"></script>
-    <script src="tutorial.js"></script>
-    <script src="pwa-register.js"></script>
-</body>
-
-</html>
+<!-- /chrome:footer -->

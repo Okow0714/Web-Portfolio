@@ -37,9 +37,28 @@ version tucked the credits behind a `<details>` right in the footer; the user as
 separate page instead, both because Word Game's and Grammar Connect's full photo/music lists
 made that disclosure huge, and because those two tools were *also* independently duplicating
 their own credits in-page, under their level-select grids, which is what prompted consolidating
-everything onto one dedicated page). Both the masthead and footer are identical across the nine
+everything onto one dedicated page). Both the masthead and footer are identical across the eleven
 pages that carry them (every page above except `about.html`, which has no shared header/footer
 at all, and `reset-password.html`); `credits.html` itself carries the masthead+footer too.
+
+**Shared chrome is generated, not copy-pasted** (`_chrome.html` + `build-chrome.js`). The
+masthead, account panel, all three account modals (auth, account details, **and settings** — the
+settings modal is deliberately inside the block, since it is the exact region the eleven-page
+regex edit corrupted) and the footer — ~205 lines — live **once** in `_chrome.html`, and
+`node build-chrome.js` writes them into the eleven pages between
+`<!-- chrome:header -->…<!-- /chrome:header -->` and `<!-- chrome:footer -->…<!-- /chrome:footer -->`
+markers. **Edit `_chrome.html` and re-run the script; edits made to the chrome inside a page are
+overwritten on the next run.** The only per-page difference is `nav-current`, applied from the
+filename, so the canonical copy carries none (`index.html` and the three legal pages have no nav
+entry of their own and correctly get none). Committed output is plain static HTML exactly as
+before — GitHub Pages, `sw.js` and the PWA are unaffected, and neither file belongs in
+`APP_SHELL`. The leading underscore is load-bearing: Pages runs Jekyll by default (no `.nojekyll`,
+no `_config.yml` here) and Jekyll does not publish underscore-prefixed files. The script is
+newline-aware — the pages are CRLF and `_chrome.html` is LF, and assembling in the wrong one
+rewrites every line of every page as a one-character diff, which is how a real change would hide.
+Its guard is that writing the chrome must not *change* a page's `<div>` balance; an absolute
+zero-balance test would let one page's unrelated quirk block the whole build. This exists because
+the 2026-09-08 outage was one bad find-and-replace applied eleven times at once.
 
 **Page-scoped theme files** (`hub.css`, `phonetics.css`, `reading.css`, `grammar.css`,
 `dictionary.css`, `dashboard.css`, `game.css`, `about.css`, `origins.css`): each defines its own
