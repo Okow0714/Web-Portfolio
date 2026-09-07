@@ -217,6 +217,25 @@ if (accountSettingsBtnAnon) {
     });
 }
 
+// Furigana style. reading-style.js owns the preference and the transliteration; this is the
+// control, and it re-renders itself on a language change like every other label here.
+function renderReadingStyle() {
+    if (!window.getReadingStyle) return;
+    const mode = window.getReadingStyle();
+    document.querySelectorAll('[data-reading-style]').forEach(btn => {
+        const on = btn.dataset.readingStyle === mode;
+        btn.classList.toggle('is-on', on);
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+}
+document.querySelectorAll('[data-reading-style]').forEach(btn => {
+    btn.addEventListener('click', () => {
+        window.setReadingStyle(btn.dataset.readingStyle);
+        renderReadingStyle();
+    });
+});
+renderReadingStyle();
+
 // Darker theme. display-prefs.js owns the preference and applied it before the first paint;
 // this is only the control that flips it.
 const darkerToggleBtn = document.getElementById('darker-toggle-btn');

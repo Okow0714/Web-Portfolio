@@ -1327,3 +1327,41 @@ html[data-contrast="darker"] .site-footer {
     color: #fff;
     border-color: transparent;
 }
+
+/* Segmented control for a small set of exclusive choices. */
+.pref-seg {
+    display: inline-flex;
+    flex: none;
+    border: 1px solid var(--border, #d8d2d6);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.pref-seg-btn {
+    padding: 8px 12px;
+    border: none;
+    border-left: 1px solid var(--border, #d8d2d6);
+    background: none;
+    color: var(--text-secondary, #4a4a52);
+    font: inherit;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.pref-seg-btn:first-child { border-left: none; }
+.pref-seg-btn:hover { background: var(--bg-sunk, rgba(0, 0, 0, 0.04)); }
+.pref-seg-btn.is-on { background: var(--accent, #7d2c3f); color: #fff; }
+.pref-seg-btn:focus-visible { outline: 2px solid var(--accent, #7d2c3f); outline-offset: -2px; }
+
+/* .modal-label was only ever defined in about.css, which the other twelve pages do not load —
+   so in every modal outside about.html it was an unstyled <p> carrying the browser's default
+   1em margins. That is why a settings control sat visibly higher than the label it belongs to.
+   Defined here, where the modals that use it actually live. */
+.modal-label {
+    margin: 0 0 4px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary, #1a1a1a);
+}

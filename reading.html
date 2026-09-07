@@ -171,6 +171,17 @@
                 <h3 data-i18n="account.settings">Settings</h3>
                 <div class="settings-row">
                     <div>
+                        <p class="modal-label" data-i18n="account.readingLabel">Furigana shown as</p>
+                        <p class="settings-row-note" data-i18n="account.readingNote">The small readings above kanji. Useful if you are still learning kana &mdash; the Japanese itself never changes.</p>
+                    </div>
+                    <div class="pref-seg" role="group" id="reading-style-group">
+                        <button type="button" class="pref-seg-btn" data-reading-style="kana" lang="ja">あい</button>
+                        <button type="button" class="pref-seg-btn" data-reading-style="romaji">romaji</button>
+                        <button type="button" class="pref-seg-btn" data-reading-style="cyrillic">кирилл</button>
+                    </div>
+                </div>
+                <div class="settings-row">
+                    <div>
                         <p class="modal-label" data-i18n="account.darkerLabel">Darker theme</p>
                         <p class="settings-row-note" data-i18n="account.darkerNote">Drops the dark pages and the site header to a midnight version of the same colours. Pages that are already light keep their own colours.</p>
                     </div>
@@ -318,6 +329,7 @@
     <script src="reading-i18n-strings.js"></script>
     <script src="tutorial-i18n-strings.js"></script>
     <script src="i18n.js"></script>
+    <script src="reading-style.js"></script>
     <script src="vendor/supabase.min.js"></script>
     <script src="supabase-config.js"></script>
     <script src="auth-shared.js"></script>

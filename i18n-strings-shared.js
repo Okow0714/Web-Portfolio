@@ -65,6 +65,12 @@ window.I18N_STRINGS = {
     'auth.checkEmailToConfirm': { en: 'Check your email to confirm your account, then log in.', mn: 'Бүртгэлээ баталгаажуулахын тулд и-мэйлээ шалгаад дараа нь нэвтэрнэ үү.' },
 
     'account.details': { en: 'Account details', mn: 'Бүртгэлийн мэдээлэл' },
+    'account.readingLabel': { en: 'Furigana shown as', mn: 'Фуригана юугаар харагдах' },
+    'account.readingNote': {
+        en: 'The small readings above kanji. Useful if you are still learning kana — the Japanese itself never changes.',
+        mn: 'Ханзны дээр гарах жижиг уншлага. Кана сурч байгаа бол тустай — япон бичвэр өөрөө огт өөрчлөгдөхгүй.'
+    },
+
     'account.darkerLabel': { en: 'Darker theme', mn: 'Илүү бараан загвар' },
     'account.darkerNote': {
         en: 'Drops the dark pages and the site header to a midnight version of the same colours. Pages that are already light keep their own colours.',
