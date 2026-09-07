@@ -727,7 +727,16 @@ body {
     color: var(--header-accent);
 }
 
-/* Settings modal's language toggle: same .auth-btn {
+/* The base action button, shared by the account panel and every modal. */
+.modal-label {
+    margin: 0 0 4px;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.auth-btn {
     display: inline-block;
     padding: 10px 20px;
     background: var(--accent-gradient);
@@ -1355,13 +1364,13 @@ html[data-contrast="darker"] .site-footer {
 .pref-seg-btn.is-on { background: var(--accent, #7d2c3f); color: #fff; }
 .pref-seg-btn:focus-visible { outline: 2px solid var(--accent, #7d2c3f); outline-offset: -2px; }
 
-/* .modal-label was only ever defined in about.css, which the other twelve pages do not load —
-   so in every modal outside about.html it was an unstyled <p> carrying the browser's default
-   1em margins. That is why a settings control sat visibly higher than the label it belongs to.
-   Defined here, where the modals that use it actually live. */
-.modal-label {
+/* Settings rows want a real label rather than the tiny uppercase eyebrow .modal-label is
+   elsewhere, so this overrides it for them only. */
+.settings-row .modal-label {
     margin: 0 0 4px;
     font-size: 0.95rem;
     font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
     color: var(--text-primary, #1a1a1a);
 }
