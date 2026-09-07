@@ -445,6 +445,63 @@ body {
 /* No margin-left:auto here — .header-nav's own `margin: 0 auto` already eats all the free
    space on both sides, which centers the nav between brand and account and pushes this to
    the far right. A second auto margin would split that free space three ways instead. */
+/* Language switch — in the masthead rather than behind the account menu, because it is the one
+   setting a visitor needs before deciding whether to sign up. Kept narrow: the nav already runs
+   out of room in Mongolian around 1280px, so this must not be the thing that pushes it over. */
+.lang-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    align-self: center;
+    padding: 6px 10px;
+    border: 1px solid var(--header-border);
+    border-radius: 999px;
+    background: none;
+    color: var(--header-text-dim, #d6c3cd);
+    font: inherit;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.lang-switch span[aria-hidden] {
+    font-family: var(--font-jp, serif);
+    font-size: 0.92rem;
+    line-height: 1;
+    opacity: 0.75;
+}
+
+.lang-switch:hover { border-color: var(--header-accent, #e8bd6d); color: #fff; }
+.lang-switch:focus-visible { outline: 2px solid var(--header-accent, #e8bd6d); outline-offset: 2px; }
+
+/* Settings rows: a label and its explanation on the left, the control on the right. */
+.settings-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 4px 0 18px;
+}
+
+.settings-row-note {
+    margin: 4px 0 0;
+    font-size: 0.84rem;
+    line-height: 1.5;
+    color: var(--text-muted, #6d6670);
+    max-width: 46ch;
+}
+
+.settings-row .auth-btn { flex: none; }
+
+@media (max-width: 560px) {
+    .lang-switch .lang-switch-code { display: none; }
+    .lang-switch { padding: 6px 8px; }
+    .settings-row { flex-direction: column; gap: 10px; }
+}
+
 .account-menu {
     position: relative;
     flex: 0 0 auto;
@@ -670,72 +727,7 @@ body {
     color: var(--header-accent);
 }
 
-/* Settings modal's language toggle: same .lang-toggle-btn markup as before, but now living
-   inside a page-level modal (a sibling of .site-header-wrap, not a descendant) instead of the
-   header-scoped account panel -- the base rule's --header-* tokens don't cascade there, so this
-   overrides with the page's own tokens instead. Higher specificity than the base rule wins
-   regardless of source order. */
-.settings-lang-row {
-    margin: 0 0 24px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--border);
-}
-
-.settings-lang-row .lang-toggle-btn {
-    border-color: var(--border-strong);
-    color: var(--text-secondary);
-}
-
-.settings-lang-row .lang-toggle-btn:hover {
-    border-color: var(--accent);
-    color: var(--text-primary);
-}
-
-.settings-lang-row .lang-toggle-btn.active {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: #ffffff;
-}
-
-.lang-toggle {
-    display: flex;
-    gap: 4px;
-}
-
-.lang-toggle-btn {
-    flex: 1;
-    background: none;
-    border: 1px solid var(--header-border);
-    color: var(--header-text-muted);
-    padding: 6px 0;
-    font-size: 0.8rem;
-    font-weight: 600;
-    font-family: inherit;
-    cursor: pointer;
-    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-}
-
-.lang-toggle-btn:hover {
-    border-color: var(--header-accent);
-    color: var(--header-text);
-}
-
-.lang-toggle-btn.active {
-    background: var(--header-accent);
-    border-color: var(--header-accent);
-    color: var(--header-bg);
-    cursor: default;
-}
-
-.modal-label {
-    margin: 0 0 4px;
-    font-size: 0.7rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-}
-
-.auth-btn {
+/* Settings modal's language toggle: same .auth-btn {
     display: inline-block;
     padding: 10px 20px;
     background: var(--accent-gradient);

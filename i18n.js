@@ -38,6 +38,17 @@
             btn.classList.toggle('active', btn.dataset.lang === lang);
         });
 
+        // The masthead switch names the language it would take you to, not the one you are in:
+        // a control that shows the current state leaves you guessing what pressing it does.
+        const other = lang === 'mn' ? 'en' : 'mn';
+        document.querySelectorAll('[data-lang-switch]').forEach(btn => {
+            const code = btn.querySelector('.lang-switch-code');
+            if (code) code.textContent = other === 'mn' ? 'МН' : 'EN';
+            const label = other === 'mn' ? 'Монгол хэл рүү шилжих' : 'Switch to English';
+            btn.setAttribute('aria-label', label);
+            btn.setAttribute('title', label);
+        });
+
         document.dispatchEvent(new CustomEvent('sitelangchange', { detail: { lang } }));
     }
 
@@ -66,6 +77,10 @@
         applyLang(currentLang());
         document.querySelectorAll('.lang-toggle-btn').forEach(btn => {
             btn.addEventListener('click', () => window.setSiteLang(btn.dataset.lang));
+        });
+
+        document.querySelectorAll('[data-lang-switch]').forEach(btn => {
+            btn.addEventListener('click', () => window.setSiteLang(window.siteLang() === 'mn' ? 'en' : 'mn'));
         });
     });
 })();

@@ -2,7 +2,6 @@
 // auth/account modals, and the shared footer. Loaded before each page's own <page>-i18n-strings.js
 // file, which extends this same window.I18N_STRINGS object with page-specific keys.
 window.I18N_STRINGS = {
-    'lang.label': { en: 'Language', mn: 'Хэл' },
 
     // Generic "game shell" keys shared by any timed level-based game page (currently game.html
     // and grammar.html). Keep these here, not in a page-scoped strings file -- a page-scoped
@@ -66,6 +65,14 @@ window.I18N_STRINGS = {
     'auth.checkEmailToConfirm': { en: 'Check your email to confirm your account, then log in.', mn: 'Бүртгэлээ баталгаажуулахын тулд и-мэйлээ шалгаад дараа нь нэвтэрнэ үү.' },
 
     'account.details': { en: 'Account details', mn: 'Бүртгэлийн мэдээлэл' },
+    'account.tutorialsLabel': { en: 'Page tutorials', mn: 'Хуудасны заавар' },
+    'account.tutorialsNote': {
+        en: 'The first-visit walkthroughs on each tool. Showing them again also brings back the notation key.',
+        mn: 'Хэрэгсэл бүр дээр анх ороход гарч ирдэг заавар. Дахин үзвэл тэмдэглэгээний тайлбар ч мөн эргэж гарна.'
+    },
+    'account.tutorialsReset': { en: 'Show again', mn: 'Дахин үзүүлэх' },
+    'account.tutorialsDone': { en: 'They will show again', mn: 'Дахин гарч ирнэ' },
+
     'account.settings': { en: 'Settings', mn: 'Тохиргоо' },
     'account.yourAccount': { en: 'Your Account', mn: 'Таны бүртгэл' },
     'account.dangerZone': { en: 'Danger Zone', mn: 'Аюултай бүс' },

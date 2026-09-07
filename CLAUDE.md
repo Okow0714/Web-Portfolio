@@ -75,9 +75,11 @@ re-nest without updating `auth-shared.js`. The panel's signed-in state is a prof
 (avatar + email) then real navigation: a `Dashboard` link, `Account details` (opens
 `#account-details-modal` — just the email), and `Settings` (opens `#account-settings-modal` —
 the language toggle, now with flag emoji, plus the delete-account danger zone), with Log Out
-pinned to the bottom via `margin-top: auto`. `.lang-toggle-btn` is shared between the two
-contexts it appears in (the old always-visible panel row is gone; it only lives in the Settings
-modal now) — its default rule uses the masthead's `--header-*` tokens, and `.settings-lang-row
+pinned to the bottom via `margin-top: auto`. The **language switch lives in the masthead** (`.lang-switch`, `[data-lang-switch]`, wired in
+`i18n.js`) and is reachable without an account — it is the one setting a visitor needs before
+deciding whether to sign up. It names the language it would switch *to*. The Settings modal's
+copy of it is gone; Settings now holds the page-tutorial reset and the delete-account danger
+zone, and is offered signed out as well as signed in — its default rule uses the masthead's `--header-*` tokens, and `.settings-lang-row
 .lang-toggle-btn` overrides with page-level tokens since a modal is a sibling of
 `.site-header-wrap`, not a descendant, so `--header-*` doesn't cascade there. `.auth-btn` is
 shared across the account panel and every modal; the panel's copy is pinned to masthead gold via

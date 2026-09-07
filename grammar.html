@@ -79,6 +79,12 @@
                     </div>
                 </nav>
 
+                <!-- Language lives here, not behind the account menu: it is the one setting a
+                     visitor needs before they have decided whether to sign up at all. -->
+                <button type="button" class="lang-switch" id="lang-switch" data-lang-switch>
+                    <span aria-hidden="true">翻</span><span class="lang-switch-code"></span>
+                </button>
+
                 <div class="account-menu" id="account-menu">
                     <button class="account-menu-trigger" id="account-menu-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Account menu">
                         <span id="account-menu-avatar">
@@ -90,6 +96,9 @@
                         <div id="auth-anon">
                             <p class="account-menu-note" data-i18n="auth.loginHint">Log in to save your progress across visits.</p>
                             <button id="auth-login-btn" class="auth-btn account-menu-cta" type="button" data-i18n="auth.logIn">Log In</button>
+                            <nav class="account-menu-nav">
+                                <button type="button" class="account-menu-nav-item" id="account-settings-btn-anon" data-i18n="account.settings">Settings</button>
+                            </nav>
                         </div>
                         <div id="auth-authed" class="hidden">
                             <div class="account-menu-profile">
@@ -150,12 +159,13 @@
             <div class="modal-card">
                 <button id="account-settings-modal-close" class="modal-close" type="button" aria-label="Close">&times;</button>
                 <h3 data-i18n="account.settings">Settings</h3>
-                <div class="settings-lang-row">
-                    <p class="modal-label" data-i18n="lang.label">Language</p>
-                    <div class="lang-toggle" role="group" aria-label="Language">
-                        <button type="button" class="lang-toggle-btn" data-lang="en">🇬🇧 EN</button>
-                        <button type="button" class="lang-toggle-btn" data-lang="mn">🇲🇳 МН</button>
+                <div class="settings-row">
+                    <div>
+                        <p class="modal-label" data-i18n="account.tutorialsLabel">Page tutorials</p>
+                        <p class="settings-row-note" data-i18n="account.tutorialsNote">The first-visit walkthroughs on each tool. Showing them again also brings back the notation key.</p>
                     </div>
+                    <button type="button" class="auth-btn auth-btn-outline" id="tutorial-reset-btn" data-i18n="account.tutorialsReset">Show again</button>
+                </div>
                 </div>
                 <div class="account-danger-zone">
                     <h4 data-i18n="account.dangerZone">Danger Zone</h4>

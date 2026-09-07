@@ -206,6 +206,32 @@ function resetAccountDeleteUI() {
     showEl(accountDeleteStartBtn);
 }
 
+// Settings is offered signed out as well as signed in: with language now in the masthead the
+// only thing behind it for a visitor without an account is the tutorial reset, but hiding a
+// settings screen from people who have not signed up is its own small hostility.
+const accountSettingsBtnAnon = document.getElementById('account-settings-btn-anon');
+if (accountSettingsBtnAnon) {
+    accountSettingsBtnAnon.addEventListener('click', () => {
+        closeAccountMenu();
+        showEl(accountSettingsModal);
+    });
+}
+
+// Clears every khanjp-tour-* flag, so the first-visit walkthroughs and the shared notation key
+// are all offered again. Local to this browser, like the flags themselves.
+const tutorialResetBtn = document.getElementById('tutorial-reset-btn');
+if (tutorialResetBtn) {
+    tutorialResetBtn.addEventListener('click', () => {
+        try {
+            Object.keys(localStorage)
+                .filter(k => k.startsWith('khanjp-tour-'))
+                .forEach(k => localStorage.removeItem(k));
+        } catch (e) { /* private mode */ }
+        tutorialResetBtn.textContent = tr('account.tutorialsDone', 'They will show again');
+        tutorialResetBtn.disabled = true;
+    });
+}
+
 document.getElementById('account-details-btn').addEventListener('click', () => {
     if (!currentSession) return;
     document.getElementById('account-details-email').textContent = currentSession.user.email;
