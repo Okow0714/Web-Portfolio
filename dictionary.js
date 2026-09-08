@@ -1,6 +1,6 @@
 // Dictionary (dictionary.html) — two tabs sharing one page. The primary "Монгол ⇄ 日本語" tab
-// is a Mongolian<->Japanese lookup built from mnjp-data.js (MNJP_ENTRIES, 3,427 words merged
-// from four sources -- see that file's header comment). The secondary "漢語 ⇄ 和語" tab is the
+// is a Mongolian<->Japanese lookup built from mnjp-data.js (MNJP_ENTRIES, 3,537 words merged
+// from five sources -- see that file's header comment). The secondary "漢語 ⇄ 和語" tab is the
 // original Kango<->Wago dictionary, depending on dictionary-data.js (DICTIONARY_ENTRIES) exactly
 // as before -- that file is untouched by this rework, since Word Match's Wakan winged-tile bonus
 // event still reads kango/wago pairs directly from it, independent of this page.
@@ -92,7 +92,7 @@ document.getElementById('dict-tab-wakan').addEventListener('click', () => switch
 // Монгол ⇄ 日本語 tab (mnjp-data.js)
 // ---------------------------------------------------------------------------
 let mnjpQuery = '';
-const SOURCE_LABEL_KEY = { gamewords: 'dict.sourceGamewords', bridge: 'dict.sourceBridge', kangowago: 'dict.sourceKangowago', core: 'dict.sourceCore' };
+const SOURCE_LABEL_KEY = { gamewords: 'dict.sourceGamewords', bridge: 'dict.sourceBridge', kangowago: 'dict.sourceKangowago', core: 'dict.sourceCore', everyday: 'dict.sourceEveryday' };
 
 function matchesMnjpSearch(entry, q) {
     if (!q) return true;
@@ -132,7 +132,7 @@ function phoneticChipsHtml(...texts) {
 }
 
 // Builds the expanded detail (source tags, extra glosses, example sentence, kango/wago
-// cross-link) -- called lazily on first expand rather than for every one of the 3,427 rows up
+// cross-link) -- called lazily on first expand rather than for every one of the 3,537 rows up
 // front, since most of them are never opened in a given visit.
 function buildMnjpDetail(entry) {
     const sourceTags = entry.sources
@@ -181,7 +181,7 @@ function renderMnjpEntry(entry) {
     return card;
 }
 
-// At 3,427 entries, building every matching card on every keystroke got visibly laggy
+// At 3,537 entries, building every matching card on every keystroke got visibly laggy
 // (~500ms measured for a broad query) -- nobody scans a list that long anyway, so results
 // beyond this cap just don't render; the count line says so and asks for a narrower search.
 const MNJP_RENDER_CAP = 150;

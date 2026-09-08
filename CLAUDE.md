@@ -122,8 +122,8 @@ Related: `phonetics.html` used to auto-open its "what's a phonetic component?" m
 load; that is gone — the tour points at the button instead.
 
 **Large data files — never `Read` whole**: `phonetics-data.js` (~2.8MB), `game-words.js`
-(~1.4MB), `mnjp-data.js` (~1.4MB, `MNJP_ENTRIES` — dictionary.html's primary tab, 3,427 words
-merged from four sources, see its own header comment), `reading-texts.js` (~1.1MB),
+(~1.4MB), `mnjp-data.js` (~1.4MB, `MNJP_ENTRIES` — dictionary.html's primary tab, 3,537 words
+merged from five sources, see its own header comment), `reading-texts.js` (~1.1MB),
 `dictionary-data.js` (~185KB, `DICTIONARY_ENTRIES` — dictionary.html's secondary Kango⇄Wago tab,
 lazy-loaded) are JS files assigning one `const` to a JSON-shaped literal. Query them with
 `grep`/`node -e`, not the Read tool. To bulk-edit, parse with `JSON.parse(text after "const
