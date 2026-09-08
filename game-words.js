@@ -6091,29 +6091,9 @@ const WORD_LEVELS = [
     {
         "level": 13,
         "jlpt": "N4",
-        "title": "N4 · Level 1",
+        "title": "Time, sky and seasons",
         "sets": [
             [
-                {
-                    "jp": "生きる",
-                    "reading": "いきる",
-                    "en": "to live",
-                    "meanings": [
-                        "to live"
-                    ],
-                    "example": {
-                        "jp": "僕は彼女無しに生きる術を学んだ。",
-                        "en": "I learned to live without her.",
-                        "furigana": "<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>は<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby><ruby>無<rp>(</rp><rt>な</rt><rp>)</rp></ruby>しに<ruby>生<rp>(</rp><rt>い</rt><rp>)</rp></ruby>きる<ruby>術<rp>(</rp><rt>じゅつ</rt><rp>)</rp></ruby>を<ruby>学<rp>(</rp><rt>まな</rt><rp>)</rp></ruby>んだ。",
-                        "enMn": "Би түүнгүйгээр амьдрахыг сурсан."
-                    },
-                    "phonetic": "生",
-                    "phoneticReading": "セイ、ショウ",
-                    "enMn": "амьдрах",
-                    "meaningsMn": [
-                        "амьдрах"
-                    ]
-                },
                 {
                     "jp": "星",
                     "reading": "ほし",
@@ -6132,90 +6112,6 @@ const WORD_LEVELS = [
                     "enMn": "од",
                     "meaningsMn": [
                         "од"
-                    ]
-                },
-                {
-                    "jp": "通る",
-                    "reading": "とおる",
-                    "en": "to pass by",
-                    "meanings": [
-                        "to pass (by)",
-                        "to go through"
-                    ],
-                    "example": {
-                        "jp": "夕べ１０時頃君の家のそばを通ったよ。",
-                        "en": "I passed by your house about 10 last night.",
-                        "furigana": "<ruby>夕<rp>(</rp><rt>ゆう</rt><rp>)</rp></ruby>べ１０<ruby>時<rp>(</rp><rt>じ</rt><rp>)</rp></ruby><ruby>頃<rp>(</rp><rt>ごろ</rt><rp>)</rp></ruby><ruby>君<rp>(</rp><rt>くん</rt><rp>)</rp></ruby>の<ruby>家<rp>(</rp><rt>いえ</rt><rp>)</rp></ruby>のそばを<ruby>通<rp>(</rp><rt>とお</rt><rp>)</rp></ruby>ったよ。",
-                        "enMn": "Би өчигдөр орой 10 цагийн орчимд чиний гэрийн хажуугаар өнгөрсөн."
-                    },
-                    "phonetic": "甬",
-                    "phoneticReading": "ツウ",
-                    "enMn": "өнгөрөх",
-                    "meaningsMn": [
-                        "өнгөрөх",
-                        "дамжин өнгөрөх"
-                    ]
-                },
-                {
-                    "jp": "通う",
-                    "reading": "かよう",
-                    "en": "to go back and forth",
-                    "meanings": [
-                        "to go back and forth",
-                        "to commute"
-                    ],
-                    "example": {
-                        "jp": "理恵と私は同じ学校に通いました。",
-                        "en": "Rie and I went to the same school.",
-                        "furigana": "<ruby>理恵<rp>(</rp><rt>りえ</rt><rp>)</rp></ruby>と<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>は<ruby>同<rp>(</rp><rt>おな</rt><rp>)</rp></ruby>じ<ruby>学校<rp>(</rp><rt>がっこう</rt><rp>)</rp></ruby>に<ruby>通<rp>(</rp><rt>かよ</rt><rp>)</rp></ruby>いました。",
-                        "enMn": "Риэ бид хоёр ижил сургуульд сурдаг байсан."
-                    },
-                    "phonetic": "甬",
-                    "phoneticReading": "ツウ",
-                    "enMn": "давтан явж ирэх",
-                    "meaningsMn": [
-                        "давтан явж ирэх",
-                        "тогтмол явж ирэх"
-                    ]
-                },
-                {
-                    "jp": "課長",
-                    "reading": "かちょう",
-                    "en": "section manager",
-                    "meanings": [
-                        "section manager"
-                    ],
-                    "example": {
-                        "jp": "彼は課長に書類を点検させられた。",
-                        "en": "He was made to check his papers by the chief.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>課長<rp>(</rp><rt>かちょう</rt><rp>)</rp></ruby>に<ruby>書類<rp>(</rp><rt>しょるい</rt><rp>)</rp></ruby>を<ruby>点検<rp>(</rp><rt>てんけん</rt><rp>)</rp></ruby>させられた。",
-                        "enMn": "Дарга түүгээр бичиг баримтаа шалгуулав."
-                    },
-                    "phonetic": "果",
-                    "phoneticReading": "カ",
-                    "enMn": "тасгийн дарга",
-                    "meaningsMn": [
-                        "тасгийн дарга"
-                    ]
-                },
-                {
-                    "jp": "比べる",
-                    "reading": "くらべる",
-                    "en": "to compare",
-                    "meanings": [
-                        "to compare"
-                    ],
-                    "example": {
-                        "jp": "彼女は一般と比べてはいい先生だ。",
-                        "en": "She is a good teacher, as teachers go.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>一般<rp>(</rp><rt>いっぱん</rt><rp>)</rp></ruby>と<ruby>比<rp>(</rp><rt>くら</rt><rp>)</rp></ruby>べてはいい<ruby>先生<rp>(</rp><rt>せんせい</rt><rp>)</rp></ruby>だ。",
-                        "enMn": "Тэр багш нарын дунджаас илүү сайн багш юм."
-                    },
-                    "phonetic": "比",
-                    "phoneticReading": "ヒ",
-                    "enMn": "харьцуулах",
-                    "meaningsMn": [
-                        "харьцуулах"
                     ]
                 },
                 {
@@ -6261,414 +6157,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "贈り物",
-                    "reading": "おくりもの",
-                    "en": "gift",
-                    "meanings": [
-                        "a gift",
-                        "a present"
-                    ],
-                    "example": {
-                        "jp": "彼は彼女から贈り物を受け取った。",
-                        "en": "He accepted her gift.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>から<ruby>贈<rp>(</rp><rt>おく</rt><rp>)</rp></ruby>り<ruby>物<rp>(</rp><rt>もの</rt><rp>)</rp></ruby>を<ruby>受<rp>(</rp><rt>う</rt><rp>)</rp></ruby>け<ruby>取<rp>(</rp><rt>と</rt><rp>)</rp></ruby>った。",
-                        "enMn": "Тэр түүний бэлгийг хүлээж авав."
-                    },
-                    "phonetic": "曽",
-                    "phoneticReading": "ソウ、ゾウ",
-                    "enMn": "бэлэг",
-                    "meaningsMn": [
-                        "бэлэг",
-                        "бэлэг"
-                    ]
-                },
-                {
-                    "jp": "浅い",
-                    "reading": "あさい",
-                    "en": "shallow",
-                    "meanings": [
-                        "shallow",
-                        "superficial"
-                    ],
-                    "example": {
-                        "jp": "彼はその仕事にはまだ経験が浅い。",
-                        "en": "He is still green at the job.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>はその<ruby>仕事<rp>(</rp><rt>しごと</rt><rp>)</rp></ruby>にはまだ<ruby>経験<rp>(</rp><rt>けいけん</rt><rp>)</rp></ruby>が<ruby>浅<rp>(</rp><rt>あさ</rt><rp>)</rp></ruby>い。",
-                        "enMn": "Тэр энэ ажилдаа туршлага бага хэвээр байна."
-                    },
-                    "phonetic": "㦮",
-                    "phoneticReading": "セン",
-                    "enMn": "гүехэн",
-                    "meaningsMn": [
-                        "гүехэн",
-                        "хөнгөвчилсөн"
-                    ]
-                },
-                {
-                    "jp": "踏む",
-                    "reading": "ふむ",
-                    "en": "to step on",
-                    "meanings": [
-                        "to step on",
-                        "to tread on"
-                    ],
-                    "example": {
-                        "jp": "足を踏むつもりはなかったのです。",
-                        "en": "I didn't mean to step on your foot.",
-                        "furigana": "<ruby>足<rp>(</rp><rt>あし</rt><rp>)</rp></ruby>を<ruby>踏<rp>(</rp><rt>ふ</rt><rp>)</rp></ruby>むつもりはなかったのです。",
-                        "enMn": "Хөл дээр чинь санаатай гишгээгүй ээ."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "гишгэх",
-                    "meaningsMn": [
-                        "гишгэх"
-                    ]
-                },
-                {
-                    "jp": "すっと",
-                    "reading": "すっと",
-                    "en": "straight",
-                    "meanings": [
-                        "straight",
-                        "quickly"
-                    ],
-                    "example": {
-                        "jp": "彼の首筋を血がすっと伝った。",
-                        "en": "A trickle of blood ran down his neck.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>首筋<rp>(</rp><rt>くびすじ</rt><rp>)</rp></ruby>を<ruby>血<rp>(</rp><rt>ち</rt><rp>)</rp></ruby>がすっと<ruby>伝<rp>(</rp><rt>つた</rt><rp>)</rp></ruby>った。",
-                        "enMn": "Хүзүүгээр нь цус нимгэн урсаж буув."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "шууд",
-                    "meaningsMn": [
-                        "шууд"
-                    ]
-                },
-                {
-                    "jp": "盗む",
-                    "reading": "ぬすむ",
-                    "en": "to steal",
-                    "meanings": [
-                        "to steal; to rob"
-                    ],
-                    "example": {
-                        "jp": "彼は決して金を盗むような人ではない。",
-                        "en": "He would be the last man to steal money.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>決<rp>(</rp><rt>けっ</rt><rp>)</rp></ruby>して<ruby>金<rp>(</rp><rt>きん</rt><rp>)</rp></ruby>を<ruby>盗<rp>(</rp><rt>ぬす</rt><rp>)</rp></ruby>むような<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>ではない。",
-                        "enMn": "Тэр хэзээ ч мөнгө хулгайлах хүн биш."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хулгайлах",
-                    "meaningsMn": [
-                        "хулгайлах"
-                    ]
-                },
-                {
-                    "jp": "大抵",
-                    "reading": "たいてい",
-                    "en": "generally",
-                    "meanings": [
-                        "generally",
-                        "usually"
-                    ],
-                    "example": {
-                        "jp": "大抵の人は僕を気違いだと思っている。",
-                        "en": "Most people think I'm crazy.",
-                        "furigana": "<ruby>大抵<rp>(</rp><rt>たいてい</rt><rp>)</rp></ruby>の<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>は<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>を<ruby>気違<rp>(</rp><rt>きちが</rt><rp>)</rp></ruby>いだと<ruby>思<rp>(</rp><rt>おも</rt><rp>)</rp></ruby>っている。",
-                        "enMn": "Ихэнх хүмүүс намайг галзуу гэж боддог."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "ихэвчлэн",
-                    "meaningsMn": [
-                        "ихэвчлэн"
-                    ]
-                },
-                {
-                    "jp": "とうとう",
-                    "reading": "とうとう",
-                    "en": "finally",
-                    "meanings": [
-                        "finally",
-                        "at last"
-                    ],
-                    "example": {
-                        "jp": "母はとうとう私の考えに従った。",
-                        "en": "My mother finally has given in to my views.",
-                        "furigana": "<ruby>母<rp>(</rp><rt>はは</rt><rp>)</rp></ruby>はとうとう<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>の<ruby>考<rp>(</rp><rt>かんが</rt><rp>)</rp></ruby>えに<ruby>従<rp>(</rp><rt>したが</rt><rp>)</rp></ruby>った。",
-                        "enMn": "Ээж эцэстээ миний бодлыг дагав."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "эцэстээ",
-                    "meaningsMn": [
-                        "эцэстээ"
-                    ]
-                },
-                {
-                    "jp": "ガソリン",
-                    "reading": "ガソリン",
-                    "en": "gasoline",
-                    "meanings": [
-                        "gasoline",
-                        "petrol"
-                    ],
-                    "example": {
-                        "jp": "彼はガソリンを使わないエンジンを考案した。",
-                        "en": "He contrived a new engine that does not use gas.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>はガソリンを<ruby>使<rp>(</rp><rt>つか</rt><rp>)</rp></ruby>わないエンジンを<ruby>考案<rp>(</rp><rt>こうあん</rt><rp>)</rp></ruby>した。",
-                        "enMn": "Тэр бензин хэрэглэдэггүй хөдөлгүүр зохион бүтээв."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "бензин",
-                    "meaningsMn": [
-                        "бензин"
-                    ]
-                },
-                {
-                    "jp": "鳴る",
-                    "reading": "なる",
-                    "en": "to sound",
-                    "meanings": [
-                        "to sound",
-                        "to ring (v.i.)"
-                    ],
-                    "example": {
-                        "jp": "雷が鳴ると、雨が降り始めた。",
-                        "en": "First it thundered, and then it started to rain.",
-                        "furigana": "<ruby>雷<rp>(</rp><rt>かみなり</rt><rp>)</rp></ruby>が<ruby>鳴<rp>(</rp><rt>な</rt><rp>)</rp></ruby>ると、<ruby>雨<rp>(</rp><rt>あめ</rt><rp>)</rp></ruby>が<ruby>降<rp>(</rp><rt>ふ</rt><rp>)</rp></ruby>り<ruby>始<rp>(</rp><rt>はじ</rt><rp>)</rp></ruby>めた。",
-                        "enMn": "Тэнгэр дуугарангуут бороо орж эхлэв."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "дуугарах",
-                    "meaningsMn": [
-                        "дуугарах"
-                    ]
-                },
-                {
-                    "jp": "しっかり",
-                    "reading": "しっかり",
-                    "en": "firmly",
-                    "meanings": [
-                        "firmly",
-                        "steady"
-                    ],
-                    "example": {
-                        "jp": "皆さんネチケットはしっかり。",
-                        "en": "Everyone, please keep to netiquette.",
-                        "furigana": "<ruby>皆<rp>(</rp><rt>みな</rt><rp>)</rp></ruby>さんネチケットはしっかり。",
-                        "enMn": "Хүмүүс ээ, сүлжээний ёс зүйгээ сайн баримтлаарай."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "бат бөх",
-                    "meaningsMn": [
-                        "бат бөх"
-                    ]
-                },
-                {
-                    "jp": "苦い",
-                    "reading": "にがい",
-                    "en": "bitter",
-                    "meanings": [
-                        "bitter"
-                    ],
-                    "example": {
-                        "jp": "恋の味は苦い。",
-                        "en": "The taste of love is bitter.",
-                        "furigana": "<ruby>恋<rp>(</rp><rt>こい</rt><rp>)</rp></ruby>の<ruby>味<rp>(</rp><rt>あじ</rt><rp>)</rp></ruby>は<ruby>苦<rp>(</rp><rt>にが</rt><rp>)</rp></ruby>い。",
-                        "enMn": "Хайрын амт гашуун."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "гашуун",
-                    "meaningsMn": [
-                        "гашуун"
-                    ]
-                },
-                {
-                    "jp": "沸く",
-                    "reading": "わく",
-                    "en": "to boil",
-                    "meanings": [
-                        "to boil",
-                        "to grow hot"
-                    ],
-                    "example": {
-                        "jp": "彼女はお茶を入れる前にお湯が沸くまで待った。",
-                        "en": "She waited until the water boiled before making the tea with it.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はお<ruby>茶<rp>(</rp><rt>ちゃ</rt><rp>)</rp></ruby>を<ruby>入<rp>(</rp><rt>い</rt><rp>)</rp></ruby>れる<ruby>前<rp>(</rp><rt>まえ</rt><rp>)</rp></ruby>にお<ruby>湯<rp>(</rp><rt>ゆ</rt><rp>)</rp></ruby>が<ruby>沸<rp>(</rp><rt>わ</rt><rp>)</rp></ruby>くまで<ruby>待<rp>(</rp><rt>ま</rt><rp>)</rp></ruby>った。",
-                        "enMn": "Тэр цай хийхээсээ өмнө ус буцалтал хүлээв."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "буцлах",
-                    "meaningsMn": [
-                        "буцлах"
-                    ]
-                },
-                {
-                    "jp": "意見",
-                    "reading": "いけん",
-                    "en": "opinion",
-                    "meanings": [
-                        "opinion",
-                        "view",
-                        "idea"
-                    ],
-                    "example": {
-                        "jp": "はきはきと意見を言ってください。",
-                        "en": "Please state your opinion crisply and clearly.",
-                        "furigana": "はきはきと<ruby>意見<rp>(</rp><rt>いけん</rt><rp>)</rp></ruby>を<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>ってください。",
-                        "enMn": "Үзэл бодлоо тодорхой чанга хэлнэ үү."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "үзэл бодол",
-                    "meaningsMn": [
-                        "үзэл бодол"
-                    ]
-                },
-                {
-                    "jp": "ステレオ",
-                    "reading": "ステレオ",
-                    "en": "stereo",
-                    "meanings": [
-                        "stereo"
-                    ],
-                    "example": {
-                        "jp": "少しステレオの音を小さくしてください。",
-                        "en": "Would you turn down the stereo a little?",
-                        "furigana": "<ruby>少<rp>(</rp><rt>すこ</rt><rp>)</rp></ruby>しステレオの<ruby>音<rp>(</rp><rt>おと</rt><rp>)</rp></ruby>を<ruby>小<rp>(</rp><rt>ちい</rt><rp>)</rp></ruby>さくしてください。",
-                        "enMn": "Стереогийн дууг бага зэрэг намсгана уу."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "стерео",
-                    "meaningsMn": [
-                        "стерео"
-                    ]
-                },
-                {
-                    "jp": "医学",
-                    "reading": "いがく",
-                    "en": "medical science",
-                    "meanings": [
-                        "medical science"
-                    ],
-                    "example": {
-                        "jp": "飼鳥の医学―病気の診断とその治療。",
-                        "en": "Avian medicine - diagnosis and treatment of illnesses.",
-                        "furigana": "<ruby>飼鳥<rp>(</rp><rt>かいどり</rt><rp>)</rp></ruby>の<ruby>医学<rp>(</rp><rt>いがく</rt><rp>)</rp></ruby>―<ruby>病気<rp>(</rp><rt>びょうき</rt><rp>)</rp></ruby>の<ruby>診断<rp>(</rp><rt>しんだん</rt><rp>)</rp></ruby>とその<ruby>治療<rp>(</rp><rt>ちりょう</rt><rp>)</rp></ruby>。",
-                        "enMn": "Тэжээвэр шувууны анагаах ухаан — өвчний оношилгоо ба эмчилгээ."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "анагаах ухаан",
-                    "meaningsMn": [
-                        "анагаах ухаан"
-                    ]
-                },
-                {
-                    "jp": "テキスト",
-                    "reading": "テキスト",
-                    "en": "text",
-                    "meanings": [
-                        "text; text book"
-                    ],
-                    "example": {
-                        "jp": "・テキストデータの誤字脱字を修正。",
-                        "en": "・ Corrected mistaken/missing characters in the text data.",
-                        "furigana": "・テキストデータの<ruby>誤字<rp>(</rp><rt>ごじ</rt><rp>)</rp></ruby><ruby>脱字<rp>(</rp><rt>だつじ</rt><rp>)</rp></ruby>を<ruby>修正<rp>(</rp><rt>しゅうせい</rt><rp>)</rp></ruby>。",
-                        "enMn": "・ Текст өгөгдлийн үсгийн болон орхигдсон алдааг залруулав."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "текст",
-                    "meaningsMn": [
-                        "текст"
-                    ]
-                },
-                {
-                    "jp": "折る",
-                    "reading": "おる",
-                    "en": "to snap",
-                    "meanings": [
-                        "to snap",
-                        "to break; to bend"
-                    ],
-                    "example": {
-                        "jp": "木を折るな。",
-                        "en": "Don't break the branches.",
-                        "furigana": "<ruby>木<rp>(</rp><rt>き</rt><rp>)</rp></ruby>を<ruby>折<rp>(</rp><rt>お</rt><rp>)</rp></ruby>るな。",
-                        "enMn": "Модыг бүү хугал."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хугалах",
-                    "meaningsMn": [
-                        "хугалах"
-                    ]
-                }
-            ]
-        ]
-    },
-    {
-        "level": 14,
-        "jlpt": "N4",
-        "title": "N4 · Level 2",
-        "sets": [
-            [
-                {
-                    "jp": "気",
-                    "reading": "き",
-                    "en": "spirit",
-                    "meanings": [
-                        "spirit",
-                        "mood"
-                    ],
-                    "example": {
-                        "jp": "私は気が短いし、口も軽い男だ。",
-                        "en": "I'm short-tempered, and a loose-tongued man.",
-                        "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>は<ruby>気<rp>(</rp><rt>き</rt><rp>)</rp></ruby>が<ruby>短<rp>(</rp><rt>みじか</rt><rp>)</rp></ruby>いし、<ruby>口<rp>(</rp><rt>くち</rt><rp>)</rp></ruby>も<ruby>軽<rp>(</rp><rt>かる</rt><rp>)</rp></ruby>い<ruby>男<rp>(</rp><rt>おとこ</rt><rp>)</rp></ruby>だ。",
-                        "enMn": "Би уур бухимдалтай, амаа барьдаггүй хүн юм."
-                    },
-                    "phonetic": "气",
-                    "phoneticReading": "キ",
-                    "enMn": "сэтгэл",
-                    "meaningsMn": [
-                        "сэтгэл",
-                        "сэтгэл санаа"
-                    ]
-                },
-                {
-                    "jp": "気分",
-                    "reading": "きぶん",
-                    "en": "feeling",
-                    "meanings": [
-                        "feeling",
-                        "mood"
-                    ],
-                    "example": {
-                        "jp": "「気分はどうですか」と彼は尋ねた。",
-                        "en": "\"How do you feel?\" he inquired.",
-                        "furigana": "「<ruby>気分<rp>(</rp><rt>きぶん</rt><rp>)</rp></ruby>はどうですか」と<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>尋<rp>(</rp><rt>たず</rt><rp>)</rp></ruby>ねた。",
-                        "enMn": "\"Чи ямар байгаа вэ?\" гэж тэр асуув."
-                    },
-                    "phonetic": "气",
-                    "phoneticReading": "キ",
-                    "enMn": "сэтгэл санаа",
-                    "meaningsMn": [
-                        "мэдрэмж",
-                        "сэтгэл санаа"
-                    ]
-                },
-                {
                     "jp": "時代",
                     "reading": "じだい",
                     "en": "era",
@@ -6695,98 +6183,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "規則",
-                    "reading": "きそく",
-                    "en": "rule",
-                    "meanings": [
-                        "rule",
-                        "regulation"
-                    ],
-                    "example": {
-                        "jp": "寮の規則は守らなければならない。",
-                        "en": "You must observe the rules of the dormitory.",
-                        "furigana": "<ruby>寮<rp>(</rp><rt>りょう</rt><rp>)</rp></ruby>の<ruby>規則<rp>(</rp><rt>きそく</rt><rp>)</rp></ruby>は<ruby>守<rp>(</rp><rt>まも</rt><rp>)</rp></ruby>らなければならない。",
-                        "enMn": "Дотуур байрны дүрмийг чи дагаж мөрдөх ёстой."
-                    },
-                    "phonetic": "規",
-                    "phoneticReading": "キ",
-                    "enMn": "дүрэм",
-                    "meaningsMn": [
-                        "засаглал",
-                        "журам"
-                    ]
-                },
-                {
-                    "jp": "表",
-                    "reading": "おもて",
-                    "en": "surface",
-                    "meanings": [
-                        "surface",
-                        "front",
-                        "outside"
-                    ],
-                    "example": {
-                        "jp": "ものにはたいてい表と裏がある。",
-                        "en": "With most things there's both what you see and what's behind it.",
-                        "furigana": "ものにはたいてい<ruby>表<rp>(</rp><rt>ひょう</rt><rp>)</rp></ruby>と<ruby>裏<rp>(</rp><rt>うら</rt><rp>)</rp></ruby>がある。",
-                        "enMn": "Ихэнх зүйлд харагдах тал болон нуугдмал тал хоёулаа байдаг."
-                    },
-                    "phonetic": "表",
-                    "phoneticReading": "ヒョウ",
-                    "enMn": "гадаргуу",
-                    "meaningsMn": [
-                        "гадаргуу",
-                        "урд тал",
-                        "гадна"
-                    ]
-                },
-                {
-                    "jp": "盛ん",
-                    "reading": "さかん",
-                    "en": "prosperous",
-                    "meanings": [
-                        "prosperous",
-                        "active",
-                        "thriving"
-                    ],
-                    "example": {
-                        "jp": "日本はカナダとの貿易が盛んだ。",
-                        "en": "Japan does a lot of trade with Canada.",
-                        "furigana": "<ruby>日本<rp>(</rp><rt>にっぽん</rt><rp>)</rp></ruby>はカナダとの<ruby>貿易<rp>(</rp><rt>ぼうえき</rt><rp>)</rp></ruby>が<ruby>盛<rp>(</rp><rt>さか</rt><rp>)</rp></ruby>んだ。",
-                        "enMn": "Япон Канадтай их хэмжээний худалдаа хийдэг."
-                    },
-                    "phonetic": "成",
-                    "phoneticReading": "ジョウ、セイ",
-                    "enMn": "цэцэглэн хөгжсөн",
-                    "meaningsMn": [
-                        "цэцэглэн хөгжсөн",
-                        "идэвхтэй",
-                        "цэцэглэн хөгжиж буй"
-                    ]
-                },
-                {
-                    "jp": "注意",
-                    "reading": "ちゅうい",
-                    "en": "caution",
-                    "meanings": [
-                        "caution",
-                        "attention"
-                    ],
-                    "example": {
-                        "jp": "卵を割らないように注意しなさい。",
-                        "en": "Take care not to break the eggs.",
-                        "furigana": "<ruby>卵<rp>(</rp><rt>たまご</rt><rp>)</rp></ruby>を<ruby>割<rp>(</rp><rt>わ</rt><rp>)</rp></ruby>らないように<ruby>注意<rp>(</rp><rt>ちゅうい</rt><rp>)</rp></ruby>しなさい。",
-                        "enMn": "Өндгийг эвдэхгүй байхыг анхаараарай."
-                    },
-                    "phonetic": "主",
-                    "phoneticReading": "チュウ",
-                    "enMn": "болгоомжлол",
-                    "meaningsMn": [
-                        "болгоомжлол",
-                        "анхаарал"
-                    ]
-                },
-                {
                     "jp": "過ぎる",
                     "reading": "すぎる",
                     "en": "to exceed",
@@ -6806,26 +6202,6 @@ const WORD_LEVELS = [
                     "meaningsMn": [
                         "хэтрэх",
                         "хэтрэх"
-                    ]
-                },
-                {
-                    "jp": "起こす",
-                    "reading": "おこす",
-                    "en": "to wake someone",
-                    "meanings": [
-                        "to wake (someone) up"
-                    ],
-                    "example": {
-                        "jp": "明日の朝6時に起こしてください。",
-                        "en": "Please wake me up at six tomorrow morning.",
-                        "furigana": "<ruby>明日<rp>(</rp><rt>あした</rt><rp>)</rp></ruby>の<ruby>朝<rp>(</rp><rt>あさ</rt><rp>)</rp></ruby>6<ruby>時<rp>(</rp><rt>じ</rt><rp>)</rp></ruby>に<ruby>起<rp>(</rp><rt>お</rt><rp>)</rp></ruby>こしてください。",
-                        "enMn": "Намайг маргааш өглөө зургаан цагт сэрээнэ үү."
-                    },
-                    "phonetic": "己",
-                    "phoneticReading": "キ",
-                    "enMn": "сэрээх",
-                    "meaningsMn": [
-                        "сэрээх"
                     ]
                 },
                 {
@@ -6857,127 +6233,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "うかがう",
-                    "reading": "うかがう",
-                    "en": "to ask",
-                    "meanings": [
-                        "to ask"
-                    ],
-                    "example": {
-                        "jp": "病気のため本日はうかがうことができませんでした。",
-                        "en": "On account of illness, I couldn't call on you today.",
-                        "furigana": "<ruby>病気<rp>(</rp><rt>びょうき</rt><rp>)</rp></ruby>のため<ruby>本日<rp>(</rp><rt>ほんじつ</rt><rp>)</rp></ruby>はうかがうことができませんでした。",
-                        "enMn": "Өвчний улмаас өнөөдөр очиж чадсангүй."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "сурах",
-                    "meaningsMn": [
-                        "сурах"
-                    ]
-                },
-                {
-                    "jp": "聞こえる",
-                    "reading": "きこえる",
-                    "en": "to be heard",
-                    "meanings": [
-                        "to be heard",
-                        "to be audible"
-                    ],
-                    "example": {
-                        "jp": "隣の部屋で誰かの話し声が聞こえる。",
-                        "en": "I can hear someone talking in the next room.",
-                        "furigana": "<ruby>隣<rp>(</rp><rt>となり</rt><rp>)</rp></ruby>の<ruby>部屋<rp>(</rp><rt>へや</rt><rp>)</rp></ruby>で<ruby>誰<rp>(</rp><rt>だれ</rt><rp>)</rp></ruby>かの<ruby>話<rp>(</rp><rt>はな</rt><rp>)</rp></ruby>し<ruby>声<rp>(</rp><rt>ごえ</rt><rp>)</rp></ruby>が<ruby>聞<rp>(</rp><rt>き</rt><rp>)</rp></ruby>こえる。",
-                        "enMn": "Хажуугийн өрөөнд хэн нэгний ярих чимээ сонсогдож байна."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "сонсогдох",
-                    "meaningsMn": [
-                        "сонсогдох"
-                    ]
-                },
-                {
-                    "jp": "僕",
-                    "reading": "ぼく",
-                    "en": "I (used by men towards those of equal or lower status)",
-                    "meanings": [
-                        "I (used by men towards those of equal or lower status)"
-                    ],
-                    "example": {
-                        "jp": "君は僕にとてもいらいらしている。",
-                        "en": "You're so impatient with me.",
-                        "furigana": "<ruby>君<rp>(</rp><rt>きみ</rt><rp>)</rp></ruby>は<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>にとてもいらいらしている。",
-                        "enMn": "Чи надад маш их тэвчээргүй хандаж байна."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "би",
-                    "meaningsMn": [
-                        "би"
-                    ]
-                },
-                {
-                    "jp": "怒る",
-                    "reading": "おこる",
-                    "en": "to get angry",
-                    "meanings": [
-                        "to get angry; to scold angrily"
-                    ],
-                    "example": {
-                        "jp": "彼女が彼を怒るのも当然である。",
-                        "en": "It is quite natural that she should get angry with him.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>が<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>を<ruby>怒<rp>(</rp><rt>おこ</rt><rp>)</rp></ruby>るのも<ruby>当然<rp>(</rp><rt>とうぜん</rt><rp>)</rp></ruby>である。",
-                        "enMn": "Тэр түүнд уурлаж байгаа нь тун зүйн хэрэг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "уурлах",
-                    "meaningsMn": [
-                        "уурлах"
-                    ]
-                },
-                {
-                    "jp": "床屋",
-                    "reading": "とこや",
-                    "en": "barber's (shop)",
-                    "meanings": [
-                        "barber's (shop)"
-                    ],
-                    "example": {
-                        "jp": "彼はまずめったに床屋へ行かない。",
-                        "en": "He seldom, if ever, goes to the barber's.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>はまずめったに<ruby>床屋<rp>(</rp><rt>とこや</rt><rp>)</rp></ruby>へ<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>かない。",
-                        "enMn": "Тэр үсчинд бараг очдоггүй."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "үсчин",
-                    "meaningsMn": [
-                        "үсчин"
-                    ]
-                },
-                {
-                    "jp": "オートバイ",
-                    "reading": "オートバイ",
-                    "en": "motorcycle (lit: auto-bi(ke))",
-                    "meanings": [
-                        "motorcycle (lit: auto-bi(ke))"
-                    ],
-                    "example": {
-                        "jp": "彼女はオートバイに上手に乗る。",
-                        "en": "She rides a motorcycle well.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はオートバイに<ruby>上手<rp>(</rp><rt>じょうず</rt><rp>)</rp></ruby>に<ruby>乗<rp>(</rp><rt>の</rt><rp>)</rp></ruby>る。",
-                        "enMn": "Тэр мотоцикль сайн унадаг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "мотоцикл",
-                    "meaningsMn": [
-                        "мотоцикл"
-                    ]
-                },
-                {
                     "jp": "止む",
                     "reading": "やむ",
                     "en": "to cease",
@@ -6996,649 +6251,6 @@ const WORD_LEVELS = [
                     "enMn": "зогсох",
                     "meaningsMn": [
                         "зогсох"
-                    ]
-                },
-                {
-                    "jp": "もし",
-                    "reading": "もし",
-                    "en": "if",
-                    "meanings": [
-                        "if"
-                    ],
-                    "example": {
-                        "jp": "もし間違いを見つけたら訂正してください。",
-                        "en": "If you see a mistake, then please correct it.",
-                        "furigana": "もし<ruby>間違<rp>(</rp><rt>まちが</rt><rp>)</rp></ruby>いを<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>つけたら<ruby>訂正<rp>(</rp><rt>ていせい</rt><rp>)</rp></ruby>してください。",
-                        "enMn": "Хэрэв алдаа олвол засна уу."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "бол",
-                    "meaningsMn": [
-                        "бол"
-                    ]
-                },
-                {
-                    "jp": "予習",
-                    "reading": "よしゅう",
-                    "en": "preparation of lessons (for class)",
-                    "meanings": [
-                        "preparation of lessons (for class)"
-                    ],
-                    "example": {
-                        "jp": "予習を始めた方がいいですよ。",
-                        "en": "You may as well begin to prepare your lessons.",
-                        "furigana": "<ruby>予習<rp>(</rp><rt>よしゅう</rt><rp>)</rp></ruby>を<ruby>始<rp>(</rp><rt>はじ</rt><rp>)</rp></ruby>めた<ruby>方<rp>(</rp><rt>ほう</rt><rp>)</rp></ruby>がいいですよ。",
-                        "enMn": "Урьдчилсан бэлтгэлээ эхэлсэн нь дээр шүү."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "урьдчилсан бэлтгэл",
-                    "meaningsMn": [
-                        "урьдчилсан бэлтгэл"
-                    ]
-                },
-                {
-                    "jp": "心配",
-                    "reading": "しんぱいする",
-                    "en": "worry",
-                    "meanings": [
-                        "worry",
-                        "concern"
-                    ],
-                    "example": {
-                        "jp": "心配しないで。",
-                        "en": "Don't worry about it!",
-                        "furigana": "<ruby>心配<rp>(</rp><rt>しんぱい</rt><rp>)</rp></ruby>しないで。",
-                        "enMn": "Санаа зоволтгүй!"
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "санаа зовох",
-                    "meaningsMn": [
-                        "санаа зовох"
-                    ]
-                },
-                {
-                    "jp": "お宅",
-                    "reading": "おたく",
-                    "en": "(someone else's) house",
-                    "meanings": [
-                        "(someone else's) house; home -- polite word for 家 (いえ) --"
-                    ],
-                    "example": {
-                        "jp": "明日お宅に伺います。",
-                        "en": "I'll pay you a visit at your house tomorrow.",
-                        "furigana": "<ruby>明日<rp>(</rp><rt>あした</rt><rp>)</rp></ruby>お<ruby>宅<rp>(</rp><rt>たく</rt><rp>)</rp></ruby>に<ruby>伺<rp>(</rp><rt>うかが</rt><rp>)</rp></ruby>います。",
-                        "enMn": "Маргааш таны гэрт очно."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "таны гэр",
-                    "meaningsMn": [
-                        "таны гэр"
-                    ]
-                },
-                {
-                    "jp": "柔らかい",
-                    "reading": "やわらかい",
-                    "en": "soft (in reference to texture)",
-                    "meanings": [
-                        "soft (in reference to texture)",
-                        "tender"
-                    ],
-                    "example": {
-                        "jp": "彼は柔らかい粘土で小さな塑像を作った。",
-                        "en": "He made a little statue out of soft clay.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>柔<rp>(</rp><rt>やわ</rt><rp>)</rp></ruby>らかい<ruby>粘土<rp>(</rp><rt>ねんど</rt><rp>)</rp></ruby>で<ruby>小<rp>(</rp><rt>ちい</rt><rp>)</rp></ruby>さな<ruby>塑像<rp>(</rp><rt>そぞう</rt><rp>)</rp></ruby>を<ruby>作<rp>(</rp><rt>つく</rt><rp>)</rp></ruby>った。",
-                        "enMn": "Тэр зөөлөн шавраар жижиг хөшөө урлав."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "зөөлөн",
-                    "meaningsMn": [
-                        "зөөлөн"
-                    ]
-                },
-                {
-                    "jp": "拾う",
-                    "reading": "ひろう",
-                    "en": "to pick up (something)",
-                    "meanings": [
-                        "to pick up (something)",
-                        "to find"
-                    ],
-                    "example": {
-                        "jp": "砂浜でいろんな貝を拾うのは実に楽しい。",
-                        "en": "It is a lot of fun picking various shells on the sands.",
-                        "furigana": "<ruby>砂浜<rp>(</rp><rt>すなはま</rt><rp>)</rp></ruby>でいろんな<ruby>貝<rp>(</rp><rt>かい</rt><rp>)</rp></ruby>を<ruby>拾<rp>(</rp><rt>ひろ</rt><rp>)</rp></ruby>うのは<ruby>実<rp>(</rp><rt>じつ</rt><rp>)</rp></ruby>に<ruby>楽<rp>(</rp><rt>たの</rt><rp>)</rp></ruby>しい。",
-                        "enMn": "Элсэн эрэг дээр янз бүрийн хясаа түүх үнэхээр сонирхолтой."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "түүх",
-                    "meaningsMn": [
-                        "түүх"
-                    ]
-                },
-                {
-                    "jp": "ほとんど",
-                    "reading": "ほとんど",
-                    "en": "mostly",
-                    "meanings": [
-                        "mostly",
-                        "almost"
-                    ],
-                    "example": {
-                        "jp": "惑星の表面はほとんどが水から出来ている。",
-                        "en": "The surface of a planet is composed mostly of water.",
-                        "furigana": "<ruby>惑星<rp>(</rp><rt>わくせい</rt><rp>)</rp></ruby>の<ruby>表面<rp>(</rp><rt>ひょうめん</rt><rp>)</rp></ruby>はほとんどが<ruby>水<rp>(</rp><rt>みず</rt><rp>)</rp></ruby>から<ruby>出来<rp>(</rp><rt>でき</rt><rp>)</rp></ruby>ている。",
-                        "enMn": "Гаригийн гадаргуу ихэвчлэн уснаас тогтдог."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "бараг",
-                    "meaningsMn": [
-                        "бараг"
-                    ]
-                },
-                {
-                    "jp": "つもり",
-                    "reading": "つもり",
-                    "en": "intention",
-                    "meanings": [
-                        "intention",
-                        "plan"
-                    ],
-                    "example": {
-                        "jp": "自分勝手にするつもりはない。",
-                        "en": "I don't intend to be selfish.",
-                        "furigana": "<ruby>自分勝手<rp>(</rp><rt>じぶんがって</rt><rp>)</rp></ruby>にするつもりはない。",
-                        "enMn": "Дураараа аашлах санаа надад алга."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "санаа",
-                    "meaningsMn": [
-                        "санаа"
-                    ]
-                }
-            ]
-        ]
-    },
-    {
-        "level": 15,
-        "jlpt": "N4",
-        "title": "N4 · Level 3",
-        "sets": [
-            [
-                {
-                    "jp": "必ず",
-                    "reading": "かならず",
-                    "en": "surely",
-                    "meanings": [
-                        "surely",
-                        "certainly"
-                    ],
-                    "example": {
-                        "jp": "来週の月曜日に必ずお返しします。",
-                        "en": "I'll give it back next Monday without fail.",
-                        "furigana": "<ruby>来週<rp>(</rp><rt>らいしゅう</rt><rp>)</rp></ruby>の<ruby>月曜日<rp>(</rp><rt>げつようび</rt><rp>)</rp></ruby>に<ruby>必<rp>(</rp><rt>かなら</rt><rp>)</rp></ruby>ずお<ruby>返<rp>(</rp><rt>かえ</rt><rp>)</rp></ruby>しします。",
-                        "enMn": "Би ирэх даваа гарагт заавал буцааж өгнө."
-                    },
-                    "phonetic": "必",
-                    "phoneticReading": "ヒ、ヒツ",
-                    "enMn": "заавал",
-                    "meaningsMn": [
-                        "заавал",
-                        "мэдээж"
-                    ]
-                },
-                {
-                    "jp": "必要",
-                    "reading": "ひつよう",
-                    "en": "necessary",
-                    "meanings": [
-                        "necessary"
-                    ],
-                    "example": {
-                        "jp": "痩せる必要がないというのは残念だ。",
-                        "en": "It's too bad that I don't need to lose weight.",
-                        "furigana": "<ruby>痩<rp>(</rp><rt>や</rt><rp>)</rp></ruby>せる<ruby>必要<rp>(</rp><rt>ひつよう</rt><rp>)</rp></ruby>がないというのは<ruby>残念<rp>(</rp><rt>ざんねん</rt><rp>)</rp></ruby>だ。",
-                        "enMn": "Надад жин хасах хэрэггүй нь харамсалтай юм."
-                    },
-                    "phonetic": "必",
-                    "phoneticReading": "ヒ、ヒツ",
-                    "enMn": "шаардлагатай",
-                    "meaningsMn": [
-                        "шаардлагатай"
-                    ]
-                },
-                {
-                    "jp": "親",
-                    "reading": "おや",
-                    "en": "parent",
-                    "meanings": [
-                        "a parent"
-                    ],
-                    "example": {
-                        "jp": "私も親の面倒とか見られないですね。",
-                        "en": "I can't look after my parents and such either.",
-                        "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>も<ruby>親<rp>(</rp><rt>おや</rt><rp>)</rp></ruby>の<ruby>面倒<rp>(</rp><rt>めんどう</rt><rp>)</rp></ruby>とか<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>られないですね。",
-                        "enMn": "Би эцэг эхээ ч гэсэн харж чадахгүй байна."
-                    },
-                    "phonetic": "亲",
-                    "phoneticReading": "シン",
-                    "enMn": "эцэг эх",
-                    "meaningsMn": [
-                        "эцэг эх"
-                    ]
-                },
-                {
-                    "jp": "親切",
-                    "reading": "しんせつ",
-                    "en": "kindness",
-                    "meanings": [
-                        "kindness"
-                    ],
-                    "example": {
-                        "jp": "盲人に手を貸すのは親切な行為だ。",
-                        "en": "Helping a blind man is an act of kindness.",
-                        "furigana": "<ruby>盲人<rp>(</rp><rt>もうじん</rt><rp>)</rp></ruby>に<ruby>手<rp>(</rp><rt>て</rt><rp>)</rp></ruby>を<ruby>貸<rp>(</rp><rt>か</rt><rp>)</rp></ruby>すのは<ruby>親切<rp>(</rp><rt>しんせつ</rt><rp>)</rp></ruby>な<ruby>行為<rp>(</rp><rt>こうい</rt><rp>)</rp></ruby>だ。",
-                        "enMn": "Сохор хүнд туслах нь эелдэг үйлдэл юм."
-                    },
-                    "phonetic": "亲",
-                    "phoneticReading": "シン",
-                    "enMn": "эелдэг зан",
-                    "meaningsMn": [
-                        "эелдэг зан"
-                    ]
-                },
-                {
-                    "jp": "決まる",
-                    "reading": "きまる",
-                    "en": "to be decided",
-                    "meanings": [
-                        "to be set",
-                        "fixed (v.i.)"
-                    ],
-                    "example": {
-                        "jp": "明日は予定が決まっていますか。",
-                        "en": "Are you booked for tomorrow?",
-                        "furigana": "<ruby>明日<rp>(</rp><rt>あした</rt><rp>)</rp></ruby>は<ruby>予定<rp>(</rp><rt>よてい</rt><rp>)</rp></ruby>が<ruby>決<rp>(</rp><rt>き</rt><rp>)</rp></ruby>まっていますか。",
-                        "enMn": "Чи маргаашийн хувьд төлөвлөгөөтэй юу?"
-                    },
-                    "phonetic": "夬",
-                    "phoneticReading": "ケツ",
-                    "enMn": "шийдэгдэх",
-                    "meaningsMn": [
-                        "тогтоогдох",
-                        "тогтсон"
-                    ]
-                },
-                {
-                    "jp": "捕まえる",
-                    "reading": "つかまえる",
-                    "en": "to catch",
-                    "meanings": [
-                        "to catch",
-                        "to arrest"
-                    ],
-                    "example": {
-                        "jp": "彼らはわなでキツネを捕まえた。",
-                        "en": "They captured foxes with snares.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らはわなでキツネを<ruby>捕<rp>(</rp><rt>つか</rt><rp>)</rp></ruby>まえた。",
-                        "enMn": "Тэд урхиар үнэг барьсан."
-                    },
-                    "phonetic": "甫",
-                    "phoneticReading": "ホ",
-                    "enMn": "барих",
-                    "meaningsMn": [
-                        "барих",
-                        "баривчлах"
-                    ]
-                },
-                {
-                    "jp": "無理",
-                    "reading": "むり",
-                    "en": "unreasonable",
-                    "meanings": [
-                        "unreasonable",
-                        "impossible"
-                    ],
-                    "example": {
-                        "jp": "両親は無理に私をそこへ行かせた。",
-                        "en": "My parents made me go there.",
-                        "furigana": "<ruby>両親<rp>(</rp><rt>りょうしん</rt><rp>)</rp></ruby>は<ruby>無理<rp>(</rp><rt>むり</rt><rp>)</rp></ruby>に<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>をそこへ<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>かせた。",
-                        "enMn": "Эцэг эх минь намайг хүчээр тэнд явуулсан."
-                    },
-                    "phonetic": "無",
-                    "phoneticReading": "ブ",
-                    "enMn": "боломжгүй",
-                    "meaningsMn": [
-                        "боломжгүй",
-                        "боломжгүй"
-                    ]
-                },
-                {
-                    "jp": "包む",
-                    "reading": "つつむ",
-                    "en": "to wrap",
-                    "meanings": [
-                        "to wrap",
-                        "to cover"
-                    ],
-                    "example": {
-                        "jp": "美しい包装紙に包んでもらえますか。",
-                        "en": "Could you gift wrap it?",
-                        "furigana": "<ruby>美<rp>(</rp><rt>うつく</rt><rp>)</rp></ruby>しい<ruby>包装<rp>(</rp><rt>ほうそう</rt><rp>)</rp></ruby><ruby>紙<rp>(</rp><rt>し</rt><rp>)</rp></ruby>に<ruby>包<rp>(</rp><rt>つつ</rt><rp>)</rp></ruby>んでもらえますか。",
-                        "enMn": "Үүнийг бэлгийн цаасаар боож өгч болох уу?"
-                    },
-                    "phonetic": "包",
-                    "phoneticReading": "ホウ",
-                    "enMn": "боох",
-                    "meaningsMn": [
-                        "боох",
-                        "боох"
-                    ]
-                },
-                {
-                    "jp": "逃げる",
-                    "reading": "にげる",
-                    "en": "to escape",
-                    "meanings": [
-                        "to escape",
-                        "to run away"
-                    ],
-                    "example": {
-                        "jp": "のいて・・・奴らは逃げちゃうよ。",
-                        "en": "Get out the way ... they'll escape!",
-                        "furigana": "のいて・・・<ruby>奴<rp>(</rp><rt>やつ</rt><rp>)</rp></ruby>らは<ruby>逃<rp>(</rp><rt>に</rt><rp>)</rp></ruby>げちゃうよ。",
-                        "enMn": "Замаас зайл... тэд зугтчихно!"
-                    },
-                    "phonetic": "兆",
-                    "phoneticReading": "チョウ、トウ",
-                    "enMn": "зугтах",
-                    "meaningsMn": [
-                        "зугтах",
-                        "зугтах"
-                    ]
-                },
-                {
-                    "jp": "厳しい",
-                    "reading": "きびしい",
-                    "en": "strict",
-                    "meanings": [
-                        "hard",
-                        "rigorous",
-                        "strict"
-                    ],
-                    "example": {
-                        "jp": "母親の怒りの厳しさにびっくりした。",
-                        "en": "We were shocked by the intensity of our mother's anger.",
-                        "furigana": "<ruby>母親<rp>(</rp><rt>ははおや</rt><rp>)</rp></ruby>の<ruby>怒<rp>(</rp><rt>いか</rt><rp>)</rp></ruby>りの<ruby>厳<rp>(</rp><rt>きび</rt><rp>)</rp></ruby>しさにびっくりした。",
-                        "enMn": "Бид ээжийнхээ уурын хатуу ширүүнд цочирдсон."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хатуу чанга",
-                    "meaningsMn": [
-                        "хатуу",
-                        "нарийн чанд",
-                        "хатуу чанга"
-                    ]
-                },
-                {
-                    "jp": "だめ",
-                    "reading": "だめ",
-                    "en": "useless",
-                    "meanings": [
-                        "useless",
-                        "no good",
-                        "hopeless"
-                    ],
-                    "example": {
-                        "jp": "彼を誘わなくちゃだめよ。",
-                        "en": "You should definitely ask him out.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>を<ruby>誘<rp>(</rp><rt>さそ</rt><rp>)</rp></ruby>わなくちゃだめよ。",
-                        "enMn": "Чи түүнийг заавал урих ёстой шүү."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "болохгүй",
-                    "meaningsMn": [
-                        "болохгүй"
-                    ]
-                },
-                {
-                    "jp": "売り場",
-                    "reading": "うりば",
-                    "en": "place where things are sold",
-                    "meanings": [
-                        "place where things are sold"
-                    ],
-                    "example": {
-                        "jp": "日用品売り場は何階でしょうか。",
-                        "en": "What floor is the daily goods department on?",
-                        "furigana": "<ruby>日<rp>(</rp><rt>にち</rt><rp>)</rp></ruby><ruby>用品<rp>(</rp><rt>ようひん</rt><rp>)</rp></ruby><ruby>売<rp>(</rp><rt>う</rt><rp>)</rp></ruby>り<ruby>場<rp>(</rp><rt>ば</rt><rp>)</rp></ruby>は<ruby>何<rp>(</rp><rt>なん</rt><rp>)</rp></ruby><ruby>階<rp>(</rp><rt>かい</rt><rp>)</rp></ruby>でしょうか。",
-                        "enMn": "Өдөр тутмын хэрэглээний барааны хэсэг хэддүгээр давхарт байдаг вэ?"
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "худалдааны цэг",
-                    "meaningsMn": [
-                        "худалдааны цэг"
-                    ]
-                },
-                {
-                    "jp": "うん",
-                    "reading": "うん",
-                    "en": "yes (informal)",
-                    "meanings": [
-                        "yes (informal)",
-                        "all right (ok)"
-                    ],
-                    "example": {
-                        "jp": "うん、誤診だったみたい。",
-                        "en": "Yes, it seems it was a misdiagnosis.",
-                        "furigana": "うん、<ruby>誤診<rp>(</rp><rt>ごしん</rt><rp>)</rp></ruby>だったみたい。",
-                        "enMn": "За, буруу оношилсон бололтой."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "за",
-                    "meaningsMn": [
-                        "за"
-                    ]
-                },
-                {
-                    "jp": "屋上",
-                    "reading": "おくじょう",
-                    "en": "rooftop",
-                    "meanings": [
-                        "rooftop"
-                    ],
-                    "example": {
-                        "jp": "青空を見たくなったら、屋上に行きます。",
-                        "en": "I go up to the rooftop when I want to see the blue sky.",
-                        "furigana": "<ruby>青空<rp>(</rp><rt>あおぞら</rt><rp>)</rp></ruby>を<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>たくなったら、<ruby>屋上<rp>(</rp><rt>おくじょう</rt><rp>)</rp></ruby>に<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>きます。",
-                        "enMn": "Цэнхэр тэнгэрийг харах хүсэл төрвөл би дээвэр дээр гардаг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "дээвэр",
-                    "meaningsMn": [
-                        "дээвэр"
-                    ]
-                },
-                {
-                    "jp": "ごみ",
-                    "reading": "ごみ",
-                    "en": "trash",
-                    "meanings": [
-                        "trash",
-                        "garbage"
-                    ],
-                    "example": {
-                        "jp": "片目にごみが入った。",
-                        "en": "Dust got into one of my eyes.",
-                        "furigana": "<ruby>片目<rp>(</rp><rt>かため</rt><rp>)</rp></ruby>にごみが<ruby>入<rp>(</rp><rt>はい</rt><rp>)</rp></ruby>った。",
-                        "enMn": "Нэг нүдэнд минь хог оров."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хог",
-                    "meaningsMn": [
-                        "хог"
-                    ]
-                },
-                {
-                    "jp": "アフリカ",
-                    "reading": "アフリカ",
-                    "en": "Africa",
-                    "meanings": [
-                        "Africa"
-                    ],
-                    "example": {
-                        "jp": "野生の虎はアフリカでは見られません。",
-                        "en": "No wild tigers are to be found in Africa.",
-                        "furigana": "<ruby>野生<rp>(</rp><rt>やせい</rt><rp>)</rp></ruby>の<ruby>虎<rp>(</rp><rt>とら</rt><rp>)</rp></ruby>はアフリカでは<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>られません。",
-                        "enMn": "Зэрлэг барыг Африкт олж харах боломжгүй."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "Африк",
-                    "meaningsMn": [
-                        "Африк"
-                    ]
-                },
-                {
-                    "jp": "点",
-                    "reading": "てん",
-                    "en": "mark",
-                    "meanings": [
-                        "mark",
-                        "score",
-                        "grade; point",
-                        "dot"
-                    ],
-                    "example": {
-                        "jp": "及第点よ。これぐらい大したことないわ。",
-                        "en": "It's passable. Nothing out of the ordinary.",
-                        "furigana": "<ruby>及第<rp>(</rp><rt>きゅうだい</rt><rp>)</rp></ruby><ruby>点<rp>(</rp><rt>てん</rt><rp>)</rp></ruby>よ。これぐらい<ruby>大<rp>(</rp><rt>たい</rt><rp>)</rp></ruby>したことないわ。",
-                        "enMn": "Тэнцсэн оноо шүү. Ийм зүйл тийм ч их биш."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "оноо",
-                    "meaningsMn": [
-                        "оноо",
-                        "цэг"
-                    ]
-                },
-                {
-                    "jp": "一生懸命",
-                    "reading": "いっしょうけんめい",
-                    "en": "very hard (as in to work hard)",
-                    "meanings": [
-                        "very hard (as in to work hard)",
-                        "with utmost effort"
-                    ],
-                    "example": {
-                        "jp": "一生懸命指でまぶたを広げて目薬を差しました。",
-                        "en": "With great effort I held his eyelids open with my fingers and dropped in the eye medicine.",
-                        "furigana": "<ruby>一生懸命<rp>(</rp><rt>いっしょうけんめい</rt><rp>)</rp></ruby><ruby>指<rp>(</rp><rt>ゆび</rt><rp>)</rp></ruby>でまぶたを<ruby>広<rp>(</rp><rt>ひろ</rt><rp>)</rp></ruby>げて<ruby>目薬<rp>(</rp><rt>めぐすり</rt><rp>)</rp></ruby>を<ruby>差<rp>(</rp><rt>さ</rt><rp>)</rp></ruby>しました。",
-                        "enMn": "Бүх хүчээрээ хуруугаараа зовхийг нь дэлгэж, нүдний дусаал дусаалаа."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "бүх хүчээрээ",
-                    "meaningsMn": [
-                        "бүх хүчээрээ"
-                    ]
-                },
-                {
-                    "jp": "機会",
-                    "reading": "きかい",
-                    "en": "chance",
-                    "meanings": [
-                        "chance",
-                        "opportunity"
-                    ],
-                    "example": {
-                        "jp": "躊躇すれば機会は二度とこない。",
-                        "en": "He who hesitates is lost.",
-                        "furigana": "<ruby>躊躇<rp>(</rp><rt>ちゅうちょ</rt><rp>)</rp></ruby>すれば<ruby>機会<rp>(</rp><rt>きかい</rt><rp>)</rp></ruby>は<ruby>二度<rp>(</rp><rt>にど</rt><rp>)</rp></ruby>とこない。",
-                        "enMn": "Эргэлзвэл боломж дахин ирэхгүй."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "боломж",
-                    "meaningsMn": [
-                        "боломж"
-                    ]
-                },
-                {
-                    "jp": "建てる",
-                    "reading": "たてる",
-                    "en": "to build",
-                    "meanings": [
-                        "to build"
-                    ],
-                    "example": {
-                        "jp": "父は壁を建てるのに忙しい。",
-                        "en": "Father is busy putting up a wall.",
-                        "furigana": "<ruby>父<rp>(</rp><rt>ちち</rt><rp>)</rp></ruby>は<ruby>壁<rp>(</rp><rt>かべ</rt><rp>)</rp></ruby>を<ruby>建<rp>(</rp><rt>た</rt><rp>)</rp></ruby>てるのに<ruby>忙<rp>(</rp><rt>いそが</rt><rp>)</rp></ruby>しい。",
-                        "enMn": "Аав хана барих ажилдаа завгүй байна."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "барьж босгох",
-                    "meaningsMn": [
-                        "барьж босгох"
-                    ]
-                },
-                {
-                    "jp": "複雑",
-                    "reading": "ふくざつ",
-                    "en": "complexity",
-                    "meanings": [
-                        "complexity",
-                        "complication"
-                    ],
-                    "example": {
-                        "jp": "複雑炭水化物って何か知ってますか。",
-                        "en": "Do you know anything about complex carbohydrates?",
-                        "furigana": "<ruby>複雑<rp>(</rp><rt>ふくざつ</rt><rp>)</rp></ruby><ruby>炭水化物<rp>(</rp><rt>たんすいかぶつ</rt><rp>)</rp></ruby>って<ruby>何<rp>(</rp><rt>なに</rt><rp>)</rp></ruby>か<ruby>知<rp>(</rp><rt>し</rt><rp>)</rp></ruby>ってますか。",
-                        "enMn": "Нийлмэл нүүрс ус гэж юу болохыг мэдэх үү?"
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "төвөгтэй",
-                    "meaningsMn": [
-                        "төвөгтэй"
-                    ]
-                },
-                {
-                    "jp": "いらっしゃる",
-                    "reading": "いらっしゃる",
-                    "en": "-- honorific expression for いく",
-                    "meanings": [
-                        "-- honorific expression for いく",
-                        "くる",
-                        "and いる --"
-                    ],
-                    "example": {
-                        "jp": "長くいらっしゃるつもりですか。",
-                        "en": "Are you going to stay long?",
-                        "furigana": "<ruby>長<rp>(</rp><rt>なが</rt><rp>)</rp></ruby>くいらっしゃるつもりですか。",
-                        "enMn": "Та удаан байхаар төлөвлөж байна уу?"
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "залрах",
-                    "meaningsMn": [
-                        "залрах"
                     ]
                 },
                 {
@@ -7664,399 +6276,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "そう",
-                    "reading": "そう",
-                    "en": "really",
-                    "meanings": [
-                        "really",
-                        "(is that) so; yes",
-                        "right"
-                    ],
-                    "example": {
-                        "jp": "私ならそう言っただろうと思う。",
-                        "en": "This is what I would have said.",
-                        "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>ならそう<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>っただろうと<ruby>思<rp>(</rp><rt>おも</rt><rp>)</rp></ruby>う。",
-                        "enMn": "Би байсан бол ингэж хэлэх байсан гэж бодож байна."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "тийм үү",
-                    "meaningsMn": [
-                        "тийм үү"
-                    ]
-                },
-                {
-                    "jp": "ちっとも",
-                    "reading": "ちっとも",
-                    "en": "not at all (neg. verb)",
-                    "meanings": [
-                        "not at all (neg. verb)"
-                    ],
-                    "example": {
-                        "jp": "ゆうべはちっとも眠れなかった。",
-                        "en": "I did not sleep at all last night.",
-                        "furigana": "ゆうべはちっとも<ruby>眠<rp>(</rp><rt>ねむ</rt><rp>)</rp></ruby>れなかった。",
-                        "enMn": "Өчигдөр орой би огт унтаж чадсангүй."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "огт",
-                    "meaningsMn": [
-                        "огт"
-                    ]
-                }
-            ]
-        ]
-    },
-    {
-        "level": 16,
-        "jlpt": "N4",
-        "title": "N4 · Level 4",
-        "sets": [
-            [
-                {
-                    "jp": "郊外",
-                    "reading": "こうがい",
-                    "en": "suburb",
-                    "meanings": [
-                        "suburb",
-                        "outskirts"
-                    ],
-                    "example": {
-                        "jp": "彼はロンドンの郊外に住んでいる。",
-                        "en": "He lives in the suburbs of London.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>はロンドンの<ruby>郊外<rp>(</rp><rt>こうがい</rt><rp>)</rp></ruby>に<ruby>住<rp>(</rp><rt>す</rt><rp>)</rp></ruby>んでいる。",
-                        "enMn": "Тэр Лондоны захад амьдардаг."
-                    },
-                    "phonetic": "交",
-                    "phoneticReading": "コウ",
-                    "enMn": "хот орчмын бүс",
-                    "meaningsMn": [
-                        "хот орчмын бүс",
-                        "захын хороолол"
-                    ]
-                },
-                {
-                    "jp": "交通",
-                    "reading": "こうつう",
-                    "en": "traffic",
-                    "meanings": [
-                        "traffic",
-                        "transportation"
-                    ],
-                    "example": {
-                        "jp": "彼らは交通事故の現場へ急行した。",
-                        "en": "They rushed to the scene of the traffic accident.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>交通<rp>(</rp><rt>こうつう</rt><rp>)</rp></ruby><ruby>事故<rp>(</rp><rt>じこ</rt><rp>)</rp></ruby>の<ruby>現場<rp>(</rp><rt>げんば</rt><rp>)</rp></ruby>へ<ruby>急行<rp>(</rp><rt>きゅうこう</rt><rp>)</rp></ruby>した。",
-                        "enMn": "Тэд замын ослын газар руу яаравчлав."
-                    },
-                    "phonetic": "交",
-                    "phoneticReading": "コウ",
-                    "enMn": "тээвэр",
-                    "meaningsMn": [
-                        "тээвэр",
-                        "тээвэр"
-                    ]
-                },
-                {
-                    "jp": "大事",
-                    "reading": "だいじ",
-                    "en": "important",
-                    "meanings": [
-                        "important",
-                        "valuable",
-                        "serious matter"
-                    ],
-                    "example": {
-                        "jp": "このうち大事なのは後者の方です。",
-                        "en": "Of these it is the latter one that is important.",
-                        "furigana": "このうち<ruby>大事<rp>(</rp><rt>だいじ</rt><rp>)</rp></ruby>なのは<ruby>後者<rp>(</rp><rt>こうしゃ</rt><rp>)</rp></ruby>の<ruby>方<rp>(</rp><rt>ほう</rt><rp>)</rp></ruby>です。",
-                        "enMn": "Эдгээрээс сүүлийнх нь чухал юм."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "чухал",
-                    "meaningsMn": [
-                        "чухал",
-                        "үнэ цэнэтэй",
-                        "ноцтой асуудал"
-                    ]
-                },
-                {
-                    "jp": "会議室",
-                    "reading": "かいぎしつ",
-                    "en": "conference room",
-                    "meanings": [
-                        "conference room"
-                    ],
-                    "example": {
-                        "jp": "クラブの会員は会議室に集まった。",
-                        "en": "The club members assembled in the meeting room.",
-                        "furigana": "クラブの<ruby>会員<rp>(</rp><rt>かいいん</rt><rp>)</rp></ruby>は<ruby>会議<rp>(</rp><rt>かいぎ</rt><rp>)</rp></ruby><ruby>室<rp>(</rp><rt>しつ</rt><rp>)</rp></ruby>に<ruby>集<rp>(</rp><rt>あつ</rt><rp>)</rp></ruby>まった。",
-                        "enMn": "Клубын гишүүд хурлын өрөөнд цугларав."
-                    },
-                    "phonetic": "会",
-                    "phoneticReading": "カイ、エ",
-                    "enMn": "хурлын танхим",
-                    "meaningsMn": [
-                        "хурлын танхим"
-                    ]
-                },
-                {
-                    "jp": "間違える",
-                    "reading": "まちがえる",
-                    "en": "to make a mistake",
-                    "meanings": [
-                        "to make a mistake"
-                    ],
-                    "example": {
-                        "jp": "彼は私を姉と間違えたに違いない。",
-                        "en": "I'm sure he mistook me for my sister.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>を<ruby>姉<rp>(</rp><rt>あね</rt><rp>)</rp></ruby>と<ruby>間違<rp>(</rp><rt>まちが</rt><rp>)</rp></ruby>えたに<ruby>違<rp>(</rp><rt>ちが</rt><rp>)</rp></ruby>いない。",
-                        "enMn": "Тэр намайг эгчтэй минь андуурсан нь лавтай."
-                    },
-                    "phonetic": "門",
-                    "phoneticReading": "モン、カン",
-                    "enMn": "алдаа гаргах",
-                    "meaningsMn": [
-                        "алдаа гаргах"
-                    ]
-                },
-                {
-                    "jp": "寄る",
-                    "reading": "よる",
-                    "en": "to stop by",
-                    "meanings": [
-                        "to stop by"
-                    ],
-                    "example": {
-                        "jp": "彼は家に帰る途中パン屋に寄った。",
-                        "en": "He called at the baker's on the way home.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>家<rp>(</rp><rt>いえ</rt><rp>)</rp></ruby>に<ruby>帰<rp>(</rp><rt>かえ</rt><rp>)</rp></ruby>る<ruby>途中<rp>(</rp><rt>とちゅう</rt><rp>)</rp></ruby>パン<ruby>屋<rp>(</rp><rt>や</rt><rp>)</rp></ruby>に<ruby>寄<rp>(</rp><rt>よ</rt><rp>)</rp></ruby>った。",
-                        "enMn": "Тэр гэртээ харих замдаа талхны дэлгүүрт орсон."
-                    },
-                    "phonetic": "奇",
-                    "phoneticReading": "キ",
-                    "enMn": "дайрч орох",
-                    "meaningsMn": [
-                        "дайрч орох"
-                    ]
-                },
-                {
-                    "jp": "利用",
-                    "reading": "りよう",
-                    "en": "use",
-                    "meanings": [
-                        "use",
-                        "utilization"
-                    ],
-                    "example": {
-                        "jp": "余暇をできるだけ利用しなさい。",
-                        "en": "Make the best of your time.",
-                        "furigana": "<ruby>余暇<rp>(</rp><rt>よか</rt><rp>)</rp></ruby>をできるだけ<ruby>利用<rp>(</rp><rt>りよう</rt><rp>)</rp></ruby>しなさい。",
-                        "enMn": "Цагаа сайн ашигла."
-                    },
-                    "phonetic": "利",
-                    "phoneticReading": "リ",
-                    "enMn": "ашиглалт",
-                    "meaningsMn": [
-                        "ашиглалт",
-                        "ашиглалт"
-                    ]
-                },
-                {
-                    "jp": "丁寧",
-                    "reading": "ていねい",
-                    "en": "polite",
-                    "meanings": [
-                        "polite",
-                        "courteous",
-                        "careful"
-                    ],
-                    "example": {
-                        "jp": "彼に丁寧な返事を書くつもりです。",
-                        "en": "I will write him a civil answer.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>に<ruby>丁寧<rp>(</rp><rt>ていねい</rt><rp>)</rp></ruby>な<ruby>返事<rp>(</rp><rt>へんじ</rt><rp>)</rp></ruby>を<ruby>書<rp>(</rp><rt>か</rt><rp>)</rp></ruby>くつもりです。",
-                        "enMn": "Би түүнд эелдэг хариу бичнэ."
-                    },
-                    "phonetic": "丁",
-                    "phoneticReading": "チョウ、テイ",
-                    "enMn": "эелдэг",
-                    "meaningsMn": [
-                        "эелдэг",
-                        "эелдэг",
-                        "болгоомжтой"
-                    ]
-                },
-                {
-                    "jp": "申し上げる",
-                    "reading": "もうしあげる",
-                    "en": "to say (humble)",
-                    "meanings": [
-                        "(humble)to say",
-                        "to tell"
-                    ],
-                    "example": {
-                        "jp": "日頃のご愛顧にお礼申し上げます。",
-                        "en": "We really thank you for your patronage.",
-                        "furigana": "<ruby>日頃<rp>(</rp><rt>ひごろ</rt><rp>)</rp></ruby>のご<ruby>愛顧<rp>(</rp><rt>あいこ</rt><rp>)</rp></ruby>にお<ruby>礼<rp>(</rp><rt>れい</rt><rp>)</rp></ruby><ruby>申<rp>(</rp><rt>もう</rt><rp>)</rp></ruby>し<ruby>上<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>げます。",
-                        "enMn": "Таны байнгын дэмжлэгт үнэхээр талархаж байна."
-                    },
-                    "phonetic": "申",
-                    "phoneticReading": "シン",
-                    "enMn": "хэлэх (даруу)",
-                    "meaningsMn": [
-                        "хэлэх (даруу)",
-                        "хэлэх"
-                    ]
-                },
-                {
-                    "jp": "頑張る",
-                    "reading": "がんばる",
-                    "en": "to try one's best",
-                    "meanings": [
-                        "to try one's best",
-                        "to try hard",
-                        "to persist"
-                    ],
-                    "example": {
-                        "jp": "彼女は見かけによらず頑張りやだ。",
-                        "en": "She is persistent though she doesn't look so.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>かけによらず<ruby>頑張<rp>(</rp><rt>がんば</rt><rp>)</rp></ruby>りやだ。",
-                        "enMn": "Тэр гаднаасаа харагдаж байгаагаас илүү тэвчээртэй."
-                    },
-                    "phonetic": "元",
-                    "phoneticReading": "ガン",
-                    "enMn": "чармайх",
-                    "meaningsMn": [
-                        "чармайх",
-                        "чармайх",
-                        "тэвчиж үргэлжлүүлэх"
-                    ]
-                },
-                {
-                    "jp": "できるだけ",
-                    "reading": "できるだけ",
-                    "en": "if at all possible",
-                    "meanings": [
-                        "if at all possible",
-                        "as much as possible"
-                    ],
-                    "example": {
-                        "jp": "できるだけ君本人が行って調べたほうがいいよ。",
-                        "en": "If at all possible, you should go and look into the matter yourself.",
-                        "furigana": "できるだけ<ruby>君<rp>(</rp><rt>きみ</rt><rp>)</rp></ruby><ruby>本人<rp>(</rp><rt>ほんにん</rt><rp>)</rp></ruby>が<ruby>行<rp>(</rp><rt>おこな</rt><rp>)</rp></ruby>って<ruby>調<rp>(</rp><rt>しら</rt><rp>)</rp></ruby>べたほうがいいよ。",
-                        "enMn": "Аль болох чи өөрөө очиж шалгасан нь дээр шүү."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "аль болох",
-                    "meaningsMn": [
-                        "аль болох"
-                    ]
-                },
-                {
-                    "jp": "中学校",
-                    "reading": "ちゅうがっこう",
-                    "en": "junior high school pupil",
-                    "meanings": [
-                        "junior high school pupil"
-                    ],
-                    "example": {
-                        "jp": "彼は中学校に入った。",
-                        "en": "He entered junior high school.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>中学校<rp>(</rp><rt>ちゅうがっこう</rt><rp>)</rp></ruby>に<ruby>入<rp>(</rp><rt>はい</rt><rp>)</rp></ruby>った。",
-                        "enMn": "Тэр дунд сургуульд оров."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "дунд сургууль",
-                    "meaningsMn": [
-                        "дунд сургууль"
-                    ]
-                },
-                {
-                    "jp": "ガス",
-                    "reading": "ガス",
-                    "en": "gas",
-                    "meanings": [
-                        "gas"
-                    ],
-                    "example": {
-                        "jp": "毎月のガス代はいくらですか。",
-                        "en": "How much is your monthly gas bill?",
-                        "furigana": "<ruby>毎月<rp>(</rp><rt>まいつき</rt><rp>)</rp></ruby>のガス<ruby>代<rp>(</rp><rt>だい</rt><rp>)</rp></ruby>はいくらですか。",
-                        "enMn": "Сар бүрийн хийн төлбөр хэд вэ?"
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хий",
-                    "meaningsMn": [
-                        "хий"
-                    ]
-                },
-                {
-                    "jp": "致す",
-                    "reading": "いたす",
-                    "en": "-- extra-modest expression for する --",
-                    "meanings": [
-                        "-- extra-modest expression for する --"
-                    ],
-                    "example": {
-                        "jp": "あれは、私の不徳の致すところでした。",
-                        "en": "I must admit that it was my fault.",
-                        "furigana": "あれは、<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>の<ruby>不徳<rp>(</rp><rt>ふとく</rt><rp>)</rp></ruby>の<ruby>致<rp>(</rp><rt>いた</rt><rp>)</rp></ruby>すところでした。",
-                        "enMn": "Тэр бол миний буруугаас болсон хэрэг байлаа."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "үйлдэх",
-                    "meaningsMn": [
-                        "үйлдэх"
-                    ]
-                },
-                {
-                    "jp": "うそ",
-                    "reading": "嘘",
-                    "en": "lie",
-                    "meanings": [
-                        "lie"
-                    ],
-                    "example": {
-                        "jp": "容疑者は捜査官にうそを言った。",
-                        "en": "The suspect told a lie to the inspector.",
-                        "furigana": "<ruby>容疑<rp>(</rp><rt>ようぎ</rt><rp>)</rp></ruby><ruby>者<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby>は<ruby>捜査<rp>(</rp><rt>そうさ</rt><rp>)</rp></ruby><ruby>官<rp>(</rp><rt>かん</rt><rp>)</rp></ruby>にうそを<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>った。",
-                        "enMn": "Сэжигтэн мөрдөгчид худал хэлэв."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "худал",
-                    "meaningsMn": [
-                        "худал"
-                    ]
-                },
-                {
-                    "jp": "建て",
-                    "reading": "～だて",
-                    "en": "~ storied",
-                    "meanings": [
-                        "~ storied",
-                        "separate housing"
-                    ],
-                    "example": {
-                        "jp": "来年は新しい家を建てたい。",
-                        "en": "I hope to build a new house next year.",
-                        "furigana": "<ruby>来年<rp>(</rp><rt>らいねん</rt><rp>)</rp></ruby>は<ruby>新<rp>(</rp><rt>あたら</rt><rp>)</rp></ruby>しい<ruby>家<rp>(</rp><rt>いえ</rt><rp>)</rp></ruby>を<ruby>建<rp>(</rp><rt>た</rt><rp>)</rp></ruby>てたい。",
-                        "enMn": "Ирэх жил шинэ байшин барьж босгохыг хүсэж байна."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "давхар байшин",
-                    "meaningsMn": [
-                        "давхар байшин"
-                    ]
-                },
-                {
                     "jp": "季節",
                     "reading": "きせつ",
                     "en": "season (in reference to weather)",
@@ -8077,348 +6296,388 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "畳",
-                    "reading": "たたみ",
-                    "en": "tatami mat (Japanese straw mat)",
+                    "jp": "再来月",
+                    "reading": "さらいげつ",
+                    "en": "the month after next",
                     "meanings": [
-                        "tatami mat (Japanese straw mat)"
+                        "the month after next"
                     ],
                     "example": {
-                        "jp": "彼は畳の上に大の字になった。",
-                        "en": "He lay on the mat at full length.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>畳<rp>(</rp><rt>たたみ</rt><rp>)</rp></ruby>の<ruby>上<rp>(</rp><rt>うえ</rt><rp>)</rp></ruby>に<ruby>大<rp>(</rp><rt>だい</rt><rp>)</rp></ruby>の<ruby>字<rp>(</rp><rt>じ</rt><rp>)</rp></ruby>になった。",
-                        "enMn": "Тэр татами дээр гар хөлөө дэлгээд хэвтэв."
+                        "jp": "再来月は１２月だ。",
+                        "en": "The month after next is December.",
+                        "furigana": "<ruby>再来月<rp>(</rp><rt>さらいげつ</rt><rp>)</rp></ruby>は<ruby>１２月<rp>(</rp><rt>じゅうにがつ</rt><rp>)</rp></ruby>だ。",
+                        "enMn": "Хоёр сарын дараа арванхоёрдугаар сар болно."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "татами",
+                    "enMn": "дараа дараагийн сар",
                     "meaningsMn": [
-                        "татами"
+                        "дараа дараагийн сар"
                     ]
                 },
                 {
-                    "jp": "用事",
-                    "reading": "ようじ",
-                    "en": "business to take care of",
+                    "jp": "寝坊",
+                    "reading": "ねぼう",
+                    "en": "sleeping in late",
                     "meanings": [
-                        "business to take care of; tasks; errands"
+                        "sleeping in late"
                     ],
                     "example": {
-                        "jp": "用事以外は入場お断り。",
-                        "en": "No admittance except on business.",
-                        "furigana": "<ruby>用事<rp>(</rp><rt>ようじ</rt><rp>)</rp></ruby><ruby>以外<rp>(</rp><rt>いがい</rt><rp>)</rp></ruby>は<ruby>入場<rp>(</rp><rt>にゅうじょう</rt><rp>)</rp></ruby>お<ruby>断<rp>(</rp><rt>ことわ</rt><rp>)</rp></ruby>り。",
-                        "enMn": "Ажил хэрэггүй хүн нэвтрэхийг хориглоно."
+                        "jp": "僕は寝坊して学校に遅刻した。",
+                        "en": "I overslept and was late for school.",
+                        "furigana": "<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>は<ruby>寝坊<rp>(</rp><rt>ねぼう</rt><rp>)</rp></ruby>して<ruby>学校<rp>(</rp><rt>がっこう</rt><rp>)</rp></ruby>に<ruby>遅刻<rp>(</rp><rt>ちこく</rt><rp>)</rp></ruby>した。",
+                        "enMn": "Би оройтож сэрээд сургуульдаа хоцорсон."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "ажил хэрэг",
+                    "enMn": "оройтож сэрэх",
                     "meaningsMn": [
-                        "ажил хэрэг"
+                        "оройтож сэрэх"
                     ]
                 },
                 {
-                    "jp": "ビル",
-                    "reading": "ビル",
-                    "en": "(abbr.) building",
+                    "jp": "光る",
+                    "reading": "ひかる",
+                    "en": "to shine",
                     "meanings": [
-                        "(abbr.) building"
+                        "to shine",
+                        "to glitter"
                     ],
                     "example": {
-                        "jp": "そのビルは日本一高い建物です。",
-                        "en": "That building is the tallest in Japan.",
-                        "furigana": "そのビルは<ruby>日本一<rp>(</rp><rt>にっぽんいち</rt><rp>)</rp></ruby><ruby>高<rp>(</rp><rt>たか</rt><rp>)</rp></ruby>い<ruby>建物<rp>(</rp><rt>たてもの</rt><rp>)</rp></ruby>です。",
-                        "enMn": "Тэр бол Японы хамгийн өндөр барилга юм."
+                        "jp": "父は自分の車を光るまで磨いた。",
+                        "en": "My father polished his car till it shone.",
+                        "furigana": "<ruby>父<rp>(</rp><rt>ちち</rt><rp>)</rp></ruby>は<ruby>自分<rp>(</rp><rt>じぶん</rt><rp>)</rp></ruby>の<ruby>車<rp>(</rp><rt>くるま</rt><rp>)</rp></ruby>を<ruby>光<rp>(</rp><rt>ひか</rt><rp>)</rp></ruby>るまで<ruby>磨<rp>(</rp><rt>みが</rt><rp>)</rp></ruby>いた。",
+                        "enMn": "Аав машинаа гялалзтал өнгөлөв."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "барилга",
+                    "enMn": "гэрэлтэх",
                     "meaningsMn": [
-                        "барилга"
+                        "гэрэлтэх"
                     ]
                 },
                 {
-                    "jp": "故障",
-                    "reading": "こしょうする",
-                    "en": "breakdown",
+                    "jp": "雲",
+                    "reading": "くも",
+                    "en": "cloud",
                     "meanings": [
-                        "breakdown"
+                        "cloud"
                     ],
                     "example": {
-                        "jp": "冷水機が故障している。",
-                        "en": "The water cooler is out of order.",
-                        "furigana": "<ruby>冷水<rp>(</rp><rt>れいすい</rt><rp>)</rp></ruby><ruby>機<rp>(</rp><rt>き</rt><rp>)</rp></ruby>が<ruby>故障<rp>(</rp><rt>こしょう</rt><rp>)</rp></ruby>している。",
-                        "enMn": "Усны хөргөгч эвдэрсэн байна."
+                        "jp": "夕方になって少し雲が出てきました。",
+                        "en": "By evening, a few clouds had formed.",
+                        "furigana": "<ruby>夕方<rp>(</rp><rt>ゆうがた</rt><rp>)</rp></ruby>になって<ruby>少<rp>(</rp><rt>すこ</rt><rp>)</rp></ruby>し<ruby>雲<rp>(</rp><rt>くも</rt><rp>)</rp></ruby>が<ruby>出<rp>(</rp><rt>で</rt><rp>)</rp></ruby>てきました。",
+                        "enMn": "Орой болоход бага зэрэг үүл гарч ирлээ."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "эвдрэл",
+                    "enMn": "үүл",
                     "meaningsMn": [
-                        "эвдрэл"
+                        "үүл"
                     ]
                 },
                 {
-                    "jp": "受ける",
-                    "reading": "うける",
-                    "en": "to take (an examination, interview, etc.); to receive",
+                    "jp": "すると",
+                    "reading": "すると",
+                    "en": "then",
                     "meanings": [
-                        "to take (an examination, interview, etc.); to receive"
+                        "and",
+                        "then"
                     ],
                     "example": {
-                        "jp": "父は手術を受ける事になっている。",
-                        "en": "Father is going to undergo an operation.",
-                        "furigana": "<ruby>父<rp>(</rp><rt>ちち</rt><rp>)</rp></ruby>は<ruby>手術<rp>(</rp><rt>しゅじゅつ</rt><rp>)</rp></ruby>を<ruby>受<rp>(</rp><rt>う</rt><rp>)</rp></ruby>ける<ruby>事<rp>(</rp><rt>こと</rt><rp>)</rp></ruby>になっている。",
-                        "enMn": "Аав хагалгаанд орох болжээ."
+                        "jp": "するとあなたは幸せでしょう。",
+                        "en": "Then you will be happy.",
+                        "furigana": "するとあなたは<ruby>幸<rp>(</rp><rt>しあわ</rt><rp>)</rp></ruby>せでしょう。",
+                        "enMn": "Тэгвэл чи аз жаргалтай байх болно."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хүлээн авах",
+                    "enMn": "дараа нь",
                     "meaningsMn": [
-                        "хүлээн авах"
+                        "тэгээд",
+                        "дараа нь"
                     ]
                 },
                 {
-                    "jp": "そんな",
-                    "reading": "そんな",
-                    "en": "such",
+                    "jp": "昔",
+                    "reading": "むかし",
+                    "en": "old days",
                     "meanings": [
-                        "such",
-                        "like that",
-                        "that sort of"
+                        "old days; past"
                     ],
                     "example": {
-                        "jp": "そんなことは起きないでしょう。",
-                        "en": "That won't happen.",
-                        "furigana": "そんなことは<ruby>起<rp>(</rp><rt>お</rt><rp>)</rp></ruby>きないでしょう。",
-                        "enMn": "Тийм зүйл болохгүй байх."
+                        "jp": "話は遠い昔に始まる。",
+                        "en": "The story begins far in the past.",
+                        "furigana": "<ruby>話<rp>(</rp><rt>はなし</rt><rp>)</rp></ruby>は<ruby>遠<rp>(</rp><rt>とお</rt><rp>)</rp></ruby>い<ruby>昔<rp>(</rp><rt>むかし</rt><rp>)</rp></ruby>に<ruby>始<rp>(</rp><rt>はじ</rt><rp>)</rp></ruby>まる。",
+                        "enMn": "Түүх эрт цагт эхэлдэг."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "тийм",
+                    "enMn": "эрт цаг",
                     "meaningsMn": [
-                        "тийм"
+                        "эрт цаг"
                     ]
                 },
                 {
-                    "jp": "行う",
-                    "reading": "おこなう",
-                    "en": "to carry out",
+                    "jp": "終わり",
+                    "reading": "おわり",
+                    "en": "end",
                     "meanings": [
-                        "to carry out; to conduct (typically used in written language)"
+                        "end"
                     ],
                     "example": {
-                        "jp": "彼女の母親はエアロビクスを週に一回行う。",
-                        "en": "Her mother does aerobics once a week.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>の<ruby>母親<rp>(</rp><rt>ははおや</rt><rp>)</rp></ruby>はエアロビクスを<ruby>週<rp>(</rp><rt>しゅう</rt><rp>)</rp></ruby>に<ruby>一<rp>(</rp><rt>いち</rt><rp>)</rp></ruby><ruby>回<rp>(</rp><rt>かい</rt><rp>)</rp></ruby><ruby>行<rp>(</rp><rt>おこな</rt><rp>)</rp></ruby>う。",
-                        "enMn": "Түүний ээж долоо хоногт нэг удаа аэробик хийдэг."
+                        "jp": "入学式も終わりました。同じ沿線の大学です。",
+                        "en": "I've already had the entrance ceremony. It's a university alongside the same railway line.",
+                        "furigana": "<ruby>入学<rp>(</rp><rt>にゅうがく</rt><rp>)</rp></ruby><ruby>式<rp>(</rp><rt>しき</rt><rp>)</rp></ruby>も<ruby>終<rp>(</rp><rt>お</rt><rp>)</rp></ruby>わりました。<ruby>同<rp>(</rp><rt>おな</rt><rp>)</rp></ruby>じ<ruby>沿線<rp>(</rp><rt>えんせん</rt><rp>)</rp></ruby>の<ruby>大学<rp>(</rp><rt>だいがく</rt><rp>)</rp></ruby>です。",
+                        "enMn": "Элсэлтийн ёслол ч болж өнгөрлөө. Ижил төмөр замын дагуух их сургууль шүү."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "явуулах",
+                    "enMn": "төгсгөл",
                     "meaningsMn": [
-                        "явуулах"
+                        "төгсгөл"
                     ]
                 },
                 {
-                    "jp": "ぶどう",
-                    "reading": "ぶどう",
-                    "en": "grapes",
+                    "jp": "一度",
+                    "reading": "いちど",
+                    "en": "once",
                     "meanings": [
-                        "grapes"
+                        "once",
+                        "one time"
                     ],
                     "example": {
-                        "jp": "母が箱詰めのぶどうを送ってくれました。",
-                        "en": "Mother sent us grapes packed in a box.",
-                        "furigana": "<ruby>母<rp>(</rp><rt>はは</rt><rp>)</rp></ruby>が<ruby>箱詰<rp>(</rp><rt>はこづ</rt><rp>)</rp></ruby>めのぶどうを<ruby>送<rp>(</rp><rt>おく</rt><rp>)</rp></ruby>ってくれました。",
-                        "enMn": "Ээж хайрцаглагдсан усан үзэм илгээж өгсөн."
+                        "jp": "彼女は週に一度料理の講習を受ける。",
+                        "en": "She takes cooking lessons once a week.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>週<rp>(</rp><rt>しゅう</rt><rp>)</rp></ruby>に<ruby>一度<rp>(</rp><rt>いちど</rt><rp>)</rp></ruby><ruby>料理<rp>(</rp><rt>りょうり</rt><rp>)</rp></ruby>の<ruby>講習<rp>(</rp><rt>こうしゅう</rt><rp>)</rp></ruby>を<ruby>受<rp>(</rp><rt>う</rt><rp>)</rp></ruby>ける。",
+                        "enMn": "Тэр долоо хоногт нэг удаа хоол хийх хичээлд суудаг."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "усан үзэм",
+                    "enMn": "нэг удаа",
                     "meaningsMn": [
-                        "усан үзэм"
+                        "нэг удаа"
+                    ]
+                },
+                {
+                    "jp": "月",
+                    "reading": "つき",
+                    "en": "moon",
+                    "meanings": [
+                        "moon"
+                    ],
+                    "example": {
+                        "jp": "妹は、月に１度家に必ず手紙を書く。",
+                        "en": "My sister never fails to write home once a month.",
+                        "furigana": "<ruby>妹<rp>(</rp><rt>いもうと</rt><rp>)</rp></ruby>は、<ruby>月<rp>(</rp><rt>つき</rt><rp>)</rp></ruby>に１<ruby>度<rp>(</rp><rt>ど</rt><rp>)</rp></ruby><ruby>家<rp>(</rp><rt>か</rt><rp>)</rp></ruby>に<ruby>必<rp>(</rp><rt>かなら</rt><rp>)</rp></ruby>ず<ruby>手紙<rp>(</rp><rt>てがみ</rt><rp>)</rp></ruby>を<ruby>書<rp>(</rp><rt>か</rt><rp>)</rp></ruby>く。",
+                        "enMn": "Дүү охин минь сард нэг удаа гэртээ захидал бичихээ хэзээ ч алддаггүй."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "сар",
+                    "meaningsMn": [
+                        "сар"
+                    ]
+                },
+                {
+                    "jp": "残る",
+                    "reading": "のこる",
+                    "en": "to remain (v.i.)",
+                    "meanings": [
+                        "to remain (v.i.)",
+                        "to be left"
+                    ],
+                    "example": {
+                        "jp": "夢が生き生きと記憶に残ることもある。",
+                        "en": "Dreams may be vivid and memorable.",
+                        "furigana": "<ruby>夢<rp>(</rp><rt>ゆめ</rt><rp>)</rp></ruby>が<ruby>生<rp>(</rp><rt>い</rt><rp>)</rp></ruby>き<ruby>生<rp>(</rp><rt>い</rt><rp>)</rp></ruby>きと<ruby>記憶<rp>(</rp><rt>きおく</rt><rp>)</rp></ruby>に<ruby>残<rp>(</rp><rt>のこ</rt><rp>)</rp></ruby>ることもある。",
+                        "enMn": "Зүүд тод, дурсамжтай үлдэх нь ч бий."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "үлдэх",
+                    "meaningsMn": [
+                        "үлдэх"
+                    ]
+                },
+                {
+                    "jp": "やっと",
+                    "reading": "やっと",
+                    "en": "at last",
+                    "meanings": [
+                        "at last",
+                        "finally"
+                    ],
+                    "example": {
+                        "jp": "彼女はやっとそのホテルに着いた。",
+                        "en": "She finally reached the hotel.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はやっとそのホテルに<ruby>着<rp>(</rp><rt>つ</rt><rp>)</rp></ruby>いた。",
+                        "enMn": "Тэр эцэст нь зочид буудалд хүрч ирэв."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "эцэст нь",
+                    "meaningsMn": [
+                        "эцэст нь",
+                        "эцэст нь"
+                    ]
+                },
+                {
+                    "jp": "さっき",
+                    "reading": "さっき",
+                    "en": "a little while ago",
+                    "meanings": [
+                        "a little while ago"
+                    ],
+                    "example": {
+                        "jp": "さっきまでの快晴がうそのようだ。",
+                        "en": "It's hard to believe it was so clear and sunny up to just now.",
+                        "furigana": "さっきまでの<ruby>快晴<rp>(</rp><rt>かいせい</rt><rp>)</rp></ruby>がうそのようだ。",
+                        "enMn": "Саяхныг хүртэл цэлмэг наран байсан гэдэгт итгэхэд бэрх."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "саяхан",
+                    "meaningsMn": [
+                        "саяхан"
+                    ]
+                },
+                {
+                    "jp": "乾く",
+                    "reading": "かわく",
+                    "en": "to get dry",
+                    "meanings": [
+                        "to get dry"
+                    ],
+                    "example": {
+                        "jp": "皮は乾くにつれて堅くなった。",
+                        "en": "The skin tightened as it dried.",
+                        "furigana": "<ruby>皮<rp>(</rp><rt>かわ</rt><rp>)</rp></ruby>は<ruby>乾<rp>(</rp><rt>かわ</rt><rp>)</rp></ruby>くにつれて<ruby>堅<rp>(</rp><rt>かた</rt><rp>)</rp></ruby>くなった。",
+                        "enMn": "Арьс хатах тусам хатуу болов."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хатах",
+                    "meaningsMn": [
+                        "хатах"
+                    ]
+                },
+                {
+                    "jp": "今夜",
+                    "reading": "こんや",
+                    "en": "this evening",
+                    "meanings": [
+                        "this evening",
+                        "tonight"
+                    ],
+                    "example": null,
+                    "phonetic": "今",
+                    "phoneticReading": "キン",
+                    "enMn": "өнөө орой",
+                    "meaningsMn": [
+                        "өнөө орой"
+                    ]
+                },
+                {
+                    "jp": "暮れる",
+                    "reading": "くれる",
+                    "en": "to get dark",
+                    "meanings": [
+                        "to get dark",
+                        "to come to an end"
+                    ],
+                    "example": null,
+                    "phonetic": "莫",
+                    "phoneticReading": "ボ、モ、マク、バク",
+                    "enMn": "харанхуйлах",
+                    "meaningsMn": [
+                        "харанхуйлах"
+                    ]
+                },
+                {
+                    "jp": "昼間",
+                    "reading": "ひるま",
+                    "en": "daytime",
+                    "meanings": [
+                        "daytime",
+                        "during the day"
+                    ],
+                    "example": null,
+                    "phonetic": "門",
+                    "phoneticReading": "モン、カン",
+                    "enMn": "өдрийн цагт",
+                    "meaningsMn": [
+                        "өдрийн цагт"
                     ]
                 }
             ]
-        ]
+        ],
+        "themeKey": "theme.n4.1"
     },
     {
-        "level": 17,
+        "level": 14,
         "jlpt": "N4",
-        "title": "N4 · Level 5",
+        "title": "People and family",
         "sets": [
             [
                 {
-                    "jp": "壊す",
-                    "reading": "こわす",
-                    "en": "to break",
+                    "jp": "課長",
+                    "reading": "かちょう",
+                    "en": "section manager",
                     "meanings": [
-                        "to break",
-                        "to break down"
+                        "section manager"
                     ],
                     "example": {
-                        "jp": "彼女はまたトースターを壊した。",
-                        "en": "She has broken the toaster again.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はまたトースターを<ruby>壊<rp>(</rp><rt>こわ</rt><rp>)</rp></ruby>した。",
-                        "enMn": "Тэр тостерийг дахин эвдэв."
+                        "jp": "彼は課長に書類を点検させられた。",
+                        "en": "He was made to check his papers by the chief.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>課長<rp>(</rp><rt>かちょう</rt><rp>)</rp></ruby>に<ruby>書類<rp>(</rp><rt>しょるい</rt><rp>)</rp></ruby>を<ruby>点検<rp>(</rp><rt>てんけん</rt><rp>)</rp></ruby>させられた。",
+                        "enMn": "Дарга түүгээр бичиг баримтаа шалгуулав."
                     },
-                    "phonetic": "褱",
-                    "phoneticReading": "カイ",
-                    "enMn": "эвдэх",
+                    "phonetic": "果",
+                    "phoneticReading": "カ",
+                    "enMn": "тасгийн дарга",
                     "meaningsMn": [
-                        "эвдэх",
-                        "эвдрэх"
+                        "тасгийн дарга"
                     ]
                 },
                 {
-                    "jp": "壊れる",
-                    "reading": "こわれる",
-                    "en": "to be broken",
+                    "jp": "僕",
+                    "reading": "ぼく",
+                    "en": "I (used by men towards those of equal or lower status)",
                     "meanings": [
-                        "to be broken",
-                        "to break"
+                        "I (used by men towards those of equal or lower status)"
                     ],
                     "example": {
-                        "jp": "夜中に台所で物が壊れる音がした。",
-                        "en": "I heard something crashing in the kitchen in the middle of the night.",
-                        "furigana": "<ruby>夜中<rp>(</rp><rt>やちゅう</rt><rp>)</rp></ruby>に<ruby>台所<rp>(</rp><rt>だいどころ</rt><rp>)</rp></ruby>で<ruby>物<rp>(</rp><rt>もの</rt><rp>)</rp></ruby>が<ruby>壊<rp>(</rp><rt>こわ</rt><rp>)</rp></ruby>れる<ruby>音<rp>(</rp><rt>おと</rt><rp>)</rp></ruby>がした。",
-                        "enMn": "Шөнө дунд гал тогооны өрөөнөөс ямар нэг зүйл унаж хагарах чимээ сонссон."
-                    },
-                    "phonetic": "褱",
-                    "phoneticReading": "カイ",
-                    "enMn": "эвдрэх",
-                    "meaningsMn": [
-                        "эвдрэх",
-                        "эвдэх"
-                    ]
-                },
-                {
-                    "jp": "思う",
-                    "reading": "おもう",
-                    "en": "to think",
-                    "meanings": [
-                        "to think",
-                        "to feel"
-                    ],
-                    "example": {
-                        "jp": "わたしがいなくて淋しいと思った？",
-                        "en": "Did you miss me?",
-                        "furigana": "わたしがいなくて<ruby>淋<rp>(</rp><rt>さび</rt><rp>)</rp></ruby>しいと<ruby>思<rp>(</rp><rt>おも</rt><rp>)</rp></ruby>った？",
-                        "enMn": "Чи намайг санаж байсан уу?"
-                    },
-                    "phonetic": "思",
-                    "phoneticReading": "シ",
-                    "enMn": "бодох",
-                    "meaningsMn": [
-                        "бодох",
-                        "мэдрэх"
-                    ]
-                },
-                {
-                    "jp": "思い出す",
-                    "reading": "おもいだす",
-                    "en": "to recall",
-                    "meanings": [
-                        "to recall",
-                        "to remember"
-                    ],
-                    "example": {
-                        "jp": "約束したことを思い出して下さい。",
-                        "en": "I must remind you of your promise.",
-                        "furigana": "<ruby>約束<rp>(</rp><rt>やくそく</rt><rp>)</rp></ruby>したことを<ruby>思<rp>(</rp><rt>おも</rt><rp>)</rp></ruby>い<ruby>出<rp>(</rp><rt>だ</rt><rp>)</rp></ruby>して<ruby>下<rp>(</rp><rt>くだ</rt><rp>)</rp></ruby>さい。",
-                        "enMn": "Би чамд амлалтаа сануулах ёстой."
-                    },
-                    "phonetic": "思",
-                    "phoneticReading": "シ",
-                    "enMn": "санах",
-                    "meaningsMn": [
-                        "санах",
-                        "санах"
-                    ]
-                },
-                {
-                    "jp": "深い",
-                    "reading": "ふかい",
-                    "en": "deep",
-                    "meanings": [
-                        "deep",
-                        "profound"
-                    ],
-                    "example": {
-                        "jp": "野原は深い雪におおわれていた。",
-                        "en": "The fields lay covered with deep snow.",
-                        "furigana": "<ruby>野原<rp>(</rp><rt>のはら</rt><rp>)</rp></ruby>は<ruby>深<rp>(</rp><rt>ふか</rt><rp>)</rp></ruby>い<ruby>雪<rp>(</rp><rt>ゆき</rt><rp>)</rp></ruby>におおわれていた。",
-                        "enMn": "Тал хээр гүн цасаар хучигдсан байв."
+                        "jp": "君は僕にとてもいらいらしている。",
+                        "en": "You're so impatient with me.",
+                        "furigana": "<ruby>君<rp>(</rp><rt>きみ</rt><rp>)</rp></ruby>は<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>にとてもいらいらしている。",
+                        "enMn": "Чи надад маш их тэвчээргүй хандаж байна."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "гүн",
+                    "enMn": "би",
                     "meaningsMn": [
-                        "гүн",
-                        "гүн"
+                        "би"
                     ]
                 },
                 {
-                    "jp": "焼く",
-                    "reading": "やく",
-                    "en": "to bake",
+                    "jp": "親",
+                    "reading": "おや",
+                    "en": "parent",
                     "meanings": [
-                        "to bake",
-                        "to grill"
+                        "a parent"
                     ],
                     "example": {
-                        "jp": "母は週末にパンとクッキーを焼く。",
-                        "en": "My mother bakes bread and cookies on weekends.",
-                        "furigana": "<ruby>母<rp>(</rp><rt>はは</rt><rp>)</rp></ruby>は<ruby>週末<rp>(</rp><rt>しゅうまつ</rt><rp>)</rp></ruby>にパンとクッキーを<ruby>焼<rp>(</rp><rt>や</rt><rp>)</rp></ruby>く。",
-                        "enMn": "Ээж минь амралтын өдрүүдэд талх, жигнэмэг жигнэдэг."
+                        "jp": "私も親の面倒とか見られないですね。",
+                        "en": "I can't look after my parents and such either.",
+                        "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>も<ruby>親<rp>(</rp><rt>おや</rt><rp>)</rp></ruby>の<ruby>面倒<rp>(</rp><rt>めんどう</rt><rp>)</rp></ruby>とか<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>られないですね。",
+                        "enMn": "Би эцэг эхээ ч гэсэн харж чадахгүй байна."
                     },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "жигнэх",
+                    "phonetic": "亲",
+                    "phoneticReading": "シン",
+                    "enMn": "эцэг эх",
                     "meaningsMn": [
-                        "жигнэх",
-                        "шарах"
-                    ]
-                },
-                {
-                    "jp": "ガラス",
-                    "reading": "ガラス",
-                    "en": "glass",
-                    "meanings": [
-                        "glass",
-                        "pane"
-                    ],
-                    "example": {
-                        "jp": "彼女はガラスの破片で指を切った。",
-                        "en": "She cut her finger on the broken glass.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はガラスの<ruby>破片<rp>(</rp><rt>はへん</rt><rp>)</rp></ruby>で<ruby>指<rp>(</rp><rt>ゆび</rt><rp>)</rp></ruby>を<ruby>切<rp>(</rp><rt>き</rt><rp>)</rp></ruby>った。",
-                        "enMn": "Тэр хугарсан шилэнд хурууг нь зүссэн."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "шил",
-                    "meaningsMn": [
-                        "шил",
-                        "цонхны шил"
-                    ]
-                },
-                {
-                    "jp": "発音",
-                    "reading": "はつおん",
-                    "en": "pronunciation",
-                    "meanings": [
-                        "pronunciation"
-                    ],
-                    "example": {
-                        "jp": "彼女は昨日英語の発音を練習した。",
-                        "en": "She practiced her English pronunciation yesterday.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>昨日<rp>(</rp><rt>きのう</rt><rp>)</rp></ruby><ruby>英語<rp>(</rp><rt>えいご</rt><rp>)</rp></ruby>の<ruby>発音<rp>(</rp><rt>はつおん</rt><rp>)</rp></ruby>を<ruby>練習<rp>(</rp><rt>れんしゅう</rt><rp>)</rp></ruby>した。",
-                        "enMn": "Тэр өчигдөр англи хэлний дуудлагаа дасгасан."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "дуудлага",
-                    "meaningsMn": [
-                        "дуудлага"
+                        "эцэг эх"
                     ]
                 },
                 {
@@ -8466,227 +6725,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "無くなる",
-                    "reading": "なくなる",
-                    "en": "to disappear",
-                    "meanings": [
-                        "to disappear",
-                        "to get lost"
-                    ],
-                    "example": {
-                        "jp": "速く儲けた金は速く無くなる。",
-                        "en": "Soon gotten soon spent.",
-                        "furigana": "<ruby>速<rp>(</rp><rt>はや</rt><rp>)</rp></ruby>く<ruby>儲<rp>(</rp><rt>もう</rt><rp>)</rp></ruby>けた<ruby>金<rp>(</rp><rt>きん</rt><rp>)</rp></ruby>は<ruby>速<rp>(</rp><rt>はや</rt><rp>)</rp></ruby>く<ruby>無<rp>(</rp><rt>な</rt><rp>)</rp></ruby>くなる。",
-                        "enMn": "Хурдан олсон мөнгө хурдан алга болдог."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "алга болох",
-                    "meaningsMn": [
-                        "алга болох"
-                    ]
-                },
-                {
-                    "jp": "準備",
-                    "reading": "じゅんびする",
-                    "en": "prepare",
-                    "meanings": [
-                        "prepare"
-                    ],
-                    "example": {
-                        "jp": "明日の準備で忙しい。",
-                        "en": "I'm busy getting ready for tomorrow.",
-                        "furigana": "<ruby>明日<rp>(</rp><rt>あした</rt><rp>)</rp></ruby>の<ruby>準備<rp>(</rp><rt>じゅんび</rt><rp>)</rp></ruby>で<ruby>忙<rp>(</rp><rt>いそが</rt><rp>)</rp></ruby>しい。",
-                        "enMn": "Маргаашийн бэлтгэлээр завгүй байна."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "бэлтгэх",
-                    "meaningsMn": [
-                        "бэлтгэх"
-                    ]
-                },
-                {
-                    "jp": "世界",
-                    "reading": "せかい",
-                    "en": "world",
-                    "meanings": [
-                        "world"
-                    ],
-                    "example": {
-                        "jp": "この世界の教育にはがっかりしてしまう。",
-                        "en": "Education in this world disappoints me.",
-                        "furigana": "この<ruby>世界<rp>(</rp><rt>せかい</rt><rp>)</rp></ruby>の<ruby>教育<rp>(</rp><rt>きょういく</rt><rp>)</rp></ruby>にはがっかりしてしまう。",
-                        "enMn": "Энэ ертөнцийн боловсролд би сэтгэл дундуур байдаг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "дэлхий",
-                    "meaningsMn": [
-                        "дэлхий"
-                    ]
-                },
-                {
-                    "jp": "住所",
-                    "reading": "じゅうしょ",
-                    "en": "address",
-                    "meanings": [
-                        "address; place of residence"
-                    ],
-                    "example": {
-                        "jp": "郵便局に住所の変更を通知するつもりだ。",
-                        "en": "I am going to inform the post office of the change of my address.",
-                        "furigana": "<ruby>郵便<rp>(</rp><rt>ゆうびん</rt><rp>)</rp></ruby><ruby>局<rp>(</rp><rt>きょく</rt><rp>)</rp></ruby>に<ruby>住所<rp>(</rp><rt>じゅうしょ</rt><rp>)</rp></ruby>の<ruby>変更<rp>(</rp><rt>へんこう</rt><rp>)</rp></ruby>を<ruby>通知<rp>(</rp><rt>つうち</rt><rp>)</rp></ruby>するつもりだ。",
-                        "enMn": "Шуудангийн газарт хаягийнхаа өөрчлөлтийг мэдэгдэхээр байна."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хаяг",
-                    "meaningsMn": [
-                        "хаяг"
-                    ]
-                },
-                {
-                    "jp": "再来月",
-                    "reading": "さらいげつ",
-                    "en": "the month after next",
-                    "meanings": [
-                        "the month after next"
-                    ],
-                    "example": {
-                        "jp": "再来月は１２月だ。",
-                        "en": "The month after next is December.",
-                        "furigana": "<ruby>再来月<rp>(</rp><rt>さらいげつ</rt><rp>)</rp></ruby>は<ruby>１２月<rp>(</rp><rt>じゅうにがつ</rt><rp>)</rp></ruby>だ。",
-                        "enMn": "Хоёр сарын дараа арванхоёрдугаар сар болно."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "дараа дараагийн сар",
-                    "meaningsMn": [
-                        "дараа дараагийн сар"
-                    ]
-                },
-                {
-                    "jp": "倍",
-                    "reading": "ばい",
-                    "en": "double",
-                    "meanings": [
-                        "double"
-                    ],
-                    "example": {
-                        "jp": "来年私はあなたの３倍の年齢になる。",
-                        "en": "Next year I will be three times as old as you.",
-                        "furigana": "<ruby>来年<rp>(</rp><rt>らいねん</rt><rp>)</rp></ruby><ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>はあなたの３<ruby>倍<rp>(</rp><rt>ばい</rt><rp>)</rp></ruby>の<ruby>年齢<rp>(</rp><rt>ねんれい</rt><rp>)</rp></ruby>になる。",
-                        "enMn": "Ирэх жил би чамаас гурав дахин ахимаг настай болно."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хоёр дахин",
-                    "meaningsMn": [
-                        "хоёр дахин"
-                    ]
-                },
-                {
-                    "jp": "痩せる",
-                    "reading": "やせる",
-                    "en": "to lose weight",
-                    "meanings": [
-                        "to lose weight"
-                    ],
-                    "example": {
-                        "jp": "痩せる必要がないというのは残念だ。",
-                        "en": "It's too bad that I don't need to lose weight.",
-                        "furigana": "<ruby>痩<rp>(</rp><rt>や</rt><rp>)</rp></ruby>せる<ruby>必要<rp>(</rp><rt>ひつよう</rt><rp>)</rp></ruby>がないというのは<ruby>残念<rp>(</rp><rt>ざんねん</rt><rp>)</rp></ruby>だ。",
-                        "enMn": "Турах шаардлагагүй гэдэг харамсалтай."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "турах",
-                    "meaningsMn": [
-                        "турах"
-                    ]
-                },
-                {
-                    "jp": "戦争",
-                    "reading": "せんそう",
-                    "en": "war",
-                    "meanings": [
-                        "war"
-                    ],
-                    "example": {
-                        "jp": "１００万人の人々がその戦争で命を落とした。",
-                        "en": "One million people lost their lives in the war.",
-                        "furigana": "１００<ruby>万<rp>(</rp><rt>まん</rt><rp>)</rp></ruby><ruby>人<rp>(</rp><rt>にん</rt><rp>)</rp></ruby>の<ruby>人々<rp>(</rp><rt>ひとびと</rt><rp>)</rp></ruby>がその<ruby>戦争<rp>(</rp><rt>せんそう</rt><rp>)</rp></ruby>で<ruby>命<rp>(</rp><rt>いのち</rt><rp>)</rp></ruby>を<ruby>落<rp>(</rp><rt>お</rt><rp>)</rp></ruby>とした。",
-                        "enMn": "Тэр дайнд нэг сая хүн амиа алдсан."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "дайн",
-                    "meaningsMn": [
-                        "дайн"
-                    ]
-                },
-                {
-                    "jp": "決める",
-                    "reading": "きめる",
-                    "en": "to decide (v.t.)",
-                    "meanings": [
-                        "to decide (v.t.)"
-                    ],
-                    "example": {
-                        "jp": "彼がそれをするか否かは全く彼が決めることだ。",
-                        "en": "It is entirely up to him whether he does it or not.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>がそれをするか<ruby>否<rp>(</rp><rt>いな</rt><rp>)</rp></ruby>かは<ruby>全<rp>(</rp><rt>まった</rt><rp>)</rp></ruby>く<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>が<ruby>決<rp>(</rp><rt>き</rt><rp>)</rp></ruby>めることだ。",
-                        "enMn": "Тэр үүнийг хийх эсэх нь бүхэлдээ түүнээс шалтгаална."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "сонгох",
-                    "meaningsMn": [
-                        "сонгох"
-                    ]
-                },
-                {
-                    "jp": "調べる",
-                    "reading": "しらべる",
-                    "en": "to check",
-                    "meanings": [
-                        "to check; to look up; to inquire; to search"
-                    ],
-                    "example": {
-                        "jp": "排卵の有無を調べる方法はありますか？",
-                        "en": "Is there some way to check for ovulation?",
-                        "furigana": "<ruby>排卵<rp>(</rp><rt>はいらん</rt><rp>)</rp></ruby>の<ruby>有無<rp>(</rp><rt>うむ</rt><rp>)</rp></ruby>を<ruby>調<rp>(</rp><rt>しら</rt><rp>)</rp></ruby>べる<ruby>方法<rp>(</rp><rt>ほうほう</rt><rp>)</rp></ruby>はありますか？",
-                        "enMn": "Өндгөн эс ялгарч байгаа эсэхийг шалгах арга бий юу?"
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "шалгах",
-                    "meaningsMn": [
-                        "шалгах"
-                    ]
-                },
-                {
-                    "jp": "寝坊",
-                    "reading": "ねぼう",
-                    "en": "sleeping in late",
-                    "meanings": [
-                        "sleeping in late"
-                    ],
-                    "example": {
-                        "jp": "僕は寝坊して学校に遅刻した。",
-                        "en": "I overslept and was late for school.",
-                        "furigana": "<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>は<ruby>寝坊<rp>(</rp><rt>ねぼう</rt><rp>)</rp></ruby>して<ruby>学校<rp>(</rp><rt>がっこう</rt><rp>)</rp></ruby>に<ruby>遅刻<rp>(</rp><rt>ちこく</rt><rp>)</rp></ruby>した。",
-                        "enMn": "Би оройтож сэрээд сургуульдаа хоцорсон."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "оройтож сэрэх",
-                    "meaningsMn": [
-                        "оройтож сэрэх"
-                    ]
-                },
-                {
                     "jp": "パパ",
                     "reading": "パパ",
                     "en": "papa",
@@ -8705,27 +6743,6 @@ const WORD_LEVELS = [
                     "enMn": "аав",
                     "meaningsMn": [
                         "аав"
-                    ]
-                },
-                {
-                    "jp": "光る",
-                    "reading": "ひかる",
-                    "en": "to shine",
-                    "meanings": [
-                        "to shine",
-                        "to glitter"
-                    ],
-                    "example": {
-                        "jp": "父は自分の車を光るまで磨いた。",
-                        "en": "My father polished his car till it shone.",
-                        "furigana": "<ruby>父<rp>(</rp><rt>ちち</rt><rp>)</rp></ruby>は<ruby>自分<rp>(</rp><rt>じぶん</rt><rp>)</rp></ruby>の<ruby>車<rp>(</rp><rt>くるま</rt><rp>)</rp></ruby>を<ruby>光<rp>(</rp><rt>ひか</rt><rp>)</rp></ruby>るまで<ruby>磨<rp>(</rp><rt>みが</rt><rp>)</rp></ruby>いた。",
-                        "enMn": "Аав машинаа гялалзтал өнгөлөв."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "гэрэлтэх",
-                    "meaningsMn": [
-                        "гэрэлтэх"
                     ]
                 },
                 {
@@ -8749,101 +6766,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "雲",
-                    "reading": "くも",
-                    "en": "cloud",
-                    "meanings": [
-                        "cloud"
-                    ],
-                    "example": {
-                        "jp": "夕方になって少し雲が出てきました。",
-                        "en": "By evening, a few clouds had formed.",
-                        "furigana": "<ruby>夕方<rp>(</rp><rt>ゆうがた</rt><rp>)</rp></ruby>になって<ruby>少<rp>(</rp><rt>すこ</rt><rp>)</rp></ruby>し<ruby>雲<rp>(</rp><rt>くも</rt><rp>)</rp></ruby>が<ruby>出<rp>(</rp><rt>で</rt><rp>)</rp></ruby>てきました。",
-                        "enMn": "Орой болоход бага зэрэг үүл гарч ирлээ."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "үүл",
-                    "meaningsMn": [
-                        "үүл"
-                    ]
-                }
-            ]
-        ]
-    },
-    {
-        "level": 18,
-        "jlpt": "N4",
-        "title": "N4 · Level 6",
-        "sets": [
-            [
-                {
-                    "jp": "正月",
-                    "reading": "しょうがつ",
-                    "en": "New Year",
-                    "meanings": [
-                        "New Year",
-                        "New Year's Day"
-                    ],
-                    "example": {
-                        "jp": "日本では老いも若きも正月を祝います。",
-                        "en": "Young and old in Japan celebrate New Year's Day.",
-                        "furigana": "<ruby>日本<rp>(</rp><rt>にっぽん</rt><rp>)</rp></ruby>では<ruby>老<rp>(</rp><rt>お</rt><rp>)</rp></ruby>いも<ruby>若<rp>(</rp><rt>わか</rt><rp>)</rp></ruby>きも<ruby>正月<rp>(</rp><rt>しょうがつ</rt><rp>)</rp></ruby>を<ruby>祝<rp>(</rp><rt>いわ</rt><rp>)</rp></ruby>います。",
-                        "enMn": "Японд залуу, хөгшин хүн бүр Шинэ жилийг тэмдэглэдэг."
-                    },
-                    "phonetic": "正",
-                    "phoneticReading": "ショウ、セイ",
-                    "enMn": "шинэ жил",
-                    "meaningsMn": [
-                        "шинэ жил",
-                        "шинэ жилийн өдөр"
-                    ]
-                },
-                {
-                    "jp": "正しい",
-                    "reading": "ただしい",
-                    "en": "correct",
-                    "meanings": [
-                        "correct"
-                    ],
-                    "example": {
-                        "jp": "礼儀正しいのが彼の特徴であった。",
-                        "en": "Courtesy marked his manner.",
-                        "furigana": "<ruby>礼儀<rp>(</rp><rt>れいぎ</rt><rp>)</rp></ruby><ruby>正<rp>(</rp><rt>ただ</rt><rp>)</rp></ruby>しいのが<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>特徴<rp>(</rp><rt>とくちょう</rt><rp>)</rp></ruby>であった。",
-                        "enMn": "Түүний зан авирыг эелдэг байдал тодорхойлдог байв."
-                    },
-                    "phonetic": "正",
-                    "phoneticReading": "ショウ、セイ",
-                    "enMn": "зөв",
-                    "meaningsMn": [
-                        "зөв"
-                    ]
-                },
-                {
-                    "jp": "失礼",
-                    "reading": "しつれい",
-                    "en": "discourtesy",
-                    "meanings": [
-                        "discourtesy",
-                        "impoliteness",
-                        "Excuse me"
-                    ],
-                    "example": {
-                        "jp": "彼らの失礼な態度には腹が立つ。",
-                        "en": "I resent their rude attitude.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らの<ruby>失礼<rp>(</rp><rt>しつれい</rt><rp>)</rp></ruby>な<ruby>態度<rp>(</rp><rt>たいど</rt><rp>)</rp></ruby>には<ruby>腹<rp>(</rp><rt>はら</rt><rp>)</rp></ruby>が<ruby>立<rp>(</rp><rt>た</rt><rp>)</rp></ruby>つ。",
-                        "enMn": "Тэдний бүдүүлэг хандлагад би дургүйцдэг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "эелдэг бус",
-                    "meaningsMn": [
-                        "эелдэг бус",
-                        "эелдэг бус байдал",
-                        "Уучлаарай"
-                    ]
-                },
-                {
                     "jp": "運転手",
                     "reading": "うんてんしゅ",
                     "en": "driver",
@@ -8861,645 +6783,6 @@ const WORD_LEVELS = [
                     "enMn": "жолооч",
                     "meaningsMn": [
                         "жолооч (мэргэжлээр)"
-                    ]
-                },
-                {
-                    "jp": "別",
-                    "reading": "べつ",
-                    "en": "distinction",
-                    "meanings": [
-                        "distinction",
-                        "different"
-                    ],
-                    "example": {
-                        "jp": "別の日をご指定いただけませんか。",
-                        "en": "Could you suggest an alternative date?",
-                        "furigana": "<ruby>別<rp>(</rp><rt>べつ</rt><rp>)</rp></ruby>の<ruby>日<rp>(</rp><rt>ひ</rt><rp>)</rp></ruby>をご<ruby>指定<rp>(</rp><rt>してい</rt><rp>)</rp></ruby>いただけませんか。",
-                        "enMn": "Өөр огноо санал болгож болох уу?"
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "ялгаа",
-                    "meaningsMn": [
-                        "ялгаа",
-                        "өөр"
-                    ]
-                },
-                {
-                    "jp": "小説",
-                    "reading": "しょうせつ",
-                    "en": "novel",
-                    "meanings": [
-                        "novel"
-                    ],
-                    "example": {
-                        "jp": "来月号から新連載小説が始まります。",
-                        "en": "A new serial will begin in next month's issue.",
-                        "furigana": "<ruby>来月<rp>(</rp><rt>らいげつ</rt><rp>)</rp></ruby><ruby>号<rp>(</rp><rt>ごう</rt><rp>)</rp></ruby>から<ruby>新<rp>(</rp><rt>しん</rt><rp>)</rp></ruby><ruby>連載<rp>(</rp><rt>れんさい</rt><rp>)</rp></ruby><ruby>小説<rp>(</rp><rt>しょうせつ</rt><rp>)</rp></ruby>が<ruby>始<rp>(</rp><rt>はじ</rt><rp>)</rp></ruby>まります。",
-                        "enMn": "Шинэ цуврал зохиол ирэх сарын дугаараас эхэлнэ."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "роман",
-                    "meaningsMn": [
-                        "роман"
-                    ]
-                },
-                {
-                    "jp": "運動",
-                    "reading": "うんどう",
-                    "en": "exercise",
-                    "meanings": [
-                        "exercise"
-                    ],
-                    "example": {
-                        "jp": "毎日ある程度運動する事は必要だ。",
-                        "en": "It is necessary to do some exercise every day.",
-                        "furigana": "<ruby>毎日<rp>(</rp><rt>まいにち</rt><rp>)</rp></ruby>ある<ruby>程度<rp>(</rp><rt>ていど</rt><rp>)</rp></ruby><ruby>運動<rp>(</rp><rt>うんどう</rt><rp>)</rp></ruby>する<ruby>事<rp>(</rp><rt>こと</rt><rp>)</rp></ruby>は<ruby>必要<rp>(</rp><rt>ひつよう</rt><rp>)</rp></ruby>だ。",
-                        "enMn": "Өдөр бүр тодорхой хэмжээний дасгал хийх шаардлагатай."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "дасгал",
-                    "meaningsMn": [
-                        "дасгал"
-                    ]
-                },
-                {
-                    "jp": "止める",
-                    "reading": "とめる",
-                    "en": "to end",
-                    "meanings": [
-                        "to end",
-                        "to stop"
-                    ],
-                    "example": {
-                        "jp": "父にとって酒を止めるのは難しい。",
-                        "en": "It's hard for my father to give up drinking.",
-                        "furigana": "<ruby>父<rp>(</rp><rt>ちち</rt><rp>)</rp></ruby>にとって<ruby>酒<rp>(</rp><rt>さけ</rt><rp>)</rp></ruby>を<ruby>止<rp>(</rp><rt>と</rt><rp>)</rp></ruby>めるのは<ruby>難<rp>(</rp><rt>むずか</rt><rp>)</rp></ruby>しい。",
-                        "enMn": "Аавад архи хэрэглэхээ болих нь хэцүү."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "дуусгах",
-                    "meaningsMn": [
-                        "дуусгах",
-                        "зогсоох"
-                    ]
-                },
-                {
-                    "jp": "葉",
-                    "reading": "は",
-                    "en": "leaf",
-                    "meanings": [
-                        "leaf"
-                    ],
-                    "example": {
-                        "jp": "お誕生日おめでとう相葉ちゃん！",
-                        "en": "Happy birthday, Miss Aiba!",
-                        "furigana": "お<ruby>誕生<rp>(</rp><rt>たんじょう</rt><rp>)</rp></ruby><ruby>日<rp>(</rp><rt>び</rt><rp>)</rp></ruby>おめでとう<ruby>相<rp>(</rp><rt>あい</rt><rp>)</rp></ruby><ruby>葉<rp>(</rp><rt>は</rt><rp>)</rp></ruby>ちゃん！",
-                        "enMn": "Төрсөн өдрийн мэнд хүргэе, Аиба хатагтай!"
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "навч",
-                    "meaningsMn": [
-                        "навч"
-                    ]
-                },
-                {
-                    "jp": "すると",
-                    "reading": "すると",
-                    "en": "then",
-                    "meanings": [
-                        "and",
-                        "then"
-                    ],
-                    "example": {
-                        "jp": "するとあなたは幸せでしょう。",
-                        "en": "Then you will be happy.",
-                        "furigana": "するとあなたは<ruby>幸<rp>(</rp><rt>しあわ</rt><rp>)</rp></ruby>せでしょう。",
-                        "enMn": "Тэгвэл чи аз жаргалтай байх болно."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "дараа нь",
-                    "meaningsMn": [
-                        "тэгээд",
-                        "дараа нь"
-                    ]
-                },
-                {
-                    "jp": "坂",
-                    "reading": "さか",
-                    "en": "slope",
-                    "meanings": [
-                        "slope",
-                        "hill"
-                    ],
-                    "example": {
-                        "jp": "道は上り坂になってその村に出る。",
-                        "en": "The road ascends to the village.",
-                        "furigana": "<ruby>道<rp>(</rp><rt>みち</rt><rp>)</rp></ruby>は<ruby>上<rp>(</rp><rt>のぼ</rt><rp>)</rp></ruby>り<ruby>坂<rp>(</rp><rt>ざか</rt><rp>)</rp></ruby>になってその<ruby>村<rp>(</rp><rt>むら</rt><rp>)</rp></ruby>に<ruby>出<rp>(</rp><rt>で</rt><rp>)</rp></ruby>る。",
-                        "enMn": "Зам өгсүүр болж тэр тосгон руу хүрдэг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "энгэр",
-                    "meaningsMn": [
-                        "энгэр"
-                    ]
-                },
-                {
-                    "jp": "飛行場",
-                    "reading": "ひこうじょう",
-                    "en": "airport",
-                    "meanings": [
-                        "airport"
-                    ],
-                    "example": {
-                        "jp": "飛行機はすでに飛行場を立っていた。",
-                        "en": "The plane had already left the airport.",
-                        "furigana": "<ruby>飛行機<rp>(</rp><rt>ひこうき</rt><rp>)</rp></ruby>はすでに<ruby>飛行場<rp>(</rp><rt>ひこうじょう</rt><rp>)</rp></ruby>を<ruby>立<rp>(</rp><rt>た</rt><rp>)</rp></ruby>っていた。",
-                        "enMn": "Онгоц аль хэдийн нисэх буудлаас хөдөлсөн байв."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "нисэх буудал",
-                    "meaningsMn": [
-                        "нисэх буудал"
-                    ]
-                },
-                {
-                    "jp": "柔道",
-                    "reading": "じゅうどう",
-                    "en": "judo",
-                    "meanings": [
-                        "judo"
-                    ],
-                    "example": {
-                        "jp": "柔道を練習しています。",
-                        "en": "I'm practising judo.",
-                        "furigana": "<ruby>柔道<rp>(</rp><rt>じゅうどう</rt><rp>)</rp></ruby>を<ruby>練習<rp>(</rp><rt>れんしゅう</rt><rp>)</rp></ruby>しています。",
-                        "enMn": "Би жүдо бөхийн дасгал хийж байна."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "жүдо",
-                    "meaningsMn": [
-                        "жүдо"
-                    ]
-                },
-                {
-                    "jp": "決して",
-                    "reading": "けっして",
-                    "en": "never",
-                    "meanings": [
-                        "never"
-                    ],
-                    "example": {
-                        "jp": "人間は決して永遠には生きられないものだ。",
-                        "en": "Humans were never meant to live forever.",
-                        "furigana": "<ruby>人間<rp>(</rp><rt>にんげん</rt><rp>)</rp></ruby>は<ruby>決<rp>(</rp><rt>けっ</rt><rp>)</rp></ruby>して<ruby>永遠<rp>(</rp><rt>えいえん</rt><rp>)</rp></ruby>には<ruby>生<rp>(</rp><rt>い</rt><rp>)</rp></ruby>きられないものだ。",
-                        "enMn": "Хүн хэзээ ч мөнхөд амьдарч чадахгүй юм."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хэзээ ч үгүй",
-                    "meaningsMn": [
-                        "хэзээ ч үгүй"
-                    ]
-                },
-                {
-                    "jp": "事務所",
-                    "reading": "じむしょ",
-                    "en": "office",
-                    "meanings": [
-                        "office"
-                    ],
-                    "example": {
-                        "jp": "木下さんは昨日眼鏡を事務所に置き忘れた。",
-                        "en": "Mr Kinoshita left his glasses behind in the office yesterday.",
-                        "furigana": "<ruby>木下<rp>(</rp><rt>きのした</rt><rp>)</rp></ruby>さんは<ruby>昨日<rp>(</rp><rt>きのう</rt><rp>)</rp></ruby><ruby>眼鏡<rp>(</rp><rt>めがね</rt><rp>)</rp></ruby>を<ruby>事務所<rp>(</rp><rt>じむしょ</rt><rp>)</rp></ruby>に<ruby>置<rp>(</rp><rt>お</rt><rp>)</rp></ruby>き<ruby>忘<rp>(</rp><rt>わす</rt><rp>)</rp></ruby>れた。",
-                        "enMn": "Киношита өчигдөр нүдний шилээ албан газартаа мартчихжээ."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "албан газар",
-                    "meaningsMn": [
-                        "албан газар"
-                    ]
-                },
-                {
-                    "jp": "連絡",
-                    "reading": "れんらく",
-                    "en": "communication",
-                    "meanings": [
-                        "communication",
-                        "contact",
-                        "connection"
-                    ],
-                    "example": {
-                        "jp": "もし音信不通になったら警察に連絡してね。",
-                        "en": "If I drop out of contact, let the police know, OK?",
-                        "furigana": "もし<ruby>音信<rp>(</rp><rt>おんしん</rt><rp>)</rp></ruby><ruby>不通<rp>(</rp><rt>ふつう</rt><rp>)</rp></ruby>になったら<ruby>警察<rp>(</rp><rt>けいさつ</rt><rp>)</rp></ruby>に<ruby>連絡<rp>(</rp><rt>れんらく</rt><rp>)</rp></ruby>してね。",
-                        "enMn": "Хэрэв надаас холбоо тасарвал цагдаад мэдэгдээрэй."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "холбоо",
-                    "meaningsMn": [
-                        "холбоо"
-                    ]
-                },
-                {
-                    "jp": "小学校",
-                    "reading": "しょうがっこう",
-                    "en": "elementary school",
-                    "meanings": [
-                        "elementary school"
-                    ],
-                    "example": {
-                        "jp": "弟は小学校へ通っています。",
-                        "en": "My little brother goes to an elementary school.",
-                        "furigana": "<ruby>弟<rp>(</rp><rt>おとうと</rt><rp>)</rp></ruby>は<ruby>小学校<rp>(</rp><rt>しょうがっこう</rt><rp>)</rp></ruby>へ<ruby>通<rp>(</rp><rt>とお</rt><rp>)</rp></ruby>っています。",
-                        "enMn": "Хүү дүү маань бага сургуульд явдаг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "бага сургууль",
-                    "meaningsMn": [
-                        "бага сургууль"
-                    ]
-                },
-                {
-                    "jp": "客",
-                    "reading": "きゃく",
-                    "en": "guest",
-                    "meanings": [
-                        "guest",
-                        "customer"
-                    ],
-                    "example": {
-                        "jp": "春先だから客もあまりいませんでした。",
-                        "en": "It was early spring, so there weren't many customers.",
-                        "furigana": "<ruby>春先<rp>(</rp><rt>はるさき</rt><rp>)</rp></ruby>だから<ruby>客<rp>(</rp><rt>きゃく</rt><rp>)</rp></ruby>もあまりいませんでした。",
-                        "enMn": "Хаврын эхэн үе байсан тул зочин ч төдийлөн байсангүй."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "зочин",
-                    "meaningsMn": [
-                        "зочин"
-                    ]
-                },
-                {
-                    "jp": "昔",
-                    "reading": "むかし",
-                    "en": "old days",
-                    "meanings": [
-                        "old days; past"
-                    ],
-                    "example": {
-                        "jp": "話は遠い昔に始まる。",
-                        "en": "The story begins far in the past.",
-                        "furigana": "<ruby>話<rp>(</rp><rt>はなし</rt><rp>)</rp></ruby>は<ruby>遠<rp>(</rp><rt>とお</rt><rp>)</rp></ruby>い<ruby>昔<rp>(</rp><rt>むかし</rt><rp>)</rp></ruby>に<ruby>始<rp>(</rp><rt>はじ</rt><rp>)</rp></ruby>まる。",
-                        "enMn": "Түүх эрт цагт эхэлдэг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "эрт цаг",
-                    "meaningsMn": [
-                        "эрт цаг"
-                    ]
-                },
-                {
-                    "jp": "美しい",
-                    "reading": "うつくしい",
-                    "en": "beautiful",
-                    "meanings": [
-                        "beautiful",
-                        "lovely"
-                    ],
-                    "example": {
-                        "jp": "潔白であることは美しいことだ。",
-                        "en": "Innocence is a beautiful thing.",
-                        "furigana": "<ruby>潔白<rp>(</rp><rt>けっぱく</rt><rp>)</rp></ruby>であることは<ruby>美<rp>(</rp><rt>うつく</rt><rp>)</rp></ruby>しいことだ。",
-                        "enMn": "Гэм зэмгүй байх нь сайхан хэрэг юм."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "сайхан",
-                    "meaningsMn": [
-                        "сайхан"
-                    ]
-                },
-                {
-                    "jp": "捨てる",
-                    "reading": "すてる",
-                    "en": "throw away (trash)",
-                    "meanings": [
-                        "throw away (trash)",
-                        "dump",
-                        "discard"
-                    ],
-                    "example": {
-                        "jp": "ここにゴミ捨てるべからず。",
-                        "en": "No dumping rubbish here!",
-                        "furigana": "ここにゴミ<ruby>捨<rp>(</rp><rt>す</rt><rp>)</rp></ruby>てるべからず。",
-                        "enMn": "Энд хог хаяхыг хориглоно!"
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хаях",
-                    "meaningsMn": [
-                        "хаях"
-                    ]
-                },
-                {
-                    "jp": "なさる",
-                    "reading": "なさる",
-                    "en": "-- honorific expression for する --",
-                    "meanings": [
-                        "-- honorific expression for する --"
-                    ],
-                    "example": {
-                        "jp": "病気が全快なさるように。",
-                        "en": "I hope you will be completely cured.",
-                        "furigana": "<ruby>病気<rp>(</rp><rt>びょうき</rt><rp>)</rp></ruby>が<ruby>全快<rp>(</rp><rt>ぜんかい</rt><rp>)</rp></ruby>なさるように。",
-                        "enMn": "Өвчин чинь бүрэн эдгэрэхийг ерөөе."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "соёрхох",
-                    "meaningsMn": [
-                        "соёрхох"
-                    ]
-                },
-                {
-                    "jp": "事",
-                    "reading": "こと",
-                    "en": "thing(s)",
-                    "meanings": [
-                        "thing(s)",
-                        "matter(s)",
-                        "fact"
-                    ],
-                    "example": {
-                        "jp": "欲しくないという事は持っていると同じことだ。",
-                        "en": "Not wanting is the same as having.",
-                        "furigana": "<ruby>欲<rp>(</rp><rt>ほ</rt><rp>)</rp></ruby>しくないという<ruby>事<rp>(</rp><rt>こと</rt><rp>)</rp></ruby>は<ruby>持<rp>(</rp><rt>も</rt><rp>)</rp></ruby>っていると<ruby>同<rp>(</rp><rt>おな</rt><rp>)</rp></ruby>じことだ。",
-                        "enMn": "Хүсэхгүй байна гэдэг нь эзэмшиж байгаатай адил."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "зүйл",
-                    "meaningsMn": [
-                        "зүйл"
-                    ]
-                },
-                {
-                    "jp": "試合",
-                    "reading": "しあい",
-                    "en": "match",
-                    "meanings": [
-                        "match",
-                        "game",
-                        "competition"
-                    ],
-                    "example": {
-                        "jp": "でもあいにくの雨で試合は中止になった。",
-                        "en": "But, unfortunately, the game was called off due to rain.",
-                        "furigana": "でもあいにくの<ruby>雨<rp>(</rp><rt>あめ</rt><rp>)</rp></ruby>で<ruby>試合<rp>(</rp><rt>しあい</rt><rp>)</rp></ruby>は<ruby>中止<rp>(</rp><rt>ちゅうし</rt><rp>)</rp></ruby>になった。",
-                        "enMn": "Гэвч харамсалтай нь бороо орсноос болж тэмцээн цуцлагдав."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "тэмцээн",
-                    "meaningsMn": [
-                        "тэмцээн"
-                    ]
-                },
-                {
-                    "jp": "適当",
-                    "reading": "てきとう",
-                    "en": "fitness",
-                    "meanings": [
-                        "fitness",
-                        "suitability"
-                    ],
-                    "example": {
-                        "jp": "彼らは彼をその仕事に不適当と考えている。",
-                        "en": "They consider him unfit for the job.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>をその<ruby>仕事<rp>(</rp><rt>しごと</rt><rp>)</rp></ruby>に<ruby>不<rp>(</rp><rt>ふ</rt><rp>)</rp></ruby><ruby>適当<rp>(</rp><rt>てきとう</rt><rp>)</rp></ruby>と<ruby>考<rp>(</rp><rt>かんが</rt><rp>)</rp></ruby>えている。",
-                        "enMn": "Тэд түүнийг тэр ажилд тохиромжгүй гэж үзэж байна."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "тохиромжтой",
-                    "meaningsMn": [
-                        "тохиромжтой"
-                    ]
-                }
-            ]
-        ]
-    },
-    {
-        "level": 19,
-        "jlpt": "N4",
-        "title": "N4 · Level 7",
-        "sets": [
-            [
-                {
-                    "jp": "地震",
-                    "reading": "じしん",
-                    "en": "earthquake",
-                    "meanings": [
-                        "earthquake"
-                    ],
-                    "example": {
-                        "jp": "彼女は地震の時落ち着いています。",
-                        "en": "She stays calm through earthquakes.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>地震<rp>(</rp><rt>じしん</rt><rp>)</rp></ruby>の<ruby>時<rp>(</rp><rt>とき</rt><rp>)</rp></ruby><ruby>落<rp>(</rp><rt>お</rt><rp>)</rp></ruby>ち<ruby>着<rp>(</rp><rt>つ</rt><rp>)</rp></ruby>いています。",
-                        "enMn": "Тэр газар хөдлөлтийн үед тайван байдаг."
-                    },
-                    "phonetic": "也",
-                    "phoneticReading": "チ",
-                    "enMn": "газар хөдлөлт",
-                    "meaningsMn": [
-                        "газар хөдлөлт"
-                    ]
-                },
-                {
-                    "jp": "地理",
-                    "reading": "ちり",
-                    "en": "geography",
-                    "meanings": [
-                        "geography"
-                    ],
-                    "example": {
-                        "jp": "彼は東京の地理に精通している。",
-                        "en": "He is at home with the geography of Tokyo.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>東京<rp>(</rp><rt>とうきょう</rt><rp>)</rp></ruby>の<ruby>地理<rp>(</rp><rt>ちり</rt><rp>)</rp></ruby>に<ruby>精通<rp>(</rp><rt>せいつう</rt><rp>)</rp></ruby>している。",
-                        "enMn": "Тэр Токиогийн газарзүйг маш сайн мэддэг."
-                    },
-                    "phonetic": "也",
-                    "phoneticReading": "チ",
-                    "enMn": "газарзүй",
-                    "meaningsMn": [
-                        "газарзүй"
-                    ]
-                },
-                {
-                    "jp": "動物園",
-                    "reading": "どうぶつえん",
-                    "en": "zoo",
-                    "meanings": [
-                        "zoo"
-                    ],
-                    "example": {
-                        "jp": "彼らは昨日バスで動物園へ行った。",
-                        "en": "They went to the zoo by bus yesterday.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>昨日<rp>(</rp><rt>きのう</rt><rp>)</rp></ruby>バスで<ruby>動物<rp>(</rp><rt>どうぶつ</rt><rp>)</rp></ruby><ruby>園<rp>(</rp><rt>えん</rt><rp>)</rp></ruby>へ<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>った。",
-                        "enMn": "Тэд өчигдөр автобусаар амьтны хүрээлэнд явсан."
-                    },
-                    "phonetic": "動",
-                    "phoneticReading": "ドウ",
-                    "enMn": "амьтны хүрээлэн",
-                    "meaningsMn": [
-                        "амьтны хүрээлэн"
-                    ]
-                },
-                {
-                    "jp": "動く",
-                    "reading": "うごく",
-                    "en": "to move",
-                    "meanings": [
-                        "to move"
-                    ],
-                    "example": {
-                        "jp": "列車はダイヤどおりに動いている。",
-                        "en": "Trains are running on schedule.",
-                        "furigana": "<ruby>列車<rp>(</rp><rt>れっしゃ</rt><rp>)</rp></ruby>はダイヤどおりに<ruby>動<rp>(</rp><rt>うご</rt><rp>)</rp></ruby>いている。",
-                        "enMn": "Галт тэрэгнүүд хуваарийн дагуу явж байна."
-                    },
-                    "phonetic": "動",
-                    "phoneticReading": "ドウ",
-                    "enMn": "хөдлөх",
-                    "meaningsMn": [
-                        "хөдлөх"
-                    ]
-                },
-                {
-                    "jp": "迎える",
-                    "reading": "むかえる",
-                    "en": "to welcome",
-                    "meanings": [
-                        "to welcome",
-                        "to meet",
-                        "to greet"
-                    ],
-                    "example": {
-                        "jp": "妹に車で駅まで迎えに行かせます。",
-                        "en": "I will have my sister pick you up at the station.",
-                        "furigana": "<ruby>妹<rp>(</rp><rt>いもうと</rt><rp>)</rp></ruby>に<ruby>車<rp>(</rp><rt>くるま</rt><rp>)</rp></ruby>で<ruby>駅<rp>(</rp><rt>えき</rt><rp>)</rp></ruby>まで<ruby>迎<rp>(</rp><rt>むか</rt><rp>)</rp></ruby>えに<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>かせます。",
-                        "enMn": "Би дүү охиноороо чамайг буудал дээр авахуулна."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "угтах",
-                    "meaningsMn": [
-                        "угтах",
-                        "уулзах",
-                        "угтан авах"
-                    ]
-                },
-                {
-                    "jp": "祈る",
-                    "reading": "いのる",
-                    "en": "to pray",
-                    "meanings": [
-                        "to pray",
-                        "to wish"
-                    ],
-                    "example": {
-                        "jp": "彼らは私達の勝利を祈ってくれた。",
-                        "en": "They congratulated us on our victory.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby><ruby>達<rp>(</rp><rt>たち</rt><rp>)</rp></ruby>の<ruby>勝利<rp>(</rp><rt>しょうり</rt><rp>)</rp></ruby>を<ruby>祈<rp>(</rp><rt>いの</rt><rp>)</rp></ruby>ってくれた。",
-                        "enMn": "Тэд бидний ялалтад баяр хүргэсэн."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "залбирах",
-                    "meaningsMn": [
-                        "залбирах",
-                        "хүсэх"
-                    ]
-                },
-                {
-                    "jp": "噛む",
-                    "reading": "かむ",
-                    "en": "to bite",
-                    "meanings": [
-                        "to bite",
-                        "to chew"
-                    ],
-                    "example": {
-                        "jp": "プチッ、と糸を犬歯で噛み切った。",
-                        "en": "I snapped the thread on my canine.",
-                        "furigana": "プチッ、と<ruby>糸<rp>(</rp><rt>いと</rt><rp>)</rp></ruby>を<ruby>犬歯<rp>(</rp><rt>けんし</rt><rp>)</rp></ruby>で<ruby>噛<rp>(</rp><rt>か</rt><rp>)</rp></ruby>み<ruby>切<rp>(</rp><rt>き</rt><rp>)</rp></ruby>った。",
-                        "enMn": "Би утсыг соёогоороо тас цавчив."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хазах",
-                    "meaningsMn": [
-                        "хазах",
-                        "зажлах"
-                    ]
-                },
-                {
-                    "jp": "触る",
-                    "reading": "さわる",
-                    "en": "to touch",
-                    "meanings": [
-                        "to touch",
-                        "to feel"
-                    ],
-                    "example": {
-                        "jp": "触らずそのままにしておきなさい。",
-                        "en": "Don't touch it. Leave it as it is.",
-                        "furigana": "<ruby>触<rp>(</rp><rt>さわ</rt><rp>)</rp></ruby>らずそのままにしておきなさい。",
-                        "enMn": "Бүү хүр. Байгаагаар нь орхи."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хүрэх",
-                    "meaningsMn": [
-                        "хүрэх",
-                        "мэдрэх"
-                    ]
-                },
-                {
-                    "jp": "西洋",
-                    "reading": "せいよう",
-                    "en": "the West",
-                    "meanings": [
-                        "the West",
-                        "Western countries"
-                    ],
-                    "example": {
-                        "jp": "西洋の世界では個性が強調される。",
-                        "en": "Individuality is stressed in the Western world.",
-                        "furigana": "<ruby>西洋<rp>(</rp><rt>せいよう</rt><rp>)</rp></ruby>の<ruby>世界<rp>(</rp><rt>せかい</rt><rp>)</rp></ruby>では<ruby>個性<rp>(</rp><rt>こせい</rt><rp>)</rp></ruby>が<ruby>強調<rp>(</rp><rt>きょうちょう</rt><rp>)</rp></ruby>される。",
-                        "enMn": "Барууны ертөнцөд хувь хүний онцлогийг онцолдог."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "Барын орнууд",
-                    "meaningsMn": [
-                        "Барын орнууд",
-                        "барууны орнууд"
                     ]
                 },
                 {
@@ -9523,168 +6806,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "素晴らしい",
-                    "reading": "すばらしい",
-                    "en": "wonderful",
-                    "meanings": [
-                        "wonderful; terrific"
-                    ],
-                    "example": {
-                        "jp": "留学することは素晴らしい経験になるでしょう。",
-                        "en": "To study abroad will be a wonderful experience.",
-                        "furigana": "<ruby>留学<rp>(</rp><rt>りゅうがく</rt><rp>)</rp></ruby>することは<ruby>素晴<rp>(</rp><rt>すば</rt><rp>)</rp></ruby>らしい<ruby>経験<rp>(</rp><rt>けいけん</rt><rp>)</rp></ruby>になるでしょう。",
-                        "enMn": "Гадаадад суралцах нь гайхамшигтай туршлага болно."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "гайхамшигтай",
-                    "meaningsMn": [
-                        "гайхамшигтай"
-                    ]
-                },
-                {
-                    "jp": "美術館",
-                    "reading": "びじゅつかん",
-                    "en": "art gallery",
-                    "meanings": [
-                        "art gallery",
-                        "art museum"
-                    ],
-                    "example": {
-                        "jp": "父も私も初めてその美術館へ行きました。",
-                        "en": "Both my father and I went to the museum for the first time.",
-                        "furigana": "<ruby>父<rp>(</rp><rt>ちち</rt><rp>)</rp></ruby>も<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>も<ruby>初<rp>(</rp><rt>はじ</rt><rp>)</rp></ruby>めてその<ruby>美術館<rp>(</rp><rt>びじゅつかん</rt><rp>)</rp></ruby>へ<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>きました。",
-                        "enMn": "Аав бид хоёр анх удаа тэр урлагийн музейд очлоо."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "урлагийн музей",
-                    "meaningsMn": [
-                        "урлагийн музей"
-                    ]
-                },
-                {
-                    "jp": "文法",
-                    "reading": "ぶんぽう",
-                    "en": "grammar",
-                    "meanings": [
-                        "grammar"
-                    ],
-                    "example": {
-                        "jp": "文法的に正しい文章を作るよう心がけるべきだ。",
-                        "en": "You should try to produce grammatical sentences.",
-                        "furigana": "<ruby>文法<rp>(</rp><rt>ぶんぽう</rt><rp>)</rp></ruby><ruby>的<rp>(</rp><rt>てき</rt><rp>)</rp></ruby>に<ruby>正<rp>(</rp><rt>ただ</rt><rp>)</rp></ruby>しい<ruby>文章<rp>(</rp><rt>ぶんしょう</rt><rp>)</rp></ruby>を<ruby>作<rp>(</rp><rt>つく</rt><rp>)</rp></ruby>るよう<ruby>心<rp>(</rp><rt>こころ</rt><rp>)</rp></ruby>がけるべきだ。",
-                        "enMn": "Хэл зүйн хувьд зөв өгүүлбэр зохиохыг хичээх ёстой."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хэл зүй",
-                    "meaningsMn": [
-                        "хэл зүй"
-                    ]
-                },
-                {
-                    "jp": "終わり",
-                    "reading": "おわり",
-                    "en": "end",
-                    "meanings": [
-                        "end"
-                    ],
-                    "example": {
-                        "jp": "入学式も終わりました。同じ沿線の大学です。",
-                        "en": "I've already had the entrance ceremony. It's a university alongside the same railway line.",
-                        "furigana": "<ruby>入学<rp>(</rp><rt>にゅうがく</rt><rp>)</rp></ruby><ruby>式<rp>(</rp><rt>しき</rt><rp>)</rp></ruby>も<ruby>終<rp>(</rp><rt>お</rt><rp>)</rp></ruby>わりました。<ruby>同<rp>(</rp><rt>おな</rt><rp>)</rp></ruby>じ<ruby>沿線<rp>(</rp><rt>えんせん</rt><rp>)</rp></ruby>の<ruby>大学<rp>(</rp><rt>だいがく</rt><rp>)</rp></ruby>です。",
-                        "enMn": "Элсэлтийн ёслол ч болж өнгөрлөө. Ижил төмөр замын дагуух их сургууль шүү."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "төгсгөл",
-                    "meaningsMn": [
-                        "төгсгөл"
-                    ]
-                },
-                {
-                    "jp": "壁",
-                    "reading": "かべ",
-                    "en": "wall",
-                    "meanings": [
-                        "wall"
-                    ],
-                    "example": {
-                        "jp": "彼は壁一面にポスターをべたべた張った。",
-                        "en": "He plastered the wall with posters.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>壁<rp>(</rp><rt>かべ</rt><rp>)</rp></ruby><ruby>一<rp>(</rp><rt>いち</rt><rp>)</rp></ruby><ruby>面<rp>(</rp><rt>めん</rt><rp>)</rp></ruby>にポスターをべたべた<ruby>張<rp>(</rp><rt>は</rt><rp>)</rp></ruby>った。",
-                        "enMn": "Тэр ханыг чихэлдтэл зурагт хуудас наав."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хана",
-                    "meaningsMn": [
-                        "хана"
-                    ]
-                },
-                {
-                    "jp": "一度",
-                    "reading": "いちど",
-                    "en": "once",
-                    "meanings": [
-                        "once",
-                        "one time"
-                    ],
-                    "example": {
-                        "jp": "彼女は週に一度料理の講習を受ける。",
-                        "en": "She takes cooking lessons once a week.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>週<rp>(</rp><rt>しゅう</rt><rp>)</rp></ruby>に<ruby>一度<rp>(</rp><rt>いちど</rt><rp>)</rp></ruby><ruby>料理<rp>(</rp><rt>りょうり</rt><rp>)</rp></ruby>の<ruby>講習<rp>(</rp><rt>こうしゅう</rt><rp>)</rp></ruby>を<ruby>受<rp>(</rp><rt>う</rt><rp>)</rp></ruby>ける。",
-                        "enMn": "Тэр долоо хоногт нэг удаа хоол хийх хичээлд суудаг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "нэг удаа",
-                    "meaningsMn": [
-                        "нэг удаа"
-                    ]
-                },
-                {
-                    "jp": "お礼",
-                    "reading": "おれい",
-                    "en": "expression of gratitude",
-                    "meanings": [
-                        "expression of gratitude; thanking; gift of appreciation; bow"
-                    ],
-                    "example": {
-                        "jp": "日頃のご愛顧にお礼申し上げます。",
-                        "en": "We really thank you for your patronage.",
-                        "furigana": "<ruby>日頃<rp>(</rp><rt>ひごろ</rt><rp>)</rp></ruby>のご<ruby>愛顧<rp>(</rp><rt>あいこ</rt><rp>)</rp></ruby>にお<ruby>礼<rp>(</rp><rt>れい</rt><rp>)</rp></ruby><ruby>申<rp>(</rp><rt>もう</rt><rp>)</rp></ruby>し<ruby>上<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>げます。",
-                        "enMn": "Байнгын дэмжлэгт тань талархал илэрхийлье."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "талархал",
-                    "meaningsMn": [
-                        "талархал"
-                    ]
-                },
-                {
-                    "jp": "知らせる",
-                    "reading": "しらせる",
-                    "en": "to notify",
-                    "meanings": [
-                        "to notify"
-                    ],
-                    "example": {
-                        "jp": "着いたら電報で知らせるよ。",
-                        "en": "I will wire you when I get there.",
-                        "furigana": "<ruby>着<rp>(</rp><rt>つ</rt><rp>)</rp></ruby>いたら<ruby>電報<rp>(</rp><rt>でんぽう</rt><rp>)</rp></ruby>で<ruby>知<rp>(</rp><rt>し</rt><rp>)</rp></ruby>らせるよ。",
-                        "enMn": "Очмогцоо цахилгаанаар мэдэгдэнэ шүү."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "мэдэгдэх",
-                    "meaningsMn": [
-                        "мэдэгдэх"
-                    ]
-                },
-                {
                     "jp": "歯医者",
                     "reading": "はいしゃ",
                     "en": "dentist",
@@ -9704,137 +6825,6 @@ const WORD_LEVELS = [
                         "шүдний эмч"
                     ]
                 },
-                {
-                    "jp": "熱心",
-                    "reading": "ねっしん",
-                    "en": "enthusiasm",
-                    "meanings": [
-                        "enthusiasm"
-                    ],
-                    "example": {
-                        "jp": "彼はスティーヴン・キングの熱心な愛読者です。",
-                        "en": "He is a keen Stephen King fan.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>はスティーヴン・キングの<ruby>熱心<rp>(</rp><rt>ねっしん</rt><rp>)</rp></ruby>な<ruby>愛読<rp>(</rp><rt>あいどく</rt><rp>)</rp></ruby><ruby>者<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby>です。",
-                        "enMn": "Тэр бол Стивен Кингийн зохиолыг шимтэн уншдаг хүн."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "урам зориг",
-                    "meaningsMn": [
-                        "урам зориг"
-                    ]
-                },
-                {
-                    "jp": "始める",
-                    "reading": "はじめる",
-                    "en": "to start",
-                    "meanings": [
-                        "to start",
-                        "to begin"
-                    ],
-                    "example": {
-                        "jp": "問題はいつ始めるかだ。",
-                        "en": "The question is when to start.",
-                        "furigana": "<ruby>問題<rp>(</rp><rt>もんだい</rt><rp>)</rp></ruby>はいつ<ruby>始<rp>(</rp><rt>はじ</rt><rp>)</rp></ruby>めるかだ。",
-                        "enMn": "Асуудал нь хэзээ эхлэх вэ гэдэгт л байна."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "эхлэх",
-                    "meaningsMn": [
-                        "эхлэх"
-                    ]
-                },
-                {
-                    "jp": "もらう",
-                    "reading": "もらう",
-                    "en": "to receive",
-                    "meanings": [
-                        "to receive"
-                    ],
-                    "example": {
-                        "jp": "ちょうどいいね。新型の試乗してってもらうね。",
-                        "en": "Good timing. I'll get you to test drive the new model.",
-                        "furigana": "ちょうどいいね。<ruby>新型<rp>(</rp><rt>しんがた</rt><rp>)</rp></ruby>の<ruby>試乗<rp>(</rp><rt>しじょう</rt><rp>)</rp></ruby>してってもらうね。",
-                        "enMn": "Яг тохирлоо. Шинэ загварыг туршиж жолоодуулъя."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "авах",
-                    "meaningsMn": [
-                        "авах"
-                    ]
-                },
-                {
-                    "jp": "泣く",
-                    "reading": "なく",
-                    "en": "to cry",
-                    "meanings": [
-                        "to cry"
-                    ],
-                    "example": {
-                        "jp": "さぁ笑って、泣くのは後！",
-                        "en": "Smile now, cry later!",
-                        "furigana": "さぁ<ruby>笑<rp>(</rp><rt>わら</rt><rp>)</rp></ruby>って、<ruby>泣<rp>(</rp><rt>な</rt><rp>)</rp></ruby>くのは<ruby>後<rp>(</rp><rt>ご</rt><rp>)</rp></ruby>！",
-                        "enMn": "За инээгээрэй, уйлахаа дараа!"
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "уйлах",
-                    "meaningsMn": [
-                        "уйлах"
-                    ]
-                },
-                {
-                    "jp": "治る",
-                    "reading": "なおる",
-                    "en": "to get better",
-                    "meanings": [
-                        "to get better; to recover from illness (v.i.)"
-                    ],
-                    "example": {
-                        "jp": "風邪を人に移すと治るって本当？",
-                        "en": "Is it true that you recover from colds when you give them to someone else?",
-                        "furigana": "<ruby>風邪<rp>(</rp><rt>かぜ</rt><rp>)</rp></ruby>を<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>に<ruby>移<rp>(</rp><rt>うつ</rt><rp>)</rp></ruby>すと<ruby>治<rp>(</rp><rt>なお</rt><rp>)</rp></ruby>るって<ruby>本当<rp>(</rp><rt>ほんとう</rt><rp>)</rp></ruby>？",
-                        "enMn": "Ханиадаа хүнд халдаавал эдгэрдэг гэдэг үнэн үү?"
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "эдгэрэх",
-                    "meaningsMn": [
-                        "эдгэрэх"
-                    ]
-                },
-                {
-                    "jp": "熱",
-                    "reading": "ねつ",
-                    "en": "fever",
-                    "meanings": [
-                        "fever",
-                        "temperature"
-                    ],
-                    "example": {
-                        "jp": "熱が出るとひきつけを起こすことがあります。",
-                        "en": "Convulsions can occur when they run a fever.",
-                        "furigana": "<ruby>熱<rp>(</rp><rt>ねつ</rt><rp>)</rp></ruby>が<ruby>出<rp>(</rp><rt>で</rt><rp>)</rp></ruby>るとひきつけを<ruby>起<rp>(</rp><rt>お</rt><rp>)</rp></ruby>こすことがあります。",
-                        "enMn": "Халуурахад таталт өгөх тохиолдол бий."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "халуурал",
-                    "meaningsMn": [
-                        "халуурал"
-                    ]
-                }
-            ]
-        ]
-    },
-    {
-        "level": 20,
-        "jlpt": "N4",
-        "title": "N4 · Level 8",
-        "sets": [
-            [
                 {
                     "jp": "彼",
                     "reading": "かれ",
@@ -9898,88 +6888,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "アルバイト",
-                    "reading": "アルバイト",
-                    "en": "part-time job",
-                    "meanings": [
-                        "part-time job"
-                    ],
-                    "example": {
-                        "jp": "何かアルバイトはしていますか。",
-                        "en": "Do you have a part-time job?",
-                        "furigana": "<ruby>何<rp>(</rp><rt>なに</rt><rp>)</rp></ruby>かアルバイトはしていますか。",
-                        "enMn": "Чи хагас цагийн ажилтай юу?"
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "цагийн ажил",
-                    "meaningsMn": [
-                        "цагийн ажил"
-                    ]
-                },
-                {
-                    "jp": "月",
-                    "reading": "つき",
-                    "en": "moon",
-                    "meanings": [
-                        "moon"
-                    ],
-                    "example": {
-                        "jp": "妹は、月に１度家に必ず手紙を書く。",
-                        "en": "My sister never fails to write home once a month.",
-                        "furigana": "<ruby>妹<rp>(</rp><rt>いもうと</rt><rp>)</rp></ruby>は、<ruby>月<rp>(</rp><rt>つき</rt><rp>)</rp></ruby>に１<ruby>度<rp>(</rp><rt>ど</rt><rp>)</rp></ruby><ruby>家<rp>(</rp><rt>か</rt><rp>)</rp></ruby>に<ruby>必<rp>(</rp><rt>かなら</rt><rp>)</rp></ruby>ず<ruby>手紙<rp>(</rp><rt>てがみ</rt><rp>)</rp></ruby>を<ruby>書<rp>(</rp><rt>か</rt><rp>)</rp></ruby>く。",
-                        "enMn": "Дүү охин минь сард нэг удаа гэртээ захидал бичихээ хэзээ ч алддаггүй."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "сар",
-                    "meaningsMn": [
-                        "сар"
-                    ]
-                },
-                {
-                    "jp": "出席",
-                    "reading": "しゅっせき",
-                    "en": "attendance",
-                    "meanings": [
-                        "attendance"
-                    ],
-                    "example": {
-                        "jp": "彼女は朝の礼拝に出席できなかった。",
-                        "en": "She missed the morning service.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>朝<rp>(</rp><rt>あさ</rt><rp>)</rp></ruby>の<ruby>礼拝<rp>(</rp><rt>れいはい</rt><rp>)</rp></ruby>に<ruby>出席<rp>(</rp><rt>しゅっせき</rt><rp>)</rp></ruby>できなかった。",
-                        "enMn": "Тэр өглөөний шашны хурлыг алдсан."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "ирц",
-                    "meaningsMn": [
-                        "ирц"
-                    ]
-                },
-                {
-                    "jp": "それに",
-                    "reading": "それに",
-                    "en": "moreover",
-                    "meanings": [
-                        "moreover",
-                        "besides"
-                    ],
-                    "example": {
-                        "jp": "彼は私にパン、それに牛乳もくれた。",
-                        "en": "He gave me some bread, also some milk.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>にパン、それに<ruby>牛乳<rp>(</rp><rt>ぎゅうにゅう</rt><rp>)</rp></ruby>もくれた。",
-                        "enMn": "Тэр надад талх, мөн сүү өгсөн."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "түүнчлэн",
-                    "meaningsMn": [
-                        "түүнчлэн",
-                        "түүнчлэн"
-                    ]
-                },
-                {
                     "jp": "赤ちゃん",
                     "reading": "あかちゃん",
                     "en": "baby",
@@ -9999,129 +6907,6 @@ const WORD_LEVELS = [
                     "meaningsMn": [
                         "нялх хүүхэд",
                         "нярай"
-                    ]
-                },
-                {
-                    "jp": "エスカレーター",
-                    "reading": "エスカレーター",
-                    "en": "escalator",
-                    "meanings": [
-                        "escalator"
-                    ],
-                    "example": {
-                        "jp": "上りのエスカレーターはどこですか？",
-                        "en": "Where's the up-escalator?",
-                        "furigana": "<ruby>上<rp>(</rp><rt>のぼ</rt><rp>)</rp></ruby>りのエスカレーターはどこですか？",
-                        "enMn": "Дээшлэх эскалатор хаана байна вэ?"
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "эскалатор",
-                    "meaningsMn": [
-                        "эскалатор"
-                    ]
-                },
-                {
-                    "jp": "絹",
-                    "reading": "きぬ",
-                    "en": "silk",
-                    "meanings": [
-                        "silk"
-                    ],
-                    "example": {
-                        "jp": "雌豚の耳から絹の財布は作れない。",
-                        "en": "You cannot make a silk purse out of a sow's ear.",
-                        "furigana": "<ruby>雌<rp>(</rp><rt>めす</rt><rp>)</rp></ruby><ruby>豚<rp>(</rp><rt>ぶた</rt><rp>)</rp></ruby>の<ruby>耳<rp>(</rp><rt>みみ</rt><rp>)</rp></ruby>から<ruby>絹<rp>(</rp><rt>きぬ</rt><rp>)</rp></ruby>の<ruby>財布<rp>(</rp><rt>さいふ</rt><rp>)</rp></ruby>は<ruby>作<rp>(</rp><rt>つく</rt><rp>)</rp></ruby>れない。",
-                        "enMn": "Гахайн чихнээс торго түрийвч хийж болохгүй."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "торго",
-                    "meaningsMn": [
-                        "торго"
-                    ]
-                },
-                {
-                    "jp": "お祭り",
-                    "reading": "おまつり",
-                    "en": "festival",
-                    "meanings": [
-                        "festival"
-                    ],
-                    "example": {
-                        "jp": "今年もいつも通りお祭りが行われました。",
-                        "en": "The festivities were held as usual this year.",
-                        "furigana": "<ruby>今年<rp>(</rp><rt>ことし</rt><rp>)</rp></ruby>もいつも<ruby>通<rp>(</rp><rt>とお</rt><rp>)</rp></ruby>りお<ruby>祭<rp>(</rp><rt>まつ</rt><rp>)</rp></ruby>りが<ruby>行<rp>(</rp><rt>おこな</rt><rp>)</rp></ruby>われました。",
-                        "enMn": "Энэ жил ч бас ердийнхөөрөө баяр наадам болов."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "баяр",
-                    "meaningsMn": [
-                        "баяр",
-                        "баяр ёслол"
-                    ]
-                },
-                {
-                    "jp": "水道",
-                    "reading": "すいどう",
-                    "en": "water service",
-                    "meanings": [
-                        "water service",
-                        "water line"
-                    ],
-                    "example": {
-                        "jp": "彼が料金を払わなかったので水道を止められた。",
-                        "en": "They shut his water off because he didn't pay the bill.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>が<ruby>料金<rp>(</rp><rt>りょうきん</rt><rp>)</rp></ruby>を<ruby>払<rp>(</rp><rt>はら</rt><rp>)</rp></ruby>わなかったので<ruby>水道<rp>(</rp><rt>すいどう</rt><rp>)</rp></ruby>を<ruby>止<rp>(</rp><rt>と</rt><rp>)</rp></ruby>められた。",
-                        "enMn": "Тэр төлбөрөө төлөөгүй тул усыг нь таслав."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "ус хангамж",
-                    "meaningsMn": [
-                        "ус хангамж"
-                    ]
-                },
-                {
-                    "jp": "匂い",
-                    "reading": "におい",
-                    "en": "odor",
-                    "meanings": [
-                        "odor",
-                        "smell"
-                    ],
-                    "example": {
-                        "jp": "猟犬たちはキツネの匂いの跡をたどった。",
-                        "en": "The hunting dogs followed the scent of the fox.",
-                        "furigana": "<ruby>猟犬<rp>(</rp><rt>りょうけん</rt><rp>)</rp></ruby>たちはキツネの<ruby>匂<rp>(</rp><rt>にお</rt><rp>)</rp></ruby>いの<ruby>跡<rp>(</rp><rt>あと</rt><rp>)</rp></ruby>をたどった。",
-                        "enMn": "Анчин нохойнууд үнэгний үнэрийн мөрөөр дагав."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "үнэр",
-                    "meaningsMn": [
-                        "үнэр"
-                    ]
-                },
-                {
-                    "jp": "ベル",
-                    "reading": "ベル",
-                    "en": "bell",
-                    "meanings": [
-                        "bell"
-                    ],
-                    "example": {
-                        "jp": "万一の場合にはベルを鳴らしなさい。",
-                        "en": "Ring the bell in an emergency.",
-                        "furigana": "<ruby>万一<rp>(</rp><rt>まんいち</rt><rp>)</rp></ruby>の<ruby>場合<rp>(</rp><rt>ばあい</rt><rp>)</rp></ruby>にはベルを<ruby>鳴<rp>(</rp><rt>な</rt><rp>)</rp></ruby>らしなさい。",
-                        "enMn": "Онцгой тохиолдолд хонх дуугарга."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "дуудлагын хонх",
-                    "meaningsMn": [
-                        "дуудлагын хонх"
                     ]
                 },
                 {
@@ -10145,192 +6930,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "おかしい",
-                    "reading": "おかしい",
-                    "en": "strange",
-                    "meanings": [
-                        "strange; odd; funny"
-                    ],
-                    "example": {
-                        "jp": "郵便配達人がまだ来ていないのはおかしい。",
-                        "en": "It is funny that the mailman hasn't come yet.",
-                        "furigana": "<ruby>郵便<rp>(</rp><rt>ゆうびん</rt><rp>)</rp></ruby><ruby>配達<rp>(</rp><rt>はいたつ</rt><rp>)</rp></ruby><ruby>人<rp>(</rp><rt>じん</rt><rp>)</rp></ruby>がまだ<ruby>来<rp>(</rp><rt>き</rt><rp>)</rp></ruby>ていないのはおかしい。",
-                        "enMn": "Шуудан зөөгч хараахан ирээгүй байгаа нь хачирхалтай."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хачирхалтай",
-                    "meaningsMn": [
-                        "хачирхалтай"
-                    ]
-                },
-                {
-                    "jp": "事故",
-                    "reading": "じこ",
-                    "en": "accident",
-                    "meanings": [
-                        "accident"
-                    ],
-                    "example": {
-                        "jp": "警察が医療事故の立件に消極的だ。",
-                        "en": "The police are reluctant to pursue criminal charges in medical cases.",
-                        "furigana": "<ruby>警察<rp>(</rp><rt>けいさつ</rt><rp>)</rp></ruby>が<ruby>医療<rp>(</rp><rt>いりょう</rt><rp>)</rp></ruby><ruby>事故<rp>(</rp><rt>じこ</rt><rp>)</rp></ruby>の<ruby>立件<rp>(</rp><rt>りっけん</rt><rp>)</rp></ruby>に<ruby>消極<rp>(</rp><rt>しょうきょく</rt><rp>)</rp></ruby><ruby>的<rp>(</rp><rt>てき</rt><rp>)</rp></ruby>だ。",
-                        "enMn": "Цагдаа нар эмнэлгийн ослыг хэрэг болгоход идэвхгүй байна."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "осол",
-                    "meaningsMn": [
-                        "осол"
-                    ]
-                },
-                {
-                    "jp": "変",
-                    "reading": "へん",
-                    "en": "strange",
-                    "meanings": [
-                        "strange",
-                        "odd"
-                    ],
-                    "example": {
-                        "jp": "彼は時々変です。",
-                        "en": "Sometimes he can be a strange guy.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>時々<rp>(</rp><rt>ときどき</rt><rp>)</rp></ruby><ruby>変<rp>(</rp><rt>へん</rt><rp>)</rp></ruby>です。",
-                        "enMn": "Тэр заримдаа хачин байдаг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хачин",
-                    "meaningsMn": [
-                        "хачин"
-                    ]
-                },
-                {
-                    "jp": "辞典",
-                    "reading": "じてん",
-                    "en": "encyclopedia",
-                    "meanings": [
-                        "encyclopedia",
-                        "reference book"
-                    ],
-                    "example": {
-                        "jp": "本棚に英和辞典がありますか。",
-                        "en": "Is there an English-Japanese dictionary on the bookshelf?",
-                        "furigana": "<ruby>本棚<rp>(</rp><rt>ほんだな</rt><rp>)</rp></ruby>に<ruby>英和<rp>(</rp><rt>えいわ</rt><rp>)</rp></ruby><ruby>辞典<rp>(</rp><rt>じてん</rt><rp>)</rp></ruby>がありますか。",
-                        "enMn": "Номын тавиур дээр англи-япон толь бичиг байна уу?"
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "нэвтэрхий толь",
-                    "meaningsMn": [
-                        "нэвтэрхий толь"
-                    ]
-                },
-                {
-                    "jp": "残る",
-                    "reading": "のこる",
-                    "en": "to remain (v.i.)",
-                    "meanings": [
-                        "to remain (v.i.)",
-                        "to be left"
-                    ],
-                    "example": {
-                        "jp": "夢が生き生きと記憶に残ることもある。",
-                        "en": "Dreams may be vivid and memorable.",
-                        "furigana": "<ruby>夢<rp>(</rp><rt>ゆめ</rt><rp>)</rp></ruby>が<ruby>生<rp>(</rp><rt>い</rt><rp>)</rp></ruby>き<ruby>生<rp>(</rp><rt>い</rt><rp>)</rp></ruby>きと<ruby>記憶<rp>(</rp><rt>きおく</rt><rp>)</rp></ruby>に<ruby>残<rp>(</rp><rt>のこ</rt><rp>)</rp></ruby>ることもある。",
-                        "enMn": "Зүүд тод, дурсамжтай үлдэх нь ч бий."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "үлдэх",
-                    "meaningsMn": [
-                        "үлдэх"
-                    ]
-                },
-                {
-                    "jp": "立てる",
-                    "reading": "たてる",
-                    "en": "to stand (something) up",
-                    "meanings": [
-                        "to stand (something) up",
-                        "to erect (something)"
-                    ],
-                    "example": {
-                        "jp": "別の機会にお役に立てることを願っています。",
-                        "en": "I hope that I will be able to help you at some other time.",
-                        "furigana": "<ruby>別<rp>(</rp><rt>べつ</rt><rp>)</rp></ruby>の<ruby>機会<rp>(</rp><rt>きかい</rt><rp>)</rp></ruby>にお<ruby>役<rp>(</rp><rt>やく</rt><rp>)</rp></ruby>に<ruby>立<rp>(</rp><rt>た</rt><rp>)</rp></ruby>てることを<ruby>願<rp>(</rp><rt>ねが</rt><rp>)</rp></ruby>っています。",
-                        "enMn": "Өөр нэгэн боломжоор тусалж чадна гэж найдаж байна."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "босгох",
-                    "meaningsMn": [
-                        "босгох"
-                    ]
-                },
-                {
-                    "jp": "くれる",
-                    "reading": "くれる",
-                    "en": "to give",
-                    "meanings": [
-                        "to give",
-                        "to do for"
-                    ],
-                    "example": {
-                        "jp": "一緒に旅行してくれる人がいないんだ。",
-                        "en": "I don't have anyone who'd travel with me.",
-                        "furigana": "<ruby>一緒<rp>(</rp><rt>いっしょ</rt><rp>)</rp></ruby>に<ruby>旅行<rp>(</rp><rt>りょこう</rt><rp>)</rp></ruby>してくれる<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>がいないんだ。",
-                        "enMn": "Надтай хамт аялах хүн байхгүй юм."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "өгөх",
-                    "meaningsMn": [
-                        "өгөх"
-                    ]
-                },
-                {
-                    "jp": "驚く",
-                    "reading": "おどろく",
-                    "en": "to be surprised",
-                    "meanings": [
-                        "to be surprised",
-                        "to be astonished"
-                    ],
-                    "example": {
-                        "jp": "驚くことではないね。",
-                        "en": "It doesn't surprise me.",
-                        "furigana": "<ruby>驚<rp>(</rp><rt>おどろ</rt><rp>)</rp></ruby>くことではないね。",
-                        "enMn": "Гайхах зүйл биш ээ."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "гайхах",
-                    "meaningsMn": [
-                        "гайхах"
-                    ]
-                },
-                {
-                    "jp": "いただく",
-                    "reading": "頂く",
-                    "en": "-- extra-modest expression for たべる and のむ",
-                    "meanings": [
-                        "-- extra-modest expression for たべる and のむ; humble expression for もらう --"
-                    ],
-                    "example": {
-                        "jp": "当店の方針はお客様に御満足いただくことです。",
-                        "en": "Our policy is to satisfy our customers.",
-                        "furigana": "<ruby>当店<rp>(</rp><rt>とうてん</rt><rp>)</rp></ruby>の<ruby>方針<rp>(</rp><rt>ほうしん</rt><rp>)</rp></ruby>はお<ruby>客様<rp>(</rp><rt>きゃくさま</rt><rp>)</rp></ruby>に<ruby>御<rp>(</rp><rt>ご</rt><rp>)</rp></ruby><ruby>満足<rp>(</rp><rt>まんぞく</rt><rp>)</rp></ruby>いただくことです。",
-                        "enMn": "Манай дэлгүүрийн бодлого бол үйлчлүүлэгчээ сэтгэл ханамжтай байлгах явдал."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хүртэх",
-                    "meaningsMn": [
-                        "хүртэх"
-                    ]
-                },
-                {
                     "jp": "祖母",
                     "reading": "そぼ",
                     "en": "grandmother",
@@ -10349,58 +6948,397 @@ const WORD_LEVELS = [
                     "meaningsMn": [
                         "эмээ"
                     ]
-                }
-            ]
-        ]
-    },
-    {
-        "level": 21,
-        "jlpt": "N4",
-        "title": "N4 · Level 9",
-        "sets": [
-            [
+                },
                 {
-                    "jp": "悲しい",
-                    "reading": "かなしい",
-                    "en": "sad",
+                    "jp": "受付",
+                    "reading": "うけつけ",
+                    "en": "reception(ist) desk",
                     "meanings": [
-                        "sad",
-                        "sorrowful"
+                        "reception(ist) desk"
                     ],
                     "example": {
-                        "jp": "悲しい時は友達が励ましてくれる。",
-                        "en": "When I'm sad, my friends encourage me.",
-                        "furigana": "<ruby>悲<rp>(</rp><rt>かな</rt><rp>)</rp></ruby>しい<ruby>時<rp>(</rp><rt>とき</rt><rp>)</rp></ruby>は<ruby>友達<rp>(</rp><rt>ともだち</rt><rp>)</rp></ruby>が<ruby>励<rp>(</rp><rt>はげ</rt><rp>)</rp></ruby>ましてくれる。",
-                        "enMn": "Би гунигтай байхад найзууд минь намайг урамшуулдаг."
+                        "jp": "早朝の受付でクジを引いて順番を決めた。",
+                        "en": "We drew lots to decide who would go first at the early morning reception desk.",
+                        "furigana": "<ruby>早朝<rp>(</rp><rt>そうちょう</rt><rp>)</rp></ruby>の<ruby>受付<rp>(</rp><rt>うけつけ</rt><rp>)</rp></ruby>でクジを<ruby>引<rp>(</rp><rt>ひ</rt><rp>)</rp></ruby>いて<ruby>順番<rp>(</rp><rt>じゅんばん</rt><rp>)</rp></ruby>を<ruby>決<rp>(</rp><rt>き</rt><rp>)</rp></ruby>めた。",
+                        "enMn": "Өглөө эрт хүлээн авах хэсэгт сугалаа татаж дэс дарааллаа тогтоов."
                     },
-                    "phonetic": "非",
-                    "phoneticReading": "ハイ、ヒ",
-                    "enMn": "гунигтай",
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хүлээн авах хэсэг",
                     "meaningsMn": [
-                        "гунигтай",
-                        "гунигтай"
+                        "хүлээн авах хэсэг"
                     ]
                 },
                 {
-                    "jp": "非常に",
-                    "reading": "ひじょうに",
-                    "en": "extremely",
+                    "jp": "公務員",
+                    "reading": "こうむいん",
+                    "en": "government worker",
                     "meanings": [
-                        "extremely",
-                        "very"
+                        "government worker",
+                        "public servant"
                     ],
                     "example": {
-                        "jp": "病院は非常にお金がかかります。",
-                        "en": "Hospitals are very expensive.",
-                        "furigana": "<ruby>病院<rp>(</rp><rt>びょういん</rt><rp>)</rp></ruby>は<ruby>非常<rp>(</rp><rt>ひじょう</rt><rp>)</rp></ruby>にお<ruby>金<rp>(</rp><rt>かね</rt><rp>)</rp></ruby>がかかります。",
-                        "enMn": "Эмнэлгийн зардал маш өндөр байдаг."
+                        "jp": "どういった時事が公務員試験で出題されるのか。",
+                        "en": "What sort of current affairs appear in the civil service examination?",
+                        "furigana": "どういった<ruby>時事<rp>(</rp><rt>じじ</rt><rp>)</rp></ruby>が<ruby>公務員<rp>(</rp><rt>こうむいん</rt><rp>)</rp></ruby><ruby>試験<rp>(</rp><rt>しけん</rt><rp>)</rp></ruby>で<ruby>出題<rp>(</rp><rt>しゅつだい</rt><rp>)</rp></ruby>されるのか。",
+                        "enMn": "Ямар төрлийн цаг үеийн асуудал төрийн албан хаагчийн шалгалтад гардаг вэ?"
                     },
-                    "phonetic": "非",
-                    "phoneticReading": "ハイ、ヒ",
-                    "enMn": "маш их",
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "төрийн албан хаагч",
                     "meaningsMn": [
-                        "маш их",
-                        "маш"
+                        "төрийн албан хаагч"
+                    ]
+                },
+                {
+                    "jp": "お嬢さん",
+                    "reading": "おじょうさん",
+                    "en": "(someone's) daughter (polite)",
+                    "meanings": [
+                        "(someone's) daughter (polite)"
+                    ],
+                    "example": {
+                        "jp": "お嬢さんのお名前は？",
+                        "en": "What's your daughter's name?",
+                        "furigana": "お<ruby>嬢<rp>(</rp><rt>じょう</rt><rp>)</rp></ruby>さんのお<ruby>名前<rp>(</rp><rt>なまえ</rt><rp>)</rp></ruby>は？",
+                        "enMn": "Таны охины нэр хэн бэ?"
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "таны охин",
+                    "meaningsMn": [
+                        "таны охин"
+                    ]
+                },
+                {
+                    "jp": "皆",
+                    "reading": "みな",
+                    "en": "everyone",
+                    "meanings": [
+                        "everyone"
+                    ],
+                    "example": null,
+                    "phonetic": "皆",
+                    "phoneticReading": "カイ",
+                    "enMn": "бүгд",
+                    "meaningsMn": [
+                        "бүгд"
+                    ]
+                },
+                {
+                    "jp": "校長",
+                    "reading": "こうちょう",
+                    "en": "principal",
+                    "meanings": [
+                        "principal",
+                        "headmaster"
+                    ],
+                    "example": null,
+                    "phonetic": "交",
+                    "phoneticReading": "コウ",
+                    "enMn": "сургуулийн захирал",
+                    "meaningsMn": [
+                        "сургуулийн захирал"
+                    ]
+                },
+                {
+                    "jp": "祖父",
+                    "reading": "そふ",
+                    "en": "grandfather",
+                    "meanings": [
+                        "grandfather"
+                    ],
+                    "example": null,
+                    "phonetic": "且",
+                    "phoneticReading": "ソ",
+                    "enMn": "өвөө",
+                    "meaningsMn": [
+                        "өвөө"
+                    ]
+                },
+                {
+                    "jp": "部長",
+                    "reading": "ぶちょう",
+                    "en": "department (division) manager",
+                    "meanings": [
+                        "department (division) manager"
+                    ],
+                    "example": null,
+                    "phonetic": "長",
+                    "phoneticReading": "チョウ",
+                    "enMn": "хэлтсийн дарга",
+                    "meaningsMn": [
+                        "хэлтсийн дарга"
+                    ]
+                },
+                {
+                    "jp": "男性",
+                    "reading": "だんせい",
+                    "en": "man; male",
+                    "meanings": [
+                        "man; male"
+                    ],
+                    "example": null,
+                    "phonetic": "生",
+                    "phoneticReading": "セイ、ショウ",
+                    "enMn": "эрэгтэй хүн",
+                    "meaningsMn": [
+                        "эрэгтэй хүн"
+                    ]
+                },
+                {
+                    "jp": "女性",
+                    "reading": "じょせい",
+                    "en": "woman",
+                    "meanings": [
+                        "woman"
+                    ],
+                    "example": null,
+                    "phonetic": "生",
+                    "phoneticReading": "セイ、ショウ",
+                    "enMn": "эмэгтэй хүн",
+                    "meaningsMn": [
+                        "эмэгтэй хүн"
+                    ]
+                }
+            ]
+        ],
+        "themeKey": "theme.n4.2"
+    },
+    {
+        "level": 15,
+        "jlpt": "N4",
+        "title": "Eating and shopping",
+        "sets": [
+            [
+                {
+                    "jp": "苦い",
+                    "reading": "にがい",
+                    "en": "bitter",
+                    "meanings": [
+                        "bitter"
+                    ],
+                    "example": {
+                        "jp": "恋の味は苦い。",
+                        "en": "The taste of love is bitter.",
+                        "furigana": "<ruby>恋<rp>(</rp><rt>こい</rt><rp>)</rp></ruby>の<ruby>味<rp>(</rp><rt>あじ</rt><rp>)</rp></ruby>は<ruby>苦<rp>(</rp><rt>にが</rt><rp>)</rp></ruby>い。",
+                        "enMn": "Хайрын амт гашуун."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "гашуун",
+                    "meaningsMn": [
+                        "гашуун"
+                    ]
+                },
+                {
+                    "jp": "沸く",
+                    "reading": "わく",
+                    "en": "to boil",
+                    "meanings": [
+                        "to boil",
+                        "to grow hot"
+                    ],
+                    "example": {
+                        "jp": "彼女はお茶を入れる前にお湯が沸くまで待った。",
+                        "en": "She waited until the water boiled before making the tea with it.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はお<ruby>茶<rp>(</rp><rt>ちゃ</rt><rp>)</rp></ruby>を<ruby>入<rp>(</rp><rt>い</rt><rp>)</rp></ruby>れる<ruby>前<rp>(</rp><rt>まえ</rt><rp>)</rp></ruby>にお<ruby>湯<rp>(</rp><rt>ゆ</rt><rp>)</rp></ruby>が<ruby>沸<rp>(</rp><rt>わ</rt><rp>)</rp></ruby>くまで<ruby>待<rp>(</rp><rt>ま</rt><rp>)</rp></ruby>った。",
+                        "enMn": "Тэр цай хийхээсээ өмнө ус буцалтал хүлээв."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "буцлах",
+                    "meaningsMn": [
+                        "буцлах"
+                    ]
+                },
+                {
+                    "jp": "柔らかい",
+                    "reading": "やわらかい",
+                    "en": "soft (in reference to texture)",
+                    "meanings": [
+                        "soft (in reference to texture)",
+                        "tender"
+                    ],
+                    "example": {
+                        "jp": "彼は柔らかい粘土で小さな塑像を作った。",
+                        "en": "He made a little statue out of soft clay.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>柔<rp>(</rp><rt>やわ</rt><rp>)</rp></ruby>らかい<ruby>粘土<rp>(</rp><rt>ねんど</rt><rp>)</rp></ruby>で<ruby>小<rp>(</rp><rt>ちい</rt><rp>)</rp></ruby>さな<ruby>塑像<rp>(</rp><rt>そぞう</rt><rp>)</rp></ruby>を<ruby>作<rp>(</rp><rt>つく</rt><rp>)</rp></ruby>った。",
+                        "enMn": "Тэр зөөлөн шавраар жижиг хөшөө урлав."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "зөөлөн",
+                    "meaningsMn": [
+                        "зөөлөн"
+                    ]
+                },
+                {
+                    "jp": "包む",
+                    "reading": "つつむ",
+                    "en": "to wrap",
+                    "meanings": [
+                        "to wrap",
+                        "to cover"
+                    ],
+                    "example": {
+                        "jp": "美しい包装紙に包んでもらえますか。",
+                        "en": "Could you gift wrap it?",
+                        "furigana": "<ruby>美<rp>(</rp><rt>うつく</rt><rp>)</rp></ruby>しい<ruby>包装<rp>(</rp><rt>ほうそう</rt><rp>)</rp></ruby><ruby>紙<rp>(</rp><rt>し</rt><rp>)</rp></ruby>に<ruby>包<rp>(</rp><rt>つつ</rt><rp>)</rp></ruby>んでもらえますか。",
+                        "enMn": "Үүнийг бэлгийн цаасаар боож өгч болох уу?"
+                    },
+                    "phonetic": "包",
+                    "phoneticReading": "ホウ",
+                    "enMn": "боох",
+                    "meaningsMn": [
+                        "боох",
+                        "боох"
+                    ]
+                },
+                {
+                    "jp": "売り場",
+                    "reading": "うりば",
+                    "en": "place where things are sold",
+                    "meanings": [
+                        "place where things are sold"
+                    ],
+                    "example": {
+                        "jp": "日用品売り場は何階でしょうか。",
+                        "en": "What floor is the daily goods department on?",
+                        "furigana": "<ruby>日<rp>(</rp><rt>にち</rt><rp>)</rp></ruby><ruby>用品<rp>(</rp><rt>ようひん</rt><rp>)</rp></ruby><ruby>売<rp>(</rp><rt>う</rt><rp>)</rp></ruby>り<ruby>場<rp>(</rp><rt>ば</rt><rp>)</rp></ruby>は<ruby>何<rp>(</rp><rt>なん</rt><rp>)</rp></ruby><ruby>階<rp>(</rp><rt>かい</rt><rp>)</rp></ruby>でしょうか。",
+                        "enMn": "Өдөр тутмын хэрэглээний барааны хэсэг хэддүгээр давхарт байдаг вэ?"
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "худалдааны цэг",
+                    "meaningsMn": [
+                        "худалдааны цэг"
+                    ]
+                },
+                {
+                    "jp": "ぶどう",
+                    "reading": "ぶどう",
+                    "en": "grapes",
+                    "meanings": [
+                        "grapes"
+                    ],
+                    "example": {
+                        "jp": "母が箱詰めのぶどうを送ってくれました。",
+                        "en": "Mother sent us grapes packed in a box.",
+                        "furigana": "<ruby>母<rp>(</rp><rt>はは</rt><rp>)</rp></ruby>が<ruby>箱詰<rp>(</rp><rt>はこづ</rt><rp>)</rp></ruby>めのぶどうを<ruby>送<rp>(</rp><rt>おく</rt><rp>)</rp></ruby>ってくれました。",
+                        "enMn": "Ээж хайрцаглагдсан усан үзэм илгээж өгсөн."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "усан үзэм",
+                    "meaningsMn": [
+                        "усан үзэм"
+                    ]
+                },
+                {
+                    "jp": "焼く",
+                    "reading": "やく",
+                    "en": "to bake",
+                    "meanings": [
+                        "to bake",
+                        "to grill"
+                    ],
+                    "example": {
+                        "jp": "母は週末にパンとクッキーを焼く。",
+                        "en": "My mother bakes bread and cookies on weekends.",
+                        "furigana": "<ruby>母<rp>(</rp><rt>はは</rt><rp>)</rp></ruby>は<ruby>週末<rp>(</rp><rt>しゅうまつ</rt><rp>)</rp></ruby>にパンとクッキーを<ruby>焼<rp>(</rp><rt>や</rt><rp>)</rp></ruby>く。",
+                        "enMn": "Ээж минь амралтын өдрүүдэд талх, жигнэмэг жигнэдэг."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "жигнэх",
+                    "meaningsMn": [
+                        "жигнэх",
+                        "шарах"
+                    ]
+                },
+                {
+                    "jp": "倍",
+                    "reading": "ばい",
+                    "en": "double",
+                    "meanings": [
+                        "double"
+                    ],
+                    "example": {
+                        "jp": "来年私はあなたの３倍の年齢になる。",
+                        "en": "Next year I will be three times as old as you.",
+                        "furigana": "<ruby>来年<rp>(</rp><rt>らいねん</rt><rp>)</rp></ruby><ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>はあなたの３<ruby>倍<rp>(</rp><rt>ばい</rt><rp>)</rp></ruby>の<ruby>年齢<rp>(</rp><rt>ねんれい</rt><rp>)</rp></ruby>になる。",
+                        "enMn": "Ирэх жил би чамаас гурав дахин ахимаг настай болно."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хоёр дахин",
+                    "meaningsMn": [
+                        "хоёр дахин"
+                    ]
+                },
+                {
+                    "jp": "客",
+                    "reading": "きゃく",
+                    "en": "guest",
+                    "meanings": [
+                        "guest",
+                        "customer"
+                    ],
+                    "example": {
+                        "jp": "春先だから客もあまりいませんでした。",
+                        "en": "It was early spring, so there weren't many customers.",
+                        "furigana": "<ruby>春先<rp>(</rp><rt>はるさき</rt><rp>)</rp></ruby>だから<ruby>客<rp>(</rp><rt>きゃく</rt><rp>)</rp></ruby>もあまりいませんでした。",
+                        "enMn": "Хаврын эхэн үе байсан тул зочин ч төдийлөн байсангүй."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "зочин",
+                    "meaningsMn": [
+                        "зочин"
+                    ]
+                },
+                {
+                    "jp": "噛む",
+                    "reading": "かむ",
+                    "en": "to bite",
+                    "meanings": [
+                        "to bite",
+                        "to chew"
+                    ],
+                    "example": {
+                        "jp": "プチッ、と糸を犬歯で噛み切った。",
+                        "en": "I snapped the thread on my canine.",
+                        "furigana": "プチッ、と<ruby>糸<rp>(</rp><rt>いと</rt><rp>)</rp></ruby>を<ruby>犬歯<rp>(</rp><rt>けんし</rt><rp>)</rp></ruby>で<ruby>噛<rp>(</rp><rt>か</rt><rp>)</rp></ruby>み<ruby>切<rp>(</rp><rt>き</rt><rp>)</rp></ruby>った。",
+                        "enMn": "Би утсыг соёогоороо тас цавчив."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хазах",
+                    "meaningsMn": [
+                        "хазах",
+                        "зажлах"
+                    ]
+                },
+                {
+                    "jp": "匂い",
+                    "reading": "におい",
+                    "en": "odor",
+                    "meanings": [
+                        "odor",
+                        "smell"
+                    ],
+                    "example": {
+                        "jp": "猟犬たちはキツネの匂いの跡をたどった。",
+                        "en": "The hunting dogs followed the scent of the fox.",
+                        "furigana": "<ruby>猟犬<rp>(</rp><rt>りょうけん</rt><rp>)</rp></ruby>たちはキツネの<ruby>匂<rp>(</rp><rt>にお</rt><rp>)</rp></ruby>いの<ruby>跡<rp>(</rp><rt>あと</rt><rp>)</rp></ruby>をたどった。",
+                        "enMn": "Анчин нохойнууд үнэгний үнэрийн мөрөөр дагав."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "үнэр",
+                    "meaningsMn": [
+                        "үнэр"
                     ]
                 },
                 {
@@ -10446,25 +7384,1616 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "人形",
-                    "reading": "にんぎょう",
-                    "en": "doll",
+                    "jp": "サンドイッチ",
+                    "reading": "サンドイッチ",
+                    "en": "sandwich",
                     "meanings": [
-                        "doll",
-                        "figure"
+                        "sandwich"
                     ],
                     "example": {
-                        "jp": "彼女は余暇を人形を作って過ごす。",
-                        "en": "She spends her leisure time making dolls.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>余暇<rp>(</rp><rt>よか</rt><rp>)</rp></ruby>を<ruby>人形<rp>(</rp><rt>にんぎょう</rt><rp>)</rp></ruby>を<ruby>作<rp>(</rp><rt>つく</rt><rp>)</rp></ruby>って<ruby>過<rp>(</rp><rt>す</rt><rp>)</rp></ruby>ごす。",
-                        "enMn": "Тэр чөлөөт цагаа хүүхэлдэй хийж өнгөрөөдөг."
+                        "jp": "いくつサンドイッチ残ってるの？",
+                        "en": "How many sandwiches are there left?",
+                        "furigana": "いくつサンドイッチ<ruby>残<rp>(</rp><rt>のこ</rt><rp>)</rp></ruby>ってるの？",
+                        "enMn": "Хэдэн сэндвич үлдсэн бэ?"
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хүүхэлдэй",
+                    "enMn": "сэндвич",
                     "meaningsMn": [
-                        "хүүхэлдэй",
-                        "хүүхэлдэй"
+                        "сэндвич"
+                    ]
+                },
+                {
+                    "jp": "漬ける",
+                    "reading": "つける",
+                    "en": "to soak",
+                    "meanings": [
+                        "to soak",
+                        "to moisten",
+                        "to pickle"
+                    ],
+                    "example": {
+                        "jp": "靴下の臭いが気になる時は、クエン酸水に漬けるといいそうよ。",
+                        "en": "If you're worried about your socks smelling, dipping them in citric acid solution might do the trick.",
+                        "furigana": "<ruby>靴下<rp>(</rp><rt>くつした</rt><rp>)</rp></ruby>の<ruby>臭<rp>(</rp><rt>にお</rt><rp>)</rp></ruby>いが<ruby>気<rp>(</rp><rt>き</rt><rp>)</rp></ruby>になる<ruby>時<rp>(</rp><rt>とき</rt><rp>)</rp></ruby>は、クエン<ruby>酸<rp>(</rp><rt>さん</rt><rp>)</rp></ruby><ruby>水<rp>(</rp><rt>すい</rt><rp>)</rp></ruby>に<ruby>漬<rp>(</rp><rt>つ</rt><rp>)</rp></ruby>けるといいそうよ。",
+                        "enMn": "Оймсны үнэр санаа зовоож байвал нимбэгийн хүчлийн уусмалд дэвтээвэл сайн гэнэ шүү."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "дэвтээх",
+                    "meaningsMn": [
+                        "дэвтээх"
+                    ]
+                },
+                {
+                    "jp": "増える",
+                    "reading": "ふえる",
+                    "en": "to increase",
+                    "meanings": [
+                        "to increase",
+                        "to multiply"
+                    ],
+                    "example": {
+                        "jp": "除草剤耐性品種でなぜ収量が増えるのか？",
+                        "en": "Why do yields increase with herbicide-resistant varieties?",
+                        "furigana": "<ruby>除草<rp>(</rp><rt>じょそう</rt><rp>)</rp></ruby><ruby>剤<rp>(</rp><rt>ざい</rt><rp>)</rp></ruby><ruby>耐性<rp>(</rp><rt>たいせい</rt><rp>)</rp></ruby><ruby>品種<rp>(</rp><rt>ひんしゅ</rt><rp>)</rp></ruby>でなぜ<ruby>収量<rp>(</rp><rt>しゅうりょう</rt><rp>)</rp></ruby>が<ruby>増<rp>(</rp><rt>ふ</rt><rp>)</rp></ruby>えるのか？",
+                        "enMn": "Хогийн ургамлын хорд тэсвэртэй сортын ургац яагаад нэмэгддэг вэ?"
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "нэмэгдэх",
+                    "meaningsMn": [
+                        "нэмэгдэх"
+                    ]
+                },
+                {
+                    "jp": "以下",
+                    "reading": "いか",
+                    "en": "less than",
+                    "meanings": [
+                        "less than",
+                        "below"
+                    ],
+                    "example": {
+                        "jp": "理由は以下のとおりである。",
+                        "en": "The reasons are as follows.",
+                        "furigana": "<ruby>理由<rp>(</rp><rt>りゆう</rt><rp>)</rp></ruby>は<ruby>以下<rp>(</rp><rt>いか</rt><rp>)</rp></ruby>のとおりである。",
+                        "enMn": "Шалтгаан нь доорх байдалтай байна."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "доош",
+                    "meaningsMn": [
+                        "доош"
+                    ]
+                },
+                {
+                    "jp": "選ぶ",
+                    "reading": "えらぶ",
+                    "en": "to choose",
+                    "meanings": [
+                        "to choose; to select"
+                    ],
+                    "example": {
+                        "jp": "彼は二者択一を選ぶことでしょう。武術か死か。",
+                        "en": "Which will he choose, I wonder, martial arts or death?",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>二者択一<rp>(</rp><rt>にしゃたくいつ</rt><rp>)</rp></ruby>を<ruby>選<rp>(</rp><rt>えら</rt><rp>)</rp></ruby>ぶことでしょう。<ruby>武術<rp>(</rp><rt>ぶじゅつ</rt><rp>)</rp></ruby>か<ruby>死<rp>(</rp><rt>し</rt><rp>)</rp></ruby>か。",
+                        "enMn": "Тэр хоёрын нэгийг сонгох байх. Тулааны урлаг эсвэл үхэл."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "сонгох",
+                    "meaningsMn": [
+                        "сонгох"
+                    ]
+                },
+                {
+                    "jp": "サラダ",
+                    "reading": "サラダ",
+                    "en": "salad",
+                    "meanings": [
+                        "salad"
+                    ],
+                    "example": {
+                        "jp": "冷蔵庫の中にトマトサラダを入れなさい。",
+                        "en": "Put the tomato salad in the refrigerator.",
+                        "furigana": "<ruby>冷蔵庫<rp>(</rp><rt>れいぞうこ</rt><rp>)</rp></ruby>の<ruby>中<rp>(</rp><rt>なか</rt><rp>)</rp></ruby>にトマトサラダを<ruby>入<rp>(</rp><rt>い</rt><rp>)</rp></ruby>れなさい。",
+                        "enMn": "Улаан лоолийн салатыг хөргөгчинд хийгээрэй."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "салат",
+                    "meaningsMn": [
+                        "салат"
+                    ]
+                },
+                {
+                    "jp": "品物",
+                    "reading": "しなもの",
+                    "en": "goods",
+                    "meanings": [
+                        "goods"
+                    ],
+                    "example": {
+                        "jp": "品物は代金引換でお送りいたします。",
+                        "en": "The article will be sent cash on delivery.",
+                        "furigana": "<ruby>品物<rp>(</rp><rt>しなもの</rt><rp>)</rp></ruby>は<ruby>代金<rp>(</rp><rt>だいきん</rt><rp>)</rp></ruby><ruby>引換<rp>(</rp><rt>ひきかえ</rt><rp>)</rp></ruby>でお<ruby>送<rp>(</rp><rt>おく</rt><rp>)</rp></ruby>りいたします。",
+                        "enMn": "Барааг хүргэлтийн үед мөнгөн төлбөрөөр илгээнэ."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "бараа",
+                    "meaningsMn": [
+                        "бараа"
+                    ]
+                },
+                {
+                    "jp": "ステーキ",
+                    "reading": "ステーキ",
+                    "en": "steak",
+                    "meanings": [
+                        "steak"
+                    ],
+                    "example": {
+                        "jp": "ステーキがもっと欲しい。",
+                        "en": "I want more of the steak.",
+                        "furigana": "ステーキがもっと<ruby>欲<rp>(</rp><rt>ほ</rt><rp>)</rp></ruby>しい。",
+                        "enMn": "Би дахиад стейк идмээр байна."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "стейк",
+                    "meaningsMn": [
+                        "стейк"
+                    ]
+                },
+                {
+                    "jp": "細かい",
+                    "reading": "こまかい",
+                    "en": "small",
+                    "meanings": [
+                        "small; fine",
+                        "minute"
+                    ],
+                    "example": {
+                        "jp": "細かい意訳誤訳は気にしないでください。",
+                        "en": "Please don't worry about the finer details of free vs mis-translation.",
+                        "furigana": "<ruby>細<rp>(</rp><rt>こま</rt><rp>)</rp></ruby>かい<ruby>意訳<rp>(</rp><rt>いやく</rt><rp>)</rp></ruby><ruby>誤訳<rp>(</rp><rt>ごやく</rt><rp>)</rp></ruby>は<ruby>気<rp>(</rp><rt>き</rt><rp>)</rp></ruby>にしないでください。",
+                        "enMn": "Нарийн чөлөөт орчуулга, буруу орчуулгыг бүү тоо."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "нарийн",
+                    "meaningsMn": [
+                        "нарийн",
+                        "жижиг"
+                    ]
+                },
+                {
+                    "jp": "味噌",
+                    "reading": "みそ",
+                    "en": "miso",
+                    "meanings": [
+                        "miso",
+                        "bean paste"
+                    ],
+                    "example": null,
+                    "phonetic": "未",
+                    "phoneticReading": "ミ、マイ",
+                    "enMn": "мисо",
+                    "meaningsMn": [
+                        "мисо"
+                    ]
+                },
+                {
+                    "jp": "店員",
+                    "reading": "てんいん",
+                    "en": "clerk; shop-employee",
+                    "meanings": [
+                        "clerk; shop-employee"
+                    ],
+                    "example": null,
+                    "phonetic": "占",
+                    "phoneticReading": "テン",
+                    "enMn": "худалдагч",
+                    "meaningsMn": [
+                        "худалдагч"
+                    ]
+                },
+                {
+                    "jp": "味",
+                    "reading": "あじ",
+                    "en": "flavor",
+                    "meanings": [
+                        "flavor",
+                        "taste"
+                    ],
+                    "example": null,
+                    "phonetic": "未",
+                    "phoneticReading": "ミ、マイ",
+                    "enMn": "амт",
+                    "meaningsMn": [
+                        "амт"
+                    ]
+                }
+            ]
+        ],
+        "themeKey": "theme.n4.3"
+    },
+    {
+        "level": 16,
+        "jlpt": "N4",
+        "title": "How you feel",
+        "sets": [
+            [
+                {
+                    "jp": "気",
+                    "reading": "き",
+                    "en": "spirit",
+                    "meanings": [
+                        "spirit",
+                        "mood"
+                    ],
+                    "example": {
+                        "jp": "私は気が短いし、口も軽い男だ。",
+                        "en": "I'm short-tempered, and a loose-tongued man.",
+                        "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>は<ruby>気<rp>(</rp><rt>き</rt><rp>)</rp></ruby>が<ruby>短<rp>(</rp><rt>みじか</rt><rp>)</rp></ruby>いし、<ruby>口<rp>(</rp><rt>くち</rt><rp>)</rp></ruby>も<ruby>軽<rp>(</rp><rt>かる</rt><rp>)</rp></ruby>い<ruby>男<rp>(</rp><rt>おとこ</rt><rp>)</rp></ruby>だ。",
+                        "enMn": "Би уур бухимдалтай, амаа барьдаггүй хүн юм."
+                    },
+                    "phonetic": "气",
+                    "phoneticReading": "キ",
+                    "enMn": "сэтгэл",
+                    "meaningsMn": [
+                        "сэтгэл",
+                        "сэтгэл санаа"
+                    ]
+                },
+                {
+                    "jp": "気分",
+                    "reading": "きぶん",
+                    "en": "feeling",
+                    "meanings": [
+                        "feeling",
+                        "mood"
+                    ],
+                    "example": {
+                        "jp": "「気分はどうですか」と彼は尋ねた。",
+                        "en": "\"How do you feel?\" he inquired.",
+                        "furigana": "「<ruby>気分<rp>(</rp><rt>きぶん</rt><rp>)</rp></ruby>はどうですか」と<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>尋<rp>(</rp><rt>たず</rt><rp>)</rp></ruby>ねた。",
+                        "enMn": "\"Чи ямар байгаа вэ?\" гэж тэр асуув."
+                    },
+                    "phonetic": "气",
+                    "phoneticReading": "キ",
+                    "enMn": "сэтгэл санаа",
+                    "meaningsMn": [
+                        "мэдрэмж",
+                        "сэтгэл санаа"
+                    ]
+                },
+                {
+                    "jp": "怒る",
+                    "reading": "おこる",
+                    "en": "to get angry",
+                    "meanings": [
+                        "to get angry; to scold angrily"
+                    ],
+                    "example": {
+                        "jp": "彼女が彼を怒るのも当然である。",
+                        "en": "It is quite natural that she should get angry with him.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>が<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>を<ruby>怒<rp>(</rp><rt>おこ</rt><rp>)</rp></ruby>るのも<ruby>当然<rp>(</rp><rt>とうぜん</rt><rp>)</rp></ruby>である。",
+                        "enMn": "Тэр түүнд уурлаж байгаа нь тун зүйн хэрэг."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "уурлах",
+                    "meaningsMn": [
+                        "уурлах"
+                    ]
+                },
+                {
+                    "jp": "心配",
+                    "reading": "しんぱいする",
+                    "en": "worry",
+                    "meanings": [
+                        "worry",
+                        "concern"
+                    ],
+                    "example": {
+                        "jp": "心配しないで。",
+                        "en": "Don't worry about it!",
+                        "furigana": "<ruby>心配<rp>(</rp><rt>しんぱい</rt><rp>)</rp></ruby>しないで。",
+                        "enMn": "Санаа зоволтгүй!"
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "санаа зовох",
+                    "meaningsMn": [
+                        "санаа зовох"
+                    ]
+                },
+                {
+                    "jp": "一生懸命",
+                    "reading": "いっしょうけんめい",
+                    "en": "very hard (as in to work hard)",
+                    "meanings": [
+                        "very hard (as in to work hard)",
+                        "with utmost effort"
+                    ],
+                    "example": {
+                        "jp": "一生懸命指でまぶたを広げて目薬を差しました。",
+                        "en": "With great effort I held his eyelids open with my fingers and dropped in the eye medicine.",
+                        "furigana": "<ruby>一生懸命<rp>(</rp><rt>いっしょうけんめい</rt><rp>)</rp></ruby><ruby>指<rp>(</rp><rt>ゆび</rt><rp>)</rp></ruby>でまぶたを<ruby>広<rp>(</rp><rt>ひろ</rt><rp>)</rp></ruby>げて<ruby>目薬<rp>(</rp><rt>めぐすり</rt><rp>)</rp></ruby>を<ruby>差<rp>(</rp><rt>さ</rt><rp>)</rp></ruby>しました。",
+                        "enMn": "Бүх хүчээрээ хуруугаараа зовхийг нь дэлгэж, нүдний дусаал дусаалаа."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "бүх хүчээрээ",
+                    "meaningsMn": [
+                        "бүх хүчээрээ"
+                    ]
+                },
+                {
+                    "jp": "頑張る",
+                    "reading": "がんばる",
+                    "en": "to try one's best",
+                    "meanings": [
+                        "to try one's best",
+                        "to try hard",
+                        "to persist"
+                    ],
+                    "example": {
+                        "jp": "彼女は見かけによらず頑張りやだ。",
+                        "en": "She is persistent though she doesn't look so.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>かけによらず<ruby>頑張<rp>(</rp><rt>がんば</rt><rp>)</rp></ruby>りやだ。",
+                        "enMn": "Тэр гаднаасаа харагдаж байгаагаас илүү тэвчээртэй."
+                    },
+                    "phonetic": "元",
+                    "phoneticReading": "ガン",
+                    "enMn": "чармайх",
+                    "meaningsMn": [
+                        "чармайх",
+                        "чармайх",
+                        "тэвчиж үргэлжлүүлэх"
+                    ]
+                },
+                {
+                    "jp": "思う",
+                    "reading": "おもう",
+                    "en": "to think",
+                    "meanings": [
+                        "to think",
+                        "to feel"
+                    ],
+                    "example": {
+                        "jp": "わたしがいなくて淋しいと思った？",
+                        "en": "Did you miss me?",
+                        "furigana": "わたしがいなくて<ruby>淋<rp>(</rp><rt>さび</rt><rp>)</rp></ruby>しいと<ruby>思<rp>(</rp><rt>おも</rt><rp>)</rp></ruby>った？",
+                        "enMn": "Чи намайг санаж байсан уу?"
+                    },
+                    "phonetic": "思",
+                    "phoneticReading": "シ",
+                    "enMn": "бодох",
+                    "meaningsMn": [
+                        "бодох",
+                        "мэдрэх"
+                    ]
+                },
+                {
+                    "jp": "思い出す",
+                    "reading": "おもいだす",
+                    "en": "to recall",
+                    "meanings": [
+                        "to recall",
+                        "to remember"
+                    ],
+                    "example": {
+                        "jp": "約束したことを思い出して下さい。",
+                        "en": "I must remind you of your promise.",
+                        "furigana": "<ruby>約束<rp>(</rp><rt>やくそく</rt><rp>)</rp></ruby>したことを<ruby>思<rp>(</rp><rt>おも</rt><rp>)</rp></ruby>い<ruby>出<rp>(</rp><rt>だ</rt><rp>)</rp></ruby>して<ruby>下<rp>(</rp><rt>くだ</rt><rp>)</rp></ruby>さい。",
+                        "enMn": "Би чамд амлалтаа сануулах ёстой."
+                    },
+                    "phonetic": "思",
+                    "phoneticReading": "シ",
+                    "enMn": "санах",
+                    "meaningsMn": [
+                        "санах",
+                        "санах"
+                    ]
+                },
+                {
+                    "jp": "祈る",
+                    "reading": "いのる",
+                    "en": "to pray",
+                    "meanings": [
+                        "to pray",
+                        "to wish"
+                    ],
+                    "example": {
+                        "jp": "彼らは私達の勝利を祈ってくれた。",
+                        "en": "They congratulated us on our victory.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby><ruby>達<rp>(</rp><rt>たち</rt><rp>)</rp></ruby>の<ruby>勝利<rp>(</rp><rt>しょうり</rt><rp>)</rp></ruby>を<ruby>祈<rp>(</rp><rt>いの</rt><rp>)</rp></ruby>ってくれた。",
+                        "enMn": "Тэд бидний ялалтад баяр хүргэсэн."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "залбирах",
+                    "meaningsMn": [
+                        "залбирах",
+                        "хүсэх"
+                    ]
+                },
+                {
+                    "jp": "素晴らしい",
+                    "reading": "すばらしい",
+                    "en": "wonderful",
+                    "meanings": [
+                        "wonderful; terrific"
+                    ],
+                    "example": {
+                        "jp": "留学することは素晴らしい経験になるでしょう。",
+                        "en": "To study abroad will be a wonderful experience.",
+                        "furigana": "<ruby>留学<rp>(</rp><rt>りゅうがく</rt><rp>)</rp></ruby>することは<ruby>素晴<rp>(</rp><rt>すば</rt><rp>)</rp></ruby>らしい<ruby>経験<rp>(</rp><rt>けいけん</rt><rp>)</rp></ruby>になるでしょう。",
+                        "enMn": "Гадаадад суралцах нь гайхамшигтай туршлага болно."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "гайхамшигтай",
+                    "meaningsMn": [
+                        "гайхамшигтай"
+                    ]
+                },
+                {
+                    "jp": "熱心",
+                    "reading": "ねっしん",
+                    "en": "enthusiasm",
+                    "meanings": [
+                        "enthusiasm"
+                    ],
+                    "example": {
+                        "jp": "彼はスティーヴン・キングの熱心な愛読者です。",
+                        "en": "He is a keen Stephen King fan.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>はスティーヴン・キングの<ruby>熱心<rp>(</rp><rt>ねっしん</rt><rp>)</rp></ruby>な<ruby>愛読<rp>(</rp><rt>あいどく</rt><rp>)</rp></ruby><ruby>者<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby>です。",
+                        "enMn": "Тэр бол Стивен Кингийн зохиолыг шимтэн уншдаг хүн."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "урам зориг",
+                    "meaningsMn": [
+                        "урам зориг"
+                    ]
+                },
+                {
+                    "jp": "泣く",
+                    "reading": "なく",
+                    "en": "to cry",
+                    "meanings": [
+                        "to cry"
+                    ],
+                    "example": {
+                        "jp": "さぁ笑って、泣くのは後！",
+                        "en": "Smile now, cry later!",
+                        "furigana": "さぁ<ruby>笑<rp>(</rp><rt>わら</rt><rp>)</rp></ruby>って、<ruby>泣<rp>(</rp><rt>な</rt><rp>)</rp></ruby>くのは<ruby>後<rp>(</rp><rt>ご</rt><rp>)</rp></ruby>！",
+                        "enMn": "За инээгээрэй, уйлахаа дараа!"
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "уйлах",
+                    "meaningsMn": [
+                        "уйлах"
+                    ]
+                },
+                {
+                    "jp": "おかしい",
+                    "reading": "おかしい",
+                    "en": "strange",
+                    "meanings": [
+                        "strange; odd; funny"
+                    ],
+                    "example": {
+                        "jp": "郵便配達人がまだ来ていないのはおかしい。",
+                        "en": "It is funny that the mailman hasn't come yet.",
+                        "furigana": "<ruby>郵便<rp>(</rp><rt>ゆうびん</rt><rp>)</rp></ruby><ruby>配達<rp>(</rp><rt>はいたつ</rt><rp>)</rp></ruby><ruby>人<rp>(</rp><rt>じん</rt><rp>)</rp></ruby>がまだ<ruby>来<rp>(</rp><rt>き</rt><rp>)</rp></ruby>ていないのはおかしい。",
+                        "enMn": "Шуудан зөөгч хараахан ирээгүй байгаа нь хачирхалтай."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хачирхалтай",
+                    "meaningsMn": [
+                        "хачирхалтай"
+                    ]
+                },
+                {
+                    "jp": "変",
+                    "reading": "へん",
+                    "en": "strange",
+                    "meanings": [
+                        "strange",
+                        "odd"
+                    ],
+                    "example": {
+                        "jp": "彼は時々変です。",
+                        "en": "Sometimes he can be a strange guy.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>時々<rp>(</rp><rt>ときどき</rt><rp>)</rp></ruby><ruby>変<rp>(</rp><rt>へん</rt><rp>)</rp></ruby>です。",
+                        "enMn": "Тэр заримдаа хачин байдаг."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хачин",
+                    "meaningsMn": [
+                        "хачин"
+                    ]
+                },
+                {
+                    "jp": "驚く",
+                    "reading": "おどろく",
+                    "en": "to be surprised",
+                    "meanings": [
+                        "to be surprised",
+                        "to be astonished"
+                    ],
+                    "example": {
+                        "jp": "驚くことではないね。",
+                        "en": "It doesn't surprise me.",
+                        "furigana": "<ruby>驚<rp>(</rp><rt>おどろ</rt><rp>)</rp></ruby>くことではないね。",
+                        "enMn": "Гайхах зүйл биш ээ."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "гайхах",
+                    "meaningsMn": [
+                        "гайхах"
+                    ]
+                },
+                {
+                    "jp": "悲しい",
+                    "reading": "かなしい",
+                    "en": "sad",
+                    "meanings": [
+                        "sad",
+                        "sorrowful"
+                    ],
+                    "example": {
+                        "jp": "悲しい時は友達が励ましてくれる。",
+                        "en": "When I'm sad, my friends encourage me.",
+                        "furigana": "<ruby>悲<rp>(</rp><rt>かな</rt><rp>)</rp></ruby>しい<ruby>時<rp>(</rp><rt>とき</rt><rp>)</rp></ruby>は<ruby>友達<rp>(</rp><rt>ともだち</rt><rp>)</rp></ruby>が<ruby>励<rp>(</rp><rt>はげ</rt><rp>)</rp></ruby>ましてくれる。",
+                        "enMn": "Би гунигтай байхад найзууд минь намайг урамшуулдаг."
+                    },
+                    "phonetic": "非",
+                    "phoneticReading": "ハイ、ヒ",
+                    "enMn": "гунигтай",
+                    "meaningsMn": [
+                        "гунигтай",
+                        "гунигтай"
+                    ]
+                },
+                {
+                    "jp": "心",
+                    "reading": "こころ",
+                    "en": "heart",
+                    "meanings": [
+                        "heart",
+                        "mind"
+                    ],
+                    "example": {
+                        "jp": "私は好奇心が強いです。",
+                        "en": "I am curious.",
+                        "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>は<ruby>好奇<rp>(</rp><rt>こうき</rt><rp>)</rp></ruby><ruby>心<rp>(</rp><rt>しん</rt><rp>)</rp></ruby>が<ruby>強<rp>(</rp><rt>つよ</rt><rp>)</rp></ruby>いです。",
+                        "enMn": "Би сониуч зантай."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "зүрх",
+                    "meaningsMn": [
+                        "зүрх"
+                    ]
+                },
+                {
+                    "jp": "残念",
+                    "reading": "ざんねん",
+                    "en": "regret",
+                    "meanings": [
+                        "regret",
+                        "regrettable"
+                    ],
+                    "example": {
+                        "jp": "離婚されたと聞き残念に思います。",
+                        "en": "I'm sorry to hear that you got a divorce.",
+                        "furigana": "<ruby>離婚<rp>(</rp><rt>りこん</rt><rp>)</rp></ruby>されたと<ruby>聞<rp>(</rp><rt>き</rt><rp>)</rp></ruby>き<ruby>残念<rp>(</rp><rt>ざんねん</rt><rp>)</rp></ruby>に<ruby>思<rp>(</rp><rt>おも</rt><rp>)</rp></ruby>います。",
+                        "enMn": "Чиний салсныг сонсоод харамслаа."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "харамсал",
+                    "meaningsMn": [
+                        "харамсал",
+                        "харамсалтай"
+                    ]
+                },
+                {
+                    "jp": "恥ずかしい",
+                    "reading": "はずかしい",
+                    "en": "ashamed",
+                    "meanings": [
+                        "ashamed",
+                        "embarrassed"
+                    ],
+                    "example": {
+                        "jp": "彼女は恥ずかしさで顔を赤らめた。",
+                        "en": "She blushed with shame.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>恥<rp>(</rp><rt>は</rt><rp>)</rp></ruby>ずかしさで<ruby>顔<rp>(</rp><rt>かお</rt><rp>)</rp></ruby>を<ruby>赤<rp>(</rp><rt>あか</rt><rp>)</rp></ruby>らめた。",
+                        "enMn": "Тэр ичсэндээ улайв."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "ичиж буй",
+                    "meaningsMn": [
+                        "ичиж буй",
+                        "ичиж зовсон"
+                    ]
+                },
+                {
+                    "jp": "珍しい",
+                    "reading": "めずらしい",
+                    "en": "unusual",
+                    "meanings": [
+                        "unusual",
+                        "rare"
+                    ],
+                    "example": {
+                        "jp": "彼ほど平々凡々たる主人公は珍しい。",
+                        "en": "A protagonist as plain and ordinary as him is rare indeed.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>ほど<ruby>平々凡々<rp>(</rp><rt>へいへいぼんぼん</rt><rp>)</rp></ruby>たる<ruby>主人公<rp>(</rp><rt>しゅじんこう</rt><rp>)</rp></ruby>は<ruby>珍<rp>(</rp><rt>めずら</rt><rp>)</rp></ruby>しい。",
+                        "enMn": "Түүн шиг энгийн жирийн гол баатар ховор."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "ховор",
+                    "meaningsMn": [
+                        "ховор"
+                    ]
+                },
+                {
+                    "jp": "真面目",
+                    "reading": "まじめ",
+                    "en": "diligent",
+                    "meanings": [
+                        "diligent",
+                        "serious"
+                    ],
+                    "example": null,
+                    "phonetic": "真",
+                    "phoneticReading": "シン、テン",
+                    "enMn": "хичээнгүй",
+                    "meaningsMn": [
+                        "хичээнгүй",
+                        "ноцтой"
+                    ]
+                },
+                {
+                    "jp": "喜ぶ",
+                    "reading": "よろこぶ",
+                    "en": "to rejoice",
+                    "meanings": [
+                        "to rejoice",
+                        "to be delighted",
+                        "to be glad"
+                    ],
+                    "example": null,
+                    "phonetic": "喜",
+                    "phoneticReading": "キ",
+                    "enMn": "баярлах",
+                    "meaningsMn": [
+                        "баярлах"
+                    ]
+                },
+                {
+                    "jp": "興味",
+                    "reading": "きょうみ",
+                    "en": "interest (in something)",
+                    "meanings": [
+                        "interest (in something)"
+                    ],
+                    "example": null,
+                    "phonetic": "未",
+                    "phoneticReading": "ミ、マイ",
+                    "enMn": "сонирхол",
+                    "meaningsMn": [
+                        "сонирхол"
+                    ]
+                },
+                {
+                    "jp": "気持ち",
+                    "reading": "きもち",
+                    "en": "feeling",
+                    "meanings": [
+                        "feeling",
+                        "sensation",
+                        "mood"
+                    ],
+                    "example": null,
+                    "phonetic": "气",
+                    "phoneticReading": "キ",
+                    "enMn": "сэтгэл хөдлөл",
+                    "meaningsMn": [
+                        "сэтгэл хөдлөл"
+                    ]
+                },
+                {
+                    "jp": "凄い",
+                    "reading": "すごい",
+                    "en": "terrific",
+                    "meanings": [
+                        "terrific",
+                        "great"
+                    ],
+                    "example": null,
+                    "phonetic": "妻",
+                    "phoneticReading": "セイ",
+                    "enMn": "гайхалтай",
+                    "meaningsMn": [
+                        "гайхалтай"
+                    ]
+                }
+            ]
+        ],
+        "themeKey": "theme.n4.4"
+    },
+    {
+        "level": 17,
+        "jlpt": "N4",
+        "title": "Trouble and accidents",
+        "sets": [
+            [
+                {
+                    "jp": "生きる",
+                    "reading": "いきる",
+                    "en": "to live",
+                    "meanings": [
+                        "to live"
+                    ],
+                    "example": {
+                        "jp": "僕は彼女無しに生きる術を学んだ。",
+                        "en": "I learned to live without her.",
+                        "furigana": "<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>は<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby><ruby>無<rp>(</rp><rt>な</rt><rp>)</rp></ruby>しに<ruby>生<rp>(</rp><rt>い</rt><rp>)</rp></ruby>きる<ruby>術<rp>(</rp><rt>じゅつ</rt><rp>)</rp></ruby>を<ruby>学<rp>(</rp><rt>まな</rt><rp>)</rp></ruby>んだ。",
+                        "enMn": "Би түүнгүйгээр амьдрахыг сурсан."
+                    },
+                    "phonetic": "生",
+                    "phoneticReading": "セイ、ショウ",
+                    "enMn": "амьдрах",
+                    "meaningsMn": [
+                        "амьдрах"
+                    ]
+                },
+                {
+                    "jp": "踏む",
+                    "reading": "ふむ",
+                    "en": "to step on",
+                    "meanings": [
+                        "to step on",
+                        "to tread on"
+                    ],
+                    "example": {
+                        "jp": "足を踏むつもりはなかったのです。",
+                        "en": "I didn't mean to step on your foot.",
+                        "furigana": "<ruby>足<rp>(</rp><rt>あし</rt><rp>)</rp></ruby>を<ruby>踏<rp>(</rp><rt>ふ</rt><rp>)</rp></ruby>むつもりはなかったのです。",
+                        "enMn": "Хөл дээр чинь санаатай гишгээгүй ээ."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "гишгэх",
+                    "meaningsMn": [
+                        "гишгэх"
+                    ]
+                },
+                {
+                    "jp": "盗む",
+                    "reading": "ぬすむ",
+                    "en": "to steal",
+                    "meanings": [
+                        "to steal; to rob"
+                    ],
+                    "example": {
+                        "jp": "彼は決して金を盗むような人ではない。",
+                        "en": "He would be the last man to steal money.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>決<rp>(</rp><rt>けっ</rt><rp>)</rp></ruby>して<ruby>金<rp>(</rp><rt>きん</rt><rp>)</rp></ruby>を<ruby>盗<rp>(</rp><rt>ぬす</rt><rp>)</rp></ruby>むような<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>ではない。",
+                        "enMn": "Тэр хэзээ ч мөнгө хулгайлах хүн биш."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хулгайлах",
+                    "meaningsMn": [
+                        "хулгайлах"
+                    ]
+                },
+                {
+                    "jp": "鳴る",
+                    "reading": "なる",
+                    "en": "to sound",
+                    "meanings": [
+                        "to sound",
+                        "to ring (v.i.)"
+                    ],
+                    "example": {
+                        "jp": "雷が鳴ると、雨が降り始めた。",
+                        "en": "First it thundered, and then it started to rain.",
+                        "furigana": "<ruby>雷<rp>(</rp><rt>かみなり</rt><rp>)</rp></ruby>が<ruby>鳴<rp>(</rp><rt>な</rt><rp>)</rp></ruby>ると、<ruby>雨<rp>(</rp><rt>あめ</rt><rp>)</rp></ruby>が<ruby>降<rp>(</rp><rt>ふ</rt><rp>)</rp></ruby>り<ruby>始<rp>(</rp><rt>はじ</rt><rp>)</rp></ruby>めた。",
+                        "enMn": "Тэнгэр дуугарангуут бороо орж эхлэв."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "дуугарах",
+                    "meaningsMn": [
+                        "дуугарах"
+                    ]
+                },
+                {
+                    "jp": "医学",
+                    "reading": "いがく",
+                    "en": "medical science",
+                    "meanings": [
+                        "medical science"
+                    ],
+                    "example": {
+                        "jp": "飼鳥の医学―病気の診断とその治療。",
+                        "en": "Avian medicine - diagnosis and treatment of illnesses.",
+                        "furigana": "<ruby>飼鳥<rp>(</rp><rt>かいどり</rt><rp>)</rp></ruby>の<ruby>医学<rp>(</rp><rt>いがく</rt><rp>)</rp></ruby>―<ruby>病気<rp>(</rp><rt>びょうき</rt><rp>)</rp></ruby>の<ruby>診断<rp>(</rp><rt>しんだん</rt><rp>)</rp></ruby>とその<ruby>治療<rp>(</rp><rt>ちりょう</rt><rp>)</rp></ruby>。",
+                        "enMn": "Тэжээвэр шувууны анагаах ухаан — өвчний оношилгоо ба эмчилгээ."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "анагаах ухаан",
+                    "meaningsMn": [
+                        "анагаах ухаан"
+                    ]
+                },
+                {
+                    "jp": "折る",
+                    "reading": "おる",
+                    "en": "to snap",
+                    "meanings": [
+                        "to snap",
+                        "to break; to bend"
+                    ],
+                    "example": {
+                        "jp": "木を折るな。",
+                        "en": "Don't break the branches.",
+                        "furigana": "<ruby>木<rp>(</rp><rt>き</rt><rp>)</rp></ruby>を<ruby>折<rp>(</rp><rt>お</rt><rp>)</rp></ruby>るな。",
+                        "enMn": "Модыг бүү хугал."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хугалах",
+                    "meaningsMn": [
+                        "хугалах"
+                    ]
+                },
+                {
+                    "jp": "注意",
+                    "reading": "ちゅうい",
+                    "en": "caution",
+                    "meanings": [
+                        "caution",
+                        "attention"
+                    ],
+                    "example": {
+                        "jp": "卵を割らないように注意しなさい。",
+                        "en": "Take care not to break the eggs.",
+                        "furigana": "<ruby>卵<rp>(</rp><rt>たまご</rt><rp>)</rp></ruby>を<ruby>割<rp>(</rp><rt>わ</rt><rp>)</rp></ruby>らないように<ruby>注意<rp>(</rp><rt>ちゅうい</rt><rp>)</rp></ruby>しなさい。",
+                        "enMn": "Өндгийг эвдэхгүй байхыг анхаараарай."
+                    },
+                    "phonetic": "主",
+                    "phoneticReading": "チュウ",
+                    "enMn": "болгоомжлол",
+                    "meaningsMn": [
+                        "болгоомжлол",
+                        "анхаарал"
+                    ]
+                },
+                {
+                    "jp": "拾う",
+                    "reading": "ひろう",
+                    "en": "to pick up (something)",
+                    "meanings": [
+                        "to pick up (something)",
+                        "to find"
+                    ],
+                    "example": {
+                        "jp": "砂浜でいろんな貝を拾うのは実に楽しい。",
+                        "en": "It is a lot of fun picking various shells on the sands.",
+                        "furigana": "<ruby>砂浜<rp>(</rp><rt>すなはま</rt><rp>)</rp></ruby>でいろんな<ruby>貝<rp>(</rp><rt>かい</rt><rp>)</rp></ruby>を<ruby>拾<rp>(</rp><rt>ひろ</rt><rp>)</rp></ruby>うのは<ruby>実<rp>(</rp><rt>じつ</rt><rp>)</rp></ruby>に<ruby>楽<rp>(</rp><rt>たの</rt><rp>)</rp></ruby>しい。",
+                        "enMn": "Элсэн эрэг дээр янз бүрийн хясаа түүх үнэхээр сонирхолтой."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "түүх",
+                    "meaningsMn": [
+                        "түүх"
+                    ]
+                },
+                {
+                    "jp": "捕まえる",
+                    "reading": "つかまえる",
+                    "en": "to catch",
+                    "meanings": [
+                        "to catch",
+                        "to arrest"
+                    ],
+                    "example": {
+                        "jp": "彼らはわなでキツネを捕まえた。",
+                        "en": "They captured foxes with snares.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らはわなでキツネを<ruby>捕<rp>(</rp><rt>つか</rt><rp>)</rp></ruby>まえた。",
+                        "enMn": "Тэд урхиар үнэг барьсан."
+                    },
+                    "phonetic": "甫",
+                    "phoneticReading": "ホ",
+                    "enMn": "барих",
+                    "meaningsMn": [
+                        "барих",
+                        "баривчлах"
+                    ]
+                },
+                {
+                    "jp": "逃げる",
+                    "reading": "にげる",
+                    "en": "to escape",
+                    "meanings": [
+                        "to escape",
+                        "to run away"
+                    ],
+                    "example": {
+                        "jp": "のいて・・・奴らは逃げちゃうよ。",
+                        "en": "Get out the way ... they'll escape!",
+                        "furigana": "のいて・・・<ruby>奴<rp>(</rp><rt>やつ</rt><rp>)</rp></ruby>らは<ruby>逃<rp>(</rp><rt>に</rt><rp>)</rp></ruby>げちゃうよ。",
+                        "enMn": "Замаас зайл... тэд зугтчихно!"
+                    },
+                    "phonetic": "兆",
+                    "phoneticReading": "チョウ、トウ",
+                    "enMn": "зугтах",
+                    "meaningsMn": [
+                        "зугтах",
+                        "зугтах"
+                    ]
+                },
+                {
+                    "jp": "だめ",
+                    "reading": "だめ",
+                    "en": "useless",
+                    "meanings": [
+                        "useless",
+                        "no good",
+                        "hopeless"
+                    ],
+                    "example": {
+                        "jp": "彼を誘わなくちゃだめよ。",
+                        "en": "You should definitely ask him out.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>を<ruby>誘<rp>(</rp><rt>さそ</rt><rp>)</rp></ruby>わなくちゃだめよ。",
+                        "enMn": "Чи түүнийг заавал урих ёстой шүү."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "болохгүй",
+                    "meaningsMn": [
+                        "болохгүй"
+                    ]
+                },
+                {
+                    "jp": "故障",
+                    "reading": "こしょうする",
+                    "en": "breakdown",
+                    "meanings": [
+                        "breakdown"
+                    ],
+                    "example": {
+                        "jp": "冷水機が故障している。",
+                        "en": "The water cooler is out of order.",
+                        "furigana": "<ruby>冷水<rp>(</rp><rt>れいすい</rt><rp>)</rp></ruby><ruby>機<rp>(</rp><rt>き</rt><rp>)</rp></ruby>が<ruby>故障<rp>(</rp><rt>こしょう</rt><rp>)</rp></ruby>している。",
+                        "enMn": "Усны хөргөгч эвдэрсэн байна."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "эвдрэл",
+                    "meaningsMn": [
+                        "эвдрэл"
+                    ]
+                },
+                {
+                    "jp": "壊す",
+                    "reading": "こわす",
+                    "en": "to break",
+                    "meanings": [
+                        "to break",
+                        "to break down"
+                    ],
+                    "example": {
+                        "jp": "彼女はまたトースターを壊した。",
+                        "en": "She has broken the toaster again.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はまたトースターを<ruby>壊<rp>(</rp><rt>こわ</rt><rp>)</rp></ruby>した。",
+                        "enMn": "Тэр тостерийг дахин эвдэв."
+                    },
+                    "phonetic": "褱",
+                    "phoneticReading": "カイ",
+                    "enMn": "эвдэх",
+                    "meaningsMn": [
+                        "эвдэх",
+                        "эвдрэх"
+                    ]
+                },
+                {
+                    "jp": "壊れる",
+                    "reading": "こわれる",
+                    "en": "to be broken",
+                    "meanings": [
+                        "to be broken",
+                        "to break"
+                    ],
+                    "example": {
+                        "jp": "夜中に台所で物が壊れる音がした。",
+                        "en": "I heard something crashing in the kitchen in the middle of the night.",
+                        "furigana": "<ruby>夜中<rp>(</rp><rt>やちゅう</rt><rp>)</rp></ruby>に<ruby>台所<rp>(</rp><rt>だいどころ</rt><rp>)</rp></ruby>で<ruby>物<rp>(</rp><rt>もの</rt><rp>)</rp></ruby>が<ruby>壊<rp>(</rp><rt>こわ</rt><rp>)</rp></ruby>れる<ruby>音<rp>(</rp><rt>おと</rt><rp>)</rp></ruby>がした。",
+                        "enMn": "Шөнө дунд гал тогооны өрөөнөөс ямар нэг зүйл унаж хагарах чимээ сонссон."
+                    },
+                    "phonetic": "褱",
+                    "phoneticReading": "カイ",
+                    "enMn": "эвдрэх",
+                    "meaningsMn": [
+                        "эвдрэх",
+                        "эвдэх"
+                    ]
+                },
+                {
+                    "jp": "無くなる",
+                    "reading": "なくなる",
+                    "en": "to disappear",
+                    "meanings": [
+                        "to disappear",
+                        "to get lost"
+                    ],
+                    "example": {
+                        "jp": "速く儲けた金は速く無くなる。",
+                        "en": "Soon gotten soon spent.",
+                        "furigana": "<ruby>速<rp>(</rp><rt>はや</rt><rp>)</rp></ruby>く<ruby>儲<rp>(</rp><rt>もう</rt><rp>)</rp></ruby>けた<ruby>金<rp>(</rp><rt>きん</rt><rp>)</rp></ruby>は<ruby>速<rp>(</rp><rt>はや</rt><rp>)</rp></ruby>く<ruby>無<rp>(</rp><rt>な</rt><rp>)</rp></ruby>くなる。",
+                        "enMn": "Хурдан олсон мөнгө хурдан алга болдог."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "алга болох",
+                    "meaningsMn": [
+                        "алга болох"
+                    ]
+                },
+                {
+                    "jp": "痩せる",
+                    "reading": "やせる",
+                    "en": "to lose weight",
+                    "meanings": [
+                        "to lose weight"
+                    ],
+                    "example": {
+                        "jp": "痩せる必要がないというのは残念だ。",
+                        "en": "It's too bad that I don't need to lose weight.",
+                        "furigana": "<ruby>痩<rp>(</rp><rt>や</rt><rp>)</rp></ruby>せる<ruby>必要<rp>(</rp><rt>ひつよう</rt><rp>)</rp></ruby>がないというのは<ruby>残念<rp>(</rp><rt>ざんねん</rt><rp>)</rp></ruby>だ。",
+                        "enMn": "Турах шаардлагагүй гэдэг харамсалтай."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "турах",
+                    "meaningsMn": [
+                        "турах"
+                    ]
+                },
+                {
+                    "jp": "戦争",
+                    "reading": "せんそう",
+                    "en": "war",
+                    "meanings": [
+                        "war"
+                    ],
+                    "example": {
+                        "jp": "１００万人の人々がその戦争で命を落とした。",
+                        "en": "One million people lost their lives in the war.",
+                        "furigana": "１００<ruby>万<rp>(</rp><rt>まん</rt><rp>)</rp></ruby><ruby>人<rp>(</rp><rt>にん</rt><rp>)</rp></ruby>の<ruby>人々<rp>(</rp><rt>ひとびと</rt><rp>)</rp></ruby>がその<ruby>戦争<rp>(</rp><rt>せんそう</rt><rp>)</rp></ruby>で<ruby>命<rp>(</rp><rt>いのち</rt><rp>)</rp></ruby>を<ruby>落<rp>(</rp><rt>お</rt><rp>)</rp></ruby>とした。",
+                        "enMn": "Тэр дайнд нэг сая хүн амиа алдсан."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "дайн",
+                    "meaningsMn": [
+                        "дайн"
+                    ]
+                },
+                {
+                    "jp": "地震",
+                    "reading": "じしん",
+                    "en": "earthquake",
+                    "meanings": [
+                        "earthquake"
+                    ],
+                    "example": {
+                        "jp": "彼女は地震の時落ち着いています。",
+                        "en": "She stays calm through earthquakes.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>地震<rp>(</rp><rt>じしん</rt><rp>)</rp></ruby>の<ruby>時<rp>(</rp><rt>とき</rt><rp>)</rp></ruby><ruby>落<rp>(</rp><rt>お</rt><rp>)</rp></ruby>ち<ruby>着<rp>(</rp><rt>つ</rt><rp>)</rp></ruby>いています。",
+                        "enMn": "Тэр газар хөдлөлтийн үед тайван байдаг."
+                    },
+                    "phonetic": "也",
+                    "phoneticReading": "チ",
+                    "enMn": "газар хөдлөлт",
+                    "meaningsMn": [
+                        "газар хөдлөлт"
+                    ]
+                },
+                {
+                    "jp": "触る",
+                    "reading": "さわる",
+                    "en": "to touch",
+                    "meanings": [
+                        "to touch",
+                        "to feel"
+                    ],
+                    "example": {
+                        "jp": "触らずそのままにしておきなさい。",
+                        "en": "Don't touch it. Leave it as it is.",
+                        "furigana": "<ruby>触<rp>(</rp><rt>さわ</rt><rp>)</rp></ruby>らずそのままにしておきなさい。",
+                        "enMn": "Бүү хүр. Байгаагаар нь орхи."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хүрэх",
+                    "meaningsMn": [
+                        "хүрэх",
+                        "мэдрэх"
+                    ]
+                },
+                {
+                    "jp": "治る",
+                    "reading": "なおる",
+                    "en": "to get better",
+                    "meanings": [
+                        "to get better; to recover from illness (v.i.)"
+                    ],
+                    "example": {
+                        "jp": "風邪を人に移すと治るって本当？",
+                        "en": "Is it true that you recover from colds when you give them to someone else?",
+                        "furigana": "<ruby>風邪<rp>(</rp><rt>かぜ</rt><rp>)</rp></ruby>を<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>に<ruby>移<rp>(</rp><rt>うつ</rt><rp>)</rp></ruby>すと<ruby>治<rp>(</rp><rt>なお</rt><rp>)</rp></ruby>るって<ruby>本当<rp>(</rp><rt>ほんとう</rt><rp>)</rp></ruby>？",
+                        "enMn": "Ханиадаа хүнд халдаавал эдгэрдэг гэдэг үнэн үү?"
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "эдгэрэх",
+                    "meaningsMn": [
+                        "эдгэрэх"
+                    ]
+                },
+                {
+                    "jp": "熱",
+                    "reading": "ねつ",
+                    "en": "fever",
+                    "meanings": [
+                        "fever",
+                        "temperature"
+                    ],
+                    "example": {
+                        "jp": "熱が出るとひきつけを起こすことがあります。",
+                        "en": "Convulsions can occur when they run a fever.",
+                        "furigana": "<ruby>熱<rp>(</rp><rt>ねつ</rt><rp>)</rp></ruby>が<ruby>出<rp>(</rp><rt>で</rt><rp>)</rp></ruby>るとひきつけを<ruby>起<rp>(</rp><rt>お</rt><rp>)</rp></ruby>こすことがあります。",
+                        "enMn": "Халуурахад таталт өгөх тохиолдол бий."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "халуурал",
+                    "meaningsMn": [
+                        "халуурал"
+                    ]
+                },
+                {
+                    "jp": "事故",
+                    "reading": "じこ",
+                    "en": "accident",
+                    "meanings": [
+                        "accident"
+                    ],
+                    "example": {
+                        "jp": "警察が医療事故の立件に消極的だ。",
+                        "en": "The police are reluctant to pursue criminal charges in medical cases.",
+                        "furigana": "<ruby>警察<rp>(</rp><rt>けいさつ</rt><rp>)</rp></ruby>が<ruby>医療<rp>(</rp><rt>いりょう</rt><rp>)</rp></ruby><ruby>事故<rp>(</rp><rt>じこ</rt><rp>)</rp></ruby>の<ruby>立件<rp>(</rp><rt>りっけん</rt><rp>)</rp></ruby>に<ruby>消極<rp>(</rp><rt>しょうきょく</rt><rp>)</rp></ruby><ruby>的<rp>(</rp><rt>てき</rt><rp>)</rp></ruby>だ。",
+                        "enMn": "Цагдаа нар эмнэлгийн ослыг хэрэг болгоход идэвхгүй байна."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "осол",
+                    "meaningsMn": [
+                        "осол"
+                    ]
+                },
+                {
+                    "jp": "怖い",
+                    "reading": "こわい",
+                    "en": "scary",
+                    "meanings": [
+                        "scary",
+                        "frightening"
+                    ],
+                    "example": {
+                        "jp": "彼女は怖い顔をして彼を黙らせた。",
+                        "en": "She frowned him into silence.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>怖<rp>(</rp><rt>こわ</rt><rp>)</rp></ruby>い<ruby>顔<rp>(</rp><rt>かお</rt><rp>)</rp></ruby>をして<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>を<ruby>黙<rp>(</rp><rt>だま</rt><rp>)</rp></ruby>らせた。",
+                        "enMn": "Тэр аймшигтай харцаараа түүнийг дуугүй болгов."
+                    },
+                    "phonetic": "布",
+                    "phoneticReading": "フ",
+                    "enMn": "аймшигтай",
+                    "meaningsMn": [
+                        "аймшигтай",
+                        "аймшигтай"
+                    ]
+                },
+                {
+                    "jp": "原因",
+                    "reading": "げんいん",
+                    "en": "cause",
+                    "meanings": [
+                        "cause",
+                        "origin",
+                        "source"
+                    ],
+                    "example": null,
+                    "phonetic": "原",
+                    "phoneticReading": "ゲン",
+                    "enMn": "шалтгаан",
+                    "meaningsMn": [
+                        "шалтгаан"
+                    ]
+                },
+                {
+                    "jp": "亡くなる",
+                    "reading": "なくなる",
+                    "en": "to pass away",
+                    "meanings": [
+                        "to pass away"
+                    ],
+                    "example": null,
+                    "phonetic": "亡",
+                    "phoneticReading": "ボウ、モウ",
+                    "enMn": "нас барах",
+                    "meaningsMn": [
+                        "нас барах"
+                    ]
+                }
+            ]
+        ],
+        "themeKey": "theme.n4.5"
+    },
+    {
+        "level": 18,
+        "jlpt": "N4",
+        "title": "At home",
+        "sets": [
+            [
+                {
+                    "jp": "ステレオ",
+                    "reading": "ステレオ",
+                    "en": "stereo",
+                    "meanings": [
+                        "stereo"
+                    ],
+                    "example": {
+                        "jp": "少しステレオの音を小さくしてください。",
+                        "en": "Would you turn down the stereo a little?",
+                        "furigana": "<ruby>少<rp>(</rp><rt>すこ</rt><rp>)</rp></ruby>しステレオの<ruby>音<rp>(</rp><rt>おと</rt><rp>)</rp></ruby>を<ruby>小<rp>(</rp><rt>ちい</rt><rp>)</rp></ruby>さくしてください。",
+                        "enMn": "Стереогийн дууг бага зэрэг намсгана уу."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "стерео",
+                    "meaningsMn": [
+                        "стерео"
+                    ]
+                },
+                {
+                    "jp": "起こす",
+                    "reading": "おこす",
+                    "en": "to wake someone",
+                    "meanings": [
+                        "to wake (someone) up"
+                    ],
+                    "example": {
+                        "jp": "明日の朝6時に起こしてください。",
+                        "en": "Please wake me up at six tomorrow morning.",
+                        "furigana": "<ruby>明日<rp>(</rp><rt>あした</rt><rp>)</rp></ruby>の<ruby>朝<rp>(</rp><rt>あさ</rt><rp>)</rp></ruby>6<ruby>時<rp>(</rp><rt>じ</rt><rp>)</rp></ruby>に<ruby>起<rp>(</rp><rt>お</rt><rp>)</rp></ruby>こしてください。",
+                        "enMn": "Намайг маргааш өглөө зургаан цагт сэрээнэ үү."
+                    },
+                    "phonetic": "己",
+                    "phoneticReading": "キ",
+                    "enMn": "сэрээх",
+                    "meaningsMn": [
+                        "сэрээх"
+                    ]
+                },
+                {
+                    "jp": "お宅",
+                    "reading": "おたく",
+                    "en": "(someone else's) house",
+                    "meanings": [
+                        "(someone else's) house; home -- polite word for 家 (いえ) --"
+                    ],
+                    "example": {
+                        "jp": "明日お宅に伺います。",
+                        "en": "I'll pay you a visit at your house tomorrow.",
+                        "furigana": "<ruby>明日<rp>(</rp><rt>あした</rt><rp>)</rp></ruby>お<ruby>宅<rp>(</rp><rt>たく</rt><rp>)</rp></ruby>に<ruby>伺<rp>(</rp><rt>うかが</rt><rp>)</rp></ruby>います。",
+                        "enMn": "Маргааш таны гэрт очно."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "таны гэр",
+                    "meaningsMn": [
+                        "таны гэр"
+                    ]
+                },
+                {
+                    "jp": "屋上",
+                    "reading": "おくじょう",
+                    "en": "rooftop",
+                    "meanings": [
+                        "rooftop"
+                    ],
+                    "example": {
+                        "jp": "青空を見たくなったら、屋上に行きます。",
+                        "en": "I go up to the rooftop when I want to see the blue sky.",
+                        "furigana": "<ruby>青空<rp>(</rp><rt>あおぞら</rt><rp>)</rp></ruby>を<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>たくなったら、<ruby>屋上<rp>(</rp><rt>おくじょう</rt><rp>)</rp></ruby>に<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>きます。",
+                        "enMn": "Цэнхэр тэнгэрийг харах хүсэл төрвөл би дээвэр дээр гардаг."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "дээвэр",
+                    "meaningsMn": [
+                        "дээвэр"
+                    ]
+                },
+                {
+                    "jp": "ごみ",
+                    "reading": "ごみ",
+                    "en": "trash",
+                    "meanings": [
+                        "trash",
+                        "garbage"
+                    ],
+                    "example": {
+                        "jp": "片目にごみが入った。",
+                        "en": "Dust got into one of my eyes.",
+                        "furigana": "<ruby>片目<rp>(</rp><rt>かため</rt><rp>)</rp></ruby>にごみが<ruby>入<rp>(</rp><rt>はい</rt><rp>)</rp></ruby>った。",
+                        "enMn": "Нэг нүдэнд минь хог оров."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хог",
+                    "meaningsMn": [
+                        "хог"
+                    ]
+                },
+                {
+                    "jp": "建てる",
+                    "reading": "たてる",
+                    "en": "to build",
+                    "meanings": [
+                        "to build"
+                    ],
+                    "example": {
+                        "jp": "父は壁を建てるのに忙しい。",
+                        "en": "Father is busy putting up a wall.",
+                        "furigana": "<ruby>父<rp>(</rp><rt>ちち</rt><rp>)</rp></ruby>は<ruby>壁<rp>(</rp><rt>かべ</rt><rp>)</rp></ruby>を<ruby>建<rp>(</rp><rt>た</rt><rp>)</rp></ruby>てるのに<ruby>忙<rp>(</rp><rt>いそが</rt><rp>)</rp></ruby>しい。",
+                        "enMn": "Аав хана барих ажилдаа завгүй байна."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "барьж босгох",
+                    "meaningsMn": [
+                        "барьж босгох"
+                    ]
+                },
+                {
+                    "jp": "ガス",
+                    "reading": "ガス",
+                    "en": "gas",
+                    "meanings": [
+                        "gas"
+                    ],
+                    "example": {
+                        "jp": "毎月のガス代はいくらですか。",
+                        "en": "How much is your monthly gas bill?",
+                        "furigana": "<ruby>毎月<rp>(</rp><rt>まいつき</rt><rp>)</rp></ruby>のガス<ruby>代<rp>(</rp><rt>だい</rt><rp>)</rp></ruby>はいくらですか。",
+                        "enMn": "Сар бүрийн хийн төлбөр хэд вэ?"
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хий",
+                    "meaningsMn": [
+                        "хий"
+                    ]
+                },
+                {
+                    "jp": "建て",
+                    "reading": "～だて",
+                    "en": "~ storied",
+                    "meanings": [
+                        "~ storied",
+                        "separate housing"
+                    ],
+                    "example": {
+                        "jp": "来年は新しい家を建てたい。",
+                        "en": "I hope to build a new house next year.",
+                        "furigana": "<ruby>来年<rp>(</rp><rt>らいねん</rt><rp>)</rp></ruby>は<ruby>新<rp>(</rp><rt>あたら</rt><rp>)</rp></ruby>しい<ruby>家<rp>(</rp><rt>いえ</rt><rp>)</rp></ruby>を<ruby>建<rp>(</rp><rt>た</rt><rp>)</rp></ruby>てたい。",
+                        "enMn": "Ирэх жил шинэ байшин барьж босгохыг хүсэж байна."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "давхар байшин",
+                    "meaningsMn": [
+                        "давхар байшин"
+                    ]
+                },
+                {
+                    "jp": "畳",
+                    "reading": "たたみ",
+                    "en": "tatami mat (Japanese straw mat)",
+                    "meanings": [
+                        "tatami mat (Japanese straw mat)"
+                    ],
+                    "example": {
+                        "jp": "彼は畳の上に大の字になった。",
+                        "en": "He lay on the mat at full length.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>畳<rp>(</rp><rt>たたみ</rt><rp>)</rp></ruby>の<ruby>上<rp>(</rp><rt>うえ</rt><rp>)</rp></ruby>に<ruby>大<rp>(</rp><rt>だい</rt><rp>)</rp></ruby>の<ruby>字<rp>(</rp><rt>じ</rt><rp>)</rp></ruby>になった。",
+                        "enMn": "Тэр татами дээр гар хөлөө дэлгээд хэвтэв."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "татами",
+                    "meaningsMn": [
+                        "татами"
+                    ]
+                },
+                {
+                    "jp": "ガラス",
+                    "reading": "ガラス",
+                    "en": "glass",
+                    "meanings": [
+                        "glass",
+                        "pane"
+                    ],
+                    "example": {
+                        "jp": "彼女はガラスの破片で指を切った。",
+                        "en": "She cut her finger on the broken glass.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はガラスの<ruby>破片<rp>(</rp><rt>はへん</rt><rp>)</rp></ruby>で<ruby>指<rp>(</rp><rt>ゆび</rt><rp>)</rp></ruby>を<ruby>切<rp>(</rp><rt>き</rt><rp>)</rp></ruby>った。",
+                        "enMn": "Тэр хугарсан шилэнд хурууг нь зүссэн."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "шил",
+                    "meaningsMn": [
+                        "шил",
+                        "цонхны шил"
+                    ]
+                },
+                {
+                    "jp": "捨てる",
+                    "reading": "すてる",
+                    "en": "throw away (trash)",
+                    "meanings": [
+                        "throw away (trash)",
+                        "dump",
+                        "discard"
+                    ],
+                    "example": {
+                        "jp": "ここにゴミ捨てるべからず。",
+                        "en": "No dumping rubbish here!",
+                        "furigana": "ここにゴミ<ruby>捨<rp>(</rp><rt>す</rt><rp>)</rp></ruby>てるべからず。",
+                        "enMn": "Энд хог хаяхыг хориглоно!"
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хаях",
+                    "meaningsMn": [
+                        "хаях"
+                    ]
+                },
+                {
+                    "jp": "壁",
+                    "reading": "かべ",
+                    "en": "wall",
+                    "meanings": [
+                        "wall"
+                    ],
+                    "example": {
+                        "jp": "彼は壁一面にポスターをべたべた張った。",
+                        "en": "He plastered the wall with posters.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>壁<rp>(</rp><rt>かべ</rt><rp>)</rp></ruby><ruby>一<rp>(</rp><rt>いち</rt><rp>)</rp></ruby><ruby>面<rp>(</rp><rt>めん</rt><rp>)</rp></ruby>にポスターをべたべた<ruby>張<rp>(</rp><rt>は</rt><rp>)</rp></ruby>った。",
+                        "enMn": "Тэр ханыг чихэлдтэл зурагт хуудас наав."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хана",
+                    "meaningsMn": [
+                        "хана"
+                    ]
+                },
+                {
+                    "jp": "絹",
+                    "reading": "きぬ",
+                    "en": "silk",
+                    "meanings": [
+                        "silk"
+                    ],
+                    "example": {
+                        "jp": "雌豚の耳から絹の財布は作れない。",
+                        "en": "You cannot make a silk purse out of a sow's ear.",
+                        "furigana": "<ruby>雌<rp>(</rp><rt>めす</rt><rp>)</rp></ruby><ruby>豚<rp>(</rp><rt>ぶた</rt><rp>)</rp></ruby>の<ruby>耳<rp>(</rp><rt>みみ</rt><rp>)</rp></ruby>から<ruby>絹<rp>(</rp><rt>きぬ</rt><rp>)</rp></ruby>の<ruby>財布<rp>(</rp><rt>さいふ</rt><rp>)</rp></ruby>は<ruby>作<rp>(</rp><rt>つく</rt><rp>)</rp></ruby>れない。",
+                        "enMn": "Гахайн чихнээс торго түрийвч хийж болохгүй."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "торго",
+                    "meaningsMn": [
+                        "торго"
+                    ]
+                },
+                {
+                    "jp": "水道",
+                    "reading": "すいどう",
+                    "en": "water service",
+                    "meanings": [
+                        "water service",
+                        "water line"
+                    ],
+                    "example": {
+                        "jp": "彼が料金を払わなかったので水道を止められた。",
+                        "en": "They shut his water off because he didn't pay the bill.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>が<ruby>料金<rp>(</rp><rt>りょうきん</rt><rp>)</rp></ruby>を<ruby>払<rp>(</rp><rt>はら</rt><rp>)</rp></ruby>わなかったので<ruby>水道<rp>(</rp><rt>すいどう</rt><rp>)</rp></ruby>を<ruby>止<rp>(</rp><rt>と</rt><rp>)</rp></ruby>められた。",
+                        "enMn": "Тэр төлбөрөө төлөөгүй тул усыг нь таслав."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "ус хангамж",
+                    "meaningsMn": [
+                        "ус хангамж"
+                    ]
+                },
+                {
+                    "jp": "ベル",
+                    "reading": "ベル",
+                    "en": "bell",
+                    "meanings": [
+                        "bell"
+                    ],
+                    "example": {
+                        "jp": "万一の場合にはベルを鳴らしなさい。",
+                        "en": "Ring the bell in an emergency.",
+                        "furigana": "<ruby>万一<rp>(</rp><rt>まんいち</rt><rp>)</rp></ruby>の<ruby>場合<rp>(</rp><rt>ばあい</rt><rp>)</rp></ruby>にはベルを<ruby>鳴<rp>(</rp><rt>な</rt><rp>)</rp></ruby>らしなさい。",
+                        "enMn": "Онцгой тохиолдолд хонх дуугарга."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "дуудлагын хонх",
+                    "meaningsMn": [
+                        "дуудлагын хонх"
+                    ]
+                },
+                {
+                    "jp": "立てる",
+                    "reading": "たてる",
+                    "en": "to stand (something) up",
+                    "meanings": [
+                        "to stand (something) up",
+                        "to erect (something)"
+                    ],
+                    "example": {
+                        "jp": "別の機会にお役に立てることを願っています。",
+                        "en": "I hope that I will be able to help you at some other time.",
+                        "furigana": "<ruby>別<rp>(</rp><rt>べつ</rt><rp>)</rp></ruby>の<ruby>機会<rp>(</rp><rt>きかい</rt><rp>)</rp></ruby>にお<ruby>役<rp>(</rp><rt>やく</rt><rp>)</rp></ruby>に<ruby>立<rp>(</rp><rt>た</rt><rp>)</rp></ruby>てることを<ruby>願<rp>(</rp><rt>ねが</rt><rp>)</rp></ruby>っています。",
+                        "enMn": "Өөр нэгэн боломжоор тусалж чадна гэж найдаж байна."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "босгох",
+                    "meaningsMn": [
+                        "босгох"
                     ]
                 },
                 {
@@ -10512,391 +9041,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "サンドイッチ",
-                    "reading": "サンドイッチ",
-                    "en": "sandwich",
-                    "meanings": [
-                        "sandwich"
-                    ],
-                    "example": {
-                        "jp": "いくつサンドイッチ残ってるの？",
-                        "en": "How many sandwiches are there left?",
-                        "furigana": "いくつサンドイッチ<ruby>残<rp>(</rp><rt>のこ</rt><rp>)</rp></ruby>ってるの？",
-                        "enMn": "Хэдэн сэндвич үлдсэн бэ?"
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "сэндвич",
-                    "meaningsMn": [
-                        "сэндвич"
-                    ]
-                },
-                {
-                    "jp": "場合",
-                    "reading": "ばあい",
-                    "en": "case",
-                    "meanings": [
-                        "case",
-                        "situation"
-                    ],
-                    "example": {
-                        "jp": "場合によっては腕力に訴えてもよい。",
-                        "en": "It is sometimes acceptable to resort to violence.",
-                        "furigana": "<ruby>場合<rp>(</rp><rt>ばあい</rt><rp>)</rp></ruby>によっては<ruby>腕力<rp>(</rp><rt>わんりょく</rt><rp>)</rp></ruby>に<ruby>訴<rp>(</rp><rt>うった</rt><rp>)</rp></ruby>えてもよい。",
-                        "enMn": "Заримдаа хүчирхийлэлд хандах нь зөвшөөрөгдөх тохиолдол бий."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "тохиолдол",
-                    "meaningsMn": [
-                        "тохиолдол",
-                        "нөхцөл байдал"
-                    ]
-                },
-                {
-                    "jp": "投げる",
-                    "reading": "なげる",
-                    "en": "to pitch",
-                    "meanings": [
-                        "to pitch",
-                        "to cast away"
-                    ],
-                    "example": {
-                        "jp": "彼女は橋から身を投げて自殺した。",
-                        "en": "She committed suicide by jumping off the bridge.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>橋<rp>(</rp><rt>はし</rt><rp>)</rp></ruby>から<ruby>身<rp>(</rp><rt>み</rt><rp>)</rp></ruby>を<ruby>投<rp>(</rp><rt>な</rt><rp>)</rp></ruby>げて<ruby>自殺<rp>(</rp><rt>じさつ</rt><rp>)</rp></ruby>した。",
-                        "enMn": "Тэр гүүрнээс үсрэн амиа хорлосон."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "шидэх",
-                    "meaningsMn": [
-                        "шидэх",
-                        "шидэх"
-                    ]
-                },
-                {
-                    "jp": "場所",
-                    "reading": "ばしょ",
-                    "en": "place",
-                    "meanings": [
-                        "place",
-                        "location"
-                    ],
-                    "example": {
-                        "jp": "この場所には不思議な雰囲気がある。",
-                        "en": "This place has a mysterious atmosphere.",
-                        "furigana": "この<ruby>場所<rp>(</rp><rt>ばしょ</rt><rp>)</rp></ruby>には<ruby>不思議<rp>(</rp><rt>ふしぎ</rt><rp>)</rp></ruby>な<ruby>雰囲気<rp>(</rp><rt>ふんいき</rt><rp>)</rp></ruby>がある。",
-                        "enMn": "Энэ газарт нууцлаг уур амьсгал бий."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "газар",
-                    "meaningsMn": [
-                        "газар"
-                    ]
-                },
-                {
-                    "jp": "答",
-                    "reading": "こたえ",
-                    "en": "answer",
-                    "meanings": [
-                        "answer",
-                        "response"
-                    ],
-                    "example": {
-                        "jp": "彼女は答を知っていたのかもしれない。",
-                        "en": "She may have known the answer.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>答<rp>(</rp><rt>こたえ</rt><rp>)</rp></ruby>を<ruby>知<rp>(</rp><rt>し</rt><rp>)</rp></ruby>っていたのかもしれない。",
-                        "enMn": "Тэр хариултыг мэдэж байсан байж магадгүй."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хариулт",
-                    "meaningsMn": [
-                        "хариулт",
-                        "хариу"
-                    ]
-                },
-                {
-                    "jp": "もちろん",
-                    "reading": "もちろん",
-                    "en": "certainly",
-                    "meanings": [
-                        "certainly",
-                        "of course"
-                    ],
-                    "example": {
-                        "jp": "足が遅い彼は、もちろんすでに2m差がついた。",
-                        "en": "He, being slow-footed, was of course already lagging two meters.",
-                        "furigana": "<ruby>足<rp>(</rp><rt>あし</rt><rp>)</rp></ruby>が<ruby>遅<rp>(</rp><rt>おそ</rt><rp>)</rp></ruby>い<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は、もちろんすでに2m<ruby>差<rp>(</rp><rt>さ</rt><rp>)</rp></ruby>がついた。",
-                        "enMn": "Хөл удаантай тэрээр мэдээж аль хэдийн 2 метрээр хоцорчээ."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "мэдээж",
-                    "meaningsMn": [
-                        "мэдээж"
-                    ]
-                },
-                {
-                    "jp": "漬ける",
-                    "reading": "つける",
-                    "en": "to soak",
-                    "meanings": [
-                        "to soak",
-                        "to moisten",
-                        "to pickle"
-                    ],
-                    "example": {
-                        "jp": "靴下の臭いが気になる時は、クエン酸水に漬けるといいそうよ。",
-                        "en": "If you're worried about your socks smelling, dipping them in citric acid solution might do the trick.",
-                        "furigana": "<ruby>靴下<rp>(</rp><rt>くつした</rt><rp>)</rp></ruby>の<ruby>臭<rp>(</rp><rt>にお</rt><rp>)</rp></ruby>いが<ruby>気<rp>(</rp><rt>き</rt><rp>)</rp></ruby>になる<ruby>時<rp>(</rp><rt>とき</rt><rp>)</rp></ruby>は、クエン<ruby>酸<rp>(</rp><rt>さん</rt><rp>)</rp></ruby><ruby>水<rp>(</rp><rt>すい</rt><rp>)</rp></ruby>に<ruby>漬<rp>(</rp><rt>つ</rt><rp>)</rp></ruby>けるといいそうよ。",
-                        "enMn": "Оймсны үнэр санаа зовоож байвал нимбэгийн хүчлийн уусмалд дэвтээвэл сайн гэнэ шүү."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "дэвтээх",
-                    "meaningsMn": [
-                        "дэвтээх"
-                    ]
-                },
-                {
-                    "jp": "受付",
-                    "reading": "うけつけ",
-                    "en": "reception(ist) desk",
-                    "meanings": [
-                        "reception(ist) desk"
-                    ],
-                    "example": {
-                        "jp": "早朝の受付でクジを引いて順番を決めた。",
-                        "en": "We drew lots to decide who would go first at the early morning reception desk.",
-                        "furigana": "<ruby>早朝<rp>(</rp><rt>そうちょう</rt><rp>)</rp></ruby>の<ruby>受付<rp>(</rp><rt>うけつけ</rt><rp>)</rp></ruby>でクジを<ruby>引<rp>(</rp><rt>ひ</rt><rp>)</rp></ruby>いて<ruby>順番<rp>(</rp><rt>じゅんばん</rt><rp>)</rp></ruby>を<ruby>決<rp>(</rp><rt>き</rt><rp>)</rp></ruby>めた。",
-                        "enMn": "Өглөө эрт хүлээн авах хэсэгт сугалаа татаж дэс дарааллаа тогтоов."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хүлээн авах хэсэг",
-                    "meaningsMn": [
-                        "хүлээн авах хэсэг"
-                    ]
-                },
-                {
-                    "jp": "内",
-                    "reading": "うち",
-                    "en": "within",
-                    "meanings": [
-                        "within",
-                        "inside"
-                    ],
-                    "example": {
-                        "jp": "手術は医院内で三十分以内に完了します。",
-                        "en": "The surgery, performed at our clinic, is over in half an hour.",
-                        "furigana": "<ruby>手術<rp>(</rp><rt>しゅじゅつ</rt><rp>)</rp></ruby>は<ruby>医院<rp>(</rp><rt>いいん</rt><rp>)</rp></ruby><ruby>内<rp>(</rp><rt>ない</rt><rp>)</rp></ruby>で<ruby>三<rp>(</rp><rt>さん</rt><rp>)</rp></ruby><ruby>十<rp>(</rp><rt>じゅう</rt><rp>)</rp></ruby><ruby>分<rp>(</rp><rt>ふん</rt><rp>)</rp></ruby><ruby>以内<rp>(</rp><rt>いない</rt><rp>)</rp></ruby>に<ruby>完了<rp>(</rp><rt>かんりょう</rt><rp>)</rp></ruby>します。",
-                        "enMn": "Хагалгаа эмнэлэгт гучин минутын дотор дуусна."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "дотор",
-                    "meaningsMn": [
-                        "дотор"
-                    ]
-                },
-                {
-                    "jp": "スクリーン",
-                    "reading": "スクリーン",
-                    "en": "screen",
-                    "meanings": [
-                        "screen"
-                    ],
-                    "example": {
-                        "jp": "トムはスクリーンに釘付けだった。",
-                        "en": "Tom's eyes were glued to the screen.",
-                        "furigana": "トムはスクリーンに<ruby>釘付<rp>(</rp><rt>くぎづ</rt><rp>)</rp></ruby>けだった。",
-                        "enMn": "Томын нүд дэлгэцэнд гацсан байлаа."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "дэлгэц",
-                    "meaningsMn": [
-                        "дэлгэц"
-                    ]
-                },
-                {
-                    "jp": "増える",
-                    "reading": "ふえる",
-                    "en": "to increase",
-                    "meanings": [
-                        "to increase",
-                        "to multiply"
-                    ],
-                    "example": {
-                        "jp": "除草剤耐性品種でなぜ収量が増えるのか？",
-                        "en": "Why do yields increase with herbicide-resistant varieties?",
-                        "furigana": "<ruby>除草<rp>(</rp><rt>じょそう</rt><rp>)</rp></ruby><ruby>剤<rp>(</rp><rt>ざい</rt><rp>)</rp></ruby><ruby>耐性<rp>(</rp><rt>たいせい</rt><rp>)</rp></ruby><ruby>品種<rp>(</rp><rt>ひんしゅ</rt><rp>)</rp></ruby>でなぜ<ruby>収量<rp>(</rp><rt>しゅうりょう</rt><rp>)</rp></ruby>が<ruby>増<rp>(</rp><rt>ふ</rt><rp>)</rp></ruby>えるのか？",
-                        "enMn": "Хогийн ургамлын хорд тэсвэртэй сортын ургац яагаад нэмэгддэг вэ?"
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "нэмэгдэх",
-                    "meaningsMn": [
-                        "нэмэгдэх"
-                    ]
-                },
-                {
-                    "jp": "または",
-                    "reading": "または",
-                    "en": "or",
-                    "meanings": [
-                        "or",
-                        "otherwise"
-                    ],
-                    "example": {
-                        "jp": "今は彼らは小型車または中型車を好む。",
-                        "en": "Now they like cars of small or middle size.",
-                        "furigana": "<ruby>今<rp>(</rp><rt>いま</rt><rp>)</rp></ruby>は<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>小型車<rp>(</rp><rt>こがたしゃ</rt><rp>)</rp></ruby>または<ruby>中型<rp>(</rp><rt>ちゅうがた</rt><rp>)</rp></ruby><ruby>車<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby>を<ruby>好<rp>(</rp><rt>この</rt><rp>)</rp></ruby>む。",
-                        "enMn": "Одоо тэд жижиг эсвэл дунд оврын машин илүүд үздэг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "эсвэл",
-                    "meaningsMn": [
-                        "эсвэл"
-                    ]
-                },
-                {
-                    "jp": "以下",
-                    "reading": "いか",
-                    "en": "less than",
-                    "meanings": [
-                        "less than",
-                        "below"
-                    ],
-                    "example": {
-                        "jp": "理由は以下のとおりである。",
-                        "en": "The reasons are as follows.",
-                        "furigana": "<ruby>理由<rp>(</rp><rt>りゆう</rt><rp>)</rp></ruby>は<ruby>以下<rp>(</rp><rt>いか</rt><rp>)</rp></ruby>のとおりである。",
-                        "enMn": "Шалтгаан нь доорх байдалтай байна."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "доош",
-                    "meaningsMn": [
-                        "доош"
-                    ]
-                },
-                {
-                    "jp": "選ぶ",
-                    "reading": "えらぶ",
-                    "en": "to choose",
-                    "meanings": [
-                        "to choose; to select"
-                    ],
-                    "example": {
-                        "jp": "彼は二者択一を選ぶことでしょう。武術か死か。",
-                        "en": "Which will he choose, I wonder, martial arts or death?",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>二者択一<rp>(</rp><rt>にしゃたくいつ</rt><rp>)</rp></ruby>を<ruby>選<rp>(</rp><rt>えら</rt><rp>)</rp></ruby>ぶことでしょう。<ruby>武術<rp>(</rp><rt>ぶじゅつ</rt><rp>)</rp></ruby>か<ruby>死<rp>(</rp><rt>し</rt><rp>)</rp></ruby>か。",
-                        "enMn": "Тэр хоёрын нэгийг сонгох байх. Тулааны урлаг эсвэл үхэл."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "сонгох",
-                    "meaningsMn": [
-                        "сонгох"
-                    ]
-                },
-                {
-                    "jp": "心",
-                    "reading": "こころ",
-                    "en": "heart",
-                    "meanings": [
-                        "heart",
-                        "mind"
-                    ],
-                    "example": {
-                        "jp": "私は好奇心が強いです。",
-                        "en": "I am curious.",
-                        "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>は<ruby>好奇<rp>(</rp><rt>こうき</rt><rp>)</rp></ruby><ruby>心<rp>(</rp><rt>しん</rt><rp>)</rp></ruby>が<ruby>強<rp>(</rp><rt>つよ</rt><rp>)</rp></ruby>いです。",
-                        "enMn": "Би сониуч зантай."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "зүрх",
-                    "meaningsMn": [
-                        "зүрх"
-                    ]
-                },
-                {
-                    "jp": "サラダ",
-                    "reading": "サラダ",
-                    "en": "salad",
-                    "meanings": [
-                        "salad"
-                    ],
-                    "example": {
-                        "jp": "冷蔵庫の中にトマトサラダを入れなさい。",
-                        "en": "Put the tomato salad in the refrigerator.",
-                        "furigana": "<ruby>冷蔵庫<rp>(</rp><rt>れいぞうこ</rt><rp>)</rp></ruby>の<ruby>中<rp>(</rp><rt>なか</rt><rp>)</rp></ruby>にトマトサラダを<ruby>入<rp>(</rp><rt>い</rt><rp>)</rp></ruby>れなさい。",
-                        "enMn": "Улаан лоолийн салатыг хөргөгчинд хийгээрэй."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "салат",
-                    "meaningsMn": [
-                        "салат"
-                    ]
-                },
-                {
-                    "jp": "届ける",
-                    "reading": "とどける",
-                    "en": "to deliver (v.t.)",
-                    "meanings": [
-                        "to deliver (v.t.)"
-                    ],
-                    "example": {
-                        "jp": "これを届けるよう頼まれたんです。",
-                        "en": "I was asked to deliver this.",
-                        "furigana": "これを<ruby>届<rp>(</rp><rt>とど</rt><rp>)</rp></ruby>けるよう<ruby>頼<rp>(</rp><rt>たの</rt><rp>)</rp></ruby>まれたんです。",
-                        "enMn": "Надаас үүнийг хүргэж өгөхийг гуйсан юм."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хүргэх",
-                    "meaningsMn": [
-                        "хүргэх"
-                    ]
-                },
-                {
-                    "jp": "景色",
-                    "reading": "けしき",
-                    "en": "scenery",
-                    "meanings": [
-                        "scenery",
-                        "landscape"
-                    ],
-                    "example": {
-                        "jp": "離れて見ると景色に魅力がつく。",
-                        "en": "Distance lends enchantment to the view.",
-                        "furigana": "<ruby>離<rp>(</rp><rt>はな</rt><rp>)</rp></ruby>れて<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>ると<ruby>景色<rp>(</rp><rt>けしき</rt><rp>)</rp></ruby>に<ruby>魅力<rp>(</rp><rt>みりょく</rt><rp>)</rp></ruby>がつく。",
-                        "enMn": "Холоос харахад үзэмж илүү сэтгэл татам болдог."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "үзэмж",
-                    "meaningsMn": [
-                        "үзэмж"
-                    ]
-                }
-            ]
-        ]
-    },
-    {
-        "level": 22,
-        "jlpt": "N4",
-        "title": "N4 · Level 10",
-        "sets": [
-            [
-                {
                     "jp": "布団",
                     "reading": "ふとん",
                     "en": "futon",
@@ -10914,283 +9058,6 @@ const WORD_LEVELS = [
                     "enMn": "ор (футон)",
                     "meaningsMn": [
                         "ор (футон)"
-                    ]
-                },
-                {
-                    "jp": "怖い",
-                    "reading": "こわい",
-                    "en": "scary",
-                    "meanings": [
-                        "scary",
-                        "frightening"
-                    ],
-                    "example": {
-                        "jp": "彼女は怖い顔をして彼を黙らせた。",
-                        "en": "She frowned him into silence.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>怖<rp>(</rp><rt>こわ</rt><rp>)</rp></ruby>い<ruby>顔<rp>(</rp><rt>かお</rt><rp>)</rp></ruby>をして<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>を<ruby>黙<rp>(</rp><rt>だま</rt><rp>)</rp></ruby>らせた。",
-                        "enMn": "Тэр аймшигтай харцаараа түүнийг дуугүй болгов."
-                    },
-                    "phonetic": "布",
-                    "phoneticReading": "フ",
-                    "enMn": "аймшигтай",
-                    "meaningsMn": [
-                        "аймшигтай",
-                        "аймшигтай"
-                    ]
-                },
-                {
-                    "jp": "残念",
-                    "reading": "ざんねん",
-                    "en": "regret",
-                    "meanings": [
-                        "regret",
-                        "regrettable"
-                    ],
-                    "example": {
-                        "jp": "離婚されたと聞き残念に思います。",
-                        "en": "I'm sorry to hear that you got a divorce.",
-                        "furigana": "<ruby>離婚<rp>(</rp><rt>りこん</rt><rp>)</rp></ruby>されたと<ruby>聞<rp>(</rp><rt>き</rt><rp>)</rp></ruby>き<ruby>残念<rp>(</rp><rt>ざんねん</rt><rp>)</rp></ruby>に<ruby>思<rp>(</rp><rt>おも</rt><rp>)</rp></ruby>います。",
-                        "enMn": "Чиний салсныг сонсоод харамслаа."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "харамсал",
-                    "meaningsMn": [
-                        "харамсал",
-                        "харамсалтай"
-                    ]
-                },
-                {
-                    "jp": "品物",
-                    "reading": "しなもの",
-                    "en": "goods",
-                    "meanings": [
-                        "goods"
-                    ],
-                    "example": {
-                        "jp": "品物は代金引換でお送りいたします。",
-                        "en": "The article will be sent cash on delivery.",
-                        "furigana": "<ruby>品物<rp>(</rp><rt>しなもの</rt><rp>)</rp></ruby>は<ruby>代金<rp>(</rp><rt>だいきん</rt><rp>)</rp></ruby><ruby>引換<rp>(</rp><rt>ひきかえ</rt><rp>)</rp></ruby>でお<ruby>送<rp>(</rp><rt>おく</rt><rp>)</rp></ruby>りいたします。",
-                        "enMn": "Барааг хүргэлтийн үед мөнгөн төлбөрөөр илгээнэ."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "бараа",
-                    "meaningsMn": [
-                        "бараа"
-                    ]
-                },
-                {
-                    "jp": "恥ずかしい",
-                    "reading": "はずかしい",
-                    "en": "ashamed",
-                    "meanings": [
-                        "ashamed",
-                        "embarrassed"
-                    ],
-                    "example": {
-                        "jp": "彼女は恥ずかしさで顔を赤らめた。",
-                        "en": "She blushed with shame.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>恥<rp>(</rp><rt>は</rt><rp>)</rp></ruby>ずかしさで<ruby>顔<rp>(</rp><rt>かお</rt><rp>)</rp></ruby>を<ruby>赤<rp>(</rp><rt>あか</rt><rp>)</rp></ruby>らめた。",
-                        "enMn": "Тэр ичсэндээ улайв."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "ичиж буй",
-                    "meaningsMn": [
-                        "ичиж буй",
-                        "ичиж зовсон"
-                    ]
-                },
-                {
-                    "jp": "力",
-                    "reading": "ちから",
-                    "en": "strength",
-                    "meanings": [
-                        "strength",
-                        "power"
-                    ],
-                    "example": {
-                        "jp": "すぐに集中力を無くしてしまった。",
-                        "en": "I immediately lost my concentration.",
-                        "furigana": "すぐに<ruby>集中<rp>(</rp><rt>しゅうちゅう</rt><rp>)</rp></ruby><ruby>力<rp>(</rp><rt>りょく</rt><rp>)</rp></ruby>を<ruby>無<rp>(</rp><rt>な</rt><rp>)</rp></ruby>くしてしまった。",
-                        "enMn": "Би даруй анхаарлаа алдав."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хүч",
-                    "meaningsMn": [
-                        "хүч",
-                        "эрх мэдэл"
-                    ]
-                },
-                {
-                    "jp": "なるべく",
-                    "reading": "なるべく",
-                    "en": "if possible",
-                    "meanings": [
-                        "if possible",
-                        "as much as possible"
-                    ],
-                    "example": {
-                        "jp": "彼は技術者になるべく生まれてきた。",
-                        "en": "He was born to be a technician.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>技術<rp>(</rp><rt>ぎじゅつ</rt><rp>)</rp></ruby><ruby>者<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby>になるべく<ruby>生<rp>(</rp><rt>う</rt><rp>)</rp></ruby>まれてきた。",
-                        "enMn": "Тэр инженер болохоор төрсөн юм шиг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "боломжтой бол",
-                    "meaningsMn": [
-                        "боломжтой бол",
-                        "аль болох"
-                    ]
-                },
-                {
-                    "jp": "やっと",
-                    "reading": "やっと",
-                    "en": "at last",
-                    "meanings": [
-                        "at last",
-                        "finally"
-                    ],
-                    "example": {
-                        "jp": "彼女はやっとそのホテルに着いた。",
-                        "en": "She finally reached the hotel.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はやっとそのホテルに<ruby>着<rp>(</rp><rt>つ</rt><rp>)</rp></ruby>いた。",
-                        "enMn": "Тэр эцэст нь зочид буудалд хүрч ирэв."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "эцэст нь",
-                    "meaningsMn": [
-                        "эцэст нь",
-                        "эцэст нь"
-                    ]
-                },
-                {
-                    "jp": "だから",
-                    "reading": "だから",
-                    "en": "so",
-                    "meanings": [
-                        "so",
-                        "therefore"
-                    ],
-                    "example": {
-                        "jp": "彼一人だけ余る、だから審判させよう。",
-                        "en": "He's an odd man; so we'll have him referee.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby><ruby>一<rp>(</rp><rt>いち</rt><rp>)</rp></ruby><ruby>人<rp>(</rp><rt>にん</rt><rp>)</rp></ruby>だけ<ruby>余<rp>(</rp><rt>あま</rt><rp>)</rp></ruby>る、だから<ruby>審判<rp>(</rp><rt>しんぱん</rt><rp>)</rp></ruby>させよう。",
-                        "enMn": "Тэр ганц илүү хүн байгаа тул түүгээр шүүгч болгоно."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "тиймээс",
-                    "meaningsMn": [
-                        "тиймээс",
-                        "тиймээс"
-                    ]
-                },
-                {
-                    "jp": "さっき",
-                    "reading": "さっき",
-                    "en": "a little while ago",
-                    "meanings": [
-                        "a little while ago"
-                    ],
-                    "example": {
-                        "jp": "さっきまでの快晴がうそのようだ。",
-                        "en": "It's hard to believe it was so clear and sunny up to just now.",
-                        "furigana": "さっきまでの<ruby>快晴<rp>(</rp><rt>かいせい</rt><rp>)</rp></ruby>がうそのようだ。",
-                        "enMn": "Саяхныг хүртэл цэлмэг наран байсан гэдэгт итгэхэд бэрх."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "саяхан",
-                    "meaningsMn": [
-                        "саяхан"
-                    ]
-                },
-                {
-                    "jp": "確か",
-                    "reading": "たしか",
-                    "en": "if I remember correctly",
-                    "meanings": [
-                        "if I remember correctly; certain",
-                        "definite"
-                    ],
-                    "example": {
-                        "jp": "それは確かに一案です。",
-                        "en": "That's certainly one possibility.",
-                        "furigana": "それは<ruby>確<rp>(</rp><rt>たし</rt><rp>)</rp></ruby>かに<ruby>一案<rp>(</rp><rt>いちあん</rt><rp>)</rp></ruby>です。",
-                        "enMn": "Тэр бол лавтай нэг санал юм."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "лавтай",
-                    "meaningsMn": [
-                        "лавтай"
-                    ]
-                },
-                {
-                    "jp": "ステーキ",
-                    "reading": "ステーキ",
-                    "en": "steak",
-                    "meanings": [
-                        "steak"
-                    ],
-                    "example": {
-                        "jp": "ステーキがもっと欲しい。",
-                        "en": "I want more of the steak.",
-                        "furigana": "ステーキがもっと<ruby>欲<rp>(</rp><rt>ほ</rt><rp>)</rp></ruby>しい。",
-                        "enMn": "Би дахиад стейк идмээр байна."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "стейк",
-                    "meaningsMn": [
-                        "стейк"
-                    ]
-                },
-                {
-                    "jp": "森",
-                    "reading": "もり",
-                    "en": "forest",
-                    "meanings": [
-                        "forest"
-                    ],
-                    "example": {
-                        "jp": "小泉氏が総理大臣として森氏の後を襲った。",
-                        "en": "Mr Koizumi succeeded Mr Mori as prime minister.",
-                        "furigana": "<ruby>小泉<rp>(</rp><rt>こいずみ</rt><rp>)</rp></ruby><ruby>氏<rp>(</rp><rt>し</rt><rp>)</rp></ruby>が<ruby>総理<rp>(</rp><rt>そうり</rt><rp>)</rp></ruby><ruby>大臣<rp>(</rp><rt>だいじん</rt><rp>)</rp></ruby>として<ruby>森<rp>(</rp><rt>もり</rt><rp>)</rp></ruby><ruby>氏<rp>(</rp><rt>し</rt><rp>)</rp></ruby>の<ruby>後<rp>(</rp><rt>のち</rt><rp>)</rp></ruby>を<ruby>襲<rp>(</rp><rt>おそ</rt><rp>)</rp></ruby>った。",
-                        "enMn": "Коизүми ноён Мори ноёныг залгамжилж ерөнхий сайд болов."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "ой",
-                    "meaningsMn": [
-                        "ой"
-                    ]
-                },
-                {
-                    "jp": "予定",
-                    "reading": "よてい",
-                    "en": "plans",
-                    "meanings": [
-                        "plans",
-                        "arrangement",
-                        "schedule"
-                    ],
-                    "example": {
-                        "jp": "予定日の夕方に破水しました。",
-                        "en": "My water broke on the evening of the predicted birth date.",
-                        "furigana": "<ruby>予定<rp>(</rp><rt>よてい</rt><rp>)</rp></ruby><ruby>日<rp>(</rp><rt>び</rt><rp>)</rp></ruby>の<ruby>夕方<rp>(</rp><rt>ゆうがた</rt><rp>)</rp></ruby>に<ruby>破水<rp>(</rp><rt>はすい</rt><rp>)</rp></ruby>しました。",
-                        "enMn": "Төрөх өдрийн орой ус нь гарсан."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "төлөвлөгөө",
-                    "meaningsMn": [
-                        "төлөвлөгөө"
                     ]
                 },
                 {
@@ -11216,23 +9083,2006 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "乾く",
-                    "reading": "かわく",
-                    "en": "to get dry",
+                    "jp": "塗る",
+                    "reading": "ぬる",
+                    "en": "to paint",
                     "meanings": [
-                        "to get dry"
+                        "to paint",
+                        "to plaster"
                     ],
                     "example": {
-                        "jp": "皮は乾くにつれて堅くなった。",
-                        "en": "The skin tightened as it dried.",
-                        "furigana": "<ruby>皮<rp>(</rp><rt>かわ</rt><rp>)</rp></ruby>は<ruby>乾<rp>(</rp><rt>かわ</rt><rp>)</rp></ruby>くにつれて<ruby>堅<rp>(</rp><rt>かた</rt><rp>)</rp></ruby>くなった。",
-                        "enMn": "Арьс хатах тусам хатуу болов."
+                        "jp": "壁を塗るつもりです。",
+                        "en": "We're going to paint the wall.",
+                        "furigana": "<ruby>壁<rp>(</rp><rt>かべ</rt><rp>)</rp></ruby>を<ruby>塗<rp>(</rp><rt>ぬ</rt><rp>)</rp></ruby>るつもりです。",
+                        "enMn": "Бид хана будах гэж байна."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хатах",
+                    "enMn": "будах",
                     "meaningsMn": [
-                        "хатах"
+                        "будах"
+                    ]
+                },
+                {
+                    "jp": "鏡",
+                    "reading": "かがみ",
+                    "en": "mirror",
+                    "meanings": [
+                        "mirror"
+                    ],
+                    "example": null,
+                    "phonetic": "竟",
+                    "phoneticReading": "キョウ",
+                    "enMn": "толь",
+                    "meaningsMn": [
+                        "толь"
+                    ]
+                },
+                {
+                    "jp": "手袋",
+                    "reading": "てぶくろ",
+                    "en": "glove(s)",
+                    "meanings": [
+                        "glove(s)"
+                    ],
+                    "example": null,
+                    "phonetic": "代",
+                    "phoneticReading": "タイ",
+                    "enMn": "бээлий",
+                    "meaningsMn": [
+                        "бээлий"
+                    ]
+                },
+                {
+                    "jp": "冷房",
+                    "reading": "れいぼう",
+                    "en": "cooling",
+                    "meanings": [
+                        "cooling",
+                        "air conditioning"
+                    ],
+                    "example": null,
+                    "phonetic": "令",
+                    "phoneticReading": "レイ",
+                    "enMn": "агааржуулагч",
+                    "meaningsMn": [
+                        "агааржуулагч"
+                    ]
+                },
+                {
+                    "jp": "片付ける",
+                    "reading": "かたづける",
+                    "en": "to (clean) tidy up (v.t.)",
+                    "meanings": [
+                        "to (clean) tidy up (v.t.)",
+                        "to put away"
+                    ],
+                    "example": null,
+                    "phonetic": "付",
+                    "phoneticReading": "フ",
+                    "enMn": "цэгцлэх",
+                    "meaningsMn": [
+                        "цэгцлэх"
+                    ]
+                }
+            ]
+        ],
+        "themeKey": "theme.n4.6"
+    },
+    {
+        "level": 19,
+        "jlpt": "N4",
+        "title": "School and exams",
+        "sets": [
+            [
+                {
+                    "jp": "比べる",
+                    "reading": "くらべる",
+                    "en": "to compare",
+                    "meanings": [
+                        "to compare"
+                    ],
+                    "example": {
+                        "jp": "彼女は一般と比べてはいい先生だ。",
+                        "en": "She is a good teacher, as teachers go.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>一般<rp>(</rp><rt>いっぱん</rt><rp>)</rp></ruby>と<ruby>比<rp>(</rp><rt>くら</rt><rp>)</rp></ruby>べてはいい<ruby>先生<rp>(</rp><rt>せんせい</rt><rp>)</rp></ruby>だ。",
+                        "enMn": "Тэр багш нарын дунджаас илүү сайн багш юм."
+                    },
+                    "phonetic": "比",
+                    "phoneticReading": "ヒ",
+                    "enMn": "харьцуулах",
+                    "meaningsMn": [
+                        "харьцуулах"
+                    ]
+                },
+                {
+                    "jp": "意見",
+                    "reading": "いけん",
+                    "en": "opinion",
+                    "meanings": [
+                        "opinion",
+                        "view",
+                        "idea"
+                    ],
+                    "example": {
+                        "jp": "はきはきと意見を言ってください。",
+                        "en": "Please state your opinion crisply and clearly.",
+                        "furigana": "はきはきと<ruby>意見<rp>(</rp><rt>いけん</rt><rp>)</rp></ruby>を<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>ってください。",
+                        "enMn": "Үзэл бодлоо тодорхой чанга хэлнэ үү."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "үзэл бодол",
+                    "meaningsMn": [
+                        "үзэл бодол"
+                    ]
+                },
+                {
+                    "jp": "テキスト",
+                    "reading": "テキスト",
+                    "en": "text",
+                    "meanings": [
+                        "text; text book"
+                    ],
+                    "example": {
+                        "jp": "・テキストデータの誤字脱字を修正。",
+                        "en": "・ Corrected mistaken/missing characters in the text data.",
+                        "furigana": "・テキストデータの<ruby>誤字<rp>(</rp><rt>ごじ</rt><rp>)</rp></ruby><ruby>脱字<rp>(</rp><rt>だつじ</rt><rp>)</rp></ruby>を<ruby>修正<rp>(</rp><rt>しゅうせい</rt><rp>)</rp></ruby>。",
+                        "enMn": "・ Текст өгөгдлийн үсгийн болон орхигдсон алдааг залруулав."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "текст",
+                    "meaningsMn": [
+                        "текст"
+                    ]
+                },
+                {
+                    "jp": "表",
+                    "reading": "おもて",
+                    "en": "surface",
+                    "meanings": [
+                        "surface",
+                        "front",
+                        "outside"
+                    ],
+                    "example": {
+                        "jp": "ものにはたいてい表と裏がある。",
+                        "en": "With most things there's both what you see and what's behind it.",
+                        "furigana": "ものにはたいてい<ruby>表<rp>(</rp><rt>ひょう</rt><rp>)</rp></ruby>と<ruby>裏<rp>(</rp><rt>うら</rt><rp>)</rp></ruby>がある。",
+                        "enMn": "Ихэнх зүйлд харагдах тал болон нуугдмал тал хоёулаа байдаг."
+                    },
+                    "phonetic": "表",
+                    "phoneticReading": "ヒョウ",
+                    "enMn": "гадаргуу",
+                    "meaningsMn": [
+                        "гадаргуу",
+                        "урд тал",
+                        "гадна"
+                    ]
+                },
+                {
+                    "jp": "予習",
+                    "reading": "よしゅう",
+                    "en": "preparation of lessons (for class)",
+                    "meanings": [
+                        "preparation of lessons (for class)"
+                    ],
+                    "example": {
+                        "jp": "予習を始めた方がいいですよ。",
+                        "en": "You may as well begin to prepare your lessons.",
+                        "furigana": "<ruby>予習<rp>(</rp><rt>よしゅう</rt><rp>)</rp></ruby>を<ruby>始<rp>(</rp><rt>はじ</rt><rp>)</rp></ruby>めた<ruby>方<rp>(</rp><rt>ほう</rt><rp>)</rp></ruby>がいいですよ。",
+                        "enMn": "Урьдчилсан бэлтгэлээ эхэлсэн нь дээр шүү."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "урьдчилсан бэлтгэл",
+                    "meaningsMn": [
+                        "урьдчилсан бэлтгэл"
+                    ]
+                },
+                {
+                    "jp": "厳しい",
+                    "reading": "きびしい",
+                    "en": "strict",
+                    "meanings": [
+                        "hard",
+                        "rigorous",
+                        "strict"
+                    ],
+                    "example": {
+                        "jp": "母親の怒りの厳しさにびっくりした。",
+                        "en": "We were shocked by the intensity of our mother's anger.",
+                        "furigana": "<ruby>母親<rp>(</rp><rt>ははおや</rt><rp>)</rp></ruby>の<ruby>怒<rp>(</rp><rt>いか</rt><rp>)</rp></ruby>りの<ruby>厳<rp>(</rp><rt>きび</rt><rp>)</rp></ruby>しさにびっくりした。",
+                        "enMn": "Бид ээжийнхээ уурын хатуу ширүүнд цочирдсон."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хатуу чанга",
+                    "meaningsMn": [
+                        "хатуу",
+                        "нарийн чанд",
+                        "хатуу чанга"
+                    ]
+                },
+                {
+                    "jp": "点",
+                    "reading": "てん",
+                    "en": "mark",
+                    "meanings": [
+                        "mark",
+                        "score",
+                        "grade; point",
+                        "dot"
+                    ],
+                    "example": {
+                        "jp": "及第点よ。これぐらい大したことないわ。",
+                        "en": "It's passable. Nothing out of the ordinary.",
+                        "furigana": "<ruby>及第<rp>(</rp><rt>きゅうだい</rt><rp>)</rp></ruby><ruby>点<rp>(</rp><rt>てん</rt><rp>)</rp></ruby>よ。これぐらい<ruby>大<rp>(</rp><rt>たい</rt><rp>)</rp></ruby>したことないわ。",
+                        "enMn": "Тэнцсэн оноо шүү. Ийм зүйл тийм ч их биш."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "оноо",
+                    "meaningsMn": [
+                        "оноо",
+                        "цэг"
+                    ]
+                },
+                {
+                    "jp": "間違える",
+                    "reading": "まちがえる",
+                    "en": "to make a mistake",
+                    "meanings": [
+                        "to make a mistake"
+                    ],
+                    "example": {
+                        "jp": "彼は私を姉と間違えたに違いない。",
+                        "en": "I'm sure he mistook me for my sister.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>を<ruby>姉<rp>(</rp><rt>あね</rt><rp>)</rp></ruby>と<ruby>間違<rp>(</rp><rt>まちが</rt><rp>)</rp></ruby>えたに<ruby>違<rp>(</rp><rt>ちが</rt><rp>)</rp></ruby>いない。",
+                        "enMn": "Тэр намайг эгчтэй минь андуурсан нь лавтай."
+                    },
+                    "phonetic": "門",
+                    "phoneticReading": "モン、カン",
+                    "enMn": "алдаа гаргах",
+                    "meaningsMn": [
+                        "алдаа гаргах"
+                    ]
+                },
+                {
+                    "jp": "中学校",
+                    "reading": "ちゅうがっこう",
+                    "en": "junior high school pupil",
+                    "meanings": [
+                        "junior high school pupil"
+                    ],
+                    "example": {
+                        "jp": "彼は中学校に入った。",
+                        "en": "He entered junior high school.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>中学校<rp>(</rp><rt>ちゅうがっこう</rt><rp>)</rp></ruby>に<ruby>入<rp>(</rp><rt>はい</rt><rp>)</rp></ruby>った。",
+                        "enMn": "Тэр дунд сургуульд оров."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "дунд сургууль",
+                    "meaningsMn": [
+                        "дунд сургууль"
+                    ]
+                },
+                {
+                    "jp": "受ける",
+                    "reading": "うける",
+                    "en": "to take (an examination, interview, etc.); to receive",
+                    "meanings": [
+                        "to take (an examination, interview, etc.); to receive"
+                    ],
+                    "example": {
+                        "jp": "父は手術を受ける事になっている。",
+                        "en": "Father is going to undergo an operation.",
+                        "furigana": "<ruby>父<rp>(</rp><rt>ちち</rt><rp>)</rp></ruby>は<ruby>手術<rp>(</rp><rt>しゅじゅつ</rt><rp>)</rp></ruby>を<ruby>受<rp>(</rp><rt>う</rt><rp>)</rp></ruby>ける<ruby>事<rp>(</rp><rt>こと</rt><rp>)</rp></ruby>になっている。",
+                        "enMn": "Аав хагалгаанд орох болжээ."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хүлээн авах",
+                    "meaningsMn": [
+                        "хүлээн авах"
+                    ]
+                },
+                {
+                    "jp": "発音",
+                    "reading": "はつおん",
+                    "en": "pronunciation",
+                    "meanings": [
+                        "pronunciation"
+                    ],
+                    "example": {
+                        "jp": "彼女は昨日英語の発音を練習した。",
+                        "en": "She practiced her English pronunciation yesterday.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>昨日<rp>(</rp><rt>きのう</rt><rp>)</rp></ruby><ruby>英語<rp>(</rp><rt>えいご</rt><rp>)</rp></ruby>の<ruby>発音<rp>(</rp><rt>はつおん</rt><rp>)</rp></ruby>を<ruby>練習<rp>(</rp><rt>れんしゅう</rt><rp>)</rp></ruby>した。",
+                        "enMn": "Тэр өчигдөр англи хэлний дуудлагаа дасгасан."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "дуудлага",
+                    "meaningsMn": [
+                        "дуудлага"
+                    ]
+                },
+                {
+                    "jp": "調べる",
+                    "reading": "しらべる",
+                    "en": "to check",
+                    "meanings": [
+                        "to check; to look up; to inquire; to search"
+                    ],
+                    "example": {
+                        "jp": "排卵の有無を調べる方法はありますか？",
+                        "en": "Is there some way to check for ovulation?",
+                        "furigana": "<ruby>排卵<rp>(</rp><rt>はいらん</rt><rp>)</rp></ruby>の<ruby>有無<rp>(</rp><rt>うむ</rt><rp>)</rp></ruby>を<ruby>調<rp>(</rp><rt>しら</rt><rp>)</rp></ruby>べる<ruby>方法<rp>(</rp><rt>ほうほう</rt><rp>)</rp></ruby>はありますか？",
+                        "enMn": "Өндгөн эс ялгарч байгаа эсэхийг шалгах арга бий юу?"
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "шалгах",
+                    "meaningsMn": [
+                        "шалгах"
+                    ]
+                },
+                {
+                    "jp": "正しい",
+                    "reading": "ただしい",
+                    "en": "correct",
+                    "meanings": [
+                        "correct"
+                    ],
+                    "example": {
+                        "jp": "礼儀正しいのが彼の特徴であった。",
+                        "en": "Courtesy marked his manner.",
+                        "furigana": "<ruby>礼儀<rp>(</rp><rt>れいぎ</rt><rp>)</rp></ruby><ruby>正<rp>(</rp><rt>ただ</rt><rp>)</rp></ruby>しいのが<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>特徴<rp>(</rp><rt>とくちょう</rt><rp>)</rp></ruby>であった。",
+                        "enMn": "Түүний зан авирыг эелдэг байдал тодорхойлдог байв."
+                    },
+                    "phonetic": "正",
+                    "phoneticReading": "ショウ、セイ",
+                    "enMn": "зөв",
+                    "meaningsMn": [
+                        "зөв"
+                    ]
+                },
+                {
+                    "jp": "小学校",
+                    "reading": "しょうがっこう",
+                    "en": "elementary school",
+                    "meanings": [
+                        "elementary school"
+                    ],
+                    "example": {
+                        "jp": "弟は小学校へ通っています。",
+                        "en": "My little brother goes to an elementary school.",
+                        "furigana": "<ruby>弟<rp>(</rp><rt>おとうと</rt><rp>)</rp></ruby>は<ruby>小学校<rp>(</rp><rt>しょうがっこう</rt><rp>)</rp></ruby>へ<ruby>通<rp>(</rp><rt>とお</rt><rp>)</rp></ruby>っています。",
+                        "enMn": "Хүү дүү маань бага сургуульд явдаг."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "бага сургууль",
+                    "meaningsMn": [
+                        "бага сургууль"
+                    ]
+                },
+                {
+                    "jp": "地理",
+                    "reading": "ちり",
+                    "en": "geography",
+                    "meanings": [
+                        "geography"
+                    ],
+                    "example": {
+                        "jp": "彼は東京の地理に精通している。",
+                        "en": "He is at home with the geography of Tokyo.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>東京<rp>(</rp><rt>とうきょう</rt><rp>)</rp></ruby>の<ruby>地理<rp>(</rp><rt>ちり</rt><rp>)</rp></ruby>に<ruby>精通<rp>(</rp><rt>せいつう</rt><rp>)</rp></ruby>している。",
+                        "enMn": "Тэр Токиогийн газарзүйг маш сайн мэддэг."
+                    },
+                    "phonetic": "也",
+                    "phoneticReading": "チ",
+                    "enMn": "газарзүй",
+                    "meaningsMn": [
+                        "газарзүй"
+                    ]
+                },
+                {
+                    "jp": "文法",
+                    "reading": "ぶんぽう",
+                    "en": "grammar",
+                    "meanings": [
+                        "grammar"
+                    ],
+                    "example": {
+                        "jp": "文法的に正しい文章を作るよう心がけるべきだ。",
+                        "en": "You should try to produce grammatical sentences.",
+                        "furigana": "<ruby>文法<rp>(</rp><rt>ぶんぽう</rt><rp>)</rp></ruby><ruby>的<rp>(</rp><rt>てき</rt><rp>)</rp></ruby>に<ruby>正<rp>(</rp><rt>ただ</rt><rp>)</rp></ruby>しい<ruby>文章<rp>(</rp><rt>ぶんしょう</rt><rp>)</rp></ruby>を<ruby>作<rp>(</rp><rt>つく</rt><rp>)</rp></ruby>るよう<ruby>心<rp>(</rp><rt>こころ</rt><rp>)</rp></ruby>がけるべきだ。",
+                        "enMn": "Хэл зүйн хувьд зөв өгүүлбэр зохиохыг хичээх ёстой."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хэл зүй",
+                    "meaningsMn": [
+                        "хэл зүй"
+                    ]
+                },
+                {
+                    "jp": "出席",
+                    "reading": "しゅっせき",
+                    "en": "attendance",
+                    "meanings": [
+                        "attendance"
+                    ],
+                    "example": {
+                        "jp": "彼女は朝の礼拝に出席できなかった。",
+                        "en": "She missed the morning service.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>朝<rp>(</rp><rt>あさ</rt><rp>)</rp></ruby>の<ruby>礼拝<rp>(</rp><rt>れいはい</rt><rp>)</rp></ruby>に<ruby>出席<rp>(</rp><rt>しゅっせき</rt><rp>)</rp></ruby>できなかった。",
+                        "enMn": "Тэр өглөөний шашны хурлыг алдсан."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "ирц",
+                    "meaningsMn": [
+                        "ирц"
+                    ]
+                },
+                {
+                    "jp": "辞典",
+                    "reading": "じてん",
+                    "en": "encyclopedia",
+                    "meanings": [
+                        "encyclopedia",
+                        "reference book"
+                    ],
+                    "example": {
+                        "jp": "本棚に英和辞典がありますか。",
+                        "en": "Is there an English-Japanese dictionary on the bookshelf?",
+                        "furigana": "<ruby>本棚<rp>(</rp><rt>ほんだな</rt><rp>)</rp></ruby>に<ruby>英和<rp>(</rp><rt>えいわ</rt><rp>)</rp></ruby><ruby>辞典<rp>(</rp><rt>じてん</rt><rp>)</rp></ruby>がありますか。",
+                        "enMn": "Номын тавиур дээр англи-япон толь бичиг байна уу?"
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "нэвтэрхий толь",
+                    "meaningsMn": [
+                        "нэвтэрхий толь"
+                    ]
+                },
+                {
+                    "jp": "答",
+                    "reading": "こたえ",
+                    "en": "answer",
+                    "meanings": [
+                        "answer",
+                        "response"
+                    ],
+                    "example": {
+                        "jp": "彼女は答を知っていたのかもしれない。",
+                        "en": "She may have known the answer.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>答<rp>(</rp><rt>こたえ</rt><rp>)</rp></ruby>を<ruby>知<rp>(</rp><rt>し</rt><rp>)</rp></ruby>っていたのかもしれない。",
+                        "enMn": "Тэр хариултыг мэдэж байсан байж магадгүй."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хариулт",
+                    "meaningsMn": [
+                        "хариулт",
+                        "хариу"
+                    ]
+                },
+                {
+                    "jp": "線",
+                    "reading": "せん",
+                    "en": "line",
+                    "meanings": [
+                        "line",
+                        "wire"
+                    ],
+                    "example": null,
+                    "phonetic": "泉",
+                    "phoneticReading": "セン",
+                    "enMn": "шугам",
+                    "meaningsMn": [
+                        "шугам"
+                    ]
+                },
+                {
+                    "jp": "消しゴム",
+                    "reading": "けしゴム",
+                    "en": "eraser",
+                    "meanings": [
+                        "eraser"
+                    ],
+                    "example": null,
+                    "phonetic": "肖",
+                    "phoneticReading": "ショウ",
+                    "enMn": "баллуур",
+                    "meaningsMn": [
+                        "баллуур"
+                    ]
+                },
+                {
+                    "jp": "反対",
+                    "reading": "はんたい",
+                    "en": "oppose",
+                    "meanings": [
+                        "oppose",
+                        "opposition",
+                        "resistance"
+                    ],
+                    "example": null,
+                    "phonetic": "反",
+                    "phoneticReading": "ハン",
+                    "enMn": "эсрэг",
+                    "meaningsMn": [
+                        "эсрэг",
+                        "эсэргүүцэх"
+                    ]
+                },
+                {
+                    "jp": "試験",
+                    "reading": "しけん",
+                    "en": "an exam",
+                    "meanings": [
+                        "an exam"
+                    ],
+                    "example": null,
+                    "phonetic": "㑒",
+                    "phoneticReading": "ケン",
+                    "enMn": "шалгалт",
+                    "meaningsMn": [
+                        "шалгалт"
+                    ]
+                },
+                {
+                    "jp": "会話",
+                    "reading": "かいわ",
+                    "en": "conversation",
+                    "meanings": [
+                        "conversation"
+                    ],
+                    "example": null,
+                    "phonetic": "会",
+                    "phoneticReading": "カイ、エ",
+                    "enMn": "яриа",
+                    "meaningsMn": [
+                        "яриа"
+                    ]
+                },
+                {
+                    "jp": "理由",
+                    "reading": "りゆう",
+                    "en": "reason",
+                    "meanings": [
+                        "reason"
+                    ],
+                    "example": null,
+                    "phonetic": "由",
+                    "phoneticReading": "チュウ、ユ、テキ",
+                    "enMn": "шалтгаан",
+                    "meaningsMn": [
+                        "шалтгаан"
+                    ]
+                }
+            ]
+        ],
+        "themeKey": "theme.n4.7"
+    },
+    {
+        "level": 20,
+        "jlpt": "N4",
+        "title": "Work and plans",
+        "sets": [
+            [
+                {
+                    "jp": "規則",
+                    "reading": "きそく",
+                    "en": "rule",
+                    "meanings": [
+                        "rule",
+                        "regulation"
+                    ],
+                    "example": {
+                        "jp": "寮の規則は守らなければならない。",
+                        "en": "You must observe the rules of the dormitory.",
+                        "furigana": "<ruby>寮<rp>(</rp><rt>りょう</rt><rp>)</rp></ruby>の<ruby>規則<rp>(</rp><rt>きそく</rt><rp>)</rp></ruby>は<ruby>守<rp>(</rp><rt>まも</rt><rp>)</rp></ruby>らなければならない。",
+                        "enMn": "Дотуур байрны дүрмийг чи дагаж мөрдөх ёстой."
+                    },
+                    "phonetic": "規",
+                    "phoneticReading": "キ",
+                    "enMn": "дүрэм",
+                    "meaningsMn": [
+                        "засаглал",
+                        "журам"
+                    ]
+                },
+                {
+                    "jp": "盛ん",
+                    "reading": "さかん",
+                    "en": "prosperous",
+                    "meanings": [
+                        "prosperous",
+                        "active",
+                        "thriving"
+                    ],
+                    "example": {
+                        "jp": "日本はカナダとの貿易が盛んだ。",
+                        "en": "Japan does a lot of trade with Canada.",
+                        "furigana": "<ruby>日本<rp>(</rp><rt>にっぽん</rt><rp>)</rp></ruby>はカナダとの<ruby>貿易<rp>(</rp><rt>ぼうえき</rt><rp>)</rp></ruby>が<ruby>盛<rp>(</rp><rt>さか</rt><rp>)</rp></ruby>んだ。",
+                        "enMn": "Япон Канадтай их хэмжээний худалдаа хийдэг."
+                    },
+                    "phonetic": "成",
+                    "phoneticReading": "ジョウ、セイ",
+                    "enMn": "цэцэглэн хөгжсөн",
+                    "meaningsMn": [
+                        "цэцэглэн хөгжсөн",
+                        "идэвхтэй",
+                        "цэцэглэн хөгжиж буй"
+                    ]
+                },
+                {
+                    "jp": "必要",
+                    "reading": "ひつよう",
+                    "en": "necessary",
+                    "meanings": [
+                        "necessary"
+                    ],
+                    "example": {
+                        "jp": "痩せる必要がないというのは残念だ。",
+                        "en": "It's too bad that I don't need to lose weight.",
+                        "furigana": "<ruby>痩<rp>(</rp><rt>や</rt><rp>)</rp></ruby>せる<ruby>必要<rp>(</rp><rt>ひつよう</rt><rp>)</rp></ruby>がないというのは<ruby>残念<rp>(</rp><rt>ざんねん</rt><rp>)</rp></ruby>だ。",
+                        "enMn": "Надад жин хасах хэрэггүй нь харамсалтай юм."
+                    },
+                    "phonetic": "必",
+                    "phoneticReading": "ヒ、ヒツ",
+                    "enMn": "шаардлагатай",
+                    "meaningsMn": [
+                        "шаардлагатай"
+                    ]
+                },
+                {
+                    "jp": "決まる",
+                    "reading": "きまる",
+                    "en": "to be decided",
+                    "meanings": [
+                        "to be set",
+                        "fixed (v.i.)"
+                    ],
+                    "example": {
+                        "jp": "明日は予定が決まっていますか。",
+                        "en": "Are you booked for tomorrow?",
+                        "furigana": "<ruby>明日<rp>(</rp><rt>あした</rt><rp>)</rp></ruby>は<ruby>予定<rp>(</rp><rt>よてい</rt><rp>)</rp></ruby>が<ruby>決<rp>(</rp><rt>き</rt><rp>)</rp></ruby>まっていますか。",
+                        "enMn": "Чи маргаашийн хувьд төлөвлөгөөтэй юу?"
+                    },
+                    "phonetic": "夬",
+                    "phoneticReading": "ケツ",
+                    "enMn": "шийдэгдэх",
+                    "meaningsMn": [
+                        "тогтоогдох",
+                        "тогтсон"
+                    ]
+                },
+                {
+                    "jp": "無理",
+                    "reading": "むり",
+                    "en": "unreasonable",
+                    "meanings": [
+                        "unreasonable",
+                        "impossible"
+                    ],
+                    "example": {
+                        "jp": "両親は無理に私をそこへ行かせた。",
+                        "en": "My parents made me go there.",
+                        "furigana": "<ruby>両親<rp>(</rp><rt>りょうしん</rt><rp>)</rp></ruby>は<ruby>無理<rp>(</rp><rt>むり</rt><rp>)</rp></ruby>に<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>をそこへ<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>かせた。",
+                        "enMn": "Эцэг эх минь намайг хүчээр тэнд явуулсан."
+                    },
+                    "phonetic": "無",
+                    "phoneticReading": "ブ",
+                    "enMn": "боломжгүй",
+                    "meaningsMn": [
+                        "боломжгүй",
+                        "боломжгүй"
+                    ]
+                },
+                {
+                    "jp": "機会",
+                    "reading": "きかい",
+                    "en": "chance",
+                    "meanings": [
+                        "chance",
+                        "opportunity"
+                    ],
+                    "example": {
+                        "jp": "躊躇すれば機会は二度とこない。",
+                        "en": "He who hesitates is lost.",
+                        "furigana": "<ruby>躊躇<rp>(</rp><rt>ちゅうちょ</rt><rp>)</rp></ruby>すれば<ruby>機会<rp>(</rp><rt>きかい</rt><rp>)</rp></ruby>は<ruby>二度<rp>(</rp><rt>にど</rt><rp>)</rp></ruby>とこない。",
+                        "enMn": "Эргэлзвэл боломж дахин ирэхгүй."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "боломж",
+                    "meaningsMn": [
+                        "боломж"
+                    ]
+                },
+                {
+                    "jp": "複雑",
+                    "reading": "ふくざつ",
+                    "en": "complexity",
+                    "meanings": [
+                        "complexity",
+                        "complication"
+                    ],
+                    "example": {
+                        "jp": "複雑炭水化物って何か知ってますか。",
+                        "en": "Do you know anything about complex carbohydrates?",
+                        "furigana": "<ruby>複雑<rp>(</rp><rt>ふくざつ</rt><rp>)</rp></ruby><ruby>炭水化物<rp>(</rp><rt>たんすいかぶつ</rt><rp>)</rp></ruby>って<ruby>何<rp>(</rp><rt>なに</rt><rp>)</rp></ruby>か<ruby>知<rp>(</rp><rt>し</rt><rp>)</rp></ruby>ってますか。",
+                        "enMn": "Нийлмэл нүүрс ус гэж юу болохыг мэдэх үү?"
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "төвөгтэй",
+                    "meaningsMn": [
+                        "төвөгтэй"
+                    ]
+                },
+                {
+                    "jp": "大事",
+                    "reading": "だいじ",
+                    "en": "important",
+                    "meanings": [
+                        "important",
+                        "valuable",
+                        "serious matter"
+                    ],
+                    "example": {
+                        "jp": "このうち大事なのは後者の方です。",
+                        "en": "Of these it is the latter one that is important.",
+                        "furigana": "このうち<ruby>大事<rp>(</rp><rt>だいじ</rt><rp>)</rp></ruby>なのは<ruby>後者<rp>(</rp><rt>こうしゃ</rt><rp>)</rp></ruby>の<ruby>方<rp>(</rp><rt>ほう</rt><rp>)</rp></ruby>です。",
+                        "enMn": "Эдгээрээс сүүлийнх нь чухал юм."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "чухал",
+                    "meaningsMn": [
+                        "чухал",
+                        "үнэ цэнэтэй",
+                        "ноцтой асуудал"
+                    ]
+                },
+                {
+                    "jp": "会議室",
+                    "reading": "かいぎしつ",
+                    "en": "conference room",
+                    "meanings": [
+                        "conference room"
+                    ],
+                    "example": {
+                        "jp": "クラブの会員は会議室に集まった。",
+                        "en": "The club members assembled in the meeting room.",
+                        "furigana": "クラブの<ruby>会員<rp>(</rp><rt>かいいん</rt><rp>)</rp></ruby>は<ruby>会議<rp>(</rp><rt>かいぎ</rt><rp>)</rp></ruby><ruby>室<rp>(</rp><rt>しつ</rt><rp>)</rp></ruby>に<ruby>集<rp>(</rp><rt>あつ</rt><rp>)</rp></ruby>まった。",
+                        "enMn": "Клубын гишүүд хурлын өрөөнд цугларав."
+                    },
+                    "phonetic": "会",
+                    "phoneticReading": "カイ、エ",
+                    "enMn": "хурлын танхим",
+                    "meaningsMn": [
+                        "хурлын танхим"
+                    ]
+                },
+                {
+                    "jp": "利用",
+                    "reading": "りよう",
+                    "en": "use",
+                    "meanings": [
+                        "use",
+                        "utilization"
+                    ],
+                    "example": {
+                        "jp": "余暇をできるだけ利用しなさい。",
+                        "en": "Make the best of your time.",
+                        "furigana": "<ruby>余暇<rp>(</rp><rt>よか</rt><rp>)</rp></ruby>をできるだけ<ruby>利用<rp>(</rp><rt>りよう</rt><rp>)</rp></ruby>しなさい。",
+                        "enMn": "Цагаа сайн ашигла."
+                    },
+                    "phonetic": "利",
+                    "phoneticReading": "リ",
+                    "enMn": "ашиглалт",
+                    "meaningsMn": [
+                        "ашиглалт",
+                        "ашиглалт"
+                    ]
+                },
+                {
+                    "jp": "用事",
+                    "reading": "ようじ",
+                    "en": "business to take care of",
+                    "meanings": [
+                        "business to take care of; tasks; errands"
+                    ],
+                    "example": {
+                        "jp": "用事以外は入場お断り。",
+                        "en": "No admittance except on business.",
+                        "furigana": "<ruby>用事<rp>(</rp><rt>ようじ</rt><rp>)</rp></ruby><ruby>以外<rp>(</rp><rt>いがい</rt><rp>)</rp></ruby>は<ruby>入場<rp>(</rp><rt>にゅうじょう</rt><rp>)</rp></ruby>お<ruby>断<rp>(</rp><rt>ことわ</rt><rp>)</rp></ruby>り。",
+                        "enMn": "Ажил хэрэггүй хүн нэвтрэхийг хориглоно."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "ажил хэрэг",
+                    "meaningsMn": [
+                        "ажил хэрэг"
+                    ]
+                },
+                {
+                    "jp": "行う",
+                    "reading": "おこなう",
+                    "en": "to carry out",
+                    "meanings": [
+                        "to carry out; to conduct (typically used in written language)"
+                    ],
+                    "example": {
+                        "jp": "彼女の母親はエアロビクスを週に一回行う。",
+                        "en": "Her mother does aerobics once a week.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>の<ruby>母親<rp>(</rp><rt>ははおや</rt><rp>)</rp></ruby>はエアロビクスを<ruby>週<rp>(</rp><rt>しゅう</rt><rp>)</rp></ruby>に<ruby>一<rp>(</rp><rt>いち</rt><rp>)</rp></ruby><ruby>回<rp>(</rp><rt>かい</rt><rp>)</rp></ruby><ruby>行<rp>(</rp><rt>おこな</rt><rp>)</rp></ruby>う。",
+                        "enMn": "Түүний ээж долоо хоногт нэг удаа аэробик хийдэг."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "явуулах",
+                    "meaningsMn": [
+                        "явуулах"
+                    ]
+                },
+                {
+                    "jp": "準備",
+                    "reading": "じゅんびする",
+                    "en": "prepare",
+                    "meanings": [
+                        "prepare"
+                    ],
+                    "example": {
+                        "jp": "明日の準備で忙しい。",
+                        "en": "I'm busy getting ready for tomorrow.",
+                        "furigana": "<ruby>明日<rp>(</rp><rt>あした</rt><rp>)</rp></ruby>の<ruby>準備<rp>(</rp><rt>じゅんび</rt><rp>)</rp></ruby>で<ruby>忙<rp>(</rp><rt>いそが</rt><rp>)</rp></ruby>しい。",
+                        "enMn": "Маргаашийн бэлтгэлээр завгүй байна."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "бэлтгэх",
+                    "meaningsMn": [
+                        "бэлтгэх"
+                    ]
+                },
+                {
+                    "jp": "決める",
+                    "reading": "きめる",
+                    "en": "to decide (v.t.)",
+                    "meanings": [
+                        "to decide (v.t.)"
+                    ],
+                    "example": {
+                        "jp": "彼がそれをするか否かは全く彼が決めることだ。",
+                        "en": "It is entirely up to him whether he does it or not.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>がそれをするか<ruby>否<rp>(</rp><rt>いな</rt><rp>)</rp></ruby>かは<ruby>全<rp>(</rp><rt>まった</rt><rp>)</rp></ruby>く<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>が<ruby>決<rp>(</rp><rt>き</rt><rp>)</rp></ruby>めることだ。",
+                        "enMn": "Тэр үүнийг хийх эсэх нь бүхэлдээ түүнээс шалтгаална."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "сонгох",
+                    "meaningsMn": [
+                        "сонгох"
+                    ]
+                },
+                {
+                    "jp": "止める",
+                    "reading": "とめる",
+                    "en": "to end",
+                    "meanings": [
+                        "to end",
+                        "to stop"
+                    ],
+                    "example": {
+                        "jp": "父にとって酒を止めるのは難しい。",
+                        "en": "It's hard for my father to give up drinking.",
+                        "furigana": "<ruby>父<rp>(</rp><rt>ちち</rt><rp>)</rp></ruby>にとって<ruby>酒<rp>(</rp><rt>さけ</rt><rp>)</rp></ruby>を<ruby>止<rp>(</rp><rt>と</rt><rp>)</rp></ruby>めるのは<ruby>難<rp>(</rp><rt>むずか</rt><rp>)</rp></ruby>しい。",
+                        "enMn": "Аавад архи хэрэглэхээ болих нь хэцүү."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "дуусгах",
+                    "meaningsMn": [
+                        "дуусгах",
+                        "зогсоох"
+                    ]
+                },
+                {
+                    "jp": "事務所",
+                    "reading": "じむしょ",
+                    "en": "office",
+                    "meanings": [
+                        "office"
+                    ],
+                    "example": {
+                        "jp": "木下さんは昨日眼鏡を事務所に置き忘れた。",
+                        "en": "Mr Kinoshita left his glasses behind in the office yesterday.",
+                        "furigana": "<ruby>木下<rp>(</rp><rt>きのした</rt><rp>)</rp></ruby>さんは<ruby>昨日<rp>(</rp><rt>きのう</rt><rp>)</rp></ruby><ruby>眼鏡<rp>(</rp><rt>めがね</rt><rp>)</rp></ruby>を<ruby>事務所<rp>(</rp><rt>じむしょ</rt><rp>)</rp></ruby>に<ruby>置<rp>(</rp><rt>お</rt><rp>)</rp></ruby>き<ruby>忘<rp>(</rp><rt>わす</rt><rp>)</rp></ruby>れた。",
+                        "enMn": "Киношита өчигдөр нүдний шилээ албан газартаа мартчихжээ."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "албан газар",
+                    "meaningsMn": [
+                        "албан газар"
+                    ]
+                },
+                {
+                    "jp": "適当",
+                    "reading": "てきとう",
+                    "en": "fitness",
+                    "meanings": [
+                        "fitness",
+                        "suitability"
+                    ],
+                    "example": {
+                        "jp": "彼らは彼をその仕事に不適当と考えている。",
+                        "en": "They consider him unfit for the job.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>をその<ruby>仕事<rp>(</rp><rt>しごと</rt><rp>)</rp></ruby>に<ruby>不<rp>(</rp><rt>ふ</rt><rp>)</rp></ruby><ruby>適当<rp>(</rp><rt>てきとう</rt><rp>)</rp></ruby>と<ruby>考<rp>(</rp><rt>かんが</rt><rp>)</rp></ruby>えている。",
+                        "enMn": "Тэд түүнийг тэр ажилд тохиромжгүй гэж үзэж байна."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "тохиромжтой",
+                    "meaningsMn": [
+                        "тохиромжтой"
+                    ]
+                },
+                {
+                    "jp": "始める",
+                    "reading": "はじめる",
+                    "en": "to start",
+                    "meanings": [
+                        "to start",
+                        "to begin"
+                    ],
+                    "example": {
+                        "jp": "問題はいつ始めるかだ。",
+                        "en": "The question is when to start.",
+                        "furigana": "<ruby>問題<rp>(</rp><rt>もんだい</rt><rp>)</rp></ruby>はいつ<ruby>始<rp>(</rp><rt>はじ</rt><rp>)</rp></ruby>めるかだ。",
+                        "enMn": "Асуудал нь хэзээ эхлэх вэ гэдэгт л байна."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "эхлэх",
+                    "meaningsMn": [
+                        "эхлэх"
+                    ]
+                },
+                {
+                    "jp": "アルバイト",
+                    "reading": "アルバイト",
+                    "en": "part-time job",
+                    "meanings": [
+                        "part-time job"
+                    ],
+                    "example": {
+                        "jp": "何かアルバイトはしていますか。",
+                        "en": "Do you have a part-time job?",
+                        "furigana": "<ruby>何<rp>(</rp><rt>なに</rt><rp>)</rp></ruby>かアルバイトはしていますか。",
+                        "enMn": "Чи хагас цагийн ажилтай юу?"
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "цагийн ажил",
+                    "meaningsMn": [
+                        "цагийн ажил"
+                    ]
+                },
+                {
+                    "jp": "予定",
+                    "reading": "よてい",
+                    "en": "plans",
+                    "meanings": [
+                        "plans",
+                        "arrangement",
+                        "schedule"
+                    ],
+                    "example": {
+                        "jp": "予定日の夕方に破水しました。",
+                        "en": "My water broke on the evening of the predicted birth date.",
+                        "furigana": "<ruby>予定<rp>(</rp><rt>よてい</rt><rp>)</rp></ruby><ruby>日<rp>(</rp><rt>び</rt><rp>)</rp></ruby>の<ruby>夕方<rp>(</rp><rt>ゆうがた</rt><rp>)</rp></ruby>に<ruby>破水<rp>(</rp><rt>はすい</rt><rp>)</rp></ruby>しました。",
+                        "enMn": "Төрөх өдрийн орой ус нь гарсан."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "төлөвлөгөө",
+                    "meaningsMn": [
+                        "төлөвлөгөө"
+                    ]
+                },
+                {
+                    "jp": "用",
+                    "reading": "よう",
+                    "en": "errand",
+                    "meanings": [
+                        "errand",
+                        "task",
+                        "business (to take care of)"
+                    ],
+                    "example": {
+                        "jp": "PC内部のタイマー用ボタン電池が切れた。",
+                        "en": "The button battery in the PC's internal timer has gone flat.",
+                        "furigana": "PC<ruby>内部<rp>(</rp><rt>ないぶ</rt><rp>)</rp></ruby>のタイマー<ruby>用<rp>(</rp><rt>よう</rt><rp>)</rp></ruby>ボタン<ruby>電池<rp>(</rp><rt>でんち</rt><rp>)</rp></ruby>が<ruby>切<rp>(</rp><rt>き</rt><rp>)</rp></ruby>れた。",
+                        "enMn": "Компьютерийн доторх цаг тоолуурын товч батерей дууссан."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хэрэг",
+                    "meaningsMn": [
+                        "хэрэг"
+                    ]
+                },
+                {
+                    "jp": "用意",
+                    "reading": "ようい",
+                    "en": "preparation",
+                    "meanings": [
+                        "preparation"
+                    ],
+                    "example": {
+                        "jp": "用意周到に見えてどこかで抜けてるしな。",
+                        "en": "It looks well prepared but you see there'll be a slip somewhere.",
+                        "furigana": "<ruby>用意<rp>(</rp><rt>ようい</rt><rp>)</rp></ruby><ruby>周到<rp>(</rp><rt>しゅうとう</rt><rp>)</rp></ruby>に<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>えてどこかで<ruby>抜<rp>(</rp><rt>ぬ</rt><rp>)</rp></ruby>けてるしな。",
+                        "enMn": "Бүрэн бэлтгэсэн мэт харагдавч хаа нэгтээ дутуу байдаг юм."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "бэлтгэл",
+                    "meaningsMn": [
+                        "бэлтгэл"
+                    ]
+                },
+                {
+                    "jp": "技術",
+                    "reading": "ぎじゅつ",
+                    "en": "technique",
+                    "meanings": [
+                        "technique",
+                        "technology",
+                        "skill"
+                    ],
+                    "example": null,
+                    "phonetic": "朮",
+                    "phoneticReading": "ジュツ",
+                    "enMn": "технологи",
+                    "meaningsMn": [
+                        "технологи",
+                        "ур чадвар"
+                    ]
+                },
+                {
+                    "jp": "貿易",
+                    "reading": "ぼうえき",
+                    "en": "trade",
+                    "meanings": [
+                        "trade"
+                    ],
+                    "example": null,
+                    "phonetic": "卯",
+                    "phoneticReading": "リュウ、ル、ボウ",
+                    "enMn": "худалдаа",
+                    "meaningsMn": [
+                        "худалдаа"
+                    ]
+                },
+                {
+                    "jp": "都合",
+                    "reading": "つごう",
+                    "en": "circumstances",
+                    "meanings": [
+                        "circumstances",
+                        "convenience"
+                    ],
+                    "example": null,
+                    "phonetic": "者",
+                    "phoneticReading": "シャ、ショ、チョ、ト",
+                    "enMn": "нөхцөл байдал",
+                    "meaningsMn": [
+                        "нөхцөл байдал"
+                    ]
+                }
+            ]
+        ],
+        "themeKey": "theme.n4.8"
+    },
+    {
+        "level": 21,
+        "jlpt": "N4",
+        "title": "Getting around",
+        "sets": [
+            [
+                {
+                    "jp": "通る",
+                    "reading": "とおる",
+                    "en": "to pass by",
+                    "meanings": [
+                        "to pass (by)",
+                        "to go through"
+                    ],
+                    "example": {
+                        "jp": "夕べ１０時頃君の家のそばを通ったよ。",
+                        "en": "I passed by your house about 10 last night.",
+                        "furigana": "<ruby>夕<rp>(</rp><rt>ゆう</rt><rp>)</rp></ruby>べ１０<ruby>時<rp>(</rp><rt>じ</rt><rp>)</rp></ruby><ruby>頃<rp>(</rp><rt>ごろ</rt><rp>)</rp></ruby><ruby>君<rp>(</rp><rt>くん</rt><rp>)</rp></ruby>の<ruby>家<rp>(</rp><rt>いえ</rt><rp>)</rp></ruby>のそばを<ruby>通<rp>(</rp><rt>とお</rt><rp>)</rp></ruby>ったよ。",
+                        "enMn": "Би өчигдөр орой 10 цагийн орчимд чиний гэрийн хажуугаар өнгөрсөн."
+                    },
+                    "phonetic": "甬",
+                    "phoneticReading": "ツウ",
+                    "enMn": "өнгөрөх",
+                    "meaningsMn": [
+                        "өнгөрөх",
+                        "дамжин өнгөрөх"
+                    ]
+                },
+                {
+                    "jp": "通う",
+                    "reading": "かよう",
+                    "en": "to go back and forth",
+                    "meanings": [
+                        "to go back and forth",
+                        "to commute"
+                    ],
+                    "example": {
+                        "jp": "理恵と私は同じ学校に通いました。",
+                        "en": "Rie and I went to the same school.",
+                        "furigana": "<ruby>理恵<rp>(</rp><rt>りえ</rt><rp>)</rp></ruby>と<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>は<ruby>同<rp>(</rp><rt>おな</rt><rp>)</rp></ruby>じ<ruby>学校<rp>(</rp><rt>がっこう</rt><rp>)</rp></ruby>に<ruby>通<rp>(</rp><rt>かよ</rt><rp>)</rp></ruby>いました。",
+                        "enMn": "Риэ бид хоёр ижил сургуульд сурдаг байсан."
+                    },
+                    "phonetic": "甬",
+                    "phoneticReading": "ツウ",
+                    "enMn": "давтан явж ирэх",
+                    "meaningsMn": [
+                        "давтан явж ирэх",
+                        "тогтмол явж ирэх"
+                    ]
+                },
+                {
+                    "jp": "ガソリン",
+                    "reading": "ガソリン",
+                    "en": "gasoline",
+                    "meanings": [
+                        "gasoline",
+                        "petrol"
+                    ],
+                    "example": {
+                        "jp": "彼はガソリンを使わないエンジンを考案した。",
+                        "en": "He contrived a new engine that does not use gas.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>はガソリンを<ruby>使<rp>(</rp><rt>つか</rt><rp>)</rp></ruby>わないエンジンを<ruby>考案<rp>(</rp><rt>こうあん</rt><rp>)</rp></ruby>した。",
+                        "enMn": "Тэр бензин хэрэглэдэггүй хөдөлгүүр зохион бүтээв."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "бензин",
+                    "meaningsMn": [
+                        "бензин"
+                    ]
+                },
+                {
+                    "jp": "床屋",
+                    "reading": "とこや",
+                    "en": "barber's (shop)",
+                    "meanings": [
+                        "barber's (shop)"
+                    ],
+                    "example": {
+                        "jp": "彼はまずめったに床屋へ行かない。",
+                        "en": "He seldom, if ever, goes to the barber's.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>はまずめったに<ruby>床屋<rp>(</rp><rt>とこや</rt><rp>)</rp></ruby>へ<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>かない。",
+                        "enMn": "Тэр үсчинд бараг очдоггүй."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "үсчин",
+                    "meaningsMn": [
+                        "үсчин"
+                    ]
+                },
+                {
+                    "jp": "オートバイ",
+                    "reading": "オートバイ",
+                    "en": "motorcycle (lit: auto-bi(ke))",
+                    "meanings": [
+                        "motorcycle (lit: auto-bi(ke))"
+                    ],
+                    "example": {
+                        "jp": "彼女はオートバイに上手に乗る。",
+                        "en": "She rides a motorcycle well.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はオートバイに<ruby>上手<rp>(</rp><rt>じょうず</rt><rp>)</rp></ruby>に<ruby>乗<rp>(</rp><rt>の</rt><rp>)</rp></ruby>る。",
+                        "enMn": "Тэр мотоцикль сайн унадаг."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "мотоцикл",
+                    "meaningsMn": [
+                        "мотоцикл"
+                    ]
+                },
+                {
+                    "jp": "アフリカ",
+                    "reading": "アフリカ",
+                    "en": "Africa",
+                    "meanings": [
+                        "Africa"
+                    ],
+                    "example": {
+                        "jp": "野生の虎はアフリカでは見られません。",
+                        "en": "No wild tigers are to be found in Africa.",
+                        "furigana": "<ruby>野生<rp>(</rp><rt>やせい</rt><rp>)</rp></ruby>の<ruby>虎<rp>(</rp><rt>とら</rt><rp>)</rp></ruby>はアフリカでは<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>られません。",
+                        "enMn": "Зэрлэг барыг Африкт олж харах боломжгүй."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "Африк",
+                    "meaningsMn": [
+                        "Африк"
+                    ]
+                },
+                {
+                    "jp": "郊外",
+                    "reading": "こうがい",
+                    "en": "suburb",
+                    "meanings": [
+                        "suburb",
+                        "outskirts"
+                    ],
+                    "example": {
+                        "jp": "彼はロンドンの郊外に住んでいる。",
+                        "en": "He lives in the suburbs of London.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>はロンドンの<ruby>郊外<rp>(</rp><rt>こうがい</rt><rp>)</rp></ruby>に<ruby>住<rp>(</rp><rt>す</rt><rp>)</rp></ruby>んでいる。",
+                        "enMn": "Тэр Лондоны захад амьдардаг."
+                    },
+                    "phonetic": "交",
+                    "phoneticReading": "コウ",
+                    "enMn": "хот орчмын бүс",
+                    "meaningsMn": [
+                        "хот орчмын бүс",
+                        "захын хороолол"
+                    ]
+                },
+                {
+                    "jp": "交通",
+                    "reading": "こうつう",
+                    "en": "traffic",
+                    "meanings": [
+                        "traffic",
+                        "transportation"
+                    ],
+                    "example": {
+                        "jp": "彼らは交通事故の現場へ急行した。",
+                        "en": "They rushed to the scene of the traffic accident.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>交通<rp>(</rp><rt>こうつう</rt><rp>)</rp></ruby><ruby>事故<rp>(</rp><rt>じこ</rt><rp>)</rp></ruby>の<ruby>現場<rp>(</rp><rt>げんば</rt><rp>)</rp></ruby>へ<ruby>急行<rp>(</rp><rt>きゅうこう</rt><rp>)</rp></ruby>した。",
+                        "enMn": "Тэд замын ослын газар руу яаравчлав."
+                    },
+                    "phonetic": "交",
+                    "phoneticReading": "コウ",
+                    "enMn": "тээвэр",
+                    "meaningsMn": [
+                        "тээвэр",
+                        "тээвэр"
+                    ]
+                },
+                {
+                    "jp": "ビル",
+                    "reading": "ビル",
+                    "en": "(abbr.) building",
+                    "meanings": [
+                        "(abbr.) building"
+                    ],
+                    "example": {
+                        "jp": "そのビルは日本一高い建物です。",
+                        "en": "That building is the tallest in Japan.",
+                        "furigana": "そのビルは<ruby>日本一<rp>(</rp><rt>にっぽんいち</rt><rp>)</rp></ruby><ruby>高<rp>(</rp><rt>たか</rt><rp>)</rp></ruby>い<ruby>建物<rp>(</rp><rt>たてもの</rt><rp>)</rp></ruby>です。",
+                        "enMn": "Тэр бол Японы хамгийн өндөр барилга юм."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "барилга",
+                    "meaningsMn": [
+                        "барилга"
+                    ]
+                },
+                {
+                    "jp": "世界",
+                    "reading": "せかい",
+                    "en": "world",
+                    "meanings": [
+                        "world"
+                    ],
+                    "example": {
+                        "jp": "この世界の教育にはがっかりしてしまう。",
+                        "en": "Education in this world disappoints me.",
+                        "furigana": "この<ruby>世界<rp>(</rp><rt>せかい</rt><rp>)</rp></ruby>の<ruby>教育<rp>(</rp><rt>きょういく</rt><rp>)</rp></ruby>にはがっかりしてしまう。",
+                        "enMn": "Энэ ертөнцийн боловсролд би сэтгэл дундуур байдаг."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "дэлхий",
+                    "meaningsMn": [
+                        "дэлхий"
+                    ]
+                },
+                {
+                    "jp": "住所",
+                    "reading": "じゅうしょ",
+                    "en": "address",
+                    "meanings": [
+                        "address; place of residence"
+                    ],
+                    "example": {
+                        "jp": "郵便局に住所の変更を通知するつもりだ。",
+                        "en": "I am going to inform the post office of the change of my address.",
+                        "furigana": "<ruby>郵便<rp>(</rp><rt>ゆうびん</rt><rp>)</rp></ruby><ruby>局<rp>(</rp><rt>きょく</rt><rp>)</rp></ruby>に<ruby>住所<rp>(</rp><rt>じゅうしょ</rt><rp>)</rp></ruby>の<ruby>変更<rp>(</rp><rt>へんこう</rt><rp>)</rp></ruby>を<ruby>通知<rp>(</rp><rt>つうち</rt><rp>)</rp></ruby>するつもりだ。",
+                        "enMn": "Шуудангийн газарт хаягийнхаа өөрчлөлтийг мэдэгдэхээр байна."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хаяг",
+                    "meaningsMn": [
+                        "хаяг"
+                    ]
+                },
+                {
+                    "jp": "飛行場",
+                    "reading": "ひこうじょう",
+                    "en": "airport",
+                    "meanings": [
+                        "airport"
+                    ],
+                    "example": {
+                        "jp": "飛行機はすでに飛行場を立っていた。",
+                        "en": "The plane had already left the airport.",
+                        "furigana": "<ruby>飛行機<rp>(</rp><rt>ひこうき</rt><rp>)</rp></ruby>はすでに<ruby>飛行場<rp>(</rp><rt>ひこうじょう</rt><rp>)</rp></ruby>を<ruby>立<rp>(</rp><rt>た</rt><rp>)</rp></ruby>っていた。",
+                        "enMn": "Онгоц аль хэдийн нисэх буудлаас хөдөлсөн байв."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "нисэх буудал",
+                    "meaningsMn": [
+                        "нисэх буудал"
+                    ]
+                },
+                {
+                    "jp": "動物園",
+                    "reading": "どうぶつえん",
+                    "en": "zoo",
+                    "meanings": [
+                        "zoo"
+                    ],
+                    "example": {
+                        "jp": "彼らは昨日バスで動物園へ行った。",
+                        "en": "They went to the zoo by bus yesterday.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>昨日<rp>(</rp><rt>きのう</rt><rp>)</rp></ruby>バスで<ruby>動物<rp>(</rp><rt>どうぶつ</rt><rp>)</rp></ruby><ruby>園<rp>(</rp><rt>えん</rt><rp>)</rp></ruby>へ<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>った。",
+                        "enMn": "Тэд өчигдөр автобусаар амьтны хүрээлэнд явсан."
+                    },
+                    "phonetic": "動",
+                    "phoneticReading": "ドウ",
+                    "enMn": "амьтны хүрээлэн",
+                    "meaningsMn": [
+                        "амьтны хүрээлэн"
+                    ]
+                },
+                {
+                    "jp": "西洋",
+                    "reading": "せいよう",
+                    "en": "the West",
+                    "meanings": [
+                        "the West",
+                        "Western countries"
+                    ],
+                    "example": {
+                        "jp": "西洋の世界では個性が強調される。",
+                        "en": "Individuality is stressed in the Western world.",
+                        "furigana": "<ruby>西洋<rp>(</rp><rt>せいよう</rt><rp>)</rp></ruby>の<ruby>世界<rp>(</rp><rt>せかい</rt><rp>)</rp></ruby>では<ruby>個性<rp>(</rp><rt>こせい</rt><rp>)</rp></ruby>が<ruby>強調<rp>(</rp><rt>きょうちょう</rt><rp>)</rp></ruby>される。",
+                        "enMn": "Барууны ертөнцөд хувь хүний онцлогийг онцолдог."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "Барын орнууд",
+                    "meaningsMn": [
+                        "Барын орнууд",
+                        "барууны орнууд"
+                    ]
+                },
+                {
+                    "jp": "美術館",
+                    "reading": "びじゅつかん",
+                    "en": "art gallery",
+                    "meanings": [
+                        "art gallery",
+                        "art museum"
+                    ],
+                    "example": {
+                        "jp": "父も私も初めてその美術館へ行きました。",
+                        "en": "Both my father and I went to the museum for the first time.",
+                        "furigana": "<ruby>父<rp>(</rp><rt>ちち</rt><rp>)</rp></ruby>も<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>も<ruby>初<rp>(</rp><rt>はじ</rt><rp>)</rp></ruby>めてその<ruby>美術館<rp>(</rp><rt>びじゅつかん</rt><rp>)</rp></ruby>へ<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>きました。",
+                        "enMn": "Аав бид хоёр анх удаа тэр урлагийн музейд очлоо."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "урлагийн музей",
+                    "meaningsMn": [
+                        "урлагийн музей"
+                    ]
+                },
+                {
+                    "jp": "エスカレーター",
+                    "reading": "エスカレーター",
+                    "en": "escalator",
+                    "meanings": [
+                        "escalator"
+                    ],
+                    "example": {
+                        "jp": "上りのエスカレーターはどこですか？",
+                        "en": "Where's the up-escalator?",
+                        "furigana": "<ruby>上<rp>(</rp><rt>のぼ</rt><rp>)</rp></ruby>りのエスカレーターはどこですか？",
+                        "enMn": "Дээшлэх эскалатор хаана байна вэ?"
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "эскалатор",
+                    "meaningsMn": [
+                        "эскалатор"
+                    ]
+                },
+                {
+                    "jp": "場所",
+                    "reading": "ばしょ",
+                    "en": "place",
+                    "meanings": [
+                        "place",
+                        "location"
+                    ],
+                    "example": {
+                        "jp": "この場所には不思議な雰囲気がある。",
+                        "en": "This place has a mysterious atmosphere.",
+                        "furigana": "この<ruby>場所<rp>(</rp><rt>ばしょ</rt><rp>)</rp></ruby>には<ruby>不思議<rp>(</rp><rt>ふしぎ</rt><rp>)</rp></ruby>な<ruby>雰囲気<rp>(</rp><rt>ふんいき</rt><rp>)</rp></ruby>がある。",
+                        "enMn": "Энэ газарт нууцлаг уур амьсгал бий."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "газар",
+                    "meaningsMn": [
+                        "газар"
+                    ]
+                },
+                {
+                    "jp": "旅館",
+                    "reading": "りょかん",
+                    "en": "a Japanese inn",
+                    "meanings": [
+                        "a Japanese inn"
+                    ],
+                    "example": null,
+                    "phonetic": "官",
+                    "phoneticReading": "カン",
+                    "enMn": "япон маягийн зочид буудал",
+                    "meaningsMn": [
+                        "япон маягийн зочид буудал"
+                    ]
+                },
+                {
+                    "jp": "乗り物",
+                    "reading": "のりもの",
+                    "en": "vehicle",
+                    "meanings": [
+                        "vehicle"
+                    ],
+                    "example": null,
+                    "phonetic": "乗",
+                    "phoneticReading": "ジョウ",
+                    "enMn": "тээврийн хэрэгсэл",
+                    "meaningsMn": [
+                        "тээврийн хэрэгсэл"
+                    ]
+                },
+                {
+                    "jp": "下宿",
+                    "reading": "げしゅく",
+                    "en": "lodging",
+                    "meanings": [
+                        "lodging",
+                        "boarding house"
+                    ],
+                    "example": null,
+                    "phonetic": "宿",
+                    "phoneticReading": "シュク",
+                    "enMn": "түрээсийн байр",
+                    "meaningsMn": [
+                        "түрээсийн байр"
+                    ]
+                },
+                {
+                    "jp": "泊まる",
+                    "reading": "とまる",
+                    "en": "to stay (over night) (v.i.)",
+                    "meanings": [
+                        "to stay (over night) (v.i.)"
+                    ],
+                    "example": null,
+                    "phonetic": "白",
+                    "phoneticReading": "ハク",
+                    "enMn": "хонох",
+                    "meaningsMn": [
+                        "хонох"
+                    ]
+                },
+                {
+                    "jp": "空港",
+                    "reading": "くうこう",
+                    "en": "airport",
+                    "meanings": [
+                        "airport"
+                    ],
+                    "example": null,
+                    "phonetic": "共",
+                    "phoneticReading": "キョウ、コウ",
+                    "enMn": "нисэх буудал",
+                    "meaningsMn": [
+                        "нисэх буудал"
+                    ]
+                },
+                {
+                    "jp": "港",
+                    "reading": "みなと",
+                    "en": "harbor",
+                    "meanings": [
+                        "harbor",
+                        "port"
+                    ],
+                    "example": null,
+                    "phonetic": "共",
+                    "phoneticReading": "キョウ、コウ",
+                    "enMn": "боомт",
+                    "meaningsMn": [
+                        "боомт"
+                    ]
+                },
+                {
+                    "jp": "教会",
+                    "reading": "きょうかい",
+                    "en": "church",
+                    "meanings": [
+                        "church"
+                    ],
+                    "example": null,
+                    "phonetic": "会",
+                    "phoneticReading": "カイ、エ",
+                    "enMn": "сүм",
+                    "meaningsMn": [
+                        "сүм"
+                    ]
+                },
+                {
+                    "jp": "国際",
+                    "reading": "こくさい",
+                    "en": "international",
+                    "meanings": [
+                        "international"
+                    ],
+                    "example": null,
+                    "phonetic": "祭",
+                    "phoneticReading": "サイ",
+                    "enMn": "олон улсын",
+                    "meaningsMn": [
+                        "олон улсын"
+                    ]
+                }
+            ]
+        ],
+        "themeKey": "theme.n4.9"
+    },
+    {
+        "level": 22,
+        "jlpt": "N4",
+        "title": "Outdoors and free time",
+        "sets": [
+            [
+                {
+                    "jp": "浅い",
+                    "reading": "あさい",
+                    "en": "shallow",
+                    "meanings": [
+                        "shallow",
+                        "superficial"
+                    ],
+                    "example": {
+                        "jp": "彼はその仕事にはまだ経験が浅い。",
+                        "en": "He is still green at the job.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>はその<ruby>仕事<rp>(</rp><rt>しごと</rt><rp>)</rp></ruby>にはまだ<ruby>経験<rp>(</rp><rt>けいけん</rt><rp>)</rp></ruby>が<ruby>浅<rp>(</rp><rt>あさ</rt><rp>)</rp></ruby>い。",
+                        "enMn": "Тэр энэ ажилдаа туршлага бага хэвээр байна."
+                    },
+                    "phonetic": "㦮",
+                    "phoneticReading": "セン",
+                    "enMn": "гүехэн",
+                    "meaningsMn": [
+                        "гүехэн",
+                        "хөнгөвчилсөн"
+                    ]
+                },
+                {
+                    "jp": "聞こえる",
+                    "reading": "きこえる",
+                    "en": "to be heard",
+                    "meanings": [
+                        "to be heard",
+                        "to be audible"
+                    ],
+                    "example": {
+                        "jp": "隣の部屋で誰かの話し声が聞こえる。",
+                        "en": "I can hear someone talking in the next room.",
+                        "furigana": "<ruby>隣<rp>(</rp><rt>となり</rt><rp>)</rp></ruby>の<ruby>部屋<rp>(</rp><rt>へや</rt><rp>)</rp></ruby>で<ruby>誰<rp>(</rp><rt>だれ</rt><rp>)</rp></ruby>かの<ruby>話<rp>(</rp><rt>はな</rt><rp>)</rp></ruby>し<ruby>声<rp>(</rp><rt>ごえ</rt><rp>)</rp></ruby>が<ruby>聞<rp>(</rp><rt>き</rt><rp>)</rp></ruby>こえる。",
+                        "enMn": "Хажуугийн өрөөнд хэн нэгний ярих чимээ сонсогдож байна."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "сонсогдох",
+                    "meaningsMn": [
+                        "сонсогдох"
+                    ]
+                },
+                {
+                    "jp": "深い",
+                    "reading": "ふかい",
+                    "en": "deep",
+                    "meanings": [
+                        "deep",
+                        "profound"
+                    ],
+                    "example": {
+                        "jp": "野原は深い雪におおわれていた。",
+                        "en": "The fields lay covered with deep snow.",
+                        "furigana": "<ruby>野原<rp>(</rp><rt>のはら</rt><rp>)</rp></ruby>は<ruby>深<rp>(</rp><rt>ふか</rt><rp>)</rp></ruby>い<ruby>雪<rp>(</rp><rt>ゆき</rt><rp>)</rp></ruby>におおわれていた。",
+                        "enMn": "Тал хээр гүн цасаар хучигдсан байв."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "гүн",
+                    "meaningsMn": [
+                        "гүн",
+                        "гүн"
+                    ]
+                },
+                {
+                    "jp": "正月",
+                    "reading": "しょうがつ",
+                    "en": "New Year",
+                    "meanings": [
+                        "New Year",
+                        "New Year's Day"
+                    ],
+                    "example": {
+                        "jp": "日本では老いも若きも正月を祝います。",
+                        "en": "Young and old in Japan celebrate New Year's Day.",
+                        "furigana": "<ruby>日本<rp>(</rp><rt>にっぽん</rt><rp>)</rp></ruby>では<ruby>老<rp>(</rp><rt>お</rt><rp>)</rp></ruby>いも<ruby>若<rp>(</rp><rt>わか</rt><rp>)</rp></ruby>きも<ruby>正月<rp>(</rp><rt>しょうがつ</rt><rp>)</rp></ruby>を<ruby>祝<rp>(</rp><rt>いわ</rt><rp>)</rp></ruby>います。",
+                        "enMn": "Японд залуу, хөгшин хүн бүр Шинэ жилийг тэмдэглэдэг."
+                    },
+                    "phonetic": "正",
+                    "phoneticReading": "ショウ、セイ",
+                    "enMn": "шинэ жил",
+                    "meaningsMn": [
+                        "шинэ жил",
+                        "шинэ жилийн өдөр"
+                    ]
+                },
+                {
+                    "jp": "小説",
+                    "reading": "しょうせつ",
+                    "en": "novel",
+                    "meanings": [
+                        "novel"
+                    ],
+                    "example": {
+                        "jp": "来月号から新連載小説が始まります。",
+                        "en": "A new serial will begin in next month's issue.",
+                        "furigana": "<ruby>来月<rp>(</rp><rt>らいげつ</rt><rp>)</rp></ruby><ruby>号<rp>(</rp><rt>ごう</rt><rp>)</rp></ruby>から<ruby>新<rp>(</rp><rt>しん</rt><rp>)</rp></ruby><ruby>連載<rp>(</rp><rt>れんさい</rt><rp>)</rp></ruby><ruby>小説<rp>(</rp><rt>しょうせつ</rt><rp>)</rp></ruby>が<ruby>始<rp>(</rp><rt>はじ</rt><rp>)</rp></ruby>まります。",
+                        "enMn": "Шинэ цуврал зохиол ирэх сарын дугаараас эхэлнэ."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "роман",
+                    "meaningsMn": [
+                        "роман"
+                    ]
+                },
+                {
+                    "jp": "運動",
+                    "reading": "うんどう",
+                    "en": "exercise",
+                    "meanings": [
+                        "exercise"
+                    ],
+                    "example": {
+                        "jp": "毎日ある程度運動する事は必要だ。",
+                        "en": "It is necessary to do some exercise every day.",
+                        "furigana": "<ruby>毎日<rp>(</rp><rt>まいにち</rt><rp>)</rp></ruby>ある<ruby>程度<rp>(</rp><rt>ていど</rt><rp>)</rp></ruby><ruby>運動<rp>(</rp><rt>うんどう</rt><rp>)</rp></ruby>する<ruby>事<rp>(</rp><rt>こと</rt><rp>)</rp></ruby>は<ruby>必要<rp>(</rp><rt>ひつよう</rt><rp>)</rp></ruby>だ。",
+                        "enMn": "Өдөр бүр тодорхой хэмжээний дасгал хийх шаардлагатай."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "дасгал",
+                    "meaningsMn": [
+                        "дасгал"
+                    ]
+                },
+                {
+                    "jp": "葉",
+                    "reading": "は",
+                    "en": "leaf",
+                    "meanings": [
+                        "leaf"
+                    ],
+                    "example": {
+                        "jp": "お誕生日おめでとう相葉ちゃん！",
+                        "en": "Happy birthday, Miss Aiba!",
+                        "furigana": "お<ruby>誕生<rp>(</rp><rt>たんじょう</rt><rp>)</rp></ruby><ruby>日<rp>(</rp><rt>び</rt><rp>)</rp></ruby>おめでとう<ruby>相<rp>(</rp><rt>あい</rt><rp>)</rp></ruby><ruby>葉<rp>(</rp><rt>は</rt><rp>)</rp></ruby>ちゃん！",
+                        "enMn": "Төрсөн өдрийн мэнд хүргэе, Аиба хатагтай!"
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "навч",
+                    "meaningsMn": [
+                        "навч"
+                    ]
+                },
+                {
+                    "jp": "坂",
+                    "reading": "さか",
+                    "en": "slope",
+                    "meanings": [
+                        "slope",
+                        "hill"
+                    ],
+                    "example": {
+                        "jp": "道は上り坂になってその村に出る。",
+                        "en": "The road ascends to the village.",
+                        "furigana": "<ruby>道<rp>(</rp><rt>みち</rt><rp>)</rp></ruby>は<ruby>上<rp>(</rp><rt>のぼ</rt><rp>)</rp></ruby>り<ruby>坂<rp>(</rp><rt>ざか</rt><rp>)</rp></ruby>になってその<ruby>村<rp>(</rp><rt>むら</rt><rp>)</rp></ruby>に<ruby>出<rp>(</rp><rt>で</rt><rp>)</rp></ruby>る。",
+                        "enMn": "Зам өгсүүр болж тэр тосгон руу хүрдэг."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "энгэр",
+                    "meaningsMn": [
+                        "энгэр"
+                    ]
+                },
+                {
+                    "jp": "柔道",
+                    "reading": "じゅうどう",
+                    "en": "judo",
+                    "meanings": [
+                        "judo"
+                    ],
+                    "example": {
+                        "jp": "柔道を練習しています。",
+                        "en": "I'm practising judo.",
+                        "furigana": "<ruby>柔道<rp>(</rp><rt>じゅうどう</rt><rp>)</rp></ruby>を<ruby>練習<rp>(</rp><rt>れんしゅう</rt><rp>)</rp></ruby>しています。",
+                        "enMn": "Би жүдо бөхийн дасгал хийж байна."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "жүдо",
+                    "meaningsMn": [
+                        "жүдо"
+                    ]
+                },
+                {
+                    "jp": "美しい",
+                    "reading": "うつくしい",
+                    "en": "beautiful",
+                    "meanings": [
+                        "beautiful",
+                        "lovely"
+                    ],
+                    "example": {
+                        "jp": "潔白であることは美しいことだ。",
+                        "en": "Innocence is a beautiful thing.",
+                        "furigana": "<ruby>潔白<rp>(</rp><rt>けっぱく</rt><rp>)</rp></ruby>であることは<ruby>美<rp>(</rp><rt>うつく</rt><rp>)</rp></ruby>しいことだ。",
+                        "enMn": "Гэм зэмгүй байх нь сайхан хэрэг юм."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "сайхан",
+                    "meaningsMn": [
+                        "сайхан"
+                    ]
+                },
+                {
+                    "jp": "試合",
+                    "reading": "しあい",
+                    "en": "match",
+                    "meanings": [
+                        "match",
+                        "game",
+                        "competition"
+                    ],
+                    "example": {
+                        "jp": "でもあいにくの雨で試合は中止になった。",
+                        "en": "But, unfortunately, the game was called off due to rain.",
+                        "furigana": "でもあいにくの<ruby>雨<rp>(</rp><rt>あめ</rt><rp>)</rp></ruby>で<ruby>試合<rp>(</rp><rt>しあい</rt><rp>)</rp></ruby>は<ruby>中止<rp>(</rp><rt>ちゅうし</rt><rp>)</rp></ruby>になった。",
+                        "enMn": "Гэвч харамсалтай нь бороо орсноос болж тэмцээн цуцлагдав."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "тэмцээн",
+                    "meaningsMn": [
+                        "тэмцээн"
+                    ]
+                },
+                {
+                    "jp": "動く",
+                    "reading": "うごく",
+                    "en": "to move",
+                    "meanings": [
+                        "to move"
+                    ],
+                    "example": {
+                        "jp": "列車はダイヤどおりに動いている。",
+                        "en": "Trains are running on schedule.",
+                        "furigana": "<ruby>列車<rp>(</rp><rt>れっしゃ</rt><rp>)</rp></ruby>はダイヤどおりに<ruby>動<rp>(</rp><rt>うご</rt><rp>)</rp></ruby>いている。",
+                        "enMn": "Галт тэрэгнүүд хуваарийн дагуу явж байна."
+                    },
+                    "phonetic": "動",
+                    "phoneticReading": "ドウ",
+                    "enMn": "хөдлөх",
+                    "meaningsMn": [
+                        "хөдлөх"
+                    ]
+                },
+                {
+                    "jp": "お祭り",
+                    "reading": "おまつり",
+                    "en": "festival",
+                    "meanings": [
+                        "festival"
+                    ],
+                    "example": {
+                        "jp": "今年もいつも通りお祭りが行われました。",
+                        "en": "The festivities were held as usual this year.",
+                        "furigana": "<ruby>今年<rp>(</rp><rt>ことし</rt><rp>)</rp></ruby>もいつも<ruby>通<rp>(</rp><rt>とお</rt><rp>)</rp></ruby>りお<ruby>祭<rp>(</rp><rt>まつ</rt><rp>)</rp></ruby>りが<ruby>行<rp>(</rp><rt>おこな</rt><rp>)</rp></ruby>われました。",
+                        "enMn": "Энэ жил ч бас ердийнхөөрөө баяр наадам болов."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "баяр",
+                    "meaningsMn": [
+                        "баяр",
+                        "баяр ёслол"
+                    ]
+                },
+                {
+                    "jp": "人形",
+                    "reading": "にんぎょう",
+                    "en": "doll",
+                    "meanings": [
+                        "doll",
+                        "figure"
+                    ],
+                    "example": {
+                        "jp": "彼女は余暇を人形を作って過ごす。",
+                        "en": "She spends her leisure time making dolls.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>余暇<rp>(</rp><rt>よか</rt><rp>)</rp></ruby>を<ruby>人形<rp>(</rp><rt>にんぎょう</rt><rp>)</rp></ruby>を<ruby>作<rp>(</rp><rt>つく</rt><rp>)</rp></ruby>って<ruby>過<rp>(</rp><rt>す</rt><rp>)</rp></ruby>ごす。",
+                        "enMn": "Тэр чөлөөт цагаа хүүхэлдэй хийж өнгөрөөдөг."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хүүхэлдэй",
+                    "meaningsMn": [
+                        "хүүхэлдэй",
+                        "хүүхэлдэй"
+                    ]
+                },
+                {
+                    "jp": "投げる",
+                    "reading": "なげる",
+                    "en": "to pitch",
+                    "meanings": [
+                        "to pitch",
+                        "to cast away"
+                    ],
+                    "example": {
+                        "jp": "彼女は橋から身を投げて自殺した。",
+                        "en": "She committed suicide by jumping off the bridge.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>橋<rp>(</rp><rt>はし</rt><rp>)</rp></ruby>から<ruby>身<rp>(</rp><rt>み</rt><rp>)</rp></ruby>を<ruby>投<rp>(</rp><rt>な</rt><rp>)</rp></ruby>げて<ruby>自殺<rp>(</rp><rt>じさつ</rt><rp>)</rp></ruby>した。",
+                        "enMn": "Тэр гүүрнээс үсрэн амиа хорлосон."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "шидэх",
+                    "meaningsMn": [
+                        "шидэх",
+                        "шидэх"
+                    ]
+                },
+                {
+                    "jp": "スクリーン",
+                    "reading": "スクリーン",
+                    "en": "screen",
+                    "meanings": [
+                        "screen"
+                    ],
+                    "example": {
+                        "jp": "トムはスクリーンに釘付けだった。",
+                        "en": "Tom's eyes were glued to the screen.",
+                        "furigana": "トムはスクリーンに<ruby>釘付<rp>(</rp><rt>くぎづ</rt><rp>)</rp></ruby>けだった。",
+                        "enMn": "Томын нүд дэлгэцэнд гацсан байлаа."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "дэлгэц",
+                    "meaningsMn": [
+                        "дэлгэц"
+                    ]
+                },
+                {
+                    "jp": "景色",
+                    "reading": "けしき",
+                    "en": "scenery",
+                    "meanings": [
+                        "scenery",
+                        "landscape"
+                    ],
+                    "example": {
+                        "jp": "離れて見ると景色に魅力がつく。",
+                        "en": "Distance lends enchantment to the view.",
+                        "furigana": "<ruby>離<rp>(</rp><rt>はな</rt><rp>)</rp></ruby>れて<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>ると<ruby>景色<rp>(</rp><rt>けしき</rt><rp>)</rp></ruby>に<ruby>魅力<rp>(</rp><rt>みりょく</rt><rp>)</rp></ruby>がつく。",
+                        "enMn": "Холоос харахад үзэмж илүү сэтгэл татам болдог."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "үзэмж",
+                    "meaningsMn": [
+                        "үзэмж"
+                    ]
+                },
+                {
+                    "jp": "力",
+                    "reading": "ちから",
+                    "en": "strength",
+                    "meanings": [
+                        "strength",
+                        "power"
+                    ],
+                    "example": {
+                        "jp": "すぐに集中力を無くしてしまった。",
+                        "en": "I immediately lost my concentration.",
+                        "furigana": "すぐに<ruby>集中<rp>(</rp><rt>しゅうちゅう</rt><rp>)</rp></ruby><ruby>力<rp>(</rp><rt>りょく</rt><rp>)</rp></ruby>を<ruby>無<rp>(</rp><rt>な</rt><rp>)</rp></ruby>くしてしまった。",
+                        "enMn": "Би даруй анхаарлаа алдав."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хүч",
+                    "meaningsMn": [
+                        "хүч",
+                        "эрх мэдэл"
+                    ]
+                },
+                {
+                    "jp": "森",
+                    "reading": "もり",
+                    "en": "forest",
+                    "meanings": [
+                        "forest"
+                    ],
+                    "example": {
+                        "jp": "小泉氏が総理大臣として森氏の後を襲った。",
+                        "en": "Mr Koizumi succeeded Mr Mori as prime minister.",
+                        "furigana": "<ruby>小泉<rp>(</rp><rt>こいずみ</rt><rp>)</rp></ruby><ruby>氏<rp>(</rp><rt>し</rt><rp>)</rp></ruby>が<ruby>総理<rp>(</rp><rt>そうり</rt><rp>)</rp></ruby><ruby>大臣<rp>(</rp><rt>だいじん</rt><rp>)</rp></ruby>として<ruby>森<rp>(</rp><rt>もり</rt><rp>)</rp></ruby><ruby>氏<rp>(</rp><rt>し</rt><rp>)</rp></ruby>の<ruby>後<rp>(</rp><rt>のち</rt><rp>)</rp></ruby>を<ruby>襲<rp>(</rp><rt>おそ</rt><rp>)</rp></ruby>った。",
+                        "enMn": "Коизүми ноён Мори ноёныг залгамжилж ерөнхий сайд болов."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "ой",
+                    "meaningsMn": [
+                        "ой"
                     ]
                 },
                 {
@@ -11276,162 +11126,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "細かい",
-                    "reading": "こまかい",
-                    "en": "small",
-                    "meanings": [
-                        "small; fine",
-                        "minute"
-                    ],
-                    "example": {
-                        "jp": "細かい意訳誤訳は気にしないでください。",
-                        "en": "Please don't worry about the finer details of free vs mis-translation.",
-                        "furigana": "<ruby>細<rp>(</rp><rt>こま</rt><rp>)</rp></ruby>かい<ruby>意訳<rp>(</rp><rt>いやく</rt><rp>)</rp></ruby><ruby>誤訳<rp>(</rp><rt>ごやく</rt><rp>)</rp></ruby>は<ruby>気<rp>(</rp><rt>き</rt><rp>)</rp></ruby>にしないでください。",
-                        "enMn": "Нарийн чөлөөт орчуулга, буруу орчуулгыг бүү тоо."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "нарийн",
-                    "meaningsMn": [
-                        "нарийн",
-                        "жижиг"
-                    ]
-                },
-                {
-                    "jp": "塗る",
-                    "reading": "ぬる",
-                    "en": "to paint",
-                    "meanings": [
-                        "to paint",
-                        "to plaster"
-                    ],
-                    "example": {
-                        "jp": "壁を塗るつもりです。",
-                        "en": "We're going to paint the wall.",
-                        "furigana": "<ruby>壁<rp>(</rp><rt>かべ</rt><rp>)</rp></ruby>を<ruby>塗<rp>(</rp><rt>ぬ</rt><rp>)</rp></ruby>るつもりです。",
-                        "enMn": "Бид хана будах гэж байна."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "будах",
-                    "meaningsMn": [
-                        "будах"
-                    ]
-                },
-                {
-                    "jp": "珍しい",
-                    "reading": "めずらしい",
-                    "en": "unusual",
-                    "meanings": [
-                        "unusual",
-                        "rare"
-                    ],
-                    "example": {
-                        "jp": "彼ほど平々凡々たる主人公は珍しい。",
-                        "en": "A protagonist as plain and ordinary as him is rare indeed.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>ほど<ruby>平々凡々<rp>(</rp><rt>へいへいぼんぼん</rt><rp>)</rp></ruby>たる<ruby>主人公<rp>(</rp><rt>しゅじんこう</rt><rp>)</rp></ruby>は<ruby>珍<rp>(</rp><rt>めずら</rt><rp>)</rp></ruby>しい。",
-                        "enMn": "Түүн шиг энгийн жирийн гол баатар ховор."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "ховор",
-                    "meaningsMn": [
-                        "ховор"
-                    ]
-                },
-                {
-                    "jp": "用",
-                    "reading": "よう",
-                    "en": "errand",
-                    "meanings": [
-                        "errand",
-                        "task",
-                        "business (to take care of)"
-                    ],
-                    "example": {
-                        "jp": "PC内部のタイマー用ボタン電池が切れた。",
-                        "en": "The button battery in the PC's internal timer has gone flat.",
-                        "furigana": "PC<ruby>内部<rp>(</rp><rt>ないぶ</rt><rp>)</rp></ruby>のタイマー<ruby>用<rp>(</rp><rt>よう</rt><rp>)</rp></ruby>ボタン<ruby>電池<rp>(</rp><rt>でんち</rt><rp>)</rp></ruby>が<ruby>切<rp>(</rp><rt>き</rt><rp>)</rp></ruby>れた。",
-                        "enMn": "Компьютерийн доторх цаг тоолуурын товч батерей дууссан."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хэрэг",
-                    "meaningsMn": [
-                        "хэрэг"
-                    ]
-                },
-                {
-                    "jp": "公務員",
-                    "reading": "こうむいん",
-                    "en": "government worker",
-                    "meanings": [
-                        "government worker",
-                        "public servant"
-                    ],
-                    "example": {
-                        "jp": "どういった時事が公務員試験で出題されるのか。",
-                        "en": "What sort of current affairs appear in the civil service examination?",
-                        "furigana": "どういった<ruby>時事<rp>(</rp><rt>じじ</rt><rp>)</rp></ruby>が<ruby>公務員<rp>(</rp><rt>こうむいん</rt><rp>)</rp></ruby><ruby>試験<rp>(</rp><rt>しけん</rt><rp>)</rp></ruby>で<ruby>出題<rp>(</rp><rt>しゅつだい</rt><rp>)</rp></ruby>されるのか。",
-                        "enMn": "Ямар төрлийн цаг үеийн асуудал төрийн албан хаагчийн шалгалтад гардаг вэ?"
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "төрийн албан хаагч",
-                    "meaningsMn": [
-                        "төрийн албан хаагч"
-                    ]
-                },
-                {
-                    "jp": "お嬢さん",
-                    "reading": "おじょうさん",
-                    "en": "(someone's) daughter (polite)",
-                    "meanings": [
-                        "(someone's) daughter (polite)"
-                    ],
-                    "example": {
-                        "jp": "お嬢さんのお名前は？",
-                        "en": "What's your daughter's name?",
-                        "furigana": "お<ruby>嬢<rp>(</rp><rt>じょう</rt><rp>)</rp></ruby>さんのお<ruby>名前<rp>(</rp><rt>なまえ</rt><rp>)</rp></ruby>は？",
-                        "enMn": "Таны охины нэр хэн бэ?"
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "таны охин",
-                    "meaningsMn": [
-                        "таны охин"
-                    ]
-                },
-                {
-                    "jp": "用意",
-                    "reading": "ようい",
-                    "en": "preparation",
-                    "meanings": [
-                        "preparation"
-                    ],
-                    "example": {
-                        "jp": "用意周到に見えてどこかで抜けてるしな。",
-                        "en": "It looks well prepared but you see there'll be a slip somewhere.",
-                        "furigana": "<ruby>用意<rp>(</rp><rt>ようい</rt><rp>)</rp></ruby><ruby>周到<rp>(</rp><rt>しゅうとう</rt><rp>)</rp></ruby>に<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>えてどこかで<ruby>抜<rp>(</rp><rt>ぬ</rt><rp>)</rp></ruby>けてるしな。",
-                        "enMn": "Бүрэн бэлтгэсэн мэт харагдавч хаа нэгтээ дутуу байдаг юм."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "бэлтгэл",
-                    "meaningsMn": [
-                        "бэлтгэл"
-                    ]
-                }
-            ]
-        ]
-    },
-    {
-        "level": 23,
-        "jlpt": "N4",
-        "title": "N4 · Level 11",
-        "sets": [
-            [
-                {
                     "jp": "漫画",
                     "reading": "まんが",
                     "en": "comic (book)",
@@ -11465,69 +11159,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "線",
-                    "reading": "せん",
-                    "en": "line",
-                    "meanings": [
-                        "line",
-                        "wire"
-                    ],
-                    "example": null,
-                    "phonetic": "泉",
-                    "phoneticReading": "セン",
-                    "enMn": "шугам",
-                    "meaningsMn": [
-                        "шугам"
-                    ]
-                },
-                {
-                    "jp": "原因",
-                    "reading": "げんいん",
-                    "en": "cause",
-                    "meanings": [
-                        "cause",
-                        "origin",
-                        "source"
-                    ],
-                    "example": null,
-                    "phonetic": "原",
-                    "phoneticReading": "ゲン",
-                    "enMn": "шалтгаан",
-                    "meaningsMn": [
-                        "шалтгаан"
-                    ]
-                },
-                {
-                    "jp": "消しゴム",
-                    "reading": "けしゴム",
-                    "en": "eraser",
-                    "meanings": [
-                        "eraser"
-                    ],
-                    "example": null,
-                    "phonetic": "肖",
-                    "phoneticReading": "ショウ",
-                    "enMn": "баллуур",
-                    "meaningsMn": [
-                        "баллуур"
-                    ]
-                },
-                {
-                    "jp": "旅館",
-                    "reading": "りょかん",
-                    "en": "a Japanese inn",
-                    "meanings": [
-                        "a Japanese inn"
-                    ],
-                    "example": null,
-                    "phonetic": "官",
-                    "phoneticReading": "カン",
-                    "enMn": "япон маягийн зочид буудал",
-                    "meaningsMn": [
-                        "япон маягийн зочид буудал"
-                    ]
-                },
-                {
                     "jp": "海岸",
                     "reading": "かいがん",
                     "en": "coast",
@@ -11544,34 +11175,430 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "味噌",
-                    "reading": "みそ",
-                    "en": "miso",
+                    "jp": "空気",
+                    "reading": "くうき",
+                    "en": "air",
                     "meanings": [
-                        "miso",
-                        "bean paste"
+                        "air",
+                        "atmosphere"
                     ],
                     "example": null,
-                    "phonetic": "未",
-                    "phoneticReading": "ミ、マイ",
-                    "enMn": "мисо",
+                    "phonetic": "气",
+                    "phoneticReading": "キ",
+                    "enMn": "агаар",
                     "meaningsMn": [
-                        "мисо"
+                        "агаар"
+                    ]
+                }
+            ]
+        ],
+        "themeKey": "theme.n4.10"
+    },
+    {
+        "level": 23,
+        "jlpt": "N4",
+        "title": "Saying it politely",
+        "sets": [
+            [
+                {
+                    "jp": "贈り物",
+                    "reading": "おくりもの",
+                    "en": "gift",
+                    "meanings": [
+                        "a gift",
+                        "a present"
+                    ],
+                    "example": {
+                        "jp": "彼は彼女から贈り物を受け取った。",
+                        "en": "He accepted her gift.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>から<ruby>贈<rp>(</rp><rt>おく</rt><rp>)</rp></ruby>り<ruby>物<rp>(</rp><rt>もの</rt><rp>)</rp></ruby>を<ruby>受<rp>(</rp><rt>う</rt><rp>)</rp></ruby>け<ruby>取<rp>(</rp><rt>と</rt><rp>)</rp></ruby>った。",
+                        "enMn": "Тэр түүний бэлгийг хүлээж авав."
+                    },
+                    "phonetic": "曽",
+                    "phoneticReading": "ソウ、ゾウ",
+                    "enMn": "бэлэг",
+                    "meaningsMn": [
+                        "бэлэг",
+                        "бэлэг"
                     ]
                 },
                 {
-                    "jp": "乗り物",
-                    "reading": "のりもの",
-                    "en": "vehicle",
+                    "jp": "うかがう",
+                    "reading": "うかがう",
+                    "en": "to ask",
                     "meanings": [
-                        "vehicle"
+                        "to ask"
                     ],
-                    "example": null,
-                    "phonetic": "乗",
-                    "phoneticReading": "ジョウ",
-                    "enMn": "тээврийн хэрэгсэл",
+                    "example": {
+                        "jp": "病気のため本日はうかがうことができませんでした。",
+                        "en": "On account of illness, I couldn't call on you today.",
+                        "furigana": "<ruby>病気<rp>(</rp><rt>びょうき</rt><rp>)</rp></ruby>のため<ruby>本日<rp>(</rp><rt>ほんじつ</rt><rp>)</rp></ruby>はうかがうことができませんでした。",
+                        "enMn": "Өвчний улмаас өнөөдөр очиж чадсангүй."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "сурах",
                     "meaningsMn": [
-                        "тээврийн хэрэгсэл"
+                        "сурах"
+                    ]
+                },
+                {
+                    "jp": "親切",
+                    "reading": "しんせつ",
+                    "en": "kindness",
+                    "meanings": [
+                        "kindness"
+                    ],
+                    "example": {
+                        "jp": "盲人に手を貸すのは親切な行為だ。",
+                        "en": "Helping a blind man is an act of kindness.",
+                        "furigana": "<ruby>盲人<rp>(</rp><rt>もうじん</rt><rp>)</rp></ruby>に<ruby>手<rp>(</rp><rt>て</rt><rp>)</rp></ruby>を<ruby>貸<rp>(</rp><rt>か</rt><rp>)</rp></ruby>すのは<ruby>親切<rp>(</rp><rt>しんせつ</rt><rp>)</rp></ruby>な<ruby>行為<rp>(</rp><rt>こうい</rt><rp>)</rp></ruby>だ。",
+                        "enMn": "Сохор хүнд туслах нь эелдэг үйлдэл юм."
+                    },
+                    "phonetic": "亲",
+                    "phoneticReading": "シン",
+                    "enMn": "эелдэг зан",
+                    "meaningsMn": [
+                        "эелдэг зан"
+                    ]
+                },
+                {
+                    "jp": "いらっしゃる",
+                    "reading": "いらっしゃる",
+                    "en": "-- honorific expression for いく",
+                    "meanings": [
+                        "-- honorific expression for いく",
+                        "くる",
+                        "and いる --"
+                    ],
+                    "example": {
+                        "jp": "長くいらっしゃるつもりですか。",
+                        "en": "Are you going to stay long?",
+                        "furigana": "<ruby>長<rp>(</rp><rt>なが</rt><rp>)</rp></ruby>くいらっしゃるつもりですか。",
+                        "enMn": "Та удаан байхаар төлөвлөж байна уу?"
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "залрах",
+                    "meaningsMn": [
+                        "залрах"
+                    ]
+                },
+                {
+                    "jp": "寄る",
+                    "reading": "よる",
+                    "en": "to stop by",
+                    "meanings": [
+                        "to stop by"
+                    ],
+                    "example": {
+                        "jp": "彼は家に帰る途中パン屋に寄った。",
+                        "en": "He called at the baker's on the way home.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>家<rp>(</rp><rt>いえ</rt><rp>)</rp></ruby>に<ruby>帰<rp>(</rp><rt>かえ</rt><rp>)</rp></ruby>る<ruby>途中<rp>(</rp><rt>とちゅう</rt><rp>)</rp></ruby>パン<ruby>屋<rp>(</rp><rt>や</rt><rp>)</rp></ruby>に<ruby>寄<rp>(</rp><rt>よ</rt><rp>)</rp></ruby>った。",
+                        "enMn": "Тэр гэртээ харих замдаа талхны дэлгүүрт орсон."
+                    },
+                    "phonetic": "奇",
+                    "phoneticReading": "キ",
+                    "enMn": "дайрч орох",
+                    "meaningsMn": [
+                        "дайрч орох"
+                    ]
+                },
+                {
+                    "jp": "丁寧",
+                    "reading": "ていねい",
+                    "en": "polite",
+                    "meanings": [
+                        "polite",
+                        "courteous",
+                        "careful"
+                    ],
+                    "example": {
+                        "jp": "彼に丁寧な返事を書くつもりです。",
+                        "en": "I will write him a civil answer.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>に<ruby>丁寧<rp>(</rp><rt>ていねい</rt><rp>)</rp></ruby>な<ruby>返事<rp>(</rp><rt>へんじ</rt><rp>)</rp></ruby>を<ruby>書<rp>(</rp><rt>か</rt><rp>)</rp></ruby>くつもりです。",
+                        "enMn": "Би түүнд эелдэг хариу бичнэ."
+                    },
+                    "phonetic": "丁",
+                    "phoneticReading": "チョウ、テイ",
+                    "enMn": "эелдэг",
+                    "meaningsMn": [
+                        "эелдэг",
+                        "эелдэг",
+                        "болгоомжтой"
+                    ]
+                },
+                {
+                    "jp": "申し上げる",
+                    "reading": "もうしあげる",
+                    "en": "to say (humble)",
+                    "meanings": [
+                        "(humble)to say",
+                        "to tell"
+                    ],
+                    "example": {
+                        "jp": "日頃のご愛顧にお礼申し上げます。",
+                        "en": "We really thank you for your patronage.",
+                        "furigana": "<ruby>日頃<rp>(</rp><rt>ひごろ</rt><rp>)</rp></ruby>のご<ruby>愛顧<rp>(</rp><rt>あいこ</rt><rp>)</rp></ruby>にお<ruby>礼<rp>(</rp><rt>れい</rt><rp>)</rp></ruby><ruby>申<rp>(</rp><rt>もう</rt><rp>)</rp></ruby>し<ruby>上<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>げます。",
+                        "enMn": "Таны байнгын дэмжлэгт үнэхээр талархаж байна."
+                    },
+                    "phonetic": "申",
+                    "phoneticReading": "シン",
+                    "enMn": "хэлэх (даруу)",
+                    "meaningsMn": [
+                        "хэлэх (даруу)",
+                        "хэлэх"
+                    ]
+                },
+                {
+                    "jp": "致す",
+                    "reading": "いたす",
+                    "en": "-- extra-modest expression for する --",
+                    "meanings": [
+                        "-- extra-modest expression for する --"
+                    ],
+                    "example": {
+                        "jp": "あれは、私の不徳の致すところでした。",
+                        "en": "I must admit that it was my fault.",
+                        "furigana": "あれは、<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>の<ruby>不徳<rp>(</rp><rt>ふとく</rt><rp>)</rp></ruby>の<ruby>致<rp>(</rp><rt>いた</rt><rp>)</rp></ruby>すところでした。",
+                        "enMn": "Тэр бол миний буруугаас болсон хэрэг байлаа."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "үйлдэх",
+                    "meaningsMn": [
+                        "үйлдэх"
+                    ]
+                },
+                {
+                    "jp": "うそ",
+                    "reading": "嘘",
+                    "en": "lie",
+                    "meanings": [
+                        "lie"
+                    ],
+                    "example": {
+                        "jp": "容疑者は捜査官にうそを言った。",
+                        "en": "The suspect told a lie to the inspector.",
+                        "furigana": "<ruby>容疑<rp>(</rp><rt>ようぎ</rt><rp>)</rp></ruby><ruby>者<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby>は<ruby>捜査<rp>(</rp><rt>そうさ</rt><rp>)</rp></ruby><ruby>官<rp>(</rp><rt>かん</rt><rp>)</rp></ruby>にうそを<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>った。",
+                        "enMn": "Сэжигтэн мөрдөгчид худал хэлэв."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "худал",
+                    "meaningsMn": [
+                        "худал"
+                    ]
+                },
+                {
+                    "jp": "失礼",
+                    "reading": "しつれい",
+                    "en": "discourtesy",
+                    "meanings": [
+                        "discourtesy",
+                        "impoliteness",
+                        "Excuse me"
+                    ],
+                    "example": {
+                        "jp": "彼らの失礼な態度には腹が立つ。",
+                        "en": "I resent their rude attitude.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らの<ruby>失礼<rp>(</rp><rt>しつれい</rt><rp>)</rp></ruby>な<ruby>態度<rp>(</rp><rt>たいど</rt><rp>)</rp></ruby>には<ruby>腹<rp>(</rp><rt>はら</rt><rp>)</rp></ruby>が<ruby>立<rp>(</rp><rt>た</rt><rp>)</rp></ruby>つ。",
+                        "enMn": "Тэдний бүдүүлэг хандлагад би дургүйцдэг."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "эелдэг бус",
+                    "meaningsMn": [
+                        "эелдэг бус",
+                        "эелдэг бус байдал",
+                        "Уучлаарай"
+                    ]
+                },
+                {
+                    "jp": "連絡",
+                    "reading": "れんらく",
+                    "en": "communication",
+                    "meanings": [
+                        "communication",
+                        "contact",
+                        "connection"
+                    ],
+                    "example": {
+                        "jp": "もし音信不通になったら警察に連絡してね。",
+                        "en": "If I drop out of contact, let the police know, OK?",
+                        "furigana": "もし<ruby>音信<rp>(</rp><rt>おんしん</rt><rp>)</rp></ruby><ruby>不通<rp>(</rp><rt>ふつう</rt><rp>)</rp></ruby>になったら<ruby>警察<rp>(</rp><rt>けいさつ</rt><rp>)</rp></ruby>に<ruby>連絡<rp>(</rp><rt>れんらく</rt><rp>)</rp></ruby>してね。",
+                        "enMn": "Хэрэв надаас холбоо тасарвал цагдаад мэдэгдээрэй."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "холбоо",
+                    "meaningsMn": [
+                        "холбоо"
+                    ]
+                },
+                {
+                    "jp": "なさる",
+                    "reading": "なさる",
+                    "en": "-- honorific expression for する --",
+                    "meanings": [
+                        "-- honorific expression for する --"
+                    ],
+                    "example": {
+                        "jp": "病気が全快なさるように。",
+                        "en": "I hope you will be completely cured.",
+                        "furigana": "<ruby>病気<rp>(</rp><rt>びょうき</rt><rp>)</rp></ruby>が<ruby>全快<rp>(</rp><rt>ぜんかい</rt><rp>)</rp></ruby>なさるように。",
+                        "enMn": "Өвчин чинь бүрэн эдгэрэхийг ерөөе."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "соёрхох",
+                    "meaningsMn": [
+                        "соёрхох"
+                    ]
+                },
+                {
+                    "jp": "迎える",
+                    "reading": "むかえる",
+                    "en": "to welcome",
+                    "meanings": [
+                        "to welcome",
+                        "to meet",
+                        "to greet"
+                    ],
+                    "example": {
+                        "jp": "妹に車で駅まで迎えに行かせます。",
+                        "en": "I will have my sister pick you up at the station.",
+                        "furigana": "<ruby>妹<rp>(</rp><rt>いもうと</rt><rp>)</rp></ruby>に<ruby>車<rp>(</rp><rt>くるま</rt><rp>)</rp></ruby>で<ruby>駅<rp>(</rp><rt>えき</rt><rp>)</rp></ruby>まで<ruby>迎<rp>(</rp><rt>むか</rt><rp>)</rp></ruby>えに<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>かせます。",
+                        "enMn": "Би дүү охиноороо чамайг буудал дээр авахуулна."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "угтах",
+                    "meaningsMn": [
+                        "угтах",
+                        "уулзах",
+                        "угтан авах"
+                    ]
+                },
+                {
+                    "jp": "お礼",
+                    "reading": "おれい",
+                    "en": "expression of gratitude",
+                    "meanings": [
+                        "expression of gratitude; thanking; gift of appreciation; bow"
+                    ],
+                    "example": {
+                        "jp": "日頃のご愛顧にお礼申し上げます。",
+                        "en": "We really thank you for your patronage.",
+                        "furigana": "<ruby>日頃<rp>(</rp><rt>ひごろ</rt><rp>)</rp></ruby>のご<ruby>愛顧<rp>(</rp><rt>あいこ</rt><rp>)</rp></ruby>にお<ruby>礼<rp>(</rp><rt>れい</rt><rp>)</rp></ruby><ruby>申<rp>(</rp><rt>もう</rt><rp>)</rp></ruby>し<ruby>上<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>げます。",
+                        "enMn": "Байнгын дэмжлэгт тань талархал илэрхийлье."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "талархал",
+                    "meaningsMn": [
+                        "талархал"
+                    ]
+                },
+                {
+                    "jp": "知らせる",
+                    "reading": "しらせる",
+                    "en": "to notify",
+                    "meanings": [
+                        "to notify"
+                    ],
+                    "example": {
+                        "jp": "着いたら電報で知らせるよ。",
+                        "en": "I will wire you when I get there.",
+                        "furigana": "<ruby>着<rp>(</rp><rt>つ</rt><rp>)</rp></ruby>いたら<ruby>電報<rp>(</rp><rt>でんぽう</rt><rp>)</rp></ruby>で<ruby>知<rp>(</rp><rt>し</rt><rp>)</rp></ruby>らせるよ。",
+                        "enMn": "Очмогцоо цахилгаанаар мэдэгдэнэ шүү."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "мэдэгдэх",
+                    "meaningsMn": [
+                        "мэдэгдэх"
+                    ]
+                },
+                {
+                    "jp": "もらう",
+                    "reading": "もらう",
+                    "en": "to receive",
+                    "meanings": [
+                        "to receive"
+                    ],
+                    "example": {
+                        "jp": "ちょうどいいね。新型の試乗してってもらうね。",
+                        "en": "Good timing. I'll get you to test drive the new model.",
+                        "furigana": "ちょうどいいね。<ruby>新型<rp>(</rp><rt>しんがた</rt><rp>)</rp></ruby>の<ruby>試乗<rp>(</rp><rt>しじょう</rt><rp>)</rp></ruby>してってもらうね。",
+                        "enMn": "Яг тохирлоо. Шинэ загварыг туршиж жолоодуулъя."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "авах",
+                    "meaningsMn": [
+                        "авах"
+                    ]
+                },
+                {
+                    "jp": "くれる",
+                    "reading": "くれる",
+                    "en": "to give",
+                    "meanings": [
+                        "to give",
+                        "to do for"
+                    ],
+                    "example": {
+                        "jp": "一緒に旅行してくれる人がいないんだ。",
+                        "en": "I don't have anyone who'd travel with me.",
+                        "furigana": "<ruby>一緒<rp>(</rp><rt>いっしょ</rt><rp>)</rp></ruby>に<ruby>旅行<rp>(</rp><rt>りょこう</rt><rp>)</rp></ruby>してくれる<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>がいないんだ。",
+                        "enMn": "Надтай хамт аялах хүн байхгүй юм."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "өгөх",
+                    "meaningsMn": [
+                        "өгөх"
+                    ]
+                },
+                {
+                    "jp": "いただく",
+                    "reading": "頂く",
+                    "en": "-- extra-modest expression for たべる and のむ",
+                    "meanings": [
+                        "-- extra-modest expression for たべる and のむ; humble expression for もらう --"
+                    ],
+                    "example": {
+                        "jp": "当店の方針はお客様に御満足いただくことです。",
+                        "en": "Our policy is to satisfy our customers.",
+                        "furigana": "<ruby>当店<rp>(</rp><rt>とうてん</rt><rp>)</rp></ruby>の<ruby>方針<rp>(</rp><rt>ほうしん</rt><rp>)</rp></ruby>はお<ruby>客様<rp>(</rp><rt>きゃくさま</rt><rp>)</rp></ruby>に<ruby>御<rp>(</rp><rt>ご</rt><rp>)</rp></ruby><ruby>満足<rp>(</rp><rt>まんぞく</rt><rp>)</rp></ruby>いただくことです。",
+                        "enMn": "Манай дэлгүүрийн бодлого бол үйлчлүүлэгчээ сэтгэл ханамжтай байлгах явдал."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хүртэх",
+                    "meaningsMn": [
+                        "хүртэх"
+                    ]
+                },
+                {
+                    "jp": "届ける",
+                    "reading": "とどける",
+                    "en": "to deliver (v.t.)",
+                    "meanings": [
+                        "to deliver (v.t.)"
+                    ],
+                    "example": {
+                        "jp": "これを届けるよう頼まれたんです。",
+                        "en": "I was asked to deliver this.",
+                        "furigana": "これを<ruby>届<rp>(</rp><rt>とど</rt><rp>)</rp></ruby>けるよう<ruby>頼<rp>(</rp><rt>たの</rt><rp>)</rp></ruby>まれたんです。",
+                        "enMn": "Надаас үүнийг хүргэж өгөхийг гуйсан юм."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хүргэх",
+                    "meaningsMn": [
+                        "хүргэх"
                     ]
                 },
                 {
@@ -11591,88 +11618,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "技術",
-                    "reading": "ぎじゅつ",
-                    "en": "technique",
-                    "meanings": [
-                        "technique",
-                        "technology",
-                        "skill"
-                    ],
-                    "example": null,
-                    "phonetic": "朮",
-                    "phoneticReading": "ジュツ",
-                    "enMn": "технологи",
-                    "meaningsMn": [
-                        "технологи",
-                        "ур чадвар"
-                    ]
-                },
-                {
-                    "jp": "下宿",
-                    "reading": "げしゅく",
-                    "en": "lodging",
-                    "meanings": [
-                        "lodging",
-                        "boarding house"
-                    ],
-                    "example": null,
-                    "phonetic": "宿",
-                    "phoneticReading": "シュク",
-                    "enMn": "түрээсийн байр",
-                    "meaningsMn": [
-                        "түрээсийн байр"
-                    ]
-                },
-                {
-                    "jp": "鏡",
-                    "reading": "かがみ",
-                    "en": "mirror",
-                    "meanings": [
-                        "mirror"
-                    ],
-                    "example": null,
-                    "phonetic": "竟",
-                    "phoneticReading": "キョウ",
-                    "enMn": "толь",
-                    "meaningsMn": [
-                        "толь"
-                    ]
-                },
-                {
-                    "jp": "貿易",
-                    "reading": "ぼうえき",
-                    "en": "trade",
-                    "meanings": [
-                        "trade"
-                    ],
-                    "example": null,
-                    "phonetic": "卯",
-                    "phoneticReading": "リュウ、ル、ボウ",
-                    "enMn": "худалдаа",
-                    "meaningsMn": [
-                        "худалдаа"
-                    ]
-                },
-                {
-                    "jp": "反対",
-                    "reading": "はんたい",
-                    "en": "oppose",
-                    "meanings": [
-                        "oppose",
-                        "opposition",
-                        "resistance"
-                    ],
-                    "example": null,
-                    "phonetic": "反",
-                    "phoneticReading": "ハン",
-                    "enMn": "эсрэг",
-                    "meaningsMn": [
-                        "эсрэг",
-                        "эсэргүүцэх"
-                    ]
-                },
-                {
                     "jp": "申す",
                     "reading": "もうす",
                     "en": "-- extra-modest (humble) expression for 言う (いう) --",
@@ -11685,280 +11630,6 @@ const WORD_LEVELS = [
                     "enMn": "хэлэх (даруу хэлбэр)",
                     "meaningsMn": [
                         "хэлэх (даруу хэлбэр)"
-                    ]
-                },
-                {
-                    "jp": "試験",
-                    "reading": "しけん",
-                    "en": "an exam",
-                    "meanings": [
-                        "an exam"
-                    ],
-                    "example": null,
-                    "phonetic": "㑒",
-                    "phoneticReading": "ケン",
-                    "enMn": "шалгалт",
-                    "meaningsMn": [
-                        "шалгалт"
-                    ]
-                },
-                {
-                    "jp": "真面目",
-                    "reading": "まじめ",
-                    "en": "diligent",
-                    "meanings": [
-                        "diligent",
-                        "serious"
-                    ],
-                    "example": null,
-                    "phonetic": "真",
-                    "phoneticReading": "シン、テン",
-                    "enMn": "хичээнгүй",
-                    "meaningsMn": [
-                        "хичээнгүй",
-                        "ноцтой"
-                    ]
-                },
-                {
-                    "jp": "店員",
-                    "reading": "てんいん",
-                    "en": "clerk; shop-employee",
-                    "meanings": [
-                        "clerk; shop-employee"
-                    ],
-                    "example": null,
-                    "phonetic": "占",
-                    "phoneticReading": "テン",
-                    "enMn": "худалдагч",
-                    "meaningsMn": [
-                        "худалдагч"
-                    ]
-                },
-                {
-                    "jp": "泊まる",
-                    "reading": "とまる",
-                    "en": "to stay (over night) (v.i.)",
-                    "meanings": [
-                        "to stay (over night) (v.i.)"
-                    ],
-                    "example": null,
-                    "phonetic": "白",
-                    "phoneticReading": "ハク",
-                    "enMn": "хонох",
-                    "meaningsMn": [
-                        "хонох"
-                    ]
-                },
-                {
-                    "jp": "今夜",
-                    "reading": "こんや",
-                    "en": "this evening",
-                    "meanings": [
-                        "this evening",
-                        "tonight"
-                    ],
-                    "example": null,
-                    "phonetic": "今",
-                    "phoneticReading": "キン",
-                    "enMn": "өнөө орой",
-                    "meaningsMn": [
-                        "өнөө орой"
-                    ]
-                },
-                {
-                    "jp": "会話",
-                    "reading": "かいわ",
-                    "en": "conversation",
-                    "meanings": [
-                        "conversation"
-                    ],
-                    "example": null,
-                    "phonetic": "会",
-                    "phoneticReading": "カイ、エ",
-                    "enMn": "яриа",
-                    "meaningsMn": [
-                        "яриа"
-                    ]
-                },
-                {
-                    "jp": "空気",
-                    "reading": "くうき",
-                    "en": "air",
-                    "meanings": [
-                        "air",
-                        "atmosphere"
-                    ],
-                    "example": null,
-                    "phonetic": "气",
-                    "phoneticReading": "キ",
-                    "enMn": "агаар",
-                    "meaningsMn": [
-                        "агаар"
-                    ]
-                },
-                {
-                    "jp": "喜ぶ",
-                    "reading": "よろこぶ",
-                    "en": "to rejoice",
-                    "meanings": [
-                        "to rejoice",
-                        "to be delighted",
-                        "to be glad"
-                    ],
-                    "example": null,
-                    "phonetic": "喜",
-                    "phoneticReading": "キ",
-                    "enMn": "баярлах",
-                    "meaningsMn": [
-                        "баярлах"
-                    ]
-                },
-                {
-                    "jp": "皆",
-                    "reading": "みな",
-                    "en": "everyone",
-                    "meanings": [
-                        "everyone"
-                    ],
-                    "example": null,
-                    "phonetic": "皆",
-                    "phoneticReading": "カイ",
-                    "enMn": "бүгд",
-                    "meaningsMn": [
-                        "бүгд"
-                    ]
-                }
-            ]
-        ]
-    },
-    {
-        "level": 24,
-        "jlpt": "N4",
-        "title": "N4 · Level 12",
-        "sets": [
-            [
-                {
-                    "jp": "味",
-                    "reading": "あじ",
-                    "en": "flavor",
-                    "meanings": [
-                        "flavor",
-                        "taste"
-                    ],
-                    "example": null,
-                    "phonetic": "未",
-                    "phoneticReading": "ミ、マイ",
-                    "enMn": "амт",
-                    "meaningsMn": [
-                        "амт"
-                    ]
-                },
-                {
-                    "jp": "空港",
-                    "reading": "くうこう",
-                    "en": "airport",
-                    "meanings": [
-                        "airport"
-                    ],
-                    "example": null,
-                    "phonetic": "共",
-                    "phoneticReading": "キョウ、コウ",
-                    "enMn": "нисэх буудал",
-                    "meaningsMn": [
-                        "нисэх буудал"
-                    ]
-                },
-                {
-                    "jp": "手袋",
-                    "reading": "てぶくろ",
-                    "en": "glove(s)",
-                    "meanings": [
-                        "glove(s)"
-                    ],
-                    "example": null,
-                    "phonetic": "代",
-                    "phoneticReading": "タイ",
-                    "enMn": "бээлий",
-                    "meaningsMn": [
-                        "бээлий"
-                    ]
-                },
-                {
-                    "jp": "校長",
-                    "reading": "こうちょう",
-                    "en": "principal",
-                    "meanings": [
-                        "principal",
-                        "headmaster"
-                    ],
-                    "example": null,
-                    "phonetic": "交",
-                    "phoneticReading": "コウ",
-                    "enMn": "сургуулийн захирал",
-                    "meaningsMn": [
-                        "сургуулийн захирал"
-                    ]
-                },
-                {
-                    "jp": "興味",
-                    "reading": "きょうみ",
-                    "en": "interest (in something)",
-                    "meanings": [
-                        "interest (in something)"
-                    ],
-                    "example": null,
-                    "phonetic": "未",
-                    "phoneticReading": "ミ、マイ",
-                    "enMn": "сонирхол",
-                    "meaningsMn": [
-                        "сонирхол"
-                    ]
-                },
-                {
-                    "jp": "冷房",
-                    "reading": "れいぼう",
-                    "en": "cooling",
-                    "meanings": [
-                        "cooling",
-                        "air conditioning"
-                    ],
-                    "example": null,
-                    "phonetic": "令",
-                    "phoneticReading": "レイ",
-                    "enMn": "агааржуулагч",
-                    "meaningsMn": [
-                        "агааржуулагч"
-                    ]
-                },
-                {
-                    "jp": "都合",
-                    "reading": "つごう",
-                    "en": "circumstances",
-                    "meanings": [
-                        "circumstances",
-                        "convenience"
-                    ],
-                    "example": null,
-                    "phonetic": "者",
-                    "phoneticReading": "シャ、ショ、チョ、ト",
-                    "enMn": "нөхцөл байдал",
-                    "meaningsMn": [
-                        "нөхцөл байдал"
-                    ]
-                },
-                {
-                    "jp": "亡くなる",
-                    "reading": "なくなる",
-                    "en": "to pass away",
-                    "meanings": [
-                        "to pass away"
-                    ],
-                    "example": null,
-                    "phonetic": "亡",
-                    "phoneticReading": "ボウ、モウ",
-                    "enMn": "нас барах",
-                    "meaningsMn": [
-                        "нас барах"
                     ]
                 },
                 {
@@ -11977,54 +11648,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "気持ち",
-                    "reading": "きもち",
-                    "en": "feeling",
-                    "meanings": [
-                        "feeling",
-                        "sensation",
-                        "mood"
-                    ],
-                    "example": null,
-                    "phonetic": "气",
-                    "phoneticReading": "キ",
-                    "enMn": "сэтгэл хөдлөл",
-                    "meaningsMn": [
-                        "сэтгэл хөдлөл"
-                    ]
-                },
-                {
-                    "jp": "祖父",
-                    "reading": "そふ",
-                    "en": "grandfather",
-                    "meanings": [
-                        "grandfather"
-                    ],
-                    "example": null,
-                    "phonetic": "且",
-                    "phoneticReading": "ソ",
-                    "enMn": "өвөө",
-                    "meaningsMn": [
-                        "өвөө"
-                    ]
-                },
-                {
-                    "jp": "港",
-                    "reading": "みなと",
-                    "en": "harbor",
-                    "meanings": [
-                        "harbor",
-                        "port"
-                    ],
-                    "example": null,
-                    "phonetic": "共",
-                    "phoneticReading": "キョウ、コウ",
-                    "enMn": "боомт",
-                    "meaningsMn": [
-                        "боомт"
-                    ]
-                },
-                {
                     "jp": "予約",
                     "reading": "よやく",
                     "en": "reservation",
@@ -12037,114 +11660,6 @@ const WORD_LEVELS = [
                     "enMn": "захиалга",
                     "meaningsMn": [
                         "захиалга"
-                    ]
-                },
-                {
-                    "jp": "凄い",
-                    "reading": "すごい",
-                    "en": "terrific",
-                    "meanings": [
-                        "terrific",
-                        "great"
-                    ],
-                    "example": null,
-                    "phonetic": "妻",
-                    "phoneticReading": "セイ",
-                    "enMn": "гайхалтай",
-                    "meaningsMn": [
-                        "гайхалтай"
-                    ]
-                },
-                {
-                    "jp": "片付ける",
-                    "reading": "かたづける",
-                    "en": "to (clean) tidy up (v.t.)",
-                    "meanings": [
-                        "to (clean) tidy up (v.t.)",
-                        "to put away"
-                    ],
-                    "example": null,
-                    "phonetic": "付",
-                    "phoneticReading": "フ",
-                    "enMn": "цэгцлэх",
-                    "meaningsMn": [
-                        "цэгцлэх"
-                    ]
-                },
-                {
-                    "jp": "部長",
-                    "reading": "ぶちょう",
-                    "en": "department (division) manager",
-                    "meanings": [
-                        "department (division) manager"
-                    ],
-                    "example": null,
-                    "phonetic": "長",
-                    "phoneticReading": "チョウ",
-                    "enMn": "хэлтсийн дарга",
-                    "meaningsMn": [
-                        "хэлтсийн дарга"
-                    ]
-                },
-                {
-                    "jp": "教会",
-                    "reading": "きょうかい",
-                    "en": "church",
-                    "meanings": [
-                        "church"
-                    ],
-                    "example": null,
-                    "phonetic": "会",
-                    "phoneticReading": "カイ、エ",
-                    "enMn": "сүм",
-                    "meaningsMn": [
-                        "сүм"
-                    ]
-                },
-                {
-                    "jp": "男性",
-                    "reading": "だんせい",
-                    "en": "man; male",
-                    "meanings": [
-                        "man; male"
-                    ],
-                    "example": null,
-                    "phonetic": "生",
-                    "phoneticReading": "セイ、ショウ",
-                    "enMn": "эрэгтэй хүн",
-                    "meaningsMn": [
-                        "эрэгтэй хүн"
-                    ]
-                },
-                {
-                    "jp": "理由",
-                    "reading": "りゆう",
-                    "en": "reason",
-                    "meanings": [
-                        "reason"
-                    ],
-                    "example": null,
-                    "phonetic": "由",
-                    "phoneticReading": "チュウ、ユ、テキ",
-                    "enMn": "шалтгаан",
-                    "meaningsMn": [
-                        "шалтгаан"
-                    ]
-                },
-                {
-                    "jp": "暮れる",
-                    "reading": "くれる",
-                    "en": "to get dark",
-                    "meanings": [
-                        "to get dark",
-                        "to come to an end"
-                    ],
-                    "example": null,
-                    "phonetic": "莫",
-                    "phoneticReading": "ボ、モ、マク、バク",
-                    "enMn": "харанхуйлах",
-                    "meaningsMn": [
-                        "харанхуйлах"
                     ]
                 },
                 {
@@ -12163,37 +11678,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "昼間",
-                    "reading": "ひるま",
-                    "en": "daytime",
-                    "meanings": [
-                        "daytime",
-                        "during the day"
-                    ],
-                    "example": null,
-                    "phonetic": "門",
-                    "phoneticReading": "モン、カン",
-                    "enMn": "өдрийн цагт",
-                    "meaningsMn": [
-                        "өдрийн цагт"
-                    ]
-                },
-                {
-                    "jp": "女性",
-                    "reading": "じょせい",
-                    "en": "woman",
-                    "meanings": [
-                        "woman"
-                    ],
-                    "example": null,
-                    "phonetic": "生",
-                    "phoneticReading": "セイ、ショウ",
-                    "enMn": "эмэгтэй хүн",
-                    "meaningsMn": [
-                        "эмэгтэй хүн"
-                    ]
-                },
-                {
                     "jp": "邪魔",
                     "reading": "じゃま",
                     "en": "hindrance",
@@ -12208,143 +11692,559 @@ const WORD_LEVELS = [
                     "meaningsMn": [
                         "саад"
                     ]
+                }
+            ]
+        ],
+        "themeKey": "theme.n4.11"
+    },
+    {
+        "level": 24,
+        "jlpt": "N4",
+        "title": "Maybe, always, never",
+        "sets": [
+            [
+                {
+                    "jp": "すっと",
+                    "reading": "すっと",
+                    "en": "straight",
+                    "meanings": [
+                        "straight",
+                        "quickly"
+                    ],
+                    "example": {
+                        "jp": "彼の首筋を血がすっと伝った。",
+                        "en": "A trickle of blood ran down his neck.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>首筋<rp>(</rp><rt>くびすじ</rt><rp>)</rp></ruby>を<ruby>血<rp>(</rp><rt>ち</rt><rp>)</rp></ruby>がすっと<ruby>伝<rp>(</rp><rt>つた</rt><rp>)</rp></ruby>った。",
+                        "enMn": "Хүзүүгээр нь цус нимгэн урсаж буув."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "шууд",
+                    "meaningsMn": [
+                        "шууд"
+                    ]
                 },
                 {
-                    "jp": "国際",
-                    "reading": "こくさい",
-                    "en": "international",
+                    "jp": "大抵",
+                    "reading": "たいてい",
+                    "en": "generally",
                     "meanings": [
-                        "international"
+                        "generally",
+                        "usually"
                     ],
-                    "example": null,
-                    "phonetic": "祭",
-                    "phoneticReading": "サイ",
-                    "enMn": "олон улсын",
+                    "example": {
+                        "jp": "大抵の人は僕を気違いだと思っている。",
+                        "en": "Most people think I'm crazy.",
+                        "furigana": "<ruby>大抵<rp>(</rp><rt>たいてい</rt><rp>)</rp></ruby>の<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>は<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>を<ruby>気違<rp>(</rp><rt>きちが</rt><rp>)</rp></ruby>いだと<ruby>思<rp>(</rp><rt>おも</rt><rp>)</rp></ruby>っている。",
+                        "enMn": "Ихэнх хүмүүс намайг галзуу гэж боддог."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "ихэвчлэн",
                     "meaningsMn": [
-                        "олон улсын"
+                        "ихэвчлэн"
+                    ]
+                },
+                {
+                    "jp": "とうとう",
+                    "reading": "とうとう",
+                    "en": "finally",
+                    "meanings": [
+                        "finally",
+                        "at last"
+                    ],
+                    "example": {
+                        "jp": "母はとうとう私の考えに従った。",
+                        "en": "My mother finally has given in to my views.",
+                        "furigana": "<ruby>母<rp>(</rp><rt>はは</rt><rp>)</rp></ruby>はとうとう<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>の<ruby>考<rp>(</rp><rt>かんが</rt><rp>)</rp></ruby>えに<ruby>従<rp>(</rp><rt>したが</rt><rp>)</rp></ruby>った。",
+                        "enMn": "Ээж эцэстээ миний бодлыг дагав."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "эцэстээ",
+                    "meaningsMn": [
+                        "эцэстээ"
+                    ]
+                },
+                {
+                    "jp": "しっかり",
+                    "reading": "しっかり",
+                    "en": "firmly",
+                    "meanings": [
+                        "firmly",
+                        "steady"
+                    ],
+                    "example": {
+                        "jp": "皆さんネチケットはしっかり。",
+                        "en": "Everyone, please keep to netiquette.",
+                        "furigana": "<ruby>皆<rp>(</rp><rt>みな</rt><rp>)</rp></ruby>さんネチケットはしっかり。",
+                        "enMn": "Хүмүүс ээ, сүлжээний ёс зүйгээ сайн баримтлаарай."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "бат бөх",
+                    "meaningsMn": [
+                        "бат бөх"
+                    ]
+                },
+                {
+                    "jp": "もし",
+                    "reading": "もし",
+                    "en": "if",
+                    "meanings": [
+                        "if"
+                    ],
+                    "example": {
+                        "jp": "もし間違いを見つけたら訂正してください。",
+                        "en": "If you see a mistake, then please correct it.",
+                        "furigana": "もし<ruby>間違<rp>(</rp><rt>まちが</rt><rp>)</rp></ruby>いを<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>つけたら<ruby>訂正<rp>(</rp><rt>ていせい</rt><rp>)</rp></ruby>してください。",
+                        "enMn": "Хэрэв алдаа олвол засна уу."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "бол",
+                    "meaningsMn": [
+                        "бол"
+                    ]
+                },
+                {
+                    "jp": "ほとんど",
+                    "reading": "ほとんど",
+                    "en": "mostly",
+                    "meanings": [
+                        "mostly",
+                        "almost"
+                    ],
+                    "example": {
+                        "jp": "惑星の表面はほとんどが水から出来ている。",
+                        "en": "The surface of a planet is composed mostly of water.",
+                        "furigana": "<ruby>惑星<rp>(</rp><rt>わくせい</rt><rp>)</rp></ruby>の<ruby>表面<rp>(</rp><rt>ひょうめん</rt><rp>)</rp></ruby>はほとんどが<ruby>水<rp>(</rp><rt>みず</rt><rp>)</rp></ruby>から<ruby>出来<rp>(</rp><rt>でき</rt><rp>)</rp></ruby>ている。",
+                        "enMn": "Гаригийн гадаргуу ихэвчлэн уснаас тогтдог."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "бараг",
+                    "meaningsMn": [
+                        "бараг"
+                    ]
+                },
+                {
+                    "jp": "つもり",
+                    "reading": "つもり",
+                    "en": "intention",
+                    "meanings": [
+                        "intention",
+                        "plan"
+                    ],
+                    "example": {
+                        "jp": "自分勝手にするつもりはない。",
+                        "en": "I don't intend to be selfish.",
+                        "furigana": "<ruby>自分勝手<rp>(</rp><rt>じぶんがって</rt><rp>)</rp></ruby>にするつもりはない。",
+                        "enMn": "Дураараа аашлах санаа надад алга."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "санаа",
+                    "meaningsMn": [
+                        "санаа"
+                    ]
+                },
+                {
+                    "jp": "必ず",
+                    "reading": "かならず",
+                    "en": "surely",
+                    "meanings": [
+                        "surely",
+                        "certainly"
+                    ],
+                    "example": {
+                        "jp": "来週の月曜日に必ずお返しします。",
+                        "en": "I'll give it back next Monday without fail.",
+                        "furigana": "<ruby>来週<rp>(</rp><rt>らいしゅう</rt><rp>)</rp></ruby>の<ruby>月曜日<rp>(</rp><rt>げつようび</rt><rp>)</rp></ruby>に<ruby>必<rp>(</rp><rt>かなら</rt><rp>)</rp></ruby>ずお<ruby>返<rp>(</rp><rt>かえ</rt><rp>)</rp></ruby>しします。",
+                        "enMn": "Би ирэх даваа гарагт заавал буцааж өгнө."
+                    },
+                    "phonetic": "必",
+                    "phoneticReading": "ヒ、ヒツ",
+                    "enMn": "заавал",
+                    "meaningsMn": [
+                        "заавал",
+                        "мэдээж"
+                    ]
+                },
+                {
+                    "jp": "うん",
+                    "reading": "うん",
+                    "en": "yes (informal)",
+                    "meanings": [
+                        "yes (informal)",
+                        "all right (ok)"
+                    ],
+                    "example": {
+                        "jp": "うん、誤診だったみたい。",
+                        "en": "Yes, it seems it was a misdiagnosis.",
+                        "furigana": "うん、<ruby>誤診<rp>(</rp><rt>ごしん</rt><rp>)</rp></ruby>だったみたい。",
+                        "enMn": "За, буруу оношилсон бололтой."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "за",
+                    "meaningsMn": [
+                        "за"
+                    ]
+                },
+                {
+                    "jp": "そう",
+                    "reading": "そう",
+                    "en": "really",
+                    "meanings": [
+                        "really",
+                        "(is that) so; yes",
+                        "right"
+                    ],
+                    "example": {
+                        "jp": "私ならそう言っただろうと思う。",
+                        "en": "This is what I would have said.",
+                        "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>ならそう<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>っただろうと<ruby>思<rp>(</rp><rt>おも</rt><rp>)</rp></ruby>う。",
+                        "enMn": "Би байсан бол ингэж хэлэх байсан гэж бодож байна."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "тийм үү",
+                    "meaningsMn": [
+                        "тийм үү"
+                    ]
+                },
+                {
+                    "jp": "ちっとも",
+                    "reading": "ちっとも",
+                    "en": "not at all (neg. verb)",
+                    "meanings": [
+                        "not at all (neg. verb)"
+                    ],
+                    "example": {
+                        "jp": "ゆうべはちっとも眠れなかった。",
+                        "en": "I did not sleep at all last night.",
+                        "furigana": "ゆうべはちっとも<ruby>眠<rp>(</rp><rt>ねむ</rt><rp>)</rp></ruby>れなかった。",
+                        "enMn": "Өчигдөр орой би огт унтаж чадсангүй."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "огт",
+                    "meaningsMn": [
+                        "огт"
+                    ]
+                },
+                {
+                    "jp": "できるだけ",
+                    "reading": "できるだけ",
+                    "en": "if at all possible",
+                    "meanings": [
+                        "if at all possible",
+                        "as much as possible"
+                    ],
+                    "example": {
+                        "jp": "できるだけ君本人が行って調べたほうがいいよ。",
+                        "en": "If at all possible, you should go and look into the matter yourself.",
+                        "furigana": "できるだけ<ruby>君<rp>(</rp><rt>きみ</rt><rp>)</rp></ruby><ruby>本人<rp>(</rp><rt>ほんにん</rt><rp>)</rp></ruby>が<ruby>行<rp>(</rp><rt>おこな</rt><rp>)</rp></ruby>って<ruby>調<rp>(</rp><rt>しら</rt><rp>)</rp></ruby>べたほうがいいよ。",
+                        "enMn": "Аль болох чи өөрөө очиж шалгасан нь дээр шүү."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "аль болох",
+                    "meaningsMn": [
+                        "аль болох"
+                    ]
+                },
+                {
+                    "jp": "そんな",
+                    "reading": "そんな",
+                    "en": "such",
+                    "meanings": [
+                        "such",
+                        "like that",
+                        "that sort of"
+                    ],
+                    "example": {
+                        "jp": "そんなことは起きないでしょう。",
+                        "en": "That won't happen.",
+                        "furigana": "そんなことは<ruby>起<rp>(</rp><rt>お</rt><rp>)</rp></ruby>きないでしょう。",
+                        "enMn": "Тийм зүйл болохгүй байх."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "тийм",
+                    "meaningsMn": [
+                        "тийм"
+                    ]
+                },
+                {
+                    "jp": "別",
+                    "reading": "べつ",
+                    "en": "distinction",
+                    "meanings": [
+                        "distinction",
+                        "different"
+                    ],
+                    "example": {
+                        "jp": "別の日をご指定いただけませんか。",
+                        "en": "Could you suggest an alternative date?",
+                        "furigana": "<ruby>別<rp>(</rp><rt>べつ</rt><rp>)</rp></ruby>の<ruby>日<rp>(</rp><rt>ひ</rt><rp>)</rp></ruby>をご<ruby>指定<rp>(</rp><rt>してい</rt><rp>)</rp></ruby>いただけませんか。",
+                        "enMn": "Өөр огноо санал болгож болох уу?"
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "ялгаа",
+                    "meaningsMn": [
+                        "ялгаа",
+                        "өөр"
+                    ]
+                },
+                {
+                    "jp": "決して",
+                    "reading": "けっして",
+                    "en": "never",
+                    "meanings": [
+                        "never"
+                    ],
+                    "example": {
+                        "jp": "人間は決して永遠には生きられないものだ。",
+                        "en": "Humans were never meant to live forever.",
+                        "furigana": "<ruby>人間<rp>(</rp><rt>にんげん</rt><rp>)</rp></ruby>は<ruby>決<rp>(</rp><rt>けっ</rt><rp>)</rp></ruby>して<ruby>永遠<rp>(</rp><rt>えいえん</rt><rp>)</rp></ruby>には<ruby>生<rp>(</rp><rt>い</rt><rp>)</rp></ruby>きられないものだ。",
+                        "enMn": "Хүн хэзээ ч мөнхөд амьдарч чадахгүй юм."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хэзээ ч үгүй",
+                    "meaningsMn": [
+                        "хэзээ ч үгүй"
+                    ]
+                },
+                {
+                    "jp": "事",
+                    "reading": "こと",
+                    "en": "thing(s)",
+                    "meanings": [
+                        "thing(s)",
+                        "matter(s)",
+                        "fact"
+                    ],
+                    "example": {
+                        "jp": "欲しくないという事は持っていると同じことだ。",
+                        "en": "Not wanting is the same as having.",
+                        "furigana": "<ruby>欲<rp>(</rp><rt>ほ</rt><rp>)</rp></ruby>しくないという<ruby>事<rp>(</rp><rt>こと</rt><rp>)</rp></ruby>は<ruby>持<rp>(</rp><rt>も</rt><rp>)</rp></ruby>っていると<ruby>同<rp>(</rp><rt>おな</rt><rp>)</rp></ruby>じことだ。",
+                        "enMn": "Хүсэхгүй байна гэдэг нь эзэмшиж байгаатай адил."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "зүйл",
+                    "meaningsMn": [
+                        "зүйл"
+                    ]
+                },
+                {
+                    "jp": "それに",
+                    "reading": "それに",
+                    "en": "moreover",
+                    "meanings": [
+                        "moreover",
+                        "besides"
+                    ],
+                    "example": {
+                        "jp": "彼は私にパン、それに牛乳もくれた。",
+                        "en": "He gave me some bread, also some milk.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>にパン、それに<ruby>牛乳<rp>(</rp><rt>ぎゅうにゅう</rt><rp>)</rp></ruby>もくれた。",
+                        "enMn": "Тэр надад талх, мөн сүү өгсөн."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "түүнчлэн",
+                    "meaningsMn": [
+                        "түүнчлэн",
+                        "түүнчлэн"
+                    ]
+                },
+                {
+                    "jp": "非常に",
+                    "reading": "ひじょうに",
+                    "en": "extremely",
+                    "meanings": [
+                        "extremely",
+                        "very"
+                    ],
+                    "example": {
+                        "jp": "病院は非常にお金がかかります。",
+                        "en": "Hospitals are very expensive.",
+                        "furigana": "<ruby>病院<rp>(</rp><rt>びょういん</rt><rp>)</rp></ruby>は<ruby>非常<rp>(</rp><rt>ひじょう</rt><rp>)</rp></ruby>にお<ruby>金<rp>(</rp><rt>かね</rt><rp>)</rp></ruby>がかかります。",
+                        "enMn": "Эмнэлгийн зардал маш өндөр байдаг."
+                    },
+                    "phonetic": "非",
+                    "phoneticReading": "ハイ、ヒ",
+                    "enMn": "маш их",
+                    "meaningsMn": [
+                        "маш их",
+                        "маш"
+                    ]
+                },
+                {
+                    "jp": "場合",
+                    "reading": "ばあい",
+                    "en": "case",
+                    "meanings": [
+                        "case",
+                        "situation"
+                    ],
+                    "example": {
+                        "jp": "場合によっては腕力に訴えてもよい。",
+                        "en": "It is sometimes acceptable to resort to violence.",
+                        "furigana": "<ruby>場合<rp>(</rp><rt>ばあい</rt><rp>)</rp></ruby>によっては<ruby>腕力<rp>(</rp><rt>わんりょく</rt><rp>)</rp></ruby>に<ruby>訴<rp>(</rp><rt>うった</rt><rp>)</rp></ruby>えてもよい。",
+                        "enMn": "Заримдаа хүчирхийлэлд хандах нь зөвшөөрөгдөх тохиолдол бий."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "тохиолдол",
+                    "meaningsMn": [
+                        "тохиолдол",
+                        "нөхцөл байдал"
+                    ]
+                },
+                {
+                    "jp": "もちろん",
+                    "reading": "もちろん",
+                    "en": "certainly",
+                    "meanings": [
+                        "certainly",
+                        "of course"
+                    ],
+                    "example": {
+                        "jp": "足が遅い彼は、もちろんすでに2m差がついた。",
+                        "en": "He, being slow-footed, was of course already lagging two meters.",
+                        "furigana": "<ruby>足<rp>(</rp><rt>あし</rt><rp>)</rp></ruby>が<ruby>遅<rp>(</rp><rt>おそ</rt><rp>)</rp></ruby>い<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は、もちろんすでに2m<ruby>差<rp>(</rp><rt>さ</rt><rp>)</rp></ruby>がついた。",
+                        "enMn": "Хөл удаантай тэрээр мэдээж аль хэдийн 2 метрээр хоцорчээ."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "мэдээж",
+                    "meaningsMn": [
+                        "мэдээж"
+                    ]
+                },
+                {
+                    "jp": "内",
+                    "reading": "うち",
+                    "en": "within",
+                    "meanings": [
+                        "within",
+                        "inside"
+                    ],
+                    "example": {
+                        "jp": "手術は医院内で三十分以内に完了します。",
+                        "en": "The surgery, performed at our clinic, is over in half an hour.",
+                        "furigana": "<ruby>手術<rp>(</rp><rt>しゅじゅつ</rt><rp>)</rp></ruby>は<ruby>医院<rp>(</rp><rt>いいん</rt><rp>)</rp></ruby><ruby>内<rp>(</rp><rt>ない</rt><rp>)</rp></ruby>で<ruby>三<rp>(</rp><rt>さん</rt><rp>)</rp></ruby><ruby>十<rp>(</rp><rt>じゅう</rt><rp>)</rp></ruby><ruby>分<rp>(</rp><rt>ふん</rt><rp>)</rp></ruby><ruby>以内<rp>(</rp><rt>いない</rt><rp>)</rp></ruby>に<ruby>完了<rp>(</rp><rt>かんりょう</rt><rp>)</rp></ruby>します。",
+                        "enMn": "Хагалгаа эмнэлэгт гучин минутын дотор дуусна."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "дотор",
+                    "meaningsMn": [
+                        "дотор"
+                    ]
+                },
+                {
+                    "jp": "または",
+                    "reading": "または",
+                    "en": "or",
+                    "meanings": [
+                        "or",
+                        "otherwise"
+                    ],
+                    "example": {
+                        "jp": "今は彼らは小型車または中型車を好む。",
+                        "en": "Now they like cars of small or middle size.",
+                        "furigana": "<ruby>今<rp>(</rp><rt>いま</rt><rp>)</rp></ruby>は<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>小型車<rp>(</rp><rt>こがたしゃ</rt><rp>)</rp></ruby>または<ruby>中型<rp>(</rp><rt>ちゅうがた</rt><rp>)</rp></ruby><ruby>車<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby>を<ruby>好<rp>(</rp><rt>この</rt><rp>)</rp></ruby>む。",
+                        "enMn": "Одоо тэд жижиг эсвэл дунд оврын машин илүүд үздэг."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "эсвэл",
+                    "meaningsMn": [
+                        "эсвэл"
+                    ]
+                },
+                {
+                    "jp": "なるべく",
+                    "reading": "なるべく",
+                    "en": "if possible",
+                    "meanings": [
+                        "if possible",
+                        "as much as possible"
+                    ],
+                    "example": {
+                        "jp": "彼は技術者になるべく生まれてきた。",
+                        "en": "He was born to be a technician.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>技術<rp>(</rp><rt>ぎじゅつ</rt><rp>)</rp></ruby><ruby>者<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby>になるべく<ruby>生<rp>(</rp><rt>う</rt><rp>)</rp></ruby>まれてきた。",
+                        "enMn": "Тэр инженер болохоор төрсөн юм шиг."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "боломжтой бол",
+                    "meaningsMn": [
+                        "боломжтой бол",
+                        "аль болох"
+                    ]
+                },
+                {
+                    "jp": "だから",
+                    "reading": "だから",
+                    "en": "so",
+                    "meanings": [
+                        "so",
+                        "therefore"
+                    ],
+                    "example": {
+                        "jp": "彼一人だけ余る、だから審判させよう。",
+                        "en": "He's an odd man; so we'll have him referee.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby><ruby>一<rp>(</rp><rt>いち</rt><rp>)</rp></ruby><ruby>人<rp>(</rp><rt>にん</rt><rp>)</rp></ruby>だけ<ruby>余<rp>(</rp><rt>あま</rt><rp>)</rp></ruby>る、だから<ruby>審判<rp>(</rp><rt>しんぱん</rt><rp>)</rp></ruby>させよう。",
+                        "enMn": "Тэр ганц илүү хүн байгаа тул түүгээр шүүгч болгоно."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "тиймээс",
+                    "meaningsMn": [
+                        "тиймээс",
+                        "тиймээс"
+                    ]
+                },
+                {
+                    "jp": "確か",
+                    "reading": "たしか",
+                    "en": "if I remember correctly",
+                    "meanings": [
+                        "if I remember correctly; certain",
+                        "definite"
+                    ],
+                    "example": {
+                        "jp": "それは確かに一案です。",
+                        "en": "That's certainly one possibility.",
+                        "furigana": "それは<ruby>確<rp>(</rp><rt>たし</rt><rp>)</rp></ruby>かに<ruby>一案<rp>(</rp><rt>いちあん</rt><rp>)</rp></ruby>です。",
+                        "enMn": "Тэр бол лавтай нэг санал юм."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "лавтай",
+                    "meaningsMn": [
+                        "лавтай"
                     ]
                 }
             ]
-        ]
+        ],
+        "themeKey": "theme.n4.12"
     },
     {
         "level": 25,
         "jlpt": "N3",
-        "title": "N3 · Level 1",
+        "title": "Money and paying",
         "sets": [
             [
-                {
-                    "jp": "正午",
-                    "reading": "しょうご",
-                    "en": "noon",
-                    "meanings": [
-                        "noon",
-                        "mid-day"
-                    ],
-                    "example": {
-                        "jp": "彼は正午までここにいるでしょう。",
-                        "en": "He'll be here until noon.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>正午<rp>(</rp><rt>しょうご</rt><rp>)</rp></ruby>までここにいるでしょう。",
-                        "enMn": "Тэр үд хүртэл энд байх болно."
-                    },
-                    "phonetic": "正",
-                    "phoneticReading": "ショウ、セイ",
-                    "enMn": "үдийн цаг",
-                    "meaningsMn": [
-                        "үдийн цаг",
-                        "үд дунд"
-                    ]
-                },
-                {
-                    "jp": "正直",
-                    "reading": "しょうじき",
-                    "en": "honesty",
-                    "meanings": [
-                        "honesty",
-                        "integrity",
-                        "frankness"
-                    ],
-                    "example": {
-                        "jp": "彼女は彼が正直であると納得した。",
-                        "en": "She was satisfied that he was honest.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>が<ruby>正直<rp>(</rp><rt>しょうじき</rt><rp>)</rp></ruby>であると<ruby>納得<rp>(</rp><rt>なっとく</rt><rp>)</rp></ruby>した。",
-                        "enMn": "Тэр түүнийг үнэнч гэдэгт итгэж сэтгэл ханав."
-                    },
-                    "phonetic": "正",
-                    "phoneticReading": "ショウ、セイ",
-                    "enMn": "шударга байдал",
-                    "meaningsMn": [
-                        "шударга байдал",
-                        "шударга зан",
-                        "нээлттэй зан"
-                    ]
-                },
-                {
-                    "jp": "宿泊",
-                    "reading": "しゅくはく",
-                    "en": "lodging",
-                    "meanings": [
-                        "lodging"
-                    ],
-                    "example": {
-                        "jp": "彼はホテルに電話で宿泊を頼んだ。",
-                        "en": "He called a hotel for accommodations.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>はホテルに<ruby>電話<rp>(</rp><rt>でんわ</rt><rp>)</rp></ruby>で<ruby>宿泊<rp>(</rp><rt>しゅくはく</rt><rp>)</rp></ruby>を<ruby>頼<rp>(</rp><rt>たの</rt><rp>)</rp></ruby>んだ。",
-                        "enMn": "Тэр буудалд байр захиалахаар утасдав."
-                    },
-                    "phonetic": "宿",
-                    "phoneticReading": "シュク",
-                    "enMn": "байрлал",
-                    "meaningsMn": [
-                        "байрлал"
-                    ]
-                },
-                {
-                    "jp": "宿",
-                    "reading": "やど",
-                    "en": "inn",
-                    "meanings": [
-                        "inn",
-                        "lodging"
-                    ],
-                    "example": {
-                        "jp": "私達は山のふもとの宿に泊まった。",
-                        "en": "We put up at an inn at the foot of the mountain.",
-                        "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby><ruby>達<rp>(</rp><rt>たち</rt><rp>)</rp></ruby>は<ruby>山<rp>(</rp><rt>やま</rt><rp>)</rp></ruby>のふもとの<ruby>宿<rp>(</rp><rt>やど</rt><rp>)</rp></ruby>に<ruby>泊<rp>(</rp><rt>と</rt><rp>)</rp></ruby>まった。",
-                        "enMn": "Бид уулын бэлд байрлах буудалд байрласан."
-                    },
-                    "phonetic": "宿",
-                    "phoneticReading": "シュク",
-                    "enMn": "зочид буудал",
-                    "meaningsMn": [
-                        "зочид буудал",
-                        "байрлал"
-                    ]
-                },
-                {
-                    "jp": "地味",
-                    "reading": "じみ",
-                    "en": "plain",
-                    "meanings": [
-                        "quiet",
-                        "plain",
-                        "conservative"
-                    ],
-                    "example": {
-                        "jp": "大学生のときに地味に始める年金納付。",
-                        "en": "Around the time you go to college, you start having to pay contributions to the National Pension.",
-                        "furigana": "<ruby>大学生<rp>(</rp><rt>だいがくせい</rt><rp>)</rp></ruby>のときに<ruby>地味<rp>(</rp><rt>じみ</rt><rp>)</rp></ruby>に<ruby>始<rp>(</rp><rt>はじ</rt><rp>)</rp></ruby>める<ruby>年金<rp>(</rp><rt>ねんきん</rt><rp>)</rp></ruby><ruby>納付<rp>(</rp><rt>のうふ</rt><rp>)</rp></ruby>。",
-                        "enMn": "Их сургуульд орох үеэс улсын тэтгэврийн шимтгэл төлж эхлэх шаардлагатай болдог."
-                    },
-                    "phonetic": "也",
-                    "phoneticReading": "チ",
-                    "enMn": "энгийн",
-                    "meaningsMn": [
-                        "чимээгүй",
-                        "энгийн",
-                        "даруухан"
-                    ]
-                },
                 {
                     "jp": "支払う",
                     "reading": "しはらう",
@@ -12390,433 +12290,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "銃",
-                    "reading": "じゅう",
-                    "en": "gun",
-                    "meanings": [
-                        "gun"
-                    ],
-                    "example": {
-                        "jp": "猟師たちは銃でその象をねらった。",
-                        "en": "The hunters aimed at the elephant.",
-                        "furigana": "<ruby>猟師<rp>(</rp><rt>りょうし</rt><rp>)</rp></ruby>たちは<ruby>銃<rp>(</rp><rt>じゅう</rt><rp>)</rp></ruby>でその<ruby>象<rp>(</rp><rt>ぞう</rt><rp>)</rp></ruby>をねらった。",
-                        "enMn": "Анчид заанд буугаа чиглүүлэв."
-                    },
-                    "phonetic": "充",
-                    "phoneticReading": "ジュウ",
-                    "enMn": "буу",
-                    "meaningsMn": [
-                        "буу"
-                    ]
-                },
-                {
-                    "jp": "賛成",
-                    "reading": "さんせい",
-                    "en": "approval",
-                    "meanings": [
-                        "approval",
-                        "agreement"
-                    ],
-                    "example": {
-                        "jp": "母はついに私達の計画に賛成した。",
-                        "en": "My mother finally approved of our plan.",
-                        "furigana": "<ruby>母<rp>(</rp><rt>はは</rt><rp>)</rp></ruby>はついに<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby><ruby>達<rp>(</rp><rt>たち</rt><rp>)</rp></ruby>の<ruby>計画<rp>(</rp><rt>けいかく</rt><rp>)</rp></ruby>に<ruby>賛成<rp>(</rp><rt>さんせい</rt><rp>)</rp></ruby>した。",
-                        "enMn": "Ээж минь эцэст нь бидний төлөвлөгөөг зөвшөөрсөн."
-                    },
-                    "phonetic": "賛",
-                    "phoneticReading": "サン",
-                    "enMn": "зөвшөөрөл",
-                    "meaningsMn": [
-                        "зөвшөөрөл",
-                        "тохиролцоо"
-                    ]
-                },
-                {
-                    "jp": "障害",
-                    "reading": "しょうがい",
-                    "en": "obstacle",
-                    "meanings": [
-                        "obstacle",
-                        "impediment"
-                    ],
-                    "example": {
-                        "jp": "貧困は幸福への障害とはならない。",
-                        "en": "Poverty is not a bar to happiness.",
-                        "furigana": "<ruby>貧困<rp>(</rp><rt>ひんこん</rt><rp>)</rp></ruby>は<ruby>幸福<rp>(</rp><rt>こうふく</rt><rp>)</rp></ruby>への<ruby>障害<rp>(</rp><rt>しょうがい</rt><rp>)</rp></ruby>とはならない。",
-                        "enMn": "Ядуурал бол аз жаргалд саад болохгүй."
-                    },
-                    "phonetic": "章",
-                    "phoneticReading": "ショウ",
-                    "enMn": "саад",
-                    "meaningsMn": [
-                        "саад",
-                        "саад"
-                    ]
-                },
-                {
-                    "jp": "様々",
-                    "reading": "さまざま",
-                    "en": "varied",
-                    "meanings": [
-                        "varied",
-                        "various"
-                    ],
-                    "example": {
-                        "jp": "彼は様々のグループを統一しようとした。",
-                        "en": "He tried to unify the various groups.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>様々<rp>(</rp><rt>さまざま</rt><rp>)</rp></ruby>のグループを<ruby>統一<rp>(</rp><rt>とういつ</rt><rp>)</rp></ruby>しようとした。",
-                        "enMn": "Тэр янз бүрийн бүлгүүдийг нэгтгэхийг оролдов."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "олон янзын",
-                    "meaningsMn": [
-                        "олон янзын"
-                    ]
-                },
-                {
-                    "jp": "冷ます",
-                    "reading": "さます",
-                    "en": "to cool",
-                    "meanings": [
-                        "to cool",
-                        "to let cool"
-                    ],
-                    "example": {
-                        "jp": "煮物は一度冷ますと、味が染みこみ美味しくなります。",
-                        "en": "If you give simmered food a moment to cool, the flavors will spread throughout the dish, and it'll taste really good.",
-                        "furigana": "<ruby>煮物<rp>(</rp><rt>にもの</rt><rp>)</rp></ruby>は<ruby>一度<rp>(</rp><rt>いちど</rt><rp>)</rp></ruby><ruby>冷<rp>(</rp><rt>さ</rt><rp>)</rp></ruby>ますと、<ruby>味<rp>(</rp><rt>あじ</rt><rp>)</rp></ruby>が<ruby>染<rp>(</rp><rt>し</rt><rp>)</rp></ruby>みこみ<ruby>美味<rp>(</rp><rt>おい</rt><rp>)</rp></ruby>しくなります。",
-                        "enMn": "Чанасан хоолыг нэг удаа хөргөвөл амт нь шингэж илүү амттай болдог."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хөргөх",
-                    "meaningsMn": [
-                        "хөргөх"
-                    ]
-                },
-                {
-                    "jp": "覚ます",
-                    "reading": "さます",
-                    "en": "to awaken",
-                    "meanings": [
-                        "to awaken"
-                    ],
-                    "example": {
-                        "jp": "目を覚ますと、家族が来ていた。",
-                        "en": "When she awoke, the family was there.",
-                        "furigana": "<ruby>目<rp>(</rp><rt>め</rt><rp>)</rp></ruby>を<ruby>覚<rp>(</rp><rt>さ</rt><rp>)</rp></ruby>ますと、<ruby>家族<rp>(</rp><rt>かぞく</rt><rp>)</rp></ruby>が<ruby>来<rp>(</rp><rt>き</rt><rp>)</rp></ruby>ていた。",
-                        "enMn": "Нүдээ нээхэд гэр бүлийнхэн нь ирсэн байлаа."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "сэрээх",
-                    "meaningsMn": [
-                        "сэрээх"
-                    ]
-                },
-                {
-                    "jp": "冷める",
-                    "reading": "さめる",
-                    "en": "to become cool",
-                    "meanings": [
-                        "to become cool",
-                        "to wear off"
-                    ],
-                    "example": {
-                        "jp": "愛が冷めると、欠点が多く目に付いてくる。",
-                        "en": "Faults are thick where love is thin.",
-                        "furigana": "<ruby>愛<rp>(</rp><rt>あい</rt><rp>)</rp></ruby>が<ruby>冷<rp>(</rp><rt>さ</rt><rp>)</rp></ruby>めると、<ruby>欠点<rp>(</rp><rt>けってん</rt><rp>)</rp></ruby>が<ruby>多<rp>(</rp><rt>おお</rt><rp>)</rp></ruby>く<ruby>目<rp>(</rp><rt>め</rt><rp>)</rp></ruby>に<ruby>付<rp>(</rp><rt>つ</rt><rp>)</rp></ruby>いてくる。",
-                        "enMn": "Хайр хөрөхөд дутагдал нь их анзаарагдаж эхэлдэг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хөрөх",
-                    "meaningsMn": [
-                        "хөрөх"
-                    ]
-                },
-                {
-                    "jp": "覚める",
-                    "reading": "さめる",
-                    "en": "to wake",
-                    "meanings": [
-                        "to wake",
-                        "to wake up"
-                    ],
-                    "example": {
-                        "jp": "目が覚めると部屋に泥棒がいた。",
-                        "en": "I awoke to find a burglar in my room.",
-                        "furigana": "<ruby>目<rp>(</rp><rt>め</rt><rp>)</rp></ruby>が<ruby>覚<rp>(</rp><rt>さ</rt><rp>)</rp></ruby>めると<ruby>部屋<rp>(</rp><rt>へや</rt><rp>)</rp></ruby>に<ruby>泥棒<rp>(</rp><rt>どろぼう</rt><rp>)</rp></ruby>がいた。",
-                        "enMn": "Сэрэхэд өрөөнд минь хулгайч байлаа."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "сэрэх",
-                    "meaningsMn": [
-                        "сэрэх"
-                    ]
-                },
-                {
-                    "jp": "更に",
-                    "reading": "さらに",
-                    "en": "furthermore",
-                    "meanings": [
-                        "furthermore",
-                        "moreover"
-                    ],
-                    "example": {
-                        "jp": "彼らは更に３マイル遠くへ歩いた。",
-                        "en": "They walked three miles farther.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>更<rp>(</rp><rt>さら</rt><rp>)</rp></ruby>に３マイル<ruby>遠<rp>(</rp><rt>とお</rt><rp>)</rp></ruby>くへ<ruby>歩<rp>(</rp><rt>ある</rt><rp>)</rp></ruby>いた。",
-                        "enMn": "Тэд цаашлаад гурван миль алхав."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "цаашлаад",
-                    "meaningsMn": [
-                        "цаашлаад"
-                    ]
-                },
-                {
-                    "jp": "去る",
-                    "reading": "さる",
-                    "en": "to leave",
-                    "meanings": [
-                        "to leave",
-                        "to go away"
-                    ],
-                    "example": {
-                        "jp": "彼らは次の日、日本を去る事になっていた。",
-                        "en": "They were leaving Japan the next day.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>次<rp>(</rp><rt>つぎ</rt><rp>)</rp></ruby>の<ruby>日<rp>(</rp><rt>ひ</rt><rp>)</rp></ruby>、<ruby>日本<rp>(</rp><rt>にっぽん</rt><rp>)</rp></ruby>を<ruby>去<rp>(</rp><rt>さ</rt><rp>)</rp></ruby>る<ruby>事<rp>(</rp><rt>こと</rt><rp>)</rp></ruby>になっていた。",
-                        "enMn": "Тэд маргааш нь Японыг орхин одох болсон байв."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "одох",
-                    "meaningsMn": [
-                        "одох"
-                    ]
-                },
-                {
-                    "jp": "猿",
-                    "reading": "さる",
-                    "en": "monkey",
-                    "meanings": [
-                        "monkey"
-                    ],
-                    "example": {
-                        "jp": "あれはさる年に因んだ猿の絵です。",
-                        "en": "That's a picture of a monkey associated with the Year of the Monkey.",
-                        "furigana": "あれはさる<ruby>年<rp>(</rp><rt>とし</rt><rp>)</rp></ruby>に<ruby>因<rp>(</rp><rt>ちな</rt><rp>)</rp></ruby>んだ<ruby>猿<rp>(</rp><rt>さる</rt><rp>)</rp></ruby>の<ruby>絵<rp>(</rp><rt>え</rt><rp>)</rp></ruby>です。",
-                        "enMn": "Тэр бол бичин жилтэй холбоотой сармагчны зураг юм."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "сармагчин",
-                    "meaningsMn": [
-                        "сармагчин"
-                    ]
-                },
-                {
-                    "jp": "騒ぎ",
-                    "reading": "さわぎ",
-                    "en": "uproar",
-                    "meanings": [
-                        "uproar",
-                        "disturbance"
-                    ],
-                    "example": {
-                        "jp": "騒ぎは２、３日で過ぎ去った。",
-                        "en": "The trouble blew over after a few days.",
-                        "furigana": "<ruby>騒<rp>(</rp><rt>さわ</rt><rp>)</rp></ruby>ぎは２、３<ruby>日<rp>(</rp><rt>にち</rt><rp>)</rp></ruby>で<ruby>過<rp>(</rp><rt>す</rt><rp>)</rp></ruby>ぎ<ruby>去<rp>(</rp><rt>さ</rt><rp>)</rp></ruby>った。",
-                        "enMn": "Үймээн хоёр гурван хоногийн дотор намжив."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "үймээн",
-                    "meaningsMn": [
-                        "үймээн"
-                    ]
-                },
-                {
-                    "jp": "酸性",
-                    "reading": "さんせい",
-                    "en": "acidity",
-                    "meanings": [
-                        "acidity"
-                    ],
-                    "example": {
-                        "jp": "酸性土を灰で中和する。",
-                        "en": "Acid soil is neutralised by ash.",
-                        "furigana": "<ruby>酸性<rp>(</rp><rt>さんせい</rt><rp>)</rp></ruby><ruby>土<rp>(</rp><rt>ど</rt><rp>)</rp></ruby>を<ruby>灰<rp>(</rp><rt>はい</rt><rp>)</rp></ruby>で<ruby>中和<rp>(</rp><rt>ちゅうわ</rt><rp>)</rp></ruby>する。",
-                        "enMn": "Хүчиллэг хөрсийг үнсээр саармагжуулна."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хүчиллэг",
-                    "meaningsMn": [
-                        "хүчиллэг"
-                    ]
-                },
-                {
-                    "jp": "氏",
-                    "reading": "し",
-                    "en": "family name",
-                    "meanings": [
-                        "family name",
-                        "lineage"
-                    ],
-                    "example": {
-                        "jp": "選挙で小泉氏はすでに安全圏に入った。",
-                        "en": "Mr Koizumi is now sure of election.",
-                        "furigana": "<ruby>選挙<rp>(</rp><rt>せんきょ</rt><rp>)</rp></ruby>で<ruby>小泉<rp>(</rp><rt>こいずみ</rt><rp>)</rp></ruby><ruby>氏<rp>(</rp><rt>し</rt><rp>)</rp></ruby>はすでに<ruby>安全<rp>(</rp><rt>あんぜん</rt><rp>)</rp></ruby><ruby>圏<rp>(</rp><rt>けん</rt><rp>)</rp></ruby>に<ruby>入<rp>(</rp><rt>はい</rt><rp>)</rp></ruby>った。",
-                        "enMn": "Сонгуульд Коизүми ноён аль хэдийн баттай байрт орсон."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "овог",
-                    "meaningsMn": [
-                        "овог"
-                    ]
-                },
-                {
-                    "jp": "ジーンズ",
-                    "reading": "ジーンズ",
-                    "en": "jeans",
-                    "meanings": [
-                        "jeans"
-                    ],
-                    "example": {
-                        "jp": "彼女は姉のジーンズをはいて鏡を見た。",
-                        "en": "She put on her sister's jeans and looked in the mirror.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>姉<rp>(</rp><rt>あね</rt><rp>)</rp></ruby>のジーンズをはいて<ruby>鏡<rp>(</rp><rt>かがみ</rt><rp>)</rp></ruby>を<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>た。",
-                        "enMn": "Тэр эгчийнхээ жинсэн өмдийг өмсөөд толинд харав."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "жийнс",
-                    "meaningsMn": [
-                        "жийнс",
-                        "жинсэн өмд"
-                    ]
-                },
-                {
-                    "jp": "ジェット機",
-                    "reading": "ジェットき",
-                    "en": "jet plane",
-                    "meanings": [
-                        "jet plane"
-                    ],
-                    "example": {
-                        "jp": "離陸するジェット機の音が私の神経にさわる。",
-                        "en": "The sound of jets taking off gets on my nerves.",
-                        "furigana": "<ruby>離陸<rp>(</rp><rt>りりく</rt><rp>)</rp></ruby>するジェット<ruby>機<rp>(</rp><rt>き</rt><rp>)</rp></ruby>の<ruby>音<rp>(</rp><rt>おと</rt><rp>)</rp></ruby>が<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>の<ruby>神経<rp>(</rp><rt>しんけい</rt><rp>)</rp></ruby>にさわる。",
-                        "enMn": "Хөөрч буй тийрэлтэт онгоцны чимээ миний мэдрэлийг хөнддөг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "тийрэлтэт онгоц",
-                    "meaningsMn": [
-                        "тийрэлтэт онгоц"
-                    ]
-                },
-                {
-                    "jp": "四角",
-                    "reading": "しかく",
-                    "en": "square",
-                    "meanings": [
-                        "square"
-                    ],
-                    "example": {
-                        "jp": "例えば、『ねえ、ちょうど今青い四角の紙を見たよ。』のようにだ。",
-                        "en": "Like, 'Hey, I just saw a blue paper square!'",
-                        "furigana": "<ruby>例<rp>(</rp><rt>たと</rt><rp>)</rp></ruby>えば、『ねえ、ちょうど<ruby>今<rp>(</rp><rt>いま</rt><rp>)</rp></ruby><ruby>青<rp>(</rp><rt>あお</rt><rp>)</rp></ruby>い<ruby>四角<rp>(</rp><rt>しかく</rt><rp>)</rp></ruby>の<ruby>紙<rp>(</rp><rt>かみ</rt><rp>)</rp></ruby>を<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>たよ。』のようにだ。",
-                        "enMn": "Жишээ нь, «Хөөе, би дөнгөж сая цэнхэр дөрвөлжин цаас харлаа шүү» гэх мэт."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "дөрвөлжин",
-                    "meaningsMn": [
-                        "дөрвөлжин",
-                        "квадрат"
-                    ]
-                },
-                {
-                    "jp": "直に",
-                    "reading": "じかに",
-                    "en": "immediately",
-                    "meanings": [
-                        "immediately",
-                        "readily",
-                        "directly"
-                    ],
-                    "example": {
-                        "jp": "彼は直に腹を立てる。",
-                        "en": "He is quick to take offense.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>直<rp>(</rp><rt>じか</rt><rp>)</rp></ruby>に<ruby>腹<rp>(</rp><rt>はら</rt><rp>)</rp></ruby>を<ruby>立<rp>(</rp><rt>た</rt><rp>)</rp></ruby>てる。",
-                        "enMn": "Тэр амархан уурладаг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "биечлэн",
-                    "meaningsMn": [
-                        "биечлэн"
-                    ]
-                }
-            ]
-        ]
-    },
-    {
-        "level": 26,
-        "jlpt": "N3",
-        "title": "N3 · Level 2",
-        "sets": [
-            [
-                {
-                    "jp": "参加",
-                    "reading": "さんか",
-                    "en": "participation",
-                    "meanings": [
-                        "participation"
-                    ],
-                    "example": {
-                        "jp": "彼女は美人コンテストに参加した。",
-                        "en": "She participated in the beauty contest.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>美人<rp>(</rp><rt>びじん</rt><rp>)</rp></ruby>コンテストに<ruby>参加<rp>(</rp><rt>さんか</rt><rp>)</rp></ruby>した。",
-                        "enMn": "Тэр гоо сайхны тэмцээнд оролцов."
-                    },
-                    "phonetic": "参",
-                    "phoneticReading": "サン",
-                    "enMn": "оролцоо",
-                    "meaningsMn": [
-                        "оролцоо"
-                    ]
-                },
-                {
-                    "jp": "参考",
-                    "reading": "さんこう",
-                    "en": "reference",
-                    "meanings": [
-                        "reference",
-                        "consultation"
-                    ],
-                    "example": {
-                        "jp": "私は批評を参考にして本を読んだ。",
-                        "en": "I read the book in the light of criticism.",
-                        "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>は<ruby>批評<rp>(</rp><rt>ひひょう</rt><rp>)</rp></ruby>を<ruby>参考<rp>(</rp><rt>さんこう</rt><rp>)</rp></ruby>にして<ruby>本<rp>(</rp><rt>ほん</rt><rp>)</rp></ruby>を<ruby>読<rp>(</rp><rt>よ</rt><rp>)</rp></ruby>んだ。",
-                        "enMn": "Би шүүмжийг харгалзан номыг уншсан."
-                    },
-                    "phonetic": "参",
-                    "phoneticReading": "サン",
-                    "enMn": "лавлагаа",
-                    "meaningsMn": [
-                        "лавлагаа",
-                        "зөвлөлдөх"
-                    ]
-                },
-                {
                     "jp": "奨学金",
                     "reading": "しょうがくきん",
                     "en": "scholarship",
@@ -12834,48 +12307,6 @@ const WORD_LEVELS = [
                     "enMn": "тэтгэлэг",
                     "meaningsMn": [
                         "тэтгэлэг"
-                    ]
-                },
-                {
-                    "jp": "情報",
-                    "reading": "じょうほう",
-                    "en": "information",
-                    "meanings": [
-                        "information",
-                        "(military) intelligence"
-                    ],
-                    "example": {
-                        "jp": "舞踊がみたいのですが情報をください。",
-                        "en": "I'd like to see some dancing. Do you have any information?",
-                        "furigana": "<ruby>舞踊<rp>(</rp><rt>ぶよう</rt><rp>)</rp></ruby>がみたいのですが<ruby>情報<rp>(</rp><rt>じょうほう</rt><rp>)</rp></ruby>をください。",
-                        "enMn": "Би бүжиг үзмээр байна. Танд ямар нэг мэдээлэл байна уу?"
-                    },
-                    "phonetic": "青",
-                    "phoneticReading": "セイ、ショウ、ジョウ",
-                    "enMn": "мэдээлэл",
-                    "meaningsMn": [
-                        "мэдээлэл",
-                        "(цэргийн) тагнуул"
-                    ]
-                },
-                {
-                    "jp": "姉妹",
-                    "reading": "しまい",
-                    "en": "sisters",
-                    "meanings": [
-                        "sisters"
-                    ],
-                    "example": {
-                        "jp": "私たちは姉妹３人で喫茶店を始めた。",
-                        "en": "We three sisters opened a coffee shop.",
-                        "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>たちは<ruby>姉妹<rp>(</rp><rt>しまい</rt><rp>)</rp></ruby>３<ruby>人<rp>(</rp><rt>にん</rt><rp>)</rp></ruby>で<ruby>喫茶店<rp>(</rp><rt>きっさてん</rt><rp>)</rp></ruby>を<ruby>始<rp>(</rp><rt>はじ</rt><rp>)</rp></ruby>めた。",
-                        "enMn": "Бид гурван эгч дүү кофе шоп нээсэн."
-                    },
-                    "phonetic": "市",
-                    "phoneticReading": "シ",
-                    "enMn": "эгч дүү",
-                    "meaningsMn": [
-                        "эгч дүү"
                     ]
                 },
                 {
@@ -12901,50 +12332,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "就職",
-                    "reading": "しゅうしょく",
-                    "en": "employment",
-                    "meanings": [
-                        "finding employment"
-                    ],
-                    "example": {
-                        "jp": "彼女はタイピストとして就職した。",
-                        "en": "She found employment as a typist.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はタイピストとして<ruby>就職<rp>(</rp><rt>しゅうしょく</rt><rp>)</rp></ruby>した。",
-                        "enMn": "Тэр бичээчээр ажилд орсон."
-                    },
-                    "phonetic": "就",
-                    "phoneticReading": "シュウ",
-                    "enMn": "ажил эрхлэлт",
-                    "meaningsMn": [
-                        "ажилд орох"
-                    ]
-                },
-                {
-                    "jp": "作法",
-                    "reading": "さほう",
-                    "en": "manners",
-                    "meanings": [
-                        "manners",
-                        "etiquette",
-                        "propriety"
-                    ],
-                    "example": {
-                        "jp": "彼の貴族的な作法には感心する。",
-                        "en": "I admire his aristocratic manners.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>貴族<rp>(</rp><rt>きぞく</rt><rp>)</rp></ruby><ruby>的<rp>(</rp><rt>てき</rt><rp>)</rp></ruby>な<ruby>作法<rp>(</rp><rt>さほう</rt><rp>)</rp></ruby>には<ruby>感心<rp>(</rp><rt>かんしん</rt><rp>)</rp></ruby>する。",
-                        "enMn": "Би түүний язгууртны зан авирыг биширдэг."
-                    },
-                    "phonetic": "乍",
-                    "phoneticReading": "サク",
-                    "enMn": "зан төлөв",
-                    "meaningsMn": [
-                        "зан төлөв",
-                        "ёс зүй",
-                        "зохистой байдал"
-                    ]
-                },
-                {
                     "jp": "需要",
                     "reading": "じゅよう",
                     "en": "demand",
@@ -12962,95 +12349,6 @@ const WORD_LEVELS = [
                     "enMn": "эрэлт",
                     "meaningsMn": [
                         "эрэлт"
-                    ]
-                },
-                {
-                    "jp": "州",
-                    "reading": "しゅう",
-                    "en": "state",
-                    "meanings": [
-                        "state",
-                        "province"
-                    ],
-                    "example": {
-                        "jp": "州知事は囚人達を自由の身にした。",
-                        "en": "The governor set the prisoners free.",
-                        "furigana": "<ruby>州<rp>(</rp><rt>しゅう</rt><rp>)</rp></ruby><ruby>知事<rp>(</rp><rt>ちじ</rt><rp>)</rp></ruby>は<ruby>囚人<rp>(</rp><rt>しゅうじん</rt><rp>)</rp></ruby><ruby>達<rp>(</rp><rt>たち</rt><rp>)</rp></ruby>を<ruby>自由<rp>(</rp><rt>じゆう</rt><rp>)</rp></ruby>の<ruby>身<rp>(</rp><rt>み</rt><rp>)</rp></ruby>にした。",
-                        "enMn": "Мужийн захирагч хоригдлуудыг суллав."
-                    },
-                    "phonetic": "州",
-                    "phoneticReading": "シュウ",
-                    "enMn": "муж",
-                    "meaningsMn": [
-                        "байдал",
-                        "муж"
-                    ]
-                },
-                {
-                    "jp": "しかも",
-                    "reading": "しかも",
-                    "en": "moreover",
-                    "meanings": [
-                        "moreover",
-                        "furthermore",
-                        "besides",
-                        "plus"
-                    ],
-                    "example": {
-                        "jp": "山越えの道は狭く、しかも急勾配だった。",
-                        "en": "The road across the mountain was narrow, and what's more, it was a steep slope.",
-                        "furigana": "<ruby>山越<rp>(</rp><rt>やまご</rt><rp>)</rp></ruby>えの<ruby>道<rp>(</rp><rt>みち</rt><rp>)</rp></ruby>は<ruby>狭<rp>(</rp><rt>せま</rt><rp>)</rp></ruby>く、しかも<ruby>急<rp>(</rp><rt>きゅう</rt><rp>)</rp></ruby><ruby>勾配<rp>(</rp><rt>こうばい</rt><rp>)</rp></ruby>だった。",
-                        "enMn": "Уул давах зам нарийн, түүнээс гадна эгц налуу байв."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "дээр нь",
-                    "meaningsMn": [
-                        "дээр нь"
-                    ]
-                },
-                {
-                    "jp": "直",
-                    "reading": "じき",
-                    "en": "immediately",
-                    "meanings": [
-                        "immediately",
-                        "soon",
-                        "shortly"
-                    ],
-                    "example": {
-                        "jp": "彼が直向きに生きるその姿は実に健気です。",
-                        "en": "The single-minded way he gets on with his life is truly admirable.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>が<ruby>直<rp>(</rp><rt>ちょく</rt><rp>)</rp></ruby><ruby>向<rp>(</rp><rt>む</rt><rp>)</rp></ruby>きに<ruby>生<rp>(</rp><rt>い</rt><rp>)</rp></ruby>きるその<ruby>姿<rp>(</rp><rt>すがた</rt><rp>)</rp></ruby>は<ruby>実<rp>(</rp><rt>じつ</rt><rp>)</rp></ruby>に<ruby>健気<rp>(</rp><rt>けなげ</rt><rp>)</rp></ruby>です。",
-                        "enMn": "Түүний чин сэтгэлээсээ амьдарч буй байдал үнэхээр бахархалтай."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "удахгүй",
-                    "meaningsMn": [
-                        "удахгүй"
-                    ]
-                },
-                {
-                    "jp": "時期",
-                    "reading": "じき",
-                    "en": "time",
-                    "meanings": [
-                        "time",
-                        "season",
-                        "period"
-                    ],
-                    "example": {
-                        "jp": "しかるべき時期にお支払いいたしました。",
-                        "en": "I paid at the appropriate time.",
-                        "furigana": "しかるべき<ruby>時期<rp>(</rp><rt>じき</rt><rp>)</rp></ruby>にお<ruby>支払<rp>(</rp><rt>しはら</rt><rp>)</rp></ruby>いいたしました。",
-                        "enMn": "Зохих хугацаанд нь төлбөрөө төлсөн."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "цаг үе",
-                    "meaningsMn": [
-                        "цаг үе"
                     ]
                 },
                 {
@@ -13075,137 +12373,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "至急",
-                    "reading": "しきゅう",
-                    "en": "urgent",
-                    "meanings": [
-                        "urgent",
-                        "pressing"
-                    ],
-                    "example": {
-                        "jp": "評価後、結果を至急にお送りします。",
-                        "en": "We will evaluate them and send you the results of our findings as soon as we can.",
-                        "furigana": "<ruby>評価<rp>(</rp><rt>ひょうか</rt><rp>)</rp></ruby><ruby>後<rp>(</rp><rt>ご</rt><rp>)</rp></ruby>、<ruby>結果<rp>(</rp><rt>けっか</rt><rp>)</rp></ruby>を<ruby>至急<rp>(</rp><rt>しきゅう</rt><rp>)</rp></ruby>にお<ruby>送<rp>(</rp><rt>おく</rt><rp>)</rp></ruby>りします。",
-                        "enMn": "Үнэлгээ хийсний дараа үр дүнг яаралтай илгээнэ."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "яаралтай",
-                    "meaningsMn": [
-                        "яаралтай"
-                    ]
-                },
-                {
-                    "jp": "しきりに",
-                    "reading": "しきりに",
-                    "en": "frequently",
-                    "meanings": [
-                        "frequently",
-                        "repeatedly",
-                        "eagerly"
-                    ],
-                    "example": {
-                        "jp": "彼女は入試の結果をしきりに知りたがっていた。",
-                        "en": "She was anxious to know the entrance exam results.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>入試<rp>(</rp><rt>にゅうし</rt><rp>)</rp></ruby>の<ruby>結果<rp>(</rp><rt>けっか</rt><rp>)</rp></ruby>をしきりに<ruby>知<rp>(</rp><rt>し</rt><rp>)</rp></ruby>りたがっていた。",
-                        "enMn": "Тэр элсэлтийн шалгалтын дүнгээ тэсэн ядан хүлээж байлаа."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "дахин дахин",
-                    "meaningsMn": [
-                        "дахин дахин"
-                    ]
-                },
-                {
-                    "jp": "刺激",
-                    "reading": "しげき",
-                    "en": "stimulus",
-                    "meanings": [
-                        "stimulus",
-                        "impetus",
-                        "incentive"
-                    ],
-                    "example": {
-                        "jp": "酔いとは脳がある刺激物に冒されることである。",
-                        "en": "Intoxication is what happens when the brain is affected by certain stimulants.",
-                        "furigana": "<ruby>酔<rp>(</rp><rt>よ</rt><rp>)</rp></ruby>いとは<ruby>脳<rp>(</rp><rt>のう</rt><rp>)</rp></ruby>がある<ruby>刺激<rp>(</rp><rt>しげき</rt><rp>)</rp></ruby><ruby>物<rp>(</rp><rt>ぶつ</rt><rp>)</rp></ruby>に<ruby>冒<rp>(</rp><rt>おか</rt><rp>)</rp></ruby>されることである。",
-                        "enMn": "Согтуурал гэдэг нь тархи тодорхой өдөөгч бодист өртөхийг хэлнэ."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "өдөөлт",
-                    "meaningsMn": [
-                        "өдөөлт"
-                    ]
-                },
-                {
-                    "jp": "事件",
-                    "reading": "じけん",
-                    "en": "event",
-                    "meanings": [
-                        "event",
-                        "affair",
-                        "incident"
-                    ],
-                    "example": {
-                        "jp": "殺人事件の背後に潜むミステリーを解き明かせ。",
-                        "en": "Solve the mystery lurking behind the murder!",
-                        "furigana": "<ruby>殺人<rp>(</rp><rt>さつじん</rt><rp>)</rp></ruby><ruby>事件<rp>(</rp><rt>じけん</rt><rp>)</rp></ruby>の<ruby>背後<rp>(</rp><rt>はいご</rt><rp>)</rp></ruby>に<ruby>潜<rp>(</rp><rt>ひそ</rt><rp>)</rp></ruby>むミステリーを<ruby>解<rp>(</rp><rt>と</rt><rp>)</rp></ruby>き<ruby>明<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>かせ。",
-                        "enMn": "Аллагын хэргийн ард нуугдаж буй нууцыг тайл!"
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "үйл явдал",
-                    "meaningsMn": [
-                        "үйл явдал"
-                    ]
-                },
-                {
-                    "jp": "時刻",
-                    "reading": "じこく",
-                    "en": "time",
-                    "meanings": [
-                        "time",
-                        "hour"
-                    ],
-                    "example": {
-                        "jp": "列車は時刻通りに出ますか。",
-                        "en": "Will the train leave on time?",
-                        "furigana": "<ruby>列車<rp>(</rp><rt>れっしゃ</rt><rp>)</rp></ruby>は<ruby>時刻<rp>(</rp><rt>じこく</rt><rp>)</rp></ruby><ruby>通<rp>(</rp><rt>どお</rt><rp>)</rp></ruby>りに<ruby>出<rp>(</rp><rt>で</rt><rp>)</rp></ruby>ますか。",
-                        "enMn": "Галт тэрэг цагтаа хөдлөх үү?"
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "цаг мөч",
-                    "meaningsMn": [
-                        "цаг мөч"
-                    ]
-                },
-                {
-                    "jp": "事実",
-                    "reading": "じじつ",
-                    "en": "fact",
-                    "meanings": [
-                        "fact",
-                        "truth",
-                        "reality"
-                    ],
-                    "example": {
-                        "jp": "しかし生存者達は、その事実を知らなかった。",
-                        "en": "However, the surivors didn't know the truth.",
-                        "furigana": "しかし<ruby>生存<rp>(</rp><rt>せいぞん</rt><rp>)</rp></ruby><ruby>者<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby><ruby>達<rp>(</rp><rt>たち</rt><rp>)</rp></ruby>は、その<ruby>事実<rp>(</rp><rt>じじつ</rt><rp>)</rp></ruby>を<ruby>知<rp>(</rp><rt>し</rt><rp>)</rp></ruby>らなかった。",
-                        "enMn": "Гэвч амьд үлдэгсэд тэр үнэнийг мэдээгүй байв."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "үнэн",
-                    "meaningsMn": [
-                        "үнэн",
-                        "баримт"
-                    ]
-                },
-                {
                     "jp": "支出",
                     "reading": "ししゅつ",
                     "en": "expenditure",
@@ -13224,143 +12391,6 @@ const WORD_LEVELS = [
                     "enMn": "зарлага",
                     "meaningsMn": [
                         "зарлага"
-                    ]
-                },
-                {
-                    "jp": "事情",
-                    "reading": "じじょう",
-                    "en": "circumstances",
-                    "meanings": [
-                        "circumstances",
-                        "situation",
-                        "reasons"
-                    ],
-                    "example": {
-                        "jp": "彼女はすべての事情を利用する。",
-                        "en": "She takes every circumstance into account.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はすべての<ruby>事情<rp>(</rp><rt>じじょう</rt><rp>)</rp></ruby>を<ruby>利用<rp>(</rp><rt>りよう</rt><rp>)</rp></ruby>する。",
-                        "enMn": "Тэр бүх нөхцөл байдлыг ашигладаг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "учир шалтгаан",
-                    "meaningsMn": [
-                        "учир шалтгаан"
-                    ]
-                },
-                {
-                    "jp": "自然",
-                    "reading": "しぜん",
-                    "en": "nature",
-                    "meanings": [
-                        "nature",
-                        "spontaneous"
-                    ],
-                    "example": {
-                        "jp": "明かりは自然に消えた。",
-                        "en": "The light went out by itself.",
-                        "furigana": "<ruby>明<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>かりは<ruby>自然<rp>(</rp><rt>しぜん</rt><rp>)</rp></ruby>に<ruby>消<rp>(</rp><rt>き</rt><rp>)</rp></ruby>えた。",
-                        "enMn": "Гэрэл өөрөө унтарлаа."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "байгаль",
-                    "meaningsMn": [
-                        "байгаль"
-                    ]
-                },
-                {
-                    "jp": "思想",
-                    "reading": "しそう",
-                    "en": "thought",
-                    "meanings": [
-                        "thought",
-                        "idea"
-                    ],
-                    "example": {
-                        "jp": "福沢諭吉は日本に西洋思想を広めた。",
-                        "en": "Yukichi Fukuzawa introduced Western ideas into Japan.",
-                        "furigana": "<ruby>福沢<rp>(</rp><rt>ふくさわ</rt><rp>)</rp></ruby><ruby>諭吉<rp>(</rp><rt>ゆきち</rt><rp>)</rp></ruby>は<ruby>日本<rp>(</rp><rt>にっぽん</rt><rp>)</rp></ruby>に<ruby>西洋<rp>(</rp><rt>せいよう</rt><rp>)</rp></ruby><ruby>思想<rp>(</rp><rt>しそう</rt><rp>)</rp></ruby>を<ruby>広<rp>(</rp><rt>ひろ</rt><rp>)</rp></ruby>めた。",
-                        "enMn": "Фүкүзава Юкичи Японд барууны үзэл санааг дэлгэрүүлсэн."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "үзэл санаа",
-                    "meaningsMn": [
-                        "үзэл санаа"
-                    ]
-                },
-                {
-                    "jp": "次第",
-                    "reading": "しだい",
-                    "en": "order",
-                    "meanings": [
-                        "order; circumstances; immediate(ly)"
-                    ],
-                    "example": {
-                        "jp": "「いつ戻りますか」「天候次第です」",
-                        "en": "\"When will you be back?\" \"It all depends on the weather.\"",
-                        "furigana": "「いつ<ruby>戻<rp>(</rp><rt>もど</rt><rp>)</rp></ruby>りますか」「<ruby>天候<rp>(</rp><rt>てんこう</rt><rp>)</rp></ruby><ruby>次第<rp>(</rp><rt>しだい</rt><rp>)</rp></ruby>です」",
-                        "enMn": "«Хэзээ буцаж ирэх вэ?» «Цаг агаараас шалтгаална.»"
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "дэс дараа",
-                    "meaningsMn": [
-                        "дэс дараа"
-                    ]
-                }
-            ]
-        ]
-    },
-    {
-        "level": 27,
-        "jlpt": "N3",
-        "title": "N3 · Level 3",
-        "sets": [
-            [
-                {
-                    "jp": "症状",
-                    "reading": "しょうじょう",
-                    "en": "symptoms",
-                    "meanings": [
-                        "symptoms",
-                        "condition"
-                    ],
-                    "example": {
-                        "jp": "高熱がこの病気の顕著な症状だ。",
-                        "en": "High fever is a prominent symptom of this disease.",
-                        "furigana": "<ruby>高熱<rp>(</rp><rt>こうねつ</rt><rp>)</rp></ruby>がこの<ruby>病気<rp>(</rp><rt>びょうき</rt><rp>)</rp></ruby>の<ruby>顕著<rp>(</rp><rt>けんちょ</rt><rp>)</rp></ruby>な<ruby>症状<rp>(</rp><rt>しょうじょう</rt><rp>)</rp></ruby>だ。",
-                        "enMn": "Өндөр халуурал энэ өвчний тод шинж тэмдэг юм."
-                    },
-                    "phonetic": "正",
-                    "phoneticReading": "ショウ、セイ",
-                    "enMn": "шинж тэмдэг",
-                    "meaningsMn": [
-                        "шинж тэмдэг",
-                        "нөхцөл"
-                    ]
-                },
-                {
-                    "jp": "証明",
-                    "reading": "しょうめい",
-                    "en": "proof",
-                    "meanings": [
-                        "proof",
-                        "verification"
-                    ],
-                    "example": {
-                        "jp": "身分証明書を二枚拝見できますか。",
-                        "en": "May I see two pieces of identification?",
-                        "furigana": "<ruby>身分<rp>(</rp><rt>みぶん</rt><rp>)</rp></ruby><ruby>証明<rp>(</rp><rt>しょうめい</rt><rp>)</rp></ruby><ruby>書<rp>(</rp><rt>しょ</rt><rp>)</rp></ruby>を<ruby>二<rp>(</rp><rt>に</rt><rp>)</rp></ruby><ruby>枚<rp>(</rp><rt>まい</rt><rp>)</rp></ruby><ruby>拝見<rp>(</rp><rt>はいけん</rt><rp>)</rp></ruby>できますか。",
-                        "enMn": "Хоёр иргэний үнэмлэх харж болох уу?"
-                    },
-                    "phonetic": "正",
-                    "phoneticReading": "ショウ、セイ",
-                    "enMn": "нотолгоо",
-                    "meaningsMn": [
-                        "нотолгоо",
-                        "баталгаажуулалт"
                     ]
                 },
                 {
@@ -13408,28 +12438,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "集中",
-                    "reading": "しゅうちゅう",
-                    "en": "concentration",
-                    "meanings": [
-                        "concentration",
-                        "focusing the mind"
-                    ],
-                    "example": {
-                        "jp": "すぐに集中力を無くしてしまった。",
-                        "en": "I immediately lost my concentration.",
-                        "furigana": "すぐに<ruby>集中<rp>(</rp><rt>しゅうちゅう</rt><rp>)</rp></ruby><ruby>力<rp>(</rp><rt>りょく</rt><rp>)</rp></ruby>を<ruby>無<rp>(</rp><rt>な</rt><rp>)</rp></ruby>くしてしまった。",
-                        "enMn": "Би даруй анхаарлаа алдав."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "төвлөрөл",
-                    "meaningsMn": [
-                        "төвлөрөл",
-                        "анхаарлаа төвлөрүүлэх"
-                    ]
-                },
-                {
                     "jp": "収入",
                     "reading": "しゅうにゅう",
                     "en": "income",
@@ -13452,43 +12460,371 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "自殺",
-                    "reading": "じさつ",
-                    "en": "suicide",
+                    "jp": "支払",
+                    "reading": "しはらい",
+                    "en": "payment",
                     "meanings": [
-                        "suicide"
+                        "payment"
                     ],
                     "example": {
-                        "jp": "彼女は橋から身を投げて自殺した。",
-                        "en": "She committed suicide by jumping off the bridge.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>橋<rp>(</rp><rt>はし</rt><rp>)</rp></ruby>から<ruby>身<rp>(</rp><rt>み</rt><rp>)</rp></ruby>を<ruby>投<rp>(</rp><rt>な</rt><rp>)</rp></ruby>げて<ruby>自殺<rp>(</rp><rt>じさつ</rt><rp>)</rp></ruby>した。",
-                        "enMn": "Тэр гүүрнээс үсрэн амиа хорлосон."
+                        "jp": "手形は来月１日が支払日になっている。",
+                        "en": "The bill is due on the 1st of next month.",
+                        "furigana": "<ruby>手形<rp>(</rp><rt>てがた</rt><rp>)</rp></ruby>は<ruby>来月<rp>(</rp><rt>らいげつ</rt><rp>)</rp></ruby>１<ruby>日<rp>(</rp><rt>にち</rt><rp>)</rp></ruby>が<ruby>支払<rp>(</rp><rt>しはらい</rt><rp>)</rp></ruby><ruby>日<rp>(</rp><rt>び</rt><rp>)</rp></ruby>になっている。",
+                        "enMn": "Төлбөрийг ирэх сарын 1-нд төлөх ёстой."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "амиа хорлолт",
+                    "enMn": "төлбөр",
                     "meaningsMn": [
-                        "амиа хорлолт"
+                        "төлбөр"
                     ]
                 },
                 {
-                    "jp": "出版",
-                    "reading": "しゅっぱん",
-                    "en": "publication",
+                    "jp": "支店",
+                    "reading": "してん",
+                    "en": "branch office",
                     "meanings": [
-                        "publication"
+                        "branch store (office)"
                     ],
                     "example": {
-                        "jp": "彼女は自分の負担で本を出版した。",
-                        "en": "She published the book at her own expense.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>自分<rp>(</rp><rt>じぶん</rt><rp>)</rp></ruby>の<ruby>負担<rp>(</rp><rt>ふたん</rt><rp>)</rp></ruby>で<ruby>本<rp>(</rp><rt>ほん</rt><rp>)</rp></ruby>を<ruby>出版<rp>(</rp><rt>しゅっぱん</rt><rp>)</rp></ruby>した。",
-                        "enMn": "Тэр номоо өөрийн зардлаар хэвлүүлсэн."
+                        "jp": "新しい支店が来月シカゴに開店する。",
+                        "en": "A new branch will be opened in Chicago next month.",
+                        "furigana": "<ruby>新<rp>(</rp><rt>あたら</rt><rp>)</rp></ruby>しい<ruby>支店<rp>(</rp><rt>してん</rt><rp>)</rp></ruby>が<ruby>来月<rp>(</rp><rt>らいげつ</rt><rp>)</rp></ruby>シカゴに<ruby>開店<rp>(</rp><rt>かいてん</rt><rp>)</rp></ruby>する。",
+                        "enMn": "Шинэ салбар ирэх сард Чикагод нээгдэнэ."
+                    },
+                    "phonetic": "支",
+                    "phoneticReading": "シ、キ",
+                    "enMn": "салбар оффис",
+                    "meaningsMn": [
+                        "салбар (алба)"
+                    ]
+                },
+                {
+                    "jp": "商人",
+                    "reading": "しょうにん",
+                    "en": "trader",
+                    "meanings": [
+                        "trader",
+                        "shopkeeper",
+                        "merchant"
+                    ],
+                    "example": {
+                        "jp": "彼女は金持ちの商人と結婚した。",
+                        "en": "She married a rich merchant.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>金持<rp>(</rp><rt>かねも</rt><rp>)</rp></ruby>ちの<ruby>商人<rp>(</rp><rt>しょうにん</rt><rp>)</rp></ruby>と<ruby>結婚<rp>(</rp><rt>けっこん</rt><rp>)</rp></ruby>した。",
+                        "enMn": "Тэр баян худалдаачинтай гэрлэсэн."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хэвлэл",
+                    "enMn": "худалдаачин",
                     "meaningsMn": [
-                        "хэвлэл"
+                        "худалдаачин"
+                    ]
+                },
+                {
+                    "jp": "資源",
+                    "reading": "しげん",
+                    "en": "resources",
+                    "meanings": [
+                        "resources"
+                    ],
+                    "example": {
+                        "jp": "日本は天然資源に富んでいない。",
+                        "en": "Japan is not abundant in natural resources.",
+                        "furigana": "<ruby>日本<rp>(</rp><rt>にっぽん</rt><rp>)</rp></ruby>は<ruby>天然<rp>(</rp><rt>てんねん</rt><rp>)</rp></ruby><ruby>資源<rp>(</rp><rt>しげん</rt><rp>)</rp></ruby>に<ruby>富<rp>(</rp><rt>と</rt><rp>)</rp></ruby>んでいない。",
+                        "enMn": "Япон байгалийн баялгаар баян биш."
+                    },
+                    "phonetic": "次",
+                    "phoneticReading": "シ",
+                    "enMn": "нөөц баялаг",
+                    "meaningsMn": [
+                        "нөөц баялаг"
+                    ]
+                },
+                {
+                    "jp": "資本",
+                    "reading": "しほん",
+                    "en": "funds",
+                    "meanings": [
+                        "funds",
+                        "capital"
+                    ],
+                    "example": {
+                        "jp": "会社はその事業に資本参加した。",
+                        "en": "The company bought shares in the venture.",
+                        "furigana": "<ruby>会社<rp>(</rp><rt>かいしゃ</rt><rp>)</rp></ruby>はその<ruby>事業<rp>(</rp><rt>じぎょう</rt><rp>)</rp></ruby>に<ruby>資本<rp>(</rp><rt>しほん</rt><rp>)</rp></ruby><ruby>参加<rp>(</rp><rt>さんか</rt><rp>)</rp></ruby>した。",
+                        "enMn": "Компани тэр бизнест хувьцаа худалдаж авав."
+                    },
+                    "phonetic": "次",
+                    "phoneticReading": "シ",
+                    "enMn": "хөрөнгө",
+                    "meaningsMn": [
+                        "хөрөнгө",
+                        "хөрөнгө"
+                    ]
+                },
+                {
+                    "jp": "収穫",
+                    "reading": "しゅうかく",
+                    "en": "harvest",
+                    "meanings": [
+                        "harvest",
+                        "crop",
+                        "ingathering"
+                    ],
+                    "example": {
+                        "jp": "私たちはみな収穫の手伝いをした。",
+                        "en": "We all helped with the harvest.",
+                        "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>たちはみな<ruby>収穫<rp>(</rp><rt>しゅうかく</rt><rp>)</rp></ruby>の<ruby>手伝<rp>(</rp><rt>てつだ</rt><rp>)</rp></ruby>いをした。",
+                        "enMn": "Бид бүгд ургац хураахад туслалцсан."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "ургац хураалт",
+                    "meaningsMn": [
+                        "ургац хураалт",
+                        "ургац",
+                        "хураалт"
+                    ]
+                },
+                {
+                    "jp": "水準",
+                    "reading": "すいじゅん",
+                    "en": "level",
+                    "meanings": [
+                        "level",
+                        "standard"
+                    ],
+                    "example": {
+                        "jp": "彼は水準を満たしていなかった。",
+                        "en": "He didn't meet the standards.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>水準<rp>(</rp><rt>すいじゅん</rt><rp>)</rp></ruby>を<ruby>満<rp>(</rp><rt>み</rt><rp>)</rp></ruby>たしていなかった。",
+                        "enMn": "Тэр түвшинд хүрээгүй байв."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "түвшин",
+                    "meaningsMn": [
+                        "түвшин"
+                    ]
+                },
+                {
+                    "jp": "商売",
+                    "reading": "しょうばい",
+                    "en": "business",
+                    "meanings": [
+                        "trade",
+                        "business",
+                        "commerce"
+                    ],
+                    "example": {
+                        "jp": "彼は父からその商売を引き継いだ。",
+                        "en": "He took over the business from his father.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>父<rp>(</rp><rt>ちち</rt><rp>)</rp></ruby>からその<ruby>商売<rp>(</rp><rt>しょうばい</rt><rp>)</rp></ruby>を<ruby>引<rp>(</rp><rt>ひ</rt><rp>)</rp></ruby>き<ruby>継<rp>(</rp><rt>つ</rt><rp>)</rp></ruby>いだ。",
+                        "enMn": "Тэр бизнесээ ааваасаа өвлөн авсан."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "худалдаа",
+                    "meaningsMn": [
+                        "худалдаа",
+                        "худалдаа",
+                        "худалдаа"
+                    ]
+                },
+                {
+                    "jp": "商品",
+                    "reading": "しょうひん",
+                    "en": "commodity",
+                    "meanings": [
+                        "commodity",
+                        "merchandise"
+                    ],
+                    "example": {
+                        "jp": "彼女の商品の半分は安く売られた。",
+                        "en": "Half her goods were sold cheap.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>の<ruby>商品<rp>(</rp><rt>しょうひん</rt><rp>)</rp></ruby>の<ruby>半分<rp>(</rp><rt>はんぶん</rt><rp>)</rp></ruby>は<ruby>安<rp>(</rp><rt>やす</rt><rp>)</rp></ruby>く<ruby>売<rp>(</rp><rt>う</rt><rp>)</rp></ruby>られた。",
+                        "enMn": "Түүний барааны хагасыг хямд үнээр зарсан."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "бараа бүтээгдэхүүн",
+                    "meaningsMn": [
+                        "бараа бүтээгдэхүүн",
+                        "бараа бүтээгдэхүүн"
+                    ]
+                },
+                {
+                    "jp": "税",
+                    "reading": "ぜい",
+                    "en": "tax",
+                    "meanings": [
+                        "tax"
+                    ],
+                    "example": {
+                        "jp": "野党は所得税減税法案を提出した。",
+                        "en": "The opposition party put forward a bill to reduce income tax.",
+                        "furigana": "<ruby>野党<rp>(</rp><rt>やとう</rt><rp>)</rp></ruby>は<ruby>所得<rp>(</rp><rt>しょとく</rt><rp>)</rp></ruby><ruby>税<rp>(</rp><rt>ぜい</rt><rp>)</rp></ruby><ruby>減税<rp>(</rp><rt>げんぜい</rt><rp>)</rp></ruby><ruby>法案<rp>(</rp><rt>ほうあん</rt><rp>)</rp></ruby>を<ruby>提出<rp>(</rp><rt>ていしゅつ</rt><rp>)</rp></ruby>した。",
+                        "enMn": "Сөрөг хүчин орлогын албан татвар бууруулах хуулийн төсөл өргөн барив."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "татвар",
+                    "meaningsMn": [
+                        "татвар"
+                    ]
+                },
+                {
+                    "jp": "安定",
+                    "reading": "あんてい",
+                    "en": "stability",
+                    "meanings": [
+                        "stability",
+                        "equilibrium"
+                    ],
+                    "example": null,
+                    "phonetic": "安",
+                    "phoneticReading": "アン",
+                    "enMn": "тогтвор",
+                    "meaningsMn": [
+                        "тогтвор"
+                    ]
+                },
+                {
+                    "jp": "市",
+                    "reading": "いち",
+                    "en": "market",
+                    "meanings": [
+                        "market",
+                        "fair"
+                    ],
+                    "example": null,
+                    "phonetic": "市",
+                    "phoneticReading": "シ",
+                    "enMn": "хот",
+                    "meaningsMn": [
+                        "хот"
+                    ]
+                },
+                {
+                    "jp": "価格",
+                    "reading": "かかく",
+                    "en": "price",
+                    "meanings": [
+                        "price",
+                        "value"
+                    ],
+                    "example": null,
+                    "phonetic": "各",
+                    "phoneticReading": "カク、ラク",
+                    "enMn": "үнэ",
+                    "meaningsMn": [
+                        "үнэ"
+                    ]
+                },
+                {
+                    "jp": "金銭",
+                    "reading": "きんせん",
+                    "en": "money",
+                    "meanings": [
+                        "money",
+                        "cash"
+                    ],
+                    "example": null,
+                    "phonetic": "金",
+                    "phoneticReading": "キン",
+                    "enMn": "мөнгө",
+                    "meaningsMn": [
+                        "мөнгө"
+                    ]
+                },
+                {
+                    "jp": "財産",
+                    "reading": "ざいさん",
+                    "en": "property",
+                    "meanings": [
+                        "property",
+                        "fortune",
+                        "assets"
+                    ],
+                    "example": null,
+                    "phonetic": "才",
+                    "phoneticReading": "サイ、ザイ",
+                    "enMn": "хөрөнгө хогшил",
+                    "meaningsMn": [
+                        "хөрөнгө хогшил"
+                    ]
+                }
+            ]
+        ],
+        "themeKey": "theme.n3.1"
+    },
+    {
+        "level": 26,
+        "jlpt": "N3",
+        "title": "Work and getting things done",
+        "sets": [
+            [
+                {
+                    "jp": "参加",
+                    "reading": "さんか",
+                    "en": "participation",
+                    "meanings": [
+                        "participation"
+                    ],
+                    "example": {
+                        "jp": "彼女は美人コンテストに参加した。",
+                        "en": "She participated in the beauty contest.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>美人<rp>(</rp><rt>びじん</rt><rp>)</rp></ruby>コンテストに<ruby>参加<rp>(</rp><rt>さんか</rt><rp>)</rp></ruby>した。",
+                        "enMn": "Тэр гоо сайхны тэмцээнд оролцов."
+                    },
+                    "phonetic": "参",
+                    "phoneticReading": "サン",
+                    "enMn": "оролцоо",
+                    "meaningsMn": [
+                        "оролцоо"
+                    ]
+                },
+                {
+                    "jp": "就職",
+                    "reading": "しゅうしょく",
+                    "en": "employment",
+                    "meanings": [
+                        "finding employment"
+                    ],
+                    "example": {
+                        "jp": "彼女はタイピストとして就職した。",
+                        "en": "She found employment as a typist.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はタイピストとして<ruby>就職<rp>(</rp><rt>しゅうしょく</rt><rp>)</rp></ruby>した。",
+                        "enMn": "Тэр бичээчээр ажилд орсон."
+                    },
+                    "phonetic": "就",
+                    "phoneticReading": "シュウ",
+                    "enMn": "ажил эрхлэлт",
+                    "meaningsMn": [
+                        "ажилд орох"
+                    ]
+                },
+                {
+                    "jp": "集中",
+                    "reading": "しゅうちゅう",
+                    "en": "concentration",
+                    "meanings": [
+                        "concentration",
+                        "focusing the mind"
+                    ],
+                    "example": {
+                        "jp": "すぐに集中力を無くしてしまった。",
+                        "en": "I immediately lost my concentration.",
+                        "furigana": "すぐに<ruby>集中<rp>(</rp><rt>しゅうちゅう</rt><rp>)</rp></ruby><ruby>力<rp>(</rp><rt>りょく</rt><rp>)</rp></ruby>を<ruby>無<rp>(</rp><rt>な</rt><rp>)</rp></ruby>くしてしまった。",
+                        "enMn": "Би даруй анхаарлаа алдав."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "төвлөрөл",
+                    "meaningsMn": [
+                        "төвлөрөл",
+                        "анхаарлаа төвлөрүүлэх"
                     ]
                 },
                 {
@@ -13509,110 +12845,6 @@ const WORD_LEVELS = [
                     "enMn": "гэрийн эзэгтэй",
                     "meaningsMn": [
                         "гэрийн эзэгтэй"
-                    ]
-                },
-                {
-                    "jp": "自身",
-                    "reading": "じしん",
-                    "en": "oneself",
-                    "meanings": [
-                        "oneself"
-                    ],
-                    "example": {
-                        "jp": "妹はそれを自分自身の目で見た。",
-                        "en": "My sister saw it with her own eyes.",
-                        "furigana": "<ruby>妹<rp>(</rp><rt>いもうと</rt><rp>)</rp></ruby>はそれを<ruby>自分<rp>(</rp><rt>じぶん</rt><rp>)</rp></ruby><ruby>自身<rp>(</rp><rt>じしん</rt><rp>)</rp></ruby>の<ruby>目<rp>(</rp><rt>め</rt><rp>)</rp></ruby>で<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>た。",
-                        "enMn": "Дүү охин минь үүнийг өөрийн нүдээр харсан."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "өөрөө",
-                    "meaningsMn": [
-                        "өөрөө"
-                    ]
-                },
-                {
-                    "jp": "従う",
-                    "reading": "したがう",
-                    "en": "to abide (by the rules)",
-                    "meanings": [
-                        "to abide (by the rules)",
-                        "to obey"
-                    ],
-                    "example": {
-                        "jp": "子たる者すべからく親の命に従うべし。",
-                        "en": "Children should obey their parents.",
-                        "furigana": "<ruby>子<rp>(</rp><rt>こ</rt><rp>)</rp></ruby>たる<ruby>者<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby>すべからく<ruby>親<rp>(</rp><rt>おや</rt><rp>)</rp></ruby>の<ruby>命<rp>(</rp><rt>いのち</rt><rp>)</rp></ruby>に<ruby>従<rp>(</rp><rt>したが</rt><rp>)</rp></ruby>うべし。",
-                        "enMn": "Хүүхэд хүн эцэг эхийнхээ үгийг дагах учиртай."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "дагах",
-                    "meaningsMn": [
-                        "дагах"
-                    ]
-                },
-                {
-                    "jp": "したがって",
-                    "reading": "したがって",
-                    "en": "therefore",
-                    "meanings": [
-                        "therefore",
-                        "consequently"
-                    ],
-                    "example": {
-                        "jp": "したがって生産費を削る必要がある。",
-                        "en": "Therefore, it is necessary to reduce the cost.",
-                        "furigana": "したがって<ruby>生産<rp>(</rp><rt>せいさん</rt><rp>)</rp></ruby><ruby>費<rp>(</rp><rt>ひ</rt><rp>)</rp></ruby>を<ruby>削<rp>(</rp><rt>けず</rt><rp>)</rp></ruby>る<ruby>必要<rp>(</rp><rt>ひつよう</rt><rp>)</rp></ruby>がある。",
-                        "enMn": "Улмаар үйлдвэрлэлийн зардлыг бууруулах шаардлагатай."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "улмаар",
-                    "meaningsMn": [
-                        "улмаар"
-                    ]
-                },
-                {
-                    "jp": "湿気",
-                    "reading": "しっけ",
-                    "en": "moisture",
-                    "meanings": [
-                        "moisture",
-                        "humidity",
-                        "dampness"
-                    ],
-                    "example": {
-                        "jp": "当地の夏はひどく湿気が多い。",
-                        "en": "It gets very humid here in the summer.",
-                        "furigana": "<ruby>当地<rp>(</rp><rt>とうち</rt><rp>)</rp></ruby>の<ruby>夏<rp>(</rp><rt>なつ</rt><rp>)</rp></ruby>はひどく<ruby>湿気<rp>(</rp><rt>しっけ</rt><rp>)</rp></ruby>が<ruby>多<rp>(</rp><rt>おお</rt><rp>)</rp></ruby>い。",
-                        "enMn": "Энэ нутгийн зун маш чийглэг байдаг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "нойтон",
-                    "meaningsMn": [
-                        "нойтон"
-                    ]
-                },
-                {
-                    "jp": "実験",
-                    "reading": "じっけん",
-                    "en": "lab work",
-                    "meanings": [
-                        "lab work; experiment"
-                    ],
-                    "example": {
-                        "jp": "今日はオームの法則に関する実験を行います。",
-                        "en": "Today we will carry out an experiment about Ohm's Law.",
-                        "furigana": "<ruby>今日<rp>(</rp><rt>きょう</rt><rp>)</rp></ruby>はオームの<ruby>法則<rp>(</rp><rt>ほうそく</rt><rp>)</rp></ruby>に<ruby>関<rp>(</rp><rt>かん</rt><rp>)</rp></ruby>する<ruby>実験<rp>(</rp><rt>じっけん</rt><rp>)</rp></ruby>を<ruby>行<rp>(</rp><rt>おこな</rt><rp>)</rp></ruby>います。",
-                        "enMn": "Өнөөдөр Омын хуулийн талаар туршилт хийнэ."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "туршилт",
-                    "meaningsMn": [
-                        "туршилт"
                     ]
                 },
                 {
@@ -13638,26 +12870,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "実際",
-                    "reading": "じっさい",
-                    "en": "in fact",
-                    "meanings": [
-                        "in fact; in actuality"
-                    ],
-                    "example": {
-                        "jp": "離れて見ると、彼は実際よりずっと若く見える。",
-                        "en": "Seen from a distance, he looks much younger than he really is.",
-                        "furigana": "<ruby>離<rp>(</rp><rt>はな</rt><rp>)</rp></ruby>れて<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>ると、<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>実際<rp>(</rp><rt>じっさい</rt><rp>)</rp></ruby>よりずっと<ruby>若<rp>(</rp><rt>わか</rt><rp>)</rp></ruby>く<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>える。",
-                        "enMn": "Холоос харахад тэр бодит байдлаасаа хамаагүй залуу харагддаг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "бодит байдал",
-                    "meaningsMn": [
-                        "бодит байдал"
-                    ]
-                },
-                {
                     "jp": "実施",
                     "reading": "じっし",
                     "en": "enforcement",
@@ -13677,69 +12889,6 @@ const WORD_LEVELS = [
                     "enMn": "хэрэгжүүлэх",
                     "meaningsMn": [
                         "хэрэгжүүлэх"
-                    ]
-                },
-                {
-                    "jp": "湿度",
-                    "reading": "しつど",
-                    "en": "humidity",
-                    "meanings": [
-                        "humidity"
-                    ],
-                    "example": {
-                        "jp": "暑かった。その上湿度が高かった。",
-                        "en": "It was hot, and in addition, it was humid.",
-                        "furigana": "<ruby>暑<rp>(</rp><rt>あつ</rt><rp>)</rp></ruby>かった。その<ruby>上<rp>(</rp><rt>うえ</rt><rp>)</rp></ruby><ruby>湿度<rp>(</rp><rt>しつど</rt><rp>)</rp></ruby>が<ruby>高<rp>(</rp><rt>たか</rt><rp>)</rp></ruby>かった。",
-                        "enMn": "Халуун байлаа. Түүн дээр чийгшил өндөр байв."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "чийгшил",
-                    "meaningsMn": [
-                        "чийгшил"
-                    ]
-                },
-                {
-                    "jp": "じっと",
-                    "reading": "じっと",
-                    "en": "patiently",
-                    "meanings": [
-                        "patiently",
-                        "quietly"
-                    ],
-                    "example": {
-                        "jp": "僕らはその美しい景色をじっとみつめた。",
-                        "en": "We gazed at the beautiful scenery.",
-                        "furigana": "<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>らはその<ruby>美<rp>(</rp><rt>うつく</rt><rp>)</rp></ruby>しい<ruby>景色<rp>(</rp><rt>けしき</rt><rp>)</rp></ruby>をじっとみつめた。",
-                        "enMn": "Бид тэр үзэсгэлэнт байгалийг хөдөлгөөнгүй ширтэв."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хөдөлгөөнгүй",
-                    "meaningsMn": [
-                        "хөдөлгөөнгүй"
-                    ]
-                },
-                {
-                    "jp": "実に",
-                    "reading": "じつに",
-                    "en": "indeed",
-                    "meanings": [
-                        "indeed",
-                        "truly",
-                        "surely"
-                    ],
-                    "example": {
-                        "jp": "彼のスイングは実に見事だ。",
-                        "en": "He has a perfect swing.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>のスイングは<ruby>実<rp>(</rp><rt>じつ</rt><rp>)</rp></ruby>に<ruby>見事<rp>(</rp><rt>みごと</rt><rp>)</rp></ruby>だ。",
-                        "enMn": "Түүний савалт үнэхээр гайхалтай."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "үнэхээр",
-                    "meaningsMn": [
-                        "үнэхээр"
                     ]
                 },
                 {
@@ -13786,25 +12935,598 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "品",
-                    "reading": "しな",
-                    "en": "thing",
+                    "jp": "出場",
+                    "reading": "しゅつじょう",
+                    "en": "participation",
                     "meanings": [
-                        "thing",
-                        "article",
-                        "goods"
+                        "participation"
                     ],
                     "example": {
-                        "jp": "同じような品がまだ何点かありますよ。",
-                        "en": "We've got several more of the same kind of articles.",
-                        "furigana": "<ruby>同<rp>(</rp><rt>おな</rt><rp>)</rp></ruby>じような<ruby>品<rp>(</rp><rt>しな</rt><rp>)</rp></ruby>がまだ<ruby>何<rp>(</rp><rt>なん</rt><rp>)</rp></ruby><ruby>点<rp>(</rp><rt>てん</rt><rp>)</rp></ruby>かありますよ。",
-                        "enMn": "Ижил төрлийн бараа бас хэдэн ширхэг байгаа шүү."
+                        "jp": "彼はその試合に代打として出場した。",
+                        "en": "He appeared as a pinch hitter in the game.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>はその<ruby>試合<rp>(</rp><rt>しあい</rt><rp>)</rp></ruby>に<ruby>代打<rp>(</rp><rt>だいだ</rt><rp>)</rp></ruby>として<ruby>出場<rp>(</rp><rt>しゅつじょう</rt><rp>)</rp></ruby>した。",
+                        "enMn": "Тэр тэмцээнд орлон цохигчоор оролцов."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "бараа",
+                    "enMn": "оролцох",
                     "meaningsMn": [
-                        "бараа"
+                        "оролцох"
+                    ]
+                },
+                {
+                    "jp": "使用",
+                    "reading": "しよう",
+                    "en": "use (same as 使うこと (つかうこと))",
+                    "meanings": [
+                        "use (same as 使うこと (つかうこと))",
+                        "application",
+                        "employment",
+                        "utilization"
+                    ],
+                    "example": {
+                        "jp": "外用のみに使用し、内服しないで下さい。",
+                        "en": "For external use only, do not ingest.",
+                        "furigana": "<ruby>外用<rp>(</rp><rt>がいよう</rt><rp>)</rp></ruby>のみに<ruby>使用<rp>(</rp><rt>しよう</rt><rp>)</rp></ruby>し、<ruby>内服<rp>(</rp><rt>ないふく</rt><rp>)</rp></ruby>しないで<ruby>下<rp>(</rp><rt>くだ</rt><rp>)</rp></ruby>さい。",
+                        "enMn": "Зөвхөн гадуур хэрэглэж, дотуур бүү уу."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хэрэглэх",
+                    "meaningsMn": [
+                        "хэрэглэх"
+                    ]
+                },
+                {
+                    "jp": "占める",
+                    "reading": "しめる",
+                    "en": "to take up",
+                    "meanings": [
+                        "to take up",
+                        "to account for"
+                    ],
+                    "example": {
+                        "jp": "与党は前の選挙で過半数を占めた。",
+                        "en": "The government got their majority at the last election.",
+                        "furigana": "<ruby>与党<rp>(</rp><rt>よとう</rt><rp>)</rp></ruby>は<ruby>前<rp>(</rp><rt>まえ</rt><rp>)</rp></ruby>の<ruby>選挙<rp>(</rp><rt>せんきょ</rt><rp>)</rp></ruby>で<ruby>過半数<rp>(</rp><rt>かはんすう</rt><rp>)</rp></ruby>を<ruby>占<rp>(</rp><rt>し</rt><rp>)</rp></ruby>めた。",
+                        "enMn": "Засгийн эрх барьж буй нам өмнөх сонгуульд олонхийг авсан."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "эзлэх",
+                    "meaningsMn": [
+                        "эзлэх",
+                        "эзлэх"
+                    ]
+                },
+                {
+                    "jp": "実現",
+                    "reading": "じつげん",
+                    "en": "implementation",
+                    "meanings": [
+                        "implementation",
+                        "materialization",
+                        "realization"
+                    ],
+                    "example": {
+                        "jp": "彼女の夢はいつか実現するだろう。",
+                        "en": "Her dream will one day come true.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>の<ruby>夢<rp>(</rp><rt>ゆめ</rt><rp>)</rp></ruby>はいつか<ruby>実現<rp>(</rp><rt>じつげん</rt><rp>)</rp></ruby>するだろう。",
+                        "enMn": "Түүний мөрөөдөл нэг л өдөр биелэх болно."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хэрэгжилт",
+                    "meaningsMn": [
+                        "хэрэгжилт",
+                        "биелэлт",
+                        "биелэл"
+                    ]
+                },
+                {
+                    "jp": "失業",
+                    "reading": "しつぎょう",
+                    "en": "unemployment",
+                    "meanings": [
+                        "unemployment"
+                    ],
+                    "example": {
+                        "jp": "討論での重点は失業問題であった。",
+                        "en": "In the discussion the accent was on unemployment.",
+                        "furigana": "<ruby>討論<rp>(</rp><rt>とうろん</rt><rp>)</rp></ruby>での<ruby>重点<rp>(</rp><rt>じゅうてん</rt><rp>)</rp></ruby>は<ruby>失業<rp>(</rp><rt>しつぎょう</rt><rp>)</rp></ruby><ruby>問題<rp>(</rp><rt>もんだい</rt><rp>)</rp></ruby>であった。",
+                        "enMn": "Хэлэлцүүлэгт ажилгүйдлийн асуудал төвд байсан."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "ажилгүйдэл",
+                    "meaningsMn": [
+                        "ажилгүйдэл"
+                    ]
+                },
+                {
+                    "jp": "助手",
+                    "reading": "じょしゅ",
+                    "en": "helper",
+                    "meanings": [
+                        "helper",
+                        "assistant"
+                    ],
+                    "example": {
+                        "jp": "彼女は有能で頼りになる助手だ。",
+                        "en": "She is an efficient and reliable assistant.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>有能<rp>(</rp><rt>ゆうのう</rt><rp>)</rp></ruby>で<ruby>頼<rp>(</rp><rt>たよ</rt><rp>)</rp></ruby>りになる<ruby>助手<rp>(</rp><rt>じょしゅ</rt><rp>)</rp></ruby>だ。",
+                        "enMn": "Тэр бол чадварлаг, найдвартай туслах юм."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "туслах",
+                    "meaningsMn": [
+                        "туслах"
+                    ]
+                },
+                {
+                    "jp": "進歩",
+                    "reading": "しんぽ",
+                    "en": "improvement",
+                    "meanings": [
+                        "improvement",
+                        "progress",
+                        "development"
+                    ],
+                    "example": {
+                        "jp": "文明の進歩がとても速い。",
+                        "en": "The progress of civilization is very rapid.",
+                        "furigana": "<ruby>文明<rp>(</rp><rt>ぶんめい</rt><rp>)</rp></ruby>の<ruby>進歩<rp>(</rp><rt>しんぽ</rt><rp>)</rp></ruby>がとても<ruby>速<rp>(</rp><rt>はや</rt><rp>)</rp></ruby>い。",
+                        "enMn": "Соёл иргэншлийн дэвшил маш хурдан."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "ахиц дэвшил",
+                    "meaningsMn": [
+                        "ахиц дэвшил"
+                    ]
+                },
+                {
+                    "jp": "手段",
+                    "reading": "しゅだん",
+                    "en": "means",
+                    "meanings": [
+                        "means",
+                        "way",
+                        "measure"
+                    ],
+                    "example": {
+                        "jp": "目的は手段を正当化するだろうか。",
+                        "en": "Does the end justify the means?",
+                        "furigana": "<ruby>目的<rp>(</rp><rt>もくてき</rt><rp>)</rp></ruby>は<ruby>手段<rp>(</rp><rt>しゅだん</rt><rp>)</rp></ruby>を<ruby>正当<rp>(</rp><rt>せいとう</rt><rp>)</rp></ruby><ruby>化<rp>(</rp><rt>か</rt><rp>)</rp></ruby>するだろうか。",
+                        "enMn": "Зорилго нь аргыг зөвтгөдөг үү?"
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "арга зам",
+                    "meaningsMn": [
+                        "арга зам",
+                        "арга",
+                        "арга хэмжээ"
+                    ]
+                },
+                {
+                    "jp": "修理",
+                    "reading": "しゅうり",
+                    "en": "repairing",
+                    "meanings": [
+                        "repairing",
+                        "mending"
+                    ],
+                    "example": {
+                        "jp": "父は器用で何でも修理してしまう。",
+                        "en": "My father is good with tools and does almost all the repairs.",
+                        "furigana": "<ruby>父<rp>(</rp><rt>ちち</rt><rp>)</rp></ruby>は<ruby>器用<rp>(</rp><rt>きよう</rt><rp>)</rp></ruby>で<ruby>何<rp>(</rp><rt>なに</rt><rp>)</rp></ruby>でも<ruby>修理<rp>(</rp><rt>しゅうり</rt><rp>)</rp></ruby>してしまう。",
+                        "enMn": "Аав минь багаж хэрэгсэлд ур чадвартай бөгөөд бараг бүх засварыг хийдэг."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "засвар",
+                    "meaningsMn": [
+                        "засвар",
+                        "засвар"
+                    ]
+                },
+                {
+                    "jp": "修正",
+                    "reading": "しゅうせい",
+                    "en": "amendment",
+                    "meanings": [
+                        "amendment",
+                        "correction"
+                    ],
+                    "example": {
+                        "jp": "・テキストデータの誤字脱字を修正。",
+                        "en": "・ Corrected mistaken/missing characters in the text data.",
+                        "furigana": "・テキストデータの<ruby>誤字<rp>(</rp><rt>ごじ</rt><rp>)</rp></ruby><ruby>脱字<rp>(</rp><rt>だつじ</rt><rp>)</rp></ruby>を<ruby>修正<rp>(</rp><rt>しゅうせい</rt><rp>)</rp></ruby>。",
+                        "enMn": "・ Текст өгөгдлийн алдаатай/дутуу тэмдэгтийг засварласан."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "залруулга",
+                    "meaningsMn": [
+                        "залруулга",
+                        "засвар"
+                    ]
+                },
+                {
+                    "jp": "職業",
+                    "reading": "しょくぎょう",
+                    "en": "occupation",
+                    "meanings": [
+                        "occupation",
+                        "business"
+                    ],
+                    "example": {
+                        "jp": "婦人に開放されている職業は多い。",
+                        "en": "There are many careers open to women.",
+                        "furigana": "<ruby>婦人<rp>(</rp><rt>ふじん</rt><rp>)</rp></ruby>に<ruby>開放<rp>(</rp><rt>かいほう</rt><rp>)</rp></ruby>されている<ruby>職業<rp>(</rp><rt>しょくぎょう</rt><rp>)</rp></ruby>は<ruby>多<rp>(</rp><rt>おお</rt><rp>)</rp></ruby>い。",
+                        "enMn": "Эмэгтэйчүүдэд нээлттэй олон мэргэжил бий."
+                    },
+                    "phonetic": "戠",
+                    "phoneticReading": "シキ、ショク",
+                    "enMn": "мэргэжил",
+                    "meaningsMn": [
+                        "мэргэжил",
+                        "худалдаа"
+                    ]
+                },
+                {
+                    "jp": "職",
+                    "reading": "しょく",
+                    "en": "employment",
+                    "meanings": [
+                        "employment"
+                    ],
+                    "example": {
+                        "jp": "貴職らにとっては重要なことです。",
+                        "en": "This is an important thing for all of you.",
+                        "furigana": "<ruby>貴<rp>(</rp><rt>き</rt><rp>)</rp></ruby><ruby>職<rp>(</rp><rt>しょく</rt><rp>)</rp></ruby>らにとっては<ruby>重要<rp>(</rp><rt>じゅうよう</rt><rp>)</rp></ruby>なことです。",
+                        "enMn": "Энэ бол та бүхэнд чухал зүйл юм."
+                    },
+                    "phonetic": "戠",
+                    "phoneticReading": "シキ、ショク",
+                    "enMn": "ажил эрхлэлт",
+                    "meaningsMn": [
+                        "ажил эрхлэлт"
+                    ]
+                },
+                {
+                    "jp": "進める",
+                    "reading": "すすめる",
+                    "en": "to advance",
+                    "meanings": [
+                        "to advance",
+                        "to promote",
+                        "to hasten"
+                    ],
+                    "example": {
+                        "jp": "そのチームはすぐに計画を進めるだろう。",
+                        "en": "The team will go ahead with the plan soon.",
+                        "furigana": "そのチームはすぐに<ruby>計画<rp>(</rp><rt>けいかく</rt><rp>)</rp></ruby>を<ruby>進<rp>(</rp><rt>すす</rt><rp>)</rp></ruby>めるだろう。",
+                        "enMn": "Тэр баг удахгүй төлөвлөгөөгөө ахиулах байх."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "ахиулах",
+                    "meaningsMn": [
+                        "ахиулах"
+                    ]
+                },
+                {
+                    "jp": "勧める",
+                    "reading": "すすめる",
+                    "en": "to urge (someone) to do (something)",
+                    "meanings": [
+                        "to urge (someone) to do (something)",
+                        "to recommend"
+                    ],
+                    "example": {
+                        "jp": "彼女はいつも新しいものを試すよう彼に勧める。",
+                        "en": "She always urges him to try new things.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はいつも<ruby>新<rp>(</rp><rt>あたら</rt><rp>)</rp></ruby>しいものを<ruby>試<rp>(</rp><rt>ため</rt><rp>)</rp></ruby>すよう<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>に<ruby>勧<rp>(</rp><rt>すす</rt><rp>)</rp></ruby>める。",
+                        "enMn": "Тэр түүнд үргэлж шинэ зүйл туршиж үзэхийг зөвлөдөг."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "зөвлөх",
+                    "meaningsMn": [
+                        "зөвлөх"
+                    ]
+                },
+                {
+                    "jp": "処理",
+                    "reading": "しょり",
+                    "en": "processing",
+                    "meanings": [
+                        "processing",
+                        "treatment",
+                        "disposition"
+                    ],
+                    "example": {
+                        "jp": "彼は難問をうまく処理するだろう。",
+                        "en": "He'll cope with difficult problems.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>難問<rp>(</rp><rt>なんもん</rt><rp>)</rp></ruby>をうまく<ruby>処理<rp>(</rp><rt>しょり</rt><rp>)</rp></ruby>するだろう。",
+                        "enMn": "Тэр хэцүү асуудлуудыг даван туулна."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "боловсруулалт",
+                    "meaningsMn": [
+                        "боловсруулалт",
+                        "боловсруулалт",
+                        "зохицуулалт"
+                    ]
+                },
+                {
+                    "jp": "済ませる",
+                    "reading": "すませる",
+                    "en": "to be finished",
+                    "meanings": [
+                        "to be finished"
+                    ],
+                    "example": {
+                        "jp": "英語の辞書なしで済ませることができますか。",
+                        "en": "Can you do without an English dictionary?",
+                        "furigana": "<ruby>英語<rp>(</rp><rt>えいご</rt><rp>)</rp></ruby>の<ruby>辞書<rp>(</rp><rt>じしょ</rt><rp>)</rp></ruby>なしで<ruby>済<rp>(</rp><rt>す</rt><rp>)</rp></ruby>ませることができますか。",
+                        "enMn": "Англи хэлний толь бичиггүйгээр өнгөрөөж чадах уу?"
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "гүйцээх",
+                    "meaningsMn": [
+                        "гүйцээх"
+                    ]
+                },
+                {
+                    "jp": "為る",
+                    "reading": "する",
+                    "en": "to do",
+                    "meanings": [
+                        "to do",
+                        "to attempt"
+                    ],
+                    "example": {
+                        "jp": "今日、東京はとても寒く為るでしょう。",
+                        "en": "Today, Tokyo will get very cold.",
+                        "furigana": "<ruby>今日<rp>(</rp><rt>きょう</rt><rp>)</rp></ruby>、<ruby>東京<rp>(</rp><rt>とうきょう</rt><rp>)</rp></ruby>はとても<ruby>寒<rp>(</rp><rt>さむ</rt><rp>)</rp></ruby>く<ruby>為<rp>(</rp><rt>な</rt><rp>)</rp></ruby>るでしょう。",
+                        "enMn": "Өнөөдөр Токио маш хүйтэн болно."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хийх",
+                    "meaningsMn": [
+                        "хийх"
+                    ]
+                }
+            ]
+        ],
+        "themeKey": "theme.n3.2"
+    },
+    {
+        "level": 27,
+        "jlpt": "N3",
+        "title": "Time and order",
+        "sets": [
+            [
+                {
+                    "jp": "正午",
+                    "reading": "しょうご",
+                    "en": "noon",
+                    "meanings": [
+                        "noon",
+                        "mid-day"
+                    ],
+                    "example": {
+                        "jp": "彼は正午までここにいるでしょう。",
+                        "en": "He'll be here until noon.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>正午<rp>(</rp><rt>しょうご</rt><rp>)</rp></ruby>までここにいるでしょう。",
+                        "enMn": "Тэр үд хүртэл энд байх болно."
+                    },
+                    "phonetic": "正",
+                    "phoneticReading": "ショウ、セイ",
+                    "enMn": "үдийн цаг",
+                    "meaningsMn": [
+                        "үдийн цаг",
+                        "үд дунд"
+                    ]
+                },
+                {
+                    "jp": "更に",
+                    "reading": "さらに",
+                    "en": "furthermore",
+                    "meanings": [
+                        "furthermore",
+                        "moreover"
+                    ],
+                    "example": {
+                        "jp": "彼らは更に３マイル遠くへ歩いた。",
+                        "en": "They walked three miles farther.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>更<rp>(</rp><rt>さら</rt><rp>)</rp></ruby>に３マイル<ruby>遠<rp>(</rp><rt>とお</rt><rp>)</rp></ruby>くへ<ruby>歩<rp>(</rp><rt>ある</rt><rp>)</rp></ruby>いた。",
+                        "enMn": "Тэд цаашлаад гурван миль алхав."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "цаашлаад",
+                    "meaningsMn": [
+                        "цаашлаад"
+                    ]
+                },
+                {
+                    "jp": "直に",
+                    "reading": "じかに",
+                    "en": "immediately",
+                    "meanings": [
+                        "immediately",
+                        "readily",
+                        "directly"
+                    ],
+                    "example": {
+                        "jp": "彼は直に腹を立てる。",
+                        "en": "He is quick to take offense.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>直<rp>(</rp><rt>じか</rt><rp>)</rp></ruby>に<ruby>腹<rp>(</rp><rt>はら</rt><rp>)</rp></ruby>を<ruby>立<rp>(</rp><rt>た</rt><rp>)</rp></ruby>てる。",
+                        "enMn": "Тэр амархан уурладаг."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "биечлэн",
+                    "meaningsMn": [
+                        "биечлэн"
+                    ]
+                },
+                {
+                    "jp": "直",
+                    "reading": "じき",
+                    "en": "immediately",
+                    "meanings": [
+                        "immediately",
+                        "soon",
+                        "shortly"
+                    ],
+                    "example": {
+                        "jp": "彼が直向きに生きるその姿は実に健気です。",
+                        "en": "The single-minded way he gets on with his life is truly admirable.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>が<ruby>直<rp>(</rp><rt>ちょく</rt><rp>)</rp></ruby><ruby>向<rp>(</rp><rt>む</rt><rp>)</rp></ruby>きに<ruby>生<rp>(</rp><rt>い</rt><rp>)</rp></ruby>きるその<ruby>姿<rp>(</rp><rt>すがた</rt><rp>)</rp></ruby>は<ruby>実<rp>(</rp><rt>じつ</rt><rp>)</rp></ruby>に<ruby>健気<rp>(</rp><rt>けなげ</rt><rp>)</rp></ruby>です。",
+                        "enMn": "Түүний чин сэтгэлээсээ амьдарч буй байдал үнэхээр бахархалтай."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "удахгүй",
+                    "meaningsMn": [
+                        "удахгүй"
+                    ]
+                },
+                {
+                    "jp": "時期",
+                    "reading": "じき",
+                    "en": "time",
+                    "meanings": [
+                        "time",
+                        "season",
+                        "period"
+                    ],
+                    "example": {
+                        "jp": "しかるべき時期にお支払いいたしました。",
+                        "en": "I paid at the appropriate time.",
+                        "furigana": "しかるべき<ruby>時期<rp>(</rp><rt>じき</rt><rp>)</rp></ruby>にお<ruby>支払<rp>(</rp><rt>しはら</rt><rp>)</rp></ruby>いいたしました。",
+                        "enMn": "Зохих хугацаанд нь төлбөрөө төлсөн."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "цаг үе",
+                    "meaningsMn": [
+                        "цаг үе"
+                    ]
+                },
+                {
+                    "jp": "至急",
+                    "reading": "しきゅう",
+                    "en": "urgent",
+                    "meanings": [
+                        "urgent",
+                        "pressing"
+                    ],
+                    "example": {
+                        "jp": "評価後、結果を至急にお送りします。",
+                        "en": "We will evaluate them and send you the results of our findings as soon as we can.",
+                        "furigana": "<ruby>評価<rp>(</rp><rt>ひょうか</rt><rp>)</rp></ruby><ruby>後<rp>(</rp><rt>ご</rt><rp>)</rp></ruby>、<ruby>結果<rp>(</rp><rt>けっか</rt><rp>)</rp></ruby>を<ruby>至急<rp>(</rp><rt>しきゅう</rt><rp>)</rp></ruby>にお<ruby>送<rp>(</rp><rt>おく</rt><rp>)</rp></ruby>りします。",
+                        "enMn": "Үнэлгээ хийсний дараа үр дүнг яаралтай илгээнэ."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "яаралтай",
+                    "meaningsMn": [
+                        "яаралтай"
+                    ]
+                },
+                {
+                    "jp": "しきりに",
+                    "reading": "しきりに",
+                    "en": "frequently",
+                    "meanings": [
+                        "frequently",
+                        "repeatedly",
+                        "eagerly"
+                    ],
+                    "example": {
+                        "jp": "彼女は入試の結果をしきりに知りたがっていた。",
+                        "en": "She was anxious to know the entrance exam results.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>入試<rp>(</rp><rt>にゅうし</rt><rp>)</rp></ruby>の<ruby>結果<rp>(</rp><rt>けっか</rt><rp>)</rp></ruby>をしきりに<ruby>知<rp>(</rp><rt>し</rt><rp>)</rp></ruby>りたがっていた。",
+                        "enMn": "Тэр элсэлтийн шалгалтын дүнгээ тэсэн ядан хүлээж байлаа."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "дахин дахин",
+                    "meaningsMn": [
+                        "дахин дахин"
+                    ]
+                },
+                {
+                    "jp": "時刻",
+                    "reading": "じこく",
+                    "en": "time",
+                    "meanings": [
+                        "time",
+                        "hour"
+                    ],
+                    "example": {
+                        "jp": "列車は時刻通りに出ますか。",
+                        "en": "Will the train leave on time?",
+                        "furigana": "<ruby>列車<rp>(</rp><rt>れっしゃ</rt><rp>)</rp></ruby>は<ruby>時刻<rp>(</rp><rt>じこく</rt><rp>)</rp></ruby><ruby>通<rp>(</rp><rt>どお</rt><rp>)</rp></ruby>りに<ruby>出<rp>(</rp><rt>で</rt><rp>)</rp></ruby>ますか。",
+                        "enMn": "Галт тэрэг цагтаа хөдлөх үү?"
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "цаг мөч",
+                    "meaningsMn": [
+                        "цаг мөч"
+                    ]
+                },
+                {
+                    "jp": "事情",
+                    "reading": "じじょう",
+                    "en": "circumstances",
+                    "meanings": [
+                        "circumstances",
+                        "situation",
+                        "reasons"
+                    ],
+                    "example": {
+                        "jp": "彼女はすべての事情を利用する。",
+                        "en": "She takes every circumstance into account.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はすべての<ruby>事情<rp>(</rp><rt>じじょう</rt><rp>)</rp></ruby>を<ruby>利用<rp>(</rp><rt>りよう</rt><rp>)</rp></ruby>する。",
+                        "enMn": "Тэр бүх нөхцөл байдлыг ашигладаг."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "учир шалтгаан",
+                    "meaningsMn": [
+                        "учир шалтгаан"
+                    ]
+                },
+                {
+                    "jp": "次第",
+                    "reading": "しだい",
+                    "en": "order",
+                    "meanings": [
+                        "order; circumstances; immediate(ly)"
+                    ],
+                    "example": {
+                        "jp": "「いつ戻りますか」「天候次第です」",
+                        "en": "\"When will you be back?\" \"It all depends on the weather.\"",
+                        "furigana": "「いつ<ruby>戻<rp>(</rp><rt>もど</rt><rp>)</rp></ruby>りますか」「<ruby>天候<rp>(</rp><rt>てんこう</rt><rp>)</rp></ruby><ruby>次第<rp>(</rp><rt>しだい</rt><rp>)</rp></ruby>です」",
+                        "enMn": "«Хэзээ буцаж ирэх вэ?» «Цаг агаараас шалтгаална.»"
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "дэс дараа",
+                    "meaningsMn": [
+                        "дэс дараа"
                     ]
                 },
                 {
@@ -13830,6 +13552,1456 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
+                    "jp": "順番",
+                    "reading": "じゅんばん",
+                    "en": "turn (in line)",
+                    "meanings": [
+                        "turn (in line)",
+                        "order of things"
+                    ],
+                    "example": {
+                        "jp": "君達全部のいう事を順番に聞こう。",
+                        "en": "I'll hear all of you in turn.",
+                        "furigana": "<ruby>君<rp>(</rp><rt>きみ</rt><rp>)</rp></ruby><ruby>達<rp>(</rp><rt>たち</rt><rp>)</rp></ruby><ruby>全部<rp>(</rp><rt>ぜんぶ</rt><rp>)</rp></ruby>のいう<ruby>事<rp>(</rp><rt>こと</rt><rp>)</rp></ruby>を<ruby>順番<rp>(</rp><rt>じゅんばん</rt><rp>)</rp></ruby>に<ruby>聞<rp>(</rp><rt>き</rt><rp>)</rp></ruby>こう。",
+                        "enMn": "Би та бүгдийн үгийг ээлжлэн сонсоно."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "дараалал",
+                    "meaningsMn": [
+                        "дараалал",
+                        "дараалал"
+                    ]
+                },
+                {
+                    "jp": "順",
+                    "reading": "じゅん",
+                    "en": "order",
+                    "meanings": [
+                        "order",
+                        "turn"
+                    ],
+                    "example": {
+                        "jp": "順を追って基本的なタグを覚えていこう。",
+                        "en": "Let's learn the basic tags in order.",
+                        "furigana": "<ruby>順<rp>(</rp><rt>じゅん</rt><rp>)</rp></ruby>を<ruby>追<rp>(</rp><rt>お</rt><rp>)</rp></ruby>って<ruby>基本<rp>(</rp><rt>きほん</rt><rp>)</rp></ruby><ruby>的<rp>(</rp><rt>てき</rt><rp>)</rp></ruby>なタグを<ruby>覚<rp>(</rp><rt>おぼ</rt><rp>)</rp></ruby>えていこう。",
+                        "enMn": "Үндсэн шошгуудыг дэс дараалан нь цээжилье."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "ээлж",
+                    "meaningsMn": [
+                        "ээлж"
+                    ]
+                },
+                {
+                    "jp": "徐々に",
+                    "reading": "じょじょに",
+                    "en": "slowly",
+                    "meanings": [
+                        "slowly",
+                        "little by little"
+                    ],
+                    "example": {
+                        "jp": "列車は徐々にスピードを上げた。",
+                        "en": "The train gained speed gradually.",
+                        "furigana": "<ruby>列車<rp>(</rp><rt>れっしゃ</rt><rp>)</rp></ruby>は<ruby>徐々に<rp>(</rp><rt>じょじょに</rt><rp>)</rp></ruby>スピードを<ruby>上<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>げた。",
+                        "enMn": "Галт тэрэг аажмаар хурдаа нэмэв."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "аажмаар",
+                    "meaningsMn": [
+                        "аажмаар"
+                    ]
+                },
+                {
+                    "jp": "瞬間",
+                    "reading": "しゅんかん",
+                    "en": "moment",
+                    "meanings": [
+                        "moment",
+                        "second"
+                    ],
+                    "example": {
+                        "jp": "その瞬間、大音響とともに爆発した。",
+                        "en": "At that instant it exploded with a great noise.",
+                        "furigana": "その<ruby>瞬間<rp>(</rp><rt>しゅんかん</rt><rp>)</rp></ruby>、<ruby>大<rp>(</rp><rt>だい</rt><rp>)</rp></ruby><ruby>音響<rp>(</rp><rt>おんきょう</rt><rp>)</rp></ruby>とともに<ruby>爆発<rp>(</rp><rt>ばくはつ</rt><rp>)</rp></ruby>した。",
+                        "enMn": "Тэр агшинд их чимээтэй дэлбэрсэн."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "агшин зуур",
+                    "meaningsMn": [
+                        "агшин зуур",
+                        "мөч"
+                    ]
+                },
+                {
+                    "jp": "末",
+                    "reading": "すえ",
+                    "en": "the end of",
+                    "meanings": [
+                        "the end of",
+                        "powder"
+                    ],
+                    "example": {
+                        "jp": "予約購読料は今年末以前に全て払ってください。",
+                        "en": "All subscriptions must be paid before the end of this year.",
+                        "furigana": "<ruby>予約<rp>(</rp><rt>よやく</rt><rp>)</rp></ruby><ruby>購読<rp>(</rp><rt>こうどく</rt><rp>)</rp></ruby><ruby>料<rp>(</rp><rt>りょう</rt><rp>)</rp></ruby>は<ruby>今年<rp>(</rp><rt>ことし</rt><rp>)</rp></ruby><ruby>末<rp>(</rp><rt>まつ</rt><rp>)</rp></ruby><ruby>以前<rp>(</rp><rt>いぜん</rt><rp>)</rp></ruby>に<ruby>全<rp>(</rp><rt>すべ</rt><rp>)</rp></ruby>て<ruby>払<rp>(</rp><rt>はら</rt><rp>)</rp></ruby>ってください。",
+                        "enMn": "Захиалгын төлбөрийг энэ оны эцсээс өмнө бүрэн төлнө үү."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "эцэс",
+                    "meaningsMn": [
+                        "эцэс"
+                    ]
+                },
+                {
+                    "jp": "条件",
+                    "reading": "じょうけん",
+                    "en": "condition",
+                    "meanings": [
+                        "conditions",
+                        "terms"
+                    ],
+                    "example": {
+                        "jp": "彼女は条件が不公平だと言い張る。",
+                        "en": "She will have it that the conditions are unfair.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>条件<rp>(</rp><rt>じょうけん</rt><rp>)</rp></ruby>が<ruby>不公平<rp>(</rp><rt>ふこうへい</rt><rp>)</rp></ruby>だと<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>い<ruby>張<rp>(</rp><rt>は</rt><rp>)</rp></ruby>る。",
+                        "enMn": "Тэр нөхцөл шударга бус гэдгээ тууштай мэдэгддэг."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "нөхцөл",
+                    "meaningsMn": [
+                        "нөхцөл",
+                        "нөхцөлүүд"
+                    ]
+                },
+                {
+                    "jp": "ずっと",
+                    "reading": "ずっと",
+                    "en": "for a long time",
+                    "meanings": [
+                        "for a long time; all the time; consecutively"
+                    ],
+                    "example": {
+                        "jp": "午後はずっと友人とおしゃべりをして過ごした。",
+                        "en": "I spent the whole afternoon chatting with friends.",
+                        "furigana": "<ruby>午後<rp>(</rp><rt>ごご</rt><rp>)</rp></ruby>はずっと<ruby>友人<rp>(</rp><rt>ゆうじん</rt><rp>)</rp></ruby>とおしゃべりをして<ruby>過<rp>(</rp><rt>す</rt><rp>)</rp></ruby>ごした。",
+                        "enMn": "Үдээс хойш би найзтайгаа чалчиж өнгөрөөлөө."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "үргэлж",
+                    "meaningsMn": [
+                        "үргэлж"
+                    ]
+                },
+                {
+                    "jp": "既に",
+                    "reading": "すでに",
+                    "en": "already (same as もう)",
+                    "meanings": [
+                        "already (same as もう)"
+                    ],
+                    "example": {
+                        "jp": "見渡すと、既に船はかなり沖の方にいた。",
+                        "en": "Looking around the boat was already quite far out in the open sea.",
+                        "furigana": "<ruby>見渡<rp>(</rp><rt>みわた</rt><rp>)</rp></ruby>すと、<ruby>既<rp>(</rp><rt>すで</rt><rp>)</rp></ruby>に<ruby>船<rp>(</rp><rt>ふね</rt><rp>)</rp></ruby>はかなり<ruby>沖<rp>(</rp><rt>おき</rt><rp>)</rp></ruby>の<ruby>方<rp>(</rp><rt>ほう</rt><rp>)</rp></ruby>にいた。",
+                        "enMn": "Эргэн тойрноо харахад хөлөг онгоц аль хэдийн нэлээд алс далайд байлаа."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "аль хэдийн",
+                    "meaningsMn": [
+                        "аль хэдийн"
+                    ]
+                },
+                {
+                    "jp": "週",
+                    "reading": "しゅう",
+                    "en": "week",
+                    "meanings": [
+                        "week"
+                    ],
+                    "example": {
+                        "jp": "彼女は週に１度両親に手紙を出す。",
+                        "en": "She writes to her parents once a week.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>週<rp>(</rp><rt>しゅう</rt><rp>)</rp></ruby>に１<ruby>度<rp>(</rp><rt>ど</rt><rp>)</rp></ruby><ruby>両親<rp>(</rp><rt>りょうしん</rt><rp>)</rp></ruby>に<ruby>手紙<rp>(</rp><rt>てがみ</rt><rp>)</rp></ruby>を<ruby>出<rp>(</rp><rt>だ</rt><rp>)</rp></ruby>す。",
+                        "enMn": "Тэр эцэг эхдээ долоо хоногт нэг удаа захидал бичдэг."
+                    },
+                    "phonetic": "周",
+                    "phoneticReading": "シュウ、チョウ",
+                    "enMn": "долоо хоног",
+                    "meaningsMn": [
+                        "долоо хоног"
+                    ]
+                },
+                {
+                    "jp": "順調",
+                    "reading": "じゅんちょう",
+                    "en": "going well",
+                    "meanings": [
+                        "doing well"
+                    ],
+                    "example": {
+                        "jp": "猛吹雪に遭うまでは順調に進んだ。",
+                        "en": "We made good time until we ran into a blizzard.",
+                        "furigana": "<ruby>猛<rp>(</rp><rt>もう</rt><rp>)</rp></ruby><ruby>吹雪<rp>(</rp><rt>ふぶき</rt><rp>)</rp></ruby>に<ruby>遭<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>うまでは<ruby>順調<rp>(</rp><rt>じゅんちょう</rt><rp>)</rp></ruby>に<ruby>進<rp>(</rp><rt>すす</rt><rp>)</rp></ruby>んだ。",
+                        "enMn": "Бид цасан шуурганд орох хүртлээ сайн явж байсан."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "амжилттай явж буй",
+                    "meaningsMn": [
+                        "сайн явж байгаа"
+                    ]
+                },
+                {
+                    "jp": "状況",
+                    "reading": "じょうきょう",
+                    "en": "situation",
+                    "meanings": [
+                        "state of affairs",
+                        "situation"
+                    ],
+                    "example": {
+                        "jp": "状況証拠としちゃあ、十分だね。",
+                        "en": "For circumstantial evidence, that's plenty.",
+                        "furigana": "<ruby>状況<rp>(</rp><rt>じょうきょう</rt><rp>)</rp></ruby><ruby>証拠<rp>(</rp><rt>しょうこ</rt><rp>)</rp></ruby>としちゃあ、<ruby>十分<rp>(</rp><rt>じゅうぶん</rt><rp>)</rp></ruby>だね。",
+                        "enMn": "Шууд бус нотолгооны хувьд энэ хангалттай."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "нөхцөл байдал",
+                    "meaningsMn": [
+                        "нөхцөл байдал",
+                        "нөхцөл байдал"
+                    ]
+                },
+                {
+                    "jp": "一生",
+                    "reading": "いっしょう",
+                    "en": "throughout (one's) life",
+                    "meanings": [
+                        "throughout (one's) life"
+                    ],
+                    "example": null,
+                    "phonetic": "生",
+                    "phoneticReading": "セイ、ショウ",
+                    "enMn": "насан туршдаа",
+                    "meaningsMn": [
+                        "насан туршдаа"
+                    ]
+                },
+                {
+                    "jp": "永遠",
+                    "reading": "えいえん",
+                    "en": "eternity",
+                    "meanings": [
+                        "eternity",
+                        "perpetuity",
+                        "immortality"
+                    ],
+                    "example": null,
+                    "phonetic": "永",
+                    "phoneticReading": "エイ",
+                    "enMn": "мөнхийн",
+                    "meaningsMn": [
+                        "мөнхийн"
+                    ]
+                },
+                {
+                    "jp": "過去",
+                    "reading": "かこ",
+                    "en": "past",
+                    "meanings": [
+                        "past"
+                    ],
+                    "example": null,
+                    "phonetic": "咼",
+                    "phoneticReading": "カ",
+                    "enMn": "өнгөрсөн үе",
+                    "meaningsMn": [
+                        "өнгөрсөн үе"
+                    ]
+                }
+            ]
+        ],
+        "themeKey": "theme.n3.3"
+    },
+    {
+        "level": 28,
+        "jlpt": "N3",
+        "title": "The body and health",
+        "sets": [
+            [
+                {
+                    "jp": "覚ます",
+                    "reading": "さます",
+                    "en": "to awaken",
+                    "meanings": [
+                        "to awaken"
+                    ],
+                    "example": {
+                        "jp": "目を覚ますと、家族が来ていた。",
+                        "en": "When she awoke, the family was there.",
+                        "furigana": "<ruby>目<rp>(</rp><rt>め</rt><rp>)</rp></ruby>を<ruby>覚<rp>(</rp><rt>さ</rt><rp>)</rp></ruby>ますと、<ruby>家族<rp>(</rp><rt>かぞく</rt><rp>)</rp></ruby>が<ruby>来<rp>(</rp><rt>き</rt><rp>)</rp></ruby>ていた。",
+                        "enMn": "Нүдээ нээхэд гэр бүлийнхэн нь ирсэн байлаа."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "сэрээх",
+                    "meaningsMn": [
+                        "сэрээх"
+                    ]
+                },
+                {
+                    "jp": "覚める",
+                    "reading": "さめる",
+                    "en": "to wake",
+                    "meanings": [
+                        "to wake",
+                        "to wake up"
+                    ],
+                    "example": {
+                        "jp": "目が覚めると部屋に泥棒がいた。",
+                        "en": "I awoke to find a burglar in my room.",
+                        "furigana": "<ruby>目<rp>(</rp><rt>め</rt><rp>)</rp></ruby>が<ruby>覚<rp>(</rp><rt>さ</rt><rp>)</rp></ruby>めると<ruby>部屋<rp>(</rp><rt>へや</rt><rp>)</rp></ruby>に<ruby>泥棒<rp>(</rp><rt>どろぼう</rt><rp>)</rp></ruby>がいた。",
+                        "enMn": "Сэрэхэд өрөөнд минь хулгайч байлаа."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "сэрэх",
+                    "meaningsMn": [
+                        "сэрэх"
+                    ]
+                },
+                {
+                    "jp": "刺激",
+                    "reading": "しげき",
+                    "en": "stimulus",
+                    "meanings": [
+                        "stimulus",
+                        "impetus",
+                        "incentive"
+                    ],
+                    "example": {
+                        "jp": "酔いとは脳がある刺激物に冒されることである。",
+                        "en": "Intoxication is what happens when the brain is affected by certain stimulants.",
+                        "furigana": "<ruby>酔<rp>(</rp><rt>よ</rt><rp>)</rp></ruby>いとは<ruby>脳<rp>(</rp><rt>のう</rt><rp>)</rp></ruby>がある<ruby>刺激<rp>(</rp><rt>しげき</rt><rp>)</rp></ruby><ruby>物<rp>(</rp><rt>ぶつ</rt><rp>)</rp></ruby>に<ruby>冒<rp>(</rp><rt>おか</rt><rp>)</rp></ruby>されることである。",
+                        "enMn": "Согтуурал гэдэг нь тархи тодорхой өдөөгч бодист өртөхийг хэлнэ."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "өдөөлт",
+                    "meaningsMn": [
+                        "өдөөлт"
+                    ]
+                },
+                {
+                    "jp": "症状",
+                    "reading": "しょうじょう",
+                    "en": "symptoms",
+                    "meanings": [
+                        "symptoms",
+                        "condition"
+                    ],
+                    "example": {
+                        "jp": "高熱がこの病気の顕著な症状だ。",
+                        "en": "High fever is a prominent symptom of this disease.",
+                        "furigana": "<ruby>高熱<rp>(</rp><rt>こうねつ</rt><rp>)</rp></ruby>がこの<ruby>病気<rp>(</rp><rt>びょうき</rt><rp>)</rp></ruby>の<ruby>顕著<rp>(</rp><rt>けんちょ</rt><rp>)</rp></ruby>な<ruby>症状<rp>(</rp><rt>しょうじょう</rt><rp>)</rp></ruby>だ。",
+                        "enMn": "Өндөр халуурал энэ өвчний тод шинж тэмдэг юм."
+                    },
+                    "phonetic": "正",
+                    "phoneticReading": "ショウ、セイ",
+                    "enMn": "шинж тэмдэг",
+                    "meaningsMn": [
+                        "шинж тэмдэг",
+                        "нөхцөл"
+                    ]
+                },
+                {
+                    "jp": "自殺",
+                    "reading": "じさつ",
+                    "en": "suicide",
+                    "meanings": [
+                        "suicide"
+                    ],
+                    "example": {
+                        "jp": "彼女は橋から身を投げて自殺した。",
+                        "en": "She committed suicide by jumping off the bridge.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>橋<rp>(</rp><rt>はし</rt><rp>)</rp></ruby>から<ruby>身<rp>(</rp><rt>み</rt><rp>)</rp></ruby>を<ruby>投<rp>(</rp><rt>な</rt><rp>)</rp></ruby>げて<ruby>自殺<rp>(</rp><rt>じさつ</rt><rp>)</rp></ruby>した。",
+                        "enMn": "Тэр гүүрнээс үсрэн амиа хорлосон."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "амиа хорлолт",
+                    "meaningsMn": [
+                        "амиа хорлолт"
+                    ]
+                },
+                {
+                    "jp": "重体",
+                    "reading": "じゅうたい",
+                    "en": "seriously ill",
+                    "meanings": [
+                        "seriously ill",
+                        "critical state"
+                    ],
+                    "example": {
+                        "jp": "重体の赤ちゃんは医者の注意深い監視下に置かれていた。",
+                        "en": "The very sick baby was under careful observation by the doctors.",
+                        "furigana": "<ruby>重体<rp>(</rp><rt>じゅうたい</rt><rp>)</rp></ruby>の<ruby>赤<rp>(</rp><rt>あか</rt><rp>)</rp></ruby>ちゃんは<ruby>医者<rp>(</rp><rt>いしゃ</rt><rp>)</rp></ruby>の<ruby>注意深<rp>(</rp><rt>ちゅういぶか</rt><rp>)</rp></ruby>い<ruby>監視<rp>(</rp><rt>かんし</rt><rp>)</rp></ruby><ruby>下<rp>(</rp><rt>か</rt><rp>)</rp></ruby>に<ruby>置<rp>(</rp><rt>お</rt><rp>)</rp></ruby>かれていた。",
+                        "enMn": "Хүнд байдалтай нярай эмч нарын нягт хяналтад байв."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хүнд байдал",
+                    "meaningsMn": [
+                        "хүнд байдал"
+                    ]
+                },
+                {
+                    "jp": "舌",
+                    "reading": "した",
+                    "en": "tongue",
+                    "meanings": [
+                        "tongue"
+                    ],
+                    "example": {
+                        "jp": "彼は鏡をとって舌をよく観察した。",
+                        "en": "He picked up a mirror and examined his tongue.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>鏡<rp>(</rp><rt>かがみ</rt><rp>)</rp></ruby>をとって<ruby>舌<rp>(</rp><rt>した</rt><rp>)</rp></ruby>をよく<ruby>観察<rp>(</rp><rt>かんさつ</rt><rp>)</rp></ruby>した。",
+                        "enMn": "Тэр толь авч, хэлээ шалгав."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хэл (амны)",
+                    "meaningsMn": [
+                        "хэл (амны)"
+                    ]
+                },
+                {
+                    "jp": "尻",
+                    "reading": "しり",
+                    "en": "buttocks",
+                    "meanings": [
+                        "buttocks",
+                        "bottom"
+                    ],
+                    "example": {
+                        "jp": "私の娘は尻が重いので困る。",
+                        "en": "My daughter's slowness to take action is a pain.",
+                        "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>の<ruby>娘<rp>(</rp><rt>むすめ</rt><rp>)</rp></ruby>は<ruby>尻<rp>(</rp><rt>しり</rt><rp>)</rp></ruby>が<ruby>重<rp>(</rp><rt>おも</rt><rp>)</rp></ruby>いので<ruby>困<rp>(</rp><rt>こま</rt><rp>)</rp></ruby>る。",
+                        "enMn": "Охин минь удаан хөдөлдөг учир зовлонтой."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "бөгс",
+                    "meaningsMn": [
+                        "бөгс"
+                    ]
+                },
+                {
+                    "jp": "手術",
+                    "reading": "しゅじゅつ",
+                    "en": "surgical operation",
+                    "meanings": [
+                        "surgical operation"
+                    ],
+                    "example": {
+                        "jp": "父は手術を受ける事になっている。",
+                        "en": "Father is going to undergo an operation.",
+                        "furigana": "<ruby>父<rp>(</rp><rt>ちち</rt><rp>)</rp></ruby>は<ruby>手術<rp>(</rp><rt>しゅじゅつ</rt><rp>)</rp></ruby>を<ruby>受<rp>(</rp><rt>う</rt><rp>)</rp></ruby>ける<ruby>事<rp>(</rp><rt>こと</rt><rp>)</rp></ruby>になっている。",
+                        "enMn": "Аав минь мэс засал хийлгэх гэж байна."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "мэс засал",
+                    "meaningsMn": [
+                        "мэс засал"
+                    ]
+                },
+                {
+                    "jp": "診察",
+                    "reading": "しんさつ",
+                    "en": "medical examination (of a patient)",
+                    "meanings": [
+                        "medical examination (of a patient)"
+                    ],
+                    "example": {
+                        "jp": "旅行者ですが診察をお願いしたいのですが。",
+                        "en": "I'm traveling, and I'd like to make an appointment.",
+                        "furigana": "<ruby>旅行<rp>(</rp><rt>りょこう</rt><rp>)</rp></ruby><ruby>者<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby>ですが<ruby>診察<rp>(</rp><rt>しんさつ</rt><rp>)</rp></ruby>をお<ruby>願<rp>(</rp><rt>ねが</rt><rp>)</rp></ruby>いしたいのですが。",
+                        "enMn": "Би жуулчин, эмнэлгийн үзлэгт хамрагдахыг хүсэж байна."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "эмнэлгийн үзлэг",
+                    "meaningsMn": [
+                        "эмнэлгийн үзлэг"
+                    ]
+                },
+                {
+                    "jp": "人生",
+                    "reading": "じんせい",
+                    "en": "(human) life (e.g., conception to death)",
+                    "meanings": [
+                        "(human) life (e.g., conception to death)"
+                    ],
+                    "example": {
+                        "jp": "君はただ人生の問題から逃げているだけだよ。",
+                        "en": "You're just running away from life's problems.",
+                        "furigana": "<ruby>君<rp>(</rp><rt>きみ</rt><rp>)</rp></ruby>はただ<ruby>人生<rp>(</rp><rt>じんせい</rt><rp>)</rp></ruby>の<ruby>問題<rp>(</rp><rt>もんだい</rt><rp>)</rp></ruby>から<ruby>逃<rp>(</rp><rt>に</rt><rp>)</rp></ruby>げているだけだよ。",
+                        "enMn": "Чи зүгээр л амьдралын асуудлаас зугтаж байгаа юм шүү."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "амьдрал",
+                    "meaningsMn": [
+                        "амьдрал"
+                    ]
+                },
+                {
+                    "jp": "心臓",
+                    "reading": "しんぞう",
+                    "en": "heart",
+                    "meanings": [
+                        "heart"
+                    ],
+                    "example": {
+                        "jp": "僕は心臓が激しく打っているのを感じた。",
+                        "en": "I felt my heart beating violently.",
+                        "furigana": "<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>は<ruby>心臓<rp>(</rp><rt>しんぞう</rt><rp>)</rp></ruby>が<ruby>激<rp>(</rp><rt>はげ</rt><rp>)</rp></ruby>しく<ruby>打<rp>(</rp><rt>う</rt><rp>)</rp></ruby>っているのを<ruby>感<rp>(</rp><rt>かん</rt><rp>)</rp></ruby>じた。",
+                        "enMn": "Би зүрх минь хүчтэй цохилж байгааг мэдэрлээ."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "зүрх",
+                    "meaningsMn": [
+                        "зүрх"
+                    ]
+                },
+                {
+                    "jp": "身体",
+                    "reading": "しんたい",
+                    "en": "the body",
+                    "meanings": [
+                        "the body"
+                    ],
+                    "example": {
+                        "jp": "彼女は身体障害者を助けることに人生を捧げた。",
+                        "en": "She devoted her life to helping the handicapped.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>身体<rp>(</rp><rt>しんたい</rt><rp>)</rp></ruby><ruby>障害<rp>(</rp><rt>しょうがい</rt><rp>)</rp></ruby><ruby>者<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby>を<ruby>助<rp>(</rp><rt>たす</rt><rp>)</rp></ruby>けることに<ruby>人生<rp>(</rp><rt>じんせい</rt><rp>)</rp></ruby>を<ruby>捧<rp>(</rp><rt>ささ</rt><rp>)</rp></ruby>げた。",
+                        "enMn": "Тэр амьдралаа хөгжлийн бэрхшээлтэй хүмүүст туслахад зориулав."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "бие",
+                    "meaningsMn": [
+                        "бие"
+                    ]
+                },
+                {
+                    "jp": "身長",
+                    "reading": "しんちょう",
+                    "en": "height (of body)",
+                    "meanings": [
+                        "height (of body)",
+                        "stature"
+                    ],
+                    "example": {
+                        "jp": "彼女はあなたとだいたい同じくらいの身長だ。",
+                        "en": "She's about the same height as you.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はあなたとだいたい<ruby>同<rp>(</rp><rt>おな</rt><rp>)</rp></ruby>じくらいの<ruby>身長<rp>(</rp><rt>しんちょう</rt><rp>)</rp></ruby>だ。",
+                        "enMn": "Тэр чамтай ойролцоо биеийн өндөртэй."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "биеийн өндөр",
+                    "meaningsMn": [
+                        "биеийн өндөр"
+                    ]
+                },
+                {
+                    "jp": "心理",
+                    "reading": "しんり",
+                    "en": "mentality",
+                    "meanings": [
+                        "mentality"
+                    ],
+                    "example": {
+                        "jp": "彼女は夫の心理を心得ている。",
+                        "en": "She knows her husband's psychology.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>夫<rp>(</rp><rt>おっと</rt><rp>)</rp></ruby>の<ruby>心理<rp>(</rp><rt>しんり</rt><rp>)</rp></ruby>を<ruby>心得<rp>(</rp><rt>こころえ</rt><rp>)</rp></ruby>ている。",
+                        "enMn": "Тэр нөхрийнхөө сэтгэл зүйг сайн мэднэ."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "сэтгэл зүй",
+                    "meaningsMn": [
+                        "сэтгэл зүй"
+                    ]
+                },
+                {
+                    "jp": "睡眠",
+                    "reading": "すいみん",
+                    "en": "sleep",
+                    "meanings": [
+                        "sleep"
+                    ],
+                    "example": {
+                        "jp": "睡眠不足で、心筋梗塞リスクが上昇。",
+                        "en": "Sleep deprivation increases risk of heart attacks.",
+                        "furigana": "<ruby>睡眠<rp>(</rp><rt>すいみん</rt><rp>)</rp></ruby><ruby>不足<rp>(</rp><rt>ふそく</rt><rp>)</rp></ruby>で、<ruby>心筋梗塞<rp>(</rp><rt>しんきんこうそく</rt><rp>)</rp></ruby>リスクが<ruby>上昇<rp>(</rp><rt>じょうしょう</rt><rp>)</rp></ruby>。",
+                        "enMn": "Нойр дутуугаас зүрхний шигдээсийн эрсдэл нэмэгддэг."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "нойр",
+                    "meaningsMn": [
+                        "нойр"
+                    ]
+                },
+                {
+                    "jp": "姿",
+                    "reading": "すがた",
+                    "en": "figure",
+                    "meanings": [
+                        "figure",
+                        "shape",
+                        "appearance"
+                    ],
+                    "example": {
+                        "jp": "彼は跡形もなく姿を消してしまったんだ。",
+                        "en": "He disappeared without a trace.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>跡形<rp>(</rp><rt>あとかた</rt><rp>)</rp></ruby>もなく<ruby>姿<rp>(</rp><rt>すがた</rt><rp>)</rp></ruby>を<ruby>消<rp>(</rp><rt>け</rt><rp>)</rp></ruby>してしまったんだ。",
+                        "enMn": "Тэр ул мөргүй алга болчихсон юм."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "дүр төрх",
+                    "meaningsMn": [
+                        "дүр төрх"
+                    ]
+                },
+                {
+                    "jp": "食欲",
+                    "reading": "しょくよく",
+                    "en": "appetite",
+                    "meanings": [
+                        "appetite (for food)"
+                    ],
+                    "example": {
+                        "jp": "あんたのせいで食欲をなくしたよ。",
+                        "en": "Thanks to you I've lost my appetite.",
+                        "furigana": "あんたのせいで<ruby>食欲<rp>(</rp><rt>しょくよく</rt><rp>)</rp></ruby>をなくしたよ。",
+                        "enMn": "Чиний л буруугаас надад хоолны дур хүрэхээ больжээ."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хоолны дуршил",
+                    "meaningsMn": [
+                        "хоолны дур"
+                    ]
+                },
+                {
+                    "jp": "筋",
+                    "reading": "すじ",
+                    "en": "muscle",
+                    "meanings": [
+                        "muscle",
+                        "string",
+                        "line"
+                    ],
+                    "example": {
+                        "jp": "儲けようとする投機筋に操られているのです。",
+                        "en": "It's being manipulated by investors trying to make it rich.",
+                        "furigana": "<ruby>儲<rp>(</rp><rt>もう</rt><rp>)</rp></ruby>けようとする<ruby>投機<rp>(</rp><rt>とうき</rt><rp>)</rp></ruby><ruby>筋<rp>(</rp><rt>すじ</rt><rp>)</rp></ruby>に<ruby>操<rp>(</rp><rt>あやつ</rt><rp>)</rp></ruby>られているのです。",
+                        "enMn": "Ашиг хөөсөн дамын наймаачдын гарт хөтлөгдөж байгаа юм."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "булчин",
+                    "meaningsMn": [
+                        "булчин"
+                    ]
+                },
+                {
+                    "jp": "頭痛",
+                    "reading": "ずつう",
+                    "en": "headache",
+                    "meanings": [
+                        "headache"
+                    ],
+                    "example": {
+                        "jp": "頭痛がする。",
+                        "en": "I have a headache.",
+                        "furigana": "<ruby>頭痛<rp>(</rp><rt>ずつう</rt><rp>)</rp></ruby>がする。",
+                        "enMn": "Толгой өвдөж байна."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "толгой өвдөлт",
+                    "meaningsMn": [
+                        "толгой өвдөлт"
+                    ]
+                },
+                {
+                    "jp": "生",
+                    "reading": "せい",
+                    "en": "birth",
+                    "meanings": [
+                        "birth"
+                    ],
+                    "example": {
+                        "jp": "ここに生年月日を書いてください。",
+                        "en": "Write down your date of birth here.",
+                        "furigana": "ここに<ruby>生年月日<rp>(</rp><rt>せいねんがっぴ</rt><rp>)</rp></ruby>を<ruby>書<rp>(</rp><rt>か</rt><rp>)</rp></ruby>いてください。",
+                        "enMn": "Энд төрсөн он сар өдрөө бичнэ үү."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "төрөлт",
+                    "meaningsMn": [
+                        "төрөлт"
+                    ]
+                },
+                {
+                    "jp": "神経",
+                    "reading": "しんけい",
+                    "en": "nerve",
+                    "meanings": [
+                        "nerve",
+                        "sensitivity"
+                    ],
+                    "example": null,
+                    "phonetic": "申",
+                    "phoneticReading": "シン",
+                    "enMn": "мэдрэл",
+                    "meaningsMn": [
+                        "мэдрэл"
+                    ]
+                },
+                {
+                    "jp": "汗",
+                    "reading": "あせ",
+                    "en": "sweat",
+                    "meanings": [
+                        "sweat",
+                        "perspiration"
+                    ],
+                    "example": null,
+                    "phonetic": "干",
+                    "phoneticReading": "カン",
+                    "enMn": "хөлс",
+                    "meaningsMn": [
+                        "хөлс"
+                    ]
+                },
+                {
+                    "jp": "皮",
+                    "reading": "かわ",
+                    "en": "skin",
+                    "meanings": [
+                        "skin",
+                        "hide",
+                        "leather"
+                    ],
+                    "example": null,
+                    "phonetic": "皮",
+                    "phoneticReading": "ハ、ヒ",
+                    "enMn": "үс",
+                    "meaningsMn": [
+                        "үс"
+                    ]
+                },
+                {
+                    "jp": "感覚",
+                    "reading": "かんかく",
+                    "en": "sense",
+                    "meanings": [
+                        "sense",
+                        "sensation"
+                    ],
+                    "example": null,
+                    "phonetic": "感",
+                    "phoneticReading": "カン",
+                    "enMn": "мэдрэмж",
+                    "meaningsMn": [
+                        "мэдрэмж"
+                    ]
+                }
+            ]
+        ],
+        "themeKey": "theme.n3.4"
+    },
+    {
+        "level": 29,
+        "jlpt": "N3",
+        "title": "Feelings and trust",
+        "sets": [
+            [
+                {
+                    "jp": "正直",
+                    "reading": "しょうじき",
+                    "en": "honesty",
+                    "meanings": [
+                        "honesty",
+                        "integrity",
+                        "frankness"
+                    ],
+                    "example": {
+                        "jp": "彼女は彼が正直であると納得した。",
+                        "en": "She was satisfied that he was honest.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>が<ruby>正直<rp>(</rp><rt>しょうじき</rt><rp>)</rp></ruby>であると<ruby>納得<rp>(</rp><rt>なっとく</rt><rp>)</rp></ruby>した。",
+                        "enMn": "Тэр түүнийг үнэнч гэдэгт итгэж сэтгэл ханав."
+                    },
+                    "phonetic": "正",
+                    "phoneticReading": "ショウ、セイ",
+                    "enMn": "шударга байдал",
+                    "meaningsMn": [
+                        "шударга байдал",
+                        "шударга зан",
+                        "нээлттэй зан"
+                    ]
+                },
+                {
+                    "jp": "地味",
+                    "reading": "じみ",
+                    "en": "plain",
+                    "meanings": [
+                        "quiet",
+                        "plain",
+                        "conservative"
+                    ],
+                    "example": {
+                        "jp": "大学生のときに地味に始める年金納付。",
+                        "en": "Around the time you go to college, you start having to pay contributions to the National Pension.",
+                        "furigana": "<ruby>大学生<rp>(</rp><rt>だいがくせい</rt><rp>)</rp></ruby>のときに<ruby>地味<rp>(</rp><rt>じみ</rt><rp>)</rp></ruby>に<ruby>始<rp>(</rp><rt>はじ</rt><rp>)</rp></ruby>める<ruby>年金<rp>(</rp><rt>ねんきん</rt><rp>)</rp></ruby><ruby>納付<rp>(</rp><rt>のうふ</rt><rp>)</rp></ruby>。",
+                        "enMn": "Их сургуульд орох үеэс улсын тэтгэврийн шимтгэл төлж эхлэх шаардлагатай болдог."
+                    },
+                    "phonetic": "也",
+                    "phoneticReading": "チ",
+                    "enMn": "энгийн",
+                    "meaningsMn": [
+                        "чимээгүй",
+                        "энгийн",
+                        "даруухан"
+                    ]
+                },
+                {
+                    "jp": "じっと",
+                    "reading": "じっと",
+                    "en": "patiently",
+                    "meanings": [
+                        "patiently",
+                        "quietly"
+                    ],
+                    "example": {
+                        "jp": "僕らはその美しい景色をじっとみつめた。",
+                        "en": "We gazed at the beautiful scenery.",
+                        "furigana": "<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>らはその<ruby>美<rp>(</rp><rt>うつく</rt><rp>)</rp></ruby>しい<ruby>景色<rp>(</rp><rt>けしき</rt><rp>)</rp></ruby>をじっとみつめた。",
+                        "enMn": "Бид тэр үзэсгэлэнт байгалийг хөдөлгөөнгүй ширтэв."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хөдөлгөөнгүй",
+                    "meaningsMn": [
+                        "хөдөлгөөнгүй"
+                    ]
+                },
+                {
+                    "jp": "自慢",
+                    "reading": "じまん",
+                    "en": "pride",
+                    "meanings": [
+                        "pride",
+                        "boast"
+                    ],
+                    "example": {
+                        "jp": "父はハンサムなのを自慢している。",
+                        "en": "My father is proud of being handsome.",
+                        "furigana": "<ruby>父<rp>(</rp><rt>ちち</rt><rp>)</rp></ruby>はハンサムなのを<ruby>自慢<rp>(</rp><rt>じまん</rt><rp>)</rp></ruby>している。",
+                        "enMn": "Аав минь өөрийн царайлаг байдлаараа бахархдаг."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "бахархал",
+                    "meaningsMn": [
+                        "бахархал",
+                        "сайрхал"
+                    ]
+                },
+                {
+                    "jp": "真剣",
+                    "reading": "しんけん",
+                    "en": "seriousness",
+                    "meanings": [
+                        "seriousness",
+                        "earnestness"
+                    ],
+                    "example": {
+                        "jp": "彼女はいつも真剣な表情をしている。",
+                        "en": "She always has a serious look on her face.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はいつも<ruby>真剣<rp>(</rp><rt>しんけん</rt><rp>)</rp></ruby>な<ruby>表情<rp>(</rp><rt>ひょうじょう</rt><rp>)</rp></ruby>をしている。",
+                        "enMn": "Тэр үргэлж нухацтай царайтай байдаг."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "нухацтай",
+                    "meaningsMn": [
+                        "нухацтай"
+                    ]
+                },
+                {
+                    "jp": "信仰",
+                    "reading": "しんこう",
+                    "en": "(religious) faith",
+                    "meanings": [
+                        "(religious) faith",
+                        "belief"
+                    ],
+                    "example": {
+                        "jp": "牧師は彼女のキリスト信仰の告白を聞いた。",
+                        "en": "The minister listened to her profession of Christianity.",
+                        "furigana": "<ruby>牧師<rp>(</rp><rt>ぼくし</rt><rp>)</rp></ruby>は<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>のキリスト<ruby>信仰<rp>(</rp><rt>しんこう</rt><rp>)</rp></ruby>の<ruby>告白<rp>(</rp><rt>こくはく</rt><rp>)</rp></ruby>を<ruby>聞<rp>(</rp><rt>き</rt><rp>)</rp></ruby>いた。",
+                        "enMn": "Пастор түүний Христийн шүтлэгийн наминчлалыг сонсов."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "шүтлэг",
+                    "meaningsMn": [
+                        "шүтлэг"
+                    ]
+                },
+                {
+                    "jp": "幸せ",
+                    "reading": "しあわせ",
+                    "en": "happiness",
+                    "meanings": [
+                        "happiness",
+                        "blessing"
+                    ],
+                    "example": {
+                        "jp": "彼女は彼の子を妊娠して幸せです。",
+                        "en": "She is happy to have conceived a baby by him.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>子<rp>(</rp><rt>こ</rt><rp>)</rp></ruby>を<ruby>妊娠<rp>(</rp><rt>にんしん</rt><rp>)</rp></ruby>して<ruby>幸<rp>(</rp><rt>しあわ</rt><rp>)</rp></ruby>せです。",
+                        "enMn": "Тэр түүнээс жирэмссэндээ баяртай байна."
+                    },
+                    "phonetic": "幸",
+                    "phoneticReading": "コウ",
+                    "enMn": "аз жаргал",
+                    "meaningsMn": [
+                        "аз жаргал",
+                        "ерөөл"
+                    ]
+                },
+                {
+                    "jp": "幸運",
+                    "reading": "こううん",
+                    "en": "good luck",
+                    "meanings": [
+                        "good luck",
+                        "fortune"
+                    ],
+                    "example": {
+                        "jp": "彼女は隣の人の幸運を妬んでいた。",
+                        "en": "She was jealous of her neighbor's good fortune.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>隣<rp>(</rp><rt>となり</rt><rp>)</rp></ruby>の<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>の<ruby>幸運<rp>(</rp><rt>こううん</rt><rp>)</rp></ruby>を<ruby>妬<rp>(</rp><rt>ねた</rt><rp>)</rp></ruby>んでいた。",
+                        "enMn": "Тэр хөршийнхөө азад атаархаж байв."
+                    },
+                    "phonetic": "幸",
+                    "phoneticReading": "コウ",
+                    "enMn": "азтай явдал",
+                    "meaningsMn": [
+                        "азтай явдал",
+                        "азын жаргал"
+                    ]
+                },
+                {
+                    "jp": "信じる",
+                    "reading": "しんじる",
+                    "en": "to believe",
+                    "meanings": [
+                        "to believe"
+                    ],
+                    "example": {
+                        "jp": "僕は君を信じる。",
+                        "en": "I believe you.",
+                        "furigana": "<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>は<ruby>君<rp>(</rp><rt>きみ</rt><rp>)</rp></ruby>を<ruby>信<rp>(</rp><rt>しん</rt><rp>)</rp></ruby>じる。",
+                        "enMn": "Би чамд итгэдэг."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "итгэх",
+                    "meaningsMn": [
+                        "итгэх"
+                    ]
+                },
+                {
+                    "jp": "慎重",
+                    "reading": "しんちょう",
+                    "en": "careful",
+                    "meanings": [
+                        "careful",
+                        "prudent",
+                        "cautious"
+                    ],
+                    "example": {
+                        "jp": "本は慎重に選びなさい。",
+                        "en": "Choose a book carefully.",
+                        "furigana": "<ruby>本<rp>(</rp><rt>ほん</rt><rp>)</rp></ruby>は<ruby>慎重<rp>(</rp><rt>しんちょう</rt><rp>)</rp></ruby>に<ruby>選<rp>(</rp><rt>えら</rt><rp>)</rp></ruby>びなさい。",
+                        "enMn": "Номоо болгоомжтой сонго."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "болгоомжтой",
+                    "meaningsMn": [
+                        "болгоомжтой"
+                    ]
+                },
+                {
+                    "jp": "親友",
+                    "reading": "しんゆう",
+                    "en": "close friend",
+                    "meanings": [
+                        "close friend",
+                        "buddy"
+                    ],
+                    "example": {
+                        "jp": "親友は何人いる？",
+                        "en": "How many close friends do you have?",
+                        "furigana": "<ruby>親友<rp>(</rp><rt>しんゆう</rt><rp>)</rp></ruby>は<ruby>何<rp>(</rp><rt>なん</rt><rp>)</rp></ruby><ruby>人<rp>(</rp><rt>にん</rt><rp>)</rp></ruby>いる？",
+                        "enMn": "Чи хэдэн дотно найзтай вэ?"
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "дотно найз",
+                    "meaningsMn": [
+                        "дотно найз"
+                    ]
+                },
+                {
+                    "jp": "信用",
+                    "reading": "しんよう",
+                    "en": "confidence",
+                    "meanings": [
+                        "confidence",
+                        "dependence"
+                    ],
+                    "example": {
+                        "jp": "「信用して」と彼は言った。",
+                        "en": "\"Trust me,\" he said.",
+                        "furigana": "「<ruby>信用<rp>(</rp><rt>しんよう</rt><rp>)</rp></ruby>して」と<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>った。",
+                        "enMn": "«Надад итгээрэй» гэж тэр хэлэв."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "найдвар",
+                    "meaningsMn": [
+                        "найдвар"
+                    ]
+                },
+                {
+                    "jp": "信頼",
+                    "reading": "しんらい",
+                    "en": "reliance",
+                    "meanings": [
+                        "reliance",
+                        "trust",
+                        "confidence"
+                    ],
+                    "example": {
+                        "jp": "お互いを信頼し合うしかない。",
+                        "en": "All you can do is trust one another.",
+                        "furigana": "お<ruby>互<rp>(</rp><rt>たが</rt><rp>)</rp></ruby>いを<ruby>信頼<rp>(</rp><rt>しんらい</rt><rp>)</rp></ruby>し<ruby>合<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>うしかない。",
+                        "enMn": "Бие биедээ итгэхээс өөр аргагүй."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "итгэл",
+                    "meaningsMn": [
+                        "итгэл"
+                    ]
+                },
+                {
+                    "jp": "親しい",
+                    "reading": "したしい",
+                    "en": "intimate",
+                    "meanings": [
+                        "intimate",
+                        "close (e.g., friend)"
+                    ],
+                    "example": {
+                        "jp": "彼は会う人とは誰でも親しくなる。",
+                        "en": "He makes friends with everybody he meets.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>会<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>う<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>とは<ruby>誰<rp>(</rp><rt>だれ</rt><rp>)</rp></ruby>でも<ruby>親<rp>(</rp><rt>した</rt><rp>)</rp></ruby>しくなる。",
+                        "enMn": "Тэр уулзсан хүн болгонтойгоо найзалдаг."
+                    },
+                    "phonetic": "亲",
+                    "phoneticReading": "シン",
+                    "enMn": "дотно",
+                    "meaningsMn": [
+                        "дотно",
+                        "дотно (найз гэх мэт)"
+                    ]
+                },
+                {
+                    "jp": "親戚",
+                    "reading": "しんせき",
+                    "en": "relative(s)",
+                    "meanings": [
+                        "relative(s)"
+                    ],
+                    "example": {
+                        "jp": "彼は彼女と遠い親戚関係にある。",
+                        "en": "He is distantly related to her.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>と<ruby>遠<rp>(</rp><rt>とお</rt><rp>)</rp></ruby>い<ruby>親戚<rp>(</rp><rt>しんせき</rt><rp>)</rp></ruby><ruby>関係<rp>(</rp><rt>かんけい</rt><rp>)</rp></ruby>にある。",
+                        "enMn": "Тэр түүнтэй хол төрлийн холбоотой."
+                    },
+                    "phonetic": "亲",
+                    "phoneticReading": "シン",
+                    "enMn": "төрөл садан",
+                    "meaningsMn": [
+                        "төрөл садан"
+                    ]
+                },
+                {
+                    "jp": "すてき",
+                    "reading": "すてき",
+                    "en": "lovely",
+                    "meanings": [
+                        "lovely",
+                        "great"
+                    ],
+                    "example": {
+                        "jp": "彼女は私にすてきな微笑みを投げかけてくれた。",
+                        "en": "She gave me a charming smile.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>にすてきな<ruby>微<rp>(</rp><rt>び</rt><rp>)</rp></ruby><ruby>笑<rp>(</rp><rt>え</rt><rp>)</rp></ruby>みを<ruby>投<rp>(</rp><rt>な</rt><rp>)</rp></ruby>げかけてくれた。",
+                        "enMn": "Тэр надад гоё инээмсэглэл илгээв."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "гоё",
+                    "meaningsMn": [
+                        "гоё"
+                    ]
+                },
+                {
+                    "jp": "常識",
+                    "reading": "じょうしき",
+                    "en": "common sense",
+                    "meanings": [
+                        "common sense"
+                    ],
+                    "example": {
+                        "jp": "彼は常識に欠けているに違いない。",
+                        "en": "He must be lacking in common sense.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>常識<rp>(</rp><rt>じょうしき</rt><rp>)</rp></ruby>に<ruby>欠<rp>(</rp><rt>か</rt><rp>)</rp></ruby>けているに<ruby>違<rp>(</rp><rt>ちが</rt><rp>)</rp></ruby>いない。",
+                        "enMn": "Тэр эрүүл ухаан дутагдаж байх ёстой."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "эгэл ойлголт",
+                    "meaningsMn": [
+                        "эгэл ойлголт"
+                    ]
+                },
+                {
+                    "jp": "性格",
+                    "reading": "せいかく",
+                    "en": "character",
+                    "meanings": [
+                        "character",
+                        "personality"
+                    ],
+                    "example": {
+                        "jp": "私はいつも不思議な性格の方が好きだった。",
+                        "en": "I always liked mysterious characters more.",
+                        "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>はいつも<ruby>不思議<rp>(</rp><rt>ふしぎ</rt><rp>)</rp></ruby>な<ruby>性格<rp>(</rp><rt>せいかく</rt><rp>)</rp></ruby>の<ruby>方<rp>(</rp><rt>ほう</rt><rp>)</rp></ruby>が<ruby>好<rp>(</rp><rt>す</rt><rp>)</rp></ruby>きだった。",
+                        "enMn": "Би үргэлж нууцлаг зан чанартай хүмүүст илүү дуртай байсан."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "зан төрх",
+                    "meaningsMn": [
+                        "зан төрх"
+                    ]
+                },
+                {
+                    "jp": "性質",
+                    "reading": "せいしつ",
+                    "en": "nature",
+                    "meanings": [
+                        "nature",
+                        "property",
+                        "disposition"
+                    ],
+                    "example": null,
+                    "phonetic": "生",
+                    "phoneticReading": "セイ、ショウ",
+                    "enMn": "зан чанар",
+                    "meaningsMn": [
+                        "зан чанар"
+                    ]
+                },
+                {
+                    "jp": "愛する",
+                    "reading": "あいする",
+                    "en": "to love",
+                    "meanings": [
+                        "to love"
+                    ],
+                    "example": null,
+                    "phonetic": "愛",
+                    "phoneticReading": "アイ",
+                    "enMn": "хайрлах",
+                    "meaningsMn": [
+                        "хайрлах"
+                    ]
+                },
+                {
+                    "jp": "感情",
+                    "reading": "かんじょう",
+                    "en": "emotion(s)",
+                    "meanings": [
+                        "emotion(s)",
+                        "feeling(s)",
+                        "sentiment"
+                    ],
+                    "example": null,
+                    "phonetic": "感",
+                    "phoneticReading": "カン",
+                    "enMn": "сэтгэл хөдлөл",
+                    "meaningsMn": [
+                        "сэтгэл хөдлөл"
+                    ]
+                },
+                {
+                    "jp": "感じる",
+                    "reading": "かんじる",
+                    "en": "to feel",
+                    "meanings": [
+                        "to feel",
+                        "to sense"
+                    ],
+                    "example": null,
+                    "phonetic": "感",
+                    "phoneticReading": "カン",
+                    "enMn": "мэдрэх",
+                    "meaningsMn": [
+                        "мэдрэх"
+                    ]
+                },
+                {
+                    "jp": "感心",
+                    "reading": "かんしん",
+                    "en": "admiration",
+                    "meanings": [
+                        "admiration"
+                    ],
+                    "example": null,
+                    "phonetic": "感",
+                    "phoneticReading": "カン",
+                    "enMn": "гайхал",
+                    "meaningsMn": [
+                        "гайхал"
+                    ]
+                },
+                {
+                    "jp": "希望",
+                    "reading": "きぼう",
+                    "en": "hope",
+                    "meanings": [
+                        "hope",
+                        "wish",
+                        "aspiration"
+                    ],
+                    "example": null,
+                    "phonetic": "希",
+                    "phoneticReading": "キ",
+                    "enMn": "найдвар",
+                    "meaningsMn": [
+                        "найдвар"
+                    ]
+                },
+                {
+                    "jp": "交際",
+                    "reading": "こうさい",
+                    "en": "friendship",
+                    "meanings": [
+                        "friendship",
+                        "association",
+                        "acquaintance"
+                    ],
+                    "example": null,
+                    "phonetic": "交",
+                    "phoneticReading": "コウ",
+                    "enMn": "найрамдал",
+                    "meaningsMn": [
+                        "найрамдал"
+                    ]
+                }
+            ]
+        ],
+        "themeKey": "theme.n3.5"
+    },
+    {
+        "level": 30,
+        "jlpt": "N3",
+        "title": "Nature and science",
+        "sets": [
+            [
+                {
+                    "jp": "猿",
+                    "reading": "さる",
+                    "en": "monkey",
+                    "meanings": [
+                        "monkey"
+                    ],
+                    "example": {
+                        "jp": "あれはさる年に因んだ猿の絵です。",
+                        "en": "That's a picture of a monkey associated with the Year of the Monkey.",
+                        "furigana": "あれはさる<ruby>年<rp>(</rp><rt>とし</rt><rp>)</rp></ruby>に<ruby>因<rp>(</rp><rt>ちな</rt><rp>)</rp></ruby>んだ<ruby>猿<rp>(</rp><rt>さる</rt><rp>)</rp></ruby>の<ruby>絵<rp>(</rp><rt>え</rt><rp>)</rp></ruby>です。",
+                        "enMn": "Тэр бол бичин жилтэй холбоотой сармагчны зураг юм."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "сармагчин",
+                    "meaningsMn": [
+                        "сармагчин"
+                    ]
+                },
+                {
+                    "jp": "酸性",
+                    "reading": "さんせい",
+                    "en": "acidity",
+                    "meanings": [
+                        "acidity"
+                    ],
+                    "example": {
+                        "jp": "酸性土を灰で中和する。",
+                        "en": "Acid soil is neutralised by ash.",
+                        "furigana": "<ruby>酸性<rp>(</rp><rt>さんせい</rt><rp>)</rp></ruby><ruby>土<rp>(</rp><rt>ど</rt><rp>)</rp></ruby>を<ruby>灰<rp>(</rp><rt>はい</rt><rp>)</rp></ruby>で<ruby>中和<rp>(</rp><rt>ちゅうわ</rt><rp>)</rp></ruby>する。",
+                        "enMn": "Хүчиллэг хөрсийг үнсээр саармагжуулна."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хүчиллэг",
+                    "meaningsMn": [
+                        "хүчиллэг"
+                    ]
+                },
+                {
+                    "jp": "四角",
+                    "reading": "しかく",
+                    "en": "square",
+                    "meanings": [
+                        "square"
+                    ],
+                    "example": {
+                        "jp": "例えば、『ねえ、ちょうど今青い四角の紙を見たよ。』のようにだ。",
+                        "en": "Like, 'Hey, I just saw a blue paper square!'",
+                        "furigana": "<ruby>例<rp>(</rp><rt>たと</rt><rp>)</rp></ruby>えば、『ねえ、ちょうど<ruby>今<rp>(</rp><rt>いま</rt><rp>)</rp></ruby><ruby>青<rp>(</rp><rt>あお</rt><rp>)</rp></ruby>い<ruby>四角<rp>(</rp><rt>しかく</rt><rp>)</rp></ruby>の<ruby>紙<rp>(</rp><rt>かみ</rt><rp>)</rp></ruby>を<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>たよ。』のようにだ。",
+                        "enMn": "Жишээ нь, «Хөөе, би дөнгөж сая цэнхэр дөрвөлжин цаас харлаа шүү» гэх мэт."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "дөрвөлжин",
+                    "meaningsMn": [
+                        "дөрвөлжин",
+                        "квадрат"
+                    ]
+                },
+                {
+                    "jp": "自然",
+                    "reading": "しぜん",
+                    "en": "nature",
+                    "meanings": [
+                        "nature",
+                        "spontaneous"
+                    ],
+                    "example": {
+                        "jp": "明かりは自然に消えた。",
+                        "en": "The light went out by itself.",
+                        "furigana": "<ruby>明<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>かりは<ruby>自然<rp>(</rp><rt>しぜん</rt><rp>)</rp></ruby>に<ruby>消<rp>(</rp><rt>き</rt><rp>)</rp></ruby>えた。",
+                        "enMn": "Гэрэл өөрөө унтарлаа."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "байгаль",
+                    "meaningsMn": [
+                        "байгаль"
+                    ]
+                },
+                {
+                    "jp": "湿気",
+                    "reading": "しっけ",
+                    "en": "moisture",
+                    "meanings": [
+                        "moisture",
+                        "humidity",
+                        "dampness"
+                    ],
+                    "example": {
+                        "jp": "当地の夏はひどく湿気が多い。",
+                        "en": "It gets very humid here in the summer.",
+                        "furigana": "<ruby>当地<rp>(</rp><rt>とうち</rt><rp>)</rp></ruby>の<ruby>夏<rp>(</rp><rt>なつ</rt><rp>)</rp></ruby>はひどく<ruby>湿気<rp>(</rp><rt>しっけ</rt><rp>)</rp></ruby>が<ruby>多<rp>(</rp><rt>おお</rt><rp>)</rp></ruby>い。",
+                        "enMn": "Энэ нутгийн зун маш чийглэг байдаг."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "нойтон",
+                    "meaningsMn": [
+                        "нойтон"
+                    ]
+                },
+                {
+                    "jp": "実験",
+                    "reading": "じっけん",
+                    "en": "lab work",
+                    "meanings": [
+                        "lab work; experiment"
+                    ],
+                    "example": {
+                        "jp": "今日はオームの法則に関する実験を行います。",
+                        "en": "Today we will carry out an experiment about Ohm's Law.",
+                        "furigana": "<ruby>今日<rp>(</rp><rt>きょう</rt><rp>)</rp></ruby>はオームの<ruby>法則<rp>(</rp><rt>ほうそく</rt><rp>)</rp></ruby>に<ruby>関<rp>(</rp><rt>かん</rt><rp>)</rp></ruby>する<ruby>実験<rp>(</rp><rt>じっけん</rt><rp>)</rp></ruby>を<ruby>行<rp>(</rp><rt>おこな</rt><rp>)</rp></ruby>います。",
+                        "enMn": "Өнөөдөр Омын хуулийн талаар туршилт хийнэ."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "туршилт",
+                    "meaningsMn": [
+                        "туршилт"
+                    ]
+                },
+                {
+                    "jp": "湿度",
+                    "reading": "しつど",
+                    "en": "humidity",
+                    "meanings": [
+                        "humidity"
+                    ],
+                    "example": {
+                        "jp": "暑かった。その上湿度が高かった。",
+                        "en": "It was hot, and in addition, it was humid.",
+                        "furigana": "<ruby>暑<rp>(</rp><rt>あつ</rt><rp>)</rp></ruby>かった。その<ruby>上<rp>(</rp><rt>うえ</rt><rp>)</rp></ruby><ruby>湿度<rp>(</rp><rt>しつど</rt><rp>)</rp></ruby>が<ruby>高<rp>(</rp><rt>たか</rt><rp>)</rp></ruby>かった。",
+                        "enMn": "Халуун байлаа. Түүн дээр чийгшил өндөр байв."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "чийгшил",
+                    "meaningsMn": [
+                        "чийгшил"
+                    ]
+                },
+                {
                     "jp": "芝生",
                     "reading": "しばふ",
                     "en": "lawn",
@@ -13847,37 +15019,6 @@ const WORD_LEVELS = [
                     "enMn": "зүлэг",
                     "meaningsMn": [
                         "зүлэг"
-                    ]
-                }
-            ]
-        ]
-    },
-    {
-        "level": 28,
-        "jlpt": "N3",
-        "title": "N3 · Level 4",
-        "sets": [
-            [
-                {
-                    "jp": "左右",
-                    "reading": "さゆう",
-                    "en": "left and right",
-                    "meanings": [
-                        "left and right",
-                        "influence"
-                    ],
-                    "example": {
-                        "jp": "彼の返事は彼の気分に左右される。",
-                        "en": "His answer depends on his mood.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>返事<rp>(</rp><rt>へんじ</rt><rp>)</rp></ruby>は<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>気分<rp>(</rp><rt>きぶん</rt><rp>)</rp></ruby>に<ruby>左右<rp>(</rp><rt>さゆう</rt><rp>)</rp></ruby>される。",
-                        "enMn": "Түүний хариулт сэтгэл санааны байдлаас хамаардаг."
-                    },
-                    "phonetic": "左",
-                    "phoneticReading": "サ",
-                    "enMn": "зүүн баруун",
-                    "meaningsMn": [
-                        "зүүн баруун",
-                        "нөлөө"
                     ]
                 },
                 {
@@ -13923,72 +15064,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "皿",
-                    "reading": "さら",
-                    "en": "plate",
-                    "meanings": [
-                        "plate",
-                        "dish"
-                    ],
-                    "example": {
-                        "jp": "彼女はテーブルの上に皿を置いた。",
-                        "en": "She set the tray down on the table.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はテーブルの<ruby>上<rp>(</rp><rt>うえ</rt><rp>)</rp></ruby>に<ruby>皿<rp>(</rp><rt>さら</rt><rp>)</rp></ruby>を<ruby>置<rp>(</rp><rt>お</rt><rp>)</rp></ruby>いた。",
-                        "enMn": "Тэр таваг ширээн дээр тавив."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "таваг",
-                    "meaningsMn": [
-                        "таваг",
-                        "таваг"
-                    ]
-                },
-                {
-                    "jp": "順番",
-                    "reading": "じゅんばん",
-                    "en": "turn (in line)",
-                    "meanings": [
-                        "turn (in line)",
-                        "order of things"
-                    ],
-                    "example": {
-                        "jp": "君達全部のいう事を順番に聞こう。",
-                        "en": "I'll hear all of you in turn.",
-                        "furigana": "<ruby>君<rp>(</rp><rt>きみ</rt><rp>)</rp></ruby><ruby>達<rp>(</rp><rt>たち</rt><rp>)</rp></ruby><ruby>全部<rp>(</rp><rt>ぜんぶ</rt><rp>)</rp></ruby>のいう<ruby>事<rp>(</rp><rt>こと</rt><rp>)</rp></ruby>を<ruby>順番<rp>(</rp><rt>じゅんばん</rt><rp>)</rp></ruby>に<ruby>聞<rp>(</rp><rt>き</rt><rp>)</rp></ruby>こう。",
-                        "enMn": "Би та бүгдийн үгийг ээлжлэн сонсоно."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "дараалал",
-                    "meaningsMn": [
-                        "дараалал",
-                        "дараалал"
-                    ]
-                },
-                {
-                    "jp": "重要",
-                    "reading": "じゅうよう",
-                    "en": "important",
-                    "meanings": [
-                        "important",
-                        "essential"
-                    ],
-                    "example": {
-                        "jp": "貴職らにとっては重要なことです。",
-                        "en": "This is an important thing for all of you.",
-                        "furigana": "<ruby>貴<rp>(</rp><rt>き</rt><rp>)</rp></ruby><ruby>職<rp>(</rp><rt>しょく</rt><rp>)</rp></ruby>らにとっては<ruby>重要<rp>(</rp><rt>じゅうよう</rt><rp>)</rp></ruby>なことです。",
-                        "enMn": "Энэ бол та бүхэнд чухал зүйл юм."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "чухал",
-                    "meaningsMn": [
-                        "чухал",
-                        "зайлшгүй чухал"
-                    ]
-                },
-                {
                     "jp": "植物",
                     "reading": "しょくぶつ",
                     "en": "plant",
@@ -14008,6 +15083,369 @@ const WORD_LEVELS = [
                     "meaningsMn": [
                         "ургамал",
                         "ургамалжилт"
+                    ]
+                },
+                {
+                    "jp": "酸素",
+                    "reading": "さんそ",
+                    "en": "oxygen",
+                    "meanings": [
+                        "oxygen"
+                    ],
+                    "example": {
+                        "jp": "生物は酸素なしでは生きられない。",
+                        "en": "No living things could live without oxygen.",
+                        "furigana": "<ruby>生物<rp>(</rp><rt>せいぶつ</rt><rp>)</rp></ruby>は<ruby>酸素<rp>(</rp><rt>さんそ</rt><rp>)</rp></ruby>なしでは<ruby>生<rp>(</rp><rt>い</rt><rp>)</rp></ruby>きられない。",
+                        "enMn": "Ямар ч амьд биет хүчилтөрөгчгүйгээр амьдарч чадахгүй."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хүчилтөрөгч",
+                    "meaningsMn": [
+                        "хүчилтөрөгч"
+                    ]
+                },
+                {
+                    "jp": "霜",
+                    "reading": "しも",
+                    "en": "frost",
+                    "meanings": [
+                        "frost"
+                    ],
+                    "example": {
+                        "jp": "ゆうべ霜が降りた。",
+                        "en": "It frosted last night.",
+                        "furigana": "ゆうべ<ruby>霜<rp>(</rp><rt>しも</rt><rp>)</rp></ruby>が<ruby>降<rp>(</rp><rt>お</rt><rp>)</rp></ruby>りた。",
+                        "enMn": "Өчигдөр орой хяруу буув."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хяруу",
+                    "meaningsMn": [
+                        "хяруу"
+                    ]
+                },
+                {
+                    "jp": "人工",
+                    "reading": "じんこう",
+                    "en": "artificial",
+                    "meanings": [
+                        "artificial",
+                        "man made",
+                        "human work"
+                    ],
+                    "example": {
+                        "jp": "非配偶者間人工授精を受けました。",
+                        "en": "I had an artificial insemination by donor.",
+                        "furigana": "<ruby>非<rp>(</rp><rt>ひ</rt><rp>)</rp></ruby><ruby>配偶<rp>(</rp><rt>はいぐう</rt><rp>)</rp></ruby><ruby>者<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby><ruby>間<rp>(</rp><rt>かん</rt><rp>)</rp></ruby><ruby>人工<rp>(</rp><rt>じんこう</rt><rp>)</rp></ruby><ruby>授精<rp>(</rp><rt>じゅせい</rt><rp>)</rp></ruby>を<ruby>受<rp>(</rp><rt>う</rt><rp>)</rp></ruby>けました。",
+                        "enMn": "Би донорын зохиомол хээлтүүлэгт хамрагдсан."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хиймэл",
+                    "meaningsMn": [
+                        "хиймэл"
+                    ]
+                },
+                {
+                    "jp": "人種",
+                    "reading": "じんしゅ",
+                    "en": "race (of people)",
+                    "meanings": [
+                        "race (of people)"
+                    ],
+                    "example": {
+                        "jp": "彼らは人種の平等を目指して運動した。",
+                        "en": "They campaigned for racial equality.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>人種<rp>(</rp><rt>じんしゅ</rt><rp>)</rp></ruby>の<ruby>平等<rp>(</rp><rt>びょうどう</rt><rp>)</rp></ruby>を<ruby>目指<rp>(</rp><rt>めざ</rt><rp>)</rp></ruby>して<ruby>運動<rp>(</rp><rt>うんどう</rt><rp>)</rp></ruby>した。",
+                        "enMn": "Тэд арьс өнгөний тэгш байдлын төлөө хөдөлгөөн өрнүүлсэн."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "арьс өнгө",
+                    "meaningsMn": [
+                        "арьс өнгө"
+                    ]
+                },
+                {
+                    "jp": "巣",
+                    "reading": "す",
+                    "en": "nest",
+                    "meanings": [
+                        "nest",
+                        "breeding place"
+                    ],
+                    "example": {
+                        "jp": "世界は奇人の巣だ。",
+                        "en": "The world is a den of crazies.",
+                        "furigana": "<ruby>世界<rp>(</rp><rt>せかい</rt><rp>)</rp></ruby>は<ruby>奇人<rp>(</rp><rt>きじん</rt><rp>)</rp></ruby>の<ruby>巣<rp>(</rp><rt>す</rt><rp>)</rp></ruby>だ。",
+                        "enMn": "Ертөнц бол солиотнуудын үүр."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "үүр",
+                    "meaningsMn": [
+                        "үүр"
+                    ]
+                },
+                {
+                    "jp": "図",
+                    "reading": "ず",
+                    "en": "figure",
+                    "meanings": [
+                        "figure",
+                        "drawing",
+                        "illustration"
+                    ],
+                    "example": {
+                        "jp": "路線図をもらえませんか。",
+                        "en": "Can I get a route map, please?",
+                        "furigana": "<ruby>路線<rp>(</rp><rt>ろせん</rt><rp>)</rp></ruby><ruby>図<rp>(</rp><rt>ず</rt><rp>)</rp></ruby>をもらえませんか。",
+                        "enMn": "Замын зураг авч болох уу?"
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "схем",
+                    "meaningsMn": [
+                        "схем"
+                    ]
+                },
+                {
+                    "jp": "数",
+                    "reading": "すう",
+                    "en": "number",
+                    "meanings": [
+                        "number",
+                        "figure"
+                    ],
+                    "example": {
+                        "jp": "「道」という漢字の総画数は何画ですか。",
+                        "en": "How many strokes does the kanji for \"michi\" have?",
+                        "furigana": "「<ruby>道<rp>(</rp><rt>みち</rt><rp>)</rp></ruby>」という<ruby>漢字<rp>(</rp><rt>かんじ</rt><rp>)</rp></ruby>の<ruby>総画<rp>(</rp><rt>そうかく</rt><rp>)</rp></ruby><ruby>数<rp>(</rp><rt>すう</rt><rp>)</rp></ruby>は<ruby>何<rp>(</rp><rt>なん</rt><rp>)</rp></ruby><ruby>画<rp>(</rp><rt>かく</rt><rp>)</rp></ruby>ですか。",
+                        "enMn": "«Мичи» гэдэг ханзны нийт зурлагын тоо хэд вэ?"
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "тоо",
+                    "meaningsMn": [
+                        "тоо"
+                    ]
+                },
+                {
+                    "jp": "数字",
+                    "reading": "すうじ",
+                    "en": "numeral",
+                    "meanings": [
+                        "numeral",
+                        "figure"
+                    ],
+                    "example": {
+                        "jp": "彼女は日付を数字で書いた。",
+                        "en": "She wrote the date in numeric form.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>日付<rp>(</rp><rt>ひづけ</rt><rp>)</rp></ruby>を<ruby>数字<rp>(</rp><rt>すうじ</rt><rp>)</rp></ruby>で<ruby>書<rp>(</rp><rt>か</rt><rp>)</rp></ruby>いた。",
+                        "enMn": "Тэр огноог тоогоор бичив."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "тооны нэр",
+                    "meaningsMn": [
+                        "тооны нэр"
+                    ]
+                },
+                {
+                    "jp": "種",
+                    "reading": "たね",
+                    "en": "seed",
+                    "meanings": [
+                        "seed",
+                        "material",
+                        "cause"
+                    ],
+                    "example": {
+                        "jp": "彼は種からトマトの苗を育てた。",
+                        "en": "He raised tomato plants from seed.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>種<rp>(</rp><rt>たね</rt><rp>)</rp></ruby>からトマトの<ruby>苗<rp>(</rp><rt>なえ</rt><rp>)</rp></ruby>を<ruby>育<rp>(</rp><rt>そだ</rt><rp>)</rp></ruby>てた。",
+                        "enMn": "Тэр улаан лоолийг үрээс ургуулсан."
+                    },
+                    "phonetic": "重",
+                    "phoneticReading": "シュ",
+                    "enMn": "үр",
+                    "meaningsMn": [
+                        "үр",
+                        "материал",
+                        "шалтгаан"
+                    ]
+                },
+                {
+                    "jp": "生物",
+                    "reading": "せいぶつ",
+                    "en": "living thing",
+                    "meanings": [
+                        "living thing",
+                        "organism"
+                    ],
+                    "example": null,
+                    "phonetic": "生",
+                    "phoneticReading": "セイ、ショウ",
+                    "enMn": "амьтан",
+                    "meaningsMn": [
+                        "амьтан"
+                    ]
+                },
+                {
+                    "jp": "飼う",
+                    "reading": "かう",
+                    "en": "to keep; to own (a pet); to raise; to feed",
+                    "meanings": [
+                        "to keep; to own (a pet); to raise; to feed"
+                    ],
+                    "example": null,
+                    "phonetic": "司",
+                    "phoneticReading": "シ",
+                    "enMn": "хооллох",
+                    "meaningsMn": [
+                        "хооллох"
+                    ]
+                },
+                {
+                    "jp": "化学",
+                    "reading": "かがく",
+                    "en": "chemistry",
+                    "meanings": [
+                        "chemistry"
+                    ],
+                    "example": null,
+                    "phonetic": "化",
+                    "phoneticReading": "カ",
+                    "enMn": "хими",
+                    "meaningsMn": [
+                        "хими"
+                    ]
+                },
+                {
+                    "jp": "気候",
+                    "reading": "きこう",
+                    "en": "climate",
+                    "meanings": [
+                        "climate"
+                    ],
+                    "example": null,
+                    "phonetic": "气",
+                    "phoneticReading": "キ",
+                    "enMn": "уур амьсгал",
+                    "meaningsMn": [
+                        "уур амьсгал"
+                    ]
+                },
+                {
+                    "jp": "腐る",
+                    "reading": "くさる",
+                    "en": "to rot",
+                    "meanings": [
+                        "to rot",
+                        "to go bad"
+                    ],
+                    "example": null,
+                    "phonetic": "付",
+                    "phoneticReading": "フ",
+                    "enMn": "ялзрах",
+                    "meaningsMn": [
+                        "ялзрах"
+                    ]
+                }
+            ]
+        ],
+        "themeKey": "theme.n3.6"
+    },
+    {
+        "level": 31,
+        "jlpt": "N3",
+        "title": "Books, ideas and shows",
+        "sets": [
+            [
+                {
+                    "jp": "参考",
+                    "reading": "さんこう",
+                    "en": "reference",
+                    "meanings": [
+                        "reference",
+                        "consultation"
+                    ],
+                    "example": {
+                        "jp": "私は批評を参考にして本を読んだ。",
+                        "en": "I read the book in the light of criticism.",
+                        "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>は<ruby>批評<rp>(</rp><rt>ひひょう</rt><rp>)</rp></ruby>を<ruby>参考<rp>(</rp><rt>さんこう</rt><rp>)</rp></ruby>にして<ruby>本<rp>(</rp><rt>ほん</rt><rp>)</rp></ruby>を<ruby>読<rp>(</rp><rt>よ</rt><rp>)</rp></ruby>んだ。",
+                        "enMn": "Би шүүмжийг харгалзан номыг уншсан."
+                    },
+                    "phonetic": "参",
+                    "phoneticReading": "サン",
+                    "enMn": "лавлагаа",
+                    "meaningsMn": [
+                        "лавлагаа",
+                        "зөвлөлдөх"
+                    ]
+                },
+                {
+                    "jp": "情報",
+                    "reading": "じょうほう",
+                    "en": "information",
+                    "meanings": [
+                        "information",
+                        "(military) intelligence"
+                    ],
+                    "example": {
+                        "jp": "舞踊がみたいのですが情報をください。",
+                        "en": "I'd like to see some dancing. Do you have any information?",
+                        "furigana": "<ruby>舞踊<rp>(</rp><rt>ぶよう</rt><rp>)</rp></ruby>がみたいのですが<ruby>情報<rp>(</rp><rt>じょうほう</rt><rp>)</rp></ruby>をください。",
+                        "enMn": "Би бүжиг үзмээр байна. Танд ямар нэг мэдээлэл байна уу?"
+                    },
+                    "phonetic": "青",
+                    "phoneticReading": "セイ、ショウ、ジョウ",
+                    "enMn": "мэдээлэл",
+                    "meaningsMn": [
+                        "мэдээлэл",
+                        "(цэргийн) тагнуул"
+                    ]
+                },
+                {
+                    "jp": "思想",
+                    "reading": "しそう",
+                    "en": "thought",
+                    "meanings": [
+                        "thought",
+                        "idea"
+                    ],
+                    "example": {
+                        "jp": "福沢諭吉は日本に西洋思想を広めた。",
+                        "en": "Yukichi Fukuzawa introduced Western ideas into Japan.",
+                        "furigana": "<ruby>福沢<rp>(</rp><rt>ふくさわ</rt><rp>)</rp></ruby><ruby>諭吉<rp>(</rp><rt>ゆきち</rt><rp>)</rp></ruby>は<ruby>日本<rp>(</rp><rt>にっぽん</rt><rp>)</rp></ruby>に<ruby>西洋<rp>(</rp><rt>せいよう</rt><rp>)</rp></ruby><ruby>思想<rp>(</rp><rt>しそう</rt><rp>)</rp></ruby>を<ruby>広<rp>(</rp><rt>ひろ</rt><rp>)</rp></ruby>めた。",
+                        "enMn": "Фүкүзава Юкичи Японд барууны үзэл санааг дэлгэрүүлсэн."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "үзэл санаа",
+                    "meaningsMn": [
+                        "үзэл санаа"
+                    ]
+                },
+                {
+                    "jp": "出版",
+                    "reading": "しゅっぱん",
+                    "en": "publication",
+                    "meanings": [
+                        "publication"
+                    ],
+                    "example": {
+                        "jp": "彼女は自分の負担で本を出版した。",
+                        "en": "She published the book at her own expense.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>自分<rp>(</rp><rt>じぶん</rt><rp>)</rp></ruby>の<ruby>負担<rp>(</rp><rt>ふたん</rt><rp>)</rp></ruby>で<ruby>本<rp>(</rp><rt>ほん</rt><rp>)</rp></ruby>を<ruby>出版<rp>(</rp><rt>しゅっぱん</rt><rp>)</rp></ruby>した。",
+                        "enMn": "Тэр номоо өөрийн зардлаар хэвлүүлсэн."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хэвлэл",
+                    "meaningsMn": [
+                        "хэвлэл"
                     ]
                 },
                 {
@@ -14057,88 +15495,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "酸素",
-                    "reading": "さんそ",
-                    "en": "oxygen",
-                    "meanings": [
-                        "oxygen"
-                    ],
-                    "example": {
-                        "jp": "生物は酸素なしでは生きられない。",
-                        "en": "No living things could live without oxygen.",
-                        "furigana": "<ruby>生物<rp>(</rp><rt>せいぶつ</rt><rp>)</rp></ruby>は<ruby>酸素<rp>(</rp><rt>さんそ</rt><rp>)</rp></ruby>なしでは<ruby>生<rp>(</rp><rt>い</rt><rp>)</rp></ruby>きられない。",
-                        "enMn": "Ямар ч амьд биет хүчилтөрөгчгүйгээр амьдарч чадахгүй."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хүчилтөрөгч",
-                    "meaningsMn": [
-                        "хүчилтөрөгч"
-                    ]
-                },
-                {
-                    "jp": "支払",
-                    "reading": "しはらい",
-                    "en": "payment",
-                    "meanings": [
-                        "payment"
-                    ],
-                    "example": {
-                        "jp": "手形は来月１日が支払日になっている。",
-                        "en": "The bill is due on the 1st of next month.",
-                        "furigana": "<ruby>手形<rp>(</rp><rt>てがた</rt><rp>)</rp></ruby>は<ruby>来月<rp>(</rp><rt>らいげつ</rt><rp>)</rp></ruby>１<ruby>日<rp>(</rp><rt>にち</rt><rp>)</rp></ruby>が<ruby>支払<rp>(</rp><rt>しはらい</rt><rp>)</rp></ruby><ruby>日<rp>(</rp><rt>び</rt><rp>)</rp></ruby>になっている。",
-                        "enMn": "Төлбөрийг ирэх сарын 1-нд төлөх ёстой."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "төлбөр",
-                    "meaningsMn": [
-                        "төлбөр"
-                    ]
-                },
-                {
-                    "jp": "下",
-                    "reading": "しも",
-                    "en": "under",
-                    "meanings": [
-                        "under",
-                        "below",
-                        "beneath"
-                    ],
-                    "example": {
-                        "jp": "投稿一覧の下の凡例を見て原因が分かりました。",
-                        "en": "When I looked at the explanatory notes under the posts list I realized what was causing it.",
-                        "furigana": "<ruby>投稿<rp>(</rp><rt>とうこう</rt><rp>)</rp></ruby><ruby>一覧<rp>(</rp><rt>いちらん</rt><rp>)</rp></ruby>の<ruby>下<rp>(</rp><rt>した</rt><rp>)</rp></ruby>の<ruby>凡例<rp>(</rp><rt>はんれい</rt><rp>)</rp></ruby>を<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>て<ruby>原因<rp>(</rp><rt>げんいん</rt><rp>)</rp></ruby>が<ruby>分<rp>(</rp><rt>わ</rt><rp>)</rp></ruby>かりました。",
-                        "enMn": "Нийтлэлийн жагсаалтын доор байх тайлбарыг хараад шалтгаан нь ойлгогдлоо."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "доор",
-                    "meaningsMn": [
-                        "доор"
-                    ]
-                },
-                {
-                    "jp": "霜",
-                    "reading": "しも",
-                    "en": "frost",
-                    "meanings": [
-                        "frost"
-                    ],
-                    "example": {
-                        "jp": "ゆうべ霜が降りた。",
-                        "en": "It frosted last night.",
-                        "furigana": "ゆうべ<ruby>霜<rp>(</rp><rt>しも</rt><rp>)</rp></ruby>が<ruby>降<rp>(</rp><rt>お</rt><rp>)</rp></ruby>りた。",
-                        "enMn": "Өчигдөр орой хяруу буув."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хяруу",
-                    "meaningsMn": [
-                        "хяруу"
-                    ]
-                },
-                {
                     "jp": "しゃべる",
                     "reading": "しゃべる",
                     "en": "to talk",
@@ -14161,215 +15517,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "宗教",
-                    "reading": "しゅうきょう",
-                    "en": "religion",
-                    "meanings": [
-                        "religion"
-                    ],
-                    "example": {
-                        "jp": "両地域は宗教と文化が違っている。",
-                        "en": "The two regions differ in religion and culture.",
-                        "furigana": "<ruby>両<rp>(</rp><rt>りょう</rt><rp>)</rp></ruby><ruby>地域<rp>(</rp><rt>ちいき</rt><rp>)</rp></ruby>は<ruby>宗教<rp>(</rp><rt>しゅうきょう</rt><rp>)</rp></ruby>と<ruby>文化<rp>(</rp><rt>ぶんか</rt><rp>)</rp></ruby>が<ruby>違<rp>(</rp><rt>ちが</rt><rp>)</rp></ruby>っている。",
-                        "enMn": "Хоёр бүс нутаг шашин, соёлоороо ялгаатай."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "шашин",
-                    "meaningsMn": [
-                        "шашин"
-                    ]
-                },
-                {
-                    "jp": "ジュース",
-                    "reading": "ジュース",
-                    "en": "juice",
-                    "meanings": [
-                        "juice",
-                        "soft drink; deuce"
-                    ],
-                    "example": {
-                        "jp": "私の母はオレンジジュースを二本買った。",
-                        "en": "My mother bought two bottles of orange juice.",
-                        "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>の<ruby>母<rp>(</rp><rt>はは</rt><rp>)</rp></ruby>はオレンジジュースを<ruby>二<rp>(</rp><rt>に</rt><rp>)</rp></ruby><ruby>本<rp>(</rp><rt>ほん</rt><rp>)</rp></ruby><ruby>買<rp>(</rp><rt>か</rt><rp>)</rp></ruby>った。",
-                        "enMn": "Ээж хоёр шил жүржийн шүүс худалдаж авав."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "шүүс",
-                    "meaningsMn": [
-                        "шүүс"
-                    ]
-                },
-                {
-                    "jp": "重体",
-                    "reading": "じゅうたい",
-                    "en": "seriously ill",
-                    "meanings": [
-                        "seriously ill",
-                        "critical state"
-                    ],
-                    "example": {
-                        "jp": "重体の赤ちゃんは医者の注意深い監視下に置かれていた。",
-                        "en": "The very sick baby was under careful observation by the doctors.",
-                        "furigana": "<ruby>重体<rp>(</rp><rt>じゅうたい</rt><rp>)</rp></ruby>の<ruby>赤<rp>(</rp><rt>あか</rt><rp>)</rp></ruby>ちゃんは<ruby>医者<rp>(</rp><rt>いしゃ</rt><rp>)</rp></ruby>の<ruby>注意深<rp>(</rp><rt>ちゅういぶか</rt><rp>)</rp></ruby>い<ruby>監視<rp>(</rp><rt>かんし</rt><rp>)</rp></ruby><ruby>下<rp>(</rp><rt>か</rt><rp>)</rp></ruby>に<ruby>置<rp>(</rp><rt>お</rt><rp>)</rp></ruby>かれていた。",
-                        "enMn": "Хүнд байдалтай нярай эмч нарын нягт хяналтад байв."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хүнд байдал",
-                    "meaningsMn": [
-                        "хүнд байдал"
-                    ]
-                },
-                {
-                    "jp": "渋滞",
-                    "reading": "じゅうたい",
-                    "en": "congestion (e.g., traffic)",
-                    "meanings": [
-                        "congestion (e.g., traffic)",
-                        "delay"
-                    ],
-                    "example": {
-                        "jp": "父は今朝、交通渋滞のために仕事に遅れた。",
-                        "en": "My father was late for work this morning because of a traffic jam.",
-                        "furigana": "<ruby>父<rp>(</rp><rt>ちち</rt><rp>)</rp></ruby>は<ruby>今朝<rp>(</rp><rt>けさ</rt><rp>)</rp></ruby>、<ruby>交通<rp>(</rp><rt>こうつう</rt><rp>)</rp></ruby><ruby>渋滞<rp>(</rp><rt>じゅうたい</rt><rp>)</rp></ruby>のために<ruby>仕事<rp>(</rp><rt>しごと</rt><rp>)</rp></ruby>に<ruby>遅<rp>(</rp><rt>おく</rt><rp>)</rp></ruby>れた。",
-                        "enMn": "Аав өнөө өглөө замын түгжрэлээс болж ажилдаа хоцров."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "түгжрэл",
-                    "meaningsMn": [
-                        "түгжрэл"
-                    ]
-                },
-                {
-                    "jp": "重大",
-                    "reading": "じゅうだい",
-                    "en": "serious",
-                    "meanings": [
-                        "serious",
-                        "important"
-                    ],
-                    "example": {
-                        "jp": "不注意は重大な欠点と見なされた。",
-                        "en": "Carelessness was looked on as a serious defect.",
-                        "furigana": "<ruby>不注意<rp>(</rp><rt>ふちゅうい</rt><rp>)</rp></ruby>は<ruby>重大<rp>(</rp><rt>じゅうだい</rt><rp>)</rp></ruby>な<ruby>欠点<rp>(</rp><rt>けってん</rt><rp>)</rp></ruby>と<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>なされた。",
-                        "enMn": "Болгоомжгүй байдлыг ноцтой дутагдал гэж үзэв."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "ноцтой",
-                    "meaningsMn": [
-                        "ноцтой"
-                    ]
-                },
-                {
-                    "jp": "住宅",
-                    "reading": "じゅうたく",
-                    "en": "resident",
-                    "meanings": [
-                        "resident",
-                        "housing"
-                    ],
-                    "example": {
-                        "jp": "安価な簡易住宅を提供します。",
-                        "en": "We offer low-cost prefabricated houses.",
-                        "furigana": "<ruby>安価<rp>(</rp><rt>あんか</rt><rp>)</rp></ruby>な<ruby>簡易<rp>(</rp><rt>かんい</rt><rp>)</rp></ruby><ruby>住宅<rp>(</rp><rt>じゅうたく</rt><rp>)</rp></ruby>を<ruby>提供<rp>(</rp><rt>ていきょう</rt><rp>)</rp></ruby>します。",
-                        "enMn": "Бид хямд өртөгтэй угсармал орон байр санал болгож байна."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "орон байр",
-                    "meaningsMn": [
-                        "орон байр"
-                    ]
-                },
-                {
-                    "jp": "出場",
-                    "reading": "しゅつじょう",
-                    "en": "participation",
-                    "meanings": [
-                        "participation"
-                    ],
-                    "example": {
-                        "jp": "彼はその試合に代打として出場した。",
-                        "en": "He appeared as a pinch hitter in the game.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>はその<ruby>試合<rp>(</rp><rt>しあい</rt><rp>)</rp></ruby>に<ruby>代打<rp>(</rp><rt>だいだ</rt><rp>)</rp></ruby>として<ruby>出場<rp>(</rp><rt>しゅつじょう</rt><rp>)</rp></ruby>した。",
-                        "enMn": "Тэр тэмцээнд орлон цохигчоор оролцов."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "оролцох",
-                    "meaningsMn": [
-                        "оролцох"
-                    ]
-                },
-                {
-                    "jp": "順",
-                    "reading": "じゅん",
-                    "en": "order",
-                    "meanings": [
-                        "order",
-                        "turn"
-                    ],
-                    "example": {
-                        "jp": "順を追って基本的なタグを覚えていこう。",
-                        "en": "Let's learn the basic tags in order.",
-                        "furigana": "<ruby>順<rp>(</rp><rt>じゅん</rt><rp>)</rp></ruby>を<ruby>追<rp>(</rp><rt>お</rt><rp>)</rp></ruby>って<ruby>基本<rp>(</rp><rt>きほん</rt><rp>)</rp></ruby><ruby>的<rp>(</rp><rt>てき</rt><rp>)</rp></ruby>なタグを<ruby>覚<rp>(</rp><rt>おぼ</rt><rp>)</rp></ruby>えていこう。",
-                        "enMn": "Үндсэн шошгуудыг дэс дараалан нь цээжилье."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "ээлж",
-                    "meaningsMn": [
-                        "ээлж"
-                    ]
-                },
-                {
-                    "jp": "使用",
-                    "reading": "しよう",
-                    "en": "use (same as 使うこと (つかうこと))",
-                    "meanings": [
-                        "use (same as 使うこと (つかうこと))",
-                        "application",
-                        "employment",
-                        "utilization"
-                    ],
-                    "example": {
-                        "jp": "外用のみに使用し、内服しないで下さい。",
-                        "en": "For external use only, do not ingest.",
-                        "furigana": "<ruby>外用<rp>(</rp><rt>がいよう</rt><rp>)</rp></ruby>のみに<ruby>使用<rp>(</rp><rt>しよう</rt><rp>)</rp></ruby>し、<ruby>内服<rp>(</rp><rt>ないふく</rt><rp>)</rp></ruby>しないで<ruby>下<rp>(</rp><rt>くだ</rt><rp>)</rp></ruby>さい。",
-                        "enMn": "Зөвхөн гадуур хэрэглэж, дотуур бүү уу."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хэрэглэх",
-                    "meaningsMn": [
-                        "хэрэглэх"
-                    ]
-                },
-                {
-                    "jp": "小",
-                    "reading": "しょう",
-                    "en": "small",
-                    "meanings": [
-                        "small"
-                    ],
-                    "example": {
-                        "jp": "「状況報告を」「現在目標は目視４。最大７か。小口径火器を所有」",
-                        "en": "\"Situation report.\" \"At present 4 in sight. At most probably 7. Holding small calibre arms.\"",
-                        "furigana": "「<ruby>状況<rp>(</rp><rt>じょうきょう</rt><rp>)</rp></ruby><ruby>報告<rp>(</rp><rt>ほうこく</rt><rp>)</rp></ruby>を」「<ruby>現在<rp>(</rp><rt>げんざい</rt><rp>)</rp></ruby><ruby>目標<rp>(</rp><rt>もくひょう</rt><rp>)</rp></ruby>は<ruby>目視<rp>(</rp><rt>もくし</rt><rp>)</rp></ruby>４。<ruby>最大<rp>(</rp><rt>さいだい</rt><rp>)</rp></ruby>７か。<ruby>小<rp>(</rp><rt>しょう</rt><rp>)</rp></ruby><ruby>口径<rp>(</rp><rt>こうけい</rt><rp>)</rp></ruby><ruby>火器<rp>(</rp><rt>かき</rt><rp>)</rp></ruby>を<ruby>所有<rp>(</rp><rt>しょゆう</rt><rp>)</rp></ruby>」",
-                        "enMn": "«Нөхцөл байдлаа мэдээл.» «Одоогоор 4 бай харагдаж байна. Дээд тал нь 7. Жижиг калибрын галт зэвсэгтэй.»"
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "жижиг",
-                    "meaningsMn": [
-                        "жижиг"
-                    ]
-                },
-                {
                     "jp": "章",
                     "reading": "しょう",
                     "en": "chapter",
@@ -14388,123 +15535,6 @@ const WORD_LEVELS = [
                     "enMn": "хэсэг",
                     "meaningsMn": [
                         "хэсэг"
-                    ]
-                }
-            ]
-        ]
-    },
-    {
-        "level": 29,
-        "jlpt": "N3",
-        "title": "N3 · Level 5",
-        "sets": [
-            [
-                {
-                    "jp": "支店",
-                    "reading": "してん",
-                    "en": "branch office",
-                    "meanings": [
-                        "branch store (office)"
-                    ],
-                    "example": {
-                        "jp": "新しい支店が来月シカゴに開店する。",
-                        "en": "A new branch will be opened in Chicago next month.",
-                        "furigana": "<ruby>新<rp>(</rp><rt>あたら</rt><rp>)</rp></ruby>しい<ruby>支店<rp>(</rp><rt>してん</rt><rp>)</rp></ruby>が<ruby>来月<rp>(</rp><rt>らいげつ</rt><rp>)</rp></ruby>シカゴに<ruby>開店<rp>(</rp><rt>かいてん</rt><rp>)</rp></ruby>する。",
-                        "enMn": "Шинэ салбар ирэх сард Чикагод нээгдэнэ."
-                    },
-                    "phonetic": "支",
-                    "phoneticReading": "シ、キ",
-                    "enMn": "салбар оффис",
-                    "meaningsMn": [
-                        "салбар (алба)"
-                    ]
-                },
-                {
-                    "jp": "支配",
-                    "reading": "しはい",
-                    "en": "rule",
-                    "meanings": [
-                        "rule",
-                        "control",
-                        "direction"
-                    ],
-                    "example": {
-                        "jp": "脳が私たちの活動を支配している。",
-                        "en": "Our brains control our activities.",
-                        "furigana": "<ruby>脳<rp>(</rp><rt>のう</rt><rp>)</rp></ruby>が<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>たちの<ruby>活動<rp>(</rp><rt>かつどう</rt><rp>)</rp></ruby>を<ruby>支配<rp>(</rp><rt>しはい</rt><rp>)</rp></ruby>している。",
-                        "enMn": "Тархи бидний үйл ажиллагааг удирддаг."
-                    },
-                    "phonetic": "支",
-                    "phoneticReading": "シ、キ",
-                    "enMn": "засаглал",
-                    "meaningsMn": [
-                        "засаглал",
-                        "удирдлага",
-                        "удирдлага"
-                    ]
-                },
-                {
-                    "jp": "乗客",
-                    "reading": "じょうきゃく",
-                    "en": "passenger",
-                    "meanings": [
-                        "passenger"
-                    ],
-                    "example": {
-                        "jp": "列車は乗客でいっぱいだった。",
-                        "en": "The train was full of passengers.",
-                        "furigana": "<ruby>列車<rp>(</rp><rt>れっしゃ</rt><rp>)</rp></ruby>は<ruby>乗客<rp>(</rp><rt>じょうきゃく</rt><rp>)</rp></ruby>でいっぱいだった。",
-                        "enMn": "Галт тэрэг зорчигчоор дүүрэн байв."
-                    },
-                    "phonetic": "乗",
-                    "phoneticReading": "ジョウ",
-                    "enMn": "зорчигч",
-                    "meaningsMn": [
-                        "зорчигч"
-                    ]
-                },
-                {
-                    "jp": "乗せる",
-                    "reading": "のせる",
-                    "en": "to place on (something)",
-                    "meanings": [
-                        "to place on (something)",
-                        "to take on board"
-                    ],
-                    "example": {
-                        "jp": "彼は私を彼の荷車に乗せてくれた。",
-                        "en": "He gave me a lift in his cart.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>を<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>荷車<rp>(</rp><rt>にぐるま</rt><rp>)</rp></ruby>に<ruby>乗<rp>(</rp><rt>の</rt><rp>)</rp></ruby>せてくれた。",
-                        "enMn": "Тэр намайг тэргэндээ авч явсан."
-                    },
-                    "phonetic": "乗",
-                    "phoneticReading": "ジョウ",
-                    "enMn": "дээр нь тавих",
-                    "meaningsMn": [
-                        "дээр нь тавих",
-                        "суулгах"
-                    ]
-                },
-                {
-                    "jp": "自慢",
-                    "reading": "じまん",
-                    "en": "pride",
-                    "meanings": [
-                        "pride",
-                        "boast"
-                    ],
-                    "example": {
-                        "jp": "父はハンサムなのを自慢している。",
-                        "en": "My father is proud of being handsome.",
-                        "furigana": "<ruby>父<rp>(</rp><rt>ちち</rt><rp>)</rp></ruby>はハンサムなのを<ruby>自慢<rp>(</rp><rt>じまん</rt><rp>)</rp></ruby>している。",
-                        "enMn": "Аав минь өөрийн царайлаг байдлаараа бахархдаг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "бахархал",
-                    "meaningsMn": [
-                        "бахархал",
-                        "сайрхал"
                     ]
                 },
                 {
@@ -14530,94 +15560,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "質",
-                    "reading": "しつ",
-                    "en": "quality",
-                    "meanings": [
-                        "quality",
-                        "nature (of person)"
-                    ],
-                    "example": {
-                        "jp": "質より量の方がむしろ重要である。",
-                        "en": "Quantity rather than quality is important.",
-                        "furigana": "<ruby>質<rp>(</rp><rt>しつ</rt><rp>)</rp></ruby>より<ruby>量<rp>(</rp><rt>りょう</rt><rp>)</rp></ruby>の<ruby>方<rp>(</rp><rt>ほう</rt><rp>)</rp></ruby>がむしろ<ruby>重要<rp>(</rp><rt>じゅうよう</rt><rp>)</rp></ruby>である。",
-                        "enMn": "Чанараас илүү тоо хэмжээ чухал юм."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "чанар",
-                    "meaningsMn": [
-                        "чанар",
-                        "зан чанар"
-                    ]
-                },
-                {
-                    "jp": "占める",
-                    "reading": "しめる",
-                    "en": "to take up",
-                    "meanings": [
-                        "to take up",
-                        "to account for"
-                    ],
-                    "example": {
-                        "jp": "与党は前の選挙で過半数を占めた。",
-                        "en": "The government got their majority at the last election.",
-                        "furigana": "<ruby>与党<rp>(</rp><rt>よとう</rt><rp>)</rp></ruby>は<ruby>前<rp>(</rp><rt>まえ</rt><rp>)</rp></ruby>の<ruby>選挙<rp>(</rp><rt>せんきょ</rt><rp>)</rp></ruby>で<ruby>過半数<rp>(</rp><rt>かはんすう</rt><rp>)</rp></ruby>を<ruby>占<rp>(</rp><rt>し</rt><rp>)</rp></ruby>めた。",
-                        "enMn": "Засгийн эрх барьж буй нам өмнөх сонгуульд олонхийг авсан."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "эзлэх",
-                    "meaningsMn": [
-                        "эзлэх",
-                        "эзлэх"
-                    ]
-                },
-                {
-                    "jp": "失望",
-                    "reading": "しつぼう",
-                    "en": "disappointment",
-                    "meanings": [
-                        "disappointment",
-                        "despair"
-                    ],
-                    "example": {
-                        "jp": "彼らは互いに失望を感じている。",
-                        "en": "They are disappointed with each other.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>互<rp>(</rp><rt>たが</rt><rp>)</rp></ruby>いに<ruby>失望<rp>(</rp><rt>しつぼう</rt><rp>)</rp></ruby>を<ruby>感<rp>(</rp><rt>かん</rt><rp>)</rp></ruby>じている。",
-                        "enMn": "Тэд бие биедээ урам хугарсан байна."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "гутрал",
-                    "meaningsMn": [
-                        "гутрал",
-                        "цөхрөл"
-                    ]
-                },
-                {
-                    "jp": "沈む",
-                    "reading": "しずむ",
-                    "en": "to sink",
-                    "meanings": [
-                        "to sink",
-                        "to feel depressed"
-                    ],
-                    "example": {
-                        "jp": "陽は知らぬ間に地平線下に沈んだ。",
-                        "en": "The sun sank below the horizon before I knew it.",
-                        "furigana": "<ruby>陽<rp>(</rp><rt>ひ</rt><rp>)</rp></ruby>は<ruby>知<rp>(</rp><rt>し</rt><rp>)</rp></ruby>らぬ<ruby>間<rp>(</rp><rt>ま</rt><rp>)</rp></ruby>に<ruby>地平線<rp>(</rp><rt>ちへいせん</rt><rp>)</rp></ruby><ruby>下<rp>(</rp><rt>か</rt><rp>)</rp></ruby>に<ruby>沈<rp>(</rp><rt>しず</rt><rp>)</rp></ruby>んだ。",
-                        "enMn": "Нар мэдэхгүй л байтал тэнгэрийн хаяанаас доош шингэв."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "живэх",
-                    "meaningsMn": [
-                        "живэх",
-                        "гуниглах"
-                    ]
-                },
-                {
                     "jp": "上",
                     "reading": "じょう",
                     "en": "first volume",
@@ -14638,88 +15580,456 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "上京",
-                    "reading": "じょうきょう",
-                    "en": "proceeding to the capital (Tokyo)",
+                    "jp": "示す",
+                    "reading": "しめす",
+                    "en": "to show",
                     "meanings": [
-                        "proceeding to the capital (Tokyo)"
+                        "to show",
+                        "to indicate"
                     ],
                     "example": {
-                        "jp": "彼女は１８歳のときに上京した。",
-                        "en": "She came up to Tokyo at eighteen.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は１８<ruby>歳<rp>(</rp><rt>さい</rt><rp>)</rp></ruby>のときに<ruby>上京<rp>(</rp><rt>じょうきょう</rt><rp>)</rp></ruby>した。",
-                        "enMn": "Тэр 18 настайдаа нийслэлд иржээ."
+                        "jp": "彼女はピアノに非凡な腕を示した。",
+                        "en": "She showed great skill on the piano.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はピアノに<ruby>非凡<rp>(</rp><rt>ひぼん</rt><rp>)</rp></ruby>な<ruby>腕<rp>(</rp><rt>うで</rt><rp>)</rp></ruby>を<ruby>示<rp>(</rp><rt>しめ</rt><rp>)</rp></ruby>した。",
+                        "enMn": "Тэр төгөлдөр хуурт гайхалтай ур чадвар үзүүлэв."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "нийслэлд очих",
+                    "enMn": "үзүүлэх",
                     "meaningsMn": [
-                        "нийслэлд очих"
+                        "үзүүлэх",
+                        "заах"
                     ]
                 },
                 {
-                    "jp": "生じる",
-                    "reading": "しょうじる",
-                    "en": "to occur",
+                    "jp": "書斎",
+                    "reading": "しょさい",
+                    "en": "study",
                     "meanings": [
-                        "to occur",
-                        "to arise",
-                        "to be generated"
+                        "study",
+                        "den"
                     ],
                     "example": {
-                        "jp": "耐震性の悪い建物に亀裂が生じることもある。",
-                        "en": "Also cracks may form in buildings that aren't Earthquake proof.",
-                        "furigana": "<ruby>耐震<rp>(</rp><rt>たいしん</rt><rp>)</rp></ruby><ruby>性<rp>(</rp><rt>せい</rt><rp>)</rp></ruby>の<ruby>悪<rp>(</rp><rt>わる</rt><rp>)</rp></ruby>い<ruby>建物<rp>(</rp><rt>たてもの</rt><rp>)</rp></ruby>に<ruby>亀裂<rp>(</rp><rt>きれつ</rt><rp>)</rp></ruby>が<ruby>生<rp>(</rp><rt>しょう</rt><rp>)</rp></ruby>じることもある。",
-                        "enMn": "Газар хөдлөлтөд тэсвэргүй барилгад ан цав үүсэх нь ч бий."
+                        "jp": "父は車庫を書斎に改造した。",
+                        "en": "My father converted a garage into a study.",
+                        "furigana": "<ruby>父<rp>(</rp><rt>ちち</rt><rp>)</rp></ruby>は<ruby>車庫<rp>(</rp><rt>しゃこ</rt><rp>)</rp></ruby>を<ruby>書斎<rp>(</rp><rt>しょさい</rt><rp>)</rp></ruby>に<ruby>改造<rp>(</rp><rt>かいぞう</rt><rp>)</rp></ruby>した。",
+                        "enMn": "Аав граждаа номын өрөө болгон өөрчилсөн."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "үүсэх",
+                    "enMn": "номын өрөө",
                     "meaningsMn": [
-                        "үүсэх"
+                        "номын өрөө"
                     ]
                 },
                 {
-                    "jp": "上等",
-                    "reading": "じょうとう",
-                    "en": "first class",
+                    "jp": "署名",
+                    "reading": "しょめい",
+                    "en": "signature",
                     "meanings": [
-                        "first class",
-                        "very good"
+                        "signature"
                     ],
                     "example": {
-                        "jp": "君の自転車は僕の自転車よりも上等です。",
-                        "en": "Your bike is better than mine.",
-                        "furigana": "<ruby>君<rp>(</rp><rt>きみ</rt><rp>)</rp></ruby>の<ruby>自転車<rp>(</rp><rt>じてんしゃ</rt><rp>)</rp></ruby>は<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>の<ruby>自転車<rp>(</rp><rt>じてんしゃ</rt><rp>)</rp></ruby>よりも<ruby>上等<rp>(</rp><rt>じょうとう</rt><rp>)</rp></ruby>です。",
-                        "enMn": "Чиний дугуй минийхээс илүү дээд зэрэглэлийн."
+                        "jp": "忘れずに署名をして下さいね。",
+                        "en": "Don't forget to sign your name.",
+                        "furigana": "<ruby>忘<rp>(</rp><rt>わす</rt><rp>)</rp></ruby>れずに<ruby>署名<rp>(</rp><rt>しょめい</rt><rp>)</rp></ruby>をして<ruby>下<rp>(</rp><rt>くだ</rt><rp>)</rp></ruby>さいね。",
+                        "enMn": "Гарын үсгээ зурахаа мартуузай."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "дээд зэрэглэл",
+                    "enMn": "гарын үсэг",
                     "meaningsMn": [
-                        "дээд зэрэглэл"
+                        "гарын үсэг"
                     ]
                 },
                 {
-                    "jp": "商人",
-                    "reading": "しょうにん",
-                    "en": "trader",
+                    "jp": "書物",
+                    "reading": "しょもつ",
+                    "en": "books",
                     "meanings": [
-                        "trader",
-                        "shopkeeper",
-                        "merchant"
+                        "books"
                     ],
                     "example": {
-                        "jp": "彼女は金持ちの商人と結婚した。",
-                        "en": "She married a rich merchant.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>金持<rp>(</rp><rt>かねも</rt><rp>)</rp></ruby>ちの<ruby>商人<rp>(</rp><rt>しょうにん</rt><rp>)</rp></ruby>と<ruby>結婚<rp>(</rp><rt>けっこん</rt><rp>)</rp></ruby>した。",
-                        "enMn": "Тэр баян худалдаачинтай гэрлэсэн."
+                        "jp": "毎年沢山の数の書物が出版されている。",
+                        "en": "A great number of books are published every year.",
+                        "furigana": "<ruby>毎年<rp>(</rp><rt>まいとし</rt><rp>)</rp></ruby><ruby>沢山<rp>(</rp><rt>だくさん</rt><rp>)</rp></ruby>の<ruby>数<rp>(</rp><rt>かず</rt><rp>)</rp></ruby>の<ruby>書物<rp>(</rp><rt>しょもつ</rt><rp>)</rp></ruby>が<ruby>出版<rp>(</rp><rt>しゅっぱん</rt><rp>)</rp></ruby>されている。",
+                        "enMn": "Жил бүр асар олон ном зохиол хэвлэгддэг."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "худалдаачин",
+                    "enMn": "ном зохиол",
                     "meaningsMn": [
-                        "худалдаачин"
+                        "ном зохиол"
+                    ]
+                },
+                {
+                    "jp": "知らせ",
+                    "reading": "しらせ",
+                    "en": "notice",
+                    "meanings": [
+                        "notice"
+                    ],
+                    "example": {
+                        "jp": "サイレンが急変を知らせました。",
+                        "en": "The siren sounded an emergency.",
+                        "furigana": "サイレンが<ruby>急変<rp>(</rp><rt>きゅうへん</rt><rp>)</rp></ruby>を<ruby>知<rp>(</rp><rt>し</rt><rp>)</rp></ruby>らせました。",
+                        "enMn": "Дуут дохио онцгой байдлыг мэдэгдлээ."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "мэдэгдэл",
+                    "meaningsMn": [
+                        "мэдэгдэл"
+                    ]
+                },
+                {
+                    "jp": "進学",
+                    "reading": "しんがく",
+                    "en": "going on to university",
+                    "meanings": [
+                        "going on to university"
+                    ],
+                    "example": {
+                        "jp": "彼女は就職か大学進学か決心がつかない。",
+                        "en": "She can't make up her mind whether to get a job or to go on to college.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>就職<rp>(</rp><rt>しゅうしょく</rt><rp>)</rp></ruby>か<ruby>大学<rp>(</rp><rt>だいがく</rt><rp>)</rp></ruby><ruby>進学<rp>(</rp><rt>しんがく</rt><rp>)</rp></ruby>か<ruby>決心<rp>(</rp><rt>けっしん</rt><rp>)</rp></ruby>がつかない。",
+                        "enMn": "Тэр ажилд орох уу, эсвэл их сургуульд элсэх үү гэдгээ шийдэж чадахгүй байна."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "их сургуульд элсэх",
+                    "meaningsMn": [
+                        "их сургуульд элсэх"
+                    ]
+                },
+                {
+                    "jp": "推薦",
+                    "reading": "すいせん",
+                    "en": "recommendation",
+                    "meanings": [
+                        "recommendation"
+                    ],
+                    "example": {
+                        "jp": "課長からもらった推薦状が物を言った。",
+                        "en": "The recommendation from my boss made all the difference.",
+                        "furigana": "<ruby>課長<rp>(</rp><rt>かちょう</rt><rp>)</rp></ruby>からもらった<ruby>推薦<rp>(</rp><rt>すいせん</rt><rp>)</rp></ruby><ruby>状<rp>(</rp><rt>じょう</rt><rp>)</rp></ruby>が<ruby>物<rp>(</rp><rt>もの</rt><rp>)</rp></ruby>を<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>った。",
+                        "enMn": "Хэлтсийн даргаас авсан зөвлөмжийн захидал шийдвэрлэх үүрэг гүйцэтгэв."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "зөвлөмж",
+                    "meaningsMn": [
+                        "зөвлөмж"
+                    ]
+                },
+                {
+                    "jp": "書類",
+                    "reading": "しょるい",
+                    "en": "documents",
+                    "meanings": [
+                        "documents",
+                        "official papers"
+                    ],
+                    "example": {
+                        "jp": "彼は書類を折り畳んで時計を見た。",
+                        "en": "He folded his paper, consulting his watch.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>書類<rp>(</rp><rt>しょるい</rt><rp>)</rp></ruby>を<ruby>折<rp>(</rp><rt>お</rt><rp>)</rp></ruby>り<ruby>畳<rp>(</rp><rt>たた</rt><rp>)</rp></ruby>んで<ruby>時計<rp>(</rp><rt>とけい</rt><rp>)</rp></ruby>を<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>た。",
+                        "enMn": "Тэр цагаа хараад цаасаа нугалав."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "бичиг баримт",
+                    "meaningsMn": [
+                        "бичиг баримт",
+                        "албан бичиг"
+                    ]
+                },
+                {
+                    "jp": "冗談",
+                    "reading": "じょうだん",
+                    "en": "a joke",
+                    "meanings": [
+                        "a joke"
+                    ],
+                    "example": {
+                        "jp": "彼女はその冗談をおもしろがった。",
+                        "en": "She was amused at the joke.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はその<ruby>冗談<rp>(</rp><rt>じょうだん</rt><rp>)</rp></ruby>をおもしろがった。",
+                        "enMn": "Тэр хошин үгэнд хөгжилдсөн."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "шог үг",
+                    "meaningsMn": [
+                        "шог үг"
+                    ]
+                },
+                {
+                    "jp": "スター",
+                    "reading": "スター",
+                    "en": "star",
+                    "meanings": [
+                        "star"
+                    ],
+                    "example": {
+                        "jp": "彼女は私をスターにした。",
+                        "en": "She made me a star.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>をスターにした。",
+                        "enMn": "Тэр намайг од болгосон."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "од",
+                    "meaningsMn": [
+                        "од"
+                    ]
+                },
+                {
+                    "jp": "女優",
+                    "reading": "じょゆう",
+                    "en": "actress",
+                    "meanings": [
+                        "actress"
+                    ],
+                    "example": {
+                        "jp": "彼女は女優になることを志した。",
+                        "en": "She aimed to become an actress.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>女優<rp>(</rp><rt>じょゆう</rt><rp>)</rp></ruby>になることを<ruby>志<rp>(</rp><rt>こころざ</rt><rp>)</rp></ruby>した。",
+                        "enMn": "Тэр жүжигчин болохоор зорьсон."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "жүжигчин эмэгтэй",
+                    "meaningsMn": [
+                        "жүжигчин эмэгтэй"
+                    ]
+                },
+                {
+                    "jp": "スピーチ",
+                    "reading": "スピーチ",
+                    "en": "speech",
+                    "meanings": [
+                        "speech"
+                    ],
+                    "example": {
+                        "jp": "率直に言うと、彼のスピーチはいつも退屈だ。",
+                        "en": "Frankly speaking, his speeches are always dull.",
+                        "furigana": "<ruby>率直<rp>(</rp><rt>そっちょく</rt><rp>)</rp></ruby>に<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>うと、<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>のスピーチはいつも<ruby>退屈<rp>(</rp><rt>たいくつ</rt><rp>)</rp></ruby>だ。",
+                        "enMn": "Шулуухан хэлэхэд түүний илтгэл үргэлж уйтгартай."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "илтгэл",
+                    "meaningsMn": [
+                        "илтгэл"
+                    ]
+                },
+                {
+                    "jp": "表す",
+                    "reading": "あらわす",
+                    "en": "to express",
+                    "meanings": [
+                        "to express",
+                        "to show"
+                    ],
+                    "example": null,
+                    "phonetic": "表",
+                    "phoneticReading": "ヒョウ",
+                    "enMn": "үзүүлэх",
+                    "meaningsMn": [
+                        "үзүүлэх"
+                    ]
+                },
+                {
+                    "jp": "映す",
+                    "reading": "うつす",
+                    "en": "to project",
+                    "meanings": [
+                        "to project",
+                        "to reflect",
+                        "to cast (shadow)"
+                    ],
+                    "example": null,
+                    "phonetic": "央",
+                    "phoneticReading": "エイ",
+                    "enMn": "ойлгох",
+                    "meaningsMn": [
+                        "ойлгох"
+                    ]
+                },
+                {
+                    "jp": "言語",
+                    "reading": "げんご",
+                    "en": "language",
+                    "meanings": [
+                        "language"
+                    ],
+                    "example": null,
+                    "phonetic": "五",
+                    "phoneticReading": "ゴ",
+                    "enMn": "хэл",
+                    "meaningsMn": [
+                        "хэл"
+                    ]
+                }
+            ]
+        ],
+        "themeKey": "theme.n3.7"
+    },
+    {
+        "level": 32,
+        "jlpt": "N3",
+        "title": "Rules and society",
+        "sets": [
+            [
+                {
+                    "jp": "氏",
+                    "reading": "し",
+                    "en": "family name",
+                    "meanings": [
+                        "family name",
+                        "lineage"
+                    ],
+                    "example": {
+                        "jp": "選挙で小泉氏はすでに安全圏に入った。",
+                        "en": "Mr Koizumi is now sure of election.",
+                        "furigana": "<ruby>選挙<rp>(</rp><rt>せんきょ</rt><rp>)</rp></ruby>で<ruby>小泉<rp>(</rp><rt>こいずみ</rt><rp>)</rp></ruby><ruby>氏<rp>(</rp><rt>し</rt><rp>)</rp></ruby>はすでに<ruby>安全<rp>(</rp><rt>あんぜん</rt><rp>)</rp></ruby><ruby>圏<rp>(</rp><rt>けん</rt><rp>)</rp></ruby>に<ruby>入<rp>(</rp><rt>はい</rt><rp>)</rp></ruby>った。",
+                        "enMn": "Сонгуульд Коизүми ноён аль хэдийн баттай байрт орсон."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "овог",
+                    "meaningsMn": [
+                        "овог"
+                    ]
+                },
+                {
+                    "jp": "姉妹",
+                    "reading": "しまい",
+                    "en": "sisters",
+                    "meanings": [
+                        "sisters"
+                    ],
+                    "example": {
+                        "jp": "私たちは姉妹３人で喫茶店を始めた。",
+                        "en": "We three sisters opened a coffee shop.",
+                        "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>たちは<ruby>姉妹<rp>(</rp><rt>しまい</rt><rp>)</rp></ruby>３<ruby>人<rp>(</rp><rt>にん</rt><rp>)</rp></ruby>で<ruby>喫茶店<rp>(</rp><rt>きっさてん</rt><rp>)</rp></ruby>を<ruby>始<rp>(</rp><rt>はじ</rt><rp>)</rp></ruby>めた。",
+                        "enMn": "Бид гурван эгч дүү кофе шоп нээсэн."
+                    },
+                    "phonetic": "市",
+                    "phoneticReading": "シ",
+                    "enMn": "эгч дүү",
+                    "meaningsMn": [
+                        "эгч дүү"
+                    ]
+                },
+                {
+                    "jp": "作法",
+                    "reading": "さほう",
+                    "en": "manners",
+                    "meanings": [
+                        "manners",
+                        "etiquette",
+                        "propriety"
+                    ],
+                    "example": {
+                        "jp": "彼の貴族的な作法には感心する。",
+                        "en": "I admire his aristocratic manners.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>貴族<rp>(</rp><rt>きぞく</rt><rp>)</rp></ruby><ruby>的<rp>(</rp><rt>てき</rt><rp>)</rp></ruby>な<ruby>作法<rp>(</rp><rt>さほう</rt><rp>)</rp></ruby>には<ruby>感心<rp>(</rp><rt>かんしん</rt><rp>)</rp></ruby>する。",
+                        "enMn": "Би түүний язгууртны зан авирыг биширдэг."
+                    },
+                    "phonetic": "乍",
+                    "phoneticReading": "サク",
+                    "enMn": "зан төлөв",
+                    "meaningsMn": [
+                        "зан төлөв",
+                        "ёс зүй",
+                        "зохистой байдал"
+                    ]
+                },
+                {
+                    "jp": "自身",
+                    "reading": "じしん",
+                    "en": "oneself",
+                    "meanings": [
+                        "oneself"
+                    ],
+                    "example": {
+                        "jp": "妹はそれを自分自身の目で見た。",
+                        "en": "My sister saw it with her own eyes.",
+                        "furigana": "<ruby>妹<rp>(</rp><rt>いもうと</rt><rp>)</rp></ruby>はそれを<ruby>自分<rp>(</rp><rt>じぶん</rt><rp>)</rp></ruby><ruby>自身<rp>(</rp><rt>じしん</rt><rp>)</rp></ruby>の<ruby>目<rp>(</rp><rt>め</rt><rp>)</rp></ruby>で<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>た。",
+                        "enMn": "Дүү охин минь үүнийг өөрийн нүдээр харсан."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "өөрөө",
+                    "meaningsMn": [
+                        "өөрөө"
+                    ]
+                },
+                {
+                    "jp": "従う",
+                    "reading": "したがう",
+                    "en": "to abide (by the rules)",
+                    "meanings": [
+                        "to abide (by the rules)",
+                        "to obey"
+                    ],
+                    "example": {
+                        "jp": "子たる者すべからく親の命に従うべし。",
+                        "en": "Children should obey their parents.",
+                        "furigana": "<ruby>子<rp>(</rp><rt>こ</rt><rp>)</rp></ruby>たる<ruby>者<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby>すべからく<ruby>親<rp>(</rp><rt>おや</rt><rp>)</rp></ruby>の<ruby>命<rp>(</rp><rt>いのち</rt><rp>)</rp></ruby>に<ruby>従<rp>(</rp><rt>したが</rt><rp>)</rp></ruby>うべし。",
+                        "enMn": "Хүүхэд хүн эцэг эхийнхээ үгийг дагах учиртай."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "дагах",
+                    "meaningsMn": [
+                        "дагах"
+                    ]
+                },
+                {
+                    "jp": "宗教",
+                    "reading": "しゅうきょう",
+                    "en": "religion",
+                    "meanings": [
+                        "religion"
+                    ],
+                    "example": {
+                        "jp": "両地域は宗教と文化が違っている。",
+                        "en": "The two regions differ in religion and culture.",
+                        "furigana": "<ruby>両<rp>(</rp><rt>りょう</rt><rp>)</rp></ruby><ruby>地域<rp>(</rp><rt>ちいき</rt><rp>)</rp></ruby>は<ruby>宗教<rp>(</rp><rt>しゅうきょう</rt><rp>)</rp></ruby>と<ruby>文化<rp>(</rp><rt>ぶんか</rt><rp>)</rp></ruby>が<ruby>違<rp>(</rp><rt>ちが</rt><rp>)</rp></ruby>っている。",
+                        "enMn": "Хоёр бүс нутаг шашин, соёлоороо ялгаатай."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "шашин",
+                    "meaningsMn": [
+                        "шашин"
+                    ]
+                },
+                {
+                    "jp": "支配",
+                    "reading": "しはい",
+                    "en": "rule",
+                    "meanings": [
+                        "rule",
+                        "control",
+                        "direction"
+                    ],
+                    "example": {
+                        "jp": "脳が私たちの活動を支配している。",
+                        "en": "Our brains control our activities.",
+                        "furigana": "<ruby>脳<rp>(</rp><rt>のう</rt><rp>)</rp></ruby>が<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>たちの<ruby>活動<rp>(</rp><rt>かつどう</rt><rp>)</rp></ruby>を<ruby>支配<rp>(</rp><rt>しはい</rt><rp>)</rp></ruby>している。",
+                        "enMn": "Тархи бидний үйл ажиллагааг удирддаг."
+                    },
+                    "phonetic": "支",
+                    "phoneticReading": "シ、キ",
+                    "enMn": "засаглал",
+                    "meaningsMn": [
+                        "засаглал",
+                        "удирдлага",
+                        "удирдлага"
                     ]
                 },
                 {
@@ -14765,49 +16075,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "消防",
-                    "reading": "しょうぼう",
-                    "en": "fire fighting",
-                    "meanings": [
-                        "fire fighting",
-                        "fire department"
-                    ],
-                    "example": {
-                        "jp": "彼は消防士になろうと決心した。",
-                        "en": "He made up his mind to be a fireman.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>消防<rp>(</rp><rt>しょうぼう</rt><rp>)</rp></ruby><ruby>士<rp>(</rp><rt>し</rt><rp>)</rp></ruby>になろうと<ruby>決心<rp>(</rp><rt>けっしん</rt><rp>)</rp></ruby>した。",
-                        "enMn": "Тэр гал сөнөөгч болохоор шийдэв."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "гал унтраах",
-                    "meaningsMn": [
-                        "гал унтраах"
-                    ]
-                },
-                {
-                    "jp": "省略",
-                    "reading": "しょうりゃく",
-                    "en": "omission",
-                    "meanings": [
-                        "omission",
-                        "abbreviation",
-                        "abridgment"
-                    ],
-                    "example": {
-                        "jp": "最後の２節を省略して歌いましょうか。",
-                        "en": "We'll sing that song, omitting the last two verses.",
-                        "furigana": "<ruby>最後<rp>(</rp><rt>さいご</rt><rp>)</rp></ruby>の２<ruby>節<rp>(</rp><rt>せつ</rt><rp>)</rp></ruby>を<ruby>省略<rp>(</rp><rt>しょうりゃく</rt><rp>)</rp></ruby>して<ruby>歌<rp>(</rp><rt>うた</rt><rp>)</rp></ruby>いましょうか。",
-                        "enMn": "Сүүлийн хоёр бадгийг орхиж дуулах уу?"
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "товчлол",
-                    "meaningsMn": [
-                        "товчлол"
-                    ]
-                },
-                {
                     "jp": "女王",
                     "reading": "じょおう",
                     "en": "queen",
@@ -14825,6 +16092,464 @@ const WORD_LEVELS = [
                     "enMn": "хатан",
                     "meaningsMn": [
                         "хатан"
+                    ]
+                },
+                {
+                    "jp": "児童",
+                    "reading": "じどう",
+                    "en": "children",
+                    "meanings": [
+                        "children",
+                        "juvenile"
+                    ],
+                    "example": {
+                        "jp": "図書館にはたくさんの児童書がある。",
+                        "en": "We have a lot of children's books in the library.",
+                        "furigana": "<ruby>図書館<rp>(</rp><rt>としょかん</rt><rp>)</rp></ruby>にはたくさんの<ruby>児童<rp>(</rp><rt>じどう</rt><rp>)</rp></ruby><ruby>書<rp>(</rp><rt>しょ</rt><rp>)</rp></ruby>がある。",
+                        "enMn": "Номын санд олон хүүхдийн ном байдаг."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хүүхдүүд",
+                    "meaningsMn": [
+                        "хүүхдүүд",
+                        "бага насны"
+                    ]
+                },
+                {
+                    "jp": "女子",
+                    "reading": "じょし",
+                    "en": "woman",
+                    "meanings": [
+                        "woman",
+                        "girl"
+                    ],
+                    "example": {
+                        "jp": "娘を女子校に入れた。",
+                        "en": "I entered my daughter in a girl's school.",
+                        "furigana": "<ruby>娘<rp>(</rp><rt>むすめ</rt><rp>)</rp></ruby>を<ruby>女子<rp>(</rp><rt>じょし</rt><rp>)</rp></ruby><ruby>校<rp>(</rp><rt>こう</rt><rp>)</rp></ruby>に<ruby>入<rp>(</rp><rt>い</rt><rp>)</rp></ruby>れた。",
+                        "enMn": "Охиноо охидын сургуульд оруулав."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "охин",
+                    "meaningsMn": [
+                        "охин"
+                    ]
+                },
+                {
+                    "jp": "少女",
+                    "reading": "しょうじょ",
+                    "en": "young girl",
+                    "meanings": [
+                        "young girl"
+                    ],
+                    "example": {
+                        "jp": "本を読んでいる少女はケートだ。",
+                        "en": "The girl reading a book is Kate.",
+                        "furigana": "<ruby>本<rp>(</rp><rt>ほん</rt><rp>)</rp></ruby>を<ruby>読<rp>(</rp><rt>よ</rt><rp>)</rp></ruby>んでいる<ruby>少女<rp>(</rp><rt>しょうじょ</rt><rp>)</rp></ruby>はケートだ。",
+                        "enMn": "Ном уншиж буй охин бол Кэйт юм."
+                    },
+                    "phonetic": "少",
+                    "phoneticReading": "ショウ、サ",
+                    "enMn": "залуу охин",
+                    "meaningsMn": [
+                        "залуу охин"
+                    ]
+                },
+                {
+                    "jp": "主義",
+                    "reading": "しゅぎ",
+                    "en": "doctrine",
+                    "meanings": [
+                        "doctrine",
+                        "cause",
+                        "principle"
+                    ],
+                    "example": {
+                        "jp": "民主主義は政治形態の一つである。",
+                        "en": "Democracy is one form of government.",
+                        "furigana": "<ruby>民主<rp>(</rp><rt>みんしゅ</rt><rp>)</rp></ruby><ruby>主義<rp>(</rp><rt>しゅぎ</rt><rp>)</rp></ruby>は<ruby>政治<rp>(</rp><rt>せいじ</rt><rp>)</rp></ruby><ruby>形態<rp>(</rp><rt>けいたい</rt><rp>)</rp></ruby>の<ruby>一<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>つである。",
+                        "enMn": "Ардчилал бол засгийн нэг хэлбэр юм."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "сургаал",
+                    "meaningsMn": [
+                        "сургаал",
+                        "шалтгаан",
+                        "зарчим"
+                    ]
+                },
+                {
+                    "jp": "審判",
+                    "reading": "しんぱん",
+                    "en": "umpire",
+                    "meanings": [
+                        "umpire",
+                        "referee",
+                        "judgment"
+                    ],
+                    "example": {
+                        "jp": "彼一人だけ余る、だから審判させよう。",
+                        "en": "He's an odd man; so we'll have him referee.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby><ruby>一<rp>(</rp><rt>いち</rt><rp>)</rp></ruby><ruby>人<rp>(</rp><rt>にん</rt><rp>)</rp></ruby>だけ<ruby>余<rp>(</rp><rt>あま</rt><rp>)</rp></ruby>る、だから<ruby>審判<rp>(</rp><rt>しんぱん</rt><rp>)</rp></ruby>させよう。",
+                        "enMn": "Тэр ганц илүү хүн байгаа тул түүгээр шүүгч болгоно."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "шүүгч",
+                    "meaningsMn": [
+                        "шүүгч"
+                    ]
+                },
+                {
+                    "jp": "集団",
+                    "reading": "しゅうだん",
+                    "en": "group",
+                    "meanings": [
+                        "group",
+                        "mass"
+                    ],
+                    "example": {
+                        "jp": "君はいまやエリート集団の一員だ。",
+                        "en": "You are now among the elite.",
+                        "furigana": "<ruby>君<rp>(</rp><rt>きみ</rt><rp>)</rp></ruby>はいまやエリート<ruby>集団<rp>(</rp><rt>しゅうだん</rt><rp>)</rp></ruby>の<ruby>一員<rp>(</rp><rt>いちいん</rt><rp>)</rp></ruby>だ。",
+                        "enMn": "Чи одоо элит бүлгийн нэг гишүүн болжээ."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "бүлэг",
+                    "meaningsMn": [
+                        "бүлэг",
+                        "бөөгнөрөл"
+                    ]
+                },
+                {
+                    "jp": "首相",
+                    "reading": "しゅしょう",
+                    "en": "Prime Minister",
+                    "meanings": [
+                        "Prime Minister"
+                    ],
+                    "example": {
+                        "jp": "彼は首相を辞めざるを得なかった。",
+                        "en": "He was forced to resign as prime minister.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>首相<rp>(</rp><rt>しゅしょう</rt><rp>)</rp></ruby>を<ruby>辞<rp>(</rp><rt>や</rt><rp>)</rp></ruby>めざるを<ruby>得<rp>(</rp><rt>え</rt><rp>)</rp></ruby>なかった。",
+                        "enMn": "Тэр ерөнхий сайдын албанаас огцрохоос өөр аргагүй болсон."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "ерөнхий сайд",
+                    "meaningsMn": [
+                        "ерөнхий сайд"
+                    ]
+                },
+                {
+                    "jp": "人類",
+                    "reading": "じんるい",
+                    "en": "mankind",
+                    "meanings": [
+                        "mankind",
+                        "humanity"
+                    ],
+                    "example": {
+                        "jp": "病気は人類にとって脅威である。",
+                        "en": "Disease is a threat to human beings.",
+                        "furigana": "<ruby>病気<rp>(</rp><rt>びょうき</rt><rp>)</rp></ruby>は<ruby>人類<rp>(</rp><rt>じんるい</rt><rp>)</rp></ruby>にとって<ruby>脅威<rp>(</rp><rt>きょうい</rt><rp>)</rp></ruby>である。",
+                        "enMn": "Өвчин бол хүн төрөлхтөнд заналхийлэл юм."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хүн төрөлхтөн",
+                    "meaningsMn": [
+                        "хүн төрөлхтөн"
+                    ]
+                },
+                {
+                    "jp": "性",
+                    "reading": "せい",
+                    "en": "sex",
+                    "meanings": [
+                        "sex",
+                        "gender"
+                    ],
+                    "example": {
+                        "jp": "でも可能性は低そうだね。",
+                        "en": "But the possibility seems unlikely.",
+                        "furigana": "でも<ruby>可能<rp>(</rp><rt>かのう</rt><rp>)</rp></ruby><ruby>性<rp>(</rp><rt>せい</rt><rp>)</rp></ruby>は<ruby>低<rp>(</rp><rt>ひく</rt><rp>)</rp></ruby>そうだね。",
+                        "enMn": "Гэхдээ магадлал нь бага бололтой."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хүйс",
+                    "meaningsMn": [
+                        "хүйс"
+                    ]
+                },
+                {
+                    "jp": "姓",
+                    "reading": "せい",
+                    "en": "surname",
+                    "meanings": [
+                        "surname",
+                        "family name"
+                    ],
+                    "example": {
+                        "jp": "彼女は結婚前スミス姓だった。",
+                        "en": "She was a Smith before her marriage.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>結婚<rp>(</rp><rt>けっこん</rt><rp>)</rp></ruby><ruby>前<rp>(</rp><rt>ぜん</rt><rp>)</rp></ruby>スミス<ruby>姓<rp>(</rp><rt>せい</rt><rp>)</rp></ruby>だった。",
+                        "enMn": "Тэр гэрлэхийн өмнө Смит овогтой байсан."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "овог",
+                    "meaningsMn": [
+                        "овог"
+                    ]
+                },
+                {
+                    "jp": "政府",
+                    "reading": "せいふ",
+                    "en": "government",
+                    "meanings": [
+                        "government",
+                        "administration"
+                    ],
+                    "example": null,
+                    "phonetic": "正",
+                    "phoneticReading": "ショウ、セイ",
+                    "enMn": "яам",
+                    "meaningsMn": [
+                        "яам"
+                    ]
+                },
+                {
+                    "jp": "決まり",
+                    "reading": "きまり",
+                    "en": "settlement",
+                    "meanings": [
+                        "settlement",
+                        "conclusion",
+                        "rule"
+                    ],
+                    "example": null,
+                    "phonetic": "夬",
+                    "phoneticReading": "ケツ",
+                    "enMn": "дүрэм",
+                    "meaningsMn": [
+                        "дүрэм"
+                    ]
+                },
+                {
+                    "jp": "義務",
+                    "reading": "ぎむ",
+                    "en": "duty",
+                    "meanings": [
+                        "duty",
+                        "obligation",
+                        "responsibility"
+                    ],
+                    "example": null,
+                    "phonetic": "義",
+                    "phoneticReading": "ギ",
+                    "enMn": "хариуцлага",
+                    "meaningsMn": [
+                        "хариуцлага"
+                    ]
+                },
+                {
+                    "jp": "国民",
+                    "reading": "こくみん",
+                    "en": "national",
+                    "meanings": [
+                        "national",
+                        "people",
+                        "citizen"
+                    ],
+                    "example": null,
+                    "phonetic": "民",
+                    "phoneticReading": "ミン",
+                    "enMn": "үндэсний",
+                    "meaningsMn": [
+                        "үндэсний"
+                    ]
+                },
+                {
+                    "jp": "国家",
+                    "reading": "こっか",
+                    "en": "state",
+                    "meanings": [
+                        "state",
+                        "country",
+                        "nation"
+                    ],
+                    "example": null,
+                    "phonetic": "家",
+                    "phoneticReading": "カ",
+                    "enMn": "үндэстэн",
+                    "meaningsMn": [
+                        "үндэстэн"
+                    ]
+                }
+            ]
+        ],
+        "themeKey": "theme.n3.8"
+    },
+    {
+        "level": 33,
+        "jlpt": "N3",
+        "title": "Food, clothes and things",
+        "sets": [
+            [
+                {
+                    "jp": "冷ます",
+                    "reading": "さます",
+                    "en": "to cool",
+                    "meanings": [
+                        "to cool",
+                        "to let cool"
+                    ],
+                    "example": {
+                        "jp": "煮物は一度冷ますと、味が染みこみ美味しくなります。",
+                        "en": "If you give simmered food a moment to cool, the flavors will spread throughout the dish, and it'll taste really good.",
+                        "furigana": "<ruby>煮物<rp>(</rp><rt>にもの</rt><rp>)</rp></ruby>は<ruby>一度<rp>(</rp><rt>いちど</rt><rp>)</rp></ruby><ruby>冷<rp>(</rp><rt>さ</rt><rp>)</rp></ruby>ますと、<ruby>味<rp>(</rp><rt>あじ</rt><rp>)</rp></ruby>が<ruby>染<rp>(</rp><rt>し</rt><rp>)</rp></ruby>みこみ<ruby>美味<rp>(</rp><rt>おい</rt><rp>)</rp></ruby>しくなります。",
+                        "enMn": "Чанасан хоолыг нэг удаа хөргөвөл амт нь шингэж илүү амттай болдог."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хөргөх",
+                    "meaningsMn": [
+                        "хөргөх"
+                    ]
+                },
+                {
+                    "jp": "冷める",
+                    "reading": "さめる",
+                    "en": "to become cool",
+                    "meanings": [
+                        "to become cool",
+                        "to wear off"
+                    ],
+                    "example": {
+                        "jp": "愛が冷めると、欠点が多く目に付いてくる。",
+                        "en": "Faults are thick where love is thin.",
+                        "furigana": "<ruby>愛<rp>(</rp><rt>あい</rt><rp>)</rp></ruby>が<ruby>冷<rp>(</rp><rt>さ</rt><rp>)</rp></ruby>めると、<ruby>欠点<rp>(</rp><rt>けってん</rt><rp>)</rp></ruby>が<ruby>多<rp>(</rp><rt>おお</rt><rp>)</rp></ruby>く<ruby>目<rp>(</rp><rt>め</rt><rp>)</rp></ruby>に<ruby>付<rp>(</rp><rt>つ</rt><rp>)</rp></ruby>いてくる。",
+                        "enMn": "Хайр хөрөхөд дутагдал нь их анзаарагдаж эхэлдэг."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хөрөх",
+                    "meaningsMn": [
+                        "хөрөх"
+                    ]
+                },
+                {
+                    "jp": "ジーンズ",
+                    "reading": "ジーンズ",
+                    "en": "jeans",
+                    "meanings": [
+                        "jeans"
+                    ],
+                    "example": {
+                        "jp": "彼女は姉のジーンズをはいて鏡を見た。",
+                        "en": "She put on her sister's jeans and looked in the mirror.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>姉<rp>(</rp><rt>あね</rt><rp>)</rp></ruby>のジーンズをはいて<ruby>鏡<rp>(</rp><rt>かがみ</rt><rp>)</rp></ruby>を<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>た。",
+                        "enMn": "Тэр эгчийнхээ жинсэн өмдийг өмсөөд толинд харав."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "жийнс",
+                    "meaningsMn": [
+                        "жийнс",
+                        "жинсэн өмд"
+                    ]
+                },
+                {
+                    "jp": "品",
+                    "reading": "しな",
+                    "en": "thing",
+                    "meanings": [
+                        "thing",
+                        "article",
+                        "goods"
+                    ],
+                    "example": {
+                        "jp": "同じような品がまだ何点かありますよ。",
+                        "en": "We've got several more of the same kind of articles.",
+                        "furigana": "<ruby>同<rp>(</rp><rt>おな</rt><rp>)</rp></ruby>じような<ruby>品<rp>(</rp><rt>しな</rt><rp>)</rp></ruby>がまだ<ruby>何<rp>(</rp><rt>なん</rt><rp>)</rp></ruby><ruby>点<rp>(</rp><rt>てん</rt><rp>)</rp></ruby>かありますよ。",
+                        "enMn": "Ижил төрлийн бараа бас хэдэн ширхэг байгаа шүү."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "бараа",
+                    "meaningsMn": [
+                        "бараа"
+                    ]
+                },
+                {
+                    "jp": "皿",
+                    "reading": "さら",
+                    "en": "plate",
+                    "meanings": [
+                        "plate",
+                        "dish"
+                    ],
+                    "example": {
+                        "jp": "彼女はテーブルの上に皿を置いた。",
+                        "en": "She set the tray down on the table.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はテーブルの<ruby>上<rp>(</rp><rt>うえ</rt><rp>)</rp></ruby>に<ruby>皿<rp>(</rp><rt>さら</rt><rp>)</rp></ruby>を<ruby>置<rp>(</rp><rt>お</rt><rp>)</rp></ruby>いた。",
+                        "enMn": "Тэр таваг ширээн дээр тавив."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "таваг",
+                    "meaningsMn": [
+                        "таваг",
+                        "таваг"
+                    ]
+                },
+                {
+                    "jp": "ジュース",
+                    "reading": "ジュース",
+                    "en": "juice",
+                    "meanings": [
+                        "juice",
+                        "soft drink; deuce"
+                    ],
+                    "example": {
+                        "jp": "私の母はオレンジジュースを二本買った。",
+                        "en": "My mother bought two bottles of orange juice.",
+                        "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>の<ruby>母<rp>(</rp><rt>はは</rt><rp>)</rp></ruby>はオレンジジュースを<ruby>二<rp>(</rp><rt>に</rt><rp>)</rp></ruby><ruby>本<rp>(</rp><rt>ほん</rt><rp>)</rp></ruby><ruby>買<rp>(</rp><rt>か</rt><rp>)</rp></ruby>った。",
+                        "enMn": "Ээж хоёр шил жүржийн шүүс худалдаж авав."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "шүүс",
+                    "meaningsMn": [
+                        "шүүс"
+                    ]
+                },
+                {
+                    "jp": "質",
+                    "reading": "しつ",
+                    "en": "quality",
+                    "meanings": [
+                        "quality",
+                        "nature (of person)"
+                    ],
+                    "example": {
+                        "jp": "質より量の方がむしろ重要である。",
+                        "en": "Quantity rather than quality is important.",
+                        "furigana": "<ruby>質<rp>(</rp><rt>しつ</rt><rp>)</rp></ruby>より<ruby>量<rp>(</rp><rt>りょう</rt><rp>)</rp></ruby>の<ruby>方<rp>(</rp><rt>ほう</rt><rp>)</rp></ruby>がむしろ<ruby>重要<rp>(</rp><rt>じゅうよう</rt><rp>)</rp></ruby>である。",
+                        "enMn": "Чанараас илүү тоо хэмжээ чухал юм."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "чанар",
+                    "meaningsMn": [
+                        "чанар",
+                        "зан чанар"
                     ]
                 },
                 {
@@ -14928,394 +16653,6 @@ const WORD_LEVELS = [
                     "meaningsMn": [
                         "хүнсний нөөц"
                     ]
-                }
-            ]
-        ]
-    },
-    {
-        "level": 30,
-        "jlpt": "N3",
-        "title": "N3 · Level 6",
-        "sets": [
-            [
-                {
-                    "jp": "資源",
-                    "reading": "しげん",
-                    "en": "resources",
-                    "meanings": [
-                        "resources"
-                    ],
-                    "example": {
-                        "jp": "日本は天然資源に富んでいない。",
-                        "en": "Japan is not abundant in natural resources.",
-                        "furigana": "<ruby>日本<rp>(</rp><rt>にっぽん</rt><rp>)</rp></ruby>は<ruby>天然<rp>(</rp><rt>てんねん</rt><rp>)</rp></ruby><ruby>資源<rp>(</rp><rt>しげん</rt><rp>)</rp></ruby>に<ruby>富<rp>(</rp><rt>と</rt><rp>)</rp></ruby>んでいない。",
-                        "enMn": "Япон байгалийн баялгаар баян биш."
-                    },
-                    "phonetic": "次",
-                    "phoneticReading": "シ",
-                    "enMn": "нөөц баялаг",
-                    "meaningsMn": [
-                        "нөөц баялаг"
-                    ]
-                },
-                {
-                    "jp": "資本",
-                    "reading": "しほん",
-                    "en": "funds",
-                    "meanings": [
-                        "funds",
-                        "capital"
-                    ],
-                    "example": {
-                        "jp": "会社はその事業に資本参加した。",
-                        "en": "The company bought shares in the venture.",
-                        "furigana": "<ruby>会社<rp>(</rp><rt>かいしゃ</rt><rp>)</rp></ruby>はその<ruby>事業<rp>(</rp><rt>じぎょう</rt><rp>)</rp></ruby>に<ruby>資本<rp>(</rp><rt>しほん</rt><rp>)</rp></ruby><ruby>参加<rp>(</rp><rt>さんか</rt><rp>)</rp></ruby>した。",
-                        "enMn": "Компани тэр бизнест хувьцаа худалдаж авав."
-                    },
-                    "phonetic": "次",
-                    "phoneticReading": "シ",
-                    "enMn": "хөрөнгө",
-                    "meaningsMn": [
-                        "хөрөнгө",
-                        "хөрөнгө"
-                    ]
-                },
-                {
-                    "jp": "示す",
-                    "reading": "しめす",
-                    "en": "to show",
-                    "meanings": [
-                        "to show",
-                        "to indicate"
-                    ],
-                    "example": {
-                        "jp": "彼女はピアノに非凡な腕を示した。",
-                        "en": "She showed great skill on the piano.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はピアノに<ruby>非凡<rp>(</rp><rt>ひぼん</rt><rp>)</rp></ruby>な<ruby>腕<rp>(</rp><rt>うで</rt><rp>)</rp></ruby>を<ruby>示<rp>(</rp><rt>しめ</rt><rp>)</rp></ruby>した。",
-                        "enMn": "Тэр төгөлдөр хуурт гайхалтай ур чадвар үзүүлэв."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "үзүүлэх",
-                    "meaningsMn": [
-                        "үзүүлэх",
-                        "заах"
-                    ]
-                },
-                {
-                    "jp": "実現",
-                    "reading": "じつげん",
-                    "en": "implementation",
-                    "meanings": [
-                        "implementation",
-                        "materialization",
-                        "realization"
-                    ],
-                    "example": {
-                        "jp": "彼女の夢はいつか実現するだろう。",
-                        "en": "Her dream will one day come true.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>の<ruby>夢<rp>(</rp><rt>ゆめ</rt><rp>)</rp></ruby>はいつか<ruby>実現<rp>(</rp><rt>じつげん</rt><rp>)</rp></ruby>するだろう。",
-                        "enMn": "Түүний мөрөөдөл нэг л өдөр биелэх болно."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хэрэгжилт",
-                    "meaningsMn": [
-                        "хэрэгжилт",
-                        "биелэлт",
-                        "биелэл"
-                    ]
-                },
-                {
-                    "jp": "実は",
-                    "reading": "じつは",
-                    "en": "in fact",
-                    "meanings": [
-                        "actually",
-                        "in fact"
-                    ],
-                    "example": {
-                        "jp": "実はこれで４度目の質問になります。",
-                        "en": "Actually this will be my fourth question.",
-                        "furigana": "<ruby>実<rp>(</rp><rt>じつ</rt><rp>)</rp></ruby>はこれで４<ruby>度目<rp>(</rp><rt>どめ</rt><rp>)</rp></ruby>の<ruby>質問<rp>(</rp><rt>しつもん</rt><rp>)</rp></ruby>になります。",
-                        "enMn": "Үнэндээ энэ бол миний дөрөв дэх асуулт болно."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "үнэндээ",
-                    "meaningsMn": [
-                        "үнэндээ",
-                        "үнэндээ"
-                    ]
-                },
-                {
-                    "jp": "自動",
-                    "reading": "じどう",
-                    "en": "automatic",
-                    "meanings": [
-                        "automatic",
-                        "self-motion"
-                    ],
-                    "example": {
-                        "jp": "この自動販売機は故障しています。",
-                        "en": "This vending machine is out of order.",
-                        "furigana": "この<ruby>自動<rp>(</rp><rt>じどう</rt><rp>)</rp></ruby><ruby>販売<rp>(</rp><rt>はんばい</rt><rp>)</rp></ruby><ruby>機<rp>(</rp><rt>き</rt><rp>)</rp></ruby>は<ruby>故障<rp>(</rp><rt>こしょう</rt><rp>)</rp></ruby>しています。",
-                        "enMn": "Энэ автомат худалдааны машин эвдэрсэн байна."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "автомат",
-                    "meaningsMn": [
-                        "автомат",
-                        "өөрөө хөдлөх"
-                    ]
-                },
-                {
-                    "jp": "舌",
-                    "reading": "した",
-                    "en": "tongue",
-                    "meanings": [
-                        "tongue"
-                    ],
-                    "example": {
-                        "jp": "彼は鏡をとって舌をよく観察した。",
-                        "en": "He picked up a mirror and examined his tongue.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>鏡<rp>(</rp><rt>かがみ</rt><rp>)</rp></ruby>をとって<ruby>舌<rp>(</rp><rt>した</rt><rp>)</rp></ruby>をよく<ruby>観察<rp>(</rp><rt>かんさつ</rt><rp>)</rp></ruby>した。",
-                        "enMn": "Тэр толь авч, хэлээ шалгав."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хэл (амны)",
-                    "meaningsMn": [
-                        "хэл (амны)"
-                    ]
-                },
-                {
-                    "jp": "児童",
-                    "reading": "じどう",
-                    "en": "children",
-                    "meanings": [
-                        "children",
-                        "juvenile"
-                    ],
-                    "example": {
-                        "jp": "図書館にはたくさんの児童書がある。",
-                        "en": "We have a lot of children's books in the library.",
-                        "furigana": "<ruby>図書館<rp>(</rp><rt>としょかん</rt><rp>)</rp></ruby>にはたくさんの<ruby>児童<rp>(</rp><rt>じどう</rt><rp>)</rp></ruby><ruby>書<rp>(</rp><rt>しょ</rt><rp>)</rp></ruby>がある。",
-                        "enMn": "Номын санд олон хүүхдийн ном байдаг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хүүхдүүд",
-                    "meaningsMn": [
-                        "хүүхдүүд",
-                        "бага насны"
-                    ]
-                },
-                {
-                    "jp": "死亡",
-                    "reading": "しぼう",
-                    "en": "death",
-                    "meanings": [
-                        "death"
-                    ],
-                    "example": {
-                        "jp": "飛行機事故で多くの人が死亡した。",
-                        "en": "Many people were killed in the plane accident.",
-                        "furigana": "<ruby>飛行機<rp>(</rp><rt>ひこうき</rt><rp>)</rp></ruby><ruby>事故<rp>(</rp><rt>じこ</rt><rp>)</rp></ruby>で<ruby>多<rp>(</rp><rt>おお</rt><rp>)</rp></ruby>くの<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>が<ruby>死亡<rp>(</rp><rt>しぼう</rt><rp>)</rp></ruby>した。",
-                        "enMn": "Онгоцны ослоор олон хүн нас барсан."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "нас барах",
-                    "meaningsMn": [
-                        "нас барах"
-                    ]
-                },
-                {
-                    "jp": "失業",
-                    "reading": "しつぎょう",
-                    "en": "unemployment",
-                    "meanings": [
-                        "unemployment"
-                    ],
-                    "example": {
-                        "jp": "討論での重点は失業問題であった。",
-                        "en": "In the discussion the accent was on unemployment.",
-                        "furigana": "<ruby>討論<rp>(</rp><rt>とうろん</rt><rp>)</rp></ruby>での<ruby>重点<rp>(</rp><rt>じゅうてん</rt><rp>)</rp></ruby>は<ruby>失業<rp>(</rp><rt>しつぎょう</rt><rp>)</rp></ruby><ruby>問題<rp>(</rp><rt>もんだい</rt><rp>)</rp></ruby>であった。",
-                        "enMn": "Хэлэлцүүлэгт ажилгүйдлийн асуудал төвд байсан."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "ажилгүйдэл",
-                    "meaningsMn": [
-                        "ажилгүйдэл"
-                    ]
-                },
-                {
-                    "jp": "書斎",
-                    "reading": "しょさい",
-                    "en": "study",
-                    "meanings": [
-                        "study",
-                        "den"
-                    ],
-                    "example": {
-                        "jp": "父は車庫を書斎に改造した。",
-                        "en": "My father converted a garage into a study.",
-                        "furigana": "<ruby>父<rp>(</rp><rt>ちち</rt><rp>)</rp></ruby>は<ruby>車庫<rp>(</rp><rt>しゃこ</rt><rp>)</rp></ruby>を<ruby>書斎<rp>(</rp><rt>しょさい</rt><rp>)</rp></ruby>に<ruby>改造<rp>(</rp><rt>かいぞう</rt><rp>)</rp></ruby>した。",
-                        "enMn": "Аав граждаа номын өрөө болгон өөрчилсөн."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "номын өрөө",
-                    "meaningsMn": [
-                        "номын өрөө"
-                    ]
-                },
-                {
-                    "jp": "女子",
-                    "reading": "じょし",
-                    "en": "woman",
-                    "meanings": [
-                        "woman",
-                        "girl"
-                    ],
-                    "example": {
-                        "jp": "娘を女子校に入れた。",
-                        "en": "I entered my daughter in a girl's school.",
-                        "furigana": "<ruby>娘<rp>(</rp><rt>むすめ</rt><rp>)</rp></ruby>を<ruby>女子<rp>(</rp><rt>じょし</rt><rp>)</rp></ruby><ruby>校<rp>(</rp><rt>こう</rt><rp>)</rp></ruby>に<ruby>入<rp>(</rp><rt>い</rt><rp>)</rp></ruby>れた。",
-                        "enMn": "Охиноо охидын сургуульд оруулав."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "охин",
-                    "meaningsMn": [
-                        "охин"
-                    ]
-                },
-                {
-                    "jp": "助手",
-                    "reading": "じょしゅ",
-                    "en": "helper",
-                    "meanings": [
-                        "helper",
-                        "assistant"
-                    ],
-                    "example": {
-                        "jp": "彼女は有能で頼りになる助手だ。",
-                        "en": "She is an efficient and reliable assistant.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>有能<rp>(</rp><rt>ゆうのう</rt><rp>)</rp></ruby>で<ruby>頼<rp>(</rp><rt>たよ</rt><rp>)</rp></ruby>りになる<ruby>助手<rp>(</rp><rt>じょしゅ</rt><rp>)</rp></ruby>だ。",
-                        "enMn": "Тэр бол чадварлаг, найдвартай туслах юм."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "туслах",
-                    "meaningsMn": [
-                        "туслах"
-                    ]
-                },
-                {
-                    "jp": "徐々に",
-                    "reading": "じょじょに",
-                    "en": "slowly",
-                    "meanings": [
-                        "slowly",
-                        "little by little"
-                    ],
-                    "example": {
-                        "jp": "列車は徐々にスピードを上げた。",
-                        "en": "The train gained speed gradually.",
-                        "furigana": "<ruby>列車<rp>(</rp><rt>れっしゃ</rt><rp>)</rp></ruby>は<ruby>徐々に<rp>(</rp><rt>じょじょに</rt><rp>)</rp></ruby>スピードを<ruby>上<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>げた。",
-                        "enMn": "Галт тэрэг аажмаар хурдаа нэмэв."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "аажмаар",
-                    "meaningsMn": [
-                        "аажмаар"
-                    ]
-                },
-                {
-                    "jp": "署名",
-                    "reading": "しょめい",
-                    "en": "signature",
-                    "meanings": [
-                        "signature"
-                    ],
-                    "example": {
-                        "jp": "忘れずに署名をして下さいね。",
-                        "en": "Don't forget to sign your name.",
-                        "furigana": "<ruby>忘<rp>(</rp><rt>わす</rt><rp>)</rp></ruby>れずに<ruby>署名<rp>(</rp><rt>しょめい</rt><rp>)</rp></ruby>をして<ruby>下<rp>(</rp><rt>くだ</rt><rp>)</rp></ruby>さいね。",
-                        "enMn": "Гарын үсгээ зурахаа мартуузай."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "гарын үсэг",
-                    "meaningsMn": [
-                        "гарын үсэг"
-                    ]
-                },
-                {
-                    "jp": "書物",
-                    "reading": "しょもつ",
-                    "en": "books",
-                    "meanings": [
-                        "books"
-                    ],
-                    "example": {
-                        "jp": "毎年沢山の数の書物が出版されている。",
-                        "en": "A great number of books are published every year.",
-                        "furigana": "<ruby>毎年<rp>(</rp><rt>まいとし</rt><rp>)</rp></ruby><ruby>沢山<rp>(</rp><rt>だくさん</rt><rp>)</rp></ruby>の<ruby>数<rp>(</rp><rt>かず</rt><rp>)</rp></ruby>の<ruby>書物<rp>(</rp><rt>しょもつ</rt><rp>)</rp></ruby>が<ruby>出版<rp>(</rp><rt>しゅっぱん</rt><rp>)</rp></ruby>されている。",
-                        "enMn": "Жил бүр асар олон ном зохиол хэвлэгддэг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "ном зохиол",
-                    "meaningsMn": [
-                        "ном зохиол"
-                    ]
-                },
-                {
-                    "jp": "知らせ",
-                    "reading": "しらせ",
-                    "en": "notice",
-                    "meanings": [
-                        "notice"
-                    ],
-                    "example": {
-                        "jp": "サイレンが急変を知らせました。",
-                        "en": "The siren sounded an emergency.",
-                        "furigana": "サイレンが<ruby>急変<rp>(</rp><rt>きゅうへん</rt><rp>)</rp></ruby>を<ruby>知<rp>(</rp><rt>し</rt><rp>)</rp></ruby>らせました。",
-                        "enMn": "Дуут дохио онцгой байдлыг мэдэгдлээ."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "мэдэгдэл",
-                    "meaningsMn": [
-                        "мэдэгдэл"
-                    ]
-                },
-                {
-                    "jp": "尻",
-                    "reading": "しり",
-                    "en": "buttocks",
-                    "meanings": [
-                        "buttocks",
-                        "bottom"
-                    ],
-                    "example": {
-                        "jp": "私の娘は尻が重いので困る。",
-                        "en": "My daughter's slowness to take action is a pain.",
-                        "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>の<ruby>娘<rp>(</rp><rt>むすめ</rt><rp>)</rp></ruby>は<ruby>尻<rp>(</rp><rt>しり</rt><rp>)</rp></ruby>が<ruby>重<rp>(</rp><rt>おも</rt><rp>)</rp></ruby>いので<ruby>困<rp>(</rp><rt>こま</rt><rp>)</rp></ruby>る。",
-                        "enMn": "Охин минь удаан хөдөлдөг учир зовлонтой."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "бөгс",
-                    "meaningsMn": [
-                        "бөгс"
-                    ]
                 },
                 {
                     "jp": "印",
@@ -15335,458 +16672,6 @@ const WORD_LEVELS = [
                     "enMn": "тэмдэг",
                     "meaningsMn": [
                         "тэмдэг"
-                    ]
-                },
-                {
-                    "jp": "城",
-                    "reading": "しろ",
-                    "en": "castle",
-                    "meanings": [
-                        "castle"
-                    ],
-                    "example": {
-                        "jp": "城の創建は１１世紀にさかのぼると伝えられる。",
-                        "en": "It is said that the castle dates back to the 11th century.",
-                        "furigana": "<ruby>城<rp>(</rp><rt>しろ</rt><rp>)</rp></ruby>の<ruby>創建<rp>(</rp><rt>そうけん</rt><rp>)</rp></ruby>は１１<ruby>世紀<rp>(</rp><rt>せいき</rt><rp>)</rp></ruby>にさかのぼると<ruby>伝<rp>(</rp><rt>つた</rt><rp>)</rp></ruby>えられる。",
-                        "enMn": "Цайзыг 11-р зуунд байгуулсан гэж яригддаг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "цайз",
-                    "meaningsMn": [
-                        "цайз"
-                    ]
-                },
-                {
-                    "jp": "進学",
-                    "reading": "しんがく",
-                    "en": "going on to university",
-                    "meanings": [
-                        "going on to university"
-                    ],
-                    "example": {
-                        "jp": "彼女は就職か大学進学か決心がつかない。",
-                        "en": "She can't make up her mind whether to get a job or to go on to college.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>就職<rp>(</rp><rt>しゅうしょく</rt><rp>)</rp></ruby>か<ruby>大学<rp>(</rp><rt>だいがく</rt><rp>)</rp></ruby><ruby>進学<rp>(</rp><rt>しんがく</rt><rp>)</rp></ruby>か<ruby>決心<rp>(</rp><rt>けっしん</rt><rp>)</rp></ruby>がつかない。",
-                        "enMn": "Тэр ажилд орох уу, эсвэл их сургуульд элсэх үү гэдгээ шийдэж чадахгүй байна."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "их сургуульд элсэх",
-                    "meaningsMn": [
-                        "их сургуульд элсэх"
-                    ]
-                },
-                {
-                    "jp": "真剣",
-                    "reading": "しんけん",
-                    "en": "seriousness",
-                    "meanings": [
-                        "seriousness",
-                        "earnestness"
-                    ],
-                    "example": {
-                        "jp": "彼女はいつも真剣な表情をしている。",
-                        "en": "She always has a serious look on her face.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はいつも<ruby>真剣<rp>(</rp><rt>しんけん</rt><rp>)</rp></ruby>な<ruby>表情<rp>(</rp><rt>ひょうじょう</rt><rp>)</rp></ruby>をしている。",
-                        "enMn": "Тэр үргэлж нухацтай царайтай байдаг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "нухацтай",
-                    "meaningsMn": [
-                        "нухацтай"
-                    ]
-                },
-                {
-                    "jp": "信仰",
-                    "reading": "しんこう",
-                    "en": "(religious) faith",
-                    "meanings": [
-                        "(religious) faith",
-                        "belief"
-                    ],
-                    "example": {
-                        "jp": "牧師は彼女のキリスト信仰の告白を聞いた。",
-                        "en": "The minister listened to her profession of Christianity.",
-                        "furigana": "<ruby>牧師<rp>(</rp><rt>ぼくし</rt><rp>)</rp></ruby>は<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>のキリスト<ruby>信仰<rp>(</rp><rt>しんこう</rt><rp>)</rp></ruby>の<ruby>告白<rp>(</rp><rt>こくはく</rt><rp>)</rp></ruby>を<ruby>聞<rp>(</rp><rt>き</rt><rp>)</rp></ruby>いた。",
-                        "enMn": "Пастор түүний Христийн шүтлэгийн наминчлалыг сонсов."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "шүтлэг",
-                    "meaningsMn": [
-                        "шүтлэг"
-                    ]
-                },
-                {
-                    "jp": "信号",
-                    "reading": "しんごう",
-                    "en": "traffic lights",
-                    "meanings": [
-                        "traffic lights",
-                        "signal",
-                        "semaphore"
-                    ],
-                    "example": {
-                        "jp": "赤い光は危険信号としてよく用いられる。",
-                        "en": "A red light is often used as a danger signal.",
-                        "furigana": "<ruby>赤<rp>(</rp><rt>あか</rt><rp>)</rp></ruby>い<ruby>光<rp>(</rp><rt>ひかり</rt><rp>)</rp></ruby>は<ruby>危険<rp>(</rp><rt>きけん</rt><rp>)</rp></ruby><ruby>信号<rp>(</rp><rt>しんごう</rt><rp>)</rp></ruby>としてよく<ruby>用<rp>(</rp><rt>もち</rt><rp>)</rp></ruby>いられる。",
-                        "enMn": "Улаан гэрлийг аюулын дохио болгон ихэвчлэн ашигладаг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "гэрлэн дохио",
-                    "meaningsMn": [
-                        "гэрлэн дохио",
-                        "дохио"
-                    ]
-                },
-                {
-                    "jp": "人工",
-                    "reading": "じんこう",
-                    "en": "artificial",
-                    "meanings": [
-                        "artificial",
-                        "man made",
-                        "human work"
-                    ],
-                    "example": {
-                        "jp": "非配偶者間人工授精を受けました。",
-                        "en": "I had an artificial insemination by donor.",
-                        "furigana": "<ruby>非<rp>(</rp><rt>ひ</rt><rp>)</rp></ruby><ruby>配偶<rp>(</rp><rt>はいぐう</rt><rp>)</rp></ruby><ruby>者<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby><ruby>間<rp>(</rp><rt>かん</rt><rp>)</rp></ruby><ruby>人工<rp>(</rp><rt>じんこう</rt><rp>)</rp></ruby><ruby>授精<rp>(</rp><rt>じゅせい</rt><rp>)</rp></ruby>を<ruby>受<rp>(</rp><rt>う</rt><rp>)</rp></ruby>けました。",
-                        "enMn": "Би донорын зохиомол хээлтүүлэгт хамрагдсан."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хиймэл",
-                    "meaningsMn": [
-                        "хиймэл"
-                    ]
-                }
-            ]
-        ]
-    },
-    {
-        "level": 31,
-        "jlpt": "N3",
-        "title": "N3 · Level 7",
-        "sets": [
-            [
-                {
-                    "jp": "幸せ",
-                    "reading": "しあわせ",
-                    "en": "happiness",
-                    "meanings": [
-                        "happiness",
-                        "blessing"
-                    ],
-                    "example": {
-                        "jp": "彼女は彼の子を妊娠して幸せです。",
-                        "en": "She is happy to have conceived a baby by him.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>子<rp>(</rp><rt>こ</rt><rp>)</rp></ruby>を<ruby>妊娠<rp>(</rp><rt>にんしん</rt><rp>)</rp></ruby>して<ruby>幸<rp>(</rp><rt>しあわ</rt><rp>)</rp></ruby>せです。",
-                        "enMn": "Тэр түүнээс жирэмссэндээ баяртай байна."
-                    },
-                    "phonetic": "幸",
-                    "phoneticReading": "コウ",
-                    "enMn": "аз жаргал",
-                    "meaningsMn": [
-                        "аз жаргал",
-                        "ерөөл"
-                    ]
-                },
-                {
-                    "jp": "幸運",
-                    "reading": "こううん",
-                    "en": "good luck",
-                    "meanings": [
-                        "good luck",
-                        "fortune"
-                    ],
-                    "example": {
-                        "jp": "彼女は隣の人の幸運を妬んでいた。",
-                        "en": "She was jealous of her neighbor's good fortune.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>隣<rp>(</rp><rt>となり</rt><rp>)</rp></ruby>の<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>の<ruby>幸運<rp>(</rp><rt>こううん</rt><rp>)</rp></ruby>を<ruby>妬<rp>(</rp><rt>ねた</rt><rp>)</rp></ruby>んでいた。",
-                        "enMn": "Тэр хөршийнхөө азад атаархаж байв."
-                    },
-                    "phonetic": "幸",
-                    "phoneticReading": "コウ",
-                    "enMn": "азтай явдал",
-                    "meaningsMn": [
-                        "азтай явдал",
-                        "азын жаргал"
-                    ]
-                },
-                {
-                    "jp": "少女",
-                    "reading": "しょうじょ",
-                    "en": "young girl",
-                    "meanings": [
-                        "young girl"
-                    ],
-                    "example": {
-                        "jp": "本を読んでいる少女はケートだ。",
-                        "en": "The girl reading a book is Kate.",
-                        "furigana": "<ruby>本<rp>(</rp><rt>ほん</rt><rp>)</rp></ruby>を<ruby>読<rp>(</rp><rt>よ</rt><rp>)</rp></ruby>んでいる<ruby>少女<rp>(</rp><rt>しょうじょ</rt><rp>)</rp></ruby>はケートだ。",
-                        "enMn": "Ном уншиж буй охин бол Кэйт юм."
-                    },
-                    "phonetic": "少",
-                    "phoneticReading": "ショウ、サ",
-                    "enMn": "залуу охин",
-                    "meaningsMn": [
-                        "залуу охин"
-                    ]
-                },
-                {
-                    "jp": "少々",
-                    "reading": "しょうしょう",
-                    "en": "a little",
-                    "meanings": [
-                        "a little",
-                        "short (time) (formal for 少し (すこし))"
-                    ],
-                    "example": {
-                        "jp": "彼女の態度は少々腹にすえかねる。",
-                        "en": "I find her manner a little hard to take.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>の<ruby>態度<rp>(</rp><rt>たいど</rt><rp>)</rp></ruby>は<ruby>少々<rp>(</rp><rt>しょうしょう</rt><rp>)</rp></ruby><ruby>腹<rp>(</rp><rt>はら</rt><rp>)</rp></ruby>にすえかねる。",
-                        "enMn": "Түүний зан авир надад бага зэрэг хүлцэхэд хэцүү санагддаг."
-                    },
-                    "phonetic": "少",
-                    "phoneticReading": "ショウ、サ",
-                    "enMn": "бага зэрэг",
-                    "meaningsMn": [
-                        "бага зэрэг",
-                        "багахан (少し-ийн албан ёсны хэлбэр)"
-                    ]
-                },
-                {
-                    "jp": "住民",
-                    "reading": "じゅうみん",
-                    "en": "inhabitants",
-                    "meanings": [
-                        "inhabitants",
-                        "residents"
-                    ],
-                    "example": {
-                        "jp": "住民は低空飛行訓練に抗議を行った。",
-                        "en": "The people protested against the low altitude flight training.",
-                        "furigana": "<ruby>住民<rp>(</rp><rt>じゅうみん</rt><rp>)</rp></ruby>は<ruby>低空<rp>(</rp><rt>ていくう</rt><rp>)</rp></ruby><ruby>飛行<rp>(</rp><rt>ひこう</rt><rp>)</rp></ruby><ruby>訓練<rp>(</rp><rt>くんれん</rt><rp>)</rp></ruby>に<ruby>抗議<rp>(</rp><rt>こうぎ</rt><rp>)</rp></ruby>を<ruby>行<rp>(</rp><rt>おこな</rt><rp>)</rp></ruby>った。",
-                        "enMn": "Хүмүүс намхан өндрийн нислэгийн сургалтын эсрэг эсэргүүцэл илэрхийлэв."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "оршин суугчид",
-                    "meaningsMn": [
-                        "оршин суугчид",
-                        "оршин суугчид"
-                    ]
-                },
-                {
-                    "jp": "主義",
-                    "reading": "しゅぎ",
-                    "en": "doctrine",
-                    "meanings": [
-                        "doctrine",
-                        "cause",
-                        "principle"
-                    ],
-                    "example": {
-                        "jp": "民主主義は政治形態の一つである。",
-                        "en": "Democracy is one form of government.",
-                        "furigana": "<ruby>民主<rp>(</rp><rt>みんしゅ</rt><rp>)</rp></ruby><ruby>主義<rp>(</rp><rt>しゅぎ</rt><rp>)</rp></ruby>は<ruby>政治<rp>(</rp><rt>せいじ</rt><rp>)</rp></ruby><ruby>形態<rp>(</rp><rt>けいたい</rt><rp>)</rp></ruby>の<ruby>一<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>つである。",
-                        "enMn": "Ардчилал бол засгийн нэг хэлбэр юм."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "сургаал",
-                    "meaningsMn": [
-                        "сургаал",
-                        "шалтгаан",
-                        "зарчим"
-                    ]
-                },
-                {
-                    "jp": "瞬間",
-                    "reading": "しゅんかん",
-                    "en": "moment",
-                    "meanings": [
-                        "moment",
-                        "second"
-                    ],
-                    "example": {
-                        "jp": "その瞬間、大音響とともに爆発した。",
-                        "en": "At that instant it exploded with a great noise.",
-                        "furigana": "その<ruby>瞬間<rp>(</rp><rt>しゅんかん</rt><rp>)</rp></ruby>、<ruby>大<rp>(</rp><rt>だい</rt><rp>)</rp></ruby><ruby>音響<rp>(</rp><rt>おんきょう</rt><rp>)</rp></ruby>とともに<ruby>爆発<rp>(</rp><rt>ばくはつ</rt><rp>)</rp></ruby>した。",
-                        "enMn": "Тэр агшинд их чимээтэй дэлбэрсэн."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "агшин зуур",
-                    "meaningsMn": [
-                        "агшин зуур",
-                        "мөч"
-                    ]
-                },
-                {
-                    "jp": "首都",
-                    "reading": "しゅと",
-                    "en": "capital city",
-                    "meanings": [
-                        "capital city"
-                    ],
-                    "example": {
-                        "jp": "彼はフランスの首都パリへ行った。",
-                        "en": "He went to Paris, which is the capital of France.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>はフランスの<ruby>首都<rp>(</rp><rt>しゅと</rt><rp>)</rp></ruby>パリへ<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>った。",
-                        "enMn": "Тэр Францын нийслэл болох Парис руу явсан."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "нийслэл хот",
-                    "meaningsMn": [
-                        "нийслэл хот"
-                    ]
-                },
-                {
-                    "jp": "重視",
-                    "reading": "じゅうし",
-                    "en": "importance",
-                    "meanings": [
-                        "importance",
-                        "stress"
-                    ],
-                    "example": {
-                        "jp": "彼らは私の意見を重視しなかった。",
-                        "en": "They didn't take much account of my opinion.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>の<ruby>意見<rp>(</rp><rt>いけん</rt><rp>)</rp></ruby>を<ruby>重視<rp>(</rp><rt>じゅうし</rt><rp>)</rp></ruby>しなかった。",
-                        "enMn": "Тэд миний саналыг тийм ч их анхаараагүй."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "ач холбогдол",
-                    "meaningsMn": [
-                        "ач холбогдол",
-                        "стресс"
-                    ]
-                },
-                {
-                    "jp": "手術",
-                    "reading": "しゅじゅつ",
-                    "en": "surgical operation",
-                    "meanings": [
-                        "surgical operation"
-                    ],
-                    "example": {
-                        "jp": "父は手術を受ける事になっている。",
-                        "en": "Father is going to undergo an operation.",
-                        "furigana": "<ruby>父<rp>(</rp><rt>ちち</rt><rp>)</rp></ruby>は<ruby>手術<rp>(</rp><rt>しゅじゅつ</rt><rp>)</rp></ruby>を<ruby>受<rp>(</rp><rt>う</rt><rp>)</rp></ruby>ける<ruby>事<rp>(</rp><rt>こと</rt><rp>)</rp></ruby>になっている。",
-                        "enMn": "Аав минь мэс засал хийлгэх гэж байна."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "мэс засал",
-                    "meaningsMn": [
-                        "мэс засал"
-                    ]
-                },
-                {
-                    "jp": "深刻",
-                    "reading": "しんこく",
-                    "en": "serious",
-                    "meanings": [
-                        "serious"
-                    ],
-                    "example": {
-                        "jp": "彼らはその事故の深刻さを理解できなかった。",
-                        "en": "They couldn't comprehend the seriousness of the matter.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らはその<ruby>事故<rp>(</rp><rt>じこ</rt><rp>)</rp></ruby>の<ruby>深刻<rp>(</rp><rt>しんこく</rt><rp>)</rp></ruby>さを<ruby>理解<rp>(</rp><rt>りかい</rt><rp>)</rp></ruby>できなかった。",
-                        "enMn": "Тэд тэр ослын ноцтой байдлыг ойлгож чадаагүй."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хүндрэлтэй",
-                    "meaningsMn": [
-                        "хүндрэлтэй"
-                    ]
-                },
-                {
-                    "jp": "診察",
-                    "reading": "しんさつ",
-                    "en": "medical examination (of a patient)",
-                    "meanings": [
-                        "medical examination (of a patient)"
-                    ],
-                    "example": {
-                        "jp": "旅行者ですが診察をお願いしたいのですが。",
-                        "en": "I'm traveling, and I'd like to make an appointment.",
-                        "furigana": "<ruby>旅行<rp>(</rp><rt>りょこう</rt><rp>)</rp></ruby><ruby>者<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby>ですが<ruby>診察<rp>(</rp><rt>しんさつ</rt><rp>)</rp></ruby>をお<ruby>願<rp>(</rp><rt>ねが</rt><rp>)</rp></ruby>いしたいのですが。",
-                        "enMn": "Би жуулчин, эмнэлгийн үзлэгт хамрагдахыг хүсэж байна."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "эмнэлгийн үзлэг",
-                    "meaningsMn": [
-                        "эмнэлгийн үзлэг"
-                    ]
-                },
-                {
-                    "jp": "人種",
-                    "reading": "じんしゅ",
-                    "en": "race (of people)",
-                    "meanings": [
-                        "race (of people)"
-                    ],
-                    "example": {
-                        "jp": "彼らは人種の平等を目指して運動した。",
-                        "en": "They campaigned for racial equality.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>人種<rp>(</rp><rt>じんしゅ</rt><rp>)</rp></ruby>の<ruby>平等<rp>(</rp><rt>びょうどう</rt><rp>)</rp></ruby>を<ruby>目指<rp>(</rp><rt>めざ</rt><rp>)</rp></ruby>して<ruby>運動<rp>(</rp><rt>うんどう</rt><rp>)</rp></ruby>した。",
-                        "enMn": "Тэд арьс өнгөний тэгш байдлын төлөө хөдөлгөөн өрнүүлсэн."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "арьс өнгө",
-                    "meaningsMn": [
-                        "арьс өнгө"
-                    ]
-                },
-                {
-                    "jp": "信じる",
-                    "reading": "しんじる",
-                    "en": "to believe",
-                    "meanings": [
-                        "to believe"
-                    ],
-                    "example": {
-                        "jp": "僕は君を信じる。",
-                        "en": "I believe you.",
-                        "furigana": "<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>は<ruby>君<rp>(</rp><rt>きみ</rt><rp>)</rp></ruby>を<ruby>信<rp>(</rp><rt>しん</rt><rp>)</rp></ruby>じる。",
-                        "enMn": "Би чамд итгэдэг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "итгэх",
-                    "meaningsMn": [
-                        "итгэх"
-                    ]
-                },
-                {
-                    "jp": "人生",
-                    "reading": "じんせい",
-                    "en": "(human) life (e.g., conception to death)",
-                    "meanings": [
-                        "(human) life (e.g., conception to death)"
-                    ],
-                    "example": {
-                        "jp": "君はただ人生の問題から逃げているだけだよ。",
-                        "en": "You're just running away from life's problems.",
-                        "furigana": "<ruby>君<rp>(</rp><rt>きみ</rt><rp>)</rp></ruby>はただ<ruby>人生<rp>(</rp><rt>じんせい</rt><rp>)</rp></ruby>の<ruby>問題<rp>(</rp><rt>もんだい</rt><rp>)</rp></ruby>から<ruby>逃<rp>(</rp><rt>に</rt><rp>)</rp></ruby>げているだけだよ。",
-                        "enMn": "Чи зүгээр л амьдралын асуудлаас зугтаж байгаа юм шүү."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "амьдрал",
-                    "meaningsMn": [
-                        "амьдрал"
                     ]
                 },
                 {
@@ -15810,486 +16695,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "心臓",
-                    "reading": "しんぞう",
-                    "en": "heart",
-                    "meanings": [
-                        "heart"
-                    ],
-                    "example": {
-                        "jp": "僕は心臓が激しく打っているのを感じた。",
-                        "en": "I felt my heart beating violently.",
-                        "furigana": "<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>は<ruby>心臓<rp>(</rp><rt>しんぞう</rt><rp>)</rp></ruby>が<ruby>激<rp>(</rp><rt>はげ</rt><rp>)</rp></ruby>しく<ruby>打<rp>(</rp><rt>う</rt><rp>)</rp></ruby>っているのを<ruby>感<rp>(</rp><rt>かん</rt><rp>)</rp></ruby>じた。",
-                        "enMn": "Би зүрх минь хүчтэй цохилж байгааг мэдэрлээ."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "зүрх",
-                    "meaningsMn": [
-                        "зүрх"
-                    ]
-                },
-                {
-                    "jp": "身体",
-                    "reading": "しんたい",
-                    "en": "the body",
-                    "meanings": [
-                        "the body"
-                    ],
-                    "example": {
-                        "jp": "彼女は身体障害者を助けることに人生を捧げた。",
-                        "en": "She devoted her life to helping the handicapped.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>身体<rp>(</rp><rt>しんたい</rt><rp>)</rp></ruby><ruby>障害<rp>(</rp><rt>しょうがい</rt><rp>)</rp></ruby><ruby>者<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby>を<ruby>助<rp>(</rp><rt>たす</rt><rp>)</rp></ruby>けることに<ruby>人生<rp>(</rp><rt>じんせい</rt><rp>)</rp></ruby>を<ruby>捧<rp>(</rp><rt>ささ</rt><rp>)</rp></ruby>げた。",
-                        "enMn": "Тэр амьдралаа хөгжлийн бэрхшээлтэй хүмүүст туслахад зориулав."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "бие",
-                    "meaningsMn": [
-                        "бие"
-                    ]
-                },
-                {
-                    "jp": "身長",
-                    "reading": "しんちょう",
-                    "en": "height (of body)",
-                    "meanings": [
-                        "height (of body)",
-                        "stature"
-                    ],
-                    "example": {
-                        "jp": "彼女はあなたとだいたい同じくらいの身長だ。",
-                        "en": "She's about the same height as you.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はあなたとだいたい<ruby>同<rp>(</rp><rt>おな</rt><rp>)</rp></ruby>じくらいの<ruby>身長<rp>(</rp><rt>しんちょう</rt><rp>)</rp></ruby>だ。",
-                        "enMn": "Тэр чамтай ойролцоо биеийн өндөртэй."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "биеийн өндөр",
-                    "meaningsMn": [
-                        "биеийн өндөр"
-                    ]
-                },
-                {
-                    "jp": "慎重",
-                    "reading": "しんちょう",
-                    "en": "careful",
-                    "meanings": [
-                        "careful",
-                        "prudent",
-                        "cautious"
-                    ],
-                    "example": {
-                        "jp": "本は慎重に選びなさい。",
-                        "en": "Choose a book carefully.",
-                        "furigana": "<ruby>本<rp>(</rp><rt>ほん</rt><rp>)</rp></ruby>は<ruby>慎重<rp>(</rp><rt>しんちょう</rt><rp>)</rp></ruby>に<ruby>選<rp>(</rp><rt>えら</rt><rp>)</rp></ruby>びなさい。",
-                        "enMn": "Номоо болгоомжтой сонго."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "болгоомжтой",
-                    "meaningsMn": [
-                        "болгоомжтой"
-                    ]
-                },
-                {
-                    "jp": "審判",
-                    "reading": "しんぱん",
-                    "en": "umpire",
-                    "meanings": [
-                        "umpire",
-                        "referee",
-                        "judgment"
-                    ],
-                    "example": {
-                        "jp": "彼一人だけ余る、だから審判させよう。",
-                        "en": "He's an odd man; so we'll have him referee.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby><ruby>一<rp>(</rp><rt>いち</rt><rp>)</rp></ruby><ruby>人<rp>(</rp><rt>にん</rt><rp>)</rp></ruby>だけ<ruby>余<rp>(</rp><rt>あま</rt><rp>)</rp></ruby>る、だから<ruby>審判<rp>(</rp><rt>しんぱん</rt><rp>)</rp></ruby>させよう。",
-                        "enMn": "Тэр ганц илүү хүн байгаа тул түүгээр шүүгч болгоно."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "шүүгч",
-                    "meaningsMn": [
-                        "шүүгч"
-                    ]
-                },
-                {
-                    "jp": "進歩",
-                    "reading": "しんぽ",
-                    "en": "improvement",
-                    "meanings": [
-                        "improvement",
-                        "progress",
-                        "development"
-                    ],
-                    "example": {
-                        "jp": "文明の進歩がとても速い。",
-                        "en": "The progress of civilization is very rapid.",
-                        "furigana": "<ruby>文明<rp>(</rp><rt>ぶんめい</rt><rp>)</rp></ruby>の<ruby>進歩<rp>(</rp><rt>しんぽ</rt><rp>)</rp></ruby>がとても<ruby>速<rp>(</rp><rt>はや</rt><rp>)</rp></ruby>い。",
-                        "enMn": "Соёл иргэншлийн дэвшил маш хурдан."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "ахиц дэвшил",
-                    "meaningsMn": [
-                        "ахиц дэвшил"
-                    ]
-                },
-                {
-                    "jp": "親友",
-                    "reading": "しんゆう",
-                    "en": "close friend",
-                    "meanings": [
-                        "close friend",
-                        "buddy"
-                    ],
-                    "example": {
-                        "jp": "親友は何人いる？",
-                        "en": "How many close friends do you have?",
-                        "furigana": "<ruby>親友<rp>(</rp><rt>しんゆう</rt><rp>)</rp></ruby>は<ruby>何<rp>(</rp><rt>なん</rt><rp>)</rp></ruby><ruby>人<rp>(</rp><rt>にん</rt><rp>)</rp></ruby>いる？",
-                        "enMn": "Чи хэдэн дотно найзтай вэ?"
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "дотно найз",
-                    "meaningsMn": [
-                        "дотно найз"
-                    ]
-                },
-                {
-                    "jp": "信用",
-                    "reading": "しんよう",
-                    "en": "confidence",
-                    "meanings": [
-                        "confidence",
-                        "dependence"
-                    ],
-                    "example": {
-                        "jp": "「信用して」と彼は言った。",
-                        "en": "\"Trust me,\" he said.",
-                        "furigana": "「<ruby>信用<rp>(</rp><rt>しんよう</rt><rp>)</rp></ruby>して」と<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>った。",
-                        "enMn": "«Надад итгээрэй» гэж тэр хэлэв."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "найдвар",
-                    "meaningsMn": [
-                        "найдвар"
-                    ]
-                },
-                {
-                    "jp": "信頼",
-                    "reading": "しんらい",
-                    "en": "reliance",
-                    "meanings": [
-                        "reliance",
-                        "trust",
-                        "confidence"
-                    ],
-                    "example": {
-                        "jp": "お互いを信頼し合うしかない。",
-                        "en": "All you can do is trust one another.",
-                        "furigana": "お<ruby>互<rp>(</rp><rt>たが</rt><rp>)</rp></ruby>いを<ruby>信頼<rp>(</rp><rt>しんらい</rt><rp>)</rp></ruby>し<ruby>合<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>うしかない。",
-                        "enMn": "Бие биедээ итгэхээс өөр аргагүй."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "итгэл",
-                    "meaningsMn": [
-                        "итгэл"
-                    ]
-                }
-            ]
-        ]
-    },
-    {
-        "level": 32,
-        "jlpt": "N3",
-        "title": "N3 · Level 8",
-        "sets": [
-            [
-                {
-                    "jp": "親しい",
-                    "reading": "したしい",
-                    "en": "intimate",
-                    "meanings": [
-                        "intimate",
-                        "close (e.g., friend)"
-                    ],
-                    "example": {
-                        "jp": "彼は会う人とは誰でも親しくなる。",
-                        "en": "He makes friends with everybody he meets.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>会<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>う<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>とは<ruby>誰<rp>(</rp><rt>だれ</rt><rp>)</rp></ruby>でも<ruby>親<rp>(</rp><rt>した</rt><rp>)</rp></ruby>しくなる。",
-                        "enMn": "Тэр уулзсан хүн болгонтойгоо найзалдаг."
-                    },
-                    "phonetic": "亲",
-                    "phoneticReading": "シン",
-                    "enMn": "дотно",
-                    "meaningsMn": [
-                        "дотно",
-                        "дотно (найз гэх мэт)"
-                    ]
-                },
-                {
-                    "jp": "親戚",
-                    "reading": "しんせき",
-                    "en": "relative(s)",
-                    "meanings": [
-                        "relative(s)"
-                    ],
-                    "example": {
-                        "jp": "彼は彼女と遠い親戚関係にある。",
-                        "en": "He is distantly related to her.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>と<ruby>遠<rp>(</rp><rt>とお</rt><rp>)</rp></ruby>い<ruby>親戚<rp>(</rp><rt>しんせき</rt><rp>)</rp></ruby><ruby>関係<rp>(</rp><rt>かんけい</rt><rp>)</rp></ruby>にある。",
-                        "enMn": "Тэр түүнтэй хол төрлийн холбоотой."
-                    },
-                    "phonetic": "亲",
-                    "phoneticReading": "シン",
-                    "enMn": "төрөл садан",
-                    "meaningsMn": [
-                        "төрөл садан"
-                    ]
-                },
-                {
-                    "jp": "手段",
-                    "reading": "しゅだん",
-                    "en": "means",
-                    "meanings": [
-                        "means",
-                        "way",
-                        "measure"
-                    ],
-                    "example": {
-                        "jp": "目的は手段を正当化するだろうか。",
-                        "en": "Does the end justify the means?",
-                        "furigana": "<ruby>目的<rp>(</rp><rt>もくてき</rt><rp>)</rp></ruby>は<ruby>手段<rp>(</rp><rt>しゅだん</rt><rp>)</rp></ruby>を<ruby>正当<rp>(</rp><rt>せいとう</rt><rp>)</rp></ruby><ruby>化<rp>(</rp><rt>か</rt><rp>)</rp></ruby>するだろうか。",
-                        "enMn": "Зорилго нь аргыг зөвтгөдөг үү?"
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "арга зам",
-                    "meaningsMn": [
-                        "арга зам",
-                        "арга",
-                        "арга хэмжээ"
-                    ]
-                },
-                {
-                    "jp": "修理",
-                    "reading": "しゅうり",
-                    "en": "repairing",
-                    "meanings": [
-                        "repairing",
-                        "mending"
-                    ],
-                    "example": {
-                        "jp": "父は器用で何でも修理してしまう。",
-                        "en": "My father is good with tools and does almost all the repairs.",
-                        "furigana": "<ruby>父<rp>(</rp><rt>ちち</rt><rp>)</rp></ruby>は<ruby>器用<rp>(</rp><rt>きよう</rt><rp>)</rp></ruby>で<ruby>何<rp>(</rp><rt>なに</rt><rp>)</rp></ruby>でも<ruby>修理<rp>(</rp><rt>しゅうり</rt><rp>)</rp></ruby>してしまう。",
-                        "enMn": "Аав минь багаж хэрэгсэлд ур чадвартай бөгөөд бараг бүх засварыг хийдэг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "засвар",
-                    "meaningsMn": [
-                        "засвар",
-                        "засвар"
-                    ]
-                },
-                {
-                    "jp": "出身",
-                    "reading": "しゅっしん",
-                    "en": "hometown",
-                    "meanings": [
-                        "come from"
-                    ],
-                    "example": {
-                        "jp": "彼女はカリフォルニアの出身です。",
-                        "en": "She comes from California.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はカリフォルニアの<ruby>出身<rp>(</rp><rt>しゅっしん</rt><rp>)</rp></ruby>です。",
-                        "enMn": "Тэр Калифорниас гаралтай."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "төрсөн нутаг",
-                    "meaningsMn": [
-                        "гаралтай"
-                    ]
-                },
-                {
-                    "jp": "収穫",
-                    "reading": "しゅうかく",
-                    "en": "harvest",
-                    "meanings": [
-                        "harvest",
-                        "crop",
-                        "ingathering"
-                    ],
-                    "example": {
-                        "jp": "私たちはみな収穫の手伝いをした。",
-                        "en": "We all helped with the harvest.",
-                        "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>たちはみな<ruby>収穫<rp>(</rp><rt>しゅうかく</rt><rp>)</rp></ruby>の<ruby>手伝<rp>(</rp><rt>てつだ</rt><rp>)</rp></ruby>いをした。",
-                        "enMn": "Бид бүгд ургац хураахад туслалцсан."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "ургац хураалт",
-                    "meaningsMn": [
-                        "ургац хураалт",
-                        "ургац",
-                        "хураалт"
-                    ]
-                },
-                {
-                    "jp": "集団",
-                    "reading": "しゅうだん",
-                    "en": "group",
-                    "meanings": [
-                        "group",
-                        "mass"
-                    ],
-                    "example": {
-                        "jp": "君はいまやエリート集団の一員だ。",
-                        "en": "You are now among the elite.",
-                        "furigana": "<ruby>君<rp>(</rp><rt>きみ</rt><rp>)</rp></ruby>はいまやエリート<ruby>集団<rp>(</rp><rt>しゅうだん</rt><rp>)</rp></ruby>の<ruby>一員<rp>(</rp><rt>いちいん</rt><rp>)</rp></ruby>だ。",
-                        "enMn": "Чи одоо элит бүлгийн нэг гишүүн болжээ."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "бүлэг",
-                    "meaningsMn": [
-                        "бүлэг",
-                        "бөөгнөрөл"
-                    ]
-                },
-                {
-                    "jp": "修正",
-                    "reading": "しゅうせい",
-                    "en": "amendment",
-                    "meanings": [
-                        "amendment",
-                        "correction"
-                    ],
-                    "example": {
-                        "jp": "・テキストデータの誤字脱字を修正。",
-                        "en": "・ Corrected mistaken/missing characters in the text data.",
-                        "furigana": "・テキストデータの<ruby>誤字<rp>(</rp><rt>ごじ</rt><rp>)</rp></ruby><ruby>脱字<rp>(</rp><rt>だつじ</rt><rp>)</rp></ruby>を<ruby>修正<rp>(</rp><rt>しゅうせい</rt><rp>)</rp></ruby>。",
-                        "enMn": "・ Текст өгөгдлийн алдаатай/дутуу тэмдэгтийг засварласан."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "залруулга",
-                    "meaningsMn": [
-                        "залруулга",
-                        "засвар"
-                    ]
-                },
-                {
-                    "jp": "首相",
-                    "reading": "しゅしょう",
-                    "en": "Prime Minister",
-                    "meanings": [
-                        "Prime Minister"
-                    ],
-                    "example": {
-                        "jp": "彼は首相を辞めざるを得なかった。",
-                        "en": "He was forced to resign as prime minister.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>首相<rp>(</rp><rt>しゅしょう</rt><rp>)</rp></ruby>を<ruby>辞<rp>(</rp><rt>や</rt><rp>)</rp></ruby>めざるを<ruby>得<rp>(</rp><rt>え</rt><rp>)</rp></ruby>なかった。",
-                        "enMn": "Тэр ерөнхий сайдын албанаас огцрохоос өөр аргагүй болсон."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "ерөнхий сайд",
-                    "meaningsMn": [
-                        "ерөнхий сайд"
-                    ]
-                },
-                {
-                    "jp": "主要",
-                    "reading": "しゅよう",
-                    "en": "main",
-                    "meanings": [
-                        "chief",
-                        "main"
-                    ],
-                    "example": {
-                        "jp": "米はそれら主要商品の一つだ。",
-                        "en": "Rice is one of those staple commodities.",
-                        "furigana": "<ruby>米<rp>(</rp><rt>べい</rt><rp>)</rp></ruby>はそれら<ruby>主要<rp>(</rp><rt>しゅよう</rt><rp>)</rp></ruby><ruby>商品<rp>(</rp><rt>しょうひん</rt><rp>)</rp></ruby>の<ruby>一<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>つだ。",
-                        "enMn": "Цагаан будаа бол гол хэрэглээний бараануудын нэг юм."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "гол",
-                    "meaningsMn": [
-                        "гол",
-                        "гол"
-                    ]
-                },
-                {
-                    "jp": "心理",
-                    "reading": "しんり",
-                    "en": "mentality",
-                    "meanings": [
-                        "mentality"
-                    ],
-                    "example": {
-                        "jp": "彼女は夫の心理を心得ている。",
-                        "en": "She knows her husband's psychology.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>夫<rp>(</rp><rt>おっと</rt><rp>)</rp></ruby>の<ruby>心理<rp>(</rp><rt>しんり</rt><rp>)</rp></ruby>を<ruby>心得<rp>(</rp><rt>こころえ</rt><rp>)</rp></ruby>ている。",
-                        "enMn": "Тэр нөхрийнхөө сэтгэл зүйг сайн мэднэ."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "сэтгэл зүй",
-                    "meaningsMn": [
-                        "сэтгэл зүй"
-                    ]
-                },
-                {
-                    "jp": "人類",
-                    "reading": "じんるい",
-                    "en": "mankind",
-                    "meanings": [
-                        "mankind",
-                        "humanity"
-                    ],
-                    "example": {
-                        "jp": "病気は人類にとって脅威である。",
-                        "en": "Disease is a threat to human beings.",
-                        "furigana": "<ruby>病気<rp>(</rp><rt>びょうき</rt><rp>)</rp></ruby>は<ruby>人類<rp>(</rp><rt>じんるい</rt><rp>)</rp></ruby>にとって<ruby>脅威<rp>(</rp><rt>きょうい</rt><rp>)</rp></ruby>である。",
-                        "enMn": "Өвчин бол хүн төрөлхтөнд заналхийлэл юм."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хүн төрөлхтөн",
-                    "meaningsMn": [
-                        "хүн төрөлхтөн"
-                    ]
-                },
-                {
-                    "jp": "巣",
-                    "reading": "す",
-                    "en": "nest",
-                    "meanings": [
-                        "nest",
-                        "breeding place"
-                    ],
-                    "example": {
-                        "jp": "世界は奇人の巣だ。",
-                        "en": "The world is a den of crazies.",
-                        "furigana": "<ruby>世界<rp>(</rp><rt>せかい</rt><rp>)</rp></ruby>は<ruby>奇人<rp>(</rp><rt>きじん</rt><rp>)</rp></ruby>の<ruby>巣<rp>(</rp><rt>す</rt><rp>)</rp></ruby>だ。",
-                        "enMn": "Ертөнц бол солиотнуудын үүр."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "үүр",
-                    "meaningsMn": [
-                        "үүр"
-                    ]
-                },
-                {
                     "jp": "酢",
                     "reading": "す",
                     "en": "vinegar",
@@ -16307,152 +16712,6 @@ const WORD_LEVELS = [
                     "enMn": "цуу",
                     "meaningsMn": [
                         "цуу"
-                    ]
-                },
-                {
-                    "jp": "図",
-                    "reading": "ず",
-                    "en": "figure",
-                    "meanings": [
-                        "figure",
-                        "drawing",
-                        "illustration"
-                    ],
-                    "example": {
-                        "jp": "路線図をもらえませんか。",
-                        "en": "Can I get a route map, please?",
-                        "furigana": "<ruby>路線<rp>(</rp><rt>ろせん</rt><rp>)</rp></ruby><ruby>図<rp>(</rp><rt>ず</rt><rp>)</rp></ruby>をもらえませんか。",
-                        "enMn": "Замын зураг авч болох уу?"
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "схем",
-                    "meaningsMn": [
-                        "схем"
-                    ]
-                },
-                {
-                    "jp": "水準",
-                    "reading": "すいじゅん",
-                    "en": "level",
-                    "meanings": [
-                        "level",
-                        "standard"
-                    ],
-                    "example": {
-                        "jp": "彼は水準を満たしていなかった。",
-                        "en": "He didn't meet the standards.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>水準<rp>(</rp><rt>すいじゅん</rt><rp>)</rp></ruby>を<ruby>満<rp>(</rp><rt>み</rt><rp>)</rp></ruby>たしていなかった。",
-                        "enMn": "Тэр түвшинд хүрээгүй байв."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "түвшин",
-                    "meaningsMn": [
-                        "түвшин"
-                    ]
-                },
-                {
-                    "jp": "推薦",
-                    "reading": "すいせん",
-                    "en": "recommendation",
-                    "meanings": [
-                        "recommendation"
-                    ],
-                    "example": {
-                        "jp": "課長からもらった推薦状が物を言った。",
-                        "en": "The recommendation from my boss made all the difference.",
-                        "furigana": "<ruby>課長<rp>(</rp><rt>かちょう</rt><rp>)</rp></ruby>からもらった<ruby>推薦<rp>(</rp><rt>すいせん</rt><rp>)</rp></ruby><ruby>状<rp>(</rp><rt>じょう</rt><rp>)</rp></ruby>が<ruby>物<rp>(</rp><rt>もの</rt><rp>)</rp></ruby>を<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>った。",
-                        "enMn": "Хэлтсийн даргаас авсан зөвлөмжийн захидал шийдвэрлэх үүрэг гүйцэтгэв."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "зөвлөмж",
-                    "meaningsMn": [
-                        "зөвлөмж"
-                    ]
-                },
-                {
-                    "jp": "スイッチ",
-                    "reading": "スイッチ",
-                    "en": "switch",
-                    "meanings": [
-                        "switch"
-                    ],
-                    "example": {
-                        "jp": "僕は暗闇の中でスイッチを手探りでさがした。",
-                        "en": "I felt for the switch in the dark.",
-                        "furigana": "<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>は<ruby>暗闇<rp>(</rp><rt>くらやみ</rt><rp>)</rp></ruby>の<ruby>中<rp>(</rp><rt>なか</rt><rp>)</rp></ruby>でスイッチを<ruby>手探<rp>(</rp><rt>てさぐ</rt><rp>)</rp></ruby>りでさがした。",
-                        "enMn": "Би харанхуйд унтраалгыг тэмтэрч хайв."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "залгуур",
-                    "meaningsMn": [
-                        "залгуур",
-                        "унтраалга"
-                    ]
-                },
-                {
-                    "jp": "睡眠",
-                    "reading": "すいみん",
-                    "en": "sleep",
-                    "meanings": [
-                        "sleep"
-                    ],
-                    "example": {
-                        "jp": "睡眠不足で、心筋梗塞リスクが上昇。",
-                        "en": "Sleep deprivation increases risk of heart attacks.",
-                        "furigana": "<ruby>睡眠<rp>(</rp><rt>すいみん</rt><rp>)</rp></ruby><ruby>不足<rp>(</rp><rt>ふそく</rt><rp>)</rp></ruby>で、<ruby>心筋梗塞<rp>(</rp><rt>しんきんこうそく</rt><rp>)</rp></ruby>リスクが<ruby>上昇<rp>(</rp><rt>じょうしょう</rt><rp>)</rp></ruby>。",
-                        "enMn": "Нойр дутуугаас зүрхний шигдээсийн эрсдэл нэмэгддэг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "нойр",
-                    "meaningsMn": [
-                        "нойр"
-                    ]
-                },
-                {
-                    "jp": "数",
-                    "reading": "すう",
-                    "en": "number",
-                    "meanings": [
-                        "number",
-                        "figure"
-                    ],
-                    "example": {
-                        "jp": "「道」という漢字の総画数は何画ですか。",
-                        "en": "How many strokes does the kanji for \"michi\" have?",
-                        "furigana": "「<ruby>道<rp>(</rp><rt>みち</rt><rp>)</rp></ruby>」という<ruby>漢字<rp>(</rp><rt>かんじ</rt><rp>)</rp></ruby>の<ruby>総画<rp>(</rp><rt>そうかく</rt><rp>)</rp></ruby><ruby>数<rp>(</rp><rt>すう</rt><rp>)</rp></ruby>は<ruby>何<rp>(</rp><rt>なん</rt><rp>)</rp></ruby><ruby>画<rp>(</rp><rt>かく</rt><rp>)</rp></ruby>ですか。",
-                        "enMn": "«Мичи» гэдэг ханзны нийт зурлагын тоо хэд вэ?"
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "тоо",
-                    "meaningsMn": [
-                        "тоо"
-                    ]
-                },
-                {
-                    "jp": "数字",
-                    "reading": "すうじ",
-                    "en": "numeral",
-                    "meanings": [
-                        "numeral",
-                        "figure"
-                    ],
-                    "example": {
-                        "jp": "彼女は日付を数字で書いた。",
-                        "en": "She wrote the date in numeric form.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>日付<rp>(</rp><rt>ひづけ</rt><rp>)</rp></ruby>を<ruby>数字<rp>(</rp><rt>すうじ</rt><rp>)</rp></ruby>で<ruby>書<rp>(</rp><rt>か</rt><rp>)</rp></ruby>いた。",
-                        "enMn": "Тэр огноог тоогоор бичив."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "тооны нэр",
-                    "meaningsMn": [
-                        "тооны нэр"
                     ]
                 },
                 {
@@ -16476,358 +16735,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "末",
-                    "reading": "すえ",
-                    "en": "the end of",
-                    "meanings": [
-                        "the end of",
-                        "powder"
-                    ],
-                    "example": {
-                        "jp": "予約購読料は今年末以前に全て払ってください。",
-                        "en": "All subscriptions must be paid before the end of this year.",
-                        "furigana": "<ruby>予約<rp>(</rp><rt>よやく</rt><rp>)</rp></ruby><ruby>購読<rp>(</rp><rt>こうどく</rt><rp>)</rp></ruby><ruby>料<rp>(</rp><rt>りょう</rt><rp>)</rp></ruby>は<ruby>今年<rp>(</rp><rt>ことし</rt><rp>)</rp></ruby><ruby>末<rp>(</rp><rt>まつ</rt><rp>)</rp></ruby><ruby>以前<rp>(</rp><rt>いぜん</rt><rp>)</rp></ruby>に<ruby>全<rp>(</rp><rt>すべ</rt><rp>)</rp></ruby>て<ruby>払<rp>(</rp><rt>はら</rt><rp>)</rp></ruby>ってください。",
-                        "enMn": "Захиалгын төлбөрийг энэ оны эцсээс өмнө бүрэн төлнө үү."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "эцэс",
-                    "meaningsMn": [
-                        "эцэс"
-                    ]
-                },
-                {
-                    "jp": "姿",
-                    "reading": "すがた",
-                    "en": "figure",
-                    "meanings": [
-                        "figure",
-                        "shape",
-                        "appearance"
-                    ],
-                    "example": {
-                        "jp": "彼は跡形もなく姿を消してしまったんだ。",
-                        "en": "He disappeared without a trace.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>跡形<rp>(</rp><rt>あとかた</rt><rp>)</rp></ruby>もなく<ruby>姿<rp>(</rp><rt>すがた</rt><rp>)</rp></ruby>を<ruby>消<rp>(</rp><rt>け</rt><rp>)</rp></ruby>してしまったんだ。",
-                        "enMn": "Тэр ул мөргүй алга болчихсон юм."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "дүр төрх",
-                    "meaningsMn": [
-                        "дүр төрх"
-                    ]
-                },
-                {
-                    "jp": "スキー",
-                    "reading": "スキー",
-                    "en": "ski",
-                    "meanings": [
-                        "ski"
-                    ],
-                    "example": {
-                        "jp": "スキーをしたら、足を骨折したんだ。",
-                        "en": "I broke my leg skiing.",
-                        "furigana": "スキーをしたら、<ruby>足<rp>(</rp><rt>あし</rt><rp>)</rp></ruby>を<ruby>骨折<rp>(</rp><rt>こっせつ</rt><rp>)</rp></ruby>したんだ。",
-                        "enMn": "Цанаар гулгаад хөлөө хугалчихсан юм."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "цана",
-                    "meaningsMn": [
-                        "цана"
-                    ]
-                }
-            ]
-        ]
-    },
-    {
-        "level": 33,
-        "jlpt": "N3",
-        "title": "N3 · Level 9",
-        "sets": [
-            [
-                {
-                    "jp": "種類",
-                    "reading": "しゅるい",
-                    "en": "variety",
-                    "meanings": [
-                        "variety",
-                        "kind"
-                    ],
-                    "example": {
-                        "jp": "彼はあらゆる種類の人と接触する。",
-                        "en": "He comes into contact with all kinds of people.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>はあらゆる<ruby>種類<rp>(</rp><rt>しゅるい</rt><rp>)</rp></ruby>の<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>と<ruby>接触<rp>(</rp><rt>せっしょく</rt><rp>)</rp></ruby>する。",
-                        "enMn": "Тэр бүх төрлийн хүмүүстэй харилцдаг."
-                    },
-                    "phonetic": "重",
-                    "phoneticReading": "シュ",
-                    "enMn": "төрөл зүйл",
-                    "meaningsMn": [
-                        "төрөл зүйл",
-                        "төрөл"
-                    ]
-                },
-                {
-                    "jp": "種",
-                    "reading": "たね",
-                    "en": "seed",
-                    "meanings": [
-                        "seed",
-                        "material",
-                        "cause"
-                    ],
-                    "example": {
-                        "jp": "彼は種からトマトの苗を育てた。",
-                        "en": "He raised tomato plants from seed.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>種<rp>(</rp><rt>たね</rt><rp>)</rp></ruby>からトマトの<ruby>苗<rp>(</rp><rt>なえ</rt><rp>)</rp></ruby>を<ruby>育<rp>(</rp><rt>そだ</rt><rp>)</rp></ruby>てた。",
-                        "enMn": "Тэр улаан лоолийг үрээс ургуулсан."
-                    },
-                    "phonetic": "重",
-                    "phoneticReading": "シュ",
-                    "enMn": "үр",
-                    "meaningsMn": [
-                        "үр",
-                        "материал",
-                        "шалтгаан"
-                    ]
-                },
-                {
-                    "jp": "職業",
-                    "reading": "しょくぎょう",
-                    "en": "occupation",
-                    "meanings": [
-                        "occupation",
-                        "business"
-                    ],
-                    "example": {
-                        "jp": "婦人に開放されている職業は多い。",
-                        "en": "There are many careers open to women.",
-                        "furigana": "<ruby>婦人<rp>(</rp><rt>ふじん</rt><rp>)</rp></ruby>に<ruby>開放<rp>(</rp><rt>かいほう</rt><rp>)</rp></ruby>されている<ruby>職業<rp>(</rp><rt>しょくぎょう</rt><rp>)</rp></ruby>は<ruby>多<rp>(</rp><rt>おお</rt><rp>)</rp></ruby>い。",
-                        "enMn": "Эмэгтэйчүүдэд нээлттэй олон мэргэжил бий."
-                    },
-                    "phonetic": "戠",
-                    "phoneticReading": "シキ、ショク",
-                    "enMn": "мэргэжил",
-                    "meaningsMn": [
-                        "мэргэжил",
-                        "худалдаа"
-                    ]
-                },
-                {
-                    "jp": "職",
-                    "reading": "しょく",
-                    "en": "employment",
-                    "meanings": [
-                        "employment"
-                    ],
-                    "example": {
-                        "jp": "貴職らにとっては重要なことです。",
-                        "en": "This is an important thing for all of you.",
-                        "furigana": "<ruby>貴<rp>(</rp><rt>き</rt><rp>)</rp></ruby><ruby>職<rp>(</rp><rt>しょく</rt><rp>)</rp></ruby>らにとっては<ruby>重要<rp>(</rp><rt>じゅうよう</rt><rp>)</rp></ruby>なことです。",
-                        "enMn": "Энэ бол та бүхэнд чухал зүйл юм."
-                    },
-                    "phonetic": "戠",
-                    "phoneticReading": "シキ、ショク",
-                    "enMn": "ажил эрхлэлт",
-                    "meaningsMn": [
-                        "ажил эрхлэлт"
-                    ]
-                },
-                {
-                    "jp": "書類",
-                    "reading": "しょるい",
-                    "en": "documents",
-                    "meanings": [
-                        "documents",
-                        "official papers"
-                    ],
-                    "example": {
-                        "jp": "彼は書類を折り畳んで時計を見た。",
-                        "en": "He folded his paper, consulting his watch.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>書類<rp>(</rp><rt>しょるい</rt><rp>)</rp></ruby>を<ruby>折<rp>(</rp><rt>お</rt><rp>)</rp></ruby>り<ruby>畳<rp>(</rp><rt>たた</rt><rp>)</rp></ruby>んで<ruby>時計<rp>(</rp><rt>とけい</rt><rp>)</rp></ruby>を<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>た。",
-                        "enMn": "Тэр цагаа хараад цаасаа нугалав."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "бичиг баримт",
-                    "meaningsMn": [
-                        "бичиг баримт",
-                        "албан бичиг"
-                    ]
-                },
-                {
-                    "jp": "商売",
-                    "reading": "しょうばい",
-                    "en": "business",
-                    "meanings": [
-                        "trade",
-                        "business",
-                        "commerce"
-                    ],
-                    "example": {
-                        "jp": "彼は父からその商売を引き継いだ。",
-                        "en": "He took over the business from his father.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>父<rp>(</rp><rt>ちち</rt><rp>)</rp></ruby>からその<ruby>商売<rp>(</rp><rt>しょうばい</rt><rp>)</rp></ruby>を<ruby>引<rp>(</rp><rt>ひ</rt><rp>)</rp></ruby>き<ruby>継<rp>(</rp><rt>つ</rt><rp>)</rp></ruby>いだ。",
-                        "enMn": "Тэр бизнесээ ааваасаа өвлөн авсан."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "худалдаа",
-                    "meaningsMn": [
-                        "худалдаа",
-                        "худалдаа",
-                        "худалдаа"
-                    ]
-                },
-                {
-                    "jp": "食欲",
-                    "reading": "しょくよく",
-                    "en": "appetite",
-                    "meanings": [
-                        "appetite (for food)"
-                    ],
-                    "example": {
-                        "jp": "あんたのせいで食欲をなくしたよ。",
-                        "en": "Thanks to you I've lost my appetite.",
-                        "furigana": "あんたのせいで<ruby>食欲<rp>(</rp><rt>しょくよく</rt><rp>)</rp></ruby>をなくしたよ。",
-                        "enMn": "Чиний л буруугаас надад хоолны дур хүрэхээ больжээ."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хоолны дуршил",
-                    "meaningsMn": [
-                        "хоолны дур"
-                    ]
-                },
-                {
-                    "jp": "上達",
-                    "reading": "じょうたつ",
-                    "en": "improvement",
-                    "meanings": [
-                        "improvement",
-                        "advance"
-                    ],
-                    "example": {
-                        "jp": "彼もやがて英語が上達するであろう。",
-                        "en": "His English will improve in the course of time.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>もやがて<ruby>英語<rp>(</rp><rt>えいご</rt><rp>)</rp></ruby>が<ruby>上達<rp>(</rp><rt>じょうたつ</rt><rp>)</rp></ruby>するであろう。",
-                        "enMn": "Түүний англи хэл цаг хугацааны явцад сайжирна."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "дэвшил",
-                    "meaningsMn": [
-                        "сайжруулалт",
-                        "ахиц дэвшил"
-                    ]
-                },
-                {
-                    "jp": "条件",
-                    "reading": "じょうけん",
-                    "en": "condition",
-                    "meanings": [
-                        "conditions",
-                        "terms"
-                    ],
-                    "example": {
-                        "jp": "彼女は条件が不公平だと言い張る。",
-                        "en": "She will have it that the conditions are unfair.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>条件<rp>(</rp><rt>じょうけん</rt><rp>)</rp></ruby>が<ruby>不公平<rp>(</rp><rt>ふこうへい</rt><rp>)</rp></ruby>だと<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>い<ruby>張<rp>(</rp><rt>は</rt><rp>)</rp></ruby>る。",
-                        "enMn": "Тэр нөхцөл шударга бус гэдгээ тууштай мэдэгддэг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "нөхцөл",
-                    "meaningsMn": [
-                        "нөхцөл",
-                        "нөхцөлүүд"
-                    ]
-                },
-                {
-                    "jp": "冗談",
-                    "reading": "じょうだん",
-                    "en": "a joke",
-                    "meanings": [
-                        "a joke"
-                    ],
-                    "example": {
-                        "jp": "彼女はその冗談をおもしろがった。",
-                        "en": "She was amused at the joke.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はその<ruby>冗談<rp>(</rp><rt>じょうだん</rt><rp>)</rp></ruby>をおもしろがった。",
-                        "enMn": "Тэр хошин үгэнд хөгжилдсөн."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "шог үг",
-                    "meaningsMn": [
-                        "шог үг"
-                    ]
-                },
-                {
-                    "jp": "救う",
-                    "reading": "すくう",
-                    "en": "to rescue from",
-                    "meanings": [
-                        "to rescue from",
-                        "to help out of"
-                    ],
-                    "example": {
-                        "jp": "平和しか世界を救うことはできない。",
-                        "en": "Nothing but peace can save the world.",
-                        "furigana": "<ruby>平和<rp>(</rp><rt>へいわ</rt><rp>)</rp></ruby>しか<ruby>世界<rp>(</rp><rt>せかい</rt><rp>)</rp></ruby>を<ruby>救<rp>(</rp><rt>すく</rt><rp>)</rp></ruby>うことはできない。",
-                        "enMn": "Зөвхөн энх тайван л дэлхийг аварч чадна."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "аврах",
-                    "meaningsMn": [
-                        "аврах"
-                    ]
-                },
-                {
-                    "jp": "すくなくとも",
-                    "reading": "すくなくとも",
-                    "en": "at least",
-                    "meanings": [
-                        "at least"
-                    ],
-                    "example": {
-                        "jp": "弟は超重要人物だ。すくなくとも奴はそう思っている。",
-                        "en": "My brother is very important. At least he thinks he is.",
-                        "furigana": "<ruby>弟<rp>(</rp><rt>おとうと</rt><rp>)</rp></ruby>は<ruby>超<rp>(</rp><rt>ちょう</rt><rp>)</rp></ruby><ruby>重要<rp>(</rp><rt>じゅうよう</rt><rp>)</rp></ruby><ruby>人物<rp>(</rp><rt>じんぶつ</rt><rp>)</rp></ruby>だ。すくなくとも<ruby>奴<rp>(</rp><rt>やつ</rt><rp>)</rp></ruby>はそう<ruby>思<rp>(</rp><rt>おも</rt><rp>)</rp></ruby>っている。",
-                        "enMn": "Дүү маань туйлын чухал хүн. Ядаж л тэр өөрөө тэгж боддог."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "ядаж",
-                    "meaningsMn": [
-                        "ядаж"
-                    ]
-                },
-                {
-                    "jp": "スケート",
-                    "reading": "スケート",
-                    "en": "skate(s)",
-                    "meanings": [
-                        "skate(s)",
-                        "skating"
-                    ],
-                    "example": {
-                        "jp": "氷が薄すぎてスケートができません。",
-                        "en": "The ice is too thin to skate on.",
-                        "furigana": "<ruby>氷<rp>(</rp><rt>こおり</rt><rp>)</rp></ruby>が<ruby>薄<rp>(</rp><rt>うす</rt><rp>)</rp></ruby>すぎてスケートができません。",
-                        "enMn": "Мөс хэт нимгэн учир тэшүүрээр гулгаж чадахгүй."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "тэшүүр",
-                    "meaningsMn": [
-                        "тэшүүр"
-                    ]
-                },
-                {
                     "jp": "スケジュール",
                     "reading": "スケジュール",
                     "en": "schedule",
@@ -16845,91 +16752,6 @@ const WORD_LEVELS = [
                     "enMn": "хуваарь",
                     "meaningsMn": [
                         "хуваарь"
-                    ]
-                },
-                {
-                    "jp": "筋",
-                    "reading": "すじ",
-                    "en": "muscle",
-                    "meanings": [
-                        "muscle",
-                        "string",
-                        "line"
-                    ],
-                    "example": {
-                        "jp": "儲けようとする投機筋に操られているのです。",
-                        "en": "It's being manipulated by investors trying to make it rich.",
-                        "furigana": "<ruby>儲<rp>(</rp><rt>もう</rt><rp>)</rp></ruby>けようとする<ruby>投機<rp>(</rp><rt>とうき</rt><rp>)</rp></ruby><ruby>筋<rp>(</rp><rt>すじ</rt><rp>)</rp></ruby>に<ruby>操<rp>(</rp><rt>あやつ</rt><rp>)</rp></ruby>られているのです。",
-                        "enMn": "Ашиг хөөсөн дамын наймаачдын гарт хөтлөгдөж байгаа юм."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "булчин",
-                    "meaningsMn": [
-                        "булчин"
-                    ]
-                },
-                {
-                    "jp": "進める",
-                    "reading": "すすめる",
-                    "en": "to advance",
-                    "meanings": [
-                        "to advance",
-                        "to promote",
-                        "to hasten"
-                    ],
-                    "example": {
-                        "jp": "そのチームはすぐに計画を進めるだろう。",
-                        "en": "The team will go ahead with the plan soon.",
-                        "furigana": "そのチームはすぐに<ruby>計画<rp>(</rp><rt>けいかく</rt><rp>)</rp></ruby>を<ruby>進<rp>(</rp><rt>すす</rt><rp>)</rp></ruby>めるだろう。",
-                        "enMn": "Тэр баг удахгүй төлөвлөгөөгөө ахиулах байх."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "ахиулах",
-                    "meaningsMn": [
-                        "ахиулах"
-                    ]
-                },
-                {
-                    "jp": "勧める",
-                    "reading": "すすめる",
-                    "en": "to urge (someone) to do (something)",
-                    "meanings": [
-                        "to urge (someone) to do (something)",
-                        "to recommend"
-                    ],
-                    "example": {
-                        "jp": "彼女はいつも新しいものを試すよう彼に勧める。",
-                        "en": "She always urges him to try new things.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はいつも<ruby>新<rp>(</rp><rt>あたら</rt><rp>)</rp></ruby>しいものを<ruby>試<rp>(</rp><rt>ため</rt><rp>)</rp></ruby>すよう<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>に<ruby>勧<rp>(</rp><rt>すす</rt><rp>)</rp></ruby>める。",
-                        "enMn": "Тэр түүнд үргэлж шинэ зүйл туршиж үзэхийг зөвлөдөг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "зөвлөх",
-                    "meaningsMn": [
-                        "зөвлөх"
-                    ]
-                },
-                {
-                    "jp": "スター",
-                    "reading": "スター",
-                    "en": "star",
-                    "meanings": [
-                        "star"
-                    ],
-                    "example": {
-                        "jp": "彼女は私をスターにした。",
-                        "en": "She made me a star.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>をスターにした。",
-                        "enMn": "Тэр намайг од болгосон."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "од",
-                    "meaningsMn": [
-                        "од"
                     ]
                 },
                 {
@@ -16973,225 +16795,386 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "頭痛",
-                    "reading": "ずつう",
-                    "en": "headache",
+                    "jp": "墨",
+                    "reading": "すみ",
+                    "en": "ink",
                     "meanings": [
-                        "headache"
+                        "ink"
                     ],
                     "example": {
-                        "jp": "頭痛がする。",
-                        "en": "I have a headache.",
-                        "furigana": "<ruby>頭痛<rp>(</rp><rt>ずつう</rt><rp>)</rp></ruby>がする。",
-                        "enMn": "Толгой өвдөж байна."
+                        "jp": "墨を染料として使うと面白い模様ができます。",
+                        "en": "India ink produces an interesting pattern when used as a dye.",
+                        "furigana": "<ruby>墨<rp>(</rp><rt>すみ</rt><rp>)</rp></ruby>を<ruby>染料<rp>(</rp><rt>せんりょう</rt><rp>)</rp></ruby>として<ruby>使<rp>(</rp><rt>つか</rt><rp>)</rp></ruby>うと<ruby>面白<rp>(</rp><rt>おもしろ</rt><rp>)</rp></ruby>い<ruby>模様<rp>(</rp><rt>もよう</rt><rp>)</rp></ruby>ができます。",
+                        "enMn": "Бэхийг будаг болгон хэрэглэвэл сонирхолтой хээ гардаг."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "толгой өвдөлт",
+                    "enMn": "бэх",
                     "meaningsMn": [
-                        "толгой өвдөлт"
+                        "бэх"
                     ]
                 },
                 {
-                    "jp": "ずっと",
-                    "reading": "ずっと",
-                    "en": "for a long time",
+                    "jp": "衣服",
+                    "reading": "いふく",
+                    "en": "clothes",
                     "meanings": [
-                        "for a long time; all the time; consecutively"
+                        "clothes"
                     ],
-                    "example": {
-                        "jp": "午後はずっと友人とおしゃべりをして過ごした。",
-                        "en": "I spent the whole afternoon chatting with friends.",
-                        "furigana": "<ruby>午後<rp>(</rp><rt>ごご</rt><rp>)</rp></ruby>はずっと<ruby>友人<rp>(</rp><rt>ゆうじん</rt><rp>)</rp></ruby>とおしゃべりをして<ruby>過<rp>(</rp><rt>す</rt><rp>)</rp></ruby>ごした。",
-                        "enMn": "Үдээс хойш би найзтайгаа чалчиж өнгөрөөлөө."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "үргэлж",
+                    "example": null,
+                    "phonetic": "衣",
+                    "phoneticReading": "イ",
+                    "enMn": "хувцас",
                     "meaningsMn": [
-                        "үргэлж"
+                        "хувцас"
                     ]
                 },
                 {
-                    "jp": "すてき",
-                    "reading": "すてき",
-                    "en": "lovely",
+                    "jp": "香り",
+                    "reading": "かおり",
+                    "en": "aroma",
                     "meanings": [
-                        "lovely",
-                        "great"
+                        "aroma",
+                        "fragrance"
                     ],
-                    "example": {
-                        "jp": "彼女は私にすてきな微笑みを投げかけてくれた。",
-                        "en": "She gave me a charming smile.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>にすてきな<ruby>微<rp>(</rp><rt>び</rt><rp>)</rp></ruby><ruby>笑<rp>(</rp><rt>え</rt><rp>)</rp></ruby>みを<ruby>投<rp>(</rp><rt>な</rt><rp>)</rp></ruby>げかけてくれた。",
-                        "enMn": "Тэр надад гоё инээмсэглэл илгээв."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "гоё",
+                    "example": null,
+                    "phonetic": "香",
+                    "phoneticReading": "キョウ",
+                    "enMn": "үнэрлэх чадвар",
                     "meaningsMn": [
-                        "гоё"
+                        "үнэрлэх чадвар"
                     ]
                 },
                 {
-                    "jp": "既に",
-                    "reading": "すでに",
-                    "en": "already (same as もう)",
+                    "jp": "家具",
+                    "reading": "かぐ",
+                    "en": "furniture",
                     "meanings": [
-                        "already (same as もう)"
+                        "furniture"
                     ],
-                    "example": {
-                        "jp": "見渡すと、既に船はかなり沖の方にいた。",
-                        "en": "Looking around the boat was already quite far out in the open sea.",
-                        "furigana": "<ruby>見渡<rp>(</rp><rt>みわた</rt><rp>)</rp></ruby>すと、<ruby>既<rp>(</rp><rt>すで</rt><rp>)</rp></ruby>に<ruby>船<rp>(</rp><rt>ふね</rt><rp>)</rp></ruby>はかなり<ruby>沖<rp>(</rp><rt>おき</rt><rp>)</rp></ruby>の<ruby>方<rp>(</rp><rt>ほう</rt><rp>)</rp></ruby>にいた。",
-                        "enMn": "Эргэн тойрноо харахад хөлөг онгоц аль хэдийн нэлээд алс далайд байлаа."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "аль хэдийн",
+                    "example": null,
+                    "phonetic": "家",
+                    "phoneticReading": "カ",
+                    "enMn": "тавилга",
                     "meaningsMn": [
-                        "аль хэдийн"
+                        "тавилга"
                     ]
                 },
                 {
-                    "jp": "すなわち",
-                    "reading": "すなわち",
-                    "en": "that is",
+                    "jp": "切れる",
+                    "reading": "きれる",
+                    "en": "to cut well",
                     "meanings": [
-                        "that is",
-                        "namely",
-                        "e.g."
+                        "to cut well",
+                        "to be sharp; to break (off)"
                     ],
-                    "example": {
-                        "jp": "彼女は今度の日曜、すなわち１０日に帰ります。",
-                        "en": "She will return home next Sunday, that is, the tenth.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>今度<rp>(</rp><rt>こんど</rt><rp>)</rp></ruby>の<ruby>日曜<rp>(</rp><rt>にちよう</rt><rp>)</rp></ruby>、すなわち１０<ruby>日<rp>(</rp><rt>にち</rt><rp>)</rp></ruby>に<ruby>帰<rp>(</rp><rt>かえ</rt><rp>)</rp></ruby>ります。",
-                        "enMn": "Тэр ирэх ням гараг, өөрөөр хэлбэл 10-нд буцаж ирнэ."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "өөрөөр хэлбэл",
+                    "example": null,
+                    "phonetic": "切",
+                    "phoneticReading": "セツ",
+                    "enMn": "хагарах",
                     "meaningsMn": [
-                        "өөрөөр хэлбэл"
+                        "хагарах"
+                    ]
+                },
+                {
+                    "jp": "粉",
+                    "reading": "こな",
+                    "en": "flour",
+                    "meanings": [
+                        "flour",
+                        "powder"
+                    ],
+                    "example": null,
+                    "phonetic": "分",
+                    "phoneticReading": "フン",
+                    "enMn": "гурил",
+                    "meaningsMn": [
+                        "гурил"
                     ]
                 }
             ]
-        ]
+        ],
+        "themeKey": "theme.n3.9"
     },
     {
         "level": 34,
         "jlpt": "N3",
-        "title": "N3 · Level 10",
+        "title": "Trouble and danger",
         "sets": [
             [
                 {
-                    "jp": "週",
-                    "reading": "しゅう",
-                    "en": "week",
+                    "jp": "銃",
+                    "reading": "じゅう",
+                    "en": "gun",
                     "meanings": [
-                        "week"
+                        "gun"
                     ],
                     "example": {
-                        "jp": "彼女は週に１度両親に手紙を出す。",
-                        "en": "She writes to her parents once a week.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>週<rp>(</rp><rt>しゅう</rt><rp>)</rp></ruby>に１<ruby>度<rp>(</rp><rt>ど</rt><rp>)</rp></ruby><ruby>両親<rp>(</rp><rt>りょうしん</rt><rp>)</rp></ruby>に<ruby>手紙<rp>(</rp><rt>てがみ</rt><rp>)</rp></ruby>を<ruby>出<rp>(</rp><rt>だ</rt><rp>)</rp></ruby>す。",
-                        "enMn": "Тэр эцэг эхдээ долоо хоногт нэг удаа захидал бичдэг."
+                        "jp": "猟師たちは銃でその象をねらった。",
+                        "en": "The hunters aimed at the elephant.",
+                        "furigana": "<ruby>猟師<rp>(</rp><rt>りょうし</rt><rp>)</rp></ruby>たちは<ruby>銃<rp>(</rp><rt>じゅう</rt><rp>)</rp></ruby>でその<ruby>象<rp>(</rp><rt>ぞう</rt><rp>)</rp></ruby>をねらった。",
+                        "enMn": "Анчид заанд буугаа чиглүүлэв."
                     },
-                    "phonetic": "周",
-                    "phoneticReading": "シュウ、チョウ",
-                    "enMn": "долоо хоног",
+                    "phonetic": "充",
+                    "phoneticReading": "ジュウ",
+                    "enMn": "буу",
                     "meaningsMn": [
-                        "долоо хоног"
+                        "буу"
                     ]
                 },
                 {
-                    "jp": "周囲",
-                    "reading": "しゅうい",
-                    "en": "surroundings",
+                    "jp": "障害",
+                    "reading": "しょうがい",
+                    "en": "obstacle",
                     "meanings": [
-                        "surroundings",
-                        "circumference",
-                        "environs"
+                        "obstacle",
+                        "impediment"
                     ],
                     "example": {
-                        "jp": "僕らの周囲で水はよどんでいた。",
-                        "en": "The water was dead around us.",
-                        "furigana": "<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>らの<ruby>周囲<rp>(</rp><rt>しゅうい</rt><rp>)</rp></ruby>で<ruby>水<rp>(</rp><rt>みず</rt><rp>)</rp></ruby>はよどんでいた。",
-                        "enMn": "Бидний эргэн тойрны ус зогсонги байв."
+                        "jp": "貧困は幸福への障害とはならない。",
+                        "en": "Poverty is not a bar to happiness.",
+                        "furigana": "<ruby>貧困<rp>(</rp><rt>ひんこん</rt><rp>)</rp></ruby>は<ruby>幸福<rp>(</rp><rt>こうふく</rt><rp>)</rp></ruby>への<ruby>障害<rp>(</rp><rt>しょうがい</rt><rp>)</rp></ruby>とはならない。",
+                        "enMn": "Ядуурал бол аз жаргалд саад болохгүй."
                     },
-                    "phonetic": "周",
-                    "phoneticReading": "シュウ、チョウ",
-                    "enMn": "орчин тойрон",
+                    "phonetic": "章",
+                    "phoneticReading": "ショウ",
+                    "enMn": "саад",
                     "meaningsMn": [
-                        "орчин тойрон",
-                        "орчим",
-                        "орчин тойрон"
+                        "саад",
+                        "саад"
                     ]
                 },
                 {
-                    "jp": "処理",
-                    "reading": "しょり",
-                    "en": "processing",
+                    "jp": "騒ぎ",
+                    "reading": "さわぎ",
+                    "en": "uproar",
                     "meanings": [
-                        "processing",
-                        "treatment",
-                        "disposition"
+                        "uproar",
+                        "disturbance"
                     ],
                     "example": {
-                        "jp": "彼は難問をうまく処理するだろう。",
-                        "en": "He'll cope with difficult problems.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>難問<rp>(</rp><rt>なんもん</rt><rp>)</rp></ruby>をうまく<ruby>処理<rp>(</rp><rt>しょり</rt><rp>)</rp></ruby>するだろう。",
-                        "enMn": "Тэр хэцүү асуудлуудыг даван туулна."
+                        "jp": "騒ぎは２、３日で過ぎ去った。",
+                        "en": "The trouble blew over after a few days.",
+                        "furigana": "<ruby>騒<rp>(</rp><rt>さわ</rt><rp>)</rp></ruby>ぎは２、３<ruby>日<rp>(</rp><rt>にち</rt><rp>)</rp></ruby>で<ruby>過<rp>(</rp><rt>す</rt><rp>)</rp></ruby>ぎ<ruby>去<rp>(</rp><rt>さ</rt><rp>)</rp></ruby>った。",
+                        "enMn": "Үймээн хоёр гурван хоногийн дотор намжив."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "боловсруулалт",
+                    "enMn": "үймээн",
                     "meaningsMn": [
-                        "боловсруулалт",
-                        "боловсруулалт",
-                        "зохицуулалт"
+                        "үймээн"
                     ]
                 },
                 {
-                    "jp": "商品",
-                    "reading": "しょうひん",
-                    "en": "commodity",
+                    "jp": "事件",
+                    "reading": "じけん",
+                    "en": "event",
                     "meanings": [
-                        "commodity",
-                        "merchandise"
+                        "event",
+                        "affair",
+                        "incident"
                     ],
                     "example": {
-                        "jp": "彼女の商品の半分は安く売られた。",
-                        "en": "Half her goods were sold cheap.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>の<ruby>商品<rp>(</rp><rt>しょうひん</rt><rp>)</rp></ruby>の<ruby>半分<rp>(</rp><rt>はんぶん</rt><rp>)</rp></ruby>は<ruby>安<rp>(</rp><rt>やす</rt><rp>)</rp></ruby>く<ruby>売<rp>(</rp><rt>う</rt><rp>)</rp></ruby>られた。",
-                        "enMn": "Түүний барааны хагасыг хямд үнээр зарсан."
+                        "jp": "殺人事件の背後に潜むミステリーを解き明かせ。",
+                        "en": "Solve the mystery lurking behind the murder!",
+                        "furigana": "<ruby>殺人<rp>(</rp><rt>さつじん</rt><rp>)</rp></ruby><ruby>事件<rp>(</rp><rt>じけん</rt><rp>)</rp></ruby>の<ruby>背後<rp>(</rp><rt>はいご</rt><rp>)</rp></ruby>に<ruby>潜<rp>(</rp><rt>ひそ</rt><rp>)</rp></ruby>むミステリーを<ruby>解<rp>(</rp><rt>と</rt><rp>)</rp></ruby>き<ruby>明<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>かせ。",
+                        "enMn": "Аллагын хэргийн ард нуугдаж буй нууцыг тайл!"
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "бараа бүтээгдэхүүн",
+                    "enMn": "үйл явдал",
                     "meaningsMn": [
-                        "бараа бүтээгдэхүүн",
-                        "бараа бүтээгдэхүүн"
+                        "үйл явдал"
                     ]
                 },
                 {
-                    "jp": "常識",
-                    "reading": "じょうしき",
-                    "en": "common sense",
+                    "jp": "渋滞",
+                    "reading": "じゅうたい",
+                    "en": "congestion (e.g., traffic)",
                     "meanings": [
-                        "common sense"
+                        "congestion (e.g., traffic)",
+                        "delay"
                     ],
                     "example": {
-                        "jp": "彼は常識に欠けているに違いない。",
-                        "en": "He must be lacking in common sense.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>常識<rp>(</rp><rt>じょうしき</rt><rp>)</rp></ruby>に<ruby>欠<rp>(</rp><rt>か</rt><rp>)</rp></ruby>けているに<ruby>違<rp>(</rp><rt>ちが</rt><rp>)</rp></ruby>いない。",
-                        "enMn": "Тэр эрүүл ухаан дутагдаж байх ёстой."
+                        "jp": "父は今朝、交通渋滞のために仕事に遅れた。",
+                        "en": "My father was late for work this morning because of a traffic jam.",
+                        "furigana": "<ruby>父<rp>(</rp><rt>ちち</rt><rp>)</rp></ruby>は<ruby>今朝<rp>(</rp><rt>けさ</rt><rp>)</rp></ruby>、<ruby>交通<rp>(</rp><rt>こうつう</rt><rp>)</rp></ruby><ruby>渋滞<rp>(</rp><rt>じゅうたい</rt><rp>)</rp></ruby>のために<ruby>仕事<rp>(</rp><rt>しごと</rt><rp>)</rp></ruby>に<ruby>遅<rp>(</rp><rt>おく</rt><rp>)</rp></ruby>れた。",
+                        "enMn": "Аав өнөө өглөө замын түгжрэлээс болж ажилдаа хоцров."
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "эгэл ойлголт",
+                    "enMn": "түгжрэл",
                     "meaningsMn": [
-                        "эгэл ойлголт"
+                        "түгжрэл"
+                    ]
+                },
+                {
+                    "jp": "重大",
+                    "reading": "じゅうだい",
+                    "en": "serious",
+                    "meanings": [
+                        "serious",
+                        "important"
+                    ],
+                    "example": {
+                        "jp": "不注意は重大な欠点と見なされた。",
+                        "en": "Carelessness was looked on as a serious defect.",
+                        "furigana": "<ruby>不注意<rp>(</rp><rt>ふちゅうい</rt><rp>)</rp></ruby>は<ruby>重大<rp>(</rp><rt>じゅうだい</rt><rp>)</rp></ruby>な<ruby>欠点<rp>(</rp><rt>けってん</rt><rp>)</rp></ruby>と<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>なされた。",
+                        "enMn": "Болгоомжгүй байдлыг ноцтой дутагдал гэж үзэв."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "ноцтой",
+                    "meaningsMn": [
+                        "ноцтой"
+                    ]
+                },
+                {
+                    "jp": "失望",
+                    "reading": "しつぼう",
+                    "en": "disappointment",
+                    "meanings": [
+                        "disappointment",
+                        "despair"
+                    ],
+                    "example": {
+                        "jp": "彼らは互いに失望を感じている。",
+                        "en": "They are disappointed with each other.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>互<rp>(</rp><rt>たが</rt><rp>)</rp></ruby>いに<ruby>失望<rp>(</rp><rt>しつぼう</rt><rp>)</rp></ruby>を<ruby>感<rp>(</rp><rt>かん</rt><rp>)</rp></ruby>じている。",
+                        "enMn": "Тэд бие биедээ урам хугарсан байна."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "гутрал",
+                    "meaningsMn": [
+                        "гутрал",
+                        "цөхрөл"
+                    ]
+                },
+                {
+                    "jp": "沈む",
+                    "reading": "しずむ",
+                    "en": "to sink",
+                    "meanings": [
+                        "to sink",
+                        "to feel depressed"
+                    ],
+                    "example": {
+                        "jp": "陽は知らぬ間に地平線下に沈んだ。",
+                        "en": "The sun sank below the horizon before I knew it.",
+                        "furigana": "<ruby>陽<rp>(</rp><rt>ひ</rt><rp>)</rp></ruby>は<ruby>知<rp>(</rp><rt>し</rt><rp>)</rp></ruby>らぬ<ruby>間<rp>(</rp><rt>ま</rt><rp>)</rp></ruby>に<ruby>地平線<rp>(</rp><rt>ちへいせん</rt><rp>)</rp></ruby><ruby>下<rp>(</rp><rt>か</rt><rp>)</rp></ruby>に<ruby>沈<rp>(</rp><rt>しず</rt><rp>)</rp></ruby>んだ。",
+                        "enMn": "Нар мэдэхгүй л байтал тэнгэрийн хаяанаас доош шингэв."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "живэх",
+                    "meaningsMn": [
+                        "живэх",
+                        "гуниглах"
+                    ]
+                },
+                {
+                    "jp": "生じる",
+                    "reading": "しょうじる",
+                    "en": "to occur",
+                    "meanings": [
+                        "to occur",
+                        "to arise",
+                        "to be generated"
+                    ],
+                    "example": {
+                        "jp": "耐震性の悪い建物に亀裂が生じることもある。",
+                        "en": "Also cracks may form in buildings that aren't Earthquake proof.",
+                        "furigana": "<ruby>耐震<rp>(</rp><rt>たいしん</rt><rp>)</rp></ruby><ruby>性<rp>(</rp><rt>せい</rt><rp>)</rp></ruby>の<ruby>悪<rp>(</rp><rt>わる</rt><rp>)</rp></ruby>い<ruby>建物<rp>(</rp><rt>たてもの</rt><rp>)</rp></ruby>に<ruby>亀裂<rp>(</rp><rt>きれつ</rt><rp>)</rp></ruby>が<ruby>生<rp>(</rp><rt>しょう</rt><rp>)</rp></ruby>じることもある。",
+                        "enMn": "Газар хөдлөлтөд тэсвэргүй барилгад ан цав үүсэх нь ч бий."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "үүсэх",
+                    "meaningsMn": [
+                        "үүсэх"
+                    ]
+                },
+                {
+                    "jp": "消防",
+                    "reading": "しょうぼう",
+                    "en": "fire fighting",
+                    "meanings": [
+                        "fire fighting",
+                        "fire department"
+                    ],
+                    "example": {
+                        "jp": "彼は消防士になろうと決心した。",
+                        "en": "He made up his mind to be a fireman.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>消防<rp>(</rp><rt>しょうぼう</rt><rp>)</rp></ruby><ruby>士<rp>(</rp><rt>し</rt><rp>)</rp></ruby>になろうと<ruby>決心<rp>(</rp><rt>けっしん</rt><rp>)</rp></ruby>した。",
+                        "enMn": "Тэр гал сөнөөгч болохоор шийдэв."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "гал унтраах",
+                    "meaningsMn": [
+                        "гал унтраах"
+                    ]
+                },
+                {
+                    "jp": "死亡",
+                    "reading": "しぼう",
+                    "en": "death",
+                    "meanings": [
+                        "death"
+                    ],
+                    "example": {
+                        "jp": "飛行機事故で多くの人が死亡した。",
+                        "en": "Many people were killed in the plane accident.",
+                        "furigana": "<ruby>飛行機<rp>(</rp><rt>ひこうき</rt><rp>)</rp></ruby><ruby>事故<rp>(</rp><rt>じこ</rt><rp>)</rp></ruby>で<ruby>多<rp>(</rp><rt>おお</rt><rp>)</rp></ruby>くの<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>が<ruby>死亡<rp>(</rp><rt>しぼう</rt><rp>)</rp></ruby>した。",
+                        "enMn": "Онгоцны ослоор олон хүн нас барсан."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "нас барах",
+                    "meaningsMn": [
+                        "нас барах"
+                    ]
+                },
+                {
+                    "jp": "深刻",
+                    "reading": "しんこく",
+                    "en": "serious",
+                    "meanings": [
+                        "serious"
+                    ],
+                    "example": {
+                        "jp": "彼らはその事故の深刻さを理解できなかった。",
+                        "en": "They couldn't comprehend the seriousness of the matter.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らはその<ruby>事故<rp>(</rp><rt>じこ</rt><rp>)</rp></ruby>の<ruby>深刻<rp>(</rp><rt>しんこく</rt><rp>)</rp></ruby>さを<ruby>理解<rp>(</rp><rt>りかい</rt><rp>)</rp></ruby>できなかった。",
+                        "enMn": "Тэд тэр ослын ноцтой байдлыг ойлгож чадаагүй."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хүндрэлтэй",
+                    "meaningsMn": [
+                        "хүндрэлтэй"
+                    ]
+                },
+                {
+                    "jp": "救う",
+                    "reading": "すくう",
+                    "en": "to rescue from",
+                    "meanings": [
+                        "to rescue from",
+                        "to help out of"
+                    ],
+                    "example": {
+                        "jp": "平和しか世界を救うことはできない。",
+                        "en": "Nothing but peace can save the world.",
+                        "furigana": "<ruby>平和<rp>(</rp><rt>へいわ</rt><rp>)</rp></ruby>しか<ruby>世界<rp>(</rp><rt>せかい</rt><rp>)</rp></ruby>を<ruby>救<rp>(</rp><rt>すく</rt><rp>)</rp></ruby>うことはできない。",
+                        "enMn": "Зөвхөн энх тайван л дэлхийг аварч чадна."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "аврах",
+                    "meaningsMn": [
+                        "аврах"
                     ]
                 },
                 {
@@ -17217,213 +17200,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "女優",
-                    "reading": "じょゆう",
-                    "en": "actress",
-                    "meanings": [
-                        "actress"
-                    ],
-                    "example": {
-                        "jp": "彼女は女優になることを志した。",
-                        "en": "She aimed to become an actress.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>女優<rp>(</rp><rt>じょゆう</rt><rp>)</rp></ruby>になることを<ruby>志<rp>(</rp><rt>こころざ</rt><rp>)</rp></ruby>した。",
-                        "enMn": "Тэр жүжигчин болохоор зорьсон."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "жүжигчин эмэгтэй",
-                    "meaningsMn": [
-                        "жүжигчин эмэгтэй"
-                    ]
-                },
-                {
-                    "jp": "状態",
-                    "reading": "じょうたい",
-                    "en": "state",
-                    "meanings": [
-                        "condition",
-                        "situation"
-                    ],
-                    "example": {
-                        "jp": "横には喧嘩状態の妻が眠っている。",
-                        "en": "To my side, my wife, who I'm presently at odds with, lies sleeping.",
-                        "furigana": "<ruby>横<rp>(</rp><rt>よこ</rt><rp>)</rp></ruby>には<ruby>喧嘩<rp>(</rp><rt>けんか</rt><rp>)</rp></ruby><ruby>状態<rp>(</rp><rt>じょうたい</rt><rp>)</rp></ruby>の<ruby>妻<rp>(</rp><rt>つま</rt><rp>)</rp></ruby>が<ruby>眠<rp>(</rp><rt>ねむ</rt><rp>)</rp></ruby>っている。",
-                        "enMn": "Миний хажууд одоогоор муудалцаж буй эхнэр минь унтаж хэвтэж байна."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "байдал",
-                    "meaningsMn": [
-                        "нөхцөл",
-                        "нөхцөл байдал"
-                    ]
-                },
-                {
-                    "jp": "順調",
-                    "reading": "じゅんちょう",
-                    "en": "going well",
-                    "meanings": [
-                        "doing well"
-                    ],
-                    "example": {
-                        "jp": "猛吹雪に遭うまでは順調に進んだ。",
-                        "en": "We made good time until we ran into a blizzard.",
-                        "furigana": "<ruby>猛<rp>(</rp><rt>もう</rt><rp>)</rp></ruby><ruby>吹雪<rp>(</rp><rt>ふぶき</rt><rp>)</rp></ruby>に<ruby>遭<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>うまでは<ruby>順調<rp>(</rp><rt>じゅんちょう</rt><rp>)</rp></ruby>に<ruby>進<rp>(</rp><rt>すす</rt><rp>)</rp></ruby>んだ。",
-                        "enMn": "Бид цасан шуурганд орох хүртлээ сайн явж байсан."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "амжилттай явж буй",
-                    "meaningsMn": [
-                        "сайн явж байгаа"
-                    ]
-                },
-                {
-                    "jp": "状況",
-                    "reading": "じょうきょう",
-                    "en": "situation",
-                    "meanings": [
-                        "state of affairs",
-                        "situation"
-                    ],
-                    "example": {
-                        "jp": "状況証拠としちゃあ、十分だね。",
-                        "en": "For circumstantial evidence, that's plenty.",
-                        "furigana": "<ruby>状況<rp>(</rp><rt>じょうきょう</rt><rp>)</rp></ruby><ruby>証拠<rp>(</rp><rt>しょうこ</rt><rp>)</rp></ruby>としちゃあ、<ruby>十分<rp>(</rp><rt>じゅうぶん</rt><rp>)</rp></ruby>だね。",
-                        "enMn": "Шууд бус нотолгооны хувьд энэ хангалттай."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "нөхцөл байдал",
-                    "meaningsMn": [
-                        "нөхцөл байдал",
-                        "нөхцөл байдал"
-                    ]
-                },
-                {
-                    "jp": "スピーチ",
-                    "reading": "スピーチ",
-                    "en": "speech",
-                    "meanings": [
-                        "speech"
-                    ],
-                    "example": {
-                        "jp": "率直に言うと、彼のスピーチはいつも退屈だ。",
-                        "en": "Frankly speaking, his speeches are always dull.",
-                        "furigana": "<ruby>率直<rp>(</rp><rt>そっちょく</rt><rp>)</rp></ruby>に<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>うと、<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>のスピーチはいつも<ruby>退屈<rp>(</rp><rt>たいくつ</rt><rp>)</rp></ruby>だ。",
-                        "enMn": "Шулуухан хэлэхэд түүний илтгэл үргэлж уйтгартай."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "илтгэл",
-                    "meaningsMn": [
-                        "илтгэл"
-                    ]
-                },
-                {
-                    "jp": "全て",
-                    "reading": "すべて",
-                    "en": "all",
-                    "meanings": [
-                        "all",
-                        "the whole",
-                        "entirely"
-                    ],
-                    "example": {
-                        "jp": "学校に全てを求めることはできない。",
-                        "en": "One can't expect everything from schools.",
-                        "furigana": "<ruby>学校<rp>(</rp><rt>がっこう</rt><rp>)</rp></ruby>に<ruby>全<rp>(</rp><rt>すべ</rt><rp>)</rp></ruby>てを<ruby>求<rp>(</rp><rt>もと</rt><rp>)</rp></ruby>めることはできない。",
-                        "enMn": "Сургуулиас бүхнийг шаардаж болохгүй."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "бүх",
-                    "meaningsMn": [
-                        "бүх"
-                    ]
-                },
-                {
-                    "jp": "済ませる",
-                    "reading": "すませる",
-                    "en": "to be finished",
-                    "meanings": [
-                        "to be finished"
-                    ],
-                    "example": {
-                        "jp": "英語の辞書なしで済ませることができますか。",
-                        "en": "Can you do without an English dictionary?",
-                        "furigana": "<ruby>英語<rp>(</rp><rt>えいご</rt><rp>)</rp></ruby>の<ruby>辞書<rp>(</rp><rt>じしょ</rt><rp>)</rp></ruby>なしで<ruby>済<rp>(</rp><rt>す</rt><rp>)</rp></ruby>ませることができますか。",
-                        "enMn": "Англи хэлний толь бичиггүйгээр өнгөрөөж чадах уу?"
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "гүйцээх",
-                    "meaningsMn": [
-                        "гүйцээх"
-                    ]
-                },
-                {
-                    "jp": "角",
-                    "reading": "すみ",
-                    "en": "corner",
-                    "meanings": [
-                        "corner"
-                    ],
-                    "example": {
-                        "jp": "カタツムリがすっと角を出した。",
-                        "en": "The snail shot out its horns.",
-                        "furigana": "カタツムリがすっと<ruby>角<rp>(</rp><rt>かく</rt><rp>)</rp></ruby>を<ruby>出<rp>(</rp><rt>だ</rt><rp>)</rp></ruby>した。",
-                        "enMn": "Эмгэн хумс эврээ цухуйлгав."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "өнцөг",
-                    "meaningsMn": [
-                        "өнцөг"
-                    ]
-                },
-                {
-                    "jp": "墨",
-                    "reading": "すみ",
-                    "en": "ink",
-                    "meanings": [
-                        "ink"
-                    ],
-                    "example": {
-                        "jp": "墨を染料として使うと面白い模様ができます。",
-                        "en": "India ink produces an interesting pattern when used as a dye.",
-                        "furigana": "<ruby>墨<rp>(</rp><rt>すみ</rt><rp>)</rp></ruby>を<ruby>染料<rp>(</rp><rt>せんりょう</rt><rp>)</rp></ruby>として<ruby>使<rp>(</rp><rt>つか</rt><rp>)</rp></ruby>うと<ruby>面白<rp>(</rp><rt>おもしろ</rt><rp>)</rp></ruby>い<ruby>模様<rp>(</rp><rt>もよう</rt><rp>)</rp></ruby>ができます。",
-                        "enMn": "Бэхийг будаг болгон хэрэглэвэл сонирхолтой хээ гардаг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "бэх",
-                    "meaningsMn": [
-                        "бэх"
-                    ]
-                },
-                {
-                    "jp": "為る",
-                    "reading": "する",
-                    "en": "to do",
-                    "meanings": [
-                        "to do",
-                        "to attempt"
-                    ],
-                    "example": {
-                        "jp": "今日、東京はとても寒く為るでしょう。",
-                        "en": "Today, Tokyo will get very cold.",
-                        "furigana": "<ruby>今日<rp>(</rp><rt>きょう</rt><rp>)</rp></ruby>、<ruby>東京<rp>(</rp><rt>とうきょう</rt><rp>)</rp></ruby>はとても<ruby>寒<rp>(</rp><rt>さむ</rt><rp>)</rp></ruby>く<ruby>為<rp>(</rp><rt>な</rt><rp>)</rp></ruby>るでしょう。",
-                        "enMn": "Өнөөдөр Токио маш хүйтэн болно."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хийх",
-                    "meaningsMn": [
-                        "хийх"
-                    ]
-                },
-                {
                     "jp": "鋭い",
                     "reading": "するどい",
                     "en": "pointed",
@@ -17442,88 +17218,6 @@ const WORD_LEVELS = [
                     "enMn": "хурц",
                     "meaningsMn": [
                         "хурц"
-                    ]
-                },
-                {
-                    "jp": "すれ違う",
-                    "reading": "すれちがう",
-                    "en": "to pass by one another",
-                    "meanings": [
-                        "to pass by one another"
-                    ],
-                    "example": {
-                        "jp": "彼女は通りですれ違う時に私に微笑みかけた。",
-                        "en": "She smiled at me as she passed me in the street.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>通<rp>(</rp><rt>とお</rt><rp>)</rp></ruby>りですれ<ruby>違<rp>(</rp><rt>ちが</rt><rp>)</rp></ruby>う<ruby>時<rp>(</rp><rt>とき</rt><rp>)</rp></ruby>に<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>に<ruby>微笑<rp>(</rp><rt>ほほえ</rt><rp>)</rp></ruby>みかけた。",
-                        "enMn": "Тэр гудамжинд хажуугаар өнгөрөхдөө надад инээмсэглэв."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хажуугаар өнгөрөх",
-                    "meaningsMn": [
-                        "хажуугаар өнгөрөх"
-                    ]
-                },
-                {
-                    "jp": "生",
-                    "reading": "せい",
-                    "en": "birth",
-                    "meanings": [
-                        "birth"
-                    ],
-                    "example": {
-                        "jp": "ここに生年月日を書いてください。",
-                        "en": "Write down your date of birth here.",
-                        "furigana": "ここに<ruby>生年月日<rp>(</rp><rt>せいねんがっぴ</rt><rp>)</rp></ruby>を<ruby>書<rp>(</rp><rt>か</rt><rp>)</rp></ruby>いてください。",
-                        "enMn": "Энд төрсөн он сар өдрөө бичнэ үү."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "төрөлт",
-                    "meaningsMn": [
-                        "төрөлт"
-                    ]
-                },
-                {
-                    "jp": "性",
-                    "reading": "せい",
-                    "en": "sex",
-                    "meanings": [
-                        "sex",
-                        "gender"
-                    ],
-                    "example": {
-                        "jp": "でも可能性は低そうだね。",
-                        "en": "But the possibility seems unlikely.",
-                        "furigana": "でも<ruby>可能<rp>(</rp><rt>かのう</rt><rp>)</rp></ruby><ruby>性<rp>(</rp><rt>せい</rt><rp>)</rp></ruby>は<ruby>低<rp>(</rp><rt>ひく</rt><rp>)</rp></ruby>そうだね。",
-                        "enMn": "Гэхдээ магадлал нь бага бололтой."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "хүйс",
-                    "meaningsMn": [
-                        "хүйс"
-                    ]
-                },
-                {
-                    "jp": "姓",
-                    "reading": "せい",
-                    "en": "surname",
-                    "meanings": [
-                        "surname",
-                        "family name"
-                    ],
-                    "example": {
-                        "jp": "彼女は結婚前スミス姓だった。",
-                        "en": "She was a Smith before her marriage.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>結婚<rp>(</rp><rt>けっこん</rt><rp>)</rp></ruby><ruby>前<rp>(</rp><rt>ぜん</rt><rp>)</rp></ruby>スミス<ruby>姓<rp>(</rp><rt>せい</rt><rp>)</rp></ruby>だった。",
-                        "enMn": "Тэр гэрлэхийн өмнө Смит овогтой байсан."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "овог",
-                    "meaningsMn": [
-                        "овог"
                     ]
                 },
                 {
@@ -17549,158 +17243,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "税",
-                    "reading": "ぜい",
-                    "en": "tax",
-                    "meanings": [
-                        "tax"
-                    ],
-                    "example": {
-                        "jp": "野党は所得税減税法案を提出した。",
-                        "en": "The opposition party put forward a bill to reduce income tax.",
-                        "furigana": "<ruby>野党<rp>(</rp><rt>やとう</rt><rp>)</rp></ruby>は<ruby>所得<rp>(</rp><rt>しょとく</rt><rp>)</rp></ruby><ruby>税<rp>(</rp><rt>ぜい</rt><rp>)</rp></ruby><ruby>減税<rp>(</rp><rt>げんぜい</rt><rp>)</rp></ruby><ruby>法案<rp>(</rp><rt>ほうあん</rt><rp>)</rp></ruby>を<ruby>提出<rp>(</rp><rt>ていしゅつ</rt><rp>)</rp></ruby>した。",
-                        "enMn": "Сөрөг хүчин орлогын албан татвар бууруулах хуулийн төсөл өргөн барив."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "татвар",
-                    "meaningsMn": [
-                        "татвар"
-                    ]
-                },
-                {
-                    "jp": "性格",
-                    "reading": "せいかく",
-                    "en": "character",
-                    "meanings": [
-                        "character",
-                        "personality"
-                    ],
-                    "example": {
-                        "jp": "私はいつも不思議な性格の方が好きだった。",
-                        "en": "I always liked mysterious characters more.",
-                        "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>はいつも<ruby>不思議<rp>(</rp><rt>ふしぎ</rt><rp>)</rp></ruby>な<ruby>性格<rp>(</rp><rt>せいかく</rt><rp>)</rp></ruby>の<ruby>方<rp>(</rp><rt>ほう</rt><rp>)</rp></ruby>が<ruby>好<rp>(</rp><rt>す</rt><rp>)</rp></ruby>きだった。",
-                        "enMn": "Би үргэлж нууцлаг зан чанартай хүмүүст илүү дуртай байсан."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "зан төрх",
-                    "meaningsMn": [
-                        "зан төрх"
-                    ]
-                },
-                {
-                    "jp": "正確",
-                    "reading": "せいかく",
-                    "en": "accurate",
-                    "meanings": [
-                        "accurate",
-                        "punctuality",
-                        "exact"
-                    ],
-                    "example": {
-                        "jp": "劣等感―それは正確にはどういうことか。",
-                        "en": "Inferiority complex - what exactly does that mean?",
-                        "furigana": "<ruby>劣等<rp>(</rp><rt>れっとう</rt><rp>)</rp></ruby><ruby>感<rp>(</rp><rt>かん</rt><rp>)</rp></ruby>―それは<ruby>正確<rp>(</rp><rt>せいかく</rt><rp>)</rp></ruby>にはどういうことか。",
-                        "enMn": "Дорд үзэх мэдрэмж — тэр яг юу гэсэн үг вэ?"
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "үнэн зөв",
-                    "meaningsMn": [
-                        "үнэн зөв"
-                    ]
-                }
-            ]
-        ]
-    },
-    {
-        "level": 35,
-        "jlpt": "N3",
-        "title": "N3 · Level 11",
-        "sets": [
-            [
-                {
-                    "jp": "神経",
-                    "reading": "しんけい",
-                    "en": "nerve",
-                    "meanings": [
-                        "nerve",
-                        "sensitivity"
-                    ],
-                    "example": null,
-                    "phonetic": "申",
-                    "phoneticReading": "シン",
-                    "enMn": "мэдрэл",
-                    "meaningsMn": [
-                        "мэдрэл"
-                    ]
-                },
-                {
-                    "jp": "性質",
-                    "reading": "せいしつ",
-                    "en": "nature",
-                    "meanings": [
-                        "nature",
-                        "property",
-                        "disposition"
-                    ],
-                    "example": null,
-                    "phonetic": "生",
-                    "phoneticReading": "セイ、ショウ",
-                    "enMn": "зан чанар",
-                    "meaningsMn": [
-                        "зан чанар"
-                    ]
-                },
-                {
-                    "jp": "政府",
-                    "reading": "せいふ",
-                    "en": "government",
-                    "meanings": [
-                        "government",
-                        "administration"
-                    ],
-                    "example": null,
-                    "phonetic": "正",
-                    "phoneticReading": "ショウ、セイ",
-                    "enMn": "яам",
-                    "meaningsMn": [
-                        "яам"
-                    ]
-                },
-                {
-                    "jp": "生物",
-                    "reading": "せいぶつ",
-                    "en": "living thing",
-                    "meanings": [
-                        "living thing",
-                        "organism"
-                    ],
-                    "example": null,
-                    "phonetic": "生",
-                    "phoneticReading": "セイ、ショウ",
-                    "enMn": "амьтан",
-                    "meaningsMn": [
-                        "амьтан"
-                    ]
-                },
-                {
-                    "jp": "愛する",
-                    "reading": "あいする",
-                    "en": "to love",
-                    "meanings": [
-                        "to love"
-                    ],
-                    "example": null,
-                    "phonetic": "愛",
-                    "phoneticReading": "アイ",
-                    "enMn": "хайрлах",
-                    "meaningsMn": [
-                        "хайрлах"
-                    ]
-                },
-                {
                     "jp": "諦める",
                     "reading": "あきらめる",
                     "en": "to give up",
@@ -17714,54 +17256,6 @@ const WORD_LEVELS = [
                     "enMn": "орхих",
                     "meaningsMn": [
                         "орхих"
-                    ]
-                },
-                {
-                    "jp": "汗",
-                    "reading": "あせ",
-                    "en": "sweat",
-                    "meanings": [
-                        "sweat",
-                        "perspiration"
-                    ],
-                    "example": null,
-                    "phonetic": "干",
-                    "phoneticReading": "カン",
-                    "enMn": "хөлс",
-                    "meaningsMn": [
-                        "хөлс"
-                    ]
-                },
-                {
-                    "jp": "表す",
-                    "reading": "あらわす",
-                    "en": "to express",
-                    "meanings": [
-                        "to express",
-                        "to show"
-                    ],
-                    "example": null,
-                    "phonetic": "表",
-                    "phoneticReading": "ヒョウ",
-                    "enMn": "үзүүлэх",
-                    "meaningsMn": [
-                        "үзүүлэх"
-                    ]
-                },
-                {
-                    "jp": "安定",
-                    "reading": "あんてい",
-                    "en": "stability",
-                    "meanings": [
-                        "stability",
-                        "equilibrium"
-                    ],
-                    "example": null,
-                    "phonetic": "安",
-                    "phoneticReading": "アン",
-                    "enMn": "тогтвор",
-                    "meaningsMn": [
-                        "тогтвор"
                     ]
                 },
                 {
@@ -17782,68 +17276,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "市",
-                    "reading": "いち",
-                    "en": "market",
-                    "meanings": [
-                        "market",
-                        "fair"
-                    ],
-                    "example": null,
-                    "phonetic": "市",
-                    "phoneticReading": "シ",
-                    "enMn": "хот",
-                    "meaningsMn": [
-                        "хот"
-                    ]
-                },
-                {
-                    "jp": "一生",
-                    "reading": "いっしょう",
-                    "en": "throughout (one's) life",
-                    "meanings": [
-                        "throughout (one's) life"
-                    ],
-                    "example": null,
-                    "phonetic": "生",
-                    "phoneticReading": "セイ、ショウ",
-                    "enMn": "насан туршдаа",
-                    "meaningsMn": [
-                        "насан туршдаа"
-                    ]
-                },
-                {
-                    "jp": "一般",
-                    "reading": "いっぱん",
-                    "en": "general",
-                    "meanings": [
-                        "general",
-                        "average"
-                    ],
-                    "example": null,
-                    "phonetic": "般",
-                    "phoneticReading": "ハン、バン",
-                    "enMn": "ерөнхий",
-                    "meaningsMn": [
-                        "ерөнхий"
-                    ]
-                },
-                {
-                    "jp": "衣服",
-                    "reading": "いふく",
-                    "en": "clothes",
-                    "meanings": [
-                        "clothes"
-                    ],
-                    "example": null,
-                    "phonetic": "衣",
-                    "phoneticReading": "イ",
-                    "enMn": "хувцас",
-                    "meaningsMn": [
-                        "хувцас"
-                    ]
-                },
-                {
                     "jp": "疑う",
                     "reading": "うたがう",
                     "en": "to doubt",
@@ -17857,56 +17289,6 @@ const WORD_LEVELS = [
                     "enMn": "эргэлзэх",
                     "meaningsMn": [
                         "эргэлзэх"
-                    ]
-                },
-                {
-                    "jp": "映す",
-                    "reading": "うつす",
-                    "en": "to project",
-                    "meanings": [
-                        "to project",
-                        "to reflect",
-                        "to cast (shadow)"
-                    ],
-                    "example": null,
-                    "phonetic": "央",
-                    "phoneticReading": "エイ",
-                    "enMn": "ойлгох",
-                    "meaningsMn": [
-                        "ойлгох"
-                    ]
-                },
-                {
-                    "jp": "永遠",
-                    "reading": "えいえん",
-                    "en": "eternity",
-                    "meanings": [
-                        "eternity",
-                        "perpetuity",
-                        "immortality"
-                    ],
-                    "example": null,
-                    "phonetic": "永",
-                    "phoneticReading": "エイ",
-                    "enMn": "мөнхийн",
-                    "meaningsMn": [
-                        "мөнхийн"
-                    ]
-                },
-                {
-                    "jp": "追う",
-                    "reading": "おう",
-                    "en": "to chase",
-                    "meanings": [
-                        "to chase",
-                        "to run after"
-                    ],
-                    "example": null,
-                    "phonetic": "追",
-                    "phoneticReading": "ツイ",
-                    "enMn": "хөөх",
-                    "meaningsMn": [
-                        "хөөх"
                     ]
                 },
                 {
@@ -17926,107 +17308,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "飼う",
-                    "reading": "かう",
-                    "en": "to keep; to own (a pet); to raise; to feed",
-                    "meanings": [
-                        "to keep; to own (a pet); to raise; to feed"
-                    ],
-                    "example": null,
-                    "phonetic": "司",
-                    "phoneticReading": "シ",
-                    "enMn": "хооллох",
-                    "meaningsMn": [
-                        "хооллох"
-                    ]
-                },
-                {
-                    "jp": "香り",
-                    "reading": "かおり",
-                    "en": "aroma",
-                    "meanings": [
-                        "aroma",
-                        "fragrance"
-                    ],
-                    "example": null,
-                    "phonetic": "香",
-                    "phoneticReading": "キョウ",
-                    "enMn": "үнэрлэх чадвар",
-                    "meaningsMn": [
-                        "үнэрлэх чадвар"
-                    ]
-                },
-                {
-                    "jp": "価格",
-                    "reading": "かかく",
-                    "en": "price",
-                    "meanings": [
-                        "price",
-                        "value"
-                    ],
-                    "example": null,
-                    "phonetic": "各",
-                    "phoneticReading": "カク、ラク",
-                    "enMn": "үнэ",
-                    "meaningsMn": [
-                        "үнэ"
-                    ]
-                },
-                {
-                    "jp": "化学",
-                    "reading": "かがく",
-                    "en": "chemistry",
-                    "meanings": [
-                        "chemistry"
-                    ],
-                    "example": null,
-                    "phonetic": "化",
-                    "phoneticReading": "カ",
-                    "enMn": "хими",
-                    "meaningsMn": [
-                        "хими"
-                    ]
-                },
-                {
-                    "jp": "家具",
-                    "reading": "かぐ",
-                    "en": "furniture",
-                    "meanings": [
-                        "furniture"
-                    ],
-                    "example": null,
-                    "phonetic": "家",
-                    "phoneticReading": "カ",
-                    "enMn": "тавилга",
-                    "meaningsMn": [
-                        "тавилга"
-                    ]
-                },
-                {
-                    "jp": "過去",
-                    "reading": "かこ",
-                    "en": "past",
-                    "meanings": [
-                        "past"
-                    ],
-                    "example": null,
-                    "phonetic": "咼",
-                    "phoneticReading": "カ",
-                    "enMn": "өнгөрсөн үе",
-                    "meaningsMn": [
-                        "өнгөрсөн үе"
-                    ]
-                }
-            ]
-        ]
-    },
-    {
-        "level": 36,
-        "jlpt": "N3",
-        "title": "N3 · Level 12",
-        "sets": [
-            [
-                {
                     "jp": "堅い",
                     "reading": "かたい",
                     "en": "hard",
@@ -18041,153 +17322,6 @@ const WORD_LEVELS = [
                     "enMn": "хатуу",
                     "meaningsMn": [
                         "хатуу"
-                    ]
-                },
-                {
-                    "jp": "皮",
-                    "reading": "かわ",
-                    "en": "skin",
-                    "meanings": [
-                        "skin",
-                        "hide",
-                        "leather"
-                    ],
-                    "example": null,
-                    "phonetic": "皮",
-                    "phoneticReading": "ハ、ヒ",
-                    "enMn": "үс",
-                    "meaningsMn": [
-                        "үс"
-                    ]
-                },
-                {
-                    "jp": "感覚",
-                    "reading": "かんかく",
-                    "en": "sense",
-                    "meanings": [
-                        "sense",
-                        "sensation"
-                    ],
-                    "example": null,
-                    "phonetic": "感",
-                    "phoneticReading": "カン",
-                    "enMn": "мэдрэмж",
-                    "meaningsMn": [
-                        "мэдрэмж"
-                    ]
-                },
-                {
-                    "jp": "感情",
-                    "reading": "かんじょう",
-                    "en": "emotion(s)",
-                    "meanings": [
-                        "emotion(s)",
-                        "feeling(s)",
-                        "sentiment"
-                    ],
-                    "example": null,
-                    "phonetic": "感",
-                    "phoneticReading": "カン",
-                    "enMn": "сэтгэл хөдлөл",
-                    "meaningsMn": [
-                        "сэтгэл хөдлөл"
-                    ]
-                },
-                {
-                    "jp": "感じる",
-                    "reading": "かんじる",
-                    "en": "to feel",
-                    "meanings": [
-                        "to feel",
-                        "to sense"
-                    ],
-                    "example": null,
-                    "phonetic": "感",
-                    "phoneticReading": "カン",
-                    "enMn": "мэдрэх",
-                    "meaningsMn": [
-                        "мэдрэх"
-                    ]
-                },
-                {
-                    "jp": "感心",
-                    "reading": "かんしん",
-                    "en": "admiration",
-                    "meanings": [
-                        "admiration"
-                    ],
-                    "example": null,
-                    "phonetic": "感",
-                    "phoneticReading": "カン",
-                    "enMn": "гайхал",
-                    "meaningsMn": [
-                        "гайхал"
-                    ]
-                },
-                {
-                    "jp": "気候",
-                    "reading": "きこう",
-                    "en": "climate",
-                    "meanings": [
-                        "climate"
-                    ],
-                    "example": null,
-                    "phonetic": "气",
-                    "phoneticReading": "キ",
-                    "enMn": "уур амьсгал",
-                    "meaningsMn": [
-                        "уур амьсгал"
-                    ]
-                },
-                {
-                    "jp": "希望",
-                    "reading": "きぼう",
-                    "en": "hope",
-                    "meanings": [
-                        "hope",
-                        "wish",
-                        "aspiration"
-                    ],
-                    "example": null,
-                    "phonetic": "希",
-                    "phoneticReading": "キ",
-                    "enMn": "найдвар",
-                    "meaningsMn": [
-                        "найдвар"
-                    ]
-                },
-                {
-                    "jp": "決まり",
-                    "reading": "きまり",
-                    "en": "settlement",
-                    "meanings": [
-                        "settlement",
-                        "conclusion",
-                        "rule"
-                    ],
-                    "example": null,
-                    "phonetic": "夬",
-                    "phoneticReading": "ケツ",
-                    "enMn": "дүрэм",
-                    "meaningsMn": [
-                        "дүрэм"
-                    ]
-                },
-                {
-                    "jp": "義務",
-                    "reading": "ぎむ",
-                    "en": "duty",
-                    "meanings": [
-                        "duty",
-                        "obligation",
-                        "responsibility"
-                    ],
-                    "example": null,
-                    "phonetic": "義",
-                    "phoneticReading": "ギ",
-                    "enMn": "хариуцлага",
-                    "meaningsMn": [
-                        "хариуцлага"
                     ]
                 },
                 {
@@ -18225,54 +17359,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "切れる",
-                    "reading": "きれる",
-                    "en": "to cut well",
-                    "meanings": [
-                        "to cut well",
-                        "to be sharp; to break (off)"
-                    ],
-                    "example": null,
-                    "phonetic": "切",
-                    "phoneticReading": "セツ",
-                    "enMn": "хагарах",
-                    "meaningsMn": [
-                        "хагарах"
-                    ]
-                },
-                {
-                    "jp": "金銭",
-                    "reading": "きんせん",
-                    "en": "money",
-                    "meanings": [
-                        "money",
-                        "cash"
-                    ],
-                    "example": null,
-                    "phonetic": "金",
-                    "phoneticReading": "キン",
-                    "enMn": "мөнгө",
-                    "meaningsMn": [
-                        "мөнгө"
-                    ]
-                },
-                {
-                    "jp": "腐る",
-                    "reading": "くさる",
-                    "en": "to rot",
-                    "meanings": [
-                        "to rot",
-                        "to go bad"
-                    ],
-                    "example": null,
-                    "phonetic": "付",
-                    "phoneticReading": "フ",
-                    "enMn": "ялзрах",
-                    "meaningsMn": [
-                        "ялзрах"
-                    ]
-                },
-                {
                     "jp": "加える",
                     "reading": "くわえる",
                     "en": "to append",
@@ -18304,53 +17390,516 @@ const WORD_LEVELS = [
                     "meaningsMn": [
                         "оролцох"
                     ]
-                },
+                }
+            ]
+        ],
+        "themeKey": "theme.n3.10"
+    },
+    {
+        "level": 35,
+        "jlpt": "N3",
+        "title": "Places and going",
+        "sets": [
+            [
                 {
-                    "jp": "結果",
-                    "reading": "けっか",
-                    "en": "result",
+                    "jp": "宿泊",
+                    "reading": "しゅくはく",
+                    "en": "lodging",
                     "meanings": [
-                        "result",
-                        "consequence"
+                        "lodging"
                     ],
-                    "example": null,
-                    "phonetic": "果",
-                    "phoneticReading": "カ",
-                    "enMn": "үр дүн",
+                    "example": {
+                        "jp": "彼はホテルに電話で宿泊を頼んだ。",
+                        "en": "He called a hotel for accommodations.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>はホテルに<ruby>電話<rp>(</rp><rt>でんわ</rt><rp>)</rp></ruby>で<ruby>宿泊<rp>(</rp><rt>しゅくはく</rt><rp>)</rp></ruby>を<ruby>頼<rp>(</rp><rt>たの</rt><rp>)</rp></ruby>んだ。",
+                        "enMn": "Тэр буудалд байр захиалахаар утасдав."
+                    },
+                    "phonetic": "宿",
+                    "phoneticReading": "シュク",
+                    "enMn": "байрлал",
                     "meaningsMn": [
-                        "үр дүн"
+                        "байрлал"
                     ]
                 },
                 {
-                    "jp": "言語",
-                    "reading": "げんご",
-                    "en": "language",
+                    "jp": "宿",
+                    "reading": "やど",
+                    "en": "inn",
                     "meanings": [
-                        "language"
+                        "inn",
+                        "lodging"
                     ],
-                    "example": null,
-                    "phonetic": "五",
-                    "phoneticReading": "ゴ",
-                    "enMn": "хэл",
+                    "example": {
+                        "jp": "私達は山のふもとの宿に泊まった。",
+                        "en": "We put up at an inn at the foot of the mountain.",
+                        "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby><ruby>達<rp>(</rp><rt>たち</rt><rp>)</rp></ruby>は<ruby>山<rp>(</rp><rt>やま</rt><rp>)</rp></ruby>のふもとの<ruby>宿<rp>(</rp><rt>やど</rt><rp>)</rp></ruby>に<ruby>泊<rp>(</rp><rt>と</rt><rp>)</rp></ruby>まった。",
+                        "enMn": "Бид уулын бэлд байрлах буудалд байрласан."
+                    },
+                    "phonetic": "宿",
+                    "phoneticReading": "シュク",
+                    "enMn": "зочид буудал",
                     "meaningsMn": [
-                        "хэл"
+                        "зочид буудал",
+                        "байрлал"
                     ]
                 },
                 {
-                    "jp": "交際",
-                    "reading": "こうさい",
-                    "en": "friendship",
+                    "jp": "去る",
+                    "reading": "さる",
+                    "en": "to leave",
                     "meanings": [
-                        "friendship",
-                        "association",
-                        "acquaintance"
+                        "to leave",
+                        "to go away"
+                    ],
+                    "example": {
+                        "jp": "彼らは次の日、日本を去る事になっていた。",
+                        "en": "They were leaving Japan the next day.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>次<rp>(</rp><rt>つぎ</rt><rp>)</rp></ruby>の<ruby>日<rp>(</rp><rt>ひ</rt><rp>)</rp></ruby>、<ruby>日本<rp>(</rp><rt>にっぽん</rt><rp>)</rp></ruby>を<ruby>去<rp>(</rp><rt>さ</rt><rp>)</rp></ruby>る<ruby>事<rp>(</rp><rt>こと</rt><rp>)</rp></ruby>になっていた。",
+                        "enMn": "Тэд маргааш нь Японыг орхин одох болсон байв."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "одох",
+                    "meaningsMn": [
+                        "одох"
+                    ]
+                },
+                {
+                    "jp": "ジェット機",
+                    "reading": "ジェットき",
+                    "en": "jet plane",
+                    "meanings": [
+                        "jet plane"
+                    ],
+                    "example": {
+                        "jp": "離陸するジェット機の音が私の神経にさわる。",
+                        "en": "The sound of jets taking off gets on my nerves.",
+                        "furigana": "<ruby>離陸<rp>(</rp><rt>りりく</rt><rp>)</rp></ruby>するジェット<ruby>機<rp>(</rp><rt>き</rt><rp>)</rp></ruby>の<ruby>音<rp>(</rp><rt>おと</rt><rp>)</rp></ruby>が<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>の<ruby>神経<rp>(</rp><rt>しんけい</rt><rp>)</rp></ruby>にさわる。",
+                        "enMn": "Хөөрч буй тийрэлтэт онгоцны чимээ миний мэдрэлийг хөнддөг."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "тийрэлтэт онгоц",
+                    "meaningsMn": [
+                        "тийрэлтэт онгоц"
+                    ]
+                },
+                {
+                    "jp": "州",
+                    "reading": "しゅう",
+                    "en": "state",
+                    "meanings": [
+                        "state",
+                        "province"
+                    ],
+                    "example": {
+                        "jp": "州知事は囚人達を自由の身にした。",
+                        "en": "The governor set the prisoners free.",
+                        "furigana": "<ruby>州<rp>(</rp><rt>しゅう</rt><rp>)</rp></ruby><ruby>知事<rp>(</rp><rt>ちじ</rt><rp>)</rp></ruby>は<ruby>囚人<rp>(</rp><rt>しゅうじん</rt><rp>)</rp></ruby><ruby>達<rp>(</rp><rt>たち</rt><rp>)</rp></ruby>を<ruby>自由<rp>(</rp><rt>じゆう</rt><rp>)</rp></ruby>の<ruby>身<rp>(</rp><rt>み</rt><rp>)</rp></ruby>にした。",
+                        "enMn": "Мужийн захирагч хоригдлуудыг суллав."
+                    },
+                    "phonetic": "州",
+                    "phoneticReading": "シュウ",
+                    "enMn": "муж",
+                    "meaningsMn": [
+                        "байдал",
+                        "муж"
+                    ]
+                },
+                {
+                    "jp": "左右",
+                    "reading": "さゆう",
+                    "en": "left and right",
+                    "meanings": [
+                        "left and right",
+                        "influence"
+                    ],
+                    "example": {
+                        "jp": "彼の返事は彼の気分に左右される。",
+                        "en": "His answer depends on his mood.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>返事<rp>(</rp><rt>へんじ</rt><rp>)</rp></ruby>は<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>気分<rp>(</rp><rt>きぶん</rt><rp>)</rp></ruby>に<ruby>左右<rp>(</rp><rt>さゆう</rt><rp>)</rp></ruby>される。",
+                        "enMn": "Түүний хариулт сэтгэл санааны байдлаас хамаардаг."
+                    },
+                    "phonetic": "左",
+                    "phoneticReading": "サ",
+                    "enMn": "зүүн баруун",
+                    "meaningsMn": [
+                        "зүүн баруун",
+                        "нөлөө"
+                    ]
+                },
+                {
+                    "jp": "下",
+                    "reading": "しも",
+                    "en": "under",
+                    "meanings": [
+                        "under",
+                        "below",
+                        "beneath"
+                    ],
+                    "example": {
+                        "jp": "投稿一覧の下の凡例を見て原因が分かりました。",
+                        "en": "When I looked at the explanatory notes under the posts list I realized what was causing it.",
+                        "furigana": "<ruby>投稿<rp>(</rp><rt>とうこう</rt><rp>)</rp></ruby><ruby>一覧<rp>(</rp><rt>いちらん</rt><rp>)</rp></ruby>の<ruby>下<rp>(</rp><rt>した</rt><rp>)</rp></ruby>の<ruby>凡例<rp>(</rp><rt>はんれい</rt><rp>)</rp></ruby>を<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>て<ruby>原因<rp>(</rp><rt>げんいん</rt><rp>)</rp></ruby>が<ruby>分<rp>(</rp><rt>わ</rt><rp>)</rp></ruby>かりました。",
+                        "enMn": "Нийтлэлийн жагсаалтын доор байх тайлбарыг хараад шалтгаан нь ойлгогдлоо."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "доор",
+                    "meaningsMn": [
+                        "доор"
+                    ]
+                },
+                {
+                    "jp": "住宅",
+                    "reading": "じゅうたく",
+                    "en": "resident",
+                    "meanings": [
+                        "resident",
+                        "housing"
+                    ],
+                    "example": {
+                        "jp": "安価な簡易住宅を提供します。",
+                        "en": "We offer low-cost prefabricated houses.",
+                        "furigana": "<ruby>安価<rp>(</rp><rt>あんか</rt><rp>)</rp></ruby>な<ruby>簡易<rp>(</rp><rt>かんい</rt><rp>)</rp></ruby><ruby>住宅<rp>(</rp><rt>じゅうたく</rt><rp>)</rp></ruby>を<ruby>提供<rp>(</rp><rt>ていきょう</rt><rp>)</rp></ruby>します。",
+                        "enMn": "Бид хямд өртөгтэй угсармал орон байр санал болгож байна."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "орон байр",
+                    "meaningsMn": [
+                        "орон байр"
+                    ]
+                },
+                {
+                    "jp": "乗客",
+                    "reading": "じょうきゃく",
+                    "en": "passenger",
+                    "meanings": [
+                        "passenger"
+                    ],
+                    "example": {
+                        "jp": "列車は乗客でいっぱいだった。",
+                        "en": "The train was full of passengers.",
+                        "furigana": "<ruby>列車<rp>(</rp><rt>れっしゃ</rt><rp>)</rp></ruby>は<ruby>乗客<rp>(</rp><rt>じょうきゃく</rt><rp>)</rp></ruby>でいっぱいだった。",
+                        "enMn": "Галт тэрэг зорчигчоор дүүрэн байв."
+                    },
+                    "phonetic": "乗",
+                    "phoneticReading": "ジョウ",
+                    "enMn": "зорчигч",
+                    "meaningsMn": [
+                        "зорчигч"
+                    ]
+                },
+                {
+                    "jp": "乗せる",
+                    "reading": "のせる",
+                    "en": "to place on (something)",
+                    "meanings": [
+                        "to place on (something)",
+                        "to take on board"
+                    ],
+                    "example": {
+                        "jp": "彼は私を彼の荷車に乗せてくれた。",
+                        "en": "He gave me a lift in his cart.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>を<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>荷車<rp>(</rp><rt>にぐるま</rt><rp>)</rp></ruby>に<ruby>乗<rp>(</rp><rt>の</rt><rp>)</rp></ruby>せてくれた。",
+                        "enMn": "Тэр намайг тэргэндээ авч явсан."
+                    },
+                    "phonetic": "乗",
+                    "phoneticReading": "ジョウ",
+                    "enMn": "дээр нь тавих",
+                    "meaningsMn": [
+                        "дээр нь тавих",
+                        "суулгах"
+                    ]
+                },
+                {
+                    "jp": "上京",
+                    "reading": "じょうきょう",
+                    "en": "proceeding to the capital (Tokyo)",
+                    "meanings": [
+                        "proceeding to the capital (Tokyo)"
+                    ],
+                    "example": {
+                        "jp": "彼女は１８歳のときに上京した。",
+                        "en": "She came up to Tokyo at eighteen.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は１８<ruby>歳<rp>(</rp><rt>さい</rt><rp>)</rp></ruby>のときに<ruby>上京<rp>(</rp><rt>じょうきょう</rt><rp>)</rp></ruby>した。",
+                        "enMn": "Тэр 18 настайдаа нийслэлд иржээ."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "нийслэлд очих",
+                    "meaningsMn": [
+                        "нийслэлд очих"
+                    ]
+                },
+                {
+                    "jp": "自動",
+                    "reading": "じどう",
+                    "en": "automatic",
+                    "meanings": [
+                        "automatic",
+                        "self-motion"
+                    ],
+                    "example": {
+                        "jp": "この自動販売機は故障しています。",
+                        "en": "This vending machine is out of order.",
+                        "furigana": "この<ruby>自動<rp>(</rp><rt>じどう</rt><rp>)</rp></ruby><ruby>販売<rp>(</rp><rt>はんばい</rt><rp>)</rp></ruby><ruby>機<rp>(</rp><rt>き</rt><rp>)</rp></ruby>は<ruby>故障<rp>(</rp><rt>こしょう</rt><rp>)</rp></ruby>しています。",
+                        "enMn": "Энэ автомат худалдааны машин эвдэрсэн байна."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "автомат",
+                    "meaningsMn": [
+                        "автомат",
+                        "өөрөө хөдлөх"
+                    ]
+                },
+                {
+                    "jp": "城",
+                    "reading": "しろ",
+                    "en": "castle",
+                    "meanings": [
+                        "castle"
+                    ],
+                    "example": {
+                        "jp": "城の創建は１１世紀にさかのぼると伝えられる。",
+                        "en": "It is said that the castle dates back to the 11th century.",
+                        "furigana": "<ruby>城<rp>(</rp><rt>しろ</rt><rp>)</rp></ruby>の<ruby>創建<rp>(</rp><rt>そうけん</rt><rp>)</rp></ruby>は１１<ruby>世紀<rp>(</rp><rt>せいき</rt><rp>)</rp></ruby>にさかのぼると<ruby>伝<rp>(</rp><rt>つた</rt><rp>)</rp></ruby>えられる。",
+                        "enMn": "Цайзыг 11-р зуунд байгуулсан гэж яригддаг."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "цайз",
+                    "meaningsMn": [
+                        "цайз"
+                    ]
+                },
+                {
+                    "jp": "信号",
+                    "reading": "しんごう",
+                    "en": "traffic lights",
+                    "meanings": [
+                        "traffic lights",
+                        "signal",
+                        "semaphore"
+                    ],
+                    "example": {
+                        "jp": "赤い光は危険信号としてよく用いられる。",
+                        "en": "A red light is often used as a danger signal.",
+                        "furigana": "<ruby>赤<rp>(</rp><rt>あか</rt><rp>)</rp></ruby>い<ruby>光<rp>(</rp><rt>ひかり</rt><rp>)</rp></ruby>は<ruby>危険<rp>(</rp><rt>きけん</rt><rp>)</rp></ruby><ruby>信号<rp>(</rp><rt>しんごう</rt><rp>)</rp></ruby>としてよく<ruby>用<rp>(</rp><rt>もち</rt><rp>)</rp></ruby>いられる。",
+                        "enMn": "Улаан гэрлийг аюулын дохио болгон ихэвчлэн ашигладаг."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "гэрлэн дохио",
+                    "meaningsMn": [
+                        "гэрлэн дохио",
+                        "дохио"
+                    ]
+                },
+                {
+                    "jp": "住民",
+                    "reading": "じゅうみん",
+                    "en": "inhabitants",
+                    "meanings": [
+                        "inhabitants",
+                        "residents"
+                    ],
+                    "example": {
+                        "jp": "住民は低空飛行訓練に抗議を行った。",
+                        "en": "The people protested against the low altitude flight training.",
+                        "furigana": "<ruby>住民<rp>(</rp><rt>じゅうみん</rt><rp>)</rp></ruby>は<ruby>低空<rp>(</rp><rt>ていくう</rt><rp>)</rp></ruby><ruby>飛行<rp>(</rp><rt>ひこう</rt><rp>)</rp></ruby><ruby>訓練<rp>(</rp><rt>くんれん</rt><rp>)</rp></ruby>に<ruby>抗議<rp>(</rp><rt>こうぎ</rt><rp>)</rp></ruby>を<ruby>行<rp>(</rp><rt>おこな</rt><rp>)</rp></ruby>った。",
+                        "enMn": "Хүмүүс намхан өндрийн нислэгийн сургалтын эсрэг эсэргүүцэл илэрхийлэв."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "оршин суугчид",
+                    "meaningsMn": [
+                        "оршин суугчид",
+                        "оршин суугчид"
+                    ]
+                },
+                {
+                    "jp": "首都",
+                    "reading": "しゅと",
+                    "en": "capital city",
+                    "meanings": [
+                        "capital city"
+                    ],
+                    "example": {
+                        "jp": "彼はフランスの首都パリへ行った。",
+                        "en": "He went to Paris, which is the capital of France.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>はフランスの<ruby>首都<rp>(</rp><rt>しゅと</rt><rp>)</rp></ruby>パリへ<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>った。",
+                        "enMn": "Тэр Францын нийслэл болох Парис руу явсан."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "нийслэл хот",
+                    "meaningsMn": [
+                        "нийслэл хот"
+                    ]
+                },
+                {
+                    "jp": "出身",
+                    "reading": "しゅっしん",
+                    "en": "hometown",
+                    "meanings": [
+                        "come from"
+                    ],
+                    "example": {
+                        "jp": "彼女はカリフォルニアの出身です。",
+                        "en": "She comes from California.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>はカリフォルニアの<ruby>出身<rp>(</rp><rt>しゅっしん</rt><rp>)</rp></ruby>です。",
+                        "enMn": "Тэр Калифорниас гаралтай."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "төрсөн нутаг",
+                    "meaningsMn": [
+                        "гаралтай"
+                    ]
+                },
+                {
+                    "jp": "スイッチ",
+                    "reading": "スイッチ",
+                    "en": "switch",
+                    "meanings": [
+                        "switch"
+                    ],
+                    "example": {
+                        "jp": "僕は暗闇の中でスイッチを手探りでさがした。",
+                        "en": "I felt for the switch in the dark.",
+                        "furigana": "<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>は<ruby>暗闇<rp>(</rp><rt>くらやみ</rt><rp>)</rp></ruby>の<ruby>中<rp>(</rp><rt>なか</rt><rp>)</rp></ruby>でスイッチを<ruby>手探<rp>(</rp><rt>てさぐ</rt><rp>)</rp></ruby>りでさがした。",
+                        "enMn": "Би харанхуйд унтраалгыг тэмтэрч хайв."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "залгуур",
+                    "meaningsMn": [
+                        "залгуур",
+                        "унтраалга"
+                    ]
+                },
+                {
+                    "jp": "スキー",
+                    "reading": "スキー",
+                    "en": "ski",
+                    "meanings": [
+                        "ski"
+                    ],
+                    "example": {
+                        "jp": "スキーをしたら、足を骨折したんだ。",
+                        "en": "I broke my leg skiing.",
+                        "furigana": "スキーをしたら、<ruby>足<rp>(</rp><rt>あし</rt><rp>)</rp></ruby>を<ruby>骨折<rp>(</rp><rt>こっせつ</rt><rp>)</rp></ruby>したんだ。",
+                        "enMn": "Цанаар гулгаад хөлөө хугалчихсан юм."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "цана",
+                    "meaningsMn": [
+                        "цана"
+                    ]
+                },
+                {
+                    "jp": "スケート",
+                    "reading": "スケート",
+                    "en": "skate(s)",
+                    "meanings": [
+                        "skate(s)",
+                        "skating"
+                    ],
+                    "example": {
+                        "jp": "氷が薄すぎてスケートができません。",
+                        "en": "The ice is too thin to skate on.",
+                        "furigana": "<ruby>氷<rp>(</rp><rt>こおり</rt><rp>)</rp></ruby>が<ruby>薄<rp>(</rp><rt>うす</rt><rp>)</rp></ruby>すぎてスケートができません。",
+                        "enMn": "Мөс хэт нимгэн учир тэшүүрээр гулгаж чадахгүй."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "тэшүүр",
+                    "meaningsMn": [
+                        "тэшүүр"
+                    ]
+                },
+                {
+                    "jp": "周囲",
+                    "reading": "しゅうい",
+                    "en": "surroundings",
+                    "meanings": [
+                        "surroundings",
+                        "circumference",
+                        "environs"
+                    ],
+                    "example": {
+                        "jp": "僕らの周囲で水はよどんでいた。",
+                        "en": "The water was dead around us.",
+                        "furigana": "<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>らの<ruby>周囲<rp>(</rp><rt>しゅうい</rt><rp>)</rp></ruby>で<ruby>水<rp>(</rp><rt>みず</rt><rp>)</rp></ruby>はよどんでいた。",
+                        "enMn": "Бидний эргэн тойрны ус зогсонги байв."
+                    },
+                    "phonetic": "周",
+                    "phoneticReading": "シュウ、チョウ",
+                    "enMn": "орчин тойрон",
+                    "meaningsMn": [
+                        "орчин тойрон",
+                        "орчим",
+                        "орчин тойрон"
+                    ]
+                },
+                {
+                    "jp": "角",
+                    "reading": "すみ",
+                    "en": "corner",
+                    "meanings": [
+                        "corner"
+                    ],
+                    "example": {
+                        "jp": "カタツムリがすっと角を出した。",
+                        "en": "The snail shot out its horns.",
+                        "furigana": "カタツムリがすっと<ruby>角<rp>(</rp><rt>かく</rt><rp>)</rp></ruby>を<ruby>出<rp>(</rp><rt>だ</rt><rp>)</rp></ruby>した。",
+                        "enMn": "Эмгэн хумс эврээ цухуйлгав."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "өнцөг",
+                    "meaningsMn": [
+                        "өнцөг"
+                    ]
+                },
+                {
+                    "jp": "すれ違う",
+                    "reading": "すれちがう",
+                    "en": "to pass by one another",
+                    "meanings": [
+                        "to pass by one another"
+                    ],
+                    "example": {
+                        "jp": "彼女は通りですれ違う時に私に微笑みかけた。",
+                        "en": "She smiled at me as she passed me in the street.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>通<rp>(</rp><rt>とお</rt><rp>)</rp></ruby>りですれ<ruby>違<rp>(</rp><rt>ちが</rt><rp>)</rp></ruby>う<ruby>時<rp>(</rp><rt>とき</rt><rp>)</rp></ruby>に<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>に<ruby>微笑<rp>(</rp><rt>ほほえ</rt><rp>)</rp></ruby>みかけた。",
+                        "enMn": "Тэр гудамжинд хажуугаар өнгөрөхдөө надад инээмсэглэв."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "хажуугаар өнгөрөх",
+                    "meaningsMn": [
+                        "хажуугаар өнгөрөх"
+                    ]
+                },
+                {
+                    "jp": "追う",
+                    "reading": "おう",
+                    "en": "to chase",
+                    "meanings": [
+                        "to chase",
+                        "to run after"
                     ],
                     "example": null,
-                    "phonetic": "交",
-                    "phoneticReading": "コウ",
-                    "enMn": "найрамдал",
+                    "phonetic": "追",
+                    "phoneticReading": "ツイ",
+                    "enMn": "хөөх",
                     "meaningsMn": [
-                        "найрамдал"
+                        "хөөх"
                     ]
                 },
                 {
@@ -18368,76 +17917,551 @@ const WORD_LEVELS = [
                     "meaningsMn": [
                         "үйлдвэр"
                     ]
-                },
+                }
+            ]
+        ],
+        "themeKey": "theme.n3.11"
+    },
+    {
+        "level": 36,
+        "jlpt": "N3",
+        "title": "How much, how sure",
+        "sets": [
+            [
                 {
-                    "jp": "国民",
-                    "reading": "こくみん",
-                    "en": "national",
+                    "jp": "賛成",
+                    "reading": "さんせい",
+                    "en": "approval",
                     "meanings": [
-                        "national",
-                        "people",
-                        "citizen"
+                        "approval",
+                        "agreement"
                     ],
-                    "example": null,
-                    "phonetic": "民",
-                    "phoneticReading": "ミン",
-                    "enMn": "үндэсний",
+                    "example": {
+                        "jp": "母はついに私達の計画に賛成した。",
+                        "en": "My mother finally approved of our plan.",
+                        "furigana": "<ruby>母<rp>(</rp><rt>はは</rt><rp>)</rp></ruby>はついに<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby><ruby>達<rp>(</rp><rt>たち</rt><rp>)</rp></ruby>の<ruby>計画<rp>(</rp><rt>けいかく</rt><rp>)</rp></ruby>に<ruby>賛成<rp>(</rp><rt>さんせい</rt><rp>)</rp></ruby>した。",
+                        "enMn": "Ээж минь эцэст нь бидний төлөвлөгөөг зөвшөөрсөн."
+                    },
+                    "phonetic": "賛",
+                    "phoneticReading": "サン",
+                    "enMn": "зөвшөөрөл",
                     "meaningsMn": [
-                        "үндэсний"
+                        "зөвшөөрөл",
+                        "тохиролцоо"
                     ]
                 },
                 {
-                    "jp": "国家",
-                    "reading": "こっか",
+                    "jp": "様々",
+                    "reading": "さまざま",
+                    "en": "varied",
+                    "meanings": [
+                        "varied",
+                        "various"
+                    ],
+                    "example": {
+                        "jp": "彼は様々のグループを統一しようとした。",
+                        "en": "He tried to unify the various groups.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>様々<rp>(</rp><rt>さまざま</rt><rp>)</rp></ruby>のグループを<ruby>統一<rp>(</rp><rt>とういつ</rt><rp>)</rp></ruby>しようとした。",
+                        "enMn": "Тэр янз бүрийн бүлгүүдийг нэгтгэхийг оролдов."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "олон янзын",
+                    "meaningsMn": [
+                        "олон янзын"
+                    ]
+                },
+                {
+                    "jp": "しかも",
+                    "reading": "しかも",
+                    "en": "moreover",
+                    "meanings": [
+                        "moreover",
+                        "furthermore",
+                        "besides",
+                        "plus"
+                    ],
+                    "example": {
+                        "jp": "山越えの道は狭く、しかも急勾配だった。",
+                        "en": "The road across the mountain was narrow, and what's more, it was a steep slope.",
+                        "furigana": "<ruby>山越<rp>(</rp><rt>やまご</rt><rp>)</rp></ruby>えの<ruby>道<rp>(</rp><rt>みち</rt><rp>)</rp></ruby>は<ruby>狭<rp>(</rp><rt>せま</rt><rp>)</rp></ruby>く、しかも<ruby>急<rp>(</rp><rt>きゅう</rt><rp>)</rp></ruby><ruby>勾配<rp>(</rp><rt>こうばい</rt><rp>)</rp></ruby>だった。",
+                        "enMn": "Уул давах зам нарийн, түүнээс гадна эгц налуу байв."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "дээр нь",
+                    "meaningsMn": [
+                        "дээр нь"
+                    ]
+                },
+                {
+                    "jp": "事実",
+                    "reading": "じじつ",
+                    "en": "fact",
+                    "meanings": [
+                        "fact",
+                        "truth",
+                        "reality"
+                    ],
+                    "example": {
+                        "jp": "しかし生存者達は、その事実を知らなかった。",
+                        "en": "However, the surivors didn't know the truth.",
+                        "furigana": "しかし<ruby>生存<rp>(</rp><rt>せいぞん</rt><rp>)</rp></ruby><ruby>者<rp>(</rp><rt>しゃ</rt><rp>)</rp></ruby><ruby>達<rp>(</rp><rt>たち</rt><rp>)</rp></ruby>は、その<ruby>事実<rp>(</rp><rt>じじつ</rt><rp>)</rp></ruby>を<ruby>知<rp>(</rp><rt>し</rt><rp>)</rp></ruby>らなかった。",
+                        "enMn": "Гэвч амьд үлдэгсэд тэр үнэнийг мэдээгүй байв."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "үнэн",
+                    "meaningsMn": [
+                        "үнэн",
+                        "баримт"
+                    ]
+                },
+                {
+                    "jp": "証明",
+                    "reading": "しょうめい",
+                    "en": "proof",
+                    "meanings": [
+                        "proof",
+                        "verification"
+                    ],
+                    "example": {
+                        "jp": "身分証明書を二枚拝見できますか。",
+                        "en": "May I see two pieces of identification?",
+                        "furigana": "<ruby>身分<rp>(</rp><rt>みぶん</rt><rp>)</rp></ruby><ruby>証明<rp>(</rp><rt>しょうめい</rt><rp>)</rp></ruby><ruby>書<rp>(</rp><rt>しょ</rt><rp>)</rp></ruby>を<ruby>二<rp>(</rp><rt>に</rt><rp>)</rp></ruby><ruby>枚<rp>(</rp><rt>まい</rt><rp>)</rp></ruby><ruby>拝見<rp>(</rp><rt>はいけん</rt><rp>)</rp></ruby>できますか。",
+                        "enMn": "Хоёр иргэний үнэмлэх харж болох уу?"
+                    },
+                    "phonetic": "正",
+                    "phoneticReading": "ショウ、セイ",
+                    "enMn": "нотолгоо",
+                    "meaningsMn": [
+                        "нотолгоо",
+                        "баталгаажуулалт"
+                    ]
+                },
+                {
+                    "jp": "したがって",
+                    "reading": "したがって",
+                    "en": "therefore",
+                    "meanings": [
+                        "therefore",
+                        "consequently"
+                    ],
+                    "example": {
+                        "jp": "したがって生産費を削る必要がある。",
+                        "en": "Therefore, it is necessary to reduce the cost.",
+                        "furigana": "したがって<ruby>生産<rp>(</rp><rt>せいさん</rt><rp>)</rp></ruby><ruby>費<rp>(</rp><rt>ひ</rt><rp>)</rp></ruby>を<ruby>削<rp>(</rp><rt>けず</rt><rp>)</rp></ruby>る<ruby>必要<rp>(</rp><rt>ひつよう</rt><rp>)</rp></ruby>がある。",
+                        "enMn": "Улмаар үйлдвэрлэлийн зардлыг бууруулах шаардлагатай."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "улмаар",
+                    "meaningsMn": [
+                        "улмаар"
+                    ]
+                },
+                {
+                    "jp": "実際",
+                    "reading": "じっさい",
+                    "en": "in fact",
+                    "meanings": [
+                        "in fact; in actuality"
+                    ],
+                    "example": {
+                        "jp": "離れて見ると、彼は実際よりずっと若く見える。",
+                        "en": "Seen from a distance, he looks much younger than he really is.",
+                        "furigana": "<ruby>離<rp>(</rp><rt>はな</rt><rp>)</rp></ruby>れて<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>ると、<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>実際<rp>(</rp><rt>じっさい</rt><rp>)</rp></ruby>よりずっと<ruby>若<rp>(</rp><rt>わか</rt><rp>)</rp></ruby>く<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>える。",
+                        "enMn": "Холоос харахад тэр бодит байдлаасаа хамаагүй залуу харагддаг."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "бодит байдал",
+                    "meaningsMn": [
+                        "бодит байдал"
+                    ]
+                },
+                {
+                    "jp": "実に",
+                    "reading": "じつに",
+                    "en": "indeed",
+                    "meanings": [
+                        "indeed",
+                        "truly",
+                        "surely"
+                    ],
+                    "example": {
+                        "jp": "彼のスイングは実に見事だ。",
+                        "en": "He has a perfect swing.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>のスイングは<ruby>実<rp>(</rp><rt>じつ</rt><rp>)</rp></ruby>に<ruby>見事<rp>(</rp><rt>みごと</rt><rp>)</rp></ruby>だ。",
+                        "enMn": "Түүний савалт үнэхээр гайхалтай."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "үнэхээр",
+                    "meaningsMn": [
+                        "үнэхээр"
+                    ]
+                },
+                {
+                    "jp": "重要",
+                    "reading": "じゅうよう",
+                    "en": "important",
+                    "meanings": [
+                        "important",
+                        "essential"
+                    ],
+                    "example": {
+                        "jp": "貴職らにとっては重要なことです。",
+                        "en": "This is an important thing for all of you.",
+                        "furigana": "<ruby>貴<rp>(</rp><rt>き</rt><rp>)</rp></ruby><ruby>職<rp>(</rp><rt>しょく</rt><rp>)</rp></ruby>らにとっては<ruby>重要<rp>(</rp><rt>じゅうよう</rt><rp>)</rp></ruby>なことです。",
+                        "enMn": "Энэ бол та бүхэнд чухал зүйл юм."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "чухал",
+                    "meaningsMn": [
+                        "чухал",
+                        "зайлшгүй чухал"
+                    ]
+                },
+                {
+                    "jp": "小",
+                    "reading": "しょう",
+                    "en": "small",
+                    "meanings": [
+                        "small"
+                    ],
+                    "example": {
+                        "jp": "「状況報告を」「現在目標は目視４。最大７か。小口径火器を所有」",
+                        "en": "\"Situation report.\" \"At present 4 in sight. At most probably 7. Holding small calibre arms.\"",
+                        "furigana": "「<ruby>状況<rp>(</rp><rt>じょうきょう</rt><rp>)</rp></ruby><ruby>報告<rp>(</rp><rt>ほうこく</rt><rp>)</rp></ruby>を」「<ruby>現在<rp>(</rp><rt>げんざい</rt><rp>)</rp></ruby><ruby>目標<rp>(</rp><rt>もくひょう</rt><rp>)</rp></ruby>は<ruby>目視<rp>(</rp><rt>もくし</rt><rp>)</rp></ruby>４。<ruby>最大<rp>(</rp><rt>さいだい</rt><rp>)</rp></ruby>７か。<ruby>小<rp>(</rp><rt>しょう</rt><rp>)</rp></ruby><ruby>口径<rp>(</rp><rt>こうけい</rt><rp>)</rp></ruby><ruby>火器<rp>(</rp><rt>かき</rt><rp>)</rp></ruby>を<ruby>所有<rp>(</rp><rt>しょゆう</rt><rp>)</rp></ruby>」",
+                        "enMn": "«Нөхцөл байдлаа мэдээл.» «Одоогоор 4 бай харагдаж байна. Дээд тал нь 7. Жижиг калибрын галт зэвсэгтэй.»"
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "жижиг",
+                    "meaningsMn": [
+                        "жижиг"
+                    ]
+                },
+                {
+                    "jp": "上等",
+                    "reading": "じょうとう",
+                    "en": "first class",
+                    "meanings": [
+                        "first class",
+                        "very good"
+                    ],
+                    "example": {
+                        "jp": "君の自転車は僕の自転車よりも上等です。",
+                        "en": "Your bike is better than mine.",
+                        "furigana": "<ruby>君<rp>(</rp><rt>きみ</rt><rp>)</rp></ruby>の<ruby>自転車<rp>(</rp><rt>じてんしゃ</rt><rp>)</rp></ruby>は<ruby>僕<rp>(</rp><rt>ぼく</rt><rp>)</rp></ruby>の<ruby>自転車<rp>(</rp><rt>じてんしゃ</rt><rp>)</rp></ruby>よりも<ruby>上等<rp>(</rp><rt>じょうとう</rt><rp>)</rp></ruby>です。",
+                        "enMn": "Чиний дугуй минийхээс илүү дээд зэрэглэлийн."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "дээд зэрэглэл",
+                    "meaningsMn": [
+                        "дээд зэрэглэл"
+                    ]
+                },
+                {
+                    "jp": "省略",
+                    "reading": "しょうりゃく",
+                    "en": "omission",
+                    "meanings": [
+                        "omission",
+                        "abbreviation",
+                        "abridgment"
+                    ],
+                    "example": {
+                        "jp": "最後の２節を省略して歌いましょうか。",
+                        "en": "We'll sing that song, omitting the last two verses.",
+                        "furigana": "<ruby>最後<rp>(</rp><rt>さいご</rt><rp>)</rp></ruby>の２<ruby>節<rp>(</rp><rt>せつ</rt><rp>)</rp></ruby>を<ruby>省略<rp>(</rp><rt>しょうりゃく</rt><rp>)</rp></ruby>して<ruby>歌<rp>(</rp><rt>うた</rt><rp>)</rp></ruby>いましょうか。",
+                        "enMn": "Сүүлийн хоёр бадгийг орхиж дуулах уу?"
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "товчлол",
+                    "meaningsMn": [
+                        "товчлол"
+                    ]
+                },
+                {
+                    "jp": "実は",
+                    "reading": "じつは",
+                    "en": "in fact",
+                    "meanings": [
+                        "actually",
+                        "in fact"
+                    ],
+                    "example": {
+                        "jp": "実はこれで４度目の質問になります。",
+                        "en": "Actually this will be my fourth question.",
+                        "furigana": "<ruby>実<rp>(</rp><rt>じつ</rt><rp>)</rp></ruby>はこれで４<ruby>度目<rp>(</rp><rt>どめ</rt><rp>)</rp></ruby>の<ruby>質問<rp>(</rp><rt>しつもん</rt><rp>)</rp></ruby>になります。",
+                        "enMn": "Үнэндээ энэ бол миний дөрөв дэх асуулт болно."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "үнэндээ",
+                    "meaningsMn": [
+                        "үнэндээ",
+                        "үнэндээ"
+                    ]
+                },
+                {
+                    "jp": "少々",
+                    "reading": "しょうしょう",
+                    "en": "a little",
+                    "meanings": [
+                        "a little",
+                        "short (time) (formal for 少し (すこし))"
+                    ],
+                    "example": {
+                        "jp": "彼女の態度は少々腹にすえかねる。",
+                        "en": "I find her manner a little hard to take.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>の<ruby>態度<rp>(</rp><rt>たいど</rt><rp>)</rp></ruby>は<ruby>少々<rp>(</rp><rt>しょうしょう</rt><rp>)</rp></ruby><ruby>腹<rp>(</rp><rt>はら</rt><rp>)</rp></ruby>にすえかねる。",
+                        "enMn": "Түүний зан авир надад бага зэрэг хүлцэхэд хэцүү санагддаг."
+                    },
+                    "phonetic": "少",
+                    "phoneticReading": "ショウ、サ",
+                    "enMn": "бага зэрэг",
+                    "meaningsMn": [
+                        "бага зэрэг",
+                        "багахан (少し-ийн албан ёсны хэлбэр)"
+                    ]
+                },
+                {
+                    "jp": "重視",
+                    "reading": "じゅうし",
+                    "en": "importance",
+                    "meanings": [
+                        "importance",
+                        "stress"
+                    ],
+                    "example": {
+                        "jp": "彼らは私の意見を重視しなかった。",
+                        "en": "They didn't take much account of my opinion.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らは<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>の<ruby>意見<rp>(</rp><rt>いけん</rt><rp>)</rp></ruby>を<ruby>重視<rp>(</rp><rt>じゅうし</rt><rp>)</rp></ruby>しなかった。",
+                        "enMn": "Тэд миний саналыг тийм ч их анхаараагүй."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "ач холбогдол",
+                    "meaningsMn": [
+                        "ач холбогдол",
+                        "стресс"
+                    ]
+                },
+                {
+                    "jp": "主要",
+                    "reading": "しゅよう",
+                    "en": "main",
+                    "meanings": [
+                        "chief",
+                        "main"
+                    ],
+                    "example": {
+                        "jp": "米はそれら主要商品の一つだ。",
+                        "en": "Rice is one of those staple commodities.",
+                        "furigana": "<ruby>米<rp>(</rp><rt>べい</rt><rp>)</rp></ruby>はそれら<ruby>主要<rp>(</rp><rt>しゅよう</rt><rp>)</rp></ruby><ruby>商品<rp>(</rp><rt>しょうひん</rt><rp>)</rp></ruby>の<ruby>一<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>つだ。",
+                        "enMn": "Цагаан будаа бол гол хэрэглээний бараануудын нэг юм."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "гол",
+                    "meaningsMn": [
+                        "гол",
+                        "гол"
+                    ]
+                },
+                {
+                    "jp": "種類",
+                    "reading": "しゅるい",
+                    "en": "variety",
+                    "meanings": [
+                        "variety",
+                        "kind"
+                    ],
+                    "example": {
+                        "jp": "彼はあらゆる種類の人と接触する。",
+                        "en": "He comes into contact with all kinds of people.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>はあらゆる<ruby>種類<rp>(</rp><rt>しゅるい</rt><rp>)</rp></ruby>の<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>と<ruby>接触<rp>(</rp><rt>せっしょく</rt><rp>)</rp></ruby>する。",
+                        "enMn": "Тэр бүх төрлийн хүмүүстэй харилцдаг."
+                    },
+                    "phonetic": "重",
+                    "phoneticReading": "シュ",
+                    "enMn": "төрөл зүйл",
+                    "meaningsMn": [
+                        "төрөл зүйл",
+                        "төрөл"
+                    ]
+                },
+                {
+                    "jp": "上達",
+                    "reading": "じょうたつ",
+                    "en": "improvement",
+                    "meanings": [
+                        "improvement",
+                        "advance"
+                    ],
+                    "example": {
+                        "jp": "彼もやがて英語が上達するであろう。",
+                        "en": "His English will improve in the course of time.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>もやがて<ruby>英語<rp>(</rp><rt>えいご</rt><rp>)</rp></ruby>が<ruby>上達<rp>(</rp><rt>じょうたつ</rt><rp>)</rp></ruby>するであろう。",
+                        "enMn": "Түүний англи хэл цаг хугацааны явцад сайжирна."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "дэвшил",
+                    "meaningsMn": [
+                        "сайжруулалт",
+                        "ахиц дэвшил"
+                    ]
+                },
+                {
+                    "jp": "すくなくとも",
+                    "reading": "すくなくとも",
+                    "en": "at least",
+                    "meanings": [
+                        "at least"
+                    ],
+                    "example": {
+                        "jp": "弟は超重要人物だ。すくなくとも奴はそう思っている。",
+                        "en": "My brother is very important. At least he thinks he is.",
+                        "furigana": "<ruby>弟<rp>(</rp><rt>おとうと</rt><rp>)</rp></ruby>は<ruby>超<rp>(</rp><rt>ちょう</rt><rp>)</rp></ruby><ruby>重要<rp>(</rp><rt>じゅうよう</rt><rp>)</rp></ruby><ruby>人物<rp>(</rp><rt>じんぶつ</rt><rp>)</rp></ruby>だ。すくなくとも<ruby>奴<rp>(</rp><rt>やつ</rt><rp>)</rp></ruby>はそう<ruby>思<rp>(</rp><rt>おも</rt><rp>)</rp></ruby>っている。",
+                        "enMn": "Дүү маань туйлын чухал хүн. Ядаж л тэр өөрөө тэгж боддог."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "ядаж",
+                    "meaningsMn": [
+                        "ядаж"
+                    ]
+                },
+                {
+                    "jp": "すなわち",
+                    "reading": "すなわち",
+                    "en": "that is",
+                    "meanings": [
+                        "that is",
+                        "namely",
+                        "e.g."
+                    ],
+                    "example": {
+                        "jp": "彼女は今度の日曜、すなわち１０日に帰ります。",
+                        "en": "She will return home next Sunday, that is, the tenth.",
+                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>今度<rp>(</rp><rt>こんど</rt><rp>)</rp></ruby>の<ruby>日曜<rp>(</rp><rt>にちよう</rt><rp>)</rp></ruby>、すなわち１０<ruby>日<rp>(</rp><rt>にち</rt><rp>)</rp></ruby>に<ruby>帰<rp>(</rp><rt>かえ</rt><rp>)</rp></ruby>ります。",
+                        "enMn": "Тэр ирэх ням гараг, өөрөөр хэлбэл 10-нд буцаж ирнэ."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "өөрөөр хэлбэл",
+                    "meaningsMn": [
+                        "өөрөөр хэлбэл"
+                    ]
+                },
+                {
+                    "jp": "状態",
+                    "reading": "じょうたい",
                     "en": "state",
                     "meanings": [
-                        "state",
-                        "country",
-                        "nation"
+                        "condition",
+                        "situation"
+                    ],
+                    "example": {
+                        "jp": "横には喧嘩状態の妻が眠っている。",
+                        "en": "To my side, my wife, who I'm presently at odds with, lies sleeping.",
+                        "furigana": "<ruby>横<rp>(</rp><rt>よこ</rt><rp>)</rp></ruby>には<ruby>喧嘩<rp>(</rp><rt>けんか</rt><rp>)</rp></ruby><ruby>状態<rp>(</rp><rt>じょうたい</rt><rp>)</rp></ruby>の<ruby>妻<rp>(</rp><rt>つま</rt><rp>)</rp></ruby>が<ruby>眠<rp>(</rp><rt>ねむ</rt><rp>)</rp></ruby>っている。",
+                        "enMn": "Миний хажууд одоогоор муудалцаж буй эхнэр минь унтаж хэвтэж байна."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "байдал",
+                    "meaningsMn": [
+                        "нөхцөл",
+                        "нөхцөл байдал"
+                    ]
+                },
+                {
+                    "jp": "全て",
+                    "reading": "すべて",
+                    "en": "all",
+                    "meanings": [
+                        "all",
+                        "the whole",
+                        "entirely"
+                    ],
+                    "example": {
+                        "jp": "学校に全てを求めることはできない。",
+                        "en": "One can't expect everything from schools.",
+                        "furigana": "<ruby>学校<rp>(</rp><rt>がっこう</rt><rp>)</rp></ruby>に<ruby>全<rp>(</rp><rt>すべ</rt><rp>)</rp></ruby>てを<ruby>求<rp>(</rp><rt>もと</rt><rp>)</rp></ruby>めることはできない。",
+                        "enMn": "Сургуулиас бүхнийг шаардаж болохгүй."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "бүх",
+                    "meaningsMn": [
+                        "бүх"
+                    ]
+                },
+                {
+                    "jp": "正確",
+                    "reading": "せいかく",
+                    "en": "accurate",
+                    "meanings": [
+                        "accurate",
+                        "punctuality",
+                        "exact"
+                    ],
+                    "example": {
+                        "jp": "劣等感―それは正確にはどういうことか。",
+                        "en": "Inferiority complex - what exactly does that mean?",
+                        "furigana": "<ruby>劣等<rp>(</rp><rt>れっとう</rt><rp>)</rp></ruby><ruby>感<rp>(</rp><rt>かん</rt><rp>)</rp></ruby>―それは<ruby>正確<rp>(</rp><rt>せいかく</rt><rp>)</rp></ruby>にはどういうことか。",
+                        "enMn": "Дорд үзэх мэдрэмж — тэр яг юу гэсэн үг вэ?"
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "үнэн зөв",
+                    "meaningsMn": [
+                        "үнэн зөв"
+                    ]
+                },
+                {
+                    "jp": "一般",
+                    "reading": "いっぱん",
+                    "en": "general",
+                    "meanings": [
+                        "general",
+                        "average"
                     ],
                     "example": null,
-                    "phonetic": "家",
+                    "phonetic": "般",
+                    "phoneticReading": "ハン、バン",
+                    "enMn": "ерөнхий",
+                    "meaningsMn": [
+                        "ерөнхий"
+                    ]
+                },
+                {
+                    "jp": "結果",
+                    "reading": "けっか",
+                    "en": "result",
+                    "meanings": [
+                        "result",
+                        "consequence"
+                    ],
+                    "example": null,
+                    "phonetic": "果",
                     "phoneticReading": "カ",
-                    "enMn": "үндэстэн",
+                    "enMn": "үр дүн",
                     "meaningsMn": [
-                        "үндэстэн"
-                    ]
-                },
-                {
-                    "jp": "粉",
-                    "reading": "こな",
-                    "en": "flour",
-                    "meanings": [
-                        "flour",
-                        "powder"
-                    ],
-                    "example": null,
-                    "phonetic": "分",
-                    "phoneticReading": "フン",
-                    "enMn": "гурил",
-                    "meaningsMn": [
-                        "гурил"
-                    ]
-                },
-                {
-                    "jp": "財産",
-                    "reading": "ざいさん",
-                    "en": "property",
-                    "meanings": [
-                        "property",
-                        "fortune",
-                        "assets"
-                    ],
-                    "example": null,
-                    "phonetic": "才",
-                    "phoneticReading": "サイ、ザイ",
-                    "enMn": "хөрөнгө хогшил",
-                    "meaningsMn": [
-                        "хөрөнгө хогшил"
+                        "үр дүн"
                     ]
                 }
             ]
-        ]
+        ],
+        "themeKey": "theme.n3.12"
     },
     {
         "level": 37,
