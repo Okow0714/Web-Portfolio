@@ -364,10 +364,15 @@ function updateAuthUI(session) {
     sessionKnown = true;
     const anonEl = document.getElementById('auth-anon');
     const authedEl = document.getElementById('auth-authed');
+    // Settings is open to visitors without an account, who have no account to delete. The markup
+    // ships the danger zone hidden and it is revealed only for a real session, so a destructive
+    // control is never what shows if this never runs.
+    const dangerEl = document.getElementById('account-danger-zone');
 
     if (session) {
         hideEl(anonEl);
         showEl(authedEl);
+        if (dangerEl) showEl(dangerEl);
         document.getElementById('auth-user-email').textContent = session.user.email;
         // Avatar becomes the first letter of the email, like a typical account-menu avatar,
         // instead of the generic guest icon -- shown both on the trigger button and again in
@@ -378,6 +383,10 @@ function updateAuthUI(session) {
     } else {
         showEl(anonEl);
         hideEl(authedEl);
+        if (dangerEl) hideEl(dangerEl);
+        // A sign-out with the confirm step half-filled would otherwise leave "Yes, permanently
+        // delete" waiting behind the next sign-in.
+        resetAccountDeleteUI();
         accountMenuAvatar.innerHTML = GUEST_AVATAR_HTML;
     }
 
