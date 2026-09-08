@@ -1,0 +1,357 @@
+/* Study Path (学びの道) — styles specific to path.html.
+   "Sumi on washi": a warm paper ground, sumi-ink text and a single saffron marker. Distinct from
+   every other page both in palette and, more to the point, in layout: this is the only page built
+   as a vertical route with stations hung off a spine, rather than a card grid, a sidebar, a
+   toolbar-and-board, or a search list. A roadmap should look like a road.
+
+   Tokens live on .path-main, not :root, so nothing leaks into the shared masthead, footer or the
+   light auth modals — same rule the other page themes follow. */
+
+/* Full-bleed body ground: body is an ancestor and cannot read a descendant's custom properties,
+   so it gets the single deepest colour directly (see game.css for the same pattern). */
+body:has(.path-main) {
+    background: #ece8dd;
+}
+
+.path-main {
+    --paper: #f4f1e8;
+    --paper-raised: #fbf9f4;
+    --paper-sunk: #ece8dd;
+    --edge: #d9d2c2;
+    --edge-strong: #bdb39d;
+
+    --ink: #1f1c16;
+    --ink-soft: #4d473c;
+    --ink-faint: #6f6858;
+
+    /* One accent, used only for the stage you are on and the "ready when" band. */
+    --saffron: #9a6410;
+    --saffron-bright: #b3761a;
+    --saffron-tint: #f6efdf;
+
+    --spine: #cfc7b4;
+    --done: #3f6b4c;
+
+    --font-jp: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "MS Mincho", serif;
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+    position: relative;
+    padding: 89px 40px 72px;
+    min-height: 100vh;
+    background: var(--paper);
+    color: var(--ink);
+}
+
+.path-inner {
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+/* ---------------------------------------------------------------------
+   Header
+   --------------------------------------------------------------------- */
+.path-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+    margin: 0 0 8px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+}
+
+.path-title-sub {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--saffron);
+    letter-spacing: 0.04em;
+    margin-top: 6px;
+}
+
+.path-lede {
+    max-width: 64ch;
+    color: var(--ink-soft);
+    font-size: 1rem;
+    line-height: 1.65;
+    margin: 0 0 10px;
+}
+
+/* The hours caveat. Deliberately a plain note rather than fine print: the figures are other
+   people's rules of thumb, and the page should say so where they are first used, not in a
+   footnote nobody reads. */
+.path-hours-note {
+    max-width: 64ch;
+    margin: 0 0 34px;
+    padding: 12px 16px;
+    background: var(--paper-sunk);
+    border-left: 3px solid var(--edge-strong);
+    font-size: 0.87rem;
+    color: var(--ink-faint);
+    line-height: 1.55;
+}
+
+/* ---------------------------------------------------------------------
+   The route
+   --------------------------------------------------------------------- */
+.path-route {
+    position: relative;
+    padding-left: 68px;
+}
+
+/* The spine. Stops short at both ends so it reads as a route with a beginning and an end
+   rather than a rule that runs off the page. */
+.path-route::before {
+    content: '';
+    position: absolute;
+    left: 23px;
+    top: 14px;
+    bottom: 26px;
+    width: 2px;
+    background: var(--spine);
+}
+
+.path-stage {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.path-marker {
+    position: absolute;
+    left: -68px;
+    top: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--paper);
+    border: 2px solid var(--edge-strong);
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    /* Sits over the spine rather than beside it. */
+    z-index: 1;
+}
+
+.path-marker.jp {
+    font-family: var(--font-jp);
+    font-size: 0.9rem;
+}
+
+/* Stage 0 is the one a visitor with no Japanese should start at, so it is the only one marked. */
+.path-stage.is-start .path-marker {
+    border-color: var(--saffron-bright);
+    background: var(--saffron-tint);
+    color: var(--saffron);
+}
+
+.path-card {
+    border: 1px solid var(--edge);
+    background: var(--paper-raised);
+    box-shadow: 0 1px 2px rgba(31, 28, 22, 0.04);
+}
+
+.path-card-head {
+    padding: 18px 24px 15px;
+    border-bottom: 1px solid var(--edge);
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.path-card-head h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--ink);
+}
+
+.path-goal {
+    flex-basis: 100%;
+    margin: 4px 0 0;
+    color: var(--ink-soft);
+    font-size: 0.94rem;
+}
+
+.path-chip {
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border: 1px solid var(--edge-strong);
+    color: var(--ink-faint);
+}
+
+.path-stage.is-start .path-chip {
+    border-color: var(--saffron-bright);
+    color: var(--saffron);
+    background: var(--saffron-tint);
+}
+
+.path-hours {
+    margin-left: auto;
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+/* ---- the steps in a stage ---- */
+.path-steps {
+    padding: 4px 24px 6px;
+    margin: 0;
+    list-style: none;
+}
+
+.path-step {
+    display: grid;
+    grid-template-columns: 168px 1fr;
+    gap: 18px;
+    padding: 14px 0;
+    border-bottom: 1px dashed var(--edge);
+    align-items: start;
+}
+
+.path-step:last-child {
+    border-bottom: 0;
+}
+
+.path-tool {
+    font-weight: 600;
+    font-size: 0.93rem;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+}
+
+a.path-tool:hover {
+    color: var(--saffron);
+    border-bottom-color: var(--saffron);
+}
+
+.path-where {
+    display: block;
+    font-weight: 400;
+    font-size: 0.73rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-top: 3px;
+    /* Level ranges line up down the column. */
+    font-variant-numeric: tabular-nums;
+}
+
+.path-what {
+    font-size: 0.94rem;
+    color: var(--ink-soft);
+    line-height: 1.6;
+}
+
+.path-what b {
+    color: var(--ink);
+    font-weight: 600;
+}
+
+.path-what .jp {
+    font-family: var(--font-jp);
+}
+
+/* ---- the check at the end of a stage ---- */
+.path-ready {
+    margin: 0;
+    padding: 14px 24px;
+    background: var(--saffron-tint);
+    border-top: 1px solid var(--edge);
+    font-size: 0.91rem;
+    color: var(--ink-soft);
+}
+
+.path-ready b {
+    font-family: 'Fraunces', Georgia, serif;
+    color: var(--saffron);
+    font-weight: 600;
+}
+
+/* ---------------------------------------------------------------------
+   Closing note
+   --------------------------------------------------------------------- */
+.path-outro {
+    margin-top: 40px;
+    padding: 22px 24px;
+    border: 1px solid var(--edge);
+    background: var(--paper-raised);
+}
+
+.path-outro h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 10px;
+}
+
+.path-outro p {
+    margin: 0 0 10px;
+    color: var(--ink-soft);
+    font-size: 0.94rem;
+}
+
+.path-outro p:last-child {
+    margin-bottom: 0;
+}
+
+.path-outro a {
+    color: var(--saffron);
+}
+
+/* ---------------------------------------------------------------------
+   Narrow screens: the spine costs 68px of width that a phone needs more.
+   --------------------------------------------------------------------- */
+@media (max-width: 700px) {
+    .path-main {
+        padding: 89px 18px 56px;
+    }
+
+    .path-route {
+        padding-left: 0;
+    }
+
+    .path-route::before {
+        display: none;
+    }
+
+    .path-marker {
+        position: static;
+        margin-bottom: -1px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .path-step {
+        grid-template-columns: 1fr;
+        gap: 4px;
+    }
+}
+
+/* The darker theme drops the page to a night version rather than leaving a bright sheet of paper
+   in a dark room. Same override shape as the other light pages. */
+html[data-contrast="darker"] body:has(.path-main) {
+    background: #17150f;
+}
+
+html[data-contrast="darker"] .path-main {
+    --paper: #1c1a13;
+    --paper-raised: #24211a;
+    --paper-sunk: #17150f;
+    --edge: #3a352a;
+    --edge-strong: #56503f;
+    --ink: #f2eee2;
+    --ink-soft: #c6bfad;
+    --ink-faint: #948c78;
+    --saffron: #e0a94a;
+    --saffron-bright: #e0a94a;
+    --saffron-tint: #2e2617;
+    --spine: #3a352a;
+}

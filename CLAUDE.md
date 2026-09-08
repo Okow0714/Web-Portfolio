@@ -13,6 +13,7 @@ Supabase (Postgres + Auth). Hosted on GitHub Pages. Git repo on `main`.
 |---|---|
 | `index.html` | The "entrance hall" / hub — site home, nav-brand target. Five tool cards (screenshot + description) plus a developer card linking to `about.html` and a home-page dictionary search bar + Dashboard progress widget for signed-in visitors. `<main class="hub-main">`, themed via `hub.css` (deep wine/gold, matches the masthead). Mongolian by default (`<html data-default-lang="mn">`). |
 | `about.html` | Sarantsatsral's personal "About Me" resume/portfolio page — reached via the footer's "About Me" column or the hub's developer card, not the top nav. Fully standalone: its own `about.css` (forest-teal "Field Dossier" theme), no shared `style.css`, no masthead/footer, a sticky left index-rail layout instead. English only, no i18n. Has its own compact account popover (`.about-account*` classes) rather than the shared masthead's side drawer, but wired through the same `auth-shared.js` and load-bearing IDs (see Account menu below). |
+| `path.html` | Study Path (学びの道) — a six-stage route from no Japanese at all to N1, mapping each stage onto specific tools and level ranges. `<main class="path-main">` / `path.css` (warm paper, sumi ink, one saffron marker). The only page laid out as a vertical route with stations hung off a spine. **Not in the masthead nav on purpose** — that row already carries seven items and overflowed in Mongolian at 1280px once before; it is reached from the hub's `.hub-startpath` banner and the footer's Study tools column. The per-stage hour ranges are external rules of thumb, labelled as such on the page; every level range in the copy is real and will drift if the tools change. |
 | `game.html` | Word Match ("言葉合わせ") — hex-tile vocabulary matching game, JLPT N5–N1. `<main class="game-main">` / `game.css` (dark hanafuda violet/gold). |
 | `phonetics.html` | Phonetics Family — kanji grouped by shared phonetic component, ranked by usage. `<main class="phonetics-main">` / `phonetics.css` (light jade/copper). |
 | `grammar.html` | Grammar Connect — sentence-swap grammar drill, two tracks (foundation/advanced). `<main class="grammar-main">` / `grammar.css`. |
@@ -37,7 +38,7 @@ version tucked the credits behind a `<details>` right in the footer; the user as
 separate page instead, both because Word Game's and Grammar Connect's full photo/music lists
 made that disclosure huge, and because those two tools were *also* independently duplicating
 their own credits in-page, under their level-select grids, which is what prompted consolidating
-everything onto one dedicated page). Both the masthead and footer are identical across the eleven
+everything onto one dedicated page). Both the masthead and footer are identical across the twelve
 pages that carry them (every page above except `about.html`, which has no shared header/footer
 at all, and `reset-password.html`); `credits.html` itself carries the masthead+footer too.
 
@@ -45,7 +46,7 @@ at all, and `reset-password.html`); `credits.html` itself carries the masthead+f
 masthead, account panel, all three account modals (auth, account details, **and settings** — the
 settings modal is deliberately inside the block, since it is the exact region the eleven-page
 regex edit corrupted) and the footer — ~205 lines — live **once** in `_chrome.html`, and
-`node build-chrome.js` writes them into the eleven pages between
+`node build-chrome.js` writes them into the twelve pages between
 `<!-- chrome:header -->…<!-- /chrome:header -->` and `<!-- chrome:footer -->…<!-- /chrome:footer -->`
 markers. **Edit `_chrome.html` and re-run the script; edits made to the chrome inside a page are
 overwritten on the next run.** The only per-page difference is `nav-current`, applied from the
@@ -61,7 +62,7 @@ zero-balance test would let one page's unrelated quirk block the whole build. Th
 the 2026-09-08 outage was one bad find-and-replace applied eleven times at once.
 
 **Page-scoped theme files** (`hub.css`, `phonetics.css`, `reading.css`, `grammar.css`,
-`dictionary.css`, `dashboard.css`, `game.css`, `about.css`, `origins.css`): each defines its own
+`dictionary.css`, `dashboard.css`, `game.css`, `about.css`, `origins.css`, `path.css`): each defines its own
 token block on that page's own wrapper class (see the Pages table). **They do not agree on token
 names** — `phonetics.css`, `reading.css` and `origins.css` reuse `style.css`'s names
 (`--bg-page`, `--bg-surface`, `--accent`…), but `game.css` calls its surface `--panel` and its

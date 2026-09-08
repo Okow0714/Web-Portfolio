@@ -17,11 +17,12 @@
 // stale-while-revalidate, so it serves the cached copy first and only refreshes behind it --
 // without a bump, a returning PWA user runs the previous version of a fixed file for one more
 // visit. Whether that matters is a judgement call; for a correctness fix it generally does.
-const CACHE_VERSION = 'khan-japanese-v63';
+const CACHE_VERSION = 'khan-japanese-v64';
 
 const APP_SHELL = [
     './',
     './index.html',
+    './path.html',
     './origins.html',
     './about.html',
     './game.html',
@@ -51,6 +52,7 @@ const APP_SHELL = [
     './fonts/ibmplexsans-zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.woff2',
     './vendor/supabase.min.js',
     './hub.css',
+    './path.css',
     './origins.css',
     './tutorial.css',
     './about.css',
@@ -69,6 +71,7 @@ const APP_SHELL = [
     './origins.js',
     './tutorial.js',
     './tutorial-i18n-strings.js',
+    './path-i18n-strings.js',
     './origins-i18n-strings.js',
     './pwa-register.js',
     './script.js',

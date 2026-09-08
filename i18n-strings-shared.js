@@ -30,6 +30,9 @@ window.I18N_STRINGS = {
     'nav.writingCreativity': { en: 'Writing & Creativity', mn: 'Бичвэр ба бүтээлч байдал' },
     'nav.resume': { en: 'Resume', mn: 'Намтар' },
     'nav.getInTouch': { en: 'Get In Touch', mn: 'Холбоо барих' },
+    // Study Path is linked from the hub and the footer, not the masthead nav: that row already
+    // carries seven items and overflowed in Mongolian at 1280px once before.
+    'nav.studyPath': { en: 'Study Path', mn: 'Сурах зам' },
     'nav.kanaOrigins': { en: 'Kana Origins', mn: 'Канагийн үүсэл' },
     'nav.wordGame': { en: 'Word Game', mn: 'Үг холбох тоглоом' },
     'nav.allLevels': { en: 'All Levels', mn: 'Бүх шат' },

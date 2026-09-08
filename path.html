@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Study Path - Khan Japanese</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A route from no Japanese at all to JLPT N1, mapped onto Khan Japanese's tools stage by stage.">
+    <link rel="canonical" href="https://khan-japanese.org/path.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Khan Japanese">
+    <meta property="og:title" content="Study Path - Khan Japanese">
+    <meta property="og:description" content="A route from no Japanese at all to JLPT N1, mapped onto Khan Japanese's tools stage by stage.">
+    <meta property="og:url" content="https://khan-japanese.org/path.html">
+    <meta property="og:image" content="https://khan-japanese.org/images/about/hero.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Study Path - Khan Japanese">
+    <meta name="twitter:description" content="A route from no Japanese at all to JLPT N1, mapped onto Khan Japanese's tools stage by stage.">
+    <meta name="twitter:image" content="https://khan-japanese.org/images/about/hero.jpg">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4a2c3a">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="path.css">
+    <link rel="stylesheet" href="fonts/fonts.css">
+    <!-- In <head> on purpose: it sets the ground colour before the first paint. -->
+    <script src="display-prefs.js"></script>
+</head>
+
+<body>
+    <div class="background-animation">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+        <div class="floating-shape shape-4"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header: one row - brand (home link), section nav, account menu -->
+        <!-- chrome:header -->
+        <div class="site-header-wrap">
+            <header class="header">
+                <a href="index.html" class="site-brand" aria-label="Khan Japanese - home">
+                    <span class="brand-seal" aria-hidden="true"><img src="icons/brand-mark.png" alt=""></span>
+                    <span class="brand-text">
+                        <span class="brand-name">Khan Japanese</span>
+                        <span class="brand-role">Japanese study tools</span>
+                    </span>
+                </a>
+
+                <nav class="header-nav" aria-label="Main">
+                    <div class="nav-item">
+                        <a href="origins.html" class="nav-trigger" data-i18n="nav.kanaOrigins">Kana Origins</a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="game.html" class="nav-trigger"><span data-i18n="nav.wordGame">Word Game</span><span class="nav-caret" aria-hidden="true">&#9662;</span></a>
+                        <div class="nav-dropdown">
+                            <a href="game.html" data-i18n="nav.allLevels">All Levels</a>
+                            <a href="game.html?level=1" data-jlpt="N5" data-i18n="nav.n5Beginner">N5 · Beginner</a>
+                            <a href="game.html?level=13" data-jlpt="N4" data-i18n="nav.n4Elementary">N4 · Elementary</a>
+                            <a href="game.html?level=25" data-jlpt="N3" data-i18n="nav.n3Intermediate">N3 · Intermediate</a>
+                            <a href="game.html?level=37" data-jlpt="N2" data-i18n="nav.n2UpperIntermediate">N2 · Upper Intermediate</a>
+                            <a href="game.html?level=49" data-jlpt="N1" data-i18n="nav.n1Advanced">N1 · Advanced</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="reading.html" class="nav-trigger" data-i18n="nav.dokkaiReader">Dokkai Reader</a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="phonetics.html" class="nav-trigger" data-i18n="nav.phoneticsFamily">Phonetics Family</a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="grammar.html" class="nav-trigger"><span data-i18n="nav.grammarConnect">Grammar Connect</span><span class="nav-caret" aria-hidden="true">&#9662;</span></a>
+                        <div class="nav-dropdown">
+                            <a href="grammar.html" data-i18n="nav.allLevels">All Levels</a>
+                            <a href="grammar.html?track=foundation" data-i18n="nav.foundationN5N3">Foundation · N5-N3</a>
+                            <a href="grammar.html?track=advanced" data-i18n="nav.advancedN2N1">Advanced · N2-N1</a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <a href="dictionary.html" class="nav-trigger" data-i18n="nav.dictionary">Dictionary</a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="dashboard.html" class="nav-trigger" data-i18n="dash.titleSub">Dashboard</a>
+                    </div>
+                </nav>
+
+                <!-- Language lives here, not behind the account menu: it is the one setting a
+                     visitor needs before they have decided whether to sign up at all. -->
+                <button type="button" class="lang-switch" id="lang-switch" data-lang-switch>
+                    <span aria-hidden="true">翻</span><span class="lang-switch-code"></span>
+                </button>
+
+                <div class="account-menu" id="account-menu">
+                    <button class="account-menu-trigger" id="account-menu-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Account menu">
+                        <span id="account-menu-avatar">
+                            <svg viewBox="0 0 24 24"><path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9Zm0 2c-4 0-8 2-8 5v2h16v-2c0-3-4-5-8-5Z"/></svg>
+                        </span>
+                    </button>
+                    <div class="account-menu-scrim" id="account-menu-scrim"></div>
+                    <div class="account-menu-panel" id="account-menu-panel">
+                        <div id="auth-anon">
+                            <p class="account-menu-note" data-i18n="auth.loginHint">Log in to save your progress across visits.</p>
+                            <button id="auth-login-btn" class="auth-btn account-menu-cta" type="button" data-i18n="auth.logIn">Log In</button>
+                            <nav class="account-menu-nav">
+                                <button type="button" class="account-menu-nav-item" id="account-settings-btn-anon" data-i18n="account.settings">Settings</button>
+                            </nav>
+                        </div>
+                        <div id="auth-authed" class="hidden">
+                            <div class="account-menu-profile">
+                                <div class="account-menu-profile-avatar" id="account-menu-profile-avatar"></div>
+                                <div class="account-menu-profile-text">
+                                    <p class="account-menu-label" data-i18n="auth.signedInAs">Signed in as</p>
+                                    <p id="auth-user-email" class="auth-user-email"></p>
+                                </div>
+                            </div>
+                            <nav class="account-menu-nav">
+                                <a href="dashboard.html" class="account-menu-nav-item" data-i18n="dash.titleSub">Dashboard</a>
+                                <button type="button" class="account-menu-nav-item" id="account-details-btn" data-i18n="account.details">Account details</button>
+                                <button type="button" class="account-menu-nav-item" id="account-settings-btn" data-i18n="account.settings">Settings</button>
+                            </nav>
+                            <button id="auth-logout-btn" class="account-menu-logout" type="button" data-i18n="auth.logOut">Log Out</button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+
+        <!-- Auth Modal -->
+        <div id="auth-modal" class="modal-overlay hidden">
+            <div class="modal-card">
+                <button id="auth-modal-close" class="modal-close" type="button" aria-label="Close">&times;</button>
+                <h3 id="auth-modal-title" data-i18n="auth.logIn">Log In</h3>
+                <form id="auth-form">
+                    <label for="auth-email" data-i18n="auth.email">Email</label>
+                    <input type="email" id="auth-email" required autocomplete="email">
+                    <label for="auth-password" data-i18n="auth.password">Password</label>
+                    <input type="password" id="auth-password" required autocomplete="current-password" minlength="6">
+                    <button type="button" id="auth-forgot-btn" class="auth-forgot-link" data-i18n="auth.forgotPassword">Forgot password?</button>
+                    <div id="auth-terms-row" class="auth-terms-row hidden">
+                        <label class="auth-checkbox-label">
+                            <input type="checkbox" id="auth-terms-checkbox">
+                            <span data-i18n-html="auth.agreeToTerms">I agree to the <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a></span>
+                        </label>
+                    </div>
+                    <p id="auth-error" class="auth-error hidden"></p>
+                    <button type="submit" id="auth-submit-btn" class="auth-btn" data-i18n="auth.logIn">Log In</button>
+                </form>
+                <button id="auth-mode-toggle" class="auth-mode-toggle" type="button" data-i18n="auth.needAccount">Need an account? Sign up</button>
+            </div>
+        </div>
+
+        <!-- Account Details Modal -->
+        <div id="account-details-modal" class="modal-overlay hidden">
+            <div class="modal-card">
+                <button id="account-details-modal-close" class="modal-close" type="button" aria-label="Close">&times;</button>
+                <h3 data-i18n="account.details">Account details</h3>
+                <p class="modal-label" data-i18n="auth.email">Email</p>
+                <p id="account-details-email" class="account-email"></p>
+            </div>
+        </div>
+
+        <!-- Settings Modal -->
+        <div id="account-settings-modal" class="modal-overlay hidden">
+            <div class="modal-card">
+                <button id="account-settings-modal-close" class="modal-close" type="button" aria-label="Close">&times;</button>
+                <h3 data-i18n="account.settings">Settings</h3>
+                <div class="settings-row">
+                    <div>
+                        <p class="modal-label" data-i18n="account.readingLabel">Furigana shown as</p>
+                        <p class="settings-row-note" data-i18n="account.readingNote">The small readings above kanji. Useful if you are still learning kana &mdash; the Japanese itself never changes.</p>
+                    </div>
+                    <div class="pref-seg" role="group" id="reading-style-group">
+                        <button type="button" class="pref-seg-btn" data-reading-style="kana" lang="ja">あい</button>
+                        <button type="button" class="pref-seg-btn" data-reading-style="romaji">romaji</button>
+                        <button type="button" class="pref-seg-btn" data-reading-style="cyrillic">кирилл</button>
+                    </div>
+                </div>
+                <div class="settings-row">
+                    <div>
+                        <p class="modal-label" data-i18n="account.darkerLabel">Darker theme</p>
+                        <p class="settings-row-note" data-i18n="account.darkerNote">Drops the dark pages and the site header to a midnight version of the same colours. Pages that are already light keep their own colours.</p>
+                    </div>
+                    <button type="button" class="auth-btn auth-btn-outline" id="darker-toggle-btn" aria-pressed="false" data-i18n="account.darkerOff">Off</button>
+                </div>
+                <div class="settings-row">
+                    <div>
+                        <p class="modal-label" data-i18n="account.tutorialsLabel">Page tutorials</p>
+                        <p class="settings-row-note" data-i18n="account.tutorialsNote">The first-visit walkthroughs on each tool. Showing them again also brings back the notation key.</p>
+                    </div>
+                    <button type="button" class="auth-btn auth-btn-outline" id="tutorial-reset-btn" data-i18n="account.tutorialsReset">Show again</button>
+                </div>
+                <div class="account-danger-zone hidden" id="account-danger-zone">
+                    <h4 data-i18n="account.dangerZone">Danger Zone</h4>
+                    <p data-i18n="account.resetWarning">Resetting your study progress clears your Word Match times, Grammar Connect results, the texts you have read, and every word attempt behind the dashboard and the Phonetics map. Your account, name and bookmarks stay. This can&#39;t be undone.</p>
+                    <button id="progress-reset-start-btn" class="auth-btn auth-btn-outline" type="button" data-i18n="account.resetProgress">Reset study progress</button>
+                    <div id="progress-reset-confirm" class="hidden">
+                        <p class="settings-row-note" data-i18n="account.resetConfirmAsk">Clear all study progress? There is no way back.</p>
+                        <button id="progress-reset-confirm-btn" class="auth-btn account-delete-btn" type="button" data-i18n="account.resetConfirmYes">Yes, clear my progress</button>
+                        <button id="progress-reset-cancel-btn" class="auth-btn auth-btn-outline" type="button" data-i18n="account.cancel">Cancel</button>
+                    </div>
+                    <p id="progress-reset-status" class="account-delete-status hidden"></p>
+                    <hr class="danger-sep">
+                    <p data-i18n="account.deleteWarning">Deleting your account permanently removes your profile, bookmarks, messages, and study progress. This can't be undone.</p>
+                    <button id="account-delete-start-btn" class="auth-btn account-delete-btn" type="button" data-i18n="account.deleteMyAccount">Delete My Account</button>
+                    <div id="account-delete-confirm" class="account-delete-confirm hidden">
+                        <label for="account-delete-input" data-i18n="account.typeDeleteToConfirm">Type DELETE to confirm:</label>
+                        <input type="text" id="account-delete-input" autocomplete="off">
+                        <button id="account-delete-confirm-btn" class="auth-btn account-delete-btn" type="button" disabled data-i18n="account.yesPermanentlyDelete">Yes, permanently delete my account</button>
+                    </div>
+                    <p id="account-delete-status" class="account-delete-status hidden"></p>
+                </div>
+            </div>
+        </div>
+        <!-- /chrome:header -->
+
+        <main class="path-main">
+            <div class="path-inner">
+                <h1 class="path-title">学びの道<span class="path-title-sub" data-i18n="path.titleSub">Study Path</span></h1>
+                <p class="path-lede" data-i18n="path.lede">Six stages, from not knowing a single character to N1. Each one says what you are learning, which tools to open and exactly which levels to do, and how you know you are finished with it. Work down the page; nothing here assumes you have studied Japanese before.</p>
+                <p class="path-hours-note" data-i18n="path.hoursNote">The hours on each stage are the ranges commonly quoted for learners with no previous kanji knowledge. Sources disagree with each other, none of them measured you, and nothing on this site tracks them — treat them as a sense of scale, not a target.</p>
+
+                <div class="path-route">
+
+                    <!-- Stage 0 -->
+                    <section class="path-stage is-start">
+                        <span class="path-marker jp" aria-hidden="true">かな</span>
+                        <div class="path-card">
+                            <div class="path-card-head">
+                                <h2 data-i18n="path.s0.title">Stage 0 · Before any JLPT level</h2>
+                                <span class="path-chip" data-i18n="path.startHere">Start here</span>
+                                <span class="path-hours" data-i18n="path.s0.hours">15–30 hours</span>
+                                <p class="path-goal" data-i18n="path.s0.goal">Read both kana alphabets without help. Nothing else on this site works until this one does.</p>
+                            </div>
+                            <ul class="path-steps">
+                                <li class="path-step">
+                                    <div><a class="path-tool" href="origins.html">Kana Origins</a><span class="path-where" data-i18n="path.s0.w1">Opener, then both tables</span></div>
+                                    <div class="path-what" data-i18n-html="path.s0.d1">Read the opener on <b>what kanji, hiragana and katakana each do</b> — most beginners lose weeks to not knowing why there are three. Then work through both kana tables. Every kana shows the Chinese character it was drawn from, which gives you something to hang the shape on.</div>
+                                </li>
+                                <li class="path-step">
+                                    <div><span class="path-tool" data-i18n="path.settings">Settings</span><span class="path-where" data-i18n="path.s0.w2">Furigana</span></div>
+                                    <div class="path-what" data-i18n-html="path.s0.d2">Furigana starts as kana. If you truly cannot read it yet, switch to <b>romaji</b> for a week or two — then switch back. Romaji left on is the single most common reason people still cannot read after a year.</div>
+                                </li>
+                                <li class="path-step">
+                                    <div><a class="path-tool" href="game.html">Word Match</a><span class="path-where" data-i18n="path.s0.w3">N5 · any level</span></div>
+                                    <div class="path-what" data-i18n="path.s0.d3">Use it purely as kana drill at this point. Do not worry about remembering the words yet; you are training your eye to read the shapes at speed.</div>
+                                </li>
+                            </ul>
+                            <p class="path-ready" data-i18n-html="path.s0.ready"><b>Ready when:</b> you can read a kana word aloud without checking the table, both hiragana and katakana.</p>
+                        </div>
+                    </section>
+
+                    <!-- Stage 1 -->
+                    <section class="path-stage">
+                        <span class="path-marker" aria-hidden="true">N5</span>
+                        <div class="path-card">
+                            <div class="path-card-head">
+                                <h2 data-i18n="path.s1.title">Stage 1 · N5</h2>
+                                <span class="path-hours" data-i18n="path.s1.hours">250–450 hours</span>
+                                <p class="path-goal" data-i18n="path.s1.goal">Everyday words, the shape of a basic sentence, and your first hundred-odd kanji.</p>
+                            </div>
+                            <ul class="path-steps">
+                                <li class="path-step">
+                                    <div><a class="path-tool" href="game.html">Word Match</a><span class="path-where" data-i18n="path.s1.w1">N5 · levels 1–12</span></div>
+                                    <div class="path-what" data-i18n-html="path.s1.d1">300 words in twelve themed levels — <b>Days and dates</b>, <b>Eating and drinking</b>, <b>At home</b>. Do them in order: each level is one topic, so the words reinforce each other instead of arriving at random.</div>
+                                </li>
+                                <li class="path-step">
+                                    <div><a class="path-tool" href="grammar.html">Grammar Connect</a><span class="path-where" data-i18n="path.s1.w2">Foundation · 1–7</span></div>
+                                    <div class="path-what" data-i18n="path.s1.d2">Ten sentences a level. You swap the underlined grammar point for one that means the same thing, which teaches you the forms by contrast rather than by list.</div>
+                                </li>
+                                <li class="path-step">
+                                    <div><a class="path-tool" href="reading.html">Dokkai Reader</a><span class="path-where" data-i18n="path.s1.w3">Foundation · 1–3</span></div>
+                                    <div class="path-what" data-i18n="path.s1.d3">Read short texts aloud and the page listens. Reading out loud at this stage is worth more than reading silently — it catches the words you only think you know.</div>
+                                </li>
+                                <li class="path-step">
+                                    <div><a class="path-tool" href="phonetics.html">Phonetics Family</a><span class="path-where" data-i18n="path.s1.w4">N5 tier</span></div>
+                                    <div class="path-what" data-i18n-html="path.s1.d4">Browse, do not memorise. The point is to notice early that kanji sharing a part often share a sound — <b class="jp">生・性・姓</b> all read セイ. That noticing is what makes the next thousand kanji cheaper.</div>
+                                </li>
+                            </ul>
+                            <p class="path-ready" data-i18n-html="path.s1.ready"><b>Ready when:</b> all twelve N5 Word Match levels are cleared and Grammar Connect Foundation 7 goes through without mistakes.</p>
+                        </div>
+                    </section>
+
+                    <!-- Stage 2 -->
+                    <section class="path-stage">
+                        <span class="path-marker" aria-hidden="true">N4</span>
+                        <div class="path-card">
+                            <div class="path-card-head">
+                                <h2 data-i18n="path.s2.title">Stage 2 · N4</h2>
+                                <span class="path-hours" data-i18n="path.s2.hours">400–700 hours</span>
+                                <p class="path-goal" data-i18n="path.s2.goal">Polite speech, the forms that look alike, and reading a paragraph instead of a line.</p>
+                            </div>
+                            <ul class="path-steps">
+                                <li class="path-step">
+                                    <div><a class="path-tool" href="game.html">Word Match</a><span class="path-where" data-i18n="path.s2.w1">N4 · levels 1–12</span></div>
+                                    <div class="path-what" data-i18n-html="path.s2.d1">One whole level is <b>Saying it politely</b> — <span class="jp">いらっしゃる, 申し上げる, なさる, いただく</span>. Keigo starts here, and it is easier as a set than met one word at a time.</div>
+                                </li>
+                                <li class="path-step">
+                                    <div><a class="path-tool" href="grammar.html">Grammar Connect</a><span class="path-where" data-i18n="path.s2.w2">Foundation · 8–14</span></div>
+                                    <div class="path-what" data-i18n="path.s2.d2">Longer sentences, and forms that differ by one syllable. Slow down here — the mistakes you make in this range are the ones that persist.</div>
+                                </li>
+                                <li class="path-step">
+                                    <div><a class="path-tool" href="reading.html">Dokkai Reader</a><span class="path-where" data-i18n="path.s2.w3">Foundation · 4–7</span></div>
+                                    <div class="path-what" data-i18n="path.s2.d3">Texts long enough that you have to hold a thought across sentences.</div>
+                                </li>
+                                <li class="path-step">
+                                    <div><a class="path-tool" href="dictionary.html">Dictionary</a><span class="path-where" data-i18n="path.s2.w4">Look things up</span></div>
+                                    <div class="path-what" data-i18n="path.s2.d4">Start looking words up instead of waiting to be taught them. This is the habit that separates people who keep going from people who stall at N4.</div>
+                                </li>
+                            </ul>
+                            <p class="path-ready" data-i18n-html="path.s2.ready"><b>Ready when:</b> a Dokkai Reader Foundation level 7 text reads through without stopping, and you can tell the polite forms apart on sight.</p>
+                        </div>
+                    </section>
+
+                    <!-- Stage 3 -->
+                    <section class="path-stage">
+                        <span class="path-marker" aria-hidden="true">N3</span>
+                        <div class="path-card">
+                            <div class="path-card-head">
+                                <h2 data-i18n="path.s3.title">Stage 3 · N3</h2>
+                                <span class="path-hours" data-i18n="path.s3.hours">700–1,100 hours</span>
+                                <p class="path-goal" data-i18n="path.s3.goal">The wall. Vocabulary stops being concrete and starts being abstract, and there is no way through but volume.</p>
+                            </div>
+                            <ul class="path-steps">
+                                <li class="path-step">
+                                    <div><a class="path-tool" href="game.html">Word Match</a><span class="path-where" data-i18n="path.s3.w1">N3 · levels 1–12</span></div>
+                                    <div class="path-what" data-i18n-html="path.s3.d1">The themes change character here: <b>Money and paying</b>, <b>Rules and society</b>, <b>How much, how sure</b>. That is not a design choice, it is what N3 vocabulary is.</div>
+                                </li>
+                                <li class="path-step">
+                                    <div><a class="path-tool" href="grammar.html">Grammar Connect</a><span class="path-where" data-i18n="path.s3.w2">Foundation · 15–20</span></div>
+                                    <div class="path-what" data-i18n="path.s3.d2">Finish the Foundation track. Do not start Advanced until this one is clean.</div>
+                                </li>
+                                <li class="path-step">
+                                    <div><a class="path-tool" href="reading.html">Dokkai Reader</a><span class="path-where" data-i18n="path.s3.w3">Foundation 8–10, then Advanced 1–3</span></div>
+                                    <div class="path-what" data-i18n="path.s3.d3">The two tracks overlap at N3 on purpose, so you can cross over when the Foundation texts stop being hard rather than on a fixed date.</div>
+                                </li>
+                                <li class="path-step">
+                                    <div><a class="path-tool" href="phonetics.html">Phonetics Family</a><span class="path-where" data-i18n="path.s3.w4">N5–N3, seriously now</span></div>
+                                    <div class="path-what" data-i18n="path.s3.d4">Stop browsing and start using it. Guessing an unknown kanji's reading from its parts is a real N3-level skill and it saves you thousands of individual lookups.</div>
+                                </li>
+                            </ul>
+                            <p class="path-ready" data-i18n-html="path.s3.ready"><b>Ready when:</b> you can guess the reading of a kanji you have never seen, from its phonetic component, and be right more often than not.</p>
+                        </div>
+                    </section>
+
+                    <!-- Stage 4 -->
+                    <section class="path-stage">
+                        <span class="path-marker" aria-hidden="true">N2</span>
+                        <div class="path-card">
+                            <div class="path-card-head">
+                                <h2 data-i18n="path.s4.title">Stage 4 · N2</h2>
+                                <span class="path-hours" data-i18n="path.s4.hours">1,150–1,800 hours</span>
+                                <p class="path-goal" data-i18n="path.s4.goal">Newspaper Japanese: technical words, formal writing, and grammar that only appears in print.</p>
+                            </div>
+                            <ul class="path-steps">
+                                <li class="path-step">
+                                    <div><a class="path-tool" href="game.html">Word Match</a><span class="path-where" data-i18n="path.s4.w1">N2 · levels 1–12</span></div>
+                                    <div class="path-what" data-i18n-html="path.s4.d1">Includes <b>Measuring and shapes</b> and <b>School, books and words</b> — the vocabulary you need to read <em>about</em> Japanese in Japanese (<span class="jp">主語, 述語, 形容詞, 敬語</span>).</div>
+                                </li>
+                                <li class="path-step">
+                                    <div><a class="path-tool" href="grammar.html">Grammar Connect</a><span class="path-where" data-i18n="path.s4.w2">Advanced · 1–10</span></div>
+                                    <div class="path-what" data-i18n="path.s4.d2">Written-register grammar. Much of it you will never say out loud, and all of it appears in the exam.</div>
+                                </li>
+                                <li class="path-step">
+                                    <div><a class="path-tool" href="reading.html">Dokkai Reader</a><span class="path-where" data-i18n="path.s4.w3">Advanced · 4–7</span></div>
+                                    <div class="path-what" data-i18n="path.s4.d3">Read for speed now, not just accuracy. N2 and N1 are as much a reading-speed exam as a knowledge one.</div>
+                                </li>
+                                <li class="path-step">
+                                    <div><a class="path-tool" href="dashboard.html">Dashboard</a><span class="path-where" data-i18n="path.s4.w4">Most-missed words</span></div>
+                                    <div class="path-what" data-i18n="path.s4.d4">At this level your weak spots are specific rather than general. Let the dashboard tell you which words you keep getting wrong instead of guessing.</div>
+                                </li>
+                            </ul>
+                            <p class="path-ready" data-i18n-html="path.s4.ready"><b>Ready when:</b> all twelve N2 Word Match levels are cleared and Advanced 10 goes through with two mistakes or fewer.</p>
+                        </div>
+                    </section>
+
+                    <!-- Stage 5 -->
+                    <section class="path-stage">
+                        <span class="path-marker" aria-hidden="true">N1</span>
+                        <div class="path-card">
+                            <div class="path-card-head">
+                                <h2 data-i18n="path.s5.title">Stage 5 · N1</h2>
+                                <span class="path-hours" data-i18n="path.s5.hours">2,150–3,900 hours</span>
+                                <p class="path-goal" data-i18n="path.s5.goal">Abstract Sino-Japanese, the register of official writing, and words that have no everyday equivalent.</p>
+                            </div>
+                            <ul class="path-steps">
+                                <li class="path-step">
+                                    <div><a class="path-tool" href="game.html">Word Match</a><span class="path-where" data-i18n="path.s5.w1">N1 · levels 1–12</span></div>
+                                    <div class="path-what" data-i18n-html="path.s5.d1">The themes read like a newspaper's sections — <b>Money and finance</b>, <b>Government and power</b>, <b>Thinking and deciding</b> — because that is honestly what N1 vocabulary is. There is no everyday level here to hide in.</div>
+                                </li>
+                                <li class="path-step">
+                                    <div><a class="path-tool" href="grammar.html">Grammar Connect</a><span class="path-where" data-i18n="path.s5.w2">Advanced · 11–20</span></div>
+                                    <div class="path-what" data-i18n="path.s5.d2">The last forms, most of them written-only and several of them near-synonyms you have to separate by feel.</div>
+                                </li>
+                                <li class="path-step">
+                                    <div><a class="path-tool" href="reading.html">Dokkai Reader</a><span class="path-where" data-i18n="path.s5.w3">Advanced · 8–10</span></div>
+                                    <div class="path-what" data-i18n="path.s5.d3">The longest texts here. If these are comfortable, the exam's reading section will be too.</div>
+                                </li>
+                                <li class="path-step">
+                                    <div><span class="path-tool" data-i18n="path.s5.beyond">Beyond this site</span><span class="path-where" data-i18n="path.s5.w4">Real material</span></div>
+                                    <div class="path-what" data-i18n="path.s5.d4">At N1 no study tool can carry you further than real Japanese can. Read the news, read novels, watch things without subtitles. Use this site to plug the specific gaps that leaves.</div>
+                                </li>
+                            </ul>
+                            <p class="path-ready" data-i18n-html="path.s5.ready"><b>Ready when:</b> you would rather read something real than practise. That is the whole point of the path.</p>
+                        </div>
+                    </section>
+
+                </div>
+
+                <div class="path-outro">
+                    <h3 data-i18n="path.outro.title">If you take one thing from this page</h3>
+                    <p data-i18n="path.outro.p1">Do a little every day rather than a lot on Sunday. Every tool here is built in short levels for that reason — one Word Match level is four minutes and one Grammar Connect level is three.</p>
+                    <p data-i18n-html="path.outro.p2">You do not need an account to use any of it. Signing in only saves your times and completions across visits, and shows them on the <a href="dashboard.html">Dashboard</a>.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- chrome:footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="footer-brand" aria-label="Khan Japanese - home">
+                        <span class="brand-seal" aria-hidden="true"><img src="icons/brand-mark.png" alt="" loading="lazy" decoding="async"></span>
+                        <span class="footer-brand-name">Khan Japanese</span>
+                    </a>
+                    <p class="footer-blurb" data-i18n="footer.blurb">System engineering student in Japan, building tools for learning the language.</p>
+                </div>
+                <div class="footer-col">
+                    <h2 class="footer-heading" data-i18n="footer.studyTools">Study tools</h2>
+                    <ul class="footer-list">
+                        <li><a href="path.html" data-i18n="nav.studyPath">Study Path</a></li>
+                        <li><a href="origins.html" data-i18n="nav.kanaOrigins">Kana Origins</a></li>
+                        <li><a href="game.html" data-i18n="nav.wordGame">Word Game</a></li>
+                        <li><a href="reading.html" data-i18n="nav.dokkaiReader">Dokkai Reader</a></li>
+                        <li><a href="phonetics.html" data-i18n="nav.phoneticsFamily">Phonetics Family</a></li>
+                        <li><a href="grammar.html" data-i18n="nav.grammarConnect">Grammar Connect</a></li>
+                        <li><a href="dictionary.html" data-i18n="nav.dictionary">Dictionary</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h2 class="footer-heading" data-i18n="nav.portfolio">About Me</h2>
+                    <ul class="footer-list">
+                        <li><a href="about.html#portfolio" data-i18n="footer.projectsLearning">Projects &amp; learning</a></li>
+                        <li><a href="about.html#qualifications" data-i18n="nav.qualifications">Qualifications</a></li>
+                        <li><a href="about.html#resume" data-i18n="nav.resume">Resume</a></li>
+                        <li><a href="about.html#contact" data-i18n="footer.getInTouch">Get in touch</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bar">
+                <p class="footer-copy">&copy; 2026 Khan Japanese</p>
+                <div class="footer-links">
+                    <a href="credits.html" data-i18n="footer.dataLicensing">Data &amp; licensing</a>
+                    <a href="privacy.html" data-i18n="footer.privacyPolicy">Privacy Policy</a>
+                    <a href="terms.html" data-i18n="footer.termsOfService">Terms of Service</a>
+                    <a href="about.html#contact" data-i18n="footer.contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- /chrome:footer -->
+
+    <script src="i18n-strings-shared.js"></script>
+    <script src="path-i18n-strings.js"></script>
+    <script src="i18n.js"></script>
+    <script src="reading-style.js"></script>
+    <script src="vendor/supabase.min.js"></script>
+    <script src="supabase-config.js"></script>
+    <script src="auth-shared.js"></script>
+    <script src="pwa-register.js"></script>
+</body>
+
+</html>

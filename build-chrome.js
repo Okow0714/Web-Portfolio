@@ -32,7 +32,7 @@ const ROOT = __dirname;
 const CHROME = path.join(ROOT, '_chrome.html');
 
 const PAGES = [
-    'index.html', 'origins.html', 'game.html', 'reading.html', 'phonetics.html',
+    'index.html', 'path.html', 'origins.html', 'game.html', 'reading.html', 'phonetics.html',
     'grammar.html', 'dictionary.html', 'dashboard.html', 'credits.html',
     'privacy.html', 'terms.html',
 ];

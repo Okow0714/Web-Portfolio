@@ -18,6 +18,10 @@ Object.assign(window.I18N_STRINGS, {
     'hub.progress.guestTitle': { en: 'Log in to track your progress', mn: 'Явцаа хянахын тулд нэвтэрнэ үү' },
     'hub.progress.guestBody': { en: 'Your score and per-tool progress will show up right here.', mn: 'Таны оноо болон хэрэгсэл тус бүрийн явц энд харагдана.' },
 
+    'hub.path.kicker': { en: 'New here?', mn: 'Шинэ хэрэглэгч үү?' },
+    'hub.path.name': { en: 'The path from zero to N1', mn: 'Тэгээс N1 хүртэлх зам' },
+    'hub.path.desc': { en: 'Six stages, from not knowing a single character to N1 — which tool to open at each one, exactly which levels to do, and how you know you are ready for the next.', mn: 'Нэг ч үсэг мэдэхгүй байхаас N1 хүртэл зургаан үе шат — үе шат бүрт аль хэрэглүүрийг нээх, яг аль шатыг хийх, дараагийнх руу шилжихэд бэлэн болсноо яаж мэдэх вэ.' },
+    'hub.path.cta': { en: 'See the path →', mn: 'Замыг үзэх →' },
     'hub.origins.name': { en: 'Kana Origins', mn: 'Канагийн үүсэл' },
     'hub.origins.desc': {
         en: 'Start here if Japanese writing still looks like three unrelated alphabets. A clickable chronology from the first writing in Japan to the post-war reforms, every one of the 46 kana with its Mongolian sound and the kanji it was cut down from, and a four-step answer to why English words are written in katakana.',
