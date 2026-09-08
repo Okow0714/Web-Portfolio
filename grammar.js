@@ -475,15 +475,37 @@ function renderLevelGrid() {
         card.className = 'gc-level-card';
         if (!levelObj) card.classList.add('locked');
 
+        // These cards used to show the level number twice ("01" and "LEVEL 1") and nothing about
+        // how the level went, even though best time and best mistakes were already being stored.
+        // Now the number stands on its own and the results get the same stat rail Word Match uses.
         const progress = progressCache[`${activeTrack}:${levelNum}`];
-        let stamp = '';
-        if (progress && progress.completed) stamp = '<span class="lstamp">済</span>';
+        const done = !!(progress && progress.completed);
+        const stamp = done ? '<span class="lstamp">済</span>' : '';
 
-        card.innerHTML = `
-            <span class="lnum">${String(levelNum).padStart(2, '0')}</span>
-            <span class="lname">${escapeHtml(levelObj ? window.tf('game.levelN', { n: levelNum }) : window.t('grammar.comingSoon'))}</span>
-            ${stamp}
-        `;
+        if (!levelObj) {
+            card.innerHTML = `
+                <span class="lnum">${String(levelNum).padStart(2, '0')}</span>
+                <span class="lname">${escapeHtml(window.t('grammar.comingSoon'))}</span>
+            `;
+        } else {
+            const timeText = done ? formatTime(progress.best_time_seconds) : '&mdash;';
+            const missText = done ? String(progress.best_mistakes) : '&mdash;';
+            const emptyClass = done ? '' : ' is-empty';
+            card.innerHTML = `
+                <span class="lnum">${String(levelNum).padStart(2, '0')}</span>
+                ${stamp}
+                <span class="gc-level-rail">
+                    <span class="gc-level-stat">
+                        <span class="gc-level-stat-k">${escapeHtml(window.t('stat.bestTime'))}</span>
+                        <span class="gc-level-stat-v${emptyClass}">${timeText}</span>
+                    </span>
+                    <span class="gc-level-stat">
+                        <span class="gc-level-stat-k">${escapeHtml(window.t('stat.mistakes'))}</span>
+                        <span class="gc-level-stat-v${emptyClass}">${missText}</span>
+                    </span>
+                </span>
+            `;
+        }
         if (levelObj) {
             card.addEventListener('click', () => openLevel(activeTrack, levelNum));
         } else {

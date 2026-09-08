@@ -938,18 +938,27 @@ body {
     margin: 16px 0;
 }
 
-/* The reset's own confirm row sits inside the zone; its buttons go side by side rather than
-   stacked, since "Cancel" needs to be as reachable as the confirm. */
+/* The reset's own confirm row. It deliberately does not reuse .account-delete-confirm: that one
+   is a column, built around the "type DELETE" input, and borrowing it stacked and centred these
+   two buttons. Side by side, so Cancel is as reachable as the confirm. */
 #progress-reset-confirm {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    gap: 8px;
     align-items: center;
+    gap: 8px;
+    margin-top: 12px;
 }
 
 #progress-reset-confirm .settings-row-note {
     flex-basis: 100%;
     margin: 0;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+
+#progress-reset-confirm .auth-btn {
+    flex: 0 0 auto;
 }
 
 .account-delete-btn {

@@ -2022,6 +2022,16 @@ function levelTitle(level) {
     return `${level.jlpt} · ${window.tf('game.levelN', { n: withinTier })}`;
 }
 
+// The same title without the tier, for the level cards. On a card the tier is already on the
+// badge, inside a grid filtered to that tier -- "N5 · Level 1" under an "N5" chip says it three
+// times and leaves no room for the figures. The board label and the start modal keep the long
+// form, where you are no longer inside a filtered grid and the tier is real context.
+function levelCardTitle(level) {
+    if (level.review) return window.t('game.reviewTitle');
+    const withinTier = ((level.level - 1) % levelsPerTier()) + 1;
+    return window.tf('game.levelN', { n: withinTier });
+}
+
 function startLevel(level) {
     currentLevel = level;
     // so "back to levels" lands on the tier just played -- a review run belongs to no tier, so
@@ -2133,17 +2143,31 @@ function renderLevelGrid() {
         card.className = 'level-card';
         card.dataset.level = level.jlpt;
 
+        // Best time and moves as two labelled figures rather than one sentence. The rail is
+        // always drawn, showing an em dash where there is no result yet: a played card used to
+        // be taller than an unplayed one, which left a half-finished tier with a ragged grid.
         const progress = progressCache[level.level];
-        let metaHtml = `<span>${escapeHtml(window.t('game.notPlayedYet'))}</span>`;
-        if (progress && progress.completed) {
-            metaHtml = `<span class="completed">&#10003; ${escapeHtml(window.t('game.completed'))}</span>` +
-                `<span>${escapeHtml(window.tf('game.bestTimeMoves', { time: formatTime(progress.best_time_seconds), moves: progress.best_moves }))}</span>`;
-        }
+        const done = !!(progress && progress.completed);
+        const timeText = done ? formatTime(progress.best_time_seconds) : '&mdash;';
+        const movesText = done ? String(progress.best_moves) : '&mdash;';
+        const emptyClass = done ? '' : ' is-empty';
 
         card.innerHTML = `
-            <span class="level-badge">${escapeHtml(level.jlpt)}</span>
-            <h2>${escapeHtml(levelTitle(level))}</h2>
-            <div class="level-meta">${metaHtml}</div>
+            <span class="level-card-top">
+                <span class="level-badge">${escapeHtml(level.jlpt)}</span>
+                ${done ? `<span class="level-done" title="${escapeHtml(window.t('game.completed'))}">&#10003;</span>` : ''}
+            </span>
+            <h2>${escapeHtml(levelCardTitle(level))}</h2>
+            <div class="level-rail">
+                <span class="level-stat">
+                    <span class="level-stat-k">${escapeHtml(window.t('stat.bestTime'))}</span>
+                    <span class="level-stat-v${emptyClass}">${timeText}</span>
+                </span>
+                <span class="level-stat">
+                    <span class="level-stat-k">${escapeHtml(window.t('stat.moves'))}</span>
+                    <span class="level-stat-v${emptyClass}">${movesText}</span>
+                </span>
+            </div>
         `;
         card.addEventListener('click', () => startLevel(level));
         container.appendChild(card);

@@ -43,6 +43,9 @@ body:has(.game-main) {
     --gold-bright: #f4ce7a;
     --crimson: #c0435a;
     --pine: #3d7a5c;
+    /* Text-safe pine. --pine is 3.35:1 on the card and panel faces, which is fine for a fill or
+       a border and under the 4.5:1 minimum for a label. Measured 7.25:1 on --panel. */
+    --pine-bright: #6fb894;
     --wisteria: #5b57a6;
     --persimmon: #d97a3f;
     --lightning: #7fe0ff;
@@ -299,19 +302,74 @@ body.game-playing .game-main {
     font-family: 'Fraunces', Georgia, serif;
 }
 
-.level-meta {
-    font-size: 0.78rem;
-    /* was --ink-soft (~2.2:1 on this dark card face) -- see the contrast note near the top of
-       this file; --paper-muted is the verified-6.39:1 replacement used throughout. */
-    color: var(--paper-muted);
+/* Badge row: the tier chip, and a tick pushed to the far edge once the level is cleared. */
+.level-card-top {
     display: flex;
-    flex-direction: column;
-    gap: 4px;
+    align-items: center;
+    gap: 8px;
 }
 
-.level-meta .completed {
-    color: var(--pine);
+/* --pine (#3d7a5c) is 3.35:1 on this card face -- under the 4.5:1 minimum for text this size,
+   the same class of bug as the greyed-out score and streak. The dark pine stays for fills and
+   borders; text uses --pine-bright (7.25:1). */
+.level-done {
+    margin-left: auto;
+    color: var(--pine-bright);
     font-weight: 700;
+    font-size: 0.9rem;
+    line-height: 1;
+}
+
+/* Stat rail: best time and moves as two labelled figures, always drawn so that a played and an
+   unplayed card are the same height. Replaced "Best: 2:47 · 31 moves", which read as a sentence
+   and made the grid ragged. */
+.level-rail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid var(--panel-edge);
+    padding-top: 9px;
+    margin-top: auto;
+}
+
+/* Each cell is a column with the label growing and the figure pinned to the bottom. The grid
+   makes both cells the same height, so the two figures share a baseline even when one label
+   wraps and the other does not -- which is the normal case in Mongolian, where "Шилдэг хугацаа"
+   takes two lines next to a one-line "Хөдөлгөөн". */
+.level-stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.level-stat-k {
+    flex: 1;
+}
+
+.level-stat + .level-stat {
+    border-left: 1px solid var(--panel-edge);
+    padding-left: 12px;
+}
+
+.level-stat-k {
+    display: block;
+    font-size: 0.6rem;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--paper-muted);
+    margin-bottom: 2px;
+}
+
+.level-stat-v {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    /* The figures line up in a grid of cards, so they need to line up as columns of digits. */
+    font-variant-numeric: tabular-nums;
+}
+
+.level-stat-v.is-empty {
+    color: var(--paper-muted);
+    font-weight: 400;
 }
 
 /* ---------------------------------------------------------------------

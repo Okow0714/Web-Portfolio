@@ -28,9 +28,10 @@ Object.assign(window.I18N_STRINGS, {
 
     'game.pairsCount': { en: '{n} / {total} pairs', mn: '{n} / {total} хос' },
     'game.movesCount': { en: '{n} moves', mn: '{n} хөдөлгөөн' },
-    'game.notPlayedYet': { en: 'Not played yet', mn: 'Тоглоогүй байна' },
+    // 'Completed' is now the tick's tooltip on a level card rather than a line of card text.
+    // game.notPlayedYet and game.bestTimeMoves went with the old prose meta line: the rail shows
+    // an em dash for an unplayed level and labels its own figures.
     'game.completed': { en: 'Completed', mn: 'Дууссан' },
-    'game.bestTimeMoves': { en: 'Best: {time} · {moves} moves', mn: 'Шилдэг: {time} · {moves} хөдөлгөөн' },
     'game.saveResultFailed': { en: "Couldn't save your result — try again later.", mn: 'Үр дүнг хадгалж чадсангүй — дараа дахин оролдоно уу.' },
     'game.previousBest': { en: 'Previous best: {time} · {moves} moves', mn: 'Өмнөх шилдэг: {time} · {moves} хөдөлгөөн' },
     'game.matchedBeforeTimeOut': { en: 'Matched {n} / {total} pairs before time ran out.', mn: 'Цаг дуусахаас өмнө {n} / {total} хосыг тохируулсан.' },

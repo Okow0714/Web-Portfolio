@@ -230,6 +230,67 @@ body:has(.grammar-main) {
     margin-top: 2px;
 }
 
+/* Stat rail: best time and best mistakes, the two figures this tool was already storing and
+   never showing. Always drawn, with an em dash where there is no result, so a cleared and an
+   unplayed card stay the same height and the grid does not go ragged. */
+.gc-level-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.gc-level-rail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid var(--card-edge);
+    padding-top: 8px;
+    margin-top: auto;
+}
+
+/* Label grows, figure pins to the bottom, so the two figures share a baseline even when one
+   label wraps and the other doesn't -- the normal case in Mongolian. */
+.gc-level-stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.gc-level-stat-k {
+    flex: 1;
+}
+
+.gc-level-stat + .gc-level-stat {
+    border-left: 1px solid var(--card-edge);
+    padding-left: 12px;
+}
+
+.gc-level-stat-k {
+    display: block;
+    font-size: 0.58rem;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 2px;
+}
+
+.gc-level-stat-v {
+    display: block;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--ink);
+    /* The figures line up as columns across the grid of cards. */
+    font-variant-numeric: tabular-nums;
+}
+
+.gc-level-stat-v.is-empty {
+    color: var(--ink-soft);
+    font-weight: 400;
+}
+
+/* Coming-soon levels carry no rail, so they keep the old two-line shape. */
+.gc-level-card.locked {
+    justify-content: flex-start;
+}
+
 .gc-level-card .lstamp {
     position: absolute;
     top: 10px;
