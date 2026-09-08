@@ -31,18 +31,18 @@ Object.assign(window.I18N_STRINGS, {
     // Level themes. Each level holds one topic instead of an arbitrary slice of the tier, and the
     // theme name replaces "Level N" on the card. Keys are referenced by `themeKey` in
     // game-words.js; a level without one falls back to the plain numbered title.
-    'theme.n5.1': { en: 'Time & the calendar', mn: 'Цаг ба хуанли' },
-    'theme.n5.2': { en: 'Family & people', mn: 'Гэр бүл ба хүмүүс' },
-    'theme.n5.3': { en: 'Food & the kitchen', mn: 'Хоол ба гал тогоо' },
-    'theme.n5.4': { en: 'The body & how you feel', mn: 'Бие ба эрүүл мэнд' },
-    'theme.n5.5': { en: 'The house & what is in it', mn: 'Гэр ба гэрийн хэрэглэл' },
-    'theme.n5.6': { en: 'School, study & work', mn: 'Сургууль, хичээл ба ажил' },
-    'theme.n5.7': { en: 'Town & getting around', mn: 'Хот ба зорчих' },
-    'theme.n5.8': { en: 'Outdoors, weather & seasons', mn: 'Гадаа, цаг агаар ба улирал' },
-    'theme.n5.9': { en: 'Colours & how things look', mn: 'Өнгө ба гадаад төрх' },
-    'theme.n5.10': { en: 'Everyday actions & pastimes', mn: 'Өдөр тутмын үйл ба чөлөөт цаг' },
-    'theme.n5.11': { en: 'Pointing, asking & linking', mn: 'Заах, асуух ба холбох үг' },
-    'theme.n5.12': { en: 'Numbers, size & money', mn: 'Тоо, хэмжээ ба мөнгө' },
+    'theme.n5.1': { en: 'Days and dates', mn: 'Өдөр, сар, жил' },
+    'theme.n5.2': { en: 'People and family', mn: 'Хүмүүс ба гэр бүл' },
+    'theme.n5.3': { en: 'Eating and drinking', mn: 'Идэх, уух' },
+    'theme.n5.4': { en: 'Looking after yourself', mn: 'Биеэ арчлах' },
+    'theme.n5.5': { en: 'At home', mn: 'Гэртээ' },
+    'theme.n5.6': { en: 'School and learning', mn: 'Сургууль ба хичээл' },
+    'theme.n5.7': { en: 'Out and about', mn: 'Гадуур явах' },
+    'theme.n5.8': { en: 'Outdoors and weather', mn: 'Байгаль ба цаг агаар' },
+    'theme.n5.9': { en: 'Colours and describing things', mn: 'Өнгө ба дүрслэх үг' },
+    'theme.n5.10': { en: 'Doing things and having fun', mn: 'Хийх, зугаацах' },
+    'theme.n5.11': { en: 'This, that, yes and no', mn: 'Энэ, тэр, тийм, үгүй' },
+    'theme.n5.12': { en: 'Counting and money', mn: 'Тоолох ба мөнгө' },
 
     // 'Completed' is now the tick's tooltip on a level card rather than a line of card text.
     // game.notPlayedYet and game.bestTimeMoves went with the old prose meta line: the rail shows

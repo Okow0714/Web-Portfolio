@@ -18,7 +18,7 @@ const WORD_LEVELS = [
     {
         "level": 1,
         "jlpt": "N5",
-        "title": "Time & the calendar",
+        "title": "Days and dates",
         "sets": [
             [
                 {
@@ -515,7 +515,7 @@ const WORD_LEVELS = [
     {
         "level": 2,
         "jlpt": "N5",
-        "title": "Family & people",
+        "title": "People and family",
         "sets": [
             [
                 {
@@ -1016,7 +1016,7 @@ const WORD_LEVELS = [
     {
         "level": 3,
         "jlpt": "N5",
-        "title": "Food & the kitchen",
+        "title": "Eating and drinking",
         "sets": [
             [
                 {
@@ -1524,7 +1524,7 @@ const WORD_LEVELS = [
     {
         "level": 4,
         "jlpt": "N5",
-        "title": "The body & how you feel",
+        "title": "Looking after yourself",
         "sets": [
             [
                 {
@@ -2029,7 +2029,7 @@ const WORD_LEVELS = [
     {
         "level": 5,
         "jlpt": "N5",
-        "title": "The house & what is in it",
+        "title": "At home",
         "sets": [
             [
                 {
@@ -2533,7 +2533,7 @@ const WORD_LEVELS = [
     {
         "level": 6,
         "jlpt": "N5",
-        "title": "School, study & work",
+        "title": "School and learning",
         "sets": [
             [
                 {
@@ -3038,7 +3038,7 @@ const WORD_LEVELS = [
     {
         "level": 7,
         "jlpt": "N5",
-        "title": "Town & getting around",
+        "title": "Out and about",
         "sets": [
             [
                 {
@@ -3548,7 +3548,7 @@ const WORD_LEVELS = [
     {
         "level": 8,
         "jlpt": "N5",
-        "title": "Outdoors, weather & seasons",
+        "title": "Outdoors and weather",
         "sets": [
             [
                 {
@@ -4074,7 +4074,7 @@ const WORD_LEVELS = [
     {
         "level": 9,
         "jlpt": "N5",
-        "title": "Colours & how things look",
+        "title": "Colours and describing things",
         "sets": [
             [
                 {
@@ -4582,7 +4582,7 @@ const WORD_LEVELS = [
     {
         "level": 10,
         "jlpt": "N5",
-        "title": "Everyday actions & pastimes",
+        "title": "Doing things and having fun",
         "sets": [
             [
                 {
@@ -5094,7 +5094,7 @@ const WORD_LEVELS = [
     {
         "level": 11,
         "jlpt": "N5",
-        "title": "Pointing, asking & linking",
+        "title": "This, that, yes and no",
         "sets": [
             [
                 {
@@ -5604,7 +5604,7 @@ const WORD_LEVELS = [
     {
         "level": 12,
         "jlpt": "N5",
-        "title": "Numbers, size & money",
+        "title": "Counting and money",
         "sets": [
             [
                 {
