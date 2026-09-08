@@ -25,8 +25,15 @@ body:has(.grammar-main) {
     --card: #241f38;
     --card-edge: rgba(241, 237, 224, 0.14);
     --ink: #f1ede0;
-    --ink-soft: rgba(241, 237, 224, 0.55);
-    --ink-faint: rgba(241, 237, 224, 0.32);
+    /* Both of these are text colours -- every single use of them in this file is a `color`, none
+       is a border or a fill -- so both have to clear 4.5:1 on this page's grounds, and neither
+       did. --ink-faint at 32% measured 2.30:1 on the track swatch and 2.63:1 on a card; it was
+       being used for the JLPT range under each track name, the stat labels on the board, the
+       cleared-sentence notes and the level-card rail labels, all of which are things a learner
+       is meant to read. Raised to 66% (4.74:1 at worst) and --ink-soft with it, so the three
+       steps stay in order: full ink, soft, faint. */
+    --ink-soft: rgba(241, 237, 224, 0.82);
+    --ink-faint: rgba(241, 237, 224, 0.66);
     --good: #4f8a68;
     --good-bright: #7fbf9e;
 
@@ -66,6 +73,28 @@ body:has(.grammar-main) {
     background-position: center 30%;
 }
 
+/* Text scrim. The intro sits over the brightest part of the photo -- the city lights -- and
+   measured 1.76:1 at its worst pixel against a 4.5:1 requirement; the wordmark and the help
+   button were worse. This darkens the top band, where the text is, and fades out by mid-height
+   so the photograph still carries the page below it.
+   It has to be its own layer rather than another entry in .gc-night-sky's background stack: the
+   stars are child elements, so they paint over that element's background and would sit on top
+   of the scrim -- which is exactly what happened, and left bright 2px dots behind the text.
+   .gc-night-sky's own z-index makes it a stacking context, so this stays below .gc-select-content
+   whatever number it carries. */
+.gc-night-sky::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(180deg,
+        rgba(9, 13, 24, 0.78) 0%,
+        rgba(9, 13, 24, 0.72) 26%,
+        rgba(9, 13, 24, 0.38) 46%,
+        rgba(9, 13, 24, 0) 60%);
+}
+
 .gc-stars span {
     position: absolute;
     width: 2px;
@@ -83,6 +112,9 @@ body:has(.grammar-main) {
     border-radius: 50%;
     background: #f3e6c8;
     box-shadow: 0 0 36px 6px rgba(243, 230, 200, 0.3);
+    /* Above the text scrim: it is the one decorative thing in that band worth keeping at full
+       strength, and it sits top-right, clear of the text. */
+    z-index: 2;
 }
 
 .gc-select-content {
@@ -110,17 +142,40 @@ body:has(.grammar-main) {
     display: block;
     font-size: 0.95rem;
     font-weight: 500;
-    color: var(--shu-light);
+    /* A lighter step of the same shu. --shu-light measured 3.92:1 here against a 4.5 floor:
+       it is tuned for the flat card faces, not for sitting on a photograph. The hue is kept so
+       the wordmark still reads as this tool's accent. */
+    color: #f3a493;
     letter-spacing: 0.04em;
     margin-top: 4px;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.5);
 }
 
 .gc-subtitle {
     max-width: 62ch;
-    color: var(--ink-soft);
+    /* Not --ink-soft here. That token is 55% alpha, which is right on the flat card faces this
+       theme uses elsewhere but leaves this paragraph translucent over a photograph. */
+    color: rgba(241, 237, 224, 0.88);
     font-size: 0.98rem;
     line-height: 1.6;
     margin: 0;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.55);
+}
+
+/* The tour's help button ships with `background: none` and a muted colour, which works on the
+   flat panels the other tools put it on and disappears over this page's photograph. Scoped to
+   this hero only, so the shared tutorial.css and the other five tools are untouched. */
+#gc-select-section .tour-help-btn {
+    background: rgba(9, 13, 24, 0.72);
+    border-color: rgba(241, 237, 224, 0.34);
+    color: var(--ink);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+}
+
+#gc-select-section .tour-help-btn:hover {
+    background: rgba(9, 13, 24, 0.88);
+    border-color: var(--shu-light);
 }
 
 .sound-toggle {
@@ -147,7 +202,10 @@ body:has(.grammar-main) {
 .gc-guest-hint {
     margin: 16px 0 0;
     font-size: 0.85rem;
-    color: var(--ink-faint);
+    /* Was --ink-faint, which measured 2.52:1 here with every pixel under the floor. This is a
+       real message telling a visitor their results will not be kept -- it should read as one. */
+    color: var(--ink-soft);
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
 }
 
 .gc-diff-tabs {
