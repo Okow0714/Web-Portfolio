@@ -25675,7 +25675,7 @@ const WORD_LEVELS = [
     {
         "level": 51,
         "jlpt": "N1",
-        "title": "Science and the earth",
+        "title": "The earth and what it yields",
         "sets": [
             [
                 {
@@ -25738,26 +25738,6 @@ const WORD_LEVELS = [
                     "enMn": "үер",
                     "meaningsMn": [
                         "үер"
-                    ]
-                },
-                {
-                    "jp": "採掘",
-                    "reading": "さいくつ",
-                    "en": "mining",
-                    "meanings": [
-                        "mining"
-                    ],
-                    "example": {
-                        "jp": "採掘場が爆発した時、中には誰もいなかった。",
-                        "en": "There was no one in the mine when it blew up.",
-                        "furigana": "<ruby>採掘<rp>(</rp><rt>さいくつ</rt><rp>)</rp></ruby><ruby>場<rp>(</rp><rt>じょう</rt><rp>)</rp></ruby>が<ruby>爆発<rp>(</rp><rt>ばくはつ</rt><rp>)</rp></ruby>した<ruby>時<rp>(</rp><rt>とき</rt><rp>)</rp></ruby>、<ruby>中<rp>(</rp><rt>なか</rt><rp>)</rp></ruby>には<ruby>誰<rp>(</rp><rt>だれ</rt><rp>)</rp></ruby>もいなかった。",
-                        "enMn": "Уурхай дэлбэрэх үед дотор нь хэн ч байгаагүй."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "малталт",
-                    "meaningsMn": [
-                        "малталт"
                     ]
                 },
                 {
@@ -26029,27 +26009,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "結合",
-                    "reading": "けつごう",
-                    "en": "combination",
-                    "meanings": [
-                        "combination",
-                        "union"
-                    ],
-                    "example": {
-                        "jp": "霊長類の毛づくろいは集団の結合を強める。",
-                        "en": "Grooming in primates increases group cohesion.",
-                        "furigana": "<ruby>霊長<rp>(</rp><rt>れいちょう</rt><rp>)</rp></ruby><ruby>類<rp>(</rp><rt>るい</rt><rp>)</rp></ruby>の<ruby>毛<rp>(</rp><rt>け</rt><rp>)</rp></ruby>づくろいは<ruby>集団<rp>(</rp><rt>しゅうだん</rt><rp>)</rp></ruby>の<ruby>結合<rp>(</rp><rt>けつごう</rt><rp>)</rp></ruby>を<ruby>強<rp>(</rp><rt>つよ</rt><rp>)</rp></ruby>める。",
-                        "enMn": "Приматуудын үс арчилгаа бүлгийн нэгдлийг бэхжүүлдэг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "нэгдэл",
-                    "meaningsMn": [
-                        "нэгдэл"
-                    ]
-                },
-                {
                     "jp": "結晶",
                     "reading": "けっしょう",
                     "en": "crystal",
@@ -26182,6 +26141,41 @@ const WORD_LEVELS = [
                     "enMn": "гараг",
                     "meaningsMn": [
                         "гараг"
+                    ]
+                },
+                {
+                    "jp": "香辛料",
+                    "reading": "こうしんりょう",
+                    "en": "spices",
+                    "meanings": [
+                        "spices"
+                    ],
+                    "example": {
+                        "jp": "韓国料理は、香辛料のきいた味でよく知られている。",
+                        "en": "Korean food is noted for its spicy flavor.",
+                        "furigana": "<ruby>韓国<rp>(</rp><rt>かんこく</rt><rp>)</rp></ruby><ruby>料理<rp>(</rp><rt>りょうり</rt><rp>)</rp></ruby>は、<ruby>香辛料<rp>(</rp><rt>こうしんりょう</rt><rp>)</rp></ruby>のきいた<ruby>味<rp>(</rp><rt>あじ</rt><rp>)</rp></ruby>でよく<ruby>知<rp>(</rp><rt>し</rt><rp>)</rp></ruby>られている。",
+                        "enMn": "Солонгос хоол халуун амтлагчаараа алдартай."
+                    },
+                    "phonetic": "香",
+                    "phoneticReading": "キョウ",
+                    "enMn": "амтлагч",
+                    "meaningsMn": [
+                        "амтлагч"
+                    ]
+                },
+                {
+                    "jp": "蜂蜜",
+                    "reading": "はちみつ",
+                    "en": "honey",
+                    "meanings": [
+                        "honey"
+                    ],
+                    "example": null,
+                    "phonetic": "夆",
+                    "phoneticReading": "ホウ",
+                    "enMn": "бал",
+                    "meaningsMn": [
+                        "бал"
                     ]
                 }
             ]
@@ -28336,28 +28330,6 @@ const WORD_LEVELS = [
         "sets": [
             [
                 {
-                    "jp": "細工",
-                    "reading": "さいく",
-                    "en": "work",
-                    "meanings": [
-                        "work",
-                        "craftsmanship",
-                        "trick"
-                    ],
-                    "example": {
-                        "jp": "彼らの最高の技術は木工細工に見られた。",
-                        "en": "Their highest skill was woodworking.",
-                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らの<ruby>最高<rp>(</rp><rt>さいこう</rt><rp>)</rp></ruby>の<ruby>技術<rp>(</rp><rt>ぎじゅつ</rt><rp>)</rp></ruby>は<ruby>木工<rp>(</rp><rt>もっこう</rt><rp>)</rp></ruby><ruby>細工<rp>(</rp><rt>ざいく</rt><rp>)</rp></ruby>に<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>られた。",
-                        "enMn": "Тэдний хамгийн дээд ур чадвар модон эдлэлийн нарийн урлалд харагдана."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "нарийн урлал",
-                    "meaningsMn": [
-                        "нарийн урлал"
-                    ]
-                },
-                {
                     "jp": "交渉",
                     "reading": "こうしょう",
                     "en": "negotiation",
@@ -28459,28 +28431,6 @@ const WORD_LEVELS = [
                     "enMn": "инженерчлэл",
                     "meaningsMn": [
                         "инженерчлэл"
-                    ]
-                },
-                {
-                    "jp": "工作",
-                    "reading": "こうさく",
-                    "en": "handicraft",
-                    "meanings": [
-                        "handicraft",
-                        "maneuvering"
-                    ],
-                    "example": {
-                        "jp": "この手の工作はすぐにバレる。",
-                        "en": "It won't be long before they find out what we're trying to do here.",
-                        "furigana": "この<ruby>手<rp>(</rp><rt>て</rt><rp>)</rp></ruby>の<ruby>工作<rp>(</rp><rt>こうさく</rt><rp>)</rp></ruby>はすぐにバレる。",
-                        "enMn": "Энд юу хийхийг оролдож байгааг тэд удахгүй мэдэх болно."
-                    },
-                    "phonetic": "工",
-                    "phoneticReading": "コウ、ク",
-                    "enMn": "гар урлал",
-                    "meaningsMn": [
-                        "гар урлал",
-                        "маневр хийх"
                     ]
                 },
                 {
@@ -28832,6 +28782,48 @@ const WORD_LEVELS = [
                     "meaningsMn": [
                         "ажилтан"
                     ]
+                },
+                {
+                    "jp": "採掘",
+                    "reading": "さいくつ",
+                    "en": "mining",
+                    "meanings": [
+                        "mining"
+                    ],
+                    "example": {
+                        "jp": "採掘場が爆発した時、中には誰もいなかった。",
+                        "en": "There was no one in the mine when it blew up.",
+                        "furigana": "<ruby>採掘<rp>(</rp><rt>さいくつ</rt><rp>)</rp></ruby><ruby>場<rp>(</rp><rt>じょう</rt><rp>)</rp></ruby>が<ruby>爆発<rp>(</rp><rt>ばくはつ</rt><rp>)</rp></ruby>した<ruby>時<rp>(</rp><rt>とき</rt><rp>)</rp></ruby>、<ruby>中<rp>(</rp><rt>なか</rt><rp>)</rp></ruby>には<ruby>誰<rp>(</rp><rt>だれ</rt><rp>)</rp></ruby>もいなかった。",
+                        "enMn": "Уурхай дэлбэрэх үед дотор нь хэн ч байгаагүй."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "малталт",
+                    "meaningsMn": [
+                        "малталт"
+                    ]
+                },
+                {
+                    "jp": "作用",
+                    "reading": "さよう",
+                    "en": "operation",
+                    "meanings": [
+                        "operation",
+                        "effect",
+                        "function"
+                    ],
+                    "example": {
+                        "jp": "日光は皮膚に作用する。",
+                        "en": "The sunbeam acts upon the skin.",
+                        "furigana": "<ruby>日光<rp>(</rp><rt>にっこう</rt><rp>)</rp></ruby>は<ruby>皮膚<rp>(</rp><rt>ひふ</rt><rp>)</rp></ruby>に<ruby>作用<rp>(</rp><rt>さよう</rt><rp>)</rp></ruby>する。",
+                        "enMn": "Нарны гэрэл арьсанд үйлчилдэг."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "үйлчлэл",
+                    "meaningsMn": [
+                        "үйлчлэл"
+                    ]
                 }
             ]
         ],
@@ -28840,7 +28832,7 @@ const WORD_LEVELS = [
     {
         "level": 57,
         "jlpt": "N1",
-        "title": "History, myth and custom",
+        "title": "Craft, custom and old Japan",
         "sets": [
             [
                 {
@@ -28864,46 +28856,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "現像",
-                    "reading": "げんぞう",
-                    "en": "developing (film)",
-                    "meanings": [
-                        "developing (film)"
-                    ],
-                    "example": {
-                        "jp": "この写真を出来るだけ早く現像して下さい。",
-                        "en": "I want this photograph developed as soon as possible.",
-                        "furigana": "この<ruby>写真<rp>(</rp><rt>しゃしん</rt><rp>)</rp></ruby>を<ruby>出来<rp>(</rp><rt>でき</rt><rp>)</rp></ruby>るだけ<ruby>早<rp>(</rp><rt>はや</rt><rp>)</rp></ruby>く<ruby>現像<rp>(</rp><rt>げんぞう</rt><rp>)</rp></ruby>して<ruby>下<rp>(</rp><rt>くだ</rt><rp>)</rp></ruby>さい。",
-                        "enMn": "Энэ зургийг аль болох хурдан угааж өгнө үү."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "зураг угаах",
-                    "meaningsMn": [
-                        "зураг угаах"
-                    ]
-                },
-                {
-                    "jp": "原爆",
-                    "reading": "げんばく",
-                    "en": "atomic bomb",
-                    "meanings": [
-                        "atomic bomb"
-                    ],
-                    "example": {
-                        "jp": "全世界が１回の原爆戦で破壊されよう。",
-                        "en": "The whole world could be destroyed by an atomic war.",
-                        "furigana": "<ruby>全<rp>(</rp><rt>ぜん</rt><rp>)</rp></ruby><ruby>世界<rp>(</rp><rt>せかい</rt><rp>)</rp></ruby>が１<ruby>回<rp>(</rp><rt>かい</rt><rp>)</rp></ruby>の<ruby>原爆<rp>(</rp><rt>げんばく</rt><rp>)</rp></ruby><ruby>戦<rp>(</rp><rt>せん</rt><rp>)</rp></ruby>で<ruby>破壊<rp>(</rp><rt>はかい</rt><rp>)</rp></ruby>されよう。",
-                        "enMn": "Бүх дэлхий нэг удаагийн атомын дайнаар устгагдаж мэднэ."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "атомын бөмбөг",
-                    "meaningsMn": [
-                        "атомын бөмбөг"
-                    ]
-                },
-                {
                     "jp": "考古学",
                     "reading": "こうこがく",
                     "en": "archaeology",
@@ -28921,26 +28873,6 @@ const WORD_LEVELS = [
                     "enMn": "археологи",
                     "meaningsMn": [
                         "археологи"
-                    ]
-                },
-                {
-                    "jp": "香辛料",
-                    "reading": "こうしんりょう",
-                    "en": "spices",
-                    "meanings": [
-                        "spices"
-                    ],
-                    "example": {
-                        "jp": "韓国料理は、香辛料のきいた味でよく知られている。",
-                        "en": "Korean food is noted for its spicy flavor.",
-                        "furigana": "<ruby>韓国<rp>(</rp><rt>かんこく</rt><rp>)</rp></ruby><ruby>料理<rp>(</rp><rt>りょうり</rt><rp>)</rp></ruby>は、<ruby>香辛料<rp>(</rp><rt>こうしんりょう</rt><rp>)</rp></ruby>のきいた<ruby>味<rp>(</rp><rt>あじ</rt><rp>)</rp></ruby>でよく<ruby>知<rp>(</rp><rt>し</rt><rp>)</rp></ruby>られている。",
-                        "enMn": "Солонгос хоол халуун амтлагчаараа алдартай."
-                    },
-                    "phonetic": "香",
-                    "phoneticReading": "キョウ",
-                    "enMn": "амтлагч",
-                    "meaningsMn": [
-                        "амтлагч"
                     ]
                 },
                 {
@@ -29269,21 +29201,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "軌道",
-                    "reading": "きどう",
-                    "en": "orbit; track",
-                    "meanings": [
-                        "orbit; track"
-                    ],
-                    "example": null,
-                    "phonetic": "几",
-                    "phoneticReading": "キ",
-                    "enMn": "тойрог",
-                    "meaningsMn": [
-                        "тойрог"
-                    ]
-                },
-                {
                     "jp": "地獄",
                     "reading": "じごく",
                     "en": "hell",
@@ -29314,18 +29231,110 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "蜂蜜",
-                    "reading": "はちみつ",
-                    "en": "honey",
+                    "jp": "細工",
+                    "reading": "さいく",
+                    "en": "work",
                     "meanings": [
-                        "honey"
+                        "work",
+                        "craftsmanship",
+                        "trick"
                     ],
-                    "example": null,
-                    "phonetic": "夆",
-                    "phoneticReading": "ホウ",
-                    "enMn": "бал",
+                    "example": {
+                        "jp": "彼らの最高の技術は木工細工に見られた。",
+                        "en": "Their highest skill was woodworking.",
+                        "furigana": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>らの<ruby>最高<rp>(</rp><rt>さいこう</rt><rp>)</rp></ruby>の<ruby>技術<rp>(</rp><rt>ぎじゅつ</rt><rp>)</rp></ruby>は<ruby>木工<rp>(</rp><rt>もっこう</rt><rp>)</rp></ruby><ruby>細工<rp>(</rp><rt>ざいく</rt><rp>)</rp></ruby>に<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>られた。",
+                        "enMn": "Тэдний хамгийн дээд ур чадвар модон эдлэлийн нарийн урлалд харагдана."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "нарийн урлал",
                     "meaningsMn": [
-                        "бал"
+                        "нарийн урлал"
+                    ]
+                },
+                {
+                    "jp": "工作",
+                    "reading": "こうさく",
+                    "en": "handicraft",
+                    "meanings": [
+                        "handicraft",
+                        "maneuvering"
+                    ],
+                    "example": {
+                        "jp": "この手の工作はすぐにバレる。",
+                        "en": "It won't be long before they find out what we're trying to do here.",
+                        "furigana": "この<ruby>手<rp>(</rp><rt>て</rt><rp>)</rp></ruby>の<ruby>工作<rp>(</rp><rt>こうさく</rt><rp>)</rp></ruby>はすぐにバレる。",
+                        "enMn": "Энд юу хийхийг оролдож байгааг тэд удахгүй мэдэх болно."
+                    },
+                    "phonetic": "工",
+                    "phoneticReading": "コウ、ク",
+                    "enMn": "гар урлал",
+                    "meaningsMn": [
+                        "гар урлал",
+                        "маневр хийх"
+                    ]
+                },
+                {
+                    "jp": "合成",
+                    "reading": "ごうせい",
+                    "en": "synthetic",
+                    "meanings": [
+                        "synthetic",
+                        "mixed"
+                    ],
+                    "example": {
+                        "jp": "汚れに強い合成皮革を使用した２人掛けのソファです。",
+                        "en": "This is a two-seater sofa using stain-resistant artificial leather.",
+                        "furigana": "<ruby>汚<rp>(</rp><rt>よご</rt><rp>)</rp></ruby>れに<ruby>強<rp>(</rp><rt>つよ</rt><rp>)</rp></ruby>い<ruby>合成<rp>(</rp><rt>ごうせい</rt><rp>)</rp></ruby><ruby>皮革<rp>(</rp><rt>ひかく</rt><rp>)</rp></ruby>を<ruby>使用<rp>(</rp><rt>しよう</rt><rp>)</rp></ruby>した２<ruby>人<rp>(</rp><rt>にん</rt><rp>)</rp></ruby><ruby>掛<rp>(</rp><rt>か</rt><rp>)</rp></ruby>けのソファです。",
+                        "enMn": "Бохирдолд тэсвэртэй нийлмэл арьс ашигласан хоёр хүний суудалтай буйдан юм."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "нийлмэл",
+                    "meaningsMn": [
+                        "нийлмэл"
+                    ]
+                },
+                {
+                    "jp": "コンパス",
+                    "reading": "コンパス",
+                    "en": "compass",
+                    "meanings": [
+                        "compass"
+                    ],
+                    "example": {
+                        "jp": "私はコンパスで円を描いた。",
+                        "en": "I drew a circle with compasses.",
+                        "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>はコンパスで<ruby>円<rp>(</rp><rt>えん</rt><rp>)</rp></ruby>を<ruby>描<rp>(</rp><rt>えが</rt><rp>)</rp></ruby>いた。",
+                        "enMn": "Би циркулиар тойрог зурав."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "луужин",
+                    "meaningsMn": [
+                        "луужин"
+                    ]
+                },
+                {
+                    "jp": "光沢",
+                    "reading": "こうたく",
+                    "en": "luster",
+                    "meanings": [
+                        "luster",
+                        "glossy finish (of photographs)"
+                    ],
+                    "example": {
+                        "jp": "この指輪は光沢をうしなった。",
+                        "en": "This ring lost its luster.",
+                        "furigana": "この<ruby>指輪<rp>(</rp><rt>ゆびわ</rt><rp>)</rp></ruby>は<ruby>光沢<rp>(</rp><rt>こうたく</rt><rp>)</rp></ruby>をうしなった。",
+                        "enMn": "Энэ бөгж гялбаагаа алдсан."
+                    },
+                    "phonetic": "光",
+                    "phoneticReading": "コウ",
+                    "enMn": "гялбаа",
+                    "meaningsMn": [
+                        "гялбаа",
+                        "гялгар өнгөлгөө (гэрэл зургийн)"
                     ]
                 }
             ]
@@ -30053,28 +30062,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "作用",
-                    "reading": "さよう",
-                    "en": "operation",
-                    "meanings": [
-                        "operation",
-                        "effect",
-                        "function"
-                    ],
-                    "example": {
-                        "jp": "日光は皮膚に作用する。",
-                        "en": "The sunbeam acts upon the skin.",
-                        "furigana": "<ruby>日光<rp>(</rp><rt>にっこう</rt><rp>)</rp></ruby>は<ruby>皮膚<rp>(</rp><rt>ひふ</rt><rp>)</rp></ruby>に<ruby>作用<rp>(</rp><rt>さよう</rt><rp>)</rp></ruby>する。",
-                        "enMn": "Нарны гэрэл арьсанд үйлчилдэг."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "үйлчлэл",
-                    "meaningsMn": [
-                        "үйлчлэл"
-                    ]
-                },
-                {
                     "jp": "経路",
                     "reading": "けいろ",
                     "en": "course",
@@ -30339,6 +30326,27 @@ const WORD_LEVELS = [
                     "meaningsMn": [
                         "холбох"
                     ]
+                },
+                {
+                    "jp": "結合",
+                    "reading": "けつごう",
+                    "en": "combination",
+                    "meanings": [
+                        "combination",
+                        "union"
+                    ],
+                    "example": {
+                        "jp": "霊長類の毛づくろいは集団の結合を強める。",
+                        "en": "Grooming in primates increases group cohesion.",
+                        "furigana": "<ruby>霊長<rp>(</rp><rt>れいちょう</rt><rp>)</rp></ruby><ruby>類<rp>(</rp><rt>るい</rt><rp>)</rp></ruby>の<ruby>毛<rp>(</rp><rt>け</rt><rp>)</rp></ruby>づくろいは<ruby>集団<rp>(</rp><rt>しゅうだん</rt><rp>)</rp></ruby>の<ruby>結合<rp>(</rp><rt>けつごう</rt><rp>)</rp></ruby>を<ruby>強<rp>(</rp><rt>つよ</rt><rp>)</rp></ruby>める。",
+                        "enMn": "Приматуудын үс арчилгаа бүлгийн нэгдлийг бэхжүүлдэг."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "нэгдэл",
+                    "meaningsMn": [
+                        "нэгдэл"
+                    ]
                 }
             ]
         ],
@@ -30350,27 +30358,6 @@ const WORD_LEVELS = [
         "title": "Loanwords and modern life",
         "sets": [
             [
-                {
-                    "jp": "合成",
-                    "reading": "ごうせい",
-                    "en": "synthetic",
-                    "meanings": [
-                        "synthetic",
-                        "mixed"
-                    ],
-                    "example": {
-                        "jp": "汚れに強い合成皮革を使用した２人掛けのソファです。",
-                        "en": "This is a two-seater sofa using stain-resistant artificial leather.",
-                        "furigana": "<ruby>汚<rp>(</rp><rt>よご</rt><rp>)</rp></ruby>れに<ruby>強<rp>(</rp><rt>つよ</rt><rp>)</rp></ruby>い<ruby>合成<rp>(</rp><rt>ごうせい</rt><rp>)</rp></ruby><ruby>皮革<rp>(</rp><rt>ひかく</rt><rp>)</rp></ruby>を<ruby>使用<rp>(</rp><rt>しよう</rt><rp>)</rp></ruby>した２<ruby>人<rp>(</rp><rt>にん</rt><rp>)</rp></ruby><ruby>掛<rp>(</rp><rt>か</rt><rp>)</rp></ruby>けのソファです。",
-                        "enMn": "Бохирдолд тэсвэртэй нийлмэл арьс ашигласан хоёр хүний суудалтай буйдан юм."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "нийлмэл",
-                    "meaningsMn": [
-                        "нийлмэл"
-                    ]
-                },
                 {
                     "jp": "コーナー",
                     "reading": "コーナー",
@@ -30449,26 +30436,6 @@ const WORD_LEVELS = [
                     "enMn": "хяналт",
                     "meaningsMn": [
                         "хяналт"
-                    ]
-                },
-                {
-                    "jp": "コンパス",
-                    "reading": "コンパス",
-                    "en": "compass",
-                    "meanings": [
-                        "compass"
-                    ],
-                    "example": {
-                        "jp": "私はコンパスで円を描いた。",
-                        "en": "I drew a circle with compasses.",
-                        "furigana": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>はコンパスで<ruby>円<rp>(</rp><rt>えん</rt><rp>)</rp></ruby>を<ruby>描<rp>(</rp><rt>えが</rt><rp>)</rp></ruby>いた。",
-                        "enMn": "Би циркулиар тойрог зурав."
-                    },
-                    "phonetic": null,
-                    "phoneticReading": null,
-                    "enMn": "луужин",
-                    "meaningsMn": [
-                        "луужин"
                     ]
                 },
                 {
@@ -30768,28 +30735,6 @@ const WORD_LEVELS = [
                     ]
                 },
                 {
-                    "jp": "光沢",
-                    "reading": "こうたく",
-                    "en": "luster",
-                    "meanings": [
-                        "luster",
-                        "glossy finish (of photographs)"
-                    ],
-                    "example": {
-                        "jp": "この指輪は光沢をうしなった。",
-                        "en": "This ring lost its luster.",
-                        "furigana": "この<ruby>指輪<rp>(</rp><rt>ゆびわ</rt><rp>)</rp></ruby>は<ruby>光沢<rp>(</rp><rt>こうたく</rt><rp>)</rp></ruby>をうしなった。",
-                        "enMn": "Энэ бөгж гялбаагаа алдсан."
-                    },
-                    "phonetic": "光",
-                    "phoneticReading": "コウ",
-                    "enMn": "гялбаа",
-                    "meaningsMn": [
-                        "гялбаа",
-                        "гялгар өнгөлгөө (гэрэл зургийн)"
-                    ]
-                },
-                {
                     "jp": "ゲスト",
                     "reading": "ゲスト",
                     "en": "guest",
@@ -30870,6 +30815,61 @@ const WORD_LEVELS = [
                     "enMn": "одоогийн",
                     "meaningsMn": [
                         "одоогийн"
+                    ]
+                },
+                {
+                    "jp": "現像",
+                    "reading": "げんぞう",
+                    "en": "developing (film)",
+                    "meanings": [
+                        "developing (film)"
+                    ],
+                    "example": {
+                        "jp": "この写真を出来るだけ早く現像して下さい。",
+                        "en": "I want this photograph developed as soon as possible.",
+                        "furigana": "この<ruby>写真<rp>(</rp><rt>しゃしん</rt><rp>)</rp></ruby>を<ruby>出来<rp>(</rp><rt>でき</rt><rp>)</rp></ruby>るだけ<ruby>早<rp>(</rp><rt>はや</rt><rp>)</rp></ruby>く<ruby>現像<rp>(</rp><rt>げんぞう</rt><rp>)</rp></ruby>して<ruby>下<rp>(</rp><rt>くだ</rt><rp>)</rp></ruby>さい。",
+                        "enMn": "Энэ зургийг аль болох хурдан угааж өгнө үү."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "зураг угаах",
+                    "meaningsMn": [
+                        "зураг угаах"
+                    ]
+                },
+                {
+                    "jp": "原爆",
+                    "reading": "げんばく",
+                    "en": "atomic bomb",
+                    "meanings": [
+                        "atomic bomb"
+                    ],
+                    "example": {
+                        "jp": "全世界が１回の原爆戦で破壊されよう。",
+                        "en": "The whole world could be destroyed by an atomic war.",
+                        "furigana": "<ruby>全<rp>(</rp><rt>ぜん</rt><rp>)</rp></ruby><ruby>世界<rp>(</rp><rt>せかい</rt><rp>)</rp></ruby>が１<ruby>回<rp>(</rp><rt>かい</rt><rp>)</rp></ruby>の<ruby>原爆<rp>(</rp><rt>げんばく</rt><rp>)</rp></ruby><ruby>戦<rp>(</rp><rt>せん</rt><rp>)</rp></ruby>で<ruby>破壊<rp>(</rp><rt>はかい</rt><rp>)</rp></ruby>されよう。",
+                        "enMn": "Бүх дэлхий нэг удаагийн атомын дайнаар устгагдаж мэднэ."
+                    },
+                    "phonetic": null,
+                    "phoneticReading": null,
+                    "enMn": "атомын бөмбөг",
+                    "meaningsMn": [
+                        "атомын бөмбөг"
+                    ]
+                },
+                {
+                    "jp": "軌道",
+                    "reading": "きどう",
+                    "en": "orbit; track",
+                    "meanings": [
+                        "orbit; track"
+                    ],
+                    "example": null,
+                    "phonetic": "几",
+                    "phoneticReading": "キ",
+                    "enMn": "тойрог",
+                    "meaningsMn": [
+                        "тойрог"
                     ]
                 }
             ]
