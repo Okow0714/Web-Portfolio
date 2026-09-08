@@ -20,7 +20,7 @@ Object.assign(window.I18N_STRINGS, {
 
     'hub.path.kicker': { en: 'New here?', mn: 'Шинэ хэрэглэгч үү?' },
     'hub.path.name': { en: 'The path from zero to N1', mn: 'Тэгээс N1 хүртэлх зам' },
-    'hub.path.desc': { en: 'Six stages, from not knowing a single character to N1 — which tool to open at each one, exactly which levels to do, and how you know you are ready for the next.', mn: 'Нэг ч үсэг мэдэхгүй байхаас N1 хүртэл зургаан үе шат — үе шат бүрт аль хэрэглүүрийг нээх, яг аль шатыг хийх, дараагийнх руу шилжихэд бэлэн болсноо яаж мэдэх вэ.' },
+    'hub.path.desc': { en: 'Six stages, from not knowing a single character to N1 — which tool to open at each one, exactly which levels to do, and how you know you are ready for the next.', mn: 'Нэг ч үсэг танихгүй байхаас N1 хүртэлх зургаан үе шат — үе шат бүрт ямар хэрэгсэл нээх, аль шатыг хийх, дараагийнх руу шилжихэд юу чадсан байвал зохихыг бичсэн.' },
     'hub.path.cta': { en: 'See the path →', mn: 'Замыг үзэх →' },
     'hub.origins.name': { en: 'Kana Origins', mn: 'Канагийн үүсэл' },
     'hub.origins.desc': {
