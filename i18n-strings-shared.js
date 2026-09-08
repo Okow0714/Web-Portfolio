@@ -90,6 +90,32 @@ window.I18N_STRINGS = {
     'account.settings': { en: 'Settings', mn: 'Тохиргоо' },
     'account.yourAccount': { en: 'Your Account', mn: 'Таны бүртгэл' },
     'account.dangerZone': { en: 'Danger Zone', mn: 'Аюултай бүс' },
+
+    // Reset study progress. Kept distinct from account deletion in wording as well as in
+    // consequence: this one names exactly what goes and what stays, because the whole point is
+    // that it is survivable.
+    'account.resetProgress': { en: 'Reset study progress', mn: 'Сурсан явцаа тэглэх' },
+    'account.resetWarning': {
+        en: 'Resetting your study progress clears your Word Match times, Grammar Connect results, the texts you have read, and every word attempt behind the dashboard and the Phonetics map. Your account, name and bookmarks stay. This can\'t be undone.',
+        mn: 'Явцаа тэглэвэл Үг холбохын хугацаа, Дүрэм холбохын дүн, уншиж дуусгасан бичвэрүүд, мөн хяналтын самбар болон Авианы зураглалыг тэжээж буй үгийн оролдлого бүр арилна. Бүртгэл, нэр, тэмдэглэгээ чинь хэвээр үлдэнэ. Үүнийг буцаах боломжгүй.',
+    },
+    'account.resetConfirmAsk': {
+        en: 'Clear all study progress? There is no way back.',
+        mn: 'Сурсан явцаа бүхэлд нь арилгах уу? Буцах зам байхгүй.',
+    },
+    'account.resetConfirmYes': { en: 'Yes, clear my progress', mn: 'Тийм, явцыг минь арилга' },
+    'account.resetting': { en: 'Clearing…', mn: 'Арилгаж байна…' },
+    'account.resetDone': { en: 'Progress cleared.', mn: 'Явц ариллаа.' },
+    'account.resetFailed': {
+        en: "Couldn't clear your progress — try again later.",
+        mn: 'Явцыг арилгаж чадсангүй — дараа дахин оролдоно уу.',
+    },
+    'account.cancel': { en: 'Cancel', mn: 'Болих' },
+
+    // Level-card stat rail, shared by Word Match and Grammar Connect.
+    'stat.bestTime': { en: 'Best time', mn: 'Шилдэг хугацаа' },
+    'stat.moves': { en: 'Moves', mn: 'Хөдөлгөөн' },
+    'stat.mistakes': { en: 'Mistakes', mn: 'Алдаа' },
     'account.deleteWarning': { en: "Deleting your account permanently removes your profile, bookmarks, messages, and study progress. This can't be undone.", mn: 'Бүртгэлээ устгавал профайл, тэмдэглэгээ, зурвас, суралцах явц бүрмөсөн устана. Үүнийг буцаах боломжгүй.' },
     'account.deleteMyAccount': { en: 'Delete My Account', mn: 'Бүртгэлээ устгах' },
     'account.typeDeleteToConfirm': { en: 'Type DELETE to confirm:', mn: 'Баталгаажуулахын тулд DELETE гэж бичнэ үү:' },

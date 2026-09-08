@@ -317,6 +317,66 @@ accountDeleteConfirmBtn.addEventListener('click', async () => {
 });
 
 // ---------------------------------------------------------------------------
+// Reset study progress — everything the dashboard and the level grids show,
+// without touching the account itself.
+//
+// The work happens in one server call (reset_own_progress, migration 005) so a
+// failure cannot leave someone with their Word Match times cleared and their
+// word_stats intact. There is no client-side fallback: if the migration has not
+// been run, this says so and changes nothing, which is better than a reset that
+// half-works.
+//
+// Confirmation is two clicks rather than typing a word. Typing DELETE is right
+// for destroying an account, which cannot be rebuilt; study progress can be
+// earned again, and a wall in front of it would be theatre.
+// ---------------------------------------------------------------------------
+const progressResetStartBtn = document.getElementById('progress-reset-start-btn');
+const progressResetConfirmRow = document.getElementById('progress-reset-confirm');
+const progressResetConfirmBtn = document.getElementById('progress-reset-confirm-btn');
+const progressResetCancelBtn = document.getElementById('progress-reset-cancel-btn');
+const progressResetStatus = document.getElementById('progress-reset-status');
+
+function resetProgressUI() {
+    if (!progressResetStartBtn) return;
+    hideEl(progressResetConfirmRow);
+    hideEl(progressResetStatus);
+    showEl(progressResetStartBtn);
+    progressResetConfirmBtn.disabled = false;
+    progressResetConfirmBtn.textContent = tr('account.resetConfirmYes', 'Yes, clear my progress');
+}
+
+if (progressResetStartBtn) {
+    progressResetStartBtn.addEventListener('click', () => {
+        hideEl(progressResetStartBtn);
+        showEl(progressResetConfirmRow);
+        progressResetConfirmBtn.focus();
+    });
+
+    progressResetCancelBtn.addEventListener('click', resetProgressUI);
+
+    progressResetConfirmBtn.addEventListener('click', async () => {
+        progressResetConfirmBtn.disabled = true;
+        progressResetConfirmBtn.textContent = tr('account.resetting', 'Clearing…');
+        const { error } = await supabaseClient.rpc('reset_own_progress');
+        if (error) {
+            progressResetStatus.textContent = tr('account.resetFailed',
+                "Couldn't clear your progress — try again later.");
+            showEl(progressResetStatus);
+            progressResetConfirmBtn.textContent = tr('account.resetConfirmYes', 'Yes, clear my progress');
+            progressResetConfirmBtn.disabled = false;
+            return;
+        }
+        // The signed-out attempt buffer is the one piece of progress that lives on this device.
+        try { localStorage.removeItem('khanjp-word-buffer'); } catch (e) { /* private mode */ }
+        progressResetStatus.textContent = tr('account.resetDone', 'Progress cleared.');
+        showEl(progressResetStatus);
+        // Reload rather than re-render: every tool keeps its own progress cache in module scope,
+        // and a stale grid showing times that no longer exist is worse than a blink.
+        setTimeout(() => window.location.reload(), 900);
+    });
+}
+
+// ---------------------------------------------------------------------------
 // Account menu — the single top-right avatar/icon button that expands into a
 // dropdown panel (replaces the old bare Log In button / email-and-Log-Out
 // pair that just sat unstyled in the login bar).
@@ -384,9 +444,10 @@ function updateAuthUI(session) {
         showEl(anonEl);
         hideEl(authedEl);
         if (dangerEl) hideEl(dangerEl);
-        // A sign-out with the confirm step half-filled would otherwise leave "Yes, permanently
-        // delete" waiting behind the next sign-in.
+        // A sign-out with either confirm step half-open would otherwise leave "Yes, permanently
+        // delete" or "Yes, clear my progress" waiting behind the next sign-in.
         resetAccountDeleteUI();
+        resetProgressUI();
         accountMenuAvatar.innerHTML = GUEST_AVATAR_HTML;
     }
 

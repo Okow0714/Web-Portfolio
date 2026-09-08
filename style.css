@@ -929,6 +929,29 @@ body {
     line-height: 1.5;
 }
 
+/* Separates resetting progress from deleting the account. They share the danger zone because
+   both are irreversible and both are signed-in only, but they are not the same size of decision
+   and should not read as one list of buttons. */
+.danger-sep {
+    border: 0;
+    border-top: 1px solid #e6b3b3;
+    margin: 16px 0;
+}
+
+/* The reset's own confirm row sits inside the zone; its buttons go side by side rather than
+   stacked, since "Cancel" needs to be as reachable as the confirm. */
+#progress-reset-confirm {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+#progress-reset-confirm .settings-row-note {
+    flex-basis: 100%;
+    margin: 0;
+}
+
 .account-delete-btn {
     background: #d33f3f;
     border-color: #d33f3f;
