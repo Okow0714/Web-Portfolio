@@ -66,7 +66,7 @@ Object.assign(window.I18N_STRINGS, {
     'theme.n3.9': { en: 'Food, clothes and things', mn: 'Хоол, хувцас, эд зүйл' },
     'theme.n3.10': { en: 'Trouble and danger', mn: 'Аюул ба бэрхшээл' },
     'theme.n3.11': { en: 'Places and going', mn: 'Газар ба зорчих' },
-    'theme.n3.12': { en: 'How much, how sure', mn: 'Хэр их, хэр итгэлтэй' },
+    'theme.n3.12': { en: 'How much, how often, how sure', mn: 'Хэр их, хэр олон, хэр итгэлтэй' },
     'theme.n2.1': { en: 'Measuring and shapes', mn: 'Хэмжих ба хэлбэр' },
     'theme.n2.2': { en: 'Science and the natural world', mn: 'Шинжлэх ухаан ба байгаль' },
     'theme.n2.3': { en: 'School, books and words', mn: 'Сургууль, ном, үг' },
