@@ -312,12 +312,30 @@ body.game-playing .game-main {
 /* --pine (#3d7a5c) is 3.35:1 on this card face -- under the 4.5:1 minimum for text this size,
    the same class of bug as the greyed-out score and streak. The dark pine stays for fills and
    borders; text uses --pine-bright (7.25:1). */
+/* The level number, now that the heading carries the theme name instead. Small and quiet: it is
+   there so the grid stays countable, not as the card's subject. */
+.level-num {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--paper-muted);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+}
+
 .level-done {
     margin-left: auto;
     color: var(--pine-bright);
     font-weight: 700;
     font-size: 0.9rem;
     line-height: 1;
+}
+
+/* Theme names run longer than "Level 1", so the heading needs room to wrap to two lines without
+   the rail jumping. min-height holds two lines' worth on every card in the grid. */
+.level-card h2 {
+    min-height: 2.5em;
+    text-wrap: balance;
 }
 
 /* Stat rail: best time and moves as two labelled figures, always drawn so that a played and an

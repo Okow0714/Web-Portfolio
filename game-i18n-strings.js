@@ -28,6 +28,22 @@ Object.assign(window.I18N_STRINGS, {
 
     'game.pairsCount': { en: '{n} / {total} pairs', mn: '{n} / {total} хос' },
     'game.movesCount': { en: '{n} moves', mn: '{n} хөдөлгөөн' },
+    // Level themes. Each level holds one topic instead of an arbitrary slice of the tier, and the
+    // theme name replaces "Level N" on the card. Keys are referenced by `themeKey` in
+    // game-words.js; a level without one falls back to the plain numbered title.
+    'theme.n5.1': { en: 'Time & the calendar', mn: 'Цаг ба хуанли' },
+    'theme.n5.2': { en: 'Family & people', mn: 'Гэр бүл ба хүмүүс' },
+    'theme.n5.3': { en: 'Food & the kitchen', mn: 'Хоол ба гал тогоо' },
+    'theme.n5.4': { en: 'The body & how you feel', mn: 'Бие ба эрүүл мэнд' },
+    'theme.n5.5': { en: 'The house & what is in it', mn: 'Гэр ба гэрийн хэрэглэл' },
+    'theme.n5.6': { en: 'School, study & work', mn: 'Сургууль, хичээл ба ажил' },
+    'theme.n5.7': { en: 'Town & getting around', mn: 'Хот ба зорчих' },
+    'theme.n5.8': { en: 'Outdoors, weather & seasons', mn: 'Гадаа, цаг агаар ба улирал' },
+    'theme.n5.9': { en: 'Colours & how things look', mn: 'Өнгө ба гадаад төрх' },
+    'theme.n5.10': { en: 'Everyday actions & pastimes', mn: 'Өдөр тутмын үйл ба чөлөөт цаг' },
+    'theme.n5.11': { en: 'Pointing, asking & linking', mn: 'Заах, асуух ба холбох үг' },
+    'theme.n5.12': { en: 'Numbers, size & money', mn: 'Тоо, хэмжээ ба мөнгө' },
+
     // 'Completed' is now the tick's tooltip on a level card rather than a line of card text.
     // game.notPlayedYet and game.bestTimeMoves went with the old prose meta line: the rail shows
     // an em dash for an unplayed level and labels its own figures.

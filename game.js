@@ -2022,14 +2022,25 @@ function levelTitle(level) {
     return `${level.jlpt} · ${window.tf('game.levelN', { n: withinTier })}`;
 }
 
-// The same title without the tier, for the level cards. On a card the tier is already on the
-// badge, inside a grid filtered to that tier -- "N5 · Level 1" under an "N5" chip says it three
-// times and leaves no room for the figures. The board label and the start modal keep the long
-// form, where you are no longer inside a filtered grid and the tier is real context.
+// The card title. Each level now holds one topic, so the card names the topic instead of its
+// number -- "Food & the kitchen" tells you what you are about to practise in a way "Level 3"
+// cannot. Tiers still being themed fall back to the number.
+//
+// The tier is not repeated here: on a card it is already on the badge, inside a grid filtered to
+// that tier, so "N5 · Level 1" under an "N5" chip says it three times. The board label and the
+// start modal keep the long numbered form, where you are no longer inside a filtered grid.
 function levelCardTitle(level) {
     if (level.review) return window.t('game.reviewTitle');
+    if (level.themeKey) return window.t(level.themeKey);
     const withinTier = ((level.level - 1) % levelsPerTier()) + 1;
     return window.tf('game.levelN', { n: withinTier });
+}
+
+// The number still has to be visible somewhere on a themed card, so the grid stays countable and
+// a learner can say which level they are on.
+function levelCardNumber(level) {
+    if (level.review) return '';
+    return String(((level.level - 1) % levelsPerTier()) + 1).padStart(2, '0');
 }
 
 function startLevel(level) {
@@ -2155,6 +2166,7 @@ function renderLevelGrid() {
         card.innerHTML = `
             <span class="level-card-top">
                 <span class="level-badge">${escapeHtml(level.jlpt)}</span>
+                <span class="level-num">${escapeHtml(levelCardNumber(level))}</span>
                 ${done ? `<span class="level-done" title="${escapeHtml(window.t('game.completed'))}">&#10003;</span>` : ''}
             </span>
             <h2>${escapeHtml(levelCardTitle(level))}</h2>
