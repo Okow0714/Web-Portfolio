@@ -7,7 +7,7 @@
 
     const GAME_LEVELS_TOTAL = 50;
     const GRAMMAR_LEVELS_TOTAL = 40;
-    const READING_TEXTS_TOTAL = 60;
+    const READING_TEXTS_TOTAL = 72;
 
     const guestEl = document.getElementById('dash-guest');
     const contentEl = document.getElementById('dash-content');

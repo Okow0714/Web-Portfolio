@@ -2,7 +2,7 @@
 // i18n-strings-shared.js must have already created (loaded first in path.html).
 //
 // Level ranges named in this copy are real: Word Match has 12 levels per JLPT tier, Grammar
-// Connect 20 per track (Foundation N5-N3, Advanced N2-N1), Dokkai Reader 10 per track. If any of
+// Connect 20 per track (Foundation N5-N3, Advanced N2-N1), Dokkai Reader 12 per track. If any of
 // those change, the numbers here change with them -- see the note in CLAUDE.md about user-facing
 // copy drifting away from the constants.
 Object.assign(window.I18N_STRINGS, {
@@ -126,7 +126,7 @@ Object.assign(window.I18N_STRINGS, {
         en: 'Finish the Foundation track. Do not start Advanced until this one is clean.',
         mn: 'Суурь замыг бүрэн дуусгаарай. Түүнийг цэвэр давах хүртэл Гүнзгий рүү орох хэрэггүй.',
     },
-    'path.s3.w3': { en: 'Foundation 8–10, then Advanced 1–3', mn: 'Суурь 8–10, дараа нь Гүнзгий 1–3' },
+    'path.s3.w3': { en: 'Foundation 8–12, then Advanced 1–3', mn: 'Суурь 8–12, дараа нь Гүнзгий 1–3' },
     'path.s3.d3': {
         en: 'The two tracks overlap at N3 on purpose, so you can cross over when the Foundation texts stop being hard rather than on a fixed date.',
         mn: 'Хоёр зам N3 дээр зориуд давхцдаг. Ингэснээр тогтсон өдрөөр биш, Суурь бичвэрүүд хэцүү байхаа болих үед нөгөө рүү нь шилжиж болно.',
@@ -190,7 +190,7 @@ Object.assign(window.I18N_STRINGS, {
         en: 'The last forms, most of them written-only and several of them near-synonyms you have to separate by feel.',
         mn: 'Хамгийн сүүлийн хэлбэрүүд. Ихэнх нь зөвхөн бичгийн хэлэнд гардаг бөгөөд зарим нь бараг ижил утгатай тул мэдрэмжээрээ ялгах хэрэгтэй болно.',
     },
-    'path.s5.w3': { en: 'Advanced · 8–10', mn: 'Гүнзгий · 8–10' },
+    'path.s5.w3': { en: 'Advanced · 8–12', mn: 'Гүнзгий · 8–12' },
     'path.s5.d3': {
         en: 'The longest texts here. If these are comfortable, the exam\'s reading section will be too.',
         mn: 'Энд байгаа хамгийн урт бичвэрүүд. Эдгээрийг тухтай уншиж чадвал шалгалтын уншлагын хэсэг ч мөн адил байх болно.',

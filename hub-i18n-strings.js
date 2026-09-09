@@ -59,7 +59,7 @@ Object.assign(window.I18N_STRINGS, {
         en: "Read the passage out loud and it recognizes your voice, automatically highlighting along word by word. It's still in development, so you can skip any word it doesn't recognize.",
         mn: 'Текстийг чангаар уншихад дуу хоолойг чинь таньж, уншиж яваа үгийг чинь дагаад автоматаар тодруулна. Хөгжүүлэлт нь үргэлжилж байгаа тул танихгүй үг гарвал алгасаж болно.'
     },
-    'hub.reading.stat': { en: '60 TEXTS · 2 TRACKS', mn: '60 ТЕКСТ · 2 ЗАМ' },
+    'hub.reading.stat': { en: '72 TEXTS · 2 TRACKS', mn: '72 ТЕКСТ · 2 ЗАМ' },
     'hub.reading.cta': { en: 'Read →', mn: 'Унших →' },
 
     'hub.dictionary.name': { en: 'Mongol-Japan Dictionary', mn: 'Монгол-Япон толь бичиг' },

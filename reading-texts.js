@@ -1,15 +1,28 @@
 // Reading passages for the Dokkai Reader, organized into two overlapping difficulty
-// tracks (Foundation: N5->N3, Advanced: N3->N1) with N3 as the shared bridge level. Rather
-// than 3 coarse JLPT-labeled tiers, each track's ~30 passages are ranked by a continuous
-// weighted-difficulty score (average JLPT level of their vocabulary, computed against the
-// sourced JLPT dataset) and split into 10 roughly-equal levels, easiest to hardest — a
-// smoother progression than strict N5/N4/N3 buckets allow. Each level's "hint" is just the
-// most common original authoring target among its 3 texts, shown for orientation only; it's
-// not authoritative — actual difficulty is the computed score. See passages.js in the
-// authoring toolchain for how each passage was written (real Tatoeba anchor sentence(s)
+// tracks (Foundation: N5->N3, Advanced: N3->N1) with N3 as the shared bridge level.
+// 72 passages, 12 levels per track, 3 texts each.
+//
+// Levels 1-10 of each track are the original set: rather than 3 coarse JLPT-labeled tiers, each
+// track's ~30 passages were ranked by a continuous weighted-difficulty score (average JLPT level
+// of their vocabulary, computed against the sourced JLPT dataset) and split into 10 roughly-equal
+// levels, easiest to hardest — a smoother progression than strict N5/N4/N3 buckets allow. See
+// passages.js in the authoring toolchain for how each was written (real Tatoeba anchor sentence(s)
 // embedded verbatim + original connecting prose) and verify-passages.js for how anchors and
-// grading were checked. Word-level data (reading, English gloss) is auto-generated via
-// kuromoji tokenization, not hand-typed.
+// grading were checked; their word-level data (reading, English gloss) is kuromoji-generated.
+//
+// Levels 11-12 of each track were written and tokenized by hand (2026-09-09), no Tatoeba anchor,
+// and sit at the top of each track's range by construction rather than by score: Foundation 11-12
+// are N3 and stay in the polite register the rest of that track uses, Advanced 11-12 are N1 in the
+// written register. They are APPENDED, never inserted, and no existing level ever gains a text —
+// reading.js's isLevelUnlocked() requires every text of the previous level to be finished, so a
+// fourth text added to level 5 would re-lock level 6 for everyone who had already cleared it.
+//
+// Each level's "hint" is just the most common authoring target among its 3 texts, shown for
+// orientation only; it's not authoritative.
+//
+// The text count is hardcoded in dashboard.js and hub-home.js (READING_TEXTS_TOTAL) and stated in
+// hub-i18n-strings.js and index.html; the per-track level count is stated in path-i18n-strings.js
+// and path.html. Changing the content here means changing all of those.
 const READING_TRACKS = [
     {
         "id": "foundation",
@@ -10822,6 +10835,2661 @@ const READING_TRACKS = [
                                 "reading": "おもい",
                                 "en": "to think",
                                 "enMn": "бодох"
+                            },
+                            {
+                                "surface": "ます",
+                                "reading": "ます",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "levelNum": 11,
+                "hint": "N3",
+                "texts": [
+                    {
+                        "id": "foundation-l11-1",
+                        "title": "図書館の静けさ",
+                        "words": [
+                            {
+                                "surface": "駅",
+                                "reading": "えき",
+                                "en": "station",
+                                "enMn": "өртөө"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "近く",
+                                "reading": "ちかく",
+                                "en": "near",
+                                "enMn": "ойролцоо"
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "古い",
+                                "reading": "ふるい",
+                                "en": "old",
+                                "enMn": "хуучин"
+                            },
+                            {
+                                "surface": "図書館",
+                                "reading": "としょかん",
+                                "en": "library",
+                                "enMn": "номын сан"
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "あり",
+                                "reading": "あり",
+                                "en": null
+                            },
+                            {
+                                "surface": "ます",
+                                "reading": "ます",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "中",
+                                "reading": "なか",
+                                "en": "inside",
+                                "enMn": "дотор"
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "入る",
+                                "reading": "はいる",
+                                "en": "to enter",
+                                "enMn": "орох"
+                            },
+                            {
+                                "surface": "と",
+                                "reading": "と",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "外",
+                                "reading": "そと",
+                                "en": "outside",
+                                "enMn": "гадаа"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "音",
+                                "reading": "おと",
+                                "en": "sound",
+                                "enMn": "чимээ"
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "急",
+                                "reading": "きゅう",
+                                "en": "suddenly",
+                                "enMn": "гэнэт"
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "遠く",
+                                "reading": "とおく",
+                                "en": "distant",
+                                "enMn": "хол"
+                            },
+                            {
+                                "surface": "なり",
+                                "reading": "なり",
+                                "en": null
+                            },
+                            {
+                                "surface": "ます",
+                                "reading": "ます",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "本",
+                                "reading": "ほん",
+                                "en": "book",
+                                "enMn": "ном"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "読ん",
+                                "reading": "よん",
+                                "en": "to read",
+                                "enMn": "унших"
+                            },
+                            {
+                                "surface": "で",
+                                "reading": "で",
+                                "en": null
+                            },
+                            {
+                                "surface": "いる",
+                                "reading": "いる",
+                                "en": null
+                            },
+                            {
+                                "surface": "人",
+                                "reading": "ひと",
+                                "en": "people",
+                                "enMn": "хүмүүс"
+                            },
+                            {
+                                "surface": "も",
+                                "reading": "も",
+                                "en": null
+                            },
+                            {
+                                "surface": "いれ",
+                                "reading": "いれ",
+                                "en": null
+                            },
+                            {
+                                "surface": "ば",
+                                "reading": "ば",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "静か",
+                                "reading": "しずか",
+                                "en": "quietly",
+                                "enMn": "нам гүм"
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "勉強",
+                                "reading": "べんきょう",
+                                "en": "study",
+                                "enMn": "хичээл"
+                            },
+                            {
+                                "surface": "し",
+                                "reading": "し",
+                                "en": null
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "いる",
+                                "reading": "いる",
+                                "en": null
+                            },
+                            {
+                                "surface": "学生",
+                                "reading": "がくせい",
+                                "en": "student",
+                                "enMn": "оюутан"
+                            },
+                            {
+                                "surface": "も",
+                                "reading": "も",
+                                "en": null
+                            },
+                            {
+                                "surface": "い",
+                                "reading": "い",
+                                "en": null
+                            },
+                            {
+                                "surface": "ます",
+                                "reading": "ます",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "私",
+                                "reading": "わたし",
+                                "en": "I",
+                                "enMn": "би"
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "ここ",
+                                "reading": "ここ",
+                                "en": null
+                            },
+                            {
+                                "surface": "で",
+                                "reading": "で",
+                                "en": null
+                            },
+                            {
+                                "surface": "週末",
+                                "reading": "しゅうまつ",
+                                "en": "weekend",
+                                "enMn": "амралтын өдөр"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "午後",
+                                "reading": "ごご",
+                                "en": "afternoon",
+                                "enMn": "үдээс хойш"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "過ごす",
+                                "reading": "すごす",
+                                "en": "to spend",
+                                "enMn": "өнгөрөөх"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "好き",
+                                "reading": "すき",
+                                "en": "to like",
+                                "enMn": "дуртай"
+                            },
+                            {
+                                "surface": "です",
+                                "reading": "です",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "家",
+                                "reading": "いえ",
+                                "en": "home",
+                                "enMn": "гэр"
+                            },
+                            {
+                                "surface": "より",
+                                "reading": "より",
+                                "en": null
+                            },
+                            {
+                                "surface": "集中",
+                                "reading": "しゅうちゅう",
+                                "en": "concentration",
+                                "enMn": "төвлөрөл"
+                            },
+                            {
+                                "surface": "できる",
+                                "reading": "できる",
+                                "en": null
+                            },
+                            {
+                                "surface": "気",
+                                "reading": "き",
+                                "en": "feeling",
+                                "enMn": "мэдрэмж"
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "し",
+                                "reading": "し",
+                                "en": null
+                            },
+                            {
+                                "surface": "ます",
+                                "reading": "ます",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "最近",
+                                "reading": "さいきん",
+                                "en": "recently",
+                                "enMn": "саяхан"
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "読み",
+                                "reading": "よみ",
+                                "en": "to read",
+                                "enMn": "унших"
+                            },
+                            {
+                                "surface": "たい",
+                                "reading": "たい",
+                                "en": null
+                            },
+                            {
+                                "surface": "本",
+                                "reading": "ほん",
+                                "en": "book",
+                                "enMn": "ном"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "一冊",
+                                "reading": "いっさつ",
+                                "en": "one volume",
+                                "enMn": "нэг ном"
+                            },
+                            {
+                                "surface": "ずつ",
+                                "reading": "ずつ",
+                                "en": null
+                            },
+                            {
+                                "surface": "借り",
+                                "reading": "かり",
+                                "en": "to borrow",
+                                "enMn": "зээлэх"
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "帰る",
+                                "reading": "かえる",
+                                "en": "to go home",
+                                "enMn": "харих"
+                            },
+                            {
+                                "surface": "よう",
+                                "reading": "よう",
+                                "en": null
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "し",
+                                "reading": "し",
+                                "en": null
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "い",
+                                "reading": "い",
+                                "en": null
+                            },
+                            {
+                                "surface": "ます",
+                                "reading": "ます",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "foundation-l11-2",
+                        "title": "引っ越しの準備",
+                        "words": [
+                            {
+                                "surface": "来月",
+                                "reading": "らいげつ",
+                                "en": "next month",
+                                "enMn": "ирэх сар"
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "隣",
+                                "reading": "となり",
+                                "en": "neighbouring",
+                                "enMn": "хөрш"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "町",
+                                "reading": "まち",
+                                "en": "town",
+                                "enMn": "хот"
+                            },
+                            {
+                                "surface": "へ",
+                                "reading": "へ",
+                                "en": null
+                            },
+                            {
+                                "surface": "引っ越す",
+                                "reading": "ひっこす",
+                                "en": "to move house",
+                                "enMn": "нүүх"
+                            },
+                            {
+                                "surface": "こと",
+                                "reading": "こと",
+                                "en": null
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "なり",
+                                "reading": "なり",
+                                "en": null
+                            },
+                            {
+                                "surface": "まし",
+                                "reading": "まし",
+                                "en": null
+                            },
+                            {
+                                "surface": "た",
+                                "reading": "た",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "荷物",
+                                "reading": "にもつ",
+                                "en": "belongings",
+                                "enMn": "ачаа"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "片付け",
+                                "reading": "かたづけ",
+                                "en": "to tidy up",
+                                "enMn": "цэгцлэх"
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "いる",
+                                "reading": "いる",
+                                "en": null
+                            },
+                            {
+                                "surface": "と",
+                                "reading": "と",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "忘れ",
+                                "reading": "わすれ",
+                                "en": "to forget",
+                                "enMn": "мартах"
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "い",
+                                "reading": "い",
+                                "en": null
+                            },
+                            {
+                                "surface": "た",
+                                "reading": "た",
+                                "en": null
+                            },
+                            {
+                                "surface": "物",
+                                "reading": "もの",
+                                "en": "things",
+                                "enMn": "зүйл"
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "たくさん",
+                                "reading": "たくさん",
+                                "en": "many",
+                                "enMn": "олон"
+                            },
+                            {
+                                "surface": "出",
+                                "reading": "で",
+                                "en": "to come out",
+                                "enMn": "гарах"
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "き",
+                                "reading": "き",
+                                "en": null
+                            },
+                            {
+                                "surface": "ます",
+                                "reading": "ます",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "使っ",
+                                "reading": "つかっ",
+                                "en": "to use",
+                                "enMn": "ашиглах"
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "い",
+                                "reading": "い",
+                                "en": null
+                            },
+                            {
+                                "surface": "ない",
+                                "reading": "ない",
+                                "en": null
+                            },
+                            {
+                                "surface": "服",
+                                "reading": "ふく",
+                                "en": "clothes",
+                                "enMn": "хувцас"
+                            },
+                            {
+                                "surface": "や",
+                                "reading": "や",
+                                "en": null
+                            },
+                            {
+                                "surface": "古い",
+                                "reading": "ふるい",
+                                "en": "old",
+                                "enMn": "хуучин"
+                            },
+                            {
+                                "surface": "教科書",
+                                "reading": "きょうかしょ",
+                                "en": "textbook",
+                                "enMn": "сурах бичиг"
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "思い切っ",
+                                "reading": "おもいきっ",
+                                "en": "to take the plunge",
+                                "enMn": "шийдэх"
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "処分",
+                                "reading": "しょぶん",
+                                "en": "disposal",
+                                "enMn": "хаях"
+                            },
+                            {
+                                "surface": "する",
+                                "reading": "する",
+                                "en": null
+                            },
+                            {
+                                "surface": "こと",
+                                "reading": "こと",
+                                "en": null
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "し",
+                                "reading": "し",
+                                "en": null
+                            },
+                            {
+                                "surface": "まし",
+                                "reading": "まし",
+                                "en": null
+                            },
+                            {
+                                "surface": "た",
+                                "reading": "た",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "それでも",
+                                "reading": "それでも",
+                                "en": "even so",
+                                "enMn": "гэсэн ч"
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "写真",
+                                "reading": "しゃしん",
+                                "en": "photographs",
+                                "enMn": "зураг"
+                            },
+                            {
+                                "surface": "だけ",
+                                "reading": "だけ",
+                                "en": null
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "どうしても",
+                                "reading": "どうしても",
+                                "en": "no matter what",
+                                "enMn": "яасан ч"
+                            },
+                            {
+                                "surface": "捨て",
+                                "reading": "すて",
+                                "en": "to throw away",
+                                "enMn": "хаях"
+                            },
+                            {
+                                "surface": "られ",
+                                "reading": "られ",
+                                "en": null
+                            },
+                            {
+                                "surface": "ませ",
+                                "reading": "ませ",
+                                "en": null
+                            },
+                            {
+                                "surface": "ん",
+                                "reading": "ん",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "新しい",
+                                "reading": "あたらしい",
+                                "en": "new",
+                                "enMn": "шинэ"
+                            },
+                            {
+                                "surface": "部屋",
+                                "reading": "へや",
+                                "en": "room",
+                                "enMn": "өрөө"
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "まだ",
+                                "reading": "まだ",
+                                "en": null
+                            },
+                            {
+                                "surface": "何",
+                                "reading": "なに",
+                                "en": "anything",
+                                "enMn": "юу ч"
+                            },
+                            {
+                                "surface": "も",
+                                "reading": "も",
+                                "en": null
+                            },
+                            {
+                                "surface": "あり",
+                                "reading": "あり",
+                                "en": null
+                            },
+                            {
+                                "surface": "ませ",
+                                "reading": "ませ",
+                                "en": null
+                            },
+                            {
+                                "surface": "ん",
+                                "reading": "ん",
+                                "en": null
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "少しずつ",
+                                "reading": "すこしずつ",
+                                "en": "little by little",
+                                "enMn": "бага багаар"
+                            },
+                            {
+                                "surface": "自分",
+                                "reading": "じぶん",
+                                "en": "one's own",
+                                "enMn": "өөрийн"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "場所",
+                                "reading": "ばしょ",
+                                "en": "place",
+                                "enMn": "газар"
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "し",
+                                "reading": "し",
+                                "en": null
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "いき",
+                                "reading": "いき",
+                                "en": null
+                            },
+                            {
+                                "surface": "たい",
+                                "reading": "たい",
+                                "en": null
+                            },
+                            {
+                                "surface": "です",
+                                "reading": "です",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "foundation-l11-3",
+                        "title": "近所の商店街",
+                        "words": [
+                            {
+                                "surface": "家",
+                                "reading": "いえ",
+                                "en": "home",
+                                "enMn": "гэр"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "近く",
+                                "reading": "ちかく",
+                                "en": "near",
+                                "enMn": "ойролцоо"
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "小さな",
+                                "reading": "ちいさな",
+                                "en": "small",
+                                "enMn": "жижиг"
+                            },
+                            {
+                                "surface": "商店街",
+                                "reading": "しょうてんがい",
+                                "en": "shopping street",
+                                "enMn": "дэлгүүрийн гудамж"
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "あり",
+                                "reading": "あり",
+                                "en": null
+                            },
+                            {
+                                "surface": "ます",
+                                "reading": "ます",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "八百屋",
+                                "reading": "やおや",
+                                "en": "greengrocer",
+                                "enMn": "ногооны дэлгүүр"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "おじさん",
+                                "reading": "おじさん",
+                                "en": "the man",
+                                "enMn": "авгай"
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "いつも",
+                                "reading": "いつも",
+                                "en": "always",
+                                "enMn": "үргэлж"
+                            },
+                            {
+                                "surface": "「",
+                                "reading": "「",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "今日",
+                                "reading": "きょう",
+                                "en": "today",
+                                "enMn": "өнөөдөр"
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "これ",
+                                "reading": "これ",
+                                "en": null
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "安い",
+                                "reading": "やすい",
+                                "en": "cheap",
+                                "enMn": "хямд"
+                            },
+                            {
+                                "surface": "よ",
+                                "reading": "よ",
+                                "en": null
+                            },
+                            {
+                                "surface": "」",
+                                "reading": "」",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "と",
+                                "reading": "と",
+                                "en": null
+                            },
+                            {
+                                "surface": "声",
+                                "reading": "こえ",
+                                "en": "voice",
+                                "enMn": "дуу хоолой"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "かけ",
+                                "reading": "かけ",
+                                "en": "to call out",
+                                "enMn": "дуудах"
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "くれ",
+                                "reading": "くれ",
+                                "en": null
+                            },
+                            {
+                                "surface": "ます",
+                                "reading": "ます",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "スーパー",
+                                "reading": "スーパー",
+                                "en": "supermarket",
+                                "enMn": "дэлгүүр"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "ほう",
+                                "reading": "ほう",
+                                "en": null
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "便利",
+                                "reading": "べんり",
+                                "en": "convenient",
+                                "enMn": "тохиромжтой"
+                            },
+                            {
+                                "surface": "です",
+                                "reading": "です",
+                                "en": null
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "私",
+                                "reading": "わたし",
+                                "en": "I",
+                                "enMn": "би"
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "この",
+                                "reading": "この",
+                                "en": null
+                            },
+                            {
+                                "surface": "商店街",
+                                "reading": "しょうてんがい",
+                                "en": "shopping street",
+                                "enMn": "дэлгүүрийн гудамж"
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "好き",
+                                "reading": "すき",
+                                "en": "to like",
+                                "enMn": "дуртай"
+                            },
+                            {
+                                "surface": "です",
+                                "reading": "です",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "店",
+                                "reading": "みせ",
+                                "en": "shop",
+                                "enMn": "дэлгүүр"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "人",
+                                "reading": "ひと",
+                                "en": "people",
+                                "enMn": "хүмүүс"
+                            },
+                            {
+                                "surface": "と",
+                                "reading": "と",
+                                "en": null
+                            },
+                            {
+                                "surface": "話し",
+                                "reading": "はなし",
+                                "en": "to talk",
+                                "enMn": "ярих"
+                            },
+                            {
+                                "surface": "ながら",
+                                "reading": "ながら",
+                                "en": null
+                            },
+                            {
+                                "surface": "買い物",
+                                "reading": "かいもの",
+                                "en": "shopping",
+                                "enMn": "худалдан авалт"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "する",
+                                "reading": "する",
+                                "en": null
+                            },
+                            {
+                                "surface": "と",
+                                "reading": "と",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "少し",
+                                "reading": "すこし",
+                                "en": "a little",
+                                "enMn": "бага зэрэг"
+                            },
+                            {
+                                "surface": "元気",
+                                "reading": "げんき",
+                                "en": "cheer",
+                                "enMn": "эрч хүч"
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "出",
+                                "reading": "で",
+                                "en": "to come",
+                                "enMn": "гарах"
+                            },
+                            {
+                                "surface": "ます",
+                                "reading": "ます",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "こういう",
+                                "reading": "こういう",
+                                "en": "this kind of",
+                                "enMn": "ийм"
+                            },
+                            {
+                                "surface": "場所",
+                                "reading": "ばしょ",
+                                "en": "place",
+                                "enMn": "газар"
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "なくなら",
+                                "reading": "なくなら",
+                                "en": "to disappear",
+                                "enMn": "алга болох"
+                            },
+                            {
+                                "surface": "ない",
+                                "reading": "ない",
+                                "en": null
+                            },
+                            {
+                                "surface": "で",
+                                "reading": "で",
+                                "en": null
+                            },
+                            {
+                                "surface": "ほしい",
+                                "reading": "ほしい",
+                                "en": "to want",
+                                "enMn": "хүсэх"
+                            },
+                            {
+                                "surface": "と",
+                                "reading": "と",
+                                "en": null
+                            },
+                            {
+                                "surface": "思い",
+                                "reading": "おもい",
+                                "en": "to think",
+                                "enMn": "бодох"
+                            },
+                            {
+                                "surface": "ます",
+                                "reading": "ます",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "levelNum": 12,
+                "hint": "N3",
+                "texts": [
+                    {
+                        "id": "foundation-l12-1",
+                        "title": "雨の日の楽しみ",
+                        "words": [
+                            {
+                                "surface": "朝",
+                                "reading": "あさ",
+                                "en": "morning",
+                                "enMn": "өглөө"
+                            },
+                            {
+                                "surface": "から",
+                                "reading": "から",
+                                "en": null
+                            },
+                            {
+                                "surface": "雨",
+                                "reading": "あめ",
+                                "en": "rain",
+                                "enMn": "бороо"
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "降っ",
+                                "reading": "ふっ",
+                                "en": "to fall",
+                                "enMn": "орох"
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "い",
+                                "reading": "い",
+                                "en": null
+                            },
+                            {
+                                "surface": "ます",
+                                "reading": "ます",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "出かける",
+                                "reading": "でかける",
+                                "en": "to go out",
+                                "enMn": "гарах"
+                            },
+                            {
+                                "surface": "予定",
+                                "reading": "よてい",
+                                "en": "plan",
+                                "enMn": "төлөвлөгөө"
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "やめ",
+                                "reading": "やめ",
+                                "en": "to cancel",
+                                "enMn": "болих"
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "家",
+                                "reading": "いえ",
+                                "en": "home",
+                                "enMn": "гэр"
+                            },
+                            {
+                                "surface": "で",
+                                "reading": "で",
+                                "en": null
+                            },
+                            {
+                                "surface": "過ごす",
+                                "reading": "すごす",
+                                "en": "to spend",
+                                "enMn": "өнгөрөөх"
+                            },
+                            {
+                                "surface": "こと",
+                                "reading": "こと",
+                                "en": null
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "し",
+                                "reading": "し",
+                                "en": null
+                            },
+                            {
+                                "surface": "まし",
+                                "reading": "まし",
+                                "en": null
+                            },
+                            {
+                                "surface": "た",
+                                "reading": "た",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "窓",
+                                "reading": "まど",
+                                "en": "window",
+                                "enMn": "цонх"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "外",
+                                "reading": "そと",
+                                "en": "outside",
+                                "enMn": "гадаа"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "見",
+                                "reading": "み",
+                                "en": "to look",
+                                "enMn": "харах"
+                            },
+                            {
+                                "surface": "ながら",
+                                "reading": "ながら",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "温かい",
+                                "reading": "あたたかい",
+                                "en": "warm",
+                                "enMn": "дулаан"
+                            },
+                            {
+                                "surface": "お茶",
+                                "reading": "おちゃ",
+                                "en": "tea",
+                                "enMn": "цай"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "飲み",
+                                "reading": "のみ",
+                                "en": "to drink",
+                                "enMn": "уух"
+                            },
+                            {
+                                "surface": "ます",
+                                "reading": "ます",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "雨",
+                                "reading": "あめ",
+                                "en": "rain",
+                                "enMn": "бороо"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "音",
+                                "reading": "おと",
+                                "en": "sound",
+                                "enMn": "чимээ"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "聞い",
+                                "reading": "きい",
+                                "en": "to listen",
+                                "enMn": "сонсох"
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "いる",
+                                "reading": "いる",
+                                "en": null
+                            },
+                            {
+                                "surface": "と",
+                                "reading": "と",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "なぜか",
+                                "reading": "なぜか",
+                                "en": "somehow",
+                                "enMn": "яагаад ч юм"
+                            },
+                            {
+                                "surface": "落ち着き",
+                                "reading": "おちつき",
+                                "en": "to calm down",
+                                "enMn": "тайвширах"
+                            },
+                            {
+                                "surface": "ます",
+                                "reading": "ます",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "晴れ",
+                                "reading": "はれ",
+                                "en": "clear weather",
+                                "enMn": "цэлмэг"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "日",
+                                "reading": "ひ",
+                                "en": "day",
+                                "enMn": "өдөр"
+                            },
+                            {
+                                "surface": "も",
+                                "reading": "も",
+                                "en": null
+                            },
+                            {
+                                "surface": "好き",
+                                "reading": "すき",
+                                "en": "to like",
+                                "enMn": "дуртай"
+                            },
+                            {
+                                "surface": "です",
+                                "reading": "です",
+                                "en": null
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "こういう",
+                                "reading": "こういう",
+                                "en": "this kind of",
+                                "enMn": "ийм"
+                            },
+                            {
+                                "surface": "静か",
+                                "reading": "しずか",
+                                "en": "quiet",
+                                "enMn": "нам гүм"
+                            },
+                            {
+                                "surface": "な",
+                                "reading": "な",
+                                "en": null
+                            },
+                            {
+                                "surface": "一日",
+                                "reading": "いちにち",
+                                "en": "one day",
+                                "enMn": "нэг өдөр"
+                            },
+                            {
+                                "surface": "も",
+                                "reading": "も",
+                                "en": null
+                            },
+                            {
+                                "surface": "悪く",
+                                "reading": "わるく",
+                                "en": "bad",
+                                "enMn": "муу"
+                            },
+                            {
+                                "surface": "ない",
+                                "reading": "ない",
+                                "en": null
+                            },
+                            {
+                                "surface": "と",
+                                "reading": "と",
+                                "en": null
+                            },
+                            {
+                                "surface": "思い",
+                                "reading": "おもい",
+                                "en": "to think",
+                                "enMn": "бодох"
+                            },
+                            {
+                                "surface": "ます",
+                                "reading": "ます",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "foundation-l12-2",
+                        "title": "祖母の手紙",
+                        "words": [
+                            {
+                                "surface": "先週",
+                                "reading": "せんしゅう",
+                                "en": "last week",
+                                "enMn": "өнгөрсөн долоо хоног"
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "祖母",
+                                "reading": "そぼ",
+                                "en": "grandmother",
+                                "enMn": "эмээ"
+                            },
+                            {
+                                "surface": "から",
+                                "reading": "から",
+                                "en": null
+                            },
+                            {
+                                "surface": "手紙",
+                                "reading": "てがみ",
+                                "en": "letter",
+                                "enMn": "захидал"
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "届き",
+                                "reading": "とどき",
+                                "en": "to arrive",
+                                "enMn": "ирэх"
+                            },
+                            {
+                                "surface": "まし",
+                                "reading": "まし",
+                                "en": null
+                            },
+                            {
+                                "surface": "た",
+                                "reading": "た",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "最近",
+                                "reading": "さいきん",
+                                "en": "recently",
+                                "enMn": "саяхан"
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "メール",
+                                "reading": "メール",
+                                "en": "email",
+                                "enMn": "имэйл"
+                            },
+                            {
+                                "surface": "ばかり",
+                                "reading": "ばかり",
+                                "en": null
+                            },
+                            {
+                                "surface": "な",
+                                "reading": "な",
+                                "en": null
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "で",
+                                "reading": "で",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "封筒",
+                                "reading": "ふうとう",
+                                "en": "envelope",
+                                "enMn": "дугтуй"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "開ける",
+                                "reading": "あける",
+                                "en": "to open",
+                                "enMn": "нээх"
+                            },
+                            {
+                                "surface": "とき",
+                                "reading": "とき",
+                                "en": null
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "少し",
+                                "reading": "すこし",
+                                "en": "a little",
+                                "enMn": "бага зэрэг"
+                            },
+                            {
+                                "surface": "緊張",
+                                "reading": "きんちょう",
+                                "en": "nervousness",
+                                "enMn": "сандрах"
+                            },
+                            {
+                                "surface": "し",
+                                "reading": "し",
+                                "en": null
+                            },
+                            {
+                                "surface": "まし",
+                                "reading": "まし",
+                                "en": null
+                            },
+                            {
+                                "surface": "た",
+                                "reading": "た",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "字",
+                                "reading": "じ",
+                                "en": "handwriting",
+                                "enMn": "бичиг"
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "前",
+                                "reading": "まえ",
+                                "en": "before",
+                                "enMn": "өмнө"
+                            },
+                            {
+                                "surface": "より",
+                                "reading": "より",
+                                "en": null
+                            },
+                            {
+                                "surface": "小さく",
+                                "reading": "ちいさく",
+                                "en": "small",
+                                "enMn": "жижиг"
+                            },
+                            {
+                                "surface": "なっ",
+                                "reading": "なっ",
+                                "en": null
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "い",
+                                "reading": "い",
+                                "en": null
+                            },
+                            {
+                                "surface": "まし",
+                                "reading": "まし",
+                                "en": null
+                            },
+                            {
+                                "surface": "た",
+                                "reading": "た",
+                                "en": null
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "内容",
+                                "reading": "ないよう",
+                                "en": "content",
+                                "enMn": "агуулга"
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "とても",
+                                "reading": "とても",
+                                "en": "very",
+                                "enMn": "маш"
+                            },
+                            {
+                                "surface": "元気",
+                                "reading": "げんき",
+                                "en": "well",
+                                "enMn": "эрүүл саруул"
+                            },
+                            {
+                                "surface": "そう",
+                                "reading": "そう",
+                                "en": null
+                            },
+                            {
+                                "surface": "でし",
+                                "reading": "でし",
+                                "en": null
+                            },
+                            {
+                                "surface": "た",
+                                "reading": "た",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "私",
+                                "reading": "わたし",
+                                "en": "I",
+                                "enMn": "би"
+                            },
+                            {
+                                "surface": "も",
+                                "reading": "も",
+                                "en": null
+                            },
+                            {
+                                "surface": "すぐ",
+                                "reading": "すぐ",
+                                "en": "right away",
+                                "enMn": "шууд"
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "返事",
+                                "reading": "へんじ",
+                                "en": "reply",
+                                "enMn": "хариу"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "書き",
+                                "reading": "かき",
+                                "en": "to write",
+                                "enMn": "бичих"
+                            },
+                            {
+                                "surface": "まし",
+                                "reading": "まし",
+                                "en": null
+                            },
+                            {
+                                "surface": "た",
+                                "reading": "た",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "返事",
+                                "reading": "へんじ",
+                                "en": "reply",
+                                "enMn": "хариу"
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "届く",
+                                "reading": "とどく",
+                                "en": "to arrive",
+                                "enMn": "ирэх"
+                            },
+                            {
+                                "surface": "まで",
+                                "reading": "まで",
+                                "en": null
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "時間",
+                                "reading": "じかん",
+                                "en": "time",
+                                "enMn": "цаг"
+                            },
+                            {
+                                "surface": "も",
+                                "reading": "も",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "手紙",
+                                "reading": "てがみ",
+                                "en": "letter",
+                                "enMn": "захидал"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "いい",
+                                "reading": "いい",
+                                "en": "good",
+                                "enMn": "сайхан"
+                            },
+                            {
+                                "surface": "ところ",
+                                "reading": "ところ",
+                                "en": "aspect",
+                                "enMn": "тал"
+                            },
+                            {
+                                "surface": "だ",
+                                "reading": "だ",
+                                "en": null
+                            },
+                            {
+                                "surface": "と",
+                                "reading": "と",
+                                "en": null
+                            },
+                            {
+                                "surface": "思い",
+                                "reading": "おもい",
+                                "en": "to think",
+                                "enMn": "бодох"
+                            },
+                            {
+                                "surface": "ます",
+                                "reading": "ます",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "foundation-l12-3",
+                        "title": "初めてのアルバイト",
+                        "words": [
+                            {
+                                "surface": "大学",
+                                "reading": "だいがく",
+                                "en": "university",
+                                "enMn": "их сургууль"
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "入っ",
+                                "reading": "はいっ",
+                                "en": "to enter",
+                                "enMn": "орох"
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "から",
+                                "reading": "から",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "初めて",
+                                "reading": "はじめて",
+                                "en": "for the first time",
+                                "enMn": "анх удаа"
+                            },
+                            {
+                                "surface": "アルバイト",
+                                "reading": "アルバイト",
+                                "en": "part-time job",
+                                "enMn": "цагийн ажил"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "始め",
+                                "reading": "はじめ",
+                                "en": "to start",
+                                "enMn": "эхлэх"
+                            },
+                            {
+                                "surface": "まし",
+                                "reading": "まし",
+                                "en": null
+                            },
+                            {
+                                "surface": "た",
+                                "reading": "た",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "最初",
+                                "reading": "さいしょ",
+                                "en": "first",
+                                "enMn": "эхний"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "一週間",
+                                "reading": "いっしゅうかん",
+                                "en": "one week",
+                                "enMn": "нэг долоо хоног"
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "覚える",
+                                "reading": "おぼえる",
+                                "en": "to memorise",
+                                "enMn": "цээжлэх"
+                            },
+                            {
+                                "surface": "こと",
+                                "reading": "こと",
+                                "en": null
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "多く",
+                                "reading": "おおく",
+                                "en": "many",
+                                "enMn": "олон"
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "大変",
+                                "reading": "たいへん",
+                                "en": "tough",
+                                "enMn": "хэцүү"
+                            },
+                            {
+                                "surface": "でし",
+                                "reading": "でし",
+                                "en": null
+                            },
+                            {
+                                "surface": "た",
+                                "reading": "た",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "お客さん",
+                                "reading": "おきゃくさん",
+                                "en": "customer",
+                                "enMn": "үйлчлүүлэгч"
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "聞か",
+                                "reading": "きか",
+                                "en": "to be asked",
+                                "enMn": "асуух"
+                            },
+                            {
+                                "surface": "れ",
+                                "reading": "れ",
+                                "en": null
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "も",
+                                "reading": "も",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "うまく",
+                                "reading": "うまく",
+                                "en": "well",
+                                "enMn": "сайн"
+                            },
+                            {
+                                "surface": "答え",
+                                "reading": "こたえ",
+                                "en": "to answer",
+                                "enMn": "хариулах"
+                            },
+                            {
+                                "surface": "られ",
+                                "reading": "られ",
+                                "en": null
+                            },
+                            {
+                                "surface": "ませ",
+                                "reading": "ませ",
+                                "en": null
+                            },
+                            {
+                                "surface": "ん",
+                                "reading": "ん",
+                                "en": null
+                            },
+                            {
+                                "surface": "でし",
+                                "reading": "でし",
+                                "en": null
+                            },
+                            {
+                                "surface": "た",
+                                "reading": "た",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "でも",
+                                "reading": "でも",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "店長",
+                                "reading": "てんちょう",
+                                "en": "store manager",
+                                "enMn": "дэлгүүрийн эрхлэгч"
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "丁寧",
+                                "reading": "ていねい",
+                                "en": "carefully",
+                                "enMn": "нягт нямбай"
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "教え",
+                                "reading": "おしえ",
+                                "en": "to teach",
+                                "enMn": "заах"
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "くれ",
+                                "reading": "くれ",
+                                "en": null
+                            },
+                            {
+                                "surface": "た",
+                                "reading": "た",
+                                "en": null
+                            },
+                            {
+                                "surface": "おかげ",
+                                "reading": "おかげ",
+                                "en": "thanks to",
+                                "enMn": "ачаар"
+                            },
+                            {
+                                "surface": "で",
+                                "reading": "で",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "今",
+                                "reading": "いま",
+                                "en": "now",
+                                "enMn": "одоо"
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "一人",
+                                "reading": "ひとり",
+                                "en": "alone",
+                                "enMn": "ганцаараа"
+                            },
+                            {
+                                "surface": "でも",
+                                "reading": "でも",
+                                "en": null
+                            },
+                            {
+                                "surface": "できる",
+                                "reading": "できる",
+                                "en": null
+                            },
+                            {
+                                "surface": "よう",
+                                "reading": "よう",
+                                "en": null
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "なり",
+                                "reading": "なり",
+                                "en": null
+                            },
+                            {
+                                "surface": "まし",
+                                "reading": "まし",
+                                "en": null
+                            },
+                            {
+                                "surface": "た",
+                                "reading": "た",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "働い",
+                                "reading": "はたらい",
+                                "en": "to work",
+                                "enMn": "ажиллах"
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "み",
+                                "reading": "み",
+                                "en": null
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "お金",
+                                "reading": "おかね",
+                                "en": "money",
+                                "enMn": "мөнгө"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "大切さ",
+                                "reading": "たいせつさ",
+                                "en": "importance",
+                                "enMn": "ач холбогдол"
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "少し",
+                                "reading": "すこし",
+                                "en": "a little",
+                                "enMn": "бага зэрэг"
+                            },
+                            {
+                                "surface": "分かっ",
+                                "reading": "わかっ",
+                                "en": "to understand",
+                                "enMn": "ойлгох"
+                            },
+                            {
+                                "surface": "た",
+                                "reading": "た",
+                                "en": null
+                            },
+                            {
+                                "surface": "気",
+                                "reading": "き",
+                                "en": "feeling",
+                                "enMn": "мэдрэмж"
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "し",
+                                "reading": "し",
+                                "en": null
                             },
                             {
                                 "surface": "ます",
@@ -25103,6 +27771,2897 @@ const READING_TRACKS = [
                             {
                                 "surface": "れる",
                                 "reading": "れる",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "levelNum": 11,
+                "hint": "N1",
+                "texts": [
+                    {
+                        "id": "advanced-l11-1",
+                        "title": "情報との付き合い方",
+                        "words": [
+                            {
+                                "surface": "現代人",
+                                "reading": "げんだいじん",
+                                "en": "people today",
+                                "enMn": "орчин үеийн хүн"
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "かつて",
+                                "reading": "かつて",
+                                "en": "ever before",
+                                "enMn": "урьд өмнө"
+                            },
+                            {
+                                "surface": "ない",
+                                "reading": "ない",
+                                "en": null
+                            },
+                            {
+                                "surface": "量",
+                                "reading": "りょう",
+                                "en": "quantity",
+                                "enMn": "хэмжээ"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "情報",
+                                "reading": "じょうほう",
+                                "en": "information",
+                                "enMn": "мэдээлэл"
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "囲ま",
+                                "reading": "かこま",
+                                "en": "to be surrounded",
+                                "enMn": "хүрээлүүлэх"
+                            },
+                            {
+                                "surface": "れ",
+                                "reading": "れ",
+                                "en": null
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "暮らし",
+                                "reading": "くらし",
+                                "en": "to live",
+                                "enMn": "амьдрах"
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "いる",
+                                "reading": "いる",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "手元",
+                                "reading": "てもと",
+                                "en": "at hand",
+                                "enMn": "гар дээрх"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "端末",
+                                "reading": "たんまつ",
+                                "en": "device",
+                                "enMn": "төхөөрөмж"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "開け",
+                                "reading": "あけ",
+                                "en": "to open",
+                                "enMn": "нээх"
+                            },
+                            {
+                                "surface": "ば",
+                                "reading": "ば",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "世界中",
+                                "reading": "せかいじゅう",
+                                "en": "all over the world",
+                                "enMn": "дэлхий даяар"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "出来事",
+                                "reading": "できごと",
+                                "en": "events",
+                                "enMn": "үйл явдал"
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "瞬時",
+                                "reading": "しゅんじ",
+                                "en": "in an instant",
+                                "enMn": "агшин зуур"
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "流れ込ん",
+                                "reading": "ながれこん",
+                                "en": "to pour in",
+                                "enMn": "цутгах"
+                            },
+                            {
+                                "surface": "で",
+                                "reading": "で",
+                                "en": null
+                            },
+                            {
+                                "surface": "くる",
+                                "reading": "くる",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "しかし",
+                                "reading": "しかし",
+                                "en": "however",
+                                "enMn": "гэвч"
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "その",
+                                "reading": "その",
+                                "en": null
+                            },
+                            {
+                                "surface": "全て",
+                                "reading": "すべて",
+                                "en": "all",
+                                "enMn": "бүгд"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "知る",
+                                "reading": "しる",
+                                "en": "to know",
+                                "enMn": "мэдэх"
+                            },
+                            {
+                                "surface": "必要",
+                                "reading": "ひつよう",
+                                "en": "need",
+                                "enMn": "шаардлага"
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "ある",
+                                "reading": "ある",
+                                "en": null
+                            },
+                            {
+                                "surface": "わけ",
+                                "reading": "わけ",
+                                "en": null
+                            },
+                            {
+                                "surface": "で",
+                                "reading": "で",
+                                "en": null
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "ない",
+                                "reading": "ない",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "むしろ",
+                                "reading": "むしろ",
+                                "en": "rather",
+                                "enMn": "харин ч"
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "何",
+                                "reading": "なに",
+                                "en": "what",
+                                "enMn": "юу"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "知ら",
+                                "reading": "しら",
+                                "en": "to know",
+                                "enMn": "мэдэх"
+                            },
+                            {
+                                "surface": "ず",
+                                "reading": "ず",
+                                "en": null
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "おく",
+                                "reading": "おく",
+                                "en": null
+                            },
+                            {
+                                "surface": "か",
+                                "reading": "か",
+                                "en": null
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "選ぶ",
+                                "reading": "えらぶ",
+                                "en": "to choose",
+                                "enMn": "сонгох"
+                            },
+                            {
+                                "surface": "力",
+                                "reading": "ちから",
+                                "en": "ability",
+                                "enMn": "чадвар"
+                            },
+                            {
+                                "surface": "こそ",
+                                "reading": "こそ",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "今",
+                                "reading": "いま",
+                                "en": "now",
+                                "enMn": "одоо"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "時代",
+                                "reading": "じだい",
+                                "en": "era",
+                                "enMn": "эрин үе"
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "求め",
+                                "reading": "もとめ",
+                                "en": "to be demanded",
+                                "enMn": "шаардагдах"
+                            },
+                            {
+                                "surface": "られ",
+                                "reading": "られ",
+                                "en": null
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "いる",
+                                "reading": "いる",
+                                "en": null
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "で",
+                                "reading": "で",
+                                "en": null
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "ない",
+                                "reading": "ない",
+                                "en": null
+                            },
+                            {
+                                "surface": "だろ",
+                                "reading": "だろ",
+                                "en": null
+                            },
+                            {
+                                "surface": "う",
+                                "reading": "う",
+                                "en": null
+                            },
+                            {
+                                "surface": "か",
+                                "reading": "か",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "情報",
+                                "reading": "じょうほう",
+                                "en": "information",
+                                "enMn": "мэдээлэл"
+                            },
+                            {
+                                "surface": "から",
+                                "reading": "から",
+                                "en": null
+                            },
+                            {
+                                "surface": "距離",
+                                "reading": "きょり",
+                                "en": "distance",
+                                "enMn": "зай"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "置く",
+                                "reading": "おく",
+                                "en": "to keep",
+                                "enMn": "барих"
+                            },
+                            {
+                                "surface": "時間",
+                                "reading": "じかん",
+                                "en": "time",
+                                "enMn": "цаг"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "意識",
+                                "reading": "いしき",
+                                "en": "consciously",
+                                "enMn": "ухамсартай"
+                            },
+                            {
+                                "surface": "し",
+                                "reading": "し",
+                                "en": null
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "つくる",
+                                "reading": "つくる",
+                                "en": "to make",
+                                "enMn": "бий болгох"
+                            },
+                            {
+                                "surface": "よう",
+                                "reading": "よう",
+                                "en": null
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "し",
+                                "reading": "し",
+                                "en": null
+                            },
+                            {
+                                "surface": "たい",
+                                "reading": "たい",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "advanced-l11-2",
+                        "title": "職人の技",
+                        "words": [
+                            {
+                                "surface": "先日",
+                                "reading": "せんじつ",
+                                "en": "the other day",
+                                "enMn": "саяхан"
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "古い",
+                                "reading": "ふるい",
+                                "en": "old",
+                                "enMn": "хуучин"
+                            },
+                            {
+                                "surface": "家具",
+                                "reading": "かぐ",
+                                "en": "furniture",
+                                "enMn": "тавилга"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "修理",
+                                "reading": "しゅうり",
+                                "en": "repair",
+                                "enMn": "засвар"
+                            },
+                            {
+                                "surface": "する",
+                                "reading": "する",
+                                "en": null
+                            },
+                            {
+                                "surface": "職人",
+                                "reading": "しょくにん",
+                                "en": "craftsman",
+                                "enMn": "урчууд"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "仕事",
+                                "reading": "しごと",
+                                "en": "work",
+                                "enMn": "ажил"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "間近",
+                                "reading": "まぢか",
+                                "en": "up close",
+                                "enMn": "ойроос"
+                            },
+                            {
+                                "surface": "で",
+                                "reading": "で",
+                                "en": null
+                            },
+                            {
+                                "surface": "見る",
+                                "reading": "みる",
+                                "en": "to see",
+                                "enMn": "харах"
+                            },
+                            {
+                                "surface": "機会",
+                                "reading": "きかい",
+                                "en": "opportunity",
+                                "enMn": "боломж"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "得",
+                                "reading": "え",
+                                "en": "to obtain",
+                                "enMn": "олох"
+                            },
+                            {
+                                "surface": "た",
+                                "reading": "た",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "長年",
+                                "reading": "ながねん",
+                                "en": "for many years",
+                                "enMn": "олон жил"
+                            },
+                            {
+                                "surface": "使い込ま",
+                                "reading": "つかいこま",
+                                "en": "to be well used",
+                                "enMn": "элэгдэх"
+                            },
+                            {
+                                "surface": "れ",
+                                "reading": "れ",
+                                "en": null
+                            },
+                            {
+                                "surface": "た",
+                                "reading": "た",
+                                "en": null
+                            },
+                            {
+                                "surface": "道具",
+                                "reading": "どうぐ",
+                                "en": "tools",
+                                "enMn": "багаж"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "手",
+                                "reading": "て",
+                                "en": "hand",
+                                "enMn": "гар"
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "彼",
+                                "reading": "かれ",
+                                "en": "he",
+                                "enMn": "тэр"
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "木目",
+                                "reading": "もくめ",
+                                "en": "wood grain",
+                                "enMn": "модны судал"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "じっと",
+                                "reading": "じっと",
+                                "en": "intently",
+                                "enMn": "анхааралтай"
+                            },
+                            {
+                                "surface": "読ん",
+                                "reading": "よん",
+                                "en": "to read",
+                                "enMn": "унших"
+                            },
+                            {
+                                "surface": "で",
+                                "reading": "で",
+                                "en": null
+                            },
+                            {
+                                "surface": "い",
+                                "reading": "い",
+                                "en": null
+                            },
+                            {
+                                "surface": "た",
+                                "reading": "た",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "機械",
+                                "reading": "きかい",
+                                "en": "machine",
+                                "enMn": "машин"
+                            },
+                            {
+                                "surface": "で",
+                                "reading": "で",
+                                "en": null
+                            },
+                            {
+                                "surface": "あれ",
+                                "reading": "あれ",
+                                "en": null
+                            },
+                            {
+                                "surface": "ば",
+                                "reading": "ば",
+                                "en": null
+                            },
+                            {
+                                "surface": "数分",
+                                "reading": "すうふん",
+                                "en": "a few minutes",
+                                "enMn": "хэдэн минут"
+                            },
+                            {
+                                "surface": "で",
+                                "reading": "で",
+                                "en": null
+                            },
+                            {
+                                "surface": "終わる",
+                                "reading": "おわる",
+                                "en": "to finish",
+                                "enMn": "дуусах"
+                            },
+                            {
+                                "surface": "作業",
+                                "reading": "さぎょう",
+                                "en": "task",
+                                "enMn": "ажил"
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "あえて",
+                                "reading": "あえて",
+                                "en": "deliberately",
+                                "enMn": "зориуд"
+                            },
+                            {
+                                "surface": "時間",
+                                "reading": "じかん",
+                                "en": "time",
+                                "enMn": "цаг"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "かける",
+                                "reading": "かける",
+                                "en": "to spend",
+                                "enMn": "зарцуулах"
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "効率",
+                                "reading": "こうりつ",
+                                "en": "efficiency",
+                                "enMn": "үр ашиг"
+                            },
+                            {
+                                "surface": "だけ",
+                                "reading": "だけ",
+                                "en": null
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "見れ",
+                                "reading": "みれ",
+                                "en": "to look at",
+                                "enMn": "харах"
+                            },
+                            {
+                                "surface": "ば",
+                                "reading": "ば",
+                                "en": null
+                            },
+                            {
+                                "surface": "無駄",
+                                "reading": "むだ",
+                                "en": "waste",
+                                "enMn": "дэмий"
+                            },
+                            {
+                                "surface": "と",
+                                "reading": "と",
+                                "en": null
+                            },
+                            {
+                                "surface": "も",
+                                "reading": "も",
+                                "en": null
+                            },
+                            {
+                                "surface": "言えよ",
+                                "reading": "いえよ",
+                                "en": "one could say",
+                                "enMn": "хэлж болно"
+                            },
+                            {
+                                "surface": "う",
+                                "reading": "う",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "だが",
+                                "reading": "だが",
+                                "en": "but",
+                                "enMn": "гэвч"
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "その",
+                                "reading": "その",
+                                "en": null
+                            },
+                            {
+                                "surface": "手間",
+                                "reading": "てま",
+                                "en": "effort",
+                                "enMn": "хөдөлмөр"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "分",
+                                "reading": "ぶん",
+                                "en": "amount",
+                                "enMn": "хэмжээ"
+                            },
+                            {
+                                "surface": "だけ",
+                                "reading": "だけ",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "家具",
+                                "reading": "かぐ",
+                                "en": "furniture",
+                                "enMn": "тавилга"
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "次",
+                                "reading": "つぎ",
+                                "en": "next",
+                                "enMn": "дараагийн"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "世代",
+                                "reading": "せだい",
+                                "en": "generation",
+                                "enMn": "үе"
+                            },
+                            {
+                                "surface": "まで",
+                                "reading": "まで",
+                                "en": null
+                            },
+                            {
+                                "surface": "生き延びる",
+                                "reading": "いきのびる",
+                                "en": "to survive",
+                                "enMn": "оршин үлдэх"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "で",
+                                "reading": "で",
+                                "en": null
+                            },
+                            {
+                                "surface": "ある",
+                                "reading": "ある",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "advanced-l11-3",
+                        "title": "都市の緑",
+                        "words": [
+                            {
+                                "surface": "都市",
+                                "reading": "とし",
+                                "en": "city",
+                                "enMn": "хот"
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "暮らし",
+                                "reading": "くらし",
+                                "en": "to live",
+                                "enMn": "амьдрах"
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "いる",
+                                "reading": "いる",
+                                "en": null
+                            },
+                            {
+                                "surface": "と",
+                                "reading": "と",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "緑",
+                                "reading": "みどり",
+                                "en": "greenery",
+                                "enMn": "ногоон байгууламж"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "存在",
+                                "reading": "そんざい",
+                                "en": "presence",
+                                "enMn": "оршихуй"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "つい",
+                                "reading": "つい",
+                                "en": "inadvertently",
+                                "enMn": "санамсаргүй"
+                            },
+                            {
+                                "surface": "忘れ",
+                                "reading": "わすれ",
+                                "en": "to forget",
+                                "enMn": "мартах"
+                            },
+                            {
+                                "surface": "がち",
+                                "reading": "がち",
+                                "en": null
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "なる",
+                                "reading": "なる",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "それでも",
+                                "reading": "それでも",
+                                "en": "even so",
+                                "enMn": "гэсэн ч"
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "街路樹",
+                                "reading": "がいろじゅ",
+                                "en": "roadside trees",
+                                "enMn": "гудамжны мод"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "一本一本",
+                                "reading": "いっぽんいっぽん",
+                                "en": "each single one",
+                                "enMn": "нэг бүр"
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "夏",
+                                "reading": "なつ",
+                                "en": "summer",
+                                "enMn": "зун"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "暑さ",
+                                "reading": "あつさ",
+                                "en": "heat",
+                                "enMn": "халуун"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "和らげ",
+                                "reading": "やわらげ",
+                                "en": "to soften",
+                                "enMn": "зөөлрүүлэх"
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "空気",
+                                "reading": "くうき",
+                                "en": "air",
+                                "enMn": "агаар"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "静か",
+                                "reading": "しずか",
+                                "en": "quietly",
+                                "enMn": "нам гүм"
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "保っ",
+                                "reading": "たもっ",
+                                "en": "to preserve",
+                                "enMn": "хадгалах"
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "いる",
+                                "reading": "いる",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "開発",
+                                "reading": "かいはつ",
+                                "en": "development",
+                                "enMn": "хөгжүүлэлт"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "名",
+                                "reading": "な",
+                                "en": "name",
+                                "enMn": "нэр"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "もと",
+                                "reading": "もと",
+                                "en": null
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "そうし",
+                                "reading": "そうし",
+                                "en": null
+                            },
+                            {
+                                "surface": "た",
+                                "reading": "た",
+                                "en": null
+                            },
+                            {
+                                "surface": "木々",
+                                "reading": "きぎ",
+                                "en": "trees",
+                                "enMn": "мод"
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "伐ら",
+                                "reading": "きら",
+                                "en": "to be felled",
+                                "enMn": "огтлох"
+                            },
+                            {
+                                "surface": "れ",
+                                "reading": "れ",
+                                "en": null
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "いく",
+                                "reading": "いく",
+                                "en": null
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "見る",
+                                "reading": "みる",
+                                "en": "to see",
+                                "enMn": "харах"
+                            },
+                            {
+                                "surface": "たび",
+                                "reading": "たび",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "何",
+                                "reading": "なに",
+                                "en": "something",
+                                "enMn": "ямар нэг зүйл"
+                            },
+                            {
+                                "surface": "か",
+                                "reading": "か",
+                                "en": null
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "失わ",
+                                "reading": "うしなわ",
+                                "en": "to be lost",
+                                "enMn": "алдагдах"
+                            },
+                            {
+                                "surface": "れ",
+                                "reading": "れ",
+                                "en": null
+                            },
+                            {
+                                "surface": "つつ",
+                                "reading": "つつ",
+                                "en": null
+                            },
+                            {
+                                "surface": "ある",
+                                "reading": "ある",
+                                "en": null
+                            },
+                            {
+                                "surface": "と",
+                                "reading": "と",
+                                "en": null
+                            },
+                            {
+                                "surface": "感じ",
+                                "reading": "かんじ",
+                                "en": "to feel",
+                                "enMn": "мэдрэх"
+                            },
+                            {
+                                "surface": "ず",
+                                "reading": "ず",
+                                "en": null
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "い",
+                                "reading": "い",
+                                "en": null
+                            },
+                            {
+                                "surface": "られ",
+                                "reading": "られ",
+                                "en": null
+                            },
+                            {
+                                "surface": "ない",
+                                "reading": "ない",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "便利さ",
+                                "reading": "べんりさ",
+                                "en": "convenience",
+                                "enMn": "тав тухтай байдал"
+                            },
+                            {
+                                "surface": "と",
+                                "reading": "と",
+                                "en": null
+                            },
+                            {
+                                "surface": "引き換え",
+                                "reading": "ひきかえ",
+                                "en": "in exchange",
+                                "enMn": "солилцоонд"
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "手放し",
+                                "reading": "てばなし",
+                                "en": "to let go of",
+                                "enMn": "гараас гаргах"
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "よい",
+                                "reading": "よい",
+                                "en": null
+                            },
+                            {
+                                "surface": "もの",
+                                "reading": "もの",
+                                "en": null
+                            },
+                            {
+                                "surface": "か",
+                                "reading": "か",
+                                "en": null
+                            },
+                            {
+                                "surface": "どう",
+                                "reading": "どう",
+                                "en": null
+                            },
+                            {
+                                "surface": "か",
+                                "reading": "か",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "立ち止まっ",
+                                "reading": "たちどまっ",
+                                "en": "to stop",
+                                "enMn": "зогсох"
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "考え",
+                                "reading": "かんがえ",
+                                "en": "to think",
+                                "enMn": "бодох"
+                            },
+                            {
+                                "surface": "たい",
+                                "reading": "たい",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "levelNum": 12,
+                "hint": "N1",
+                "texts": [
+                    {
+                        "id": "advanced-l12-1",
+                        "title": "言葉は変わるもの",
+                        "words": [
+                            {
+                                "surface": "若い",
+                                "reading": "わかい",
+                                "en": "young",
+                                "enMn": "залуу"
+                            },
+                            {
+                                "surface": "世代",
+                                "reading": "せだい",
+                                "en": "generation",
+                                "enMn": "үе"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "言葉遣い",
+                                "reading": "ことばづかい",
+                                "en": "way of speaking",
+                                "enMn": "ярианы хэв маяг"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "耳",
+                                "reading": "みみ",
+                                "en": "ear",
+                                "enMn": "чих"
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "し",
+                                "reading": "し",
+                                "en": null
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "眉",
+                                "reading": "まゆ",
+                                "en": "eyebrow",
+                                "enMn": "хөмсөг"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "ひそめる",
+                                "reading": "ひそめる",
+                                "en": "to frown",
+                                "enMn": "үрчийлгэх"
+                            },
+                            {
+                                "surface": "大人",
+                                "reading": "おとな",
+                                "en": "adults",
+                                "enMn": "насанд хүрэгчид"
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "少なく",
+                                "reading": "すくなく",
+                                "en": "few",
+                                "enMn": "цөөн"
+                            },
+                            {
+                                "surface": "ない",
+                                "reading": "ない",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "しかし",
+                                "reading": "しかし",
+                                "en": "however",
+                                "enMn": "гэвч"
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "言葉",
+                                "reading": "ことば",
+                                "en": "language",
+                                "enMn": "хэл"
+                            },
+                            {
+                                "surface": "と",
+                                "reading": "と",
+                                "en": null
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "本来",
+                                "reading": "ほんらい",
+                                "en": "originally",
+                                "enMn": "угтаа"
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "時代",
+                                "reading": "じだい",
+                                "en": "era",
+                                "enMn": "эрин үе"
+                            },
+                            {
+                                "surface": "と",
+                                "reading": "と",
+                                "en": null
+                            },
+                            {
+                                "surface": "ともに",
+                                "reading": "ともに",
+                                "en": "along with",
+                                "enMn": "хамт"
+                            },
+                            {
+                                "surface": "姿",
+                                "reading": "すがた",
+                                "en": "form",
+                                "enMn": "хэлбэр"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "変え",
+                                "reading": "かえ",
+                                "en": "to change",
+                                "enMn": "өөрчлөх"
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "いく",
+                                "reading": "いく",
+                                "en": null
+                            },
+                            {
+                                "surface": "もの",
+                                "reading": "もの",
+                                "en": null
+                            },
+                            {
+                                "surface": "で",
+                                "reading": "で",
+                                "en": null
+                            },
+                            {
+                                "surface": "ある",
+                                "reading": "ある",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "今",
+                                "reading": "いま",
+                                "en": "now",
+                                "enMn": "одоо"
+                            },
+                            {
+                                "surface": "で",
+                                "reading": "で",
+                                "en": null
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "正しい",
+                                "reading": "ただしい",
+                                "en": "correct",
+                                "enMn": "зөв"
+                            },
+                            {
+                                "surface": "と",
+                                "reading": "と",
+                                "en": null
+                            },
+                            {
+                                "surface": "さ",
+                                "reading": "さ",
+                                "en": null
+                            },
+                            {
+                                "surface": "れる",
+                                "reading": "れる",
+                                "en": null
+                            },
+                            {
+                                "surface": "表現",
+                                "reading": "ひょうげん",
+                                "en": "expression",
+                                "enMn": "илэрхийлэл"
+                            },
+                            {
+                                "surface": "も",
+                                "reading": "も",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "かつて",
+                                "reading": "かつて",
+                                "en": "once",
+                                "enMn": "нэгэн цагт"
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "乱れ",
+                                "reading": "みだれ",
+                                "en": "corruption",
+                                "enMn": "эмх замбараагүй байдал"
+                            },
+                            {
+                                "surface": "と",
+                                "reading": "と",
+                                "en": null
+                            },
+                            {
+                                "surface": "みなさ",
+                                "reading": "みなさ",
+                                "en": "to be regarded",
+                                "enMn": "үзэх"
+                            },
+                            {
+                                "surface": "れ",
+                                "reading": "れ",
+                                "en": null
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "い",
+                                "reading": "い",
+                                "en": null
+                            },
+                            {
+                                "surface": "た",
+                                "reading": "た",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "変化",
+                                "reading": "へんか",
+                                "en": "change",
+                                "enMn": "өөрчлөлт"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "嘆く",
+                                "reading": "なげく",
+                                "en": "to lament",
+                                "enMn": "гашуудах"
+                            },
+                            {
+                                "surface": "前",
+                                "reading": "まえ",
+                                "en": "before",
+                                "enMn": "өмнө"
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "なぜ",
+                                "reading": "なぜ",
+                                "en": "why",
+                                "enMn": "яагаад"
+                            },
+                            {
+                                "surface": "その",
+                                "reading": "その",
+                                "en": null
+                            },
+                            {
+                                "surface": "形",
+                                "reading": "かたち",
+                                "en": "form",
+                                "enMn": "хэлбэр"
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "選ば",
+                                "reading": "えらば",
+                                "en": "to be chosen",
+                                "enMn": "сонгогдох"
+                            },
+                            {
+                                "surface": "れ",
+                                "reading": "れ",
+                                "en": null
+                            },
+                            {
+                                "surface": "た",
+                                "reading": "た",
+                                "en": null
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "か",
+                                "reading": "か",
+                                "en": null
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "考え",
+                                "reading": "かんがえ",
+                                "en": "to think",
+                                "enMn": "бодох"
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "み",
+                                "reading": "み",
+                                "en": null
+                            },
+                            {
+                                "surface": "たい",
+                                "reading": "たい",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "そこ",
+                                "reading": "そこ",
+                                "en": null
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "話し手",
+                                "reading": "はなして",
+                                "en": "speaker",
+                                "enMn": "ярьж буй хүн"
+                            },
+                            {
+                                "surface": "なり",
+                                "reading": "なり",
+                                "en": null
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "必然",
+                                "reading": "ひつぜん",
+                                "en": "inevitability",
+                                "enMn": "зайлшгүй шалтгаан"
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "ある",
+                                "reading": "ある",
+                                "en": null
+                            },
+                            {
+                                "surface": "はず",
+                                "reading": "はず",
+                                "en": null
+                            },
+                            {
+                                "surface": "だ",
+                                "reading": "だ",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "advanced-l12-2",
+                        "title": "夜行列車の記憶",
+                        "words": [
+                            {
+                                "surface": "幼い",
+                                "reading": "おさない",
+                                "en": "young",
+                                "enMn": "бага"
+                            },
+                            {
+                                "surface": "頃",
+                                "reading": "ころ",
+                                "en": "time",
+                                "enMn": "үе"
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "家族",
+                                "reading": "かぞく",
+                                "en": "family",
+                                "enMn": "гэр бүл"
+                            },
+                            {
+                                "surface": "で",
+                                "reading": "で",
+                                "en": null
+                            },
+                            {
+                                "surface": "夜行列車",
+                                "reading": "やこうれっしゃ",
+                                "en": "night train",
+                                "enMn": "шөнийн галт тэрэг"
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "乗っ",
+                                "reading": "のっ",
+                                "en": "to ride",
+                                "enMn": "суух"
+                            },
+                            {
+                                "surface": "た",
+                                "reading": "た",
+                                "en": null
+                            },
+                            {
+                                "surface": "こと",
+                                "reading": "こと",
+                                "en": null
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "ある",
+                                "reading": "ある",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "窓",
+                                "reading": "まど",
+                                "en": "window",
+                                "enMn": "цонх"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "外",
+                                "reading": "そと",
+                                "en": "outside",
+                                "enMn": "гадаа"
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "闇",
+                                "reading": "やみ",
+                                "en": "darkness",
+                                "enMn": "харанхуй"
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "包ま",
+                                "reading": "つつま",
+                                "en": "to be wrapped",
+                                "enMn": "бүрхэгдэх"
+                            },
+                            {
+                                "surface": "れ",
+                                "reading": "れ",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "時折",
+                                "reading": "ときおり",
+                                "en": "occasionally",
+                                "enMn": "үе үе"
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "遠く",
+                                "reading": "とおく",
+                                "en": "far away",
+                                "enMn": "хол"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "町",
+                                "reading": "まち",
+                                "en": "town",
+                                "enMn": "хот"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "灯り",
+                                "reading": "あかり",
+                                "en": "lights",
+                                "enMn": "гэрэл"
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "流れ",
+                                "reading": "ながれ",
+                                "en": "to flow past",
+                                "enMn": "урсах"
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "いっ",
+                                "reading": "いっ",
+                                "en": null
+                            },
+                            {
+                                "surface": "た",
+                                "reading": "た",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "眠れ",
+                                "reading": "ねむれ",
+                                "en": "to sleep",
+                                "enMn": "унтах"
+                            },
+                            {
+                                "surface": "ない",
+                                "reading": "ない",
+                                "en": null
+                            },
+                            {
+                                "surface": "まま",
+                                "reading": "まま",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "私",
+                                "reading": "わたし",
+                                "en": "I",
+                                "enMn": "би"
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "その",
+                                "reading": "その",
+                                "en": null
+                            },
+                            {
+                                "surface": "光",
+                                "reading": "ひかり",
+                                "en": "light",
+                                "enMn": "гэрэл"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "いつまでも",
+                                "reading": "いつまでも",
+                                "en": "endlessly",
+                                "enMn": "төгсгөлгүй"
+                            },
+                            {
+                                "surface": "数え",
+                                "reading": "かぞえ",
+                                "en": "to count",
+                                "enMn": "тоолох"
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "い",
+                                "reading": "い",
+                                "en": null
+                            },
+                            {
+                                "surface": "た",
+                                "reading": "た",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "今",
+                                "reading": "いま",
+                                "en": "now",
+                                "enMn": "одоо"
+                            },
+                            {
+                                "surface": "なら",
+                                "reading": "なら",
+                                "en": null
+                            },
+                            {
+                                "surface": "同じ",
+                                "reading": "おなじ",
+                                "en": "same",
+                                "enMn": "ижил"
+                            },
+                            {
+                                "surface": "距離",
+                                "reading": "きょり",
+                                "en": "distance",
+                                "enMn": "зай"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "数時間",
+                                "reading": "すうじかん",
+                                "en": "a few hours",
+                                "enMn": "хэдэн цаг"
+                            },
+                            {
+                                "surface": "で",
+                                "reading": "で",
+                                "en": null
+                            },
+                            {
+                                "surface": "移動",
+                                "reading": "いどう",
+                                "en": "travel",
+                                "enMn": "аялах"
+                            },
+                            {
+                                "surface": "できる",
+                                "reading": "できる",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "速さ",
+                                "reading": "はやさ",
+                                "en": "speed",
+                                "enMn": "хурд"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "得",
+                                "reading": "え",
+                                "en": "to gain",
+                                "enMn": "олох"
+                            },
+                            {
+                                "surface": "た",
+                                "reading": "た",
+                                "en": null
+                            },
+                            {
+                                "surface": "代わり",
+                                "reading": "かわり",
+                                "en": "in exchange",
+                                "enMn": "оронд"
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "私たち",
+                                "reading": "わたしたち",
+                                "en": "we",
+                                "enMn": "бид"
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "あの",
+                                "reading": "あの",
+                                "en": null
+                            },
+                            {
+                                "surface": "長い",
+                                "reading": "ながい",
+                                "en": "long",
+                                "enMn": "урт"
+                            },
+                            {
+                                "surface": "夜",
+                                "reading": "よる",
+                                "en": "night",
+                                "enMn": "шөнө"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "失っ",
+                                "reading": "うしなっ",
+                                "en": "to lose",
+                                "enMn": "алдах"
+                            },
+                            {
+                                "surface": "た",
+                                "reading": "た",
+                                "en": null
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "かも",
+                                "reading": "かも",
+                                "en": null
+                            },
+                            {
+                                "surface": "しれ",
+                                "reading": "しれ",
+                                "en": null
+                            },
+                            {
+                                "surface": "ない",
+                                "reading": "ない",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "advanced-l12-3",
+                        "title": "失敗の効用",
+                        "words": [
+                            {
+                                "surface": "失敗",
+                                "reading": "しっぱい",
+                                "en": "failure",
+                                "enMn": "бүтэлгүйтэл"
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "避ける",
+                                "reading": "さける",
+                                "en": "to avoid",
+                                "enMn": "зайлсхийх"
+                            },
+                            {
+                                "surface": "べき",
+                                "reading": "べき",
+                                "en": null
+                            },
+                            {
+                                "surface": "もの",
+                                "reading": "もの",
+                                "en": null
+                            },
+                            {
+                                "surface": "と",
+                                "reading": "と",
+                                "en": null
+                            },
+                            {
+                                "surface": "し",
+                                "reading": "し",
+                                "en": null
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "語ら",
+                                "reading": "かたら",
+                                "en": "to be spoken of",
+                                "enMn": "ярих"
+                            },
+                            {
+                                "surface": "れ",
+                                "reading": "れ",
+                                "en": null
+                            },
+                            {
+                                "surface": "がち",
+                                "reading": "がち",
+                                "en": null
+                            },
+                            {
+                                "surface": "で",
+                                "reading": "で",
+                                "en": null
+                            },
+                            {
+                                "surface": "ある",
+                                "reading": "ある",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "だが",
+                                "reading": "だが",
+                                "en": "but",
+                                "enMn": "гэвч"
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "うまく",
+                                "reading": "うまく",
+                                "en": "well",
+                                "enMn": "сайн"
+                            },
+                            {
+                                "surface": "いっ",
+                                "reading": "いっ",
+                                "en": "to go",
+                                "enMn": "явах"
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "いる",
+                                "reading": "いる",
+                                "en": null
+                            },
+                            {
+                                "surface": "とき",
+                                "reading": "とき",
+                                "en": null
+                            },
+                            {
+                                "surface": "ほど",
+                                "reading": "ほど",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "人",
+                                "reading": "ひと",
+                                "en": "people",
+                                "enMn": "хүмүүс"
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "自分",
+                                "reading": "じぶん",
+                                "en": "one's own",
+                                "enMn": "өөрийн"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "やり方",
+                                "reading": "やりかた",
+                                "en": "method",
+                                "enMn": "арга барил"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "疑わ",
+                                "reading": "うたがわ",
+                                "en": "to doubt",
+                                "enMn": "эргэлзэх"
+                            },
+                            {
+                                "surface": "ない",
+                                "reading": "ない",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "つまずい",
+                                "reading": "つまずい",
+                                "en": "to stumble",
+                                "enMn": "бүдрэх"
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "初めて",
+                                "reading": "はじめて",
+                                "en": "only then",
+                                "enMn": "сая"
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "そこ",
+                                "reading": "そこ",
+                                "en": null
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "前提",
+                                "reading": "ぜんてい",
+                                "en": "assumption",
+                                "enMn": "урьдчилсан таамаг"
+                            },
+                            {
+                                "surface": "が",
+                                "reading": "が",
+                                "en": null
+                            },
+                            {
+                                "surface": "あっ",
+                                "reading": "あっ",
+                                "en": null
+                            },
+                            {
+                                "surface": "た",
+                                "reading": "た",
+                                "en": null
+                            },
+                            {
+                                "surface": "こと",
+                                "reading": "こと",
+                                "en": null
+                            },
+                            {
+                                "surface": "に",
+                                "reading": "に",
+                                "en": null
+                            },
+                            {
+                                "surface": "気づく",
+                                "reading": "きづく",
+                                "en": "to notice",
+                                "enMn": "анзаарах"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "だ",
+                                "reading": "だ",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "もちろん",
+                                "reading": "もちろん",
+                                "en": "of course",
+                                "enMn": "мэдээж"
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "取り返し",
+                                "reading": "とりかえし",
+                                "en": "recovery",
+                                "enMn": "нөхөх"
+                            },
+                            {
+                                "surface": "の",
+                                "reading": "の",
+                                "en": null
+                            },
+                            {
+                                "surface": "つか",
+                                "reading": "つか",
+                                "en": null
+                            },
+                            {
+                                "surface": "ない",
+                                "reading": "ない",
+                                "en": null
+                            },
+                            {
+                                "surface": "失敗",
+                                "reading": "しっぱい",
+                                "en": "failure",
+                                "enMn": "бүтэлгүйтэл"
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "避け",
+                                "reading": "さけ",
+                                "en": "to avoid",
+                                "enMn": "зайлсхийх"
+                            },
+                            {
+                                "surface": "ね",
+                                "reading": "ね",
+                                "en": null
+                            },
+                            {
+                                "surface": "ば",
+                                "reading": "ば",
+                                "en": null
+                            },
+                            {
+                                "surface": "なら",
+                                "reading": "なら",
+                                "en": null
+                            },
+                            {
+                                "surface": "ない",
+                                "reading": "ない",
+                                "en": null
+                            },
+                            {
+                                "surface": "。",
+                                "reading": "。",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "要",
+                                "reading": "よう",
+                                "en": "the point",
+                                "enMn": "гол нь"
+                            },
+                            {
+                                "surface": "は",
+                                "reading": "は",
+                                "en": null
+                            },
+                            {
+                                "surface": "、",
+                                "reading": "、",
+                                "en": null,
+                                "sym": true
+                            },
+                            {
+                                "surface": "小さく",
+                                "reading": "ちいさく",
+                                "en": "small",
+                                "enMn": "жижиг"
+                            },
+                            {
+                                "surface": "失敗",
+                                "reading": "しっぱい",
+                                "en": "failure",
+                                "enMn": "бүтэлгүйтэл"
+                            },
+                            {
+                                "surface": "できる",
+                                "reading": "できる",
+                                "en": null
+                            },
+                            {
+                                "surface": "場",
+                                "reading": "ば",
+                                "en": "space",
+                                "enMn": "орчин"
+                            },
+                            {
+                                "surface": "を",
+                                "reading": "を",
+                                "en": null
+                            },
+                            {
+                                "surface": "いかに",
+                                "reading": "いかに",
+                                "en": "how",
+                                "enMn": "яаж"
+                            },
+                            {
+                                "surface": "確保",
+                                "reading": "かくほ",
+                                "en": "securing",
+                                "enMn": "хангах"
+                            },
+                            {
+                                "surface": "し",
+                                "reading": "し",
+                                "en": null
+                            },
+                            {
+                                "surface": "て",
+                                "reading": "て",
+                                "en": null
+                            },
+                            {
+                                "surface": "おく",
+                                "reading": "おく",
+                                "en": null
+                            },
+                            {
+                                "surface": "か",
+                                "reading": "か",
+                                "en": null
+                            },
+                            {
+                                "surface": "という",
+                                "reading": "という",
+                                "en": null
+                            },
+                            {
+                                "surface": "こと",
+                                "reading": "こと",
+                                "en": null
+                            },
+                            {
+                                "surface": "だろ",
+                                "reading": "だろ",
+                                "en": null
+                            },
+                            {
+                                "surface": "う",
+                                "reading": "う",
                                 "en": null
                             },
                             {
