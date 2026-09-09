@@ -36,6 +36,8 @@ const SpeechRecognitionCtor = window.SpeechRecognition || window.webkitSpeechRec
 const READ_AHEAD_WORDS = 40;
 const MAX_ALTERNATIVES = 5;      // ASR's runner-up transcripts get checked too, not just its top guess
 const MIN_JUMP_TOKEN_LEN = 2;    // see the note on `distinctive` in onresult
+// ...except for a lone kanji, which is exempt from that minimum. See the same note.
+const KANJI_CHAR = /[\u4E00-\u9FAF\u3005]/;
 const MAX_RESTART_ATTEMPTS = 4;  // consecutive rapid onend restarts before we stop and say so
 const RESTART_STREAK_WINDOW_MS = 2000; // restarts further apart than this are silence gaps, not a failure loop
 
@@ -48,6 +50,14 @@ const RESTART_STREAK_WINDOW_MS = 2000; // restarts further apart than this are s
 // didn't arrive with real speech behind it.
 const VOICE_GRACE_MS = 2000;      // a result may lag the speech that produced it by this much
 const VOICE_CALIBRATION_MS = 700; // sampled at startup to learn the room's noise floor
+// Which sample of a sorted window counts as "the room". The floor used to be the window's peak,
+// which is the one statistic guaranteed to be an event rather than the background: a single chair
+// scrape during calibration set the bar for the entire passage. A low percentile is the room; what
+// sits above it is something happening in the room.
+const VOICE_FLOOR_PERCENTILE = 0.2;
+// Samples kept after calibration so the floor can keep following the room down. Downward only --
+// a floor that chased speech upward would gate out the very reader it is measuring.
+const VOICE_FLOOR_WINDOW = 40;    // x VOICE_LEVEL_POLL_MS = 2s
 const VOICE_MARGIN = 2.5;         // speech has to beat the noise floor by this multiple
 const VOICE_FLOOR_MIN = 0.008;    // ...and this absolute RMS, so a silent room can't set a hair trigger
 const VOICE_FLOOR_CAP = 0.02;     // ...and the floor itself is capped, so calibrating while someone
@@ -517,9 +527,20 @@ function matchTranscript(text, positions, allowJumps) {
         // could carry the cursor several words on and file words you had just read correctly
         // under "Skipped Words". So across a gap a token has to be distinctive; contiguous, it
         // doesn't need to be, because its position already vouches for it.
+        //
+        // A lone kanji is exempt, because what makes a one-character token dangerous is being
+        // kana, not being short. 気, 出, 見, 目 are as specific as any two-kana word: across this
+        // corpus a single-kanji token repeats inside its own text 3.7% of the time, against
+        // 20.0% for the tokens jumps are already allowed to land on -- so barring them was
+        // stricter than the rule is anywhere else, and it cost real matches. 気 is only ever
+        // き, so 「気にしてはいない」 was seven tokens in a row that nothing could jump to, the
+        // longest such run in the corpus; one syllable misheard anywhere inside it left the
+        // cursor stranded until the reader said the whole clause again.
         const w = words[pos];
-        const distinctive = Math.max(normalizeForMatch(w.surface).length,
-            normalizeForMatch(w.reading || '').length) >= MIN_JUMP_TOKEN_LEN;
+        const surfaceForMatch = normalizeForMatch(w.surface);
+        const distinctive = KANJI_CHAR.test(surfaceForMatch) ||
+            Math.max(surfaceForMatch.length,
+                normalizeForMatch(w.reading || '').length) >= MIN_JUMP_TOKEN_LEN;
         if (pos === positions[0]) best = pos;
         else if (allowJumps && (contiguous || distinctive)) best = pos;
     }
@@ -873,6 +894,15 @@ async function startVoiceGate() {
     const calibrationEndsAt = Date.now() + VOICE_CALIBRATION_MS;
     document.getElementById('reader-level').classList.add('active');
 
+    // Sorted-sample estimate of the background level; see VOICE_FLOOR_PERCENTILE.
+    const quietLevel = (samples) => {
+        if (!samples.length) return 0;
+        const sorted = samples.slice().sort((a, b) => a - b);
+        return sorted[Math.min(sorted.length - 1, Math.floor(sorted.length * VOICE_FLOOR_PERCENTILE))];
+    };
+    const calibrationSamples = [];
+    const recent = [];
+
     levelTimer = setInterval(() => {
         analyser.getFloatTimeDomainData(buf);
         let sum = 0;
@@ -880,10 +910,25 @@ async function startVoiceGate() {
         const rms = Math.sqrt(sum / buf.length);
         const now = Date.now();
         if (now < calibrationEndsAt) {
-            noiseFloor = Math.max(noiseFloor, rms);
+            calibrationSamples.push(rms);
             return;
         }
+        if (!voiceGateReady) noiseFloor = quietLevel(calibrationSamples);
         voiceGateReady = true;
+
+        // Keep following the room, downward only. Calibration is 700 ms long and starts on the
+        // button press, so it can easily land on the one noisy moment of the session; without
+        // this, that moment would hold the bar up for the whole passage and every transcript
+        // under it would be discarded as room noise. Our own playback is excluded for the same
+        // reason it is excluded below -- it is not the room, it is us.
+        if (!ttsSpeaking) {
+            recent.push(rms);
+            if (recent.length > VOICE_FLOOR_WINDOW) recent.shift();
+            if (recent.length === VOICE_FLOOR_WINDOW) {
+                const settled = quietLevel(recent);
+                if (settled < noiseFloor) noiseFloor = settled;
+            }
+        }
         // The analyser hears the speakers as readily as it hears the reader, so playback would
         // otherwise refresh lastVoiceAt and leave the gate wide open for a stray transcript
         // arriving just after it. The meter still moves, which is honest: that really is sound
