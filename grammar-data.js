@@ -485,7 +485,7 @@ const GRAMMAR_LEVELS = {
                     "translation": "I have shopped at this store before.",
                     "explanation": "たことがある and 経験がある both report a past experience — 経験がある just spells the idea out with the word 'experience' instead of the grammar pattern alone.",
                     "oldCore": "ことがある",
-                    "newCore": null,
+                    "newCore": "経験がある",
                     "translationMn": "Би энэ дэлгүүрт өмнө нь худалдаа хийж байсан.",
                     "explanationMn": "たことがある болон 経験がある хоёулаа өнгөрсөн туршлагыг мэдээлдэг — 経験がある нь дүрмийн загвар дангаараа биш \"туршлага\" гэдэг үгээр санааг илэрхийлдэг."
                 },
@@ -710,7 +710,7 @@ const GRAMMAR_LEVELS = {
                     "translation": "I have worked at this shop before.",
                     "explanation": "たことがある and 経験がある both point to a past experience — 経験がある just states it directly with the word 'experience.'",
                     "oldCore": "ことがある",
-                    "newCore": null,
+                    "newCore": "経験がある",
                     "translationMn": "Би энэ дэлгүүрт өмнө нь ажиллаж байсан.",
                     "explanationMn": "たことがある болон 経験がある хоёулаа өнгөрсөн туршлагыг заадаг — 経験がある нь \"туршлага\" гэдэг үгээр шууд илэрхийлдэг."
                 },
@@ -1042,7 +1042,7 @@ const GRAMMAR_LEVELS = {
                     "translation": "I have done flower-viewing at this park before.",
                     "explanation": "たことがある and 経験がある both report a past experience — 経験がある just spells the idea out with the word 'experience.'",
                     "oldCore": "ことがある",
-                    "newCore": null,
+                    "newCore": "経験がある",
                     "translationMn": "Би энэ цэцэрлэгт хүрээлэнд өмнө нь цэцэг үзэж байсан.",
                     "explanationMn": "たことがある болон 経験がある хоёулаа өнгөрсөн туршлагыг мэдээлдэг — 経験がある нь санааг \"туршлага\" гэдэг үгээр илэрхийлдэг."
                 }
@@ -1281,7 +1281,7 @@ const GRAMMAR_LEVELS = {
                     "translation": "I have come to this park before.",
                     "explanation": "たことがある and 経験がある both report a past experience — 経験がある just spells the idea out with the word 'experience.'",
                     "oldCore": "ことがある",
-                    "newCore": null,
+                    "newCore": "経験がある",
                     "translationMn": "Би энэ цэцэрлэгт хүрээлэнд өмнө нь ирж байсан.",
                     "explanationMn": "たことがある болон 経験がある хоёулаа өнгөрсөн туршлагыг мэдээлдэг — 経験がある нь санааг \"туршлага\" гэдэг үгээр илэрхийлдэг."
                 },
@@ -1394,7 +1394,7 @@ const GRAMMAR_LEVELS = {
                     "translation": "I have three years of experience working at this company.",
                     "explanation": "たことがある and 経験がある both report a past experience — 経験がある just spells the idea out with the word 'experience.'",
                     "oldCore": "ことがある",
-                    "newCore": null,
+                    "newCore": "経験がある",
                     "translationMn": "Би энэ компанид гурван жил ажилласан туршлагатай.",
                     "explanationMn": "たことがある болон 経験がある хоёулаа өнгөрсөн туршлагыг мэдээлдэг — 経験がある нь санааг \"туршлага\" гэдэг үгээр илэрхийлдэг."
                 },
@@ -1664,7 +1664,7 @@ const GRAMMAR_LEVELS = {
                     "translation": "I have work experience at this shop.",
                     "explanation": "たことがある and 経験がある both report a past experience — 経験がある just spells the idea out with the word 'experience.'",
                     "oldCore": "ことがある",
-                    "newCore": null,
+                    "newCore": "経験がある",
                     "translationMn": "Би энэ дэлгүүрт ажилласан туршлагатай.",
                     "explanationMn": "たことがある болон 経験がある хоёулаа өнгөрсөн туршлагыг мэдээлдэг — 経験がある нь санааг \"туршлага\" гэдэг үгээр илэрхийлдэг."
                 }
@@ -1789,7 +1789,7 @@ const GRAMMAR_LEVELS = {
                     "translation": "I have visited this park before.",
                     "explanation": "たことがある and 経験がある both report a past experience — 経験がある just spells the idea out with the word 'experience.'",
                     "oldCore": "ことがある",
-                    "newCore": null,
+                    "newCore": "経験がある",
                     "translationMn": "Би энэ цэцэрлэгт хүрээлэнд өмнө нь очиж байсан.",
                     "explanationMn": "たことがある болон 経験がある хоёулаа өнгөрсөн туршлагыг мэдээлдэг — 経験がある нь санааг \"туршлага\" гэдэг үгээр илэрхийлдэг."
                 }
@@ -1913,7 +1913,7 @@ const GRAMMAR_LEVELS = {
                     "translation": "I have shopping experience at this store.",
                     "explanation": "たことがある and 経験がある both report a past experience — 経験がある just spells the idea out with the word 'experience.'",
                     "oldCore": "ことがある",
-                    "newCore": null,
+                    "newCore": "経験がある",
                     "translationMn": "Би энэ дэлгүүрт худалдаа хийсэн туршлагатай.",
                     "explanationMn": "たことがある болон 経験がある хоёулаа өнгөрсөн туршлагыг мэдээлдэг — 経験がある нь санааг \"туршлага\" гэдэг үгээр илэрхийлдэг."
                 }
@@ -2038,7 +2038,7 @@ const GRAMMAR_LEVELS = {
                     "translation": "I have experience using this venue.",
                     "explanation": "たことがある and 経験がある both report a past experience — 経験がある just spells the idea out with the word 'experience.'",
                     "oldCore": "ことがある",
-                    "newCore": null,
+                    "newCore": "経験がある",
                     "translationMn": "Би энэ байрыг ашигласан туршлагатай.",
                     "explanationMn": "たことがある болон 経験がある хоёулаа өнгөрсөн туршлагыг мэдээлдэг — 経験がある нь санааг \"туршлага\" гэдэг үгээр илэрхийлдэг."
                 }
@@ -2162,7 +2162,7 @@ const GRAMMAR_LEVELS = {
                     "translation": "I have the experience of having studied at this university.",
                     "explanation": "たことがある and 経験がある both report a past experience — 経験がある just spells the idea out with the word 'experience.'",
                     "oldCore": "ことがある",
-                    "newCore": null,
+                    "newCore": "経験がある",
                     "translationMn": "Би энэ их сургуульд сурч байсан туршлагатай.",
                     "explanationMn": "たことがある болон 経験がある хоёулаа өнгөрсөн туршлагыг мэдээлдэг — 経験がある нь санааг \"туршлага\" гэдэг үгээр илэрхийлдэг."
                 }
@@ -2287,7 +2287,7 @@ const GRAMMAR_LEVELS = {
                     "translation": "I have research experience at this university.",
                     "explanation": "たことがある and 経験がある both report a past experience — 経験がある just spells the idea out with the word 'experience.'",
                     "oldCore": "ことがある",
-                    "newCore": null,
+                    "newCore": "経験がある",
                     "translationMn": "Би энэ их сургуульд судалгааны туршлагатай.",
                     "explanationMn": "たことがある болон 経験がある хоёулаа өнгөрсөн туршлагыг мэдээлдэг — 経験がある нь санааг \"туршлага\" гэдэг үгээр илэрхийлдэг."
                 }
@@ -2411,7 +2411,7 @@ const GRAMMAR_LEVELS = {
                     "translation": "I have experience running experiments at this research institute.",
                     "explanation": "たことがある and 経験がある both report a past experience — 経験がある just spells the idea out with the word 'experience.'",
                     "oldCore": "ことがある",
-                    "newCore": null,
+                    "newCore": "経験がある",
                     "translationMn": "Би энэ судалгааны хүрээлэнд туршилт хийсэн туршлагатай.",
                     "explanationMn": "たことがある болон 経験がある хоёулаа өнгөрсөн туршлагыг мэдээлдэг — 経験がある нь санааг \"туршлага\" гэдэг үгээр илэрхийлдэг."
                 }
@@ -2536,7 +2536,7 @@ const GRAMMAR_LEVELS = {
                     "translation": "I have experience receiving treatment at this hospital.",
                     "explanation": "たことがある and 経験がある both report a past experience — 経験がある just spells the idea out with the word 'experience.'",
                     "oldCore": "ことがある",
-                    "newCore": null,
+                    "newCore": "経験がある",
                     "translationMn": "Би энэ эмнэлэгт эмчилгээ авсан туршлагатай.",
                     "explanationMn": "たことがある болон 経験がある хоёулаа өнгөрсөн туршлагыг мэдээлдэг — 経験がある нь санааг \"туршлага\" гэдэг үгээр илэрхийлдэг."
                 }
@@ -2658,7 +2658,7 @@ const GRAMMAR_LEVELS = {
                     "translation": "I have the experience of having received guidance at this graduate school.",
                     "explanation": "たことがある and 経験がある both report a past experience — 経験がある just spells the idea out with the word 'experience.'",
                     "oldCore": "ことがある",
-                    "newCore": null,
+                    "newCore": "経験がある",
                     "translationMn": "Би энэ дээд сургуульд удирдамж авсан туршлагатай.",
                     "explanationMn": "たことがある болон 経験がある хоёулаа өнгөрсөн туршлагыг мэдээлдэг — 経験がある нь санааг \"туршлага\" гэдэг үгээр илэрхийлдэг."
                 }
