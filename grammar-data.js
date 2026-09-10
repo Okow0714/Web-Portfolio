@@ -1311,7 +1311,7 @@ const GRAMMAR_LEVELS = {
                     "translation": "I heard that company is going to go bankrupt next year.",
                     "explanation": "らしい and という話だ both relay something heard secondhand — という話だ just spells out 'that's the story I heard' more explicitly than らしい's single suffix.",
                     "oldCore": "らしい",
-                    "newCore": null,
+                    "newCore": "という話だ",
                     "translationMn": "Тэр компани ирэх жил дампуурна гэж сонссон.",
                     "explanationMn": "らしい болон という話だ хоёулаа хоёрдогчоор сонссон зүйлийг дамжуулдаг — という話だ нь らしい-ийн дан дагаваргаас илүү тодорхой \"тэр бол миний сонссон түүх\" гэж хэлдэг."
                 },
@@ -1384,7 +1384,8 @@ const GRAMMAR_LEVELS = {
                     "explanation": "そうにない and そうもない are both ways to say 'it doesn't look like X will happen' — they're used interchangeably with no real difference in meaning.",
                     "oldCore": null,
                     "translationMn": "Би завгүй тул тэр хуралд оролцож чадахгүй бололтой.",
-                    "explanationMn": "そうにない болон そうもない хоёулаа \"X болохгүй бололтой\" гэж хэлэх арга юм — утгын хувьд ялгаагүй сольж хэрэглэгддэг."
+                    "explanationMn": "そうにない болон そうもない хоёулаа \"X болохгүй бололтой\" гэж хэлэх арга юм — утгын хувьд ялгаагүй сольж хэрэглэгддэг.",
+                    "newCore": "そうもない"
                 },
                 {
                     "prefix": "この<ruby>会社<rp>(</rp><rt>かいしゃ</rt><rp>)</rp></ruby>で<ruby>三年間<rp>(</rp><rt>さんねんかん</rt><rp>)</rp></ruby><ruby>働<rp>(</rp><rt>はたら</rt><rp>)</rp></ruby>いた",
@@ -1654,7 +1655,8 @@ const GRAMMAR_LEVELS = {
                     "explanation": "そうにない and そうもない are both ways to say 'it doesn't look like X will happen' — they're used interchangeably with no real difference in meaning.",
                     "oldCore": null,
                     "translationMn": "Энэ бодлогыг бодож чадахгүй бололтой.",
-                    "explanationMn": "そうにない болон そうもない хоёулаа \"X болохгүй бололтой\" гэж хэлэх арга юм — утгын хувьд ялгаагүй сольж хэрэглэгддэг."
+                    "explanationMn": "そうにない болон そうもない хоёулаа \"X болохгүй бололтой\" гэж хэлэх арга юм — утгын хувьд ялгаагүй сольж хэрэглэгддэг.",
+                    "newCore": "そうもない"
                 },
                 {
                     "prefix": "この<ruby>店<rp>(</rp><rt>みせ</rt><rp>)</rp></ruby>で<ruby>働<rp>(</rp><rt>はたら</rt><rp>)</rp></ruby>いた",
@@ -1683,7 +1685,8 @@ const GRAMMAR_LEVELS = {
                     "explanation": "と評判だ and という話だ both relay a reputation or thing people say — という話だ states it a bit more plainly as 'that's what I've heard,' but the meaning lands the same.",
                     "oldCore": null,
                     "translationMn": "Энэ рестораны хоол амттай гэдгээрээ алдартай.",
-                    "explanationMn": "と評判だ болон という話だ хоёулаа нэр хүнд буюу хүмүүсийн ярьдаг зүйлийг дамжуулдаг — という話だ нь \"тэр бол миний сонссон зүйл\" гэж арай илүү энгийнээр хэлдэг ч утга нь ижил байдаг."
+                    "explanationMn": "と評判だ болон という話だ хоёулаа нэр хүнд буюу хүмүүсийн ярьдаг зүйлийг дамжуулдаг — という話だ нь \"тэр бол миний сонссон зүйл\" гэж арай илүү энгийнээр хэлдэг ч утга нь ижил байдаг.",
+                    "newCore": "という話だ"
                 },
                 {
                     "prefix": "この<ruby>説明書<rp>(</rp><rt>せつめいしょ</rt><rp>)</rp></ruby>に<ruby>書<rp>(</rp><rt>か</rt><rp>)</rp></ruby>いてある",
@@ -2056,7 +2059,7 @@ const GRAMMAR_LEVELS = {
                     "translation": "I heard this medicine has strong side effects.",
                     "explanation": "そうだ (hearsay) and という話だ both relay something heard secondhand — という話だ just spells out 'that's the story I heard' a bit more explicitly.",
                     "oldCore": "そう",
-                    "newCore": null,
+                    "newCore": "という話だ",
                     "translationMn": "Энэ эм хүчтэй гаж нөлөөтэй гэж сонссон.",
                     "explanationMn": "そうだ (сонсоод мэдсэн) болон という話だ хоёулаа хоёрдогчоор сонссон зүйлийг дамжуулдаг — という話だ нь \"тэр бол миний сонссон түүх\" гэдгийг арай илүү тодорхой хэлдэг."
                 },
