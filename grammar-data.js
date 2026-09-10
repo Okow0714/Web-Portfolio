@@ -395,7 +395,7 @@ const GRAMMAR_LEVELS = {
                     "translation": "I have to turn in the report by tomorrow.",
                     "explanation": "なければならない and なくてはならない are both strict-obligation forms of the same construction, just built on slightly different negative bases.",
                     "oldCore": "なければならない",
-                    "newCore": null,
+                    "newCore": "なくてはならない",
                     "translationMn": "Тайланг маргаашийн дотор өгөх ёстой.",
                     "explanationMn": "なければならない болон なくてはならない хоёулаа адилхан хатуу үүргийн хэлбэр бөгөөд зөвхөн бага зэрэг өөр үгүйсгэх суурин дээр бүтдэг."
                 },
@@ -497,7 +497,7 @@ const GRAMMAR_LEVELS = {
                     "translation": "Please have read this document before the meeting.",
                     "explanation": "ておく and casual spoken ている can both point at finishing a preparatory action ahead of time, though ておく is the clearer, more standard way to say it.",
                     "oldCore": "ておく",
-                    "newCore": null,
+                    "newCore": "ている",
                     "translationMn": "Хурлын өмнө энэ баримт бичгийг уншиж байгаарай.",
                     "explanationMn": "ておく болон ярианы ている хоёулаа урьдчилан бэлтгэх үйлдлийг дуусгасныг заах боломжтой ч ておく нь илүү тодорхой, стандарт хэллэг юм."
                 },
@@ -622,7 +622,7 @@ const GRAMMAR_LEVELS = {
                     "translation": "This fish has a lot of bones, so it's hard to eat.",
                     "explanation": "にくい and づらい both mark something as physically or practically hard to do — づらい just leans slightly more toward personal difficulty than にくい's more general 'hard to do.'",
                     "oldCore": "にくい",
-                    "newCore": null,
+                    "newCore": "づらい",
                     "translationMn": "Энэ загас яс ихтэй тул идэхэд хэцүү.",
                     "explanationMn": "にくい болон づらい хоёулаа биет буюу практикт хийхэд хэцүү зүйлийг заадаг — づらい нь にくい-ийн ерөнхий \"хийхэд хэцүү\"-гээс арай илүү хувийн бэрхшээлд дөхдөг."
                 },
@@ -758,7 +758,7 @@ const GRAMMAR_LEVELS = {
                     "translation": "I have to bring my passport.",
                     "explanation": "なければならない and なくてはならない are both strict-obligation forms of the same construction, just built on slightly different negative bases.",
                     "oldCore": "なければならない",
-                    "newCore": null,
+                    "newCore": "なくてはならない",
                     "translationMn": "Би паспортоо авч ирэх ёстой.",
                     "explanationMn": "なければならない болон なくてはならない хоёулаа адилхан хатуу үүргийн хэлбэр бөгөөд зөвхөн бага зэрэг өөр үгүйсгэх суурин дээр бүтдэг."
                 },
@@ -871,7 +871,7 @@ const GRAMMAR_LEVELS = {
                     "translation": "This meat is too tough, so it's hard to eat.",
                     "explanation": "にくい and づらい both mark something as hard to do — づらい just leans slightly more toward personal difficulty than にくい's more general 'hard to do.'",
                     "oldCore": "にくい",
-                    "newCore": null,
+                    "newCore": "づらい",
                     "translationMn": "Энэ мах хэтэрхий хатуу тул идэхэд хэцүү.",
                     "explanationMn": "にくい болон づらい хоёулаа хийхэд хэцүү зүйлийг заадаг — づらい нь にくい-ийн ерөнхий \"хийхэд хэцүү\"-гээс арай илүү хувийн бэрхшээлд дөхдөг."
                 },
@@ -971,7 +971,7 @@ const GRAMMAR_LEVELS = {
                     "translation": "This explanation alone is hard to understand.",
                     "explanation": "にくい and づらい both mark something as hard to do — づらい just leans slightly more toward the listener's personal difficulty grasping it.",
                     "oldCore": "にくい",
-                    "newCore": null,
+                    "newCore": "づらい",
                     "translationMn": "Зөвхөн энэ тайлбараар ойлгоход хэцүү.",
                     "explanationMn": "にくい болон づらい хоёулаа хийхэд хэцүү зүйлийг заадаг — づらい нь сонсогчийн ойлгоход учирсан хувийн бэрхшээлд арай илүү дөхдөг."
                 },
