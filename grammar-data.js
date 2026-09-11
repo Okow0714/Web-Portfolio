@@ -474,7 +474,7 @@ const GRAMMAR_LEVELS = {
                     "translation": "This shop's ramen is very easy to eat.",
                     "explanation": "食べやすい (easy to eat) and 食べにくくない (not hard to eat) end up describing the same thing from opposite directions, so in a plain statement like this they land on the same meaning.",
                     "oldCore": "やすい",
-                    "newCore": null,
+                    "newCore": "にくくない",
                     "translationMn": "Энэ дэлгүүрийн рамен идэхэд маш амархан.",
                     "explanationMn": "食べやすい (идэхэд амархан) болон 食べにくくない (идэхэд хэцүү биш) хоёулаа эсрэг талаас нь ижил зүйлийг тодорхойлдог тул ийм энгийн өгүүлбэрт ижил утгатай болдог."
                 },
@@ -558,7 +558,7 @@ const GRAMMAR_LEVELS = {
             "sentences": [
                 {
                     "prefix": "<ruby>部屋<rp>(</rp><rt>へや</rt><rp>)</rp></ruby>を<ruby>出<rp>(</rp><rt>で</rt><rp>)</rp></ruby>る",
-                    "old": "まえに",
+                    "old": "まえに<ruby>必<rp>(</rp><rt>かなら</rt><rp>)</rp></ruby>ず<ruby>電気<rp>(</rp><rt>でんき</rt><rp>)</rp></ruby>を<ruby>消<rp>(</rp><rt>け</rt><rp>)</rp></ruby>して",
                     "new": "<ruby>前<rp>(</rp><rt>まえ</rt><rp>)</rp></ruby>に<ruby>必<rp>(</rp><rt>かなら</rt><rp>)</rp></ruby>ず<ruby>電気<rp>(</rp><rt>でんき</rt><rp>)</rp></ruby>を<ruby>消<rp>(</rp><rt>け</rt><rp>)</rp></ruby>して",
                     "suffix": "ください。",
                     "translation": "Before leaving the room, please always turn off the lights.",
@@ -659,7 +659,8 @@ const GRAMMAR_LEVELS = {
                     "explanation": "だけ (just/only) and だけであって both narrow a statement down to a single fact — だけであって just adds a formal-sounding clause connector on top of the same 'only' meaning.",
                     "oldCore": null,
                     "translationMn": "Энэ ресторан зүгээр л үнэтэй, өөр юу ч биш.",
-                    "explanationMn": "だけ (зөвхөн) болон だけであって хоёулаа мэдэгдлийг нэг баримт дээр төвлөрүүлдэг — だけであって нь ижил \"зөвхөн\"-гийн утга дээр албан ёсны сонстох холбогч нэмдэг."
+                    "explanationMn": "だけ (зөвхөн) болон だけであって хоёулаа мэдэгдлийг нэг баримт дээр төвлөрүүлдэг — だけであって нь ижил \"зөвхөн\"-гийн утга дээр албан ёсны сонстох холбогч нэмдэг.",
+                    "newCore": "であって"
                 },
                 {
                     "prefix": "この<ruby>説明書<rp>(</rp><rt>せつめいしょ</rt><rp>)</rp></ruby>に<ruby>書<rp>(</rp><rt>か</rt><rp>)</rp></ruby>いてある",
@@ -838,7 +839,8 @@ const GRAMMAR_LEVELS = {
                     "explanation": "てください and てもらえますか are both ways to make a request — てもらえますか just softens it into a question, which reads more polite than a direct てください.",
                     "oldCore": null,
                     "translationMn": "Энэ цаасан дээр нэрээ урьдчилан бичээрэй.",
-                    "explanationMn": "てください болон てもらえますか хоёулаа хүсэлт гаргах арга юм — てもらえますか нь асуулт болгон зөөлрүүлж, шууд てください-ээс илүү эелдэг сонстог."
+                    "explanationMn": "てください болон てもらえますか хоёулаа хүсэлт гаргах арга юм — てもらえますか нь асуулт болгон зөөлрүүлж, шууд てください-ээс илүү эелдэг сонстог.",
+                    "newCore": "てもらえますか"
                 },
                 {
                     "prefix": "<ruby>子供<rp>(</rp><rt>こども</rt><rp>)</rp></ruby>だけで<ruby>川<rp>(</rp><rt>かわ</rt><rp>)</rp></ruby>に",
@@ -884,7 +886,7 @@ const GRAMMAR_LEVELS = {
                     "translation": "I ended up falling asleep with the light left off.",
                     "explanation": "まま and 状態で both describe an unchanged state carried into the next action — 状態で just says 'state' outright instead of relying on まま's grammar alone.",
                     "oldCore": "まま",
-                    "newCore": null,
+                    "newCore": "状態で",
                     "translationMn": "Гэрлээ унтраасан хэвээр нойрсчихлоо.",
                     "explanationMn": "まま болон 状態で хоёулаа дараагийн үйлдэл рүү дамжсан өөрчлөгдөөгүй байдлыг заадаг — 状態で нь まま-ийн дүрмээс дангаараа биш \"байдал\" гэдгийг шууд хэлдэг."
                 },
@@ -1010,7 +1012,8 @@ const GRAMMAR_LEVELS = {
                     "explanation": "てもらえますか and ていただけますか both politely ask someone to do something — ていただけますか is just the more formal, humble version of the same request.",
                     "oldCore": null,
                     "translationMn": "Энэ ачааг надад зөөж өгөх боломжтой юу?",
-                    "explanationMn": "てもらえますか болон ていただけますか хоёулаа хэн нэгнээс эелдэгээр хийхийг хүсдэг — ていただけますか нь ижил хүсэлтийн илүү албан ёсны, даруу хэлбэр юм."
+                    "explanationMn": "てもらえますか болон ていただけますか хоёулаа хэн нэгнээс эелдэгээр хийхийг хүсдэг — ていただけますか нь ижил хүсэлтийн илүү албан ёсны, даруу хэлбэр юм.",
+                    "newCore": "ていただけますか"
                 },
                 {
                     "prefix": "この<ruby>問題<rp>(</rp><rt>もんだい</rt><rp>)</rp></ruby>は<ruby>複雑<rp>(</rp><rt>ふくざつ</rt><rp>)</rp></ruby>",
@@ -1104,7 +1107,7 @@ const GRAMMAR_LEVELS = {
                 },
                 {
                     "prefix": "<ruby>友達<rp>(</rp><rt>ともだち</rt><rp>)</rp></ruby>が<ruby>来<rp>(</rp><rt>く</rt><rp>)</rp></ruby>る",
-                    "old": "まえに",
+                    "old": "まえに<ruby>部屋<rp>(</rp><rt>へや</rt><rp>)</rp></ruby>を<ruby>片付<rp>(</rp><rt>かたづ</rt><rp>)</rp></ruby>けて",
                     "new": "<ruby>前<rp>(</rp><rt>まえ</rt><rp>)</rp></ruby>に<ruby>部屋<rp>(</rp><rt>へや</rt><rp>)</rp></ruby>を<ruby>片付<rp>(</rp><rt>かたづ</rt><rp>)</rp></ruby>けて",
                     "suffix": "おきます。",
                     "translation": "Before my friend comes, I'll tidy up the room.",
@@ -1295,7 +1298,7 @@ const GRAMMAR_LEVELS = {
                     "translation": "The sky has gotten dark. It looks like it's about to rain soon.",
                     "explanation": "This keeps the same appearance-そう pattern (based on how the sky looks right now) either way — the second version just names it as 'weather that looks like rain' instead of stopping at そうです.",
                     "oldCore": "そう",
-                    "newCore": null,
+                    "newCore": "そうな",
                     "translationMn": "Тэнгэр харанхуйлж эхэллээ. Удахгүй бороо орох бололтой.",
                     "explanationMn": "Энэ нь ижил харагдах байдлын そう загварыг (одоо тэнгэрийн харагдах байдал дээр суурилсан) хадгалж байна — хоёр дахь хувилбар зөвхөн そうです дээр зогсохгүй \"бороо орох мэт цаг агаар\" гэж нэрлэдэг."
                 }
@@ -1476,7 +1479,8 @@ const GRAMMAR_LEVELS = {
                     "explanation": "限り and 範囲では both limit a claim to what's actually known or visible — 範囲では spells out 'within this range' more plainly than 限り's single grammar word.",
                     "oldCore": null,
                     "translationMn": "Энэ баримт бичгээс харахад борлуулалт сайн явж байна.",
-                    "explanationMn": "限り болон 範囲では хоёулаа мэдэгдлийг бодитоор мэдэгдэж буй, харагдаж буй зүйлээр хязгаарладаг — 範囲では нь 限り-ийн дан дүрмийн үгээс илүү тодорхой \"энэ хүрээнд\" гэж хэлдэг."
+                    "explanationMn": "限り болон 範囲では хоёулаа мэдэгдлийг бодитоор мэдэгдэж буй, харагдаж буй зүйлээр хязгаарладаг — 範囲では нь 限り-ийн дан дүрмийн үгээс илүү тодорхой \"энэ хүрээнд\" гэж хэлдэг.",
+                    "newCore": "範囲では"
                 },
                 {
                     "prefix": "<ruby>今回<rp>(</rp><rt>こんかい</rt><rp>)</rp></ruby>のプロジェクトが<ruby>成功<rp>(</rp><rt>せいこう</rt><rp>)</rp></ruby>した",
@@ -1577,7 +1581,8 @@ const GRAMMAR_LEVELS = {
                     "explanation": "結果 and ところ can both mark 'as a result of doing X, Y happened' — ところ just states the discovery a little more plainly, without 結果's explicit 'as a result' framing.",
                     "oldCore": null,
                     "translationMn": "Энэ баримт бичгийг уншсаны үр дүнд асуудлыг олж мэдлээ.",
-                    "explanationMn": "結果 болон ところ хоёулаа \"X хийсний үр дүнд Y болов\"-ыг заадаг — ところ нь 結果-ийн тодорхой \"үр дүнд\" гэсэн өнгөгүйгээр нээлтийг илүү энгийнээр илэрхийлдэг."
+                    "explanationMn": "結果 болон ところ хоёулаа \"X хийсний үр дүнд Y болов\"-ыг заадаг — ところ нь 結果-ийн тодорхой \"үр дүнд\" гэсэн өнгөгүйгээр нээлтийг илүү энгийнээр илэрхийлдэг.",
+                    "newCore": "ところ"
                 },
                 {
                     "prefix": "この<ruby>店<rp>(</rp><rt>みせ</rt><rp>)</rp></ruby>は<ruby>値段<rp>(</rp><rt>ねだん</rt><rp>)</rp></ruby>が<ruby>高<rp>(</rp><rt>たか</rt><rp>)</rp></ruby>い",
@@ -1600,7 +1605,8 @@ const GRAMMAR_LEVELS = {
                     "explanation": "に関係なく and に左右されず both express 'regardless of X' — 左右されず leans specifically on 'not being influenced,' which fits opinions swaying someone's choices.",
                     "oldCore": null,
                     "translationMn": "Тэр эргэн тойрных нь санал бодолд автахгүйгээр өөрийн замаар үргэлжлүүлсээр байв.",
-                    "explanationMn": "に関係なく болон に左右されず хоёулаа \"X-ээс үл хамааран\"-ыг илэрхийлдэг — 左右されず нь тодорхойлбол \"нөлөөлөгдөхгүй\"-д дөхдөг бөгөөд энэ нь хэн нэгний сонголтыг хазайлгах саналтай сайн тохирдог."
+                    "explanationMn": "に関係なく болон に左右されず хоёулаа \"X-ээс үл хамааран\"-ыг илэрхийлдэг — 左右されず нь тодорхойлбол \"нөлөөлөгдөхгүй\"-д дөхдөг бөгөөд энэ нь хэн нэгний сонголтыг хазайлгах саналтай сайн тохирдог.",
+                    "newCore": "左右されず"
                 },
                 {
                     "prefix": "<ruby>台風<rp>(</rp><rt>たいふう</rt><rp>)</rp></ruby>が<ruby>近<rp>(</rp><rt>ちか</rt><rp>)</rp></ruby>づいている",
@@ -1976,7 +1982,7 @@ const GRAMMAR_LEVELS = {
                     "translation": "Even growing older, that person's energy remains unchanged.",
                     "explanation": "ままだ and 状態が続いている both describe an unchanged state continuing over time — 状態が続いている just names 'state' outright instead of relying on まま's grammar alone.",
                     "oldCore": "まま",
-                    "newCore": null,
+                    "newCore": "状態が続いている",
                     "translationMn": "Насаа ахисан ч гэсэн тэр хүний эрч хүч өөрчлөгдөөгүй хэвээр байна.",
                     "explanationMn": "ままだ болон 状態が続いている хоёулаа цаг хугацааны туршид үргэлжилж буй өөрчлөгдөөгүй байдлыг заадаг — 状態が続いている нь まま-ийн дүрмээс дангаараа биш \"байдал\"-ыг шууд нэрлэдэг."
                 },
@@ -2103,7 +2109,8 @@ const GRAMMAR_LEVELS = {
                     "explanation": "かぎり and plain と can both introduce 'based on/when you look at X' before a conclusion — と is the more neutral, everyday way to make the same kind of connection.",
                     "oldCore": null,
                     "translationMn": "Энэ баримт бичгийг харахад энэ төлөвлөгөөнд асуудал байхгүй бололтой.",
-                    "explanationMn": "かぎり болон энгийн と хоёулаа дүгнэлтийн өмнө \"X-ийг харахад/дэнд суурилан\"-ыг танилцуулж болно — と нь ижил төрлийн холболтыг хийх илүү төвийг сахисан, өдөр тутмын арга юм."
+                    "explanationMn": "かぎり болон энгийн と хоёулаа дүгнэлтийн өмнө \"X-ийг харахад/дэнд суурилан\"-ыг танилцуулж болно — と нь ижил төрлийн холболтыг хийх илүү төвийг сахисан, өдөр тутмын арга юм.",
+                    "newCore": "と"
                 },
                 {
                     "prefix": "この<ruby>店<rp>(</rp><rt>みせ</rt><rp>)</rp></ruby>で<ruby>働<rp>(</rp><rt>はたら</rt><rp>)</rp></ruby>く",
@@ -2389,7 +2396,8 @@ const GRAMMAR_LEVELS = {
                     "explanation": "はずれている and かけ離れている both describe something well outside the norm — かけ離れている just puts extra emphasis on the distance involved.",
                     "oldCore": null,
                     "translationMn": "Тэр үйлдэл энгийн ойлголтоос хэтэрхий хол байна.",
-                    "explanationMn": "はずれている болон かけ離れている хоёулаа ердийн хэмжээнээс хол зүйлийг тодорхойлдог — かけ離れている нь холын зайг илүү онцлон тэмдэглэдэг."
+                    "explanationMn": "はずれている болон かけ離れている хоёулаа ердийн хэмжээнээс хол зүйлийг тодорхойлдог — かけ離れている нь холын зайг илүү онцлон тэмдэглэдэг.",
+                    "newCore": "かけ離れる"
                 },
                 {
                     "prefix": "この<ruby>選手<rp>(</rp><rt>せんしゅ</rt><rp>)</rp></ruby>は<ruby>年齢<rp>(</rp><rt>ねんれい</rt><rp>)</rp></ruby>が<ruby>高<rp>(</rp><rt>たか</rt><rp>)</rp></ruby>い",
@@ -2502,7 +2510,8 @@ const GRAMMAR_LEVELS = {
                     "explanation": "かけ離れている and はずれている both describe something well outside the norm — はずれている is the plainer, everyday way to put it, without かけ離れている’s added stress on how wide the gap is.",
                     "oldCore": null,
                     "translationMn": "Тэр мэдэгдэл үнэн баримтаас хэтэрхий хол байна.",
-                    "explanationMn": "かけ離れている болон はずれている хоёулаа ердийн хэмжээнээс гажсан зүйлийг тодорхойлдог — はずれている нь かけ離れている шиг зөрүүний хэмжээг онцолдоггүй, илүү энгийн өдөр тутмын хэлбэр юм."
+                    "explanationMn": "かけ離れている болон はずれている хоёулаа ердийн хэмжээнээс гажсан зүйлийг тодорхойлдог — はずれている нь かけ離れている шиг зөрүүний хэмжээг онцолдоггүй, илүү энгийн өдөр тутмын хэлбэр юм.",
+                    "newCore": "はずれる"
                 },
                 {
                     "prefix": "この<ruby>資料<rp>(</rp><rt>しりょう</rt><rp>)</rp></ruby>を<ruby>金曜日<rp>(</rp><rt>きんようび</rt><rp>)</rp></ruby>までに",
@@ -2639,7 +2648,8 @@ const GRAMMAR_LEVELS = {
                     "explanation": "はずれている and かけ離れている both describe something well outside the norm — かけ離れている just puts extra emphasis on the distance involved.",
                     "oldCore": null,
                     "translationMn": "Тэр тайлбар үнэн баримтаас хэтэрхий хол байна.",
-                    "explanationMn": "はずれている болон かけ離れている хоёулаа ердийн хэмжээнээс хол зүйлийг тодорхойлдог — かけ離れている нь холын зайг илүү онцлон тэмдэглэдэг."
+                    "explanationMn": "はずれている болон かけ離れている хоёулаа ердийн хэмжээнээс хол зүйлийг тодорхойлдог — かけ離れている нь холын зайг илүү онцлон тэмдэглэдэг.",
+                    "newCore": "かけ離れる"
                 },
                 {
                     "prefix": "この<ruby>建築家<rp>(</rp><rt>けんちくか</rt><rp>)</rp></ruby>は<ruby>経験<rp>(</rp><rt>けいけん</rt><rp>)</rp></ruby>が",
@@ -2939,7 +2949,8 @@ const GRAMMAR_LEVELS = {
                     "translation": "With the deadline closing in, this is no time to be traveling.",
                     "explanation": "どころではない and 場合ではない both reject an activity as impossible given the current situation, but どころではない attaches directly to a noun while 場合ではない needs a verb clause describing the activity.",
                     "translationMn": "Эцсийн хугацаа ойртож байгаа энэ үед аялах цаг биш.",
-                    "explanationMn": "どころではない болон 場合ではない хоёулаа одоогийн нөхцөл байдлыг харгалзан үйл ажиллагааг боломжгүй гэж үгүйсгэдэг ч どころではない нь нэр үгэнд шууд залгагддаг бол 場合ではない нь үйл ажиллагааг тодорхойлсон үйл үгийн өгүүлбэр шаарддаг."
+                    "explanationMn": "どころではない болон 場合ではない хоёулаа одоогийн нөхцөл байдлыг харгалзан үйл ажиллагааг боломжгүй гэж үгүйсгэдэг ч どころではない нь нэр үгэнд шууд залгагддаг бол 場合ではない нь үйл ажиллагааг тодорхойлсон үйл үгийн өгүүлбэр шаарддаг.",
+                    "newCore": "ている場合ではない"
                 },
                 {
                     "prefix": "<ruby>毎日<rp>(</rp><rt>まいにち</rt><rp>)</rp></ruby>",
@@ -2950,7 +2961,8 @@ const GRAMMAR_LEVELS = {
                     "explanation": "言わないまでも and とはいかなくても both concede that the ideal level isn't required and settle for a lesser but still meaningful degree; ないまでも is the underlying grammar point, shown here in its common とは言わないまでも form.",
                     "oldCore": "ないまでも",
                     "translationMn": "Өдөр бүр биш ч гэсэн долоо хоногт наад зах нь гурван удаа дасгал хийх хэрэгтэй.",
-                    "explanationMn": "言わないまでも болон とはいかなくても хоёулаа хамгийн тохиромжтой түвшин шаардлагагүй гэдгийг хүлээн зөвшөөрч, бага боловч мэдээж утга учиртай хэмжээнд сэтгэл ханадаг; ないまでも нь суурь дүрмийн цэг бөгөөд энд ердийн とは言わないまでも хэлбэрээр харуулсан."
+                    "explanationMn": "言わないまでも болон とはいかなくても хоёулаа хамгийн тохиромжтой түвшин шаардлагагүй гэдгийг хүлээн зөвшөөрч, бага боловч мэдээж утга учиртай хэмжээнд сэтгэл ханадаг; ないまでも нь суурь дүрмийн цэг бөгөөд энд ердийн とは言わないまでも хэлбэрээр харуулсан.",
+                    "newCore": "とはいかなくても"
                 },
                 {
                     "prefix": "<ruby>完璧<rp>(</rp><rt>かんぺき</rt><rp>)</rp></ruby>ではない",
@@ -3079,7 +3091,8 @@ const GRAMMAR_LEVELS = {
                     "translation": "There's no need to even mention such a thing.",
                     "explanation": "までもない and 必要はない both say an action isn't necessary given how obvious or minor it is, but までもない specifically implies the action would be excessive, not just optional.",
                     "translationMn": "Ийм зүйлийг дурдах ч хэрэггүй.",
-                    "explanationMn": "までもない болон 必要はない хоёулаа үйлдэл хэр тодорхой буюу бага ач холбогдолтойг харгалзан шаардлагагүй гэдгийг хэлдэг ч までもない нь тухайлбал үйлдэл нь заавал сонголт биш, хэтрүүлэг байх болно гэдгийг илэрхийлдэг."
+                    "explanationMn": "までもない болон 必要はない хоёулаа үйлдэл хэр тодорхой буюу бага ач холбогдолтойг харгалзан шаардлагагүй гэдгийг хэлдэг ч までもない нь тухайлбал үйлдэл нь заавал сонголт биш, хэтрүүлэг байх болно гэдгийг илэрхийлдэг.",
+                    "newCore": "必要はない"
                 },
                 {
                     "prefix": "<ruby>周囲<rp>(</rp><rt>しゅうい</rt><rp>)</rp></ruby>の<ruby>協力<rp>(</rp><rt>きょうりょく</rt><rp>)</rp></ruby>",
@@ -3089,7 +3102,8 @@ const GRAMMAR_LEVELS = {
                     "translation": "Without everyone's cooperation, this project would not have succeeded.",
                     "explanation": "なくして and がなければ both state that without a crucial factor an outcome would be impossible, but なくして is a formal, literary way to say \"without.\"",
                     "translationMn": "Бүгдийн хамтын хүчингүйгээр энэ төсөл амжилттай болохгүй байсан.",
-                    "explanationMn": "なくして болон がなければ хоёулаа гол хүчин зүйлгүйгээр үр дүн боломжгүй байх болно гэдгийг мэдэгддэг ч なくして нь \"-гүйгээр\" гэдгийг хэлэх албан ёсны, утга зохиолын арга юм."
+                    "explanationMn": "なくして болон がなければ хоёулаа гол хүчин зүйлгүйгээр үр дүн боломжгүй байх болно гэдгийг мэдэгддэг ч なくして нь \"-гүйгээр\" гэдгийг хэлэх албан ёсны, утга зохиолын арга юм.",
+                    "newCore": "なければ"
                 },
                 {
                     "prefix": "<ruby>結果<rp>(</rp><rt>けっか</rt><rp>)</rp></ruby>は<ruby>本人<rp>(</rp><rt>ほんにん</rt><rp>)</rp></ruby>の<ruby>努力<rp>(</rp><rt>どりょく</rt><rp>)</rp></ruby>",
@@ -3396,7 +3410,8 @@ const GRAMMAR_LEVELS = {
                     "explanation": "あっての and のおかげで both credit something's very existence or success to an essential factor, but あっての is a more compact, emphatic noun-modifying pattern meaning \"only possible thanks to.\"",
                     "oldCore": "あっての",
                     "translationMn": "Энэ компани зөвхөн ажилтнуудынхаа ачаар оршин тогтнож байна.",
-                    "explanationMn": "あっての болон のおかげで хоёулаа ямар нэг зүйлийн оршин тогтнол буюу амжилтыг чухал хүчин зүйлд тооцдог ч あっての нь \"зөвхөн ...-ийн ачаар л боломжтой\" гэсэн илүү товч, онцолсон нэр үг өөрчлөгч загвар юм."
+                    "explanationMn": "あっての болон のおかげで хоёулаа ямар нэг зүйлийн оршин тогтнол буюу амжилтыг чухал хүчин зүйлд тооцдог ч あっての нь \"зөвхөн ...-ийн ачаар л боломжтой\" гэсэн илүү товч, онцолсон нэр үг өөрчлөгч загвар юм.",
+                    "newCore": "のおかげで"
                 },
                 {
                     "prefix": "<ruby>散歩<rp>(</rp><rt>さんぽ</rt><rp>)</rp></ruby>",
@@ -3440,7 +3455,8 @@ const GRAMMAR_LEVELS = {
                     "translation": "As if to say \"just leave already,\" he pointed at the door.",
                     "explanation": "とばかりに and というように both describe a wordless action that strongly implies an unspoken message, with とばかりに carrying a more vivid, almost theatrical nuance.",
                     "translationMn": "\"Гарчих\" гэж хэлэх мэт тэр хаалга руу заасан.",
-                    "explanationMn": "とばかりに болон というように хоёулаа хэлээгүй мэдээллийг хүчтэй агуулсан үггүй үйлдлийг тодорхойлдог бөгөөд とばかりに нь илүү тод, театрлаг нюансыг агуулдаг."
+                    "explanationMn": "とばかりに болон というように хоёулаа хэлээгүй мэдээллийг хүчтэй агуулсан үггүй үйлдлийг тодорхойлдог бөгөөд とばかりに нь илүү тод, театрлаг нюансыг агуулдаг.",
+                    "newCore": "というように"
                 },
                 {
                     "prefix": "<ruby>天気<rp>(</rp><rt>てんき</rt><rp>)</rp></ruby>が<ruby>良<rp>(</rp><rt>よ</rt><rp>)</rp></ruby>かった",
@@ -3611,7 +3627,8 @@ const GRAMMAR_LEVELS = {
                     "translation": "I only feel grateful for his proposal, not dissatisfied in the least.",
                     "explanation": "〜こそすれ〜ない and 〜はしても〜ない both flatly deny a negative reaction while admitting only its positive opposite, but こそすれ is a fixed literary pattern reserved for firmly emphatic denials.",
                     "translationMn": "Түүний саналд би талархах л сэтгэлтэй байна, огт сэтгэл дундуур байхгүй.",
-                    "explanationMn": "〜こそすれ〜ない болон 〜はしても〜ない хоёулаа сөрөг урвалыг тэс үгүйсгэж, зөвхөн эсрэг эерэг талыг хүлээн зөвшөөрдөг ч こそすれ нь хатуу, онцолсон үгүйсгэлд зориулсан тогтмол утга зохиолын загвар юм."
+                    "explanationMn": "〜こそすれ〜ない болон 〜はしても〜ない хоёулаа сөрөг урвалыг тэс үгүйсгэж, зөвхөн эсрэг эерэг талыг хүлээн зөвшөөрдөг ч こそすれ нь хатуу, онцолсон үгүйсгэлд зориулсан тогтмол утга зохиолын загвар юм.",
+                    "newCore": "はしても"
                 }
             ]
         },
@@ -4262,7 +4279,8 @@ const GRAMMAR_LEVELS = {
                     "explanation": "を無視した and をふまえていない both describe a policy as disconnected from the actual situation — 無視した is a more direct 'ignored,' while ふまえていない frames it as 'not taking into account,' but both land on the same criticism here.",
                     "oldCore": null,
                     "translationMn": "Энэ бодлого бодит нөхцөл байдлыг үл тоомсорлосон зүйл юм.",
-                    "explanationMn": "を無視した болон をふまえていない хоёулаа бодлогыг бодит нөхцөл байдалтай тасарсан гэж тодорхойлдог — 無視した нь илүү шууд \"тоохгүй байсан\" бол ふまえていない нь \"харгалзаагүй\" мэт харуулдаг, гэхдээ хоёул энд ижил шүүмжлэлд хүрдэг."
+                    "explanationMn": "を無視した болон をふまえていない хоёулаа бодлогыг бодит нөхцөл байдалтай тасарсан гэж тодорхойлдог — 無視した нь илүү шууд \"тоохгүй байсан\" бол ふまえていない нь \"харгалзаагүй\" мэт харуулдаг, гэхдээ хоёул энд ижил шүүмжлэлд хүрдэг.",
+                    "newCore": "ふまえる"
                 },
                 {
                     "prefix": "この<ruby>制度<rp>(</rp><rt>せいど</rt><rp>)</rp></ruby>の<ruby>導入<rp>(</rp><rt>どうにゅう</rt><rp>)</rp></ruby>を",
@@ -4296,7 +4314,8 @@ const GRAMMAR_LEVELS = {
                     "explanation": "においても and にしても can both mean 'even in terms of X' when adding another point of praise — they're close, standard partners for extending an evaluation to a second dimension.",
                     "oldCore": null,
                     "translationMn": "Энэ компанийн бүтээгдэхүүн аюулгүй байдлаараа төдийгүй загварын гоо үзэсгэлэнгээрээ ч өндөр үнэлэгддэг.",
-                    "explanationMn": "においても болон にしても хоёулаа өөр нэг магтаалын санааг нэмэхдээ \"X-ийн хувьд ч гэсэн\" гэсэн утгатай байж болно — эдгээр нь үнэлгээг хоёр дахь хэмжээст өргөжүүлэх ойролцоо, стандарт хос юм."
+                    "explanationMn": "においても болон にしても хоёулаа өөр нэг магтаалын санааг нэмэхдээ \"X-ийн хувьд ч гэсэн\" гэсэн утгатай байж болно — эдгээр нь үнэлгээг хоёр дахь хэмжээст өргөжүүлэх ойролцоо, стандарт хос юм.",
+                    "newCore": "にしても"
                 },
                 {
                     "prefix": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>周囲<rp>(</rp><rt>しゅうい</rt><rp>)</rp></ruby>の<ruby>心配<rp>(</rp><rt>しんぱい</rt><rp>)</rp></ruby>を",
@@ -4306,7 +4325,7 @@ const GRAMMAR_LEVELS = {
                     "translation": "Paying no mind to the concern around him, he headed off to climb the mountain alone.",
                     "explanation": "をよそに and を気にせず both describe disregarding something others care about — をよそに carries a slightly more literary, pointed tone, but both land on the same 'ignoring the worry' meaning here.",
                     "oldCore": "をよそに",
-                    "newCore": null,
+                    "newCore": "気にせず",
                     "translationMn": "Эргэн тойрны түгшүүрийг тоохгүйгээр тэр ганцаараа уул авахаар явсан.",
                     "explanationMn": "をよそに болон を気にせず хоёулаа бусад санаа зовдог зүйлийг үл тоомсорлохыг тодорхойлдог — をよそに нь бага зэрэг илүү утга зохиолын, ирмэгтэй өнгийг агуулдаг ч энд хоёул ижил \"санаа зовнилыг үл тоомсорлох\" гэсэн утгад хүрдэг."
                 },
@@ -4481,7 +4500,7 @@ const GRAMMAR_LEVELS = {
                     "translation": "That remark cannot escape criticism for lacking the discretion expected of someone in a position of responsibility.",
                     "explanation": "ざるを得ない and そしりを免れない both express that a harsh judgment is unavoidable — they're close, standard ways of saying a criticism is warranted and inescapable.",
                     "oldCore": "ざるをえない",
-                    "newCore": null,
+                    "newCore": "そしりを免れない",
                     "translationMn": "Тэр мэдэгдэл хариуцлагатай хүнээс шаардагдах болгоомжгүй байдлаас болж шүүмжлэлээс зайлсхийж чадахгүй.",
                     "explanationMn": "ざるを得ない болон そしりを免れない хоёулаа хатуу шүүлт зайлшгүй болохыг илэрхийлдэг — эдгээр нь шүүмжлэл зохистой бөгөөд зайлсхийх аргагүй гэдгийг хэлэх ойролцоо, стандарт арга юм."
                 },
@@ -4518,7 +4537,8 @@ const GRAMMAR_LEVELS = {
                     "explanation": "以上に and よりもはるかに both mean 'beyond X' when comparing the real severity to what's stated — either reads as the same emphatic comparison here.",
                     "oldCore": null,
                     "translationMn": "Бодит байдал мэдээлж байгаагаас хавьгүй ноцтой байна.",
-                    "explanationMn": "以上に болон よりもはるかに хоёулаа жинхэнэ хүнд байдлыг мэдэгдсэн зүйлтэй харьцуулахдаа \"X-ээс давсан\" гэсэн утгатай — энд аль нь ч ижил онцолсон харьцуулалт мэт уншигдана."
+                    "explanationMn": "以上に болон よりもはるかに хоёулаа жинхэнэ хүнд байдлыг мэдэгдсэн зүйлтэй харьцуулахдаа \"X-ээс давсан\" гэсэн утгатай — энд аль нь ч ижил онцолсон харьцуулалт мэт уншигдана.",
+                    "newCore": "よりも"
                 },
                 {
                     "prefix": "この<ruby>制度<rp>(</rp><rt>せいど</rt><rp>)</rp></ruby>の<ruby>見直<rp>(</rp><rt>みなお</rt><rp>)</rp></ruby>しは",
@@ -4565,7 +4585,8 @@ const GRAMMAR_LEVELS = {
                     "explanation": "てもしきれない and ても〜足りない both mean 'no amount of X is enough' — they're close, standard ways to express boundless praise.",
                     "oldCore": null,
                     "translationMn": "Түүний амжилтыг хэчнээн магтсан ч хангалттай биш.",
-                    "explanationMn": "てもしきれない болон ても〜足りない хоёулаа \"X ямар ч хэмжээгээр хангалттай биш\" гэсэн утгатай — эдгээр нь хязгааргүй магтаалыг илэрхийлэх ойролцоо, стандарт арга юм."
+                    "explanationMn": "てもしきれない болон ても〜足りない хоёулаа \"X ямар ч хэмжээгээр хангалттай биш\" гэсэн утгатай — эдгээр нь хязгааргүй магтаалыг илэрхийлэх ойролцоо, стандарт арга юм.",
+                    "newCore": "し足りない"
                 },
                 {
                     "prefix": "この<ruby>論文<rp>(</rp><rt>ろんぶん</rt><rp>)</rp></ruby>の<ruby>結論<rp>(</rp><rt>けつろん</rt><rp>)</rp></ruby>は、これまでの<ruby>通説<rp>(</rp><rt>つうせつ</rt><rp>)</rp></ruby>を",
@@ -4576,7 +4597,8 @@ const GRAMMAR_LEVELS = {
                     "explanation": "と言っても過言ではない and と言っても差し支えない both soften a strong claim into 'it's fair to say' — they're standard, interchangeable ways to frame a bold statement as reasonable.",
                     "oldCore": null,
                     "translationMn": "Энэ өгүүллийн дүгнэлт уламжлалт ойлголтыг эргүүлдэг гэж хэлэхэд хэтрүүлэг биш.",
-                    "explanationMn": "と言っても過言ではない болон と言っても差し支えない хоёулаа хүчтэй мэдэгдлийг \"гэж хэлэхэд шударга\" болгон зөөлрүүлдэг — эдгээр нь зоригтой мэдэгдлийг үндэслэлтэй мэт харуулах стандарт, сольж хэрэглэгддэг арга юм."
+                    "explanationMn": "と言っても過言ではない болон と言っても差し支えない хоёулаа хүчтэй мэдэгдлийг \"гэж хэлэхэд шударга\" болгон зөөлрүүлдэг — эдгээр нь зоригтой мэдэгдлийг үндэслэлтэй мэт харуулах стандарт, сольж хэрэглэгддэг арга юм.",
+                    "newCore": "と言っても差し支えない"
                 }
             ]
         },
@@ -4741,7 +4763,8 @@ const GRAMMAR_LEVELS = {
                     "explanation": "に振り返るに and 振り返ってみると both mean 'looking back on X' when introducing a retrospective judgment — 振り返るに is simply the more formal, literary phrasing of the same idea.",
                     "oldCore": null,
                     "translationMn": "Түүхийг эргэн харахад энэ шийдвэр эргэлтийн цэг болсныг үгүйсгэх аргагүй.",
-                    "explanationMn": "に振り返るに болон 振り返ってみると хоёулаа эргэн харах дүгнэлтийг танилцуулахдаа \"X-ийг эргэн харахад\" гэсэн утгатай — 振り返るに нь зөвхөн ижил санааг илэрхийлэх илүү албан ёсны, утга зохиолын хэллэг юм."
+                    "explanationMn": "に振り返るに болон 振り返ってみると хоёулаа эргэн харах дүгнэлтийг танилцуулахдаа \"X-ийг эргэн харахад\" гэсэн утгатай — 振り返るに нь зөвхөн ижил санааг илэрхийлэх илүү албан ёсны, утга зохиолын хэллэг юм.",
+                    "newCore": "てみると"
                 },
                 {
                     "prefix": "この<ruby>組織<rp>(</rp><rt>そしき</rt><rp>)</rp></ruby>の<ruby>体質<rp>(</rp><rt>たいしつ</rt><rp>)</rp></ruby>は、いまだに<ruby>改<rp>(</rp><rt>あらた</rt><rp>)</rp></ruby>まっていないと",
@@ -4775,7 +4798,8 @@ const GRAMMAR_LEVELS = {
                     "explanation": "計り知れない alone and 計り知れないほど大きい both describe something as beyond measure — the second just spells out 'huge' more explicitly, but the core claim is identical.",
                     "oldCore": null,
                     "translationMn": "Энэ нээлтийн авчрах ашиг тус хэмжээлшгүй их юм.",
-                    "explanationMn": "計り知れない дангаараа болон 計り知れないほど大きい хоёулаа ямар нэг зүйлийг хэмжээст даасан гэж тодорхойлдог — хоёр дахь нь зөвхөн \"асар том\" гэдгийг илүү тодорхой хэлдэг ч гол мэдэгдэл нь ижилхэн."
+                    "explanationMn": "計り知れない дангаараа болон 計り知れないほど大きい хоёулаа ямар нэг зүйлийг хэмжээст даасан гэж тодорхойлдог — хоёр дахь нь зөвхөн \"асар том\" гэдгийг илүү тодорхой хэлдэг ч гол мэдэгдэл нь ижилхэн.",
+                    "newCore": "ほど大きい"
                 },
                 {
                     "prefix": "その<ruby>態度<rp>(</rp><rt>たいど</rt><rp>)</rp></ruby>は、あまりにも",
@@ -4798,7 +4822,8 @@ const GRAMMAR_LEVELS = {
                     "explanation": "て and 形で can both connect a manner of action to what follows — 形で just states 'in the form of' a bit more explicitly, but either reads the same way here.",
                     "oldCore": null,
                     "translationMn": "Эргэн тойрны эсэргүүцлийг даван туулж тэр өөрийн бие даасан замыг баримталсан.",
-                    "explanationMn": "て болон 形で хоёулаа үйлдлийн байдлыг дараагийн зүйлтэй холбож болно — 形で нь \"...хэлбэрээр\" гэдгийг арай илүү тодорхой хэлдэг ч энд аль нь ч ижилхэн уншигдана."
+                    "explanationMn": "て болон 形で хоёулаа үйлдлийн байдлыг дараагийн зүйлтэй холбож болно — 形で нь \"...хэлбэрээр\" гэдгийг арай илүү тодорхой хэлдэг ч энд аль нь ч ижилхэн уншигдана.",
+                    "newCore": "形で"
                 },
                 {
                     "prefix": "この<ruby>報告書<rp>(</rp><rt>ほうこくしょ</rt><rp>)</rp></ruby>は、",
@@ -4895,7 +4920,8 @@ const GRAMMAR_LEVELS = {
                     "explanation": "であって and で both connect a reason clause to what follows — であって is just the slightly more formal, written way of making the same connection.",
                     "oldCore": null,
                     "translationMn": "Түүний авьяас хараахан дэлгэрээгүй байгаа ч чадавхи нь хэмжээлшгүй.",
-                    "explanationMn": "であって болон で хоёулаа шалтгааны өгүүлбэрийг дараагийн зүйлтэй холбодог — であって нь зөвхөн ижил холболтыг хийх бага зэрэг илүү албан ёсны, бичгийн арга юм."
+                    "explanationMn": "であって болон で хоёулаа шалтгааны өгүүлбэрийг дараагийн зүйлтэй холбодог — であって нь зөвхөн ижил холболтыг хийх бага зэрэг илүү албан ёсны, бичгийн арга юм.",
+                    "newCore": "だけで"
                 },
                 {
                     "prefix": "その<ruby>理論<rp>(</rp><rt>りろん</rt><rp>)</rp></ruby>は、",
@@ -4940,7 +4966,8 @@ const GRAMMAR_LEVELS = {
                     "explanation": "べくして and 当然〜べきだったが both frame an outcome as something that should have naturally been caught — べくして is the terser, more literary way of making the same point.",
                     "oldCore": null,
                     "translationMn": "Энэ бүтээгдэхүүний согогийг гарахаас өмнө байгалиас нь илрүүлэх ёстой байсан ч тэгээгүй.",
-                    "explanationMn": "べくして болон 当然〜べきだったが хоёулаа үр дүнг байгалиар олж мэдэх ёстой байсан зүйл мэт харуулдаг — べくして нь ижил санааг илэрхийлэх илүү товч, утга зохиолын арга юм."
+                    "explanationMn": "べくして болон 当然〜べきだったが хоёулаа үр дүнг байгалиар олж мэдэх ёстой байсан зүйл мэт харуулдаг — べくして нь ижил санааг илэрхийлэх илүү товч, утга зохиолын арга юм.",
+                    "newCore": "べきだった"
                 }
             ]
         },
@@ -4968,7 +4995,7 @@ const GRAMMAR_LEVELS = {
                     "translation": "That commentator, undeterred by criticism from opponents, kept advancing their own argument.",
                     "explanation": "をものともせず and を意に介さず both describe pushing forward without letting an obstacle affect you — をものともせず leans a bit more toward actively overcoming it, but both describe the same unshaken persistence here.",
                     "oldCore": "をものともせず",
-                    "newCore": null,
+                    "newCore": "意に介さず",
                     "translationMn": "Тэр тайлбарлагч эсэргүүцэгчдийн шүүмжлэлд гуйвалгүй өөрийн аргументаа үргэлжлүүлэн хөгжүүлсээр байв.",
                     "explanationMn": "をものともせず болон を意に介さず хоёулаа саадад нөлөөлүүлэлгүйгээр урагшлахыг тодорхойлдог — をものともせず нь идэвхтэй даван туулахад арай илүү дөхдөг ч энд хоёул ижил тэсвэртэй байдлыг тодорхойлдог."
                 },
@@ -4980,7 +5007,7 @@ const GRAMMAR_LEVELS = {
                     "translation": "Setting his achievements aside, one cannot speak of this field's progress.",
                     "explanation": "This keeps the same ぬきにして ('leaving X aside') pattern, just with or without the extra emphatic は — same grammar, same meaning.",
                     "oldCore": "ぬきで",
-                    "newCore": null,
+                    "newCore": "抜きにしては",
                     "translationMn": "Түүний амжилтыг хойш тавиад энэ салбарын хөгжлийн тухай ярих боломжгүй.",
                     "explanationMn": "Энэ нь ижил ぬきにして (\"X-ийг хойш тавих\") загварыг хадгалж, зөвхөн нэмэлт онцолсон は-тэй эсвэл үгүй — ижил дүрэм, ижил утга."
                 },
