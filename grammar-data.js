@@ -628,27 +628,28 @@ const GRAMMAR_LEVELS = {
                     "explanationMn": "にくい болон づらい хоёулаа биет буюу практикт хийхэд хэцүү зүйлийг заадаг — づらい нь にくい-ийн ерөнхий \"хийхэд хэцүү\"-гээс арай илүү хувийн бэрхшээлд дөхдөг."
                 },
                 {
-                    "prefix": "この<ruby>問題<rp>(</rp><rt>もんだい</rt><rp>)</rp></ruby>は<ruby>簡単<rp>(</rp><rt>かんたん</rt><rp>)</rp></ruby>",
-                    "old": "すぎます",
-                    "new": "すぎて<ruby>逆<rp>(</rp><rt>ぎゃく</rt><rp>)</rp></ruby>に<ruby>怪<rp>(</rp><rt>あや</rt><rp>)</rp></ruby>しいです",
-                    "suffix": "。",
+                    "prefix": "この<ruby>問題<rp>(</rp><rt>もんだい</rt><rp>)</rp></ruby>は",
+                    "old": "<ruby>簡単<rp>(</rp><rt>かんたん</rt><rp>)</rp></ruby>すぎて",
+                    "new": "あまりに<ruby>簡単<rp>(</rp><rt>かんたん</rt><rp>)</rp></ruby>で",
+                    "suffix": "、<ruby>逆<rp>(</rp><rt>ぎゃく</rt><rp>)</rp></ruby>に<ruby>怪<rp>(</rp><rt>あや</rt><rp>)</rp></ruby>しいです。",
                     "translation": "This problem is too easy, which is exactly what makes it suspicious.",
-                    "explanation": "Both use すぎる to mark 'too much' — the second version just continues the sentence with a result clause, but the underlined すぎる itself carries the identical meaning either way.",
+                    "explanation": "すぎる and あまりに…で both say something has gone past a limit — あまりに puts the emphasis up front, before the adjective, and leads naturally into a result like this one.",
                     "oldCore": "すぎる",
-                    "newCore": null,
+                    "newCore": "あまりに",
                     "translationMn": "Энэ бодлого хэтэрхий амархан, яг үүнд нь сэжиг төрж байна.",
-                    "explanationMn": "Хоёул すぎる-ийг ашиглан \"хэт их\"-ийг заадаг — хоёр дахь хувилбар нь зөвхөн үр дагаврын өгүүлбэрээр үргэлжилдэг ч онцолсон すぎる өөрөө хоёуланд ижил утгатай хэвээр байна."
+                    "explanationMn": "すぎる болон あまりに…で хоёулаа ямар нэг зүйл хэмжээнээсээ хэтэрснийг илэрхийлдэг — あまりに нь онцлолыг тэмдэг нэрийн өмнө тавьдаг бөгөөд ийм үр дагаврын өгүүлбэр рүү байгалиар шилждэг."
                 },
                 {
-                    "prefix": "<ruby>宿題<rp>(</rp><rt>しゅくだい</rt><rp>)</rp></ruby>が<ruby>終<rp>(</rp><rt>お</rt><rp>)</rp></ruby>わる",
-                    "old": "まで",
-                    "new": "うちは",
+                    "prefix": "<ruby>宿題<rp>(</rp><rt>しゅくだい</rt><rp>)</rp></ruby>が",
+                    "old": "<ruby>終<rp>(</rp><rt>お</rt><rp>)</rp></ruby>わるまで",
+                    "new": "<ruby>終<rp>(</rp><rt>お</rt><rp>)</rp></ruby>わらないうちは",
                     "suffix": "、テレビを<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>てはいけません。",
                     "translation": "Until your homework is finished, you're not allowed to watch TV.",
-                    "explanation": "まで and うちは can both mark 'for as long as this state continues' — うちは just puts a bit more focus on the ongoing state itself.",
-                    "oldCore": null,
+                    "explanation": "まで and ないうちは can both limit something to the time before a change — ないうちは frames it as \"while it still isn’t done\", where まで marks the end point.",
+                    "oldCore": "まで",
                     "translationMn": "Гэрийн даалгавраа дуустал телевиз үзэж болохгүй.",
-                    "explanationMn": "まで болон うちは хоёулаа \"энэ байдал үргэлжилж байх хугацаанд\"-ыг заадаг — うちは нь үргэлжилж буй байдал дээр арай илүү анхаарал хандуулдаг."
+                    "explanationMn": "まで болон ないうちは хоёулаа ямар нэг өөрчлөлт болохоос өмнөх хугацааг заадаг — ないうちは нь \"хараахан дуусаагүй байх хугацаанд\" гэж илэрхийлдэг бол まで нь төгсгөлийн цэгийг заадаг.",
+                    "newCore": "ないうちは"
                 },
                 {
                     "prefix": "この<ruby>店<rp>(</rp><rt>みせ</rt><rp>)</rp></ruby>は",
@@ -1016,16 +1017,16 @@ const GRAMMAR_LEVELS = {
                     "newCore": "ていただけますか"
                 },
                 {
-                    "prefix": "この<ruby>問題<rp>(</rp><rt>もんだい</rt><rp>)</rp></ruby>は<ruby>複雑<rp>(</rp><rt>ふくざつ</rt><rp>)</rp></ruby>",
-                    "old": "すぎます",
-                    "new": "すぎて、<ruby>誰<rp>(</rp><rt>だれ</rt><rp>)</rp></ruby>も<ruby>説明<rp>(</rp><rt>せつめい</rt><rp>)</rp></ruby>できません",
-                    "suffix": "。",
+                    "prefix": "この<ruby>問題<rp>(</rp><rt>もんだい</rt><rp>)</rp></ruby>は",
+                    "old": "<ruby>複雑<rp>(</rp><rt>ふくざつ</rt><rp>)</rp></ruby>すぎて",
+                    "new": "あまりに<ruby>複雑<rp>(</rp><rt>ふくざつ</rt><rp>)</rp></ruby>で",
+                    "suffix": "、<ruby>誰<rp>(</rp><rt>だれ</rt><rp>)</rp></ruby>も<ruby>説明<rp>(</rp><rt>せつめい</rt><rp>)</rp></ruby>できません。",
                     "translation": "This problem is too complicated for anyone to explain.",
-                    "explanation": "Both use すぎる to mark 'too much' — the second version just continues on with a result clause, but the underlined すぎる itself carries the identical meaning either way.",
+                    "explanation": "すぎる and あまりに…で both say something has gone past a limit — あまりに puts the emphasis up front, before the adjective, and leads naturally into a result like this one.",
                     "oldCore": "すぎる",
-                    "newCore": null,
+                    "newCore": "あまりに",
                     "translationMn": "Энэ асуудал хэтэрхий төвөгтэй тул хэн ч тайлбарлаж чадахгүй.",
-                    "explanationMn": "Хоёул すぎる-ийг ашиглан \"хэт их\"-ийг заадаг — хоёр дахь хувилбар зөвхөн үр дагаврын өгүүлбэрээр үргэлжилдэг ч онцолсон すぎる өөрөө хоёуланд ижил утгатай."
+                    "explanationMn": "すぎる болон あまりに…で хоёулаа ямар нэг зүйл хэмжээнээсээ хэтэрснийг илэрхийлдэг — あまりに нь онцлолыг тэмдэг нэрийн өмнө тавьдаг бөгөөд ийм үр дагаврын өгүүлбэр рүү байгалиар шилждэг."
                 },
                 {
                     "prefix": "<ruby>旅行<rp>(</rp><rt>りょこう</rt><rp>)</rp></ruby>の<ruby>間<rp>(</rp><rt>あいだ</rt><rp>)</rp></ruby>に、たくさん<ruby>写真<rp>(</rp><rt>しゃしん</rt><rp>)</rp></ruby>を",
@@ -3267,15 +3268,16 @@ const GRAMMAR_LEVELS = {
                     "newCore": "において"
                 },
                 {
-                    "prefix": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>借金<rp>(</rp><rt>しゃっきん</rt><rp>)</rp></ruby>を",
-                    "old": "してまで",
-                    "new": "するまでして",
+                    "prefix": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>借金<rp>(</rp><rt>しゃっきん</rt><rp>)</rp></ruby>",
+                    "old": "をしてまで",
+                    "new": "までして",
                     "suffix": "、<ruby>新<rp>(</rp><rt>あたら</rt><rp>)</rp></ruby>しい<ruby>事業<rp>(</rp><rt>じぎょう</rt><rp>)</rp></ruby>を<ruby>始<rp>(</rp><rt>はじ</rt><rp>)</rp></ruby>めた。",
                     "translation": "He started a new business, even going so far as to take on debt.",
                     "explanation": "てまで and までして both stress that someone went to an extreme, often distasteful, length to achieve something, and are interchangeable in this pattern.",
                     "oldCore": "てまで",
                     "translationMn": "Тэр өртэй болохоос ч буцахгүйгээр шинэ бизнес эхлүүлсэн.",
-                    "explanationMn": "てまで болон までして хоёулаа хэн нэгэн туйлширсан, ихэвчлэн тааламжгүй хэмжээнд хүрч ямар нэг зүйлд хүрсэнийг онцолдог бөгөөд энэ загварт сольж хэрэглэгддэг."
+                    "explanationMn": "てまで болон までして хоёулаа хэн нэгэн туйлширсан, ихэвчлэн тааламжгүй хэмжээнд хүрч ямар нэг зүйлд хүрсэнийг онцолдог бөгөөд энэ загварт сольж хэрэглэгддэг.",
+                    "newCore": "までして"
                 }
             ]
         },
