@@ -138,6 +138,27 @@ body:has(.dash-main) {
    tools record about a particular learner (word-stats.js). Ordered by misses,
    so the top row is the word that keeps catching you out.
    --------------------------------------------------------------------------- */
+/* Spaced-review queue. The number is the point, so it leads; when nothing is due the card stays
+   (it says when the next word comes due) but steps back visually. */
+.dash-due {
+    background: var(--surface); border: 1px solid var(--surface-edge); border-left: 4px solid var(--accent);
+    border-radius: 10px; padding: 20px 24px;
+    display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 20px;
+}
+.dash-due.is-clear { border-left-color: var(--rule); }
+.dash-due-num { font-family: var(--font-display); font-size: 2.6rem; font-weight: 700; line-height: 1;
+    color: var(--accent-dark); font-variant-numeric: tabular-nums; min-width: 1.6ch; text-align: center; }
+.dash-due.is-clear .dash-due-num { color: var(--ink-faint); }
+.dash-due-title { margin: 0 0 2px; font-size: 1.02rem; color: var(--ink); }
+.dash-due-body { margin: 0; font-size: 0.92rem; color: var(--ink-soft); }
+.dash-due-sub { margin: 6px 0 0; font-size: 0.78rem; color: var(--ink-faint); max-width: 60ch; }
+/* .dash-main .dash-due-btn, not .dash-due-btn: `.dash-main a { color: inherit }` above is more specific
+   and turned the label dark blue on the blue button. */
+.dash-main .dash-due-btn { white-space: nowrap; font-weight: 700; font-size: 0.92rem; color: #fff; background: var(--accent);
+    padding: 10px 18px; border-radius: 8px; text-decoration: none; }
+.dash-main .dash-due-btn:hover { background: var(--accent-dark); }
+.dash-due-btn:focus-visible { outline: 2px solid var(--accent-dark); outline-offset: 2px; }
+@media (max-width: 640px) { .dash-due { grid-template-columns: auto 1fr; } .dash-due-btn { grid-column: 1 / -1; text-align: center; } }
 .dash-missed {
     background: var(--surface);
     border: 1px solid var(--surface-edge);

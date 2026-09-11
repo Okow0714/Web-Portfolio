@@ -5,9 +5,10 @@
 (function () {
     const sb = window.supabaseClient;
 
-    const GAME_LEVELS_TOTAL = 50;
-    const GRAMMAR_LEVELS_TOTAL = 40;
-    const READING_TEXTS_TOTAL = 72;
+    // From progress-shared.js, the one place these are written down (and checked by CI).
+    const GAME_LEVELS_TOTAL = window.KhanProgress.TOTALS.wordMatchLevels;
+    const GRAMMAR_LEVELS_TOTAL = window.KhanProgress.TOTALS.grammarLevels;
+    const READING_TEXTS_TOTAL = window.KhanProgress.TOTALS.readingTexts;
 
     const guestEl = document.getElementById('dash-guest');
     const contentEl = document.getElementById('dash-content');
@@ -56,14 +57,43 @@
     }
 
     async function loadScore() {
-        const { data, error } = await sb.rpc('get_dashboard_stats').single();
-        if (error || !data) return;
+        const data = await window.KhanProgress.fetchScore(sb);
+        if (!data) return;
         const my = Number(data.my_score) || 0;
         const avg = Number(data.average_score) || 0;
         document.getElementById('dash-score-total').textContent = Math.round(my);
         setBar(document.getElementById('dash-score-mine-fill'), document.getElementById('dash-score-mine-num'), my, 3000);
         setBar(document.getElementById('dash-score-avg-fill'), document.getElementById('dash-score-avg-num'), avg, 3000);
         document.getElementById('dash-users-counted').textContent = window.tf('dash.usersCounted', { n: data.users_counted || 0 });
+    }
+
+    // The spaced-review queue: how many missed words have come due, with a way straight into
+    // reviewing them. When nothing is due it says when the next one will be, so an empty card still
+    // tells the learner something rather than reading as broken.
+    let lastDue = null;
+    function renderDue() {
+        const cardEl = document.getElementById('dash-due');
+        const numEl = document.getElementById('dash-due-count');
+        const bodyEl = document.getElementById('dash-due-body');
+        const btnEl = document.getElementById('dash-due-btn');
+        if (!lastDue) { hideEl(cardEl); return; }
+        showEl(cardEl);
+        numEl.textContent = lastDue.due;
+        cardEl.classList.toggle('is-clear', lastDue.due === 0);
+        if (lastDue.due > 0) {
+            bodyEl.textContent = window.tf('dash.due.some', { n: lastDue.due });
+            showEl(btnEl);
+        } else {
+            const d = window.KhanProgress.daysUntil(lastDue.next);
+            bodyEl.textContent = d === null ? window.t('dash.due.none')
+                : d <= 1 ? window.t('dash.due.nextTomorrow')
+                : window.tf('dash.due.nextIn', { n: d });
+            hideEl(btnEl);
+        }
+    }
+    async function loadDue(userId) {
+        lastDue = await window.KhanProgress.fetchDue(sb, userId);
+        renderDue();
     }
 
     function renderStaticStrings() {
@@ -128,6 +158,7 @@
             loadToolProgress(session.user.id),
             loadScore(),
             loadMissedWords(session.user.id),
+            loadDue(session.user.id),
         ]);
     }
 

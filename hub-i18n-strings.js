@@ -13,6 +13,7 @@ Object.assign(window.I18N_STRINGS, {
     'hub.progress.welcome': { en: 'Welcome back', mn: 'Тавтай морил' },
     'hub.progress.pointsOf': { en: '/ 3000 pts', mn: '/ 3000 оноо' },
     'hub.progress.fullDashboard': { en: 'Full dashboard →', mn: 'Бүрэн хянах самбар →' },
+    'hub.progress.due': { en: '{n} missed words are due for review →', mn: 'Давтах цаг нь болсон {n} үг байна →' },
     'hub.progress.levelsDone': { en: '{done} / {total} levels', mn: '{done} / {total} шат' },
     'hub.progress.textsDone': { en: '{done} / {total} texts', mn: '{done} / {total} текст' },
     'hub.progress.guestTitle': { en: 'Log in to track your progress', mn: 'Явцаа хянахын тулд нэвтэрнэ үү' },

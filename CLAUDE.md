@@ -281,5 +281,10 @@ reports this as "…subtree intercepts pointer events", which is easy to dismiss
   click (36% have one), the privacy policy's data list omitted `grammar_progress` entirely,
   and the dashboard advertised password/session management that has never existed. **Changing
   a mechanic means grepping the i18n files AND the inline HTML fallbacks for the old number** —
-  each string lives in both places, and MN as well as EN. Where a claim is measurable, measure
+  each string lives in both places, and MN as well as EN.
+  **Content totals are the exception that is now enforced:** how many levels/texts each tool has is
+  written once, in `progress-shared.js`, which the dashboard, home page and the score SQL (via
+  `get_dashboard_stats`'s arguments) all read, and `tests/progress-totals.spec.js` fails CI if it
+  disagrees with the data files or the "0 / N" placeholders. They had drifted twice before that
+  (Word Match shown as 50 levels long after it had 60; Dokkai scored out of 60 texts after it had 72). Where a claim is measurable, measure
   it with `node -e` against the data file rather than trusting the existing wording.

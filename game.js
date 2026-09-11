@@ -380,15 +380,22 @@ function buildWordIndex() {
     return idx;
 }
 
+// Due words first: record_word_attempt schedules every word on a Leitner ladder and stores when it
+// is next due (see progress-shared.js), and the dashboard's "N words due" promises exactly those --
+// so they lead, most overdue first. If fewer than a board's worth are due, the board is topped up
+// with the most-missed words, which is what review mode did before due dates were read at all, so
+// a review still has something to play on a day with nothing due.
 async function startReviewRun(session) {
-    const { data, error } = await window.supabaseClient
-        .from('word_stats')
-        .select('word, misses')
-        .eq('user_id', session.user.id)
-        .gt('misses', 0)
-        .order('misses', { ascending: false })
-        .limit(80);
-    if (error || !data || !data.length) return false;
+    const now = new Date().toISOString();
+    const base = () => window.supabaseClient.from('word_stats').select('word, misses, due_at')
+        .eq('user_id', session.user.id).gt('misses', 0);
+    const [dueRes, missedRes] = await Promise.all([
+        base().lte('due_at', now).order('due_at', { ascending: true }).limit(80),
+        base().order('misses', { ascending: false }).limit(80),
+    ]);
+    if (missedRes.error || !missedRes.data) return false;
+    const data = (dueRes.error ? [] : dueRes.data || []).concat(missedRes.data);
+    if (!data.length) return false;
 
     const idx = buildWordIndex();
     const words = [];

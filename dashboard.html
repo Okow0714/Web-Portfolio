@@ -253,13 +253,23 @@
                         <p class="dash-score-note" id="dash-users-counted"></p>
                     </section>
 
+                    <section class="dash-due hidden" id="dash-due" aria-live="polite">
+                        <div class="dash-due-num" id="dash-due-count">0</div>
+                        <div class="dash-due-text">
+                            <h2 class="dash-due-title" data-i18n="dash.due.title">Due for review</h2>
+                            <p class="dash-due-body" id="dash-due-body"></p>
+                            <p class="dash-due-sub" data-i18n="dash.due.sub">A word you miss comes back straight away, then after 1, 3, 7, 16, 35 and 90 days each time you get it right. Miss it again and it starts over.</p>
+                        </div>
+                        <a class="dash-due-btn hidden" id="dash-due-btn" href="game.html?review=1" data-i18n="dash.due.cta">Review now →</a>
+                    </section>
+
                     <section class="dash-tools">
                         <a class="dash-tool-card" href="game.html">
                             <div class="dash-tool-head">
                                 <span class="dash-tool-glyph" aria-hidden="true">遊</span>
                                 <h2 class="dash-tool-name" data-i18n="dash.tools.game">Word Match</h2>
                             </div>
-                            <span class="dash-tool-fraction" id="dash-game-fraction">0 / 50 levels</span>
+                            <span class="dash-tool-fraction" id="dash-game-fraction">0 / 60 levels</span>
                             <div class="dash-tool-track"><div class="dash-tool-fill" id="dash-game-fill" style="width:0%"></div></div>
                             <span class="dash-tool-cta" data-i18n="dash.continue">Continue →</span>
                         </a>
@@ -357,6 +367,7 @@
     <script src="vendor/supabase.min.js"></script>
     <script src="supabase-config.js"></script>
     <script src="auth-shared.js"></script>
+    <script src="progress-shared.js"></script>
     <script src="dashboard.js"></script>
     <script src="tutorial.js"></script>
     <script src="pwa-register.js"></script>

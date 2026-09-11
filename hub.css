@@ -94,6 +94,11 @@ body:has(.hub-main) {
 .hub-progress-tool-frac { font-size: 0.74rem; color: var(--progress-ink-faint); font-variant-numeric: tabular-nums; margin-bottom: 6px; display: block; }
 .hub-progress-tool-track { height: 6px; border-radius: 999px; background: var(--progress-edge); overflow: hidden; }
 .hub-progress-tool-fill { height: 100%; background: var(--progress-accent); border-radius: 999px; transition: width 0.6s var(--ease-out); }
+/* Shown only when words are due -- the reason to play today, one line under the bars. */
+.hub-progress-due { align-self: flex-start; font-size: 0.86rem; font-weight: 700; color: var(--progress-accent-dark);
+    text-decoration: none; padding: 8px 14px; border-radius: 999px; background: var(--progress-accent-tint); }
+.hub-progress-due:hover { text-decoration: underline; }
+.hub-progress-due:focus-visible { outline: 2px solid var(--progress-accent-dark); outline-offset: 2px; }
 
 .hub-progress-guest { padding: 26px 28px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
 .hub-progress-guest p { margin: 0 0 4px; font-family: var(--font-display); font-size: 1.05rem; }
