@@ -47,6 +47,20 @@ async function main() {
     for (const file of specFiles) {
         const spec = require(path.join(__dirname, file));
         const context = await browser.newContext({ viewport: { width: 1400, height: 1000 } });
+        // Every spec runs in a fresh context, which is a first-time visitor -- and since the page
+        // tours landed (tutorial.js, 2026-09-05) a first-time visitor gets a coach mark over the
+        // page. Every click underneath it timed out on "tour-scrim intercepts pointer events",
+        // and 3 of the 4 specs failed on every push from that day on. The specs are about the
+        // tools, not the tour, so they start as a visitor who has already seen it. Matching the
+        // key prefix rather than listing today's scene ids means a scene added later cannot
+        // quietly break CI again. Only tour keys are answered; any other overlay still blocks a
+        // click and fails the spec, which is the point.
+        await context.addInitScript(() => {
+            const get = Storage.prototype.getItem;
+            Storage.prototype.getItem = function (k) {
+                return typeof k === 'string' && k.indexOf('khanjp-tour-') === 0 ? '1' : get.call(this, k);
+            };
+        });
         const page = await context.newPage();
         const t0 = Date.now();
         try {
