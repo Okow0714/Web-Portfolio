@@ -734,6 +734,12 @@ body.game-playing .game-main {
 .hex-row {
     display: flex;
     margin-top: calc(var(--hex-h) * -0.25);
+    /* Rows overlap by a quarter of a tile, and a row is a rectangle while its tiles are
+       clip-path hexagons -- so the gaps between one row's hexagons sat on top of the bottom
+       point of every tile in the row above and swallowed the tap. Measured with real clicks:
+       only ~50% of that bottom quarter answered, the rest landing on .hex-row. The row takes
+       no pointer events itself; .tile turns them back on below. */
+    pointer-events: none;
 }
 
 .hex-row:first-child { margin-top: 0; }
@@ -743,6 +749,9 @@ body.game-playing .game-main {
 }
 
 .tile {
+    /* Re-enabled against .hex-row's none, which would otherwise inherit. Set here on the
+       base rule so .tile.cleared / .tile.powerup-swap-out (more specific) still switch it off. */
+    pointer-events: auto;
     --tile-shadow: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.35));
     --tile-inset: 0.92;
     position: relative;
