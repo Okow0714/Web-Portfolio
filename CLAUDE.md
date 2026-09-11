@@ -122,6 +122,18 @@ never starts on top of an open `.modal-overlay`. Adding a tool means adding its 
 Related: `phonetics.html` used to auto-open its "what's a phonetic component?" modal on *every*
 load; that is gone — the tour points at the button instead.
 
+**Word Match is six classic scripts, not one** (`game-core.js` → `game-fx.js` → `game-board.js` →
+`game-play.js` → `game-wakan.js` → `game.js`, after `game-particles.js`/`game-audio.js`). They share one
+global scope: a top-level `let`, `const` or `function` in one classic script can be read, assigned and
+called from any other on the page. It is just not a `window.` property, which is why `window.GameAudio`
+was undefined while bare `GameAudio` worked. That was misread once as "state cannot be shared across
+`<script>` tags" and nearly sent this toward ES modules. The only rule is **load order**: code that
+runs while a file is loading may use only what an *earlier* file defined; listeners and animation-frame
+callbacks run later and may reach forward. So all mutable state lives in `game-core.js`, and start-up
+plus most wiring live in `game.js`, the last one loaded. Two things break it: declaring the same name
+in two of these files (a SyntaxError that stops the later file loading), and adding a load-time call into
+a later file. A new file goes in `game.html` in order *and* in `sw.js`'s `APP_SHELL`.
+
 **Large data files — never `Read` whole**: `phonetics-data.js` (~2.8MB), `game-words.js`
 (~1.4MB), `mnjp-data.js` (~1.4MB, `MNJP_ENTRIES` — dictionary.html's primary tab, 3,537 words
 merged from five sources, see its own header comment), `reading-texts.js` (~1.1MB),

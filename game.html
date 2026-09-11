@@ -287,7 +287,7 @@
                                  bottom bar) -- mirrors #board-pairs and the toolbar streak
                                  meter, doesn't replace them. -->
                             <!-- Wide layout only -- tracks phonetic "lightning connect" families
-                                 cleared this round (see familiesFound in game.js). -->
+                                 cleared this round (see familiesFound in game-core.js). -->
                             <div class="panel-block panel-families panel-wide-only" id="panel-families">
                                 <h3 data-i18n="game.familiesFound">Families Found</h3>
                                 <p id="families-empty" class="families-empty" data-i18n="game.familiesEmptyHint">Chain 2+ words sharing a phonetic component for a lightning-fast clear.</p>
@@ -416,6 +416,12 @@
     <script src="dictionary-data.js"></script>
     <script src="game-particles.js"></script>
     <script src="game-audio.js"></script>
+    <!-- Word Match, in load order: each file may use at load time only what an earlier one defined. -->
+    <script src="game-core.js"></script>
+    <script src="game-fx.js"></script>
+    <script src="game-board.js"></script>
+    <script src="game-play.js"></script>
+    <script src="game-wakan.js"></script>
     <script src="game.js"></script>
     <script src="tutorial.js"></script>
     <script src="pwa-register.js"></script>
