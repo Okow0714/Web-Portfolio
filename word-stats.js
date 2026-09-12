@@ -50,6 +50,35 @@
         });
     }
 
+    // Marks today as a day this learner studied (daily_activity, migration 008), for the streak on
+    // the dashboard. Called from every attempt but sent at most once per day per device: a flag in
+    // localStorage keyed by the date does the deduplicating, so a level of twenty pairs is one
+    // round trip rather than twenty. The date is the DEVICE's, so the streak follows the learner's
+    // own midnight instead of UTC -- the server only checks it is within a day either way.
+    const ACTIVE_KEY = 'khanjp-active-day';
+    // Set the instant the first call goes out, not when it comes back: attempts arrive in bursts
+    // (a level is twenty pairs) and they all passed the localStorage check before the first
+    // response landed, so a single level sent twenty identical writes. Cleared again if the call
+    // fails, so a later attempt retries.
+    let activeDayInFlight = null;
+    function localDay() {
+        const d = new Date();
+        return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    }
+    function markActiveToday() {
+        if (!window.supabaseReady || !session) return;   // guests have no streak to keep
+        const today = localDay();
+        if (activeDayInFlight === today) return;
+        try { if (localStorage.getItem(ACTIVE_KEY) === today) return; } catch (e) { /* private mode: send anyway */ }
+        activeDayInFlight = today;
+        window.supabaseClient.rpc('record_activity', { p_day: today })
+            .then(({ error }) => {
+                if (error) { activeDayInFlight = null; return; }
+                try { localStorage.setItem(ACTIVE_KEY, today); } catch (e) {}
+            })
+            .catch(() => { activeDayInFlight = null; /* offline; a later attempt tries again */ });
+    }
+
     // The one call the tools make. Fire-and-forget on purpose: a learner mid-level must never
     // wait on, or be interrupted by, a statistics write.
     window.recordWordAttempt = function (row) {
@@ -66,6 +95,7 @@
             writeBuffer(buf);
             return;
         }
+        markActiveToday();
         send(clean).then(({ error }) => {
             // A failed write buffers instead of vanishing, and goes up with the next flush.
             if (error) {

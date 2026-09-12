@@ -67,6 +67,35 @@
         document.getElementById('dash-users-counted').textContent = window.tf('dash.usersCounted', { n: data.users_counted || 0 });
     }
 
+    // Study streak, from daily_activity (migration 008). The strip is the last 14 days, so the card
+    // still says something on day one -- a bare "0 days" with nothing else would read as broken.
+    let lastActivity = null;
+    function renderStreak() {
+        const cardEl = document.getElementById('dash-streak');
+        if (!lastActivity) { hideEl(cardEl); return; }
+        showEl(cardEl);
+        const { streak, includesToday } = window.KhanProgress.streakFrom(lastActivity);
+        document.getElementById('dash-streak-count').textContent = streak;
+        cardEl.classList.toggle('is-cold', streak === 0);
+        const bodyEl = document.getElementById('dash-streak-body');
+        bodyEl.textContent = streak === 0 ? window.t('dash.streak.none')
+            : includesToday ? window.t('dash.streak.todayDone')
+            : window.t('dash.streak.todayLeft');
+
+        const strip = document.getElementById('dash-streak-strip');
+        strip.innerHTML = '';
+        window.KhanProgress.recentDays(lastActivity, 14).forEach(d => {
+            const cell = document.createElement('span');
+            cell.className = 'dash-streak-day' + (d.active ? ' on' : '') + (d.isToday ? ' today' : '');
+            cell.title = d.day;
+            strip.appendChild(cell);
+        });
+    }
+    async function loadStreak(userId) {
+        lastActivity = await window.KhanProgress.fetchActivity(sb, userId);
+        renderStreak();
+    }
+
     // The spaced-review queue: how many missed words have come due, with a way straight into
     // reviewing them. When nothing is due it says when the next one will be, so an empty card still
     // tells the learner something rather than reading as broken.
@@ -190,6 +219,7 @@
             loadMissedWords(session.user.id),
             loadDue(session.user.id),
             loadMissedGrammar(session.user.id),
+            loadStreak(session.user.id),
         ]);
     }
 

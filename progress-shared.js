@@ -60,5 +60,48 @@
         return Math.max(0, Math.round((b - a) / 86400000));
     }
 
-    window.KhanProgress = { TOTALS, fetchScore, fetchDue, daysUntil };
+    // Study days (daily_activity, migration 008). Eight weeks is enough for the strip the dashboard
+    // draws and for any streak worth showing; a longer history is not worth the round trip.
+    async function fetchActivity(sb, userId) {
+        const from = new Date();
+        from.setDate(from.getDate() - 55);
+        const { data, error } = await sb.from('daily_activity').select('day, attempts')
+            .eq('user_id', userId).gte('day', isoDay(from)).order('day', { ascending: true });
+        if (error) return null;
+        return new Set((data || []).map(r => r.day));
+    }
+
+    function isoDay(d) {
+        return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    }
+
+    // Days in a row ending today -- or ending yesterday, so a streak is not reported as broken
+    // during the day before that day's first practice. Returns { streak, includesToday }.
+    function streakFrom(days) {
+        if (!days || !days.size) return { streak: 0, includesToday: false };
+        const today = new Date();
+        const includesToday = days.has(isoDay(today));
+        const cursor = new Date(today);
+        if (!includesToday) {
+            cursor.setDate(cursor.getDate() - 1);
+            if (!days.has(isoDay(cursor))) return { streak: 0, includesToday: false };
+        }
+        let streak = 0;
+        while (days.has(isoDay(cursor))) { streak++; cursor.setDate(cursor.getDate() - 1); }
+        return { streak, includesToday };
+    }
+
+    // The last `n` days, oldest first, for the strip: [{ day, active, isToday }].
+    function recentDays(days, n) {
+        const out = [];
+        for (let i = n - 1; i >= 0; i--) {
+            const d = new Date();
+            d.setDate(d.getDate() - i);
+            const key = isoDay(d);
+            out.push({ day: key, active: !!(days && days.has(key)), isToday: i === 0 });
+        }
+        return out;
+    }
+
+    window.KhanProgress = { TOTALS, fetchScore, fetchDue, daysUntil, fetchActivity, streakFrom, recentDays, isoDay };
 })();

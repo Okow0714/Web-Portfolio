@@ -138,6 +138,24 @@ body:has(.dash-main) {
    tools record about a particular learner (word-stats.js). Ordered by misses,
    so the top row is the word that keeps catching you out.
    --------------------------------------------------------------------------- */
+/* Study streak. The number leads, with the last 14 days as a strip underneath so the card says
+   something on day one rather than showing a bare zero. */
+.dash-streak {
+    background: var(--surface); border: 1px solid var(--surface-edge); border-radius: 10px;
+    padding: 20px 24px; display: flex; flex-direction: column; gap: 14px;
+}
+.dash-streak-head { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.dash-streak-title { margin: 0 0 2px; font-size: 1.02rem; color: var(--ink); }
+.dash-streak-body { margin: 0; font-size: 0.9rem; color: var(--ink-soft); }
+.dash-streak-num { font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; line-height: 1;
+    color: var(--accent-dark); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.dash-streak.is-cold .dash-streak-num { color: var(--ink-faint); }
+.dash-streak-strip { display: flex; gap: 5px; flex-wrap: wrap; }
+.dash-streak-day { width: 100%; max-width: 26px; flex: 1 1 18px; height: 26px; border-radius: 5px;
+    background: var(--rule); border: 1px solid transparent; }
+.dash-streak-day.on { background: var(--accent); }
+.dash-streak-day.today { border-color: var(--accent-dark); }
+
 /* Spaced-review queue. The number is the point, so it leads; when nothing is due the card stays
    (it says when the next word comes due) but steps back visually. */
 .dash-due {
