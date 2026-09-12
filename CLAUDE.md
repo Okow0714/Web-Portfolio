@@ -77,15 +77,25 @@ phonetics light jade/copper, reading warm gold (light), grammar its own accent, 
 own accent, dashboard cool slate/blue, game dark hanafuda violet/gold, about forest-teal.
 **Each page's colors and layout are deliberately distinct — don't reintroduce a shared template
 between them.**
-**Every page now carries both themes.** Each token keeps its original declaration and gains a
-`light-dark(light, dark)` one directly beneath, so a browser without `light-dark()` renders exactly
-what it did before and there is no second palette to keep in step. `display-prefs.js` sets
+**Every page now carries both themes**, `about.html` included. Each token keeps its original
+declaration and gains a `light-dark(light, dark)` one directly beneath, so there is one palette to
+maintain rather than two. `display-prefs.js` sets
 `data-theme` on `<html>` before the first paint and `style.css` turns it into `color-scheme`, which
 is what those tokens resolve against; the masthead switch cycles follow-the-device / Light / Dark.
-Gradients and `url()` cannot go through `light-dark()`, so Grammar Connect's daytime sky and Word
-Match's night board photos are scoped rules and a JS path swap respectively. Before inverting a
-token, check how it is *used*: `--sumi` (dictionary) and `--bg-surface` (phonetics) are both ink
-AND a fill, so the text sitting on them needs its own paired token.
+`light-dark()` is a **`<color>` function, not a value switch** -- it may only wrap the colour
+itself. Gradients and `url()` therefore cannot go through it (Grammar Connect's daytime sky is a
+scoped rule, Word Match's night board photos a JS path swap), and neither can a whole `box-shadow`:
+wrapping one is invalid at computed-value time, which resolves the property to `none` **in both
+themes**, so the light page silently loses its shadows too. That shipped on three pages and went
+unnoticed for a day; write `0 14px 32px light-dark(rgba(...), rgba(...))`, geometry outside. The
+plain declaration above each `light-dark()` one is a real fallback only for properties, not for
+custom properties -- a token's second declaration always wins, so an old browser gets the invalid
+value either way; keep it for consistency, not as protection. Before inverting a token, check how
+it is *used*: `--sumi` (dictionary), `--bg-surface` (phonetics) and `--bg-page` (about) are each
+both ink AND a fill, so the text sitting on them needs its own paired token.
+`about.html` is themed too, and is the awkward one: it loads no `style.css`, so it declares the
+three `color-scheme` rules itself and carries its own `#theme-switch` in the index rail --
+`auth-shared.js` wires any element with that id, so it needed no new JS.
 
 **Full-bleed pattern**: the same token block is defined on both `body:has(.wrapper-class)` and
 `.wrapper-class` (body is an ancestor and can't read a descendant's custom properties), then

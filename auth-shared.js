@@ -264,7 +264,10 @@ function renderThemeSwitch() {
     if (!themeSwitchBtn || !window.getTheme) return;
     const chosen = window.getTheme();                 // null = following the device
     const effective = window.getEffectiveTheme();
-    const name = tr(chosen ? 'theme.' + chosen : 'theme.auto', chosen ? chosen : 'Auto');
+    // about.html carries this switch but loads no i18n, so the fallback has to be presentable
+    // on its own rather than the raw 'light' / 'dark' key suffix.
+    const name = tr(chosen ? 'theme.' + chosen : 'theme.auto',
+        chosen ? chosen.charAt(0).toUpperCase() + chosen.slice(1) : 'Auto');
     themeSwitchBtn.querySelector('.theme-switch-label').textContent = name;
     // the icon shows what you are looking at; half-filled when it is the device's call
     themeSwitchBtn.querySelector('.theme-switch-icon').textContent = chosen ? (effective === 'dark' ? '☾' : '☀') : '◐';

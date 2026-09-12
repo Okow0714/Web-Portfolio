@@ -9,18 +9,31 @@
 
 :root {
     --bg-page: #f3f0e7;
+    --bg-page: light-dark(#f3f0e7, #121714);
     --surface: #fbf9f2;
+    --surface: light-dark(#fbf9f2, #1a211d);
     --surface-edge: #e2dac4;
+    --surface-edge: light-dark(#e2dac4, #2e3a33);
     --ink: #232f2b;
+    --ink: light-dark(#232f2b, #e9ede9);
     --ink-soft: #5f6b64;
-    --ink-faint: #646e69; /* was #8b9590: 2.71:1 on its own surface, under AA */
+    --ink-soft: light-dark(#5f6b64, #a9b5ad);
+    --ink-faint: #646e69;
+    --ink-faint: light-dark(#646e69, #93a099); /* was #8b9590: 2.71:1 on its own surface, under AA */
     --rule: #ddd3ba;
+    --rule: light-dark(#ddd3ba, #303c35);
     --accent: #3d6b58;
+    --accent: light-dark(#3d6b58, #6fae8e);
     --accent-light: #6b9a84;
+    --accent-light: light-dark(#6b9a84, #8cc5a6);
     --accent-dark: #274d3e;
+    --accent-dark: light-dark(#274d3e, #8fc9a9);
     --accent-tint: rgba(61, 107, 88, 0.09);
+    --accent-tint: light-dark(rgba(61, 107, 88, 0.09), rgba(111, 174, 142, 0.16));
     --warm: #8a5570;
+    --warm: light-dark(#8a5570, #cf9bba);
     --warm-tint: rgba(138, 85, 112, 0.10);
+    --warm-tint: light-dark(rgba(138, 85, 112, 0.10), rgba(207, 155, 186, 0.16));
     --font-display: 'Fraunces', Georgia, serif;
     --font-body: 'IBM Plex Sans', -apple-system, sans-serif;
 
@@ -37,7 +50,13 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+/* Every other page gets these three lines from style.css, which this one never loads.
+   `color-scheme` is what the light-dark() tokens above resolve against, and it also themes
+   the native form controls in the auth modal. display-prefs.js (already in <head>) puts
+   data-theme on <html> before the first paint; no attribute at all means follow the device. */
+html { color-scheme: light dark; scroll-behavior: smooth; }
+html[data-theme="light"] { color-scheme: light; }
+html[data-theme="dark"] { color-scheme: dark; }
 .hidden { display: none !important; }
 
 body {
@@ -77,6 +96,14 @@ body {
 .about-rail-index a.current { color: var(--accent-dark); }
 .about-rail-index a.current .num { color: var(--accent); }
 .about-rail-foot { margin-top: auto; display: flex; flex-direction: column; gap: 14px; }
+.about-theme-switch {
+    display: flex; align-items: center; gap: 8px; width: 100%; background: none; border: none;
+    cursor: pointer; padding: 0 0 14px; font-family: inherit; font-size: var(--text-xs);
+    color: var(--ink-soft); font-weight: 600; text-align: left;
+}
+.about-theme-switch:hover { color: var(--accent-dark); }
+.about-theme-switch .theme-switch-icon { font-size: var(--text-sm); line-height: 1; }
+
 .about-back-link { font-size: var(--text-xs); color: var(--ink-faint); }
 .about-back-link a { color: var(--accent-dark); font-weight: 600; text-decoration: none; }
 .about-back-link a:hover { text-decoration: underline; }
@@ -92,6 +119,7 @@ body {
 .about-account-panel {
     position: absolute; bottom: calc(100% + 8px); left: 0; min-width: 220px;
     background: var(--surface); border: 1px solid var(--surface-edge); box-shadow: 0 16px 34px -14px rgba(35,47,43,0.35);
+    box-shadow: 0 16px 34px -14px light-dark(rgba(35,47,43,0.35), rgba(0,0,0,0.6));
     padding: 14px; opacity: 0; transform: translateY(6px); pointer-events: none; transition: all 0.2s ease; z-index: 20;
 }
 .about-account.open .about-account-panel { opacity: 1; transform: translateY(0); pointer-events: auto; }
@@ -140,7 +168,7 @@ body {
 .about-hero-stat span { font-size: var(--text-xs); color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.05em; }
 .about-hero-portrait {
     width: 220px; height: 264px; border-radius: 4px; overflow: hidden; position: relative;
-    box-shadow: 0 24px 50px -24px rgba(35,47,43,0.4); border: 1px solid var(--surface-edge);
+    box-shadow: 0 24px 50px -24px light-dark(rgba(35,47,43,0.4), rgba(0,0,0,0.65)); border: 1px solid var(--surface-edge);
 }
 .about-hero-portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
@@ -168,7 +196,7 @@ body {
 .hobby-card p { margin: 0; font-size: var(--text-sm); color: var(--ink-soft); line-height: 1.55; }
 .about-accent-photo {
     width: 180px; height: 220px; border-radius: 4px; overflow: hidden; border: 1px solid var(--surface-edge);
-    box-shadow: 0 16px 34px -20px rgba(35,47,43,0.35); transform: rotate(-1.4deg);
+    box-shadow: 0 16px 34px -20px light-dark(rgba(35,47,43,0.35), rgba(0,0,0,0.6)); transform: rotate(-1.4deg);
 }
 .about-accent-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
@@ -313,12 +341,12 @@ body {
 /* ---- auth / account modals (#auth-modal, #account-modal) — re-themed in this page's own
    palette instead of style.css's burgundy tokens, since this page never loads style.css. ---- */
 .modal-overlay {
-    position: fixed; inset: 0; background: rgba(35,47,43,0.45); display: flex;
+    position: fixed; inset: 0; background: light-dark(rgba(35,47,43,0.45), rgba(0,0,0,0.62)); display: flex;
     align-items: center; justify-content: center; z-index: 2000; padding: 20px;
 }
 .modal-card {
     position: relative; width: 100%; max-width: 400px; background: var(--surface);
-    border: 1px solid var(--surface-edge); box-shadow: 0 24px 60px -20px rgba(35,47,43,0.4);
+    border: 1px solid var(--surface-edge); box-shadow: 0 24px 60px -20px light-dark(rgba(35,47,43,0.4), rgba(0,0,0,0.7));
     border-radius: 6px; padding: 40px 30px 30px;
 }
 .modal-close {
@@ -335,9 +363,9 @@ body {
 }
 #auth-form input:focus { outline: none; border-color: var(--accent); }
 #auth-form .auth-btn { margin-top: 16px; text-align: center; }
-.auth-error { color: #b23b3b; font-size: var(--text-sm); margin: 4px 0 0; }
+.auth-error { color: #b23b3b; color: light-dark(#b23b3b, #f19a9a); font-size: var(--text-sm); margin: 4px 0 0; }
 /* See style.css: success must not resolve to a wine token that reads as an error. */
-.auth-error.auth-info { color: #1a7f4b; }
+.auth-error.auth-info { color: #1a7f4b; color: light-dark(#1a7f4b, #6fd3a1); }
 .auth-forgot-link {
     align-self: flex-end; background: none; border: none; padding: 0; margin-top: 6px;
     color: var(--accent); font-size: var(--text-xs); cursor: pointer; font-family: inherit;
@@ -353,10 +381,14 @@ body {
 }
 .auth-mode-toggle:hover { text-decoration: underline; }
 .account-email { color: var(--ink-soft); margin: 0 0 24px; word-break: break-all; }
-.account-danger-zone { border: 1px solid #e6b3b3; background: #fff5f5; padding: 16px 18px; border-radius: 4px; }
-.account-danger-zone h4 { margin: 0 0 8px; color: #b23b3b; font-size: var(--text-sm); }
+.account-danger-zone {
+    border: 1px solid #e6b3b3; border-color: light-dark(#e6b3b3, #5c3535);
+    background: #fff5f5; background: light-dark(#fff5f5, #2a1d1d);
+    padding: 16px 18px; border-radius: 4px;
+}
+.account-danger-zone h4 { margin: 0 0 8px; color: #b23b3b; color: light-dark(#b23b3b, #f19a9a); font-size: var(--text-sm); }
 .account-danger-zone p { margin: 0 0 14px; font-size: var(--text-sm); color: var(--ink-soft); }
-.account-delete-btn { background: #b23b3b !important; border-color: #922f2f !important; }
+.account-delete-btn { background: #b23b3b !important; border-color: #922f2f !important; color: #fff !important; }
 .account-delete-confirm { margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
 .account-delete-confirm label { font-size: var(--text-xs); color: var(--ink-soft); }
 .account-delete-confirm input {
