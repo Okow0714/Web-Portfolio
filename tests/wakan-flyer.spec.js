@@ -10,6 +10,25 @@ module.exports = async function run(page, assert, baseUrl) {
     await page.locator('button', { hasText: /Start Match|Тоглоом эхлүүлэх/ }).click();
     await page.waitForTimeout(700);
 
+    // A level deals a random one of its word sets, and the flyer can only appear if the dealt words
+    // include one with a Kango/Wago partner -- so on some deals there is no candidate and no flyer
+    // is armed. That made this spec fail roughly one CI run in ten on code that was fine (confirmed
+    // by re-running an unchanged commit: 4/5, then 5/5). Re-deal until the board can actually host
+    // the event, then force it.
+    const dealt = await page.evaluate(async () => {
+        const hasCandidate = () => {
+            const map = buildWakanMap();
+            return tiles.some(t => t.kind === 'jp' && !t.cleared && map.has(t.text));
+        };
+        for (let tries = 0; tries < 25; tries++) {
+            if (hasCandidate()) return tries;
+            startLevel(currentLevel);            // re-picks one of the level's sets at random
+            await new Promise(r => setTimeout(r, 60));
+        }
+        return -1;
+    });
+    assert.ok(dealt >= 0, 'no deal in 25 tries contained a word with a Kango/Wago partner');
+
     await page.evaluate(() => { matchedCount = 13; maybeArmFlyer(); });
     await page.waitForTimeout(2500);
     const flyBox = await page.locator('.flyer').boundingBox();
