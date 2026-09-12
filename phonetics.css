@@ -38,7 +38,9 @@ body:has(.phonetics-main),
     --border-strong: #a8c0af;
     --text-primary: #1c2f25;
     --text-secondary: #566b5d;
-    --text-muted: #6a7f72;
+    /* was #6a7f72: 3.23:1 on the level-rail labels and 3.74:1 on the help button, both well
+       under the 4.5 floor for the small text they carry */
+    --text-muted: #55665b;
     --accent: #b35f2f;
     --accent-light: #d1834f;
     --accent-dark: #8c4620;

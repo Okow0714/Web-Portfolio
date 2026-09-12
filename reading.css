@@ -48,14 +48,16 @@ body:has(.reading-main),
     --text-primary: light-dark(#4a3510, #f2e7d2);
     --text-secondary: #7a6435;
     --text-secondary: light-dark(#7a6435, #cdbb99);
-    --text-muted: #a08a5c;
-    --text-muted: light-dark(#a08a5c, #a3926f);
+    /* was #a08a5c: 2.85:1 behind the "How this works" label, under the 4.5 floor */
+    --text-muted: #786845;
+    --text-muted: light-dark(#786845, #a3926f);
     --accent: #b8791f;
     --accent: light-dark(#b8791f, #d9a03f);
     --accent-light: #d99f3f;
     --accent-light: light-dark(#d99f3f, #e8bd6d);
-    --accent-dark: #8f5c14;
-    --accent-dark: light-dark(#8f5c14, #e8bd6d);
+    /* was #8f5c14: 4.12:1 on the mic and guest hints' tinted panel, just under the floor */
+    --accent-dark: #855613;
+    --accent-dark: light-dark(#855613, #e8bd6d);
     --accent-tint: rgba(184, 121, 31, 0.16);
     --accent-tint: light-dark(rgba(184, 121, 31, 0.16), rgba(217, 160, 63, 0.18));
     --accent-gradient: linear-gradient(135deg, var(--accent-light), var(--accent));

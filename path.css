@@ -25,7 +25,8 @@ body:has(.path-main) {
     --ink-faint: #6f6858;
 
     /* One accent, used only for the stage you are on and the "ready when" band. */
-    --saffron: #9a6410;
+    /* was #9a6410: 4.36:1 on the stage markers and "Start here" chips, under the floor */
+    --saffron: #94600f;
     --saffron-bright: #b3761a;
     --saffron-tint: #f6efdf;
 

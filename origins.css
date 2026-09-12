@@ -28,8 +28,10 @@ body:has(.origins-main),
     --text-primary: light-dark(#191c22, #eef0f4);
     --text-secondary: #464e5c;
     --text-secondary: light-dark(#464e5c, #b9c0cc);
-    --text-muted: #656d7d;
-    --text-muted: light-dark(#656d7d, #8f97a5);
+    /* was #656d7d: 4.48:1 on this page's ground -- the eyebrow, the sub-paragraphs and the
+       era captions all sat just under the 4.5 floor */
+    --text-muted: #636b7b;
+    --text-muted: light-dark(#636b7b, #8f97a5);
     --accent: #a5391f;
     --accent: light-dark(#a5391f, #e0715a);          /* vermilion — the Japanese side */
     --accent-dark: #8a2f19;
