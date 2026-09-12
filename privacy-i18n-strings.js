@@ -36,6 +36,11 @@ Object.assign(window.I18N_STRINGS, {
         mn: '<strong>Суралцах явц</strong> — таны дуусгасан Үг холбох тоглоомын шатууд, тэдгээрийн шилдэг хугацаа/хөдөлгөөн, дуусгасан Дүрэм холбохын шатууд, тэдгээрийн шилдэг хугацаа/алдаа, мөн зам бүрээр дуусгасан Уншлагын дадлагын текстүүд.'
     },
 
+    'privacy.whatICollect.settings': {
+        en: '<strong>Your display settings</strong> — the site language, the darker-theme toggle, the reading-style choice and which page tours you have already seen, so a second device starts the way you left the first one. Preferences only; nothing about what you studied.',
+        mn: '<strong>Таны харагдах байдлын тохиргоо</strong> — сайтын хэл, бараан загварын сонголт, уншлагын хэлбэр, мөн аль хуудасны танилцуулгыг үзсэн зэрэг. Ингэснээр хоёр дахь төхөөрөмж дээр та өмнөх байдлаараа үргэлжлүүлнэ. Зөвхөн тохиргоо; юу сурсан тухай мэдээлэл агуулахгүй.'
+    },
+
     'privacy.whatICollect.days': {
         en: '<strong>Which days you studied</strong> — one row per calendar day you practised on, holding the date and how many attempts it held, so the site can show a study streak. The date comes from your own device, so your streak follows your midnight rather than the server’s. No clock times, and nothing about which tool or for how long.',
         mn: '<strong>Аль өдрүүдэд суралцсан</strong> — дасгал хийсэн хуанлийн өдөр бүрд нэг мөр: огноо болон тухайн өдрийн оролдлогын тоо. Ингэснээр суралцсан өдрийн цувааг харуулна. Огноог таны төхөөрөмжөөс авдаг тул цуваа нь серверийнх биш, таны шөнө дундаас эхэлнэ. Цагийн бүртгэл байхгүй, ямар хэрэгсэл дээр хэр удсан нь ч бүртгэгддэггүй.'
@@ -91,8 +96,8 @@ Object.assign(window.I18N_STRINGS, {
         mn: '<strong>Юу ч суулгахгүйгээр:</strong> бүртгүүлсэн хаягаасаа <a href="mailto:ganzorig2003@gmail.com">ganzorig2003@gmail.com</a> руу захидал бичээрэй. Би аль болох хурдан, хамгийн оройдоо 30 хоногийн дотор устгана.'
     },
     'privacy.deleteAccount.whatGoes': {
-        en: '<strong>What is deleted:</strong> your account and everything tied to it — your profile and display name, saved bookmarks, any message you sent through the contact form, your Word Match, Dokkai Reader and Grammar Connect progress, the per-word counts behind your review list, and the record of which days you studied. It is a single database deletion that cascades to all of them; nothing is held back.',
-        mn: '<strong>Юу устах вэ:</strong> таны бүртгэл, түүнд холбоотой бүх зүйл — хувийн мэдээлэл, харагдах нэр, хадгалсан хавчуургууд, холбоо барих маягтаар илгээсэн захидал, «Үг холбох тоглоом», «Уншлагын дадлага», «Дүрэм холбох»-ын явц, давтах жагсаалтын ард байгаа үг тус бүрийн тоолол, мөн суралцсан өдрүүдийн бүртгэл. Энэ бол өгөгдлийн сангийн ганц удаагийн устгал бөгөөд бүгдэд нь дамжин үйлчилнэ; юу ч үлдэхгүй.'
+        en: '<strong>What is deleted:</strong> your account and everything tied to it — your profile and display name, saved bookmarks, any message you sent through the contact form, your Word Match, Dokkai Reader and Grammar Connect progress, the per-word counts behind your review list, the record of which days you studied, and your display settings. It is a single database deletion that cascades to all of them; nothing is held back.',
+        mn: '<strong>Юу устах вэ:</strong> таны бүртгэл, түүнд холбоотой бүх зүйл — хувийн мэдээлэл, харагдах нэр, хадгалсан хавчуургууд, холбоо барих маягтаар илгээсэн захидал, «Үг холбох тоглоом», «Уншлагын дадлага», «Дүрэм холбох»-ын явц, давтах жагсаалтын ард байгаа үг тус бүрийн тоолол, суралцсан өдрүүдийн бүртгэл, мөн харагдах байдлын тохиргоо. Энэ бол өгөгдлийн сангийн ганц удаагийн устгал бөгөөд бүгдэд нь дамжин үйлчилнэ; юу ч үлдэхгүй.'
     },
     'privacy.deleteAccount.whatStays': {
         en: '<strong>What isn’t mine to delete:</strong> my web host’s standard request logs and my database provider’s routine backups, which age out on their own schedules. I don’t read either one and can’t pick your rows out of them.',

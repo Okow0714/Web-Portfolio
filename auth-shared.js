@@ -456,3 +456,114 @@ function updateAuthUI(session) {
 
 supabaseClient.auth.getSession().then(({ data }) => updateAuthUI(data.session));
 supabaseClient.auth.onAuthStateChange((_event, session) => updateAuthUI(session));
+
+// ---------------------------------------------------------------------------
+// Settings that follow the account (user_settings, migration 009)
+//
+// Language, the darker-theme toggle, the reading style and which page tours have been seen live in
+// localStorage, so signing in on a second device gave an English site, kana readings and every
+// coach mark again. This lives in auth-shared.js because it is the one script every page already
+// loads, and because it needs the session anyway.
+//
+// The rule is simple enough to predict:
+//   * the FIRST time a device syncs for an account, the stored settings win -- that is the whole
+//     point, a new device inheriting what you already chose;
+//   * after that the device's own choices win and are pushed up, so changing the language here does
+//     not get undone by what another device saved last week;
+//   * tours are a union, never subtracted -- having seen a tour anywhere means having seen it.
+// ---------------------------------------------------------------------------
+(function () {
+    const PREF_KEYS = { lang: 'site-lang', darker: 'khanjp-darker', readingStyle: 'khanjp-reading-style' };
+    const TOUR_PREFIX = 'khanjp-tour-';
+    const SYNCED_KEY = 'khanjp-settings-account';   // which account this device last synced with
+    const PUSH_DELAY = 800;
+
+    let userId = null;
+    let applying = false;     // guards the push that each setter's own change event would trigger
+    let pushTimer = null;
+
+    const ls = (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } };
+    const lsSet = (k, v) => { try { localStorage.setItem(k, v); } catch (e) { /* private mode */ } };
+
+    function tourKeys() {
+        const out = [];
+        try {
+            for (let i = 0; i < localStorage.length; i++) {
+                const k = localStorage.key(i);
+                if (k && k.indexOf(TOUR_PREFIX) === 0 && localStorage.getItem(k) === '1') out.push(k);
+            }
+        } catch (e) { /* private mode */ }
+        return out.sort();
+    }
+
+    function localSettings() {
+        const s = { tours: tourKeys() };
+        Object.keys(PREF_KEYS).forEach(name => {
+            const v = ls(PREF_KEYS[name]);
+            if (v !== null) s[name] = v;
+        });
+        return s;
+    }
+
+    function applyRemote(remote) {
+        if (!remote) return;
+        applying = true;
+        try {
+            if (remote.lang && remote.lang !== ls(PREF_KEYS.lang) && window.setSiteLang) window.setSiteLang(remote.lang);
+            if (typeof remote.darker === 'string' && remote.darker !== ls(PREF_KEYS.darker) && window.setDarkerTheme) {
+                window.setDarkerTheme(remote.darker === '1');
+            }
+            if (remote.readingStyle && remote.readingStyle !== ls(PREF_KEYS.readingStyle) && window.setReadingStyle) {
+                window.setReadingStyle(remote.readingStyle);
+            }
+        } finally {
+            // the setters fire their change events synchronously; let them land before re-arming
+            setTimeout(() => { applying = false; }, 0);
+        }
+        // tours are merged, not replaced: seen anywhere is seen
+        (remote.tours || []).forEach(k => { if (typeof k === 'string' && k.indexOf(TOUR_PREFIX) === 0) lsSet(k, '1'); });
+    }
+
+    // Skips a write that would store exactly what was stored last. Without this every page load
+    // wrote four times: onAuthChange fires for the restored session and again for the sign-in
+    // event, and each one ended with a push.
+    let lastPushed = null;
+
+    async function push() {
+        if (!userId || !window.supabaseReady) return;
+        const settings = localSettings();
+        const asJson = JSON.stringify(settings);
+        if (asJson === lastPushed) return;
+        lastPushed = asJson;
+        try {
+            await window.supabaseClient.from('user_settings')
+                .upsert({ user_id: userId, settings, updated_at: new Date().toISOString() }, { onConflict: 'user_id' });
+        } catch (e) { lastPushed = null; /* offline; the next change tries again */ }
+    }
+
+    function schedulePush() {
+        if (applying || !userId) return;
+        clearTimeout(pushTimer);
+        pushTimer = setTimeout(push, PUSH_DELAY);
+    }
+
+    ['sitelangchange', 'displayprefchange', 'readingstylechange'].forEach(evt =>
+        document.addEventListener(evt, schedulePush));
+
+    window.onAuthChange(async (session) => {
+        if (!session || !window.supabaseReady) { userId = null; return; }
+        userId = session.user.id;
+        const firstSyncHere = ls(SYNCED_KEY) !== userId;
+        let remote = null;
+        try {
+            const { data, error } = await window.supabaseClient
+                .from('user_settings').select('settings').eq('user_id', userId).maybeSingle();
+            if (!error && data) remote = data.settings;
+        } catch (e) { return; }   // offline: leave this device's own settings alone
+
+        if (firstSyncHere) applyRemote(remote);
+        else if (remote && remote.tours) applyRemote({ tours: remote.tours });
+        lsSet(SYNCED_KEY, userId);
+        push();   // whichever way it went, the server ends up holding the union
+    });
+})();

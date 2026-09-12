@@ -201,6 +201,13 @@ and moderation for something nobody had ever posted to. Its removal is what let 
 being world-readable — that policy existed solely so the comment list could embed author names,
 and every remaining query reads or writes the caller's own row. Don't reintroduce public reads
 on `profiles` without re-checking what would become enumerable.
+**Settings follow the account** (`user_settings`, migration 009, synced from the block at the end of
+`auth-shared.js` since that is the one script every page loads): site language, darker theme, reading
+style and which tours have been seen. First sync on a device adopts what the account holds; after
+that the device's own choices win and are pushed. Tours are a union, never subtracted. Deliberately
+not on `profiles`, which is reachable by others in places. `reset_own_progress` does not clear them --
+resetting progress should not change your language.
+
 **`grant execute ... to authenticated` is not a whitelist**: Postgres also grants EXECUTE to
 PUBLIC on every newly created function, so all five RPCs were callable by anyone holding the
 publishable key until `supabase-migration-007-lock-function-grants.sql` revoked it. Probed live:
