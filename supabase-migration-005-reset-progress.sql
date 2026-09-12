@@ -49,4 +49,7 @@ begin
 end;
 $$;
 
+-- Postgres grants EXECUTE to PUBLIC on a new function, so the grant below is not the whole
+-- picture without this revoke (see supabase-migration-007-lock-function-grants.sql).
+revoke execute on function public.reset_own_progress() from public, anon;
 grant execute on function public.reset_own_progress() to authenticated;

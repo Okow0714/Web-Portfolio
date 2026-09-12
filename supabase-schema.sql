@@ -248,6 +248,9 @@ begin
 end;
 $$;
 
+-- Postgres grants EXECUTE to PUBLIC on a new function, so the grant below is not the whole
+-- picture without this revoke (see supabase-migration-007-lock-function-grants.sql).
+revoke execute on function public.record_word_attempt(text, text, boolean, text) from public, anon;
 grant execute on function public.record_word_attempt(text, text, boolean, text) to authenticated;
 
 -- delete_own_account: lets a logged-in user permanently delete their own
@@ -269,4 +272,7 @@ begin
 end;
 $$;
 
+-- Postgres grants EXECUTE to PUBLIC on a new function, so the grant below is not the whole
+-- picture without this revoke (see supabase-migration-007-lock-function-grants.sql).
+revoke execute on function public.delete_own_account() from public, anon;
 grant execute on function public.delete_own_account() to authenticated;

@@ -201,6 +201,13 @@ and moderation for something nobody had ever posted to. Its removal is what let 
 being world-readable — that policy existed solely so the comment list could embed author names,
 and every remaining query reads or writes the caller's own row. Don't reintroduce public reads
 on `profiles` without re-checking what would become enumerable.
+**`grant execute ... to authenticated` is not a whitelist**: Postgres also grants EXECUTE to
+PUBLIC on every newly created function, so all five RPCs were callable by anyone holding the
+publishable key until `supabase-migration-007-lock-function-grants.sql` revoked it. Probed live:
+`get_dashboard_stats` answered an unauthenticated caller with the site's user count and average
+score. Every `create function` needs a matching `revoke execute ... from public, anon`, and a
+SECURITY DEFINER function should still check `auth.uid() is null` itself rather than relying on
+`id = auth.uid()` matching no rows.
 
 **PWA / `sw.js`**: precaches an `APP_SHELL` list (every page, its CSS, and its non-data JS —
 large per-tool data files are deliberately excluded, see the file's own header) via
