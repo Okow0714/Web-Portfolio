@@ -13,6 +13,7 @@
    rather than the whole token block. */
 body:has(.grammar-main) {
     background: #12192b;
+    background: light-dark(#e7e0ce, #12192b);
 }
 
 .grammar-main {
@@ -20,11 +21,16 @@ body:has(.grammar-main) {
     --ai-light: #4a63a0;
     --ai-pale: #7d93c9;
     --shu: #bc4430;
+    --shu: light-dark(#8f2d1a, #bc4430);
     --shu-light: #e0705a;
+    --shu-light: light-dark(#a8341f, #e0705a);
     --washi: #ece5d3;
     --card: #241f38;
+    --card: light-dark(#fbf7ec, #241f38);
     --card-edge: rgba(241, 237, 224, 0.14);
+    --card-edge: light-dark(rgba(31, 42, 68, 0.16), rgba(241, 237, 224, 0.14));
     --ink: #f1ede0;
+    --ink: light-dark(#1d2740, #f1ede0);
     /* Both of these are text colours -- every single use of them in this file is a `color`, none
        is a border or a fill -- so both have to clear 4.5:1 on this page's grounds, and neither
        did. --ink-faint at 32% measured 2.30:1 on the track swatch and 2.63:1 on a card; it was
@@ -33,9 +39,12 @@ body:has(.grammar-main) {
        is meant to read. Raised to 66% (4.74:1 at worst) and --ink-soft with it, so the three
        steps stay in order: full ink, soft, faint. */
     --ink-soft: rgba(241, 237, 224, 0.82);
+    --ink-soft: light-dark(rgba(29, 39, 64, 0.82), rgba(241, 237, 224, 0.82));
     --ink-faint: rgba(241, 237, 224, 0.66);
+    --ink-faint: light-dark(rgba(29, 39, 64, 0.64), rgba(241, 237, 224, 0.66));
     --good: #4f8a68;
     --good-bright: #7fbf9e;
+    --good-bright: light-dark(#2d7d57, #7fbf9e);
 
     --font-jp: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "MS Mincho", serif;
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -46,6 +55,7 @@ body:has(.grammar-main) {
     padding: 89px 40px 60px;
     min-height: 100vh;
     background: radial-gradient(ellipse 120% 60% at 50% -10%, #1c2542 0%, #161d38 45%, #12192b 100%);
+    /* gradients cannot go through light-dark(), so the daytime wash is scoped below */
     color: var(--ink);
 }
 
@@ -146,9 +156,11 @@ body:has(.grammar-main) {
        it is tuned for the flat card faces, not for sitting on a photograph. The hue is kept so
        the wordmark still reads as this tool's accent. */
     color: #f3a493;
+    color: light-dark(#8f2d1a, #f3a493);
     letter-spacing: 0.04em;
     margin-top: 4px;
     text-shadow: 0 1px 12px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 1px 12px light-dark(rgba(255, 255, 255, 0.65), rgba(0, 0, 0, 0.5));
 }
 
 .gc-subtitle {
@@ -156,6 +168,7 @@ body:has(.grammar-main) {
     /* Not --ink-soft here. That token is 55% alpha, which is right on the flat card faces this
        theme uses elsewhere but leaves this paragraph translucent over a photograph. */
     color: rgba(241, 237, 224, 0.88);
+    color: light-dark(rgba(29, 39, 64, 0.92), rgba(241, 237, 224, 0.88));
     font-size: 0.98rem;
     line-height: 1.6;
     margin: 0;
@@ -166,7 +179,7 @@ body:has(.grammar-main) {
    flat panels the other tools put it on and disappears over this page's photograph. Scoped to
    this hero only, so the shared tutorial.css and the other five tools are untouched. */
 #gc-select-section .tour-help-btn {
-    background: rgba(9, 13, 24, 0.72);
+    background: light-dark(rgba(255, 252, 245, 0.8), rgba(9, 13, 24, 0.72));
     border-color: rgba(241, 237, 224, 0.34);
     color: var(--ink);
     backdrop-filter: blur(3px);
@@ -174,7 +187,7 @@ body:has(.grammar-main) {
 }
 
 #gc-select-section .tour-help-btn:hover {
-    background: rgba(9, 13, 24, 0.88);
+    background: light-dark(rgba(255, 252, 245, 0.94), rgba(9, 13, 24, 0.88));
     border-color: var(--shu-light);
 }
 
@@ -218,7 +231,7 @@ body:has(.grammar-main) {
 .gc-diff-swatch {
     flex: 1;
     min-width: 220px;
-    background: rgba(20, 27, 51, 0.72);
+    background: light-dark(rgba(255, 252, 245, 0.84), rgba(20, 27, 51, 0.72));
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
     border: 1px solid var(--card-edge);
@@ -256,7 +269,7 @@ body:has(.grammar-main) {
 }
 
 .gc-level-card {
-    background: rgba(20, 27, 51, 0.72);
+    background: light-dark(rgba(255, 252, 245, 0.84), rgba(20, 27, 51, 0.72));
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
     border: 1px solid var(--card-edge);
@@ -727,4 +740,75 @@ html[data-contrast="darker"] .grammar-main {
 /* The page ground is a literal here rather than a token, so it has to be restated. */
 html[data-contrast="darker"] body:has(.grammar-main) {
     background: #0b0f1a;
+}
+
+/* ---------------------------------------------------------------------------
+   Daytime counterpart. Grammar Connect is dark-first, so everything above is the night
+   version and this is what changes when the visitor is in light mode -- by their device's
+   setting, or because they picked Light in the masthead.
+   --------------------------------------------------------------------------- */
+@media (prefers-color-scheme: light) {
+    html:not([data-theme="dark"]) body:has(.grammar-main) {
+        /* The photograph itself. light-dark() only takes colours, not url(), so the daytime image is a
+           real override rather than a token -- stated twice so that "follow the device" and an explicit
+           Light choice both reach it. */
+        .gc-night-sky {
+            background:
+                linear-gradient(180deg, rgba(231, 224, 206, 0.30) 0%, rgba(231, 224, 206, 0.62) 55%, #e7e0ce 100%),
+                url('images/grammar-bg/tokyo-day.jpg');
+            background-size: cover;
+            background-position: center 38%;
+        }
+
+        /* The scrim darkens the top band for light text on the night photo. In daylight the text is
+           ink, so it has to lighten instead -- same job, opposite direction. */
+        .gc-night-sky::after {
+            background: linear-gradient(180deg,
+                rgba(236, 229, 211, 0.88) 0%,
+                rgba(236, 229, 211, 0.82) 26%,
+                rgba(236, 229, 211, 0.46) 46%,
+                rgba(236, 229, 211, 0) 60%);
+        }
+
+        /* The page wash behind the board. A gradient cannot go through light-dark(), so this is
+       the one piece of the daytime theme that has to be restated rather than paired. */
+    .grammar-main {
+        background: radial-gradient(ellipse 120% 60% at 50% -10%, #f7f2e5 0%, #efe9da 45%, #e7e0ce 100%);
+    }
+
+    /* Stars over a daytime sky read as dust on the screen. */
+        .gc-stars { display: none; }
+    }
+}
+
+html[data-theme="light"] body:has(.grammar-main) {
+    /* The photograph itself. light-dark() only takes colours, not url(), so the daytime image is a
+       real override rather than a token -- stated twice so that "follow the device" and an explicit
+       Light choice both reach it. */
+    .gc-night-sky {
+        background:
+            linear-gradient(180deg, rgba(231, 224, 206, 0.30) 0%, rgba(231, 224, 206, 0.62) 55%, #e7e0ce 100%),
+            url('images/grammar-bg/tokyo-day.jpg');
+        background-size: cover;
+        background-position: center 38%;
+    }
+
+    /* The scrim darkens the top band for light text on the night photo. In daylight the text is
+       ink, so it has to lighten instead -- same job, opposite direction. */
+    .gc-night-sky::after {
+        background: linear-gradient(180deg,
+            rgba(236, 229, 211, 0.88) 0%,
+            rgba(236, 229, 211, 0.82) 26%,
+            rgba(236, 229, 211, 0.46) 46%,
+            rgba(236, 229, 211, 0) 60%);
+    }
+
+    /* The page wash behind the board. A gradient cannot go through light-dark(), so this is
+       the one piece of the daytime theme that has to be restated rather than paired. */
+    .grammar-main {
+        background: radial-gradient(ellipse 120% 60% at 50% -10%, #f7f2e5 0%, #efe9da 45%, #e7e0ce 100%);
+    }
+
+    /* Stars over a daytime sky read as dust on the screen. */
+    .gc-stars { display: none; }
 }

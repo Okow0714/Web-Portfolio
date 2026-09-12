@@ -8,25 +8,40 @@
    since body is an ancestor and can't read a descendant's custom properties. */
 body:has(.dash-main) {
     --bg-page: #eef1f4;
+    --bg-page: light-dark(#eef1f4, #0f141b);
     background: var(--bg-page);
 }
 
 .dash-main {
     --bg-page: #eef1f4;
+    --bg-page: light-dark(#eef1f4, #0f141b);
     --surface: #ffffff;
+    --surface: light-dark(#ffffff, #161d26);
     --surface-edge: #dbe1e8;
+    --surface-edge: light-dark(#dbe1e8, #26313f);
     --ink: #1c2733;
+    --ink: light-dark(#1c2733, #e7edf5);
     --ink-soft: #55636f;
+    --ink-soft: light-dark(#55636f, #a9b6c6);
     --ink-faint: #8996a3;
+    --ink-faint: light-dark(#8996a3, #7c8a9c);
     --rule: #dbe1e8;
+    --rule: light-dark(#dbe1e8, #26313f);
     --accent: #2f6fed;
+    --accent: light-dark(#2f6fed, #6ea8ff);
     --accent-light: #6d97f2;
+    --accent-light: light-dark(#6d97f2, #8dbcff);
     --accent-dark: #1f4fb8;
+    --accent-dark: light-dark(#1f4fb8, #8dbcff);
     --accent-tint: rgba(47, 111, 237, 0.08);
+    --accent-tint: light-dark(rgba(47, 111, 237, 0.08), rgba(110, 168, 255, 0.14));
     --average: #d99a3d;
+    --average: light-dark(#d99a3d, #e0aa55);
     /* Darker than --average because this one carries text on white and has to pass AA. */
     --warn: #b4690e;
+    --warn: light-dark(#b4690e, #e8a34d);
     --average-tint: rgba(217, 154, 61, 0.12);
+    --average-tint: light-dark(rgba(217, 154, 61, 0.12), rgba(224, 170, 85, 0.16));
 
     display: block;
     /* Same 89px masthead clearance as every other page. Its absence only showed when signed
@@ -172,7 +187,9 @@ body:has(.dash-main) {
 .dash-due-sub { margin: 6px 0 0; font-size: 0.78rem; color: var(--ink-faint); max-width: 60ch; }
 /* .dash-main .dash-due-btn, not .dash-due-btn: `.dash-main a { color: inherit }` above is more specific
    and turned the label dark blue on the blue button. */
-.dash-main .dash-due-btn { white-space: nowrap; font-weight: 700; font-size: 0.92rem; color: #fff; background: var(--accent);
+.dash-main .dash-due-btn { white-space: nowrap; font-weight: 700; font-size: 0.92rem;
+    /* --accent is a bright blue in dark mode, so the label on it flips instead of staying white */
+    color: #fff; color: light-dark(#fff, #0d1219); background: var(--accent);
     padding: 10px 18px; border-radius: 8px; text-decoration: none; }
 .dash-main .dash-due-btn:hover { background: var(--accent-dark); }
 .dash-due-btn:focus-visible { outline: 2px solid var(--accent-dark); outline-offset: 2px; }

@@ -35,21 +35,35 @@
 body:has(.reading-main),
 .reading-main {
     --bg-page: #f7ecd2;
+    --bg-page: light-dark(#f7ecd2, #191410);
     --bg-surface: #fdf6e6;
+    --bg-surface: light-dark(#fdf6e6, #221b14);
     --bg-surface-alt: #f0e0bc;
+    --bg-surface-alt: light-dark(#f0e0bc, #2b2219);
     --border: #e0c690;
+    --border: light-dark(#e0c690, #3d3020);
     --border-strong: #c9a563;
+    --border-strong: light-dark(#c9a563, #5a462c);
     --text-primary: #4a3510;
+    --text-primary: light-dark(#4a3510, #f2e7d2);
     --text-secondary: #7a6435;
+    --text-secondary: light-dark(#7a6435, #cdbb99);
     --text-muted: #a08a5c;
+    --text-muted: light-dark(#a08a5c, #a3926f);
     --accent: #b8791f;
+    --accent: light-dark(#b8791f, #d9a03f);
     --accent-light: #d99f3f;
+    --accent-light: light-dark(#d99f3f, #e8bd6d);
     --accent-dark: #8f5c14;
+    --accent-dark: light-dark(#8f5c14, #e8bd6d);
     --accent-tint: rgba(184, 121, 31, 0.16);
+    --accent-tint: light-dark(rgba(184, 121, 31, 0.16), rgba(217, 160, 63, 0.18));
     --accent-gradient: linear-gradient(135deg, var(--accent-light), var(--accent));
     --accent-gradient-hover: linear-gradient(135deg, var(--accent), var(--accent-dark));
     --shadow-sm: 0 2px 10px rgba(74, 53, 16, 0.10);
+    --shadow-sm: light-dark(0 2px 10px rgba(74, 53, 16, 0.10), 0 2px 10px rgba(0, 0, 0, 0.45));
     --shadow-md: 0 14px 32px rgba(74, 53, 16, 0.18);
+    --shadow-md: light-dark(0 14px 32px rgba(74, 53, 16, 0.18), 0 14px 32px rgba(0, 0, 0, 0.55));
 }
 
 body:has(.reading-main) {

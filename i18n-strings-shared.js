@@ -74,6 +74,10 @@ window.I18N_STRINGS = {
         mn: 'Ханзны дээр гарах жижиг уншлага. Кана сурч байгаа бол тустай — япон бичвэр өөрөө огт өөрчлөгдөхгүй.'
     },
 
+    'theme.auto': { en: 'Auto', mn: 'Авто' },
+    'theme.light': { en: 'Light', mn: 'Цайвар' },
+    'theme.dark': { en: 'Dark', mn: 'Бараан' },
+    'theme.switchLabel': { en: 'Appearance: {mode}. Tap to change.', mn: 'Харагдах байдал: {mode}. Солихын тулд дарна уу.' },
     'account.darkerLabel': { en: 'Darker theme', mn: 'Илүү бараан загвар' },
     'account.darkerNote': {
         en: 'Drops the dark pages and the site header to a midnight version of the same colours. Pages that are already light keep their own colours.',

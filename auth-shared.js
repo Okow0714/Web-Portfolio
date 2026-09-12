@@ -255,6 +255,35 @@ if (darkerToggleBtn) {
     document.addEventListener('sitelangchange', renderDarkerToggle);
 }
 
+// Light / dark, in the masthead beside the language switch. display-prefs.js owns the preference
+// and applied it before the first paint; this is only the control. One button cycling three states
+// -- follow the device, light, dark -- rather than two controls, because "follow the device" has to
+// be reachable again once someone has pinned a theme.
+const themeSwitchBtn = document.getElementById('theme-switch');
+function renderThemeSwitch() {
+    if (!themeSwitchBtn || !window.getTheme) return;
+    const chosen = window.getTheme();                 // null = following the device
+    const effective = window.getEffectiveTheme();
+    const name = tr(chosen ? 'theme.' + chosen : 'theme.auto', chosen ? chosen : 'Auto');
+    themeSwitchBtn.querySelector('.theme-switch-label').textContent = name;
+    // the icon shows what you are looking at; half-filled when it is the device's call
+    themeSwitchBtn.querySelector('.theme-switch-icon').textContent = chosen ? (effective === 'dark' ? '☾' : '☀') : '◐';
+    const label = (window.tf ? window.tf('theme.switchLabel', { mode: name }) : 'Appearance: ' + name);
+    themeSwitchBtn.setAttribute('aria-label', label);
+    themeSwitchBtn.setAttribute('title', label);
+}
+if (themeSwitchBtn) {
+    renderThemeSwitch();
+    themeSwitchBtn.addEventListener('click', () => {
+        const order = [null, 'light', 'dark'];
+        const next = order[(order.indexOf(window.getTheme()) + 1) % order.length];
+        window.setTheme(next);
+        renderThemeSwitch();
+    });
+    document.addEventListener('sitelangchange', renderThemeSwitch);
+    document.addEventListener('themechange', renderThemeSwitch);
+}
+
 // Clears every khanjp-tour-* flag, so the first-visit walkthroughs and the shared notation key
 // are all offered again. Local to this browser, like the flags themselves.
 const tutorialResetBtn = document.getElementById('tutorial-reset-btn');
@@ -473,7 +502,7 @@ supabaseClient.auth.onAuthStateChange((_event, session) => updateAuthUI(session)
 //   * tours are a union, never subtracted -- having seen a tour anywhere means having seen it.
 // ---------------------------------------------------------------------------
 (function () {
-    const PREF_KEYS = { lang: 'site-lang', darker: 'khanjp-darker', readingStyle: 'khanjp-reading-style' };
+    const PREF_KEYS = { lang: 'site-lang', darker: 'khanjp-darker', readingStyle: 'khanjp-reading-style', theme: 'khanjp-theme' };
     const TOUR_PREFIX = 'khanjp-tour-';
     const SYNCED_KEY = 'khanjp-settings-account';   // which account this device last synced with
     const PUSH_DELAY = 800;
@@ -516,6 +545,7 @@ supabaseClient.auth.onAuthStateChange((_event, session) => updateAuthUI(session)
             if (remote.readingStyle && remote.readingStyle !== ls(PREF_KEYS.readingStyle) && window.setReadingStyle) {
                 window.setReadingStyle(remote.readingStyle);
             }
+            if (remote.theme && remote.theme !== ls(PREF_KEYS.theme) && window.setTheme) window.setTheme(remote.theme);
         } finally {
             // the setters fire their change events synchronously; let them land before re-arming
             setTimeout(() => { applying = false; }, 0);
@@ -547,7 +577,7 @@ supabaseClient.auth.onAuthStateChange((_event, session) => updateAuthUI(session)
         pushTimer = setTimeout(push, PUSH_DELAY);
     }
 
-    ['sitelangchange', 'displayprefchange', 'readingstylechange'].forEach(evt =>
+    ['sitelangchange', 'displayprefchange', 'readingstylechange', 'themechange'].forEach(evt =>
         document.addEventListener(evt, schedulePush));
 
     window.onAuthChange(async (session) => {

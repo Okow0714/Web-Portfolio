@@ -78,6 +78,14 @@
                     <span aria-hidden="true">翻</span><span class="lang-switch-code"></span>
                 </button>
 
+                <!-- Light/dark sits beside the language switch for the same reason: a visitor on a
+                     phone at night needs it before deciding whether to sign up, and it must not be
+                     buried in the account menu. Three states -- follow the device, light, dark --
+                     cycled by this one button; see display-prefs.js. -->
+                <button type="button" class="lang-switch theme-switch" id="theme-switch">
+                    <span class="theme-switch-icon" aria-hidden="true">◐</span><span class="theme-switch-label"></span>
+                </button>
+
                 <div class="account-menu" id="account-menu">
                     <button class="account-menu-trigger" id="account-menu-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Account menu">
                         <span id="account-menu-avatar">

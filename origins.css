@@ -15,20 +15,34 @@
 body:has(.origins-main),
 .origins-main {
     --bg-page: #eceef2;
+    --bg-page: light-dark(#eceef2, #14161a);
     --bg-surface: #fbfbfc;
+    --bg-surface: light-dark(#fbfbfc, #1b1e24);
     --bg-sunk: #e3e6ec;
+    --bg-sunk: light-dark(#e3e6ec, #101216);
     --border: #cdd2dc;
+    --border: light-dark(#cdd2dc, #2b303a);
     --border-strong: #aeb6c4;
+    --border-strong: light-dark(#aeb6c4, #3d4450);
     --text-primary: #191c22;
+    --text-primary: light-dark(#191c22, #eef0f4);
     --text-secondary: #464e5c;
+    --text-secondary: light-dark(#464e5c, #b9c0cc);
     --text-muted: #656d7d;
-    --accent: #a5391f;          /* vermilion — the Japanese side */
+    --text-muted: light-dark(#656d7d, #8f97a5);
+    --accent: #a5391f;
+    --accent: light-dark(#a5391f, #e0715a);          /* vermilion — the Japanese side */
     --accent-dark: #8a2f19;
+    --accent-dark: light-dark(#8a2f19, #f08a72);
     --accent-tint: #f7e9e5;
-    --indigo: #2a4c7a;          /* indigo — the Mongolian side */
+    --accent-tint: light-dark(#f7e9e5, #2e1f1c);
+    --indigo: #2a4c7a;
+    --indigo: light-dark(#2a4c7a, #8fb0dd);          /* indigo — the Mongolian side */
     --indigo-tint: #e6ecf5;
+    --indigo-tint: light-dark(#e6ecf5, #1b2432);
     --shadow-sm: 0 1px 2px rgba(25, 28, 34, 0.06);
     --shadow-md: 0 1px 2px rgba(25, 28, 34, 0.06), 0 10px 26px -16px rgba(25, 28, 34, 0.32);
+    --shadow-md: light-dark(0 1px 2px rgba(25, 28, 34, 0.06), 0 10px 26px -16px rgba(25, 28, 34, 0.32), 0 1px 2px rgba(0, 0, 0, 0.5), 0 10px 26px -16px rgba(0, 0, 0, 0.7));
     /* Same system stack game.css uses for its Japanese type -- no extra web font to load. */
     --font-jp: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "MS Mincho", serif;
     --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);

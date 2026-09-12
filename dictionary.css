@@ -14,23 +14,38 @@
 
 body:has(.dictionary-main) {
     background: #eee8da;
+    background: light-dark(#eee8da, #14120e);
 }
 
 .dictionary-main {
     --bg-page: #eee8da;
+    --bg-page: light-dark(#eee8da, #14120e);
     --card: #faf7ef;
+    --card: light-dark(#faf7ef, #1e1b15);
     --card-edge: #e0d8c3;
+    --card-edge: light-dark(#e0d8c3, #332e22);
     --sumi: #262421;
+    --sumi: light-dark(#262421, #f0ebdd);
     --sumi-tint: #eae6de;
+    --sumi-tint: light-dark(#eae6de, #262117);
     --terracotta: #a94b2b; /* was #b5502e: 4.14:1 on its own surface, under AA */
+    --terracotta: light-dark(#a94b2b, #e0906c);  /* dark: lifted well past the light value, which measured under 3:1 on the dark card */
     --terracotta-tint: #f6e8de;
+    --terracotta-tint: light-dark(#f6e8de, #33231b);
     --khukh: #2a4d73;
+    --khukh: light-dark(#2a4d73, #8fb3d9);
     --khukh-tint: #e4ebf1;
+    --khukh-tint: light-dark(#e4ebf1, #1b2531);
     --ink: #3a352c;
+    --ink: light-dark(#3a352c, #ece6d8);
     --ink-soft: #635d4f; /* was #7a7261: 3.35:1 on its own surface, under AA */
+    --ink-soft: light-dark(#635d4f, #bdb5a3);
     --ink-faint: #6f6651; /* was #a89e88: 2.17:1 on its own surface, under AA */
+    --ink-faint: light-dark(#6f6651, #9a9280);
     --good: #4f7a5e;
+    --good: light-dark(#4f7a5e, #7fbf9e);
     --good-tint: #e6efe6;
+    --good-tint: light-dark(#e6efe6, #1c2a22);
 
     --font-jp: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "MS Mincho", serif;
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -164,10 +179,13 @@ body:has(.dictionary-main) {
 
 .dict-filter:hover { border-color: var(--terracotta); }
 
+/* --sumi is ink in both themes, so it is a light fill in dark mode: the label on it has to
+   flip too, or this pill is light text on a light chip. */
 .dict-filter.active {
     background: var(--sumi);
     border-color: var(--sumi);
     color: #f2ede0;
+    color: light-dark(#f2ede0, #14120e);
 }
 
 .dict-list {

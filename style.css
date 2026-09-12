@@ -474,6 +474,15 @@ body {
     opacity: 0.75;
 }
 
+/* Light/dark. `color-scheme` is what every page's light-dark() tokens resolve against: no
+   attribute means follow the device, and an explicit choice pins it. Declared on html so it also
+   drives form controls and scrollbars, which is half the point of using color-scheme at all. */
+html { color-scheme: light dark; }
+html[data-theme="light"] { color-scheme: light; }
+html[data-theme="dark"] { color-scheme: dark; }
+
+.theme-switch-icon { font-size: 0.95rem; line-height: 1; opacity: 0.85; }
+
 .lang-switch:hover { border-color: var(--header-accent, #e8bd6d); color: #fff; }
 .lang-switch:focus-visible { outline: 2px solid var(--header-accent, #e8bd6d); outline-offset: 2px; }
 
