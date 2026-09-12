@@ -39,9 +39,19 @@ Object.assign(window.I18N_STRINGS, {
     'dash.missed.practise': { en: 'Practise these in Word Match →', mn: 'Эдгээрийг «Үг холбох тоглоом» дээр давтах →' },
     'dash.missed.h': { en: 'Words you keep missing', mn: 'Байнга алддаг үгс' },
     'dash.missed.sub': {
-        en: 'Counted from every wrong pair, wrong tile and skipped word across the tools.',
-        mn: 'Хэрэгслүүд дээр буруу холбосон хос, буруу дарсан хавтан, алгасасан үг бүрээс тоолсон.'
+        en: 'Counted from every wrong pair in Word Match and every word skipped in Dokkai Reader. Grammar has its own list below.',
+        mn: '«Үг холбох» дээр буруу холбосон хос, «Уншлагын дадлага» дээр алгасасан үг бүрээс тоолсон. Дүрмийн жагсаалт доор тусдаа байна.'
     },
+    'dash.gmissed.h': { en: 'Grammar you keep missing', mn: 'Байнга алддаг дүрмүүд' },
+    'dash.gmissed.sub': {
+        en: 'Counted per grammar point, not per sentence — every sentence teaching 〜ざるをえない counts toward the same one.',
+        mn: 'Өгүүлбэр тус бүрээр биш, дүрэм тус бүрээр тоолсон — 〜ざるをえない-г заасан бүх өгүүлбэр нэг дүрэм дээр нэмэгдэнэ.'
+    },
+    'dash.gmissed.empty': {
+        en: 'Nothing here yet. Play a Grammar Connect level and anything you trip over will show up.',
+        mn: 'Одоохондоо юу ч алга. «Дүрэм холбох» шат тоглоод үзвэл бүдэрсэн бүхэн чинь энд гарч ирнэ.'
+    },
+    'dash.gmissed.practise': { en: 'Drill these in Grammar Connect →', mn: 'Эдгээрийг «Дүрэм холбох» дээр давтах →' },
     'dash.missed.empty': {
         en: 'Nothing here yet. Play a level and anything you trip over will show up.',
         mn: 'Одоохондоо юу ч алга. Нэг шат тоглоод үзвэл бүдэрсэн бүхэн чинь энд гарч ирнэ.'

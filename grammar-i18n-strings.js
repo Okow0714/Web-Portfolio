@@ -17,6 +17,7 @@ Object.assign(window.I18N_STRINGS, {
     'grammar.foundation': { en: 'Foundation', mn: 'Суурь' },
     'grammar.advanced': { en: 'Advanced', mn: 'Ахисан' },
     'grammar.levelsCount': { en: '{n} levels', mn: '{n} шат' },
+    'grammar.reviewTitle': { en: 'Review · your weak points', mn: 'Давталт · сул талууд' },
     'grammar.trackLevel': { en: '{track} · Level {n}', mn: '{track} · {n}-р шат' },
     'grammar.clearedEmptyHint': { en: 'Solved sentences (with their translation) will appear here as you go.', mn: 'Шийдсэн өгүүлбэрүүд орчуулгынхаа хамт ажиллах тусам энд нэмэгдэнэ.' },
     'grammar.comingSoon': { en: 'Coming soon', mn: 'Удахгүй' },

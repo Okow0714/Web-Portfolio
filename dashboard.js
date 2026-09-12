@@ -106,12 +106,42 @@
     const MISSED_LIMIT = 8;
     const SOURCE_KEY = { game: 'nav.wordGame', grammar: 'nav.grammarConnect', reading: 'nav.dokkaiReader' };
 
+    // Grammar has its own list because its rows are keyed by grammar point (word_stats.word holds
+    // the sentence's newCore), so one entry stands for every sentence teaching that point -- mixed
+    // into the word list it read as just another vocabulary item.
+    async function loadMissedGrammar(userId) {
+        const listEl = document.getElementById('dash-gmissed-list');
+        const emptyEl = document.getElementById('dash-gmissed-empty');
+        const practiseEl = document.getElementById('dash-gmissed-practise');
+        const { data, error } = await sb.from('word_stats')
+            .select('word, misses, confused_with')
+            .eq('user_id', userId).eq('source', 'grammar')
+            .gt('misses', 0).order('misses', { ascending: false }).limit(MISSED_LIMIT);
+        listEl.innerHTML = '';
+        if (error || !data || !data.length) { showEl(emptyEl); hideEl(practiseEl); return; }
+        hideEl(emptyEl);
+        showEl(practiseEl);
+        data.forEach(row => {
+            const li = document.createElement('li');
+            li.className = 'dash-missed-row';
+            const picked = row.confused_with
+                ? '<span class="dash-missed-confused">' + window.tf('dash.missed.picked', { word: escapeHtml(row.confused_with) }) + '</span>'
+                : '';
+            li.innerHTML =
+                '<span class="dash-missed-word" lang="ja">' + escapeHtml(row.word) + '</span>' +
+                '<span class="dash-missed-meta">' + picked + '</span>' +
+                '<span class="dash-missed-count">' + escapeHtml(window.tf('dash.missed.times', { n: row.misses })) + '</span>';
+            listEl.appendChild(li);
+        });
+    }
+
     async function loadMissedWords(userId) {
         const listEl = document.getElementById('dash-missed-list');
         const emptyEl = document.getElementById('dash-missed-empty');
         const { data, error } = await sb.from('word_stats')
             .select('word, source, misses, confused_with')
             .eq('user_id', userId)
+            .in('source', ['game', 'reading'])   // grammar has its own list, keyed by grammar point
             .gt('misses', 0)
             .order('misses', { ascending: false })
             .limit(MISSED_LIMIT);
@@ -159,6 +189,7 @@
             loadScore(),
             loadMissedWords(session.user.id),
             loadDue(session.user.id),
+            loadMissedGrammar(session.user.id),
         ]);
     }
 

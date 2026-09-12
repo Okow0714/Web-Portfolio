@@ -554,6 +554,87 @@ function openLevel(track, levelNum) {
     showEl(document.getElementById('gc-start-modal'));
 }
 
+// ---------------------------------------------------------------------------
+// Weak-point review: grammar.html?review=1
+//
+// Builds a level out of the grammar points this learner actually gets wrong, instead of a fixed
+// one. word_stats files every Grammar Connect attempt under the sentence's `newCore` -- the grammar
+// point it teaches -- so one row covers every sentence drilling that point (ざるをえない is 13 of
+// them), which is what makes "the points you miss" a meaningful list rather than a pile of
+// individual sentences. Due words lead, then the most-missed, the same order Word Match's review
+// uses; one sentence per point first, so a ten-sentence review covers ten weaknesses rather than
+// ten sentences of the same one.
+const GRAMMAR_REVIEW_MIN = 4;
+
+function sentencesByCore() {
+    const byCore = new Map();
+    TRACKS.forEach(track => (GRAMMAR_LEVELS[track] || []).forEach(lv => lv.sentences.forEach(s => {
+        if (!s.newCore) return;
+        if (!byCore.has(s.newCore)) byCore.set(s.newCore, []);
+        byCore.get(s.newCore).push(s);
+    })));
+    return byCore;
+}
+
+async function startGrammarReview(session) {
+    const now = new Date().toISOString();
+    const base = () => sb.from('word_stats').select('word, misses, due_at')
+        .eq('user_id', session.user.id).eq('source', 'grammar').gt('misses', 0);
+    const [dueRes, missedRes] = await Promise.all([
+        base().lte('due_at', now).order('due_at', { ascending: true }).limit(40),
+        base().order('misses', { ascending: false }).limit(40),
+    ]);
+    if (missedRes.error || !missedRes.data) return false;
+
+    const byCore = sentencesByCore();
+    const cores = [];
+    for (const row of (dueRes.error ? [] : dueRes.data || []).concat(missedRes.data)) {
+        if (!cores.includes(row.word) && byCore.has(row.word)) cores.push(row.word);
+    }
+    if (!cores.length) return false;
+
+    // one per point first, then round again to fill the level
+    const picked = [];
+    const used = new Set();
+    for (let pass = 0; picked.length < SENTENCES_PER_LEVEL && pass < 4; pass++) {
+        for (const core of cores) {
+            if (picked.length >= SENTENCES_PER_LEVEL) break;
+            const next = byCore.get(core).find(s => !used.has(s));
+            if (next) { used.add(next); picked.push(next); }
+        }
+    }
+    if (picked.length < GRAMMAR_REVIEW_MIN) return false;
+
+    openReviewLevel(shuffleArray(picked));
+    return true;
+}
+
+// Mirrors openLevel for a level that exists only in memory. currentLevel.review is what keeps it
+// out of grammar_progress: that table's level column is constrained to 1-20 and a review belongs to
+// no level, so finishing one shows the result without recording a completion.
+function openReviewLevel(sentences) {
+    currentTrack = 'advanced';          // tile colouring only; a review belongs to no track
+    currentLevel = { level: 0, review: true, sentences };
+    currentSentenceIndex = 0;
+    matchStarted = false;
+    tileLocked = false;
+    mistakeCount = 0;
+    clearedCount = 0;
+    timeRemaining = MATCH_DURATION;
+
+    GrammarAudio.setLevelTrack(LEVEL_SELECT_TRACK);
+    document.getElementById('gc-cleared-list').innerHTML = `<p class="gc-cleared-empty">${escapeHtml(window.t('grammar.clearedEmptyHint'))}</p>`;
+    document.getElementById('gc-level-label').textContent = window.t('grammar.reviewTitle');
+    updateTopStats();
+    renderTimerDisplay();
+    renderSentence(0);
+
+    hideEl(document.getElementById('gc-select-section'));
+    showEl(document.getElementById('gc-match-section'));
+    document.getElementById('gc-start-modal-title').textContent = window.t('grammar.reviewTitle');
+    showEl(document.getElementById('gc-start-modal'));
+}
+
 function backToLevels() {
     stopTimer();
     hideEl(document.getElementById('gc-match-section'));
@@ -798,6 +879,11 @@ function finishLevel() {
     const result = { track: currentTrack, level: currentLevel.level, timeSeconds: elapsedSeconds, mistakes: mistakeCount };
     showResultModal(result, true);
 
+    // A review is not a level: grammar_progress.level is constrained to 1-20, and there is no
+    // completion to record. The attempts themselves were already filed by word-stats.js, which is
+    // what moves each point along its review schedule.
+    if (currentLevel.review) return;
+
     const session = window.getCurrentSession();
     if (session) {
         lastResult = null;
@@ -938,7 +1024,10 @@ document.getElementById('gc-result-modal').addEventListener('click', (e) => {
 });
 document.getElementById('gc-result-replay-btn').addEventListener('click', () => {
     hideEl(document.getElementById('gc-result-modal'));
-    if (resultPrimaryTarget) {
+    if (currentLevel && currentLevel.review) {
+        const session = window.getCurrentSession();
+        if (session) startGrammarReview(session); else backToLevels();
+    } else if (resultPrimaryTarget) {
         openLevel(resultPrimaryTarget.track, resultPrimaryTarget.levelObj.level);
     } else {
         openLevel(currentTrack, currentLevel.level);
@@ -961,8 +1050,19 @@ window.onAuthChange(async (session) => {
 
 // Deep link support: grammar.html?track=foundation / ?track=advanced pre-selects that track's
 // tab on the level-select screen.
-const requestedTrack = new URLSearchParams(window.location.search).get('track');
+const gcParams = new URLSearchParams(window.location.search);
+const requestedTrack = gcParams.get('track');
 if (requestedTrack === 'foundation' || requestedTrack === 'advanced') {
     activeTrack = requestedTrack;
+}
+// grammar.html?review=1 -- needs a session and a round trip, so the level select stays up until the
+// board is ready; with nothing to review the learner simply lands on the level select.
+if (gcParams.get('review') === '1') {
+    let started = false;
+    window.onAuthChange((session) => {
+        if (!session || started) return;
+        started = true;
+        startGrammarReview(session);
+    });
 }
 GrammarAudio.setLevelTrack(LEVEL_SELECT_TRACK); // level-select screen's own ambient track
