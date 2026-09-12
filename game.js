@@ -91,8 +91,8 @@ function startLevel(level) {
     // not n-1 -- which indexed past the start of both this array and the music pool below and
     // asked the server for a file literally named "undefined".
     const cycleIndex = level.review ? 0 : level.level - 1;
-    const bgImage = BOARD_BG_IMAGES[cycleIndex % BOARD_BG_IMAGES.length];
-    gameMain.style.setProperty('--board-bg-image', `url(${bgImage})`);
+    boardBgDayPath = BOARD_BG_IMAGES[cycleIndex % BOARD_BG_IMAGES.length];
+    applyBoardBg();
 
     // Music pool is per JLPT tier (N4/N5 share one); cycle by position WITHIN that tier
     // (0-based within the tier), not the global level number, so N4 and N5 each start their own pass through the
@@ -323,6 +323,18 @@ document.addEventListener('sitelangchange', () => {
     if (currentLevel) updateStats();
     if (!document.getElementById('level-select-section').classList.contains('hidden')) renderLevelGrid();
 });
+
+// The board photo has a night counterpart per level, under images/game-bg/night/. Not a CSS
+// light-dark() token like the rest of the theming -- that only takes colours, never url() -- so the
+// path is chosen here and re-chosen if the theme changes while a board is open (the visitor can flip
+// it from the masthead mid-level, and the sky should not stay in the wrong half of the day).
+function applyBoardBg() {
+    if (!boardBgDayPath) return;
+    const dark = window.getEffectiveTheme ? window.getEffectiveTheme() === 'dark' : false;
+    const path = dark ? boardBgDayPath.replace('images/game-bg/', 'images/game-bg/night/') : boardBgDayPath;
+    gameMain.style.setProperty('--board-bg-image', `url(${path})`);
+}
+document.addEventListener('themechange', applyBoardBg);
 
 document.getElementById('board-back-btn').addEventListener('click', backToLevels);
 document.getElementById('board-shuffle-btn').addEventListener('click', shuffleRemaining);

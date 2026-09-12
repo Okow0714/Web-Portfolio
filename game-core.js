@@ -21,6 +21,10 @@ const sb = window.supabaseClient;
 // Licenses are a mix of CC0, public domain, and CC BY / CC BY-SA 2.5-4.0 -- never CC BY-NC or
 // anything requiring share-alike on the whole site, consistent with this project's existing
 // data-licensing discipline (see the Kanjium/Tatoeba notes elsewhere in this codebase).
+// Each of these has a night counterpart of the same name under images/game-bg/night/, shown when
+// the visitor is in dark mode (see applyBoardBg in game.js). Same landmark in both, except the
+// hikone slot: no night photograph of Hikone Castle exists on Commons, so it shows Hirosaki
+// Castle's keep instead -- credited as such on credits.html.
 const BOARD_BG_IMAGES = [
     'images/game-bg/himeji.jpg',
     'images/game-bg/mount-tate.jpg',
@@ -205,6 +209,8 @@ let flyerHeld = false;       // true once caught -- gates onTileClick to route i
 let flyerTargetPairId = null;
 let flyerTimerRAF = null;
 let flyerPointerMoveHandler = null;
+
+let boardBgDayPath = null;   // day-theme path of the photo behind the current board; see applyBoardBg()
 
 function escapeHtml(str) {
     const div = document.createElement('div');
