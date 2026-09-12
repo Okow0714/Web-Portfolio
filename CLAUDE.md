@@ -77,6 +77,15 @@ phonetics light jade/copper, reading warm gold (light), grammar its own accent, 
 own accent, dashboard cool slate/blue, game dark hanafuda violet/gold, about forest-teal.
 **Each page's colors and layout are deliberately distinct — don't reintroduce a shared template
 between them.**
+**Every page now carries both themes.** Each token keeps its original declaration and gains a
+`light-dark(light, dark)` one directly beneath, so a browser without `light-dark()` renders exactly
+what it did before and there is no second palette to keep in step. `display-prefs.js` sets
+`data-theme` on `<html>` before the first paint and `style.css` turns it into `color-scheme`, which
+is what those tokens resolve against; the masthead switch cycles follow-the-device / Light / Dark.
+Gradients and `url()` cannot go through `light-dark()`, so Grammar Connect's daytime sky and Word
+Match's night board photos are scoped rules and a JS path swap respectively. Before inverting a
+token, check how it is *used*: `--sumi` (dictionary) and `--bg-surface` (phonetics) are both ink
+AND a fill, so the text sitting on them needs its own paired token.
 
 **Full-bleed pattern**: the same token block is defined on both `body:has(.wrapper-class)` and
 `.wrapper-class` (body is an ancestor and can't read a descendant's custom properties), then

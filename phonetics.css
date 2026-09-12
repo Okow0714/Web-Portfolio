@@ -32,19 +32,29 @@ body:has(.phonetics-main),
 .phonetics-main,
 #phonetics-info-modal {
     --bg-page: #eaf1ec;
+    --bg-page: light-dark(#eaf1ec, #101613);
     --bg-surface: #f7fbf8;
+    --bg-surface: light-dark(#f7fbf8, #17201a);
     --bg-surface-alt: #dde9e0;
+    --bg-surface-alt: light-dark(#dde9e0, #1e2a22);
     --border: #c6d8cb;
+    --border: light-dark(#c6d8cb, #2b3a30);
     --border-strong: #a8c0af;
+    --border-strong: light-dark(#a8c0af, #3d5245);
     --text-primary: #1c2f25;
+    --text-primary: light-dark(#1c2f25, #e8f1ea);
     --text-secondary: #566b5d;
+    --text-secondary: light-dark(#566b5d, #b4c6ba);
     /* was #6a7f72: 3.23:1 on the level-rail labels and 3.74:1 on the help button, both well
        under the 4.5 floor for the small text they carry */
     --text-muted: #55665b;
+    --text-muted: light-dark(#55665b, #93a89a);
     --accent: #b35f2f;
     --accent-light: #d1834f;
     --accent-dark: #8c4620;
+    --accent-dark: light-dark(#8c4620, #e8a677);
     --accent-tint: rgba(179, 95, 47, 0.12);
+    --accent-tint: light-dark(rgba(179, 95, 47, 0.12), rgba(209, 131, 79, 0.18));
     /* Deliberately NOT the usual (--accent-light -> --accent) pair used on the other pages.
        .auth-btn (style.css, shared sitewide, not editable here) hardcodes a white label on
        var(--accent-gradient); white on --accent-light is only 2.97:1, so the canonical pair
@@ -54,7 +64,9 @@ body:has(.phonetics-main),
     --accent-gradient: linear-gradient(135deg, var(--accent), var(--accent-dark));
     --accent-gradient-hover: linear-gradient(135deg, var(--accent-dark), #6f3618);
     --shadow-sm: 0 2px 10px rgba(28, 47, 37, 0.08);
+    --shadow-sm: light-dark(0 2px 10px rgba(28, 47, 37, 0.08), 0 2px 10px rgba(0, 0, 0, 0.45));
     --shadow-md: 0 14px 32px rgba(28, 47, 37, 0.16);
+    --shadow-md: light-dark(0 14px 32px rgba(28, 47, 37, 0.16), 0 14px 32px rgba(0, 0, 0, 0.55));
 }
 
 body:has(.phonetics-main) {

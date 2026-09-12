@@ -41,7 +41,10 @@ body:has(.grammar-main) {
     --ink-soft: rgba(241, 237, 224, 0.82);
     --ink-soft: light-dark(rgba(29, 39, 64, 0.82), rgba(241, 237, 224, 0.82));
     --ink-faint: rgba(241, 237, 224, 0.66);
-    --ink-faint: light-dark(rgba(29, 39, 64, 0.64), rgba(241, 237, 224, 0.66));
+    /* 0.64 measured 4.43:1 behind the level cards' BEST TIME / MISTAKES labels in daylight,
+       just under the floor for 9px text; 0.68 clears it at 4.99:1. The dark half is untouched
+       (7.29:1 there). */
+    --ink-faint: light-dark(rgba(29, 39, 64, 0.68), rgba(241, 237, 224, 0.66));
     --good: #4f8a68;
     --good-bright: #7fbf9e;
     --good-bright: light-dark(#2d7d57, #7fbf9e);
@@ -231,7 +234,7 @@ body:has(.grammar-main) {
 .gc-diff-swatch {
     flex: 1;
     min-width: 220px;
-    background: light-dark(rgba(255, 252, 245, 0.84), rgba(20, 27, 51, 0.72));
+    background: light-dark(rgba(255, 252, 245, 0.96), rgba(20, 27, 51, 0.72));
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
     border: 1px solid var(--card-edge);
@@ -269,7 +272,7 @@ body:has(.grammar-main) {
 }
 
 .gc-level-card {
-    background: light-dark(rgba(255, 252, 245, 0.84), rgba(20, 27, 51, 0.72));
+    background: light-dark(rgba(255, 252, 245, 0.96), rgba(20, 27, 51, 0.72));
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
     border: 1px solid var(--card-edge);
@@ -754,7 +757,7 @@ html[data-contrast="darker"] body:has(.grammar-main) {
            Light choice both reach it. */
         .gc-night-sky {
             background:
-                linear-gradient(180deg, rgba(231, 224, 206, 0.30) 0%, rgba(231, 224, 206, 0.62) 55%, #e7e0ce 100%),
+                linear-gradient(180deg, rgba(231, 224, 206, 0.16) 0%, rgba(231, 224, 206, 0.34) 52%, rgba(231, 224, 206, 0.66) 100%),
                 url('images/grammar-bg/tokyo-day.jpg');
             background-size: cover;
             background-position: center 38%;
@@ -764,10 +767,10 @@ html[data-contrast="darker"] body:has(.grammar-main) {
            ink, so it has to lighten instead -- same job, opposite direction. */
         .gc-night-sky::after {
             background: linear-gradient(180deg,
-                rgba(236, 229, 211, 0.88) 0%,
-                rgba(236, 229, 211, 0.82) 26%,
-                rgba(236, 229, 211, 0.46) 46%,
-                rgba(236, 229, 211, 0) 60%);
+                rgba(236, 229, 211, 0.66) 0%,
+                rgba(236, 229, 211, 0.58) 26%,
+                rgba(236, 229, 211, 0.34) 46%,
+                rgba(236, 229, 211, 0) 58%);
         }
 
         /* The page wash behind the board. A gradient cannot go through light-dark(), so this is
@@ -787,7 +790,7 @@ html[data-theme="light"] body:has(.grammar-main) {
        Light choice both reach it. */
     .gc-night-sky {
         background:
-            linear-gradient(180deg, rgba(231, 224, 206, 0.30) 0%, rgba(231, 224, 206, 0.62) 55%, #e7e0ce 100%),
+            linear-gradient(180deg, rgba(231, 224, 206, 0.16) 0%, rgba(231, 224, 206, 0.34) 52%, rgba(231, 224, 206, 0.66) 100%),
             url('images/grammar-bg/tokyo-day.jpg');
         background-size: cover;
         background-position: center 38%;
@@ -797,10 +800,10 @@ html[data-theme="light"] body:has(.grammar-main) {
        ink, so it has to lighten instead -- same job, opposite direction. */
     .gc-night-sky::after {
         background: linear-gradient(180deg,
-            rgba(236, 229, 211, 0.88) 0%,
-            rgba(236, 229, 211, 0.82) 26%,
-            rgba(236, 229, 211, 0.46) 46%,
-            rgba(236, 229, 211, 0) 60%);
+            rgba(236, 229, 211, 0.66) 0%,
+            rgba(236, 229, 211, 0.58) 26%,
+            rgba(236, 229, 211, 0.34) 46%,
+            rgba(236, 229, 211, 0) 58%);
     }
 
     /* The page wash behind the board. A gradient cannot go through light-dark(), so this is

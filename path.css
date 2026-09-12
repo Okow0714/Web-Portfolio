@@ -11,27 +11,41 @@
    so it gets the single deepest colour directly (see game.css for the same pattern). */
 body:has(.path-main) {
     background: #ece8dd;
+    background: light-dark(#ece8dd, #100e0a);
 }
 
 .path-main {
     --paper: #f4f1e8;
+    --paper: light-dark(#f4f1e8, #16140f);
     --paper-raised: #fbf9f4;
+    --paper-raised: light-dark(#fbf9f4, #1e1b15);
     --paper-sunk: #ece8dd;
+    --paper-sunk: light-dark(#ece8dd, #100e0a);
     --edge: #d9d2c2;
+    --edge: light-dark(#d9d2c2, #2f2a20);
     --edge-strong: #bdb39d;
+    --edge-strong: light-dark(#bdb39d, #463f31);
 
     --ink: #1f1c16;
+    --ink: light-dark(#1f1c16, #f2ece0);
     --ink-soft: #4d473c;
+    --ink-soft: light-dark(#4d473c, #c6bda9);
     --ink-faint: #6f6858;
+    --ink-faint: light-dark(#6f6858, #9a917d);
 
     /* One accent, used only for the stage you are on and the "ready when" band. */
     /* was #9a6410: 4.36:1 on the stage markers and "Start here" chips, under the floor */
     --saffron: #94600f;
+    --saffron: light-dark(#94600f, #e0a94a);
     --saffron-bright: #b3761a;
+    --saffron-bright: light-dark(#b3761a, #f0c069);
     --saffron-tint: #f6efdf;
+    --saffron-tint: light-dark(#f6efdf, #2a2113);
 
     --spine: #cfc7b4;
+    --spine: light-dark(#cfc7b4, #3a3325);
     --done: #3f6b4c;
+    --done: light-dark(#3f6b4c, #7fbf9e);
 
     --font-jp: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "MS Mincho", serif;
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
