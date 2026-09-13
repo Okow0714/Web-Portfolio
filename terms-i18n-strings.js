@@ -14,7 +14,7 @@ Object.assign(window.I18N_STRINGS, {
     'terms.whatThisIs.h': { en: 'What this is', mn: 'Энэ юу вэ' },
     'terms.whatThisIs.p': {
         en: "This site is a personal portfolio and a set of free, educational Japanese-learning tools (a vocabulary matching game and a read-aloud practice tool, among others), built and maintained by one individual as a personal project. It isn't a company, and using it doesn't create any commercial relationship between us.",
-        mn: 'Энэ бол миний өөрөө хийж, ажиллуулдаг хувийн сайт. Надтай танилцуулах хуудас, түүнчлэн япон хэл сурах үнэгүй хэрэгслүүд (үг холбох тоглоом, дуудаж унших дадлага гэх мэт) багтана. Энэ нь компани биш бөгөөд сайтыг ашигласнаар бидний хооронд арилжааны ямар ч харилцаа үүсэхгүй.'
+        mn: 'Энэ бол миний өөрөө хийж, ажиллуулдаг хувийн сайт. Надтай танилцуулах хуудас, түүнчлэн япон хэл сурах үнэгүй хэрэгслүүд (үг холбох дасгал, дуудаж унших дадлага гэх мэт) багтана. Энэ нь компани биш бөгөөд сайтыг ашигласнаар бидний хооронд арилжааны ямар ч харилцаа үүсэхгүй.'
     },
 
     'terms.accounts.h': { en: 'Accounts', mn: 'Бүртгэл' },

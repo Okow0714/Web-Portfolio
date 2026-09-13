@@ -16,10 +16,10 @@ Object.assign(window.I18N_STRINGS, {
     'dash.yourScore': { en: 'Your Score', mn: 'Таны оноо' },
     'dash.you': { en: 'You', mn: 'Та' },
     'dash.average': { en: 'Average', mn: 'Дундаж' },
-    'dash.scoreNote': { en: '{n} points per tool for full completion (Word Match, Grammar Connect, Dokkai Reader), 3,000 max. Compared against every registered user.', mn: 'Хэрэгсэл бүрийг бүрэн дуусгавал {n} оноо (Үг холбох тоглоом, Дүрэм холбох, Уншлагын дадлага), дээд тал нь 3,000. Бүх бүртгэлтэй хэрэглэгчийн дундажтай харьцуулж харуулав.' },
+    'dash.scoreNote': { en: '{n} points per tool for full completion (Word Match, Grammar Connect, Dokkai Reader), 3,000 max. Compared against every registered user.', mn: 'Хэрэгсэл бүрийг бүрэн дуусгавал {n} оноо (Үг холбох дасгал, Дүрэм холбох, Уншлагын дадлага), дээд тал нь 3,000. Бүх бүртгэлтэй хэрэглэгчийн дундажтай харьцуулж харуулав.' },
     'dash.usersCounted': { en: 'Based on {n} registered users.', mn: 'Бүртгэлтэй {n} хэрэглэгчийн дата дээр үндэслэсэн.' },
 
-    'dash.tools.game': { en: 'Word Match', mn: 'Үг холбох тоглоом' },
+    'dash.tools.game': { en: 'Word Match', mn: 'Үг холбох дасгал' },
     'dash.tools.grammar': { en: 'Grammar Connect', mn: 'Дүрэм холбох' },
     'dash.tools.reading': { en: 'Dokkai Reader', mn: 'Уншлагын дадлага' },
     'dash.streak.title': { en: 'Study streak', mn: 'Суралцсан өдрийн цуваа' },
@@ -40,7 +40,7 @@ Object.assign(window.I18N_STRINGS, {
     'dash.textsDone': { en: '{done} / {total} texts', mn: '{done} / {total} текст' },
     'dash.continue': { en: 'Continue →', mn: 'Үргэлжлүүлэх →' },
 
-    'dash.missed.practise': { en: 'Practise these in Word Match →', mn: 'Эдгээрийг «Үг холбох тоглоом» дээр давтах →' },
+    'dash.missed.practise': { en: 'Practise these in Word Match →', mn: 'Эдгээрийг «Үг холбох дасгал» дээр давтах →' },
     'dash.missed.h': { en: 'Words you keep missing', mn: 'Байнга алддаг үгс' },
     'dash.missed.sub': {
         en: 'Counted from every wrong pair in Word Match and every word skipped in Dokkai Reader. Grammar has its own list below.',

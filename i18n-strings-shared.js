@@ -9,7 +9,7 @@ window.I18N_STRINGS = {
     // can reach it.
     'game.levels': { en: 'Levels', mn: 'Шатууд' },
     'game.time': { en: 'Time', mn: 'Хугацаа' },
-    'game.startMatch': { en: 'Start Match', mn: 'Тоглоом эхлүүлэх' },
+    'game.startMatch': { en: 'Start Match', mn: 'Дасгал эхлүүлэх' },
     'game.backToLevels': { en: 'Back to Levels', mn: 'Шатууд руу буцах' },
     'game.logInToSave': { en: 'Log In to Save', mn: 'Хадгалахын тулд нэвтрэх' },
     'game.levelComplete': { en: 'Level Complete!', mn: 'Шат дууслаа!' },
@@ -34,7 +34,7 @@ window.I18N_STRINGS = {
     // carries seven items and overflowed in Mongolian at 1280px once before.
     'nav.studyPath': { en: 'Study Path', mn: 'Сурах зам' },
     'nav.kanaOrigins': { en: 'Kana Origins', mn: 'Канагийн үүсэл' },
-    'nav.wordGame': { en: 'Word Game', mn: 'Үг холбох тоглоом' },
+    'nav.wordGame': { en: 'Word Game', mn: 'Үг холбох дасгал' },
     'nav.allLevels': { en: 'All Levels', mn: 'Бүх шат' },
     'nav.n5Beginner': { en: 'N5 · Beginner', mn: 'N5 · Анхан шат' },
     'nav.n4Elementary': { en: 'N4 · Elementary', mn: 'N4 · Суурь шат' },

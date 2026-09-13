@@ -6,7 +6,7 @@ Object.assign(window.I18N_STRINGS, {
     'dict.titleSub': { en: 'Mongol-Japan Dictionary', mn: 'Монгол-Япон толь бичиг' },
     'dict.subtitle': {
         en: "Search a Mongolian or Japanese word and see its counterpart on the other side — 3,537 entries merged from five sources: Word Match's translated vocabulary, a human-reviewed bridge dictionary, a core N5 list, everyday modern words, and the Kango ⇄ Wago pairs below. Each result shows which source it came from, and about a third also carry an example sentence — click a result to open it. The Kango ⇄ Wago tab holds the original Sino-Japanese/native-Japanese dictionary, honorific forms included.",
-        mn: 'Монгол эсвэл япон үг хайхад нөгөө талын хос үг нь гарч ирнэ. Таван эх сурвалжийг нэгтгэсэн 3,537 үгтэй: Үг холбох тоглоомын үгсийн сан, гараар хянасан гүүр толь, N5-ын үндсэн үгс, өдөр тутмын орчин үеийн үгс, доорх Канго ⇄ Ваго хосууд. Үг бүрийн хажууд аль эх сурвалжаас авсныг нь тэмдэглэсэн байгаа. Гуравны нэг орчимд нь жишээ өгүүлбэр байгаа — дээр нь дарж үзээрэй. Канго ⇄ Ваго таб нь Хятад-Япон гаралтай (канго) ба уугуул Япон (ваго) толь бичгийг, хүндэтгэлийн хэлбэрийн хамт агуулдаг.'
+        mn: 'Монгол эсвэл япон үг хайхад нөгөө талын хос үг нь гарч ирнэ. Таван эх сурвалжийг нэгтгэсэн 3,537 үгтэй: Үг холбох дасгалын үгсийн сан, гараар хянасан гүүр толь, N5-ын үндсэн үгс, өдөр тутмын орчин үеийн үгс, доорх Канго ⇄ Ваго хосууд. Үг бүрийн хажууд аль эх сурвалжаас авсныг нь тэмдэглэсэн байгаа. Гуравны нэг орчимд нь жишээ өгүүлбэр байгаа — дээр нь дарж үзээрэй. Канго ⇄ Ваго таб нь Хятад-Япон гаралтай (канго) ба уугуул Япон (ваго) толь бичгийг, хүндэтгэлийн хэлбэрийн хамт агуулдаг.'
     },
     'dict.mnjpSearchPlaceholder': { en: 'Search by Mongolian, kanji, kana, or English…', mn: 'Монгол, ханз, кана, эсвэл англи үгээр хайх…' },
     'dict.mnjpTruncated': { en: '{shown} of {total} shown — refine your search', mn: '{total}-с {shown} харуулж байна — хайлтаа тодруулна уу' },
@@ -23,7 +23,7 @@ Object.assign(window.I18N_STRINGS, {
 
     // MN<->JP tab: source-tag labels (which of the three merged sources confirms this word),
     // and the cross-link over to a word's Kango<->Wago partner when it has one.
-    'dict.sourceGamewords': { en: 'Word Match', mn: 'Үг холбох тоглоом' },
+    'dict.sourceGamewords': { en: 'Word Match', mn: 'Үг холбох дасгал' },
     'dict.sourceBridge': { en: 'Bridge review', mn: 'Гүүр толь бичиг' },
     'dict.sourceKangowago': { en: 'Kango ⇄ Wago', mn: 'Канго ⇄ Ваго' },
     'dict.sourceCore': { en: 'Core N5', mn: 'N5 үндсэн' },

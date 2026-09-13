@@ -33,7 +33,7 @@ Object.assign(window.I18N_STRINGS, {
     },
     'privacy.whatICollect.li5': {
         en: "<strong>Study progress</strong> — which Word Match levels you've completed and your best time/moves, which Grammar Connect levels you've completed and your best time/mistakes, and which Dokkai Reader texts you've completed per track.",
-        mn: '<strong>Суралцах явц</strong> — таны дуусгасан Үг холбох тоглоомын шатууд, тэдгээрийн шилдэг хугацаа/хөдөлгөөн, дуусгасан Дүрэм холбохын шатууд, тэдгээрийн шилдэг хугацаа/алдаа, мөн зам бүрээр дуусгасан Уншлагын дадлагын текстүүд.'
+        mn: '<strong>Суралцах явц</strong> — таны дуусгасан Үг холбох дасгалын шатууд, тэдгээрийн шилдэг хугацаа/хөдөлгөөн, дуусгасан Дүрэм холбохын шатууд, тэдгээрийн шилдэг хугацаа/алдаа, мөн зам бүрээр дуусгасан Уншлагын дадлагын текстүүд.'
     },
 
     'privacy.whatICollect.settings': {
@@ -97,7 +97,7 @@ Object.assign(window.I18N_STRINGS, {
     },
     'privacy.deleteAccount.whatGoes': {
         en: '<strong>What is deleted:</strong> your account and everything tied to it — your profile and display name, saved bookmarks, any message you sent through the contact form, your Word Match, Dokkai Reader and Grammar Connect progress, the per-word counts behind your review list, the record of which days you studied, and your display settings. It is a single database deletion that cascades to all of them; nothing is held back.',
-        mn: '<strong>Юу устах вэ:</strong> таны бүртгэл, түүнд холбоотой бүх зүйл — хувийн мэдээлэл, харагдах нэр, хадгалсан хавчуургууд, холбоо барих маягтаар илгээсэн захидал, «Үг холбох тоглоом», «Уншлагын дадлага», «Дүрэм холбох»-ын явц, давтах жагсаалтын ард байгаа үг тус бүрийн тоолол, суралцсан өдрүүдийн бүртгэл, мөн харагдах байдлын тохиргоо. Энэ бол өгөгдлийн сангийн ганц удаагийн устгал бөгөөд бүгдэд нь дамжин үйлчилнэ; юу ч үлдэхгүй.'
+        mn: '<strong>Юу устах вэ:</strong> таны бүртгэл, түүнд холбоотой бүх зүйл — хувийн мэдээлэл, харагдах нэр, хадгалсан хавчуургууд, холбоо барих маягтаар илгээсэн захидал, «Үг холбох дасгал», «Уншлагын дадлага», «Дүрэм холбох»-ын явц, давтах жагсаалтын ард байгаа үг тус бүрийн тоолол, суралцсан өдрүүдийн бүртгэл, мөн харагдах байдлын тохиргоо. Энэ бол өгөгдлийн сангийн ганц удаагийн устгал бөгөөд бүгдэд нь дамжин үйлчилнэ; юу ч үлдэхгүй.'
     },
     'privacy.deleteAccount.whatStays': {
         en: '<strong>What isn’t mine to delete:</strong> my web host’s standard request logs and my database provider’s routine backups, which age out on their own schedules. I don’t read either one and can’t pick your rows out of them.',

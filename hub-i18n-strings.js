@@ -31,7 +31,7 @@ Object.assign(window.I18N_STRINGS, {
     'hub.origins.stat': { en: '9 ERAS · 46 KANA · NO KANJI NEEDED', mn: '9 ҮЕ ШАТ · 46 КАНА · ХАНЗ МЭДЭХ ШААРДЛАГАГҮЙ' },
     'hub.origins.cta': { en: 'Start →', mn: 'Эхлэх →' },
 
-    'hub.game.name': { en: 'Word Match', mn: 'Үг холбох тоглоом' },
+    'hub.game.name': { en: 'Word Match', mn: 'Үг холбох дасгал' },
     'hub.game.desc': {
         en: 'An online exercise that connects each Japanese word to the Mongolian word with the matching meaning. Connect several kanji that share a phonetic reading at once and multiple words clear together. Each level starts on a 4-minute clock that every matched pair extends, and two wrong guesses bring an already-cleared pair back.',
         mn: 'Япон үгийг утга нь ижил монгол үгтэй холбох дасгал. Ижил дуудлагын язгууртай хэд хэдэн ханзыг зэрэг холбовол олон үг нэг дор арилна. Шат бүр 4 минутаас эхэлж, хос таарах бүрд цаг нэмэгдэнэ. Хоёр удаа буруу дарвал арилсан хос эргэж гарч ирнэ.'
@@ -66,7 +66,7 @@ Object.assign(window.I18N_STRINGS, {
     'hub.dictionary.name': { en: 'Mongol-Japan Dictionary', mn: 'Монгол-Япон толь бичиг' },
     'hub.dictionary.desc': {
         en: "Look up a word in Mongolian or Japanese and see its counterpart, drawn from four merged sources — Word Match's translated vocabulary, a human-reviewed bridge dictionary, a core N5 list, and the Kango ⇄ Wago pairs. A second tab holds the original Kango ⇄ Wago dictionary — the formal Sino-Japanese (kango, 漢語) and native-Japanese (wago, 和語) form of whatever kanji you search, plus the respectful (尊敬語) and humble (謙譲語) verb forms used in sentences.",
-        mn: 'Монгол эсвэл япон үг хайхад нөгөө талын хос үг нь гарч ирнэ. Таван эх сурвалжийг нэгтгэсэн: Үг холбох тоглоомын үгсийн сан, гараар хянасан гүүр толь, N5-ын үндсэн үгс, өдөр тутмын орчин үеийн үгс, Канго ⇄ Ваго хосууд. Хоёр дахь таб нь Канго ⇄ Ваго толь бичгийг агуулна — таны хайсан ханзны хятад гаралтай, албан ёсны канго (漢語) хэлбэр, уугуул япон ваго (和語) хэлбэр, мөн өгүүлбэрт хэрэглэгдэх хүндэтгэлийн (尊敬語) болон даруу (謙譲語) үйл үгийн хэлбэрүүд.'
+        mn: 'Монгол эсвэл япон үг хайхад нөгөө талын хос үг нь гарч ирнэ. Таван эх сурвалжийг нэгтгэсэн: Үг холбох дасгалын үгсийн сан, гараар хянасан гүүр толь, N5-ын үндсэн үгс, өдөр тутмын орчин үеийн үгс, Канго ⇄ Ваго хосууд. Хоёр дахь таб нь Канго ⇄ Ваго толь бичгийг агуулна — таны хайсан ханзны хятад гаралтай, албан ёсны канго (漢語) хэлбэр, уугуул япон ваго (和語) хэлбэр, мөн өгүүлбэрт хэрэглэгдэх хүндэтгэлийн (尊敬語) болон даруу (謙譲語) үйл үгийн хэлбэрүүд.'
     },
     'hub.dictionary.stat': { en: '3,537 WORDS', mn: '3,537 ҮГ' },
     'hub.dictionary.cta': { en: 'Search →', mn: 'Хайх →' },

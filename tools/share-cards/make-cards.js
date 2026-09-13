@@ -34,8 +34,8 @@ const mn = key => {
 };
 
 const CARDS = [
-    { out: 'home', title: mn('hub.heroTitle'), stat: '6 ХЭРЭГСЭЛ · ҮНЭГҮЙ · БҮРТГҮҮЛЭХ ШААРДЛАГАГҮЙ' },
-    { out: 'dictionary', title: mn('hub.dictionary.name'), stat: mn('hub.dictionary.stat') + ' · ҮНЭГҮЙ', shot: 'dictionary' },
+    { out: 'home', title: mn('hub.heroTitle'), stat: '6 ХЭРЭГСЭЛ · БҮРТГҮҮЛЭХ ШААРДЛАГАГҮЙ' },
+    { out: 'dictionary', title: mn('hub.dictionary.name'), stat: mn('hub.dictionary.stat'), shot: 'dictionary' },
     { out: 'game', title: mn('hub.game.name'), stat: mn('hub.game.stat'), shot: 'game' },
     { out: 'grammar', title: mn('hub.grammar.name'), stat: mn('hub.grammar.stat'), shot: 'grammar' },
     { out: 'reading', title: mn('hub.reading.name'), stat: mn('hub.reading.stat'), shot: 'reading' },

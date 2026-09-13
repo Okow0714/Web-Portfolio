@@ -20,7 +20,7 @@ module.exports = async function run(page, assert, baseUrl) {
     await page.goto(baseUrl + '/game.html', { waitUntil: 'networkidle' });
     await page.locator('.level-card').first().click();
     await page.waitForTimeout(400);
-    await page.locator('button', { hasText: /Start Match|Тоглоом эхлүүлэх/ }).click();
+    await page.locator('button', { hasText: /Start Match|Дасгал эхлүүлэх/ }).click();
     await page.waitForTimeout(700);
 
     const initial = await page.evaluate(() => ({ totalPairs, matchDuration, tileCount: document.querySelectorAll('.tile').length }));

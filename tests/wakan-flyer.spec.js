@@ -7,7 +7,7 @@ module.exports = async function run(page, assert, baseUrl) {
     await page.goto(baseUrl + '/game.html', { waitUntil: 'networkidle' });
     await page.locator('.level-card').nth(1).click();
     await page.waitForTimeout(400);
-    await page.locator('button', { hasText: /Start Match|Тоглоом эхлүүлэх/ }).click();
+    await page.locator('button', { hasText: /Start Match|Дасгал эхлүүлэх/ }).click();
     await page.waitForTimeout(700);
 
     // A level deals a random one of its word sets, and the flyer can only appear if the dealt words
