@@ -103,7 +103,9 @@ ${shotBand}
     for (const card of CARDS) {
         const tmp = path.join(__dirname, 'card-' + card.out + '.html');
         fs.writeFileSync(tmp, html(card));
-        await page.goto('file:///' + tmp.split('\\').join('/'));
+        // Through the local server, not file:// -- a file:// page is a different origin from localhost, so the
+        // browser blocked the vendored webfonts and the Mongolian silently rendered in a fallback face.
+        await page.goto('http://localhost:8123/tools/share-cards/' + path.basename(tmp), { waitUntil: 'networkidle' });
         await page.evaluate(() => document.fonts.ready);
         await page.waitForTimeout(350);
         // Nothing may overflow, and the title must not collide with the screenshot band -- either

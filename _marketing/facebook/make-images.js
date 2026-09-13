@@ -59,7 +59,9 @@ h1{margin-top:18px;font-size:88px;line-height:1.05;font-weight:700;letter-spacin
         const page = await ctx.newPage();
         const tmp = path.join(__dirname, '.tmp-' + name + '.html');
         fs.writeFileSync(tmp, html);
-        await page.goto('file:///' + tmp.split('\\').join('/'));
+        // Through the local server, not file:// -- a file:// page is a different origin from localhost, so the
+        // browser blocked the vendored webfonts and the Mongolian silently rendered in a fallback face.
+        await page.goto('http://localhost:8123/_marketing/facebook/' + path.basename(tmp), { waitUntil: 'networkidle' });
         await page.evaluate(() => document.fonts.ready);
         await page.waitForTimeout(300);
         // the headline must fit on one line inside the cover's safe zone, or a crop will cut it

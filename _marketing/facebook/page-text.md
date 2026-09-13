@@ -68,6 +68,18 @@ https://khan-japanese.org/game.html
 
 https://khan-japanese.org/path.html
 
+### Post 5 — interesting fact: 汗 and our logo (image: fact-han.png)
+
+Attach **fact-han.png** to this one. It has no link preview to conflict with, so the picture shows.
+
+Чингис хааныг япон хэлэнд 成吉思汗 гэж бичдэг. Гэтэл 汗 ханзын утга нь «хөлс» 😅
+
+Хятадууд гадаад нэр, цолыг утгаар нь биш, дуудлагаар нь ханзаар буулгаж бичдэг байжээ. «Хан» цолыг дуудлага нь ойролцоо 汗 ханзаар бичсэн болохоор «хөлс» гэсэн утга энд огт хамаагүй.
+
+Манай Khan Japanese-ийн лого ч энэ 汗 ханзыг Khan-ы «K» үсэгтэй хослуулж бүтээсэн.
+
+https://khan-japanese.org
+
 ---
 
 ## Posting in groups

@@ -30,7 +30,7 @@ Supabase (Postgres + Auth). Hosted on GitHub Pages. Git repo on `main`.
 the legal pages) plus the JLPT color spectrum (`--jlpt-n5`…`--jlpt-n1`, green→wine, used
 wherever a level badge or dropdown link appears — do not touch without checking all five hues
 stay visually distinct). It also owns the shared masthead (`.site-header-wrap`, single-row:
-言 seal + wordmark + nav + account menu, "lifted wine" `#4a2c3a`) and the shared footer
+K brand mark (`icons/brand-mark.png`; it replaced the old 言 seal on 2026-08-18) + wordmark + nav + account menu, "lifted wine" `#4a2c3a`) and the shared footer
 (`.site-footer`, same `--header-*` tokens as the masthead so they bookend the page): a 3-column
 grid (brand, study tools, About Me), then a footer-bar whose links row includes "Data &
 licensing" pointing to `credits.html` — a real page, not an inline disclosure (an earlier
@@ -316,6 +316,13 @@ reports this as "…subtree intercepts pointer events", which is easy to dismiss
   the working and broken builds. Playwright's real `.click()` timed out only on the broken one,
   and named the intercepting element in its error. Assert the *consequence* — the board opened,
   the tree expanded — not that a hit-test looked plausible.
+- **Render images through the local server, never from `file://`.** A page opened as `file://` is a
+  different origin from `http://localhost:8123`, so Chromium refuses the vendored webfonts with a CORS error
+  and the text silently renders in a fallback face -- the screenshot still looks plausible. This shipped: the
+  2026-09-13 share cards and Facebook cover set their Mongolian in a fallback, not IBM Plex Sans. Write the
+  template inside the repo and `page.goto('http://localhost:8123/...')`, and assert the face actually loaded
+  (`[...document.fonts].some(f => f.family.includes('IBM Plex Sans') && f.status === 'loaded')`) --
+  `document.fonts.ready` resolves on failure too.
 - **Windows/PowerShell path escaping breaks Node heredocs.** `cat > file.js << 'EOF'` via Bash
   on this machine has mangled backslash-heavy Windows paths (`C:\Users\...`) more than once.
   Prefer the `Write` tool for scratch Playwright scripts over shell heredocs.
