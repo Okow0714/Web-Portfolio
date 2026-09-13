@@ -8,10 +8,10 @@
 (function () {
     const STORAGE_KEY = 'site-lang';
 
-    // First-time visitors (nothing in localStorage yet) get English everywhere except where a
-    // page opts into a different default via <html data-default-lang="mn">, e.g. index.html's
-    // Mongolian-first entrance hall. Once a visitor picks a language explicitly, that choice
-    // is sitewide and overrides any page's default.
+    // First-time visitors (nothing in localStorage yet) get the page's <html data-default-lang>,
+    // which is "mn" on every page since 2026-09-13 -- the site is for Mongolian speakers, and a
+    // shared link should not open in English. A page without the attribute falls back to English.
+    // Once a visitor picks a language explicitly, that choice is sitewide and overrides any default.
     function currentLang() {
         const stored = localStorage.getItem(STORAGE_KEY);
         if (stored === 'mn' || stored === 'en') return stored;
@@ -21,6 +21,14 @@
     function applyLang(lang) {
         const strings = window.I18N_STRINGS || {};
         document.documentElement.lang = lang === 'mn' ? 'mn' : 'en';
+
+        // The static <title> is the page's default language (Mongolian); data-en holds the English.
+        // Cache the Mongolian before the first swap, since setting document.title rewrites the element.
+        const titleEl = document.querySelector('title[data-en]');
+        if (titleEl) {
+            if (!titleEl.dataset.mn) titleEl.dataset.mn = titleEl.textContent;
+            document.title = lang === 'mn' ? titleEl.dataset.mn : titleEl.dataset.en;
+        }
 
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const entry = strings[el.getAttribute('data-i18n')];

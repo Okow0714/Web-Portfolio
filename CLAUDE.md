@@ -11,7 +11,7 @@ Supabase (Postgres + Auth). Hosted on GitHub Pages. Git repo on `main`.
 
 | Page | Purpose |
 |---|---|
-| `index.html` | The "entrance hall" / hub — site home, nav-brand target. Five tool cards (screenshot + description) plus a developer card linking to `about.html` and a home-page dictionary search bar + Dashboard progress widget for signed-in visitors. `<main class="hub-main">`, themed via `hub.css` (deep wine/gold, matches the masthead). Mongolian by default (`<html data-default-lang="mn">`). |
+| `index.html` | The "entrance hall" / hub — site home, nav-brand target. Five tool cards (screenshot + description) plus a developer card linking to `about.html` and a home-page dictionary search bar + Dashboard progress widget for signed-in visitors. `<main class="hub-main">`, themed via `hub.css` (deep wine/gold, matches the masthead). Mongolian by default, like every i18n page (see Mongolian first below). |
 | `about.html` | Sarantsatsral's personal "About Me" resume/portfolio page — reached via the footer's "About Me" column or the hub's developer card, not the top nav. Fully standalone: its own `about.css` (forest-teal "Field Dossier" theme), no shared `style.css`, no masthead/footer, a sticky left index-rail layout instead. English only, no i18n. Has its own compact account popover (`.about-account*` classes) rather than the shared masthead's side drawer, but wired through the same `auth-shared.js` and load-bearing IDs (see Account menu below). |
 | `path.html` | Study Path (学びの道) — a six-stage route from no Japanese at all to N1, mapping each stage onto specific tools and level ranges. `<main class="path-main">` / `path.css` (warm paper, sumi ink, one saffron marker). The only page laid out as a vertical route with stations hung off a spine. **Not in the masthead nav on purpose** — that row already carries seven items and overflowed in Mongolian at 1280px once before; it is reached from the hub's `.hub-startpath` banner and the footer's Study tools column. The per-stage hour ranges are external rules of thumb, labelled as such on the page; every level range in the copy is real and will drift if the tools change. |
 | `game.html` | Word Match ("言葉合わせ") — hex-tile vocabulary matching game, JLPT N5–N1. `<main class="game-main">` / `game.css` (dark hanafuda violet/gold). |
@@ -96,6 +96,20 @@ both ink AND a fill, so the text sitting on them needs its own paired token.
 `about.html` is themed too, and is the awkward one: it loads no `style.css`, so it declares the
 three `color-scheme` rules itself and carries its own `#theme-switch` in the index rail --
 `auth-shared.js` wires any element with that id, so it needed no new JS.
+
+**Mongolian first, one URL per language pair.** Every i18n page (all but `about.html`) carries
+`<html lang="mn" data-default-lang="mn">`, so a first-time visitor sees Mongolian and a choice of English
+is remembered sitewide. Only the hub and Kana Origins used to; a link shared into a Mongolian Facebook group
+opened the dictionary in English. The static `<title>` is Mongolian and carries the English in `data-en`,
+which `i18n.js` swaps in -- it translated nothing in <head> before. **Share previews are raw HTML**:
+Facebook's scraper never runs `i18n.js`, so `og:title`/`og:description` are written in Mongolian, with
+`og:locale` `mn_MN` and 1200x630 cards from `images/share/` (regenerate with `tools/share-cards/` when a
+tool's name or stat line changes -- they read `hub-i18n-strings.js`, but the images do not update
+themselves). After deploying a change to them, re-scrape in Facebook's Sharing Debugger; it caches
+previews. **No `hreflang`**: it requires a distinct URL per language and both languages share one URL
+here. That is also why this only partly helps Google -- the inline fallback text is English until JS runs,
+and real Mongolian search ranking would need separate language URLs. **Fraunces has no Cyrillic subset**, so
+Mongolian set in `--font-display` falls back to a system serif; the share cards use IBM Plex Sans.
 
 **Full-bleed pattern**: the same token block is defined on both `body:has(.wrapper-class)` and
 `.wrapper-class` (body is an ancestor and can't read a descendant's custom properties), then
