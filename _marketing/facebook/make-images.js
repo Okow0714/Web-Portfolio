@@ -47,9 +47,9 @@ h1{margin-top:18px;font-size:88px;line-height:1.05;font-weight:700;letter-spacin
 <div class="mid">
   <div class="word">Khan Japanese</div>
   <h1>Япон хэлтэй найзалцгаая</h1>
-  <div class="tools">Толь бичиг<b>·</b>Үг холбох тоглоом<b>·</b>Дүрэм<b>·</b>Уншлага</div>
+  <div class="tools">Толь бичиг<b>·</b>Үг холбох дасгал<b>·</b>Дүрэм<b>·</b>Уншлага</div>
 </div>
-<div class="url">khan-japanese.org · үнэгүй</div>
+<div class="url">khan-japanese.org</div>
 </body></html>`;
 
 (async () => {
