@@ -10,7 +10,8 @@
 // Claims kept to what holds up:
 //  - Chinese transcribed foreign names and titles by SOUND: "khan" -> 汗 (hán in this use, as in 可汗),
 //    "Chinggis" -> 成吉思. The meaning "sweat" plays no part.
-//  - Japanese took the spelling over from Chinese.
+//  - Japanese took the spelling over; today the name is mostly written in katakana, チンギス・ハン.
+//  - The text names the Chinese LANGUAGE, never "хятадууд" -- the user hears that word as racist.
 //  - Hokkaido's grilled-mutton dish is called ジンギスカン.
 //  - The background is our logo (stated, not explained -- the user found the explanation too much).
 // Deliberately NOT claimed: which chronicle first wrote 成吉思汗 -- the Yuan Shi records the title as
@@ -42,7 +43,7 @@ const html = `<!doctype html><html lang="mn"><head><meta charset="utf-8">
   .hero h1{font-size:52px;line-height:1.16;font-weight:700;letter-spacing:-0.01em}
   .hero h1 .jp{font-family:${JP};font-weight:700}
   .sweat{margin-top:16px;font-size:36px;font-weight:700;text-wrap:balance}
-  .body{margin-top:56px;display:flex;flex-direction:column;gap:30px;font-size:36px;line-height:1.45;font-weight:500}
+  .body{margin-top:48px;display:flex;flex-direction:column;gap:28px;font-size:33px;line-height:1.46;font-weight:500}
   /* a Japanese word must not break mid-word (チンギス・ / ハン) */
   .body .jp{font-family:${JP};font-weight:500;white-space:nowrap}
   .hero h1 .jp{white-space:nowrap}
@@ -61,8 +62,8 @@ const html = `<!doctype html><html lang="mn"><head><meta charset="utf-8">
     </div>
   </div>
   <div class="body">
-    <p>Хятадууд гадаад нэрийг <b>утгаар нь биш, дуудлагаар нь</b> ханзаар бичдэг. Хан гэдэг цолыг дуудлага нь ойролцоо <span class="jp">汗</span> ханзаар бичсэн болохоос хөлстэй ямар&nbsp;ч хамаагүй. Япончууд үүнийг хятадаас авсан.</p>
-    <p>Хоккайдогийн алдартай шарсан хонины махыг&nbsp;ч <span class="jp">ジンギスカン</span> гэдэг.</p>
+    <p>Хятад хэлэнд гадаад нэр, цол хэргэмийг <b>утгаар нь биш, дуудлагаар нь</b> ханзаар буулгадаг. Чингис гэдгийг <span class="jp">成吉思</span>, хан цолыг дуудлага нь ойролцоо <span class="jp">汗</span> ханзаар бичсэн нь ийм учиртай. Тэгэхээр хөлстэй ямар&nbsp;ч хамаагүй юм.</p>
+    <p>Энэ бичих хэлбэр япон хэлэнд тэр чигээрээ орж ирсэн&nbsp;ч одоо ихэвчлэн катаканагаар <span class="jp">チンギス・ハン</span> гэж бичдэг. Хоккайдогийн алдартай шарсан хонины мах <span class="jp">ジンギスカン</span>&nbsp;ч Чингис хааны нэрээр нэрлэгдсэн.</p>
     <p class="logo-note">Ард харагдаж байгаа нь манай лого.</p>
   </div>
   <div class="foot"><span>khan-japanese.org</span><span>Япон хэлтэй найзалцгаая</span></div>
