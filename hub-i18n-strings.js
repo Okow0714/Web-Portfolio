@@ -71,7 +71,4 @@ Object.assign(window.I18N_STRINGS, {
     'hub.dictionary.stat': { en: '3,537 WORDS', mn: '3,537 ҮГ' },
     'hub.dictionary.cta': { en: 'Search →', mn: 'Хайх →' },
 
-    'hub.foot.developer': { en: 'Developer', mn: 'Хөгжүүлэгч' },
-    'hub.foot.devRole': { en: 'System engineering student, living in Japan', mn: 'Систем инженерийн оюутан, Японд амьдардаг' },
-    'hub.foot.devLink': { en: 'Portfolio, skills, and projects →', mn: 'Хувийн хуудас, ур чадвар, төслүүд →' },
 });
