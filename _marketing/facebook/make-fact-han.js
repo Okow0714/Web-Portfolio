@@ -41,7 +41,7 @@ const html = `<!doctype html><html lang="mn"><head><meta charset="utf-8">
   .kanji{font-family:${JP};font-weight:700;font-size:200px;line-height:1;color:#000}
   .hero h1{font-size:52px;line-height:1.16;font-weight:700;letter-spacing:-0.01em}
   .hero h1 .jp{font-family:${JP};font-weight:700}
-  .sweat{margin-top:16px;font-size:36px;font-weight:700}
+  .sweat{margin-top:16px;font-size:36px;font-weight:700;text-wrap:balance}
   .body{margin-top:44px;display:flex;flex-direction:column;gap:24px;font-size:31px;line-height:1.48;font-weight:500}
   /* a Japanese word must not break mid-word (チンギス・ / ハン) */
   .body .jp{font-family:${JP};font-weight:500;white-space:nowrap}
@@ -52,18 +52,18 @@ const html = `<!doctype html><html lang="mn"><head><meta charset="utf-8">
 </style></head><body>
 <img class="logo" src="${LOGO}" alt="">
 <div class="page">
-  <div class="top"><span>СОНИРХОЛТОЙ БАРИМТ</span><span class="brand">Khan Japanese</span></div>
+  <div class="top"><span>ТА МЭДЭХ ҮҮ?</span><span class="brand">Khan Japanese</span></div>
   <div class="hero">
     <div class="kanji">汗</div>
     <div>
-      <h1>Япон хэлэнд Чингис хааныг <span class="jp">成吉思汗</span> гэж бичдэг</h1>
-      <div class="sweat">Гэтэл <span class="jp">汗</span> ханзын утга нь «хөлс».</div>
+      <h1>Японоор Чингис хааныг <span class="jp">成吉思汗</span> гэж бичдэг</h1>
+      <div class="sweat">Гэтэл <span class="jp">汗</span> гэдэг ханз «хөлс» гэсэн утгатай.</div>
     </div>
   </div>
   <div class="body">
-    <p>Хятадууд гадаад нэр, цолыг <b>утгаар нь биш, дуудлагаар нь</b> ханзаар буулгаж бичдэг байжээ. «Хан» цолыг дуудлага нь ойролцоо <span class="jp">汗</span> (хань) ханзаар, «Чингис»-ийг <span class="jp">成吉思</span> гэж бичсэн. Тиймээс «хөлс» гэсэн утга энд огт хамаагүй.</p>
-    <p>Япон хэл энэ бичлэгийг хятадаас авсан. Өнөөдөр <span class="jp">チンギス・ハン</span>, эсвэл <span class="jp">ジンギスカン</span> (Жингисукан) гэж уншдаг. Хоккайдогийн алдартай шарсан хонины махан хоолыг ч <span class="jp">ジンギスカン</span> гэдэг.</p>
-    <p class="logo-note">Арын зураг бол манай лого. Бид <span class="jp">汗</span> ханзыг Khan-ы «K» үсэгтэй хослуулж бүтээсэн.</p>
+    <p>Эрт дээр үеэс хятадууд гадаадын нэр, цол хэргэмийг <b>утгаар нь биш, дуудлагаар нь</b> ханзаар тэмдэглэж ирсэн. «Хан» гэдэг цолыг дуудлага нь ойролцоо <span class="jp">汗</span> (хань) ханзаар, Чингис гэдгийг <span class="jp">成吉思</span> гэж бичсэн нь ийм учиртай. Тэгэхээр хөлстэй ямар ч хамаагүй юм.</p>
+    <p>Япончууд ч үүнийг хятадаас тэр чигээр нь авчээ. <span class="jp">チンギス・ハン</span>, <span class="jp">ジンギスカン</span> гэж хэд хэдэн янзаар дууддаг. Хоккайдогийн хонины мах шарж иддэг алдартай хоолыг хүртэл <span class="jp">ジンギスカン</span> гэдэг.</p>
+    <p class="logo-note">Харин ард харагдаж байгаа нь манай лого: <span class="jp">汗</span> ханз, Khan гэдэг үгийн эхний «K» үсэг хоёрыг нийлүүлсэн.</p>
   </div>
   <div class="foot"><span>khan-japanese.org</span><span>Япон хэлтэй найзалцгаая</span></div>
 </div>
