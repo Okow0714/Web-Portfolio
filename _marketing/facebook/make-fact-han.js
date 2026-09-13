@@ -10,9 +10,9 @@
 // Claims kept to what holds up:
 //  - Chinese transcribed foreign names and titles by SOUND: "khan" -> 汗 (hán in this use, as in 可汗),
 //    "Chinggis" -> 成吉思. The meaning "sweat" plays no part.
-//  - Japanese uses that spelling, read ジンギスカン or, more usual today, チンギス・ハン.
+//  - Japanese took the spelling over from Chinese.
 //  - Hokkaido's grilled-mutton dish is called ジンギスカン.
-//  - The logo combines 汗 with the K of Khan (the user's description; the commits call it the K mark).
+//  - The background is our logo (stated, not explained -- the user found the explanation too much).
 // Deliberately NOT claimed: which chronicle first wrote 成吉思汗 -- the Yuan Shi records the title as
 // 成吉思皇帝, so a "first written in the Yuan Shi" line would be wrong.
 //
@@ -42,7 +42,7 @@ const html = `<!doctype html><html lang="mn"><head><meta charset="utf-8">
   .hero h1{font-size:52px;line-height:1.16;font-weight:700;letter-spacing:-0.01em}
   .hero h1 .jp{font-family:${JP};font-weight:700}
   .sweat{margin-top:16px;font-size:36px;font-weight:700;text-wrap:balance}
-  .body{margin-top:44px;display:flex;flex-direction:column;gap:24px;font-size:31px;line-height:1.48;font-weight:500}
+  .body{margin-top:56px;display:flex;flex-direction:column;gap:30px;font-size:36px;line-height:1.45;font-weight:500}
   /* a Japanese word must not break mid-word (チンギス・ / ハン) */
   .body .jp{font-family:${JP};font-weight:500;white-space:nowrap}
   .hero h1 .jp{white-space:nowrap}
@@ -61,9 +61,9 @@ const html = `<!doctype html><html lang="mn"><head><meta charset="utf-8">
     </div>
   </div>
   <div class="body">
-    <p>Эрт дээр үеэс хятадууд гадаадын нэр, цол хэргэмийг <b>утгаар нь биш, дуудлагаар нь</b> ханзаар тэмдэглэж ирсэн. «Хан» гэдэг цолыг дуудлага нь ойролцоо <span class="jp">汗</span> (хань) ханзаар, Чингис гэдгийг <span class="jp">成吉思</span> гэж бичсэн нь ийм учиртай. Тэгэхээр хөлстэй ямар ч хамаагүй юм.</p>
-    <p>Япончууд ч үүнийг хятадаас тэр чигээр нь авчээ. <span class="jp">チンギス・ハン</span>, <span class="jp">ジンギスカン</span> гэж хэд хэдэн янзаар дууддаг. Хоккайдогийн хонины мах шарж иддэг алдартай хоолыг хүртэл <span class="jp">ジンギスカン</span> гэдэг.</p>
-    <p class="logo-note">Харин ард харагдаж байгаа нь манай лого: <span class="jp">汗</span> ханз, Khan гэдэг үгийн эхний «K» үсэг хоёрыг нийлүүлсэн.</p>
+    <p>Хятадууд гадаад нэрийг <b>утгаар нь биш, дуудлагаар нь</b> ханзаар бичдэг. Хан гэдэг цолыг дуудлага нь ойролцоо <span class="jp">汗</span> ханзаар бичсэн болохоос хөлстэй ямар&nbsp;ч хамаагүй. Япончууд үүнийг хятадаас авсан.</p>
+    <p>Хоккайдогийн алдартай шарсан хонины махыг&nbsp;ч <span class="jp">ジンギスカン</span> гэдэг.</p>
+    <p class="logo-note">Ард харагдаж байгаа нь манай лого.</p>
   </div>
   <div class="foot"><span>khan-japanese.org</span><span>Япон хэлтэй найзалцгаая</span></div>
 </div>
