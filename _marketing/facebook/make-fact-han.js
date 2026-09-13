@@ -12,8 +12,8 @@
 //    "Chinggis" -> 成吉思. The meaning "sweat" plays no part.
 //  - Japanese took the spelling over; today the name is mostly written in katakana, チンギス・ハン.
 //  - The text names the Chinese LANGUAGE, never "хятадууд" -- the user hears that word as racist.
-//  - Hokkaido's grilled-mutton dish is called ジンギスカン.
-//  - The background is our logo (stated, not explained -- the user found the explanation too much).
+//  - The old reading ジンギスカン survives today as the name of Hokkaido's grilled-mutton dish.
+//  - Framed as how writing in kanji works, not as one country's practice: China and Japan both wrote it.
 // Deliberately NOT claimed: which chronicle first wrote 成吉思汗 -- the Yuan Shi records the title as
 // 成吉思皇帝, so a "first written in the Yuan Shi" line would be wrong.
 //
@@ -40,7 +40,7 @@ const html = `<!doctype html><html lang="mn"><head><meta charset="utf-8">
   .top .brand{font-family:'Fraunces',Georgia,serif;letter-spacing:0.01em;font-size:30px}
   .hero{margin-top:52px;display:flex;align-items:center;gap:36px}
   .kanji{font-family:${JP};font-weight:700;font-size:200px;line-height:1;color:#000}
-  .hero h1{font-size:52px;line-height:1.16;font-weight:700;letter-spacing:-0.01em}
+  .hero h1{font-size:46px;line-height:1.18;font-weight:700;letter-spacing:-0.01em;text-wrap:balance}
   .hero h1 .jp{font-family:${JP};font-weight:700}
   .sweat{margin-top:16px;font-size:36px;font-weight:700;text-wrap:balance}
   .body{margin-top:48px;display:flex;flex-direction:column;gap:28px;font-size:33px;line-height:1.46;font-weight:500}
@@ -48,7 +48,6 @@ const html = `<!doctype html><html lang="mn"><head><meta charset="utf-8">
   .body .jp{font-family:${JP};font-weight:500;white-space:nowrap}
   .hero h1 .jp{white-space:nowrap}
   .body b{font-weight:700}
-  .logo-note{font-weight:600}
   .foot{margin-top:auto;display:flex;justify-content:space-between;align-items:baseline;font-size:26px;font-weight:700}
 </style></head><body>
 <img class="logo" src="${LOGO}" alt="">
@@ -57,14 +56,13 @@ const html = `<!doctype html><html lang="mn"><head><meta charset="utf-8">
   <div class="hero">
     <div class="kanji">汗</div>
     <div>
-      <h1>Японоор Чингис хааныг <span class="jp">成吉思汗</span> гэж бичдэг</h1>
+      <h1>Японоор Чингис хааныг ханзаар <span class="jp">成吉思汗</span> гэж бичдэг</h1>
       <div class="sweat">Гэтэл <span class="jp">汗</span> гэдэг ханз «хөлс» гэсэн утгатай.</div>
     </div>
   </div>
   <div class="body">
-    <p>Хятад хэлэнд гадаад нэр, цол хэргэмийг <b>утгаар нь биш, дуудлагаар нь</b> ханзаар буулгадаг. Чингис гэдгийг <span class="jp">成吉思</span>, хан цолыг дуудлага нь ойролцоо <span class="jp">汗</span> ханзаар бичсэн нь ийм учиртай. Тэгэхээр хөлстэй ямар&nbsp;ч хамаагүй юм.</p>
-    <p>Энэ бичих хэлбэр япон хэлэнд тэр чигээрээ орж ирсэн&nbsp;ч одоо ихэвчлэн катаканагаар <span class="jp">チンギス・ハン</span> гэж бичдэг. Хоккайдогийн алдартай шарсан хонины мах <span class="jp">ジンギスカン</span>&nbsp;ч Чингис хааны нэрээр нэрлэгдсэн.</p>
-    <p class="logo-note">Ард харагдаж байгаа нь манай лого.</p>
+    <p>Ханзаар бичихдээ гадаад нэр, цол хэргэмийг <b>утгаар нь биш, дуудлагаар нь</b> буулгадаг. Чингис гэдгийг <span class="jp">成吉思</span>, хан цолыг дуудлага нь ойролцоо <span class="jp">汗</span> гэж бичсэн нь ийм учиртай. Тэгэхээр хөлстэй ямар&nbsp;ч хамаагүй юм.</p>
+    <p>Орчин үеийн япон хэлэнд Чингис хааныг ихэвчлэн катаканагаар <span class="jp">チンギス・ハン</span> гэж бичдэг. Харин хуучин <span class="jp">ジンギスカン</span> гэдэг дуудлага нь өнөөдөр Хоккайдогийн хонины мах шарж иддэг хоолны нэр болж үлдсэн.</p>
   </div>
   <div class="foot"><span>khan-japanese.org</span><span>Япон хэлтэй найзалцгаая</span></div>
 </div>
