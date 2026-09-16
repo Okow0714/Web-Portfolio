@@ -56,7 +56,12 @@
                     </span>
                 </a>
 
-                <nav class="header-nav" aria-label="Main">
+                <nav class="header-nav" id="site-nav" aria-label="Main">
+                    <!-- Drawer-only: on a phone the brand opens this list instead of going home,
+                         so Home lives here; Study Path was only ever left out of the bar for room. -->
+                    <div class="nav-item nav-drawer-only">
+                        <a href="index.html" class="nav-trigger" data-i18n="nav.home">Home</a>
+                    </div>
                     <!-- Two groups instead of seven items. The heading is a <button>, not a link:
                          it names a group, not a page. .nav-trigger already resets background,
                          border and font, so it styles identically to the anchors beside it.
@@ -77,10 +82,16 @@
                             <a href="phonetics.html" data-i18n="nav.phoneticsFamily">Phonetics Family</a>
                         </div>
                     </div>
+                    <div class="nav-item nav-drawer-only">
+                        <a href="path.html" class="nav-trigger nav-current" data-i18n="nav.studyPath">Study Path</a>
+                    </div>
                     <div class="nav-item">
                         <a href="dashboard.html" class="nav-trigger" data-i18n="dash.titleSub">Dashboard</a>
                     </div>
                 </nav>
+
+                <!-- Backdrop for the phone drawer. Inert until body.nav-drawer-open. -->
+                <div class="nav-scrim" id="nav-scrim"></div>
 
                 <!-- Touch has no hover, and a group heading is not a link, so without this a phone
                      could never open a group. Desktop still uses :hover / :focus-within from
@@ -88,21 +99,65 @@
                      into twelve pages and must bind once. -->
                 <script>
                     (function () {
-                        if (window.__khanjpNavGroups) return;
-                        window.__khanjpNavGroups = true;
-                        var closeAll = function () {
+                        if (window.__khanjpNav) return;
+                        window.__khanjpNav = true;
+
+                        // Below 860 the nav is a drawer (see style.css) and the brand opens it rather
+                        // than going home; Home is the drawer's first link. Above 860 nothing changes:
+                        // the two groups open on hover, and this only handles taps.
+                        var isDrawer = function () { return window.matchMedia('(max-width: 860px)').matches; };
+                        var brand = document.querySelector('.site-brand');
+
+                        var closeGroups = function () {
                             var open = document.querySelectorAll('.nav-item.open');
                             for (var i = 0; i < open.length; i++) open[i].classList.remove('open');
                         };
+                        var setDrawer = function (open) {
+                            document.body.classList.toggle('nav-drawer-open', open);
+                            if (brand) brand.setAttribute('aria-expanded', String(open));
+                        };
+                        if (brand && isDrawer()) {
+                            brand.setAttribute('aria-controls', 'site-nav');
+                            brand.setAttribute('aria-expanded', 'false');
+                        }
+
                         document.addEventListener('click', function (e) {
-                            var trigger = e.target.closest && e.target.closest('.nav-trigger[data-group-pages]');
-                            if (!trigger) { closeAll(); return; }
-                            var item = trigger.parentNode;
-                            var wasOpen = item.classList.contains('open');
-                            closeAll();
-                            if (!wasOpen) item.classList.add('open');
+                            var hit = function (sel) { return e.target.closest && e.target.closest(sel); };
+                            if (hit('.site-brand') && isDrawer()) {
+                                e.preventDefault();
+                                setDrawer(!document.body.classList.contains('nav-drawer-open'));
+                                return;
+                            }
+                            if (hit('.nav-scrim')) { setDrawer(false); return; }
+                            if (hit('.header-nav a')) { setDrawer(false); return; }   // leaving anyway
+                            var trigger = hit('.nav-trigger[data-group-pages]');
+                            if (trigger && !isDrawer()) {
+                                // a tap on a touch laptop: the group heading is not a link
+                                var item = trigger.parentNode;
+                                var wasOpen = item.classList.contains('open');
+                                closeGroups();
+                                if (!wasOpen) item.classList.add('open');
+                                return;
+                            }
+                            if (!trigger) closeGroups();
                         });
-                        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(); });
+
+                        document.addEventListener('keydown', function (e) {
+                            if (e.key !== 'Escape') return;
+                            closeGroups();
+                            setDrawer(false);
+                        });
+
+                        // Rotating to landscape can cross the breakpoint with the drawer open.
+                        window.addEventListener('resize', function () {
+                            if (!isDrawer()) {
+                                setDrawer(false);
+                                if (brand) brand.removeAttribute('aria-expanded');
+                            } else if (brand && !brand.hasAttribute('aria-expanded')) {
+                                brand.setAttribute('aria-controls', 'site-nav');
+                                brand.setAttribute('aria-expanded', 'false');
+                            }
+                        });
                     })();
                 </script>
 

@@ -33,6 +33,8 @@ window.I18N_STRINGS = {
     // Study Path is linked from the hub and the footer, not the masthead nav: it is a route through
     // the tools rather than a tool. (The row was also full until the 2026-09-16 regrouping.)
     'nav.studyPath': { en: 'Study Path', mn: 'Сурах зам' },
+    // Drawer-only: on a phone the brand opens the menu instead of going home.
+    'nav.home': { en: 'Home', mn: 'Нүүр' },
     'nav.kanaOrigins': { en: 'Kana Origins', mn: 'Канагийн үүсэл' },
     'nav.wordGame': { en: 'Word Match', mn: 'Үг холбох дасгал' },
     'nav.allLevels': { en: 'All Levels', mn: 'Бүх шат' },

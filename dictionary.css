@@ -452,3 +452,25 @@ body:has(.dictionary-main) {
     .dict-bridge { flex-direction: row; padding: 6px 0; }
     .dict-side.wago { text-align: left; }
 }
+
+/* Phones. The result count sits inside the search field, which fits a wide screen and collided
+   with the placeholder at 390px (count 309px wide, printed straight over it). Below the field
+   instead. The intro was 301px tall before the first word, so it steps down a size too. */
+@media (max-width: 860px) {
+    .dict-search-count {
+        position: static;
+        transform: none;
+        display: block;
+        margin-top: 6px;
+        text-align: right;
+    }
+
+    .dict-search {
+        padding-right: 16px;
+    }
+
+    .dict-subtitle {
+        font-size: 0.92rem;
+        line-height: 1.55;
+    }
+}

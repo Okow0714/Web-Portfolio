@@ -62,6 +62,20 @@ is a menu label only** — `dictionary.html` keeps "Монгол-Япон тол
 and share card, because that is the phrase Mongolians search for; the menu says Vocabulary /
 `Үгсийн сан` only because the heading above it already says Dictionary.
 
+**Below 860px the nav is a drawer, not a bar** (2026-09-17). Measured on a 390px phone: the bar could
+give .header-nav 157px for 343px of items, so the third one sat under the account button. The same nav
+markup becomes an off-canvas panel (fixed, top 56px so the brand mark stays visible and tapping it
+closes again), the groups stop being dropdowns and render as always-open sections, and the drawer adds
+two links the bar has no room for: Home (since the brand no longer navigates on a phone) and Study Path.
+They carry `.nav-drawer-only`, display:none above 860. The scrim is a child of `.site-header-wrap`,
+which is already fixed with z-index 1000, so none of the `.container` stacking games apply. The script
+in `_chrome.html` runs both behaviours and checks `matchMedia(`(max-width: 860px)`)` to tell them apart.
+
+**Mobile fixes shipped with it, each measured first:** `origins.html` had no viewport tag, so phones laid
+it out at ~980px and shrank it (that is why it alone measured a 64px header and 18 targets under 40px);
+the dictionary's result count is `position:absolute` inside the search field, which collided with the
+placeholder at 390px and now sits below the field; `.lang-switch` was 33x29 and is now 44x44. Re-measure
+with a real 390x844 context before claiming any of this again -- `isMobile: true, hasTouch: true`.
 **Shared chrome is generated, not copy-pasted** (`_chrome.html` + `build-chrome.js`). The
 masthead, account panel, all three account modals (auth, account details, **and settings** — the
 settings modal is deliberately inside the block, since it is the exact region the eleven-page
