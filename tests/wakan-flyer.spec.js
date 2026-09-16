@@ -34,11 +34,26 @@ module.exports = async function run(page, assert, baseUrl) {
     const flyBox = await page.locator('.flyer').boundingBox();
     assert.ok(flyBox, 'flyer element should be visible on screen');
 
-    await page.mouse.move(flyBox.x + flyBox.width / 2, flyBox.y + flyBox.height / 2);
-    await page.mouse.down();
-    await page.mouse.up();
-    await page.waitForTimeout(150);
-    const caught = await page.evaluate(() => flyerHeld);
+    // The flyer is animating, so a position sampled now is stale by the time the click lands --
+    // a few pixels on a fast machine, enough to miss entirely on a slow CI runner. That was this
+    // spec's long-running intermittent failure (it failed twice on a tree differing from a passing
+    // one only in sw.js's version string). Re-read where it IS immediately before each click, and
+    // give it a few attempts.
+    let caught = false;
+    for (let attempt = 0; attempt < 8 && !caught; attempt++) {
+        const at = await page.evaluate(() => {
+            const el = document.querySelector('.flyer');
+            if (!el) return null;
+            const r = el.getBoundingClientRect();
+            return { x: r.x + r.width / 2, y: r.y + r.height / 2 };
+        });
+        assert.ok(at, 'flyer element should still be on screen while trying to catch it');
+        await page.mouse.move(at.x, at.y);
+        await page.mouse.down();
+        await page.mouse.up();
+        await page.waitForTimeout(120);
+        caught = await page.evaluate(() => flyerHeld);
+    }
     assert.ok(caught, 'clicking the flyer should catch it (flyerHeld=true)');
 
     // Cursor-follow regression check: move the pointer, confirm the flyer tracks within a few
