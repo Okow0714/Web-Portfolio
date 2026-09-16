@@ -1237,8 +1237,42 @@ html[data-theme="dark"] { color-scheme: dark; }
         gap: 8px;
     }
 
+    /* The wordmark stays on phones now that the nav has moved into the drawer: the row is just
+       the mark, the name and the three controls. The tagline underneath is what did not fit. */
     .brand-text {
+        display: block;
+    }
+
+    .brand-role {
         display: none;
+    }
+
+    /* At 320px the row is 5px too long for mark + wordmark + three controls, so the wordmark
+       gives way rather than pushing the account button off the edge. */
+    .brand-name {
+        /* 0.88 rather than 0.95: at 360px the name missed fitting by 5px and ellipsized for
+           no good reason. It still truncates below that, where nothing would fit. */
+        font-size: 0.88rem;
+        /* a span by default, and text-overflow does nothing on an inline box */
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .site-brand,
+    .brand-text {
+        min-width: 0;
+    }
+
+    /* .header-nav is position:fixed here, so it no longer separates the brand from the controls
+       and everything bunched up on the left. The brand takes the slack instead, which puts the
+       language, theme and account buttons back on the right edge where a thumb expects them. */
+    .site-brand {
+        margin-right: auto;
+        /* the base rule is flex: 0 0 auto, so without this the wordmark cannot give way and the
+           account button is pushed off a 320px screen instead */
+        flex-shrink: 1;
     }
 
     /* The bar could only hand the nav 157px of a 390px phone, so its third item sat under the
