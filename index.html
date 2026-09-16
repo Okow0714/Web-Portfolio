@@ -244,15 +244,15 @@
         <main class="hub-main">
             <div class="hub-wrap">
                 <section class="hub-hero">
-                    <p class="hub-hero-eyebrow" data-i18n="hub.eyebrow">Free, in Mongolian</p>
-                    <h1 data-i18n="hub.heroTitle">Learn Japanese, in Mongolian</h1>
-                    <p data-i18n="hub.heroBody">Each of the six tools below has its own little world — a beginners&rsquo; guide to the scripts, a game, a phonetics browser, a grammar drill, a reading coach, a dictionary. See exactly what each one does, in a real screenshot.</p>
+                    <p class="hub-hero-eyebrow" data-i18n="hub.eyebrow">Сониуч. Бүтээлч. Шаргуу.</p>
+                    <h1 data-i18n="hub.heroTitle">Япон хэлтэй найзалцгаая</h1>
+                    <p data-i18n="hub.heroBody">Энэ сайт япон хэлийг амар замаар нь биш, үндсээс нь сурахад зориулсан зургаан өөр хэсгээс бүрдэнэ.</p>
                 </section>
 
                 <form class="hub-search" id="hub-search" role="search">
                     <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-                    <input type="text" id="hub-search-input" data-i18n-placeholder="hub.searchPlaceholder" placeholder="Look up a word — Mongolian, kanji, kana, or English…" autocomplete="off">
-                    <button type="submit" data-i18n="hub.searchButton">Search</button>
+                    <input type="text" id="hub-search-input" data-i18n-placeholder="hub.searchPlaceholder" placeholder="Үг хайх — монгол, ханз, кана, эсвэл англи…" autocomplete="off">
+                    <button type="submit" data-i18n="hub.searchButton">Хайх</button>
                 </form>
 
                 <section class="hub-progress hidden" id="hub-progress-authed">
@@ -260,26 +260,26 @@
                         <div class="hub-progress-title">
                             <div class="hub-progress-avatar" id="hub-progress-avatar"></div>
                             <div>
-                                <h2 data-i18n="hub.progress.welcome">Welcome back</h2>
+                                <h2 data-i18n="hub.progress.welcome">Тавтай морил</h2>
                                 <span id="hub-progress-name"></span>
                             </div>
                         </div>
-                        <div class="hub-progress-score"><span id="hub-progress-score">0</span> <span data-i18n="hub.progress.pointsOf">/ 3000 pts</span></div>
-                        <a href="dashboard.html" class="hub-progress-link" data-i18n="hub.progress.fullDashboard">Full dashboard →</a>
+                        <div class="hub-progress-score"><span id="hub-progress-score">0</span> <span data-i18n="hub.progress.pointsOf">/ 3000 оноо</span></div>
+                        <a href="dashboard.html" class="hub-progress-link" data-i18n="hub.progress.fullDashboard">Бүрэн хянах самбар →</a>
                     </div>
                     <div class="hub-progress-tools">
                         <div class="hub-progress-tool">
-                            <div class="hub-progress-tool-head"><span class="hub-progress-tool-glyph">遊</span><span data-i18n="hub.game.name">Word Match</span></div>
+                            <div class="hub-progress-tool-head"><span class="hub-progress-tool-glyph">遊</span><span data-i18n="hub.game.name">Үг холбох дасгал</span></div>
                             <span class="hub-progress-tool-frac" id="hub-progress-game-frac">0 / 60 levels</span>
                             <div class="hub-progress-tool-track"><div class="hub-progress-tool-fill" id="hub-progress-game-fill" style="width:0%"></div></div>
                         </div>
                         <div class="hub-progress-tool">
-                            <div class="hub-progress-tool-head"><span class="hub-progress-tool-glyph">文</span><span data-i18n="hub.grammar.name">Grammar Connect</span></div>
+                            <div class="hub-progress-tool-head"><span class="hub-progress-tool-glyph">文</span><span data-i18n="hub.grammar.name">Дүрэм холбох</span></div>
                             <span class="hub-progress-tool-frac" id="hub-progress-grammar-frac">0 / 40 levels</span>
                             <div class="hub-progress-tool-track"><div class="hub-progress-tool-fill" id="hub-progress-grammar-fill" style="width:0%"></div></div>
                         </div>
                         <div class="hub-progress-tool">
-                            <div class="hub-progress-tool-head"><span class="hub-progress-tool-glyph">読</span><span data-i18n="hub.reading.name">Dokkai Reader</span></div>
+                            <div class="hub-progress-tool-head"><span class="hub-progress-tool-glyph">読</span><span data-i18n="hub.reading.name">Уншлагын дадлага</span></div>
                             <span class="hub-progress-tool-frac" id="hub-progress-reading-frac">0 / 72 texts</span>
                             <div class="hub-progress-tool-track"><div class="hub-progress-tool-fill" id="hub-progress-reading-fill" style="width:0%"></div></div>
                         </div>
@@ -289,10 +289,10 @@
 
                 <section class="hub-progress-guest" id="hub-progress-guest">
                     <div>
-                        <p data-i18n="hub.progress.guestTitle">Log in to track your progress</p>
-                        <span data-i18n="hub.progress.guestBody">Your score and per-tool progress will show up right here.</span>
+                        <p data-i18n="hub.progress.guestTitle">Явцаа хянахын тулд нэвтэрнэ үү</p>
+                        <span data-i18n="hub.progress.guestBody">Таны оноо болон хэрэгсэл тус бүрийн явц энд харагдана.</span>
                     </div>
-                    <button type="button" class="hub-progress-guest-btn" data-i18n="auth.logIn" onclick="document.getElementById('auth-login-btn').click()">Log In</button>
+                    <button type="button" class="hub-progress-guest-btn" data-i18n="auth.logIn" onclick="document.getElementById('auth-login-btn').click()">Нэвтрэх</button>
                 </section>
 
                 <!-- Not one of the tool cards: a route through them. Given its own full-width
@@ -300,11 +300,11 @@
                 <a class="hub-startpath" href="path.html">
                     <span class="hub-startpath-glyph" aria-hidden="true">&#36947;</span>
                     <span class="hub-startpath-text">
-                        <span class="hub-startpath-kicker" data-i18n="hub.path.kicker">New here?</span>
-                        <span class="hub-startpath-name" data-i18n="hub.path.name">The path from zero to N1</span>
-                        <span class="hub-startpath-desc" data-i18n="hub.path.desc">Six stages, from not knowing a single character to N1 — which tool to open at each one, exactly which levels to do, and how you know you are ready for the next.</span>
+                        <span class="hub-startpath-kicker" data-i18n="hub.path.kicker">Шинэ хэрэглэгч үү?</span>
+                        <span class="hub-startpath-name" data-i18n="hub.path.name">Тэгээс N1 хүртэлх зам</span>
+                        <span class="hub-startpath-desc" data-i18n="hub.path.desc">Нэг ч үсэг танихгүй байхаас N1 хүртэлх зургаан үе шат — үе шат бүрт ямар хэрэгсэл нээх, аль шатыг хийх, дараагийнх руу шилжихэд юу чадсан байвал зохихыг бичсэн.</span>
                     </span>
-                    <span class="hub-startpath-cta" data-i18n="hub.path.cta">See the path &rarr;</span>
+                    <span class="hub-startpath-cta" data-i18n="hub.path.cta">Замыг үзэх →</span>
                 </a>
 
                 <div class="hub-rooms">
@@ -312,10 +312,10 @@
                         <div class="hub-room-clip"><img src="images/hub/origins-scripts.jpg" alt=""></div>
                         <div class="hub-room-body">
                             <div class="hub-room-glyph">&#28304;</div>
-                            <h2 class="hub-room-name" data-i18n="hub.origins.name">Kana Origins</h2>
-                            <p class="hub-room-desc" data-i18n="hub.origins.desc">Start here if Japanese writing still looks like three unrelated alphabets. A clickable chronology from the first writing in Japan to the post-war reforms, every one of the 46 kana with its Mongolian sound and the kanji it was cut down from, and a four-step answer to why English words are written in katakana.</p>
-                            <span class="hub-room-stat" data-i18n="hub.origins.stat">9 ERAS &middot; 46 KANA &middot; NO KANJI NEEDED</span>
-                            <span class="hub-room-cta" data-i18n="hub.origins.cta">Start &rarr;</span>
+                            <h2 class="hub-room-name" data-i18n="hub.origins.name">Канагийн үүсэл</h2>
+                            <p class="hub-room-desc" data-i18n="hub.origins.desc">Япон бичиг гурван хоорондоо хамааралгүй цагаан толгой мэт харагдсаар байвал эндээс эхэлнэ үү. Япон дахь анхны бичгээс дайны дараах шинэчлэл хүртэлх, дарж дэлгэдэг он цагийн хэлхээс; 46 кана тус бүрийн монгол дуудлага, гарал үүслийн ханз; мөн англи үгсийг яагаад катаканагаар бичдэгийн дөрвөн алхамт хариулт.</p>
+                            <span class="hub-room-stat" data-i18n="hub.origins.stat">9 ҮЕ ШАТ · 46 КАНА · ХАНЗ МЭДЭХ ШААРДЛАГАГҮЙ</span>
+                            <span class="hub-room-cta" data-i18n="hub.origins.cta">Эхлэх →</span>
                         </div>
                     </a>
 
@@ -323,10 +323,10 @@
                         <div class="hub-room-clip"><img src="images/hub/game-match.jpg" alt=""></div>
                         <div class="hub-room-body">
                             <div class="hub-room-glyph">遊</div>
-                            <h2 class="hub-room-name" data-i18n="hub.game.name">Word Match</h2>
-                            <p class="hub-room-desc" data-i18n="hub.game.desc">Connect each Japanese word tile to its matching meaning. Chain several kanji that share a phonetic reading and they clear together in an instant &ldquo;lightning connect.&rdquo; Each level starts on a 4-minute clock that every matched pair extends, and two wrong guesses bring a cleared pair back.</p>
-                            <span class="hub-room-stat" data-i18n="hub.game.stat">60 LEVELS · 5 JLPT TIERS · ~1,500 WORDS</span>
-                            <span class="hub-room-cta" data-i18n="hub.game.cta">Play &rarr;</span>
+                            <h2 class="hub-room-name" data-i18n="hub.game.name">Үг холбох дасгал</h2>
+                            <p class="hub-room-desc" data-i18n="hub.game.desc">Япон үгийг утга нь ижил монгол үгтэй холбох дасгал. Ижил дуудлагын язгууртай хэд хэдэн ханзыг зэрэг холбовол олон үг нэг дор арилна. Шат бүр 4 минутаас эхэлж, хос таарах бүрд цаг нэмэгдэнэ. Хоёр удаа буруу дарвал арилсан хос эргэж гарч ирнэ.</p>
+                            <span class="hub-room-stat" data-i18n="hub.game.stat">60 ШАТ · 5 JLPT ЗЭРЭГЛЭЛ · ОЙРОЛЦООГООР 1,500 ҮГ</span>
+                            <span class="hub-room-cta" data-i18n="hub.game.cta">Тоглох →</span>
                         </div>
                     </a>
 
@@ -334,10 +334,10 @@
                         <div class="hub-room-clip"><img src="images/hub/phonetics-tree.jpg" alt="" loading="lazy" decoding="async"></div>
                         <div class="hub-room-body">
                             <div class="hub-room-glyph">音</div>
-                            <h2 class="hub-room-name" data-i18n="hub.phonetics.name">Phonetics Family</h2>
-                            <p class="hub-room-desc" data-i18n="hub.phonetics.desc">Tap a kanji and every other kanji sharing its phonetic component radiates out around it. Learn one component, and you get a head start on the rest of its family — usually two or three kanji, up to a dozen for the largest.</p>
-                            <span class="hub-room-stat" data-i18n="hub.phonetics.stat">424 FAMILIES · 1,128 KANJI · 5 JLPT TIERS</span>
-                            <span class="hub-room-cta" data-i18n="hub.phonetics.cta">Browse &rarr;</span>
+                            <h2 class="hub-room-name" data-i18n="hub.phonetics.name">Дуудлагын бүлэг</h2>
+                            <p class="hub-room-desc" data-i18n="hub.phonetics.desc">Ханз болгоны дуудлагыг тусад нь цээжлэх хэцүү. Тиймээс энд ханзуудыг дуудлагын язгуураар нь бүлэглэж, зүй тогтлыг нь ойлгоход тусална. Нэг язгуурыг сурвал тэр бүлгийн бусад ханзыг таамаглаж эхэлнэ — ихэвчлэн хоёр, гурав, хамгийн томд нь арав гаруй.</p>
+                            <span class="hub-room-stat" data-i18n="hub.phonetics.stat">424 БҮЛЭГ · 1,128 ХАНЗ · 5 JLPT ЗЭРЭГЛЭЛ</span>
+                            <span class="hub-room-cta" data-i18n="hub.phonetics.cta">Үзэх →</span>
                         </div>
                     </a>
 
@@ -345,10 +345,10 @@
                         <div class="hub-room-clip"><img src="images/hub/grammar-swap.jpg" alt="" loading="lazy" decoding="async"></div>
                         <div class="hub-room-body">
                             <div class="hub-room-glyph">文</div>
-                            <h2 class="hub-room-name" data-i18n="hub.grammar.name">Grammar Connect</h2>
-                            <p class="hub-room-desc" data-i18n="hub.grammar.desc">One grammar point in the sentence is underlined. Find the tile that swaps in without changing what the sentence means, and watch it transform in place.</p>
-                            <span class="hub-room-stat" data-i18n="hub.grammar.stat">400 SENTENCES · 2 TRACKS · 40 LEVELS</span>
-                            <span class="hub-room-cta" data-i18n="hub.grammar.cta">Play &rarr;</span>
+                            <h2 class="hub-room-name" data-i18n="hub.grammar.name">Дүрэм холбох</h2>
+                            <p class="hub-room-desc" data-i18n="hub.grammar.desc">Өгүүлбэрийн доогуур зураастай хэсгийг утгыг нь өөрчлөхгүйгээр өөр үгээр солих дасгал. Цаг багатай ч зөв сонгох бүрд цаг нэмэгдэнэ.</p>
+                            <span class="hub-room-stat" data-i18n="hub.grammar.stat">400 ӨГҮҮЛБЭР · 2 ЗАМ · 40 ШАТ</span>
+                            <span class="hub-room-cta" data-i18n="hub.grammar.cta">Тоглох →</span>
                         </div>
                     </a>
 
@@ -356,10 +356,10 @@
                         <div class="hub-room-clip"><img src="images/hub/reading-enter.jpg" alt="" loading="lazy" decoding="async"></div>
                         <div class="hub-room-body">
                             <div class="hub-room-glyph">読</div>
-                            <h2 class="hub-room-name" data-i18n="hub.reading.name">Dokkai Reader</h2>
-                            <p class="hub-room-desc" data-i18n="hub.reading.desc">Read the passage out loud and the highlight follows your voice automatically, word by word. Any word you skip gets tracked so you can review it afterward.</p>
-                            <span class="hub-room-stat" data-i18n="hub.reading.stat">72 TEXTS · 2 TRACKS</span>
-                            <span class="hub-room-cta" data-i18n="hub.reading.cta">Read &rarr;</span>
+                            <h2 class="hub-room-name" data-i18n="hub.reading.name">Уншлагын дадлага</h2>
+                            <p class="hub-room-desc" data-i18n="hub.reading.desc">Текстийг чангаар уншихад дуу хоолойг чинь таньж, уншиж яваа үгийг чинь дагаад автоматаар тодруулна. Хөгжүүлэлт нь үргэлжилж байгаа тул танихгүй үг гарвал алгасаж болно.</p>
+                            <span class="hub-room-stat" data-i18n="hub.reading.stat">72 ТЕКСТ · 2 ЗАМ</span>
+                            <span class="hub-room-cta" data-i18n="hub.reading.cta">Унших →</span>
                         </div>
                     </a>
 
@@ -367,10 +367,10 @@
                         <div class="hub-room-clip"><img src="images/hub/dictionary-search.jpg" alt="" loading="lazy" decoding="async"></div>
                         <div class="hub-room-body">
                             <div class="hub-room-glyph">辞</div>
-                            <h2 class="hub-room-name" data-i18n="hub.dictionary.name">Mongol-Japan Dictionary</h2>
-                            <p class="hub-room-desc" data-i18n="hub.dictionary.desc">Look up a word in Mongolian or Japanese and see its counterpart, drawn from four merged sources — Word Match's translated vocabulary, a human-reviewed bridge dictionary, a core N5 list, and the Kango &harr; Wago pairs. A second tab holds the original Kango &harr; Wago dictionary — Sino-Japanese and native-Japanese word pairs, with irregular respectful or humble verb forms shown alongside the plain word.</p>
-                            <span class="hub-room-stat" data-i18n="hub.dictionary.stat">3,537 WORDS</span>
-                            <span class="hub-room-cta" data-i18n="hub.dictionary.cta">Search &rarr;</span>
+                            <h2 class="hub-room-name" data-i18n="hub.dictionary.name">Монгол-Япон толь бичиг</h2>
+                            <p class="hub-room-desc" data-i18n="hub.dictionary.desc">Монгол эсвэл япон үг хайхад нөгөө талын хос үг нь гарч ирнэ. Таван эх сурвалжийг нэгтгэсэн: Үг холбох дасгалын үгсийн сан, гараар хянасан гүүр толь, N5-ын үндсэн үгс, өдөр тутмын орчин үеийн үгс, Канго ⇄ Ваго хосууд. Хоёр дахь таб нь Канго ⇄ Ваго толь бичгийг агуулна — таны хайсан ханзны хятад гаралтай, албан ёсны канго (漢語) хэлбэр, уугуул япон ваго (和語) хэлбэр, мөн өгүүлбэрт хэрэглэгдэх хүндэтгэлийн (尊敬語) болон даруу (謙譲語) үйл үгийн хэлбэрүүд.</p>
+                            <span class="hub-room-stat" data-i18n="hub.dictionary.stat">3,537 ҮГ</span>
+                            <span class="hub-room-cta" data-i18n="hub.dictionary.cta">Хайх →</span>
                         </div>
                     </a>
                 </div>

@@ -106,7 +106,15 @@ Facebook's scraper never runs `i18n.js`, so `og:title`/`og:description` are writ
 `og:locale` `mn_MN` and 1200x630 cards from `images/share/` (regenerate with `tools/share-cards/` when a
 tool's name or stat line changes -- they read `hub-i18n-strings.js`, but the images do not update
 themselves). After deploying a change to them, re-scrape in Facebook's Sharing Debugger; it caches
-previews. **No `hreflang`**: it requires a distinct URL per language and both languages share one URL
+previews. **Search results are built from the RAW HTML.** Google wrote its snippet for the brand query from the
+page body, not the description, so on 2026-09-16 `index.html`'s `<main>` had its inline text flipped to
+**Mongolian** -- the reverse of the convention below that the inline fallback is the English. The English
+for those 41 elements now lives only in `hub-i18n-strings.js`, and `i18n.js` swaps it in when a visitor
+picks English (verified: no Cyrillic survives in English mode). Only `<main>` was flipped -- the chrome is
+generated from `_chrome.html`, and every other page still carries English inline. **`about.html` is
+`noindex, follow`** and is out of `sitemap.xml`: it is the one deliberately English page, and brand
+searches should land on the Mongolian home page. It stays linked from every footer.
+**No `hreflang`**: it requires a distinct URL per language and both languages share one URL
 here. That is also why this only partly helps Google -- the inline fallback text is English until JS runs,
 and real Mongolian search ranking would need separate language URLs. **Fraunces has no Cyrillic subset**, so
 Mongolian set in `--font-display` falls back to a system serif; the share cards use IBM Plex Sans.
@@ -336,6 +344,8 @@ reports this as "…subtree intercepts pointer events", which is easy to dismiss
   and the dashboard advertised password/session management that has never existed. **Changing
   a mechanic means grepping the i18n files AND the inline HTML fallbacks for the old number** —
   each string lives in both places, and MN as well as EN.
+  (Exception: `index.html`'s `<main>` carries the Mongolian inline and the English only in the
+  strings file -- see Search results above.)
   **Content totals are the exception that is now enforced:** how many levels/texts each tool has is
   written once, in `progress-shared.js`, which the dashboard, home page and the score SQL (via
   `get_dashboard_stats`'s arguments) all read, and `tests/progress-totals.spec.js` fails CI if it
