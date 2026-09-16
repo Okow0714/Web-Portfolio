@@ -13,7 +13,7 @@ Supabase (Postgres + Auth). Hosted on GitHub Pages. Git repo on `main`.
 |---|---|
 | `index.html` | The "entrance hall" / hub — site home, nav-brand target. Tool cards (screenshot + description) and a home-page dictionary search bar + Dashboard progress widget for signed-in visitors. `<main class="hub-main">`, themed via `hub.css` (deep wine/gold, matches the masthead). Mongolian by default, like every i18n page (see Mongolian first below). |
 | `about.html` | Sarantsatsral's personal "About Me" resume/portfolio page — reached via the footer's "About Me" column or the hub's developer card, not the top nav. Fully standalone: its own `about.css` (forest-teal "Field Dossier" theme), no shared `style.css`, no masthead/footer, a sticky left index-rail layout instead. English only, no i18n. Has its own compact account popover (`.about-account*` classes) rather than the shared masthead's side drawer, but wired through the same `auth-shared.js` and load-bearing IDs (see Account menu below). |
-| `path.html` | Study Path (学びの道) — a six-stage route from no Japanese at all to N1, mapping each stage onto specific tools and level ranges. `<main class="path-main">` / `path.css` (warm paper, sumi ink, one saffron marker). The only page laid out as a vertical route with stations hung off a spine. **Not in the masthead nav on purpose** — that row already carries seven items and overflowed in Mongolian at 1280px once before; it is reached from the hub's `.hub-startpath` banner and the footer's Study tools column. The per-stage hour ranges are external rules of thumb, labelled as such on the page; every level range in the copy is real and will drift if the tools change. |
+| `path.html` | Study Path (学びの道) — a six-stage route from no Japanese at all to N1, mapping each stage onto specific tools and level ranges. `<main class="path-main">` / `path.css` (warm paper, sumi ink, one saffron marker). The only page laid out as a vertical route with stations hung off a spine. **Not in the masthead nav on purpose** — it is a route through the tools rather than a tool, and it is reached from the hub's `.hub-startpath` banner and the footer's Study tools column. (The row had no space either, until the 2026-09-16 regrouping; now it has, and this stays out by choice.) The per-stage hour ranges are external rules of thumb, labelled as such on the page; every level range in the copy is real and will drift if the tools change. |
 | `game.html` | Word Match ("言葉合わせ") — hex-tile vocabulary matching game, JLPT N5–N1. `<main class="game-main">` / `game.css` (dark hanafuda violet/gold). |
 | `phonetics.html` | Phonetics Family — kanji grouped by shared phonetic component, ranked by usage. `<main class="phonetics-main">` / `phonetics.css` (light jade/copper). |
 | `grammar.html` | Grammar Connect — sentence-swap grammar drill, two tracks (foundation/advanced). `<main class="grammar-main">` / `grammar.css`. |
@@ -41,6 +41,26 @@ their own credits in-page, under their level-select grids, which is what prompte
 everything onto one dedicated page). Both the masthead and footer are identical across the twelve
 pages that carry them (every page above except `about.html`, which has no shared header/footer
 at all, and `reset-password.html`); `credits.html` itself carries the masthead+footer too.
+
+**The masthead nav is two groups and a link** (2026-09-16, replacing seven flat items): **Practice**
+(Word Match, Dokkai Reader, Grammar Connect), **Dictionary** (Vocabulary, Kana Origins, Phonetics
+Family) and Dashboard. A group heading is a `<button class="nav-trigger" data-group-pages="a.html
+b.html">` — a heading names a group, not a page, and `.nav-trigger` already resets background,
+border and font so a button styles identically to the anchors. `build-chrome.js` reads
+`data-group-pages` to put `nav-current` on the *group* whose member is open. Because a heading is
+not a link and touch has no hover, the chrome carries a small inline script that toggles
+`.nav-item.open` on tap (guarded by `window.__khanjpNavGroups`, since the chrome is copied into
+twelve pages); `style.css` matches `.nav-item.open .nav-dropdown` alongside `:hover` and
+`:focus-within`. **The per-level dropdowns are gone** — Word Match and Grammar Connect both open on
+their own level select, so the nav listed twelve links to states the page offers anyway. The
+`?level=` and `?track=` URLs still work; `nav.allLevels` and the JLPT/track strings are now unused
+but kept. **The `@media (max-width: 1280px)` block went with them**: it existed only because seven
+Mongolian labels overflowed a 1280px bar, and made every dropdown a full-width fixed sheet at
+laptop widths. Measured after the change: zero overflow down to 861px in both languages, where the
+860px block (which re-declares the scrolling strip and the sheet itself) takes over. **"Vocabulary"
+is a menu label only** — `dictionary.html` keeps "Монгол-Япон толь бичиг" in its title, description
+and share card, because that is the phrase Mongolians search for; the menu says Vocabulary /
+`Үгсийн сан` only because the heading above it already says Dictionary.
 
 **Shared chrome is generated, not copy-pasted** (`_chrome.html` + `build-chrome.js`). The
 masthead, account panel, all three account modals (auth, account details, **and settings** — the

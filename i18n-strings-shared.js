@@ -30,11 +30,11 @@ window.I18N_STRINGS = {
     'nav.writingCreativity': { en: 'Writing & Creativity', mn: 'Бичвэр ба бүтээлч байдал' },
     'nav.resume': { en: 'Resume', mn: 'Намтар' },
     'nav.getInTouch': { en: 'Get In Touch', mn: 'Холбоо барих' },
-    // Study Path is linked from the hub and the footer, not the masthead nav: that row already
-    // carries seven items and overflowed in Mongolian at 1280px once before.
+    // Study Path is linked from the hub and the footer, not the masthead nav: it is a route through
+    // the tools rather than a tool. (The row was also full until the 2026-09-16 regrouping.)
     'nav.studyPath': { en: 'Study Path', mn: 'Сурах зам' },
     'nav.kanaOrigins': { en: 'Kana Origins', mn: 'Канагийн үүсэл' },
-    'nav.wordGame': { en: 'Word Game', mn: 'Үг холбох дасгал' },
+    'nav.wordGame': { en: 'Word Match', mn: 'Үг холбох дасгал' },
     'nav.allLevels': { en: 'All Levels', mn: 'Бүх шат' },
     'nav.n5Beginner': { en: 'N5 · Beginner', mn: 'N5 · Анхан шат' },
     'nav.n4Elementary': { en: 'N4 · Elementary', mn: 'N4 · Суурь шат' },
@@ -47,6 +47,12 @@ window.I18N_STRINGS = {
     'nav.foundationN5N3': { en: 'Foundation · N5-N3', mn: 'Суурь · N5-N3' },
     'nav.advancedN2N1': { en: 'Advanced · N2-N1', mn: 'Ахисан · N2-N1' },
     'nav.dictionary': { en: 'Dictionary', mn: 'Толь бичиг' },
+    // Menu label only. The page itself stays "Монгол-Япон толь бичиг" in its title, description
+    // and share card: "толь бичиг" is what people search for, and the heading above it already
+    // says Dictionary, so repeating it in the menu is what needed fixing.
+    'nav.vocabulary': { en: 'Vocabulary', mn: 'Үгсийн сан' },
+    // "Practice", not "Games": Word Match was deliberately renamed away from тоглоом.
+    'nav.practice': { en: 'Practice', mn: 'Дасгал ажил' },
     'dash.titleSub': { en: 'Dashboard', mn: 'Хянах самбар' },
 
     'auth.loginHint': { en: 'Log in to save your progress across visits.', mn: 'Явцаа хадгалахын тулд нэвтэрнэ үү.' },

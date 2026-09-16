@@ -408,7 +408,9 @@ body {
 }
 
 .nav-item:hover .nav-dropdown,
-.nav-item:focus-within .nav-dropdown {
+.nav-item:focus-within .nav-dropdown,
+/* tapped open on touch, where there is no hover -- see the script in _chrome.html */
+.nav-item.open .nav-dropdown {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
@@ -1193,46 +1195,6 @@ html[data-theme="dark"] { color-scheme: dark; }
    phone, so the brand drops to just its 言 seal (still the link home) and the nav itself
    becomes the scrolling element. .header-nav gets min-width:0 + flex:1 so it can shrink
    below its content width instead of forcing the bar — and therefore the page — wider. */
-/* Seven nav items in Mongolian stop fitting a 1280px bar. Scrolling keeps the last one
-   reachable instead of clipping it under the account trigger. It has to be a fallback, not
-   the default. The scrolling strip would clip the dropdowns with it, so they get the same
-   treatment as on phones: pinned under the bar as full-width sheets, outside the clip. */
-@media (max-width: 1280px) {
-    /* 64px = the bar's own min-height at these widths; the 860px block re-pins to 56px. */
-    .nav-dropdown {
-        position: fixed;
-        top: 64px;
-        left: 0;
-        right: 0;
-        min-width: 0;
-    }
-
-    .header-nav {
-        flex: 1 1 auto;
-        min-width: 0;
-        margin: 0;
-        /* a little breathing room so a mid-scroll clipped label doesn't butt straight up
-           against the account avatar */
-        padding-right: 6px;
-        overflow-x: auto;
-        overflow-y: hidden;
-        scrollbar-width: thin;
-        scrollbar-color: var(--header-border) transparent;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .header-nav::-webkit-scrollbar {
-        height: 3px;
-    }
-
-    .header-nav::-webkit-scrollbar-track {
-        background: transparent;
-    }
-
-    .header-nav::-webkit-scrollbar-thumb {
-        background: var(--header-border);
-    }
-}
 
 @media (max-width: 860px) {
     .header {

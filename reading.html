@@ -59,41 +59,54 @@
                 </a>
 
                 <nav class="header-nav" aria-label="Main">
+                    <!-- Two groups instead of seven items. The heading is a <button>, not a link:
+                         it names a group, not a page. .nav-trigger already resets background,
+                         border and font, so it styles identically to the anchors beside it.
+                         data-group-pages is what build-chrome.js reads to mark the open page. -->
                     <div class="nav-item">
-                        <a href="origins.html" class="nav-trigger" data-i18n="nav.kanaOrigins">Kana Origins</a>
-                    </div>
-                    <div class="nav-item">
-                        <a href="game.html" class="nav-trigger"><span data-i18n="nav.wordGame">Word Game</span><span class="nav-caret" aria-hidden="true">&#9662;</span></a>
+                        <button type="button" class="nav-trigger nav-current" data-group-pages="game.html reading.html grammar.html"><span data-i18n="nav.practice">Practice</span><span class="nav-caret" aria-hidden="true">&#9662;</span></button>
                         <div class="nav-dropdown">
-                            <a href="game.html" data-i18n="nav.allLevels">All Levels</a>
-                            <a href="game.html?level=1" data-jlpt="N5" data-i18n="nav.n5Beginner">N5 · Beginner</a>
-                            <a href="game.html?level=13" data-jlpt="N4" data-i18n="nav.n4Elementary">N4 · Elementary</a>
-                            <a href="game.html?level=25" data-jlpt="N3" data-i18n="nav.n3Intermediate">N3 · Intermediate</a>
-                            <a href="game.html?level=37" data-jlpt="N2" data-i18n="nav.n2UpperIntermediate">N2 · Upper Intermediate</a>
-                            <a href="game.html?level=49" data-jlpt="N1" data-i18n="nav.n1Advanced">N1 · Advanced</a>
+                            <a href="game.html" data-i18n="nav.wordGame">Word Match</a>
+                            <a href="reading.html" data-i18n="nav.dokkaiReader">Dokkai Reader</a>
+                            <a href="grammar.html" data-i18n="nav.grammarConnect">Grammar Connect</a>
                         </div>
                     </div>
                     <div class="nav-item">
-                        <a href="reading.html" class="nav-trigger nav-current" data-i18n="nav.dokkaiReader">Dokkai Reader</a>
-                    </div>
-                    <div class="nav-item">
-                        <a href="phonetics.html" class="nav-trigger" data-i18n="nav.phoneticsFamily">Phonetics Family</a>
-                    </div>
-                    <div class="nav-item">
-                        <a href="grammar.html" class="nav-trigger"><span data-i18n="nav.grammarConnect">Grammar Connect</span><span class="nav-caret" aria-hidden="true">&#9662;</span></a>
+                        <button type="button" class="nav-trigger" data-group-pages="dictionary.html origins.html phonetics.html"><span data-i18n="nav.dictionary">Dictionary</span><span class="nav-caret" aria-hidden="true">&#9662;</span></button>
                         <div class="nav-dropdown">
-                            <a href="grammar.html" data-i18n="nav.allLevels">All Levels</a>
-                            <a href="grammar.html?track=foundation" data-i18n="nav.foundationN5N3">Foundation · N5-N3</a>
-                            <a href="grammar.html?track=advanced" data-i18n="nav.advancedN2N1">Advanced · N2-N1</a>
+                            <a href="dictionary.html" data-i18n="nav.vocabulary">Vocabulary</a>
+                            <a href="origins.html" data-i18n="nav.kanaOrigins">Kana Origins</a>
+                            <a href="phonetics.html" data-i18n="nav.phoneticsFamily">Phonetics Family</a>
                         </div>
-                    </div>
-                    <div class="nav-item">
-                        <a href="dictionary.html" class="nav-trigger" data-i18n="nav.dictionary">Dictionary</a>
                     </div>
                     <div class="nav-item">
                         <a href="dashboard.html" class="nav-trigger" data-i18n="dash.titleSub">Dashboard</a>
                     </div>
                 </nav>
+
+                <!-- Touch has no hover, and a group heading is not a link, so without this a phone
+                     could never open a group. Desktop still uses :hover / :focus-within from
+                     style.css; this only toggles a class. Guarded because the chrome is copied
+                     into twelve pages and must bind once. -->
+                <script>
+                    (function () {
+                        if (window.__khanjpNavGroups) return;
+                        window.__khanjpNavGroups = true;
+                        var closeAll = function () {
+                            var open = document.querySelectorAll('.nav-item.open');
+                            for (var i = 0; i < open.length; i++) open[i].classList.remove('open');
+                        };
+                        document.addEventListener('click', function (e) {
+                            var trigger = e.target.closest && e.target.closest('.nav-trigger[data-group-pages]');
+                            if (!trigger) { closeAll(); return; }
+                            var item = trigger.parentNode;
+                            var wasOpen = item.classList.contains('open');
+                            closeAll();
+                            if (!wasOpen) item.classList.add('open');
+                        });
+                        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(); });
+                    })();
+                </script>
 
                 <!-- Language lives here, not behind the account menu: it is the one setting a
                      visitor needs before they have decided whether to sign up at all. -->

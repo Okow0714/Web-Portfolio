@@ -16,12 +16,12 @@ module.exports = async function run(page, assert, baseUrl) {
 
         assert.strictEqual(errs.length, 0, `${path} had console/page errors: ${JSON.stringify(errs)}`);
 
-        // Dictionary link should read "Dictionary" (or the MN default "Толь бичиг" on index.html)
+        // The dictionary link now sits inside the Dictionary group and reads "Vocabulary"
         // everywhere -- catches a stale/renamed nav label regressing silently.
         const navLabel = await page.locator('.header-nav a[href="dictionary.html"]').first().textContent().catch(() => null);
         if (navLabel !== null) {
             assert.ok(
-                navLabel.trim() === 'Dictionary' || navLabel.trim() === 'Толь бичиг',
+                navLabel.trim() === 'Vocabulary' || navLabel.trim() === 'Үгсийн сан',
                 `${path} nav Dictionary label was "${navLabel.trim()}"`
             );
         }

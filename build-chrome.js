@@ -59,6 +59,15 @@ function section(text, name) {
 // all, so this is the only place the class is ever added. index.html and the legal pages have no
 // nav entry of their own and correctly come out with none.
 function withCurrent(header, page) {
+    // A page inside a group: mark the group's heading, so the bar still shows where you are.
+    const grouped = header.replace(
+        /class="nav-trigger" data-group-pages="([^"]+)"/g,
+        (whole, pages) => pages.split(' ').includes(page)
+            ? 'class="nav-trigger nav-current" data-group-pages="' + pages + '"'
+            : whole);
+    if (grouped !== header) return grouped;
+
+    // A page with its own entry (dashboard.html).
     const needle = 'href="' + page + '" class="nav-trigger"';
     if (!header.includes(needle)) return header;
     return header.replace(needle, 'href="' + page + '" class="nav-trigger nav-current"');
