@@ -234,16 +234,16 @@
                 <div class="gc-select-content">
                     <div class="gc-hud-row">
                         <div>
-                            <h1 class="gc-title">文法つなぎ<span class="gc-title-sub" data-i18n="grammar.titleSub">Grammar Connect</span></h1>
-                            <p class="gc-subtitle" data-i18n="grammar.subtitle">A sentence appears with one grammar point underlined. Tap the tile that replaces it without changing what the sentence means — the word transforms in place, and the finished sentence (with its translation) drops into the cleared list at the side. Ten sentences a level, five options a sentence, twenty levels a track.</p>
+                            <h1 class="gc-title">文法つなぎ<span class="gc-title-sub" data-i18n="grammar.titleSub">Дүрэм холбох</span></h1>
+                            <p class="gc-subtitle" data-i18n="grammar.subtitle">Өгүүлбэр гарч ирэхэд дүрмийн нэг хэсэг нь доогуур зураастай байна. Утгыг нь өөрчлөхгүйгээр орлуулах хавтанг дарна уу — үг шууд солигдож, гүйцээсэн өгүүлбэр орчуулгынхаа хамт хажуугийн жагсаалтад нэмэгдэнэ. Шат бүрт арван өгүүлбэр, өгүүлбэр бүрт таван сонголт, зам бүрт хорин шат.</p>
                         </div>
                         <button class="sound-toggle on" id="gc-sound-toggle" type="button" aria-pressed="true" title="Turn sound off">
                             <span id="gc-sound-icon" aria-hidden="true">&#128266;</span>
                         </button>
                     </div>
-                    <p id="gc-guest-hint" class="gc-guest-hint hidden" data-i18n="auth.loginHint">Log in to save your progress across visits.</p>
+                    <p id="gc-guest-hint" class="gc-guest-hint hidden" data-i18n="auth.loginHint">Явцаа хадгалахын тулд нэвтэрнэ үү.</p>
 
-                    <h2 class="sr-only" data-i18n="game.levels">Levels</h2>
+                    <h2 class="sr-only" data-i18n="game.levels">Шатууд</h2>
                     <div class="gc-diff-tabs" id="gc-diff-tabs" role="tablist" aria-label="Difficulty track"></div>
                     <div class="gc-level-grid" id="gc-level-grid"></div>
                 </div>
@@ -255,13 +255,13 @@
                 <div class="gc-fx-text-layer" id="gc-fx-text-layer" aria-hidden="true"></div>
                 <div class="gc-topbar">
                     <div class="gc-topbar-left">
-                        <button id="gc-back-btn" class="ghost-btn" type="button"><span aria-hidden="true">&larr;</span> <span data-i18n="game.levels">Levels</span></button>
+                        <button id="gc-back-btn" class="ghost-btn" type="button"><span aria-hidden="true">&larr;</span> <span data-i18n="game.levels">Шатууд</span></button>
                         <div class="gc-level-label" id="gc-level-label"></div>
                     </div>
                     <div class="gc-topbar-stats">
-                        <span class="gc-stat gc-stat-timer"><span class="v" id="gc-timer">03:00</span><span class="k" data-i18n="game.time">Time</span></span>
-                        <span class="gc-stat"><span class="v" id="gc-cleared-count">0/10</span><span class="k" data-i18n="grammar.cleared">Cleared</span></span>
-                        <span class="gc-stat"><span class="v" id="gc-mistake-count">0</span><span class="k" data-i18n="grammar.mistakes">Mistakes</span></span>
+                        <span class="gc-stat gc-stat-timer"><span class="v" id="gc-timer">03:00</span><span class="k" data-i18n="game.time">Хугацаа</span></span>
+                        <span class="gc-stat"><span class="v" id="gc-cleared-count">0/10</span><span class="k" data-i18n="grammar.cleared">Дуусгасан</span></span>
+                        <span class="gc-stat"><span class="v" id="gc-mistake-count">0</span><span class="k" data-i18n="grammar.mistakes">Алдаа</span></span>
                         <button class="sound-toggle on" id="gc-board-sound-toggle" type="button" aria-pressed="true" title="Turn sound off">
                             <span id="gc-board-sound-icon" aria-hidden="true">&#128266;</span>
                         </button>
@@ -277,7 +277,7 @@
                         <div class="gc-tile-bank" id="gc-tile-bank"></div>
                     </div>
                     <div class="gc-match-side">
-                        <div class="gc-side-label" data-i18n="grammar.cleared">Cleared</div>
+                        <div class="gc-side-label" data-i18n="grammar.cleared">Дуусгасан</div>
                         <div id="gc-cleared-list" class="gc-cleared-list"></div>
                     </div>
                 </div>

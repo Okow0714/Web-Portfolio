@@ -240,15 +240,15 @@
             <section id="level-select-section" class="game-section">
                 <div class="game-hud-row">
                     <div>
-                        <h1 class="game-title">言葉合わせ<span class="game-title-sub" data-i18n="game.titleSub">Japanese Word Match</span></h1>
-                        <p class="game-subtitle" data-i18n="game.subtitle">Connect each Japanese word to its English meaning. Every level puts 20 pairs in play on a flat 4-minute clock (+20s per pair matched), and there are 12 levels per JLPT tier — N5 is beginner vocabulary, N1 is advanced. Kanji sharing a phonetic component can be chained together for a lightning-fast multi-clear, and 4 correct pairs in a row banks a powerup you can spend on a free clear or swapping in new words. Two mistakes bring a cleared pair back as a penalty, so slow down and look before you click.</p>
+                        <h1 class="game-title">言葉合わせ<span class="game-title-sub" data-i18n="game.titleSub">Япон үг холбох дасгал</span></h1>
+                        <p class="game-subtitle" data-i18n="game.subtitle">Япон үг бүрийг утга нь тохирох үгтэй холбоно уу. Шат бүрт 20 хос, 4 минутын цаг байна (хос таарах бүрд +20 секунд). JLPT түвшин бүрт 12 шат — N5 нь анхан шат, N1 нь хамгийн гүнзгий. Ижил дуудлагын язгууртай ханзуудыг хооронд нь холбовол хэд хэдэн хос нэг дор арилна. Алдаагүй дараалан 4 хос холбовол бонус авах бөгөөд үүгээр нэг хос хасах, эсвэл шинэ үгээр солиж болно. Хоёр удаа буруу дарвал арилсан хос торгууль болж эргэж ирнэ — тиймээс яаралгүй, сайн хараад дараарай.</p>
                     </div>
                     <button class="sound-toggle on" id="sound-toggle" type="button" aria-pressed="true" title="Turn sound off">
                         <span id="sound-icon" aria-hidden="true">&#128266;</span>
                     </button>
                 </div>
-                <p id="game-guest-hint" class="game-guest-hint hidden" data-i18n="game.guestHint">Log in to save your best times and completions across visits.</p>
-                <h2 class="sr-only" data-i18n="game.levels">Levels</h2>
+                <p id="game-guest-hint" class="game-guest-hint hidden" data-i18n="game.guestHint">Шилдэг цаг болон дуусгасан шатуудаа хадгалахын тулд нэвтэрнэ үү.</p>
+                <h2 class="sr-only" data-i18n="game.levels">Шатууд</h2>
                 <div class="jlpt-tabs" id="jlpt-tabs" role="tablist" aria-label="JLPT level"></div>
                 <div class="level-grid" id="level-grid"></div>
             </section>
@@ -256,18 +256,18 @@
             <!-- Board -->
             <section id="board-section" class="game-section hidden">
                 <div class="board-toolbar">
-                    <button id="board-back-btn" class="ghost-btn" type="button"><span aria-hidden="true">&larr;</span> <span data-i18n="game.levels">Levels</span></button>
+                    <button id="board-back-btn" class="ghost-btn" type="button"><span aria-hidden="true">&larr;</span> <span data-i18n="game.levels">Шатууд</span></button>
                     <div class="board-level-label" id="board-level-label"></div>
                     <div class="board-stats">
                         <span id="board-timer">05:00</span>
                         <span id="board-pairs">0 / 10 pairs</span>
                         <span id="board-moves">0 moves</span>
                         <span class="hud-stat">
-                            <span class="hud-label" data-i18n="game.score">Score</span>
+                            <span class="hud-label" data-i18n="game.score">Оноо</span>
                             <span class="hud-value" id="score-value">0</span>
                         </span>
                         <span class="hud-stat streak-stat">
-                            <span class="hud-label" data-i18n="game.streak">Streak</span>
+                            <span class="hud-label" data-i18n="game.streak">Дараалал</span>
                             <span class="streak-meter"><span class="streak-fill" id="streak-fill"></span></span>
                         </span>
                     </div>
@@ -275,19 +275,19 @@
                     <div class="powerup-controls" id="powerup-controls">
                         <button id="powerup-clear-btn" class="powerup-btn" type="button" disabled>
                             <span class="powerup-icon" aria-hidden="true">&#10022;</span>
-                            <span class="powerup-label" data-i18n="game.powerupClearBtn">Clear</span>
+                            <span class="powerup-label" data-i18n="game.powerupClearBtn">Хасах</span>
                             <span class="powerup-charge-badge" id="powerup-clear-badge">0</span>
                         </button>
                         <button id="powerup-swap-btn" class="powerup-btn" type="button" disabled>
                             <span class="powerup-icon" aria-hidden="true">&#8646;</span>
-                            <span class="powerup-label" data-i18n="game.powerupSwapBtn">Swap</span>
+                            <span class="powerup-label" data-i18n="game.powerupSwapBtn">Солих</span>
                             <span class="powerup-charge-badge" id="powerup-swap-badge">0</span>
                         </button>
                     </div>
                     <button class="sound-toggle on" id="board-sound-toggle" type="button" aria-pressed="true" title="Turn sound off">
                         <span id="board-sound-icon" aria-hidden="true">&#128266;</span>
                     </button>
-                    <button id="board-shuffle-btn" class="ghost-btn" type="button" data-i18n="game.shuffle">Shuffle</button>
+                    <button id="board-shuffle-btn" class="ghost-btn" type="button" data-i18n="game.shuffle">Холих</button>
                 </div>
                 <div class="board-layout">
                     <div class="board-wrap" id="board-wrap">
@@ -302,13 +302,13 @@
                             <!-- Wide layout only -- tracks phonetic "lightning connect" families
                                  cleared this round (see familiesFound in game-core.js). -->
                             <div class="panel-block panel-families panel-wide-only" id="panel-families">
-                                <h3 data-i18n="game.familiesFound">Families Found</h3>
-                                <p id="families-empty" class="families-empty" data-i18n="game.familiesEmptyHint">Chain 2+ words sharing a phonetic component for a lightning-fast clear.</p>
+                                <h3 data-i18n="game.familiesFound">Олдсон бүлгүүд</h3>
+                                <p id="families-empty" class="families-empty" data-i18n="game.familiesEmptyHint">Ижил дуудлагын язгууртай 2 буюу түүнээс дээш үг холбовол олон үг нэг дор арилна.</p>
                                 <div id="families-found-list" class="families-found-list"></div>
                             </div>
                             <div class="panel-block panel-example">
-                                <h3 data-i18n="game.lastMatch">Last Match</h3>
-                                <p id="example-empty" class="example-empty" data-i18n="game.exampleEmptyHint">Connect a pair to see an example sentence here.</p>
+                                <h3 data-i18n="game.lastMatch">Сүүлийн тохирол</h3>
+                                <p id="example-empty" class="example-empty" data-i18n="game.exampleEmptyHint">Жишээ өгүүлбэр харахын тулд нэг хосыг холбоно уу.</p>
                                 <div id="example-content" class="example-content hidden">
                                     <div class="example-head">
                                         <span id="example-jp" class="example-jp"></span>
@@ -319,7 +319,7 @@
                                         <p id="example-sentence-jp" class="example-sentence-jp"></p>
                                         <p id="example-sentence-en" class="example-sentence-en"></p>
                                     </div>
-                                    <p id="example-none" class="example-none hidden" data-i18n="game.exampleNoneHint">No example sentence found for this word in the source data.</p>
+                                    <p id="example-none" class="example-none hidden" data-i18n="game.exampleNoneHint">Энэ үгийн жишээ өгүүлбэр эх өгөгдөлд олдсонгүй.</p>
                                 </div>
                             </div>
                         </div>
