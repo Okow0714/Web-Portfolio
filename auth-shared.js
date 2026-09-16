@@ -600,3 +600,28 @@ supabaseClient.auth.onAuthStateChange((_event, session) => updateAuthUI(session)
         push();   // whichever way it went, the server ends up holding the union
     });
 })();
+
+// ---------------------------------------------------------------------------
+// Visit counter (migration 010)
+// ---------------------------------------------------------------------------
+// GitHub Pages gives no server logs, and every analytics service would hand a third party each
+// visitor's IP -- which is what vendoring the fonts and the Supabase library was meant to stop.
+// So the site counts its own page loads: a date and a page name, incremented in page_views.
+// Nothing identifying is sent, signed in or not, which is what lets privacy.html still say
+// visitors are not tracked.
+//
+// It lives here because auth-shared.js is the one script every page loads and it already has the
+// Supabase client. Three things are skipped so the numbers mean something:
+//   - any host that is not the live site, so local servers and CI never write to the real table
+//   - automated browsers (navigator.webdriver), which is every Playwright run in this project
+//   - the stub client, when the Supabase library failed to load
+(function countThisView() {
+    try {
+        if (location.hostname !== 'khan-japanese.org') return;
+        if (navigator.webdriver) return;
+        if (!window.supabaseReady || !window.supabaseClient) return;
+        const path = location.pathname.replace(/^\//, '') || 'index.html';
+        // fire and forget: a failed count must never surface to a visitor
+        window.supabaseClient.rpc('record_page_view', { p_path: path }).then(null, () => {});
+    } catch (e) { /* counting is never worth an error on the page */ }
+})();

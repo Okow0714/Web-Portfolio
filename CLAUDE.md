@@ -253,6 +253,15 @@ that the device's own choices win and are pushed. Tours are a union, never subtr
 not on `profiles`, which is reachable by others in places. `reset_own_progress` does not clear them --
 resetting progress should not change your language.
 
+**Visit counting is self-hosted** (`page_views`, migration 010, fired from the end of
+`auth-shared.js`): a date and a page name, incremented. No IP, session id, referrer or account
+link -- which is what lets `privacy.html` still say visitors are not tracked, and why it cannot
+report unique visitors or referrers. `record_page_view` is the **one RPC granted to `anon`**, a
+deliberate exception to the rule below; it only ever adds 1, so the worst abuse is inflated
+numbers. The client skips any host that is not `khan-japanese.org` and any `navigator.webdriver`
+browser, so local servers and every Playwright run in this repo stay out of the counts. Read them
+in the Supabase SQL Editor; the queries are in the migration.
+
 **`grant execute ... to authenticated` is not a whitelist**: Postgres also grants EXECUTE to
 PUBLIC on every newly created function, so all five RPCs were callable by anyone holding the
 publishable key until `supabase-migration-007-lock-function-grants.sql` revoked it. Probed live:

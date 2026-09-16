@@ -58,8 +58,8 @@ Object.assign(window.I18N_STRINGS, {
     },
 
     'privacy.whatIDontCollect.p': {
-        en: "No analytics or tracking scripts, no advertising networks, no third-party cookies, and no payment information run on this site — there's nothing to sell and nothing behind a paywall. The only stored data is what's listed above.",
-        mn: 'Энэ сайтад аналитик болон хянах скрипт, зар сурталчилгааны сүлжээ, гуравдагч талын күүки, төлбөрийн мэдээлэл огт ажилладаггүй — юу ч зарахгүй, төлбөртэй хэсэг ч байхгүй. Дээр жагсаасан зүйлс л цорын ганц хадгалагддаг өгөгдөл юм.'
+        en: "No third-party analytics, no advertising networks, no third-party cookies, and no payment information run on this site — there's nothing to sell and nothing behind a paywall. The site does count page views in its own database, and that count is a date and a page name only: no IP address, no visitor or session identifier, no referrer, and no link to your account. It cannot tell one visitor from another, or you from anyone else. Apart from that counter, the only stored data is what's listed above.",
+        mn: 'Энэ сайтад гуравдагч талын аналитик, зар сурталчилгааны сүлжээ, гуравдагч талын күүки, төлбөрийн мэдээлэл огт ажилладаггүй — юу ч зарахгүй, төлбөртэй хэсэг ч байхгүй. Харин сайт хэдэн удаа нээгдсэнийг өөрийн өгөгдлийн сандаа тоолдог: зөвхөн огноо болон хуудасны нэр хадгалагдана. IP хаяг, зочны буюу сешний дугаар, хаанаас орж ирсэн зам, таны бүртгэлтэй холбох зүйл огт хадгалагддаггүй — иймд нэг зочныг нөгөөгөөс нь ялгах боломжгүй. Энэ тооллоос бусад нь дээр жагсаасан зүйлс л хадгалагддаг.'
     },
 
     'privacy.howUsed.h': { en: "How it's used", mn: 'Хэрхэн ашигладаг вэ' },
