@@ -1250,3 +1250,19 @@ window.onAuthChange(async (session) => {
         }
     }
 });
+
+// Opening a level swaps a long level list for a short board, and the browser keeps the scroll
+// offset -- on a phone that leaves you staring at the footer, which is exactly what was reported.
+// Any *-section shown from here starts at the top. showEl is a function declaration in
+// auth-shared.js, so it is a property of the global object and wrapping it catches the bare
+// showEl(...) calls in this file too.
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+(function keepSectionSwitchesAtTop() {
+    var inner = window.showEl;
+    if (typeof inner !== 'function') return;
+    window.showEl = function (el) {
+        var out = inner.apply(this, arguments);
+        if (el && el.id && el.id.slice(-8) === '-section') window.scrollTo(0, 0);
+        return out;
+    };
+})();

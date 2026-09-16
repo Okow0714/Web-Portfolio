@@ -1579,3 +1579,28 @@ html[data-contrast="darker"] .game-main {
     --panel: #14121c;
     --panel-edge: #221d31;
 }
+
+/* Phones. The board toolbar held five stat pills in one row that could not wrap, and the streak
+   pill was pinned to 96px, so on a 390px screen the streak bar ran to x=434 -- 44px off the
+   edge, which is what "the streak bar is out of frame" was. The row wraps here and the streak
+   pill sizes itself. */
+@media (max-width: 640px) {
+    .board-toolbar {
+        flex-wrap: wrap;
+        row-gap: 8px;
+    }
+
+    .board-stats {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        margin-left: 0;
+        width: 100%;
+        gap: 8px 10px;
+    }
+
+    .streak-stat {
+        width: auto;
+        min-width: 72px;
+        flex: 1 1 72px;
+    }
+}

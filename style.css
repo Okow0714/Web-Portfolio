@@ -129,6 +129,16 @@ body {
     z-index: 2;
 }
 
+/* .container and .site-footer are both z-index 2, and the footer comes later in the DOM, so it
+   wins the tie -- the same trap that once had the footer swallowing Dokkai Reader's controls. A
+   modal lives inside .container, so on a short or narrow page the footer painted over it and ate
+   its buttons: measured at 360px, the footer started at y=300 while Start Match sat at y=434, and
+   document.elementFromPoint returned .footer-grid. While any modal is open, the content outranks
+   the footer. Scoped by state rather than by page, so every modal on every page is covered. */
+body:has(.modal-overlay:not(.hidden)) .container {
+    z-index: 3;
+}
+
 /* Animated Background - Minimal Shapes */
 .background-animation {
     position: fixed;
