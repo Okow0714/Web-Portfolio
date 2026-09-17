@@ -40,6 +40,39 @@
     <div class="container">
         <!-- Header: one row - brand (home link), section nav, account menu -->
         <!-- chrome:header -->
+        <!-- The loading screen. First thing in the page so it paints before anything else, and
+             styled to hold itself back 0.6s (see .khanjp-loader in style.css) so a page that is
+             ready quickly never shows it at all. aria-hidden because it says nothing a screen
+             reader needs: it is a cover over a page that is still being built. -->
+        <div class="khanjp-loader" id="khanjp-loader" aria-hidden="true">
+            <span class="khanjp-loader-seal"><img src="icons/brand-mark.png" alt="" width="64" height="64"></span>
+            <p class="khanjp-loader-name">Khan Japanese</p>
+            <span class="khanjp-loader-bar"><i></i></span>
+        </div>
+        <script>
+            (function () {
+                if (window.__khanjpLoader) return;   // the chrome is copied into twelve pages
+                window.__khanjpLoader = true;
+                var done = function () {
+                    var el = document.getElementById('khanjp-loader');
+                    if (!el || el.classList.contains('is-done')) return;
+                    el.classList.add('is-done');
+                    window.setTimeout(function () {
+                        if (el.parentNode) el.parentNode.removeChild(el);
+                    }, 460);
+                };
+                // DOMContentLoaded is the signal that matters here: the big word-data files are
+                // plain <script src> at the end of the body, so it does not fire until they are
+                // parsed. Two frames after it, because this listener is registered first and so
+                // runs first -- the page's own listeners, which build the content, run in between.
+                document.addEventListener('DOMContentLoaded', function () {
+                    requestAnimationFrame(function () { requestAnimationFrame(done); });
+                });
+                // And never leave it up: if something throws before the page renders, the page
+                // underneath is still better than a cover that never lifts.
+                window.setTimeout(done, 8000);
+            })();
+        </script>
         <div class="site-header-wrap">
             <header class="header">
                 <a href="index.html" class="site-brand" aria-label="Khan Japanese - home">

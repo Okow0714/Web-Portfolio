@@ -237,3 +237,19 @@ html[data-contrast="darker"] .hub-main {
         margin-left: 0;
     }
 }
+
+/* The three room cards arrive rather than appear -- keyframes in style.css, order here, since
+   only this page knows what its cards are. 60ms apart, so the last one has settled 320ms in and
+   nothing is ever waited for. `backwards` so the card holds the from-state through its own delay
+   instead of flashing at full opacity first. */
+.hub-room {
+    animation: khanjpRiseIn 0.38s var(--ease-out) backwards;
+}
+
+.hub-room:nth-child(2) {
+    animation-delay: 0.06s;
+}
+
+.hub-room:nth-child(3) {
+    animation-delay: 0.12s;
+}

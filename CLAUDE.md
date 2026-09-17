@@ -95,6 +95,33 @@ Its guard is that writing the chrome must not *change* a page's `<div>` balance;
 zero-balance test would let one page's unrelated quirk block the whole build. This exists because
 the 2026-09-08 outage was one bad find-and-replace applied eleven times at once.
 
+**Motion lives in `style.css`, applied by the page files** (2026-09-18). `--dur-1/2/3`
+(0.12s / 0.22s / 0.42s) sit beside the two easing curves that were already there. The shared
+file owns the keyframes and the three things no page had motion for at all: `@view-transition`
+for cross-document navigation, an entrance on `.modal-overlay:not(.hidden) .modal-card` (modals
+are switched with `display: none`, so an entrance animation costs no JS change -- an *exit*
+would mean every show/hide call in six files waiting for it, which is why there isn't one), and
+`khanjpRiseIn`, which each page's own stylesheet applies to its own cards. Two rules for that
+last one: **never put it on an ancestor of a fixed element** -- a transform makes that ancestor
+the containing block, and the masthead would stop being fixed while it runs -- and never on a
+list a page re-renders as you type, which is why the dictionary's rows are left out. Word
+Match's own two dozen animations are deliberately untouched. The masthead and footer carry a
+`view-transition-name` so they are *excluded* from the page cross-fade: identical on every page,
+they would otherwise shimmer against themselves. `about.html` loads neither `style.css` nor the
+chrome, so it carries its own copy of the whole layer -- keep the two in step.
+
+**The loading screen holds itself back 0.6s** (`.khanjp-loader`, markup and script in
+`_chrome.html`). Measured: every page is ready in 170-460ms on a desktop and 1.0-2.5s on a
+phone-speed CPU, because the word data is a megabyte of plain `<script src>` at the end of the
+body -- the shell paints, then nothing answers until it is parsed. The delay is what separates
+those two cases, and it is a measured number, not a taste: the first draft used 0.18s and the
+heavy pages flashed the cover for a quarter-second on a desktop before taking it away.
+It is removed from the DOM two frames after `DOMContentLoaded` (this listener is registered
+first, so it runs first; the page's own listeners build the content in between) with an 8s
+backstop, and it is `pointer-events: none` so it can never trap a tap. Being a child of
+`.container` it needs the same z-index lift the modals get -- see the stacking note below.
+The brand mark is dark ink drawn for the masthead's **gold seal**; on a wine ground it all but
+disappears, so the loader repeats that seal rather than using the bare image.
 **Page-scoped theme files** (`hub.css`, `phonetics.css`, `reading.css`, `grammar.css`,
 `dictionary.css`, `dashboard.css`, `game.css`, `about.css`, `origins.css`, `path.css`): each defines its own
 token block on that page's own wrapper class (see the Pages table). **They do not agree on token

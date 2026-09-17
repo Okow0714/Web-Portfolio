@@ -31,6 +31,12 @@
        than default. */
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
     --ease-pop: cubic-bezier(0.22, 1, 0.36, 1);
+    /* The two curves above were already here and are used all through Word Match; these give the
+       durations names so the same three speeds are spent everywhere. See the Motion section at
+       the end of this file. */
+    --dur-1: 0.12s; /* hover, focus, small state changes */
+    --dur-2: 0.22s; /* modals, the phone drawer, cards */
+    --dur-3: 0.42s; /* a page arriving, the loading screen leaving */
 
     /* JLPT level spectrum — an ordinal "difficulty warmth" progression
        (N5 cool/calm -> N1 deep wine, echoing the site's own accent at the
@@ -1481,4 +1487,199 @@ html[data-contrast="darker"] .site-footer {
     letter-spacing: 0;
     text-transform: none;
     color: var(--text-primary, #1a1a1a);
+}
+
+/* ---------------------------------------------------------------------
+   Motion
+   Three things the site had no motion for at all: arriving at a page, opening a modal, and
+   waiting for a page to be ready. Word Match's own effects are not touched -- it has two dozen
+   of them, tuned, and this is about the other eleven pages.
+   --------------------------------------------------------------------- */
+
+/* Between pages. Every tool is its own HTML file, so each link was a hard cut to white and back.
+   This asks the browser to hold the outgoing page on screen until the next one has rendered, and
+   cross-fade between them. Both documents have to opt in, which is why it belongs in the shared
+   stylesheet; about.html carries its own copy. Firefox ignores the rule and keeps the cut, which
+   is exactly what every browser does today, so there is nothing to fall back to.
+   The masthead and footer are NAMED, which takes them out of the fade: they are identical on
+   every page, and cross-fading a bar with itself makes it shimmer. A named element is carried
+   across as the same element instead, so the bar simply stays put while the page changes under
+   it. Both are unique per document, which a view-transition-name has to be. */
+@view-transition {
+    navigation: auto;
+}
+
+.site-header-wrap {
+    view-transition-name: khanjp-masthead;
+}
+
+.site-footer {
+    view-transition-name: khanjp-footer;
+}
+
+::view-transition-old(root) {
+    animation-duration: 0.16s;
+    animation-timing-function: var(--ease-out);
+}
+
+::view-transition-new(root) {
+    animation-duration: var(--dur-2);
+    animation-timing-function: var(--ease-out);
+}
+
+/* Opening a modal. Every modal on the site is switched with .hidden -- display: none -- so it
+   arrived in one frame with no state to transition from. An entrance animation needs no JS
+   change at all: it runs when the element starts being displayed, and restarts each time it is
+   shown again. There is deliberately no exit animation, because that would mean every show/hide
+   call across six files waiting for it, and the auth flow is not where to spend that risk. */
+.modal-overlay:not(.hidden) {
+    animation: khanjpScrimIn 0.18s linear;
+}
+
+.modal-overlay:not(.hidden) .modal-card {
+    animation: khanjpCardIn var(--dur-2) var(--ease-out);
+}
+
+@keyframes khanjpScrimIn {
+    from { opacity: 0; }
+}
+
+@keyframes khanjpCardIn {
+    from { opacity: 0; transform: translateY(14px) scale(0.985); }
+}
+
+/* Cards arriving. The keyframes live here; each page's own stylesheet decides what moves and in
+   what order, so the shared file owns the movement and not the layout. Two rules about where it
+   may be applied: never to an ancestor of a fixed element -- a transform makes that ancestor the
+   containing block, and the masthead would stop being fixed for the length of the animation --
+   and never to a list the page re-renders as you type, which is why the dictionary's result rows
+   are left alone. */
+@keyframes khanjpRiseIn {
+    from { opacity: 0; transform: translateY(12px); }
+}
+
+/* The loading screen (markup and script in _chrome.html). Measured on 2026-09-17: every page is
+   ready in 170-460ms on a desktop, and in 1.0-2.5s on a phone-speed CPU -- dictionary.html takes
+   2.5s -- because the word data is a megabyte of plain <script src> at the end of the body, so
+   the shell paints and then nothing answers until it has been parsed. The cover is worth having
+   for that second case only, which is what the 0.6s delay below buys. The first draft held back
+   0.18s and was measurably wrong: a desktop is ready in 170-460ms, so the heavy pages flashed the
+   cover for a quarter of a second and then took it away again (caught by watching the opacity
+   through a real load, not by reasoning about it). 0.6s is past every desktop figure and still
+   less than a third of the way into the phone wait.
+   It is a child of .container, since the chrome is, so it needs the same z-index lift the modals
+   already get -- .container and .site-footer are both z-index 2 and the footer wins the tie by
+   DOM order, which on a short page would paint the footer over the cover. */
+.khanjp-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    background: #241219;
+    opacity: 0;
+    /* Never traps a tap: at worst it covers a page that is not ready to be tapped anyway. */
+    pointer-events: none;
+    animation: khanjpLoaderIn 0.16s var(--ease-out) 0.6s forwards;
+}
+
+body:has(.khanjp-loader) .container {
+    z-index: 4;
+}
+
+.khanjp-loader.is-done {
+    animation: khanjpLoaderOut var(--dur-3) var(--ease-out) forwards;
+}
+
+/* The mark is dark ink: it is drawn to sit on the masthead's gold seal, and on a wine ground it
+   all but disappeared -- which only a screenshot showed. Same seal here, just larger, so the
+   splash is the site's own brand lockup rather than a second version of it. */
+.khanjp-loader-seal {
+    width: 76px;
+    height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(150deg, #e8bd6d, #c99a45);
+    animation: khanjpMarkIn 0.52s var(--ease-pop) 0.6s backwards;
+}
+
+.khanjp-loader-seal img {
+    width: 88%;
+    height: 88%;
+    object-fit: contain;
+    display: block;
+}
+
+.khanjp-loader-name {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+    color: #f3e7d6;
+}
+
+.khanjp-loader-bar {
+    display: block;
+    width: 168px;
+    height: 2px;
+    background: rgba(243, 231, 214, 0.18);
+    overflow: hidden;
+}
+
+.khanjp-loader-bar i {
+    display: block;
+    height: 100%;
+    width: 40%;
+    background: #d4a64b;
+    animation: khanjpSweep 1.1s var(--ease-out) infinite;
+}
+
+@keyframes khanjpLoaderIn {
+    to { opacity: 1; }
+}
+
+@keyframes khanjpLoaderOut {
+    to { opacity: 0; }
+}
+
+@keyframes khanjpMarkIn {
+    from { opacity: 0; transform: scale(0.9); }
+}
+
+@keyframes khanjpSweep {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(320%); }
+}
+
+/* Five of the page stylesheets already honour "reduce motion" in the operating system, so the
+   pages that had no guard were the ones with no stylesheet of their own -- the legal pages, the
+   hub, the dashboard -- plus everything added above. This one is global and goes in once. */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    /* The loading screen still does its job; it just appears and goes without the fade, and the
+       sweeping hairline -- which is motion for its own sake -- does not run at all. */
+    .khanjp-loader-bar {
+        visibility: hidden;
+    }
+}
+
+/* Kept last in the file on purpose: a browser that cannot parse a nested @view-transition should
+   drop this rule and nothing else. */
+@media (prefers-reduced-motion: reduce) {
+    @view-transition {
+        navigation: none;
+    }
 }

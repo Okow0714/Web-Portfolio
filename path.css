@@ -370,3 +370,19 @@ html[data-contrast="darker"] .path-main {
     --saffron-tint: #2e2617;
     --spine: #3a352a;
 }
+
+/* This page had no motion at all. Its six stages are a route, read top to bottom, so they arrive
+   in that order -- keyframes in style.css. The delays stop at the fourth: a stagger long enough
+   to notice on the last stage would be a stagger long enough to wait for. */
+.path-card {
+    animation: khanjpRiseIn 0.38s var(--ease-out) backwards;
+    transition: border-color var(--dur-2) var(--ease-out), transform var(--dur-2) var(--ease-out);
+}
+
+.path-card:nth-child(2) { animation-delay: 0.06s; }
+.path-card:nth-child(3) { animation-delay: 0.12s; }
+.path-card:nth-child(n+4) { animation-delay: 0.18s; }
+
+.path-card:hover {
+    transform: translateY(-2px);
+}

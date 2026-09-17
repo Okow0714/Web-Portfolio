@@ -53,6 +53,32 @@
 </head>
 
 <body>
+    <!-- This page carries no shared chrome, so the loading screen is written here by hand. Keep it
+         in step with the copy in _chrome.html if either changes. It sits outside .about-page so
+         nothing else can stack over it. -->
+    <div class="khanjp-loader" id="khanjp-loader" aria-hidden="true">
+        <span class="khanjp-loader-seal"><img src="icons/brand-mark.png" alt="" width="64" height="64"></span>
+        <p class="khanjp-loader-name">Khan Japanese</p>
+        <span class="khanjp-loader-bar"><i></i></span>
+    </div>
+    <script>
+        (function () {
+            if (window.__khanjpLoader) return;
+            window.__khanjpLoader = true;
+            var done = function () {
+                var el = document.getElementById('khanjp-loader');
+                if (!el || el.classList.contains('is-done')) return;
+                el.classList.add('is-done');
+                window.setTimeout(function () {
+                    if (el.parentNode) el.parentNode.removeChild(el);
+                }, 460);
+            };
+            document.addEventListener('DOMContentLoaded', function () {
+                requestAnimationFrame(function () { requestAnimationFrame(done); });
+            });
+            window.setTimeout(done, 8000);
+        })();
+    </script>
     <div class="about-page">
         <!-- Auth Modal -->
         <div id="auth-modal" class="modal-overlay hidden">
