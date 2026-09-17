@@ -213,6 +213,31 @@ plus most wiring live in `game.js`, the last one loaded. Two things break it: de
 in two of these files (a SyntaxError that stops the later file loading), and adding a load-time call into
 a later file. A new file goes in `game.html` in order *and* in `sw.js`'s `APP_SHELL`.
 
+**A tile's type is sized off `--hex-w`, never in rem** (2026-09-17). A hex tile is only full
+width across the middle half of its height, so whether text fits is a question about fractions
+of the tile, and a rem size cannot answer it. Both old clamps had come loose from the tile in
+opposite directions: past a 148px tile `--hex-w` stops growing while `100cqw` does not, so
+desktop type sat at its rem cap; and on a 390px phone the *floor* held the headword at 16px
+inside a 49px tile -- text several times wider than the hexagon around it, which
+`white-space: nowrap` hid behind an ellipsis. That was the reported "long words are cut off".
+Every label is now `calc(var(--hex-w) * ratio * var(--tile-text-scale))`, wraps, and is
+line-clamped, and `tileTextScale()` in `game-board.js` picks the scale from the text's own width
+in em. Because the tile, its text and its type are all fractions of one number the arithmetic is
+scale-invariant -- one answer per word is right at every viewport, with no resize handler and no
+measuring of live DOM -- but that only holds while `TILE_TYPE`'s constants match the ratios in
+`game.css`. The Wakan flyer is the same hexagon and carries the same rules.
+
+**No two tiles may show the same answer.** `dropDuplicateAnswers` takes a pair out of the round
+when its gloss, in either language, already belongs to another pair -- out of the deal and out of
+the swap-3 fuel both, since a swapped-in tile lands on the same board. 22 of the 60 sets held two
+words with an identical English gloss and 16 an identical Mongolian one (level 9 has five colour
+twins at once), and a board showing two "улаан" tiles is a coin flip rather than a puzzle: only
+one of them scores. Every set still yields at least 20 distinct answers, exactly
+`LEVEL_PAIR_COUNT`; level 9 is the one that hits that floor, and pays for it with an empty
+`powerupFuel`, which leaves its swap button disabled. `clusterConfusables` still deliberately
+deals same-*reading* words together (暑い/熱い/厚い) -- those teach something, because their
+meanings tell them apart.
+
 **Large data files — never `Read` whole**: `phonetics-data.js` (~2.8MB), `game-words.js`
 (~1.4MB), `mnjp-data.js` (~1.4MB, `MNJP_ENTRIES` — dictionary.html's primary tab, 3,537 words
 merged from five sources, see its own header comment), `reading-texts.js` (~1.1MB),

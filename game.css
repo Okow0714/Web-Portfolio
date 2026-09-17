@@ -767,8 +767,11 @@ body.game-playing .game-main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 3px;
-    padding: 4px 6px;
+    /* Proportional, not px: the fit below is worked out as fractions of --hex-w, and a fixed
+       padding would eat a quarter of a phone tile's width while being a rounding error on a
+       desktop one. */
+    gap: calc(var(--hex-w) * 0.025);
+    padding: calc(var(--hex-w) * 0.03) calc(var(--hex-w) * 0.06);
     text-align: center;
     font-family: inherit;
     color: var(--ink);
@@ -804,49 +807,82 @@ body.game-playing .game-main {
     opacity: 0.6;
 }
 
-/* .tile-jp/.tile-reading/.tile-en-text share a max-width:100% + ellipsis clamp: game-words.js's
-   `en` field ranges from single words up to full disambiguating phrases like "bright (in
-   reference to personality or weather)" (50 chars) -- no font-size floor can fit that on a
-   38-148px hex tile, and unconstrained text was overflowing the tile's clip-path edge and
-   overlapping neighboring tiles (confirmed by measuring rendered text width against tile width
-   on real game-words.js entries, not just visually). These are flex column children, so
-   max-width:100% resolves against .tile's own content-box width (padding already excluded) and
-   actually constrains them despite align-items:center's default shrink-to-fit sizing. */
-.tile-jp {
+/* The three label spans wrap onto more than one line and are clamped, rather than being held
+   to a single line and cut off with an ellipsis. game-words.js is far wider than a hex tile at
+   one line: `jp` reaches 8 full-width characters (オートメーション), `reading` 9
+   (いっしょうけんめい), and `en` runs from "red" to "bright (in reference to personality or
+   weather)" -- 66 characters, with 39 entries past 30. All three were `white-space: nowrap`, so
+   anything wider than the tile was simply cut mid-word.
+   Wrapping on its own only trades a clipped line for a clipped block, because a hexagon is full
+   width across just the middle half of its height (between the 25% and 75% vertices): a tall
+   block centred in it runs its first and last lines out into the tapered corners, where
+   clip-path cuts them off. Two things keep the block inside that band -- the line clamps below
+   cap how many lines there can be, and the type size steps down with the length of the text
+   itself (--tile-text-scale, set per tile in dealPairs; see the comment there).
+   All three sizes are fractions of --hex-w rather than rem clamps, which is what makes that fit
+   calculable at all: the tile, the text and the type then all scale together, so a fit worked out
+   once holds at every viewport, and tileTextScale() in game-board.js can do the arithmetic in
+   those same units. The old clamps had come loose from the tile in both directions: on a wide
+   screen --hex-w stops growing at 148px while 100cqw keeps going, so the type was held at its rem
+   cap (25.6 / 14.4 / 18.4px) and now reads about a tenth larger; on a phone the floor did the
+   opposite and held the headword at 16px inside a 49px tile, text several times wider than the
+   hexagon around it -- which nowrap hid behind an ellipsis, and which wrapping alone turned into
+   four stacked characters spilling out through the tile's points.
+   Measured after the change, worst case on purpose (the longest headword, reading and gloss in
+   game-words.js written onto a real board): at 320, 360, 390, 430, 768, 1000, 1440 and 1920px, in
+   both languages, every line box fits the hexagon at its own height and none is clamped away.
+   Scoped as descendants deliberately: the outer <button> carries `tile tile-jp` / `tile tile-en`
+   as well, so a bare `.tile-jp` rule matches the button too, and a `display` on it would beat
+   .tile's own flex (equal specificity, later in the file) and take the tile's layout apart.
+   max-width:100% still does real work: these are flex column children, so it resolves against
+   .tile's own content-box width (padding already excluded) and constrains them despite
+   align-items:center's default shrink-to-fit sizing. */
+.tile .tile-jp {
     font-family: var(--font-jp);
-    font-size: clamp(1rem, 2.6cqw, 1.6rem);
+    font-size: calc(var(--hex-w) * 0.19 * var(--tile-text-scale, 1));
     font-weight: 700;
-    line-height: 1.15;
+    line-height: 1.12;
     max-width: 100%;
+    /* Japanese wraps between characters by itself; this is for the kana entries that carry a
+       bracketed suffix, where the break would otherwise be refused. */
+    overflow-wrap: break-word;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
-.tile-reading {
-    font-size: clamp(0.7rem, 1.4cqw, 0.9rem);
+.tile .tile-reading {
+    font-size: calc(var(--hex-w) * 0.105 * var(--tile-text-scale, 1));
+    line-height: 1.12;
     /* was --ink-soft (~2.2:1 on this dark tile face, see the contrast note further up this
        file) -- --paper-muted is the same verified-6.39:1 replacement used in the side panel. */
     color: var(--paper-muted);
     max-width: 100%;
+    overflow-wrap: break-word;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
-.tile-en-text {
+.tile .tile-en-text {
     font-family: 'IBM Plex Sans', sans-serif;
-    /* lower floor than .tile-jp's 1rem -- English glosses run far longer than Japanese headwords
-       (up to 50 chars vs. a handful of kana/kanji), so they need more shrink room before ellipsis
-       has to take over at the smallest tile sizes. */
-    font-size: clamp(0.62rem, 2cqw, 1.15rem);
+    font-size: calc(var(--hex-w) * 0.135 * var(--tile-text-scale, 1));
     font-weight: 600;
-    line-height: 1.15;
+    line-height: 1.12;
     text-transform: lowercase;
     max-width: 100%;
+    /* break-word, not anywhere: a phrase breaks between its words first, and only a word that
+       cannot fit a line by itself is split. */
+    overflow-wrap: break-word;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
 .tile:not(.cleared):hover {
@@ -1079,8 +1115,8 @@ body.game-playing .game-main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 3px;
-    padding: 4px 6px;
+    gap: calc(var(--flyer-w) * 0.025);
+    padding: calc(var(--flyer-w) * 0.03) calc(var(--flyer-w) * 0.06);
     text-align: center;
 }
 
@@ -1095,20 +1131,26 @@ body.game-playing .game-main {
     70% { transform: translate(calc(var(--shake-amp, 1.5px) * -0.6), 0) rotate(calc(var(--shake-rot, 0.6deg) * -0.6)); }
 }
 
+/* Sized off --flyer-w for the same reason the tile labels are sized off --hex-w, and wrapping
+   for the same reason too -- this is the tile's twin, drawn outside #tile-grid. */
 .flyer-reading {
-    font-size: clamp(0.7rem, 1.4cqw, 0.9rem);
+    font-size: calc(var(--flyer-w) * 0.105 * var(--tile-text-scale, 1));
+    line-height: 1.12;
     color: var(--ink-soft);
     max-width: 100%;
+    overflow-wrap: break-word;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
 .flyer-text {
     font-family: var(--font-jp);
-    font-size: clamp(1rem, 2.6cqw, 1.6rem);
+    font-size: calc(var(--flyer-w) * 0.19 * var(--tile-text-scale, 1));
     font-weight: 700;
-    line-height: 1.15;
+    line-height: 1.12;
     max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1585,6 +1627,19 @@ html[data-contrast="darker"] .game-main {
    edge, which is what "the streak bar is out of frame" was. The row wraps here and the streak
    pill sizes itself. */
 @media (max-width: 640px) {
+    /* The board is the one thing on the page that is worth the full screen. .game-main's 20px
+       side padding and .board-wrap's own 12px were costing 64px of a 390px phone -- a fifth of
+       every tile, since --hex-w is just the container's width over six. Cancelling them takes a
+       tile from 49px to 64px, which is what makes the type above land at a readable size rather
+       than a technically-fitting one. Only the board bleeds; the toolbar above it keeps its
+       margins. */
+    .board-wrap {
+        margin-left: -20px;
+        margin-right: -20px;
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
     .board-toolbar {
         flex-wrap: wrap;
         row-gap: 8px;

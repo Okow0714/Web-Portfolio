@@ -81,6 +81,8 @@ function spawnFlyer(targetTile) {
         `<span class="flyer-text">${escapeHtml(wk.partner)}</span></div>`;
     el.addEventListener('click', catchFlyer);
     boardWrapEl.appendChild(el);
+    // Same fit as an ordinary tile -- see tileTextScale in game-board.js.
+    el.style.setProperty('--tile-text-scale', tileTextScale('jp', wk.partner, wk.partnerReading));
     flyerEl = el;
 
     const reduced = prefersReducedMotion();

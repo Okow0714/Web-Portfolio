@@ -16,19 +16,24 @@
 // Picks this playthrough's word set (levels hold several; replaying doesn't always show the
 // same words) and splits its pairIds into two pools: `dealOrder`, shuffled and truncated to
 // LEVEL_PAIR_COUNT -- the pairs actually in play, dealt VISIBLE_TARGET at a time via
-// dealPairs() below -- and `fuel`, everything left over (25 - 20 = 5 pairs), which normal
-// dealing never touches and only the "swap 3" powerup can draw from (see maybeGrantPowerup).
+// dealPairs() below -- and `fuel`, whatever is left over, which normal dealing never touches and
+// only the "swap 3" powerup can draw from (see maybeGrantPowerup).
 // A level's hardest words are the ones you can mix up, and a set usually contains a few: 暑い,
-// 熱い and 厚い are all あつい, 赤 and 赤い are both "red". They only teach anything when they are
-// on the board at the same time -- meet 暑い alone and you match the one tile saying "hot"
-// without ever reading the kanji. A plain shuffle leaves that to chance.
+// 熱い and 厚い are all あつい. They only teach anything when they are on the board at the same
+// time -- meet 暑い alone and you match the one tile saying "hot" without ever reading the kanji.
+// A plain shuffle leaves that to chance.
 //
 // This reorders the deal so one confusable partner follows its twin, which puts them in the same
 // batch since dealing takes the next N in order. It is a permutation and nothing else: the same
 // pairs, still dealt whole, so the no-deadlock guarantee above is untouched. Capped at one pull
 // per REFILL_BATCH-sized stretch, or a board of nothing but near-misses stops being a game.
+//
+// Words that share a READING are the pairing worth making, because their meanings still tell them
+// apart. Words that share a meaning are not: two tiles both reading "улаан" can only be told apart
+// by guessing. Those are removed from the round entirely by dropDuplicateAnswers below, which runs
+// before this, so there is nothing left here for a gloss key to find -- this matches on the
+// reading alone.
 function clusterConfusables(ids) {
-    const keysOf = (w) => [w.reading, (w.en || '').toLowerCase()];
     const out = [];
     const taken = new Set();
     let lastPull = -REFILL_BATCH;
@@ -37,9 +42,9 @@ function clusterConfusables(ids) {
         out.push(id);
         taken.add(id);
         if (out.length - lastPull < REFILL_BATCH) return;
-        const mine = keysOf(currentSet[id]);
-        const partner = ids.find(other => !taken.has(other) &&
-            keysOf(currentSet[other]).some((k, n) => k && k === mine[n]));
+        const mine = currentSet[id].reading;
+        if (!mine) return;   // no reading, nothing to be confused with
+        const partner = ids.find(other => !taken.has(other) && currentSet[other].reading === mine);
         if (partner === undefined) return;
         out.push(partner);
         taken.add(partner);
@@ -68,11 +73,36 @@ function prioritiseMissed(order) {
     return wanted.concat(rest);
 }
 
+// Two tiles showing the exact same answer is not a puzzle, it is a coin flip: a board carrying
+// both 赤 and 赤い has two tiles reading "улаан", only one of them scores, and picking the wrong
+// twin costs a mismatch like any other. It is not a rare accident either -- of the 60 sets, 22
+// hold two words with an identical English gloss and 16 an identical Mongolian one, and level 9
+// (the colours) holds five such pairs at once.
+//
+// So a round keeps the first of each answer and drops the twins outright: out of the deal AND out
+// of the fuel the swap-3 powerup draws from, since a swapped-in tile lands on the same board.
+// Both languages are keyed at once, so the board has the same shape whichever one is on and
+// switching language mid-level cannot introduce a clash. The pool takes it: every set still
+// yields at least 20 distinct answers, which is exactly LEVEL_PAIR_COUNT (only level 9 is that
+// tight, and it pays with an empty powerupFuel, which just leaves its swap button disabled).
+// Which twin survives follows the shuffle, so both words still come up across replays -- and
+// prioritiseMissed has already run, so a word this learner got wrong is the one that stays.
+function dropDuplicateAnswers(order) {
+    const seen = new Set();
+    return order.filter(id => {
+        const w = currentSet[id];
+        const keys = [w.en, w.enMn].filter(Boolean).map(s => s.toLowerCase().trim());
+        if (keys.some(k => seen.has(k))) return false;
+        keys.forEach(k => seen.add(k));
+        return true;
+    });
+}
+
 function pickWordSet(level) {
     currentSet = level.sets[Math.floor(Math.random() * level.sets.length)];
     const order = currentSet.map((_, i) => i);
     shuffleArray(order);
-    const weighted = prioritiseMissed(order);
+    const weighted = dropDuplicateAnswers(prioritiseMissed(order));
     return { dealOrder: clusterConfusables(weighted.slice(0, LEVEL_PAIR_COUNT)), fuel: weighted.slice(LEVEL_PAIR_COUNT) };
 }
 
@@ -92,6 +122,60 @@ function layoutTiles(tileList) {
     });
 }
 
+// How big a tile's text can be. Wrapping alone is not enough: a hexagon is only full width
+// across the middle half of its height, so a block that grows past that band runs its first and
+// last lines out into the tapered corners, where clip-path cuts them off (see the label rules in
+// game.css). Long text therefore has to be set smaller, not just wrapped.
+//
+// Everything here is a fraction of --hex-w -- the tile's width, the type size, the text's own
+// width -- which is the point: the browser's px value for --hex-w never enters the arithmetic, so
+// one answer per word is correct on a 49px phone tile and a 148px desktop one alike, with no
+// resize handler and no measuring of live DOM. The constants mirror game.css; changing one there
+// means changing it here.
+const TILE_TYPE = {
+    jp: 0.19, reading: 0.105, en: 0.135, // font-size / --hex-w, per label rule
+    lineHeight: 1.12,
+    gap: 0.025,        // .tile's gap between headword and reading
+    usable: 0.88,      // tile width less its own side padding (0.06 each side)
+    packed: 0.82,      // a line of words rarely fills to the last pixel; one unbroken run does
+    band: 0.5,         // the full-width middle of the hexagon, as a fraction of the tile's width
+    maxLines: { jp: 2, reading: 2, en: 4 }, // matches the line clamps in game.css
+};
+const TILE_SCALES = [1, 0.85, 0.72, 0.62, 0.52, 0.44];
+
+// Japanese sets one em per character; Latin and Cyrillic average about half that at this weight.
+function emWidth(text) {
+    let w = 0;
+    for (const ch of text) w += /[\u3000-\u30FF\u3400-\u9FFF\uFF00-\uFF60]/.test(ch) ? 1 : 0.52;
+    return w;
+}
+
+function lineCount(text, ratio, scale) {
+    if (!text) return 0;
+    const fill = TILE_TYPE.usable * (text.indexOf(' ') >= 0 ? TILE_TYPE.packed : 1);
+    return Math.max(1, Math.ceil((emWidth(text) * ratio * scale) / fill));
+}
+
+// The largest scale at which this tile's text fits both its line clamp and the hexagon's band.
+// Falls through to the smallest one for the handful of entries nothing fits -- "It's ok (all
+// right); No need to worry; Everything is under control" is a real gloss in level 11 -- where the
+// clamp then takes the overflow, as it did before, rather than the tile losing its shape.
+function tileTextScale(kind, text, sub) {
+    const main = kind === 'jp' ? TILE_TYPE.jp : TILE_TYPE.en;
+    const cap = kind === 'jp' ? TILE_TYPE.maxLines.jp : TILE_TYPE.maxLines.en;
+    return TILE_SCALES.find(s => {
+        const lines = lineCount(text, main, s);
+        if (lines > cap) return false;
+        let height = lines * TILE_TYPE.lineHeight * main * s;
+        if (kind === 'jp' && sub) {
+            const subLines = lineCount(sub, TILE_TYPE.reading, s);
+            if (subLines > TILE_TYPE.maxLines.reading) return false;
+            height += TILE_TYPE.gap + subLines * TILE_TYPE.lineHeight * TILE_TYPE.reading * s;
+        }
+        return height <= TILE_TYPE.band;
+    }) || TILE_SCALES[TILE_SCALES.length - 1];
+}
+
 // Materializes DOM tile objects for the given pairIds (from currentSet) and adds them to the
 // board -- used both for the initial deal and for every later refill. `fresh` marks the newly
 // dealt tiles with an entrance pop (see .tile.dealt-in in game.css) so a refill visibly reads
@@ -101,6 +185,7 @@ function layoutTiles(tileList) {
 // whether this batch advances dealtCount -- the swap-3 powerup deals pairs pulled from
 // powerupFuel, outside reserveQueue entirely, and must pass false so maybeRefill's "how much
 // of reserveQueue is left" bookkeeping doesn't think reserveQueue is emptier than it is.
+
 function dealPairs(pairIds, fresh, countsTowardDeal, entranceClass) {
     if (countsTowardDeal === undefined) countsTowardDeal = true;
     const useMn = window.siteLang() === 'mn';
@@ -115,6 +200,9 @@ function dealPairs(pairIds, fresh, countsTowardDeal, entranceClass) {
             btn.type = 'button';
             btn.className = `tile tile-${t.kind}` + (fresh ? ' ' + (entranceClass || 'dealt-in') : '');
             btn.style.setProperty('--suit-color', SUIT_COLORS[t.pairId % SUIT_COLORS.length]);
+            // One scale for the whole tile: the headword and its reading are measured together,
+            // so the reading never ends up larger, relatively, than the word above it.
+            btn.style.setProperty('--tile-text-scale', tileTextScale(t.kind, t.text, t.sub));
             if (t.kind === 'jp') {
                 btn.innerHTML = `<span class="tile-jp">${escapeHtml(t.text)}</span>` +
                     `<span class="tile-reading">${escapeHtml(t.sub)}</span>`;
