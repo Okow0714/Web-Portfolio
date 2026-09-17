@@ -4080,9 +4080,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "黄色",
                     "reading": "きいろ",
-                    "en": "yellow",
+                    "en": "the color yellow",
                     "meanings": [
-                        "yellow"
+                        "the color yellow"
                     ],
                     "example": {
                         "jp": "彼等は自宅を明るい黄色に塗った。",
@@ -4092,17 +4092,17 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "黄",
                     "phoneticReading": "オウ、コウ",
-                    "enMn": "шар",
+                    "enMn": "шар өнгө",
                     "meaningsMn": [
-                        "шар"
+                        "шар өнгө"
                     ]
                 },
                 {
                     "jp": "赤",
                     "reading": "あか",
-                    "en": "red",
+                    "en": "the color red",
                     "meanings": [
-                        "red"
+                        "the color red"
                     ],
                     "example": {
                         "jp": "あなたの引いたカードは赤のマークですね。",
@@ -4112,9 +4112,9 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "улаан",
+                    "enMn": "улаан өнгө",
                     "meaningsMn": [
-                        "улаан"
+                        "улаан өнгө"
                     ]
                 },
                 {
@@ -4132,9 +4132,9 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "улаан",
+                    "enMn": "улаан өнгөтэй",
                     "meaningsMn": [
-                        "улаан"
+                        "улаан өнгөтэй"
                     ]
                 },
                 {
@@ -4370,9 +4370,9 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "шар",
+                    "enMn": "шар өнгөтэй",
                     "meaningsMn": [
-                        "шар"
+                        "шар өнгөтэй"
                     ]
                 },
                 {
@@ -4390,9 +4390,9 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хар",
+                    "enMn": "хар өнгөтэй",
                     "meaningsMn": [
-                        "хар"
+                        "хар өнгөтэй"
                     ]
                 },
                 {
@@ -4420,9 +4420,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "黒",
                     "reading": "くろ",
-                    "en": "black",
+                    "en": "the color black",
                     "meanings": [
-                        "black"
+                        "the color black"
                     ],
                     "example": {
                         "jp": "彼女は黒ずくめの服装をしていた。",
@@ -4432,9 +4432,9 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "хар",
+                    "enMn": "хар өнгө",
                     "meaningsMn": [
-                        "хар"
+                        "хар өнгө"
                     ]
                 },
                 {
@@ -4461,16 +4461,16 @@ const WORD_LEVELS = [
                 {
                     "jp": "青",
                     "reading": "あお",
-                    "en": "blue",
+                    "en": "the color blue",
                     "meanings": [
-                        "blue"
+                        "the color blue"
                     ],
                     "example": null,
                     "phonetic": "青",
                     "phoneticReading": "セイ、ショウ、ジョウ",
-                    "enMn": "хөх",
+                    "enMn": "хөх өнгө",
                     "meaningsMn": [
-                        "хөх"
+                        "хөх өнгө"
                     ]
                 },
                 {
@@ -4483,24 +4483,24 @@ const WORD_LEVELS = [
                     "example": null,
                     "phonetic": "青",
                     "phoneticReading": "セイ、ショウ、ジョウ",
-                    "enMn": "хөх",
+                    "enMn": "хөх өнгөтэй",
                     "meaningsMn": [
-                        "хөх"
+                        "хөх өнгөтэй"
                     ]
                 },
                 {
                     "jp": "白",
                     "reading": "しろ",
-                    "en": "white",
+                    "en": "the color white",
                     "meanings": [
-                        "white"
+                        "the color white"
                     ],
                     "example": null,
                     "phonetic": "白",
                     "phoneticReading": "ハク",
-                    "enMn": "цагаан",
+                    "enMn": "цагаан өнгө",
                     "meaningsMn": [
-                        "цагаан"
+                        "цагаан өнгө"
                     ]
                 },
                 {
@@ -4513,9 +4513,9 @@ const WORD_LEVELS = [
                     "example": null,
                     "phonetic": "白",
                     "phoneticReading": "ハク",
-                    "enMn": "цагаан",
+                    "enMn": "цагаан өнгөтэй",
                     "meaningsMn": [
-                        "цагаан"
+                        "цагаан өнгөтэй"
                     ]
                 },
                 {

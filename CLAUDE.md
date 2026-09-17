@@ -227,16 +227,19 @@ scale-invariant -- one answer per word is right at every viewport, with no resiz
 measuring of live DOM -- but that only holds while `TILE_TYPE`'s constants match the ratios in
 `game.css`. The Wakan flyer is the same hexagon and carries the same rules.
 
-**No two tiles may show the same answer.** `dropDuplicateAnswers` takes a pair out of the round
-when its gloss, in either language, already belongs to another pair -- out of the deal and out of
-the swap-3 fuel both, since a swapped-in tile lands on the same board. 22 of the 60 sets held two
-words with an identical English gloss and 16 an identical Mongolian one (level 9 has five colour
-twins at once), and a board showing two "улаан" tiles is a coin flip rather than a puzzle: only
-one of them scores. Every set still yields at least 20 distinct answers, exactly
-`LEVEL_PAIR_COUNT`; level 9 is the one that hits that floor, and pays for it with an empty
-`powerupFuel`, which leaves its swap button disabled. `clusterConfusables` still deliberately
-deals same-*reading* words together (暑い/熱い/厚い) -- those teach something, because their
-meanings tell them apart.
+**No two tiles may show the same answer.** A board showing two "улаан" tiles is a coin flip
+rather than a puzzle: only one of them scores. The first answer is the gloss, not the code --
+where the twins are really different words, say which is which in the data and both can stay in
+play. That is what 赤/赤い became ("улаан өнгө" / "улаан өнгөтэй", and the same for the other four
+colours, which was all of level 9's problem). `dropDuplicateAnswers` is the fallback for the rest:
+it takes a pair out of the round when its gloss, in either language, already belongs to another
+pair -- out of the deal and out of the swap-3 fuel both, since a swapped-in tile lands on the same
+board. It keys on the gloss strings, so improving a gloss is all it takes to bring a pair back.
+21 of the 60 sets still hold an identical English gloss and 15 an identical Mongolian one, 43
+groups in all, and those are mostly true synonyms (辞書/字引 are both "толь бичиг") where no honest
+wording tells them apart. Every set yields at least 21 distinct answers against a
+`LEVEL_PAIR_COUNT` of 20. `clusterConfusables` still deliberately deals same-*reading* words
+together (暑い/熱い/厚い) -- those teach something, because their meanings tell them apart.
 
 **Large data files — never `Read` whole**: `phonetics-data.js` (~2.8MB), `game-words.js`
 (~1.4MB), `mnjp-data.js` (~1.4MB, `MNJP_ENTRIES` — dictionary.html's primary tab, 3,537 words

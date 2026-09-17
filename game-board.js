@@ -73,20 +73,24 @@ function prioritiseMissed(order) {
     return wanted.concat(rest);
 }
 
-// Two tiles showing the exact same answer is not a puzzle, it is a coin flip: a board carrying
-// both 赤 and 赤い has two tiles reading "улаан", only one of them scores, and picking the wrong
-// twin costs a mismatch like any other. It is not a rare accident either -- of the 60 sets, 22
-// hold two words with an identical English gloss and 16 an identical Mongolian one, and level 9
-// (the colours) holds five such pairs at once.
+// Two tiles showing the exact same answer is not a puzzle, it is a coin flip: only one of them
+// scores, and picking the wrong twin costs a mismatch like any other. It is not a rare accident
+// either -- 21 of the 60 sets hold two words with an identical English gloss and 15 an identical
+// Mongolian one, 43 such groups in all.
 //
-// So a round keeps the first of each answer and drops the twins outright: out of the deal AND out
-// of the fuel the swap-3 powerup draws from, since a swapped-in tile lands on the same board.
-// Both languages are keyed at once, so the board has the same shape whichever one is on and
-// switching language mid-level cannot introduce a clash. The pool takes it: every set still
-// yields at least 20 distinct answers, which is exactly LEVEL_PAIR_COUNT (only level 9 is that
-// tight, and it pays with an empty powerupFuel, which just leaves its swap button disabled).
-// Which twin survives follows the shuffle, so both words still come up across replays -- and
-// prioritiseMissed has already run, so a word this learner got wrong is the one that stays.
+// Dropping one is the fallback here, not the first answer. Where the twins are really different
+// words, the gloss should say so and both stay in play: 赤 and 赤い were both "улаан" and now read
+// "улаан өнгө" and "улаан өнгөтэй", which was the whole of level 9's problem (five colours, each
+// a noun beside its adjective). This function keys on the gloss strings, so that data edit is the
+// entire fix -- the pair stops looking like a duplicate and deals normally. What is left is real
+// synonyms, 辞書 and 字引 both being "толь бичиг", where no honest wording tells them apart.
+//
+// A dropped twin goes out of the deal AND out of the fuel the swap-3 powerup draws from, since a
+// swapped-in tile lands on the same board. Both languages are keyed at once, so the board has the
+// same shape whichever one is on and switching language mid-level cannot introduce a clash. The
+// pool takes it: every set still yields at least 21 distinct answers against a LEVEL_PAIR_COUNT
+// of 20. Which twin survives follows the shuffle, so both words still come up across replays --
+// and prioritiseMissed has already run, so a word this learner got wrong is the one that stays.
 function dropDuplicateAnswers(order) {
     const seen = new Set();
     return order.filter(id => {
