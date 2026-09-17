@@ -75,20 +75,26 @@ function prioritiseMissed(order) {
 
 // Two tiles showing the exact same answer is not a puzzle, it is a coin flip: only one of them
 // scores, and picking the wrong twin costs a mismatch like any other. It is not a rare accident
-// either -- 21 of the 60 sets hold two words with an identical English gloss and 15 an identical
-// Mongolian one, 43 such groups in all.
+// either -- it was 43 groups across 22 of the 60 sets before the glosses were gone through.
 //
 // Dropping one is the fallback here, not the first answer. Where the twins are really different
-// words, the gloss should say so and both stay in play: 赤 and 赤い were both "улаан" and now read
-// "улаан өнгө" and "улаан өнгөтэй", which was the whole of level 9's problem (five colours, each
-// a noun beside its adjective). This function keys on the gloss strings, so that data edit is the
-// entire fix -- the pair stops looking like a duplicate and deals normally. What is left is real
-// synonyms, 辞書 and 字引 both being "толь бичиг", where no honest wording tells them apart.
+// words, the gloss should say so and both stay in play. Two passes did that and took 43 groups
+// down to 17: the five colours of level 9, where each noun sat beside its adjective, became
+// "улаан өнгө" against "улаан өнгөтэй"; and 26 more pairs turned out to be two words sharing the
+// vaguest of their own stored senses -- 支給 is an allowance and 支払 a payment, 決意 is resolve
+// and 決断 a decision, both of which the entry's own `meanings` array already said. This function
+// keys on the gloss strings, so a data edit is the entire fix: the pair stops looking like a
+// duplicate and deals normally. Sharpening one gloss has to respect the rest of the set, though
+// -- 食物 moved to "foodstuff" and promptly collided with 食品 two tiles away.
+//
+// What is left (17 groups, 7 sets in English and 10 in Mongolian) needs wording that is not in
+// the data: real synonyms like 辞書/字引, both "толь бичиг", and pairs whose distinction exists
+// but is unwritten, like 有る and 居る -- both "байх", one for things and one for the living.
 //
 // A dropped twin goes out of the deal AND out of the fuel the swap-3 powerup draws from, since a
 // swapped-in tile lands on the same board. Both languages are keyed at once, so the board has the
 // same shape whichever one is on and switching language mid-level cannot introduce a clash. The
-// pool takes it: every set still yields at least 21 distinct answers against a LEVEL_PAIR_COUNT
+// pool takes it: every set still yields at least 23 distinct answers against a LEVEL_PAIR_COUNT
 // of 20. Which twin survives follows the shuffle, so both words still come up across replays --
 // and prioritiseMissed has already run, so a word this learner got wrong is the one that stays.
 function dropDuplicateAnswers(order) {

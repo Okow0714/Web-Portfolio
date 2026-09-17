@@ -2035,9 +2035,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "家庭",
                     "reading": "かてい",
-                    "en": "home",
+                    "en": "family",
                     "meanings": [
-                        "home",
+                        "family",
                         "family"
                     ],
                     "example": {
@@ -2048,9 +2048,9 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "家",
                     "phoneticReading": "カ",
-                    "enMn": "гэр",
+                    "enMn": "гэр бүл",
                     "meaningsMn": [
-                        "гэр",
+                        "гэр бүл",
                         "гэр бүл"
                     ]
                 },
@@ -2199,9 +2199,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "上着",
                     "reading": "うわぎ",
-                    "en": "coat",
+                    "en": "jacket",
                     "meanings": [
-                        "coat",
+                        "jacket",
                         "jacket"
                     ],
                     "example": {
@@ -3400,9 +3400,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "車",
                     "reading": "くるま",
-                    "en": "car",
+                    "en": "vehicle",
                     "meanings": [
-                        "car",
+                        "vehicle",
                         "vehicle"
                     ],
                     "example": {
@@ -3413,9 +3413,9 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "машин",
+                    "enMn": "тээврийн хэрэгсэл",
                     "meaningsMn": [
-                        "машин",
+                        "тээврийн хэрэгсэл",
                         "тээврийн хэрэгсэл"
                     ]
                 },
@@ -6890,9 +6890,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "赤ちゃん",
                     "reading": "あかちゃん",
-                    "en": "baby",
+                    "en": "infant",
                     "meanings": [
-                        "baby",
+                        "infant",
                         "infant"
                     ],
                     "example": {
@@ -7651,9 +7651,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "気分",
                     "reading": "きぶん",
-                    "en": "feeling",
+                    "en": "mood",
                     "meanings": [
-                        "feeling",
+                        "mood",
                         "mood"
                     ],
                     "example": {
@@ -7885,7 +7885,7 @@ const WORD_LEVELS = [
                 {
                     "jp": "おかしい",
                     "reading": "おかしい",
-                    "en": "strange",
+                    "en": "funny",
                     "meanings": [
                         "strange; odd; funny"
                     ],
@@ -12354,9 +12354,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "支給",
                     "reading": "しきゅう",
-                    "en": "payment",
+                    "en": "allowance",
                     "meanings": [
-                        "payment",
+                        "allowance",
                         "allowance"
                     ],
                     "example": {
@@ -12779,7 +12779,7 @@ const WORD_LEVELS = [
                 {
                     "jp": "就職",
                     "reading": "しゅうしょく",
-                    "en": "employment",
+                    "en": "finding employment",
                     "meanings": [
                         "finding employment"
                     ],
@@ -12791,7 +12791,7 @@ const WORD_LEVELS = [
                     },
                     "phonetic": "就",
                     "phoneticReading": "シュウ",
-                    "enMn": "ажил эрхлэлт",
+                    "enMn": "ажилд орох",
                     "meaningsMn": [
                         "ажилд орох"
                     ]
@@ -13058,9 +13058,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "進歩",
                     "reading": "しんぽ",
-                    "en": "improvement",
+                    "en": "progress",
                     "meanings": [
-                        "improvement",
+                        "progress",
                         "progress",
                         "development"
                     ],
@@ -13347,9 +13347,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "直に",
                     "reading": "じかに",
-                    "en": "immediately",
+                    "en": "directly",
                     "meanings": [
-                        "immediately",
+                        "directly",
                         "readily",
                         "directly"
                     ],
@@ -13391,9 +13391,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "時期",
                     "reading": "じき",
-                    "en": "time",
+                    "en": "period",
                     "meanings": [
-                        "time",
+                        "period",
                         "season",
                         "period"
                     ],
@@ -13519,9 +13519,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "順",
                     "reading": "じゅん",
-                    "en": "order",
+                    "en": "turn",
                     "meanings": [
-                        "order",
+                        "turn",
                         "turn"
                     ],
                     "example": {
@@ -15542,9 +15542,9 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "үзүүлэх",
+                    "enMn": "заах",
                     "meaningsMn": [
-                        "үзүүлэх",
+                        "заах",
                         "заах"
                     ]
                 },
@@ -17005,9 +17005,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "重大",
                     "reading": "じゅうだい",
-                    "en": "serious",
+                    "en": "important",
                     "meanings": [
-                        "serious",
+                        "important",
                         "important"
                     ],
                     "example": {
@@ -17070,9 +17070,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "生じる",
                     "reading": "しょうじる",
-                    "en": "to occur",
+                    "en": "to arise",
                     "meanings": [
-                        "to occur",
+                        "to arise",
                         "to arise",
                         "to be generated"
                     ],
@@ -18100,7 +18100,7 @@ const WORD_LEVELS = [
                 {
                     "jp": "実は",
                     "reading": "じつは",
-                    "en": "in fact",
+                    "en": "actually",
                     "meanings": [
                         "actually",
                         "in fact"
@@ -18777,9 +18777,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "測量",
                     "reading": "そくりょう",
-                    "en": "measurement",
+                    "en": "surveying",
                     "meanings": [
-                        "measurement",
+                        "surveying",
                         "surveying"
                     ],
                     "example": {
@@ -18901,9 +18901,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "寸法",
                     "reading": "すんぽう",
-                    "en": "measurement",
+                    "en": "dimension",
                     "meanings": [
-                        "measurement",
+                        "dimension",
                         "size",
                         "dimension"
                     ],
@@ -20290,9 +20290,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "創作",
                     "reading": "そうさく",
-                    "en": "production",
+                    "en": "creation",
                     "meanings": [
-                        "production",
+                        "creation",
                         "creation",
                         "work"
                     ],
@@ -23342,7 +23342,7 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "сарын эхэн",
+                    "enMn": "сарын эхний 10 хоног",
                     "meaningsMn": [
                         "сарын эхний 10 хоног"
                     ]
@@ -25597,9 +25597,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "権限",
                     "reading": "けんげん",
-                    "en": "power",
+                    "en": "jurisdiction",
                     "meanings": [
-                        "power",
+                        "jurisdiction",
                         "authority",
                         "jurisdiction"
                     ],
@@ -25681,9 +25681,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "耕作",
                     "reading": "こうさく",
-                    "en": "cultivation",
+                    "en": "farming",
                     "meanings": [
-                        "cultivation",
+                        "farming",
                         "farming"
                     ],
                     "example": {
@@ -27138,9 +27138,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "決意",
                     "reading": "けつい",
-                    "en": "decision",
+                    "en": "determination",
                     "meanings": [
-                        "decision",
+                        "determination",
                         "determination"
                     ],
                     "example": {
@@ -28754,9 +28754,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "使用人",
                     "reading": "しようにん",
-                    "en": "employee",
+                    "en": "servant",
                     "meanings": [
-                        "employee",
+                        "servant",
                         "servant"
                     ],
                     "example": null,
@@ -29807,9 +29807,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "確定",
                     "reading": "かくてい",
-                    "en": "fixed",
+                    "en": "decision",
                     "meanings": [
-                        "fixed",
+                        "decision",
                         "decision"
                     ],
                     "example": null,

@@ -235,10 +235,14 @@ colours, which was all of level 9's problem). `dropDuplicateAnswers` is the fall
 it takes a pair out of the round when its gloss, in either language, already belongs to another
 pair -- out of the deal and out of the swap-3 fuel both, since a swapped-in tile lands on the same
 board. It keys on the gloss strings, so improving a gloss is all it takes to bring a pair back.
-21 of the 60 sets still hold an identical English gloss and 15 an identical Mongolian one, 43
-groups in all, and those are mostly true synonyms (辞書/字引 are both "толь бичиг") where no honest
-wording tells them apart. Every set yields at least 21 distinct answers against a
-`LEVEL_PAIR_COUNT` of 20. `clusterConfusables` still deliberately deals same-*reading* words
+Two passes took 43 groups down to 17: the colours, then 26 pairs that were only sharing the
+vaguest of their own stored `meanings` (支給 is an allowance, 支払 a payment). Sharpening a gloss
+has to respect the rest of the set -- 食物 moved to "foodstuff" and collided with 食品 two tiles
+away, which is why any such edit re-checks that no set gained a clash it did not have. The
+remaining 17 (7 sets in English, 10 in Mongolian) need wording the data does not hold: true
+synonyms like 辞書/字引, and pairs whose distinction is real but unwritten, like 有る/居る -- both
+"байх", one for things and one for the living. Every set yields at least 23 distinct answers
+against a `LEVEL_PAIR_COUNT` of 20. `clusterConfusables` still deliberately deals same-*reading* words
 together (暑い/熱い/厚い) -- those teach something, because their meanings tell them apart.
 
 **Large data files — never `Read` whole**: `phonetics-data.js` (~2.8MB), `game-words.js`
