@@ -4,6 +4,14 @@
 // flyer subsystem). Forces the event via matchedCount rather than playing to the real 50%
 // threshold, to keep this test fast.
 module.exports = async function run(page, assert, baseUrl) {
+    // The flyer's flight is a 7-second JS tween across the board (~200px a second), and a click
+    // has to be aimed from Node: sample the position, round-trip, move, press. On a loaded CI
+    // runner that gap can outlast the tile, which is what made this spec fail on unchanged code
+    // -- twice on 2026-09-17 alone. Reduced motion is a real setting the game already honours by
+    // parking the flyer instead of flying it (see spawnFlyer), so asking for it removes the race
+    // rather than papering over it, and leaves the part this spec exists for -- the catch, the
+    // cursor offset, the drop and the board lock -- exercised exactly as before.
+    await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto(baseUrl + '/game.html', { waitUntil: 'networkidle' });
     await page.locator('.level-card').nth(1).click();
     await page.waitForTimeout(400);

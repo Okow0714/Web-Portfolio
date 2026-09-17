@@ -410,9 +410,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "午前",
                     "reading": "ごぜん",
-                    "en": "morning",
+                    "en": "A.M.",
                     "meanings": [
-                        "morning",
+                        "A.M.",
                         "A.M."
                     ],
                     "example": {
@@ -423,9 +423,9 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "өглөө",
+                    "enMn": "үдээс өмнө",
                     "meaningsMn": [
-                        "өглөө"
+                        "үдээс өмнө"
                     ]
                 },
                 {
@@ -5224,9 +5224,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "有る",
                     "reading": "ある",
-                    "en": "to be",
+                    "en": "to be (object)",
                     "meanings": [
-                        "to be",
+                        "to be (object)",
                         "to have"
                     ],
                     "example": {
@@ -5237,9 +5237,9 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "байх",
+                    "enMn": "байх (эд зүйл)",
                     "meaningsMn": [
-                        "байх"
+                        "байх (эд зүйл)"
                     ]
                 },
                 {
@@ -5311,9 +5311,9 @@ const WORD_LEVELS = [
                 {
                     "jp": "居る",
                     "reading": "いる",
-                    "en": "(humble) to be (animate)",
+                    "en": "to be (alive)",
                     "meanings": [
-                        "(humble) to be (animate)",
+                        "to be (alive)",
                         "to exist"
                     ],
                     "example": {
@@ -5324,9 +5324,9 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "байх",
+                    "enMn": "байх (амьд)",
                     "meaningsMn": [
-                        "байх"
+                        "байх (амьд)"
                     ]
                 },
                 {
@@ -14587,9 +14587,9 @@ const WORD_LEVELS = [
                     },
                     "phonetic": null,
                     "phoneticReading": null,
-                    "enMn": "найдвар",
+                    "enMn": "итгэл",
                     "meaningsMn": [
-                        "найдвар"
+                        "итгэл"
                     ]
                 },
                 {
@@ -18932,9 +18932,9 @@ const WORD_LEVELS = [
                     "example": null,
                     "phonetic": "広",
                     "phoneticReading": "コウ",
-                    "enMn": "талбай",
+                    "enMn": "талбайн хэмжээ",
                     "meaningsMn": [
-                        "талбай"
+                        "талбайн хэмжээ"
                     ]
                 },
                 {

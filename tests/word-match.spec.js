@@ -60,7 +60,13 @@ module.exports = async function run(page, assert, baseUrl) {
     // A mismatch: click two tiles from different pairs, confirm streak resets and the mismatch
     // animation class gets applied (proxy for the shake/penalty path actually running).
     const a = await page.evaluate(() => tiles.find(t => t.kind === 'jp' && !t.cleared).pairId);
-    const b = await page.evaluate(x => tiles.find(t => t.kind === 'jp' && !t.cleared && t.pairId !== x).pairId, a);
+    // ...whose meaning tile reads something DIFFERENT: two tiles saying the same thing are a
+    // match now, on purpose (see the synonym case below).
+    const b = await page.evaluate(x => {
+        const mine = tilesByPairId[x].en.text;
+        return tiles.find(t => t.kind === 'jp' && !t.cleared && t.pairId !== x
+            && tilesByPairId[t.pairId].en.text !== mine).pairId;
+    }, a);
     await clickTile(page, a, 'jp');
     await page.waitForTimeout(150);
     await clickTile(page, b, 'en');
@@ -70,4 +76,46 @@ module.exports = async function run(page, assert, baseUrl) {
     await page.waitForTimeout(600);
     const afterMismatch = await page.evaluate(() => streak);
     assert.strictEqual(afterMismatch, 0, 'a mismatch should reset the streak to 0');
+
+    // Synonyms: 辞書 and 字引 are both "dictionary", so level 6 puts two identical meaning tiles
+    // on the board. Either one is a right answer for either word -- picking the crossed one has
+    // to count as a match, and must leave the two tiles behind it as a pair of their own.
+    // Built rather than waited for: a random deal shows both twins at once about one time in six.
+    await page.goto(baseUrl + '/game.html?level=6', { waitUntil: 'networkidle' });
+    await page.locator('button', { hasText: /Start Match|Дасгал эхлүүлэх/ }).click();
+    await page.waitForTimeout(700);
+    const twins = await page.evaluate(() => {
+        const byGloss = {};
+        currentSet.forEach((w, i) => { (byGloss[w.en] = byGloss[w.en] || []).push(i); });
+        const both = Object.values(byGloss).find(v => v.length > 1);
+        if (!both) return null;
+        tiles = [];
+        tilesByPairId = {};
+        dealtCount = 0;
+        reserveQueue = [];                    // no refill behind our backs, re-dealing these two
+        dealPairs(both.slice(0, 2), false);   // just the two of them, so the click is unambiguous
+        return both.slice(0, 2);
+    });
+    assert.ok(twins, 'level 6 should still hold two words sharing one meaning');
+    await clickTile(page, twins[0], 'jp');
+    await page.waitForTimeout(150);
+    await clickTile(page, twins[1], 'en');    // the OTHER word's meaning tile
+    await page.waitForTimeout(900);
+    const crossed = await page.evaluate(([i, j]) => ({
+        matched: matchedCount,
+        clickedGone: tilesByPairId[i].jp.cleared && tilesByPairId[i].en.cleared,
+        leftPaired: !tilesByPairId[j].jp.cleared && !tilesByPairId[j].en.cleared
+            && tilesByPairId[j].jp.pairId === tilesByPairId[j].en.pairId,
+    }), twins);
+    assert.strictEqual(crossed.matched, 1, 'either identical meaning tile should count as a match');
+    assert.ok(crossed.clickedGone, 'the two tiles actually clicked should be the ones cleared');
+    assert.ok(crossed.leftPaired, 'the two left behind should now be a pair themselves');
+
+    // ...and that leftover pair still matches normally.
+    await clickTile(page, twins[1], 'jp');
+    await page.waitForTimeout(150);
+    await clickTile(page, twins[1], 'en');
+    await page.waitForTimeout(900);
+    const afterLeftover = await page.evaluate(() => matchedCount);
+    assert.strictEqual(afterLeftover, 2, 'the re-paired leftovers should match like any other pair');
 };

@@ -28,11 +28,11 @@
 // pairs, still dealt whole, so the no-deadlock guarantee above is untouched. Capped at one pull
 // per REFILL_BATCH-sized stretch, or a board of nothing but near-misses stops being a game.
 //
-// Words that share a READING are the pairing worth making, because their meanings still tell them
-// apart. Words that share a meaning are not: two tiles both reading "улаан" can only be told apart
-// by guessing. Those are removed from the round entirely by dropDuplicateAnswers below, which runs
-// before this, so there is nothing left here for a gloss key to find -- this matches on the
-// reading alone.
+// Words that share a READING are the pairing worth making, because their meanings still tell
+// them apart, and this matches on the reading alone. Words that share a MEANING are a different
+// question and not this function's: where they are really two words, the gloss says which is
+// which (赤 is "улаан өнгө", 赤い "улаан өнгөтэй"), and where they genuinely mean the same thing,
+// the board accepts either tile -- see relinkIfSameAnswer in game-play.js.
 function clusterConfusables(ids) {
     const out = [];
     const taken = new Set();
@@ -73,46 +73,11 @@ function prioritiseMissed(order) {
     return wanted.concat(rest);
 }
 
-// Two tiles showing the exact same answer is not a puzzle, it is a coin flip: only one of them
-// scores, and picking the wrong twin costs a mismatch like any other. It is not a rare accident
-// either -- it was 43 groups across 22 of the 60 sets before the glosses were gone through.
-//
-// Dropping one is the fallback here, not the first answer. Where the twins are really different
-// words, the gloss should say so and both stay in play. Two passes did that and took 43 groups
-// down to 17: the five colours of level 9, where each noun sat beside its adjective, became
-// "улаан өнгө" against "улаан өнгөтэй"; and 26 more pairs turned out to be two words sharing the
-// vaguest of their own stored senses -- 支給 is an allowance and 支払 a payment, 決意 is resolve
-// and 決断 a decision, both of which the entry's own `meanings` array already said. This function
-// keys on the gloss strings, so a data edit is the entire fix: the pair stops looking like a
-// duplicate and deals normally. Sharpening one gloss has to respect the rest of the set, though
-// -- 食物 moved to "foodstuff" and promptly collided with 食品 two tiles away.
-//
-// What is left (17 groups, 7 sets in English and 10 in Mongolian) needs wording that is not in
-// the data: real synonyms like 辞書/字引, both "толь бичиг", and pairs whose distinction exists
-// but is unwritten, like 有る and 居る -- both "байх", one for things and one for the living.
-//
-// A dropped twin goes out of the deal AND out of the fuel the swap-3 powerup draws from, since a
-// swapped-in tile lands on the same board. Both languages are keyed at once, so the board has the
-// same shape whichever one is on and switching language mid-level cannot introduce a clash. The
-// pool takes it: every set still yields at least 23 distinct answers against a LEVEL_PAIR_COUNT
-// of 20. Which twin survives follows the shuffle, so both words still come up across replays --
-// and prioritiseMissed has already run, so a word this learner got wrong is the one that stays.
-function dropDuplicateAnswers(order) {
-    const seen = new Set();
-    return order.filter(id => {
-        const w = currentSet[id];
-        const keys = [w.en, w.enMn].filter(Boolean).map(s => s.toLowerCase().trim());
-        if (keys.some(k => seen.has(k))) return false;
-        keys.forEach(k => seen.add(k));
-        return true;
-    });
-}
-
 function pickWordSet(level) {
     currentSet = level.sets[Math.floor(Math.random() * level.sets.length)];
     const order = currentSet.map((_, i) => i);
     shuffleArray(order);
-    const weighted = dropDuplicateAnswers(prioritiseMissed(order));
+    const weighted = prioritiseMissed(order);
     return { dealOrder: clusterConfusables(weighted.slice(0, LEVEL_PAIR_COUNT)), fuel: weighted.slice(LEVEL_PAIR_COUNT) };
 }
 
@@ -246,6 +211,10 @@ function maybeRefill() {
         const gap = VISIBLE_TARGET - activePairs;
         const room = totalPairs - dealtCount;
         if (gap < REFILL_BATCH || room <= 0) break;
+        // room is counted from dealtCount, which only moves when reserveQueue does, so the two
+        // cannot drift apart in play -- but a queue that ran dry while room still said yes would
+        // spin here forever, dealing nothing. Cheap insurance against a hang.
+        if (!reserveQueue.length) break;
         const n = Math.min(REFILL_BATCH, room);
         dealPairs(reserveQueue.splice(0, n), true);
         dealtAny = true;

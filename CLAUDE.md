@@ -227,23 +227,25 @@ scale-invariant -- one answer per word is right at every viewport, with no resiz
 measuring of live DOM -- but that only holds while `TILE_TYPE`'s constants match the ratios in
 `game.css`. The Wakan flyer is the same hexagon and carries the same rules.
 
-**No two tiles may show the same answer.** A board showing two "улаан" tiles is a coin flip
-rather than a puzzle: only one of them scores. The first answer is the gloss, not the code --
-where the twins are really different words, say which is which in the data and both can stay in
-play. That is what 赤/赤い became ("улаан өнгө" / "улаан өнгөтэй", and the same for the other four
-colours, which was all of level 9's problem). `dropDuplicateAnswers` is the fallback for the rest:
-it takes a pair out of the round when its gloss, in either language, already belongs to another
-pair -- out of the deal and out of the swap-3 fuel both, since a swapped-in tile lands on the same
-board. It keys on the gloss strings, so improving a gloss is all it takes to bring a pair back.
-Two passes took 43 groups down to 17: the colours, then 26 pairs that were only sharing the
-vaguest of their own stored `meanings` (支給 is an allowance, 支払 a payment). Sharpening a gloss
-has to respect the rest of the set -- 食物 moved to "foodstuff" and collided with 食品 two tiles
-away, which is why any such edit re-checks that no set gained a clash it did not have. The
-remaining 17 (7 sets in English, 10 in Mongolian) need wording the data does not hold: true
-synonyms like 辞書/字引, and pairs whose distinction is real but unwritten, like 有る/居る -- both
-"байх", one for things and one for the living. Every set yields at least 23 distinct answers
-against a `LEVEL_PAIR_COUNT` of 20. `clusterConfusables` still deliberately deals same-*reading* words
-together (暑い/熱い/厚い) -- those teach something, because their meanings tell them apart.
+**Two tiles can read the same thing, and either one matches** (2026-09-17). A set can hold two
+words that mean exactly the same thing -- 辞書 and 字引 are both "толь бичиг", 飛行場 and 空港
+both "нисэх буудал" -- so the board can carry two identical meaning tiles, and a player picking
+"the wrong one" has not made a mistake. `relinkIfSameAnswer` (`game-play.js`) accepts the crossed
+pick: the two pairs trade meaning tiles, so the two tiles chosen become a real pair and the two
+left over are paired with each other. It is done that way, rather than by clearing one tile of
+each pair, because the lightning chain, the Wakan blast, the swap powerup and the refill all
+assume a pair owns exactly two tiles -- a half-matched pair would have to be taught to all four.
+The tiles are identical on screen, so the trade is invisible; their suit dots move with them.
+**The sharper fix comes first**: where the twins are not really the same word, the gloss should
+say which is which, and 43 identical-gloss groups became 13 that way. 赤 and 赤い are "улаан
+өнгө" and "улаан өнгөтэй"; 支給 is an allowance and 支払 a payment, which their own `meanings`
+arrays already said and only the tile did not; the last four came from the user's own Mongolian
+(午前 "үдээс өмнө", 信用 "итгэл" -- it had said найдвар, which is 希望 -- 有る/居る "байх (эд
+зүйл)" against "байх (амьд)", 広さ "талбайн хэмжээ"). Sharpening one gloss has to respect the
+rest of the set: 食物 moved to "foodstuff" and collided with 食品 two tiles away, so any such
+edit re-checks against the previous build that no set gained a clash it did not have.
+`clusterConfusables` still deliberately deals same-*reading* words together (暑い/熱い/厚い) --
+those teach something, because their meanings tell them apart.
 
 **Large data files — never `Read` whole**: `phonetics-data.js` (~2.8MB), `game-words.js`
 (~1.4MB), `mnjp-data.js` (~1.4MB, `MNJP_ENTRIES` — dictionary.html's primary tab, 3,537 words

@@ -40,7 +40,37 @@ function onTileClick(tile) {
     }
 }
 
+// A set can hold two words that mean exactly the same thing -- 辞書 and 字引 are both "толь
+// бичиг", 飛行場 and 空港 both "нисэх буудал" -- and then the board carries two meaning tiles
+// reading the same words. Either is a right answer for either word, and a player who picks "the
+// wrong one" has not made a mistake, so the board must not charge them a mismatch and a streak
+// for it. There is at most a pair or two of these per set; the sharper fix, where the two words
+// are not really the same word, is to say so in the gloss (see game-words.js's colour entries).
+//
+// Rather than teach the rest of the game about half-matched pairs -- the lightning chain, the
+// Wakan blast, the swap powerup and the refill all assume a pair owns exactly two tiles -- the
+// two pairs trade meaning tiles. The tiles the player chose become a real pair, the two they did
+// not are left paired with each other, and every invariant holds. On screen nothing happens: the
+// two tiles are identical, and their suit dots travel with them.
+function relinkIfSameAnswer(a, b) {
+    const jp = a.kind === 'jp' ? a : b;
+    const theirs = a.kind === 'jp' ? b : a;
+    const pt = tilesByPairId[jp.pairId];
+    const mine = pt && pt.en;
+    if (!mine || mine === theirs || mine.cleared || theirs.cleared) return;
+    if (mine.text !== theirs.text) return;   // different answers -- a real mismatch
+    const ourPairId = jp.pairId;
+    const theirPairId = theirs.pairId;
+    mine.pairId = theirPairId;
+    theirs.pairId = ourPairId;
+    tilesByPairId[ourPairId].en = theirs;
+    tilesByPairId[theirPairId].en = mine;
+    theirs.el.style.setProperty('--suit-color', SUIT_COLORS[ourPairId % SUIT_COLORS.length]);
+    mine.el.style.setProperty('--suit-color', SUIT_COLORS[theirPairId % SUIT_COLORS.length]);
+}
+
 function resolveSelection(a, b) {
+    if (a.kind !== b.kind && a.pairId !== b.pairId) relinkIfSameAnswer(a, b);
     if (a.pairId === b.pairId && a.kind !== b.kind) {
         handleMatch(a, b);
         return;
