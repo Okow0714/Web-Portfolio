@@ -62,7 +62,24 @@ module.exports = async function run(page, assert, baseUrl) {
         await page.waitForTimeout(120);
         caught = await page.evaluate(() => flyerHeld);
     }
-    assert.ok(caught, 'clicking the flyer should catch it (flyerHeld=true)');
+    // This has failed intermittently for a long time, and each explanation so far has only
+    // narrowed it: parking the flyer with reduced motion took out the moving-target race (it now
+    // catches 5 times out of 5 in isolation) and the runner already answers the tour's localStorage
+    // so no coach mark is over the board. Something still eats the click occasionally, so when it
+    // does, say what -- an assertion that only reports false is an assertion that has to be
+    // reproduced by hand.
+    if (!caught) {
+        const blame = await page.evaluate(() => {
+            const el = document.querySelector('.flyer');
+            if (!el) return 'the flyer is gone from the DOM';
+            const r = el.getBoundingClientRect();
+            const hit = document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2);
+            return 'flyer at ' + [r.x, r.y, r.width, r.height].map(Math.round).join(',') +
+                '; centre hits ' + (hit ? (hit.className || hit.tagName) : 'nothing') +
+                '; held=' + flyerHeld + ' locked=' + locked + ' el===flyerEl=' + (flyerEl === el);
+        });
+        assert.fail('clicking the flyer should catch it (flyerHeld=true) -- ' + blame);
+    }
 
     // Cursor-follow regression check: move the pointer, confirm the flyer tracks within a few
     // pixels rather than snapping far away (the original bug measured ~975px of drift).

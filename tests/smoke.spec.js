@@ -1,7 +1,7 @@
 // Every page loads cleanly (no console errors, no uncaught exceptions) and the shared nav
 // resolves consistently. Cheap, broad coverage -- the first thing to fail if a shared file
 // (style.css, i18n-strings-shared.js, auth-shared.js...) breaks in a way that affects all pages.
-const PAGES = ['index.html', 'game.html', 'phonetics.html', 'reading.html', 'grammar.html', 'dictionary.html', 'dashboard.html', 'about.html', 'privacy.html', 'terms.html'];
+const PAGES = ['index.html', 'game.html', 'phonetics.html', 'reading.html', 'grammar.html', 'dictionary.html', 'freetime.html', 'dashboard.html', 'about.html', 'privacy.html', 'terms.html'];
 
 module.exports = async function run(page, assert, baseUrl) {
     for (const path of PAGES) {

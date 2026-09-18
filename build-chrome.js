@@ -33,7 +33,7 @@ const CHROME = path.join(ROOT, '_chrome.html');
 
 const PAGES = [
     'index.html', 'path.html', 'origins.html', 'game.html', 'reading.html', 'phonetics.html',
-    'grammar.html', 'dictionary.html', 'dashboard.html', 'credits.html',
+    'grammar.html', 'dictionary.html', 'freetime.html', 'dashboard.html', 'credits.html',
     'privacy.html', 'terms.html',
 ];
 

@@ -26,6 +26,7 @@ const OUT = ROOT + 'images/share/';
 global.window = { I18N_STRINGS: {} };
 require(ROOT + 'i18n-strings-shared.js');
 require(ROOT + 'hub-i18n-strings.js');
+require(ROOT + 'freetime-i18n-strings.js');
 const S = global.window.I18N_STRINGS;
 const mn = key => {
     const e = S[key];
@@ -42,6 +43,8 @@ const CARDS = [
     { out: 'phonetics', title: mn('hub.phonetics.name'), stat: mn('hub.phonetics.stat'), shot: 'phonetics' },
     { out: 'origins', title: mn('hub.origins.name'), stat: mn('hub.origins.stat'), shot: 'origins' },
     { out: 'path', title: mn('hub.path.name'), stat: '6 ҮЕ ШАТ · ТЭГЭЭС N1 ХҮРТЭЛ' },
+    // brandMark: the real K seal rather than the 言 the older cards still carry.
+    { out: 'freetime', title: mn('freetime.titleSub'), stat: '5 ТҮВШИН · АНИМЭ, ДУУ, YOUTUBE', brandMark: true },
 ];
 
 const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -52,9 +55,18 @@ function html(card) {
     const len = card.title.length;
     const size = hasShot ? (len > 22 ? 60 : len > 15 ? 68 : 76)
         : (len > 22 ? 76 : 86);
+    // Over the local server, not file:// -- this page is served from localhost, and a file://
+    // image on an http page is blocked exactly like the webfonts were. The broken-image icon it
+    // leaves behind is what the first render of this card showed.
+    const markSrc = 'http://localhost:8123/icons/brand-mark.png';
     const shotBand = hasShot
         ? `<div class="band"><img src="file:///${__dirname.split('\\').join('/')}/shot-${card.shot}.png"></div>`
-        : '<div class="seal-wash">言</div>';
+        : (card.brandMark
+            ? `<div class="seal-wash mark-wash"><img src="${markSrc}"></div>`
+            : '<div class="seal-wash">言</div>');
+    const seal = card.brandMark
+        ? `<div class="seal seal-mark"><img src="${markSrc}"></div>`
+        : '<div class="seal">言</div>';
     return `<!doctype html><html lang="mn"><head><meta charset="utf-8">
 <link rel="stylesheet" href="http://localhost:8123/fonts/fonts.css">
 <style>
@@ -83,11 +95,16 @@ function html(card) {
   .seal-wash{position:absolute;right:54px;bottom:-34px;font-size:330px;line-height:1;z-index:1;
              color:rgba(232,189,109,0.14);
              font-family:'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP',serif}
+  /* The mark is dark ink drawn to sit on the gold seal, so the washed-out version behind the text
+     is the seal itself at low opacity, not the glyph tinted gold. */
+  .seal-mark img{width:74%;height:74%;object-fit:contain;display:block}
+  .mark-wash{right:34px;bottom:-40px;width:340px;height:340px;opacity:0.14}
+  .mark-wash img{width:100%;height:100%;object-fit:contain;display:block}
 </style></head><body>
 <div class="frame"></div>
 ${shotBand}
 <div class="top">
-  <div class="brand"><div class="seal">言</div><div class="word">Khan Japanese</div></div>
+  <div class="brand">${seal}<div class="word">Khan Japanese</div></div>
   <h1>${esc(card.title)}</h1>
   <div class="stat">${esc(card.stat)}</div>
 </div>

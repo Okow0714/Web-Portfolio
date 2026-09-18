@@ -3,25 +3,25 @@
 
 <head>
     <meta charset="UTF-8">
-    <title data-en="Japanese Word Match - Khan Japanese">Үг холбох дасгал — Khan Japanese</title>
+    <title data-en="Freetime Learning - Khan Japanese">Чөлөөт цагаараа — Khan Japanese</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Япон үгийг утга нь ижил монгол үгтэй холбох дасгал. JLPT-ийн таван зэрэглэлд 60 шат, ойролцоогоор 1,500 үг.">
-    <link rel="canonical" href="https://khan-japanese.org/game.html">
+    <meta name="description" content="JLPT-ийн түвшин бүрт тохирох анимэ, дуу, YouTube суваг: N5-аас N1 хүртэл юу үзэж, юу сонсож япон хэлээ ахиулахыг сонгож бичсэн.">
+    <link rel="canonical" href="https://khan-japanese.org/freetime.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Khan Japanese">
     <meta property="og:locale" content="mn_MN">
     <meta property="og:locale:alternate" content="en_US">
-    <meta property="og:title" content="Үг холбох дасгал — Khan Japanese">
-    <meta property="og:description" content="Япон үгийг утга нь ижил монгол үгтэй холбох дасгал. JLPT-ийн таван зэрэглэлд 60 шат, ойролцоогоор 1,500 үг.">
-    <meta property="og:url" content="https://khan-japanese.org/game.html">
-    <meta property="og:image" content="https://khan-japanese.org/images/share/game.jpg">
+    <meta property="og:title" content="Чөлөөт цагаараа — Khan Japanese">
+    <meta property="og:description" content="JLPT-ийн түвшин бүрт тохирох анимэ, дуу, YouTube суваг: N5-аас N1 хүртэл юу үзэж, юу сонсож япон хэлээ ахиулахыг сонгож бичсэн.">
+    <meta property="og:url" content="https://khan-japanese.org/freetime.html">
+    <meta property="og:image" content="https://khan-japanese.org/images/share/freetime.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Үг холбох дасгалын N5 шатуудын жагсаалт">
+    <meta property="og:image:alt" content="JLPT түвшин бүрийн анимэ, дуу, YouTube суваг">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Үг холбох дасгал — Khan Japanese">
-    <meta name="twitter:description" content="Япон үгийг утга нь ижил монгол үгтэй холбох дасгал. JLPT-ийн таван зэрэглэлд 60 шат, ойролцоогоор 1,500 үг.">
-    <meta name="twitter:image" content="https://khan-japanese.org/images/share/game.jpg">
+    <meta name="twitter:title" content="Чөлөөт цагаараа — Khan Japanese">
+    <meta name="twitter:description" content="JLPT-ийн түвшин бүрт тохирох анимэ, дуу, YouTube суваг: N5-аас N1 хүртэл юу үзэж, юу сонсож япон хэлээ ахиулахыг сонгож бичсэн.">
+    <meta name="twitter:image" content="https://khan-japanese.org/images/share/freetime.jpg">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#4a2c3a">
@@ -29,15 +29,13 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="game.css">
-    <link rel="stylesheet" href="tutorial.css">
+    <link rel="stylesheet" href="freetime.css">
     <link rel="stylesheet" href="fonts/fonts.css">
     <!-- In <head> on purpose: it sets the ground colour before the first paint. -->
     <script src="display-prefs.js"></script>
 </head>
 
 <body>
-    <!-- Animated Background -->
     <div class="background-animation">
         <div class="floating-shape shape-1"></div>
         <div class="floating-shape shape-2"></div>
@@ -46,7 +44,6 @@
     </div>
 
     <div class="container">
-        <!-- Header: one row - brand (home link), section nav, account menu -->
         <!-- chrome:header -->
         <!-- The loading screen. First thing in the page so it paints before anything else, and
              styled to hold itself back 0.6s (see .khanjp-loader in style.css) so a page that is
@@ -102,7 +99,7 @@
                          border and font, so it styles identically to the anchors beside it.
                          data-group-pages is what build-chrome.js reads to mark the open page. -->
                     <div class="nav-item">
-                        <button type="button" class="nav-trigger nav-current" data-group-pages="game.html reading.html grammar.html"><span data-i18n="nav.practice">Practice</span><span class="nav-caret" aria-hidden="true">&#9662;</span></button>
+                        <button type="button" class="nav-trigger" data-group-pages="game.html reading.html grammar.html"><span data-i18n="nav.practice">Practice</span><span class="nav-caret" aria-hidden="true">&#9662;</span></button>
                         <div class="nav-dropdown">
                             <a href="game.html" data-i18n="nav.wordGame">Word Match</a>
                             <a href="reading.html" data-i18n="nav.dokkaiReader">Dokkai Reader</a>
@@ -125,7 +122,7 @@
                          you are not drilling. It is also the newest section, and a bar with room is
                          where a new section gets found. -->
                     <div class="nav-item">
-                        <a href="freetime.html" class="nav-trigger" data-i18n="nav.freetime">Freetime</a>
+                        <a href="freetime.html" class="nav-trigger nav-current" data-i18n="nav.freetime">Freetime</a>
                     </div>
                     <div class="nav-item">
                         <a href="dashboard.html" class="nav-trigger" data-i18n="dash.titleSub">Dashboard</a>
@@ -340,142 +337,149 @@
         </div>
         <!-- /chrome:header -->
 
-        <main class="game-main">
-            <canvas id="ambient-canvas" class="game-fx-canvas"></canvas>
-            <canvas id="fx-canvas" class="game-fx-canvas"></canvas>
+        <main class="freetime-main">
+            <header class="ft-head">
+                <p class="ft-kicker" aria-hidden="true">N5 → N1</p>
+                <h1 data-i18n="freetime.titleSub">Чөлөөт цагаараа</h1>
+                <p class="ft-lede" data-i18n="freetime.lede">Япон хэлээр өдөр бүр ямар нэг юм үзэж, сонсох нь сурахын хамгийн хөгжилтэй арга. Гэхдээ түвшнээсээ хэт хэцүү юмыг сонговол хэдхэн минутын дотор уйдмаар болдог. Тиймээс JLPT-ийн түвшин бүрээр нэг анимэ, нэг дуу, нэг YouTube сувгийг сонгож, яагаад тухайн түвшинд тохирохыг нь бичлээ.</p>
+            </header>
 
-            <!-- Level select -->
-            <section id="level-select-section" class="game-section">
-                <div class="game-hud-row">
-                    <div>
-                        <h1 class="game-title">言葉合わせ<span class="game-title-sub" data-i18n="game.titleSub">Япон үг холбох дасгал</span></h1>
-                        <p class="game-subtitle" data-i18n="game.subtitle">Япон үг бүрийг утга нь тохирох үгтэй холбоно уу. Шат бүрт 20 хос, 4 минутын цаг байна (хос таарах бүрд +20 секунд). JLPT түвшин бүрт 12 шат — N5 нь анхан шат, N1 нь хамгийн гүнзгий. Ижил дуудлагын язгууртай ханзуудыг хооронд нь холбовол хэд хэдэн хос нэг дор арилна. Алдаагүй дараалан 4 хос холбовол бонус авах бөгөөд үүгээр нэг хос хасах, эсвэл шинэ үгээр солиж болно. Хоёр удаа буруу дарвал арилсан хос торгууль болж эргэж ирнэ — тиймээс яаралгүй, сайн хараад дараарай.</p>
-                    </div>
-                    <button class="sound-toggle on" id="sound-toggle" type="button" aria-pressed="true" title="Turn sound off">
-                        <span id="sound-icon" aria-hidden="true">&#128266;</span>
-                    </button>
+            <div class="ft-guide">
+                <div class="ft-guide-head" aria-hidden="true">
+                    <span data-i18n="freetime.colLevel">Түвшин</span>
+                    <span data-i18n="freetime.colWatch">Үзэх — анимэ</span>
+                    <span data-i18n="freetime.colListen">Сонсох — дуу</span>
+                    <span data-i18n="freetime.colFollow">Дагах — YouTube</span>
                 </div>
-                <p id="game-guest-hint" class="game-guest-hint hidden" data-i18n="game.guestHint">Шилдэг цаг болон дуусгасан шатуудаа хадгалахын тулд нэвтэрнэ үү.</p>
-                <h2 class="sr-only" data-i18n="game.levels">Шатууд</h2>
-                <div class="jlpt-tabs" id="jlpt-tabs" role="tablist" aria-label="JLPT level"></div>
-                <div class="level-grid" id="level-grid"></div>
-            </section>
+            <div class="ft-band ft-n5">
+                <div class="ft-band-level">
+                    <b>N5</b>
+                    <small data-i18n="freetime.n5.since">Анхны 100 цаг</small>
+                </div>
+                <p class="ft-band-note" data-i18n="freetime.n5.note">Мэдэх үг цөөн ч чихээ дасгаж эхлэх үе. Ярианы хурд удаан, дүрслэл нь ихийг хэлж өгдөг юмнаас эхлэх нь зөв.</p>
+                <div class="ft-pick">
+                    <p class="ft-pick-kind" data-i18n="freetime.kindWatch">Үзэх</p>
+                    <p class="ft-pick-title">しろくまカフェ</p>
+                    <p class="ft-pick-sub" data-i18n="freetime.n5.watch.sub">Shirokuma Cafe · анимэ</p>
+                    <p class="ft-pick-why" data-i18n="freetime.n5.watch.why">Кафед өрнөх энгийн яриа. Ярианы хурд удаан, ижил хэллэг дахин дахин давтагдана.</p>
+                </div>
+                <div class="ft-pick">
+                    <p class="ft-pick-kind" data-i18n="freetime.kindListen">Сонсох</p>
+                    <p class="ft-pick-title">上を向いて歩こう</p>
+                    <p class="ft-pick-sub" data-i18n="freetime.n5.listen.sub">坂本九 · 1961 он</p>
+                    <p class="ft-pick-why" data-i18n="freetime.n5.listen.why">Аялгуу удаан, үг цөөн, дуудлага тод. Эхний бүтэн цээжилдэг дуунд тохирно.</p>
+                </div>
+                <div class="ft-pick">
+                    <p class="ft-pick-kind" data-i18n="freetime.kindFollow">Дагах</p>
+                    <p class="ft-pick-title"><a href="https://www.youtube.com/@abroadinjapan" target="_blank" rel="noopener noreferrer">Abroad in Japan</a></p>
+                    <p class="ft-pick-sub" data-i18n="freetime.n5.follow.sub">YouTube · англи хэлээр</p>
+                    <p class="ft-pick-why" data-i18n="freetime.n5.follow.why">Англи хэлтэй суваг ч Японы амьдралыг гаднаас нь, чимэггүйгээр харуулдаг. YouTube-ийн монгол хадмал нь ойлгогдохоор байдаг.</p>
+                </div>
+            </div>
+            <div class="ft-band ft-n4">
+                <div class="ft-band-level">
+                    <b>N4</b>
+                    <small data-i18n="freetime.n4.since">Өдөр тутмын яриа</small>
+                </div>
+                <p class="ft-band-note" data-i18n="freetime.n4.note">Өдөр тутмын яриаг таньж эхлэх үе. Богино, давтамжтай өгүүлбэр хамгийн их тус болно.</p>
+                <div class="ft-pick">
+                    <p class="ft-pick-kind" data-i18n="freetime.kindWatch">Үзэх</p>
+                    <p class="ft-pick-title">ドラえもん</p>
+                    <p class="ft-pick-sub" data-i18n="freetime.n4.watch.sub">Doraemon · анимэ</p>
+                    <p class="ft-pick-why" data-i18n="freetime.n4.watch.why">Гэр бүл, сургууль, өдөр тутмын үг. Анги бүр богино, өгүүлбэр энгийн.</p>
+                </div>
+                <div class="ft-pick">
+                    <p class="ft-pick-kind" data-i18n="freetime.kindListen">Сонсох</p>
+                    <p class="ft-pick-title">パプリカ</p>
+                    <p class="ft-pick-sub" data-i18n="freetime.n4.listen.sub">Foorin / 米津玄師</p>
+                    <p class="ft-pick-why" data-i18n="freetime.n4.listen.why">Хүүхдэд зориулж бичсэн дуу: үг энгийн, давтамжтай, албан ёсны бичлэгт үг нь гарч ирнэ.</p>
+                </div>
+                <div class="ft-pick">
+                    <p class="ft-pick-kind" data-i18n="freetime.kindFollow">Дагах</p>
+                    <p class="ft-pick-title"><a href="https://www.youtube.com/@Dogen" target="_blank" rel="noopener noreferrer">Dogen</a></p>
+                    <p class="ft-pick-sub" data-i18n="freetime.n4.follow.sub">YouTube · англи, япон</p>
+                    <p class="ft-pick-why" data-i18n="freetime.n4.follow.why">Англи, япон хосолсон суваг. Богино хошин шог тул ойлгоход хялбар; өргөлт, дуудлагын тайлбар нь онцлог.</p>
+                </div>
+            </div>
+            <div class="ft-band ft-n3">
+                <div class="ft-band-level">
+                    <b>N3</b>
+                    <small data-i18n="freetime.n3.since">Жинхэнэ контент</small>
+                </div>
+                <p class="ft-band-note" data-i18n="freetime.n3.note">Хурдан ярианд дасах үе. Энгийн үгээр ярьдаг жинхэнэ япон контентыг сонсож эхэлж болно.</p>
+                <div class="ft-pick">
+                    <p class="ft-pick-kind" data-i18n="freetime.kindWatch">Үзэх</p>
+                    <p class="ft-pick-title">ハイキュー!!</p>
+                    <p class="ft-pick-sub" data-i18n="freetime.n3.watch.sub">Haikyuu!! · анимэ</p>
+                    <p class="ft-pick-why" data-i18n="freetime.n3.watch.why">Спортын үг дахин дахин давтагдана, дүрүүд тод чангаар ярина. Сэдэв энгийн тул үгийн сан хурдан наалдана.</p>
+                </div>
+                <div class="ft-pick">
+                    <p class="ft-pick-kind" data-i18n="freetime.kindListen">Сонсох</p>
+                    <p class="ft-pick-title">マリーゴールド</p>
+                    <p class="ft-pick-sub" data-i18n="freetime.n3.listen.sub">あいみょん</p>
+                    <p class="ft-pick-why" data-i18n="freetime.n3.listen.why">Дуудлага маш тод, дууны үг нь өдөр тутмын үгээр бичигдсэн.</p>
+                </div>
+                <div class="ft-pick">
+                    <p class="ft-pick-kind" data-i18n="freetime.kindFollow">Дагах</p>
+                    <p class="ft-pick-title"><a href="https://www.youtube.com/@JINNAI-NETAJIN" target="_blank" rel="noopener noreferrer">陣内智則</a></p>
+                    <p class="ft-pick-sub" data-i18n="freetime.n3.follow.sub">YouTube · хошин шог</p>
+                    <p class="ft-pick-why" data-i18n="freetime.n3.follow.why">Япон хэл дээрх хошин шогийн суваг. Үгийн сан энгийн, нөхцөл байдал нь дүрслэлээрээ ойлгогдоно.</p>
+                </div>
+            </div>
+            <div class="ft-band ft-n2">
+                <div class="ft-band-level">
+                    <b>N2</b>
+                    <small data-i18n="freetime.n2.since">Хэллэгийн ялгаа</small>
+                </div>
+                <p class="ft-band-note" data-i18n="freetime.n2.note">Утга санааг барьдаг болсон үе. Үг сонголт нь төвөгтэй ч сэдэв нь ойлгомжтой юмаар үргэлжлүүлэх нь зөв.</p>
+                <div class="ft-pick">
+                    <p class="ft-pick-kind" data-i18n="freetime.kindWatch">Үзэх</p>
+                    <p class="ft-pick-title">進撃の巨人</p>
+                    <p class="ft-pick-sub" data-i18n="freetime.n2.watch.sub">Attack on Titan · анимэ</p>
+                    <p class="ft-pick-why" data-i18n="freetime.n2.watch.why">Цэрэг, засаг захиргааны үг олон. Албан ба энгийн ярианы ялгаа тод сонсогдоно.</p>
+                </div>
+                <div class="ft-pick">
+                    <p class="ft-pick-kind" data-i18n="freetime.kindListen">Сонсох</p>
+                    <p class="ft-pick-title">Lemon</p>
+                    <p class="ft-pick-sub" data-i18n="freetime.n2.listen.sub">米津玄師</p>
+                    <p class="ft-pick-why" data-i18n="freetime.n2.listen.why">Яруу найраг руу хэлбийсэн, зүйрлэл ихтэй үг. Дуудлага нь тод хэвээр.</p>
+                </div>
+                <div class="ft-pick">
+                    <p class="ft-pick-kind" data-i18n="freetime.kindFollow">Дагах</p>
+                    <p class="ft-pick-title"><a href="https://www.youtube.com/@grapecompany" target="_blank" rel="noopener noreferrer">サンドウィッチマン</a></p>
+                    <p class="ft-pick-sub" data-i18n="freetime.n2.follow.sub">YouTube · grape company</p>
+                    <p class="ft-pick-why" data-i18n="freetime.n2.follow.why">Суваг нь grape company нэртэй ч хамгийн их үзэгдсэн бичлэгүүд нь Сандвичмэний хошин шог. Үгийн сан нь хангалттай төвөгтэй.</p>
+                </div>
+            </div>
+            <div class="ft-band ft-n1">
+                <div class="ft-band-level">
+                    <b>N1</b>
+                    <small data-i18n="freetime.n1.since">Хурд ба далд утга</small>
+                </div>
+                <p class="ft-band-note" data-i18n="freetime.n1.note">Хурд, хэллэг, соёлын далд утга гурвыг зэрэг барих үе. Мэргэжлийн болон утга зохиолын үгсийн санг медиагаар тэлэх боломжтой.</p>
+                <div class="ft-pick">
+                    <p class="ft-pick-kind" data-i18n="freetime.kindWatch">Үзэх</p>
+                    <p class="ft-pick-title">攻殻機動隊 S.A.C.</p>
+                    <p class="ft-pick-sub" data-i18n="freetime.n1.watch.sub">Ghost in the Shell · анимэ</p>
+                    <p class="ft-pick-why" data-i18n="freetime.n1.watch.why">Улс төр, технологийн нэр томьёо урт өгүүлбэрт хийгдэнэ. Хадмалгүйгээр дагахад жинхэнэ сорилт.</p>
+                </div>
+                <div class="ft-pick">
+                    <p class="ft-pick-kind" data-i18n="freetime.kindListen">Сонсох</p>
+                    <p class="ft-pick-title">丸の内サディスティック</p>
+                    <p class="ft-pick-sub" data-i18n="freetime.n1.listen.sub">椎名林檎</p>
+                    <p class="ft-pick-why" data-i18n="freetime.n1.listen.why">Хуучин үг, хар яриа, үг тоглоом гурав холилдсон. Япон хэлний хамгийн хэцүү дууны үгсийн нэг.</p>
+                </div>
+                <div class="ft-pick">
+                    <p class="ft-pick-kind" data-i18n="freetime.kindFollow">Дагах</p>
+                    <p class="ft-pick-title"><a href="https://www.youtube.com/@soichirofromjapan" target="_blank" rel="noopener noreferrer">Soichiro from Japan</a></p>
+                    <p class="ft-pick-sub" data-i18n="freetime.n1.follow.sub">YouTube · гудамжны ярилцлага</p>
+                    <p class="ft-pick-why" data-i18n="freetime.n1.follow.why">Гудамжинд санамсаргүй хүмүүсээс авсан ярилцлага. Бэлтгэсэн зохиол байхгүй, хүн бүр өөрийн хэв маягаар, өөрийн хурдаар ярина — энэ хуудсан дахь хамгийн хүнд сонсгол.</p>
+                </div>
+            </div>
+            </div>
 
-            <!-- Board -->
-            <section id="board-section" class="game-section hidden">
-                <div class="board-toolbar">
-                    <button id="board-back-btn" class="ghost-btn" type="button"><span aria-hidden="true">&larr;</span> <span data-i18n="game.levels">Шатууд</span></button>
-                    <div class="board-level-label" id="board-level-label"></div>
-                    <div class="board-stats">
-                        <span id="board-timer">05:00</span>
-                        <span id="board-pairs">0 / 10 pairs</span>
-                        <span id="board-moves">0 moves</span>
-                        <span class="hud-stat">
-                            <span class="hud-label" data-i18n="game.score">Оноо</span>
-                            <span class="hud-value" id="score-value">0</span>
-                        </span>
-                        <span class="hud-stat streak-stat">
-                            <span class="hud-label" data-i18n="game.streak">Дараалал</span>
-                            <span class="streak-meter"><span class="streak-fill" id="streak-fill"></span></span>
-                        </span>
-                    </div>
-                    <span class="chain-combo hidden" id="chain-combo" aria-live="polite"></span>
-                    <div class="powerup-controls" id="powerup-controls">
-                        <button id="powerup-clear-btn" class="powerup-btn" type="button" disabled>
-                            <span class="powerup-icon" aria-hidden="true">&#10022;</span>
-                            <span class="powerup-label" data-i18n="game.powerupClearBtn">Хасах</span>
-                            <span class="powerup-charge-badge" id="powerup-clear-badge">0</span>
-                        </button>
-                        <button id="powerup-swap-btn" class="powerup-btn" type="button" disabled>
-                            <span class="powerup-icon" aria-hidden="true">&#8646;</span>
-                            <span class="powerup-label" data-i18n="game.powerupSwapBtn">Солих</span>
-                            <span class="powerup-charge-badge" id="powerup-swap-badge">0</span>
-                        </button>
-                    </div>
-                    <button class="sound-toggle on" id="board-sound-toggle" type="button" aria-pressed="true" title="Turn sound off">
-                        <span id="board-sound-icon" aria-hidden="true">&#128266;</span>
-                    </button>
-                    <button id="board-shuffle-btn" class="ghost-btn" type="button" data-i18n="game.shuffle">Холих</button>
-                </div>
-                <div class="board-layout">
-                    <div class="board-wrap" id="board-wrap">
-                        <div id="tile-grid" class="tile-grid"></div>
-                    </div>
-                    <div id="example-panel" class="example-panel">
-                        <div class="example-panel-inner">
-                            <!-- Wide layout only (see .panel-wide-only, hidden under the
-                                 968px breakpoint alongside the panel reverting to a fixed
-                                 bottom bar) -- mirrors #board-pairs and the toolbar streak
-                                 meter, doesn't replace them. -->
-                            <!-- Wide layout only -- tracks phonetic "lightning connect" families
-                                 cleared this round (see familiesFound in game-core.js). -->
-                            <div class="panel-block panel-families panel-wide-only" id="panel-families">
-                                <h3 data-i18n="game.familiesFound">Олдсон бүлгүүд</h3>
-                                <p id="families-empty" class="families-empty" data-i18n="game.familiesEmptyHint">Ижил дуудлагын язгууртай 2 буюу түүнээс дээш үг холбовол олон үг нэг дор арилна.</p>
-                                <div id="families-found-list" class="families-found-list"></div>
-                            </div>
-                            <div class="panel-block panel-example">
-                                <h3 data-i18n="game.lastMatch">Сүүлийн тохирол</h3>
-                                <p id="example-empty" class="example-empty" data-i18n="game.exampleEmptyHint">Жишээ өгүүлбэр харахын тулд нэг хосыг холбоно уу.</p>
-                                <div id="example-content" class="example-content hidden">
-                                    <div class="example-head">
-                                        <span id="example-jp" class="example-jp"></span>
-                                        <span id="example-reading" class="example-reading"></span>
-                                        <span id="example-meanings" class="example-meanings"></span>
-                                    </div>
-                                    <div id="example-sentence-block" class="example-sentence-block">
-                                        <p id="example-sentence-jp" class="example-sentence-jp"></p>
-                                        <p id="example-sentence-en" class="example-sentence-en"></p>
-                                    </div>
-                                    <p id="example-none" class="example-none hidden" data-i18n="game.exampleNoneHint">Энэ үгийн жишээ өгүүлбэр эх өгөгдөлд олдсонгүй.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <div class="fx-text-layer" id="fx-text-layer"></div>
+            <p class="ft-foot-note" data-i18n="freetime.note">Сувгууд руу нь шууд холбосон. Анимэ, дууг нэрээр нь хайвал олдоно — энэ сайт тэдгээрийг өөр дээрээ тавьдаггүй.</p>
         </main>
-
-        <!-- Start Modal: shown at the beginning of every match so jumping straight into a
-             board (e.g. from the header dropdown) doesn't start the timer before the player
-             is ready. -->
-        <div id="start-modal" class="modal-overlay hidden">
-            <div class="modal-card">
-                <h3 id="start-modal-title">N5 · Beginner</h3>
-                <p id="start-modal-desc" data-i18n="game.startModalDesc">Connect each Japanese word to its English meaning. 20 pairs, 4 minutes. The timer starts when you hit Start.</p>
-                <div class="result-actions">
-                    <button id="start-modal-btn" class="auth-btn" type="button" data-i18n="game.startMatch">Start Match</button>
-                    <button id="start-modal-back-btn" class="auth-btn auth-btn-outline" type="button" data-i18n="game.backToLevels">Back to Levels</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Result Modal -->
-        <div id="result-modal" class="modal-overlay hidden">
-            <div class="modal-card">
-                <button id="result-modal-close" class="modal-close" type="button" aria-label="Close">&times;</button>
-                <h3 id="result-title">Level Complete!</h3>
-                <div class="result-stats">
-                    <div class="result-stat">
-                        <span class="result-label" data-i18n="game.time">Time</span>
-                        <span id="result-time" class="result-value"></span>
-                    </div>
-                    <div class="result-stat">
-                        <span class="result-label" data-i18n="game.moves">Moves</span>
-                        <span id="result-moves" class="result-value"></span>
-                    </div>
-                </div>
-                <p id="result-best" class="result-best"></p>
-                <p id="result-save-status" class="result-save-status hidden"></p>
-                <div class="result-actions">
-                    <button id="result-login-btn" class="auth-btn hidden" type="button" data-i18n="game.logInToSave">Log In to Save</button>
-                    <button id="result-replay-btn" class="auth-btn" type="button">Play Again</button>
-                    <button id="result-levels-btn" class="auth-btn auth-btn-outline" type="button" data-i18n="game.backToLevels">Back to Levels</button>
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- chrome:footer -->
@@ -526,26 +530,12 @@
     <!-- /chrome:footer -->
 
     <script src="i18n-strings-shared.js"></script>
-    <script src="game-i18n-strings.js"></script>
-    <script src="tutorial-i18n-strings.js"></script>
+    <script src="freetime-i18n-strings.js"></script>
     <script src="i18n.js"></script>
     <script src="reading-style.js"></script>
     <script src="vendor/supabase.min.js"></script>
     <script src="supabase-config.js"></script>
     <script src="auth-shared.js"></script>
-    <script src="word-stats.js"></script>
-    <script src="game-words.js"></script>
-    <script src="dictionary-data.js"></script>
-    <script src="game-particles.js"></script>
-    <script src="game-audio.js"></script>
-    <!-- Word Match, in load order: each file may use at load time only what an earlier one defined. -->
-    <script src="game-core.js"></script>
-    <script src="game-fx.js"></script>
-    <script src="game-board.js"></script>
-    <script src="game-play.js"></script>
-    <script src="game-wakan.js"></script>
-    <script src="game.js"></script>
-    <script src="tutorial.js"></script>
     <script src="pwa-register.js"></script>
 </body>
 
