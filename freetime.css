@@ -216,6 +216,73 @@ body:has(.freetime-main) {
     color: var(--ft-ink-soft);
 }
 
+/* The speech-form list under a pick. A <details> so the guide stays a guide: shut, a band is still
+   four short columns; open, it is a study note. Shut by default, because most visits are browsing
+   rather than studying, and two of these open at once would bury the levels below them.
+   The marker is drawn here rather than left to the browser: the default triangle is the one piece
+   of furniture on this page that would not match the rest of it. */
+.ft-hints {
+    margin-top: 11px;
+    border-top: 1px solid var(--ft-rule);
+    padding-top: 9px;
+}
+
+.ft-hints summary {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    list-style: none;
+    cursor: pointer;
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ft-ink-faint);
+    transition: color var(--dur-1) var(--ease-out);
+}
+
+.ft-hints summary::-webkit-details-marker {
+    display: none;
+}
+
+.ft-hints summary::before {
+    content: '+';
+    color: var(--ft-lv);
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.ft-hints[open] summary::before {
+    content: '−';
+}
+
+.ft-hints summary:hover,
+.ft-hints summary:focus-visible {
+    color: var(--ft-ink);
+}
+
+.ft-hints dl {
+    margin: 11px 0 0;
+}
+
+.ft-hints dt {
+    font-family: var(--font-jp);
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-top: 9px;
+}
+
+.ft-hints dt:first-child {
+    margin-top: 0;
+}
+
+.ft-hints dd {
+    margin: 1px 0 0;
+    font-size: 0.79rem;
+    line-height: 1.45;
+    color: var(--ft-ink-soft);
+}
+
 .ft-foot-note {
     margin: 26px 0 0;
     font-size: 0.82rem;

@@ -47,6 +47,10 @@ Object.assign(window.I18N_STRINGS, {
         en: "Follow",
         mn: "Дагах",
     },
+    'freetime.hintsOpen': {
+        en: "Speech forms to expect",
+        mn: "Ярианы онцлог хэлбэрүүд",
+    },
     'freetime.note': {
         en: "The channels link straight out. The anime and songs are listed by name to search for; this site does not host any of them.",
         mn: "Сувгууд руу нь шууд холбосон. Анимэ, дууг нэрээр нь хайвал олдоно — энэ сайт тэдгээрийг өөр дээрээ тавьдаггүй.",
@@ -92,12 +96,52 @@ Object.assign(window.I18N_STRINGS, {
         mn: "Өдөр тутмын яриаг таньж эхлэх үе. Богино, давтамжтай өгүүлбэр хамгийн их тус болно.",
     },
     'freetime.n4.watch.sub': {
-        en: "Doraemon · anime",
-        mn: "Doraemon · анимэ",
+        en: "Nichijou · anime",
+        mn: "Nichijou · анимэ",
     },
     'freetime.n4.watch.why': {
-        en: "Home, school and daily life. Short episodes, plain sentences.",
-        mn: "Гэр бүл, сургууль, өдөр тутмын үг. Анги бүр богино, өгүүлбэр энгийн.",
+        en: "The comedy is mostly visual, so a line you miss does not cost you the joke. It is also where the contractions of casual speech arrive all at once.",
+        mn: "Хошин шог нь голдуу нүдэнд харагддаг тул нэг мөр ойлгохгүй өнгөрөхөд инээдэм алдагдахгүй. Ярианы товчилсон хэлбэрүүд энд бөөнөөрөө гарна.",
+    },
+    'freetime.n4.watch.h0': {
+        en: "contracted 〜ている: 食べてる",
+        mn: "〜ている-ийн товч хэлбэр: 食べてる",
+    },
+    'freetime.n4.watch.h1': {
+        en: "〜ておく, doing in advance: やっとく",
+        mn: "〜ておく: урьдчилан хийх — やっとく",
+    },
+    'freetime.n4.watch.h2': {
+        en: "〜てしまう, accidentally or completely: 忘れちゃった",
+        mn: "〜てしまう: санамсаргүй, бүрмөсөн — 忘れちゃった",
+    },
+    'freetime.n4.watch.h3': {
+        en: "〜なければ, \"have to\"",
+        mn: "〜なければ: хийх ёстой",
+    },
+    'freetime.n4.watch.h4': {
+        en: "〜では: じゃない",
+        mn: "〜では: じゃない",
+    },
+    'freetime.n4.watch.h5': {
+        en: "〜のだ, the explanatory tone",
+        mn: "〜のだ: тайлбарлах өнгө",
+    },
+    'freetime.n4.watch.h6': {
+        en: "quoting or topic-marking, standing in for 〜という",
+        mn: "иш татах, сэдэв тэмдэглэх: 〜という-ийн оронд",
+    },
+    'freetime.n4.watch.h7': {
+        en: "trying to recall: 何だっけ",
+        mn: "санахыг оролдох асуулт: 何だっけ",
+    },
+    'freetime.n4.watch.h8': {
+        en: "seeking agreement: \"right?\"",
+        mn: "батлуулах: \"тийм биз дээ\"",
+    },
+    'freetime.n4.watch.h9': {
+        en: "making an excuse: だって〜もん",
+        mn: "шалтаглах: だって〜もん",
     },
     'freetime.n4.listen.sub': {
         en: "Foorin / Kenshi Yonezu",
@@ -124,12 +168,52 @@ Object.assign(window.I18N_STRINGS, {
         mn: "Хурдан ярианд дасах үе. Энгийн үгээр ярьдаг жинхэнэ япон контентыг сонсож эхэлж болно.",
     },
     'freetime.n3.watch.sub': {
-        en: "Haikyuu!! · anime",
-        mn: "Haikyuu!! · анимэ",
+        en: "Danshi Koukousei no Nichijou · anime",
+        mn: "Danshi Koukousei no Nichijou · анимэ",
     },
     'freetime.n3.watch.why': {
-        en: "The same sport vocabulary over and over, shouted clearly, in a setting you already understand.",
-        mn: "Спортын үг дахин дахин давтагдана, дүрүүд тод чангаар ярина. Сэдэв энгийн тул үгийн сан хурдан наалдана.",
+        en: "The vocabulary is not the hard part — rough male speech and comic speed are. The joke is often that someone is speaking in deliberately the wrong register, which only lands if you know what the right one sounds like.",
+        mn: "Үгийн сан нь хүнд биш — бүдүүлэг эрэгтэй яриа, хошин шогийн хурд хоёр нь хүндрүүлнэ. Инээдэм нь ихэвчлэн зориуд \"буруу\" хэллэгээр ярихад оршдог тул зөв хэллэгийг мэдэж байж л ойлгогдоно.",
+    },
+    'freetime.n3.watch.h0': {
+        en: "assertive, masculine sentence endings",
+        mn: "эрэгтэй хүний хатуу өгүүлбэрийн төгсгөл",
+    },
+    'freetime.n3.watch.h1': {
+        en: "incredulous: \"seriously?\"",
+        mn: "гайхах, эсэргүүцэх: \"юу гэнэ ээ?\"",
+    },
+    'freetime.n3.watch.h2': {
+        en: "〜ない: じゃねぇ, わかんねぇ",
+        mn: "〜ない: じゃねぇ, わかんねぇ",
+    },
+    'freetime.n3.watch.h3': {
+        en: "い-adjective endings stretched into え",
+        mn: "い-тэмдэг нэрийн төгсгөл え болж сунах",
+    },
+    'freetime.n3.watch.h4': {
+        en: "〜たい: 食いてぇ",
+        mn: "〜たい: 食いてぇ",
+    },
+    'freetime.n3.watch.h5': {
+        en: "contempt for the action: 言いやがって",
+        mn: "жигших өнгө: 言いやがって",
+    },
+    'freetime.n3.watch.h6': {
+        en: "the plain imperative, which textbooks teach late",
+        mn: "тушаах хэлбэр — сурах бичиг хожуу заадаг",
+    },
+    'freetime.n3.watch.h7': {
+        en: "prohibitive: 行くな — not the softening 〜な",
+        mn: "хориглох: 行くな (өгүүлбэр зөөлрүүлэх 〜な-тай андуурахгүй)",
+    },
+    'freetime.n3.watch.h8': {
+        en: "pressing for agreement",
+        mn: "батлан шахах: \"тийм биз дээ\"",
+    },
+    'freetime.n3.watch.h9': {
+        en: "the rougher cousin of 〜ちゃう",
+        mn: "〜ちゃう-ийн бүдүүлэг хувилбар",
     },
     'freetime.n3.listen.sub': {
         en: "Aimyon",
