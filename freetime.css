@@ -260,6 +260,21 @@ button.ft-cover {
 
 /* Drawn only on a cover that has a video behind it: a play control that does nothing is worse
    than none at all. Both the square and its triangle are drawn, not shipped as an asset. */
+/* The real thumbnail, ON TOP of our cover rather than instead of it. It is positioned and comes
+   after the type in the DOM, so it paints over the title and the watermark -- and when the
+   fallback hides it, the cover is simply there underneath. That ordering is why a missing
+   thumbnail can never leave a hole.
+   Hotlinked from YouTube, never copied into the repo: these are someone else's frames, served by
+   YouTube for exactly this use, and a copy here would both go stale and be republishing. */
+.ft-thumb {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 .ft-cover-play {
     position: absolute;
     right: 10px;

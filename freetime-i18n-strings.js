@@ -256,8 +256,8 @@ Object.assign(window.I18N_STRINGS, {
         mn: "Foorin / 米津玄師",
     },
     'freetime.n4.listen.why': {
-        en: "Written for children: simple, repetitive, and the official video puts the words on screen.",
-        mn: "Хүүхдэд зориулж бичсэн дуу: үг энгийн, давтамжтай, албан ёсны бичлэгт үг нь гарч ирнэ.",
+        en: "Written for children: simple, repetitive, and it sticks after one listen.",
+        mn: "Хүүхдэд зориулж бичсэн дуу. Үг энгийн, давтамжтай, аялгуу нь нэг сонсоод л наалддаг.",
     },
     'freetime.n4.follow.sub': {
         en: "YouTube · English and Japanese",

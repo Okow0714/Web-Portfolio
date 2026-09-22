@@ -664,8 +664,13 @@
                 <p class="ft-lead" data-i18n="freetime.leadListen">Түвшин бүрт нэг дуу. Дууг бүтнээр нь цээжлэх нь үг цээжлэхээс хамаагүй удаан үлддэг.</p>
                 <div class="ft-row">
                 <article class="ft-entry ft-n5">
-                    <div class="ft-cover"><span class="ft-cover-wash" aria-hidden="true">上</span>
-                            <span class="ft-cover-jp">上を向いて歩こう</span></div>
+                    <button type="button" class="ft-cover" data-video="66E3iTP9g04" title="Албан ёсны бичлэгийг тоглуулах" data-i18n-title="freetime.coverHint">
+                            <span class="ft-cover-wash" aria-hidden="true">上</span>
+                            <span class="ft-cover-jp">上を向いて歩こう</span>
+                            <img class="ft-thumb" src="https://i.ytimg.com/vi/66E3iTP9g04/maxresdefault.jpg"
+                                alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+                            <span class="ft-cover-play" aria-hidden="true"></span>
+                        </button>
                     <div class="ft-entry-body">
                         <p class="ft-entry-level"><b>N5</b> <span data-i18n="freetime.n5.teaches">эелдэг, удаан, давтамжтай</span></p>
                         <p class="ft-pick-title">上を向いて歩こう</p>
@@ -674,18 +679,28 @@
                     </div>
                 </article>
                 <article class="ft-entry ft-n4">
-                    <div class="ft-cover"><span class="ft-cover-wash" aria-hidden="true">パ</span>
-                            <span class="ft-cover-jp">パプリカ</span></div>
+                    <button type="button" class="ft-cover" data-video="s582L3gujnw" title="Албан ёсны бичлэгийг тоглуулах" data-i18n-title="freetime.coverHint">
+                            <span class="ft-cover-wash" aria-hidden="true">パ</span>
+                            <span class="ft-cover-jp">パプリカ</span>
+                            <img class="ft-thumb" src="https://i.ytimg.com/vi/s582L3gujnw/maxresdefault.jpg"
+                                alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+                            <span class="ft-cover-play" aria-hidden="true"></span>
+                        </button>
                     <div class="ft-entry-body">
                         <p class="ft-entry-level"><b>N4</b> <span data-i18n="freetime.n4.teaches">товчилсон хэлбэрүүд</span></p>
                         <p class="ft-pick-title">パプリカ</p>
                         <p class="ft-pick-sub" data-i18n="freetime.n4.listen.sub">Foorin / 米津玄師</p>
-                        <p class="ft-pick-why" data-i18n="freetime.n4.listen.why">Хүүхдэд зориулж бичсэн дуу: үг энгийн, давтамжтай, албан ёсны бичлэгт үг нь гарч ирнэ.</p>
+                        <p class="ft-pick-why" data-i18n="freetime.n4.listen.why">Хүүхдэд зориулж бичсэн дуу. Үг энгийн, давтамжтай, аялгуу нь нэг сонсоод л наалддаг.</p>
                     </div>
                 </article>
                 <article class="ft-entry ft-n3">
-                    <div class="ft-cover"><span class="ft-cover-wash" aria-hidden="true">マ</span>
-                            <span class="ft-cover-jp">マリーゴールド</span></div>
+                    <button type="button" class="ft-cover" data-video="0xSiBpUdW4E" title="Албан ёсны бичлэгийг тоглуулах" data-i18n-title="freetime.coverHint">
+                            <span class="ft-cover-wash" aria-hidden="true">マ</span>
+                            <span class="ft-cover-jp">マリーゴールド</span>
+                            <img class="ft-thumb" src="https://i.ytimg.com/vi/0xSiBpUdW4E/maxresdefault.jpg"
+                                alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+                            <span class="ft-cover-play" aria-hidden="true"></span>
+                        </button>
                     <div class="ft-entry-body">
                         <p class="ft-entry-level"><b>N3</b> <span data-i18n="freetime.n3.teaches">бүдүүлэг энгийн яриа</span></p>
                         <p class="ft-pick-title">マリーゴールド</p>
@@ -694,8 +709,13 @@
                     </div>
                 </article>
                 <article class="ft-entry ft-n2">
-                    <div class="ft-cover"><span class="ft-cover-wash" aria-hidden="true">L</span>
-                            <span class="ft-cover-jp">Lemon</span></div>
+                    <button type="button" class="ft-cover" data-video="SX_ViT4Ra7k" title="Албан ёсны бичлэгийг тоглуулах" data-i18n-title="freetime.coverHint">
+                            <span class="ft-cover-wash" aria-hidden="true">L</span>
+                            <span class="ft-cover-jp">Lemon</span>
+                            <img class="ft-thumb" src="https://i.ytimg.com/vi/SX_ViT4Ra7k/maxresdefault.jpg"
+                                alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+                            <span class="ft-cover-play" aria-hidden="true"></span>
+                        </button>
                     <div class="ft-entry-body">
                         <p class="ft-entry-level"><b>N2</b> <span data-i18n="freetime.n2.teaches">албан ба даруу хэллэг</span></p>
                         <p class="ft-pick-title">Lemon</p>
@@ -849,6 +869,36 @@
                 });
             });
             show(tabs[0]);
+        })();
+    </script>
+
+    <!-- Thumbnail fallback, maxresdefault -> hqdefault -> hide, and hiding reveals the cover
+         underneath so a missing thumbnail can never leave a hole.
+         Two listeners, because YouTube fails in two different ways. A video that has no
+         maxresdefault does NOT answer 404: it answers 200 with a 120x90 grey placeholder, so the
+         error event never fires and the card would quietly ship a grey box (マリーゴールド is one
+         such video). That case has to be caught on load, by size. A genuinely missing id does
+         error, and neither event bubbles, so both listen in the capture phase. -->
+    <script>
+        (function () {
+            var downgrade = function (img) {
+                if (img.src.indexOf('maxresdefault') !== -1) {
+                    img.src = img.src.replace('maxresdefault', 'hqdefault');
+                } else {
+                    img.hidden = true;
+                }
+            };
+            document.addEventListener('error', function (e) {
+                var img = e.target;
+                if (img.classList && img.classList.contains('ft-thumb')) downgrade(img);
+            }, true);
+            document.addEventListener('load', function (e) {
+                var img = e.target;
+                // 120px wide is the placeholder YouTube serves when the size does not exist
+                if (img.classList && img.classList.contains('ft-thumb') && img.naturalWidth <= 120) {
+                    downgrade(img);
+                }
+            }, true);
         })();
     </script>
 
