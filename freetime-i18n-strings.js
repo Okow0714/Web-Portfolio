@@ -51,6 +51,74 @@ Object.assign(window.I18N_STRINGS, {
         en: "Speech forms to expect",
         mn: "Ярианы онцлог хэлбэрүүд",
     },
+    'freetime.moreOn': {
+        en: "More on this",
+        mn: "Дэлгэрэнгүй",
+    },
+    'freetime.measured': {
+        en: "Measured",
+        mn: "Хэмжсэн үзүүлэлт",
+    },
+    'freetime.otherFour': {
+        en: "The other four shows are the hollow dots.",
+        mn: "Бусад дөрвийг хоосон цэгээр тэмдэглэв.",
+    },
+    'freetime.mSpeed': {
+        en: "Speed",
+        mn: "Ярианы хурд",
+    },
+    'freetime.mSpeedLo': {
+        en: "slower",
+        mn: "удаан",
+    },
+    'freetime.mSpeedHi': {
+        en: "faster",
+        mn: "хурдан",
+    },
+    'freetime.mKanji': {
+        en: "Kanji density",
+        mn: "Ханзны нягтрал",
+    },
+    'freetime.mKanjiLo': {
+        en: "less",
+        mn: "бага",
+    },
+    'freetime.mKanjiHi': {
+        en: "more",
+        mn: "их",
+    },
+    'freetime.mRough': {
+        en: "Rough speech",
+        mn: "Бүдүүлэг хэллэг",
+    },
+    'freetime.mRoughLo': {
+        en: "none",
+        mn: "үгүй",
+    },
+    'freetime.mRoughHi': {
+        en: "constant",
+        mn: "байнга",
+    },
+    'freetime.mKeigo': {
+        en: "Keigo",
+        mn: "Хүндэтгэлийн хэллэг",
+    },
+    'freetime.mKeigoLo': {
+        en: "none",
+        mn: "үгүй",
+    },
+    'freetime.mKeigoHi': {
+        en: "constant",
+        mn: "байнга",
+    },
+    'freetime.mVocab': {
+        en: "Vocabulary by tier",
+        mn: "Үгийн сан түвшнээр",
+    },
+    'freetime.coverHint': {
+        en: "Play the official video",
+        mn: "Албан ёсны бичлэгийг тоглуулах",
+    },
     'freetime.note': {
         en: "The channels link straight out. The anime and songs are listed by name to search for; this site does not host any of them.",
         mn: "Сувгууд руу нь шууд холбосон. Анимэ, дууг нэрээр нь хайвал олдоно — энэ сайт тэдгээрийг өөр дээрээ тавьдаггүй.",
@@ -62,6 +130,14 @@ Object.assign(window.I18N_STRINGS, {
     'freetime.n5.note': {
         en: "Few words yet, but the ear has to start somewhere. Slow speech, with the pictures carrying most of the meaning.",
         mn: "Мэдэх үг цөөн ч чихээ дасгаж эхлэх үе. Ярианы хурд удаан, дүрслэл нь ихийг хэлж өгдөг юмнаас эхлэх нь зөв.",
+    },
+    'freetime.n5.teaches': {
+        en: "polite, slow, repetitive",
+        mn: "эелдэг, удаан, давтамжтай",
+    },
+    'freetime.n5.basis': {
+        en: "50 episodes of Japanese subtitles, 197k characters of dialogue.",
+        mn: "50 ангийн япон хадмал, 197 мянган тэмдэгт харилцан яриа.",
     },
     'freetime.n5.watch.sub': {
         en: "Shirokuma Cafe · anime",
@@ -94,6 +170,14 @@ Object.assign(window.I18N_STRINGS, {
     'freetime.n4.note': {
         en: "Everyday speech starts coming apart into words. Short, repetitive sentences do the most work.",
         mn: "Өдөр тутмын яриаг таньж эхлэх үе. Богино, давтамжтай өгүүлбэр хамгийн их тус болно.",
+    },
+    'freetime.n4.teaches': {
+        en: "contractions",
+        mn: "товчилсон хэлбэрүүд",
+    },
+    'freetime.n4.basis': {
+        en: "26 episodes of Japanese subtitles, 108k characters of dialogue.",
+        mn: "26 ангийн япон хадмал, 108 мянган тэмдэгт харилцан яриа.",
     },
     'freetime.n4.watch.sub': {
         en: "Nichijou · anime",
@@ -167,6 +251,14 @@ Object.assign(window.I18N_STRINGS, {
         en: "Fast speech stops being a wall — real Japanese content, as long as the words stay plain.",
         mn: "Хурдан ярианд дасах үе. Энгийн үгээр ярьдаг жинхэнэ япон контентыг сонсож эхэлж болно.",
     },
+    'freetime.n3.teaches': {
+        en: "rough plain speech",
+        mn: "бүдүүлэг энгийн яриа",
+    },
+    'freetime.n3.basis': {
+        en: "12 episodes of Japanese subtitles, 48k characters of dialogue.",
+        mn: "12 ангийн япон хадмал, 48 мянган тэмдэгт харилцан яриа.",
+    },
     'freetime.n3.watch.sub': {
         en: "Danshi Koukousei no Nichijou · anime",
         mn: "Danshi Koukousei no Nichijou · анимэ",
@@ -239,6 +331,14 @@ Object.assign(window.I18N_STRINGS, {
         en: "The meaning comes through now. This is where you start hearing who is speaking to whom, and in which register.",
         mn: "Утга санааг барьдаг болсон үе. Одоо хэн хэнд, ямар хэллэгээр хандаж байгааг ялгаж сурах ээлж ирнэ.",
     },
+    'freetime.n2.teaches': {
+        en: "formal and humble",
+        mn: "албан ба даруу хэллэг",
+    },
+    'freetime.n2.basis': {
+        en: "10 episodes of Japanese subtitles, 28k characters of dialogue.",
+        mn: "10 ангийн япон хадмал, 28 мянган тэмдэгт харилцан яриа.",
+    },
     'freetime.n2.watch.sub': {
         en: "Aggretsuko · anime (Netflix)",
         mn: "Aggretsuko · анимэ (Netflix)",
@@ -310,6 +410,14 @@ Object.assign(window.I18N_STRINGS, {
     'freetime.n1.note': {
         en: "Speed, register and subtext at once. This is where media widens a technical and literary vocabulary.",
         mn: "Хурд, хэллэг, соёлын далд утга гурвыг зэрэг барих үе. Мэргэжлийн болон утга зохиолын үгсийн санг медиагаар тэлэх боломжтой.",
+    },
+    'freetime.n1.teaches': {
+        en: "structure and abstraction",
+        mn: "бүтэц ба хийсвэрлэл",
+    },
+    'freetime.n1.basis': {
+        en: "26 episodes of Japanese subtitles, 116k characters of dialogue.",
+        mn: "26 ангийн япон хадмал, 116 мянган тэмдэгт харилцан яриа.",
     },
     'freetime.n1.watch.sub': {
         en: "Ghost in the Shell · anime",
