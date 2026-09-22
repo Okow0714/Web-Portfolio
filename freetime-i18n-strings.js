@@ -316,8 +316,48 @@ Object.assign(window.I18N_STRINGS, {
         mn: "Ghost in the Shell · анимэ",
     },
     'freetime.n1.watch.why': {
-        en: "Political and technical terms inside long sentences — a real test without subtitles.",
-        mn: "Улс төр, технологийн нэр томьёо урт өгүүлбэрт хийгдэнэ. Хадмалгүйгээр дагахад жинхэнэ сорилт.",
+        en: "Political and technical terms inside long sentences. The difficulty is not speed — it is sentence architecture and abstraction.",
+        mn: "Улс төр, технологийн нэр томьёо урт өгүүлбэрт хийгдэнэ. Хүндрэл нь хурд биш — өгүүлбэрийн бүтэц, хийсвэр утга хоёр.",
+    },
+    'freetime.n1.watch.h0': {
+        en: "the written declarative style, not です/ます",
+        mn: "です/ます биш, бичгийн хэлний батлах төгсгөл",
+    },
+    'freetime.n1.watch.h1': {
+        en: "a whole clause modifying a noun, sometimes for a full line",
+        mn: "нэр үгийг бүтэн өгүүлбэрээр урт тодотгох",
+    },
+    'freetime.n1.watch.h2': {
+        en: "is nothing other than",
+        mn: "өөр юу ч биш, яг тэр мөн",
+    },
+    'freetime.n1.watch.h3': {
+        en: "cannot help but",
+        mn: "хийхээс өөр аргагүй",
+    },
+    'freetime.n1.watch.h4': {
+        en: "to be forced into",
+        mn: "хүсээгүй ч тэгэхэд хүрэх",
+    },
+    'freetime.n1.watch.h5': {
+        en: "is no more than",
+        mn: "ердөө л төдий",
+    },
+    'freetime.n1.watch.h6': {
+        en: "not necessarily so",
+        mn: "заавал тийм гэсэн үг биш",
+    },
+    'freetime.n1.watch.h7': {
+        en: "the formal \"in\" and \"regarding\"",
+        mn: "албан ёсны \"-д\", \"-тай холбоотой\"",
+    },
+    'freetime.n1.watch.h8': {
+        en: "causative and passive at once",
+        mn: "хүчээр хийлгэх ба идэвхгүй хэлбэр хоёр нийлсэн",
+    },
+    'freetime.n1.watch.h9': {
+        en: "asserting without naming a source",
+        mn: "эх сурвалжаа нэрлэхгүйгээр батлах",
     },
     'freetime.n1.listen.sub': {
         en: "Ringo Sheena",
