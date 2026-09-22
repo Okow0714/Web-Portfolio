@@ -45,7 +45,10 @@ at all, and `reset-password.html`); `credits.html` itself carries the masthead+f
 
 **The masthead nav is two groups and a link** (2026-09-16, replacing seven flat items): **Practice**
 (Word Match, Dokkai Reader, Grammar Connect), **Dictionary** (Vocabulary, Kana Origins, Phonetics
-Family) and Dashboard. A group heading is a `<button class="nav-trigger" data-group-pages="a.html
+Family) and Freetime. Dashboard was the third item until 2026-09-22 and is now only in the account
+panel: the bar is for sections anyone can open, and the dashboard is the one page that does nothing
+without an account. `dashboard.html` therefore has no nav entry to mark, like `index.html` and the
+legal pages. A group heading is a `<button class="nav-trigger" data-group-pages="a.html
 b.html">` — a heading names a group, not a page, and `.nav-trigger` already resets background,
 border and font so a button styles identically to the anchors. `build-chrome.js` reads
 `data-group-pages` to put `nav-current` on the *group* whose member is open. Because a heading is
