@@ -236,16 +236,56 @@ Object.assign(window.I18N_STRINGS, {
         mn: "Хэллэгийн ялгаа",
     },
     'freetime.n2.note': {
-        en: "The meaning comes through now. Keep the subject familiar and let the vocabulary get harder.",
-        mn: "Утга санааг барьдаг болсон үе. Үг сонголт нь төвөгтэй ч сэдэв нь ойлгомжтой юмаар үргэлжлүүлэх нь зөв.",
+        en: "The meaning comes through now. This is where you start hearing who is speaking to whom, and in which register.",
+        mn: "Утга санааг барьдаг болсон үе. Одоо хэн хэнд, ямар хэллэгээр хандаж байгааг ялгаж сурах ээлж ирнэ.",
     },
     'freetime.n2.watch.sub': {
-        en: "Attack on Titan · anime",
-        mn: "Attack on Titan · анимэ",
+        en: "Aggretsuko · anime (Netflix)",
+        mn: "Aggretsuko · анимэ (Netflix)",
     },
     'freetime.n2.watch.why': {
-        en: "Military and political vocabulary, and the gap between formal and plain speech is audible.",
-        mn: "Цэрэг, засаг захиргааны үг олон. Албан ба энгийн ярианы ялгаа тод сонсогдоно.",
+        en: "A Sanrio character on the outside, office Japanese on the inside. The polite work voice, the blunt inner monologue and the screaming say one feeling in three registers, which is the clearest lesson in what keigo actually means socially.",
+        mn: "Санриогийн хөөрхөн дүр ч агуулга нь ажлын газрын япон хэл. Эелдэг албан яриа, дотоод монолог, ууртай дуу гурав нэг мэдрэмжийг гурван өөр хэллэгээр хэлдэг тул хүндэтгэлийн хэл нийгмийн хувьд юу гэсэн үг болох нь хамгийн тод харагдана.",
+    },
+    'freetime.n2.watch.h0': {
+        en: "the standing greeting of a Japanese workplace",
+        mn: "ажлын газрын үндсэн мэндчилгээ",
+    },
+    'freetime.n2.watch.h1': {
+        en: "the most formal apology",
+        mn: "хамгийн албан ёсны уучлал",
+    },
+    'freetime.n2.watch.h2': {
+        en: "the formal \"understood\"",
+        mn: "\"ойлголоо\"-гийн албан хувилбар",
+    },
+    'freetime.n2.watch.h3': {
+        en: "the honorific pattern: お帰りになる",
+        mn: "хүндэтгэх хэлбэр: お帰りになる",
+    },
+    'freetime.n2.watch.h4': {
+        en: "the humble pattern: お持ちします",
+        mn: "өөрийгөө даруусгах хэлбэр: お持ちします",
+    },
+    'freetime.n2.watch.h5': {
+        en: "a polite request",
+        mn: "эелдэг хүсэлт",
+    },
+    'freetime.n2.watch.h6': {
+        en: "humble \"allow me to\"",
+        mn: "зөвшөөрөл авсан мэт даруу хэлбэр",
+    },
+    'freetime.n2.watch.h7': {
+        en: "the special honorific verbs",
+        mn: "тусгай хүндэтгэлийн үйл үг",
+    },
+    'freetime.n2.watch.h8': {
+        en: "the special humble verbs",
+        mn: "тусгай даруу үйл үг",
+    },
+    'freetime.n2.watch.h9': {
+        en: "addressed by rank, not by name",
+        mn: "нэрээр нь биш, албан тушаалаар нь дууддаг",
     },
     'freetime.n2.listen.sub': {
         en: "Kenshi Yonezu",
