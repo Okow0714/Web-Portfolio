@@ -51,6 +51,30 @@ Object.assign(window.I18N_STRINGS, {
         en: "Speech forms to expect",
         mn: "Ярианы онцлог хэлбэрүүд",
     },
+    'freetime.tabWatch': {
+        en: "Anime",
+        mn: "Анимэ",
+    },
+    'freetime.tabListen': {
+        en: "Music",
+        mn: "Дуу",
+    },
+    'freetime.tabFollow': {
+        en: "YouTube channels",
+        mn: "YouTube суваг",
+    },
+    'freetime.leadWatch': {
+        en: "One anime per level, easiest first. Under each: the measurements behind its placement, and the speech forms it will throw at you.",
+        mn: "Түвшин бүрт нэг анимэ, хамгийн хөнгөнөөс нь эхлээд. Тус бүрийн доор хэмжсэн үзүүлэлт, тухайн түвшинд тааралдах ярианы хэлбэрүүд байгаа.",
+    },
+    'freetime.leadListen': {
+        en: "One song per level. A song learned whole stays with you far longer than a word list does.",
+        mn: "Түвшин бүрт нэг дуу. Дууг бүтнээр нь цээжлэх нь үг цээжлэхээс хамаагүй удаан үлддэг.",
+    },
+    'freetime.leadFollow': {
+        en: "One channel per level — the only thing here that puts out a new lesson every week.",
+        mn: "Түвшин бүрт нэг суваг. Долоо хоног бүр шинэ хичээл гарч байдаг цорын ганц эх сурвалж.",
+    },
     'freetime.moreOn': {
         en: "More on this",
         mn: "Дэлгэрэнгүй",

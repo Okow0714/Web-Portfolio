@@ -341,19 +341,23 @@
                 <p class="ft-lede" data-i18n="freetime.lede">Япон хэлээр өдөр бүр ямар нэг юм үзэж, сонсох нь сурахын хамгийн хөгжилтэй арга. Гэхдээ түвшнээсээ хэт хэцүү юмыг сонговол хэдхэн минутын дотор уйдмаар болдог. Тиймээс JLPT-ийн түвшин бүрээр нэг анимэ, нэг дуу, нэг YouTube сувгийг сонгож, яагаад тухайн түвшинд тохирохыг нь бичлээ.</p>
             </header>
 
-            <div class="ft-guide">
-            <section class="ft-band ft-n5">
-                <div class="ft-band-head">
-                    <b>N5</b>
-                    <span class="ft-teaches" data-i18n="freetime.n5.teaches">эелдэг, удаан, давтамжтай</span>
-                    <small data-i18n="freetime.n5.since">Анхны 100 цаг</small>
-                </div>
-                <p class="ft-band-note" data-i18n="freetime.n5.note">Мэдэх үг цөөн ч чихээ дасгаж эхлэх үе. Ярианы хурд удаан, дүрслэл нь ихийг хэлж өгдөг юмнаас эхлэх нь зөв.</p>
+            <div class="ft-tabs" role="tablist">
+                    <button type="button" class="ft-tab" id="ft-tab-watch" role="tab"
+                        aria-controls="ft-list-watch" aria-selected="true" data-i18n="freetime.tabWatch">Анимэ</button>
+                    <button type="button" class="ft-tab" id="ft-tab-listen" role="tab"
+                        aria-controls="ft-list-listen" aria-selected="false" data-i18n="freetime.tabListen">Дуу</button>
+                    <button type="button" class="ft-tab" id="ft-tab-follow" role="tab"
+                        aria-controls="ft-list-follow" aria-selected="false" data-i18n="freetime.tabFollow">YouTube суваг</button>
+            </div>
+
+            <section class="ft-list" id="ft-list-watch" role="tabpanel" aria-labelledby="ft-tab-watch">
+                <p class="ft-lead" data-i18n="freetime.leadWatch">Түвшин бүрт нэг анимэ, хамгийн хөнгөнөөс нь эхлээд. Тус бүрийн доор хэмжсэн үзүүлэлт, тухайн түвшинд тааралдах ярианы хэлбэрүүд байгаа.</p>
                 <div class="ft-row">
-                <article class="ft-entry">
-                    <div class="ft-cover" aria-hidden="true"><span class="ft-cover-jp">しろくまカフェ</span></div>
+                <article class="ft-entry ft-n5">
+                    <div class="ft-cover"><span class="ft-cover-wash" aria-hidden="true">し</span>
+                            <span class="ft-cover-jp">しろくまカフェ</span></div>
                     <div class="ft-entry-body">
-                        <p class="ft-pick-kind" data-i18n="freetime.kindWatch">Үзэх</p>
+                        <p class="ft-entry-level"><b>N5</b> <span data-i18n="freetime.n5.teaches">эелдэг, удаан, давтамжтай</span></p>
                         <p class="ft-pick-title">しろくまカフェ</p>
                         <p class="ft-pick-sub" data-i18n="freetime.n5.watch.sub">Shirokuma Cafe · анимэ</p>
                         <p class="ft-pick-why" data-i18n="freetime.n5.watch.why">Кафед өрнөх энгийн яриа. Ярианы хурд удаан, ижил хэллэг дахин дахин давтагдана.</p>
@@ -390,38 +394,11 @@
                     </details>
                     </div>
                 </article>
-                <article class="ft-entry">
-                    <div class="ft-cover" aria-hidden="true"><span class="ft-cover-jp">上を向いて歩こう</span></div>
+                <article class="ft-entry ft-n4">
+                    <div class="ft-cover"><span class="ft-cover-wash" aria-hidden="true">日</span>
+                            <span class="ft-cover-jp">日常</span></div>
                     <div class="ft-entry-body">
-                        <p class="ft-pick-kind" data-i18n="freetime.kindListen">Сонсох</p>
-                        <p class="ft-pick-title">上を向いて歩こう</p>
-                        <p class="ft-pick-sub" data-i18n="freetime.n5.listen.sub">坂本九 · 1961 он</p>
-                        <p class="ft-pick-why" data-i18n="freetime.n5.listen.why">Аялгуу удаан, үг цөөн, дуудлага тод. Эхний бүтэн цээжилдэг дуунд тохирно.</p>
-                    </div>
-                </article>
-                <article class="ft-entry">
-                    <div class="ft-cover" aria-hidden="true"><span class="ft-cover-jp">Abroad in Japan</span></div>
-                    <div class="ft-entry-body">
-                        <p class="ft-pick-kind" data-i18n="freetime.kindFollow">Дагах</p>
-                        <p class="ft-pick-title"><a href="https://www.youtube.com/@abroadinjapan" target="_blank" rel="noopener noreferrer">Abroad in Japan</a></p>
-                        <p class="ft-pick-sub" data-i18n="freetime.n5.follow.sub">YouTube · англи хэлээр</p>
-                        <p class="ft-pick-why" data-i18n="freetime.n5.follow.why">Англи хэлтэй суваг ч Японы амьдралыг гаднаас нь, чимэггүйгээр харуулдаг. YouTube-ийн монгол хадмал нь ойлгогдохоор байдаг.</p>
-                    </div>
-                </article>
-                </div>
-            </section>
-            <section class="ft-band ft-n4">
-                <div class="ft-band-head">
-                    <b>N4</b>
-                    <span class="ft-teaches" data-i18n="freetime.n4.teaches">товчилсон хэлбэрүүд</span>
-                    <small data-i18n="freetime.n4.since">Өдөр тутмын яриа</small>
-                </div>
-                <p class="ft-band-note" data-i18n="freetime.n4.note">Өдөр тутмын яриаг таньж эхлэх үе. Богино, давтамжтай өгүүлбэр хамгийн их тус болно.</p>
-                <div class="ft-row">
-                <article class="ft-entry">
-                    <div class="ft-cover" aria-hidden="true"><span class="ft-cover-jp">日常</span></div>
-                    <div class="ft-entry-body">
-                        <p class="ft-pick-kind" data-i18n="freetime.kindWatch">Үзэх</p>
+                        <p class="ft-entry-level"><b>N4</b> <span data-i18n="freetime.n4.teaches">товчилсон хэлбэрүүд</span></p>
                         <p class="ft-pick-title">日常</p>
                         <p class="ft-pick-sub" data-i18n="freetime.n4.watch.sub">Nichijou · анимэ</p>
                         <p class="ft-pick-why" data-i18n="freetime.n4.watch.why">Хошин шог нь голдуу нүдэнд харагддаг тул нэг мөр ойлгохгүй өнгөрөхөд инээдэм алдагдахгүй. Ярианы товчилсон хэлбэрүүд энд бөөнөөрөө гарна.</p>
@@ -483,38 +460,11 @@
                     </details>
                     </div>
                 </article>
-                <article class="ft-entry">
-                    <div class="ft-cover" aria-hidden="true"><span class="ft-cover-jp">パプリカ</span></div>
+                <article class="ft-entry ft-n3">
+                    <div class="ft-cover"><span class="ft-cover-wash" aria-hidden="true">男</span>
+                            <span class="ft-cover-jp">男子高校生の日常</span></div>
                     <div class="ft-entry-body">
-                        <p class="ft-pick-kind" data-i18n="freetime.kindListen">Сонсох</p>
-                        <p class="ft-pick-title">パプリカ</p>
-                        <p class="ft-pick-sub" data-i18n="freetime.n4.listen.sub">Foorin / 米津玄師</p>
-                        <p class="ft-pick-why" data-i18n="freetime.n4.listen.why">Хүүхдэд зориулж бичсэн дуу: үг энгийн, давтамжтай, албан ёсны бичлэгт үг нь гарч ирнэ.</p>
-                    </div>
-                </article>
-                <article class="ft-entry">
-                    <div class="ft-cover" aria-hidden="true"><span class="ft-cover-jp">Dogen</span></div>
-                    <div class="ft-entry-body">
-                        <p class="ft-pick-kind" data-i18n="freetime.kindFollow">Дагах</p>
-                        <p class="ft-pick-title"><a href="https://www.youtube.com/@Dogen" target="_blank" rel="noopener noreferrer">Dogen</a></p>
-                        <p class="ft-pick-sub" data-i18n="freetime.n4.follow.sub">YouTube · англи, япон</p>
-                        <p class="ft-pick-why" data-i18n="freetime.n4.follow.why">Англи, япон хосолсон суваг. Богино хошин шог тул ойлгоход хялбар; өргөлт, дуудлагын тайлбар нь онцлог.</p>
-                    </div>
-                </article>
-                </div>
-            </section>
-            <section class="ft-band ft-n3">
-                <div class="ft-band-head">
-                    <b>N3</b>
-                    <span class="ft-teaches" data-i18n="freetime.n3.teaches">бүдүүлэг энгийн яриа</span>
-                    <small data-i18n="freetime.n3.since">Жинхэнэ контент</small>
-                </div>
-                <p class="ft-band-note" data-i18n="freetime.n3.note">Хурдан ярианд дасах үе. Энгийн үгээр ярьдаг жинхэнэ япон контентыг сонсож эхэлж болно.</p>
-                <div class="ft-row">
-                <article class="ft-entry">
-                    <div class="ft-cover" aria-hidden="true"><span class="ft-cover-jp">男子高校生の日常</span></div>
-                    <div class="ft-entry-body">
-                        <p class="ft-pick-kind" data-i18n="freetime.kindWatch">Үзэх</p>
+                        <p class="ft-entry-level"><b>N3</b> <span data-i18n="freetime.n3.teaches">бүдүүлэг энгийн яриа</span></p>
                         <p class="ft-pick-title">男子高校生の日常</p>
                         <p class="ft-pick-sub" data-i18n="freetime.n3.watch.sub">Danshi Koukousei no Nichijou · анимэ</p>
                         <p class="ft-pick-why" data-i18n="freetime.n3.watch.why">Үгийн сан нь хүнд биш — бүдүүлэг эрэгтэй яриа, хошин шогийн хурд хоёр нь хүндрүүлнэ. Инээдэм нь ихэвчлэн зориуд "буруу" хэллэгээр ярихад оршдог тул зөв хэллэгийг мэдэж байж л ойлгогдоно.</p>
@@ -576,38 +526,11 @@
                     </details>
                     </div>
                 </article>
-                <article class="ft-entry">
-                    <div class="ft-cover" aria-hidden="true"><span class="ft-cover-jp">マリーゴールド</span></div>
+                <article class="ft-entry ft-n2">
+                    <div class="ft-cover"><span class="ft-cover-wash" aria-hidden="true">ア</span>
+                            <span class="ft-cover-jp">アグレッシブ烈子</span></div>
                     <div class="ft-entry-body">
-                        <p class="ft-pick-kind" data-i18n="freetime.kindListen">Сонсох</p>
-                        <p class="ft-pick-title">マリーゴールド</p>
-                        <p class="ft-pick-sub" data-i18n="freetime.n3.listen.sub">あいみょん</p>
-                        <p class="ft-pick-why" data-i18n="freetime.n3.listen.why">Дуудлага маш тод, дууны үг нь өдөр тутмын үгээр бичигдсэн.</p>
-                    </div>
-                </article>
-                <article class="ft-entry">
-                    <div class="ft-cover" aria-hidden="true"><span class="ft-cover-jp">陣内智則</span></div>
-                    <div class="ft-entry-body">
-                        <p class="ft-pick-kind" data-i18n="freetime.kindFollow">Дагах</p>
-                        <p class="ft-pick-title"><a href="https://www.youtube.com/@JINNAI-NETAJIN" target="_blank" rel="noopener noreferrer">陣内智則</a></p>
-                        <p class="ft-pick-sub" data-i18n="freetime.n3.follow.sub">YouTube · хошин шог</p>
-                        <p class="ft-pick-why" data-i18n="freetime.n3.follow.why">Япон хэл дээрх хошин шогийн суваг. Үгийн сан энгийн, нөхцөл байдал нь дүрслэлээрээ ойлгогдоно.</p>
-                    </div>
-                </article>
-                </div>
-            </section>
-            <section class="ft-band ft-n2">
-                <div class="ft-band-head">
-                    <b>N2</b>
-                    <span class="ft-teaches" data-i18n="freetime.n2.teaches">албан ба даруу хэллэг</span>
-                    <small data-i18n="freetime.n2.since">Хэллэгийн ялгаа</small>
-                </div>
-                <p class="ft-band-note" data-i18n="freetime.n2.note">Утга санааг барьдаг болсон үе. Одоо хэн хэнд, ямар хэллэгээр хандаж байгааг ялгаж сурах ээлж ирнэ.</p>
-                <div class="ft-row">
-                <article class="ft-entry">
-                    <div class="ft-cover" aria-hidden="true"><span class="ft-cover-jp">アグレッシブ烈子</span></div>
-                    <div class="ft-entry-body">
-                        <p class="ft-pick-kind" data-i18n="freetime.kindWatch">Үзэх</p>
+                        <p class="ft-entry-level"><b>N2</b> <span data-i18n="freetime.n2.teaches">албан ба даруу хэллэг</span></p>
                         <p class="ft-pick-title">アグレッシブ烈子</p>
                         <p class="ft-pick-sub" data-i18n="freetime.n2.watch.sub">Aggretsuko · анимэ (Netflix)</p>
                         <p class="ft-pick-why" data-i18n="freetime.n2.watch.why">Санриогийн хөөрхөн дүр ч агуулга нь ажлын газрын япон хэл. Эелдэг албан яриа, дотоод монолог, ууртай дуу гурав нэг мэдрэмжийг гурван өөр хэллэгээр хэлдэг тул хүндэтгэлийн хэл нийгмийн хувьд юу гэсэн үг болох нь хамгийн тод харагдана.</p>
@@ -669,38 +592,11 @@
                     </details>
                     </div>
                 </article>
-                <article class="ft-entry">
-                    <div class="ft-cover" aria-hidden="true"><span class="ft-cover-jp">Lemon</span></div>
+                <article class="ft-entry ft-n1">
+                    <div class="ft-cover"><span class="ft-cover-wash" aria-hidden="true">攻</span>
+                            <span class="ft-cover-jp">攻殻機動隊 S.A.C.</span></div>
                     <div class="ft-entry-body">
-                        <p class="ft-pick-kind" data-i18n="freetime.kindListen">Сонсох</p>
-                        <p class="ft-pick-title">Lemon</p>
-                        <p class="ft-pick-sub" data-i18n="freetime.n2.listen.sub">米津玄師</p>
-                        <p class="ft-pick-why" data-i18n="freetime.n2.listen.why">Яруу найраг руу хэлбийсэн, зүйрлэл ихтэй үг. Дуудлага нь тод хэвээр.</p>
-                    </div>
-                </article>
-                <article class="ft-entry">
-                    <div class="ft-cover" aria-hidden="true"><span class="ft-cover-jp">サンドウィッチマン</span></div>
-                    <div class="ft-entry-body">
-                        <p class="ft-pick-kind" data-i18n="freetime.kindFollow">Дагах</p>
-                        <p class="ft-pick-title"><a href="https://www.youtube.com/@grapecompany" target="_blank" rel="noopener noreferrer">サンドウィッチマン</a></p>
-                        <p class="ft-pick-sub" data-i18n="freetime.n2.follow.sub">YouTube · grape company</p>
-                        <p class="ft-pick-why" data-i18n="freetime.n2.follow.why">Суваг нь grape company нэртэй ч хамгийн их үзэгдсэн бичлэгүүд нь Сандвичмэний хошин шог. Үгийн сан нь хангалттай төвөгтэй.</p>
-                    </div>
-                </article>
-                </div>
-            </section>
-            <section class="ft-band ft-n1">
-                <div class="ft-band-head">
-                    <b>N1</b>
-                    <span class="ft-teaches" data-i18n="freetime.n1.teaches">бүтэц ба хийсвэрлэл</span>
-                    <small data-i18n="freetime.n1.since">Хурд ба далд утга</small>
-                </div>
-                <p class="ft-band-note" data-i18n="freetime.n1.note">Хурд, хэллэг, соёлын далд утга гурвыг зэрэг барих үе. Мэргэжлийн болон утга зохиолын үгсийн санг медиагаар тэлэх боломжтой.</p>
-                <div class="ft-row">
-                <article class="ft-entry">
-                    <div class="ft-cover" aria-hidden="true"><span class="ft-cover-jp">攻殻機動隊 S.A.C.</span></div>
-                    <div class="ft-entry-body">
-                        <p class="ft-pick-kind" data-i18n="freetime.kindWatch">Үзэх</p>
+                        <p class="ft-entry-level"><b>N1</b> <span data-i18n="freetime.n1.teaches">бүтэц ба хийсвэрлэл</span></p>
                         <p class="ft-pick-title">攻殻機動隊 S.A.C.</p>
                         <p class="ft-pick-sub" data-i18n="freetime.n1.watch.sub">Ghost in the Shell · анимэ</p>
                         <p class="ft-pick-why" data-i18n="freetime.n1.watch.why">Улс төр, технологийн нэр томьёо урт өгүүлбэрт хийгдэнэ. Хүндрэл нь хурд биш — өгүүлбэрийн бүтэц, хийсвэр утга хоёр.</p>
@@ -762,19 +658,111 @@
                     </details>
                     </div>
                 </article>
-                <article class="ft-entry">
-                    <div class="ft-cover" aria-hidden="true"><span class="ft-cover-jp">丸の内サディスティック</span></div>
+                </div>
+            </section>
+            <section class="ft-list" id="ft-list-listen" role="tabpanel" aria-labelledby="ft-tab-listen">
+                <p class="ft-lead" data-i18n="freetime.leadListen">Түвшин бүрт нэг дуу. Дууг бүтнээр нь цээжлэх нь үг цээжлэхээс хамаагүй удаан үлддэг.</p>
+                <div class="ft-row">
+                <article class="ft-entry ft-n5">
+                    <div class="ft-cover"><span class="ft-cover-wash" aria-hidden="true">上</span>
+                            <span class="ft-cover-jp">上を向いて歩こう</span></div>
                     <div class="ft-entry-body">
-                        <p class="ft-pick-kind" data-i18n="freetime.kindListen">Сонсох</p>
+                        <p class="ft-entry-level"><b>N5</b> <span data-i18n="freetime.n5.teaches">эелдэг, удаан, давтамжтай</span></p>
+                        <p class="ft-pick-title">上を向いて歩こう</p>
+                        <p class="ft-pick-sub" data-i18n="freetime.n5.listen.sub">坂本九 · 1961 он</p>
+                        <p class="ft-pick-why" data-i18n="freetime.n5.listen.why">Аялгуу удаан, үг цөөн, дуудлага тод. Эхний бүтэн цээжилдэг дуунд тохирно.</p>
+                    </div>
+                </article>
+                <article class="ft-entry ft-n4">
+                    <div class="ft-cover"><span class="ft-cover-wash" aria-hidden="true">パ</span>
+                            <span class="ft-cover-jp">パプリカ</span></div>
+                    <div class="ft-entry-body">
+                        <p class="ft-entry-level"><b>N4</b> <span data-i18n="freetime.n4.teaches">товчилсон хэлбэрүүд</span></p>
+                        <p class="ft-pick-title">パプリカ</p>
+                        <p class="ft-pick-sub" data-i18n="freetime.n4.listen.sub">Foorin / 米津玄師</p>
+                        <p class="ft-pick-why" data-i18n="freetime.n4.listen.why">Хүүхдэд зориулж бичсэн дуу: үг энгийн, давтамжтай, албан ёсны бичлэгт үг нь гарч ирнэ.</p>
+                    </div>
+                </article>
+                <article class="ft-entry ft-n3">
+                    <div class="ft-cover"><span class="ft-cover-wash" aria-hidden="true">マ</span>
+                            <span class="ft-cover-jp">マリーゴールド</span></div>
+                    <div class="ft-entry-body">
+                        <p class="ft-entry-level"><b>N3</b> <span data-i18n="freetime.n3.teaches">бүдүүлэг энгийн яриа</span></p>
+                        <p class="ft-pick-title">マリーゴールド</p>
+                        <p class="ft-pick-sub" data-i18n="freetime.n3.listen.sub">あいみょん</p>
+                        <p class="ft-pick-why" data-i18n="freetime.n3.listen.why">Дуудлага маш тод, дууны үг нь өдөр тутмын үгээр бичигдсэн.</p>
+                    </div>
+                </article>
+                <article class="ft-entry ft-n2">
+                    <div class="ft-cover"><span class="ft-cover-wash" aria-hidden="true">L</span>
+                            <span class="ft-cover-jp">Lemon</span></div>
+                    <div class="ft-entry-body">
+                        <p class="ft-entry-level"><b>N2</b> <span data-i18n="freetime.n2.teaches">албан ба даруу хэллэг</span></p>
+                        <p class="ft-pick-title">Lemon</p>
+                        <p class="ft-pick-sub" data-i18n="freetime.n2.listen.sub">米津玄師</p>
+                        <p class="ft-pick-why" data-i18n="freetime.n2.listen.why">Яруу найраг руу хэлбийсэн, зүйрлэл ихтэй үг. Дуудлага нь тод хэвээр.</p>
+                    </div>
+                </article>
+                <article class="ft-entry ft-n1">
+                    <div class="ft-cover"><span class="ft-cover-wash" aria-hidden="true">丸</span>
+                            <span class="ft-cover-jp">丸の内サディスティック</span></div>
+                    <div class="ft-entry-body">
+                        <p class="ft-entry-level"><b>N1</b> <span data-i18n="freetime.n1.teaches">бүтэц ба хийсвэрлэл</span></p>
                         <p class="ft-pick-title">丸の内サディスティック</p>
                         <p class="ft-pick-sub" data-i18n="freetime.n1.listen.sub">椎名林檎</p>
                         <p class="ft-pick-why" data-i18n="freetime.n1.listen.why">Хуучин үг, хар яриа, үг тоглоом гурав холилдсон. Япон хэлний хамгийн хэцүү дууны үгсийн нэг.</p>
                     </div>
                 </article>
-                <article class="ft-entry">
-                    <div class="ft-cover" aria-hidden="true"><span class="ft-cover-jp">Soichiro from Japan</span></div>
+                </div>
+            </section>
+            <section class="ft-list" id="ft-list-follow" role="tabpanel" aria-labelledby="ft-tab-follow">
+                <p class="ft-lead" data-i18n="freetime.leadFollow">Түвшин бүрт нэг суваг. Долоо хоног бүр шинэ хичээл гарч байдаг цорын ганц эх сурвалж.</p>
+                <div class="ft-row">
+                <article class="ft-entry ft-n5">
+                    <div class="ft-cover"><span class="ft-cover-wash" aria-hidden="true">A</span>
+                            <span class="ft-cover-jp">Abroad in Japan</span></div>
                     <div class="ft-entry-body">
-                        <p class="ft-pick-kind" data-i18n="freetime.kindFollow">Дагах</p>
+                        <p class="ft-entry-level"><b>N5</b> <span data-i18n="freetime.n5.teaches">эелдэг, удаан, давтамжтай</span></p>
+                        <p class="ft-pick-title"><a href="https://www.youtube.com/@abroadinjapan" target="_blank" rel="noopener noreferrer">Abroad in Japan</a></p>
+                        <p class="ft-pick-sub" data-i18n="freetime.n5.follow.sub">YouTube · англи хэлээр</p>
+                        <p class="ft-pick-why" data-i18n="freetime.n5.follow.why">Англи хэлтэй суваг ч Японы амьдралыг гаднаас нь, чимэггүйгээр харуулдаг. YouTube-ийн монгол хадмал нь ойлгогдохоор байдаг.</p>
+                    </div>
+                </article>
+                <article class="ft-entry ft-n4">
+                    <div class="ft-cover"><span class="ft-cover-wash" aria-hidden="true">D</span>
+                            <span class="ft-cover-jp">Dogen</span></div>
+                    <div class="ft-entry-body">
+                        <p class="ft-entry-level"><b>N4</b> <span data-i18n="freetime.n4.teaches">товчилсон хэлбэрүүд</span></p>
+                        <p class="ft-pick-title"><a href="https://www.youtube.com/@Dogen" target="_blank" rel="noopener noreferrer">Dogen</a></p>
+                        <p class="ft-pick-sub" data-i18n="freetime.n4.follow.sub">YouTube · англи, япон</p>
+                        <p class="ft-pick-why" data-i18n="freetime.n4.follow.why">Англи, япон хосолсон суваг. Богино хошин шог тул ойлгоход хялбар; өргөлт, дуудлагын тайлбар нь онцлог.</p>
+                    </div>
+                </article>
+                <article class="ft-entry ft-n3">
+                    <div class="ft-cover"><span class="ft-cover-wash" aria-hidden="true">陣</span>
+                            <span class="ft-cover-jp">陣内智則</span></div>
+                    <div class="ft-entry-body">
+                        <p class="ft-entry-level"><b>N3</b> <span data-i18n="freetime.n3.teaches">бүдүүлэг энгийн яриа</span></p>
+                        <p class="ft-pick-title"><a href="https://www.youtube.com/@JINNAI-NETAJIN" target="_blank" rel="noopener noreferrer">陣内智則</a></p>
+                        <p class="ft-pick-sub" data-i18n="freetime.n3.follow.sub">YouTube · хошин шог</p>
+                        <p class="ft-pick-why" data-i18n="freetime.n3.follow.why">Япон хэл дээрх хошин шогийн суваг. Үгийн сан энгийн, нөхцөл байдал нь дүрслэлээрээ ойлгогдоно.</p>
+                    </div>
+                </article>
+                <article class="ft-entry ft-n2">
+                    <div class="ft-cover"><span class="ft-cover-wash" aria-hidden="true">サ</span>
+                            <span class="ft-cover-jp">サンドウィッチマン</span></div>
+                    <div class="ft-entry-body">
+                        <p class="ft-entry-level"><b>N2</b> <span data-i18n="freetime.n2.teaches">албан ба даруу хэллэг</span></p>
+                        <p class="ft-pick-title"><a href="https://www.youtube.com/@grapecompany" target="_blank" rel="noopener noreferrer">サンドウィッチマン</a></p>
+                        <p class="ft-pick-sub" data-i18n="freetime.n2.follow.sub">YouTube · grape company</p>
+                        <p class="ft-pick-why" data-i18n="freetime.n2.follow.why">Суваг нь grape company нэртэй ч хамгийн их үзэгдсэн бичлэгүүд нь Сандвичмэний хошин шог. Үгийн сан нь хангалттай төвөгтэй.</p>
+                    </div>
+                </article>
+                <article class="ft-entry ft-n1">
+                    <div class="ft-cover"><span class="ft-cover-wash" aria-hidden="true">S</span>
+                            <span class="ft-cover-jp">Soichiro from Japan</span></div>
+                    <div class="ft-entry-body">
+                        <p class="ft-entry-level"><b>N1</b> <span data-i18n="freetime.n1.teaches">бүтэц ба хийсвэрлэл</span></p>
                         <p class="ft-pick-title"><a href="https://www.youtube.com/@soichirofromjapan" target="_blank" rel="noopener noreferrer">Soichiro from Japan</a></p>
                         <p class="ft-pick-sub" data-i18n="freetime.n1.follow.sub">YouTube · гудамжны ярилцлага</p>
                         <p class="ft-pick-why" data-i18n="freetime.n1.follow.why">Гудамжинд санамсаргүй хүмүүсээс авсан ярилцлага. Бэлтгэсэн зохиол байхгүй, хүн бүр өөрийн хэв маягаар, өөрийн хурдаар ярина — энэ хуудсан дахь хамгийн хүнд сонсгол.</p>
@@ -782,7 +770,6 @@
                 </article>
                 </div>
             </section>
-            </div>
 
             <p class="ft-foot-note" data-i18n="freetime.note">Сувгууд руу нь шууд холбосон. Анимэ, дууг нэрээр нь хайвал олдоно — энэ сайт тэдгээрийг өөр дээрээ тавьдаггүй.</p>
         </main>
@@ -834,6 +821,36 @@
         </div>
     </footer>
     <!-- /chrome:footer -->
+
+    <!-- The three lists. Progressive enhancement on purpose: the markup ships with every list
+         visible, and this hides two of them. With no JavaScript the page is simply longer, which
+         is the right failure for a page whose job is to be read. -->
+    <script>
+        (function () {
+            var tabs = [].slice.call(document.querySelectorAll('.ft-tab'));
+            if (!tabs.length) return;
+            var show = function (tab) {
+                tabs.forEach(function (t) {
+                    var on = t === tab;
+                    t.setAttribute('aria-selected', on);
+                    t.tabIndex = on ? 0 : -1;
+                    document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+                });
+            };
+            tabs.forEach(function (t, i) {
+                t.addEventListener('click', function () { show(t); });
+                t.addEventListener('keydown', function (e) {
+                    var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+                    if (!d) return;
+                    e.preventDefault();
+                    var next = tabs[(i + d + tabs.length) % tabs.length];
+                    show(next);
+                    next.focus();
+                });
+            });
+            show(tabs[0]);
+        })();
+    </script>
 
     <!-- Click-to-load. Nothing reaches YouTube until a visitor asks for it: the cover is ours,
          and only a click swaps it for the official embed, on the no-cookie host. Entries with no

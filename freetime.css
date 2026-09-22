@@ -108,19 +108,59 @@ body:has(.freetime-main) {
     color: var(--ft-ink-soft);
 }
 
-/* ---- bands ---------------------------------------------------------------------------------- */
-.ft-band {
-    border-bottom: 1px solid var(--ft-rule);
-    padding: 28px 0;
-    /* Arrives with the rest of the page -- keyframes in style.css. On the band and not on the
-       guide, because a transform on an ancestor of a fixed element makes it the containing block
-       and the masthead would stop being fixed while it ran. */
-    animation: khanjpRiseIn 0.38s var(--ease-out) backwards;
+/* ---- the three lists ------------------------------------------------------------------------ */
+/* Grouped by medium, not by level: someone arrives wanting something to watch or something to
+   listen to, and the level ladder survives inside each list, where it belongs. One list on screen
+   at a time also means only five covers ever load -- and once those covers are real video
+   thumbnails, an inactive panel is display:none, so a lazy image inside it is never fetched.
+   The markup ships with all three visible and the script hides two: with no JavaScript the page is
+   simply longer, which is the right failure for a page whose job is to be read. */
+.ft-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 2px solid var(--ft-rule-strong);
+    margin-top: 26px;
 }
 
-.ft-band:nth-child(2) { animation-delay: 0.05s; }
-.ft-band:nth-child(3) { animation-delay: 0.1s; }
-.ft-band:nth-child(n+4) { animation-delay: 0.15s; }
+.ft-tab {
+    font: inherit;
+    font-size: 0.86rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    padding: 11px 18px;
+    border: 0;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    background: none;
+    color: var(--ft-ink-faint);
+    cursor: pointer;
+    transition: color var(--dur-1) var(--ease-out), border-color var(--dur-1) var(--ease-out);
+}
+
+.ft-tab:hover,
+.ft-tab:focus-visible {
+    color: var(--ft-ink);
+}
+
+.ft-tab[aria-selected="true"] {
+    color: var(--ft-ink);
+    border-bottom-color: var(--ft-ink);
+}
+
+.ft-list {
+    padding-top: 24px;
+}
+
+.ft-list[hidden] {
+    display: none;
+}
+
+.ft-lead {
+    margin: 0 0 22px;
+    max-width: 74ch;
+    font-size: 0.92rem;
+    color: var(--ft-ink-soft);
+}
 
 .ft-n5 { --ft-lv: var(--ft-n5); }
 .ft-n4 { --ft-lv: var(--ft-n4); }
@@ -128,52 +168,12 @@ body:has(.freetime-main) {
 .ft-n2 { --ft-lv: var(--ft-n2); }
 .ft-n1 { --ft-lv: var(--ft-n1); }
 
-.ft-band-head {
-    display: flex;
-    align-items: baseline;
-    gap: 14px;
-    flex-wrap: wrap;
-    border-left: 4px solid var(--ft-lv);
-    padding-left: 13px;
-    margin-bottom: 12px;
-}
-
-.ft-band-head b {
-    font-size: 1.7rem;
-    line-height: 1;
-    letter-spacing: -0.02em;
-    color: var(--ft-lv);
-}
-
-/* What this level's picks are actually for -- the spine of the page, one register per level. */
-.ft-teaches {
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ft-ink-faint);
-}
-
-.ft-band-head small {
-    margin-left: auto;
-    font-size: 0.76rem;
-    color: var(--ft-ink-faint);
-}
-
-.ft-band-note {
-    margin: 0 0 18px;
-    padding-left: 17px;
-    max-width: 78ch;
-    font-size: 0.9rem;
-    color: var(--ft-ink-soft);
-}
-
 .ft-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    /* Each card owns its own height. Without this, opening one panel stretches its two neighbours
-       to match and leaves them standing mostly empty. */
+    gap: 18px;
+    /* Each card owns its own height. Without this, opening one panel stretches its neighbours to
+       match and leaves them standing mostly empty. */
     align-items: start;
 }
 
@@ -183,6 +183,33 @@ body:has(.freetime-main) {
     background: var(--ft-surface);
     display: flex;
     flex-direction: column;
+    /* Arrives with the page -- keyframes in style.css. On the card and not on the list, because a
+       transform on an ancestor of a fixed element makes it the containing block and the masthead
+       would stop being fixed while it ran. */
+    animation: khanjpRiseIn 0.38s var(--ease-out) backwards;
+}
+
+.ft-entry:nth-child(2) { animation-delay: 0.05s; }
+.ft-entry:nth-child(3) { animation-delay: 0.1s; }
+.ft-entry:nth-child(n+4) { animation-delay: 0.15s; }
+
+/* The level travels with the card now that the list is not grouped by it. */
+.ft-entry-level {
+    display: flex;
+    align-items: baseline;
+    gap: 9px;
+    margin: 0 0 6px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ft-ink-faint);
+}
+
+.ft-entry-level b {
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+    color: var(--ft-lv);
 }
 
 .ft-cover {
@@ -208,7 +235,22 @@ button.ft-cover {
     cursor: pointer;
 }
 
+.ft-cover-wash {
+    position: absolute;
+    right: -12px;
+    bottom: -38px;
+    font-family: var(--font-jp);
+    font-weight: 700;
+    font-size: 8.5rem;
+    line-height: 1;
+    color: var(--ft-lv);
+    opacity: 0.13;
+    user-select: none;
+    pointer-events: none;
+}
+
 .ft-cover-jp {
+    position: relative;
     font-family: var(--font-jp);
     font-weight: 700;
     font-size: 1.3rem;
@@ -257,15 +299,6 @@ button.ft-cover:focus-visible .ft-cover-play {
     display: flex;
     flex-direction: column;
     flex: 1;
-}
-
-.ft-pick-kind {
-    margin: 0 0 5px;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--ft-ink-faint);
 }
 
 .ft-pick-title {
