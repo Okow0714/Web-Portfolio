@@ -788,7 +788,13 @@ html[data-theme="dark"] { color-scheme: dark; }
 }
 
 .auth-btn {
-    display: inline-block;
+    /* 44px is the size .lang-switch was already raised to; this one measured 39px on a phone.
+       inline-flex rather than inline-block so the label still sits centred once min-height
+       makes the box taller than its text. It flows the same way in every place it is used. */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
     padding: 10px 20px;
     background: var(--accent-gradient);
     border: 1px solid var(--accent);
@@ -837,6 +843,13 @@ html[data-theme="dark"] { color-scheme: dark; }
 }
 
 .modal-card {
+    /* The card is light in both themes (these :root neutrals carry no dark values), but
+       html[data-theme="dark"] sets color-scheme: dark, so the BROWSER was painting every field
+       inside it dark while the CSS pinned the text to the light --text-primary. Typed email and
+       password measured 1.60:1 -- effectively invisible. Declaring the card's own colour scheme
+       keeps the UA's controls on the same side as the card they sit on, and covers every input,
+       checkbox and scrollbar in all three modals rather than one rule at a time. */
+    color-scheme: light;
     position: relative;
     width: 100%;
     max-width: 400px;

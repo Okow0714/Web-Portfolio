@@ -30,8 +30,10 @@
     --accent-dark: light-dark(#274d3e, #8fc9a9);
     --accent-tint: rgba(61, 107, 88, 0.09);
     --accent-tint: light-dark(rgba(61, 107, 88, 0.09), rgba(111, 174, 142, 0.16));
-    --warm: #8a5570;
-    --warm: light-dark(#8a5570, #cf9bba);
+    /* Light value nudged a shade deeper: on its own tint the score badge measured 4.48:1, just
+       under the 4.5 floor. This reads the same and lands at 4.85. */
+    --warm: #85506a;
+    --warm: light-dark(#85506a, #cf9bba);
     --warm-tint: rgba(138, 85, 112, 0.10);
     --warm-tint: light-dark(rgba(138, 85, 112, 0.10), rgba(207, 155, 186, 0.16));
     --font-display: 'Fraunces', Georgia, serif;

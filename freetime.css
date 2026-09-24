@@ -32,8 +32,11 @@ body:has(.freetime-main),
     --ft-ink: light-dark(#191715, #eee9e0);
     --ft-ink-soft: #625c54;
     --ft-ink-soft: light-dark(#625c54, #a9a297);
-    --ft-ink-faint: #8d867c;
-    --ft-ink-faint: light-dark(#8d867c, #7d766c);
+    /* Measured against the page ground, not chosen by eye: the old pair read 3.22:1 in light and
+       4.03:1 in dark, both under the 4.5 a 11-13px label needs, and it carries the tabs, the level
+       rail, the sub-lines and the footnote. These land at 4.86 and 4.82. */
+    --ft-ink-faint: #6f6960;
+    --ft-ink-faint: light-dark(#6f6960, #8a8379);
     --ft-rule: #d8d2c7;
     --ft-rule: light-dark(#d8d2c7, #33363d);
     --ft-rule-strong: #191715;
@@ -482,11 +485,18 @@ button.ft-cover:focus-visible .ft-cover-play {
     margin-left: 2px;
 }
 
-.ft-t1 { background: var(--ft-t1); }
-.ft-t2 { background: var(--ft-t2); }
-.ft-t3 { background: var(--ft-t3); }
-.ft-t4 { background: var(--ft-t4); color: #fff; }
-.ft-t5 { background: var(--ft-t5); color: light-dark(#fff, #15161a); }
+/* The ramp inverts between themes -- t5 is the darkest swatch in light and the lightest in dark --
+   so a label's colour has to flip with it. t1 and t2 keep the page ink, which is correct at both
+   ends; t3, t4 and t5 need their own.
+   These are scoped to .ft-tierbar on purpose. `.ft-tierbar span` above sets colour at (0,1,1) and
+   beat a bare `.ft-tN` at (0,1,0), which is why t5 carried the right declaration and still painted
+   the wrong colour -- the rule had simply never applied. t4 and t5 are too narrow to show a label
+   in the current data, so that only became visible on t3, measured at 3.92:1 in dark. */
+.ft-tierbar .ft-t1 { background: var(--ft-t1); }
+.ft-tierbar .ft-t2 { background: var(--ft-t2); }
+.ft-tierbar .ft-t3 { background: var(--ft-t3); color: light-dark(#191715, #fff); }
+.ft-tierbar .ft-t4 { background: var(--ft-t4); color: light-dark(#fff, #15161a); }
+.ft-tierbar .ft-t5 { background: var(--ft-t5); color: light-dark(#fff, #15161a); }
 
 .ft-tierkey {
     display: flex;
