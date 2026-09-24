@@ -91,8 +91,12 @@ overwritten on the next run.** The only per-page difference is `nav-current`, ap
 filename, so the canonical copy carries none (`index.html` and the three legal pages have no nav
 entry of their own and correctly get none). Committed output is plain static HTML exactly as
 before — GitHub Pages, `sw.js` and the PWA are unaffected, and neither file belongs in
-`APP_SHELL`. The leading underscore is load-bearing: Pages runs Jekyll by default (no `.nojekyll`,
-no `_config.yml` here) and Jekyll does not publish underscore-prefixed files. The script is
+`APP_SHELL`. The leading underscore is load-bearing: Pages runs Jekyll (still no `.nojekyll`) and
+Jekyll does not publish underscore-prefixed files. `_config.yml` exists as of 2026-09-24 but does
+not change that — it adds one `include`, for `.well-known`, which Jekyll would otherwise skip for
+starting with a dot, and which must be served for the Play Store app's Digital Asset Links check.
+Disabling Jekyll with `.nojekyll` would have published `_chrome.html`, which is why it is an
+include and not that. The script is
 newline-aware — the pages are CRLF and `_chrome.html` is LF, and assembling in the wrong one
 rewrites every line of every page as a one-character diff, which is how a real change would hide.
 Its guard is that writing the chrome must not *change* a page's `<div>` balance; an absolute

@@ -1,0 +1,16 @@
+# GitHub Pages runs Jekyll on this repo, and Jekyll does not publish paths beginning with a dot or
+# an underscore. That matters twice here:
+#
+#   .well-known/assetlinks.json MUST be served for the Android app to claim these URLs. Without
+#   this include it 404s, Digital Asset Links verification fails, and the installed app opens with
+#   a browser address bar across the top instead of running full screen. It is the most common way
+#   a Trusted Web Activity launch goes wrong, and it fails silently.
+#
+#   _chrome.html must stay UNpublished. It is the source template the masthead and footer are
+#   generated from, not a page. That is what its leading underscore is for, so this file adds an
+#   include rather than disabling Jekyll with .nojekyll, which would expose it.
+#
+# Everything else stays on Jekyll's defaults deliberately: the site is plain static HTML with no
+# build step, and nothing here should start processing it.
+include:
+  - .well-known

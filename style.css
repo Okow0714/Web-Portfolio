@@ -1,19 +1,43 @@
 /* Base Styles — warm parchment ground with a deep burgundy accent ("Burgundy
    Editorial" direction). Neutrals are warm-biased toward the accent rather
    than a plain gray scale. */
+/* These neutrals used to be light-only, which is why privacy, terms, credits and
+   reset-password rendered identically in both themes -- they style straight from :root, with no
+   page wrapper to carry a palette. The dark side is warm-biased toward the burgundy the same way
+   the light side is, rather than a neutral grey.
+
+   light-dark() resolves against each ELEMENT's own colour scheme, not the document's, and that is
+   what lets one pair serve two grounds here: .modal-card declares color-scheme: light, so every
+   token inside the three modals keeps resolving to its light value and the cards stay light in
+   both themes, while the same tokens go dark out on the legal pages. The accent matters most --
+   it is the link colour on a legal page AND the text colour inside the light modal. */
 :root {
     --bg-page: #f9f4ef;
+    --bg-page: light-dark(#f9f4ef, #1a1412);
     --bg-surface: #fffdfb;
+    --bg-surface: light-dark(#fffdfb, #241d1a);
     --bg-surface-alt: #f3ece3;
+    --bg-surface-alt: light-dark(#f3ece3, #2e2522);
     --border: #e6dcd0;
+    --border: light-dark(#e6dcd0, #3c322d);
     --border-strong: #cdbca8;
+    --border-strong: light-dark(#cdbca8, #574a42);
     --text-primary: #1f1512;
+    --text-primary: light-dark(#1f1512, #f3ece6);
     --text-secondary: #5c4b43;
+    --text-secondary: light-dark(#5c4b43, #c8b9af);
     --text-muted: #7c6b65; /* was #93817a: 3.39:1 on its own surface, under AA */
+    --text-muted: light-dark(#7c6b65, #a89890);
+    /* Dark wine is 1.78:1 on a dark ground, so the dark side lifts to a rose that reads as the
+       same accent. Measured on --bg-page: 6.59:1. */
     --accent: #7a2b3f;
+    --accent: light-dark(#7a2b3f, #d98298);
     --accent-light: #9c3d54;
+    --accent-light: light-dark(#9c3d54, #e79db0);
     --accent-dark: #571d2c;
+    --accent-dark: light-dark(#571d2c, #c4677e);
     --accent-tint: #f6e9ec;
+    --accent-tint: light-dark(#f6e9ec, #3a2129);
     --accent-gradient: linear-gradient(135deg, var(--accent-light), var(--accent));
     --accent-gradient-hover: linear-gradient(135deg, var(--accent), var(--accent-dark));
     --radius-lg: 0px;
@@ -160,7 +184,10 @@ body:has(.modal-overlay:not(.hidden)) .container {
     position: absolute;
     opacity: 0.4;
     animation: float 30s infinite linear;
-    border: 1px solid rgba(122, 43, 63, 0.18);
+    /* The wine was hardcoded rather than tokenised, so it never themed: on the new dark ground
+       these decorative outlines read as stray boxes behind the text instead of a faint texture.
+       Geometry stays outside light-dark(), which only wraps the colour. */
+    border: 1px solid light-dark(rgba(122, 43, 63, 0.18), rgba(217, 130, 152, 0.13));
 }
 
 .shape-1 {
@@ -854,6 +881,10 @@ html[data-theme="dark"] { color-scheme: dark; }
     width: 100%;
     max-width: 400px;
     background: var(--bg-surface);
+    /* Declared, not inherited. color-scheme decides how light-dark() resolves on THIS element; it
+       cannot revise a value that already computed on an ancestor. Without this the card inherited
+       body's dark-theme ink and painted light text on its own light card. */
+    color: var(--text-primary);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
     padding: 40px 30px 30px;
@@ -914,7 +945,9 @@ html[data-theme="dark"] { color-scheme: dark; }
 }
 
 .auth-error {
-    color: #d33f3f;
+    /* 4.22:1 at #d33f3f, under AA -- and error text is the last thing that should be hard to read.
+       Not a light-dark() pair: this sits inside .modal-card, which is light in both themes. */
+    color: #c0322f;
     font-size: 0.9rem;
     margin: 4px 0 0 0;
 }
@@ -1064,7 +1097,7 @@ html[data-theme="dark"] { color-scheme: dark; }
 .account-delete-status {
     margin: 10px 0 0;
     font-size: 0.85rem;
-    color: #d33f3f;
+    color: #c0322f;   /* same AA fix as .auth-error, same light modal ground */
 }
 
 .auth-mode-toggle {

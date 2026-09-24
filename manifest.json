@@ -2,15 +2,16 @@
     "id": "./index.html",
     "name": "Khan Japanese",
     "short_name": "Khan Japanese",
-    "description": "Free Japanese-learning tools: vocabulary matching, phonetic kanji families, voice-driven reading practice, grammar drills, and a kango/wago dictionary.",
+    "description": "Япон хэл сурах хэрэгслүүд: үг холбох дасгал, ханзны дуудлагын бүлэг, дуу хоолойгоор уншлагын дадлага, дүрэм холбох, монгол-япон толь бичиг.",
     "start_url": "./index.html",
     "scope": "./",
     "display": "standalone",
     "orientation": "portrait-primary",
     "background_color": "#4a2c3a",
     "theme_color": "#4a2c3a",
-    "lang": "en",
+    "lang": "mn",
     "dir": "ltr",
+    "categories": ["education", "books"],
     "icons": [
         {
             "src": "icons/icon-192.png",
@@ -29,6 +30,64 @@
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "maskable"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "images/screenshots/hub-narrow.png",
+            "sizes": "1080x1920",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "Нүүр хуудас"
+        },
+        {
+            "src": "images/screenshots/word-match-narrow.png",
+            "sizes": "1080x1920",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "Үг холбох дасгал"
+        },
+        {
+            "src": "images/screenshots/dictionary-narrow.png",
+            "sizes": "1080x1920",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "Монгол-Япон толь бичиг"
+        },
+        {
+            "src": "images/screenshots/study-path-narrow.png",
+            "sizes": "1080x1920",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "Сурах зам"
+        },
+        {
+            "src": "images/screenshots/hub-wide.png",
+            "sizes": "1920x1080",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "Нүүр хуудас"
+        },
+        {
+            "src": "images/screenshots/word-match-wide.png",
+            "sizes": "1920x1080",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "Үг холбох дасгал"
+        },
+        {
+            "src": "images/screenshots/dictionary-wide.png",
+            "sizes": "1920x1080",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "Монгол-Япон толь бичиг"
+        },
+        {
+            "src": "images/screenshots/study-path-wide.png",
+            "sizes": "1920x1080",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "Сурах зам"
         }
     ]
 }
