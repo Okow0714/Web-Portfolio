@@ -111,8 +111,8 @@ body:has(.freetime-main) {
 /* ---- the three lists ------------------------------------------------------------------------ */
 /* Grouped by medium, not by level: someone arrives wanting something to watch or something to
    listen to, and the level ladder survives inside each list, where it belongs. One list on screen
-   at a time also means only five covers ever load -- and once those covers are real video
-   thumbnails, an inactive panel is display:none, so a lazy image inside it is never fetched.
+   at a time also means only five covers ever load -- and because an inactive panel is
+   display:none, a lazy thumbnail inside one is never fetched at all.
    The markup ships with all three visible and the script hides two: with no JavaScript the page is
    simply longer, which is the right failure for a page whose job is to be read. */
 .ft-tabs {
@@ -147,19 +147,49 @@ body:has(.freetime-main) {
     border-bottom-color: var(--ft-ink);
 }
 
-.ft-list {
-    padding-top: 24px;
-}
-
 .ft-list[hidden] {
     display: none;
 }
 
+.ft-list-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding-top: 24px;
+}
+
 .ft-lead {
-    margin: 0 0 22px;
-    max-width: 74ch;
+    margin: 0;
+    max-width: 62ch;
     font-size: 0.92rem;
     color: var(--ft-ink-soft);
+}
+
+/* Five tall sections is a long scroll, so each list carries its own jump rail. Its own, not a
+   shared one: anchors in a hidden list would scroll to nothing. */
+.ft-rail {
+    display: flex;
+    gap: 2px;
+    flex-shrink: 0;
+}
+
+.ft-rail a {
+    padding: 5px 9px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--ft-ink-faint);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: color var(--dur-1) var(--ease-out), border-color var(--dur-1) var(--ease-out);
+}
+
+.ft-rail a:hover,
+.ft-rail a:focus-visible {
+    color: var(--ft-lv);
+    border-bottom-color: var(--ft-lv);
 }
 
 .ft-n5 { --ft-lv: var(--ft-n5); }
@@ -168,48 +198,27 @@ body:has(.freetime-main) {
 .ft-n2 { --ft-lv: var(--ft-n2); }
 .ft-n1 { --ft-lv: var(--ft-n1); }
 
-.ft-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-    /* Each card owns its own height. Without this, opening one panel stretches its neighbours to
-       match and leaves them standing mostly empty. */
-    align-items: start;
-}
-
-/* ---- an entry -------------------------------------------------------------------------------- */
-.ft-entry {
-    border: 1px solid var(--ft-rule);
-    background: var(--ft-surface);
-    display: flex;
-    flex-direction: column;
-    /* Arrives with the page -- keyframes in style.css. On the card and not on the list, because a
-       transform on an ancestor of a fixed element makes it the containing block and the masthead
-       would stop being fixed while it ran. */
+/* ---- one entry, one section ------------------------------------------------------------------ */
+.ft-sec {
+    border-bottom: 1px solid var(--ft-rule);
+    padding: 34px 0 38px;
+    /* the rail jumps land clear of the fixed masthead rather than under it */
+    scroll-margin-top: 96px;
+    /* Arrives with the page -- keyframes in style.css. On the section and not on the list, because
+       a transform on an ancestor of a fixed element makes it the containing block, and the
+       masthead would stop being fixed while it ran. */
     animation: khanjpRiseIn 0.38s var(--ease-out) backwards;
 }
 
-.ft-entry:nth-child(2) { animation-delay: 0.05s; }
-.ft-entry:nth-child(3) { animation-delay: 0.1s; }
-.ft-entry:nth-child(n+4) { animation-delay: 0.15s; }
+.ft-sec:nth-of-type(2) { animation-delay: 0.05s; }
+.ft-sec:nth-of-type(3) { animation-delay: 0.1s; }
+.ft-sec:nth-of-type(n+4) { animation-delay: 0.15s; }
 
-/* The level travels with the card now that the list is not grouped by it. */
-.ft-entry-level {
-    display: flex;
-    align-items: baseline;
-    gap: 9px;
-    margin: 0 0 6px;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ft-ink-faint);
-}
-
-.ft-entry-level b {
-    font-size: 1.05rem;
-    letter-spacing: -0.01em;
-    color: var(--ft-lv);
+.ft-sec-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: 26px;
+    align-items: start;
 }
 
 .ft-cover {
@@ -219,16 +228,15 @@ body:has(.freetime-main) {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 14px;
-    border: 0;
-    border-bottom: 1px solid var(--ft-rule);
+    padding: 20px;
+    border: 1px solid var(--ft-rule);
     font: inherit;
     color: inherit;
     text-align: center;
     overflow: hidden;
     background:
-        repeating-linear-gradient(135deg, transparent 0 9px, color-mix(in srgb, var(--ft-lv) 7%, transparent) 9px 10px),
-        linear-gradient(160deg, color-mix(in srgb, var(--ft-lv) 22%, var(--ft-surface)), var(--ft-surface) 78%);
+        repeating-linear-gradient(135deg, transparent 0 10px, color-mix(in srgb, var(--ft-lv) 7%, transparent) 10px 11px),
+        linear-gradient(160deg, color-mix(in srgb, var(--ft-lv) 24%, var(--ft-surface)), var(--ft-surface) 78%);
 }
 
 button.ft-cover {
@@ -237,11 +245,11 @@ button.ft-cover {
 
 .ft-cover-wash {
     position: absolute;
-    right: -12px;
-    bottom: -38px;
+    right: -14px;
+    bottom: -50px;
     font-family: var(--font-jp);
     font-weight: 700;
-    font-size: 8.5rem;
+    font-size: 10.5rem;
     line-height: 1;
     color: var(--ft-lv);
     opacity: 0.13;
@@ -253,13 +261,11 @@ button.ft-cover {
     position: relative;
     font-family: var(--font-jp);
     font-weight: 700;
-    font-size: 1.3rem;
-    line-height: 1.25;
+    font-size: 1.65rem;
+    line-height: 1.24;
     text-wrap: balance;
 }
 
-/* Drawn only on a cover that has a video behind it: a play control that does nothing is worse
-   than none at all. Both the square and its triangle are drawn, not shipped as an asset. */
 /* The real thumbnail, ON TOP of our cover rather than instead of it. It is positioned and comes
    after the type in the DOM, so it paints over the title and the watermark -- and when the
    fallback hides it, the cover is simply there underneath. That ordering is why a missing
@@ -275,12 +281,14 @@ button.ft-cover {
     display: block;
 }
 
+/* Drawn only on a cover that has a video behind it: a play control that does nothing is worse
+   than none at all. Both the square and its triangle are drawn, not shipped as an asset. */
 .ft-cover-play {
     position: absolute;
-    right: 10px;
-    bottom: 10px;
-    width: 34px;
-    height: 34px;
+    right: 12px;
+    bottom: 12px;
+    width: 40px;
+    height: 40px;
     background: var(--ft-rule-strong);
     transition: transform var(--dur-2) var(--ease-out);
 }
@@ -288,11 +296,11 @@ button.ft-cover {
 .ft-cover-play::after {
     content: '';
     position: absolute;
-    left: 13px;
-    top: 11px;
-    border-left: 11px solid var(--ft-paper);
-    border-top: 6px solid transparent;
-    border-bottom: 6px solid transparent;
+    left: 15px;
+    top: 13px;
+    border-left: 13px solid var(--ft-paper);
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
 }
 
 button.ft-cover:hover .ft-cover-play,
@@ -300,28 +308,44 @@ button.ft-cover:focus-visible .ft-cover-play {
     transform: scale(1.09);
 }
 
-/* What replaces the cover once someone asks for the video. Same box, so nothing reflows. */
+/* Replaces the cover once someone asks for the video: the same box, none of the decoration, so
+   nothing moves on click. */
 .ft-embed {
+    display: block;
     width: 100%;
     aspect-ratio: 16 / 9;
-    border: 0;
-    border-bottom: 1px solid var(--ft-rule);
-    display: block;
+    border: 1px solid var(--ft-rule);
+    background: #000;
 }
 
-.ft-entry-body {
-    padding: 12px 14px 14px;
+.ft-sec-level {
     display: flex;
-    flex-direction: column;
-    flex: 1;
+    align-items: baseline;
+    gap: 10px;
+    margin: 0 0 8px;
+}
+
+.ft-sec-level b {
+    font-size: 1.5rem;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--ft-lv);
+}
+
+.ft-sec-level span {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ft-ink-faint);
 }
 
 .ft-pick-title {
     margin: 0 0 3px;
     font-family: var(--font-jp);
     font-weight: 700;
-    font-size: 1.04rem;
-    line-height: 1.3;
+    font-size: 1.45rem;
+    line-height: 1.22;
 }
 
 .ft-pick-title a {
@@ -338,74 +362,38 @@ button.ft-cover:focus-visible .ft-cover-play {
 }
 
 .ft-pick-sub {
-    margin: 0 0 8px;
-    font-size: 0.76rem;
+    margin: 0 0 12px;
+    font-size: 0.8rem;
     color: var(--ft-ink-faint);
 }
 
 .ft-pick-why {
-    margin: 0 0 12px;
-    font-size: 0.86rem;
+    margin: 0;
     color: var(--ft-ink-soft);
 }
 
-/* ---- the panel -------------------------------------------------------------------------------- */
-/* A <details>, so opening needs no JavaScript at all. The marker is drawn here: the browser's own
-   triangle is the one piece of furniture on this page that would not match the rest of it. */
-.ft-more {
-    margin-top: auto;
-    border-top: 1px solid var(--ft-rule);
-    padding-top: 9px;
+/* ---- what used to be behind a disclosure ------------------------------------------------------ */
+.ft-under {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: 26px;
+    margin-top: 26px;
+    align-items: start;
 }
 
-.ft-more summary {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    list-style: none;
-    cursor: pointer;
-    font-size: 0.74rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ft-ink-faint);
-    transition: color var(--dur-1) var(--ease-out);
-}
-
-.ft-more summary::-webkit-details-marker {
-    display: none;
-}
-
-.ft-more summary::before {
-    content: '+';
-    color: var(--ft-lv);
-    font-size: 1rem;
-    line-height: 1;
-}
-
-.ft-more[open] summary::before {
-    content: '−';
-}
-
-.ft-more summary:hover,
-.ft-more summary:focus-visible {
-    color: var(--ft-ink);
-}
-
-.ft-measured {
-    margin-top: 13px;
-}
-
-.ft-measured-h {
-    margin: 0 0 12px;
+.ft-blk h3 {
+    margin: 0 0 4px;
     font-size: 0.72rem;
-    color: var(--ft-ink-faint);
-}
-
-.ft-measured-h b {
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
+    color: var(--ft-ink-faint);
+}
+
+.ft-basis {
+    margin: 0 0 14px;
+    font-size: 0.72rem;
+    color: var(--ft-ink-faint);
 }
 
 /* One measure, one axis, all five shows on it. Position is the encoding; the number beside the
@@ -419,7 +407,7 @@ button.ft-cover:focus-visible .ft-cover-play {
     justify-content: space-between;
     gap: 10px;
     margin: 0 0 5px;
-    font-size: 0.76rem;
+    font-size: 0.78rem;
 }
 
 .ft-metric-lab b {
@@ -517,39 +505,24 @@ button.ft-cover:focus-visible .ft-cover-play {
     vertical-align: -1px;
 }
 
-.ft-hints {
-    border-top: 1px solid var(--ft-rule);
-    margin-top: 14px;
-    padding-top: 11px;
-}
-
-.ft-hints-h {
-    margin: 0 0 9px;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ft-ink-faint);
-}
-
-.ft-hints dl {
+.ft-blk dl {
     margin: 0;
 }
 
-.ft-hints dt {
+.ft-blk dt {
     font-family: var(--font-jp);
     font-weight: 700;
-    font-size: 0.89rem;
+    font-size: 0.9rem;
     margin-top: 9px;
 }
 
-.ft-hints dt:first-of-type {
+.ft-blk dt:first-of-type {
     margin-top: 0;
 }
 
-.ft-hints dd {
+.ft-blk dd {
     margin: 1px 0 0;
-    font-size: 0.78rem;
+    font-size: 0.79rem;
     line-height: 1.45;
     color: var(--ft-ink-soft);
 }
@@ -568,18 +541,25 @@ button.ft-cover:focus-visible .ft-cover-play {
         padding: 81px 20px 90px;
     }
 
-    .ft-row {
-        grid-template-columns: repeat(2, 1fr);
+    .ft-sec {
+        scroll-margin-top: 64px;
     }
 }
 
-@media (max-width: 680px) {
-    .ft-row {
+@media (max-width: 820px) {
+    /* A cover beside its text needs width for both. Below this it is one column, which also puts
+       the picture directly above the words about it. */
+    .ft-sec-grid,
+    .ft-under {
         grid-template-columns: 1fr;
+        gap: 18px;
     }
 
-    .ft-band-head small {
-        margin-left: 0;
+    .ft-list-head {
+        gap: 12px;
+    }
+
+    .ft-rail {
         width: 100%;
     }
 }
