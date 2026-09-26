@@ -5,7 +5,8 @@
       "namespace": "android_app",
       "package_name": "org.khan_japanese.twa",
       "sha256_cert_fingerprints": [
-        "8D:C5:FB:F5:7D:7F:0C:D8:9A:84:2C:75:F1:FC:FE:AB:7C:EE:C3:5D:9A:54:06:A2:5A:8F:F9:14:80:A2:82:98"
+        "8D:C5:FB:F5:7D:7F:0C:D8:9A:84:2C:75:F1:FC:FE:AB:7C:EE:C3:5D:9A:54:06:A2:5A:8F:F9:14:80:A2:82:98",
+        "AB:F6:4B:A8:D1:53:DE:6D:4C:03:2C:B0:B6:10:F3:18:DE:DD:F8:B0:FC:9B:81:C5:1F:BD:4B:03:B8:CF:44:49"
       ]
     }
   }
