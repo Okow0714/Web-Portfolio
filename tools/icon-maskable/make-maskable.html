@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Maskable icon generator</title>
+</head>
+
+<body>
+    <!--
+      Regenerates icons/icon-512-maskable.png.
+
+      Android does not show a maskable icon as a square. Every launcher crops it to its own shape
+      -- circle, squircle, rounded square, teardrop -- and only a CIRCLE OF 80% DIAMETER, centred,
+      is guaranteed to survive. Anything outside that is decoration that may or may not be there.
+
+      The icon this replaces was drawn the wrong way round: the mark ran edge to edge, wider than
+      the "any" icon rather than narrower, so a round launcher sliced the outer strokes off and
+      the remaining ones read as crowded into each other.
+
+      Everything here is measured off the real artwork rather than guessed: the gold is sampled
+      from the existing icon's own corners, and the mark is scaled by its actual ink bounding box
+      so that its furthest corner lands inside the safe circle with a small margin to spare.
+
+      Served over http, never opened as file:// -- canvas getImageData on an image from another
+      origin taints the canvas and throws, and file:// counts as another origin.
+    -->
+    <canvas id="out" width="512" height="512"></canvas>
+    <script>
+        const SIZE = 512;
+        // Android's guaranteed-visible region for a maskable icon.
+        const SAFE_DIAMETER = SIZE * 0.8;   // 409.6
+        // Keep a little inside the circle rather than touching it, so the mark never grazes the
+        // crop on the tightest masks.
+        const FILL_OF_SAFE = 0.92;
+
+        const load = src => new Promise((res, rej) => {
+            const i = new Image();
+            i.onload = () => res(i);
+            i.onerror = rej;
+            i.src = src;
+        });
+
+        // Bounding box of actual ink (any pixel with meaningful alpha).
+        function inkBounds(img) {
+            const c = document.createElement('canvas');
+            c.width = img.naturalWidth; c.height = img.naturalHeight;
+            const x = c.getContext('2d');
+            x.drawImage(img, 0, 0);
+            const d = x.getImageData(0, 0, c.width, c.height).data;
+            let minX = c.width, minY = c.height, maxX = -1, maxY = -1;
+            for (let y = 0; y < c.height; y++) {
+                for (let px = 0; px < c.width; px++) {
+                    if (d[(y * c.width + px) * 4 + 3] > 16) {
+                        if (px < minX) minX = px;
+                        if (px > maxX) maxX = px;
+                        if (y < minY) minY = y;
+                        if (y > maxY) maxY = y;
+                    }
+                }
+            }
+            return { minX, minY, maxX, maxY, w: maxX - minX + 1, h: maxY - minY + 1 };
+        }
+
+        function sample(img, x, y) {
+            const c = document.createElement('canvas');
+            c.width = img.naturalWidth; c.height = img.naturalHeight;
+            const g = c.getContext('2d');
+            g.drawImage(img, 0, 0);
+            const d = g.getImageData(x, y, 1, 1).data;
+            return 'rgb(' + d[0] + ',' + d[1] + ',' + d[2] + ')';
+        }
+
+        window.build = async function () {
+            const [mark, existing] = await Promise.all([
+                load('/icons/brand-mark.png'),
+                load('/icons/icon-512.png')
+            ]);
+
+            // Sample the gold from the existing icon's corners, away from the mark.
+            const topLeft = sample(existing, 8, 8);
+            const bottomRight = sample(existing, 503, 503);
+
+            const ink = inkBounds(mark);
+            // The mark's furthest extent from its own ink centre, as a diagonal -- that is what
+            // has to fit inside the circle, not its width or height alone.
+            const inkDiag = Math.sqrt(ink.w * ink.w + ink.h * ink.h);
+            const targetDiag = SAFE_DIAMETER * FILL_OF_SAFE;
+            const scale = targetDiag / inkDiag;
+
+            const drawW = mark.naturalWidth * scale;
+            const drawH = mark.naturalHeight * scale;
+            // Centre the INK, not the source image -- the artwork's own margins are not symmetric.
+            const inkCx = (ink.minX + ink.maxX + 1) / 2 * scale;
+            const inkCy = (ink.minY + ink.maxY + 1) / 2 * scale;
+            const dx = SIZE / 2 - inkCx;
+            const dy = SIZE / 2 - inkCy;
+
+            const ctx = document.getElementById('out').getContext('2d');
+            const grad = ctx.createLinearGradient(0, 0, SIZE, SIZE);
+            grad.addColorStop(0, topLeft);
+            grad.addColorStop(1, bottomRight);
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, SIZE, SIZE);
+            ctx.drawImage(mark, dx, dy, drawW, drawH);
+
+            return {
+                gold: { topLeft, bottomRight },
+                sourceInk: ink,
+                scale: +scale.toFixed(4),
+                drawnInk: {
+                    w: +(ink.w * scale).toFixed(1),
+                    h: +(ink.h * scale).toFixed(1),
+                    diag: +(inkDiag * scale).toFixed(1)
+                },
+                safeDiameter: SAFE_DIAMETER,
+                dataUrl: document.getElementById('out').toDataURL('image/png')
+            };
+        };
+    </script>
+</body>
+
+</html>

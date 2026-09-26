@@ -84,10 +84,13 @@ function pickWordSet(level) {
 function layoutTiles(tileList) {
     const grid = document.getElementById('tile-grid');
     grid.innerHTML = '';
+    // Read once per layout, not once per tile: if the breakpoint crossed mid-loop the rows would
+    // be split on two different widths and the honeycomb would not interlock.
+    const perRowNow = perRow();
     let rowEl = null;
     let rowIndex = -1;
     tileList.forEach((t, i) => {
-        if (i % PER_ROW === 0) {
+        if (i % perRowNow === 0) {
             rowIndex++;
             rowEl = document.createElement('div');
             rowEl.className = 'hex-row' + (rowIndex % 2 === 1 ? ' offset' : '');

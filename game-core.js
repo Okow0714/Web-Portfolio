@@ -92,10 +92,27 @@ const MUSIC_POOLS = {
 // tier's in-level pool above.
 const LEVEL_SELECT_TRACK = 'sound/game-music/all-levels-jazzy-pop-piano.mp3';
 
-const PER_ROW = 5; // a full 10-pair board (20 tiles) is 4 clean rows. A penalty can push the
-                    // board to 11+ pairs (see applyPenalty) -- the resulting partial last row
-                    // is accepted, not avoided (VISIBLE_TARGET/REFILL_BATCH below only manage
-                    // the *base* count, not what mistakes add back on top of it).
+// How many tiles to a row -- 5 where there is width for it, 4 on a phone.
+//
+// A 10-pair board is 20 tiles, so 5 across gives 4 clean rows and 4 across gives 5. The reason to
+// narrow it is that every label is a fraction of --hex-w (see game.css), and --hex-w is just the
+// container's width over perRow+1: 5 across leaves a 57px tile on a 390px phone, 4 across leaves
+// 69px. Measured at 360, 390 and 412px -- +20.1% tile width at all three, which is +20% type.
+// It costs about 7px more of the centring margin the offset rows shift into, and it costs nothing
+// in scrolling: the board was never what set the page's height, and scrollHeight is unchanged.
+// A penalty can push the board to 11+ pairs (see applyPenalty) -- the resulting partial last row
+// is accepted, not avoided (VISIBLE_TARGET/REFILL_BATCH below only manage the *base* count, not
+// what mistakes add back on top of it).
+const PER_ROW_WIDE = 5;
+const PER_ROW_NARROW = 4;
+// Must stay in step with the --hex-w AND --flyer-w divisors in game.css, which are both perRow+1
+// and are both overridden in the same @media block this query mirrors. The flyer duplicates the
+// formula rather than inheriting it (it is #tile-grid's sibling, not its child), so it is two
+// declarations to keep aligned, not one.
+const NARROW_BOARD_QUERY = '(max-width: 640px)';
+function perRow() {
+    return window.matchMedia(NARROW_BOARD_QUERY).matches ? PER_ROW_NARROW : PER_ROW_WIDE;
+}
 // Must stay equal to STREAK_POWERUP_INTERVAL below. This drives the streak meter, the score
 // multiplier step and the audio tier -- everything the player can see or hear about a streak --
 // while the powerup is granted on its own interval. At 3 against a powerup interval of 4 the bar

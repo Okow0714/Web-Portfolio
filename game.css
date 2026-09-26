@@ -1640,6 +1640,22 @@ html[data-contrast="darker"] .game-main {
         padding-right: 4px;
     }
 
+    /* Four tiles to a row here instead of five, so the divisor is perRow+1 = 5, not 6. Same
+       trade as the negative margins above and a bigger one: 20 tiles become 5 rows rather than
+       4, and the tile goes from 57px to 69px on a 390px phone (+20.1%, measured at 360/390/412).
+       Since every label is a fraction of --hex-w, that is the type getting 20% bigger.
+       This must stay in step with PER_ROW_NARROW / NARROW_BOARD_QUERY in game-core.js -- the JS
+       groups the tiles into rows and this sizes them; disagree and the honeycomb either overflows
+       or leaves a hole. The flyer repeats the formula because it is #tile-grid's sibling and
+       cannot inherit the variable. */
+    .tile-grid {
+        --hex-w: clamp(38px, calc(100cqw / 5), 148px);
+    }
+
+    .flyer {
+        --flyer-w: clamp(38px, calc(100cqw / 5), 148px);
+    }
+
     .board-toolbar {
         flex-wrap: wrap;
         row-gap: 8px;

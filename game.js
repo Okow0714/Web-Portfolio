@@ -336,6 +336,15 @@ function applyBoardBg() {
 }
 document.addEventListener('themechange', applyBoardBg);
 
+// Crossing the phone breakpoint changes how many tiles belong in a row, and the rows are built
+// once, at layout time. Without this the CSS would resize the tiles for a 4-wide board while the
+// DOM still held 5-wide rows -- the honeycomb stops interlocking and the last row overflows.
+// Re-laying out is cheap and idempotent, and it is the same call a match or a refill already
+// makes. Mostly a desktop-window-resize case: the installed app is locked to portrait.
+window.matchMedia(NARROW_BOARD_QUERY).addEventListener('change', () => {
+    if (tiles.length) layoutTiles(tiles.filter(t => !t.cleared));
+});
+
 document.getElementById('board-back-btn').addEventListener('click', backToLevels);
 document.getElementById('board-shuffle-btn').addEventListener('click', shuffleRemaining);
 
