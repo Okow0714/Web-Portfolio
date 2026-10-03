@@ -3,6 +3,12 @@
 // file, which extends this same window.I18N_STRINGS object with page-specific keys.
 window.I18N_STRINGS = {
 
+    // The skip link: the first thing a keyboard reaches on every page, invisible until focused.
+    // Without it, tabbing to the page content means tabbing past the whole masthead -- brand, two
+    // nav groups and their dropdowns, language switch, theme switch, account button -- on every
+    // single page, every single time.
+    'a11y.skipToContent': { en: 'Skip to content', mn: 'Үндсэн хэсэг рүү шилжих' },
+
     // Generic "game shell" keys shared by any timed level-based game page (currently game.html
     // and grammar.html). Keep these here, not in a page-scoped strings file -- a page-scoped
     // file only loads on its own page, so a key referenced across pages must live where both

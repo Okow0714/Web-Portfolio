@@ -55,6 +55,16 @@
             <p class="khanjp-loader-name">Khan Japanese</p>
             <span class="khanjp-loader-bar"><i></i></span>
         </div>
+
+        <!-- First focusable thing on the page. The loader above it is aria-hidden and takes no
+             pointer or keyboard focus, so this is what a Tab press reaches first. Invisible until
+             focused, then it drops into view over the masthead. Its target is the id "main", which
+             every page's main landmark now carries.
+             Deliberately no literal tag name in this comment: it is copied into thirteen pages, so
+             anything here that looks like markup shows up as a false match to every tool that
+             greps them. One did, within the hour. -->
+        <a class="skip-link" href="#main" data-i18n="a11y.skipToContent">Үндсэн хэсэг рүү шилжих</a>
+
         <script>
             (function () {
                 if (window.__khanjpLoader) return;   // the chrome is copied into twelve pages
@@ -215,7 +225,10 @@
                 <div class="account-menu" id="account-menu">
                     <button class="account-menu-trigger" id="account-menu-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Account menu">
                         <span id="account-menu-avatar">
-                            <svg viewBox="0 0 24 24"><path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9Zm0 2c-4 0-8 2-8 5v2h16v-2c0-3-4-5-8-5Z"/></svg>
+                            <!-- Decorative: the button around it already carries aria-label="Account
+                                 menu". Without aria-hidden a screen reader announces the graphic as
+                                 well, so the control is read twice. -->
+                            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9Zm0 2c-4 0-8 2-8 5v2h16v-2c0-3-4-5-8-5Z"/></svg>
                         </span>
                     </button>
                     <div class="account-menu-scrim" id="account-menu-scrim"></div>
@@ -335,7 +348,7 @@
         </div>
         <!-- /chrome:header -->
 
-        <main class="path-main">
+        <main tabindex="-1" id="main" class="path-main">
             <div class="path-inner">
                 <h1 class="path-title">学びの道<span class="path-title-sub" data-i18n="path.titleSub">Сурах зам</span></h1>
                 <p class="path-lede" data-i18n="path.lede">Нэг ч үсэг танихгүй байхаас N1 хүртэлх зургаан үе шат. Үе шат бүрт юу сурах, ямар хэрэгслээр аль шатыг хийх, дараагийнх руу шилжихэд юу чадсан байвал зохихыг бичсэн. Дээрээс доош дараалан уншина уу — өмнө нь япон хэл үзээгүй хүн ч эндээс эхэлж болно.</p>

@@ -553,3 +553,39 @@ body {
         navigation: none;
     }
 }
+
+/* Skip link. This page loads no style.css, so it carries its own copy -- keep it in step with the
+   rule of the same name there. Parked off-screen rather than hidden: display:none and
+   visibility:hidden both remove an element from the tab order, which would defeat the point. It
+   appears only on :focus-visible, so it is invisible to a mouse and unmissable to a keyboard. */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 12px;
+    z-index: 1100;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 12px 20px;
+    background: var(--accent);
+    color: var(--bg-page);
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: var(--text-sm);
+    text-decoration: none;
+    transition: top var(--dur-1) var(--ease-out);
+}
+
+.skip-link:focus-visible {
+    top: 0;
+    outline: 2px solid var(--ink);
+    outline-offset: -4px;
+}
+
+/* Same reason as the rule of this name in style.css: main carries tabindex="-1" only so the skip
+   link can focus it, and a ring around the whole page is not useful feedback. Here it also catches
+   the index-rail targets, which about.js now focuses for the same reason. */
+main[tabindex="-1"]:focus,
+.about-section[tabindex="-1"]:focus {
+    outline: none;
+}
