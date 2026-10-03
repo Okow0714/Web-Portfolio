@@ -8,8 +8,10 @@
 // the whole page.
 const sb = window.supabaseClient;
 
-function showEl(el) { el.classList.remove('hidden'); }
-function hideEl(el) { el.classList.add('hidden'); }
+// showEl/hideEl are NOT redeclared here. auth-shared.js already declares both, this file already
+// depends on it, and about.html -- the only page loading both -- loads it first. The copies that
+// used to sit here were byte-identical, so the redeclaration was legal and did nothing, which is
+// exactly why it survived: a duplicate that behaves correctly is invisible until the two drift.
 
 // ---------------------------------------------------------------------------
 // Auth-dependent UI (contact form, bookmarks)
