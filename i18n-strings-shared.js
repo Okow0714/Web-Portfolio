@@ -9,6 +9,11 @@ window.I18N_STRINGS = {
     // single page, every single time.
     'a11y.skipToContent': { en: 'Skip to content', mn: 'Үндсэн хэсэг рүү шилжих' },
 
+    // Shown when a profile row has no display_name. Matches handle_new_user()'s own default, which
+    // names people "Reader NNNN" -- deliberately neutral, because profiles is reachable by others
+    // in places and a name derived from an email is not.
+    'account.defaultName': { en: 'Reader', mn: 'Уншигч' },
+
     // Generic "game shell" keys shared by any timed level-based game page (currently game.html
     // and grammar.html). Keep these here, not in a page-scoped strings file -- a page-scoped
     // file only loads on its own page, so a key referenced across pages must live where both

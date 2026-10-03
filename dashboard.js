@@ -31,7 +31,14 @@
 
     async function loadProfile(userId, email) {
         const { data } = await sb.from('profiles').select('display_name').eq('id', userId).single();
-        const displayName = data ? data.display_name : email.split('@')[0];
+        // Never derive a name from the email. handle_new_user() stopped doing exactly this in
+        // migration 001, because split_part(new.email, '@', 1) wrote every user's email local-part
+        // into a table others can read. Nothing leaked here -- you only ever see your own
+        // dashboard -- but the pattern should not outlive the fix anywhere.
+        // The `data ? ... : ...` form was also wrong on its own terms: display_name is nullable, so
+        // a row that exists without one returned null, and textContent = null renders empty.
+        const displayName = (data && data.display_name) ||
+            (window.t ? window.t('account.defaultName') : 'Reader');
         nameDisplayEl.textContent = displayName;
         avatarEl.textContent = initials(displayName);
         emailEl.textContent = email;

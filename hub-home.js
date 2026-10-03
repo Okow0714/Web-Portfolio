@@ -35,7 +35,10 @@
 
     async function loadProfileName(userId, email) {
         const { data } = await sb.from('profiles').select('display_name').eq('id', userId).single();
-        const displayName = data ? data.display_name : email.split('@')[0];
+        // Same reasoning as loadProfile() in dashboard.js: no name derived from an email, and a
+        // nullable display_name must not render as an empty name.
+        const displayName = (data && data.display_name) ||
+            (window.t ? window.t('account.defaultName') : 'Reader');
         document.getElementById('hub-progress-name').textContent = displayName;
         document.getElementById('hub-progress-avatar').textContent = initials(displayName);
     }
