@@ -259,17 +259,17 @@
         const { error } = await sb.from('profiles').update({ display_name: newName }).eq('id', session.user.id);
         if (error) {
             nameStatusEl.textContent = window.t('dash.nameSaveFailed');
-            nameStatusEl.classList.remove('warn');
         } else {
-            // Display names are world-readable -- the comment list embeds them -- so a name
-            // that is also the email's local part hands out the address to anyone who asks,
-            // and for the common providers the rest is a guess. The signup default was changed
-            // away from the email for exactly this reason, so it would be odd to say nothing
-            // when someone types it back in. Said, not enforced: it is their name to choose.
-            const localPart = (session.user.email || '').split('@')[0];
-            const looksLikeEmail = !!localPart && newName.toLowerCase() === localPart.toLowerCase();
-            nameStatusEl.textContent = window.t(looksLikeEmail ? 'dash.namePublicWarning' : 'dash.nameSaved');
-            nameStatusEl.classList.toggle('warn', looksLikeEmail);
+            // There used to be a warning here when the chosen name matched the email's local part,
+            // on the grounds that display names were world-readable. They are not, any more:
+            // profiles was `using (true)` only so the comment list could show author names, and
+            // migration 002 removed comments and closed the policy to
+            //     create policy "Users can view their own profile" ... using (auth.uid() = id)
+            // Nobody but the owner can read a display name now, so the warning was telling people
+            // their name was public when it was not. A false warning is worse than none: it steers
+            // someone away from the name they wanted for a reason that no longer exists.
+            // If profiles is ever opened up again, bring this back in the change that opens it.
+            nameStatusEl.textContent = window.t('dash.nameSaved');
             nameDisplayEl.textContent = newName;
             avatarEl.textContent = initials(newName);
             showEl(nameDisplayEl.closest('.dash-profile-name-row'));

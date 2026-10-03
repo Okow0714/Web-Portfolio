@@ -95,7 +95,6 @@ body:has(.dash-main) {
 .dash-name-cancel-btn { background: none; color: var(--ink-faint); }
 .dash-name-status { font-size: 0.8rem; color: var(--accent-dark); margin-left: 4px; }
 /* Not an error -- the name did save -- so this reads as a caution rather than a failure. */
-.dash-name-status.warn { color: var(--warn); }
 
 /* ---- score hero ---- */
 .dash-score-card {
