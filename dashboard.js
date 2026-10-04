@@ -51,6 +51,21 @@
             sb.from('grammar_progress').select('level', { count: 'exact', head: true }).eq('user_id', userId).eq('completed', true),
             sb.from('reading_progress').select('text_id', { count: 'exact', head: true }).eq('user_id', userId),
         ]);
+        // A failed query comes back as { count: null, error }, and `count || 0` turned that into a
+        // confident zero -- the dashboard telling someone their progress was none when it was only
+        // unreachable. For a page whose entire job is showing how far you have got, inventing a
+        // zero is the worst available answer: it reads as lost work.
+        if (gameRes.error || grammarRes.error || readingRes.error) {
+            const msg = window.t('dash.progressUnavailable');
+            for (const tool of ['game', 'grammar', 'reading']) {
+                const fill = document.getElementById('dash-' + tool + '-fill');
+                if (fill) fill.style.width = '0%';
+                const frac = document.getElementById('dash-' + tool + '-fraction');
+                if (frac) frac.textContent = msg;
+            }
+            return;
+        }
+
         const gameDone = gameRes.count || 0;
         const grammarDone = grammarRes.count || 0;
         const readingDone = readingRes.count || 0;

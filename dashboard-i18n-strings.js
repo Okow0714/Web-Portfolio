@@ -9,6 +9,12 @@ Object.assign(window.I18N_STRINGS, {
     'dash.editName': { en: 'Edit display name', mn: 'Харагдах нэрээ засах' },
     'dash.save': { en: 'Save', mn: 'Хадгалах' },
     'dash.cancel': { en: 'Cancel', mn: 'Цуцлах' },
+    // Shown in place of a bar's "3 / 60" when the query behind it failed. It has to be clearly not
+    // a number, because the thing it replaces is a number and a zero here reads as lost progress.
+    'dash.progressUnavailable': {
+        en: 'Couldn\'t load — check your connection',
+        mn: 'Ачаалж чадсангүй — холболтоо шалгана уу',
+    },
     'dash.nameSaved': { en: 'Saved', mn: 'Хадгалагдлаа' },
     'dash.nameSaveFailed': { en: "Couldn't save — try again.", mn: 'Хадгалж чадсангүй — дахин оролдоно уу.' },
 
