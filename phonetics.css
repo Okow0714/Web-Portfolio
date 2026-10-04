@@ -561,6 +561,38 @@ body:has(.phonetics-main) {
     box-shadow: var(--shadow-md);
 }
 
+/* Opening a family: the kanji arrive out of the phonetic component at the centre rather than
+   appearing already arranged around it. That is the page's whole argument made visible -- these
+   characters share that part, so learning it once buys you all of them -- and it is the one moment
+   this tool has where motion carries meaning instead of decorating.
+   The stagger is set per chip in phonetics.js as --arrive: by ring first, then around each ring,
+   so the family opens outward. The class is added a frame after placement, because until --tx/--ty
+   are set the chips' destination IS the centre they start from. */
+.tree-chip.is-placed {
+    animation: treeArrive 0.5s cubic-bezier(0.2, 0.75, 0.3, 1) both;
+    animation-delay: var(--arrive, 0ms);
+}
+
+@keyframes treeArrive {
+    from {
+        transform: translate(-50%, -50%) scale(0.35);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate(-50%, -50%) translate(var(--tx, 0px), var(--ty, 0px)) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Reduced motion: the chips are simply where they belong, immediately. Nothing is lost -- the
+   arrangement was always the information; the arrival was only ever the explanation of it. */
+@media (prefers-reduced-motion: reduce) {
+    .tree-chip.is-placed {
+        animation: none;
+    }
+}
+
 /* Light-flip: accent text on an accent-tint chip again — --accent-light was 2.2:1 here. */
 .tree-chip.active {
     border-color: var(--accent);

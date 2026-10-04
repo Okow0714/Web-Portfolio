@@ -434,7 +434,7 @@ function layoutRadialTree() {
         ];
     }
 
-    rings.forEach(ring => {
+    rings.forEach((ring, ringIndex) => {
         const count = ring.items.length;
         ring.items.forEach((chip, i) => {
             const angle = (-90 + (360 / count) * i) * (Math.PI / 180);
@@ -442,7 +442,19 @@ function layoutRadialTree() {
             const ty = Math.sin(angle) * ring.radius;
             chip.style.setProperty('--tx', `${tx}px`);
             chip.style.setProperty('--ty', `${ty}px`);
+
+            // Stagger the arrival by ring, then around each ring, so the family opens outward from
+            // the phonetic component at its centre -- which is the thing the page is teaching:
+            // these kanji share that part, so learning it once buys you all of them.
+            chip.style.setProperty('--arrive', `${ringIndex * 85 + i * 20}ms`);
         });
+    });
+
+    // Start the animation only now. The chips are in the DOM before this function runs, so
+    // animating on insert would have them flying toward a --tx/--ty that is still unset, i.e.
+    // toward the centre they are already at.
+    requestAnimationFrame(() => {
+        rings.forEach(ring => ring.items.forEach(chip => chip.classList.add('is-placed')));
     });
 }
 
