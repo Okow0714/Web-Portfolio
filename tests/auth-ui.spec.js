@@ -137,16 +137,34 @@ module.exports = async function run(page, assert, BASE_URL) {
             'the auth mode toggle should switch the modal between logging in and signing up');
     }
 
-    // ---------------------------------------------------------------- it closes
+    // ---------------------------------------------------------------- focus containment
+    // A dialog has to take focus and keep it. This used to fail completely: opening the modal left
+    // focus on #auth-login-btn -- the button behind the overlay -- so the first Tab went straight
+    // into the account panel underneath, and a keyboard user had a login box they could not reach.
+    const focusOnOpen = await page.evaluate(() => {
+        const m = document.getElementById('auth-modal');
+        return m.contains(document.activeElement);
+    });
+    assert.ok(focusOnOpen, 'opening the auth modal must move focus into it, not leave it on the opener');
+
+    let escapedAt = 0;
+    for (let i = 1; i <= 12 && !escapedAt; i++) {
+        await page.keyboard.press('Tab');
+        const inside = await page.evaluate(() =>
+            document.getElementById('auth-modal').contains(document.activeElement));
+        if (!inside) escapedAt = i;
+    }
+    assert.strictEqual(escapedAt, 0,
+        `Tab escaped the open auth modal on press #${escapedAt} — focus must cycle within a dialog`);
+
+    // ---------------------------------------------------------------- Escape closes it
+    // Asserted on its own, NOT as "Escape or the close button". The earlier version of this spec
+    // accepted either, so it passed while Escape did nothing at all and the close button carried
+    // it. An assertion with an OR in it is an assertion that half of it is untested.
     await page.keyboard.press('Escape');
     await page.waitForTimeout(400);
-    let closed = await page.evaluate(() => document.getElementById('auth-modal').classList.contains('hidden'));
-    if (!closed) {
-        const x = await page.$('#auth-modal .modal-close');
-        if (x) { await x.click(); await page.waitForTimeout(400); }
-        closed = await page.evaluate(() => document.getElementById('auth-modal').classList.contains('hidden'));
-    }
-    assert.ok(closed, 'the auth modal should close by Escape or its close button — otherwise it traps the page');
+    const closed = await page.evaluate(() => document.getElementById('auth-modal').classList.contains('hidden'));
+    assert.ok(closed, 'Escape must close the auth modal');
 
     // ---------------------------------------------------------------- settings, signed out
     await page.goto(`${BASE_URL}/index.html`, { waitUntil: 'load' });

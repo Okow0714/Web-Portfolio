@@ -70,8 +70,79 @@ window.onAuthChange = function (fn) {
     if (sessionKnown) fn(currentSession);
 };
 
-function showEl(el) { el.classList.remove('hidden'); }
-function hideEl(el) { el.classList.add('hidden'); }
+// ---------------------------------------------------------------------------
+// Dialog focus management.
+//
+// Opening a modal used to leave focus on the button that opened it -- which is behind the overlay
+// and no longer visible. A keyboard user got a login box they could not type into, could Tab
+// through the whole page underneath it, and had no key that dismissed it. Measured: on open, focus
+// was still on #auth-login-btn; the first Tab went to #account-settings-btn-anon, in the panel
+// behind; Escape did nothing.
+//
+// All three modals are switched through showEl/hideEl, so hooking those covers every one of them
+// on every page without touching a single call site. The guard is the .modal-overlay class, so
+// ordinary show/hide of panels and rows is unaffected.
+let focusBeforeModal = null;
+
+function visibleFocusables(root) {
+    return [...root.querySelectorAll(
+        'a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), ' +
+        'select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    )].filter(el => {
+        const b = el.getBoundingClientRect();
+        return b.width > 0 && b.height > 0 && getComputedStyle(el).visibility !== 'hidden';
+    });
+}
+
+function isModal(el) {
+    return el && el.classList && el.classList.contains('modal-overlay');
+}
+
+function showEl(el) {
+    const opening = isModal(el) && el.classList.contains('hidden');
+    el.classList.remove('hidden');
+    if (!opening) return;
+    focusBeforeModal = document.activeElement;
+    // Let the entrance animation start before taking focus, or the browser scrolls to an element
+    // that is still being transformed into place.
+    requestAnimationFrame(() => {
+        const f = visibleFocusables(el);
+        if (f.length) f[0].focus();
+        else { el.setAttribute('tabindex', '-1'); el.focus(); }
+    });
+}
+
+function hideEl(el) {
+    const closing = isModal(el) && !el.classList.contains('hidden');
+    el.classList.add('hidden');
+    if (!closing) return;
+    // Give focus back to whatever opened this -- but only if it is still on screen. Escape closes
+    // the account menu as well as the modal, so the opener is often inside a panel that just slid
+    // away, and focusing a hidden element strands the keyboard with no visible cursor.
+    const back = focusBeforeModal;
+    focusBeforeModal = null;
+    if (back && document.contains(back) && back.getBoundingClientRect().width > 0) back.focus();
+    else {
+        const trigger = document.getElementById('account-menu-trigger');
+        if (trigger) trigger.focus();
+    }
+}
+
+// Escape closes the top-most open modal; Tab cycles within it instead of escaping into the page.
+document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape' && e.key !== 'Tab') return;
+    const open = [...document.querySelectorAll('.modal-overlay:not(.hidden)')].pop();
+    if (!open) return;
+
+    if (e.key === 'Escape') { e.preventDefault(); hideEl(open); return; }
+
+    const f = visibleFocusables(open);
+    if (!f.length) return;
+    const first = f[0], last = f[f.length - 1];
+    if (!open.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+    else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+});
 
 // Falls back to the English literal if i18n.js hasn't run yet (shouldn't happen given script
 // order, but keeps this file safe to load standalone, e.g. in isolation during development).

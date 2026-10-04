@@ -14,6 +14,10 @@ window.I18N_STRINGS = {
     // in places and a name derived from an email is not.
     'account.defaultName': { en: 'Reader', mn: 'Уншигч' },
 
+    // Visually hidden labels for the two word-search fields. Both had only a placeholder, which is
+    // not a label: it disappears the moment you type, and it is not a reliable accessible name.
+    'a11y.wordSearchLabel': { en: 'Search for a word', mn: 'Үг хайх' },
+
     // Generic "game shell" keys shared by any timed level-based game page (currently game.html
     // and grammar.html). Keep these here, not in a page-scoped strings file -- a page-scoped
     // file only loads on its own page, so a key referenced across pages must live where both
