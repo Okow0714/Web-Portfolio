@@ -10988,12 +10988,6 @@ const WORD_LEVELS = [
                         "to pitch",
                         "to cast away"
                     ],
-                    "example": {
-                        "jp": "彼女は橋から身を投げて自殺した。",
-                        "en": "She committed suicide by jumping off the bridge.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>橋<rp>(</rp><rt>はし</rt><rp>)</rp></ruby>から<ruby>身<rp>(</rp><rt>み</rt><rp>)</rp></ruby>を<ruby>投<rp>(</rp><rt>な</rt><rp>)</rp></ruby>げて<ruby>自殺<rp>(</rp><rt>じさつ</rt><rp>)</rp></ruby>した。",
-                        "enMn": "Тэр гүүрнээс үсрэн амиа хорлосон."
-                    },
                     "phonetic": null,
                     "phoneticReading": null,
                     "enMn": "шидэх",
@@ -13916,12 +13910,6 @@ const WORD_LEVELS = [
                     "meanings": [
                         "suicide"
                     ],
-                    "example": {
-                        "jp": "彼女は橋から身を投げて自殺した。",
-                        "en": "She committed suicide by jumping off the bridge.",
-                        "furigana": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>橋<rp>(</rp><rt>はし</rt><rp>)</rp></ruby>から<ruby>身<rp>(</rp><rt>み</rt><rp>)</rp></ruby>を<ruby>投<rp>(</rp><rt>な</rt><rp>)</rp></ruby>げて<ruby>自殺<rp>(</rp><rt>じさつ</rt><rp>)</rp></ruby>した。",
-                        "enMn": "Тэр гүүрнээс үсрэн амиа хорлосон."
-                    },
                     "phonetic": null,
                     "phoneticReading": null,
                     "enMn": "амиа хорлолт",
