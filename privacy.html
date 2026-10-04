@@ -33,6 +33,9 @@
     <link rel="stylesheet" href="fonts/fonts.css">
     <!-- In <head> on purpose: it sets the ground colour before the first paint. -->
     <script src="display-prefs.js"></script>
+    <!-- Also in <head>, and before every other script: an error in a page script is
+         what it exists to catch. See its own header. -->
+    <script src="error-report.js"></script>
 </head>
 
 <body>
@@ -78,7 +81,7 @@
                     }, 460);
                 };
                 // DOMContentLoaded is the signal that matters here: the big word-data files are
-                // plain <script src> at the end of the body, so it does not fire until they are
+                // plain "script src" tags at the end of the body, so it does not fire until they are
                 // parsed. Two frames after it, because this listener is registered first and so
                 // runs first -- the page's own listeners, which build the content, run in between.
                 document.addEventListener('DOMContentLoaded', function () {
@@ -353,7 +356,7 @@
 
         <main tabindex="-1" id="main" class="legal-main">
             <h1 class="legal-title" data-i18n="privacy.title">Privacy Policy</h1>
-            <p class="legal-updated" data-i18n="privacy.lastUpdated">Last updated: September 4, 2026</p>
+            <p class="legal-updated" data-i18n="privacy.lastUpdated">Last updated: October 4, 2026</p>
 
             <section class="legal-section">
                 <h2 data-i18n="privacy.whoThisIs.h">Who this is</h2>
@@ -377,8 +380,9 @@
 
             <section class="legal-section">
                 <h2 data-i18n="privacy.whatIDontCollect.h">What I don't collect</h2>
-                <p data-i18n="privacy.whatIDontCollect.p">No analytics or tracking scripts, no advertising networks, no third-party cookies, and no payment information run on this site — there's nothing to sell and nothing behind a paywall. The only stored data is what's listed above.</p>
+                <p data-i18n="privacy.whatIDontCollect.p">No analytics or tracking scripts, no advertising networks, no third-party cookies, and no payment information run on this site — there's nothing to sell and nothing behind a paywall. Apart from the error reports described next, the only stored data is what's listed above.</p>
                 <p data-i18n-html="privacy.whatIDontCollect.voice"><strong>Your voice is not collected either.</strong> Dokkai Reader&rsquo;s microphone is live only between pressing Start Reading and stopping it, and the audio never reaches this site &mdash; I never receive it, record it or store it. What does happen is that your browser transcribes it, and browsers generally do that by streaming the audio to their own vendor&rsquo;s speech service. That step is the browser&rsquo;s, not mine: it is outside my control and governed by your browser vendor&rsquo;s privacy policy. It is listed again under who it&rsquo;s shared with, because using the reader is what causes it.</p>
+                <p data-i18n-html="privacy.whatIDontCollect.errors"><strong>One thing is collected without an account: crash reports.</strong> When a page hits a software fault, the site sends itself the error message, the line of code it came from, which page you were on and which browser you use. No name, no account, no IP address and nothing you typed &mdash; the report cannot be traced back to a person, including by me. It goes to this site&rsquo;s own database, not to a monitoring company, and it exists so a bug on your phone is something I can find and fix rather than something you have to put up with.</p>
             </section>
 
             <section class="legal-section">

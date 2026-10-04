@@ -2,7 +2,7 @@
 // which i18n-strings-shared.js must have already created (loaded first in privacy.html).
 Object.assign(window.I18N_STRINGS, {
     'privacy.title': { en: 'Privacy Policy', mn: 'Нууцлалын бодлого' },
-    'privacy.lastUpdated': { en: 'Last updated: September 4, 2026', mn: 'Сүүлд шинэчилсэн: 2026 оны 9-р сарын 4' },
+    'privacy.lastUpdated': { en: 'Last updated: October 4, 2026', mn: 'Сүүлд шинэчилсэн: 2026 оны 10-р сарын 4' },
 
     'privacy.whoThisIs.h': { en: 'Who this is', mn: 'Энэ хэн бэ' },
     'privacy.whoThisIs.p': {
@@ -57,9 +57,14 @@ Object.assign(window.I18N_STRINGS, {
         mn: '<strong>Таны дуу хоолойг ч мөн цуглуулдаггүй.</strong> «Уншлагын дадлага»-ын микрофон нь «Унших» товчийг дарснаас зогсоох хүртэл л асаалттай байх бөгөөд дуу нь энэ сайт руу огт ирдэггүй — би түүнийг хүлээж авдаггүй, бичиж авдаггүй, хадгалдаггүй. Харин таны хөтөч түүнийг бичвэр болгон хөрвүүлдэг ба хөтчүүд үүнийг ихэвчлэн дуу таних өөрсдийн үйлчилгээ рүү дуу бичлэгийг дамжуулж хийдэг. Тэр алхам бол миний биш, хөтчийнх: миний хяналтаас гадуур бөгөөд таны хөтчийн нууцлалын бодлогоор зохицуулагдана. Уншлагын хэрэгслийг ашигласнаас болж энэ явдал болдог тул «Хэнтэй хуваалцдаг вэ» хэсэгт дахин дурдсан болно.'
     },
 
+    'privacy.whatIDontCollect.errors': {
+        en: '<strong>One thing is collected without an account: crash reports.</strong> When a page hits a software fault, the site sends itself the error message, the line of code it came from, which page you were on and which browser you use. No name, no account, no IP address and nothing you typed — the report cannot be traced back to a person, including by me. It goes to this site’s own database, not to a monitoring company, and it exists so a bug on your phone is something I can find and fix rather than something you have to put up with.',
+        mn: '<strong>Бүртгэлгүйгээр цуглуулдаг ганц зүйл бий: алдааны мэдэгдэл.</strong> Хуудсанд програмын алдаа гарвал сайт өөртөө алдааны мэдэгдэл, алдаа гарсан кодын мөр, таны байсан хуудас, ямар хөтөч ашигласныг илгээдэг. Нэр ч үгүй, бүртгэл ч үгүй, IP хаяг ч үгүй, таны бичсэн юу ч үгүй — тэр мэдэгдлээс хүнийг нь олж тогтоох боломжгүй, надад ч бас. Энэ нь хяналтын компани руу биш, энэ сайтын өөрийнх нь өгөгдлийн санд очдог бөгөөд таны утсан дээр гарсан алдааг тэвчих биш, миний олж засдаг зүйл болгохын тулд байгаа юм.'
+    },
+
     'privacy.whatIDontCollect.p': {
-        en: "No analytics or tracking scripts, no advertising networks, no third-party cookies, and no payment information run on this site — there's nothing to sell and nothing behind a paywall. The only stored data is what's listed above.",
-        mn: 'Энэ сайтад аналитик болон хянах скрипт, зар сурталчилгааны сүлжээ, гуравдагч талын күүки, төлбөрийн мэдээлэл огт ажилладаггүй — юу ч зарахгүй, төлбөртэй хэсэг ч байхгүй. Дээр жагсаасан зүйлс л цорын ганц хадгалагддаг өгөгдөл юм.'
+        en: "No analytics or tracking scripts, no advertising networks, no third-party cookies, and no payment information run on this site — there's nothing to sell and nothing behind a paywall. Apart from the error reports described next, the only stored data is what's listed above.",
+        mn: 'Энэ сайтад аналитик болон хянах скрипт, зар сурталчилгааны сүлжээ, гуравдагч талын күүки, төлбөрийн мэдээлэл огт ажилладаггүй — юу ч зарахгүй, төлбөртэй хэсэг ч байхгүй. Дараа нь тайлбарласан алдааны мэдэгдлээс бусад тохиолдолд дээр жагсаасан зүйлс л цорын ганц хадгалагддаг өгөгдөл юм.'
     },
 
     'privacy.howUsed.h': { en: "How it's used", mn: 'Хэрхэн ашигладаг вэ' },

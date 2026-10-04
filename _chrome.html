@@ -37,7 +37,7 @@
                     }, 460);
                 };
                 // DOMContentLoaded is the signal that matters here: the big word-data files are
-                // plain <script src> at the end of the body, so it does not fire until they are
+                // plain "script src" tags at the end of the body, so it does not fire until they are
                 // parsed. Two frames after it, because this listener is registered first and so
                 // runs first -- the page's own listeners, which build the content, run in between.
                 document.addEventListener('DOMContentLoaded', function () {

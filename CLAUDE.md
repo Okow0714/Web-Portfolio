@@ -364,6 +364,28 @@ score. Every `create function` needs a matching `revoke execute ... from public,
 SECURITY DEFINER function should still check `auth.uid() is null` itself rather than relying on
 `id = auth.uid()` matching no rows.
 
+**Errors report themselves** (`error-report.js` + `client_errors`, migration 010, 2026-10-04). Until
+this there was no `window.onerror` anywhere on the site, so a page that threw on a visitor’s phone
+left no trace but a session that did nothing. The script is loaded in `<head>` on all fifteen pages,
+**second, straight after `display-prefs.js`** (which stays first because it sets the ground colour
+before the first paint) -- an error in a page script is the thing it exists to catch, so it cannot
+wait for the body. It POSTs to PostgREST with plain `fetch`, not through the Supabase client: that
+client loads near the end of the body, and the config’s two constants are read lazily at send
+time behind a `typeof` guard (they are global *lexical* bindings, so they are either initialised or
+undeclared -- never in their dead zone from here). **It is not Sentry on purpose**: a monitoring
+vendor would learn every visitor’s IP on every page load, which is the exact cost that got the
+fonts and the Supabase library vendored. **The payload holds no `user_id` and no IP**, and the hash
+is stripped from the URL; `privacy.html` discloses precisely those six fields, and
+`tests/error-report.spec.js` asserts the key set so adding a seventh fails CI before it ships.
+`client_errors` has an insert policy for `anon` (most visitors never sign in, and the tools work
+without an account) and **no select policy at all**, so a public insert target is not also a public
+log of every broken page -- it is read in the SQL editor. Reports are capped at 5 per page load and
+deduped by message, since one bad selector in a render loop throws every frame. Nothing is sent
+from `localhost` unless `khanjp-error-report-debug` is set in `localStorage`, which is how the spec
+exercises the send path. Retention is a `delete` line in the migration’s header, run by hand (no
+pg_cron). **A new page must carry the tag**, or it silently reports nothing while looking fine --
+the spec walks all fifteen and checks the position, which is the same guard `APP_SHELL` needed.
+
 **PWA / `sw.js`**: precaches an `APP_SHELL` list (every page, its CSS, and its non-data JS —
 large per-tool data files are deliberately excluded, see the file's own header) via
 `cache.addAll()`, which is atomic — one 404 anywhere in the list fails the *entire* install
