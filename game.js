@@ -27,6 +27,21 @@
 // Derived from the data rather than hardcoded: the tier size changed from 10 to 12 when
 // the September 2026 expansion added two levels per tier, and a literal here is exactly the
 // kind of thing that silently mislabels every level above the first tier.
+
+// --------------------------------------------------------------------------
+// State moved here from game-core.js: this file is
+// the only one that writes it, so it is not shared state -- it was state living in the
+// wrong file. game-core.js now holds only bindings more than one file writes.
+// --------------------------------------------------------------------------
+let currentLevel = null;
+let totalPairs = 0;
+let matchDuration = 0;   // this level's clock length (MATCH_DURATION_SECONDS), set in startLevel()
+let lastResult = null;    // result earned as a guest, pending save once they log in
+let progressCache = {};   // level number -> game_progress row
+let activeJlptTab = 'N5'; // level-select screen: which JLPT tier's levels are shown
+let missedWords = new Set();
+let boardBgDayPath = null;   // day-theme path of the photo behind the current board; see applyBoardBg()
+
 function levelsPerTier() {
     return WORD_LEVELS.filter(l => l.jlpt === WORD_LEVELS[0].jlpt).length;
 }

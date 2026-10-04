@@ -163,23 +163,14 @@ const MISTAKES_PER_PENALTY = 2; // consecutive-since-last-penalty mismatches bef
 const STREAK_POWERUP_INTERVAL = 4; // keep STREAK_TIER above equal to this
 const POWERUP_SWAP_COUNT = 3;
 
-let currentLevel = null;
 let matchStarted = false; // gates tile clicks/timer until the start modal's "Start Match" is clicked
 let matchedCount = 0;
-let totalPairs = 0;
 let moves = 0;
-let timerInterval = null;
-let startTime = null;
 let elapsedSeconds = 0;   // real seconds played -- still tracked for best-time comparisons,
                           // independent of the on-screen countdown display below
 let bonusSeconds = 0;     // accumulated +20s-per-pair bonuses, extends the base 4-minute clock
-let matchDuration = 0;   // this level's clock length (MATCH_DURATION_SECONDS), set in startLevel()
 let timeRemaining = 0;   // what's actually shown on #board-timer
 let mismatchStreak = 0;  // mismatches since the last penalty (or level start); see applyPenalty()
-let lastResult = null;    // result earned as a guest, pending save once they log in
-let progressCache = {};   // level number -> game_progress row
-let currentSet = [];      // this play's chosen 10-pair word set, indexed by pairId
-let activeJlptTab = 'N5'; // level-select screen: which JLPT tier's levels are shown
 // Consecutive lightning chains, without a mismatch in between. Each one is worth more than the
 // last, which turns the chain from a bonus you take when you spot one into a stake you are
 // carrying: with a x3 running, attempting a family you are only half sure of costs you the
@@ -190,22 +181,15 @@ const CHAIN_COMBO_MAX = 5;
 // Words this learner has actually got wrong (word_stats, written by word-stats.js). Used to
 // weight the deal, not to change what a level contains: a level's set is fixed, this only
 // decides which of it reaches the board first.
-let missedWords = new Set();
 let familiesFound = new Set(); // phonetic components ("lightning connect" families) chained
                                 // this round -- rendered as chips in the side panel, wide
                                 // layout only (see renderFamiliesFound())
 
 let tiles = [];           // every tile object DEALT so far this level (active or cleared) --
                           // NOT the full level set; undealt pairs live only in reserveQueue
-let tilesByPairId = {};   // pairId -> { jp: tileObj, en: tileObj }, only for dealt pairs
 let selected = [];        // up to 2 currently-selected tile objects
 let locked = false;
 
-let reserveQueue = [];    // pairIds not yet dealt this level (within the LEVEL_PAIR_COUNT in
-                           // play), shuffled
-let dealtCount = 0;       // pairs dealt so far (VISIBLE_TARGET, then +REFILL_BATCH at a time)
-let powerupFuel = [];     // pairIds excluded from this round's LEVEL_PAIR_COUNT -- untouched by
-                           // normal dealing, the "swap 3" powerup's only supply (see startLevel)
 
 let score = 0;
 let streak = 0;
@@ -219,15 +203,8 @@ let powerupCharges = 0;    // banked, spendable on either effect via the toolbar
                             // always the player's call.
 
 // Wakan "winged tile" bonus event state -- see the constants block above for the rules.
-let wakanMap = null;         // built once from DICTIONARY_ENTRIES on first use, see buildWakanMap()
 let flyerFiredThisLevel = false;
-let flyerEl = null;          // the winged-tile DOM element, while one is on screen (any phase)
-let flyerHeld = false;       // true once caught -- gates onTileClick to route into handleFlyerDrop
-let flyerTargetPairId = null;
-let flyerTimerRAF = null;
-let flyerPointerMoveHandler = null;
 
-let boardBgDayPath = null;   // day-theme path of the photo behind the current board; see applyBoardBg()
 
 function escapeHtml(str) {
     const div = document.createElement('div');

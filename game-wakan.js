@@ -26,6 +26,19 @@
 // Built once, lazily, from DICTIONARY_ENTRIES (dictionary-data.js, loaded before this file --
 // see game.html) -- word text -> its Wakan partner. Looked up by either side (kango or wago),
 // since a word dealt on the board could be either half of a pair.
+
+// --------------------------------------------------------------------------
+// State moved here from game-core.js: this file is
+// the only one that writes it, so it is not shared state -- it was state living in the
+// wrong file. game-core.js now holds only bindings more than one file writes.
+// --------------------------------------------------------------------------
+let wakanMap = null;         // built once from DICTIONARY_ENTRIES on first use, see buildWakanMap()
+let flyerEl = null;          // the winged-tile DOM element, while one is on screen (any phase)
+let flyerHeld = false;       // true once caught -- gates onTileClick to route into handleFlyerDrop
+let flyerTargetPairId = null;
+let flyerTimerRAF = null;
+let flyerPointerMoveHandler = null;
+
 function buildWakanMap() {
     if (wakanMap) return wakanMap;
     wakanMap = new Map();
