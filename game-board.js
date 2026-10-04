@@ -33,6 +33,22 @@
 // question and not this function's: where they are really two words, the gloss says which is
 // which (赤 is "улаан өнгө", 赤い "улаан өнгөтэй"), and where they genuinely mean the same thing,
 // the board accepts either tile -- see relinkIfSameAnswer in game-play.js.
+
+// --------------------------------------------------------------------------
+// State moved here from game-core.js: this file is
+// the only one that writes it, so it is not shared state -- it was state living in the
+// wrong file. game-core.js now holds only bindings more than one file writes.
+// --------------------------------------------------------------------------
+let timerInterval = null;
+let startTime = null;
+let currentSet = [];      // this play's chosen 10-pair word set, indexed by pairId
+let tilesByPairId = {};   // pairId -> { jp: tileObj, en: tileObj }, only for dealt pairs
+let reserveQueue = [];    // pairIds not yet dealt this level (within the LEVEL_PAIR_COUNT in
+                           // play), shuffled
+let dealtCount = 0;       // pairs dealt so far (VISIBLE_TARGET, then +REFILL_BATCH at a time)
+let powerupFuel = [];     // pairIds excluded from this round's LEVEL_PAIR_COUNT -- untouched by
+                           // normal dealing, the "swap 3" powerup's only supply (see startLevel)
+
 function clusterConfusables(ids) {
     const out = [];
     const taken = new Set();
