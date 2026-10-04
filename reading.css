@@ -460,12 +460,63 @@ body:has(.reading-main) .auth-btn-outline:hover {
    a faint tinted halo both have too little contrast to read as "lit"). A solid
    highlighter-style fill with dark ink reads far more clearly on a light page — like a
    marker stroke on paper — with a crisp accent underline for definition instead of a blur. */
+/* The highlight IS the microphone level. --v is set per audio frame by renderLevel() in
+   reading.js, and the gold fills the word from the bottom to that height -- 45% of the word when
+   you are silent, up to 85% when you are speaking clearly.
+   This is the one piece of live data the reader has about the person using it, and until now it
+   was spent entirely on a 6px bar in the floating control strip at the bottom, which nobody looks
+   at while their eyes are on the text. Same signal, moved to where the eye already is.
+   The travel is deliberately smaller than the preview's: enough to read as breathing, not enough
+   to pulse distractingly across a long passage. */
 .reader-word.current {
-    background: var(--accent-light);
+    background: linear-gradient(to top,
+            var(--accent-light) 0%,
+            var(--accent-light) calc(45% + var(--v, 0) * 40%),
+            transparent calc(45% + var(--v, 0) * 40%));
     color: var(--text-primary);
     font-weight: 700;
     border-radius: 3px;
     box-shadow: inset 0 -3px 0 var(--accent-dark);
+}
+
+/* A word you have just finished holds its gold briefly and then lets go, so the sentence carries a
+   short wake behind the cursor instead of switching from lit to grey in one step. It runs once:
+   updateHighlight() uses classList.toggle(name, true), which does not re-add a class an element
+   already has, so an animation cannot restart on words further back. */
+.reader-word.read {
+    animation: readerLetGo 0.8s cubic-bezier(.22, .61, .36, 1) both;
+}
+
+@keyframes readerLetGo {
+    0% {
+        background: var(--accent-light);
+        color: var(--text-primary);
+    }
+
+    30% {
+        background: color-mix(in srgb, var(--accent-light) 45%, transparent);
+        color: var(--text-primary);
+    }
+
+    100% {
+        background: transparent;
+        color: var(--text-muted);
+    }
+}
+
+/* Reduced motion keeps every piece of information and drops the movement: a solid highlight still
+   says which word you are on, and a finished word is still dimmed -- it just stops being a
+   journey. Someone who asked not to be moved still has to be able to read along. */
+@media (prefers-reduced-motion: reduce) {
+    .reader-word.current {
+        background: var(--accent-light);
+    }
+
+    .reader-word.read {
+        animation: none;
+        background: transparent;
+        color: var(--text-muted);
+    }
 }
 
 .hint-popup {

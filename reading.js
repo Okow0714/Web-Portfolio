@@ -859,6 +859,14 @@ function renderLevel(rms) {
     const pct = Math.max(0, Math.min(1, rms / (threshold * 3))) * 100;
     fill.style.width = pct.toFixed(1) + '%';
     fill.classList.toggle('over', rms >= threshold);
+
+    // Feed the same level to the word being read, where --v drives how far the gold fills it (see
+    // .reader-word.current in reading.css). Scaled against twice the threshold rather than the
+    // bar's three times: the bar exists to show where the threshold sits, the word exists to show
+    // that something is listening, and it should reach the top of its travel at an ordinary
+    // speaking volume rather than only when you are loud.
+    const cur = document.querySelector('.reader-word.current');
+    if (cur) cur.style.setProperty('--v', Math.max(0, Math.min(1, rms / (threshold * 2))).toFixed(3));
 }
 
 async function startVoiceGate() {
@@ -960,6 +968,10 @@ function stopVoiceGate() {
     if (level) level.classList.remove('active');
     const fill = document.getElementById('reader-level-fill');
     if (fill) { fill.style.width = '0%'; fill.classList.remove('over'); }
+    // Drop the word's fill back to rest too. renderLevel stops being called when the gate closes,
+    // so without this the highlight freezes at whatever volume it last saw -- a word left looking
+    // mid-syllable on a page that is no longer listening.
+    document.querySelectorAll('.reader-word').forEach(el => el.style.removeProperty('--v'));
 }
 
 // ---------------------------------------------------------------------------
