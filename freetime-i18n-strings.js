@@ -160,8 +160,8 @@ Object.assign(window.I18N_STRINGS, {
         mn: "эелдэг, удаан, давтамжтай",
     },
     'freetime.n5.basis': {
-        en: "50 episodes of Japanese subtitles, 197k characters of dialogue.",
-        mn: "50 ангийн япон хадмал, 197 мянган тэмдэгт харилцан яриа.",
+        en: "49 episodes of Japanese subtitles, 177k characters of dialogue.",
+        mn: "49 ангийн япон хадмал, 177 мянган тэмдэгт харилцан яриа.",
     },
     'freetime.n5.watch.sub': {
         en: "Shirokuma Cafe · anime",
@@ -200,8 +200,8 @@ Object.assign(window.I18N_STRINGS, {
         mn: "товчилсон хэлбэрүүд",
     },
     'freetime.n4.basis': {
-        en: "26 episodes of Japanese subtitles, 108k characters of dialogue.",
-        mn: "26 ангийн япон хадмал, 108 мянган тэмдэгт харилцан яриа.",
+        en: "26 episodes of Japanese subtitles, 110k characters of dialogue.",
+        mn: "26 ангийн япон хадмал, 110 мянган тэмдэгт харилцан яриа.",
     },
     'freetime.n4.watch.sub': {
         en: "Nichijou · anime",
@@ -280,8 +280,8 @@ Object.assign(window.I18N_STRINGS, {
         mn: "бүдүүлэг энгийн яриа",
     },
     'freetime.n3.basis': {
-        en: "12 episodes of Japanese subtitles, 48k characters of dialogue.",
-        mn: "12 ангийн япон хадмал, 48 мянган тэмдэгт харилцан яриа.",
+        en: "12 episodes of Japanese subtitles, 40k characters of dialogue.",
+        mn: "12 ангийн япон хадмал, 40 мянган тэмдэгт харилцан яриа.",
     },
     'freetime.n3.watch.sub': {
         en: "Danshi Koukousei no Nichijou · anime",
@@ -440,56 +440,56 @@ Object.assign(window.I18N_STRINGS, {
         mn: "бүтэц ба хийсвэрлэл",
     },
     'freetime.n1.basis': {
-        en: "26 episodes of Japanese subtitles, 116k characters of dialogue.",
-        mn: "26 ангийн япон хадмал, 116 мянган тэмдэгт харилцан яриа.",
+        en: "24 episodes of Japanese subtitles, 105k characters of dialogue.",
+        mn: "24 ангийн япон хадмал, 105 мянган тэмдэгт харилцан яриа.",
     },
     'freetime.n1.watch.sub': {
-        en: "Ghost in the Shell · anime",
-        mn: "Ghost in the Shell · анимэ",
+        en: "Chihayafuru · anime",
+        mn: "Chihayafuru · анимэ",
     },
     'freetime.n1.watch.why': {
-        en: "Political and technical terms inside long sentences. The difficulty is not speed — it is sentence architecture and abstraction.",
-        mn: "Улс төр, технологийн нэр томьёо урт өгүүлбэрт хийгдэнэ. Хүндрэл нь хурд биш — өгүүлбэрийн бүтэц, хийсвэр утга хоёр.",
+        en: "A card game played on the hundred classical poems. Archaic grammar and literary vocabulary throughout, and the highest kanji density of the five picks.",
+        mn: "Зуун шүлэгчийн сонгодог шүлгээр тоглодог карт. Эртний дүрэм, утга зохиолын үг байнга гарах бөгөөд ханзны нягтрал нь таван сонголтын хамгийн өндөр нь.",
     },
     'freetime.n1.watch.h0': {
-        en: "the written declarative style, not です/ます",
-        mn: "です/ます биш, бичгийн хэлний батлах төгсгөл",
+        en: "The hundred classical poems the whole game is played on.",
+        mn: "Зуун найрагчийн зуун шүлэг — тоглоомын бүх үндэс нь энэ.",
     },
     'freetime.n1.watch.h1': {
-        en: "a whole clause modifying a noun, sometimes for a full line",
-        mn: "нэр үгийг бүтэн өгүүлбэрээр урт тодотгох",
+        en: "The 5-7-5-7-7 classical verse form, with grammar unlike modern speech.",
+        mn: "5-7-5-7-7 үетэй сонгодог шүлэг. Орчин цагийн ярианаас өөр дүрэмтэй.",
     },
     'freetime.n1.watch.h2': {
-        en: "is nothing other than",
-        mn: "өөр юу ч биш, яг тэр мөн",
+        en: "The reciter who reads the poems aloud — the most frequent term in the show.",
+        mn: "Шүлгийг чангаар уншиж өгөх хүн. Хамгийн олон давтагддаг үг.",
     },
     'freetime.n1.watch.h3': {
-        en: "cannot help but",
-        mn: "хийхээс өөр аргагүй",
+        en: "The syllables that identify a card; players grab the moment they hear them.",
+        mn: "Картыг ялгах эхний хэдэн үе. Үүнийг сонсмогц шүүрнэ.",
     },
     'freetime.n1.watch.h4': {
-        en: "to be forced into",
-        mn: "хүсээгүй ч тэгэхэд хүрэх",
+        en: "Touching the wrong card — a penalised foul.",
+        mn: "Буруу картад хүрэх алдаа. Шийтгэлтэй.",
     },
     'freetime.n1.watch.h5': {
-        en: "is no more than",
-        mn: "ердөө л төдий",
+        en: "The card you take and the card you pass to your opponent.",
+        mn: "Авах карт ба өрсөлдөгч рүүгээ шилжүүлэх карт.",
     },
     'freetime.n1.watch.h6': {
-        en: "not necessarily so",
-        mn: "заавал тийм гэсэн үг биш",
+        en: "The women's and men's champion titles every player is aiming at.",
+        mn: "Эмэгтэй, эрэгтэй аварга цол. Тоглогч бүрийн зорилго.",
     },
     'freetime.n1.watch.h7': {
-        en: "the formal \"in\" and \"regarding\"",
-        mn: "албан ёсны \"-д\", \"-тай холбоотой\"",
+        en: "The archaic pillow-word for the gods that the title itself comes from.",
+        mn: "Бурхныг тодотгодог эртний яруу найргийн хэв үг. Нэр нь эндээс гарсан.",
     },
     'freetime.n1.watch.h8': {
-        en: "causative and passive at once",
-        mn: "хүчээр хийлгэх ба идэвхгүй хэлбэр хоёр нийлсэн",
+        en: "The classical past auxiliary, heard throughout the poems.",
+        mn: "Сонгодог шүлгийн өнгөрсөн цагийн нөхцөл.",
     },
     'freetime.n1.watch.h9': {
-        en: "asserting without naming a source",
-        mn: "эх сурвалжаа нэрлэхгүйгээр батлах",
+        en: "The classical copula, ancestor of modern da.",
+        mn: "Сонгодог батлах нөхцөл — орчин цагийн だ-гийн өвөг.",
     },
     'freetime.n1.listen.sub': {
         en: "Ringo Sheena",
