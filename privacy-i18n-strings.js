@@ -91,7 +91,7 @@ Object.assign(window.I18N_STRINGS, {
         mn: 'Та хүссэн үедээ өөрийн бүртгэл болон түүнтэй холбоотой бүх зүйлийг устгах боломжтой — нэвтэрсний дараа бүртгэлийн цэснээс, эсвэл доорх хаягаар надад и-мэйл бичих замаар. Бүртгэлээ устгавал профайл, тэмдэглэгээ, зурвас, суралцах явц бүгд устана; дараа нь юу ч үлдэхгүй.'
     },
 
-    'privacy.deleteAccount.h': { en: 'Deleting your account', mn: 'Бүртгэлээ устгах' },
+    'privacy.deleteAccount.h': { en: 'Deleting your Khan Japanese account', mn: 'Khan Japanese бүртгэлээ устгах' },
     'privacy.deleteAccount.inApp': {
         en: '<strong>On the site or in the app:</strong> open the account menu, choose Settings, then Delete My Account, and type DELETE to confirm. It takes effect immediately.',
         mn: '<strong>Сайт дээр эсвэл аппаас:</strong> бүртгэлийн цэсээ нээж, «Тохиргоо» дотроос «Бүртгэлээ устгах»-ыг сонгоод, баталгаажуулахын тулд DELETE гэж бичнэ үү. Тэр даруй хүчин төгөлдөр болно.'
@@ -105,8 +105,8 @@ Object.assign(window.I18N_STRINGS, {
         mn: '<strong>Юу устах вэ:</strong> таны бүртгэл, түүнд холбоотой бүх зүйл — хувийн мэдээлэл, харагдах нэр, хадгалсан хавчуургууд, холбоо барих маягтаар илгээсэн захидал, «Үг холбох дасгал», «Уншлагын дадлага», «Дүрэм холбох»-ын явц, давтах жагсаалтын ард байгаа үг тус бүрийн тоолол, суралцсан өдрүүдийн бүртгэл, мөн харагдах байдлын тохиргоо. Энэ бол өгөгдлийн сангийн ганц удаагийн устгал бөгөөд бүгдэд нь дамжин үйлчилнэ; юу ч үлдэхгүй.'
     },
     'privacy.deleteAccount.whatStays': {
-        en: '<strong>What isn’t mine to delete:</strong> my web host’s standard request logs and my database provider’s routine backups, which age out on their own schedules. I don’t read either one and can’t pick your rows out of them.',
-        mn: '<strong>Миний устгах эрхгүй зүйл:</strong> вэб хостын энгийн хандалтын лог, өгөгдлийн сан хариуцагчийн ердийн нөөц хуулбар. Эдгээр нь тус тусын хугацаагаар аяндаа устдаг. Би аль алийг нь уншдаггүй, доторх таны мөрүүдийг ялгаж ч чадахгүй.'
+        en: '<strong>What isn’t mine to delete:</strong> my web host’s standard request logs and my database provider’s routine backups, which age out on their own schedules. I don’t read either one and can’t pick your rows out of them. Crash reports are the same: they record which page failed and on what kind of browser, carry no account and no IP address, and so cannot be traced back to you by anyone, me included.',
+        mn: '<strong>Миний устгах эрхгүй зүйл:</strong> вэб хостын энгийн хандалтын лог, өгөгдлийн сан хариуцагчийн ердийн нөөц хуулбар. Эдгээр нь тус тусын хугацаагаар аяндаа устдаг. Би аль алийг нь уншдаггүй, доторх таны мөрүүдийг ялгаж ч чадахгүй. Алдааны мэдэгдэл ч мөн адил: аль хуудас, ямар төрлийн хөтөч дээр алдаа гарсныг л тэмдэглэдэг бөгөөд бүртгэл ч, IP хаяг ч агуулдаггүй тул хэн ч, би ч гэсэн таныг олж тогтоох боломжгүй.'
     },
     'privacy.deleteAccount.note': {
         en: 'You never needed an account to use the five study tools, and deleting yours leaves every one of them working.',
