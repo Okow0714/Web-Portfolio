@@ -441,7 +441,12 @@
     <script src="auth-shared.js"></script>
     <script src="mnjp-data.js"></script>
     <script src="phonetics-kanji-index.js"></script>
-    <script src="dictionary.js"></script>
+    <!-- A module, so its 26 top-level declarations stop leaking into the page's shared scope.
+         Safe here specifically because it already loads last-ish: a module is deferred, so it runs
+         after every classic script on the page, which is the order it had anyway. Converting an
+         EARLY script the same way would invert the order and break anything calling window.t() at
+         load time, which is why the shared backbone stays classic. -->
+    <script type="module" src="dictionary.js"></script>
     <script src="tutorial.js"></script>
     <script src="pwa-register.js"></script>
 </body>
