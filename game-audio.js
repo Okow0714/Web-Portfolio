@@ -12,7 +12,19 @@ window.GameAudio = (function () {
     let ctx = null;
     let masterGain = null;
     let sfxGain = null;
-    let enabled = true; // music/sound on by default; browsers still block the very first
+    // Four levels, not a flag: 0 muted, 3 full. The steps are the master gain applied to the
+    // synthesized effects and the multiplier on the music element's fade target. They are not
+    // evenly spaced because loudness is not linear -- 0.30/0.60/1.00 reads as three even steps.
+    const VOLUME_STEPS = [0, 0.30, 0.60, 1];
+    const VOLUME_KEY = 'khanjp-volume';   // synced to the account by auth-shared.js
+    function storedLevel() {
+        try {
+            const v = parseInt(localStorage.getItem(VOLUME_KEY), 10);
+            return (v >= 0 && v <= 3) ? v : 3;
+        } catch (e) { return 3; }   // private mode
+    }
+    let level = storedLevel();
+    let enabled = level > 0; // sound on by default; browsers still block the very first
                          // play() until a user gesture happens, see the document-level
                          // fallback listener near setLevelTrack's call site below
     let noiseBuffer = null;
@@ -35,7 +47,7 @@ window.GameAudio = (function () {
         if (!AC) return;
         ctx = new AC();
         masterGain = ctx.createGain();
-        masterGain.gain.value = 1;
+        masterGain.gain.value = VOLUME_STEPS[level];
         masterGain.connect(ctx.destination);
         sfxGain = ctx.createGain();
         sfxGain.gain.value = 0.5;
@@ -263,7 +275,8 @@ window.GameAudio = (function () {
     // same fade-not-a-hard-cut feel the old synthesized ambient pad had.
     let musicEl = null;
     let musicFadeTimer = null;
-    const MUSIC_VOLUME = 0.35;
+    const MUSIC_VOLUME = 0.35;   // ceiling at level 3; musicTarget() scales it
+    function musicTarget() { return MUSIC_VOLUME * VOLUME_STEPS[level]; }
 
     function ensureMusicEl() {
         if (musicEl) return musicEl;
@@ -304,14 +317,14 @@ window.GameAudio = (function () {
         if (enabled) {
             el.volume = 0;
             el.play().catch(() => {});
-            fadeMusicTo(MUSIC_VOLUME, 900);
+            fadeMusicTo(musicTarget(), 900);
         }
     }
 
     function startAmbient() {
         if (!musicEl || !musicEl.src) return; // no level track chosen yet (e.g. level-select screen)
         musicEl.play().catch(() => {});
-        fadeMusicTo(MUSIC_VOLUME, 900);
+        fadeMusicTo(musicTarget(), 900);
     }
 
     function stopAmbient() {
@@ -347,22 +360,41 @@ window.GameAudio = (function () {
         });
     }
 
-    function setEnabled(next) {
+    // The single entry point for volume. Everything else -- the toggle, the cycle the speaker
+    // button runs, the value restored on load -- goes through here so the gain, the music fade,
+    // the suspended-context resume and the stored preference can never drift apart.
+    function setLevel(next) {
         ensureContext();
-        if (!ctx) return false;
-        enabled = next;
+        if (!ctx) return level;
+        level = Math.max(0, Math.min(VOLUME_STEPS.length - 1, next | 0));
+        enabled = level > 0;
+        try { localStorage.setItem(VOLUME_KEY, String(level)); } catch (e) { /* private mode */ }
+        masterGain.gain.value = VOLUME_STEPS[level];
         if (enabled) {
             if (ctx.state === 'suspended') ctx.resume();
-            startAmbient();
+            startAmbient();   // re-fades to the new musicTarget() even when already playing
         } else {
             stopAmbient();
         }
+        return level;
+    }
+
+    // 3 -> 2 -> 1 -> 0 -> 3. Down first, because someone reaching for the speaker button
+    // mid-level almost always wants it quieter.
+    function cycleLevel() { return setLevel(level <= 0 ? VOLUME_STEPS.length - 1 : level - 1); }
+
+    function setEnabled(next) {
+        setLevel(next ? (level || VOLUME_STEPS.length - 1) : 0);
         return enabled;
     }
 
     return {
         toggle: () => setEnabled(!enabled),
         isEnabled: () => enabled,
+        setLevel: setLevel,
+        cycleLevel: cycleLevel,
+        getLevel: () => level,
+        maxLevel: VOLUME_STEPS.length - 1,
         setLevelTrack: setTrack,
         select: sfxSelect,
         match: sfxMatch,

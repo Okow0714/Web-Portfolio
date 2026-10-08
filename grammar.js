@@ -106,10 +106,21 @@ const LEVEL_SELECT_TRACK = 'sound/grammar-music/all-levels-zen-garden-beats.mp3'
 // effects to carry alongside it, just the background track) -- same fade-in/out-via-plain-
 // HTMLAudioElement approach, same reasoning throughout.
 const GrammarAudio = (function () {
-    let enabled = true;
+    // 0 muted … 3 full, shared with Word Match through khanjp-volume.
+    const VOLUME_STEPS = [0, 0.30, 0.60, 1];
+    const VOLUME_KEY = 'khanjp-volume';
+    function storedLevel() {
+        try {
+            const v = parseInt(localStorage.getItem(VOLUME_KEY), 10);
+            return (v >= 0 && v <= 3) ? v : 3;
+        } catch (e) { return 3; }
+    }
+    let level = storedLevel();
+    let enabled = level > 0;
     let musicEl = null;
     let musicFadeTimer = null;
-    const MUSIC_VOLUME = 0.35;
+    const MUSIC_VOLUME = 0.35;   // ceiling at level 3
+    function musicTarget() { return MUSIC_VOLUME * VOLUME_STEPS[level]; }
 
     function ensureMusicEl() {
         if (musicEl) return musicEl;
@@ -147,14 +158,14 @@ const GrammarAudio = (function () {
         if (enabled) {
             el.volume = 0;
             el.play().catch(() => {});
-            fadeMusicTo(MUSIC_VOLUME, 900);
+            fadeMusicTo(musicTarget(), 900);
         }
     }
 
     function startAmbient() {
         if (!musicEl || !musicEl.src) return;
         musicEl.play().catch(() => {});
-        fadeMusicTo(MUSIC_VOLUME, 900);
+        fadeMusicTo(musicTarget(), 900);
     }
 
     function stopAmbient() {
@@ -176,15 +187,25 @@ const GrammarAudio = (function () {
         document.addEventListener('keydown', kick, { once: true });
     })();
 
+    function setLevel(next) {
+        level = Math.max(0, Math.min(VOLUME_STEPS.length - 1, next | 0));
+        enabled = level > 0;
+        try { localStorage.setItem(VOLUME_KEY, String(level)); } catch (e) { /* private mode */ }
+        if (enabled) startAmbient(); else stopAmbient();   // startAmbient re-fades to the new target
+        return level;
+    }
+    function cycleLevel() { return setLevel(level <= 0 ? VOLUME_STEPS.length - 1 : level - 1); }
     function setEnabled(next) {
-        enabled = next;
-        if (enabled) startAmbient(); else stopAmbient();
+        setLevel(next ? (level || VOLUME_STEPS.length - 1) : 0);
         return enabled;
     }
 
     return {
         toggle: () => setEnabled(!enabled),
         isEnabled: () => enabled,
+        setLevel: setLevel,
+        cycleLevel: cycleLevel,
+        getLevel: () => level,
         setLevelTrack: setTrack,
     };
 })();
@@ -994,19 +1015,23 @@ document.addEventListener('sitelangchange', () => {
 
 document.getElementById('gc-back-btn').addEventListener('click', backToLevels);
 
-function syncSoundButtons(on) {
+const GC_VOL_LABELS = ['grammar.volMute', 'grammar.volLow', 'grammar.volMedium', 'grammar.volFull'];
+function syncSoundButtons(level) {
     [
-        [document.getElementById('gc-sound-toggle'), document.getElementById('gc-sound-icon')],
-        [document.getElementById('gc-board-sound-toggle'), document.getElementById('gc-board-sound-icon')],
-    ].forEach(([btn, icon]) => {
-        btn.classList.toggle('on', on);
-        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
-        btn.title = on ? window.t('grammar.soundOff') : window.t('grammar.soundOn');
-        icon.textContent = on ? '\u{1F50A}' : '\u{1F507}';
+        document.getElementById('gc-sound-toggle'),
+        document.getElementById('gc-board-sound-toggle'),
+    ].forEach((btn) => {
+        if (!btn) return;
+        btn.dataset.vol = String(level);
+        btn.classList.toggle('on', level > 0);
+        const label = window.t(GC_VOL_LABELS[level]);
+        btn.title = label;
+        btn.setAttribute('aria-label', label);
     });
 }
-document.getElementById('gc-sound-toggle').addEventListener('click', () => syncSoundButtons(GrammarAudio.toggle()));
-document.getElementById('gc-board-sound-toggle').addEventListener('click', () => syncSoundButtons(GrammarAudio.toggle()));
+document.getElementById('gc-sound-toggle').addEventListener('click', () => syncSoundButtons(GrammarAudio.cycleLevel()));
+document.getElementById('gc-board-sound-toggle').addEventListener('click', () => syncSoundButtons(GrammarAudio.cycleLevel()));
+syncSoundButtons(GrammarAudio.getLevel());
 
 document.getElementById('gc-start-modal-btn').addEventListener('click', () => {
     hideEl(document.getElementById('gc-start-modal'));

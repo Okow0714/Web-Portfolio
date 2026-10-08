@@ -214,6 +214,20 @@ body:has(.grammar-main) {
 .sound-toggle:hover { background: rgba(224, 112, 90, 0.2); transform: translateY(-1px); }
 .sound-toggle:focus-visible { outline: 2px solid var(--shu-light); outline-offset: 2px; }
 .sound-toggle.on { box-shadow: 0 0 0 2px rgba(224, 112, 90, 0.28); }
+/* The speaker button is a four-step volume control, not a toggle. The level is carried on the
+   button as data-vol and the bars respond to it, so nothing has to swap the icon out. Unlit
+   bars hold at 24% instead of disappearing: the silhouette then stays identical across all
+   four states, which is what makes it read as a meter rather than as four different glyphs.
+   At level 0 the three faint bars are also the only thing saying "this is a volume control",
+   since the box alone is just a shape. */
+.sound-icon { display: flex; }
+.sound-icon svg { width: 20px; height: 20px; display: block; }
+.sound-icon .bar { transition: opacity 0.16s ease; }
+.sound-toggle[data-vol="0"] .b1,
+.sound-toggle[data-vol="0"] .b2, .sound-toggle[data-vol="1"] .b2,
+.sound-toggle[data-vol="0"] .b3, .sound-toggle[data-vol="1"] .b3,
+.sound-toggle[data-vol="2"] .b3 { opacity: 0.24; }
+@media (prefers-reduced-motion: reduce) { .sound-icon .bar { transition: none; } }
 
 .gc-guest-hint {
     margin: 16px 0 0;

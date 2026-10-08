@@ -61,17 +61,26 @@ function floatText(x, y, text, big, lightning, extraClass) {
 }
 
 
-function syncSoundButtons(on) {
+// The speaker buttons are a four-step volume control, not a toggle. The level lives on the
+// button as data-vol and game.css fades the unlit bars, so this only has to set an attribute --
+// and because both buttons read the same level, they can never disagree.
+const VOL_LABELS = ['game.volMute', 'game.volLow', 'game.volMedium', 'game.volFull'];
+function syncSoundButtons(level) {
     [
-        [document.getElementById('sound-toggle'), document.getElementById('sound-icon')],
-        [document.getElementById('board-sound-toggle'), document.getElementById('board-sound-icon')],
-    ].forEach(([btn, icon]) => {
-        btn.classList.toggle('on', on);
-        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
-        btn.title = on ? window.t('game.soundOff') : window.t('game.soundOn');
-        icon.textContent = on ? '\u{1F50A}' : '\u{1F507}';
+        document.getElementById('sound-toggle'),
+        document.getElementById('board-sound-toggle'),
+    ].forEach((btn) => {
+        if (!btn) return;
+        btn.dataset.vol = String(level);
+        btn.classList.toggle('on', level > 0);
+        const label = window.t(VOL_LABELS[level]);
+        btn.title = label;
+        btn.setAttribute('aria-label', label);
     });
 }
-document.getElementById('sound-toggle').addEventListener('click', () => syncSoundButtons(GameAudio.toggle()));
-document.getElementById('board-sound-toggle').addEventListener('click', () => syncSoundButtons(GameAudio.toggle()));
+document.getElementById('sound-toggle').addEventListener('click', () => syncSoundButtons(GameAudio.cycleLevel()));
+document.getElementById('board-sound-toggle').addEventListener('click', () => syncSoundButtons(GameAudio.cycleLevel()));
+// The stored level is read in game-audio.js before this runs, so the buttons start correct even
+// when it is not the 3 the markup ships with.
+syncSoundButtons(GameAudio.getLevel());
 

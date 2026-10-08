@@ -398,8 +398,8 @@
                         <h1 class="game-title">言葉合わせ<span class="game-title-sub" data-i18n="game.titleSub">Япон үг холбох дасгал</span></h1>
                         <p class="game-subtitle" data-i18n="game.subtitle">Япон үг бүрийг утга нь тохирох үгтэй холбоно уу. Шат бүрт 20 хос, 4 минутын цаг байна (хос таарах бүрд +20 секунд). JLPT түвшин бүрт 12 шат — N5 нь анхан шат, N1 нь хамгийн гүнзгий. Ижил дуудлагын язгууртай ханзуудыг хооронд нь холбовол хэд хэдэн хос нэг дор арилна. Алдаагүй дараалан 4 хос холбовол бонус авах бөгөөд үүгээр нэг хос хасах, эсвэл шинэ үгээр солиж болно. Хоёр удаа буруу дарвал арилсан хос торгууль болж эргэж ирнэ — тиймээс яаралгүй, сайн хараад дараарай.</p>
                     </div>
-                    <button class="sound-toggle on" id="sound-toggle" type="button" aria-pressed="true" title="Turn sound off">
-                        <span id="sound-icon" aria-hidden="true">&#128266;</span>
+                    <button class="sound-toggle on" id="sound-toggle" type="button" data-vol="3" title="Дууны түвшин">
+                        <span id="sound-icon" class="sound-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="8.5" width="1.5" height="7"/><rect x="8" y="8.5" width="1.5" height="7"/><rect x="3" y="9.25" width="6.5" height="1.5"/><rect x="3" y="13.25" width="6.5" height="1.5"/><rect class="bar b1" x="12" y="8" width="1.5" height="8"/><rect class="bar b2" x="15.5" y="6.5" width="1.5" height="11"/><rect class="bar b3" x="19" y="5" width="1.5" height="14"/></svg></span>
                     </button>
                 </div>
                 <p id="game-guest-hint" class="game-guest-hint hidden" data-i18n="game.guestHint">Шилдэг цаг болон дуусгасан шатуудаа хадгалахын тулд нэвтэрнэ үү.</p>
@@ -439,8 +439,8 @@
                             <span class="powerup-charge-badge" id="powerup-swap-badge">0</span>
                         </button>
                     </div>
-                    <button class="sound-toggle on" id="board-sound-toggle" type="button" aria-pressed="true" title="Turn sound off">
-                        <span id="board-sound-icon" aria-hidden="true">&#128266;</span>
+                    <button class="sound-toggle on" id="board-sound-toggle" type="button" data-vol="3" title="Дууны түвшин">
+                        <span id="board-sound-icon" class="sound-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="8.5" width="1.5" height="7"/><rect x="8" y="8.5" width="1.5" height="7"/><rect x="3" y="9.25" width="6.5" height="1.5"/><rect x="3" y="13.25" width="6.5" height="1.5"/><rect class="bar b1" x="12" y="8" width="1.5" height="8"/><rect class="bar b2" x="15.5" y="6.5" width="1.5" height="11"/><rect class="bar b3" x="19" y="5" width="1.5" height="14"/></svg></span>
                     </button>
                     <button id="board-shuffle-btn" class="ghost-btn" type="button" data-i18n="game.shuffle">Холих</button>
                 </div>

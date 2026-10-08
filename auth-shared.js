@@ -576,7 +576,7 @@ supabaseClient.auth.onAuthStateChange((_event, session) => updateAuthUI(session)
 //   * tours are a union, never subtracted -- having seen a tour anywhere means having seen it.
 // ---------------------------------------------------------------------------
 (function () {
-    const PREF_KEYS = { lang: 'site-lang', darker: 'khanjp-darker', readingStyle: 'khanjp-reading-style', theme: 'khanjp-theme' };
+    const PREF_KEYS = { lang: 'site-lang', darker: 'khanjp-darker', readingStyle: 'khanjp-reading-style', theme: 'khanjp-theme', volume: 'khanjp-volume' };
     const TOUR_PREFIX = 'khanjp-tour-';
     const SYNCED_KEY = 'khanjp-settings-account';   // which account this device last synced with
     const PUSH_DELAY = 800;
