@@ -1190,11 +1190,11 @@ html[data-theme="dark"] { color-scheme: dark; }
 .footer-list a:hover .foot-ico,
 .account-menu-nav-item:hover .acct-ico { opacity: 1; }
 
-/* The top-level bar items carry an icon in the markup but reveal it only in the drawer. The bar
-   measured zero overflow down to 861px in both languages after the 2026-09-16 regrouping, and
-   three more icons would add roughly 66px to that row. */
-.nav-ico-top { display: none; }
-@media (max-width: 860px) { .nav-ico-top { display: inline-block; } }
+/* .nav-ico-top used to be hidden on desktop, to protect the bar from overflowing. That was wrong:
+   Home and Study Path carry .nav-drawer-only and never appear in the desktop bar at all, so the
+   rule only ever suppressed Freetime -- one icon, not the three it was sized for. Measured at the
+   tightest desktop width (880px, just above the 860 drawer breakpoint) the nav still clears the
+   brand by 68px, so a 26px icon is not close to a problem. */
 
 .site-footer {
     /* .background-animation is position:fixed at z-index:1, and .container sits above it at

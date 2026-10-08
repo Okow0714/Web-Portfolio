@@ -124,6 +124,16 @@ body:has(.dash-main) {
 }
 .dash-tool-card:hover { border-color: var(--accent); transform: translateY(-2px); }
 .dash-tool-head { display: flex; align-items: center; gap: 10px; }
+/* Drawn tool icon beside the card's kanji. The kanji names the category; this names the tool. */
+.dash-tool-ico {
+    width: 34px;
+    height: 34px;
+    flex: none;
+    margin-left: auto;
+    opacity: 0.55;
+}
+.dash-tool-card:hover .dash-tool-ico { opacity: 0.9; }
+
 .dash-tool-glyph {
     width: 34px; height: 34px; border-radius: 6px; display: flex; align-items: center; justify-content: center;
     font-family: var(--font-jp, serif); font-weight: 700; background: var(--accent-tint); color: var(--accent-dark);
