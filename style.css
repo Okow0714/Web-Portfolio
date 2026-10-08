@@ -1173,6 +1173,29 @@ html[data-theme="dark"] { color-scheme: dark; }
    for the content, so the columns still line up with the page above. No width:100vw — that
    reintroduces a horizontal scrollbar wherever a vertical one is present.
    --------------------------------------------------------------------- */
+/* ===== Nav icons =====
+   One sprite per page, defined in _chrome.html, referenced by <use>. The icons take currentColor,
+   so the masthead gold, the footer gold and the account panel each get the right colour from one
+   definition, with no per-theme variants.
+
+   The sprite is hidden by clipping, not display:none: Safari refuses to render a <use> whose
+   symbol sits inside a display:none ancestor, and it fails silently. */
+.icon-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+.nav-ico, .foot-ico, .acct-ico {
+    width: 1.05em; height: 1.05em; flex: none;
+    vertical-align: -0.17em; margin-right: 0.5em; opacity: 0.82;
+}
+.nav-dropdown a:hover .nav-ico,
+.footer-list a:hover .foot-ico,
+.account-menu-nav-item:hover .acct-ico { opacity: 1; }
+
+/* The top-level bar items carry an icon in the markup but reveal it only in the drawer. The bar
+   measured zero overflow down to 861px in both languages after the 2026-09-16 regrouping, and
+   three more icons would add roughly 66px to that row. */
+.nav-ico-top { display: none; }
+@media (max-width: 860px) { .nav-ico-top { display: inline-block; } }
+
 .site-footer {
     /* .background-animation is position:fixed at z-index:1, and .container sits above it at
        z-index:2. Now that the footer lives outside .container it needs its own positioned
