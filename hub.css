@@ -127,28 +127,16 @@ body:has(.hub-main) {
 .hub-room:hover .hub-room-clip { transform: scale(1.02); }
 .hub-room-clip img { width: 100%; height: 100%; object-fit: contain; display: block; background: var(--room-bg); }
 .hub-room-body { display: flex; flex-direction: column; gap: 12px; }
-/* The kanji badge and the drawn tool icon share one row: the badge names the category in the
-   hub own visual language, the icon names the tool. Stacked they read as two unrelated markers,
-   and .hub-room-body is a flex column, so they need their own row box to sit side by side. */
-.hub-room-mark { display: flex; align-items: center; gap: 12px; }
 
-.hub-room-glyph {
-    width: 38px; height: 38px; display: inline-flex; vertical-align: middle;
-    align-items: center; justify-content: center;
-    font-family: var(--font-jp, 'Noto Serif JP', 'Hiragino Mincho ProN', serif); font-size: 1.2rem; font-weight: 700;
-    background: rgba(244, 233, 216, 0.08); color: var(--room-accent);
-}
+
 /* The drawn tool icon on each card. color comes from the card's own --room-accent, so one
    rule serves six cards in six different hues. 40px is the floor at which the kana inside
    these icons stay legible -- see icons/ui/ for the set used where there is less room. */
 .hub-room-ico {
-    width: 40px;
-    height: 40px;
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: 12px;
+    width: 46px;
+    height: 46px;
+    display: block;
     color: var(--room-accent);
-    opacity: 0.9;
 }
 /* The kanji badge and the drawn icon share one line: the badge names the category in the hub's
    own visual language, the icon names the tool. Stacked they read as two unrelated markers. */
