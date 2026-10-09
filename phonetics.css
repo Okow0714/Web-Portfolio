@@ -391,6 +391,9 @@ body:has(.phonetics-main) {
     text-align: center;
 }
 
+/* Same stretch: the reading and gloss beside each family were boxes several times their text. */
+.family-info { align-items: start; }
+
 .family-info {
     flex: 1 1 auto;
     display: flex;
@@ -979,3 +982,6 @@ body:has(.phonetics-main) {
     color: var(--accent);
     font-variant-numeric: tabular-nums;
 }
+
+/* The subtitle ran to 90 characters. */
+.phonetics-subtitle { max-width: var(--measure); }

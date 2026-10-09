@@ -386,3 +386,11 @@ html[data-contrast="darker"] .path-main {
 .path-card:hover {
     transform: translateY(-2px);
 }
+
+/* Measured at 108-125 characters a line across 36 elements, the worst on the site. The route is a column of cards; their copy has no reason to run the full card width. */
+.path-step,
+.path-goal,
+.path-ready,
+.path-card p,
+.path-lede,
+.path-hours-note { max-width: var(--measure); }

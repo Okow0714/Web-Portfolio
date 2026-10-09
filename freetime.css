@@ -573,3 +573,6 @@ button.ft-cover:focus-visible .ft-cover-play {
         width: 100%;
     }
 }
+
+/* The basis line under each level ran to 94 characters. */
+.ft-basis { max-width: var(--measure); }

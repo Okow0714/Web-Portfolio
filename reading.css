@@ -757,3 +757,6 @@ body:has(.reading-main) .container {
         white-space: normal;
     }
 }
+
+/* Measured at 113 characters a line. */
+.reading-mic-hint { max-width: var(--measure); }

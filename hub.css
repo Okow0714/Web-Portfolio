@@ -132,6 +132,11 @@ body:has(.hub-main) {
 /* The drawn tool icon on each card. color comes from the card's own --room-accent, so one
    rule serves six cards in six different hues. 40px is the floor at which the kana inside
    these icons stay legible -- see icons/ui/ for the set used where there is less room. */
+/* A flex column stretches every child to the full cross axis unless told otherwise, so the card
+   name, stat line and CTA each became a 644px box around text needing 225, 331 and 56px. The CTA
+   is even declared inline-flex and was stretched anyway -- being a flex item overrides that. */
+.hub-room-body { align-items: start; }
+
 .hub-room-ico {
     width: 46px;
     height: 46px;

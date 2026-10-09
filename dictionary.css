@@ -213,7 +213,12 @@ body:has(.dictionary-main) {
 
 .mnjp-entry-main {
     display: grid;
-    grid-template-columns: 1fr auto 1fr auto;
+    /* The Mongolian column is a fixed measure, not a 1fr share. Two 1fr columns split every
+       spare pixel and then push each word to the OUTER edge of its own column, which flung the
+       pair 990px apart and left the = touching neither: 451px of clear space either side of an
+       11px glyph. A fixed 24ch column, right-aligned, keeps the pair together (10px) AND keeps
+       every row edge-aligned, which simply reversing the two text-aligns would have destroyed. */
+    grid-template-columns: minmax(0, 24ch) auto minmax(0, 1fr) auto;
     align-items: center;
     width: 100%;
     padding: 16px 22px;
@@ -232,7 +237,8 @@ body:has(.dictionary-main) {
     min-width: 0;
 }
 
-.mnjp-side.jp { text-align: right; }
+.mnjp-side.mn { text-align: right; }
+.mnjp-side.jp { text-align: left; }
 
 .mnjp-side .label {
     font-size: 0.66rem;

@@ -12,6 +12,10 @@
    both themes, while the same tokens go dark out on the legal pages. The accent matters most --
    it is the link colour on a legal page AND the text colour inside the light modal. */
 :root {
+    /* Reading measure. A line past about 85 characters loses the eye on the return sweep,
+       and .container is 1200px wide with nothing capping prose inside it. Applied by the
+       page files to the specific blocks that measured long, not blanket to every <p>. */
+    --measure: 68ch;
     --bg-page: #f9f4ef;
     --bg-page: light-dark(#f9f4ef, #1a1412);
     --bg-surface: #fffdfb;
@@ -292,6 +296,7 @@ body:has(.modal-overlay:not(.hidden)) .container {
    --------------------------------------------------------------------- */
 .site-header-wrap,
 .site-footer {
+
     --header-bg: #4a2c3a;
     --header-bg-elevated: #5c3a49;
     --header-border: rgba(232, 189, 109, 0.32);
