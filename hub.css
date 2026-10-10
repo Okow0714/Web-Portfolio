@@ -1,271 +1,633 @@
-/* Entrance hall / landing hub — styles specific to index.html.
-   The site header/nav/login-bar stays in the shared light burgundy theme (style.css tokens,
-   untouched here). Only the hub's own content, wrapped in <main class="hub-main">, gets this
-   theme: deep wine ground with a radial highlight, gold accents -- the same wine/gold family
-   as the shared masthead, since this page IS effectively the front door of the site rather
-   than a themed tool page that needs to read as visually distinct from the masthead. */
+/* Entrance hall — index.html.
+   =============================================================================================
+   The hub is one screen: a watermark of the brand mark, the wordmark, one opening line, and six
+   seals. Everything else (Study Path, then the footer) is below the fold.
 
-/* Full-bleed pattern (see CLAUDE.md): same token block on body:has() and the wrapper class,
-   since body is an ancestor and can't read a descendant's custom properties. Without this the
-   shared light :root --bg-page shows as margins outside .container's 1200px cap on wide
-   viewports. */
-body:has(.hub-main) {
-    --wine: #4a2c3a;
-    --wine-deep: #2f1c26;
-    --wine-elevated: #5c3a49;
-    /* The gradient lives here, not on .hub-main. main sits inside .container and is capped at
-       1200px, so painting it there left the darker flat body showing as vertical bands down
-       both edges on any viewport wider than that -- two visible seams the full width of the
-       page. See the full-bleed note in CLAUDE.md. */
-    background: radial-gradient(120% 60% at 50% -10%, var(--wine-elevated), var(--wine) 45%, var(--wine-deep) 100%);
-}
+   Three things here are deliberate and easy to undo by accident:
 
+   1. The shared masthead is REDUCED on this page, not removed. The chrome block in _chrome.html
+      carries the loader, the masthead, the account panel and all three account modals, and
+      auth-shared.js wires those by id — so the page keeps the block and hides only the bar's nav
+      and brand. index.html is the one page that shows its own wordmark instead.
+
+   2. The seals are square, so their size is set by whichever runs out first, width or height —
+      and it is height. --hub-col is therefore solved against the viewport rather than stepped
+      through breakpoints: a step has to be sized for the bottom of its range, which short-changes
+      every viewport above that. See the note on --hub-col below for the measured constants.
+
+   3. Every size inside a seal is a fraction of the seal's own width (container query units), not
+      a rem. Whether a label fits a tile is a question about fractions of the tile, and a rem
+      cannot answer it — the same reasoning game.css records for the hex tiles. The px floors on
+      the three text sizes are the one exception, and the ladder stops where they stop fitting.
+
+   Both themes come from light-dark(), which resolves against the color-scheme style.css sets from
+   data-theme. Remember it is a <color> function: it may wrap the colour only, never a gradient,
+   a url() or a whole box-shadow — wrapping a shadow resolves the property to none in BOTH themes.
+   ============================================================================================= */
+
+/* The token block is declared on both body:has() and the wrapper, because body is an ancestor and
+   cannot read a descendant's custom properties — without the first, the shared light --bg-page
+   shows as margins outside .container's 1200px cap on wide viewports. */
+body:has(.hub-main),
 .hub-main {
-    --wine: #4a2c3a;
-    --wine-deep: #2f1c26;
-    --wine-elevated: #5c3a49;
-    --gold: #e8bd6d;
-    --gold-dark: #c99a45;
-    --paper: #f4e9d8;
-    --paper-soft: rgba(244, 233, 216, 0.62);
-    --paper-faint: rgba(244, 233, 216, 0.32);
-    --rule: rgba(232, 189, 109, 0.22);
+    --hub-paper: #fdfbf7;
+    --hub-paper: light-dark(#fdfbf7, #17111a);
+    --hub-ink: #1d151b;
+    --hub-ink: light-dark(#1d151b, #f1e7ed);
+    --hub-soft: #7b6a74;
+    --hub-soft: light-dark(#7b6a74, #a1909c);
+    --hub-rule: #e3dae0;
+    --hub-rule: light-dark(#e3dae0, rgba(241, 231, 237, 0.15));
+    --hub-sunk: #f7f3f5;
+    --hub-sunk: light-dark(#f7f3f5, rgba(241, 231, 237, 0.07));
 
+    /* 七宝 shippō — overlapping circles, r=12 on a 24px tile plus the same layer at a half-tile
+       offset. Nearest centres are 12·√2 = 17 apart and 12+12 > 17, so the two sets interlock.
+       Exact in CSS with no clipping, which is why this and not 青海波 seigaiha: seigaiha needs
+       each scale clipped to its own tile, which a background cannot do, so its arcs moiré. */
+    --hub-ring: rgba(74, 44, 58, 0.085);
+    --hub-ring: light-dark(rgba(74, 44, 58, 0.085), rgba(232, 189, 109, 0.075));
+    --hub-pool: rgba(232, 189, 109, 0.2);
+    --hub-pool: light-dark(rgba(232, 189, 109, 0.2), rgba(232, 189, 109, 0.085));
+
+    /* The mark is drawn in ink for a gold seal; on paper the ink reads, on a dark ground it must
+       go gold or it disappears. */
+    --hub-mark-color: #4a2c3a;
+    --hub-mark-color: light-dark(#4a2c3a, #e8bd6d);
+
+    --hub-seal-edge: transparent;
+    --hub-seal-edge: light-dark(transparent, rgba(255, 255, 255, 0.1));
+
+    --hub-lede-font: "Prata", Georgia, serif;
+    /* No mono: IBM Plex Mono is not vendored here, and a system mono stack renders Cyrillic
+       inconsistently across platforms. The body face, uppercased and letter-spaced, is steadier. */
+    --hub-label-font: var(--font-body);
+    --hub-gold: #b8862f;
+    --hub-gold: light-dark(#b8862f, #e8bd6d);
+
+    /* The Study Path button. Two stops rather than one token because light-dark() is a <color>
+       function and cannot wrap a gradient. It inverts between themes: wine under cream type on
+       paper, gold under dark type on the dark ground -- the masthead wine it used at first was
+       nearly invisible against a dark page, with near-black text on top of it. */
+    --hub-cta-a: #4a2c3a;
+    --hub-cta-a: light-dark(#4a2c3a, #e8bd6d);
+    --hub-cta-b: #6b4557;
+    --hub-cta-b: light-dark(#6b4557, #c99a45);
+    --hub-cta-fg: #fdf6ec;
+    --hub-cta-fg: light-dark(#fdf6ec, #2a1a23);
+
+    /* The column, solved rather than stepped. Measured on this layout the page comes to
+       K' + (col − 32) · 2/3, so col = 32px + 1.5 · (100dvh − K) fills the fold exactly at every
+       height. K is the chrome above the seals plus the grid gap plus 15px of slack, and it is
+       re-measured per width band below because the masthead's account row wraps at narrow widths.
+       The floor is where a seal's px-floored copy stops fitting; the ceiling is a sanity bound,
+       since the grid track caps it first in practice. */
+    --hub-col: clamp(520px, calc(32px + 1.5 * (100dvh - 286px)), 1000px);
+    --hub-rail: clamp(120px, 14vw, 200px);
+    --hub-gutter: clamp(26px, 3.6vw, 58px);
+}
+
+body:has(.hub-main) {
+    background:
+        radial-gradient(42% 46% at 14% 34%, var(--hub-pool), transparent 70%),
+        radial-gradient(circle at 50% 50%, transparent 0 11px, var(--hub-ring) 11px 12px, transparent 12px) 0 0 / 24px 24px,
+        radial-gradient(circle at 50% 50%, transparent 0 11px, var(--hub-ring) 11px 12px, transparent 12px) 12px 12px / 24px 24px,
+        var(--hub-paper);
+    background-attachment: fixed;
+    color: var(--hub-ink);
+}
+
+/* ---------------------------------------------------------------------------------------------
+   The shared masthead, reduced to its account controls on this page only.
+   .container is already position:relative, so absolute here takes the bar out of the fixed layer
+   and lets it scroll away with the rest of the fold.
+   --------------------------------------------------------------------------------------------- */
+body:has(.hub-main) .site-header-wrap {
+    position: absolute;
+    box-shadow: none;
+}
+
+body:has(.hub-main) .header {
+    background: none;
+    border-bottom: 0;
+    min-height: 0;
+    padding: 18px clamp(20px, 3vw, 40px) 0;
+    justify-content: flex-end;
+}
+
+/* The hub prints its own wordmark, much larger, in the page. */
+body:has(.hub-main) .site-brand,
+body:has(.hub-main) .header-nav {
+    display: none;
+}
+
+/* The masthead's controls are drawn light-on-wine. On this page the bar is transparent over
+   paper, so they have to take the page's own ink instead -- measured at 1.62:1 against the light
+   ground before this rule, against a 4.5:1 minimum. */
+body:has(.hub-main) .account-menu-trigger,
+body:has(.hub-main) .lang-switch,
+body:has(.hub-main) #theme-switch {
+    color: var(--hub-ink);
+    background: var(--hub-sunk);
+    border-color: var(--hub-rule);
+}
+
+body:has(.hub-main) .account-menu-trigger:hover,
+body:has(.hub-main) .lang-switch:hover,
+body:has(.hub-main) #theme-switch:hover,
+body:has(.hub-main) .account-menu-trigger:focus-visible,
+body:has(.hub-main) .lang-switch:focus-visible,
+body:has(.hub-main) #theme-switch:focus-visible {
+    border-color: var(--hub-gold);
+    color: var(--hub-ink);
+}
+
+/* ---------------------------------------------------------------------------------------------
+   The fold
+   --------------------------------------------------------------------------------------------- */
+.hub-main {
+    display: flex;
+    flex-direction: column;
+}
+
+.hub-stage {
+    position: relative;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 76px clamp(20px, 3vw, 40px) 15px;
+}
+
+/* The watermark's frame. A sibling of the content rather than an ancestor, so cropping the mark
+   cannot clip a seal's hover shadow; inset:0 means the crop line is the bottom of the fold, so
+   the mark runs past it and is cut by it instead of stopping short. Without this the mark, being
+   taller than its parent, would grow the page's scroll height. */
+.hub-markclip {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    /* Bleeds left to the viewport edge, out past .container's 1200px cap -- inset:0 alone pinned
+       the mark to the container and left a margin of empty page beside it. Only the left side
+       breaks out: right stays on the container, so this can never add horizontal overflow (50vw
+       counts the scrollbar, and overshooting leftwards is off-screen and harmless). */
+    left: calc(50% - 50vw);
+    right: 0;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Masked rather than an <img>, so the one SVG serves both themes by taking a colour. 125% of the
+   fold so it overruns the frame; the vw term stops a tall narrow window pushing out a horizontal
+   scrollbar, and the px cap stops a tall window turning the mark into the whole page. */
+.hub-mark {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: min(125%, 125vw, 1000px);
+    width: auto;
+    aspect-ratio: 1;
+    /* Far enough left that the mark's dense middle sits in the margin rather than behind the
+       opening lines. Measured by rasterising the SVG and sampling its alpha under each text box:
+       at -10% the lede had 27% ink behind it and the subtitle 36%. */
+    transform: translateX(-22%);
+    background: var(--hub-mark-color);
+    opacity: 0.5;
+    -webkit-mask: url(icons/brand-mark.svg) no-repeat left top / contain;
+    mask: url(icons/brand-mark.svg) no-repeat left top / contain;
+}
+
+.hub-top {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+.hub-wordmark {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(27px, 3.1vw, 42px);
+    line-height: 1.02;
+    letter-spacing: -0.021em;
+    margin: 0;
+    color: var(--hub-ink);
+}
+
+.hub-tagline {
     display: block;
-    /* Clears the 64px fixed masthead, matching .legal-main and the five tool pages. Without it
-       the hero eyebrow sat at y=56 and was painted under the header. Padding rather than
-       margin so the wine gradient still bleeds to the top of the page. */
-    padding-top: 89px;
-    /* Transparent: the gradient is on the body so it reaches the viewport edges. */
-    background: transparent;
-    color: var(--paper);
+    font-family: var(--hub-label-font);
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--hub-soft);
+    margin-top: 6px;
 }
 
-.hub-main a { color: inherit; }
-
-.hub-wrap { max-width: 1040px; margin: 0 auto; padding: 56px 28px 100px; display: flex; flex-direction: column; gap: 60px; }
-
-.hub-hero { max-width: 680px; display: flex; flex-direction: column; gap: 18px; }
-.hub-hero-eyebrow { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin: 0; }
-.hub-hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.08; margin: 0; text-wrap: balance; }
-.hub-hero p { font-size: 1.08rem; line-height: 1.65; color: var(--paper-soft); margin: 0; max-width: 58ch; }
-
-/* --- dictionary search: the front door's own lookup, not tucked into the masthead nav --
-   submits to dictionary.html?q=... (see dictionary.js's initialQuery handling). --- */
-.hub-search { display: flex; align-items: center; gap: 10px; max-width: 560px; margin-top: -6px;
-    background: rgba(244, 233, 216, 0.08); border: 1px solid var(--rule); border-radius: 999px; padding: 6px 8px 6px 18px;
-    transition: border-color 0.2s var(--ease-out), background 0.2s var(--ease-out); }
-.hub-search:focus-within { border-color: var(--gold); background: rgba(244, 233, 216, 0.12); }
-.hub-search svg { width: 18px; height: 18px; flex: 0 0 auto; stroke: var(--paper-soft); fill: none; stroke-width: 2; }
-.hub-search input { flex: 1; min-width: 0; background: none; border: none; color: var(--paper); font-family: inherit; font-size: 0.94rem; padding: 8px 0; }
-.hub-search input::placeholder { color: var(--paper-soft); }
-.hub-search input:focus { outline: none; }
-.hub-search button { flex: 0 0 auto; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border: none; color: var(--wine-deep);
-    font-family: inherit; font-weight: 700; font-size: 0.84rem; padding: 10px 20px; border-radius: 999px; cursor: pointer;
-    /* measured 38px tall on a 390px phone; the rest of the site's controls sit at 44 */
-    min-height: 44px; }
-
-/* --- progress: a slice of the Dashboard (score + per-tool bars) for a signed-in visitor,
-   right on the front door instead of making them go find it -- same blue accent as
-   dashboard.css's .dash-main, since this genuinely is that page's own data. --- */
-.hub-progress, .hub-progress-guest {
-    --progress-surface: #ffffff; --progress-edge: #dbe1e8; --progress-ink: #1c2733;
-    --progress-ink-soft: #55636f; --progress-ink-faint: #8996a3;
-    --progress-accent: #2f6fed; --progress-accent-dark: #1f4fb8; --progress-accent-tint: rgba(47, 111, 237, 0.08);
-    color: var(--progress-ink); font-family: var(--font-body);
-    background: var(--progress-surface); border-radius: 10px; box-shadow: 0 20px 40px -18px rgba(0, 0, 0, 0.4);
+/* The rail track is empty on purpose: it is the margin the watermark lives in. */
+.hub-col {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: var(--hub-rail) 1fr;
+    /* Row gap 0 deliberately. `gap` sets both axes, and the gutter exists to separate the rail
+       column from the content -- applied down the column as well it put another 55px between the
+       intro and the sheet, which is chrome the fold cannot afford. */
+    gap: 0 var(--hub-gutter);
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
 }
-.hub-progress { padding: 24px 26px; display: flex; flex-direction: column; gap: 20px; }
-.hub-progress-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
-.hub-progress-title { display: flex; align-items: center; gap: 12px; }
-.hub-progress-avatar { width: 38px; height: 38px; border-radius: 50%; flex: 0 0 auto;
-    background: linear-gradient(150deg, var(--progress-accent) 30%, var(--progress-accent-dark)); color: #fff;
-    display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; }
-.hub-progress-title h2 { font-family: var(--font-display); font-size: 1.1rem; margin: 0; }
-.hub-progress-title span { font-size: 0.8rem; color: var(--progress-ink-faint); }
-.hub-progress-score { font-family: var(--font-display); font-size: 1.7rem; font-weight: 700; color: var(--progress-accent-dark); font-variant-numeric: tabular-nums; }
-.hub-progress-score span:last-child { font-size: 0.9rem; color: var(--progress-ink-faint); font-weight: 600; }
-.hub-progress-link { font-size: 0.82rem; font-weight: 700; color: var(--progress-accent-dark); text-decoration: none; white-space: nowrap; }
-.hub-progress-link:hover { text-decoration: underline; }
-.hub-progress-tools { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.hub-progress-tool { background: var(--bg-page, #f4f1ea); border: 1px solid var(--progress-edge); border-radius: 8px; padding: 14px 16px; }
-.hub-progress-tool-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
-.hub-progress-tool-glyph { width: 24px; height: 24px; border-radius: 5px; background: var(--progress-accent-tint); color: var(--progress-accent-dark);
-    display: flex; align-items: center; justify-content: center; font-family: var(--font-jp, serif); font-weight: 700; font-size: 0.8rem; }
-.hub-progress-tool-head span:last-child { font-size: 0.86rem; font-weight: 700; }
-.hub-progress-tool-frac { font-size: 0.74rem; color: var(--progress-ink-faint); font-variant-numeric: tabular-nums; margin-bottom: 6px; display: block; }
-.hub-progress-tool-track { height: 6px; border-radius: 999px; background: var(--progress-edge); overflow: hidden; }
-.hub-progress-tool-fill { height: 100%; background: var(--progress-accent); border-radius: 999px; transition: width 0.6s var(--ease-out); }
-/* Shown only when words are due -- the reason to play today, one line under the bars. */
-.hub-progress-due { align-self: flex-start; font-size: 0.86rem; font-weight: 700; color: var(--progress-accent-dark);
-    text-decoration: none; padding: 8px 14px; border-radius: 999px; background: var(--progress-accent-tint); }
-.hub-progress-due:hover { text-decoration: underline; }
-.hub-progress-due:focus-visible { outline: 2px solid var(--progress-accent-dark); outline-offset: 2px; }
 
-.hub-progress-guest { padding: 26px 28px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-.hub-progress-guest p { margin: 0 0 4px; font-family: var(--font-display); font-size: 1.05rem; }
-.hub-progress-guest span { font-size: 0.86rem; color: var(--progress-ink-soft); }
-.hub-progress-guest-btn { flex: 0 0 auto; background: linear-gradient(135deg, var(--progress-accent), var(--progress-accent-dark)); border: none; color: #fff;
-    font-family: inherit; font-weight: 700; font-size: 0.86rem; padding: 11px 22px; border-radius: 6px; cursor: pointer; white-space: nowrap; }
-
-/* --- rooms: a real screenshot "peephole" beside elaborated copy, alternating sides so the eye
-   doesn't fall into a rigid left-image/right-text rhythm for five rows straight --- */
-.hub-rooms { display: flex; flex-direction: column; gap: 4px; }
-.hub-room {
-    display: grid; grid-template-columns: 300px 1fr; gap: 40px; align-items: center;
-    padding: 36px 0; border-top: 1px solid var(--rule);
-    text-decoration: none; color: inherit;
+.hub-intro {
+    grid-column: 2;
+    max-width: 46ch;
+    margin: 0 0 12px;
 }
-.hub-room:last-child { border-bottom: 1px solid var(--rule); }
-.hub-room.flip { grid-template-columns: 1fr 300px; }
-.hub-room.flip .hub-room-clip { order: 2; }
-.hub-room-clip {
-    position: relative; border-radius: 6px; overflow: hidden; aspect-ratio: 4 / 3;
-    border: 1px solid var(--room-accent); box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.5);
-    transition: transform 0.4s var(--ease-out);
+
+/* Prata, not the display face: Fraunces has no Cyrillic at all, so this line — which is Mongolian
+   by default — was falling back to a system serif. See fonts/fonts.css. */
+.hub-lede {
+    font-family: var(--hub-lede-font);
+    font-size: clamp(21px, 2vw, 27px);
+    font-weight: 400;
+    line-height: 1.26;
+    letter-spacing: 0.004em;
+    text-wrap: balance;
+    margin: 0 0 7px;
+    color: var(--hub-ink);
 }
-.hub-room:hover .hub-room-clip { transform: scale(1.02); }
-.hub-room-clip img { width: 100%; height: 100%; object-fit: contain; display: block; background: var(--room-bg); }
-.hub-room-body { display: flex; flex-direction: column; gap: 12px; }
 
+.hub-sub {
+    margin: 0;
+    color: var(--hub-soft);
+    font-size: 15px;
+    text-wrap: balance;
+}
 
-/* The drawn tool icon on each card. color comes from the card's own --room-accent, so one
-   rule serves six cards in six different hues. 40px is the floor at which the kana inside
-   these icons stay legible -- see icons/ui/ for the set used where there is less room. */
-/* A flex column stretches every child to the full cross axis unless told otherwise, so the card
-   name, stat line and CTA each became a 644px box around text needing 225, 331 and 56px. The CTA
-   is even declared inline-flex and was stretched anyway -- being a flex item overrides that. */
-.hub-room-body { align-items: start; }
+/* ---------------------------------------------------------------------------------------------
+   The seals
+   --------------------------------------------------------------------------------------------- */
+.hub-sheet {
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    min-width: 0;
+    max-width: var(--hub-col);
+    padding-bottom: 10px;
+}
 
-.hub-room-ico {
-    width: 46px;
-    height: 46px;
+/* container-type is what makes the cqw sizes below resolve to the seal's own width. It implies
+   layout containment, harmless here: the seal is already position:relative, so its children keep
+   the containing block they had. min-width:0 is load-bearing — a grid item will not shrink below
+   its min-content width unless told to, and the sheet then bursts its track. */
+.hub-seal {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 5px;
+    overflow: hidden;
     display: block;
-    color: var(--room-accent);
-}
-/* The kanji badge and the drawn icon share one line: the badge names the category in the hub's
-   own visual language, the icon names the tool. Stacked they read as two unrelated markers. */
-
-.hub-room-name { font-family: var(--font-display); font-size: 1.7rem; font-weight: 700; margin: 0; }
-.hub-room-desc { font-size: 0.98rem; line-height: 1.65; color: var(--paper-soft); margin: 0; max-width: 46ch; }
-.hub-room-stat { font-size: 0.76rem; font-weight: 700; letter-spacing: 0.04em; color: var(--room-accent); font-variant-numeric: tabular-nums; }
-.hub-room-cta { font-size: 0.85rem; font-weight: 600; color: var(--gold); display: inline-flex; align-items: center; gap: 6px; margin-top: 4px; }
-.hub-room-cta svg { width: 14px; height: 14px; transition: transform 0.3s var(--ease-out); }
-.hub-room:hover .hub-room-cta svg { transform: translateX(3px); }
-
-@media (max-width: 760px) {
-    .hub-room, .hub-room.flip { grid-template-columns: 1fr; gap: 18px; }
-    .hub-room.flip .hub-room-clip { order: 0; }
-    .hub-room-clip { aspect-ratio: 16/10; }
-    .hub-progress-tools { grid-template-columns: 1fr; }
-    .hub-progress-guest { flex-direction: column; align-items: flex-start; }
+    min-width: 0;
+    container-type: inline-size;
+    text-decoration: none;
+    color: #fff;
+    isolation: isolate;
+    background: linear-gradient(158deg, var(--seal), color-mix(in srgb, var(--seal) 72%, #1b1319) 100%);
+    box-shadow: 0 4px 12px -7px light-dark(rgba(30, 18, 26, 0.5), rgba(0, 0, 0, 0.75)),
+        inset 0 1px 0 var(--hub-seal-edge);
+    transition: box-shadow 0.32s var(--ease-out), transform 0.32s var(--ease-out);
 }
 
-/* Darker ground (Settings -> Darker theme). The entrance hall's wine goes to a midnight plum;
-   the gradient below is rebuilt from the same three tokens, so it follows automatically. */
-html[data-contrast="darker"] body:has(.hub-main),
-html[data-contrast="darker"] .hub-main {
-    --wine: #2b1a22;
-    --wine-deep: #150d12;
-    --wine-elevated: #3a2430;
+/* The tool's own screenshot, ghosted in on hover. mix-blend-mode:luminosity keeps the seal's hue
+   but takes its lightness from the photo, and most of these are light UI on white — so the mask
+   fades the photo out downward, leaving the ink intact under the white type and showing it where
+   there is nothing to read. */
+.hub-seal-shot {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-size: cover;
+    background-position: 50% 50%;
+    opacity: 0;
+    mix-blend-mode: luminosity;
+    transform: scale(1.06);
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.82) 32%, rgba(0, 0, 0, 0.22) 64%, transparent 86%);
+    mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.82) 32%, rgba(0, 0, 0, 0.22) 64%, transparent 86%);
+    transition: opacity 0.42s var(--ease-out), transform 0.6s var(--ease-out);
 }
 
-/* ---------------------------------------------------------------------
-   Start-here banner — the Study Path
-   ---------------------------------------------------------------------
-   Deliberately not a .hub-room: the path is a route through the tools, not a sixth tool, and a
-   card in the grid would have said the opposite. Full width, no photograph, and the only element
-   above the grid that carries the gold rule. */
-.hub-startpath {
+.hub-seal::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.36s ease;
+    background:
+        radial-gradient(118% 88% at 22% 8%, rgba(255, 255, 255, 0.16), transparent 62%),
+        linear-gradient(158deg, color-mix(in srgb, var(--seal) 30%, transparent) 0%, rgba(14, 7, 12, 0.62) 100%);
+}
+
+.hub-seal-in {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    padding: 8.3cqw;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.hub-seal-ico {
+    width: 39.6cqw;
+    height: 39.6cqw;
+    margin-block: auto;
+    color: #fff;
+    fill: currentColor;
+    opacity: 0.95;
+    filter: drop-shadow(0 4px 10px rgba(16, 8, 14, 0.45));
+    transition: transform 0.34s var(--ease-out);
+    transform-origin: left center;
+}
+
+/* One bottom-anchored block: the description grows it upward while the stat collapses, so no
+   offset is hand-tuned and any copy length fits. align-self:stretch is load-bearing — .hub-seal-txt
+   is a flex column with align-items:flex-start, which would otherwise shrink-wrap the description
+   to about fourteen characters a line and overflow the tile, where overflow:hidden hides it. */
+.hub-seal-txt {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.hub-seal-name {
+    align-self: stretch;
+    font-family: var(--font-display);
+    font-size: max(14.5px, 8.06cqw);
+    font-weight: 600;
+    line-height: 1.18;
+    letter-spacing: -0.012em;
+    text-shadow: 0 1px 3px rgba(16, 8, 14, 0.35);
+}
+
+.hub-seal-stat {
+    font-family: var(--hub-label-font);
+    font-size: max(9px, 4.38cqw);
+    letter-spacing: 0.1em;
+    margin-top: 3.2cqw;
+    color: rgba(255, 255, 255, 0.78);
+    max-height: 2em;
+    opacity: 1;
+    overflow: hidden;
+    transition: max-height 0.34s var(--ease-out), opacity 0.2s ease, margin-top 0.34s var(--ease-out);
+}
+
+.hub-seal-desc {
+    align-self: stretch;
+    font-size: max(10.5px, 5.3cqw);
+    line-height: 1.42;
+    color: rgba(255, 255, 255, 0.95);
+    margin-top: 0;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.38s var(--ease-out), opacity 0.28s ease 0.06s, margin-top 0.34s var(--ease-out);
+}
+
+.hub-seal:hover,
+.hub-seal:focus-visible {
+    transform: translateY(-3px);
+    outline: none;
+    box-shadow: 0 24px 46px -20px light-dark(rgba(30, 18, 26, 0.5), rgba(0, 0, 0, 0.8)),
+        0 4px 10px -4px light-dark(rgba(30, 18, 26, 0.2), rgba(0, 0, 0, 0.6));
+}
+
+.hub-seal:focus-visible {
+    outline: 2px solid var(--hub-gold);
+    outline-offset: 3px;
+}
+
+.hub-seal:hover .hub-seal-shot,
+.hub-seal:focus-visible .hub-seal-shot {
+    opacity: 0.5;
+    transform: none;
+}
+
+.hub-seal:hover::before,
+.hub-seal:focus-visible::before {
+    opacity: 1;
+}
+
+.hub-seal:hover .hub-seal-ico,
+.hub-seal:focus-visible .hub-seal-ico {
+    transform: scale(0.3);
+}
+
+.hub-seal:hover .hub-seal-stat,
+.hub-seal:focus-visible .hub-seal-stat {
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+}
+
+.hub-seal:hover .hub-seal-desc,
+.hub-seal:focus-visible .hub-seal-desc {
+    max-height: 10em;
+    opacity: 1;
+    margin-top: 3.7cqw;
+}
+
+/* ---------------------------------------------------------------------------------------------
+   Below the fold: Study Path
+   --------------------------------------------------------------------------------------------- */
+.hub-path {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 34px clamp(20px, 3vw, 40px) 40px;
     display: flex;
     align-items: center;
-    gap: 22px;
-    margin: 0 0 26px;
-    padding: 20px 26px;
-    background: linear-gradient(180deg, rgba(212, 166, 75, 0.10), rgba(212, 166, 75, 0.04));
-    border: 1px solid rgba(212, 166, 75, 0.32);
-    border-left: 3px solid var(--gold, #d4a64b);
-    text-decoration: none;
-    color: inherit;
-    transition: border-color 0.2s ease, transform 0.2s ease;
+    gap: clamp(16px, 2.4vw, 30px);
+    flex-wrap: wrap;
 }
 
-.hub-startpath:hover {
-    border-color: rgba(212, 166, 75, 0.6);
-    transform: translateY(-2px);
-}
-
-.hub-startpath-glyph {
-    font-family: var(--font-jp);
-    font-size: 2.1rem;
+.hub-path-glyph {
+    font-family: var(--font-jp, serif);
+    font-size: 52px;
     line-height: 1;
-    color: var(--gold, #d4a64b);
+    color: var(--hub-mark-color);
+    opacity: 0.85;
     flex: none;
 }
 
-.hub-startpath-text {
-    display: block;
+.hub-path-text {
+    flex: 1 1 320px;
     min-width: 0;
 }
 
-.hub-startpath-kicker {
+.hub-path-kicker {
     display: block;
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
+    font-family: var(--hub-label-font);
+    font-size: 10px;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--gold, #d4a64b);
-    margin-bottom: 3px;
+    color: var(--hub-soft);
+    margin-bottom: 6px;
 }
 
-.hub-startpath-name {
-    display: block;
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 1.2rem;
+.hub-path-name {
+    font-family: var(--font-display);
+    font-size: clamp(20px, 2.2vw, 27px);
     font-weight: 600;
-    margin-bottom: 5px;
+    line-height: 1.12;
+    letter-spacing: -0.014em;
+    margin: 0 0 8px;
+    color: var(--hub-ink);
 }
 
-.hub-startpath-desc {
-    display: block;
-    font-size: 0.9rem;
-    line-height: 1.55;
+.hub-path-desc {
+    margin: 0;
+    color: var(--hub-soft);
+    font-size: 15px;
     max-width: 68ch;
-    opacity: 0.85;
 }
 
-.hub-startpath-cta {
-    margin-left: auto;
+.hub-path-cta {
     flex: none;
+    font-family: var(--font-body);
     font-weight: 600;
-    font-size: 0.9rem;
-    color: var(--gold, #d4a64b);
-    white-space: nowrap;
+    font-size: 14px;
+    line-height: 1;
+    text-decoration: none;
+    color: var(--hub-cta-fg);
+    background: linear-gradient(150deg, var(--hub-cta-a), var(--hub-cta-b));
+    border-radius: 4px;
+    padding: 13px 20px;
+    box-shadow: 0 8px 18px -10px light-dark(rgba(74, 44, 58, 0.7), rgba(0, 0, 0, 0.6));
+    transition: transform 0.22s var(--ease-out), filter 0.22s ease;
 }
 
-@media (max-width: 760px) {
-    .hub-startpath {
-        flex-wrap: wrap;
+.hub-path-cta:hover,
+.hub-path-cta:focus-visible {
+    transform: translateY(-1px);
+    filter: brightness(1.08);
+}
+
+/* ---------------------------------------------------------------------------------------------
+   Width bands and reduced motion
+   --------------------------------------------------------------------------------------------- */
+
+/* Narrow enough that the masthead's account row wraps to a second line, which is measurably taller
+   chrome — so K rises by 1.5× that height rather than the fold quietly overflowing. */
+@media (max-width: 1000px) and (min-width: 861px) {
+    body:has(.hub-main),
+    .hub-main {
+        --hub-col: clamp(480px, calc(32px + 1.5 * (100dvh - 260px)), 1000px);
+    }
+}
+
+/* Below 861px the shared masthead becomes the off-canvas drawer (see style.css), so the account
+   row is a single compact bar again and the rail has no room to be a rail. */
+@media (max-width: 860px) {
+    body:has(.hub-main),
+    .hub-main {
+        --hub-col: clamp(400px, calc(32px + 1.5 * (100dvh - 283px)), 1000px);
+    }
+
+    .hub-col {
+        grid-template-columns: 1fr;
         gap: 14px;
     }
 
-    .hub-startpath-cta {
-        margin-left: 0;
+    .hub-intro,
+    .hub-sheet {
+        grid-column: 1;
+    }
+
+    .hub-mark {
+        height: min(60%, 95vw);
+    }
+
+    .hub-stage {
+        padding-top: 70px;
     }
 }
 
-/* The three room cards arrive rather than appear -- keyframes in style.css, order here, since
-   only this page knows what its cards are. 60ms apart, so the last one has settled 320ms in and
-   nothing is ever waited for. `backwards` so the card holds the from-state through its own delay
-   instead of flashing at full opacity first. */
-.hub-room {
-    animation: khanjpRiseIn 0.38s var(--ease-out) backwards;
+@media (max-width: 680px) {
+    .hub-sheet {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-.hub-room:nth-child(2) {
-    animation-delay: 0.06s;
+@media (max-width: 430px) {
+    .hub-sheet {
+        grid-template-columns: 1fr;
+    }
 }
 
-.hub-room:nth-child(3) {
-    animation-delay: 0.12s;
+/* Touch has no hover, so the seals open permanently and stop being square. */
+@media (hover: none) {
+    .hub-seal {
+        aspect-ratio: auto;
+        min-height: 250px;
+    }
+
+    .hub-seal-in {
+        position: static;
+        height: 100%;
+        padding: 18px;
+    }
+
+    .hub-seal-ico {
+        width: 54px;
+        height: 54px;
+    }
+
+    .hub-seal-name {
+        font-size: 19px;
+    }
+
+    .hub-seal-stat {
+        font-size: 10px;
+        max-height: 0;
+        opacity: 0;
+        margin-top: 0;
+    }
+
+    .hub-seal-desc {
+        font-size: 12.5px;
+        max-height: 12em;
+        opacity: 1;
+        margin-top: 8px;
+    }
+
+    .hub-seal-shot {
+        opacity: 0.45;
+        transform: none;
+    }
+
+    .hub-seal::before {
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hub-seal,
+    .hub-seal *,
+    .hub-seal::before,
+    .hub-path-cta {
+        transition-duration: 0.01ms !important;
+    }
+
+    .hub-seal:hover {
+        transform: none;
+    }
 }

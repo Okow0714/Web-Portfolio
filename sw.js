@@ -17,7 +17,7 @@
 // stale-while-revalidate, so it serves the cached copy first and only refreshes behind it --
 // without a bump, a returning PWA user runs the previous version of a fixed file for one more
 // visit. Whether that matters is a judgement call; for a correctness fix it generally does.
-const CACHE_VERSION = 'khan-japanese-v137';
+const CACHE_VERSION = 'khan-japanese-v138';
 
 const APP_SHELL = [
     './',
@@ -45,6 +45,9 @@ const APP_SHELL = [
     './fonts/fraunces-6NUu8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0K7iN7hzFUPJH58nib14c0qv86Rg.woff2',
     './fonts/fraunces-6NUu8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0K7iN7hzFUPJH58nib14c1qv86Rg.woff2',
     './fonts/fraunces-6NUu8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0K7iN7hzFUPJH58nib14c7qv8.woff2',
+    './fonts/prata-6xKhdSpbNNCT-sWCCm7JLQ.woff2',
+    './fonts/prata-6xKhdSpbNNCT-sWLCm7JLQ.woff2',
+    './fonts/prata-6xKhdSpbNNCT-sWPCm4.woff2',
     './fonts/ibmplexsans-zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxQKYbABA.woff2',
     './fonts/ibmplexsans-zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxRKYbABA.woff2',
     './fonts/ibmplexsans-zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxTKYbABA.woff2',
@@ -67,6 +70,7 @@ const APP_SHELL = [
     './legal.css',
     './manifest.json',
     './favicon.svg',
+    './icons/brand-mark.svg',
     './icons/icon-192.png',
     './icons/icon-512.png',
     './icons/icon-512-maskable.png',
@@ -87,7 +91,6 @@ const APP_SHELL = [
     './word-stats.js',
     './supabase-config.js',
     './supabase-app.js',
-    './hub-home.js',
     './progress-shared.js',
     './about.js',
     './game-particles.js',

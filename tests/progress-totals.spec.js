@@ -38,9 +38,8 @@ module.exports = async function run(page, assert) {
         ['dashboard.html', 'dash-game-fraction', `0 / ${actual.wordMatchLevels} levels`],
         ['dashboard.html', 'dash-grammar-fraction', `0 / ${actual.grammarLevels} levels`],
         ['dashboard.html', 'dash-reading-fraction', `0 / ${actual.readingTexts} texts`],
-        ['index.html', 'hub-progress-game-frac', `0 / ${actual.wordMatchLevels} levels`],
-        ['index.html', 'hub-progress-grammar-frac', `0 / ${actual.grammarLevels} levels`],
-        ['index.html', 'hub-progress-reading-frac', `0 / ${actual.readingTexts} texts`],
+        // index.html used to carry the same three; its progress widget was removed when the home
+        // page became the seal sheet, so dashboard.html is now the only page showing these.
     ];
     for (const [file, id, want] of placeholders) {
         const m = read(file).match(new RegExp('id="' + id + '">([^<]*)<'));

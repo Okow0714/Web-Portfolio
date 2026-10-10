@@ -11,7 +11,7 @@ Supabase (Postgres + Auth). Hosted on GitHub Pages. Git repo on `main`.
 
 | Page | Purpose |
 |---|---|
-| `index.html` | The "entrance hall" / hub — site home, nav-brand target. Tool cards (screenshot + description) and a home-page dictionary search bar + Dashboard progress widget for signed-in visitors. `<main class="hub-main">`, themed via `hub.css` (deep wine/gold, matches the masthead). Mongolian by default, like every i18n page (see Mongolian first below). |
+| `index.html` | The "entrance hall" / hub — site home, nav-brand target. **Rebuilt 2026-10-11 as one screen of six square "seals"** (`.hub-seal`), each a tool: icon and one-line stat at rest, the tool's own screenshot ghosted in behind a short description on hover. A large watermark of the brand mark bleeds off the left edge behind them. `<main class="hub-main">` / `hub.css`. **Everything else is below the fold** — `.hub-stage` is `min-height:100dvh`, so the Study Path band and the footer are reached only by scrolling. The old tool cards, the home dictionary search bar, the Dashboard progress widget and the Study Path banner are all gone, and `hub-home.js` went with them (it existed only to drive the last two). Mongolian by default, like every i18n page (see Mongolian first below). |
 | `about.html` | Sarantsatsral's personal "About Me" resume/portfolio page — reached via the footer's "About Me" column or the hub's developer card, not the top nav. Fully standalone: its own `about.css` (forest-teal "Field Dossier" theme), no shared `style.css`, no masthead/footer, a sticky left index-rail layout instead. English only, no i18n. Has its own compact account popover (`.about-account*` classes) rather than the shared masthead's side drawer, but wired through the same `auth-shared.js` and load-bearing IDs (see Account menu below). |
 | `path.html` | Study Path (学びの道) — a six-stage route from no Japanese at all to N1, mapping each stage onto specific tools and level ranges. `<main class="path-main">` / `path.css` (warm paper, sumi ink, one saffron marker). The only page laid out as a vertical route with stations hung off a spine. **Not in the masthead nav on purpose** — it is a route through the tools rather than a tool, and it is reached from the hub's `.hub-startpath` banner and the footer's Study tools column. (The row had no space either, until the 2026-09-16 regrouping; now it has, and this stays out by choice.) The per-stage hour ranges are external rules of thumb, labelled as such on the page; every level range in the copy is real and will drift if the tools change. |
 | `game.html` | Word Match ("言葉合わせ") — hex-tile vocabulary matching game, JLPT N5–N1. `<main class="game-main">` / `game.css` (dark hanafuda violet/gold). |
@@ -20,7 +20,7 @@ Supabase (Postgres + Auth). Hosted on GitHub Pages. Git repo on `main`.
 | `reading.html` | Dokkai Reader — speech-recognition-driven reading practice. `<main class="reading-main">` / `reading.css` (warm gold, light). |
 | `dictionary.html` | Mongol-Japan Dictionary — two tabs: primary Монгол⇄日本語 (`mnjp-data.js`), secondary 漢語⇄和語 Kango/Wago (`dictionary-data.js`, lazy-loaded only when that tab opens). Reads a `?q=` URL param on load to pre-fill/filter the primary tab — the target of the home page's search bar. `<main class="dictionary-main">` / `dictionary.css`. |
 | `freetime.html` | Чөлөөт цагаараа / Freetime Learning — a listings page, not a tool: one anime, one song and one YouTube channel per JLPT level, with a line on why each sits at that level. `<main class="freetime-main">` / `freetime.css` (cool paper, near-black ink, one indigo for links; the colour is carried by the five level edges, which are the shared JLPT spectrum). Laid out as a guide — a header row of columns and a row per level — because every other page already uses a grid of panels. The five channel links are the only interactive thing on it. The picks are editorial and each `why` line is the reason it is at that level, not a review; the YouTube choices are the site owner's. Nothing is hosted here, only named and linked. |
-| `dashboard.html` | Signed-in-only progress page — profile (avatar, editable display name), score vs. site average, per-tool level/text completion, and a link into the Settings modal for account management. `<main class="dash-main">` / `dashboard.css` (cool slate/blue utility theme). A condensed version of the score + per-tool bars also appears on `index.html`, sourced with the same Supabase queries (`hub-home.js`). |
+| `dashboard.html` | Signed-in-only progress page — profile (avatar, editable display name), score vs. site average, per-tool level/text completion, and a link into the Settings modal for account management. `<main class="dash-main">` / `dashboard.css` (cool slate/blue utility theme). This is now the **only** page showing those bars — `index.html` carried a condensed copy until the 2026-10-11 hub rebuild removed it, along with `hub-home.js`, and `tests/progress-totals.spec.js` lost its three index.html placeholder rows at the same time. |
 | `privacy.html`, `terms.html` | Legal pages, plain styling via `legal.css`. |
 | `credits.html` | Full data/photo/music credits for every tool, one page, `legal.css` styling like the pages above — the destination for every page's footer "Data & licensing" link. Sectioned with anchor ids (`#word-game-photos`, `#word-game-music`, `#grammar-connect-photos`, `#grammar-connect-music`) in case a page ever wants to deep-link to one part instead of the whole page. |
 | `reset-password.html` | Standalone, no shared header/footer. |
@@ -42,6 +42,14 @@ their own credits in-page, under their level-select grids, which is what prompte
 everything onto one dedicated page). Both the masthead and footer are identical across the twelve
 pages that carry them (every page above except `about.html`, which has no shared header/footer
 at all, and `reset-password.html`); `credits.html` itself carries the masthead+footer too.
+**`index.html` is the one exception, and it reduces the masthead rather than removing it.** The hub
+prints its own large wordmark, so `hub.css` hides `.site-brand` and `.header-nav` and makes
+`.site-header-wrap` absolute and transparent, leaving just the language, theme and account controls
+in the top-right. The chrome block stays in the page because it also carries the loader and all
+three account modals, and `auth-shared.js` wires those by id — deleting it would take the account
+menu down, and `build-chrome.js` throws on a page missing its markers anyway. Those three controls
+are drawn light-on-wine for the masthead, so the hub re-colours them: measured at **1.62:1** against
+the light ground before that override.
 
 **The masthead nav is two groups and a link** (2026-09-16, replacing seven flat items): **Practice**
 (Word Match, Dokkai Reader, Grammar Connect), **Dictionary** (Vocabulary, Kana Origins, Phonetics
@@ -191,6 +199,13 @@ searches should land on the Mongolian home page. It stays linked from every foot
 here. That is also why this only partly helps Google -- the inline fallback text is English until JS runs,
 and real Mongolian search ranking would need separate language URLs. **Fraunces has no Cyrillic subset**, so
 Mongolian set in `--font-display` falls back to a system serif; the share cards use IBM Plex Sans.
+**Prata is the way out where it matters** (vendored 2026-10-11, `fonts/prata-*.woff2`, three subsets):
+a Cyreal face that ships `cyrillic` *and* `cyrillic-ext` — ext is the one carrying Mongolian's `ү`
+(U+04AF) and `ө` (U+04E9), which sit outside the Russian range, and it was checked per glyph against
+the live font rather than assumed. The hub's opening line uses it (`--hub-lede-font`); anywhere else
+still setting Mongolian in `--font-display` has the old problem. **IBM Plex Mono is not vendored** —
+don't reach for a mono stack in page CSS, a system fallback renders Cyrillic inconsistently; the hub's
+small uppercase labels use the body face with letter-spacing instead.
 
 **Full-bleed pattern**: the same token block is defined on both `body:has(.wrapper-class)` and
 `.wrapper-class` (body is an ancestor and can't read a descendant's custom properties), then

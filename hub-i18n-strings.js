@@ -1,74 +1,70 @@
 // Page-specific translation strings for the entrance-hall hub (index.html). Extends
 // window.I18N_STRINGS from i18n-strings-shared.js (loaded first) with hub-only keys.
+//
+// The hub is a sheet of six seals now, so each tool needs two SHORT strings rather than the long
+// card copy it used to carry: `.tag`, the one-line stat shown at rest, and `.short`, the
+// description that replaces it on hover. A seal is a square roughly 260px across, so neither can
+// run long -- the old `.desc` strings were written for a card three times the width and are gone
+// along with the cards, as are the search-bar, progress-widget and per-card CTA keys.
+//
+// Every number below is the real one and will drift if a tool changes: 46 kana and 9 eras in
+// origins.html, 60 levels and ~1,500 words in Word Match (the tilde is load-bearing -- the set is
+// approximate), 1,128 kanji in phonetics-data.js, 400 sentences, 72 texts, 3,537 entries in
+// MNJP_ENTRIES. Level and text totals are owned by progress-shared.js and checked by
+// tests/progress-totals.spec.js; re-grep here when one of them moves.
 Object.assign(window.I18N_STRINGS, {
-    'hub.eyebrow': { en: 'Curious. Creative. Diligent.', mn: 'Сониуч. Бүтээлч. Шаргуу.' },
-    'hub.heroTitle': { en: "Let's Make Friends with Japanese", mn: 'Япон хэлтэй найзалцгаая' },
+    'hub.tagline': { en: 'Tools for learning Japanese', mn: 'Япон хэл сурах хэрэгсэл' },
+    'hub.heroTitle': { en: "Let's make friends with Japanese.", mn: 'Япон хэлтэй найзалцгаая.' },
     'hub.heroBody': {
-        en: 'This site is made up of six distinct sections built for learning Japanese from the fundamentals — not the easy way.',
-        mn: 'Энэ сайт япон хэлийг амар замаар нь биш, үндсээс нь сурахад зориулсан зургаан өөр хэсгээс бүрдэнэ.'
+        en: 'Six sections for learning Japanese from the fundamentals.',
+        mn: 'Үндсээс нь сурахад зориулсан зургаан хэсэг.'
     },
-    'hub.searchPlaceholder': { en: 'Look up a word — Mongolian, kanji, kana, or English…', mn: 'Үг хайх — монгол, ханз, кана, эсвэл англи…' },
-    'hub.searchButton': { en: 'Search', mn: 'Хайх' },
-
-    'hub.progress.welcome': { en: 'Welcome back', mn: 'Тавтай морил' },
-    'hub.progress.pointsOf': { en: '/ 3000 pts', mn: '/ 3000 оноо' },
-    'hub.progress.fullDashboard': { en: 'Full dashboard →', mn: 'Бүрэн хянах самбар →' },
-    'hub.progress.due': { en: '{n} missed words are due for review →', mn: 'Давтах цаг нь болсон {n} үг байна →' },
-    'hub.progress.levelsDone': { en: '{done} / {total} levels', mn: '{done} / {total} шат' },
-    'hub.progress.textsDone': { en: '{done} / {total} texts', mn: '{done} / {total} текст' },
-    'hub.progress.guestTitle': { en: 'Log in to track your progress', mn: 'Явцаа хянахын тулд нэвтэрнэ үү' },
-    'hub.progress.guestBody': { en: 'Your score and per-tool progress will show up right here.', mn: 'Таны оноо болон хэрэгсэл тус бүрийн явц энд харагдана.' },
 
     'hub.path.kicker': { en: 'New here?', mn: 'Шинэ хэрэглэгч үү?' },
     'hub.path.name': { en: 'The path from zero to N1', mn: 'Тэгээс N1 хүртэлх зам' },
     'hub.path.desc': { en: 'Six stages, from not knowing a single character to N1 — which tool to open at each one, exactly which levels to do, and how you know you are ready for the next.', mn: 'Нэг ч үсэг танихгүй байхаас N1 хүртэлх зургаан үе шат — үе шат бүрт ямар хэрэгсэл нээх, аль шатыг хийх, дараагийнх руу шилжихэд юу чадсан байвал зохихыг бичсэн.' },
     'hub.path.cta': { en: 'See the path →', mn: 'Замыг үзэх →' },
+
     'hub.origins.name': { en: 'Kana Origins', mn: 'Канагийн үүсэл' },
-    'hub.origins.desc': {
-        en: 'Start here if Japanese writing still looks like three unrelated alphabets. A clickable chronology from the first writing in Japan to the post-war reforms, every one of the 46 kana with its Mongolian sound and the kanji it was cut down from, and a four-step answer to why English words are written in katakana.',
-        mn: 'Япон бичиг гурван хоорондоо хамааралгүй цагаан толгой мэт харагдсаар байвал эндээс эхэлнэ үү. Япон дахь анхны бичгээс дайны дараах шинэчлэл хүртэлх, дарж дэлгэдэг он цагийн хэлхээс; 46 кана тус бүрийн монгол дуудлага, гарал үүслийн ханз; мөн англи үгсийг яагаад катаканагаар бичдэгийн дөрвөн алхамт хариулт.'
+    'hub.origins.tag': { en: '46 KANA · 9 ERAS', mn: '46 КАНА · 9 ҮЕ ШАТ' },
+    'hub.origins.short': {
+        en: 'Start here if Japanese writing still looks like three unrelated alphabets.',
+        mn: 'Япон бичиг гурван хоорондоо хамааралгүй цагаан толгой мэт харагдвал эндээс эхэлнэ үү.'
     },
-    'hub.origins.stat': { en: '9 ERAS · 46 KANA · NO KANJI NEEDED', mn: '9 ҮЕ ШАТ · 46 КАНА · ХАНЗ МЭДЭХ ШААРДЛАГАГҮЙ' },
-    'hub.origins.cta': { en: 'Start →', mn: 'Эхлэх →' },
 
     'hub.game.name': { en: 'Word Match', mn: 'Үг холбох дасгал' },
-    'hub.game.desc': {
-        en: 'An online exercise that connects each Japanese word to the Mongolian word with the matching meaning. Connect several kanji that share a phonetic reading at once and multiple words clear together. Each level starts on a 4-minute clock that every matched pair extends, and two wrong guesses bring an already-cleared pair back.',
-        mn: 'Япон үгийг утга нь ижил монгол үгтэй холбох дасгал. Ижил дуудлагын язгууртай хэд хэдэн ханзыг зэрэг холбовол олон үг нэг дор арилна. Шат бүр 4 минутаас эхэлж, хос таарах бүрд цаг нэмэгдэнэ. Хоёр удаа буруу дарвал арилсан хос эргэж гарч ирнэ.'
+    'hub.game.tag': { en: '~1,500 WORDS · 60 LEVELS', mn: '~1,500 ҮГ · 60 ШАТ' },
+    'hub.game.short': {
+        en: 'Connect each Japanese word to the Mongolian word that means the same. Kanji sharing a reading clear together.',
+        mn: 'Япон үгийг утга нь ижил монгол үгтэй холбоно. Ижил язгуурт ханзуудыг зэрэг холбож болно.'
     },
-    'hub.game.stat': { en: '60 LEVELS · 5 JLPT TIERS · ~1,500 WORDS', mn: '60 ШАТ · 5 JLPT ЗЭРЭГЛЭЛ · ОЙРОЛЦООГООР 1,500 ҮГ' },
-    'hub.game.cta': { en: 'Play →', mn: 'Тоглох →' },
 
     'hub.phonetics.name': { en: 'Phonetics Family', mn: 'Дуудлагын бүлэг' },
-    'hub.phonetics.desc': {
-        en: "Memorizing kanji readings one by one is a huge undertaking, so this is a rule-based list built around phonetics — the pattern behind kanji readings — to help you understand them instead. Learn one phonetic component and you get a head start on the rest of its family — usually two or three kanji, up to a dozen for the largest.",
-        mn: 'Ханз болгоны дуудлагыг тусад нь цээжлэх хэцүү. Тиймээс энд ханзуудыг дуудлагын язгуураар нь бүлэглэж, зүй тогтлыг нь ойлгоход тусална. Нэг язгуурыг сурвал тэр бүлгийн бусад ханзыг таамаглаж эхэлнэ — ихэвчлэн хоёр, гурав, хамгийн томд нь арав гаруй.'
+    'hub.phonetics.tag': { en: '1,128 KANJI', mn: '1,128 ХАНЗ' },
+    'hub.phonetics.short': {
+        en: 'Kanji grouped by the phonetic component they share. Learn one and you can guess the rest.',
+        mn: 'Ханзуудыг дуудлагын язгуураар нь бүлэглэв. Нэг язгуурыг сурвал бусдыг таамаглана.'
     },
-    'hub.phonetics.stat': { en: '424 FAMILIES · 1,128 KANJI · 5 JLPT TIERS', mn: '424 БҮЛЭГ · 1,128 ХАНЗ · 5 JLPT ЗЭРЭГЛЭЛ' },
-    'hub.phonetics.cta': { en: 'Browse →', mn: 'Үзэх →' },
 
     'hub.grammar.name': { en: 'Grammar Connect', mn: 'Дүрэм холбох' },
-    'hub.grammar.desc': {
-        en: "An exercise where you pick, from a set of choices, the word that swaps in for the sentence's underlined word without changing its meaning. Time is short, but every correct pick extends it.",
-        mn: 'Өгүүлбэрийн доогуур зураастай хэсгийг утгыг нь өөрчлөхгүйгээр өөр үгээр солих дасгал. Цаг багатай ч зөв сонгох бүрд цаг нэмэгдэнэ.'
+    'hub.grammar.tag': { en: '400 SENTENCES', mn: '400 ӨГҮҮЛБЭР' },
+    'hub.grammar.short': {
+        en: "Swap the sentence's underlined part for another word without changing what it means.",
+        mn: 'Өгүүлбэрийн доогуур зураастай хэсгийг утгыг нь өөрчлөхгүйгээр өөр үгээр солино.'
     },
-    'hub.grammar.stat': { en: '400 SENTENCES · 2 TRACKS · 40 LEVELS', mn: '400 ӨГҮҮЛБЭР · 2 ЗАМ · 40 ШАТ' },
-    'hub.grammar.cta': { en: 'Play →', mn: 'Тоглох →' },
 
     'hub.reading.name': { en: 'Dokkai Reader', mn: 'Уншлагын дадлага' },
-    'hub.reading.desc': {
-        en: "Read the passage out loud and it recognizes your voice, automatically highlighting along word by word. It's still in development, so you can skip any word it doesn't recognize.",
-        mn: 'Текстийг чангаар уншихад дуу хоолойг чинь таньж, уншиж яваа үгийг чинь дагаад автоматаар тодруулна. Хөгжүүлэлт нь үргэлжилж байгаа тул танихгүй үг гарвал алгасаж болно.'
+    'hub.reading.tag': { en: '72 TEXTS', mn: '72 ТЕКСТ' },
+    'hub.reading.short': {
+        en: 'Read aloud and it follows your voice, highlighting the word you are on.',
+        mn: 'Чангаар уншихад дуу хоолойг тань таньж, явж буй үгийг тань дагаад тодруулна.'
     },
-    'hub.reading.stat': { en: '72 TEXTS · 2 TRACKS', mn: '72 ТЕКСТ · 2 ЗАМ' },
-    'hub.reading.cta': { en: 'Read →', mn: 'Унших →' },
 
     'hub.dictionary.name': { en: 'Mongol-Japan Dictionary', mn: 'Монгол-Япон толь бичиг' },
-    'hub.dictionary.desc': {
-        en: "Look up a word in Mongolian or Japanese and see its counterpart, drawn from four merged sources — Word Match's translated vocabulary, a human-reviewed bridge dictionary, a core N5 list, and the Kango ⇄ Wago pairs. A second tab holds the original Kango ⇄ Wago dictionary — the formal Sino-Japanese (kango, 漢語) and native-Japanese (wago, 和語) form of whatever kanji you search, plus the respectful (尊敬語) and humble (謙譲語) verb forms used in sentences.",
-        mn: 'Монгол эсвэл япон үг хайхад нөгөө талын хос үг нь гарч ирнэ. Таван эх сурвалжийг нэгтгэсэн: Үг холбох дасгалын үгсийн сан, гараар хянасан гүүр толь, N5-ын үндсэн үгс, өдөр тутмын орчин үеийн үгс, Канго ⇄ Ваго хосууд. Хоёр дахь таб нь Канго ⇄ Ваго толь бичгийг агуулна — таны хайсан ханзны хятад гаралтай, албан ёсны канго (漢語) хэлбэр, уугуул япон ваго (和語) хэлбэр, мөн өгүүлбэрт хэрэглэгдэх хүндэтгэлийн (尊敬語) болон даруу (謙譲語) үйл үгийн хэлбэрүүд.'
+    'hub.dictionary.tag': { en: '3,537 WORDS', mn: '3,537 ҮГ' },
+    'hub.dictionary.short': {
+        en: 'Search in Mongolian or Japanese and the counterpart comes back. Five sources merged.',
+        mn: 'Монгол эсвэл япон үг хайвал нөгөө талын хос нь гарна. Таван эх сурвалжийг нэгтгэв.'
     },
-    'hub.dictionary.stat': { en: '3,537 WORDS', mn: '3,537 ҮГ' },
-    'hub.dictionary.cta': { en: 'Search →', mn: 'Хайх →' },
 
 });
