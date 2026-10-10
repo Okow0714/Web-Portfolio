@@ -6,6 +6,11 @@
 // persists in localStorage so it carries across page loads and matches the pattern already
 // used elsewhere on this site (e.g. reading progress, sound toggle state).
 (function () {
+    // Drawn flags for the masthead language switch. Emoji flags are not an option: the
+    // regional-indicator pairs render as bare letters ("GB", "MN") on Windows.
+    const FLAG_GB = '<svg viewBox="0 0 20 14"><rect width="20" height="14" fill="#012169"/><path d="M0 0 L20 14 M20 0 L0 14" stroke="#fff" stroke-width="2.8"/><path d="M0 0 L20 14 M20 0 L0 14" stroke="#C8102E" stroke-width="1.5"/><path d="M10 0 V14 M0 7 H20" stroke="#fff" stroke-width="4.4"/><path d="M10 0 V14 M0 7 H20" stroke="#C8102E" stroke-width="2.4"/></svg>';
+    const FLAG_MN = '<svg viewBox="0 0 20 14"><rect width="20" height="14" fill="#C4272F"/><rect x="6.67" width="6.66" height="14" fill="#015197"/><g fill="#F9CF02" transform="translate(3.35,1.5) scale(0.072)"><path d="M0 0 h10 v18 h-10z M-14 24 h38 v6 h-38z M-14 92 h38 v6 h-38z"/><path d="M5 34 l16 26 h-32z M5 86 l16 -26 h-32z"/><circle cx="5" cy="-14" r="8"/></g></svg>';
+
     const STORAGE_KEY = 'site-lang';
 
     // First-time visitors (nothing in localStorage yet) get the page's <html data-default-lang>,
@@ -52,6 +57,10 @@
         document.querySelectorAll('[data-lang-switch]').forEach(btn => {
             const code = btn.querySelector('.lang-switch-code');
             if (code) code.textContent = other === 'mn' ? 'МН' : 'EN';
+            // The flag names the same language the code does. Drawn, not an emoji flag: the
+            // regional-indicator pairs render as bare letters on Windows.
+            const flag = btn.querySelector('.lang-switch-flag');
+            if (flag) flag.innerHTML = other === 'mn' ? FLAG_MN : FLAG_GB;
             const label = other === 'mn' ? 'Монгол хэл рүү шилжих' : 'Switch to English';
             btn.setAttribute('aria-label', label);
             btn.setAttribute('title', label);

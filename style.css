@@ -578,11 +578,25 @@ body.nav-drawer-open .nav-scrim {
     transition: border-color 0.2s ease, color 0.2s ease;
 }
 
-.lang-switch span[aria-hidden] {
-    font-family: var(--font-jp, serif);
-    font-size: 0.92rem;
-    line-height: 1;
-    opacity: 0.75;
+/* Sizes the flag the language switch carries. This rule used to style a 翻 glyph standing in for
+   a flag; the flag is an inline SVG because emoji flags do not render on Windows. */
+.lang-switch .lang-switch-flag {
+    display: inline-flex;
+    flex: none;
+    line-height: 0;
+}
+
+.lang-switch .lang-switch-flag svg {
+    display: block;
+    width: 18px;
+    height: 12.6px;
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.22);
+}
+
+.lang-switch .theme-switch-icon,
+.theme-switch .theme-switch-icon {
+    opacity: 0.85;
 }
 
 /* Light/dark. `color-scheme` is what every page's light-dark() tokens resolve against: no

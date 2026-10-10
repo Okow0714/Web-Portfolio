@@ -198,11 +198,16 @@ body:has(.hub-main) #theme-switch:focus-visible {
     mask: url(icons/brand-mark.svg) no-repeat left top / contain;
 }
 
+/* Measured: the wordmark sat 35px below the account row and 4px above the opening line. The
+   negative top margin is matched by the same amount added to the bottom, so the block's outer
+   height is unchanged -- the title rises, the opening line and the seals stay exactly where the
+   fold arithmetic put them. */
 .hub-top {
     position: relative;
     z-index: 1;
     text-align: center;
-    margin-bottom: 4px;
+    margin-top: -16px;
+    margin-bottom: 20px;
 }
 
 .hub-wordmark {

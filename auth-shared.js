@@ -339,7 +339,10 @@ function renderThemeSwitch() {
     // on its own rather than the raw 'light' / 'dark' key suffix.
     const name = tr(chosen ? 'theme.' + chosen : 'theme.auto',
         chosen ? chosen.charAt(0).toUpperCase() + chosen.slice(1) : 'Auto');
-    themeSwitchBtn.querySelector('.theme-switch-label').textContent = name;
+    // The visible label was removed from the chrome; the name still feeds the aria-label below,
+    // and this stays guarded so a page that keeps its own label span still gets one.
+    const themeLabelEl = themeSwitchBtn.querySelector('.theme-switch-label');
+    if (themeLabelEl) themeLabelEl.textContent = name;
     // the icon shows what you are looking at; half-filled when it is the device's call
     themeSwitchBtn.querySelector('.theme-switch-icon').textContent = chosen ? (effective === 'dark' ? '☾' : '☀') : '◐';
     const label = (window.tf ? window.tf('theme.switchLabel', { mode: name }) : 'Appearance: ' + name);
