@@ -503,3 +503,158 @@ html[data-contrast="darker"] .site-footer {
     --header-bg: #0e1a26;
     --header-bg-elevated: #182c41;
 }
+
+/* ---------------------------------------------------------------------------------------------
+   Cross-tool badges — which other tools this word turns up in.
+
+   The badge is a count that opens a list, not a link to one place: a Word Match word is always in
+   exactly one level, but 22.7% of words touch more than one phonetic family and 52% of reader
+   matches are in more than one text (も is in 45). A single link would be a guess on half of them.
+
+   They sit OUTSIDE .mnjp-entry-main, which is a <button> — a link cannot live inside a button.
+   .mnjp-entry-head is the flex row that holds the button, the badges and the chevron.
+   --------------------------------------------------------------------------------------------- */
+.mnjp-entry-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-right: 22px;
+}
+
+.mnjp-entry-head .mnjp-entry-main {
+    flex: 1;
+    min-width: 0;
+    /* three columns now: the chevron moved out to the head with the badges */
+    grid-template-columns: minmax(0, 24ch) auto minmax(0, 1fr);
+}
+
+.xl-badges {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex: none;
+}
+
+.xl-wrap {
+    position: relative;
+    display: inline-flex;
+}
+
+.xl-badge {
+    height: 26px;
+    min-width: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 0 6px;
+    border: 1.5px solid currentColor;
+    background: none;
+    color: var(--xl-c);
+    font: inherit;
+    cursor: pointer;
+    transition: transform 0.14s ease, box-shadow 0.14s ease;
+}
+
+.xl-badge:hover,
+.xl-badge:focus-visible {
+    transform: translateY(-1px);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--xl-c) 32%, transparent);
+    outline: none;
+}
+
+.xl-ico {
+    width: 15px;
+    height: 15px;
+    fill: currentColor;
+    display: block;
+    flex: none;
+}
+
+.xl-n {
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+/* Filled once something in the list is finished. Phonetics only ever means "opened", which is a
+   weaker claim than a finished level, so its fill is a tint rather than a solid. */
+.xl-badge.is-done {
+    background: var(--xl-c);
+    color: #fff;
+}
+
+.xl-phonetics.is-done {
+    background: color-mix(in srgb, var(--xl-c) 26%, transparent);
+    color: var(--xl-c);
+}
+
+.xl-wordmatch { --xl-c: light-dark(#5a55b0, #8f8be0); }
+.xl-phonetics { --xl-c: light-dark(#1f6b52, #4fae8b); }
+.xl-reader    { --xl-c: light-dark(#5f6b1f, #9bac3e); }
+
+.xl-pop {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    z-index: 30;
+    min-width: 230px;
+    max-width: 300px;
+    max-height: 260px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    background: var(--card);
+    border: 1.5px solid var(--xl-c);
+    box-shadow: 0 14px 30px -14px rgba(0, 0, 0, 0.5);
+}
+
+.xl-pop[hidden] { display: none; }
+
+.xl-pop-head {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #fff;
+    background: var(--xl-c);
+    padding: 6px 10px;
+    position: sticky;
+    top: 0;
+}
+
+.xl-item {
+    display: block;
+    padding: 7px 10px;
+    text-decoration: none;
+    color: inherit;
+    border-top: 1px solid var(--card-edge);
+}
+
+.xl-item:first-of-type { border-top: 0; }
+
+.xl-item:hover,
+.xl-item:focus-visible {
+    background: color-mix(in srgb, var(--xl-c) 12%, transparent);
+    outline: none;
+}
+
+.xl-item-line { display: block; font-size: 13px; font-weight: 600; }
+.xl-item-sub { display: block; font-size: 11.5px; opacity: 0.7; }
+.xl-item.is-done .xl-item-line::after { content: ' \2713'; font-weight: 700; }
+
+/* A phone has no room for three badges beside a two-language row. */
+@media (max-width: 560px) {
+    .xl-badges { display: none; }
+}
+
+/* The cross-tool popover is painted inside .container, which sits at z-index 2 — exactly tied
+   with .site-footer, and a tie is broken by DOM order, so the footer wins. The popover's own
+   z-index:30 buys nothing against it: it is sealed inside .container's level.
+
+   Measured before this rule: document.elementFromPoint at the popover's lower edge returned
+   .site-footer, so the last item in a long list was both hidden and unclickable. Same fix, and
+   same cause, as Dokkai Reader's floating control bar (see the stacking note in CLAUDE.md). */
+body:has(.dictionary-main) .container {
+    z-index: 3;
+}

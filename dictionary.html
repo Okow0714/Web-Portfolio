@@ -493,6 +493,11 @@
     <script src="auth-shared.js"></script>
     <script src="mnjp-data.js"></script>
     <script src="phonetics-kanji-index.js"></script>
+    <!-- Which other tools each word appears in (tools/build-crosslink-index.js). 33KB gzipped,
+         against ~2.9MB if this page loaded game-words.js, reading-texts.js and the phonetics
+         data to work it out itself. Regenerate when any of those three change --
+         tests/crosslink-index.spec.js fails if they drift apart. -->
+    <script src="dictionary-crosslink.js"></script>
     <!-- A module, so its 26 top-level declarations stop leaking into the page's shared scope.
          Safe here specifically because it already loads last-ish: a module is deferred, so it runs
          after every classic script on the page, which is the order it had anyway. Converting an

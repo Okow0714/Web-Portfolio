@@ -1278,3 +1278,33 @@ if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
         return out;
     };
 })();
+
+// ---------------------------------------------------------------------------
+// Deep link from the dictionary's cross-tool badges: reading.html?text=<id> opens that passage
+// directly instead of making you walk track → level → text to find it. Mirrors the ?kanji= block
+// at the bottom of phonetics.js.
+//
+// The id is enough on its own — text ids are unique across both tracks (foundation-l9-3,
+// advanced-l2-3) — so the track and level are looked up rather than passed, which keeps the URL
+// short and means a renamed track does not invalidate a link someone saved.
+//
+// An unknown id falls through to the normal track select rather than erroring: the texts change,
+// and a stale link should land you somewhere useful.
+// ---------------------------------------------------------------------------
+function findTextById(textId) {
+    for (const track of READING_TRACKS) {
+        for (const level of track.levels) {
+            const i = level.texts.findIndex(t => t.id === textId);
+            if (i >= 0) return { track, level, index: i };
+        }
+    }
+    return null;
+}
+
+(function openDeepLinkedText() {
+    const wanted = new URLSearchParams(window.location.search).get('text');
+    if (!wanted) return;
+    const found = findTextById(wanted);
+    if (!found) return;
+    startText(found.track, found.level, found.index);
+})();

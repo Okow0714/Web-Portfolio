@@ -3,6 +3,15 @@
 // both tabs: the primary Mongol<->Japan lookup (dict.mnjp*) and the original Kango<->Wago
 // dictionary (dict.kango/dict.wago/dict.pos*), now nested as the page's second tab.
 Object.assign(window.I18N_STRINGS, {
+    // Cross-tool badges on the МН-ЯП rows. The tool names themselves come from the shared
+    // nav.* keys, so they stay in step with the masthead.
+    'xlink.level': { en: 'Level {n}', mn: '{n}-р шат' },
+    'xlink.familyKanji': { en: '{n} kanji', mn: '{n} ханз' },
+    'xlink.readerWhere': { en: '{track} · level {n}', mn: '{track} · {n}-р шат' },
+    // Short track names, matching the wording reading.html's own level select uses.
+    'xlink.trackFoundation': { en: 'Foundation', mn: 'Суурь' },
+    'xlink.trackAdvanced': { en: 'Advanced', mn: 'Ахисан' },
+
     'dict.titleSub': { en: 'Mongol-Japan Dictionary', mn: 'Монгол-Япон толь бичиг' },
     'dict.subtitle': {
         en: "Search a Mongolian or Japanese word and see its counterpart on the other side — 3,537 entries merged from five sources: Word Match's translated vocabulary, a human-reviewed bridge dictionary, a core N5 list, everyday modern words, and the Kango ⇄ Wago pairs below. Each result shows which source it came from, and about a third also carry an example sentence — click a result to open it. The Kango ⇄ Wago tab holds the original Sino-Japanese/native-Japanese dictionary, honorific forms included.",
