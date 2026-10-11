@@ -7,6 +7,9 @@ Object.assign(window.I18N_STRINGS, {
     // nav.* keys, so they stay in step with the masthead.
     'xlink.level': { en: 'Level {n}', mn: '{n}-р шат' },
     'xlink.familyKanji': { en: '{n} kanji', mn: '{n} ханз' },
+    // A tooltip, because the chip itself is just "N5" -- the code is the same in both
+    // languages and needs no translation, but what it measures does.
+    'xlink.jlptLevel': { en: 'JLPT level {lv}', mn: 'JLPT {lv} түвшин' },
     'xlink.readerWhere': { en: '{track} · level {n}', mn: '{track} · {n}-р шат' },
     // Short track names, matching the wording reading.html's own level select uses.
     'xlink.trackFoundation': { en: 'Foundation', mn: 'Суурь' },

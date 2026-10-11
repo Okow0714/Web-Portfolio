@@ -658,3 +658,40 @@ html[data-contrast="darker"] .site-footer {
 body:has(.dictionary-main) .container {
     z-index: 3;
 }
+
+/* ---------------------------------------------------------------------------------------------
+   JLPT level chip — the level a word is taught at, sitting just before the cross-tool badges.
+
+   This reuses style.css's shared --jlpt-nN-tint / --jlpt-nN-ink pairs rather than inventing a
+   dictionary-local treatment, which also settles the contrast question: the hue itself is a
+   border and rail colour, and white on it measures 4.04 / 2.40 / 4.25 on N5 / N4 / N3 -- three
+   failures, N4 badly. The -ink tokens are those same hues darkened only for text, and ink on
+   tint measures 4.64 / 4.63 / 4.64 / 5.84 / 6.98, so all five tiers clear AA.
+
+   The tints are light-only across the whole site (no --jlpt-* token has a light-dark() pair), so
+   in dark mode this chip is a light tint exactly like every other level badge on every other
+   page. That is deliberate consistency, not an oversight.
+   --------------------------------------------------------------------------------------------- */
+.jlpt-chip {
+    flex: none;
+    align-self: center;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    padding: 4px 7px;
+    border-radius: 4px;
+    font-variant-numeric: tabular-nums;
+    /* A tier is never translated and never wraps, even when it is a range. */
+    white-space: nowrap;
+}
+
+.jlpt-chip[data-level="N5"] { background: var(--jlpt-n5-tint); color: var(--jlpt-n5-ink); }
+.jlpt-chip[data-level="N4"] { background: var(--jlpt-n4-tint); color: var(--jlpt-n4-ink); }
+.jlpt-chip[data-level="N3"] { background: var(--jlpt-n3-tint); color: var(--jlpt-n3-ink); }
+.jlpt-chip[data-level="N2"] { background: var(--jlpt-n2-tint); color: var(--jlpt-n2-ink); }
+.jlpt-chip[data-level="N1"] { background: var(--jlpt-n1-tint); color: var(--jlpt-n1-ink); }
+
+/* No phone override on purpose: .xl-badges is display:none below 560px, so on a phone the chip
+   is the only thing on the right of the row and has all the space it needs. Shrinking it there
+   would make it smallest on exactly the screen where it is hardest to read. */

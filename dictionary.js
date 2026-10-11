@@ -229,6 +229,25 @@ function xlDestinations(rec) {
     return out;
 }
 
+// The JLPT level, as a label rather than a link: unlike the badges beside it there is no
+// single page a tier maps to. Only the 42.4% of entries that are in Word Match have a tier at
+// all (see tools/build-crosslink-index.js for why the rest are left blank rather than guessed),
+// so most rows render nothing here and the row must not reserve space for it.
+function jlptChipHtml(entry) {
+    if (typeof DICTIONARY_CROSSLINK === 'undefined') return '';
+    const rec = DICTIONARY_CROSSLINK[entry.jp];
+    if (!rec || !rec.j) return '';
+    const tiers = rec.j.split('-');
+    // Colour follows the easiest tier -- the level where the word is first taught. The text can
+    // name a range; the hue can only be one, and an en dash reads better than the stored hyphen.
+    const label = tiers.join('–');
+    // Guarded because this runs during the first render, unlike the popover's own tf() calls
+    // which only run on a click: if i18n.js has not evaluated yet, a chip with a plainer
+    // tooltip is the right failure, not an exception that costs the whole list its rows.
+    const title = window.tf ? window.tf('xlink.jlptLevel', { lv: label }) : 'JLPT ' + label;
+    return `<span class="jlpt-chip" data-level="${tiers[0]}" title="${title}">${label}</span>`;
+}
+
 function xlBadgesHtml(entry) {
     if (typeof DICTIONARY_CROSSLINK === 'undefined') return '';
     const rec = DICTIONARY_CROSSLINK[entry.jp];
@@ -289,6 +308,7 @@ function renderMnjpEntry(entry) {
                     <span class="term">${furigana(entry.jp, entry.reading)}</span>
                 </span>
             </button>
+            ${jlptChipHtml(entry)}
             ${xlBadgesHtml(entry)}
             <span class="mnjp-expand-hint" aria-hidden="true">&#9662;</span>
         </div>

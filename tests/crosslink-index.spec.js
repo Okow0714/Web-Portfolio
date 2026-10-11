@@ -45,11 +45,32 @@ module.exports = async function () {
     assert.ok(keys.length > 2000,
         `only ${keys.length} dictionary entries cross-link to anything — expected well over 2,000`);
 
+    // The JLPT tier is a label, not a link, so nothing above would notice it vanishing. It is
+    // derived from the `jlpt` field on each Word Match level, so it exists for exactly the words
+    // Word Match carries -- if those two counts ever diverge, a level lost its tier.
+    const withJ = keys.filter(k => data[k].j).length;
+    const TIER_ORDER = ['N5', 'N4', 'N3', 'N2', 'N1'];
+    for (const k of keys) {
+        if (!data[k].j) continue;
+        const tiers = data[k].j.split('-');
+        for (const t of tiers) assert.ok(TIER_ORDER.includes(t),
+            `${k} has JLPT tier "${t}", which is not one of ${TIER_ORDER.join('/')}`);
+        // Easiest first, and no tier twice: the chip colours itself from tiers[0] and prints the
+        // rest as a range, so an unsorted value would both mis-colour and misread.
+        const idx = tiers.map(t => TIER_ORDER.indexOf(t));
+        assert.deepStrictEqual(idx, [...idx].sort((x, y) => x - y),
+            `${k}'s JLPT tiers "${data[k].j}" are not in easiest-first order`);
+        assert.strictEqual(new Set(tiers).size, tiers.length,
+            `${k}'s JLPT tiers "${data[k].j}" repeat a tier`);
+        assert.ok(data[k].w, `${k} has a JLPT tier but no Word Match level — the tier comes from `
+            + 'the level, so one cannot exist without the other');
+    }
+
     const withW = keys.filter(k => data[k].w).length;
     const withP = keys.filter(k => data[k].p).length;
     const withR = keys.filter(k => data[k].r).length;
-    for (const [name, n, floor] of [['Word Match', withW, 1000], ['phonetics', withP, 1500],
-                                    ['reader', withR, 300]]) {
+    for (const [name, n, floor] of [['JLPT tier', withJ, 1000], ['Word Match', withW, 1000],
+                                    ['phonetics', withP, 1500], ['reader', withR, 300]]) {
         assert.ok(n > floor, `${name} links collapsed to ${n}, expected more than ${floor}`);
     }
 
@@ -73,5 +94,6 @@ module.exports = async function () {
     }
 
     console.log(`      crosslink index current — ${keys.length} entries, `
-        + `${withW} Word Match / ${withP} phonetics / ${withR} reader, every target resolves`);
+        + `${withJ} JLPT tier / ${withW} Word Match / ${withP} phonetics / ${withR} reader, `
+        + 'every target resolves');
 };
