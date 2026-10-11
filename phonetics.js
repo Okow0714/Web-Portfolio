@@ -115,7 +115,7 @@ function showFamilyList(levelKey) {
     families.forEach((family, i) => {
         const item = document.createElement('button');
         item.type = 'button';
-        item.className = 'family-item';
+        item.className = 'family-item' + (seenFamilies.has(family.phonetic) ? ' is-seen' : '');
         const intensity = Math.max(1 - i / RANK_FADE_STEPS, 0.12);
         item.style.setProperty('--rank-intensity', intensity.toFixed(2));
         item.innerHTML = `
@@ -124,6 +124,7 @@ function showFamilyList(levelKey) {
             <span class="family-info">
                 <span class="family-reading">${family.reading ? escapeHtml(family.reading) : '&mdash;'}</span>
                 <span class="family-count">${escapeHtml(window.tf('phonetics.kanjiInFamily', { n: family.members.length }))}</span>
+                ${seenFamilies.has(family.phonetic) ? `<span class="family-seen">${escapeHtml(window.t('phonetics.seenFamily'))}</span>` : ''}
                 ${metKanji.size ? `<span class="family-met">${escapeHtml(window.tf('phonetics.metInFamily', {
                     n: family.members.filter(m => metKanji.has(m.kanji)).length, total: family.members.length }))}</span>` : ''}
             </span>
@@ -142,8 +143,12 @@ function showFamilyList(levelKey) {
 }
 
 function backToFamilyList() {
-    stopTreeResize();
-    switchScreen(['family-tree-section'], 'family-list-section');
+    // Re-render rather than just unhiding. The list was built before this family was opened, so
+    // simply revealing it again showed the stale markup -- and the one row guaranteed to be wrong
+    // was the family you had just come back from, whose "seen" marker was missing at exactly the
+    // moment you would look for it. showFamilyList ends in the same stopTreeResize() +
+    // switchScreen() pair, and its own comment notes it is safe to call on the way back.
+    showFamilyList(currentLevelKey);
 }
 
 // ---------------------------------------------------------------------------
@@ -165,6 +170,77 @@ function backToFamilyList() {
 // missing it every time is not the same as knowing it, and the map should not claim otherwise.
 const metKanji = new Set();
 const solidKanji = new Set();
+
+// ---------------------------------------------------------------------------
+// Which families this learner has opened. Weaker than the met/solid tinting above and
+// deliberately so: there is nothing to complete in a map you browse, so this records attention,
+// not achievement, and the marker reads "seen".
+//
+// Keyed on the phonetic alone. A family is re-listed under every level one of its members
+// belongs to, with an identical member array each time (see the deep-link note at the bottom of
+// this file), so opening it from N5 and from N4 is the same act.
+//
+// localStorage holds it whether or not anyone is signed in, because every tool on this site works
+// without an account. Signing in merges the local set UP into phonetics_progress and never
+// subtracts -- a second device must not erase the first one's history.
+// ---------------------------------------------------------------------------
+const SEEN_KEY = 'khanjp-phonetics-seen';
+const seenFamilies = new Set();
+
+function readSeenLocal() {
+    try {
+        const raw = localStorage.getItem(SEEN_KEY);
+        return Array.isArray(JSON.parse(raw)) ? JSON.parse(raw) : [];
+    } catch (e) {
+        return [];   // private mode, or someone edited it by hand
+    }
+}
+
+function writeSeenLocal() {
+    try {
+        localStorage.setItem(SEEN_KEY, JSON.stringify([...seenFamilies]));
+    } catch (e) {
+        /* private mode or full -- losing a browse history is not worth throwing over */
+    }
+}
+
+async function loadSeenFamilies() {
+    seenFamilies.clear();
+    readSeenLocal().forEach(p => seenFamilies.add(p));
+
+    const session = window.getCurrentSession && window.getCurrentSession();
+    if (!session || !window.supabaseReady) return;
+
+    const sb = window.supabaseClient;
+    const { data, error } = await sb.from('phonetics_progress')
+        .select('phonetic').eq('user_id', session.user.id).limit(1000);
+    if (error || !data) return;                       // offline or table missing: keep the local set
+    const remote = new Set(data.map(r => r.phonetic));
+    const onlyLocal = [...seenFamilies].filter(p => !remote.has(p));
+    remote.forEach(p => seenFamilies.add(p));
+    writeSeenLocal();
+
+    if (onlyLocal.length) {
+        await sb.from('phonetics_progress').upsert(
+            onlyLocal.map(p => ({ user_id: session.user.id, phonetic: p })),
+            { onConflict: 'user_id,phonetic' });
+    }
+}
+
+function markFamilySeen(phonetic) {
+    if (!phonetic || seenFamilies.has(phonetic)) return false;
+    seenFamilies.add(phonetic);
+    writeSeenLocal();
+
+    const session = window.getCurrentSession && window.getCurrentSession();
+    if (session && window.supabaseReady) {
+        // fire and forget: a failed write costs a mark, not the page
+        window.supabaseClient.from('phonetics_progress')
+            .upsert({ user_id: session.user.id, phonetic }, { onConflict: 'user_id,phonetic' })
+            .then(() => {}, () => {});
+    }
+    return true;
+}
 
 async function loadMetKanji() {
     const session = window.getCurrentSession && window.getCurrentSession();
@@ -231,6 +307,7 @@ function detailHtml(member) {
 function showFamilyTree(levelKey, family) {
     currentLevelKey = levelKey;
     currentFamily = family;
+    markFamilySeen(family.phonetic);
     activeChipEl = null;
     const level = LEVEL_META.find(l => l.key === levelKey);
 
@@ -588,6 +665,7 @@ document.getElementById('family-tree-back-btn').addEventListener('click', backTo
 if (window.onAuthChange) {
     window.onAuthChange(async () => {
         await loadMetKanji();
+        await loadSeenFamilies();
         // onAuthChange replays a known session the moment a listener registers, which is before
         // the page's own init below has chosen a level. Re-rendering then would call
         // showFamilyList(null), which throws; init is about to render anyway.
@@ -625,6 +703,8 @@ function findFamilyForKanji(kanji) {
 
 const deepLinkKanji = new URLSearchParams(window.location.search).get('kanji');
 const deepLinkTarget = deepLinkKanji ? findFamilyForKanji(deepLinkKanji) : null;
+
+readSeenLocal().forEach(p => seenFamilies.add(p));
 
 renderLevelSidebar();
 if (deepLinkTarget) {

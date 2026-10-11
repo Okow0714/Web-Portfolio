@@ -1008,3 +1008,29 @@ html[data-contrast="darker"] .site-footer {
     --header-bg: #0c2b21;
     --header-bg-elevated: #154938;
 }
+
+/* ---------------------------------------------------------------------
+   "Seen" marker — this family's tree has been opened at least once.
+
+   Deliberately quieter than .family-met, because it is a weaker claim: met/solid come from
+   word_stats and say something about whether the kanji is known, while this only says the map
+   was looked at. A browse tool has nothing to complete, so the copy says seen, not done.
+   --------------------------------------------------------------------- */
+.family-seen {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+.family-seen::before {
+    content: '\2713';
+    margin-right: 4px;
+}
+
+/* The left accent bar eases back once a family has been opened, the way a visited link does —
+   enough to scan an unopened one out of a list of three hundred, not enough to look disabled. */
+.family-item.is-seen::before {
+    opacity: 0.4;
+}
