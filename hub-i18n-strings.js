@@ -17,7 +17,7 @@ Object.assign(window.I18N_STRINGS, {
     'hub.heroTitle': { en: "Let's make friends with Japanese.", mn: 'Япон хэлтэй найзалцгаая.' },
     'hub.heroBody': {
         en: 'Six sections for learning Japanese from the fundamentals.',
-        mn: 'Үндсээс нь сурахад зориулсан зургаан хэсэг.'
+        mn: 'Япон хэлийг үндсээс нь сурахад зориулсан зургаан хэсгээс бүрдэнэ.'
     },
 
     'hub.path.kicker': { en: 'New here?', mn: 'Шинэ хэрэглэгч үү?' },
@@ -29,21 +29,21 @@ Object.assign(window.I18N_STRINGS, {
     'hub.origins.tag': { en: '46 KANA · 9 ERAS', mn: '46 КАНА · 9 ҮЕ ШАТ' },
     'hub.origins.short': {
         en: 'Start here if Japanese writing still looks like three unrelated alphabets.',
-        mn: 'Япон бичиг гурван хоорондоо хамааралгүй цагаан толгой мэт харагдвал эндээс эхэлнэ үү.'
+        mn: 'Япон бичиг гурван хоорондоо хамааралгүй цагаан толгой мэт харагдсаар байвал эндээс эхэлнэ үү.'
     },
 
     'hub.game.name': { en: 'Word Match', mn: 'Үг холбох дасгал' },
     'hub.game.tag': { en: '~1,500 WORDS · 60 LEVELS', mn: '~1,500 ҮГ · 60 ШАТ' },
     'hub.game.short': {
-        en: 'Connect each Japanese word to the Mongolian word that means the same. Kanji sharing a reading clear together.',
-        mn: 'Япон үгийг утга нь ижил монгол үгтэй холбоно. Ижил язгуурт ханзуудыг зэрэг холбож болно.'
+        en: 'Connect each Japanese word to the Mongolian word that means the same. Kanji that share a phonetic component clear together.',
+        mn: 'Япон үгийг утга нь ижил монгол үгтэй холбоно. Ижил дуудлагын язгууртай ханзуудыг зэрэг холбож болно.'
     },
 
     'hub.phonetics.name': { en: 'Phonetics Family', mn: 'Дуудлагын бүлэг' },
     'hub.phonetics.tag': { en: '1,128 KANJI', mn: '1,128 ХАНЗ' },
     'hub.phonetics.short': {
         en: 'Kanji grouped by the phonetic component they share. Learn one and you can guess the rest.',
-        mn: 'Ханзуудыг дуудлагын язгуураар нь бүлэглэв. Нэг язгуурыг сурвал бусдыг таамаглана.'
+        mn: 'Ханзуудыг дуудлагын язгуураар нь бүлэглэсэн. Нэг язгуурыг сурвал бусад ханзыг нь таамаглана.'
     },
 
     'hub.grammar.name': { en: 'Grammar Connect', mn: 'Дүрэм холбох' },
@@ -57,14 +57,14 @@ Object.assign(window.I18N_STRINGS, {
     'hub.reading.tag': { en: '72 TEXTS', mn: '72 ТЕКСТ' },
     'hub.reading.short': {
         en: 'Read aloud and it follows your voice, highlighting the word you are on.',
-        mn: 'Чангаар уншихад дуу хоолойг тань таньж, явж буй үгийг тань дагаад тодруулна.'
+        mn: 'Чангаар уншихад дуу хоолойг чинь таньж, уншиж яваа үгийг дагаад тодруулна.'
     },
 
     'hub.dictionary.name': { en: 'Mongol-Japan Dictionary', mn: 'Монгол-Япон толь бичиг' },
     'hub.dictionary.tag': { en: '3,537 WORDS', mn: '3,537 ҮГ' },
     'hub.dictionary.short': {
-        en: 'Search in Mongolian or Japanese and the counterpart comes back. Five sources merged.',
-        mn: 'Монгол эсвэл япон үг хайвал нөгөө талын хос нь гарна. Таван эх сурвалжийг нэгтгэв.'
+        en: 'Search in Mongolian or Japanese and the counterpart comes back. It merges five sources.',
+        mn: 'Монгол эсвэл япон үг хайхад нөгөө талын хос нь гарч ирнэ. Таван эх сурвалжийг нэгтгэсэн.'
     },
 
 });
