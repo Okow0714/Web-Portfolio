@@ -9,12 +9,19 @@
 
 /* Full-bleed body ground: body is an ancestor and cannot read a descendant's custom properties,
    so it gets the single deepest colour directly (see game.css for the same pattern). */
-body:has(.path-main) {
+body:has(.path-main),
+body:has(.path-stage-main) {
     background: #ece8dd;
     background: light-dark(#ece8dd, #100e0a);
 }
 
-.path-main {
+.path-main,
+.path-stage-main {
+    /* Fraunces ships no Cyrillic, so Mongolian set in it silently falls back to a system
+       serif. Prata is vendored for exactly this and carries the cyrillic-ext subset that
+       Mongolian's ү and ө live in. */
+    --font-display-mn: 'Prata', Georgia, serif;
+
     --paper: #f4f1e8;
     --paper: light-dark(#f4f1e8, #16140f);
     --paper-raised: #fbf9f4;
@@ -66,7 +73,7 @@ body:has(.path-main) {
    Header
    --------------------------------------------------------------------- */
 .path-title {
-    font-family: 'Fraunces', Georgia, serif;
+    font-family: var(--font-display-mn);
     font-size: clamp(1.9rem, 3.4vw, 2.6rem);
     margin: 0 0 8px;
     color: var(--ink);
@@ -104,62 +111,6 @@ body:has(.path-main) {
     line-height: 1.55;
 }
 
-/* ---------------------------------------------------------------------
-   The route
-   --------------------------------------------------------------------- */
-.path-route {
-    position: relative;
-    padding-left: 68px;
-}
-
-/* The spine. Stops short at both ends so it reads as a route with a beginning and an end
-   rather than a rule that runs off the page. */
-.path-route::before {
-    content: '';
-    position: absolute;
-    left: 23px;
-    top: 14px;
-    bottom: 26px;
-    width: 2px;
-    background: var(--spine);
-}
-
-.path-stage {
-    position: relative;
-    margin-bottom: 30px;
-}
-
-.path-marker {
-    position: absolute;
-    left: -68px;
-    top: 0;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    background: var(--paper);
-    border: 2px solid var(--edge-strong);
-    font-family: 'Fraunces', Georgia, serif;
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: var(--ink-soft);
-    /* Sits over the spine rather than beside it. */
-    z-index: 1;
-}
-
-.path-marker.jp {
-    font-family: var(--font-jp);
-    font-size: 0.9rem;
-}
-
-/* Stage 0 is the one a visitor with no Japanese should start at, so it is the only one marked. */
-.path-stage.is-start .path-marker {
-    border-color: var(--saffron-bright);
-    background: var(--saffron-tint);
-    color: var(--saffron);
-}
-
 .path-card {
     border: 1px solid var(--edge);
     background: var(--paper-raised);
@@ -176,7 +127,7 @@ body:has(.path-main) {
 }
 
 .path-card-head h2 {
-    font-family: 'Fraunces', Georgia, serif;
+    font-family: var(--font-display-mn);
     font-size: 1.3rem;
     font-weight: 600;
     margin: 0;
@@ -322,26 +273,12 @@ a.path-tool:hover {
 }
 
 /* ---------------------------------------------------------------------
-   Narrow screens: the spine costs 68px of width that a phone needs more.
+   Narrow screens.
    --------------------------------------------------------------------- */
 @media (max-width: 700px) {
-    .path-main {
+    .path-main,
+    .path-stage-main {
         padding: 89px 18px 56px;
-    }
-
-    .path-route {
-        padding-left: 0;
-    }
-
-    .path-route::before {
-        display: none;
-    }
-
-    .path-marker {
-        position: static;
-        margin-bottom: -1px;
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
     }
 
     .path-step {
@@ -352,11 +289,13 @@ a.path-tool:hover {
 
 /* The darker theme drops the page to a night version rather than leaving a bright sheet of paper
    in a dark room. Same override shape as the other light pages. */
-html[data-contrast="darker"] body:has(.path-main) {
+html[data-contrast="darker"] body:has(.path-main),
+html[data-contrast="darker"] body:has(.path-stage-main) {
     background: #17150f;
 }
 
-html[data-contrast="darker"] .path-main {
+html[data-contrast="darker"] .path-main,
+html[data-contrast="darker"] .path-stage-main {
     --paper: #1c1a13;
     --paper-raised: #24211a;
     --paper-sunk: #17150f;
@@ -394,3 +333,334 @@ html[data-contrast="darker"] .path-main {
 .path-card p,
 .path-lede,
 .path-hours-note { max-width: var(--measure); }
+
+
+/* =============================================================================================
+   The confidence curve (path.html)
+
+   The six stages sit on a Dunning-Kruger shape: lowest before JLPT, rising to a peak at N3,
+   falling to the trough at N2, climbing back at N1. The curve, every stop's position and each
+   stage page's minimap are all generated from ONE list of six anchor points and written into
+   the HTML as static values -- there is no script on this page, so the route is crawlable,
+   works with JS off, and the road can never disagree with the discs.
+   ============================================================================================= */
+.path-chart {
+    position: relative;
+    aspect-ratio: 1000 / 445;
+    margin: 26px 0 0;
+}
+
+.path-curve {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    /* preserveAspectRatio is none on the element, so the drawing stretches with the box and the
+       percentage positions below stay on the line at every width -- no resize handler. */
+    overflow: visible;
+}
+
+.path-axis { stroke: var(--edge-strong); stroke-width: 1.5; opacity: 0.7; }
+
+.path-road {
+    fill: none;
+    stroke: var(--edge-strong);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-dasharray: 1 11;
+}
+
+/* The axis captions are HTML, not SVG <text>: the SVG is stretched by preserveAspectRatio:none,
+   which would squash any type inside it. */
+.path-axis-y,
+.path-axis-x {
+    position: absolute;
+    margin: 0;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    pointer-events: none;
+}
+
+.path-axis-y {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%) rotate(-180deg);
+    writing-mode: vertical-rl;
+}
+
+.path-axis-x { right: 0; bottom: -4px; }
+
+.path-stop {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 112px;
+    text-decoration: none;
+    color: var(--ink);
+}
+
+.path-stop:focus-visible { outline: 2px solid var(--saffron); outline-offset: 6px; border-radius: 6px; }
+
+/* The disc is the icon slot: the level mark stands in until an icon is dropped in here. */
+.path-stop-disc {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--paper-raised);
+    border: 2.5px solid var(--stop-hue, var(--edge-strong));
+    color: var(--stop-hue, var(--ink-soft));
+    font-family: var(--font-display-mn);
+    font-size: 1.25rem;
+    line-height: 1;
+    transition: transform var(--dur-2, 0.22s) ease, background-color var(--dur-2, 0.22s) ease,
+        color var(--dur-2, 0.22s) ease;
+}
+
+.path-stop-disc.jp { font-family: var(--font-jp); font-size: 0.95rem; }
+
+.path-stop:hover .path-stop-disc {
+    transform: scale(1.1);
+    background: var(--stop-hue);
+    color: var(--paper-raised);
+}
+
+.path-stop-label { text-align: center; line-height: 1.3; }
+.path-stop-no {
+    display: block;
+    font-size: 0.62rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+}
+.path-stop-hours { display: block; font-size: 0.72rem; color: var(--ink-soft); }
+
+/* One hue per stop, from the shared JLPT spectrum; stage 0 is before JLPT, so it takes stone.
+   The -ink variants are used, not the bare hues: these draw text and a 2.5px ring on paper. */
+.path-stop[data-stop="0"] { --stop-hue: var(--ink-faint); }
+.path-stop[data-stop="1"] { --stop-hue: var(--jlpt-n5-ink); }
+.path-stop[data-stop="2"] { --stop-hue: var(--jlpt-n4-ink); }
+.path-stop[data-stop="3"] { --stop-hue: var(--jlpt-n3-ink); }
+.path-stop[data-stop="4"] { --stop-hue: var(--jlpt-n2-ink); }
+.path-stop[data-stop="5"] { --stop-hue: var(--jlpt-n1-ink); }
+
+/* ---- the essay, folded away ----
+   A native <details>: it opens with no script, is reachable by keyboard, and a visitor who
+   only wants the route never scrolls past an essay to reach it. */
+.path-essay {
+    max-width: 68ch;
+    margin: 30px 0 0;
+    border-top: 1px solid var(--edge);
+    border-bottom: 1px solid var(--edge);
+}
+
+.path-essay > summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 16px 2px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-display-mn);
+    font-size: 1.12rem;
+    color: var(--ink);
+}
+.path-essay > summary::-webkit-details-marker { display: none; }
+
+.path-essay > summary::after {
+    content: '';
+    flex: none;
+    width: 9px;
+    height: 9px;
+    margin-left: auto;
+    border-right: 2px solid var(--saffron);
+    border-bottom: 2px solid var(--saffron);
+    transform: rotate(45deg) translate(-2px, -2px);
+    transition: transform var(--dur-2, 0.22s) ease;
+}
+.path-essay[open] > summary::after { transform: rotate(-135deg) translate(-2px, -2px); }
+.path-essay > summary:hover { color: var(--saffron); }
+.path-essay > summary:focus-visible { outline: 2px solid var(--saffron); outline-offset: 2px; }
+
+.path-essay-hint { font-size: 0.78rem; color: var(--ink-faint); }
+
+.path-essay-body { padding: 2px 2px 24px; }
+.path-essay-body h2 {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--saffron);
+    margin: 22px 0 8px;
+    font-weight: 700;
+}
+.path-essay-body p { margin: 0 0 13px; color: var(--ink-soft); font-size: 0.95rem; }
+.path-essay-body b { color: var(--ink); font-weight: 600; }
+
+.path-essay-pull {
+    margin: 20px 0 !important;
+    padding: 14px 18px;
+    background: var(--paper-sunk);
+    border-left: 3px solid var(--saffron);
+    font-family: var(--font-display-mn);
+    font-size: 1.02rem !important;
+    line-height: 1.55;
+    color: var(--ink) !important;
+}
+
+.path-essay-src {
+    margin-top: 20px !important;
+    padding-top: 13px;
+    border-top: 1px solid var(--edge);
+    font-size: 0.78rem !important;
+    color: var(--ink-faint) !important;
+    line-height: 1.65;
+}
+
+/* =============================================================================================
+   A single stage, on its own page (path-kana.html … path-n1.html)
+   ============================================================================================= */
+.pstage-inner { max-width: 820px; margin: 0 auto; }
+
+.pstage-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 13px;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    text-decoration: none;
+    border: 1px solid var(--edge);
+    background: var(--paper-raised);
+}
+.pstage-back:hover { color: var(--saffron); border-color: var(--saffron); }
+.pstage-back:focus-visible { outline: 2px solid var(--saffron); outline-offset: 2px; }
+
+.pstage-hero {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin: 22px 0 20px;
+    flex-wrap: wrap;
+}
+
+.pstage-mark {
+    flex: none;
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--saffron-tint);
+    border: 2px solid var(--saffron);
+    color: var(--saffron);
+    font-family: var(--font-display-mn);
+    font-size: 1.5rem;
+    line-height: 1;
+}
+.pstage-mark.jp { font-family: var(--font-jp); font-size: 1.15rem; }
+
+.pstage-minimap { min-width: 0; }
+.pstage-minimap-svg {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    height: 70px;
+    overflow: visible;
+}
+.pstage-minimap-svg path {
+    fill: none;
+    stroke: var(--edge-strong);
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+.pstage-minimap-svg circle { fill: var(--paper); stroke: var(--edge-strong); stroke-width: 1.5; }
+.pstage-minimap-svg circle.is-now { fill: var(--saffron); stroke: var(--saffron); }
+
+.pstage-minimap-cap {
+    margin: 2px 0 0;
+    font-size: 0.64rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+}
+
+.pstage-pager {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 30px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--edge);
+}
+
+.pstage-pager a {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 10px 14px;
+    text-decoration: none;
+    border: 1px solid var(--edge);
+    background: var(--paper-raised);
+    min-width: 0;
+}
+.pstage-pager a:hover { border-color: var(--saffron); }
+.pstage-pager a:focus-visible { outline: 2px solid var(--saffron); outline-offset: 2px; }
+.pstage-next { margin-left: auto; text-align: right; }
+
+.pstage-dir {
+    font-size: 0.62rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+}
+.pstage-who { font-size: 0.88rem; color: var(--ink); font-weight: 600; }
+
+/* ---------------------------------------------------------------------------------------------
+   Phones. A curve across a 360px column stacks the stops on top of one another, so below 760px
+   the chart becomes a vertical spine with the stops hung off it. The curve's SHAPE is kept as a
+   small sparkline above it, so the idea still arrives even though the plot cannot.
+   --------------------------------------------------------------------------------------------- */
+.path-spark { display: none; width: 100%; max-width: 300px; height: 70px; margin: 0 0 10px; }
+.path-spark path { fill: none; stroke: var(--edge-strong); stroke-width: 2; stroke-linecap: round; }
+
+@media (max-width: 760px) {
+    .path-chart {
+        aspect-ratio: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        padding-left: 4px;
+    }
+    .path-curve, .path-axis-y, .path-axis-x { display: none; }
+    .path-chart .path-spark { display: block; }
+
+    .path-chart::before {
+        content: '';
+        position: absolute;
+        left: 34px;
+        top: 86px;
+        bottom: 10px;
+        width: 2px;
+        background: var(--spine);
+    }
+
+    .path-stop {
+        position: static;
+        transform: none;
+        flex-direction: row;
+        width: auto;
+        gap: 14px;
+    }
+    .path-stop-disc { width: 54px; height: 54px; }
+    .path-stop-label { text-align: left; }
+
+    .pstage-hero { gap: 14px; }
+    .pstage-mark { width: 60px; height: 60px; font-size: 1.2rem; }
+    .pstage-mark.jp { font-size: 0.95rem; }
+}

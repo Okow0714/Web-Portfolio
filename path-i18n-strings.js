@@ -8,9 +8,60 @@
 Object.assign(window.I18N_STRINGS, {
     'path.titleSub': { en: 'Study Path', mn: 'Сурах зам' },
     'path.lede': {
-        en: 'Six stages, from not knowing a single character to N1. Each one says what you are learning, which tools to open and exactly which levels to do, and how you know you are finished with it. Work down the page; nothing here assumes you have studied Japanese before.',
-        mn: 'Нэг ч үсэг танихгүй байхаас N1 хүртэлх зургаан үе шат. Үе шат бүрт юу сурах, ямар хэрэгслээр аль шатыг хийх, дараагийнх руу шилжихэд юу чадсан байвал зохихыг бичсэн. Дээрээс доош дараалан уншина уу — өмнө нь япон хэл үзээгүй хүн ч эндээс эхэлж болно.',
+        en: 'Six stages, from not knowing a single character to N1. Click any point to open that stage in full. Why the curve has this shape is explained below it.',
+        mn: 'Зургаан үе шат — нэг ч үсэг танихгүй байхаас N1 хүртэл. Цэг бүр дээр дарвал тухайн шатны бүрэн хуудас нээгдэнэ. Муруй яагаад ийм хэлбэртэйг доор тайлбарласан.',
     },
+    // The map's stop labels and axis captions.
+    'path.stop0': { en: 'Stage 0', mn: '0-р шат' },
+    'path.stop1': { en: 'Stage 1', mn: '1-р шат' },
+    'path.stop2': { en: 'Stage 2', mn: '2-р шат' },
+    'path.stop3': { en: 'Stage 3', mn: '3-р шат' },
+    'path.stop4': { en: 'Stage 4', mn: '4-р шат' },
+    'path.stop5': { en: 'Stage 5', mn: '5-р шат' },
+    'path.axisY': { en: 'Confidence', mn: 'Өөртөө итгэх итгэл' },
+    'path.axisX': { en: 'Time studied →', mn: 'Сурсан хугацаа →' },
+
+    // The Dunning-Kruger note, folded under the curve. The claim that the familiar graph is not
+    // in the 1999 paper, and that the effect is largely a statistical artefact, is sourced in
+    // the last line -- do not soften it to "some researchers think" without checking those.
+    'path.essayTitle': { en: 'The Dunning-Kruger curve', mn: 'Даннинг–Крюгерийн муруй' },
+    'path.essayHint': { en: 'why it has this shape', mn: 'яагаад ийм хэлбэртэй вэ' },
+    'path.essay1': {
+        en: 'You have seen this shape somewhere. Confidence climbs fast to a peak, falls off a cliff, then recovers slowly on ground that is actually solid.',
+        mn: 'Энэ хэлбэрийг та хаа нэгтээ үзсэн байх. Эхлээд өөртөө итгэх итгэл хурдан өсч оргилд хүрнэ, дараа нь огцом унана, эцэст нь бодит мэдлэг дээр тогтож аажмаар сэргэнэ.',
+    },
+    'path.essayH1': { en: 'First, one thing', mn: 'Эхлээд нэг зүйлийг хэлье' },
+    'path.essay2': {
+        en: '<b>This graph is not in the original study.</b> Kruger and Dunning’s 1999 paper has no peak and no valley. The curve everyone knows was drawn later, by other people, on the internet.',
+        mn: '<b>Энэ график анхны судалгаанд байхгүй.</b> Крюгер, Даннинг хоёрын 1999 оны өгүүлэлд оргил ч, хөндий ч алга. Олны мэдэх энэ муруйг хожим интернэтэд өөр хүмүүс зуржээ.',
+    },
+    'path.essay3': {
+        en: 'The effect itself is disputed too. Researchers running the same analysis on <b>random numbers</b> get the same shape out. Much of the picture may be a shadow cast by the statistics rather than by human psychology.',
+        mn: 'Үр нөлөө нь өөрөө ч маргаантай. Судлаачид <b>санамсаргүй тоон дээр</b> яг тэр аргаар тооцоолоход ижил хэлбэр гарч ирэхийг харуулсан. Өөрөөр хэлбэл зургийн ихэнх нь хүний сэтгэл зүй биш, статистикийн сүүдэр байж болох юм.',
+    },
+    'path.essayH2': { en: 'So why put it here?', mn: 'Тэгвэл яагаад энд тавив?' },
+    'path.essay4': {
+        en: 'Because it is not a law, it is an <b>expectation</b>. A map rather than a measurement.',
+        mn: 'Учир нь энэ бол хууль биш, <b>хүлээлт</b>. Хэмжилт гэхээсээ илүү зураглал.',
+    },
+    'path.essay5': {
+        en: 'Around N3 Japanese suddenly feels hard. The vocabulary shifts from concrete things to abstract ideas, and what worked before stops working. At N2 you meet newspaper Japanese and formal written style. Thinking “I cannot do this” at exactly that point is completely normal.',
+        mn: 'N3 орчимд япон хэл гэнэт хэцүү санагддаг. Үгсийн сан бодит зүйлээс хийсвэр ойлголт руу шилжиж, өмнө нь ажилласан арга ажиллахаа болино. N2 дээр сонины хэл, албан бичгийн хэв маяг тулгарна. Яг тэр үед «би чадахгүй юм байна» гэж бодох нь маш хэвийн.',
+    },
+    'path.essayPull': {
+        en: 'The curve is not telling you how clever you are. It is telling you <i>where</i> that feeling arrives — so that it does not take you by surprise.',
+        mn: 'Муруй танд хэр ухаантайг чинь хэлж байгаа юм биш. Тэр мэдрэмж <i>хаана</i> ирэхийг урьдчилж хэлж байгаа юм — ирэхээр нь гайхахгүйн тулд.',
+    },
+    'path.essay6': {
+        en: 'The hour ranges on each point do the same job. They are not promises, they are rough numbers from other people’s experience. If you are behind them, that is not a problem with you — it is that they are rough.',
+        mn: 'Цэг бүр дээрх цагийн тоо ч мөн адил үүрэгтэй. Эдгээр нь амлалт биш, бусдын туршлагаас гарсан ойролцоо тоо. Хэрэв та хуваариасаа хоцорч байвал энэ нь таны асуудал биш — тоонууд ойролцоо учраас тэр.',
+    },
+
+    // The six stage pages.
+    'pstage.back': { en: 'Back to the map', mn: 'Замын зураг руу' },
+    'pstage.prev': { en: '← Previous', mn: '← Өмнөх' },
+    'pstage.next': { en: 'Next →', mn: 'Дараах →' },
+    'pstage.onCurve': { en: 'where this sits on the curve', mn: 'муруй дээрх байршил' },
     'path.hoursNote': {
         en: 'The hours on each stage are the ranges commonly quoted for learners with no previous kanji knowledge. Sources disagree with each other, none of them measured you, and nothing on this site tracks them — treat them as a sense of scale, not a target.',
         mn: 'Үе шат бүрийн цаг бол ханз үзэж байгаагүй хүмүүст зориулж түгээмэл дурддаг тоо. Эх сурвалж бүр өөр өөр тоо бичдэг бөгөөд энэ сайт таны цагийг хэмждэггүй. Хэр их ажил болохыг төсөөлөхөд л хэрэг болно, зорилт болгох тоо биш.',

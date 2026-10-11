@@ -83,6 +83,8 @@ module.exports = async function run(page, assert, baseUrl) {
     // sets the ground colour before the first paint.
     const pages = ['index.html', 'game.html', 'reading.html', 'grammar.html', 'dictionary.html',
         'phonetics.html', 'origins.html', 'path.html', 'freetime.html', 'dashboard.html',
+        'path-kana.html', 'path-n5.html', 'path-n4.html', 'path-n3.html', 'path-n2.html',
+        'path-n1.html',
         'credits.html', 'privacy.html', 'terms.html', 'about.html', 'reset-password.html'];
     const bad = [];
     for (const name of pages) {

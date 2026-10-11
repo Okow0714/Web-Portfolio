@@ -35,6 +35,9 @@ const PAGES = [
     'index.html', 'path.html', 'origins.html', 'game.html', 'reading.html', 'phonetics.html',
     'grammar.html', 'dictionary.html', 'freetime.html', 'dashboard.html', 'credits.html',
     'privacy.html', 'terms.html',
+    // The six Study Path stages. Each is a real page so its text stays crawlable and linkable;
+    // they share path.html's nav entry (see withCurrent).
+    'path-kana.html', 'path-n5.html', 'path-n4.html', 'path-n3.html', 'path-n2.html', 'path-n1.html',
 ];
 
 const MARKS = {
@@ -59,6 +62,10 @@ function section(text, name) {
 // all, so this is the only place the class is ever added. index.html and the legal pages have no
 // nav entry of their own and correctly come out with none.
 function withCurrent(header, page) {
+    // A stage page is a child of the Study Path map and has no nav entry of its own, so it
+    // lights path.html's instead -- otherwise the bar shows nothing on six of the pages.
+    if (/^path-[a-z0-9]+\.html$/.test(page)) page = 'path.html';
+
     // A page inside a group: mark the group's heading, so the bar still shows where you are.
     const grouped = header.replace(
         /class="nav-trigger" data-group-pages="([^"]+)"/g,
