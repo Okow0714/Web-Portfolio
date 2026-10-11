@@ -86,7 +86,9 @@ scriptin/kanji-frequency — kanji usage ranking
     https://github.com/scriptin/kanji-frequency
     CC BY 4.0.
 
-elzup/jlpt-word-list — JLPT vocabulary curation
+elzup/jlpt-word-list — JLPT vocabulary curation and level labelling
+    (tools/jlpt-levels.json is derived from its out/all.csv; MIT, so it stays MIT.
+     tools/jlpt-levels-manual.json is this project's own work, not derived from it.)
     https://github.com/elzup/jlpt-word-list
     MIT License. Reproduced as required:
 

@@ -45,9 +45,9 @@ module.exports = async function () {
     assert.ok(keys.length > 2000,
         `only ${keys.length} dictionary entries cross-link to anything — expected well over 2,000`);
 
-    // The JLPT tier is a label, not a link, so nothing above would notice it vanishing. It is
-    // derived from the `jlpt` field on each Word Match level, so it exists for exactly the words
-    // Word Match carries -- if those two counts ever diverge, a level lost its tier.
+    // The JLPT tier is a label, not a link, so nothing above would notice it vanishing. Since
+    // 2026-10-11 EVERY dictionary entry carries one, resolved from Word Match, then the full
+    // elzup list, then the hand-levelled file -- so the real guard is that coverage stays total.
     const withJ = keys.filter(k => data[k].j).length;
     const TIER_ORDER = ['N5', 'N4', 'N3', 'N2', 'N1'];
     for (const k of keys) {
@@ -62,14 +62,39 @@ module.exports = async function () {
             `${k}'s JLPT tiers "${data[k].j}" are not in easiest-first order`);
         assert.strictEqual(new Set(tiers).size, tiers.length,
             `${k}'s JLPT tiers "${data[k].j}" repeat a tier`);
-        assert.ok(data[k].w, `${k} has a JLPT tier but no Word Match level — the tier comes from `
-            + 'the level, so one cannot exist without the other');
+    }
+
+    // Total coverage, checked against the dictionary itself rather than against this file: an
+    // entry added to mnjp-data.js with no level anywhere must fail here, not ship a blank chip.
+    const mn = fs.readFileSync(path.join(REPO, 'mnjp-data.js'), 'utf8');
+    const ENTRIES = JSON.parse(mn.slice(mn.indexOf('const MNJP_ENTRIES = ') + 21)
+        .replace(/;\s*$/, '').trim());
+    const noTier = ENTRIES.filter(e => !(data[e.jp] && data[e.jp].j)).map(e => e.jp);
+    assert.strictEqual(noTier.length, 0,
+        `${noTier.length} dictionary entries have no JLPT tier (e.g. ${noTier.slice(0, 5).join(', ')})`
+        + ' — add them to tools/jlpt-levels-manual.json');
+
+    // The two level sources must stay disjoint: the manual file exists precisely for words no
+    // list covers, so an overlap means a hand-assigned level is shadowing a sourced one.
+    const listed = JSON.parse(fs.readFileSync(path.join(REPO, 'tools', 'jlpt-levels.json'), 'utf8'));
+    const manual = JSON.parse(fs.readFileSync(path.join(REPO, 'tools', 'jlpt-levels-manual.json'), 'utf8'));
+    const variants = w => {
+        const v = [w];
+        if (w.endsWith('する')) v.push(w.slice(0, -2));
+        if (w.endsWith('な') || w.endsWith('の') || w.endsWith('だ')) v.push(w.slice(0, -1));
+        return v;
+    };
+    const clash = Object.keys(manual).filter(w => variants(w).some(v => listed[v]));
+    assert.strictEqual(clash.length, 0,
+        `${clash.length} hand-levelled words are also on the JLPT list (e.g. ${clash.slice(0, 5).join(', ')})`);
+    for (const [w, lv] of Object.entries(manual)) {
+        assert.ok(TIER_ORDER.includes(lv), `${w} is hand-levelled "${lv}", not one of N5..N1`);
     }
 
     const withW = keys.filter(k => data[k].w).length;
     const withP = keys.filter(k => data[k].p).length;
     const withR = keys.filter(k => data[k].r).length;
-    for (const [name, n, floor] of [['JLPT tier', withJ, 1000], ['Word Match', withW, 1000],
+    for (const [name, n, floor] of [['JLPT tier', withJ, 3500], ['Word Match', withW, 1000],
                                     ['phonetics', withP, 1500], ['reader', withR, 300]]) {
         assert.ok(n > floor, `${name} links collapsed to ${n}, expected more than ${floor}`);
     }
@@ -94,6 +119,6 @@ module.exports = async function () {
     }
 
     console.log(`      crosslink index current — ${keys.length} entries, `
-        + `${withJ} JLPT tier / ${withW} Word Match / ${withP} phonetics / ${withR} reader, `
-        + 'every target resolves');
+        + `${withJ} JLPT tier (${Object.keys(manual).length} hand-levelled) / ${withW} Word Match / `
+        + `${withP} phonetics / ${withR} reader, every target resolves`);
 };
