@@ -415,9 +415,11 @@
                     <div class="dict-controls">
                         <div class="dict-search-wrap">
                             <label for="mnjp-search" class="sr-only" data-i18n="a11y.wordSearchLabel">Үг хайх</label>
-                            <input type="text" id="mnjp-search" class="dict-search" data-i18n-placeholder="dict.mnjpSearchPlaceholder" placeholder="Монгол, ханз, кана, эсвэл англи үгээр хайх…" autocomplete="off">
+                            <div class="dict-search-field">
+                                <input type="text" id="mnjp-search" class="dict-search" data-i18n-placeholder="dict.mnjpSearchPlaceholder" placeholder="Монгол, ханз, кана, эсвэл англи үгээр хайх…" autocomplete="off">
+                                <button type="button" class="dict-search-btn" id="mnjp-search-btn" aria-label="Хайх"><svg class="dict-search-ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="8.5" cy="8.5" r="5.5"/><line x1="12.6" y1="12.6" x2="17" y2="17"/></svg></button>
+                            </div>
                             <span class="dict-search-count" id="mnjp-count"></span>
-                            <button type="button" class="dict-search-btn" id="mnjp-search-btn" aria-label="Хайх"><svg class="dict-search-ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="8.5" cy="8.5" r="5.5"/><line x1="12.6" y1="12.6" x2="17" y2="17"/></svg></button>
                         </div>
                     </div>
                     <aside class="dict-recent" aria-labelledby="mnjp-recent-title">
@@ -436,9 +438,11 @@
             <section class="dict-panel hidden" id="dict-panel-wakan">
                 <div class="dict-controls">
                     <div class="dict-search-wrap">
-                        <input type="text" id="dict-search" class="dict-search" data-i18n-placeholder="dict.searchPlaceholder" placeholder="Ханз, кана, эсвэл англи үгээр хайх…" autocomplete="off">
+                        <div class="dict-search-field">
+                            <input type="text" id="dict-search" class="dict-search" data-i18n-placeholder="dict.searchPlaceholder" placeholder="Ханз, кана, эсвэл англи үгээр хайх…" autocomplete="off">
+                            <button type="button" class="dict-search-btn" id="dict-search-btn" aria-label="Хайх"><svg class="dict-search-ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="8.5" cy="8.5" r="5.5"/><line x1="12.6" y1="12.6" x2="17" y2="17"/></svg></button>
+                        </div>
                         <span class="dict-search-count" id="dict-count"></span>
-                        <button type="button" class="dict-search-btn" id="dict-search-btn" aria-label="Хайх"><svg class="dict-search-ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="8.5" cy="8.5" r="5.5"/><line x1="12.6" y1="12.6" x2="17" y2="17"/></svg></button>
                     </div>
                     <div class="dict-filters" id="dict-filters" role="tablist" aria-label="Filter by part of speech"></div>
                 </div>

@@ -153,11 +153,19 @@ body:has(.dictionary-main) {
 .dict-recent                { grid-area: recent; }
 
 .dict-search-wrap {
-    position: relative;
     flex: 1;
     /* The bar no longer runs the width of the column -- it only ever held one short query. */
     max-width: 520px;
     min-width: 0;
+}
+
+/* The field and its button, and nothing else. The button is centred with top:50%, so it needs
+   a box that is exactly as tall as the field: when the count lived in .dict-search-wrap below
+   the field, 50% of the wrap was the middle of field-plus-count and the button hung 6px out
+   the bottom. Keep anything that is not the field out of this element. */
+.dict-search-field {
+    position: relative;
+    display: block;
 }
 
 .dict-search {
@@ -182,11 +190,11 @@ body:has(.dictionary-main) {
    which is also what Enter does. */
 .dict-search-btn {
     position: absolute;
-    right: 5px;
+    right: 4px;
     top: 50%;
     transform: translateY(-50%);
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
