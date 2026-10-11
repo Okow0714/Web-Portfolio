@@ -480,3 +480,26 @@ body:has(.dictionary-main) {
         line-height: 1.55;
     }
 }
+
+/* ---------------------------------------------------------------------------------------------
+   Masthead and footer carry this tool's own colour instead of the shared wine.
+   The value is the seal colour deepened to 68%: at full strength the gold accent
+   (--header-accent) falls to 6.06:1 against a 4.5 minimum, and the gold is not
+   decoration -- it is the masthead border, the brand seal, the current-section underline and every
+   footer link. Deepened it sits at 8.09:1, with the cream text at 12.53:1.
+
+   Declared on .site-header-wrap/.site-footer because that is where style.css declares
+   --header-bg, and repeated under html[data-contrast="darker"] because style.css re-declares it
+   there at higher specificity -- without the second block the darker theme snaps back to wine.
+   --------------------------------------------------------------------------------------------- */
+.site-header-wrap,
+.site-footer {
+    --header-bg: #182c41;
+    --header-bg-elevated: #1d354f;
+}
+
+html[data-contrast="darker"] .site-header-wrap,
+html[data-contrast="darker"] .site-footer {
+    --header-bg: #0e1a26;
+    --header-bg-elevated: #182c41;
+}
