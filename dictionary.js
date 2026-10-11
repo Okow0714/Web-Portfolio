@@ -375,7 +375,76 @@ function renderMnjpList() {
     list.appendChild(frag);
 }
 
+// ---------------------------------------------------------------------------
+// Recently searched
+//
+// localStorage, not the account: this is a per-device convenience, it is of no use to anyone
+// else, and a reading history is the kind of thing that should not quietly follow a login.
+// Every read and write is guarded -- a private window can throw on access, and the dictionary
+// has to keep working when it does.
+// ---------------------------------------------------------------------------
+const RECENT_KEY = 'khanjp-dict-recent';
+const RECENT_MAX = 12;
+
+function recentLoad() {
+    try {
+        const raw = JSON.parse(localStorage.getItem(RECENT_KEY) || '[]');
+        return Array.isArray(raw) ? raw.filter(x => typeof x === 'string').slice(0, RECENT_MAX) : [];
+    } catch (e) { return []; }
+}
+
+function recentSave(list) {
+    try { localStorage.setItem(RECENT_KEY, JSON.stringify(list.slice(0, RECENT_MAX))); } catch (e) {}
+}
+
+function recentRender() {
+    const ul = document.getElementById('mnjp-recent-list');
+    const empty = document.getElementById('mnjp-recent-empty');
+    const clear = document.getElementById('mnjp-recent-clear');
+    if (!ul) return;
+    const list = recentLoad();
+    ul.textContent = '';
+    list.forEach(term => {
+        const li = document.createElement('li');
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'dict-recent-item';
+        b.textContent = term;
+        // the full term in a tooltip, since a long one is ellipsised in a 268px column
+        b.title = term;
+        b.addEventListener('click', () => {
+            const input = document.getElementById('mnjp-search');
+            input.value = term;
+            mnjpQuery = term;
+            renderMnjpList();
+            recentAdd(term);          // re-picking it moves it back to the top
+            input.focus();
+        });
+        li.appendChild(b);
+        ul.appendChild(li);
+    });
+    empty.classList.toggle('hidden', list.length > 0);
+    clear.classList.toggle('hidden', list.length === 0);
+}
+
+function recentAdd(term) {
+    const t = (term || '').trim();
+    // A one-character Latin or Cyrillic query matches most of the dictionary, so remembering it
+    // teaches nothing. A one-character JAPANESE query is the opposite: 水 is a whole word, and
+    // も is an entry in its own right -- so length alone is the wrong test, and a "min 2 chars"
+    // rule silently dropped every single-kanji search.
+    const ONE_CHAR_OK = /^[一-龯㐀-䶿ぁ-ゖァ-ヺ]$/;
+    if (t.length < 2 && !ONE_CHAR_OK.test(t)) return;
+    if (!MNJP_ENTRIES.some(e => matchesMnjpSearch(e, t))) return;
+    const lower = t.toLowerCase();
+    const list = recentLoad().filter(x => x.toLowerCase() !== lower);
+    list.unshift(t);
+    recentSave(list);
+    recentRender();
+}
+
 let mnjpSearchDebounce = null;
+let mnjpRecentDebounce = null;
 document.getElementById('mnjp-search').addEventListener('input', (e) => {
     const value = e.target.value;
     clearTimeout(mnjpSearchDebounce);
@@ -383,7 +452,53 @@ document.getElementById('mnjp-search').addEventListener('input', (e) => {
         mnjpQuery = value.trim();
         renderMnjpList();
     }, 120);
+    // Remembered only once typing settles, or every keystroke of "толь" would leave four
+    // entries behind. Enter and the magnifier skip the wait.
+    clearTimeout(mnjpRecentDebounce);
+    mnjpRecentDebounce = window.setTimeout(() => recentAdd(value), 1100);
 });
+
+document.getElementById('mnjp-search').addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter') return;
+    e.preventDefault();
+    clearTimeout(mnjpRecentDebounce);
+    recentAdd(e.target.value);
+});
+
+// The list already filters as you type, so the magnifier does not "run" the search -- it commits
+// the term and drops the phone keyboard, which is what tapping it is actually for.
+document.getElementById('mnjp-search-btn').addEventListener('click', () => {
+    const input = document.getElementById('mnjp-search');
+    clearTimeout(mnjpRecentDebounce);
+    recentAdd(input.value);
+    input.blur();
+});
+
+document.getElementById('mnjp-recent-clear').addEventListener('click', () => {
+    recentSave([]);
+    recentRender();
+    document.getElementById('mnjp-search').focus();
+});
+
+// The secondary tab's magnifier has no list to feed; it just dismisses the keyboard.
+document.getElementById('dict-search-btn').addEventListener('click', () => {
+    document.getElementById('dict-search').blur();
+});
+
+// i18n.js translates data-i18n / -html / -placeholder only, so an aria-label has to be set
+// here, and again whenever the visitor switches language.
+function syncSearchLabels() {
+    if (!window.t) return;
+    const label = window.t('a11y.searchBtn');
+    ['mnjp-search-btn', 'dict-search-btn'].forEach(id => {
+        const b = document.getElementById(id);
+        if (b) { b.setAttribute('aria-label', label); b.title = label; }
+    });
+}
+document.addEventListener('sitelangchange', syncSearchLabels);
+syncSearchLabels();
+
+recentRender();
 
 // ---------------------------------------------------------------------------
 // 漢語 ⇄ 和語 tab (dictionary-data.js) -- unchanged from the original single-tab page.

@@ -127,10 +127,37 @@ body:has(.dictionary-main) {
     justify-content: space-between;
 }
 
+/* ---------------------------------------------------------------------------------------
+   Search row and the recently-searched aside.
+
+   Grid AREAS, not a wrapper div: the aside has to sit in a right-hand column beside both the
+   search and the list on a desktop, but between the search and the list on a phone. Areas do
+   that with one rule each and leave the existing children where they are in the DOM.
+   --------------------------------------------------------------------------------------- */
+.dict-layout {
+    max-width: 1100px;
+    margin: 28px auto 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 268px;
+    grid-template-areas:
+        "controls recent"
+        "list     recent"
+        "empty    recent";
+    gap: 0 28px;
+    align-items: start;
+}
+
+.dict-layout .dict-controls { grid-area: controls; max-width: none; margin: 0; }
+.dict-layout .dict-list     { grid-area: list;     max-width: none; margin: 22px 0 0; }
+.dict-layout .dict-empty    { grid-area: empty;    max-width: none; margin: 40px 0; }
+.dict-recent                { grid-area: recent; }
+
 .dict-search-wrap {
     position: relative;
     flex: 1;
-    min-width: 260px;
+    /* The bar no longer runs the width of the column -- it only ever held one short query. */
+    max-width: 520px;
+    min-width: 0;
 }
 
 .dict-search {
@@ -138,7 +165,8 @@ body:has(.dictionary-main) {
     box-sizing: border-box;
     background: var(--card);
     border: 1px solid var(--card-edge);
-    padding: 13px 90px 13px 16px;
+    /* room on the right for the button alone; the count sits below the field */
+    padding: 13px 48px 13px 16px;
     font-size: 1rem;
     font-family: inherit;
     color: var(--ink);
@@ -149,11 +177,48 @@ body:has(.dictionary-main) {
     border-color: var(--terracotta);
 }
 
-.dict-search-count {
+/* The magnifier. The list already filters as you type, so this is not what runs the search --
+   it commits the current term to the recently-searched list and dismisses a phone keyboard,
+   which is also what Enter does. */
+.dict-search-btn {
     position: absolute;
-    right: 14px;
+    right: 5px;
     top: 50%;
     transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    cursor: pointer;
+    background: none;
+    border: 0;
+    color: var(--ink-faint);
+    transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.dict-search-btn:hover { color: var(--terracotta); background: var(--card-edge); }
+.dict-search-btn:focus-visible { outline: 2px solid var(--terracotta); outline-offset: -2px; }
+
+.dict-search-ico {
+    width: 19px;
+    height: 19px;
+    /* an SVG <circle>/<line> is drawn with stroke, so fill must be none or it blobs */
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.9;
+    stroke-linecap: round;
+}
+
+/* Below the field, not inside it. It used to sit absolutely inside, which fitted while the bar
+   ran the full width of the column; once the bar was capped at 520px the count printed straight
+   over the placeholder. That is the same collision the 860px block already fixed for phones, so
+   this is now simply how the count is laid out at every width. */
+.dict-search-count {
+    display: block;
+    margin-top: 6px;
+    text-align: right;
     font-size: 0.78rem;
     color: var(--ink-faint);
     letter-spacing: 0.02em;
@@ -194,6 +259,112 @@ body:has(.dictionary-main) {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+/* ---- recently searched ---------------------------------------------------------------- */
+.dict-recent {
+    position: sticky;
+    top: 88px;
+    background: var(--card);
+    border: 1px solid var(--card-edge);
+    padding: 14px 15px 15px;
+}
+
+.dict-recent-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.dict-recent-title {
+    margin: 0;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+}
+
+.dict-recent-clear {
+    font: inherit;
+    font-size: 0.72rem;
+    padding: 0;
+    cursor: pointer;
+    background: none;
+    border: 0;
+    color: var(--ink-faint);
+    text-decoration: underline;
+}
+
+.dict-recent-clear:hover { color: var(--terracotta); }
+.dict-recent-clear.hidden { display: none; }
+
+.dict-recent-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.dict-recent-item {
+    width: 100%;
+    font: inherit;
+    font-size: 0.92rem;
+    text-align: left;
+    padding: 6px 8px;
+    cursor: pointer;
+    background: none;
+    border: 0;
+    color: var(--ink);
+    /* a long query must not widen the column it sits in */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: background-color 0.12s ease, color 0.12s ease;
+}
+
+.dict-recent-item:hover { background: var(--card-edge); color: var(--terracotta); }
+.dict-recent-item:focus-visible { outline: 2px solid var(--terracotta); outline-offset: -2px; }
+
+.dict-recent-empty {
+    margin: 0;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: var(--ink-faint);
+}
+
+.dict-recent-empty.hidden { display: none; }
+
+@media (max-width: 900px) {
+    /* One column: the aside drops between the search and the results, where it is still worth
+       tapping, and its list becomes a wrapped strip of chips rather than a tall stack. */
+    .dict-layout {
+        grid-template-columns: 1fr;
+        grid-template-areas: "controls" "recent" "list" "empty";
+        gap: 0;
+    }
+
+    .dict-search-wrap { max-width: none; }
+
+    .dict-recent {
+        position: static;
+        margin-top: 14px;
+        padding: 11px 12px 12px;
+    }
+
+    .dict-recent-list { flex-direction: row; flex-wrap: wrap; gap: 6px; }
+
+    .dict-recent-item {
+        width: auto;
+        font-size: 0.85rem;
+        padding: 5px 10px;
+        border: 1px solid var(--card-edge);
+        max-width: 100%;
+    }
 }
 
 .dict-empty {
@@ -463,18 +634,8 @@ body:has(.dictionary-main) {
    with the placeholder at 390px (count 309px wide, printed straight over it). Below the field
    instead. The intro was 301px tall before the first word, so it steps down a size too. */
 @media (max-width: 860px) {
-    .dict-search-count {
-        position: static;
-        transform: none;
-        display: block;
-        margin-top: 6px;
-        text-align: right;
-    }
-
-    .dict-search {
-        padding-right: 16px;
-    }
-
+    /* The count is laid out below the field at every width now -- see .dict-search-count. Only
+       the subtitle still needs a phone-specific size here. */
     .dict-subtitle {
         font-size: 0.92rem;
         line-height: 1.55;
