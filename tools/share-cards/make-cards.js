@@ -26,7 +26,6 @@ const OUT = ROOT + 'images/share/';
 global.window = { I18N_STRINGS: {} };
 require(ROOT + 'i18n-strings-shared.js');
 require(ROOT + 'hub-i18n-strings.js');
-require(ROOT + 'freetime-i18n-strings.js');
 const S = global.window.I18N_STRINGS;
 const mn = key => {
     const e = S[key];
@@ -44,7 +43,6 @@ const CARDS = [
     { out: 'origins', title: mn('hub.origins.name'), stat: mn('hub.origins.stat'), shot: 'origins' },
     { out: 'path', title: mn('hub.path.name'), stat: '6 ҮЕ ШАТ · ТЭГЭЭС N1 ХҮРТЭЛ' },
     // brandMark: the real K seal rather than the 言 the older cards still carry.
-    { out: 'freetime', title: mn('freetime.titleSub'), stat: '5 ТҮВШИН · АНИМЭ, ДУУ, YOUTUBE', brandMark: true },
 ];
 
 const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

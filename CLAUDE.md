@@ -19,7 +19,6 @@ Supabase (Postgres + Auth). Hosted on GitHub Pages. Git repo on `main`.
 | `grammar.html` | Grammar Connect — sentence-swap grammar drill, two tracks (foundation/advanced). `<main class="grammar-main">` / `grammar.css`. |
 | `reading.html` | Dokkai Reader — speech-recognition-driven reading practice. `<main class="reading-main">` / `reading.css` (warm gold, light). |
 | `dictionary.html` | Mongol-Japan Dictionary — two tabs: primary Монгол⇄日本語 (`mnjp-data.js`), secondary 漢語⇄和語 Kango/Wago (`dictionary-data.js`, lazy-loaded only when that tab opens). Reads a `?q=` URL param on load to pre-fill/filter the primary tab — the target of the home page's search bar. `<main class="dictionary-main">` / `dictionary.css`. |
-| `freetime.html` | Чөлөөт цагаараа / Freetime Learning — a listings page, not a tool: one anime, one song and one YouTube channel per JLPT level, with a line on why each sits at that level. `<main class="freetime-main">` / `freetime.css` (cool paper, near-black ink, one indigo for links; the colour is carried by the five level edges, which are the shared JLPT spectrum). Laid out as a guide — a header row of columns and a row per level — because every other page already uses a grid of panels. The five channel links are the only interactive thing on it. The picks are editorial and each `why` line is the reason it is at that level, not a review; the YouTube choices are the site owner's. Nothing is hosted here, only named and linked. |
 | `dashboard.html` | Signed-in-only progress page — profile (avatar, editable display name), score vs. site average, per-tool level/text completion, and a link into the Settings modal for account management. `<main class="dash-main">` / `dashboard.css` (cool slate/blue utility theme). This is now the **only** page showing those bars — `index.html` carried a condensed copy until the 2026-10-11 hub rebuild removed it, along with `hub-home.js`, and `tests/progress-totals.spec.js` lost its three index.html placeholder rows at the same time. |
 | `privacy.html`, `terms.html` | Legal pages, plain styling via `legal.css`. |
 | `credits.html` | Full data/photo/music credits for every tool, one page, `legal.css` styling like the pages above — the destination for every page's footer "Data & licensing" link. Sectioned with anchor ids (`#word-game-photos`, `#word-game-music`, `#grammar-connect-photos`, `#grammar-connect-music`) in case a page ever wants to deep-link to one part instead of the whole page. |
@@ -51,9 +50,10 @@ menu down, and `build-chrome.js` throws on a page missing its markers anyway. Th
 are drawn light-on-wine for the masthead, so the hub re-colours them: measured at **1.62:1** against
 the light ground before that override.
 
-**The masthead nav is two groups and a link** (2026-09-16, replacing seven flat items): **Practice**
-(Word Match, Dokkai Reader, Grammar Connect), **Dictionary** (Vocabulary, Kana Origins, Phonetics
-Family) and Freetime. Dashboard was the third item until 2026-09-22 and is now only in the account
+**The masthead nav is two groups** (2026-09-16, replacing seven flat items; it was two groups and
+a link until Freetime was removed on 2026-10-12): **Practice** (Word Match, Dokkai Reader, Grammar
+Connect) and **Dictionary** (Vocabulary, Kana Origins, Phonetics
+Family). Dashboard was the third item until 2026-09-22 and is now only in the account
 panel: the bar is for sections anyone can open, and the dashboard is the one page that does nothing
 without an account. `dashboard.html` therefore has no nav entry to mark, like `index.html` and the
 legal pages. A group heading is a `<button class="nav-trigger" data-group-pages="a.html
