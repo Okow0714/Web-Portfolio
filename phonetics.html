@@ -410,6 +410,12 @@
                     </button>
                     <p class="phonetics-subtitle" data-i18n="phonetics.subtitle">Ижил дуудлагын язгууртай ханзууд ихэвчлэн онёми дуудлага нь ч ижил байдаг — нэгийг нь сурвал бусад нь амар болно. JLPT түвшингээ сонгоод тэр түвшний дуудлагын бүлгүүдийг үзээрэй. Бүлгүүдийг хамгийн түгээмэл гишүүн нь япон бичвэрт хэр олон тааралддагаар эрэмбэлсэн.</p>
                     <button type="button" id="phonetics-info-btn" class="ghost-btn phonetics-info-btn"><span aria-hidden="true">&#9432;</span> <span data-i18n="phonetics.whatIsPhoneticComponent">Дуудлагын язгуур гэж юу вэ?</span></button>
+                    <!-- The drill is its own page: being tested is a different activity from
+                         reading, and it wants its own screen and its own state to return to. -->
+                    <a class="phon-drill-cta" id="phonetics-drill-cta" href="phonetics-drill.html">
+                        <span aria-hidden="true">&#9635;</span>
+                        <span data-i18n="phon.drillCta">Флаш карт дасгал</span>
+                    </a>
                     <nav class="level-nav" id="phonetics-level-nav" aria-label="JLPT level"></nav>
                     <!-- Data-source attributions moved to the sitewide footer: Word Match uses the
                          same Tatoeba sentences, so CC BY / CC BY-SA credit belongs on every page,

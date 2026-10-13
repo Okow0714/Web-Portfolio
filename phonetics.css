@@ -29,7 +29,9 @@
    text: --accent-light reads fine as text on a dark panel but lands around 2.2-2.6:1 on this
    page's pale surfaces, so text that used it is now --accent-dark (5.2-6.7:1). */
 body:has(.phonetics-main),
+body:has(.phonetics-drill-main),
 .phonetics-main,
+.phonetics-drill-main,
 #phonetics-info-modal {
     --bg-page: #eaf1ec;
     --bg-page: light-dark(#eaf1ec, #101613);
@@ -69,7 +71,8 @@ body:has(.phonetics-main),
     --shadow-md: 0 14px 32px light-dark(rgba(28, 47, 37, 0.16), rgba(0, 0, 0, 0.55));
 }
 
-body:has(.phonetics-main) {
+body:has(.phonetics-main),
+body:has(.phonetics-drill-main) {
     background: var(--bg-page);
 }
 
@@ -1034,3 +1037,217 @@ html[data-contrast="darker"] .site-footer {
 .family-item.is-seen::before {
     opacity: 0.4;
 }
+
+
+/* =============================================================================================
+   Phonetics drill (phonetics-drill.html)
+
+   A separate page, not a panel. The board is for reading and this is for being tested; the two
+   want different amounts of screen and different states to come back to. A real page also makes
+   one round linkable and gives the Back button the obvious meaning.
+
+   --wrong / --wrong-tint are declared here rather than in the token block above because nothing
+   else on this page has ever needed a "you got it wrong" colour.
+   ============================================================================================= */
+.phonetics-drill-main {
+    --wrong: #9c2f20;
+    --wrong: light-dark(#9c2f20, #e0775f);
+    --wrong-tint: #f7e7e3;
+    --wrong-tint: light-dark(#f7e7e3, #2e1915);
+    /* Fraunces carries no Cyrillic, so Mongolian set in it falls back to a system serif.
+       Prata is vendored and ships the cyrillic-ext subset that ү and ө live in. */
+    --font-display-mn: 'Prata', Georgia, serif;
+
+    padding: 89px 24px 90px;
+    min-height: 100vh;
+}
+
+.pd-inner { max-width: 620px; margin: 0 auto; }
+
+.pd-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 13px;
+    font-size: 0.82rem;
+    text-decoration: none;
+    color: var(--text-secondary);
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+}
+.pd-back:hover { color: var(--accent-dark); border-color: var(--accent-dark); }
+.pd-back:focus-visible { outline: 2px solid var(--accent-dark); outline-offset: 2px; }
+
+.pd-title { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin: 18px 0 16px; }
+.pd-lv { font-family: var(--font-display-mn); font-size: 1.7rem; color: var(--accent-dark); line-height: 1; }
+.pd-sub { font-size: 0.84rem; color: var(--text-muted); letter-spacing: 0.03em; }
+
+.pd-card { background: var(--bg-surface); border: 1px solid var(--border); padding: 22px 22px 24px; }
+.pd-lead { margin: 0 0 15px; font-size: 0.9rem; color: var(--text-secondary); }
+
+.pd-decks { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 0 0 12px; }
+.pd-deck {
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    padding: 9px 10px;
+    background: var(--bg-surface-alt);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+}
+.pd-deck:disabled { opacity: 0.4; cursor: not-allowed; }
+.pd-deck[aria-pressed="true"] { background: var(--accent-dark); border-color: var(--accent-dark); color: var(--bg-surface); }
+.pd-deck:focus-visible { outline: 2px solid var(--accent-dark); outline-offset: 2px; }
+.pd-deck-n { display: block; font-family: var(--font-display-mn); font-size: 1.2rem; line-height: 1.1; }
+.pd-deck-l { display: block; font-size: 0.7rem; margin-top: 1px; }
+
+.pd-go {
+    display: block;
+    width: 100%;
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 11px 16px;
+    margin-top: 7px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    background: var(--accent-dark);
+    color: var(--bg-surface);
+    border: 1px solid var(--accent-dark);
+}
+.pd-go:hover { opacity: 0.92; }
+.pd-go:disabled { opacity: 0.4; cursor: not-allowed; }
+.pd-go:focus-visible { outline: 2px solid var(--text-primary); outline-offset: 2px; }
+.pd-go-ghost { background: none; color: var(--text-secondary); border-color: var(--border); font-weight: 500; }
+.pd-go-ghost:hover { color: var(--accent-dark); border-color: var(--accent-dark); }
+
+.pd-rail { display: flex; align-items: center; gap: 6px; margin: 14px 0 0; font-size: 0.78rem; }
+.pd-rail-cap { color: var(--text-muted); }
+.pd-rail-a {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    text-decoration: none;
+    color: var(--text-secondary);
+    background: var(--bg-surface-alt);
+    border: 1px solid var(--border);
+}
+.pd-rail-a:hover { border-color: var(--accent-dark); color: var(--accent-dark); }
+
+.pd-qtop {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.74rem;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 5px;
+}
+.pd-qtop b { color: var(--accent-dark); }
+.pd-qtop i { color: var(--wrong); font-style: normal; }
+
+.pd-meter { height: 3px; background: var(--bg-surface-alt); overflow: hidden; margin-bottom: 14px; }
+.pd-meter i { display: block; height: 100%; background: var(--accent-dark); transition: width 0.3s ease; }
+
+.pd-ask { margin: 0; text-align: center; font-size: 0.8rem; color: var(--text-muted); }
+.pd-glyph {
+    font-family: var(--font-jp);
+    font-size: clamp(74px, 17vw, 96px);
+    line-height: 1;
+    text-align: center;
+    margin: 8px 0 18px;
+    color: var(--text-primary);
+}
+
+.pd-form { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.pd-in {
+    font: inherit;
+    font-family: var(--font-jp);
+    font-size: 1.2rem;
+    text-align: center;
+    width: min(240px, 68vw);
+    padding: 10px 13px;
+    background: var(--bg-page);
+    border: 2px solid var(--border);
+    color: var(--text-primary);
+}
+.pd-in:focus { outline: none; border-color: var(--accent-dark); }
+.pd-in.is-ok { border-color: var(--accent-dark); background: var(--bg-surface-alt); }
+.pd-in.is-no { border-color: var(--wrong); background: var(--wrong-tint); }
+.pd-check {
+    font: inherit;
+    font-size: 0.88rem;
+    font-weight: 600;
+    padding: 10px 18px;
+    cursor: pointer;
+    background: var(--accent-dark);
+    color: var(--bg-surface);
+    border: 1px solid var(--accent-dark);
+}
+.pd-check:focus-visible { outline: 2px solid var(--text-primary); outline-offset: 2px; }
+.pd-hint { margin: 9px 0 0; text-align: center; font-size: 0.74rem; color: var(--text-muted); }
+
+.pd-verdict { margin: 16px 0 0; padding: 12px 14px; }
+.pd-verdict.is-ok { background: var(--bg-surface-alt); border-left: 3px solid var(--accent-dark); }
+.pd-verdict.is-no { background: var(--wrong-tint); border-left: 3px solid var(--wrong); }
+.pd-v-head { margin: 0 0 4px; font-weight: 700; font-size: 0.86rem; }
+.pd-verdict.is-ok .pd-v-head { color: var(--accent-dark); }
+.pd-verdict.is-no .pd-v-head { color: var(--wrong); }
+.pd-v-ans { margin: 0 0 7px; font-family: var(--font-jp); font-size: 1.1rem; color: var(--text-primary); }
+.pd-v-mem { margin: 0; display: flex; flex-wrap: wrap; gap: 4px 5px; }
+.pd-v-k {
+    position: relative;
+    font-family: var(--font-jp);
+    font-size: 1.2rem;
+    line-height: 1.3;
+    padding: 1px 4px 4px;
+    color: var(--text-primary);
+}
+/* the member's own JLPT level: one family runs clear across the course */
+.pd-v-k::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 8px;
+    height: 2.5px;
+    border-radius: 2px;
+    background: var(--pd-lv);
+}
+
+.pd-score {
+    font-family: var(--font-display-mn);
+    font-size: 2.6rem;
+    line-height: 1;
+    text-align: center;
+    color: var(--accent-dark);
+    margin: 4px 0 2px;
+}
+.pd-score small { font-size: 1.1rem; color: var(--text-muted); }
+.pd-done { margin: 0 0 12px; text-align: center; font-size: 0.82rem; color: var(--text-secondary); }
+
+@media (max-width: 560px) {
+    .phonetics-drill-main { padding: 82px 14px 70px; }
+    .pd-card { padding: 16px 14px 18px; }
+    .pd-decks { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* The drill entry in the board sidebar. A link, not a button: it goes to another page. */
+.phon-drill-cta {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin: 10px 0 0;
+    padding: 10px 13px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--bg-surface);
+    background: var(--accent-dark);
+    border: 1px solid var(--accent-dark);
+}
+.phon-drill-cta:hover { opacity: 0.92; }
+.phon-drill-cta:focus-visible { outline: 2px solid var(--text-primary); outline-offset: 2px; }

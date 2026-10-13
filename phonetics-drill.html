@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="mn" data-default-lang="mn">
+
+<head>
+    <meta charset="UTF-8">
+    <title data-en="Phonetics drill - Khan Japanese">Дуудлагын дасгал — Khan Japanese</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Дуудлагын язгуурын флаш карт: хэлбэрийг хараад дуудлагыг нь бич. Хирагана, катакана, ромажи аль нь ч болно.">
+    <link rel="canonical" href="https://khan-japanese.org/phonetics-drill.html">
+    <meta name="robots" content="noindex, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Khan Japanese">
+    <meta property="og:locale" content="mn_MN">
+    <meta property="og:title" content="Дуудлагын дасгал — Khan Japanese">
+    <meta property="og:description" content="Дуудлагын язгуурын флаш карт: хэлбэрийг хараад дуудлагыг нь бич. Хирагана, катакана, ромажи аль нь ч болно.">
+    <meta property="og:url" content="https://khan-japanese.org/phonetics-drill.html">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4a2c3a">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="phonetics.css">
+    <link rel="stylesheet" href="tutorial.css">
+    <link rel="stylesheet" href="fonts/fonts.css">
+    <!-- In <head> on purpose: it sets the ground colour before the first paint. -->
+    <script src="display-prefs.js"></script>
+    <!-- Also in <head>, and before every other script: an error in a page script is
+         what it exists to catch. See its own header. -->
+    <script src="error-report.js"></script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "LearningResource",
+            "name": "Phonetics Family",
+            "url": "https://khan-japanese.org/phonetics.html",
+            "description": "Kanji grouped by the phonetic component they share, so one reading unlocks a whole family. 424 families covering 1,128 kanji, ranked by how often they are used.",
+            "learningResourceType": "Reference",
+            "teaches": "Japanese kanji readings",
+            "inLanguage": [
+                "mn",
+                "en"
+            ],
+            "about": {
+                "@type": "Thing",
+                "name": "Japanese language"
+            },
+            "isAccessibleForFree": true,
+            "isPartOf": {
+                "@type": "WebSite",
+                "name": "Khan Japanese",
+                "url": "https://khan-japanese.org/"
+            },
+            "author": {
+                "@type": "Person",
+                "name": "Sarantsatsral Ganzorig",
+                "url": "https://khan-japanese.org/about.html"
+            },
+            "educationalLevel": "JLPT N5–N1"
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="background-animation">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+        <div class="floating-shape shape-4"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header: one row - brand (home link), section nav, account menu -->
+            <!-- chrome:header -->
+    <!-- Nav icon sprite, defined once per page and referenced by <use> below. The drawn set in
+         icons/tools/ is the large-format counterpart: those carry kana and kanji and stop being
+         readable under about 40px, which is why this plainer set exists.
+
+         Every label below sits in its own <span data-i18n>. That is load-bearing -- i18n.js
+         assigns textContent, so an icon inside the translated element is erased on load. -->
+    <svg class="icon-sprite" aria-hidden="true" focusable="false">
+        <symbol id="i-wordmatch" viewBox="0 0 24 24"><path fill="currentColor" d="M12.00 12.00 L9.50 16.33 L4.50 16.33 L2.00 12.00 L4.50 7.67 L9.50 7.67 Z"/><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square" stroke-linejoin="miter" d="M22.00 12.00 L19.50 16.33 L14.50 16.33 L12.00 12.00 L14.50 7.67 L19.50 7.67 Z"/></symbol>
+        <symbol id="i-reader" viewBox="0 0 24 24"><rect fill="currentColor" x="3.5" y="4.6" width="17" height="2"/><rect fill="currentColor" x="3.5" y="9.2" width="11.5" height="2"/><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square" stroke-linejoin="miter" d="M3.5 16.8 q2.6 -3.2 5.2 0 t5.2 0 t5.2 0"/></symbol>
+        <symbol id="i-grammar" viewBox="0 0 24 24"><rect fill="currentColor" x="3" y="3.2" width="18" height="2.2"/><rect fill="currentColor" x="3" y="18.6" width="18" height="2.2"/><rect fill="currentColor" x="11.1" y="9.4" width="1.8" height="5.2"/><path fill="currentColor" d="M12 7 L8.9 10.9 L15.1 10.9 Z"/><path fill="currentColor" d="M12 17 L8.9 13.1 L15.1 13.1 Z"/></symbol>
+        <symbol id="i-vocabulary" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square" stroke-linejoin="miter" d="M5.2 9.6 A7.6 7.6 0 0 1 17.6 7.4"/><path fill="currentColor" d="M3 6.4 L8.3 7.2 L4.6 11.4 Z"/><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square" stroke-linejoin="miter" d="M18.8 14.4 A7.6 7.6 0 0 1 6.4 16.6"/><path fill="currentColor" d="M21 17.6 L15.7 16.8 L19.4 12.6 Z"/></symbol>
+        <symbol id="i-origins" viewBox="0 0 24 24"><rect fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square" stroke-linejoin="miter" x="2" y="8.8" width="6.4" height="6.4"/><rect fill="currentColor" x="9.4" y="11.2" width="3.4" height="1.6"/><path fill="currentColor" d="M15 12 L11.6 9.6 L11.6 14.4 Z"/><circle fill="currentColor" cx="19" cy="12" r="3.4"/></symbol>
+        <symbol id="i-phonetics" viewBox="0 0 24 24"><circle fill="currentColor" cx="12" cy="12" r="4"/><circle fill="currentColor" cx="4.6" cy="5.6" r="2.8"/><circle fill="currentColor" cx="19.4" cy="5.6" r="2.8"/><circle fill="currentColor" cx="12" cy="20.6" r="2.8"/><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square" stroke-linejoin="miter" d="M6.6 7.6 L9.6 10.2 M17.4 7.6 L14.4 10.2"/></symbol>
+        <symbol id="i-path" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square" stroke-linejoin="miter" d="M4 19.5 L10 12.5 L15 15.5 L20 4.5"/><circle fill="currentColor" cx="4" cy="19.5" r="2.6"/><circle fill="currentColor" cx="20" cy="4.5" r="3.2"/></symbol>
+        <symbol id="i-home" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square" stroke-linejoin="miter" d="M2.5 12 L12 4 L21.5 12"/><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square" stroke-linejoin="miter" d="M5 11 V20 H19 V11"/><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square" stroke-linejoin="miter" d="M9.8 20 V15 H14.2 V20"/></symbol>
+        <symbol id="i-dashboard" viewBox="0 0 24 24"><rect fill="currentColor" x="3.5" y="6.2" width="17" height="2"/><rect fill="currentColor" x="3.5" y="11" width="12" height="2"/><rect fill="currentColor" x="3.5" y="15.8" width="7" height="2"/></symbol>
+    </svg>
+
+        <!-- The loading screen. First thing in the page so it paints before anything else, and
+             styled to hold itself back 0.6s (see .khanjp-loader in style.css) so a page that is
+             ready quickly never shows it at all. aria-hidden because it says nothing a screen
+             reader needs: it is a cover over a page that is still being built. -->
+        <div class="khanjp-loader" id="khanjp-loader" aria-hidden="true">
+            <span class="khanjp-loader-seal"><img src="icons/brand-mark.png" alt="" width="64" height="64"></span>
+            <p class="khanjp-loader-name">Khan Japanese</p>
+            <span class="khanjp-loader-bar"><i></i></span>
+        </div>
+
+        <!-- First focusable thing on the page. The loader above it is aria-hidden and takes no
+             pointer or keyboard focus, so this is what a Tab press reaches first. Invisible until
+             focused, then it drops into view over the masthead. Its target is the id "main", which
+             every page's main landmark now carries.
+             Deliberately no literal tag name in this comment: it is copied into thirteen pages, so
+             anything here that looks like markup shows up as a false match to every tool that
+             greps them. One did, within the hour. -->
+        <a class="skip-link" href="#main" data-i18n="a11y.skipToContent">Үндсэн хэсэг рүү шилжих</a>
+
+        <script>
+            (function () {
+                if (window.__khanjpLoader) return;   // the chrome is copied into twelve pages
+                window.__khanjpLoader = true;
+                var done = function () {
+                    var el = document.getElementById('khanjp-loader');
+                    if (!el || el.classList.contains('is-done')) return;
+                    el.classList.add('is-done');
+                    window.setTimeout(function () {
+                        if (el.parentNode) el.parentNode.removeChild(el);
+                    }, 460);
+                };
+                // DOMContentLoaded is the signal that matters here: the big word-data files are
+                // plain "script src" tags at the end of the body, so it does not fire until they are
+                // parsed. Two frames after it, because this listener is registered first and so
+                // runs first -- the page's own listeners, which build the content, run in between.
+                document.addEventListener('DOMContentLoaded', function () {
+                    requestAnimationFrame(function () { requestAnimationFrame(done); });
+                });
+                // And never leave it up: if something throws before the page renders, the page
+                // underneath is still better than a cover that never lifts.
+                window.setTimeout(done, 8000);
+            })();
+        </script>
+        <div class="site-header-wrap">
+            <header class="header">
+                <a href="index.html" class="site-brand" aria-label="Khan Japanese - home">
+                    <span class="brand-seal" aria-hidden="true"><img src="icons/brand-mark.png" alt=""></span>
+                    <span class="brand-text">
+                        <span class="brand-name">Khan Japanese</span>
+                        <span class="brand-role">Japanese study tools</span>
+                    </span>
+                </a>
+
+                <nav class="header-nav" id="site-nav" aria-label="Main">
+                    <!-- Drawer-only: on a phone the brand opens this list instead of going home,
+                         so Home lives here; Study Path was only ever left out of the bar for room. -->
+                    <div class="nav-item nav-drawer-only">
+                        <a href="index.html" class="nav-trigger"><svg class="nav-ico nav-ico-top" aria-hidden="true"><use href="#i-home"/></svg><span data-i18n="nav.home">Home</span></a>
+                    </div>
+                    <!-- Two groups instead of seven items. The heading is a <button>, not a link:
+                         it names a group, not a page. .nav-trigger already resets background,
+                         border and font, so it styles identically to the anchors beside it.
+                         data-group-pages is what build-chrome.js reads to mark the open page. -->
+                    <div class="nav-item">
+                        <button type="button" class="nav-trigger" data-group-pages="game.html reading.html grammar.html"><span data-i18n="nav.practice">Practice</span><span class="nav-caret" aria-hidden="true">&#9662;</span></button>
+                        <div class="nav-dropdown">
+                            <a href="game.html"><svg class="nav-ico" aria-hidden="true"><use href="#i-wordmatch"/></svg><span data-i18n="nav.wordGame">Word Match</span></a>
+                            <a href="reading.html"><svg class="nav-ico" aria-hidden="true"><use href="#i-reader"/></svg><span data-i18n="nav.dokkaiReader">Dokkai Reader</span></a>
+                            <a href="grammar.html"><svg class="nav-ico" aria-hidden="true"><use href="#i-grammar"/></svg><span data-i18n="nav.grammarConnect">Grammar Connect</span></a>
+                        </div>
+                    </div>
+                    <div class="nav-item">
+                        <button type="button" class="nav-trigger" data-group-pages="dictionary.html origins.html phonetics.html"><span data-i18n="nav.dictionary">Dictionary</span><span class="nav-caret" aria-hidden="true">&#9662;</span></button>
+                        <div class="nav-dropdown">
+                            <a href="dictionary.html"><svg class="nav-ico" aria-hidden="true"><use href="#i-vocabulary"/></svg><span data-i18n="nav.vocabulary">Vocabulary</span></a>
+                            <a href="origins.html"><svg class="nav-ico" aria-hidden="true"><use href="#i-origins"/></svg><span data-i18n="nav.kanaOrigins">Kana Origins</span></a>
+                            <a href="phonetics.html"><svg class="nav-ico" aria-hidden="true"><use href="#i-phonetics"/></svg><span data-i18n="nav.phoneticsFamily">Phonetics Family</span></a>
+                        </div>
+                    </div>
+                    <div class="nav-item nav-drawer-only">
+                        <a href="path.html" class="nav-trigger"><svg class="nav-ico nav-ico-top" aria-hidden="true"><use href="#i-path"/></svg><span data-i18n="nav.studyPath">Study Path</span></a>
+                    </div>
+                </nav>
+
+                <!-- Backdrop for the phone drawer. Inert until body.nav-drawer-open. -->
+                <div class="nav-scrim" id="nav-scrim"></div>
+
+                <!-- Touch has no hover, and a group heading is not a link, so without this a phone
+                     could never open a group. Desktop still uses :hover / :focus-within from
+                     style.css; this only toggles a class. Guarded because the chrome is copied
+                     into twelve pages and must bind once. -->
+                <script>
+                    (function () {
+                        if (window.__khanjpNav) return;
+                        window.__khanjpNav = true;
+
+                        // Below 860 the nav is a drawer (see style.css) and the brand opens it rather
+                        // than going home; Home is the drawer's first link. Above 860 nothing changes:
+                        // the two groups open on hover, and this only handles taps.
+                        var isDrawer = function () { return window.matchMedia('(max-width: 860px)').matches; };
+                        var brand = document.querySelector('.site-brand');
+
+                        var closeGroups = function () {
+                            var open = document.querySelectorAll('.nav-item.open');
+                            for (var i = 0; i < open.length; i++) open[i].classList.remove('open');
+                        };
+                        var setDrawer = function (open) {
+                            document.body.classList.toggle('nav-drawer-open', open);
+                            if (brand) brand.setAttribute('aria-expanded', String(open));
+                        };
+                        if (brand && isDrawer()) {
+                            brand.setAttribute('aria-controls', 'site-nav');
+                            brand.setAttribute('aria-expanded', 'false');
+                        }
+
+                        document.addEventListener('click', function (e) {
+                            var hit = function (sel) { return e.target.closest && e.target.closest(sel); };
+                            if (hit('.site-brand') && isDrawer()) {
+                                e.preventDefault();
+                                setDrawer(!document.body.classList.contains('nav-drawer-open'));
+                                return;
+                            }
+                            if (hit('.nav-scrim')) { setDrawer(false); return; }
+                            if (hit('.header-nav a')) { setDrawer(false); return; }   // leaving anyway
+                            var trigger = hit('.nav-trigger[data-group-pages]');
+                            if (trigger && !isDrawer()) {
+                                // a tap on a touch laptop: the group heading is not a link
+                                var item = trigger.parentNode;
+                                var wasOpen = item.classList.contains('open');
+                                closeGroups();
+                                if (!wasOpen) item.classList.add('open');
+                                return;
+                            }
+                            if (!trigger) closeGroups();
+                        });
+
+                        document.addEventListener('keydown', function (e) {
+                            if (e.key !== 'Escape') return;
+                            closeGroups();
+                            setDrawer(false);
+                        });
+
+                        // Rotating to landscape can cross the breakpoint with the drawer open.
+                        window.addEventListener('resize', function () {
+                            if (!isDrawer()) {
+                                setDrawer(false);
+                                if (brand) brand.removeAttribute('aria-expanded');
+                            } else if (brand && !brand.hasAttribute('aria-expanded')) {
+                                brand.setAttribute('aria-controls', 'site-nav');
+                                brand.setAttribute('aria-expanded', 'false');
+                            }
+                        });
+                    })();
+                </script>
+
+                <!-- Language lives here, not behind the account menu: it is the one setting a
+                     visitor needs before they have decided whether to sign up at all. -->
+                <button type="button" class="lang-switch" id="lang-switch" data-lang-switch>
+                    <span class="lang-switch-flag" aria-hidden="true"><svg viewBox="0 0 20 14"><rect width="20" height="14" fill="#012169"/><path d="M0 0 L20 14 M20 0 L0 14" stroke="#fff" stroke-width="2.8"/><path d="M0 0 L20 14 M20 0 L0 14" stroke="#C8102E" stroke-width="1.5"/><path d="M10 0 V14 M0 7 H20" stroke="#fff" stroke-width="4.4"/><path d="M10 0 V14 M0 7 H20" stroke="#C8102E" stroke-width="2.4"/></svg></span><span class="lang-switch-code"></span>
+                </button>
+
+                <!-- Light/dark sits beside the language switch for the same reason: a visitor on a
+                     phone at night needs it before deciding whether to sign up, and it must not be
+                     buried in the account menu. Three states -- follow the device, light, dark --
+                     cycled by this one button; see display-prefs.js. -->
+                <button type="button" class="lang-switch theme-switch" id="theme-switch">
+                    <span class="theme-switch-icon" aria-hidden="true">◐</span>
+                </button>
+
+                <div class="account-menu" id="account-menu">
+                    <button class="account-menu-trigger" id="account-menu-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Account menu">
+                        <span id="account-menu-avatar">
+                            <!-- Decorative: the button around it already carries aria-label="Account
+                                 menu". Without aria-hidden a screen reader announces the graphic as
+                                 well, so the control is read twice. -->
+                            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9Zm0 2c-4 0-8 2-8 5v2h16v-2c0-3-4-5-8-5Z"/></svg>
+                        </span>
+                    </button>
+                    <div class="account-menu-scrim" id="account-menu-scrim"></div>
+                    <div class="account-menu-panel" id="account-menu-panel">
+                        <div id="auth-anon">
+                            <p class="account-menu-note" data-i18n="auth.loginHint">Log in to save your progress across visits.</p>
+                            <button id="auth-login-btn" class="auth-btn account-menu-cta" type="button" data-i18n="auth.logIn">Log In</button>
+                            <nav class="account-menu-nav">
+                                <button type="button" class="account-menu-nav-item" id="account-settings-btn-anon" data-i18n="account.settings">Settings</button>
+                            </nav>
+                        </div>
+                        <div id="auth-authed" class="hidden">
+                            <div class="account-menu-profile">
+                                <div class="account-menu-profile-avatar" id="account-menu-profile-avatar"></div>
+                                <div class="account-menu-profile-text">
+                                    <p class="account-menu-label" data-i18n="auth.signedInAs">Signed in as</p>
+                                    <p id="auth-user-email" class="auth-user-email"></p>
+                                </div>
+                            </div>
+                            <nav class="account-menu-nav">
+                                <a href="dashboard.html" class="account-menu-nav-item"><svg class="acct-ico" aria-hidden="true"><use href="#i-dashboard"/></svg><span data-i18n="dash.titleSub">Dashboard</span></a>
+                                <button type="button" class="account-menu-nav-item" id="account-details-btn" data-i18n="account.details">Account details</button>
+                                <button type="button" class="account-menu-nav-item" id="account-settings-btn" data-i18n="account.settings">Settings</button>
+                            </nav>
+                            <button id="auth-logout-btn" class="account-menu-logout" type="button" data-i18n="auth.logOut">Log Out</button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+
+        <!-- Auth Modal -->
+        <!-- role/aria-modal so assistive tech announces this as a dialog and treats the page behind
+             it as inert. The focus trap that makes that true in practice lives in auth-shared.js,
+             hooked into showEl/hideEl so all three modals get it. -->
+        <div id="auth-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
+            <div class="modal-card">
+                <button id="auth-modal-close" class="modal-close" type="button" aria-label="Close">&times;</button>
+                <h3 id="auth-modal-title" data-i18n="auth.logIn">Log In</h3>
+                <form id="auth-form">
+                    <label for="auth-email" data-i18n="auth.email">Email</label>
+                    <input type="email" id="auth-email" required autocomplete="email">
+                    <label for="auth-password" data-i18n="auth.password">Password</label>
+                    <input type="password" id="auth-password" required autocomplete="current-password" minlength="6">
+                    <button type="button" id="auth-forgot-btn" class="auth-forgot-link" data-i18n="auth.forgotPassword">Forgot password?</button>
+                    <div id="auth-terms-row" class="auth-terms-row hidden">
+                        <label class="auth-checkbox-label">
+                            <input type="checkbox" id="auth-terms-checkbox">
+                            <span data-i18n-html="auth.agreeToTerms">I agree to the <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a></span>
+                        </label>
+                    </div>
+                    <p id="auth-error" class="auth-error hidden"></p>
+                    <button type="submit" id="auth-submit-btn" class="auth-btn" data-i18n="auth.logIn">Log In</button>
+                </form>
+                <button id="auth-mode-toggle" class="auth-mode-toggle" type="button" data-i18n="auth.needAccount">Need an account? Sign up</button>
+            </div>
+        </div>
+
+        <!-- Account Details Modal -->
+        <div id="account-details-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="account-details-modal-title">
+            <div class="modal-card">
+                <button id="account-details-modal-close" class="modal-close" type="button" aria-label="Close">&times;</button>
+                <h3 id="account-details-modal-title" data-i18n="account.details">Account details</h3>
+                <p class="modal-label" data-i18n="auth.email">Email</p>
+                <p id="account-details-email" class="account-email"></p>
+            </div>
+        </div>
+
+        <!-- Settings Modal -->
+        <div id="account-settings-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="account-settings-modal-title">
+            <div class="modal-card">
+                <button id="account-settings-modal-close" class="modal-close" type="button" aria-label="Close">&times;</button>
+                <h3 id="account-settings-modal-title" data-i18n="account.settings">Settings</h3>
+                <div class="settings-row">
+                    <div>
+                        <p class="modal-label" data-i18n="account.readingLabel">Furigana shown as</p>
+                        <p class="settings-row-note" data-i18n="account.readingNote">The small readings above kanji. Useful if you are still learning kana &mdash; the Japanese itself never changes.</p>
+                    </div>
+                    <div class="pref-seg" role="group" id="reading-style-group">
+                        <button type="button" class="pref-seg-btn" data-reading-style="kana" lang="ja">あい</button>
+                        <button type="button" class="pref-seg-btn" data-reading-style="romaji">romaji</button>
+                        <button type="button" class="pref-seg-btn" data-reading-style="cyrillic">кирилл</button>
+                    </div>
+                </div>
+                <div class="settings-row">
+                    <div>
+                        <p class="modal-label" data-i18n="account.darkerLabel">Darker theme</p>
+                        <p class="settings-row-note" data-i18n="account.darkerNote">Drops the dark pages and the site header to a midnight version of the same colours. Pages that are already light keep their own colours.</p>
+                    </div>
+                    <button type="button" class="auth-btn auth-btn-outline" id="darker-toggle-btn" aria-pressed="false" data-i18n="account.darkerOff">Off</button>
+                </div>
+                <div class="settings-row">
+                    <div>
+                        <p class="modal-label" data-i18n="account.tutorialsLabel">Page tutorials</p>
+                        <p class="settings-row-note" data-i18n="account.tutorialsNote">The first-visit walkthroughs on each tool. Showing them again also brings back the notation key.</p>
+                    </div>
+                    <button type="button" class="auth-btn auth-btn-outline" id="tutorial-reset-btn" data-i18n="account.tutorialsReset">Show again</button>
+                </div>
+                <div class="account-danger-zone hidden" id="account-danger-zone">
+                    <h4 data-i18n="account.dangerZone">Danger Zone</h4>
+                    <p data-i18n="account.resetWarning">Resetting your study progress clears your Word Match times, Grammar Connect results, the texts you have read, and every word attempt behind the dashboard and the Phonetics map. Your account, name and bookmarks stay. This can&#39;t be undone.</p>
+                    <button id="progress-reset-start-btn" class="auth-btn auth-btn-outline" type="button" data-i18n="account.resetProgress">Reset study progress</button>
+                    <div id="progress-reset-confirm" class="hidden">
+                        <p class="settings-row-note" data-i18n="account.resetConfirmAsk">Clear all study progress? There is no way back.</p>
+                        <button id="progress-reset-confirm-btn" class="auth-btn account-delete-btn" type="button" data-i18n="account.resetConfirmYes">Yes, clear my progress</button>
+                        <button id="progress-reset-cancel-btn" class="auth-btn auth-btn-outline" type="button" data-i18n="account.cancel">Cancel</button>
+                    </div>
+                    <p id="progress-reset-status" class="account-delete-status hidden"></p>
+                    <hr class="danger-sep">
+                    <p data-i18n="account.deleteWarning">Deleting your account permanently removes your profile, bookmarks, messages, and study progress. This can't be undone.</p>
+                    <button id="account-delete-start-btn" class="auth-btn account-delete-btn" type="button" data-i18n="account.deleteMyAccount">Delete My Account</button>
+                    <div id="account-delete-confirm" class="account-delete-confirm hidden">
+                        <label for="account-delete-input" data-i18n="account.typeDeleteToConfirm">Type DELETE to confirm:</label>
+                        <input type="text" id="account-delete-input" autocomplete="off">
+                        <button id="account-delete-confirm-btn" class="auth-btn account-delete-btn" type="button" disabled data-i18n="account.yesPermanentlyDelete">Yes, permanently delete my account</button>
+                    </div>
+                    <p id="account-delete-status" class="account-delete-status hidden"></p>
+                </div>
+            </div>
+        </div>
+            <!-- /chrome:header -->
+
+        <main tabindex="-1" id="main" class="phonetics-drill-main">
+            <div class="pd-inner">
+                <div id="drill-head"></div>
+                <section class="pd-card" id="drill-root"></section>
+            </div>
+        </main>
+
+
+        <!-- Phonetic component explainer modal — trigger: page H1 or the dedicated info button only -->
+        <div id="phonetics-info-modal" class="modal-overlay hidden">
+            <div class="modal-card phonetics-info-card">
+                <button id="phonetics-info-close" class="modal-close" type="button" aria-label="Close">&times;</button>
+                <h3 data-i18n="phonetics.modalTitle">What's a Phonetic Component?</h3>
+                <div class="morph-demo">
+                    <div class="morph-stages" id="morph-stages">
+                        <div class="morph-stage" data-stage="component">
+                            <div class="morph-glyph morph-glyph-component">相</div>
+                            <p class="morph-caption" data-i18n="phonetics.stageComponent">component</p>
+                        </div>
+                        <div class="morph-stage" data-stage="phonetic">
+                            <div class="morph-glyph-row">
+                                <div class="morph-glyph">相</div>
+                                <div class="morph-reading">ソウ</div>
+                            </div>
+                            <p class="morph-caption" data-i18n-html="phonetics.stagePhonetic">phonetic (相 &middot; ソウ)</p>
+                        </div>
+                        <div class="morph-stage" data-stage="kanji">
+                            <p class="morph-sub">相 + 心</p>
+                            <div class="morph-glyph">想</div>
+                            <p class="morph-caption" data-i18n-html="phonetics.stageKanji">kanji (想 &middot; そう &middot; to think/imagine)</p>
+                        </div>
+                        <div class="morph-stage" data-stage="combination">
+                            <div class="morph-glyph morph-glyph-word">想像</div>
+                            <p class="morph-caption" data-i18n-html="phonetics.stageCombination">combination (想像 &middot; そうぞう &middot; imagination)</p>
+                        </div>
+                    </div>
+                    <div class="morph-dots" id="morph-dots">
+                        <span class="morph-dot" data-dot="0"></span>
+                        <span class="morph-dot" data-dot="1"></span>
+                        <span class="morph-dot" data-dot="2"></span>
+                        <span class="morph-dot" data-dot="3"></span>
+                    </div>
+                </div>
+                <p class="phonetics-info-text" data-i18n="phonetics.explainerText">A "phonetic component" is a recurring part inside a kanji that hints at its Chinese-derived on'yomi reading, rather than its meaning. Kanji sharing the same phonetic component — like 相, 想, and 霜 above — often sound alike even though they mean very different things, because the component was originally chosen for its sound. A separate "meaning radical" (like 心, heart, tucked into 想) is what actually carries the sense.</p>
+            </div>
+        </div>
+    </div>
+
+        <!-- chrome:footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="footer-brand" aria-label="Khan Japanese - home">
+                        <span class="brand-seal" aria-hidden="true"><img src="icons/brand-mark.png" alt="" loading="lazy" decoding="async"></span>
+                        <span class="footer-brand-name">Khan Japanese</span>
+                    </a>
+                    <p class="footer-blurb" data-i18n="footer.blurb">System engineering student in Japan, building tools for learning the language.</p>
+                </div>
+                <div class="footer-col">
+                    <h2 class="footer-heading" data-i18n="footer.studyTools">Study tools</h2>
+                    <ul class="footer-list">
+                        <li><a href="path.html"><svg class="foot-ico" aria-hidden="true"><use href="#i-path"/></svg><span data-i18n="nav.studyPath">Study Path</span></a></li>
+                        <li><a href="origins.html"><svg class="foot-ico" aria-hidden="true"><use href="#i-origins"/></svg><span data-i18n="nav.kanaOrigins">Kana Origins</span></a></li>
+                        <li><a href="game.html"><svg class="foot-ico" aria-hidden="true"><use href="#i-wordmatch"/></svg><span data-i18n="nav.wordGame">Word Game</span></a></li>
+                        <li><a href="reading.html"><svg class="foot-ico" aria-hidden="true"><use href="#i-reader"/></svg><span data-i18n="nav.dokkaiReader">Dokkai Reader</span></a></li>
+                        <li><a href="phonetics.html"><svg class="foot-ico" aria-hidden="true"><use href="#i-phonetics"/></svg><span data-i18n="nav.phoneticsFamily">Phonetics Family</span></a></li>
+                        <li><a href="grammar.html"><svg class="foot-ico" aria-hidden="true"><use href="#i-grammar"/></svg><span data-i18n="nav.grammarConnect">Grammar Connect</span></a></li>
+                        <li><a href="dictionary.html"><svg class="foot-ico" aria-hidden="true"><use href="#i-vocabulary"/></svg><span data-i18n="nav.dictionary">Dictionary</span></a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h2 class="footer-heading" data-i18n="nav.portfolio">About Me</h2>
+                    <ul class="footer-list">
+                        <li><a href="about.html#portfolio" data-i18n="footer.projectsLearning">Projects &amp; learning</a></li>
+                        <li><a href="about.html#qualifications" data-i18n="nav.qualifications">Qualifications</a></li>
+                        <li><a href="about.html#resume" data-i18n="nav.resume">Resume</a></li>
+                        <li><a href="about.html#contact" data-i18n="footer.getInTouch">Get in touch</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bar">
+                <p class="footer-copy">&copy; 2026 Khan Japanese</p>
+                <div class="footer-links">
+                    <a href="credits.html" data-i18n="footer.dataLicensing">Data &amp; licensing</a>
+                    <a href="privacy.html" data-i18n="footer.privacyPolicy">Privacy Policy</a>
+                    <a href="terms.html" data-i18n="footer.termsOfService">Terms of Service</a>
+                    <a href="about.html#contact" data-i18n="footer.contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+        <!-- /chrome:footer -->
+
+    <script src="i18n-strings-shared.js"></script>
+    <script src="phonetics-i18n-strings.js"></script>
+    <script src="i18n.js"></script>
+    <script src="reading-style.js"></script>
+    <script src="vendor/supabase.min.js"></script>
+    <script src="supabase-config.js"></script>
+    <script src="auth-shared.js"></script>
+    <!-- The ~100KB derivative, not phonetics-data.js: a question needs a shape, its sounds and
+         its members, none of the readings, meanings and example sentences the big file carries. -->
+    <script src="phonetics-quiz-data.js"></script>
+    <script src="kana-match.js"></script>
+    <script src="phonetics-drill.js"></script>
+    <script src="pwa-register.js"></script>
+</body>
+
+</html>

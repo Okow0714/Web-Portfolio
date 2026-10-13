@@ -82,7 +82,7 @@ module.exports = async function run(page, assert, baseUrl) {
     // Every page must load it, and in second position -- display-prefs.js stays first because it
     // sets the ground colour before the first paint.
     const pages = ['index.html', 'game.html', 'reading.html', 'grammar.html', 'dictionary.html',
-        'phonetics.html', 'origins.html', 'path.html', 'dashboard.html',
+        'phonetics.html', 'phonetics-drill.html', 'origins.html', 'path.html', 'dashboard.html',
         'path-kana.html', 'path-n5.html', 'path-n4.html', 'path-n3.html', 'path-n2.html',
         'path-n1.html',
         'credits.html', 'privacy.html', 'terms.html', 'about.html', 'reset-password.html'];

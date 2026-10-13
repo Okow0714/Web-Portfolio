@@ -30,3 +30,36 @@ Object.assign(window.I18N_STRINGS, {
     'phonetics.familyForLevelHint': { en: 'Phonetic family for {level} · {n} kanji share this component dictionary-wide. Tap a kanji to see its details.', mn: '{level} түвшний дуудлагын бүлэг · толь бичигт энэ язгууртай нийт {n} ханз байна. Дэлгэрэнгүйг харахын тулд ханз дээр дарна уу.' },
     'phonetics.shared': { en: 'shared', mn: 'нийтлэг' },
 });
+
+// ---- Phonetics drill (phonetics-drill.html) ----
+Object.assign(window.I18N_STRINGS, {
+    "drill.back": { en: "Back to the board", mn: "Самбар руу буцах" },
+    "drill.toBoard": { en: "Back to the board", mn: "Самбар руу буцах" },
+    "drill.checkpoint": { en: "stage", mn: "шат" },
+    "drill.allShapes": { en: "all shapes", mn: "бүх хэлбэр" },
+    "drill.shapes": { en: "shapes", mn: "хэлбэр" },
+    "drill.lead": {
+        en: "Ten shapes a round. Look at the shape and type the sound it gives — hiragana, katakana or romaji, whichever you like.",
+        mn: "Нэг удаад 10 хэлбэр. Хэлбэрийг хараад дуудлагыг нь бичнэ — хирагана, катакана, ромажи аль нь ч болно."
+    },
+    "drill.deckNew": { en: "New", mn: "Шинэ" },
+    "drill.deckMiss": { en: "Missed", mn: "Алдсан" },
+    "drill.deckHit": { en: "Known", mn: "Мэдсэн" },
+    "drill.deckAll": { en: "All", mn: "Бүгд" },
+    "drill.questions": { en: "questions", mn: "асуулт" },
+    "drill.empty": { en: "This deck is empty", mn: "Багц хоосон" },
+    "drill.otherCp": { en: "Other stage:", mn: "Өөр шат:" },
+    "drill.ask": { en: "What sound does this shape give?", mn: "Энэ хэлбэр ямар дуудлага өгдөг вэ?" },
+    "drill.inputLabel": { en: "Type the reading", mn: "Дуудлагыг бичнэ үү" },
+    "drill.check": { en: "Check", mn: "Шалгах" },
+    "drill.hint": { en: "Hiragana, katakana or romaji — any of them.", mn: "Хирагана, катакана, ромажи — аль нь ч болно." },
+    "drill.nextHint": { en: "Enter — next", mn: "Enter — дараагийх" },
+    "drill.doneHint": { en: "Enter — result", mn: "Enter — дүн" },
+    "drill.next": { en: "Next", mn: "Дараагийх" },
+    "drill.result": { en: "Result", mn: "Дүн" },
+    "drill.right": { en: "Right", mn: "Зөв" },
+    "drill.wrong": { en: "Wrong", mn: "Буруу" },
+    "drill.again": { en: "Another 10", mn: "Дахин 10" },
+    "drill.changeDeck": { en: "Change deck", mn: "Багц солих" },
+    "phon.drillCta": { en: "Flash-card drill", mn: "Флаш карт дасгал" }
+});
