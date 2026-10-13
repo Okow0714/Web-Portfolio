@@ -95,11 +95,20 @@ function updateLevelNavActive(levelKey) {
     });
 }
 
-function showFamilyList(levelKey) {
+function showFamilyList(levelKey, checkpoint) {
+    const changedLevel = levelKey !== currentLevelKey;
     currentLevelKey = levelKey;
     updateLevelNavActive(levelKey);
     const level = LEVEL_META.find(l => l.key === levelKey);
-    const families = PHONETICS_DATA[levelKey] || [];
+    const chunks = levelChunks(levelKey);
+    // Asked for a stage, go to it; otherwise a new level starts at its first and a re-render of
+    // the same level stays where it was. Order matters: the explicit argument wins over the
+    // level-changed reset, or the drill's return link (?level=N2&cp=3) lands on stage 1.
+    const want = checkpoint != null ? checkpoint : (changedLevel ? 0 : currentCheckpoint);
+    currentCheckpoint = Math.min(Math.max(want, 0), chunks.length - 1);
+    renderCheckpointRail(levelKey, chunks);
+    const families = chunks[currentCheckpoint] || [];
+    const rankOffset = chunks.slice(0, currentCheckpoint).reduce((a, c) => a + c.length, 0);
 
     document.getElementById('family-list-title').textContent = window.tf('phonetics.levelFamiliesTitle', { level: level.title });
     document.getElementById('family-list-subtitle').textContent = families.length
@@ -115,11 +124,16 @@ function showFamilyList(levelKey) {
     families.forEach((family, i) => {
         const item = document.createElement('button');
         item.type = 'button';
-        item.className = 'family-item' + (seenFamilies.has(family.phonetic) ? ' is-seen' : '');
+        // is-seen (you opened it) and is-hit/is-miss (the drill asked you) are independent, so a
+        // family can carry both: the border says what the drill knows, the tint what you browsed.
+        const q = quizStatus(levelKey, family.phonetic);
+        item.className = 'family-item'
+            + (seenFamilies.has(family.phonetic) ? ' is-seen' : '')
+            + (q === 'hit' ? ' is-hit' : q === 'miss' ? ' is-miss' : '');
         const intensity = Math.max(1 - i / RANK_FADE_STEPS, 0.12);
         item.style.setProperty('--rank-intensity', intensity.toFixed(2));
         item.innerHTML = `
-            <span class="family-rank">#${i + 1}</span>
+            <span class="family-rank">#${rankOffset + i + 1}</span>
             <span class="family-phonetic">${escapeHtml(family.phonetic)}</span>
             <span class="family-info">
                 <span class="family-reading">${family.reading ? escapeHtml(family.reading) : '&mdash;'}</span>
@@ -139,7 +153,93 @@ function showFamilyList(levelKey) {
     // we're coming from the tree view, from a different level's list, or
     // re-picking the level that's already showing.
     stopTreeResize();
-    switchScreen(['family-tree-section'], 'family-list-section');
+    switchScreen(['phonetics-gate', 'family-tree-section'], 'family-list-section');
+    syncDrillLink();
+}
+
+// A rail only where there is a journey: N5 and N4 are met whole.
+function renderCheckpointRail(levelKey, chunks) {
+    const rail = document.getElementById('phonetics-cp-rail');
+    if (!rail) return;
+    rail.innerHTML = '';
+    if (chunks.length < 2) { rail.hidden = true; return; }
+    rail.hidden = false;
+    chunks.forEach((chunk, i) => {
+        const done = chunk.filter(f => quizStatus(levelKey, f.phonetic) === 'hit').length;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'cp-node' + (i === currentCheckpoint ? ' is-current' : '');
+        btn.setAttribute('aria-pressed', String(i === currentCheckpoint));
+        btn.setAttribute('aria-label', window.tf('phonetics.cpAria',
+            { n: i + 1, total: chunks.length, count: chunk.length, done: done }));
+        // "12/82" rather than a translated phrase: it is the figure the meter beside it draws,
+        // it reads the same in both languages, and the aria-label above says it in words.
+        btn.innerHTML = `
+            <span class="cp-dot">${i + 1}</span>
+            <span class="cp-bar"><i style="width:${chunk.length ? Math.round(100 * done / chunk.length) : 0}%"></i></span>
+            <span class="cp-label">${done}/${chunk.length}</span>
+        `;
+        btn.addEventListener('click', () => showFamilyList(levelKey, i));
+        rail.appendChild(btn);
+    });
+}
+
+// The drill opens on whatever the board is showing, so a round is the stage you are looking at.
+function syncDrillLink() {
+    const cta = document.getElementById('phonetics-drill-cta');
+    if (!cta || !currentLevelKey) return;
+    cta.href = 'phonetics-drill.html?level=' + encodeURIComponent(currentLevelKey)
+        + '&cp=' + (currentCheckpoint + 1);
+}
+
+// The arrival question, drawn as a dial rather than a list because the five levels are a choice
+// and not a sequence -- the same shape the family tree uses one screen later, so the page reads
+// as one idea. The spokes are an SVG in the same 0-100 percentage space as the buttons' own
+// left/top, which is why preserveAspectRatio is "none": both stretch with the box together.
+function renderGateDial() {
+    const dial = document.getElementById('phonetics-gate-dial');
+    if (!dial) return;
+    dial.innerHTML = '';
+    const NS = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('viewBox', '0 0 100 100');
+    svg.setAttribute('preserveAspectRatio', 'none');
+    svg.setAttribute('aria-hidden', 'true');
+    dial.appendChild(svg);
+
+    const hub = document.createElement('span');
+    hub.className = 'gate-hub';
+    hub.textContent = 'JLPT';
+    dial.appendChild(hub);
+
+    LEVEL_META.forEach((level, i) => {
+        const a = -Math.PI / 2 + i * 2 * Math.PI / LEVEL_META.length;
+        const x = 50 + 34 * Math.cos(a), y = 50 + 34 * Math.sin(a);
+        const line = document.createElementNS(NS, 'line');
+        line.setAttribute('x1', '50');
+        line.setAttribute('y1', '50');
+        line.setAttribute('x2', x.toFixed(2));
+        line.setAttribute('y2', y.toFixed(2));
+        line.setAttribute('class', 'gate-spoke');
+        svg.appendChild(line);
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'gate-lv';
+        btn.dataset.level = level.key;
+        btn.style.left = x.toFixed(2) + '%';
+        btn.style.top = y.toFixed(2) + '%';
+        const families = (PHONETICS_DATA[level.key] || []).length;
+        btn.innerHTML = '<span class="gate-lv-n">' + escapeHtml(level.key) + '</span>'
+            // nav.n5Beginner reads "N5 · Beginner" / "N5 · Анхан шат" -- the key is already in
+            // it, and the card prints the key as its own big line, so take only the description.
+            + '<span class="gate-lv-t">'
+            + escapeHtml(level.title.replace(/^\s*N\d\s*(?:·|&middot;|-)\s*/, '')) + '</span>'
+            + '<span class="gate-lv-c">'
+            + escapeHtml(window.tf('phonetics.gateCount', { n: families })) + '</span>';
+        btn.addEventListener('click', () => showFamilyList(level.key, 0));
+        dial.appendChild(btn);
+    });
 }
 
 function backToFamilyList() {
@@ -184,6 +284,44 @@ const solidKanji = new Set();
 // without an account. Signing in merges the local set UP into phonetics_progress and never
 // subtracts -- a second device must not erase the first one's history.
 // ---------------------------------------------------------------------------
+// What the drill has asked, written by phonetics-drill.js and only read here. It sits
+// ALONGSIDE the seen set rather than replacing it: "seen" means you opened a family and syncs
+// to phonetics_progress, while hit/miss means you were tested. Two different facts.
+const QUIZ_KEY = 'khanjp-phon-quiz-v1';
+
+function quizStatus(levelKey, phonetic) {
+    try {
+        const all = JSON.parse(localStorage.getItem(QUIZ_KEY) || '{}');
+        const e = (all[levelKey] || {})[phonetic];
+        return e && e.last ? e.last : 'new';
+    } catch (e) { return 'new'; }
+}
+
+// How many stages each level is cut into. This is the SECOND copy of these numbers -- the
+// generator writes the same ones into phonetics-quiz-data.js as PHONETICS_CHECKPOINTS, and
+// phonetics.html does not load that 102KB file just to read five integers. If the two disagree,
+// the board's stage 2 and the drill's stage 2 become different things and the link between them
+// lies; tests/phonetics-quiz.spec.js compares them so that cannot ship quietly.
+//
+// The two stages are not the same *set* either, and that is intended: the board lists every
+// family at a level, the drill can only ask about the ones with enough members to have a shared
+// answer. Both lists are ordered by the same real-usage ranking and cut into the same number of
+// equal parts, so stage 2 means "the second slice by frequency" on both sides.
+// How many stages each level is cut into. N1 carries 155 families with 3+ members, which is not
+// a thing anyone starts; stage 1 is always a level's most common shapes because PHONETICS_DATA
+// is already ordered by real usage.
+const CHECKPOINTS = { N5: 1, N4: 1, N3: 2, N2: 3, N1: 4 };
+let currentCheckpoint = 0;
+
+function levelChunks(levelKey) {
+    const all = PHONETICS_DATA[levelKey] || [];
+    const n = CHECKPOINTS[levelKey] || 1;
+    const per = Math.ceil(all.length / n);
+    const out = [];
+    for (let i = 0; i < n; i++) out.push(all.slice(i * per, (i + 1) * per));
+    return out;
+}
+
 const SEEN_KEY = 'khanjp-phonetics-seen';
 const seenFamilies = new Set();
 
@@ -329,7 +467,7 @@ function showFamilyTree(levelKey, family) {
     `;
 
     updateLevelNavActive(levelKey);
-    switchScreen(['family-list-section'], 'family-tree-section');
+    switchScreen(['phonetics-gate', 'family-list-section'], 'family-tree-section');
 
     wrap.querySelectorAll('.tree-chip').forEach(chip => {
         chip.addEventListener('click', () => onChipClick(chip, family));
@@ -651,7 +789,9 @@ function closeInfoModal() {
 // language switch needs the currently-visible dynamic panes re-rendered to pick up the change.
 document.addEventListener('sitelangchange', () => {
     renderLevelSidebar();
+    renderGateDial();
     updateLevelNavActive(currentLevelKey);
+    if (!currentLevelKey) return;   // still on the gate: nothing else on screen is dynamic
     if (!document.getElementById('family-tree-section').classList.contains('hidden')) {
         showFamilyTree(currentLevelKey, currentFamily);
     } else {
@@ -707,13 +847,24 @@ const deepLinkTarget = deepLinkKanji ? findFamilyForKanji(deepLinkKanji) : null;
 readSeenLocal().forEach(p => seenFamilies.add(p));
 
 renderLevelSidebar();
+renderGateDial();
+
+// phonetics.html?level=N3&cp=2 is how the drill page sends you back to the stage you drilled.
+const params = new URLSearchParams(window.location.search);
+const askedLevel = params.get('level');
+const askedCp = parseInt(params.get('cp'), 10);
+
 if (deepLinkTarget) {
+    // Arriving from the dictionary is looking something up, not being asked where you are, so
+    // the gate is skipped entirely and the family opens.
     showFamilyTree(deepLinkTarget.levelKey, deepLinkTarget.family);
+} else if (LEVEL_META.some(l => l.key === askedLevel)) {
+    showFamilyList(askedLevel, Number.isNaN(askedCp) ? 0 : askedCp - 1);
 } else {
-    // Default to N5 on load so the content pane never sits blank waiting for a
-    // pick — the sidebar itself makes it obvious four other levels are one
-    // click away.
-    showFamilyList(LEVEL_META[0].key);
+    // The pane now rests on the level question instead of defaulting to N5. A list of families
+    // means nothing until a visitor has said where they are -- on N1 it is 155 of them -- and
+    // the old default quietly answered that question for them. The sidebar still changes level
+    // at any time afterwards, so the gate is asked once per visit and never again.
 
     // The explainer used to pop open here on every single load, which was a nag by the
     // second visit and, once page tours shipped, a second explainer competing with the

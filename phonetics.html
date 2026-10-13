@@ -423,10 +423,22 @@
                 </aside>
 
                 <div class="phonetics-content">
+                    <!-- Asked once, on arrival: the families differ per level and a list of 155
+                         shapes means nothing until you have said which level you are at. The
+                         sidebar nav takes over for changes afterwards, so there is no second
+                         control to learn. -->
+                    <section id="phonetics-gate" class="phonetics-section phonetics-gate">
+                        <h2 class="phonetics-title" data-i18n="phonetics.gateTitle">Түвшингээ сонгоно уу</h2>
+                        <p class="phonetics-subtitle" data-i18n="phonetics.gateHint">Дуудлагын бүлгүүд түвшин бүрт өөр. Сонгосны дараа зүүн талын цэснээс хэдийд ч солиж болно.</p>
+                        <div class="gate-dial" id="phonetics-gate-dial"></div>
+                    </section>
+
                     <!-- Family list within a level -->
-                    <section id="family-list-section" class="phonetics-section">
+                    <section id="family-list-section" class="phonetics-section hidden">
                         <h2 id="family-list-title" class="phonetics-title"></h2>
                         <p id="family-list-subtitle" class="phonetics-subtitle"></p>
+                        <!-- Stages, for the levels too big to meet whole. Empty on N5/N4. -->
+                        <nav class="cp-rail" id="phonetics-cp-rail" aria-label="Шат"></nav>
                         <div class="family-list" id="family-list"></div>
                     </section>
 

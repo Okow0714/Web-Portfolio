@@ -61,5 +61,20 @@ Object.assign(window.I18N_STRINGS, {
     "drill.wrong": { en: "Wrong", mn: "Буруу" },
     "drill.again": { en: "Another 10", mn: "Дахин 10" },
     "drill.changeDeck": { en: "Change deck", mn: "Багц солих" },
-    "phon.drillCta": { en: "Flash-card drill", mn: "Флаш карт дасгал" }
+    "phon.drillCta": { en: "Flash-card drill", mn: "Флаш карт дасгал" },
+
+    // The arrival gate. The pane used to default to N5, which answered this question for the
+    // visitor; now it is asked once and the sidebar handles every change after that.
+    'phonetics.gateTitle': { en: 'Pick your level', mn: 'Түвшингээ сонгоно уу' },
+    'phonetics.gateHint': {
+        en: 'Phonetic families are different at every level. Once you have picked, the menu on the left changes it whenever you like.',
+        mn: 'Дуудлагын бүлгүүд түвшин бүрт өөр. Сонгосны дараа зүүн талын цэснээс хэдийд ч солиж болно.'
+    },
+    'phonetics.gateCount': { en: '{n} families', mn: '{n} бүлэг' },
+    // Stages, for the levels too big to meet whole: N1 alone carries 332 families. Only the
+    // screen-reader label is a sentence -- the visible label is the bare "12/82" the meter draws.
+    'phonetics.cpAria': {
+        en: 'Stage {n} of {total} — {done} of {count} families answered correctly',
+        mn: '{total} шатны {n} дахь — {count} бүлгээс {done}-г нь зөв хариулсан'
+    }
 });

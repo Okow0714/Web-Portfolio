@@ -92,6 +92,18 @@ module.exports = async function () {
             `matcher: "${input}" against ${answers.join('/')} should be ${want}`);
     }
 
+    // The board carries its own copy of the stage counts (phonetics.js's CHECKPOINTS), because
+    // phonetics.html does not load this file. Two copies of five integers drift silently: the
+    // board would offer a stage the drill's link cannot mean.
+    const boardSrc = fs.readFileSync(path.join(REPO, 'phonetics.js'), 'utf8');
+    const boardLine = boardSrc.match(/const CHECKPOINTS = (\{[^}]*\});/);
+    assert.ok(boardLine, 'phonetics.js no longer declares CHECKPOINTS — did it move?');
+    const BOARD = JSON.parse(boardLine[1].replace(/([A-Z0-9]+):/g, '"$1":'));
+    for (const lv of LEVELS) {
+        assert.strictEqual(BOARD[lv], CP[lv],
+            `${lv}: the board cuts it into ${BOARD[lv]} stages but the drill into ${CP[lv]}`);
+    }
+
     console.log(`      phonetics quiz data current — ${families} families, ${sounds} answers, `
         + `${checked} matched in both kana; checkpoints `
         + LEVELS.map(l => l + ':' + CP[l]).join(' '));

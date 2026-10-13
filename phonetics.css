@@ -69,6 +69,18 @@ body:has(.phonetics-drill-main),
     --shadow-sm: 0 2px 10px light-dark(rgba(28, 47, 37, 0.08), rgba(0, 0, 0, 0.45));
     --shadow-md: 0 14px 32px rgba(28, 47, 37, 0.16);
     --shadow-md: 0 14px 32px light-dark(rgba(28, 47, 37, 0.16), rgba(0, 0, 0, 0.55));
+    /* Right/wrong, used by the drill's own feedback AND by the board, which colours a family's
+       rank stripe by what the drill last asked. Deliberately not the copper accent: the accent
+       means "common", and these mean "you knew it" / "you did not", which is a different axis.
+       Both are stripes and chips rather than text, so 3:1 against the surface is the floor. */
+    --right: #2f7d4f;
+    --right: light-dark(#2f7d4f, #6cc38c);
+    --right-tint: #e3f0e8;
+    --right-tint: light-dark(#e3f0e8, #16271c);
+    --wrong: #9c2f20;
+    --wrong: light-dark(#9c2f20, #e0775f);
+    --wrong-tint: #f7e7e3;
+    --wrong-tint: light-dark(#f7e7e3, #2e1915);
 }
 
 body:has(.phonetics-main),
@@ -1038,6 +1050,215 @@ html[data-contrast="darker"] .site-footer {
     opacity: 0.4;
 }
 
+/* What the drill knows, on the stripe that already exists rather than as another badge. The
+   stripe normally carries rank (accent at --rank-intensity); once the drill has an opinion about
+   a family, that opinion is the more useful thing to see at a glance, and the rank is still
+   printed as #N a few millimetres to its right. Full opacity on purpose: these are facts about
+   you, not a frequency gradient. is-seen and is-hit/is-miss are independent and can co-occur --
+   the ::before colour below wins because it is declared later at equal specificity. */
+.family-item.is-hit::before,
+.family-item.is-miss::before {
+    width: 5px;
+    opacity: 1;
+}
+
+.family-item.is-hit::before { background: var(--right); }
+.family-item.is-miss::before { background: var(--wrong); }
+
+/* ---------------------------------------------------------------------
+   Stage rail
+
+   Only rendered where a level has more than one stage, which means N3, N2 and N1 -- N5 and N4
+   are small enough to meet whole. The bar under each number is how many of that stage's shapes
+   the drill has had right, so the rail doubles as the only progress reading on the page.
+   --------------------------------------------------------------------- */
+.cp-rail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 18px;
+}
+
+.cp-rail[hidden] { display: none; }
+
+.cp-node {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font: inherit;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    text-align: left;
+    cursor: pointer;
+    padding: 7px 13px 7px 9px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.cp-node:hover { border-color: var(--accent); color: var(--text-primary); }
+.cp-node:focus-visible { outline: 2px solid var(--accent-dark); outline-offset: 2px; }
+
+.cp-node.is-current {
+    border-color: var(--accent-dark);
+    color: var(--text-primary);
+    background: var(--bg-surface-alt);
+}
+
+.cp-dot {
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    background: var(--bg-surface-alt);
+    border: 1px solid var(--border);
+}
+
+.cp-node.is-current .cp-dot {
+    color: var(--bg-surface);
+    background: var(--accent-dark);
+    border-color: var(--accent-dark);
+}
+
+.cp-bar {
+    flex: 0 0 auto;
+    width: 46px;
+    height: 4px;
+    /* --bg-surface-alt was all but invisible against the node it sits on, so a stage nobody has
+       drilled yet showed no meter at all rather than an empty one. */
+    background: var(--border-strong);
+    overflow: hidden;
+}
+
+.cp-bar i { display: block; height: 100%; background: var(--right); }
+.cp-label {
+    flex: 0 0 auto;
+    font-size: 0.74rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--text-muted);
+}
+
+.cp-node.is-current .cp-label { color: var(--text-secondary); }
+
+/* ---------------------------------------------------------------------
+   Arrival gate
+
+   The level question, asked once. A dial and not a list, because the five levels are a choice
+   rather than a sequence, and because it is the same radial shape the family tree uses one
+   screen later -- the page gets to make its own argument twice.
+
+   The spokes are an SVG with preserveAspectRatio:none over a viewBox of 0 0 100 100, and the
+   buttons are positioned in percent, so both live in the same coordinate space and stay joined
+   at any size. That only holds while the box keeps its 1/1 aspect-ratio, which is why the mobile
+   fallback below drops the spokes rather than reflowing them.
+   --------------------------------------------------------------------- */
+.gate-dial {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 30px auto 0;
+    aspect-ratio: 1 / 1;
+}
+
+.gate-dial svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.gate-spoke {
+    stroke: var(--border-strong);
+    stroke-width: 1;
+    stroke-dasharray: 2 3;
+    vector-effect: non-scaling-stroke;
+}
+
+.gate-hub {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    place-items: center;
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+}
+
+.gate-lv {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    display: grid;
+    gap: 1px;
+    width: 116px;
+    padding: 11px 10px 12px;
+    font: inherit;
+    text-align: center;
+    cursor: pointer;
+    color: var(--text-secondary);
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+}
+
+.gate-lv:hover {
+    color: var(--text-primary);
+    border-color: var(--accent);
+    box-shadow: var(--shadow-md);
+}
+
+.gate-lv:focus-visible { outline: 2px solid var(--accent-dark); outline-offset: 3px; }
+
+.gate-lv-n {
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--accent-dark);
+}
+
+.gate-lv-t { font-size: 0.72rem; line-height: 1.25; }
+.gate-lv-c { font-size: 0.68rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+
+/* Five 116px cards around a dial need roughly 400px of width to not touch. Below that the
+   geometry is the wrong answer, so the dial becomes a plain stack and the spokes and hub --
+   which only ever described the radial arrangement -- are dropped rather than redrawn. */
+@media (max-width: 560px) {
+    .gate-dial {
+        aspect-ratio: auto;
+        max-width: none;
+        margin-top: 18px;
+        display: grid;
+        gap: 7px;
+    }
+
+    .gate-dial svg,
+    .gate-hub { display: none; }
+
+    .gate-lv {
+        position: static;
+        transform: none;
+        width: auto;
+        grid-template-columns: auto 1fr auto;
+        align-items: baseline;
+        gap: 10px;
+        text-align: left;
+        padding: 11px 13px;
+    }
+}
+
 
 /* =============================================================================================
    Phonetics drill (phonetics-drill.html)
@@ -1046,14 +1267,10 @@ html[data-contrast="darker"] .site-footer {
    want different amounts of screen and different states to come back to. A real page also makes
    one round linkable and gives the Back button the obvious meaning.
 
-   --wrong / --wrong-tint are declared here rather than in the token block above because nothing
-   else on this page has ever needed a "you got it wrong" colour.
+   --right / --wrong live in the page's token block at the top of this file, because the board
+   reads the same history this page writes and has to colour it the same way.
    ============================================================================================= */
 .phonetics-drill-main {
-    --wrong: #9c2f20;
-    --wrong: light-dark(#9c2f20, #e0775f);
-    --wrong-tint: #f7e7e3;
-    --wrong-tint: light-dark(#f7e7e3, #2e1915);
     /* Fraunces carries no Cyrillic, so Mongolian set in it falls back to a system serif.
        Prata is vendored and ships the cyrillic-ext subset that ү and ө live in. */
     --font-display-mn: 'Prata', Georgia, serif;
