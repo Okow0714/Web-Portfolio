@@ -28,8 +28,13 @@
     if (!(cp >= 1 && cp <= chunks.length)) cp = 1;
 
     var list = chunks[cp - 1];
-    var kind = 'new';
+
+    // The board's drill panel chooses a deck and starts the round, so both travel in the URL.
+    // A deck named here that has nothing in it falls back rather than opening an empty round.
+    var kind = params.get('deck');
+    if (['new', 'miss', 'hit', 'all'].indexOf(kind) < 0) kind = 'new';
     var queue = [], at = 0, ok = 0, no = 0, answered = false, mode = 'pick';
+    var autoStart = params.get('start') === '1';
 
     function splitLevel(lv) {
         var all = (PHONETICS_QUIZ[lv] || []).slice();
@@ -268,7 +273,10 @@
     }
 
     drawHead();
-    drawPick();
+    // ?start=1 comes from the board's drill panel, which has already chosen the deck: going
+    // through the picker again would just be the same screen asking the same question twice.
+    // An empty deck still lands on the picker, so the round can never open with nothing to ask.
+    if (autoStart && pool(kind).length) start(); else drawPick();
     document.addEventListener('sitelangchange', function () {
         drawHead();
         if (mode === 'pick') drawPick();

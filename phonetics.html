@@ -399,56 +399,82 @@
         <!-- /chrome:header -->
 
         <main tabindex="-1" id="main" class="phonetics-main">
-            <div class="phonetics-layout">
-                <!-- Sidebar: page intro + persistent JLPT level nav. Stays visible/usable from
-                     both the family-list view and the family-tree view — clicking a level here
-                     always jumps straight to that level's family list. -->
-                <aside class="phonetics-sidebar">
-                    <button type="button" id="phonetics-title-trigger" class="phonetics-title-trigger" aria-haspopup="dialog" title="What's a phonetic component?">
-                        <h1 class="phonetics-title" data-i18n="phonetics.titleMain">Дуудлагын бүлэг</h1>
-                        <span class="phonetics-title-info" aria-hidden="true">&#9432;</span>
+
+            <!-- Asked once, on arrival. The families differ per level and a grid of 155 shapes
+                 means nothing until you have said where you are. -->
+            <section class="phon-gate" id="phonetics-gate">
+                <h1 class="phon-gate-h" data-i18n="phonetics.gateTitle">Түвшингээ сонгоно уу</h1>
+                <p class="phon-gate-p" data-i18n="phonetics.gateHint">Дуудлагын бүлгүүд түвшин бүрт өөр. Сонгосны дараа буланд багасна.</p>
+                <div class="gate-dial" id="phonetics-gate-dial"></div>
+            </section>
+
+            <div id="phonetics-app" hidden>
+                <header class=phon-head>
+                    <!-- The level, once chosen, lives up here rather than in a rail down the
+                         side of every screen. It sits in the header's own flow, not fixed to the
+                         viewport: floating it over the page put it on top of the drill panel the
+                         moment you scrolled. Clicking it reopens the gate. -->
+                    <button type=button class=phon-chip id=phonetics-chip hidden>
+                        <span class=phon-chip-dot id=phonetics-chip-dot aria-hidden=true></span>
+                        <span data-i18n=phonetics.changeLevel>түвшин солих</span>
                     </button>
-                    <p class="phonetics-subtitle" data-i18n="phonetics.subtitle">Ижил дуудлагын язгууртай ханзууд ихэвчлэн онёми дуудлага нь ч ижил байдаг — нэгийг нь сурвал бусад нь амар болно. JLPT түвшингээ сонгоод тэр түвшний дуудлагын бүлгүүдийг үзээрэй. Бүлгүүдийг хамгийн түгээмэл гишүүн нь япон бичвэрт хэр олон тааралддагаар эрэмбэлсэн.</p>
-                    <button type="button" id="phonetics-info-btn" class="ghost-btn phonetics-info-btn"><span aria-hidden="true">&#9432;</span> <span data-i18n="phonetics.whatIsPhoneticComponent">Дуудлагын язгуур гэж юу вэ?</span></button>
-                    <!-- The drill is its own page: being tested is a different activity from
-                         reading, and it wants its own screen and its own state to return to. -->
-                    <a class="phon-drill-cta" id="phonetics-drill-cta" href="phonetics-drill.html">
-                        <span aria-hidden="true">&#9635;</span>
-                        <span data-i18n="phon.drillCta">Флаш карт дасгал</span>
-                    </a>
-                    <nav class="level-nav" id="phonetics-level-nav" aria-label="JLPT level"></nav>
-                    <!-- Data-source attributions moved to the sitewide footer: Word Match uses the
-                         same Tatoeba sentences, so CC BY / CC BY-SA credit belongs on every page,
-                         not only in this sidebar. -->
-                </aside>
+                    <p class=phon-eyebrow data-i18n="phonetics.titleMain">Дуудлагын бүлэг</p>
+                    <button type="button" id="phonetics-title-trigger" class="phon-h1-trigger" aria-haspopup="dialog">
+                        <h1 class="phon-h1" data-i18n="phonetics.boardTitle">Дуудлагыг нь таа</h1>
+                        <span class="phon-h1-info" aria-hidden="true">&#9432;</span>
+                    </button>
+                    <p class="phon-rule" data-i18n-html="phonetics.boardRule">Голд байгаа хэлбэр нь <b>дуудлагыг</b> хэлнэ. Эргэн тойрны ханз бүр түүнийг дотроо агуулсан. <b>Эхлээд таа, дараа нь дарж шалга.</b></p>
 
-                <div class="phonetics-content">
-                    <!-- Asked once, on arrival: the families differ per level and a list of 155
-                         shapes means nothing until you have said which level you are at. The
-                         sidebar nav takes over for changes afterwards, so there is no second
-                         control to learn. -->
-                    <section id="phonetics-gate" class="phonetics-section phonetics-gate">
-                        <h2 class="phonetics-title" data-i18n="phonetics.gateTitle">Түвшингээ сонгоно уу</h2>
-                        <p class="phonetics-subtitle" data-i18n="phonetics.gateHint">Дуудлагын бүлгүүд түвшин бүрт өөр. Сонгосны дараа зүүн талын цэснээс хэдийд ч солиж болно.</p>
-                        <div class="gate-dial" id="phonetics-gate-dial"></div>
-                    </section>
+                    <!-- Stages, for the levels too big to meet whole. Hidden on N5/N4. -->
+                    <nav class="timeline" id="phonetics-timeline"></nav>
 
-                    <!-- Family list within a level -->
-                    <section id="family-list-section" class="phonetics-section hidden">
-                        <h2 id="family-list-title" class="phonetics-title"></h2>
-                        <p id="family-list-subtitle" class="phonetics-subtitle"></p>
-                        <!-- Stages, for the levels too big to meet whole. Empty on N5/N4. -->
-                        <nav class="cp-rail" id="phonetics-cp-rail" aria-label="Шат"></nav>
-                        <div class="family-list" id="family-list"></div>
-                    </section>
+                    <!-- Every shape at this stage, coloured by what the drill last asked. -->
+                    <div class="picker" id="phonetics-picker"></div>
+                    <p class="picker-legend">
+                        <span><i class="i-hit" aria-hidden="true"></i><span data-i18n="phonetics.legendHit">зөв хариулсан</span></span>
+                        <span><i class="i-miss" aria-hidden="true"></i><span data-i18n="phonetics.legendMiss">алдсан</span></span>
+                        <span><i class="i-new" aria-hidden="true"></i><span data-i18n="phonetics.legendNew">хараахан асуугаагүй</span></span>
+                    </p>
+                </header>
 
-                    <!-- Family tree -->
-                    <section id="family-tree-section" class="phonetics-section hidden">
-                        <button id="family-tree-back-btn" class="ghost-btn" type="button"><span aria-hidden="true">&larr;</span> <span data-i18n="phonetics.families">Бүлгүүд</span></button>
-                        <div class="tree-wrap" id="tree-wrap"></div>
-                    </section>
+                <div class="phon-row">
+                    <div class="phon-board-col">
+                        <div class="board" id="phonetics-board"></div>
+                        <div class="board-bar">
+                            <span class="score" id="phonetics-score"></span>
+                            <button type="button" class="sbtn" id="phonetics-reveal" data-i18n="phonetics.revealAll">Бүгдийг нээх</button>
+                            <button type="button" class="sbtn" id="phonetics-again" data-i18n="phonetics.guessAgain">Дахин таах</button>
+                        </div>
+                        <button type="button" class="ghost-btn phon-info-btn" id="phonetics-info-btn"><span aria-hidden="true">&#9432;</span> <span data-i18n="phonetics.whatIsPhoneticComponent">Дуудлагын язгуур гэж юу вэ?</span></button>
+                    </div>
+
+                    <!-- The drill's entry panel only. Starting a round leaves for
+                         phonetics-drill.html, because the board beside you during a question is
+                         both a distraction and the answer key. -->
+                    <aside class="drill-panel">
+                        <h2 class="drill-panel-h" data-i18n="phon.drillCta">Флаш карт</h2>
+                        <p class="drill-panel-sub" data-i18n="phonetics.drillPanelSub">Нэг удаад 10 хэлбэр. Хирагана, катакана, ромажи аль нь ч болно. Хариулт нь дээрх жагсаалтыг өнгөөр тэмдэглэнэ.</p>
+                        <div id="phonetics-drill-panel"></div>
+                    </aside>
                 </div>
+
+                <details class="waves">
+                    <summary><span data-i18n="phonetics.wavesTitle">Яагаад нэг ханз хоёр дуудлагатай байдаг вэ?</span></summary>
+                    <div class="waves-body" data-i18n-html="phonetics.wavesBody">
+                        <p>Япон хэл хятад дуудлагыг <b>нэг удаа биш, давалгаагаар</b> зээлсэн. 5–6-р зуунд <span class="jp">呉音</span> (го-он), 7–9-р зуунд <span class="jp">漢音</span> (кан-он).</p>
+                        <p>Тиймээс <span class="jp">生</span> нь <span class="jp">セイ</span>(漢) ба <span class="jp">ショウ</span>(呉) хоёулаа. Язгуур нь танд <b>оролдох дуудлага</b> өгнө — тэр нь ханзны жагсаалтад байвал хэв ажилласан.</p>
+                    </div>
+                </details>
             </div>
+
+            <!-- The dictionary's phonetic-family chips link here as phonetics.html?kanji=X. That
+                 is a lookup, not a guessing game, so it still lands on the old radial family tree
+                 with its readings and example sentences rather than on the board. It is the only
+                 way into this screen now. -->
+            <section id="family-tree-section" class="phonetics-section hidden">
+                <button id="family-tree-back-btn" class="ghost-btn" type="button"><span aria-hidden="true">&larr;</span> <span data-i18n="phonetics.families">Бүлгүүд</span></button>
+                <div class="tree-wrap" id="tree-wrap"></div>
+            </section>
         </main>
 
         <!-- Phonetic component explainer modal — trigger: page H1 or the dedicated info button only -->
@@ -546,6 +572,7 @@
     <script src="supabase-config.js"></script>
     <script src="auth-shared.js"></script>
     <script src="phonetics-data.js"></script>
+    <script src="phonetics-quiz-data.js"></script>
     <script type="module" src="phonetics.js"></script>
     <script src="tutorial.js"></script>
     <script src="pwa-register.js"></script>

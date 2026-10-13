@@ -61,141 +61,61 @@ function switchScreen(hideIds, showId) {
 }
 
 // ---------------------------------------------------------------------------
-// Sidebar level nav -> family list -> family tree
+// The board: pick a level, pick a shape, guess its reading
 //
-// The sidebar (level nav) is rendered once and stays mounted for the whole
-// page life; only the content pane (family-list-section / family-tree-section)
-// swaps. That's what lets a level be picked directly from either the list or
-// the tree view without a separate "back to levels" step.
+// This whole screen runs on phonetics-quiz-data.js (~100KB), not phonetics-data.js (~2.8MB).
+// A guess needs a component, the sound it predicts, and its members with their own readings --
+// nothing else. The big file is still loaded for the dictionary's ?kanji= lookup at the bottom
+// of this file, which shows example sentences the board has no room for.
+//
+// The point of the screen is the prediction, not the index. A member starts as a "?": you say
+// what you think it reads, then click to check, and the spoke turns jade if the component's
+// sound really is in that kanji's set and copper if it is not. Both outcomes teach -- the
+// exceptions are the reason the rule is worth knowing.
 // ---------------------------------------------------------------------------
-function renderLevelSidebar() {
-    const nav = document.getElementById('phonetics-level-nav');
-    nav.innerHTML = '';
-    LEVEL_META.forEach(level => {
-        const label = level.title.split(' · ')[1] || level.title;
-        const item = document.createElement('button');
-        item.type = 'button';
-        item.className = 'level-nav-item';
-        item.dataset.level = level.key;
-        item.setAttribute('aria-current', 'false');
-        item.innerHTML = `
-            <span class="level-nav-code">${escapeHtml(level.key)}</span>
-            <span class="level-nav-label">${escapeHtml(label)}</span>
-        `;
-        item.addEventListener('click', () => showFamilyList(level.key));
-        nav.appendChild(item);
-    });
+const QUIZ = (typeof PHONETICS_QUIZ !== 'undefined') ? PHONETICS_QUIZ : {};
+
+// Read from the data file rather than kept as a second copy here. An earlier draft declared
+// these again in this file, which meant the board's stage 2 and the drill's stage 2 could drift
+// apart silently; now there is one list and nothing to compare.
+const CHECKPOINTS = (typeof PHONETICS_CHECKPOINTS !== 'undefined') ? PHONETICS_CHECKPOINTS : {};
+
+let chunks = [];            // this level's shapes, cut into stages
+let currentCheckpoint = 0;
+let curIndex = 0;           // which shape the board is showing
+// Whether the visitor has actually answered the gate's question. Not the same as having a
+// currentLevelKey: the dictionary's ?kanji= link sets one too, picked as 'the first level this
+// family appears under', which nobody chose. Back from that lookup must not strand them on a
+// level they never asked for.
+let levelChosen = false;
+let shown = [];             // which of its members you have turned over
+
+function levelChunks(levelKey) {
+    const all = (QUIZ[levelKey] || []).slice();
+    const n = CHECKPOINTS[levelKey] || 1;
+    const per = Math.ceil(all.length / n);
+    const out = [];
+    for (let i = 0; i < n; i++) out.push(all.slice(i * per, (i + 1) * per));
+    return out;
 }
 
-function updateLevelNavActive(levelKey) {
-    document.querySelectorAll('.level-nav-item').forEach(item => {
-        const isActive = item.dataset.level === levelKey;
-        item.classList.toggle('active', isActive);
-        item.setAttribute('aria-current', isActive ? 'true' : 'false');
-    });
+function stageList() { return chunks[currentCheckpoint] || []; }
+
+// The JLPT hues are declared on :root in style.css, so the one place they are written stays the
+// one place. Reading them here keeps a level's colour the same on the dial, the chip and the
+// level dot on every member.
+function hueFor(levelKey) {
+    const v = getComputedStyle(document.documentElement)
+        .getPropertyValue('--jlpt-' + levelKey.toLowerCase()).trim();
+    return v || 'var(--border-strong)';
 }
 
-function showFamilyList(levelKey, checkpoint) {
-    const changedLevel = levelKey !== currentLevelKey;
-    currentLevelKey = levelKey;
-    updateLevelNavActive(levelKey);
-    const level = LEVEL_META.find(l => l.key === levelKey);
-    const chunks = levelChunks(levelKey);
-    // Asked for a stage, go to it; otherwise a new level starts at its first and a re-render of
-    // the same level stays where it was. Order matters: the explicit argument wins over the
-    // level-changed reset, or the drill's return link (?level=N2&cp=3) lands on stage 1.
-    const want = checkpoint != null ? checkpoint : (changedLevel ? 0 : currentCheckpoint);
-    currentCheckpoint = Math.min(Math.max(want, 0), chunks.length - 1);
-    renderCheckpointRail(levelKey, chunks);
-    const families = chunks[currentCheckpoint] || [];
-    const rankOffset = chunks.slice(0, currentCheckpoint).reduce((a, c) => a + c.length, 0);
-
-    document.getElementById('family-list-title').textContent = window.tf('phonetics.levelFamiliesTitle', { level: level.title });
-    document.getElementById('family-list-subtitle').textContent = families.length
-        ? window.tf('phonetics.familiesRankedHint', { n: families.length, level: levelKey })
-        : window.t('phonetics.noPhoneticKanjiHint');
-
-    const list = document.getElementById('family-list');
-    list.innerHTML = '';
-    // Rank gradation: fades linearly from full intensity at #1 down to a
-    // 0.12 floor by RANK_FADE_STEPS, then stays flat — a list of 300+
-    // families shouldn't stretch the gradient to invisible by the bottom.
-    const RANK_FADE_STEPS = 18;
-    families.forEach((family, i) => {
-        const item = document.createElement('button');
-        item.type = 'button';
-        // is-seen (you opened it) and is-hit/is-miss (the drill asked you) are independent, so a
-        // family can carry both: the border says what the drill knows, the tint what you browsed.
-        const q = quizStatus(levelKey, family.phonetic);
-        item.className = 'family-item'
-            + (seenFamilies.has(family.phonetic) ? ' is-seen' : '')
-            + (q === 'hit' ? ' is-hit' : q === 'miss' ? ' is-miss' : '');
-        const intensity = Math.max(1 - i / RANK_FADE_STEPS, 0.12);
-        item.style.setProperty('--rank-intensity', intensity.toFixed(2));
-        item.innerHTML = `
-            <span class="family-rank">#${rankOffset + i + 1}</span>
-            <span class="family-phonetic">${escapeHtml(family.phonetic)}</span>
-            <span class="family-info">
-                <span class="family-reading">${family.reading ? escapeHtml(family.reading) : '&mdash;'}</span>
-                <span class="family-count">${escapeHtml(window.tf('phonetics.kanjiInFamily', { n: family.members.length }))}</span>
-                ${seenFamilies.has(family.phonetic) ? `<span class="family-seen">${escapeHtml(window.t('phonetics.seenFamily'))}</span>` : ''}
-                ${metKanji.size ? `<span class="family-met">${escapeHtml(window.tf('phonetics.metInFamily', {
-                    n: family.members.filter(m => metKanji.has(m.kanji)).length, total: family.members.length }))}</span>` : ''}
-            </span>
-        `;
-        item.addEventListener('click', () => showFamilyTree(levelKey, family));
-        list.appendChild(item);
-    });
-
-    // Only the tree section ever needs hiding here — the list section is the
-    // content pane's resting state, and switchScreen() is a no-op for an id
-    // that's already visible/already hidden, so this is safe to call whether
-    // we're coming from the tree view, from a different level's list, or
-    // re-picking the level that's already showing.
-    stopTreeResize();
-    switchScreen(['phonetics-gate', 'family-tree-section'], 'family-list-section');
-    syncDrillLink();
-}
-
-// A rail only where there is a journey: N5 and N4 are met whole.
-function renderCheckpointRail(levelKey, chunks) {
-    const rail = document.getElementById('phonetics-cp-rail');
-    if (!rail) return;
-    rail.innerHTML = '';
-    if (chunks.length < 2) { rail.hidden = true; return; }
-    rail.hidden = false;
-    chunks.forEach((chunk, i) => {
-        const done = chunk.filter(f => quizStatus(levelKey, f.phonetic) === 'hit').length;
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'cp-node' + (i === currentCheckpoint ? ' is-current' : '');
-        btn.setAttribute('aria-pressed', String(i === currentCheckpoint));
-        btn.setAttribute('aria-label', window.tf('phonetics.cpAria',
-            { n: i + 1, total: chunks.length, count: chunk.length, done: done }));
-        // "12/82" rather than a translated phrase: it is the figure the meter beside it draws,
-        // it reads the same in both languages, and the aria-label above says it in words.
-        btn.innerHTML = `
-            <span class="cp-dot">${i + 1}</span>
-            <span class="cp-bar"><i style="width:${chunk.length ? Math.round(100 * done / chunk.length) : 0}%"></i></span>
-            <span class="cp-label">${done}/${chunk.length}</span>
-        `;
-        btn.addEventListener('click', () => showFamilyList(levelKey, i));
-        rail.appendChild(btn);
-    });
-}
-
-// The drill opens on whatever the board is showing, so a round is the stage you are looking at.
-function syncDrillLink() {
-    const cta = document.getElementById('phonetics-drill-cta');
-    if (!cta || !currentLevelKey) return;
-    cta.href = 'phonetics-drill.html?level=' + encodeURIComponent(currentLevelKey)
-        + '&cp=' + (currentCheckpoint + 1);
-}
-
-// The arrival question, drawn as a dial rather than a list because the five levels are a choice
-// and not a sequence -- the same shape the family tree uses one screen later, so the page reads
-// as one idea. The spokes are an SVG in the same 0-100 percentage space as the buttons' own
-// left/top, which is why preserveAspectRatio is "none": both stretch with the box together.
+// ---------------------------------------------------------------------------
+// The arrival gate, and the chip it shrinks to
+// ---------------------------------------------------------------------------
+// A dial rather than a list, because the five levels are a choice and not a sequence. The spokes
+// are an SVG with preserveAspectRatio:none over a 0 0 100 100 viewBox and the buttons are placed
+// in percent, so both live in one coordinate space and stay joined at any size.
 function renderGateDial() {
     const dial = document.getElementById('phonetics-gate-dial');
     if (!dial) return;
@@ -208,7 +128,7 @@ function renderGateDial() {
     dial.appendChild(svg);
 
     const hub = document.createElement('span');
-    hub.className = 'gate-hub';
+    hub.className = 'dial-hub';
     hub.textContent = 'JLPT';
     dial.appendChild(hub);
 
@@ -220,35 +140,256 @@ function renderGateDial() {
         line.setAttribute('y1', '50');
         line.setAttribute('x2', x.toFixed(2));
         line.setAttribute('y2', y.toFixed(2));
-        line.setAttribute('class', 'gate-spoke');
+        line.setAttribute('class', 'dial-spoke');
         svg.appendChild(line);
 
         const btn = document.createElement('button');
         btn.type = 'button';
-        btn.className = 'gate-lv';
+        btn.className = 'lv';
         btn.dataset.level = level.key;
+        btn.style.setProperty('--hue', hueFor(level.key));
         btn.style.left = x.toFixed(2) + '%';
         btn.style.top = y.toFixed(2) + '%';
-        const families = (PHONETICS_DATA[level.key] || []).length;
-        btn.innerHTML = '<span class="gate-lv-n">' + escapeHtml(level.key) + '</span>'
-            // nav.n5Beginner reads "N5 · Beginner" / "N5 · Анхан шат" -- the key is already in
-            // it, and the card prints the key as its own big line, so take only the description.
-            + '<span class="gate-lv-t">'
-            + escapeHtml(level.title.replace(/^\s*N\d\s*(?:·|&middot;|-)\s*/, '')) + '</span>'
-            + '<span class="gate-lv-c">'
-            + escapeHtml(window.tf('phonetics.gateCount', { n: families })) + '</span>';
-        btn.addEventListener('click', () => showFamilyList(level.key, 0));
+        // nav.n5Beginner already reads "N5 · Beginner", and the big line prints the key, so the
+        // card takes only the description half.
+        const desc = level.title.replace(/^\s*N\d\s*(?:·|&middot;|-)\s*/, '');
+        btn.innerHTML = '<span class="lv-n">' + escapeHtml(level.key) + '</span>'
+            + '<span class="lv-t">' + escapeHtml(desc) + '</span>';
+        btn.setAttribute('aria-label', window.tf('phonetics.gateAria',
+            { level: level.key, n: (QUIZ[level.key] || []).length }));
+        btn.addEventListener('click', () => enterLevel(level.key, 0));
         dial.appendChild(btn);
     });
 }
 
-function backToFamilyList() {
-    // Re-render rather than just unhiding. The list was built before this family was opened, so
-    // simply revealing it again showed the stale markup -- and the one row guaranteed to be wrong
-    // was the family you had just come back from, whose "seen" marker was missing at exactly the
-    // moment you would look for it. showFamilyList ends in the same stopTreeResize() +
-    // switchScreen() pair, and its own comment notes it is safe to call on the way back.
-    showFamilyList(currentLevelKey);
+function showGate() {
+    levelChosen = false;
+    stopTreeResize();
+    document.getElementById('phonetics-app').hidden = true;
+    document.getElementById('family-tree-section').classList.add('hidden');
+    document.getElementById('phonetics-gate').hidden = false;
+    document.getElementById('phonetics-chip').hidden = true;
+    currentLevelKey = null;
+    window.scrollTo(0, 0);
+}
+
+function enterLevel(levelKey, checkpoint) {
+    levelChosen = true;
+    currentLevelKey = levelKey;
+    chunks = levelChunks(levelKey);
+    currentCheckpoint = Math.min(Math.max(checkpoint || 0, 0), Math.max(chunks.length - 1, 0));
+    curIndex = 0;
+    shown = [];
+
+    document.getElementById('phonetics-gate').hidden = true;
+    document.getElementById('family-tree-section').classList.add('hidden');
+    document.getElementById('phonetics-app').hidden = false;
+
+    const chip = document.getElementById('phonetics-chip');
+    chip.hidden = false;
+    chip.style.setProperty('--hue', hueFor(levelKey));
+    document.getElementById('phonetics-chip-dot').textContent = levelKey;
+
+    drawTimeline();
+    drawPicker();
+    drawBoard();
+    drawDrillPanel();
+    window.scrollTo(0, 0);
+}
+
+// ---------------------------------------------------------------------------
+// The stage timeline
+// ---------------------------------------------------------------------------
+// Only where there is a journey. One stage is not one, so N5 and N4 show no rail at all.
+function drawTimeline() {
+    const rail = document.getElementById('phonetics-timeline');
+    rail.innerHTML = '';
+    if (chunks.length < 2) { rail.hidden = true; return; }
+    rail.hidden = false;
+    rail.setAttribute('aria-label', window.t('phonetics.stagesLabel'));
+    chunks.forEach((chunk, i) => {
+        const done = chunk.filter(f => quizStatus(currentLevelKey, f.c) === 'hit').length;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'cp';
+        btn.setAttribute('aria-pressed', String(i === currentCheckpoint));
+        btn.setAttribute('aria-label', window.tf('phonetics.cpAria',
+            { n: i + 1, total: chunks.length, count: chunk.length, done }));
+        btn.innerHTML = `
+            <span class="cp-dot">${i + 1}</span>
+            <span class="cp-bar"><i style="width:${chunk.length ? Math.round(100 * done / chunk.length) : 0}%"></i></span>
+            <span class="cp-l"><b>${escapeHtml(window.tf('phonetics.cpShapes', { n: chunk.length }))}</b>${escapeHtml(window.tf('phonetics.cpDone', { n: done }))}</span>
+        `;
+        btn.addEventListener('click', () => {
+            currentCheckpoint = i;
+            curIndex = 0;
+            shown = [];
+            drawTimeline(); drawPicker(); drawBoard(); drawDrillPanel();
+        });
+        rail.appendChild(btn);
+    });
+}
+
+// ---------------------------------------------------------------------------
+// The picker: every shape at this stage, coloured by what the drill last asked
+// ---------------------------------------------------------------------------
+// A grid of bare glyphs rather than the ranked rows this page used to show. The row carried a
+// rank, the shape, its reading and a member count; three of those four are answers to the
+// question the board is about to ask, which made the index a spoiler for the lesson.
+function drawPicker() {
+    const picker = document.getElementById('phonetics-picker');
+    picker.innerHTML = '';
+    stageList().forEach((family, i) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'pick';
+        btn.textContent = family.c;
+        btn.dataset.s = quizStatus(currentLevelKey, family.c);
+        btn.setAttribute('aria-pressed', String(i === curIndex));
+        btn.title = family.c + ' · ' + window.tf('phonetics.kanjiInFamily', { n: family.m.length });
+        btn.addEventListener('click', () => {
+            curIndex = i;
+            shown = [];
+            drawPicker(); drawBoard();
+        });
+        picker.appendChild(btn);
+    });
+}
+
+// ---------------------------------------------------------------------------
+// The prediction board
+// ---------------------------------------------------------------------------
+function drawBoard() {
+    const box = document.getElementById('phonetics-board');
+    box.innerHTML = '';
+    const family = stageList()[curIndex];
+    if (!family) return;
+
+    // The component predicts ONE reading to try. Which of its sounds is "the" prediction is the
+    // first, because the generator orders them by how many members take them.
+    const want = family.s[0];
+    const n = family.m.length;
+    const R = n <= 6 ? 36 : (n <= 9 ? 38 : 39);
+    const NS = 'http://www.w3.org/2000/svg';
+
+    const svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('class', 'spokes');
+    svg.setAttribute('viewBox', '0 0 100 100');
+    svg.setAttribute('preserveAspectRatio', 'none');
+    svg.setAttribute('aria-hidden', 'true');
+    box.appendChild(svg);
+
+    const core = document.createElement('div');
+    core.className = 'core';
+    core.innerHTML = '<span class="core-k">' + escapeHtml(family.c) + '</span>'
+        + '<span class="core-r">' + escapeHtml(want) + '</span>'
+        + '<span class="core-cap">' + escapeHtml(window.t('phonetics.tryThis')) + '</span>';
+    box.appendChild(core);
+
+    family.m.forEach((member, j) => {
+        const a = -Math.PI / 2 + j * 2 * Math.PI / n;
+        const x = 50 + R * Math.cos(a), y = 50 + R * Math.sin(a);
+        const hit = member.on.indexOf(want) >= 0;
+
+        const line = document.createElementNS(NS, 'line');
+        line.setAttribute('x1', '50');
+        line.setAttribute('y1', '50');
+        line.setAttribute('x2', x.toFixed(2));
+        line.setAttribute('y2', y.toFixed(2));
+        line.setAttribute('class', 'spoke' + (shown[j] ? (hit ? ' done' : ' miss') : ''));
+        svg.appendChild(line);
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'node';
+        btn.style.left = x.toFixed(2) + '%';
+        btn.style.top = y.toFixed(2) + '%';
+        if (shown[j]) btn.dataset.state = hit ? 'hit' : 'miss';
+
+        let readings;
+        if (shown[j]) {
+            readings = member.on.map(o =>
+                '<span class="' + (o === want ? 'y' : 'n') + '">' + escapeHtml(o) + '</span>'
+            ).join('・');
+        } else {
+            readings = '<span class="q">?</span>';
+        }
+        // metClass() tints a kanji you have already handled in the tools; it is about you, the
+        // level dot is about the kanji, and they sit on different parts of the node.
+        btn.innerHTML = '<span class="node-face ' + metClass(member.k) + '">'
+            + '<span class="node-k">' + escapeHtml(member.k) + '</span>'
+            + '<span class="dot" style="--lv:' + hueFor(member.lv) + '" title="' + escapeHtml(member.lv) + '"></span>'
+            + '</span>'
+            + '<span class="node-mn">' + escapeHtml(member.mn || '') + '</span>'
+            + '<span class="node-on">' + readings + '</span>';
+        btn.setAttribute('aria-label', member.k + ' — ' + (member.mn || '')
+            + (shown[j] ? ' — ' + member.on.join('・') : ' — ' + window.t('phonetics.tapToCheck')));
+        btn.addEventListener('click', () => { shown[j] = !shown[j]; drawBoard(); });
+        box.appendChild(btn);
+    });
+
+    // Opening a family is still "seeing" it, exactly as it was from the old list.
+    markFamilySeen(family.c);
+
+    let hits = 0, misses = 0;
+    family.m.forEach((m, j) => { if (shown[j]) { (m.on.indexOf(want) >= 0) ? hits++ : misses++; } });
+    const score = document.getElementById('phonetics-score');
+    score.innerHTML = escapeHtml(window.tf('phonetics.checked', { n: hits + misses, total: n }))
+        + ' · <b>' + escapeHtml(window.tf('phonetics.matched', { n: hits })) + '</b>'
+        + ' · <i>' + escapeHtml(window.tf('phonetics.unmatched', { n: misses })) + '</i>';
+}
+
+// ---------------------------------------------------------------------------
+// The drill's entry panel
+// ---------------------------------------------------------------------------
+// The panel only chooses a deck and starts. The round itself happens on phonetics-drill.html,
+// full screen: the board sitting beside a question is both a distraction and, since the picker
+// prints every shape being asked about, the answer key.
+const DECKS = [['new', 'drill.deckNew'], ['miss', 'drill.deckMiss'],
+               ['hit', 'drill.deckHit'], ['all', 'drill.deckAll']];
+let drillDeck = 'new';
+
+function deckCounts() {
+    const out = { 'new': 0, miss: 0, hit: 0, all: stageList().length };
+    stageList().forEach(f => { out[quizStatus(currentLevelKey, f.c)]++; });
+    return out;
+}
+
+function drawDrillPanel() {
+    const host = document.getElementById('phonetics-drill-panel');
+    host.innerHTML = '';
+    const counts = deckCounts();
+    if (!counts.all) {
+        host.innerHTML = '<p class="drill-panel-sub">'
+            + escapeHtml(window.t('phonetics.noShapes')) + '</p>';
+        return;
+    }
+    // A deck with nothing in it cannot start a round, and "miss" is empty until you have missed
+    // something, so the first visit offers exactly one real choice.
+    if (!counts[drillDeck]) drillDeck = counts['new'] ? 'new' : 'all';
+
+    const grid = document.createElement('div');
+    grid.className = 'decks';
+    DECKS.forEach(([key, strKey]) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'deck';
+        btn.disabled = !counts[key];
+        btn.setAttribute('aria-pressed', String(key === drillDeck));
+        btn.innerHTML = '<span class="deck-n">' + counts[key] + '</span>'
+            + '<span class="deck-l">' + escapeHtml(window.t(strKey)) + '</span>';
+        btn.addEventListener('click', () => { drillDeck = key; drawDrillPanel(); });
+        grid.appendChild(btn);
+    });
+    host.appendChild(grid);
+
+    const go = document.createElement('a');
+    go.className = 'drill-go';
+    go.id = 'phonetics-drill-cta';
+    go.href = 'phonetics-drill.html?level=' + encodeURIComponent(currentLevelKey)
+        + '&cp=' + (currentCheckpoint + 1) + '&deck=' + drillDeck + '&start=1';
+    go.textContent = window.tf('phonetics.startRound', { n: Math.min(10, counts[drillDeck]) });
+    host.appendChild(go);
 }
 
 // ---------------------------------------------------------------------------
@@ -295,31 +436,6 @@ function quizStatus(levelKey, phonetic) {
         const e = (all[levelKey] || {})[phonetic];
         return e && e.last ? e.last : 'new';
     } catch (e) { return 'new'; }
-}
-
-// How many stages each level is cut into. This is the SECOND copy of these numbers -- the
-// generator writes the same ones into phonetics-quiz-data.js as PHONETICS_CHECKPOINTS, and
-// phonetics.html does not load that 102KB file just to read five integers. If the two disagree,
-// the board's stage 2 and the drill's stage 2 become different things and the link between them
-// lies; tests/phonetics-quiz.spec.js compares them so that cannot ship quietly.
-//
-// The two stages are not the same *set* either, and that is intended: the board lists every
-// family at a level, the drill can only ask about the ones with enough members to have a shared
-// answer. Both lists are ordered by the same real-usage ranking and cut into the same number of
-// equal parts, so stage 2 means "the second slice by frequency" on both sides.
-// How many stages each level is cut into. N1 carries 155 families with 3+ members, which is not
-// a thing anyone starts; stage 1 is always a level's most common shapes because PHONETICS_DATA
-// is already ordered by real usage.
-const CHECKPOINTS = { N5: 1, N4: 1, N3: 2, N2: 3, N1: 4 };
-let currentCheckpoint = 0;
-
-function levelChunks(levelKey) {
-    const all = PHONETICS_DATA[levelKey] || [];
-    const n = CHECKPOINTS[levelKey] || 1;
-    const per = Math.ceil(all.length / n);
-    const out = [];
-    for (let i = 0; i < n; i++) out.push(all.slice(i * per, (i + 1) * per));
-    return out;
 }
 
 const SEEN_KEY = 'khanjp-phonetics-seen';
@@ -466,8 +582,7 @@ function showFamilyTree(levelKey, family) {
         </div>
     `;
 
-    updateLevelNavActive(levelKey);
-    switchScreen(['phonetics-gate', 'family-list-section'], 'family-tree-section');
+    switchScreen([], 'family-tree-section');
 
     wrap.querySelectorAll('.tree-chip').forEach(chip => {
         chip.addEventListener('click', () => onChipClick(chip, family));
@@ -788,18 +903,22 @@ function closeInfoModal() {
 // See game.js's identical comment: data-i18n only covers text set once at parse time, so a
 // language switch needs the currently-visible dynamic panes re-rendered to pick up the change.
 document.addEventListener('sitelangchange', () => {
-    renderLevelSidebar();
     renderGateDial();
-    updateLevelNavActive(currentLevelKey);
-    if (!currentLevelKey) return;   // still on the gate: nothing else on screen is dynamic
+    if (!currentLevelKey) return;   // still on the gate; nothing else on screen is dynamic
     if (!document.getElementById('family-tree-section').classList.contains('hidden')) {
         showFamilyTree(currentLevelKey, currentFamily);
-    } else {
-        showFamilyList(currentLevelKey);
+        return;
     }
+    drawTimeline(); drawPicker(); drawBoard(); drawDrillPanel();
 });
 
-document.getElementById('family-tree-back-btn').addEventListener('click', backToFamilyList);
+// Back from the dictionary's lookup view: to the board if a level was ever chosen, to the gate
+// if the visitor arrived straight on a ?kanji= link and has never answered that question.
+document.getElementById('family-tree-back-btn').addEventListener('click', () => {
+    stopTreeResize();
+    document.getElementById('family-tree-section').classList.add('hidden');
+    if (levelChosen) enterLevel(currentLevelKey, currentCheckpoint); else showGate();
+});
 
 // Signing in mid-visit should light the map up without a reload; signing out should clear it.
 if (window.onAuthChange) {
@@ -807,13 +926,12 @@ if (window.onAuthChange) {
         await loadMetKanji();
         await loadSeenFamilies();
         // onAuthChange replays a known session the moment a listener registers, which is before
-        // the page's own init below has chosen a level. Re-rendering then would call
-        // showFamilyList(null), which throws; init is about to render anyway.
+        // the page's own init below has chosen a level, when there is no board to redraw yet. Init renders it anyway.
         if (!currentLevelKey) return;
         if (!document.getElementById('family-tree-section').classList.contains('hidden')) {
             showFamilyTree(currentLevelKey, currentFamily);
         } else {
-            showFamilyList(currentLevelKey);
+            drawPicker(); drawBoard();
         }
     });
 }
@@ -846,8 +964,15 @@ const deepLinkTarget = deepLinkKanji ? findFamilyForKanji(deepLinkKanji) : null;
 
 readSeenLocal().forEach(p => seenFamilies.add(p));
 
-renderLevelSidebar();
 renderGateDial();
+document.getElementById('phonetics-chip').addEventListener('click', showGate);
+document.getElementById('phonetics-reveal').addEventListener('click', () => {
+    const f = stageList()[curIndex];
+    if (!f) return;
+    shown = f.m.map(() => true);
+    drawBoard();
+});
+document.getElementById('phonetics-again').addEventListener('click', () => { shown = []; drawBoard(); });
 
 // phonetics.html?level=N3&cp=2 is how the drill page sends you back to the stage you drilled.
 const params = new URLSearchParams(window.location.search);
@@ -855,19 +980,13 @@ const askedLevel = params.get('level');
 const askedCp = parseInt(params.get('cp'), 10);
 
 if (deepLinkTarget) {
-    // Arriving from the dictionary is looking something up, not being asked where you are, so
-    // the gate is skipped entirely and the family opens.
+    // Arriving from the dictionary is a lookup, not a question about where you are, so the gate
+    // is skipped and the family opens in the reference view.
+    document.getElementById('phonetics-gate').hidden = true;
     showFamilyTree(deepLinkTarget.levelKey, deepLinkTarget.family);
 } else if (LEVEL_META.some(l => l.key === askedLevel)) {
-    showFamilyList(askedLevel, Number.isNaN(askedCp) ? 0 : askedCp - 1);
-} else {
-    // The pane now rests on the level question instead of defaulting to N5. A list of families
-    // means nothing until a visitor has said where they are -- on N1 it is 155 of them -- and
-    // the old default quietly answered that question for them. The sidebar still changes level
-    // at any time afterwards, so the gate is asked once per visit and never again.
-
-    // The explainer used to pop open here on every single load, which was a nag by the
-    // second visit and, once page tours shipped, a second explainer competing with the
-    // first. The tour now primes a first-time visitor and its third step points at the
-    // info button, so the modal stays one click away instead of arriving uninvited.
+    enterLevel(askedLevel, Number.isNaN(askedCp) ? 0 : askedCp - 1);
 }
+// Otherwise the gate stays up. It is the page's resting state: a grid of shapes means nothing
+// until a visitor has said which level they are at, and the old default to N5 answered that
+// question on their behalf.

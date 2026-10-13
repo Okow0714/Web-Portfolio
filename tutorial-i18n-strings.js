@@ -97,13 +97,21 @@ Object.assign(window.I18N_STRINGS, {
     },
 
     // --- Phonetics Family -----------------------------------------------------
-    'tour.phonetics.levels': {
-        en: 'Pick a JLPT level here. The families below change to the ones that level actually uses.',
-        mn: 'JLPT түвшнээ эндээс сонгоно уу. Доорх бүлгүүд тухайн түвшинд хэрэглэгддэг ханзаар солигдоно.'
+    'tour.phonetics.picker': {
+        en: 'Every phonetic shape at this stage, commonest first. Green means you answered it right in the drill, red means you missed it. Tap one to put it on the board.',
+        mn: 'Энэ шатны бүх дуудлагын язгуур, түгээмэлээсээ эхэлж. Ногоон бол дасгал дээр зөв хариулсан, улаан бол алдсан гэсэн үг. Аль нэгийг дарвал самбар дээр гарч ирнэ.'
     },
-    'tour.phonetics.families': {
-        en: 'Each row is one phonetic component and the kanji built on it. They are ordered by how often the commonest member turns up in real Japanese, so the useful ones are at the top.',
-        mn: 'Мөр бүр нь нэг дуудлагын язгуур, түүн дээр бүтсэн ханзууд. Хамгийн түгээмэл гишүүн нь япон бичвэрт хэр олон тааралддагаар эрэмбэлсэн тул хэрэгтэй нь дээрээ байна.'
+    'tour.phonetics.core': {
+        en: 'The shape in the middle gives you one reading to try. That is the whole claim a phonetic family makes.',
+        mn: 'Голын хэлбэр нь оролдох ганц дуудлага өгнө. Дуудлагын бүлэг гэдэг яг үүнийг л хэлж байгаа юм.'
+    },
+    'tour.phonetics.node': {
+        en: 'Each kanji around it is hidden until you tap it. Say the reading to yourself first, then check: the spoke turns green if the shape was right about it and copper if it was not. The exceptions are worth meeting too.',
+        mn: 'Эргэн тойрны ханз бүр дарах хүртэл нуугдмал. Эхлээд дуудлагыг нь дотроо хэлээд дараа нь шалгаарай: хэлбэр нь таарсан бол холбоос ногоон, таараагүй бол зэс өнгөтэй болно. Таарахгүй тохиолдлуудыг ч мэдэх хэрэгтэй.'
+    },
+    'tour.phonetics.drill': {
+        en: 'When you want testing rather than reading, pick a deck here and start. The round opens on its own screen so the board is not sitting there with the answers.',
+        mn: 'Уншихаас илүү өөрийгөө шалгамаар байвал эндээс багцаа сонгоод эхлээрэй. Дасгал тусдаа дэлгэц дээр нээгдэх тул самбар хариултаа барин зогсохгүй.'
     },
     'tour.phonetics.info': {
         en: 'Not sure what a phonetic component is? This explains it in a paragraph.',
