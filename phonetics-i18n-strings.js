@@ -68,10 +68,13 @@ Object.assign(window.I18N_STRINGS, {
     'phonetics.ndHolds': { en: '{c} predicts {sound} — and this kanji takes it.', mn: '{c} нь {sound} гэж заадаг — энэ ханз түүнийг авсан.' },
     'phonetics.ndBreaks': { en: '{c} predicts {sound} — this kanji does not take it.', mn: '{c} нь {sound} гэж заадаг — энэ ханз түүнийг аваагүй.' },
     'phonetics.ndShows': { en: 'Here {kanji} is read {sound}.', mn: 'Энд {kanji} нь {sound} гэж уншигдаж байна.' },
+    // A compound regularly voices or clips the sound it borrows. That is not an exception to the
+    // pattern, it is part of it, so the page names the change instead of hiding it.
+    'phonetics.ndChanged': { en: 'A compound voices {from} to {to}.', mn: 'Нийлмэл үгэнд {from} нь {to} болж хувирдаг.' },
     'phonetics.ndOtherSound': { en: 'That is another of this family\'s sounds, not the one above.', mn: 'Энэ нь дээрхи биш, бүлгийн өөр нэг дуудлага.' },
     'phonetics.ndNoExample': {
-        en: 'No sentence in the data reads this kanji with one of its family\'s sounds, so none is shown — a wrong example would argue against the pattern.',
-        mn: 'Энэ ханзыг бүлгийнх нь дуудлагаар уншсан өгүүлбэр эх өгөгдөлд алга тул үзүүлээгүй — буруу жишээ нь хэв журмыг нь эвдэх байсан.'
+        en: 'No word in the data reads this kanji with one of its family\'s sounds, so none is shown — a wrong example would argue against the pattern.',
+        mn: 'Энэ ханзыг бүлгийнх нь дуудлагаар уншсан үг эх өгөгдөлд алга тул үзүүлээгүй — буруу жишээ нь хэв журмыг нь эвдэх байсан.'
     },
     'phonetics.changeLevel': { en: 'change level', mn: 'түвшин солих' },
 

@@ -264,17 +264,26 @@ column so the field has something to measure against; the footer is below the fo
 stylesheet, and without `.phon-app[hidden]` the board stayed on screen behind the round.
 
 **`phonetics.html` does not load `phonetics-data.js`** (~2.8MB) any more. Everything that reaches
-the screen is in `phonetics-quiz-data.js` (~390KB, generated): shapes, their shared sounds,
-members with readings and glosses, and `PHONETICS_EX`, **one checked example sentence per kanji**.
-That check is the point: measured over the whole set, a member's own sentence demonstrates the
-reading its component predicts barely half the time — the rest show a kun'yomi (虫 as むし, 寺 as
-てら) and argue against the very pattern the page teaches. The generator reads the furigana of the
-group holding the kanji and keeps a sentence only when it really shows one of the family's sounds,
-pooling candidates from `phonetics-data.js`, `game-words.js` and `mnjp-data.js` (28,342 distinct
-sentences). **509 of 684 kanji get one (74.4%)**; the other 175 get none, because a wrong example
-is worse than no example here. `ex.s` records which sound it shows, and the page says so when that
-is not the family's first. `tests/phonetics-quiz.spec.js` re-checks every stored sentence against
-its own furigana, so a bad one cannot ship.
+the screen is in `phonetics-quiz-data.js` (~210KB, generated): shapes, their shared sounds,
+members with readings and glosses, and `PHONETICS_EX`, **one checked example word per kanji**
+(`w` word, `r` reading, `s` the sound it shows, `f`/`k` when a compound changed that sound, `mn` a
+gloss where one exists). It shows under the member you click and again beside the answer in a
+round.
+
+The checking is the point, and it has two traps. **A sound that merely appears in the reading
+proves nothing** — it could belong to another kanji in the word, so position decides: a kanji's
+reading sits where the kanji sits (甲虫 does not show 虫 reading こう). And **a compound regularly
+voices or clips what it borrows** (塩分 ぶん for ふん, 発表 はっ for はつ); those count, and are
+labelled rather than hidden. Candidates come from `mnjp-data.js`, `game-words.js` and
+`dictionary-data.js`, plus every compound mined out of the site's furigana — 5,635 word forms,
+because the vocabulary lists alone reach only half the kanji. **A real compound always beats the
+headword repeated** (性 → 個性, not 性), then a gloss, then the least sound change.
+**546 of 684 kanji get a word (79.8%), 349 of them with a Mongolian gloss (51%)**. The other 138
+get nothing: a wrong example argues against the very pattern the board is claiming. An ungloss
+word is still shown — 忠実(ちゅうじつ) under 忠 demonstrates the reading, which is the lesson, and
+the node already prints the kanji's own meaning. Example *sentences* were tried first and reached
+74.4%; words beat that and are a quarter of the bytes.
+`tests/phonetics-quiz.spec.js` re-checks every stored word by position, so a bad one cannot ship.
 
 Related: `phonetics.html` used to auto-open its "what's a phonetic component?" modal on *every*
 load; that is gone — the tour points at the button instead.
@@ -334,7 +343,7 @@ lazy-loaded) are JS files assigning one `const` to a JSON-shaped literal. Query 
 NAME = ", trailing ";" stripped)`, edit, `JSON.stringify(data, null, 4)` back — this round-trips
 cleanly since the files are strict JSON. (Sizes drift as content grows — treat them as
 ballpark, not exact; the point is these are all too big to `Read` in one shot.)
-`phonetics-quiz-data.js` (~390KB) is generated from the first three of these by
+`phonetics-quiz-data.js` (~210KB) is generated from these by
 `tools/build-phonetics-quiz.js` and is the only one `phonetics.html` loads. `phonetics-
 kanji-index.js` (~65KB, `PHONETICS_KANJI_INDEX`, a `{kanji: {phonetic, reading, count}}`
 derivative of `phonetics-data.js` — see its own header) is small enough to `Read` directly if

@@ -56,24 +56,58 @@ module.exports = async function () {
         }
     }
 
-    // Every stored sentence must demonstrate the sound it claims. This is the whole reason the
-    // generator does any work: left unchecked, nearly half of phonetics-data.js's sentences show
-    // a kun'yomi and argue against the pattern the page teaches. The furigana is the evidence —
-    // the reading of the group holding the kanji has to contain the sound.
+    // Every stored word must really read its kanji with the sound it claims, and position is the
+    // evidence: a kanji's reading sits where the kanji sits, so a sound that merely appears
+    // somewhere in the reading does not count. This is the whole reason the generator does any
+    // work, and the one thing most worth holding still -- a wrong example argues against the
+    // pattern the page exists to teach.
     const toHira = s2 => s2.replace(/[\u30a1-\u30f6]/g, c => String.fromCharCode(c.charCodeAt(0) - 0x60));
-    let sentences = 0;
+    const KANJI = /[\u4e00-\u9faf]/;
+    let words = 0, glossed = 0, changed = 0;
+
     for (const [kanji, ex] of Object.entries(EX)) {
-        sentences++;
-        assert.ok(ex.jp && ex.fg && ex.mn && ex.s, `${kanji}: incomplete example ${JSON.stringify(ex)}`);
-        const re = /<ruby>([^<]*)<rp>\(<\/rp><rt>([^<]*)<\/rt><rp>\)<\/rp><\/ruby>/g;
-        let m, read = null;
-        while ((m = re.exec(ex.fg))) if (m[1].indexOf(kanji) >= 0) { read = m[2]; break; }
-        assert.ok(read, `${kanji}: its own sentence never ruby-annotates it`);
-        assert.ok(read.indexOf(toHira(ex.s)) >= 0,
-            `${kanji}: sentence claims ${ex.s} but the furigana reads ${read} — ${ex.jp}`);
+        words++;
+        if (ex.mn) glossed++;
+        assert.ok(ex.w && ex.r && ex.s, `${kanji}: incomplete example ${JSON.stringify(ex)}`);
+        assert.ok(ex.w.indexOf(kanji) >= 0, `${kanji}: its example word ${ex.w} does not contain it`);
+        assert.strictEqual(toHira(ex.r), ex.r, `${kanji}: reading ${ex.r} is not hiragana`);
+
+        // a changed sound has to say so, and say what it changed to
+        if (ex.k) {
+            changed++;
+            assert.ok(['voiced', 'clipped'].indexOf(ex.k) >= 0, `${kanji}: unknown change "${ex.k}"`);
+            assert.ok(ex.f, `${kanji}: marked ${ex.k} but carries no changed form`);
+            assert.notStrictEqual(ex.f, ex.s, `${kanji}: marked ${ex.k} but the form is unchanged`);
+        } else {
+            assert.ok(!ex.f, `${kanji}: carries a changed form but is not marked as changed`);
+        }
+
+        const form = ex.k ? ex.f : ex.s;
+        const chars = [...ex.w];
+        const i = chars.indexOf(kanji);
+        const kanjiCount = chars.filter(c => KANJI.test(c)).length;
+        let placed;
+        if (i === 0) {
+            placed = ex.r.startsWith(form);
+        } else if (!chars.slice(i + 1).some(c => KANJI.test(c))) {
+            const tail = chars.slice(i + 1).join('');
+            placed = ex.r.endsWith(tail)
+                && ex.r.slice(0, ex.r.length - tail.length).endsWith(form);
+        } else {
+            placed = kanjiCount <= 3 && ex.r.indexOf(form) > 0;
+        }
+        assert.ok(placed,
+            `${kanji}: ${ex.w} (${ex.r}) does not read it as ${form} where the kanji sits`);
     }
 
-    // Every sound a sentence claims must be one its family actually shares, or the page would be
+    // An example that IS the headword demonstrates nothing -- the node already prints that kanji
+    // and its meaning. A handful are unavoidable (no compound in the pool reads them with the
+    // family's sound at all); a regression in the generator's preference would send this up.
+    const selfRef = Object.entries(EX).filter(([k, ex]) => ex.w === k).length;
+    assert.ok(selfRef <= 25,
+        `${selfRef} examples are just the headword again — the compound preference has slipped`);
+
+    // The sound a word shows must be one its family actually shares, or the page would be
     // teaching a reading the board never predicted.
     const famSounds = new Map();
     for (const lv of LEVELS) {
@@ -85,10 +119,10 @@ module.exports = async function () {
         }
     }
     for (const [kanji, ex] of Object.entries(EX)) {
-        const want = famSounds.get(kanji);
-        assert.ok(want, `${kanji} has an example but belongs to no family in the quiz set`);
-        assert.ok(want.has(ex.s),
-            `${kanji}: sentence shows ${ex.s}, which none of its families share`);
+        const sounds = famSounds.get(kanji);
+        assert.ok(sounds, `${kanji} has an example but belongs to no family in the quiz set`);
+        assert.ok(sounds.has(ex.s),
+            `${kanji}: word shows ${ex.s}, which none of its families share`);
     }
 
     // The matcher is only useful if it accepts what a learner actually types. Every answer must
@@ -135,6 +169,7 @@ module.exports = async function () {
         'phonetics.js no longer reads PHONETICS_CHECKPOINTS — has a second copy crept back?');
 
     console.log(`      phonetics quiz data current — ${families} families, ${sounds} answers, `
-        + `${checked} matched in both kana; ${sentences} checked sentences; checkpoints `
+        + `${checked} matched in both kana; ${words} checked words (${glossed} glossed, `
+        + `${changed} with a sound change); checkpoints `
         + LEVELS.map(l => l + ':' + CP[l]).join(' '));
 };

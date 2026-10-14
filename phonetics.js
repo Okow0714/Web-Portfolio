@@ -510,11 +510,35 @@ function layoutTree() {
     document.getElementById('tree-wrap').style.setProperty('--ts', s.toFixed(1) + 'px');
 }
 
-// The example sentence lives here, under the member you clicked. Every sentence in the data has
-// been checked to demonstrate one of the family's own sounds -- see the generator's comment --
-// and where the one it shows is not the family's headline sound, the panel says which it is,
-// rather than letting the reader assume.
-function sentenceFor(kanji) { return EX[kanji] || null; }
+// The example word, under the member you clicked and again beside the answer in a round. Every
+// word in the data has been checked to read its kanji with one of the family's own sounds, by
+// position inside the word -- see the generator's comment. Where that is not the family's
+// headline sound, or where the compound changed it, the page says so rather than letting the
+// reader assume.
+function wordFor(kanji) { return EX[kanji] || null; }
+
+// The reading with the kanji's own run of kana picked out: that run is the evidence, and the
+// rest of the reading belongs to the word's other characters.
+function readingHtml(ex) {
+    const form = ex.k ? ex.f : ex.s;
+    const i = form ? ex.r.indexOf(form) : -1;
+    if (i < 0) return escapeHtml(ex.r);
+    return escapeHtml(ex.r.slice(0, i))
+        + '<b>' + escapeHtml(form) + '</b>'
+        + escapeHtml(ex.r.slice(i + form.length));
+}
+
+function wordHtml(kanji, ex, want) {
+    const form = ex.k ? ex.f : ex.s;
+    let note = window.tf('phonetics.ndShows', { kanji, sound: form });
+    if (ex.k) note += ' ' + window.tf('phonetics.ndChanged', { from: ex.s, to: ex.f });
+    else if (want && toHira(want) !== ex.s) note += ' ' + window.t('phonetics.ndOtherSound');
+
+    return '<p class="ex-w"><b>' + escapeHtml(ex.w) + '</b>'
+        + '<span class="ex-r">' + readingHtml(ex) + '</span></p>'
+        + (ex.mn ? '<p class="ex-mn">' + escapeHtml(ex.mn) + '</p>' : '')
+        + '<p class="ex-note">' + escapeHtml(note) + '</p>';
+}
 
 function showNode(family, m, btn) {
     document.querySelectorAll('.tchip.active').forEach(el => el.classList.remove('active'));
@@ -523,7 +547,7 @@ function showNode(family, m, btn) {
     const panel = document.getElementById('phonetics-node-detail');
     const want = family.s[0];
     const holds = m.on.indexOf(want) >= 0;
-    const ex = sentenceFor(m.k);
+    const ex = wordFor(m.k);
 
     let html = '<div class="nd-head">'
         + '<span class="nd-k">' + escapeHtml(m.k) + '</span>'
@@ -542,15 +566,7 @@ function showNode(family, m, btn) {
         + '</p>';
 
     if (ex) {
-        const shows = ex.s;
-        const main = toHira(want) === shows;
-        html += '<div class="nd-ex">'
-            + '<p class="nd-ex-jp">' + ex.fg + '</p>'
-            + '<p class="nd-ex-mn">' + escapeHtml(ex.mn) + '</p>'
-            + '<p class="nd-ex-note">'
-            + escapeHtml(window.tf('phonetics.ndShows', { kanji: m.k, sound: shows }))
-            + (main ? '' : ' ' + escapeHtml(window.t('phonetics.ndOtherSound')))
-            + '</p></div>';
+        html += '<div class="nd-ex">' + wordHtml(m.k, ex, want) + '</div>';
     } else {
         html += '<p class="nd-ex-none">' + escapeHtml(window.t('phonetics.ndNoExample')) + '</p>';
     }
@@ -728,8 +744,8 @@ function drawCard() {
     input.focus();
 }
 
-// The verdict carries the example sentence: the moment you have just tried to produce a reading
-// is the moment a sentence using it is worth reading.
+// The verdict carries an example word: the moment you have just tried to produce a reading is
+// the moment a word that uses it is worth seeing.
 function verdictFor(f, good) {
     const v = document.createElement('div');
     v.className = 'd-verdict ' + (good ? 'ok' : 'no');
@@ -741,30 +757,24 @@ function verdictFor(f, good) {
         + '</p>';
 
     const pick = exampleForFamily(f);
-    if (pick) {
-        html += '<div class="d-ex">'
-            + '<p class="d-ex-jp">' + pick.ex.fg + '</p>'
-            + '<p class="d-ex-mn">' + escapeHtml(pick.ex.mn) + '</p>'
-            + '<p class="d-ex-note">'
-            + escapeHtml(window.tf('phonetics.ndShows', { kanji: pick.k, sound: pick.ex.s }))
-            + '</p></div>';
-    }
+    if (pick) html += '<div class="d-ex">' + wordHtml(pick.k, pick.ex, f.s[0]) + '</div>';
     v.innerHTML = html;
     return v;
 }
 
-// Prefer a member whose sentence demonstrates the sound the question was about; otherwise any
-// member with a checked sentence at all.
+// Prefer a member whose word shows the sound the question was about, unchanged; then one that
+// shows it with a compound's usual voicing; then any member with a checked word at all.
 function exampleForFamily(f) {
     const want = toHira(f.s[0]);
-    let fallback = null;
+    let changed = null, fallback = null;
     for (const m of f.m) {
-        const ex = sentenceFor(m.k);
+        const ex = wordFor(m.k);
         if (!ex) continue;
-        if (ex.s === want) return { k: m.k, ex };
+        if (ex.s === want && !ex.k) return { k: m.k, ex };
+        if (ex.s === want && !changed) changed = { k: m.k, ex };
         if (!fallback) fallback = { k: m.k, ex };
     }
-    return fallback;
+    return changed || fallback;
 }
 
 function drawDone(card) {
