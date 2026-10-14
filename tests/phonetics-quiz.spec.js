@@ -28,13 +28,10 @@ module.exports = async function () {
         'phonetics-quiz-data.js is out of date with phonetics-data.js — run '
         + '`node tools/build-phonetics-quiz.js` and commit the result');
 
-    const marker = 'const PHONETICS_QUIZ = ';
-    const end = committed.indexOf('\n\n// How many checkpoints');
-    const QUIZ = JSON.parse(committed.slice(committed.indexOf(marker) + marker.length, end)
-        .replace(/;\s*$/, '').trim());
-    const cpMarker = 'const PHONETICS_CHECKPOINTS = ';
-    const CP = JSON.parse(committed.slice(committed.indexOf(cpMarker) + cpMarker.length)
-        .replace(/;\s*$/, '').trim());
+    const sandbox = {};
+    new Function('g', committed + '\ng.QUIZ = PHONETICS_QUIZ; g.EX = PHONETICS_EX;'
+        + ' g.CP = PHONETICS_CHECKPOINTS;')(sandbox);
+    const { QUIZ, EX, CP } = sandbox;
 
     const LEVELS = ['N5', 'N4', 'N3', 'N2', 'N1'];
     let families = 0, sounds = 0;
@@ -59,6 +56,41 @@ module.exports = async function () {
         }
     }
 
+    // Every stored sentence must demonstrate the sound it claims. This is the whole reason the
+    // generator does any work: left unchecked, nearly half of phonetics-data.js's sentences show
+    // a kun'yomi and argue against the pattern the page teaches. The furigana is the evidence —
+    // the reading of the group holding the kanji has to contain the sound.
+    const toHira = s2 => s2.replace(/[\u30a1-\u30f6]/g, c => String.fromCharCode(c.charCodeAt(0) - 0x60));
+    let sentences = 0;
+    for (const [kanji, ex] of Object.entries(EX)) {
+        sentences++;
+        assert.ok(ex.jp && ex.fg && ex.mn && ex.s, `${kanji}: incomplete example ${JSON.stringify(ex)}`);
+        const re = /<ruby>([^<]*)<rp>\(<\/rp><rt>([^<]*)<\/rt><rp>\)<\/rp><\/ruby>/g;
+        let m, read = null;
+        while ((m = re.exec(ex.fg))) if (m[1].indexOf(kanji) >= 0) { read = m[2]; break; }
+        assert.ok(read, `${kanji}: its own sentence never ruby-annotates it`);
+        assert.ok(read.indexOf(toHira(ex.s)) >= 0,
+            `${kanji}: sentence claims ${ex.s} but the furigana reads ${read} — ${ex.jp}`);
+    }
+
+    // Every sound a sentence claims must be one its family actually shares, or the page would be
+    // teaching a reading the board never predicted.
+    const famSounds = new Map();
+    for (const lv of LEVELS) {
+        for (const f of QUIZ[lv]) {
+            for (const m2 of f.m) {
+                if (!famSounds.has(m2.k)) famSounds.set(m2.k, new Set());
+                f.s.forEach(x => famSounds.get(m2.k).add(toHira(x)));
+            }
+        }
+    }
+    for (const [kanji, ex] of Object.entries(EX)) {
+        const want = famSounds.get(kanji);
+        assert.ok(want, `${kanji} has an example but belongs to no family in the quiz set`);
+        assert.ok(want.has(ex.s),
+            `${kanji}: sentence shows ${ex.s}, which none of its families share`);
+    }
+
     // The matcher is only useful if it accepts what a learner actually types. Every answer must
     // match itself in katakana and in hiragana; the romaji paths are covered by hand cases here.
     const KANA = (function () {
@@ -68,7 +100,6 @@ module.exports = async function () {
         return sandbox.__K;
     })();
 
-    const toHira = s => s.replace(/[ァ-ヶ]/g, c => String.fromCharCode(c.charCodeAt(0) - 0x60));
     let checked = 0;
     for (const lv of LEVELS) {
         for (const f of QUIZ[lv]) {
@@ -104,6 +135,6 @@ module.exports = async function () {
         'phonetics.js no longer reads PHONETICS_CHECKPOINTS — has a second copy crept back?');
 
     console.log(`      phonetics quiz data current — ${families} families, ${sounds} answers, `
-        + `${checked} matched in both kana; checkpoints `
+        + `${checked} matched in both kana; ${sentences} checked sentences; checkpoints `
         + LEVELS.map(l => l + ':' + CP[l]).join(' '));
 };

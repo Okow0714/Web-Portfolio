@@ -58,15 +58,14 @@
         // The gate is one question and answers itself, so it gets no coach mark. The board
         // scene waits for #phonetics-app, which only exists once a level has been picked.
         'phonetics.html': [
-            { id: 'board', when: '#phonetics-app', steps: [
-                { sel: '#phonetics-picker', k: 'tour.phonetics.picker' },
-                { sel: '.core', k: 'tour.phonetics.core' },
-                { sel: '.node', k: 'tour.phonetics.node' },
-                { sel: '.drill-panel', k: 'tour.phonetics.drill' },
+            { id: 'board', when: '#phonetics-field-view', steps: [
+                { sel: '#phonetics-field', k: 'tour.phonetics.picker' },
+                { sel: '#phonetics-quick', k: 'tour.phonetics.drill' },
                 { sel: '#phonetics-info-btn', k: 'tour.phonetics.info' },
             ] },
-            { id: 'tree', when: '#family-tree-section', steps: [
-                { sel: '.tree-wrap', k: 'tour.phonetics.tree' },
+            { id: 'tree', when: '#phonetics-tree-view', steps: [
+                { sel: '.troot', k: 'tour.phonetics.core' },
+                { sel: '.tchip', k: 'tour.phonetics.node' },
                 { sel: null, k: 'tour.phonetics.readings' },
             ] },
         ],

@@ -38,7 +38,6 @@ const PAGES = [
     // The six Study Path stages. Each is a real page so its text stays crawlable and linkable;
     // they share path.html's nav entry (see withCurrent).
     'path-kana.html', 'path-n5.html', 'path-n4.html', 'path-n3.html', 'path-n2.html', 'path-n1.html',
-    'phonetics-drill.html',
 ];
 
 const MARKS = {

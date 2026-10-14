@@ -59,6 +59,20 @@ Object.assign(window.I18N_STRINGS, {
         mn: 'Дуудлагын бүлгүүд түвшин бүрт өөр. Сонгосны дараа буланд багасна.'
     },
     'phonetics.gateAria': { en: '{level} — {n} shapes', mn: '{level} — {n} язгуур' },
+    'phonetics.pickStage': { en: 'Which stage do you want to start from?', mn: 'Аль шатнаас эхлэх вэ?' },
+    'phonetics.boardSub': { en: '{n} shapes · tap one to open its family', mn: '{n} язгуур · дарж бүлгийг нь нээнэ' },
+    'phonetics.allShapes': { en: 'All shapes', mn: 'Бүх язгуур' },
+
+    // The node panel. It says plainly whether the component was right about this kanji, because
+    // that is the only thing the whole page is claiming, and about a third of members break it.
+    'phonetics.ndHolds': { en: '{c} predicts {sound} — and this kanji takes it.', mn: '{c} нь {sound} гэж заадаг — энэ ханз түүнийг авсан.' },
+    'phonetics.ndBreaks': { en: '{c} predicts {sound} — this kanji does not take it.', mn: '{c} нь {sound} гэж заадаг — энэ ханз түүнийг аваагүй.' },
+    'phonetics.ndShows': { en: 'Here {kanji} is read {sound}.', mn: 'Энд {kanji} нь {sound} гэж уншигдаж байна.' },
+    'phonetics.ndOtherSound': { en: 'That is another of this family\'s sounds, not the one above.', mn: 'Энэ нь дээрхи биш, бүлгийн өөр нэг дуудлага.' },
+    'phonetics.ndNoExample': {
+        en: 'No sentence in the data reads this kanji with one of its family\'s sounds, so none is shown — a wrong example would argue against the pattern.',
+        mn: 'Энэ ханзыг бүлгийнх нь дуудлагаар уншсан өгүүлбэр эх өгөгдөлд алга тул үзүүлээгүй — буруу жишээ нь хэв журмыг нь эвдэх байсан.'
+    },
     'phonetics.changeLevel': { en: 'change level', mn: 'түвшин солих' },
 
     // The board itself. The page's own name stays the eyebrow above this; the h1 is what the
@@ -86,6 +100,15 @@ Object.assign(window.I18N_STRINGS, {
         mn: 'Нэг удаад 10 хэлбэр. Хирагана, катакана, ромажи аль нь ч болно. Хариулт нь дээрх жагсаалтыг өнгөөр тэмдэглэнэ.'
     },
     'phonetics.startRound': { en: 'Start — {n} cards', mn: 'Эхлэх — {n} карт' },
+    'phonetics.pickDeck': { en: 'Which shapes should it ask about? {n} at a time.', mn: 'Аль язгуураас асуух вэ? Нэг удаад {n}.' },
+    'phonetics.deckNewSub': { en: 'not asked yet', mn: 'хараахан асуугаагүй' },
+    'phonetics.deckMissSub': { en: 'last answer was wrong', mn: 'сүүлд буруу хариулсан' },
+    'phonetics.deckHitSub': { en: 'last answer was right', mn: 'сүүлд зөв хариулсан' },
+    'phonetics.deckAllSub': { en: 'every shape in this stage', mn: 'энэ шатны бүх язгуур' },
+    'phonetics.exitRound': { en: 'Exit', mn: 'Гарах' },
+    'phonetics.nRight': { en: '{n} right', mn: '{n} зөв' },
+    'phonetics.nWrong': { en: '{n} wrong', mn: '{n} буруу' },
+    'phonetics.roundTally': { en: '{hit} known · {miss} missed · {new} not asked', mn: '{hit} мэдсэн · {miss} алдсан · {new} асуугаагүй' },
     'phonetics.noShapes': { en: 'No shapes at this stage.', mn: 'Энэ шатанд язгуур алга.' },
 
     'phonetics.wavesTitle': { en: 'Why does one kanji have two readings?', mn: 'Яагаад нэг ханз хоёр дуудлагатай байдаг вэ?' },

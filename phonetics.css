@@ -69,6 +69,21 @@ body:has(.phonetics-drill-main),
     --shadow-sm: 0 2px 10px light-dark(rgba(28, 47, 37, 0.08), rgba(0, 0, 0, 0.45));
     --shadow-md: 0 14px 32px rgba(28, 47, 37, 0.16);
     --shadow-md: 0 14px 32px light-dark(rgba(28, 47, 37, 0.16), rgba(0, 0, 0, 0.55));
+    /* A tile is a solid block of its state, not an outline around nothing, so each fill carries
+       its own ink rather than borrowing the page's. Measured: 10.9:1 unasked, 4.6:1 jade, 8.9:1
+       red in light; 9.3 / 7.9 / 5.0 in dark. These are the one place light-dark() is not enough,
+       because the pair swaps which half is the fill. */
+    --tile-bg: #d7e5db;
+    --tile-bg: light-dark(#d7e5db, #23312a);
+    --tile-ink: #1c2f25;
+    --tile-ink: light-dark(#1c2f25, #e8f1ea);
+    --tile-hit-bg: #2f7d4f;
+    --tile-hit-bg: light-dark(#2f7d4f, #5ab57e);
+    --tile-hit-ink: #f7fbf8;
+    --tile-hit-ink: light-dark(#f7fbf8, #0f1613);
+    --tile-miss-bg: #9c2f20;
+    --tile-miss-bg: light-dark(#9c2f20, #c4543c);
+    --tile-miss-ink: #f7e7e3;
     /* Right/wrong, used by the drill's own feedback AND by the board, which colours a family's
        rank stripe by what the drill last asked. Deliberately not the copper accent: the accent
        means "common", and these mean "you knew it" / "you did not", which is a different axis.
@@ -96,9 +111,17 @@ body:has(.phonetics-drill-main) {
 /* Top padding = the fixed masthead's rendered height + the ~25px of visual clearance the
    page has always had. The masthead is now one 64px row instead of two rows totalling
    115px, so this drops from 140px. */
+/* One screen, not a scrolling column: the field measures itself against whatever is left of the
+   window, and .phonetics-main is the box it measures against. */
 .phonetics-main {
-    padding: 89px 40px 100px;
-    min-height: 100vh;
+    padding: 89px 40px 28px;
+    /* A flex column the height of the window, so the field below can measure what is left of it.
+       100dvh, not 100vh: on a phone the browser chrome shrinks the viewport as you scroll, and a
+       field sized to the larger number is a field with its last row under the address bar. The
+       89px top clears the fixed masthead; the footer sits below the fold, as it does on the hub. */
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
     /* The top wash was a dark olive (#2c3327) that only made sense against the old near-black
        ground — on the pale jade it would read as a dirty smear. Same gesture, rebuilt as a
        faint warm copper haze off the page's own accent. */
@@ -156,8 +179,11 @@ body:has(.phonetics-drill-main) {
 
 @media (prefers-reduced-motion: reduce) {
     .phonetics-section,
-    .tree-chip,
-    .tree-popover,
+    .tchip,
+    .troot,
+    .lv,
+    .stage,
+    .tile,
     .morph-stage {
         transition: none !important;
         animation: none !important;
@@ -230,24 +256,29 @@ body:has(.phonetics-drill-main) {
 }
 
 /* ---------------------------------------------------------------------
-   Two-column layout: a persistent sidebar (intro + JLPT level nav) and a
-   content pane (family list or family tree) to its right. The sidebar
-   stays mounted for the page's whole life — only the content pane swaps
-   between the list/tree sections — so a level can be picked from either
-   view without a separate "back to levels" step.
+   The level chip, and the row it shares with the explainer button
    --------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------
-   The level chip
+.phon-app {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    flex: 1 1 auto;
+}
 
-   Where the sidebar's level rail used to be. A rail spent 216px of every screen restating a
-   choice already made; the chip states it in a corner and gives the choice back on a click.
-   --------------------------------------------------------------------- */
+/* A display rule outranks the UA stylesheet's [hidden], so every view that sets one has to say
+   this as well. Without it the board stayed on screen behind the round -- a mess, and with the
+   field printing every shape being asked about, the answer key. */
+.phon-app[hidden] { display: none; }
+
+.app-top { flex: 0 0 auto; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
 .phon-chip {
     display: flex;
-    margin: 0 0 10px auto;
     align-items: center;
-    gap: 9px;
-    padding: 6px 14px 6px 6px;
+    gap: 8px;
+    margin-left: auto;
+    order: 2;
+    padding: 4px 12px 4px 4px;
     font: inherit;
     font-size: 0.78rem;
     cursor: pointer;
@@ -255,36 +286,40 @@ body:has(.phonetics-drill-main) {
     background: var(--bg-surface);
     border: 1px solid var(--border);
     border-radius: 999px;
-    box-shadow: var(--shadow-sm);
 }
 
-.phon-chip[hidden] { display: none; }
 .phon-chip:hover { color: var(--text-primary); border-color: var(--hue, var(--accent)); }
 .phon-chip:focus-visible { outline: 2px solid var(--accent-dark); outline-offset: 2px; }
 
 .phon-chip-dot {
     display: grid;
     place-items: center;
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
     font-weight: 700;
-    font-size: 0.76rem;
+    font-size: 0.74rem;
     color: var(--bg-surface);
     background: var(--hue, var(--accent));
 }
 
+.phon-info-btn { order: 1; font-size: 0.76rem; padding: 5px 11px; }
+
 /* ---------------------------------------------------------------------
-   The arrival gate
+   The gate
 
    Asked once. A dial rather than a list, because the five levels are a choice and not a
-   sequence, and it is the same radial shape the board uses one screen later -- the page makes
-   its own argument twice. The spokes are an SVG in the same 0-100 percentage space as the
-   buttons' left/top, which is why preserveAspectRatio is "none" and why the mobile fallback
-   drops them rather than reflowing them: that only holds at a 1/1 aspect-ratio.
+   sequence. Choosing one sends its disc to the middle, where it swells for a second and bursts
+   into that level's stages -- the stages come OUT of the level, which is what they are.
+
+   The spokes are an SVG with preserveAspectRatio:none over a 0 0 100 100 viewBox and the discs
+   are placed in percent, so both live in one coordinate space and stay joined at any size. That
+   holds only at a 1/1 aspect-ratio, which is why the phone fallback drops the spokes rather
+   than reflowing them.
    --------------------------------------------------------------------- */
 .phon-gate {
-    min-height: 74vh;
+    flex: 1 1 auto;
+    min-height: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -297,23 +332,24 @@ body:has(.phonetics-drill-main) {
 .phon-gate-h {
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-size: clamp(1.3rem, 3.4vw, 1.9rem);
     margin: 0;
     color: var(--text-primary);
 }
 
 .phon-gate-p {
-    margin: 8px 0 0;
-    max-width: 44ch;
+    margin: 7px 0 0;
+    max-width: 42ch;
+    min-height: 1.5em;
     color: var(--text-secondary);
-    font-size: 0.92rem;
+    font-size: 0.9rem;
 }
 
 .gate-dial {
     position: relative;
-    width: min(400px, 84vw);
+    width: min(100%, 62vh, 420px);
     aspect-ratio: 1 / 1;
-    margin: 14px auto 0;
+    margin-top: 10px;
 }
 
 .gate-dial svg {
@@ -329,72 +365,108 @@ body:has(.phonetics-drill-main) {
     stroke-width: 1.4;
     stroke-dasharray: 4 6;
     vector-effect: non-scaling-stroke;
+    transition: opacity 0.35s ease;
 }
+
+.gate-dial.away .dial-spoke,
+.gate-dial.away .dial-hub { opacity: 0; }
 
 .dial-hub {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 86px;
-    height: 86px;
+    width: 20%;
+    aspect-ratio: 1 / 1;
     border-radius: 50%;
     display: grid;
     place-items: center;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
     background: var(--bg-surface);
     border: 1px dashed var(--border-strong);
-    color: var(--text-muted);
-    font-size: 0.68rem;
-    letter-spacing: 0.1em;
+    transition: opacity 0.3s ease;
 }
 
 .lv {
     position: absolute;
     transform: translate(-50%, -50%);
-    width: 86px;
-    height: 86px;
+    width: 21%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    background: var(--bg-surface);
+    border: 2.5px solid var(--hue);
+    color: var(--hue);
+    transition: left 0.55s cubic-bezier(.22, .61, .36, 1), top 0.55s cubic-bezier(.22, .61, .36, 1),
+                opacity 0.3s ease, transform 0.25s ease;
+}
+
+.lv:hover { transform: translate(-50%, -50%) scale(1.08); }
+.lv:focus-visible { outline: 3px solid var(--accent-dark); outline-offset: 4px; }
+.lv-n { font-family: var(--font-display); font-size: clamp(1.05rem, 2.4vmin + 0.65rem, 1.55rem); line-height: 1; }
+.lv-t { font-size: clamp(0.44rem, 0.9vmin + 0.3rem, 0.56rem); line-height: 1.15; padding: 0 6px; text-align: center; opacity: 0.86; }
+.lv.gone { opacity: 0; pointer-events: none; }
+.lv.travelling { z-index: 4; pointer-events: none; }
+
+/* The one-second swell, then the burst it hands over to. */
+.lv.inflating { animation: phonInflate 1s cubic-bezier(.22, .61, .36, 1) forwards; }
+@keyframes phonInflate {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    55% { transform: translate(-50%, -50%) scale(1.38); }
+    100% { transform: translate(-50%, -50%) scale(1.26); }
+}
+.lv.bursting { animation: phonBurst 0.3s cubic-bezier(.22, .61, .36, 1) forwards; }
+@keyframes phonBurst { to { transform: translate(-50%, -50%) scale(2.1); opacity: 0; } }
+
+.stage {
+    position: absolute;
+    transform: translate(-50%, -50%) scale(0.2);
+    width: 21%;
+    aspect-ratio: 1 / 1;
     border-radius: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 2px;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    opacity: 0;
     background: var(--bg-surface);
     border: 2.5px solid var(--hue);
     color: var(--hue);
-    font: inherit;
-    cursor: pointer;
-    transition: transform var(--dur-2, 0.22s) ease, background-color var(--dur-2, 0.22s) ease,
-                color var(--dur-2, 0.22s) ease;
+    transition: left 0.5s cubic-bezier(.34, 1.56, .64, 1), top 0.5s cubic-bezier(.34, 1.56, .64, 1),
+                transform 0.5s cubic-bezier(.34, 1.56, .64, 1), opacity 0.3s ease;
 }
 
-.lv:hover {
-    transform: translate(-50%, -50%) scale(1.09);
-    background: var(--hue);
-    color: var(--bg-surface);
-}
-
-.lv:focus-visible { outline: 3px solid var(--accent-dark); outline-offset: 4px; }
-.lv-n { font-family: var(--font-display); font-size: 1.45rem; line-height: 1; }
-.lv-t { font-size: 0.6rem; line-height: 1.2; padding: 0 7px; text-align: center; opacity: 0.88; }
+.stage.out { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+.stage:hover { transform: translate(-50%, -50%) scale(1.08); }
+.stage:focus-visible { outline: 3px solid var(--accent-dark); outline-offset: 4px; }
+.stage-n { font-family: var(--font-display); font-size: clamp(0.95rem, 2.2vmin + 0.55rem, 1.35rem); line-height: 1; }
+.stage-c { font-size: clamp(0.44rem, 0.9vmin + 0.3rem, 0.56rem); color: var(--text-muted); }
+.stage-bar { width: 42%; height: 3px; background: var(--border-strong); overflow: hidden; margin-top: 1px; }
+.stage-bar i { display: block; height: 100%; background: var(--right); }
 
 /* ---------------------------------------------------------------------
    Board header
    --------------------------------------------------------------------- */
-.phon-head { text-align: center; padding-top: 4px; }
-
-.phon-eyebrow {
-    margin: 0 0 6px;
-    font-size: 0.68rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-}
-
 .phon-h1-trigger {
-    display: inline-flex;
+    flex: 0 0 auto;
+    display: flex;
     align-items: baseline;
+    justify-content: center;
     gap: 8px;
+    margin: 2px 0 0;
     background: none;
     border: 0;
     padding: 0;
@@ -405,199 +477,163 @@ body:has(.phonetics-drill-main) {
 .phon-h1 {
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: clamp(1.45rem, 3.6vw, 2rem);
-    margin: 0 0 8px;
+    font-size: clamp(1.15rem, 3vw, 1.6rem);
+    line-height: 1.2;
+    margin: 0;
     color: var(--text-primary);
 }
 
-.phon-h1-info { color: var(--accent-dark); font-size: 0.9rem; }
+.phon-h1 em { font-style: normal; color: var(--hue, var(--accent-dark)); }
+.phon-h1-info { color: var(--accent-dark); font-size: 0.8rem; }
 .phon-h1-trigger:hover .phon-h1 { color: var(--accent-dark); }
 .phon-h1-trigger:focus-visible { outline: 2px solid var(--accent-dark); outline-offset: 3px; }
 
-.phon-rule {
-    max-width: 54ch;
-    margin: 0 auto;
-    color: var(--text-secondary);
-    font-size: 0.92rem;
-}
-
-.phon-rule b { color: var(--text-primary); font-weight: 600; }
+.phon-sub { flex: 0 0 auto; margin: 3px 0 0; text-align: center; font-size: 0.74rem; color: var(--text-muted); }
 
 /* ---------------------------------------------------------------------
-   Stage timeline
-
-   Only where there is a journey: N1 carries 155 shapes and N2 96, which is not a thing anyone
-   starts. The connecting line is a ::before behind the dots, inset so it does not run past the
-   first and last of them.
+   The field, and the test bar that spans exactly the tiles under it
    --------------------------------------------------------------------- */
-.timeline {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    margin: 22px 0 0;
-}
-
-.timeline[hidden] { display: none; }
-
-.timeline::before {
-    content: '';
-    position: absolute;
-    top: 21px;
-    left: 12%;
-    right: 12%;
-    height: 2px;
-    background: var(--border);
-    z-index: 0;
-}
-
-.cp {
-    position: relative;
-    z-index: 1;
+.field-view {
+    flex: 1 1 auto;
+    min-height: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
-    padding: 0 14px;
+    justify-content: center;
+    gap: 9px;
+    padding-top: 9px;
+}
+
+.field-view[hidden] { display: none; }
+.field-stack { display: flex; flex-direction: column; gap: 8px; width: var(--fw, 100%); max-width: 100%; }
+
+/* One bar, the full width of the field, in the page's accent at full strength. The test is the
+   one thing on this screen that is not reading, so it gets the one solid colour. */
+.quick {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    padding: 11px 16px;
     font: inherit;
-    background: none;
+    font-size: 0.86rem;
+    font-weight: 600;
+    cursor: pointer;
+    background: var(--accent-dark);
+    color: var(--bg-surface);
+    border: 1px solid var(--accent-dark);
+    transition: filter 0.18s ease;
+}
+
+.quick:hover { filter: brightness(1.12); }
+.quick:focus-visible { outline: 3px solid var(--text-primary); outline-offset: 2px; }
+.quick-sub { font-weight: 400; font-size: 0.72rem; opacity: 0.82; }
+
+.field {
+    display: grid;
+    grid-template-columns: repeat(var(--cols, 6), var(--cell, 48px));
+    gap: 7px;
+    justify-content: center;
+}
+
+/* Solid blocks. The state is the fill, so a tile needs no border to be a tile and no tint to be
+   a colour -- a field of outlines reads as a form, a field of blocks reads as a board. */
+.tile {
+    width: var(--cell, 48px);
+    height: var(--cell, 48px);
+    display: grid;
+    place-items: center;
+    padding: 0;
     border: 0;
     cursor: pointer;
-    color: var(--text-secondary);
-}
-
-.cp:focus-visible { outline: 2px solid var(--accent-dark); outline-offset: 3px; }
-
-.cp-dot {
-    display: grid;
-    place-items: center;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: var(--bg-surface);
-    border: 2px solid var(--border-strong);
-    color: var(--text-muted);
-    font-family: var(--font-display);
-    font-size: 1rem;
-    line-height: 1;
-    transition: transform var(--dur-1, 0.12s) ease, border-color var(--dur-1, 0.12s) ease,
-                background-color var(--dur-1, 0.12s) ease;
-}
-
-.cp:hover .cp-dot { transform: scale(1.08); border-color: var(--accent); }
-
-.cp[aria-pressed="true"] .cp-dot {
-    background: var(--accent-dark);
-    border-color: var(--accent-dark);
-    color: var(--bg-surface);
-}
-
-.cp-bar { width: 46px; height: 3px; border-radius: 2px; background: var(--border-strong); overflow: hidden; }
-.cp-bar i { display: block; height: 100%; background: var(--right); }
-
-.cp-l {
-    font-size: 0.66rem;
-    letter-spacing: 0.05em;
-    line-height: 1.3;
-    text-align: center;
-    color: var(--text-muted);
-    font-variant-numeric: tabular-nums;
-}
-
-.cp-l b { display: block; color: var(--text-secondary); font-weight: 600; }
-
-/* ---------------------------------------------------------------------
-   The picker
-
-   A grid of bare glyphs, not the ranked rows this page used to list. A row printed the shape,
-   its reading and its member count -- two of which are the answer to the question the board is
-   about to ask, so the index was a spoiler for the lesson. Colour is the one thing worth
-   carrying here: what the drill last asked you about this shape.
-   --------------------------------------------------------------------- */
-.picker {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    justify-content: center;
-    margin: 18px 0 0;
-}
-
-.pick {
-    display: grid;
-    place-items: center;
-    width: 40px;
-    height: 40px;
     font-family: var(--font-jp);
-    font-size: 1.2rem;
+    font-size: calc(var(--cell, 48px) * 0.62);
     line-height: 1;
-    cursor: pointer;
-    background: var(--bg-surface);
-    border: 1px solid var(--border);
-    color: var(--text-secondary);
-    transition: transform var(--dur-1, 0.12s) ease, border-color var(--dur-1, 0.12s) ease;
+    background: var(--tile-bg);
+    color: var(--tile-ink);
+    transition: transform 0.14s ease, filter 0.14s ease, box-shadow 0.14s ease;
 }
 
-.pick:hover { transform: translateY(-2px); border-color: var(--accent); }
-.pick:focus-visible { outline: 2px solid var(--accent-dark); outline-offset: 2px; }
-.pick[data-s="hit"] { border-color: var(--right); background: var(--right-tint); color: var(--right); }
-.pick[data-s="miss"] { border-color: var(--wrong); background: var(--wrong-tint); color: var(--wrong); }
-.pick[aria-pressed="true"] { box-shadow: inset 0 0 0 2px currentColor; transform: translateY(-2px); }
+.tile:hover { transform: translateY(-2px); filter: brightness(1.07); box-shadow: var(--shadow-sm); }
+.tile:focus-visible { outline: 2px solid var(--accent-dark); outline-offset: 2px; }
+.tile[data-s="hit"] { background: var(--tile-hit-bg); color: var(--tile-hit-ink); }
+.tile[data-s="miss"] { background: var(--tile-miss-bg); color: var(--tile-miss-ink); }
+/* met/solid is about you, the fill is about the drill: a thin inner ring, so they can co-occur */
+.tile.is-met { box-shadow: inset 0 0 0 2px var(--accent-tint); }
+.tile.is-solid { box-shadow: inset 0 0 0 2px var(--accent); }
 
 .picker-legend {
+    flex: 0 0 auto;
     display: flex;
     flex-wrap: wrap;
     gap: 13px;
     justify-content: center;
-    margin: 9px 0 0;
-    font-size: 0.7rem;
+    margin: 0;
+    font-size: 0.68rem;
     color: var(--text-muted);
 }
 
 .picker-legend i { display: inline-block; width: 10px; height: 10px; margin-right: 5px; vertical-align: -1px; }
-.i-hit { background: var(--right); }
-.i-miss { background: var(--wrong); }
-.i-new { background: var(--border-strong); }
+.i-hit { background: var(--tile-hit-bg); }
+.i-miss { background: var(--tile-miss-bg); }
+.i-new { background: var(--tile-bg); }
 
 /* ---------------------------------------------------------------------
-   Board beside the drill panel
+   One family: the tree, and the member panel under it
    --------------------------------------------------------------------- */
-.phon-row {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 316px;
-    gap: 22px;
-    align-items: start;
-    margin: 18px 0 0;
+.tree-view { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; gap: 7px; padding-top: 7px; }
+.tree-view[hidden] { display: none; }
+.tree-head { flex: 0 0 auto; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.tree-count { font-size: 0.74rem; color: var(--text-muted); }
+
+.back {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 12px;
+    font: inherit;
+    font-size: 0.78rem;
+    cursor: pointer;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
 }
 
-.board {
-    position: relative;
-    width: 100%;
-    max-width: 560px;
-    margin: 0 auto;
-    aspect-ratio: 1 / 1;
+.back:hover { border-color: var(--accent); color: var(--accent-dark); }
+.back:focus-visible { outline: 2px solid var(--accent-dark); outline-offset: 2px; }
+
+.tree-room { flex: 1 1 auto; min-height: 0; display: grid; place-items: center; }
+
+/* Above 900px the member panel sits beside the tree rather than under it. Stacked, the two
+   compete for the same vertical space and the sentence -- the whole reason for opening a member
+   -- lands below the fold on a laptop. */
+@media (min-width: 900px) {
+    .tree-view {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 330px;
+        grid-template-rows: auto minmax(0, 1fr);
+        gap: 8px 18px;
+        align-items: stretch;
+    }
+
+    .tree-head { grid-column: 1 / -1; }
+    .node-detail { align-self: stretch; overflow-y: auto; }
 }
+.tree { position: relative; width: var(--ts, 100%); height: var(--ts, 100%); }
+.tree svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 
-.spokes { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.tline { stroke: var(--border-strong); stroke-width: 1.5; stroke-dasharray: 4 6; vector-effect: non-scaling-stroke; }
+/* the spoke says whether the component was right about that member */
+.tline.holds { stroke: var(--right); stroke-dasharray: none; }
 
-.spoke {
-    stroke: var(--border-strong);
-    stroke-width: 1.6;
-    stroke-dasharray: 4 6;
-    vector-effect: non-scaling-stroke;
-    transition: stroke var(--dur-3, 0.42s) ease;
-}
-
-/* Turned over and the component's sound really is in that kanji's set -- or it is not. Both are
-   worth seeing: the exceptions are the reason the rule is worth knowing. */
-.spoke.done { stroke: var(--right); stroke-dasharray: none; }
-.spoke.miss { stroke: var(--accent); stroke-dasharray: none; }
-
-.core {
+.troot {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 116px;
-    height: 116px;
+    width: 21%;
+    aspect-ratio: 1 / 1;
     border-radius: 50%;
     display: flex;
     flex-direction: column;
@@ -607,52 +643,52 @@ body:has(.phonetics-drill-main) {
     background: var(--accent-dark);
     color: var(--bg-surface);
     box-shadow: var(--shadow-md);
+    animation: phonPop 0.32s cubic-bezier(.34, 1.56, .64, 1) both;
 }
 
-.core-k { font-family: var(--font-jp); font-size: 2.4rem; line-height: 1; }
-.core-r { font-family: var(--font-jp); font-size: 0.92rem; opacity: 0.94; margin-top: 2px; }
-.core-cap { font-size: 0.57rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.75; margin-top: 3px; padding: 0 8px; }
+.troot-k { font-family: var(--font-jp); font-size: calc(var(--ts, 400px) * 0.075); line-height: 1; }
+.troot-r { font-family: var(--font-jp); font-size: calc(var(--ts, 400px) * 0.028); opacity: 0.94; }
 
-.node {
+.tchip {
     position: absolute;
     transform: translate(-50%, -50%);
-    width: 132px;
+    width: 24%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3px;
+    gap: 2px;
     padding: 0;
     background: none;
     border: 0;
     font: inherit;
-    color: var(--text-primary);
     cursor: pointer;
+    animation: phonPop 0.34s cubic-bezier(.34, 1.56, .64, 1) both;
 }
 
-.node:focus-visible { outline: 2px solid var(--accent-dark); outline-offset: 4px; }
+.tchip:focus-visible { outline: 2px solid var(--accent-dark); outline-offset: 4px; }
 
-.node-face {
+.tface {
     position: relative;
+    width: calc(var(--ts, 400px) * 0.115);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
     display: grid;
     place-items: center;
-    width: 62px;
-    height: 62px;
-    border-radius: 50%;
     background: var(--bg-surface);
     border: 2px solid var(--border-strong);
-    transition: transform var(--dur-2, 0.22s) ease, border-color var(--dur-2, 0.22s) ease,
-                background-color var(--dur-2, 0.22s) ease;
+    transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-.node:hover .node-face { transform: scale(1.07); border-color: var(--accent); }
-.node-k { font-family: var(--font-jp); font-size: 1.65rem; line-height: 1; color: var(--text-primary); }
-.node[data-state="hit"] .node-face { border-color: var(--right); background: var(--right-tint); }
-.node[data-state="miss"] .node-face { border-color: var(--accent); background: var(--accent-tint); }
+.tchip:hover .tface { transform: scale(1.08); border-color: var(--accent); }
+.tchip.active .tface { border-color: var(--accent-dark); background: var(--bg-surface-alt); }
+.tface.is-met { border-color: var(--accent); }
+.tface.is-solid { border-color: var(--accent); background: var(--accent-tint); }
+.tchip-k { font-family: var(--font-jp); font-size: calc(var(--ts, 400px) * 0.055); line-height: 1; color: var(--text-primary); }
 
-.dot {
+.tdot {
     position: absolute;
-    right: 3px;
-    bottom: 5px;
+    right: 2px;
+    bottom: 4px;
     width: 9px;
     height: 9px;
     border-radius: 50%;
@@ -660,494 +696,217 @@ body:has(.phonetics-drill-main) {
     background: var(--lv);
 }
 
-.node-mn {
-    max-width: 132px;
-    font-size: 0.68rem;
-    line-height: 1.25;
+.tmn {
+    font-size: calc(var(--ts, 400px) * 0.022);
+    line-height: 1.2;
     color: var(--text-muted);
-    text-align: center;
+    max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-.node-on {
-    font-family: var(--font-jp);
-    font-size: 0.68rem;
-    line-height: 1.35;
-    min-height: 1.35em;
-    text-align: center;
-}
+.ton { font-family: var(--font-jp); font-size: calc(var(--ts, 400px) * 0.022); line-height: 1.3; color: var(--text-secondary); }
+.ton .y { color: var(--right); font-weight: 600; }
+@keyframes phonPop { from { opacity: 0; transform: translate(-50%, -50%) scale(0.6); } to { opacity: 1; } }
 
-.node-on .y { color: var(--right); font-weight: 600; }
-.node-on .n { color: var(--accent-dark); }
-.node-on .q { color: var(--text-muted); }
-
-.board-bar {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 10px;
-    justify-content: center;
-    margin: 12px 0 0;
-}
-
-.score { font-size: 0.8rem; color: var(--text-secondary); font-variant-numeric: tabular-nums; }
-.score b { color: var(--right); font-weight: 700; }
-.score i { color: var(--accent-dark); font-style: normal; font-weight: 700; }
-
-.sbtn {
-    font: inherit;
-    font-size: 0.78rem;
-    padding: 7px 13px;
-    cursor: pointer;
-    color: var(--text-secondary);
+/* The member panel. The example sentence is the point of it: the furigana says which reading the
+   compound was given, which is the evidence for everything the tree above claims. */
+.node-detail {
+    flex: 0 0 auto;
+    padding: 11px 14px 13px;
     background: var(--bg-surface);
     border: 1px solid var(--border);
+    border-left: 3px solid var(--accent-dark);
 }
 
-.sbtn:hover { border-color: var(--accent); color: var(--accent-dark); }
-.sbtn:focus-visible { outline: 2px solid var(--accent-dark); outline-offset: 2px; }
+.node-detail[hidden] { display: none; }
+.nd-head { display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap; }
+.nd-k { font-family: var(--font-jp); font-size: 1.5rem; line-height: 1; color: var(--text-primary); }
 
-.phon-info-btn { margin: 14px auto 0; display: flex; }
+.nd-lv {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 2px 6px;
+    color: var(--bg-surface);
+}
+
+.nd-mn { font-size: 0.82rem; color: var(--text-secondary); }
+.nd-readings { margin: 5px 0 0; display: flex; gap: 12px; flex-wrap: wrap; font-family: var(--font-jp); font-size: 0.82rem; }
+.nd-on b { font-weight: 400; color: var(--text-secondary); }
+.nd-on b.y { color: var(--right); font-weight: 700; }
+.nd-kun { color: var(--text-muted); }
+.nd-verdict { margin: 7px 0 0; font-size: 0.76rem; }
+.nd-verdict.is-yes { color: var(--right); }
+.nd-verdict.is-no { color: var(--accent-dark); }
+
+.nd-ex { margin-top: 9px; padding-top: 9px; border-top: 1px dashed var(--border); }
+.nd-ex-jp { margin: 0; font-family: var(--font-jp); font-size: 1rem; line-height: 2; color: var(--text-primary); }
+.nd-ex-jp rt { font-size: 0.55em; color: var(--text-muted); }
+.nd-ex-mn { margin: 3px 0 0; font-size: 0.8rem; color: var(--text-secondary); }
+.nd-ex-note { margin: 5px 0 0; font-size: 0.7rem; color: var(--text-muted); }
+.nd-ex-none { margin: 9px 0 0; font-size: 0.72rem; color: var(--text-muted); font-style: italic; }
 
 /* ---------------------------------------------------------------------
-   The drill's entry panel
-
-   Choosing a deck and starting, nothing else. The round runs full screen on
-   phonetics-drill.html: a board beside a question is a distraction, and since the picker above
-   prints every shape being asked about, it is also the answer key.
+   Quick Test: the deck chooser, then the round
    --------------------------------------------------------------------- */
-.drill-panel {
-    position: sticky;
-    top: 84px;
-    padding: 15px 16px 16px;
-    background: var(--bg-surface);
-    border: 1px solid var(--border);
-}
-
-.drill-panel-h {
-    font-family: var(--font-display);
-    font-weight: 400;
-    font-size: 1.05rem;
-    margin: 0 0 2px;
-    color: var(--text-primary);
-}
-
-.drill-panel-sub { margin: 0 0 11px; font-size: 0.72rem; line-height: 1.4; color: var(--text-muted); }
-.decks { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; margin: 0 0 9px; }
+.phon-deck-card { max-width: 420px; }
+.phon-deck-lead { margin: 0 0 14px; font-size: 0.78rem; color: var(--text-muted); }
+.decks { display: grid; gap: 6px; }
 
 .deck {
-    text-align: left;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 13px;
     font: inherit;
+    text-align: left;
     cursor: pointer;
-    padding: 7px 9px;
     background: var(--bg-surface-alt);
     border: 1px solid var(--border);
     color: var(--text-primary);
+    transition: border-color 0.15s ease, background-color 0.15s ease;
 }
 
+.deck:hover:not(:disabled) { border-color: var(--accent); background: var(--bg-surface); }
 .deck:disabled { opacity: 0.4; cursor: not-allowed; }
-.deck[aria-pressed="true"] { background: var(--accent-dark); border-color: var(--accent-dark); color: var(--bg-surface); }
 .deck:focus-visible { outline: 2px solid var(--accent-dark); outline-offset: 2px; }
-.deck-n { display: block; font-family: var(--font-display); font-size: 1.1rem; line-height: 1.1; }
-.deck-l { display: block; font-size: 0.68rem; margin-top: 1px; }
+.deck-sw { width: 11px; height: 11px; border-radius: 50%; background: var(--tile-bg); }
+.deck-sw[data-deck="miss"] { background: var(--tile-miss-bg); }
+.deck-sw[data-deck="hit"] { background: var(--tile-hit-bg); }
+.deck-sw[data-deck="all"] { background: var(--accent); }
+.deck-t { font-size: 0.84rem; font-weight: 600; }
+.deck-d { display: block; font-size: 0.7rem; font-weight: 400; color: var(--text-muted); }
+.deck-n { font-family: var(--font-display); font-size: 1.1rem; color: var(--text-secondary); }
 
-.drill-go {
-    display: block;
-    width: 100%;
-    padding: 10px 14px;
+/* The round takes the screen the way the board does. Nothing to navigate back from, so Exit
+   simply puts the field back. */
+.drill-view { flex: 1 1 auto; min-height: 0; display: flex; align-items: center; justify-content: center; }
+.drill-view[hidden] { display: none; }
+
+.drill-card {
+    width: min(440px, 100%);
+    max-height: 100%;
+    overflow-y: auto;
+    padding: 15px 17px 17px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-md);
+}
+
+.d-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 0.7rem; color: var(--text-muted); margin-bottom: 4px; }
+.d-top b { color: var(--right); }
+.d-top i { color: var(--wrong); font-style: normal; }
+
+.d-exit { padding: 3px 9px; font: inherit; font-size: 0.68rem; cursor: pointer; background: none; border: 1px solid var(--border); color: var(--text-muted); }
+.d-exit:hover { color: var(--text-primary); border-color: var(--border-strong); }
+
+.d-meter { height: 3px; background: var(--bg-surface-alt); overflow: hidden; margin-bottom: 12px; }
+.d-meter i { display: block; height: 100%; background: var(--accent-dark); transition: width 0.3s ease; }
+
+.d-ask { margin: 0; text-align: center; font-size: 0.72rem; color: var(--text-muted); }
+.d-glyph { font-family: var(--font-jp); font-size: clamp(3rem, 12vh, 5rem); line-height: 1; text-align: center; margin: 4px 0 14px; color: var(--text-primary); }
+
+.d-form { display: flex; gap: 7px; }
+.d-in {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 9px 11px;
+    font: inherit;
+    font-family: var(--font-jp);
+    font-size: 1.05rem;
+    text-align: center;
+    background: var(--bg-page);
+    border: 2px solid var(--border);
+    color: var(--text-primary);
+}
+
+.d-in:focus { outline: none; border-color: var(--accent-dark); }
+/* the example stays put while the box is focused and empty, which is when it is wanted */
+.d-in::placeholder { color: var(--text-muted); opacity: 0.6; font-size: 0.86rem; }
+.d-in.ok { border-color: var(--right); background: var(--right-tint); }
+.d-in.no { border-color: var(--wrong); background: var(--wrong-tint); }
+
+.d-check {
+    padding: 9px 16px;
+    font: inherit;
     font-size: 0.82rem;
     font-weight: 600;
-    text-align: center;
-    text-decoration: none;
+    cursor: pointer;
     background: var(--accent-dark);
     color: var(--bg-surface);
     border: 1px solid var(--accent-dark);
 }
 
-.drill-go:hover { opacity: 0.92; }
-.drill-go:focus-visible { outline: 2px solid var(--text-primary); outline-offset: 2px; }
+.d-check:focus-visible { outline: 2px solid var(--text-primary); outline-offset: 2px; }
+.d-hint { margin: 7px 0 0; text-align: center; font-size: 0.68rem; color: var(--text-muted); }
 
-/* ---------------------------------------------------------------------
-   The borrowing-waves note
-   --------------------------------------------------------------------- */
-.waves {
-    max-width: 62ch;
-    margin: 26px auto 0;
-    border-top: 1px solid var(--border);
-    padding-top: 4px;
-}
+.d-verdict { margin-top: 12px; padding: 10px 12px; }
+.d-verdict.ok { background: var(--right-tint); border-left: 3px solid var(--right); }
+.d-verdict.no { background: var(--wrong-tint); border-left: 3px solid var(--wrong); }
+.d-vh { margin: 0 0 3px; font-size: 0.78rem; font-weight: 700; }
+.d-verdict.ok .d-vh { color: var(--right); }
+.d-verdict.no .d-vh { color: var(--wrong); }
+.d-va { margin: 0 0 7px; font-family: var(--font-jp); font-size: 1rem; color: var(--text-primary); }
+.d-vm { margin: 0; display: flex; flex-wrap: wrap; gap: 4px 6px; }
 
-.waves > summary {
-    list-style: none;
-    cursor: pointer;
-    padding: 10px 2px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: var(--font-display);
-    font-size: 0.98rem;
-    color: var(--text-primary);
-}
+.d-vk { position: relative; font-family: var(--font-jp); font-size: 1.15rem; line-height: 1.3; padding: 0 2px 5px; color: var(--text-primary); }
+.d-vk::after { content: ''; position: absolute; left: 50%; transform: translateX(-50%); bottom: 0; width: 9px; height: 2.5px; border-radius: 2px; background: var(--lv); }
 
-.waves > summary::-webkit-details-marker { display: none; }
+/* The sentence arrives with the answer: the moment you have just tried to produce a reading is
+   the moment a sentence using it is worth reading. */
+.d-ex { margin-top: 10px; padding-top: 9px; border-top: 1px dashed var(--border); }
+.d-ex-jp { margin: 0; font-family: var(--font-jp); font-size: 0.95rem; line-height: 2; color: var(--text-primary); }
+.d-ex-jp rt { font-size: 0.55em; color: var(--text-muted); }
+.d-ex-mn { margin: 3px 0 0; font-size: 0.78rem; color: var(--text-secondary); }
+.d-ex-note { margin: 4px 0 0; font-size: 0.68rem; color: var(--text-muted); }
 
-.waves > summary::after {
-    content: '';
-    margin-left: auto;
-    width: 8px;
-    height: 8px;
-    border-right: 2px solid var(--accent-dark);
-    border-bottom: 2px solid var(--accent-dark);
-    transform: rotate(45deg) translate(-2px, -2px);
-    transition: transform var(--dur-2, 0.22s) ease;
-}
+.d-score { font-family: var(--font-display); font-size: 2.4rem; line-height: 1; text-align: center; color: var(--accent-dark); margin: 6px 0 2px; }
+.d-score small { font-size: 1rem; color: var(--text-muted); }
+.d-done { margin: 0 0 12px; text-align: center; font-size: 0.78rem; color: var(--text-secondary); }
 
-.waves[open] > summary::after { transform: rotate(-135deg) translate(-2px, -2px); }
-.waves p { margin: 0 0 10px; color: var(--text-secondary); font-size: 0.85rem; }
-.waves .jp { font-family: var(--font-jp); color: var(--text-primary); }
-.waves b { color: var(--text-primary); font-weight: 600; }
-
-/* ---------------------------------------------------------------------
-   Family tree
-   --------------------------------------------------------------------- */
-.tree-header {
-    margin-top: 16px;
-}
-
-.tree-title {
-    display: flex;
-    align-items: baseline;
-    gap: 14px;
-}
-
-/* Light-flip: --accent-light on the page ground is 2.59:1; --accent-dark is 6.07:1. */
-.tree-title-reading {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--accent-dark);
-}
-
-/* Radial diagram: root phonetic in the center, member kanji as chips arranged
-   in a circle (or two concentric rings for large families) around it, joined
-   to the center by straight SVG spoke lines. Positions are computed in JS
-   (phonetics.js: layoutRadialTree) via trigonometry off the canvas's own
-   measured size, then applied as --tx/--ty custom properties consumed here. */
-.tree-canvas {
-    position: relative;
+.d-go {
+    display: block;
     width: 100%;
-    max-width: 560px;
-    aspect-ratio: 1 / 1;
-    margin: 36px auto 0;
-    --chip-size: 64px;
-    --root-size: 96px;
-}
-
-.tree-canvas[data-tier="cozy"] {
-    --chip-size: 54px;
-    --root-size: 86px;
-}
-
-.tree-canvas[data-tier="dense"] {
-    --chip-size: 44px;
-    --root-size: 74px;
-}
-
-.tree-lines {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    overflow: visible;
-    z-index: 1;
-}
-
-/* Light-flip: the spokes were --border-strong, which read at 2.58:1 against the old dark
-   ground but collapses to 1.69:1 on the pale one — the radial diagram lost its connecting
-   lines entirely. --text-muted puts them back at 3.74:1. */
-.tree-line {
-    fill: none;
-    stroke: var(--text-muted);
-    stroke-width: 1.5;
-}
-
-.tree-root-node {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: var(--root-size);
-    height: var(--root-size);
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    /* Reads like a stamped seal face: a warm copper fill under a carved rim, with an inset
-       highlight/shadow pair standing in for a bevel cut into stone rather than a flat disc.
-       Light-flip: the fill ramp moved one notch darker (was --accent-light -> --accent). On a
-       pale page a light copper disc barely separates from the ground, and the cream glyph on
-       it only made 4.38:1; against this ramp the glyph is 6.68:1 and the disc reads as a
-       solid stamp pressed onto the paper. */
-    background: radial-gradient(circle at 34% 28%, var(--accent), var(--accent-dark) 70%);
-    border: 3px solid var(--accent-dark);
-    box-shadow: var(--shadow-md), inset 0 2px 3px rgba(255, 255, 255, 0.18), inset 0 -4px 8px rgba(0, 0, 0, 0.35);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2px;
-    text-align: center;
-    padding: 4px;
-    z-index: 3;
-}
-
-/* Cream-on-copper, like the negative-space characters cut into a hanko seal face, rather than
-   a same-hue dark-on-copper pairing that would fight the seal disc's own fill.
-   Light-flip: this used to be var(--text-primary), which WAS the cream on the dark theme —
-   after the flip that token is near-black ink, which would have turned the seal inside out
-   (and only reached 3.10:1 on the copper). --bg-surface is this theme's near-white, so the
-   intent survives the flip literally instead of by accident. */
-.tree-root-kanji {
-    font-size: 1.7rem;
-    font-weight: 700;
-    color: var(--bg-surface);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
-    line-height: 1.1;
-}
-
-.tree-root-reading {
-    font-size: 0.64rem;
+    margin-top: 7px;
+    padding: 10px;
+    font: inherit;
+    font-size: 0.82rem;
     font-weight: 600;
-    color: var(--bg-surface);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
-    letter-spacing: 0.02em;
-}
-
-.tree-chip {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: var(--chip-size);
-    height: var(--chip-size);
-    transform: translate(-50%, -50%) translate(var(--tx, 0px), var(--ty, 0px));
-    border-radius: 50%;
-    background: linear-gradient(160deg, var(--bg-surface-alt), var(--bg-surface) 60%);
-    border: 2px solid var(--border-strong);
-    /* Light-flip: the inset bevel was tuned for a dark chip — a 30%-black inner shade under a
-       5%-white highlight. On a near-white chip that black wash just reads as grime, so the
-       shade drops to a 10% wash of the page's own ink and the highlight comes up to be
-       visible at all. */
-    box-shadow: var(--shadow-sm), inset 0 1px 2px rgba(255, 255, 255, 0.7), inset 0 -3px 6px rgba(28, 47, 37, 0.10);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: inherit;
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--text-primary);
     cursor: pointer;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, transform 0.2s ease;
-    z-index: 2;
-    padding: 0;
+    background: var(--accent-dark);
+    color: var(--bg-surface);
+    border: 1px solid var(--accent-dark);
 }
 
-.tree-canvas[data-tier="dense"] .tree-chip {
-    font-size: 1rem;
-}
+.d-go.ghost { background: none; color: var(--text-secondary); border-color: var(--border); font-weight: 500; }
+.d-go.ghost:hover { color: var(--accent-dark); border-color: var(--accent); }
 
-.tree-chip:hover {
-    border-color: var(--accent);
-    box-shadow: var(--shadow-md);
-}
-
-/* Opening a family: the kanji arrive out of the phonetic component at the centre rather than
-   appearing already arranged around it. That is the page's whole argument made visible -- these
-   characters share that part, so learning it once buys you all of them -- and it is the one moment
-   this tool has where motion carries meaning instead of decorating.
-   The stagger is set per chip in phonetics.js as --arrive: by ring first, then around each ring,
-   so the family opens outward. The class is added a frame after placement, because until --tx/--ty
-   are set the chips' destination IS the centre they start from. */
-.tree-chip.is-placed {
-    animation: treeArrive 0.5s cubic-bezier(0.2, 0.75, 0.3, 1) both;
-    animation-delay: var(--arrive, 0ms);
-}
-
-@keyframes treeArrive {
-    from {
-        transform: translate(-50%, -50%) scale(0.35);
-        opacity: 0;
-    }
-
-    to {
-        transform: translate(-50%, -50%) translate(var(--tx, 0px), var(--ty, 0px)) scale(1);
+/* Five discs round a dial need roughly 400px for the labels not to collide, and the tree's
+   chips the same. Below that the dial becomes a stack and the spokes, which only ever described
+   the radial arrangement, are dropped rather than redrawn. */
+@media (max-width: 620px) {
+    .gate-dial { aspect-ratio: auto; width: 100%; display: grid; gap: 7px; margin-top: 14px; }
+    .gate-dial svg,
+    .gate-dial .dial-hub { display: none; }
+    .lv, .stage {
+        position: static;
+        transform: none;
+        width: auto;
+        aspect-ratio: auto;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 12px;
+        border-radius: 3px;
+        padding: 10px 14px;
         opacity: 1;
     }
-}
-
-/* Reduced motion: the chips are simply where they belong, immediately. Nothing is lost -- the
-   arrangement was always the information; the arrival was only ever the explanation of it. */
-@media (prefers-reduced-motion: reduce) {
-    .tree-chip.is-placed {
-        animation: none;
-    }
-}
-
-/* Light-flip: accent text on an accent-tint chip again — --accent-light was 2.2:1 here. */
-.tree-chip.active {
-    border-color: var(--accent);
-    background: var(--accent-tint);
-    box-shadow: 0 0 0 4px var(--accent-tint), var(--shadow-md);
-    color: var(--accent-dark);
-    transform: translate(-50%, -50%) translate(var(--tx, 0px), var(--ty, 0px)) scale(1.15);
-}
-
-/* Light-flip: --accent-light as a rim is 2.84:1 against the chip fill, under the 3:1 floor for
-   a non-text indicator. --accent-dark is 6.68:1 and still reads as a different state from the
-   plain --accent rim used on hover/active (which it also outranks in weight, at 3px vs 2px). */
-.tree-chip-current-level {
-    border-width: 3px;
-    border-color: var(--accent-dark);
-}
-
-.tree-chip-dot {
-    position: absolute;
-    bottom: -1px;
-    right: -1px;
-    width: 11px;
-    height: 11px;
-    border-radius: 50%;
-    border: 2px solid var(--bg-surface);
-    background: var(--text-muted);
-}
-
-.tree-chip-dot[data-level="N5"] { background: var(--jlpt-n5); }
-.tree-chip-dot[data-level="N4"] { background: var(--jlpt-n4); }
-.tree-chip-dot[data-level="N3"] { background: var(--jlpt-n3); }
-.tree-chip-dot[data-level="N2"] { background: var(--jlpt-n2); }
-.tree-chip-dot[data-level="N1"] { background: var(--jlpt-n1); }
-
-/* ---------------------------------------------------------------------
-   Member popover — opens in place at the clicked chip's own position on
-   the circle (phonetics.js: positionPopoverAt), instead of a separate
-   panel elsewhere on the page. Positioned via left/top in JS, pushed
-   outward along the chip's own angle from the root, and clamped to the
-   viewport so chips near the edge of the circle never clip off-screen.
-   Left/top are included in the transition so switching directly from one
-   open chip to another slides smoothly to the new spot.
-   --------------------------------------------------------------------- */
-.tree-popover {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 280px;
-    max-width: min(300px, 86vw);
-    background: var(--bg-surface);
-    border: 1px solid var(--border);
-    border-top: 3px solid var(--accent);
-    box-shadow: var(--shadow-md);
-    padding: 18px 20px;
-    z-index: 5;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: scale(0.4);
-    transform-origin: var(--pop-origin-x, 50%) var(--pop-origin-y, 50%);
-    transition: opacity 0.24s ease, transform 0.24s cubic-bezier(0.22, 1, 0.36, 1),
-        left 0.24s ease, top 0.24s ease;
-}
-
-.tree-popover.open {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: scale(1);
-}
-
-.tree-detail-head {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.tree-detail-kanji {
-    font-size: 2.1rem;
-    font-weight: 700;
-    line-height: 1.1;
-}
-
-.tree-detail-level {
-    flex: 0 0 auto;
-    background: var(--accent);
-    color: #ffffff;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    padding: 3px 8px;
-}
-
-.tree-detail-level[data-level="N5"] { background: var(--jlpt-n5); }
-.tree-detail-level[data-level="N4"] { background: var(--jlpt-n4); }
-.tree-detail-level[data-level="N3"] { background: var(--jlpt-n3); }
-.tree-detail-level[data-level="N2"] { background: var(--jlpt-n2); }
-.tree-detail-level[data-level="N1"] { background: var(--jlpt-n1); }
-
-.tree-detail-readings {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    margin-top: 8px;
-    font-size: 0.86rem;
-}
-
-.tree-reading-on {
-    color: var(--text-primary);
-    font-weight: 600;
-}
-
-.tree-reading-kun {
-    color: var(--text-secondary);
-}
-
-.tree-detail-meaning {
-    margin: 10px 0 0;
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    line-height: 1.4;
-}
-
-.tree-example {
-    border-top: 1px solid var(--border);
-    margin-top: 12px;
-    padding-top: 10px;
-}
-
-.tree-example-jp {
-    margin: 0 0 3px;
-    font-size: 0.92rem;
-    line-height: 2.2;
-}
-
-.tree-example-jp rt {
-    font-size: 0.55em;
-    font-weight: 400;
-    color: var(--text-muted);
-    user-select: none;
-}
-
-.tree-example-en {
-    margin: 0;
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    line-height: 1.4;
-}
-
-.tree-example-none {
-    border-top: 1px solid var(--border);
-    margin: 12px 0 0;
-    padding-top: 10px;
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    font-style: italic;
+    .lv:hover, .stage:hover { transform: none; }
+    .stage-bar { margin-left: auto; }
+    .tchip { width: 30%; }
+    .nd-ex-jp, .d-ex-jp { font-size: 0.9rem; }
 }
 
 /* ---------------------------------------------------------------------
@@ -1266,90 +1025,21 @@ body:has(.phonetics-drill-main) {
 
 /* ---------------------------------------------------------------------
    Responsive
+
+   The layout's own breakpoints sit next to the rules they change, further up. What is left here
+   is the page frame: a phone's masthead is 56px rather than 64px, so the main's top padding
+   follows it down.
    --------------------------------------------------------------------- */
-/* Below ~860px a fixed 216px sidebar starts squeezing the content pane too
-   hard, so it collapses into a horizontal bar above the content instead:
-   the intro copy stays put (already narrow enough to read full-width) but
-   the level nav itself becomes a scrollable row of pill-like tabs, echoing
-   the same left-border-as-active-indicator language but rotated to a
-   bottom-border since rows are now side-by-side instead of stacked. */
-/* The dial needs about 400px of width for five 86px discs not to touch, and the two-column row
-   needs the 316px drill column plus a board worth looking at. Both give up below those widths:
-   the dial becomes a stack and the drill panel drops under the board. */
-@media (max-width: 980px) {
-    .phon-row { grid-template-columns: 1fr; }
-    .drill-panel { position: static; }
-    .decks { grid-template-columns: repeat(4, 1fr); }
-}
-
-@media (max-width: 620px) {
-    .gate-dial { aspect-ratio: auto; width: 100%; display: grid; gap: 7px; margin-top: 18px; }
-    .gate-dial svg,
-    .dial-hub { display: none; }
-    .lv {
-        position: static;
-        transform: none;
-        width: auto;
-        height: auto;
-        flex-direction: row;
-        justify-content: flex-start;
-        gap: 12px;
-        border-radius: 3px;
-        padding: 11px 14px;
-    }
-    .lv:hover { transform: none; }
-    .node { width: 96px; }
-    .node-face { width: 52px; height: 52px; }
-    .node-k { font-size: 1.35rem; }
-    .node-mn { max-width: 96px; font-size: 0.62rem; }
-    .core { width: 94px; height: 94px; }
-    .core-k { font-size: 2rem; }
-    .cp { padding: 0 8px; }
-}
-
 @media (max-width: 968px) {
-    .phonetics-main {
-        /* 56px mobile masthead + the same ~25px clearance (was 130px for the 105px bar). */
-        padding: 81px 20px 80px;
-    }
-
-    .tree-canvas {
-        max-width: 360px;
-        --chip-size: 52px;
-        --root-size: 80px;
-    }
-
-    .tree-canvas[data-tier="cozy"] {
-        --chip-size: 44px;
-        --root-size: 72px;
-    }
-
-    .tree-canvas[data-tier="dense"] {
-        --chip-size: 36px;
-        --root-size: 62px;
-    }
-
-    .tree-popover {
-        width: 240px;
-        padding: 16px;
-    }
+    /* 56px mobile masthead, same clearance under it. */
+    .phonetics-main { padding: 81px 16px 20px; }
 }
 
-/* Kanji you have already met, from word_stats. Deliberately quiet: this is a second layer of
-   information over a map that has to stay readable as a map, so it reads as a highlight on the
-   chip rather than a badge beside it. */
-.tree-chip.is-met {
-    border-color: var(--accent);
-    box-shadow: inset 0 0 0 1px var(--accent);
-}
-
-.tree-chip.is-solid {
-    border-color: var(--accent);
-    background: var(--accent);
-    color: var(--bg-surface);
-}
-
-.tree-chip.is-solid .tree-chip-dot { outline: 1px solid var(--bg-surface); }
+/* Kanji you have already met, from word_stats. Deliberately quiet: a second layer of information
+   over a map that has to stay readable as a map, so it reads as a highlight on the chip rather
+   than a badge beside it. The .tface and .tile rules that carry it now live with those classes;
+   this is only the dot's outline, which needs the solid fill behind it to be worth stating. */
+.tface.is-solid .tdot { outline: 1px solid var(--bg-surface); }
 
 
 /* ---------------------------------------------------------------------------------------------
@@ -1583,3 +1273,12 @@ html[data-contrast="darker"] .site-footer {
 }
 .phon-drill-cta:hover { opacity: 0.92; }
 .phon-drill-cta:focus-visible { outline: 2px solid var(--text-primary); outline-offset: 2px; }
+
+/* tutorial.js inserts its help button straight after #phonetics-title-trigger, which is a flex
+   child of .phon-app — so without this it stretches to the full width of the page and
+   reads as a banner rather than a small control. */
+.phon-app > .tour-help-btn {
+    align-self: center;
+    flex: 0 0 auto;
+    margin-top: 6px;
+}

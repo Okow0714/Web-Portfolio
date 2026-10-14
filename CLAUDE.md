@@ -15,7 +15,7 @@ Supabase (Postgres + Auth). Hosted on GitHub Pages. Git repo on `main`.
 | `about.html` | Sarantsatsral's personal "About Me" resume/portfolio page — reached via the footer's "About Me" column or the hub's developer card, not the top nav. Fully standalone: its own `about.css` (forest-teal "Field Dossier" theme), no shared `style.css`, no masthead/footer, a sticky left index-rail layout instead. English only, no i18n. Has its own compact account popover (`.about-account*` classes) rather than the shared masthead's side drawer, but wired through the same `auth-shared.js` and load-bearing IDs (see Account menu below). |
 | `path.html` | Study Path (学びの道) — a six-stage route from no Japanese at all to N1, mapping each stage onto specific tools and level ranges. `<main class="path-main">` / `path.css` (warm paper, sumi ink, one saffron marker). **Rebuilt 2026-10-12 as a map plus six pages.** `path.html` is now only the map: a Dunning-Kruger confidence curve with the six stages as points on it (lowest before JLPT, peak at N3, trough at N2, N1 recovering), plus a folded `<details>` explaining that the famous curve is not in Kruger & Dunning 1999 and is largely a statistical artefact. Each point links to its own page -- `path-kana.html`, `path-n5.html` ... `path-n1.html`, `<main class="path-stage-main">` -- which carries that stage's full text, a minimap showing where it sits on the curve, and prev/next links. **The whole thing is static**: the curve's path data, every point's left/top and each minimap are generated from one list of six anchor points and written into the HTML, so there is no script on any of these pages, the route is crawlable and the road can never disagree with the points. The six stage pages share path.html's nav entry via a rule in `build-chrome.js`'s `withCurrent`. The old spine layout (`.path-route`/`.path-stage`/`.path-marker`) is gone. **Not in the masthead nav on purpose** — it is a route through the tools rather than a tool, and it is reached from the hub's `.hub-startpath` banner and the footer's Study tools column. (The row had no space either, until the 2026-09-16 regrouping; now it has, and this stays out by choice.) The per-stage hour ranges are external rules of thumb, labelled as such on the page; every level range in the copy is real and will drift if the tools change. |
 | `game.html` | Word Match ("言葉合わせ") — hex-tile vocabulary matching game, JLPT N5–N1. `<main class="game-main">` / `game.css` (dark hanafuda violet/gold). |
-| `phonetics.html` | Phonetics Family — kanji grouped by shared phonetic component, ranked by usage. `<main class="phonetics-main">` / `phonetics.css` (light jade/copper). |
+| `phonetics.html` | Phonetics Family — kanji grouped by shared phonetic component, ranked by usage. `<main class="phonetics-main">` / `phonetics.css` (light jade/copper). **Rebuilt 2026-10-15 as one surface with four views** — gate → board → tree → round — and it no longer loads `phonetics-data.js` at all (see Phonetics below). `phonetics-drill.html` was retired with that rebuild: the round is a view on this page now. |
 | `grammar.html` | Grammar Connect — sentence-swap grammar drill, two tracks (foundation/advanced). `<main class="grammar-main">` / `grammar.css`. |
 | `reading.html` | Dokkai Reader — speech-recognition-driven reading practice. `<main class="reading-main">` / `reading.css` (warm gold, light). |
 | `dictionary.html` | Mongol-Japan Dictionary — two tabs: primary Монгол⇄日本語 (`mnjp-data.js`), secondary 漢語⇄和語 Kango/Wago (`dictionary-data.js`, lazy-loaded only when that tab opens). Reads a `?q=` URL param on load to pre-fill/filter the primary tab — the target of the home page's search bar. `<main class="dictionary-main">` / `dictionary.css`. |
@@ -248,6 +248,34 @@ renaming an id in a tool quietly removes a step rather than breaking anything vi
 scratchpad's `verify-tour.js` walks all six and reports the step count. The overlay is appended
 to `<body>`, never inside the page, to stay clear of `.container`'s stacking context. The tour
 never starts on top of an open `.modal-overlay`. Adding a tool means adding its scenes here.
+**Phonetics is one surface, four views** (2026-10-15): the **gate** (a dial of five JLPT discs;
+picking one sends its disc to the centre, swells it for a measured 1s and bursts it into that
+level's stages — a one-stage level has nothing to burst into and goes straight through), the
+**board** (title `Дуудлагын бүлэг N3-1`, a Quick Test bar, and a near-square field of solid tiles
+coloured by what the drill last asked), the **tree** (one family, radial, with a member panel
+carrying the example sentence), and the **round**. All four live in `phonetics.html`; the round is
+not a separate page, because the field beside a question is the answer key.
+**The field's tile size is measured, not chosen** — whatever height is left of the window after
+the title, the bar and the legend, divided by the row count, against the same for width, smaller
+wins; the Quick Test bar is then set to exactly the field's width. `columnsFor()` is
+`floor(sqrt(n))`, so 44 shapes become 6×8. `.phonetics-main` is `min-height: 100dvh` and a flex
+column so the field has something to measure against; the footer is below the fold, as on the hub.
+**Every view that sets `display` must also answer `[hidden]`** — a display rule outranks the UA
+stylesheet, and without `.phon-app[hidden]` the board stayed on screen behind the round.
+
+**`phonetics.html` does not load `phonetics-data.js`** (~2.8MB) any more. Everything that reaches
+the screen is in `phonetics-quiz-data.js` (~390KB, generated): shapes, their shared sounds,
+members with readings and glosses, and `PHONETICS_EX`, **one checked example sentence per kanji**.
+That check is the point: measured over the whole set, a member's own sentence demonstrates the
+reading its component predicts barely half the time — the rest show a kun'yomi (虫 as むし, 寺 as
+てら) and argue against the very pattern the page teaches. The generator reads the furigana of the
+group holding the kanji and keeps a sentence only when it really shows one of the family's sounds,
+pooling candidates from `phonetics-data.js`, `game-words.js` and `mnjp-data.js` (28,342 distinct
+sentences). **509 of 684 kanji get one (74.4%)**; the other 175 get none, because a wrong example
+is worse than no example here. `ex.s` records which sound it shows, and the page says so when that
+is not the family's first. `tests/phonetics-quiz.spec.js` re-checks every stored sentence against
+its own furigana, so a bad one cannot ship.
+
 Related: `phonetics.html` used to auto-open its "what's a phonetic component?" modal on *every*
 load; that is gone — the tour points at the button instead.
 
@@ -305,7 +333,9 @@ lazy-loaded) are JS files assigning one `const` to a JSON-shaped literal. Query 
 `grep`/`node -e`, not the Read tool. To bulk-edit, parse with `JSON.parse(text after "const
 NAME = ", trailing ";" stripped)`, edit, `JSON.stringify(data, null, 4)` back — this round-trips
 cleanly since the files are strict JSON. (Sizes drift as content grows — treat them as
-ballpark, not exact; the point is these are all too big to `Read` in one shot.) `phonetics-
+ballpark, not exact; the point is these are all too big to `Read` in one shot.)
+`phonetics-quiz-data.js` (~390KB) is generated from the first three of these by
+`tools/build-phonetics-quiz.js` and is the only one `phonetics.html` loads. `phonetics-
 kanji-index.js` (~65KB, `PHONETICS_KANJI_INDEX`, a `{kanji: {phonetic, reading, count}}`
 derivative of `phonetics-data.js` — see its own header) is small enough to `Read` directly if
 needed; it's listed here mainly so a future edit to `phonetics-data.js`'s kanji membership
