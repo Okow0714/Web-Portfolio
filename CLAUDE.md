@@ -291,10 +291,10 @@ have their family's sound in their own reading list — the repo simply has no w
 (17 appear in no word here at all). The other 5, plus 2 more, are the genuine exceptions where the
 component mispredicts (砂 涼 笛 腸 貿 訳 廉); across all 684 board kanji only 7 (1.0%) take none of
 their family's shared sounds, and the board already draws those as a dashed copper spoke.
- writes  (the worklist, one
-jisho link per kanji) and keeps  in step; the generator reads
+`tools/build-phonetics-wordlist.js` writes `tools/phonetics-words-todo.md` (the worklist, one
+jisho link per kanji) and keeps `tools/phonetics-words-manual.json` in step; the generator reads
 that file back and a hand-written row wins outright, but is checked like every other, so a typo
-fails the build. Build-time only, like  — keeping it separate from
+fails the build. Build-time only, like `tools/jlpt-levels-manual.json` — keeping it separate from
 the derived data is the provenance record.
 
 Related: `phonetics.html` used to auto-open its "what's a phonetic component?" modal on *every*
