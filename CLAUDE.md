@@ -275,10 +275,11 @@ proves nothing** — it could belong to another kanji in the word, so position d
 reading sits where the kanji sits (甲虫 does not show 虫 reading こう). And **a compound regularly
 voices or clips what it borrows** (塩分 ぶん for ふん, 発表 はっ for はつ); those count, and are
 labelled rather than hidden. Candidates come from `mnjp-data.js`, `game-words.js` and
-`dictionary-data.js`, plus every compound mined out of the site's furigana — 5,635 word forms,
+`dictionary-data.js` and the Dokkai Reader's tokenised passages, plus every compound mined out
+of the site's furigana — 5,790 word forms,
 because the vocabulary lists alone reach only half the kanji. **A real compound always beats the
 headword repeated** (性 → 個性, not 性), then a gloss, then the least sound change.
-**546 of 684 kanji get a word (79.8%), 349 of them with a Mongolian gloss (51%)**. The other 138
+**548 of 684 kanji get a word (80.1%), 362 of them with a Mongolian gloss (53%)**. The other 136
 get nothing: a wrong example argues against the very pattern the board is claiming. An ungloss
 word is still shown — 忠実(ちゅうじつ) under 忠 demonstrates the reading, which is the lesson, and
 the node already prints the kanji's own meaning. Example *sentences* were tried first and reached
