@@ -52,6 +52,13 @@ const DICT = slurp('dictionary-data.js', 'const DICTIONARY_ENTRIES = ');
 // the shape this file needs, and it was sitting in the repo unmined.
 const READ = slurp('reading-texts.js', 'const READING_TRACKS = ');
 
+// Hand-written rows for the kanji the repo has no vocabulary for. Build-time only, same as
+// tools/jlpt-levels-manual.json: keeping it separate from the derived data IS the provenance
+// record, and a blank row is simply skipped, so it can be filled a few at a time.
+// tools/build-phonetics-wordlist.js keeps it in step with what is still missing.
+const MANUAL_PATH = path.join(__dirname, 'phonetics-words-manual.json');
+const MANUAL = fs.existsSync(MANUAL_PATH) ? JSON.parse(fs.readFileSync(MANUAL_PATH, 'utf8')) : {};
+
 // "セイ(漢)、ショウ(呉)" -> ["セイ","ショウ"], dropping the wave tag
 function onyomi(s) {
     return (s || '').split(/[、,]/)
@@ -209,7 +216,7 @@ function buildWords(quiz) {
 
     const RANK = { plain: 0, clipped: 1, voiced: 2 };
     const out = {};
-    const stats = { plain: 0, clipped: 0, voiced: 0, other: 0, glossed: 0, none: 0, wanted: want.size };
+    const stats = { plain: 0, clipped: 0, voiced: 0, other: 0, glossed: 0, none: 0, manual: 0, wanted: want.size };
 
     for (const [kanji, w] of want) {
         const cands = byKanji.get(kanji) || [];
@@ -237,6 +244,28 @@ function buildWords(quiz) {
             }
             return null;
         };
+
+        // A hand-written row wins outright: it was chosen by someone who could read both
+        // languages, which no amount of pooling matches. It is still checked like everything
+        // else below, so a typo in it fails the build rather than reaching the page.
+        const hand = MANUAL[kanji];
+        if (hand && hand.w && hand.r) {
+            const sound = ranked.find(s2 => demonstrates({ jp: hand.w, reading: toHira(hand.r) }, kanji, s2))
+                || [...w.all].find(s2 => demonstrates({ jp: hand.w, reading: toHira(hand.r) }, kanji, s2));
+            if (!sound) {
+                throw new Error(`phonetics-words-manual.json: ${kanji} → ${hand.w} (${hand.r}) `
+                    + `does not read ${kanji} as any of ${[...w.all].join('/')} where the kanji sits`);
+            }
+            const got = demonstrates({ jp: hand.w, reading: toHira(hand.r) }, kanji, sound);
+            stats.manual++;
+            if (ranked.indexOf(sound) === 0) stats[got.kind]++; else stats.other++;
+            if (hand.mn) stats.glossed++;
+            const row = { w: hand.w, r: toHira(hand.r), s: sound };
+            if (got.kind !== 'plain') { row.k = got.kind; row.f = got.form; }
+            if (hand.mn) row.mn = hand.mn;
+            out[kanji] = row;
+            continue;
+        }
 
         const best = pick(ranked) || pick([...w.all].filter(s => ranked.indexOf(s) < 0));
         if (!best) { stats.none++; continue; }
@@ -341,7 +370,8 @@ fs.writeFileSync(OUT, file);
 const kb = n => (n / 1024).toFixed(0) + ' KB';
 console.log(`  phonetics-quiz-data.js  ${kb(Buffer.byteLength(file))}`);
 console.log(`    words: ${covered}/${ex.stats.wanted} kanji (${pct(covered)}), `
-    + `${ex.stats.glossed} glossed (${pct(ex.stats.glossed)})`);
+    + `${ex.stats.glossed} glossed (${pct(ex.stats.glossed)})`
+    + (ex.stats.manual ? `, ${ex.stats.manual} hand-written` : ''));
 console.log(`      plain ${ex.stats.plain} · clipped ${ex.stats.clipped} · voiced ${ex.stats.voiced}`
     + ` · other family sound ${ex.stats.other} · none ${ex.stats.none}`);
 for (const lv of LEVELS) {

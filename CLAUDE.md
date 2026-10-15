@@ -274,10 +274,10 @@ The checking is the point, and it has two traps. **A sound that merely appears i
 proves nothing** — it could belong to another kanji in the word, so position decides: a kanji's
 reading sits where the kanji sits (甲虫 does not show 虫 reading こう). And **a compound regularly
 voices or clips what it borrows** (塩分 ぶん for ふん, 発表 はっ for はつ); those count, and are
-labelled rather than hidden. Candidates come from `mnjp-data.js`, `game-words.js` and
-`dictionary-data.js` and the Dokkai Reader's tokenised passages, plus every compound mined out
-of the site's furigana — 5,790 word forms,
-because the vocabulary lists alone reach only half the kanji. **A real compound always beats the
+labelled rather than hidden. Candidates come from `mnjp-data.js`, `game-words.js`,
+`dictionary-data.js` and the Dokkai Reader's tokenised passages (whose every token carries a
+reading *and* a Mongolian gloss), plus every compound mined out of the site's furigana — 5,790
+word forms, because the vocabulary lists alone reach only half the kanji. **A real compound always beats the
 headword repeated** (性 → 個性, not 性), then a gloss, then the least sound change.
 **548 of 684 kanji get a word (80.1%), 362 of them with a Mongolian gloss (53%)**. The other 136
 get nothing: a wrong example argues against the very pattern the board is claiming. An ungloss
@@ -285,6 +285,17 @@ word is still shown — 忠実(ちゅうじつ) under 忠 demonstrates the readi
 the node already prints the kanji's own meaning. Example *sentences* were tried first and reached
 74.4%; words beat that and are a quarter of the bytes.
 `tests/phonetics-quiz.spec.js` re-checks every stored word by position, so a bad one cannot ship.
+
+**The 136 without a word are a vocabulary gap, not a phonetics one.** Measured: 131 of them do
+have their family's sound in their own reading list — the repo simply has no word that uses it
+(17 appear in no word here at all). The other 5, plus 2 more, are the genuine exceptions where the
+component mispredicts (砂 涼 笛 腸 貿 訳 廉); across all 684 board kanji only 7 (1.0%) take none of
+their family's shared sounds, and the board already draws those as a dashed copper spoke.
+ writes  (the worklist, one
+jisho link per kanji) and keeps  in step; the generator reads
+that file back and a hand-written row wins outright, but is checked like every other, so a typo
+fails the build. Build-time only, like  — keeping it separate from
+the derived data is the provenance record.
 
 Related: `phonetics.html` used to auto-open its "what's a phonetic component?" modal on *every*
 load; that is gone — the tour points at the button instead.
