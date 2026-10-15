@@ -279,18 +279,22 @@ labelled rather than hidden. Candidates come from `mnjp-data.js`, `game-words.js
 reading *and* a Mongolian gloss), plus every compound mined out of the site's furigana — 5,790
 word forms, because the vocabulary lists alone reach only half the kanji. **A real compound always beats the
 headword repeated** (性 → 個性, not 性), then a gloss, then the least sound change.
-**548 of 684 kanji get a word (80.1%), 362 of them with a Mongolian gloss (53%)**. The other 136
-get nothing: a wrong example argues against the very pattern the board is claiming. An ungloss
-word is still shown — 忠実(ちゅうじつ) under 忠 demonstrates the reading, which is the lesson, and
-the node already prints the kanji's own meaning. Example *sentences* were tried first and reached
-74.4%; words beat that and are a quarter of the bytes.
+**677 of 684 kanji get a word (99.0%), 491 of them with a Mongolian gloss (72%)** — 548/362 of
+those derived, plus **129 written by hand** by the site's author in one pass (2026-10-15), which
+is what took it from four fifths to all but seven. An ungloss word is still shown — 忠実(ちゅうじつ)
+under 忠 demonstrates the reading, which is the lesson, and the node already prints the kanji's
+own meaning. Example *sentences* were tried first and reached 74.4%; words beat that and are a
+quarter of the bytes.
 `tests/phonetics-quiz.spec.js` re-checks every stored word by position, so a bad one cannot ship.
 
-**The 136 without a word are a vocabulary gap, not a phonetics one.** Measured: 131 of them do
-have their family's sound in their own reading list — the repo simply has no word that uses it
-(17 appear in no word here at all). The other 5, plus 2 more, are the genuine exceptions where the
-component mispredicts (砂 涼 笛 腸 貿 訳 廉); across all 684 board kanji only 7 (1.0%) take none of
-their family's shared sounds, and the board already draws those as a dashed copper spoke.
+**The 7 still without a word are the genuine exceptions, not a gap.** 砂 涼 笛 腸 貿 訳 廉 take
+none of their family's shared sounds at all — across the whole 684 that is 1.0% — so no word can
+demonstrate what the component predicts for them, and the board already draws those as a dashed
+copper spoke with the panel saying so. 訳 is the instructive one: its modern shape puts 尺 on the
+right, but the reading やく comes from 睪, the phonetic of the old form 譯. The grouping follows
+the shape, the reading follows the history. (The 136 that were missing before the hand pass split
+131 vocabulary gaps — the kanji *does* take the sound, the repo just had no word using it — and
+these 7.)
 `tools/build-phonetics-wordlist.js` writes `tools/phonetics-words-todo.md` (the worklist, one
 jisho link per kanji) and keeps `tools/phonetics-words-manual.json` in step; the generator reads
 that file back and a hand-written row wins outright, but is checked like every other, so a typo
