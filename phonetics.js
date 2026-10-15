@@ -428,9 +428,16 @@ function openTree(family) {
     document.getElementById('phonetics-tree-view').hidden = false;
     document.getElementById('phonetics-app').hidden = false;
     document.getElementById('phonetics-gate').hidden = true;
-    document.getElementById('phonetics-tree-count').textContent =
-        family.c + ' · ' + window.tf('phonetics.kanjiInFamily', { n: family.m.length })
+    const apartList = family.m.filter(m => isApart(family, m));
+    const count = document.getElementById('phonetics-tree-count');
+    count.textContent = family.c + ' · ' + window.tf('phonetics.kanjiInFamily', { n: family.m.length })
         + ' · ' + family.s.join('・');
+    const adrift = document.getElementById('phonetics-tree-adrift');
+    adrift.hidden = !apartList.length;
+    if (apartList.length) {
+        adrift.textContent = window.tf('phonetics.adriftCaption',
+            { kanji: apartList.map(m => m.k).join('・') });
+    }
     document.getElementById('phonetics-node-detail').hidden = true;
 
     layoutTree();
@@ -440,7 +447,11 @@ function openTree(family) {
 
     const want = family.s[0];
     const n = family.m.length;
-    const R = n <= 6 ? 34 : (n <= 9 ? 36 : 37);
+    // A member taking none of the family's shared sounds is drawn adrift, so the ring tightens to
+    // leave it room without running off the board.
+    const anyApart = family.m.some(m => isApart(family, m));
+    const R = (n <= 6 ? 34 : (n <= 9 ? 36 : 37)) - (anyApart ? 4 : 0);
+    const R_APART = R + 7;
 
     const svg = document.createElementNS(NS, 'svg');
     svg.setAttribute('viewBox', '0 0 100 100');
@@ -455,21 +466,31 @@ function openTree(family) {
     tree.appendChild(root);
 
     family.m.forEach((m, j) => {
+        const apart = isApart(family, m);
         const a = -Math.PI / 2 + j * 2 * Math.PI / n;
-        const x = 50 + R * Math.cos(a), y = 50 + R * Math.sin(a);
+        const rad = apart ? R_APART : R;
+        const x = 50 + rad * Math.cos(a), y = 50 + rad * Math.sin(a);
 
         const line = document.createElementNS(NS, 'line');
         line.setAttribute('x1', '50');
         line.setAttribute('y1', '50');
-        line.setAttribute('x2', x.toFixed(2));
-        line.setAttribute('y2', y.toFixed(2));
-        // the spoke says whether the component was right about this member
-        line.setAttribute('class', 'tline' + (m.on.indexOf(want) >= 0 ? ' holds' : ''));
+        if (apart) {
+            // severed: the spoke sets out and stops, and the gap is the point
+            line.setAttribute('x2', (50 + rad * 0.45 * Math.cos(a)).toFixed(2));
+            line.setAttribute('y2', (50 + rad * 0.45 * Math.sin(a)).toFixed(2));
+        } else {
+            line.setAttribute('x2', x.toFixed(2));
+            line.setAttribute('y2', y.toFixed(2));
+        }
+        // Three states, because the member is in one of three positions: it takes the sound
+        // the shape leads with, it takes another sound the shape shares, or it takes none.
+        line.setAttribute('class', 'tline'
+            + (m.on.indexOf(want) >= 0 ? ' holds' : (apart ? ' cut' : ' holds-other')));
         svg.appendChild(line);
 
         const btn = document.createElement('button');
         btn.type = 'button';
-        btn.className = 'tchip';
+        btn.className = 'tchip' + (apart ? ' is-apart' : '');
         btn.dataset.kanji = m.k;
         btn.style.left = x.toFixed(2) + '%';
         btn.style.top = y.toFixed(2) + '%';
@@ -508,6 +529,22 @@ function layoutTree() {
     const availW = room.getBoundingClientRect().width;
     const s = Math.max(200, Math.min(availW, availH));
     document.getElementById('tree-wrap').style.setProperty('--ts', s.toFixed(1) + 'px');
+}
+
+// Takes none of the sounds its family shares. Seven kanji on the whole board do this, and
+// they are the reason the page says a component predicts a reading to TRY: 砂 涼 笛 腸 貿 訳 廉.
+// Measured against the full series in phonetics-data.js, none of their readings is taken by any
+// sibling either, so they are adrift from the series and not merely from its commonest sound.
+// Where a character's shape was changed after the war, the component on screen is not the one
+// its reading came from. 訳 is the only board kanji where that explains an adrift reading, and it
+// is a documented fact about the 1949 reform rather than a reconstruction: 譯, 擇, 澤 and 釋 all
+// carried 睪, and all four had it replaced by the simpler 尺.
+const SHAPE_SWAPS = {
+    '訳': { old: '譯', phon: '睪', also: '沢←澤・択←擇・釈←釋' },
+};
+
+function isApart(family, m) {
+    return !m.on.some(o => family.s.indexOf(o) >= 0);
 }
 
 // The example word, under the member you clicked and again beside the answer in a round. Every
@@ -564,6 +601,21 @@ function showNode(family, m, btn) {
             ? window.tf('phonetics.ndHolds', { c: family.c, sound: want })
             : window.tf('phonetics.ndBreaks', { c: family.c, sound: want }))
         + '</p>';
+
+    // Adrift from the series, not just from its commonest sound: worth explaining rather than
+    // leaving as a dashed line the reader has to interpret.
+    if (isApart(family, m)) {
+        html += '<div class="nd-apart">'
+            + '<p class="nd-apart-h">' + escapeHtml(window.tf('phonetics.adriftTitle',
+                { kanji: m.k, on: m.on.join('・') })) + '</p>'
+            + '<p>' + escapeHtml(window.t('phonetics.adriftWhy')) + '</p>'
+            + (SHAPE_SWAPS[m.k]
+                ? '<p>' + escapeHtml(window.tf('phonetics.adriftShape',
+                    { kanji: m.k, old: SHAPE_SWAPS[m.k].old, phonetic: SHAPE_SWAPS[m.k].phon,
+                      shape: family.c, also: SHAPE_SWAPS[m.k].also })) + '</p>'
+                : '')
+            + '</div>';
+    }
 
     if (ex) {
         html += '<div class="nd-ex">' + wordHtml(m.k, ex, want) + '</div>';

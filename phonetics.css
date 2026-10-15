@@ -587,6 +587,16 @@ body:has(.phonetics-drill-main) {
 .tree-head { flex: 0 0 auto; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 .tree-count { font-size: 0.74rem; color: var(--text-muted); }
 
+/* Said in the header rather than left for the reader to infer from a broken line. */
+.tree-adrift {
+    font-size: 0.72rem;
+    color: var(--accent-dark);
+    border-left: 2px solid var(--accent);
+    padding-left: 8px;
+}
+
+.tree-adrift[hidden] { display: none; }
+
 .back {
     display: inline-flex;
     align-items: center;
@@ -626,6 +636,12 @@ body:has(.phonetics-drill-main) {
 .tline { stroke: var(--border-strong); stroke-width: 1.5; stroke-dasharray: 4 6; vector-effect: non-scaling-stroke; }
 /* the spoke says whether the component was right about that member */
 .tline.holds { stroke: var(--right); stroke-dasharray: none; }
+/* Takes one of the shape's other shared sounds: still connected, just not the one it leads
+   with. Drawn as a jade line that keeps its dashes. */
+.tline.holds-other { stroke: var(--right); opacity: 0.75; }
+/* Severed: the spoke sets out from the component and stops, and the gap before the kanji is the
+   whole point -- this one takes none of the sounds the shape shares. */
+.tline.cut { stroke: var(--accent); stroke-dasharray: 2 4; opacity: 0.7; }
 
 .troot {
     position: absolute;
@@ -666,6 +682,16 @@ body:has(.phonetics-drill-main) {
 }
 
 .tchip:focus-visible { outline: 2px solid var(--accent-dark); outline-offset: 4px; }
+
+/* Adrift from the family: no line reaches it, and its own ring is open rather than solid. */
+.tchip.is-apart .tface {
+    border-style: dashed;
+    border-color: var(--accent);
+    background: var(--accent-tint);
+}
+
+.tchip.is-apart .tchip-k { color: var(--accent-dark); }
+.tchip.is-apart .ton { color: var(--accent-dark); }
 
 .tface {
     position: relative;
@@ -754,6 +780,19 @@ body:has(.phonetics-drill-main) {
 .ex-mn { margin: 4px 0 0; font-size: 0.84rem; color: var(--text-secondary); }
 .ex-note { margin: 5px 0 0; font-size: 0.7rem; line-height: 1.4; color: var(--text-muted); }
 .nd-ex-none { margin: 9px 0 0; font-size: 0.72rem; color: var(--text-muted); font-style: italic; }
+
+/* The explanation for a member that is adrift. It is the page's own argument failing, so it is
+   given room rather than tucked into a footnote. */
+.nd-apart {
+    margin-top: 9px;
+    padding: 9px 11px;
+    background: var(--accent-tint);
+    border-left: 3px solid var(--accent);
+}
+
+.nd-apart p { margin: 0 0 6px; font-size: 0.74rem; line-height: 1.5; color: var(--text-secondary); }
+.nd-apart p:last-child { margin-bottom: 0; }
+.nd-apart-h { font-weight: 600; color: var(--accent-dark) !important; }
 
 /* ---------------------------------------------------------------------
    Quick Test: the deck chooser, then the round

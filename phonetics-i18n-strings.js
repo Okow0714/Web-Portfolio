@@ -68,6 +68,24 @@ Object.assign(window.I18N_STRINGS, {
     'phonetics.ndHolds': { en: '{c} predicts {sound} — and this kanji takes it.', mn: '{c} нь {sound} гэж заадаг — энэ ханз түүнийг авсан.' },
     'phonetics.ndBreaks': { en: '{c} predicts {sound} — this kanji does not take it.', mn: '{c} нь {sound} гэж заадаг — энэ ханз түүнийг аваагүй.' },
     'phonetics.ndShows': { en: 'Here {kanji} is read {sound}.', mn: 'Энд {kanji} нь {sound} гэж уншигдаж байна.' },
+
+    // Seven kanji on the whole board take none of the sounds their shape shares, and the tree now
+    // draws them adrift rather than on a dashed line. The copy is deliberately about what is
+    // measurable -- no sibling takes that reading either -- and the general reason, because the
+    // specific history is only documented for 訳.
+    'phonetics.adriftCaption': { en: '{kanji} is adrift', mn: '{kanji} тасарсан' },
+    'phonetics.adriftTitle': {
+        en: '{kanji} reads {on} — a sound no other kanji in this family takes.',
+        mn: '{kanji} нь {on} гэж уншигддаг — энэ бүлгийн өөр ямар ч ханз тэр дуудлагыг авдаггүй.'
+    },
+    'phonetics.adriftWhy': {
+        en: 'A shared component records how these characters sounded in Chinese, long before Japanese borrowed them. Some of those sound families had already split apart by then, so a character can belong to the group by shape and history and still arrive in Japanese with a reading of its own.',
+        mn: 'Нийтлэг язгуур нь эдгээр ханз хятад хэлэнд хэрхэн дуудагддаг байсныг тэмдэглэдэг — япон хэл тэднийг зээлэхээс нэлээд өмнө. Тэр үед зарим дуудлагын бүл аль хэдийн салан тусгаарлачихсан байсан тул ханз хэлбэр, түүхээрээ бүлэгт багтсан ч япон хэлэнд өөрийн гэсэн уншлагатай ирж болдог.'
+    },
+    'phonetics.adriftShape': {
+        en: '{kanji} also changed shape: it was written {old}, whose sound part was {phonetic}, not {shape}. The postwar reform replaced {phonetic} with the simpler {shape} here and in {also}. The shape groups them; the reading came from the older part.',
+        mn: '{kanji} нь хэлбэрээ ч сольсон: урьд нь {old} гэж бичигддэг байсан бөгөөд дуудлагын хэсэг нь {shape} биш, {phonetic} байв. Дайны дараах шинэчлэлээр {phonetic}-г энд болон {also} дотор илүү энгийн {shape}-ээр сольсон юм. Хэлбэр нь тэднийг нэгтгэдэг ч уншлага нь хуучин хэсгээс гаралтай.'
+    },
     // A compound regularly voices or clips the sound it borrows. That is not an exception to the
     // pattern, it is part of it, so the page names the change instead of hiding it.
     'phonetics.ndChanged': { en: 'A compound voices {from} to {to}.', mn: 'Нийлмэл үгэнд {from} нь {to} болж хувирдаг.' },

@@ -287,14 +287,25 @@ own meaning. Example *sentences* were tried first and reached 74.4%; words beat 
 quarter of the bytes.
 `tests/phonetics-quiz.spec.js` re-checks every stored word by position, so a bad one cannot ship.
 
-**The 7 still without a word are the genuine exceptions, not a gap.** 砂 涼 笛 腸 貿 訳 廉 take
-none of their family's shared sounds at all — across the whole 684 that is 1.0% — so no word can
-demonstrate what the component predicts for them, and the board already draws those as a dashed
-copper spoke with the panel saying so. 訳 is the instructive one: its modern shape puts 尺 on the
-right, but the reading やく comes from 睪, the phonetic of the old form 譯. The grouping follows
-the shape, the reading follows the history. (The 136 that were missing before the hand pass split
-131 vocabulary gaps — the kanji *does* take the sound, the repo just had no word using it — and
-these 7.)
+**The 7 still without a word are the genuine exceptions, not a gap**, and the tree draws them
+**adrift**: 砂 涼 笛 腸 貿 訳 廉 take none of their family's shared sounds at all (1.0% of the 684),
+so no word can demonstrate what the component predicts for them. `isApart()` is the test, and a
+member that fails it gets a spoke that sets out from the core and **stops short**, sits a ring
+further out, and carries a dashed copper face; the header says so and the panel explains it.
+**The spoke has three states, not two** — it used to key only on the family's first sound, so
+尺 and 釈 (which read シャク, a sound the 尺 family does share) were drawn exactly like a member
+taking none. Now: solid jade for the headline sound, dashed jade for another shared sound,
+severed copper for adrift.
+**Checked against the full series before writing that copy**: for all 7, no sibling takes their
+reading either, so they are adrift from the series and not merely from its commonest sound. The
+page therefore explains the *general* reason (a shared component records a Chinese sound class
+whose branches had already split before Japanese borrowed them) and names a specific history for
+only one. **訳 is the single documented case**: it was 譯, whose phonetic was 睪, and the postwar
+reform swapped 睪 for the simpler 尺 — here and in 沢←澤, 択←擇, 釈←釋, which is four of this
+family's five members. Do not add per-kanji etymologies for the other six without a source; the
+data supports "its reading is unique in this series" and nothing more.
+(The 136 missing before the hand pass split 131 vocabulary gaps — the kanji *does* take the
+sound, the repo just had no word using it — and these 7.)
 `tools/build-phonetics-wordlist.js` writes `tools/phonetics-words-todo.md` (the worklist, one
 jisho link per kanji) and keeps `tools/phonetics-words-manual.json` in step; the generator reads
 that file back and a hand-written row wins outright, but is checked like every other, so a typo
