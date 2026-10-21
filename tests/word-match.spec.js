@@ -62,7 +62,9 @@ module.exports = async function (page, assert, baseUrl) {
     assert.strictEqual(tierCount, 5, 'the gate should show five JLPT tier nodes');
 
     await page.locator('.hexnode[data-tier="N5"]').click();
-    await page.waitForTimeout(900);
+    // The chosen node travels and swells for 920ms before the field is built; waiting less than
+    // that races the gate and reads the dial while it is still on screen.
+    await page.waitForTimeout(1500);
 
     const dialDisplay = await page.evaluate(
         () => getComputedStyle(document.getElementById('gate-tiers')).display);
@@ -141,6 +143,19 @@ module.exports = async function (page, assert, baseUrl) {
     assert.ok(!bonus.lined, 'no bonus row may hold a word beside its own translation');
     assert.strictEqual(bonus.halos, 8, 'every bonus tile radiates a halo');
     assert.ok(bonus.sparks >= 24, `bonus sparks were ${bonus.sparks}`);
+
+    // Every tile must carry real type. A board dealt into a hidden section measures zero wide,
+    // and every label comes out 0px -- twelve blank hexagons that look like a rendering failure.
+    const fonts = await page.evaluate(() => tiles.map(t => parseFloat(t.el.style.fontSize) || 0));
+    assert.ok(Math.min(...fonts) > 6, `smallest tile font was ${Math.min(...fonts)}px`);
+
+    // The rail belongs beside the board, not pinned to the far edge of a wide column.
+    const railGap = await page.evaluate(() => {
+        const b = document.getElementById('mem-board').getBoundingClientRect();
+        const s = document.querySelector('.board-side').getBoundingClientRect();
+        return Math.round(s.left - b.right);
+    });
+    assert.ok(railGap >= 0 && railGap < 80, `board-to-rail gap was ${railGap}px`);
 
     // ---------------------------------------------------------------- a whole level
     // The photo sits behind everything on the board, so a dropped opacity declaration is a

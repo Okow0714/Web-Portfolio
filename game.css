@@ -135,18 +135,20 @@ body.game-playing .game-main {
    twelve levels. Hexagons rather than the discs Phonetics Family uses, because this game is
    played on hexagons — the gate shows you the shape of the thing you are about to open, and
    the twelve levels are laid out in the board's own 3/4/3/2 silhouette for the same reason. */
+/* No reserved height: the gate used to claim 62vh and centre the dial inside it, which on a
+   900px screen pushed the dial below the fold -- the one thing on the page you are meant to
+   act on. It takes the height it needs and sits where the copy leaves it. */
 .gate {
     position: relative;
-    min-height: 62vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    padding-bottom: 24px;
 }
 
 .gate-head {
     text-align: center;
-    margin-bottom: 26px;
+    margin-bottom: 14px;
 }
 .gate-head h2 {
     margin: 0 0 6px;
@@ -162,16 +164,47 @@ body.game-playing .game-main {
     max-width: 46ch;
 }
 
-/* --- tier dial --- */
+/* --- tier dial ---
+   A real dial: the five tiers sit on a circle with N5 at the top. The box is SQUARE on purpose
+   -- a percentage is a different distance across than down on a rectangle, and one radius used
+   for both axes would draw an ellipse. Capped against the viewport height as well as its width,
+   because a square that fits the width can still be taller than the screen. */
 .gate-tiers {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 14px;
+    position: relative;
+    width: min(480px, 88vw, 52vh);
+    aspect-ratio: 1;
+    margin: 0 auto;
 }
 /* A display rule outranks the UA stylesheet's [hidden], so every view that sets display has to
    answer it too. Without this the chosen tier node stayed on screen above its own levels. */
 .gate-tiers[hidden] { display: none !important; }
+
+/* The dial's nodes are placed by game-gate.js in percentages of this box, so they keep their
+   circle at any size without a resize handler. */
+.gate-tiers .hexnode {
+    position: absolute;
+    width: auto;
+    height: auto;
+    animation: dialIn .45s var(--ease-pop) backwards;
+}
+@keyframes dialIn {
+    from { opacity: 0; transform: scale(.68); }
+}
+
+/* The hub of the dial: a faint ring the nodes sit on, so the arrangement reads as a dial rather
+   than five hexagons that happen to be scattered. */
+.gate-tiers::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 66%;
+    height: 66%;
+    transform: translate(-50%, -50%);
+    border: 1px dashed var(--panel-edge);
+    border-radius: 50%;
+    pointer-events: none;
+}
 
 .hexnode {
     position: relative;
@@ -182,7 +215,9 @@ body.game-playing .game-main {
     align-items: center;
     justify-content: center;
     gap: 3px;
-    padding: 0 9%;
+    /* A flat inset, not a percentage: these are absolutely positioned, so a % would be a
+       fraction of the dial or the level field rather than of the node. */
+    padding: 0 11px;
     border: 0;
     cursor: pointer;
     text-align: center;
@@ -217,19 +252,36 @@ body.game-playing .game-main {
     opacity: .9;
 }
 
-/* The chosen tier travels to the middle of the dial, swells, and bursts. The travel distance is
-   measured at click time and written into --fly-x/--fly-y, because where a node has to go
-   depends on where it happens to have wrapped to. */
+/* The chosen tier travels to the middle of the dial and then swells, and those are two
+   movements, not one: a single ease from here to twice the size arrives at the centre already
+   huge. The per-keyframe timing functions are what separate them -- the travel eases out into
+   the centre, the swell eases in from it. The distance is measured at click time, because where
+   a node sits depends on the dial's size at this viewport. */
 .hexnode.is-flying {
-    animation: hexFly .56s var(--ease-out) forwards;
+    animation: hexFly .92s forwards;
     z-index: 4;
+    pointer-events: none;
 }
-.hexnode.is-fading { animation: hexFade .34s var(--ease-out) forwards; }
 @keyframes hexFly {
-    to { transform: translate(var(--fly-x, 0), var(--fly-y, 0)) scale(1.55); }
+    0% {
+        transform: translate(0, 0) scale(1);
+        animation-timing-function: cubic-bezier(.45, 0, .18, 1);
+    }
+    54% {
+        transform: translate(var(--fly-x, 0), var(--fly-y, 0)) scale(1.1);
+        animation-timing-function: cubic-bezier(.4, 0, .25, 1);
+    }
+    100% { transform: translate(var(--fly-x, 0), var(--fly-y, 0)) scale(1.9); opacity: .82; }
+}
+
+/* The others leave along their own spoke. On a dial, outward is the direction that reads as
+   "not this one"; a straight fade makes five nodes vanish like a light switch. */
+.hexnode.is-fading {
+    animation: hexFade .44s cubic-bezier(.4, 0, .3, 1) forwards;
+    pointer-events: none;
 }
 @keyframes hexFade {
-    to { opacity: 0; transform: scale(.82); }
+    to { opacity: 0; transform: translate(var(--out-x, 0), var(--out-y, 0)) scale(.66); }
 }
 
 /* --- level honeycomb --- */
@@ -266,11 +318,19 @@ body.game-playing .game-main {
     width: auto;
     height: auto;
 }
-/* Each level hex rises into place on its own delay, so the burst reads as twelve pieces landing
-   rather than one block appearing. */
-.gate-field .hexnode { animation: hexLand .4s var(--ease-pop) backwards; }
+/* Each level flies out of the middle of the honeycomb on its own delay, so the twelve read as
+   one node bursting rather than twelve appearing. --burst-x/--burst-y point back at the centre
+   and are set per node, in that node's own units, so the burst stays true at any width. The
+   slight overshoot at the end is what makes them land rather than stop. */
+.gate-field .hexnode {
+    animation: hexLand .54s cubic-bezier(.22, .92, .28, 1.06) backwards;
+}
 @keyframes hexLand {
-    from { opacity: 0; transform: scale(.5); }
+    from {
+        opacity: 0;
+        transform: translate(var(--burst-x, 0), var(--burst-y, 0)) scale(.28);
+    }
+    to { opacity: 1; transform: translate(0, 0) scale(1); }
 }
 
 .hexnode.level-done { --node-fill: var(--pine-fill); }
@@ -328,8 +388,9 @@ body.game-playing .game-main {
 }
 .game-subtitle {
     margin: 10px 0 0;
-    max-width: 58ch;
-    font-size: 13.5px;
+    max-width: 56ch;
+    font-size: 13px;
+    line-height: 1.45;
     color: var(--text-muted);
 }
 .game-guest-hint {
@@ -375,7 +436,14 @@ body.game-playing .game-main {
 .hand-dot.done { background: var(--pine-fill); }
 .hand-dot.now { background: var(--gold); }
 
-.board-stats { display: flex; flex-wrap: wrap; gap: 10px 15px; }
+/* In the rail, not the toolbar: four figures across 250px, which is exactly what the mockup's
+   sidebar held. */
+.board-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    margin-bottom: 16px;
+}
 .stat-k {
     display: block;
     font-size: 10px;
@@ -394,14 +462,21 @@ body.game-playing .game-main {
 .stat-v.pine { color: var(--pine-text); }
 .stat-v.crimson { color: var(--crimson-text); }
 
+/* The board and its rail are one centred group, not a wide column with the rail pinned to the
+   far right. On a 1400px screen the grid version put ~300px of empty ground between the tiles
+   and everything the tiles are about -- the score, the last pair, the hint -- which is a long
+   way for the eye to travel mid-hand. */
 .board-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 236px;
-    gap: 26px;
-    align-items: start;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
 }
+.board-wrap { flex: 0 1 520px; min-width: 0; }
+.board-side { flex: 0 0 250px; }
 @media (max-width: 860px) {
-    .board-layout { grid-template-columns: 1fr; }
+    .board-wrap, .board-side { flex: 1 1 100%; }
 }
 
 .board-wrap { position: relative; }
@@ -421,11 +496,18 @@ body.game-playing .game-main {
     align-items: center;
     justify-content: center;
     gap: 2px;
-    padding: 0 7%;
+    /* The side inset is set by sizeTile(), in pixels, because neither unit CSS offers here
+       means "a fraction of this tile": a % padding resolves against the containing block -- the
+       whole board, so `0 7%` on an 81px tile inside a 366px board ate 51px and left a 30px text
+       column, which is what stacked long words three letters at a time -- and cqw resolves
+       against an ANCESTOR container, never the element itself, so it fell back to the viewport
+       and was worse. The tile's width is already a JS number; the inset belongs with it. */
+    padding: 0;
     border: 0;
     cursor: pointer;
     text-align: center;
     line-height: 1.12;
+    overflow: hidden;
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     background: var(--paper);
     color: var(--ink);
@@ -456,6 +538,19 @@ body.game-playing .game-main {
 .mem-tile.gone .t-mark { display: none; }
 .t-mark { font-family: var(--font-jp); }
 
+/* Labels wrap and are clamped rather than truncated: sizeTile() picks a size on the assumption
+   the word may take up to three lines, so the wrap has to actually happen. A clamp is the
+   backstop for the word that still does not fit. */
+/* width:100% is the whole rule, and it is doing real work: these labels are flex items in a
+   column with align-items:center, so their width is otherwise fit-content -- a long Mongolian
+   word wrapped into a three-letter stack instead of using the tile it sits in.
+   No -webkit-line-clamp here: a flex item blockifies `display:-webkit-box` to `flow-root`,
+   which silently takes the clamp AND the width with it. The tile's own overflow:hidden is the
+   backstop for a word that still will not fit. */
+.t-word, .t-mn {
+    width: 100%;
+    overflow-wrap: break-word;
+}
 .t-word { font-family: var(--font-jp); font-weight: 600; }
 .t-read { color: var(--ink-soft); }
 .t-mn { font-weight: 500; }

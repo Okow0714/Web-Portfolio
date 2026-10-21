@@ -179,14 +179,57 @@ function memLayout(rows, cols) {
 // a question about fractions of the tile — a rem size cannot answer it. Every size here is a
 // fraction of the tile's own width, which makes the arithmetic scale-invariant: one answer per
 // word is right at every viewport, with no resize handler measuring live DOM.
+// Every label is a fraction of the tile's own width, which makes the arithmetic scale-invariant
+// -- one answer per word is right at every viewport. The price is that it needs a board with a
+// real width: measure a hidden one and every size comes out 0.
+function sizeAllTiles() {
+    tiles.forEach(t => sizeTile(t.el, t));
+}
+
 function sizeTile(el, t) {
     const board = boardEl().getBoundingClientRect();
+    if (!board.width) {
+        // Nothing can be sized against a board that has not been laid out yet. Rather than
+        // writing 0px into every label, come back on the next frame.
+        requestAnimationFrame(sizeAllTiles);
+        return;
+    }
     const cell = board.width * (t.cw || (100 / (MAIN_COLS + 0.5))) / 100;
     const txt = t.side === 'jp' ? t.word.jp : wordFront(t.word);
-    const scale = txt.length <= 2 ? 0.23
-        : txt.length <= 4 ? 0.175
-        : txt.length <= 7 ? 0.125 : 0.1;
-    el.style.fontSize = (cell * scale).toFixed(2) + 'px';
+
+    // Size from how many lines the word will WRAP onto, not from its raw length. Length buckets
+    // bottomed out at a tenth of the tile, which on a 390px phone is an 8px label -- measured,
+    // and the reason the first build read as blank tiles even once they had a size at all. A
+    // word that wraps to two lines only has to fit half its characters across, so it can be
+    // twice the size; letting it wrap is what buys the type back.
+    //
+    // The two sides need different arithmetic because their glyphs are different widths: a
+    // kanji is full-width, Cyrillic is a little over half an em.
+    const em = t.side === 'jp' ? 1.0 : 0.55;
+    const n = Math.max(1, txt.length);
+    const width = n * em;
+    const lines = width <= 3.2 ? 1 : width <= 7 ? 2 : 3;
+    const perLine = Math.ceil(n / lines);
+    // 0.82 of the tile is what is left inside the 7% padding either side, with a little margin
+    // for the hexagon's slanted shoulders.
+    let size = (cell * 0.82) / (perLine * em);
+    if (lines === 3) size *= 0.88;            // three lines need the height back
+    size = Math.min(size, cell * 0.26);
+
+    // A Mongolian word has nowhere to break. Whatever the line estimate says, the type also has
+    // to be small enough that the longest unbreakable token fits across the tile on one line --
+    // otherwise it breaks mid-word, and "өчигдөр" is dealt as "өчигдө" over "р", which reads as
+    // a broken tile rather than a small one. Spaces are the only place a label may wrap.
+    const longest = Math.max.apply(null, txt.split(/\s+/).map(w => w.length));
+    // 0.94 is slack, and it is needed: 0.55em is an average Cyrillic advance, so a word whose
+    // letters run wide lands just over a fit computed exactly. маргааш was the one that did.
+    size = Math.min(size, (cell * 0.82 * 0.94) / (longest * em));
+
+    size = Math.max(size, cell * 0.115);
+    el.style.fontSize = size.toFixed(2) + 'px';
+    // The 0.82 above is the width left inside this inset, so the two have to be set together or
+    // the type is solving for a box it does not actually get.
+    el.style.paddingLeft = el.style.paddingRight = (cell * 0.09).toFixed(2) + 'px';
     const rd = el.querySelector('.t-read');
     if (rd) rd.style.fontSize = (cell * 0.085).toFixed(2) + 'px';
     const mk = el.querySelector('.t-mark');

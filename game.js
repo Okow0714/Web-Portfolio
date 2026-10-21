@@ -59,10 +59,15 @@ function startLevel(level) {
 
     document.getElementById('board-level-label').textContent = levelTitle(level);
     resetLastPair();
-    dealHand();
 
+    // The section is shown BEFORE the deal, and the order is load-bearing: every label is sized
+    // from the board's own measured width, and a board inside a `hidden` section measures zero —
+    // which set every tile's font-size to 0px and dealt twelve blank hexagons. It shipped, and
+    // the browser check missed it because taking a screenshot fires a resize, and the resize
+    // handler re-sizes the tiles.
     hideEl(document.getElementById('level-select-section'));
     showEl(document.getElementById('board-section'));
+    dealHand();
     // Full-screen "playing" mode: the shared masthead hides and .game-main breaks out of
     // .container's cap, so the board fills the viewport instead of sitting in a boxed column.
     document.body.classList.add('game-playing');

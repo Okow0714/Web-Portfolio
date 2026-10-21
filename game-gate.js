@@ -37,10 +37,31 @@ function tierDone(jlpt) {
 }
 
 // --------------------------------------------------------------------- tiers
+// The five tiers sit on a circle, not in a row: a dial you turn, the way Phonetics Family's
+// gate reads, but in hexagons because this game is played on hexagons. N5 is at the top and the
+// tiers run clockwise, so the easiest is where the eye lands first.
+//
+// The dial is square (see .gate-tiers), which is what lets one radius serve both axes -- on a
+// rectangle the same percentage is a different distance across than down, and the circle comes
+// out an ellipse.
+const DIAL_R = 33;        // % of the dial, centre to node centre
+const DIAL_NODE = 27;     // node width as % of the dial
+
+function dialSlot(i, n) {
+    const angle = (i / n) * Math.PI * 2 - Math.PI / 2;
+    const h = DIAL_NODE * 1.1547;
+    return {
+        left: 50 + DIAL_R * Math.cos(angle) - DIAL_NODE / 2,
+        top: 50 + DIAL_R * Math.sin(angle) - h / 2,
+        w: DIAL_NODE,
+        h,
+    };
+}
+
 function renderTierDial() {
     const wrap = document.getElementById('gate-tiers');
     wrap.innerHTML = '';
-    JLPT_TIERS.forEach(jlpt => {
+    JLPT_TIERS.forEach((jlpt, i) => {
         const node = document.createElement('button');
         node.type = 'button';
         node.className = 'hexnode';
@@ -49,6 +70,12 @@ function renderTierDial() {
         // dropdown link appears. Reusing it here means a tier is the same colour on this page
         // as it is in the nav and on the dashboard.
         node.style.setProperty('--node-fill', `var(--jlpt-${jlpt.toLowerCase()})`);
+        const s = dialSlot(i, JLPT_TIERS.length);
+        node.style.left = s.left.toFixed(3) + '%';
+        node.style.top = s.top.toFixed(3) + '%';
+        node.style.width = s.w.toFixed(3) + '%';
+        node.style.height = s.h.toFixed(3) + '%';
+        node.style.animationDelay = (i * 0.07).toFixed(2) + 's';
         const done = tierDone(jlpt);
         node.innerHTML = `
             <span class="hexnode-tier">${escapeHtml(jlpt)}</span>
@@ -73,22 +100,35 @@ function chooseTier(jlpt, node) {
 
     const dial = document.getElementById('gate-tiers');
     const dialBox = dial.getBoundingClientRect();
+    const cx = dialBox.left + dialBox.width / 2;
+    const cy = dialBox.top + dialBox.height / 2;
     const nodeBox = node.getBoundingClientRect();
-    node.style.setProperty('--fly-x',
-        (dialBox.left + dialBox.width / 2 - (nodeBox.left + nodeBox.width / 2)) + 'px');
-    node.style.setProperty('--fly-y',
-        (dialBox.top + dialBox.height / 2 - (nodeBox.top + nodeBox.height / 2)) + 'px');
+    node.style.setProperty('--fly-x', (cx - (nodeBox.left + nodeBox.width / 2)) + 'px');
+    node.style.setProperty('--fly-y', (cy - (nodeBox.top + nodeBox.height / 2)) + 'px');
     node.classList.add('is-flying');
+
+    // The others fall away ALONG THEIR OWN SPOKE rather than just fading: on a dial, out is the
+    // direction that reads as "not this one", and a straight fade makes five nodes vanish like a
+    // light switch.
     Array.prototype.forEach.call(dial.children, el => {
-        if (el !== node) el.classList.add('is-fading');
+        if (el === node) return;
+        const b = el.getBoundingClientRect();
+        const dx = b.left + b.width / 2 - cx;
+        const dy = b.top + b.height / 2 - cy;
+        const len = Math.hypot(dx, dy) || 1;
+        el.style.setProperty('--out-x', (dx / len * 90).toFixed(1) + 'px');
+        el.style.setProperty('--out-y', (dy / len * 90).toFixed(1) + 'px');
+        el.classList.add('is-fading');
     });
     GameAudio.select();
 
+    // Long enough for the travel and the swell to finish, since the burst is the pay-off and
+    // cutting it short is what made the first version feel like a jump cut.
     window.setTimeout(() => {
         dial.hidden = true;
         showLevelField(jlpt);
         gateBusy = false;
-    }, 620);
+    }, 980);
 }
 
 // --------------------------------------------------------------------- levels
@@ -117,6 +157,11 @@ function showLevelField(jlpt) {
     field.style.aspectRatio = `100 / ${totalH.toFixed(2)}`;
     field.innerHTML = '';
 
+    // Each level flies out from the middle of the honeycomb, so the twelve read as one node
+    // bursting rather than twelve appearing. The offset is per node, in its own units, so the
+    // burst stays true at any width.
+    const cxPct = 50, cyPct = 50;
+
     levels.forEach((level, i) => {
         const s = slots[i];
         if (!s) return;                       // a tier longer than the honeycomb: ignore the rest
@@ -130,7 +175,7 @@ function showLevelField(jlpt) {
         node.style.top = (s.y / totalH * 100).toFixed(3) + '%';
         node.style.width = s.w.toFixed(3) + '%';
         node.style.height = (s.h / totalH * 100).toFixed(3) + '%';
-        node.style.animationDelay = (i * 0.035).toFixed(3) + 's';
+        node.style.animationDelay = (0.04 + i * 0.045).toFixed(3) + 's';
         if (!done) node.style.setProperty('--node-fill', `var(--jlpt-${jlpt.toLowerCase()})`);
 
         const theme = level.themeKey ? window.t(level.themeKey) : '';
@@ -140,6 +185,9 @@ function showLevelField(jlpt) {
             ${theme ? `<span class="hexnode-theme">${escapeHtml(theme)}</span>` : ''}
             ${done ? `<span class="hexnode-best">${escapeHtml(String(progress.best_moves))} ${escapeHtml(window.t('game.clicksShort'))}</span>` : ''}
         `;
+        node.style.setProperty('--burst-x', ((cxPct - (s.x + s.w / 2)) * 1.6).toFixed(2) + '%');
+        node.style.setProperty('--burst-y',
+            ((cyPct - (s.y + s.h / 2) / totalH * 100) * 1.6).toFixed(2) + '%');
         node.setAttribute('aria-label', levelTitle(level) + (theme ? ' — ' + theme : ''));
         node.addEventListener('click', () => startLevel(level));
         field.appendChild(node);
