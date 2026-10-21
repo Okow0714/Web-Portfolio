@@ -157,6 +157,29 @@ module.exports = async function (page, assert, baseUrl) {
     });
     assert.ok(railGap >= 0 && railGap < 80, `board-to-rail gap was ${railGap}px`);
 
+    // Four hands to a level is the thing a player has to understand on arrival, and the only
+    // place that says so is this track. It has to be ABOVE the board -- in the toolbar's corner
+    // it read as decoration -- and its connecting rule has to be on the list, since a step is
+    // clipped to a hexagon and a clip-path takes the element's own ::before with it.
+    const track = await page.evaluate(() => {
+        const t = document.querySelector('.hand-track');
+        const steps = [...document.querySelectorAll('#hand-dots .hand-step')];
+        const board = document.getElementById('mem-board').getBoundingClientRect();
+        return {
+            steps: steps.length,
+            now: steps.filter(s => s.classList.contains('now')).length,
+            aboveBoard: t.getBoundingClientRect().bottom <= board.top,
+            count: document.getElementById('hand-count').textContent.replace(/\s/g, ''),
+            preview: document.getElementById('preview-hint').textContent,
+        };
+    });
+    assert.strictEqual(track.steps, 4, 'the hand track shows one step per hand');
+    assert.strictEqual(track.now, 1, 'exactly one hand is marked current');
+    assert.ok(track.aboveBoard, 'the hand track sits above the board it describes');
+    assert.strictEqual(track.count, '1/4', `hand count read "${track.count}"`);
+    assert.ok(/4/.test(track.preview),
+        `the preview line should name the hand out of four, got "${track.preview}"`);
+
     // ---------------------------------------------------------------- a whole level
     // The photo sits behind everything on the board, so a dropped opacity declaration is a
     // full-strength photograph under every tile. Checked here rather than by eye.

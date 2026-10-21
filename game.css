@@ -426,15 +426,89 @@ body.game-playing .game-main {
 
 /* The four hands of a level, as four dots. A level is 24 of its 25 words dealt as four boards,
    and without this there is nothing on screen saying how much of it is left. */
-.hand-dots { display: flex; gap: 6px; }
-.hand-dot {
-    width: 9px;
-    height: 10.4px;
-    background: var(--panel-edge);
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+/* The four hands of a level, as a track of hexagons over the board they belong to. Numbered,
+   connected, and carrying a count in words, because the thing a player has to understand on
+   arrival is that the twelve tiles in front of them are a quarter of the level. */
+.hand-track {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 0 0 14px;
 }
-.hand-dot.done { background: var(--pine-fill); }
-.hand-dot.now { background: var(--gold); }
+.hand-track-k {
+    font-size: 10px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+.hand-track-v {
+    font-size: 13px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+}
+
+/* The track's rule is drawn on the LIST, not on the steps: a step is clipped to a hexagon and a
+   clip-path takes the element's own ::before with it, so connectors hung off each step were
+   never visible at all. The grey line spans the row behind the hexagons and the pine one is as
+   long as the progress, set from JS as a fraction. */
+.hand-steps {
+    position: relative;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.hand-steps::before,
+.hand-steps::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 14px;
+    height: 2px;
+    margin-top: -1px;
+    z-index: 0;
+}
+.hand-steps::before { right: 14px; background: var(--panel-edge); }
+.hand-steps::after {
+    width: calc((100% - 28px) * var(--hand-progress, 0));
+    background: var(--pine-fill);
+    transition: width .3s var(--ease-pop);
+}
+.hand-step {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 32.3px;
+    margin-left: 22px;
+    font-size: 12px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--text-muted);
+    background: var(--panel);
+    box-shadow: inset 0 0 0 1px var(--panel-edge);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    transition: background-color .25s var(--ease-pop), color .25s var(--ease-pop),
+                transform .25s var(--ease-pop);
+}
+.hand-step:first-child { margin-left: 0; }
+
+.hand-step.done {
+    background: var(--pine-fill);
+    color: #fff;
+    box-shadow: none;
+}
+.hand-step.now {
+    background: var(--gold);
+    color: light-dark(#1b1626, #15131c);
+    box-shadow: none;
+    transform: scale(1.18);
+}
 
 /* In the rail, not the toolbar: four figures across 250px, which is exactly what the mockup's
    sidebar held. */

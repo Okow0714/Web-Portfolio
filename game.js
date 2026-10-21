@@ -266,7 +266,7 @@ window.addEventListener('resize', () => {
 // its own render on a language switch, or the board keeps the old language until a reload.
 document.addEventListener('sitelangchange', () => {
     if (!document.getElementById('level-select-section').classList.contains('hidden')) renderGate();
-    if (currentLevel && tiles.length) updateStats();
+    if (currentLevel && tiles.length) { updateStats(); renderPreviewHint(); }
 });
 
 window.onAuthChange(async (session) => {

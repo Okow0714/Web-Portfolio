@@ -305,6 +305,7 @@ function dealHand() {
     document.getElementById('bonus-timer').hidden = true;
     document.getElementById('hint-btn').disabled = true;
     updateStats();
+    renderPreviewHint();
     say(window.tf('game.mem.readThem', { n: MAIN_PAIRS * 2 }));
 }
 
@@ -628,13 +629,36 @@ function updateStats() {
     document.getElementById('st-miss').textContent = misses;
     document.getElementById('st-bonus').textContent = bonusPairs;
 
-    const dots = document.getElementById('hand-dots');
-    dots.innerHTML = '';
+    renderHandTrack();
+}
+
+// Numbered steps, not anonymous dots: a cleared hand shows a tick, the one being played is gold
+// and a size larger, and the ones to come carry their own number so the shape of the level is
+// visible before any of it is done.
+function renderHandTrack() {
+    const steps = document.getElementById('hand-dots');
+    steps.innerHTML = '';
     for (let i = 0; i < HANDS_PER_LEVEL; i++) {
-        const d = document.createElement('span');
-        d.className = 'hand-dot' + (i < handIndex ? ' done' : i === handIndex ? ' now' : '');
-        dots.appendChild(d);
+        const li = document.createElement('li');
+        li.className = 'hand-step' + (i < handIndex ? ' done' : i === handIndex ? ' now' : '');
+        li.textContent = i < handIndex ? '✓' : String(i + 1);
+        li.setAttribute('aria-label', window.tf('game.mem.handN',
+            { n: i + 1, total: HANDS_PER_LEVEL }));
+        steps.appendChild(li);
     }
+    // How far the pine rule runs: centre of the first step to centre of the current one.
+    steps.style.setProperty('--hand-progress',
+        String(handIndex / Math.max(1, HANDS_PER_LEVEL - 1)));
+    document.getElementById('hand-count').textContent =
+        `${Math.min(handIndex + 1, HANDS_PER_LEVEL)} / ${HANDS_PER_LEVEL}`;
+}
+
+// The preview line names the hand, because this is the moment a player is deciding what they
+// are looking at. It is built here rather than carrying data-i18n, since i18n.js would write
+// the static string back over it on a language switch.
+function renderPreviewHint() {
+    document.getElementById('preview-hint').textContent = window.tf('game.previewHandHint',
+        { n: handIndex + 1, total: HANDS_PER_LEVEL, cards: MAIN_PAIRS * 2 });
 }
 
 function say(text, cls) {

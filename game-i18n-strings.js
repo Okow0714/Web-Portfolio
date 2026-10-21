@@ -153,6 +153,11 @@ Object.assign(window.I18N_STRINGS, {
         mn: 'Арван хоёр хөзрийг уншаарай. Эхлэхэд тэд эргэнэ.'
     },
     'game.startHand': { en: 'Start', mn: 'Эхлэх' },
+    'game.handLabel': { en: 'Hand', mn: 'Гар' },
+    'game.previewHandHint': {
+        en: 'Hand {n} of {total}. Read the {cards} cards — they turn over when you start.',
+        mn: 'Гар {n} / {total}. {cards} хөзрийг уншаарай — эхлэхэд тэд эргэнэ.'
+    },
     'game.bonusRound': { en: 'Bonus', mn: 'Урамшуулал' },
     'game.bonusNote': {
         en: 'Four seconds. Match across the two columns. All of it is extra.',
