@@ -380,6 +380,16 @@ hexagons, because this game is played on hexagons: the chosen node flies to the 
 into that tier's twelve levels, laid out in the board's own 3/4/3/2 silhouette. `honeycomb()`
 there and `memLayout()` in `game-memory.js` are the same function, which is the point — the level
 select is a picture of the board it opens.
+**`vStep` is `0.75 * h`, not 0.76.** For a hexagon with vertices top and bottom and shoulders at
+25%/75% of its height, rows interlock only when they step down exactly three quarters of it —
+then `hypot(w/2, 0.75h)` is exactly `w`, so all six of a tile's neighbours are equidistant.
+Measured at 0.76: horizontal neighbours 124.44px apart, diagonal ones ~125.7px, and the field
+read as unevenly spaced. `honeycomb()` and `memLayout()` have to agree on this, and so does the
+bonus zig-zag.
+**The Time Attack mark is a welding arc, not a night sky**: sixteen 4px specks, each a white core
+with an orange halo, alive for about a tenth of a second and thrown a short way in its own
+direction. The randomised *duration* matters as much as the delay — sparks sharing one period
+read as a blinking pattern.
 **Three bugs the rebuild shipped and the spec now pins**, each invisible in a screenshot:
 `.gate-tiers` sets `display: flex`, which outranks the UA stylesheet, so the chosen tier node
 stayed on screen over its own levels (**every view that sets `display` must also answer

@@ -387,14 +387,15 @@ document.getElementById('pop-next-btn').addEventListener('click', () => {
 document.getElementById('mode-time-btn').addEventListener('click', () => {
     modeTimeAttack = !modeTimeAttack;
     syncModeToggles();
-    GameAudio.select();
+    CardSfx.tap();
 });
 document.getElementById('mode-perfect-btn').addEventListener('click', () => {
     modePerfect = !modePerfect;
     syncModeToggles();
-    GameAudio.select();
+    CardSfx.tap();
 });
 document.getElementById('mode-start-btn').addEventListener('click', () => {
+    CardSfx.knock();
     hideEl(document.getElementById('mode-modal'));
     if (pendingLevel) beginLevel(pendingLevel);
 });
@@ -423,6 +424,18 @@ document.addEventListener('sitelangchange', () => {
     if (!document.getElementById('level-select-section').classList.contains('hidden')) renderGate();
     if (currentLevel && tiles.length) { updateStats(); renderPreviewHint(); }
 });
+
+// Every other control on the page gets the same short tap, wired once here rather than as a
+// line in ten listeners. Capture phase, so it still sounds for a button whose own handler stops
+// the event. The tiles and the hexnodes are left out: they have their own, better voices.
+document.addEventListener('pointerdown', (e) => {
+    const el = e.target.closest ? e.target.closest('button, .auth-btn') : null;
+    if (!el || el.closest('#mem-board')) return;
+    if (el.id === 'mode-start-btn' || el.id === 'mem-start-btn') return;
+    if (el.classList.contains('hexnode')) return;
+    CardSfx.wake();
+    CardSfx.tap();
+}, true);
 
 window.onAuthChange(async (session) => {
     await loadProgress();

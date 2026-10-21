@@ -85,6 +85,7 @@ function renderTierDial() {
         node.setAttribute('aria-label',
             `${jlpt} — ${window.t('game.tier.' + jlpt)}, ${done}/${levelsPerTier()}`);
         node.addEventListener('click', () => chooseTier(jlpt, node));
+        node.addEventListener('pointerdown', () => CardSfx.wake());
         wrap.appendChild(node);
     });
 }
@@ -120,7 +121,8 @@ function chooseTier(jlpt, node) {
         el.style.setProperty('--out-y', (dy / len * 90).toFixed(1) + 'px');
         el.classList.add('is-fading');
     });
-    GameAudio.select();
+    // The deck being shuffled: the gate is about to deal twelve levels out of this node.
+    CardSfx.shuffle();
 
     // Long enough for the travel and the swell to finish, since the burst is the pay-off and
     // cutting it short is what made the first version feel like a jump cut.
@@ -137,7 +139,13 @@ function chooseTier(jlpt, node) {
 function honeycomb(rows, cols) {
     const w = 100 / (cols + 0.5);
     const h = w * 1.1547;
-    const vStep = h * 0.76;
+    // 0.75, not 0.76. For a hexagon with vertices top and bottom and shoulders at 25%/75% of
+    // its height, rows interlock when they step down exactly three quarters of that height --
+    // then every one of a tile's six neighbours is the same distance away as the one beside it,
+    // which is what a honeycomb looks like. Measured at 0.76: horizontal neighbours 124.44px
+    // apart, diagonal ones ~125.7px, and the field read as unevenly spaced. hypot(w/2, 0.75h)
+    // is exactly w when h is w * 1.1547, so 0.75 makes all six equal.
+    const vStep = h * 0.75;
     const slots = [];
     rows.forEach((count, r) => {
         const x0 = (100 - count * w) / 2;
@@ -208,12 +216,21 @@ function showLevelField(jlpt) {
         // own hexagon, so a child is clipped with it -- which is exactly what "inner sparkle"
         // needs. The bonus tile wanted sparks spilling past its edge and had to use siblings.
         if (gotTime) {
-            for (let k = 0; k < 8; k++) {
+            // A welding arc, not a night sky: lots of specks, each alive for a fraction of a
+            // second, thrown a short way in its own direction and gone. The randomised duration
+            // matters as much as the delay -- sparks on one period read as a blinking pattern,
+            // and the thing that makes a weld look like a weld is that it never repeats.
+            for (let k = 0; k < 16; k++) {
                 const sp = document.createElement('i');
                 sp.className = 'node-spark';
-                sp.style.left = (12 + Math.random() * 72).toFixed(0) + '%';
-                sp.style.top = (16 + Math.random() * 64).toFixed(0) + '%';
-                sp.style.animationDelay = (Math.random() * 1.6).toFixed(2) + 's';
+                const angle = Math.random() * Math.PI * 2;
+                const reach = 7 + Math.random() * 13;
+                sp.style.left = (22 + Math.random() * 56).toFixed(0) + '%';
+                sp.style.top = (26 + Math.random() * 46).toFixed(0) + '%';
+                sp.style.setProperty('--dx', (Math.cos(angle) * reach).toFixed(1) + 'px');
+                sp.style.setProperty('--dy', (Math.sin(angle) * reach).toFixed(1) + 'px');
+                sp.style.setProperty('--spark-dur', (0.42 + Math.random() * 0.5).toFixed(2) + 's');
+                sp.style.animationDelay = (Math.random() * 1.1).toFixed(2) + 's';
                 node.appendChild(sp);
             }
         }
@@ -222,7 +239,7 @@ function showLevelField(jlpt) {
                      gotTime && window.t('game.mode.timeAttack')].filter(Boolean).join(', ');
         node.setAttribute('aria-label', levelTitle(level) + (theme ? ' — ' + theme : '')
             + (how ? ' — ' + how : ''));
-        node.addEventListener('click', () => startLevel(level));
+        node.addEventListener('click', () => { CardSfx.knock(); startLevel(level); });
         field.appendChild(node);
     });
 

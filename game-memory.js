@@ -103,6 +103,16 @@ const CardSfx = (function () {
         return t;
     }
 
+    // A tile landing on the table: a short body, a low thump under it, and a lighter second
+    // contact a breath later -- that last tick is the whole difference between a knock and a
+    // bounce, and it is the sound twelve tiles make as they drop into a hand.
+    function bounceAt(t, gain) {
+        const g = gain === undefined ? 1 : gain;
+        nz(t, 0.034, 0.2 * g, 'lowpass', 1050 + Math.random() * 400, 0.9);
+        nz(t + 0.004, 0.07, 0.15 * g, 'lowpass', 230 + Math.random() * 90, 1.1);
+        nz(t + 0.055 + Math.random() * 0.02, 0.018, 0.08 * g, 'highpass', 2500, 0.8);
+    }
+
     // The deck squared up on the table: the full stop at the end of a shuffle.
     function square(at) {
         nz(at, 0.07, 0.26, 'lowpass', 520, 0.9);
@@ -111,6 +121,26 @@ const CardSfx = (function () {
 
     return {
         wake() { boot(); },
+        // The smallest thing in the set: a fingernail on a control. Every button on the page
+        // gets this, so it has to be short enough never to be in the way.
+        tap() { if (live()) nz(0, 0.013, 0.2, 'highpass', 3600, 0.9); },
+        // Wood knocked: a confirmation with weight behind it, for opening something.
+        knock() {
+            if (!live()) return;
+            nz(0, 0.05, 0.3, 'lowpass', 880, 0.9);
+            nz(0.004, 0.1, 0.22, 'lowpass', 215, 1.1);
+        },
+        // One tile dropping into place.
+        bounce() { if (live()) bounceAt(0, 1); },
+        // A whole hand landing, following the deal's own stagger, so the sound and the motion
+        // are one event rather than two things that happen at the same time.
+        dealRun(n, span) {
+            if (!live()) return;
+            for (let i = 0; i < n; i++) {
+                bounceAt((i / Math.max(1, n - 1)) * span + Math.random() * 0.015,
+                         0.5 + Math.random() * 0.4);
+            }
+        },
         flip() { if (live()) nz(0, 0.035, 0.3, 'highpass', 2100, 0.7); },
         pick() { if (live()) nz(0, 0.018, 0.22, 'highpass', 3200, 0.8); },
         match() {
@@ -166,7 +196,10 @@ function clearBoard() {
 function memLayout(rows, cols) {
     const w = 100 / (cols + 0.5);
     const h = w * 1.1547;
-    const vStep = h * 0.76;
+    // See the note in game-gate.js's honeycomb(): three quarters of the height is what makes
+    // every neighbour equidistant. The two functions have to agree -- the level select is a
+    // picture of this board.
+    const vStep = h * 0.75;
     const slots = [];
     rows.forEach((count, r) => {
         const x0 = (100 - count * w) / 2;
@@ -306,6 +339,10 @@ function dealHand() {
         el.setAttribute('aria-label', labelFor(t));
     });
 
+    // The deal's delays run to 0.3s (see the ring distances above), so the run of bounces is
+    // given the same span -- the sound IS the tiles landing, not an effect played over them.
+    CardSfx.dealRun(tiles.length, 0.3);
+
     phase = 'preview';
     firstPick = -1;
     boardBusy = false;
@@ -328,6 +365,7 @@ function dealHand() {
 // "already looking at it" guard that face-up tiles otherwise hit.
 function startHand() {
     CardSfx.wake();
+    CardSfx.knock();
     document.getElementById('mem-preview').hidden = true;
     phase = 'play';
     document.getElementById('hint-btn').disabled = false;
@@ -548,7 +586,7 @@ function dealBonus() {
     }
 
     const rows = pool.length;
-    const tw = 18, th = tw * 1.1547, vStep = th * 0.76;
+    const tw = 18, th = tw * 1.1547, vStep = th * 0.75;
     const headH = th * 0.34;
     const totalH = headH + (rows - 1) * vStep + th;
     board.style.aspectRatio = `100 / ${totalH.toFixed(2)}`;
@@ -634,6 +672,7 @@ function endBonus() {
         phase = 'between';
         handIndex++;
         const c = centerOf(boardEl());
+        CardSfx.knock();
         floatText(c.x, c.y, window.tf('game.mem.handN',
             { n: handIndex + 1, total: HANDS_PER_LEVEL }), true);
         window.setTimeout(dealHand, 1100);

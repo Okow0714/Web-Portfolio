@@ -1014,8 +1014,9 @@ body.game-playing .game-main {
 .mode-name { display: block; font-size: 14px; font-weight: 700; }
 .mode-desc { display: block; margin-top: 2px; font-size: 12px; opacity: .78; }
 
-/* The state pip is the only thing saying on or off, so it has to change shape as well as
-   colour -- a colour alone is not a state anyone can read at a glance in two themes. */
+/* The state pip is the only thing saying on or off. Off is an empty ring; on is the same ring
+   filled, with a hairline of the card colour inside it so the fill still reads as a disc in a
+   ring rather than a flat blob. */
 .mode-state {
     flex: none;
     width: 18px;
@@ -1024,12 +1025,14 @@ body.game-playing .game-main {
     border-radius: 50%;
     transition: background-color .2s, border-color .2s;
 }
+/* On simply fills the ring. The first version drew a black X inside it, which reads as "closed"
+   or "remove" far more readily than as "chosen". */
 .mode-toggle.on .mode-state {
     border-color: light-dark(#c08a1e, #d4a64b);
-    background:
-        linear-gradient(45deg, transparent 42%, light-dark(#1b1626, #15131c) 42% 58%, transparent 58%),
-        linear-gradient(-45deg, transparent 42%, light-dark(#1b1626, #15131c) 42% 58%, transparent 58%),
-        light-dark(#c08a1e, #d4a64b);
+    /* background-color, not the `background` shorthand: measured, the shorthand resolved to
+       transparent here while the same light-dark() inside box-shadow resolved fine. */
+    background-color: light-dark(#c08a1e, #d4a64b);
+    box-shadow: inset 0 0 0 2px light-dark(#fffdf7, #1e1a2a);
 }
 
 /* --- the rail's mode figures --- */
@@ -1091,26 +1094,36 @@ body.game-playing .game-main {
 .hexnode.mode-perfect .hexnode-check { color: #3a2c08; opacity: .95; }
 
 /* Children, not siblings: a hexnode is clipped to its own hexagon, so a child is clipped with
-   it -- which is exactly what an INNER sparkle needs. The bonus board's sparks wanted to spill
-   past the tile's edge and had to be siblings for the same reason, in reverse. */
+   it -- which is exactly what an INNER effect needs, and it is also what keeps the sparks from
+   flying off the node. The bonus board's sparks wanted to spill past the tile's edge and had to
+   be siblings for the same reason, in reverse.
+   A welding spark is a hot speck, not a star: round, tiny, white at the core with an orange
+   halo, and alive for a tenth of a second. No star-shaped clip-path -- at 4px a star is a
+   blurred dot anyway, and the glow is what sells the heat. */
 .node-spark {
     position: absolute;
-    width: 9px;
-    height: 9px;
-    background: #fffbe8;
-    clip-path: polygon(50% 0%, 58% 42%, 100% 50%, 58% 58%, 50% 100%, 42% 58%, 0% 50%, 42% 42%);
-    filter: drop-shadow(0 0 4px rgba(255, 236, 170, .9));
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #fffdf2;
+    box-shadow:
+        0 0 3px 1px rgba(255, 221, 150, .95),
+        0 0 8px 3px rgba(255, 138, 18, .7);
     opacity: 0;
     pointer-events: none;
-    animation: nodeTwinkle 1.6s ease-in-out infinite;
+    animation: weldSpark var(--spark-dur, .62s) linear infinite;
 }
-/* Lit for about half the cycle rather than a fifth: with five sparks on a long cycle the node
-   was dark most of the time, which is not a sparkle. */
-@keyframes nodeTwinkle {
-    0%, 100% { opacity: 0; transform: scale(.25) rotate(0deg); }
-    25% { opacity: 1; transform: scale(1.15) rotate(35deg); }
-    55% { opacity: .85; transform: scale(.9) rotate(70deg); }
-    80% { opacity: .15; transform: scale(.5) rotate(100deg); }
+/* Struck, thrown, out. The flash is near-instant, the travel is most of the life, and the last
+   third is dark -- which is the gap that makes the next one read as a new spark. */
+@keyframes weldSpark {
+    0% { opacity: 0; transform: translate(0, 0) scale(.2); }
+    5% { opacity: 1; transform: translate(0, 0) scale(1.15); }
+    42% { opacity: .95; transform: translate(var(--dx, 6px), var(--dy, 6px)) scale(.7); }
+    64% {
+        opacity: 0;
+        transform: translate(calc(var(--dx, 6px) * 1.45), calc(var(--dy, 6px) * 1.45)) scale(.2);
+    }
+    100% { opacity: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
