@@ -12,7 +12,7 @@ Object.assign(window.I18N_STRINGS, {
     'game.titleSub': { en: 'Japanese word memory', mn: 'Япон үг цээжлэх дасгал' },
     'game.subtitle': {
         en: 'Look at twelve cards, then find the six pairs from memory once they turn over. There is no clock in the main round — your score is the number of clicks you spend, and fewer is better. A level is four hands of six pairs, twenty-four words in all, and clearing each hand opens a four-second bonus round where you match what you just learned across two columns. Twelve levels to a JLPT tier — N5 is beginner vocabulary, N1 is advanced.',
-        mn: 'Арван хоёр хөзрийг хараад цээжил. Эргэсний дараа зургаан хосыг санаж олно. Цаг хэмжихгүй — оноог чинь дарсан тоо хэмжинэ, цөөн дарсан нь илүү. Шат бүр дөрвөн гараас бүрдэх ба нийт хорин дөрвөн үг. Гар бүрийн төгсгөлд дөрвөн секундын урамшуулал нээгдэж, сая цээжилсэн үгсээ хоёр баганаас холбоно. JLPT түвшин бүрт арван хоёр шат — N5 нь анхан шат, N1 нь хамгийн гүнзгий.'
+        mn: 'Арван хоёр хөзрийг сайн цээжилсний дараа тэд эргэж хаагдана. Дараа нь зургаан хосыг санаж олно. Цаг хэмжихгүй тул яаралгүй бодож болно; таны оноог товшсон тоо тодорхойлох бөгөөд цөөн товшсон нь дээр. Шат бүр дөрвөн багцтай, нийт хорин дөрвөн үг багтана. Багц бүрийг дуусгамагц дөрвөн секундын урамшуулал нээгдэж, сая цээжилсэн үгсээ хоёр баганаас холбоно. JLPT түвшин бүрт арван хоёр шат байх ба N5 нь анхан шат, N1 нь хамгийн гүнзгий.'
     },
     'game.guestHint': { en: 'Log in to save your best results across visits.', mn: 'Шилдэг дүнгээ хадгалахын тулд нэвтэрнэ үү.' },
     'game.score': { en: 'Score', mn: 'Оноо' },
@@ -129,10 +129,10 @@ Object.assign(window.I18N_STRINGS, {
     // powerups, the lightning chain, the Wakan flyer, the 4-minute clock -- are left in place
     // rather than deleted, the same way nav.allLevels was: an unused string costs a line, and
     // a missing one that something still reaches for renders as raw Mongolian in English mode.
-    'game.gateTitle': { en: 'Choose your level', mn: 'Түвшингээ сонго' },
+    'game.gateTitle': { en: 'Choose your level', mn: 'Түвшингээ сонгоно уу' },
     'game.gateHint': {
         en: 'Each hexagon is one JLPT tier. Open one and its twelve levels burst out of it.',
-        mn: 'Зургаан өнцөгт бүр нэг JLPT түвшин. Дарвал тухайн түвшний арван хоёр шат задарна.'
+        mn: 'Зургаан өнцөгт бүр нэг JLPT түвшин. Дарвал тухайн түвшний арван хоёр шат нээгдэнэ.'
     },
     'game.allTiers': { en: 'All tiers', mn: 'Бүх түвшин' },
     'game.tier.N5': { en: 'Beginner', mn: 'Анхан шат' },
@@ -141,29 +141,29 @@ Object.assign(window.I18N_STRINGS, {
     'game.tier.N2': { en: 'Upper', mn: 'Ахисан шат' },
     'game.tier.N1': { en: 'Advanced', mn: 'Гүнзгий' },
 
-    'game.clicks': { en: 'Clicks', mn: 'Даралт' },
-    'game.clicksShort': { en: 'clicks', mn: 'даралт' },
+    'game.clicks': { en: 'Clicks', mn: 'Товшилт' },
+    'game.clicksShort': { en: 'clicks', mn: 'товшилт' },
     'game.pairs': { en: 'Pairs', mn: 'Хос' },
     'game.misses': { en: 'Misses', mn: 'Алдаа' },
     'game.bonus': { en: 'Bonus', mn: 'Урамшуулал' },
-    'game.hint': { en: 'Hint', mn: 'Сануулга' },
-    'game.hintCost': { en: 'Turns two cards over · +3 clicks', mn: 'Хоёр хөзөр эргүүлнэ · +3 даралт' },
+    'game.hint': { en: 'Hint', mn: 'Сэжүүр' },
+    'game.hintCost': { en: 'Turns two cards over · +3 clicks', mn: 'Хоёр хөзөр эргүүлнэ · +3 товшилт' },
     'game.previewHint': {
         en: 'Read the twelve cards. When you start, they turn over.',
         mn: 'Арван хоёр хөзрийг уншаарай. Эхлэхэд тэд эргэнэ.'
     },
     'game.startHand': { en: 'Start', mn: 'Эхлэх' },
-    'game.handLabel': { en: 'Hand', mn: 'Гар' },
+    'game.handLabel': { en: 'Hand', mn: 'Багц' },
 
     // ---- game modes ----
     'game.mode.lede': {
         en: 'Choose how you want to play it. You can take neither.',
-        mn: 'Хэрхэн тоглохоо сонго. Аль алиныг нь сонгохгүй байж болно.'
+        mn: 'Хэрхэн тоглохоо сонгоно уу. Аль алийг нь сонгохгүй байж бас болно.'
     },
     'game.mode.timeAttack': { en: 'Time attack', mn: 'Цагийн уралдаан' },
     'game.mode.timeAttackDesc': {
         en: 'Three minutes for the whole level. Every pair you find puts ten seconds back.',
-        mn: 'Бүх шатыг 3 минутад. Хос тааруулах бүрд +10 секунд.'
+        mn: 'Бүх шатыг гурван минутад дуусгана. Хос олох бүрд 10 секунд нэмэгдэнэ.'
     },
     'game.mode.perfectionist': { en: 'Perfectionist', mn: 'Төгс тоглогч' },
     'game.mode.perfectDesc': {
@@ -178,51 +178,51 @@ Object.assign(window.I18N_STRINGS, {
     'game.mode.outOfLives': { en: 'Out of lives', mn: 'Амь дууслаа' },
     'game.mode.gotThisFar': {
         en: 'You had {n} of {total} pairs.',
-        mn: '{total}-аас {n} хосыг олсон байлаа.'
+        mn: '{n} / {total} хосыг олж амжлаа.'
     },
     'game.tryAgain': { en: 'Try again', mn: 'Дахин оролдох' },
-    'game.livesLeft': { en: '{n} of {total} lives left', mn: '{total}-аас {n} амь үлдлээ' },
+    'game.livesLeft': { en: '{n} of {total} lives left', mn: '{n} амь үлдсэн' },
     'game.mem.turnedSome': {
         en: 'Turned over — but {n} meanings stay showing this hand.',
-        mn: 'Эргэлээ — гэхдээ энэ гарт {n} утга нээлттэй хэвээр.'
+        mn: 'Хөзрүүд эргэлээ. Гэхдээ энэ багцад {n} утга нээлттэй үлдэнэ.'
     },
     'game.previewHandHint': {
         en: 'Hand {n} of {total}. Read the {cards} cards — they turn over when you start.',
-        mn: 'Гар {n} / {total}. {cards} хөзрийг уншаарай — эхлэхэд тэд эргэнэ.'
+        mn: '{n} / {total} багц. {cards} хөзрийг сайн цээжлээрэй. Эхлэх товч дармагц эргэнэ.'
     },
     'game.bonusRound': { en: 'Bonus', mn: 'Урамшуулал' },
     'game.bonusNote': {
         en: 'Four seconds. Match across the two columns. All of it is extra.',
-        mn: 'Дөрвөн секунд. Хоёр баганыг холбоно. Бүгд нэмэлт оноо.'
+        mn: 'Дөрвөн секунд. Хоёр баганын үгсийг холбоорой. Бүгд нэмэлт оноо.'
     },
 
     'game.ruleScore': {
         en: 'Your score is <b>clicks</b>. Fewer is better.',
-        mn: 'Оноог чинь <b>дарсан тоо</b> хэмжинэ. Цөөн дарсан нь дээр.'
+        mn: 'Таны оноог <b>товшсон тоо</b> тодорхойлно. Цөөн товшсон нь дээр.'
     },
     'game.ruleNoClock': {
         en: 'No clock in the main round — <b>take as long as you like</b>.',
-        mn: 'Үндсэн тоглолтод <b>цаг хэмжихгүй</b> — яаралгүй бодоорой.'
+        mn: 'Үндсэн хэсэгт <b>цаг хэмжихгүй</b> тул яаралгүй бодоорой.'
     },
     'game.ruleHands': {
         en: 'A level is <b>four hands</b> of six pairs each.',
-        mn: 'Шат бүр <b>дөрвөн гар</b>, гар бүр зургаан хос.'
+        mn: 'Шат бүр <b>дөрвөн багцтай</b>, багц тутамд зургаан хос.'
     },
     'game.ruleBonus': {
         en: 'Clearing a hand opens a <b>four-second bonus</b> — missing it still finishes the level.',
-        mn: 'Гар цэвэрлэхэд <b>дөрвөн секундын урамшуулал</b> нээгдэнэ — алдвал ч шат дуусна.'
+        mn: 'Багцыг дуусгамагц <b>дөрвөн секундын урамшуулал</b> нээгдэнэ. Алдсан ч шат дуусна.'
     },
 
-    'game.mem.readThem': { en: '{n} cards, six pairs. Read them while you can.', mn: '{n} хөзөр, зургаан хос. Боломж байхад нь уншаарай.' },
-    'game.mem.turned': { en: 'Turned over. Find the six pairs.', mn: 'Эргэлээ. Зургаан хосыг ол.' },
-    'game.mem.findPartner': { en: 'Now find its partner.', mn: 'Одоо хосыг нь ол.' },
-    'game.mem.pairOf': { en: 'Pair {n} of {total}.', mn: '{total}-аас {n} дэх хос.' },
-    'game.mem.notAPair': { en: 'Not a pair. {n} so far.', mn: 'Хос биш. Одоогоор {n} алдаа.' },
-    'game.mem.handCleared': { en: 'Hand cleared. {n} more pairs, face up, four seconds.', mn: 'Гар цэвэрлэгдлээ. Дахиад {n} хос, нүүрээрээ, дөрвөн секунд.' },
-    'game.mem.bonusGo': { en: 'Words on the left, meanings on the right. Clicks here are free.', mn: 'Зүүн талд үг, баруун талд утга. Энд дарсан нь оноонд ороогүй.' },
-    'game.mem.bonusPair': { en: 'Bonus pair {n}.', mn: '{n} дэх урамшууллын хос.' },
-    'game.mem.handN': { en: 'Hand {n} of {total}', mn: '{total}-аас {n} дэх гар' },
-    'game.mem.hintSpent': { en: 'Two cards, for {n} clicks.', mn: 'Хоёр хөзөр, {n} даралтаар.' },
+    'game.mem.readThem': { en: '{n} cards, six pairs. Read them while you can.', mn: '{n} хөзөр, зургаан хос. Эргэхээс нь өмнө сайн цээжлээрэй.' },
+    'game.mem.turned': { en: 'Turned over. Find the six pairs.', mn: 'Хөзрүүд эргэлээ. Зургаан хосыг нь олоорой.' },
+    'game.mem.findPartner': { en: 'Now find its partner.', mn: 'Одоо хосыг нь олоорой.' },
+    'game.mem.pairOf': { en: 'Pair {n} of {total}.', mn: '{n} / {total} хос оллоо.' },
+    'game.mem.notAPair': { en: 'Not a pair. {n} so far.', mn: 'Хос биш байна. Нийт {n} алдаа.' },
+    'game.mem.handCleared': { en: 'Hand cleared. {n} more pairs, face up, four seconds.', mn: 'Багц дууслаа! Дахиад {n} хос нээлттэй гарч ирнэ, дөрвөн секунд.' },
+    'game.mem.bonusGo': { en: 'Words on the left, meanings on the right. Clicks here are free.', mn: 'Зүүн талд үг, баруун талд утга. Энд товшсон нь оноонд орохгүй.' },
+    'game.mem.bonusPair': { en: 'Bonus pair {n}.', mn: 'Нэмэлт {n} хос оллоо.' },
+    'game.mem.handN': { en: 'Hand {n} of {total}', mn: '{n}-р багц' },
+    'game.mem.hintSpent': { en: 'Two cards, for {n} clicks.', mn: '{n} товшилтын үнээр хоёр хөзөр.' },
     'game.mem.meaning': { en: 'Meaning', mn: 'Утга' },
     'game.mem.faceDown': { en: 'Face-down card', mn: 'Хаалттай хөзөр' },
 
@@ -232,7 +232,7 @@ Object.assign(window.I18N_STRINGS, {
     'game.grade.through': { en: 'Through', mn: 'Давлаа' },
     'game.previousBestClicks': {
         en: 'Previous best: {moves} clicks · {time}',
-        mn: 'Өмнөх шилдэг: {moves} даралт · {time}'
+        mn: 'Өмнөх шилдэг: {moves} товшилт · {time}'
     },
-    'game.perfectIs': { en: 'A perfect level is {n} clicks.', mn: 'Төгс шат бол {n} даралт.' },
+    'game.perfectIs': { en: 'A perfect level is {n} clicks.', mn: '{n} товшилтоор дуусгавал төгс.' },
 });

@@ -407,7 +407,7 @@
                 <div class="game-hud-row">
                     <div>
                         <h1 class="game-title">言葉合わせ<span class="game-title-sub" data-i18n="game.titleSub">Япон үг цээжлэх дасгал</span></h1>
-                        <p class="game-subtitle" data-i18n="game.subtitle">Арван хоёр хөзрийг хараад цээжил. Эргэсний дараа зургаан хосыг санаж олно. Цаг хэмжихгүй — оноог чинь дарсан тоо хэмжинэ, цөөн дарсан нь илүү. Шат бүр дөрвөн гараас бүрдэх ба нийт хорин дөрвөн үг. Гар бүрийн төгсгөлд дөрвөн секундын урамшуулал нээгдэж, сая цээжилсэн үгсээ хоёр баганаас холбоно. JLPT түвшин бүрт арван хоёр шат — N5 нь анхан шат, N1 нь хамгийн гүнзгий.</p>
+                        <p class="game-subtitle" data-i18n="game.subtitle">Арван хоёр хөзрийг сайн цээжилсний дараа тэд эргэж хаагдана. Дараа нь зургаан хосыг санаж олно. Цаг хэмжихгүй тул яаралгүй бодож болно; таны оноог товшсон тоо тодорхойлох бөгөөд цөөн товшсон нь дээр. Шат бүр дөрвөн багцтай, нийт хорин дөрвөн үг багтана. Багц бүрийг дуусгамагц дөрвөн секундын урамшуулал нээгдэж, сая цээжилсэн үгсээ хоёр баганаас холбоно. JLPT түвшин бүрт арван хоёр шат байх ба N5 нь анхан шат, N1 нь хамгийн гүнзгий.</p>
                     </div>
                     <button class="sound-toggle on" id="sound-toggle" type="button" data-vol="3" title="Дууны түвшин">
                         <span id="sound-icon" class="sound-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="8.5" width="1.5" height="7"/><rect x="8" y="8.5" width="1.5" height="7"/><rect x="3" y="9.25" width="6.5" height="1.5"/><rect x="3" y="13.25" width="6.5" height="1.5"/><rect class="bar b1" x="12" y="8" width="1.5" height="8"/><rect class="bar b2" x="15.5" y="6.5" width="1.5" height="11"/><rect class="bar b3" x="19" y="5" width="1.5" height="14"/></svg></span>
@@ -417,8 +417,8 @@
 
                 <div class="gate">
                     <div class="gate-head">
-                        <h2 data-i18n="game.gateTitle">Түвшингээ сонго</h2>
-                        <p data-i18n="game.gateHint">Зургаан өнцөгт бүр нэг JLPT түвшин. Дарвал тухайн түвшний арван хоёр шат задарна.</p>
+                        <h2 data-i18n="game.gateTitle">Түвшингээ сонгоно уу</h2>
+                        <p data-i18n="game.gateHint">Зургаан өнцөгт бүр нэг JLPT түвшин. Дарвал тухайн түвшний арван хоёр шат нээгдэнэ.</p>
                     </div>
                     <div class="gate-tiers" id="gate-tiers"></div>
                     <div class="gate-levels" id="gate-levels" hidden>
@@ -449,28 +449,28 @@
                              sound button read as decoration, and nothing on the page said a level
                              was more than the twelve tiles in front of you. -->
                         <div class="hand-track">
-                            <span class="hand-track-k" data-i18n="game.handLabel">Гар</span>
+                            <span class="hand-track-k" data-i18n="game.handLabel">Багц</span>
                             <ol class="hand-steps" id="hand-dots"></ol>
                             <span class="hand-track-v" id="hand-count"></span>
                         </div>
 
                         <div class="bonus-head" id="bonus-head" hidden>
                             <h2 data-i18n="game.bonusRound">Урамшуулал</h2>
-                            <span data-i18n="game.bonusNote">Дөрвөн секунд. Хоёр баганыг холбоно. Бүгд нэмэлт оноо.</span>
+                            <span data-i18n="game.bonusNote">Дөрвөн секунд. Хоёр баганын үгсийг холбоорой. Бүгд нэмэлт оноо.</span>
                         </div>
                         <div class="bonus-timer" id="bonus-timer" hidden><i id="bonus-fill"></i></div>
 
                         <div class="mem-board" id="mem-board"></div>
 
                         <div class="mem-preview" id="mem-preview">
-                            <p id="preview-hint">Гар 1 / 4. Арван хоёр хөзрийг уншаарай — эхлэхэд тэд эргэнэ.</p>
+                            <p id="preview-hint">1 / 4 багц. 12 хөзрийг сайн цээжлээрэй. Эхлэх товч дармагц эргэнэ.</p>
                             <button type="button" class="go-btn" id="mem-start-btn" data-i18n="game.startHand">Эхлэх</button>
                         </div>
                     </div>
 
                     <div class="board-side">
                         <div class="board-stats">
-                            <span><span class="stat-k" data-i18n="game.clicks">Даралт</span><span class="stat-v gold" id="st-clicks">0</span></span>
+                            <span><span class="stat-k" data-i18n="game.clicks">Товшилт</span><span class="stat-v gold" id="st-clicks">0</span></span>
                             <span><span class="stat-k" data-i18n="game.pairs">Хос</span><span class="stat-v" id="st-pairs">0/6</span></span>
                             <span><span class="stat-k" data-i18n="game.misses">Алдаа</span><span class="stat-v crimson" id="st-miss">0</span></span>
                             <span><span class="stat-k" data-i18n="game.bonus">Урамшуулал</span><span class="stat-v pine" id="st-bonus">0</span></span>
@@ -480,8 +480,8 @@
                         <p class="say" id="board-say"></p>
                         <div class="btn-rail">
                             <button type="button" class="rail-btn" id="hint-btn" disabled>
-                                <span data-i18n="game.hint">Сануулга</span>
-                                <small data-i18n="game.hintCost">Хоёр хөзөр эргүүлнэ · +3 даралт</small>
+                                <span data-i18n="game.hint">Сэжүүр</span>
+                                <small data-i18n="game.hintCost">Хоёр хөзөр эргүүлнэ · +3 товшилт</small>
                             </button>
                         </div>
 
@@ -494,10 +494,10 @@
                         </div>
 
                         <ul class="rules">
-                            <li data-i18n-html="game.ruleScore">Оноог чинь <b>дарсан тоо</b> хэмжинэ. Цөөн дарсан нь дээр.</li>
-                            <li data-i18n-html="game.ruleNoClock">Үндсэн тоглолтод <b>цаг хэмжихгүй</b> — яаралгүй бодоорой.</li>
-                            <li data-i18n-html="game.ruleHands">Шат бүр <b>дөрвөн гар</b>, гар бүр зургаан хос.</li>
-                            <li data-i18n-html="game.ruleBonus">Гар цэвэрлэхэд <b>дөрвөн секундын урамшуулал</b> нээгдэнэ — алдвал ч шат дуусна.</li>
+                            <li data-i18n-html="game.ruleScore">Таны оноог <b>товшсон тоо</b> тодорхойлно. Цөөн товшсон нь дээр.</li>
+                            <li data-i18n-html="game.ruleNoClock">Үндсэн хэсэгт <b>цаг хэмжихгүй</b> тул яаралгүй бодоорой.</li>
+                            <li data-i18n-html="game.ruleHands">Шат бүр <b>дөрвөн багцтай</b>, багц тутамд зургаан хос.</li>
+                            <li data-i18n-html="game.ruleBonus">Багцыг дуусгамагц <b>дөрвөн секундын урамшуулал</b> нээгдэнэ. Алдсан ч шат дуусна.</li>
                         </ul>
                     </div>
                 </div>
@@ -513,13 +513,13 @@
         <div id="mode-modal" class="modal-overlay hidden">
             <div class="modal-card">
                 <h3 id="mode-modal-title"></h3>
-                <p class="mode-lede" data-i18n="game.mode.lede">Хэрхэн тоглохоо сонго. Аль алиныг нь сонгохгүй байж болно.</p>
+                <p class="mode-lede" data-i18n="game.mode.lede">Хэрхэн тоглохоо сонгоно уу. Аль алийг нь сонгохгүй байж бас болно.</p>
 
                 <button type="button" class="mode-toggle" id="mode-time-btn" aria-pressed="false">
                     <span class="mode-mark" aria-hidden="true">時</span>
                     <span class="mode-copy">
                         <span class="mode-name" data-i18n="game.mode.timeAttack">Цагийн уралдаан</span>
-                        <span class="mode-desc" data-i18n="game.mode.timeAttackDesc">Бүх шатыг 3 минутад. Хос тааруулах бүрд +10 секунд.</span>
+                        <span class="mode-desc" data-i18n="game.mode.timeAttackDesc">Бүх шатыг гурван минутад дуусгана. Хос олох бүрд 10 секунд нэмэгдэнэ.</span>
                     </span>
                     <span class="mode-state" aria-hidden="true"></span>
                 </button>
@@ -551,7 +551,7 @@
                 <h3 id="result-title" data-i18n="game.levelComplete">Шат дууслаа</h3>
                 <div class="pop-figures">
                     <span class="pop-figure">
-                        <span class="pop-figure-k" data-i18n="game.clicks">Даралт</span>
+                        <span class="pop-figure-k" data-i18n="game.clicks">Товшилт</span>
                         <span class="pop-figure-v" id="pop-clicks">0</span>
                     </span>
                     <span class="pop-figure">

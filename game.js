@@ -422,7 +422,14 @@ window.addEventListener('resize', () => {
 // its own render on a language switch, or the board keeps the old language until a reload.
 document.addEventListener('sitelangchange', () => {
     if (!document.getElementById('level-select-section').classList.contains('hidden')) renderGate();
-    if (currentLevel && tiles.length) { updateStats(); renderPreviewHint(); }
+    if (currentLevel && tiles.length) {
+        updateStats();
+        renderPreviewHint();
+        reSay();
+        // The board's own title is built from game.levelN, so it is as stale as anything else
+        // until it is rebuilt.
+        document.getElementById('board-level-label').textContent = levelTitle(currentLevel);
+    }
 });
 
 // Every other control on the page gets the same short tap, wired once here rather than as a

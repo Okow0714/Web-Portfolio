@@ -353,7 +353,7 @@ function dealHand() {
     document.getElementById('hint-btn').disabled = true;
     updateStats();
     renderPreviewHint();
-    say(window.tf('game.mem.readThem', { n: MAIN_PAIRS * 2 }));
+    say('game.mem.readThem', { n: MAIN_PAIRS * 2 });
 }
 
 // Starting a hand turns the Japanese side over and all but a few of the meanings. How many
@@ -381,9 +381,8 @@ function startHand() {
         window.setTimeout(() => turn(t, 'down'), i * 45);
     });
 
-    say(keep
-        ? window.tf('game.mem.turnedSome', { n: keep })
-        : window.t('game.mem.turned'));
+    if (keep) say('game.mem.turnedSome', { n: keep });
+    else say('game.mem.turned');
     updateStats();
 }
 
@@ -445,7 +444,7 @@ function onTile(e) {
         if (firstPick < 0) {
             firstPick = +el.dataset.i;
             CardSfx.pick();
-            say(window.t('game.mem.findPartner'));
+            say('game.mem.findPartner');
             return;
         }
         const a = tiles[firstPick], b = t;
@@ -471,8 +470,8 @@ function onTile(e) {
                     }
                     updateStats();
                     if (pairsThisHand === handWords.length) finishHand();
-                    else say(window.tf('game.mem.pairOf',
-                        { n: pairsThisHand, total: handWords.length }), 'good');
+                    else say('game.mem.pairOf',
+                        { n: pairsThisHand, total: handWords.length }, 'good');
                 }, 420);
             }, 170);
         } else {
@@ -494,7 +493,7 @@ function onTile(e) {
                     if (!a.revealed) turn(a, 'down');
                     if (!b.revealed) turn(b, 'down');
                     boardBusy = false;
-                    say(window.tf('game.mem.notAPair', { n: misses }), 'bad');
+                    say('game.mem.notAPair', { n: misses }, 'bad');
                 }, 620);
             }, 170);
         }
@@ -522,7 +521,7 @@ function onTile(e) {
             bonusPairs++;
             updateStats();
             const cleared = tiles.filter(t2 => t2.state === 'gone').length / 2;
-            say(window.tf('game.mem.bonusPair', { n: bonusPairs }), 'good');
+            say('game.mem.bonusPair', { n: bonusPairs }, 'good');
             if (cleared >= BONUS_PAIRS) window.setTimeout(endBonus, 320);
         } else {
             misses++; updateStats(); CardSfx.miss();
@@ -543,7 +542,7 @@ function onTile(e) {
 function finishHand() {
     phase = 'between';
     document.getElementById('hint-btn').disabled = true;
-    say(window.tf('game.mem.handCleared', { n: BONUS_PAIRS }), 'win');
+    say('game.mem.handCleared', { n: BONUS_PAIRS }, 'win');
     window.setTimeout(startBonus, 900);
 }
 
@@ -562,7 +561,7 @@ function startBonus() {
     fill.classList.add('run');
     fill.style.width = '0%';
     CardSfx.shuffle();
-    say(window.t('game.mem.bonusGo'));
+    say('game.mem.bonusGo');
     bonusTimer = window.setTimeout(endBonus, BONUS_MS);
 }
 
@@ -697,7 +696,7 @@ function useHint() {
     CardSfx.hint();
     boardBusy = true;
     pick.forEach(t => turn(t, 'up', () => t.el.classList.add('peek')));
-    say(window.tf('game.mem.hintSpent', { n: HINT_COST }), 'bad');
+    say('game.mem.hintSpent', { n: HINT_COST }, 'bad');
     window.setTimeout(() => {
         pick.forEach(t => {
             t.el.classList.remove('peek');
@@ -772,10 +771,22 @@ function renderPreviewHint() {
         { n: handIndex + 1, total: HANDS_PER_LEVEL, cards: MAIN_PAIRS * 2 });
 }
 
-function say(text, cls) {
+// say() takes a KEY, not a finished string, so the line can be rebuilt when the language
+// changes. Handing it text meant the status line kept whichever language it was written in --
+// found by scanning <main> for Cyrillic with English selected, which is the check that is
+// supposed to catch exactly this.
+let lastSay = null;
+function say(key, params, cls) {
+    lastSay = { key, params, cls };
+    reSay();
+}
+function reSay() {
+    if (!lastSay) return;
     const el = document.getElementById('board-say');
-    el.className = 'say' + (cls ? ' ' + cls : '');
-    el.textContent = text;
+    el.className = 'say' + (lastSay.cls ? ' ' + lastSay.cls : '');
+    el.textContent = lastSay.params
+        ? window.tf(lastSay.key, lastSay.params)
+        : window.t(lastSay.key);
 }
 
 // The pair just matched, with its example sentence — the one place a matched word gets to teach
