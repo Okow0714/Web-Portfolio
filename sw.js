@@ -18,7 +18,7 @@
 // stale-while-revalidate, so it serves the cached copy first and only refreshes behind it --
 // without a bump, a returning PWA user runs the previous version of a fixed file for one more
 // visit. Whether that matters is a judgement call; for a correctness fix it generally does.
-const CACHE_VERSION = 'khan-japanese-v157';
+const CACHE_VERSION = 'khan-japanese-v158';
 
 const APP_SHELL = [
     './',
@@ -101,9 +101,8 @@ const APP_SHELL = [
     './game-audio.js',
     './game-core.js',
     './game-fx.js',
-    './game-board.js',
-    './game-play.js',
-    './game-wakan.js',
+    './game-gate.js',
+    './game-memory.js',
     './game.js',
     './phonetics.js',
     './kana-match.js',

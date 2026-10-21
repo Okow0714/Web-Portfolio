@@ -14,7 +14,7 @@ Supabase (Postgres + Auth). Hosted on GitHub Pages. Git repo on `main`.
 | `index.html` | The "entrance hall" / hub — site home, nav-brand target. **Rebuilt 2026-10-11 as one screen of six square "seals"** (`.hub-seal`), each a tool: icon and one-line stat at rest, the tool's own screenshot ghosted in behind a short description on hover. A large watermark of the brand mark bleeds off the left edge behind them. `<main class="hub-main">` / `hub.css`. **Everything else is below the fold** — `.hub-stage` is `min-height:100dvh`, so the Study Path band and the footer are reached only by scrolling. The old tool cards, the home dictionary search bar, the Dashboard progress widget and the Study Path banner are all gone, and `hub-home.js` went with them (it existed only to drive the last two). Mongolian by default, like every i18n page (see Mongolian first below). |
 | `about.html` | Sarantsatsral's personal "About Me" resume/portfolio page — reached via the footer's "About Me" column or the hub's developer card, not the top nav. Fully standalone: its own `about.css` (forest-teal "Field Dossier" theme), no shared `style.css`, no masthead/footer, a sticky left index-rail layout instead. English only, no i18n. Has its own compact account popover (`.about-account*` classes) rather than the shared masthead's side drawer, but wired through the same `auth-shared.js` and load-bearing IDs (see Account menu below). |
 | `path.html` | Study Path (学びの道) — a six-stage route from no Japanese at all to N1, mapping each stage onto specific tools and level ranges. `<main class="path-main">` / `path.css` (warm paper, sumi ink, one saffron marker). **Rebuilt 2026-10-12 as a map plus six pages.** `path.html` is now only the map: a Dunning-Kruger confidence curve with the six stages as points on it (lowest before JLPT, peak at N3, trough at N2, N1 recovering), plus a folded `<details>` explaining that the famous curve is not in Kruger & Dunning 1999 and is largely a statistical artefact. Each point links to its own page -- `path-kana.html`, `path-n5.html` ... `path-n1.html`, `<main class="path-stage-main">` -- which carries that stage's full text, a minimap showing where it sits on the curve, and prev/next links. **The whole thing is static**: the curve's path data, every point's left/top and each minimap are generated from one list of six anchor points and written into the HTML, so there is no script on any of these pages, the route is crawlable and the road can never disagree with the points. The six stage pages share path.html's nav entry via a rule in `build-chrome.js`'s `withCurrent`. The old spine layout (`.path-route`/`.path-stage`/`.path-marker`) is gone. **Not in the masthead nav on purpose** — it is a route through the tools rather than a tool, and it is reached from the hub's `.hub-startpath` banner and the footer's Study tools column. (The row had no space either, until the 2026-09-16 regrouping; now it has, and this stays out by choice.) The per-stage hour ranges are external rules of thumb, labelled as such on the page; every level range in the copy is real and will drift if the tools change. |
-| `game.html` | Word Match ("言葉合わせ") — hex-tile vocabulary matching game, JLPT N5–N1. `<main class="game-main">` / `game.css` (dark hanafuda violet/gold). |
+| `game.html` | Word Match ("言葉合わせ") — hexagonal-card **memory** game, JLPT N5–N1. `<main class="game-main">` / `game.css`. **Rebuilt 2026-10-21** (see Word Match below): the honeycomb-matching board, the 4-minute clock, streaks, powerups, the lightning chain and the Wakan flyer are all gone, and `game-board.js`, `game-play.js` and `game-wakan.js` went with them. Palette is now "hanafuda in daylight" — tatami straw, violet card backs, one gold, every surface a flat colour — with the old lacquer board kept as the dark theme. |
 | `phonetics.html` | Phonetics Family — kanji grouped by shared phonetic component, ranked by usage. `<main class="phonetics-main">` / `phonetics.css` (light jade/copper). **Rebuilt 2026-10-15 as one surface with four views** — gate → board → tree → round — and it no longer loads `phonetics-data.js` at all (see Phonetics below). `phonetics-drill.html` was retired with that rebuild: the round is a view on this page now. |
 | `grammar.html` | Grammar Connect — sentence-swap grammar drill, two tracks (foundation/advanced). `<main class="grammar-main">` / `grammar.css`. |
 | `reading.html` | Dokkai Reader — speech-recognition-driven reading practice. `<main class="reading-main">` / `reading.css` (warm gold, light). |
@@ -315,51 +315,92 @@ the derived data is the provenance record.
 Related: `phonetics.html` used to auto-open its "what's a phonetic component?" modal on *every*
 load; that is gone — the tour points at the button instead.
 
-**Word Match is six classic scripts, not one** (`game-core.js` → `game-fx.js` → `game-board.js` →
-`game-play.js` → `game-wakan.js` → `game.js`, after `game-particles.js`/`game-audio.js`). They share one
-global scope: a top-level `let`, `const` or `function` in one classic script can be read, assigned and
-called from any other on the page. It is just not a `window.` property, which is why `window.GameAudio`
-was undefined while bare `GameAudio` worked. That was misread once as "state cannot be shared across
-`<script>` tags" and nearly sent this toward ES modules. The only rule is **load order**: code that
-runs while a file is loading may use only what an *earlier* file defined; listeners and animation-frame
-callbacks run later and may reach forward. So all mutable state lives in `game-core.js`, and start-up
-plus most wiring live in `game.js`, the last one loaded. Two things break it: declaring the same name
-in two of these files (a SyntaxError that stops the later file loading), and adding a load-time call into
-a later file. A new file goes in `game.html` in order *and* in `sw.js`'s `APP_SHELL`.
+**Word Match is five classic scripts, not one** (`game-core.js` → `game-fx.js` → `game-gate.js`
+→ `game-memory.js` → `game.js`, after `game-particles.js`/`game-audio.js`). They share one
+global scope: a top-level `let`, `const` or `function` in one classic script can be read,
+assigned and called from any other on the page. It is just not a `window.` property, which is
+why `window.GameAudio` was undefined while bare `GameAudio` worked. That was misread once as
+"state cannot be shared across `<script>` tags" and nearly sent this toward ES modules. The only
+rule is **load order**: code that runs while a file is loading may use only what an *earlier*
+file defined; listeners and animation-frame callbacks run later and may reach forward. So all
+mutable state lives in `game-core.js`, and start-up plus most wiring live in `game.js`, the last
+one loaded. Two things break it: declaring the same name in two of these files (a SyntaxError
+that stops the later file loading), and adding a load-time call into a later file. A new file
+goes in `game.html` in order *and* in `sw.js`'s `APP_SHELL`. That shared scope is also what
+makes the board testable: `tests/word-match.spec.js` reads `tiles` by name from
+`page.evaluate`, which is the only way to play a memory game deterministically.
 
-**A tile's type is sized off `--hex-w`, never in rem** (2026-09-17). A hex tile is only full
-width across the middle half of its height, so whether text fits is a question about fractions
-of the tile, and a rem size cannot answer it. Both old clamps had come loose from the tile in
-opposite directions: past a 148px tile `--hex-w` stops growing while `100cqw` does not, so
-desktop type sat at its rem cap; and on a 390px phone the *floor* held the headword at 16px
-inside a 49px tile -- text several times wider than the hexagon around it, which
-`white-space: nowrap` hid behind an ellipsis. That was the reported "long words are cut off".
-Every label is now `calc(var(--hex-w) * ratio * var(--tile-text-scale))`, wraps, and is
-line-clamped, and `tileTextScale()` in `game-board.js` picks the scale from the text's own width
-in em. Because the tile, its text and its type are all fractions of one number the arithmetic is
-scale-invariant -- one answer per word is right at every viewport, with no resize handler and no
-measuring of live DOM -- but that only holds while `TILE_TYPE`'s constants match the ratios in
-`game.css`. The Wakan flyer is the same hexagon and carries the same rules.
+**A tile's type is a fraction of the tile, never a rem** (2026-09-17, carried through the
+2026-10-21 rebuild). A hex tile is only full width across the middle half of its height, so
+whether text fits is a question about fractions of the tile, and a rem size cannot answer it.
+Both of the old clamps had come loose in opposite directions: past a 148px tile `--hex-w`
+stopped growing while `100cqw` did not, so desktop type sat at its rem cap; and on a 390px phone
+the *floor* held a headword at 16px inside a 49px tile — text several times wider than the
+hexagon around it, which `white-space: nowrap` hid behind an ellipsis. That was the reported
+"long words are cut off". `sizeTile()` in `game-memory.js` now sets every label from the tile's
+own width — the board's width times the tile's width in percent — so the arithmetic is
+scale-invariant and one answer per word is right at every viewport, with no resize handler
+measuring live DOM. A tile carries its own `cw` (its width as a percentage of the board) because
+the bonus round's tiles are a different size from the main field's, and a single constant would
+undersize one of the two.
 
-**Two tiles can read the same thing, and either one matches** (2026-09-17). A set can hold two
-words that mean exactly the same thing -- 辞書 and 字引 are both "толь бичиг", 飛行場 and 空港
-both "нисэх буудал" -- so the board can carry two identical meaning tiles, and a player picking
-"the wrong one" has not made a mistake. `relinkIfSameAnswer` (`game-play.js`) accepts the crossed
-pick: the two pairs trade meaning tiles, so the two tiles chosen become a real pair and the two
-left over are paired with each other. It is done that way, rather than by clearing one tile of
-each pair, because the lightning chain, the Wakan blast, the swap powerup and the refill all
-assume a pair owns exactly two tiles -- a half-matched pair would have to be taught to all four.
-The tiles are identical on screen, so the trade is invisible; their suit dots move with them.
-**The sharper fix comes first**: where the twins are not really the same word, the gloss should
-say which is which, and 43 identical-gloss groups became 13 that way. 赤 and 赤い are "улаан
-өнгө" and "улаан өнгөтэй"; 支給 is an allowance and 支払 a payment, which their own `meanings`
-arrays already said and only the tile did not; the last four came from the user's own Mongolian
-(午前 "үдээс өмнө", 信用 "итгэл" -- it had said найдвар, which is 希望 -- 有る/居る "байх (эд
-зүйл)" against "байх (амьд)", 広さ "талбайн хэмжээ"). Sharpening one gloss has to respect the
-rest of the set: 食物 moved to "foodstuff" and collided with 食品 two tiles away, so any such
-edit re-checks against the previous build that no set gained a clash it did not have.
-`clusterConfusables` still deliberately deals same-*reading* words together (暑い/熱い/厚い) --
-those teach something, because their meanings tell them apart.
+**Two tiles can read the same thing, and either one matches** (2026-09-17, re-implemented for
+the memory board). A hand can hold two words that mean exactly the same thing — 辞書 and 字引 are
+both "толь бичиг", 飛行場 and 空港 both "нисэх буудал" — so a player picking "the wrong one" has
+not made a mistake; the two tiles are identical on screen. `sameAnswer`/`relinkSameAnswer`
+(`game-memory.js`) accept the crossed pick: the two pairs trade meaning tiles, so the two chosen
+become a real pair and the two left over are paired with each other. It is done by trading
+rather than by clearing one tile of each pair because the bonus round, the hand counter and the
+deal all assume a pair owns exactly two tiles — a half-matched pair would have to be taught to
+all three. **The sharper fix comes first**: where the twins are not really the same word, the
+gloss should say which is which, and 43 identical-gloss groups became 13 that way. 赤 and 赤い
+are "улаан өнгө" and "улаан өнгөтэй"; 支給 is an allowance and 支払 a payment, which their own
+`meanings` arrays already said and only the tile did not; the last four came from the user's own
+Mongolian (午前 "үдээс өмнө", 信用 "итгэл" — it had said найдвар, which is 希望 — 有る/居る "байх
+(эд зүйл)" against "байх (амьд)", 広さ "талбайн хэмжээ"). Sharpening one gloss has to respect the
+rest of the set: 食物 moved to "foodstuff" and collided with 食品 two tiles away, so any such edit
+re-checks against the previous build that no set gained a clash it did not have.
+
+**Word Match is a memory game** (rebuilt 2026-10-21). Twelve hexagonal cards, six pairs, dealt
+face up until the player presses Start and then turned over. The score is **clicks**, and a
+level's perfect score is derived (`MAIN_PAIRS * HANDS_PER_LEVEL * 2`), never written down. There
+is no clock in the main round; the only clock in the game is the bonus.
+**A level is four hands, not one board.** A level's entry in `game-words.js` holds 25 words, and
+50 face-down tiles is a punishment rather than a memory test — so a level deals 24 of them as
+four consecutive hands of 6 pairs. The deck is shuffled once per level and sliced, so no word can
+appear in two hands of the same playthrough. Clearing a hand opens a **four-second bonus**: four
+of the pairs just cleared, face up, in two interlocking zig-zag columns, Japanese down one and
+the meanings down the other, each column shuffled on its own and reshuffled until no row holds a
+word beside its own translation. It reuses the hand's words rather than new ones because four
+hands already spend 24 of the level's 25 — and a recall sprint over what was just learned is the
+better round anyway. Bonus tiles rock, glow, radiate a gold halo of their own hexagon and throw
+sparks, because the round has to read as a reward and not as stage two.
+**The gate is five hexagonal JLPT nodes** (`game-gate.js`), like Phonetics Family's dial but
+hexagons, because this game is played on hexagons: the chosen node flies to the centre and bursts
+into that tier's twelve levels, laid out in the board's own 3/4/3/2 silhouette. `honeycomb()`
+there and `memLayout()` in `game-memory.js` are the same function, which is the point — the level
+select is a picture of the board it opens.
+**Three bugs the rebuild shipped and the spec now pins**, each invisible in a screenshot:
+`.gate-tiers` sets `display: flex`, which outranks the UA stylesheet, so the chosen tier node
+stayed on screen over its own levels (**every view that sets `display` must also answer
+`[hidden]`** — the same rule phonetics.html learned); a face-down tile kept the `aria-label`
+naming its word, handing the whole board to the one player who cannot see the faces; and
+`opacity: light-dark(0.08, 0.16)` is **invalid**, because `light-dark()` is a `<color>` function
+— the declaration dropped and opacity fell back to its initial **1**, putting the board
+photograph at full strength over everything. A non-colour value needs the three-state theme
+pattern instead.
+**The sound is cards, not notes.** Every cue in `CardSfx` is a handling sound — a card turned,
+two lifted off the table, a deck riffled before the bonus — built from filtered noise rather than
+loaded, because a card snap *is* a shaped burst of noise and a library of recordings would be
+another megabyte in `APP_SHELL`. Three details keep it from sounding synthetic: the noise buffer
+is read from a random offset at a randomised rate so no two snaps are identical, the riffle's
+gaps are random inside a decaying span, and every burst is 20–40ms. It has no volume control of
+its own — it reads `GameAudio.getLevel()`, so the one speaker button in the toolbar governs
+music and cards alike, and level 0 is silence. The `AudioContext` is built on the first click and
+never at load, or every browser that enforces autoplay hands back a suspended one.
+**`game_progress` was not migrated and did not need to be**: `best_moves` now holds clicks and
+`best_time_seconds` a stopwatch rather than a countdown. Both still mean "lower is better",
+which is all the dashboard and the score SQL ever assumed.
 
 **Large data files — never `Read` whole**: `phonetics-data.js` (~2.8MB), `game-words.js`
 (~1.4MB), `mnjp-data.js` (~1.4MB, `MNJP_ENTRIES` — dictionary.html's primary tab, 3,537 words

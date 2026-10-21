@@ -1,30 +1,34 @@
-// Word Match — constants, all mutable game state, and small helpers.
+// Word Match — constants, shared mutable state, and small helpers.
 //
-// Every top-level `let` the game reads or writes lives here, so there is one place to see
-// what state a level carries. Loaded first of the game files.
+// Every top-level binding more than one game file reads or writes lives here, so there is one
+// place to see what a level carries. Loaded first of the game files.
 //
-// Word Match is split across game-core.js, game-fx.js, game-board.js, game-play.js,
-// game-wakan.js and game.js, loaded in that order by game.html. They are classic scripts
-// sharing one global scope, so each can read and assign the others’ top-level `let`s and
-// call their functions. The one rule is load order: code that runs while a file is loading
-// may only use what an EARLIER file defined. Listeners and requestAnimationFrame callbacks run
-// later, so they are free to reach forward.
+// Word Match is split across game-core.js, game-fx.js, game-gate.js, game-memory.js and
+// game.js, loaded in that order by game.html. They are classic scripts sharing one global
+// scope, so each can read and assign the others' top-level `let`s and call their functions.
+// The one rule is load order: code that runs while a file is loading may only use what an
+// EARLIER file defined. Listeners and animation-frame callbacks run later, so they are free to
+// reach forward.
+//
+// The game became a memory game on 2026-10-21. game-board.js, game-play.js and game-wakan.js
+// were retired with the honeycomb-matching board, along with the clock, the streak meter, the
+// powerups, the lightning chain and the Wakan flyer: all of them were rules about a board where
+// every tile is face up, and none of them survive a board where none of them are.
 
-// Aliased as `sb`, not `supabaseClient` — see the note in supabase-app.js about why
-// reusing that identifier across <script> tags would throw a SyntaxError.
+// Aliased as `sb`, not `supabaseClient` — see the note in supabase-app.js about why reusing
+// that identifier across <script> tags would throw a SyntaxError.
 const sb = window.supabaseClient;
 
-// Decorative board backgrounds: real castle/mountain photography, cycled per level so
-// adjacent levels don't repeat the same scene, rendered at low opacity behind the tiles (see
-// .board-bg-photo in game.css). All sourced from Wikimedia Commons; full attribution on
-// credits.html (#word-game-photos), linked from every page's footer.
-// Licenses are a mix of CC0, public domain, and CC BY / CC BY-SA 2.5-4.0 -- never CC BY-NC or
-// anything requiring share-alike on the whole site, consistent with this project's existing
-// data-licensing discipline (see the Kanjium/Tatoeba notes elsewhere in this codebase).
-// Each of these has a night counterpart of the same name under images/game-bg/night/, shown when
-// the visitor is in dark mode (see applyBoardBg in game.js). Same landmark in both, except the
-// hikone slot: no night photograph of Hikone Castle exists on Commons, so it shows Hirosaki
-// Castle's keep instead -- credited as such on credits.html.
+// Decorative board backgrounds: real castle/mountain photography, cycled per level so adjacent
+// levels don't repeat the same scene, rendered at low opacity behind the board (see
+// .game-main::before in game.css). All sourced from Wikimedia Commons; full attribution on
+// credits.html (#word-game-photos), linked from every page's footer. Licenses are a mix of CC0,
+// public domain, and CC BY / CC BY-SA 2.5-4.0 — never CC BY-NC or anything requiring share-alike
+// on the whole site.
+// Each has a night counterpart of the same name under images/game-bg/night/, shown in dark mode
+// (see applyBoardBg in game.js). Same landmark in both, except the hikone slot: no night
+// photograph of Hikone Castle exists on Commons, so it shows Hirosaki Castle's keep instead —
+// credited as such on credits.html.
 const BOARD_BG_IMAGES = [
     'images/game-bg/himeji.jpg',
     'images/game-bg/mount-tate.jpg',
@@ -38,14 +42,12 @@ const BOARD_BG_IMAGES = [
     'images/game-bg/hikone.jpg',
 ];
 
-// Background music, one pool per JLPT tier (N4 and N5 share the lofi pool) -- real licensed
+// Background music, one pool per JLPT tier (N4 and N5 share the lofi pool) — real licensed
 // tracks, not synthesized, per the site owner's explicit direction. All from the "alex-morgan"
 // modern-jazz collection on Pixabay Music, under Pixabay's site-wide Content License (verified:
 // permits commercial/game use, no attribution required; only forbids reselling the bare audio
-// file standalone, which doesn't apply to embedding it as game background music). Re-encoded
-// from the 256kbps originals down to 112kbps to cut ~159MB of source audio to a fraction of
-// that -- background music doesn't need studio-grade fidelity. Full credits on credits.html
-// (#word-game-music), linked from every page's footer.
+// file standalone, which doesn't apply to embedding it as background music). Re-encoded from the
+// 256kbps originals down to 112kbps. Full credits on credits.html (#word-game-music).
 const LOFI_JAZZ_POOL = [
     'sound/game-music/lofi-jazz-trio-sunny-cafe.mp3',
     'sound/game-music/lofi-jazz-study.mp3',
@@ -88,123 +90,49 @@ const MUSIC_POOLS = {
     N4: LOFI_JAZZ_POOL,
     N5: LOFI_JAZZ_POOL,
 };
-// Plays on the level-select screen (all tiers, before a level is chosen) -- separate from any
-// tier's in-level pool above.
+// Plays on the gate (all tiers, before a level is chosen) — separate from any tier's pool.
 const LEVEL_SELECT_TRACK = 'sound/game-music/all-levels-jazzy-pop-piano.mp3';
 
-// How many tiles to a row -- 5 where there is width for it, 4 on a phone.
+// ---------------------------------------------------------------------------
+// The shape of a level
+// ---------------------------------------------------------------------------
+// A level's entry in game-words.js holds 25 words. A memory board of 25 pairs would be 50
+// face-down tiles, which is not a memory test so much as a punishment, so a level is dealt as
+// four consecutive HANDS of 6 pairs — 24 of the 25 — each with its own bonus round. Clearing
+// all four completes the level, so a level still teaches its whole word set.
 //
-// A 10-pair board is 20 tiles, so 5 across gives 4 clean rows and 4 across gives 5. The reason to
-// narrow it is that every label is a fraction of --hex-w (see game.css), and --hex-w is just the
-// container's width over perRow+1: 5 across leaves a 57px tile on a 390px phone, 4 across leaves
-// 69px. Measured at 360, 390 and 412px -- +20.1% tile width at all three, which is +20% type.
-// It costs about 7px more of the centring margin the offset rows shift into, and it costs nothing
-// in scrolling: the board was never what set the page's height, and scrollHeight is unchanged.
-// A penalty can push the board to 11+ pairs (see applyPenalty) -- the resulting partial last row
-// is accepted, not avoided (VISIBLE_TARGET/REFILL_BATCH below only manage the *base* count, not
-// what mistakes add back on top of it).
-const PER_ROW_WIDE = 5;
-const PER_ROW_NARROW = 4;
-// Must stay in step with the --hex-w AND --flyer-w divisors in game.css, which are both perRow+1
-// and are both overridden in the same @media block this query mirrors. The flyer duplicates the
-// formula rather than inheriting it (it is #tile-grid's sibling, not its child), so it is two
-// declarations to keep aligned, not one.
-const NARROW_BOARD_QUERY = '(max-width: 640px)';
-function perRow() {
-    return window.matchMedia(NARROW_BOARD_QUERY).matches ? PER_ROW_NARROW : PER_ROW_WIDE;
-}
-// Must stay equal to STREAK_POWERUP_INTERVAL below. This drives the streak meter, the score
-// multiplier step and the audio tier -- everything the player can see or hear about a streak --
-// while the powerup is granted on its own interval. At 3 against a powerup interval of 4 the bar
-// filled up and flashed with no reward, then the reward arrived mid-way through the next fill,
-// which reads as a broken meter. One rhythm, and 4 is the number every string on the site
-// already quotes.
-const STREAK_TIER = 4;
+// MAIN_PAIRS * HANDS_PER_LEVEL must stay at or under the smallest level's word count. A few
+// levels are still short of 25 from the mid-expansion data, so dealHand() floors at what the
+// level actually has rather than trusting this arithmetic.
+const MAIN_PAIRS = 6;
+const HANDS_PER_LEVEL = 4;
+const BONUS_PAIRS = 4;
 
-// Only VISIBLE_TARGET pairs of the level's full set are ever dealt onto the board at once --
-// the rest sit in a shuffled reserve and get dealt in batches once enough gaps open up. This
-// keeps the board at its designed size (see PER_ROW/--hex-w in game.css, both tuned for a
-// ~20-tile board) instead of the 50-tile, 10-row wall a full 25-pair level would otherwise be,
-// while never risking a deadlock: pairs are always dealt whole, so every visible tile's partner
-// is always visible too -- there is no state where a legal move doesn't exist.
-const VISIBLE_TARGET = 10;
-const REFILL_BATCH = 5;
+// The row lengths of the main board: 12 tiles, each row centred, so the silhouette mirrors down
+// the middle. The gate lays its twelve levels out in the same shape, which is the point — the
+// level select is a picture of the board it opens.
+const MAIN_ROWS = [3, 4, 3, 2];
+const MAIN_COLS = 4;
 
-// The bonus "winged tile" event: a Sino-Japanese/native-Japanese (Wakan) partner of a word
-// currently on the board flies across it. Catch it and you're carrying it on your pointer;
-// drop it on its partner within WAKAN_CATCH_MS and the pair -- plus every tile touching it,
-// and THEIR partners -- blast-clears together. Miss the window, or drop it on the wrong tile,
-// and it shatters with no penalty; it was a free bonus, not a trap.
-// Fires at most once per level, no earlier than the 50% mark, and only once a Wakan-linked
-// word is actually dealt onto the board -- so it can never target something the player can't
-// see (see maybeArmFlyer).
-const WAKAN_TRIGGER_FRACTION = 0.5;
-const WAKAN_CATCH_MS = 5500; // 4s base + a 1.5s extension (was too tight to react to the shake)
-const WAKAN_BLAST_EXTRA = 3; // neighbour pairs pulled in alongside the one dropped on
-const SUIT_COLORS = ['#c0435a', '#3d7a5c', '#5b57a6', '#d97a3f']; // hanafuda-suit accents, cycled per pair
+// Four seconds of bonus, face up. Long enough to clear two pairs if you read fast, never long
+// enough to clear four by reading alone — it has to be partly memory of the hand just played.
+const BONUS_MS = 4000;
+// A hint turns two tiles over and costs clicks. Three is the price of guessing the same pair
+// wrong once and a half, which is about what a hint is worth.
+const HINT_COST = 3;
 
-// A level's data file entry (game-words.js) still holds all 25 words per level -- only
-// LEVEL_PAIR_COUNT of them are actually put in play for a given round (see pickWordSet), chosen
-// fresh each playthrough for replay variety. The rest aren't wasted: they're held aside as
-// POWERUP_SWAP_FUEL, the only source the "swap 3" powerup below draws its replacements from.
-// 25 - 20 = 5, which happens to be exactly one POWERUP_SWAP_COUNT batch -- the powerup can only
-// ever be used once per level before that fuel runs out, which is fine; see maybeGrantPowerup.
-const LEVEL_PAIR_COUNT = 20;
-
-const MATCH_DURATION_SECONDS = 240; // flat 4-minute clock, not scaled by pair count
-const TIME_BONUS_PER_PAIR = 20; // seconds added per pair cleared (lightning chains add this once per pair in the chain)
-const LOW_TIME_THRESHOLD = 30;  // seconds remaining at which the timer gets a warning treatment
-const MISTAKES_PER_PENALTY = 2; // consecutive-since-last-penalty mismatches before a cleared pair returns
-
-// Powerups: every time the streak reaches a multiple of STREAK_POWERUP_INTERVAL, one of the two
-// effects below fires automatically (no menu, no banking a charge for later -- consistent with
-// how lightning-connect and the Wakan event are both immediate, reactive bonuses rather than an
-// inventory system). Which of the two fires is random each time; see maybeGrantPowerup.
-const STREAK_POWERUP_INTERVAL = 4; // keep STREAK_TIER above equal to this
-const POWERUP_SWAP_COUNT = 3;
-
-let matchStarted = false; // gates tile clicks/timer until the start modal's "Start Match" is clicked
-let matchedCount = 0;
-let moves = 0;
-let elapsedSeconds = 0;   // real seconds played -- still tracked for best-time comparisons,
-                          // independent of the on-screen countdown display below
-let bonusSeconds = 0;     // accumulated +20s-per-pair bonuses, extends the base 4-minute clock
-let timeRemaining = 0;   // what's actually shown on #board-timer
-let mismatchStreak = 0;  // mismatches since the last penalty (or level start); see applyPenalty()
-// Consecutive lightning chains, without a mismatch in between. Each one is worth more than the
-// last, which turns the chain from a bonus you take when you spot one into a stake you are
-// carrying: with a x3 running, attempting a family you are only half sure of costs you the
-// multiplier as well as the usual penalty. That is the decision the board was missing -- play
-// safe pairs and keep it, or back your reading of the kanji and go again.
-let chainCombo = 0;
-const CHAIN_COMBO_MAX = 5;
-// Words this learner has actually got wrong (word_stats, written by word-stats.js). Used to
-// weight the deal, not to change what a level contains: a level's set is fixed, this only
-// decides which of it reaches the board first.
-let familiesFound = new Set(); // phonetic components ("lightning connect" families) chained
-                                // this round -- rendered as chips in the side panel, wide
-                                // layout only (see renderFamiliesFound())
-
-let tiles = [];           // every tile object DEALT so far this level (active or cleared) --
-                          // NOT the full level set; undealt pairs live only in reserveQueue
-let selected = [];        // up to 2 currently-selected tile objects
-let locked = false;
-
-
-let score = 0;
-let streak = 0;
-let lastPowerupStreak = 0; // highest streak value a charge has already been granted at this
-                            // level, so a streak sitting AT a multiple of 4 (e.g. after a
-                            // penalty rolls it back down to exactly 4) can't re-grant on every
-                            // subsequent clear
-let powerupCharges = 0;    // banked, spendable on either effect via the toolbar buttons -- see
-                            // maybeGrantPowerup/updatePowerupUI. Not two separate pools: earning
-                            // a charge is automatic, spending it (and choosing which effect) is
-                            // always the player's call.
-
-// Wakan "winged tile" bonus event state -- see the constants block above for the rules.
-let flyerFiredThisLevel = false;
-
+// ---------------------------------------------------------------------------
+// Mutable state shared across the game files
+// ---------------------------------------------------------------------------
+let tiles = [];            // the tiles currently dealt (one hand, or one bonus round)
+let phase = 'gate';        // gate | preview | play | between | bonus | done
+let handIndex = 0;         // 0-based hand within the level
+let clicks = 0;            // the score: every tile click, plus HINT_COST per hint
+let misses = 0;            // wrong guesses, level-wide, main round and bonus alike
+let pairsThisHand = 0;
+let bonusPairs = 0;        // bonus pairs cleared across the whole level
+let hints = 0;
+let elapsedSeconds = 0;    // a stopwatch, not a clock: nothing runs out
 
 function escapeHtml(str) {
     const div = document.createElement('div');
@@ -223,6 +151,7 @@ function shuffleArray(arr) {
         const j = Math.floor(Math.random() * (i + 1));
         [arr[i], arr[j]] = [arr[j], arr[i]];
     }
+    return arr;
 }
 
 function hexToRgb(hex) {
@@ -230,6 +159,3 @@ function hexToRgb(hex) {
     const num = parseInt(hex, 16);
     return [(num >> 16) & 255, (num >> 8) & 255, num & 255].join(',');
 }
-
-function midpoint(p1, p2) { return { x: (p1.x + p2.x) / 2, y: (p1.y + p2.y) / 2 }; }
-

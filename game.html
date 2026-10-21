@@ -402,21 +402,34 @@
             <canvas id="ambient-canvas" class="game-fx-canvas"></canvas>
             <canvas id="fx-canvas" class="game-fx-canvas"></canvas>
 
-            <!-- Level select -->
+            <!-- Gate: five hexagonal JLPT nodes, each bursting into its twelve levels -->
             <section id="level-select-section" class="game-section">
                 <div class="game-hud-row">
                     <div>
-                        <h1 class="game-title">言葉合わせ<span class="game-title-sub" data-i18n="game.titleSub">Япон үг холбох дасгал</span></h1>
-                        <p class="game-subtitle" data-i18n="game.subtitle">Япон үг бүрийг утга нь тохирох үгтэй холбоно уу. Шат бүрт 20 хос, 4 минутын цаг байна (хос таарах бүрд +20 секунд). JLPT түвшин бүрт 12 шат — N5 нь анхан шат, N1 нь хамгийн гүнзгий. Ижил дуудлагын язгууртай ханзуудыг хооронд нь холбовол хэд хэдэн хос нэг дор арилна. Алдаагүй дараалан 4 хос холбовол бонус авах бөгөөд үүгээр нэг хос хасах, эсвэл шинэ үгээр солиж болно. Хоёр удаа буруу дарвал арилсан хос торгууль болж эргэж ирнэ — тиймээс яаралгүй, сайн хараад дараарай.</p>
+                        <h1 class="game-title">言葉合わせ<span class="game-title-sub" data-i18n="game.titleSub">Япон үг цээжлэх дасгал</span></h1>
+                        <p class="game-subtitle" data-i18n="game.subtitle">Арван хоёр хөзрийг хараад цээжил. Эргэсний дараа зургаан хосыг санаж олно. Цаг хэмжихгүй — оноог чинь дарсан тоо хэмжинэ, цөөн дарсан нь илүү. Шат бүр дөрвөн гараас бүрдэх ба нийт хорин дөрвөн үг. Гар бүрийн төгсгөлд дөрвөн секундын урамшуулал нээгдэж, сая цээжилсэн үгсээ хоёр баганаас холбоно. JLPT түвшин бүрт арван хоёр шат — N5 нь анхан шат, N1 нь хамгийн гүнзгий.</p>
                     </div>
                     <button class="sound-toggle on" id="sound-toggle" type="button" data-vol="3" title="Дууны түвшин">
                         <span id="sound-icon" class="sound-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="8.5" width="1.5" height="7"/><rect x="8" y="8.5" width="1.5" height="7"/><rect x="3" y="9.25" width="6.5" height="1.5"/><rect x="3" y="13.25" width="6.5" height="1.5"/><rect class="bar b1" x="12" y="8" width="1.5" height="8"/><rect class="bar b2" x="15.5" y="6.5" width="1.5" height="11"/><rect class="bar b3" x="19" y="5" width="1.5" height="14"/></svg></span>
                     </button>
                 </div>
-                <p id="game-guest-hint" class="game-guest-hint hidden" data-i18n="game.guestHint">Шилдэг цаг болон дуусгасан шатуудаа хадгалахын тулд нэвтэрнэ үү.</p>
-                <h2 class="sr-only" data-i18n="game.levels">Шатууд</h2>
-                <div class="jlpt-tabs" id="jlpt-tabs" role="tablist" aria-label="JLPT level"></div>
-                <div class="level-grid" id="level-grid"></div>
+                <p id="game-guest-hint" class="game-guest-hint hidden" data-i18n="game.guestHint">Шилдэг дүнгээ хадгалахын тулд нэвтэрнэ үү.</p>
+
+                <div class="gate">
+                    <div class="gate-head">
+                        <h2 data-i18n="game.gateTitle">Түвшингээ сонго</h2>
+                        <p data-i18n="game.gateHint">Зургаан өнцөгт бүр нэг JLPT түвшин. Дарвал тухайн түвшний арван хоёр шат задарна.</p>
+                    </div>
+                    <div class="gate-tiers" id="gate-tiers"></div>
+                    <div class="gate-levels" id="gate-levels" hidden>
+                        <button type="button" class="gate-back" id="gate-back-btn">
+                            <span aria-hidden="true">&larr;</span>
+                            <span data-i18n="game.allTiers">Бүх түвшин</span>
+                            <span id="gate-tier-name"></span>
+                        </button>
+                        <div class="gate-field" id="gate-field"></div>
+                    </div>
+                </div>
             </section>
 
             <!-- Board -->
@@ -424,71 +437,57 @@
                 <div class="board-toolbar">
                     <button id="board-back-btn" class="ghost-btn" type="button"><span aria-hidden="true">&larr;</span> <span data-i18n="game.levels">Шатууд</span></button>
                     <div class="board-level-label" id="board-level-label"></div>
+                    <div class="hand-dots" id="hand-dots" aria-hidden="true"></div>
                     <div class="board-stats">
-                        <span id="board-timer">05:00</span>
-                        <span id="board-pairs">0 / 10 pairs</span>
-                        <span id="board-moves">0 moves</span>
-                        <span class="hud-stat">
-                            <span class="hud-label" data-i18n="game.score">Оноо</span>
-                            <span class="hud-value" id="score-value">0</span>
-                        </span>
-                        <span class="hud-stat streak-stat">
-                            <span class="hud-label" data-i18n="game.streak">Дараалал</span>
-                            <span class="streak-meter"><span class="streak-fill" id="streak-fill"></span></span>
-                        </span>
-                    </div>
-                    <span class="chain-combo hidden" id="chain-combo" aria-live="polite"></span>
-                    <div class="powerup-controls" id="powerup-controls">
-                        <button id="powerup-clear-btn" class="powerup-btn" type="button" disabled>
-                            <span class="powerup-icon" aria-hidden="true">&#10022;</span>
-                            <span class="powerup-label" data-i18n="game.powerupClearBtn">Хасах</span>
-                            <span class="powerup-charge-badge" id="powerup-clear-badge">0</span>
-                        </button>
-                        <button id="powerup-swap-btn" class="powerup-btn" type="button" disabled>
-                            <span class="powerup-icon" aria-hidden="true">&#8646;</span>
-                            <span class="powerup-label" data-i18n="game.powerupSwapBtn">Солих</span>
-                            <span class="powerup-charge-badge" id="powerup-swap-badge">0</span>
-                        </button>
+                        <span><span class="stat-k" data-i18n="game.clicks">Даралт</span><span class="stat-v gold" id="st-clicks">0</span></span>
+                        <span><span class="stat-k" data-i18n="game.pairs">Хос</span><span class="stat-v" id="st-pairs">0/6</span></span>
+                        <span><span class="stat-k" data-i18n="game.misses">Алдаа</span><span class="stat-v crimson" id="st-miss">0</span></span>
+                        <span><span class="stat-k" data-i18n="game.bonus">Урамшуулал</span><span class="stat-v pine" id="st-bonus">0</span></span>
                     </div>
                     <button class="sound-toggle on" id="board-sound-toggle" type="button" data-vol="3" title="Дууны түвшин">
                         <span id="board-sound-icon" class="sound-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="8.5" width="1.5" height="7"/><rect x="8" y="8.5" width="1.5" height="7"/><rect x="3" y="9.25" width="6.5" height="1.5"/><rect x="3" y="13.25" width="6.5" height="1.5"/><rect class="bar b1" x="12" y="8" width="1.5" height="8"/><rect class="bar b2" x="15.5" y="6.5" width="1.5" height="11"/><rect class="bar b3" x="19" y="5" width="1.5" height="14"/></svg></span>
                     </button>
-                    <button id="board-shuffle-btn" class="ghost-btn" type="button" data-i18n="game.shuffle">Холих</button>
                 </div>
+
                 <div class="board-layout">
                     <div class="board-wrap" id="board-wrap">
-                        <div id="tile-grid" class="tile-grid"></div>
-                    </div>
-                    <div id="example-panel" class="example-panel">
-                        <div class="example-panel-inner">
-                            <!-- Wide layout only (see .panel-wide-only, hidden under the
-                                 968px breakpoint alongside the panel reverting to a fixed
-                                 bottom bar) -- mirrors #board-pairs and the toolbar streak
-                                 meter, doesn't replace them. -->
-                            <!-- Wide layout only -- tracks phonetic "lightning connect" families
-                                 cleared this round (see familiesFound in game-core.js). -->
-                            <div class="panel-block panel-families panel-wide-only" id="panel-families">
-                                <h3 data-i18n="game.familiesFound">Олдсон бүлгүүд</h3>
-                                <p id="families-empty" class="families-empty" data-i18n="game.familiesEmptyHint">Ижил дуудлагын язгууртай 2 буюу түүнээс дээш үг холбовол олон үг нэг дор арилна.</p>
-                                <div id="families-found-list" class="families-found-list"></div>
-                            </div>
-                            <div class="panel-block panel-example">
-                                <h3 data-i18n="game.lastMatch">Сүүлийн тохирол</h3>
-                                <p id="example-empty" class="example-empty" data-i18n="game.exampleEmptyHint">Жишээ өгүүлбэр харахын тулд нэг хосыг холбоно уу.</p>
-                                <div id="example-content" class="example-content hidden">
-                                    <div class="example-head">
-                                        <span id="example-jp" class="example-jp"></span>
-                                        <span id="example-reading" class="example-reading"></span>
-                                        <span id="example-meanings" class="example-meanings"></span>
-                                    </div>
-                                    <div id="example-sentence-block" class="example-sentence-block">
-                                        <p id="example-sentence-jp" class="example-sentence-jp"></p>
-                                        <p id="example-sentence-en" class="example-sentence-en"></p>
-                                    </div>
-                                    <p id="example-none" class="example-none hidden" data-i18n="game.exampleNoneHint">Энэ үгийн жишээ өгүүлбэр эх өгөгдөлд олдсонгүй.</p>
-                                </div>
-                            </div>
+                        <div class="bonus-head" id="bonus-head" hidden>
+                            <h2 data-i18n="game.bonusRound">Урамшуулал</h2>
+                            <span data-i18n="game.bonusNote">Дөрвөн секунд. Хоёр баганыг холбоно. Бүгд нэмэлт оноо.</span>
                         </div>
+                        <div class="bonus-timer" id="bonus-timer" hidden><i id="bonus-fill"></i></div>
+
+                        <div class="mem-board" id="mem-board"></div>
+
+                        <div class="mem-preview" id="mem-preview">
+                            <p data-i18n="game.previewHint">Арван хоёр хөзрийг уншаарай. Эхлэхэд тэд эргэнэ.</p>
+                            <button type="button" class="go-btn" id="mem-start-btn" data-i18n="game.startHand">Эхлэх</button>
+                        </div>
+                    </div>
+
+                    <div class="board-side">
+                        <p class="say" id="board-say"></p>
+                        <div class="btn-rail">
+                            <button type="button" class="rail-btn" id="hint-btn" disabled>
+                                <span data-i18n="game.hint">Сануулга</span>
+                                <small data-i18n="game.hintCost">Хоёр хөзөр эргүүлнэ · +3 даралт</small>
+                            </button>
+                        </div>
+
+                        <div class="last-pair" id="last-pair" hidden>
+                            <h3 data-i18n="game.lastMatch">Сүүлийн хос</h3>
+                            <div class="last-pair-jp" id="lp-jp"></div>
+                            <div class="last-pair-read" id="lp-read"></div>
+                            <p class="last-pair-mn" id="lp-mn"></p>
+                            <p class="last-pair-ex" id="lp-ex"></p>
+                        </div>
+
+                        <ul class="rules">
+                            <li data-i18n-html="game.ruleScore">Оноог чинь <b>дарсан тоо</b> хэмжинэ. Цөөн дарсан нь дээр.</li>
+                            <li data-i18n-html="game.ruleNoClock">Үндсэн тоглолтод <b>цаг хэмжихгүй</b> — яаралгүй бодоорой.</li>
+                            <li data-i18n-html="game.ruleHands">Шат бүр <b>дөрвөн гар</b>, гар бүр зургаан хос.</li>
+                            <li data-i18n-html="game.ruleBonus">Гар цэвэрлэхэд <b>дөрвөн секундын урамшуулал</b> нээгдэнэ — алдвал ч шат дуусна.</li>
+                        </ul>
                     </div>
                 </div>
             </section>
@@ -496,41 +495,39 @@
             <div class="fx-text-layer" id="fx-text-layer"></div>
         </main>
 
-        <!-- Start Modal: shown at the beginning of every match so jumping straight into a
-             board (e.g. from the header dropdown) doesn't start the timer before the player
-             is ready. -->
-        <div id="start-modal" class="modal-overlay hidden">
-            <div class="modal-card">
-                <h3 id="start-modal-title">N5 · Beginner</h3>
-                <p id="start-modal-desc" data-i18n="game.startModalDesc">Connect each Japanese word to its English meaning. 20 pairs, 4 minutes. The timer starts when you hit Start.</p>
-                <div class="result-actions">
-                    <button id="start-modal-btn" class="auth-btn" type="button" data-i18n="game.startMatch">Start Match</button>
-                    <button id="start-modal-back-btn" class="auth-btn auth-btn-outline" type="button" data-i18n="game.backToLevels">Back to Levels</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Result Modal -->
+        <!-- Level complete. The one pop-up in the game: there is no start modal any more,
+             because the preview phase IS the start — the twelve tiles sit face up until the
+             player presses Start, and nothing is timed until they do. -->
         <div id="result-modal" class="modal-overlay hidden">
             <div class="modal-card">
                 <button id="result-modal-close" class="modal-close" type="button" aria-label="Close">&times;</button>
-                <h3 id="result-title">Level Complete!</h3>
-                <div class="result-stats">
-                    <div class="result-stat">
-                        <span class="result-label" data-i18n="game.time">Time</span>
-                        <span id="result-time" class="result-value"></span>
-                    </div>
-                    <div class="result-stat">
-                        <span class="result-label" data-i18n="game.moves">Moves</span>
-                        <span id="result-moves" class="result-value"></span>
-                    </div>
+                <div class="pop-seal" id="pop-seal" aria-hidden="true">合</div>
+                <p class="pop-grade" id="pop-grade"></p>
+                <h3 id="result-title" data-i18n="game.levelComplete">Шат дууслаа</h3>
+                <div class="pop-figures">
+                    <span class="pop-figure">
+                        <span class="pop-figure-k" data-i18n="game.clicks">Даралт</span>
+                        <span class="pop-figure-v" id="pop-clicks">0</span>
+                    </span>
+                    <span class="pop-figure">
+                        <span class="pop-figure-k" data-i18n="game.misses">Алдаа</span>
+                        <span class="pop-figure-v" id="pop-misses">0</span>
+                    </span>
+                    <span class="pop-figure">
+                        <span class="pop-figure-k" data-i18n="game.bonus">Урамшуулал</span>
+                        <span class="pop-figure-v" id="pop-bonus">0</span>
+                    </span>
+                    <span class="pop-figure">
+                        <span class="pop-figure-k" data-i18n="game.time">Хугацаа</span>
+                        <span class="pop-figure-v" id="pop-time">00:00</span>
+                    </span>
                 </div>
-                <p id="result-best" class="result-best"></p>
-                <p id="result-save-status" class="result-save-status hidden"></p>
+                <p class="pop-note" id="pop-note"></p>
+                <p class="pop-save hidden" id="pop-save"></p>
                 <div class="result-actions">
-                    <button id="result-login-btn" class="auth-btn hidden" type="button" data-i18n="game.logInToSave">Log In to Save</button>
-                    <button id="result-replay-btn" class="auth-btn" type="button">Play Again</button>
-                    <button id="result-levels-btn" class="auth-btn auth-btn-outline" type="button" data-i18n="game.backToLevels">Back to Levels</button>
+                    <button id="pop-login-btn" class="auth-btn hidden" type="button" data-i18n="game.logInToSave">Хадгалахын тулд нэвтрэх</button>
+                    <button id="pop-next-btn" class="auth-btn" type="button">Дараагийн шат</button>
+                    <button id="pop-levels-btn" class="auth-btn auth-btn-outline" type="button" data-i18n="game.backToLevels">Шатууд руу буцах</button>
                 </div>
             </div>
         </div>
@@ -592,15 +589,13 @@
     <script src="auth-shared.js"></script>
     <script src="word-stats.js"></script>
     <script src="game-words.js"></script>
-    <script src="dictionary-data.js"></script>
     <script src="game-particles.js"></script>
     <script src="game-audio.js"></script>
     <!-- Word Match, in load order: each file may use at load time only what an earlier one defined. -->
     <script src="game-core.js"></script>
     <script src="game-fx.js"></script>
-    <script src="game-board.js"></script>
-    <script src="game-play.js"></script>
-    <script src="game-wakan.js"></script>
+    <script src="game-gate.js"></script>
+    <script src="game-memory.js"></script>
     <script src="game.js"></script>
     <script src="tutorial.js"></script>
     <script src="pwa-register.js"></script>

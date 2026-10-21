@@ -25,22 +25,20 @@
     // dropped, so a tour never points at nothing — an ordinary consequence of shipping a
     // change to one of these pages without remembering this file.
     const TOURS = {
+        // Rewritten with the memory board (2026-10-21). Every selector here is a real element
+        // and nothing but the tour checks them, so a renamed id quietly removes a step rather
+        // than breaking visibly -- the scratchpad's verify-tour.js counts them.
         'game.html': [
             { id: 'levels', when: '#level-select-section', steps: [
-                { sel: '#jlpt-tabs', k: 'tour.game.tiers' },
-                { sel: '#level-grid', k: 'tour.game.levels' },
+                { sel: '#gate-tiers', k: 'tour.game.tiers' },
                 { sel: '#sound-toggle', k: 'tour.game.sound' },
             ] },
             { id: 'board', when: '#board-section', steps: [
-                { sel: '#tile-grid', k: 'tour.game.board' },
-                { sel: '#board-timer', k: 'tour.game.timer' },
+                { sel: '#mem-board', k: 'tour.game.board' },
+                { sel: '#mem-start-btn', k: 'tour.game.start' },
+                { sel: '#hand-dots', k: 'tour.game.hands' },
                 { sel: '.board-stats', k: 'tour.game.stats' },
-                { sel: '#powerup-controls', k: 'tour.game.powerup' },
-                { sel: '#board-shuffle-btn', k: 'tour.game.shuffle' },
-                // The two side panels are .panel-wide-only, so these two steps drop
-                // themselves on a narrow screen the same way any missing target does.
-                { sel: '#panel-families', k: 'tour.game.families' },
-                { sel: '#example-panel', k: 'tour.game.example' },
+                { sel: '#hint-btn', k: 'tour.game.hint' },
             ] },
         ],
         'reading.html': [

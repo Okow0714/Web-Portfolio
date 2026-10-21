@@ -35,8 +35,8 @@ Object.assign(window.I18N_STRINGS, {
     'hub.game.name': { en: 'Word Match', mn: 'Үг холбох дасгал' },
     'hub.game.tag': { en: '~1,500 WORDS · 60 LEVELS', mn: '~1,500 ҮГ · 60 ШАТ' },
     'hub.game.short': {
-        en: 'Connect each Japanese word to the Mongolian word that means the same. Kanji that share a phonetic component clear together.',
-        mn: 'Япон үгийг утга нь ижил монгол үгтэй холбоно. Ижил дуудлагын язгууртай ханзуудыг зэрэг холбож болно.'
+        en: 'Twelve cards, six pairs, turned face down. Find them from memory, four hands to a level.',
+        mn: 'Арван хоёр хөзөр, зургаан хос, нүүрээрээ хаагдана. Цээжээрээ ол — шат бүр дөрвөн гар.'
     },
 
     'hub.phonetics.name': { en: 'Phonetics Family', mn: 'Дуудлагын бүлэг' },

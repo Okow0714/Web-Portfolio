@@ -34,24 +34,36 @@ Object.assign(window.I18N_STRINGS, {
         mn: 'JLPT-ийн таван түвшин, тус бүр 12 шаттай. N5-аас эхлээрэй — анхан шатны үгс байгаа.'
     },
     'tour.game.levels': {
-        en: 'One level is 20 word pairs. A level you have finished stays marked, and your best time is kept if you are signed in.',
-        mn: 'Нэг шатад 20 хос үг байна. Дуусгасан шат тэмдэглэгдэж үлдэх бөгөөд нэвтэрсэн бол хамгийн сайн цаг чинь хадгалагдана.'
+        en: 'One level is 24 word pairs. A level you have finished stays marked, and your best result is kept if you are signed in.',
+        mn: 'Нэг шатад 24 хос үг байна. Дуусгасан шат тэмдэглэгдэж үлдэх бөгөөд нэвтэрсэн бол шилдэг дүн чинь хадгалагдана.'
     },
     'tour.game.sound': {
         en: 'Music and sound effects. They start on — tap here to mute.',
         mn: 'Хөгжим, дуу чимээ. Асаалттай эхэлдэг — дуугүй болгохыг хүсвэл эндээс дарна уу.'
     },
     'tour.game.board': {
-        en: 'Tap a Japanese tile, then the tile that means the same. Ten pairs sit on the board at a time; clear them and the next batch is dealt, twenty pairs to a level.',
-        mn: 'Япон үгтэй нүдийг дараад, дараа нь утга нь ижил нүдийг дарна. Самбар дээр нэг дор арван хос байх ба тэдгээрийг арилгамагц дараагийн багц гарч ирнэ. Нэг шатад нийт хорин хос.'
+        en: 'Twelve cards, six pairs. Turn one over, then the card you think means the same. Get it wrong and both turn back — so remember where things were.',
+        mn: 'Арван хоёр хөзөр, зургаан хос. Нэгийг эргүүлээд, утга нь ижил гэж бодсон хөзрөө дарна. Буруу бол хоёулаа буцаж эргэнэ — тиймээс хаана юу байсныг сайн цээжил.'
     },
     'tour.game.timer': {
         en: 'Your clock. It starts at four minutes, and every pair you clear puts twenty seconds back on it.',
         mn: 'Таны цаг. Дөрвөн минутаас эхлэх бөгөөд хос арилгах бүрд 20 секунд нэмэгдэнэ.'
     },
     'tour.game.stats': {
-        en: 'The row the clock sits in carries the rest: pairs cleared out of twenty, moves taken, your score, and the streak bar. Two wrong guesses in a row bring a cleared pair back onto the board.',
-        mn: 'Цагны хажууд бусад үзүүлэлт байна: хориос хэдэн хос арилсан, хэдэн удаа дарсан, оноо, мөн дараалсан амжилтын шугам. Дараалан хоёр удаа буруу дарвал арилсан хос самбар дээр эргэж ирнэ.'
+        en: 'Clicks are your score, and fewer is better — so is misses. Bonus counts the extra pairs you catch in the four-second rounds.',
+        mn: 'Дарсан тоо бол таны оноо, цөөн нь дээр — алдаа ч мөн адил. Урамшуулал гэдэг нь дөрвөн секундын тойрогт барьж авсан нэмэлт хосууд.'
+    },
+    'tour.game.start': {
+        en: 'The twelve cards stay face up until you press this. Nothing is counted while you are reading them.',
+        mn: 'Энэ товчийг дартал арван хоёр хөзөр нүүрээрээ хэвээр байна. Уншиж байх хооронд юу ч тоологдохгүй.'
+    },
+    'tour.game.hands': {
+        en: 'Four hands to a level, six pairs each. These fill in as you clear them.',
+        mn: 'Нэг шатад дөрвөн гар, гар бүрт зургаан хос. Цэвэрлэх бүрд эдгээр дүүрнэ.'
+    },
+    'tour.game.hint': {
+        en: 'Stuck? This turns two cards over for a moment, and adds three clicks to your score.',
+        mn: 'Санахгүй байна уу? Энэ хоёр хөзрийг хоромхон зуур эргүүлэх бөгөөд оноонд гурван даралт нэмнэ.'
     },
     'tour.game.powerup': {
         en: 'Every four correct pairs in a row banks a powerup here. One takes a pair off the board for free; the other trades three pairs for new words.',

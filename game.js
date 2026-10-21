@@ -1,257 +1,135 @@
-// Japanese Word Match — click a Japanese-word tile and its English-meaning tile to clear a
-// pair, laid out as an interlocking honeycomb of hexagon tiles. A second move is also valid:
-// click any two Japanese-word tiles whose representative kanji share a phonetic component
-// ("lightning connect") to chain-clear every tile on the board belonging to that phonetic
-// family in one go. Consecutive clears build a combo streak; every 3rd clear is a bigger,
-// score-multiplying "tier hit".
+// Word Match — a memory game of hexagonal cards, played over four hands per level.
+//
+// Click a face-down tile to turn it, find its partner, and clear the pair. Your score is the
+// number of clicks you spend: forty-eight is a perfect level, because twenty-four pairs cannot
+// be cleared in fewer than forty-eight clicks even if you remember every one. There is no clock
+// in the main round — the only clock in the game is the four seconds of the bonus.
 //
 // Depends on auth-shared.js (window.supabaseClient, window.getCurrentSession(), the
-// 'wp:authchange' event, and the global showEl/hideEl helpers it defines) and game-words.js
-// (WORD_LEVELS, each word annotated with `phonetic`/`phoneticReading` from the Kanjium data
-// also used by the Phonetics Family page) having already run.
-
-// Word Match is split across game-core.js, game-fx.js, game-board.js, game-play.js,
-// game-wakan.js and game.js, loaded in that order by game.html. They are classic scripts
-// sharing one global scope, so each can read and assign the others’ top-level `let`s and
-// call their functions. The one rule is load order: code that runs while a file is loading
-// may only use what an EARLIER file defined. Listeners and requestAnimationFrame callbacks run
-// later, so they are free to reach forward.
-// This file: level select, saving progress, results, wiring, review mode, and start-up.
-
-// ---------------------------------------------------------------------------
-// Level select <-> board screens
-// ---------------------------------------------------------------------------
-// level.title (from game-words.js) is English-only, e.g. "N5 · Level 1" — built here from
-// i18n instead, the same way grammar.js/reading.js build their level titles, rather than
-// reading the raw data-file field directly.
-// Derived from the data rather than hardcoded: the tier size changed from 10 to 12 when
-// the September 2026 expansion added two levels per tier, and a literal here is exactly the
-// kind of thing that silently mislabels every level above the first tier.
-
-// --------------------------------------------------------------------------
-// State moved here from game-core.js: this file is
-// the only one that writes it, so it is not shared state -- it was state living in the
-// wrong file. game-core.js now holds only bindings more than one file writes.
-// --------------------------------------------------------------------------
-let currentLevel = null;
-let totalPairs = 0;
-let matchDuration = 0;   // this level's clock length (MATCH_DURATION_SECONDS), set in startLevel()
-let lastResult = null;    // result earned as a guest, pending save once they log in
-let progressCache = {};   // level number -> game_progress row
-let activeJlptTab = 'N5'; // level-select screen: which JLPT tier's levels are shown
-let missedWords = new Set();
-let boardBgDayPath = null;   // day-theme path of the photo behind the current board; see applyBoardBg()
-
-function levelsPerTier() {
-    return WORD_LEVELS.filter(l => l.jlpt === WORD_LEVELS[0].jlpt).length;
-}
-
-function levelTitle(level) {
-    if (level.review) return window.t('game.reviewTitle');
-    const withinTier = ((level.level - 1) % levelsPerTier()) + 1;
-    return `${level.jlpt} · ${window.tf('game.levelN', { n: withinTier })}`;
-}
-
-// The card title. Each level now holds one topic, so the card names the topic instead of its
-// number -- "Food & the kitchen" tells you what you are about to practise in a way "Level 3"
-// cannot. Tiers still being themed fall back to the number.
+// 'wp:authchange' event and the global showEl/hideEl helpers) and game-words.js (WORD_LEVELS).
 //
-// The tier is not repeated here: on a card it is already on the badge, inside a grid filtered to
-// that tier, so "N5 · Level 1" under an "N5" chip says it three times. The board label and the
-// start modal keep the long numbered form, where you are no longer inside a filtered grid.
-function levelCardTitle(level) {
-    if (level.review) return window.t('game.reviewTitle');
-    if (level.themeKey) return window.t(level.themeKey);
-    const withinTier = ((level.level - 1) % levelsPerTier()) + 1;
-    return window.tf('game.levelN', { n: withinTier });
-}
+// Word Match is split across game-core.js, game-fx.js, game-gate.js, game-memory.js and
+// game.js, loaded in that order by game.html. They are classic scripts sharing one global
+// scope. The one rule is load order: code that runs while a file is loading may only use what
+// an EARLIER file defined. Listeners and animation-frame callbacks run later, so they are free
+// to reach forward — which is why every function here can call into game-memory.js and back.
+//
+// This file: the level, progress, the level-complete pop-up, wiring and start-up.
 
-// The number still has to be visible somewhere on a themed card, so the grid stays countable and
-// a learner can say which level they are on.
-function levelCardNumber(level) {
-    if (level.review) return '';
-    return String(((level.level - 1) % levelsPerTier()) + 1).padStart(2, '0');
-}
+let currentLevel = null;
+let activeTier = 'N5';       // which tier the gate is showing; read by game-gate.js
+let progressCache = {};      // level number -> game_progress row
+let lastResult = null;       // result earned as a guest, pending save once they log in
+let boardBgDayPath = null;   // day-theme path of the photo behind the board; see applyBoardBg()
+let stopwatch = null;
 
+// ---------------------------------------------------------------------------
+// Opening and leaving a level
+// ---------------------------------------------------------------------------
 function startLevel(level) {
     currentLevel = level;
-    // so "back to levels" lands on the tier just played -- a review run belongs to no tier, so
-    // it leaves the tab where the learner last had it
-    if (!level.review) activeJlptTab = level.jlpt;
-    matchStarted = false;
-    matchedCount = 0;
-    moves = 0;
-    selected = [];
-    locked = false;
-    score = 0;
-    streak = 0;
-    lastPowerupStreak = 0;
-    powerupCharges = 0;
-    updatePowerupUI();
-    mismatchStreak = 0;
+    if (!level.review) activeTier = level.jlpt;
+
+    // The level's words, shuffled once and then dealt six at a time, so a hand is a slice rather
+    // than a fresh draw — no word can turn up in two hands of the same playthrough.
+    levelDeck = shuffleArray(level.sets[0].slice())
+        .slice(0, MAIN_PAIRS * HANDS_PER_LEVEL);
+
+    handIndex = 0;
+    clicks = 0;
+    misses = 0;
+    bonusPairs = 0;
+    hints = 0;
+    pairsThisHand = 0;
     elapsedSeconds = 0;
-    bonusSeconds = 0;
-    killFlyer(); // discard any in-progress winged-tile event from the level just left
-    flyerFiredThisLevel = false;
-    familiesFound.clear(); // fresh-level reset, not shuffleRemaining() -- that keeps the round
-    // Levels hold up to 25 words but only LEVEL_PAIR_COUNT (20) go into play per round -- the
-    // rest become powerupFuel (see pickWordSet). A handful of levels are still short of 25
-    // (mid-expansion data), so this floors at whatever the data actually has.
-    totalPairs = Math.min(LEVEL_PAIR_COUNT, level.sets[0].length);
-    matchDuration = MATCH_DURATION_SECONDS;
-    timeRemaining = matchDuration;
-    stopTimer();
+    window.clearTimeout(bonusTimer);
 
     // A review board has no level number to cycle from, and (0 - 1) % n is -1 in JavaScript,
-    // not n-1 -- which indexed past the start of both this array and the music pool below and
+    // not n-1 — which indexed past the start of both the photo array and the music pool and
     // asked the server for a file literally named "undefined".
     const cycleIndex = level.review ? 0 : level.level - 1;
     boardBgDayPath = BOARD_BG_IMAGES[cycleIndex % BOARD_BG_IMAGES.length];
     applyBoardBg();
 
-    // Music pool is per JLPT tier (N4/N5 share one); cycle by position WITHIN that tier
-    // (0-based within the tier), not the global level number, so N4 and N5 each start their own pass through the
-    // shared lofi pool from track 0 rather than picking up wherever the other tier left off.
-    const musicPool = MUSIC_POOLS[level.jlpt];
-    const withinTierIndex = cycleIndex % levelsPerTier();
-    GameAudio.setLevelTrack(musicPool[withinTierIndex % musicPool.length]);
+    // Music is per JLPT tier (N4/N5 share one pool); cycle by position WITHIN the tier so N4
+    // and N5 each start their own pass through the shared pool rather than picking up wherever
+    // the other left off.
+    const pool = MUSIC_POOLS[level.jlpt];
+    GameAudio.setLevelTrack(pool[(cycleIndex % levelsPerTier()) % pool.length]);
 
-    renderBoard();
-    resetExamplePanel();
-    renderFamiliesFound();
-
-    document.getElementById('score-value').textContent = '0';
-    chainCombo = 0;
-    updateChainCombo(false);
-    document.getElementById('streak-fill').style.width = '0%';
-    renderTimer();
     document.getElementById('board-level-label').textContent = levelTitle(level);
-    updateStats();
+    resetLastPair();
+    dealHand();
 
     hideEl(document.getElementById('level-select-section'));
     showEl(document.getElementById('board-section'));
-    // Full-screen "playing" mode: hides the shared site header and lets .game-main break out
-    // of .container's max-width, so the board fills the whole viewport instead of sitting in
-    // a boxed page column — only while a board is actually up, not on level-select.
+    // Full-screen "playing" mode: the shared masthead hides and .game-main breaks out of
+    // .container's cap, so the board fills the viewport instead of sitting in a boxed column.
     document.body.classList.add('game-playing');
     resizeCanvases();
-
-    document.getElementById('start-modal-title').textContent = levelTitle(level);
-    showEl(document.getElementById('start-modal'));
+    startStopwatch();
 }
 
 function backToLevels() {
-    stopTimer();
+    stopStopwatch();
+    window.clearTimeout(bonusTimer);
+    phase = 'gate';
     hideEl(document.getElementById('board-section'));
     showEl(document.getElementById('level-select-section'));
     document.body.classList.remove('game-playing');
     GameAudio.setLevelTrack(LEVEL_SELECT_TRACK);
-    renderLevelSelect();
+    renderGate();
     resizeCanvases();
 }
 
-const JLPT_TABS = ['N5', 'N4', 'N3', 'N2', 'N1'];
-
-function renderJlptTabs() {
-    const container = document.getElementById('jlpt-tabs');
-    container.innerHTML = '';
-    JLPT_TABS.forEach(jlpt => {
-        const tab = document.createElement('button');
-        tab.type = 'button';
-        tab.className = 'jlpt-tab';
-        tab.dataset.level = jlpt;
-        tab.setAttribute('role', 'tab');
-        tab.setAttribute('aria-selected', String(jlpt === activeJlptTab));
-        tab.textContent = jlpt;
-        if (jlpt === activeJlptTab) tab.classList.add('active');
-        tab.addEventListener('click', () => {
-            if (activeJlptTab === jlpt) return;
-            activeJlptTab = jlpt;
-            renderJlptTabs();
-            renderLevelGrid();
-        });
-        container.appendChild(tab);
-    });
+// A stopwatch, not a clock. Nothing runs out, but the time is still worth keeping: it is half of
+// what game_progress stores and what the dashboard shows, and it is the tiebreak between two
+// runs that spent the same number of clicks.
+function startStopwatch() {
+    stopStopwatch();
+    stopwatch = window.setInterval(() => {
+        if (phase === 'play' || phase === 'bonus') elapsedSeconds++;
+    }, 1000);
+}
+function stopStopwatch() {
+    if (stopwatch) window.clearInterval(stopwatch);
+    stopwatch = null;
 }
 
-function renderLevelGrid() {
-    const container = document.getElementById('level-grid');
-    container.innerHTML = '';
-
-    WORD_LEVELS.filter(level => level.jlpt === activeJlptTab).forEach(level => {
-        const card = document.createElement('button');
-        card.type = 'button';
-        card.className = 'level-card';
-        card.dataset.level = level.jlpt;
-
-        // Best time and moves as two labelled figures rather than one sentence. The rail is
-        // always drawn, showing an em dash where there is no result yet: a played card used to
-        // be taller than an unplayed one, which left a half-finished tier with a ragged grid.
-        const progress = progressCache[level.level];
-        const done = !!(progress && progress.completed);
-        const timeText = done ? formatTime(progress.best_time_seconds) : '&mdash;';
-        const movesText = done ? String(progress.best_moves) : '&mdash;';
-        const emptyClass = done ? '' : ' is-empty';
-
-        card.innerHTML = `
-            <span class="level-card-top">
-                <span class="level-badge">${escapeHtml(level.jlpt)}</span>
-                <span class="level-num">${escapeHtml(levelCardNumber(level))}</span>
-                ${done ? `<span class="level-done" title="${escapeHtml(window.t('game.completed'))}">&#10003;</span>` : ''}
-            </span>
-            <h2>${escapeHtml(levelCardTitle(level))}</h2>
-            <div class="level-rail">
-                <span class="level-stat">
-                    <span class="level-stat-k">${escapeHtml(window.t('stat.bestTime'))}</span>
-                    <span class="level-stat-v${emptyClass}">${timeText}</span>
-                </span>
-                <span class="level-stat">
-                    <span class="level-stat-k">${escapeHtml(window.t('stat.moves'))}</span>
-                    <span class="level-stat-v${emptyClass}">${movesText}</span>
-                </span>
-            </div>
-        `;
-        card.addEventListener('click', () => startLevel(level));
-        container.appendChild(card);
-    });
+// The board photo has a night counterpart per level under images/game-bg/night/. Not a CSS
+// light-dark() token like the rest of the theming — that only takes colours, never url() — so
+// the path is chosen here and re-chosen if the theme changes while a board is open.
+function applyBoardBg() {
+    if (!boardBgDayPath) return;
+    const dark = window.getEffectiveTheme ? window.getEffectiveTheme() === 'dark' : false;
+    const path = dark ? boardBgDayPath.replace('images/game-bg/', 'images/game-bg/night/') : boardBgDayPath;
+    gameMain.style.setProperty('--board-bg-image', `url(${path})`);
 }
-
-function renderLevelSelect() {
-    renderJlptTabs();
-    renderLevelGrid();
-
-    const guestHint = document.getElementById('game-guest-hint');
-    if (window.getCurrentSession()) hideEl(guestHint); else showEl(guestHint);
-}
+document.addEventListener('themechange', applyBoardBg);
 
 // ---------------------------------------------------------------------------
-// Progress: load on auth change, save on level completion
+// Progress
 // ---------------------------------------------------------------------------
+// The schema is unchanged by the rebuild: best_moves now holds clicks and best_time_seconds a
+// stopwatch rather than a countdown. Both still mean "lower is better", which is all the
+// dashboard and the score SQL ever assumed, so no migration was needed.
 async function loadProgress() {
     const session = window.getCurrentSession();
     progressCache = {};
     if (session) {
-        const [progressRes, missedRes] = await Promise.all([
-            sb.from('game_progress').select('*').eq('user_id', session.user.id),
-            sb.from('word_stats').select('word').eq('user_id', session.user.id)
-                .eq('source', 'game').gt('misses', 0).limit(400),
-        ]);
-        if (!progressRes.error && progressRes.data) {
-            progressRes.data.forEach(row => { progressCache[row.level] = row; });
-        }
-        missedWords = new Set((!missedRes.error && missedRes.data ? missedRes.data : []).map(r => r.word));
-    } else {
-        missedWords = new Set();
+        const { data, error } = await sb.from('game_progress').select('*')
+            .eq('user_id', session.user.id);
+        if (!error && data) data.forEach(row => { progressCache[row.level] = row; });
     }
-    renderLevelSelect();
+    renderGate();
 }
 
 async function saveProgress(session, result) {
-    const statusEl = document.getElementById('result-save-status');
+    const statusEl = document.getElementById('pop-save');
     const existing = progressCache[result.level];
     const isBetter = !existing || !existing.completed ||
-        result.timeSeconds < existing.best_time_seconds ||
-        (result.timeSeconds === existing.best_time_seconds && result.moves < existing.best_moves);
+        result.moves < existing.best_moves ||
+        (result.moves === existing.best_moves && result.timeSeconds < existing.best_time_seconds);
 
     const row = {
         user_id: session.user.id,
@@ -269,144 +147,139 @@ async function saveProgress(session, result) {
     } else {
         statusEl.textContent = window.t('game.saveResultFailed');
     }
-    showEl(statusEl);
+    statusEl.classList.remove('hidden');
+}
+
+// ---------------------------------------------------------------------------
+// Level complete
+// ---------------------------------------------------------------------------
+// A perfect level is MAIN_PAIRS * HANDS_PER_LEVEL * 2 clicks: every pair found on its first
+// try. Derived, not written down, so changing the shape of a level cannot leave this claiming
+// a number the board no longer supports.
+function perfectClicks() {
+    return levelDeck.length * 2;
+}
+
+function gradeKey(result) {
+    if (result.misses === 0 && result.moves <= perfectClicks()) return 'game.grade.perfect';
+    if (result.misses <= 4) return 'game.grade.sharp';
+    if (result.misses <= 12) return 'game.grade.steady';
+    return 'game.grade.through';
 }
 
 function finishLevel() {
-    stopTimer();
-    matchStarted = false;
-    const result = { level: currentLevel.level, timeSeconds: elapsedSeconds, moves };
+    stopStopwatch();
+    const result = {
+        level: currentLevel.level,
+        timeSeconds: elapsedSeconds,
+        moves: clicks,
+        misses,
+        bonus: bonusPairs,
+    };
 
     const c = centerOf(boardWrapEl);
-    fxField.spawnBurst(c.x, c.y, { count: 90, speed: 320, life: 1.3, colors: ['212,166,75', '244,206,122', '255,255,255', '192,67,90'] });
+    fxField.spawnBurst(c.x, c.y, {
+        count: 90, speed: 320, life: 1.3,
+        colors: ['212,166,75', '244,206,122', '255,255,255', '192,67,90'],
+    });
     GameAudio.win();
+    CardSfx.gather();
 
-    showResultModal(result, true);
+    showResultPop(result);
 
     const session = window.getCurrentSession();
-    if (currentLevel && currentLevel.review) {
-        // Nothing to save: word_stats already recorded every pair as it was played, and there is
-        // no level number for a synthetic board to claim.
+    if (currentLevel.review) {
+        // Nothing to save: word_stats already recorded every pair as it was played, and a
+        // synthetic board has no level number to claim.
         lastResult = null;
     } else if (session) {
         lastResult = null;
         saveProgress(session, result);
     } else {
         lastResult = result;
-        showEl(document.getElementById('result-login-btn'));
+        showEl(document.getElementById('pop-login-btn'));
     }
 }
 
-// won=true: cleared the level (existing behaviour). won=false: the 5-minute clock ran out --
-// an honest failure state, not just a quieter version of winning. No progress is ever saved
-// for a timeout since best_time_seconds/best_moves are only meaningful for an actual clear.
-let resultPrimaryTarget = null; // level object the result modal's primary button should open;
-                                 // null means "replay the level just played" (result-replay-btn's
-                                 // click handler falls back to currentLevel in that case)
-function showResultModal(result, won) {
-    document.getElementById('result-title').textContent = won ? window.t('game.levelComplete') : window.t('game.timesUp');
-    document.getElementById('result-time').textContent = formatTime(result.timeSeconds);
-    document.getElementById('result-moves').textContent = result.moves;
+let resultNextLevel = null;
+function showResultPop(result) {
+    document.getElementById('pop-grade').textContent = window.t(gradeKey(result));
+    document.getElementById('pop-seal').textContent =
+        gradeKey(result) === 'game.grade.perfect' ? '皆' : '合';
+    document.getElementById('pop-clicks').textContent = result.moves;
+    document.getElementById('pop-misses').textContent = result.misses;
+    document.getElementById('pop-bonus').textContent = result.bonus;
+    document.getElementById('pop-time').textContent = formatTime(result.timeSeconds);
 
-    const prevBest = progressCache[result.level];
-    if (won) {
-        document.getElementById('result-best').textContent = (prevBest && prevBest.completed)
-            ? window.tf('game.previousBest', { time: formatTime(prevBest.best_time_seconds), moves: prevBest.best_moves })
-            : window.t('game.firstClear');
-    } else {
-        document.getElementById('result-best').textContent =
-            window.tf('game.matchedBeforeTimeOut', { n: matchedCount, total: totalPairs });
-    }
+    const prev = progressCache[result.level];
+    document.getElementById('pop-note').textContent = (prev && prev.completed)
+        ? window.tf('game.previousBestClicks',
+            { moves: prev.best_moves, time: formatTime(prev.best_time_seconds) })
+        : window.tf('game.perfectIs', { n: perfectClicks() });
 
-    // On a win, offer the next level in sequence instead of replaying the one just cleared --
-    // there's no "next" after the last level, so that case falls back to Play Again.
-    resultPrimaryTarget = won ? WORD_LEVELS.find(l => l.level === result.level + 1) || null : null;
-    document.getElementById('result-replay-btn').textContent = resultPrimaryTarget ? window.t('game.nextLevel') : window.t('game.playAgain');
+    // Offer the next level rather than a replay of the one just cleared — there is no "next"
+    // after the last level, so that case falls back to Play Again.
+    resultNextLevel = currentLevel.review
+        ? null
+        : WORD_LEVELS.find(l => l.level === result.level + 1) || null;
+    document.getElementById('pop-next-btn').textContent =
+        resultNextLevel ? window.t('game.nextLevel') : window.t('game.playAgain');
 
-    hideEl(document.getElementById('result-login-btn'));
-    hideEl(document.getElementById('result-save-status'));
+    hideEl(document.getElementById('pop-login-btn'));
+    document.getElementById('pop-save').classList.add('hidden');
     showEl(document.getElementById('result-modal'));
 }
 
 // ---------------------------------------------------------------------------
 // Wiring
 // ---------------------------------------------------------------------------
-// i18n.js's data-i18n attributes only cover text set once at parse time -- these are
-// re-rendered by JS on every state change, so a language switch mid-game needs to re-run the
-// same render functions to pick up the new strings immediately, not just on next page load.
-document.addEventListener('sitelangchange', () => {
-    if (currentLevel) updateStats();
-    if (!document.getElementById('level-select-section').classList.contains('hidden')) renderLevelGrid();
-});
-
-// The board photo has a night counterpart per level, under images/game-bg/night/. Not a CSS
-// light-dark() token like the rest of the theming -- that only takes colours, never url() -- so the
-// path is chosen here and re-chosen if the theme changes while a board is open (the visitor can flip
-// it from the masthead mid-level, and the sky should not stay in the wrong half of the day).
-function applyBoardBg() {
-    if (!boardBgDayPath) return;
-    const dark = window.getEffectiveTheme ? window.getEffectiveTheme() === 'dark' : false;
-    const path = dark ? boardBgDayPath.replace('images/game-bg/', 'images/game-bg/night/') : boardBgDayPath;
-    gameMain.style.setProperty('--board-bg-image', `url(${path})`);
-}
-document.addEventListener('themechange', applyBoardBg);
-
-// Crossing the phone breakpoint changes how many tiles belong in a row, and the rows are built
-// once, at layout time. Without this the CSS would resize the tiles for a 4-wide board while the
-// DOM still held 5-wide rows -- the honeycomb stops interlocking and the last row overflows.
-// Re-laying out is cheap and idempotent, and it is the same call a match or a refill already
-// makes. Mostly a desktop-window-resize case: the installed app is locked to portrait.
-window.matchMedia(NARROW_BOARD_QUERY).addEventListener('change', () => {
-    if (tiles.length) layoutTiles(tiles.filter(t => !t.cleared));
-});
-
+document.getElementById('mem-board').addEventListener('click', onTile);
+document.getElementById('mem-start-btn').addEventListener('click', startHand);
+document.getElementById('hint-btn').addEventListener('click', useHint);
 document.getElementById('board-back-btn').addEventListener('click', backToLevels);
-document.getElementById('board-shuffle-btn').addEventListener('click', shuffleRemaining);
+document.getElementById('gate-back-btn').addEventListener('click', backToTiers);
 
-document.getElementById('start-modal-btn').addEventListener('click', () => {
-    hideEl(document.getElementById('start-modal'));
-    matchStarted = true;
-    startTimer();
-});
-document.getElementById('start-modal-back-btn').addEventListener('click', () => {
-    hideEl(document.getElementById('start-modal'));
-    backToLevels();
-});
-
-document.getElementById('result-modal-close').addEventListener('click', () => hideEl(document.getElementById('result-modal')));
-document.getElementById('result-modal').addEventListener('click', (e) => {
-    if (e.target === e.currentTarget) hideEl(document.getElementById('result-modal'));
-});
-document.getElementById('result-replay-btn').addEventListener('click', () => {
+document.getElementById('pop-next-btn').addEventListener('click', () => {
     hideEl(document.getElementById('result-modal'));
-    startLevel(resultPrimaryTarget || currentLevel);
+    startLevel(resultNextLevel || currentLevel);
 });
-document.getElementById('result-levels-btn').addEventListener('click', () => {
+document.getElementById('pop-levels-btn').addEventListener('click', () => {
     hideEl(document.getElementById('result-modal'));
     backToLevels();
 });
-document.getElementById('result-login-btn').addEventListener('click', () => window.openAuthModal());
+document.getElementById('pop-login-btn').addEventListener('click', () => window.openAuthModal());
+document.getElementById('result-modal-close').addEventListener('click',
+    () => hideEl(document.getElementById('result-modal')));
+
+// Re-laying the board out is only needed when the text has to be re-measured, which the type
+// sizing does per tile from the board's own width — so a resize just re-runs that, not a deal.
+window.addEventListener('resize', () => {
+    if (tiles.length) tiles.forEach(t => sizeTile(t.el, t));
+});
+
+// data-i18n only covers text set once at parse time. Everything rendered by JS has to re-run
+// its own render on a language switch, or the board keeps the old language until a reload.
+document.addEventListener('sitelangchange', () => {
+    if (!document.getElementById('level-select-section').classList.contains('hidden')) renderGate();
+    if (currentLevel && tiles.length) updateStats();
+});
 
 window.onAuthChange(async (session) => {
     await loadProgress();
     if (session && lastResult) {
         await saveProgress(session, lastResult);
         lastResult = null;
-        hideEl(document.getElementById('result-login-btn'));
+        hideEl(document.getElementById('pop-login-btn'));
     }
 });
 
 // ---------------------------------------------------------------------------
 // Review mode: game.html?review=1
 // ---------------------------------------------------------------------------
-// Builds a board out of the words this learner has actually missed (word_stats, written by
-// word-stats.js) instead of a fixed level. It reuses the entire level machinery by handing
-// startLevel a synthetic level object -- the engine never asks where a set came from.
-//
-// Only words that exist in WORD_LEVELS can be used, since a board needs a meaning tile to pair
-// against: a grammar point or a skipped reading word has no such partner. Those still count on
-// the dashboard, they just cannot be played here.
-const REVIEW_MIN_WORDS = 4;
+// A board built from the words this learner has actually missed (word_stats, written by
+// word-stats.js) instead of a fixed level. It reuses the whole level machinery by handing
+// startLevel a synthetic level object — nothing downstream asks where a set came from.
+const REVIEW_MIN_WORDS = MAIN_PAIRS;
 
 function buildWordIndex() {
     const idx = new Map();
@@ -416,54 +289,49 @@ function buildWordIndex() {
     return idx;
 }
 
-// Due words first: record_word_attempt schedules every word on a Leitner ladder and stores when it
-// is next due (see progress-shared.js), and the dashboard's "N words due" promises exactly those --
-// so they lead, most overdue first. If fewer than a board's worth are due, the board is topped up
-// with the most-missed words, which is what review mode did before due dates were read at all, so
-// a review still has something to play on a day with nothing due.
 async function startReviewRun(session) {
     const now = new Date().toISOString();
-    const base = () => window.supabaseClient.from('word_stats').select('word, misses, due_at')
+    const base = () => sb.from('word_stats').select('word, misses, due_at')
         .eq('user_id', session.user.id).gt('misses', 0);
     const [dueRes, missedRes] = await Promise.all([
         base().lte('due_at', now).order('due_at', { ascending: true }).limit(80),
         base().order('misses', { ascending: false }).limit(80),
     ]);
     if (missedRes.error || !missedRes.data) return false;
-    const data = (dueRes.error ? [] : dueRes.data || []).concat(missedRes.data);
-    if (!data.length) return false;
+    const rows = (dueRes.error ? [] : dueRes.data || []).concat(missedRes.data);
+    if (!rows.length) return false;
 
     const idx = buildWordIndex();
     const words = [];
     const seen = new Set();
-    for (const row of data) {
+    for (const row of rows) {
         const w = idx.get(row.word);
         if (!w || seen.has(w.jp)) continue;
         seen.add(w.jp);
         words.push(w);
-        if (words.length >= LEVEL_PAIR_COUNT) break;
+        if (words.length >= MAIN_PAIRS * HANDS_PER_LEVEL) break;
     }
     if (words.length < REVIEW_MIN_WORDS) return false;
 
     startLevel({
         level: 0,
-        jlpt: WORD_LEVELS[0].jlpt,   // only used for tile colouring; a review belongs to no tier
+        jlpt: WORD_LEVELS[0].jlpt,   // only used to pick a music pool; a review belongs to no tier
         review: true,
-        title: window.t('game.reviewTitle'),
         sets: [words],
     });
     return true;
 }
 
-// Deep link support: game.html?level=3 jumps straight into that level's board instead of
-// showing the level-select screen first — used by the header dropdown's per-level links.
-// Runs independently of auth/progress loading so the board appears immediately.
+// ---------------------------------------------------------------------------
+// Start-up
+// ---------------------------------------------------------------------------
+renderGate();
+
+// Deep link: game.html?level=3 opens that level's board directly, used by links elsewhere on
+// the site. Runs independently of auth so the board appears without waiting on a round trip.
 const params = new URLSearchParams(window.location.search);
-const requestedLevelNum = parseInt(params.get('level'), 10);
-const requestedLevel = WORD_LEVELS.find(l => l.level === requestedLevelNum);
+const requestedLevel = WORD_LEVELS.find(l => l.level === parseInt(params.get('level'), 10));
 if (params.get('review') === '1') {
-    // Needs a session and a round trip, so the level-select screen stays up until the board is
-    // ready. If there is nothing to review, the learner simply lands on the level select.
     GameAudio.setLevelTrack(LEVEL_SELECT_TRACK);
     let started = false;
     window.onAuthChange((session) => {
@@ -474,20 +342,19 @@ if (params.get('review') === '1') {
 } else if (requestedLevel) {
     startLevel(requestedLevel);
 } else {
-    GameAudio.setLevelTrack(LEVEL_SELECT_TRACK); // level-select screen's own ambient track
+    GameAudio.setLevelTrack(LEVEL_SELECT_TRACK);
 }
 
-// Opening a level swaps a long level list for a short board, and the browser keeps the scroll
-// offset -- on a phone that leaves you staring at the footer, which is exactly what was reported.
-// Any *-section shown from here starts at the top. showEl is a function declaration in
-// auth-shared.js, so it is a property of the global object and wrapping it catches the bare
-// showEl(...) calls in this file too.
+// Opening a level swaps a long gate for a short board and the browser keeps the scroll offset —
+// on a phone that leaves you staring at the footer. Any *-section shown from here starts at the
+// top. showEl is a function declaration in auth-shared.js, so it is a property of the global
+// object and wrapping it catches the bare showEl(...) calls in this file too.
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 (function keepSectionSwitchesAtTop() {
-    var inner = window.showEl;
+    const inner = window.showEl;
     if (typeof inner !== 'function') return;
     window.showEl = function (el) {
-        var out = inner.apply(this, arguments);
+        const out = inner.apply(this, arguments);
         if (el && el.id && el.id.slice(-8) === '-section') window.scrollTo(0, 0);
         return out;
     };
