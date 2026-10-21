@@ -23,10 +23,59 @@ let lastResult = null;       // result earned as a guest, pending save once they
 let boardBgDayPath = null;   // day-theme path of the photo behind the board; see applyBoardBg()
 let stopwatch = null;
 
+// Which levels have been finished under which mode, for the marks on the level select.
+// ---------------------------------------------------------------------------
+// This lives in localStorage AND, where the project has had migration 011 applied, in the two
+// new game_progress columns. localStorage is what makes the marks work signed out and on a
+// project whose database has not been migrated yet; the columns are what make them follow the
+// account. Writing the columns is attempted once and gives up quietly if they are not there --
+// an upsert naming a column PostgREST does not know fails the WHOLE row, and losing every
+// player's progress to a cosmetic badge would be a poor trade.
+const MODE_MARKS_KEY = 'khanjp-game-mode-marks';
+let modeMarks = {};
+let modeColumnsPresent = true;
+
+function loadModeMarks() {
+    try { modeMarks = JSON.parse(localStorage.getItem(MODE_MARKS_KEY) || '{}') || {}; }
+    catch (e) { modeMarks = {}; }
+}
+function marksFor(levelNum) {
+    return modeMarks[levelNum] || {};
+}
+function rememberMark(levelNum, key) {
+    const m = marksFor(levelNum);
+    m[key] = true;
+    modeMarks[levelNum] = m;
+    try { localStorage.setItem(MODE_MARKS_KEY, JSON.stringify(modeMarks)); } catch (e) {}
+}
+loadModeMarks();
+
 // ---------------------------------------------------------------------------
 // Opening and leaving a level
 // ---------------------------------------------------------------------------
+// Entering a level asks how you want to play it before anything is dealt. Both toggles default
+// off, so closing the pop-up without touching either gives the plain game -- it is a choice, not
+// a gate.
+let pendingLevel = null;
 function startLevel(level) {
+    pendingLevel = level;
+    modeTimeAttack = false;
+    modePerfect = false;
+    syncModeToggles();
+    document.getElementById('mode-modal-title').textContent = levelTitle(level);
+    showEl(document.getElementById('mode-modal'));
+}
+
+function syncModeToggles() {
+    const t = document.getElementById('mode-time-btn');
+    const p = document.getElementById('mode-perfect-btn');
+    t.classList.toggle('on', modeTimeAttack);
+    t.setAttribute('aria-pressed', String(modeTimeAttack));
+    p.classList.toggle('on', modePerfect);
+    p.setAttribute('aria-pressed', String(modePerfect));
+}
+
+function beginLevel(level) {
     currentLevel = level;
     if (!level.review) activeTier = level.jlpt;
 
@@ -42,6 +91,9 @@ function startLevel(level) {
     hints = 0;
     pairsThisHand = 0;
     elapsedSeconds = 0;
+    timeLeft = TIME_ATTACK_SECONDS;
+    livesLeft = PERFECT_LIVES;
+    levelOver = false;
     window.clearTimeout(bonusTimer);
 
     // A review board has no level number to cycle from, and (0 - 1) % n is -1 in JavaScript,
@@ -93,7 +145,15 @@ function backToLevels() {
 function startStopwatch() {
     stopStopwatch();
     stopwatch = window.setInterval(() => {
-        if (phase === 'play' || phase === 'bonus') elapsedSeconds++;
+        if (levelOver) return;
+        if (phase !== 'play' && phase !== 'bonus') return;
+        elapsedSeconds++;
+        // The clock only runs in Time Attack, and only while a hand is actually being played --
+        // never while the twelve tiles are sitting face up waiting to be read.
+        if (!modeTimeAttack) return;
+        timeLeft--;
+        updateStats();
+        if (timeLeft <= 0) failLevel('time');
     }, 1000);
 }
 function stopStopwatch() {
@@ -124,7 +184,13 @@ async function loadProgress() {
     if (session) {
         const { data, error } = await sb.from('game_progress').select('*')
             .eq('user_id', session.user.id);
-        if (!error && data) data.forEach(row => { progressCache[row.level] = row; });
+        if (!error && data) data.forEach(row => {
+            progressCache[row.level] = row;
+            // The account is the better record where it has one, so adopt it into the local
+            // marks rather than the other way round.
+            if (row.time_attack) rememberMark(row.level, 'timeAttack');
+            if (row.perfectionist) rememberMark(row.level, 'perfectionist');
+        });
     }
     renderGate();
 }
@@ -145,7 +211,19 @@ async function saveProgress(session, result) {
         updated_at: new Date().toISOString(),
     };
 
-    const { error } = await sb.from('game_progress').upsert(row, { onConflict: 'user_id,level' });
+    if (modeColumnsPresent) {
+        row.time_attack = !!(marksFor(result.level).timeAttack);
+        row.perfectionist = !!(marksFor(result.level).perfectionist);
+    }
+    let { error } = await sb.from('game_progress').upsert(row, { onConflict: 'user_id,level' });
+    if (error && modeColumnsPresent && /time_attack|perfectionist|column/i.test(error.message || '')) {
+        // migration 011 has not been applied to this project: drop the two columns and never
+        // try them again this session. The marks still live in localStorage.
+        modeColumnsPresent = false;
+        delete row.time_attack;
+        delete row.perfectionist;
+        ({ error } = await sb.from('game_progress').upsert(row, { onConflict: 'user_id,level' }));
+    }
     if (!error) {
         progressCache[result.level] = row;
         statusEl.textContent = isBetter ? window.t('game.newBestSaved') : window.t('game.resultSaved');
@@ -172,7 +250,42 @@ function gradeKey(result) {
     return 'game.grade.through';
 }
 
+// A run can end without being finished, which the old board had no concept of: there was no
+// way to lose. Both modes can take a level away, so both need somewhere to say so.
+function failLevel(reason) {
+    if (levelOver) return;
+    levelOver = true;
+    stopStopwatch();
+    window.clearTimeout(bonusTimer);
+    phase = 'done';
+    GameAudio.timeUp();
+    showFailPop(reason);
+}
+
+function showFailPop(reason) {
+    document.getElementById('pop-grade').textContent = window.t('game.mode.runOver');
+    document.getElementById('pop-seal').textContent = reason === 'time' ? '時' : '心';
+    document.getElementById('pop-seal').classList.add('is-fail');
+    document.getElementById('result-title').textContent = window.t(
+        reason === 'time' ? 'game.mode.outOfTime' : 'game.mode.outOfLives');
+    document.getElementById('pop-clicks').textContent = clicks;
+    document.getElementById('pop-misses').textContent = misses;
+    document.getElementById('pop-bonus').textContent = bonusPairs;
+    document.getElementById('pop-time').textContent = formatTime(elapsedSeconds);
+    document.getElementById('pop-note').textContent = window.tf('game.mode.gotThisFar', {
+        n: handIndex * MAIN_PAIRS + pairsThisHand,
+        total: levelDeck.length,
+    });
+    document.getElementById('pop-marks').innerHTML = '';
+    resultNextLevel = null;
+    document.getElementById('pop-next-btn').textContent = window.t('game.tryAgain');
+    hideEl(document.getElementById('pop-login-btn'));
+    document.getElementById('pop-save').classList.add('hidden');
+    showEl(document.getElementById('result-modal'));
+}
+
 function finishLevel() {
+    levelOver = true;
     stopStopwatch();
     const result = {
         level: currentLevel.level,
@@ -180,7 +293,15 @@ function finishLevel() {
         moves: clicks,
         misses,
         bonus: bonusPairs,
+        timeAttack: modeTimeAttack,
+        perfectionist: modePerfect,
     };
+    // A level finished under a mode keeps that mark for good; a later plain run never takes it
+    // away, which is why these are only ever set to true.
+    if (!currentLevel.review) {
+        if (modeTimeAttack) rememberMark(result.level, 'timeAttack');
+        if (modePerfect) rememberMark(result.level, 'perfectionist');
+    }
 
     const c = centerOf(boardWrapEl);
     fxField.spawnBurst(c.x, c.y, {
@@ -209,8 +330,22 @@ function finishLevel() {
 let resultNextLevel = null;
 function showResultPop(result) {
     document.getElementById('pop-grade').textContent = window.t(gradeKey(result));
+    document.getElementById('pop-seal').classList.remove('is-fail');
     document.getElementById('pop-seal').textContent =
         gradeKey(result) === 'game.grade.perfect' ? '皆' : '合';
+
+    // The marks earned, named rather than left as a colour the player has to decode on the
+    // level select later.
+    const marks = document.getElementById('pop-marks');
+    marks.innerHTML = '';
+    [['timeAttack', 'game.mode.timeAttack'], ['perfectionist', 'game.mode.perfectionist']]
+        .forEach(([key, label]) => {
+            if (!result[key === 'timeAttack' ? 'timeAttack' : 'perfectionist']) return;
+            const chip = document.createElement('span');
+            chip.className = 'pop-mark ' + key;
+            chip.textContent = window.t(label);
+            marks.appendChild(chip);
+        });
     document.getElementById('pop-clicks').textContent = result.moves;
     document.getElementById('pop-misses').textContent = result.misses;
     document.getElementById('pop-bonus').textContent = result.bonus;
@@ -247,6 +382,26 @@ document.getElementById('gate-back-btn').addEventListener('click', backToTiers);
 document.getElementById('pop-next-btn').addEventListener('click', () => {
     hideEl(document.getElementById('result-modal'));
     startLevel(resultNextLevel || currentLevel);
+});
+
+document.getElementById('mode-time-btn').addEventListener('click', () => {
+    modeTimeAttack = !modeTimeAttack;
+    syncModeToggles();
+    GameAudio.select();
+});
+document.getElementById('mode-perfect-btn').addEventListener('click', () => {
+    modePerfect = !modePerfect;
+    syncModeToggles();
+    GameAudio.select();
+});
+document.getElementById('mode-start-btn').addEventListener('click', () => {
+    hideEl(document.getElementById('mode-modal'));
+    if (pendingLevel) beginLevel(pendingLevel);
+});
+document.getElementById('mode-back-btn').addEventListener('click', () => {
+    hideEl(document.getElementById('mode-modal'));
+    pendingLevel = null;
+    backToLevels();
 });
 document.getElementById('pop-levels-btn').addEventListener('click', () => {
     hideEl(document.getElementById('result-modal'));

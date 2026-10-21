@@ -278,6 +278,15 @@ function dealHand() {
 
     const { slots, totalH } = memLayout(MAIN_ROWS, MAIN_COLS);
     board.style.aspectRatio = `100 / ${totalH.toFixed(2)}`;
+
+    // The hand lands from the middle outwards. Distance from the board's centre, not row order:
+    // the honeycomb is 3/4/3/2, so "the next row" and "the next ring" are different shapes, and
+    // only the ring reads as the board opening up. x and y are both in percent-of-width here,
+    // so they are directly comparable without converting anything.
+    const cx = 50, cy = totalH / 2;
+    const dist = slots.map(s => Math.hypot(s.x + s.w / 2 - cx, s.y + s.h / 2 - cy));
+    const farthest = Math.max.apply(null, dist) || 1;
+
     tiles = [];
     cards.forEach((c, i) => {
         const s = slots[i];
@@ -289,6 +298,7 @@ function dealHand() {
         el.style.top = (s.y / totalH * 100).toFixed(3) + '%';
         el.style.width = s.w.toFixed(3) + '%';
         el.style.height = (s.h / totalH * 100).toFixed(3) + '%';
+        el.style.animationDelay = (dist[i] / farthest * 0.3).toFixed(3) + 's';
         board.appendChild(el);
         const t = { el, pair: c.pair, side: c.side, word: c.word, state: 'up' };
         tiles.push(t);
@@ -309,13 +319,34 @@ function dealHand() {
     say(window.tf('game.mem.readThem', { n: MAIN_PAIRS * 2 }));
 }
 
+// Starting a hand turns the Japanese side over and all but a few of the meanings. How many
+// meanings survive is the difficulty ramp: six in the first hand, then four, two and none, so
+// the same six pairs are a find-the-word puzzle first and memory outright by the fourth.
+//
+// A meaning left showing is still a playable tile -- it has to be, or a pair containing one
+// could never be completed -- so it is marked `revealed` and onTile() lets it through the
+// "already looking at it" guard that face-up tiles otherwise hit.
 function startHand() {
     CardSfx.wake();
     document.getElementById('mem-preview').hidden = true;
     phase = 'play';
     document.getElementById('hint-btn').disabled = false;
-    tiles.forEach((t, i) => window.setTimeout(() => turn(t, 'down'), i * 45));
-    say(window.t('game.mem.turned'));
+
+    const keep = VISIBLE_MEANINGS_BY_HAND[
+        Math.min(handIndex, VISIBLE_MEANINGS_BY_HAND.length - 1)] || 0;
+    const meanings = shuffleArray(tiles.filter(t => t.side === 'mn'));
+    const staying = new Set(meanings.slice(0, keep));
+    tiles.forEach(t => { t.revealed = staying.has(t); });
+
+    tiles.forEach((t, i) => {
+        if (t.revealed) { t.el.classList.add('shown'); return; }
+        window.setTimeout(() => turn(t, 'down'), i * 45);
+    });
+
+    say(keep
+        ? window.tf('game.mem.turnedSome', { n: keep })
+        : window.t('game.mem.turned'));
+    updateStats();
 }
 
 // Turn a tile, with the squash that stands in for a flip.
@@ -361,15 +392,18 @@ function relinkSameAnswer(a, b) {
 }
 
 function onTile(e) {
+    if (levelOver) return;
     const el = e.target.closest ? e.target.closest('.mem-tile') : null;
     if (!el || boardBusy) return;
     const t = tiles[+el.dataset.i];
     if (!t || t.state === 'gone') return;
 
     if (phase === 'play') {
-        if (t.state === 'up') return;                   // already looking at it
+        // A revealed meaning is face up on purpose and must stay clickable; every other face-up
+        // tile is one you are already looking at.
+        if (t.state === 'up' && !t.revealed) return;
         clicks++; updateStats();
-        turn(t, 'up');
+        if (!t.revealed) turn(t, 'up');
         if (firstPick < 0) {
             firstPick = +el.dataset.i;
             CardSfx.pick();
@@ -392,6 +426,11 @@ function onTile(e) {
                     a.state = b.state = 'gone';
                     pairsThisHand++;
                     boardBusy = false;
+                    if (modeTimeAttack) {
+                        timeLeft += TIME_BONUS_PER_PAIR;
+                        const c = centerOf(boardEl());
+                        floatText(c.x, c.y, '+' + TIME_BONUS_PER_PAIR + 's');
+                    }
                     updateStats();
                     if (pairsThisHand === handWords.length) finishHand();
                     else say(window.tf('game.mem.pairOf',
@@ -399,13 +438,23 @@ function onTile(e) {
                 }, 420);
             }, 170);
         } else {
-            misses++; updateStats(); CardSfx.miss();
+            misses++;
+            // Only the main round costs a life. Bonus clicks are free by design, and a round
+            // that exists to be a reward should not be the thing that ends the run.
+            if (modePerfect) livesLeft--;
+            updateStats();
+            CardSfx.miss();
             recordMiss(a.word, b.word); recordMiss(b.word, a.word);
+            if (modePerfect && livesLeft <= 0) {
+                window.setTimeout(() => failLevel('lives'), 900);
+                return;
+            }
             window.setTimeout(() => {
                 a.el.classList.add('miss'); b.el.classList.add('miss');
                 window.setTimeout(() => {
                     a.el.classList.remove('miss'); b.el.classList.remove('miss');
-                    turn(a, 'down'); turn(b, 'down');
+                    if (!a.revealed) turn(a, 'down');
+                    if (!b.revealed) turn(b, 'down');
                     boardBusy = false;
                     say(window.tf('game.mem.notAPair', { n: misses }), 'bad');
                 }, 620);
@@ -628,6 +677,29 @@ function updateStats() {
         `${pairsThisHand}/${handWords.length || MAIN_PAIRS}`;
     document.getElementById('st-miss').textContent = misses;
     document.getElementById('st-bonus').textContent = bonusPairs;
+
+    // The two mode figures only exist while their mode is on, so the rail never carries a clock
+    // for a game that has none or lives for a game that cannot lose them.
+    const clock = document.getElementById('stat-clock');
+    clock.hidden = !modeTimeAttack;
+    if (modeTimeAttack) {
+        const el = document.getElementById('st-clock');
+        el.textContent = formatTime(Math.max(0, timeLeft));
+        el.classList.toggle('low', timeLeft <= 30);
+    }
+    const lives = document.getElementById('stat-lives');
+    lives.hidden = !modePerfect;
+    if (modePerfect) {
+        const box = document.getElementById('st-lives');
+        box.innerHTML = '';
+        for (let i = 0; i < PERFECT_LIVES; i++) {
+            const pip = document.createElement('span');
+            pip.className = 'life-pip' + (i < livesLeft ? '' : ' spent');
+            box.appendChild(pip);
+        }
+        box.setAttribute('aria-label',
+            window.tf('game.livesLeft', { n: livesLeft, total: PERFECT_LIVES }));
+    }
 
     renderHandTrack();
 }

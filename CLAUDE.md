@@ -401,6 +401,40 @@ never at load, or every browser that enforces autoplay hands back a suspended on
 **`game_progress` was not migrated and did not need to be**: `best_moves` now holds clicks and
 `best_time_seconds` a stopwatch rather than a countdown. Both still mean "lower is better",
 which is all the dashboard and the score SQL ever assumed.
+**The four hands are a difficulty ramp, not four of the same board** (`VISIBLE_MEANINGS_BY_HAND`
+= `[6, 4, 2, 0]`). The Japanese side always turns over; how many MEANING tiles stay face up is
+what changes, so the first hand is a find-the-word puzzle and the fourth is memory outright. A
+level therefore teaches its 24 words four times over with less help each time, which is the
+reason for dealing it as four hands at all. A meaning left showing is still a playable tile —
+it has to be, or a pair containing one could never be completed — so it carries `revealed` and
+`onTile()` lets it past the "already looking at it" guard that face-up tiles otherwise hit; a
+miss must also not turn it back over.
+**The hand lands from the middle outwards**: each tile's `animation-delay` comes from its
+distance to the board's centre, not its row. The honeycomb is 3/4/3/2, so "the next row" and
+"the next ring" are different shapes and only the ring reads as the board opening up. The
+keyframe needs `backwards` or the whole hand appears first and animates afterwards.
+**Two optional modes, offered on a pop-up before the level is dealt** (`#mode-modal`): **Time
+Attack** (three minutes for the whole level, +10s per pair, clock only runs while a hand is
+being played) and **Perfectionist** (three lives; only main-round misses cost one, because
+bonus clicks are free by design and the reward round should not be what ends a run). They are
+independent toggles, not a three-way choice, because each earns its own mark and a run that
+survived both deserves both. Taking neither is the plain game. Both introduce something the old
+board never had — a way to lose — so `failLevel()` and `levelOver` exist, and nothing on the
+board responds once a run is over.
+**A finished mode marks the level on the gate**: Perfectionist repaints the node in a gold
+gradient, Time Attack sets sparks going inside it, and they stack. Those sparks are **children**
+of the node, the opposite of the bonus board's: a hexnode is clipped to its own hexagon so a
+child is clipped with it, which is exactly what an *inner* sparkle needs, while the bonus tile
+wanted sparks spilling past its edge and had to use siblings.
+**The marks live in `localStorage` and, where migration 011 has been applied, in two new
+`game_progress` columns.** `supabase-migration-011-game-modes.sql` adds `time_attack` and
+`perfectionist`; until it is run, the first save attempt drops those two keys and retries, then
+stops trying for the session. That dance is not optional: **an upsert naming a column PostgREST
+does not know fails the whole row**, so without it a cosmetic badge would take every player's
+progress down with it. A mark is only ever written `true` — a later plain run never removes one.
+**`DEMO_MARKS_ON_LEVEL` in `game-gate.js` fakes both marks on N5-1** so the two treatments can
+be seen without playing a level under each mode. It is a demo, not a feature: delete the
+constant and the two lines reading it (grep `DEMO_MARKS`) to stop it.
 
 **Large data files — never `Read` whole**: `phonetics-data.js` (~2.8MB), `game-words.js`
 (~1.4MB), `mnjp-data.js` (~1.4MB, `MNJP_ENTRIES` — dictionary.html's primary tab, 3,537 words

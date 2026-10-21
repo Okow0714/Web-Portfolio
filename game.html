@@ -474,6 +474,8 @@
                             <span><span class="stat-k" data-i18n="game.pairs">Хос</span><span class="stat-v" id="st-pairs">0/6</span></span>
                             <span><span class="stat-k" data-i18n="game.misses">Алдаа</span><span class="stat-v crimson" id="st-miss">0</span></span>
                             <span><span class="stat-k" data-i18n="game.bonus">Урамшуулал</span><span class="stat-v pine" id="st-bonus">0</span></span>
+                            <span id="stat-clock" hidden><span class="stat-k" data-i18n="game.mode.clock">Цаг</span><span class="stat-v" id="st-clock">03:00</span></span>
+                            <span id="stat-lives" hidden><span class="stat-k" data-i18n="game.mode.lives">Амь</span><span class="stat-v lives" id="st-lives"></span></span>
                         </div>
                         <p class="say" id="board-say"></p>
                         <div class="btn-rail">
@@ -504,6 +506,40 @@
             <div class="fx-text-layer" id="fx-text-layer"></div>
         </main>
 
+        <!-- How do you want to play it? Shown on entering a level, before anything is dealt.
+             Two independent toggles rather than one three-way choice, because each earns its own
+             mark on the level select and a run that survived both deserves both. Neither is
+             required: starting with both off is the plain game. -->
+        <div id="mode-modal" class="modal-overlay hidden">
+            <div class="modal-card">
+                <h3 id="mode-modal-title"></h3>
+                <p class="mode-lede" data-i18n="game.mode.lede">Хэрхэн тоглохоо сонго. Аль алиныг нь сонгохгүй байж болно.</p>
+
+                <button type="button" class="mode-toggle" id="mode-time-btn" aria-pressed="false">
+                    <span class="mode-mark" aria-hidden="true">時</span>
+                    <span class="mode-copy">
+                        <span class="mode-name" data-i18n="game.mode.timeAttack">Цагийн уралдаан</span>
+                        <span class="mode-desc" data-i18n="game.mode.timeAttackDesc">Бүх шатыг 3 минутад. Хос тааруулах бүрд +10 секунд.</span>
+                    </span>
+                    <span class="mode-state" aria-hidden="true"></span>
+                </button>
+
+                <button type="button" class="mode-toggle" id="mode-perfect-btn" aria-pressed="false">
+                    <span class="mode-mark" aria-hidden="true">心</span>
+                    <span class="mode-copy">
+                        <span class="mode-name" data-i18n="game.mode.perfectionist">Төгс тоглогч</span>
+                        <span class="mode-desc" data-i18n="game.mode.perfectDesc">Гурван амьтай. Гурав дахь алдаа гарвал шат дуусна.</span>
+                    </span>
+                    <span class="mode-state" aria-hidden="true"></span>
+                </button>
+
+                <div class="result-actions">
+                    <button id="mode-start-btn" class="auth-btn" type="button" data-i18n="game.mode.begin">Шат эхлүүлэх</button>
+                    <button id="mode-back-btn" class="auth-btn auth-btn-outline" type="button" data-i18n="game.backToLevels">Шатууд руу буцах</button>
+                </div>
+            </div>
+        </div>
+
         <!-- Level complete. The one pop-up in the game: there is no start modal any more,
              because the preview phase IS the start — the twelve tiles sit face up until the
              player presses Start, and nothing is timed until they do. -->
@@ -531,6 +567,7 @@
                         <span class="pop-figure-v" id="pop-time">00:00</span>
                     </span>
                 </div>
+                <div class="pop-marks" id="pop-marks"></div>
                 <p class="pop-note" id="pop-note"></p>
                 <p class="pop-save hidden" id="pop-save"></p>
                 <div class="result-actions">

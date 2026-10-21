@@ -589,10 +589,22 @@ body.game-playing .game-main {
        tessellate read as one white blob instead of twelve pieces. */
     filter: drop-shadow(0 0 1.4px light-dark(rgba(118, 96, 46, .6), rgba(0, 0, 0, .55)))
             drop-shadow(0 2px 2px light-dark(rgba(90, 70, 30, .13), rgba(0, 0, 0, .4)));
+    /* The hand lands from the middle outwards; game-memory.js sets each tile's delay from its
+       distance to the board's centre. `backwards` is what holds a tile invisible through its
+       own delay -- without it the whole hand appears at once and then animates. The bonus
+       tiles override this with their own rock-and-glow further down. */
+    animation: tileIn .42s var(--ease-pop) backwards;
     transition: transform .17s var(--ease-pop), opacity .2s var(--ease-pop),
                 background-color .17s var(--ease-pop);
 }
+@keyframes tileIn {
+    from { opacity: 0; transform: scale(.42); }
+}
 .mem-tile:focus-visible { outline: 2px solid var(--gold-text); outline-offset: 2px; }
+
+/* A meaning the hand left face up on purpose -- the difficulty ramp's help. Marked so it reads
+   as given rather than as one you turned over yourself. */
+.mem-tile.shown { box-shadow: inset 0 0 0 2px var(--gold); }
 
 /* The back: a hanafuda card back, two solid violets woven at 135deg under a solid gold rule —
    a printed pattern, not a sheen — so a hidden tile still reads as a playing piece rather than
@@ -951,4 +963,156 @@ body.game-playing .game-main {
        the round ends on a real timer either way. */
     .bonus-timer i.run { transition-duration: 4s !important; }
     .mem-sparks, .mem-halo { display: none; }
+}
+
+/* ===================================================================== modes */
+.mode-lede {
+    margin: 0 0 14px;
+    font-size: 13px;
+    opacity: .8;
+}
+
+.mode-toggle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    margin-bottom: 9px;
+    padding: 11px 13px;
+    text-align: left;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid light-dark(#c6b997, #2c2640);
+    color: inherit;
+}
+.mode-toggle:hover { border-color: light-dark(#c08a1e, #d4a64b); }
+.mode-toggle:focus-visible { outline: 2px solid light-dark(#8c6209, #f4ce7a); outline-offset: 2px; }
+.mode-toggle.on {
+    border-color: light-dark(#c08a1e, #d4a64b);
+    background: light-dark(#f7eed6, #2a2238);
+}
+
+.mode-mark {
+    flex: none;
+    width: 34px;
+    height: 39px;
+    display: grid;
+    place-items: center;
+    font-family: var(--font-jp, serif);
+    font-size: 18px;
+    background: light-dark(#ded0ae, #2c2640);
+    color: light-dark(#4a3a0e, #c7bda8);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    transition: background-color .2s, color .2s;
+}
+.mode-toggle.on .mode-mark {
+    background: light-dark(#c08a1e, #d4a64b);
+    color: light-dark(#1b1626, #15131c);
+}
+
+.mode-copy { flex: 1 1 auto; min-width: 0; }
+.mode-name { display: block; font-size: 14px; font-weight: 700; }
+.mode-desc { display: block; margin-top: 2px; font-size: 12px; opacity: .78; }
+
+/* The state pip is the only thing saying on or off, so it has to change shape as well as
+   colour -- a colour alone is not a state anyone can read at a glance in two themes. */
+.mode-state {
+    flex: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid light-dark(#c6b997, #3a3350);
+    border-radius: 50%;
+    transition: background-color .2s, border-color .2s;
+}
+.mode-toggle.on .mode-state {
+    border-color: light-dark(#c08a1e, #d4a64b);
+    background:
+        linear-gradient(45deg, transparent 42%, light-dark(#1b1626, #15131c) 42% 58%, transparent 58%),
+        linear-gradient(-45deg, transparent 42%, light-dark(#1b1626, #15131c) 42% 58%, transparent 58%),
+        light-dark(#c08a1e, #d4a64b);
+}
+
+/* --- the rail's mode figures --- */
+.stat-v.low { color: var(--crimson-text); }
+.stat-v.lives {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 24px;
+}
+.life-pip {
+    width: 13px;
+    height: 15px;
+    background: var(--crimson);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    transition: background-color .3s var(--ease-pop);
+}
+.life-pip.spent { background: var(--panel-edge); }
+
+/* --- marks on the result pop-up --- */
+.pop-marks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 7px;
+    margin: 10px 0 0;
+}
+.pop-mark {
+    padding: 4px 11px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+.pop-mark.timeAttack {
+    background: light-dark(#e8f0ff, #1e2740);
+    color: light-dark(#1b3a6b, #9fc2ff);
+    box-shadow: inset 0 0 0 1px light-dark(#9db7e0, #33456b);
+}
+.pop-mark.perfectionist {
+    background: linear-gradient(135deg, #f7dd92, #c9962b);
+    color: #2b2107;
+}
+.pop-seal.is-fail {
+    background: light-dark(#b32d3d, #8e2533);
+    color: #fff;
+}
+
+/* ===================================================================== level marks
+   How a level was beaten, shown on its node. Perfectionist repaints the face in gold;
+   Time Attack sets sparks going inside it. They stack. */
+.hexnode.mode-perfect {
+    background: linear-gradient(150deg, #f7dd92 0%, #d8a53a 34%, #a97c16 70%, #7a5608 100%);
+    color: #2b2107;
+}
+.hexnode.mode-perfect .hexnode-sub,
+.hexnode.mode-perfect .hexnode-theme,
+.hexnode.mode-perfect .hexnode-best,
+.hexnode.mode-perfect .hexnode-check { color: #3a2c08; opacity: .95; }
+
+/* Children, not siblings: a hexnode is clipped to its own hexagon, so a child is clipped with
+   it -- which is exactly what an INNER sparkle needs. The bonus board's sparks wanted to spill
+   past the tile's edge and had to be siblings for the same reason, in reverse. */
+.node-spark {
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    background: #fffbe8;
+    clip-path: polygon(50% 0%, 58% 42%, 100% 50%, 58% 58%, 50% 100%, 42% 58%, 0% 50%, 42% 42%);
+    filter: drop-shadow(0 0 4px rgba(255, 236, 170, .9));
+    opacity: 0;
+    pointer-events: none;
+    animation: nodeTwinkle 1.6s ease-in-out infinite;
+}
+/* Lit for about half the cycle rather than a fifth: with five sparks on a long cycle the node
+   was dark most of the time, which is not a sparkle. */
+@keyframes nodeTwinkle {
+    0%, 100% { opacity: 0; transform: scale(.25) rotate(0deg); }
+    25% { opacity: 1; transform: scale(1.15) rotate(35deg); }
+    55% { opacity: .85; transform: scale(.9) rotate(70deg); }
+    80% { opacity: .15; transform: scale(.5) rotate(100deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .node-spark { display: none; }
 }

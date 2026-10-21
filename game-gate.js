@@ -146,6 +146,11 @@ function honeycomb(rows, cols) {
     return { slots, totalH: (rows.length - 1) * vStep + h };
 }
 
+// DEMO ONLY -- delete this constant and the two lines that read it (search for DEMO_MARKS) to
+// stop faking marks. It paints the Time Attack and Perfectionist treatments onto one level so
+// both can be seen without playing a level under each mode first.
+const DEMO_MARKS_ON_LEVEL = 1;
+
 function showLevelField(jlpt) {
     const panel = document.getElementById('gate-levels');
     const field = document.getElementById('gate-field');
@@ -168,9 +173,20 @@ function showLevelField(jlpt) {
         const progress = progressCache[level.level];
         const done = !!(progress && progress.completed);
 
+        // How a level was beaten, not just whether. Perfectionist repaints the whole face in
+        // gold; Time Attack sets sparks going inside it. They stack, because a level can be
+        // taken under both.
+        const marks = marksFor(level.level);
+        const demo = level.level === DEMO_MARKS_ON_LEVEL;          // DEMO_MARKS
+        const gotTime = !!marks.timeAttack || demo;                // DEMO_MARKS
+        const gotPerfect = !!marks.perfectionist || demo;
+
         const node = document.createElement('button');
         node.type = 'button';
-        node.className = 'hexnode' + (done ? ' level-done' : '');
+        node.className = 'hexnode'
+            + (done ? ' level-done' : '')
+            + (gotPerfect ? ' mode-perfect' : '')
+            + (gotTime ? ' mode-time' : '');
         node.style.left = s.x.toFixed(3) + '%';
         node.style.top = (s.y / totalH * 100).toFixed(3) + '%';
         node.style.width = s.w.toFixed(3) + '%';
@@ -188,7 +204,24 @@ function showLevelField(jlpt) {
         node.style.setProperty('--burst-x', ((cxPct - (s.x + s.w / 2)) * 1.6).toFixed(2) + '%');
         node.style.setProperty('--burst-y',
             ((cyPct - (s.y + s.h / 2) / totalH * 100) * 1.6).toFixed(2) + '%');
-        node.setAttribute('aria-label', levelTitle(level) + (theme ? ' — ' + theme : ''));
+        // The sparks are CHILDREN here, unlike the bonus board's: a hexnode is clipped to its
+        // own hexagon, so a child is clipped with it -- which is exactly what "inner sparkle"
+        // needs. The bonus tile wanted sparks spilling past its edge and had to use siblings.
+        if (gotTime) {
+            for (let k = 0; k < 8; k++) {
+                const sp = document.createElement('i');
+                sp.className = 'node-spark';
+                sp.style.left = (12 + Math.random() * 72).toFixed(0) + '%';
+                sp.style.top = (16 + Math.random() * 64).toFixed(0) + '%';
+                sp.style.animationDelay = (Math.random() * 1.6).toFixed(2) + 's';
+                node.appendChild(sp);
+            }
+        }
+
+        const how = [gotPerfect && window.t('game.mode.perfectionist'),
+                     gotTime && window.t('game.mode.timeAttack')].filter(Boolean).join(', ');
+        node.setAttribute('aria-label', levelTitle(level) + (theme ? ' — ' + theme : '')
+            + (how ? ' — ' + how : ''));
         node.addEventListener('click', () => startLevel(level));
         field.appendChild(node);
     });

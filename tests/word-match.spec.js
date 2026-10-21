@@ -76,7 +76,11 @@ module.exports = async function (page, assert, baseUrl) {
 
     // ---------------------------------------------------------------- a hand
     await page.locator('#gate-field .hexnode').first().click();
-    await page.waitForTimeout(400);
+    await page.waitForTimeout(500);
+    // Entering a level asks how to play it first. Both toggles are left off, which is the plain
+    // game -- the modes have their own checks below.
+    await page.locator('#mode-start-btn').click();
+    await page.waitForTimeout(500);
     await dismissTour(page);
 
     assert.strictEqual(await page.locator('#mem-board .mem-tile').count(), 12,
@@ -90,20 +94,36 @@ module.exports = async function (page, assert, baseUrl) {
     await page.locator('#mem-start-btn').click();
     await page.waitForTimeout(1000);
 
-    const leaked = await page.evaluate(() => {
+    // The first hand leaves every meaning showing (the difficulty ramp), so only the tiles that
+    // are actually face DOWN must keep their word to themselves. The revealed ones are supposed
+    // to be readable -- that is the help they exist to give.
+    const labels = await page.evaluate(() => {
         const hidden = window.t('game.mem.faceDown');
-        return tiles.filter(t => t.el.getAttribute('aria-label') !== hidden).length;
+        return {
+            keep: VISIBLE_MEANINGS_BY_HAND[0],
+            leaked: tiles.filter(t => t.state === 'down'
+                && t.el.getAttribute('aria-label') !== hidden).length,
+            revealedMute: tiles.filter(t => t.revealed
+                && t.el.getAttribute('aria-label') === hidden).length,
+            down: tiles.filter(t => t.state === 'down').length,
+        };
     });
-    assert.strictEqual(leaked, 0,
+    assert.strictEqual(labels.leaked, 0,
         'a face-down tile must not announce its word to a screen reader');
-    assert.strictEqual(await page.locator('#mem-board .mem-tile.down').count(), 12,
-        'every tile turns over when the hand starts');
+    assert.strictEqual(labels.revealedMute, 0,
+        'a meaning left showing must still announce itself');
+    assert.strictEqual(labels.down, 12 - labels.keep,
+        `hand 1 should turn ${12 - labels.keep} tiles over, turned ${labels.down}`);
 
     // ---------------------------------------------------------------- a miss
     const missed = await page.evaluate(async () => {
         const wait = ms => new Promise(r => setTimeout(r, ms));
-        const a = 0;
-        const b = tiles.findIndex(t => t.pair !== tiles[a].pair);
+        // Both picks have to be face DOWN: a meaning the ramp left showing stays showing after a
+        // wrong guess, which is correct and would make "both turned back" false for the wrong
+        // reason.
+        const a = tiles.findIndex(t => t.state === 'down');
+        const b = tiles.findIndex((t, i) =>
+            i !== a && t.state === 'down' && t.pair !== tiles[a].pair);
         tiles[a].el.click(); await wait(230);
         tiles[b].el.click(); await wait(1500);
         return {
@@ -189,6 +209,9 @@ module.exports = async function (page, assert, baseUrl) {
         `the board photo should be a wash, not a picture — opacity was ${photoOpacity}`);
 
     await page.goto(baseUrl + '/game.html?level=1', { waitUntil: 'networkidle' });
+    await page.waitForTimeout(400);
+    await page.locator('#mode-start-btn').click();
+    await page.waitForTimeout(500);
     await dismissTour(page);
 
     const perfect = await page.evaluate(() => MAIN_PAIRS * HANDS_PER_LEVEL * 2);

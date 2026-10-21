@@ -122,6 +122,29 @@ const BONUS_MS = 4000;
 const HINT_COST = 3;
 
 // ---------------------------------------------------------------------------
+// The difficulty ramp
+// ---------------------------------------------------------------------------
+// How many MEANING tiles stay face up when a hand starts. The Japanese side always turns over;
+// the first hand leaves every meaning showing, so it is a find-the-word puzzle, and by the
+// fourth nothing is showing and it is memory outright. A level therefore teaches its 24 words
+// four times over, each time with less help -- which is the point of dealing it as four hands
+// rather than one board.
+//
+// Indexed by hand, so its length must stay at HANDS_PER_LEVEL and its first entry at MAIN_PAIRS.
+const VISIBLE_MEANINGS_BY_HAND = [6, 4, 2, 0];
+
+// ---------------------------------------------------------------------------
+// Game modes
+// ---------------------------------------------------------------------------
+// Two independent toggles offered before a level, so a player can take neither, either or both.
+// Neither is the plain game; both is the hard one. They are kept independent rather than made a
+// single three-way choice because each one earns its own mark on the level select, and a run
+// that survived both deserves both marks.
+const TIME_ATTACK_SECONDS = 180;   // three minutes for the whole level, all four hands
+const TIME_BONUS_PER_PAIR = 10;    // seconds back for every pair found
+const PERFECT_LIVES = 3;           // misses allowed before the run ends
+
+// ---------------------------------------------------------------------------
 // Mutable state shared across the game files
 // ---------------------------------------------------------------------------
 let tiles = [];            // the tiles currently dealt (one hand, or one bonus round)
@@ -132,7 +155,15 @@ let misses = 0;            // wrong guesses, level-wide, main round and bonus al
 let pairsThisHand = 0;
 let bonusPairs = 0;        // bonus pairs cleared across the whole level
 let hints = 0;
-let elapsedSeconds = 0;    // a stopwatch, not a clock: nothing runs out
+let elapsedSeconds = 0;    // a stopwatch, not a clock -- unless Time Attack is on
+
+// Mode state. Both default off: the level-entry pop-up is a choice, not a gate, and closing it
+// without touching either toggle gives the plain game.
+let modeTimeAttack = false;
+let modePerfect = false;
+let timeLeft = 0;          // Time Attack only
+let livesLeft = 0;         // Perfectionist only
+let levelOver = false;     // set when a run ends, so nothing on the board responds afterwards
 
 function escapeHtml(str) {
     const div = document.createElement('div');

@@ -154,6 +154,38 @@ Object.assign(window.I18N_STRINGS, {
     },
     'game.startHand': { en: 'Start', mn: 'Эхлэх' },
     'game.handLabel': { en: 'Hand', mn: 'Гар' },
+
+    // ---- game modes ----
+    'game.mode.lede': {
+        en: 'Choose how you want to play it. You can take neither.',
+        mn: 'Хэрхэн тоглохоо сонго. Аль алиныг нь сонгохгүй байж болно.'
+    },
+    'game.mode.timeAttack': { en: 'Time attack', mn: 'Цагийн уралдаан' },
+    'game.mode.timeAttackDesc': {
+        en: 'Three minutes for the whole level. Every pair you find puts ten seconds back.',
+        mn: 'Бүх шатыг 3 минутад. Хос тааруулах бүрд +10 секунд.'
+    },
+    'game.mode.perfectionist': { en: 'Perfectionist', mn: 'Төгс тоглогч' },
+    'game.mode.perfectDesc': {
+        en: 'Three lives. A third wrong guess ends the level.',
+        mn: 'Гурван амьтай. Гурав дахь алдаа гарвал шат дуусна.'
+    },
+    'game.mode.begin': { en: 'Start the level', mn: 'Шат эхлүүлэх' },
+    'game.mode.clock': { en: 'Clock', mn: 'Цаг' },
+    'game.mode.lives': { en: 'Lives', mn: 'Амь' },
+    'game.mode.runOver': { en: 'Run over', mn: 'Тоглолт дууслаа' },
+    'game.mode.outOfTime': { en: 'Out of time', mn: 'Цаг дууслаа' },
+    'game.mode.outOfLives': { en: 'Out of lives', mn: 'Амь дууслаа' },
+    'game.mode.gotThisFar': {
+        en: 'You had {n} of {total} pairs.',
+        mn: '{total}-аас {n} хосыг олсон байлаа.'
+    },
+    'game.tryAgain': { en: 'Try again', mn: 'Дахин оролдох' },
+    'game.livesLeft': { en: '{n} of {total} lives left', mn: '{total}-аас {n} амь үлдлээ' },
+    'game.mem.turnedSome': {
+        en: 'Turned over — but {n} meanings stay showing this hand.',
+        mn: 'Эргэлээ — гэхдээ энэ гарт {n} утга нээлттэй хэвээр.'
+    },
     'game.previewHandHint': {
         en: 'Hand {n} of {total}. Read the {cards} cards — they turn over when you start.',
         mn: 'Гар {n} / {total}. {cards} хөзрийг уншаарай — эхлэхэд тэд эргэнэ.'
