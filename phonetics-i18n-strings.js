@@ -11,7 +11,7 @@ Object.assign(window.I18N_STRINGS, {
     'phonetics.stageCombination': { en: 'combination (想像 &middot; そうぞう &middot; imagination)', mn: 'нийлбэр үг (想像 &middot; そうぞう &middot; төсөөлөл)' },
     'phonetics.explainerText': {
         en: 'A "phonetic component" is a recurring part inside a kanji that hints at its Chinese-derived on\'yomi reading, rather than its meaning. Kanji sharing the same phonetic component — like 相, 想, and 霜 above — often sound alike even though they mean very different things, because the component was originally chosen for its sound. A separate "meaning radical" (like 心, heart, tucked into 想) is what actually carries the sense.',
-        mn: '«Дуудлагын язгуур» гэдэг нь ханзны дотор давтагдан орох хэсэг бөгөөд утгыг нь бус, хятад хэлнээс гаралтай онёми дуудлагыг нь заадаг. Ижил язгууртай ханзууд — дээрх 相, 想, 霜 шиг — утгаараа эрс өөр байсан ч дуудлага нь ойролцоо байдаг, учир нь язгуурыг нь анхнаасаа дуудлагаар нь сонгосон юм. Утгыг нь харин тусдаа «утгын радикал» илэрхийлдэг — жишээ нь 想 дотор багтсан 心, зүрх.'
+        mn: '«Дуудлагын язгуур» гэдэг нь ханзны дотор давтагдан орох хэсэг бөгөөд утгыг нь бус, Хятадаас гаралтай онёми дуудлагыг нь заадаг. Ижил язгууртай ханзууд — дээрх 相, 想, 霜 шиг — утгаараа эрс өөр байсан ч дуудлага нь ойролцоо байдаг, учир нь язгуурыг нь анхнаасаа дуудлагаар нь сонгосон юм. Утгыг нь харин тусдаа «утгын радикал» илэрхийлдэг — жишээ нь 想 дотор багтсан 心, зүрх.'
     },
     'phonetics.kanjiInFamily': { en: '{n} kanji in this family', mn: 'энэ бүлэгт {n} ханз' },
     'phonetics.noExampleForKanji': { en: 'No example sentence found for this kanji in the source data.', mn: 'Энэ ханзны жишээ өгүүлбэр эх өгөгдөлд олдсонгүй.' },
@@ -28,14 +28,14 @@ Object.assign(window.I18N_STRINGS, {
     "drill.shapes": { en: "shapes", mn: "хэлбэр" },
     "drill.lead": {
         en: "Ten shapes a round. Look at the shape and type the sound it gives — hiragana, katakana or romaji, whichever you like.",
-        mn: "Нэг удаад 10 хэлбэр. Хэлбэрийг хараад дуудлагыг нь бичнэ үү. Хирагана, катакана, ромажи аль нь ч болно."
+        mn: "Нэг удаад 10 хэлбэр. Хэлбэрийг хараад дуудлагыг нь бичнэ — хирагана, катакана, ромажи аль нь ч болно."
     },
     "drill.deckNew": { en: "New", mn: "Шинэ" },
     "drill.deckMiss": { en: "Missed", mn: "Алдсан" },
     "drill.deckHit": { en: "Known", mn: "Мэдсэн" },
     "drill.deckAll": { en: "All", mn: "Бүгд" },
     "drill.questions": { en: "questions", mn: "асуулт" },
-    "drill.empty": { en: "This deck is empty", mn: "Багц хоосон байна" },
+    "drill.empty": { en: "This deck is empty", mn: "Багц хоосон" },
     "drill.otherCp": { en: "Other stage:", mn: "Өөр шат:" },
     "drill.ask": { en: "What sound does this shape give?", mn: "Энэ хэлбэр ямар дуудлага өгдөг вэ?" },
     "drill.inputLabel": { en: "Type the reading", mn: "Дуудлагыг бичнэ үү" },
@@ -43,7 +43,7 @@ Object.assign(window.I18N_STRINGS, {
     "drill.hint": { en: "Hiragana, katakana or romaji — any of them.", mn: "Хирагана, катакана, ромажи — аль нь ч болно." },
     "drill.nextHint": { en: "Enter — next", mn: "Enter — дараагийх" },
     "drill.doneHint": { en: "Enter — result", mn: "Enter — дүн" },
-    "drill.next": { en: "Next", mn: "Дараах" },
+    "drill.next": { en: "Next", mn: "Дараагийх" },
     "drill.result": { en: "Result", mn: "Дүн" },
     "drill.right": { en: "Right", mn: "Зөв" },
     "drill.wrong": { en: "Wrong", mn: "Буруу" },
@@ -56,7 +56,7 @@ Object.assign(window.I18N_STRINGS, {
     'phonetics.gateTitle': { en: 'Pick your level', mn: 'Түвшингээ сонгоно уу' },
     'phonetics.gateHint': {
         en: 'Phonetic families are different at every level. Once you have picked, this shrinks to a chip in the corner.',
-        mn: 'Дуудлагын бүлгүүд түвшин бүрт өөр өөр байна. Сонгосны дараа энэ хэсэг буланд багасна.'
+        mn: 'Дуудлагын бүлгүүд түвшин бүрт өөр. Сонгосны дараа буланд багасна.'
     },
     'phonetics.gateAria': { en: '{level} — {n} shapes', mn: '{level} — {n} язгуур' },
     'phonetics.pickStage': { en: 'Which stage do you want to start from?', mn: 'Аль шатнаас эхлэх вэ?' },
@@ -65,9 +65,9 @@ Object.assign(window.I18N_STRINGS, {
 
     // The node panel. It says plainly whether the component was right about this kanji, because
     // that is the only thing the whole page is claiming, and about a third of members break it.
-    'phonetics.ndHolds': { en: '{c} predicts {sound} — and this kanji takes it.', mn: '{c} нь {sound} гэж заадаг бөгөөд энэ ханз түүнийг авсан байна.' },
-    'phonetics.ndBreaks': { en: '{c} predicts {sound} — this kanji does not take it.', mn: '{c} нь {sound} гэж заадаг ч энэ ханз түүнийг аваагүй.' },
-    'phonetics.ndShows': { en: 'Here {kanji} is read {sound}.', mn: 'Энд {kanji} нь {sound} гэж уншигддаг.' },
+    'phonetics.ndHolds': { en: '{c} predicts {sound} — and this kanji takes it.', mn: '{c} нь {sound} гэж заадаг — энэ ханз түүнийг авсан.' },
+    'phonetics.ndBreaks': { en: '{c} predicts {sound} — this kanji does not take it.', mn: '{c} нь {sound} гэж заадаг — энэ ханз түүнийг аваагүй.' },
+    'phonetics.ndShows': { en: 'Here {kanji} is read {sound}.', mn: 'Энд {kanji} нь {sound} гэж уншигдаж байна.' },
 
     // Seven kanji on the whole board take none of the sounds their shape shares, and the tree now
     // draws them adrift rather than on a dashed line. The copy is deliberately about what is
@@ -80,31 +80,31 @@ Object.assign(window.I18N_STRINGS, {
     },
     'phonetics.adriftWhy': {
         en: 'A shared component records how these characters sounded in Chinese, long before Japanese borrowed them. Some of those sound families had already split apart by then, so a character can belong to the group by shape and history and still arrive in Japanese with a reading of its own.',
-        mn: 'Нийтлэг язгуур нь эдгээр ханз хятад хэлэнд хэрхэн дуудагддаг байсныг тэмдэглэж үлдээсэн байдаг. Япончууд тэднийг зээлэн авахаас нэлээд өмнө зарим дуудлагын бүлэг аль хэдийн салчихсан байжээ. Тиймээс ханз хэлбэр, түүхээрээ нэг бүлэгт багтсан ч япон хэлэнд өөрийн гэсэн тусдаа уншлагатай орж ирж болно.'
+        mn: 'Нийтлэг язгуур нь эдгээр ханз хятад хэлэнд хэрхэн дуудагддаг байсныг тэмдэглэдэг — япон хэл тэднийг зээлэхээс нэлээд өмнө. Тэр үед зарим дуудлагын бүл аль хэдийн салан тусгаарлачихсан байсан тул ханз хэлбэр, түүхээрээ бүлэгт багтсан ч япон хэлэнд өөрийн гэсэн уншлагатай ирж болдог.'
     },
     'phonetics.adriftShape': {
         en: '{kanji} also changed shape: it was written {old}, whose sound part was {phonetic}, not {shape}. The postwar reform replaced {phonetic} with the simpler {shape} here and in {also}. The shape groups them; the reading came from the older part.',
-        mn: '{kanji} нь хэлбэрээ ч сольсон: урьд нь {old} гэж бичигддэг байсан бөгөөд дуудлагын хэсэг нь {shape} биш, {phonetic} байжээ. Дайны дараах шинэчлэлээр {phonetic} хэсгийг энд болон {also} дотор илүү энгийн {shape} хэлбэрээр сольсон юм. Хэлбэр нь тэднийг нэгтгэдэг ч уншлага нь хуучин хэсгээсээ гаралтай хэвээр.'
+        mn: '{kanji} нь хэлбэрээ ч сольсон: урьд нь {old} гэж бичигддэг байсан бөгөөд дуудлагын хэсэг нь {shape} биш, {phonetic} байв. Дайны дараах шинэчлэлээр {phonetic}-г энд болон {also} дотор илүү энгийн {shape}-ээр сольсон юм. Хэлбэр нь тэднийг нэгтгэдэг ч уншлага нь хуучин хэсгээс гаралтай.'
     },
     // A compound regularly voices or clips the sound it borrows. That is not an exception to the
     // pattern, it is part of it, so the page names the change instead of hiding it.
     'phonetics.ndChanged': { en: 'A compound voices {from} to {to}.', mn: 'Нийлмэл үгэнд {from} нь {to} болж хувирдаг.' },
-    'phonetics.ndOtherSound': { en: 'That is another of this family\'s sounds, not the one above.', mn: 'Энэ нь дээрх дуудлага биш, бүлгийн өөр нэг дуудлага.' },
+    'phonetics.ndOtherSound': { en: 'That is another of this family\'s sounds, not the one above.', mn: 'Энэ нь дээрхи биш, бүлгийн өөр нэг дуудлага.' },
     'phonetics.ndNoExample': {
         en: 'No word in the data reads this kanji with one of its family\'s sounds, so none is shown — a wrong example would argue against the pattern.',
-        mn: 'Энэ ханзыг бүлгийнх нь дуудлагаар уншсан үг эх өгөгдөлд алга тул үзүүлсэнгүй. Буруу жишээ нь зүй тогтлыг нь үгүйсгэх байсан.'
+        mn: 'Энэ ханзыг бүлгийнх нь дуудлагаар уншсан үг эх өгөгдөлд алга тул үзүүлээгүй — буруу жишээ нь хэв журмыг нь эвдэх байсан.'
     },
     'phonetics.changeLevel': { en: 'change level', mn: 'түвшин солих' },
 
     // The board itself. The page's own name stays the eyebrow above this; the h1 is what the
     // screen asks you to do, because that is the lesson and the index was never it.
-    'phonetics.boardTitle': { en: 'Guess the reading', mn: 'Дуудлагыг нь таах' },
+    'phonetics.boardTitle': { en: 'Guess the reading', mn: 'Дуудлагыг нь таа' },
     'phonetics.boardRule': {
         en: 'The shape in the middle gives you a <b>reading to try</b>. Every kanji around it contains that shape. <b>Guess first, then tap to check.</b>',
-        mn: 'Голд байгаа хэлбэр нь <b>оролдох дуудлагыг</b> хэлж өгнө. Эргэн тойрны ханз бүр түүнийг дотроо агуулсан байгаа. <b>Эхлээд таасны дараа дарж шалгаарай.</b>'
+        mn: 'Голд байгаа хэлбэр нь <b>дуудлагыг</b> хэлнэ. Эргэн тойрны ханз бүр түүнийг дотроо агуулсан. <b>Эхлээд таа, дараа нь дарж шалга.</b>'
     },
-    'phonetics.tryThis': { en: 'try this reading', mn: 'энэ дуудлагыг туршиж үзээрэй' },
-    'phonetics.tapToCheck': { en: 'tap to check', mn: 'дарж шалгаарай' },
+    'phonetics.tryThis': { en: 'try this reading', mn: 'энэ дуудлагыг оролд' },
+    'phonetics.tapToCheck': { en: 'tap to check', mn: 'дарж шалга' },
     'phonetics.checked': { en: 'Checked {n}/{total}', mn: 'Шалгасан {n}/{total}' },
     'phonetics.matched': { en: '{n} matched', mn: '{n} таарсан' },
     'phonetics.unmatched': { en: '{n} did not', mn: '{n} таараагүй' },
