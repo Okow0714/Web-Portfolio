@@ -401,20 +401,49 @@
                 <p class="origins-standfirst" data-i18n-html="origins.standfirst">Япон хэл гурван өөр бичгийг зэрэг хэрэглэдэг ба шинэ суралцагч бүрд «ийм л юм, дассан нь дээр» гэж хэлдэг. Гэтэл дасах шаардлагагүй. Бичиг бүр тодорхой шалтгаанаар, тодорхой цагт бий болсон. Тэр шалтгааныг нь мэдвэл дүрмийг нь цээжлэх хэрэггүй болно — <em>англи үгсийг яагаад катаканагаар бичдэг нь ч бас ойлгомжтой болно</em>.</p>
             </header>
 
-            <section class="origins-section">
+            <!-- Four marks, each the shape of the section it opens: three bars for the three
+                 scripts, treads for the chronology, this page's arch for the wall, a question
+                 mark for the argument. It starts here, under the opening, and takes the top of
+                 the screen only once it is scrolled past (position: sticky, top = the fixed
+                 masthead's height). origins.js keeps aria-current on whichever section is in
+                 view, so the bar is also the page's position indicator. -->
+            <!-- i18n.js translates textContent, innerHTML and placeholder only, so the label is
+                 set from origins.js on every render instead of carrying a data-i18n here. -->
+            <nav class="origins-bar" id="origins-bar" aria-label="Хуудасны хэсгүүд">
+                <div class="origins-bar-inner">
+                    <button type="button" class="ob" data-go="s1">
+                        <span class="ob-mark scripts" aria-hidden="true"><i></i><i></i><i></i></span>
+                        <span class="ob-label" data-i18n="origins.bar.scripts">Гурван бичиг</span>
+                    </button>
+                    <button type="button" class="ob" data-go="s2">
+                        <span class="ob-mark stair" aria-hidden="true"><i></i><i></i><i></i></span>
+                        <span class="ob-label" data-i18n="origins.bar.chronology">Он цагийн дараалал</span>
+                    </button>
+                    <button type="button" class="ob" data-go="s3">
+                        <span class="ob-mark arch" aria-hidden="true"><i></i></span>
+                        <span class="ob-label" data-i18n="origins.bar.kana">Канагийн хана</span>
+                    </button>
+                    <button type="button" class="ob" data-go="s4">
+                        <span class="ob-mark why" aria-hidden="true">?</span>
+                        <span class="ob-label" data-i18n="origins.bar.why">Яагаад катакана</span>
+                    </button>
+                </div>
+            </nav>
+
+            <section class="origins-section" id="s1">
                 <h2 class="origins-h2" data-i18n="origins.scripts.h">1 · Гурван бичиг</h2>
                 <p class="origins-sub" data-i18n="origins.scripts.sub">Түүх рүү орохын өмнө: энэ гурав яг юу вэ, өгүүлбэр дотор ямар үүрэг гүйцэтгэдэг вэ. Бүх систем нь ойролцоогоор нэг минутад багтана.</p>
                 <div class="scripts-trio" id="scripts-trio"></div>
                 <div class="script-demo" id="script-demo"></div>
             </section>
 
-            <section class="origins-section">
+            <section class="origins-section" id="s2">
                 <h2 class="origins-h2" data-i18n="origins.chronology.h">2 · Он цагийн дараалал</h2>
                 <p class="origins-sub" data-i18n="origins.chronology.sub">Есөн үе шат. Тус бүр нь өнөөгийн бичигт яг нэг зүйл нэмж өгсөн. Гарчиг дээр дарж дэлгэрэнгүйг үзнэ үү.</p>
                 <div id="origins-eras"></div>
             </section>
 
-            <section class="origins-section">
+            <section class="origins-section" id="s3">
                 <h2 class="origins-h2" data-i18n="origins.kana.h">3 · Кана бүр, монголоор</h2>
                 <p class="origins-sub" data-i18n="origins.kana.sub">Аль нэг нүд дээр дарвал латин бичлэг, гарал үүслийн ханз нь харагдана. Хирагана, катакана хоёр нэг дуудлагатай учир нэг нүдэнд хамт байна — гэхдээ тус тусдаа өөр ханзнаас гаралтай болохоор хоорондоо огт төстэй биш.</p>
                 <p class="kana-legend">
@@ -422,14 +451,28 @@
                     <span><b class="lg-k">&#12450;</b> <span data-i18n="origins.legend.katakana">катакана</span></span>
                     <span><b class="lg-m">&#1072;</b> <span data-i18n="origins.legend.mongolian">монгол</span></span>
                 </p>
-                <div class="kana-grid" id="kana-grid"></div>
+                <p class="origins-sub" data-i18n="origins.kana.shapeNote">Эгшиг мөр бүр өөрийн хэлбэртэй — а-мөр гурван талт, дараа нь дөрөв, тав, зургаа, эцэст нь дугуй. Нүдийг уншихаас өмнө ямар эгшигтэйг нь хэлбэрээс таних боломжтой.</p>
+
+                <!-- Which face the whole wall shows. Filled by origins.js so the three labels
+                     stay translatable. -->
+                <div class="kana-switch" id="kana-switch" role="group"></div>
+
+                <!-- The wall is the printed gojuon on its side: five vowel rows of eleven
+                     instead of eleven of five, so the whole syllabary is one screen deep. The
+                     detail for whichever tile is picked opens in the desk BESIDE it — the right
+                     of this section was empty, and a panel underneath would mean scrolling back
+                     on every pick. -->
+                <div class="kana-bench">
+                    <div class="kana-wall" id="kana-wall"></div>
+                    <aside class="kana-desk" id="kana-desk" aria-live="polite"></aside>
+                </div>
 
                 <h2 class="origins-h2" style="margin-top:52px" data-i18n="origins.notes.h">Тайлбар хэрэгтэй найман дуудлага</h2>
                 <p class="origins-sub" data-i18n="origins.notes.sub">Хүснэгтийн ихэнх нь шууд солигдоно. Эдгээр нь монгол үсэг ойролцоо ч яг таарахгүй тохиолдлууд — гурвыг нь та англи хэлтнээс илүү амархан хэлнэ.</p>
                 <div class="sound-notes" id="sound-notes"></div>
             </section>
 
-            <section class="origins-section">
+            <section class="origins-section" id="s4">
                 <h2 class="origins-h2" data-i18n="origins.why.h">4 · Тэгвэл яагаад англи үгс катаканагаар бичигддэг вэ?</h2>
                 <p class="origins-sub" data-i18n="origins.why.sub">Ихэвчлэн «дүрэм нь тийм» гэж хариулдаг. Жинхэнэ хариулт нь дөрвөн алхамтай бөгөөд эдгээрийг харсны дараа дүрэм нь өөрөө ойлгомжтой болно.</p>
                 <div class="why-chain" id="why-chain"></div>

@@ -1,782 +1,529 @@
-/* Kana Origins — styles specific to origins.html.
-   "Vermilion and indigo" theme: this page's own scoped palette, entirely separate from the
-   shared style.css :root tokens (same pattern as game.css's .game-main and phonetics.css's
-   .phonetics-main). The two accents carry meaning rather than decoration — vermilion is the
-   Japanese side, the seal-red of a hanko; indigo is the Mongolian side. Wherever the page puts
-   the two writing systems next to each other, that pairing says which is which without a
-   label, so the colour is doing work no other page's accent does.
+/* Kana Origins (origins.html).
+   Rebuilt 2026-10-23 to sit beside Word Match and Phonetics Family without copying either.
 
-   Ground is a cool paper grey rather than the warm cream a history page reaches for by
-   default, which also keeps it clear of Dokkai Reader's warm gold and the hub's wine.
+   THE SHAPE. Word Match is built on the hexagon and Phonetics Family on the circle; this page
+   takes the ARCH — flat base, curved shoulder — and uses it for the things that frame the page:
+   the section numerals, the marks in the section bar, the tool links at the foot. The gojuon
+   itself uses five shapes, one per vowel row, with the number of sides ascending down the rows
+   (triangle, rectangle, pentagon, hexagon, then the circle the sequence is heading towards). A
+   tile therefore says which vowel it carries before it is read.
 
-   Full-bleed pattern (see CLAUDE.md): the same token block sits on body:has() and on the
-   wrapper class, because body is an ancestor and cannot read a descendant's custom
-   properties. */
+   THE WALL IS ON ITS SIDE. Five rows of eleven instead of the printed gojuon's eleven of five,
+   so the whole syllabary is one screen deep and nothing has to be scrolled to be compared. The
+   detail for whichever kana is picked opens in a desk BESIDE the wall, not under it, because
+   the right-hand side of this section was empty and a panel below means scrolling back on
+   every pick.
+
+   FOUR RULES, each one learned by correcting a draft of this design:
+   1. TEXT IS INK. No coloured headings, no coloured numerals. Colour is a solid fill behind
+      something, never a word. Ink text with an accent sprinkled through it is a stock look.
+   2. NO HAIRLINES. Not 1px borders, not drawn rails. Blocks are separated by their own fill
+      and by space.
+   3. SHADOW LIFTS, IT DOES NOT SCULPT. One soft shadow under a flat surface. A gradient fill
+      with a lit top edge reads as stamped metal, not paper.
+   4. drop-shadow, NOT box-shadow, on anything cut with clip-path — a clip-path takes the
+      element's box-shadow away with it, so four of the five kana row shapes would have lost
+      their shadow while the circle row kept its.
+
+   THE PAGE WEARS ITS OWN BUTTON. index.html gives every tool a --seal; origins.html's is
+   #a8431f, as game.html's is #5a55b0 and phonetics.html's #1f6b52. That colour runs through
+   this page's accents, so the button pressed on the home page and the page it opens are the
+   same colour. It sits almost exactly where this page's old vermilion was, so it still reads as
+   the Japanese side against the indigo that means the Mongolian one.
+   The shared masthead and footer are NOT repainted — they are generated once into twelve pages
+   from _chrome.html and belong to the site, not to this page.
+
+   Full-bleed pattern (see CLAUDE.md): the token block sits on body:has() and on the wrapper
+   class, because body is an ancestor and cannot read a descendant's custom properties. */
 body:has(.origins-main),
 .origins-main {
-    --bg-page: #eceef2;
-    --bg-page: light-dark(#eceef2, #14161a);
-    --bg-surface: #fbfbfc;
-    --bg-surface: light-dark(#fbfbfc, #1b1e24);
-    --bg-sunk: #e3e6ec;
-    --bg-sunk: light-dark(#e3e6ec, #101216);
-    --border: #cdd2dc;
-    --border: light-dark(#cdd2dc, #2b303a);
-    --border-strong: #aeb6c4;
-    --border-strong: light-dark(#aeb6c4, #3d4450);
-    --text-primary: #191c22;
-    --text-primary: light-dark(#191c22, #eef0f4);
-    --text-secondary: #464e5c;
-    --text-secondary: light-dark(#464e5c, #b9c0cc);
-    /* was #656d7d: 4.48:1 on this page's ground -- the eyebrow, the sub-paragraphs and the
-       era captions all sat just under the 4.5 floor */
-    --text-muted: #636b7b;
-    --text-muted: light-dark(#636b7b, #8f97a5);
-    --accent: #a5391f;
-    --accent: light-dark(#a5391f, #e0715a);          /* vermilion — the Japanese side */
-    --accent-dark: #8a2f19;
-    --accent-dark: light-dark(#8a2f19, #f08a72);
-    --accent-tint: #f7e9e5;
-    --accent-tint: light-dark(#f7e9e5, #2e1f1c);
-    --indigo: #2a4c7a;
-    --indigo: light-dark(#2a4c7a, #8fb0dd);          /* indigo — the Mongolian side */
-    --indigo-tint: #e6ecf5;
-    --indigo-tint: light-dark(#e6ecf5, #1b2432);
-    --shadow-sm: 0 1px 2px rgba(25, 28, 34, 0.06);
-    --shadow-md: 0 1px 2px rgba(25, 28, 34, 0.06), 0 10px 26px -16px rgba(25, 28, 34, 0.32);
-    --shadow-md: 0 1px 2px light-dark(rgba(25, 28, 34, 0.06), rgba(0, 0, 0, 0.5)), 0 10px 26px -16px light-dark(rgba(25, 28, 34, 0.32), rgba(0, 0, 0, 0.7));
-    /* Same system stack game.css uses for its Japanese type -- no extra web font to load. */
+    --bg-page: #e7e3d9;
+    --bg-page: light-dark(#e7e3d9, #17191d);
+    --bg-surface: #fcfbf7;
+    --bg-surface: light-dark(#fcfbf7, #22262c);
+    --bg-hot: #f3efe4;
+    --bg-hot: light-dark(#ece5d4, #2f353d);
+    --bg-sunk: #dcd7ca;
+    --bg-sunk: light-dark(#dcd7ca, #1b1e23);
+
+    --text-primary: #221e1a;
+    --text-primary: light-dark(#221e1a, #efece6);
+    --text-secondary: #565049;
+    --text-secondary: light-dark(#565049, #b4b0a8);
+    /* Measured against --bg-surface, not picked by eye: the lighter draft sat at 3.87:1 in
+       light and 3.84:1 in dark, and the desk note and the photo captions set in it are small
+       text, which needs 4.5. */
+    --text-faint: #6e675d;
+    --text-faint: light-dark(#6e675d, #969086);
+    /* Ink used as a FILL, with paper text on it. Separate from --text-primary, which is ink used
+       as text: on a dark page the fill must stay dark while the text goes light. */
+    --ink-block: #221e1a;
+    --ink-block: light-dark(#221e1a, #0e1013);
+    --on-ink: #e7e3d9;
+    --on-ink: light-dark(#e7e3d9, #efece6);
+
+    /* This page's button on the home page. */
+    --seal: #a8431f;
+    --seal: light-dark(#a8431f, #d2663c);
+    --indigo: #2f4468;
+    --indigo: light-dark(#2f4468, #8fa6cf);
+    --slate: #4a5565;
+    --slate: light-dark(#4a5565, #9aa6b5);
+
+    --lift: 0 2px 4px light-dark(rgba(46, 38, 28, .10), rgba(0, 0, 0, .4));
+    --lift-hi: 0 8px 18px light-dark(rgba(46, 38, 28, .17), rgba(0, 0, 0, .5));
+    --drop: drop-shadow(0 2px 3px light-dark(rgba(46, 38, 28, .22), rgba(0, 0, 0, .5)));
+    --drop-hi: drop-shadow(0 7px 10px light-dark(rgba(46, 38, 28, .3), rgba(0, 0, 0, .6)));
+    --drop-lo: drop-shadow(0 1px 1px light-dark(rgba(46, 38, 28, .3), rgba(0, 0, 0, .5)));
+
+    --arch: 46% 46% 9px 9px / 32% 32% 9px 9px;
     --font-jp: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "MS Mincho", serif;
-    --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+    --ease-pop: cubic-bezier(.22, 1, .36, 1);
 }
 
-body:has(.origins-main) {
-    background: var(--bg-page);
-}
+body:has(.origins-main) { background: var(--bg-page); }
 
 .origins-main {
-    display: block;
-    /* Clears the 64px fixed masthead, the same 89px every other page reserves. */
-    padding-top: 89px;
-    padding-bottom: 96px;
+    /* 64px one-row masthead plus clearance. */
+    padding: 84px 0 0;
     background: var(--bg-page);
     color: var(--text-primary);
 }
 
-/* ---------------------------------------------------------------------------
-   Masthead of the page itself
-   --------------------------------------------------------------------------- */
-.origins-hero {
-    max-width: 760px;
-    padding: 8px 0 0;
-}
+/* .container carries no inline padding at phone widths, so the gutter is this layer's job --
+   without it every card on the page runs into both edges of a 390px screen. The max-width is
+   the measure plus the two gutters, so the desktop column is unchanged. */
+.origins-main .origins-hero,
+.origins-main .origins-section,
+.origins-main .origins-bar-inner { max-width: 1072px; margin-inline: auto; padding-inline: 16px; }
 
+/* ------------------------------------------------------------------ hero */
+.origins-hero { padding-block: 10px 26px; }
 .origins-eyebrow {
-    margin: 0 0 14px;
-    font-size: 0.72rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--text-muted);
+    display: inline-block;
+    margin: 0 0 15px;
+    padding: 3px 10px;
+    background: var(--seal);
+    color: #fff;
+    box-shadow: var(--lift);
+    font-size: 11px;
     font-weight: 600;
+    letter-spacing: .15em;
+    text-transform: uppercase;
 }
-
 .origins-title {
-    margin: 0 0 18px;
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: clamp(2rem, 5vw, 3rem);
-    line-height: 1.08;
-    letter-spacing: -0.015em;
-    text-wrap: balance;
-}
-
-.origins-standfirst {
     margin: 0;
-    font-size: 1.06rem;
-    color: var(--text-secondary);
-    max-width: 62ch;
+    font-family: var(--font-display, Georgia, serif);
+    font-size: clamp(2rem, 5.6vw, 3.1rem);
+    font-weight: 400;
+    line-height: 1.14;
+    text-wrap: balance;
+    max-width: 18ch;
 }
-
+.origins-standfirst {
+    margin: 20px 0 0;
+    max-width: 58ch;
+    font-size: 1.02rem;
+    line-height: 1.66;
+    color: var(--text-secondary);
+}
 .origins-standfirst em {
     font-style: normal;
-    font-weight: 600;
     color: var(--text-primary);
+    background: var(--bg-surface);
+    padding: 0 .3em;
+    box-shadow: var(--lift);
 }
 
-/* ---------------------------------------------------------------------------
-   Sections
-   --------------------------------------------------------------------------- */
-.origins-section {
-    margin-top: 64px;
+/* ------------------------------------------------------------------ section bar
+   Starts under the opening and takes the top of the screen only once it is scrolled to. Four
+   marks, each the shape of the thing it opens. It is sticky inside .origins-main, so it holds
+   the top for the rest of the page. top is the masthead's height, not 0 — the masthead is
+   fixed and would otherwise cover it. */
+.origins-bar {
+    position: sticky;
+    top: 64px;
+    z-index: 5;
+    background: var(--bg-page);
+    padding-block: 9px;
 }
+.origins-bar-inner { display: flex; gap: 6px; align-items: center; }
+.ob {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 9px 10px;
+    border: 0;
+    cursor: pointer;
+    background: var(--bg-surface);
+    color: var(--text-secondary);
+    box-shadow: var(--lift);
+    font: inherit;
+    font-size: .82rem;
+    font-weight: 600;
+    border-radius: 12px 12px 4px 4px;
+    transition: background-color .15s, color .15s, box-shadow .15s, transform .15s var(--ease-pop);
+}
+.ob:hover { transform: translateY(-2px); box-shadow: var(--lift-hi); color: var(--text-primary); }
+.ob:focus-visible { outline: 3px solid var(--seal); outline-offset: 2px; }
+.ob[aria-current="true"] { background: var(--seal); color: #fff; }
+.ob-mark { flex: none; display: grid; place-items: center; width: 20px; height: 20px; }
+.ob-mark i { display: block; background: var(--text-secondary); transition: background-color .15s; }
+.ob[aria-current="true"] .ob-mark i { background: #fff; }
+/* three scripts */
+.ob-mark.scripts { display: flex; align-items: flex-end; gap: 2px; }
+.ob-mark.scripts i { width: 4px; }
+.ob-mark.scripts i:nth-child(1) { height: 9px; }
+.ob-mark.scripts i:nth-child(2) { height: 15px; }
+.ob-mark.scripts i:nth-child(3) { height: 12px; }
+/* the chronology, as treads */
+.ob-mark.stair { display: grid; gap: 2px; justify-items: start; }
+.ob-mark.stair i { height: 4px; width: 8px; }
+.ob-mark.stair i:nth-child(2) { margin-left: 5px; }
+.ob-mark.stair i:nth-child(3) { margin-left: 10px; }
+/* the wall, as the page's own arch */
+.ob-mark.arch i { width: 15px; height: 18px; border-radius: var(--arch); }
+/* the question */
+.ob-mark.why { font-size: 1rem; font-weight: 700; color: var(--text-secondary); }
+.ob[aria-current="true"] .ob-mark.why { color: #fff; }
+.ob-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@media (max-width: 620px) { .ob-label { display: none; } .ob { padding: 10px 6px; } }
 
+/* ------------------------------------------------------------------ sections */
+.origins-section { padding-block: 52px 0; scroll-margin-top: 136px; }
 .origins-h2 {
-    margin: 0 0 8px;
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1.55rem;
-    letter-spacing: -0.01em;
+    margin: 0 0 7px;
+    font-family: var(--font-display, Georgia, serif);
+    font-size: clamp(1.35rem, 3.4vw, 1.9rem);
+    font-weight: 400;
     text-wrap: balance;
 }
+.origins-sub { margin: 0 0 26px; max-width: 62ch; font-size: .94rem; color: var(--text-secondary); }
 
-.origins-sub {
-    margin: 0 0 30px;
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    max-width: 60ch;
-}
-
-/* ---------------------------------------------------------------------------
-   The three scripts — the page's colour language, set here and reused below.
-   Kanji is ink, hiragana vermilion, katakana grey with a dotted rule under it. The dotted
-   rule is not decoration: katakana began as marginal annotation, and an annotation is what
-   a dotted underline reads as, so the styling says the same thing the section does.
-   Indigo is not in this set — it belongs to the Mongolian side everywhere on this page.
-   --------------------------------------------------------------------------- */
-.scripts-trio {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(238px, 1fr));
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-}
-
+/* ------------------------------------------------------------------ 1 · the three scripts */
+.scripts-trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+@media (max-width: 860px) { .scripts-trio { grid-template-columns: 1fr; } }
 .script-card {
-    display: flex;
-    flex-direction: column;
-    gap: 9px;
-    padding: 17px 19px 19px;
     background: var(--bg-surface);
-    border-top: 3px solid var(--script-hue);
+    padding: 18px 20px 20px;
+    box-shadow: var(--lift);
+    border-radius: 16px 16px 6px 6px;
 }
-
-.script-card.is-kanji { --script-hue: var(--text-primary); }
-.script-card.is-hira { --script-hue: var(--accent); }
-.script-card.is-kata { --script-hue: var(--text-muted); }
-
-.sc-head {
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.sc-jp {
-    font-family: var(--font-jp);
-    font-size: 1.65rem;
-    line-height: 1.1;
-    color: var(--script-hue);
-}
-
-.sc-name {
-    font-size: 0.74rem;
-    font-weight: 700;
-    letter-spacing: 0.11em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-}
-
-.sc-what,
-.sc-job {
-    margin: 0;
-    font-size: 0.92rem;
-    line-height: 1.55;
-    color: var(--text-secondary);
-}
-
-.sc-job b {
-    font-weight: 600;
-    color: var(--text-primary);
-}
-
+.sc-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+.sc-jp { font-family: var(--font-jp); font-size: 1.65rem; line-height: 1.1; }
+.script-card.is-kanji .sc-jp { color: var(--slate); }
+.script-card.is-hira .sc-jp { color: var(--seal); }
+.script-card.is-kata .sc-jp { color: var(--indigo); }
+.sc-name { font-size: .82rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+           color: var(--text-faint); }
+.sc-what { margin: 0 0 10px; font-size: .9rem; color: var(--text-secondary); }
+.sc-job { margin: 0 0 12px; font-size: .9rem; color: var(--text-secondary); }
+.sc-job b { color: var(--text-primary); }
 .sc-count {
-    margin-top: auto;
-    padding-top: 6px;
-    font-size: 0.76rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    color: var(--script-hue);
-    font-variant-numeric: tabular-nums;
-}
-
-/* The same three colours doing the explaining, on one real sentence. */
-.script-demo {
-    margin-top: 22px;
-    padding: 22px 24px;
-    background: var(--bg-surface);
-    border: 1px solid var(--border);
-}
-
-.demo-sentence {
-    margin: 0 0 12px;
-    font-family: var(--font-jp);
-    font-size: clamp(1.45rem, 4.2vw, 1.95rem);
-    line-height: 1.6;
-    letter-spacing: 0.02em;
-}
-
-/* Each coloured chunk is one unit of the sentence, so it should break between chunks and
-   never inside one -- Japanese otherwise wraps at any character. */
-.demo-sentence span { white-space: nowrap; }
-
-.ss-kanji { color: var(--text-primary); }
-.ss-hira { color: var(--accent); }
-.ss-kata { color: var(--text-muted); border-bottom: 2px dotted var(--text-muted); }
-.ss-plain { color: var(--text-muted); }
-
-.demo-reading {
-    margin: 0 0 4px;
-    font-size: 0.88rem;
-    color: var(--text-muted);
-}
-
-.demo-gloss {
-    margin: 0 0 16px;
-    font-size: 0.98rem;
+    display: inline-block;
+    padding: 3px 10px;
+    background: var(--bg-sunk);
     color: var(--text-secondary);
-}
-
-.demo-read {
-    margin: 0;
-    padding-top: 14px;
-    border-top: 1px solid var(--border);
-    font-size: 0.93rem;
-    line-height: 1.65;
-    color: var(--text-secondary);
-    max-width: 66ch;
-}
-
-.demo-read b { font-weight: 600; }
-.demo-read em { font-style: italic; color: var(--text-primary); }
-
-/* ---------------------------------------------------------------------------
-   Chronology — one spine, dates hanging in the margin, titles as the control.
-   No boxes: the rule and its markers carry the sequence.
-   --------------------------------------------------------------------------- */
-.era {
-    position: relative;
-    padding-left: 146px;
-}
-
-.era::before {
-    /* the spine */
-    content: "";
-    position: absolute;
-    left: 130px;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background: var(--border);
-}
-
-.era:first-of-type::before { top: 16px; }
-.era:last-of-type::before { bottom: auto; height: 22px; }
-
-.era > summary {
-    list-style: none;
-    display: block;
-    position: relative;
-    padding: 11px 0;
-    cursor: pointer;
-    font-size: 1.05rem;
+    font-size: .76rem;
     font-weight: 600;
-    color: var(--text-primary);
-    transition: color 0.18s var(--ease-out);
-}
-
-.era > summary::-webkit-details-marker { display: none; }
-
-.era > summary::before {
-    /* the marker on the spine */
-    content: "";
-    position: absolute;
-    left: -20px;
-    top: 21px;
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: var(--bg-page);
-    border: 1.5px solid var(--border-strong);
-    transition: background 0.22s var(--ease-out), border-color 0.22s var(--ease-out),
-        transform 0.22s var(--ease-out);
-}
-
-.era > summary::after {
-    /* the date, hanging in the left margin */
-    content: attr(data-when);
-    position: absolute;
-    left: -146px;
-    top: 13px;
-    width: 108px;
-    text-align: right;
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 0.92rem;
-    color: var(--accent);
     font-variant-numeric: tabular-nums;
-    letter-spacing: -0.01em;
 }
 
-.era > summary:hover { color: var(--accent); }
-.era > summary:hover::before { border-color: var(--accent); transform: scale(1.25); }
-.era > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.script-demo { margin-top: 18px; background: var(--bg-surface); padding: 20px 22px 22px;
+               box-shadow: var(--lift); border-radius: 16px 16px 6px 6px; }
+.demo-sentence { margin: 0; font-family: var(--font-jp); font-size: clamp(1.3rem, 4.4vw, 2rem);
+                 line-height: 1.5; }
+/* The three scripts keep the colours the cards gave them, so the sentence is legible as a
+   division of labour and not just as a sentence. */
+.demo-sentence .ss-kanji { color: var(--slate); }
+.demo-sentence .ss-hira { color: var(--seal); }
+.demo-sentence .ss-kata { color: var(--indigo); }
+.demo-sentence .ss-plain { color: var(--text-faint); }
+.demo-reading { margin: 12px 0 2px; font-size: .92rem; color: var(--text-secondary); }
+.demo-gloss { margin: 0 0 14px; font-size: .92rem; font-weight: 600; }
+.demo-read { margin: 0; max-width: 62ch; font-size: .9rem; color: var(--text-secondary); }
 
-.era[open] > summary { color: var(--accent); }
-.era[open] > summary::before {
-    background: var(--accent);
-    border-color: var(--accent);
-    transform: scale(1.15);
+/* ------------------------------------------------------------------ 2 · chronology
+   Nine eras as a flight of steps, each indented past the one above, opening in place. The
+   photographs and captions the page already carried are kept — they are the reason this
+   section is worth opening. */
+#origins-eras { display: grid; gap: 7px; }
+.era {
+    background: var(--bg-surface);
+    box-shadow: var(--lift);
+    border-radius: 14px 14px 5px 5px;
+    overflow: hidden;
+    transition: box-shadow .16s;
 }
-
-.era-when-sub {
-    display: block;
-    margin-top: 2px;
-    font-family: var(--font-body);
-    font-weight: 500;
-    font-size: 0.72rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-}
-
-/* The open/close animation. A <details> element cannot transition its own height, so the body
-   is wrapped in a grid whose single row goes 0fr -> 1fr; that interpolates cleanly and needs
-   no measured pixel height. origins.js holds the element open for the duration of the closing
-   pass so the collapse is visible rather than instant. */
-.era-reveal {
+.era:hover { box-shadow: var(--lift-hi); }
+.era > summary {
     display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows 0.38s var(--ease-out), opacity 0.28s var(--ease-out);
-    opacity: 0;
+    grid-template-columns: 108px 1fr 22px;
+    gap: 16px;
+    align-items: start;
+    padding: 15px 20px;
+    cursor: pointer;
+    list-style: none;
+    font-weight: 600;
 }
-
-.era.is-open .era-reveal {
-    grid-template-rows: 1fr;
-    opacity: 1;
-}
-
-.era-reveal > div { overflow: hidden; }
-
-.era-body {
-    padding: 2px 0 30px;
-}
-
-.era-body p {
-    margin: 0;
-    max-width: 64ch;
+.era > summary::-webkit-details-marker { display: none; }
+.era > summary::before {
+    content: attr(data-when);
+    justify-self: start;
+    padding: 2px 9px;
+    background: var(--bg-sunk);
     color: var(--text-secondary);
-    font-size: 0.96rem;
+    font-size: .74rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: .04em;
 }
+/* the chevron */
+.era > summary::after {
+    content: "";
+    justify-self: end;
+    align-self: center;
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid var(--text-faint);
+    border-bottom: 2px solid var(--text-faint);
+    transform: rotate(45deg);
+    transition: transform .2s;
+}
+.era.is-open > summary::after { transform: rotate(-135deg); }
+.era-head { min-width: 0; }
+.era-when-sub { display: block; margin-top: 2px; font-size: .84rem; font-weight: 400;
+                color: var(--text-secondary); }
 
-.era-body p + p { margin-top: 11px; }
-
+/* <details> snaps; the animation is on an inner grid going 0fr -> 1fr. */
+.era-reveal { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .38s var(--ease-pop); }
+.era.is-open .era-reveal { grid-template-rows: 1fr; }
+.era-reveal > div { overflow: hidden; }
+.era-body { padding: 0 20px 20px 124px; }
+@media (max-width: 760px) { .era-body { padding-left: 20px; } .era > summary { grid-template-columns: 1fr 22px; }
+                            .era > summary::before { grid-column: 1 / -1; margin-bottom: 4px; } }
+.era-body p { margin: 0 0 12px; font-size: .94rem; color: var(--text-secondary); max-width: 62ch; }
 .era-pull {
-    display: block;
-    margin-top: 14px;
-    padding: 11px 15px;
-    max-width: 62ch;
-    background: var(--accent-tint);
-    border-left: 2px solid var(--accent);
-    font-size: 0.93rem;
-    color: var(--text-primary);
+    margin: 14px 0 !important;
+    padding: 14px 18px;
+    background: var(--bg-sunk);
+    color: var(--text-primary) !important;
+    font-size: 1rem !important;
+    border-radius: 12px 12px 4px 4px;
 }
-
-.era-figure {
-    margin: 20px 0 0;
-    max-width: 620px;
-}
-
+.era-figure { margin: 16px 0 0; }
 .era-figure img {
     display: block;
     width: 100%;
-    height: auto;
-    max-height: 460px;
-    object-fit: cover;
-    border: 1px solid var(--border);
-    background: var(--bg-sunk);
+    max-width: 560px;
+    border-radius: 14px 14px 5px 5px;
+    box-shadow: var(--lift);
 }
+.era-figure figcaption { margin-top: 8px; max-width: 560px; font-size: .8rem; color: var(--text-faint); }
 
-.era-figure figcaption {
-    margin-top: 8px;
-    font-size: 0.78rem;
-    line-height: 1.5;
-    color: var(--text-muted);
-}
-
-.era-figure figcaption em { font-style: normal; opacity: 0.85; }
-
-/* Redrawn kaeriten diagram. The characters sit in the order they are written; the numbers are
-   the order they are read. The gap between those two is the whole point of that era, and a
-   drawing states it more clearly than the scan did — the source is a tall vertical strip with
-   an alpha channel, which does not survive being fitted to a text column. */
-.kaeriten-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    padding: 18px 16px;
-    background: var(--bg-surface);
-    border: 1px solid var(--border);
-}
-
+/* The Han Feizi line, numbered in the order a Japanese reader has to take it. */
+.kaeriten-row { display: flex; flex-wrap: wrap; gap: 6px; }
 .kaeriten-col {
-    flex: 1 1 auto;
-    min-width: 52px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
+    display: grid;
+    place-items: center;
+    gap: 2px;
+    padding: 10px 8px 8px;
+    background: var(--bg-sunk);
+    border-radius: 10px 10px 3px 3px;
 }
+.kaeriten-char { font-family: var(--font-jp); font-size: 1.5rem; line-height: 1; }
+.kaeriten-num { font-size: .72rem; font-weight: 700; color: var(--seal); font-variant-numeric: tabular-nums; }
 
-.kaeriten-char {
+/* ------------------------------------------------------------------ 3 · the wall */
+.kana-legend { display: flex; flex-wrap: wrap; gap: 7px 20px; margin: 0 0 18px;
+               font-size: .82rem; color: var(--text-secondary); }
+.kana-legend b { font-family: var(--font-jp); font-size: 1rem; }
+.kana-legend .lg-h { color: var(--seal); }
+.kana-legend .lg-k { color: var(--indigo); }
+.kana-legend .lg-m { color: var(--text-primary); font-weight: 700; }
+
+/* Which reading the whole wall shows. */
+.kana-switch { display: inline-flex; gap: 4px; margin-bottom: 16px; padding: 4px; background: var(--bg-sunk); }
+.kana-switch button {
+    border: 0; cursor: pointer; padding: 7px 14px; background: transparent;
+    color: var(--text-secondary); font: inherit; font-size: .8rem; font-weight: 600;
+    transition: background-color .14s, color .14s, box-shadow .14s;
+}
+.kana-switch button:hover { color: var(--text-primary); }
+.kana-switch button[aria-pressed="true"] { background: var(--ink-block); color: var(--on-ink); box-shadow: var(--lift); }
+.kana-switch .ks-sym { font-family: var(--font-jp); font-size: .95rem; margin-right: 6px; }
+
+.kana-bench { display: grid; grid-template-columns: minmax(0, 1fr) 276px; gap: 26px; align-items: start; }
+@media (max-width: 980px) { .kana-bench { grid-template-columns: 1fr; gap: 20px; } }
+
+.kana-wall { display: grid; gap: 6px; }
+.kana-course { display: grid; grid-template-columns: 20px repeat(11, minmax(0, 1fr)); gap: 5px;
+               align-items: start; }
+/* The row label only names the vowel; the row's own tiles already say what shape it is. */
+.kana-vowel { align-self: center; text-align: center;
+              font-size: .72rem; font-weight: 700; color: var(--text-faint); }
+
+.kana-stone {
+    width: 100%;
+    aspect-ratio: 1 / 1.1;
+    display: grid;
+    place-items: center;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
     font-family: var(--font-jp);
-    font-size: 2rem;
+    font-size: clamp(.8rem, 2.3vw, 1.5rem);
     line-height: 1;
     color: var(--text-primary);
+    background-color: var(--bg-surface);
+    /* drop-shadow, not box-shadow: four of the five row shapes are cut with clip-path, and a
+       clip-path takes the element's box-shadow with it. */
+    filter: var(--drop);
+    transition: transform .16s var(--ease-pop), background-color .14s, color .14s, filter .16s;
 }
+.kana-stone:focus-visible { outline: 3px solid var(--indigo); outline-offset: 2px; }
+.kana-stone.is-lit { background-color: var(--bg-hot); }
+.kana-stone:hover { background-color: var(--bg-hot); filter: var(--drop-hi); transform: translateY(-5px); }
+.kana-stone.is-blank { visibility: hidden; pointer-events: none; }
+/* Set down rather than lifted: an inset shadow would be clipped away like a box-shadow. */
+.kana-stone.is-on { background-color: var(--seal); color: #fff; filter: var(--drop-lo); transform: translateY(1px); }
+.kana-stone.is-on.m-kata { background-color: var(--ink-block); color: var(--on-ink); }
+.kana-stone.is-on.m-kanji { background-color: var(--indigo); color: #fff; }
 
-.kaeriten-num {
-    width: 100%;
-    padding-top: 5px;
-    border-top: 1px solid var(--border);
-    text-align: center;
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 0.92rem;
-    color: var(--accent);
-    font-variant-numeric: tabular-nums;
-}
+/* One shape per vowel row, sides ascending down the rows. */
+.v-a .kana-stone { clip-path: polygon(50% 0%, 100% 100%, 0% 100%); }
+.v-i .kana-stone { border-radius: 4px; }
+.v-u .kana-stone { clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%); }
+.v-e .kana-stone { clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); }
+.v-o .kana-stone { border-radius: 50%; aspect-ratio: 1; }
+/* A triangle is only wide enough to read in its lower half, so the glyph sits there. */
+.v-a .kana-stone { align-content: end; padding-bottom: 9%; font-size: clamp(.68rem, 2vw, 1.3rem); }
 
-.era-figure figcaption strong {
-    color: var(--accent);
-    font-variant-numeric: tabular-nums;
-}
-
-/* ---------------------------------------------------------------------------
-   Kana grid
-   --------------------------------------------------------------------------- */
-.kana-legend {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px 18px;
-    align-items: center;
-    margin-bottom: 16px;
-    font-size: 0.86rem;
-    color: var(--text-muted);
-}
-
-.kana-legend b { font-family: var(--font-jp); }
-.kana-legend .lg-h { color: var(--accent); }
-.kana-legend .lg-k { color: var(--text-muted); }
-.kana-legend .lg-m { color: var(--indigo); font-family: var(--font-body); }
-
-.kana-grid {
-    display: grid;
-    grid-template-columns: 46px repeat(5, 1fr);
-    gap: 6px;
-    align-items: start;
-}
-
-.kana-colhead,
-.kana-rowhead {
-    padding: 4px 0;
-    text-align: center;
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    font-weight: 600;
-    color: var(--text-muted);
-}
-
-.kana-rowhead {
-    align-self: center;
-    font-family: var(--font-jp);
-    font-size: 0.95rem;
-    text-transform: none;
-    letter-spacing: 0;
-    color: var(--text-secondary);
-}
-
-.kana-tile {
-    width: 100%;
-    padding: 9px 4px 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
+/* The desk: whichever kana is picked, opened beside the wall rather than under it. */
+.kana-desk {
+    position: sticky;
+    top: 152px;
     background: var(--bg-surface);
-    border: 1px solid var(--border);
-    font: inherit;
-    color: inherit;
-    text-align: center;
-    cursor: pointer;
-    transition: border-color 0.16s var(--ease-out), background 0.16s var(--ease-out),
-        transform 0.16s var(--ease-out);
+    padding: 18px 18px 20px;
+    box-shadow: var(--lift);
+    border-radius: 18px 18px 7px 7px;
 }
+@media (max-width: 980px) { .kana-desk { position: static; } }
+/* These are <p> elements, so their UA margins have to go or the desk opens with 40px of
+   nothing above the kana. */
+.kd-pair { margin: 0; font-family: var(--font-jp); font-size: 2.5rem; line-height: 1.05; }
+.kd-rom { margin: 3px 0 0; font-size: .72rem; letter-spacing: .13em; text-transform: uppercase;
+          color: var(--text-faint); }
+.kd-mn { display: inline-block; margin: 11px 0 16px; padding: 4px 12px; background: var(--indigo);
+         color: #fff; font-size: 1rem; font-weight: 700; box-shadow: var(--lift); }
+.kd-deriv { display: flex; align-items: center; gap: 10px; padding: 11px 13px; background: var(--bg-sunk);
+            border-radius: 12px 12px 4px 4px; }
+.kd-deriv + .kd-deriv { margin-top: 7px; }
+.kd-from, .kd-to { font-family: var(--font-jp); line-height: 1; }
+.kd-from { font-size: 1.5rem; color: var(--text-secondary); }
+.kd-to { font-size: 1.75rem; color: var(--seal); }
+.kd-deriv.is-kata .kd-to { color: var(--indigo); }
+.kd-arrow { color: var(--text-faint); font-size: .8rem; }
+.kd-label { margin-left: auto; text-align: right; font-size: .66rem; line-height: 1.35; color: var(--text-secondary); }
+.kd-label b { display: block; font-size: .72rem; color: var(--text-primary); }
+.kd-note { margin: 14px 0 0; font-size: .75rem; line-height: 1.5; color: var(--text-faint); }
+.kd-hint { margin: 10px 0 0; font-size: .72rem; color: var(--text-faint); }
 
-.kana-tile:hover {
-    border-color: var(--accent);
-    background: var(--accent-tint);
-    transform: translateY(-1px);
-}
+/* ------------------------------------------------------------------ the eight sounds */
+.sound-notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px; }
+.sound-note { background: var(--bg-surface); padding: 15px 18px 17px; box-shadow: var(--lift);
+              border-radius: 14px 14px 5px 5px; }
+.sound-note h3 { margin: 0 0 6px; display: flex; align-items: baseline; gap: 9px; font-size: .95rem; }
+.sn-k { font-family: var(--font-jp); font-size: 1.4rem; line-height: 1; }
+.sound-note.is-easy .sn-k { color: var(--seal); }
+.sound-note.is-watch .sn-k { color: var(--indigo); }
+.sn-m { font-weight: 700; }
+.sound-note p { margin: 0; font-size: .88rem; color: var(--text-secondary); }
 
-.kana-tile:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
-
-.kana-pair {
-    font-family: var(--font-jp);
-    font-size: 1.24rem;
-    line-height: 1.15;
-    color: var(--accent);
-}
-
-.kana-pair i { font-style: normal; color: var(--text-muted); }
-
-.kana-mn {
-    font-size: 0.92rem;
-    font-weight: 600;
-    color: var(--indigo);
-}
-
-/* Same 0fr -> 1fr technique as the chronology, so the tile grows into its detail rather than
-   snapping. */
-.kana-detail {
-    display: grid;
-    grid-template-rows: 0fr;
-    width: 100%;
-    opacity: 0;
-    transition: grid-template-rows 0.3s var(--ease-out), opacity 0.24s var(--ease-out);
-}
-
-.kana-tile[aria-expanded="true"] .kana-detail {
-    grid-template-rows: 1fr;
-    opacity: 1;
-}
-
-.kana-detail > span { overflow: hidden; }
-
-.kana-tile[aria-expanded="true"] {
-    border-color: var(--accent);
-    background: var(--accent-tint);
-}
-
-.kana-detail-inner {
-    display: block;
-    margin-top: 8px;
-    padding-top: 8px;
-    border-top: 1px dashed var(--border-strong);
-}
-
-.kana-romaji {
-    display: block;
-    margin-bottom: 6px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    color: var(--text-primary);
-}
-
-.kana-from {
-    display: block;
-    font-size: 0.68rem;
-    line-height: 1.6;
-    color: var(--text-muted);
-}
-
-.kana-from b {
-    font-family: var(--font-jp);
-    font-size: 1.02rem;
-    font-weight: 500;
-    color: var(--text-secondary);
-}
-
-.kana-tile.is-blank {
-    background: var(--bg-sunk);
-    border-style: dashed;
-    cursor: default;
-}
-
-.kana-tile.is-blank:hover {
-    border-color: var(--border);
-    background: var(--bg-sunk);
-    transform: none;
-}
-
-/* ---------------------------------------------------------------------------
-   Sound notes, causal chain, closing links
-   --------------------------------------------------------------------------- */
-.sound-notes {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(252px, 1fr));
-    gap: 1px;
-    margin-top: 26px;
-    background: var(--border);
-    border: 1px solid var(--border);
-}
-
-.sound-note {
-    background: var(--bg-surface);
-    padding: 15px 17px;
-}
-
-.sound-note h3 {
-    display: flex;
-    align-items: baseline;
-    gap: 9px;
-    margin: 0 0 5px;
-    font-size: 0.95rem;
-    font-weight: 600;
-}
-
-.sound-note .sn-k { font-family: var(--font-jp); font-size: 1.2rem; color: var(--accent); }
-.sound-note .sn-m { color: var(--indigo); }
-.sound-note p { margin: 0; font-size: 0.88rem; color: var(--text-secondary); }
-.sound-note.is-easy { border-top: 2px solid var(--indigo); }
-.sound-note.is-watch { border-top: 2px solid var(--accent); }
-
-.why-chain {
-    display: grid;
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-}
-
+/* ------------------------------------------------------------------ 4 · the argument */
+.why-chain { display: grid; gap: 10px; max-width: 66ch; }
 .why-link {
     display: grid;
-    grid-template-columns: 32px 1fr;
-    gap: 18px;
-    align-items: start;
-    padding: 17px 20px;
+    grid-template-columns: 34px 1fr;
+    gap: 16px;
     background: var(--bg-surface);
+    padding: 15px 18px;
+    box-shadow: var(--lift);
+    border-radius: 14px 14px 5px 5px;
 }
-
 .why-num {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1.12rem;
-    line-height: 1.45;
-    color: var(--accent);
-}
-
-.why-link h3 { margin: 0 0 4px; font-size: 1rem; font-weight: 600; }
-.why-link p { margin: 0; font-size: 0.93rem; color: var(--text-secondary); max-width: 60ch; }
-
-.why-verdict {
-    margin-top: 22px;
-    padding: 19px 22px;
-    background: var(--accent-tint);
-    border-left: 3px solid var(--accent);
-}
-
-.why-verdict p { margin: 0; max-width: 66ch; }
-
-.next-steps {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 14px;
-    margin-top: 4px;
+    place-items: center;
+    width: 26px;
+    height: 30px;
+    background: var(--bg-sunk);
+    color: var(--text-primary);
+    font-size: .8rem;
+    font-weight: 700;
+    border-radius: var(--arch);
 }
+.why-link h3 { margin: 0 0 3px; font-size: .96rem; }
+.why-link p { margin: 0; font-size: .9rem; color: var(--text-secondary); }
+.why-verdict { margin: 24px 0 0; max-width: 66ch; }
+.why-verdict p {
+    margin: 0;
+    padding: 18px 22px;
+    background: var(--ink-block);
+    color: var(--on-ink);
+    box-shadow: var(--lift-hi);
+    border-radius: 16px 16px 6px 6px;
+    font-size: .95rem;
+}
+.why-verdict strong { color: #fff; }
 
+/* ------------------------------------------------------------------ next steps
+   Rules, not cards. The three marks are the only place the page names its own shape language,
+   and they are signifiers rather than containers. */
+.next-steps { display: grid; gap: 8px; max-width: 66ch; padding-bottom: 60px; }
 .next-card {
-    display: block;
-    padding: 18px 20px;
-    background: var(--bg-surface);
-    border: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    align-items: center;
+    gap: 16px;
+    padding: 15px 18px;
+    border-radius: 14px 14px 5px 5px;
     text-decoration: none;
     color: inherit;
-    transition: border-color 0.18s var(--ease-out), transform 0.18s var(--ease-out),
-        box-shadow 0.18s var(--ease-out);
+    background: var(--bg-surface);
+    box-shadow: var(--lift);
+    transition: background-color .14s, transform .16s var(--ease-pop), box-shadow .16s;
 }
-
-.next-card:hover {
-    border-color: var(--accent);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-}
-
-.next-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-
-.next-card .nc-seal {
-    display: inline-block;
-    margin-bottom: 9px;
-    padding: 3px 9px;
+.next-card:hover { background: var(--bg-hot); transform: translateY(-2px); box-shadow: var(--lift-hi); }
+.nc-seal {
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 30px;
+    background: var(--indigo);
+    color: #fff;
     font-family: var(--font-jp);
-    font-size: 1rem;
-    color: var(--accent);
-    background: var(--accent-tint);
+    font-size: .88rem;
+    border-radius: var(--arch);
 }
+.next-card[href="game.html"] .nc-seal { clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); border-radius: 0; }
+.next-card[href="phonetics.html"] .nc-seal { border-radius: 50%; height: 26px; }
+.next-card[href="reading.html"] .nc-seal { border-radius: 4px; }
+.next-card h3 { margin: 0 0 2px; font-size: .96rem; }
+.next-card p { margin: 0; font-size: .86rem; color: var(--text-secondary); }
 
-.next-card h3 { margin: 0 0 5px; font-size: 1.02rem; font-weight: 600; }
-.next-card p { margin: 0; font-size: 0.89rem; color: var(--text-secondary); }
-
-/* ---------------------------------------------------------------------------
-   Entrance: sections rise on load, staggered. Deliberately from a *visible* resting
-   state on the first paint of anything above the fold, so nothing is ever stuck
-   invisible if the animation never runs.
-   --------------------------------------------------------------------------- */
-@keyframes originsRise {
-    from { opacity: 0; transform: translateY(14px); }
-    to { opacity: 1; transform: none; }
-}
-
-.origins-hero,
-.origins-section {
-    animation: originsRise 0.5s var(--ease-out) both;
-}
-
-.origins-section:nth-of-type(1) { animation-delay: 0.06s; }
-.origins-section:nth-of-type(2) { animation-delay: 0.12s; }
-.origins-section:nth-of-type(3) { animation-delay: 0.18s; }
-.origins-section:nth-of-type(4) { animation-delay: 0.24s; }
-.origins-section:nth-of-type(5) { animation-delay: 0.30s; }
-
-@media (max-width: 700px) {
-    .era { padding-left: 22px; }
-    .era::before { left: 6px; }
-    .era > summary::before { left: -20px; }
-    .era > summary::after {
-        position: static;
-        display: block;
-        width: auto;
-        text-align: left;
-        margin-bottom: 2px;
-    }
-}
-
-@media (max-width: 620px) {
-    .script-demo { padding: 18px 16px; }
-    .kana-grid { grid-template-columns: 34px repeat(5, 1fr); gap: 4px; }
-    .kana-pair { font-size: 1.05rem; }
+@media (max-width: 760px) {
+    .origins-main { padding-top: 76px; }
+    .origins-bar { top: 56px; }
+    .origins-section { scroll-margin-top: 124px; }
+    .kana-desk { top: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .origins-hero,
-    .origins-section { animation: none; }
-    .era-reveal,
-    .kana-detail,
-    .kana-tile,
-    .next-card,
-    .era > summary,
-    .era > summary::before { transition: none; }
-}
-
-/* ---------------------------------------------------------------------------------------------
-   Masthead and footer carry this tool's own colour instead of the shared wine.
-   The value is the seal colour deepened to 68%: at full strength the gold accent
-   (--header-accent) falls to 3.42:1 against a 4.5 minimum, and the gold is not
-   decoration -- it is the masthead border, the brand seal, the current-section underline and every
-   footer link. Deepened it sits at 5.64:1, with the cream text at 8.73:1.
-
-   Declared on .site-header-wrap/.site-footer because that is where style.css declares
-   --header-bg, and repeated under html[data-contrast="darker"] because style.css re-declares it
-   there at higher specificity -- without the second block the darker theme snaps back to wine.
-   --------------------------------------------------------------------------------------------- */
-.site-header-wrap,
-.site-footer {
-    --header-bg: #722e15;
-    --header-bg-elevated: #8b381a;
-}
-
-html[data-contrast="darker"] .site-header-wrap,
-html[data-contrast="darker"] .site-footer {
-    --header-bg: #431b0c;
-    --header-bg-elevated: #722e15;
+    .origins-main *, .origins-main *::before, .origins-main *::after {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+    }
 }

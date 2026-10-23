@@ -217,6 +217,29 @@ Object.assign(window.I18N_STRINGS, {
     'origins.legend.hiragana': { en: 'hiragana', mn: 'хирагана' },
     'origins.legend.katakana': { en: 'katakana', mn: 'катакана' },
     'origins.legend.mongolian': { en: 'Mongolian', mn: 'монгол' },
+    'origins.legend.kanji': { en: 'source kanji', mn: 'гарал ханз' },
+
+    // The section bar, and the wall's own controls.
+    'origins.bar.label': { en: 'Page sections', mn: 'Хуудасны хэсгүүд' },
+    'origins.bar.scripts': { en: 'Three scripts', mn: 'Гурван бичиг' },
+    'origins.bar.chronology': { en: 'Chronology', mn: 'Он цагийн дараалал' },
+    'origins.bar.kana': { en: 'The kana wall', mn: 'Канагийн хана' },
+    'origins.bar.why': { en: 'Why katakana', mn: 'Яагаад катакана' },
+    'origins.kana.show': { en: 'Shown on the wall', mn: 'Ханан дээр харуулах' },
+    'origins.kana.shapeNote': {
+        en: 'Each vowel row has its own shape — three sides for the a- row, then four, five, six, and the circle the sequence was heading for. A tile tells you its vowel before you read it.',
+        mn: 'Эгшиг мөр бүр өөрийн хэлбэртэй — а-мөр гурван талт, дараа нь дөрөв, тав, зургаа, эцэст нь дугуй. Нүдийг уншихаас өмнө ямар эгшигтэйг нь хэлбэрээс таних боломжтой.'
+    },
+    'origins.desk.empty': { en: 'Pick a tile from the wall.', mn: 'Ханан дээрх нүднээс сонгоно уу.' },
+    'origins.desk.hira': { en: 'hiragana', mn: 'хирагана' },
+    'origins.desk.hiraHow': { en: 'a whole character, worn smooth by cursive', mn: 'бүтэн ханз, бичмэл хэлбэрээр жигдэрсэн' },
+    'origins.desk.kata': { en: 'katakana', mn: 'катакана' },
+    'origins.desk.kataHow': { en: 'one fragment, snapped off', mn: 'ханзны нэг хэсгийг тасдаж авсан' },
+    'origins.desk.note': {
+        en: 'One sound, two different kanji behind it. That is the whole reason the pair looks nothing alike.',
+        mn: 'Нэг дуудлага, цаана нь хоёр өөр ханз. Хос үсэг хоорондоо огт төстэй биш байдгийн бүх шалтгаан нь үүнд л байна.'
+    },
+    'origins.desk.keys': { en: 'The arrow keys move along the wall.', mn: 'Сумтай товчоор ханан дээгүүр шилжинэ.' },
 
     'origins.notes.h': { en: 'The eight that need a note', mn: 'Тайлбар хэрэгтэй найман дуудлага' },
     'origins.notes.sub': {

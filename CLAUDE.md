@@ -19,6 +19,7 @@ Supabase (Postgres + Auth). Hosted on GitHub Pages. Git repo on `main`.
 | `grammar.html` | Grammar Connect — sentence-swap grammar drill, two tracks (foundation/advanced). `<main class="grammar-main">` / `grammar.css`. |
 | `reading.html` | Dokkai Reader — speech-recognition-driven reading practice. `<main class="reading-main">` / `reading.css` (warm gold, light). |
 | `dictionary.html` | Mongol-Japan Dictionary — two tabs: primary Монгол⇄日本語 (`mnjp-data.js`), secondary 漢語⇄和語 Kango/Wago (`dictionary-data.js`, lazy-loaded only when that tab opens). Reads a `?q=` URL param on load to pre-fill/filter the primary tab — the target of the home page's search bar. `<main class="dictionary-main">` / `dictionary.css`. |
+| `origins.html` | Kana Origins — where hiragana and katakana came from, for a beginner who knows no kanji. `<main class="origins-main">` / `origins.css`. **Rebuilt 2026-10-23** (see Kana Origins below): four sections behind a sticky section bar, and the gojuon laid out as a wall of five vowel rows of eleven rather than the printed eleven of five. |
 | `dashboard.html` | Signed-in-only progress page — profile (avatar, editable display name), score vs. site average, per-tool level/text completion, and a link into the Settings modal for account management. `<main class="dash-main">` / `dashboard.css` (cool slate/blue utility theme). This is now the **only** page showing those bars — `index.html` carried a condensed copy until the 2026-10-11 hub rebuild removed it, along with `hub-home.js`, and `tests/progress-totals.spec.js` lost its three index.html placeholder rows at the same time. |
 | `privacy.html`, `terms.html` | Legal pages, plain styling via `legal.css`. |
 | `credits.html` | Full data/photo/music credits for every tool, one page, `legal.css` styling like the pages above — the destination for every page's footer "Data & licensing" link. Sectioned with anchor ids (`#word-game-photos`, `#word-game-music`, `#grammar-connect-photos`, `#grammar-connect-music`) in case a page ever wants to deep-link to one part instead of the whole page. |
@@ -151,7 +152,8 @@ means every `var(--x)` in that file picks up the page-local value automatically.
 the one exception — it doesn't load `style.css` at all, so its tokens live on a real `:root`
 instead of being scoped to its wrapper class. Current palette: hub deep wine/gold (dark),
 phonetics light jade/copper, reading warm gold (light), grammar its own accent, dictionary its
-own accent, dashboard cool slate/blue, game dark hanafuda violet/gold, about forest-teal.
+own accent, dashboard cool slate/blue, game dark hanafuda violet/gold, about forest-teal,
+origins warm paper with this page's own hub-seal colour (see Kana Origins below).
 **Each page's colors and layout are deliberately distinct — don't reintroduce a shared template
 between them.**
 **Every page now carries both themes**, `about.html` included. Each token keeps its original
@@ -314,6 +316,36 @@ the derived data is the provenance record.
 
 Related: `phonetics.html` used to auto-open its "what's a phonetic component?" modal on *every*
 load; that is gone — the tour points at the button instead.
+
+**Kana Origins is four sections and a wall** (rebuilt 2026-10-23). A sticky `.origins-bar`
+starts under the opening and takes the top of the screen once it is scrolled past; its four
+marks are the shapes of the sections they open, and `origins.js` keeps `aria-current` on
+whichever section is in view, so the bar is also the position indicator. Section 1 (the three
+scripts and the demo sentence) and section 2 (nine eras with their photographs) keep the content
+and the class names they always had -- the renderers were not touched.
+
+**The gojuon is laid on its side.** `KANA_ROWS` is the printed table, eleven consonant rows of
+five vowels; `renderKana()` draws its TRANSPOSE, five vowel rows of eleven, so the whole
+syllabary is one screen deep and nothing has to be scrolled before two kana can be compared.
+**The vowel carries the shape**: a-row triangles, i-row rectangles, u-row pentagons, e-row
+hexagons, o-row circles -- sides ascending towards the circle the sequence is heading for, so a
+tile says which vowel it is before it is read. Four of those five are cut with `clip-path`, and
+**a clip-path takes the element's `box-shadow` with it**, so every tile is lifted with
+`filter: drop-shadow()` instead; mixing the two would have shadowed the circle row alone.
+The nine gaps (yi, ye, wu...) are rendered as invisible tiles rather than closed up, because
+they are part of the shape of the syllabary and removing them misaligns every row below.
+A three-way switch re-cuts all 46 faces between hiragana, katakana and the source kanji -- the
+shapes stay put while the glyphs change, which is the page's argument in one control.
+The detail opens in a **desk beside the wall**, not under it: the right of that section was
+empty, and a panel underneath means scrolling back on every pick.
+
+**The page wears its own button.** `index.html` gives every tool a `--seal`; this page's is
+`#a8431f`, and that colour runs through its accents so the button pressed on the home page and
+the page it opens match. The shared masthead and footer are **not** repainted -- they are
+generated once into twelve pages from `_chrome.html` and belong to the site.
+Two things the rebuild had to fix that are easy to reintroduce: `<main>`'s own blocks carry the
+phone gutter (`.container` has no inline padding at 390px, so without it every card ran into
+both edges), and `window.siteLang` is a **function**, not a string.
 
 **Word Match is five classic scripts, not one** (`game-core.js` → `game-fx.js` → `game-gate.js`
 → `game-memory.js` → `game.js`, after `game-particles.js`/`game-audio.js`). They share one

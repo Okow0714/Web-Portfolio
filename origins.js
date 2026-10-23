@@ -112,8 +112,11 @@ function renderEras() {
 
         const summary = document.createElement('summary');
         summary.setAttribute('data-when', window.t(era.when));
-        summary.innerHTML = esc(window.t(era.title)) +
-            '<span class="era-when-sub">' + esc(window.t(era.sub)) + '</span>';
+        // One wrapper, not a bare text node plus a block span: the summary is a grid, and a
+        // display:block child breaks the anonymous inline item in two, which put the sub-line
+        // in the chevron's column and pushed the chevron onto a row of its own.
+        summary.innerHTML = '<span class="era-head">' + esc(window.t(era.title)) +
+            '<span class="era-when-sub">' + esc(window.t(era.sub)) + '</span></span>';
 
         let inner = era.body.map(k => '<p>' + window.t(k) + '</p>').join('');
         if (era.pull) inner += '<p class="era-pull">' + window.t(era.pull) + '</p>';
@@ -162,38 +165,113 @@ function renderScripts() {
         '<p class="demo-read">' + window.t('origins.demo.read') + '</p>';
 }
 
+// ---------------------------------------------------------------------------
+// The wall
+// ---------------------------------------------------------------------------
+// KANA_ROWS above is the printed gojuon: eleven consonant rows of five vowels. The wall is its
+// TRANSPOSE -- five vowel rows of eleven -- so the whole syllabary is one screen deep and
+// nothing has to be scrolled before two kana can be compared. The vowel is what carries the
+// shape (see the .v-* rules in origins.css), which is why the vowel is the row.
+const VOWEL_KEYS = ['a', 'i', 'u', 'e', 'o'];
+const VOWEL_MN = ['а', 'и', 'у', 'э', 'о'];
+
+// Which face the whole wall shows: the hiragana, the katakana, or the kanji each was cut from.
+// Three faces of the same 46 positions is the page's argument in one control -- the shapes stay
+// put while the glyphs change, so a tile's hiragana and its source kanji are the same tile.
+const KANA_MODES = [
+    { id: 'hira', sym: 'あ', label: 'origins.legend.hiragana' },
+    { id: 'kata', sym: 'ア', label: 'origins.legend.katakana' },
+    { id: 'kanji', sym: '安', label: 'origins.legend.kanji' },
+];
+let kanaMode = 'hira';
+// [vowel row, consonant column] of the picked tile, or null before anything is picked.
+let kanaPick = null;
+
+function cellAt(v, c) {
+    const row = KANA_ROWS[c];
+    return row ? row[1][v] : null;
+}
+
+function faceFor(cell) {
+    if (kanaMode === 'kata') return cell[1];
+    if (kanaMode === 'kanji') return cell[4];
+    return cell[0];
+}
+
+function renderSwitch() {
+    const host = document.getElementById('kana-switch');
+    host.setAttribute('aria-label', window.t('origins.kana.show'));
+    host.innerHTML = KANA_MODES.map(m =>
+        '<button type="button" data-mode="' + m.id + '" aria-pressed="' + (m.id === kanaMode) + '">' +
+        '<span class="ks-sym" lang="ja" aria-hidden="true">' + m.sym + '</span>' +
+        esc(window.t(m.label)) + '</button>'
+    ).join('');
+}
+
 function renderKana() {
-    const grid = document.getElementById('kana-grid');
-    grid.innerHTML = '';
-    const frag = document.createDocumentFragment();
-    frag.appendChild(Object.assign(document.createElement('div'), { className: 'kana-colhead' }));
-    ['-а', '-и', '-у', '-э', '-о'].forEach(h => {
-        frag.appendChild(Object.assign(document.createElement('div'), { className: 'kana-colhead', textContent: h }));
-    });
-    KANA_ROWS.forEach(([label, cells]) => {
-        frag.appendChild(Object.assign(document.createElement('div'), { className: 'kana-rowhead', textContent: label }));
-        cells.forEach(c => {
-            if (!c) {
-                frag.appendChild(Object.assign(document.createElement('div'), { className: 'kana-tile is-blank' }));
-                return;
+    const wall = document.getElementById('kana-wall');
+    // window.siteLang is a function, not a string (see i18n.js).
+    const mn = window.siteLang() !== 'en';
+    let html = '';
+    for (let v = 0; v < 5; v++) {
+        html += '<div class="kana-course v-' + VOWEL_KEYS[v] + '">' +
+            '<span class="kana-vowel" aria-hidden="true">' + (mn ? VOWEL_MN[v] : VOWEL_KEYS[v]) + '</span>';
+        for (let c = 0; c < KANA_ROWS.length; c++) {
+            const cell = cellAt(v, c);
+            if (!cell) {
+                // Still occupies its column: the gaps (yi, ye, wu...) are part of the shape of
+                // the syllabary, and closing them up would misalign every row below.
+                html += '<span class="kana-stone is-blank" aria-hidden="true"></span>';
+                continue;
             }
-            const [h, k, mn, romaji, oh, ok] = c;
-            const t = document.createElement('button');
-            t.type = 'button';
-            t.className = 'kana-tile';
-            t.setAttribute('aria-expanded', 'false');
-            t.setAttribute('aria-label', h + ' ' + k + ' — ' + romaji);
-            t.innerHTML =
-                '<span class="kana-pair">' + h + '<i>' + k + '</i></span>' +
-                '<span class="kana-mn">' + mn + '</span>' +
-                '<span class="kana-detail"><span><span class="kana-detail-inner">' +
-                    '<span class="kana-romaji">' + romaji + '</span>' +
-                    '<span class="kana-from"><b>' + oh + '</b>&rarr;' + h + ' &nbsp; <b>' + ok + '</b>&rarr;' + k + '</span>' +
-                '</span></span></span>';
-            frag.appendChild(t);
-        });
-    });
-    grid.appendChild(frag);
+            html += '<button type="button" class="kana-stone m-' + kanaMode + '"' +
+                ' data-v="' + v + '" data-c="' + c + '"' +
+                ' aria-label="' + esc(cell[0] + ' ' + cell[1] + ' — ' + cell[3]) + '"' +
+                ' lang="ja">' + faceFor(cell) + '</button>';
+        }
+        html += '</div>';
+    }
+    wall.innerHTML = html;
+    paintPick();
+}
+
+// The picked tile is set DOWN rather than lifted, and its own row and column are warmed, so a
+// tile can be read against the others that share its vowel or its consonant -- which is the
+// only comparison the table is for.
+function paintPick() {
+    const wall = document.getElementById('kana-wall');
+    wall.querySelectorAll('.kana-stone').forEach(s => s.classList.remove('is-on', 'is-lit'));
+    if (!kanaPick) return;
+    const [v, c] = kanaPick;
+    wall.querySelectorAll('.kana-stone[data-v="' + v + '"], .kana-stone[data-c="' + c + '"]')
+        .forEach(s => s.classList.add('is-lit'));
+    const on = wall.querySelector('.kana-stone[data-v="' + v + '"][data-c="' + c + '"]');
+    if (on) { on.classList.remove('is-lit'); on.classList.add('is-on'); }
+}
+
+function renderDesk() {
+    const desk = document.getElementById('kana-desk');
+    if (!kanaPick) {
+        desk.innerHTML = '<p class="kd-note">' + esc(window.t('origins.desk.empty')) + '</p>' +
+            '<p class="kd-hint">' + esc(window.t('origins.desk.keys')) + '</p>';
+        return;
+    }
+    const cell = cellAt(kanaPick[0], kanaPick[1]);
+    const [h, k, m, romaji, oh, ok] = cell;
+    const deriv = (cls, from, to, label, how) =>
+        '<div class="kd-deriv ' + cls + '">' +
+            '<span class="kd-from" lang="ja">' + from + '</span>' +
+            '<span class="kd-arrow" aria-hidden="true">&rarr;</span>' +
+            '<span class="kd-to" lang="ja">' + to + '</span>' +
+            '<span class="kd-label"><b>' + esc(window.t(label)) + '</b>' + esc(window.t(how)) + '</span>' +
+        '</div>';
+    desk.innerHTML =
+        '<p class="kd-pair" lang="ja">' + h + ' ' + k + '</p>' +
+        '<p class="kd-rom">' + esc(romaji) + '</p>' +
+        '<p class="kd-mn">' + esc(m) + '</p>' +
+        deriv('is-hira', oh, h, 'origins.desk.hira', 'origins.desk.hiraHow') +
+        deriv('is-kata', ok, k, 'origins.desk.kata', 'origins.desk.kataHow') +
+        '<p class="kd-note">' + esc(window.t('origins.desk.note')) + '</p>';
 }
 
 function renderNotes() {
@@ -247,27 +325,96 @@ function wireEras() {
 }
 
 function wireKana() {
-    const grid = document.getElementById('kana-grid');
-    grid.addEventListener('click', (e) => {
-        const tile = e.target.closest('.kana-tile');
-        if (!tile || tile.classList.contains('is-blank')) return;
-        tile.setAttribute('aria-expanded', tile.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
+    const wall = document.getElementById('kana-wall');
+
+    wall.addEventListener('click', (e) => {
+        const stone = e.target.closest('.kana-stone');
+        if (!stone || stone.classList.contains('is-blank')) return;
+        const at = [+stone.dataset.v, +stone.dataset.c];
+        // Clicking the picked tile again clears it, so the wall can be put back to rest.
+        kanaPick = (kanaPick && kanaPick[0] === at[0] && kanaPick[1] === at[1]) ? null : at;
+        paintPick();
+        renderDesk();
     });
+
+    // The wall is a grid, so the arrow keys have to walk it. Blanks are skipped rather than
+    // stopped on -- a gap in the syllabary is not a tile.
+    wall.addEventListener('keydown', (e) => {
+        const step = { ArrowLeft: [0, -1], ArrowRight: [0, 1], ArrowUp: [-1, 0], ArrowDown: [1, 0] }[e.key];
+        const stone = e.target.closest && e.target.closest('.kana-stone');
+        if (!step || !stone) return;
+        e.preventDefault();
+        let v = +stone.dataset.v, c = +stone.dataset.c;
+        for (let i = 0; i < KANA_ROWS.length; i++) {
+            v += step[0]; c += step[1];
+            if (v < 0 || v > 4 || c < 0 || c >= KANA_ROWS.length) return;
+            const next = wall.querySelector('.kana-stone[data-v="' + v + '"][data-c="' + c + '"]');
+            if (next) { next.focus(); next.click(); return; }
+            if (step[0]) return;   // a vertical move has only one candidate
+        }
+    });
+
+    document.getElementById('kana-switch').addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-mode]');
+        if (!btn || btn.dataset.mode === kanaMode) return;
+        kanaMode = btn.dataset.mode;
+        renderSwitch();
+        renderKana();
+    });
+}
+
+// ---------------------------------------------------------------------------
+// Section bar
+// ---------------------------------------------------------------------------
+// It both navigates and reports: aria-current follows whichever section the reader is in, so
+// the bar doubles as the page's position indicator. rootMargin's top offset is the masthead
+// plus the bar itself, or a section would read as "in view" while sitting behind them.
+function wireBar() {
+    const bar = document.getElementById('origins-bar');
+    const buttons = [...bar.querySelectorAll('.ob')];
+    const sections = buttons.map(b => document.getElementById(b.dataset.go));
+
+    bar.addEventListener('click', (e) => {
+        const btn = e.target.closest('.ob');
+        if (!btn) return;
+        const target = document.getElementById(btn.dataset.go);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    const mark = (id) => buttons.forEach(b => {
+        if (b.dataset.go === id) b.setAttribute('aria-current', 'true');
+        else b.removeAttribute('aria-current');
+    });
+
+    if (!('IntersectionObserver' in window)) return;
+    const seen = new Set();
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(en => en.isIntersecting ? seen.add(en.target.id) : seen.delete(en.target.id));
+        // The topmost section still on screen, so scrolling down hands over rather than flicking
+        // between two that both intersect.
+        const first = sections.find(s => s && seen.has(s.id));
+        mark(first ? first.id : null);
+    }, { rootMargin: '-136px 0px -55% 0px' });
+    sections.forEach(s => { if (s) io.observe(s); });
 }
 
 // ---------------------------------------------------------------------------
 // Wiring
 // ---------------------------------------------------------------------------
 function renderAll() {
+    document.getElementById('origins-bar').setAttribute('aria-label', window.t('origins.bar.label'));
     renderScripts();
     renderEras();
+    renderSwitch();
     renderKana();
+    renderDesk();
     renderNotes();
     renderWhy();
 }
 
 renderAll();
 wireKana();
+wireBar();
 
 // Same reason every other page re-renders here: data-i18n only covers text set once at parse
 // time, and everything above is built from strings at render time.
