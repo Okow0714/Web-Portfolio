@@ -12,7 +12,7 @@
 Object.assign(window.I18N_STRINGS, {
 
     'origins.eyebrow': { en: 'Start here · for absolute beginners', mn: 'Эндээс эхэлнэ үү · шинэ суралцагчдад' },
-    'origins.title': { en: 'Where kana came from', mn: 'Кана бичиг хаанаас үүссэн бэ' },
+    'origins.title': { en: 'Where kana came from', mn: 'Кана бичиг хаанаас үүссэн бэ?' },
     'origins.standfirst': {
         en: "Japanese uses three scripts at once, and every beginner is told to just accept that. You don't have to. Each one arrived for a reason, at a datable moment, and once you know the reasons the rules stop needing to be memorised — <em>including why English words are written in katakana</em>.",
         mn: 'Япон хэл гурван өөр бичгийг зэрэг хэрэглэдэг ба шинэ суралцагч бүрд «ийм л юм, дассан нь дээр» гэж хэлдэг. Гэтэл дасах шаардлагагүй. Бичиг бүр тодорхой шалтгаанаар, тодорхой цагт бий болсон. Тэр шалтгааныг нь мэдвэл дүрмийг нь цээжлэх хэрэггүй болно — <em>англи үгсийг яагаад катаканагаар бичдэг нь ч бас ойлгомжтой болно</em>.'
@@ -22,7 +22,7 @@ Object.assign(window.I18N_STRINGS, {
     'origins.scripts.h': { en: '1 · The three scripts', mn: '1 · Гурван бичиг' },
     'origins.scripts.sub': {
         en: 'Before any history: what the three actually are, and what each one does inside a sentence. This is the whole system in about a minute.',
-        mn: 'Түүх рүү орохын өмнө: энэ гурав яг юу вэ, өгүүлбэр дотор ямар үүрэг гүйцэтгэдэг вэ. Бүх систем нь ойролцоогоор нэг минутад багтана.'
+        mn: 'Түүх рүү орохын өмнө: энэ гурав яг юу вэ, өгүүлбэр дотор ямар үүрэг гүйцэтгэдэг вэ? Бүх систем нь ойролцоогоор нэг минутад багтана.'
     },
     'origins.scripts.jobLabel': { en: 'Carries:', mn: 'Үүрэг:' },
 
@@ -311,7 +311,7 @@ Object.assign(window.I18N_STRINGS, {
     },
 
     // --- next steps -----------------------------------------------------------
-    'origins.next.h': { en: 'Where to go next', mn: 'Цаашид юу хийх вэ' },
+    'origins.next.h': { en: 'Where to go next', mn: 'Цаашид юу хийх вэ?' },
     'origins.next.sub': {
         en: 'You now know what the three scripts are for. These tools pick up from here.',
         mn: 'Гурван бичиг тус бүр юунд зориулагдсаныг та одоо мэдлээ. Дараагийн алхам бол эдгээр хэрэгсэл.'

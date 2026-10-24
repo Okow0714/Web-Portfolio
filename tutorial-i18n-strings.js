@@ -11,10 +11,10 @@ Object.assign(window.I18N_STRINGS, {
     'tour.next': { en: 'Next', mn: 'Цааш' },
     'tour.skip': { en: 'Skip', mn: 'Алгасах' },
     'tour.close': { en: 'Done', mn: 'Ойлголоо' },
-    'tour.help': { en: 'How this works', mn: 'Хэрхэн ажилладаг вэ' },
+    'tour.help': { en: 'How this works', mn: 'Хэрхэн ажилладаг вэ?' },
 
     // --- the notation key, shown once for the whole site ----------------------
-    'tour.key.h': { en: 'Reading what you see', mn: 'Харагдаж буйг хэрхэн унших вэ' },
+    'tour.key.h': { en: 'Reading what you see', mn: 'Харагдаж буйг хэрхэн унших вэ?' },
     'tour.key.furigana': {
         en: 'Small kana above a kanji is <b>furigana</b> — it tells you how that kanji is read here. Example sentences and dictionary entries use it throughout.',
         mn: 'Ханзны дээр байгаа жижиг кана бол <b>фуригана</b> — тухайн ханзыг энд яаж уншихыг заана. Жишээ өгүүлбэр, толь бичгийн үгсэд бүгдэд нь хэрэглэсэн байгаа.'

@@ -25,7 +25,7 @@ Object.assign(window.I18N_STRINGS, {
     // in the 1999 paper, and that the effect is largely a statistical artefact, is sourced in
     // the last line -- do not soften it to "some researchers think" without checking those.
     'path.essayTitle': { en: 'The Dunning-Kruger curve', mn: 'Даннинг–Крюгерийн муруй' },
-    'path.essayHint': { en: 'why it has this shape', mn: 'яагаад ийм хэлбэртэй вэ' },
+    'path.essayHint': { en: 'why it has this shape', mn: 'яагаад ийм хэлбэртэй вэ?' },
     'path.essay1': {
         en: 'You have seen this shape somewhere. Confidence climbs fast to a peak, falls off a cliff, then recovers slowly on ground that is actually solid.',
         mn: 'Энэ хэлбэрийг та хаа нэгтээ үзсэн байх. Эхлээд өөртөө итгэх итгэл хурдан өсч оргилд хүрнэ, дараа нь огцом унана, эцэст нь бодит мэдлэг дээр тогтож аажмаар сэргэнэ.',

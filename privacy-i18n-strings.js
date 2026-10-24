@@ -4,13 +4,13 @@ Object.assign(window.I18N_STRINGS, {
     'privacy.title': { en: 'Privacy Policy', mn: 'Нууцлалын бодлого' },
     'privacy.lastUpdated': { en: 'Last updated: October 4, 2026', mn: 'Сүүлд шинэчилсэн: 2026 оны 10-р сарын 4' },
 
-    'privacy.whoThisIs.h': { en: 'Who this is', mn: 'Энэ хэн бэ' },
+    'privacy.whoThisIs.h': { en: 'Who this is', mn: 'Энэ хэн бэ?' },
     'privacy.whoThisIs.p': {
         en: 'This site (Khan Japanese) is a personal portfolio and a set of free Japanese-learning tools built and run by one individual (Sarantsatsral Ganzorig), not a company. This policy explains what happens to your information when you use it.',
         mn: 'Энэ сайт (Khan Japanese) нь компани биш, ганц хүний (Sarantsatsral Ganzorig) бүтээж ажиллуулдаг хувийн профайл болон үнэгүй япон хэл сурах хэрэгслүүдийн цуглуулга юм. Энэ бодлого нь та сайтыг ашиглах үед таны мэдээлэлд юу тохиолддогийг тайлбарладаг.'
     },
 
-    'privacy.whatICollect.h': { en: 'What I collect', mn: 'Юу цуглуулдаг вэ' },
+    'privacy.whatICollect.h': { en: 'What I collect', mn: 'Юу цуглуулдаг вэ?' },
     'privacy.whatICollect.p': {
         en: 'If you never create an account, almost nothing is collected beyond standard web server activity (see "Hosting & logs" below). If you sign up, the following is stored, tied to your account:',
         mn: 'Хэрэв та бүртгэл үүсгээгүй бол стандарт веб серверийн үйл ажиллагаанаас (доор буй "Хостинг ба лог" хэсгийг үзнэ үү) өөр бараг юу ч цуглуулдаггүй. Хэрэв та бүртгүүлбэл дараах зүйлс бүртгэлтэй тань холбогдож хадгалагдана:'
@@ -51,7 +51,7 @@ Object.assign(window.I18N_STRINGS, {
         mn: '<strong>Аль үгэнд алдаж байгаа, оронд нь юуг сонгосон</strong> — хос, хавтан, уншлагын аль нэгэнд алдвал тухайн үг болон таны сонгосон хариултыг бүртгэлд чинь тоолж тэмдэглэнэ. Ингэснээр байнга алддаг үгсийг чинь харуулж, давтахаар буцааж гаргаж ирнэ. Зөвхөн тоо — хэр удсаныг тань бүртгэдэггүй; суралцсан өдрүүдийг тань доор тусад нь бичдэг.'
     },
 
-    'privacy.whatIDontCollect.h': { en: "What I don't collect", mn: 'Юу цуглуулдаггүй вэ' },
+    'privacy.whatIDontCollect.h': { en: "What I don't collect", mn: 'Юу цуглуулдаггүй вэ?' },
     'privacy.whatIDontCollect.voice': {
         en: '<strong>Your voice is not collected either.</strong> Dokkai Reader’s microphone is live only between pressing Start Reading and stopping it, and the audio never reaches this site — I never receive it, record it or store it. What does happen is that your browser transcribes it, and browsers generally do that by streaming the audio to their own vendor’s speech service. That step is the browser’s, not mine: it is outside my control and governed by your browser vendor’s privacy policy. It is listed again under who it’s shared with, because using the reader is what causes it.',
         mn: '<strong>Таны дуу хоолойг ч мөн цуглуулдаггүй.</strong> «Уншлагын дадлага»-ын микрофон нь «Унших» товчийг дарснаас зогсоох хүртэл л асаалттай байх бөгөөд дуу нь энэ сайт руу огт ирдэггүй — би түүнийг хүлээж авдаггүй, бичиж авдаггүй, хадгалдаггүй. Харин таны хөтөч түүнийг бичвэр болгон хөрвүүлдэг ба хөтчүүд үүнийг ихэвчлэн дуу таних өөрсдийн үйлчилгээ рүү дуу бичлэгийг дамжуулж хийдэг. Тэр алхам бол миний биш, хөтчийнх: миний хяналтаас гадуур бөгөөд таны хөтчийн нууцлалын бодлогоор зохицуулагдана. Уншлагын хэрэгслийг ашигласнаас болж энэ явдал болдог тул «Хэнтэй хуваалцдаг вэ» хэсэгт дахин дурдсан болно.'
@@ -67,13 +67,13 @@ Object.assign(window.I18N_STRINGS, {
         mn: 'Энэ сайтад аналитик болон хянах скрипт, зар сурталчилгааны сүлжээ, гуравдагч талын күүки, төлбөрийн мэдээлэл огт ажилладаггүй — юу ч зарахгүй, төлбөртэй хэсэг ч байхгүй. Дараа нь тайлбарласан алдааны мэдэгдлээс бусад тохиолдолд дээр жагсаасан зүйлс л цорын ганц хадгалагддаг өгөгдөл юм.'
     },
 
-    'privacy.howUsed.h': { en: "How it's used", mn: 'Хэрхэн ашигладаг вэ' },
+    'privacy.howUsed.h': { en: "How it's used", mn: 'Хэрхэн ашигладаг вэ?' },
     'privacy.howUsed.p': {
         en: "Solely to make the site work: signing you in, saving your progress across visits and letting me reply if you send a message. Nothing here is used for advertising, and I don't sell or share it with anyone for marketing purposes.",
         mn: 'Зөвхөн сайтыг ажиллуулахад: таныг нэвтрүүлэх, явц болон сэтгэгдлийг тань хадгалах, таны бичсэн зүйлийн хажууд нэрийг тань харуулах, зурвас илгээвэл хариулах боломж олгох зэрэгт л ашигладаг. Энд юу ч сурталчилгаанд ашиглагддаггүй, зах зээлийн зорилгоор хэнд ч зарж, хуваалцдаггүй.'
     },
 
-    'privacy.sharedWith.h': { en: "Who it's shared with", mn: 'Хэнтэй хуваалцдаг вэ' },
+    'privacy.sharedWith.h': { en: "Who it's shared with", mn: 'Хэнтэй хуваалцдаг вэ?' },
     'privacy.sharedWith.p': {
         en: '<strong>Supabase</strong> (supabase.com) is the database and authentication provider behind this site — it processes and stores your account data and content on my behalf, under its own <a href="https://supabase.com/privacy" target="_blank" rel="noopener">privacy policy</a>. <strong>GitHub Pages</strong> hosts the site\'s files and, like any web host, sees standard request logs (IP address, browser type) as a normal part of serving web pages — I don\'t separately access or collect these. The one other thing that leaves this site is the audio your browser sends to its own speech service while Dokkai Reader is listening, described above — I neither receive nor store it. The typefaces and the Supabase library are served from this site rather than from their vendors’ networks, so an ordinary page does not announce your IP address to any company beyond the two named above. <strong>Freetime</strong> is the exception: it shows video thumbnails that load from YouTube as soon as the page opens, and playing a cover loads a YouTube player. On that page Google receives your IP address and browser details, under its own <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">privacy policy</a>. No other page fetches anything from anyone else.',
         mn: '<strong>Supabase</strong> (supabase.com) нь энэ сайтын өгөгдлийн сан болон нэвтрэлтийн үйлчилгээг хариуцдаг — миний өмнөөс таны бүртгэлийн мэдээлэл, контентыг өөрийн <a href="https://supabase.com/privacy" target="_blank" rel="noopener">нууцлалын бодлогын</a> дагуу боловсруулж, хадгалдаг. <strong>GitHub Pages</strong> нь сайтын файлуудыг хостлодог бөгөөд ямар ч веб хостын адил стандарт хүсэлтийн лог (IP хаяг, хөтчийн төрөл) хардаг — эдгээрийг би тусад нь хандаж, цуглуулдаггүй. Энэ сайтаас гарах цорын ганц зүйл бол Уншлагын дадлага сонсож байх үед хөтөч таны дууг өөрийн дуу таних үйлчилгээ рүү илгээдэг нь — үүнийг би хүлээж ч авахгүй, хадгалж ч үлдэхгүй. Үсгийн фонт болон Supabase номын санг үйлдвэрлэгчийнх нь сүлжээнээс биш, энэ сайтаас өөрөөс нь дуудаж байгаа тул хуудас нээхэд таны IP хаяг дээр дурдсан хоёроос өөр компанид мэдэгдэхгүй. <strong>Чөлөөт цаг</strong> хуудас үүнээс өөр: тэнд бичлэгийн хальсан зураг хуудас нээгдэнгүүт YouTube-ийн серверээс ачаалагддаг бөгөөд бүрхүүл дээр дарвал YouTube-ийн тоглуулагч нээгдэнэ. Тиймээс тэр хуудсан дээр Google таны IP хаяг, хөтчийн мэдээллийг өөрийн <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">нууцлалын бодлогын</a> дагуу хүлээн авна. Өөр ямар ч хуудас хэнээс ч юу ч татдаггүй.'
