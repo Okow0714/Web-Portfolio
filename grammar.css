@@ -257,6 +257,19 @@ body:has(.grammar-main) {
        more weight in light than in dark, where the fill already contrasts with the ground. */
     --tri-shadow: rgba(6, 9, 18, 0.55);
     --tri-shadow: light-dark(rgba(84, 62, 28, 0.42), rgba(6, 9, 18, 0.55));
+    /* The keyboard ring. Doubling the shadow is what makes a filter read as a ring -- there is no
+       spread parameter -- and it follows the clipped silhouette, which an outline does not. The
+       colour is neutral rather than an accent so it shows on all four band hues. */
+    --focus-halo: drop-shadow(0 0 2px #fff6e8) drop-shadow(0 0 2px #fff6e8) drop-shadow(0 0 1px #fff6e8);
+    --focus-halo: drop-shadow(0 0 2px light-dark(#17171f, #fff6e8))
+                  drop-shadow(0 0 2px light-dark(#17171f, #fff6e8))
+                  drop-shadow(0 0 1px light-dark(#17171f, #fff6e8));
+    /* The open band. Neutral for the same reason the focus ring is: it has to show against all
+       four hues AND against the three neighbours it shares an edge with. */
+    --gate-open-halo: drop-shadow(0 0 5px #fff2dd) drop-shadow(0 0 4px #fff2dd) drop-shadow(0 0 2px #fff2dd);
+    --gate-open-halo: drop-shadow(0 0 5px light-dark(#2a1a12, #fff2dd))
+                      drop-shadow(0 0 4px light-dark(#2a1a12, #fff2dd))
+                      drop-shadow(0 0 2px light-dark(#2a1a12, #fff2dd));
 
     /* Each band wears a JLPT colour, from the same --jlpt-* hues Word Match's gate uses. N5 is
        absent on purpose: no band is mostly N5 (it is one level of the forty).
@@ -270,6 +283,13 @@ body:has(.grammar-main) {
        of the four take it pure; N3 is lightened 18% because at its own lightness NO ink, dark or
        pale, clears 4.5 on both stops of a gradient around it. The ink direction differs too --
        N4 and N3 carry dark ink, N2 and N1 pale -- so `on-solid` is per band, not one value.
+       `dim` is what the three CLOSED gate pieces wear, and it is barely off the hue at all --
+       6% lighter, which is the least that lets an ink clear 4.5 on both its stops. Washing it
+       further (46% toward the page ground was tried) does make the open piece obvious, but it
+       costs the other three the colour they exist to show. So the four pieces are their JLPT
+       colour and OPEN is marked structurally, by --gate-open-halo, not by draining the rest.
+       It needs no light-dark(): a colour this close to the hue reads on either ground, and the
+       solve returned the same answer for both themes.
        A gradient cannot go through light-dark(), so every stop is its own token. */
     --band-n4-a: #605026;
     --band-n4-a: light-dark(#e3c679, #605026);
@@ -283,6 +303,9 @@ body:has(.grammar-main) {
     --band-n4-ink: light-dark(#524628, #f8f0db);
     --band-n4-solid-a: #d7ab3a;
     --band-n4-solid-b: #b98e1e;
+    --band-n4-dim-a: #d9b046;
+    --band-n4-dim-b: #bd952c;
+    --band-n4-on-dim: #332e20;
     --band-n4-on-solid: #302918;
 
     --band-n3-a: #834124;
@@ -297,6 +320,9 @@ body:has(.grammar-main) {
     --band-n3-ink: light-dark(#3a2729, #f6e5db);
     --band-n3-solid-a: #d7885d;
     --band-n3-solid-b: #ba6b41;
+    --band-n3-dim-a: #d98f67;
+    --band-n3-dim-b: #be744c;
+    --band-n3-on-dim: #1d191d;
     --band-n3-on-solid: #0c0e16;
 
     --band-n2-a: #6a2b24;
@@ -311,6 +337,9 @@ body:has(.grammar-main) {
     --band-n2-ink: light-dark(#1e1c2b, #efdfdb);
     --band-n2-solid-a: #a84d3b;
     --band-n2-solid-b: #8a301f;
+    --band-n2-dim-a: #ad5847;
+    --band-n2-dim-b: #913c2c;
+    --band-n2-on-dim: #fdfcfb;
     --band-n2-on-solid: #f6edeb;
 
     --band-n1-a: #5a283f;
@@ -325,6 +354,9 @@ body:has(.grammar-main) {
     --band-n1-ink: light-dark(#1c1c2e, #ebdee2);
     --band-n1-solid-a: #914960;
     --band-n1-solid-b: #742c44;
+    --band-n1-dim-a: #98546a;
+    --band-n1-dim-b: #7c394f;
+    --band-n1-on-dim: #f5eef0;
     --band-n1-on-solid: #ebdee2;
     /* The record panel's surface. Shared with its stat cells: those sit on the same value so only
        the 1px rule between them shows -- left transparent they let the divider wash through as a
@@ -378,6 +410,9 @@ body:has(.grammar-main) {
     --bt-solid-a: var(--band-n4-solid-a);
     --bt-solid-b: var(--band-n4-solid-b);
     --bt-on-solid: var(--band-n4-on-solid);
+    --bt-dim-a: var(--band-n4-dim-a);
+    --bt-dim-b: var(--band-n4-dim-b);
+    --bt-on-dim: var(--band-n4-on-dim);
 }
 .gc-band-n3 {
     --bt-a: var(--band-n3-a);
@@ -388,6 +423,9 @@ body:has(.grammar-main) {
     --bt-solid-a: var(--band-n3-solid-a);
     --bt-solid-b: var(--band-n3-solid-b);
     --bt-on-solid: var(--band-n3-on-solid);
+    --bt-dim-a: var(--band-n3-dim-a);
+    --bt-dim-b: var(--band-n3-dim-b);
+    --bt-on-dim: var(--band-n3-on-dim);
 }
 .gc-band-n2 {
     --bt-a: var(--band-n2-a);
@@ -398,6 +436,9 @@ body:has(.grammar-main) {
     --bt-solid-a: var(--band-n2-solid-a);
     --bt-solid-b: var(--band-n2-solid-b);
     --bt-on-solid: var(--band-n2-on-solid);
+    --bt-dim-a: var(--band-n2-dim-a);
+    --bt-dim-b: var(--band-n2-dim-b);
+    --bt-on-dim: var(--band-n2-on-dim);
 }
 .gc-band-n1 {
     --bt-a: var(--band-n1-a);
@@ -408,6 +449,9 @@ body:has(.grammar-main) {
     --bt-solid-a: var(--band-n1-solid-a);
     --bt-solid-b: var(--band-n1-solid-b);
     --bt-on-solid: var(--band-n1-on-solid);
+    --bt-dim-a: var(--band-n1-dim-a);
+    --bt-dim-b: var(--band-n1-dim-b);
+    --bt-on-dim: var(--band-n1-on-dim);
 }
 
 .gc-gate-tri {
@@ -420,31 +464,42 @@ body:has(.grammar-main) {
     justify-content: center;
     align-items: flex-end;
     clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-    /* The fallbacks are what a piece without a .gc-band-* class would get. Nothing renders one,
+    /* A closed piece is its hue washed toward the page ground, not the soft tint the level
+       tiles wear: four JLPT buttons should read as their colour at a glance, the way Word
+       Match's dial does, and ten tiles under a heading should not.
+       The fallbacks are what a piece without a .gc-band-* class would get. Nothing renders one,
        but a token that silently resolves to nothing paints an unstyled triangle. */
-    background: linear-gradient(158deg, var(--bt-a, var(--tri-a)) 0%, var(--bt-b, var(--tri-b)) 100%);
-    color: var(--bt-ink, var(--ink));
+    background: linear-gradient(158deg, var(--bt-dim-a, var(--tri-a)) 0%, var(--bt-dim-b, var(--tri-b)) 100%);
+    color: var(--bt-on-dim, var(--ink));
     filter: drop-shadow(0 2px 4px var(--tri-shadow));
     transition: filter 0.2s var(--ease-out), color 0.2s var(--ease-out);
 }
 .gc-gate-tri.is-inverted {
     clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
     align-items: flex-start;
-    background: linear-gradient(22deg, var(--bt-a, var(--tri-a)) 0%, var(--bt-b, var(--tri-b)) 100%);
+    background: linear-gradient(22deg, var(--bt-dim-a, var(--tri-a)) 0%, var(--bt-dim-b, var(--tri-b)) 100%);
 }
+/* Hover shows the piece at full strength -- a preview of what opening it looks like. */
 .gc-gate-tri:hover {
-    background: linear-gradient(158deg, var(--bt-a-hot, var(--tri-a-hot)) 0%, var(--bt-b-hot, var(--tri-b-hot)) 100%);
+    background: linear-gradient(158deg, var(--bt-solid-a, var(--tri-a-hot)) 0%, var(--bt-solid-b, var(--tri-b-hot)) 100%);
+    color: var(--bt-on-solid, var(--ink));
     filter: drop-shadow(0 5px 8px var(--tri-shadow));
 }
-.gc-gate-tri.is-inverted:hover { background: linear-gradient(22deg, var(--bt-a-hot, var(--tri-a-hot)) 0%, var(--bt-b-hot, var(--tri-b-hot)) 100%); }
-.gc-gate-tri:focus-visible { outline: 3px solid var(--shu-light); outline-offset: -4px; }
-/* The open band is its hue at full strength. It used to be the page's shu for all four, which is
-   what made the gate say nothing about which level a band holds. */
+.gc-gate-tri.is-inverted:hover { background: linear-gradient(22deg, var(--bt-solid-a, var(--tri-a-hot)) 0%, var(--bt-solid-b, var(--tri-b-hot)) 100%); }
+.gc-gate-tri:focus-visible {
+    outline: 0;
+    filter: drop-shadow(0 5px 8px var(--tri-shadow)) var(--focus-halo);
+}
+/* The open band. All four pieces are already their hue, so what marks this one is the halo, not
+   a different colour -- it used to be the page's shu for all four, which made the gate say
+   nothing about which level a band holds, and then a heavy wash on the other three, which made
+   them say it too quietly. */
 .gc-gate-tri.active {
     background: linear-gradient(158deg, var(--bt-solid-a, var(--shu-light)) 0%, var(--bt-solid-b, var(--shu)) 100%);
     color: var(--bt-on-solid, var(--washi));
-    filter: drop-shadow(0 7px 11px var(--tri-shadow));
+    filter: drop-shadow(0 7px 11px var(--tri-shadow)) var(--gate-open-halo);
 }
+.gc-gate-tri.active .gt-name { font-weight: 800; }
 .gc-gate-tri.is-inverted.active { background: linear-gradient(22deg, var(--bt-solid-a, var(--shu-light)) 0%, var(--bt-solid-b, var(--shu)) 100%); }
 
 /* The blunt half of a standing piece is its base and of the inverted one its top, so the whole
@@ -513,7 +568,8 @@ body:has(.grammar-main) {
     /* clip-path takes an element's box-shadow with it, so the lift has to be a filter -- and a
        filter follows the clipped silhouette, which is what is wanted here. */
     filter: drop-shadow(0 2px 3px var(--tri-shadow));
-    transition: filter 0.18s var(--ease-out), color 0.18s var(--ease-out);
+    transition: filter 0.18s var(--ease-out), color 0.18s var(--ease-out),
+                transform 0.18s var(--ease-out);
 }
 /* Hover and the two picked states come AFTER the base so they win the gradient. They were
    previously ordered so `done` beat `:hover`, and a finished tile gave no feedback at all. */
@@ -521,9 +577,15 @@ body:has(.grammar-main) {
     background: linear-gradient(118deg, var(--bt-a-hot, var(--tri-a-hot)) 0%, var(--bt-b-hot, var(--tri-b-hot)) 100%);
     filter: drop-shadow(0 4px 7px var(--tri-shadow));
 }
-.gc-tri:focus-visible { outline: 3px solid var(--bt-on-solid, var(--shu-light)); outline-offset: -5px; }
-/* Cleared: the band's hue filled in. Picked: the same fill, lifted further and ringed, so the
-   two states stay apart now that both are in-hue rather than one of them being the page accent. */
+.gc-tri:focus-visible {
+    outline: 0;
+    filter: drop-shadow(0 2px 3px var(--tri-shadow)) var(--focus-halo);
+}
+/* Cleared: the band's hue filled in. Picked: the same fill, haloed in its own hue and lifted
+   clear of the row, so the two states stay apart now that both are in-hue.
+   The halo is NOT an outline. An outline follows the border box, and clip-path cuts all of it
+   away but the left edge and two corners -- which drew a bracket inside the picked triangle for
+   one commit. Marks on a clipped element are filters, like the shadow directly above. */
 .gc-tri.done {
     background: linear-gradient(118deg, var(--bt-solid-a, var(--shu-light)) 0%, var(--bt-solid-b, var(--shu)) 100%);
     color: var(--bt-on-solid, var(--washi));
@@ -531,9 +593,11 @@ body:has(.grammar-main) {
 .gc-tri.focus {
     background: linear-gradient(118deg, var(--bt-solid-a, var(--shu-light)) 0%, var(--bt-solid-b, var(--shu)) 100%);
     color: var(--bt-on-solid, var(--washi));
-    filter: drop-shadow(0 6px 10px var(--tri-shadow));
-    outline: 2px solid var(--bt-on-solid, var(--washi));
-    outline-offset: -7px;
+    filter: drop-shadow(0 7px 11px var(--tri-shadow))
+            drop-shadow(0 0 3px var(--bt-solid-b, var(--shu)))
+            drop-shadow(0 0 2px var(--bt-solid-b, var(--shu)));
+    transform: scale(1.07);
+    z-index: 1;
 }
 .gc-tri.locked { cursor: default; opacity: 0.45; }
 

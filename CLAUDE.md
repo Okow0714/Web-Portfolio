@@ -422,8 +422,27 @@ on paper, which defeats the point. The cleared/picked state IS the hue, the same
 and **N3 is the one that has to be lightened 18%** -- at its own lightness no ink, dark or pale,
 clears 4.5 on both stops of a gradient around it. The ink direction is per band too (N4/N3 dark,
 N2/N1 pale), so `on-solid` is four values rather than one. Worst measured label: **4.77:1**.
-The `:focus-visible` ring stays the page's `--shu-light` and does NOT follow the band: three of
-the four `on-solid` inks are near-black, which is not an indicator against their own dark fill.
+**The gate pieces are vivid; the level tiles are not** (2026-10-24). Four JLPT buttons should
+read as their colour the way Word Match's dial does, and ten tiles under a heading should not,
+so a closed piece wears `--band-*-dim-*` -- the hue only **6% lighter**, which is the least that
+lets an ink clear 4.5 on both its stops. An earlier pass washed it 46% toward the page ground to
+make the open piece obvious and drained the other three of the colour they exist to show. The
+open band is marked **structurally instead**, by `--gate-open-halo`, so colour stays identity and
+the halo carries state. `dim` needs no `light-dark()`: the solve returned the same answer for
+both themes, which is also why Word Match's nodes are one colour per tier and not two.
+**Nothing clipped may carry an `outline`.** An outline follows the border box; `clip-path` then
+keeps only the part of it inside the silhouette, so a ring becomes a bracket -- a stray angle
+floating in the triangle, which is exactly what shipped for one commit as the "picked" mark.
+Every mark on these shapes is a **filter**: the lift, the open-band halo and the keyboard ring
+(`--focus-halo`) are all stacked `drop-shadow()`s, which have no spread parameter, so a ring is
+two or three of them at the same offset. `tests/`-adjacent `scratchpad/gc-bandcheck.js` now fails
+on any clipped element with a non-zero outline, in any state.
+(An earlier note here said the `:focus-visible` ring "stays `--shu-light`". It never did -- that
+edit was in a script that exited before writing -- and the question is moot now that no outline
+survives anywhere on these shapes.)
+**A transform is not a layout change**: the picked tile carries `scale(1.07)`, so anything
+asserting that the ten tiles are one size must read `offsetWidth`/`offsetHeight`, not
+`getBoundingClientRect`, or the lift reads as a differently sized tile.
 **The label is rebased, the level underneath is not.** A tile shows its place in its own band
 (01-10) while `data-level` and `openLevel()` keep the real 1-20 level, so `grammar_progress` keys
 and `progress-shared.js`'s `grammarLevels: 40` never move. Band 2's "01" must not start
