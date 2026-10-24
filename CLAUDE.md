@@ -444,6 +444,19 @@ before a single heading; chasing a fit that is not available only makes the tile
 read or tap, so the `100dvh` rule and the height bound are both scoped to wide screens.
 `#gc-diff-tabs` and `#gc-level-grid` keep their ids because `tutorial.js` points tour steps at
 them, and a step whose selector is missing is dropped silently.
+**The record panel is a surface, not a hole.** It used `--card` (`#241f38`) against a `#12192b`
+page -- nearly the same value -- so it read as a hole punched in the page and every line on it
+looked sunk whatever its contrast measured. `--rec-surface` sits a clear step above the ground,
+with an edge and a shadow; the stat cells share that token so only the 1px rule between them
+shows (left transparent, the divider washes through as a grey slab across the strip). Its type
+also went up: the stat labels were **9px** of letter-spaced uppercase Cyrillic, which no contrast
+ratio rescues. **Measure alpha properly before trusting a number** -- two probes here reported
+13.5:1 for text that was actually 6.6:1, because they dropped the alpha channel instead of
+compositing `rgba(...)` over the card; a probe worth believing self-tests against white-on-black
+(21), black-on-white (21) and 50%-white-on-black (~5.3) first.
+**The panel does not shrink, so it sets the row's floor.** The gate and trail size themselves to
+what is left, but the panel's height is its content: at 1440x720 it put the row 10px past the
+fold, which a `max-height: 820px` block gives back in spacing.
 **The record panel's start button is pinned to fixed dye** (`#b3412e` -> `#8f3122`), not to
 `--shu-light`: that token *lightens* to a salmon in dark mode, and the shared `.auth-btn`
 gradient lightens further to a pale pink while its label stays white -- measured **2.13:1**. The

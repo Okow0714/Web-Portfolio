@@ -279,6 +279,11 @@ body:has(.grammar-main) {
        more weight in light than in dark, where the fill already contrasts with the ground. */
     --tri-shadow: rgba(6, 9, 18, 0.55);
     --tri-shadow: light-dark(rgba(84, 62, 28, 0.42), rgba(6, 9, 18, 0.55));
+    /* The record panel's surface. Shared with its stat cells: those sit on the same value so only
+       the 1px rule between them shows -- left transparent they let the divider wash through as a
+       solid grey slab across the whole strip. */
+    --rec-surface: #322a52;
+    --rec-surface: light-dark(#fffdf6, #322a52);
 }
 
 /* Only where it can actually be done. Below about 980px the row cannot keep gate, trail and
@@ -439,47 +444,75 @@ body:has(.grammar-main) {
 .gc-tri.is-down .gc-tri-stamp { padding-bottom: 0; padding-top: 2px; order: -1; }
 
 /* A triangle has no room for the two-row stat rail the old cards carried, so the record for the
-   focused level opens here instead. */
+   focused level opens here instead.
+   The card is NOT --card: at #241f38 against a #12192b page that is nearly the same value, so it
+   read as a hole punched in the page rather than a surface on it, and every line on it looked
+   sunk no matter what its contrast measured. This sits a clear step above the ground, with an
+   edge and a shadow to say so. */
 .gc-level-record {
     /* The basis matches RECORD_MIN in grammar.js, which is what the trail subtracts when it works
        out its own width. If these two drift apart the row wraps and the panel drops below. */
     flex: 1 1 250px;
     min-width: 0;
     max-width: 340px;
-    background: var(--card);
+    background: var(--rec-surface);
     border-top: 3px solid var(--shu);
-    padding: 20px 22px 24px;
+    border-right: 1px solid rgba(241, 237, 224, 0.1);
+    border-bottom: 1px solid rgba(241, 237, 224, 0.1);
+    border-left: 1px solid rgba(241, 237, 224, 0.1);
+    box-shadow: 0 10px 26px light-dark(rgba(84, 62, 28, 0.22), rgba(6, 9, 18, 0.5));
+    padding: 22px 24px 26px;
 }
 .gc-rec-band {
-    margin: 0 0 8px;
-    font-size: 0.62rem;
-    letter-spacing: 0.16em;
+    margin: 0 0 10px;
+    font-size: 0.72rem;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
-    color: var(--ink-faint);
+    color: var(--ink-soft);
 }
-.gc-rec-head { margin: 0 0 16px; display: flex; align-items: baseline; gap: 10px; }
+.gc-rec-head { margin: 0 0 18px; display: flex; align-items: baseline; gap: 10px; }
 .gc-rec-n { font-family: var(--font-jp); font-size: 2.4rem; line-height: 1; color: var(--shu-light); }
-.gc-rec-of { font-size: 0.78rem; color: var(--ink-soft); }
-.gc-rec-stats { display: flex; gap: 1px; background: var(--ink-faint); margin-bottom: 16px; }
+.gc-rec-of { font-size: 0.84rem; color: var(--ink); }
+.gc-rec-stats {
+    display: flex;
+    gap: 1px;
+    background: rgba(241, 237, 224, 0.16);
+    background: light-dark(rgba(29, 39, 64, 0.18), rgba(241, 237, 224, 0.16));
+    margin-bottom: 18px;
+}
 .gc-rec-stat {
     flex: 1;
-    background: var(--card);
-    padding: 11px 13px;
+    background: var(--rec-surface);
+    padding: 12px 13px;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 5px;
 }
 .gc-rec-stat .k {
-    font-size: 0.56rem;
-    letter-spacing: 0.12em;
+    /* was 0.56rem -- 9px of letter-spaced uppercase Cyrillic, which no contrast ratio rescues */
+    font-size: 0.68rem;
+    letter-spacing: 0.09em;
     text-transform: uppercase;
-    color: var(--ink-faint);
+    color: var(--ink-soft);
 }
-.gc-rec-stat .v { font-family: var(--font-jp); font-size: 1.2rem; line-height: 1; color: var(--ink); }
-.gc-rec-note { margin: 0 0 16px; font-size: 0.76rem; line-height: 1.6; color: var(--ink-soft); }
+.gc-rec-stat .v { font-family: var(--font-jp); font-size: 1.3rem; line-height: 1; color: var(--ink); }
+.gc-rec-note { margin: 0 0 18px; font-size: 0.84rem; line-height: 1.65; color: var(--ink); }
 /* The shared .auth-btn gradient lightens to a pale pink in dark mode while its label stays
    white -- measured 2.13:1 against a 4.5 floor, which is the washed-out text on this panel.
    Pinned to the page's own dye instead, the way the start and result modals already are. */
+/* The gate and the trail shrink to whatever height is left, but the panel does not -- its height
+   is its content -- so on a short window it becomes the tallest thing in the row and sets the
+   floor. At 1440x720 that put the row 10px past the fold. This gives the spacing back. */
+@media (min-width: 981px) and (max-height: 820px) {
+    .gc-level-record { padding: 16px 18px 18px; }
+    .gc-rec-band { margin-bottom: 7px; }
+    .gc-rec-head { margin-bottom: 13px; }
+    .gc-rec-stats { margin-bottom: 13px; }
+    .gc-rec-stat { padding: 9px 11px; }
+    .gc-rec-note { margin-bottom: 13px; }
+    .gc-rec-n { font-size: 2rem; }
+}
+
 .gc-rec-cta,
 .gc-rec-cta:hover {
     width: 100%;
