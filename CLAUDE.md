@@ -502,6 +502,28 @@ compositing `rgba(...)` over the card; a probe worth believing self-tests agains
 **The panel does not shrink, so it sets the row's floor.** The gate and trail size themselves to
 what is left, but the panel's height is its content: at 1440x720 it put the row 10px past the
 fold, which a `max-height: 820px` block gives back in spacing.
+**The in-level screen had three rules that were never themed at all** (2026-10-25), each a flat
+wash with a hard-coded colour, written for the dark board and doing the opposite on the light
+page. `.gc-match-side` was `rgba(0, 0, 0, 0.18)` -- a black wash, which over cream is a grey slab
+carrying dark text at **3.74:1**, and that is the dark-text-on-a-dark-block this screen was
+reported for. `.gc-progress-dots span` was `rgba(241, 237, 224, 0.22)`, cream on cream: **nine of
+the ten dots were invisible in light** and the row read as a single red speck, so the progress
+indicator did not indicate. `.gc-cleared-item`'s divider was the same wash, as were the record
+panel's three non-top borders and the tour button's border -- the edge that makes those read as
+sheets existed in dark only. **Grep for `rgba(241, 237, 224,` and `rgba(0, 0, 0, 0.` before
+assuming this class of bug is gone**; a hard-coded wash is invisible to a contrast probe that
+only reads text.
+In dark, the sentence card and the five answer tiles were `--card` (`#241f38`) on a `#12192b`
+page, the identical hole-in-the-page the record panel was fixed for, so they take `--rec-surface`
+now too (ink measures 14.57 light / 11.29 dark on it). One regression came with that: the cleared
+list's `->` was `--shu-light` and measured 5.19:1 while it sat on the black-washed card, then
+4.18:1 once the surface was lifted -- **moving a ground re-opens every ratio measured against the
+old one**. It is `--ink-soft` now; the accent belongs on `.new`, which already has it.
+**The empty space below the board is not a bug.** The board is short -- a card, a hint, five
+tiles -- and on a tall window the page background fills the rest, which is correct. Centring the
+play column in a `100dvh` frame was tried and is worse: it splits the dead space to both ends and
+detaches the board from its own toolbar, while the side panel floats alone at the top. Don't.
+
 **The record panel's start button is pinned to fixed dye** (`#b3412e` -> `#8f3122`), not to
 `--shu-light`: that token *lightens* to a salmon in dark mode, and the shared `.auth-btn`
 gradient lightens further to a pale pink while its label stays white -- measured **2.13:1**. The
