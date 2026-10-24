@@ -16,7 +16,7 @@ Supabase (Postgres + Auth). Hosted on GitHub Pages. Git repo on `main`.
 | `path.html` | Study Path (学びの道) — a six-stage route from no Japanese at all to N1, mapping each stage onto specific tools and level ranges. `<main class="path-main">` / `path.css` (warm paper, sumi ink, one saffron marker). **Rebuilt 2026-10-12 as a map plus six pages.** `path.html` is now only the map: a Dunning-Kruger confidence curve with the six stages as points on it (lowest before JLPT, peak at N3, trough at N2, N1 recovering), plus a folded `<details>` explaining that the famous curve is not in Kruger & Dunning 1999 and is largely a statistical artefact. Each point links to its own page -- `path-kana.html`, `path-n5.html` ... `path-n1.html`, `<main class="path-stage-main">` -- which carries that stage's full text, a minimap showing where it sits on the curve, and prev/next links. **The whole thing is static**: the curve's path data, every point's left/top and each minimap are generated from one list of six anchor points and written into the HTML, so there is no script on any of these pages, the route is crawlable and the road can never disagree with the points. The six stage pages share path.html's nav entry via a rule in `build-chrome.js`'s `withCurrent`. The old spine layout (`.path-route`/`.path-stage`/`.path-marker`) is gone. **Not in the masthead nav on purpose** — it is a route through the tools rather than a tool, and it is reached from the hub's `.hub-startpath` banner and the footer's Study tools column. (The row had no space either, until the 2026-09-16 regrouping; now it has, and this stays out by choice.) The per-stage hour ranges are external rules of thumb, labelled as such on the page; every level range in the copy is real and will drift if the tools change. |
 | `game.html` | Word Match ("言葉合わせ") — hexagonal-card **memory** game, JLPT N5–N1. `<main class="game-main">` / `game.css`. **Rebuilt 2026-10-21** (see Word Match below): the honeycomb-matching board, the 4-minute clock, streaks, powerups, the lightning chain and the Wakan flyer are all gone, and `game-board.js`, `game-play.js` and `game-wakan.js` went with them. Palette is now "hanafuda in daylight" — tatami straw, violet card backs, one gold, every surface a flat colour — with the old lacquer board kept as the dark theme. |
 | `phonetics.html` | Phonetics Family — kanji grouped by shared phonetic component, ranked by usage. `<main class="phonetics-main">` / `phonetics.css` (light jade/copper). **Rebuilt 2026-10-15 as one surface with four views** — gate → board → tree → round — and it no longer loads `phonetics-data.js` at all (see Phonetics below). `phonetics-drill.html` was retired with that rebuild: the round is a view on this page now. |
-| `grammar.html` | Grammar Connect — sentence-swap grammar drill, two tracks (foundation/advanced). `<main class="grammar-main">` / `grammar.css`. |
+| `grammar.html` | Grammar Connect — sentence-swap grammar drill. `<main class="grammar-main">` / `grammar.css`. The data is still two tracks of twenty, but the **level select is four bands of ten** as of 2026-10-24 (see Grammar Connect below): a triangle gate and a chain of triangle level tiles. |
 | `reading.html` | Dokkai Reader — speech-recognition-driven reading practice. `<main class="reading-main">` / `reading.css` (warm gold, light). |
 | `dictionary.html` | Mongol-Japan Dictionary — two tabs: primary Монгол⇄日本語 (`mnjp-data.js`), secondary 漢語⇄和語 Kango/Wago (`dictionary-data.js`, lazy-loaded only when that tab opens). Reads a `?q=` URL param on load to pre-fill/filter the primary tab — the target of the home page's search bar. `<main class="dictionary-main">` / `dictionary.css`. |
 | `origins.html` | Kana Origins — where hiragana and katakana came from, for a beginner who knows no kanji. `<main class="origins-main">` / `origins.css`. **Rebuilt 2026-10-23** (see Kana Origins below): four sections behind a sticky section bar, and the gojuon laid out as a wall of five vowel rows of eleven rather than the printed eleven of five. |
@@ -393,6 +393,39 @@ sub-line into the chevron's column, and on `.next-card` it dropped the descripti
 seal column, which wrapped it to **one word per line**. A block-level child also breaks the
 anonymous inline item in two, which is how the summary got three children in the first place.
 Either wrap the text in one element or pin it with `grid-column`.
+
+**Grammar Connect's level select is four bands of ten, and the band count is a measurement**
+(2026-10-24). It was going to be a five-point JLPT gate until every grammar point in
+`grammar-data.js` was classified against standard JLPT lists -- 226 distinct points, 500 of 521
+slots; the other 21 are paraphrase fragments (`状態が続いている`), not grammar. Two findings killed it:
+**banding by content is lopsided** (N5 would hold ONE level and N4 fourteen, against N3 7, N2 10,
+N1 8), and **the levels are not ordered by difficulty inside a track**, so no contiguous cut means
+what it claims -- advanced runs `N2 N2 N1 N2 N2 N1 N1 N3 N2 N3 ...`, level 3 harder than level 19.
+Halving each track is the one cut that is both equal and climbing: foundation 1-10 (N4 57%),
+11-20 (N4 46%/N2 31%), advanced 1-10 (N2 39%), 11-20 (N1 57%). Each band's label therefore says
+what it is **mostly**; none claims a single JLPT level. Redo the audit with
+`scratchpad/jlpt-bands.js` before changing the bands.
+**The label is rebased, the level underneath is not.** A tile shows its place in its own band
+(01-10) while `data-level` and `openLevel()` keep the real 1-20 level, so `grammar_progress` keys
+and `progress-shared.js`'s `grammarLevels: 40` never move. Band 2's "01" must not start
+foundation level 1.
+**The gate is one triangle halved on each side** -- three standing, one inverted between them,
+each sharing a whole edge; the apex is the last band so it reads as a climb. **The trail is a
+path, not a patch**: each tile meets exactly one before and one after along a single shared side
+(`L`/`R` step sideways, `D` crosses the horizontal side, down from an up tile and up from a down
+one). Every band walks a different path so they are told apart by shape; each was searched and
+checked for no cell visited twice, every link sharing one whole side, and no tile touching a
+non-consecutive tile.
+Three traps this cost: a **`clip-path` takes the element's `box-shadow`**, so a tile lifts with
+`filter: drop-shadow()`; a **resting shadow on every tile haloes the edges they share**, which
+reads as a gap between pieces that are flush (only the focused tile carries one, and the outlines
+are one SVG overlay); and the page's ground is a **photograph**, so a resting fill must be opaque
+-- the first build used `--card-edge`, a 16% wash, and the entire gate and trail were invisible.
+**Size the field to its room**: the trail is positioned in JS and the page clips rather than
+scrolls, so a band whose path is three tiles wide lost its last levels at 390px until the tile
+size was derived from `parentElement.clientWidth`.
+`#gc-diff-tabs` and `#gc-level-grid` keep their ids because `tutorial.js` points tour steps at
+them, and a step whose selector is missing is dropped silently.
 
 **Word Match is five classic scripts, not one** (`game-core.js` → `game-fx.js` → `game-gate.js`
 → `game-memory.js` → `game.js`, after `game-particles.js`/`game-audio.js`). They share one

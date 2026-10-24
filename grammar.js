@@ -53,6 +53,43 @@ function withinTierIndex(track, levelNum) {
 }
 
 let activeTrack = 'foundation'; // level-select screen: which track's 20 levels are shown
+
+// The level select is four bands of ten, not two tracks of twenty and not the five JLPT levels
+// this was first drawn as. Both of those were checked against the content and failed:
+//
+//   * Banding by what each level actually drills is wildly lopsided -- N5 would hold ONE level
+//     and N4 fourteen, against N3 7, N2 10, N1 8. (226 grammar points classified against standard
+//     JLPT lists, 500 of 521 slots; the other 21 are paraphrase fragments, not grammar points.)
+//   * The levels are not ordered by difficulty inside a track, so no contiguous cut can mean what
+//     it claims. Advanced runs N2 N2 N1 N2 N2 N1 N1 N3 N2 N3 N2 N1 N1 N2 N2 N2 N1 N1 N2 N1 --
+//     level 3 is harder than level 19 and level 8 drops to N3.
+//
+// Halving each track gives four bands of ten that are equal AND whose dominant level climbs:
+//   foundation 1-10   N4 57%, N5 22%     foundation 11-20  N4 46%, N2 31%
+//   advanced 1-10     N2 39%, N1 33%     advanced 11-20    N1 57%, N2 36%
+//
+// `note` therefore says what a band is MOSTLY. No band is purely one JLPT level and saying
+// otherwise would be the overreach this replaced. `track`/`from` keep the real level underneath,
+// so progress keys never move.
+const BANDS = [
+    { key: '1', name: 'grammar.band1', note: 'grammar.band1n', track: 'foundation', from: 1,  trail: 'RRDLDLDRR' },
+    { key: '2', name: 'grammar.band2', note: 'grammar.band2n', track: 'foundation', from: 11, trail: 'LDRDRRDRD' },
+    { key: '3', name: 'grammar.band3', note: 'grammar.band3n', track: 'advanced',   from: 1,  trail: 'RDLDLLDLD' },
+    { key: '4', name: 'grammar.band4', note: 'grammar.band4n', track: 'advanced',   from: 11, trail: 'DRDRRDRDL' },
+];
+const BAND_SIZE = 10;
+let activeBand = 0;          // which of the four is open
+let focusedLevel = null;     // the real 1-20 level whose record the side panel shows
+
+// Which band a real (track, level) belongs to -- used by the ?track= deep link and after a win.
+function bandOf(track, levelNum) {
+    for (let i = 0; i < BANDS.length; i++) {
+        const b = BANDS[i];
+        if (b.track === track && levelNum >= b.from && levelNum < b.from + BAND_SIZE) return i;
+    }
+    return 0;
+}
+function bandLabel(i) { return window.t(BANDS[i].name); }
 let currentTrack = null;
 let currentLevel = null;        // the level object currently being played
 let currentSentenceIndex = 0;
@@ -465,80 +502,217 @@ function gcFloatText(x, y, text, penalty) {
 // ---------------------------------------------------------------------------
 // Level select
 // ---------------------------------------------------------------------------
+// THE GATE: one equilateral triangle halved on each side, which leaves exactly four of half the
+// side -- three standing in the corners and one inverted between them, each sharing a whole edge
+// with its neighbours. No rotation: the corner pieces are the same up-triangle the trail below is
+// built from and the middle one the same down-triangle, so the gate and the field are cut from one
+// shape. The apex is the last band, so it reads as a climb.
+// It keeps the id #gc-diff-tabs because tutorial.js points a tour step at it.
+const GATE_S = 330;
+const GATE_SH = Math.round(GATE_S * Math.sqrt(3) / 2);
+// The slots -- [left, top, inverted] -- are computed per render from the gate's actual width:
+// bottom row reads 1 2 3 left to right, 4 sits at the apex. GATE_S is only the cap.
+
 function renderDiffTabs() {
     const container = document.getElementById('gc-diff-tabs');
     container.innerHTML = '';
-    TRACKS.forEach(track => {
-        const tab = document.createElement('button');
-        tab.type = 'button';
-        tab.className = 'gc-diff-swatch';
-        tab.setAttribute('role', 'tab');
-        tab.setAttribute('aria-selected', String(track === activeTrack));
-        if (track === activeTrack) tab.classList.add('active');
-        tab.innerHTML = `<span class="dname">${escapeHtml(trackLabel(track))}</span><span class="drange">${TRACK_RANGE[track]} · ${escapeHtml(window.tf('grammar.levelsCount', { n: 20 }))}</span>`;
-        tab.addEventListener('click', () => {
-            if (activeTrack === track) return;
-            activeTrack = track;
-            renderDiffTabs();
-            renderLevelGrid();
+    // Sized to the room it has, not to a constant: at 390px a fixed 330 leaves nothing either
+    // side, and the page clips rather than scrolls, so anything past the edge is simply gone.
+    const avail = (container.parentElement && container.parentElement.clientWidth) || GATE_S;
+    const S = Math.max(220, Math.min(GATE_S, avail - 4));
+    const SH = Math.round(S * Math.sqrt(3) / 2);
+    const SLOT = [[0, SH / 2, false], [S / 4, SH / 2, true], [S / 2, SH / 2, false], [S / 4, 0, false]];
+    container.style.width = S + 'px';
+    container.style.height = SH + 'px';
+
+    BANDS.forEach((band, i) => {
+        const slot = SLOT[i];
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'gc-gate-tri' + (slot[2] ? ' is-inverted' : '') + (i === activeBand ? ' active' : '');
+        btn.setAttribute('role', 'tab');
+        btn.setAttribute('aria-selected', String(i === activeBand));
+        btn.style.left = slot[0] + 'px';
+        btn.style.top = slot[1] + 'px';
+        btn.style.width = (S / 2) + 'px';
+        btn.style.height = (SH / 2) + 'px';
+        btn.setAttribute('aria-label', bandLabel(i) + ', '
+            + window.tf('grammar.levelsCount', { n: BAND_SIZE }) + ', ' + window.t(band.note));
+        btn.innerHTML = `<span class="gt-lab"><span class="gt-n">${escapeHtml(band.key)}</span>`
+            + `<span class="gt-name">${escapeHtml(bandLabel(i))}</span>`
+            + `<span class="gt-note">${escapeHtml(window.t(band.note))}</span></span>`;
+        btn.addEventListener('click', () => {
+            if (activeBand === i) return;
+            activeBand = i;
+            activeTrack = band.track;
+            focusedLevel = band.from;
+            renderLevelSelect();
         });
-        container.appendChild(tab);
+        container.appendChild(btn);
     });
+}
+
+// THE TRAIL: the band's ten levels as a chain, each tile joined to the next along ONE shared side.
+// L and R step to the side; D crosses the tile's horizontal side, which goes down from an up tile
+// and up from a down one -- that is the only side those tiles have there. Every band walks a
+// different path, so they are told apart by shape as well as by position.
+// Each trail was searched and checked for three things: no cell visited twice, every link sharing
+// exactly one whole side, and no tile touching a non-consecutive tile (a wandering path curls back
+// on itself easily, and a tile with three neighbours stops reading as a chain).
+const TILE_W = 132, TILE_H = 114;
+
+function trailPath(trail, count) {
+    const path = [[0, 0]];
+    for (let i = 0; i < count - 1 && i < trail.length; i++) {
+        const p = path[path.length - 1], c = p[0], r = p[1], m = trail[i];
+        path.push(m === 'L' ? [c - 1, r] : m === 'R' ? [c + 1, r]
+                : (c + r) % 2 === 0 ? [c, r + 1] : [c, r - 1]);
+    }
+    return path;
+}
+function tileCorners(p, w, h) {
+    const c = p[0], r = p[1], x = c * w / 2, y = r * h;
+    return (c + r) % 2 === 0
+        ? [[x + w / 2, y], [x + w, y + h], [x, y + h]]
+        : [[x, y], [x + w, y], [x + w / 2, y + h]];
 }
 
 function renderLevelGrid() {
     const container = document.getElementById('gc-level-grid');
     container.innerHTML = '';
-    for (let levelNum = 1; levelNum <= 20; levelNum++) {
-        const levelObj = getLevelData(activeTrack, levelNum);
-        const card = document.createElement('button');
-        card.type = 'button';
-        card.className = 'gc-level-card';
-        if (!levelObj) card.classList.add('locked');
+    const band = BANDS[activeBand];
+    const path = trailPath(band.trail, BAND_SIZE);
 
-        // These cards used to show the level number twice ("01" and "LEVEL 1") and nothing about
-        // how the level went, even though best time and best mistakes were already being stored.
-        // Now the number stands on its own and the results get the same stat rail Word Match uses.
-        const progress = progressCache[`${activeTrack}:${levelNum}`];
+    // Each band walks a different path, so each has its own span: band 1 is two tiles wide and
+    // the rest are three. The tile is sized from the room available rather than fixed, because
+    // the page CLIPS a wide trail instead of scrolling it -- the last levels would just vanish.
+    const cols = path.map(p => p[0]);
+    const units = (Math.max.apply(null, cols) - Math.min.apply(null, cols)) / 2 + 1;
+    const room = (container.parentElement && container.parentElement.clientWidth) || 0;
+    const W = room > 0 ? Math.max(76, Math.min(TILE_W, Math.floor((room - 2) / units))) : TILE_W;
+    const H = Math.round(W * Math.sqrt(3) / 2);
+
+    const xs = path.map(p => p[0] * W / 2);
+    const ys = path.map(p => p[1] * H);
+    const minX = Math.min.apply(null, xs), minY = Math.min.apply(null, ys);
+    const fw = Math.round(Math.max.apply(null, xs) + W - minX);
+    const fh = Math.round(Math.max.apply(null, ys) + H - minY);
+    container.style.width = fw + 'px';
+    container.style.height = fh + 'px';
+
+    const NS = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('width', fw);
+    svg.setAttribute('height', fh);
+    svg.setAttribute('viewBox', '0 0 ' + fw + ' ' + fh);
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('class', 'gc-trail-ink');
+
+    for (let k = 0; k < BAND_SIZE; k++) {
+        const step = path[k];
+        const levelNum = band.from + k;
+        const levelObj = getLevelData(band.track, levelNum);
+        const col = step[0], row = step[1];
+        const faceDown = (col + row) % 2 !== 0;
+        const x = col * W / 2 - minX, y = row * H - minY;
+
+        const poly = document.createElementNS(NS, 'polygon');
+        poly.setAttribute('points', faceDown
+            ? `${x},${y} ${x + W},${y} ${x + W / 2},${y + H}`
+            : `${x + W / 2},${y} ${x + W},${y + H} ${x},${y + H}`);
+        svg.appendChild(poly);
+
+        const progress = progressCache[`${band.track}:${levelNum}`];
         const done = !!(progress && progress.completed);
-        const stamp = done ? '<span class="lstamp">済</span>' : '';
 
-        if (!levelObj) {
-            card.innerHTML = `
-                <span class="lnum">${String(levelNum).padStart(2, '0')}</span>
-                <span class="lname">${escapeHtml(window.t('grammar.comingSoon'))}</span>
-            `;
-        } else {
-            const timeText = done ? formatTime(progress.best_time_seconds) : '&mdash;';
-            const missText = done ? String(progress.best_mistakes) : '&mdash;';
-            const emptyClass = done ? '' : ' is-empty';
-            card.innerHTML = `
-                <span class="lnum">${String(levelNum).padStart(2, '0')}</span>
-                ${stamp}
-                <span class="gc-level-rail">
-                    <span class="gc-level-stat">
-                        <span class="gc-level-stat-k">${escapeHtml(window.t('stat.bestTime'))}</span>
-                        <span class="gc-level-stat-v${emptyClass}">${timeText}</span>
-                    </span>
-                    <span class="gc-level-stat">
-                        <span class="gc-level-stat-k">${escapeHtml(window.t('stat.mistakes'))}</span>
-                        <span class="gc-level-stat-v${emptyClass}">${missText}</span>
-                    </span>
-                </span>
-            `;
-        }
+        const tile = document.createElement('button');
+        tile.type = 'button';
+        // The label is the level's place in its own band; the real 1-20 level stays in the data
+        // attribute and in openLevel, or band 2's "01" would start foundation level 1.
+        const shown = String(k + 1).padStart(2, '0');
+        tile.className = 'gc-tri' + (faceDown ? ' is-down' : '') + (done ? ' done' : '')
+            + (levelObj ? '' : ' locked');
+        tile.style.left = x + 'px';
+        tile.style.top = y + 'px';
+        tile.style.width = W + 'px';
+        tile.style.height = H + 'px';
+        tile.dataset.level = String(levelNum);
+        tile.setAttribute('aria-label', (done ? window.t('grammar.cleared') + ', ' : '')
+            + window.tf('grammar.bandLevel', { band: bandLabel(activeBand), n: k + 1 }));
+        tile.innerHTML = `<span class="gc-tri-n">${shown}</span>`
+            + (done ? '<span class="gc-tri-stamp">\u6e08</span>' : '');
+
         if (levelObj) {
-            card.addEventListener('click', () => openLevel(activeTrack, levelNum));
+            tile.addEventListener('click', () => {
+                if (focusedLevel === levelNum) { openLevel(band.track, levelNum); return; }
+                focusedLevel = levelNum;
+                renderLevelGrid();
+                renderLevelRecord();
+            });
         } else {
-            card.disabled = true;
+            tile.disabled = true;
         }
-        container.appendChild(card);
+        if (levelNum === focusedLevel) tile.classList.add('focus');
+        container.appendChild(tile);
     }
+
+    // The links, drawn over the outlines: the two corners each pair shares are FOUND by matching,
+    // not assumed, so a bad step draws no link rather than a wrong one.
+    for (let i = 0; i < path.length - 1; i++) {
+        const a = tileCorners(path[i], W, H), b = tileCorners(path[i + 1], W, H);
+        const shared = a.filter(p => b.some(q =>
+            Math.abs(p[0] - q[0]) < 0.5 && Math.abs(p[1] - q[1]) < 0.5));
+        if (shared.length !== 2) continue;
+        const line = document.createElementNS(NS, 'line');
+        line.setAttribute('x1', shared[0][0] - minX);
+        line.setAttribute('y1', shared[0][1] - minY);
+        line.setAttribute('x2', shared[1][0] - minX);
+        line.setAttribute('y2', shared[1][1] - minY);
+        line.setAttribute('class', 'gc-trail-link');
+        svg.appendChild(line);
+    }
+    container.appendChild(svg);
+}
+
+// A triangle has no room for the two-row BEST TIME / MISTAKES rail the old cards carried, so the
+// record for whichever level is focused opens beside the trail instead.
+function renderLevelRecord() {
+    const host = document.getElementById('gc-level-record');
+    if (!host) return;
+    const band = BANDS[activeBand];
+    if (focusedLevel === null) focusedLevel = band.from;
+    const k = focusedLevel - band.from;
+    const progress = progressCache[`${band.track}:${focusedLevel}`];
+    const done = !!(progress && progress.completed);
+    const dash = '&mdash;';
+    host.innerHTML = `
+        <p class="gc-rec-band">${escapeHtml(bandLabel(activeBand))} &middot; ${escapeHtml(window.t(band.note))}</p>
+        <p class="gc-rec-head"><span class="gc-rec-n">${String(k + 1).padStart(2, '0')}</span>
+            <span class="gc-rec-of">${escapeHtml(window.tf('grammar.levelsCount', { n: BAND_SIZE }))}</span></p>
+        <div class="gc-rec-stats">
+            <span class="gc-rec-stat"><span class="k">${escapeHtml(window.t('stat.bestTime'))}</span>
+                <span class="v">${done ? formatTime(progress.best_time_seconds) : dash}</span></span>
+            <span class="gc-rec-stat"><span class="k">${escapeHtml(window.t('stat.mistakes'))}</span>
+                <span class="v">${done ? String(progress.best_mistakes) : dash}</span></span>
+        </div>
+        <p class="gc-rec-note">${escapeHtml(window.t(done ? 'grammar.recDone' : 'grammar.recNew'))}</p>
+    `;
+    const cta = document.createElement('button');
+    cta.type = 'button';
+    cta.className = 'auth-btn gc-rec-cta';
+    cta.textContent = window.t('game.startMatch');
+    cta.addEventListener('click', () => openLevel(band.track, focusedLevel));
+    host.appendChild(cta);
 }
 
 function renderLevelSelect() {
+    if (focusedLevel === null
+        || bandOf(BANDS[activeBand].track, focusedLevel) !== activeBand) {
+        focusedLevel = BANDS[activeBand].from;
+    }
     renderDiffTabs();
     renderLevelGrid();
+    renderLevelRecord();
     const guestHint = document.getElementById('gc-guest-hint');
     if (window.getCurrentSession()) hideEl(guestHint); else showEl(guestHint);
 }
@@ -563,7 +737,8 @@ function openLevel(track, levelNum) {
     GrammarAudio.setLevelTrack(musicPool[withinTierIndex(track, levelNum) % musicPool.length]);
 
     document.getElementById('gc-cleared-list').innerHTML = `<p class="gc-cleared-empty">${escapeHtml(window.t('grammar.clearedEmptyHint'))}</p>`;
-    document.getElementById('gc-level-label').textContent = window.tf('grammar.trackLevel', { track: trackLabel(track), n: levelNum });
+    document.getElementById('gc-level-label').textContent = window.tf('grammar.bandLevel',
+        { band: bandLabel(bandOf(track, levelNum)), n: levelNum - BANDS[bandOf(track, levelNum)].from + 1 });
     updateTopStats();
     renderTimerDisplay();
     renderSentence(0);
@@ -571,7 +746,8 @@ function openLevel(track, levelNum) {
     hideEl(document.getElementById('gc-select-section'));
     showEl(document.getElementById('gc-match-section'));
 
-    document.getElementById('gc-start-modal-title').textContent = window.tf('grammar.trackLevel', { track: trackLabel(track), n: levelNum });
+    document.getElementById('gc-start-modal-title').textContent = window.tf('grammar.bandLevel',
+        { band: bandLabel(bandOf(track, levelNum)), n: levelNum - BANDS[bandOf(track, levelNum)].from + 1 });
     showEl(document.getElementById('gc-start-modal'));
 }
 
@@ -1079,6 +1255,9 @@ const gcParams = new URLSearchParams(window.location.search);
 const requestedTrack = gcParams.get('track');
 if (requestedTrack === 'foundation' || requestedTrack === 'advanced') {
     activeTrack = requestedTrack;
+    // A track is now two bands; the link lands on the first of them.
+    activeBand = bandOf(requestedTrack, 1);
+    focusedLevel = BANDS[activeBand].from;
 }
 // grammar.html?review=1 -- needs a session and a round trip, so the level select stays up until the
 // board is ready; with nothing to review the learner simply lands on the level select.

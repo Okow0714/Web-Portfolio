@@ -410,8 +410,14 @@
                     <p id="gc-guest-hint" class="gc-guest-hint hidden" data-i18n="auth.loginHint">Явцаа хадгалахын тулд нэвтэрнэ үү.</p>
 
                     <h2 class="sr-only" data-i18n="game.levels">Шатууд</h2>
-                    <div class="gc-diff-tabs" id="gc-diff-tabs" role="tablist" aria-label="Difficulty track"></div>
-                    <div class="gc-level-grid" id="gc-level-grid"></div>
+                    <p class="gc-pick-hint" data-i18n="grammar.pickBand">Хаанаас эхлэхээ сонгоно уу — арван шаттай дөрвөн багц.</p>
+                    <!-- The gate keeps the id #gc-diff-tabs: tutorial.js points a tour step at it,
+                         and a step whose selector is missing is dropped without a word. -->
+                    <div class="gc-gate" id="gc-diff-tabs" role="tablist" aria-label="Level band"></div>
+                    <div class="gc-trail-row">
+                        <div class="gc-level-grid" id="gc-level-grid"></div>
+                        <aside class="gc-level-record" id="gc-level-record"></aside>
+                    </div>
                 </div>
             </section>
 

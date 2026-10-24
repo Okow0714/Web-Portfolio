@@ -238,161 +238,188 @@ body:has(.grammar-main) {
     text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
 }
 
-.gc-diff-tabs {
+/* ---------------------------------------------------------------------------------------------
+   Level select: a four-band gate and a chain of triangle tiles.
+
+   THE GATE is one equilateral triangle halved on each side, leaving four of half the side --
+   three standing in the corners, one inverted between them, each sharing a whole edge with its
+   neighbours. No rotation anywhere: the corner pieces are the same up-triangle the trail is built
+   from and the middle one the same down-triangle, so the gate and the field are cut from one
+   shape. Positions come from grammar.js (GATE_SLOT); only the look is here.
+
+   THE TRAIL is a path through the triangular lattice rather than a patch of it: each tile meets
+   exactly one before it and one after, joined along a single shared side. Positions likewise come
+   from the script.
+
+   Two rules this layout learned the hard way:
+   * clip-path takes the element's box-shadow with it, so a tile is lifted with a drop-shadow
+     FILTER or not at all.
+   * A resting shadow on every tile haloes the edges tiles SHARE, which reads as a gap between
+     pieces that are actually flush. Only the focused tile carries one; the outlines are drawn
+     once, as an SVG overlay under the tiles.
+   --------------------------------------------------------------------------------------------- */
+/* The level select sits on a PHOTOGRAPH, so a resting fill has to be opaque. The first build
+   used --card-edge for it, which is a 14-16% wash meant for hairlines: over the daytime sky the
+   gate and the whole trail were invisible and only the one active piece read. These two are the
+   resting and hover surfaces, both solid. */
+.grammar-main {
+    --tri-rest: #2b2542;
+    --tri-rest: light-dark(#f6f0e2, #2b2542);
+    --tri-hover: #3a3257;
+    --tri-hover: light-dark(#e8dcc3, #3a3257);
+}
+
+.gc-pick-hint {
+    margin: 26px 0 14px;
+    font-size: 0.86rem;
+    color: var(--ink-faint);
+}
+
+.gc-gate {
+    position: relative;
+    margin: 0 0 30px;
+}
+
+.gc-gate-tri {
+    position: absolute;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    font: inherit;
     display: flex;
-    gap: 12px;
-    margin: 28px 0 28px;
+    justify-content: center;
+    align-items: flex-end;
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    background: var(--tri-rest);
+    color: var(--ink);
+    transition: background-color 0.2s var(--ease-out), color 0.2s var(--ease-out);
+}
+.gc-gate-tri.is-inverted {
+    clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+    align-items: flex-start;
+}
+.gc-gate-tri:hover { background: var(--tri-hover); }
+.gc-gate-tri:focus-visible { outline: 3px solid var(--shu-light); outline-offset: -4px; }
+.gc-gate-tri.active {
+    background: var(--shu);
+    color: var(--washi);
+    filter: drop-shadow(0 6px 9px rgba(6, 9, 18, 0.5));
+}
+
+/* The blunt half of a standing piece is its base and of the inverted one its top, so the whole
+   label block hugs that edge -- there is no width to read across at an apex. */
+.gc-gate-tri .gt-lab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding-bottom: 16px;
+}
+.gc-gate-tri.is-inverted .gt-lab { padding-bottom: 0; padding-top: 14px; }
+.gc-gate-tri .gt-n { font-family: var(--font-jp); font-size: 1.35rem; line-height: 1; }
+.gc-gate-tri .gt-name { font-size: 0.75rem; font-weight: 700; }
+.gc-gate-tri .gt-note { font-size: 0.6rem; letter-spacing: 0.04em; opacity: 0.82; }
+
+.gc-trail-row {
+    display: flex;
+    gap: 34px;
+    align-items: flex-start;
     flex-wrap: wrap;
 }
 
-.gc-diff-swatch {
-    flex: 1;
-    min-width: 220px;
-    background: light-dark(rgba(255, 252, 245, 0.96), rgba(20, 27, 51, 0.72));
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
-    border: 1px solid var(--card-edge);
-    border-left: 4px solid var(--card-edge);
-    padding: 16px 20px;
-    cursor: pointer;
-    text-align: left;
-    font-family: inherit;
-    color: inherit;
-    transition: border-color 0.2s var(--ease-out);
-}
-
-.gc-diff-swatch.active { border-left-color: var(--shu-light); }
-
-.gc-diff-swatch .dname {
-    display: block;
-    font-weight: 700;
-    font-size: 1.05rem;
-    color: var(--ink-soft);
-    margin-bottom: 3px;
-}
-
-.gc-diff-swatch.active .dname { color: var(--ink); }
-
-.gc-diff-swatch .drange {
-    font-size: 0.8rem;
-    color: var(--ink-faint);
-    letter-spacing: 0.02em;
-}
-
 .gc-level-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 14px;
-}
-
-.gc-level-card {
-    background: light-dark(rgba(255, 252, 245, 0.96), rgba(20, 27, 51, 0.72));
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
-    border: 1px solid var(--card-edge);
-    padding: 16px 14px;
-    cursor: pointer;
     position: relative;
-    text-align: left;
-    font-family: inherit;
-    color: inherit;
-    transition: transform 0.15s var(--ease-out), border-color 0.15s var(--ease-out);
+    flex: none;
 }
 
-.gc-level-card:hover {
-    transform: translateY(-2px);
-    border-color: rgba(241, 237, 224, 0.3);
+/* Drawn once, beneath the tiles: one outline per tile plus the side each link shares. */
+.gc-trail-ink {
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
 }
+.gc-trail-ink polygon { fill: none; stroke: var(--ink-faint); stroke-width: 1; opacity: 0.5; }
+.gc-trail-ink .gc-trail-link { stroke: var(--shu); stroke-width: 2.5; opacity: 0.9; }
 
-.gc-level-card .lnum {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 1.4rem;
-    color: var(--ink);
-}
-
-.gc-level-card .lname {
-    font-size: 0.7rem;
-    color: var(--ink-faint);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin-top: 2px;
-}
-
-/* Stat rail: best time and best mistakes, the two figures this tool was already storing and
-   never showing. Always drawn, with an em dash where there is no result, so a cleared and an
-   unplayed card stay the same height and the grid does not go ragged. */
-.gc-level-card {
+.gc-tri {
+    position: absolute;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    font: inherit;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-}
-
-.gc-level-rail {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border-top: 1px solid var(--card-edge);
-    padding-top: 8px;
-    margin-top: auto;
-}
-
-/* Label grows, figure pins to the bottom, so the two figures share a baseline even when one
-   label wraps and the other doesn't -- the normal case in Mongolian. */
-.gc-level-stat {
-    display: flex;
-    flex-direction: column;
-}
-
-.gc-level-stat-k {
-    flex: 1;
-}
-
-.gc-level-stat + .gc-level-stat {
-    border-left: 1px solid var(--card-edge);
-    padding-left: 12px;
-}
-
-.gc-level-stat-k {
-    display: block;
-    font-size: 0.58rem;
-    letter-spacing: 0.11em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    margin-bottom: 2px;
-}
-
-.gc-level-stat-v {
-    display: block;
-    font-size: 1.05rem;
-    font-weight: 600;
+    align-items: center;
+    justify-content: flex-end;
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    background: var(--tri-rest);
     color: var(--ink);
-    /* The figures line up as columns across the grid of cards. */
-    font-variant-numeric: tabular-nums;
+    transition: background-color 0.18s var(--ease-out), color 0.18s var(--ease-out);
 }
-
-.gc-level-stat-v.is-empty {
-    color: var(--ink-soft);
-    font-weight: 400;
-}
-
-/* Coming-soon levels carry no rail, so they keep the old two-line shape. */
-.gc-level-card.locked {
+.gc-tri.is-down {
+    clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
     justify-content: flex-start;
 }
-
-.gc-level-card .lstamp {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 20px;
-    height: 20px;
-    border: 1px solid var(--good-bright);
-    color: var(--good-bright);
-    font-family: var(--font-jp);
-    font-size: 11px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.gc-tri:hover { background: var(--tri-hover); }
+.gc-tri:focus-visible { outline: 3px solid var(--shu-light); outline-offset: -5px; }
+.gc-tri.done { background: var(--shu); color: var(--washi); }
+.gc-tri.focus {
+    background: var(--shu-light);
+    color: var(--washi);
+    filter: drop-shadow(0 6px 9px rgba(6, 9, 18, 0.55));
 }
+.gc-tri.locked { cursor: default; opacity: 0.45; }
+
+/* The number hugs the tile's blunt edge: the base of a standing tile, the top of an inverted one. */
+.gc-tri .gc-tri-n {
+    font-family: var(--font-jp);
+    font-size: 1.25rem;
+    line-height: 1;
+    padding-bottom: 11px;
+}
+.gc-tri.is-down .gc-tri-n { padding-bottom: 0; padding-top: 10px; }
+.gc-tri .gc-tri-stamp { font-family: var(--font-jp); font-size: 0.62rem; opacity: 0.75; padding-bottom: 3px; }
+.gc-tri.is-down .gc-tri-stamp { padding-bottom: 0; padding-top: 2px; order: -1; }
+
+/* A triangle has no room for the two-row stat rail the old cards carried, so the record for the
+   focused level opens here instead. */
+.gc-level-record {
+    flex: 1 1 260px;
+    min-width: 0;
+    max-width: 340px;
+    background: var(--card);
+    border-top: 3px solid var(--shu);
+    padding: 20px 22px 24px;
+}
+.gc-rec-band {
+    margin: 0 0 8px;
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+}
+.gc-rec-head { margin: 0 0 16px; display: flex; align-items: baseline; gap: 10px; }
+.gc-rec-n { font-family: var(--font-jp); font-size: 2.4rem; line-height: 1; color: var(--shu-light); }
+.gc-rec-of { font-size: 0.78rem; color: var(--ink-soft); }
+.gc-rec-stats { display: flex; gap: 1px; background: var(--ink-faint); margin-bottom: 16px; }
+.gc-rec-stat {
+    flex: 1;
+    background: var(--card);
+    padding: 11px 13px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.gc-rec-stat .k {
+    font-size: 0.56rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+}
+.gc-rec-stat .v { font-family: var(--font-jp); font-size: 1.2rem; line-height: 1; color: var(--ink); }
+.gc-rec-note { margin: 0 0 16px; font-size: 0.76rem; line-height: 1.6; color: var(--ink-soft); }
+.gc-rec-cta { width: 100%; }
 
 /* ---------------------------------------------------------------------
    Match screen
