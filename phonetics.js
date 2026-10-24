@@ -251,9 +251,22 @@ function renderGateDial() {
 
 function chooseLevel(level, btn) {
     const dial = document.getElementById('phonetics-gate-dial');
+    // One choice per dial. `away` is set just below and cleared only by renderGateDial(), so it
+    // reads exactly as "this dial has already had its choice" -- which covers the whole handover,
+    // not just the animation. Without it a second choice could land on top of the first and the
+    // gate would claim two levels at once: the heading repainted to the new level while the old
+    // level's stage nodes were still standing.
+    if (dial.classList.contains('away')) return;
     const cps = CHECKPOINTS[level.key] || 1;
     dial.classList.add('away');
-    dial.querySelectorAll('.lv').forEach(el => { if (el !== btn) el.classList.add('gone'); });
+    // `inert`, not just `.gone`: the class only fades them and sets pointer-events, and
+    // pointer-events does nothing to the keyboard. Tabbing reached four discs that were not on
+    // screen, and Enter on one re-ran the gate -- the heading went to that level while the
+    // previous level's stage nodes were still standing.
+    dial.querySelectorAll('.lv').forEach(el => {
+        if (el !== btn) el.classList.add('gone');
+        el.inert = true;                      // the chosen one too: it is mid-flight, not a control
+    });
 
     btn.classList.add('travelling');
     btn.style.left = '50%';

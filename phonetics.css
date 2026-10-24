@@ -445,11 +445,18 @@ body:has(.phonetics-drill-main) {
     background: var(--bg-surface);
     border: 2.5px solid var(--hue);
     color: var(--hue);
+    /* The spring stays on left/top, which is the pop-out's travel. transform does NOT ride it:
+       transform is also what the hover lift uses, and on a 0.5s overshoot curve that lift swelled
+       slowly and went past its target, which reads as the node growing by itself rather than
+       answering the pointer. The level discs this dial replaces lift in 0.25s ease; these now
+       match them. The pop-out's own scale is the animation below -- a one-shot entrance belongs
+       in an animation, not in the transition a hover has to share. */
     transition: left 0.5s cubic-bezier(.34, 1.56, .64, 1), top 0.5s cubic-bezier(.34, 1.56, .64, 1),
-                transform 0.5s cubic-bezier(.34, 1.56, .64, 1), opacity 0.3s ease;
+                transform 0.25s ease, opacity 0.3s ease;
 }
 
-.stage.out { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+.stage.out { opacity: 1; transform: translate(-50%, -50%) scale(1); animation: phonStagePop 0.5s cubic-bezier(.34, 1.56, .64, 1); }
+@keyframes phonStagePop { from { transform: translate(-50%, -50%) scale(0.2); } }
 .stage:hover { transform: translate(-50%, -50%) scale(1.08); }
 .stage:focus-visible { outline: 3px solid var(--accent-dark); outline-offset: 4px; }
 .stage-n { font-family: var(--font-display); font-size: clamp(0.95rem, 2.2vmin + 0.55rem, 1.35rem); line-height: 1; }
