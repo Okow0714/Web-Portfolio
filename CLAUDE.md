@@ -416,11 +416,17 @@ path, not a patch**: each tile meets exactly one before and one after along a si
 one). Every band walks a different path so they are told apart by shape; each was searched and
 checked for no cell visited twice, every link sharing one whole side, and no tile touching a
 non-consecutive tile.
-Three traps this cost: a **`clip-path` takes the element's `box-shadow`**, so a tile lifts with
-`filter: drop-shadow()`; a **resting shadow on every tile haloes the edges they share**, which
-reads as a gap between pieces that are flush (only the focused tile carries one, and the outlines
-are one SVG overlay); and the page's ground is a **photograph**, so a resting fill must be opaque
--- the first build used `--card-edge`, a 16% wash, and the entire gate and trail were invisible.
+Traps this cost: a **`clip-path` takes the element's `box-shadow`**, so a tile lifts with
+`filter: drop-shadow()` -- which is also why the shadow works as separation, since a filter
+follows the clipped silhouette. The drawn lattice and the link lines are **gone** as of
+2026-10-24: every tile carries its own gradient and shadow instead, which is what tells one from
+the next. **A gradient cannot go through `light-dark()`** (a `<color>` function, not a value
+switch), so the STOPS are the tokens and the gradient is written once from them. Order matters:
+hover and the picked states must come **after** the base or `done` beats `:hover` and a finished
+tile gives no feedback at all.
+**The ground is a plain wash, not a photograph**, so the light ground had to drop a step
+(`#d9cdb0`) for near-white tiles to sit *on* it rather than in it -- and `body:has(.grammar-main)`
+must match `.gc-night-sky`'s end stop or a seam shows.
 **Size the field to its room**: the trail is positioned in JS and the page clips rather than
 scrolls, so a band whose path is three tiles wide lost its last levels at 390px until the tile
 size was derived from the width available.
@@ -438,6 +444,11 @@ before a single heading; chasing a fit that is not available only makes the tile
 read or tap, so the `100dvh` rule and the height bound are both scoped to wide screens.
 `#gc-diff-tabs` and `#gc-level-grid` keep their ids because `tutorial.js` points tour steps at
 them, and a step whose selector is missing is dropped silently.
+**The record panel's start button is pinned to fixed dye** (`#b3412e` -> `#8f3122`), not to
+`--shu-light`: that token *lightens* to a salmon in dark mode, and the shared `.auth-btn`
+gradient lightens further to a pale pink while its label stays white -- measured **2.13:1**. The
+lightest stop of a gradient is the one the floor has to clear, which is why the top stop is
+`#b3412e` and not `--shu`'s `#bc4430` (4.17:1 against the cream label, just under).
 
 **Word Match is five classic scripts, not one** (`game-core.js` → `game-fx.js` → `game-gate.js`
 → `game-memory.js` → `game.js`, after `game-particles.js`/`game-audio.js`). They share one
@@ -590,7 +601,10 @@ remembers to regenerate it too, or the dictionary's phonetic-family links go sta
 (CC BY-SA 4.0) for kanji & phonetic-family data, Tatoeba (CC BY / CC0) for example sentences,
 scriptin/kanji-frequency (CC BY 4.0) for usage ranking, elzup/jlpt-word-list for vocabulary
 curation, Pixabay Music (Content License) and Wikimedia Commons (CC0/CC BY/CC BY-SA) for Word
-Game's and Grammar Connect's background photos and soundtracks. Adding a new photo or music
+Game's background photos and both tools' soundtracks. **Grammar Connect no longer ships any
+photographs** (2026-10-24): its ground is a plain wash, the two Tokyo images were deleted, and
+`credits.html`'s `#grammar-connect-photos` section went with them -- an attribution is owed for
+what is distributed, and those files no longer are. `#grammar-connect-music` is untouched. Adding a new photo or music
 track to either tool means adding its credit to `credits.html` too — nothing else attributes
 them anymore now that the old page-local disclosures are gone. Never republish curated
 third-party content beyond what these licenses allow — only derive from raw data.

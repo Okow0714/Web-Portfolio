@@ -13,7 +13,8 @@
    rather than the whole token block. */
 body:has(.grammar-main) {
     background: #12192b;
-    background: light-dark(#e7e0ce, #12192b);
+    /* Matches the end stop of .gc-night-sky's wash, or a seam shows where the section ends. */
+    background: light-dark(#d9cdb0, #12192b);
 }
 
 .grammar-main {
@@ -75,15 +76,16 @@ body:has(.grammar-main) {
     overflow: hidden;
 }
 
+/* The ground is a plain wash now. It used to be a photograph of Tokyo, night and day, which cost
+   the page a text scrim, a per-theme image swap, and an opaque fill under anything that had to be
+   read on top of it. The dye-and-ink palette carries the page without one.
+   The two photographs' credits stay on credits.html until the files themselves are removed. */
 .gc-night-sky {
     position: absolute;
     inset: 0;
     z-index: 0;
     background:
-        linear-gradient(180deg, rgba(18, 25, 43, 0.35) 0%, rgba(18, 25, 43, 0.72) 55%, #12192b 100%),
-        url('images/grammar-bg/tokyo-night.jpg');
-    background-size: cover;
-    background-position: center 30%;
+        radial-gradient(ellipse 120% 80% at 50% -10%, #26304f 0%, #1a2340 45%, #12192b 100%);
 }
 
 /* Text scrim. The intro sits over the brightest part of the photo -- the city lights -- and
@@ -263,10 +265,20 @@ body:has(.grammar-main) {
    gate and the whole trail were invisible and only the one active piece read. These two are the
    resting and hover surfaces, both solid. */
 .grammar-main {
-    --tri-rest: #2b2542;
-    --tri-rest: light-dark(#f6f0e2, #2b2542);
-    --tri-hover: #3a3257;
-    --tri-hover: light-dark(#e8dcc3, #3a3257);
+    /* A gradient cannot go through light-dark() -- that is a <color> function, not a value
+       switch -- so the STOPS are the tokens and the gradient is written once from them. */
+    --tri-a: #39315a;
+    --tri-a: light-dark(#ffffff, #39315a);
+    --tri-b: #241f3c;
+    --tri-b: light-dark(#f4ecd9, #241f3c);
+    --tri-a-hot: #4a4070;
+    --tri-a-hot: light-dark(#ffffff, #4a4070);
+    --tri-b-hot: #2e2749;
+    --tri-b-hot: light-dark(#fdf8ec, #2e2749);
+    /* On paper the shadow is the only thing separating one tile from the next, so it carries
+       more weight in light than in dark, where the fill already contrasts with the ground. */
+    --tri-shadow: rgba(6, 9, 18, 0.55);
+    --tri-shadow: light-dark(rgba(84, 62, 28, 0.42), rgba(6, 9, 18, 0.55));
 }
 
 /* Only where it can actually be done. Below about 980px the row cannot keep gate, trail and
@@ -312,21 +324,28 @@ body:has(.grammar-main) {
     justify-content: center;
     align-items: flex-end;
     clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-    background: var(--tri-rest);
+    background: linear-gradient(158deg, var(--tri-a) 0%, var(--tri-b) 100%);
     color: var(--ink);
-    transition: background-color 0.2s var(--ease-out), color 0.2s var(--ease-out);
+    filter: drop-shadow(0 2px 4px var(--tri-shadow));
+    transition: filter 0.2s var(--ease-out), color 0.2s var(--ease-out);
 }
 .gc-gate-tri.is-inverted {
     clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
     align-items: flex-start;
+    background: linear-gradient(22deg, var(--tri-a) 0%, var(--tri-b) 100%);
 }
-.gc-gate-tri:hover { background: var(--tri-hover); }
+.gc-gate-tri:hover {
+    background: linear-gradient(158deg, var(--tri-a-hot) 0%, var(--tri-b-hot) 100%);
+    filter: drop-shadow(0 5px 8px var(--tri-shadow));
+}
+.gc-gate-tri.is-inverted:hover { background: linear-gradient(22deg, var(--tri-a-hot) 0%, var(--tri-b-hot) 100%); }
 .gc-gate-tri:focus-visible { outline: 3px solid var(--shu-light); outline-offset: -4px; }
 .gc-gate-tri.active {
-    background: var(--shu);
+    background: linear-gradient(158deg, var(--shu-light) 0%, var(--shu) 100%);
     color: var(--washi);
-    filter: drop-shadow(0 6px 9px rgba(6, 9, 18, 0.5));
+    filter: drop-shadow(0 7px 11px var(--tri-shadow));
 }
+.gc-gate-tri.is-inverted.active { background: linear-gradient(22deg, var(--shu-light) 0%, var(--shu) 100%); }
 
 /* The blunt half of a standing piece is its base and of the inverted one its top, so the whole
    label block hugs that edge -- there is no width to read across at an apex. */
@@ -359,15 +378,10 @@ body:has(.grammar-main) {
     flex: none;
 }
 
-/* Drawn once, beneath the tiles: one outline per tile plus the side each link shares. */
-.gc-trail-ink {
-    position: absolute;
-    left: 0;
-    top: 0;
-    pointer-events: none;
-}
-.gc-trail-ink polygon { fill: none; stroke: var(--ink-faint); stroke-width: 1; opacity: 0.5; }
-.gc-trail-ink .gc-trail-link { stroke: var(--shu); stroke-width: 2.5; opacity: 0.9; }
+/* The drawn lattice is gone. Every tile carries its own gradient and its own shadow instead,
+   and a filter follows a clip-path silhouette, so the shadow traces each triangle and separates
+   it from its neighbours without a ruled line over the top. */
+.gc-trail-ink { display: none; }
 
 .gc-tri {
     position: absolute;
@@ -380,22 +394,37 @@ body:has(.grammar-main) {
     align-items: center;
     justify-content: flex-end;
     clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-    background: var(--tri-rest);
+    background: linear-gradient(158deg, var(--tri-a) 0%, var(--tri-b) 100%);
     color: var(--ink);
-    transition: background-color 0.18s var(--ease-out), color 0.18s var(--ease-out);
+    /* clip-path takes an element's box-shadow with it, so the lift has to be a filter -- and a
+       filter follows the clipped silhouette, which is what is wanted here. */
+    filter: drop-shadow(0 2px 3px var(--tri-shadow));
+    transition: filter 0.18s var(--ease-out), color 0.18s var(--ease-out);
 }
 .gc-tri.is-down {
+    background: linear-gradient(22deg, var(--tri-a) 0%, var(--tri-b) 100%);
     clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
     justify-content: flex-start;
 }
-.gc-tri:hover { background: var(--tri-hover); }
-.gc-tri:focus-visible { outline: 3px solid var(--shu-light); outline-offset: -5px; }
-.gc-tri.done { background: var(--shu); color: var(--washi); }
-.gc-tri.focus {
-    background: var(--shu-light);
-    color: var(--washi);
-    filter: drop-shadow(0 6px 9px rgba(6, 9, 18, 0.55));
+/* Hover and the two picked states come AFTER the base so they win the gradient. They were
+   previously ordered so `done` beat `:hover`, and a finished tile gave no feedback at all. */
+.gc-tri:hover {
+    background: linear-gradient(158deg, var(--tri-a-hot) 0%, var(--tri-b-hot) 100%);
+    filter: drop-shadow(0 4px 7px var(--tri-shadow));
 }
+.gc-tri.is-down:hover { background: linear-gradient(22deg, var(--tri-a-hot) 0%, var(--tri-b-hot) 100%); }
+.gc-tri:focus-visible { outline: 3px solid var(--shu-light); outline-offset: -5px; }
+.gc-tri.done {
+    background: linear-gradient(158deg, var(--shu-light) 0%, var(--shu) 100%);
+    color: var(--washi);
+}
+.gc-tri.is-down.done { background: linear-gradient(22deg, var(--shu-light) 0%, var(--shu) 100%); }
+.gc-tri.focus {
+    background: linear-gradient(158deg, var(--shu-light) 0%, var(--shu) 100%);
+    color: var(--washi);
+    filter: drop-shadow(0 7px 11px var(--tri-shadow));
+}
+.gc-tri.is-down.focus { background: linear-gradient(22deg, var(--shu-light) 0%, var(--shu) 100%); }
 .gc-tri.locked { cursor: default; opacity: 0.45; }
 
 /* The number hugs the tile's blunt edge: the base of a standing tile, the top of an inverted one. */
@@ -448,7 +477,22 @@ body:has(.grammar-main) {
 }
 .gc-rec-stat .v { font-family: var(--font-jp); font-size: 1.2rem; line-height: 1; color: var(--ink); }
 .gc-rec-note { margin: 0 0 16px; font-size: 0.76rem; line-height: 1.6; color: var(--ink-soft); }
-.gc-rec-cta { width: 100%; }
+/* The shared .auth-btn gradient lightens to a pale pink in dark mode while its label stays
+   white -- measured 2.13:1 against a 4.5 floor, which is the washed-out text on this panel.
+   Pinned to the page's own dye instead, the way the start and result modals already are. */
+.gc-rec-cta,
+.gc-rec-cta:hover {
+    width: 100%;
+    color: var(--washi);
+    border: 1px solid var(--shu);
+}
+/* Fixed dye, not the themed tokens: --shu-light LIGHTENS to a salmon in dark mode, so a
+   themed gradient put the pale stop under the label again (2.52:1). This is the same pair the
+   start and result modals use, and the button is dark-on-dye in both themes. */
+/* The top stop is #b3412e, not --shu's #bc4430: the cream label measures 4.17:1 on #bc4430 and
+   4.50 on this, and the lightest stop of a gradient is the one the floor has to clear. */
+.gc-rec-cta { background: linear-gradient(135deg, #b3412e, #8f3122); }
+.gc-rec-cta:hover { background: linear-gradient(135deg, #b04331, #a3381f); }
 
 /* ---------------------------------------------------------------------
    Match screen
@@ -827,10 +871,7 @@ html[data-contrast="darker"] body:has(.grammar-main) {
            Light choice both reach it. */
         .gc-night-sky {
             background:
-                linear-gradient(180deg, rgba(231, 224, 206, 0.16) 0%, rgba(231, 224, 206, 0.34) 52%, rgba(231, 224, 206, 0.66) 100%),
-                url('images/grammar-bg/tokyo-day.jpg');
-            background-size: cover;
-            background-position: center 38%;
+                radial-gradient(ellipse 120% 80% at 50% -10%, #e9e0c9 0%, #e0d6bc 45%, #d9cdb0 100%);
         }
 
         /* The scrim darkens the top band for light text on the night photo. In daylight the text is
@@ -860,10 +901,7 @@ html[data-theme="light"] body:has(.grammar-main) {
        Light choice both reach it. */
     .gc-night-sky {
         background:
-            linear-gradient(180deg, rgba(231, 224, 206, 0.16) 0%, rgba(231, 224, 206, 0.34) 52%, rgba(231, 224, 206, 0.66) 100%),
-            url('images/grammar-bg/tokyo-day.jpg');
-        background-size: cover;
-        background-position: center 38%;
+            radial-gradient(ellipse 120% 80% at 50% -10%, #e9e0c9 0%, #e0d6bc 45%, #d9cdb0 100%);
     }
 
     /* The scrim darkens the top band for light text on the night photo. In daylight the text is

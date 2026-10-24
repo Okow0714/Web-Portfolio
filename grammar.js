@@ -695,21 +695,8 @@ function renderLevelGrid() {
         container.appendChild(tile);
     }
 
-    // The links, drawn over the outlines: the two corners each pair shares are FOUND by matching,
-    // not assumed, so a bad step draws no link rather than a wrong one.
-    for (let i = 0; i < path.length - 1; i++) {
-        const a = tileCorners(path[i], W, H), b = tileCorners(path[i + 1], W, H);
-        const shared = a.filter(p => b.some(q =>
-            Math.abs(p[0] - q[0]) < 0.5 && Math.abs(p[1] - q[1]) < 0.5));
-        if (shared.length !== 2) continue;
-        const line = document.createElementNS(NS, 'line');
-        line.setAttribute('x1', shared[0][0] - minX);
-        line.setAttribute('y1', shared[0][1] - minY);
-        line.setAttribute('x2', shared[1][0] - minX);
-        line.setAttribute('y2', shared[1][1] - minY);
-        line.setAttribute('class', 'gc-trail-link');
-        svg.appendChild(line);
-    }
+    // The drawn lattice and the link lines are gone -- each tile's own gradient and shadow do
+    // that work now. tileCorners() stays: it is what proves a trail is a real chain.
     container.appendChild(svg);
 }
 
@@ -1216,8 +1203,9 @@ async function saveProgress(session, result) {
     }
 })();
 
-// Photo & music credits for this page live on credits.html (#grammar-connect-photos /
-// #grammar-connect-music), linked from every page's footer -- no longer rendered in-page here.
+// Music credits for this page live on credits.html (#grammar-connect-music), linked from every
+// page's footer -- no longer rendered in-page here. The background photographs, and their credit
+// section, were removed on 2026-10-24 when the page's ground became a plain wash.
 
 // ---------------------------------------------------------------------------
 // Wiring

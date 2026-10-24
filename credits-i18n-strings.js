@@ -40,11 +40,6 @@ Object.assign(window.I18N_STRINGS, {
         mn: 'Бүх 31 хөгжмийн бичлэг Pixabay Music-аас, Pixabay-ийн контентийн зөвшөөрлийн дагуу (арилжааны зориулалтаар үнэгүй ашиглаж болно, эх сурвалж заавал дурдах шаардлагагүй ч энд заасан болно). Файлын хэмжээг багасгахын тулд 112kbps болгож дахин кодлосноос өөр өөрчлөлт ороогүй. N1 дээр soul jazz, N2 дээр jazz-study, N3 дээр smooth jazz, N4 ба N5 дээр (нэг сан хуваалцдаг) lofi jazz ээлжлэн тоглоно; дээрх 30 бичлэгийг Alex-Beats (Alex Morgan) хийсэн бол Jazzy Pop Piano / Japan City-г WELC0MEИ0 хийсэн бөгөөд энэ нь шат сонгох дэлгэц дээр тоглоно.',
     },
 
-    'credits.gcPhotos.h': { en: 'Grammar Connect — background photography', mn: 'Дүрэм холбох — дэвсгэр гэрэл зураг' },
-    'credits.gcPhotos.note': {
-        en: 'Sourced from Wikimedia Commons, resized and re-compressed for use here; no other changes made.',
-        mn: 'Wikimedia Commons-оос авсан бөгөөд энд ашиглахын тулд хэмжээг өөрчилж, дахин шахсанаас өөр өөрчлөлт ороогүй.',
-    },
     'credits.gcMusic.h': { en: 'Grammar Connect — background music', mn: 'Дүрэм холбох — дэвсгэр хөгжим' },
     'credits.gcMusic.note': {
         en: 'All 16 tracks via Pixabay Music, used under the Pixabay Content License (free for commercial use, no attribution required — credited here anyway). Three tracks cycle per JLPT tier (N5 through N1); Zen Garden Beats by eggshy plays on the level-select screen while browsing between levels.',
