@@ -831,11 +831,17 @@ html[data-theme="light"] body:has(.grammar-main) {
 }
 
 /* ---------------------------------------------------------------------------------------------
-   Masthead and footer carry this tool's own colour instead of the shared wine.
-   The value is the seal colour deepened to 68%: at full strength the gold accent
-   (--header-accent) falls to 3.23:1 against a 4.5 minimum, and the gold is not
-   decoration -- it is the masthead border, the brand seal, the current-section underline and every
-   footer link. Deepened it sits at 5.40:1, with the cream text at 8.36:1.
+   Masthead and footer carry this tool's own colour: exactly the seal index.html gives this page
+   (#b0432f), so the button pressed on the home page and the page it opens are the same colour.
+   This used to be that seal DEEPENED to 68%, which is precisely what made them not match.
+
+   The ground is therefore fixed now, so everything set on it had to move instead. --header-accent
+   is TEXT in nine places in style.css -- footer links and headings, nav hover, the account panel's
+   items -- and the shared gold #e8bd6d manages only 3.23:1 on this ground, so it is lifted until
+   it clears 4.5. --header-accent-dark deliberately stays BELOW accent: it is the far stop of the
+   brand seal's gradient and a border colour, never text, so 3:1 is its bar, and lifting it on its
+   own inverted that gradient on four of the six pages.
+   Measured here: cream 5.01:1, accent 4.51:1, muted 4.51:1, cream on the elevated fill 4.65:1.
 
    Declared on .site-header-wrap/.site-footer because that is where style.css declares
    --header-bg, and repeated under html[data-contrast="darker"] because style.css re-declares it
@@ -843,12 +849,17 @@ html[data-theme="light"] body:has(.grammar-main) {
    --------------------------------------------------------------------------------------------- */
 .site-header-wrap,
 .site-footer {
-    --header-bg: #782e20;
-    --header-bg-elevated: #923827;
+    --header-bg: #b0432f;
+    --header-bg-elevated: #b34b37;
+    --header-accent: #f5e3c0;
+    --header-accent-dark: #d3c3a5;
+    --header-text-muted: #efe4de;
+    --header-accent-tint: rgba(245, 227, 192, 0.18);
+    --header-border: rgba(245, 227, 192, 0.36);
 }
 
 html[data-contrast="darker"] .site-header-wrap,
 html[data-contrast="darker"] .site-footer {
-    --header-bg: #461b13;
-    --header-bg-elevated: #782e20;
+    --header-bg: #66271b;
+    --header-bg-elevated: #b0432f;
 }

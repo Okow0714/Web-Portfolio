@@ -1129,3 +1129,37 @@ body.game-playing .game-main {
 @media (prefers-reduced-motion: reduce) {
     .node-spark { display: none; }
 }
+
+/* ---------------------------------------------------------------------------------------------
+   Masthead and footer carry this tool's own colour: exactly the seal index.html gives this page
+   (#5a55b0), so the button pressed on the home page and the page it opens are the same colour.
+   This used to be that seal DEEPENED to 68%, which is precisely what made them not match.
+
+   The ground is therefore fixed now, so everything set on it had to move instead. --header-accent
+   is TEXT in nine places in style.css -- footer links and headings, nav hover, the account panel's
+   items -- and the shared gold #e8bd6d manages only 3.55:1 on this ground, so it is lifted until
+   it clears 4.5. --header-accent-dark deliberately stays BELOW accent: it is the far stop of the
+   brand seal's gradient and a border colour, never text, so 3:1 is its bar, and lifting it on its
+   own inverted that gradient on four of the six pages.
+   Measured here: cream 5.50:1, accent 4.50:1, muted 4.54:1, cream on the elevated fill 4.58:1.
+
+   Declared on .site-header-wrap/.site-footer because that is where style.css declares
+   --header-bg, and repeated under html[data-contrast="darker"] because style.css re-declares it
+   there at higher specificity -- without the second block the darker theme snaps back to wine.
+   --------------------------------------------------------------------------------------------- */
+.site-header-wrap,
+.site-footer {
+    --header-bg: #5a55b0;
+    --header-bg-elevated: #6763b6;
+    --header-accent: #f1d8a9;
+    --header-accent-dark: #cfba91;
+    --header-text-muted: #e8dcf0;
+    --header-accent-tint: rgba(241, 216, 169, 0.18);
+    --header-border: rgba(241, 216, 169, 0.36);
+}
+
+html[data-contrast="darker"] .site-header-wrap,
+html[data-contrast="darker"] .site-footer {
+    --header-bg: #343166;
+    --header-bg-elevated: #5a55b0;
+}

@@ -169,7 +169,11 @@ body:has(.origins-main) { background: var(--bg-page); }
 }
 .ob:hover { transform: translateY(-2px); box-shadow: var(--lift-hi); color: var(--text-primary); }
 .ob:focus-visible { outline: 3px solid var(--seal); outline-offset: 2px; }
-.ob[aria-current="true"] { background: var(--seal); color: #fff; }
+/* --seal lightens in dark mode (#a8431f -> #d2663c) so that white on it drops to 3.68:1 --
+   measured, after a screenshot made it look fine. The chip keeps the seal it is named after by
+   holding the LIGHT seal in dark mode, where white sits at 6.02:1, rather than switching the
+   label to ink. */
+.ob[aria-current="true"] { background: light-dark(var(--seal), #a8431f); color: #fff; }
 .ob-mark { flex: none; display: grid; place-items: center; width: 20px; height: 20px; }
 .ob-mark i { display: block; background: var(--text-secondary); transition: background-color .15s; }
 .ob[aria-current="true"] .ob-mark i { background: #fff; }
@@ -388,11 +392,24 @@ body:has(.origins-main) { background: var(--bg-page); }
 @media (max-width: 980px) { .kana-bench { grid-template-columns: 1fr; gap: 20px; } }
 
 .kana-wall { display: grid; gap: 6px; }
-.kana-course { display: grid; grid-template-columns: 20px repeat(11, minmax(0, 1fr)); gap: 5px;
+.kana-course { display: grid; grid-template-columns: 30px repeat(11, minmax(0, 1fr)); gap: 5px;
                align-items: start; }
-/* The row label only names the vowel; the row's own tiles already say what shape it is. */
-.kana-vowel { align-self: center; text-align: center;
-              font-size: .72rem; font-weight: 700; color: var(--text-faint); }
+/* The row label only names the vowel; the row's own tiles already say what shape it is.
+   It is set in --font-body deliberately: that is IBM Plex Sans, which is vendored WITH its
+   cyrillic and cyrillic-ext subsets, so а/и/у/э/о are drawn by a real face rather than a system
+   fallback. --font-display is Fraunces, which ships no Cyrillic at all and would silently fall
+   back here (see CLAUDE.md). At .72rem in a 20px column this was the smallest type on the page
+   and set in the faintest ink, which made the one label a Mongolian reader navigates the wall by
+   the hardest thing on it to read. */
+.kana-vowel {
+    align-self: center;
+    text-align: center;
+    font-family: var(--font-body, sans-serif);
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--text-secondary);
+}
 
 .kana-stone {
     width: 100%;
@@ -558,4 +575,38 @@ body:has(.origins-main) { background: var(--bg-page); }
         transition-duration: .01ms !important;
         animation-duration: .01ms !important;
     }
+}
+
+/* ---------------------------------------------------------------------------------------------
+   Masthead and footer carry this tool's own colour: exactly the seal index.html gives this page
+   (#a8431f), so the button pressed on the home page and the page it opens are the same colour.
+   This used to be that seal DEEPENED to 68%, which is precisely what made them not match.
+
+   The ground is therefore fixed now, so everything set on it had to move instead. --header-accent
+   is TEXT in nine places in style.css -- footer links and headings, nav hover, the account panel's
+   items -- and the shared gold #e8bd6d manages only 3.42:1 on this ground, so it is lifted until
+   it clears 4.5. --header-accent-dark deliberately stays BELOW accent: it is the far stop of the
+   brand seal's gradient and a border colour, never text, so 3:1 is its bar, and lifting it on its
+   own inverted that gradient on four of the six pages.
+   Measured here: cream 5.30:1, accent 4.53:1, muted 4.52:1, cream on the elevated fill 4.54:1.
+
+   Declared on .site-header-wrap/.site-footer because that is where style.css declares
+   --header-bg, and repeated under html[data-contrast="darker"] because style.css re-declares it
+   there at higher specificity -- without the second block the darker theme snaps back to wine.
+   --------------------------------------------------------------------------------------------- */
+.site-header-wrap,
+.site-footer {
+    --header-bg: #a8431f;
+    --header-bg-elevated: #af5231;
+    --header-accent: #f3ddb3;
+    --header-accent-dark: #d1be9a;
+    --header-text-muted: #e9ddd6;
+    --header-accent-tint: rgba(243, 221, 179, 0.18);
+    --header-border: rgba(243, 221, 179, 0.36);
+}
+
+html[data-contrast="darker"] .site-header-wrap,
+html[data-contrast="darker"] .site-footer {
+    --header-bg: #612712;
+    --header-bg-elevated: #a8431f;
 }

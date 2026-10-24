@@ -39,9 +39,24 @@ version tucked the credits behind a `<details>` right in the footer; the user as
 separate page instead, both because Word Game's and Grammar Connect's full photo/music lists
 made that disclosure huge, and because those two tools were *also* independently duplicating
 their own credits in-page, under their level-select grids, which is what prompted consolidating
-everything onto one dedicated page). Both the masthead and footer are identical across the twelve
+everything onto one dedicated page). The masthead and footer are the same *markup* on the twelve
 pages that carry them (every page above except `about.html`, which has no shared header/footer
 at all, and `reset-password.html`); `credits.html` itself carries the masthead+footer too.
+**Their colour is per-tool, though** (2026-10-24): each of the six tool pages puts
+`--header-bg` on `.site-header-wrap`/`.site-footer` set to **exactly the `--seal` that
+`index.html` gives that page** -- origins `#a8431f`, game `#5a55b0`, phonetics `#1f6b52`,
+grammar `#b0432f`, reading `#5f6b1f`, dictionary `#23405f` -- so the button pressed on the home
+page and the page it opens are the same colour. Four of them already did this but with the seal
+*deepened to 68%*, which is what made them not match, and game/origins had no block at all.
+**The ground is now fixed, so the text on it had to move**: `--header-accent` is TEXT in nine
+places in `style.css` (footer links and headings, nav hover, the account panel's items) and the
+shared gold `#e8bd6d` manages only 3.2-3.6:1 on five of these grounds, so each page lifts it to
+a pale warm gold that clears 4.5; `--header-text-muted` likewise. `--header-accent-dark` stays
+**below** accent on purpose -- it is the far stop of the brand seal's gradient and a border
+colour, never text, so 3:1 is its bar, and lifting it independently inverts that gradient.
+Dictionary is the one seal dark enough to keep the shared gold untouched. Each page needs a
+**second block under `html[data-contrast="darker"]`**, because `style.css` re-declares
+`--header-bg` there at higher specificity and without it the darker setting snaps back to wine.
 **`index.html` is the one exception, and it reduces the masthead rather than removing it.** The hub
 prints its own large wordmark, so `hub.css` hides `.site-brand` and `.header-nav` and makes
 `.site-header-wrap` absolute and transparent, leaving just the language, theme and account controls
@@ -353,8 +368,12 @@ empty, and a panel underneath means scrolling back on every pick.
 
 **The page wears its own button.** `index.html` gives every tool a `--seal`; this page's is
 `#a8431f`, and that colour runs through its accents so the button pressed on the home page and
-the page it opens match. The shared masthead and footer are **not** repainted -- they are
-generated once into twelve pages from `_chrome.html` and belong to the site.
+the page it opens match. **The masthead and footer carry it too** as of 2026-10-24 -- see the
+per-tool masthead note under Shared `style.css`; the markup is still generated once from
+`_chrome.html` and only the colour tokens are per-page.
+One trap that measurement caught and a screenshot did not: `--seal` *lightens* in dark mode
+(`#a8431f` -> `#d2663c`), so white on the section bar's current chip fell to **3.68:1**. It holds
+the light seal in dark mode instead, where white sits at 6.02:1.
 Two things the rebuild had to fix that are easy to reintroduce: `<main>`'s own blocks carry the
 phone gutter (`.container` has no inline padding at 390px, so without it every card ran into
 both edges), and `window.siteLang` is a **function**, not a string.
