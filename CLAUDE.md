@@ -363,6 +363,16 @@ The nine gaps (yi, ye, wu...) are rendered as invisible tiles rather than closed
 they are part of the shape of the syllabary and removing them misaligns every row below.
 A three-way switch re-cuts all 46 faces between hiragana, katakana and the source kanji -- the
 shapes stay put while the glyphs change, which is the page's argument in one control.
+**The column indicators lead with the kana, not the Cyrillic** (`CONSONANTS` in `origins.js`):
+a single Cyrillic consonant is exactly true for only four of the eleven columns -- `са ши су сэ со`
+is not an с series, `та чи цу тэ то` not a т series, `ха хи фу хэ хо` not an х series, and
+я/ю/ё share no consonant letter at all -- so the kana leads and the Cyrillic sits under it as the
+series' usual sound, set in `--text-faint` on the five columns where that usual sound has an
+exception. Those five are the same ones the eight notes below the wall cover.
+**Opacity is not how you de-emphasise text here**: marking them with `opacity: .45` measured
+**2.01:1** in light and 2.67:1 in dark. `--text-faint` is also now checked against **both**
+grounds, not just the card -- it passed on `--bg-surface` while reaching only 4.36:1 on
+`--bg-page`, which is where the column header actually sits.
 The detail opens in a **desk beside the wall**, not under it: the right of that section was
 empty, and a panel underneath means scrolling back on every pick.
 

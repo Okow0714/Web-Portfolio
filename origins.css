@@ -50,11 +50,14 @@ body:has(.origins-main),
     --text-primary: light-dark(#221e1a, #efece6);
     --text-secondary: #565049;
     --text-secondary: light-dark(#565049, #b4b0a8);
-    /* Measured against --bg-surface, not picked by eye: the lighter draft sat at 3.87:1 in
-       light and 3.84:1 in dark, and the desk note and the photo captions set in it are small
-       text, which needs 4.5. */
-    --text-faint: #6e675d;
-    --text-faint: light-dark(#6e675d, #969086);
+    /* Measured against BOTH grounds, not picked by eye. The first draft (#857e74) sat at 3.87:1
+       light and 3.84:1 in dark, and the things set in it -- the desk note, the photo captions,
+       the wall's quieter column letters -- are all small text, which needs 4.5. The second draft
+       passed on the card (--bg-surface) but only reached 4.36:1 on the page ground, which is
+       where the wall's column header actually sits. Now 4.56:1 on the page and 5.64:1 on the
+       card in light; 5.56 / 4.80 in dark. */
+    --text-faint: #6b645a;
+    --text-faint: light-dark(#6b645a, #969086);
     /* Ink used as a FILL, with paper text on it. Separate from --text-primary, which is ink used
        as text: on a dark page the fill must stay dark while the text goes light. */
     --ink-block: #221e1a;
@@ -394,6 +397,39 @@ body:has(.origins-main) { background: var(--bg-page); }
 .kana-wall { display: grid; gap: 6px; }
 .kana-course { display: grid; grid-template-columns: 30px repeat(11, minmax(0, 1fr)); gap: 5px;
                align-items: start; }
+/* The column indicators, in a course of their own above the wall. The kana leads because it is
+   the only label that is exactly true for its column (see CONSONANTS in origins.js); the Cyrillic
+   under it is the series' usual sound, and .is-mixed fades it on the columns where that usual
+   sound has an exception in it -- the same ones the eight notes below the wall cover. No border
+   or rule separates the header: the wall's own rule 2 is that blocks are told apart by fill and
+   space, never by a hairline. */
+.kana-head { margin-bottom: 2px; }
+.kana-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+    line-height: 1;
+}
+.kana-col b {
+    font-family: var(--font-jp);
+    font-size: .95rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+}
+.kana-col i {
+    font-family: var(--font-body, sans-serif);
+    font-style: normal;
+    font-size: .95rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+/* Quieter, NOT faded. The first draft marked these with opacity: .45, which measured 2.01:1 in
+   light and 2.67:1 in dark -- an unreadable label is not a hint, it is a label you have removed.
+   --text-faint is 4.52:1, which still reads while sitting clearly behind the firm columns at
+   6.21:1. Opacity is the wrong tool for de-emphasising text anywhere on this page. */
+.kana-col.is-mixed i { color: var(--text-faint); }
+
 /* The row label only names the vowel; the row's own tiles already say what shape it is.
    It is set in --font-body deliberately: that is IBM Plex Sans, which is vendored WITH its
    cyrillic and cyrillic-ext subsets, so а/и/у/э/о are drawn by a real face rather than a system

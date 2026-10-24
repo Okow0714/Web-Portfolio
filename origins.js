@@ -175,6 +175,27 @@ function renderScripts() {
 const VOWEL_KEYS = ['a', 'i', 'u', 'e', 'o'];
 const VOWEL_MN = ['а', 'и', 'у', 'э', 'о'];
 
+// The column indicators. KANA_ROWS already names each series by its own kana, and that glyph is
+// the only indicator that is exactly true: a single Cyrillic consonant holds for just four of the
+// eleven columns. са ши су сэ со is not an с series; та чи цу тэ то is not a т series; ха хи фу хэ хо is not
+// an х series; я/ю/ё share no consonant letter at all; ва/о barely share one. So the kana
+// leads and the Cyrillic sits under it as the series' USUAL sound, dimmed on the columns where it
+// does not hold -- which is the same handful the eight notes under the wall are about.
+// [kana, the usual Cyrillic consonant, whether every member really takes it]
+const CONSONANTS = [
+    ['—', '', true],
+    ['か', 'к', true],
+    ['さ', 'с', false],
+    ['た', 'т', false],
+    ['な', 'н', true],
+    ['は', 'х', false],
+    ['ま', 'м', true],
+    ['や', 'я', false],
+    ['ら', 'р', true],
+    ['わ', 'в', false],
+    ['ん', 'н', true],
+];
+
 // Which face the whole wall shows: the hiragana, the katakana, or the kanji each was cut from.
 // Three faces of the same 46 positions is the page's argument in one control -- the shapes stay
 // put while the glyphs change, so a tile's hiragana and its source kanji are the same tile.
@@ -212,7 +233,15 @@ function renderKana() {
     const wall = document.getElementById('kana-wall');
     // window.siteLang is a function, not a string (see i18n.js).
     const mn = window.siteLang() !== 'en';
-    let html = '';
+    // The column indicators sit in a course of their own, sharing the courses' grid template so
+    // each header stays over its own column at any width.
+    let html = '<div class="kana-course kana-head" aria-hidden="true"><span></span>';
+    CONSONANTS.forEach(([kana, cyr, firm]) => {
+        html += '<span class="kana-col' + (firm ? '' : ' is-mixed') + '">' +
+            '<b lang="ja">' + kana + '</b>' +
+            (cyr ? '<i>' + cyr + '</i>' : '') + '</span>';
+    });
+    html += '</div>';
     for (let v = 0; v < 5; v++) {
         html += '<div class="kana-course v-' + VOWEL_KEYS[v] + '">' +
             '<span class="kana-vowel" aria-hidden="true">' + (mn ? VOWEL_MN[v] : VOWEL_KEYS[v]) + '</span>';
