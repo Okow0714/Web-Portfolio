@@ -302,7 +302,16 @@ body:has(.origins-main) { background: var(--bg-page); }
 .era-reveal { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .38s var(--ease-pop); }
 .era.is-open .era-reveal { grid-template-rows: 1fr; }
 .era-reveal > div { overflow: hidden; }
-.era-body { padding: 0 20px 20px 124px; }
+.era-body {
+    padding: 0 20px 20px 124px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, auto);
+    gap: 0 24px;
+    align-items: start;
+}
+/* Everything that is not the figure stays in the text column. */
+.era-body > :not(.era-figure) { grid-column: 1; }
+.era-figure { grid-column: 2; grid-row: 1 / 100; }
 @media (max-width: 760px) { .era-body { padding-left: 20px; } .era > summary { grid-template-columns: 1fr 22px; }
                             .era > summary::before { grid-column: 1 / -1; margin-bottom: 4px; } }
 .era-body p { margin: 0 0 12px; font-size: .94rem; color: var(--text-secondary); max-width: 62ch; }
@@ -314,15 +323,34 @@ body:has(.origins-main) { background: var(--bg-page); }
     font-size: 1rem !important;
     border-radius: 12px 12px 4px 4px;
 }
-.era-figure { margin: 16px 0 0; }
+.era-figure { margin: 0; width: min(32vw, 400px); }
+/* These seven photographs run from 4.58:1 (a strip of cursive) to 0.67:1 (a standing stone), and
+   two of them are smaller than this column, so the image is capped on BOTH axes and scaled on
+   neither. `width: 100%` + `object-fit: cover` shipped here for an hour and was wrong for every
+   one of them: it blew the 246px-wide Kojiki scan up to 420px and then cropped it to a square.
+   With both dimensions auto and both maxima set, a replaced element keeps its own ratio and
+   simply fits inside the box -- and a small one is left at its natural size rather than
+   upscaled. Height is the cap that matters, because it is what decides whether an open era
+   fits the window: the masthead and the section bar already take ~132px off the top and the
+   summary takes its own. */
 .era-figure img {
     display: block;
-    width: 100%;
-    max-width: 560px;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 42vh;
+    margin-inline: auto;      /* centred when it is the height that bounds it */
     border-radius: 14px 14px 5px 5px;
     box-shadow: var(--lift);
 }
-.era-figure figcaption { margin-top: 8px; max-width: 560px; font-size: .8rem; color: var(--text-faint); }
+.era-figure figcaption { margin-top: 8px; font-size: .8rem; line-height: 1.45; color: var(--text-faint); }
+
+/* Stacked again where there is no side room to borrow. */
+@media (max-width: 860px) {
+    .era-body { grid-template-columns: minmax(0, 1fr); }
+    .era-figure { grid-column: 1; grid-row: auto; width: 100%; margin-top: 14px; }
+    .era-figure img { max-height: none; }
+}
 
 /* The Han Feizi line, numbered in the order a Japanese reader has to take it. */
 .kaeriten-row { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -486,8 +514,8 @@ body:has(.origins-main) { background: var(--bg-page); }
 .next-card {
     display: grid;
     grid-template-columns: 30px 1fr;
-    align-items: center;
-    gap: 16px;
+    align-items: start;
+    gap: 2px 16px;
     padding: 15px 18px;
     border-radius: 14px 14px 5px 5px;
     text-decoration: none;
@@ -498,6 +526,8 @@ body:has(.origins-main) { background: var(--bg-page); }
 }
 .next-card:hover { background: var(--bg-hot); transform: translateY(-2px); box-shadow: var(--lift-hi); }
 .nc-seal {
+    grid-row: 1 / -1;
+    align-self: center;
     display: grid;
     place-items: center;
     width: 26px;
@@ -511,6 +541,8 @@ body:has(.origins-main) { background: var(--bg-page); }
 .next-card[href="game.html"] .nc-seal { clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); border-radius: 0; }
 .next-card[href="phonetics.html"] .nc-seal { border-radius: 50%; height: 26px; }
 .next-card[href="reading.html"] .nc-seal { border-radius: 4px; }
+.next-card h3,
+.next-card p { grid-column: 2; }
 .next-card h3 { margin: 0 0 2px; font-size: .96rem; }
 .next-card p { margin: 0; font-size: .86rem; color: var(--text-secondary); }
 

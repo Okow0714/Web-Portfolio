@@ -299,9 +299,43 @@ function renderWhy() {
 // transition has a start value. Closing is the awkward half — the element has to STAY open
 // until the collapse has finished playing, or the content vanishes instantly and only the
 // summary animates.
+// Both halves of the <details> animation run on the same grid-template-rows transition in
+// origins.css; revealEra() below needs the opening half, so it lives out here beside it.
+const OPEN_MS = 380;
+
+// How much of the top of the window is permanently covered: the fixed masthead plus the
+// sticky section bar. Measured rather than hard-coded, because both change height at 760px.
+function chromeOffset() {
+    const head = document.querySelector('.site-header-wrap');
+    const bar = document.getElementById('origins-bar');
+    return (head ? head.getBoundingClientRect().height : 0) +
+           (bar ? bar.getBoundingClientRect().height : 0) + 10;
+}
+
+// Opening an era used to leave the reader where they were, so an era near the bottom of the
+// window expanded entirely below the fold -- you opened something and nothing appeared to
+// happen. This pulls the era's own summary up to just under the sticky chrome so the body
+// grows into the space below it. It only ever scrolls DOWN to the era: if the era is already
+// fully above that line there is nothing in the way and moving the page would be worse than
+// leaving it.
+function revealEra(d) {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const go = () => {
+        const top = d.getBoundingClientRect().top;
+        const want = chromeOffset();
+        // Already sitting in a sensible place, and its body fits below: leave the page alone.
+        if (top >= want - 2 && d.getBoundingClientRect().bottom <= window.innerHeight) return;
+        window.scrollTo({ top: window.scrollY + top - want, behavior: reduce ? 'auto' : 'smooth' });
+    };
+    // Once at the start, so the summary is placed before the body unfolds, and once after the
+    // unfold, because only then is the real height known.
+    go();
+    window.setTimeout(go, OPEN_MS + 30);
+}
+
 function wireEras() {
     const eras = [...document.querySelectorAll('.era')];
-    const CLOSE_MS = 380; // must match the grid-template-rows transition in origins.css
+    const CLOSE_MS = OPEN_MS; // must match the grid-template-rows transition in origins.css
 
     const collapse = (d) => {
         d.classList.remove('is-open');
@@ -319,7 +353,10 @@ function wireEras() {
 
             clearTimeout(d._closeTimer);
             d.open = true;
-            requestAnimationFrame(() => requestAnimationFrame(() => d.classList.add('is-open')));
+            requestAnimationFrame(() => requestAnimationFrame(() => {
+                d.classList.add('is-open');
+                revealEra(d);
+            }));
         });
     });
 }

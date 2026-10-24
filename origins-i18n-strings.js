@@ -209,7 +209,7 @@ Object.assign(window.I18N_STRINGS, {
     },
 
     // --- kana section ---------------------------------------------------------
-    'origins.kana.h': { en: '3 · Every kana, in Mongolian', mn: '3 · Кана бүр, монголоор' },
+    'origins.kana.h': { en: '3 · The Japanese alphabet', mn: '3 · Япон хэлний цагаан толгой' },
     'origins.kana.sub': {
         en: 'Tap any tile to see its romaji and the character it was cut down from. Hiragana and katakana share a sound, so they share a tile — but they were carved out of different kanji, which is why they look nothing alike.',
         mn: 'Аль нэг нүд дээр дарвал латин бичлэг, гарал үүслийн ханз нь харагдана. Хирагана, катакана хоёр нэг дуудлагатай учир нэг нүдэнд хамт байна — гэхдээ тус тусдаа өөр ханзнаас гаралтай болохоор хоорондоо огт төстэй биш.'

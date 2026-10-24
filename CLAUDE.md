@@ -324,6 +324,18 @@ whichever section is in view, so the bar is also the position indicator. Section
 scripts and the demo sentence) and section 2 (nine eras with their photographs) keep the content
 and the class names they always had -- the renderers were not touched.
 
+**An era opens into the frame, and its photograph goes beside the text** (2026-10-24). The body
+is a two-column grid -- prose left, figure right in the space the 1040px column was wasting --
+and opening one scrolls its own summary up to just under the sticky chrome (`revealEra()`,
+offset measured from the masthead plus the bar rather than hard-coded, since both change height
+at 760px). It only ever scrolls *down* to an era: one already above that line needs no help, and
+moving the page would be worse. Measured after: all nine open entirely inside a 900px window.
+The seven photographs run from **4.58:1 to 0.67:1** and two are narrower than their column, so
+the image is capped on both axes and scaled on neither -- `width/height: auto` with both maxima
+set, which keeps a replaced element's own ratio and leaves a small one at natural size.
+`width: 100%` + `object-fit: cover` shipped here for an hour and was wrong for every one: it blew
+the 246px-wide Kojiki scan up to 420px and cropped it square. Below 860px it stacks again.
+
 **The gojuon is laid on its side.** `KANA_ROWS` is the printed table, eleven consonant rows of
 five vowels; `renderKana()` draws its TRANSPOSE, five vowel rows of eleven, so the whole
 syllabary is one screen deep and nothing has to be scrolled before two kana can be compared.
@@ -346,6 +358,12 @@ generated once into twelve pages from `_chrome.html` and belong to the site.
 Two things the rebuild had to fix that are easy to reintroduce: `<main>`'s own blocks carry the
 phone gutter (`.container` has no inline padding at 390px, so without it every card ran into
 both edges), and `window.siteLang` is a **function**, not a string.
+**Count a grid's children before its columns.** This page shipped the same bug twice. A two-column
+grid with three children puts the third in column 1 of row 2: on the era summary that threw the
+sub-line into the chevron's column, and on `.next-card` it dropped the description into the 30px
+seal column, which wrapped it to **one word per line**. A block-level child also breaks the
+anonymous inline item in two, which is how the summary got three children in the first place.
+Either wrap the text in one element or pin it with `grid-column`.
 
 **Word Match is five classic scripts, not one** (`game-core.js` → `game-fx.js` → `game-gate.js`
 → `game-memory.js` → `game.js`, after `game-particles.js`/`game-audio.js`). They share one
