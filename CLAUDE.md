@@ -405,6 +405,25 @@ Halving each track is the one cut that is both equal and climbing: foundation 1-
 11-20 (N4 46%/N2 31%), advanced 1-10 (N2 39%), 11-20 (N1 57%). Each band's label therefore says
 what it is **mostly**; none claims a single JLPT level. Redo the audit with
 `scratchpad/jlpt-bands.js` before changing the bands.
+**The hedge is now a tilde, not a word** (2026-10-24): the notes read `~N4`, `~N4-N3`, `~N2`,
+`~N1` where they used to read "mostly N4" / "ихэвчлэн N4". The hedge itself cannot be dropped --
+these are halves of a track, not JLPT tiers -- but one character says it in both languages.
+**Each band wears its JLPT colour**, taken from the same `--jlpt-n4..--jlpt-n1` hues Word
+Match's gate uses: band 1 n4, band 2 n3, band 3 n2, band 4 n1. N5 is absent because no band is
+mostly N5 (one level of the forty). `grammar.js` only adds a `gc-band-n4` class -- a custom
+property name cannot be built from a variable, so `grammar.css` holds the four-rule mapping onto
+one `--bt-*` set that the gate piece and the ten tiles then share.
+**The hue is never the resting fill.** Word Match puts white on the solid hue, which measures
+**2.40:1** on the N4 gold; here each hue is mixed towards white (light) or the page ground (dark)
+and the ink is solved against the *harder* of the two gradient stops -- the darker one in light,
+the lighter one in dark. The mix is pushed as far as that solve allows rather than to a round
+number: the first attempt used a flat 16% tint for all four and the bands were not tellable apart
+on paper, which defeats the point. The cleared/picked state IS the hue, the same in both themes,
+and **N3 is the one that has to be lightened 18%** -- at its own lightness no ink, dark or pale,
+clears 4.5 on both stops of a gradient around it. The ink direction is per band too (N4/N3 dark,
+N2/N1 pale), so `on-solid` is four values rather than one. Worst measured label: **4.77:1**.
+The `:focus-visible` ring stays the page's `--shu-light` and does NOT follow the band: three of
+the four `on-solid` inks are near-black, which is not an indicator against their own dark fill.
 **The label is rebased, the level underneath is not.** A tile shows its place in its own band
 (01-10) while `data-level` and `openLevel()` keep the real 1-20 level, so `grammar_progress` keys
 and `progress-shared.js`'s `grammarLevels: 40` never move. Band 2's "01" must not start

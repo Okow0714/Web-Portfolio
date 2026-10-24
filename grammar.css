@@ -257,6 +257,75 @@ body:has(.grammar-main) {
        more weight in light than in dark, where the fill already contrasts with the ground. */
     --tri-shadow: rgba(6, 9, 18, 0.55);
     --tri-shadow: light-dark(rgba(84, 62, 28, 0.42), rgba(6, 9, 18, 0.55));
+
+    /* Each band wears a JLPT colour, from the same --jlpt-* hues Word Match's gate uses. N5 is
+       absent on purpose: no band is mostly N5 (it is one level of the forty).
+       The hue itself is never the resting fill. Word Match puts white on the solid hue, which is
+       2.40:1 on the N4 gold; here each hue is mixed towards white (light) or the page ground
+       (dark) and the ink is solved against the HARDER of the two gradient stops -- the darker one
+       in light, the lighter one in dark. The mix is pushed as far as that solve allows rather
+       than to a round number, because four faint tints of these hues are not tellable apart on
+       paper, which is the whole point of colouring them.
+       `solid` is the cleared/picked state and is the hue itself, the same in both themes. Three
+       of the four take it pure; N3 is lightened 18% because at its own lightness NO ink, dark or
+       pale, clears 4.5 on both stops of a gradient around it. The ink direction differs too --
+       N4 and N3 carry dark ink, N2 and N1 pale -- so `on-solid` is per band, not one value.
+       A gradient cannot go through light-dark(), so every stop is its own token. */
+    --band-n4-a: #605026;
+    --band-n4-a: light-dark(#e3c679, #605026);
+    --band-n4-b: #776125;
+    --band-n4-b: light-dark(#ddb857, #776125);
+    --band-n4-a-hot: #705b25;
+    --band-n4-a-hot: light-dark(#e8cf8d, #705b25);
+    --band-n4-b-hot: #7f6624;
+    --band-n4-b-hot: light-dark(#e1c06b, #7f6624);
+    --band-n4-ink: #f8f0db;
+    --band-n4-ink: light-dark(#524628, #f8f0db);
+    --band-n4-solid-a: #d7ab3a;
+    --band-n4-solid-b: #b98e1e;
+    --band-n4-on-solid: #302918;
+
+    --band-n3-a: #834124;
+    --band-n3-a: light-dark(#de9c79, #834124);
+    --band-n3-b: #994922;
+    --band-n3-b: light-dark(#d68357, #994922);
+    --band-n3-a-hot: #914723;
+    --band-n3-a-hot: light-dark(#e3ab8d, #914723);
+    --band-n3-b-hot: #a04c22;
+    --band-n3-b-hot: light-dark(#db926b, #a04c22);
+    --band-n3-ink: #f6e5db;
+    --band-n3-ink: light-dark(#3a2729, #f6e5db);
+    --band-n3-solid-a: #d7885d;
+    --band-n3-solid-b: #ba6b41;
+    --band-n3-on-solid: #0c0e16;
+
+    --band-n2-a: #6a2b24;
+    --band-n2-a: light-dark(#cc968b, #6a2b24);
+    --band-n2-b: #7b2e23;
+    --band-n2-b: light-dark(#bd786a, #7b2e23);
+    --band-n2-a-hot: #752d23;
+    --band-n2-a-hot: light-dark(#d4a89f, #752d23);
+    --band-n2-b-hot: #802f22;
+    --band-n2-b-hot: light-dark(#c68a7e, #802f22);
+    --band-n2-ink: #efdfdb;
+    --band-n2-ink: light-dark(#1e1c2b, #efdfdb);
+    --band-n2-solid-a: #a84d3b;
+    --band-n2-solid-b: #8a301f;
+    --band-n2-on-solid: #f6edeb;
+
+    --band-n1-a: #5a283f;
+    --band-n1-a: light-dark(#c29aa6, #5a283f);
+    --band-n1-b: #672a43;
+    --band-n1-b: light-dark(#af7b8b, #672a43);
+    --band-n1-a-hot: #632a41;
+    --band-n1-a-hot: light-dark(#cdacb7, #632a41);
+    --band-n1-b-hot: #6c2b44;
+    --band-n1-b-hot: light-dark(#ba8d9b, #6c2b44);
+    --band-n1-ink: #ebdee2;
+    --band-n1-ink: light-dark(#1c1c2e, #ebdee2);
+    --band-n1-solid-a: #914960;
+    --band-n1-solid-b: #742c44;
+    --band-n1-on-solid: #ebdee2;
     /* The record panel's surface. Shared with its stat cells: those sit on the same value so only
        the 1px rule between them shows -- left transparent they let the divider wash through as a
        solid grey slab across the whole strip. */
@@ -297,6 +366,50 @@ body:has(.grammar-main) {
     flex: none;
 }
 
+/* The band's hue, aliased onto one set of names so the gate piece and the ten tiles can share
+   every rule below. CSS cannot build a custom-property name out of a variable, so the mapping is
+   four rules here rather than a template in grammar.js -- which only has to add the class. */
+.gc-band-n4 {
+    --bt-a: var(--band-n4-a);
+    --bt-b: var(--band-n4-b);
+    --bt-a-hot: var(--band-n4-a-hot);
+    --bt-b-hot: var(--band-n4-b-hot);
+    --bt-ink: var(--band-n4-ink);
+    --bt-solid-a: var(--band-n4-solid-a);
+    --bt-solid-b: var(--band-n4-solid-b);
+    --bt-on-solid: var(--band-n4-on-solid);
+}
+.gc-band-n3 {
+    --bt-a: var(--band-n3-a);
+    --bt-b: var(--band-n3-b);
+    --bt-a-hot: var(--band-n3-a-hot);
+    --bt-b-hot: var(--band-n3-b-hot);
+    --bt-ink: var(--band-n3-ink);
+    --bt-solid-a: var(--band-n3-solid-a);
+    --bt-solid-b: var(--band-n3-solid-b);
+    --bt-on-solid: var(--band-n3-on-solid);
+}
+.gc-band-n2 {
+    --bt-a: var(--band-n2-a);
+    --bt-b: var(--band-n2-b);
+    --bt-a-hot: var(--band-n2-a-hot);
+    --bt-b-hot: var(--band-n2-b-hot);
+    --bt-ink: var(--band-n2-ink);
+    --bt-solid-a: var(--band-n2-solid-a);
+    --bt-solid-b: var(--band-n2-solid-b);
+    --bt-on-solid: var(--band-n2-on-solid);
+}
+.gc-band-n1 {
+    --bt-a: var(--band-n1-a);
+    --bt-b: var(--band-n1-b);
+    --bt-a-hot: var(--band-n1-a-hot);
+    --bt-b-hot: var(--band-n1-b-hot);
+    --bt-ink: var(--band-n1-ink);
+    --bt-solid-a: var(--band-n1-solid-a);
+    --bt-solid-b: var(--band-n1-solid-b);
+    --bt-on-solid: var(--band-n1-on-solid);
+}
+
 .gc-gate-tri {
     position: absolute;
     border: 0;
@@ -307,28 +420,32 @@ body:has(.grammar-main) {
     justify-content: center;
     align-items: flex-end;
     clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-    background: linear-gradient(158deg, var(--tri-a) 0%, var(--tri-b) 100%);
-    color: var(--ink);
+    /* The fallbacks are what a piece without a .gc-band-* class would get. Nothing renders one,
+       but a token that silently resolves to nothing paints an unstyled triangle. */
+    background: linear-gradient(158deg, var(--bt-a, var(--tri-a)) 0%, var(--bt-b, var(--tri-b)) 100%);
+    color: var(--bt-ink, var(--ink));
     filter: drop-shadow(0 2px 4px var(--tri-shadow));
     transition: filter 0.2s var(--ease-out), color 0.2s var(--ease-out);
 }
 .gc-gate-tri.is-inverted {
     clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
     align-items: flex-start;
-    background: linear-gradient(22deg, var(--tri-a) 0%, var(--tri-b) 100%);
+    background: linear-gradient(22deg, var(--bt-a, var(--tri-a)) 0%, var(--bt-b, var(--tri-b)) 100%);
 }
 .gc-gate-tri:hover {
-    background: linear-gradient(158deg, var(--tri-a-hot) 0%, var(--tri-b-hot) 100%);
+    background: linear-gradient(158deg, var(--bt-a-hot, var(--tri-a-hot)) 0%, var(--bt-b-hot, var(--tri-b-hot)) 100%);
     filter: drop-shadow(0 5px 8px var(--tri-shadow));
 }
-.gc-gate-tri.is-inverted:hover { background: linear-gradient(22deg, var(--tri-a-hot) 0%, var(--tri-b-hot) 100%); }
+.gc-gate-tri.is-inverted:hover { background: linear-gradient(22deg, var(--bt-a-hot, var(--tri-a-hot)) 0%, var(--bt-b-hot, var(--tri-b-hot)) 100%); }
 .gc-gate-tri:focus-visible { outline: 3px solid var(--shu-light); outline-offset: -4px; }
+/* The open band is its hue at full strength. It used to be the page's shu for all four, which is
+   what made the gate say nothing about which level a band holds. */
 .gc-gate-tri.active {
-    background: linear-gradient(158deg, var(--shu-light) 0%, var(--shu) 100%);
-    color: var(--washi);
+    background: linear-gradient(158deg, var(--bt-solid-a, var(--shu-light)) 0%, var(--bt-solid-b, var(--shu)) 100%);
+    color: var(--bt-on-solid, var(--washi));
     filter: drop-shadow(0 7px 11px var(--tri-shadow));
 }
-.gc-gate-tri.is-inverted.active { background: linear-gradient(22deg, var(--shu-light) 0%, var(--shu) 100%); }
+.gc-gate-tri.is-inverted.active { background: linear-gradient(22deg, var(--bt-solid-a, var(--shu-light)) 0%, var(--bt-solid-b, var(--shu)) 100%); }
 
 /* The blunt half of a standing piece is its base and of the inverted one its top, so the whole
    label block hugs that edge -- there is no width to read across at an apex. */
@@ -391,32 +508,32 @@ body:has(.grammar-main) {
     /* Pointing right. A triangle is only wide enough to read along its blunt edge, which here
        is the vertical one on the left, so the number sits against it. */
     clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
-    background: linear-gradient(118deg, var(--tri-a) 0%, var(--tri-b) 100%);
-    color: var(--ink);
+    background: linear-gradient(118deg, var(--bt-a, var(--tri-a)) 0%, var(--bt-b, var(--tri-b)) 100%);
+    color: var(--bt-ink, var(--ink));
     /* clip-path takes an element's box-shadow with it, so the lift has to be a filter -- and a
        filter follows the clipped silhouette, which is what is wanted here. */
     filter: drop-shadow(0 2px 3px var(--tri-shadow));
     transition: filter 0.18s var(--ease-out), color 0.18s var(--ease-out);
 }
-.gc-tri.is-down {
-    clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
-    justify-content: flex-start;
-}
 /* Hover and the two picked states come AFTER the base so they win the gradient. They were
    previously ordered so `done` beat `:hover`, and a finished tile gave no feedback at all. */
 .gc-tri:hover {
-    background: linear-gradient(118deg, var(--tri-a-hot) 0%, var(--tri-b-hot) 100%);
+    background: linear-gradient(118deg, var(--bt-a-hot, var(--tri-a-hot)) 0%, var(--bt-b-hot, var(--tri-b-hot)) 100%);
     filter: drop-shadow(0 4px 7px var(--tri-shadow));
 }
-.gc-tri:focus-visible { outline: 3px solid var(--shu-light); outline-offset: -5px; }
+.gc-tri:focus-visible { outline: 3px solid var(--bt-on-solid, var(--shu-light)); outline-offset: -5px; }
+/* Cleared: the band's hue filled in. Picked: the same fill, lifted further and ringed, so the
+   two states stay apart now that both are in-hue rather than one of them being the page accent. */
 .gc-tri.done {
-    background: linear-gradient(118deg, var(--shu-light) 0%, var(--shu) 100%);
-    color: var(--washi);
+    background: linear-gradient(118deg, var(--bt-solid-a, var(--shu-light)) 0%, var(--bt-solid-b, var(--shu)) 100%);
+    color: var(--bt-on-solid, var(--washi));
 }
 .gc-tri.focus {
-    background: linear-gradient(118deg, var(--shu-light) 0%, var(--shu) 100%);
-    color: var(--washi);
+    background: linear-gradient(118deg, var(--bt-solid-a, var(--shu-light)) 0%, var(--bt-solid-b, var(--shu)) 100%);
+    color: var(--bt-on-solid, var(--washi));
     filter: drop-shadow(0 6px 10px var(--tri-shadow));
+    outline: 2px solid var(--bt-on-solid, var(--washi));
+    outline-offset: -7px;
 }
 .gc-tri.locked { cursor: default; opacity: 0.45; }
 

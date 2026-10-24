@@ -28,15 +28,17 @@ Object.assign(window.I18N_STRINGS, {
 
     // The four bands of the level select. `note` says what a band is MOSTLY -- measured by
     // classifying every grammar point in grammar-data.js, not by what the track is called. No
-    // band is purely one JLPT level, so none of these claims one.
+    // band is purely one JLPT level, so none of these claims one. The hedge used to be the word
+    // "mostly" / "ихэвчлэн" and is now the tilde: shorter, and the same in both languages. It
+    // cannot be dropped altogether -- the bands are halves of a track, not JLPT tiers.
     'grammar.band1': { en: 'Opening', mn: 'Эхлэл' },
-    'grammar.band1n': { en: 'mostly N4', mn: 'ихэвчлэн N4' },
+    'grammar.band1n': { en: '~N4', mn: '~N4' },
     'grammar.band2': { en: 'Footing', mn: 'Суурь' },
-    'grammar.band2n': { en: 'mostly N4–N3', mn: 'ихэвчлэн N4–N3' },
+    'grammar.band2n': { en: '~N4–N3', mn: '~N4–N3' },
     'grammar.band3': { en: 'Middle', mn: 'Дунд' },
-    'grammar.band3n': { en: 'mostly N2', mn: 'ихэвчлэн N2' },
+    'grammar.band3n': { en: '~N2', mn: '~N2' },
     'grammar.band4': { en: 'Deep', mn: 'Гүнзгий' },
-    'grammar.band4n': { en: 'mostly N1', mn: 'ихэвчлэн N1' },
+    'grammar.band4n': { en: '~N1', mn: '~N1' },
     'grammar.bandLevel': { en: '{band} · Level {n}', mn: '{band} · {n}-р шат' },
     'grammar.pickBand': { en: 'Pick where to start — four sets of ten levels.', mn: 'Хаанаас эхлэхээ сонгоно уу — арван шаттай дөрвөн багц.' },
     'grammar.recDone': { en: 'Cleared. Replaying only updates your best.', mn: 'Дуусгасан. Дахин тоглоход шилдэг дүн л шинэчлэгдэнэ.' },

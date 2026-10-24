@@ -74,11 +74,14 @@ let activeTrack = 'foundation'; // level-select screen: which track's 20 levels 
 // Each band used to carry a `trail` as well -- a walk through a triangular lattice that laid its
 // ten tiles out as a chain joined along shared sides. The tiles sit in a plain row now, so those
 // walks, the corner matching that verified them and the SVG they were drawn on are all gone.
+// `hue` is the band's JLPT colour -- the level its note names, drawn from the same --jlpt-*
+// hues Word Match's gate uses. It only has to name the class; grammar.css owns the values,
+// because a custom-property name cannot be built out of a variable.
 const BANDS = [
-    { key: '1', name: 'grammar.band1', note: 'grammar.band1n', track: 'foundation', from: 1 },
-    { key: '2', name: 'grammar.band2', note: 'grammar.band2n', track: 'foundation', from: 11 },
-    { key: '3', name: 'grammar.band3', note: 'grammar.band3n', track: 'advanced',   from: 1 },
-    { key: '4', name: 'grammar.band4', note: 'grammar.band4n', track: 'advanced',   from: 11 },
+    { key: '1', name: 'grammar.band1', note: 'grammar.band1n', track: 'foundation', from: 1,  hue: 'n4' },
+    { key: '2', name: 'grammar.band2', note: 'grammar.band2n', track: 'foundation', from: 11, hue: 'n3' },
+    { key: '3', name: 'grammar.band3', note: 'grammar.band3n', track: 'advanced',   from: 1,  hue: 'n2' },
+    { key: '4', name: 'grammar.band4', note: 'grammar.band4n', track: 'advanced',   from: 11, hue: 'n1' },
 ];
 const BAND_SIZE = 10;
 let activeBand = 0;          // which of the four is open
@@ -549,7 +552,8 @@ function renderDiffTabs() {
         const slot = SLOT[i];
         const btn = document.createElement('button');
         btn.type = 'button';
-        btn.className = 'gc-gate-tri' + (slot[2] ? ' is-inverted' : '') + (i === activeBand ? ' active' : '');
+        btn.className = 'gc-gate-tri gc-band-' + band.hue
+            + (slot[2] ? ' is-inverted' : '') + (i === activeBand ? ' active' : '');
         btn.setAttribute('role', 'tab');
         btn.setAttribute('aria-selected', String(i === activeBand));
         btn.style.left = slot[0] + 'px';
@@ -593,7 +597,8 @@ function renderLevelGrid() {
         // The label is the level's place in its own band; the real 1-20 level stays in the data
         // attribute and in openLevel, or band 2's "01" would start foundation level 1.
         const shown = String(k + 1).padStart(2, '0');
-        tile.className = 'gc-tri' + (done ? ' done' : '') + (levelObj ? '' : ' locked');
+        tile.className = 'gc-tri gc-band-' + band.hue
+            + (done ? ' done' : '') + (levelObj ? '' : ' locked');
         tile.dataset.level = String(levelNum);
         tile.setAttribute('aria-label', (done ? window.t('grammar.cleared') + ', ' : '')
             + window.tf('grammar.bandLevel', { band: bandLabel(activeBand), n: k + 1 }));
