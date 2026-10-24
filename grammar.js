@@ -71,11 +71,14 @@ let activeTrack = 'foundation'; // level-select screen: which track's 20 levels 
 // `note` therefore says what a band is MOSTLY. No band is purely one JLPT level and saying
 // otherwise would be the overreach this replaced. `track`/`from` keep the real level underneath,
 // so progress keys never move.
+// Each band used to carry a `trail` as well -- a walk through a triangular lattice that laid its
+// ten tiles out as a chain joined along shared sides. The tiles sit in a plain row now, so those
+// walks, the corner matching that verified them and the SVG they were drawn on are all gone.
 const BANDS = [
-    { key: '1', name: 'grammar.band1', note: 'grammar.band1n', track: 'foundation', from: 1,  trail: 'RRDLDLDRR' },
-    { key: '2', name: 'grammar.band2', note: 'grammar.band2n', track: 'foundation', from: 11, trail: 'LDRDRRDRD' },
-    { key: '3', name: 'grammar.band3', note: 'grammar.band3n', track: 'advanced',   from: 1,  trail: 'RDLDLLDLD' },
-    { key: '4', name: 'grammar.band4', note: 'grammar.band4n', track: 'advanced',   from: 11, trail: 'DRDRRDRDL' },
+    { key: '1', name: 'grammar.band1', note: 'grammar.band1n', track: 'foundation', from: 1 },
+    { key: '2', name: 'grammar.band2', note: 'grammar.band2n', track: 'foundation', from: 11 },
+    { key: '3', name: 'grammar.band3', note: 'grammar.band3n', track: 'advanced',   from: 1 },
+    { key: '4', name: 'grammar.band4', note: 'grammar.band4n', track: 'advanced',   from: 11 },
 ];
 const BAND_SIZE = 10;
 let activeBand = 0;          // which of the four is open
@@ -525,9 +528,8 @@ function roomBelow(el, floor) {
     return Math.max(floor || 180, window.innerHeight - top - 26);
 }
 
-// What the record panel will not go below. The trail takes the width left after the gate and this.
+// What the record panel will not go below, matching .gc-level-record's flex-basis.
 const RECORD_MIN = 250;
-const ROW_GAP = 30;
 
 function renderDiffTabs() {
     const container = document.getElementById('gc-diff-tabs');
@@ -570,97 +572,19 @@ function renderDiffTabs() {
     });
 }
 
-// THE TRAIL: the band's ten levels as a chain, each tile joined to the next along ONE shared side.
-// L and R step to the side; D crosses the tile's horizontal side, which goes down from an up tile
-// and up from a down one -- that is the only side those tiles have there. Every band walks a
-// different path, so they are told apart by shape as well as by position.
-// Each trail was searched and checked for three things: no cell visited twice, every link sharing
-// exactly one whole side, and no tile touching a non-consecutive tile (a wandering path curls back
-// on itself easily, and a tile with three neighbours stops reading as a chain).
-const TILE_W = 132, TILE_H = 114;
-
-function trailPath(trail, count) {
-    const path = [[0, 0]];
-    for (let i = 0; i < count - 1 && i < trail.length; i++) {
-        const p = path[path.length - 1], c = p[0], r = p[1], m = trail[i];
-        path.push(m === 'L' ? [c - 1, r] : m === 'R' ? [c + 1, r]
-                : (c + r) % 2 === 0 ? [c, r + 1] : [c, r - 1]);
-    }
-    return path;
-}
-function tileCorners(p, w, h) {
-    const c = p[0], r = p[1], x = c * w / 2, y = r * h;
-    return (c + r) % 2 === 0
-        ? [[x + w / 2, y], [x + w, y + h], [x, y + h]]
-        : [[x, y], [x + w, y], [x + w / 2, y + h]];
-}
-
+// THE LEVELS: the band's ten, all facing right like a play button and sitting next to each other
+// in a row that wraps. Their size is CSS's business, not this function's.
 function renderLevelGrid() {
     const container = document.getElementById('gc-level-grid');
     container.innerHTML = '';
     const band = BANDS[activeBand];
-    const path = trailPath(band.trail, BAND_SIZE);
 
-    // Each band walks a different path, so each has its own span: band 1 is two tiles wide and
-    // the rest are three. The tile is sized from the room available rather than fixed, because
-    // the page CLIPS a wide trail instead of scrolling it -- the last levels would just vanish.
-    const cols = path.map(p => p[0]);
-    const rows = path.map(p => p[1]);
-    const units = (Math.max.apply(null, cols) - Math.min.apply(null, cols)) / 2 + 1;
-    const deep = Math.max.apply(null, rows) - Math.min.apply(null, rows) + 1;
-    // Whichever of the two bounds is tighter, exactly as the phonetics field does it: the width
-    // the row can spare against the height the window can, and the smaller wins. Band 1 is two
-    // tiles wide and five deep, the others three wide and three deep, so which bound binds
-    // changes with the band.
-    // The trail gets the width LEFT OVER, not the row's whole width. Measuring the row made the
-    // trail claim 396px of 1024 and squeezed the record below its 250px basis, so the row wrapped
-    // and the panel dropped under the trail -- which is what put the select below the fold.
-    const row = container.parentElement;
-    const gateEl = document.getElementById('gc-diff-tabs');
-    const gateW = gateEl ? gateEl.getBoundingClientRect().width : 0;
-    const rowW = row ? row.clientWidth : 0;
-    const wide = rowW >= gateW + RECORD_MIN + TILE_W + ROW_GAP * 2;   // all three abreast
-    const room = wide ? rowW - gateW - RECORD_MIN - ROW_GAP * 2 : rowW;
-    const sideBySide = room > 0 ? Math.floor((room - 2) / units) : TILE_W;
-    // The height bound applies only when the three are abreast and the screen is meant to hold
-    // them. Once the row stacks the page scrolls anyway, and shrinking the tiles to chase a fit
-    // that is not available would only make them hard to read and hard to tap.
-    const byHeight = wide
-        ? Math.floor(roomBelow(container, 200) / deep / (Math.sqrt(3) / 2))
-        : TILE_W;
-    const W = Math.max(64, Math.min(TILE_W, sideBySide, byHeight));
-    const H = Math.round(W * Math.sqrt(3) / 2);
-
-    const xs = path.map(p => p[0] * W / 2);
-    const ys = path.map(p => p[1] * H);
-    const minX = Math.min.apply(null, xs), minY = Math.min.apply(null, ys);
-    const fw = Math.round(Math.max.apply(null, xs) + W - minX);
-    const fh = Math.round(Math.max.apply(null, ys) + H - minY);
-    container.style.width = fw + 'px';
-    container.style.height = fh + 'px';
-
-    const NS = 'http://www.w3.org/2000/svg';
-    const svg = document.createElementNS(NS, 'svg');
-    svg.setAttribute('width', fw);
-    svg.setAttribute('height', fh);
-    svg.setAttribute('viewBox', '0 0 ' + fw + ' ' + fh);
-    svg.setAttribute('aria-hidden', 'true');
-    svg.setAttribute('class', 'gc-trail-ink');
-
+    // A plain row. The tiles all face right, sit next to each other and wrap, so there is no
+    // path to walk, no shared edges to match and nothing to position: the flex container does
+    // the layout and CSS owns the size. The lattice this replaces needed all three.
     for (let k = 0; k < BAND_SIZE; k++) {
-        const step = path[k];
         const levelNum = band.from + k;
         const levelObj = getLevelData(band.track, levelNum);
-        const col = step[0], row = step[1];
-        const faceDown = (col + row) % 2 !== 0;
-        const x = col * W / 2 - minX, y = row * H - minY;
-
-        const poly = document.createElementNS(NS, 'polygon');
-        poly.setAttribute('points', faceDown
-            ? `${x},${y} ${x + W},${y} ${x + W / 2},${y + H}`
-            : `${x + W / 2},${y} ${x + W},${y + H} ${x},${y + H}`);
-        svg.appendChild(poly);
-
         const progress = progressCache[`${band.track}:${levelNum}`];
         const done = !!(progress && progress.completed);
 
@@ -669,17 +593,12 @@ function renderLevelGrid() {
         // The label is the level's place in its own band; the real 1-20 level stays in the data
         // attribute and in openLevel, or band 2's "01" would start foundation level 1.
         const shown = String(k + 1).padStart(2, '0');
-        tile.className = 'gc-tri' + (faceDown ? ' is-down' : '') + (done ? ' done' : '')
-            + (levelObj ? '' : ' locked');
-        tile.style.left = x + 'px';
-        tile.style.top = y + 'px';
-        tile.style.width = W + 'px';
-        tile.style.height = H + 'px';
+        tile.className = 'gc-tri' + (done ? ' done' : '') + (levelObj ? '' : ' locked');
         tile.dataset.level = String(levelNum);
         tile.setAttribute('aria-label', (done ? window.t('grammar.cleared') + ', ' : '')
             + window.tf('grammar.bandLevel', { band: bandLabel(activeBand), n: k + 1 }));
         tile.innerHTML = `<span class="gc-tri-n">${shown}</span>`
-            + (done ? '<span class="gc-tri-stamp">\u6e08</span>' : '');
+            + (done ? '<span class="gc-tri-stamp">済</span>' : '');
 
         if (levelObj) {
             tile.addEventListener('click', () => {
@@ -694,14 +613,8 @@ function renderLevelGrid() {
         if (levelNum === focusedLevel) tile.classList.add('focus');
         container.appendChild(tile);
     }
-
-    // The drawn lattice and the link lines are gone -- each tile's own gradient and shadow do
-    // that work now. tileCorners() stays: it is what proves a trail is a real chain.
-    container.appendChild(svg);
 }
 
-// A triangle has no room for the two-row BEST TIME / MISTAKES rail the old cards carried, so the
-// record for whichever level is focused opens beside the trail instead.
 function renderLevelRecord() {
     const host = document.getElementById('gc-level-record');
     if (!host) return;
@@ -1189,19 +1102,9 @@ async function saveProgress(session, result) {
     }
 }
 
-// ---------------------------------------------------------------------------
-// Decorative star field over the night-sky photo's upper (mostly-empty) region
-// ---------------------------------------------------------------------------
-(function renderStars() {
-    const wrap = document.getElementById('gc-stars');
-    for (let i = 0; i < 40; i++) {
-        const s = document.createElement('span');
-        s.style.left = Math.random() * 100 + '%';
-        s.style.top = Math.random() * 30 + '%';
-        s.style.opacity = (0.15 + Math.random() * 0.6).toFixed(2);
-        wrap.appendChild(s);
-    }
-})();
+// (The decorative star field and the moon were removed with the night-sky photograph they sat
+// over. They were drawn elements rather than images, so nothing about them showed up in a check
+// for photo requests -- the moon in particular read as a sun behind the volume toggle.)
 
 // Music credits for this page live on credits.html (#grammar-connect-music), linked from every
 // page's footer -- no longer rendered in-page here. The background photographs, and their credit

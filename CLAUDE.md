@@ -16,7 +16,7 @@ Supabase (Postgres + Auth). Hosted on GitHub Pages. Git repo on `main`.
 | `path.html` | Study Path (学びの道) — a six-stage route from no Japanese at all to N1, mapping each stage onto specific tools and level ranges. `<main class="path-main">` / `path.css` (warm paper, sumi ink, one saffron marker). **Rebuilt 2026-10-12 as a map plus six pages.** `path.html` is now only the map: a Dunning-Kruger confidence curve with the six stages as points on it (lowest before JLPT, peak at N3, trough at N2, N1 recovering), plus a folded `<details>` explaining that the famous curve is not in Kruger & Dunning 1999 and is largely a statistical artefact. Each point links to its own page -- `path-kana.html`, `path-n5.html` ... `path-n1.html`, `<main class="path-stage-main">` -- which carries that stage's full text, a minimap showing where it sits on the curve, and prev/next links. **The whole thing is static**: the curve's path data, every point's left/top and each minimap are generated from one list of six anchor points and written into the HTML, so there is no script on any of these pages, the route is crawlable and the road can never disagree with the points. The six stage pages share path.html's nav entry via a rule in `build-chrome.js`'s `withCurrent`. The old spine layout (`.path-route`/`.path-stage`/`.path-marker`) is gone. **Not in the masthead nav on purpose** — it is a route through the tools rather than a tool, and it is reached from the hub's `.hub-startpath` banner and the footer's Study tools column. (The row had no space either, until the 2026-09-16 regrouping; now it has, and this stays out by choice.) The per-stage hour ranges are external rules of thumb, labelled as such on the page; every level range in the copy is real and will drift if the tools change. |
 | `game.html` | Word Match ("言葉合わせ") — hexagonal-card **memory** game, JLPT N5–N1. `<main class="game-main">` / `game.css`. **Rebuilt 2026-10-21** (see Word Match below): the honeycomb-matching board, the 4-minute clock, streaks, powerups, the lightning chain and the Wakan flyer are all gone, and `game-board.js`, `game-play.js` and `game-wakan.js` went with them. Palette is now "hanafuda in daylight" — tatami straw, violet card backs, one gold, every surface a flat colour — with the old lacquer board kept as the dark theme. |
 | `phonetics.html` | Phonetics Family — kanji grouped by shared phonetic component, ranked by usage. `<main class="phonetics-main">` / `phonetics.css` (light jade/copper). **Rebuilt 2026-10-15 as one surface with four views** — gate → board → tree → round — and it no longer loads `phonetics-data.js` at all (see Phonetics below). `phonetics-drill.html` was retired with that rebuild: the round is a view on this page now. |
-| `grammar.html` | Grammar Connect — sentence-swap grammar drill. `<main class="grammar-main">` / `grammar.css`. The data is still two tracks of twenty, but the **level select is four bands of ten** as of 2026-10-24 (see Grammar Connect below): a triangle gate and a chain of triangle level tiles. |
+| `grammar.html` | Grammar Connect — sentence-swap grammar drill. `<main class="grammar-main">` / `grammar.css`. The data is still two tracks of twenty, but the **level select is four bands of ten** as of 2026-10-24 (see Grammar Connect below): a triangle gate and ten right-facing play-button tiles in a row. |
 | `reading.html` | Dokkai Reader — speech-recognition-driven reading practice. `<main class="reading-main">` / `reading.css` (warm gold, light). |
 | `dictionary.html` | Mongol-Japan Dictionary — two tabs: primary Монгол⇄日本語 (`mnjp-data.js`), secondary 漢語⇄和語 Kango/Wago (`dictionary-data.js`, lazy-loaded only when that tab opens). Reads a `?q=` URL param on load to pre-fill/filter the primary tab — the target of the home page's search bar. `<main class="dictionary-main">` / `dictionary.css`. |
 | `origins.html` | Kana Origins — where hiragana and katakana came from, for a beginner who knows no kanji. `<main class="origins-main">` / `origins.css`. **Rebuilt 2026-10-23** (see Kana Origins below): four sections behind a sticky section bar, and the gojuon laid out as a wall of five vowel rows of eleven rather than the printed eleven of five. |
@@ -410,12 +410,17 @@ what it is **mostly**; none claims a single JLPT level. Redo the audit with
 and `progress-shared.js`'s `grammarLevels: 40` never move. Band 2's "01" must not start
 foundation level 1.
 **The gate is one triangle halved on each side** -- three standing, one inverted between them,
-each sharing a whole edge; the apex is the last band so it reads as a climb. **The trail is a
-path, not a patch**: each tile meets exactly one before and one after along a single shared side
-(`L`/`R` step sideways, `D` crosses the horizontal side, down from an up tile and up from a down
-one). Every band walks a different path so they are told apart by shape; each was searched and
-checked for no cell visited twice, every link sharing one whole side, and no tile touching a
-non-consecutive tile.
+each sharing a whole edge; the apex is the last band so it reads as a climb.
+**The level tiles face right, like a play button, and sit next to each other in a wrapping row**
+(2026-10-24). They went through two arrangements before that, both abandoned on sight rather than
+on measurement: an interlocking chain joined along shared sides (`L`/`R`/`D` walks through a
+triangular lattice, one per band, each searched and checked for no cell visited twice and no tile
+touching a non-consecutive one), and before that a tessellated patch. Joining them by their sides
+simply did not look good. The row needs no path walk, no corner matching and no SVG, so all of
+that is gone -- CSS owns the size and the flex container owns the layout. Keep the grid's
+`max-width` at four tiles across (`4 x 78 + 3 x 9 = 339`): wider and the row cannot hold the gate,
+the tiles and the 250px record panel abreast in the 1024px column, and the panel drops below the
+fold.
 Traps this cost: a **`clip-path` takes the element's `box-shadow`**, so a tile lifts with
 `filter: drop-shadow()` -- which is also why the shadow works as separation, since a filter
 follows the clipped silhouette. The drawn lattice and the link lines are **gone** as of
@@ -427,18 +432,20 @@ tile gives no feedback at all.
 **The ground is a plain wash, not a photograph**, so the light ground had to drop a step
 (`#d9cdb0`) for near-white tiles to sit *on* it rather than in it -- and `body:has(.grammar-main)`
 must match `.gc-night-sky`'s end stop or a seam shows.
-**Size the field to its room**: the trail is positioned in JS and the page clips rather than
-scrolls, so a band whose path is three tiles wide lost its last levels at 390px until the tile
-size was derived from the width available.
-**The whole select fits one frame above 980px** (2026-10-24): gate, trail and record sit in one
-`.gc-select-row` and both the gate and the tile size are measured against what is left of the
-window, the way `phonetics.html` sizes its field. Two traps there. **Measure the ROW's top, never
-the element being sized** -- an element's own top moves the moment the row wraps, which is a
-feedback loop that settles on the wrong answer. And **the trail takes the width LEFT OVER**, not
-the row's: measuring the row made it claim 396 of 1024px, squeezing the record below its 250px
-basis so the row wrapped and the panel dropped underneath, which is what put the select below the
-fold in the first place. `RECORD_MIN` in `grammar.js` and `.gc-level-record`'s flex-basis are the
-same number and must stay that way.
+**Deleting the photographs was not the end of the night sky.** A decorative `.gc-moon` -- a 40px
+cream disc with a 36px glow at `top:28px right:56px`, directly behind the volume toggle -- and a
+JS-generated 40-star field survived it, and still read as a sun over the new wash. They were
+DRAWN, not fetched, so checking that no photo request was made said nothing about them: that
+check was reported as "the background is clean" and was not. Both are gone now.
+**The whole select fits one frame above 980px** (2026-10-24): gate, tiles and record sit in one
+`.gc-select-row`, and the gate is measured against what is left of the window the way
+`phonetics.html` sizes its field. **Measure the ROW's top, never the element being sized** -- an
+element's own top moves the moment the row wraps, which is a feedback loop that settles on the
+wrong answer. Anything in that row claiming more width than it can have is what pushes the panel
+underneath and the select below the fold; it happened twice, once when the old trail measured the
+row instead of the room left over, and once when the new tile grid's `max-width` was 420.
+`RECORD_MIN` in `grammar.js` and `.gc-level-record`'s flex-basis are the same number and must stay
+that way.
 **Below 981px it scrolls on purpose.** Stacked, the row is 260 + 424 + 293 = 977px of content
 before a single heading; chasing a fit that is not available only makes the tiles too small to
 read or tap, so the `100dvh` rule and the height bound are both scoped to wide screens.
