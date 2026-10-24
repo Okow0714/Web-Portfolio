@@ -413,8 +413,11 @@
                     <p class="gc-pick-hint" data-i18n="grammar.pickBand">Хаанаас эхлэхээ сонгоно уу — арван шаттай дөрвөн багц.</p>
                     <!-- The gate keeps the id #gc-diff-tabs: tutorial.js points a tour step at it,
                          and a step whose selector is missing is dropped without a word. -->
-                    <div class="gc-gate" id="gc-diff-tabs" role="tablist" aria-label="Level band"></div>
-                    <div class="gc-trail-row">
+                    <!-- Gate, trail and record sit in ONE row so the whole level select fits a
+                         screen without scrolling; stacked, the gate's 286px plus the trail's 456
+                         put the last levels below the fold on a laptop. -->
+                    <div class="gc-select-row">
+                        <div class="gc-gate" id="gc-diff-tabs" role="tablist" aria-label="Level band"></div>
                         <div class="gc-level-grid" id="gc-level-grid"></div>
                         <aside class="gc-level-record" id="gc-level-record"></aside>
                     </div>

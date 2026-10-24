@@ -269,15 +269,37 @@ body:has(.grammar-main) {
     --tri-hover: light-dark(#e8dcc3, #3a3257);
 }
 
+/* Only where it can actually be done. Below about 980px the row cannot keep gate, trail and
+   record abreast, so they stack: 260 + 424 + 293 is 977px of content before a single heading,
+   and squeezing that into a phone would leave tiles too small to read or tap. There the page
+   scrolls, which is what phonetics.html's dial does at the same breakpoint. */
+@media (min-width: 981px) {
+    #gc-select-section:not(.hidden) {
+        min-height: calc(100dvh - 149px);   /* the masthead plus .grammar-main's own top padding */
+        display: flex;
+        flex-direction: column;
+    }
+}
+#gc-select-section > .gc-select-content {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* The standfirst is the longest thing above the row and the first thing to cost it room, so it
+   is capped here rather than allowed to run six lines wide. */
+.gc-subtitle { max-width: 86ch; }
+
 .gc-pick-hint {
-    margin: 26px 0 14px;
+    margin: 18px 0 12px;
     font-size: 0.86rem;
     color: var(--ink-faint);
 }
 
 .gc-gate {
     position: relative;
-    margin: 0 0 30px;
+    flex: none;
 }
 
 .gc-gate-tri {
@@ -320,11 +342,16 @@ body:has(.grammar-main) {
 .gc-gate-tri .gt-name { font-size: 0.75rem; font-weight: 700; }
 .gc-gate-tri .gt-note { font-size: 0.6rem; letter-spacing: 0.04em; opacity: 0.82; }
 
-.gc-trail-row {
+/* One row, and the section is a column the height of the window so the row has something to
+   measure against -- the same arrangement phonetics.html's field uses. The footer stays below
+   the fold, as it does there and on the hub. */
+.gc-select-row {
     display: flex;
-    gap: 34px;
+    gap: 30px;
     align-items: flex-start;
     flex-wrap: wrap;
+    flex: 1 1 auto;
+    min-height: 0;
 }
 
 .gc-level-grid {
@@ -385,7 +412,9 @@ body:has(.grammar-main) {
 /* A triangle has no room for the two-row stat rail the old cards carried, so the record for the
    focused level opens here instead. */
 .gc-level-record {
-    flex: 1 1 260px;
+    /* The basis matches RECORD_MIN in grammar.js, which is what the trail subtracts when it works
+       out its own width. If these two drift apart the row wraps and the panel drops below. */
+    flex: 1 1 250px;
     min-width: 0;
     max-width: 340px;
     background: var(--card);

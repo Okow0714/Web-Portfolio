@@ -423,7 +423,19 @@ are one SVG overlay); and the page's ground is a **photograph**, so a resting fi
 -- the first build used `--card-edge`, a 16% wash, and the entire gate and trail were invisible.
 **Size the field to its room**: the trail is positioned in JS and the page clips rather than
 scrolls, so a band whose path is three tiles wide lost its last levels at 390px until the tile
-size was derived from `parentElement.clientWidth`.
+size was derived from the width available.
+**The whole select fits one frame above 980px** (2026-10-24): gate, trail and record sit in one
+`.gc-select-row` and both the gate and the tile size are measured against what is left of the
+window, the way `phonetics.html` sizes its field. Two traps there. **Measure the ROW's top, never
+the element being sized** -- an element's own top moves the moment the row wraps, which is a
+feedback loop that settles on the wrong answer. And **the trail takes the width LEFT OVER**, not
+the row's: measuring the row made it claim 396 of 1024px, squeezing the record below its 250px
+basis so the row wrapped and the panel dropped underneath, which is what put the select below the
+fold in the first place. `RECORD_MIN` in `grammar.js` and `.gc-level-record`'s flex-basis are the
+same number and must stay that way.
+**Below 981px it scrolls on purpose.** Stacked, the row is 260 + 424 + 293 = 977px of content
+before a single heading; chasing a fit that is not available only makes the tiles too small to
+read or tap, so the `100dvh` rule and the height bound are both scoped to wide screens.
 `#gc-diff-tabs` and `#gc-level-grid` keep their ids because `tutorial.js` points tour steps at
 them, and a step whose selector is missing is dropped silently.
 

@@ -508,18 +508,36 @@ function gcFloatText(x, y, text, penalty) {
 // built from and the middle one the same down-triangle, so the gate and the field are cut from one
 // shape. The apex is the last band, so it reads as a climb.
 // It keeps the id #gc-diff-tabs because tutorial.js points a tour step at it.
-const GATE_S = 330;
+const GATE_S = 300;
 const GATE_SH = Math.round(GATE_S * Math.sqrt(3) / 2);
 // The slots -- [left, top, inverted] -- are computed per render from the gate's actual width:
 // bottom row reads 1 2 3 left to right, 4 sits at the apex. GATE_S is only the cap.
+
+// How much of the window is left below an element's top edge. The level select is meant to fit
+// a screen, so the gate and the trail are sized from what is actually free rather than from a
+// constant -- the same measurement phonetics.html's field makes.
+function roomBelow(el, floor) {
+    // Measured from the ROW's top, never from the element being sized: an element's own top moves
+    // the moment the row wraps, and sizing from it is a feedback loop that settles on the wrong
+    // answer. The row's top is fixed by the content above it.
+    const row = el.closest ? el.closest('.gc-select-row') : null;
+    const top = (row || el).getBoundingClientRect().top;
+    return Math.max(floor || 180, window.innerHeight - top - 26);
+}
+
+// What the record panel will not go below. The trail takes the width left after the gate and this.
+const RECORD_MIN = 250;
+const ROW_GAP = 30;
 
 function renderDiffTabs() {
     const container = document.getElementById('gc-diff-tabs');
     container.innerHTML = '';
     // Sized to the room it has, not to a constant: at 390px a fixed 330 leaves nothing either
     // side, and the page clips rather than scrolls, so anything past the edge is simply gone.
+    // Height matters as much as width now that the gate shares a row with the trail.
     const avail = (container.parentElement && container.parentElement.clientWidth) || GATE_S;
-    const S = Math.max(220, Math.min(GATE_S, avail - 4));
+    const byH = roomBelow(container, 180) / (Math.sqrt(3) / 2);
+    const S = Math.max(190, Math.min(GATE_S, avail - 4, byH));
     const SH = Math.round(S * Math.sqrt(3) / 2);
     const SLOT = [[0, SH / 2, false], [S / 4, SH / 2, true], [S / 2, SH / 2, false], [S / 4, 0, false]];
     container.style.width = S + 'px';
@@ -587,9 +605,30 @@ function renderLevelGrid() {
     // the rest are three. The tile is sized from the room available rather than fixed, because
     // the page CLIPS a wide trail instead of scrolling it -- the last levels would just vanish.
     const cols = path.map(p => p[0]);
+    const rows = path.map(p => p[1]);
     const units = (Math.max.apply(null, cols) - Math.min.apply(null, cols)) / 2 + 1;
-    const room = (container.parentElement && container.parentElement.clientWidth) || 0;
-    const W = room > 0 ? Math.max(76, Math.min(TILE_W, Math.floor((room - 2) / units))) : TILE_W;
+    const deep = Math.max.apply(null, rows) - Math.min.apply(null, rows) + 1;
+    // Whichever of the two bounds is tighter, exactly as the phonetics field does it: the width
+    // the row can spare against the height the window can, and the smaller wins. Band 1 is two
+    // tiles wide and five deep, the others three wide and three deep, so which bound binds
+    // changes with the band.
+    // The trail gets the width LEFT OVER, not the row's whole width. Measuring the row made the
+    // trail claim 396px of 1024 and squeezed the record below its 250px basis, so the row wrapped
+    // and the panel dropped under the trail -- which is what put the select below the fold.
+    const row = container.parentElement;
+    const gateEl = document.getElementById('gc-diff-tabs');
+    const gateW = gateEl ? gateEl.getBoundingClientRect().width : 0;
+    const rowW = row ? row.clientWidth : 0;
+    const wide = rowW >= gateW + RECORD_MIN + TILE_W + ROW_GAP * 2;   // all three abreast
+    const room = wide ? rowW - gateW - RECORD_MIN - ROW_GAP * 2 : rowW;
+    const sideBySide = room > 0 ? Math.floor((room - 2) / units) : TILE_W;
+    // The height bound applies only when the three are abreast and the screen is meant to hold
+    // them. Once the row stacks the page scrolls anyway, and shrinking the tiles to chase a fit
+    // that is not available would only make them hard to read and hard to tap.
+    const byHeight = wide
+        ? Math.floor(roomBelow(container, 200) / deep / (Math.sqrt(3) / 2))
+        : TILE_W;
+    const W = Math.max(64, Math.min(TILE_W, sideBySide, byHeight));
     const H = Math.round(W * Math.sqrt(3) / 2);
 
     const xs = path.map(p => p[0] * W / 2);
@@ -1187,6 +1226,16 @@ async function saveProgress(session, result) {
 // language switch needs these re-run to refresh JS-rendered dynamic text immediately.
 document.addEventListener('sitelangchange', () => {
     if (!document.getElementById('gc-select-section').classList.contains('hidden')) renderLevelSelect();
+});
+
+// The gate and the trail are sized from the window, so they have to be re-sized when it changes.
+// Only while the level select is actually up: re-rendering it mid-match would be wasted work, and
+// rotating a phone during a match must not disturb the board.
+let gcSelectResize = null;
+window.addEventListener('resize', () => {
+    if (document.getElementById('gc-select-section').classList.contains('hidden')) return;
+    window.clearTimeout(gcSelectResize);
+    gcSelectResize = window.setTimeout(renderLevelSelect, 120);
 });
 
 document.getElementById('gc-back-btn').addEventListener('click', backToLevels);
