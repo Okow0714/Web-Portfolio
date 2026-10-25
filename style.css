@@ -925,6 +925,17 @@ html[data-theme="dark"] { color-scheme: dark; }
     padding: 20px;
 }
 
+/* The auth modal is the one overlay that gets opened FROM another overlay: Word Match's and
+   Grammar Connect's result pop-ups both offer "log in to save", and both are .modal-overlay
+   siblings of this one at the same z-index 2000. An exact tie is broken by DOM order, and the
+   chrome -- which carries #auth-modal -- is written in near the top of every page, so the
+   result pop-up painted OVER the login form every time. The pop-up is meant to stay open behind
+   it: onAuthChange saves the pending result and hides the login button, so the player comes
+   back to the same pop-up with the score already kept. So the fix is to let auth win the tie
+   rather than to close the pop-up.
+   Below .khanjp-loader's 9000, which is gone from the DOM long before anyone can log in. */
+#auth-modal { z-index: 2010; }
+
 .modal-card {
     /* The card is light in both themes (these :root neutrals carry no dark values), but
        html[data-theme="dark"] sets color-scheme: dark, so the BROWSER was painting every field

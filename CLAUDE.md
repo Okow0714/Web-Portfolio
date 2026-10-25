@@ -875,6 +875,18 @@ silently keeping whatever (possibly broken) cache they already had. Bump it for 
 *content* change as well: `fetch` is stale-while-revalidate (serve cached, refresh behind it),
 so without a bump a returning PWA user runs the old copy of a fixed file for one more visit.
 
+**A modal opened from another modal has to win the tie** (2026-10-25). Word Match's and Grammar
+Connect's result pop-ups both offer "log in to save", and `#auth-modal` is a `.modal-overlay`
+SIBLING of those pop-ups at the same `z-index: 2000`. An exact tie is broken by DOM order, and
+the chrome that carries `#auth-modal` is written in near the TOP of every page -- so the pop-up
+painted over the login form, and the button looked like it did nothing. `#auth-modal` is now
+2010 in `style.css`. The pop-up is *meant* to stay open behind it: `onAuthChange` saves the
+pending result and hides the login button, so the player comes back to the same pop-up with the
+score already kept -- which is why the fix is to raise auth, not to close the pop-up.
+Proved both ways with the same spec, per the two-builds rule: on the old build Playwright's
+real `.click()` on the email field times out, on the new one it types. A z-index comparison
+alone would not have shown it, and neither would a screenshot of the dialog on its own.
+
 **Stacking contexts, not z-index, decide what's on top.** `.container` (`style.css`) and
 `.site-footer` are both `position: relative; z-index: 2` — an exact tie broken by DOM order, so
 the footer wins. Any page wrapper that also creates a stacking context (`.reading-main` sets
