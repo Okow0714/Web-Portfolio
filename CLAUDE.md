@@ -963,6 +963,12 @@ reports this as "…subtree intercepts pointer events", which is easy to dismiss
   each string lives in both places, and MN as well as EN.
   (Exception: every i18n page's `<main>` carries the Mongolian inline and the English only in the
   strings file -- see Search results above.)
+  **Deleting a page means grepping the privacy policy too.** Freetime went on 2026-10-12 and
+  `privacy.html` kept disclosing it until 2026-10-25 -- it still named YouTube as a recipient
+  and Google as receiving an IP address, for a page that no longer existed. That is the one
+  document where a stale claim is a real problem rather than a cosmetic one. And **grep the
+  Mongolian name as well**: the MN string called it `Чөлөөт цаг`, so a repo-wide search for
+  "Freetime" found two files and missed the translation sitting in the third.
   **Content totals are the exception that is now enforced:** how many levels/texts each tool has is
   written once, in `progress-shared.js`, which the dashboard, home page and the score SQL (via
   `get_dashboard_stats`'s arguments) all read, and `tests/progress-totals.spec.js` fails CI if it
