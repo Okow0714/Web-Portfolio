@@ -539,9 +539,19 @@ outline did.
 The A-D key is **`currentColor`**, not a token -- the tile's ink changes with its state, and a
 token would have to be re-solved against both state fills. It is `aria-hidden`, so the button's
 accessible name stays the answer alone.
-**The sentence furigana is 0.62rem**, up from 0.5rem (8px, measured): the reading is the help,
-so it has to be readable beside 20-25px kanji rather than merely present. The parent's
-`line-height: 2.5` already left the room.
+**The question and the answers are set bigger and at 600** (2026-10-25): the sentence is
+`clamp(1.55rem, 3vw, 1.95rem)` (was 1.25-1.55) and a tile 1.22rem (was 1.06), both semibold.
+Measured: question 31.2px desktop / 24.8px phone, answers 19.5px.
+**The furigana is `0.42em`, not a rem.** It was 0.5rem -- 8px measured, small even beside this
+card's kanji -- and a fixed rem would shrink against the sentence again at the top of its clamp,
+so the reading now scales with the kanji it sits over: 13.1px desktop, 10.4px phone. The gap
+above the glyph was checked at 3x zoom, not from a page screenshot, which at normal scale made
+`ね` look like it was touching `寝` when it is clear of it.
+**Bigger type is only safe if the longest real content still fits.** `scratchpad/gc-type.js`
+plays five sentences of each track at three viewports -- 30 real sentences -- and fails on a
+sentence wider than its card, a tile clipping its own answer, a tile outside the bank, or the
+board ending below the fold. Advanced band 4 is the worst case, since its grammar phrases are
+the longest.
 **`.gc-fx-canvas` needed `width`/`height`, not just `inset: 0`** (pre-existing, found here). A
 `<canvas>` is a REPLACED element, so `width: auto` resolves to its intrinsic size -- the width
 and height ATTRIBUTES, which `GcParticleField.resize()` sets in DEVICE pixels -- and `inset: 0`

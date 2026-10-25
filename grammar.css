@@ -868,16 +868,19 @@ body:has(.grammar-main) {
 
 .gc-sentence-jp {
     font-family: var(--font-jp);
-    font-size: clamp(1.25rem, 2.4vw, 1.55rem);
-    line-height: 2.5;
+    font-size: clamp(1.55rem, 3vw, 1.95rem);
+    font-weight: 600;
+    line-height: 2.4;
     letter-spacing: 0.02em;
     margin: 0;
 }
 
-/* 8px was small even beside this card's 20-25px kanji -- the reading is the help, so it has to
-   be readable on its own. line-height 2.5 on the parent already leaves room for it. */
+/* `em`, not `rem`: the reading has to stay in proportion to the kanji it sits over, and the
+   sentence is a clamp, so a fixed rem would shrink against it as the viewport widens. It was
+   0.5rem (8px measured), which was small even beside this card's kanji -- the reading is the
+   help, so it has to be readable rather than merely present. */
 .gc-sentence-jp rt {
-    font-size: 0.62rem;
+    font-size: 0.42em;
     color: var(--ink-soft);
     font-family: 'IBM Plex Sans', sans-serif;
 }
@@ -928,10 +931,11 @@ body:has(.grammar-main) {
     display: flex;
     align-items: center;
     gap: 13px;
-    min-height: 62px;
+    min-height: 68px;
     padding: 12px 26px;
     font-family: var(--font-jp);
-    font-size: 1.06rem;
+    font-size: 1.22rem;
+    font-weight: 600;
     text-align: left;
     cursor: pointer;
     box-shadow: 0 2px 5px var(--tri-shadow);
@@ -943,7 +947,7 @@ body:has(.grammar-main) {
 .gc-tile .gc-tile-key {
     flex: none;
     font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 0.82rem;
+    font-size: 0.9rem;
     font-weight: 700;
     letter-spacing: 0.06em;
     color: currentColor;
