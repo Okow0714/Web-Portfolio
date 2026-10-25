@@ -905,14 +905,17 @@ function renderTileBank(s) {
     const bank = document.getElementById('gc-tile-bank');
     bank.innerHTML = '';
     tileLocked = false;
-    buildTileOptions(s).forEach(opt => {
+    buildTileOptions(s).forEach((opt, i) => {
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'gc-tile';
         // innerHTML, not textContent: GRAMMAR_POOLS distractors are always plain kana (safe either
         // way), but a sentence's own `new` answer can be a full kanji phrase with <ruby> furigana
         // markup (e.g. 断罪することなくして...) that needs to render, not show as literal tags.
-        btn.innerHTML = opt;
+        // The A-E key is aria-hidden so the button's accessible name stays the answer alone --
+        // it is a position marker for the eye, not part of what is being chosen.
+        btn.innerHTML = '<span class="gc-tile-key" aria-hidden="true">'
+            + String.fromCharCode(65 + i) + '</span><span class="gc-tile-text">' + opt + '</span>';
         btn.addEventListener('click', () => onTileClick(btn, opt, s));
         bank.appendChild(btn);
     });

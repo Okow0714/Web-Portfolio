@@ -519,6 +519,30 @@ now too (ink measures 14.57 light / 11.29 dark on it). One regression came with 
 list's `->` was `--shu-light` and measured 5.19:1 while it sat on the black-washed card, then
 4.18:1 once the surface was lifted -- **moving a ground re-opens every ratio measured against the
 old one**. It is `--ink-soft` now; the accent belongs on `.new`, which already has it.
+**The five answer tiles are two per row and cut to the Millionaire lozenge** (2026-10-25).
+Five across a 640px card gave each one 120px, which is why they were small; two gives 312px and
+a grammar phrase sits on one line at a readable size. The fifth has no partner and takes the
+full width -- `last-child:nth-child(odd)`, not `nth-child(5)`, since the option count comes from
+the data. Below 620px it is one per row: two 170px lozenges cannot hold a phrase.
+**The shape forced the states to change.** A `clip-path` slices a BORDER exactly as it sliced
+the picked tile's outline, and all three tile states keyed on `border-color`, so hover, correct
+and wrong are now fills and the lift is a `drop-shadow()`. `--tile-good`/`--tile-bad` and their
+inks are solved like everything else here: 4.94 light / 4.90 dark for correct, 4.88 / 4.94 for
+wrong, each also standing clear of the resting tile.
+The A-E key is **`currentColor`**, not a token -- the tile's ink changes with its state, and a
+token would have to be re-solved against both state fills. It is `aria-hidden`, so the button's
+accessible name stays the answer alone.
+**`.gc-fx-canvas` needed `width`/`height`, not just `inset: 0`** (pre-existing, found here). A
+`<canvas>` is a REPLACED element, so `width: auto` resolves to its intrinsic size -- the width
+and height ATTRIBUTES, which `GcParticleField.resize()` sets in DEVICE pixels -- and `inset: 0`
+does not stretch it the way it stretches a div. On a 390px phone at dpr 2 that left a 708px
+canvas in a 390px viewport and the whole play screen scrolled sideways. Verified against the
+previous commit before blaming the tile change: 726/708 on both, so it was never a regression.
+**The hover lift is 2px, and a Playwright pointer parks where it last clicked** -- after the
+start modal closes that can be over a tile, and the lift then reads as two tiles of one row
+sitting on different rows. `page.mouse.move(2, 2)` before measuring, or a layout assertion
+reports a grid bug that is really the mouse.
+
 **The empty space below the board is not a bug.** The board is short -- a card, a hint, five
 tiles -- and on a tall window the page background fills the rest, which is correct. Centring the
 play column in a `100dvh` frame was tried and is worse: it splits the dead space to both ends and
