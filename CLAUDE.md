@@ -591,6 +591,26 @@ block, so the label and the value sat inline in a thin strip; they now get the r
 treatment. `.result-actions` is also used by the START modal's markup, so a rule scoped to
 `#gc-result-modal` leaves the other one's buttons at their content widths.
 
+**The clock is 2:00 and a correct answer adds 10s** (2026-10-25, was 180s and +30s). A level
+now offers 120 + 10x10 against the unchanged 10s mistake penalty, where it used to offer
+180 + 10x30 -- a real difficulty change, not a cosmetic one. `MATCH_DURATION` and
+`TIME_BONUS_PER_SENTENCE` in `grammar.js` are the only places the numbers live, except the
+static `02:00` the timer shows before its first tick, which would otherwise flash the old clock
+for a frame. `LOW_TIME_THRESHOLD` stays 30, which is now a quarter of the clock rather than a
+sixth.
+**The cleared list prepends.** The newest answer goes on top, where the eye already is, and the
+panel scrolls to the TOP; appending put each new row off-screen under everything before it.
+**The explanation is folded behind the sentence it explains.** The translation is a real
+`<button>` with `aria-expanded`, not a `<p>` -- it does something now, so it has to be reachable
+by keyboard and announce its state -- and `.why` is `hidden` until it is pressed. Nothing gives
+`.why` a `display`, so plain `hidden` closes it; adding one means answering `[hidden]` too,
+which is the rule this project has learned twice. The sentence is also the largest thing in the
+row (0.92rem, 600, full `--ink`), since it is the line the panel exists to show.
+**A walk that clicks tiles until one lands cannot measure the bonus.** A wrong tile costs 10s,
+so the raw before/after difference is +10 only when the first tile tried happened to be right --
+one theme passed and the other reported +0s for exactly that reason, which read as a
+theme-dependent bug and was the test. Net the penalties out with `#gc-mistake-count`.
+
 **The empty space below the board is not a bug.** The board is short -- a card, a hint, five
 tiles -- and on a tall window the page background fills the rest, which is correct. Centring the
 play column in a `100dvh` frame was tried and is worse: it splits the dead space to both ends and

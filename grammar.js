@@ -16,8 +16,8 @@
 
 const sb = window.supabaseClient;
 
-const MATCH_DURATION = 180;          // 3-minute clock, in seconds
-const TIME_BONUS_PER_SENTENCE = 30;  // seconds added when a sentence is solved correctly
+const MATCH_DURATION = 120;          // 2-minute clock, in seconds
+const TIME_BONUS_PER_SENTENCE = 10;  // seconds added when a sentence is solved correctly
 const TIME_PENALTY_PER_MISTAKE = 10; // seconds removed for a wrong tile tap
 const LOW_TIME_THRESHOLD = 30;
 const SENTENCES_PER_LEVEL = 10;
@@ -1000,13 +1000,26 @@ function addClearedItem(s) {
     item.className = 'gc-cleared-item';
     const translationText = (window.siteLang() === 'mn' && s.translationMn) ? s.translationMn : s.translation;
     const explanationText = (window.siteLang() === 'mn' && s.explanationMn) ? s.explanationMn : s.explanation;
+    // The translation is a BUTTON, not a <p>: pressing it opens the explanation, so it has to
+    // be reachable by keyboard and say whether it is open. The explanation starts hidden -- it
+    // is the reason behind an answer you have already got right, which is worth reading when
+    // you choose to rather than every time.
     item.innerHTML = `
         <div class="swap-line"><span class="old">${s.old}</span><span class="arrow">&rarr;</span><span class="new">${s.new}</span></div>
-        <p class="en">&ldquo;${escapeHtml(translationText)}&rdquo;</p>
-        <p class="why">${escapeHtml(explanationText)}</p>
+        <button class="en" type="button" aria-expanded="false">&ldquo;${escapeHtml(translationText)}&rdquo;</button>
+        <p class="why" hidden>${escapeHtml(explanationText)}</p>
     `;
-    list.appendChild(item);
-    list.scrollTop = list.scrollHeight;
+    const toggle = item.querySelector('.en');
+    const why = item.querySelector('.why');
+    toggle.addEventListener('click', () => {
+        const open = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!open));
+        why.hidden = open;
+    });
+    // Newest first: prepend and scroll back to the top, or the row just added sits off-screen
+    // under everything that came before it.
+    list.prepend(item);
+    list.scrollTop = 0;
 }
 
 function advanceSentence() {

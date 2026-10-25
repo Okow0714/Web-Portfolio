@@ -1047,17 +1047,51 @@ body:has(.grammar-main) {
    already carried by .new. On the lifted panel --shu-light measures 4.18:1 in dark. */
 .gc-cleared-item .arrow { color: var(--ink-soft); margin: 0 6px; font-family: 'IBM Plex Sans', sans-serif; }
 .gc-cleared-item .new { color: var(--good-bright); font-weight: 600; }
+
+/* A button reset, then the sentence: it is the line the eye lands on in this panel, so it is
+   the biggest thing in the row and carries full ink rather than --ink-soft. The caret says it
+   opens; it turns when it has. */
 .gc-cleared-item .en {
-    font-size: 0.78rem;
-    color: var(--ink-soft);
-    font-style: italic;
+    display: block;
+    width: 100%;
+    background: none;
+    border: 0;
+    padding: 0 0 0 15px;
+    position: relative;
+    text-align: left;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.92rem;
+    font-weight: 600;
+    line-height: 1.45;
+    color: var(--ink);
     margin: 0 0 4px;
 }
+
+.gc-cleared-item .en::before {
+    content: '';
+    position: absolute;
+    left: 1px;
+    top: 0.5em;
+    width: 5px;
+    height: 5px;
+    border-right: 1.5px solid var(--ink-soft);
+    border-bottom: 1.5px solid var(--ink-soft);
+    transform: rotate(-45deg);
+    transition: transform 0.18s var(--ease-out);
+}
+
+.gc-cleared-item .en[aria-expanded="true"]::before { transform: rotate(45deg); }
+.gc-cleared-item .en:hover { color: var(--shu-light); }
+.gc-cleared-item .en:focus-visible { outline: 2px solid var(--shu-light); outline-offset: 2px; }
+/* Nothing here sets a `display`, so plain `hidden` closes it. If one is ever added it must
+   answer [hidden] as well -- that rule has caught this project twice. */
 .gc-cleared-item .why {
-    font-size: 0.73rem;
-    color: var(--ink-faint);
-    line-height: 1.45;
-    margin: 0;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    margin: 6px 0 0;
+    padding-left: 15px;
 }
 
 /* ---------------------------------------------------------------------
