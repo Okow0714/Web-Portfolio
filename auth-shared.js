@@ -185,9 +185,111 @@ function setAuthMode(mode) {
     if (!isLogin) hideEl(authForgotBtn);
 }
 
+// --------------------------------------------------------------------------
+// Continue with a provider
+// --------------------------------------------------------------------------
+// One flow for both modes: coming back from a provider for the first time creates the account,
+// so these buttons are not "log in" or "sign up", they are both. That is also why the terms
+// line below them is a statement rather than the checkbox the email form uses -- a checkbox
+// would block an existing user from signing in to an account they already agreed on.
+const OAUTH_BRANDS = {
+    google: { label: 'Google', mark: '<svg viewBox="0 0 18 18" aria-hidden="true" focusable="false">'
+        + '<path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.72v2.26h2.92c1.7-1.57 2.68-3.88 2.68-6.62z"/>'
+        + '<path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.92-2.26c-.8.54-1.84.86-3.04.86-2.34 0-4.32-1.58-5.03-3.7H.96v2.33A9 9 0 0 0 9 18z"/>'
+        + '<path fill="#FBBC05" d="M3.97 10.72a5.4 5.4 0 0 1 0-3.44V4.95H.96a9 9 0 0 0 0 8.1l3.01-2.33z"/>'
+        + '<path fill="#EA4335" d="M9 3.58c1.32 0 2.5.45 3.44 1.35l2.58-2.59C13.46.9 11.43 0 9 0A9 9 0 0 0 .96 4.95l3.01 2.33C4.68 5.16 6.66 3.58 9 3.58z"/></svg>' },
+    facebook: { label: 'Facebook', mark: '<svg viewBox="0 0 18 18" aria-hidden="true" focusable="false">'
+        + '<path fill="#1877F2" d="M18 9a9 9 0 1 0-10.41 8.89v-6.29H5.31V9h2.28V7.02c0-2.25 1.34-3.5 3.4-3.5.98 0 2.01.18 2.01.18v2.21h-1.13c-1.12 0-1.47.7-1.47 1.41V9h2.5l-.4 2.6h-2.1v6.29A9 9 0 0 0 18 9z"/></svg>' },
+    line: { label: 'LINE', mark: '<svg viewBox="0 0 18 18" aria-hidden="true" focusable="false">'
+        + '<path fill="#06C755" d="M9 1.5c4.14 0 7.5 2.72 7.5 6.07 0 1.34-.52 2.55-1.6 3.76-1.57 1.81-5.08 4.02-5.88 4.36-.78.33-.67-.21-.64-.4l.11-.64c.02-.2.05-.5-.03-.69-.08-.22-.43-.33-.68-.39C3.37 12.95.9 10.72.9 7.57.9 4.22 4.5 1.5 9 1.5z"/></svg>' },
+};
+
+function oauthHost() {
+    return document.getElementById('auth-oauth');
+}
+
+// Built here rather than written into the markup: the auth modal lives in _chrome.html AND, by
+// hand, in about.html, so anything duplicated in the markup drifts. Rebuilt on every open so the
+// labels follow a language change.
+function renderOAuthRow() {
+    const host = oauthHost();
+    if (!host) return;
+    const list = (typeof OAUTH_PROVIDERS !== 'undefined' ? OAUTH_PROVIDERS : [])
+        .filter(id => OAUTH_BRANDS[id]);
+    // No providers configured, or no real client to call -- show nothing rather than a control
+    // that cannot work. Same rule as the rest of this file: lose the account, keep the tools.
+    if (!list.length || !window.supabaseReady) { hideEl(host); host.innerHTML = ''; return; }
+
+    host.innerHTML = list.map(id => {
+        const b = OAUTH_BRANDS[id];
+        return '<button type="button" class="oauth-btn" data-provider="' + id + '">'
+            + '<span class="oauth-mark">' + b.mark + '</span>'
+            // tr(), not window.tf: this file has its own translate helper and does not assume
+            // i18n.js has finished loading.
+            + '<span class="oauth-label">'
+            + escapeForAttr(tr('auth.continueWith', 'Continue with {provider}').replace('{provider}', b.label))
+            + '</span>'
+            + '</button>';
+    }).join('')
+        + '<p class="oauth-terms">' + tr('auth.providerTerms',
+            'Continuing with a provider means you agree to the Terms of Service and Privacy Policy.') + '</p>'
+        + '<div class="oauth-divider"><span>' + tr('auth.orEmail', 'or use an email address') + '</span></div>';
+
+    host.querySelectorAll('.oauth-btn').forEach(btn => {
+        btn.addEventListener('click', () => startOAuth(btn.dataset.provider, btn));
+    });
+    showEl(host);
+}
+
+function escapeForAttr(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+async function startOAuth(provider, btn) {
+    hideEl(authError);
+    authError.classList.remove('auth-info');
+    btn.disabled = true;
+    // Back to the page they were on, without the query or the hash: Supabase puts its own
+    // parameters on the return URL, and a stale ?q= or #section would ride along.
+    const redirectTo = window.location.origin + window.location.pathname;
+    const { error } = await supabaseClient.auth.signInWithOAuth({ provider, options: { redirectTo } });
+    if (error) {
+        authError.textContent = error.message;
+        showEl(authError);
+        btn.disabled = false;
+    }
+    // Usually nothing is left to do: signInWithOAuth builds the URL and sends the browser to the
+    // provider itself, so this function does not come back. That also means a MISCONFIGURED
+    // provider -- listed in supabase-config.js but not enabled in the dashboard -- does not fail
+    // here. It fails after the round trip and lands back with ?error= on the URL, which is what
+    // showOAuthReturnError below is for.
+}
+
+// A failed provider round trip returns to this page with the reason on the URL and nothing on
+// the screen, which reads as "the button did nothing". Supabase uses the query string for the
+// PKCE flow and the hash for the implicit one, so both are checked.
+function showOAuthReturnError() {
+    if (!authError) return;
+    const q = new URLSearchParams(window.location.search);
+    const h = new URLSearchParams(window.location.hash.replace(/^#/, ''));
+    const desc = q.get('error_description') || h.get('error_description')
+        || q.get('error') || h.get('error');
+    if (!desc) return;
+
+    // Clear it off the URL first, so a refresh does not show it again.
+    const clean = window.location.origin + window.location.pathname;
+    try { window.history.replaceState({}, '', clean); } catch (e) { /* non-fatal */ }
+
+    authError.textContent = decodeURIComponent(String(desc).replace(/\+/g, ' '));
+    authError.classList.remove('auth-info');
+    openAuthModal();
+    showEl(authError);
+}
+
 function openAuthModal() {
     setAuthMode('login');
     authForm.reset();
+    renderOAuthRow();
     showEl(authModal);
 }
 window.openAuthModal = openAuthModal;
@@ -195,6 +297,8 @@ window.openAuthModal = openAuthModal;
 function closeAuthModal() {
     hideEl(authModal);
 }
+
+showOAuthReturnError();
 
 document.getElementById('auth-login-btn').addEventListener('click', openAuthModal);
 document.getElementById('auth-modal-close').addEventListener('click', closeAuthModal);

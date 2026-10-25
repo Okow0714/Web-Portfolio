@@ -936,6 +936,65 @@ html[data-theme="dark"] { color-scheme: dark; }
    Below .khanjp-loader's 9000, which is gone from the DOM long before anyone can log in. */
 #auth-modal { z-index: 2010; }
 
+/* "Continue with ..." -- built by auth-shared.js into #auth-oauth, so the markup is identical
+   in _chrome.html and in about.html's hand-written copy. The card pins color-scheme: light, so
+   this ground does not flip with the theme and one set of values serves both. */
+.auth-oauth { margin: 0 0 4px; }
+
+.oauth-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 11px 14px;
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background var(--dur-1) var(--ease-out), border-color var(--dur-1) var(--ease-out);
+}
+
+.oauth-btn:hover { background: #f4f1ea; border-color: var(--text-secondary); }
+.oauth-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.oauth-btn[disabled] { cursor: default; opacity: 0.6; }
+
+/* The brand marks keep their own colours -- they are trademarks, not icons to be recoloured. */
+.oauth-mark { display: flex; flex: none; }
+.oauth-mark svg { width: 18px; height: 18px; display: block; }
+
+.oauth-terms {
+    margin: 0 0 12px;
+    font-size: 0.72rem;
+    line-height: 1.45;
+    color: var(--text-secondary);
+}
+
+/* A rule with the reason written through it, rather than a bare line. */
+.oauth-divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 14px;
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+}
+
+.oauth-divider::before,
+.oauth-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border-color);
+}
+
 .modal-card {
     /* The card is light in both themes (these :root neutrals carry no dark values), but
        html[data-theme="dark"] sets color-scheme: dark, so the BROWSER was painting every field

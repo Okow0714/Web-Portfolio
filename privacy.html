@@ -282,6 +282,7 @@
             <div class="modal-card">
                 <button id="auth-modal-close" class="modal-close" type="button" aria-label="Close">&times;</button>
                 <h3 id="auth-modal-title" data-i18n="auth.logIn">Log In</h3>
+                <div id="auth-oauth" class="auth-oauth hidden"></div>
                 <form id="auth-form">
                     <label for="auth-email" data-i18n="auth.email">Email</label>
                     <input type="email" id="auth-email" required autocomplete="email">
@@ -403,7 +404,7 @@
 
             <section class="legal-section">
                 <h2 data-i18n="privacy.sharedWith.h">Who it's shared with</h2>
-                <p data-i18n-html="privacy.sharedWith.p"><strong>Supabase</strong> (supabase.com) is the database and authentication provider behind this site — it processes and stores your account data and content on my behalf, under its own <a href="https://supabase.com/privacy" target="_blank" rel="noopener">privacy policy</a>. <strong>GitHub Pages</strong> hosts the site's files and, like any web host, sees standard request logs (IP address, browser type) as a normal part of serving web pages — I don't separately access or collect these. The one other thing that leaves this site is the audio your browser sends to its own speech service while Dokkai Reader is listening, described above — I neither receive nor store it. The typefaces and the Supabase library are served from this site rather than from their vendors&rsquo; networks, so no page announces your IP address to any company beyond the two named above, and no page fetches anything from anyone else.</p>
+                <p data-i18n-html="privacy.sharedWith.p"><strong>Supabase</strong> (supabase.com) is the database and authentication provider behind this site — it processes and stores your account data and content on my behalf, under its own <a href="https://supabase.com/privacy" target="_blank" rel="noopener">privacy policy</a>. <strong>GitHub Pages</strong> hosts the site's files and, like any web host, sees standard request logs (IP address, browser type) as a normal part of serving web pages — I don't separately access or collect these. The one other thing that leaves this site is the audio your browser sends to its own speech service while Dokkai Reader is listening, described above — I neither receive nor store it. The typefaces and the Supabase library are served from this site rather than from their vendors&rsquo; networks, so no page announces your IP address to any company beyond the two named above, and no page fetches anything from anyone else. The one thing that can send you elsewhere is your own choice to sign in with <strong>Google</strong>, <strong>Facebook</strong> or <strong>LINE</strong>: pressing one of those buttons hands you to that company’s own sign-in page, which receives your IP address and browser details under its own privacy policy, and tells this site your email address and name so that an account can be made. Signing in with an email address and a password involves none of them.</p>
             </section>
 
             <section class="legal-section">

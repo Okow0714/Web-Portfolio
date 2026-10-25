@@ -832,6 +832,35 @@ that the device's own choices win and are pushed. Tours are a union, never subtr
 not on `profiles`, which is reachable by others in places. `reset_own_progress` does not clear them --
 resetting progress should not change your language.
 
+**"Continue with ..." is one flow for both sign in and sign up** (2026-10-26). Coming back from
+a provider for the first time creates the account, so the row is shown in both modes and the
+terms line under it is a STATEMENT, not the checkbox the email form uses -- a checkbox there
+would block an existing user from signing in to an account they already agreed on.
+**Which providers appear is data**, `OAUTH_PROVIDERS` in `supabase-config.js`, and it ships
+**empty**. A provider listed there but not enabled in the Supabase dashboard is a dead control
+in front of every visitor, so the list is only extended after the dashboard side is done. The
+client secret lives in Supabase and never in this repo.
+**The row is BUILT BY JS into an empty `#auth-oauth`**, not written into the markup, because the
+auth modal exists twice and the two are maintained differently: `_chrome.html` (generated into
+eighteen pages) and `about.html` (hand-written, no chrome markers). Markup duplicated across
+those two drifts; one empty container in each cannot.
+**`signInWithOAuth` does not come back.** It builds the URL and sends the browser to the
+provider, so a misconfigured provider does NOT surface an error at the call site -- it fails
+after the round trip and lands back on the page with `?error=`/`#error=` and nothing on screen,
+which reads as "the button did nothing". `showOAuthReturnError()` reads both the query and the
+hash (PKCE uses one, the implicit flow the other), opens the modal with the message and strips
+it off the URL.
+**LINE is not a Supabase built-in provider.** Google and Facebook are. The brand definition for
+LINE is in `OAUTH_BRANDS` so the button exists the moment it becomes possible, but enabling it
+needs the Supabase dashboard to actually offer it; otherwise it wants a custom OIDC route, which
+is a different and much larger job than adding a string to the list.
+**Adding a provider means naming it in `privacy.html`.** The policy's "Who it's shared with"
+section now says that pressing one of those buttons hands the visitor to that company, which
+receives their IP and browser details and returns an email address and name. That sentence had
+to be written carefully against the one above it, which claims no page announces an IP to anyone
+beyond Supabase and GitHub -- still true, because this one is the visitor's own deliberate act
+rather than something a page does on load.
+
 **`grant execute ... to authenticated` is not a whitelist**: Postgres also grants EXECUTE to
 PUBLIC on every newly created function, so all five RPCs were callable by anyone holding the
 publishable key until `supabase-migration-007-lock-function-grants.sql` revoked it. Probed live:

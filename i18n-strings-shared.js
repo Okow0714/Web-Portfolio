@@ -86,6 +86,12 @@ window.I18N_STRINGS = {
         en: 'I agree to the <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>',
         mn: 'Би <a href="terms.html" target="_blank" rel="noopener">Үйлчилгээний нөхцөл</a> болон <a href="privacy.html" target="_blank" rel="noopener">Нууцлалын бодлого</a>-ыг зөвшөөрч байна'
     },
+    'auth.continueWith': { en: 'Continue with {provider}', mn: '{provider}-ээр үргэлжлүүлэх' },
+    'auth.orEmail': { en: 'or use an email address', mn: 'эсвэл и-мэйлээр' },
+    'auth.providerTerms': {
+        en: 'Continuing with a provider means you agree to the Terms of Service and the Privacy Policy.',
+        mn: 'Үйлчилгээ сонгон үргэлжлүүлснээр Үйлчилгээний нөхцөл болон Нууцлалын бодлогыг зөвшөөрч байна гэж үзнэ.',
+    },
     'auth.needAccount': { en: 'Need an account? Sign up', mn: 'Бүртгэлгүй юу? Бүртгүүлэх' },
     'auth.haveAccount': { en: 'Already have an account? Log in', mn: 'Бүртгэлтэй юу? Нэвтрэх' },
     'auth.enterEmailFirst': { en: 'Enter your email above first, then click "Forgot password?" again.', mn: 'Эхлээд дээрх и-мэйл хаягаа оруулаад "Нууц үгээ мартсан уу?" дээр дахин дарна уу.' },
