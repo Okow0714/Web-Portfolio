@@ -885,18 +885,18 @@ function buildTileOptions(s) {
         !exclude.has(c.text) && !(c.core && sameCore.has(c.core)));
 
     // Shape first, then similar length, plus enough noise that a sentence does not always show
-    // the same four tiles.
+    // the same three tiles.
     const distractors = candidates
         .map(c => ({ text: c.text, score: (c.kanji === wantKanji ? 3 : 0) - Math.abs(c.len - wantLen) * 0.25 + Math.random() * 1.5 }))
         .sort((a, b) => b.score - a.score)
-        .slice(0, 4)
+        .slice(0, 3)
         .map(c => c.text);
 
-    // Top up from the bare pool only if a track somehow cannot field four, so a question never
+    // Top up from the bare pool only if a track somehow cannot field three, so a question never
     // renders with fewer tiles than the player expects.
-    if (distractors.length < 4) {
+    if (distractors.length < 3) {
         const spare = shuffleArray(GRAMMAR_POOLS[currentTrack].filter(g => !exclude.has(g) && !distractors.includes(g)));
-        distractors.push(...spare.slice(0, 4 - distractors.length));
+        distractors.push(...spare.slice(0, 3 - distractors.length));
     }
     return shuffleArray([s.new, ...distractors]);
 }

@@ -874,8 +874,10 @@ body:has(.grammar-main) {
     margin: 0;
 }
 
+/* 8px was small even beside this card's 20-25px kanji -- the reading is the help, so it has to
+   be readable on its own. line-height 2.5 on the parent already leaves room for it. */
 .gc-sentence-jp rt {
-    font-size: 0.5rem;
+    font-size: 0.62rem;
     color: var(--ink-soft);
     font-family: 'IBM Plex Sans', sans-serif;
 }
@@ -900,11 +902,11 @@ body:has(.grammar-main) {
     text-align: center;
 }
 
-/* Two per row, not five. Five tiles across a 640px card gave each one 120px, which is why
-   they were small; two gives 312px, and a grammar phrase can sit on one line at a readable
-   size. The fifth has no partner, so it takes the full width rather than sitting half-empty in
-   the left column -- `last-child:nth-child(odd)` rather than `nth-child(5)`, since the option
-   count is built from the data and could change. */
+/* Two per row. Five tiles across a 640px card gave each one 120px, which is why they were
+   small; two gives 312px, and a grammar phrase sits on one line at a readable size. There are
+   four options now, so the grid divides evenly and nothing spans -- the rule below stays
+   anyway, because the option count is built from the data and an odd one would otherwise sit
+   half-empty in the left column. */
 .gc-tile-bank {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -915,15 +917,14 @@ body:has(.grammar-main) {
 
 .gc-tile:last-child:nth-child(odd) { grid-column: 1 / -1; }
 
-/* The Millionaire lozenge: a hexagon with two flat sides and two points. It carries no border
-   -- a clip-path follows the border box and would slice the angled ends off one, leaving the
-   stray edges that the picked tile's outline drew before it was removed. The edge is the fill
-   against the page and the drop-shadow around it, which follows the clipped silhouette. */
+/* A plain rectangle. The lozenge was cut with a clip-path, which takes the border and the
+   box-shadow with it -- so dropping the shape gives both back, and the edge, the lift and the
+   focus ring are ordinary CSS again rather than stacked drop-shadows. The right/wrong FILLS
+   stay: they were solved against their own ink and read better than a coloured outline. */
 .gc-tile {
     background: var(--rec-surface);
-    border: 0;
+    border: 1px solid var(--card-edge);
     color: var(--ink);
-    clip-path: polygon(17px 0, calc(100% - 17px) 0, 100% 50%, calc(100% - 17px) 100%, 17px 100%, 0 50%);
     display: flex;
     align-items: center;
     gap: 13px;
@@ -933,8 +934,8 @@ body:has(.grammar-main) {
     font-size: 1.06rem;
     text-align: left;
     cursor: pointer;
-    filter: drop-shadow(0 2px 4px var(--tri-shadow));
-    transition: filter 0.12s var(--ease-out), transform 0.12s var(--ease-out), opacity 0.2s var(--ease-out), background 0.15s var(--ease-out);
+    box-shadow: 0 2px 5px var(--tri-shadow);
+    transition: box-shadow 0.12s var(--ease-out), transform 0.12s var(--ease-out), opacity 0.2s var(--ease-out), background 0.15s var(--ease-out), border-color 0.12s var(--ease-out);
 }
 
 /* currentColor, so the key is exactly as readable as the answer beside it in every state --
@@ -956,20 +957,19 @@ body:has(.grammar-main) {
 .gc-tile .gc-tile-text { min-width: 0; }
 
 .gc-tile:hover:not(.gc-tile-wrong):not(.gc-tile-disabled) {
-    filter: drop-shadow(0 5px 9px var(--tri-shadow));
+    box-shadow: 0 6px 12px var(--tri-shadow);
+    border-color: var(--shu-light);
     transform: translateY(-2px);
 }
 
-/* No outline: it follows the border box and the clip would leave a bracket. */
-.gc-tile:focus-visible {
-    outline: 0;
-    filter: drop-shadow(0 2px 4px var(--tri-shadow)) var(--focus-halo);
-}
+/* An ordinary outline again: without the clip-path it follows the whole tile. */
+.gc-tile:focus-visible { outline: 3px solid var(--shu-light); outline-offset: 2px; }
 
 .gc-tile.gc-tile-wrong {
     animation: gc-shake 0.35s var(--ease-out);
     background: var(--tile-bad);
     color: var(--tile-bad-ink);
+    border-color: var(--tile-bad-ink);
 }
 
 .gc-tile.gc-tile-disabled {
@@ -980,7 +980,8 @@ body:has(.grammar-main) {
 .gc-tile.gc-tile-correct {
     background: var(--tile-good);
     color: var(--tile-good-ink);
-    filter: drop-shadow(0 5px 10px var(--tri-shadow));
+    border-color: var(--tile-good-ink);
+    box-shadow: 0 6px 14px var(--tri-shadow);
     pointer-events: none;
 }
 

@@ -519,19 +519,29 @@ now too (ink measures 14.57 light / 11.29 dark on it). One regression came with 
 list's `->` was `--shu-light` and measured 5.19:1 while it sat on the black-washed card, then
 4.18:1 once the surface was lifted -- **moving a ground re-opens every ratio measured against the
 old one**. It is `--ink-soft` now; the accent belongs on `.new`, which already has it.
-**The five answer tiles are two per row and cut to the Millionaire lozenge** (2026-10-25).
-Five across a 640px card gave each one 120px, which is why they were small; two gives 312px and
-a grammar phrase sits on one line at a readable size. The fifth has no partner and takes the
-full width -- `last-child:nth-child(odd)`, not `nth-child(5)`, since the option count comes from
-the data. Below 620px it is one per row: two 170px lozenges cannot hold a phrase.
-**The shape forced the states to change.** A `clip-path` slices a BORDER exactly as it sliced
-the picked tile's outline, and all three tile states keyed on `border-color`, so hover, correct
-and wrong are now fills and the lift is a `drop-shadow()`. `--tile-good`/`--tile-bad` and their
-inks are solved like everything else here: 4.94 light / 4.90 dark for correct, 4.88 / 4.94 for
-wrong, each also standing clear of the resting tile.
-The A-E key is **`currentColor`**, not a token -- the tile's ink changes with its state, and a
+**The answer tiles are FOUR, two per row** (2026-10-25). Five across a 640px card gave each one
+120px, which is why they were small; two per row gives 312px and a grammar phrase sits on one
+line at a readable size. Four also divides evenly, so nothing spans -- the
+`last-child:nth-child(odd)` rule stays anyway, because the option count is built from the data.
+Below 620px it is one per row. **`buildTileOptions()` takes THREE distractors, not four**, and
+that is a change to the game as well as the layout: a guess is 1 in 4 now. The copy says so in
+four places -- `grammar.subtitle`, `grammar.startModalDesc`, `grammar.recNew` and the inline
+Mongolian in `grammar.html` -- which is the "numeric claims drift from the code" rule in action;
+grep `таван` and `five` before changing this count again.
+**The tiles went lozenge and back to rectangle.** The Millionaire hexagon was cut with a
+`clip-path`, which takes the BORDER and the `box-shadow` with it exactly as it took the picked
+tile's outline -- so while it was clipped, all three states had to be fills and every edge and
+ring a stacked `drop-shadow()`. The plain rectangle gives both back, and the border, lift and
+focus ring are ordinary CSS again. **The right/wrong fills stayed**: `--tile-good`/`--tile-bad`
+and their inks are solved like everything else here (4.94 light / 4.90 dark for correct, 4.88 /
+4.94 for wrong, each also clear of the resting tile), and they read better than a coloured
+outline did.
+The A-D key is **`currentColor`**, not a token -- the tile's ink changes with its state, and a
 token would have to be re-solved against both state fills. It is `aria-hidden`, so the button's
 accessible name stays the answer alone.
+**The sentence furigana is 0.62rem**, up from 0.5rem (8px, measured): the reading is the help,
+so it has to be readable beside 20-25px kanji rather than merely present. The parent's
+`line-height: 2.5` already left the room.
 **`.gc-fx-canvas` needed `width`/`height`, not just `inset: 0`** (pre-existing, found here). A
 `<canvas>` is a REPLACED element, so `width: auto` resolves to its intrinsic size -- the width
 and height ATTRIBUTES, which `GcParticleField.resize()` sets in DEVICE pixels -- and `inset: 0`

@@ -4,11 +4,11 @@ Object.assign(window.I18N_STRINGS, {
     'grammar.titleSub': { en: 'Grammar Connect', mn: 'Дүрэм холбох' },
     'grammar.subtitle': {
         en: "A sentence appears with one grammar point underlined. Tap the tile that replaces it without changing what the sentence means — the word transforms in place, and the finished sentence (with its translation) drops into the cleared list at the side. Ten sentences a level, five options a sentence, ten levels a set, four sets.",
-        mn: 'Өгүүлбэр гарч ирэхэд дүрмийн нэг хэсэг нь доогуур зураастай байна. Утгыг нь өөрчлөхгүйгээр орлуулах хавтанг дарна уу — үг шууд солигдож, гүйцээсэн өгүүлбэр орчуулгынхаа хамт хажуугийн жагсаалтад нэмэгдэнэ. Шат бүрт арван өгүүлбэр, өгүүлбэр бүрт таван сонголт, багц бүрт арван шат, нийт дөрвөн багц.'
+        mn: 'Өгүүлбэр гарч ирэхэд дүрмийн нэг хэсэг нь доогуур зураастай байна. Утгыг нь өөрчлөхгүйгээр орлуулах хавтанг дарна уу — үг шууд солигдож, гүйцээсэн өгүүлбэр орчуулгынхаа хамт хажуугийн жагсаалтад нэмэгдэнэ. Шат бүрт арван өгүүлбэр, өгүүлбэр бүрт дөрвөн сонголт, багц бүрт арван шат, нийт дөрвөн багц.'
     },
     'grammar.cleared': { en: 'Cleared', mn: 'Дуусгасан' },
     'grammar.mistakes': { en: 'Mistakes', mn: 'Алдаа' },
-    'grammar.startModalDesc': { en: "Ten sentences, five grammar tiles each. Tap the tile that keeps the sentence's meaning unchanged. The timer starts when you hit Start.", mn: 'Арван өгүүлбэр, тус бүрт таван дүрмийн хавтан. Өгүүлбэрийн утгыг өөрчлөхгүй хавтанг дарна уу. Эхлүүлэх товч дарахад цаг эхэлнэ.' },
+    'grammar.startModalDesc': { en: "Ten sentences, four grammar tiles each. Tap the tile that keeps the sentence's meaning unchanged. The timer starts when you hit Start.", mn: 'Арван өгүүлбэр, тус бүрт дөрвөн дүрмийн хавтан. Өгүүлбэрийн утгыг өөрчлөхгүй хавтанг дарна уу. Эхлүүлэх товч дарахад цаг эхэлнэ.' },
     'grammar.tileHint': { en: 'Tap the tile that replaces the underlined part without changing the meaning', mn: 'Утгыг өөрчлөхгүйгээр доогуур зураастай хэсгийг орлуулах хавтанг дарна уу' },
     'grammar.volMute': { en: 'Sound off', mn: 'Дуу унтраалттай' },
     'grammar.volLow': { en: 'Volume: low', mn: 'Дуу: намхан' },
@@ -42,5 +42,5 @@ Object.assign(window.I18N_STRINGS, {
     'grammar.bandLevel': { en: '{band} · Level {n}', mn: '{band} · {n}-р шат' },
     'grammar.pickBand': { en: 'Pick where to start — four sets of ten levels.', mn: 'Хаанаас эхлэхээ сонгоно уу — арван шаттай дөрвөн багц.' },
     'grammar.recDone': { en: 'Cleared. Replaying only updates your best.', mn: 'Дуусгасан. Дахин тоглоход шилдэг дүн л шинэчлэгдэнэ.' },
-    'grammar.recNew': { en: 'Not played yet. Ten sentences, five tiles each.', mn: 'Хараахан тоглоогүй. Арван өгүүлбэр, тус бүрт таван хавтан.' },
+    'grammar.recNew': { en: 'Not played yet. Ten sentences, four tiles each.', mn: 'Хараахан тоглоогүй. Арван өгүүлбэр, тус бүрт дөрвөн хавтан.' },
 });
