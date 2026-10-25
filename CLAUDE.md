@@ -563,6 +563,34 @@ start modal closes that can be over a tile, and the lift then reads as two tiles
 sitting on different rows. `page.mouse.move(2, 2)` before measuring, or a layout assertion
 reports a grid bug that is really the mouse.
 
+**The start and result modals were never rebuilt with the page** (2026-10-25). Every value in
+that block was a hard-coded dark hex -- a `#241f38 -> #1a1730` card, `#e0705a` heading,
+cream-at-0.6 text -- with no `light-dark()` anywhere, so on the light page the "level complete"
+pop-up was still the pre-rebuild violet panel. Three things make this block awkward, and all
+three bit in turn:
+**These two modals are SIBLINGS of `<main class="grammar-main">`**, children of `.container`, so
+not one of the page's tokens reaches them -- the old block worked only because it was all literal
+hex. `var(--rec-surface)` there resolved to nothing, which is **invalid at computed-value time
+and renders as transparent, not as an error**: the card shipped see-through with the board
+showing straight through it. The fix is NOT to move the tokens to `body:has(.grammar-main)` --
+this file's header keeps them off `:root` and off body on purpose so they cannot collide with the
+shared header, footer and auth modals -- so the eight they use are re-declared on
+`#gc-start-modal, #gc-result-modal`. `scratchpad/gc-modal.js` compares every copy against what
+the record panel resolves, because nothing else would catch a drift.
+**`style.css` pins `color-scheme: light` on EVERY `.modal-card`** (so the UA paints the shared
+auth modals' inputs on the same side as their card), and `color-scheme` is also what
+`light-dark()` resolves against -- so under that pin every token here came back light and the
+dark pop-up painted itself cream. These two carry no inputs, so they override it. It must be
+**`color-scheme: inherit`, not `light dark`**: the latter means "use whichever the USER AGENT
+prefers", which follows the OS and ignores the site's own switch, and the card stayed cream under
+`data-theme="dark"`. Test all three states -- explicit light, explicit dark, and the un-stamped
+follow-the-device one, which is where most visitors actually are.
+**No stylesheet in the repo lays the result stats out.** `.result-stats`, `.result-stat`,
+`.result-label`, `.result-value`, `.result-best` and `.result-actions` are defined *only* by this
+block, so the label and the value sat inline in a thin strip; they now get the record panel's
+treatment. `.result-actions` is also used by the START modal's markup, so a rule scoped to
+`#gc-result-modal` leaves the other one's buttons at their content widths.
+
 **The empty space below the board is not a bug.** The board is short -- a card, a hint, five
 tiles -- and on a tall window the page background fills the rest, which is correct. Centring the
 play column in a `100dvh` frame was tried and is worse: it splits the dead space to both ends and

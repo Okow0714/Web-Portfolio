@@ -1065,60 +1065,152 @@ body:has(.grammar-main) {
    game.css's #start-modal/#result-modal) so the shared light auth/account
    modals elsewhere on this page are untouched.
    --------------------------------------------------------------------- */
-#gc-start-modal .modal-card,
-#gc-result-modal .modal-card {
-    background: linear-gradient(180deg, #241f38, #1a1730);
-    border: 1px solid #bc4430;
-    box-shadow: 0 0 60px rgba(188, 68, 48, 0.18), 0 30px 70px -20px rgba(0, 0, 0, 0.8);
-    color: #f1ede0;
+/* These two modals are children of .container and SIBLINGS of <main class="grammar-main">, so
+   not one of the page's tokens reaches them -- the old block worked only because every value in
+   it was a hard-coded hex. `var(--rec-surface)` here resolves to nothing, which is invalid at
+   computed-value time, and the card rendered fully transparent with the board showing through.
+   Same trap as .settings-lang-row and the masthead's --header-* tokens.
+   The fix is deliberately NOT to move the block to `body:has(.grammar-main)`: this file's header
+   keeps its tokens off :root and off body on purpose, so they cannot collide with the shared
+   header, footer and auth modals. So the handful these two modals use are re-declared here,
+   copied from the blocks above. `scratchpad/gc-modal.js` fails if a copy drifts from its
+   source, since nothing else would catch it. */
+#gc-start-modal,
+#gc-result-modal {
+    --shu: #bc4430;
+    --shu: light-dark(#8f2d1a, #bc4430);
+    --shu-light: #e0705a;
+    --shu-light: light-dark(#a8341f, #e0705a);
+    --washi: #ece5d3;
+    --card-edge: rgba(241, 237, 224, 0.14);
+    --card-edge: light-dark(rgba(31, 42, 68, 0.16), rgba(241, 237, 224, 0.14));
+    --ink: #f1ede0;
+    --ink: light-dark(#1d2740, #f1ede0);
+    --ink-soft: rgba(241, 237, 224, 0.82);
+    --ink-soft: light-dark(rgba(29, 39, 64, 0.82), rgba(241, 237, 224, 0.82));
+    --good-bright: #7fbf9e;
+    --good-bright: light-dark(#2d7d57, #7fbf9e);
+    --rec-surface: #322a52;
+    --rec-surface: light-dark(#fffdf6, #322a52);
 }
 
+/* The card is the same surface as the record panel and the sentence card, with the same top
+   rule -- it used to be a hard-coded `#241f38 -> #1a1730` gradient with no light-dark() at all,
+   so on the light page this pop-up was still the pre-rebuild violet panel. */
+#gc-start-modal .modal-card,
+#gc-result-modal .modal-card {
+    /* style.css pins `color-scheme: light` on every .modal-card, so the UA paints the inputs in
+       the shared auth modals on the same side as the card they sit on. But color-scheme is also
+       what light-dark() resolves against, so under that pin EVERY token here came back light and
+       the dark theme's pop-up painted itself cream. These two carry no inputs -- only buttons --
+       so the reason for the pin does not apply and they follow the page instead.
+       `inherit`, NOT `light dark`: the latter means "this element supports both, use whichever
+       the USER AGENT prefers", so it follows the OS and ignores the site's own theme switch --
+       the card stayed cream under data-theme="dark". Inheriting takes html's computed scheme,
+       which is what display-prefs.js and style.css actually set. */
+    color-scheme: inherit;
+    background: var(--rec-surface);
+    border: 1px solid var(--card-edge);
+    border-top: 3px solid var(--shu);
+    box-shadow: 0 24px 60px light-dark(rgba(84, 62, 28, 0.3), rgba(6, 9, 18, 0.6));
+    color: var(--ink);
+}
+
+/* 24px and bold, so 3:1 is this one's bar: --shu-light measures 6.50 light / 4.18 dark. */
 #gc-start-modal .modal-card h3,
 #gc-result-modal .modal-card h3 {
     font-family: 'Fraunces', Georgia, serif;
-    color: #e0705a;
+    color: var(--shu-light);
 }
 
 #gc-start-modal .modal-card p,
 #gc-result-modal .modal-card p {
-    color: rgba(241, 237, 224, 0.6);
+    color: var(--ink-soft);
 }
 
-#gc-result-modal .modal-close { color: rgba(241, 237, 224, 0.6); }
+#gc-result-modal .modal-close,
+#gc-start-modal .modal-close { color: var(--ink-soft); }
+
+/* Nothing in the repo lays these out -- no stylesheet defines .result-stats, .result-stat,
+   .result-label or .result-value, only the colour overrides that used to live here -- so the
+   label and the value sat inline in a thin strip. Same treatment as the record panel: a label
+   over a value, one rule between the cells, and the cells themselves on the card so only that
+   rule shows. */
+#gc-result-modal .result-stats {
+    display: flex;
+    gap: 1px;
+    background: var(--card-edge);
+    border: 1px solid var(--card-edge);
+    margin: 0 0 18px;
+}
 
 #gc-result-modal .result-stat {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(241, 237, 224, 0.14);
+    flex: 1;
+    background: var(--rec-surface);
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
-#gc-result-modal .result-value { color: #e0705a; }
-#gc-result-modal .result-label { color: rgba(241, 237, 224, 0.6); }
-#gc-result-modal .result-best { color: rgba(241, 237, 224, 0.6); }
-#gc-result-modal .result-save-status { color: #7fbf9e; }
+#gc-result-modal .result-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+}
 
+#gc-result-modal .result-value {
+    font-family: var(--font-jp);
+    font-size: 1.4rem;
+    line-height: 1;
+    color: var(--ink);
+}
+
+#gc-result-modal .result-best { color: var(--ink-soft); }
+#gc-result-modal .result-save-status { color: var(--good-bright); }
+
+/* BOTH modals use .result-actions -- the start modal's markup borrows the class -- so scoping
+   this to the result one left its two buttons at their own content widths beside each other. */
+#gc-start-modal .result-actions,
+#gc-result-modal .result-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+#gc-start-modal .result-actions .auth-btn,
+#gc-result-modal .result-actions .auth-btn { flex: 1 1 auto; }
+
+/* The same fixed dye the record panel's start button had to be pinned to: --shu-light lightens
+   to a salmon in dark and the shared .auth-btn gradient lightens further, so a token here would
+   put a white label on a pale pink. The cream label clears 4.5 on the lighter stop. */
 #gc-start-modal .auth-btn,
 #gc-result-modal .auth-btn {
-    background: linear-gradient(135deg, #bc4430, #8f3122);
-    border: 1px solid #bc4430;
-    color: #f1ede0;
+    background: linear-gradient(135deg, #b3412e, #8f3122);
+    border: 1px solid #8f3122;
+    color: var(--washi);
 }
 
 #gc-start-modal .auth-btn:hover,
 #gc-result-modal .auth-btn:hover {
-    background: linear-gradient(135deg, #e0705a, #bc4430);
+    background: linear-gradient(135deg, #8f3122, #b3412e);
 }
 
+/* The outline button's LABEL is ink, not the dye: --shu measures 2.52 on the dark card. The
+   border may stay on the dye, which only has to clear 3:1 and does (6.50 / 4.18). */
 #gc-start-modal .auth-btn-outline,
 #gc-result-modal .auth-btn-outline {
     background: transparent;
-    color: #e0705a;
-    border-color: #bc4430;
+    color: light-dark(#8f2d1a, #f1ede0);
+    border: 1px solid var(--shu-light);
 }
 
 #gc-start-modal .auth-btn-outline:hover,
 #gc-result-modal .auth-btn-outline:hover {
-    background: rgba(188, 68, 48, 0.15);
-    color: #e0705a;
+    background: light-dark(rgba(143, 45, 26, 0.1), rgba(224, 112, 90, 0.16));
+    color: light-dark(#8f2d1a, #f1ede0);
 }
 
 /* ---------------------------------------------------------------------
