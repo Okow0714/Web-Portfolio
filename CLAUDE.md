@@ -836,10 +836,23 @@ resetting progress should not change your language.
 a provider for the first time creates the account, so the row is shown in both modes and the
 terms line under it is a STATEMENT, not the checkbox the email form uses -- a checkbox there
 would block an existing user from signing in to an account they already agreed on.
-**Which providers appear is data**, `OAUTH_PROVIDERS` in `supabase-config.js`, and it ships
-**empty**. A provider listed there but not enabled in the Supabase dashboard is a dead control
-in front of every visitor, so the list is only extended after the dashboard side is done. The
-client secret lives in Supabase and never in this repo.
+**Which providers appear is data**, `OAUTH_PROVIDERS` in `supabase-config.js`. It holds
+`['google']` as of 2026-10-27 -- Google is configured in the Supabase dashboard and verified
+working end to end. A provider listed there but not enabled in the dashboard is a dead control
+in front of every visitor, so the list is only extended after the dashboard side is done, and
+`privacy.html` is updated in the SAME commit: the policy names exactly the providers that have
+buttons, no more (it named all three while the code was being built, which described transfers
+that could not happen).
+The client secret lives in Supabase and never in this repo. **A spec cannot verify that secret**
+-- it is used only in the token exchange on Supabase's side, after the visitor authenticates, so
+everything reachable from a test (button renders, click leaves for the provider with the right
+`client_id` and callback) passes just as well with a wrong secret. Only a real sign-in proves it.
+**Google's consent screen says `upjcknjkzfhvejpdkaez.supabase.co`, not "Khan Japanese"**, because
+the app is In production but not brand-verified. It is cosmetic -- no interstitial, no access
+block, anyone can sign in -- but it is the screen where a visitor decides whether to trust the
+site. Fixing it means brand verification (domain verified in Search Console first, then a few
+business days) or Supabase's paid custom-domain add-on, which would make the callback
+`auth.khan-japanese.org` and need the URL changed in both Google and Supabase.
 **The row is BUILT BY JS into an empty `#auth-oauth`**, not written into the markup, because the
 auth modal exists twice and the two are maintained differently: `_chrome.html` (generated into
 eighteen pages) and `about.html` (hand-written, no chrome markers). Markup duplicated across
