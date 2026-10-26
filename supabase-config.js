@@ -15,4 +15,4 @@ const SUPABASE_ANON_KEY = 'sb_publishable_cNiWDY4XA4hPdpfpHrJ1hQ_IkV6Vegc';
 // absent there it needs a custom OIDC route rather than this switch.
 //
 // Adding a provider also means naming it in privacy.html's "Who it's shared with" section.
-const OAUTH_PROVIDERS = [];
+const OAUTH_PROVIDERS = ['google'];
