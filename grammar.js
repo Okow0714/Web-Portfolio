@@ -84,6 +84,42 @@ const BANDS = [
     { key: '4', name: 'grammar.band4', note: 'grammar.band4n', track: 'advanced',   from: 11, hue: 'n1' },
 ];
 const BAND_SIZE = 10;
+
+// ---------------------------------------------------------------------------
+// "Cleared with no mistakes"
+// ---------------------------------------------------------------------------
+// Kept here as well as in grammar_progress.flawless so a signed-out player still sees the mark,
+// and so it survives migration 012 not having been applied. Only ever SET -- a later sloppy
+// replay never takes it away, which is the whole reason it is not derived from best_mistakes
+// (saveProgress keeps whichever run was faster, not whichever was cleanest).
+const GC_FLAWLESS_KEY = 'khanjp-gc-flawless';
+let gcFlawless = {};
+try { gcFlawless = JSON.parse(localStorage.getItem(GC_FLAWLESS_KEY) || '{}') || {}; }
+catch (e) { gcFlawless = {}; }
+
+// Which levels this DEVICE has cleared. Completion used to live only in grammar_progress, so a
+// signed-out player's tiles were all blank and neither mark could ever appear for them -- the
+// flawless flag alone would have been a mark with nothing to sit on. This is read-only comfort:
+// the account's rows still win where both exist, and nothing here is sent anywhere.
+const GC_CLEARED_KEY = 'khanjp-gc-cleared';
+let gcCleared = {};
+try { gcCleared = JSON.parse(localStorage.getItem(GC_CLEARED_KEY) || '{}') || {}; }
+catch (e) { gcCleared = {}; }
+
+function rememberCleared(track, levelNum) {
+    gcCleared[`${track}:${levelNum}`] = true;
+    try { localStorage.setItem(GC_CLEARED_KEY, JSON.stringify(gcCleared)); } catch (e) {}
+}
+
+function isFlawless(track, levelNum) {
+    return !!gcFlawless[`${track}:${levelNum}`];
+}
+function rememberFlawless(track, levelNum) {
+    gcFlawless[`${track}:${levelNum}`] = true;
+    try { localStorage.setItem(GC_FLAWLESS_KEY, JSON.stringify(gcFlawless)); } catch (e) {}
+}
+// Set false by a failed upsert, and then never tried again this session.
+let gcFlawlessColumn = true;
 let activeBand = 0;          // which of the four is open
 let focusedLevel = null;     // the real 1-20 level whose record the side panel shows
 
@@ -576,6 +612,24 @@ function renderDiffTabs() {
     });
 }
 
+// The two marks. Filled outlines rather than stroked lines, which is what lets a stroke
+// thicken at the root and run dry at the tip the way a loaded brush does -- a stroke-width is
+// uniform by definition and cannot. Each is outlined in the PAGE colour so it reads both on the
+// tile it starts from and on the ground it grows onto.
+const SPROUT_SVG = '<svg class="gc-mark gc-mark-sprout" viewBox="0 0 64 64" aria-hidden="true">'
+    + '<g><path d="M25 54 C 29 48, 33 42, 38 34 C 36 43, 31 49, 27 56 Z"></path>'
+    + '<path d="M0 0 C -5 -5.5, -12.5 -5.5, -16 1 C -10.5 5.5, -3 5, 0 0 Z" transform="translate(29,43) rotate(-14)"></path>'
+    + '<path d="M0 0 C 5 -5.5, 12.5 -5.5, 16 1 C 10.5 5.5, 3 5, 0 0 Z" transform="translate(35,35) rotate(12)"></path>'
+    + '</g></svg>';
+
+const BLOOM_SVG = '<svg class="gc-mark gc-mark-bloom" viewBox="0 0 64 64" aria-hidden="true">'
+    + '<g><path d="M22 52 C 28 45, 34 37, 41 27 C 38 38, 31 46, 24 54 Z"></path>'
+    + '<path d="M34 37 C 36 33, 39 31, 43 31 C 40 34, 37 36, 35 39 Z"></path>'
+    + '<circle cx="46" cy="13.4" r="4.7"></circle><circle cx="52.3" cy="17.9" r="4.7"></circle>'
+    + '<circle cx="49.9" cy="25.3" r="4.7"></circle><circle cx="42.1" cy="25.3" r="4.7"></circle>'
+    + '<circle cx="39.7" cy="17.9" r="4.7"></circle><circle cx="36.6" cy="30.2" r="3.4"></circle>'
+    + '</g><circle class="gc-mark-eye" cx="46" cy="20" r="2.4"></circle></svg>';
+
 // THE LEVELS: the band's ten, all facing right like a play button and sitting next to each other
 // in a row that wraps. Their size is CSS's business, not this function's.
 function renderLevelGrid() {
@@ -592,6 +646,14 @@ function renderLevelGrid() {
         const progress = progressCache[`${band.track}:${levelNum}`];
         const done = !!(progress && progress.completed);
 
+        const bloomed = done && isFlawless(band.track, levelNum);
+
+        // A wrapper, because the mark grows PAST the tile's top-right edge and a clip-path
+        // clips its own descendants -- the 済 stamp it replaces could live inside the button,
+        // this cannot. The wrapper is the flex item and carries the tile's size.
+        const slot = document.createElement('div');
+        slot.className = 'gc-tri-slot';
+
         const tile = document.createElement('button');
         tile.type = 'button';
         // The label is the level's place in its own band; the real 1-20 level stays in the data
@@ -600,10 +662,11 @@ function renderLevelGrid() {
         tile.className = 'gc-tri gc-band-' + band.hue
             + (done ? ' done' : '') + (levelObj ? '' : ' locked');
         tile.dataset.level = String(levelNum);
-        tile.setAttribute('aria-label', (done ? window.t('grammar.cleared') + ', ' : '')
+        const state = bloomed ? window.t('grammar.clearedFlawless')
+            : done ? window.t('grammar.cleared') : '';
+        tile.setAttribute('aria-label', (state ? state + ', ' : '')
             + window.tf('grammar.bandLevel', { band: bandLabel(activeBand), n: k + 1 }));
-        tile.innerHTML = `<span class="gc-tri-n">${shown}</span>`
-            + (done ? '<span class="gc-tri-stamp">済</span>' : '');
+        tile.innerHTML = `<span class="gc-tri-n">${shown}</span>`;
 
         if (levelObj) {
             tile.addEventListener('click', () => {
@@ -616,7 +679,11 @@ function renderLevelGrid() {
             tile.disabled = true;
         }
         if (levelNum === focusedLevel) tile.classList.add('focus');
-        container.appendChild(tile);
+        slot.appendChild(tile);
+        // aria-hidden: the tile's own label already says which state it is in, so the drawing
+        // would only repeat it.
+        if (done) slot.insertAdjacentHTML('beforeend', bloomed ? BLOOM_SVG : SPROUT_SVG);
+        container.appendChild(slot);
     }
 }
 
@@ -635,9 +702,9 @@ function renderLevelRecord() {
             <span class="gc-rec-of">${escapeHtml(window.tf('grammar.levelsCount', { n: BAND_SIZE }))}</span></p>
         <div class="gc-rec-stats">
             <span class="gc-rec-stat"><span class="k">${escapeHtml(window.t('stat.bestTime'))}</span>
-                <span class="v">${done ? formatTime(progress.best_time_seconds) : dash}</span></span>
+                <span class="v">${done && progress.best_time_seconds != null ? formatTime(progress.best_time_seconds) : dash}</span></span>
             <span class="gc-rec-stat"><span class="k">${escapeHtml(window.t('stat.mistakes'))}</span>
-                <span class="v">${done ? String(progress.best_mistakes) : dash}</span></span>
+                <span class="v">${done && progress.best_mistakes != null ? String(progress.best_mistakes) : dash}</span></span>
         </div>
         <p class="gc-rec-note">${escapeHtml(window.t(done ? 'grammar.recDone' : 'grammar.recNew'))}</p>
     `;
@@ -1034,6 +1101,9 @@ function advanceSentence() {
 function finishLevel() {
     stopTimer();
     const result = { track: currentTrack, level: currentLevel.level, timeSeconds: elapsedSeconds, mistakes: mistakeCount };
+    // Only on a real finish -- running the clock out takes the other path and earns nothing.
+    rememberCleared(currentTrack, currentLevel.level);
+    if (mistakeCount === 0) rememberFlawless(currentTrack, currentLevel.level);
     showResultModal(result, true);
 
     // A review is not a level: grammar_progress.level is constrained to 1-20, and there is no
@@ -1093,9 +1163,28 @@ async function loadProgress() {
     if (session) {
         const { data, error } = await sb.from('grammar_progress').select('*').eq('user_id', session.user.id);
         if (!error && data) {
-            data.forEach(row => { progressCache[`${row.track}:${row.level}`] = row; });
+            data.forEach(row => {
+                progressCache[`${row.track}:${row.level}`] = row;
+                // A union, never a subtraction: the account can only ever ADD a mark to this
+                // device, exactly as user_settings does with the tours.
+                if (row.flawless) rememberFlawless(row.track, row.level);
+                if (row.completed) rememberCleared(row.track, row.level);
+            });
         }
     }
+
+    // Then this device's own clears, for any level the account did not already answer for --
+    // which is every level when nobody is signed in. A local row carries NO TIMES, and the
+    // record panel has to answer for that: `done` alone used to be enough to print the stats,
+    // which rendered a literal "null" under Mistakes and 00:00 under Best time. Both cells now
+    // fall back to the dash, which is the honest reading of "cleared, nothing recorded".
+    Object.keys(gcCleared).forEach(key => {
+        if (progressCache[key]) return;
+        const [track, lvl] = key.split(':');
+        progressCache[key] = { track: track, level: Number(lvl), completed: true,
+                               best_time_seconds: null, best_mistakes: null, local: true };
+    });
+
     renderLevelSelect();
 }
 
@@ -1115,7 +1204,19 @@ async function saveProgress(session, result) {
         updated_at: new Date().toISOString(),
     };
 
-    const { error } = await sb.from('grammar_progress').upsert(row, { onConflict: 'user_id,track,level' });
+    // Only ever true. `||` not `=`, so a sloppy replay cannot clear a mark already earned.
+    if (gcFlawlessColumn) row.flawless = isFlawless(result.track, result.level);
+
+    let { error } = await sb.from('grammar_progress').upsert(row, { onConflict: 'user_id,track,level' });
+    if (error && gcFlawlessColumn && /flawless|column/i.test(error.message || '')) {
+        // Migration 012 has not been applied to this project. An upsert naming a column
+        // PostgREST does not know fails the WHOLE row, so a cosmetic flower would otherwise
+        // take the player's level progress with it. Drop it, retry, stop trying this session --
+        // the mark still lives in localStorage.
+        gcFlawlessColumn = false;
+        delete row.flawless;
+        ({ error } = await sb.from('grammar_progress').upsert(row, { onConflict: 'user_id,track,level' }));
+    }
     if (!error) {
         progressCache[key] = row;
         statusEl.textContent = isBetter ? window.t('game.newBestSaved') : window.t('game.resultSaved');

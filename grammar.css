@@ -553,6 +553,66 @@ body:has(.grammar-main) {
        the 250px record panel abreast inside the 1024px column, and the panel drops below the
        fold -- the same wrap that the lattice version hit. */
     max-width: 348px;
+    /* The row must not clip what grows out of its tiles. */
+    overflow: visible;
+}
+
+/* The wrapper is the flex item; the tile sits inside it and the mark beside it. It exists
+   because the mark grows PAST the tile's top-right edge, and a clip-path clips its own
+   descendants -- the 済 stamp this replaces could live inside the button, a mark that spills
+   cannot. Same rule as Word Match's two kinds of spark, in the opposite direction. */
+.gc-tri-slot {
+    position: relative;
+    width: 78px;
+    height: 90px;
+    flex: none;
+}
+
+.gc-tri-slot .gc-tri { width: 100%; height: 100%; }
+
+/* Both marks start from the same point, so clearing a level and then clearing it cleanly swaps
+   one for the other in place with nothing moving. z-index lifts them over the next tile in the
+   row, which they overlap by design. */
+.gc-mark {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* The outline is the page's own ground, which is what lets one fill work on the tile the mark
+   starts from AND on the ground it grows onto -- the shape is separated from both by its edge. */
+.gc-mark g {
+    fill: currentColor;
+    stroke: #12192b;
+    stroke: light-dark(#ddd3b8, #12192b);
+    stroke-width: 2.2;
+    stroke-linejoin: round;
+}
+
+.gc-mark-sprout {
+    left: 32px;
+    top: 2px;
+    width: 44px;
+    height: 44px;
+    /* Green, so a cleared level is never mistaken for a flawless one at a glance -- the two
+       marks differ in hue AND in shape, not in shape alone. */
+    color: #a8d0ac;
+    color: light-dark(#2f6b4a, #a8d0ac);
+}
+
+.gc-mark-bloom {
+    left: 32px;
+    top: -6px;
+    width: 46px;
+    height: 46px;
+    color: #f1ede0;
+    color: light-dark(#1d2740, #f1ede0);
+}
+
+/* The blossom's bitten-out centre: the ground showing through, not a colour of its own. */
+.gc-mark-eye {
+    fill: #12192b;
+    fill: light-dark(#ddd3b8, #12192b);
 }
 
 .gc-trail-ink { display: none; }   /* nothing is drawn under the tiles any more */
@@ -619,13 +679,6 @@ body:has(.grammar-main) {
     font-size: 1.15rem;
     line-height: 1;
     padding-left: 13px;
-}
-.gc-tri .gc-tri-stamp {
-    font-family: var(--font-jp);
-    font-size: 0.6rem;
-    opacity: 0.8;
-    padding-left: 15px;
-    margin-top: 2px;
 }
 
 /* A triangle has no room for the two-row stat rail the old cards carried, so the record for the

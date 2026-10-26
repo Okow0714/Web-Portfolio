@@ -611,6 +611,31 @@ so the raw before/after difference is +10 only when the first tile tried happene
 one theme passed and the other reported +0s for exactly that reason, which read as a
 theme-dependent bug and was the test. Net the penalties out with `#gc-mistake-count`.
 
+**A cleared level sprouts; a flawless one flowers** (2026-10-27). The 済 stamp is gone. Clearing
+a level draws a green leaf sprout at the tile's top-right; clearing one with NO mistakes draws a
+short ink branch with an open blossom and a bud. Both grow from the same point, so one replaces
+the other with nothing moving.
+**The mark cannot be a child of the tile.** A `clip-path` clips its own descendants, and this
+one grows past the top-right edge -- so every tile is wrapped in a `.gc-tri-slot` and the mark
+is its SIBLING. (Word Match needed this in both directions: its gate sparks are children so the
+hexnode clips them, its bonus sparks siblings so they spill.) The wrapper is the flex item now,
+which means **`#gc-level-grid .gc-tri:nth-child(n)` matches nothing** -- the index belongs on
+the slot. `tutorial.js` was unaffected only because its two grammar steps point at the
+containers, `#gc-diff-tabs` and `#gc-level-grid`, not at a tile.
+**`best_mistakes` could not carry "flawless", which is the whole reason for migration 012.**
+`saveProgress()` keeps whichever run was FASTER, so a flawless slow clear is overwritten by a
+quicker sloppy one -- the flower would un-bloom, and taking back a mark someone earned is worse
+than never giving it. `grammar_progress.flawless` is only ever written **true**, the same rule
+migration 011 gives Word Match's mode marks, with the same drop-the-column-and-retry dance for
+a project where 012 has not been applied.
+**Completion is in `localStorage` too now** (`khanjp-gc-cleared`, beside `khanjp-gc-flawless`).
+It had to be: completion lived only in `grammar_progress`, so for a signed-out player no tile
+was ever `done` and the flawless flag would have been a mark with nothing to sit on. The
+account's rows still win where both exist; the local rows are a union on top.
+**A local row carries no times, and the record panel had to answer for that**: `done` alone used
+to be enough to print the stats, which rendered a literal **"null"** under Mistakes and 00:00
+under Best time. Both cells fall back to the dash now.
+
 **The empty space below the board is not a bug.** The board is short -- a card, a hint, five
 tiles -- and on a tall window the page background fills the rest, which is correct. Centring the
 play column in a `100dvh` frame was tried and is worse: it splits the dead space to both ends and
