@@ -629,6 +629,13 @@ quicker sloppy one -- the flower would un-bloom, and taking back a mark someone 
 than never giving it. `grammar_progress.flawless` is only ever written **true**, the same rule
 migration 011 gives Word Match's mode marks, with the same drop-the-column-and-retry dance for
 a project where 012 has not been applied.
+**The marks are explained in the record panel, not in a tooltip** (2026-10-27). A tooltip on
+the tile could only be found by hovering a tile that already carried a mark -- so the player who
+has earned nothing, and most needs to know the flower exists, had nothing to hover. The panel
+prints both steps for whichever level is picked, earned ones chipped and the unearned drawing
+dimmed; the LABEL never dims, which is the opacity-on-text rule again. `markSteps()` and
+`markSvg()` share the art with the tile, so a redraw cannot leave the two disagreeing.
+
 **Completion is in `localStorage` too now** (`khanjp-gc-cleared`, beside `khanjp-gc-flawless`).
 It had to be: completion lived only in `grammar_progress`, so for a signed-out player no tile
 was ever `done` and the flawless flag would have been a mark with nothing to sit on. The
@@ -660,6 +667,34 @@ risk -- `scratchpad/gc-tip.js` hovers all ten and checks each against that eleme
 **A local row carries no times, and the record panel had to answer for that**: `done` alone used
 to be enough to print the stats, which rendered a literal **"null"** under Mistakes and 00:00
 under Best time. Both cells fall back to the dash now.
+
+**A value resolved in JS and written inline is a SNAPSHOT, and no amount of `light-dark()`
+saves it.** `tutorial.js`'s `applyTheme()` copies seven tokens across as the page wrote them --
+`light-dark()` strings, which re-resolve themselves -- but three it has to resolve to rgb numbers,
+because `toward()` walks a colour towards an ink until it clears 4.5. Those three went on as
+inline styles, which beat every stylesheet, so the help button's `?` disc kept whichever theme was
+on screen when it was built: switch to dark and it stayed the light page's plum, a dark maroon
+coin on a dark ground. That was the reported "weird dark visual" on `Хэрхэн ажилладаг вэ?`. Every
+themed node is now remembered in a `Set` and re-themed on `themechange` / `displayprefchange`,
+the events `display-prefs.js` already fires -- `themechange` rather than a MutationObserver on
+`data-theme`, because the follow-the-device state stamps **nothing** on `<html>`, so an attribute
+watcher would miss the OS flipping under the state most visitors are in.
+**Two fresh loads cannot see this**, which is why it survived every contrast pass: loaded in light
+it is right, loaded in dark it is right, and only a live flip is wrong.
+`scratchpad/theme-audit.js` is the finder for the whole class. It renders a page three ways --
+light, dark, and **light switched to dark in place** -- and reports four things: FROZEN (an own
+fill/ink/edge byte-identical in both themes while the ground moved: the hard-coded wash), STALE
+(the switch disagrees with a dark load: the snapshot), CONTRAST (text under its floor, every
+translucent layer composited), and FLAT (an unbordered, unshadowed fill within 1.12:1 of what is
+behind it: the hole-in-the-page). Two things it had to learn: set `khanjp-theme` in localStorage,
+never `data-theme` on `<html>` -- `display-prefs.js` reads the former in `<head>` and stamps the
+latter, so a planted attribute is wiped and the whole report comes back inverted; and FLAT must
+skip anything with an edge or a lift, or it flags every bordered card on the site. It reports
+CANDIDATES, not failures -- the per-tool masthead, the footer and `.modal-card` are fixed on
+purpose and are excluded by name. Proved on two builds: silent after the fix, two STALE rows
+before it.
+It found one more of its own on this page: `.sound-toggle` was four literal `rgba(224, 112, 90, ...)`
+washes, the dark board's salmon, still being painted on the cream page.
 
 **The empty space below the board is not a bug.** The board is short -- a card, a hint, five
 tiles -- and on a tall window the page background fills the rest, which is correct. Centring the

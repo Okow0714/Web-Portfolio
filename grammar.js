@@ -637,17 +637,22 @@ function markSvg(kind, cls) {
         + (kind === 'bloom' ? BLOOM_ART : SPROUT_ART) + '</svg>';
 }
 
-// The tooltip is a two-step indicator, not a sentence: the sprout and the flower side by side,
-// with the one you have marked and the one you do not left plain. A drawing of the next state
-// says "this is what you would get" without a line of prose having to explain the mechanic.
-function markTip(bloomed) {
+// The two states, side by side, in the record panel rather than in a tooltip. A tooltip only
+// answered a question you had already decided to ask, and only on a tile already marked -- the
+// one player who most needs to know what the flower means is the one who has not earned it and
+// has nothing to hover. In the panel it is simply on screen for whichever level is picked:
+// earned marks are drawn in full, the unearned one is left plain, and the drawing of the next
+// state says "this is what you would get" with no line of prose explaining the mechanic.
+function markSteps(cleared, bloomed) {
     const step = (kind, label, got) =>
-        '<span class="gc-tip-step' + (got ? ' is-got' : '') + '">'
-        + markSvg(kind, 'gc-tipmark gc-tipmark-' + kind)
-        + '<span class="gc-tip-label">' + escapeHtml(label) + '</span></span>';
-    return step('sprout', window.t('grammar.cleared'), true)
-        + '<span class="gc-tip-arrow" aria-hidden="true">&rsaquo;</span>'
-        + step('bloom', window.t('grammar.markFlawless'), bloomed);
+        '<span class="gc-step' + (got ? ' is-got' : '') + '">'
+        + markSvg(kind, 'gc-stepmark gc-stepmark-' + kind)
+        + '<span class="gc-step-label">' + escapeHtml(label) + '</span></span>';
+    return '<div class="gc-rec-marks">'
+        + step('sprout', window.t('grammar.cleared'), cleared)
+        + '<span class="gc-step-arrow" aria-hidden="true">&rsaquo;</span>'
+        + step('bloom', window.t('grammar.markFlawless'), bloomed)
+        + '</div>';
 }
 
 // THE LEVELS: the band's ten, all facing right like a play button and sitting next to each other
@@ -705,12 +710,6 @@ function renderLevelGrid() {
         if (done) {
             slot.insertAdjacentHTML('beforeend',
                 markSvg(bloomed ? 'bloom' : 'sprout', 'gc-mark gc-mark-' + (bloomed ? 'bloom' : 'sprout')));
-            // aria-hidden: the tile's own label already names its state, and this only draws it.
-            const tip = document.createElement('span');
-            tip.className = 'gc-mark-tip';
-            tip.setAttribute('aria-hidden', 'true');
-            tip.innerHTML = markTip(bloomed);
-            slot.appendChild(tip);
         }
         container.appendChild(slot);
     }
@@ -735,6 +734,7 @@ function renderLevelRecord() {
             <span class="gc-rec-stat"><span class="k">${escapeHtml(window.t('stat.mistakes'))}</span>
                 <span class="v">${done && progress.best_mistakes != null ? String(progress.best_mistakes) : dash}</span></span>
         </div>
+        ${markSteps(done, done && isFlawless(band.track, focusedLevel))}
         <p class="gc-rec-note">${escapeHtml(window.t(done ? 'grammar.recDone' : 'grammar.recNew'))}</p>
     `;
     const cta = document.createElement('button');

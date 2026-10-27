@@ -191,7 +191,17 @@
         return out;
     }
 
+    // Seven of the values below are copied across as the page wrote them -- `light-dark()`
+    // strings, which re-resolve themselves whenever the theme moves. The other three cannot:
+    // toward() needs real numbers, so they are written out as rgb literals, and an inline
+    // style beats every stylesheet. That made them a SNAPSHOT of whichever theme was on screen
+    // when the button was built: switching to dark left the help disc wearing the light page's
+    // plum, a dark maroon coin on a dark ground. So every themed node is remembered and
+    // re-themed whenever the theme can have changed.
+    const themed = new Set();
+
     function applyTheme(nodes) {
+        nodes.forEach(n => { if (n) themed.add(n); });
         const wrap = document.querySelector('main[class$="-main"]') || document.querySelector('main');
         if (!wrap) return;
         const cs = getComputedStyle(wrap);
@@ -222,6 +232,17 @@
     const page = (location.pathname.split('/').pop() || 'index.html');
     const scenes = TOURS[page];
     if (!scenes) return;
+
+    function retheme() {
+        const alive = [...themed].filter(n => n.isConnected);
+        themed.clear();
+        if (alive.length) applyTheme(alive);
+    }
+    // display-prefs.js fires both of these, and `themechange` covers the follow-the-device state
+    // as well -- where nothing is stamped on <html> at all, so watching the attribute would miss
+    // the OS flipping underneath, which is the case most visitors are actually in.
+    document.addEventListener('themechange', retheme);
+    document.addEventListener('displayprefchange', retheme);
 
     const seen = (id) => { try { return localStorage.getItem('khanjp-tour-' + id) === '1'; } catch (e) { return true; } };
     const markSeen = (id) => { try { localStorage.setItem('khanjp-tour-' + id, '1'); } catch (e) { /* private mode */ } };

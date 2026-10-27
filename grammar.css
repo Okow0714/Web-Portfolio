@@ -178,8 +178,11 @@ body:has(.grammar-main) {
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    border: 1px solid rgba(224, 112, 90, 0.4);
-    background: rgba(224, 112, 90, 0.1);
+    /* The salmon these four were written in is the DARK board's dye; on the cream page it is
+       the wrong half of --shu. Only the colour goes through light-dark() -- a whole box-shadow
+       cannot, which is why the geometry below sits outside it. */
+    border: 1px solid light-dark(rgba(143, 45, 26, 0.42), rgba(224, 112, 90, 0.4));
+    background: light-dark(rgba(143, 45, 26, 0.09), rgba(224, 112, 90, 0.1));
     color: var(--shu-light);
     font-size: 1.05rem;
     line-height: 1;
@@ -191,9 +194,9 @@ body:has(.grammar-main) {
     transition: background 0.2s ease, transform 0.2s var(--ease-pop), box-shadow 0.2s ease;
 }
 
-.sound-toggle:hover { background: rgba(224, 112, 90, 0.2); transform: translateY(-1px); }
+.sound-toggle:hover { background: light-dark(rgba(143, 45, 26, 0.18), rgba(224, 112, 90, 0.2)); transform: translateY(-1px); }
 .sound-toggle:focus-visible { outline: 2px solid var(--shu-light); outline-offset: 2px; }
-.sound-toggle.on { box-shadow: 0 0 0 2px rgba(224, 112, 90, 0.28); }
+.sound-toggle.on { box-shadow: 0 0 0 2px light-dark(rgba(143, 45, 26, 0.3), rgba(224, 112, 90, 0.28)); }
 /* The speaker button is a four-step volume control, not a toggle. The level is carried on the
    button as data-vol and the bars respond to it, so nothing has to swap the icon out. Unlit
    bars hold at 24% instead of disappearing: the silhouette then stays identical across all
@@ -576,70 +579,54 @@ body:has(.grammar-main) {
 .gc-mark {
     position: absolute;
     z-index: 1;
-    /* The mark's square overlaps the NEXT tile in the row, so it must never take a pointer: the
-       tip is triggered from the slot instead. Making the ink itself hoverable also works -- SVG
-       hit-tests per shape, so the empty corners stay transparent -- but a 24px sprig is a fiddly
-       target, and the whole tile is the obvious one. */
+    /* The mark's square overlaps the NEXT tile in the row, so it must never take a pointer, or
+       it swallows that tile's click. What the mark MEANS is answered in the record panel, which
+       needs no hover at all. */
     pointer-events: none;
 }
 
-/* What the mark means, and for a sprout what turns it into the other one. Shown on hovering
-   anywhere on the tile, and on keyboard focus of it, so it is not mouse-only. The drawing stays
-   aria-hidden -- the tile's own label already names its state, so a screen reader would
-   otherwise hear it twice. */
-.gc-mark-tip {
-    position: absolute;
-    left: 50%;
-    bottom: calc(100% + 10px);
-    transform: translateX(-50%) translateY(4px);
-    width: max-content;
-    padding: 10px 12px;
-    background: var(--rec-surface);
-    color: var(--ink);
-    border: 1px solid var(--card-edge);
-    box-shadow: 0 8px 20px light-dark(rgba(84, 62, 28, 0.26), rgba(6, 9, 18, 0.5));
+/* WHAT THE MARKS MEAN, in the record panel -- the two states side by side for whichever level
+   is picked. This replaces a tooltip on the tile, which could only be found by hovering a tile
+   that already carried a mark: the player who has not earned the flower had nothing to hover
+   and no way to learn it existed. Here it is simply on screen, and an uncleared level shows
+   both steps plain, which reads as what is on offer. */
+.gc-rec-marks {
     display: flex;
     align-items: center;
-    gap: 9px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.14s var(--ease-out), transform 0.14s var(--ease-out);
-    z-index: 6;
+    gap: 8px;
+    margin: 12px 0 0;
 }
 
-.gc-tri-slot:hover .gc-mark-tip,
-.gc-tri:focus-visible ~ .gc-mark-tip {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-}
-
-/* One step of the indicator: the drawing over its name. */
-.gc-tip-step {
+/* One step: the drawing over its name. */
+.gc-step {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 5px;
-    padding: 5px 7px 4px;
+    padding: 6px 8px 5px;
+    flex: 1;
+    min-width: 0;
     border: 1px solid transparent;
+    border-radius: 3px;
 }
 
 /* The state you HAVE. A chip and an edge, not a brighter label -- see the rule below about
    which half of this is allowed to dim. */
-.gc-tip-step.is-got {
+.gc-step.is-got {
     background: light-dark(rgba(29, 39, 64, 0.06), rgba(241, 237, 224, 0.07));
     border-color: var(--card-edge);
 }
 
-.gc-tip-label {
+.gc-step-label {
     font-size: 0.68rem;
     letter-spacing: 0.04em;
-    white-space: nowrap;
+    text-align: center;
     color: var(--ink-soft);
 }
 
-.gc-tip-step.is-got .gc-tip-label { color: var(--ink); font-weight: 600; }
+.gc-step.is-got .gc-step-label { color: var(--ink); font-weight: 600; }
 
-.gc-tip-arrow {
+.gc-step-arrow {
     font-size: 1rem;
     line-height: 1;
     color: var(--ink-soft);
@@ -649,30 +636,29 @@ body:has(.grammar-main) {
 /* The ICON is what dims on a state not yet reached, never the label. Opacity on text is how
    this project has twice produced a 2:1 ratio; a label that must be read stays on --ink-soft,
    which is solved against this surface, and only the drawing goes quiet. */
-.gc-tipmark {
+.gc-stepmark {
     display: block;
     width: 30px;
     height: 30px;
 }
 
-.gc-tipmark g {
+.gc-stepmark g {
     fill: currentColor;
     stroke: var(--rec-surface);
     stroke-width: 2.2;
     stroke-linejoin: round;
 }
 
-/* The blossom's bitten-out centre is the ground it sits on, and in here that is the tooltip's
+/* The blossom's bitten-out centre is the ground it sits on, and in here that is the panel's
    surface rather than the page -- without this it keeps punching a page-coloured hole. */
-.gc-tipmark .gc-mark-eye { fill: var(--rec-surface); }
+.gc-stepmark .gc-mark-eye { fill: var(--rec-surface); }
 
-.gc-tipmark-sprout { color: light-dark(#2f6b4a, #a8d0ac); }
-.gc-tipmark-bloom { color: light-dark(#1d2740, #f1ede0); }
+.gc-stepmark-sprout { color: light-dark(#2f6b4a, #a8d0ac); }
+.gc-stepmark-bloom { color: light-dark(#1d2740, #f1ede0); }
 
 /* Quiet, but still recognisably a flower: the comparison only works if you can see WHAT you
-   would be getting. At 0.3 the shape dissolved into a smudge and the tooltip stopped making
-   its point. */
-.gc-tip-step:not(.is-got) .gc-tipmark {
+   would be getting. At 0.3 the shape dissolved into a smudge and it stopped making its point. */
+.gc-step:not(.is-got) .gc-stepmark {
     color: light-dark(rgba(29, 39, 64, 0.46), rgba(241, 237, 224, 0.44));
 }
 
