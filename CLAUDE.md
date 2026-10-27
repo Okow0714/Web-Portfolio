@@ -45,8 +45,9 @@ at all, and `reset-password.html`); `credits.html` itself carries the masthead+f
 **Their colour is per-tool, though** (2026-10-24): each of the six tool pages puts
 `--header-bg` on `.site-header-wrap`/`.site-footer` set to **exactly the `--seal` that
 `index.html` gives that page** -- origins `#a8431f`, game `#5a55b0`, phonetics `#1f6b52`,
-grammar `#b0432f`, reading `#5f6b1f`, dictionary `#23405f` -- so the button pressed on the home
-page and the page it opens are the same colour. Four of them already did this but with the seal
+grammar `#b0432f`, reading `#6b1f52`, dictionary `#23405f` -- so the button pressed on the home
+page and the page it opens are the same colour. The seal and the page's own `--header-bg` are
+two separate literals: change one without the other and they drift apart silently. Four of them already did this but with the seal
 *deepened to 68%*, which is what made them not match, and game/origins had no block at all.
 **The ground is now fixed, so the text on it had to move**: `--header-accent` is TEXT in nine
 places in `style.css` (footer links and headings, nav hover, the account panel's items) and the
@@ -166,8 +167,8 @@ see `tutorial.js`'s `THEME_MAP`, which exists for exactly this reason. CSS custo
 means every `var(--x)` in that file picks up the page-local value automatically. `about.css` is
 the one exception — it doesn't load `style.css` at all, so its tokens live on a real `:root`
 instead of being scoped to its wrapper class. Current palette: hub deep wine/gold (dark),
-phonetics light jade/copper, reading warm gold (light), grammar its own accent, dictionary its
-own accent, dashboard cool slate/blue, game dark hanafuda violet/gold, about forest-teal,
+phonetics light jade/copper, reading plum-on-linen (light), grammar its own accent, dictionary
+its own accent, dashboard cool slate/blue, game dark hanafuda violet/gold, about forest-teal,
 origins warm paper with this page's own hub-seal colour (see Kana Origins below).
 **Each page's colors and layout are deliberately distinct — don't reintroduce a shared template
 between them.**
@@ -977,6 +978,25 @@ score already kept -- which is why the fix is to raise auth, not to close the po
 Proved both ways with the same spec, per the two-builds rule: on the old build Playwright's
 real `.click()` on the email field times out, on the new one it types. A z-index comparison
 alone would not have shown it, and neither would a screenshot of the dialog on its own.
+
+**Dokkai Reader went from warm gold to "plum cloth"** (2026-10-27). The old scheme -- olive
+seal `#5f6b1f`, amber accent on a `#f7ecd2` ground -- was called piss yellow, and the hue that
+replaced it was chosen by where the gap WAS rather than by taste: the six seals ran orange 20,
+red 9, teal 162, blue 210 and violet 243, leaving 280-340 empty. Plum also suits the tool, being
+what a bound book is covered in.
+**Half the yellow was the GROUND, not the accent.** Swapping only `--accent` would have left a
+plum sitting on a custard page, so `--bg-page` came off `#f7ecd2` to a near-neutral linen and
+the ink, borders and shadows went plum-tinted with it.
+**Three files carry this colour and all three had to move together**: `reading.css`'s token
+block, its `--header-bg` block (plus the `data-contrast="darker"` one), and the `--seal` literal
+on `index.html`'s Reading tile.
+**`images/hub/reading-enter.jpg` is a SCREENSHOT of this page**, ghosted in behind the seal on
+hover -- so a palette change makes the home page show a gold screenshot behind a plum seal. It
+was re-shot, by the route `tools/share-cards/capture-shots.js` uses to reach the passage.
+**`images/share/reading.jpg` is still the old palette.** Regenerating it is
+`node tools/share-cards/capture-shots.js` then `node tools/share-cards/make-cards.js`, but both
+rebuild EVERY tool's shot and card, and Facebook caches previews -- so it wants doing
+deliberately, with a re-scrape in the Sharing Debugger after.
 
 **Stacking contexts, not z-index, decide what's on top.** `.container` (`style.css`) and
 `.site-footer` are both `position: relative; z-index: 2` — an exact tie broken by DOM order, so

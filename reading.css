@@ -34,38 +34,46 @@
    :has() here only ever matches reading.html, since .reading-main only exists there. */
 body:has(.reading-main),
 .reading-main {
-    --bg-page: #f7ecd2;
-    --bg-page: light-dark(#f7ecd2, #191410);
-    --bg-surface: #fdf6e6;
-    --bg-surface: light-dark(#fdf6e6, #221b14);
-    --bg-surface-alt: #f0e0bc;
-    --bg-surface-alt: light-dark(#f0e0bc, #2b2219);
-    --border: #e0c690;
-    --border: light-dark(#e0c690, #3d3020);
-    --border-strong: #c9a563;
-    --border-strong: light-dark(#c9a563, #5a462c);
-    --text-primary: #4a3510;
-    --text-primary: light-dark(#4a3510, #f2e7d2);
-    --text-secondary: #7a6435;
-    --text-secondary: light-dark(#7a6435, #cdbb99);
-    /* was #a08a5c: 2.85:1 behind the "How this works" label, under the 4.5 floor */
-    --text-muted: #786845;
-    --text-muted: light-dark(#786845, #a3926f);
-    --accent: #b8791f;
-    --accent: light-dark(#b8791f, #d9a03f);
-    --accent-light: #d99f3f;
-    --accent-light: light-dark(#d99f3f, #e8bd6d);
-    /* was #8f5c14: 4.12:1 on the mic and guest hints' tinted panel, just under the floor */
-    --accent-dark: #855613;
-    --accent-dark: light-dark(#855613, #e8bd6d);
-    --accent-tint: rgba(184, 121, 31, 0.16);
-    --accent-tint: light-dark(rgba(184, 121, 31, 0.16), rgba(217, 160, 63, 0.18));
+    /* "Plum cloth": a bound-book palette -- near-neutral linen paper, plum ink, one aubergine
+       accent. It replaced a warm-gold/olive scheme the site's author called piss yellow, and the
+       hue was chosen by where the gap was rather than by taste: the six hub seals ran orange 20,
+       red 9, teal 162, blue 210 and violet 243, leaving 280-340 empty. The paper also came off
+       #f7ecd2 to a near-neutral linen -- half the yellow was the GROUND, not the accent, and
+       swapping only the accent would have left a plum sitting on a custard page. */
+    --bg-page: #f4eee7;
+    --bg-page: light-dark(#f4eee7, #171017);
+    --bg-surface: #fdfaf6;
+    --bg-surface: light-dark(#fdfaf6, #201822);
+    --bg-surface-alt: #eae1d6;
+    --bg-surface-alt: light-dark(#eae1d6, #2a1f2c);
+    --border: #ded2c5;
+    --border: light-dark(#ded2c5, #3b2c3c);
+    --border-strong: #bda894;
+    --border-strong: light-dark(#bda894, #5a4459);
+    --text-primary: #2e2430;
+    --text-primary: light-dark(#2e2430, #f2e7ee);
+    --text-secondary: #5b4a57;
+    --text-secondary: light-dark(#5b4a57, #cdb9c6);
+    /* Both of this token's old values sat just under 4.5 before they were raised; measured
+       again on the new grounds: 5.05-6.28 light, 5.35-6.34 dark. */
+    --text-muted: #6b5866;
+    --text-muted: light-dark(#6b5866, #a391a0);
+    --accent: #8f2b63;
+    --accent: light-dark(#8f2b63, #d471a6);
+    --accent-light: #a8407a;
+    --accent-light: light-dark(#a8407a, #e894c0);
+    --accent-dark: #6b1f4a;
+    --accent-dark: light-dark(#6b1f4a, #e894c0);
+    --accent-tint: rgba(143, 43, 99, 0.14);
+    --accent-tint: light-dark(rgba(143, 43, 99, 0.14), rgba(212, 113, 166, 0.18));
+    /* --accent-light is the LIGHTEST stop, so it is the one the cream label has to clear: 5.49.
+       Grammar Connect shipped a 2.13:1 button by checking only the dark stop. */
     --accent-gradient: linear-gradient(135deg, var(--accent-light), var(--accent));
     --accent-gradient-hover: linear-gradient(135deg, var(--accent), var(--accent-dark));
-    --shadow-sm: 0 2px 10px rgba(74, 53, 16, 0.10);
-    --shadow-sm: 0 2px 10px light-dark(rgba(74, 53, 16, 0.10), rgba(0, 0, 0, 0.45));
-    --shadow-md: 0 14px 32px rgba(74, 53, 16, 0.18);
-    --shadow-md: 0 14px 32px light-dark(rgba(74, 53, 16, 0.18), rgba(0, 0, 0, 0.55));
+    --shadow-sm: 0 2px 10px rgba(46, 36, 48, 0.10);
+    --shadow-sm: 0 2px 10px light-dark(rgba(46, 36, 48, 0.10), rgba(0, 0, 0, 0.45));
+    --shadow-md: 0 14px 32px rgba(46, 36, 48, 0.18);
+    --shadow-md: 0 14px 32px light-dark(rgba(46, 36, 48, 0.18), rgba(0, 0, 0, 0.55));
 }
 
 body:has(.reading-main) {
@@ -763,7 +771,8 @@ body:has(.reading-main) .container {
 
 /* ---------------------------------------------------------------------------------------------
    Masthead and footer carry this tool's own colour: exactly the seal index.html gives this page
-   (#5f6b1f), so the button pressed on the home page and the page it opens are the same colour.
+   (#6b1f52), so the button pressed on the home page and the page it opens are the same colour.
+   Changing one means changing the other in the same commit, or they drift apart silently.
    This used to be that seal DEEPENED to 68%, which is precisely what made them not match.
 
    The ground is therefore fixed now, so everything set on it had to move instead. --header-accent
@@ -780,17 +789,17 @@ body:has(.reading-main) .container {
    --------------------------------------------------------------------------------------------- */
 .site-header-wrap,
 .site-footer {
-    --header-bg: #5f6b1f;
-    --header-bg-elevated: #657128;
-    --header-accent: #f4e1bc;
-    --header-accent-dark: #d2c2a2;
-    --header-text-muted: #ece6d8;
-    --header-accent-tint: rgba(244, 225, 188, 0.18);
-    --header-border: rgba(244, 225, 188, 0.36);
+    --header-bg: #6b1f52;
+    --header-bg-elevated: #7a2a5f;
+    --header-accent: #f6dcea;
+    --header-accent-dark: #cfa7bd;
+    --header-text-muted: #f0e2ea;
+    --header-accent-tint: rgba(246, 220, 234, 0.18);
+    --header-border: rgba(246, 220, 234, 0.36);
 }
 
 html[data-contrast="darker"] .site-header-wrap,
 html[data-contrast="darker"] .site-footer {
-    --header-bg: #373e12;
-    --header-bg-elevated: #5f6b1f;
+    --header-bg: #3e1230;
+    --header-bg-elevated: #6b1f52;
 }
