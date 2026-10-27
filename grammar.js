@@ -631,9 +631,12 @@ const SPROUT_ART =
 const BLOOM_ART =
     '<g><path d="M22 52 C 28 45, 34 37, 41 27 C 38 38, 31 46, 24 54 Z"></path>'
     + '<path d="M34 37 C 36 33, 39 31, 43 31 C 40 34, 37 36, 35 39 Z"></path>'
-    + '<circle cx="46" cy="13.4" r="4.7"></circle><circle cx="52.3" cy="17.9" r="4.7"></circle>'
-    + '<circle cx="49.9" cy="25.3" r="4.7"></circle><circle cx="42.1" cy="25.3" r="4.7"></circle>'
-    + '<circle cx="39.7" cy="17.9" r="4.7"></circle><circle cx="36.6" cy="30.2" r="3.4"></circle>'
+    // The petals and the bud carry their own class so they can be sakura while the branch and
+    // the leaf stay sumi ink -- which is what a brush painting of a blossoming branch actually
+    // does, and what the mark looked like it was missing when every shape was one ink colour.
+    + '<circle class="gc-petal" cx="46" cy="13.4" r="4.7"></circle><circle class="gc-petal" cx="52.3" cy="17.9" r="4.7"></circle>'
+    + '<circle class="gc-petal" cx="49.9" cy="25.3" r="4.7"></circle><circle class="gc-petal" cx="42.1" cy="25.3" r="4.7"></circle>'
+    + '<circle class="gc-petal" cx="39.7" cy="17.9" r="4.7"></circle><circle class="gc-petal" cx="36.6" cy="30.2" r="3.4"></circle>'
     + '</g><circle class="gc-mark-eye" cx="46" cy="20" r="2.4"></circle>';
 
 // Both drawings grow from the lower left towards the upper right, so inside a 0 0 64 64 box each

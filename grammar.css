@@ -693,6 +693,21 @@ body:has(.grammar-main) {
 .gc-stepmark-sprout { color: light-dark(#2f6b4a, #a8d0ac); }
 .gc-stepmark-bloom { color: light-dark(#1d2740, #f1ede0); }
 
+/* THE PETALS ARE SAKURA; the branch and the leaf stay sumi ink. The whole mark used to be one
+   ink colour, which on the tile reads as a brush painting and in the seal read as a grey smudge.
+   A class rather than a second svg: `.gc-mark g` sets fill on the group, so a class on the
+   circles outranks it (0,2,0 against 0,1,1) and the halo still comes from the group's stroke. */
+.gc-mark .gc-petal,
+.gc-stepmark .gc-petal {
+    fill: light-dark(#cf5f82, #f0a2bd);
+}
+
+/* An unearned seal mutes the drawing, and the petals have to be muted WITH it or the one shape
+   that is allowed to be loud is the one not yet won. */
+.gc-award:not(.is-got) .gc-stepmark .gc-petal {
+    fill: light-dark(rgba(207, 95, 130, 0.42), rgba(240, 162, 189, 0.4));
+}
+
 /* Quiet, but still recognisably a flower: the comparison only works if you can see WHAT you
    would be getting. At 0.3 the shape dissolved into a smudge and it stopped making its point. */
 .gc-award:not(.is-got) .gc-stepmark {

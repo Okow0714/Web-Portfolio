@@ -653,6 +653,13 @@ is what a mark of award looks like in this page's world -- and the rule between 
 carries the progress, dashed until the second is struck and solid ink after. Cleared is struck
 in the sprout's green, flawless in the page's shu, because red is what an award is struck in
 here.
+**The petals are sakura; the branch and the leaf are sumi ink.** Every shape used to be one ink
+colour, which on the tile passes as a brush painting and in the seal read as a grey smudge. The
+petal and bud circles carry `.gc-petal` so they can take their own fill: `.gc-mark g` sets fill
+on the GROUP, so a class on the circles outranks it (0,2,0 against 0,1,1) and the ground-coloured
+halo still comes from the group's stroke. An unearned seal mutes the petals with the rest of the
+drawing -- otherwise the one shape allowed to be loud is the one not yet won.
+
 **A mark drawn for the TILE is cropped wrong for a seal.** Both grow from the lower left towards
 the upper right, so inside `0 0 64 64` each sits in a corner with most of the square empty --
 which is exactly right on the tile, where the empty corner is the tile and the mark reaches out
