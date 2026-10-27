@@ -1463,17 +1463,29 @@ body:has(.grammar-main) {
     .gc-sentence-card { padding: 26px 22px; }
 }
 
-/* Darker ground (Settings -> Darker theme) — see the note in game.css. */
+/* Darker ground (Settings -> Darker theme) — see the note in game.css.
+   EVERY VALUE HERE IS A light-dark() PAIR, and that is not decoration. This block used to set
+   flat dark hexes, which beat the paired declarations above it at higher specificity -- so a
+   visitor in LIGHT mode with Darker switched on got a #0b0f1a night ground and a #171327 card
+   while --ink, --ink-soft and --card-edge all stayed on their LIGHT values, because those
+   resolve light-dark() against color-scheme and color-scheme was still light. Dark ground,
+   dark ink. It reached the tour card too, since tutorial.js copies --card onto it: a near-black
+   panel carrying near-black text at about 1:1.
+   The light halves are the page's ORDINARY light values, so Darker leaves this page's body
+   alone in light mode -- which is what it already does on reading, phonetics, origins and
+   dictionary, none of which override anything below the masthead. (path.css is the one page
+   that deliberately goes to night instead; it restates the whole palette, ink included, so it
+   stays self-consistent. Half a palette is the thing that cannot work.) */
 html[data-contrast="darker"] body:has(.grammar-main),
 html[data-contrast="darker"] .grammar-main {
-    --card: #171327;
-    --ai: #16223c;
-    --ai-light: #33477a;
+    --card: light-dark(#fbf7ec, #171327);
+    --ai: light-dark(#1f2f52, #16223c);
+    --ai-light: light-dark(#4a63a0, #33477a);
 }
 
 /* The page ground is a literal here rather than a token, so it has to be restated. */
 html[data-contrast="darker"] body:has(.grammar-main) {
-    background: #0b0f1a;
+    background: light-dark(#d9cdb0, #0b0f1a);
 }
 
 /* ---------------------------------------------------------------------------

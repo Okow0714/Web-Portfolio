@@ -699,6 +699,27 @@ invisible tile, which reads as a layout bug and is not one.
 to be enough to print the stats, which rendered a literal **"null"** under Mistakes and 00:00
 under Best time. Both cells fall back to the dash now.
 
+**DARKER IS A THIRD AXIS, and half a palette on it cannot work** (2026-10-27). `html[data-contrast="darker"]`
+sits at higher specificity than a page's own token block, so a flat hex there BEATS the
+`light-dark()` pair above it -- in both themes. `grammar.css` set `--card: #171327` and a
+`#0b0f1a` ground that way and restated nothing else, so a visitor in **Light** with Darker
+switched on got a night ground while `--ink`, `--ink-soft` and `--card-edge` stayed on their
+light values, because those still resolve against `color-scheme: light`. Dark ground, dark ink.
+It reached the tour card too, since `tutorial.js` copies `--card` onto it: measured **1.17:1**
+on the card's own body text. Every value in that block is a `light-dark()` pair now, the light
+halves being the page's ordinary light values -- so Darker leaves this page's body alone in
+light mode, which is already what reading, phonetics, origins and dictionary do (none of them
+override anything below the masthead). `path.css` is the one page that deliberately goes to
+night on Darker, and it works only because it restates the WHOLE palette, ink included.
+**Neither theme on its own shows this, and neither does a light/dark switch** -- the fault needs
+the Darker axis to appear at all, which is why it survived every contrast pass and my own
+light-vs-dark audit. `scratchpad/theme-audit.js` runs five passes now (light, dark,
+switched-in-place, light+darker, dark+darker) and `--tour` additionally leaves the page tour
+running, because the tour's card is the one surface here whose colours are COPIED by JS from the
+page's tokens rather than written in CSS -- suppressing tours is what hid this. Proved both
+ways: 1.17:1 on the old build, silent on the new. Checked on the other seven pages at the same
+time; nothing else is broken on this axis.
+
 **`light-dark()` resolves where it is USED, so a token must never be handed to another
 subtree unresolved.** `tutorial.js` copies the page's tokens onto the tour's card, and the card
 is a child of `<body>` while the tokens are declared on `<main>`. Passing the raw
