@@ -629,41 +629,38 @@ quicker sloppy one -- the flower would un-bloom, and taking back a mark someone 
 than never giving it. `grammar_progress.flawless` is only ever written **true**, the same rule
 migration 011 gives Word Match's mode marks, with the same drop-the-column-and-retry dance for
 a project where 012 has not been applied.
-**The marks are explained in the record panel, not in a tooltip** (2026-10-27). A tooltip on
-the tile could only be found by hovering a tile that already carried a mark -- so the player who
-has earned nothing, and most needs to know the flower exists, had nothing to hover. The panel
-prints both steps for whichever level is picked, earned ones chipped and the unearned drawing
-dimmed; the LABEL never dims, which is the opacity-on-text rule again. `markSteps()` and
-`markSvg()` share the art with the tile, so a redraw cannot leave the two disagreeing.
-
 **Completion is in `localStorage` too now** (`khanjp-gc-cleared`, beside `khanjp-gc-flawless`).
 It had to be: completion lived only in `grammar_progress`, so for a signed-out player no tile
 was ever `done` and the flawless flag would have been a mark with nothing to sit on. The
 account's rows still win where both exist; the local rows are a union on top.
-**Hovering a cleared tile shows a two-step indicator** (`.gc-mark-tip`): the sprout and the
-flower side by side, the one you have chipped and named, the one you do not left plain. It
-started as a SENTENCE explaining the mechanic -- "Алдаагүй дуусгавал цэцэглэнэ" -- which the
+**The two marks are explained in the RECORD PANEL, not in a tooltip on the tile** (2026-10-27).
+A tooltip could only be found by hovering a tile that already carried a mark, so the player who
+has earned nothing -- the one who most needs to know the flower exists -- had nothing to hover
+and no way to learn it was there. `markSteps()` prints both states for whichever level is
+picked, side by side: an earned one chipped and named, an unearned one left plain, which on an
+uncleared level reads as what is on offer. `scratchpad/gc-steps.js` checks the is-got flags
+follow the picked level, both labels clear 4.5:1 on the panel, and the panel has not grown
+enough to push the select below the fold.
+It started as a SENTENCE explaining the mechanic -- "Алдаагүй дуусгавал цэцэглэнэ" -- which the
 site's author called unnatural Mongolian, and he was right twice over: a drawing of the next
 state says "this is what you would get" without any prose, and it sidesteps having to phrase a
-conditional in a language the copy is translated into rather than written in. The labels are now
-two nouns already in the glossary, `Дуусгасан` and `Алдаагүй`.
+conditional in a language the copy is translated into rather than written in. The labels are two
+nouns already in the glossary, `Дуусгасан` and `Алдаагүй`.
 **The ICON dims for a state not reached; the LABEL never does.** Opacity on text is how this
 project twice produced a 2:1 ratio, so an unreached label stays on `--ink-soft` (solved against
-the tooltip's own surface, which the spec measures) and only the drawing goes quiet -- at 0.46,
+the panel's own surface, which the spec measures) and only the drawing goes quiet -- at 0.46,
 not 0.30, because at 0.30 the flower dissolved into a smudge and the comparison stopped making
 its point.
 **The art is written once and worn twice.** `SPROUT_ART`/`BLOOM_ART` plus `markSvg(kind, cls)`
-feed both the tile mark and the tooltip icon; two copies of those paths would drift the moment
-one is redrawn. The blossom's bitten-out centre is the ground it sits on, so inside the tooltip
-it has to be re-pointed at `--rec-surface` or it punches a page-coloured hole.
-It is triggered from the SLOT, not from the mark: the mark keeps
-`pointer-events: none` because its square overlaps the NEXT tile in the row, and a hoverable box
-there would swallow that tile's click. Hovering the ink itself does work (SVG hit-tests per
-shape, so the empty corners stay transparent), but a 24px sprig is a fiddly target and the whole
-tile is the obvious one. `:focus-visible` on the tile shows it too, so it is not mouse-only, and
-the drawing stays `aria-hidden` because the tile's own label already names the state.
-**`#gc-select-section` has `overflow: hidden`**, so a tip above the top row is a real clipping
-risk -- `scratchpad/gc-tip.js` hovers all ten and checks each against that element's box.
+feed both the tile mark and the panel icon; two copies of those paths would drift the moment one
+is redrawn. The blossom's bitten-out centre is the ground it sits on, so in the panel it has to
+be re-pointed at `--rec-surface` or it punches a page-coloured hole.
+**The tile mark keeps `pointer-events: none`** -- its square overlaps the NEXT tile in the row,
+and a box that took a pointer there would swallow that tile's click. It is also `aria-hidden`,
+because the tile's own label already names the state.
+**A spec must never start by clicking level 1**: it is the focused tile on arrival, and clicking
+the focused tile OPENS the level -- the select goes away and every later click times out on an
+invisible tile, which reads as a layout bug and is not one.
 **A local row carries no times, and the record panel had to answer for that**: `done` alone used
 to be enough to print the stats, which rendered a literal **"null"** under Mistakes and 00:00
 under Best time. Both cells fall back to the dash now.
