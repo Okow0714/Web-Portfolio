@@ -699,6 +699,21 @@ invisible tile, which reads as a layout bug and is not one.
 to be enough to print the stats, which rendered a literal **"null"** under Mistakes and 00:00
 under Best time. Both cells fall back to the dash now.
 
+**`var(--name, fallback)` fails silently when `--name` does not exist** (2026-10-27).
+`.lang-switch` read `--header-text-dim`, which was declared NOWHERE in the repo, so all twelve
+pages fell through to the literal `#d6c3cd` and not one of the per-page `--header-text-muted`
+lifts ever reached the language and theme switches: 3.4:1 on grammar, 3.6 origins, 3.73 game,
+3.82 phonetics, against a 4.5 floor at 12px. A one-word mismatch in a token name looks
+deliberate, costs no error and no warning, and the fallback makes it *render plausibly*. Grep
+for a token's declaration before trusting a `var()` that names it. The two
+`opacity: 0.85` rules on `.theme-switch-icon` went at the same time -- dimming text with opacity
+is the rule this project keeps relearning, and here it multiplied an already-failing colour.
+**Word Match's `--text-muted` was solved against the wrong surface**: `#6f6554` measured 4.19:1
+on six labels of the PLAY screen (stat keys, hand counter, preview hint, tour button), whose
+ground is the board's straw `rgb(228,220,199)` and not the paper the token was picked against.
+Solving it by hand from an assumed ground returned 4.78:1 -- a pass for a colour that fails --
+so the solver now reads the composited ground off the running board. `#675e4e`, 4.69:1.
+
 **DARKER IS A THIRD AXIS, and half a palette on it cannot work** (2026-10-27). `html[data-contrast="darker"]`
 sits at higher specificity than a page's own token block, so a flat hex there BEATS the
 `light-dark()` pair above it -- in both themes. `grammar.css` set `--card: #171327` and a

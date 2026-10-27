@@ -34,7 +34,11 @@ body:has(.game-main) {
     --paper-edge: light-dark(#d7c9a7, #d9c9a8);
 
     --text: light-dark(#231c2d, #f2e8d5);
-    --text-muted: light-dark(#6f6554, #a69c89);
+    /* Solved against the BOARD's straw, rgb(228,220,199) -- not against the paper. At #6f6554
+       this measured 4.19:1 on six labels of the play screen (the stat keys, the hand counter,
+       the preview hint, the tour button), which no pass caught because the audit only ever saw
+       the level select. */
+    --text-muted: light-dark(#675e4e, #a69c89);
     /* Ink ON a paper tile: the tile is pale in both themes, so this does not flip. */
     --ink: #231c2d;
     --ink-soft: light-dark(#675d4c, #5a4f3d);
