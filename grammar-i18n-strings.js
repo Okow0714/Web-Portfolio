@@ -39,10 +39,7 @@ Object.assign(window.I18N_STRINGS, {
     'grammar.band3n': { en: '~N2', mn: '~N2' },
     'grammar.band4': { en: 'Deep', mn: 'Гүнзгий' },
     'grammar.band4n': { en: '~N1', mn: '~N1' },
-    'grammar.tipSprout': {
-        en: 'Cleared. Finish it with no mistakes and it flowers.',
-        mn: 'Дуусгасан. Алдаагүй дуусгавал цэцэглэнэ.',
-    },
+    'grammar.markFlawless': { en: 'No mistakes', mn: 'Алдаагүй' },
     'grammar.clearedFlawless': { en: 'Cleared with no mistakes', mn: 'Алдаагүй дуусгасан' },
     'grammar.bandLevel': { en: '{band} · Level {n}', mn: '{band} · {n}-р шат' },
     'grammar.pickBand': { en: 'Pick where to start — four sets of ten levels.', mn: 'Хаанаас эхлэхээ сонгоно уу — арван шаттай дөрвөн багц.' },

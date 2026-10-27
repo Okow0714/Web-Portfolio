@@ -616,19 +616,39 @@ function renderDiffTabs() {
 // thicken at the root and run dry at the tip the way a loaded brush does -- a stroke-width is
 // uniform by definition and cannot. Each is outlined in the PAGE colour so it reads both on the
 // tile it starts from and on the ground it grows onto.
-const SPROUT_SVG = '<svg class="gc-mark gc-mark-sprout" viewBox="0 0 64 64" aria-hidden="true">'
-    + '<g><path d="M25 54 C 29 48, 33 42, 38 34 C 36 43, 31 49, 27 56 Z"></path>'
+// The art is written ONCE and worn twice: large on the tile, small inside the tooltip that
+// compares the two states. Two copies of these paths would drift the moment one is redrawn.
+const SPROUT_ART =
+    '<g><path d="M25 54 C 29 48, 33 42, 38 34 C 36 43, 31 49, 27 56 Z"></path>'
     + '<path d="M0 0 C -5 -5.5, -12.5 -5.5, -16 1 C -10.5 5.5, -3 5, 0 0 Z" transform="translate(29,43) rotate(-14)"></path>'
     + '<path d="M0 0 C 5 -5.5, 12.5 -5.5, 16 1 C 10.5 5.5, 3 5, 0 0 Z" transform="translate(35,35) rotate(12)"></path>'
-    + '</g></svg>';
+    + '</g>';
 
-const BLOOM_SVG = '<svg class="gc-mark gc-mark-bloom" viewBox="0 0 64 64" aria-hidden="true">'
-    + '<g><path d="M22 52 C 28 45, 34 37, 41 27 C 38 38, 31 46, 24 54 Z"></path>'
+const BLOOM_ART =
+    '<g><path d="M22 52 C 28 45, 34 37, 41 27 C 38 38, 31 46, 24 54 Z"></path>'
     + '<path d="M34 37 C 36 33, 39 31, 43 31 C 40 34, 37 36, 35 39 Z"></path>'
     + '<circle cx="46" cy="13.4" r="4.7"></circle><circle cx="52.3" cy="17.9" r="4.7"></circle>'
     + '<circle cx="49.9" cy="25.3" r="4.7"></circle><circle cx="42.1" cy="25.3" r="4.7"></circle>'
     + '<circle cx="39.7" cy="17.9" r="4.7"></circle><circle cx="36.6" cy="30.2" r="3.4"></circle>'
-    + '</g><circle class="gc-mark-eye" cx="46" cy="20" r="2.4"></circle></svg>';
+    + '</g><circle class="gc-mark-eye" cx="46" cy="20" r="2.4"></circle>';
+
+function markSvg(kind, cls) {
+    return '<svg class="' + cls + '" viewBox="0 0 64 64" aria-hidden="true">'
+        + (kind === 'bloom' ? BLOOM_ART : SPROUT_ART) + '</svg>';
+}
+
+// The tooltip is a two-step indicator, not a sentence: the sprout and the flower side by side,
+// with the one you have marked and the one you do not left plain. A drawing of the next state
+// says "this is what you would get" without a line of prose having to explain the mechanic.
+function markTip(bloomed) {
+    const step = (kind, label, got) =>
+        '<span class="gc-tip-step' + (got ? ' is-got' : '') + '">'
+        + markSvg(kind, 'gc-tipmark gc-tipmark-' + kind)
+        + '<span class="gc-tip-label">' + escapeHtml(label) + '</span></span>';
+    return step('sprout', window.t('grammar.cleared'), true)
+        + '<span class="gc-tip-arrow" aria-hidden="true">&rsaquo;</span>'
+        + step('bloom', window.t('grammar.markFlawless'), bloomed);
+}
 
 // THE LEVELS: the band's ten, all facing right like a play button and sitting next to each other
 // in a row that wraps. Their size is CSS's business, not this function's.
@@ -683,13 +703,13 @@ function renderLevelGrid() {
         // aria-hidden: the tile's own label already says which state it is in, so the drawing
         // would only repeat it.
         if (done) {
-            slot.insertAdjacentHTML('beforeend', bloomed ? BLOOM_SVG : SPROUT_SVG);
-            // The tip comes AFTER the mark, because the CSS shows it with a sibling selector.
-            // It says what the mark means and, on a sprout, what turns it into the other one --
-            // a status nobody can act on is worth less than one that names its own next step.
+            slot.insertAdjacentHTML('beforeend',
+                markSvg(bloomed ? 'bloom' : 'sprout', 'gc-mark gc-mark-' + (bloomed ? 'bloom' : 'sprout')));
+            // aria-hidden: the tile's own label already names its state, and this only draws it.
             const tip = document.createElement('span');
             tip.className = 'gc-mark-tip';
-            tip.textContent = window.t(bloomed ? 'grammar.clearedFlawless' : 'grammar.tipSprout');
+            tip.setAttribute('aria-hidden', 'true');
+            tip.innerHTML = markTip(bloomed);
             slot.appendChild(tip);
         }
         container.appendChild(slot);

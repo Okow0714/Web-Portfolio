@@ -632,9 +632,23 @@ a project where 012 has not been applied.
 It had to be: completion lived only in `grammar_progress`, so for a signed-out player no tile
 was ever `done` and the flawless flag would have been a mark with nothing to sit on. The
 account's rows still win where both exist; the local rows are a union on top.
-**Hovering a cleared tile names its state** (`.gc-mark-tip`). The sprout's tip also says what
-turns it into the other one -- a status nobody can act on is worth less than one that names its
-own next step. It is triggered from the SLOT, not from the mark: the mark keeps
+**Hovering a cleared tile shows a two-step indicator** (`.gc-mark-tip`): the sprout and the
+flower side by side, the one you have chipped and named, the one you do not left plain. It
+started as a SENTENCE explaining the mechanic -- "Алдаагүй дуусгавал цэцэглэнэ" -- which the
+site's author called unnatural Mongolian, and he was right twice over: a drawing of the next
+state says "this is what you would get" without any prose, and it sidesteps having to phrase a
+conditional in a language the copy is translated into rather than written in. The labels are now
+two nouns already in the glossary, `Дуусгасан` and `Алдаагүй`.
+**The ICON dims for a state not reached; the LABEL never does.** Opacity on text is how this
+project twice produced a 2:1 ratio, so an unreached label stays on `--ink-soft` (solved against
+the tooltip's own surface, which the spec measures) and only the drawing goes quiet -- at 0.46,
+not 0.30, because at 0.30 the flower dissolved into a smudge and the comparison stopped making
+its point.
+**The art is written once and worn twice.** `SPROUT_ART`/`BLOOM_ART` plus `markSvg(kind, cls)`
+feed both the tile mark and the tooltip icon; two copies of those paths would drift the moment
+one is redrawn. The blossom's bitten-out centre is the ground it sits on, so inside the tooltip
+it has to be re-pointed at `--rec-surface` or it punches a page-coloured hole.
+It is triggered from the SLOT, not from the mark: the mark keeps
 `pointer-events: none` because its square overlaps the NEXT tile in the row, and a hoverable box
 there would swallow that tile's click. Hovering the ink itself does work (SVG hit-tests per
 shape, so the empty corners stay transparent), but a 24px sprig is a fiddly target and the whole
