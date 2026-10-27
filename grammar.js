@@ -682,7 +682,16 @@ function renderLevelGrid() {
         slot.appendChild(tile);
         // aria-hidden: the tile's own label already says which state it is in, so the drawing
         // would only repeat it.
-        if (done) slot.insertAdjacentHTML('beforeend', bloomed ? BLOOM_SVG : SPROUT_SVG);
+        if (done) {
+            slot.insertAdjacentHTML('beforeend', bloomed ? BLOOM_SVG : SPROUT_SVG);
+            // The tip comes AFTER the mark, because the CSS shows it with a sibling selector.
+            // It says what the mark means and, on a sprout, what turns it into the other one --
+            // a status nobody can act on is worth less than one that names its own next step.
+            const tip = document.createElement('span');
+            tip.className = 'gc-mark-tip';
+            tip.textContent = window.t(bloomed ? 'grammar.clearedFlawless' : 'grammar.tipSprout');
+            slot.appendChild(tip);
+        }
         container.appendChild(slot);
     }
 }

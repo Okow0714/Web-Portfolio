@@ -575,8 +575,43 @@ body:has(.grammar-main) {
    row, which they overlap by design. */
 .gc-mark {
     position: absolute;
-    pointer-events: none;
     z-index: 1;
+    /* The mark's square overlaps the NEXT tile in the row, so it must never take a pointer: the
+       tip is triggered from the slot instead. Making the ink itself hoverable also works -- SVG
+       hit-tests per shape, so the empty corners stay transparent -- but a 24px sprig is a fiddly
+       target, and the whole tile is the obvious one. */
+    pointer-events: none;
+}
+
+/* What the mark means, and for a sprout what turns it into the other one. Shown on hovering
+   anywhere on the tile, and on keyboard focus of it, so it is not mouse-only. The drawing stays
+   aria-hidden -- the tile's own label already names its state, so a screen reader would
+   otherwise hear it twice. */
+.gc-mark-tip {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 10px);
+    transform: translateX(-50%) translateY(4px);
+    width: max-content;
+    max-width: 168px;
+    padding: 7px 10px;
+    background: var(--rec-surface);
+    color: var(--ink);
+    border: 1px solid var(--card-edge);
+    box-shadow: 0 8px 20px light-dark(rgba(84, 62, 28, 0.26), rgba(6, 9, 18, 0.5));
+    font-size: 0.74rem;
+    line-height: 1.45;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.14s var(--ease-out), transform 0.14s var(--ease-out);
+    z-index: 6;
+}
+
+.gc-tri-slot:hover .gc-mark-tip,
+.gc-tri:focus-visible ~ .gc-mark-tip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
 }
 
 /* The outline is the page's own ground, which is what lets one fill work on the tile the mark

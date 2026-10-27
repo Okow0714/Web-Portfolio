@@ -632,6 +632,16 @@ a project where 012 has not been applied.
 It had to be: completion lived only in `grammar_progress`, so for a signed-out player no tile
 was ever `done` and the flawless flag would have been a mark with nothing to sit on. The
 account's rows still win where both exist; the local rows are a union on top.
+**Hovering a cleared tile names its state** (`.gc-mark-tip`). The sprout's tip also says what
+turns it into the other one -- a status nobody can act on is worth less than one that names its
+own next step. It is triggered from the SLOT, not from the mark: the mark keeps
+`pointer-events: none` because its square overlaps the NEXT tile in the row, and a hoverable box
+there would swallow that tile's click. Hovering the ink itself does work (SVG hit-tests per
+shape, so the empty corners stay transparent), but a 24px sprig is a fiddly target and the whole
+tile is the obvious one. `:focus-visible` on the tile shows it too, so it is not mouse-only, and
+the drawing stays `aria-hidden` because the tile's own label already names the state.
+**`#gc-select-section` has `overflow: hidden`**, so a tip above the top row is a real clipping
+risk -- `scratchpad/gc-tip.js` hovers all ten and checks each against that element's box.
 **A local row carries no times, and the record panel had to answer for that**: `done` alone used
 to be enough to print the stats, which rendered a literal **"null"** under Mistakes and 00:00
 under Best time. Both cells fall back to the dash now.
