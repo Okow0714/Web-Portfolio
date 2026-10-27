@@ -182,18 +182,35 @@
     }
 
     // Turn a colour keyword or token value into real rgb numbers via the browser.
-    function resolveColour(colour) {
+    //
+    // The probe goes inside the HOST, not on document.body, and that is the whole point. Every
+    // token on these pages is a `light-dark()` pair, and `light-dark()` resolves against the
+    // `color-scheme` in force where it is USED -- so the same string can come back cream in one
+    // subtree and near-black in another. The tour's card is a child of <body>, the page's tokens
+    // are declared on <main>: resolving on body answers for the wrong subtree.
+    // Returns the browser's own computed string, alpha and all: --ink-soft is rgba(..., 0.82)
+    // and flattening it to three channels would quietly darken every secondary line in the card.
+    function resolveColourStr(colour, host) {
         const probe = document.createElement('span');
         probe.style.color = colour;
-        document.body.appendChild(probe);
-        const out = rgbOf(getComputedStyle(probe).color);
+        (host || document.body).appendChild(probe);
+        const out = getComputedStyle(probe).color;
         probe.remove();
         return out;
     }
 
-    // Seven of the values below are copied across as the page wrote them -- `light-dark()`
-    // strings, which re-resolve themselves whenever the theme moves. The other three cannot:
-    // toward() needs real numbers, so they are written out as rgb literals, and an inline
+    function resolveColour(colour, host) {
+        return rgbOf(resolveColourStr(colour, host));
+    }
+
+    // Every value below is RESOLVED against the page's own <main> and handed over as plain rgb.
+    // Passing the raw `light-dark()` string across instead looks tidier and is wrong: the tour's
+    // card is a child of <body> and the tokens are declared on <main>, so the string would be
+    // re-resolved in the receiving subtree and can land on the other half of the pair -- a dark
+    // card on a light page, which is precisely what the tour was reported for. Resolved here,
+    // the card cannot disagree with the page it is explaining, whatever the receiving context.
+    //
+    // The cost is that all of them are now literals, and an inline
     // style beats every stylesheet. That made them a SNAPSHOT of whichever theme was on screen
     // when the button was built: switching to dark left the help disc wearing the light page's
     // plum, a dark maroon coin on a dark ground. So every themed node is remembered and
@@ -211,11 +228,13 @@
             const v = cs.getPropertyValue(map[role] || role).trim();
             if (!v) return;
             if (role === '--accent') accent = v;
-            nodes.forEach(n => n.style.setProperty(role, v));
+            const solved = resolveColourStr(v, wrap);
+            if (!solved) return;
+            nodes.forEach(n => n.style.setProperty(role, solved));
         });
-        const surface = resolveColour(cs.getPropertyValue(map['--bg-surface'] || '--bg-surface').trim() || '#fff');
+        const surface = resolveColour(cs.getPropertyValue(map['--bg-surface'] || '--bg-surface').trim() || '#fff', wrap);
         if (accent) {
-            const a = resolveColour(accent);
+            const a = resolveColour(accent, wrap);
             // Button: keep the accent as the fill and pick the ink that suits it, moving the
             // fill only if neither ink clears AA on it.
             const ink = ratio([255, 255, 255], a) >= ratio([23, 20, 15], a) ? [255, 255, 255] : [23, 20, 15];

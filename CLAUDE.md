@@ -646,6 +646,25 @@ site's author called unnatural Mongolian, and he was right twice over: a drawing
 state says "this is what you would get" without any prose, and it sidesteps having to phrase a
 conditional in a language the copy is translated into rather than written in. The labels are two
 nouns already in the glossary, `Дуусгасан` and `Алдаагүй`.
+**It is a TRACK with two stations, not two chips.** The first version put each drawing in a
+rounded box with a chevron between them and read as a pair of form fields: a box around a mark
+says "input" and a chevron says "next". Each state is now a SEAL -- a 54px struck circle, which
+is what a mark of award looks like in this page's world -- and the rule between the two seals
+carries the progress, dashed until the second is struck and solid ink after. Cleared is struck
+in the sprout's green, flawless in the page's shu, because red is what an award is struck in
+here.
+**A mark drawn for the TILE is cropped wrong for a seal.** Both grow from the lower left towards
+the upper right, so inside `0 0 64 64` each sits in a corner with most of the square empty --
+which is exactly right on the tile, where the empty corner is the tile and the mark reaches out
+of it, and wrong in a circle, where it reads as small and off-centre. `MARK_CROP` holds each
+one's real ink bounds and `markSvg(kind, cls, cropped)` takes the third argument only for the
+panel.
+**This block sets the select's floor, so its height is a budget.** The panel does not shrink,
+so at 14px of padding and a 58px seal the whole select ended 14px past a 900px fold -- a real
+regression, caught by `scratchpad/gc-steps.js` and not by any screenshot. Trimming to 10px
+padding and a 54px seal bought it back with 1px to spare. Check that spec before growing
+anything in here.
+
 **The ICON dims for a state not reached; the LABEL never does.** Opacity on text is how this
 project twice produced a 2:1 ratio, so an unreached label stays on `--ink-soft` (solved against
 the panel's own surface, which the spec measures) and only the drawing goes quiet -- at 0.46,
@@ -658,12 +677,35 @@ be re-pointed at `--rec-surface` or it punches a page-coloured hole.
 **The tile mark keeps `pointer-events: none`** -- its square overlaps the NEXT tile in the row,
 and a box that took a pointer there would swallow that tile's click. It is also `aria-hidden`,
 because the tile's own label already names the state.
+**A thin shape cannot carry a centred stroke.** The marks are haloed in the page ground so one
+fill reads on the tile AND on the ground it grows onto, but a stroke is centred on the outline,
+so `stroke-width: 2.2` covers 1.1 of fill on EVERY side -- and the sprout's stalk was about
+three units across. The halo ate it: the leaves read and the stem did not, reported as "the
+stalk is the same colour as the background". Two fixes together: `paint-order: stroke fill`,
+which lays the stroke down first and the fill on top so the halo only ever grows outwards, and a
+stem drawn half again as wide so the stroke has something left to surround.
+
 **A spec must never start by clicking level 1**: it is the focused tile on arrival, and clicking
 the focused tile OPENS the level -- the select goes away and every later click times out on an
 invisible tile, which reads as a layout bug and is not one.
 **A local row carries no times, and the record panel had to answer for that**: `done` alone used
 to be enough to print the stats, which rendered a literal **"null"** under Mistakes and 00:00
 under Best time. Both cells fall back to the dash now.
+
+**`light-dark()` resolves where it is USED, so a token must never be handed to another
+subtree unresolved.** `tutorial.js` copies the page's tokens onto the tour's card, and the card
+is a child of `<body>` while the tokens are declared on `<main>`. Passing the raw
+`light-dark(#fbf7ec, #241f38)` string across looks tidier and is a trap: the receiving subtree
+re-resolves it against ITS `color-scheme`, which can land on the other half of the pair -- a dark
+card explaining a light page, which is what the tour was reported for. Every role is now resolved
+against `<main>` with a probe placed INSIDE it (`resolveColourStr(value, wrap)`; the probe used to
+go on `document.body`, answering for the wrong subtree) and handed over as a concrete colour, so
+the card cannot disagree with the page whatever context it lands in. It returns the browser's own
+string rather than three channels, because `--ink-soft` is `rgba(..., 0.82)` and flattening it
+would quietly darken every secondary line.
+(Not reproducible in current Chromium from any of the five theme paths -- light, dark,
+follow-the-device, and a live switch in either direction -- which is the point: the dependency
+was wrong whether or not this engine happened to exercise it.)
 
 **A value resolved in JS and written inline is a SNAPSHOT, and no amount of `light-dark()`
 saves it.** `tutorial.js`'s `applyTheme()` copies seven tokens across as the page wrote them --

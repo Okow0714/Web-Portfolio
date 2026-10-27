@@ -140,8 +140,10 @@ Object.assign(window.I18N_STRINGS, {
 
     // --- Grammar Connect ------------------------------------------------------
     'tour.grammar.tracks': {
-        en: 'Two tracks — Foundation is N5 to N3, Advanced is N2 to N1. Twenty levels each.',
-        mn: 'Хоёр зам — «Суурь» нь N5-аас N3, «Ахисан» нь N2-оос N1. Тус бүр 20 шаттай.'
+        // The select has been four bands of ten since 2026-10-24; this still named the two
+        // tracks underneath them, which is a screen the player never sees.
+        en: 'Four bands of ten levels, running roughly N4 up to N1. Start wherever you like.',
+        mn: 'Арван шаттай дөрвөн багц — ойролцоогоор N4-өөс N1 хүртэл. Хаанаас ч эхэлж болно.'
     },
     'tour.grammar.levels': {
         en: 'Ten sentences a level. Finish one and the next unlocks.',

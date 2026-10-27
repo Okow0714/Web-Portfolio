@@ -619,7 +619,11 @@ function renderDiffTabs() {
 // The art is written ONCE and worn twice: large on the tile, small inside the tooltip that
 // compares the two states. Two copies of these paths would drift the moment one is redrawn.
 const SPROUT_ART =
-    '<g><path d="M25 54 C 29 48, 33 42, 38 34 C 36 43, 31 49, 27 56 Z"></path>'
+    // The stem is drawn WIDE on purpose. It was about three units across and the 2.2 halo around
+    // it covered most of that, so the leaves read and the stalk did not -- the reported "same
+    // colour as the background". paint-order fixed the halo; this gives the stroke something
+    // left to surround.
+    '<g><path d="M22 57 C 27 49, 32 41, 39 32 C 35 43, 29 51, 26 59 Z"></path>'
     + '<path d="M0 0 C -5 -5.5, -12.5 -5.5, -16 1 C -10.5 5.5, -3 5, 0 0 Z" transform="translate(29,43) rotate(-14)"></path>'
     + '<path d="M0 0 C 5 -5.5, 12.5 -5.5, 16 1 C 10.5 5.5, 3 5, 0 0 Z" transform="translate(35,35) rotate(12)"></path>'
     + '</g>';
@@ -632,26 +636,39 @@ const BLOOM_ART =
     + '<circle cx="39.7" cy="17.9" r="4.7"></circle><circle cx="36.6" cy="30.2" r="3.4"></circle>'
     + '</g><circle class="gc-mark-eye" cx="46" cy="20" r="2.4"></circle>';
 
-function markSvg(kind, cls) {
-    return '<svg class="' + cls + '" viewBox="0 0 64 64" aria-hidden="true">'
+// Both drawings grow from the lower left towards the upper right, so inside a 0 0 64 64 box each
+// one sits in a corner with most of the square empty. On the TILE that is what is wanted -- the
+// empty corner is where the tile is, and the mark reaches out of it. Inside the panel's seal it
+// is not: the drawing looked small and badly centred in its circle. These are the two marks'
+// actual ink bounds, so the seal frames the mark rather than the square it was drawn in.
+const MARK_CROP = { sprout: '11 27 42 34', bloom: '20 7 39 49' };
+
+function markSvg(kind, cls, cropped) {
+    const box = cropped ? MARK_CROP[kind] : '0 0 64 64';
+    return '<svg class="' + cls + '" viewBox="' + box + '" aria-hidden="true">'
         + (kind === 'bloom' ? BLOOM_ART : SPROUT_ART) + '</svg>';
 }
 
-// The two states, side by side, in the record panel rather than in a tooltip. A tooltip only
-// answered a question you had already decided to ask, and only on a tile already marked -- the
-// one player who most needs to know what the flower means is the one who has not earned it and
-// has nothing to hover. In the panel it is simply on screen for whichever level is picked:
-// earned marks are drawn in full, the unearned one is left plain, and the drawing of the next
-// state says "this is what you would get" with no line of prose explaining the mechanic.
+// The two states as a track with two stations, in the record panel rather than in a tooltip. A
+// tooltip only answered a question you had already decided to ask, and only on a tile already
+// marked -- the one player who most needs to know what the flower means is the one who has not
+// earned it and has nothing to hover.
+//
+// The SHAPE matters as much as the placement. This shipped once as two small drawings in rounded
+// boxes with a chevron between them, and read as a pair of form fields rather than as something
+// won: a box around a mark says "input", and a chevron says "next". Both are gone. Each state is
+// a SEAL now -- a struck circle, which is what a mark of award looks like in this page's world --
+// with the drawing inside it at nearly twice the size, and the rule running between the two
+// seals carries the progress: dashed while the second is unearned, solid ink once it is struck.
 function markSteps(cleared, bloomed) {
-    const step = (kind, label, got) =>
-        '<span class="gc-step' + (got ? ' is-got' : '') + '">'
-        + markSvg(kind, 'gc-stepmark gc-stepmark-' + kind)
-        + '<span class="gc-step-label">' + escapeHtml(label) + '</span></span>';
+    const station = (kind, label, got) =>
+        '<div class="gc-award gc-award-' + kind + (got ? ' is-got' : '') + '">'
+        + '<span class="gc-award-seal">' + markSvg(kind, 'gc-stepmark gc-stepmark-' + kind, true) + '</span>'
+        + '<span class="gc-award-name">' + escapeHtml(label) + '</span></div>';
     return '<div class="gc-rec-marks">'
-        + step('sprout', window.t('grammar.cleared'), cleared)
-        + '<span class="gc-step-arrow" aria-hidden="true">&rsaquo;</span>'
-        + step('bloom', window.t('grammar.markFlawless'), bloomed)
+        + station('sprout', window.t('grammar.cleared'), cleared)
+        + '<span class="gc-award-track' + (bloomed ? ' is-got' : '') + '" aria-hidden="true"></span>'
+        + station('bloom', window.t('grammar.markFlawless'), bloomed)
         + '</div>';
 }
 
