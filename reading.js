@@ -349,6 +349,9 @@ function showLevelSelect(track) {
         // A real <a>/<button> even inside the SVG: a <g> with a click handler is skipped by Tab.
         const node = document.createElementNS(svgNS, state === 'locked' ? 'g' : 'a');
         node.setAttribute('class', 'pent is-' + state);
+        // Its place in the stagger. reading.css turns this into an animation-delay; the pack
+        // develops in reading order rather than all at once.
+        node.style.setProperty('--i', String(i));
         if (state === 'locked') { node.setAttribute('role', 'img'); node.setAttribute('aria-label', label); }
         else { node.setAttribute('tabindex', '0'); node.setAttribute('role', 'button'); node.setAttribute('aria-label', label); }
 

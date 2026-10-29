@@ -195,7 +195,15 @@ body:has(.reading-main) {
     overflow: hidden;
 }
 
-.rail-bar-fill { display: block; width: 0; height: 100%; background: var(--accent); }
+.rail-bar-fill {
+    display: block;
+    width: 0;
+    height: 100%;
+    background: var(--accent);
+    /* The one place on this page where motion carries meaning rather than polish: finishing a
+       text grows the bar instead of teleporting it, so the gain is legible. */
+    transition: width var(--dur-3, 0.42s) var(--ease-out, ease);
+}
 
 .rail-note { margin: 9px 0 0; font-size: 0.76rem; line-height: 1.5; color: var(--text-muted); }
 
@@ -1028,3 +1036,73 @@ html[data-contrast="darker"] .site-footer {
     --header-bg: #3e1230;
     --header-bg-elevated: #6b1f52;
 }
+
+
+/* ---------------------------------------------------------------------
+   MOTION
+
+   Everything here is opacity and a few pixels. The rule it all obeys: a view arriving may
+   fade, but nothing already on screen may move, and nothing repeats or loops -- a pulse on the
+   next level would be the one thing on the page demanding to be looked at.
+
+   TRANSFORMS ARE NOT ALLOWED ON AN ANCESTOR OF .reader-controls, which is position: fixed. A
+   transform makes its ancestor the containing block, so the control bar would stop being fixed
+   for as long as the animation ran -- the same rule that keeps khanjpRiseIn off the masthead's
+   ancestors. That is why the view fade below is opacity ONLY, and why the pieces that do move
+   (.track-card, .text-item) are all in sections that contain no fixed element.
+
+   No guard for prefers-reduced-motion is needed: style.css already cuts every animation and
+   transition sitewide with !important. What that block cannot fix is a base rule starting at
+   opacity: 0, so every keyframe here declares only `from` and lets the element's own resting
+   state be the destination.
+   --------------------------------------------------------------------- */
+@keyframes readingFade {
+    from { opacity: 0; }
+}
+
+@keyframes readingRise {
+    from { opacity: 0; transform: translateY(6px); }
+}
+
+/* A view arriving. Sections are switched with display:none, so showing one restarts this by
+   itself and no JS has to know the animation exists. */
+.reading-section:not(.hidden) {
+    animation: readingFade var(--dur-3, 0.42s) var(--ease-out, ease) both;
+}
+
+/* The pack develops rather than appears: each pentagon a frame or two behind the one before it,
+   in reading order, which is the same order the numbers run. 24ms is small enough that the eye
+   reads it as one gesture and not as twelve events. `both` holds each tile at zero through its
+   own delay -- without it they all flash in first and then animate. */
+.pent {
+    animation: readingFade var(--dur-2, 0.22s) var(--ease-out, ease) both;
+    animation-delay: calc(var(--i, 0) * 24ms);
+}
+
+/* The texts for the level you just picked. This replays on every pick, which is the point --
+   it is the only acknowledgement that the panel's contents changed. */
+.text-panel .text-item {
+    animation: readingRise 0.2s var(--ease-out, ease) both;
+}
+
+.text-panel .text-item:nth-child(2) { animation-delay: 40ms; }
+.text-panel .text-item:nth-child(3) { animation-delay: 80ms; }
+.text-panel .text-item:nth-child(n + 4) { animation-delay: 120ms; }
+
+/* The rail's middle block is rebuilt whenever the view changes; its children fade so the swap
+   is not a flicker. Opacity only: the rail must not shift while the stage beside it is also
+   settling, or the two read as separate events. */
+#rail-context > * {
+    animation: readingFade var(--dur-2, 0.22s) var(--ease-out, ease) both;
+}
+
+#rail-context .rail-chip { animation-delay: 30ms; }
+#rail-context .rail-dl { animation-delay: 60ms; }
+
+/* The two track cards on arrival. Six pixels, staggered once -- enough to read as paper being
+   laid down, not enough to notice as an animation. */
+.track-card {
+    animation: readingRise var(--dur-3, 0.42s) var(--ease-out, ease) both;
+}
+
+.track-card:nth-child(2) { animation-delay: 70ms; }

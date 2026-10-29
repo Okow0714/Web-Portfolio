@@ -1161,6 +1161,28 @@ this page answered the shared white label by darkening the LABEL; the old commen
 "isn't a perfect ratio" and it measured **1.91:1**, making Start Reading the least legible
 control on the page. It is pinned to fixed dye now, as Grammar Connect's start button is and for
 the same reason: `--accent` lightens in dark mode.
+**The motion is opacity and six pixels** (2026-10-29). A view arriving fades; nothing already
+on screen moves; nothing repeats. The pack develops in reading order at 24ms a tile -- small
+enough that the eye reads one gesture rather than twelve events -- and `both` holds each tile
+at zero through its own delay, or they all flash in first and animate afterwards. The only
+motion that carries meaning rather than polish is the rail's progress bar, which grows instead
+of teleporting when a text is finished. A pulse on the next level was considered and dropped:
+it would be the one thing on the page demanding to be looked at.
+**NO TRANSFORM MAY TOUCH AN ANCESTOR OF `.reader-controls`**, which is `position: fixed`. A
+transform makes its ancestor the containing block, so the bar would stop being fixed for as
+long as the animation ran -- the same rule that keeps `khanjpRiseIn` off the masthead's
+ancestors, and this page has already shipped one fixed-bar bug. The view fade is therefore
+opacity ONLY; the pieces that do move (`.track-card`, `.text-item`) are all in sections holding
+no fixed element. `scratchpad/reading-motion.js` proves it rather than reading the stylesheet:
+it checks `position` and the bar's offset DURING the fade, again after a 400px scroll, and then
+clicks Skip Word for real.
+**No `prefers-reduced-motion` guard is written here** -- `style.css` already cuts every
+animation and transition sitewide with `!important`. What that cannot fix is a base rule
+starting at `opacity: 0`, so every keyframe declares only `from` and lets the element's resting
+state be the destination; the spec checks the card still ends at opacity 1 under reduce.
+(The one looping animation on the page is `.floating-shape`, the sitewide decorative
+background from `style.css`. It is older than this work and excluded from that check by name.)
+
 **On a phone the rail goes UNDER the stage**, by `order`, not by source position. Stacked above,
 its five blocks ran about 1150px and pushed the pentagons clean off the first screen -- the page
 opened on a sidebar. Its blocks then wrap into a row rather than one per line.
