@@ -184,6 +184,101 @@ function trackCompletion(track) {
 }
 
 // ---------------------------------------------------------------------------
+// The pentagon pack
+//
+// A REGULAR pentagon: every interior angle 108 degrees, every side the same. Such a pentagon
+// cannot tile the plane, and that is arithmetic rather than a limitation -- around a point the
+// angles must sum to 360 and along an edge to 180, and every angle one of these can contribute
+// is 108 (a corner) or 180 (an edge running through), so a vertex needs 108a + 180b = 360 in
+// whole numbers. There is none. So this is a PACKING: an up pentagon and a down one share a
+// whole edge, that pair repeats along a row, and the next row's apexes drop into this row's
+// notches. Both of those contacts resolve to the same number, R + |v2.y| = 1.538842, so the
+// rows seat exactly with nothing left to guess at. 85.4% of the area is pentagon; the channels
+// between them are the page, and they are identical.
+//
+// Derived, not searched: a numeric hunt for a denser lattice returned one 0.5% better that
+// overlapped at 14 sample points in 200,000 -- a hairline no screenshot would ever show.
+// ---------------------------------------------------------------------------
+const PENT_D = Math.PI / 180;
+const PENT_R = 1 / (2 * Math.sin(36 * PENT_D));
+const PENT_UP = [90, 162, 234, 306, 18].map(a => [PENT_R * Math.cos(a * PENT_D), PENT_R * Math.sin(a * PENT_D)]);
+// the partner shares the up pentagon's lower-right edge
+const PENT_PAIR = [PENT_UP[3][0] + PENT_UP[4][0], PENT_UP[3][1] + PENT_UP[4][1]];
+const PENT_DOWN = PENT_UP.map(v => [PENT_PAIR[0] - v[0], PENT_PAIR[1] - v[1]]);
+const PENT_A = [2 * PENT_PAIR[0], 0];                               // along a row
+const PENT_B = [0, -(PENT_R + Math.abs(PENT_UP[2][1]))];            // row to row
+const PENT_S = 58;                                                  // units -> px
+const PENT_COLS = 2;                                                // pairs across
+
+// Where tile i sits. Four tiles to a band: two up, then the two that nest under them, so the
+// numbering reads left to right and top to bottom down the pack.
+function pentPlace(i) {
+    const band = Math.floor(i / 4), within = i % 4;
+    // Column first, then up/down within the column: an up tile and the down tile that shares
+    // its edge sit side by side, so 01 02 03 04 runs left to right across the band. Taking
+    // both ups first instead reads as 01 03 02 04, which is what shipped for one build.
+    const col = Math.floor(within / 2), down = within % 2 === 1;
+    const ox = (col * PENT_A[0] + band * PENT_B[0]) * PENT_S;
+    const oy = (col * PENT_A[1] + band * PENT_B[1]) * PENT_S;
+    const poly = down ? PENT_DOWN : PENT_UP;
+    // y is negated: the maths has y up, SVG has it down.
+    return { down, pts: poly.map(v => [v[0] * PENT_S + ox, -(v[1] * PENT_S) - oy]) };
+}
+
+function pentLayout(n) {
+    const tiles = [];
+    for (let i = 0; i < n; i++) tiles.push(pentPlace(i));
+    const xs = [], ys = [];
+    tiles.forEach(t => t.pts.forEach(p => { xs.push(p[0]); ys.push(p[1]); }));
+    const mx = Math.min.apply(null, xs), my = Math.min.apply(null, ys);
+    tiles.forEach(t => {
+        t.pts = t.pts.map(p => [+(p[0] - mx).toFixed(2), +(p[1] - my).toFixed(2)]);
+        t.cx = +t.pts.reduce((a, p) => a + p[0] / 5, 0).toFixed(2);
+        t.cy = +t.pts.reduce((a, p) => a + p[1] / 5, 0).toFixed(2);
+        t.d = 'M' + t.pts.map(p => p.join(' ')).join(' L') + ' Z';
+    });
+    return { tiles, w: +(Math.max.apply(null, xs) - mx).toFixed(2), h: +(Math.max.apply(null, ys) - my).toFixed(2) };
+}
+
+// ---------------------------------------------------------------------------
+// The side rail
+//
+// The same three blocks on every view; only the middle one changes, so there is one place that
+// says where you are rather than a different heading per screen.
+// ---------------------------------------------------------------------------
+function siteTotals() {
+    let done = 0, total = 0;
+    READING_TRACKS.forEach(track => {
+        const c = trackCompletion(track);
+        done += c.done; total += c.total;
+    });
+    return { done, total };
+}
+
+function renderRail(context) {
+    const { done, total } = siteTotals();
+    document.getElementById('rail-done').textContent = String(done);
+    document.getElementById('rail-total').textContent = String(total);
+    document.getElementById('rail-bar-fill').style.width = total ? (100 * done / total) + '%' : '0%';
+
+    const host = document.getElementById('rail-context');
+    if (!context) { host.innerHTML = ''; return; }
+    const rows = context.rows.map(r =>
+        `<dt>${escapeHtml(r[0])}</dt><dd>${escapeHtml(r[1])}</dd>`).join('');
+    host.innerHTML =
+        `<div class="rail-k">${escapeHtml(context.k)}</div>` +
+        `<p class="rail-chip">${escapeHtml(context.chip)}</p>` +
+        (rows ? `<dl class="rail-dl">${rows}</dl>` : '');
+}
+
+function railMicNote() {
+    const el = document.getElementById('rail-mic-note');
+    if (!el) return;
+    el.textContent = window.t(SpeechRecognitionCtor ? 'reading.railMicReady' : 'reading.railMicNo');
+    el.parentElement.classList.toggle('is-off', !SpeechRecognitionCtor);
+}
+
+// ---------------------------------------------------------------------------
 // Track select -> level select -> text list
 // ---------------------------------------------------------------------------
 function renderTrackSelect() {
@@ -204,59 +299,145 @@ function renderTrackSelect() {
 
     const guestHint = document.getElementById('reading-guest-hint');
     if (window.getCurrentSession()) hideEl(guestHint); else showEl(guestHint);
+    renderRail(null);
+    railMicNote();
 }
 
 function backToTrackSelect() {
     cancelPlayback();
     stopRecognition();
     hideEl(document.getElementById('level-select-section'));
-    hideEl(document.getElementById('text-list-section'));
     hideEl(document.getElementById('reader-section'));
     showEl(document.getElementById('track-select-section'));
     renderTrackSelect();
 }
 
+function pentState(track, level, position) {
+    if (!isLevelUnlocked(track, position)) return 'locked';
+    const { done, total } = levelCompletion(track, level);
+    return done === total ? 'done' : 'open';
+}
+
 function showLevelSelect(track) {
     currentTrack = track;
     document.getElementById('level-select-title').textContent = trackTitle(track);
-    const container = document.getElementById('reading-level-grid');
-    container.innerHTML = '';
-    track.levels.forEach((level, position) => {
-        const unlocked = isLevelUnlocked(track, position);
+
+    const levels = track.levels;
+    const { tiles, w, h } = pentLayout(levels.length);
+    // The first level that is open and unfinished -- the one to come back to.
+    let next = -1;
+    levels.forEach((lv, i) => { if (next < 0 && pentState(track, lv, i) === 'open') next = i; });
+
+    const svgNS = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(svgNS, 'svg');
+    svg.setAttribute('viewBox', `-4 -4 ${w + 8} ${h + 8}`);
+    svg.setAttribute('role', 'group');
+    svg.setAttribute('aria-label', window.t('reading.pickLevel'));
+
+    levels.forEach((level, i) => {
+        const t = tiles[i];
+        // One state class, never two: `is-open` is declared after `is-next` in the stylesheet,
+        // so a tile carrying both was painted as merely open and the next level lost its mark.
+        // Same shape as grammar.css's `done` beating `:hover`.
+        const state = i === next ? 'next' : pentState(track, level, i);
         const { done, total } = levelCompletion(track, level);
-        const card = document.createElement('button');
-        card.type = 'button';
-        card.className = 'level-card' + (unlocked ? '' : ' locked');
-        card.innerHTML = `
-            <span class="level-badge">~${escapeHtml(level.hint)}</span>
-            <h2>${escapeHtml(window.tf('game.levelN', { n: level.levelNum }))}</h2>
-            <div class="level-meta">${escapeHtml(window.tf('reading.textsComplete', { done, total }))}</div>
-            ${unlocked ? '' : `<div class="level-lock-note">&#128274; ${escapeHtml(window.t('reading.finishPreviousToUnlock'))}</div>`}
-        `;
-        if (unlocked) card.addEventListener('click', () => showTextList(track, level));
-        else card.disabled = true;
-        container.appendChild(card);
+        const label = window.tf('reading.levelAria', {
+            n: level.levelNum, hint: level.hint,
+            state: window.t('reading.state' + state.charAt(0).toUpperCase() + state.slice(1)),
+            done, total,
+        });
+        // A real <a>/<button> even inside the SVG: a <g> with a click handler is skipped by Tab.
+        const node = document.createElementNS(svgNS, state === 'locked' ? 'g' : 'a');
+        node.setAttribute('class', 'pent is-' + state);
+        if (state === 'locked') { node.setAttribute('role', 'img'); node.setAttribute('aria-label', label); }
+        else { node.setAttribute('tabindex', '0'); node.setAttribute('role', 'button'); node.setAttribute('aria-label', label); }
+
+        const face = document.createElementNS(svgNS, 'path');
+        face.setAttribute('class', 'pent-face');
+        face.setAttribute('d', t.d);
+        node.appendChild(face);
+
+        const num = document.createElementNS(svgNS, 'text');
+        num.setAttribute('class', 'pent-n');
+        num.setAttribute('x', t.cx);
+        num.setAttribute('y', (t.cy + (t.down ? -2 : 8.6)).toFixed(1));
+        num.setAttribute('text-anchor', 'middle');
+        num.textContent = String(level.levelNum).padStart(2, '0');
+        node.appendChild(num);
+
+        const hint = document.createElementNS(svgNS, 'text');
+        hint.setAttribute('class', 'pent-hint');
+        hint.setAttribute('x', t.cx);
+        hint.setAttribute('y', (t.cy + (t.down ? 15 : 25.6)).toFixed(1));
+        hint.setAttribute('text-anchor', 'middle');
+        hint.textContent = level.hint;
+        node.appendChild(hint);
+
+        if (state !== 'locked') {
+            const open = () => showTextList(track, level);
+            node.addEventListener('click', (e) => { e.preventDefault(); open(); });
+            node.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
+            });
+        }
+        svg.appendChild(node);
+    });
+
+    const grid = document.getElementById('reading-level-grid');
+    grid.innerHTML = '';
+    grid.appendChild(svg);
+    renderPentLegend();
+
+    // Open the level you would play next, so the panel is never empty on arrival.
+    showTextList(track, levels[next >= 0 ? next : 0], true);
+
+    renderRail({
+        k: window.t('reading.railTrack'),
+        chip: trackTitle(track),
+        rows: [
+            [window.t('reading.railLevelsDone'),
+             levels.filter((lv, i) => pentState(track, lv, i) === 'done').length + ' / ' + levels.length],
+            [window.t('reading.railNext'),
+             next >= 0 ? window.tf('reading.levelHint', { n: levels[next].levelNum, hint: levels[next].hint })
+                       : window.t('reading.stateDone')],
+        ],
     });
 
     hideEl(document.getElementById('track-select-section'));
-    hideEl(document.getElementById('text-list-section'));
     hideEl(document.getElementById('reader-section'));
     showEl(document.getElementById('level-select-section'));
+}
+
+function renderPentLegend() {
+    const host = document.getElementById('pent-legend');
+    if (!host) return;
+    const swatch = '<svg class="pent-sw" viewBox="0 0 14 14" aria-hidden="true">'
+        + '<path d="M7 0 L0 5.1 L2.7 13.3 L11.3 13.3 L14 5.1 Z"></path></svg>';
+    host.innerHTML = [
+        ['is-done', 'reading.stateDone'],
+        ['is-next', 'reading.stateNext'],
+        ['is-open', 'reading.stateOpen'],
+        ['is-locked', 'reading.stateLocked'],
+    ].map(([c, k]) => `<li class="${c}">${swatch}${escapeHtml(window.t(k))}</li>`).join('');
 }
 
 function backToLevelSelect() {
     cancelPlayback();
     stopRecognition();
-    hideEl(document.getElementById('text-list-section'));
     hideEl(document.getElementById('reader-section'));
-    showEl(document.getElementById('level-select-section'));
     showLevelSelect(currentTrack);
 }
 
-function showTextList(track, level) {
+// `quiet` is set when the level select opens this itself, to fill the panel without also
+// marking a pentagon as picked before the player has touched one.
+function showTextList(track, level, quiet) {
     currentTrack = track;
     currentLevel = level;
     document.getElementById('text-list-title').textContent = window.tf('reading.trackLevelHint', { track: trackTitleShort(track), n: level.levelNum, hint: level.hint });
+    const grid = document.getElementById('reading-level-grid');
+    if (grid) grid.querySelectorAll('.pent').forEach((el, i) => {
+        el.classList.toggle('is-picked', !quiet && track.levels[i] === level);
+    });
     const list = document.getElementById('text-list');
     list.innerHTML = '';
     level.texts.forEach((text, i) => {
@@ -269,9 +450,6 @@ function showTextList(track, level) {
         item.addEventListener('click', () => startText(track, level, i));
         list.appendChild(item);
     });
-    hideEl(document.getElementById('level-select-section'));
-    hideEl(document.getElementById('reader-section'));
-    showEl(document.getElementById('text-list-section'));
 }
 
 // ---------------------------------------------------------------------------
@@ -307,8 +485,28 @@ function startText(track, level, textIndex) {
 
     hideEl(document.getElementById('track-select-section'));
     hideEl(document.getElementById('level-select-section'));
-    hideEl(document.getElementById('text-list-section'));
     showEl(document.getElementById('reader-section'));
+    renderReaderRail();
+    railMicNote();
+}
+
+// The rail's middle block while reading: which text, and how far into it.
+function renderReaderRail() {
+    if (!currentTrack || !currentLevel) return;
+    const text = currentLevel.texts[currentTextIndex];
+    const speakable = words.filter(w => !w.sym).length;
+    const doneCount = words.slice(0, currentIdx).filter(w => !w.sym).length;
+    renderRail({
+        k: window.t('reading.railReading'),
+        chip: window.tf('reading.levelOfTexts', {
+            n: currentLevel.levelNum, i: currentTextIndex + 1, total: currentLevel.texts.length,
+        }),
+        rows: [
+            [window.t('reading.railText'), text ? text.title : ''],
+            [window.t('reading.railWords'), doneCount + ' / ' + speakable],
+            [window.t('reading.railLevel'), currentLevel.hint],
+        ],
+    });
 }
 
 function renderPassage() {
@@ -343,6 +541,7 @@ function updateProgress() {
     const speakable = words.filter(w => !w.sym).length;
     const doneCount = words.slice(0, currentIdx).filter(w => !w.sym).length;
     document.getElementById('reader-progress').textContent = window.tf('reading.wordsCount', { n: doneCount, total: speakable });
+    renderReaderRail();
 }
 
 function recordSkipped(idx) {
@@ -1206,8 +1405,9 @@ document.getElementById('reader-skip-btn').addEventListener('click', () => {
 document.addEventListener('sitelangchange', () => {
     if (!document.getElementById('track-select-section').classList.contains('hidden')) renderTrackSelect();
     else if (!document.getElementById('level-select-section').classList.contains('hidden')) showLevelSelect(currentTrack);
-    else if (!document.getElementById('text-list-section').classList.contains('hidden')) showTextList(currentTrack, currentLevel);
     else if (!document.getElementById('reader-section').classList.contains('hidden')) {
+        renderReaderRail();
+        railMicNote();
         document.getElementById('reader-progress').textContent = window.tf('reading.wordsCount', {
             n: words.slice(0, currentIdx).filter(w => !w.sym).length,
             total: words.filter(w => !w.sym).length,
@@ -1223,12 +1423,8 @@ document.addEventListener('sitelangchange', () => {
 });
 
 document.getElementById('level-select-back-btn').addEventListener('click', backToTrackSelect);
-document.getElementById('text-list-back-btn').addEventListener('click', backToLevelSelect);
-document.getElementById('reader-back-btn').addEventListener('click', () => {
-    cancelPlayback();
-    stopRecognition();
-    showTextList(currentTrack, currentLevel);
-});
+// The reader goes back to the level select, which now carries the text list in its own panel.
+document.getElementById('reader-back-btn').addEventListener('click', backToLevelSelect);
 // Nothing is held open in a background tab; the next press sets it up again.
 document.addEventListener('visibilitychange', () => {
     if (document.hidden) {

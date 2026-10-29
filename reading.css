@@ -66,6 +66,14 @@ body:has(.reading-main),
     --accent-dark: light-dark(#6b1f4a, #e894c0);
     --accent-tint: rgba(143, 43, 99, 0.14);
     --accent-tint: light-dark(rgba(143, 43, 99, 0.14), rgba(212, 113, 166, 0.18));
+    /* The current word's highlight, and NOT --accent-light, which it used to use. That rises
+       from the bottom of the glyph as you speak, so at rest it covers only the lower 45% and
+       the same ink has to read on the fill AND on the surface above it -- one ink cannot do
+       that over a saturated mid-tone. Measured on --accent-light: 2.61:1 in light, 1.85:1 in
+       dark. This is a highlighter instead: pale in light, deep in dark, so the page's own ink
+       clears 4.5 on it either way while the tint still reads against the surface. */
+    --word-hl: #f2c9dd;
+    --word-hl: light-dark(#f2c9dd, #7a2b55);
     /* --accent-light is the LIGHTEST stop, so it is the one the cream label has to clear: 5.49.
        Grammar Connect shipped a 2.13:1 button by checking only the dark stop. */
     --accent-gradient: linear-gradient(135deg, var(--accent-light), var(--accent));
@@ -84,23 +92,214 @@ body:has(.reading-main) {
     position: relative;
     isolation: isolate;
     background:
-        radial-gradient(ellipse 70% 40% at 18% 0%, rgba(184, 121, 31, 0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 40% at 18% 0%, rgba(143, 43, 99, 0.09) 0%, transparent 60%),
         var(--bg-page);
     color: var(--text-primary);
-    /* Top padding = the fixed masthead's rendered height + the ~25px of clearance the page
-       has always had; the masthead is now one 64px row rather than two totalling 115px. */
-    padding: 89px 40px 80px;
+    /* No page padding any more: the rail runs to the edges and the stage carries its own.
+       Top padding is still the fixed masthead's rendered height plus its usual clearance. */
+    padding: 0;
     min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
 }
 
-/* .auth-btn (style.css, shared sitewide — not editable here) hardcodes a white label on
-   var(--accent-gradient). That reads fine against the old dark theme's gradient but not
-   against this page's light gold one, so the label color is overridden here, scoped to
-   this page only via body:has(.reading-main). Dark ink reads better across the gradient's
-   light-to-mid gold range than white does (which fails contrast at the gradient's lighter
-   end); it isn't a perfect ratio at the gradient's darkest hover corner either, but it's
-   the better tradeoff of the two, and it keeps the "ink on gold" theme consistent. */
-body:has(.reading-main) .auth-btn,
+/* ---------------------------------------------------------------------
+   THE SIDE INFO BAR
+
+   The same on all three views -- the track list, the level pack and the reader -- with only
+   .reading-stage beside it swapping. That is what makes them read as one surface rather than
+   three screens, the way phonetics.html is one surface and four views.
+
+   It is NOT sticky and never 100vh: on a phone it stops being a rail and becomes the block
+   above the content, which is the only arrangement that leaves the stage a usable width.
+   --------------------------------------------------------------------- */
+.reading-rail {
+    flex: 1 1 300px;
+    max-width: 340px;
+    min-width: 280px;
+    box-sizing: border-box;
+    background: var(--bg-surface);
+    border-right: 1px solid var(--border);
+    padding: 89px 24px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.rail-head { display: flex; align-items: center; gap: 12px; }
+
+.rail-seal {
+    flex: none;
+    width: 40px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    background: var(--accent-dark);
+    color: var(--bg-page);
+    font-family: var(--font-jp);
+    font-size: 1.05rem;
+    /* The seal shape the hub uses for this tool, so the button you pressed on the home page
+       and the mark at the top of this one are the same object. */
+    clip-path: polygon(50% 0, 100% 29%, 100% 71%, 50% 100%, 0 71%, 0 29%);
+}
+
+.rail-head-text { min-width: 0; }
+
+.rail-wordmark {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.12rem;
+    line-height: 1.2;
+    color: var(--text-primary);
+}
+
+.rail-romaji {
+    display: block;
+    margin-top: 3px;
+    font-family: var(--font-jp);
+    font-size: 0.74rem;
+    letter-spacing: 0.14em;
+    color: var(--text-muted);
+}
+
+.rail-block { border-top: 1px solid var(--border); padding-top: 20px; }
+.rail-block:first-of-type { border-top: 0; padding-top: 0; }
+.rail-block:empty { display: none; }
+
+.rail-k {
+    display: block;
+    margin: 0 0 10px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.rail-kv { display: flex; align-items: baseline; justify-content: space-between; }
+.rail-kv .rail-k { margin-bottom: 0; }
+.rail-v { font-size: 0.82rem; font-weight: 600; color: var(--text-primary); }
+.rail-v b { font-size: 1.1rem; color: var(--accent); }
+
+.rail-bar {
+    height: 8px;
+    margin-top: 9px;
+    border-radius: 4px;
+    background: var(--bg-surface-alt);
+    /* In dark --bg-surface-alt sits 1.1:1 from the rail behind it, so the EMPTY part of the
+       track all but vanished and the bar stopped reading as a measure of anything. The edge
+       is what makes it a track; Grammar Connect's progress dots were the same bug. */
+    border: 1px solid var(--border);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.rail-bar-fill { display: block; width: 0; height: 100%; background: var(--accent); }
+
+.rail-note { margin: 9px 0 0; font-size: 0.76rem; line-height: 1.5; color: var(--text-muted); }
+
+.rail-chip {
+    display: inline-block;
+    margin: 0;
+    padding: 7px 13px;
+    border-radius: 999px;
+    background: var(--accent-dark);
+    color: var(--bg-page);
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.rail-dl {
+    margin: 15px 0 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 9px 14px;
+    font-size: 0.82rem;
+}
+
+.rail-dl dt { color: var(--text-muted); }
+.rail-dl dd { margin: 0; font-weight: 600; color: var(--text-primary); }
+
+/* The skipped list is the reason the rail exists. It used to live inside the reader, so the
+   words you could not pronounce vanished the moment you left the passage -- exactly when you
+   would want to look at them. */
+.rail-skipped { flex: 1 1 auto; }
+
+.rail-foot {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+}
+
+.rail-dot {
+    flex: none;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+.rail-foot.is-off .rail-dot { background: var(--border-strong); }
+
+.reading-stage {
+    flex: 999 1 620px;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 89px 40px 80px;
+}
+
+@media (max-width: 900px) {
+    /* Below this the rail stops being a column -- 300px of rail plus a passage does not fit,
+       and a narrower rail makes the skipped words unreadable. It goes UNDER the stage, not
+       above it: stacked above, its five blocks ran to about 1150px and pushed the pentagons
+       clean off the first screen, so the page opened on a sidebar. `order` moves it without
+       moving it in the source, where it still reads before the stage.
+       Its blocks then sit side by side in a wrapping row rather than one per line. */
+    .reading-main { flex-direction: column; }
+
+    .reading-stage { order: 1; padding: 78px 18px 40px; }
+
+    .reading-rail {
+        order: 2;
+        max-width: none;
+        border-right: 0;
+        border-top: 1px solid var(--border);
+        padding: 26px 18px 36px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 22px 26px;
+    }
+
+    .rail-head,
+    .rail-foot { flex: 1 1 100%; }
+    .rail-block { flex: 1 1 240px; border-top: 0; padding-top: 0; }
+    .rail-skipped { max-height: 280px; overflow-y: auto; }
+}
+
+/* .auth-btn (style.css, shared sitewide) hardcodes a white label on var(--accent-gradient).
+   This page used to answer that by darkening the LABEL, and the old comment here admitted the
+   result "isn't a perfect ratio" -- measured, it was 1.91:1 in light and 1.85:1 in dark, so
+   Start Reading was the least legible control on the page.
+   The gradient is pinned to fixed dye instead, exactly as Grammar Connect's start button is
+   and for the same reason: --accent LIGHTENS in dark mode, so a token-driven gradient there
+   puts a pale pink under a white label. The lightest stop is the one the floor has to clear --
+   white on #8f2b63 is 6.56:1 -- and a fixed pair clears it in both themes at once. */
+body:has(.reading-main) .auth-btn {
+    background: linear-gradient(135deg, #8f2b63, #6b1f4a);
+    color: #fdfaf6;
+    border-color: transparent;
+}
+
+body:has(.reading-main) .auth-btn:hover {
+    background: linear-gradient(135deg, #a1356f, #7c2655);
+}
+
 body:has(.reading-main) .auth-btn-outline:hover {
     color: var(--text-primary);
 }
@@ -142,6 +341,29 @@ body:has(.reading-main) .auth-btn-outline:hover {
 .reading-section.hidden {
     display: none;
 }
+
+/* One row of real navigation rather than a back button per screen. */
+.reading-crumbs {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 0.84rem;
+    color: var(--text-muted);
+    margin-bottom: 18px;
+}
+
+.crumb-link {
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    font-weight: 600;
+    color: var(--accent);
+    cursor: pointer;
+}
+
+.crumb-link:hover { color: var(--accent-dark); text-decoration: underline; }
+.crumb-here { font-weight: 600; color: var(--text-primary); }
 
 /* ---------------------------------------------------------------------
    Track select — a linear table-of-contents list, not a card grid
@@ -196,78 +418,106 @@ body:has(.reading-main) .auth-btn-outline:hover {
    (was a wrapping card grid mirroring Word Match's level cards; now
    reads as a table of contents, one row per level).
    --------------------------------------------------------------------- */
-.level-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 20px;
-    max-width: 700px;
-}
+/* ---------------------------------------------------------------------
+   THE PENTAGON PACK
 
-.level-card {
-    text-align: left;
-    background: var(--bg-surface);
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow-sm);
-    padding: 16px 24px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    font-family: inherit;
-    color: var(--text-primary);
+   Twelve REGULAR pentagons -- every interior angle 108 degrees, every side equal. No such
+   pentagon tiles the plane (108a + 180b = 360 has no whole-number solution), so this is a
+   packing: pairs share a whole edge, rows seat into each other's notches, and the 14.6% left
+   over is the page showing through as an even channel. The geometry is in reading.js; this
+   file only colours it.
+   --------------------------------------------------------------------- */
+.level-row {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    gap: 14px;
-    width: 100%;
+    gap: 36px;
+    align-items: flex-start;
+    margin-top: 22px;
 }
 
-.level-card:hover {
-    border-color: var(--accent);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
+.level-pack { flex: 0 1 430px; min-width: 280px; }
+.pent-grid svg { width: 100%; height: auto; display: block; }
+
+.pent { cursor: pointer; }
+.pent .pent-face { transition: fill var(--dur-2, 0.22s) ease, stroke var(--dur-2, 0.22s) ease; }
+
+.pent-n {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 600;
 }
 
-.level-card.locked {
-    cursor: not-allowed;
-    opacity: 0.55;
+.pent-hint {
+    font-size: 11px;
+    letter-spacing: 1px;
 }
 
-.level-card.locked:hover {
-    border-color: var(--border);
-    box-shadow: var(--shadow-sm);
-    transform: none;
-}
+/* Four states. Cleared and next are solid, so their labels are solved against the fill;
+   open and locked are surfaces, so theirs are solved against the surface. */
+.pent.is-done .pent-face { fill: var(--accent-dark); }
+/* The hint takes the SAME ink as the number rather than a dimmed version of it. A dim
+   variant would need its own token solved against BOTH themes -- and --accent-dark lightens
+   in dark mode, so one value cannot serve both -- for 11px text, which has to clear 4.5
+   anyway. Size and weight carry the hierarchy instead. */
+.pent.is-done .pent-n,
+.pent.is-done .pent-hint { fill: var(--bg-surface); }
 
-.level-lock-note {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    font-style: italic;
-    flex-basis: 100%;
-}
+.pent.is-next .pent-face { fill: var(--accent); }
+.pent.is-next .pent-n,
+.pent.is-next .pent-hint { fill: var(--bg-surface); }
 
-.level-badge {
-    display: inline-block;
-    flex: 0 0 auto;
-    background: var(--accent-tint);
-    color: var(--accent-dark);
-    font-weight: 700;
-    font-size: 0.8rem;
-    letter-spacing: 0.03em;
-    padding: 4px 10px;
-}
+.pent.is-open .pent-face { fill: var(--bg-surface); stroke: var(--border-strong); stroke-width: 2; }
+.pent.is-open .pent-n { fill: var(--accent-dark); }
+.pent.is-open .pent-hint { fill: var(--text-muted); }
 
-.level-card h2 {
-    margin: 0;
-    font-size: 1.1rem;
-    flex: 0 0 auto;
-}
+.pent.is-locked .pent-face { fill: var(--bg-surface-alt); stroke: var(--border); stroke-width: 2; }
+.pent.is-locked .pent-n,
+.pent.is-locked .pent-hint { fill: var(--text-muted); }
+.pent.is-locked { cursor: default; }
 
-.level-meta {
-    font-size: 0.85rem;
+/* The silhouette is a path, so hover and focus are drawn on the path itself -- an outline
+   would follow the element box and float outside the shape. */
+.pent:not(.is-locked):hover .pent-face { stroke: var(--accent-dark); stroke-width: 3; }
+.pent:focus { outline: none; }
+.pent:focus-visible .pent-face { stroke: var(--accent-dark); stroke-width: 4; }
+.pent.is-picked .pent-face { stroke: var(--accent-dark); stroke-width: 3; }
+
+.pent-legend {
+    list-style: none;
+    margin: 20px 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    font-size: 0.76rem;
     color: var(--text-secondary);
-    margin-left: auto;
-    white-space: nowrap;
-    flex: 0 0 auto;
+}
+
+.pent-legend li { display: flex; align-items: center; gap: 7px; }
+.pent-sw { width: 14px; height: 14px; flex: none; }
+.pent-legend .is-done .pent-sw path { fill: var(--accent-dark); }
+.pent-legend .is-next .pent-sw path { fill: var(--accent); }
+.pent-legend .is-open .pent-sw path { fill: var(--bg-surface); stroke: var(--border-strong); stroke-width: 1.4; }
+.pent-legend .is-locked .pent-sw path { fill: var(--bg-surface-alt); stroke: var(--border); stroke-width: 1.4; }
+
+/* The level's texts open BESIDE the pack, never under it: a panel underneath means scrolling
+   back on every pick, which is the lesson origins.html's kana desk already paid for. */
+.text-panel {
+    flex: 1 1 290px;
+    min-width: 260px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--accent);
+    box-shadow: var(--shadow-sm);
+    padding: 22px;
+}
+
+.text-panel-title {
+    margin: 0 0 4px;
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--text-primary);
 }
 
 /* ---------------------------------------------------------------------
@@ -276,9 +526,8 @@ body:has(.reading-main) .auth-btn-outline:hover {
 .text-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin-top: 20px;
-    max-width: 560px;
+    gap: 10px;
+    margin-top: 14px;
 }
 
 .text-item {
@@ -358,13 +607,11 @@ body:has(.reading-main) .auth-btn-outline:hover {
 }
 
 .reader-body {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    max-width: 940px;
-    /* Room for the floating bottom control bar (~64px tall, 22px off the viewport
-       edge) so it never overlaps the bottom of the passage or the skipped-words
-       panel, even when either has scrolled fully into view. */
+    display: block;
+    max-width: 820px;
+    /* Room for the floating bottom control bar (~64px tall, 22px off the viewport edge) so it
+       never overlaps the bottom of the passage. The skipped-words panel used to sit beside the
+       passage here; it is in the rail now, where it survives leaving the reader. */
     margin-bottom: 110px;
 }
 
@@ -376,22 +623,6 @@ body:has(.reading-main) .auth-btn-outline:hover {
     padding: 40px;
     flex: 1 1 auto;
     min-width: 0;
-}
-
-.skipped-panel {
-    flex: 0 0 220px;
-    background: var(--bg-surface);
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow-sm);
-    padding: 20px;
-    max-height: 480px;
-    overflow-y: auto;
-}
-
-.skipped-panel h3 {
-    margin: 0 0 10px;
-    font-size: 0.95rem;
-    color: var(--text-primary);
 }
 
 .skipped-empty {
@@ -478,8 +709,8 @@ body:has(.reading-main) .auth-btn-outline:hover {
    to pulse distractingly across a long passage. */
 .reader-word.current {
     background: linear-gradient(to top,
-            var(--accent-light) 0%,
-            var(--accent-light) calc(45% + var(--v, 0) * 40%),
+            var(--word-hl) 0%,
+            var(--word-hl) calc(45% + var(--v, 0) * 40%),
             transparent calc(45% + var(--v, 0) * 40%));
     color: var(--text-primary);
     font-weight: 700;
@@ -517,7 +748,7 @@ body:has(.reading-main) .auth-btn-outline:hover {
    journey. Someone who asked not to be moved still has to be able to read along. */
 @media (prefers-reduced-motion: reduce) {
     .reader-word.current {
-        background: var(--accent-light);
+        background: var(--word-hl);
     }
 
     .reader-word.read {
@@ -714,21 +945,16 @@ body:has(.reading-main) .container {
    Responsive
    --------------------------------------------------------------------- */
 @media (max-width: 968px) {
-    .reading-main {
+    .reading-stage {
         /* 56px mobile masthead + the same ~25px clearance (was 130px for the 105px bar). */
-        padding: 81px 20px 60px;
+        padding: 81px 20px 40px;
     }
 
-    .reader-body {
-        flex-direction: column;
-        margin-bottom: 130px;
-    }
+    .reading-rail { padding: 24px 20px 30px; }
 
-    .skipped-panel {
-        flex-basis: auto;
-        width: 100%;
-        max-height: 220px;
-    }
+    .reader-body { margin-bottom: 130px; }
+
+    .level-row { gap: 24px; }
 
     .reader-passage-wrap {
         padding: 24px;
@@ -744,8 +970,7 @@ body:has(.reading-main) .container {
         left: 24px;
     }
 
-    .track-card,
-    .level-card {
+    .track-card {
         flex-wrap: wrap;
     }
 }

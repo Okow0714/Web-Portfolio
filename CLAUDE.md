@@ -17,7 +17,7 @@ Supabase (Postgres + Auth). Hosted on GitHub Pages. Git repo on `main`.
 | `game.html` | Word Match ("言葉合わせ") — hexagonal-card **memory** game, JLPT N5–N1. `<main class="game-main">` / `game.css`. **Rebuilt 2026-10-21** (see Word Match below): the honeycomb-matching board, the 4-minute clock, streaks, powerups, the lightning chain and the Wakan flyer are all gone, and `game-board.js`, `game-play.js` and `game-wakan.js` went with them. Palette is now "hanafuda in daylight" — tatami straw, violet card backs, one gold, every surface a flat colour — with the old lacquer board kept as the dark theme. |
 | `phonetics.html` | Phonetics Family — kanji grouped by shared phonetic component, ranked by usage. `<main class="phonetics-main">` / `phonetics.css` (light jade/copper). **Rebuilt 2026-10-15 as one surface with four views** — gate → board → tree → round — and it no longer loads `phonetics-data.js` at all (see Phonetics below). `phonetics-drill.html` was retired with that rebuild: the round is a view on this page now. |
 | `grammar.html` | Grammar Connect — sentence-swap grammar drill. `<main class="grammar-main">` / `grammar.css`. The data is still two tracks of twenty, but the **level select is four bands of ten** as of 2026-10-24 (see Grammar Connect below): a triangle gate and ten right-facing play-button tiles in a row. |
-| `reading.html` | Dokkai Reader — speech-recognition-driven reading practice. `<main class="reading-main">` / `reading.css` (warm gold, light). |
+| `reading.html` | Dokkai Reader — speech-recognition-driven reading practice. `<main class="reading-main">` / `reading.css` (plum on linen, light). **Rebuilt 2026-10-29** (see Dokkai Reader below): a persistent side info bar beside a stage that swaps between three views, and a level select of twelve regular pentagons. `#text-list-section` is gone — the texts open in a panel beside the pentagons. |
 | `dictionary.html` | Mongol-Japan Dictionary — two tabs: primary Монгол⇄日本語 (`mnjp-data.js`), secondary 漢語⇄和語 Kango/Wago (`dictionary-data.js`, lazy-loaded only when that tab opens). Reads a `?q=` URL param on load to pre-fill/filter the primary tab — the target of the home page's search bar. `<main class="dictionary-main">` / `dictionary.css`. |
 | `origins.html` | Kana Origins — where hiragana and katakana came from, for a beginner who knows no kanji. `<main class="origins-main">` / `origins.css`. **Rebuilt 2026-10-23** (see Kana Origins below): four sections behind a sticky section bar, and the gojuon laid out as a wall of five vowel rows of eleven rather than the printed eleven of five. |
 | `dashboard.html` | Signed-in-only progress page — profile (avatar, editable display name), score vs. site average, per-tool level/text completion, and a link into the Settings modal for account management. `<main class="dash-main">` / `dashboard.css` (cool slate/blue utility theme). This is now the **only** page showing those bars — `index.html` carried a condensed copy until the 2026-10-11 hub rebuild removed it, along with `hub-home.js`, and `tests/progress-totals.spec.js` lost its three index.html placeholder rows at the same time. |
@@ -1114,6 +1114,59 @@ was re-shot, by the route `tools/share-cards/capture-shots.js` uses to reach the
 `node tools/share-cards/capture-shots.js` then `node tools/share-cards/make-cards.js`, but both
 rebuild EVERY tool's shot and card, and Facebook caches previews -- so it wants doing
 deliberately, with a re-scrape in the Sharing Debugger after.
+
+**Dokkai Reader is a rail and a stage** (rebuilt 2026-10-29). `.reading-rail` is the same on
+all three views and only `.reading-stage` beside it swaps -- the same "one surface, several
+views" shape phonetics.html has, and what makes the four screens read as one tool. The rail
+carries the brand mark, overall progress (N / 72), a context block `renderRail()` refills per
+view (the track on the select, the text in the reader), and **the skipped-word list**, which
+used to live inside the reader and so vanished the moment you left the passage -- exactly when
+you would want to look at it.
+**`#text-list-section` is gone.** A level's three texts open in `.text-panel` BESIDE the
+pentagons; a panel underneath means scrolling back on every pick, which is the lesson Kana
+Origins' kana desk already paid for. `showTextList(track, level, quiet)` takes a third argument
+so the select can fill the panel on arrival without marking a tile as picked.
+**The level select is twelve REGULAR pentagons** -- every interior angle 108 degrees, every
+side equal. **No such pentagon can tile the plane**, and that is arithmetic, not difficulty:
+around a point the angles must sum to 360 and along an edge to 180, every angle one can
+contribute is 108 or 180, and `108a + 180b = 360` has no whole-number solution. Side lengths do
+not enter into it. So this is a PACKING: an up pentagon and a down one share a whole edge, the
+pair repeats along a row, and the next row's apexes drop into this row's notches. Both contacts
+resolve to the same number -- `R + |v2.y| = 1.538842` -- so the rows seat exactly with nothing
+left to guess at. 85.4% of the area is pentagon; the 14.6% left over is the page showing through
+as an even channel, which is the design rather than a defect. Verified at 400,000 sample points:
+zero overlap.
+**Derived, not searched.** A numeric hunt for a denser lattice returned one 0.5% better that
+overlapped at **14 sample points in 200,000** -- a hairline no screenshot would ever show. The
+Cairo pentagon drawn first DID tessellate, and could only because it gives up equal angles
+(90/90/120/120/120, which sums to 360 two ways); it was rejected for looking squat.
+**`pentPlace()` pairs by COLUMN, not by direction.** Up and down tiles interleave horizontally,
+so laying both ups first and then both downs numbers them `01 03 02 04` across a band. That
+shipped for one build.
+**One state class, never two.** A tile carrying `is-next is-open` was painted merely open,
+because `is-open` is declared after `is-next` -- the same order trap as grammar.css's `done`
+beating `:hover`. `pentState()` returns the state and `next` overrides it, so exactly one class
+is applied.
+**Every state is measured, including ones a guest never reaches.** `scratchpad/pent-contrast.js`
+forces all four onto real tiles across light, dark and both Darker settings. Two traps it hit
+first: it set a tile's class and read `getComputedStyle` **in the same tick**, so every tile
+reported its PREVIOUS state's fill and the report was nonsense; and SVG text takes `fill`, not
+`color`, while a `<path>` has no `background-color` at all.
+**Two contrast bugs it surfaced were PRE-EXISTING** (zero lines of either in the rebuild's
+diff), and are fixed here: the current word's highlight used `--accent-light` and, because that
+fill RISES from the bottom of the glyph as you speak, one ink had to read both on the fill and
+on the surface above it -- 2.61:1 light, 1.85:1 dark. `--word-hl` is a highlighter instead
+(pale in light, deep in dark) so the page's own ink clears 4.5 either way. And `.auth-btn` on
+this page answered the shared white label by darkening the LABEL; the old comment admitted it
+"isn't a perfect ratio" and it measured **1.91:1**, making Start Reading the least legible
+control on the page. It is pinned to fixed dye now, as Grammar Connect's start button is and for
+the same reason: `--accent` lightens in dark mode.
+**On a phone the rail goes UNDER the stage**, by `order`, not by source position. Stacked above,
+its five blocks ran about 1150px and pushed the pentagons clean off the first screen -- the page
+opened on a sidebar. Its blocks then wrap into a row rather than one per line.
+**`images/hub/reading-enter.jpg` is a screenshot of this page**, so the LAYOUT changing stales it
+exactly as the palette change did; it was re-shot, and the scratchpad's route lost a click
+because `.level-card` no longer exists.
 
 **Stacking contexts, not z-index, decide what's on top.** `.container` (`style.css`) and
 `.site-footer` are both `position: relative; z-index: 2` — an exact tie broken by DOM order, so

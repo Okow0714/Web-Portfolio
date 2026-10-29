@@ -400,63 +400,102 @@
         <!-- /chrome:header -->
 
         <main tabindex="-1" id="main" class="reading-main">
-            <!-- Level select -->
-            <section id="track-select-section" class="reading-section">
-                <h1 class="reading-title" data-i18n="reading.title">Уншлагын дадлага</h1>
-                <p class="reading-subtitle" data-i18n="reading.subtitle">Текстийг чангаар уншихад тодотгол дуу хоолойг чинь дагана. Дуудлага яг таг байх албагүй — үг дээр 3 секунд гацвал уншлага, утга нь гарч ирнэ. Нэг текстийг дуусгамагц дараагийнх нь эхэлж, шатыг гүйцээвэл дараагийн шат нээгдэнэ.</p>
-                <p class="reading-mic-hint" data-i18n="reading.micHint">Микрофон ашиглана. Chrome эсвэл Edge дээр хамгийн сайн ажиллана — бусад хөтөч яриаг шууд таних боломжгүй.</p>
-                <p id="reading-guest-hint" class="reading-guest-hint hidden" data-i18n="reading.guestHint">Дуусгасан текстүүдээ хадгалахын тулд нэвтэрнэ үү.</p>
-                <h2 class="sr-only" data-i18n="reading.tracks">Зам</h2>
-                <div class="track-grid" id="track-grid"></div>
-            </section>
-
-            <!-- Level list within a track -->
-            <section id="level-select-section" class="reading-section hidden">
-                <button id="level-select-back-btn" class="ghost-btn" type="button"><span aria-hidden="true">&larr;</span> <span data-i18n="reading.tracks">Зам</span></button>
-                <h2 id="level-select-title" class="reading-title" style="margin-top:16px;"></h2>
-                <div class="level-grid" id="reading-level-grid"></div>
-            </section>
-
-            <!-- Text list for a level -->
-            <section id="text-list-section" class="reading-section hidden">
-                <button id="text-list-back-btn" class="ghost-btn" type="button"><span aria-hidden="true">&larr;</span> <span data-i18n="game.levels">Шатууд</span></button>
-                <h2 id="text-list-title" class="reading-title" style="margin-top:16px;"></h2>
-                <div class="text-list" id="text-list"></div>
-            </section>
-
-            <!-- Reader -->
-            <section id="reader-section" class="reading-section hidden">
-                <div class="reader-toolbar">
-                    <button id="reader-back-btn" class="ghost-btn" type="button"><span aria-hidden="true">&larr;</span> <span data-i18n="reading.texts">Текстүүд</span></button>
-                    <div class="reader-title" id="reader-title"></div>
-                    <div class="reader-progress" id="reader-progress"></div>
+            <!-- THE SIDE INFO BAR. Identical on every view -- only .reading-stage beside it
+                 swaps. The skipped-word list lives here rather than inside the reader, so the
+                 words you could not pronounce are still on screen when you come back to pick
+                 the next level. -->
+            <aside class="reading-rail">
+                <div class="rail-head">
+                    <span class="rail-seal" aria-hidden="true">&#35501;</span>
+                    <span class="rail-head-text">
+                        <span class="rail-wordmark" data-i18n="reading.title">Уншлагын дадлага</span>
+                        <span class="rail-romaji" aria-hidden="true">&#35501;&#35299; &middot; DOKKAI</span>
+                    </span>
                 </div>
-                <div class="reader-body">
-                    <div class="reader-passage-wrap">
-                        <p id="reader-passage" class="reader-passage"></p>
-                        <div id="hint-popup" class="hint-popup hidden">
-                            <span id="hint-reading" class="hint-reading"></span>
-                            <span id="hint-en" class="hint-en"></span>
-                            <button id="hint-speak-btn" class="speak-btn" type="button" title="Hear this word" aria-label="Hear this word">&#128266;</button>
+
+                <div class="rail-block">
+                    <div class="rail-kv">
+                        <span class="rail-k" data-i18n="reading.railTotal">Нийт явц</span>
+                        <span class="rail-v"><b id="rail-done">0</b> / <span id="rail-total">72</span></span>
+                    </div>
+                    <div class="rail-bar"><span id="rail-bar-fill" class="rail-bar-fill"></span></div>
+                    <p class="rail-note" data-i18n="reading.railShape">Хоёр зам, тус бүр 12 шат, шат бүрт 3 текст.</p>
+                </div>
+
+                <!-- Built by renderRail(): the track on the level select, the text in the reader. -->
+                <div class="rail-block" id="rail-context"></div>
+
+                <div class="rail-block rail-skipped">
+                    <h3 class="rail-k" data-i18n="reading.skippedWords">Алгассан үгс</h3>
+                    <p id="skipped-empty" class="skipped-empty" data-i18n="reading.skippedEmptyHint">Дуу таних систем шууд сонсохгүй алгассан үгс энд харагдана.</p>
+                    <ul id="skipped-list" class="skipped-list"></ul>
+                    <p id="speak-unavailable" class="skipped-empty hidden" data-i18n="reading.noJaVoice">Энэ төхөөрөмжид япон хэлний хоолой суугаагүй тул үгсийг сонсох боломжгүй. Системийнхээ тохиргооноос япон хэлний багц нэмбэл ажиллана.</p>
+                </div>
+
+                <p class="rail-foot"><span class="rail-dot" aria-hidden="true"></span><span id="rail-mic-note" data-i18n="reading.railMicReady">Микрофон бэлэн</span></p>
+            </aside>
+
+            <div class="reading-stage">
+                <!-- Track select -->
+                <section id="track-select-section" class="reading-section">
+                    <h1 class="reading-title" data-i18n="reading.title">Уншлагын дадлага</h1>
+                    <p class="reading-subtitle" data-i18n="reading.subtitle">Текстийг чангаар уншихад тодотгол дуу хоолойг чинь дагана. Дуудлага яг таг байх албагүй — үг дээр 3 секунд гацвал уншлага, утга нь гарч ирнэ. Нэг текстийг дуусгамагц дараагийнх нь эхэлж, шатыг гүйцээвэл дараагийн шат нээгдэнэ.</p>
+                    <p class="reading-mic-hint" data-i18n="reading.micHint">Микрофон ашиглана. Chrome эсвэл Edge дээр хамгийн сайн ажиллана — бусад хөтөч яриаг шууд таних боломжгүй.</p>
+                    <p id="reading-guest-hint" class="reading-guest-hint hidden" data-i18n="reading.guestHint">Дуусгасан текстүүдээ хадгалахын тулд нэвтэрнэ үү.</p>
+                    <h2 class="sr-only" data-i18n="reading.tracks">Зам</h2>
+                    <div class="track-grid" id="track-grid"></div>
+                </section>
+
+                <!-- Level select. The level's three texts open BESIDE the pentagons, not on a
+                     screen of their own: a panel underneath means scrolling back on every pick. -->
+                <section id="level-select-section" class="reading-section hidden">
+                    <nav class="reading-crumbs" aria-label="Замнал">
+                        <button id="level-select-back-btn" class="crumb-link" type="button" data-i18n="reading.tracks">Зам</button>
+                        <span class="crumb-sep" aria-hidden="true">&rsaquo;</span>
+                        <span id="level-select-title" class="crumb-here"></span>
+                    </nav>
+                    <h2 class="reading-title" data-i18n="reading.pickLevel">Шатаа сонгоно уу</h2>
+                    <p class="reading-subtitle" data-i18n="reading.pickLevelSub">Шат бүр гурван текст. Гурвуулангаа дуусгавал дараагийн таван өнцөгт нээгдэнэ.</p>
+                    <div class="level-row">
+                        <div class="level-pack">
+                            <div id="reading-level-grid" class="pent-grid"></div>
+                            <ul class="pent-legend" id="pent-legend"></ul>
+                        </div>
+                        <section class="text-panel" id="text-panel" aria-live="polite">
+                            <h3 id="text-list-title" class="text-panel-title"></h3>
+                            <div class="text-list" id="text-list"></div>
+                        </section>
+                    </div>
+                </section>
+
+                <!-- Reader -->
+                <section id="reader-section" class="reading-section hidden">
+                    <div class="reader-toolbar">
+                        <button id="reader-back-btn" class="ghost-btn" type="button"><span aria-hidden="true">&larr;</span> <span data-i18n="game.levels">Шатууд</span></button>
+                        <div class="reader-title" id="reader-title"></div>
+                        <div class="reader-progress" id="reader-progress"></div>
+                    </div>
+                    <div class="reader-body">
+                        <div class="reader-passage-wrap">
+                            <p id="reader-passage" class="reader-passage"></p>
+                            <div id="hint-popup" class="hint-popup hidden">
+                                <span id="hint-reading" class="hint-reading"></span>
+                                <span id="hint-en" class="hint-en"></span>
+                                <button id="hint-speak-btn" class="speak-btn" type="button" title="Hear this word" aria-label="Hear this word">&#128266;</button>
+                            </div>
                         </div>
                     </div>
-                    <aside id="skipped-panel" class="skipped-panel">
-                        <h3 data-i18n="reading.skippedWords">Алгассан үгс</h3>
-                        <p id="skipped-empty" class="skipped-empty" data-i18n="reading.skippedEmptyHint">Дуу таних систем шууд сонсохгүй алгассан үгс энд харагдана.</p>
-                        <ul id="skipped-list" class="skipped-list"></ul>
-                        <p id="speak-unavailable" class="skipped-empty hidden" data-i18n="reading.noJaVoice">Энэ төхөөрөмжид япон хэлний хоолой суугаагүй тул үгсийг сонсох боломжгүй. Системийнхээ тохиргооноос япон хэлний багц нэмбэл ажиллана.</p>
-                    </aside>
-                </div>
-                <div class="reader-controls">
-                    <button id="reader-mic-btn" class="auth-btn" type="button"><span aria-hidden="true">&#127908;</span> <span data-i18n="reading.startReading">Унших эхлэх</span></button>
-                    <button id="reader-skip-btn" class="ghost-btn" type="button"><span data-i18n="reading.skipWord">Үг алгасах</span> <span aria-hidden="true">&rarr;</span></button>
-                    <span id="reader-level" class="reader-level" title="Microphone level">
-                        <span id="reader-level-fill" class="reader-level-fill"></span>
-                    </span>
-                    <p id="reader-status" class="reader-status"></p>
-                    <p class="reader-tap-hint" data-i18n="reading.tapHint">Аль ч үг дээр дарвал тодотгол тэр үг рүү шилжинэ.</p>
-                </div>
-            </section>
+                    <div class="reader-controls">
+                        <button id="reader-mic-btn" class="auth-btn" type="button"><span aria-hidden="true">&#127908;</span> <span data-i18n="reading.startReading">Унших эхлэх</span></button>
+                        <button id="reader-skip-btn" class="ghost-btn" type="button"><span data-i18n="reading.skipWord">Үг алгасах</span> <span aria-hidden="true">&rarr;</span></button>
+                        <span id="reader-level" class="reader-level" title="Microphone level">
+                            <span id="reader-level-fill" class="reader-level-fill"></span>
+                        </span>
+                        <p id="reader-status" class="reader-status"></p>
+                        <p class="reader-tap-hint" data-i18n="reading.tapHint">Аль ч үг дээр дарвал тодотгол тэр үг рүү шилжинэ.</p>
+                    </div>
+                </section>
+            </div>
         </main>
 
         <!-- Text Complete Modal -->
