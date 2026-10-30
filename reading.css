@@ -1056,18 +1056,10 @@ html[data-contrast="darker"] .site-footer {
    opacity: 0, so every keyframe here declares only `from` and lets the element's own resting
    state be the destination.
    --------------------------------------------------------------------- */
-@keyframes readingFade {
-    from { opacity: 0; }
-}
-
-@keyframes readingRise {
-    from { opacity: 0; transform: translateY(6px); }
-}
-
 /* A view arriving. Sections are switched with display:none, so showing one restarts this by
    itself and no JS has to know the animation exists. */
 .reading-section:not(.hidden) {
-    animation: readingFade var(--dur-3, 0.42s) var(--ease-out, ease) both;
+    animation: khanjpFadeIn var(--dur-3, 0.42s) var(--ease-out, ease) both;
 }
 
 /* The pack develops rather than appears: each pentagon a frame or two behind the one before it,
@@ -1075,14 +1067,14 @@ html[data-contrast="darker"] .site-footer {
    reads it as one gesture and not as twelve events. `both` holds each tile at zero through its
    own delay -- without it they all flash in first and then animate. */
 .pent {
-    animation: readingFade var(--dur-2, 0.22s) var(--ease-out, ease) both;
+    animation: khanjpFadeIn var(--dur-2, 0.22s) var(--ease-out, ease) both;
     animation-delay: calc(var(--i, 0) * 24ms);
 }
 
 /* The texts for the level you just picked. This replays on every pick, which is the point --
    it is the only acknowledgement that the panel's contents changed. */
 .text-panel .text-item {
-    animation: readingRise 0.2s var(--ease-out, ease) both;
+    animation: khanjpRiseSm 0.2s var(--ease-out, ease) both;
 }
 
 .text-panel .text-item:nth-child(2) { animation-delay: 40ms; }
@@ -1093,7 +1085,7 @@ html[data-contrast="darker"] .site-footer {
    is not a flicker. Opacity only: the rail must not shift while the stage beside it is also
    settling, or the two read as separate events. */
 #rail-context > * {
-    animation: readingFade var(--dur-2, 0.22s) var(--ease-out, ease) both;
+    animation: khanjpFadeIn var(--dur-2, 0.22s) var(--ease-out, ease) both;
 }
 
 #rail-context .rail-chip { animation-delay: 30ms; }
@@ -1102,7 +1094,7 @@ html[data-contrast="darker"] .site-footer {
 /* The two track cards on arrival. Six pixels, staggered once -- enough to read as paper being
    laid down, not enough to notice as an animation. */
 .track-card {
-    animation: readingRise var(--dur-3, 0.42s) var(--ease-out, ease) both;
+    animation: khanjpRiseSm var(--dur-3, 0.42s) var(--ease-out, ease) both;
 }
 
 .track-card:nth-child(2) { animation-delay: 70ms; }

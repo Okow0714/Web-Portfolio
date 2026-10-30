@@ -646,3 +646,35 @@ html[data-contrast="darker"] .site-footer {
     --header-bg: #612712;
     --header-bg-elevated: #a8431f;
 }
+
+
+/* ---------------------------------------------------------------------
+   MOTION
+
+   Opacity and six pixels, the same restraint Dokkai Reader uses. A view arriving may fade;
+   nothing already on screen moves; nothing repeats. The keyframes (khanjpFadeIn, khanjpRiseSm)
+   are defined once in style.css, and prefers-reduced-motion is handled there too -- sitewide
+   and with !important -- so no guard is repeated here.
+   --------------------------------------------------------------------- */
+/* This page does not swap views -- it is one scroll with four sections -- so there is no view
+   fade to give it. Two things DO replace their own contents, and those are what get motion.
+
+   Nothing below may use a transform: .origins-bar and .kana-desk are both position: sticky, and
+   a transform on an ancestor makes that ancestor their containing block and they stop sticking.
+
+   An entrance on content far down the page would also be wasted: it would run at load, while
+   that content is off screen, and be over before it is scrolled to. No observer is introduced
+   to fix that -- the page reads fine arriving all at once. */
+
+/* The three-way switch recuts all 46 faces between hiragana, katakana and the source kanji.
+   The shapes hold still and only the glyphs change, which is the page's whole argument -- so
+   the glyphs cross-fade rather than snapping, and the tiles themselves never move. 0.16s and no
+   stagger: 46 staggered tiles would be a wave, and the point is that the wall is stable. */
+#kana-wall .kana-stone {
+    animation: khanjpFadeIn 0.16s var(--ease-out, ease) both;
+}
+
+/* The desk beside the wall is rebuilt each time a kana is picked. */
+#kana-desk > * {
+    animation: khanjpFadeIn var(--dur-2, 0.22s) var(--ease-out, ease) both;
+}

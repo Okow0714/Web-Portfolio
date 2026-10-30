@@ -1758,6 +1758,25 @@ html[data-contrast="darker"] .site-footer {
     from { opacity: 0; transform: translateY(12px); }
 }
 
+/* The two the tool pages use for view changes, defined once here rather than six times.
+   Both declare only `from`: the element's own resting state is the destination, so the
+   prefers-reduced-motion block below -- which cuts every duration to 0.01ms -- lands on a
+   fully visible element. A base rule starting at opacity: 0 is the one thing that block
+   cannot rescue.
+
+   khanjpFadeIn is opacity ONLY, and that is deliberate rather than minimal: a transform makes
+   its element the containing block for any fixed or sticky descendant, so a view fade carrying
+   one would un-fix Dokkai Reader's control bar and un-stick Kana Origins' section bar and the
+   dictionary's recent strip for as long as it ran. Opacity has no such effect, which is why it
+   is safe on a whole view and the rise is only ever put on leaves. */
+@keyframes khanjpFadeIn {
+    from { opacity: 0; }
+}
+
+@keyframes khanjpRiseSm {
+    from { opacity: 0; transform: translateY(6px); }
+}
+
 /* The loading screen (markup and script in _chrome.html). Measured on 2026-09-17: every page is
    ready in 170-460ms on a desktop, and in 1.0-2.5s on a phone-speed CPU -- dictionary.html takes
    2.5s -- because the word data is a megabyte of plain <script src> at the end of the body, so

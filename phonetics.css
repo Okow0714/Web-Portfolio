@@ -1341,3 +1341,32 @@ html[data-contrast="darker"] .site-footer {
     flex: 0 0 auto;
     margin-top: 6px;
 }
+
+
+/* ---------------------------------------------------------------------
+   MOTION
+
+   Opacity and six pixels, the same restraint Dokkai Reader uses. A view arriving may fade;
+   nothing already on screen moves; nothing repeats. The keyframes (khanjpFadeIn, khanjpRiseSm)
+   are defined once in style.css, and prefers-reduced-motion is handled there too -- sitewide
+   and with !important -- so no guard is repeated here.
+   --------------------------------------------------------------------- */
+/* Four views on one surface, each toggled with [hidden]. The gate's disc already swells and
+   bursts on its own; this is only the arrival of whichever view replaces it.
+   The FIELD's tile size is measured in JS from the height left over, so nothing here may change
+   layout -- opacity cannot, which is the whole reason the view fade is opacity only. */
+.phon-gate:not([hidden]),
+.field-view:not([hidden]),
+.tree-view:not([hidden]),
+.drill-view:not([hidden]) {
+    animation: khanjpFadeIn var(--dur-3, 0.42s) var(--ease-out, ease) both;
+}
+
+/* The node panel is rebuilt each time a chip in the tree is picked, so this replays and is the
+   only acknowledgement that its contents changed. (It is #phonetics-node-detail. An earlier
+   pass here invented #phonetics-member, which exists nowhere in the repo -- a selector naming
+   something that does not exist is silent, and the page looked exactly as restrained as one
+   where the rule had been left out on purpose.) */
+#phonetics-node-detail > * {
+    animation: khanjpFadeIn var(--dur-2, 0.22s) var(--ease-out, ease) both;
+}

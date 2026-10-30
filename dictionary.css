@@ -872,3 +872,25 @@ body:has(.dictionary-main) .container {
 /* No phone override on purpose: .xl-badges is display:none below 560px, so on a phone the chip
    is the only thing on the right of the row and has all the space it needs. Shrinking it there
    would make it smallest on exactly the screen where it is hardest to read. */
+
+
+/* ---------------------------------------------------------------------
+   MOTION
+
+   Opacity and six pixels, the same restraint Dokkai Reader uses. A view arriving may fade;
+   nothing already on screen moves; nothing repeats. The keyframes (khanjpFadeIn, khanjpRiseSm)
+   are defined once in style.css, and prefers-reduced-motion is handled there too -- sitewide
+   and with !important -- so no guard is repeated here.
+   --------------------------------------------------------------------- */
+/* The two tabs. .dict-recent is position: sticky inside a panel, so the fade must stay opacity
+   only -- a transform on the panel would make it the containing block and the strip would stop
+   sticking. */
+.dict-panel:not(.hidden) {
+    animation: khanjpFadeIn var(--dur-3, 0.42s) var(--ease-out, ease) both;
+}
+
+/* NOTHING ANIMATES THE RESULT ROWS. The list re-renders on every keystroke, so an entrance on
+   .mnjp-entry would restart on each letter typed -- the whole list flickering while someone is
+   trying to read it. That is the rule khanjpRiseIn carries in style.css, and this is the page
+   it was written for. The cross-link popover is left alone for the same reason: it has its own
+   sticky head. */

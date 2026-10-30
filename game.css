@@ -1167,3 +1167,22 @@ html[data-contrast="darker"] .site-footer {
     --header-bg: #343166;
     --header-bg-elevated: #5a55b0;
 }
+
+
+/* ---------------------------------------------------------------------
+   MOTION
+
+   Opacity and six pixels, the same restraint Dokkai Reader uses. A view arriving may fade;
+   nothing already on screen moves; nothing repeats. The keyframes (khanjpFadeIn, khanjpRiseSm)
+   are defined once in style.css, and prefers-reduced-motion is handled there too -- sitewide
+   and with !important -- so no guard is repeated here.
+   --------------------------------------------------------------------- */
+/* Word Match already owns about two dozen animations -- the tier node flying to the centre and
+   bursting, the hand landing from the middle outwards, the bonus tiles rocking. None of them is
+   touched. All that is added is the arrival of a whole screen, underneath its own choreography,
+   so the board is not asked to appear and animate at the same instant.
+   The BOARD is deliberately left out: its hand already deals itself in, and a fade over that
+   would be two entrances for one event. */
+#level-select-section.game-section:not([hidden]) {
+    animation: khanjpFadeIn var(--dur-3, 0.42s) var(--ease-out, ease) both;
+}
