@@ -137,7 +137,30 @@ would mean every show/hide call in six files waiting for it, which is why there 
 `khanjpRiseIn`, which each page's own stylesheet applies to its own cards. Two rules for that
 last one: **never put it on an ancestor of a fixed element** -- a transform makes that ancestor
 the containing block, and the masthead would stop being fixed while it runs -- and never on a
-list a page re-renders as you type, which is why the dictionary's rows are left out. Word
+list a page re-renders as you type, which is why the dictionary's rows are left out.
+**`khanjpFadeIn` and `khanjpRiseSm` joined it on 2026-10-31**, and all six tool pages use that
+pair: a view arriving fades, nothing already on screen moves, nothing repeats. The split between
+them is the rule above stated the other way round -- `khanjpFadeIn` is opacity ONLY, which is
+what makes it safe on a whole view, and the 6px rise only ever goes on leaves. It matters on
+more than the masthead: a transform would also un-stick Kana Origins' `#origins-bar` and
+`#kana-desk` and the dictionary's `.dict-recent`, and un-fix Dokkai Reader's `.reader-controls`.
+Two pages also MEASURE layout in JS -- phonetics sizes its field from the height left over,
+Grammar Connect measures its row against the fold -- and opacity changes no layout, which is the
+second reason a view fade may not carry a transform.
+Per page: **game** fades only its level select (the board already deals its own hand in, and two
+entrances for one event is one too many); **phonetics** fades each of its four views plus
+`#phonetics-node-detail`; **grammar** fades its sections, staggers the ten `.gc-tri-slot`s at
+26ms and fades the record panel; **dictionary** fades the two tabs and *nothing else* -- its
+rows re-render on every keystroke, which is the page that warning was written for; **origins**
+has no view swap, so it cross-fades `.kana-stone` on the three-way script switch (0.16s, no
+stagger -- the wall holding still is the page's argument) and `#kana-desk`'s contents on a pick.
+**`scratchpad/motion-audit.js` exists because a dead selector is SILENT.** A rule naming a class
+that does not exist throws nothing and looks exactly as restrained as a rule left out on purpose
+-- the same shape as `var(--header-text-dim, ...)`. It resolves every selector against the
+running page at the moment it should apply and fails on a match count of zero. It caught two on
+its first run: `.kana-face`, which is really `.kana-stone`, and `#phonetics-member`, which was
+invented outright -- the real one is `#phonetics-node-detail`. It also walks every fixed and
+sticky element on all six pages, scrolls, and checks none changed `position` or moved. Word
 Match's own two dozen animations are deliberately untouched. The masthead and footer carry a
 `view-transition-name` so they are *excluded* from the page cross-fade: identical on every page,
 they would otherwise shimmer against themselves. `about.html` loads neither `style.css` nor the
