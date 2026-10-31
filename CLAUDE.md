@@ -20,7 +20,7 @@ Supabase (Postgres + Auth). Hosted on GitHub Pages. Git repo on `main`.
 | `reading.html` | Dokkai Reader — speech-recognition-driven reading practice. `<main class="reading-main">` / `reading.css` (plum on linen, light). **Rebuilt 2026-10-29** (see Dokkai Reader below): a persistent side info bar beside a stage that swaps between three views, and a level select of twelve regular pentagons. `#text-list-section` is gone — the texts open in a panel beside the pentagons. |
 | `dictionary.html` | Mongol-Japan Dictionary — two tabs: primary Монгол⇄日本語 (`mnjp-data.js`), secondary 漢語⇄和語 Kango/Wago (`dictionary-data.js`, lazy-loaded only when that tab opens). Reads a `?q=` URL param on load to pre-fill/filter the primary tab — the target of the home page's search bar. `<main class="dictionary-main">` / `dictionary.css`. **A picked word opens in a panel beside the list as of 2026-11-01** (see The kanji breakdown below), not in a strip under its own row, and the page has no display title or description. |
 | `origins.html` | Kana Origins — where hiragana and katakana came from, for a beginner who knows no kanji. `<main class="origins-main">` / `origins.css`. **Rebuilt 2026-10-23** (see Kana Origins below): four sections behind a sticky section bar, and the gojuon laid out as a wall of five vowel rows of eleven rather than the printed eleven of five. |
-| `dashboard.html` | Signed-in-only progress page — profile (avatar, editable display name), score vs. site average, per-tool level/text completion, and a link into the Settings modal for account management. `<main class="dash-main">` / `dashboard.css` (cool slate/blue utility theme). This is now the **only** page showing those bars — `index.html` carried a condensed copy until the 2026-10-11 hub rebuild removed it, along with `hub-home.js`, and `tests/progress-totals.spec.js` lost its three index.html placeholder rows at the same time. |
+| `dashboard.html` | Signed-in-only progress page — profile (avatar, editable display name), score vs. site average, per-tool level/text completion, and a link into the Settings modal for account management. `<main class="dash-main">` / `dashboard.css` (**"seal and wine" as of 2026-11-01** — the brand mark's own gold and wine on warm parchment, replacing a cool slate/blue scheme; see The dashboard wears the mark below). This is now the **only** page showing those bars — `index.html` carried a condensed copy until the 2026-10-11 hub rebuild removed it, along with `hub-home.js`, and `tests/progress-totals.spec.js` lost its three index.html placeholder rows at the same time. |
 | `privacy.html`, `terms.html` | Legal pages, plain styling via `legal.css`. |
 | `credits.html` | Full data/photo/music credits for every tool, one page, `legal.css` styling like the pages above — the destination for every page's footer "Data & licensing" link. Sectioned with anchor ids (`#word-game-photos`, `#word-game-music`, `#grammar-connect-photos`, `#grammar-connect-music`) in case a page ever wants to deep-link to one part instead of the whole page. |
 | `reset-password.html` | Standalone, no shared header/footer. |
@@ -244,7 +244,7 @@ means every `var(--x)` in that file picks up the page-local value automatically.
 the one exception — it doesn't load `style.css` at all, so its tokens live on a real `:root`
 instead of being scoped to its wrapper class. Current palette: hub deep wine/gold (dark),
 phonetics light jade/copper, reading plum-on-linen (light), grammar its own accent, dictionary
-its own accent, dashboard cool slate/blue, game dark hanafuda violet/gold, about forest-teal,
+its own accent, dashboard the brand's own gold-and-wine, game dark hanafuda violet/gold, about forest-teal,
 origins warm paper with this page's own hub-seal colour (see Kana Origins below).
 **Each page's colors and layout are deliberately distinct — don't reintroduce a shared template
 between them.**
@@ -1089,6 +1089,68 @@ the list, the panel pushed the first result **865px** down, so you tapped a row 
 for appeared off-screen above your finger — the fault Dokkai Reader's rail had, in the same shape.
 `display: contents` on `.dict-aside` under 900px dissolves the wrapper so each half takes its own
 grid area, recent above the list and the panel below, and the sticky positioning goes with it.
+
+**The dashboard wears the mark** (2026-11-01). It was cool slate/blue on the reasoning that an
+account page should read as a utility rather than a themed room; it is now built from the two
+colours the brand mark is actually struck in — the gold `#e8bd6d` → `#c99a45` and the wine
+`#4a2c3a` — on warm parchment. This is the one page where matching the masthead is right rather
+than repetitive: it is the account's own page, not a sixth tool. **It needs no `--header-bg`
+block** for the same reason the six tool pages each need one — the shared masthead's wine already
+IS `#4a2c3a`, so the chrome matches without an override, and `dashboard.html`'s `theme-color`
+meta was already that value.
+**Every value is solved, by `scratchpad/solve-dash.js`, because the brand gold is a FILL.**
+`#e8bd6d` measures 1.72:1 on white, so it can carry a bar and never a word: each role that is
+TEXT gets its own step of the hue walked towards the ink until it clears 4.5 on BOTH the page
+and the surface (light `--accent` is the gold 32.5% towards black, `#88682f`, 4.50/5.08; dark
+needs no darkening and uses the brand gold as struck, 10.69/9.85). Worst text ratio on the
+page: **4.50**.
+**`--average` had to move off gold.** It was gold only because the accent was blue; with a gold
+accent the "you" and "site average" bars would be one colour and the comparison would stop
+comparing. It is the mark's other half now, the wine — 149 rgb from the gold in light, 81 in dark.
+**The two bars cannot both read on one track, and that is arithmetic.** The gold fill measures
+**1.27:1** against the warm cream track — a bar you cannot see — and a track dark enough for the
+gold (`#7c6568`) drops the wine bar to 1.21. So the gold bar is separated by an EDGE
+(`--bar-edge`, 3.71:1 on the track) rather than by its fill, which is the same answer the rest
+of the site gives a flat fill, and the reason `theme-audit.js`'s FLAT check skips anything with
+an edge or a lift.
+**This closed the 2.13:1 login button** that had been on the open list. Shared `.auth-btn` paints
+`var(--accent-gradient)` with a hard-coded white label, and on a gold accent white is hopeless;
+it is pinned to fixed dye like Grammar Connect's start button and the reader's, and the dye is
+the mark's own gold with `--brand-ink` on it — identical in both themes, because the mark is the
+one thing on this site that is not per-theme. A dark label on a gradient is solved against the
+DARKEST stop: 4.78:1 on `#c99a45`.
+**The signed-in half had never been measured** — CLAUDE.md said so outright, because it needs a
+real session. `scratchpad/dash-check.js` fakes one at the DOM level, filling the panels through
+the page's own markup, and measures 12 roles plus both bars in both themes. It proves the CSS,
+not the queries, and says so.
+
+**Grammar Connect was filing sentence fragments, not grammar points** (2026-11-01). "Grammar you
+keep missing" printed rows reading `<ruby>目<rp>(</rp><rt>め</rt><rp>)</rp></ruby>を…` — the tags
+literally, as text. The markup was the visible half; the key was the real fault.
+`word_stats.word` was written as `s.newCore || s.new`, and **41 of the 400 sentences have no
+`newCore` — not because the data is missing, but because in those the answer IS the plain form**:
+話せます against ことができる, 読んでください against てみる, とても重いです against すぎる. The
+grammar point under test is the one on the OTHER side, `oldCore`. Falling through to `s.new`
+filed a row under a conjugated, furigana-laden fragment, and `sentencesByCore()` indexes citation
+forms — so **none of those 49 keys could ever be matched** and every one of them was a row the
+weak-point review could write and then never find again. They also broke the panel's own subtitle,
+which promises counting per grammar point rather than per sentence.
+Three changes: `grammarKey(s)` is `newCore || oldCore || new` and is used BOTH to file the
+attempt and to build the index, so the two can never disagree; `recordWordAttempt` strips
+furigana at the single choke point in `word-stats.js`, because the column means the same thing
+for every tool and a second tool passing markup would reintroduce it silently; and the dashboard
+strips on the way out too, since rows written before the fix still carry it and there is no
+migration. 32 sentences still have neither core and fall through to plain sentence text — legible
+now, but they want cores adding to `grammar-data.js`.
+**`grammar-data.js`'s own header is wrong about this** and has been for a while: it says `old`
+and `new` "deliberately do NOT get furigana since JLPT grammar points are essentially always
+kana". 220 of 400 `new` values and 180 `old` values carry `<ruby>`.
+**A spy on `recordWordAttempt` cannot test this.** `scratchpad/grammar-key.js` first installed
+one before `word-stats.js` could, which captured the CALL SITE's raw arguments and reported
+furigana in `confused_with` that would never have shipped. Signed out, the real path buffers to
+`localStorage['khanjp-word-buffer']`, which is exactly what is flushed to the database on first
+sign-in — so the script plays four sentences and reads that buffer instead, sanitiser included.
+It also starts from `.gc-rec-cta`, since picking a tile only SELECTS a level.
 
 **Four pages lost their display title and their description** (2026-11-01: `game.html`,
 `grammar.html`, `reading.html`, `dictionary.html`). Each opened with a decorative wordmark

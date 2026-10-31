@@ -1,47 +1,71 @@
 /* Dashboard — styles specific to dashboard.html.
-   The site header/nav/login-bar stays in the shared light burgundy theme (style.css tokens,
-   untouched here). Only the dashboard's own content, wrapped in <main class="dash-main">, gets
-   this theme: cool slate/blue, a data-and-account utility page rather than a themed "room" like
-   the five study tools, so it reads as calm and scannable instead of another game-toolbar page. */
+   "Seal and wine": the page is built from the two colours the brand mark itself is struck in,
+   the gold #e8bd6d -> #c99a45 and the wine #4a2c3a, on warm parchment. It replaced a cool
+   slate/blue scheme on 2026-11-01. This is the one page where matching the masthead is right
+   rather than repetitive — it is the account's own page, not a themed "room" like the five
+   study tools, so it should look like the site rather than like a sixth tool. It needs no
+   --header-bg block for the same reason: the shared masthead's wine IS #4a2c3a, the brand ink,
+   so the chrome already matches without a per-page override.
+
+   EVERY VALUE BELOW IS SOLVED, not picked. The trap with this palette is that the brand gold is
+   a FILL colour -- #e8bd6d measures 1.72:1 on white -- so every role that is TEXT gets its own
+   darkened step of the same hue walked towards the ink until it clears 4.5 on BOTH the page and
+   the surface, and the bright gold is kept for fills. scratchpad/solve-dash.js did the walking;
+   the worst text ratio on the page is 4.50. */
 
 /* Full-bleed pattern (see CLAUDE.md): same token block on body:has() and the wrapper class,
    since body is an ancestor and can't read a descendant's custom properties. */
 body:has(.dash-main) {
-    --bg-page: #eef1f4;
-    --bg-page: light-dark(#eef1f4, #0f141b);
+    --bg-page: #f4efe4;
+    --bg-page: light-dark(#f4efe4, #141017);
     background: var(--bg-page);
 }
 
 .dash-main {
-    --bg-page: #eef1f4;
-    --bg-page: light-dark(#eef1f4, #0f141b);
-    --surface: #ffffff;
-    --surface: light-dark(#ffffff, #161d26);
-    --surface-edge: #dbe1e8;
-    --surface-edge: light-dark(#dbe1e8, #26313f);
-    --ink: #1c2733;
-    --ink: light-dark(#1c2733, #e7edf5);
-    --ink-soft: #55636f;
-    --ink-soft: light-dark(#55636f, #a9b6c6);
-    --ink-faint: #8996a3;
-    --ink-faint: light-dark(#8996a3, #7c8a9c);
-    --rule: #dbe1e8;
-    --rule: light-dark(#dbe1e8, #26313f);
-    --accent: #2f6fed;
-    --accent: light-dark(#2f6fed, #6ea8ff);
-    --accent-light: #6d97f2;
-    --accent-light: light-dark(#6d97f2, #8dbcff);
-    --accent-dark: #1f4fb8;
-    --accent-dark: light-dark(#1f4fb8, #8dbcff);
-    --accent-tint: rgba(47, 111, 237, 0.08);
-    --accent-tint: light-dark(rgba(47, 111, 237, 0.08), rgba(110, 168, 255, 0.14));
-    --average: #d99a3d;
-    --average: light-dark(#d99a3d, #e0aa55);
-    /* Darker than --average because this one carries text on white and has to pass AA. */
-    --warn: #b4690e;
-    --warn: light-dark(#b4690e, #e8a34d);
-    --average-tint: rgba(217, 154, 61, 0.12);
-    --average-tint: light-dark(rgba(217, 154, 61, 0.12), rgba(224, 170, 85, 0.16));
+    --bg-page: #f4efe4;
+    --bg-page: light-dark(#f4efe4, #141017);
+    --surface: #fffdf8;
+    --surface: light-dark(#fffdf8, #1f1821);
+    --surface-edge: #e3dac6;
+    --surface-edge: light-dark(#e3dac6, #3a2a34);
+    --ink: #2a1b22;
+    --ink: light-dark(#2a1b22, #f2e9dd);
+    --ink-soft: #5d4a53;
+    --ink-soft: light-dark(#5d4a53, #c3b3ac);
+    --ink-faint: #796971;
+    --ink-faint: light-dark(#796971, #9a8a92);
+    --rule: #e3dac6;
+    --rule: light-dark(#e3dac6, #3a2a34);
+    /* TEXT. The gold taken 32.5% towards black in light; in dark the brand gold needs no
+       darkening at all and is used as struck. 4.50 / 5.08 light, 10.69 / 9.85 dark. */
+    --accent: #88682f;
+    --accent: light-dark(#88682f, #e8bd6d);
+    /* The brand gold itself, FILL ONLY -- never give this to a word. */
+    --accent-light: #e8bd6d;
+    --accent-light: light-dark(#e8bd6d, #f2d49a);
+    /* A deeper step for the headline figures, which want more weight than body accent text. */
+    --accent-dark: #6f531f;
+    --accent-dark: light-dark(#6f531f, #f0cb87);
+    --accent-tint: rgba(201, 154, 69, 0.14);
+    --accent-tint: light-dark(rgba(201, 154, 69, 0.14), rgba(232, 189, 109, 0.16));
+    /* The site average was gold ONLY because the accent used to be blue. With a gold accent the
+       two bars would be one colour and the comparison would stop comparing, so it moves to the
+       mark's other half, the wine. 149 rgb apart from the gold in light, 81 in dark. */
+    --average: #993f63;
+    --average: light-dark(#993f63, #d98fae);
+    --average-tint: rgba(153, 63, 99, 0.12);
+    --average-tint: light-dark(rgba(153, 63, 99, 0.12), rgba(217, 143, 174, 0.16));
+    /* Carries the miss counts as TEXT, so it is solved like the rest: 5.52 / 6.23 light. Kept
+       redder than --average so a miss count does not read as the site-average marker. */
+    --warn: #a53a4e;
+    --warn: light-dark(#a53a4e, #f0a0b0);
+    /* The gold bar's own edge. A warm cream track cannot carry a gold bar on fill alone --
+       measured 1.27:1, a bar you cannot see -- and a track dark enough for the gold (#7c6568)
+       drops the wine bar to 1.21, so the two fills can never BOTH read against one track. The
+       edge is what separates the gold from the track instead, which is the same answer the rest
+       of the site gives a flat fill. 3.71:1 against the light track. */
+    --bar-edge: #88682f;
+    --bar-edge: light-dark(#88682f, #c99a45);
 
     display: block;
     /* Same 89px masthead clearance as every other page. Its absence only showed when signed
@@ -61,6 +85,26 @@ body:has(.dash-main) {
 .dash-guest { text-align: center; padding: 100px 20px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
 .dash-guest h1 { font-family: var(--font-display); font-size: 1.7rem; margin: 0; }
 .dash-guest p { color: var(--ink-soft); max-width: 44ch; margin: 0; }
+
+/* The one control a signed-out visitor is here to press, and it measured 2.13:1 in dark before
+   this: shared .auth-btn paints var(--accent-gradient) with a hard-coded white label, and this
+   page's --accent is now the brand gold, which white cannot sit on at all (1.72:1 on #e8bd6d).
+   Pinned to fixed dye like Grammar Connect's start button and the reader's, and the dye here is
+   the brand mark's own -- gold with the wine the masthead seal already puts on it, identical in
+   both themes because the mark is the one thing on this site that is not per-theme.
+   Dark label on a gradient is solved against the DARKEST stop: 4.78:1 on #c99a45, 6.97 on the
+   light end. --brand-* are on :root, so they reach here; --header-* would not, since a modal
+   and this main are siblings of the masthead rather than descendants. */
+.dash-main .auth-btn {
+    background: linear-gradient(135deg, var(--brand-gold), var(--brand-gold-dark));
+    border-color: var(--brand-gold-dark);
+    color: var(--brand-ink);
+}
+.dash-main .auth-btn:hover {
+    background: linear-gradient(135deg, var(--brand-gold-dark), var(--brand-gold));
+    border-color: var(--brand-gold);
+    color: var(--brand-ink);
+}
 
 /* ---- profile header ---- */
 .dash-profile { display: flex; align-items: center; gap: 20px; }
@@ -109,9 +153,11 @@ body:has(.dash-main) {
 .dash-score-bar-row { display: grid; grid-template-columns: 90px 1fr 70px; align-items: center; gap: 12px; }
 .dash-score-bar-label { font-size: 0.85rem; font-weight: 600; color: var(--ink-soft); }
 .dash-score-bar-track { height: 10px; border-radius: 999px; background: var(--rule); overflow: hidden; }
-.dash-score-bar-fill { height: 100%; border-radius: 999px; transition: width 0.6s var(--ease-out); }
-.dash-score-bar-fill.mine { background: var(--accent); }
-.dash-score-bar-fill.avg { background: var(--average); }
+/* box-sizing is already border-box sitewide, so the 1px edge eats into the 10px track rather
+   than making the bar taller than the groove it sits in. */
+.dash-score-bar-fill { height: 100%; border-radius: 999px; border: 1px solid var(--bar-edge); transition: width 0.6s var(--ease-out); }
+.dash-score-bar-fill.mine { background: var(--accent-light); }
+.dash-score-bar-fill.avg { background: var(--average); border-color: var(--average); }
 .dash-score-bar-num { font-size: 0.85rem; font-variant-numeric: tabular-nums; color: var(--ink-faint); text-align: right; }
 .dash-score-note { font-size: 0.78rem; color: var(--ink-faint); margin: 14px 0 0; }
 
@@ -194,11 +240,13 @@ body:has(.dash-main) {
 .dash-due-title { margin: 0 0 2px; font-size: 1.02rem; color: var(--ink); }
 .dash-due-body { margin: 0; font-size: 0.92rem; color: var(--ink-soft); }
 .dash-due-sub { margin: 6px 0 0; font-size: 0.78rem; color: var(--ink-faint); max-width: 60ch; }
-/* .dash-main .dash-due-btn, not .dash-due-btn: `.dash-main a { color: inherit }` above is more specific
-   and turned the label dark blue on the blue button. */
+/* .dash-main .dash-due-btn, not .dash-due-btn: `.dash-main a { color: inherit }` above is more
+   specific and turned the label into body ink on the filled button. */
 .dash-main .dash-due-btn { white-space: nowrap; font-weight: 700; font-size: 0.92rem;
-    /* --accent is a bright blue in dark mode, so the label on it flips instead of staying white */
-    color: #fff; color: light-dark(#fff, #0d1219); background: var(--accent);
+    /* The label flips rather than staying white, because --accent is a DEEP gold in light and
+       the bright brand gold in dark. Dark takes --brand-ink, the wine the masthead's own seal
+       puts on this exact gold, rather than a cold near-black: 5.16 light, 6.97 dark. */
+    color: #fff; color: light-dark(#fff, #4a2c3a); background: var(--accent);
     padding: 10px 18px; border-radius: 8px; text-decoration: none; }
 .dash-main .dash-due-btn:hover { background: var(--accent-dark); }
 .dash-due-btn:focus-visible { outline: 2px solid var(--accent-dark); outline-offset: 2px; }
