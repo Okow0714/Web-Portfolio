@@ -1401,6 +1401,42 @@ silently keeping whatever (possibly broken) cache they already had. Bump it for 
 *content* change as well: `fetch` is stale-while-revalidate (serve cached, refresh behind it),
 so without a bump a returning PWA user runs the old copy of a fixed file for one more visit.
 
+**A CENTRED FLEX CHILD TALLER THAN ITS CONTAINER IS CLIPPED AT BOTH ENDS** (2026-11-01), and
+neither end can be scrolled to. `.modal-overlay` was `position: fixed` + `align-items: center`
+with `overflow: visible`, so a card taller than the window lost the same amount off the TOP as
+off the bottom — and the top is where the first control and the CLOSE BUTTON live. Measured on
+the settings modal **signed in**, where `#account-danger-zone` un-hides and the card reaches
+1012px: in a 732px window it sat at top **−140**, so the furigana control (−45) and the X
+(−136) were both off the top edge and Reset/Delete ran off the bottom. There was nothing to
+scroll and no way to close it but Escape.
+**Signed OUT the same card is 619px and fits**, which is why this survived every pass — the
+only way to see it is to open it with a session. Reported by the site's owner, not by any
+probe.
+`align-items: flex-start` plus `margin: auto` on `.modal-card` is the pair that does both jobs:
+auto margins centre the card while there is free space and resolve to zero when there is not,
+so a tall card starts at the top of a scrollable overlay with its X in view. The OVERLAY
+scrolls, not the card — `.modal-close` is `position: absolute` against the card, and a
+card-level scroll would carry it away. `overscroll-behavior: contain` keeps the page behind
+still. One rule in `style.css`, so all three modals on all eighteen pages are covered and
+`build-chrome.js` has nothing to rewrite.
+**The settings rows were half the reason it got that tall.** They were a flex row with a
+`flex: none` control, which on the 400px card left the furigana row about 105px for its text:
+that note wrapped to SIX lines. The text now takes `flex: 1 1 100%` and the control sits under
+it — every row, not just the ones that overflow. A basis that merely *preferred* the full width
+gave three different layouts in one dialog (segment wrapped, Darker button beside, Tutorials
+button wrapped); a dialog read top to bottom wants one rhythm, and at 400px a Mongolian note
+needs the full measure anyway.
+`scratchpad/modal-fit.js` opens all three modals at five heights in both account states and
+checks the close button is visible ON OPEN, that the first control, the last control and the
+card's own bottom edge can each be scrolled to, and that the page behind never moves. Proved
+both ways: **7 failures on the old build, 0 after** — and it showed the fault was worse than
+reported, broken at every height up to 950px signed in, and at 568/640px even signed out.
+Two things the probe got wrong first, both of which made it lie in the safe direction: it read
+`scrollHeight > clientHeight` *after* hiding the overlay, where `display: none` zeroes both, so
+"the overlay scrolls" was false for every modal at every height; and it measured centring in
+the same tick as un-hiding, catching the entrance animation mid-flight and reporting a 28px
+offset on two modals that are exactly centred once it settles.
+
 **A modal opened from another modal has to win the tie** (2026-10-25). Word Match's and Grammar
 Connect's result pop-ups both offer "log in to save", and `#auth-modal` is a `.modal-overlay`
 SIBLING of those pop-ups at the same `z-index: 2000`. An exact tie is broken by DOM order, and

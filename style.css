@@ -645,12 +645,30 @@ html[data-theme="dark"] { color-scheme: dark; }
 .lang-switch:focus-visible { outline: 2px solid var(--header-accent, #e8bd6d); outline-offset: 2px; }
 
 /* Settings rows: a label and its explanation on the left, the control on the right. */
+/* The label and its control sit side by side WHILE BOTH FIT, and stack when they do not.
+   They used to be a plain flex row with a `flex: none` control, which on the 400px card left
+   the furigana row about 105px for its text: that note wrapped to six lines and the three
+   rows between them pushed the card to 1012px -- half the reason it outgrew the window at
+   all. wrap plus a min-width on the text is the whole fix; the control keeps its natural
+   width and drops to its own line only when the text would otherwise be shredded. */
 .settings-row {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 18px;
+    flex-wrap: wrap;
+    gap: 12px 18px;
     padding: 4px 0 18px;
+}
+
+/* The text takes the whole line and the control sits under it -- every row, not just the ones
+   that happen not to fit. A basis that merely PREFERRED the full width gave three different
+   layouts in one dialog: the furigana segment wrapped, the Darker button stayed beside its
+   note and squeezed it to five lines, the Tutorials button wrapped again. The dialog is read
+   top to bottom, so one rhythm beats three, and at 400px a Mongolian note needs the full
+   measure anyway -- the Darker note went from five wrapped lines to two. */
+.settings-row > div:first-child {
+    flex: 1 1 100%;
+    min-width: 0;
 }
 
 .settings-row-note {
@@ -961,15 +979,32 @@ html[data-theme="dark"] { color-scheme: dark; }
 }
 
 /* Auth modal */
+/* A CENTRED FLEX CHILD TALLER THAN ITS CONTAINER IS CLIPPED AT BOTH ENDS, and the clipped
+   part cannot be scrolled to. `align-items: center` distributes the overflow evenly above and
+   below, and `overflow: visible` on a `position: fixed` box means neither half is reachable by
+   any gesture. Measured on the settings modal signed IN, where the danger zone un-hides and
+   the card reaches 1012px: in a 732px window it sat at top -140, so the first setting (the
+   furigana control, at -45) and the CLOSE BUTTON (at -136) were both off the top edge, and
+   Reset/Delete ran off the bottom. Signed out the same card is 619px and fits, which is why
+   this survived every pass -- the only way to see it is to open it with a session.
+
+   `align-items: flex-start` with `margin: auto` on the card is the combination that does both
+   jobs: auto margins centre it while there is free space and resolve to zero when there is
+   not, so a tall card starts at the top of a scrollable overlay with its X in view. Scrolling
+   the OVERLAY rather than the card keeps the absolutely-positioned close button pinned to the
+   card's own top corner, which a card-level scroll would have carried away. */
 .modal-overlay {
     position: fixed;
     inset: 0;
     background: rgba(20, 20, 43, 0.45);
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     z-index: 2000;
     padding: 20px;
+    overflow-y: auto;
+    /* or scrolling past the end of a long modal scrolls the page underneath it */
+    overscroll-behavior: contain;
 }
 
 /* The auth modal is the one overlay that gets opened FROM another overlay: Word Match's and
@@ -1053,6 +1088,10 @@ html[data-theme="dark"] { color-scheme: dark; }
     position: relative;
     width: 100%;
     max-width: 400px;
+    /* Centres the card inside the overlay while it fits and keeps it clear of the edges when
+       it does not -- see the note on .modal-overlay. flex-start alone would pin every modal
+       to the top of the screen, which is wrong for the short ones. */
+    margin: auto;
     background: var(--bg-surface);
     /* Declared, not inherited. color-scheme decides how light-dark() resolves on THIS element; it
        cannot revise a value that already computed on an ancestor. Without this the card inherited
