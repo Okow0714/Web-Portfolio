@@ -375,6 +375,10 @@ body:has(.dictionary-main) {
     }
 }
 
+/* The list at rest. Same treatment as .dict-empty -- but a SEPARATE element, because "nothing
+   searched yet" and "your search found nothing" are different things to be told, and one
+   element serving both would have to lie in one of the two cases. */
+.dict-idle,
 .dict-empty {
     max-width: 1100px;
     margin: 40px auto;

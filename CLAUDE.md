@@ -55,7 +55,25 @@ shared gold `#e8bd6d` manages only 3.2-3.6:1 on five of these grounds, so each p
 a pale warm gold that clears 4.5; `--header-text-muted` likewise. `--header-accent-dark` stays
 **below** accent on purpose -- it is the far stop of the brand seal's gradient and a border
 colour, never text, so 3:1 is its bar, and lifting it independently inverts that gradient.
-Dictionary is the one seal dark enough to keep the shared gold untouched. Each page needs a
+Dictionary is the one seal dark enough to keep the shared gold untouched.
+**The BRAND MARK takes none of that** (2026-10-31). Those lifts are solved for accent as TEXT,
+but on the mark accent is a FILL, so every one of them washed the seal out -- reading's brand
+seal was `#f6dcea -> #cfa7bd`, a **pink** one; grammar's and origins' near-cream. The logo is
+the one thing on the masthead that must not be per-page, so it reads `--brand-gold` /
+`--brand-gold-dark` / `--brand-gold-tint` and no page overrides them. The drift had been
+announcing itself and nobody heard it: `.khanjp-loader-seal` was hard-coded to those two
+values, so the loading screen printed the real gold mark and the masthead underneath printed a
+pink one, on the same page, half a second apart.
+**Those three tokens are on `:root`, unlike every other chrome token**, which sit on
+`.site-header-wrap, .site-footer` together so the two can never drift. The mark is worn in
+THREE subtrees -- masthead, footer, and `.khanjp-loader`, which is a child of `.container` and
+in neither -- so scoping it to the chrome left the loader's gradient naming an undeclared
+custom property: invalid at computed-value time, which paints **`none`**, not an error. That
+shipped for one build inside this very change, and only a probe reading the loader BEFORE it is
+removed from the DOM caught it -- a screenshot of a finished page never can.
+`.account-menu-profile-avatar` is pinned the same way, for the reason `.auth-btn` in that panel
+already was. `about.css` keeps its own literal copy, since that page loads no `style.css` and
+the token would resolve to nothing there. Each page needs a
 **second block under `html[data-contrast="darker"]`**, because `style.css` re-declares
 `--header-bg` there at higher specificity and without it the darker setting snaps back to wine.
 **`index.html` is the one exception, and it reduces the masthead rather than removing it.** The hub
@@ -138,6 +156,24 @@ would mean every show/hide call in six files waiting for it, which is why there 
 last one: **never put it on an ancestor of a fixed element** -- a transform makes that ancestor
 the containing block, and the masthead would stop being fixed while it runs -- and never on a
 list a page re-renders as you type, which is why the dictionary's rows are left out.
+
+**NOTHING IS SHOWN THAT WAS NOT ASKED FOR** (2026-10-31). This was shipped three times in one
+shape: the dictionary answering a search nobody had performed with the first 150 of 3,537 words
+(the Kango tab with ALL of its 573, since that one has no render cap), and Dokkai Reader opening
+level 01's three texts beside an untouched pentagon pack. The reasoning each time was that an
+empty area looks unfinished -- it does not. **An empty panel is information**: it says nothing
+is picked yet, and filling it destroys the parent-child relation the layout was built to show.
+Each of these now rests on a prompt that names what will appear and where it comes from.
+Two things that ARE asked for stay: the dictionary's "recently searched" strip, which is this
+reader's own past queries, and `dictionary.html?q=` from the home page's search bar, which is a
+search -- `tests/dictionary.spec.js` and the scratchpad's `disclose-check.js` pin both
+directions, empty at rest AND populated after the click or keystroke that should populate it,
+because an empty panel is also exactly what a broken fill looks like. A part-of-speech filter
+counts as asking, so the Kango tab lists on a filter alone.
+**Grammar Connect is deliberately NOT changed.** Its four bands are `role="tab"` with
+`aria-selected`, and a tablist has exactly one selected tab by definition -- it is a tab strip,
+not a drill-down, and its whole select row is measured against the fold besides. Phonetics
+already gates this way, its gate bursting into a view swap.
 **`khanjpFadeIn` and `khanjpRiseSm` joined it on 2026-10-31**, and all six tool pages use that
 pair: a view arriving fades, nothing already on screen moves, nothing repeats. The split between
 them is the rule above stated the other way round -- `khanjpFadeIn` is opacity ONLY, which is
@@ -1147,8 +1183,21 @@ used to live inside the reader and so vanished the moment you left the passage -
 you would want to look at it.
 **`#text-list-section` is gone.** A level's three texts open in `.text-panel` BESIDE the
 pentagons; a panel underneath means scrolling back on every pick, which is the lesson Kana
-Origins' kana desk already paid for. `showTextList(track, level, quiet)` takes a third argument
-so the select can fill the panel on arrival without marking a tile as picked.
+Origins' kana desk already paid for.
+**The panel is EMPTY until a pentagon is picked** (2026-10-31), and that is the point. It used
+to open the next level's texts on arrival, under a comment reading "so the panel is never empty
+on arrival" -- which had it backwards. A filled panel reads as a SIBLING of the pentagon pack
+rather than as the contents of one pentagon, so level 01's three texts looked like another part
+of the level select instead of what level 01 holds: the parent-child relation the two-column
+layout exists to show was the one thing it hid. An empty panel is information. The rail still
+NAMES the level to come back to, which is a signpost rather than an opened door, and
+`showTextPrompt()` states the derivation outright -- pick a level and its three texts appear
+here. The `quiet` argument is gone with it.
+**Returning from the reader is the exception**: `showLevelSelect()` re-opens `currentLevel`
+when it belongs to this track, so finishing one text does not cost you the list it came from.
+Switching tracks lands on the prompt, because `indexOf` fails against the other track's levels.
+The resting title must not be `reading.pickLevel` -- that is the `<h1>` directly above it, and
+the panel repeating it word for word reads as a rendering fault.
 **The level select is twelve REGULAR pentagons** -- every interior angle 108 degrees, every
 side equal. **No such pentagon can tile the plane**, and that is arithmetic, not difficulty:
 around a point the angles must sum to 360 and along an edge to 180, every angle one can

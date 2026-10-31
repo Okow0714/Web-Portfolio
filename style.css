@@ -12,6 +12,26 @@
    both themes, while the same tokens go dark out on the legal pages. The accent matters most --
    it is the link colour on a legal page AND the text colour inside the light modal. */
 :root {
+    /* The brand mark's own gold, and NOT --header-accent.
+       Every tool page overrides --header-accent, because in nine places it is TEXT and the
+       shared gold manages only 3.2-3.6:1 on five of the six seal grounds -- so each page lifts
+       it to a pale warm gold. On the MARK, though, accent is a FILL, so those lifts washed the
+       seal out: reading's brand seal was #f6dcea -> #cfa7bd, a PINK one; grammar's and origins'
+       near-cream. The logo is the one thing on the masthead that must not be per-page.
+       This is how the drift showed itself: .khanjp-loader-seal was hard-coded to these two
+       values, so the loading screen printed the real gold mark and the masthead underneath it
+       printed a pink one, on the same page, half a second apart. Those literals now read these
+       tokens, because two copies of one colour is the seal-versus-header-ground trap again.
+       ON :root, unlike every other chrome token, which sit on `.site-header-wrap,
+       .site-footer` together so the two can never drift. The mark is worn in THREE subtrees --
+       the masthead, the footer and .khanjp-loader, which is a child of .container and in
+       neither of those -- so scoping it to the chrome left the loader's gradient undeclared,
+       which is invalid at computed-value time and paints `none`, not an error. No page may
+       override it; that is the entire point of it being its own token. */
+    --brand-gold: #e8bd6d;
+    --brand-gold-dark: #c99a45;
+    --brand-gold-tint: rgba(232, 189, 109, 0.16);
+
     /* Reading measure. A line past about 85 characters loses the eye on the return sweep,
        and .container is 1200px wide with nothing capping prose inside it. Applied by the
        page files to the specific blocks that measured long, not blanket to every <p>. */
@@ -353,7 +373,7 @@ body:has(.modal-overlay:not(.hidden)) .container {
     justify-content: center;
     width: 34px;
     height: 34px;
-    background: linear-gradient(150deg, var(--header-accent), var(--header-accent-dark));
+    background: linear-gradient(150deg, var(--brand-gold), var(--brand-gold-dark));
     color: var(--header-bg);
     font-size: 1.15rem;
     font-weight: 700;
@@ -369,7 +389,7 @@ body:has(.modal-overlay:not(.hidden)) .container {
 }
 
 .site-brand:hover .brand-seal {
-    box-shadow: 0 0 0 3px var(--header-accent-tint);
+    box-shadow: 0 0 0 3px var(--brand-gold-tint);
 }
 
 .brand-text {
@@ -785,7 +805,7 @@ html[data-theme="dark"] { color-scheme: dark; }
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: linear-gradient(150deg, var(--header-accent), var(--header-accent-dark));
+    background: linear-gradient(150deg, var(--brand-gold), var(--brand-gold-dark));
     color: var(--header-bg);
     font-family: var(--font-display);
     font-weight: 700;
@@ -1822,7 +1842,7 @@ body:has(.khanjp-loader) .container {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(150deg, #e8bd6d, #c99a45);
+    background: linear-gradient(150deg, var(--brand-gold), var(--brand-gold-dark));
     animation: khanjpMarkIn 0.52s var(--ease-pop) 0.6s backwards;
 }
 

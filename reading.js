@@ -391,8 +391,17 @@ function showLevelSelect(track) {
     grid.appendChild(svg);
     renderPentLegend();
 
-    // Open the level you would play next, so the panel is never empty on arrival.
-    showTextList(track, levels[next >= 0 ? next : 0], true);
+    // The panel's resting state is EMPTY, and that is the point.
+    // It used to open the next level's texts here, with the comment "so the panel is never
+    // empty on arrival" -- which had it backwards. A filled panel on arrival reads as a SIBLING
+    // of the pentagon pack rather than as the contents of one pentagon, so level 01's three
+    // texts looked like another part of the level select instead of what level 01 holds. An
+    // empty panel is information: nothing is picked yet. The rail still NAMES the level to come
+    // back to, which is a signpost rather than an opened door.
+    // Returning from the reader is the one exception -- that level was picked, so it stays open
+    // and its pentagon stays marked, or finishing one text would cost you the list it came from.
+    if (currentLevel && levels.indexOf(currentLevel) >= 0) showTextList(track, currentLevel);
+    else showTextPrompt();
 
     renderRail({
         k: window.t('reading.railTrack'),
@@ -431,15 +440,28 @@ function backToLevelSelect() {
     showLevelSelect(currentTrack);
 }
 
-// `quiet` is set when the level select opens this itself, to fill the panel without also
-// marking a pentagon as picked before the player has touched one.
-function showTextList(track, level, quiet) {
+// The panel at rest: no level picked, so no texts. The line it prints says where the texts
+// will come from, which is the relationship a pre-filled panel was hiding.
+function showTextPrompt() {
+    currentLevel = null;
+    document.getElementById('text-list-title').textContent = window.t('reading.panelIdleTitle');
+    const grid = document.getElementById('reading-level-grid');
+    if (grid) grid.querySelectorAll('.pent').forEach(el => el.classList.remove('is-picked'));
+    const list = document.getElementById('text-list');
+    list.innerHTML = '';
+    const hint = document.createElement('p');
+    hint.className = 'text-panel-hint';
+    hint.textContent = window.t('reading.panelIdle');
+    list.appendChild(hint);
+}
+
+function showTextList(track, level) {
     currentTrack = track;
     currentLevel = level;
     document.getElementById('text-list-title').textContent = window.tf('reading.trackLevelHint', { track: trackTitleShort(track), n: level.levelNum, hint: level.hint });
     const grid = document.getElementById('reading-level-grid');
     if (grid) grid.querySelectorAll('.pent').forEach((el, i) => {
-        el.classList.toggle('is-picked', !quiet && track.levels[i] === level);
+        el.classList.toggle('is-picked', track.levels[i] === level);
     });
     const list = document.getElementById('text-list');
     list.innerHTML = '';

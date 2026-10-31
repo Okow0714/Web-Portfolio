@@ -33,7 +33,23 @@ module.exports = async function run(page, assert, baseUrl) {
     const wakanState = await page.evaluate(() => ({
         loaded: typeof DICTIONARY_ENTRIES !== 'undefined',
         cardCount: document.querySelectorAll('#dict-list .dict-entry').length,
+        idleShown: !!document.querySelector('#dict-idle:not(.hidden)'),
     }));
     assert.ok(wakanState.loaded, 'DICTIONARY_ENTRIES should be loaded after switching to the Wakan tab');
-    assert.ok(wakanState.cardCount > 0, 'Wakan tab should render cards once its data loads');
+    // A loaded tab renders NOTHING until it is asked to. This used to assert cardCount > 0 on
+    // arrival, which was really a proxy for "the lazy load worked" -- but it also pinned the
+    // behaviour of answering a search nobody had performed with every entry in the file. The
+    // load is now proved by DICTIONARY_ENTRIES above, and the rendering by the search below.
+    assert.strictEqual(wakanState.cardCount, 0,
+        `Wakan tab should render no cards before a search or filter, got ${wakanState.cardCount}`);
+    assert.ok(wakanState.idleShown, 'Wakan tab should show its prompt instead of a list');
+
+    await page.fill('#dict-search', 'use');
+    await page.waitForTimeout(250);
+    const searched = await page.evaluate(() => ({
+        cardCount: document.querySelectorAll('#dict-list .dict-entry').length,
+        idleShown: !!document.querySelector('#dict-idle:not(.hidden)'),
+    }));
+    assert.ok(searched.cardCount > 0, 'searching the Wakan tab should render cards');
+    assert.ok(!searched.idleShown, 'the prompt should go away once there are results');
 };

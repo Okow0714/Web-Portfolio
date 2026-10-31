@@ -520,6 +520,15 @@ body:has(.reading-main) .auth-btn-outline:hover {
     padding: 22px;
 }
 
+/* The panel at rest. Deliberately quiet: it is a label for an empty space, not a card -- no
+   border, no fill, nothing that would read as a result that failed to load. */
+.text-panel-hint {
+    margin: 10px 0 0;
+    font-size: 0.86rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+}
+
 .text-panel-title {
     margin: 0 0 4px;
     font-family: var(--font-display);
@@ -1078,6 +1087,8 @@ html[data-contrast="darker"] .site-footer {
 }
 
 .text-panel .text-item:nth-child(2) { animation-delay: 40ms; }
+/* The resting line fades in with the rest of the view rather than appearing hard. */
+.text-panel-hint { animation: khanjpFadeIn var(--dur-2, 0.22s) var(--ease-out, ease) both; }
 .text-panel .text-item:nth-child(3) { animation-delay: 80ms; }
 .text-panel .text-item:nth-child(n + 4) { animation-delay: 120ms; }
 

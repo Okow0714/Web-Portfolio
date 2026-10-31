@@ -25,6 +25,8 @@ Object.assign(window.I18N_STRINGS, {
 
     // --- the pentagon level select -------------------------------------------
     'reading.pickLevel': { en: 'Pick a level', mn: 'Шатаа сонгоно уу' },
+    'reading.panelIdleTitle': { en: 'No level picked', mn: 'Шат сонгоогүй байна' },
+    'reading.panelIdle': { en: 'Pick a level and its three texts appear here.', mn: 'Шат сонгоход түүний гурван текст энд гарч ирнэ.' },
     'reading.pickLevelSub': { en: 'Three texts to a level. Finish all three and the next pentagon opens.', mn: 'Шат бүр гурван текст. Гурвуулангаа дуусгавал дараагийн таван өнцөгт нээгдэнэ.' },
     'reading.levelHint': { en: 'Level {n} (~{hint})', mn: '{n}-р шат (~{hint})' },
     'reading.levelOfTexts': { en: 'Level {n} · {i} / {total}', mn: '{n}-р шат · {i} / {total}' },

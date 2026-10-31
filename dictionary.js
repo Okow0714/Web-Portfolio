@@ -351,6 +351,19 @@ function renderMnjpList() {
     const countEl = document.getElementById('mnjp-count');
     list.innerHTML = '';
 
+    // No query, no results. With an empty query every entry "matches", so this printed the
+    // first 150 of 3,537 words in alphabetical order -- 150 translations nobody had asked for,
+    // sitting under a search bar that had not been used. A dictionary at rest is a prompt.
+    // "Recently searched" above stays, because those ARE words this reader asked for.
+    const idle = document.getElementById('mnjp-idle');
+    if (!mnjpQuery) {
+        hideEl(empty);
+        showEl(idle);
+        countEl.textContent = window.tf('dict.wordCount', { n: MNJP_ENTRIES.length });
+        return;
+    }
+    hideEl(idle);
+
     const filtered = MNJP_ENTRIES.filter(e => matchesMnjpSearch(e, mnjpQuery));
     // Without this, searching a common single kanji like 人 buries the exact word under 30+
     // compounds that merely contain it (人生, 外国人, 殺人...), sorted alphabetically -- rank
@@ -588,6 +601,18 @@ function renderList() {
     const empty = document.getElementById('dict-empty');
     const countEl = document.getElementById('dict-count');
     list.innerHTML = '';
+
+    // Same rule as the primary tab, with one addition: picking a part-of-speech filter IS a
+    // deliberate act, so a filter alone is enough to ask for a list. This tab has no render
+    // cap either, so at rest it was building every one of the entries into the DOM.
+    const idle = document.getElementById('dict-idle');
+    if (!searchQuery && activeFilter === 'all') {
+        hideEl(empty);
+        showEl(idle);
+        countEl.textContent = window.tf('dict.wordCount', { n: DICTIONARY_ENTRIES.length });
+        return;
+    }
+    hideEl(idle);
 
     const filtered = DICTIONARY_ENTRIES.filter(e => matchesSearch(e, searchQuery) && matchesFilter(e));
     countEl.textContent = `${filtered.length} / ${DICTIONARY_ENTRIES.length}`;
