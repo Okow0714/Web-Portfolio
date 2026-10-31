@@ -33,10 +33,6 @@ Object.assign(window.I18N_STRINGS, {
         en: 'Five JLPT tiers, twelve levels each. Start at N5 — that is beginner vocabulary.',
         mn: 'JLPT-ийн таван түвшин, тус бүр 12 шаттай. N5-аас эхлээрэй — анхан шатны үгс байгаа.'
     },
-    'tour.game.levels': {
-        en: 'One level is 24 word pairs. A level you have finished stays marked, and your best result is kept if you are signed in.',
-        mn: 'Нэг шатад 24 хос үг байна. Дуусгасан шат тэмдэглэгдэж үлдэх бөгөөд нэвтэрсэн бол шилдэг дүн чинь хадгалагдана.'
-    },
     'tour.game.sound': {
         en: 'Music and sound effects. They start on — tap here to mute.',
         mn: 'Хөгжим, дуу чимээ. Асаалттай эхэлдэг — дуугүй болгохыг хүсвэл эндээс дарна уу.'
@@ -44,10 +40,6 @@ Object.assign(window.I18N_STRINGS, {
     'tour.game.board': {
         en: 'Twelve cards, six pairs. Turn one over, then the card you think means the same. Get it wrong and both turn back — so remember where things were.',
         mn: 'Арван хоёр хөзөр, зургаан хос. Нэгийг эргүүлээд, утга нь ижил гэж бодсон хөзрөө дарна. Буруу бол хоёулаа буцаж эргэнэ — тиймээс хаана юу байсныг сайн цээжил.'
-    },
-    'tour.game.timer': {
-        en: 'Your clock. It starts at four minutes, and every pair you clear puts twenty seconds back on it.',
-        mn: 'Таны цаг. Дөрвөн минутаас эхлэх бөгөөд хос арилгах бүрд 20 секунд нэмэгдэнэ.'
     },
     'tour.game.stats': {
         en: 'Clicks are your score, and fewer is better — so is misses. Bonus counts the extra pairs you catch in the four-second rounds.',
@@ -64,22 +56,6 @@ Object.assign(window.I18N_STRINGS, {
     'tour.game.hint': {
         en: 'Stuck? This turns two cards over for a moment, and adds three clicks to your score.',
         mn: 'Санахгүй байна уу? Энэ хоёр хөзрийг хоромхон зуур эргүүлэх бөгөөд оноонд гурван даралт нэмнэ.'
-    },
-    'tour.game.powerup': {
-        en: 'Every four correct pairs in a row banks a powerup here. One takes a pair off the board for free; the other trades three pairs for new words.',
-        mn: 'Дараалан дөрвөн хос зөв холбох бүрд энд бонус хуримтлагдана. Нэг нь хосыг үнэгүй арилгаж, нөгөө нь гурван хосыг шинэ үгээр солино.'
-    },
-    'tour.game.shuffle': {
-        en: 'Rearranges the tiles you have left. Nothing else changes — no time cost, no penalty.',
-        mn: 'Үлдсэн нүднүүдийн байрлалыг холино. Өөр юу ч өөрчлөгдөхгүй — цаг ч алдахгүй, торгууль ч байхгүй.'
-    },
-    'tour.game.families': {
-        en: 'Kanji that share a phonetic component chain together — connect two or more and they all clear at once. The families you find collect here.',
-        mn: 'Ижил дуудлагын язгуур бүхий ханзууд хооронд нь холбогдоно — хоёр буюу түүнээс дээшийг холбовол бүгд нэг дор арилна. Олсон бүлгүүд чинь энд хуримтлагдана.'
-    },
-    'tour.game.example': {
-        en: 'The pair you matched last, with an example sentence wherever the data has one.',
-        mn: 'Хамгийн сүүлд холбосон хос. Өгөгдөлд байгаа тохиолдолд жишээ өгүүлбэр нь ч бас энд гарна.'
     },
 
     // --- Dokkai Reader --------------------------------------------------------
@@ -128,10 +104,6 @@ Object.assign(window.I18N_STRINGS, {
     'tour.phonetics.info': {
         en: 'Not sure what a phonetic component is? This explains it in a paragraph.',
         mn: 'Дуудлагын язгуур гэж юу болохыг мэдэхгүй байна уу? Энд нэг догол мөрөөр тайлбарласан байгаа.'
-    },
-    'tour.phonetics.tree': {
-        en: 'The component sits in the middle and its family radiates out. Tap any kanji for its readings, meaning and an example sentence. Once you are signed in, kanji you have already met in the tools are ringed, and ones you get right more often than wrong are filled in.',
-        mn: 'Язгуур нь голдоо, бүлгийнх нь ханзууд эргэн тойрон нь байрлана. Аль нэг ханз дээр дарвал уншлага, утга, жишээ өгүүлбэр нь гарна. Нэвтэрсэн үед хэрэгслүүд дээр аль хэдийн тааралдсан ханзыг тойруулж, буруугаас илүү олон удаа зөв хийсэн ханзыг дүүргэж тэмдэглэнэ.'
     },
     'tour.phonetics.readings': {
         en: 'Each kanji shows two kinds of reading. The <b>on\'yomi</b> came from Chinese and is what a phonetic family shares; the <b>kun\'yomi</b> is the native Japanese word the character was matched to, and it does not follow the family at all.',

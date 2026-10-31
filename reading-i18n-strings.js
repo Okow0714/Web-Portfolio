@@ -49,7 +49,6 @@ Object.assign(window.I18N_STRINGS, {
     'reading.continueNow': { en: 'Continue Now', mn: 'Одоо үргэлжлүүлэх' },
 
     'reading.textsComplete': { en: '{done} / {total} texts complete', mn: '{done} / {total} текст дууссан' },
-    'reading.finishPreviousToUnlock': { en: 'Finish the previous level to unlock', mn: 'Нээхийн тулд өмнөх шатыг дуусгана уу' },
     'reading.trackLevelHint': { en: '{track} — Level {n} (~{hint})', mn: '{track} — {n}-р шат (~{hint})' },
     'reading.charsCount': { en: '~{n} chars', mn: '~{n} тэмдэгт' },
     'reading.levelDashTitle': { en: 'Level {n} — {title}', mn: '{n}-р шат — {title}' },

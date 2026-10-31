@@ -3,7 +3,6 @@
 Object.assign(window.I18N_STRINGS, {
     'phonetics.titleMain': { en: 'Phonetics Family', mn: 'Дуудлагын бүлэг' },
     'phonetics.whatIsPhoneticComponent': { en: "What's a phonetic component?", mn: 'Дуудлагын язгуур гэж юу вэ?' },
-    'phonetics.families': { en: 'Families', mn: 'Бүлгүүд' },
     'phonetics.modalTitle': { en: "What's a Phonetic Component?", mn: 'Дуудлагын язгуур гэж юу вэ?' },
     'phonetics.stageComponent': { en: 'component', mn: 'язгуур' },
     'phonetics.stagePhonetic': { en: 'phonetic (相 &middot; ソウ)', mn: 'дуудлага (相 &middot; ソウ)' },
@@ -14,9 +13,6 @@ Object.assign(window.I18N_STRINGS, {
         mn: '«Дуудлагын язгуур» гэдэг нь ханзны дотор давтагдан орох хэсэг бөгөөд утгыг нь бус, хятад хэлнээс гаралтай онёми дуудлагыг нь заадаг. Ижил язгууртай ханзууд — дээрх 相, 想, 霜 шиг — утгаараа эрс өөр байсан ч дуудлага нь ойролцоо байдаг, учир нь язгуурыг нь анхнаасаа дуудлагаар нь сонгосон юм. Утгыг нь харин тусдаа «утгын радикал» илэрхийлдэг — жишээ нь 想 дотор багтсан 心, зүрх.'
     },
     'phonetics.kanjiInFamily': { en: '{n} kanji in this family', mn: 'энэ бүлэгт {n} ханз' },
-    'phonetics.noExampleForKanji': { en: 'No example sentence found for this kanji in the source data.', mn: 'Энэ ханзны жишээ өгүүлбэр эх өгөгдөлд олдсонгүй.' },
-    'phonetics.familyForLevelHint': { en: 'Phonetic family for {level} · {n} kanji share this component dictionary-wide. Tap a kanji to see its details.', mn: '{level} түвшний дуудлагын бүлэг · толь бичигт энэ язгууртай нийт {n} ханз байна. Дэлгэрэнгүйг харахын тулд ханз дээр дарна уу.' },
-    'phonetics.shared': { en: 'shared', mn: 'нийтлэг' },
 });
 
 // ---- Phonetics drill (phonetics-drill.html) ----
@@ -98,29 +94,12 @@ Object.assign(window.I18N_STRINGS, {
 
     // The board itself. The page's own name stays the eyebrow above this; the h1 is what the
     // screen asks you to do, because that is the lesson and the index was never it.
-    'phonetics.boardTitle': { en: 'Guess the reading', mn: 'Дуудлагыг нь таах' },
-    'phonetics.boardRule': {
-        en: 'The shape in the middle gives you a <b>reading to try</b>. Every kanji around it contains that shape. <b>Guess first, then tap to check.</b>',
-        mn: 'Голд байгаа хэлбэр нь <b>оролдох дуудлагыг</b> хэлж өгнө. Эргэн тойрны ханз бүр түүнийг дотроо агуулсан байгаа. <b>Эхлээд таасны дараа дарж шалгаарай.</b>'
-    },
-    'phonetics.tryThis': { en: 'try this reading', mn: 'энэ дуудлагыг туршиж үзээрэй' },
-    'phonetics.tapToCheck': { en: 'tap to check', mn: 'дарж шалгаарай' },
-    'phonetics.checked': { en: 'Checked {n}/{total}', mn: 'Шалгасан {n}/{total}' },
-    'phonetics.matched': { en: '{n} matched', mn: '{n} таарсан' },
-    'phonetics.unmatched': { en: '{n} did not', mn: '{n} таараагүй' },
-    'phonetics.revealAll': { en: 'Reveal all', mn: 'Бүгдийг нээх' },
-    'phonetics.guessAgain': { en: 'Guess again', mn: 'Дахин таах' },
 
     'phonetics.legendHit': { en: 'answered right', mn: 'зөв хариулсан' },
     'phonetics.legendMiss': { en: 'missed', mn: 'алдсан' },
     'phonetics.legendNew': { en: 'not asked yet', mn: 'хараахан асуугаагүй' },
 
     // The drill's entry panel. The round itself runs full screen on phonetics-drill.html.
-    'phonetics.drillPanelSub': {
-        en: 'Ten shapes a round. Hiragana, katakana or romaji all count. Your answers colour the list above.',
-        mn: 'Нэг удаад 10 хэлбэр. Хирагана, катакана, ромажи аль нь ч болно. Хариулт нь дээрх жагсаалтыг өнгөөр тэмдэглэнэ.'
-    },
-    'phonetics.startRound': { en: 'Start — {n} cards', mn: 'Эхлэх — {n} карт' },
     'phonetics.pickDeck': { en: 'Which shapes should it ask about? {n} at a time.', mn: 'Аль язгуураас асуух вэ? Нэг удаад {n}.' },
     'phonetics.deckNewSub': { en: 'not asked yet', mn: 'хараахан асуугаагүй' },
     'phonetics.deckMissSub': { en: 'last answer was wrong', mn: 'сүүлд буруу хариулсан' },
@@ -130,17 +109,9 @@ Object.assign(window.I18N_STRINGS, {
     'phonetics.nRight': { en: '{n} right', mn: '{n} зөв' },
     'phonetics.nWrong': { en: '{n} wrong', mn: '{n} буруу' },
     'phonetics.roundTally': { en: '{hit} known · {miss} missed · {new} not asked', mn: '{hit} мэдсэн · {miss} алдсан · {new} асуугаагүй' },
-    'phonetics.noShapes': { en: 'No shapes at this stage.', mn: 'Энэ шатанд язгуур алга.' },
 
-    'phonetics.wavesTitle': { en: 'Why does one kanji have two readings?', mn: 'Яагаад нэг ханз хоёр дуудлагатай байдаг вэ?' },
-    'phonetics.wavesBody': {
-        en: '<p>Japanese borrowed Chinese readings <b>in waves, not once</b>: <span class="jp">呉音</span> (go-on) in the 5th–6th century, <span class="jp">漢音</span> (kan-on) in the 7th–9th.</p><p>So <span class="jp">生</span> is both <span class="jp">セイ</span>(漢) and <span class="jp">ショウ</span>(呉). The component gives you a <b>reading to try</b> — if it turns up anywhere in that kanji\'s set, the pattern held.</p>',
-        mn: '<p>Япон хэл хятад дуудлагыг <b>нэг удаа биш, давалгаагаар</b> зээлсэн. 5–6-р зуунд <span class="jp">呉音</span> (го-он), 7–9-р зуунд <span class="jp">漢音</span> (кан-он).</p><p>Тиймээс <span class="jp">生</span> нь <span class="jp">セイ</span>(漢) ба <span class="jp">ショウ</span>(呉) хоёулаа. Язгуур нь танд <b>оролдох дуудлага</b> өгнө — тэр нь ханзны жагсаалтад байвал хэв ажилласан.</p>'
-    },
     // Stages, for the levels too big to meet whole: N1 alone carries 155 shapes.
-    'phonetics.stagesLabel': { en: 'Stage', mn: 'Шат' },
     'phonetics.cpShapes': { en: '{n} shapes', mn: '{n} язгуур' },
-    'phonetics.cpDone': { en: '{n} right', mn: '{n} зөв' },
     'phonetics.cpAria': {
         en: 'Stage {n} of {total} — {count} shapes, {done} answered correctly',
         mn: '{total} шатны {n} дахь — {count} язгуур, {done} нь зөв'

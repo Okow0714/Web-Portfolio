@@ -62,10 +62,6 @@ Object.assign(window.I18N_STRINGS, {
     'pstage.prev': { en: '← Previous', mn: '← Өмнөх' },
     'pstage.next': { en: 'Next →', mn: 'Дараах →' },
     'pstage.onCurve': { en: 'where this sits on the curve', mn: 'муруй дээрх байршил' },
-    'path.hoursNote': {
-        en: 'The hours on each stage are the ranges commonly quoted for learners with no previous kanji knowledge. Sources disagree with each other, none of them measured you, and nothing on this site tracks them — treat them as a sense of scale, not a target.',
-        mn: 'Үе шат бүрийн цаг бол ханз үзэж байгаагүй хүмүүст зориулж түгээмэл дурддаг тоо. Эх сурвалж бүр өөр өөр тоо бичдэг бөгөөд энэ сайт таны цагийг хэмждэггүй. Хэр их ажил болохыг төсөөлөхөд л хэрэг болно, зорилт болгох тоо биш.',
-    },
     'path.startHere': { en: 'Start here', mn: 'Эхлэх цэг' },
     'path.settings': { en: 'Settings', mn: 'Тохиргоо' },
 
@@ -258,13 +254,4 @@ Object.assign(window.I18N_STRINGS, {
     },
 
     // ---- outro ----
-    'path.outro.title': { en: 'If you take one thing from this page', mn: 'Энэ хуудаснаас ганцхан зүйл авах юм бол' },
-    'path.outro.p1': {
-        en: 'Do a little every day rather than a lot on Sunday. Every tool here is built in short levels for that reason — one Word Match level is four minutes and one Grammar Connect level is three.',
-        mn: 'Ням гарагт их хийхээсээ өдөр бүр багаар хийгээрэй. Энд байгаа бүх хэрэгсэл яг үүний тулд богино шатуудад хуваагдсан — Үг холбохын нэг шат дөрвөн минут, Дүрэм холбохынх гурван минут.',
-    },
-    'path.outro.p2': {
-        en: 'You do not need an account to use any of it. Signing in only saves your times and completions across visits, and shows them on the <a href="dashboard.html">Dashboard</a>.',
-        mn: 'Эдгээрийг ашиглахад бүртгэл шаардлагагүй. Нэвтэрсэн тохиолдолд зөвхөн таны хугацаа, дуусгасан шатууд хадгалагдаж, <a href="dashboard.html">Хяналтын самбар</a> дээр харагдана.',
-    },
 });

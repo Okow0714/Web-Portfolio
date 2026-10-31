@@ -14,17 +14,11 @@ Object.assign(window.I18N_STRINGS, {
     'grammar.volLow': { en: 'Volume: low', mn: 'Дуу: намхан' },
     'grammar.volMedium': { en: 'Volume: medium', mn: 'Дуу: дунд' },
     'grammar.volFull': { en: 'Volume: full', mn: 'Дуу: чанга' },
-    'grammar.soundOff': { en: 'Turn sound off', mn: 'Дууг унтраах' },
-    'grammar.soundOn': { en: 'Turn sound on', mn: 'Дууг асаах' },
     'grammar.previousBestMistakes': { en: 'Previous best: {time} · {mistakes} mistakes', mn: 'Өмнөх шилдэг: {time} · {mistakes} алдаа' },
     'grammar.clearedBeforeTimeOut': { en: 'Cleared {n} / {total} sentences before time ran out.', mn: 'Цаг дуусахаас өмнө {n} / {total} өгүүлбэрийг дуусгасан.' },
-    'grammar.foundation': { en: 'Foundation', mn: 'Суурь' },
-    'grammar.advanced': { en: 'Advanced', mn: 'Ахисан' },
     'grammar.levelsCount': { en: '{n} levels', mn: '{n} шат' },
     'grammar.reviewTitle': { en: 'Review · your weak points', mn: 'Давталт · сул талууд' },
-    'grammar.trackLevel': { en: '{track} · Level {n}', mn: '{track} · {n}-р шат' },
     'grammar.clearedEmptyHint': { en: 'Solved sentences (with their translation) will appear here as you go.', mn: 'Шийдсэн өгүүлбэрүүд орчуулгынхаа хамт ажиллах тусам энд нэмэгдэнэ.' },
-    'grammar.comingSoon': { en: 'Coming soon', mn: 'Удахгүй' },
 
     // The four bands of the level select. `note` says what a band is MOSTLY -- measured by
     // classifying every grammar point in grammar-data.js, not by what the track is called. No

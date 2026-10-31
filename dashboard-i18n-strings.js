@@ -6,7 +6,6 @@ Object.assign(window.I18N_STRINGS, {
     'dash.guestTitle': { en: 'Log in to see your dashboard', mn: 'Хянах самбараа үзэхийн тулд нэвтэрнэ үү' },
     'dash.guestBody': { en: 'Your progress, score, and account settings all live here once you have an account.', mn: 'Бүртгэлтэй болмогц таны явц, оноо, бүртгэлийн тохиргоо бүгд энд харагдана.' },
 
-    'dash.editName': { en: 'Edit display name', mn: 'Харагдах нэрээ засах' },
     'dash.save': { en: 'Save', mn: 'Хадгалах' },
     'dash.cancel': { en: 'Cancel', mn: 'Цуцлах' },
     // Shown in place of a bar's "3 / 60" when the query behind it failed. It has to be clearly not
