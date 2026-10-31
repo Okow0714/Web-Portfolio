@@ -4,8 +4,8 @@ Object.assign(window.I18N_STRINGS, {
     'credits.title': { en: 'Credits & Sources', mn: 'Эх сурвалж ба зохиогчийн эрх' },
     'credits.licensing.h': { en: 'Licensing', mn: 'Лицензүүд' },
     'credits.licensing.p': {
-        en: "This site's code is MIT licensed. Three of its data files — <code>game-words.js</code>, <code>phonetics-data.js</code> and <code>phonetics-kanji-index.js</code> — carry kanji phonetic-component data derived from Kanjium and are therefore offered under <a href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>, the same licence Kanjium uses. The full terms, including the third-party notices, are in the <a href=\"https://github.com/Okow0714/Web-Portfolio/blob/main/LICENSE\" target=\"_blank\" rel=\"noopener\">LICENSE file</a>.",
-        mn: "Энэ сайтын код MIT лицензтэй. Гурван өгөгдлийн файл — <code>game-words.js</code>, <code>phonetics-data.js</code>, <code>phonetics-kanji-index.js</code> — Kanjium-аас гаралтай ханзны дуудлагын язгуурын мэдээлэл агуулдаг тул Kanjium-тай ижил <a href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> лицензээр тархаана. Бүрэн нөхцөл, гуравдагч талын мэдэгдлүүдийг <a href=\"https://github.com/Okow0714/Web-Portfolio/blob/main/LICENSE\" target=\"_blank\" rel=\"noopener\">LICENSE файлаас</a> үзнэ үү.",
+        en: "This site's code is MIT licensed. Four of its data files — <code>game-words.js</code>, <code>phonetics-data.js</code>, <code>phonetics-kanji-index.js</code> and <code>kanji-index.js</code> — carry kanji data derived from Kanjium and KANJIDIC2 and are therefore offered under <a href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a>, the same licence both sources use. The full terms, including the third-party notices, are in the <a href=\"https://github.com/Okow0714/Web-Portfolio/blob/main/LICENSE\" target=\"_blank\" rel=\"noopener\">LICENSE file</a>.",
+        mn: "Энэ сайтын код MIT лицензтэй. Дөрвөн өгөгдлийн файл — <code>game-words.js</code>, <code>phonetics-data.js</code>, <code>phonetics-kanji-index.js</code>, <code>kanji-index.js</code> — Kanjium ба KANJIDIC2-оос гаралтай ханзны мэдээлэл агуулдаг тул тэдгээртэй ижил <a href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY-SA 4.0</a> лицензээр тархаана. Бүрэн нөхцөл, гуравдагч талын мэдэгдлүүдийг <a href=\"https://github.com/Okow0714/Web-Portfolio/blob/main/LICENSE\" target=\"_blank\" rel=\"noopener\">LICENSE файлаас</a> үзнэ үү.",
     },
     'credits.intro': {
         en: "Every dataset, photo, and music track used across this site's tools, credited in one place — the short version lives in every page's footer, this is the full version.",
@@ -14,6 +14,7 @@ Object.assign(window.I18N_STRINGS, {
 
     'credits.dataSources.h': { en: 'Dictionary & language data', mn: 'Толь бичиг ба хэлний өгөгдөл' },
     'credits.kanjiumMeta': { en: 'kanji & phonetic-family data', mn: 'ханз ба дуудлагын бүлгийн өгөгдөл' },
+    'credits.kanjidicMeta': { en: 'kanji readings, meanings and stroke counts, from the Electronic Dictionary Research and Development Group', mn: 'ханзны дуудлага, утга, зураасны тоо — Electronic Dictionary Research and Development Group-аас' },
     'credits.tatoebaMeta': { en: 'example sentences', mn: 'жишээ өгүүлбэрүүд' },
     'credits.kanjiFreqMeta': { en: 'usage ranking', mn: 'хэрэглээний зэрэглэл' },
 

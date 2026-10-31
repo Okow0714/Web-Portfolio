@@ -42,17 +42,19 @@ SOFTWARE.
 2. Derived data — CC BY-SA 4.0
 -------------------------------------------------------------------------------
 
-Applies to exactly these three files:
+Applies to exactly these four files:
 
     game-words.js
     phonetics-data.js
     phonetics-kanji-index.js
+    kanji-index.js
 
-Each carries kanji phonetic-component data derived from Kanjium, which is
-licensed CC BY-SA 4.0. ShareAlike is inherited by adaptations, so these files
-are offered under the same licence and not under the MIT terms above. Anyone
-redistributing them, modified or not, must do so under CC BY-SA 4.0 and keep
-the attribution below.
+The first three carry kanji phonetic-component data derived from Kanjium;
+kanji-index.js carries readings, meanings and stroke counts derived from
+KANJIDIC2. Both are licensed CC BY-SA 4.0. ShareAlike is inherited by
+adaptations, so these files are offered under the same licence and not under
+the MIT terms above. Anyone redistributing them, modified or not, must do so
+under CC BY-SA 4.0 and keep the attribution below.
 
     Creative Commons Attribution-ShareAlike 4.0 International
     https://creativecommons.org/licenses/by-sa/4.0/
@@ -60,9 +62,16 @@ the attribution below.
     Contains data from Kanjium by Uros Ozvald and contributors
     https://github.com/mifunetoshiro/kanjium — CC BY-SA 4.0
 
+    Contains data from KANJIDIC2, the property of the Electronic Dictionary
+    Research and Development Group, used in conformance with the Group's
+    licence. https://www.edrdg.org/wiki/index.php/KANJIDIC_Project
+    — CC BY-SA 4.0
+
 phonetics-data.js additionally carries usage-frequency ranking derived from
 scriptin/kanji-frequency (CC BY 4.0), and phonetics-kanji-index.js is generated
-from phonetics-data.js.
+from phonetics-data.js. kanji-index.js's Mongolian glosses are this project's
+own and are not EDRDG material; its readings, English meanings and stroke
+counts are.
 
 The remaining data files — mnjp-data.js, reading-texts.js and
 dictionary-data.js — carry no Kanjium-derived material and are covered by
@@ -76,6 +85,12 @@ section 1, subject to the third-party notices in section 3.
 Kanjium — kanji and phonetic-family data
     https://github.com/mifunetoshiro/kanjium
     CC BY-SA 4.0. See section 2.
+
+KANJIDIC2 — kanji readings, English meanings and stroke counts
+    Electronic Dictionary Research and Development Group (EDRDG)
+    https://www.edrdg.org/wiki/index.php/KANJIDIC_Project
+    CC BY-SA 4.0. See section 2. Used in conformance with the EDRDG licence
+    at https://www.edrdg.org/edrdg/licence.html.
 
 Tatoeba — example sentences
     https://tatoeba.org
