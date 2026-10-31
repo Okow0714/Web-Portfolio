@@ -176,10 +176,10 @@
             const li = document.createElement('li');
             li.className = 'dash-missed-row';
             const picked = row.confused_with
-                ? '<span class="dash-missed-confused">' + window.tf('dash.missed.picked', { word: escapeHtml(row.confused_with) }) + '</span>'
+                ? '<span class="dash-missed-confused">' + window.tf('dash.missed.picked', { word: safe(row.confused_with) }) + '</span>'
                 : '';
             li.innerHTML =
-                '<span class="dash-missed-word" lang="ja">' + escapeHtml(row.word) + '</span>' +
+                '<span class="dash-missed-word" lang="ja">' + safe(row.word) + '</span>' +
                 '<span class="dash-missed-meta">' + picked + '</span>' +
                 '<span class="dash-missed-count">' + escapeHtml(window.tf('dash.missed.times', { n: row.misses })) + '</span>';
             listEl.appendChild(li);
@@ -215,10 +215,10 @@
             li.className = 'dash-missed-row';
             const times = window.tf('dash.missed.times', { n: row.misses });
             const picked = row.confused_with
-                ? '<span class="dash-missed-confused">' + window.tf('dash.missed.picked', { word: escapeHtml(row.confused_with) }) + '</span>'
+                ? '<span class="dash-missed-confused">' + window.tf('dash.missed.picked', { word: safe(row.confused_with) }) + '</span>'
                 : '';
             li.innerHTML =
-                '<span class="dash-missed-word" lang="ja">' + escapeHtml(row.word) + '</span>' +
+                '<span class="dash-missed-word" lang="ja">' + safe(row.word) + '</span>' +
                 '<span class="dash-missed-meta"><span class="dash-missed-source">' +
                     escapeHtml(window.t(SOURCE_KEY[row.source] || row.source)) + '</span>' + picked + '</span>' +
                 '<span class="dash-missed-count">' + escapeHtml(times) + '</span>';
@@ -231,6 +231,26 @@
         d.textContent = str == null ? '' : String(str);
         return d.innerHTML;
     }
+
+    // word_stats rows are keys, and keys hold no markup -- word-stats.js strips furigana before
+    // anything is written. Rows written BEFORE that fix still carry it, though, and escapeHtml
+    // prints those tags literally: this panel showed `<ruby>目<rp>(</rp><rt>め</rt>...` where it
+    // meant 目を見張らされる. Cleaning on the way out as well as on the way in is what makes the
+    // existing rows legible without a migration; it is also the right place for it, since the
+    // alternative -- handing DB text to innerHTML so the ruby renders -- is a habit worth not
+    // having, even where the row can only be your own.
+    function plainText(str) {
+        return String(str == null ? '' : str)
+            .replace(/<rp>[\s\S]*?<\/rp>/gi, '')
+            .replace(/<rt>[\s\S]*?<\/rt>/gi, '')
+            .replace(/<\/?ruby>/gi, '')
+            .replace(/<[^>]*>/g, '')
+            .trim();
+    }
+
+    // Escaped, always: plainText drops the tags this data is known to carry, not every shape a
+    // string could take, and it is the escape that makes it safe rather than the stripping.
+    const safe = (str) => escapeHtml(plainText(str));
 
     async function refreshDashboard(session) {
         renderStaticStrings();

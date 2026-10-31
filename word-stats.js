@@ -79,15 +79,38 @@
             .catch(() => { activeDayInFlight = null; /* offline; a later attempt tries again */ });
     }
 
+    // `word` is a KEY, not display text: it is what the review queue matches a sentence against
+    // and what the dashboard groups by. Furigana markup has no business in it, and the tools hand
+    // it over anyway -- Grammar Connect's tile options and 220 of its 400 `new` strings carry
+    // <ruby>, so 49 of its sentences were filing rows keyed by a markup blob. That is wrong three
+    // times over: the dashboard printed the tags literally (`<ruby>目<rp>(</rp>...`), the review
+    // queue could never match such a key against grammar-data.js and the rows were dead weight,
+    // and two spellings of one point would count as two.
+    //
+    // Stripping here rather than in each caller because the column has the same meaning for every
+    // tool, and a second tool passing furigana would otherwise reintroduce it silently.
+    // <rp> first: its content is the fallback parenthesis, which must go WITH the reading, not be
+    // left behind as a stray "()" once <rt> is removed.
+    function plainText(s) {
+        return String(s)
+            .replace(/<rp>[\s\S]*?<\/rp>/gi, '')
+            .replace(/<rt>[\s\S]*?<\/rt>/gi, '')
+            .replace(/<\/?ruby>/gi, '')
+            .replace(/<[^>]*>/g, '')
+            .trim();
+    }
+
     // The one call the tools make. Fire-and-forget on purpose: a learner mid-level must never
     // wait on, or be interrupted by, a statistics write.
     window.recordWordAttempt = function (row) {
         if (!row || !row.word || !row.source) return;
+        const word = plainText(row.word).slice(0, 120);
+        if (!word) return;   // markup and nothing else is not a word
         const clean = {
             source: row.source,
-            word: String(row.word).slice(0, 120),
+            word: word,
             correct: !!row.correct,
-            confusedWith: row.confusedWith ? String(row.confusedWith).slice(0, 120) : null,
+            confusedWith: row.confusedWith ? plainText(row.confusedWith).slice(0, 120) || null : null,
         };
         if (!window.supabaseReady || !session) {
             const buf = readBuffer();

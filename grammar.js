@@ -809,20 +809,38 @@ function openLevel(track, levelNum) {
 // Weak-point review: grammar.html?review=1
 //
 // Builds a level out of the grammar points this learner actually gets wrong, instead of a fixed
-// one. word_stats files every Grammar Connect attempt under the sentence's `newCore` -- the grammar
-// point it teaches -- so one row covers every sentence drilling that point (ざるをえない is 13 of
+// one. word_stats files every Grammar Connect attempt under grammarKey() -- the grammar point the
+// sentence teaches -- so one row covers every sentence drilling that point (ざるをえない is 13 of
 // them), which is what makes "the points you miss" a meaningful list rather than a pile of
 // individual sentences. Due words lead, then the most-missed, the same order Word Match's review
 // uses; one sentence per point first, so a ten-sentence review covers ten weaknesses rather than
 // ten sentences of the same one.
 const GRAMMAR_REVIEW_MIN = 4;
 
+// The grammar point a sentence drills, as word_stats should key it.
+//
+// `newCore` names the pool's citation form when `new` is conjugated away from it. 41 of the 400
+// sentences have no `newCore` at all, and NOT because the data is missing: in those the answer
+// IS the plain form -- 話せます against ことができる, 読んでください against てみる, とても重いです
+// against すぎる -- so the grammar point under test is the one on the OTHER side, `oldCore`.
+// Falling straight through to `s.new` there filed a row under a conjugated, furigana-laden
+// sentence fragment, which sentencesByCore() could never match (it indexes citation forms), so
+// those rows were unreachable by review AND unreadable on the dashboard.
+// 32 sentences still have neither core and fall through to the sentence text; they are listed
+// in plain Japanese rather than markup, and want cores adding to grammar-data.js.
+function grammarKey(s) {
+    return s.newCore || s.oldCore || s.new;
+}
+
 function sentencesByCore() {
     const byCore = new Map();
     TRACKS.forEach(track => (GRAMMAR_LEVELS[track] || []).forEach(lv => lv.sentences.forEach(s => {
-        if (!s.newCore) return;
-        if (!byCore.has(s.newCore)) byCore.set(s.newCore, []);
-        byCore.get(s.newCore).push(s);
+        // Indexed by the SAME expression the attempt is filed under, or a row keyed by oldCore
+        // would be written and then never found again.
+        const core = grammarKey(s);
+        if (!core) return;
+        if (!byCore.has(core)) byCore.set(core, []);
+        byCore.get(core).push(s);
     })));
     return byCore;
 }
@@ -1056,7 +1074,7 @@ function onTileClick(btn, opt, s) {
         }, 180);
 
         if (window.recordWordAttempt) {
-            window.recordWordAttempt({ source: 'grammar', word: s.newCore || s.new, correct: true });
+            window.recordWordAttempt({ source: 'grammar', word: grammarKey(s), correct: true });
         }
         clearedCount++;
         timeRemaining += TIME_BONUS_PER_SENTENCE;
@@ -1077,9 +1095,10 @@ function onTileClick(btn, opt, s) {
     } else {
         // The grammar point is the item being learned; the tile tapped is what it was confused
         // with. Cores where they exist, since 「そう」 is a more useful thing to count than
-        // 「降るそうです」.
+        // 「降るそうです」. `opt` is a tile's display text and carries furigana;
+        // recordWordAttempt strips it, because word_stats holds keys and not markup.
         if (window.recordWordAttempt) {
-            window.recordWordAttempt({ source: 'grammar', word: s.newCore || s.new, correct: false, confusedWith: opt });
+            window.recordWordAttempt({ source: 'grammar', word: grammarKey(s), correct: false, confusedWith: opt });
         }
         mistakeCount++;
         timeRemaining = Math.max(0, timeRemaining - TIME_PENALTY_PER_MISTAKE);
