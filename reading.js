@@ -208,7 +208,6 @@ const PENT_DOWN = PENT_UP.map(v => [PENT_PAIR[0] - v[0], PENT_PAIR[1] - v[1]]);
 const PENT_A = [2 * PENT_PAIR[0], 0];                               // along a row
 const PENT_B = [0, -(PENT_R + Math.abs(PENT_UP[2][1]))];            // row to row
 const PENT_S = 58;                                                  // units -> px
-const PENT_COLS = 2;                                                // pairs across
 
 // Where tile i sits. Four tiles to a band: two up, then the two that nest under them, so the
 // numbering reads left to right and top to bottom down the pack.

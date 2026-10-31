@@ -25,8 +25,11 @@ const SHOTS = [
         out: 'reading', url: 'reading.html', y: 200,
         enter: async page => {
             await page.locator('.track-card').first().click();      // Суурь
-            await page.waitForTimeout(700);
-            await page.locator('.level-card:not(.locked)').first().click();
+            await page.waitForTimeout(900);
+            // .level-card is GONE -- the 2026-10-29 rebuild made the level select twelve
+            // pentagons. This click had been timing out silently ever since, so regenerating
+            // the reader's share card produced nothing.
+            await page.locator('.pent.is-next, .pent.is-open').first().click();
             await page.waitForTimeout(700);
             await page.locator('.text-item').first().click();
             await page.waitForTimeout(1600);

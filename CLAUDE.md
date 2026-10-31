@@ -1034,6 +1034,19 @@ derivative of `phonetics-data.js` — see its own header) is small enough to `Re
 needed; it's listed here mainly so a future edit to `phonetics-data.js`'s kanji membership
 remembers to regenerate it too, or the dictionary's phonetic-family links go stale.
 
+**TWO OF THESE ARE LOADED BY NO PAGE AND ARE KEPT ANYWAY** (2026-10-31 dead-code audit).
+`phonetics-data.js` has not been loaded by anything since the 2026-10-15 rebuild moved
+`phonetics.html` onto `phonetics-quiz-data.js`; it stays because it is the build input for
+`tools/build-phonetics-quiz.js` and the CC BY-SA provenance for the Kanjium-derived data.
+`mnjp-reviewed-data.js` (~195KB, `MNJP_REVIEWED`) is loaded by no page and referenced by no
+script, and deleting it would be the one genuinely destructive removal on this list: it holds
+the site owner's own `good`/`awkward`/`bad` marks on 1,005 hand-reviewed MN-JP pairs, and only
+the 691 `good` ones were carried into `mnjp-data.js`. The REJECTIONS exist nowhere else, so
+dropping it would silently discard the review work and invite re-reviewing the same bad pairs.
+It is build-time provenance, like `tools/jlpt-levels-manual.json` and
+`tools/phonetics-words-manual.json`, and only its location at the repo root suggests otherwise.
+A dead-code audit will flag both every time; this paragraph is the answer.
+
 **Data licensing** (all attributed on `credits.html`, linked from every page's footer): Kanjium
 (CC BY-SA 4.0) for kanji & phonetic-family data, Tatoeba (CC BY / CC0) for example sentences,
 scriptin/kanji-frequency (CC BY 4.0) for usage ranking, elzup/jlpt-word-list for vocabulary
@@ -1365,6 +1378,25 @@ reports this as "…subtree intercepts pointer events", which is easy to dismiss
 - **Windows/PowerShell path escaping breaks Node heredocs.** `cat > file.js << 'EOF'` via Bash
   on this machine has mangled backslash-heavy Windows paths (`C:\Users\...`) more than once.
   Prefer the `Write` tool for scratch Playwright scripts over shell heredocs.
+- **Dead code is found by a script and then verified by hand, never the other way round.** The
+  2026-10-31 audit lives in the scratchpad (`dead-files.js`, `dead-i18n.js`, `dead-js.js`,
+  `dead-css.js`, `dead-supabase.js`) and every one of them over-reported badly on its first
+  run: the i18n audit claimed 241 dead keys because Kana Origins stores keys as DATA
+  (`title: 'origins.era1.title'`), invisible to call-site matching; after that it still called
+  `game.tier.N5` dead, which is live via `window.t('game.tier.' + jlpt)` -- **and a hand-grep
+  for the whole key agrees it is dead, because the whole key never appears anywhere**. The CSS
+  audit's 72 included 18 assembled the same way (`'gc-band-' + band.hue`). So: a key or class
+  built by concatenation needs the PREFIX grepped, not the name.
+- **Deleting dead code is proved, not argued.** `scratchpad/snap.js` renders every page in both
+  languages with `reducedMotion: 'reduce'` and `cmp.js` compares the sets byte for byte. Run it
+  against two captures of the SAME build first: that self-test is what found Word Match and one
+  hub render to be nondeterministic (randomised sparks, a shuffled deck), and without excluding
+  those five views every later "nothing changed" would have been a lie. 45 of 50 views are
+  stable; `tests/word-match.spec.js` covers the game instead.
+- **Removing dead code reveals more dead code.** Deleting `trackLabel` orphaned
+  `TRACK_LABEL_KEY`, which orphaned the `grammar.foundation` / `grammar.advanced` strings. Re-run
+  the audits after a removal and keep going until they are quiet, or the next audit finds what
+  this one created.
 - **User-facing copy makes numeric claims that silently drift from the code.** A 2026-09-02
   audit of every description/stat against the actual constants and data files found six wrong:
   Word Match's hub card said "3 minutes" (clock is 240s), Phonetics' stat counted families and

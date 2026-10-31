@@ -835,7 +835,11 @@ body:has(.grammar-main) {
    sunk no matter what its contrast measured. This sits a clear step above the ground, with an
    edge and a shadow to say so. */
 .gc-level-record {
-    /* The basis matches RECORD_MIN in grammar.js, which is what the trail subtracts when it works
+    /* 250px is this panel's floor and the row's: four tiles across (4 x 78 + 3 x 9 = 339) plus
+       the gate plus this must fit the 1024px column, or the panel drops below the fold. It used
+       to be mirrored by RECORD_MIN in grammar.js; that constant became unreferenced when the
+       trail was replaced by the plain tile row, so the number now lives only here.
+       (was: the basis matches RECORD_MIN in grammar.js, which is what the trail subtracts when it works
        out its own width. If these two drift apart the row wraps and the panel drops below. */
     flex: 1 1 250px;
     min-width: 0;

@@ -22,9 +22,6 @@ const TIME_PENALTY_PER_MISTAKE = 10; // seconds removed for a wrong tile tap
 const LOW_TIME_THRESHOLD = 30;
 const SENTENCES_PER_LEVEL = 10;
 const TRACKS = ['foundation', 'advanced'];
-const TRACK_LABEL_KEY = { foundation: 'grammar.foundation', advanced: 'grammar.advanced' };
-function trackLabel(track) { return window.t(TRACK_LABEL_KEY[track]); }
-const TRACK_RANGE = { foundation: 'N5 – N3', advanced: 'N2 – N1' };
 
 // Grammar Connect's tracks span a JLPT *range* (foundation = N5-N3, advanced = N2-N1) rather
 // than one tier per track the way Word Match's WORD_LEVELS does, so there's no per-level tier
@@ -551,7 +548,6 @@ function gcFloatText(x, y, text, penalty) {
 // shape. The apex is the last band, so it reads as a climb.
 // It keeps the id #gc-diff-tabs because tutorial.js points a tour step at it.
 const GATE_S = 300;
-const GATE_SH = Math.round(GATE_S * Math.sqrt(3) / 2);
 // The slots -- [left, top, inverted] -- are computed per render from the gate's actual width:
 // bottom row reads 1 2 3 left to right, 4 sits at the apex. GATE_S is only the cap.
 
@@ -567,8 +563,6 @@ function roomBelow(el, floor) {
     return Math.max(floor || 180, window.innerHeight - top - 26);
 }
 
-// What the record panel will not go below, matching .gc-level-record's flex-basis.
-const RECORD_MIN = 250;
 
 function renderDiffTabs() {
     const container = document.getElementById('gc-diff-tabs');

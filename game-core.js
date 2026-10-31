@@ -185,8 +185,3 @@ function shuffleArray(arr) {
     return arr;
 }
 
-function hexToRgb(hex) {
-    hex = hex.replace('#', '');
-    const num = parseInt(hex, 16);
-    return [(num >> 16) & 255, (num >> 8) & 255, num & 255].join(',');
-}
