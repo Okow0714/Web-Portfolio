@@ -396,19 +396,20 @@
             <section id="gc-select-section" class="gc-section">
                 <div class="gc-night-sky" aria-hidden="true"></div>
                 <div class="gc-select-content">
+                    <!-- No 文法つなぎ wordmark and no 52-word description -- the band hint below
+                         is the page's heading now, and the explanation lives behind the ?
+                         button. The row stays for the speaker. -->
                     <div class="gc-hud-row">
-                        <div>
-                            <h1 class="gc-title">文法つなぎ<span class="gc-title-sub" data-i18n="grammar.titleSub">Дүрэм холбох</span></h1>
-                            <p class="gc-subtitle" data-i18n="grammar.subtitle">Өгүүлбэр гарч ирэхэд дүрмийн нэг хэсэг нь доогуур зураастай байна. Утгыг нь өөрчлөхгүйгээр орлуулах хавтанг дарна уу — үг шууд солигдож, гүйцээсэн өгүүлбэр орчуулгынхаа хамт хажуугийн жагсаалтад нэмэгдэнэ. Шат бүрт арван өгүүлбэр, өгүүлбэр бүрт дөрвөн сонголт, зам бүрт хорин шат.</p>
-                        </div>
                         <button class="sound-toggle on" id="gc-sound-toggle" type="button" data-vol="3" title="Дууны түвшин">
-                            <span id="gc-sound-icon" class="sound-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="8.5" width="1.5" height="7"/><rect x="8" y="8.5" width="1.5" height="7"/><rect x="3" y="9.25" width="6.5" height="1.5"/><rect x="3" y="13.25" width="6.5" height="1.5"/><rect class="bar b1" x="12" y="8" width="1.5" height="8"/><rect class="bar b2" x="15.5" y="6.5" width="1.5" height="11"/><rect class="bar b3" x="19" y="5" width="1.5" height="14"/></svg></span>
+                        <span id="gc-sound-icon" class="sound-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="8.5" width="1.5" height="7"/><rect x="8" y="8.5" width="1.5" height="7"/><rect x="3" y="9.25" width="6.5" height="1.5"/><rect x="3" y="13.25" width="6.5" height="1.5"/><rect class="bar b1" x="12" y="8" width="1.5" height="8"/><rect class="bar b2" x="15.5" y="6.5" width="1.5" height="11"/><rect class="bar b3" x="19" y="5" width="1.5" height="14"/></svg></span>
                         </button>
                     </div>
+                    <!-- The page's h1, and the tour's help anchor -- it keeps the .gc-title
+                         class for that reason, though it no longer carries the old wordmark's
+                         styling. A missing HELP_ANCHOR is skipped without a word. -->
+                    <h1 class="gc-title" data-i18n="grammar.pickBandTitle">Хаанаас эхлэхээ сонгоно уу</h1>
+                    <p class="gc-pick-hint" data-i18n="grammar.pickBand">Арван шаттай дөрвөн багц.</p>
                     <p id="gc-guest-hint" class="gc-guest-hint hidden" data-i18n="auth.loginHint">Явцаа хадгалахын тулд нэвтэрнэ үү.</p>
-
-                    <h2 class="sr-only" data-i18n="game.levels">Шатууд</h2>
-                    <p class="gc-pick-hint" data-i18n="grammar.pickBand">Хаанаас эхлэхээ сонгоно уу — арван шаттай дөрвөн багц.</p>
                     <!-- The gate keeps the id #gc-diff-tabs: tutorial.js points a tour step at it,
                          and a step whose selector is missing is dropped without a word. -->
                     <!-- Gate, trail and record sit in ONE row so the whole level select fits a

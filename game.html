@@ -405,20 +405,22 @@
 
             <!-- Gate: five hexagonal JLPT nodes, each bursting into its twelve levels -->
             <section id="level-select-section" class="game-section">
+                <!-- No 言葉合わせ wordmark and no 78-word description: the gate's own heading is
+                     the page's h1 now, and how the game works lives behind the ? button, which
+                     is where phonetics.html has always kept it. The row stays for the speaker. -->
                 <div class="game-hud-row">
-                    <div>
-                        <h1 class="game-title">言葉合わせ<span class="game-title-sub" data-i18n="game.titleSub">Япон үг цээжлэх дасгал</span></h1>
-                        <p class="game-subtitle" data-i18n="game.subtitle">Арван хоёр хөзрийг сайн цээжилсний дараа тэд эргэж хаагдана. Дараа нь зургаан хосыг санаж олно. Цаг хэмжихгүй тул яаралгүй бодож болно; таны оноог товшсон тоо тодорхойлох бөгөөд цөөн товшсон нь дээр. Шат бүр дөрвөн багцтай, нийт хорин дөрвөн үг багтана. Багц бүрийг дуусгамагц дөрвөн секундын урамшуулал нээгдэж, сая цээжилсэн үгсээ хоёр баганаас холбоно. JLPT түвшин бүрт арван хоёр шат байх ба N5 нь анхан шат, N1 нь хамгийн гүнзгий.</p>
-                    </div>
                     <button class="sound-toggle on" id="sound-toggle" type="button" data-vol="3" title="Дууны түвшин">
-                        <span id="sound-icon" class="sound-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="8.5" width="1.5" height="7"/><rect x="8" y="8.5" width="1.5" height="7"/><rect x="3" y="9.25" width="6.5" height="1.5"/><rect x="3" y="13.25" width="6.5" height="1.5"/><rect class="bar b1" x="12" y="8" width="1.5" height="8"/><rect class="bar b2" x="15.5" y="6.5" width="1.5" height="11"/><rect class="bar b3" x="19" y="5" width="1.5" height="14"/></svg></span>
+                    <span id="sound-icon" class="sound-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="8.5" width="1.5" height="7"/><rect x="8" y="8.5" width="1.5" height="7"/><rect x="3" y="9.25" width="6.5" height="1.5"/><rect x="3" y="13.25" width="6.5" height="1.5"/><rect class="bar b1" x="12" y="8" width="1.5" height="8"/><rect class="bar b2" x="15.5" y="6.5" width="1.5" height="11"/><rect class="bar b3" x="19" y="5" width="1.5" height="14"/></svg></span>
                     </button>
                 </div>
                 <p id="game-guest-hint" class="game-guest-hint hidden" data-i18n="game.guestHint">Шилдэг дүнгээ хадгалахын тулд нэвтэрнэ үү.</p>
 
                 <div class="gate">
                     <div class="gate-head">
-                        <h2 data-i18n="game.gateTitle">Түвшингээ сонгоно уу</h2>
+                        <!-- The page's h1, and the tour's help anchor: .game-title is gone, so
+                             tutorial.js's HELP_ANCHOR points here instead. A missing anchor is
+                             skipped in silence, which is how the ? button would vanish. -->
+                        <h1 class="game-title" data-i18n="game.gateTitle">Түвшингээ сонгоно уу</h1>
                         <p data-i18n="game.gateHint">Зургаан өнцөгт бүр нэг JLPT түвшин. Дарвал тухайн түвшний арван хоёр шат нээгдэнэ.</p>
                     </div>
                     <div class="gate-tiers" id="gate-tiers"></div>

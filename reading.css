@@ -312,11 +312,17 @@ body:has(.reading-main) .auth-btn-outline:hover {
     color: var(--text-primary);
 }
 
+/* Both the track select's h1 and the level select's h2. The tool's name and its description
+   are no longer printed here -- the heading is the instruction -- so this is a working title
+   rather than a banner, and it dropped from 2.4rem. */
 .reading-title {
     font-family: var(--font-display);
-    font-size: 2.4rem;
+    font-size: 1.6rem;
     font-weight: 700;
-    margin: 0 0 12px;
+    margin: 0 0 10px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
 }
 
 .reading-subtitle {

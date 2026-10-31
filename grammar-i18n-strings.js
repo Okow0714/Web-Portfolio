@@ -1,11 +1,6 @@
 // Grammar Connect (grammar.html)-specific translation strings. Extends window.I18N_STRINGS,
 // which i18n-strings-shared.js must have already created (loaded first in grammar.html).
 Object.assign(window.I18N_STRINGS, {
-    'grammar.titleSub': { en: 'Grammar Connect', mn: 'Дүрэм холбох' },
-    'grammar.subtitle': {
-        en: "A sentence appears with one grammar point underlined. Tap the tile that replaces it without changing what the sentence means — the word transforms in place, and the finished sentence (with its translation) drops into the cleared list at the side. Ten sentences a level, five options a sentence, ten levels a set, four sets.",
-        mn: 'Өгүүлбэр гарч ирэхэд дүрмийн нэг хэсэг нь доогуур зураастай байна. Утгыг нь өөрчлөхгүйгээр орлуулах хавтанг дарна уу — үг шууд солигдож, гүйцээсэн өгүүлбэр орчуулгынхаа хамт хажуугийн жагсаалтад нэмэгдэнэ. Шат бүрт арван өгүүлбэр, өгүүлбэр бүрт дөрвөн сонголт, багц бүрт арван шат, нийт дөрвөн багц.'
-    },
     'grammar.cleared': { en: 'Cleared', mn: 'Дуусгасан' },
     'grammar.mistakes': { en: 'Mistakes', mn: 'Алдаа' },
     'grammar.startModalDesc': { en: "Ten sentences, four grammar tiles each. Tap the tile that keeps the sentence's meaning unchanged. The timer starts when you hit Start.", mn: 'Арван өгүүлбэр, тус бүрт дөрвөн дүрмийн хавтан. Өгүүлбэрийн утгыг өөрчлөхгүй хавтанг дарна уу. Эхлүүлэх товч дарахад цаг эхэлнэ.' },
@@ -36,7 +31,10 @@ Object.assign(window.I18N_STRINGS, {
     'grammar.markFlawless': { en: 'No mistakes', mn: 'Алдаагүй' },
     'grammar.clearedFlawless': { en: 'Cleared with no mistakes', mn: 'Алдаагүй дуусгасан' },
     'grammar.bandLevel': { en: '{band} · Level {n}', mn: '{band} · {n}-р шат' },
-    'grammar.pickBand': { en: 'Pick where to start — four sets of ten levels.', mn: 'Хаанаас эхлэхээ сонгоно уу — арван шаттай дөрвөн багц.' },
+    // Split in two on 2026-11-01: the first half is the page's h1 now that the 文法つなぎ
+    // wordmark and its description are gone, and the second is the line under it.
+    'grammar.pickBandTitle': { en: 'Pick where to start', mn: 'Хаанаас эхлэхээ сонгоно уу' },
+    'grammar.pickBand': { en: 'Four sets of ten levels.', mn: 'Арван шаттай дөрвөн багц.' },
     'grammar.recDone': { en: 'Cleared. Replaying only updates your best.', mn: 'Дуусгасан. Дахин тоглоход шилдэг дүн л шинэчлэгдэнэ.' },
     'grammar.recNew': { en: 'Not played yet. Ten sentences, four tiles each.', mn: 'Хараахан тоглоогүй. Арван өгүүлбэр, тус бүрт дөрвөн хавтан.' },
 });

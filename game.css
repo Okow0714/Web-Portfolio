@@ -154,7 +154,9 @@ body.game-playing .game-main {
     text-align: center;
     margin-bottom: 14px;
 }
-.gate-head h2 {
+/* An h1 since the 2026-11-01 header pass: the decorative 言葉合わせ wordmark and the 78-word
+   description above it are gone, so this is the page's title as well as the gate's. */
+.gate-head h1 {
     margin: 0 0 6px;
     font-size: clamp(1.3rem, 3.4vw, 1.9rem);
     font-weight: 700;
@@ -367,40 +369,22 @@ body.game-playing .game-main {
 }
 
 /* ===================================================================== board */
+/* Only the speaker lives here now, so it is a right-aligned row rather than a title block
+   with a control opposite it. */
 .game-hud-row {
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: 18px;
-    margin-bottom: 18px;
+    margin-bottom: 6px;
 }
-.game-title {
-    margin: 0;
-    font-family: var(--font-jp);
-    font-size: clamp(1.7rem, 5vw, 2.5rem);
-    font-weight: 700;
-    letter-spacing: .06em;
-}
-.game-title-sub {
-    display: block;
-    margin-top: 6px;
-    font-family: inherit;
-    font-size: .92rem;
-    font-weight: 500;
-    letter-spacing: .02em;
-    color: var(--gold-text);
-}
-.game-subtitle {
-    margin: 10px 0 0;
-    max-width: 56ch;
-    font-size: 13px;
-    line-height: 1.45;
-    color: var(--text-muted);
-}
+/* Centred since the title block above it went: left-aligned it was the only thing on that
+   edge of the page and read as a stray line rather than a notice about the gate below it. */
 .game-guest-hint {
     margin: 12px 0 0;
     font-size: 12.5px;
     color: var(--gold-text);
+    text-align: center;
 }
 .game-guest-hint.hidden { display: none; }
 
@@ -952,7 +936,6 @@ body.game-playing .game-main {
     .gate-tiers { gap: 10px; }
     .hexnode { --hex-size: 104px; }
     .hexnode-tier { font-size: 1.2rem; }
-    .game-hud-row { flex-direction: column; align-items: stretch; }
     .board-stats { gap: 8px 12px; }
     .stat-v { font-size: 19px; }
 }

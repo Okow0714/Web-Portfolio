@@ -18,7 +18,7 @@ Supabase (Postgres + Auth). Hosted on GitHub Pages. Git repo on `main`.
 | `phonetics.html` | Phonetics Family — kanji grouped by shared phonetic component, ranked by usage. `<main class="phonetics-main">` / `phonetics.css` (light jade/copper). **Rebuilt 2026-10-15 as one surface with four views** — gate → board → tree → round — and it no longer loads `phonetics-data.js` at all (see Phonetics below). `phonetics-drill.html` was retired with that rebuild: the round is a view on this page now. |
 | `grammar.html` | Grammar Connect — sentence-swap grammar drill. `<main class="grammar-main">` / `grammar.css`. The data is still two tracks of twenty, but the **level select is four bands of ten** as of 2026-10-24 (see Grammar Connect below): a triangle gate and ten right-facing play-button tiles in a row. |
 | `reading.html` | Dokkai Reader — speech-recognition-driven reading practice. `<main class="reading-main">` / `reading.css` (plum on linen, light). **Rebuilt 2026-10-29** (see Dokkai Reader below): a persistent side info bar beside a stage that swaps between three views, and a level select of twelve regular pentagons. `#text-list-section` is gone — the texts open in a panel beside the pentagons. |
-| `dictionary.html` | Mongol-Japan Dictionary — two tabs: primary Монгол⇄日本語 (`mnjp-data.js`), secondary 漢語⇄和語 Kango/Wago (`dictionary-data.js`, lazy-loaded only when that tab opens). Reads a `?q=` URL param on load to pre-fill/filter the primary tab — the target of the home page's search bar. `<main class="dictionary-main">` / `dictionary.css`. |
+| `dictionary.html` | Mongol-Japan Dictionary — two tabs: primary Монгол⇄日本語 (`mnjp-data.js`), secondary 漢語⇄和語 Kango/Wago (`dictionary-data.js`, lazy-loaded only when that tab opens). Reads a `?q=` URL param on load to pre-fill/filter the primary tab — the target of the home page's search bar. `<main class="dictionary-main">` / `dictionary.css`. **A picked word opens in a panel beside the list as of 2026-11-01** (see The kanji breakdown below), not in a strip under its own row, and the page has no display title or description. |
 | `origins.html` | Kana Origins — where hiragana and katakana came from, for a beginner who knows no kanji. `<main class="origins-main">` / `origins.css`. **Rebuilt 2026-10-23** (see Kana Origins below): four sections behind a sticky section bar, and the gojuon laid out as a wall of five vowel rows of eleven rather than the printed eleven of five. |
 | `dashboard.html` | Signed-in-only progress page — profile (avatar, editable display name), score vs. site average, per-tool level/text completion, and a link into the Settings modal for account management. `<main class="dash-main">` / `dashboard.css` (cool slate/blue utility theme). This is now the **only** page showing those bars — `index.html` carried a condensed copy until the 2026-10-11 hub rebuild removed it, along with `hub-home.js`, and `tests/progress-totals.spec.js` lost its three index.html placeholder rows at the same time. |
 | `privacy.html`, `terms.html` | Legal pages, plain styling via `legal.css`. |
@@ -196,7 +196,7 @@ pair: a view arriving fades, nothing already on screen moves, nothing repeats. T
 them is the rule above stated the other way round -- `khanjpFadeIn` is opacity ONLY, which is
 what makes it safe on a whole view, and the 6px rise only ever goes on leaves. It matters on
 more than the masthead: a transform would also un-stick Kana Origins' `#origins-bar` and
-`#kana-desk` and the dictionary's `.dict-recent`, and un-fix Dokkai Reader's `.reader-controls`.
+`#kana-desk` and the dictionary's `.dict-aside`, and un-fix Dokkai Reader's `.reader-controls`.
 Two pages also MEASURE layout in JS -- phonetics sizes its field from the height left over,
 Grammar Connect measures its row against the fold -- and opacity changes no layout, which is the
 second reason a view fade may not carry a transform.
@@ -1033,6 +1033,98 @@ kanji-index.js` (~65KB, `PHONETICS_KANJI_INDEX`, a `{kanji: {phonetic, reading, 
 derivative of `phonetics-data.js` — see its own header) is small enough to `Read` directly if
 needed; it's listed here mainly so a future edit to `phonetics-data.js`'s kanji membership
 remembers to regenerate it too, or the dictionary's phonetic-family links go stale.
+`kanji-index.js` (~167KB, `KANJI_INDEX`, generated) is the newest and is loaded by
+`dictionary.html` alone — see The kanji breakdown below.
+
+**The kanji breakdown, and why the repo could not supply it** (2026-11-01). A dictionary result
+used to expand into a strip under its own row holding, for most of the 3,537 entries, a single
+line of grey capitals naming the source; the characters a word is written with were not shown
+anywhere on the page. They are now a row of cards in a panel BESIDE the list, each with the
+kanji's meaning, its on and kun readings, its stroke count, its JLPT level where this repo files
+one, and a link into Phonetics Family where it has a family — a route between two tools that did
+not exist before.
+**The repo could not answer "what does this kanji mean".** Its per-kanji data covers only kanji
+sitting in a phonetic family of three or more: `phonetics-data.js` 1,128, the generated
+`phonetics-quiz-data.js` 684. Measured against the words `dictionary.html` actually lists that is
+**60.3% of the 1,550 distinct kanji and 47.9% of kanji-bearing entries** — and the misses are the
+COMMONEST characters (出 大 学 合 入 食 行 見 言 書 人), because a frequent kanji is no likelier to
+have phonetic siblings than a rare one. A breakdown absent on 人 and 学 is worse than none, so
+readings, English meanings and stroke counts come from **KANJIDIC2** (EDRDG), which covers all
+1,550. `tools/build-kanji-index.js` writes the file; it needs `kanjidic2.xml` downloaded
+(`http://www.edrdg.org/kanjidic/kanjidic2.xml.gz`, ~15.6MB unpacked, deliberately NOT committed)
+and takes its path as the first argument.
+**KANJIDIC2 is CC BY-SA 4.0**, so `kanji-index.js` joins `game-words.js`, `phonetics-data.js` and
+`phonetics-kanji-index.js` in LICENSE section 2 — four files now, not three — and has its own
+row on `credits.html`. The Mongolian glosses in it are this project's own and are not EDRDG
+material; everything else in it is.
+**KANJIDIC2's `jlpt` field is NOT used.** It is the pre-2010 four-level scale, the same trap
+`elzup/jlpt-word-list` sets, so `lv` comes from this repo's own N5..N1 filing (740 of 1,550) and
+is simply absent for a kanji the repo does not file.
+**873 of the 1,550 Mongolian glosses are DRAFTS and are live anyway.** The repo's two reviewed
+sources — `phonetics-quiz-data.js`'s member glosses and any single-kanji MN-JP headword, which
+wins because it was reviewed as dictionary copy — reach 677 kanji between them, which made only
+**32.5% of entries** able to show an all-Mongolian breakdown. The curve is close to linear (300
+more buys 76%, 500 buys 88.5%), so there was no cheap subset: the other 873 were drafted in one
+pass into `tools/kanji-gloss-manual.json`, each marked `"draft": true`, and coverage is 100%.
+The flag is a WORKLIST, not a switch — nothing on the page reads it. `tools/kanji-gloss-todo.md`
+is regenerated on every build and lists each one still unconfirmed, ordered by how many entries
+the character appears in, so reviewing the top of the list is worth more than the bottom. Drop
+the `, "draft": true` to confirm one; the build prints the remaining count.
+**A one-word gloss cannot separate 1,550 kanji, and that is fine** — 82 drafts share a gloss with
+an already-reviewed kanji (引/召 татах, 言/申 хэлэх, 家/屋 байшин). Each card shows its own
+character and readings, so a shared gloss is not ambiguous on screen. **Ten were sharpened
+anyway**, the ones whose Mongolian word ALSO means something else entirely: 主 was гол, which is
+what 川 is glossed (river); 枢 was нугас, which is what 鴨 is (duck); 跡 was мөр, which is 肩
+(shoulder); 賃 was хөлс, which is 汗 (sweat). Check a new gloss against the existing set before
+adding it, not just against the English.
+**The panel has three states and the rule is the 2026-10-31 one.** Hidden with no search at all
+(no word for it to be the detail OF), a prompt naming its own source once there are results, and
+the word once a row is picked. A row PICKS now — `aria-current`, not `aria-expanded`, and the
+chevron is gone. Typing one more letter keeps the panel if the word is still in the results and
+falls back to the prompt if it is not. `tests/dictionary.spec.js` pins all of it.
+**Two grid traps this cost.** Two elements given the same `grid-area` **overlap**, they do not
+stack — the panel and the recent strip need a wrapper, `.dict-aside`, which is the grid item and
+the sticky column. And on a phone the wrapper's two halves belong at OPPOSITE ends: stacked above
+the list, the panel pushed the first result **865px** down, so you tapped a row and what you asked
+for appeared off-screen above your finger — the fault Dokkai Reader's rail had, in the same shape.
+`display: contents` on `.dict-aside` under 900px dissolves the wrapper so each half takes its own
+grid area, recent above the list and the panel below, and the sticky positioning goes with it.
+
+**Four pages lost their display title and their description** (2026-11-01: `game.html`,
+`grammar.html`, `reading.html`, `dictionary.html`). Each opened with a decorative wordmark
+(言葉合わせ / 文法つなぎ / 蒙日辞典) and a 44-to-91-word paragraph, which on a 950px window cost the
+dictionary 268px before its search field — room for two results. They now follow
+`phonetics.html`, which has never had either: **the h1 is the page's own instruction**
+("Түвшингээ сонгоно уу", "Хаанаас эхлэхээ сонгоно уу", "Замаа сонгоно уу", "Үг хайх"), promoted
+from a heading the page already had further down, and the explanation lives behind the `?`
+button. Nothing was lost in the move — each page's tour is longer and more specific than the
+paragraph it replaces. **`origins.html` is deliberately excluded** and keeps its opening, at the
+site owner's request.
+**The `?` button's anchor is the trap.** `tutorial.js`'s `HELP_ANCHOR` names `.game-title`,
+`.gc-title`, `.reading-title` and `.dict-title`, and **a missing anchor is skipped in silence** —
+delete the element and the button simply never appears, with no error. So the new h1 on each page
+CARRIES THE OLD CLASS, even where that class no longer has a CSS rule of its own (game's h1 is
+styled by `.gate-head h1`); the class is a JS hook now and the markup says so.
+**`.tour-help-btn` had to learn `align-self: flex-start`.** It is `inline-flex`, but a flex item
+is blockified — and `.gc-select-content` is a flex column, so the pill stretched the full width of
+the page the moment Grammar Connect's title block went. The rule is in `tutorial.css` and is inert
+wherever the parent is not a flex or grid container.
+Two checkers in the scratchpad cover this pass: `header-pass-check.js` walks the four pages in
+BOTH languages and fails on an h1 count that is not one, a missing `?` button, a `?` stretched
+past half the main column, or any of the removed phrases still printed; `kanji-panel-check.js`
+measures every line the new panel prints against its COMPOSITED ground in light, dark and both
+Darker settings (9 samples, worst 4.61:1). Three findings on `game.html` that looked like
+regressions -- the guest hint at 3.97:1, the gate sublabel at 4.04:1 and a FROZEN ink on the `?`
+disc -- were proved pre-existing by serving HEAD on :8124 beside the working tree on :8123 and
+measuring both: identical to two decimal places, so none of them belongs to this change.
+**This is the one change that hurts SEO**, and knowingly: Google built its snippet for the brand
+query from the page BODY, which is why 2026-09-16 flipped every `<main>` to Mongolian. Each page's
+`<title>`, `<meta name="description">` and `og:*` are untouched and still carry the Mongolian —
+`dictionary.html` still has "Монгол-Япон толь бичиг" in all three — but the body text those
+snippets were drawn from is gone. Watch Search Console rather than assuming it is fine.
+Seven i18n keys went with the copy (`game.subtitle`, `game.titleSub`, `grammar.subtitle`,
+`grammar.titleSub`, `dict.subtitle`, `dict.titleSub`, `reading.subtitle`); `reading.title` stays,
+since the rail, the crumbs and `<head>` all still name the tool.
 
 **TWO OF THESE ARE LOADED BY NO PAGE AND ARE KEPT ANYWAY** (2026-10-31 dead-code audit).
 `phonetics-data.js` has not been loaded by anything since the 2026-10-15 rebuild moved
@@ -1048,7 +1140,8 @@ It is build-time provenance, like `tools/jlpt-levels-manual.json` and
 A dead-code audit will flag both every time; this paragraph is the answer.
 
 **Data licensing** (all attributed on `credits.html`, linked from every page's footer): Kanjium
-(CC BY-SA 4.0) for kanji & phonetic-family data, Tatoeba (CC BY / CC0) for example sentences,
+(CC BY-SA 4.0) for kanji & phonetic-family data, KANJIDIC2 / EDRDG (CC BY-SA 4.0) for the
+dictionary's per-kanji readings, English meanings and stroke counts, Tatoeba (CC BY / CC0) for example sentences,
 scriptin/kanji-frequency (CC BY 4.0) for usage ranking, elzup/jlpt-word-list for vocabulary
 curation, Pixabay Music (Content License) and Wikimedia Commons (CC0/CC BY/CC BY-SA) for Word
 Game's background photos and both tools' soundtracks. **Grammar Connect no longer ships any
@@ -1059,9 +1152,10 @@ track to either tool means adding its credit to `credits.html` too — nothing e
 them anymore now that the old page-local disclosures are gone. Never republish curated
 third-party content beyond what these licenses allow — only derive from raw data.
 The repo's own `LICENSE` splits this in two: code is MIT, but **`game-words.js`,
-`phonetics-data.js` and `phonetics-kanji-index.js` are CC BY-SA 4.0** — they carry
-Kanjium-derived phonetic-component data and ShareAlike is inherited by adaptations, so
-they cannot be relicensed and anyone redistributing them must keep those terms. The other
+`phonetics-data.js`, `phonetics-kanji-index.js` and `kanji-index.js` are CC BY-SA 4.0** —
+the first three carry Kanjium-derived phonetic-component data and the fourth KANJIDIC2
+readings and meanings; ShareAlike is inherited by adaptations, so they cannot be
+relicensed and anyone redistributing them must keep those terms. The other
 data files (`mnjp-data.js`, `reading-texts.js`, `dictionary-data.js`) carry no Kanjium
 material and stay MIT — verified by grepping for the `phonetic` field, which is the marker.
 Adding Kanjium-derived data to a fourth file moves that file into CC BY-SA too, so check

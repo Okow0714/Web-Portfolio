@@ -7,11 +7,6 @@
 // reused several game.* keys before this split existed, and they rendered as English-only since
 // this file was never loaded there).
 Object.assign(window.I18N_STRINGS, {
-    'game.titleSub': { en: 'Japanese word memory', mn: 'Япон үг цээжлэх дасгал' },
-    'game.subtitle': {
-        en: 'Look at twelve cards, then find the six pairs from memory once they turn over. There is no clock in the main round — your score is the number of clicks you spend, and fewer is better. A level is four hands of six pairs, twenty-four words in all, and clearing each hand opens a four-second bonus round where you match what you just learned across two columns. Twelve levels to a JLPT tier — N5 is beginner vocabulary, N1 is advanced.',
-        mn: 'Арван хоёр хөзрийг сайн цээжилсний дараа тэд эргэж хаагдана. Дараа нь зургаан хосыг санаж олно. Цаг хэмжихгүй тул яаралгүй бодож болно; таны оноог товшсон тоо тодорхойлох бөгөөд цөөн товшсон нь дээр. Шат бүр дөрвөн багцтай, нийт хорин дөрвөн үг багтана. Багц бүрийг дуусгамагц дөрвөн секундын урамшуулал нээгдэж, сая цээжилсэн үгсээ хоёр баганаас холбоно. JLPT түвшин бүрт арван хоёр шат байх ба N5 нь анхан шат, N1 нь хамгийн гүнзгий.'
-    },
     'game.guestHint': { en: 'Log in to save your best results across visits.', mn: 'Шилдэг дүнгээ хадгалахын тулд нэвтэрнэ үү.' },
     'game.lastMatch': { en: 'Last pair', mn: 'Сүүлийн хос' },
 

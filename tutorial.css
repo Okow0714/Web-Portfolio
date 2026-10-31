@@ -204,6 +204,13 @@
 .tour-help-btn {
     display: inline-flex;
     align-items: center;
+    /* The button is injected after whatever element a page names as its help anchor, and some
+       of those anchors sit in a FLEX container (#gc-select-section's .gc-select-content, the
+       reader's track section). A flex item is blockified, so `inline-flex` becomes `flex` and
+       the pill stretches the full width of the column -- which is what it did on Grammar
+       Connect the moment that page's title block was removed. This has no effect anywhere the
+       parent is not a flex or grid container. */
+    align-self: flex-start;
     gap: 7px;
     vertical-align: middle;
     margin-left: 12px;

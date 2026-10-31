@@ -115,47 +115,26 @@ body:has(.grammar-main) {
     z-index: 1;
 }
 
+/* Only the speaker lives here now -- the 文法つなぎ wordmark and the description under it
+   were removed in the 2026-11-01 header pass. */
 .gc-hud-row {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: flex-start;
     gap: 24px;
     flex-wrap: wrap;
 }
 
+/* The gate's own instruction is the page's h1 now. It keeps the .gc-title name because
+   tutorial.js hangs the ? button off it, and a missing anchor is dropped in silence. */
 .gc-title {
     font-family: 'Fraunces', Georgia, serif;
-    font-size: clamp(1.9rem, 3.4vw, 2.6rem);
-    margin: 0 0 10px;
-    color: var(--ink);
-    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.4);
-}
-
-.gc-title-sub {
-    display: block;
-    font-size: 0.95rem;
-    font-weight: 500;
-    /* A lighter step of the same shu. --shu-light measured 3.92:1 here against a 4.5 floor:
-       it is tuned for the flat card faces, not for sitting on a photograph. The hue is kept so
-       the wordmark still reads as this tool's accent. */
-    color: #f3a493;
-    color: light-dark(#8f2d1a, #f3a493);
-    letter-spacing: 0.04em;
-    margin-top: 4px;
-    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.5);
-    text-shadow: 0 1px 12px light-dark(rgba(255, 255, 255, 0.65), rgba(0, 0, 0, 0.5));
-}
-
-.gc-subtitle {
-    max-width: 62ch;
-    /* Not --ink-soft here. That token is 55% alpha, which is right on the flat card faces this
-       theme uses elsewhere but leaves this paragraph translucent over a photograph. */
-    color: rgba(241, 237, 224, 0.88);
-    color: light-dark(rgba(29, 39, 64, 0.92), rgba(241, 237, 224, 0.88));
-    font-size: 0.98rem;
-    line-height: 1.6;
+    font-size: 1.5rem;
     margin: 0;
-    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.55);
+    color: var(--ink);
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
 }
 
 /* The tour's help button ships with `background: none` and a muted colour, which works on the
@@ -398,12 +377,8 @@ body:has(.grammar-main) {
     flex-direction: column;
 }
 
-/* The standfirst is the longest thing above the row and the first thing to cost it room, so it
-   is capped here rather than allowed to run six lines wide. */
-.gc-subtitle { max-width: 86ch; }
-
 .gc-pick-hint {
-    margin: 18px 0 12px;
+    margin: 4px 0 12px;
     font-size: 0.86rem;
     color: var(--ink-faint);
 }

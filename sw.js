@@ -1,7 +1,8 @@
 // Service worker for the Khan Japanese PWA. Precaches the app shell (pages, styles, non-data
 // JS) so the site opens instantly and works offline; the large per-tool data files
 // (phonetics-data.js ~2.8MB, game-words.js ~1.4MB, mnjp-data.js ~1.4MB, reading-texts.js
-// ~1.1MB, grammar-data.js ~545KB, dictionary-data.js ~185KB, dictionary-crosslink.js ~111KB)
+// ~1.1MB, grammar-data.js ~545KB, dictionary-data.js ~185KB, kanji-index.js ~167KB,
+// dictionary-crosslink.js ~111KB)
 // are deliberately left out of the
 // precache list -- eagerly downloading several MB on first install would be a bad experience on
 // mobile data. Those get cached lazily instead, the first time each one is actually requested
@@ -18,7 +19,7 @@
 // stale-while-revalidate, so it serves the cached copy first and only refreshes behind it --
 // without a bump, a returning PWA user runs the previous version of a fixed file for one more
 // visit. Whether that matters is a judgement call; for a correctness fix it generally does.
-const CACHE_VERSION = 'khan-japanese-v198';
+const CACHE_VERSION = 'khan-japanese-v199';
 
 const APP_SHELL = [
     './',
