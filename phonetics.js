@@ -32,6 +32,22 @@ let chunks = [];
 let stageList = [];
 let currentFamily = null;
 
+// ---------------------------------------------------------------------------
+// Sound
+// ---------------------------------------------------------------------------
+// desk-sfx.js, loaded before this file. Everything goes through this shim rather than naming
+// DeskSfx at each of the six call sites, for one reason: if the script ever fails to load, a
+// drill must still be playable. A missing sound is nothing; a ReferenceError inside a click
+// handler takes the handler's real work down with it, and these handlers are what open a
+// family and submit an answer.
+const Sfx = (function () {
+    const d = window.DeskSfx;
+    const nop = function () {};
+    if (!d) return { wake: nop, tap: nop, press: nop, chunk: nop, paper: nop,
+                     riffle: nop, stamp: nop, tapTwice: nop };
+    return d;
+})();
+
 function escapeHtml(str) {
     const div = document.createElement('div');
     div.textContent = str == null ? '' : String(str);
@@ -244,7 +260,7 @@ function renderGateDial() {
             + '<span class="lv-t">' + escapeHtml(desc) + '</span>';
         btn.setAttribute('aria-label', window.tf('phonetics.gateAria',
             { level: level.key, n: (QUIZ[level.key] || []).length }));
-        btn.addEventListener('click', () => chooseLevel(level, btn));
+        btn.addEventListener('click', () => { Sfx.chunk(); chooseLevel(level, btn); });
         dial.appendChild(btn);
     });
 }
@@ -313,7 +329,7 @@ function popStages(levelKey, cps) {
             + '<span class="stage-bar"><i style="width:' + (count ? Math.round(100 * done / count) : 0) + '%"></i></span>';
         btn.setAttribute('aria-label', window.tf('phonetics.cpAria',
             { n: i + 1, total: cps, count, done }));
-        btn.addEventListener('click', () => enterLevel(levelKey, i));
+        btn.addEventListener('click', () => { Sfx.press(); enterLevel(levelKey, i); });
         dial.appendChild(btn);
 
         window.setTimeout(() => {
@@ -391,7 +407,7 @@ function drawField() {
         btn.textContent = f.c;
         btn.dataset.s = quizStatus(currentLevelKey, f.c);
         btn.setAttribute('aria-label', f.c + ' — ' + window.tf('phonetics.kanjiInFamily', { n: f.m.length }));
-        btn.addEventListener('click', () => openTree(f));
+        btn.addEventListener('click', () => { Sfx.paper(); openTree(f); });
         field.appendChild(btn);
     });
     const counts = deckCounts();
@@ -517,7 +533,7 @@ function openTree(family) {
                 '<span class="' + (o === want ? 'y' : '') + '">' + escapeHtml(o) + '</span>').join('・')
             + '</span>';
         btn.setAttribute('aria-label', m.k + ' — ' + (m.mn || '') + ' — ' + m.on.join('・'));
-        btn.addEventListener('click', () => showNode(family, m, btn));
+        btn.addEventListener('click', () => { Sfx.tap(); showNode(family, m, btn); });
         tree.appendChild(btn);
     });
     window.scrollTo(0, 0);
@@ -682,7 +698,7 @@ function openDeckModal() {
             + '<span><span class="deck-t">' + escapeHtml(window.t(nameKey)) + '</span>'
             + '<span class="deck-d">' + escapeHtml(window.t(subKey)) + '</span></span>'
             + '<span class="deck-n">' + n + '</span>';
-        btn.addEventListener('click', () => startRound(key, window.t(nameKey)));
+        btn.addEventListener('click', () => { Sfx.riffle(); startRound(key, window.t(nameKey)); });
         host.appendChild(btn);
     });
     showEl(document.getElementById('phonetics-deck-modal'));
@@ -741,6 +757,12 @@ function drawCard() {
     top.innerHTML = '<span>' + escapeHtml(deckName) + ' · ' + (at + 1) + ' / ' + queue.length + '</span>'
         + '<span><b id="d-right">' + escapeHtml(window.tf('phonetics.nRight', { n: right })) + '</b> · '
         + '<i id="d-wrong">' + escapeHtml(window.tf('phonetics.nWrong', { n: wrong })) + '</i></span>';
+    // The board's speaker lives in .app-top, which this view hides -- and the round is the
+    // one place where every answer makes a noise. A second button rather than a moved one,
+    // the way Grammar Connect carries a speaker on both its select and its board; the
+    // delegated handler at the end of this file drives whichever is on screen.
+    top.appendChild(speakerButton());
+
     const exit = document.createElement('button');
     exit.type = 'button';
     exit.className = 'd-exit';
@@ -799,6 +821,10 @@ function drawCard() {
         // In place, not by redrawing: the card still holds the answer the reader is reading.
         document.getElementById('d-right').textContent = window.tf('phonetics.nRight', { n: right });
         document.getElementById('d-wrong').textContent = window.tf('phonetics.nWrong', { n: wrong });
+        // Right is a rubber stamp, wrong is the blunt end of a pencil tapped twice. Both say
+        // which it was before the eye has reached the verdict panel below the card, which is
+        // the only reason a drill wants sound at all.
+        good ? Sfx.stamp() : Sfx.tapTwice();
         input.classList.add(good ? 'ok' : 'no');
         input.readOnly = true;
         check.textContent = window.t('drill.next');
@@ -996,3 +1022,72 @@ if (deepLinkTarget) {
 }
 // Otherwise the gate stays up. It is the page's resting state: a field of shapes means nothing
 // until a visitor has said which level they are at.
+
+// ---------------------------------------------------------------------------
+// The speaker
+// ---------------------------------------------------------------------------
+// Four steps on the shared khanjp-volume, the same key Word Match and Grammar Connect read, so
+// a visitor sets the level once for the whole site. The cycle counts DOWN from 3 and wraps,
+// the way the other two do: the three buttons look identical, so they had better behave
+// identically.
+//
+// DELEGATED, and painted by query. There are two of these -- one on the board and one built
+// into each round card, since .app-top is hidden while a round runs -- and the round's is
+// created long after this code executes. Binding a listener per button would mean re-binding
+// on every card; one listener on the document and a repaint over every .sound-toggle costs
+// nothing and cannot go stale.
+const VOLUME_KEY = 'khanjp-volume';
+
+function volumeLevel() {
+    try {
+        const v = parseInt(localStorage.getItem(VOLUME_KEY), 10);
+        return (v >= 0 && v <= 3) ? v : 3;
+    } catch (e) { return 3; }
+}
+
+const SPEAKER_SVG = '<svg viewBox="0 0 24 24" fill="currentColor">'
+    + '<rect x="3" y="8.5" width="1.5" height="7"/><rect x="8" y="8.5" width="1.5" height="7"/>'
+    + '<rect x="3" y="9.25" width="6.5" height="1.5"/><rect x="3" y="13.25" width="6.5" height="1.5"/>'
+    + '<rect class="bar b1" x="12" y="8" width="1.5" height="8"/>'
+    + '<rect class="bar b2" x="15.5" y="6.5" width="1.5" height="11"/>'
+    + '<rect class="bar b3" x="19" y="5" width="1.5" height="14"/></svg>';
+
+function speakerButton() {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'sound-toggle';
+    b.innerHTML = '<span class="sound-icon" aria-hidden="true">' + SPEAKER_SVG + '</span>';
+    paintSpeakers(volumeLevel(), b);
+    return b;
+}
+
+// `only` paints a single button that is not in the document yet; without it a freshly built
+// one would show the default three bars until the next cycle.
+function paintSpeakers(v, only) {
+    const list = only ? [only] : Array.prototype.slice.call(document.querySelectorAll('.sound-toggle'));
+    list.forEach(btn => {
+        btn.dataset.vol = String(v);
+        btn.classList.toggle('on', v > 0);
+        const label = window.tf ? window.tf('phonetics.volumeAria', { n: v }) : 'Volume ' + v + ' / 3';
+        btn.setAttribute('aria-label', label);
+        btn.setAttribute('title', label);
+    });
+}
+
+document.addEventListener('click', (e) => {
+    const btn = e.target.closest ? e.target.closest('.sound-toggle') : null;
+    if (!btn) return;
+    const next = volumeLevel() <= 0 ? 3 : volumeLevel() - 1;
+    try { localStorage.setItem(VOLUME_KEY, String(next)); } catch (e2) { /* private mode */ }
+    paintSpeakers(next);
+    // Play the new level, so the button demonstrates what it just did -- except at 0, where
+    // the only honest confirmation is silence.
+    if (next > 0) Sfx.tap();
+});
+
+paintSpeakers(volumeLevel());
+document.addEventListener('sitelangchange', () => paintSpeakers(volumeLevel()));
+
+// An AudioContext built anywhere but inside a gesture comes back suspended and stays that way
+// for the session. once:true -- after the first press it is already running.
+document.addEventListener('pointerdown', () => Sfx.wake(), { once: true });

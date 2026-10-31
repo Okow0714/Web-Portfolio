@@ -971,7 +971,9 @@ naming its word, handing the whole board to the one player who cannot see the fa
 — the declaration dropped and opacity fell back to its initial **1**, putting the board
 photograph at full strength over everything. A non-colour value needs the three-state theme
 pattern instead.
-**The sound is cards, not notes.** Every cue in `CardSfx` is a handling sound — a card turned,
+**The sound is cards, not notes.** (Its desk counterpart for the other two tools is
+`desk-sfx.js` -- see that section; the two files are deliberately separate.) Every cue in
+`CardSfx` is a handling sound — a card turned,
 two lifted off the table, a deck riffled before the bonus — built from filtered noise rather than
 loaded, because a card snap *is* a shaped burst of noise and a library of recordings would be
 another megabyte in `APP_SHELL`. Three details keep it from sounding synthetic: the noise buffer
@@ -1089,6 +1091,54 @@ the list, the panel pushed the first result **865px** down, so you tapped a row 
 for appeared off-screen above your finger — the fault Dokkai Reader's rail had, in the same shape.
 `display: contents` on `.dict-aside` under 900px dissolves the wrapper so each half takes its own
 grid area, recent above the list and the panel below, and the sticky positioning goes with it.
+
+**`desk-sfx.js` — the sound of a desk** (2026-11-01, `phonetics.html` and `grammar.html`).
+Word Match has `CardSfx` and every cue in it is a card being handled, because that is what the
+player is looking at. These two are not card games, so they get the other half of the same
+world: a keyswitch, paper, a pencil, a rubber stamp. Nothing bounces and **there is not one
+oscillator in the file** — the probe asserts that, because "no silly noises" is a property worth
+pinning rather than remembering.
+**A separate file, not a reuse of `CardSfx`.** Word Match's five scripts share one global scope
+and a load order that breaks if a name is declared twice; reaching into it from two other pages
+to borrow ~25 lines of buffer-and-envelope would risk the game's startup for nothing a listener
+can hear. The shaping genuinely differs too — a card snap and a pencil scrape want opposite
+filters.
+**Volume is `khanjp-volume`, which Word Match and Grammar Connect already share**, so this is a
+fourth consumer and not a fourth control. It is re-read on every cue, so a page needs no event
+plumbing to follow a change made elsewhere on it.
+**Phonetics had NO audio at all**, so the cues arrived with the control that stops them — a page
+that makes a noise a visitor cannot switch off is not a feature. There are **two** speakers on
+that page: `.app-top`'s, and one built into every round card, because `.app-top` is hidden while
+a round runs and the round is where every answer makes a sound. They are driven by one delegated
+`click` listener on the document and repainted by query, since the round's button is created
+long after the wiring runs; binding per button would mean rebinding on every card.
+**A bandpass is three to four times quieter than a low- or highpass at the same peak**, because
+it passes one slice of white noise where the others pass half the spectrum. Written with
+matching numbers first, and Chromium measured the paper sweep at 0.010 against the keyswitch's
+0.027 — the desk sounds were there and inaudible under the clicks. Same trap, worse, for the
+wrong-answer thud: all of it lowpassed at 190-620Hz, a quarter the volume of the stamp, so a
+miss was the quietest thing on the page. Its levels are **three times** the stamp's numbers for
+the same loudness.
+**The probe is `scratchpad/sfx-real.js`, and the first one was wrong twice.** It rendered the
+cues with hand-rolled one-pole filters and its peak-finder **started at the second envelope
+window**, so it never saw a transient's attack and reported every keyswitch as a single blip —
+I raised the release contact from 0.42 to 0.6 on that evidence before checking the envelope by
+hand and finding it had been a clear second event all along. It now renders through Chromium's
+own `OfflineAudioContext` with `window.AudioContext` swapped for it, so the file under test is
+the shipped one; it takes the **median of nine renders**, because every cue reads the noise
+buffer from a random offset and one render is a sample rather than a measurement (`tap`
+alternated between one and two transients across runs of an unchanged file); and it measures
+loudness against `CardSfx`'s own tap rather than an absolute, since these play on sibling pages.
+A centroid comparison was dropped: it ranked the rubber stamp above the paper sweeps, which is
+not wrong of the measure — a stamp really is a thud with a bright tick, and the tick is most of
+its zero crossings.
+**`scratchpad/sfx-wired.js` is the other half**, and the one that matters: measuring the file in
+isolation says nothing about whether a handler calls it. It traps the assignment to
+`window.DeskSfx` before the page's own scripts run, drives both pages with real clicks, and
+names the cue each one fired.
+**Dokkai Reader is deliberately left out.** Its microphone is live while a passage is being
+read, and a sound played into an open recogniser is feedback. Sound there wants gating on the
+mic's state, which is a different job from this one.
 
 **The dashboard wears the mark** (2026-11-01). It was cool slate/blue on the reasoning that an
 account page should read as a utility rather than a themed room; it is now built from the two

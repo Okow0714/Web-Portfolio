@@ -420,6 +420,9 @@
                         <span data-i18n="phonetics.changeLevel">түвшин солих</span>
                     </button>
                     <button type="button" class="ghost-btn phon-info-btn" id="phonetics-info-btn"><span aria-hidden="true">&#9432;</span> <span data-i18n="phonetics.whatIsPhoneticComponent">Дуудлагын язгуур гэж юу вэ?</span></button>
+                    <button class="sound-toggle on" id="phonetics-sound-toggle" type="button" data-vol="3" title="Дууны түвшин" aria-label="Дууны түвшин">
+                        <span id="phonetics-sound-icon" class="sound-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="8.5" width="1.5" height="7"/><rect x="8" y="8.5" width="1.5" height="7"/><rect x="3" y="9.25" width="6.5" height="1.5"/><rect x="3" y="13.25" width="6.5" height="1.5"/><rect class="bar b1" x="12" y="8" width="1.5" height="8"/><rect class="bar b2" x="15.5" y="6.5" width="1.5" height="11"/><rect class="bar b3" x="19" y="5" width="1.5" height="14"/></svg></span>
+                    </button>
                 </div>
 
                 <button type="button" id="phonetics-title-trigger" class="phon-h1-trigger" aria-haspopup="dialog">
@@ -571,6 +574,7 @@
     <script src="auth-shared.js"></script>
     <script src="phonetics-quiz-data.js"></script>
     <script src="kana-match.js"></script>
+    <script src="desk-sfx.js"></script>
     <script type="module" src="phonetics.js"></script>
     <script src="tutorial.js"></script>
     <script src="pwa-register.js"></script>

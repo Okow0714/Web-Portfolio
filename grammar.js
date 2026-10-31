@@ -178,9 +178,22 @@ const MUSIC_POOLS = {
 };
 const LEVEL_SELECT_TRACK = 'sound/grammar-music/all-levels-zen-garden-beats.mp3';
 
-// Music-only subset of game.js's GameAudio module (Grammar Connect has no synthesized sound
-// effects to carry alongside it, just the background track) -- same fade-in/out-via-plain-
-// HTMLAudioElement approach, same reasoning throughout.
+// Desk sound effects: desk-sfx.js, loaded before this file. A keyswitch, paper, a pencil and
+// a rubber stamp -- the office half of the world Word Match's CardSfx covers with cards.
+// Everything goes through this shim rather than naming DeskSfx at each call site, because a
+// script that failed to load must cost a sound and not a click handler: these handlers are
+// what answer a question and open a level.
+const Sfx = (function () {
+    const d = window.DeskSfx;
+    const nop = function () {};
+    if (!d) return { wake: nop, tap: nop, press: nop, chunk: nop, paper: nop, page: nop,
+                     pencil: nop, stamp: nop, tapTwice: nop, drawer: nop };
+    return d;
+})();
+
+// Music-only subset of game.js's GameAudio module -- the synthesized effects that go with it
+// are DeskSfx above, which arrived on 2026-11-01; this half is still just the background
+// track. Same fade-in/out-via-plain-HTMLAudioElement approach, same reasoning throughout.
 const GrammarAudio = (function () {
     // 0 muted … 3 full, shared with Word Match through khanjp-volume.
     const VOLUME_STEPS = [0, 0.30, 0.60, 1];
@@ -597,6 +610,7 @@ function renderDiffTabs() {
             + `<span class="gt-note">${escapeHtml(window.t(band.note))}</span></span>`;
         btn.addEventListener('click', () => {
             if (activeBand === i) return;
+            Sfx.tap();
             activeBand = i;
             activeTrack = band.track;
             focusedLevel = band.from;
@@ -709,7 +723,10 @@ function renderLevelGrid() {
 
         if (levelObj) {
             tile.addEventListener('click', () => {
-                if (focusedLevel === levelNum) { openLevel(band.track, levelNum); return; }
+                // The same tile does two different things, so it makes two different sounds:
+                // the first press moves the focus, the second commits to the level.
+                if (focusedLevel === levelNum) { Sfx.chunk(); openLevel(band.track, levelNum); return; }
+                Sfx.press();
                 focusedLevel = levelNum;
                 renderLevelGrid();
                 renderLevelRecord();
@@ -755,7 +772,7 @@ function renderLevelRecord() {
     cta.type = 'button';
     cta.className = 'auth-btn gc-rec-cta';
     cta.textContent = window.t('game.startMatch');
-    cta.addEventListener('click', () => openLevel(band.track, focusedLevel));
+    cta.addEventListener('click', () => { Sfx.chunk(); openLevel(band.track, focusedLevel); });
     host.appendChild(cta);
 }
 
@@ -1053,6 +1070,9 @@ function onTileClick(btn, opt, s) {
     if (tileLocked) return;
     if (opt === s.new) {
         tileLocked = true;
+        // The page already draws a hanko stamp ring at the tapped tile; this is that stamp's
+        // sound, fired with it rather than after it so the two are one event.
+        Sfx.stamp();
         btn.classList.add('gc-tile-correct');
         document.querySelectorAll('#gc-tile-bank .gc-tile').forEach(t => {
             if (t !== btn) t.classList.add('gc-tile-disabled');
@@ -1066,6 +1086,9 @@ function onTileClick(btn, opt, s) {
         gcFloatText(tileC.x, tileC.y - 20, '+' + TIME_BONUS_PER_SENTENCE + 's');
 
         const og = document.getElementById('gc-old-grammar');
+        // The underlined grammar is about to be rewritten in place -- a short pencil stroke,
+        // delayed to land with the swap rather than with the tap that caused it.
+        window.setTimeout(() => Sfx.pencil(), 160);
         og.classList.add('swapping');
         window.setTimeout(() => {
             og.innerHTML = s.new;
@@ -1097,6 +1120,7 @@ function onTileClick(btn, opt, s) {
         // with. Cores where they exist, since 「そう」 is a more useful thing to count than
         // 「降るそうです」. `opt` is a tile's display text and carries furigana;
         // recordWordAttempt strips it, because word_stats holds keys and not markup.
+        Sfx.tapTwice();
         if (window.recordWordAttempt) {
             window.recordWordAttempt({ source: 'grammar', word: grammarKey(s), correct: false, confusedWith: opt });
         }
@@ -1334,6 +1358,7 @@ document.getElementById('gc-board-sound-toggle').addEventListener('click', () =>
 syncSoundButtons(GrammarAudio.getLevel());
 
 document.getElementById('gc-start-modal-btn').addEventListener('click', () => {
+    Sfx.page();
     hideEl(document.getElementById('gc-start-modal'));
     matchStarted = true;
     startTimer();
@@ -1410,3 +1435,8 @@ if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
         return out;
     };
 })();
+
+// An AudioContext constructed outside a gesture comes back suspended and stays silent for the
+// session, so the first pointerdown anywhere on the page is what starts it. once:true -- after
+// that it is running and the listener has nothing left to do.
+document.addEventListener('pointerdown', () => Sfx.wake(), { once: true });

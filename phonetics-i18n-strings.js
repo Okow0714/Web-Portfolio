@@ -2,6 +2,9 @@
 // which i18n-strings-shared.js must have already created (loaded first in phonetics.html).
 Object.assign(window.I18N_STRINGS, {
     'phonetics.titleMain': { en: 'Phonetics Family', mn: 'Дуудлагын бүлэг' },
+    // The speaker reads out its own step, since the icon's four states are only
+    // distinguishable to someone who can see them.
+    'phonetics.volumeAria': { en: 'Volume {n} of 3', mn: 'Дууны түвшин: 3-аас {n}' },
     'phonetics.whatIsPhoneticComponent': { en: "What's a phonetic component?", mn: 'Дуудлагын язгуур гэж юу вэ?' },
     'phonetics.modalTitle': { en: "What's a Phonetic Component?", mn: 'Дуудлагын язгуур гэж юу вэ?' },
     'phonetics.stageComponent': { en: 'component', mn: 'язгуур' },
