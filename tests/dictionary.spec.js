@@ -1,5 +1,6 @@
-// Dictionary page: MN<->JP search works and is fast even at thousands of entries, expand-on-
-// click reveals detail, the Kango<->Wago tab lazy-loads its data on first switch (not eagerly),
+// Dictionary page: MN<->JP search works and is fast even at thousands of entries, the word
+// detail opens in the panel beside the list and the panel is right in all three of its
+// states, the Kango<->Wago tab lazy-loads its data on first switch (not eagerly),
 // and Word Match's Wakan winged-tile feature still finds kango/wago pairs independently of any
 // of this -- the one hard invariant from the dictionary rework: dictionary-data.js itself must
 // stay untouched and load-order-independent of the dictionary page.
@@ -21,11 +22,49 @@ module.exports = async function run(page, assert, baseUrl) {
     const firstResult = await page.locator('#mnjp-list .mnjp-side.jp .term').first().textContent();
     assert.ok(firstResult.startsWith('人'), `expected the exact match 人 first, got "${firstResult}"`);
 
-    // Click-to-expand reveals detail (source tags at minimum).
+    // The detail panel beside the list, in all three of its states. It replaced the inline
+    // expansion on 2026-11-01: the row PICKS a word now, it does not open one underneath
+    // itself. Nothing picked yet, so the panel is a prompt, not a word and not blank.
+    const atRest = await page.evaluate(() => {
+        const d = document.getElementById('mnjp-detail');
+        return { hidden: d.hidden, prompt: d.querySelectorAll('.dict-detail-prompt').length,
+                 picked: document.querySelectorAll('.mnjp-entry.is-picked').length };
+    });
+    assert.ok(!atRest.hidden, 'with results on screen the detail panel should be visible');
+    assert.strictEqual(atRest.prompt, 1, 'an unpicked panel should carry its prompt');
+    assert.strictEqual(atRest.picked, 0, 'nothing should be marked picked before a click');
+
     await page.locator('#mnjp-list .mnjp-entry-main').first().click();
-    await page.waitForTimeout(150);
-    const tagCount = await page.locator('#mnjp-list .mnjp-entry.open .mnjp-source-tag').count();
-    assert.ok(tagCount > 0, 'expanding a result should show at least one source tag');
+    await page.waitForTimeout(200);
+    const picked = await page.evaluate(() => {
+        const d = document.getElementById('mnjp-detail');
+        return { tags: d.querySelectorAll('.mnjp-source-tag').length,
+                 kanji: d.querySelectorAll('.kj-card').length,
+                 meanings: [...d.querySelectorAll('.kj-mean')].map(e => e.textContent.trim()),
+                 readings: d.querySelectorAll('.kj-read').length,
+                 prompt: d.querySelectorAll('.dict-detail-prompt').length,
+                 picked: document.querySelectorAll('.mnjp-entry.is-picked').length,
+                 current: document.querySelectorAll('.mnjp-entry-main[aria-current="true"]').length };
+    });
+    assert.ok(picked.tags > 0, 'a picked word should show at least one source tag');
+    assert.strictEqual(picked.prompt, 0, 'the prompt should be replaced by the word');
+    assert.strictEqual(picked.picked, 1, 'exactly one row should be marked picked');
+    assert.strictEqual(picked.current, 1, 'exactly one row should carry aria-current');
+    // 人 is one kanji, and it must come with a meaning -- an empty meaning line is what a
+    // missing kanji-index.js looks like, and the panel would still render around it.
+    assert.strictEqual(picked.kanji, 1, `人 should break into 1 kanji card, got ${picked.kanji}`);
+    assert.ok(picked.meanings[0] && picked.meanings[0].length > 0,
+        'the kanji card should carry a meaning, not an empty line');
+    assert.ok(picked.readings > 0, 'the kanji card should carry at least one reading line');
+
+    // A search that matches nothing takes the panel away entirely: there is no list for it to
+    // be the detail OF, so a prompt there would be pointing at an empty page.
+    await page.fill('#mnjp-search', 'zzzzqqqq');
+    await page.waitForTimeout(300);
+    assert.ok(await page.evaluate(() => document.getElementById('mnjp-detail').hidden),
+        'the detail panel should be hidden when the search matches nothing');
+    await page.fill('#mnjp-search', '人');
+    await page.waitForTimeout(300);
 
     // Switching to the Kango<->Wago tab triggers the lazy load exactly once.
     await page.click('#dict-tab-wakan');

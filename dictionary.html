@@ -391,11 +391,12 @@
         <!-- /chrome:header -->
 
         <main tabindex="-1" id="main" class="dictionary-main">
+            <!-- No display title and no description paragraph: the search field IS the heading
+                 here, and the page's explanation lives behind the tour's ? button, the way
+                 phonetics.html has always worked. .dict-hud-row keeps the h1 the page still
+                 needs -- it is the tour's help anchor, so deleting it takes the ? with it. -->
             <div class="dict-hud-row">
-                <div>
-                    <h1 class="dict-title">蒙日辞典<span class="dict-title-sub" data-i18n="dict.titleSub">Монгол-Япон толь бичиг</span></h1>
-                    <p class="dict-subtitle" data-i18n="dict.subtitle">Монгол эсвэл япон үг хайхад нөгөө талын хос үг нь гарч ирнэ. Таван эх сурвалжийг нэгтгэсэн 3,537 үгтэй: Үг холбох дасгалын үгсийн сан, гараар хянасан гүүр толь, N5-ын үндсэн үгс, өдөр тутмын орчин үеийн үгс, доорх Канго ⇄ Ваго хосууд. Үг бүрийн хажууд аль эх сурвалжаас авсныг нь тэмдэглэсэн байгаа. Гуравны нэг орчимд нь жишээ өгүүлбэр байгаа — дээр нь дарж үзээрэй. Канго ⇄ Ваго таб нь Хятад-Япон гаралтай (канго) ба уугуул Япон (ваго) толь бичгийг, хүндэтгэлийн хэлбэрийн хамт агуулдаг.</p>
-                </div>
+                <h1 class="dict-title" data-i18n="dict.lookup">Үг хайх</h1>
             </div>
 
             <div class="dict-tabs" role="tablist" aria-label="Dictionary section">
@@ -415,14 +416,24 @@
                             <span class="dict-search-count" id="mnjp-count"></span>
                         </div>
                     </div>
-                    <aside class="dict-recent" aria-labelledby="mnjp-recent-title">
-                        <div class="dict-recent-head">
-                            <h2 class="dict-recent-title" id="mnjp-recent-title" data-i18n="dict.recentTitle">Сүүлд хайсан</h2>
-                            <button type="button" class="dict-recent-clear hidden" id="mnjp-recent-clear" data-i18n="dict.recentClear">Цэвэрлэх</button>
-                        </div>
-                        <ul class="dict-recent-list" id="mnjp-recent-list"></ul>
-                        <p class="dict-recent-empty" id="mnjp-recent-empty" data-i18n="dict.recentEmpty">Хайсан үгс чинь энд харагдана.</p>
-                    </aside>
+                    <!-- One column, because two elements given the same grid-area
+                         overlap rather than stack: the picked word sits above the
+                         reader's own recent searches. -->
+                    <div class="dict-aside">
+                        <!-- The picked word, beside the list it was picked from -- the same
+                             parent-beside-child shape reading.html's text panel and Kana Origins'
+                             desk use. It is hidden until a search has been run, and then carries a
+                             prompt until a row is picked: an empty panel is information. -->
+                        <section class="dict-detail" id="mnjp-detail" aria-live="polite" hidden></section>
+                        <aside class="dict-recent" aria-labelledby="mnjp-recent-title">
+                            <div class="dict-recent-head">
+                                <h2 class="dict-recent-title" id="mnjp-recent-title" data-i18n="dict.recentTitle">Сүүлд хайсан</h2>
+                                <button type="button" class="dict-recent-clear hidden" id="mnjp-recent-clear" data-i18n="dict.recentClear">Цэвэрлэх</button>
+                            </div>
+                            <ul class="dict-recent-list" id="mnjp-recent-list"></ul>
+                            <p class="dict-recent-empty" id="mnjp-recent-empty" data-i18n="dict.recentEmpty">Хайсан үгс чинь энд харагдана.</p>
+                        </aside>
+                    </div>
                     <div class="dict-list" id="mnjp-list"></div>
                     <p class="dict-idle" id="mnjp-idle" data-i18n="dict.idle">Хайх үгээ бичнэ үү — монгол, япон, кана, эсвэл ханзаар.</p>
                     <p class="dict-empty hidden" id="mnjp-empty" data-i18n="dict.noMatches">Таны хайлттай тохирох бичлэг олдсонгүй.</p>
@@ -503,6 +514,7 @@
     <script src="auth-shared.js"></script>
     <script src="mnjp-data.js"></script>
     <script src="phonetics-kanji-index.js"></script>
+    <script src="kanji-index.js"></script>
     <!-- Which other tools each word appears in (tools/build-crosslink-index.js). 33KB gzipped,
          against ~2.9MB if this page loaded game-words.js, reading-texts.js and the phonetics
          data to work it out itself. Regenerate when any of those three change --

@@ -131,9 +131,68 @@ function phoneticChipsHtml(...texts) {
     </div>`;
 }
 
-// Builds the expanded detail (source tags, extra glosses, example sentence, kango/wago
-// cross-link) -- called lazily on first expand rather than for every one of the 3,537 rows up
-// front, since most of them are never opened in a given visit.
+// ---------------------------------------------------------------------------
+// The kanji breakdown
+//
+// kanji-index.js (generated, ~167KB) holds one record per kanji the dictionary's own words use:
+// on/kun readings and English from KANJIDIC2, a Mongolian gloss, a stroke count, and this
+// repo's own JLPT filing where it has one. Every one of the 1,550 is covered -- which is the
+// reason that file exists at all, since the repo's own per-kanji data reaches only the 60% of
+// them that sit in a phonetic family of three or more, and misses 人 大 学 出 食 行 見 言 書.
+//
+// The meaning follows the SITE language rather than always preferring Mongolian: an English
+// reader looking at 飛 wants "fly", not нисэх, and the record carries both.
+// ---------------------------------------------------------------------------
+const KANJI_RE = /[㐀-䶿一-鿿豈-﫿]/;
+
+function kanjiMeaning(rec) {
+    const en = (rec.me || []).slice(0, 3).join(', ');
+    if (window.siteLang() === 'en') return en || rec.mn || '';
+    return rec.mn || en || '';
+}
+
+function kanjiCardsHtml(word) {
+    if (typeof KANJI_INDEX === 'undefined' || !word) return '';
+    // Deduped, but in the order they appear in the word -- 人人 shows one card, and 飛行場
+    // shows 飛 行 場 in that order, because the card row is read as the word is written.
+    const seen = new Set();
+    const cards = [];
+    for (const ch of word) {
+        if (!KANJI_RE.test(ch) || seen.has(ch)) continue;
+        seen.add(ch);
+        const rec = KANJI_INDEX[ch];
+        if (!rec) continue;
+        const fam = (typeof PHONETICS_KANJI_INDEX !== 'undefined') ? PHONETICS_KANJI_INDEX[ch] : null;
+        const lines = [];
+        if (rec.on && rec.on.length) {
+            lines.push(`<span class="kj-read"><b>${escapeHtml(window.t('dict.onyomi'))}</b>${escapeHtml(rec.on.slice(0, 3).join(' · '))}</span>`);
+        }
+        if (rec.kun && rec.kun.length) {
+            lines.push(`<span class="kj-read"><b>${escapeHtml(window.t('dict.kunyomi'))}</b>${escapeHtml(rec.kun.slice(0, 3).join(' · '))}</span>`);
+        }
+        const foot = [];
+        if (rec.lv) foot.push(`<span class="jlpt-chip" data-level="${rec.lv}">${rec.lv}</span>`);
+        if (rec.st) foot.push(`<span class="kj-strokes">${window.tf('dict.strokes', { n: rec.st })}</span>`);
+        if (fam) {
+            foot.push(`<a class="kj-fam" href="phonetics.html?kanji=${encodeURIComponent(ch)}">${escapeHtml(window.tf('dict.kanjiFamily', { c: fam.phonetic }))}</a>`);
+        }
+        cards.push(`<div class="kj-card">
+            <span class="kj-glyph" aria-hidden="true">${escapeHtml(ch)}</span>
+            <span class="kj-body">
+                <span class="kj-mean">${escapeHtml(kanjiMeaning(rec))}</span>
+                ${lines.join('')}
+                ${foot.length ? `<span class="kj-foot">${foot.join('')}</span>` : ''}
+            </span>
+        </div>`);
+    }
+    if (!cards.length) return '';
+    return `<p class="dict-detail-lab">${escapeHtml(window.tf('dict.kanjiIn', { n: cards.length }))}</p>
+        <div class="kj-grid">${cards.join('')}</div>`;
+}
+
+// Builds the detail PANEL -- the picked word's own column beside the list. It used to be an
+// inline strip under the row, which for most entries was a single line of grey capitals naming
+// the source and nothing else; the characters the word is made of were never shown anywhere.
 function buildMnjpDetail(entry) {
     const sourceTags = entry.sources
         .map(s => `<span class="mnjp-source-tag${entry.sources.length > 1 ? ' confirmed' : ''}">${escapeHtml(window.t(SOURCE_LABEL_KEY[s]))}</span>`)
@@ -142,14 +201,78 @@ function buildMnjpDetail(entry) {
     let exampleHtml = '';
     if (entry.example) {
         const mnText = (window.siteLang() === 'mn') ? entry.example.enMn : entry.example.en;
-        exampleHtml = `<div class="mnjp-example"><p class="ex-jp">${entry.example.furigana}</p><p class="ex-mn">${escapeHtml(mnText)}</p></div>`;
+        exampleHtml = `<p class="dict-detail-lab">${escapeHtml(window.t('dict.example'))}</p>
+            <div class="mnjp-example"><p class="ex-jp">${entry.example.furigana}</p><p class="ex-mn">${escapeHtml(mnText)}</p></div>`;
     }
     let kangowagoHtml = '';
     if (entry.kangowago) {
         const partner = `${entry.kangowago.text} (${escapeHtml(window.t(entry.kangowago.role === 'kango' ? 'dict.kango' : 'dict.wago'))})`;
         kangowagoHtml = `<p class="mnjp-kango-link">${window.tf('dict.alsoInKangowago', { word: partner })}</p>`;
     }
-    return `<div class="mnjp-source-tags">${sourceTags}</div>${glossesHtml}${exampleHtml}${kangowagoHtml}${phoneticChipsHtml(entry.jp)}`;
+    return `<div class="dict-detail-head">
+            <span class="dd-jp">${furigana(entry.jp, entry.reading)}</span>
+            <span class="dd-mn">${escapeHtml(entry.mn)}</span>
+            ${jlptChipHtml(entry)}
+        </div>
+        ${glossesHtml}
+        ${kanjiCardsHtml(entry.jp)}
+        ${exampleHtml}
+        <p class="dict-detail-lab">${escapeHtml(window.t('dict.source'))}</p>
+        <div class="mnjp-source-tags">${sourceTags}</div>
+        ${kangowagoHtml}`;
+}
+
+// ---------------------------------------------------------------------------
+// The panel's three states
+//
+// Hidden with no search at all (there is no word to be the parent of anything), a prompt once
+// there are results but nothing picked, and the word once one is. The prompt names where its
+// contents will come from rather than sitting blank: an empty panel is information, but an
+// unexplained one is indistinguishable from a broken fill.
+// ---------------------------------------------------------------------------
+let pickedJp = null;
+
+function detailEl() { return document.getElementById('mnjp-detail'); }
+
+function markPicked(jp) {
+    document.querySelectorAll('#mnjp-list .mnjp-entry').forEach(card => {
+        const on = card.dataset.jp === jp;
+        card.classList.toggle('is-picked', on);
+        const btn = card.querySelector('.mnjp-entry-main');
+        if (btn) btn.setAttribute('aria-current', on ? 'true' : 'false');
+    });
+}
+
+function showDetailPrompt() {
+    pickedJp = null;
+    const el = detailEl();
+    if (!el) return;
+    el.hidden = false;
+    el.innerHTML = `<p class="dict-detail-prompt">${escapeHtml(window.t('dict.detailPrompt'))}</p>`;
+    markPicked(null);
+}
+
+function hideDetail() {
+    pickedJp = null;
+    const el = detailEl();
+    if (!el) return;
+    el.hidden = true;
+    el.innerHTML = '';
+    markPicked(null);
+}
+
+function showDetail(entry) {
+    pickedJp = entry.jp;
+    const el = detailEl();
+    if (!el) return;
+    el.hidden = false;
+    el.innerHTML = buildMnjpDetail(entry);
+    markPicked(entry.jp);
+    // On a phone the panel sits BELOW the list, so picking a row would otherwise change
+    // something off-screen and look like nothing happened.
+    if (window.matchMedia('(max-width: 900px)').matches) {
+        el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
 }
 
 // ---------------------------------------------------------------------------
@@ -293,11 +416,13 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') xlCloseAll(n
 function renderMnjpEntry(entry) {
     const card = document.createElement('div');
     card.className = 'mnjp-entry';
+    card.dataset.jp = entry.jp;
     // The badges are a sibling of the row button, never inside it: a link cannot live in a
-    // button. The chevron comes out with them, so the button's grid is three columns now.
+    // button. The chevron is gone with the inline expansion -- the row no longer opens
+    // anything underneath itself, it PICKS, and `aria-current` is what says which one is live.
     card.innerHTML = `
         <div class="mnjp-entry-head">
-            <button type="button" class="mnjp-entry-main" aria-expanded="false">
+            <button type="button" class="mnjp-entry-main" aria-current="false">
                 <span class="mnjp-side mn">
                     <span class="label">Монгол</span>
                     <span class="term">${escapeHtml(entry.mn)}</span>
@@ -310,22 +435,14 @@ function renderMnjpEntry(entry) {
             </button>
             ${jlptChipHtml(entry)}
             ${xlBadgesHtml(entry)}
-            <span class="mnjp-expand-hint" aria-hidden="true">&#9662;</span>
         </div>
-        <div class="mnjp-detail"></div>
     `;
     const btn = card.querySelector('.mnjp-entry-main');
-    const detail = card.querySelector('.mnjp-detail');
-    let built = false;
-    const toggle = () => {
-        if (!built) { built = true; detail.innerHTML = buildMnjpDetail(entry); }
-        const open = card.classList.toggle('open');
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    };
-    btn.addEventListener('click', toggle);
-    // The chevron is decorative for assistive tech -- the row button above is the real control --
-    // but it still looks clickable, so it stays one for a mouse.
-    card.querySelector('.mnjp-expand-hint').addEventListener('click', toggle);
+    if (entry.jp === pickedJp) {
+        card.classList.add('is-picked');
+        btn.setAttribute('aria-current', 'true');
+    }
+    btn.addEventListener('click', () => showDetail(entry));
 
     card.querySelectorAll('.xl-badge').forEach(b => {
         b.addEventListener('click', e => {
@@ -359,6 +476,7 @@ function renderMnjpList() {
     if (!mnjpQuery) {
         hideEl(empty);
         showEl(idle);
+        hideDetail();
         countEl.textContent = window.tf('dict.wordCount', { n: MNJP_ENTRIES.length });
         return;
     }
@@ -379,6 +497,7 @@ function renderMnjpList() {
 
     if (filtered.length === 0) {
         showEl(empty);
+        hideDetail();
         return;
     }
     hideEl(empty);
@@ -386,6 +505,13 @@ function renderMnjpList() {
     const frag = document.createDocumentFragment();
     shown.forEach(entry => frag.appendChild(renderMnjpEntry(entry)));
     list.appendChild(frag);
+
+    // A word still in the new results keeps its panel -- typing one more letter should not
+    // throw away the word you are reading. One that has been filtered out gives the panel back
+    // to the prompt rather than leaving a detail with no row behind it.
+    const stillHere = pickedJp && shown.some(e => e.jp === pickedJp);
+    if (stillHere) markPicked(pickedJp);
+    else showDetailPrompt();
 }
 
 // ---------------------------------------------------------------------------

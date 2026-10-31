@@ -62,28 +62,17 @@ body:has(.dictionary-main) {
     margin: 0 auto;
 }
 
+/* The h1 is a label for the search field now, not a masthead for the page -- the display title
+   and the 91-word description are gone, so the field and the first results are above the fold.
+   It is still an h1 and still the tour's help anchor; .tour-help-btn is injected after it. */
 .dict-title {
     font-family: 'Fraunces', Georgia, serif;
-    font-size: clamp(1.9rem, 3.4vw, 2.6rem);
-    margin: 0 0 10px;
-    color: var(--sumi);
-}
-
-.dict-title-sub {
-    display: block;
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--terracotta);
-    letter-spacing: 0.04em;
-    margin-top: 4px;
-}
-
-.dict-subtitle {
-    max-width: 68ch;
-    color: var(--ink-soft);
-    font-size: 0.98rem;
-    line-height: 1.6;
+    font-size: 1.45rem;
     margin: 0;
+    color: var(--sumi);
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
 }
 
 /* Segmented control, not pills -- reads as "one dictionary, two lenses" sharing a border,
@@ -135,14 +124,17 @@ body:has(.dictionary-main) {
    that with one rule each and leave the existing children where they are in the DOM.
    --------------------------------------------------------------------------------------- */
 .dict-layout {
-    max-width: 1100px;
+    max-width: 1180px;
     margin: 28px auto 0;
+    /* The right column was 268px, sized for a list of short queries. It now also carries the
+       picked word's panel, whose kanji cards need a glyph, a meaning and two reading lines
+       abreast -- measured, 360px is where a three-kanji word stops wrapping its readings. */
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 268px;
+    grid-template-columns: minmax(0, 1fr) 360px;
     grid-template-areas:
-        "controls recent"
-        "list     recent"
-        "empty    recent";
+        "controls aside"
+        "list     aside"
+        "empty    aside";
     gap: 0 28px;
     align-items: start;
 }
@@ -150,7 +142,21 @@ body:has(.dictionary-main) {
 .dict-layout .dict-controls { grid-area: controls; max-width: none; margin: 0; }
 .dict-layout .dict-list     { grid-area: list;     max-width: none; margin: 22px 0 0; }
 .dict-layout .dict-empty    { grid-area: empty;    max-width: none; margin: 40px 0; }
-.dict-recent                { grid-area: recent; }
+/* One wrapper, not two grid items: two elements given the SAME grid-area are stacked on top of
+   each other, not under one another. .dict-aside is the column; the panel and the recent strip
+   stack inside it. */
+.dict-aside {
+    grid-area: aside;
+    position: sticky;
+    top: 88px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    /* It can outgrow the window on a long word, so it scrolls itself rather than unsticking. */
+    max-height: calc(100vh - 108px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
 
 .dict-search-wrap {
     flex: 1;
@@ -269,13 +275,152 @@ body:has(.dictionary-main) {
     gap: 10px;
 }
 
+/* ---------------------------------------------------------------------------------------
+   The picked word's panel
+
+   The expansion used to be an inline strip under the row, and for most of the 3,537 entries it
+   held one line of grey capitals naming the source. The characters a word is written with --
+   the thing a learner is actually looking at -- were never shown anywhere on this page.
+   --------------------------------------------------------------------------------------- */
+.dict-detail {
+    background: var(--card);
+    border: 1px solid var(--card-edge);
+    padding: 16px 17px 17px;
+    flex: none;
+}
+
+.dict-detail[hidden] { display: none; }
+
+.dict-detail-prompt {
+    margin: 0;
+    color: var(--ink-faint);
+    font-size: 0.88rem;
+    line-height: 1.55;
+}
+
+.dict-detail-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--card-edge);
+}
+
+.dd-jp {
+    font-family: var(--font-jp);
+    font-size: 1.9rem;
+    line-height: 1.25;
+    color: var(--sumi);
+}
+
+.dd-jp rt {
+    font-size: 0.34em;
+    color: var(--ink-soft);
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.dd-mn {
+    font-size: 1.05rem;
+    font-weight: 650;
+    color: var(--khukh);
+    overflow-wrap: anywhere;
+}
+
+/* One label style for all four sections, so the panel reads as one list rather than four
+   separate cards stacked up. */
+.dict-detail-lab {
+    font-size: 0.66rem;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 650;
+    margin: 16px 0 8px;
+}
+
+/* ---- the kanji breakdown --------------------------------------------------------------- */
+.kj-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.kj-card {
+    display: flex;
+    gap: 12px;
+    background: var(--bg-page);
+    border: 1px solid var(--card-edge);
+    padding: 10px 11px;
+}
+
+.kj-glyph {
+    font-family: var(--font-jp);
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--sumi);
+    flex: none;
+}
+
+.kj-body {
+    min-width: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.kj-mean {
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--ink);
+    overflow-wrap: anywhere;
+}
+
+.kj-read {
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    font-family: var(--font-jp);
+    overflow-wrap: anywhere;
+}
+
+/* The on/kun marker is a label, not Japanese -- it stays in the body face so the kana beside
+   it is the only thing set in the serif. */
+.kj-read b {
+    color: var(--terracotta);
+    font-weight: 650;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.66rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    margin-right: 5px;
+}
+
+.kj-foot {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 5px;
+}
+
+.kj-strokes { font-size: 0.7rem; color: var(--ink-faint); }
+
+.kj-fam {
+    font-size: 0.72rem;
+    color: var(--terracotta);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+}
+
+.kj-fam:hover { color: var(--sumi); }
+.kj-fam:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 2px; }
+
 /* ---- recently searched ---------------------------------------------------------------- */
 .dict-recent {
-    position: sticky;
-    top: 88px;
     background: var(--card);
     border: 1px solid var(--card-edge);
     padding: 14px 15px 15px;
+    flex: none;
 }
 
 .dict-recent-head {
@@ -350,16 +495,35 @@ body:has(.dictionary-main) {
 @media (max-width: 900px) {
     /* One column: the aside drops between the search and the results, where it is still worth
        tapping, and its list becomes a wrapped strip of chips rather than a tall stack. */
+    /* One column, and the two halves of the aside go to OPPOSITE ends of it. The recent strip
+       belongs between the search and the results, where it is still worth tapping; the picked
+       word's panel belongs below them, because stacked above it pushed the first result 865px
+       down the page -- you tapped a row and the thing you asked for appeared off-screen above
+       your finger. That is the fault Dokkai Reader's rail had, in the same shape.
+
+       `display: contents` is what lets one wrapper do both: the wrapper exists only to stop
+       the two overlapping in the desktop grid's single right-hand column, and at this width
+       there is no column to share, so it steps out of the way and its children become grid
+       items in their own right. Its sticky positioning and height cap go with it, which is
+       also correct -- a sticky column inside a single-column page is just a block that refuses
+       to scroll with the page. */
     .dict-layout {
         grid-template-columns: 1fr;
-        grid-template-areas: "controls" "recent" "list" "empty";
+        grid-template-areas: "controls" "recent" "list" "empty" "detail";
         gap: 0;
     }
 
     .dict-search-wrap { max-width: none; }
 
+    .dict-aside { display: contents; }
+
+    .dict-detail {
+        grid-area: detail;
+        margin-top: 14px;
+    }
+
     .dict-recent {
-        position: static;
+        grid-area: recent;
         margin-top: 14px;
         padding: 11px 12px 12px;
     }
@@ -445,16 +609,12 @@ body:has(.dictionary-main) {
 
 .mnjp-bridge { color: var(--ink-faint); font-size: 1.1rem; }
 
-.mnjp-expand-hint {
-    color: var(--ink-faint);
-    font-size: 0.8rem;
-    transition: transform 0.15s var(--ease-out);
+/* The picked row. It is marked with its own edge and a left bar rather than a fill: a filled
+   row at this size reads as a disabled one, and the bar points at the panel it fills. */
+.mnjp-entry.is-picked {
+    border-color: var(--khukh);
+    box-shadow: inset 3px 0 0 var(--khukh);
 }
-
-.mnjp-entry.open .mnjp-expand-hint { transform: rotate(180deg); }
-
-.mnjp-detail { display: none; padding: 0 22px 18px; }
-.mnjp-entry.open .mnjp-detail { display: block; }
 
 .mnjp-source-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
 
@@ -503,13 +663,12 @@ body:has(.dictionary-main) {
 .phonetic-chip:hover { background: var(--terracotta-tint); color: var(--terracotta); }
 .phonetic-chip:hover .reading { color: var(--terracotta); }
 
-/* Inside a Kango/Wago card, match the sibling rows' own border/padding treatment (the mnjp tab's
-   .mnjp-detail already supplies that padding on its parent, so this override only applies here). */
+/* Inside a Kango/Wago card, match the sibling rows' own border/padding treatment. The MN-JP tab
+   needs no equivalent: its chips sit in the detail panel, which supplies its own padding. */
 .dict-entry .phonetic-chip-row { margin-top: 0; padding: 12px 22px 16px; border-top: 1px solid var(--card-edge); }
 
 @media (max-width: 640px) {
     .mnjp-entry-main { grid-template-columns: 1fr auto 1fr; }
-    .mnjp-expand-hint { grid-column: 1 / -1; text-align: center; }
     .mnjp-side.jp { text-align: left; }
 }
 
@@ -642,17 +801,10 @@ body:has(.dictionary-main) {
     .dict-side.wago { text-align: left; }
 }
 
-/* Phones. The result count sits inside the search field, which fits a wide screen and collided
-   with the placeholder at 390px (count 309px wide, printed straight over it). Below the field
-   instead. The intro was 301px tall before the first word, so it steps down a size too. */
-@media (max-width: 860px) {
-    /* The count is laid out below the field at every width now -- see .dict-search-count. Only
-       the subtitle still needs a phone-specific size here. */
-    .dict-subtitle {
-        font-size: 0.92rem;
-        line-height: 1.55;
-    }
-}
+/* A phone block lived here. By the end it held ONE rule, a smaller page description, and went
+   with the description itself on 2026-11-01; the result count had already moved out of the
+   search field to below it at every width (see .dict-search-count), after printing straight
+   over the placeholder at 390px. */
 
 /* ---------------------------------------------------------------------------------------------
    Masthead and footer carry this tool's own colour: exactly the seal index.html gives this page
@@ -705,7 +857,7 @@ html[data-contrast="darker"] .site-footer {
 .mnjp-entry-head .mnjp-entry-main {
     flex: 1;
     min-width: 0;
-    /* three columns now: the chevron moved out to the head with the badges */
+    /* three columns now: the chevron is gone with the inline expansion */
     grid-template-columns: minmax(0, 24ch) auto minmax(0, 1fr);
 }
 

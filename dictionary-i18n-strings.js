@@ -19,11 +19,6 @@ Object.assign(window.I18N_STRINGS, {
     'xlink.trackFoundation': { en: 'Foundation', mn: 'Суурь' },
     'xlink.trackAdvanced': { en: 'Advanced', mn: 'Ахисан' },
 
-    'dict.titleSub': { en: 'Mongol-Japan Dictionary', mn: 'Монгол-Япон толь бичиг' },
-    'dict.subtitle': {
-        en: "Search a Mongolian or Japanese word and see its counterpart on the other side — 3,537 entries merged from five sources: Word Match's translated vocabulary, a human-reviewed bridge dictionary, a core N5 list, everyday modern words, and the Kango ⇄ Wago pairs below. Each result shows which source it came from, and about a third also carry an example sentence — click a result to open it. The Kango ⇄ Wago tab holds the original Sino-Japanese/native-Japanese dictionary, honorific forms included.",
-        mn: 'Монгол эсвэл япон үг хайхад нөгөө талын хос үг нь гарч ирнэ. Таван эх сурвалжийг нэгтгэсэн 3,537 үгтэй: Үг холбох дасгалын үгсийн сан, гараар хянасан гүүр толь, N5-ын үндсэн үгс, өдөр тутмын орчин үеийн үгс, доорх Канго ⇄ Ваго хосууд. Үг бүрийн хажууд аль эх сурвалжаас авсныг нь тэмдэглэсэн байгаа. Гуравны нэг орчимд нь жишээ өгүүлбэр байгаа — дээр нь дарж үзээрэй. Канго ⇄ Ваго таб нь Хятад-Япон гаралтай (канго) ба уугуул Япон (ваго) толь бичгийг, хүндэтгэлийн хэлбэрийн хамт агуулдаг.'
-    },
     'dict.mnjpSearchPlaceholder': { en: 'Search by Mongolian, kanji, kana, or English…', mn: 'Монгол, ханз, кана, эсвэл англи үгээр хайх…' },
     'dict.mnjpTruncated': { en: '{shown} of {total} shown — refine your search', mn: '{total}-с {shown} харуулж байна — хайлтаа тодруулна уу' },
     'dict.searchPlaceholder': { en: 'Search by kanji, kana, or English…', mn: 'Ханз, кана, эсвэл англи үгээр хайх…' },
@@ -50,4 +45,23 @@ Object.assign(window.I18N_STRINGS, {
     'dict.sourceEveryday': { en: 'Everyday', mn: 'Өдөр тутмын' },
     'dict.alsoInKangowago': { en: 'Also in Kango ⇄ Wago, paired with {word}', mn: 'Канго ⇄ Ваго-д {word}-тай хослон орсон байдаг' },
     'dict.phoneticFamily': { en: 'Phonetic family', mn: 'Дуудлагын бүлэг' },
+
+    // The detail panel beside the list. The page has no display title any more -- the h1 is
+    // this, naming what the field under it does.
+    'dict.lookup': { en: 'Look up a word', mn: 'Үг хайх' },
+    'dict.detailPrompt': {
+        en: 'Pick a word from the list and its readings, the characters it is written with and its example sentence appear here.',
+        mn: 'Жагсаалтаас үг сонгоход түүний дуудлага, бичигддэг ханзууд, жишээ өгүүлбэр нь энд гарч ирнэ.'
+    },
+    // "{n} kanji in this word" -- the label over the breakdown. It names the count because a
+    // one-kanji word and a four-kanji word look very different in that space.
+    'dict.kanjiIn': { en: 'Written with {n} kanji', mn: '{n} ханзаар бичигдэнэ' },
+    // Not 'он' / 'кун': 'он' on its own is the Mongolian word for "year", and set in small
+    // uppercase beside a kanji it reads as one. The full transliteration is unambiguous.
+    'dict.onyomi': { en: 'on', mn: 'онёми' },
+    'dict.kunyomi': { en: 'kun', mn: 'кунёми' },
+    'dict.strokes': { en: '{n} strokes', mn: '{n} зураас' },
+    'dict.kanjiFamily': { en: '{c} family', mn: '{c} бүлэг' },
+    'dict.example': { en: 'Example', mn: 'Жишээ' },
+    'dict.source': { en: 'Source', mn: 'Эх сурвалж' },
 });
