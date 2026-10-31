@@ -31,6 +31,14 @@
     --brand-gold: #e8bd6d;
     --brand-gold-dark: #c99a45;
     --brand-gold-tint: rgba(232, 189, 109, 0.16);
+    /* The ink that goes ON the brand gold, and it has to be pinned for the same reason the
+       gold does. These two places used `var(--header-bg)` -- each page's own seal -- which
+       measured fine only because the gold underneath them was being washed pale by that same
+       page's --header-accent lift. Putting the real gold back re-opened every one of those
+       ratios: the six seals came out at 2.22-4.22:1 on it (grammar 2.22, origins 2.35, game
+       2.44, phonetics 2.50). Moving a ground re-opens every ratio measured against the old
+       one, so the brand's own wine is the ink, at 4.78:1 on the gradient's dark stop. */
+    --brand-ink: #4a2c3a;
 
     /* Reading measure. A line past about 85 characters loses the eye on the return sweep,
        and .container is 1200px wide with nothing capping prose inside it. Applied by the
@@ -742,10 +750,16 @@ html[data-theme="dark"] { color-scheme: dark; }
     pointer-events: auto;
 }
 
+/* --header-text, NOT --header-text-muted. This is the one piece of muted chrome text sitting
+   on --header-bg-elevated rather than on --header-bg, and the elevated ground is the lighter
+   of the two -- so the same token that clears on the masthead fails inside the panel:
+   measured 2.84:1 on dictionary, whose seal is dark enough that it never lifted the muted
+   token at all. It is also not decoration. It is the sentence explaining why the Log in
+   button underneath it exists, so full-strength text is the right weight for it anyway. */
 .account-menu-note {
     margin: 0 0 12px;
     font-size: 0.85rem;
-    color: var(--header-text-muted);
+    color: var(--header-text);
     line-height: 1.5;
 }
 
@@ -771,17 +785,25 @@ html[data-theme="dark"] { color-scheme: dark; }
    sit at ~1.9:1 here. Qualified by .site-header-wrap purely for specificity: reading.css sets
    its own body:has(.reading-main) .auth-btn colour (0,2,1) as part of that page's light flip,
    which would otherwise outrank a bare .account-menu-panel .auth-btn (0,2,0) and leave the
-   reader page's panel button a different ink from the other pages. */
+   reader page's panel button a different ink from the other pages.
+
+   --brand-gold, NOT --header-accent, for the reason the brand seal has its own token: this
+   rule was written to stop exactly this drift -- see "came out blue on the portfolio and
+   copper on Phonetics Family" above -- and then the per-page --header-accent lifts of
+   2026-10-24 reintroduced it through the back door, because the fix names a token that later
+   became per-page. Measured before the repair: a PINK button on the reader
+   (#f6dcea -> #cfa7bd) and a near-white one on Grammar Connect. A fix pinned to a token is
+   only as fixed as that token's scope. */
 .site-header-wrap .account-menu-panel .auth-btn {
-    background: linear-gradient(135deg, var(--header-accent), var(--header-accent-dark));
-    border-color: var(--header-accent-dark);
-    color: var(--header-bg);
+    background: linear-gradient(135deg, var(--brand-gold), var(--brand-gold-dark));
+    border-color: var(--brand-gold-dark);
+    color: var(--brand-ink);
 }
 
 .site-header-wrap .account-menu-panel .auth-btn:hover {
-    background: linear-gradient(135deg, var(--header-accent-dark), var(--header-accent));
-    border-color: var(--header-accent);
-    color: var(--header-bg);
+    background: linear-gradient(135deg, var(--brand-gold-dark), var(--brand-gold));
+    border-color: var(--brand-gold);
+    color: var(--brand-ink);
 }
 
 #auth-authed {
@@ -806,7 +828,7 @@ html[data-theme="dark"] { color-scheme: dark; }
     height: 40px;
     border-radius: 50%;
     background: linear-gradient(150deg, var(--brand-gold), var(--brand-gold-dark));
-    color: var(--header-bg);
+    color: var(--brand-ink);
     font-family: var(--font-display);
     font-weight: 700;
     font-size: 1rem;

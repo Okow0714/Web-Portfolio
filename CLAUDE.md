@@ -174,6 +174,23 @@ counts as asking, so the Kango tab lists on a filter alone.
 `aria-selected`, and a tablist has exactly one selected tab by definition -- it is a tab strip,
 not a drill-down, and its whole select row is measured against the fold besides. Phonetics
 already gates this way, its gate bursting into a view swap.
+**The rest of the site was then swept for both faults and is clean** (2026-10-31), by two
+detectors kept in the scratchpad:
+`drift-audit.js` walks every element of the masthead and footer on all fifteen chrome pages,
+keys each by a stable DOM path and reports every FILL that is not identical everywhere. Fills
+only -- the first run reported 136 rows because inherited `color` and `borderColor` differ on
+every container by design, which buried the one real row. Narrowed to gradients, masks and
+backgrounds on childless elements it returns 8, of which 7 are `--header-bg` /
+`--header-bg-elevated` / the `nav-current` tint. The eighth was `.auth-btn`.
+`idle-audit.js` + `idle-deep.js` look at every page's detail panels at rest AND one click in,
+since the reader's fault was on its SECOND view and an arrival-only check misses it. Result:
+Kana Origins already prints a prompt and marks its source (`.is-on` on the stone, `.is-lit`
+across its row and column -- it is the model for this); Phonetics keeps `#phonetics-node-detail`
+`hidden` through gate, board and tree; Word Match renders no level until a tier is picked and
+no board until a level is. Nothing else to fix.
+**A guessed selector that matches nothing reads exactly like a real finding** -- the first run
+reported Kana Origins as filling its desk with "source marked: 0" because it looked for
+`.is-active` / `.selected` / `[aria-pressed]`, none of which that page uses.
 **`khanjpFadeIn` and `khanjpRiseSm` joined it on 2026-10-31**, and all six tool pages use that
 pair: a view arriving fades, nothing already on screen moves, nothing repeats. The split between
 them is the rule above stated the other way round -- `khanjpFadeIn` is opacity ONLY, which is
@@ -310,7 +327,29 @@ zone, and is offered signed out as well as signed in — its default rule uses t
 `.site-header-wrap`, not a descendant, so `--header-*` doesn't cascade there. `.auth-btn` is
 shared across the account panel and every modal; the panel's copy is pinned to masthead gold via
 `.site-header-wrap .account-menu-panel .auth-btn` (see `style.css`), the modals keep the page
-accent. `about.html` mirrors this same ID contract (it shares `auth-shared.js`) but with its own
+accent. **That pin named `--header-accent` and so came undone on 2026-10-24** without anyone
+touching it: the rule exists to stop this exact drift -- its own comment says the button "came
+out blue on the portfolio and copper on Phonetics Family" -- and the per-page accent lifts
+turned the token it was pinned TO into a per-page one. Measured 2026-10-31: a **pink** button
+on the reader (`#f6dcea -> #cfa7bd`) and a near-white one on Grammar Connect. **A fix pinned to
+a token is only as fixed as that token's scope**, which is the lesson, and the same one the
+brand seal taught an hour earlier. It reads `--brand-gold` now.
+**Putting the real gold back re-opened every ratio measured against the washed one.** The label
+and the account avatar's initial were `var(--header-bg)` -- each page's own seal -- which passed
+only because the gold under them was being bleached by that page's own accent lift. On real gold
+the six seals measure **2.22-4.22:1** (grammar 2.22, origins 2.35, game 2.44, phonetics 2.50).
+Both are `--brand-ink` (`#4a2c3a`, the brand's own wine) now, 4.78:1 on the gradient's dark
+stop, which is the stop that has to clear. This also closes the `#auth-login-btn` ~3.28:1 that
+was on the open list. `about.html`'s `.auth-btn` is NOT part of this -- it is that page's own
+forest-teal design, not a copy of the shared one, and measures 5.35 / 7.01.
+**`.account-menu-note` was the same shape and is fixed with it**: it is the ONE piece of muted
+chrome text sitting on `--header-bg-elevated` instead of `--header-bg`, and the elevated ground
+is the lighter of the two -- so the token that clears on the masthead failed inside the panel,
+at **2.84:1** on dictionary, the one page whose seal is dark enough that it never lifted the
+muted token at all. It takes `--header-text` now (4.54:1 at worst, on origins), which is also
+the right weight: it is the sentence explaining why the Log in button under it exists.
+**That probe only sees the SIGNED-OUT panel.** The signed-in items -- the profile header, the
+email line, the Dashboard/Account/Settings rows -- need a real session and are not covered. `about.html` mirrors this same ID contract (it shares `auth-shared.js`) but with its own
 compact `.about-account*` markup/CSS sized for its sidebar rail rather than a full drawer.
 
 **Page tours** (`tutorial.js` + `tutorial.css` + `tutorial-i18n-strings.js`, on the five tools
