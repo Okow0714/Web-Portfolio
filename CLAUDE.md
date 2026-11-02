@@ -902,6 +902,50 @@ goes in `game.html` in order *and* in `sw.js`'s `APP_SHELL`. That shared scope i
 makes the board testable: `tests/word-match.spec.js` reads `tiles` by name from
 `page.evaluate`, which is the only way to play a memory game deterministically.
 
+**The card back wears a real crest** (2026-11-02). It was the single kanji 花, set in the
+page's Japanese face; it is now a kikyō (bellflower) mon from Wikimedia Commons, where that
+design is **PD-ineligible** — the cleanest licence of anything considered. Kikyō is the July
+suit in hanafuda, so the back carries something from the game the board is drawn from.
+**A MASK, not an `<img>`.** The mark is two different colours — gold on the daylight board,
+wisteria on the night one — and an `<img>` paints the file's own ink. Masked, the element's
+own `background` shows through, so the one existing `light-dark()` rule still does all the
+work. `sizeTile()` therefore sets a WIDTH on it, not a font size, at 0.3 of the cell rather
+than the glyph's 0.26: line work needs more room than a solid character before its interlacing
+closes up. The span is empty and `aria-hidden` now, which also takes a stray 花 out of every
+tile's accessible name.
+**The file is repacked, not redrawn**: Inkscape metadata stripped and a viewBox ADDED, because
+the original carries width/height only and a CSS mask does not reliably scale without one. The
+path is untouched. It is in `APP_SHELL` — **a mask whose file 404s paints nothing**, so an
+offline miss would blank every card back with no error anywhere.
+Three candidates were measured before this one, and the metadata lied about all three: the
+Commons "hanafuda card back" is a plain filled rectangle with no motif at all; `Sakura
+blossom.svg` has no viewBox and renders as an off-canvas fragment; and the hanabishi crest
+masks to a **solid square**, since its paths carry no holes. Render a candidate at the real
+size on the real ground before believing a file description.
+
+**The twelve level tiles have to fit one screen** (2026-11-02). They ran **62px past the fold**
+at 1400x732. Two things were wrong and both are fixed:
+`.game-hud-row` held nothing but the speaker and was charged a whole row for it — 42px plus
+its margin off the top of the page. It is `position: absolute` in the corner now, against
+`#level-select-section`, which had to become `position: relative` to be its containing block
+or the control would have positioned against the viewport and stayed put as the page scrolled.
+That alone gave back 48px.
+The rest is `fitField()` in `game-gate.js`. The honeycomb's height IS its width times
+`totalH/100` — that is what its `aspect-ratio` says — so the only way to make a too-tall field
+fit is to make it narrower. **Measured, not a `calc()`**: the chrome above it is not a
+constant, since the heading is one line in English and wraps to two in Mongolian and the guest
+hint only exists signed out. The field's own top is safe to measure here, unlike Grammar
+Connect's row — nothing above it depends on its width, so narrowing it moves its height and
+nothing else; if that ever stops being true this becomes a feedback loop. It only ever takes
+width away (capped at the stylesheet's 560) and stops at a 320px floor, below which the
+hexagons stop being tappable and scrolling is the better answer. A `resize` listener re-fits,
+because the gate is not re-rendered on one.
+Measured after: 403/453/513/560/560px wide at 640/682/732/844/950px tall, all twelve inside
+the fold at every one, and the field back at its full width the moment there is room.
+`scratchpad/wm-three.js` checks all of it, and **times the bonus** rather than reading the
+constant — 5022ms measured — since the constant proves what the source says and only a clock
+proves what the player gets.
+
 **A tile's type is a fraction of the tile, never a rem** (2026-09-17, carried through the
 2026-10-21 rebuild). A hex tile is only full width across the middle half of its height, so
 whether text fits is a question about fractions of the tile, and a rem size cannot answer it.
@@ -940,7 +984,8 @@ is no clock in the main round; the only clock in the game is the bonus.
 **A level is four hands, not one board.** A level's entry in `game-words.js` holds 25 words, and
 50 face-down tiles is a punishment rather than a memory test — so a level deals 24 of them as
 four consecutive hands of 6 pairs. The deck is shuffled once per level and sliced, so no word can
-appear in two hands of the same playthrough. Clearing a hand opens a **four-second bonus**: four
+appear in two hands of the same playthrough. Clearing a hand opens a **five-second bonus** (2026-11-02,
+was four): four
 of the pairs just cleared, face up, in two interlocking zig-zag columns, Japanese down one and
 the meanings down the other, each column shuffled on its own and reshuffled until no row holds a
 word beside its own translation. It reuses the hand's words rather than new ones because four
@@ -1251,7 +1296,9 @@ It is build-time provenance, like `tools/jlpt-levels-manual.json` and
 `tools/phonetics-words-manual.json`, and only its location at the repo root suggests otherwise.
 A dead-code audit will flag both every time; this paragraph is the answer.
 
-**Data licensing** (all attributed on `credits.html`, linked from every page's footer): Kanjium
+**Data licensing** (all attributed on `credits.html`, linked from every page's footer). Word
+Match's CARD BACK is the newest entry: a kikyō mon from Wikimedia Commons, PD-ineligible,
+repacked but not redrawn — see The card back wears a real crest above. Then: Kanjium
 (CC BY-SA 4.0) for kanji & phonetic-family data, KANJIDIC2 / EDRDG (CC BY-SA 4.0) for the
 dictionary's per-kanji readings, English meanings and stroke counts, Tatoeba (CC BY / CC0) for example sentences,
 scriptin/kanji-frequency (CC BY 4.0) for usage ranking, elzup/jlpt-word-list for vocabulary

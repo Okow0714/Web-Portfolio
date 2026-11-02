@@ -141,7 +141,7 @@ module.exports = async function (page, assert, baseUrl) {
     await page.waitForTimeout(1400);
 
     const bonus = await page.evaluate(() => {
-        window.clearTimeout(bonusTimer);      // hold the four seconds open to look at the round
+        window.clearTimeout(bonusTimer);      // hold the five seconds open to look at the round
         const jp = tiles.filter(t => t.side === 'jp');
         const mn = tiles.filter(t => t.side === 'mn');
         const lined = jp.some((t, i) => mn[i] && mn[i].pair === t.pair);
@@ -221,7 +221,7 @@ module.exports = async function (page, assert, baseUrl) {
         await page.waitForTimeout(950);
         await playHandPerfectly(page);
         await page.waitForTimeout(1300);
-        await page.evaluate(() => { endBonus(); });   // skip the four seconds, not the round
+        await page.evaluate(() => { endBonus(); });   // skip the five seconds, not the round
         await page.waitForTimeout(1300);
     }
 

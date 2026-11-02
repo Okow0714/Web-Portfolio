@@ -169,8 +169,8 @@ Object.assign(window.I18N_STRINGS, {
         mn: 'Шат бүр <b>дөрвөн багцтай</b>, багц тутамд зургаан хос.'
     },
     'game.ruleBonus': {
-        en: 'Clearing a hand opens a <b>four-second bonus</b> — missing it still finishes the level.',
-        mn: 'Багцыг дуусгамагц <b>дөрвөн секундын урамшуулал</b> нээгдэнэ. Алдсан ч шат дуусна.'
+        en: 'Clearing a hand opens a <b>five-second bonus</b> — missing it still finishes the level.',
+        mn: 'Багцыг дуусгамагц <b>таван секундын урамшуулал</b> нээгдэнэ. Алдсан ч шат дуусна.'
     },
 
     'game.mem.readThem': { en: '{n} cards, six pairs. Read them while you can.', mn: '{n} хөзөр, зургаан хос. Эргэхээс нь өмнө сайн цээжлээрэй.' },
@@ -178,7 +178,7 @@ Object.assign(window.I18N_STRINGS, {
     'game.mem.findPartner': { en: 'Now find its partner.', mn: 'Одоо хосыг нь олоорой.' },
     'game.mem.pairOf': { en: 'Pair {n} of {total}.', mn: '{n} / {total} хос оллоо.' },
     'game.mem.notAPair': { en: 'Not a pair. {n} so far.', mn: 'Хос биш байна. Нийт {n} алдаа.' },
-    'game.mem.handCleared': { en: 'Hand cleared. {n} more pairs, face up, four seconds.', mn: 'Багц дууслаа! Дахиад {n} хос нээлттэй гарч ирнэ, дөрвөн секунд.' },
+    'game.mem.handCleared': { en: 'Hand cleared. {n} more pairs, face up, five seconds.', mn: 'Багц дууслаа! Дахиад {n} хос нээлттэй гарч ирнэ, таван секунд.' },
     'game.mem.bonusGo': { en: 'Words on the left, meanings on the right. Clicks here are free.', mn: 'Зүүн талд үг, баруун талд утга. Энд товшсон нь оноонд орохгүй.' },
     'game.mem.bonusPair': { en: 'Bonus pair {n}.', mn: 'Нэмэлт {n} хос оллоо.' },
     'game.mem.handN': { en: 'Hand {n} of {total}', mn: '{n}-р багц' },

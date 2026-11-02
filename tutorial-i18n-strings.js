@@ -42,8 +42,8 @@ Object.assign(window.I18N_STRINGS, {
         mn: 'Арван хоёр хөзөр, зургаан хос. Нэгийг эргүүлээд, утга нь ижил гэж бодсон хөзрөө дарна. Буруу бол хоёулаа буцаж эргэнэ — тиймээс хаана юу байсныг сайн цээжил.'
     },
     'tour.game.stats': {
-        en: 'Clicks are your score, and fewer is better — so is misses. Bonus counts the extra pairs you catch in the four-second rounds.',
-        mn: 'Дарсан тоо бол таны оноо, цөөн нь дээр — алдаа ч мөн адил. Урамшуулал гэдэг нь дөрвөн секундын тойрогт барьж авсан нэмэлт хосууд.'
+        en: 'Clicks are your score, and fewer is better — so is misses. Bonus counts the extra pairs you catch in the five-second rounds.',
+        mn: 'Дарсан тоо бол таны оноо, цөөн нь дээр — алдаа ч мөн адил. Урамшуулал гэдэг нь таван секундын тойрогт барьж авсан нэмэлт хосууд.'
     },
     'tour.game.start': {
         en: 'The twelve cards stay face up until you press this. Nothing is counted while you are reading them.',

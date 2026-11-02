@@ -169,6 +169,7 @@ function showLevelField(jlpt) {
     const { slots, totalH } = honeycomb(MAIN_ROWS, MAIN_COLS);
     field.style.aspectRatio = `100 / ${totalH.toFixed(2)}`;
     field.innerHTML = '';
+    fitField(field, totalH);
 
     // Each level flies out from the middle of the honeycomb, so the twelve read as one node
     // bursting rather than twelve appearing. The offset is per node, in its own units, so the
@@ -244,7 +245,47 @@ function showLevelField(jlpt) {
     });
 
     panel.hidden = false;
+    // After it is visible, or the field has no box to measure.
+    fitField(field, totalH);
 }
+
+// ---------------------------------------------------------------------------
+// The twelve levels have to fit one screen
+// ---------------------------------------------------------------------------
+// The honeycomb's height is its WIDTH times totalH/100 -- that is what the aspect-ratio above
+// says -- so the only way to make a too-tall field fit is to make it narrower. At 1400x732 the
+// twelve ran 62px past the fold, which on the page you are meant to act on is the whole
+// screen's worth that matters.
+//
+// Measured, not guessed at in CSS. A `calc(100dvh - 295px)` would have to hard-code the chrome
+// above it, and that chrome is not a constant: the heading is one line in English and wraps to
+// two in Mongolian, and the guest hint appears only when signed out. Kana Origins already paid
+// for a hard-coded offset here (revealEra), so this reads the real number.
+//
+// The field's own top is safe to measure, unlike Grammar Connect's row: nothing above it
+// depends on its width, so narrowing it moves its height and nothing else. If that ever stops
+// being true this becomes a feedback loop and has to measure the container instead.
+const FIELD_FLOOR_PX = 320;   // below this the hexagons stop being tappable; scroll instead
+const FIELD_BOTTOM_GAP = 18;  // a little air under the last row, not flush with the fold
+
+function fitField(field, totalH) {
+    if (!field || field.offsetParent === null) return;
+    const top = field.getBoundingClientRect().top;
+    const room = window.innerHeight - top - FIELD_BOTTOM_GAP;
+    const widthForRoom = room / (totalH / 100);
+    // Never widen past what the stylesheet allows -- this only ever takes width away.
+    const capped = Math.max(FIELD_FLOOR_PX, Math.min(560, widthForRoom));
+    field.style.maxWidth = capped.toFixed(0) + 'px';
+}
+
+// A resize changes the room, and the gate is not re-rendered on one. Re-fit rather than leave a
+// field solved for a window that is no longer there.
+window.addEventListener('resize', () => {
+    const panel = document.getElementById('gate-levels');
+    const field = document.getElementById('gate-field');
+    if (!panel || panel.hidden || !field) return;
+    fitField(field, honeycomb(MAIN_ROWS, MAIN_COLS).totalH);
+});
 
 function backToTiers() {
     document.getElementById('gate-levels').hidden = true;

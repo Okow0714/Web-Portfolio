@@ -265,8 +265,15 @@ function sizeTile(el, t) {
     el.style.paddingLeft = el.style.paddingRight = (cell * 0.09).toFixed(2) + 'px';
     const rd = el.querySelector('.t-read');
     if (rd) rd.style.fontSize = (cell * 0.085).toFixed(2) + 'px';
+    // The crest is a masked box now, so it takes a WIDTH, not a font size. 0.3 rather than the
+    // glyph's 0.26: a crest is line work and needs a little more room than a solid character
+    // before its interlacing closes up -- checked at the real tile size, not scaled up.
     const mk = el.querySelector('.t-mark');
-    if (mk) mk.style.fontSize = (cell * 0.26).toFixed(2) + 'px';
+    if (mk) {
+        const d = (cell * 0.3).toFixed(2) + 'px';
+        mk.style.width = d;
+        mk.style.height = d;
+    }
 }
 
 // What a screen reader should hear. A face-down tile must NOT announce its word: the label is
@@ -286,9 +293,12 @@ function faceTile(el, t) {
         el.innerHTML = '<span class="t-mn"></span>';
         el.querySelector('.t-mn').textContent = wordFront(t.word);
     }
+    // The back's crest. Empty on purpose: game.css paints it as a MASK, so the element carries
+    // no text at all -- which also keeps it out of the accessible name, where a stray 花 used
+    // to sit on every tile including the face-up ones.
     const mark = document.createElement('span');
     mark.className = 't-mark';
-    mark.textContent = '花';
+    mark.setAttribute('aria-hidden', 'true');
     el.appendChild(mark);
     sizeTile(el, t);
 }
@@ -534,7 +544,7 @@ function onTile(e) {
 // ---------------------------------------------------------------------------
 // The bonus round
 // ---------------------------------------------------------------------------
-// Four of the six pairs just cleared, face up, in two zig-zag columns against a four-second
+// Four of the six pairs just cleared, face up, in two zig-zag columns against a five-second
 // clock. It is a recall sprint over the hand you have only this second finished, which is why
 // it reuses those words rather than introducing new ones: a level holds 25 words and four hands
 // already spend 24 of them, so there is no spare vocabulary to draw a bonus from — and testing

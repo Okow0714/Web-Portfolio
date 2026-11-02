@@ -114,9 +114,9 @@ const BONUS_PAIRS = 4;
 const MAIN_ROWS = [3, 4, 3, 2];
 const MAIN_COLS = 4;
 
-// Four seconds of bonus, face up. Long enough to clear two pairs if you read fast, never long
+// Five seconds of bonus, face up. Long enough to clear two pairs if you read fast, never long
 // enough to clear four by reading alone — it has to be partly memory of the hand just played.
-const BONUS_MS = 4000;
+const BONUS_MS = 5000;
 // A hint turns two tiles over and costs clicks. Three is the price of guessing the same pair
 // wrong once and a half, which is about what a hint is worth.
 const HINT_COST = 3;

@@ -369,15 +369,28 @@ body.game-playing .game-main {
 }
 
 /* ===================================================================== board */
-/* Only the speaker lives here now, so it is a right-aligned row rather than a title block
-   with a control opposite it. */
+/* The speaker is the only thing left in this row, and a lone corner control should not be
+   charged a row of its own: in flow it took 42px plus its margin off the top of the page, and
+   the twelve level tiles ran 62px past the fold for want of roughly that. Out of flow it sits
+   in the corner it already looked like it was in, and the gate starts 48px higher.
+
+   The row keeps its box so the button has something to position against, and the section it
+   sits in is `position: relative` for the same reason. z-index 3 because the hexnodes carry
+   their own stacking and would otherwise paint over the control. */
 .game-hud-row {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 3;
     display: flex;
     align-items: flex-start;
     justify-content: flex-end;
     gap: 18px;
-    margin-bottom: 6px;
 }
+
+/* The containing block for the row above. Without this the speaker would position against the
+   viewport and stay put while the page scrolled. */
+#level-select-section { position: relative; }
 /* Centred since the title block above it went: left-aligned it was the only thing on that
    edge of the page and read as a stray line rather than a notice about the gate below it. */
 .game-guest-hint {
@@ -607,10 +620,32 @@ body.game-playing .game-main {
 .mem-tile.down .t-word,
 .mem-tile.down .t-read,
 .mem-tile.down .t-mn { visibility: hidden; }
-.mem-tile.down .t-mark { color: light-dark(#b59a5e, #9a84c9); }
+/* The back's mark is a kikyō (bellflower) mon -- a real Japanese family crest, from
+   Wikimedia Commons, where the design is PD-ineligible. Kikyō is the July suit in hanafuda,
+   so the card back carries something from the game it belongs to rather than the single kanji
+   花 that stood here before.
+   A MASK, not an <img>: an <img> paints the file's own ink and this mark has to be two
+   different colours, gold on the daylight board and wisteria on the night one. Masked, it is
+   the element's own `background` that shows through, so the one colour rule below still does
+   all the work and the crest follows the theme for free. */
+.mem-tile.down .t-mark {
+    background: light-dark(#b59a5e, #9a84c9);
+    -webkit-mask-image: url('images/kikyo-mon.svg');
+    mask-image: url('images/kikyo-mon.svg');
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    /* contain, with a viewBox on the file: the crest is square, so it fits the box either way,
+       and `contain` keeps it from being cropped if that ever stops being true. */
+    -webkit-mask-size: contain;
+    mask-size: contain;
+}
 .mem-tile.up .t-mark,
 .mem-tile.gone .t-mark { display: none; }
-.t-mark { font-family: var(--font-jp); }
+/* No font-family any more -- it carries no text. It is sized by sizeTile(), which sets width
+   and height rather than a font size. */
+.t-mark { display: block; }
 
 /* Labels wrap and are clamped rather than truncated: sizeTile() picks a size on the assumption
    the word may take up to three lines, so the wrap has to actually happen. A clamp is the

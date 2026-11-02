@@ -3,7 +3,7 @@
 // Click a face-down tile to turn it, find its partner, and clear the pair. Your score is the
 // number of clicks you spend: forty-eight is a perfect level, because twenty-four pairs cannot
 // be cleared in fewer than forty-eight clicks even if you remember every one. There is no clock
-// in the main round — the only clock in the game is the four seconds of the bonus.
+// in the main round — the only clock in the game is the five seconds of the bonus.
 //
 // Depends on auth-shared.js (window.supabaseClient, window.getCurrentSession(), the
 // 'wp:authchange' event and the global showEl/hideEl helpers) and game-words.js (WORD_LEVELS).

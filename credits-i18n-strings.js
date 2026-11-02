@@ -30,6 +30,11 @@ Object.assign(window.I18N_STRINGS, {
         mn: 'Бүгд Wikimedia Commons-оос авсан бөгөөд энд ашиглахын тулд хэмжээг өөрчилж, дахин шахсанаас өөр өөрчлөлт ороогүй. Уг хэсэгт байгаа уншлагын дарааллын зургийг эх сурвалжаас хуулаагүй, HTML-ээр шинээр зуржээ.'
     },
 
+    'credits.wgArt.h': { en: 'Word Game — card back', mn: 'Үг холбох дасгал — хөзрийн араас' },
+    'credits.wgArt.note': {
+        en: 'The bellflower crest on the back of every face-down card. Repacked for the web — editor metadata stripped and a viewBox added so it scales as a CSS mask — with the artwork itself unchanged. Kikyō is the July suit in hanafuda, the card game Word Match’s board is drawn from.',
+        mn: 'Хаасан хөзөр бүрийн араас дээрх хонхонцэцэгийн сүлд. Вебээр хэрэглэхээр дахин багласан — зураг өөрөө өөрчлөгдөөгүй. Хонхонцэцэг бол ханафуда хөзрийн 7 дугаар сарын багц юм.'
+    },
     'credits.wgPhotos.h': { en: 'Word Game — background photography', mn: 'Үг холбох дасгал — дэвсгэр гэрэл зураг' },
     'credits.wgPhotos.note': {
         en: 'All sourced from Wikimedia Commons, resized and re-compressed for use here; no other changes made. Each level uses one of the ten photos above, cycling every 10 levels, shown faded behind the board.',
