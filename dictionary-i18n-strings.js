@@ -64,4 +64,37 @@ Object.assign(window.I18N_STRINGS, {
     'dict.kanjiFamily': { en: '{c} family', mn: '{c} бүлэг' },
     'dict.example': { en: 'Example', mn: 'Жишээ' },
     'dict.source': { en: 'Source', mn: 'Эх сурвалж' },
+
+    // ---------------------------------------------------------------------
+    // The grammar tab (grammar-index.js)
+    //
+    // The tab label is translated, unlike the other two: "Монгол ⇄ 日本語" and "漢語 ⇄ 和語" are
+    // both naming a PAIRING, and the scripts themselves say which pairing. Grammar is not a
+    // pairing of two things, so there is nothing for a script label to say.
+    // ---------------------------------------------------------------------
+    'dict.tabGrammar': { en: 'Grammar', mn: 'Дүрэм' },
+    'dict.grammarSearchPlaceholder': {
+        en: 'Search a point, its meaning, or an example…',
+        mn: 'Дүрэм, утга, эсвэл жишээгээр хайх…'
+    },
+    // Both the search and the level chips list, so the idle line offers both ways in.
+    'dict.grammarIdle': {
+        en: 'Type a grammar point, or pick a level above.',
+        mn: 'Дүрмээ бичих эсвэл дээрээс түвшин сонгоно уу.'
+    },
+    'dict.grammarDetailPrompt': {
+        en: 'Pick a point from the list and its meaning, its example sentences and the points it is easily confused with appear here.',
+        mn: 'Жагсаалтаас дүрэм сонгоход утга, жишээ өгүүлбэр, андуурч таардаг дүрмүүд нь энд гарч ирнэ.'
+    },
+    'dict.grammarCount': { en: '{n} points', mn: '{n} дүрэм' },
+    'dict.loadingGrammar': { en: 'Loading…', mn: 'Ачааллаж байна…' },
+    // The explanation's own heading. Not "Утга" alone -- the text says what the point DOES and
+    // how it differs from its neighbour, which is more than a meaning.
+    'dict.grammarMeaning': { en: 'What it does', mn: 'Юу хийдэг вэ' },
+    'dict.grammarConfused': { en: 'Easily confused with', mn: 'Андуурч таардаг' },
+    'dict.grammarExamples': { en: 'Examples', mn: 'Жишээ өгүүлбэр' },
+    'dict.grammarPractise': { en: 'Practise in Grammar Connect', mn: 'Grammar Connect-т дасгал хийх' },
+    // The levels a point can be filed at. A point this repo does not file shows no chip at all,
+    // so there is no "unfiled" bucket to name.
+    'dict.grammarLevelAll': { en: 'All', mn: 'Бүгд' },
 });

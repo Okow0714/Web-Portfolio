@@ -164,6 +164,11 @@ Object.assign(window.I18N_STRINGS, {
         mn: 'Энэ таб дээр өөр нэг толь бичиг байна: нэг зүйлийг заасан хятад гаралтай албан ёсны үг, уугуул япон үг хоёр зэрэгцэж харагдана.'
     },
 
+    'tour.dict.grammar': {
+        en: 'And a third: every grammar point from Grammar Connect, with what it does, the points it is easily confused with, and examples.',
+        mn: 'Гурав дахь нь Grammar Connect-ын дүрмүүд — яахад хэрэглэдэг, ямар дүрэмтэй андуурдаг, жишээ өгүүлбэртэйгээ.'
+    },
+
     // --- Dashboard ------------------------------------------------------------
     'tour.dash.profile': {
         en: 'Your display name is public — it shows up wherever your progress does. Change it here; it does not have to be your real name.',

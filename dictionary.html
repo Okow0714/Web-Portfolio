@@ -402,6 +402,7 @@
             <div class="dict-tabs" role="tablist" aria-label="Dictionary section">
                 <button type="button" class="dict-tab active" id="dict-tab-mnjp" role="tab" aria-selected="true">Монгол ⇄ 日本語</button>
                 <button type="button" class="dict-tab" id="dict-tab-wakan" role="tab" aria-selected="false">漢語 ⇄ 和語</button>
+                <button type="button" class="dict-tab" id="dict-tab-grammar" role="tab" aria-selected="false" data-i18n="dict.tabGrammar">Дүрэм</button>
             </div>
 
             <section class="dict-panel" id="dict-panel-mnjp">
@@ -454,6 +455,32 @@
                 <div class="dict-list" id="dict-list"></div>
                 <p class="dict-idle" id="dict-idle" data-i18n="dict.idleKango">Хайх үгээ бичих эсвэл доорх бүлгээс сонгоно уу.</p>
                 <p class="dict-empty hidden" id="dict-empty" data-i18n="dict.noMatches">Таны хайлттай тохирох бичлэг олдсонгүй.</p>
+            </section>
+
+            <!-- The grammar tab. Same shape as the primary tab: a search field, the picked point
+                 in a panel BESIDE the list, and nothing listed until a search is typed or a level
+                 chip is pressed -- a level chip is asking, exactly as the Kango tab's
+                 part-of-speech filter is. grammar-index.js is lazy-loaded on first open. -->
+            <section class="dict-panel hidden" id="dict-panel-grammar">
+                <div class="dict-layout">
+                    <div class="dict-controls">
+                        <div class="dict-search-wrap">
+                            <label for="gr-search" class="sr-only" data-i18n="dict.tabGrammar">Дүрэм</label>
+                            <div class="dict-search-field">
+                                <input type="text" id="gr-search" class="dict-search" data-i18n-placeholder="dict.grammarSearchPlaceholder" placeholder="Дүрэм, утга, эсвэл жишээгээр хайх…" autocomplete="off">
+                                <button type="button" class="dict-search-btn" id="gr-search-btn" aria-label="Хайх"><svg class="dict-search-ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="8.5" cy="8.5" r="5.5"/><line x1="12.6" y1="12.6" x2="17" y2="17"/></svg></button>
+                            </div>
+                            <span class="dict-search-count" id="gr-count"></span>
+                        </div>
+                        <div class="dict-filters" id="gr-filters" role="tablist" aria-label="Filter by JLPT level"></div>
+                    </div>
+                    <div class="dict-aside">
+                        <section class="dict-detail" id="gr-detail" aria-live="polite" hidden></section>
+                    </div>
+                    <div class="dict-list" id="gr-list"></div>
+                    <p class="dict-idle" id="gr-idle" data-i18n="dict.grammarIdle">Дүрмээ бичих эсвэл дээрээс түвшин сонгоно уу.</p>
+                    <p class="dict-empty hidden" id="gr-empty" data-i18n="dict.noMatches">Таны хайлттай тохирох бичлэг олдсонгүй.</p>
+                </div>
             </section>
         </main>
     </div>

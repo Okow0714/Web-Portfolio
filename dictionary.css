@@ -1050,3 +1050,131 @@ body:has(.dictionary-main) .container {
    trying to read it. That is the rule khanjpRiseIn carries in style.css, and this is the page
    it was written for. The cross-link popover is left alone for the same reason: it has its own
    sticky head. */
+
+/* ---------------------------------------------------------------------------
+   Дүрэм / Grammar tab
+   ---------------------------------------------------------------------------
+   The rows are a different shape from the MN<->JP tab's on purpose. There the two sides of a
+   pair are the content, so the row is a four-column grid holding them apart; a grammar point has
+   one term and a sentence of gloss, so it stacks -- the term on its own line at the size it needs
+   to be read as Japanese, the gloss under it in running text.
+
+   Every colour here is one of dictionary.css's own tokens, so the tab inherits both themes with
+   the rest of the page and nothing in this block needs a light-dark() of its own. */
+
+.gr-entry {
+    background: var(--card);
+    border: 1px solid var(--card-edge);
+}
+
+.gr-entry-main {
+    display: block;
+    width: 100%;
+    padding: 14px 20px;
+    background: none;
+    border: none;
+    font-family: inherit;
+    text-align: inherit;
+    cursor: pointer;
+    color: inherit;
+}
+
+.gr-entry-main:hover .gr-term { color: var(--terracotta); }
+
+.gr-entry-top {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.gr-term {
+    font-family: var(--font-jp);
+    font-size: 1.22rem;
+    font-weight: 600;
+    color: var(--sumi);
+    line-height: 1.3;
+}
+
+/* What the row carries instead of the explanation: the point this one is confused with. See
+   renderGrammarEntry -- the explanation is written for a PAIR and printed the same sentence on
+   both halves of it, which looked like a bug. */
+.gr-row-alts {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 7px;
+}
+
+.gr-row-alts-lab {
+    font-size: 0.64rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 650;
+}
+
+.gr-row-alt {
+    font-family: var(--font-jp);
+    font-size: 0.82rem;
+    padding: 2px 8px;
+    background: var(--sumi-tint);
+    color: var(--ink-soft);
+}
+
+/* Marked the same way the MN<->JP tab marks its picked row -- an edge and a left bar, never a
+   fill, which at this size reads as a disabled row. */
+.gr-entry.is-picked {
+    border-color: var(--khukh);
+    box-shadow: inset 3px 0 0 var(--khukh);
+}
+
+/* The panel. .dd-jp is sized for a dictionary headword with furigana over it; a grammar point is
+   bare kana and wants to sit a little smaller. */
+.gr-point { font-size: 1.6rem; font-weight: 600; }
+
+.gr-meaning {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--sumi);
+}
+
+.gr-alts { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.gr-alt {
+    font-family: var(--font-jp);
+    font-size: 0.86rem;
+    padding: 4px 10px;
+    background: var(--sumi-tint);
+    color: var(--ink-soft);
+}
+
+.gr-example {
+    background: var(--sumi-tint);
+    padding: 12px 14px;
+    font-size: 0.9rem;
+}
+
+.gr-example + .gr-example { margin-top: 8px; }
+
+.gr-example .ex-jp { color: var(--sumi); font-family: var(--font-jp); margin: 0 0 6px; line-height: 1.7; }
+.gr-example .ex-jp rt { font-size: 0.55em; color: var(--ink-faint); font-family: 'IBM Plex Sans', sans-serif; }
+.gr-example .ex-mn { color: var(--khukh); margin: 0; font-weight: 500; line-height: 1.5; }
+
+/* The route into the drill. A real link, so it opens in a new tab on a middle click and can be
+   copied -- this is the one control on the panel that leaves the page. */
+.gr-practise {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 9px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--card);
+    background: var(--terracotta);
+    text-decoration: none;
+}
+
+.gr-practise:hover { filter: brightness(1.08); }
+.gr-practise:focus-visible { outline: 2px solid var(--khukh); outline-offset: 2px; }

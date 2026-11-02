@@ -87,6 +87,7 @@
                 { sel: '#mnjp-search', k: 'tour.dict.search' },
                 { sel: '.mnjp-entry', k: 'tour.dict.results' },
                 { sel: '#dict-tab-wakan', k: 'tour.dict.wakan' },
+                { sel: '#dict-tab-grammar', k: 'tour.dict.grammar' },
             ] },
         ],
         'dashboard.html': [
