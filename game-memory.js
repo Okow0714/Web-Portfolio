@@ -265,12 +265,14 @@ function sizeTile(el, t) {
     el.style.paddingLeft = el.style.paddingRight = (cell * 0.09).toFixed(2) + 'px';
     const rd = el.querySelector('.t-read');
     if (rd) rd.style.fontSize = (cell * 0.085).toFixed(2) + 'px';
-    // The crest is a masked box now, so it takes a WIDTH, not a font size. 0.3 rather than the
-    // glyph's 0.26: a crest is line work and needs a little more room than a solid character
-    // before its interlacing closes up -- checked at the real tile size, not scaled up.
+    // The brand mark is a masked box, so it takes a WIDTH, not a font size. 0.45 of the tile
+    // (2026-11-02, was 0.3): asked for half again as big, and it has the room -- the mark is
+    // taller than it is wide and `mask-size: contain` fits it to this box's height, so 0.45 of
+    // a 116px tile is a 52px box carrying a ~40px-wide K. Still clear of the hexagon's
+    // shoulders, which are what a mark grown much past this would start to meet.
     const mk = el.querySelector('.t-mark');
     if (mk) {
-        const d = (cell * 0.3).toFixed(2) + 'px';
+        const d = (cell * 0.45).toFixed(2) + 'px';
         mk.style.width = d;
         mk.style.height = d;
     }

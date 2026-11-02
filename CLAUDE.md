@@ -910,7 +910,11 @@ licence, no new file and no `APP_SHELL` entry -- `hub.css` was already masking t
 **A MASK, not an `<img>`**: the mark is gold on the daylight board and wisteria at night, and
 an `<img>` paints the file's own ink. Masked, the element's `background` shows through and the
 existing `light-dark()` rule does all the work. `sizeTile()` therefore sets a WIDTH, not a
-font size.
+font size — **0.45 of the tile** since 2026-11-02, asked for half again as big. It has the
+room: the mark is taller than it is wide and `mask-size: contain` fits it to the box's
+height, so a 52px box on a 116px tile carries a ~40px K and still spans only 30.5% to 69.5%
+of the tile's height — inside the band where a hexagon is full width, with 32px of side
+clearance. Growing it much past this starts to meet the shoulders.
 **It also sat 24.3px BELOW the middle of a 133px tile**, which is what "not even aligned" was.
 The tile is a flex COLUMN holding the word, its reading and the mark, and the word spans are
 hidden with `visibility: hidden` -- which keeps their boxes. The flex centring was therefore
