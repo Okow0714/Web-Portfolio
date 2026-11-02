@@ -620,32 +620,46 @@ body.game-playing .game-main {
 .mem-tile.down .t-word,
 .mem-tile.down .t-read,
 .mem-tile.down .t-mn { visibility: hidden; }
-/* The back's mark is a kikyō (bellflower) mon -- a real Japanese family crest, from
-   Wikimedia Commons, where the design is PD-ineligible. Kikyō is the July suit in hanafuda,
-   so the card back carries something from the game it belongs to rather than the single kanji
-   花 that stood here before.
+/* The back wears the SITE'S OWN MARK -- icons/brand-mark.svg, the same K the masthead and the
+   footer carry. It replaced a kikyō crest on 2026-11-02 and the kanji 花 before that: the
+   crest was busy against the diagonal weave and its square silhouette fought the hexagon it
+   sat in, and the brand mark is the one piece of art on this site that is already drawn to
+   work small and alone.
    A MASK, not an <img>: an <img> paints the file's own ink and this mark has to be two
    different colours, gold on the daylight board and wisteria on the night one. Masked, it is
    the element's own `background` that shows through, so the one colour rule below still does
-   all the work and the crest follows the theme for free. */
+   all the work and the mark follows the theme for free.
+
+   ABSOLUTELY CENTRED, and that is a fix rather than a flourish. The tile is a flex COLUMN
+   holding the word, its reading and this mark, and the word spans are hidden with
+   `visibility: hidden` -- which keeps their boxes. The flex centring therefore centred the
+   text-plus-mark stack, not the mark, and the mark sat 24.3px BELOW the middle of a 133px
+   tile. Taking it out of flow is what makes it answer to the tile instead of to invisible
+   text. `inset: 0; margin: auto` with the width and height sizeTile() sets, rather than a
+   translate -- no transform, so nothing here can become a containing block for anything else. */
 .mem-tile.down .t-mark {
     background: light-dark(#b59a5e, #9a84c9);
-    -webkit-mask-image: url('images/kikyo-mon.svg');
-    mask-image: url('images/kikyo-mon.svg');
+    -webkit-mask-image: url('icons/brand-mark.svg');
+    mask-image: url('icons/brand-mark.svg');
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
     -webkit-mask-position: center;
     mask-position: center;
-    /* contain, with a viewBox on the file: the crest is square, so it fits the box either way,
-       and `contain` keeps it from being cropped if that ever stops being true. */
+    /* contain: the mark is taller than it is wide, so it fits to the height and keeps its own
+       proportion. `cover` would crop the K's arms. */
     -webkit-mask-size: contain;
     mask-size: contain;
 }
 .mem-tile.up .t-mark,
 .mem-tile.gone .t-mark { display: none; }
-/* No font-family any more -- it carries no text. It is sized by sizeTile(), which sets width
-   and height rather than a font size. */
-.t-mark { display: block; }
+/* No font-family any more -- it carries no text. sizeTile() gives it a width and a height. */
+.t-mark {
+    display: block;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    pointer-events: none;
+}
 
 /* Labels wrap and are clamped rather than truncated: sizeTile() picks a size on the assumption
    the word may take up to three lines, so the wrap has to actually happen. A clamp is the

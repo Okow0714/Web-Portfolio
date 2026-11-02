@@ -902,26 +902,32 @@ goes in `game.html` in order *and* in `sw.js`'s `APP_SHELL`. That shared scope i
 makes the board testable: `tests/word-match.spec.js` reads `tiles` by name from
 `page.evaluate`, which is the only way to play a memory game deterministically.
 
-**The card back wears a real crest** (2026-11-02). It was the single kanji 花, set in the
-page's Japanese face; it is now a kikyō (bellflower) mon from Wikimedia Commons, where that
-design is **PD-ineligible** — the cleanest licence of anything considered. Kikyō is the July
-suit in hanafuda, so the back carries something from the game the board is drawn from.
-**A MASK, not an `<img>`.** The mark is two different colours — gold on the daylight board,
-wisteria on the night one — and an `<img>` paints the file's own ink. Masked, the element's
-own `background` shows through, so the one existing `light-dark()` rule still does all the
-work. `sizeTile()` therefore sets a WIDTH on it, not a font size, at 0.3 of the cell rather
-than the glyph's 0.26: line work needs more room than a solid character before its interlacing
-closes up. The span is empty and `aria-hidden` now, which also takes a stray 花 out of every
-tile's accessible name.
-**The file is repacked, not redrawn**: Inkscape metadata stripped and a viewBox ADDED, because
-the original carries width/height only and a CSS mask does not reliably scale without one. The
-path is untouched. It is in `APP_SHELL` — **a mask whose file 404s paints nothing**, so an
-offline miss would blank every card back with no error anywhere.
-Three candidates were measured before this one, and the metadata lied about all three: the
-Commons "hanafuda card back" is a plain filled rectangle with no motif at all; `Sakura
-blossom.svg` has no viewBox and renders as an off-canvas fragment; and the hanabishi crest
-masks to a **solid square**, since its paths carry no holes. Render a candidate at the real
-size on the real ground before believing a file description.
+**The card back wears the SITE'S OWN MARK** (2026-11-02). It went 花 → a kikyō crest → the
+brand mark, in one day. The crest was PD and genuinely hanafuda, and it was still wrong: busy
+against the diagonal weave, and a square silhouette fighting the hexagon it sat in. The site's
+own K is the one piece of art here already drawn to work small and alone, and it costs no
+licence, no new file and no `APP_SHELL` entry -- `hub.css` was already masking the same file.
+**A MASK, not an `<img>`**: the mark is gold on the daylight board and wisteria at night, and
+an `<img>` paints the file's own ink. Masked, the element's `background` shows through and the
+existing `light-dark()` rule does all the work. `sizeTile()` therefore sets a WIDTH, not a
+font size.
+**It also sat 24.3px BELOW the middle of a 133px tile**, which is what "not even aligned" was.
+The tile is a flex COLUMN holding the word, its reading and the mark, and the word spans are
+hidden with `visibility: hidden` -- which keeps their boxes. The flex centring was therefore
+centring the text-plus-mark stack, not the mark. It is `position: absolute; inset: 0;
+margin: auto` now, so it answers to the tile rather than to invisible text; no transform, so
+it cannot become a containing block for anything. Measured after: 0px off on both axes.
+**Metadata lies about art; render it.** Four candidates were checked at the real size on the
+real ground. The Commons "hanafuda card back" is a plain filled rectangle with no motif;
+`Sakura blossom.svg` has no viewBox and renders off-canvas; the hanabishi crest masks to a
+SOLID SQUARE, its paths carrying no holes; and the kikyō crest looked right in isolation and
+wrong on the tile.
+**A mask that resolves to nothing paints NOTHING, and reads back correctly while doing it.**
+The computed `mask-image` is exactly what you wrote whether or not the file exists, so a probe
+on computed style cannot see this at all -- mine passed while the backs were blank on screen.
+(That particular blank was a stale stylesheet still naming the deleted crest, not the change;
+the point is the probe could not tell the two apart.) `scratchpad/wm-three.js` now shoots the
+tile, hides the mark, shoots it again and fails if the two PNGs are byte-identical.
 
 **The twelve level tiles have to fit one screen** (2026-11-02). They ran **62px past the fold**
 at 1400x732. Two things were wrong and both are fixed:
@@ -1296,9 +1302,7 @@ It is build-time provenance, like `tools/jlpt-levels-manual.json` and
 `tools/phonetics-words-manual.json`, and only its location at the repo root suggests otherwise.
 A dead-code audit will flag both every time; this paragraph is the answer.
 
-**Data licensing** (all attributed on `credits.html`, linked from every page's footer). Word
-Match's CARD BACK is the newest entry: a kikyō mon from Wikimedia Commons, PD-ineligible,
-repacked but not redrawn — see The card back wears a real crest above. Then: Kanjium
+**Data licensing** (all attributed on `credits.html`, linked from every page's footer): Kanjium
 (CC BY-SA 4.0) for kanji & phonetic-family data, KANJIDIC2 / EDRDG (CC BY-SA 4.0) for the
 dictionary's per-kanji readings, English meanings and stroke counts, Tatoeba (CC BY / CC0) for example sentences,
 scriptin/kanji-frequency (CC BY 4.0) for usage ranking, elzup/jlpt-word-list for vocabulary

@@ -19,7 +19,7 @@
 // stale-while-revalidate, so it serves the cached copy first and only refreshes behind it --
 // without a bump, a returning PWA user runs the previous version of a fixed file for one more
 // visit. Whether that matters is a judgement call; for a correctness fix it generally does.
-const CACHE_VERSION = 'khan-japanese-v203';
+const CACHE_VERSION = 'khan-japanese-v204';
 
 const APP_SHELL = [
     './',
@@ -77,9 +77,6 @@ const APP_SHELL = [
     './manifest.json',
     './favicon.svg',
     './icons/brand-mark.svg',
-    // Word Match's card back. Small, and the board looks broken without it: a mask that
-    // 404s paints nothing, so every face-down tile would lose its crest offline.
-    './images/kikyo-mon.svg',
     './icons/icon-192.png',
     './icons/icon-512.png',
     './icons/icon-512-maskable.png',
