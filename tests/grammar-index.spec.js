@@ -41,10 +41,20 @@ module.exports = async function () {
 
     // A silent collapse (a renamed field, a changed pool) would pass the equality check above,
     // since the generator and the check read the same source.
-    assert.ok(data.length > 200,
-        `grammar-index.js has only ${data.length} points — expected 218. Dropping back to ~113 `
-        + 'means the generator has stopped resolving through tools/grammar-extra.json and is '
-        + 'filing GRAMMAR_POOLS members only again.');
+    assert.ok(data.length > 250,
+        `grammar-index.js has only ${data.length} points — expected 264. ~218 means the `
+        + 'hand-authored foundation has stopped merging; ~113 means the generator has also '
+        + 'stopped resolving through tools/grammar-extra.json and is filing GRAMMAR_POOLS '
+        + 'members only again.');
+
+    // The foundation exists because the drill cannot produce these. If を is missing the tab is
+    // back to being an index of confusable pairs while calling itself a grammar dictionary.
+    const heads0 = new Set(data.map((e) => e.g));
+    for (const core of ['を', 'は', 'に', 'で', 'も', 'へ', 'の', 'か', 'まで', 'より']) {
+        assert.ok(heads0.has(core), `the core particle ${core} has no entry`);
+    }
+    const n5 = data.filter((e) => e.j === 'N5').length;
+    assert.ok(n5 > 30, `only ${n5} N5 points — the foundation layer is not merging`);
 
     // No point is its own near-synonym. The two sides of a swap can resolve to the SAME headword
     // (つづける / つづけている both file under つづける), and a row listing itself as the thing it
@@ -85,10 +95,18 @@ module.exports = async function () {
             assert.ok(v.m && v.m.trim(),
                 `"${e.g}" has an example with no Mongolian translation`);
         }
-        // The level link has to point at a real track and a level that exists.
-        assert.ok(e.t === 'foundation' || e.t === 'advanced', `"${e.g}" has track "${e.t}"`);
-        assert.ok(Number.isInteger(e.l) && e.l >= 1 && e.l <= 20,
-            `"${e.g}" points at level ${e.l}, which is outside 1-20`);
+        // A derived point links into the drill, so its track and level have to be real. A
+        // hand-authored foundation point carries NEITHER, on purpose: no level of the drill
+        // teaches it, so the panel prints no practise link. Half a pair would build
+        // `?track=undefined`, so they are required to be absent together.
+        if (e.t === undefined && e.l === undefined) {
+            assert.ok(e.j, `"${e.g}" is a foundation point with no JLPT level — these are `
+                + 'classified as they are written, so one is always expected');
+        } else {
+            assert.ok(e.t === 'foundation' || e.t === 'advanced', `"${e.g}" has track "${e.t}"`);
+            assert.ok(Number.isInteger(e.l) && e.l >= 1 && e.l <= 20,
+                `"${e.g}" points at level ${e.l}, which is outside 1-20`);
+        }
         // A JLPT level is optional -- a point this repo does not file shows no chip -- but when
         // present it must be one of the five, since dictionary.css keys the colour off it and an
         // unknown value renders an unstyled chip rather than an error.
@@ -102,11 +120,23 @@ module.exports = async function () {
     // name. If it is deleted or renamed the build throws, but a stale one that classifies
     // nothing would quietly ship a tab with no level chips at all.
     const filed = data.filter((e) => e.j).length;
-    assert.ok(filed > 200,
+    assert.ok(filed > 250,
         `only ${filed} of ${data.length} points carry a JLPT level — tools/grammar-jlpt.json `
         + 'looks stale or empty');
 
-    return `grammar-index.js matches grammar-data.js: ${data.length} points, `
+    // Every example must carry real furigana markup, not the 漢字[かんじ] shorthand the
+    // foundation file is authored in -- an unexpanded one would print the brackets literally
+    // and would not be searchable by reading, since grReadings only reads <rt>.
+    for (const e of data) {
+        for (const v of e.v) {
+            assert.ok(!/[一-鿿][[［]/.test(v.j),
+                `"${e.g}" has an example with unexpanded furigana shorthand: ${v.j}`);
+        }
+    }
+
+    const authored = data.filter((e) => e.t === undefined).length;
+    return `grammar-index.js matches grammar-data.js: ${data.length} points `
+        + `(${authored} hand-authored, ${data.length - authored} derived), `
         + `${filed} with a JLPT level, `
         + `${data.reduce((n, e) => n + e.v.length, 0)} examples, all with MN`;
 };

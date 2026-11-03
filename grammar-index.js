@@ -4,9 +4,888 @@
 // Every English and Mongolian string in here was written by the site's author in grammar-data.js;
 // nothing is machine translated. Re-run the generator after editing grammar-data.js.
 //
-// 218 points. Fields: g point, t track, l level, b band hedge, e/m explanation EN/MN,
-// v up to 3 example sentences {j JP with furigana, e EN, m MN}, a the near-synonyms it contrasts with.
+// 264 points: 46 hand-authored (tools/grammar-foundation.json, the
+// core particles and the N5 floor -- these carry NO t/l, since the drill does not teach them)
+// and 218 derived from grammar-data.js.
+//
+// Fields: g point, t track, l level (derived only), j JLPT level where filed, e/m explanation
+// EN/MN, v up to 3 example sentences {j JP with furigana, e EN, m MN}, a the near-synonyms it
+// contrasts with.
 const GRAMMAR_INDEX = [
+ {
+  "g": "を",
+  "j": "N5",
+  "e": "Marks the direct object -- the thing the verb acts on. It attaches to the noun, never to the verb, and it is written with the kana を, which is used for nothing else in modern Japanese.",
+  "m": "Үйл үгийн шууд тусагдахууныг заана. Монголын -ыг/-ийг нөхцөлтэй яг таарна: 'номыг уншина' = 本を読む. Нэр үгийн ардаа залгагдана, үйл үгэнд хамаарахгүй. Орчин цагийн япон хэлэнд を үсэг зөвхөн энэ үүрэгт хэрэглэгддэг тул харвал шууд таних боломжтой.",
+  "v": [
+   {
+    "j": "<ruby>毎朝<rp>(</rp><rt>まいあさ</rt><rp>)</rp></ruby>コーヒーを<ruby>飲<rp>(</rp><rt>の</rt><rp>)</rp></ruby>みます。",
+    "e": "I drink coffee every morning.",
+    "m": "Өглөө бүр кофе уудаг."
+   },
+   {
+    "j": "この<ruby>本<rp>(</rp><rt>ほん</rt><rp>)</rp></ruby>をもう<ruby>読<rp>(</rp><rt>よ</rt><rp>)</rp></ruby>みましたか。",
+    "e": "Have you already read this book?",
+    "m": "Энэ номыг аль хэдийн уншсан уу?"
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "は",
+  "j": "N5",
+  "e": "The topic marker: it names what the sentence is about, then comments on it. Read わ, not は. It is not the subject marker -- it often sits on a subject, but it can also sit on a time, a place or an object, and what it really says is 'as for this'.",
+  "m": "Өгүүлбэр юуны тухай байгааг зааж, дараа нь тайлбарладаг тэмдэг. 'Би бол' гэдгийн 'бол'-той дүйнэ. Уншихдаа ха биш ва гэж уншина. Үүнийг өгүүлэгдэхүүний тэмдэг гэж ойлгож болохгүй: цаг, газар, тусагдахуун дээр ч залгагдаж чадна. が өгүүлэгдэхүүнийг шинээр мэдээлдэг бол は аль хэдийн мэдэгдэж буй сэдвийг тэмдэглэдэг.",
+  "v": [
+   {
+    "j": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>は<ruby>学生<rp>(</rp><rt>がくせい</rt><rp>)</rp></ruby>です。",
+    "e": "I am a student.",
+    "m": "Би бол оюутан."
+   },
+   {
+    "j": "<ruby>今日<rp>(</rp><rt>きょう</rt><rp>)</rp></ruby>は<ruby>寒<rp>(</rp><rt>さむ</rt><rp>)</rp></ruby>いですね。",
+    "e": "It's cold today, isn't it.",
+    "m": "Өнөөдөр бол хүйтэн байна шүү."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "に",
+  "j": "N5",
+  "e": "Marks where something exists, where it is going, when it happens, or who receives it. One particle covering the ground English splits between 'in', 'to', 'at' and 'on'. With a motion verb it names the destination; with an existence verb it names the location.",
+  "m": "Монголын өгөх оршихын -д/-т нөхцөлтэй шууд дүйнэ. Орших газар (学校にいる = сургуульд байна), хүрэх газар (東京に行く = Токиод очно), болох цаг (七時に = долоон цагт), хүртэгч этгээд (友達に話す = найздаа ярина) -- энэ дөрвийг нэг л тэмдэг зөөнө. Англи хэл үүнийг in, to, at, on гэж салгадаг бол монгол хэл япон хэлтэй адил нэг нөхцөлөөр зохицуулдаг.",
+  "v": [
+   {
+    "j": "<ruby>七時<rp>(</rp><rt>しちじ</rt><rp>)</rp></ruby>に<ruby>起<rp>(</rp><rt>お</rt><rp>)</rp></ruby>きます。",
+    "e": "I get up at seven o'clock.",
+    "m": "Долоон цагт босдог."
+   },
+   {
+    "j": "<ruby>友達<rp>(</rp><rt>ともだち</rt><rp>)</rp></ruby>に<ruby>手紙<rp>(</rp><rt>てがみ</rt><rp>)</rp></ruby>を<ruby>書<rp>(</rp><rt>か</rt><rp>)</rp></ruby>きました。",
+    "e": "I wrote a letter to my friend.",
+    "m": "Найздаа захидал бичсэн."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "で",
+  "j": "N5",
+  "e": "Marks the means by which something is done, or the place where an action happens. The contrast with に is the useful one: で is where something is DONE, に is where something simply IS.",
+  "m": "Хоёр үүрэгтэй. Нэгд, хэрэгсэл буюу арга: монголын -аар/-ээр нөхцөлтэй дүйнэ (バスで行く = автобусаар явна). Хоёрт, үйлдэл болж буй газар (公園で遊ぶ = цэцэрлэгт хүрээлэнд тоглоно). に-тэй ялгаа нь ойлгоход чухал: で бол ямар нэг зүйл ХИЙГДЭЖ буй газар, に бол зүгээр л БАЙГАА газар.",
+  "v": [
+   {
+    "j": "バスで<ruby>学校<rp>(</rp><rt>がっこう</rt><rp>)</rp></ruby>へ<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>きます。",
+    "e": "I go to school by bus.",
+    "m": "Сургууль руу автобусаар явдаг."
+   },
+   {
+    "j": "<ruby>図書館<rp>(</rp><rt>としょかん</rt><rp>)</rp></ruby>で<ruby>勉強<rp>(</rp><rt>べんきょう</rt><rp>)</rp></ruby>しました。",
+    "e": "I studied at the library.",
+    "m": "Номын санд хичээл хийсэн."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "も",
+  "j": "N5",
+  "e": "'Also' or 'too'. It replaces は or を rather than stacking on them, so 'I also drink coffee' drops the を entirely. In a negative sentence it becomes 'not even'.",
+  "m": "'Бас', 'ч' гэсэн утгатай. Чухал дүрэм: は эсвэл を дээр нэмэгдэхгүй, харин тэдгээрийг СОЛЬДОГ -- コーヒーも飲みます гэхэд を огт гарахгүй. Үгүйсгэсэн өгүүлбэрт 'ч үгүй' болж хувирна: 何も食べない = юу ч идэхгүй.",
+  "v": [
+   {
+    "j": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>も<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>きます。",
+    "e": "I'll go too.",
+    "m": "Би ч бас явна."
+   },
+   {
+    "j": "<ruby>今日<rp>(</rp><rt>きょう</rt><rp>)</rp></ruby>は<ruby>何<rp>(</rp><rt>なに</rt><rp>)</rp></ruby>も<ruby>食<rp>(</rp><rt>た</rt><rp>)</rp></ruby>べていません。",
+    "e": "I haven't eaten anything today.",
+    "m": "Өнөөдөр юу ч идээгүй байна."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "へ",
+  "j": "N5",
+  "e": "Direction: towards somewhere. Read え, not へ. Where に names the destination you arrive at, へ names the direction you set off in -- with a plain motion verb the two are usually interchangeable, and へ reads slightly more formal.",
+  "m": "Зүг чиг заана, монголын -руу/-рүү нөхцөлтэй дүйнэ. Уншихдаа хэ биш э гэж уншина. に хүрэх ЦЭГийг заадаг бол へ явах ЧИГийг заадаг; энгийн хөдөлгөөний үйл үгтэй бол хоёулаа ихэвчлэн сольж хэрэглэгдэнэ, へ арай албан ёсны өнгөтэй сонсогдоно.",
+  "v": [
+   {
+    "j": "<ruby>国<rp>(</rp><rt>くに</rt><rp>)</rp></ruby>へ<ruby>帰<rp>(</rp><rt>かえ</rt><rp>)</rp></ruby>ります。",
+    "e": "I'm going back to my home country.",
+    "m": "Эх орон руугаа буцна."
+   },
+   {
+    "j": "どちらへいらっしゃいますか。",
+    "e": "Where are you headed?",
+    "m": "Хаашаа явж байна вэ?"
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "の",
+  "j": "N5",
+  "e": "Joins two nouns, with the first describing the second: possession, origin, material, kind. It can also turn a whole clause into a noun, which is where it stops looking like 'of'.",
+  "m": "Хоёр нэр үгийг холбож, эхнийх нь хоёр дахийгаа тодотгоно -- монголын харьяалахын -ын/-ийн нөхцөлтэй дүйнэ: 私の本 = миний ном. Эзэмшил, гарал, материал, төрөл бүгдийг нэг хэлбэрээр илэрхийлнэ. Түүнчлэн бүтэн өгүүлбэрийг нэр үг болгон хувиргаж чадна (読むのが好き = унших дуртай), энэ үүрэгт нь 'ын/ийн' гэж орчуулж болохгүй.",
+  "v": [
+   {
+    "j": "これは<ruby>母<rp>(</rp><rt>はは</rt><rp>)</rp></ruby>の<ruby>写真<rp>(</rp><rt>しゃしん</rt><rp>)</rp></ruby>です。",
+    "e": "This is a photo of my mother.",
+    "m": "Энэ бол ээжийн маань зураг."
+   },
+   {
+    "j": "<ruby>日本語<rp>(</rp><rt>にほんご</rt><rp>)</rp></ruby>を<ruby>話<rp>(</rp><rt>はな</rt><rp>)</rp></ruby>すのは<ruby>楽<rp>(</rp><rt>たの</rt><rp>)</rp></ruby>しいです。",
+    "e": "Speaking Japanese is fun.",
+    "m": "Япон хэлээр ярих нь сонирхолтой."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "や",
+  "j": "N5",
+  "e": "Lists examples without claiming the list is complete, where と lists everything. 'Apples and oranges and so on' rather than 'apples and oranges'. Often closed with など.",
+  "m": "Бүрэн бус жагсаалт гаргана: 'гэх мэт' гэсэн утга агуулна. と бүх зүйлийг нэрлэдэг бол や зөвхөн жишээ дурдаад үлдсэнийг нь далд үлдээнэ. Иймд 'алим, жүрж хоёр' гэвэл と, 'алим жүрж гэх мэт' гэвэл や. Төгсгөлд нь など залгах нь элбэг.",
+  "v": [
+   {
+    "j": "<ruby>机<rp>(</rp><rt>つくえ</rt><rp>)</rp></ruby>の<ruby>上<rp>(</rp><rt>うえ</rt><rp>)</rp></ruby>に<ruby>本<rp>(</rp><rt>ほん</rt><rp>)</rp></ruby>やノートがあります。",
+    "e": "There are books, notebooks and so on on the desk.",
+    "m": "Ширээн дээр ном, дэвтэр гэх мэт зүйл байна."
+   },
+   {
+    "j": "<ruby>休<rp>(</rp><rt>やす</rt><rp>)</rp></ruby>みには<ruby>山<rp>(</rp><rt>やま</rt><rp>)</rp></ruby>や<ruby>海<rp>(</rp><rt>うみ</rt><rp>)</rp></ruby>へ<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>きます。",
+    "e": "On holidays I go to the mountains, the sea and places like that.",
+    "m": "Амралтаараа уул, далай гэх мэт газар явдаг."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "か",
+  "j": "N5",
+  "e": "Turns a statement into a question -- no word order changes, the particle does all the work. Between two nouns it means 'or'.",
+  "m": "Өгүүлбэрийг асуулт болгоно: монголын 'уу/үү', 'вэ' гэсэн асуух нөхцөлтэй дүйнэ. Үгийн дараалал огт өөрчлөгдөхгүй, зөвхөн төгсгөлд か залгахад л болно -- англи хэл шиг үг солих шаардлагагүй. Хоёр нэр үгийн хооронд орвол 'эсвэл' гэсэн утгатай: コーヒーか お茶 = кофе эсвэл цай.",
+  "v": [
+   {
+    "j": "あしたは<ruby>休<rp>(</rp><rt>やす</rt><rp>)</rp></ruby>みですか。",
+    "e": "Is tomorrow a day off?",
+    "m": "Маргааш амралт уу?"
+   },
+   {
+    "j": "コーヒーかお<ruby>茶<rp>(</rp><rt>ちゃ</rt><rp>)</rp></ruby>をください。",
+    "e": "Coffee or tea, please.",
+    "m": "Кофе эсвэл цай өгөөч."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "ね",
+  "j": "N5",
+  "e": "Invites agreement: you assume the listener sees it the same way. Said with a falling tone it is 'isn't it'; with a rising one it checks that you have understood correctly.",
+  "m": "Сонсогчоос санал нийлэхийг хүлээж байгааг илтгэнэ -- монголын 'шүү дээ', 'тийм үү' гэдэгтэй ойролцоо. Буурах аялгаар хэлбэл 'тийм биз дээ' гэсэн батлах өнгөтэй, өгсөх аялгаар хэлбэл 'зөв ойлгосон уу' гэж лавлаж буй хэрэг. よ-той эсрэг: ね хуваалцаж буй мэдээлэлд, よ шинэ мэдээлэлд хэрэглэгдэнэ.",
+  "v": [
+   {
+    "j": "<ruby>今日<rp>(</rp><rt>きょう</rt><rp>)</rp></ruby>はいい<ruby>天気<rp>(</rp><rt>てんき</rt><rp>)</rp></ruby>ですね。",
+    "e": "Lovely weather today, isn't it.",
+    "m": "Өнөөдөр цаг агаар сайхан байна шүү дээ."
+   },
+   {
+    "j": "<ruby>田中<rp>(</rp><rt>たなか</rt><rp>)</rp></ruby>さんですね。",
+    "e": "You're Mr Tanaka, right?",
+    "m": "Та Танака гуай мөн биз дээ?"
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "よ",
+  "j": "N5",
+  "e": "Tells the listener something you think they do not know. It adds weight, which is why it can sound pushy if used where the listener already knows -- that is ね's job.",
+  "m": "Сонсогчийн мэдэхгүй гэж бодож буй зүйлээ хэлж байгааг илтгэнэ -- монголын 'шүү' гэдэгтэй дүйнэ. Мэдээлэлд хүч нэмдэг тул сонсогч аль хэдийн мэддэг зүйл дээр хэрэглэвэл тулгаж байгаа мэт сонсогдоно; тэр тохиолдолд ね хэрэглэнэ. Хоёрыг зөв сонгох нь япон хэлний эелдэг өнгийг тодорхойлдог.",
+  "v": [
+   {
+    "j": "その<ruby>店<rp>(</rp><rt>みせ</rt><rp>)</rp></ruby>はもう<ruby>閉<rp>(</rp><rt>し</rt><rp>)</rp></ruby>まっていますよ。",
+    "e": "That shop is already closed, you know.",
+    "m": "Тэр дэлгүүр аль хэдийн хаагдсан шүү."
+   },
+   {
+    "j": "<ruby>大丈夫<rp>(</rp><rt>だいじょうぶ</rt><rp>)</rp></ruby>ですよ。",
+    "e": "It's fine, really.",
+    "m": "Зүгээр ээ шүү."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "まで",
+  "j": "N5",
+  "e": "The end point of a stretch of time or space: 'up to and including'. Pairs with から for the start. Note まで is a limit you continue to, while までに is a deadline you act before.",
+  "m": "Цаг хугацаа, орон зайн төгсгөлийн цэгийг заана -- монголын '-хүртэл' гэдэгтэй дүйнэ. Эхлэлийг нь から тэмдэглэдэг тул хоёр нь хос болж хэрэглэгдэнэ: 九時から五時まで = есөн цагаас таван цаг хүртэл. まで болон までに хоёрыг андуурч болохгүй: まで бол тэр хүртэл үргэлжлэх хязгаар, までに бол түүнээс өмнө хийх эцсийн хугацаа.",
+  "v": [
+   {
+    "j": "<ruby>九時<rp>(</rp><rt>くじ</rt><rp>)</rp></ruby>から<ruby>五時<rp>(</rp><rt>ごじ</rt><rp>)</rp></ruby>まで<ruby>働<rp>(</rp><rt>はたら</rt><rp>)</rp></ruby>きます。",
+    "e": "I work from nine to five.",
+    "m": "Есөн цагаас таван цаг хүртэл ажилладаг."
+   },
+   {
+    "j": "<ruby>駅<rp>(</rp><rt>えき</rt><rp>)</rp></ruby>まで<ruby>歩<rp>(</rp><rt>ある</rt><rp>)</rp></ruby>きましょう。",
+    "e": "Let's walk as far as the station.",
+    "m": "Өртөө хүртэл алхъя."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "より",
+  "j": "N5",
+  "e": "Marks the thing being compared against: 'than'. The standard goes first, so AよりB is 'B more than A' -- the opposite order from English, which is where most mistakes come from.",
+  "m": "Харьцуулж буй жишиг зүйлийг заана -- монголын гарахын -аас/-ээс нөхцөлтэй дүйнэ: 'надаас өндөр' = 私より背が高い. Дараалалд нь анхаарах хэрэгтэй: жишиг нь ЭХЭНД ордог тул AよりB гэвэл 'A-аас B илүү' гэсэн утгатай. Монгол хэлний дараалалтай адилхан учраас англи хэлнээс сурч буй хүнээс илүү хялбар байх ёстой.",
+  "v": [
+   {
+    "j": "<ruby>今日<rp>(</rp><rt>きょう</rt><rp>)</rp></ruby>は<ruby>昨日<rp>(</rp><rt>きのう</rt><rp>)</rp></ruby>より<ruby>暖<rp>(</rp><rt>あたた</rt><rp>)</rp></ruby>かいです。",
+    "e": "Today is warmer than yesterday.",
+    "m": "Өнөөдөр өчигдрөөс дулаахан байна."
+   },
+   {
+    "j": "<ruby>電車<rp>(</rp><rt>でんしゃ</rt><rp>)</rp></ruby>よりバスのほうが<ruby>安<rp>(</rp><rt>やす</rt><rp>)</rp></ruby>いです。",
+    "e": "The bus is cheaper than the train.",
+    "m": "Галт тэрэгнээс автобус хямд."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "です",
+  "j": "N5",
+  "e": "The polite copula: links a noun or an adjective to the subject and marks the sentence as polite. Past is でした, negative ではありません (spoken じゃないです).",
+  "m": "Эелдэг хэлбэрийн холбох үйл үг: нэр үг буюу тэмдэг нэрийг өгүүлэгдэхүүнтэй холбож, өгүүлбэрийг эелдэг болгоно. Монгол хэлний 'юм', 'байна' гэдэгтэй ойролцоо. Өнгөрсөн цаг нь でした, үгүйсгэл нь ではありません (ярианд じゃないです). Энгийн хэлбэр нь だ бөгөөд найз нөхөдтэйгөө ярихад хэрэглэнэ.",
+  "v": [
+   {
+    "j": "これは<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>のかばんです。",
+    "e": "This is my bag.",
+    "m": "Энэ бол миний цүнх."
+   },
+   {
+    "j": "<ruby>昨日<rp>(</rp><rt>きのう</rt><rp>)</rp></ruby>は<ruby>雨<rp>(</rp><rt>あめ</rt><rp>)</rp></ruby>でした。",
+    "e": "It was raining yesterday.",
+    "m": "Өчигдөр бороотой байсан."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "ます",
+  "j": "N5",
+  "e": "The polite verb ending. Negative ません, past ました, past negative ませんでした. It changes politeness, not meaning -- the plain form says exactly the same thing to a friend.",
+  "m": "Үйл үгийн эелдэг нөхцөл. Үгүйсгэл ません, өнгөрсөн ました, өнгөрсөн үгүйсгэл ませんでした. Утгыг нь биш, ЭЕЛДЭГ БАЙДЛЫГ нь л өөрчилдөг: энгийн хэлбэр нь найздаа яг л адил зүйлийг хэлнэ. Анхандаа ます хэлбэрийг сурах нь аюулгүй, учир нь танихгүй хүнтэй энгийн хэлбэрээр ярих нь бүдүүлэг сонсогдоно.",
+  "v": [
+   {
+    "j": "<ruby>毎日<rp>(</rp><rt>まいにち</rt><rp>)</rp></ruby><ruby>日本語<rp>(</rp><rt>にほんご</rt><rp>)</rp></ruby>を<ruby>勉強<rp>(</rp><rt>べんきょう</rt><rp>)</rp></ruby>します。",
+    "e": "I study Japanese every day.",
+    "m": "Өдөр бүр япон хэл сурдаг."
+   },
+   {
+    "j": "<ruby>今日<rp>(</rp><rt>きょう</rt><rp>)</rp></ruby>は<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>きません。",
+    "e": "I'm not going today.",
+    "m": "Өнөөдөр явахгүй."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "ている",
+  "j": "N5",
+  "e": "Either an action in progress, or a state left behind by a finished action. Which one depends on the verb: 食べている is 'is eating', but 知っている is 'knows' and 結婚している is 'is married', not 'is marrying'.",
+  "m": "Хоёр тэс өөр утгатай бөгөөд аль нь болох нь үйл үгээс хамаарна. Нэгд, үргэлжилж буй үйл: 食べている = идэж байна. Хоёрт, дууссан үйлийн үлдээсэн ТӨЛӨВ: 知っている = мэднэ, 結婚している = гэрлэсэн (гэрлэж байгаа биш). Хоёр дахийг нь англи хэлний 'is -ing' гэж ойлговол алдаа гарна; монгол хэлний '-сан/-сэн байна' гэдэгтэй илүү дүйнэ.",
+  "v": [
+   {
+    "j": "<ruby>今<rp>(</rp><rt>いま</rt><rp>)</rp></ruby>ご<ruby>飯<rp>(</rp><rt>はん</rt><rp>)</rp></ruby>を<ruby>食<rp>(</rp><rt>た</rt><rp>)</rp></ruby>べています。",
+    "e": "I'm eating right now.",
+    "m": "Одоо хоол идэж байна."
+   },
+   {
+    "j": "<ruby>姉<rp>(</rp><rt>あね</rt><rp>)</rp></ruby>は<ruby>東京<rp>(</rp><rt>とうきょう</rt><rp>)</rp></ruby>に<ruby>住<rp>(</rp><rt>す</rt><rp>)</rp></ruby>んでいます。",
+    "e": "My older sister lives in Tokyo.",
+    "m": "Эгч маань Токиод амьдардаг."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "てある",
+  "j": "N4",
+  "e": "Something has been done to an object and the result is still there, with the doer left unmentioned. The contrast with ている is the point: 窓が開いている is 'the window is open', 窓が開けてある is 'the window has been opened', implying someone opened it on purpose.",
+  "m": "Ямар нэг зүйлд үйлдэл хийгдсэн бөгөөд үр дүн нь хэвээр байгааг заана, хийсэн хүнийг нь нэрлэхгүй. ている-тэй ялгаа нь гол санаа: 窓が開いている = цонх онгорхой байна (зүгээр л төлөв), 窓が開けてある = цонхыг онгойлгосон байна (хэн нэгэн зориуд онгойлгосон гэсэн далд утгатай). Бэлтгэл хийсэн, зориуд үлдээсэн гэсэн өнгө агуулдаг.",
+  "v": [
+   {
+    "j": "<ruby>机<rp>(</rp><rt>つくえ</rt><rp>)</rp></ruby>の<ruby>上<rp>(</rp><rt>うえ</rt><rp>)</rp></ruby>に<ruby>手紙<rp>(</rp><rt>てがみ</rt><rp>)</rp></ruby>が<ruby>置<rp>(</rp><rt>お</rt><rp>)</rp></ruby>いてあります。",
+    "e": "A letter has been left on the desk.",
+    "m": "Ширээн дээр захидал тавьсан байна."
+   },
+   {
+    "j": "<ruby>切符<rp>(</rp><rt>きっぷ</rt><rp>)</rp></ruby>はもう<ruby>買<rp>(</rp><rt>か</rt><rp>)</rp></ruby>ってあります。",
+    "e": "The tickets have already been bought.",
+    "m": "Тасалбарыг аль хэдийн авсан байгаа."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "てください",
+  "j": "N5",
+  "e": "A polite request or instruction: 'please do this'. Negative is ないでください. It is polite but still a direct ask -- to someone senior, てもらえますか or ていただけますか is softer.",
+  "m": "Эелдэг хүсэлт буюу заавар: 'хийж өгөөч'. Үгүйсгэл нь ないでください ('бүү хий'). Эелдэг боловч шууд хүсэлт хэвээр байдаг тул ахмад буюу албаны хүнд хандахад てもらえますか, ていただけますか хэлбэрийг хэрэглэвэл илүү зөөлөн сонсогдоно. Дэлгүүр, эмнэлэг зэрэг газар хамгийн их сонсогдох хэлбэр.",
+  "v": [
+   {
+    "j": "ここに<ruby>名前<rp>(</rp><rt>なまえ</rt><rp>)</rp></ruby>を<ruby>書<rp>(</rp><rt>か</rt><rp>)</rp></ruby>いてください。",
+    "e": "Please write your name here.",
+    "m": "Нэрээ энд бичнэ үү."
+   },
+   {
+    "j": "<ruby>少<rp>(</rp><rt>すこ</rt><rp>)</rp></ruby>し<ruby>待<rp>(</rp><rt>ま</rt><rp>)</rp></ruby>ってください。",
+    "e": "Please wait a moment.",
+    "m": "Жаахан хүлээнэ үү."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "たい",
+  "j": "N5",
+  "e": "'I want to do X'. It conjugates like an i-adjective, so the negative is たくない. It only works for your own wishes -- for someone else's you need たがる or a hedge like たいようです.",
+  "m": "'Хиймээр байна' гэсэн хүсэл илэрхийлнэ. Тэмдэг нэр шиг хувирдаг тул үгүйсгэл нь たくない болно. Чухал хязгаарлалт: зөвхөн ӨӨРИЙН хүслээ хэлэхэд хэрэглэнэ. Бусдын хүслийг шууд たい-гаар хэлбэл хачин сонсогдоно -- тэр тохиолдолд たがる эсвэл たいようです гэх мэт зөөлрүүлсэн хэлбэр хэрэглэнэ.",
+  "v": [
+   {
+    "j": "<ruby>日本<rp>(</rp><rt>にほん</rt><rp>)</rp></ruby>へ<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>きたいです。",
+    "e": "I want to go to Japan.",
+    "m": "Япон явмаар байна."
+   },
+   {
+    "j": "<ruby>今<rp>(</rp><rt>いま</rt><rp>)</rp></ruby>は<ruby>何<rp>(</rp><rt>なに</rt><rp>)</rp></ruby>も<ruby>食<rp>(</rp><rt>た</rt><rp>)</rp></ruby>べたくないです。",
+    "e": "I don't want to eat anything right now.",
+    "m": "Одоо юу ч идмээргүй байна."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "ましょう",
+  "j": "N5",
+  "e": "'Let's do X' -- a suggestion that includes the speaker. ましょうか offers to do something for the other person instead, which is a different thing: 持ちましょうか is 'shall I carry it for you'.",
+  "m": "'Хийцгээе' гэсэн санал -- ярьж буй хүнийг ӨӨРИЙГ нь оруулсан урилга. ましょうか хэлбэр нь өөр утгатай: нөгөө хүнийхээ өмнөөс ямар нэг зүйл хийж өгөхийг санал болгоно. 持ちましょうか гэвэл 'барьж өгье юү' гэсэн утгатай болохоос 'хамт барьцгаая' гэсэн утгагүй. Энэ хоёрыг ялгах нь эелдэг харилцааны үндэс.",
+  "v": [
+   {
+    "j": "<ruby>一緒<rp>(</rp><rt>いっしょ</rt><rp>)</rp></ruby>に<ruby>昼<rp>(</rp><rt>ひる</rt><rp>)</rp></ruby>ご<ruby>飯<rp>(</rp><rt>はん</rt><rp>)</rp></ruby>を<ruby>食<rp>(</rp><rt>た</rt><rp>)</rp></ruby>べましょう。",
+    "e": "Let's have lunch together.",
+    "m": "Хамтдаа үдийн хоол идэцгээе."
+   },
+   {
+    "j": "<ruby>荷物<rp>(</rp><rt>にもつ</rt><rp>)</rp></ruby>を<ruby>持<rp>(</rp><rt>も</rt><rp>)</rp></ruby>ちましょうか。",
+    "e": "Shall I carry your bag for you?",
+    "m": "Ачааг чинь барьж өгье юү?"
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "てから",
+  "j": "N5",
+  "e": "'After doing X, then Y' -- the order matters and the first action is finished before the second starts. Only the last verb carries the tense; てから itself never changes.",
+  "m": "'Хийсний дараа' гэсэн дараалал заана, эхний үйл бүрэн дууссаны дараа хоёр дахь нь эхэлнэ. Монголын '-сны дараа' гэдэгтэй дүйнэ. Нэг дүрэм санах хэрэгтэй: цагийг зөвхөн ЭЦСИЙН үйл үг зөөнө, てから өөрөө хэзээ ч хувирахгүй -- 食べてから出かけました гэхэд өнгөрсөн цаг нь зөвхөн 出かけました дээр байна.",
+  "v": [
+   {
+    "j": "ご<ruby>飯<rp>(</rp><rt>はん</rt><rp>)</rp></ruby>を<ruby>食<rp>(</rp><rt>た</rt><rp>)</rp></ruby>べてから<ruby>出<rp>(</rp><rt>で</rt><rp>)</rp></ruby>かけました。",
+    "e": "I went out after eating.",
+    "m": "Хоол идсэний дараа гарсан."
+   },
+   {
+    "j": "<ruby>手<rp>(</rp><rt>て</rt><rp>)</rp></ruby>を<ruby>洗<rp>(</rp><rt>あら</rt><rp>)</rp></ruby>ってから<ruby>食<rp>(</rp><rt>た</rt><rp>)</rp></ruby>べてください。",
+    "e": "Please wash your hands before eating.",
+    "m": "Гараа угаасны дараа идээрэй."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "たあとで",
+  "j": "N5",
+  "e": "'After X' -- close to てから, but たあとで simply places the second event later in time, while てから stresses that the first had to finish first. With a noun it becomes のあとで.",
+  "m": "'Дараа нь' гэсэн утгатай бөгөөд てから-той маш ойр. Ялгаа нь өнгөнд: たあとで зүгээр л хоёр дахь үйл явдал цаг хугацааны хувьд хожим болсныг хэлдэг бол てから эхний үйл заавал ДУУССАН байх ёстойг онцолно. Нэр үгтэй хэрэглэхэд のあとで болж хувирна: 食事のあとで = хоолны дараа.",
+  "v": [
+   {
+    "j": "<ruby>映画<rp>(</rp><rt>えいが</rt><rp>)</rp></ruby>を<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>たあとで、お<ruby>茶<rp>(</rp><rt>ちゃ</rt><rp>)</rp></ruby>を<ruby>飲<rp>(</rp><rt>の</rt><rp>)</rp></ruby>みました。",
+    "e": "After watching the film, we had tea.",
+    "m": "Кино үзсэний дараа цай уусан."
+   },
+   {
+    "j": "<ruby>授業<rp>(</rp><rt>じゅぎょう</rt><rp>)</rp></ruby>のあとで<ruby>図書館<rp>(</rp><rt>としょかん</rt><rp>)</rp></ruby>へ<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>きます。",
+    "e": "I go to the library after class.",
+    "m": "Хичээлийн дараа номын санд явдаг."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "たり",
+  "j": "N5",
+  "e": "Lists a few representative actions out of more, without putting them in order: 'doing things like X and Y'. Every verb takes たり and the whole thing closes with する.",
+  "m": "Хэд хэдэн үйлээс төлөөлөх жишээг дараалал харгалзахгүйгээр жагсаана: 'хийх юм уу, хийх юм уу гэх мэт'. Үйл үг бүр たり авч, төгсгөлд нь する залгана -- бүтэц нь 〜たり〜たりする. Энэ нь бүх үйлийг нэрлэдэггүй гэдгээрээ や-тай төстэй: дурдаагүй өөр зүйл ч байсан гэсэн далд утга агуулна.",
+  "v": [
+   {
+    "j": "<ruby>日曜日<rp>(</rp><rt>にちようび</rt><rp>)</rp></ruby>は<ruby>本<rp>(</rp><rt>ほん</rt><rp>)</rp></ruby>を<ruby>読<rp>(</rp><rt>よ</rt><rp>)</rp></ruby>んだり<ruby>音楽<rp>(</rp><rt>おんがく</rt><rp>)</rp></ruby>を<ruby>聞<rp>(</rp><rt>き</rt><rp>)</rp></ruby>いたりします。",
+    "e": "On Sundays I do things like reading and listening to music.",
+    "m": "Ням гаригт ном унших, хөгжим сонсох зэргээр өнгөрүүлдэг."
+   },
+   {
+    "j": "<ruby>休<rp>(</rp><rt>やす</rt><rp>)</rp></ruby>みに<ruby>泳<rp>(</rp><rt>およ</rt><rp>)</rp></ruby>いだり<ruby>走<rp>(</rp><rt>はし</rt><rp>)</rp></ruby>ったりしました。",
+    "e": "Over the break I swam, ran and so on.",
+    "m": "Амралтаараа усанд сэлэх, гүйх зэргийг хийсэн."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "ほうがいい",
+  "j": "N5",
+  "e": "Advice: 'you'd better do X'. The past form たほうがいい is the usual one for a positive recommendation; the negative is ないほうがいい. It is stronger than it looks in English -- close to a warning.",
+  "m": "Зөвлөгөө өгнө: 'хийсэн нь дээр'. Эерэг зөвлөгөөнд ӨНГӨРСӨН хэлбэр たほうがいい хэрэглэдэг нь анхаарууштай -- 行ったほうがいい гэвэл 'явсан нь дээр' гэсэн утгатай боловч ирээдүйн тухай ярьж байгаа. Үгүйсгэл нь ないほうがいい. Англи хэлний 'you'd better'-ээс арай хүчтэй, бараг сануулга шиг сонсогдоно.",
+  "v": [
+   {
+    "j": "<ruby>早<rp>(</rp><rt>はや</rt><rp>)</rp></ruby>く<ruby>寝<rp>(</rp><rt>ね</rt><rp>)</rp></ruby>たほうがいいですよ。",
+    "e": "You'd better go to bed early.",
+    "m": "Эрт унтсан нь дээр шүү."
+   },
+   {
+    "j": "<ruby>無理<rp>(</rp><rt>むり</rt><rp>)</rp></ruby>をしないほうがいいです。",
+    "e": "You shouldn't push yourself.",
+    "m": "Хэт ачаалал өгөхгүй байсан нь дээр."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "しか",
+  "j": "N5",
+  "e": "'Only' -- but the verb after it must be negative, and the whole thing stays positive in meaning. 千円しかない is 'I only have a thousand yen', and it carries a note of 'that isn't much'.",
+  "m": "'Зөвхөн' гэсэн утгатай боловч ардаа ЗААВАЛ үгүйсгэсэн үйл үг шаардана, тэгсэн ч утга нь эерэг хэвээр үлдэнэ: 千円しかない = зөвхөн мянган иен байна. Энэ нь хэлбэрийн хувьд хачин боловч монгол хэлний 'мянган иенээс өөр юм алга' гэдэгтэй яг ижил бүтэцтэй. だけ-тэй ялгаа нь өнгө: しか 'цөөхөн, хүрэлцэхгүй' гэсэн харамслын аястай, だけ төвийг сахисан.",
+  "v": [
+   {
+    "j": "<ruby>今<rp>(</rp><rt>いま</rt><rp>)</rp></ruby>、<ruby>千円<rp>(</rp><rt>せんえん</rt><rp>)</rp></ruby>しかありません。",
+    "e": "I've only got a thousand yen right now.",
+    "m": "Одоо мянган иенээс өөр мөнгө алга."
+   },
+   {
+    "j": "<ruby>日本語<rp>(</rp><rt>にほんご</rt><rp>)</rp></ruby>が<ruby>少<rp>(</rp><rt>すこ</rt><rp>)</rp></ruby>ししか<ruby>話<rp>(</rp><rt>はな</rt><rp>)</rp></ruby>せません。",
+    "e": "I can only speak a little Japanese.",
+    "m": "Япон хэлээр бага зэргээс өөр ярьж чадахгүй."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "ぐらい",
+  "j": "N5",
+  "e": "'About' -- an approximate amount or length of time. Also written くらい, with no difference in meaning. For an approximate point in time rather than a duration, use ごろ instead.",
+  "m": "'Орчим', 'ойролцоогоор' гэсэн утгатай бөгөөд хэмжээ, үргэлжлэх хугацааг тооцоолоход хэрэглэнэ. くらい гэж ч бичдэг, утгын ялгаа байхгүй. Нэг зүйлийг андуурч болохгүй: ぐらい бол ХЭМЖЭЭ, харин ごろ бол ЦАГИЙН ЦЭГ. 三時ごろ = гурван цаг орчимд, 三時間ぐらい = гурван цаг орчим үргэлжилсэн.",
+  "v": [
+   {
+    "j": "<ruby>駅<rp>(</rp><rt>えき</rt><rp>)</rp></ruby>まで<ruby>十分<rp>(</rp><rt>じゅっぷん</rt><rp>)</rp></ruby>ぐらいかかります。",
+    "e": "It takes about ten minutes to the station.",
+    "m": "Өртөө хүртэл арван минут орчим зарцуулна."
+   },
+   {
+    "j": "<ruby>毎日<rp>(</rp><rt>まいにち</rt><rp>)</rp></ruby><ruby>二時間<rp>(</rp><rt>にじかん</rt><rp>)</rp></ruby>ぐらい<ruby>勉強<rp>(</rp><rt>べんきょう</rt><rp>)</rp></ruby>します。",
+    "e": "I study about two hours a day.",
+    "m": "Өдөрт хоёр цаг орчим хичээл хийдэг."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "など",
+  "j": "N5",
+  "e": "'And so on' -- closes an incomplete list, usually one opened with や. On its own after a noun it can also play something down, with a dismissive edge.",
+  "m": "'Гэх мэт' гэж жагсаалтыг дуусгана, ихэвчлэн や-гаар эхэлсэн бүрэн бус жагсаалтыг хаана. Нэг нэр үгийн дараа ганцаараа орвол өөр үүрэгтэй болно: тухайн зүйлийг дорд үзэх, үл тоомсорлох өнгө нэмнэ -- 私などには無理です гэвэл 'над шиг хүнд бол хэцүү' гэсэн даруу буюу эелдэг татгалзал болно.",
+  "v": [
+   {
+    "j": "<ruby>果物<rp>(</rp><rt>くだもの</rt><rp>)</rp></ruby>やお<ruby>菓子<rp>(</rp><rt>かし</rt><rp>)</rp></ruby>などを<ruby>買<rp>(</rp><rt>か</rt><rp>)</rp></ruby>いました。",
+    "e": "I bought fruit, sweets and so on.",
+    "m": "Жимс, чихэр гэх мэт зүйл худалдаж авсан."
+   },
+   {
+    "j": "スポーツなどはあまりしません。",
+    "e": "I don't really do sports or anything like that.",
+    "m": "Спорт гэх мэтийг тийм ч их хийдэггүй."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "ずつ",
+  "j": "N5",
+  "e": "'Each' or 'at a time' -- the same amount given to each person, or taken in each step. It follows the number, not the noun.",
+  "m": "'Тус бүр', 'нэг нэгээр' гэсэн утгатай: хүн бүрт ижил хэмжээгээр, эсвэл алхам тутамд ижил хэмжээгээр. Байрлал нь чухал -- тооны ДАРАА ордог болохоос нэр үгийн дараа ордоггүй: 一人に二つずつ = хүн бүрт хоёр хоёроор. Монгол хэлний давхардсан тоо ('хоёр хоёроор') энэ утгыг яг зөв илэрхийлнэ.",
+  "v": [
+   {
+    "j": "<ruby>一人<rp>(</rp><rt>ひとり</rt><rp>)</rp></ruby>に<ruby>二<rp>(</rp><rt>ふた</rt><rp>)</rp></ruby>つずつ<ruby>配<rp>(</rp><rt>くば</rt><rp>)</rp></ruby>りました。",
+    "e": "I handed out two to each person.",
+    "m": "Хүн бүрт хоёр хоёроор тараасан."
+   },
+   {
+    "j": "<ruby>少<rp>(</rp><rt>すこ</rt><rp>)</rp></ruby>しずつ<ruby>上手<rp>(</rp><rt>じょうず</rt><rp>)</rp></ruby>になっています。",
+    "e": "I'm getting better little by little.",
+    "m": "Багаар багаар сайжирч байна."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "てあげる",
+  "j": "N4",
+  "e": "You do something for someone else as a favour. Avoid saying it straight to the person you are helping -- it can sound as though you are advertising your own kindness.",
+  "m": "Өөр хүний төлөө ямар нэг зүйлийг тусламж болгон хийж өгнө. Нэг соёлын анхааруулга бий: тусалж буй хүндээ шууд てあげる гэж хэлэх нь 'би чиний төлөө сайн үйл хийж байна' гэж сайрхаж байгаа мэт сонсогддог тул зайлсхийдэг. Гуравдагч хүний тухай ярихад л аюулгүй. てくれる, てもらう хоёртой хамт нэг тогтолцоо үүсгэнэ: хэн хэнд хийж өгсөн нь чиглэлээс нь мэдэгдэнэ.",
+  "v": [
+   {
+    "j": "<ruby>弟<rp>(</rp><rt>おとうと</rt><rp>)</rp></ruby>に<ruby>本<rp>(</rp><rt>ほん</rt><rp>)</rp></ruby>を<ruby>読<rp>(</rp><rt>よ</rt><rp>)</rp></ruby>んであげました。",
+    "e": "I read a book to my little brother.",
+    "m": "Дүүдээ ном уншиж өгсөн."
+   },
+   {
+    "j": "<ruby>友達<rp>(</rp><rt>ともだち</rt><rp>)</rp></ruby>の<ruby>引<rp>(</rp><rt>ひ</rt><rp>)</rp></ruby>っ<ruby>越<rp>(</rp><rt>こ</rt><rp>)</rp></ruby>しを<ruby>手伝<rp>(</rp><rt>てつだ</rt><rp>)</rp></ruby>ってあげました。",
+    "e": "I helped my friend move house.",
+    "m": "Найзынхаа нүүдэлд тусалж өгсөн."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "てくれる",
+  "j": "N4",
+  "e": "Someone does something for you, and you are grateful for it. The subject is the other person, which is what separates it from てもらう -- same event, opposite starting point.",
+  "m": "Хэн нэгэн таны төлөө ямар нэг зүйл хийж өгч байгааг, мөн та үүнд талархаж байгааг илтгэнэ. Өгүүлэгдэхүүн нь НӨГӨӨ ХҮН байдаг нь てもらう-аас ялгарах гол цэг: нэг үйл явдлыг эсрэг талаас нь харж хэлж байгаа хэрэг. 友達が手伝ってくれた (найз минь тусалсан) ба 友達に手伝ってもらった (найзаараа тусалгасан) хоёр ижил зүйлийг хэлж байна.",
+  "v": [
+   {
+    "j": "<ruby>友達<rp>(</rp><rt>ともだち</rt><rp>)</rp></ruby>が<ruby>駅<rp>(</rp><rt>えき</rt><rp>)</rp></ruby>まで<ruby>送<rp>(</rp><rt>おく</rt><rp>)</rp></ruby>ってくれました。",
+    "e": "My friend saw me to the station.",
+    "m": "Найз маань намайг өртөө хүртэл хүргэж өгсөн."
+   },
+   {
+    "j": "<ruby>先生<rp>(</rp><rt>せんせい</rt><rp>)</rp></ruby>が<ruby>丁寧<rp>(</rp><rt>ていねい</rt><rp>)</rp></ruby>に<ruby>教<rp>(</rp><rt>おし</rt><rp>)</rp></ruby>えてくれます。",
+    "e": "The teacher explains things carefully for me.",
+    "m": "Багш маань нарийн тайлбарлаж өгдөг."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "てもらう",
+  "j": "N4",
+  "e": "You get someone to do something for you. The doer is marked with に, and the subject is you -- the mirror image of てくれる, describing the same event from your side.",
+  "m": "Хэн нэгнээр ямар нэг зүйлийг хийлгэж авна. Хийж буй хүнийг に тэмдэглэж, өгүүлэгдэхүүн нь ТА өөрөө болно -- てくれる-ийн толин тусгал бөгөөд нэг үйл явдлыг таны талаас нь дүрсэлж байна. Монгол хэлний '-уулах/-үүлэх' хэлбэртэй ойролцоо утга өгнө. Эелдэг хэлбэр нь ていただく бөгөөд хүсэлт гаргахад маш элбэг хэрэглэгдэнэ.",
+  "v": [
+   {
+    "j": "<ruby>友達<rp>(</rp><rt>ともだち</rt><rp>)</rp></ruby>に<ruby>写真<rp>(</rp><rt>しゃしん</rt><rp>)</rp></ruby>を<ruby>撮<rp>(</rp><rt>と</rt><rp>)</rp></ruby>ってもらいました。",
+    "e": "I had my friend take a photo.",
+    "m": "Найзаараа зураг авахуулсан."
+   },
+   {
+    "j": "<ruby>先生<rp>(</rp><rt>せんせい</rt><rp>)</rp></ruby>に<ruby>作文<rp>(</rp><rt>さくぶん</rt><rp>)</rp></ruby>を<ruby>直<rp>(</rp><rt>なお</rt><rp>)</rp></ruby>してもらいます。",
+    "e": "I'll have the teacher correct my composition.",
+    "m": "Багшаараа зохионоо засуулна."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "ようになる",
+  "j": "N4",
+  "e": "A change into being able to do something, or into doing it habitually, where you could not or did not before. The emphasis is on the change itself, not on the current state.",
+  "m": "Урьд нь чаддаггүй буюу хийдэггүй байсан зүйл рүү шилжсэн ӨӨРЧЛӨЛТИЙГ заана: 'болох', '-дог болох'. Онцлох зүйл нь одоогийн төлөв биш, харин өөрчлөлт өөрөө. 話せるようになった гэвэл 'ярьдаг болсон' буюу урьд нь чаддаггүй байсан гэсэн утга заавал агуулагдана. Үгүйсгэл тал нь なくなる: 食べなくなった = иддэггүй болсон.",
+  "v": [
+   {
+    "j": "<ruby>日本語<rp>(</rp><rt>にほんご</rt><rp>)</rp></ruby>が<ruby>話<rp>(</rp><rt>はな</rt><rp>)</rp></ruby>せるようになりました。",
+    "e": "I've become able to speak Japanese.",
+    "m": "Япон хэлээр ярьдаг болсон."
+   },
+   {
+    "j": "<ruby>毎朝<rp>(</rp><rt>まいあさ</rt><rp>)</rp></ruby><ruby>走<rp>(</rp><rt>はし</rt><rp>)</rp></ruby>るようになりました。",
+    "e": "I've started running every morning.",
+    "m": "Өглөө бүр гүйдэг болсон."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "ことになる",
+  "j": "N4",
+  "e": "Something has been decided, with the decision presented as arriving from outside rather than from you. ことにする is the opposite: that is your own choice.",
+  "m": "Ямар нэг зүйл шийдэгдсэнийг, гэхдээ шийдвэр нь өөрөөс чинь биш ГАДНААС ирсэн мэт өнгөөр илэрхийлнэ: 'болох болсон'. Компани, сургууль зэрэг байгууллагын шийдвэрийг хэлэхэд тохиромжтой. ことにする нь яг эсрэг: тэр бол таны ӨӨРИЙН сонголт. Японд өөрийн шийдвэрээ ч заримдаа ことになる гэж зөөлрүүлж хэлдэг нь даруу байдлын илрэл.",
+  "v": [
+   {
+    "j": "<ruby>来月<rp>(</rp><rt>らいげつ</rt><rp>)</rp></ruby>、<ruby>大阪<rp>(</rp><rt>おおさか</rt><rp>)</rp></ruby>へ<ruby>転勤<rp>(</rp><rt>てんきん</rt><rp>)</rp></ruby>することになりました。",
+    "e": "It's been decided that I'll transfer to Osaka next month.",
+    "m": "Ирэх сард Осака руу шилжин ажиллах болсон."
+   },
+   {
+    "j": "<ruby>会議<rp>(</rp><rt>かいぎ</rt><rp>)</rp></ruby>は<ruby>来週<rp>(</rp><rt>らいしゅう</rt><rp>)</rp></ruby>になることになりました。",
+    "e": "The meeting has been moved to next week.",
+    "m": "Хурал ирэх долоо хоногт болох болсон."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "おわる",
+  "j": "N4",
+  "e": "Attaches to a verb stem for 'finish doing X'. It pairs with はじめる (start doing) and つづける (carry on doing), which are built the same way.",
+  "m": "Үйл үгийн үндэстэй залгаж 'хийж дуусах' гэсэн утга өгнө: 読み終わる = уншиж дуусах. はじめる (эхлэх), つづける (үргэлжлүүлэх) хоёртой нэг аргаар бүтдэг тул гурвыг хамт санах нь хялбар. Анхаарах зүйл: үйл үгийн ます хэлбэрийн үндэс дээр шууд залгана, て хэлбэр биш.",
+  "v": [
+   {
+    "j": "この<ruby>本<rp>(</rp><rt>ほん</rt><rp>)</rp></ruby>をやっと<ruby>読<rp>(</rp><rt>よ</rt><rp>)</rp></ruby>み<ruby>終<rp>(</rp><rt>お</rt><rp>)</rp></ruby>わりました。",
+    "e": "I've finally finished reading this book.",
+    "m": "Энэ номыг эцэст нь уншиж дуусгалаа."
+   },
+   {
+    "j": "<ruby>食<rp>(</rp><rt>た</rt><rp>)</rp></ruby>べ<ruby>終<rp>(</rp><rt>お</rt><rp>)</rp></ruby>わったら、<ruby>皿<rp>(</rp><rt>さら</rt><rp>)</rp></ruby>を<ruby>洗<rp>(</rp><rt>あら</rt><rp>)</rp></ruby>ってください。",
+    "e": "When you've finished eating, please wash the dishes.",
+    "m": "Идэж дуусаад таваг угаагаарай."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "がる",
+  "j": "N4",
+  "e": "Turns a feeling word into 'shows signs of feeling it', used for other people. Japanese avoids stating someone else's inner state as fact, so 寒い becomes 寒がる when the cold person is not you.",
+  "m": "Мэдрэмж заасан үгийг 'тийм байдал гаргах' болгож хувиргана, бусдын тухай ярихад хэрэглэнэ. Япон хэл бусад хүний дотоод мэдрэмжийг баримт мэт шууд хэлэхээс зайлсхийдэг тул 寒い (хүйтэн байна) нь хүйтэрч буй хүн өөр хүн бол 寒がる болж хувирна. たい ч мөн адил たがる болно: 行きたがっている = явахыг хүсэж байгаа бололтой.",
+  "v": [
+   {
+    "j": "<ruby>子供<rp>(</rp><rt>こども</rt><rp>)</rp></ruby>が<ruby>寒<rp>(</rp><rt>さむ</rt><rp>)</rp></ruby>がっています。",
+    "e": "The child is feeling the cold.",
+    "m": "Хүүхэд даарч байна."
+   },
+   {
+    "j": "<ruby>妹<rp>(</rp><rt>いもうと</rt><rp>)</rp></ruby>は<ruby>犬<rp>(</rp><rt>いぬ</rt><rp>)</rp></ruby>を<ruby>怖<rp>(</rp><rt>こわ</rt><rp>)</rp></ruby>がります。",
+    "e": "My little sister is afraid of dogs.",
+    "m": "Дүү маань нохойноос айдаг."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "させる",
+  "j": "N4",
+  "e": "The causative: make or let someone do something. Which of the two it means comes from context and from the particle -- を leans towards making, に towards letting.",
+  "m": "Хүчитгэх хэлбэр: хэн нэгнээр ямар нэг зүйл хийлгэх буюу зөвшөөрөх. Монгол хэлний '-уулах/-үүлэх' нөхцөлтэй шууд дүйнэ. 'Хийлгэх' үү 'зөвшөөрөх' үү гэдэг нь нөхцөл байдал болон тэмдгээс мэдэгдэнэ: を хэрэглэвэл албадах өнгөтэй, に хэрэглэвэл зөвшөөрөх өнгөтэй. Эелдэг хүсэлтэд させてください = 'хийлгэж өгөөч' гэж маш элбэг хэрэглэгдэнэ.",
+  "v": [
+   {
+    "j": "<ruby>先生<rp>(</rp><rt>せんせい</rt><rp>)</rp></ruby>は<ruby>学生<rp>(</rp><rt>がくせい</rt><rp>)</rp></ruby>に<ruby>本<rp>(</rp><rt>ほん</rt><rp>)</rp></ruby>を<ruby>読<rp>(</rp><rt>よ</rt><rp>)</rp></ruby>ませました。",
+    "e": "The teacher had the students read a book.",
+    "m": "Багш оюутнуудаар ном уншуулсан."
+   },
+   {
+    "j": "<ruby>少<rp>(</rp><rt>すこ</rt><rp>)</rp></ruby>し<ruby>考<rp>(</rp><rt>かんが</rt><rp>)</rp></ruby>えさせてください。",
+    "e": "Please let me think about it for a moment.",
+    "m": "Жаахан бодож үзье, зөвшөөрөөч."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "られる",
+  "j": "N4",
+  "e": "One ending, three jobs: passive, potential and honorific. Context separates them, and for ichidan verbs all three look identical -- 食べられる is 'can eat', 'is eaten' or a polite 'eats' depending on the sentence around it.",
+  "m": "Нэг нөхцөл, гурван үүрэг: идэвхгүй хэлбэр, чадварын хэлбэр, хүндэтгэлийн хэлбэр. Аль нь болохыг зөвхөн нөхцөл байдлаас л мэднэ, учир нь ichidan үйл үгийн хувьд гурвуулаа яг адилхан харагдана -- 食べられる нь 'идэж чадна', 'идэгдэнэ', эсвэл эелдэг 'иднэ' гэсэн гурван утгатай. Япончууд өөрсдөө энэ ойлгомжгүй байдлаас зайлсхийхийн тулд ярианд 食べれる гэж товчилж чадварын утгыг тусгаарладаг.",
+  "v": [
+   {
+    "j": "<ruby>朝<rp>(</rp><rt>あさ</rt><rp>)</rp></ruby><ruby>早<rp>(</rp><rt>はや</rt><rp>)</rp></ruby>く<ruby>起<rp>(</rp><rt>お</rt><rp>)</rp></ruby>きられますか。",
+    "e": "Can you get up early in the morning?",
+    "m": "Өглөө эрт босож чадах уу?"
+   },
+   {
+    "j": "<ruby>電車<rp>(</rp><rt>でんしゃ</rt><rp>)</rp></ruby>の<ruby>中<rp>(</rp><rt>なか</rt><rp>)</rp></ruby>で<ruby>足<rp>(</rp><rt>あし</rt><rp>)</rp></ruby>を<ruby>踏<rp>(</rp><rt>ふ</rt><rp>)</rp></ruby>まれました。",
+    "e": "Someone stepped on my foot on the train.",
+    "m": "Галт тэргэн дотор хөл дээр минь гишгэсэн."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "っぽい",
+  "j": "N3",
+  "e": "'-ish' -- says something has the quality of X without being it. Often mildly critical: 子供っぽい is childish, not childlike.",
+  "m": "'-дуу/-дүү', '-втар/-втэр' гэсэн утга: ямар нэг зүйлийн шинжтэй боловч тэр нь биш гэдгийг заана. Ихэнхдээ бага зэрэг шүүмжилсэн өнгөтэй -- 子供っぽい гэвэл 'хүүхэд шиг цэвэр' биш, харин 'хүүхэд шиг зан ааштай' гэсэн сөрөг утгатай. Өнгөний тухайд ч хэрэглэнэ: 赤っぽい = улаавтар.",
+  "v": [
+   {
+    "j": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>話<rp>(</rp><rt>はなし</rt><rp>)</rp></ruby>し<ruby>方<rp>(</rp><rt>かた</rt><rp>)</rp></ruby>は<ruby>子供<rp>(</rp><rt>こども</rt><rp>)</rp></ruby>っぽいです。",
+    "e": "The way he talks is childish.",
+    "m": "Түүний ярих байдал хүүхэд шиг."
+   },
+   {
+    "j": "この<ruby>服<rp>(</rp><rt>ふく</rt><rp>)</rp></ruby>は<ruby>少<rp>(</rp><rt>すこ</rt><rp>)</rp></ruby>し<ruby>赤<rp>(</rp><rt>あか</rt><rp>)</rp></ruby>っぽい<ruby>色<rp>(</rp><rt>いろ</rt><rp>)</rp></ruby>です。",
+    "e": "This outfit is a slightly reddish colour.",
+    "m": "Энэ хувцас бага зэрэг улаавтар өнгөтэй."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "だらけ",
+  "j": "N3",
+  "e": "Covered in, or full of -- and always of something unwanted. 間違いだらけ is 'riddled with mistakes'; you cannot use it for something good.",
+  "m": "'Дүүрэн', 'бүрхсэн' гэсэн утгатай бөгөөд ЗААВАЛ таагүй зүйлд хэрэглэнэ. 間違いだらけ = алдаа дүүрэн, 泥だらけ = шавар болсон. Сайн зүйлд хэрэглэж болохгүй нь гол дүрэм: 'мөнгө дүүрэн' гэж сайшаасан утгаар хэлэхийг хүсвэл өөр үг хэрэгтэй. まみれ-тэй ойр боловч だらけ тоо ширхэгт ч, бодист ч хэрэглэгдэнэ.",
+  "v": [
+   {
+    "j": "このレポートは<ruby>間違<rp>(</rp><rt>まちが</rt><rp>)</rp></ruby>いだらけです。",
+    "e": "This report is riddled with mistakes.",
+    "m": "Энэ тайлан алдаа дүүрэн байна."
+   },
+   {
+    "j": "<ruby>子供<rp>(</rp><rt>こども</rt><rp>)</rp></ruby>が<ruby>泥<rp>(</rp><rt>どろ</rt><rp>)</rp></ruby>だらけになって<ruby>帰<rp>(</rp><rt>かえ</rt><rp>)</rp></ruby>ってきました。",
+    "e": "The child came home covered in mud.",
+    "m": "Хүүхэд шавар болоод гэртээ ирлээ."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "まみれ",
+  "j": "N1",
+  "e": "Smeared or coated in a liquid or powder that sticks -- blood, sweat, oil, dust. Narrower than だらけ, which also counts countable things like mistakes.",
+  "m": "Наалддаг шингэн буюу нунтаг зүйлд бүрхэгдсэнийг заана: цус, хөлс, тос, тоос. だらけ-ээс НАРИЙН: だらけ алдаа гэх мэт тоологдох зүйлд ч хэрэглэгддэг бол まみれ зөвхөн биед наалдаж бохирдуулсан бодист хэрэглэгдэнэ. 汗まみれ = хөлс нэвчсэн, 血まみれ = цус цалгисан. Уран зохиолын өнгөтэй, өдөр тутмын ярианд ховор.",
+  "v": [
+   {
+    "j": "<ruby>汗<rp>(</rp><rt>あせ</rt><rp>)</rp></ruby>まみれになって<ruby>家<rp>(</rp><rt>いえ</rt><rp>)</rp></ruby>に<ruby>帰<rp>(</rp><rt>かえ</rt><rp>)</rp></ruby>りました。",
+    "e": "I came home drenched in sweat.",
+    "m": "Хөлс нэвчин гэртээ харилаа."
+   },
+   {
+    "j": "<ruby>作業<rp>(</rp><rt>さぎょう</rt><rp>)</rp></ruby>のあと、<ruby>服<rp>(</rp><rt>ふく</rt><rp>)</rp></ruby>は<ruby>油<rp>(</rp><rt>あぶら</rt><rp>)</rp></ruby>まみれでした。",
+    "e": "After the work, my clothes were covered in oil.",
+    "m": "Ажлын дараа хувцас маань тосонд будагдсан байв."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "ぎみ",
+  "j": "N3",
+  "e": "'A touch of' -- a slight tendency towards a condition, usually a bad one. 風邪ぎみ is 'coming down with a cold', short of actually having one.",
+  "m": "'Бага зэрэг', 'жаахан' гэсэн утгаар ямар нэг байдал руу хэлбийж буйг заана, ихэвчлэн таагүй байдал. 風邪ぎみ гэвэл 'ханиад хүрэх шинжтэй' гэсэн утгатай болохоос бүрэн өвчилсөн гэсэн үг биш -- энэ бага зэргийн өнгө нь гол санаа. 疲れぎみ = жаахан ядарсан маягтай.",
+  "v": [
+   {
+    "j": "<ruby>今日<rp>(</rp><rt>きょう</rt><rp>)</rp></ruby>は<ruby>風邪<rp>(</rp><rt>かぜ</rt><rp>)</rp></ruby>ぎみです。",
+    "e": "I'm coming down with a cold today.",
+    "m": "Өнөөдөр ханиад хүрэх шинжтэй байна."
+   },
+   {
+    "j": "<ruby>最近<rp>(</rp><rt>さいきん</rt><rp>)</rp></ruby>、<ruby>疲<rp>(</rp><rt>つか</rt><rp>)</rp></ruby>れぎみです。",
+    "e": "I've been a bit tired lately.",
+    "m": "Сүүлийн үед жаахан ядарсан маягтай байна."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "きり",
+  "j": "N3",
+  "e": "Marks that something has stayed that way since -- with a past verb, 'and that was the last of it'. 出かけたきり帰ってこない is 'went out and never came back'.",
+  "m": "Ямар нэг зүйл тэр хэвээрээ үлдсэнийг заана: өнгөрсөн цагийн үйл үгтэй хэрэглэвэл 'тэгсэн чигтээ' гэсэн утгатай. 出かけたきり帰ってこない = гарсан чигээрээ эргэж ирэхгүй байна. Хүлээлт биелээгүй, тасалдсан гэсэн өнгө агуулдаг тул ихэвчлэн санаа зовсон буюу гомдсон аястай сонсогдоно. 二人きり гэвэл 'ганцхан хоёулаа' гэсэн өөр утга.",
+  "v": [
+   {
+    "j": "<ruby>兄<rp>(</rp><rt>あに</rt><rp>)</rp></ruby>は<ruby>家<rp>(</rp><rt>いえ</rt><rp>)</rp></ruby>を<ruby>出<rp>(</rp><rt>で</rt><rp>)</rp></ruby>たきり、<ruby>連絡<rp>(</rp><rt>れんらく</rt><rp>)</rp></ruby>がありません。",
+    "e": "My brother left home and there's been no word since.",
+    "m": "Ах маань гэрээсээ гарсан чигээрээ холбоо барихгүй байна."
+   },
+   {
+    "j": "<ruby>二人<rp>(</rp><rt>ふたり</rt><rp>)</rp></ruby>きりで<ruby>話<rp>(</rp><rt>はな</rt><rp>)</rp></ruby>しました。",
+    "e": "We talked just the two of us.",
+    "m": "Ганцхан хоёулаа ярилцсан."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "たて",
+  "j": "N3",
+  "e": "Freshly done -- attaches to a verb stem for something only just finished, and so at its best. 焼きたてのパン is bread straight out of the oven.",
+  "m": "'Дөнгөж сая хийсэн' гэсэн утгаар үйл үгийн үндэстэй залгана: 焼きたて = дөнгөж жигнэсэн, できたて = дөнгөж бэлэн болсон. Зөвхөн цаг хугацааг биш, ШИНЭ БАЙДАЛ нь хамгийн сайн үедээ байгааг онцолдог тул хоол хүнсний тухайд онцгой элбэг. Бүх үйл үгтэй залгадаггүй -- тогтсон цөөн хэдэн хэрэглээтэй.",
+  "v": [
+   {
+    "j": "<ruby>焼<rp>(</rp><rt>や</rt><rp>)</rp></ruby>きたてのパンはおいしいです。",
+    "e": "Freshly baked bread is delicious.",
+    "m": "Дөнгөж жигнэсэн талх амттай."
+   },
+   {
+    "j": "<ruby>入<rp>(</rp><rt>はい</rt><rp>)</rp></ruby>りたての<ruby>社員<rp>(</rp><rt>しゃいん</rt><rp>)</rp></ruby>です。",
+    "e": "He's a brand-new employee.",
+    "m": "Дөнгөж орж ирсэн ажилтан."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "かけ",
+  "j": "N3",
+  "e": "Half-done and left that way -- a verb stem plus かけ for something started but not finished. 読みかけの本 is a book you are partway through.",
+  "m": "'Дундуур орхисон', 'хагас хийсэн' гэсэн утга: үйл үгийн үндэс дээр залгаж эхэлсэн боловч дуусгаагүй зүйлийг заана. 読みかけの本 = дундуур нь уншсан ном, 食べかけ = хазчихсан. たて-ийн эсрэг тал гэж санавал хялбар: たて дөнгөж ДУУССАН, かけ дөнгөж ЭХЭЛСЭН бөгөөд дуусаагүй.",
+  "v": [
+   {
+    "j": "<ruby>読<rp>(</rp><rt>よ</rt><rp>)</rp></ruby>みかけの<ruby>本<rp>(</rp><rt>ほん</rt><rp>)</rp></ruby>が<ruby>机<rp>(</rp><rt>つくえ</rt><rp>)</rp></ruby>の<ruby>上<rp>(</rp><rt>うえ</rt><rp>)</rp></ruby>にあります。",
+    "e": "There's a half-read book on the desk.",
+    "m": "Дундуур нь уншсан ном ширээн дээр байна."
+   },
+   {
+    "j": "<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>いかけてやめました。",
+    "e": "I started to say it and stopped.",
+    "m": "Хэлж эхлээд зогссон."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "なりに",
+  "j": "N2",
+  "e": "'In one's own way' -- doing something to the best of what you have, with the limits acknowledged rather than hidden. 私なりに考えた is 'I thought about it as best I could'.",
+  "m": "'Өөрийнхөөрөө', 'өөрийн хэрээр' гэсэн утга: боломжийнхоо хэрээр хийснийг, хязгаарлагдмал байдлаа нуулгүй хүлээн зөвшөөрч хэлнэ. 私なりに考えた = би өөрийнхөөрөө бодсон. Даруу өнгөтэй тул өөрийн тухай хэлэхэд тохиромжтой; бусдын тухай хэлбэл 'чиний чадлаар бол' гэсэн дорд үзсэн утга гарч магадгүй тул болгоомжтой хэрэглэнэ.",
+  "v": [
+   {
+    "j": "<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>なりに<ruby>努力<rp>(</rp><rt>どりょく</rt><rp>)</rp></ruby>しました。",
+    "e": "I tried in my own way.",
+    "m": "Би өөрийнхөөрөө хичээсэн."
+   },
+   {
+    "j": "<ruby>子供<rp>(</rp><rt>こども</rt><rp>)</rp></ruby>は<ruby>子供<rp>(</rp><rt>こども</rt><rp>)</rp></ruby>なりに<ruby>考<rp>(</rp><rt>かんが</rt><rp>)</rp></ruby>えています。",
+    "e": "Children think about things in their own way.",
+    "m": "Хүүхэд хүүхдийнхээрээ боддог."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "ないものの",
+  "j": "N2",
+  "e": "'Although not X' -- concedes that something is not the case, then states what follows anyway. A written, formal register; ものの on its own does the same for positives.",
+  "m": "'-гүй ч гэсэн' гэсэн буулт хийсэн утга: ямар нэг зүйл үнэн биш гэдгийг хүлээн зөвшөөрөөд, дараа нь үл хамааран болсныг хэлнэ. Бичгийн, албан ёсны өнгөтэй тул ярианд ховор. Эерэг хэлбэрт нь ものの ганцаараа мөн адил үүрэг гүйцэтгэнэ: 高いものの買った = үнэтэй ч гэсэн авсан.",
+  "v": [
+   {
+    "j": "<ruby>完成<rp>(</rp><rt>かんせい</rt><rp>)</rp></ruby>してはいないものの、<ruby>作業<rp>(</rp><rt>さぎょう</rt><rp>)</rp></ruby>は<ruby>順調<rp>(</rp><rt>じゅんちょう</rt><rp>)</rp></ruby>です。",
+    "e": "Although it isn't finished, the work is going smoothly.",
+    "m": "Дуусаагүй ч гэсэн ажил хэвийн явж байна."
+   },
+   {
+    "j": "<ruby>経験<rp>(</rp><rt>けいけん</rt><rp>)</rp></ruby>は<ruby>多<rp>(</rp><rt>おお</rt><rp>)</rp></ruby>くないものの、<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>冷静<rp>(</rp><rt>れいせい</rt><rp>)</rp></ruby>でした。",
+    "e": "Although he doesn't have much experience, he stayed calm.",
+    "m": "Туршлага нь их биш ч гэсэн тэр тайван байсан."
+   }
+  ],
+  "a": []
+ },
  {
   "g": "のに",
   "t": "advanced",

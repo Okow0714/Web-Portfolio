@@ -2,7 +2,7 @@
 // JS) so the site opens instantly and works offline; the large per-tool data files
 // (phonetics-data.js ~2.8MB, game-words.js ~1.4MB, mnjp-data.js ~1.4MB, reading-texts.js
 // ~1.1MB, grammar-data.js ~545KB, dictionary-data.js ~185KB, kanji-index.js ~167KB,
-// grammar-index.js ~318KB,
+// grammar-index.js ~381KB,
 // dictionary-crosslink.js ~111KB)
 // are deliberately left out of the
 // precache list -- eagerly downloading several MB on first install would be a bad experience on
@@ -20,7 +20,7 @@
 // stale-while-revalidate, so it serves the cached copy first and only refreshes behind it --
 // without a bump, a returning PWA user runs the previous version of a fixed file for one more
 // visit. Whether that matters is a judgement call; for a correctness fix it generally does.
-const CACHE_VERSION = 'khan-japanese-v207';
+const CACHE_VERSION = 'khan-japanese-v208';
 
 const APP_SHELL = [
     './',

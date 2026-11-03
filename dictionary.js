@@ -896,7 +896,16 @@ function buildGrammarDetail(entry) {
           entry.a.map(a => '<span class="gr-alt">' + escapeHtml(a) + '</span>').join('') + '</div>'
         : '';
     // Into the drill at the level this point is first taught at, which is what t/l record.
-    const href = 'grammar.html?track=' + encodeURIComponent(entry.t) + '&level=' + entry.l;
+    // A hand-authored foundation point (the core particles, the N5 floor) carries NEITHER --
+    // Grammar Connect is a sentence-swap drill and nothing swaps for を, which is exactly why
+    // those points had to be written rather than derived. No level teaches them, so there is
+    // no honest link to make and the panel leaves it out. Guarding on `t` alone would still
+    // pass for a level of 0, so both are checked.
+    const practise = (entry.t && entry.l)
+        ? '<a class="gr-practise" href="grammar.html?track=' + encodeURIComponent(entry.t)
+            + '&level=' + encodeURIComponent(entry.l) + '">'
+            + escapeHtml(window.t('dict.grammarPractise')) + '</a>'
+        : '';
     return '<div class="dict-detail-head">' +
             '<span class="dd-jp gr-point">' + escapeHtml(entry.g) + '</span>' +
             grChipHtml(entry) +
@@ -906,8 +915,7 @@ function buildGrammarDetail(entry) {
         confused +
         '<p class="dict-detail-lab">' + escapeHtml(window.t('dict.grammarExamples')) + '</p>' +
         examples +
-        '<a class="gr-practise" href="' + href + '">' +
-            escapeHtml(window.t('dict.grammarPractise')) + '</a>';
+        practise;
 }
 
 function grDetailEl() { return document.getElementById('gr-detail'); }
