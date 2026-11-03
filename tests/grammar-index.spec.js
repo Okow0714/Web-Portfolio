@@ -41,8 +41,35 @@ module.exports = async function () {
 
     // A silent collapse (a renamed field, a changed pool) would pass the equality check above,
     // since the generator and the check read the same source.
-    assert.ok(data.length > 100,
-        `grammar-index.js has only ${data.length} points — expected the full pool (113)`);
+    assert.ok(data.length > 200,
+        `grammar-index.js has only ${data.length} points — expected 218. Dropping back to ~113 `
+        + 'means the generator has stopped resolving through tools/grammar-extra.json and is '
+        + 'filing GRAMMAR_POOLS members only again.');
+
+    // No point is its own near-synonym. The two sides of a swap can resolve to the SAME headword
+    // (つづける / つづけている both file under つづける), and a row listing itself as the thing it
+    // is confused with reads as a rendering fault.
+    for (const e of data) {
+        assert.ok(!e.a.includes(e.g), `"${e.g}" lists itself as a near-synonym`);
+    }
+
+    // Every string tested on a sentence is classified exactly once. A key in both lists would
+    // resolve by whichever the generator checks first, which is not a decision anyone made.
+    const extra = JSON.parse(fs.readFileSync(
+        path.join(REPO, 'tools', 'grammar-extra.json'), 'utf8'));
+    const both = Object.keys(extra.points).filter((k) => k in extra.notGrammar);
+    assert.strictEqual(both.length, 0,
+        `tools/grammar-extra.json files ${both.join(', ')} as both a point and not grammar`);
+    // A rejection without a reason is the half that cannot be rederived later.
+    for (const [k, why] of Object.entries(extra.notGrammar)) {
+        assert.ok(why && why.trim().length > 10,
+            `tools/grammar-extra.json rejects "${k}" without saying why`);
+    }
+    // Every headword is either a real entry or merged into one.
+    const heads = new Set(data.map((e) => e.g));
+    const orphans = [...new Set(Object.values(extra.points))].filter((h) => !heads.has(h));
+    assert.strictEqual(orphans.length, 0,
+        `tools/grammar-extra.json files ${orphans.join(', ')} under a headword that has no entry`);
 
     for (const e of data) {
         assert.ok(e.g, 'an entry has no grammar point');
@@ -75,7 +102,7 @@ module.exports = async function () {
     // name. If it is deleted or renamed the build throws, but a stale one that classifies
     // nothing would quietly ship a tab with no level chips at all.
     const filed = data.filter((e) => e.j).length;
-    assert.ok(filed > 80,
+    assert.ok(filed > 200,
         `only ${filed} of ${data.length} points carry a JLPT level — tools/grammar-jlpt.json `
         + 'looks stale or empty');
 

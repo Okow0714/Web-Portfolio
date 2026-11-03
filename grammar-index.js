@@ -4,9 +4,39 @@
 // Every English and Mongolian string in here was written by the site's author in grammar-data.js;
 // nothing is machine translated. Re-run the generator after editing grammar-data.js.
 //
-// 113 points. Fields: g point, t track, l level, b band hedge, e/m explanation EN/MN,
+// 218 points. Fields: g point, t track, l level, b band hedge, e/m explanation EN/MN,
 // v up to 3 example sentences {j JP with furigana, e EN, m MN}, a the near-synonyms it contrasts with.
 const GRAMMAR_INDEX = [
+ {
+  "g": "のに",
+  "t": "advanced",
+  "l": 1,
+  "j": "N4",
+  "e": "にもかかわらず and のに both mark an unexpected concession; にもかかわらず is the more formal, written-register choice while のに is common in everyday speech.",
+  "m": "にもかかわらず болон のに хоёулаа гэнэтийн зөвшилцлийг заадаг; にもかかわらず нь илүү албан ёсны, бичгийн сонголт бол のに нь өдөр тутмын ярианд түгээмэл.",
+  "v": [
+   {
+    "j": "<ruby>天候<rp>(</rp><rt>てんこう</rt><rp>)</rp></ruby>が<ruby>悪<rp>(</rp><rt>わる</rt><rp>)</rp></ruby>かったのに、<ruby>試合<rp>(</rp><rt>しあい</rt><rp>)</rp></ruby>は<ruby>予定通<rp>(</rp><rt>よていどお</rt><rp>)</rp></ruby>り<ruby>行<rp>(</rp><rt>おこな</rt><rp>)</rp></ruby>われた。",
+    "e": "Even though the weather was bad, the match was held as scheduled.",
+    "m": "Цаг агаар муу байсан ч тэмцээн төлөвлөсний дагуу болсон."
+   },
+   {
+    "j": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>知<rp>(</rp><rt>し</rt><rp>)</rp></ruby>らないのに、<ruby>知<rp>(</rp><rt>し</rt><rp>)</rp></ruby>ったふりをする。",
+    "e": "Even though he doesn't know, he acts like he does.",
+    "m": "Мэдэхгүй атлаа мэддэг мэт дүр эсгэдэг."
+   },
+   {
+    "j": "もう<ruby>春<rp>(</rp><rt>はる</rt><rp>)</rp></ruby>なのに、まだ<ruby>雪<rp>(</rp><rt>ゆき</rt><rp>)</rp></ruby>が<ruby>降<rp>(</rp><rt>ふ</rt><rp>)</rp></ruby>っている。",
+    "e": "Even though it's already spring, it's still snowing.",
+    "m": "Хавар болсон ч гэсэн цас орсоор байна."
+   }
+  ],
+  "a": [
+   "くせに",
+   "というのに",
+   "にもかかわらず"
+  ]
+ },
  {
   "g": "にもかかわらず",
   "t": "advanced",
@@ -31,7 +61,27 @@ const GRAMMAR_INDEX = [
     "m": "Давтан анхааруулга өгсөн ч арга хэмжээ авахгүй байсан хариуцлагаас зайлсхийж чадахгүй."
    }
   ],
-  "a": []
+  "a": [
+   "のに"
+  ]
+ },
+ {
+  "g": "けれども",
+  "t": "advanced",
+  "l": 1,
+  "j": "N4",
+  "e": "ものの and けれども both concede a fact before contrasting it with reality; ものの reads as slightly more formal and written than the conversational けれども.",
+  "m": "ものの болон けれども хоёулаа баримтыг хүлээн зөвшөөрсний дараа бодит байдалтай харьцуулдаг; ものの нь харилцан ярианы けれども-гээс арай илүү албан ёсны, бичгийн шинжтэй сонстог.",
+  "v": [
+   {
+    "j": "<ruby>給料<rp>(</rp><rt>きゅうりょう</rt><rp>)</rp></ruby>は<ruby>上<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>がったけれども、<ruby>生活<rp>(</rp><rt>せいかつ</rt><rp>)</rp></ruby>は<ruby>楽<rp>(</rp><rt>らく</rt><rp>)</rp></ruby>にならなかった。",
+    "e": "Although my salary went up, life didn't get any easier.",
+    "m": "Цалин нэмэгдсэн ч амьдрал амаргүй хэвээр байна."
+   }
+  ],
+  "a": [
+   "ものの"
+  ]
  },
  {
   "g": "ものの",
@@ -58,13 +108,16 @@ const GRAMMAR_INDEX = [
    }
   ],
   "a": [
-   "とはいえ"
+   "けれども",
+   "とはいえ",
+   "にせよ"
   ]
  },
  {
   "g": "くせに",
   "t": "advanced",
   "l": 1,
+  "j": "N3",
   "e": "くせに and のに both mark concession, but くせに adds a critical, almost mocking tone that plain のに lacks.",
   "m": "くせに болон のに хоёулаа зөвшилцлийг заадаг ч くせに нь энгийн のに-д байхгүй шүүмжлэлтэй, басамжлах өнгийг нэмдэг.",
   "v": [
@@ -79,7 +132,9 @@ const GRAMMAR_INDEX = [
     "m": "Өөрөө юу ч хийдэггүй атлаа тэр байнга бусдыг шүүмжилдэг."
    }
   ],
-  "a": []
+  "a": [
+   "のに"
+  ]
  },
  {
   "g": "というのに",
@@ -95,7 +150,9 @@ const GRAMMAR_INDEX = [
     "m": "Хавар болсон ч гэсэн цас орсоор байна."
    }
   ],
-  "a": []
+  "a": [
+   "のに"
+  ]
  },
  {
   "g": "ばかりに",
@@ -119,6 +176,7 @@ const GRAMMAR_INDEX = [
   "g": "おかげで",
   "t": "advanced",
   "l": 1,
+  "j": "N3",
   "e": "おかげで and ために can both state the reason for a good result, but おかげで specifically conveys gratitude toward the cause, while ために is the neutral, plain way to say the same thing.",
   "m": "おかげで болон ために хоёулаа сайн үр дүнгийн шалтгааныг илэрхийлж болно, гэхдээ おかげで нь тухайлбал шалтгаанд талархал илэрхийлдэг бол ために нь ижил зүйлийг хэлэх төвийг сахисан, энгийн арга юм.",
   "v": [
@@ -126,9 +184,15 @@ const GRAMMAR_INDEX = [
     "j": "<ruby>先生<rp>(</rp><rt>せんせい</rt><rp>)</rp></ruby>が<ruby>丁寧<rp>(</rp><rt>ていねい</rt><rp>)</rp></ruby>に<ruby>教<rp>(</rp><rt>おし</rt><rp>)</rp></ruby>えてくれたおかげで、<ruby>試験<rp>(</rp><rt>しけん</rt><rp>)</rp></ruby>に<ruby>合格<rp>(</rp><rt>ごうかく</rt><rp>)</rp></ruby>できた。",
     "e": "Thanks to the teacher's careful instruction, I was able to pass the exam.",
     "m": "Багшийн нямбай зааврын ачаар шалгалтанд тэнцэж чадсан."
+   },
+   {
+    "j": "この<ruby>会社<rp>(</rp><rt>かいしゃ</rt><rp>)</rp></ruby>は<ruby>社員<rp>(</rp><rt>しゃいん</rt><rp>)</rp></ruby>のおかげで<ruby>成<rp>(</rp><rt>な</rt><rp>)</rp></ruby>り<ruby>立<rp>(</rp><rt>た</rt><rp>)</rp></ruby>っている。",
+    "e": "This company exists only because of its employees.",
+    "m": "Энэ компани зөвхөн ажилтнуудынхаа ачаар оршин тогтнож байна."
    }
   ],
   "a": [
+   "あっての",
    "ために"
   ]
  },
@@ -136,6 +200,7 @@ const GRAMMAR_INDEX = [
   "g": "ことから",
   "t": "advanced",
   "l": 1,
+  "j": "N2",
   "e": "ことから and ので both give the reason behind a conclusion or a name, but ことから is the more literary choice, often used when a fact serves as the basis for an inference or label.",
   "m": "ことから болон ので хоёулаа дүгнэлт буюу нэрийн ард буй шалтгааныг заадаг ч ことから нь баримт таамаглал буюу нэрийн үндэслэл болж байгаа үед ихэвчлэн ашиглагддаг илүү утга зохиолын сонголт юм.",
   "v": [
@@ -210,7 +275,8 @@ const GRAMMAR_INDEX = [
    }
   ],
   "a": [
-   "ながら"
+   "ながら",
+   "ながらも"
   ]
  },
  {
@@ -256,6 +322,7 @@ const GRAMMAR_INDEX = [
   "g": "にもかまわず",
   "t": "advanced",
   "l": 2,
+  "j": "N1",
   "e": "にもかまわず and をよそに both describe acting without regard for something around you, though をよそに carries a slightly colder nuance of turning one's back on it entirely.",
   "m": "にもかまわず болон をよそに хоёулаа эргэн тойрны зүйлийг тоохгүй үйлдэл хийхийг тодорхойлдог ч をよそに нь бүрмөсөн нуруугаа харуулах бага зэрэг хүйтэн нюансыг агуулдаг.",
   "v": [
@@ -267,6 +334,23 @@ const GRAMMAR_INDEX = [
   ],
   "a": [
    "をよそに"
+  ]
+ },
+ {
+  "g": "なしで",
+  "t": "advanced",
+  "l": 2,
+  "e": "ぬきで and なしで both mean \"without X,\" but ぬきで is more idiomatic for deliberately omitting a customary step, while なしで is the plain, general way to say \"without.\"",
+  "m": "ぬきで болон なしで хоёулаа \"X-гүйгээр\" гэсэн утгатай ч ぬきで нь заншсан алхмыг зориудаар алгасахад илүү хэлц үгийн шинжтэй бол なしで нь \"-гүйгээр\" гэдгийг хэлэх энгийн, ерөнхий арга юм.",
+  "v": [
+   {
+    "j": "<ruby>今日<rp>(</rp><rt>きょう</rt><rp>)</rp></ruby>は<ruby>前置<rp>(</rp><rt>まえお</rt><rp>)</rp></ruby>きなしで、<ruby>本題<rp>(</rp><rt>ほんだい</rt><rp>)</rp></ruby>に<ruby>入<rp>(</rp><rt>はい</rt><rp>)</rp></ruby>りましょう。",
+    "e": "Let's skip the preamble today and get straight to the main topic.",
+    "m": "Өнөөдөр оршил хэсгийг алгасаад шууд гол сэдэвлүү орцгооё."
+   }
+  ],
+  "a": [
+   "ぬきで"
   ]
  },
  {
@@ -283,17 +367,25 @@ const GRAMMAR_INDEX = [
     "m": "Өнөөдөр оршил хэсгийг алгасаад шууд гол сэдэвлүү орцгооё."
    },
    {
+    "j": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>功績<rp>(</rp><rt>こうせき</rt><rp>)</rp></ruby>を<ruby>抜<rp>(</rp><rt>ぬ</rt><rp>)</rp></ruby>きにしては、この<ruby>分野<rp>(</rp><rt>ぶんや</rt><rp>)</rp></ruby>の<ruby>発展<rp>(</rp><rt>はってん</rt><rp>)</rp></ruby>は<ruby>語<rp>(</rp><rt>かた</rt><rp>)</rp></ruby>れない。",
+    "e": "Setting his achievements aside, one cannot speak of this field's progress.",
+    "m": "Түүний амжилтыг хойш тавиад энэ салбарын хөгжлийн тухай ярих боломжгүй."
+   },
+   {
     "j": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>功績<rp>(</rp><rt>こうせき</rt><rp>)</rp></ruby>を<ruby>抜<rp>(</rp><rt>ぬ</rt><rp>)</rp></ruby>きにして、この<ruby>分野<rp>(</rp><rt>ぶんや</rt><rp>)</rp></ruby>の<ruby>発展<rp>(</rp><rt>はってん</rt><rp>)</rp></ruby>は<ruby>語<rp>(</rp><rt>かた</rt><rp>)</rp></ruby>れない。",
     "e": "Setting his achievements aside, one cannot speak of this field's progress.",
     "m": "Түүний амжилтыг хойш тавиад энэ салбарын хөгжлийн тухай ярих боломжгүй."
    }
   ],
-  "a": []
+  "a": [
+   "なしで"
+  ]
  },
  {
   "g": "いっぽうで",
   "t": "advanced",
   "l": 2,
+  "j": "N2",
   "e": "かたわら and いっぽうで both describe a second activity carried on alongside a main one, but かたわら is the more literary phrase for a routinely balanced side pursuit.",
   "m": "かたわら болон いっぽうで хоёулаа гол үйл ажиллагааны хажуугаар явуулж буй хоёр дахь үйл ажиллагааг тодорхойлдог ч かたわら нь тогтмол тэнцвэржүүлсэн хажуугийн зорилтод зориулсан илүү утга зохиолын хэллэг юм.",
   "v": [
@@ -311,6 +403,7 @@ const GRAMMAR_INDEX = [
   "g": "かたわら",
   "t": "advanced",
   "l": 2,
+  "j": "N1",
   "e": "かたわら and いっぽうで both describe a second activity carried on alongside a main one, but かたわら is the more literary phrase for a routinely balanced side pursuit.",
   "m": "かたわら болон いっぽうで хоёулаа гол үйл ажиллагааны хажуугаар явуулж буй хоёр дахь үйл ажиллагааг тодорхойлдог ч かたわら нь тогтмол тэнцвэржүүлсэн хажуугийн зорилтод зориулсан илүү утга зохиолын хэллэг юм.",
   "v": [
@@ -351,6 +444,7 @@ const GRAMMAR_INDEX = [
   "g": "にひきかえ",
   "t": "advanced",
   "l": 2,
+  "j": "N1",
   "e": "にひきかえ and にくらべて both set up a contrast between two things, but にひきかえ emphasizes a sharper, more surprising opposite, while にくらべて is a neutral comparison.",
   "m": "にひきかえ болон にくらべて хоёулаа хоёр зүйлийн хооронд эсрэг байдлыг тавьдаг ч にひきかえ нь илүү хурц, гайхмаар эсрэг байдлыг онцолдог бол にくらべて нь төвийг сахисан харьцуулалт юм.",
   "v": [
@@ -370,9 +464,33 @@ const GRAMMAR_INDEX = [
   ]
  },
  {
+  "g": "よりも",
+  "t": "advanced",
+  "l": 2,
+  "j": "N5",
+  "e": "にもまして and よりも both mark something as exceeding a standard for comparison, but にもまして is the more formal, literary way to say \"even more than.\"",
+  "m": "にもまして болон よりも хоёулаа харьцуулах стандартаас давсан зүйлийг заадаг ч にもまして нь \"хүртэл ч илүү\" гэдгийг хэлэх илүү албан ёсны, утга зохиолын арга юм.",
+  "v": [
+   {
+    "j": "<ruby>今年<rp>(</rp><rt>ことし</rt><rp>)</rp></ruby>は<ruby>例年<rp>(</rp><rt>れいねん</rt><rp>)</rp></ruby>よりも、<ruby>暑<rp>(</rp><rt>あつ</rt><rp>)</rp></ruby>さが<ruby>厳<rp>(</rp><rt>きび</rt><rp>)</rp></ruby>しい。",
+    "e": "This year the heat is even more severe than in a typical year.",
+    "m": "Энэ жил ердийн жилээс ч илүү халуун байна."
+   },
+   {
+    "j": "<ruby>現地<rp>(</rp><rt>げんち</rt><rp>)</rp></ruby>の<ruby>状況<rp>(</rp><rt>じょうきょう</rt><rp>)</rp></ruby>は、<ruby>報道<rp>(</rp><rt>ほうどう</rt><rp>)</rp></ruby>されているよりもはるかに<ruby>深刻<rp>(</rp><rt>しんこく</rt><rp>)</rp></ruby>だ。",
+    "e": "The situation on the ground is far more serious than what's being reported.",
+    "m": "Бодит байдал мэдээлж байгаагаас хавьгүй ноцтой байна."
+   }
+  ],
+  "a": [
+   "にもまして"
+  ]
+ },
+ {
   "g": "にもまして",
   "t": "advanced",
   "l": 2,
+  "j": "N1",
   "e": "にもまして and よりも both mark something as exceeding a standard for comparison, but にもまして is the more formal, literary way to say \"even more than.\"",
   "m": "にもまして болон よりも хоёулаа харьцуулах стандартаас давсан зүйлийг заадаг ч にもまして нь \"хүртэл ч илүү\" гэдгийг хэлэх илүү албан ёсны, утга зохиолын арга юм.",
   "v": [
@@ -382,7 +500,9 @@ const GRAMMAR_INDEX = [
     "m": "Энэ жил ердийн жилээс ч илүү халуун байна."
    }
   ],
-  "a": []
+  "a": [
+   "よりも"
+  ]
  },
  {
   "g": "ばかりでなく",
@@ -487,6 +607,7 @@ const GRAMMAR_INDEX = [
   "g": "どころか",
   "t": "advanced",
   "l": 2,
+  "j": "N2",
   "e": "どころか and はおろか both dismiss a lesser possibility to emphasize an even more extreme one, with はおろか being the more formal, literary choice.",
   "m": "どころか болон はおろか хоёулаа бага боломжийг үгүйсгэн улам туйлширсан зүйлийг онцолдог бөгөөд はおろか нь илүү албан ёсны, утга зохиолын сонголт юм.",
   "v": [
@@ -503,6 +624,24 @@ const GRAMMAR_INDEX = [
   ],
   "a": [
    "はおろか"
+  ]
+ },
+ {
+  "g": "だけでなく",
+  "t": "advanced",
+  "l": 3,
+  "j": "N3",
+  "e": "にかぎらず and だけでなく both extend a statement beyond a single case to a broader group, and are freely interchangeable in this \"not limited to X\" pattern.",
+  "m": "にかぎらず болон だけでなく хоёулаа мэдэгдлийг нэг тохиолдлоос өргөн бүлэг рүү тэлдэг бөгөөд энэ \"X-д хязгаарлагдахгүй\" загварт чөлөөтэй сольж хэрэглэгддэг.",
+  "v": [
+   {
+    "j": "この<ruby>問題<rp>(</rp><rt>もんだい</rt><rp>)</rp></ruby>は<ruby>日本<rp>(</rp><rt>にほん</rt><rp>)</rp></ruby>だけでなく、<ruby>世界中<rp>(</rp><rt>せかいじゅう</rt><rp>)</rp></ruby>で<ruby>起<rp>(</rp><rt>お</rt><rp>)</rp></ruby>きている。",
+    "e": "This problem is occurring not just in Japan but around the world.",
+    "m": "Энэ асуудал зөвхөн Японд бус дэлхий даяар тохиолдож байна."
+   }
+  ],
+  "a": [
+   "にかぎらず"
   ]
  },
  {
@@ -525,13 +664,33 @@ const GRAMMAR_INDEX = [
    }
   ],
   "a": [
+   "だけでなく",
    "にとどまらず"
+  ]
+ },
+ {
+  "g": "場合ではない",
+  "t": "advanced",
+  "l": 3,
+  "j": "N2",
+  "e": "どころではない and 場合ではない both reject an activity as impossible given the current situation, but どころではない attaches directly to a noun while 場合ではない needs a verb clause describing the activity.",
+  "m": "どころではない болон 場合ではない хоёулаа одоогийн нөхцөл байдлыг харгалзан үйл ажиллагааг боломжгүй гэж үгүйсгэдэг ч どころではない нь нэр үгэнд шууд залгагддаг бол 場合ではない нь үйл ажиллагааг тодорхойлсон үйл үгийн өгүүлбэр шаарддаг.",
+  "v": [
+   {
+    "j": "<ruby>締<rp>(</rp><rt>し</rt><rp>)</rp></ruby>め<ruby>切<rp>(</rp><rt>き</rt><rp>)</rp></ruby>りが<ruby>迫<rp>(</rp><rt>せま</rt><rp>)</rp></ruby>っていて、<ruby>旅行<rp>(</rp><rt>りょこう</rt><rp>)</rp></ruby>している<ruby>場合<rp>(</rp><rt>ばあい</rt><rp>)</rp></ruby>ではない。",
+    "e": "With the deadline closing in, this is no time to be traveling.",
+    "m": "Эцсийн хугацаа ойртож байгаа энэ үед аялах цаг биш."
+   }
+  ],
+  "a": [
+   "どころではない"
   ]
  },
  {
   "g": "どころではない",
   "t": "advanced",
   "l": 3,
+  "j": "N2",
   "e": "どころではない and 場合ではない both reject an activity as impossible given the current situation, but どころではない attaches directly to a noun while 場合ではない needs a verb clause describing the activity.",
   "m": "どころではない болон 場合ではない хоёулаа одоогийн нөхцөл байдлыг харгалзан үйл ажиллагааг боломжгүй гэж үгүйсгэдэг ч どころではない нь нэр үгэнд шууд залгагддаг бол 場合ではない нь үйл ажиллагааг тодорхойлсон үйл үгийн өгүүлбэр шаарддаг.",
   "v": [
@@ -541,7 +700,9 @@ const GRAMMAR_INDEX = [
     "m": "Эцсийн хугацаа ойртож байгаа энэ үед аялах цаг биш."
    }
   ],
-  "a": []
+  "a": [
+   "場合ではない"
+  ]
  },
  {
   "g": "ないまでも",
@@ -552,12 +713,35 @@ const GRAMMAR_INDEX = [
   "m": "言わないまでも болон とはいかなくても хоёулаа хамгийн тохиромжтой түвшин шаардлагагүй гэдгийг хүлээн зөвшөөрч, бага боловч мэдээж утга учиртай хэмжээнд сэтгэл ханадаг; ないまでも нь суурь дүрмийн цэг бөгөөд энд ердийн とは言わないまでも хэлбэрээр харуулсан.",
   "v": [
    {
+    "j": "<ruby>毎日<rp>(</rp><rt>まいにち</rt><rp>)</rp></ruby>とはいかなくても、<ruby>週<rp>(</rp><rt>しゅう</rt><rp>)</rp></ruby>に<ruby>三回<rp>(</rp><rt>さんかい</rt><rp>)</rp></ruby>は<ruby>運動<rp>(</rp><rt>うんどう</rt><rp>)</rp></ruby>したほうがいい。",
+    "e": "Even if not every day, you should exercise at least three times a week.",
+    "m": "Өдөр бүр биш ч гэсэн долоо хоногт наад зах нь гурван удаа дасгал хийх хэрэгтэй."
+   },
+   {
     "j": "<ruby>毎日<rp>(</rp><rt>まいにち</rt><rp>)</rp></ruby>とは<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>わないまでも、<ruby>週<rp>(</rp><rt>しゅう</rt><rp>)</rp></ruby>に<ruby>三回<rp>(</rp><rt>さんかい</rt><rp>)</rp></ruby>は<ruby>運動<rp>(</rp><rt>うんどう</rt><rp>)</rp></ruby>したほうがいい。",
     "e": "Even if not every day, you should exercise at least three times a week.",
     "m": "Өдөр бүр биш ч гэсэн долоо хоногт наад зах нь гурван удаа дасгал хийх хэрэгтэй."
    }
   ],
   "a": []
+ },
+ {
+  "g": "にせよ",
+  "t": "advanced",
+  "l": 3,
+  "j": "N2",
+  "e": "ものの and にせよ both concede a shortcoming before making a redeeming point, but にせよ frames it more like \"granting that X is true,\" a slightly stronger concession.",
+  "m": "ものの болон にせよ хоёулаа дутагдлыг хүлээн зөвшөөрсний дараа нөхөх санаа хэлдэг ч にせよ нь \"X үнэн гэдгийг зөвшөөрвөл ч гэсэн\" мэт бага зэрэг илүү хүчтэй зөвшилцлийг илэрхийлдэг.",
+  "v": [
+   {
+    "j": "<ruby>完璧<rp>(</rp><rt>かんぺき</rt><rp>)</rp></ruby>ではないにせよ、この<ruby>案<rp>(</rp><rt>あん</rt><rp>)</rp></ruby>は<ruby>十分<rp>(</rp><rt>じゅうぶん</rt><rp>)</rp></ruby><ruby>実用的<rp>(</rp><rt>じつようてき</rt><rp>)</rp></ruby>だ。",
+    "e": "While it's not perfect, this proposal is quite practical.",
+    "m": "Төгс биш ч энэ санал нэлээд практик ач холбогдолтой."
+   }
+  ],
+  "a": [
+   "ものの"
+  ]
  },
  {
   "g": "かもしれない",
@@ -638,7 +822,8 @@ const GRAMMAR_INDEX = [
    }
   ],
   "a": [
-   "ずにはいられない"
+   "ずにはいられない",
+   "ずにはおれない"
   ]
  },
  {
@@ -666,7 +851,11 @@ const GRAMMAR_INDEX = [
    }
   ],
   "a": [
-   "にほかならない"
+   "としか言いようがない",
+   "ないわけにはいかない",
+   "にほかならない",
+   "ほかない",
+   "を余儀なくされる"
   ]
  },
  {
@@ -728,6 +917,29 @@ const GRAMMAR_INDEX = [
   "a": []
  },
  {
+  "g": "がち",
+  "t": "advanced",
+  "l": 4,
+  "j": "N3",
+  "e": "きらいがある and がちだ both point out a recurring negative tendency, but きらいがある is a more formal, written expression often used for character traits.",
+  "m": "きらいがある болон がちだ хоёулаа давтагдах сөрөг хандлагыг тэмдэглэдэг ч きらいがある нь ихэвчлэн зан чанарын шинжид ашиглагддаг илүү албан ёсны, бичгийн илэрхийлэл юм.",
+  "v": [
+   {
+    "j": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>物事<rp>(</rp><rt>ものごと</rt><rp>)</rp></ruby>を<ruby>悲観的<rp>(</rp><rt>ひかんてき</rt><rp>)</rp></ruby>に<ruby>考<rp>(</rp><rt>かんが</rt><rp>)</rp></ruby>えがちだ。",
+    "e": "He tends to think about things pessimistically.",
+    "m": "Тэр зүйлийг сөрөг талаас нь бодох хандлагатай."
+   },
+   {
+    "j": "この<ruby>統計<rp>(</rp><rt>とうけい</rt><rp>)</rp></ruby>は、<ruby>実態<rp>(</rp><rt>じったい</rt><rp>)</rp></ruby>を<ruby>過小評価<rp>(</rp><rt>かしょうひょうか</rt><rp>)</rp></ruby>しがちだ。",
+    "e": "This statistic tends to underestimate the actual situation.",
+    "m": "Энэ статистик бодит байдлыг бага үнэлэх хандлагатай."
+   }
+  ],
+  "a": [
+   "きらいがある"
+  ]
+ },
+ {
   "g": "きらいがある",
   "t": "advanced",
   "l": 4,
@@ -751,7 +963,10 @@ const GRAMMAR_INDEX = [
     "m": "Тэр онолыг эрдэм шинжилгээний хүрээнд тэрс үзэл гэж үзэх хандлагатай байсан."
    }
   ],
-  "a": []
+  "a": [
+   "がち",
+   "傾向がある"
+  ]
  },
  {
   "g": "にほかならない",
@@ -778,7 +993,26 @@ const GRAMMAR_INDEX = [
    }
   ],
   "a": [
-   "ざるをえない"
+   "ざるをえない",
+   "に起因する"
+  ]
+ },
+ {
+  "g": "だけ",
+  "t": "advanced",
+  "l": 4,
+  "j": "N5",
+  "e": "にすぎない and だけだ both downplay something as being no more than a small, limited amount, and are interchangeable here, with にすぎない sounding slightly more formal.",
+  "m": "にすぎない болон だけだ хоёулаа ямар нэг зүйлийг зөвхөн бага, хязгаарлагдмал хэмжээ гэж бууруулдаг бөгөөд энд сольж хэрэглэгдэх боломжтой, にすぎない нь бага зэрэг илүү албан ёсны сонстог.",
+  "v": [
+   {
+    "j": "これはほんの<ruby>一例<rp>(</rp><rt>いちれい</rt><rp>)</rp></ruby>だけだ。",
+    "e": "This is merely one example.",
+    "m": "Энэ бол зөвхөн нэг жишээ л юм."
+   }
+  ],
+  "a": [
+   "にすぎない"
   ]
  },
  {
@@ -805,7 +1039,28 @@ const GRAMMAR_INDEX = [
     "m": "Тэр дүгнэлт нь өгөгдөлд үндэслэсэн гэхээсээ илүү таамаглалаас хэтрэхгүй байна."
    }
   ],
-  "a": []
+  "a": [
+   "だけ",
+   "でしかない"
+  ]
+ },
+ {
+  "g": "必要はない",
+  "t": "advanced",
+  "l": 4,
+  "j": "N4",
+  "e": "までもない and 必要はない both say an action isn't necessary given how obvious or minor it is, but までもない specifically implies the action would be excessive, not just optional.",
+  "m": "までもない болон 必要はない хоёулаа үйлдэл хэр тодорхой буюу бага ач холбогдолтойг харгалзан шаардлагагүй гэдгийг хэлдэг ч までもない нь тухайлбал үйлдэл нь заавал сонголт биш, хэтрүүлэг байх болно гэдгийг илэрхийлдэг.",
+  "v": [
+   {
+    "j": "そんなことはわざわざ<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>う<ruby>必要<rp>(</rp><rt>ひつよう</rt><rp>)</rp></ruby>はない。",
+    "e": "There's no need to even mention such a thing.",
+    "m": "Ийм зүйлийг дурдах ч хэрэггүй."
+   }
+  ],
+  "a": [
+   "までもない"
+  ]
  },
  {
   "g": "までもない",
@@ -826,7 +1081,9 @@ const GRAMMAR_INDEX = [
     "m": "Түүний ур чадварын тухай дурдах ч хэрэггүй."
    }
   ],
-  "a": []
+  "a": [
+   "必要はない"
+  ]
  },
  {
   "g": "なくして",
@@ -857,9 +1114,33 @@ const GRAMMAR_INDEX = [
   ]
  },
  {
+  "g": "次第で",
+  "t": "advanced",
+  "l": 4,
+  "j": "N2",
+  "e": "いかんで and 次第で both say a result depends on a preceding factor, with いかんで being the more formal, written equivalent of 次第で.",
+  "m": "いかんで болон 次第で хоёулаа үр дүн нь өмнөх хүчин зүйлээс хамаарна гэдгийг хэлдэг бөгөөд いかんで нь 次第で-ийн илүү албан ёсны, бичгийн тэнцвэр юм.",
+  "v": [
+   {
+    "j": "<ruby>結果<rp>(</rp><rt>けっか</rt><rp>)</rp></ruby>は<ruby>本人<rp>(</rp><rt>ほんにん</rt><rp>)</rp></ruby>の<ruby>努力<rp>(</rp><rt>どりょく</rt><rp>)</rp></ruby><ruby>次第<rp>(</rp><rt>しだい</rt><rp>)</rp></ruby>で<ruby>大<rp>(</rp><rt>おお</rt><rp>)</rp></ruby>きく<ruby>変<rp>(</rp><rt>か</rt><rp>)</rp></ruby>わる。",
+    "e": "The outcome can change greatly depending on the person's own effort.",
+    "m": "Үр дүн нь хүн бүрийн хичээл зүтгэлээс шалтгаалан ихээхэн өөрчлөгдөж болно."
+   },
+   {
+    "j": "<ruby>治療<rp>(</rp><rt>ちりょう</rt><rp>)</rp></ruby>の<ruby>効果<rp>(</rp><rt>こうか</rt><rp>)</rp></ruby>は<ruby>患者<rp>(</rp><rt>かんじゃ</rt><rp>)</rp></ruby>の<ruby>体質<rp>(</rp><rt>たいしつ</rt><rp>)</rp></ruby><ruby>次第<rp>(</rp><rt>しだい</rt><rp>)</rp></ruby>で<ruby>異<rp>(</rp><rt>こと</rt><rp>)</rp></ruby>なる。",
+    "e": "The effectiveness of the treatment differs depending on the patient's constitution.",
+    "m": "Эмчилгээний үр нөлөө өвчтөний биеийн байдлаас шалтгаалан ялгаатай байдаг."
+   }
+  ],
+  "a": [
+   "いかんで"
+  ]
+ },
+ {
   "g": "いかんで",
   "t": "advanced",
   "l": 4,
+  "j": "N1",
   "e": "いかんで and 次第で both say a result depends on a preceding factor, with いかんで being the more formal, written equivalent of 次第で.",
   "m": "いかんで болон 次第で хоёулаа үр дүн нь өмнөх хүчин зүйлээс хамаарна гэдгийг хэлдэг бөгөөд いかんで нь 次第で-ийн илүү албан ёсны, бичгийн тэнцвэр юм.",
   "v": [
@@ -874,7 +1155,26 @@ const GRAMMAR_INDEX = [
     "m": "Эмчилгээний үр нөлөө өвчтөний биеийн байдлаас шалтгаалан ялгаатай байдаг."
    }
   ],
-  "a": []
+  "a": [
+   "次第で"
+  ]
+ },
+ {
+  "g": "にもまけず",
+  "t": "advanced",
+  "l": 4,
+  "e": "をものともせず and にもまけず both describe pushing forward despite a hardship, but をものともせず is the more literary, emphatic phrase praising someone's resilience.",
+  "m": "をものともせず болон にもまけず хоёулаа бэрхшээлийг үл харгалзан урагшлахыг тодорхойлдог ч をものともせず нь хэн нэгний тэсвэрлэх чадварыг магтдаг илүү утга зохиолын, онцолсон хэллэг юм.",
+  "v": [
+   {
+    "j": "<ruby>彼女<rp>(</rp><rt>かのじょ</rt><rp>)</rp></ruby>は<ruby>周囲<rp>(</rp><rt>しゅうい</rt><rp>)</rp></ruby>の<ruby>批判<rp>(</rp><rt>ひはん</rt><rp>)</rp></ruby>にもまけず、<ruby>自分<rp>(</rp><rt>じぶん</rt><rp>)</rp></ruby>の<ruby>信<rp>(</rp><rt>しん</rt><rp>)</rp></ruby>じる<ruby>道<rp>(</rp><rt>みち</rt><rp>)</rp></ruby>を<ruby>進<rp>(</rp><rt>すす</rt><rp>)</rp></ruby>んだ。",
+    "e": "Undaunted by the criticism around her, she pursued the path she believed in.",
+    "m": "Эргэн тойрны шүүмжлэлд сэтгэл эмзэглэлгүйгээр тэр өөрийн итгэсэн замаар явсан."
+   }
+  ],
+  "a": [
+   "をものともせず"
+  ]
  },
  {
   "g": "をものともせず",
@@ -900,7 +1200,10 @@ const GRAMMAR_INDEX = [
     "m": "Тэр тайлбарлагч эсэргүүцэгчдийн шүүмжлэлд гуйвалгүй өөрийн аргументаа үргэлжлүүлэн хөгжүүлсээр байв."
    }
   ],
-  "a": []
+  "a": [
+   "ことなく",
+   "にもまけず"
+  ]
  },
  {
   "g": "をふまえて",
@@ -919,9 +1222,39 @@ const GRAMMAR_INDEX = [
     "j": "この<ruby>報告書<rp>(</rp><rt>ほうこくしょ</rt><rp>)</rp></ruby>は<ruby>事実<rp>(</rp><rt>じじつ</rt><rp>)</rp></ruby>を<ruby>踏<rp>(</rp><rt>ふ</rt><rp>)</rp></ruby>まえて<ruby>書<rp>(</rp><rt>か</rt><rp>)</rp></ruby>かれている。",
     "e": "This report is written based on the facts.",
     "m": "Энэ тайланг баримт нотолгоонд үндэслэн бичсэн байна."
+   },
+   {
+    "j": "この<ruby>方針<rp>(</rp><rt>ほうしん</rt><rp>)</rp></ruby>は<ruby>現場<rp>(</rp><rt>げんば</rt><rp>)</rp></ruby>の<ruby>実情<rp>(</rp><rt>じつじょう</rt><rp>)</rp></ruby>を<ruby>踏<rp>(</rp><rt>ふ</rt><rp>)</rp></ruby>まえていないものだ。",
+    "e": "This policy is something that ignores the realities on the ground.",
+    "m": "Энэ бодлого бодит нөхцөл байдлыг үл тоомсорлосон зүйл юм."
    }
   ],
-  "a": []
+  "a": [
+   "に基づいて"
+  ]
+ },
+ {
+  "g": "について",
+  "t": "advanced",
+  "l": 4,
+  "j": "N4",
+  "e": "をめぐって and について both mark the topic under discussion, but をめぐって specifically highlights that opinions are clashing around it, matching the \"debate\" context here.",
+  "m": "をめぐって болон について хоёулаа хэлэлцэж буй сэдвийг заадаг ч をめぐって нь тухайлбал үзэл бодол мөргөлдөж буйг онцолдог бөгөөд энэ нь \"маргаан\"-ы контекстэд энд тохирдог.",
+  "v": [
+   {
+    "j": "<ruby>新<rp>(</rp><rt>あたら</rt><rp>)</rp></ruby>しい<ruby>税制<rp>(</rp><rt>ぜいせい</rt><rp>)</rp></ruby>について、<ruby>国会<rp>(</rp><rt>こっかい</rt><rp>)</rp></ruby>で<ruby>激<rp>(</rp><rt>はげ</rt><rp>)</rp></ruby>しい<ruby>議論<rp>(</rp><rt>ぎろん</rt><rp>)</rp></ruby>が<ruby>続<rp>(</rp><rt>つづ</rt><rp>)</rp></ruby>いている。",
+    "e": "Fierce debate continues in the Diet over the new tax system.",
+    "m": "Шинэ татварын систем эргэн тойронд парламентад ширүүн маргаан үргэлжилж байна."
+   },
+   {
+    "j": "この<ruby>問題<rp>(</rp><rt>もんだい</rt><rp>)</rp></ruby>をについては、<ruby>専門家<rp>(</rp><rt>せんもんか</rt><rp>)</rp></ruby>の<ruby>間<rp>(</rp><rt>あいだ</rt><rp>)</rp></ruby>でも<ruby>意見<rp>(</rp><rt>いけん</rt><rp>)</rp></ruby>が<ruby>分<rp>(</rp><rt>わ</rt><rp>)</rp></ruby>かれている。",
+    "e": "Regarding this issue, opinions are divided even among experts.",
+    "m": "Энэ асуудлын талаар мэргэжилтнүүдийн дунд ч санал зөрж байна."
+   }
+  ],
+  "a": [
+   "をめぐって"
+  ]
  },
  {
   "g": "をめぐって",
@@ -942,12 +1275,39 @@ const GRAMMAR_INDEX = [
     "m": "Энэ асуудлын талаар мэргэжилтнүүдийн дунд ч санал зөрж байна."
    }
   ],
-  "a": []
+  "a": [
+   "について"
+  ]
+ },
+ {
+  "g": "に基づいて",
+  "t": "advanced",
+  "l": 4,
+  "j": "N2",
+  "e": "にそくして and に基づいて both mean \"in line with / based on X,\" but にそくして stresses staying faithful to a standard or reality, while に基づいて is the more general \"based on.\"",
+  "m": "にそくして болон に基づいて хоёулаа \"X-тэй нийцүүлэн / үндэслэн\" гэсэн утгатай ч にそくして нь стандарт буюу бодит байдалд үнэнч байхыг онцолдог бол に基づいて нь илүү ерөнхий \"үндэслэн\" гэсэн утга юм.",
+  "v": [
+   {
+    "j": "<ruby>事実<rp>(</rp><rt>じじつ</rt><rp>)</rp></ruby>に<ruby>基<rp>(</rp><rt>もと</rt><rp>)</rp></ruby>づいて、<ruby>報告書<rp>(</rp><rt>ほうこくしょ</rt><rp>)</rp></ruby>を<ruby>作成<rp>(</rp><rt>さくせい</rt><rp>)</rp></ruby>してください。",
+    "e": "Please prepare the report based on the facts.",
+    "m": "Баримт нотолгоонд үндэслэн тайланг бэлдэнэ үү."
+   },
+   {
+    "j": "この<ruby>報告書<rp>(</rp><rt>ほうこくしょ</rt><rp>)</rp></ruby>は<ruby>事実<rp>(</rp><rt>じじつ</rt><rp>)</rp></ruby>を<ruby>基<rp>(</rp><rt>もと</rt><rp>)</rp></ruby>づいて<ruby>書<rp>(</rp><rt>か</rt><rp>)</rp></ruby>かれている。",
+    "e": "This report is written based on the facts.",
+    "m": "Энэ тайланг баримт нотолгоонд үндэслэн бичсэн байна."
+   }
+  ],
+  "a": [
+   "にそくして",
+   "をふまえて"
+  ]
  },
  {
   "g": "にそくして",
   "t": "advanced",
   "l": 4,
+  "j": "N1",
   "e": "にそくして and に基づいて both mean \"in line with / based on X,\" but にそくして stresses staying faithful to a standard or reality, while に基づいて is the more general \"based on.\"",
   "m": "にそくして болон に基づいて хоёулаа \"X-тэй нийцүүлэн / үндэслэн\" гэсэн утгатай ч にそくして нь стандарт буюу бодит байдалд үнэнч байхыг онцолдог бол に基づいて нь илүү ерөнхий \"үндэслэн\" гэсэн утга юм.",
   "v": [
@@ -957,7 +1317,27 @@ const GRAMMAR_INDEX = [
     "m": "Баримт нотолгоонд үндэслэн тайланг бэлдэнэ үү."
    }
   ],
-  "a": []
+  "a": [
+   "に基づいて"
+  ]
+ },
+ {
+  "g": "まえに",
+  "t": "advanced",
+  "l": 5,
+  "j": "N5",
+  "e": "にさきだち and の前に both mean \"before X,\" but にさきだち is a formal, written phrase typically used for official events and ceremonies.",
+  "m": "にさきだち болон の前に хоёулаа \"X-ийн өмнө\" гэсэн утгатай ч にさきだち нь ихэвчлэн албан ёсны арга хэмжээ, ёслолд ашиглагддаг албан ёсны, бичгийн хэллэг юм.",
+  "v": [
+   {
+    "j": "<ruby>開会式<rp>(</rp><rt>かいかいしき</rt><rp>)</rp></ruby>の<ruby>前<rp>(</rp><rt>まえ</rt><rp>)</rp></ruby>に、<ruby>選手<rp>(</rp><rt>せんしゅ</rt><rp>)</rp></ruby>たちが<ruby>入場<rp>(</rp><rt>にゅうじょう</rt><rp>)</rp></ruby>した。",
+    "e": "Prior to the opening ceremony, the athletes entered.",
+    "m": "Нээлтийн ёслолын өмнө тамирчид орж ирсэн."
+   }
+  ],
+  "a": [
+   "にさきだち"
+  ]
  },
  {
   "g": "にさきだち",
@@ -978,7 +1358,10 @@ const GRAMMAR_INDEX = [
     "m": "Шинэ хуулийн хэрэгжихээс өмнө танилцуулах уулзалт зохион байгуулагдсан."
    }
   ],
-  "a": []
+  "a": [
+   "に先んじて",
+   "まえに"
+  ]
  },
  {
   "g": "とあいまって",
@@ -1002,6 +1385,29 @@ const GRAMMAR_INDEX = [
   "a": []
  },
  {
+  "g": "て以来",
+  "t": "advanced",
+  "l": 5,
+  "j": "N3",
+  "e": "てからというもの and て以来 both mark a lasting change starting from a point in time, but てからというもの emphasizes the continuing impact more emotively.",
+  "m": "てからというもの болон て以来 хоёулаа тодорхой цаг мөчөөс эхэлсэн урт хугацааны өөрчлөлтийг заадаг ч てからというもの нь үргэлжилж буй нөлөөллийг илүү сэтгэл хөдлөлтэйгээр онцолдог.",
+  "v": [
+   {
+    "j": "<ruby>子供<rp>(</rp><rt>こども</rt><rp>)</rp></ruby>が<ruby>生<rp>(</rp><rt>う</rt><rp>)</rp></ruby>まれて<ruby>以来<rp>(</rp><rt>いらい</rt><rp>)</rp></ruby>、<ruby>生活<rp>(</rp><rt>せいかつ</rt><rp>)</rp></ruby>が<ruby>一変<rp>(</rp><rt>いっぺん</rt><rp>)</rp></ruby>した。",
+    "e": "Ever since our child was born, our life has completely changed.",
+    "m": "Хүүхэдтэй болсноос хойш бидний амьдрал бүрмөсөн өөрчлөгдсөн."
+   },
+   {
+    "j": "その<ruby>新製品<rp>(</rp><rt>しんせいひん</rt><rp>)</rp></ruby>が<ruby>発売<rp>(</rp><rt>はつばい</rt><rp>)</rp></ruby>されて<ruby>以来<rp>(</rp><rt>いらい</rt><rp>)</rp></ruby>、<ruby>売上<rp>(</rp><rt>うりあげ</rt><rp>)</rp></ruby>は<ruby>右肩上<rp>(</rp><rt>みぎかたあ</rt><rp>)</rp></ruby>がりだ。",
+    "e": "Ever since that new product was released, sales have been steadily climbing.",
+    "m": "Тэр шинэ бүтээгдэхүүн гарсанаас хойш борлуулалт тогтмол өсч байна."
+   }
+  ],
+  "a": [
+   "てからというもの"
+  ]
+ },
+ {
   "g": "てからというもの",
   "t": "advanced",
   "l": 5,
@@ -1020,7 +1426,9 @@ const GRAMMAR_INDEX = [
     "m": "Тэр шинэ бүтээгдэхүүн гарсанаас хойш борлуулалт тогтмол өсч байна."
    }
   ],
-  "a": []
+  "a": [
+   "て以来"
+  ]
  },
  {
   "g": "ても",
@@ -1044,6 +1452,7 @@ const GRAMMAR_INDEX = [
   "g": "たところで",
   "t": "advanced",
   "l": 5,
+  "j": "N2",
   "e": "たところで and ても both mean \"even if,\" but たところで adds the nuance that doing so would be futile and change nothing.",
   "m": "たところで болон ても хоёулаа \"хэдийгээр...ч\" гэсэн утгатай ч たところで нь тэгсэн ч дэмий, юу ч өөрчлөгдөхгүй гэсэн нюансыг нэмдэг.",
   "v": [
@@ -1128,9 +1537,39 @@ const GRAMMAR_INDEX = [
   ]
  },
  {
+  "g": "たびに",
+  "t": "advanced",
+  "l": 5,
+  "j": "N3",
+  "e": "そばから and たびに both describe an action that immediately repeats every time another finishes, but そばから specifically stresses how frustratingly quick the repetition is.",
+  "m": "そばから болон たびに хоёулаа нэг үйлдэл дуусах бүрд шууд давтагддаг өөр үйлдлийг тодорхойлдог ч そばから нь давталт хэр хурдан, бухимдуулам болохыг онцлон тэмдэглэдэг.",
+  "v": [
+   {
+    "j": "<ruby>片付<rp>(</rp><rt>かたづ</rt><rp>)</rp></ruby>けるたびに、<ruby>子供<rp>(</rp><rt>こども</rt><rp>)</rp></ruby>がまた<ruby>部屋<rp>(</rp><rt>へや</rt><rp>)</rp></ruby>を<ruby>散<rp>(</rp><rt>ち</rt><rp>)</rp></ruby>らかす。",
+    "e": "Every time I tidy up, the kids mess up the room again right after.",
+    "m": "Би цэвэрлэх бүрдээ хүүхдүүд өрөөг дахин эмх замбараагүй болгодог."
+   },
+   {
+    "j": "この<ruby>曲<rp>(</rp><rt>きょく</rt><rp>)</rp></ruby>を<ruby>聞<rp>(</rp><rt>き</rt><rp>)</rp></ruby>くたびに、<ruby>学生時代<rp>(</rp><rt>がくせいじだい</rt><rp>)</rp></ruby>を<ruby>思<rp>(</rp><rt>おも</rt><rp>)</rp></ruby>い<ruby>出<rp>(</rp><rt>だ</rt><rp>)</rp></ruby>す。",
+    "e": "Every time I hear this song, I remember my school days.",
+    "m": "Энэ дууг сонсох бүрдээ сургуулийн үеэ санадаг."
+   },
+   {
+    "j": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の{そばから}<ruby>離<rp>(</rp><rt>はな</rt><rp>)</rp></ruby>れようとしない<ruby>様子<rp>(</rp><rt>ようす</rt><rp>)</rp></ruby>を<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>るたびに、その<ruby>絆<rp>(</rp><rt>きずな</rt><rp>)</rp></ruby>の<ruby>深<rp>(</rp><rt>ふか</rt><rp>)</rp></ruby>さがうかがえる。",
+    "e": "Seeing them stick close by his side every time, one can sense the depth of that bond.",
+    "m": "Тэднийг үргэлж хажууд нь байхыг харахад тэр холбооны гүн гүнзгий байдлыг мэдэрч болно."
+   }
+  ],
+  "a": [
+   "そばから",
+   "につけ"
+  ]
+ },
+ {
   "g": "そばから",
   "t": "advanced",
   "l": 5,
+  "j": "N1",
   "e": "そばから and たびに both describe an action that immediately repeats every time another finishes, but そばから specifically stresses how frustratingly quick the repetition is.",
   "m": "そばから болон たびに хоёулаа нэг үйлдэл дуусах бүрд шууд давтагддаг өөр үйлдлийг тодорхойлдог ч そばから нь давталт хэр хурдан, бухимдуулам болохыг онцлон тэмдэглэдэг.",
   "v": [
@@ -1140,7 +1579,9 @@ const GRAMMAR_INDEX = [
     "m": "Би цэвэрлэх бүрдээ хүүхдүүд өрөөг дахин эмх замбараагүй болгодог."
    }
   ],
-  "a": []
+  "a": [
+   "たびに"
+  ]
  },
  {
   "g": "につけ",
@@ -1161,12 +1602,33 @@ const GRAMMAR_INDEX = [
     "m": "Тэднийг үргэлж хажууд нь байхыг харахад тэр холбооны гүн гүнзгий байдлыг мэдэрч болно."
    }
   ],
-  "a": []
+  "a": [
+   "たびに"
+  ]
+ },
+ {
+  "g": "において",
+  "t": "advanced",
+  "l": 5,
+  "j": "N3",
+  "e": "にあって and において both mark the circumstance or setting something takes place in, but にあって specifically stresses being situated within a difficult or special condition.",
+  "m": "にあって болон において хоёулаа ямар нэг зүйл болж буй нөхцөл байдал буюу орчныг заадаг ч にあって нь тухайлбал хүнд буюу онцгой нөхцөлд байрлаж буйг онцолдог.",
+  "v": [
+   {
+    "j": "この<ruby>厳<rp>(</rp><rt>きび</rt><rp>)</rp></ruby>しい<ruby>経済<rp>(</rp><rt>けいざい</rt><rp>)</rp></ruby><ruby>状況<rp>(</rp><rt>じょうきょう</rt><rp>)</rp></ruby>において、<ruby>企業<rp>(</rp><rt>きぎょう</rt><rp>)</rp></ruby>は<ruby>生<rp>(</rp><rt>い</rt><rp>)</rp></ruby>き<ruby>残<rp>(</rp><rt>のこ</rt><rp>)</rp></ruby>りをかけている。",
+    "e": "Amid these harsh economic conditions, companies are fighting to survive.",
+    "m": "Энэ хатуу ширүүн эдийн засгийн нөхцөлд компаниуд амьд үлдэхийн төлөө тэмцэж байна."
+   }
+  ],
+  "a": [
+   "にあって"
+  ]
  },
  {
   "g": "にあって",
   "t": "advanced",
   "l": 5,
+  "j": "N1",
   "e": "にあって and において both mark the circumstance or setting something takes place in, but にあって specifically stresses being situated within a difficult or special condition.",
   "m": "にあって болон において хоёулаа ямар нэг зүйл болж буй нөхцөл байдал буюу орчныг заадаг ч にあって нь тухайлбал хүнд буюу онцгой нөхцөлд байрлаж буйг онцолдог.",
   "v": [
@@ -1176,7 +1638,9 @@ const GRAMMAR_INDEX = [
     "m": "Энэ хатуу ширүүн эдийн засгийн нөхцөлд компаниуд амьд үлдэхийн төлөө тэмцэж байна."
    }
   ],
-  "a": []
+  "a": [
+   "において"
+  ]
  },
  {
   "g": "までして",
@@ -1234,6 +1698,7 @@ const GRAMMAR_INDEX = [
   "g": "たりとも",
   "t": "advanced",
   "l": 6,
+  "j": "N1",
   "e": "たりとも and も both emphasize \"not even a single, tiny amount\" in a negative sentence, but たりとも is a stronger, more literary intensifier.",
   "m": "たりとも болон も хоёулаа сөрөг өгүүлбэрт \"нэг ч бага зэрэг хэмжээ хүртэл\" гэдгийг онцолдог ч たりとも нь илүү хүчтэй, утга зохиолын хүчлэгч юм.",
   "v": [
@@ -1287,6 +1752,257 @@ const GRAMMAR_INDEX = [
   ]
  },
  {
+  "g": "あっての",
+  "t": "advanced",
+  "l": 7,
+  "j": "N1",
+  "e": "あっての and のおかげで both credit something's very existence or success to an essential factor, but あっての is a more compact, emphatic noun-modifying pattern meaning \"only possible thanks to.\"",
+  "m": "あっての болон のおかげで хоёулаа ямар нэг зүйлийн оршин тогтнол буюу амжилтыг чухал хүчин зүйлд тооцдог ч あっての нь \"зөвхөн ...-ийн ачаар л боломжтой\" гэсэн илүү товч, онцолсон нэр үг өөрчлөгч загвар юм.",
+  "v": [
+   {
+    "j": "この<ruby>会社<rp>(</rp><rt>かいしゃ</rt><rp>)</rp></ruby>は<ruby>社員<rp>(</rp><rt>しゃいん</rt><rp>)</rp></ruby>あっての<ruby>会社<rp>(</rp><rt>かいしゃ</rt><rp>)</rp></ruby>だ。",
+    "e": "This company exists only because of its employees.",
+    "m": "Энэ компани зөвхөн ажилтнуудынхаа ачаар оршин тогтнож байна."
+   }
+  ],
+  "a": [
+   "おかげで"
+  ]
+ },
+ {
+  "g": "のついでに",
+  "t": "advanced",
+  "l": 7,
+  "j": "N3",
+  "e": "がてら and ついでに both describe doing one thing while taking the opportunity to also do another, and are close to interchangeable, with がてら sounding slightly more literary.",
+  "m": "がてら болон ついでに хоёулаа нэг зүйл хийхдээ өөр нэг зүйлийг хийх боломжийг ашиглахыг тодорхойлдог бөгөөд бараг сольж хэрэглэгддэг, がてら нь бага зэрэг илүү утга зохиолын сонстог.",
+  "v": [
+   {
+    "j": "<ruby>散歩<rp>(</rp><rt>さんぽ</rt><rp>)</rp></ruby>のついでに、<ruby>郵便局<rp>(</rp><rt>ゆうびんきょく</rt><rp>)</rp></ruby>に<ruby>寄<rp>(</rp><rt>よ</rt><rp>)</rp></ruby>った。",
+    "e": "I stopped by the post office while out on a walk.",
+    "m": "Алхаж яваад шуудангийн газраар орж гарлаа."
+   }
+  ],
+  "a": [
+   "がてら"
+  ]
+ },
+ {
+  "g": "がてら",
+  "t": "advanced",
+  "l": 7,
+  "j": "N1",
+  "e": "がてら and ついでに both describe doing one thing while taking the opportunity to also do another, and are close to interchangeable, with がてら sounding slightly more literary.",
+  "m": "がてら болон ついでに хоёулаа нэг зүйл хийхдээ өөр нэг зүйлийг хийх боломжийг ашиглахыг тодорхойлдог бөгөөд бараг сольж хэрэглэгддэг, がてら нь бага зэрэг илүү утга зохиолын сонстог.",
+  "v": [
+   {
+    "j": "<ruby>散歩<rp>(</rp><rt>さんぽ</rt><rp>)</rp></ruby>がてら、<ruby>郵便局<rp>(</rp><rt>ゆうびんきょく</rt><rp>)</rp></ruby>に<ruby>寄<rp>(</rp><rt>よ</rt><rp>)</rp></ruby>った。",
+    "e": "I stopped by the post office while out on a walk.",
+    "m": "Алхаж яваад шуудангийн газраар орж гарлаа."
+   }
+  ],
+  "a": [
+   "のついでに"
+  ]
+ },
+ {
+  "g": "ないこともない",
+  "t": "advanced",
+  "l": 7,
+  "j": "N2",
+  "e": "なくはない and ないこともない both use a double negative to hedge a weak possibility, and are essentially interchangeable ways of saying \"it's not entirely impossible.\"",
+  "m": "なくはない болон ないこともない хоёулаа сул боломжийг зөөлрүүлэхийн тулд давхар үгүйсгэл ашигладаг бөгөөд \"бүрмөсөн боломжгүй биш\" гэдгийг хэлэх үндсэндээ сольж хэрэглэгддэг арга юм.",
+  "v": [
+   {
+    "j": "<ruby>忙<rp>(</rp><rt>いそが</rt><rp>)</rp></ruby>しいが、<ruby>手伝<rp>(</rp><rt>てつだ</rt><rp>)</rp></ruby>う<ruby>時間<rp>(</rp><rt>じかん</rt><rp>)</rp></ruby>がないこともない。",
+    "e": "I'm busy, but it's not that I have no time to help at all.",
+    "m": "Би завгүй ч тусалж чадахгүй гэсэн үг огт биш."
+   },
+   {
+    "j": "<ruby>忙<rp>(</rp><rt>いそが</rt><rp>)</rp></ruby>しいが、<ruby>手伝<rp>(</rp><rt>てつだ</rt><rp>)</rp></ruby>う<ruby>時間<rp>(</rp><rt>じかん</rt><rp>)</rp></ruby>がなくはない。",
+    "e": "I'm busy, but it's not that I have no time to help at all.",
+    "m": "Би завгүй ч тусалж чадахгүй гэсэн үг огт биш."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "を余儀なくされる",
+  "t": "advanced",
+  "l": 7,
+  "j": "N1",
+  "e": "を余儀なくされる and ざるをえない both express being forced into an unwanted action by circumstances, but を余儀なくされる frames it more objectively as something imposed from outside, while ざるをえない reads more like the subject's own reluctant judgment.",
+  "m": "を余儀なくされる болон ざるをえない хоёулаа нөхцөл байдлаас болж хүсээгүй үйлдэлд хүчээр татагдсаныг илэрхийлдэг ч を余儀なくされる нь гадны хүчээр тулгагдсан зүйл мэт илүү бодитоор харуулдаг бол ざるをえない нь өгүүлэгчийн өөрийн дурамжхан дүгнэлт мэт сонсогддог.",
+  "v": [
+   {
+    "j": "<ruby>台風<rp>(</rp><rt>たいふう</rt><rp>)</rp></ruby>の<ruby>影響<rp>(</rp><rt>えいきょう</rt><rp>)</rp></ruby>で、イベントは<ruby>中止<rp>(</rp><rt>ちゅうし</rt><rp>)</rp></ruby>を<ruby>余儀<rp>(</rp><rt>よぎ</rt><rp>)</rp></ruby>なくされた。",
+    "e": "Due to the typhoon, the event was forced to be cancelled.",
+    "m": "Тайфуны улмаас арга хэмжээг албадан цуцаллаа."
+   }
+  ],
+  "a": [
+   "ざるをえない"
+  ]
+ },
+ {
+  "g": "というように",
+  "t": "advanced",
+  "l": 7,
+  "j": "N1",
+  "e": "とばかりに and というように both describe a wordless action that strongly implies an unspoken message, with とばかりに carrying a more vivid, almost theatrical nuance.",
+  "m": "とばかりに болон というように хоёулаа хэлээгүй мэдээллийг хүчтэй агуулсан үггүй үйлдлийг тодорхойлдог бөгөөд とばかりに нь илүү тод, театрлаг нюансыг агуулдаг.",
+  "v": [
+   {
+    "j": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は「もう<ruby>帰<rp>(</rp><rt>かえ</rt><rp>)</rp></ruby>れ」というように、ドアを<ruby>指<rp>(</rp><rt>ゆび</rt><rp>)</rp></ruby>さした。",
+    "e": "As if to say \"just leave already,\" he pointed at the door.",
+    "m": "\"Гарчих\" гэж хэлэх мэт тэр хаалга руу заасан."
+   }
+  ],
+  "a": [
+   "とばかりに"
+  ]
+ },
+ {
+  "g": "とばかりに",
+  "t": "advanced",
+  "l": 7,
+  "j": "N1",
+  "e": "とばかりに and というように both describe a wordless action that strongly implies an unspoken message, with とばかりに carrying a more vivid, almost theatrical nuance.",
+  "m": "とばかりに болон というように хоёулаа хэлээгүй мэдээллийг хүчтэй агуулсан үггүй үйлдлийг тодорхойлдог бөгөөд とばかりに нь илүү тод, театрлаг нюансыг агуулдаг.",
+  "v": [
+   {
+    "j": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は「もう<ruby>帰<rp>(</rp><rt>かえ</rt><rp>)</rp></ruby>れ」とばかりに、ドアを<ruby>指<rp>(</rp><rt>ゆび</rt><rp>)</rp></ruby>さした。",
+    "e": "As if to say \"just leave already,\" he pointed at the door.",
+    "m": "\"Гарчих\" гэж хэлэх мэт тэр хаалга руу заасан."
+   }
+  ],
+  "a": [
+   "というように"
+  ]
+ },
+ {
+  "g": "からか",
+  "t": "advanced",
+  "l": 7,
+  "j": "N2",
+  "e": "こともあって and からか both suggest a plausible contributing reason without claiming it's the sole cause, though こともあって is more matter-of-fact while からか adds a note of the speaker's own guesswork.",
+  "m": "こともあって болон からか хоёулаа цорын ганц шалтгаан гэж мэдэгдэлгүйгээр итгэл төрүүлэм хувь нэмэр оруулсан шалтгааныг заадаг ч こともあって нь илүү бодит бол からか нь илэрхийлэгчийн өөрийн таамаглалын өнгийг нэмдэг.",
+  "v": [
+   {
+    "j": "<ruby>天気<rp>(</rp><rt>てんき</rt><rp>)</rp></ruby>が<ruby>良<rp>(</rp><rt>よ</rt><rp>)</rp></ruby>かったからか、<ruby>公園<rp>(</rp><rt>こうえん</rt><rp>)</rp></ruby>は<ruby>多<rp>(</rp><rt>おお</rt><rp>)</rp></ruby>くの<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>で<ruby>賑<rp>(</rp><rt>にぎ</rt><rp>)</rp></ruby>わった。",
+    "e": "Perhaps because the weather was nice, the park was bustling with lots of people.",
+    "m": "Цаг агаар сайхан байсантай холбоотой байх, цэцэрлэгт хүрээлэн олон хүнээр дүүрэн байлаа."
+   }
+  ],
+  "a": [
+   "こともあって"
+  ]
+ },
+ {
+  "g": "こともあって",
+  "t": "advanced",
+  "l": 7,
+  "j": "N2",
+  "e": "こともあって and からか both suggest a plausible contributing reason without claiming it's the sole cause, though こともあって is more matter-of-fact while からか adds a note of the speaker's own guesswork.",
+  "m": "こともあって болон からか хоёулаа цорын ганц шалтгаан гэж мэдэгдэлгүйгээр итгэл төрүүлэм хувь нэмэр оруулсан шалтгааныг заадаг ч こともあって нь илүү бодит бол からか нь илэрхийлэгчийн өөрийн таамаглалын өнгийг нэмдэг.",
+  "v": [
+   {
+    "j": "<ruby>天気<rp>(</rp><rt>てんき</rt><rp>)</rp></ruby>が<ruby>良<rp>(</rp><rt>よ</rt><rp>)</rp></ruby>かったこともあって、<ruby>公園<rp>(</rp><rt>こうえん</rt><rp>)</rp></ruby>は<ruby>多<rp>(</rp><rt>おお</rt><rp>)</rp></ruby>くの<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>で<ruby>賑<rp>(</rp><rt>にぎ</rt><rp>)</rp></ruby>わった。",
+    "e": "Perhaps because the weather was nice, the park was bustling with lots of people.",
+    "m": "Цаг агаар сайхан байсантай холбоотой байх, цэцэрлэгт хүрээлэн олон хүнээр дүүрэн байлаа."
+   }
+  ],
+  "a": [
+   "からか"
+  ]
+ },
+ {
+  "g": "ともなると",
+  "t": "advanced",
+  "l": 8,
+  "j": "N1",
+  "e": "ともなると and になると both mark reaching a certain stage or status as a turning point for what follows, but ともなると carries extra emphasis on just how significant that stage is.",
+  "m": "ともなると болон になると хоёулаа тодорхой шат буюу байдалд хүрснийг дараагийн зүйлийн эргэлтийн цэг болгон заадаг ч ともなると нь тэр шат хэр чухал болохыг нэмж онцолдог.",
+  "v": [
+   {
+    "j": "<ruby>課長<rp>(</rp><rt>かちょう</rt><rp>)</rp></ruby>になると、<ruby>責任<rp>(</rp><rt>せきにん</rt><rp>)</rp></ruby>の<ruby>重<rp>(</rp><rt>おも</rt><rp>)</rp></ruby>さが<ruby>違<rp>(</rp><rt>ちが</rt><rp>)</rp></ruby>う。",
+    "e": "Once you become a section chief, the weight of your responsibilities is different.",
+    "m": "Тасгийн дарга болмогц хариуцлагын жин өөр болдог."
+   },
+   {
+    "j": "<ruby>課長<rp>(</rp><rt>かちょう</rt><rp>)</rp></ruby>ともなると、<ruby>責任<rp>(</rp><rt>せきにん</rt><rp>)</rp></ruby>の<ruby>重<rp>(</rp><rt>おも</rt><rp>)</rp></ruby>さが<ruby>違<rp>(</rp><rt>ちが</rt><rp>)</rp></ruby>う。",
+    "e": "Once you become a section chief, the weight of your responsibilities is different.",
+    "m": "Тасгийн дарга болмогц хариуцлагын жин өөр болдог."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "がゆえに",
+  "t": "advanced",
+  "l": 8,
+  "j": "N1",
+  "e": "がゆえに and から both state a reason, but がゆえに is a literary, formal construction that lends the reasoning a more solemn, almost philosophical tone.",
+  "m": "がゆえに болон から хоёулаа шалтгааныг заадаг ч がゆえに нь шалтгаанд илүү сүрлэг, гүн ухаанлаг өнгө нэмдэг утга зохиолын, албан ёсны бүтэц юм.",
+  "v": [
+   {
+    "j": "<ruby>若<rp>(</rp><rt>わか</rt><rp>)</rp></ruby>いがゆえに、<ruby>大<rp>(</rp><rt>おお</rt><rp>)</rp></ruby>きな<ruby>失敗<rp>(</rp><rt>しっぱい</rt><rp>)</rp></ruby>もした。",
+    "e": "Because he was young, he also made some big mistakes.",
+    "m": "Залуу байсан учраас том алдаа ч гаргаж байсан."
+   }
+  ],
+  "a": [
+   "から"
+  ]
+ },
+ {
+  "g": "しかない",
+  "t": "advanced",
+  "l": 8,
+  "j": "N3",
+  "e": "をおいて(ほかに)ない and しかない both single out one option as the only real possibility, but をおいてほかにない is a more formal, emphatic way of praising someone as irreplaceable.",
+  "m": "をおいて(ほかに)ない болон しかない хоёулаа нэг сонголтыг цорын ганц бодит боломж гэж тодруулдаг ч をおいてほかにない нь хэн нэгнийг орлуулшгүй гэж магтах илүү албан ёсны, онцолсон арга юм.",
+  "v": [
+   {
+    "j": "この<ruby>役目<rp>(</rp><rt>やくめ</rt><rp>)</rp></ruby>を<ruby>任<rp>(</rp><rt>まか</rt><rp>)</rp></ruby>せられるのは、<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>しかいない。",
+    "e": "When it comes to who can be entrusted with this role, there's no one but him.",
+    "m": "Энэ үүргийг хэнд итгэж болох гэвэл түүнээс өөр хэн ч байхгүй."
+   },
+   {
+    "j": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>態度<rp>(</rp><rt>たいど</rt><rp>)</rp></ruby>にはあきれるしかない。",
+    "e": "There's nothing to do but be exasperated by his attitude.",
+    "m": "Түүний хандлагад цочирдохоос өөр аргагүй."
+   },
+   {
+    "j": "その<ruby>批判<rp>(</rp><rt>ひはん</rt><rp>)</rp></ruby>は<ruby>的外<rp>(</rp><rt>まとはず</rt><rp>)</rp></ruby>れというしかない。",
+    "e": "That criticism can only be called off the mark.",
+    "m": "Тэр шүүмжлэлийг зорилгогүй гэж л хэлж болно."
+   }
+  ],
+  "a": [
+   "ほかない",
+   "をおいてほかにない"
+  ]
+ },
+ {
+  "g": "をおいてほかにない",
+  "t": "advanced",
+  "l": 8,
+  "j": "N1",
+  "e": "をおいて(ほかに)ない and しかない both single out one option as the only real possibility, but をおいてほかにない is a more formal, emphatic way of praising someone as irreplaceable.",
+  "m": "をおいて(ほかに)ない болон しかない хоёулаа нэг сонголтыг цорын ганц бодит боломж гэж тодруулдаг ч をおいてほかにない нь хэн нэгнийг орлуулшгүй гэж магтах илүү албан ёсны, онцолсон арга юм.",
+  "v": [
+   {
+    "j": "この<ruby>役目<rp>(</rp><rt>やくめ</rt><rp>)</rp></ruby>を<ruby>任<rp>(</rp><rt>まか</rt><rp>)</rp></ruby>せられるのは、<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>をおいてほかにいない。",
+    "e": "When it comes to who can be entrusted with this role, there's no one but him.",
+    "m": "Энэ үүргийг хэнд итгэж болох гэвэл түүнээс өөр хэн ч байхгүй."
+   }
+  ],
+  "a": [
+   "しかない"
+  ]
+ },
+ {
   "g": "なら",
   "t": "advanced",
   "l": 8,
@@ -1300,7 +2016,27 @@ const GRAMMAR_INDEX = [
     "m": "Хүүхдийнхээ төлөө бол ямар ч бэрхшээлээс би зайлсхийхгүй."
    }
   ],
-  "a": []
+  "a": [
+   "とあれば"
+  ]
+ },
+ {
+  "g": "とあれば",
+  "t": "advanced",
+  "l": 8,
+  "j": "N1",
+  "e": "とあれば and なら both introduce a hypothetical condition that justifies going to great lengths, but とあれば is the more formal, written way of saying \"if it comes to X.\"",
+  "m": "とあれば болон なら хоёулаа туйлширсан хэмжээнд хүрэхийг зөвтгөх таамагласан нөхцлийг танилцуулдаг ч とあれば нь \"хэрэв X-д хүрвэл\" гэдгийг хэлэх илүү албан ёсны, бичгийн арга юм.",
+  "v": [
+   {
+    "j": "<ruby>子供<rp>(</rp><rt>こども</rt><rp>)</rp></ruby>のためとあれば、どんな<ruby>苦労<rp>(</rp><rt>くろう</rt><rp>)</rp></ruby>もいとわない。",
+    "e": "If it's for my child, I won't shy away from any hardship.",
+    "m": "Хүүхдийнхээ төлөө бол ямар ч бэрхшээлээс би зайлсхийхгүй."
+   }
+  ],
+  "a": [
+   "なら"
+  ]
  },
  {
   "g": "でも",
@@ -1314,6 +2050,861 @@ const GRAMMAR_INDEX = [
     "j": "<ruby>少<rp>(</rp><rt>すこ</rt><rp>)</rp></ruby>しでも、お<ruby>役<rp>(</rp><rt>やく</rt><rp>)</rp></ruby>に<ruby>立<rp>(</rp><rt>た</rt><rp>)</rp></ruby>てれば<ruby>幸<rp>(</rp><rt>さいわ</rt><rp>)</rp></ruby>いです。",
     "e": "I would be glad if I could be of even a little help.",
     "m": "Бага ч атлаа тусалж чадвал баяртай байх болно."
+   }
+  ],
+  "a": [
+   "なりとも"
+  ]
+ },
+ {
+  "g": "なりとも",
+  "t": "advanced",
+  "l": 8,
+  "j": "N1",
+  "e": "なりとも and でも both mean \"even just a small amount,\" but なりとも is an old-fashioned, formal intensifier now mostly found in set humble phrases.",
+  "m": "なりとも болон でも хоёулаа \"багахан хэмжээгээр ч гэсэн\" гэсэн утгатай ч なりとも нь одоо ихэвчлэн тогтмол даруу хэллэгт олддог хуучинсаг, албан ёсны хүчлэгч юм.",
+  "v": [
+   {
+    "j": "<ruby>少<rp>(</rp><rt>すこ</rt><rp>)</rp></ruby>しなりとも、お<ruby>役<rp>(</rp><rt>やく</rt><rp>)</rp></ruby>に<ruby>立<rp>(</rp><rt>た</rt><rp>)</rp></ruby>てれば<ruby>幸<rp>(</rp><rt>さいわ</rt><rp>)</rp></ruby>いです。",
+    "e": "I would be glad if I could be of even a little help.",
+    "m": "Бага ч атлаа тусалж чадвал баяртай байх болно."
+   }
+  ],
+  "a": [
+   "でも"
+  ]
+ },
+ {
+  "g": "を兼ねて",
+  "t": "advanced",
+  "l": 8,
+  "j": "N2",
+  "e": "かたがた and を兼ねて both indicate that one action also serves a second purpose, but かたがた is a very formal, epistolary phrase mostly reserved for greetings and courtesy visits.",
+  "m": "かたがた болон を兼ねて хоёулаа нэг үйлдэл хоёр дахь зорилгыг мөн гүйцэтгэдэгийг заадаг ч かたがた нь ихэвчлэн мэндчилгээ, ёслолын зочлолд зориулагдсан маш албан ёсны захидлын хэллэг юм.",
+  "v": [
+   {
+    "j": "<ruby>日頃<rp>(</rp><rt>ひごろ</rt><rp>)</rp></ruby>のお<ruby>礼<rp>(</rp><rt>れい</rt><rp>)</rp></ruby>を<ruby>兼<rp>(</rp><rt>か</rt><rp>)</rp></ruby>ねて、ご<ruby>挨拶<rp>(</rp><rt>あいさつ</rt><rp>)</rp></ruby>に<ruby>伺<rp>(</rp><rt>うかが</rt><rp>)</rp></ruby>いました。",
+    "e": "I came to pay my respects, also as a way of thanking you for your continued kindness.",
+    "m": "Байнгын анхаарал халамжид тань талархал илэрхийлэх зорилгоор ч мөргөж ирлээ."
+   }
+  ],
+  "a": [
+   "かたがた"
+  ]
+ },
+ {
+  "g": "かたがた",
+  "t": "advanced",
+  "l": 8,
+  "j": "N1",
+  "e": "かたがた and を兼ねて both indicate that one action also serves a second purpose, but かたがた is a very formal, epistolary phrase mostly reserved for greetings and courtesy visits.",
+  "m": "かたがた болон を兼ねて хоёулаа нэг үйлдэл хоёр дахь зорилгыг мөн гүйцэтгэдэгийг заадаг ч かたがた нь ихэвчлэн мэндчилгээ, ёслолын зочлолд зориулагдсан маш албан ёсны захидлын хэллэг юм.",
+  "v": [
+   {
+    "j": "<ruby>日頃<rp>(</rp><rt>ひごろ</rt><rp>)</rp></ruby>のお<ruby>礼<rp>(</rp><rt>れい</rt><rp>)</rp></ruby>かたがた、ご<ruby>挨拶<rp>(</rp><rt>あいさつ</rt><rp>)</rp></ruby>に<ruby>伺<rp>(</rp><rt>うかが</rt><rp>)</rp></ruby>いました。",
+    "e": "I came to pay my respects, also as a way of thanking you for your continued kindness.",
+    "m": "Байнгын анхаарал халамжид тань талархал илэрхийлэх зорилгоор ч мөргөж ирлээ."
+   }
+  ],
+  "a": [
+   "を兼ねて"
+  ]
+ },
+ {
+  "g": "というところだ",
+  "t": "advanced",
+  "l": 8,
+  "j": "N2",
+  "e": "というところだ and 程度だ both cap an estimate at a modest upper limit, and are close to interchangeable when giving a rough, unimpressive assessment.",
+  "m": "というところだ болон 程度だ хоёулаа тооцоог даруухан дээд хязгаарт хязгаарлаж, ойролцоо, тийм ч гайхалтай биш үнэлгээ өгөхөд бараг сольж хэрэглэгддэг.",
+  "v": [
+   {
+    "j": "<ruby>今回<rp>(</rp><rt>こんかい</rt><rp>)</rp></ruby>の<ruby>被害<rp>(</rp><rt>ひがい</rt><rp>)</rp></ruby>は、せいぜい<ruby>軽<rp>(</rp><rt>かる</rt><rp>)</rp></ruby>い<ruby>擦<rp>(</rp><rt>す</rt><rp>)</rp></ruby>り<ruby>傷<rp>(</rp><rt>きず</rt><rp>)</rp></ruby><ruby>程度<rp>(</rp><rt>ていど</rt><rp>)</rp></ruby>だ。",
+    "e": "The damage this time amounts to, at most, a minor scrape.",
+    "m": "Энэ удаагийн хохирол дээд тал нь бага зэргийн зурвас шарх төдий юм."
+   },
+   {
+    "j": "<ruby>今回<rp>(</rp><rt>こんかい</rt><rp>)</rp></ruby>の<ruby>被害<rp>(</rp><rt>ひがい</rt><rp>)</rp></ruby>は、せいぜい<ruby>軽<rp>(</rp><rt>かる</rt><rp>)</rp></ruby>い<ruby>擦<rp>(</rp><rt>す</rt><rp>)</rp></ruby>り<ruby>傷<rp>(</rp><rt>きず</rt><rp>)</rp></ruby>というところだ。",
+    "e": "The damage this time amounts to, at most, a minor scrape.",
+    "m": "Энэ удаагийн хохирол дээд тал нь бага зэргийн зурвас шарх төдий юм."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "てもさしつかえない",
+  "t": "advanced",
+  "l": 8,
+  "j": "N1",
+  "e": "てもさしつかえない and てもいい both grant permission, but てもさしつかえない is a more formal way of saying that something won't cause any problem.",
+  "m": "てもさしつかえない болон てもいい хоёулаа зөвшөөрөл өгдөг ч てもさしつかえない нь ямар нэг зүйл асуудал үүсгэхгүй гэдгийг илэрхийлэх илүү албан ёсны арга юм.",
+  "v": [
+   {
+    "j": "<ruby>資料<rp>(</rp><rt>しりょう</rt><rp>)</rp></ruby>は<ruby>明日<rp>(</rp><rt>あす</rt><rp>)</rp></ruby><ruby>提出<rp>(</rp><rt>ていしゅつ</rt><rp>)</rp></ruby>してもさしつかえない。",
+    "e": "It's fine even if you submit the materials tomorrow.",
+    "m": "Материалыг маргааш өгсөн ч болно."
+   }
+  ],
+  "a": [
+   "てもいい"
+  ]
+ },
+ {
+  "g": "はしても",
+  "t": "advanced",
+  "l": 8,
+  "j": "N1",
+  "e": "〜こそすれ〜ない and 〜はしても〜ない both flatly deny a negative reaction while admitting only its positive opposite, but こそすれ is a fixed literary pattern reserved for firmly emphatic denials.",
+  "m": "〜こそすれ〜ない болон 〜はしても〜ない хоёулаа сөрөг урвалыг тэс үгүйсгэж, зөвхөн эсрэг эерэг талыг хүлээн зөвшөөрдөг ч こそすれ нь хатуу, онцолсон үгүйсгэлд зориулсан тогтмол утга зохиолын загвар юм.",
+  "v": [
+   {
+    "j": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>提案<rp>(</rp><rt>ていあん</rt><rp>)</rp></ruby>には、<ruby>感謝<rp>(</rp><rt>かんしゃ</rt><rp>)</rp></ruby>はしても、<ruby>不満<rp>(</rp><rt>ふまん</rt><rp>)</rp></ruby>はない。",
+    "e": "I only feel grateful for his proposal, not dissatisfied in the least.",
+    "m": "Түүний саналд би талархах л сэтгэлтэй байна, огт сэтгэл дундуур байхгүй."
+   }
+  ],
+  "a": [
+   "こそすれ"
+  ]
+ },
+ {
+  "g": "こそすれ",
+  "t": "advanced",
+  "l": 8,
+  "j": "N1",
+  "e": "〜こそすれ〜ない and 〜はしても〜ない both flatly deny a negative reaction while admitting only its positive opposite, but こそすれ is a fixed literary pattern reserved for firmly emphatic denials.",
+  "m": "〜こそすれ〜ない болон 〜はしても〜ない хоёулаа сөрөг урвалыг тэс үгүйсгэж, зөвхөн эсрэг эерэг талыг хүлээн зөвшөөрдөг ч こそすれ нь хатуу, онцолсон үгүйсгэлд зориулсан тогтмол утга зохиолын загвар юм.",
+  "v": [
+   {
+    "j": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>提案<rp>(</rp><rt>ていあん</rt><rp>)</rp></ruby>には、<ruby>感謝<rp>(</rp><rt>かんしゃ</rt><rp>)</rp></ruby>こそすれ、<ruby>不満<rp>(</rp><rt>ふまん</rt><rp>)</rp></ruby>はない。",
+    "e": "I only feel grateful for his proposal, not dissatisfied in the least.",
+    "m": "Түүний саналд би талархах л сэтгэлтэй байна, огт сэтгэл дундуур байхгүй."
+   }
+  ],
+  "a": [
+   "はしても"
+  ]
+ },
+ {
+  "g": "たるもの",
+  "t": "advanced",
+  "l": 9,
+  "j": "N1",
+  "e": "たるもの and であるからには both frame a duty as following naturally from one's status, but たるもの is a formal, old-fashioned noun-modifying pattern meaning \"as a true X should.\"",
+  "m": "たるもの болон であるからには хоёулаа үүргийг өөрийн байдлаас байгалиар гарч ирж буй мэт харуулдаг ч たるもの нь \"жинхэнэ X хэрхэн байх ёстой\" гэсэн утгатай албан ёсны, хуучинсаг нэр үг өөрчлөгч загвар юм.",
+  "v": [
+   {
+    "j": "リーダーたるもの、<ruby>部下<rp>(</rp><rt>ぶか</rt><rp>)</rp></ruby>の<ruby>意見<rp>(</rp><rt>いけん</rt><rp>)</rp></ruby>にも<ruby>耳<rp>(</rp><rt>みみ</rt><rp>)</rp></ruby>を<ruby>傾<rp>(</rp><rt>かたむ</rt><rp>)</rp></ruby>けるべきだ。",
+    "e": "As someone who is a leader, one should listen to the opinions of subordinates too.",
+    "m": "Удирдагч хүн бол харьяа ажилтнуудынхаа саналыг ч сонсох ёстой."
+   }
+  ],
+  "a": [
+   "からには"
+  ]
+ },
+ {
+  "g": "からとて",
+  "t": "advanced",
+  "l": 9,
+  "j": "N1",
+  "e": "からとて and からといって both reject a conclusion someone might jump to based on a stated reason, with からとて being an old-fashioned, literary variant of the everyday からといって.",
+  "m": "からとて болон からといって хоёулаа мэдэгдсэн шалтгаан дээр үндэслэн хэн нэгний гарган авч болох дүгнэлтийг үгүйсгэдэг бөгөөд からとて нь өдөр тутмын からといって-ийн хуучинсаг, утга зохиолын хувилбар юм.",
+  "v": [
+   {
+    "j": "<ruby>若<rp>(</rp><rt>わか</rt><rp>)</rp></ruby>いからとて、<ruby>無理<rp>(</rp><rt>むり</rt><rp>)</rp></ruby>をしていいわけではない。",
+    "e": "Just because you're young doesn't mean it's fine to push yourself too hard.",
+    "m": "Залуу гэдэг чинь өөрийгөө хэт шахаж болно гэсэн үг биш."
+   }
+  ],
+  "a": [
+   "からといって"
+  ]
+ },
+ {
+  "g": "は別として",
+  "t": "advanced",
+  "l": 9,
+  "j": "N2",
+  "e": "いざしらず and は別として both set one case aside as a separate issue before focusing on the case that really matters, with いざしらず being a more literary, old-fashioned choice.",
+  "m": "いざしらず болон は別として хоёулаа жинхэнэ чухал тохиолдол руу анхаарлаа хандуулахын өмнө нэг тохиолдлыг тусдаа асуудал болгон хойш тавьдаг бөгөөд いざしらず нь илүү утга зохиолын, хуучинсаг сонголт юм.",
+  "v": [
+   {
+    "j": "<ruby>昔<rp>(</rp><rt>むかし</rt><rp>)</rp></ruby>は<ruby>別<rp>(</rp><rt>べつ</rt><rp>)</rp></ruby>として、<ruby>今<rp>(</rp><rt>いま</rt><rp>)</rp></ruby>の<ruby>時代<rp>(</rp><rt>じだい</rt><rp>)</rp></ruby>にその<ruby>考<rp>(</rp><rt>かんが</rt><rp>)</rp></ruby>え<ruby>方<rp>(</rp><rt>かた</rt><rp>)</rp></ruby>は<ruby>通用<rp>(</rp><rt>つうよう</rt><rp>)</rp></ruby>しない。",
+    "e": "Whatever the case may have been in the past, that way of thinking doesn't work in today's era.",
+    "m": "Өнгөрсөнд ямар байсан нь хамаагүй, тэр төрлийн сэтгэлгээ өнөөгийн эринд тохирохгүй."
+   }
+  ],
+  "a": [
+   "ならいざしらず"
+  ]
+ },
+ {
+  "g": "ならいざしらず",
+  "t": "advanced",
+  "l": 9,
+  "j": "N1",
+  "e": "いざしらず and は別として both set one case aside as a separate issue before focusing on the case that really matters, with いざしらず being a more literary, old-fashioned choice.",
+  "m": "いざしらず болон は別として хоёулаа жинхэнэ чухал тохиолдол руу анхаарлаа хандуулахын өмнө нэг тохиолдлыг тусдаа асуудал болгон хойш тавьдаг бөгөөд いざしらず нь илүү утга зохиолын, хуучинсаг сонголт юм.",
+  "v": [
+   {
+    "j": "<ruby>昔<rp>(</rp><rt>むかし</rt><rp>)</rp></ruby>はいざしらず、<ruby>今<rp>(</rp><rt>いま</rt><rp>)</rp></ruby>の<ruby>時代<rp>(</rp><rt>じだい</rt><rp>)</rp></ruby>にその<ruby>考<rp>(</rp><rt>かんが</rt><rp>)</rp></ruby>え<ruby>方<rp>(</rp><rt>かた</rt><rp>)</rp></ruby>は<ruby>通用<rp>(</rp><rt>つうよう</rt><rp>)</rp></ruby>しない。",
+    "e": "Whatever the case may have been in the past, that way of thinking doesn't work in today's era.",
+    "m": "Өнгөрсөнд ямар байсан нь хамаагүй, тэр төрлийн сэтгэлгээ өнөөгийн эринд тохирохгүй."
+   },
+   {
+    "j": "<ruby>初心者<rp>(</rp><rt>しょしんしゃ</rt><rp>)</rp></ruby>ならいざしらず、プロがこんなミスをするとは<ruby>信<rp>(</rp><rt>しん</rt><rp>)</rp></ruby>じがたい。",
+    "e": "If it were a beginner, that would be one thing, but it's hard to believe a professional would make a mistake like this.",
+    "m": "Шинэхэн байсан бол ойлгомжтой байх байсан, гэвч мэргэжлийн хүн ийм алдаа гаргана гэдэгт итгэхэд хэцүү."
+   }
+  ],
+  "a": [
+   "はともかく",
+   "は別として"
+  ]
+ },
+ {
+  "g": "にふさわしい",
+  "t": "advanced",
+  "l": 9,
+  "j": "N2",
+  "e": "にたる and にふさわしい both say someone or something meets the bar for a stated quality, but にたる is a formal, literary verb meaning \"to be sufficient/worthy of,\" while にふさわしい is the everyday word for \"fitting.\"",
+  "m": "にたる болон にふさわしい хоёулаа хэн нэгэн буюу ямар нэг зүйл мэдэгдсэн чанарын түвшинд хүрснийг хэлдэг ч にたる нь \"хангалттай/зохистой байх\" гэсэн албан ёсны, утга зохиолын үйл үг бол にふさわしい нь \"тохирсон\" гэсэн өдөр тутмын үг юм.",
+  "v": [
+   {
+    "j": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>信頼<rp>(</rp><rt>しんらい</rt><rp>)</rp></ruby>するにふさわしい<ruby>人物<rp>(</rp><rt>じんぶつ</rt><rp>)</rp></ruby>だ。",
+    "e": "He is a person worthy of trust.",
+    "m": "Тэр итгэл хүлээхэд зохистой хүн юм."
+   }
+  ],
+  "a": [
+   "にたる"
+  ]
+ },
+ {
+  "g": "にたる",
+  "t": "advanced",
+  "l": 9,
+  "j": "N1",
+  "e": "にたる and にふさわしい both say someone or something meets the bar for a stated quality, but にたる is a formal, literary verb meaning \"to be sufficient/worthy of,\" while にふさわしい is the everyday word for \"fitting.\"",
+  "m": "にたる болон にふさわしい хоёулаа хэн нэгэн буюу ямар нэг зүйл мэдэгдсэн чанарын түвшинд хүрснийг хэлдэг ч にたる нь \"хангалттай/зохистой байх\" гэсэн албан ёсны, утга зохиолын үйл үг бол にふさわしい нь \"тохирсон\" гэсэн өдөр тутмын үг юм.",
+  "v": [
+   {
+    "j": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>信頼<rp>(</rp><rt>しんらい</rt><rp>)</rp></ruby>するにたる<ruby>人物<rp>(</rp><rt>じんぶつ</rt><rp>)</rp></ruby>だ。",
+    "e": "He is a person worthy of trust.",
+    "m": "Тэр итгэл хүлээхэд зохистой хүн юм."
+   },
+   {
+    "j": "この<ruby>条約<rp>(</rp><rt>じょうやく</rt><rp>)</rp></ruby>の<ruby>締結<rp>(</rp><rt>ていけつ</rt><rp>)</rp></ruby>は、<ruby>両国関係<rp>(</rp><rt>りょうこくかんけい</rt><rp>)</rp></ruby>にとって<ruby>画期的<rp>(</rp><rt>かっきてき</rt><rp>)</rp></ruby>な<ruby>一歩<rp>(</rp><rt>いっぽ</rt><rp>)</rp></ruby>と<ruby>評<rp>(</rp><rt>ひょう</rt><rp>)</rp></ruby>するにたる。",
+    "e": "This treaty's conclusion can fairly be called, without exaggeration, a groundbreaking step for relations between the two countries.",
+    "m": "Энэ гэрээ байгуулагдсныг хоёр орны харилцаанд түүхэн ач холбогдолтой алхам гэж хэтрүүлэлгүй хэлж болно."
+   }
+  ],
+  "a": [
+   "にふさわしい"
+  ]
+ },
+ {
+  "g": "てしかるべきだ",
+  "t": "advanced",
+  "l": 10,
+  "j": "N1",
+  "e": "てしかるべきだ and べきだ both say something ought to be the case, but てしかるべきだ adds a stronger sense that the current situation is unjust and demands correction.",
+  "m": "てしかるべきだ болон べきだ хоёулаа ямар нэг зүйл тийм байх ёстойг хэлдэг ч てしかるべきだ нь одоогийн байдал шударга бус бөгөөд засах шаардлагатай гэсэн илүү хүчтэй мэдрэмжийг нэмдэг.",
+  "v": [
+   {
+    "j": "この<ruby>功績<rp>(</rp><rt>こうせき</rt><rp>)</rp></ruby>は、もっと<ruby>評価<rp>(</rp><rt>ひょうか</rt><rp>)</rp></ruby>されてしかるべきだ。",
+    "e": "This achievement rightfully ought to be recognized more.",
+    "m": "Энэ амжилтыг илүү өргөнөөр хүлээн зөвшөөрөх учиртай."
+   },
+   {
+    "j": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>勇気<rp>(</rp><rt>ゆうき</rt><rp>)</rp></ruby>ある<ruby>行動<rp>(</rp><rt>こうどう</rt><rp>)</rp></ruby>は、<ruby>称賛<rp>(</rp><rt>しょうさん</rt><rp>)</rp></ruby>されてしかるべきだ。",
+    "e": "His courageous act deserves praise.",
+    "m": "Түүний зоригтой үйлдэл магтаал хүртэхүйц юм."
+   }
+  ],
+  "a": [
+   "べき"
+  ]
+ },
+ {
+  "g": "をきっかけに",
+  "t": "advanced",
+  "l": 10,
+  "j": "N2",
+  "e": "を皮切りに and をきっかけに both mark the starting point that sets a series of events in motion, but を皮切りに specifically implies a sequence of similar events following one after another.",
+  "m": "を皮切りに болон をきっかけに хоёулаа хэд хэдэн үйл явдлыг хөдөлгөж эхлүүлэх эхлэлийн цэгийг заадаг ч を皮切りに нь тухайлбал ижил төстэй үйл явдлууд дараалан дагаж байгааг илэрхийлдэг.",
+  "v": [
+   {
+    "j": "<ruby>東京<rp>(</rp><rt>とうきょう</rt><rp>)</rp></ruby><ruby>公演<rp>(</rp><rt>こうえん</rt><rp>)</rp></ruby>をきっかけに、<ruby>全国<rp>(</rp><rt>ぜんこく</rt><rp>)</rp></ruby>ツアーが<ruby>始<rp>(</rp><rt>はじ</rt><rp>)</rp></ruby>まった。",
+    "e": "Starting with the Tokyo performance, the nationwide tour began.",
+    "m": "Токиогийн тоглолтоос эхлэн улс даяарх аялан тоглолт эхэллээ."
+   },
+   {
+    "j": "この<ruby>制度<rp>(</rp><rt>せいど</rt><rp>)</rp></ruby>の<ruby>導入<rp>(</rp><rt>どうにゅう</rt><rp>)</rp></ruby>をきっかけに、さまざまな<ruby>改革<rp>(</rp><rt>かいかく</rt><rp>)</rp></ruby>が<ruby>進<rp>(</rp><rt>すす</rt><rp>)</rp></ruby>められた。",
+    "e": "Starting with the introduction of this system, various reforms were carried out.",
+    "m": "Энэ системийг нэвтрүүлснээс эхлэн олон төрлийн шинэчлэл хийгдсэн."
+   },
+   {
+    "j": "この<ruby>発表<rp>(</rp><rt>はっぴょう</rt><rp>)</rp></ruby>をきっかけに、<ruby>市場<rp>(</rp><rt>しじょう</rt><rp>)</rp></ruby>は<ruby>大<rp>(</rp><rt>おお</rt><rp>)</rp></ruby>きく<ruby>動<rp>(</rp><rt>うご</rt><rp>)</rp></ruby>いた。",
+    "e": "Prompted by this announcement, the market moved significantly.",
+    "m": "Энэ мэдэгдлийн улмаас зах зээл ихээхэн хөдөлсөн."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "とみえて",
+  "t": "advanced",
+  "l": 10,
+  "j": "N1",
+  "e": "とみえて and らしく both draw an inference from visible evidence, but とみえて frames the inference as something the speaker is visually observing right now.",
+  "m": "とみえて болон らしく хоёулаа харагдах нотолгооноос таамаглал гаргадаг ч とみえて нь таамаглалыг илэрхийлэгч яг одоо нүдээр ажиглаж буй зүйл мэт харуулдаг.",
+  "v": [
+   {
+    "j": "よほど<ruby>疲<rp>(</rp><rt>つか</rt><rp>)</rp></ruby>れているとみえて、<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>はずっとあくびをしている。",
+    "e": "He seems really tired, as he's been yawning the whole time.",
+    "m": "Тэр байнга эсгэрч байгаагаас харахад маш их ядарсан бололтой."
+   }
+  ],
+  "a": [
+   "らしい"
+  ]
+ },
+ {
+  "g": "しまいには",
+  "t": "advanced",
+  "l": 10,
+  "j": "N2",
+  "e": "しまいには and 最後には both introduce the eventual, often unexpected, outcome of a drawn-out process, and are close to interchangeable in casual and neutral narration alike.",
+  "m": "しまいには болон 最後には хоёулаа удаан үргэлжилсэн явцын эцсийн, ихэвчлэн гэнэтийн үр дүнг танилцуулдаг бөгөөд энгийн болон төвийг сахисан өгүүлэмжид аль алинд нь бараг сольж хэрэглэгддэг.",
+  "v": [
+   {
+    "j": "<ruby>話<rp>(</rp><rt>はなし</rt><rp>)</rp></ruby>は<ruby>二転三転<rp>(</rp><rt>にてんさんてん</rt><rp>)</rp></ruby>し、しまいには<ruby>誰<rp>(</rp><rt>だれ</rt><rp>)</rp></ruby>も<ruby>本題<rp>(</rp><rt>ほんだい</rt><rp>)</rp></ruby>を<ruby>覚<rp>(</rp><rt>おぼ</rt><rp>)</rp></ruby>えていなかった。",
+    "e": "The discussion twisted and turned so much that, in the end, no one remembered the main topic.",
+    "m": "Ярилцлага олон эргэлт бууралттай болж, эцэст нь хэн ч гол сэдвийг санахаа больсон."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "はともかく",
+  "t": "advanced",
+  "l": 10,
+  "j": "N2",
+  "e": "ならいざしらず and はともかく both set aside a lesser, more forgivable case in order to sharpen the contrast with the surprising case actually at hand, with ならいざしらず carrying a more literary, dismissive edge.",
+  "m": "ならいざしらず болон はともかく хоёулаа гайхмаар бодит тохиолдолтой эсрэг байдлыг хурцлахын тулд бага, уучлагдахуйц тохиолдлыг хойш тавьдаг бөгөөд ならいざしらず нь илүү утга зохиолын, үл тоомсорлосон ирмэгтэй.",
+  "v": [
+   {
+    "j": "<ruby>初心者<rp>(</rp><rt>しょしんしゃ</rt><rp>)</rp></ruby>はともかく、プロがこんなミスをするとは<ruby>信<rp>(</rp><rt>しん</rt><rp>)</rp></ruby>じがたい。",
+    "e": "If it were a beginner, that would be one thing, but it's hard to believe a professional would make a mistake like this.",
+    "m": "Шинэхэн байсан бол ойлгомжтой байх байсан, гэвч мэргэжлийн хүн ийм алдаа гаргана гэдэгт итгэхэд хэцүү."
+   },
+   {
+    "j": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>提案<rp>(</rp><rt>ていあん</rt><rp>)</rp></ruby>は、コストの<ruby>面<rp>(</rp><rt>めん</rt><rp>)</rp></ruby>はともかく、アイデア<ruby>自体<rp>(</rp><rt>じたい</rt><rp>)</rp></ruby>は<ruby>評価<rp>(</rp><rt>ひょうか</rt><rp>)</rp></ruby>できる。",
+    "e": "Setting aside the cost aspect, the idea itself is worth praising.",
+    "m": "Өртгийн асуудлыг хойш тавихад, санаа нь өөрөө магтаал хүртэхүйц."
+   }
+  ],
+  "a": [
+   "ならいざしらず"
+  ]
+ },
+ {
+  "g": "のような",
+  "t": "advanced",
+  "l": 10,
+  "j": "N4",
+  "e": "ごとき and のような both compare something to a stated example, but ごとき is an old literary form that here carries a distinctly belittling, dismissive tone toward the person being compared.",
+  "m": "ごとき болон のような хоёулаа ямар нэг зүйлийг мэдэгдсэн жишээтэй харьцуулдаг ч ごとき нь эртний утга зохиолын хэлбэр бөгөөд энд харьцуулж буй хүнд туйлын басамжилсан, үл тоомсорлосон өнгийг агуулдаг.",
+  "v": [
+   {
+    "j": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>のような<ruby>人間<rp>(</rp><rt>にんげん</rt><rp>)</rp></ruby>に、<ruby>負<rp>(</rp><rt>ま</rt><rp>)</rp></ruby>けるわけにはいかない。",
+    "e": "I can't afford to lose to someone like him.",
+    "m": "Түүн шиг хүнд ялагдаж болохгүй."
+   }
+  ],
+  "a": [
+   "ごとき"
+  ]
+ },
+ {
+  "g": "ごとき",
+  "t": "advanced",
+  "l": 10,
+  "j": "N1",
+  "e": "ごとき and のような both compare something to a stated example, but ごとき is an old literary form that here carries a distinctly belittling, dismissive tone toward the person being compared.",
+  "m": "ごとき болон のような хоёулаа ямар нэг зүйлийг мэдэгдсэн жишээтэй харьцуулдаг ч ごとき нь эртний утга зохиолын хэлбэр бөгөөд энд харьцуулж буй хүнд туйлын басамжилсан, үл тоомсорлосон өнгийг агуулдаг.",
+  "v": [
+   {
+    "j": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>ごとき<ruby>人間<rp>(</rp><rt>にんげん</rt><rp>)</rp></ruby>に、<ruby>負<rp>(</rp><rt>ま</rt><rp>)</rp></ruby>けるわけにはいかない。",
+    "e": "I can't afford to lose to someone like him.",
+    "m": "Түүн шиг хүнд ялагдаж болохгүй."
+   }
+  ],
+  "a": [
+   "のような"
+  ]
+ },
+ {
+  "g": "ほかない",
+  "t": "advanced",
+  "l": 11,
+  "j": "N2",
+  "e": "ほかない and しかない both mean 'there's no choice but to' — they're genuinely interchangeable, with ほかない reading as slightly more formal or written.",
+  "m": "ほかない болон しかない хоёулаа \"...хийхээс өөр аргагүй\" гэсэн утгатай — эдгээрийг жинхэнэ сольж хэрэглэж болно, ほかない нь бага зэрэг илүү албан ёсны, бичгийн сонстог.",
+  "v": [
+   {
+    "j": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>の<ruby>態度<rp>(</rp><rt>たいど</rt><rp>)</rp></ruby>にはあきれるほかない。",
+    "e": "There's nothing to do but be exasperated by his attitude.",
+    "m": "Түүний хандлагад цочирдохоос өөр аргагүй."
+   },
+   {
+    "j": "その<ruby>批判<rp>(</rp><rt>ひはん</rt><rp>)</rp></ruby>は<ruby>的外<rp>(</rp><rt>まとはず</rt><rp>)</rp></ruby>れというほかない。",
+    "e": "That criticism can only be called off the mark.",
+    "m": "Тэр шүүмжлэлийг зорилгогүй гэж л хэлж болно."
+   },
+   {
+    "j": "その<ruby>選手<rp>(</rp><rt>せんしゅ</rt><rp>)</rp></ruby>の<ruby>活躍<rp>(</rp><rt>かつやく</rt><rp>)</rp></ruby>ぶりは、まさに<ruby>驚異<rp>(</rp><rt>きょうい</rt><rp>)</rp></ruby>というほかない。",
+    "e": "That player's performance can only be called astonishing.",
+    "m": "Тэр тоглогчийн гүйцэтгэлийг гайхалтай гэж л хэлж болно."
+   }
+  ],
+  "a": [
+   "ざるをえない",
+   "しかない"
+  ]
+ },
+ {
+  "g": "ずにはおれない",
+  "t": "advanced",
+  "l": 11,
+  "j": "N1",
+  "e": "ずにはいられない and ずにはおれない both mean 'can't help but do X' — おれない is simply the more literary, formal-sounding version of いられない.",
+  "m": "ずにはいられない болон ずにはおれない хоёулаа \"X хийхгүй байж чадахгүй\" гэсэн утгатай — おれない нь зөвхөн いられない-ийн илүү утга зохиолын, албан ёсны сонсогдох хувилбар юм.",
+  "v": [
+   {
+    "j": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>合格<rp>(</rp><rt>ごうかく</rt><rp>)</rp></ruby>の<ruby>知<rp>(</rp><rt>し</rt><rp>)</rp></ruby>らせを<ruby>聞<rp>(</rp><rt>き</rt><rp>)</rp></ruby>いて、<ruby>喜<rp>(</rp><rt>よろこ</rt><rp>)</rp></ruby>ばずにはおれなかった。",
+    "e": "On hearing the news of his acceptance, he couldn't help but rejoice.",
+    "m": "Элсэлтийн мэдээг сонсоод тэр баярлахгүй байж чадсангүй."
+   },
+   {
+    "j": "この<ruby>惨状<rp>(</rp><rt>さんじょう</rt><rp>)</rp></ruby>を<ruby>目<rp>(</rp><rt>め</rt><rp>)</rp></ruby>の<ruby>当<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>たりにして、<ruby>涙<rp>(</rp><rt>なみだ</rt><rp>)</rp></ruby>せずにはおれなかった。",
+    "e": "Witnessing this devastation firsthand, I couldn't help but shed tears.",
+    "m": "Энэ сүйрлийг өөрийн нүдээр харснаа нулимс дуслуулахгүй байж чадсангүй."
+   },
+   {
+    "j": "この<ruby>惨状<rp>(</rp><rt>さんじょう</rt><rp>)</rp></ruby>を<ruby>目<rp>(</rp><rt>め</rt><rp>)</rp></ruby>にして、<ruby>言葉<rp>(</rp><rt>ことば</rt><rp>)</rp></ruby>を<ruby>失<rp>(</rp><rt>うしな</rt><rp>)</rp></ruby>わずには{おれなかった}。",
+    "e": "Faced with this devastation, I couldn't help but be left speechless.",
+    "m": "Энэ сүйрлийн өмнө хэлэх үггүй болохгүй байж чадсангүй."
+   }
+  ],
+  "a": [
+   "ないではいられない"
+  ]
+ },
+ {
+  "g": "に起因する",
+  "t": "advanced",
+  "l": 11,
+  "j": "N1",
+  "e": "にほかならない and に起因する both point to a single, unambiguous cause — にほかならない emphasizes 'this and nothing else,' while 起因する states the causal link more plainly, but both land on the same claim here.",
+  "m": "にほかならない болон に起因する хоёулаа нэг тодорхой, эргэлзээгүй шалтгаан руу заадаг — にほかならない нь \"энэ бөгөөд өөр юу ч биш\" гэдгийг онцолдог бол 起因する нь шалтгаант холбоог илүү энгийнээр хэлдэг, гэхдээ хоёул энд ижил мэдэгдэлд хүрдэг.",
+  "v": [
+   {
+    "j": "<ruby>今回<rp>(</rp><rt>こんかい</rt><rp>)</rp></ruby>の<ruby>不祥事<rp>(</rp><rt>ふしょうじ</rt><rp>)</rp></ruby>は<ruby>会社<rp>(</rp><rt>かいしゃ</rt><rp>)</rp></ruby>の<ruby>管理体制<rp>(</rp><rt>かんりたいせい</rt><rp>)</rp></ruby>の<ruby>甘<rp>(</rp><rt>あま</rt><rp>)</rp></ruby>さに<ruby>起因<rp>(</rp><rt>きいん</rt><rp>)</rp></ruby>する。",
+    "e": "This scandal is nothing other than a result of the company's lax management.",
+    "m": "Энэ будлиан бол компанийн сул удирдлагын үр дагавар л юм."
+   },
+   {
+    "j": "この<ruby>一連<rp>(</rp><rt>いちれん</rt><rp>)</rp></ruby>の<ruby>不祥事<rp>(</rp><rt>ふしょうじ</rt><rp>)</rp></ruby>は、<ruby>経営陣<rp>(</rp><rt>けいえいじん</rt><rp>)</rp></ruby>の<ruby>慢心<rp>(</rp><rt>まんしん</rt><rp>)</rp></ruby>に<ruby>起因<rp>(</rp><rt>きいん</rt><rp>)</rp></ruby>すると<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>わざるを<ruby>得<rp>(</rp><rt>え</rt><rp>)</rp></ruby>ない。",
+    "e": "This series of scandals must be said to stem from the arrogance of the management.",
+    "m": "Энэ цуврал будлианууд удирдлагын биеэ тоомгой байдлаас үүдэлтэй гэдгийг хэлэх ёстой."
+   }
+  ],
+  "a": [
+   "にほかならない"
+  ]
+ },
+ {
+  "g": "と考えられる",
+  "t": "advanced",
+  "l": 12,
+  "j": "N2",
+  "e": "とみられる and と考えられる both present something as a widely-held view rather than a confirmed fact — they're standard interchangeable ways news reporting frames a likely conclusion.",
+  "m": "とみられる болон と考えられる хоёулаа ямар нэг зүйлийг батлагдсан баримт биш өргөн тархсан үзэл бодол мэт танилцуулдаг — эдгээр нь мэдээллийн репортаж магадлалтай дүгнэлтийг илэрхийлэх стандарт, сольж хэрэглэгддэг арга юм.",
+  "v": [
+   {
+    "j": "この<ruby>事件<rp>(</rp><rt>じけん</rt><rp>)</rp></ruby>の<ruby>背後<rp>(</rp><rt>はいご</rt><rp>)</rp></ruby>には、<ruby>組織的<rp>(</rp><rt>そしきてき</rt><rp>)</rp></ruby>な<ruby>犯罪<rp>(</rp><rt>はんざい</rt><rp>)</rp></ruby>が<ruby>存在<rp>(</rp><rt>そんざい</rt><rp>)</rp></ruby>すると<ruby>考<rp>(</rp><rt>かんが</rt><rp>)</rp></ruby>えられる。",
+    "e": "Behind this incident, organized crime is believed to be involved.",
+    "m": "Энэ хэргийн ард зохион байгуулалттай гэмт хэрэг оролцсон гэж үзэж байна."
+   }
+  ],
+  "a": [
+   "とみられる"
+  ]
+ },
+ {
+  "g": "とみられる",
+  "t": "advanced",
+  "l": 12,
+  "j": "N2",
+  "e": "とみられる and と考えられる both present something as a widely-held view rather than a confirmed fact — they're standard interchangeable ways news reporting frames a likely conclusion.",
+  "m": "とみられる болон と考えられる хоёулаа ямар нэг зүйлийг батлагдсан баримт биш өргөн тархсан үзэл бодол мэт танилцуулдаг — эдгээр нь мэдээллийн репортаж магадлалтай дүгнэлтийг илэрхийлэх стандарт, сольж хэрэглэгддэг арга юм.",
+  "v": [
+   {
+    "j": "この<ruby>事件<rp>(</rp><rt>じけん</rt><rp>)</rp></ruby>の<ruby>背後<rp>(</rp><rt>はいご</rt><rp>)</rp></ruby>には、<ruby>組織的<rp>(</rp><rt>そしきてき</rt><rp>)</rp></ruby>な<ruby>犯罪<rp>(</rp><rt>はんざい</rt><rp>)</rp></ruby>が<ruby>存在<rp>(</rp><rt>そんざい</rt><rp>)</rp></ruby>するとみられる。",
+    "e": "Behind this incident, organized crime is believed to be involved.",
+    "m": "Энэ хэргийн ард зохион байгуулалттай гэмт хэрэг оролцсон гэж үзэж байна."
+   }
+  ],
+  "a": [
+   "と考えられる"
+  ]
+ },
+ {
+  "g": "ことなく",
+  "t": "advanced",
+  "l": 12,
+  "j": "N2",
+  "e": "をものともせず and を気にすることなく both describe pushing forward despite an obstacle — をものともせず carries the extra sense of actively overcoming that obstacle, but in describing this outcome, both read the same way.",
+  "m": "をものともせず болон を気にすることなく хоёулаа саадыг үл харгалзан урагшлахыг тодорхойлдог — をものともせず нь тэр саадыг идэвхтэй даван туулах нэмэлт утгыг агуулдаг ч энэ үр дүнг тодорхойлоход хоёул ижилхэн уншигдана.",
+  "v": [
+   {
+    "j": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>周囲<rp>(</rp><rt>しゅうい</rt><rp>)</rp></ruby>の<ruby>反対<rp>(</rp><rt>はんたい</rt><rp>)</rp></ruby>を<ruby>気<rp>(</rp><rt>き</rt><rp>)</rp></ruby>にすることなく、<ruby>計画<rp>(</rp><rt>けいかく</rt><rp>)</rp></ruby>を<ruby>実行<rp>(</rp><rt>じっこう</rt><rp>)</rp></ruby>した。",
+    "e": "Ignoring the opposition around him, he carried out the plan.",
+    "m": "Эргэн тойрны эсэргүүцлийг тоохгүйгээр тэр төлөвлөгөөгөө хэрэгжүүлсэн."
+   }
+  ],
+  "a": [
+   "をものともせず"
+  ]
+ },
+ {
+  "g": "に先んじて",
+  "t": "advanced",
+  "l": 12,
+  "j": "N1",
+  "e": "にさきだち and に先んじて both mean 'ahead of/prior to X' — they're standard, interchangeable ways to mark something happening before a scheduled event.",
+  "m": "にさきだち болон に先んじて хоёулаа \"X-ээс өмнө/урьд\" гэсэн утгатай — эдгээр нь хуваарьт үйл явдлын өмнө болж буй зүйлийг тэмдэглэх стандарт, сольж хэрэглэгддэг арга юм.",
+  "v": [
+   {
+    "j": "<ruby>新<rp>(</rp><rt>あたら</rt><rp>)</rp></ruby>しい<ruby>法律<rp>(</rp><rt>ほうりつ</rt><rp>)</rp></ruby>の<ruby>施行<rp>(</rp><rt>しこう</rt><rp>)</rp></ruby>に<ruby>先<rp>(</rp><rt>さき</rt><rp>)</rp></ruby>んじて、<ruby>説明会<rp>(</rp><rt>せつめいかい</rt><rp>)</rp></ruby>が<ruby>開<rp>(</rp><rt>ひら</rt><rp>)</rp></ruby>かれた。",
+    "e": "Ahead of the new law taking effect, an explanatory session was held.",
+    "m": "Шинэ хуулийн хэрэгжихээс өмнө танилцуулах уулзалт зохион байгуулагдсан."
+   }
+  ],
+  "a": [
+   "にさきだち"
+  ]
+ },
+ {
+  "g": "でしかない",
+  "t": "advanced",
+  "l": 12,
+  "j": "N2",
+  "e": "にすぎない and でしかない both mean 'is nothing more than X' — they're standard interchangeable ways to downplay something as merely a small or limited case.",
+  "m": "にすぎない болон でしかない хоёулаа \"X-ээс өөр юу ч биш\" гэсэн утгатай — эдгээр нь ямар нэг зүйлийг зөвхөн бага буюу хязгаарлагдмал тохиолдол гэж бууруулах стандарт, сольж хэрэглэгддэг арга юм.",
+  "v": [
+   {
+    "j": "この<ruby>結果<rp>(</rp><rt>けっか</rt><rp>)</rp></ruby>は<ruby>予想<rp>(</rp><rt>よそう</rt><rp>)</rp></ruby>でしかない。",
+    "e": "This result is nothing more than a prediction.",
+    "m": "Энэ үр дүн зөвхөн таамаглал төдий юм."
+   }
+  ],
+  "a": [
+   "にすぎない"
+  ]
+ },
+ {
+  "g": "としか思えない",
+  "t": "advanced",
+  "l": 13,
+  "j": "N2",
+  "e": "としか言いようがない and としか思えない both mean 'there's no way to see it other than X' — they're close, standard ways to state an unavoidable conclusion.",
+  "m": "としか言いようがない болон としか思えない хоёулаа \"X-ээс өөрөөр харах арга байхгүй\" гэсэн утгатай — эдгээр нь зайлшгүй дүгнэлтийг илэрхийлэх ойролцоо, стандарт арга юм.",
+  "v": [
+   {
+    "j": "その<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>い<ruby>訳<rp>(</rp><rt>わけ</rt><rp>)</rp></ruby>は<ruby>苦<rp>(</rp><rt>くる</rt><rp>)</rp></ruby>しいとしか<ruby>思<rp>(</rp><rt>おも</rt><rp>)</rp></ruby>えない。",
+    "e": "That excuse can only be called weak.",
+    "m": "Тэр шалтгааныг сул гэж л нэрлэж болно."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "はずがない",
+  "t": "advanced",
+  "l": 13,
+  "j": "N4",
+  "e": "ものではない and はずがない both firmly reject a possibility — they're close, standard interchangeable ways to state that something couldn't have happened the easy way.",
+  "m": "ものではない болон はずがない хоёулаа боломжийг тэс үгүйсгэдэг — эдгээр нь ямар нэг зүйл амархан аргаар болоогүй байх ёстойг илэрхийлэх ойролцоо, стандарт сольж хэрэглэгддэг арга юм.",
+  "v": [
+   {
+    "j": "その<ruby>成果<rp>(</rp><rt>せいか</rt><rp>)</rp></ruby>は<ruby>並大抵<rp>(</rp><rt>なみたいてい</rt><rp>)</rp></ruby>の<ruby>努力<rp>(</rp><rt>どりょく</rt><rp>)</rp></ruby>で<ruby>得<rp>(</rp><rt>え</rt><rp>)</rp></ruby>られるはずがない。",
+    "e": "That achievement isn't something ordinary effort could produce.",
+    "m": "Тэр амжилт нь энгийн хичээл зүтгэлээр гарах зүйл биш."
+   },
+   {
+    "j": "この<ruby>問題<rp>(</rp><rt>もんだい</rt><rp>)</rp></ruby>の<ruby>根<rp>(</rp><rt>ね</rt><rp>)</rp></ruby>は<ruby>深<rp>(</rp><rt>ふか</rt><rp>)</rp></ruby>く、<ruby>一朝一夕<rp>(</rp><rt>いっちょういっせき</rt><rp>)</rp></ruby>に<ruby>解決<rp>(</rp><rt>かいけつ</rt><rp>)</rp></ruby>できるはずがない。",
+    "e": "This problem runs deep, and there's no way it can be solved overnight.",
+    "m": "Энэ асуудал гүнзгий бөгөөд нэг шөнийн дотор шийдэгдэх боломжгүй."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "たが最後",
+  "t": "advanced",
+  "l": 13,
+  "j": "N1",
+  "e": "たら and たが最後 can both mark 'once X happens, an irreversible result follows' — たが最後 adds extra emphasis on there being no going back, but here both land on the same 'you're hooked for good' meaning.",
+  "m": "たら болон たが最後 хоёулаа \"X болмогц эргэлт буцалтгүй үр дүн дагана\"-ыг заадаг — たが最後 нь буцах боломжгүйг нэмж онцолдог ч энд хоёул ижил \"мөнхөд татагдсан\" гэсэн утгад хүрдэг.",
+  "v": [
+   {
+    "j": "その<ruby>店<rp>(</rp><rt>みせ</rt><rp>)</rp></ruby>の<ruby>味<rp>(</rp><rt>あじ</rt><rp>)</rp></ruby>は<ruby>一度<rp>(</rp><rt>いちど</rt><rp>)</rp></ruby><ruby>食<rp>(</rp><rt>た</rt><rp>)</rp></ruby>べたが<ruby>最後<rp>(</rp><rt>さいご</rt><rp>)</rp></ruby>、<ruby>忘<rp>(</rp><rt>わす</rt><rp>)</rp></ruby>れられない。",
+    "e": "Once you've tasted that shop's food, you'll never forget it.",
+    "m": "Тэр дэлгүүрийн хоолыг нэг амталсан бол хэзээ ч мартахгүй."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "ながらも",
+  "t": "advanced",
+  "l": 13,
+  "j": "N2",
+  "e": "つつも and ながらも both mean 'while also/even though X' when two contrasting things happen at once — they're standard, interchangeable forms of the same concessive link.",
+  "m": "つつも болон ながらも хоёулаа хоёр эсрэг зүйл зэрэг болох үед \"X хийж байхад/хийсэн ч гэсэн\" гэсэн утгатай — эдгээр нь ижил зөвшилцлийн холбогчийн стандарт, сольж хэрэглэгддэг хэлбэрүүд юм.",
+  "v": [
+   {
+    "j": "<ruby>彼<rp>(</rp><rt>かれ</rt><rp>)</rp></ruby>は<ruby>失敗<rp>(</rp><rt>しっぱい</rt><rp>)</rp></ruby>を<ruby>重<rp>(</rp><rt>かさ</rt><rp>)</rp></ruby>ねながらも、<ruby>最後<rp>(</rp><rt>さいご</rt><rp>)</rp></ruby>まで<ruby>挑戦<rp>(</rp><rt>ちょうせん</rt><rp>)</rp></ruby>をやめなかった。",
+    "e": "Even while repeatedly failing, he never stopped challenging himself until the end.",
+    "m": "Давтан бүтэлгүйтсэн ч тэр эцсээ хүртэл өөрийгөө сорихоо больсонгүй."
+   }
+  ],
+  "a": [
+   "つつも"
+  ]
+ },
+ {
+  "g": "おそれがある",
+  "t": "advanced",
+  "l": 14,
+  "j": "N2",
+  "e": "おそれがある and 可能性がある both point to a possibility, though おそれがある leans specifically toward a bad or dangerous outcome — for a disaster risk like this, both read the same way.",
+  "m": "おそれがある болон 可能性がある хоёулаа боломжийг заадаг, гэхдээ おそれがある нь тухайлбал муу буюу аюултай үр дүнд дөхдөг — ийм гамшгийн эрсдэлийн хувьд хоёул ижилхэн уншигдана.",
+  "v": [
+   {
+    "j": "この<ruby>地域<rp>(</rp><rt>ちいき</rt><rp>)</rp></ruby>で<ruby>大地震<rp>(</rp><rt>だいじしん</rt><rp>)</rp></ruby>が<ruby>発生<rp>(</rp><rt>はっせい</rt><rp>)</rp></ruby>するおそれがある。",
+    "e": "There's a risk of a major earthquake occurring in this region.",
+    "m": "Энэ бүс нутагт хүчтэй газар хөдлөлт болох эрсдэл бий."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "にしても",
+  "t": "advanced",
+  "l": 14,
+  "j": "N3",
+  "e": "においても and にしても can both mean 'even in terms of X' when adding another point of praise — they're close, standard partners for extending an evaluation to a second dimension.",
+  "m": "においても болон にしても хоёулаа өөр нэг магтаалын санааг нэмэхдээ \"X-ийн хувьд ч гэсэн\" гэсэн утгатай байж болно — эдгээр нь үнэлгээг хоёр дахь хэмжээст өргөжүүлэх ойролцоо, стандарт хос юм.",
+  "v": [
+   {
+    "j": "この<ruby>会社<rp>(</rp><rt>かいしゃ</rt><rp>)</rp></ruby>の<ruby>製品<rp>(</rp><rt>せいひん</rt><rp>)</rp></ruby>は<ruby>安全性<rp>(</rp><rt>あんぜんせい</rt><rp>)</rp></ruby>のみならず、デザインの<ruby>美<rp>(</rp><rt>うつく</rt><rp>)</rp></ruby>しさにしても<ruby>高<rp>(</rp><rt>たか</rt><rp>)</rp></ruby>く<ruby>評価<rp>(</rp><rt>ひょうか</rt><rp>)</rp></ruby>されている。",
+    "e": "This company's products are highly rated not only for safety but also for design beauty.",
+    "m": "Энэ компанийн бүтээгдэхүүн аюулгүй байдлаараа төдийгүй загварын гоо үзэсгэлэнгээрээ ч өндөр үнэлэгддэг."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "にかたくない",
+  "t": "advanced",
+  "l": 15,
+  "j": "N1",
+  "e": "想像するに余りある and 想像するにかたくない both mean the pain is easy or overwhelming to imagine — 余りある leans toward 'beyond imagining,' while かたくない leans toward 'not hard to imagine,' but both land on 'clearly immense' in this kind of sentence.",
+  "m": "想像するに余りある болон 想像するにかたくない хоёулаа өвдөлт төсөөлөхөд амархан буюу дийлдэшгүй гэдгийг илэрхийлдэг — 余りある нь \"төсөөлөхөөс давсан\"-д дөхдөг бол かたくない нь \"төсөөлөхөд хэцүү биш\"-д дөхдөг, гэхдээ ийм өгүүлбэрт хоёул \"мэдээж асар их\" гэдэгт хүрдэг.",
+  "v": [
+   {
+    "j": "<ruby>被害者<rp>(</rp><rt>ひがいしゃ</rt><rp>)</rp></ruby>の<ruby>苦痛<rp>(</rp><rt>くつう</rt><rp>)</rp></ruby>は、<ruby>想像する<rp>(</rp><rt>そうぞうする</rt><rp>)</rp></ruby>にかたくない。",
+    "e": "The victim's suffering is more than one can imagine.",
+    "m": "Хохирогчийн зовлон төсөөлж баршгүй их байна."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "ことにより",
+  "t": "advanced",
+  "l": 16,
+  "j": "N2",
+  "e": "ことで and ことにより both mark 'as a result of X happening' — ことにより is simply the more formal, written version of the same causal link.",
+  "m": "ことで болон ことにより хоёулаа \"X болсны үр дүнд\"-ийг заадаг — ことにより нь зөвхөн ижил учир шалтгааны холбоог илэрхийлэх илүү албан ёсны, бичгийн хувилбар юм.",
+  "v": [
+   {
+    "j": "この<ruby>条約<rp>(</rp><rt>じょうやく</rt><rp>)</rp></ruby>が<ruby>締結<rp>(</rp><rt>ていけつ</rt><rp>)</rp></ruby>されたことにより、<ruby>両国<rp>(</rp><rt>りょうこく</rt><rp>)</rp></ruby>の<ruby>関係<rp>(</rp><rt>かんけい</rt><rp>)</rp></ruby>は<ruby>新<rp>(</rp><rt>あら</rt><rp>)</rp></ruby>たな<ruby>段階<rp>(</rp><rt>だんかい</rt><rp>)</rp></ruby>を<ruby>迎<rp>(</rp><rt>むか</rt><rp>)</rp></ruby>えた。",
+    "e": "With this treaty concluded, relations between the two countries entered a new stage.",
+    "m": "Энэ гэрээ байгуулагдсанаар хоёр орны харилцаа шинэ шатанд орлоо."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "としか言いようがない",
+  "t": "advanced",
+  "l": 16,
+  "j": "N1",
+  "e": "ざるを得ない and としか言いようがない both express there being no way around a conclusion — they're close, standard ways to state an assessment as unavoidable.",
+  "m": "ざるを得ない болон としか言いようがない хоёулаа дүгнэлтийг тойрч гарах аргагүйг илэрхийлдэг — эдгээр нь үнэлгээг зайлшгүй гэж заах ойролцоо, стандарт арга юм.",
+  "v": [
+   {
+    "j": "この<ruby>制度<rp>(</rp><rt>せいど</rt><rp>)</rp></ruby>の<ruby>見直<rp>(</rp><rt>みなお</rt><rp>)</rp></ruby>しは<ruby>急務<rp>(</rp><rt>きゅうむ</rt><rp>)</rp></ruby>であるとしか<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>いようがない。",
+    "e": "Reviewing this system can only be called an urgent priority.",
+    "m": "Энэ системийг хянан үзэх нь яаралтай тэргүүлэх зорилт гэж л хэлж болно."
+   },
+   {
+    "j": "その<ruby>態度<rp>(</rp><rt>たいど</rt><rp>)</rp></ruby>は、あまりにも<ruby>自己中心的<rp>(</rp><rt>じこちゅうしんてき</rt><rp>)</rp></ruby>としか<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>いようがない。",
+    "e": "That attitude can only be described as far too selfish.",
+    "m": "Тэр хандлагыг хэтэрхий бардам гэж л дүгнэж болно."
+   }
+  ],
+  "a": [
+   "ざるをえない"
+  ]
+ },
+ {
+  "g": "を通して",
+  "t": "advanced",
+  "l": 16,
+  "j": "N2",
+  "e": "を通じて and を通して both mean 'through/by means of X' — they're standard, interchangeable ways to frame the channel through which something was learned.",
+  "m": "を通じて болон を通して хоёулаа \"X-ээр дамжуулан/аргаар\" гэсэн утгатай — эдгээр нь ямар нэг зүйлийг сурсан суваг руу заах стандарт, сольж хэрэглэгддэг арга юм.",
+  "v": [
+   {
+    "j": "この<ruby>取材<rp>(</rp><rt>しゅざい</rt><rp>)</rp></ruby>を<ruby>通<rp>(</rp><rt>とお</rt><rp>)</rp></ruby>して、<ruby>業界<rp>(</rp><rt>ぎょうかい</rt><rp>)</rp></ruby>の<ruby>知<rp>(</rp><rt>し</rt><rp>)</rp></ruby>られざる<ruby>一面<rp>(</rp><rt>いちめん</rt><rp>)</rp></ruby>が<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>えてきた。",
+    "e": "Through this reporting, an unknown side of the industry came into view.",
+    "m": "Энэ мэдээллээр дамжуулан салбарын үл мэдэгдэх тал ил болсон."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "と言っても差し支えない",
+  "t": "advanced",
+  "l": 16,
+  "j": "N1",
+  "e": "と言っても過言ではない and と言っても差し支えない both soften a strong claim into 'it's fair to say' — they're standard, interchangeable ways to frame a bold statement as reasonable.",
+  "m": "と言っても過言ではない болон と言っても差し支えない хоёулаа хүчтэй мэдэгдлийг \"гэж хэлэхэд шударга\" болгон зөөлрүүлдэг — эдгээр нь зоригтой мэдэгдлийг үндэслэлтэй мэт харуулах стандарт, сольж хэрэглэгддэг арга юм.",
+  "v": [
+   {
+    "j": "この<ruby>論文<rp>(</rp><rt>ろんぶん</rt><rp>)</rp></ruby>の<ruby>結論<rp>(</rp><rt>けつろん</rt><rp>)</rp></ruby>は、これまでの<ruby>通説<rp>(</rp><rt>つうせつ</rt><rp>)</rp></ruby>を<ruby>覆<rp>(</rp><rt>くつがえ</rt><rp>)</rp></ruby>すものだと<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>っても<ruby>差<rp>(</rp><rt>さ</rt><rp>)</rp></ruby>し<ruby>支<rp>(</rp><rt>つか</rt><rp>)</rp></ruby>えない。",
+    "e": "It's not an exaggeration to say this paper's conclusion overturns the conventional wisdom.",
+    "m": "Энэ өгүүллийн дүгнэлт уламжлалт ойлголтыг эргүүлдэг гэж хэлэхэд хэтрүүлэг биш."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "そのもの",
+  "t": "advanced",
+  "l": 17,
+  "j": "N2",
+  "e": "さながら and そのもの both mean 'just like/nothing other than X' when comparing something to an extreme image — they're close, standard ways to drive home the same vivid comparison.",
+  "m": "さながら болон そのもの хоёулаа туйлширсан дүр төрхтэй харьцуулахдаа \"яг л/X-ээс өөр юу ч биш\" гэсэн утгатай — эдгээр нь ижил тод харьцуулалтыг бататгах ойролцоо, стандарт арга юм.",
+  "v": [
+   {
+    "j": "その<ruby>惨状<rp>(</rp><rt>さんじょう</rt><rp>)</rp></ruby>は、まさに<ruby>地獄<rp>(</rp><rt>じごく</rt><rp>)</rp></ruby>そのものだった。",
+    "e": "That devastation was truly like a scene straight out of hell.",
+    "m": "Тэр сүйрэл үнэхээр там шиг харагдаж байлаа."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "がたい",
+  "t": "advanced",
+  "l": 17,
+  "j": "N2",
+  "e": "許されるべきものではない and 許し難いものだ both firmly reject the idea of forgiving something — they're close, standard ways to condemn an act as unforgivable.",
+  "m": "許されるべきものではない болон 許し難いものだ хоёулаа ямар нэг зүйлийг уучлах санааг тэс үгүйсгэдэг — эдгээр нь үйлдлийг уучлашгүй гэж буруутгах ойролцоо, стандарт арга юм.",
+  "v": [
+   {
+    "j": "この<ruby>裏切<rp>(</rp><rt>うらぎ</rt><rp>)</rp></ruby>り<ruby>行為<rp>(</rp><rt>こうい</rt><rp>)</rp></ruby>は、<ruby>到底<rp>(</rp><rt>とうてい</rt><rp>)</rp></ruby><ruby>許<rp>(</rp><rt>ゆる</rt><rp>)</rp></ruby>し<ruby>難<rp>(</rp><rt>がた</rt><rp>)</rp></ruby>いものだ。",
+    "e": "This act of betrayal is by no means something that can be forgiven.",
+    "m": "Энэ урвалтын үйлдлийг ямар ч тохиолдолд уучилж болохгүй."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "ずにはすまない",
+  "t": "advanced",
+  "l": 17,
+  "j": "N1",
+  "e": "ないではおかない and ずにはすまない both mean 'is bound to inevitably cause X' — they're close, standard interchangeable forms for an unavoidable consequence.",
+  "m": "ないではおかない болон ずにはすまない хоёулаа \"заавал X-ийг үүсгэнэ\" гэсэн утгатай — эдгээр нь зайлшгүй үр дагаврыг илэрхийлэх ойролцоо, стандарт сольж хэрэглэгддэг хэлбэрүүд юм.",
+  "v": [
+   {
+    "j": "この<ruby>政策<rp>(</rp><rt>せいさく</rt><rp>)</rp></ruby>の<ruby>失敗<rp>(</rp><rt>しっぱい</rt><rp>)</rp></ruby>は、<ruby>国民<rp>(</rp><rt>こくみん</rt><rp>)</rp></ruby>の<ruby>生活<rp>(</rp><rt>せいかつ</rt><rp>)</rp></ruby>に<ruby>甚大<rp>(</rp><rt>じんだい</rt><rp>)</rp></ruby>な<ruby>影響<rp>(</rp><rt>えいきょう</rt><rp>)</rp></ruby>を<ruby>及<rp>(</rp><rt>およ</rt><rp>)</rp></ruby>ぼさずにはすまない。",
+    "e": "This policy failure is bound to have a serious impact on people's lives.",
+    "m": "Энэ бодлогын алдаа хүмүүсийн амьдралд ноцтой нөлөө үзүүлэх нь гарцаагүй."
+   },
+   {
+    "j": "その<ruby>判決<rp>(</rp><rt>はんけつ</rt><rp>)</rp></ruby>は、<ruby>世論<rp>(</rp><rt>よろん</rt><rp>)</rp></ruby>の<ruby>反発<rp>(</rp><rt>はんぱつ</rt><rp>)</rp></ruby>を<ruby>招<rp>(</rp><rt>まね</rt><rp>)</rp></ruby>かずには{すまなかった}。",
+    "e": "That ruling was bound to provoke public backlash.",
+    "m": "Тэр шийдвэр олон нийтийн эсэргүүцлийг өдөөх нь гарцаагүй байсан."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "やむを得ない",
+  "t": "advanced",
+  "l": 18,
+  "j": "N2",
+  "e": "いたしかたない and やむを得ない both mean 'unavoidable/nothing can be done about it' — they're close, standard interchangeable ways to say a harsh reading of a remark is fair.",
+  "m": "いたしかたない болон やむを得ない хоёулаа \"зайлшгүй/юу ч хийж болохгүй\" гэсэн утгатай — эдгээр нь ямар нэг үгийн хатуу тайлбар шударга гэдгийг хэлэх ойролцоо, стандарт сольж хэрэглэгддэг арга юм.",
+  "v": [
+   {
+    "j": "この<ruby>発言<rp>(</rp><rt>はつげん</rt><rp>)</rp></ruby>は、<ruby>差別的<rp>(</rp><rt>さべつてき</rt><rp>)</rp></ruby>な<ruby>意図<rp>(</rp><rt>いと</rt><rp>)</rp></ruby>があったと<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>なされてもやむを<ruby>得<rp>(</rp><rt>え</rt><rp>)</rp></ruby>ない。",
+    "e": "This remark can hardly avoid being seen as having discriminatory intent.",
+    "m": "Энэ мэдэгдлийг ялгаварлан гадуурхах санаатай гэж үзэхээс өөр аргагүй."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "傾向がある",
+  "t": "advanced",
+  "l": 19,
+  "j": "N2",
+  "e": "きらいがある and 傾向がある both mean 'has a tendency toward X,' usually an undesirable one — they're standard, interchangeable ways to note a recurring pattern.",
+  "m": "きらいがある болон 傾向がある хоёулаа ихэвчлэн хүсээгүй \"X руу хандлагатай\" гэсэн утгатай — эдгээр нь давтагдах загварыг тэмдэглэх стандарт, сольж хэрэглэгддэг арга юм.",
+  "v": [
+   {
+    "j": "その<ruby>理論<rp>(</rp><rt>りろん</rt><rp>)</rp></ruby>は、<ruby>学界<rp>(</rp><rt>がっかい</rt><rp>)</rp></ruby>において<ruby>異端<rp>(</rp><rt>いたん</rt><rp>)</rp></ruby><ruby>扱<rp>(</rp><rt>あつか</rt><rp>)</rp></ruby>いされる<ruby>傾向<rp>(</rp><rt>けいこう</rt><rp>)</rp></ruby>がある。",
+    "e": "That theory has tended to be treated as heretical within academia.",
+    "m": "Тэр онолыг эрдэм шинжилгээний хүрээнд тэрс үзэл гэж үзэх хандлагатай байсан."
+   }
+  ],
+  "a": [
+   "きらいがある"
+  ]
+ },
+ {
+  "g": "ことなくして",
+  "t": "advanced",
+  "l": 20,
+  "j": "N1",
+  "e": "ずしては and ことなくして both mean 'without doing X' in a formal, literary register — they're standard, interchangeable ways to state a necessary precondition.",
+  "m": "ずしては болон ことなくして хоёулаа албан ёсны, утга зохиолын хэв маягт \"X хийхгүйгээр\" гэсэн утгатай — эдгээр нь шаардлагатай урьдчилсан нөхцлийг заах стандарт, сольж хэрэглэгддэг арга юм.",
+  "v": [
+   {
+    "j": "この<ruby>惨劇<rp>(</rp><rt>さんげき</rt><rp>)</rp></ruby>を<ruby>招<rp>(</rp><rt>まね</rt><rp>)</rp></ruby>いた<ruby>責任者<rp>(</rp><rt>せきにんしゃ</rt><rp>)</rp></ruby>を<ruby>断罪<rp>(</rp><rt>だんざい</rt><rp>)</rp></ruby>することなくして<ruby>事態<rp>(</rp><rt>じたい</rt><rp>)</rp></ruby>の<ruby>収拾<rp>(</rp><rt>しゅうしゅう</rt><rp>)</rp></ruby>はつかない。",
+    "e": "Without holding those responsible for this tragedy to account, there's no bringing the situation under control.",
+    "m": "Энэ эмгэнэлт явдлын хариуцлагатнуудыг тооцохгүйгээр нөхцөл байдлыг хяналтандаа авах боломжгүй."
    }
   ],
   "a": []
@@ -1344,6 +2935,7 @@ const GRAMMAR_INDEX = [
   ],
   "a": [
    "そう",
+   "とみえて",
    "よう"
   ]
  },
@@ -1402,7 +2994,8 @@ const GRAMMAR_INDEX = [
   "a": [
    "から",
    "ことから",
-   "せいで"
+   "せいで",
+   "ため"
   ]
  },
  {
@@ -1430,7 +3023,9 @@ const GRAMMAR_INDEX = [
    }
   ],
   "a": [
+   "がゆえに",
    "し",
+   "せいで",
    "ので"
   ]
  },
@@ -1533,7 +3128,9 @@ const GRAMMAR_INDEX = [
    }
   ],
   "a": [
-   "ないといけない"
+   "ないといけない",
+   "ないわけにはいかない",
+   "なくてはならない"
   ]
  },
  {
@@ -1584,7 +3181,8 @@ const GRAMMAR_INDEX = [
    }
   ],
   "a": [
-   "てもかまわない"
+   "てもかまわない",
+   "てもさしつかえない"
   ]
  },
  {
@@ -1631,6 +3229,7 @@ const GRAMMAR_INDEX = [
   ],
   "a": [
    "と",
+   "とき",
    "ば"
   ]
  },
@@ -1713,7 +3312,8 @@ const GRAMMAR_INDEX = [
    }
   ],
   "a": [
-   "ないでください"
+   "ないでください",
+   "なくてはならない"
   ]
  },
  {
@@ -1797,7 +3397,8 @@ const GRAMMAR_INDEX = [
    }
   ],
   "a": [
-   "たほうがいい"
+   "たほうがいい",
+   "てしかるべきだ"
   ]
  },
  {
@@ -1847,6 +3448,102 @@ const GRAMMAR_INDEX = [
   ]
  },
  {
+  "g": "んです",
+  "t": "foundation",
+  "l": 2,
+  "j": "N5",
+  "e": "んです and plain ません both simply state the fact — んです just frames it as an explanation for something, which ません doesn't add.",
+  "m": "んです болон энгийн ません хоёулаа зүгээр л баримтыг илэрхийлдэг — んです нь тухайн зүйлийн тайлбар мэт өнгө оруулдаг бол ません үүнийг нэмэхгүй.",
+  "v": [
+   {
+    "j": "この<ruby>漢字<rp>(</rp><rt>かんじ</rt><rp>)</rp></ruby>の<ruby>読<rp>(</rp><rt>よ</rt><rp>)</rp></ruby>み<ruby>方<rp>(</rp><rt>かた</rt><rp>)</rp></ruby>がわからないんです。",
+    "e": "I don't know how to read this kanji.",
+    "m": "Энэ ханзыг хэрхэн уншихыг би мэдэхгүй байна."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "とき",
+  "t": "foundation",
+  "l": 2,
+  "j": "N5",
+  "e": "間 (あいだ) and 時 (とき) can both mark 'while/when' for an ongoing action — 間 just puts a bit more focus on the whole stretch of time.",
+  "m": "間 (あいだ) болон 時 (とき) хоёулаа үргэлжилж буй үйлдлийн \"хэзээ/явцад\"-ыг заадаг — 間 нь цаг хугацааны бүхэл үргэлжлэл дээр арай илүү анхаарал хандуулдаг.",
+  "v": [
+   {
+    "j": "<ruby>電車<rp>(</rp><rt>でんしゃ</rt><rp>)</rp></ruby>に<ruby>乗<rp>(</rp><rt>の</rt><rp>)</rp></ruby>っている<ruby>時<rp>(</rp><rt>とき</rt><rp>)</rp></ruby>、ずっと<ruby>音楽<rp>(</rp><rt>おんがく</rt><rp>)</rp></ruby>を<ruby>聞<rp>(</rp><rt>き</rt><rp>)</rp></ruby>いていた。",
+    "e": "While I was on the train, I listened to music the whole time.",
+    "m": "Галт тэрэгт сууж явахдаа би байнга хөгжим сонссон."
+   },
+   {
+    "j": "テストが<ruby>終<rp>(</rp><rt>お</rt><rp>)</rp></ruby>わったとき、<ruby>遊<rp>(</rp><rt>あそ</rt><rp>)</rp></ruby>びに<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>きましょう。",
+    "e": "Once the test is over, let's go out and have some fun.",
+    "m": "Шалгалт дуусмагц гарч зугаацъя."
+   },
+   {
+    "j": "<ruby>駅<rp>(</rp><rt>えき</rt><rp>)</rp></ruby>に<ruby>着<rp>(</rp><rt>つ</rt><rp>)</rp></ruby>いた<ruby>時<rp>(</rp><rt>とき</rt><rp>)</rp></ruby>は、<ruby>電話<rp>(</rp><rt>でんわ</rt><rp>)</rp></ruby>してください。",
+    "e": "Once you arrive at the station, please call me.",
+    "m": "Буудалд ирмэгц надад залгаарай."
+   }
+  ],
+  "a": [
+   "たら"
+  ]
+ },
+ {
+  "g": "なくてはならない",
+  "t": "foundation",
+  "l": 2,
+  "j": "N4",
+  "e": "なければならない and なくてはならない are both strict-obligation forms of the same construction, just built on slightly different negative bases.",
+  "m": "なければならない болон なくてはならない хоёулаа адилхан хатуу үүргийн хэлбэр бөгөөд зөвхөн бага зэрэг өөр үгүйсгэх суурин дээр бүтдэг.",
+  "v": [
+   {
+    "j": "<ruby>明日<rp>(</rp><rt>あした</rt><rp>)</rp></ruby>までにレポートを<ruby>出<rp>(</rp><rt>だ</rt><rp>)</rp></ruby>さなくてはなりません。",
+    "e": "I have to turn in the report by tomorrow.",
+    "m": "Тайланг маргаашийн дотор өгөх ёстой."
+   },
+   {
+    "j": "パスポートを<ruby>持<rp>(</rp><rt>も</rt><rp>)</rp></ruby>っていかなくてはなりません。",
+    "e": "I have to bring my passport.",
+    "m": "Би паспортоо авч ирэх ёстой."
+   },
+   {
+    "j": "この<ruby>資料<rp>(</rp><rt>しりょう</rt><rp>)</rp></ruby>を<ruby>今日中<rp>(</rp><rt>きょうじゅう</rt><rp>)</rp></ruby>に<ruby>仕上<rp>(</rp><rt>しあ</rt><rp>)</rp></ruby>げなくてはなりません。",
+    "e": "I have to finish this document today.",
+    "m": "Энэ баримт бичгийг өнөөдөр дуусгах ёстой."
+   }
+  ],
+  "a": [
+   "てはいけない",
+   "なければならない"
+  ]
+ },
+ {
+  "g": "予定だ",
+  "t": "foundation",
+  "l": 3,
+  "j": "N4",
+  "e": "つもりだ and 予定だ both describe a plan — 予定だ leans a bit more toward something already fixed on a schedule, while つもりだ is more of a personal intention.",
+  "m": "つもりだ болон 予定だ хоёулаа төлөвлөгөөг илэрхийлдэг — 予定だ нь хуваарьт аль хэдийн тогтоогдсон зүйлд арай илүү дөхдөг бол つもりだ нь илүү хувийн зорилго юм.",
+  "v": [
+   {
+    "j": "<ruby>週末<rp>(</rp><rt>しゅうまつ</rt><rp>)</rp></ruby>に<ruby>京都<rp>(</rp><rt>きょうと</rt><rp>)</rp></ruby>へ<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>く<ruby>予定<rp>(</rp><rt>よてい</rt><rp>)</rp></ruby>です。",
+    "e": "I'm planning to go to Kyoto this weekend.",
+    "m": "Би энэ амралтын өдрүүдээр Киото руу явах төлөвтэй байна."
+   },
+   {
+    "j": "<ruby>会社<rp>(</rp><rt>かいしゃ</rt><rp>)</rp></ruby>を<ruby>辞<rp>(</rp><rt>や</rt><rp>)</rp></ruby>める<ruby>予定<rp>(</rp><rt>よてい</rt><rp>)</rp></ruby>です。",
+    "e": "I'm planning to quit my job.",
+    "m": "Би ажлаасаа гарах төлөвтэй байна."
+   }
+  ],
+  "a": [
+   "つもり"
+  ]
+ },
+ {
   "g": "つもり",
   "t": "foundation",
   "l": 3,
@@ -1865,7 +3562,9 @@ const GRAMMAR_INDEX = [
     "m": "Би ажлаасаа гарах төлөвтэй байна."
    }
   ],
-  "a": []
+  "a": [
+   "予定だ"
+  ]
  },
  {
   "g": "やすい",
@@ -1957,6 +3656,29 @@ const GRAMMAR_INDEX = [
   "a": []
  },
  {
+  "g": "ちゃう",
+  "t": "foundation",
+  "l": 3,
+  "j": "N4",
+  "e": "てしまう and its contracted spoken form ちゃう both add a sense of regret to a completed action — ちゃう is just the casual way people actually say it out loud.",
+  "m": "てしまう болон түүний ярианы товчилсон хэлбэр ちゃう хоёулаа дууссан үйлдэлд харамсах өнгө нэмдэг — ちゃう нь хүмүүсийн жинхэнэ ярианд хэрэглэдэг энгийн хэллэг юм.",
+  "v": [
+   {
+    "j": "<ruby>財布<rp>(</rp><rt>さいふ</rt><rp>)</rp></ruby>をなくしちゃいました。",
+    "e": "I ended up losing my wallet.",
+    "m": "Би түрийвчээ гээчихлээ."
+   },
+   {
+    "j": "<ruby>朝<rp>(</rp><rt>あさ</rt><rp>)</rp></ruby>ご<ruby>飯<rp>(</rp><rt>はん</rt><rp>)</rp></ruby>を<ruby>食<rp>(</rp><rt>た</rt><rp>)</rp></ruby>べないで<ruby>学校<rp>(</rp><rt>がっこう</rt><rp>)</rp></ruby>に<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>っちゃいました。",
+    "e": "I ended up going to school without eating breakfast.",
+    "m": "Өглөөний хоол идэлгүйгээр сургуульдаа явчихлаа."
+   }
+  ],
+  "a": [
+   "てしまう"
+  ]
+ },
+ {
   "g": "てしまう",
   "t": "foundation",
   "l": 3,
@@ -1975,7 +3697,9 @@ const GRAMMAR_INDEX = [
     "m": "Өглөөний хоол идэлгүйгээр сургуульдаа явчихлаа."
    }
   ],
-  "a": []
+  "a": [
+   "ちゃう"
+  ]
  },
  {
   "g": "すぎる",
@@ -2001,7 +3725,9 @@ const GRAMMAR_INDEX = [
     "m": "Энэ бодлого надад хэтэрхий хэцүү байна."
    }
   ],
-  "a": []
+  "a": [
+   "あまりに"
+  ]
  },
  {
   "g": "みたい",
@@ -2085,7 +3811,8 @@ const GRAMMAR_INDEX = [
    }
   ],
   "a": [
-   "ために"
+   "ために",
+   "とおりに"
   ]
  },
  {
@@ -2216,6 +3943,7 @@ const GRAMMAR_INDEX = [
    }
   ],
   "a": [
+   "つつある",
    "ていく"
   ]
  },
@@ -2276,6 +4004,34 @@ const GRAMMAR_INDEX = [
   ]
  },
  {
+  "g": "づらい",
+  "t": "foundation",
+  "l": 4,
+  "j": "N3",
+  "e": "にくい and づらい both mark something as physically or practically hard to do — づらい just leans slightly more toward personal difficulty than にくい's more general 'hard to do.'",
+  "m": "にくい болон づらい хоёулаа биет буюу практикт хийхэд хэцүү зүйлийг заадаг — づらい нь にくい-ийн ерөнхий \"хийхэд хэцүү\"-гээс арай илүү хувийн бэрхшээлд дөхдөг.",
+  "v": [
+   {
+    "j": "この<ruby>魚<rp>(</rp><rt>さかな</rt><rp>)</rp></ruby>は<ruby>骨<rp>(</rp><rt>ほね</rt><rp>)</rp></ruby>が<ruby>多<rp>(</rp><rt>おお</rt><rp>)</rp></ruby>くて<ruby>食<rp>(</rp><rt>た</rt><rp>)</rp></ruby>べづらいです。",
+    "e": "This fish has a lot of bones, so it's hard to eat.",
+    "m": "Энэ загас яс ихтэй тул идэхэд хэцүү."
+   },
+   {
+    "j": "この<ruby>肉<rp>(</rp><rt>にく</rt><rp>)</rp></ruby>は<ruby>硬<rp>(</rp><rt>かた</rt><rp>)</rp></ruby>すぎて<ruby>食<rp>(</rp><rt>た</rt><rp>)</rp></ruby>べづらいです。",
+    "e": "This meat is too tough, so it's hard to eat.",
+    "m": "Энэ мах хэтэрхий хатуу тул идэхэд хэцүү."
+   },
+   {
+    "j": "この<ruby>説明<rp>(</rp><rt>せつめい</rt><rp>)</rp></ruby>だけでは<ruby>分<rp>(</rp><rt>わ</rt><rp>)</rp></ruby>かりづらいです。",
+    "e": "This explanation alone is hard to understand.",
+    "m": "Зөвхөн энэ тайлбараар ойлгоход хэцүү."
+   }
+  ],
+  "a": [
+   "にくい"
+  ]
+ },
+ {
   "g": "にくい",
   "t": "foundation",
   "l": 4,
@@ -2299,7 +4055,71 @@ const GRAMMAR_INDEX = [
     "m": "Зөвхөн энэ тайлбараар ойлгоход хэцүү."
    }
   ],
+  "a": [
+   "づらい"
+  ]
+ },
+ {
+  "g": "あまりに",
+  "t": "foundation",
+  "l": 4,
+  "j": "N3",
+  "e": "すぎる and あまりに…で both say something has gone past a limit — あまりに puts the emphasis up front, before the adjective, and leads naturally into a result like this one.",
+  "m": "すぎる болон あまりに…で хоёулаа ямар нэг зүйл хэмжээнээсээ хэтэрснийг илэрхийлдэг — あまりに нь онцлолыг тэмдэг нэрийн өмнө тавьдаг бөгөөд ийм үр дагаврын өгүүлбэр рүү байгалиар шилждэг.",
+  "v": [
+   {
+    "j": "この<ruby>問題<rp>(</rp><rt>もんだい</rt><rp>)</rp></ruby>はあまりに<ruby>簡単<rp>(</rp><rt>かんたん</rt><rp>)</rp></ruby>で、<ruby>逆<rp>(</rp><rt>ぎゃく</rt><rp>)</rp></ruby>に<ruby>怪<rp>(</rp><rt>あや</rt><rp>)</rp></ruby>しいです。",
+    "e": "This problem is too easy, which is exactly what makes it suspicious.",
+    "m": "Энэ бодлого хэтэрхий амархан, яг үүнд нь сэжиг төрж байна."
+   },
+   {
+    "j": "この<ruby>問題<rp>(</rp><rt>もんだい</rt><rp>)</rp></ruby>はあまりに<ruby>複雑<rp>(</rp><rt>ふくざつ</rt><rp>)</rp></ruby>で、<ruby>誰<rp>(</rp><rt>だれ</rt><rp>)</rp></ruby>も<ruby>説明<rp>(</rp><rt>せつめい</rt><rp>)</rp></ruby>できません。",
+    "e": "This problem is too complicated for anyone to explain.",
+    "m": "Энэ асуудал хэтэрхий төвөгтэй тул хэн ч тайлбарлаж чадахгүй."
+   }
+  ],
+  "a": [
+   "すぎる"
+  ]
+ },
+ {
+  "g": "ないうちは",
+  "t": "foundation",
+  "l": 4,
+  "j": "N3",
+  "e": "まで and ないうちは can both limit something to the time before a change — ないうちは frames it as \"while it still isn’t done\", where まで marks the end point.",
+  "m": "まで болон ないうちは хоёулаа ямар нэг өөрчлөлт болохоос өмнөх хугацааг заадаг — ないうちは нь \"хараахан дуусаагүй байх хугацаанд\" гэж илэрхийлдэг бол まで нь төгсгөлийн цэгийг заадаг.",
+  "v": [
+   {
+    "j": "<ruby>宿題<rp>(</rp><rt>しゅくだい</rt><rp>)</rp></ruby>が<ruby>終<rp>(</rp><rt>お</rt><rp>)</rp></ruby>わらないうちは、テレビを<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>てはいけません。",
+    "e": "Until your homework is finished, you're not allowed to watch TV.",
+    "m": "Гэрийн даалгавраа дуустал телевиз үзэж болохгүй."
+   }
+  ],
   "a": []
+ },
+ {
+  "g": "とおりに",
+  "t": "foundation",
+  "l": 4,
+  "j": "N4",
+  "e": "とおりに and ように can both mean 'in the way that X shows' when following an existing model to copy — とおりに sticks a little closer to 'exactly as' than ように's more general 'so as to.'",
+  "m": "とおりに болон ように хоёулаа одоо байгаа загварыг дуурайлган дагахдаа \"X-ийн заасан хэлбэрээр\" гэсэн утгыг илэрхийлж болно — とおりに нь ように-ийн ерөнхий \"тийнхүү\"-гээс арай илүү \"яг л\"-д дөхдөг.",
+  "v": [
+   {
+    "j": "この<ruby>説明書<rp>(</rp><rt>せつめいしょ</rt><rp>)</rp></ruby>に<ruby>書<rp>(</rp><rt>か</rt><rp>)</rp></ruby>いてあるとおりに、<ruby>組<rp>(</rp><rt>く</rt><rp>)</rp></ruby>み<ruby>立<rp>(</rp><rt>た</rt><rp>)</rp></ruby>ててください。",
+    "e": "Please assemble it just as written in the instructions.",
+    "m": "Заавар дээр бичсэн шиг яг тэгж угсраарай."
+   },
+   {
+    "j": "この<ruby>説明書<rp>(</rp><rt>せつめいしょ</rt><rp>)</rp></ruby>に<ruby>書<rp>(</rp><rt>か</rt><rp>)</rp></ruby>いてあるとおりに<ruby>操作<rp>(</rp><rt>そうさ</rt><rp>)</rp></ruby>してください。",
+    "e": "Please operate it exactly as written in the instructions.",
+    "m": "Зааварт бичсэн шиг яг тэгж ажиллуулаарай."
+   }
+  ],
+  "a": [
+   "ように"
+  ]
  },
  {
   "g": "せいで",
@@ -2320,15 +4140,33 @@ const GRAMMAR_INDEX = [
     "m": "Бие эвгүй байгаа тул би өнөөдөр амарч байна."
    },
    {
-    "j": "<ruby>台風<rp>(</rp><rt>たいふう</rt><rp>)</rp></ruby>の<ruby>影響<rp>(</rp><rt>えいきょう</rt><rp>)</rp></ruby>で<ruby>電車<rp>(</rp><rt>でんしゃ</rt><rp>)</rp></ruby>が<ruby>止<rp>(</rp><rt>と</rt><rp>)</rp></ruby>まったせいで、<ruby>会社<rp>(</rp><rt>かいしゃ</rt><rp>)</rp></ruby>に<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>けなかった。",
-    "e": "Because the trains stopped due to the typhoon, I couldn't get to work.",
-    "m": "Тайфуны улмаас галт тэрэг зогссон тул ажилдаа очиж чадсангүй."
+    "j": "<ruby>今回<rp>(</rp><rt>こんかい</rt><rp>)</rp></ruby>の<ruby>失敗<rp>(</rp><rt>しっぱい</rt><rp>)</rp></ruby>は<ruby>準備<rp>(</rp><rt>じゅんび</rt><rp>)</rp></ruby>が<ruby>足<rp>(</rp><rt>た</rt><rp>)</rp></ruby>りなかったせいです。",
+    "e": "This time's failure was because preparation wasn't enough.",
+    "m": "Энэ удаагийн бүтэлгүйтэл нь бэлтгэл хангалтгүй байсны улмаас юм."
    }
   ],
   "a": [
+   "から",
+   "ため",
    "ので",
    "ばかりに"
   ]
+ },
+ {
+  "g": "てもらえますか",
+  "t": "foundation",
+  "l": 6,
+  "j": "N4",
+  "e": "てください and てもらえますか are both ways to make a request — てもらえますか just softens it into a question, which reads more polite than a direct てください.",
+  "m": "てください болон てもらえますか хоёулаа хүсэлт гаргах арга юм — てもらえますか нь асуулт болгон зөөлрүүлж, шууд てください-ээс илүү эелдэг сонстог.",
+  "v": [
+   {
+    "j": "この<ruby>紙<rp>(</rp><rt>かみ</rt><rp>)</rp></ruby>に<ruby>名前<rp>(</rp><rt>なまえ</rt><rp>)</rp></ruby>を<ruby>書<rp>(</rp><rt>か</rt><rp>)</rp></ruby>いておいてもらえますか。",
+    "e": "Please write your name on this paper in advance.",
+    "m": "Энэ цаасан дээр нэрээ урьдчилан бичээрэй."
+   }
+  ],
+  "a": []
  },
  {
   "g": "まま",
@@ -2415,6 +4253,22 @@ const GRAMMAR_INDEX = [
   ]
  },
  {
+  "g": "ていただけますか",
+  "t": "foundation",
+  "l": 7,
+  "j": "N4",
+  "e": "てもらえますか and ていただけますか both politely ask someone to do something — ていただけますか is just the more formal, humble version of the same request.",
+  "m": "てもらえますか болон ていただけますか хоёулаа хэн нэгнээс эелдэгээр хийхийг хүсдэг — ていただけますか нь ижил хүсэлтийн илүү албан ёсны, даруу хэлбэр юм.",
+  "v": [
+   {
+    "j": "<ruby>荷物<rp>(</rp><rt>にもつ</rt><rp>)</rp></ruby>を<ruby>運<rp>(</rp><rt>はこ</rt><rp>)</rp></ruby>んでいただけますか。",
+    "e": "Could you carry this luggage for me?",
+    "m": "Энэ ачааг надад зөөж өгөх боломжтой юу?"
+   }
+  ],
+  "a": []
+ },
+ {
   "g": "だけに",
   "t": "foundation",
   "l": 9,
@@ -2494,7 +4348,139 @@ const GRAMMAR_INDEX = [
    }
   ],
   "a": [
+   "かぎり",
    "たら"
+  ]
+ },
+ {
+  "g": "そうもない",
+  "t": "foundation",
+  "l": 10,
+  "j": "N3",
+  "e": "そうにない and そうもない are both ways to say 'it doesn't look like X will happen' — they're used interchangeably with no real difference in meaning.",
+  "m": "そうにない болон そうもない хоёулаа \"X болохгүй бололтой\" гэж хэлэх арга юм — утгын хувьд ялгаагүй сольж хэрэглэгддэг.",
+  "v": [
+   {
+    "j": "<ruby>忙<rp>(</rp><rt>いそが</rt><rp>)</rp></ruby>しいから、その<ruby>会議<rp>(</rp><rt>かいぎ</rt><rp>)</rp></ruby>には<ruby>出<rp>(</rp><rt>で</rt><rp>)</rp></ruby>られそうもありません。",
+    "e": "I'm busy, so it doesn't look like I'll be able to attend that meeting.",
+    "m": "Би завгүй тул тэр хуралд оролцож чадахгүй бололтой."
+   },
+   {
+    "j": "この<ruby>問題<rp>(</rp><rt>もんだい</rt><rp>)</rp></ruby>は<ruby>私<rp>(</rp><rt>わたし</rt><rp>)</rp></ruby>には<ruby>解<rp>(</rp><rt>と</rt><rp>)</rp></ruby>けそうもありません。",
+    "e": "It doesn't look like I'll be able to solve this problem.",
+    "m": "Энэ бодлогыг бодож чадахгүй бололтой."
+   },
+   {
+    "j": "<ruby>連日<rp>(</rp><rt>れんじつ</rt><rp>)</rp></ruby>の<ruby>残業<rp>(</rp><rt>ざんぎょう</rt><rp>)</rp></ruby>で、もはや<ruby>働<rp>(</rp><rt>はたら</rt><rp>)</rp></ruby>き<ruby>続<rp>(</rp><rt>つづ</rt><rp>)</rp></ruby>けられそうもない。",
+    "e": "After days of overtime, it doesn't look like I can keep working like this any longer.",
+    "m": "Хэдэн өдөр илүү цагаар ажилласны эцэст ийм байдлаар цааш ажиллаж чадахгүй бололтой."
+   }
+  ],
+  "a": []
+ },
+ {
+  "g": "ため",
+  "t": "foundation",
+  "l": 11,
+  "j": "N4",
+  "e": "せいで and ため can both mark a cause behind an unwanted result — ため is a more neutral way to state the same cause-and-effect that せいで states with a hint of blame.",
+  "m": "せいで болон ため хоёулаа хүсээгүй үр дүнгийн ард буй шалтгааныг заадаг — ため нь せいで-ийн буруутгах өнгөтэй ижил шалтгаан-үр дагаврыг илүү төвийг сахисан байдлаар илэрхийлдэг.",
+  "v": [
+   {
+    "j": "<ruby>台風<rp>(</rp><rt>たいふう</rt><rp>)</rp></ruby>の<ruby>影響<rp>(</rp><rt>えいきょう</rt><rp>)</rp></ruby>で<ruby>電車<rp>(</rp><rt>でんしゃ</rt><rp>)</rp></ruby>が<ruby>止<rp>(</rp><rt>と</rt><rp>)</rp></ruby>まったため、<ruby>会社<rp>(</rp><rt>かいしゃ</rt><rp>)</rp></ruby>に<ruby>行<rp>(</rp><rt>い</rt><rp>)</rp></ruby>けなかった。",
+    "e": "Because the trains stopped due to the typhoon, I couldn't get to work.",
+    "m": "Тайфуны улмаас галт тэрэг зогссон тул ажилдаа очиж чадсангүй."
+   },
+   {
+    "j": "<ruby>台風<rp>(</rp><rt>たいふう</rt><rp>)</rp></ruby>が<ruby>近<rp>(</rp><rt>ちか</rt><rp>)</rp></ruby>づいているため、イベントは<ruby>中止<rp>(</rp><rt>ちゅうし</rt><rp>)</rp></ruby>になった。",
+    "e": "Because a typhoon is approaching, the event was canceled.",
+    "m": "Тайфун ойртож байгаа учир арга хэмжээг цуцаллаа."
+   },
+   {
+    "j": "<ruby>大雪<rp>(</rp><rt>おおゆき</rt><rp>)</rp></ruby>のため、<ruby>飛行機<rp>(</rp><rt>ひこうき</rt><rp>)</rp></ruby>が<ruby>欠航<rp>(</rp><rt>けっこう</rt><rp>)</rp></ruby>になった。",
+    "e": "Because of the heavy snow, the flight was canceled.",
+    "m": "Их цасны улмаас нислэг цуцлагдсан."
+   }
+  ],
+  "a": [
+   "せいで",
+   "ので"
+  ]
+ },
+ {
+  "g": "ないわけにはいかない",
+  "t": "foundation",
+  "l": 11,
+  "j": "N2",
+  "e": "なければならない and ないわけにはいかない both express that there was no way around doing something — ないわけにはいかない adds a stronger sense that circumstances left no real choice.",
+  "m": "なければならない болон ないわけにはいかない хоёулаа ямар нэг зүйлийг хийхээс өөр аргагүй байсныг илэрхийлдэг — ないわけにはいかない нь нөхцөл байдал жинхэнэ сонголтгүй үлдээсэн гэдгийг илүү хүчтэй мэдрэмжээр илэрхийлдэг.",
+  "v": [
+   {
+    "j": "<ruby>締<rp>(</rp><rt>し</rt><rp>)</rp></ruby>め<ruby>切<rp>(</rp><rt>き</rt><rp>)</rp></ruby>りに<ruby>間<rp>(</rp><rt>ま</rt><rp>)</rp></ruby>に<ruby>合<rp>(</rp><rt>あ</rt><rp>)</rp></ruby>わせるため、<ruby>徹夜<rp>(</rp><rt>てつや</rt><rp>)</rp></ruby>しないわけにはいきませんでした。",
+    "e": "To make the deadline, I had no choice but to stay up all night.",
+    "m": "Эцсийн хугацаанд багтахын тулд бүтэн шөнөжин сэрүүн байхаас өөр аргагүй байлаа."
+   },
+   {
+    "j": "この<ruby>状況<rp>(</rp><rt>じょうきょう</rt><rp>)</rp></ruby>では、<ruby>計画<rp>(</rp><rt>けいかく</rt><rp>)</rp></ruby>を<ruby>変更<rp>(</rp><rt>へんこう</rt><rp>)</rp></ruby>しないわけにはいきません。",
+    "e": "Given the situation, we have no choice but to change the plan.",
+    "m": "Нөхцөл байдлыг харгалзан төлөвлөгөөг өөрчлөхөөс өөр аргагүй."
+   },
+   {
+    "j": "この<ruby>状況<rp>(</rp><rt>じょうきょう</rt><rp>)</rp></ruby>では、<ruby>値上<rp>(</rp><rt>ねあ</rt><rp>)</rp></ruby>げをしないわけにはいかない。",
+    "e": "Given the situation, we have no choice but to raise prices.",
+    "m": "Нөхцөл байдлыг харгалзан үнийг нэмэхээс өөр аргагүй."
+   }
+  ],
+  "a": [
+   "ざるをえない",
+   "なければならない"
+  ]
+ },
+ {
+  "g": "かぎり",
+  "t": "foundation",
+  "l": 11,
+  "j": "N3",
+  "e": "かぎり and plain と can both introduce 'based on/when you look at X' before a conclusion — と is the more neutral, everyday way to make the same kind of connection.",
+  "m": "かぎり болон энгийн と хоёулаа дүгнэлтийн өмнө \"X-ийг харахад/дэнд суурилан\"-ыг танилцуулж болно — と нь ижил төрлийн холболтыг хийх илүү төвийг сахисан, өдөр тутмын арга юм.",
+  "v": [
+   {
+    "j": "この<ruby>結果<rp>(</rp><rt>けっか</rt><rp>)</rp></ruby>を<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>るかぎり、<ruby>今回<rp>(</rp><rt>こんかい</rt><rp>)</rp></ruby>の<ruby>実験<rp>(</rp><rt>じっけん</rt><rp>)</rp></ruby>は<ruby>成功<rp>(</rp><rt>せいこう</rt><rp>)</rp></ruby>だと<ruby>言<rp>(</rp><rt>い</rt><rp>)</rp></ruby>えます。",
+    "e": "Looking at these results, this experiment can be called a success.",
+    "m": "Эдгээр үр дүнг харахад энэ туршилтыг амжилттай гэж хэлж болно."
+   }
+  ],
+  "a": [
+   "と"
+  ]
+ },
+ {
+  "g": "につれて",
+  "t": "foundation",
+  "l": 12,
+  "j": "N3",
+  "e": "にしたがって and につれて both mark 'as X changes, Y changes along with it' — they're standard, interchangeable partners for describing two things progressing together.",
+  "m": "にしたがって болон につれて хоёулаа \"X өөрчлөгдөхөд Y ч хамт өөрчлөгддөг\"-ийг заадаг — эдгээр нь хоёр зүйл хамт хөгжиж буйг тодорхойлох стандарт, сольж хэрэглэгддэг хос юм.",
+  "v": [
+   {
+    "j": "<ruby>子供<rp>(</rp><rt>こども</rt><rp>)</rp></ruby>の<ruby>成長<rp>(</rp><rt>せいちょう</rt><rp>)</rp></ruby>につれて、<ruby>親<rp>(</rp><rt>おや</rt><rp>)</rp></ruby>との<ruby>会話<rp>(</rp><rt>かいわ</rt><rp>)</rp></ruby>が<ruby>減<rp>(</rp><rt>へ</rt><rp>)</rp></ruby>っていった。",
+    "e": "As the child grew up, conversation with the parents decreased.",
+    "m": "Хүүхэд өсөх тусам эцэг эхтэйгээ ярилцах нь цөөрчээ."
+   },
+   {
+    "j": "<ruby>年<rp>(</rp><rt>とし</rt><rp>)</rp></ruby>を<ruby>取<rp>(</rp><rt>と</rt><rp>)</rp></ruby>るにつれて、<ruby>体力<rp>(</rp><rt>たいりょく</rt><rp>)</rp></ruby>が<ruby>落<rp>(</rp><rt>お</rt><rp>)</rp></ruby>ちていく。",
+    "e": "As you get older, your physical strength declines.",
+    "m": "Насаа ахих тусам биеийн хүч буурдаг."
+   },
+   {
+    "j": "<ruby>物価<rp>(</rp><rt>ぶっか</rt><rp>)</rp></ruby>の<ruby>上昇<rp>(</rp><rt>じょうしょう</rt><rp>)</rp></ruby>につれて、<ruby>生活<rp>(</rp><rt>せいかつ</rt><rp>)</rp></ruby>は<ruby>厳<rp>(</rp><rt>きび</rt><rp>)</rp></ruby>しくなっていった。",
+    "e": "As prices rose, life became harder.",
+    "m": "Үнэ өсөх тусам амьдрал хүндэрсэн."
+   }
+  ],
+  "a": [
+   "にしたがって",
+   "にともなって"
   ]
  },
  {
@@ -2531,6 +4517,36 @@ const GRAMMAR_INDEX = [
   ],
   "a": [
    "あいだに"
+  ]
+ },
+ {
+  "g": "つつある",
+  "t": "foundation",
+  "l": 13,
+  "j": "N2",
+  "e": "てくる and つつある can both describe a change already in progress — つつある is the more formal, written way of saying the same ongoing shift.",
+  "m": "てくる болон つつある хоёулаа аль хэдийн явагдаж буй өөрчлөлтийг тодорхойлж болно — つつある нь ижил үргэлжилж буй өөрчлөлтийг илэрхийлэх илүү албан ёсны, бичгийн арга юм.",
+  "v": [
+   {
+    "j": "この<ruby>地域<rp>(</rp><rt>ちいき</rt><rp>)</rp></ruby>では、<ruby>年々<rp>(</rp><rt>ねんねん</rt><rp>)</rp></ruby><ruby>人口<rp>(</rp><rt>じんこう</rt><rp>)</rp></ruby>が<ruby>減<rp>(</rp><rt>へ</rt><rp>)</rp></ruby>りつつある。",
+    "e": "In this area, the population has been decreasing year by year.",
+    "m": "Энэ бүс нутагт хүн ам жил ирэх тусам буурч байна."
+   },
+   {
+    "j": "この<ruby>湖<rp>(</rp><rt>みずうみ</rt><rp>)</rp></ruby>の<ruby>水<rp>(</rp><rt>みず</rt><rp>)</rp></ruby>は<ruby>年<rp>(</rp><rt>とし</rt><rp>)</rp></ruby>ごとに<ruby>減<rp>(</rp><rt>へ</rt><rp>)</rp></ruby>りつつある。",
+    "e": "This lake's water level is continuing to decrease year by year.",
+    "m": "Энэ нуурын усны түвшин жил ирэх тусам буурсаар байна."
+   },
+   {
+    "j": "この<ruby>森<rp>(</rp><rt>もり</rt><rp>)</rp></ruby>の<ruby>木<rp>(</rp><rt>き</rt><rp>)</rp></ruby>は<ruby>年々<rp>(</rp><rt>ねんねん</rt><rp>)</rp></ruby><ruby>減<rp>(</rp><rt>へ</rt><rp>)</rp></ruby>りつつある。",
+    "e": "This forest's trees continue to decrease year by year.",
+    "m": "Энэ ойн мод жил ирэх тусам цөөрсөөр байна."
+   }
+  ],
+  "a": [
+   "つづける",
+   "てくる",
+   "はじめる"
   ]
  },
  {
@@ -2587,6 +4603,284 @@ const GRAMMAR_INDEX = [
   ],
   "a": [
    "にしては"
+  ]
+ },
+ {
+  "g": "にしたがって",
+  "t": "foundation",
+  "l": 14,
+  "j": "N3",
+  "e": "にしたがって and につれて both mark 'as X changes, Y changes along with it' — they're standard, interchangeable partners here.",
+  "m": "にしたがって болон につれて хоёулаа \"X өөрчлөгдөхөд Y ч хамт өөрчлөгддөг\"-ийг заадаг — эдгээр нь энд стандарт, сольж хэрэглэгддэг хос юм.",
+  "v": [
+   {
+    "j": "<ruby>年<rp>(</rp><rt>とし</rt><rp>)</rp></ruby>を<ruby>取<rp>(</rp><rt>と</rt><rp>)</rp></ruby>るにしたがって、<ruby>体力<rp>(</rp><rt>たいりょく</rt><rp>)</rp></ruby>が<ruby>落<rp>(</rp><rt>お</rt><rp>)</rp></ruby>ちていく。",
+    "e": "As you get older, your physical strength declines.",
+    "m": "Насаа ахих тусам биеийн хүч буурдаг."
+   },
+   {
+    "j": "<ruby>物価<rp>(</rp><rt>ぶっか</rt><rp>)</rp></ruby>の<ruby>上昇<rp>(</rp><rt>じょうしょう</rt><rp>)</rp></ruby>にしたがって、<ruby>生活<rp>(</rp><rt>せいかつ</rt><rp>)</rp></ruby>は<ruby>厳<rp>(</rp><rt>きび</rt><rp>)</rp></ruby>しくなっていった。",
+    "e": "As prices rose, life became harder.",
+    "m": "Үнэ өсөх тусам амьдрал хүндэрсэн."
+   },
+   {
+    "j": "<ruby>技術<rp>(</rp><rt>ぎじゅつ</rt><rp>)</rp></ruby>の<ruby>進歩<rp>(</rp><rt>しんぽ</rt><rp>)</rp></ruby>にしたがって、わたしたちの<ruby>暮<rp>(</rp><rt>く</rt><rp>)</rp></ruby>らしも<ruby>変<rp>(</rp><rt>か</rt><rp>)</rp></ruby>わってきた。",
+    "e": "Along with advances in technology, our way of life has also changed.",
+    "m": "Технологийн дэвшлийн хэрээр бидний амьдралын хэв маяг ч өөрчлөгдсөн."
+   }
+  ],
+  "a": [
+   "につれて",
+   "にともなって"
+  ]
+ },
+ {
+  "g": "とはかぎらない",
+  "t": "foundation",
+  "l": 14,
+  "j": "N3",
+  "e": "わけではない and とはかぎらない both soften a statement into a partial, not-absolute negation — they're standard interchangeable partners for 'that's not always the case.'",
+  "m": "わけではない болон とはかぎらない хоёулаа мэдэгдлийг хэсэгчилсэн, үнэмлэхүй бус үгүйсгэл болгон зөөлрүүлдэг — эдгээр нь \"үргэлж тийм биш\" гэсэн стандарт, сольж хэрэглэгддэг хос юм.",
+  "v": [
+   {
+    "j": "この<ruby>結果<rp>(</rp><rt>けっか</rt><rp>)</rp></ruby>は、<ruby>必<rp>(</rp><rt>かなら</rt><rp>)</rp></ruby>ずしも<ruby>成功<rp>(</rp><rt>せいこう</rt><rp>)</rp></ruby>を<ruby>意味<rp>(</rp><rt>いみ</rt><rp>)</rp></ruby>するとはかぎりません。",
+    "e": "This result doesn't necessarily mean success.",
+    "m": "Энэ үр дүн заавал амжилт гэсэн үг биш."
+   },
+   {
+    "j": "この<ruby>成績<rp>(</rp><rt>せいせき</rt><rp>)</rp></ruby>で<ruby>合格<rp>(</rp><rt>ごうかく</rt><rp>)</rp></ruby>できるとはかぎりません。",
+    "e": "This grade doesn't necessarily mean you'll pass.",
+    "m": "Энэ дүн заавал тэнцэнэ гэсэн үг биш."
+   }
+  ],
+  "a": [
+   "わけではない"
+  ]
+ },
+ {
+  "g": "以上",
+  "t": "foundation",
+  "l": 14,
+  "j": "N3",
+  "e": "からには and 以上 both mean 'given that X is the case' as a strong basis for what follows — they're standard, well-documented interchangeable partners.",
+  "m": "からには болон 以上 хоёулаа \"X нь тийм учраас\" гэдгийг дараагийн зүйлийн хүчтэй үндэслэл болгон илэрхийлдэг — эдгээр нь стандарт, сайн баримтжуулагдсан сольж хэрэглэгддэг хос юм.",
+  "v": [
+   {
+    "j": "この<ruby>会社<rp>(</rp><rt>かいしゃ</rt><rp>)</rp></ruby>で<ruby>働<rp>(</rp><rt>はたら</rt><rp>)</rp></ruby>く<ruby>以上<rp>(</rp><rt>いじょう</rt><rp>)</rp></ruby>、しっかり<ruby>結果<rp>(</rp><rt>けっか</rt><rp>)</rp></ruby>を<ruby>出<rp>(</rp><rt>だ</rt><rp>)</rp></ruby>したい。",
+    "e": "Since I'm working at this company, I want to produce solid results.",
+    "m": "Энэ компанид ажилладаг учраас би бат бөх үр дүн гаргахыг хүсдэг."
+   },
+   {
+    "j": "この<ruby>店<rp>(</rp><rt>みせ</rt><rp>)</rp></ruby>で<ruby>働<rp>(</rp><rt>はたら</rt><rp>)</rp></ruby>く<ruby>以上<rp>(</rp><rt>いじょう</rt><rp>)</rp></ruby>、お<ruby>客様<rp>(</rp><rt>きゃくさま</rt><rp>)</rp></ruby>を<ruby>大切<rp>(</rp><rt>たいせつ</rt><rp>)</rp></ruby>にしたい。",
+    "e": "Since I'm working at this shop, I want to treat customers with care.",
+    "m": "Энэ дэлгүүрт ажилладаг учраас би үйлчлүүлэгчидтэй анхааралтай харьцахыг хүсдэг."
+   },
+   {
+    "j": "この<ruby>チームに<rp>(</rp><rt></rt><rp>)</rp></ruby><ruby>入<rp>(</rp><rt>はい</rt><rp>)</rp></ruby>った<ruby>以上<rp>(</rp><rt>いじょう</rt><rp>)</rp></ruby>、<ruby>最後<rp>(</rp><rt>さいご</rt><rp>)</rp></ruby>まで<ruby>頑張<rp>(</rp><rt>がんば</rt><rp>)</rp></ruby>りたい。",
+    "e": "Since I've joined this team, I want to give it my all until the end.",
+    "m": "Энэ багт нэгдсэн учраас эцсээ хүртэл бүх хүчээ дайчлахыг хүсдэг."
+   }
+  ],
+  "a": [
+   "からには"
+  ]
+ },
+ {
+  "g": "からには",
+  "t": "foundation",
+  "l": 14,
+  "j": "N3",
+  "e": "からには and 以上 both mean 'given that X is the case' as a strong basis for what follows — they're standard, well-documented interchangeable partners.",
+  "m": "からには болон 以上 хоёулаа \"X нь тийм учраас\" гэдгийг дараагийн зүйлийн хүчтэй үндэслэл болгон илэрхийлдэг — эдгээр нь стандарт, сайн баримтжуулагдсан сольж хэрэглэгддэг хос юм.",
+  "v": [
+   {
+    "j": "この<ruby>会社<rp>(</rp><rt>かいしゃ</rt><rp>)</rp></ruby>で<ruby>働<rp>(</rp><rt>はたら</rt><rp>)</rp></ruby>くからには、しっかり<ruby>結果<rp>(</rp><rt>けっか</rt><rp>)</rp></ruby>を<ruby>出<rp>(</rp><rt>だ</rt><rp>)</rp></ruby>したい。",
+    "e": "Since I'm working at this company, I want to produce solid results.",
+    "m": "Энэ компанид ажилладаг учраас би бат бөх үр дүн гаргахыг хүсдэг."
+   },
+   {
+    "j": "この<ruby>会社<rp>(</rp><rt>かいしゃ</rt><rp>)</rp></ruby>で<ruby>働<rp>(</rp><rt>はたら</rt><rp>)</rp></ruby>くからには、ルールを<ruby>守<rp>(</rp><rt>まも</rt><rp>)</rp></ruby>らなければならない。",
+    "e": "Since you're working at this company, you must follow the rules.",
+    "m": "Энэ компанид ажилладаг учраас дүрмийг дагаж мөрдөх ёстой."
+   },
+   {
+    "j": "この<ruby>店<rp>(</rp><rt>みせ</rt><rp>)</rp></ruby>で<ruby>働<rp>(</rp><rt>はたら</rt><rp>)</rp></ruby>くからには、お<ruby>客様<rp>(</rp><rt>きゃくさま</rt><rp>)</rp></ruby>を<ruby>大切<rp>(</rp><rt>たいせつ</rt><rp>)</rp></ruby>にしたい。",
+    "e": "Since I'm working at this shop, I want to treat customers with care.",
+    "m": "Энэ дэлгүүрт ажилладаг учраас би үйлчлүүлэгчидтэй анхааралтай харьцахыг хүсдэг."
+   }
+  ],
+  "a": [
+   "たるもの",
+   "以上"
+  ]
+ },
+ {
+  "g": "としても",
+  "t": "foundation",
+  "l": 15,
+  "j": "N3",
+  "e": "からといって and としても can both reject a conclusion someone might jump to from a given fact — としても leans on 'even if,' which lines up with からといって's 'just because' reading here.",
+  "m": "からといって болон としても хоёулаа өгөгдсөн баримтаас хэн нэгний гарган авч болох дүгнэлтийг үгүйсгэдэг — としても нь \"хэдийгээр...ч гэсэн\"-д дөхдөг бөгөөд энэ нь からといって-ийн \"зөвхөн...учир\" гэсэн утгатай энд нийцдэг.",
+  "v": [
+   {
+    "j": "この<ruby>薬<rp>(</rp><rt>くすり</rt><rp>)</rp></ruby>を<ruby>飲<rp>(</rp><rt>の</rt><rp>)</rp></ruby>んだとしても、すぐ<ruby>治<rp>(</rp><rt>なお</rt><rp>)</rp></ruby>るわけではない。",
+    "e": "Even taking this medicine, that doesn't mean you'll get better right away.",
+    "m": "Энэ эмийг уусан ч гэсэн шууд эдгэрнэ гэсэн үг биш."
+   },
+   {
+    "j": "<ruby>値段<rp>(</rp><rt>ねだん</rt><rp>)</rp></ruby>が<ruby>高<rp>(</rp><rt>たか</rt><rp>)</rp></ruby>いからとしても、<ruby>質<rp>(</rp><rt>しつ</rt><rp>)</rp></ruby>がいいとはかぎらない。",
+    "e": "Even if it's expensive, that doesn't necessarily mean the quality is good.",
+    "m": "Үнэтэй байсан ч чанар нь сайн гэсэн үг заавал биш."
+   },
+   {
+    "j": "この<ruby>薬<rp>(</rp><rt>くすり</rt><rp>)</rp></ruby>は<ruby>効果<rp>(</rp><rt>こうか</rt><rp>)</rp></ruby>があるとしても、<ruby>飲<rp>(</rp><rt>の</rt><rp>)</rp></ruby>みすぎるのはよくない。",
+    "e": "Even though this medicine is effective, taking too much isn't good.",
+    "m": "Энэ эм үр дүнтэй ч, хэт их уух нь сайн биш."
+   }
+  ],
+  "a": [
+   "からといって",
+   "といっても"
+  ]
+ },
+ {
+  "g": "にともなって",
+  "t": "foundation",
+  "l": 16,
+  "j": "N2",
+  "e": "にともなって and につれて both mark 'as X happens, Y happens along with it' — they're close, standard partners for describing two things changing together.",
+  "m": "にともなって болон につれて хоёулаа \"X болоход Y ч хамт болдог\"-ийг заадаг — эдгээр нь хоёр зүйл хамт өөрчлөгдөж буйг тодорхойлох ойролцоо, стандарт хос юм.",
+  "v": [
+   {
+    "j": "<ruby>景気<rp>(</rp><rt>けいき</rt><rp>)</rp></ruby>の<ruby>回復<rp>(</rp><rt>かいふく</rt><rp>)</rp></ruby>にともなって、<ruby>求人<rp>(</rp><rt>きゅうじん</rt><rp>)</rp></ruby>も<ruby>増<rp>(</rp><rt>ふ</rt><rp>)</rp></ruby>えてきた。",
+    "e": "Along with the economic recovery, job openings have also increased.",
+    "m": "Эдийн засаг сэргэхийн хэрээр ажлын байрны хэрэгцээ ч нэмэгдсэн."
+   },
+   {
+    "j": "<ruby>技術<rp>(</rp><rt>ぎじゅつ</rt><rp>)</rp></ruby>の<ruby>進歩<rp>(</rp><rt>しんぽ</rt><rp>)</rp></ruby>にともなって、わたしたちの<ruby>暮<rp>(</rp><rt>く</rt><rp>)</rp></ruby>らしも<ruby>変<rp>(</rp><rt>か</rt><rp>)</rp></ruby>わってきた。",
+    "e": "Along with advances in technology, our way of life has also changed.",
+    "m": "Технологийн дэвшлийн хэрээр бидний амьдралын хэв маяг ч өөрчлөгдсөн."
+   },
+   {
+    "j": "<ruby>経済<rp>(</rp><rt>けいざい</rt><rp>)</rp></ruby>の<ruby>発展<rp>(</rp><rt>はってん</rt><rp>)</rp></ruby>にともなって、<ruby>環境問題<rp>(</rp><rt>かんきょうもんだい</rt><rp>)</rp></ruby>も<ruby>深刻化<rp>(</rp><rt>しんこくか</rt><rp>)</rp></ruby>してきた。",
+    "e": "Along with economic development, environmental problems have also grown more serious.",
+    "m": "Эдийн засгийн хөгжлийн хэрээр байгаль орчны асуудал ч улам хурцадсан."
+   }
+  ],
+  "a": [
+   "にしたがって",
+   "につれて"
+  ]
+ },
+ {
+  "g": "わけではない",
+  "t": "foundation",
+  "l": 16,
+  "j": "N3",
+  "e": "とはかぎらない and わけではない both soften a statement into a partial, not-absolute negation — they're standard interchangeable partners for 'that's not always true.'",
+  "m": "とはかぎらない болон わけではない хоёулаа мэдэгдлийг хэсэгчилсэн, үнэмлэхүй бус үгүйсгэл болгон зөөлрүүлдэг — эдгээр нь \"үргэлж үнэн биш\" гэсэн стандарт, сольж хэрэглэгддэг хос юм.",
+  "v": [
+   {
+    "j": "この<ruby>成績<rp>(</rp><rt>せいせき</rt><rp>)</rp></ruby>で<ruby>合格<rp>(</rp><rt>ごうかく</rt><rp>)</rp></ruby>できるわけではありません。",
+    "e": "This grade doesn't necessarily mean you'll pass.",
+    "m": "Энэ дүн заавал тэнцэнэ гэсэн үг биш."
+   }
+  ],
+  "a": [
+   "とはかぎらない"
+  ]
+ },
+ {
+  "g": "からといって",
+  "t": "foundation",
+  "l": 17,
+  "j": "N3",
+  "e": "からといって and としても can both reject a conclusion someone might jump to from a given fact — としても leans on 'even if,' which fits からといって's 'just because' framing here.",
+  "m": "からといって болон としても хоёулаа өгөгдсөн баримтаас гарган авч болох дүгнэлтийг үгүйсгэдэг — としても нь \"хэдийгээр...ч гэсэн\"-д дөхдөг бөгөөд энэ нь からといって-ийн \"зөвхөн...учир\" гэсэн утгад энд нийцдэг.",
+  "v": [
+   {
+    "j": "<ruby>値段<rp>(</rp><rt>ねだん</rt><rp>)</rp></ruby>が<ruby>高<rp>(</rp><rt>たか</rt><rp>)</rp></ruby>いからといって、<ruby>質<rp>(</rp><rt>しつ</rt><rp>)</rp></ruby>がいいとはかぎらない。",
+    "e": "Even if it's expensive, that doesn't necessarily mean the quality is good.",
+    "m": "Үнэтэй байсан ч чанар нь сайн гэсэн үг заавал биш."
+   },
+   {
+    "j": "<ruby>資格<rp>(</rp><rt>しかく</rt><rp>)</rp></ruby>を<ruby>持<rp>(</rp><rt>も</rt><rp>)</rp></ruby>っているからといって、<ruby>実力<rp>(</rp><rt>じつりょく</rt><rp>)</rp></ruby>があるとはかぎらない。",
+    "e": "Even if you hold a certification, that doesn't necessarily mean you have real skill.",
+    "m": "Гэрчилгээтэй байсан ч бодит ур чадвартай гэсэн үг заавал биш."
+   },
+   {
+    "j": "この<ruby>結果<rp>(</rp><rt>けっか</rt><rp>)</rp></ruby>だけを<ruby>見<rp>(</rp><rt>み</rt><rp>)</rp></ruby>たからといって、すべてがうまくいっているとはかぎらない。",
+    "e": "Even looking only at this result, that doesn't necessarily mean everything is going well.",
+    "m": "Зөвхөн энэ үр дүнг харсан ч бүх зүйл сайн явж байна гэсэн үг заавал биш."
+   }
+  ],
+  "a": [
+   "からとて",
+   "としても"
+  ]
+ },
+ {
+  "g": "つづける",
+  "t": "foundation",
+  "l": 17,
+  "j": "N4",
+  "e": "つつある and つづけている both describe a change still in progress — つつある is the more formal, written version of the same ongoing shift.",
+  "m": "つつある болон つづけている хоёулаа одоо ч явагдаж буй өөрчлөлтийг тодорхойлдог — つつある нь ижил үргэлжилж буй өөрчлөлтийн илүү албан ёсны, бичгийн хувилбар юм.",
+  "v": [
+   {
+    "j": "この<ruby>湖<rp>(</rp><rt>みずうみ</rt><rp>)</rp></ruby>の<ruby>水<rp>(</rp><rt>みず</rt><rp>)</rp></ruby>は<ruby>年<rp>(</rp><rt>とし</rt><rp>)</rp></ruby>ごとに<ruby>減<rp>(</rp><rt>へ</rt><rp>)</rp></ruby>りつづけている。",
+    "e": "This lake's water level is continuing to decrease year by year.",
+    "m": "Энэ нуурын усны түвшин жил ирэх тусам буурсаар байна."
+   },
+   {
+    "j": "この<ruby>森<rp>(</rp><rt>もり</rt><rp>)</rp></ruby>の<ruby>木<rp>(</rp><rt>き</rt><rp>)</rp></ruby>は<ruby>年々<rp>(</rp><rt>ねんねん</rt><rp>)</rp></ruby><ruby>減<rp>(</rp><rt>へ</rt><rp>)</rp></ruby>りつづけている。",
+    "e": "This forest's trees continue to decrease year by year.",
+    "m": "Энэ ойн мод жил ирэх тусам цөөрсөөр байна."
+   }
+  ],
+  "a": [
+   "つつある"
+  ]
+ },
+ {
+  "g": "といっても",
+  "t": "foundation",
+  "l": 18,
+  "j": "N3",
+  "e": "といっても and としても both concede a fact before qualifying it — they're close, standard interchangeable ways to say 'even granting that.'",
+  "m": "といっても болон としても хоёулаа баримтыг хүлээн зөвшөөрсний дараа нөхцөлжүүлдэг — эдгээр нь \"тэгсэн ч гэсэн\" гэсэн ойролцоо, стандарт сольж хэрэглэгддэг хос юм.",
+  "v": [
+   {
+    "j": "この<ruby>薬<rp>(</rp><rt>くすり</rt><rp>)</rp></ruby>は<ruby>効果<rp>(</rp><rt>こうか</rt><rp>)</rp></ruby>があるといっても、<ruby>飲<rp>(</rp><rt>の</rt><rp>)</rp></ruby>みすぎるのはよくない。",
+    "e": "Even though this medicine is effective, taking too much isn't good.",
+    "m": "Энэ эм үр дүнтэй ч, хэт их уух нь сайн биш."
+   }
+  ],
+  "a": [
+   "としても"
+  ]
+ },
+ {
+  "g": "はじめる",
+  "t": "foundation",
+  "l": 19,
+  "j": "N4",
+  "e": "つつある and はじめている can both describe a change already underway — はじめている just frames the same shift as something that's recently started.",
+  "m": "つつある болон はじめている хоёулаа аль хэдийн эхэлсэн өөрчлөлтийг тодорхойлж болно — はじめている нь ижил өөрчлөлтийг саяхан эхэлсэн зүйл мэт харуулдаг.",
+  "v": [
+   {
+    "j": "この<ruby>地域<rp>(</rp><rt>ちいき</rt><rp>)</rp></ruby>の<ruby>伝統技術<rp>(</rp><rt>でんとうぎじゅつ</rt><rp>)</rp></ruby>は<ruby>失<rp>(</rp><rt>うしな</rt><rp>)</rp></ruby>われはじめている。",
+    "e": "This region's traditional craft is beginning to be lost.",
+    "m": "Энэ бүс нутгийн уламжлалт урлаг алга болж эхэлж байна."
+   },
+   {
+    "j": "この<ruby>言語<rp>(</rp><rt>げんご</rt><rp>)</rp></ruby>を<ruby>話<rp>(</rp><rt>はな</rt><rp>)</rp></ruby>せる<ruby>人<rp>(</rp><rt>ひと</rt><rp>)</rp></ruby>は<ruby>年<rp>(</rp><rt>とし</rt><rp>)</rp></ruby>ごとに<ruby>減<rp>(</rp><rt>へ</rt><rp>)</rp></ruby>りはじめている。",
+    "e": "The number of people who can speak this language is beginning to decrease.",
+    "m": "Энэ хэлээр ярьж чадах хүмүүсийн тоо цөөрч эхэлж байна."
+   }
+  ],
+  "a": [
+   "つつある"
   ]
  }
 ];
