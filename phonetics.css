@@ -2,9 +2,14 @@
    "Light jade" theme: this page's own scoped color palette, entirely separate from the
    shared style.css :root tokens (same pattern as game.css's .game-main "digital hanafuda"
    theme). A pale jade/celadon paper ground — the color of aged bronze seen as glaze rather
-   than as patina on dark metal — paired with the same warm copper accent (the un-oxidized
-   metal), so this still reads distinctly from Word Match's burgundy/gold page without
-   doubling up on a red accent.
+   as patina on dark metal — paired with the jade of this page's own hub seal.
+
+   The accent was a warm copper (#b35f2f, 22deg) until 2026-11-07, which put it in the
+   9-38deg band six of the site's eight surfaces were sitting in, and 138deg away from the
+   #1f6b52 seal that index.html gives this tool and that the masthead above it already wears.
+   You pressed a teal button on the home page and arrived somewhere entirely copper. The
+   accent is now derived from that seal, so the page is operated in the colour it is
+   presented in.
 
    Scoped to .phonetics-main (this page's whole content area) AND #phonetics-info-modal (the
    explainer modal). The modal is a DOM sibling of .phonetics-main, not a descendant — it lives
@@ -49,20 +54,29 @@ body:has(.phonetics-main),
        under the 4.5 floor for the small text they carry */
     --text-muted: #55665b;
     --text-muted: light-dark(#55665b, #93a89a);
-    --accent: #b35f2f;
-    --accent-light: #d1834f;
-    --accent-dark: #8c4620;
-    --accent-dark: light-dark(#8c4620, #e8a677);
-    --accent-tint: rgba(179, 95, 47, 0.12);
-    --accent-tint: light-dark(rgba(179, 95, 47, 0.12), rgba(209, 131, 79, 0.18));
-    /* Deliberately NOT the usual (--accent-light -> --accent) pair used on the other pages.
-       .auth-btn (style.css, shared sitewide, not editable here) hardcodes a white label on
-       var(--accent-gradient); white on --accent-light is only 2.97:1, so the canonical pair
-       would fail at the gradient's light end. Shifting the ramp one notch darker
-       (--accent -> --accent-dark) keeps white at 4.57:1 -> 6.97:1 across the whole fill,
-       which is a cleaner fix than overriding the button's label color per-page. */
-    --accent-gradient: linear-gradient(135deg, var(--accent), var(--accent-dark));
-    --accent-gradient-hover: linear-gradient(135deg, var(--accent-dark), #6f3618);
+    /* The jade of this page's own hub seal. --accent IS the seal exactly, so the fill a
+       visitor pressed on index.html and the fills inside the page are one colour. Every value
+       below is solved at hue 160, the seal's own hue, against this page's three real grounds
+       (--bg-surface #f7fbf8, --bg-page #eaf1ec, --bg-surface-alt #dde9e0 in light; #17201a,
+       #101613, #1e2a22 in dark). */
+    --accent: #1f6b52;
+    --accent-light: #35b68b;
+    /* --accent-light is a FILL and never text: on this page's pale grounds it measures under
+       2:1. Text takes --accent-dark, which is used in 39 places here. */
+    --accent-dark: #1b5f48;
+    --accent-dark: light-dark(#1b5f48, #2ea07a);
+    --accent-tint: rgba(31, 107, 82, 0.12);
+    --accent-tint: light-dark(rgba(31, 107, 82, 0.12), rgba(46, 160, 122, 0.18));
+    /* The gradient is PINNED to fixed dye, identical in both themes, the way Grammar Connect's
+       start button and Dokkai Reader's are -- it is NOT built from --accent-dark.
+       .auth-btn (style.css, shared sitewide, not editable here) hardcodes a WHITE label on
+       var(--accent-gradient), and --accent-dark lightens in dark mode: built the old way the
+       dark gradient ran to a pale jade and white fell to 3.27:1. The copper this replaces had
+       exactly that bug and still measured 2.07:1 on its own light stop in dark mode, which is
+       why this is pinned rather than carried over. White clears 4.54:1 on the near stop and
+       7.56:1 on the far one, in both themes. The lightest stop is the one that has to clear. */
+    --accent-gradient: linear-gradient(135deg, #268565, #1b5f48);
+    --accent-gradient-hover: linear-gradient(135deg, #1b5f48, #123f30);
     --shadow-sm: 0 2px 10px rgba(28, 47, 37, 0.08);
     --shadow-sm: 0 2px 10px light-dark(rgba(28, 47, 37, 0.08), rgba(0, 0, 0, 0.45));
     --shadow-md: 0 14px 32px rgba(28, 47, 37, 0.16);
@@ -123,7 +137,7 @@ body:has(.phonetics-main) {
        ground — on the pale jade it would read as a dirty smear. Same gesture, rebuilt as a
        faint warm copper haze off the page's own accent. */
     background:
-        radial-gradient(ellipse 90% 50% at 50% -8%, rgba(179, 95, 47, 0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 90% 50% at 50% -8%, rgba(31, 107, 82, 0.10) 0%, transparent 60%),
         var(--bg-page);
     color: var(--text-primary);
 }

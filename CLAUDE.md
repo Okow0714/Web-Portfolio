@@ -15,7 +15,7 @@ Supabase (Postgres + Auth). Hosted on GitHub Pages. Git repo on `main`.
 | `about.html` | Sarantsatsral's personal "About Me" resume/portfolio page — reached via the footer's "About Me" column or the hub's developer card, not the top nav. Fully standalone: its own `about.css` (forest-teal "Field Dossier" theme), no shared `style.css`, no masthead/footer, a sticky left index-rail layout instead. English only, no i18n. Has its own compact account popover (`.about-account*` classes) rather than the shared masthead's side drawer, but wired through the same `auth-shared.js` and load-bearing IDs (see Account menu below). |
 | `path.html` | Study Path (学びの道) — a six-stage route from no Japanese at all to N1, mapping each stage onto specific tools and level ranges. `<main class="path-main">` / `path.css` (warm paper, sumi ink, one saffron marker). **Rebuilt 2026-10-12 as a map plus six pages.** `path.html` is now only the map: a Dunning-Kruger confidence curve with the six stages as points on it (lowest before JLPT, peak at N3, trough at N2, N1 recovering), plus a folded `<details>` explaining that the famous curve is not in Kruger & Dunning 1999 and is largely a statistical artefact. Each point links to its own page -- `path-kana.html`, `path-n5.html` ... `path-n1.html`, `<main class="path-stage-main">` -- which carries that stage's full text, a minimap showing where it sits on the curve, and prev/next links. **The whole thing is static**: the curve's path data, every point's left/top and each minimap are generated from one list of six anchor points and written into the HTML, so there is no script on any of these pages, the route is crawlable and the road can never disagree with the points. The six stage pages share path.html's nav entry via a rule in `build-chrome.js`'s `withCurrent`. The old spine layout (`.path-route`/`.path-stage`/`.path-marker`) is gone. **Not in the masthead nav on purpose** — it is a route through the tools rather than a tool, and it is reached from the hub's `.hub-startpath` banner and the footer's Study tools column. (The row had no space either, until the 2026-09-16 regrouping; now it has, and this stays out by choice.) The per-stage hour ranges are external rules of thumb, labelled as such on the page (`.path-hours-note`, on the map AND on all six stage pages -- see the audit below; that claim was false from the 2026-10-12 rebuild until 2026-11-06); every level range in the copy is real and will drift if the tools change. |
 | `game.html` | Word Match ("言葉合わせ") — hexagonal-card **memory** game, JLPT N5–N1. `<main class="game-main">` / `game.css`. **Rebuilt 2026-10-21** (see Word Match below): the honeycomb-matching board, the 4-minute clock, streaks, powerups, the lightning chain and the Wakan flyer are all gone, and `game-board.js`, `game-play.js` and `game-wakan.js` went with them. Palette is now "hanafuda in daylight" — tatami straw, violet card backs, one gold, every surface a flat colour — with the old lacquer board kept as the dark theme. |
-| `phonetics.html` | Phonetics Family — kanji grouped by shared phonetic component, ranked by usage. `<main class="phonetics-main">` / `phonetics.css` (light jade/copper). **Rebuilt 2026-10-15 as one surface with four views** — gate → board → tree → round — and it no longer loads `phonetics-data.js` at all (see Phonetics below). `phonetics-drill.html` was retired with that rebuild: the round is a view on this page now. |
+| `phonetics.html` | Phonetics Family — kanji grouped by shared phonetic component, ranked by usage. `<main class="phonetics-main">` / `phonetics.css` (light jade; the accent was a warm copper until 2026-11-07, see The palette audit below). **Rebuilt 2026-10-15 as one surface with four views** — gate → board → tree → round — and it no longer loads `phonetics-data.js` at all (see Phonetics below). `phonetics-drill.html` was retired with that rebuild: the round is a view on this page now. |
 | `grammar.html` | Grammar Connect — sentence-swap grammar drill. `<main class="grammar-main">` / `grammar.css`. The data is still two tracks of twenty, but the **level select is four bands of ten** as of 2026-10-24 (see Grammar Connect below): a triangle gate and ten right-facing play-button tiles in a row. |
 | `reading.html` | Dokkai Reader — speech-recognition-driven reading practice. `<main class="reading-main">` / `reading.css` (plum on linen, light). **Rebuilt 2026-10-29** (see Dokkai Reader below): a persistent side info bar beside a stage that swaps between three views, and a level select of twelve regular pentagons. `#text-list-section` is gone — the texts open in a panel beside the pentagons. |
 | `dictionary.html` | Mongol-Japan Dictionary — two tabs: primary Монгол⇄日本語 (`mnjp-data.js`), secondary 漢語⇄和語 Kango/Wago (`dictionary-data.js`, lazy-loaded only when that tab opens). Reads a `?q=` URL param on load to pre-fill/filter the primary tab — the target of the home page's search bar. `<main class="dictionary-main">` / `dictionary.css`. **A picked word opens in a panel beside the list as of 2026-11-01** (see The kanji breakdown below), not in a strip under its own row, and the page has no display title or description. |
@@ -243,7 +243,7 @@ see `tutorial.js`'s `THEME_MAP`, which exists for exactly this reason. CSS custo
 means every `var(--x)` in that file picks up the page-local value automatically. `about.css` is
 the one exception — it doesn't load `style.css` at all, so its tokens live on a real `:root`
 instead of being scoped to its wrapper class. Current palette: hub deep wine/gold (dark),
-phonetics light jade/copper, reading plum-on-linen (light), grammar its own accent, dictionary
+phonetics light jade (accent and ground both, since 2026-11-07), reading plum-on-linen (light), grammar its own accent, dictionary
 its own accent, dashboard the brand's own gold-and-wine, game dark hanafuda violet/gold, about forest-teal,
 origins warm paper with this page's own hub-seal colour (see Kana Origins below).
 **Each page's colors and layout are deliberately distinct — don't reintroduce a shared template
@@ -1372,6 +1372,66 @@ selected tab by definition, so both are derived from one comparison.
 `grammar-index.js` carries no Kanjium or KANJIDIC2 material — the sentences are this project's
 own — so unlike `kanji-index.js` it stays **MIT** and needs no LICENSE section 2 entry and no
 `credits.html` row.
+
+**THE PALETTE AUDIT, AND WHY SIX OF EIGHT SURFACES WERE ONE COLOUR** (2026-11-07). Reported
+as a hunch that the buttons were tinted to match the Claude logo. The logo part is not what
+happened -- nothing in the repo references an Anthropic colour, and the three accents named
+(`--shu` `#bc4430`, `--terracotta` `#b5502e`, `--accent` `#b35f2f`) were all set in the original
+page builds on 2026-08-03/05 and had not moved since. **The wider version of the hunch was
+right.** Measured: Anthropic's brand hues are 15, 15, 25 and 40 degrees; six of this site's
+eight interior accents sat between **9 and 38 degrees**, six of eight page grounds were within
+**10 rgb units of `#F4F1EA`** (`path.css`'s `--paper` `#f4f1e8` is TWO units from it), and both
+display faces are serifs. That triad -- warm cream, serif display, terracotta accent -- is the
+first item in the list of AI-generated-design cliches that Claude's own design guidance names
+and says to avoid. The site was not wearing the logo's colour; it was wearing the aesthetic that
+produces it.
+**Three mechanisms, none visible from inside any one file.** Materials were NAMED, not measured
+-- shu (朱, seal vermilion), copper, terracotta and saffron sound like four decisions and are
+four points on one arc, never laid side by side as numbers. Contrast-solving CONVERGES: every
+warm accent gets walked darker until text clears 4.5, and Study Path's saffron and the
+Dashboard's brand gold started from different places and landed one degree apart, because
+mid-saturation warm at 33% lightness is a narrow place to end up. And warm is the default
+affordance colour, reached for independently by each page.
+**The discipline already existed and was applied to one layer only.** The six hub `--seal`
+values WERE deliberately spread across the wheel, and the reader's plum was picked in October by
+measuring where the gap was. The interiors never obeyed. Two pages therefore PRESENTED one
+colour and were OPERATED in another: Phonetics showed teal (160deg) and ran copper (22deg),
+**138 degrees apart**, and the Dictionary showed navy (211deg) and ran terracotta (15deg), 164
+apart. The 2026-10-24 work that made each masthead match its seal touched the CHROME only, so on
+those two pages it widened the gap rather than closing it.
+
+**Phonetics Family now takes its own seal, and the Dictionary deliberately does not**
+(2026-11-07, the agreed fix). `phonetics.css`'s accent set is derived from `#1f6b52`, the seal
+`index.html` gives the tool: `--accent` IS the seal exactly, so the fill pressed on the home page
+and the fills inside the page are one colour (asserted in the probe, not eyeballed). Every value
+is solved at hue 160 against this page's three real grounds in both themes; worst text 4.56:1,
+Quick Test bar 7.24 light / 5.11 dark.
+**The gradient is PINNED to fixed dye and must not be rebuilt from `--accent-dark`.** `.auth-btn`
+in `style.css` hardcodes a WHITE label on `var(--accent-gradient)`, and `--accent-dark` lightens
+in dark mode -- built the canonical way the dark gradient ran to a pale jade and white fell to
+**3.27:1**. The copper this replaced had exactly that bug and measured **2.07:1** on its own
+light stop in dark mode, a pre-existing failure found only because the swap forced the gradient
+to be re-solved. It is `#268565 -> #1b5f48` in both themes now, white 4.54 and 7.56. The
+lightest stop is the one that has to clear.
+**`images/hub/phonetics-tree.jpg` is a SCREENSHOT of this page** and the hub ghosts it behind the
+seal on hover, so a palette change stales it -- the same trap the reader's plum change hit. It
+was re-shot (and was doubly stale: the file on disk still showed the pre-2026-10-15 layout with
+its old "Families" header). Match the siblings: 596px, `deviceScaleFactor: 1`, ~28KB.
+**The DICTIONARY was left alone on purpose, and this is the interesting half.** Its seal navy
+`#23405f` measures **dE 6.8** from `--khukh` `#2a4d73`, the blue that already marks the Mongolian
+side -- so a straight swap would have made `#dict-tab-mnjp.active` and `#dict-tab-wakan.active`
+one colour, when they are 73.4 apart today. `--terracotta` is doing TWO jobs there: the page
+accent (hovers, focus rings, the cross-links into Phonetics Family and Grammar Connect) AND the
+wago marker paired against khukh. The page already matches its seal in the way that matters,
+because its content is blue-coded. **Option 1 does not apply mechanically to every page**, and
+the measurement is what showed it -- the screenshot preview could not, because the two colours
+never appear in one shot.
+**Still open from the audit, by choice:** N3 and N2 measure dE 14.3 apart in LIGHT on the Study
+Path discs (pre-existing, proved against HEAD); the grounds and the serif display faces are
+untouched, which are the two signals louder than the accents; and `images/share/phonetics.jpg`
+is stale on four counts (Sep 13, old 言 mark, pre-rebuild layout, copper, and a "1,128 ханз"
+stat for a tool that now loads 684) -- regenerating rebuilds every tool's card and Facebook
+caches previews, so it wants doing deliberately, exactly as `images/share/reading.jpg` still does.
 
 **`desk-sfx.js` — the sound of a desk** (2026-11-01, `phonetics.html` and `grammar.html`).
 Word Match has `CardSfx` and every cue in it is a card being handled, because that is what the
