@@ -13,7 +13,7 @@ Supabase (Postgres + Auth). Hosted on GitHub Pages. Git repo on `main`.
 |---|---|
 | `index.html` | The "entrance hall" / hub — site home, nav-brand target. **Rebuilt 2026-10-11 as one screen of six square "seals"** (`.hub-seal`), each a tool: icon and one-line stat at rest, the tool's own screenshot ghosted in behind a short description on hover. A large watermark of the brand mark bleeds off the left edge behind them. `<main class="hub-main">` / `hub.css`. **Everything else is below the fold** — `.hub-stage` is `min-height:100dvh`, so the Study Path band and the footer are reached only by scrolling. The old tool cards, the home dictionary search bar, the Dashboard progress widget and the Study Path banner are all gone, and `hub-home.js` went with them (it existed only to drive the last two). Mongolian by default, like every i18n page (see Mongolian first below). |
 | `about.html` | Sarantsatsral's personal "About Me" resume/portfolio page — reached via the footer's "About Me" column or the hub's developer card, not the top nav. Fully standalone: its own `about.css` (forest-teal "Field Dossier" theme), no shared `style.css`, no masthead/footer, a sticky left index-rail layout instead. English only, no i18n. Has its own compact account popover (`.about-account*` classes) rather than the shared masthead's side drawer, but wired through the same `auth-shared.js` and load-bearing IDs (see Account menu below). |
-| `path.html` | Study Path (学びの道) — a six-stage route from no Japanese at all to N1, mapping each stage onto specific tools and level ranges. `<main class="path-main">` / `path.css` (warm paper, sumi ink, one saffron marker). **Rebuilt 2026-10-12 as a map plus six pages.** `path.html` is now only the map: a Dunning-Kruger confidence curve with the six stages as points on it (lowest before JLPT, peak at N3, trough at N2, N1 recovering), plus a folded `<details>` explaining that the famous curve is not in Kruger & Dunning 1999 and is largely a statistical artefact. Each point links to its own page -- `path-kana.html`, `path-n5.html` ... `path-n1.html`, `<main class="path-stage-main">` -- which carries that stage's full text, a minimap showing where it sits on the curve, and prev/next links. **The whole thing is static**: the curve's path data, every point's left/top and each minimap are generated from one list of six anchor points and written into the HTML, so there is no script on any of these pages, the route is crawlable and the road can never disagree with the points. The six stage pages share path.html's nav entry via a rule in `build-chrome.js`'s `withCurrent`. The old spine layout (`.path-route`/`.path-stage`/`.path-marker`) is gone. **Not in the masthead nav on purpose** — it is a route through the tools rather than a tool, and it is reached from the hub's `.hub-startpath` banner and the footer's Study tools column. (The row had no space either, until the 2026-09-16 regrouping; now it has, and this stays out by choice.) The per-stage hour ranges are external rules of thumb, labelled as such on the page; every level range in the copy is real and will drift if the tools change. |
+| `path.html` | Study Path (学びの道) — a six-stage route from no Japanese at all to N1, mapping each stage onto specific tools and level ranges. `<main class="path-main">` / `path.css` (warm paper, sumi ink, one saffron marker). **Rebuilt 2026-10-12 as a map plus six pages.** `path.html` is now only the map: a Dunning-Kruger confidence curve with the six stages as points on it (lowest before JLPT, peak at N3, trough at N2, N1 recovering), plus a folded `<details>` explaining that the famous curve is not in Kruger & Dunning 1999 and is largely a statistical artefact. Each point links to its own page -- `path-kana.html`, `path-n5.html` ... `path-n1.html`, `<main class="path-stage-main">` -- which carries that stage's full text, a minimap showing where it sits on the curve, and prev/next links. **The whole thing is static**: the curve's path data, every point's left/top and each minimap are generated from one list of six anchor points and written into the HTML, so there is no script on any of these pages, the route is crawlable and the road can never disagree with the points. The six stage pages share path.html's nav entry via a rule in `build-chrome.js`'s `withCurrent`. The old spine layout (`.path-route`/`.path-stage`/`.path-marker`) is gone. **Not in the masthead nav on purpose** — it is a route through the tools rather than a tool, and it is reached from the hub's `.hub-startpath` banner and the footer's Study tools column. (The row had no space either, until the 2026-09-16 regrouping; now it has, and this stays out by choice.) The per-stage hour ranges are external rules of thumb, labelled as such on the page (`.path-hours-note`, on the map AND on all six stage pages -- see the audit below; that claim was false from the 2026-10-12 rebuild until 2026-11-06); every level range in the copy is real and will drift if the tools change. |
 | `game.html` | Word Match ("言葉合わせ") — hexagonal-card **memory** game, JLPT N5–N1. `<main class="game-main">` / `game.css`. **Rebuilt 2026-10-21** (see Word Match below): the honeycomb-matching board, the 4-minute clock, streaks, powerups, the lightning chain and the Wakan flyer are all gone, and `game-board.js`, `game-play.js` and `game-wakan.js` went with them. Palette is now "hanafuda in daylight" — tatami straw, violet card backs, one gold, every surface a flat colour — with the old lacquer board kept as the dark theme. |
 | `phonetics.html` | Phonetics Family — kanji grouped by shared phonetic component, ranked by usage. `<main class="phonetics-main">` / `phonetics.css` (light jade/copper). **Rebuilt 2026-10-15 as one surface with four views** — gate → board → tree → round — and it no longer loads `phonetics-data.js` at all (see Phonetics below). `phonetics-drill.html` was retired with that rebuild: the round is a view on this page now. |
 | `grammar.html` | Grammar Connect — sentence-swap grammar drill. `<main class="grammar-main">` / `grammar.css`. The data is still two tracks of twenty, but the **level select is four bands of ten** as of 2026-10-24 (see Grammar Connect below): a triangle gate and ten right-facing play-button tiles in a row. |
@@ -430,6 +430,73 @@ the derived data is the provenance record.
 
 Related: `phonetics.html` used to auto-open its "what's a phonetic component?" modal on *every*
 load; that is gone — the tour points at the button instead.
+
+**The Study Path audit, and five things a screenshot could not have told you** (2026-11-06).
+A visual pass over `path.html` and the six stage pages found five faults, every one measured
+rather than eyeballed, and all five are fixed. The probes are
+`scratchpad/path-verify.js` (28 checks: four theme states, five viewport widths, a real 390x844
+phone, all six stage pages, both languages) and `scratchpad/path-place.js` (the label-placement
+table).
+**The five JLPT discs borrowed a token solved for a different ground.** `--stop-hue` read
+`--jlpt-n*-ink`, whose own comment in `style.css` says it is solved to sit on the pale
+`--jlpt-n*-tint`; those five are flat hex with **no `light-dark()` pair**, and this page paints
+them on `--paper-raised`, which inverts. Measured 2.02-3.30:1 in dark and **1.89:1 in
+light+darker** -- the worst reading is on the Darker axis in the LIGHT theme, which no light pass
+and no dark pass can reach, which is why it survived every previous sweep. `かな` escaped because
+stage 0 takes the page-local `--ink-faint`, which does have a pair: **the five that broke are
+exactly the five that borrowed.** The page now owns `--stop-n5..--stop-n1`, and the darker block
+restates all five, because it outranks a `light-dark()` pair at higher specificity.
+**The dark halves are raised in HSL LIGHTNESS, not mixed toward white.** Mixing hit 4.5 at 32-36%
+white and turned the wine and the plum into dusty pinks -- the exact drain `grammar.css` records
+from its own 46% wash. Solved instead for 4.5 on BOTH dark grounds (`#1e1b15` and the darker
+block's `#24211a`), with every hue held within 6 degrees of its original: worst 4.64:1, minimum
+pairwise dE 33.7. **The light halves are byte-identical to what shipped** and were not touched.
+**N3 and N2 sit at dE 14.3 in LIGHT and that is pre-existing** -- proved against a worktree of
+HEAD on :8124, where it is 14.3 in both themes (the hues did not respond to theme at all, which
+was the bug). Two of the five discs are nearly one colour in the default theme. Left alone
+because fixing it changes the page's shipped appearance; `path-verify.js` prints it as
+PRE-EXISTING rather than failing on it, so it cannot be mistaken for a regression later.
+**A positioned pseudo-element paints above a static sibling**, and the phone layout sets
+`.path-stop { position: static }` while `.path-chart::before` is absolute -- so the spine was
+drawn straight THROUGH all six discs, striking out every glyph. Desktop never showed it: both are
+positioned there and DOM order wins. The fix goes on `.path-stop-disc`, **never on `.path-stop`**,
+which carries inline `left`/`top` generated for the desktop plot -- `position: relative` there
+re-activates them and the disc jumped from x=49 to x=164 (tested). The spine was also 4px off
+centre, now 0.0.
+**Label placement is measured per stop, not reasoned about.** Every label hung below its disc,
+which is right in a trough and wrong at a peak or on a climb; the road ran through stages 2, 3
+and 5 at every width above 760px. `scratchpad/path-place.js` tries eight placements against 900
+road samples at five widths and prints the table. Stages 3 and 5 are clean simply moved above.
+**Stage 2 has no clean vertical answer at all** -- mid-climb it is crossed hanging below (45
+points) and crossed centred above (35) -- so it takes `data-label="above-back"`, shifted into the
+upper-left quadrant a rising limb leaves empty. My first guess for stage 2 was plain `above`, and
+it measured 35 hits: the table is there because the geometry is not obvious.
+**`max-width` does not belong on a block that paints a fill.** `.path-ready` was in the measure
+cap list and so was a filled saffron band stopping **225px short** of its 820px card. The measure
+belongs on the TEXT, so each band wraps its copy in a span. Two traps: `.path-ready` and
+`.path-hours-note` are both `<p>` inside `.path-card`, so `.path-card p` caught them whatever was
+done to their own rule -- the cap list has to say `:not(.path-ready):not(.path-hours-note)`
+outright. And a band that spans its card measures **2px narrower** than the card's bounding rect,
+because `.path-card` has a 1px border; an off-by-one there reported all six pages broken when
+they were right.
+**The hours caveat was buried and is back where the hours are.** All seven pages print hour
+ranges; the caveat survived only as one sentence inside the CLOSED `<details>` about the
+Dunning-Kruger curve, and the six stage pages had none at all. `.path-hours-note` was still in
+`path.css`, used by no HTML -- the fossil of it having been done right, its own comment saying it
+should sit "where they are first used, not in a footnote nobody reads". **Not one word of the
+Mongolian is newly written**: `path.hoursNote` is the second and third sentences of
+`path.essay6`, lifted programmatically out of the strings file with the subject made explicit
+(`Эдгээр нь` -> `Цагийн тоонууд нь`), so the author's own copy is what ships.
+**Three of my own probes were wrong before they were right**, which is the convention working:
+a `getPropertyValue('--paper-raised')` read handed back the literal `light-dark(...)` string and
+digit-scraping it produced `rgb(9,4,1)`, inventing six hover failures that did not exist (resolve
+through a probe placed INSIDE the declaring subtree, as `tutorial.js` does); a hit test probed
+the disc's x rather than the spine's and so missed the strike-through entirely; and the
+off-by-one above. Also: `resize_page` to 390px silently does not take on Windows (`innerWidth`
+stays 502, the minimum window width) -- use a real `isMobile`/`hasTouch` context and assert
+`innerWidth === 390` before believing a phone measurement.
+**The language key is `site-lang`**, not `khanjp-lang` -- the other prefs use the `khanjp-` prefix
+and i18n.js does not, which cost one false failure.
 
 **Kana Origins is four sections and a wall** (rebuilt 2026-10-23). A sticky `.origins-bar`
 starts under the opening and takes the top of the screen once it is scrolled past; its four

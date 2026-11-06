@@ -49,6 +49,23 @@ body:has(.path-stage-main) {
     --saffron-tint: #f6efdf;
     --saffron-tint: light-dark(#f6efdf, #2a2113);
 
+    /* The six disc hues. These are NOT --jlpt-n*-ink from style.css, and must not be changed
+       back to it: those five are solved to sit on the pale --jlpt-n*-tint (their comment says
+       so), they are flat hex with no light-dark() pair, and this page paints them on
+       --paper-raised, which inverts. Borrowing them measured 2.02-3.30:1 in dark and 1.89:1 in
+       light+darker -- a token is only as correct as the ground it was solved against.
+       The dark halves are each hue raised in HSL LIGHTNESS, not mixed toward white, which would
+       drain the colour the five exist to distinguish (grammar.css learned this). Solved for 4.5
+       on both dark grounds -- the base #1e1b15 and the darker block's #24211a -- with every hue
+       held within 6 degrees of its original and a minimum pairwise dE of 33.5, so they still
+       read as one green-to-wine spectrum. The same ratio covers :hover, which swaps the hue to
+       the background and --paper-raised to the text. */
+    --stop-n5: light-dark(#1a7a5b, #279c6e);
+    --stop-n4: light-dark(#886814, #d3ad1d);
+    --stop-n3: light-dark(#ae4e1b, #d86f19);
+    --stop-n2: light-dark(#9c3520, #e0655c);
+    --stop-n1: light-dark(#82304a, #c76f94);
+
     --spine: #cfc7b4;
     --spine: light-dark(#cfc7b4, #3a3325);
     --done: #3f6b4c;
@@ -308,6 +325,15 @@ html[data-contrast="darker"] .path-stage-main {
     --saffron-bright: #e0a94a;
     --saffron-tint: #2e2617;
     --spine: #3a352a;
+    /* Darker sits at higher specificity than the light-dark() pairs above, so without these five
+       the stop hues fall back to the light halves on a night ground -- 1.89:1, and reachable
+       from the LIGHT theme, which is why no light/dark pass ever saw it. Night in both themes
+       here, so they are flat, like everything else in this block. */
+    --stop-n5: #279c6e;
+    --stop-n4: #d3ad1d;
+    --stop-n3: #d86f19;
+    --stop-n2: #e0655c;
+    --stop-n1: #c76f94;
 }
 
 /* This page had no motion at all. Its six stages are a route, read top to bottom, so they arrive
@@ -329,10 +355,29 @@ html[data-contrast="darker"] .path-stage-main {
 /* Measured at 108-125 characters a line across 36 elements, the worst on the site. The route is a column of cards; their copy has no reason to run the full card width. */
 .path-step,
 .path-goal,
-.path-ready,
-.path-card p,
-.path-lede,
-.path-hours-note { max-width: var(--measure); }
+.path-card p:not(.path-ready):not(.path-hours-note),
+.path-lede { max-width: var(--measure); }
+
+/* Standing on its own under the chart the note keeps its own width and left rule. */
+.path-main .path-hours-note { max-width: var(--measure); }
+
+/* .path-ready is NOT in that list: it paints a saffron fill and a top rule across the card, so
+   capping its box left a filled band stopping 225px short of the card's edge, which reads as
+   broken rather than as a measure. The measure belongs on the text, so the cap is on the inner
+   span and the band still spans the card. */
+.path-ready > span { display: block; max-width: var(--measure); }
+
+/* Inside a stage page's card the caveat is a band across the head, like .path-ready is at the
+   foot -- and for the same reason its text, not its box, carries the measure. */
+.path-hours-note > span { display: block; max-width: var(--measure); }
+
+.path-card > .path-hours-note {
+    max-width: none;
+    margin: 0;
+    padding: 12px 24px;
+    border-left: 0;
+    border-bottom: 1px solid var(--edge);
+}
 
 
 /* =============================================================================================
@@ -441,14 +486,30 @@ html[data-contrast="darker"] .path-stage-main {
 }
 .path-stop-hours { display: block; font-size: 0.72rem; color: var(--ink-soft); }
 
-/* One hue per stop, from the shared JLPT spectrum; stage 0 is before JLPT, so it takes stone.
-   The -ink variants are used, not the bare hues: these draw text and a 2.5px ring on paper. */
+/* One hue per stop; stage 0 is before JLPT, so it takes stone. The hues are this page's own
+   --stop-n* (see the token block) because the ground here is paper, not a JLPT tint. */
 .path-stop[data-stop="0"] { --stop-hue: var(--ink-faint); }
-.path-stop[data-stop="1"] { --stop-hue: var(--jlpt-n5-ink); }
-.path-stop[data-stop="2"] { --stop-hue: var(--jlpt-n4-ink); }
-.path-stop[data-stop="3"] { --stop-hue: var(--jlpt-n3-ink); }
-.path-stop[data-stop="4"] { --stop-hue: var(--jlpt-n2-ink); }
-.path-stop[data-stop="5"] { --stop-hue: var(--jlpt-n1-ink); }
+.path-stop[data-stop="1"] { --stop-hue: var(--stop-n5); }
+.path-stop[data-stop="2"] { --stop-hue: var(--stop-n4); }
+.path-stop[data-stop="3"] { --stop-hue: var(--stop-n3); }
+.path-stop[data-stop="4"] { --stop-hue: var(--stop-n2); }
+.path-stop[data-stop="5"] { --stop-hue: var(--stop-n1); }
+
+/* A label hangs under its disc, which is right in a trough and wrong at a peak or on a rising
+   limb -- the dotted road ran straight through stages 2, 3 and 5 at every width above the phone
+   breakpoint. column-reverse lifts the label above the disc without moving the stack, which
+   stays centred on its own anchor point. Which stops get it is geometry, not taste: it is set
+   per stop in path.html beside the generated left/top, and every stop's placement was measured
+   at five widths rather than reasoned about -- see the table in scratchpad/path-place.js. */
+.path-stop[data-label="above"],
+.path-stop[data-label="above-back"] { flex-direction: column-reverse; }
+
+/* Stage 2 is the one stop with no clean vertical answer: mid-climb, the road crosses its label
+   whether that hangs below (45 road points) or sits centred above (35). Shifted BACK along the
+   road, into the upper-left quadrant a rising limb leaves empty, it is clear at every width.
+   Stages 3 and 5 stay centred -- a peak label reads best over its own disc, and both measure 0
+   there, so neither is moved further than it has to be. */
+.path-stop[data-label="above-back"] { align-items: flex-start; }
 
 /* ---- the essay, folded away ----
    A native <details>: it opens with no script, is reachable by keyboard, and a visitor who
@@ -643,7 +704,9 @@ html[data-contrast="darker"] .path-stage-main {
     .path-chart::before {
         content: '';
         position: absolute;
-        left: 34px;
+        /* 30, not 34: the 2px line's centre then lands on the disc's centre (measured 4px off
+           before). */
+        left: 30px;
         top: 86px;
         bottom: 10px;
         width: 2px;
@@ -657,7 +720,15 @@ html[data-contrast="darker"] .path-stage-main {
         width: auto;
         gap: 14px;
     }
-    .path-stop-disc { width: 54px; height: 54px; }
+    /* The stops go static here, and a positioned pseudo-element paints above a static sibling --
+       so the spine was drawn straight through all six discs, striking out every glyph. Desktop
+       never showed it because both are positioned there and DOM order wins. The disc takes the
+       position, NOT .path-stop: that carries inline left/top generated for the desktop plot, and
+       position: relative re-activates them (tested -- the disc jumped from x=49 to x=164). */
+    .path-stop-disc { width: 54px; height: 54px; position: relative; }
+    /* The placements are a desktop answer to the road; stacked on a phone there is no road.
+       Matched on the bare attribute so a new placement token cannot escape this reset. */
+    .path-stop[data-label] { flex-direction: row; align-items: center; }
     .path-stop-label { text-align: left; }
 
     .pstage-hero { gap: 14px; }

@@ -57,6 +57,17 @@ Object.assign(window.I18N_STRINGS, {
         mn: 'Цэг бүр дээрх цагийн тоо ч мөн адил үүрэгтэй. Эдгээр нь амлалт биш, бусдын туршлагаас гарсан ойролцоо тоо. Хэрэв та хуваариасаа хоцорч байвал энэ нь таны асуудал биш — тоонууд ойролцоо учраас тэр.',
     },
 
+    /* The same caveat, standing on its own under the hours themselves -- on the map and on all
+       six stage pages. It used to exist ONLY as the sentence above, inside a closed <details>
+       about the Dunning-Kruger curve, while seven pages printed hour ranges with nothing beside
+       them saying where the figures come from. Not a word of it is newly written: it is the
+       second and third sentences of path.essay6, with the subject made explicit now that there
+       is no preceding sentence to carry it. */
+    'path.hoursNote': {
+        en: 'The hour ranges are not promises, they are rough numbers from other people’s experience. If you are behind them, that is not a problem with you — it is that they are rough.',
+        mn: 'Цагийн тоонууд нь амлалт биш, бусдын туршлагаас гарсан ойролцоо тоо. Хэрэв та хуваариасаа хоцорч байвал энэ нь таны асуудал биш — тоонууд ойролцоо учраас тэр.',
+    },
+
     // The six stage pages.
     'pstage.back': { en: 'Back to the map', mn: 'Замын зураг руу' },
     'pstage.prev': { en: '← Previous', mn: '← Өмнөх' },
