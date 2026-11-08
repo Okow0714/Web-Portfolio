@@ -31,6 +31,8 @@ body:has(.game-main) {
 
     /* The tile face. Near-white by day, washi by night — a card is pale in any room. */
     --paper: light-dark(#fffdf7, #f2e8d5);
+    /* the face of a meaning the hand GAVE you, warmer than one you turned over yourself */
+    --paper-given: light-dark(#f7ead0, #e0d2ad);
     --paper-edge: light-dark(#d7c9a7, #d9c9a8);
 
     --text: light-dark(#231c2d, #f2e8d5);
@@ -563,9 +565,70 @@ body.game-playing .game-main {
 }
 
 /* ---------------- tiles ---------------- */
-.mem-tile {
+/* THE SHADOW CANNOT GO ON THE TILE, and until now it did. CSS Masking applies `clip-path`
+   AFTER `filter`, so a drop-shadow written on the hexagon is clipped away with everything else
+   outside the silhouette: measured at a peak luminance drop of 0.0 beside the card, against
+   47.8 for the identical shadow on an unclipped wrapper. The gold rim was the only thing
+   separating one card from the next, and the comment that used to sit here claimed the
+   opposite -- that a filter "follows the clipped silhouette". That is true of a filter applied
+   to a clipped CHILD, never of one on the clipped element itself.
+   So .mem-slot is that wrapper. It owns the position, the deal animation, the cast and the
+   pick's transform; .mem-tile owns the clip, the fills and the flip.
+   --edge is declared HERE and not on the tile: a parent cannot read a descendant's custom
+   property, and an undefined one makes the whole `filter` invalid at computed-value time,
+   which paints nothing at all and reports no error. */
+.mem-slot {
     position: absolute;
     z-index: 2;
+    /* THE SLOT MUST NOT TAKE A POINTER. clip-path clips hit-testing as well as paint, so while
+       the card was the positioned element only the hexagon was clickable. The slot is its
+       unclipped bounding BOX, and interlocking hexagons' boxes overlap -- so a slot's empty
+       corner lands on top of its neighbour's hexagon and swallows the click. Measured by
+       hit-testing every card against its neighbours' words: 48 sample points intercepted with
+       no lift applied at all. The card takes the pointer back below. */
+    pointer-events: none;
+    --edge: light-dark(rgba(88, 68, 30, .72), rgba(0, 0, 0, .8));
+    filter: drop-shadow(0 3px 4px var(--edge));
+    /* The hand lands from the middle outwards; game-memory.js sets each slot's delay from its
+       distance to the board's centre. `backwards` is what holds it invisible through its own
+       delay -- without it the whole hand appears at once and then animates. */
+    animation: tileIn .42s var(--ease-pop) backwards;
+    transition: transform .17s var(--ease-pop), filter .17s var(--ease-pop);
+}
+/* A back is violet and a face is paper, and a cast belongs to the thing casting it -- so the
+   shadow is a deepened tone of that card rather than one neutral grey for both. :has() is how
+   the wrapper learns which it is wrapping, since that flips every time the card turns. */
+.mem-slot:has(.mem-tile.down) { --edge: light-dark(rgba(22, 15, 58, .82), rgba(0, 0, 0, .85)); }
+/* A cleared pair fades to .22 on the TILE, and the cast is on the slot -- so without this a
+   ghost card would still throw a full-strength shadow. A card out of play casts nothing. */
+.mem-slot:has(.mem-tile.gone) { filter: none; }
+
+/* YOUR FIRST PICK OF A PAIR: the card comes up off the tatami and its shadow falls further.
+   There was no mark for a pick at all before -- it simply turned face up, which in hand 1 is
+   indistinguishable from the six meanings VISIBLE_MEANINGS_BY_HAND leaves face up on purpose.
+   z-index above the field because the hand TESSELLATES: a lifted card overlaps all six of its
+   neighbours and belongs on top of them. .mem-board sets no overflow, so an edge card may
+   spill past it rather than being cut.
+   NO translateY, though the preview had one. The rise is what covers a neighbour's WORD, and
+   on this board those words are the thing you are reading while you hold a card. Hit-tested
+   with elementFromPoint, every card picked in turn, a 4px grid over every readable word:
+   translateY(-7px) hides 17 glyph points across the hand and 5 on the worst card, -3px hides
+   5 and 2, and scale alone hides NOTHING. The deepened cast is what says the card is lifted;
+   the rise only cost legibility. */
+.mem-slot.sel {
+    z-index: 5;
+    transform: scale(1.09);
+    filter: drop-shadow(0 2px 2px var(--edge)) drop-shadow(0 13px 13px var(--edge));
+}
+
+.mem-tile {
+    /* relative, so .t-mark's `inset: 0` still resolves against the CARD's padding box as it
+       did when the card itself was the positioned element. Not a transform -- that would make
+       it a containing block for anything fixed inside it. */
+    position: relative;
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;          /* the slot above is none; the hexagon is what you click */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -586,17 +649,16 @@ body.game-playing .game-main {
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     background: var(--paper);
     color: var(--ink);
-    /* The same silhouette argument as .hexnode: on a light ground twelve near-white faces that
-       tessellate read as one white blob instead of twelve pieces. */
-    filter: drop-shadow(0 0 1.4px light-dark(rgba(118, 96, 46, .6), rgba(0, 0, 0, .55)))
-            drop-shadow(0 2px 2px light-dark(rgba(90, 70, 30, .13), rgba(0, 0, 0, .4)));
-    /* The hand lands from the middle outwards; game-memory.js sets each tile's delay from its
-       distance to the board's centre. `backwards` is what holds a tile invisible through its
-       own delay -- without it the whole hand appears at once and then animates. The bonus
-       tiles override this with their own rock-and-glow further down. */
-    animation: tileIn .42s var(--ease-pop) backwards;
     transition: transform .17s var(--ease-pop), opacity .2s var(--ease-pop),
                 background-color .17s var(--ease-pop);
+}
+/* The bonus round is NOT wrapped: those tiles never turn face down, they carry their own
+   absolute placement and a two-part rock-and-glow of their own, and the gold halo already
+   separates them on the lacquer. */
+.mem-tile.bonus {
+    position: absolute;
+    z-index: 2;
+    animation: tileIn .42s var(--ease-pop) backwards;
 }
 @keyframes tileIn {
     from { opacity: 0; transform: scale(.42); }
@@ -604,57 +666,25 @@ body.game-playing .game-main {
 .mem-tile:focus-visible { outline: 2px solid var(--gold-text); outline-offset: 2px; }
 
 /* A meaning the hand left face up on purpose -- the difficulty ramp's help. Marked so it reads
-   as given rather than as one you turned over yourself. */
-.mem-tile.shown { --rim: var(--gold); }
+   as GIVEN rather than as one you turned over yourself.
+   This used to be the gold rim, and the rim is gone, so the mark had to move to the face: the
+   rim was doing two jobs and the cast only replaces the first. It cannot be an outline or a
+   box-shadow (both follow the border box, and the clip keeps only the slivers inside the
+   hexagon), and it must not be the cast, which every card now carries. A warmer paper is what
+   is left, and it costs no geometry. */
+.mem-tile.shown { background: var(--paper-given); }
 
-/* The back: a hanafuda card back, two solid violets woven at 135deg under a solid gold rule —
-   a printed pattern, not a sheen — so a hidden tile still reads as a playing piece rather than
-   a hole in the board. */
+/* The back: a hanafuda card back, two solid violets woven at 135deg -- a printed pattern, not
+   a sheen -- so a hidden tile still reads as a playing piece rather than a hole in the board.
+   The gold rule that used to run round it is gone; .mem-slot's cast is the edge now. */
 .mem-tile.down {
     background: repeating-linear-gradient(135deg,
         var(--wisteria-weave) 0 7px, var(--wisteria) 7px 14px);
-    --rim: var(--gold);
 }
 
-/* THE RIM IS CUT BY THE CLIP, not clipped after the fact.
-   Both of these wore `box-shadow: inset 0 0 0 2px var(--gold)`, and an inset box-shadow paints
-   against the BORDER BOX -- a rectangle. clip-path then keeps only the part of that rectangle
-   ring inside the hexagon: the left and right strips survive where the silhouette reaches x=0
-   and x=100%, which is y 25%-75%, the top and bottom strips vanish because the hexagon is a
-   single POINT there, and the four diagonal edges get nothing at all, since a rectangle ring
-   has nothing along them. Measured on a real 116x133 tile that is two 2px x 66px gold bars and
-   no edge anywhere else -- the "thick vertical outlines" on the card backs. It is the same
-   fact .mem-tile's own filter comment records ("a box-shadow is cut away by the clip-path")
-   and the one grammar.css records for `outline` ("a ring becomes a bracket").
-   So the rim is painted as a hexagon of its own and the face is laid on top of it, 2px in:
-   ::before is the rim at inset 0, ::after the face at inset 2px, both clipped to the same
-   polygon. The face takes `background: inherit`, so it follows the TILE's current background
-   -- .peek's gold, .hit's pine, .miss's crimson, .bonus's lacquer, the weave -- and none of
-   those state rules has to know this layer exists.
-   The two negative z-indexes put both pseudos above the element's own background and below the
-   labels; .mem-tile carries a `filter`, which creates a stacking context, so they cannot fall
-   behind the board. .t-mark is absolutely positioned and so still paints above both.
-   THE INSET IS 2.31px / 2px AND BOTH NUMBERS ARE DERIVED. A clip-path in percentages scales
-   the inner hexagon rather than offsetting its edges, so an even `inset: 2px` gives 2px of rim
-   on the two vertical edges and only ~1.4px perpendicular on the four diagonals -- measured,
-   and enough for a pixel probe to straddle the antialiasing on one edge and not another.
-   This tile's aspect is fixed by the honeycomb (hypot(w/2, 0.75h) === w gives h = 1.1547w), so
-   the diagonals have a constant inward normal of (0.5, 0.866). Insetting the box by (dx, dy)
-   moves a diagonal edge in by 0.5dx + 0.433dy and a vertical edge by dx, so dx = 2 and
-   dy = 2.31 solve both to the same 2px. Don't "tidy" these to one value. */
-.mem-tile.down::before,
-.mem-tile.shown::before,
-.mem-tile.down::after,
-.mem-tile.shown::after {
-    content: '';
-    position: absolute;
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    pointer-events: none;
-}
-.mem-tile.down::before,
-.mem-tile.shown::before { inset: 0; z-index: -2; background: var(--rim); }
-.mem-tile.down::after,
-.mem-tile.shown::after { inset: 2.31px 2px; z-index: -1; background: inherit; }
+/* (The 2px hexagonal rim that lived here is gone with the gold. It was drawn as two clipped
+   pseudo-elements because an inset box-shadow paints against the BORDER BOX and the clip kept
+   only two vertical slivers of it; .mem-slot above replaced the whole idea.) */
 /* Not `color: transparent`: .t-read sets its own colour and would show straight through the
    back of the tile, which is the one thing a memory game cannot afford. */
 .mem-tile.down .t-word,
@@ -723,28 +753,6 @@ body.game-playing .game-main {
    bonus tile shows. */
 .mem-tile.bonus { background: var(--lacquer); color: var(--paper); }
 .mem-tile.bonus .t-read { color: #c0ad87; }
-
-/* YOUR FIRST PICK OF A PAIR. There was no mark for one at all: a pick simply turned face up,
-   which in hand 1 is indistinguishable from the six meanings VISIBLE_MEANINGS_BY_HAND leaves
-   face up on purpose -- so the board showed seven face-up tiles and said nothing about which
-   one you were holding. It lifts instead: a card picked up off the table, which is the
-   handling gesture the rest of this game is built on.
-   DECLARED BEFORE .flip, deliberately. Both are `.mem-tile.X`, equal specificity, so source
-   order is the only thing deciding which transform applies -- and the flip has to win for the
-   170ms it runs, or a pick would grow and turn over at once. When flip comes off, the
-   transform transition already on .mem-tile carries the tile up to the lift.
-   z-index above the field because the main hand TESSELLATES: a scaled tile overlaps all six
-   of its neighbours, and a card held in the hand belongs on top of them. .mem-board sets no
-   overflow, so an edge tile may spill past it rather than being cut.
-   The shadow deepens with the lift. drop-shadow, not box-shadow -- a box-shadow is cut away
-   by the clip-path, which is the same fact that makes the back's gold ring read the way it
-   does (see .mem-tile.down). */
-.mem-tile.sel {
-    transform: scale(1.09);
-    z-index: 5;
-    filter: drop-shadow(0 0 1.4px light-dark(rgba(118, 96, 46, .6), rgba(0, 0, 0, .55)))
-            drop-shadow(0 5px 8px light-dark(rgba(90, 70, 30, .28), rgba(0, 0, 0, .55)));
-}
 
 .mem-tile.flip { transform: scaleX(.04); }
 .mem-tile.peek { background: var(--gold); color: #1b1626; }

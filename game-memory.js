@@ -187,7 +187,7 @@ function wordFront(w) { return w.enMn || w.en; }
 function clearBoard() {
     const board = boardEl();
     Array.prototype.slice.call(
-        board.querySelectorAll('.mem-tile, .mem-sparks, .mem-halo, .mem-colhead')
+        board.querySelectorAll('.mem-slot, .mem-tile, .mem-sparks, .mem-halo, .mem-colhead')
     ).forEach(el => el.remove());
 }
 
@@ -335,17 +335,24 @@ function dealHand() {
     tiles = [];
     cards.forEach((c, i) => {
         const s = slots[i];
+        // The card is a hexagon cut with clip-path, and clip-path is applied AFTER filter --
+        // so a cast written on the card is clipped off with the rest of the outside. The slot
+        // is the unclipped wrapper that carries the placement, the deal and the shadow; the
+        // card inside it carries the clip and fills the slot. See .mem-slot in game.css.
+        const slot = document.createElement('div');
+        slot.className = 'mem-slot';
+        slot.style.left = s.x.toFixed(3) + '%';
+        slot.style.top = (s.y / totalH * 100).toFixed(3) + '%';
+        slot.style.width = s.w.toFixed(3) + '%';
+        slot.style.height = (s.h / totalH * 100).toFixed(3) + '%';
+        slot.style.animationDelay = (dist[i] / farthest * 0.3).toFixed(3) + 's';
         const el = document.createElement('button');
         el.type = 'button';
         el.className = 'mem-tile up';
         el.dataset.i = String(i);
-        el.style.left = s.x.toFixed(3) + '%';
-        el.style.top = (s.y / totalH * 100).toFixed(3) + '%';
-        el.style.width = s.w.toFixed(3) + '%';
-        el.style.height = (s.h / totalH * 100).toFixed(3) + '%';
-        el.style.animationDelay = (dist[i] / farthest * 0.3).toFixed(3) + 's';
-        board.appendChild(el);
-        const t = { el, pair: c.pair, side: c.side, word: c.word, state: 'up' };
+        slot.appendChild(el);
+        board.appendChild(slot);
+        const t = { el, slot, pair: c.pair, side: c.side, word: c.word, state: 'up' };
         tiles.push(t);
         faceTile(el, t);
         el.setAttribute('aria-label', labelFor(t));
@@ -459,7 +466,8 @@ function onTile(e) {
         if (idx === firstPick) {
             clicks++; updateStats();
             firstPick = -1;
-            el.classList.remove('sel');
+            // the lift lives on the SLOT, not the card -- a clipped element cannot show a cast
+            t.slot.classList.remove('sel');
             if (!t.revealed) turn(t, 'down');
             say('game.mem.putBack');
             return;
@@ -471,7 +479,7 @@ function onTile(e) {
         if (!t.revealed) turn(t, 'up');
         if (firstPick < 0) {
             firstPick = idx;
-            el.classList.add('sel');
+            t.slot.classList.add('sel');
             CardSfx.pick();
             say('game.mem.findPartner');
             return;
@@ -480,7 +488,7 @@ function onTile(e) {
         firstPick = -1;
         // The lift comes off the moment the pair resolves, so .sel can never collide with the
         // hit/miss fills or outlive a tile into `gone`.
-        a.el.classList.remove('sel');
+        a.slot.classList.remove('sel');
         // (`a === b` needed no guard here any more: the undo above catches it by index first.)
         boardBusy = true;
         if (a.pair !== b.pair && sameAnswer(a, b)) relinkSameAnswer(a, b);
