@@ -14,10 +14,10 @@
 // tests/progress-totals.spec.js; re-grep here when one of them moves.
 Object.assign(window.I18N_STRINGS, {
     'hub.tagline': { en: 'Tools for learning Japanese', mn: 'Япон хэл сурах хэрэгсэл' },
-    'hub.heroTitle': { en: "Let's make friends with Japanese.", mn: 'Япон хэлтэй найзалцгаая.' },
+    'hub.heroTitle': { en: "Let's make friends with Japanese.", mn: 'Япон хэлтэй найзалцгаая' },
     'hub.heroBody': {
         en: 'Six sections for learning Japanese from the fundamentals.',
-        mn: 'Япон хэлийг үндсээс нь сурахад зориулсан зургаан хэсгээс бүрдэнэ.'
+        mn: 'Япон хэлийг үндсээс нь сургах зургаан туслах'
     },
 
     'hub.path.kicker': { en: 'New here?', mn: 'Шинэ хэрэглэгч үү?' },
@@ -25,35 +25,35 @@ Object.assign(window.I18N_STRINGS, {
     'hub.path.desc': { en: 'Six stages, from not knowing a single character to N1 — which tool to open at each one, exactly which levels to do, and how you know you are ready for the next.', mn: 'Нэг ч үсэг танихгүй байхаас N1 хүртэлх зургаан үе шат — үе шат бүрт ямар хэрэгсэл нээх, аль шатыг хийх, дараагийнх руу шилжихэд юу чадсан байвал зохихыг бичсэн.' },
     'hub.path.cta': { en: 'See the path →', mn: 'Замыг үзэх →' },
 
-    'hub.origins.name': { en: 'Kana Origins', mn: 'Канагийн үүсэл' },
+    'hub.origins.name': { en: 'Kana Origins', mn: 'Кана үсэг' },
     'hub.origins.tag': { en: '46 KANA · 9 ERAS', mn: '46 КАНА · 9 ҮЕ ШАТ' },
     'hub.origins.short': {
         en: 'Start here if Japanese writing still looks like three unrelated alphabets.',
-        mn: 'Япон бичиг гурван хоорондоо хамааралгүй цагаан толгой мэт харагдсаар байвал эндээс эхэлнэ үү.'
+        mn: 'Япон бичиг хоорондоо ямар ч хамааралгүй олон үсэг, ханзны бөөгнөрөл мэт санагдаж байна уу? Тэгвэл эндээс эхэл!'
     },
 
     'hub.game.name': { en: 'Word Match', mn: 'Үг холбох дасгал' },
     'hub.game.tag': { en: '~1,500 WORDS · 60 LEVELS', mn: '~1,500 ҮГ · 60 ШАТ' },
     'hub.game.short': {
         en: 'Twelve cards, six pairs, turned face down. Find them from memory, four hands to a level.',
-        mn: 'Арван хоёр хөзөр, зургаан хос, нүүрээрээ хаагдана. Цээжээрээ ол — шат бүр дөрвөн гар.'
+        mn: 'Хөзрөө эргүүлээд шинэ үгийн мастер бол'
     },
 
-    'hub.phonetics.name': { en: 'Phonetics Family', mn: 'Дуудлагын бүлэг' },
+    'hub.phonetics.name': { en: 'Phonetics Family', mn: 'Дуудлагаар цээжлэхүй' },
     'hub.phonetics.tag': { en: '1,128 KANJI', mn: '1,128 ХАНЗ' },
     'hub.phonetics.short': {
         en: 'Kanji grouped by the phonetic component they share. Learn one and you can guess the rest.',
-        mn: 'Ханзуудыг дуудлагын язгуураар нь бүлэглэсэн. Нэг язгуурыг сурвал бусад ханзыг нь таамаглана.'
+        mn: 'Ханзуудыг дуудлагын язгуураар нь бүлэглэчихвэл нэг ханзаар олон ханзыг уншиж сурах болно'
     },
 
-    'hub.grammar.name': { en: 'Grammar Connect', mn: 'Дүрэм холбох' },
+    'hub.grammar.name': { en: 'Grammar Connect', mn: 'Дүрэм нөхцөл' },
     'hub.grammar.tag': { en: '400 SENTENCES', mn: '400 ӨГҮҮЛБЭР' },
     'hub.grammar.short': {
         en: "Swap the sentence's underlined part for another word without changing what it means.",
-        mn: 'Өгүүлбэрийн доогуур зураастай хэсгийг утгыг нь өөрчлөхгүйгээр өөр үгээр солино.'
+        mn: 'Япон хэлний өгүүлбэр дэх нөхцөлийн хэрэглээг ойлгох нь'
     },
 
-    'hub.reading.name': { en: 'Dokkai Reader', mn: 'Уншлагын дадлага' },
+    'hub.reading.name': { en: 'Dokkai Reader', mn: 'Унших дадлага' },
     'hub.reading.tag': { en: '72 TEXTS', mn: '72 ТЕКСТ' },
     'hub.reading.short': {
         en: 'Read aloud and it follows your voice, highlighting the word you are on.',
@@ -64,7 +64,7 @@ Object.assign(window.I18N_STRINGS, {
     'hub.dictionary.tag': { en: '3,537 WORDS', mn: '3,537 ҮГ' },
     'hub.dictionary.short': {
         en: 'Search in Mongolian or Japanese and the counterpart comes back. It merges five sources.',
-        mn: 'Монгол эсвэл япон үг хайхад нөгөө талын хос нь гарч ирнэ. Таван эх сурвалжийг нэгтгэсэн.'
+        mn: 'Монгол, ханз, кана, англи, хирагана'
     },
 
 });
