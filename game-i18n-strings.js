@@ -176,6 +176,9 @@ Object.assign(window.I18N_STRINGS, {
     'game.mem.readThem': { en: '{n} cards, six pairs. Read them while you can.', mn: '{n} хөзөр, зургаан хос. Эргэхээс нь өмнө сайн цээжлээрэй.' },
     'game.mem.turned': { en: 'Turned over. Find the six pairs.', mn: 'Хөзрүүд эргэлээ. Зургаан хосыг нь олоорой.' },
     'game.mem.findPartner': { en: 'Now find its partner.', mn: 'Одоо хосыг нь олоорой.' },
+    // Not one new word of Mongolian: the mn is the second sentence of game.mem.turned above,
+    // verbatim -- after an undo you are back where that line left you.
+    'game.mem.putBack': { en: 'Put back. Find the six pairs.', mn: 'Зургаан хосыг нь олоорой.' },
     'game.mem.pairOf': { en: 'Pair {n} of {total}.', mn: '{n} / {total} хос оллоо.' },
     'game.mem.notAPair': { en: 'Not a pair. {n} so far.', mn: 'Хос биш байна. Нийт {n} алдаа.' },
     'game.mem.handCleared': { en: 'Hand cleared. {n} more pairs, face up, five seconds.', mn: 'Багц дууслаа! Дахиад {n} хос нээлттэй гарч ирнэ, таван секунд.' },

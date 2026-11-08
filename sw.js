@@ -20,7 +20,7 @@
 // stale-while-revalidate, so it serves the cached copy first and only refreshes behind it --
 // without a bump, a returning PWA user runs the previous version of a fixed file for one more
 // visit. Whether that matters is a judgement call; for a correctness fix it generally does.
-const CACHE_VERSION = 'khan-japanese-v211';
+const CACHE_VERSION = 'khan-japanese-v212';
 
 const APP_SHELL = [
     './',

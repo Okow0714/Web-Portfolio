@@ -448,20 +448,40 @@ function onTile(e) {
     if (!t || t.state === 'gone') return;
 
     if (phase === 'play') {
+        const idx = +el.dataset.i;
+        // Clicking your own first pick again puts it back. Until now the only way out of a
+        // misclick was to spend a second pick you already knew was wrong and take the miss for
+        // it, so an undo is strictly cheaper than what it replaces -- which is why it COSTS a
+        // click like every other action rather than being free. The score is clicks, a level's
+        // perfect score is derived (MAIN_PAIRS * HANDS_PER_LEVEL * 2) and a flawless run never
+        // puts a card back, so a free undo would stop that number meaning what it says.
+        // This has to come BEFORE the face-up guard below, which would otherwise swallow it.
+        if (idx === firstPick) {
+            clicks++; updateStats();
+            firstPick = -1;
+            el.classList.remove('sel');
+            if (!t.revealed) turn(t, 'down');
+            say('game.mem.putBack');
+            return;
+        }
         // A revealed meaning is face up on purpose and must stay clickable; every other face-up
         // tile is one you are already looking at.
         if (t.state === 'up' && !t.revealed) return;
         clicks++; updateStats();
         if (!t.revealed) turn(t, 'up');
         if (firstPick < 0) {
-            firstPick = +el.dataset.i;
+            firstPick = idx;
+            el.classList.add('sel');
             CardSfx.pick();
             say('game.mem.findPartner');
             return;
         }
         const a = tiles[firstPick], b = t;
         firstPick = -1;
-        if (a === b) return;
+        // The lift comes off the moment the pair resolves, so .sel can never collide with the
+        // hit/miss fills or outlive a tile into `gone`.
+        a.el.classList.remove('sel');
+        // (`a === b` needed no guard here any more: the undo above catches it by index first.)
         boardBusy = true;
         if (a.pair !== b.pair && sameAnswer(a, b)) relinkSameAnswer(a, b);
         if (a.pair === b.pair) {
@@ -510,7 +530,17 @@ function onTile(e) {
             }, 170);
         }
     } else if (phase === 'bonus') {
-        if (t.state === 'gone' || t.picked) return;
+        if (t.state === 'gone') return;
+        // The same undo. No clicks++ -- bonus clicks are free by design, which is also why the
+        // bonus keeps its own gold .peek as the selected mark instead of taking .sel: these
+        // tiles already rock on a transform of their own, and a scale would fight it.
+        if (t.picked) {
+            t.picked = false;
+            t.el.classList.remove('peek');
+            firstPick = -1;
+            CardSfx.flip();
+            return;
+        }
         if (firstPick < 0) {
             firstPick = +el.dataset.i;
             t.picked = true;

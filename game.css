@@ -684,6 +684,28 @@ body.game-playing .game-main {
 .mem-tile.bonus { background: var(--lacquer); color: var(--paper); }
 .mem-tile.bonus .t-read { color: #c0ad87; }
 
+/* YOUR FIRST PICK OF A PAIR. There was no mark for one at all: a pick simply turned face up,
+   which in hand 1 is indistinguishable from the six meanings VISIBLE_MEANINGS_BY_HAND leaves
+   face up on purpose -- so the board showed seven face-up tiles and said nothing about which
+   one you were holding. It lifts instead: a card picked up off the table, which is the
+   handling gesture the rest of this game is built on.
+   DECLARED BEFORE .flip, deliberately. Both are `.mem-tile.X`, equal specificity, so source
+   order is the only thing deciding which transform applies -- and the flip has to win for the
+   170ms it runs, or a pick would grow and turn over at once. When flip comes off, the
+   transform transition already on .mem-tile carries the tile up to the lift.
+   z-index above the field because the main hand TESSELLATES: a scaled tile overlaps all six
+   of its neighbours, and a card held in the hand belongs on top of them. .mem-board sets no
+   overflow, so an edge tile may spill past it rather than being cut.
+   The shadow deepens with the lift. drop-shadow, not box-shadow -- a box-shadow is cut away
+   by the clip-path, which is the same fact that makes the back's gold ring read the way it
+   does (see .mem-tile.down). */
+.mem-tile.sel {
+    transform: scale(1.09);
+    z-index: 5;
+    filter: drop-shadow(0 0 1.4px light-dark(rgba(118, 96, 46, .6), rgba(0, 0, 0, .55)))
+            drop-shadow(0 5px 8px light-dark(rgba(90, 70, 30, .28), rgba(0, 0, 0, .55)));
+}
+
 .mem-tile.flip { transform: scaleX(.04); }
 .mem-tile.peek { background: var(--gold); color: #1b1626; }
 .mem-tile.peek .t-read { color: #4a3708; }

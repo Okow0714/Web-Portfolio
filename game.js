@@ -258,6 +258,11 @@ function failLevel(reason) {
     stopStopwatch();
     window.clearTimeout(bonusTimer);
     phase = 'done';
+    // A run can end on the clock while a card is held, and onTile returns on levelOver before
+    // anything else -- so without this the lifted tile stays lifted under the pop-up for good.
+    Array.prototype.forEach.call(document.querySelectorAll('.mem-tile.sel'),
+        el => el.classList.remove('sel'));
+    firstPick = -1;
     GameAudio.timeUp();
     showFailPop(reason);
 }
