@@ -605,7 +605,7 @@ body.game-playing .game-main {
 
 /* A meaning the hand left face up on purpose -- the difficulty ramp's help. Marked so it reads
    as given rather than as one you turned over yourself. */
-.mem-tile.shown { box-shadow: inset 0 0 0 2px var(--gold); }
+.mem-tile.shown { --rim: var(--gold); }
 
 /* The back: a hanafuda card back, two solid violets woven at 135deg under a solid gold rule —
    a printed pattern, not a sheen — so a hidden tile still reads as a playing piece rather than
@@ -613,8 +613,48 @@ body.game-playing .game-main {
 .mem-tile.down {
     background: repeating-linear-gradient(135deg,
         var(--wisteria-weave) 0 7px, var(--wisteria) 7px 14px);
-    box-shadow: inset 0 0 0 2px var(--gold);
+    --rim: var(--gold);
 }
+
+/* THE RIM IS CUT BY THE CLIP, not clipped after the fact.
+   Both of these wore `box-shadow: inset 0 0 0 2px var(--gold)`, and an inset box-shadow paints
+   against the BORDER BOX -- a rectangle. clip-path then keeps only the part of that rectangle
+   ring inside the hexagon: the left and right strips survive where the silhouette reaches x=0
+   and x=100%, which is y 25%-75%, the top and bottom strips vanish because the hexagon is a
+   single POINT there, and the four diagonal edges get nothing at all, since a rectangle ring
+   has nothing along them. Measured on a real 116x133 tile that is two 2px x 66px gold bars and
+   no edge anywhere else -- the "thick vertical outlines" on the card backs. It is the same
+   fact .mem-tile's own filter comment records ("a box-shadow is cut away by the clip-path")
+   and the one grammar.css records for `outline` ("a ring becomes a bracket").
+   So the rim is painted as a hexagon of its own and the face is laid on top of it, 2px in:
+   ::before is the rim at inset 0, ::after the face at inset 2px, both clipped to the same
+   polygon. The face takes `background: inherit`, so it follows the TILE's current background
+   -- .peek's gold, .hit's pine, .miss's crimson, .bonus's lacquer, the weave -- and none of
+   those state rules has to know this layer exists.
+   The two negative z-indexes put both pseudos above the element's own background and below the
+   labels; .mem-tile carries a `filter`, which creates a stacking context, so they cannot fall
+   behind the board. .t-mark is absolutely positioned and so still paints above both.
+   THE INSET IS 2.31px / 2px AND BOTH NUMBERS ARE DERIVED. A clip-path in percentages scales
+   the inner hexagon rather than offsetting its edges, so an even `inset: 2px` gives 2px of rim
+   on the two vertical edges and only ~1.4px perpendicular on the four diagonals -- measured,
+   and enough for a pixel probe to straddle the antialiasing on one edge and not another.
+   This tile's aspect is fixed by the honeycomb (hypot(w/2, 0.75h) === w gives h = 1.1547w), so
+   the diagonals have a constant inward normal of (0.5, 0.866). Insetting the box by (dx, dy)
+   moves a diagonal edge in by 0.5dx + 0.433dy and a vertical edge by dx, so dx = 2 and
+   dy = 2.31 solve both to the same 2px. Don't "tidy" these to one value. */
+.mem-tile.down::before,
+.mem-tile.shown::before,
+.mem-tile.down::after,
+.mem-tile.shown::after {
+    content: '';
+    position: absolute;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    pointer-events: none;
+}
+.mem-tile.down::before,
+.mem-tile.shown::before { inset: 0; z-index: -2; background: var(--rim); }
+.mem-tile.down::after,
+.mem-tile.shown::after { inset: 2.31px 2px; z-index: -1; background: inherit; }
 /* Not `color: transparent`: .t-read sets its own colour and would show straight through the
    back of the tile, which is the one thing a memory game cannot afford. */
 .mem-tile.down .t-word,
