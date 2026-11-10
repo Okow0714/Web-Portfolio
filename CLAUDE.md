@@ -27,6 +27,15 @@ Supabase (Postgres + Auth). Hosted on GitHub Pages. Git repo on `main`.
 
 ## Architecture
 
+**Per-tool findings live in `.claude/rules/`**, which load only when a matching file is opened,
+so this file stays short enough to be followed. Split out so far: `word-match.md`
+(game.html, game.css, game*.js) and `grammar.md` (grammar.html, grammar.css, grammar.js,
+grammar-data.js). Everything else is still below. A paragraph belonging to one tool belongs in
+a rule rather than here -- but anything needed BEFORE a file is opened, the large-data-file
+list above all, has to stay in this file, because a path-scoped rule only loads once that file
+has been read.
+
+
 **Shared `style.css`**: `:root` holds the light "Burgundy Editorial" tokens (used directly by
 the legal pages) plus the JLPT color spectrum (`--jlpt-n5`…`--jlpt-n1`, green→wine, used
 wherever a level badge or dropdown link appears — do not touch without checking all five hues
@@ -170,10 +179,6 @@ search -- `tests/dictionary.spec.js` and the scratchpad's `disclose-check.js` pi
 directions, empty at rest AND populated after the click or keystroke that should populate it,
 because an empty panel is also exactly what a broken fill looks like. A part-of-speech filter
 counts as asking, so the Kango tab lists on a filter alone.
-**Grammar Connect is deliberately NOT changed.** Its four bands are `role="tab"` with
-`aria-selected`, and a tablist has exactly one selected tab by definition -- it is a tab strip,
-not a drill-down, and its whole select row is measured against the fold besides. Phonetics
-already gates this way, its gate bursting into a view swap.
 **The rest of the site was then swept for both faults and is clean** (2026-10-31), by two
 detectors kept in the scratchpad:
 `drift-audit.js` walks every element of the masthead and footer on all fifteen chrome pages,
@@ -446,11 +451,6 @@ and no dark pass can reach, which is why it survived every previous sweep. `か�
 stage 0 takes the page-local `--ink-faint`, which does have a pair: **the five that broke are
 exactly the five that borrowed.** The page now owns `--stop-n5..--stop-n1`, and the darker block
 restates all five, because it outranks a `light-dark()` pair at higher specificity.
-**The dark halves are raised in HSL LIGHTNESS, not mixed toward white.** Mixing hit 4.5 at 32-36%
-white and turned the wine and the plum into dusty pinks -- the exact drain `grammar.css` records
-from its own 46% wash. Solved instead for 4.5 on BOTH dark grounds (`#1e1b15` and the darker
-block's `#24211a`), with every hue held within 6 degrees of its original: worst 4.64:1, minimum
-pairwise dE 33.7. **The light halves are byte-identical to what shipped** and were not touched.
 **N3 and N2 sit at dE 14.3 in LIGHT and that is pre-existing** -- proved against a worktree of
 HEAD on :8124, where it is 14.3 in both themes (the hues did not respond to theme at all, which
 was the bug). Two of the five discs are nearly one colour in the default theme. Left alone
@@ -560,26 +560,9 @@ seal column, which wrapped it to **one word per line**. A block-level child also
 anonymous inline item in two, which is how the summary got three children in the first place.
 Either wrap the text in one element or pin it with `grid-column`.
 
-**Grammar Connect's level select is four bands of ten, and the band count is a measurement**
-(2026-10-24). It was going to be a five-point JLPT gate until every grammar point in
-`grammar-data.js` was classified against standard JLPT lists -- 226 distinct points, 500 of 521
-slots; the other 21 are paraphrase fragments (`状態が続いている`), not grammar. Two findings killed it:
-**banding by content is lopsided** (N5 would hold ONE level and N4 fourteen, against N3 7, N2 10,
-N1 8), and **the levels are not ordered by difficulty inside a track**, so no contiguous cut means
-what it claims -- advanced runs `N2 N2 N1 N2 N2 N1 N1 N3 N2 N3 ...`, level 3 harder than level 19.
-Halving each track is the one cut that is both equal and climbing: foundation 1-10 (N4 57%),
-11-20 (N4 46%/N2 31%), advanced 1-10 (N2 39%), 11-20 (N1 57%). Each band's label therefore says
-what it is **mostly**; none claims a single JLPT level. Redo the audit with
-`scratchpad/jlpt-bands.js` before changing the bands.
 **The hedge is now a tilde, not a word** (2026-10-24): the notes read `~N4`, `~N4-N3`, `~N2`,
 `~N1` where they used to read "mostly N4" / "ихэвчлэн N4". The hedge itself cannot be dropped --
 these are halves of a track, not JLPT tiers -- but one character says it in both languages.
-**Each band wears its JLPT colour**, taken from the same `--jlpt-n4..--jlpt-n1` hues Word
-Match's gate uses: band 1 n4, band 2 n3, band 3 n2, band 4 n1. N5 is absent because no band is
-mostly N5 (one level of the forty). `grammar.js` only adds a `gc-band-n4` class -- a custom
-property name cannot be built from a variable, so `grammar.css` holds the four-rule mapping onto
-one `--bt-*` set that the gate piece and the ten tiles then share.
-**The hue is never the resting fill.** Word Match puts white on the solid hue, which measures
 **2.40:1** on the N4 gold; here each hue is mixed towards white (light) or the page ground (dark)
 and the ink is solved against the *harder* of the two gradient stops -- the darker one in light,
 the lighter one in dark. The mix is pushed as far as that solve allows rather than to a round
@@ -596,16 +579,6 @@ make the open piece obvious and drained the other three of the colour they exist
 open band is marked **structurally instead**, by `--gate-open-halo`, so colour stays identity and
 the halo carries state. `dim` needs no `light-dark()`: the solve returned the same answer for
 both themes, which is also why Word Match's nodes are one colour per tier and not two.
-**Nothing clipped may carry an `outline`.** An outline follows the border box; `clip-path` then
-keeps only the part of it inside the silhouette, so a ring becomes a bracket -- a stray angle
-floating in the triangle, which is exactly what shipped for one commit as the "picked" mark.
-Every mark on these shapes is a **filter**: the lift, the open-band halo and the keyboard ring
-(`--focus-halo`) are all stacked `drop-shadow()`s, which have no spread parameter, so a ring is
-two or three of them at the same offset. `tests/`-adjacent `scratchpad/gc-bandcheck.js` now fails
-on any clipped element with a non-zero outline, in any state.
-(An earlier note here said the `:focus-visible` ring "stays `--shu-light`". It never did -- that
-edit was in a script that exited before writing -- and the question is moot now that no outline
-survives anywhere on these shapes.)
 **A transform is not a layout change**: the picked tile carries `scale(1.07)`, so anything
 asserting that the ten tiles are one size must read `offsetWidth`/`offsetHeight`, not
 `getBoundingClientRect`, or the lift reads as a differently sized tile.
@@ -633,14 +606,6 @@ the next. **A gradient cannot go through `light-dark()`** (a `<color>` function,
 switch), so the STOPS are the tokens and the gradient is written once from them. Order matters:
 hover and the picked states must come **after** the base or `done` beats `:hover` and a finished
 tile gives no feedback at all.
-**The ground is a plain wash, not a photograph**, so the light ground had to drop a step
-(`#d9cdb0`) for near-white tiles to sit *on* it rather than in it -- and `body:has(.grammar-main)`
-must match `.gc-night-sky`'s end stop or a seam shows.
-**Deleting the photographs was not the end of the night sky.** A decorative `.gc-moon` -- a 40px
-cream disc with a 36px glow at `top:28px right:56px`, directly behind the volume toggle -- and a
-JS-generated 40-star field survived it, and still read as a sun over the new wash. They were
-DRAWN, not fetched, so checking that no photo request was made said nothing about them: that
-check was reported as "the background is clean" and was not. Both are gone now.
 **The whole select fits one frame above 980px** (2026-10-24): gate, tiles and record sit in one
 `.gc-select-row`, and the gate is measured against what is left of the window the way
 `phonetics.html` sizes its field. **Measure the ROW's top, never the element being sized** -- an
@@ -655,56 +620,9 @@ before a single heading; chasing a fit that is not available only makes the tile
 read or tap, so the `100dvh` rule and the height bound are both scoped to wide screens.
 `#gc-diff-tabs` and `#gc-level-grid` keep their ids because `tutorial.js` points tour steps at
 them, and a step whose selector is missing is dropped silently.
-**The record panel is a surface, not a hole.** It used `--card` (`#241f38`) against a `#12192b`
-page -- nearly the same value -- so it read as a hole punched in the page and every line on it
-looked sunk whatever its contrast measured. `--rec-surface` sits a clear step above the ground,
-with an edge and a shadow; the stat cells share that token so only the 1px rule between them
-shows (left transparent, the divider washes through as a grey slab across the strip). Its type
-also went up: the stat labels were **9px** of letter-spaced uppercase Cyrillic, which no contrast
-ratio rescues. **Measure alpha properly before trusting a number** -- two probes here reported
-13.5:1 for text that was actually 6.6:1, because they dropped the alpha channel instead of
-compositing `rgba(...)` over the card; a probe worth believing self-tests against white-on-black
-(21), black-on-white (21) and 50%-white-on-black (~5.3) first.
 **The panel does not shrink, so it sets the row's floor.** The gate and trail size themselves to
 what is left, but the panel's height is its content: at 1440x720 it put the row 10px past the
 fold, which a `max-height: 820px` block gives back in spacing.
-**The in-level screen had three rules that were never themed at all** (2026-10-25), each a flat
-wash with a hard-coded colour, written for the dark board and doing the opposite on the light
-page. `.gc-match-side` was `rgba(0, 0, 0, 0.18)` -- a black wash, which over cream is a grey slab
-carrying dark text at **3.74:1**, and that is the dark-text-on-a-dark-block this screen was
-reported for. `.gc-progress-dots span` was `rgba(241, 237, 224, 0.22)`, cream on cream: **nine of
-the ten dots were invisible in light** and the row read as a single red speck, so the progress
-indicator did not indicate. `.gc-cleared-item`'s divider was the same wash, as were the record
-panel's three non-top borders and the tour button's border -- the edge that makes those read as
-sheets existed in dark only. **Grep for `rgba(241, 237, 224,` and `rgba(0, 0, 0, 0.` before
-assuming this class of bug is gone**; a hard-coded wash is invisible to a contrast probe that
-only reads text.
-In dark, the sentence card and the five answer tiles were `--card` (`#241f38`) on a `#12192b`
-page, the identical hole-in-the-page the record panel was fixed for, so they take `--rec-surface`
-now too (ink measures 14.57 light / 11.29 dark on it). One regression came with that: the cleared
-list's `->` was `--shu-light` and measured 5.19:1 while it sat on the black-washed card, then
-4.18:1 once the surface was lifted -- **moving a ground re-opens every ratio measured against the
-old one**. It is `--ink-soft` now; the accent belongs on `.new`, which already has it.
-**The answer tiles are FOUR, two per row** (2026-10-25). Five across a 640px card gave each one
-120px, which is why they were small; two per row gives 312px and a grammar phrase sits on one
-line at a readable size. Four also divides evenly, so nothing spans -- the
-`last-child:nth-child(odd)` rule stays anyway, because the option count is built from the data.
-Below 620px it is one per row. **`buildTileOptions()` takes THREE distractors, not four**, and
-that is a change to the game as well as the layout: a guess is 1 in 4 now. The copy says so in
-four places -- `grammar.subtitle`, `grammar.startModalDesc`, `grammar.recNew` and the inline
-Mongolian in `grammar.html` -- which is the "numeric claims drift from the code" rule in action;
-grep `таван` and `five` before changing this count again.
-**The tiles went lozenge and back to rectangle.** The Millionaire hexagon was cut with a
-`clip-path`, which takes the BORDER and the `box-shadow` with it exactly as it took the picked
-tile's outline -- so while it was clipped, all three states had to be fills and every edge and
-ring a stacked `drop-shadow()`. The plain rectangle gives both back, and the border, lift and
-focus ring are ordinary CSS again. **The right/wrong fills stayed**: `--tile-good`/`--tile-bad`
-and their inks are solved like everything else here (4.94 light / 4.90 dark for correct, 4.88 /
-4.94 for wrong, each also clear of the resting tile), and they read better than a coloured
-outline did.
-The A-D key is **`currentColor`**, not a token -- the tile's ink changes with its state, and a
-token would have to be re-solved against both state fills. It is `aria-hidden`, so the button's
-accessible name stays the answer alone.
 **The question and the answers are set bigger and at 600** (2026-10-25): the sentence is
 `clamp(1.55rem, 3vw, 1.95rem)` (was 1.25-1.55) and a tile 1.22rem (was 1.06), both semibold.
 Measured: question 31.2px desktop / 24.8px phone, answers 19.5px.
@@ -718,12 +636,6 @@ plays five sentences of each track at three viewports -- 30 real sentences -- an
 sentence wider than its card, a tile clipping its own answer, a tile outside the bank, or the
 board ending below the fold. Advanced band 4 is the worst case, since its grammar phrases are
 the longest.
-**`.gc-fx-canvas` needed `width`/`height`, not just `inset: 0`** (pre-existing, found here). A
-`<canvas>` is a REPLACED element, so `width: auto` resolves to its intrinsic size -- the width
-and height ATTRIBUTES, which `GcParticleField.resize()` sets in DEVICE pixels -- and `inset: 0`
-does not stretch it the way it stretches a div. On a 390px phone at dpr 2 that left a 708px
-canvas in a 390px viewport and the whole play screen scrolled sideways. Verified against the
-previous commit before blaming the tile change: 726/708 on both, so it was never a regression.
 **The hover lift is 2px, and a Playwright pointer parks where it last clicked** -- after the
 start modal closes that can be over a tile, and the lift then reads as two tiles of one row
 sitting on different rows. `page.mouse.move(2, 2)` before measuring, or a layout assertion
@@ -734,15 +646,6 @@ that block was a hard-coded dark hex -- a `#241f38 -> #1a1730` card, `#e0705a` h
 cream-at-0.6 text -- with no `light-dark()` anywhere, so on the light page the "level complete"
 pop-up was still the pre-rebuild violet panel. Three things make this block awkward, and all
 three bit in turn:
-**These two modals are SIBLINGS of `<main class="grammar-main">`**, children of `.container`, so
-not one of the page's tokens reaches them -- the old block worked only because it was all literal
-hex. `var(--rec-surface)` there resolved to nothing, which is **invalid at computed-value time
-and renders as transparent, not as an error**: the card shipped see-through with the board
-showing straight through it. The fix is NOT to move the tokens to `body:has(.grammar-main)` --
-this file's header keeps them off `:root` and off body on purpose so they cannot collide with the
-shared header, footer and auth modals -- so the eight they use are re-declared on
-`#gc-start-modal, #gc-result-modal`. `scratchpad/gc-modal.js` compares every copy against what
-the record panel resolves, because nothing else would catch a drift.
 **`style.css` pins `color-scheme: light` on EVERY `.modal-card`** (so the UA paints the shared
 auth modals' inputs on the same side as their card), and `color-scheme` is also what
 `light-dark()` resolves against -- so under that pin every token here came back light and the
@@ -794,23 +697,6 @@ quicker sloppy one -- the flower would un-bloom, and taking back a mark someone 
 than never giving it. `grammar_progress.flawless` is only ever written **true**, the same rule
 migration 011 gives Word Match's mode marks, with the same drop-the-column-and-retry dance for
 a project where 012 has not been applied.
-**Completion is in `localStorage` too now** (`khanjp-gc-cleared`, beside `khanjp-gc-flawless`).
-It had to be: completion lived only in `grammar_progress`, so for a signed-out player no tile
-was ever `done` and the flawless flag would have been a mark with nothing to sit on. The
-account's rows still win where both exist; the local rows are a union on top.
-**The two marks are explained in the RECORD PANEL, not in a tooltip on the tile** (2026-10-27).
-A tooltip could only be found by hovering a tile that already carried a mark, so the player who
-has earned nothing -- the one who most needs to know the flower exists -- had nothing to hover
-and no way to learn it was there. `markSteps()` prints both states for whichever level is
-picked, side by side: an earned one chipped and named, an unearned one left plain, which on an
-uncleared level reads as what is on offer. `scratchpad/gc-steps.js` checks the is-got flags
-follow the picked level, both labels clear 4.5:1 on the panel, and the panel has not grown
-enough to push the select below the fold.
-It started as a SENTENCE explaining the mechanic -- "Алдаагүй дуусгавал цэцэглэнэ" -- which the
-site's author called unnatural Mongolian, and he was right twice over: a drawing of the next
-state says "this is what you would get" without any prose, and it sidesteps having to phrase a
-conditional in a language the copy is translated into rather than written in. The labels are two
-nouns already in the glossary, `Дуусгасан` and `Алдаагүй`.
 **It is a TRACK with two stations, not two chips.** The first version put each drawing in a
 rounded box with a chevron between them and read as a pair of form fields: a box around a mark
 says "input" and a chevron says "next". Each state is now a SEAL -- a 54px struck circle, which
@@ -818,19 +704,6 @@ is what a mark of award looks like in this page's world -- and the rule between 
 carries the progress, dashed until the second is struck and solid ink after. Cleared is struck
 in the sprout's green, flawless in the page's shu, because red is what an award is struck in
 here.
-**The petals are sakura; the branch and the leaf are sumi ink.** Every shape used to be one ink
-colour, which on the tile passes as a brush painting and in the seal read as a grey smudge. The
-petal and bud circles carry `.gc-petal` so they can take their own fill: `.gc-mark g` sets fill
-on the GROUP, so a class on the circles outranks it (0,2,0 against 0,1,1) and the ground-coloured
-halo still comes from the group's stroke. An unearned seal mutes the petals with the rest of the
-drawing -- otherwise the one shape allowed to be loud is the one not yet won.
-
-**A mark drawn for the TILE is cropped wrong for a seal.** Both grow from the lower left towards
-the upper right, so inside `0 0 64 64` each sits in a corner with most of the square empty --
-which is exactly right on the tile, where the empty corner is the tile and the mark reaches out
-of it, and wrong in a circle, where it reads as small and off-centre. `MARK_CROP` holds each
-one's real ink bounds and `markSvg(kind, cls, cropped)` takes the third argument only for the
-panel.
 **This block sets the select's floor, so its height is a budget.** The panel does not shrink,
 so at 14px of padding and a 58px seal the whole select ended 14px past a 900px fold -- a real
 regression, caught by `scratchpad/gc-steps.js` and not by any screenshot. Trimming to 10px
@@ -842,10 +715,6 @@ project twice produced a 2:1 ratio, so an unreached label stays on `--ink-soft` 
 the panel's own surface, which the spec measures) and only the drawing goes quiet -- at 0.46,
 not 0.30, because at 0.30 the flower dissolved into a smudge and the comparison stopped making
 its point.
-**The art is written once and worn twice.** `SPROUT_ART`/`BLOOM_ART` plus `markSvg(kind, cls)`
-feed both the tile mark and the panel icon; two copies of those paths would drift the moment one
-is redrawn. The blossom's bitten-out centre is the ground it sits on, so in the panel it has to
-be re-pointed at `--rec-surface` or it punches a page-coloured hole.
 **The tile mark keeps `pointer-events: none`** -- its square overlaps the NEXT tile in the row,
 and a box that took a pointer there would swallow that tile's click. It is also `aria-hidden`,
 because the tile's own label already names the state.
@@ -873,12 +742,6 @@ deliberate, costs no error and no warning, and the fallback makes it *render pla
 for a token's declaration before trusting a `var()` that names it. The two
 `opacity: 0.85` rules on `.theme-switch-icon` went at the same time -- dimming text with opacity
 is the rule this project keeps relearning, and here it multiplied an already-failing colour.
-**Word Match's `--text-muted` was solved against the wrong surface**: `#6f6554` measured 4.19:1
-on six labels of the PLAY screen (stat keys, hand counter, preview hint, tour button), whose
-ground is the board's straw `rgb(228,220,199)` and not the paper the token was picked against.
-Solving it by hand from an assumed ground returned 4.78:1 -- a pass for a colour that fails --
-so the solver now reads the composited ground off the running board. `#675e4e`, 4.69:1.
-
 **DARKER IS A THIRD AXIS, and half a palette on it cannot work** (2026-10-27). `html[data-contrast="darker"]`
 sits at higher specificity than a page's own token block, so a flat hex there BEATS the
 `light-dark()` pair above it -- in both themes. `grammar.css` set `--card: #171327` and a
@@ -948,12 +811,6 @@ tiles -- and on a tall window the page background fills the rest, which is corre
 play column in a `100dvh` frame was tried and is worse: it splits the dead space to both ends and
 detaches the board from its own toolbar, while the side panel floats alone at the top. Don't.
 
-**The record panel's start button is pinned to fixed dye** (`#b3412e` -> `#8f3122`), not to
-`--shu-light`: that token *lightens* to a salmon in dark mode, and the shared `.auth-btn`
-gradient lightens further to a pale pink while its label stays white -- measured **2.13:1**. The
-lightest stop of a gradient is the one the floor has to clear, which is why the top stop is
-`#b3412e` and not `--shu`'s `#bc4430` (4.17:1 against the cream label, just under).
-
 **Word Match is five classic scripts, not one** (`game-core.js` → `game-fx.js` → `game-gate.js`
 → `game-memory.js` → `game.js`, after `game-particles.js`/`game-audio.js`). They share one
 global scope: a top-level `let`, `const` or `function` in one classic script can be read,
@@ -974,14 +831,6 @@ brand mark, in one day. The crest was PD and genuinely hanafuda, and it was stil
 against the diagonal weave, and a square silhouette fighting the hexagon it sat in. The site's
 own K is the one piece of art here already drawn to work small and alone, and it costs no
 licence, no new file and no `APP_SHELL` entry -- `hub.css` was already masking the same file.
-**A MASK, not an `<img>`**: the mark is gold on the daylight board and wisteria at night, and
-an `<img>` paints the file's own ink. Masked, the element's `background` shows through and the
-existing `light-dark()` rule does all the work. `sizeTile()` therefore sets a WIDTH, not a
-font size — **0.45 of the tile** since 2026-11-02, asked for half again as big. It has the
-room: the mark is taller than it is wide and `mask-size: contain` fits it to the box's
-height, so a 52px box on a 116px tile carries a ~40px K and still spans only 30.5% to 69.5%
-of the tile's height — inside the band where a hexagon is full width, with 32px of side
-clearance. Growing it much past this starts to meet the shoulders.
 **It also sat 24.3px BELOW the middle of a 133px tile**, which is what "not even aligned" was.
 The tile is a flex COLUMN holding the word, its reading and the mark, and the word spans are
 hidden with `visibility: hidden` -- which keeps their boxes. The flex centring was therefore
@@ -1000,86 +849,6 @@ on computed style cannot see this at all -- mine passed while the backs were bla
 the point is the probe could not tell the two apart.) `scratchpad/wm-three.js` now shoots the
 tile, hides the mark, shoots it again and fails if the two PNGs are byte-identical.
 
-**The twelve level tiles have to fit one screen** (2026-11-02). They ran **62px past the fold**
-at 1400x732. Two things were wrong and both are fixed:
-`.game-hud-row` held nothing but the speaker and was charged a whole row for it — 42px plus
-its margin off the top of the page. It is `position: absolute` in the corner now, against
-`#level-select-section`, which had to become `position: relative` to be its containing block
-or the control would have positioned against the viewport and stayed put as the page scrolled.
-That alone gave back 48px.
-The rest is `fitField()` in `game-gate.js`. The honeycomb's height IS its width times
-`totalH/100` — that is what its `aspect-ratio` says — so the only way to make a too-tall field
-fit is to make it narrower. **Measured, not a `calc()`**: the chrome above it is not a
-constant, since the heading is one line in English and wraps to two in Mongolian and the guest
-hint only exists signed out. The field's own top is safe to measure here, unlike Grammar
-Connect's row — nothing above it depends on its width, so narrowing it moves its height and
-nothing else; if that ever stops being true this becomes a feedback loop. It only ever takes
-width away (capped at the stylesheet's 560) and stops at a 320px floor, below which the
-hexagons stop being tappable and scrolling is the better answer. A `resize` listener re-fits,
-because the gate is not re-rendered on one.
-Measured after: 403/453/513/560/560px wide at 640/682/732/844/950px tall, all twelve inside
-the fold at every one, and the field back at its full width the moment there is room.
-`scratchpad/wm-three.js` checks all of it, and **times the bonus** rather than reading the
-constant — 5022ms measured — since the constant proves what the source says and only a clock
-proves what the player gets.
-
-**A tile's type is a fraction of the tile, never a rem** (2026-09-17, carried through the
-2026-10-21 rebuild). A hex tile is only full width across the middle half of its height, so
-whether text fits is a question about fractions of the tile, and a rem size cannot answer it.
-Both of the old clamps had come loose in opposite directions: past a 148px tile `--hex-w`
-stopped growing while `100cqw` did not, so desktop type sat at its rem cap; and on a 390px phone
-the *floor* held a headword at 16px inside a 49px tile — text several times wider than the
-hexagon around it, which `white-space: nowrap` hid behind an ellipsis. That was the reported
-"long words are cut off". `sizeTile()` in `game-memory.js` now sets every label from the tile's
-own width — the board's width times the tile's width in percent — so the arithmetic is
-scale-invariant and one answer per word is right at every viewport, with no resize handler
-measuring live DOM. A tile carries its own `cw` (its width as a percentage of the board) because
-the bonus round's tiles are a different size from the main field's, and a single constant would
-undersize one of the two.
-
-**Two tiles can read the same thing, and either one matches** (2026-09-17, re-implemented for
-the memory board). A hand can hold two words that mean exactly the same thing — 辞書 and 字引 are
-both "толь бичиг", 飛行場 and 空港 both "нисэх буудал" — so a player picking "the wrong one" has
-not made a mistake; the two tiles are identical on screen. `sameAnswer`/`relinkSameAnswer`
-(`game-memory.js`) accept the crossed pick: the two pairs trade meaning tiles, so the two chosen
-become a real pair and the two left over are paired with each other. It is done by trading
-rather than by clearing one tile of each pair because the bonus round, the hand counter and the
-deal all assume a pair owns exactly two tiles — a half-matched pair would have to be taught to
-all three. **The sharper fix comes first**: where the twins are not really the same word, the
-gloss should say which is which, and 43 identical-gloss groups became 13 that way. 赤 and 赤い
-are "улаан өнгө" and "улаан өнгөтэй"; 支給 is an allowance and 支払 a payment, which their own
-`meanings` arrays already said and only the tile did not; the last four came from the user's own
-Mongolian (午前 "үдээс өмнө", 信用 "итгэл" — it had said найдвар, which is 希望 — 有る/居る "байх
-(эд зүйл)" against "байх (амьд)", 広さ "талбайн хэмжээ"). Sharpening one gloss has to respect the
-rest of the set: 食物 moved to "foodstuff" and collided with 食品 two tiles away, so any such edit
-re-checks against the previous build that no set gained a clash it did not have.
-
-**Word Match is a memory game** (rebuilt 2026-10-21). Twelve hexagonal cards, six pairs, dealt
-face up until the player presses Start and then turned over. The score is **clicks**, and a
-level's perfect score is derived (`MAIN_PAIRS * HANDS_PER_LEVEL * 2`), never written down. There
-is no clock in the main round; the only clock in the game is the bonus.
-**A level is four hands, not one board.** A level's entry in `game-words.js` holds 25 words, and
-50 face-down tiles is a punishment rather than a memory test — so a level deals 24 of them as
-four consecutive hands of 6 pairs. The deck is shuffled once per level and sliced, so no word can
-appear in two hands of the same playthrough. Clearing a hand opens a **five-second bonus** (2026-11-02,
-was four): four
-of the pairs just cleared, face up, in two interlocking zig-zag columns, Japanese down one and
-the meanings down the other, each column shuffled on its own and reshuffled until no row holds a
-word beside its own translation. It reuses the hand's words rather than new ones because four
-hands already spend 24 of the level's 25 — and a recall sprint over what was just learned is the
-better round anyway. Bonus tiles rock, glow, radiate a gold halo of their own hexagon and throw
-sparks, because the round has to read as a reward and not as stage two.
-**The gate is five hexagonal JLPT nodes** (`game-gate.js`), like Phonetics Family's dial but
-hexagons, because this game is played on hexagons: the chosen node flies to the centre and bursts
-into that tier's twelve levels, laid out in the board's own 3/4/3/2 silhouette. `honeycomb()`
-there and `memLayout()` in `game-memory.js` are the same function, which is the point — the level
-select is a picture of the board it opens.
-**`vStep` is `0.75 * h`, not 0.76.** For a hexagon with vertices top and bottom and shoulders at
-25%/75% of its height, rows interlock only when they step down exactly three quarters of it —
-then `hypot(w/2, 0.75h)` is exactly `w`, so all six of a tile's neighbours are equidistant.
-Measured at 0.76: horizontal neighbours 124.44px apart, diagonal ones ~125.7px, and the field
-read as unevenly spaced. `honeycomb()` and `memLayout()` have to agree on this, and so does the
-bonus zig-zag.
 **The Time Attack mark is a welding arc, not a night sky**: sixteen 4px specks, each a white core
 with an orange halo, alive for about a tenth of a second and thrown a short way in its own
 direction. The randomised *duration* matters as much as the delay — sparks sharing one period
@@ -1104,17 +873,6 @@ gaps are random inside a decaying span, and every burst is 20–40ms. It has no 
 its own — it reads `GameAudio.getLevel()`, so the one speaker button in the toolbar governs
 music and cards alike, and level 0 is silence. The `AudioContext` is built on the first click and
 never at load, or every browser that enforces autoplay hands back a suspended one.
-**`game_progress` was not migrated and did not need to be**: `best_moves` now holds clicks and
-`best_time_seconds` a stopwatch rather than a countdown. Both still mean "lower is better",
-which is all the dashboard and the score SQL ever assumed.
-**The four hands are a difficulty ramp, not four of the same board** (`VISIBLE_MEANINGS_BY_HAND`
-= `[6, 4, 2, 0]`). The Japanese side always turns over; how many MEANING tiles stay face up is
-what changes, so the first hand is a find-the-word puzzle and the fourth is memory outright. A
-level therefore teaches its 24 words four times over with less help each time, which is the
-reason for dealing it as four hands at all. A meaning left showing is still a playable tile —
-it has to be, or a pair containing one could never be completed — so it carries `revealed` and
-`onTile()` lets it past the "already looking at it" guard that face-up tiles otherwise hit; a
-miss must also not turn it back over.
 **The hand lands from the middle outwards**: each tile's `animation-delay` comes from its
 distance to the board's centre, not its row. The honeycomb is 3/4/3/2, so "the next row" and
 "the next ring" are different shapes and only the ring reads as the board opening up. The
@@ -1127,21 +885,6 @@ independent toggles, not a three-way choice, because each earns its own mark and
 survived both deserves both. Taking neither is the plain game. Both introduce something the old
 board never had — a way to lose — so `failLevel()` and `levelOver` exist, and nothing on the
 board responds once a run is over.
-**A finished mode marks the level on the gate**: Perfectionist repaints the node in a gold
-gradient, Time Attack sets sparks going inside it, and they stack. Those sparks are **children**
-of the node, the opposite of the bonus board's: a hexnode is clipped to its own hexagon so a
-child is clipped with it, which is exactly what an *inner* sparkle needs, while the bonus tile
-wanted sparks spilling past its edge and had to use siblings.
-**The marks live in `localStorage` and, where migration 011 has been applied, in two new
-`game_progress` columns.** `supabase-migration-011-game-modes.sql` adds `time_attack` and
-`perfectionist`; until it is run, the first save attempt drops those two keys and retries, then
-stops trying for the session. That dance is not optional: **an upsert naming a column PostgREST
-does not know fails the whole row**, so without it a cosmetic badge would take every player's
-progress down with it. A mark is only ever written `true` — a later plain run never removes one.
-**`DEMO_MARKS_ON_LEVEL` in `game-gate.js` fakes both marks on N5-1** so the two treatments can
-be seen without playing a level under each mode. It is a demo, not a feature: delete the
-constant and the two lines reading it (grep `DEMO_MARKS`) to stop it.
-
 **Large data files — never `Read` whole**: `phonetics-data.js` (~2.8MB), `game-words.js`
 (~1.4MB), `mnjp-data.js` (~1.4MB, `MNJP_ENTRIES` — dictionary.html's primary tab, 3,537 words
 merged from five sources, see its own header comment), `reading-texts.js` (~1.1MB),
@@ -1223,14 +966,6 @@ Grammar Connect and 46 are HAND-AUTHORED; a point's card carries what it does, t
 easily confused with, up to three example sentences with furigana and a translation, and — for a
 derived point only — a link into the drill at the level it is first taught.
 
-**THE DRILL CANNOT PRODUCE を, AND NO AMOUNT OF MINING IT EVER WILL** (2026-11-03, the third
-pass of the same day). Reported as "why isn't there even を grammar in the dictionary? That must
-mean it's just useless as a dictionary" — and the diagnosis was right. `grammar-data.js` is a
-sentence-swap drill, so a point is in it only if it has a NEAR-SYNONYM you can swap it for.
-ので↔から works; **nothing swaps for を**. Measured at the time: thirteen of the sixteen core
-particles absent (を は に で も へ の や か ね よ まで より), along with です, ます, ている, てください,
-たい, ましょう, たり, しか — **14 N5 entries in total**. The tab was an index of confusable pairs
-while its name promised a grammar dictionary, and the name was the fault, not the 218 entries.
 **Nothing else in the repo covered them either**: `reading-texts.js` never emits a particle as a
 glossed token, and `mnjp-data.js` has no entry for を, は, に, で or へ (its one hit for も is junk,
 a gloss about the Mongolian alphabet).
@@ -1275,21 +1010,6 @@ note.** It fired on 11 correct entries: the point is CONJUGATED in a real senten
 example — is caught properly by the empty-field, Cyrillic-in-Japanese and Latin-in-Mongolian
 checks, which did catch two placeholders and one invented verb form (飲められます, which is neither
 the potential 飲める nor the passive 飲まれる).
-**NOT ONE WORD OF IT WAS TRANSLATED FOR THIS.** Every string shown is the site author's own,
-already written and reviewed inside `grammar-data.js` — `explanationMn` on the sentence and
-`translationMn` under it. That is what made the feature cheap, and it is also the constraint:
-`tests/grammar-index.spec.js` fails on any entry with an empty `m`, so a future point shipping
-without `explanationMn` must be left out rather than filled in from the English. That held for
-the expansion below too: it added 105 points and not one word of new Mongolian.
-
-**THE POOL IS NOT THE CATALOGUE, and reading it as one cost this index half its material**
-(2026-11-03, the same day; it shipped at 113 and was doubled hours later). `GRAMMAR_POOLS` was
-the only list of citation forms to hand, so the generator filed its members and skipped
-everything else — but the pool's job is to supply DISTRACTOR TILES, which is a different job
-from being a catalogue. It holds 132 strings, 19 of them never tested at all, while the
-sentences test **436**. Measured: **131 of the 400 sentences had BOTH options outside it**, so
-their explanation and their translation reached no entry — ほかない, つつある, づらい, たびに,
-にしたがって, を余儀なくされる, たるもの, ごとき, にかたくない, all real N4–N1 grammar and all invisible.
 **A filter that drops in silence is the fault, not the filter**: nothing anywhere said those
 sides existed, which is why one afternoon's feature shipped at half size and looked complete.
 **They are not all grammar, and that is the work.** 174 distinct strings are tested, carry an
@@ -1309,33 +1029,6 @@ they had no explanation of their own because no sentence tests them, and がち�
 の前に do. (のおかげで was a third kind of near-duplicate — a new headword colliding with the
 pool's own おかげで — and merges into it. Check a new headword against the pool before adding
 one.) Result: **218 points, 412 examples, 181 contrasted with a near-synonym**, from 113.
-**The build now FAILS on a string in neither list**, so a new sentence introducing a new form
-has to be classified deliberately. Proved both ways: deleting つつある's filing names it and
-writes nothing. A conjugated form carrying `<ruby>` and no `*Core` is skipped before that and
-counted (149 distinct) — it has no citation form to file it under, and those are the visible
-face of the 37 sentences wanting `oldCore`/`newCore` added to `grammar-data.js`.
-**The partner list is headwords now, not pool members.** The old `pool.has(side.mate)` test
-would have thrown most partners away, and two sides of one swap can resolve to the SAME entry
-(つづける / つづけている both file under つづける), so a point would list ITSELF as the thing it is
-confused with — a rendering fault the spec now pins. Worst case is 5 partners, on ざるをえない.
-
-The 19 distractor-only pool strings were a separate matter: a distractor is never tested, so no
-sentence explains it. **9 of them now have a hand-authored entry** (see the foundation layer
-above) and がち and まえに came in by merge, leaving 8 without one — てから and たあとで are covered
-by foundation entries of their own, and ことになる, ようになる and てある likewise, so what is left
-is the long tail. CLAUDE.md used to claim they "stay
-findable because the explanations name them by hand" — **that was a substring artifact**. げ
-matched おかげで, わけ matched ないわけにはいかない, つつ matched つつある, かけ matched かけ離れている;
-only がち and まえに were genuinely named, and both now have an entry by merge. Giving the other
-17 (っぽい, ぎみ, きり, だらけ, まみれ, たて, てから, たあとで, ことになる, ようになる, てある, ないものの,
-なりに…) an entry means adding a sentence pair to `grammar-data.js`, which is Grammar Connect
-content work rather than dictionary work.
-**THE EXPLANATION BELONGS TO THE PAIR, NOT TO THE TESTED OPTION**, and reading it the other way
-silently drops a third of the corpus. Keyed on `newCore || oldCore` alone — the same
-`grammarKey` shape `grammar.js` files an attempt under — 43 points came out with nothing to
-show, every one a point that only ever appears as the OLD option: けど, でしょう, つもり,
-にもかかわらず, かたわら. All real N4–N1 grammar, all invisible. The text names both points and
-explains what separates them, so it is the right text under either one.
 **The row cannot carry that explanation either, for the same reason.** Built that way first, it
 printed the identical sentence on ので and から, and again on が and けど — four adjacent rows,
 two glosses, which reads as a rendering fault however correct it is. 75 of the 113 have a
@@ -1439,11 +1132,6 @@ player is looking at. These two are not card games, so they get the other half o
 world: a keyswitch, paper, a pencil, a rubber stamp. Nothing bounces and **there is not one
 oscillator in the file** — the probe asserts that, because "no silly noises" is a property worth
 pinning rather than remembering.
-**A separate file, not a reuse of `CardSfx`.** Word Match's five scripts share one global scope
-and a load order that breaks if a name is declared twice; reaching into it from two other pages
-to borrow ~25 lines of buffer-and-envelope would risk the game's startup for nothing a listener
-can hear. The shaping genuinely differs too — a card snap and a pencil scrape want opposite
-filters.
 **Volume is `khanjp-volume`, which Word Match and Grammar Connect already share**, so this is a
 fourth consumer and not a fourth control. It is re-read on every cue, so a page needs no event
 plumbing to follow a change made elsewhere on it.
@@ -1533,9 +1221,6 @@ for every tool and a second tool passing markup would reintroduce it silently; a
 strips on the way out too, since rows written before the fix still carry it and there is no
 migration. 32 sentences still have neither core and fall through to plain sentence text — legible
 now, but they want cores adding to `grammar-data.js`.
-**`grammar-data.js`'s own header is wrong about this** and has been for a while: it says `old`
-and `new` "deliberately do NOT get furigana since JLPT grammar points are essentially always
-kana". 220 of 400 `new` values and 180 `old` values carry `<ruby>`.
 **A spy on `recordWordAttempt` cannot test this.** `scratchpad/grammar-key.js` first installed
 one before `word-stats.js` could, which captured the CALL SITE's raw arguments and reported
 furigana in `confused_with` that would never have shipped. Signed out, the real path buffers to
