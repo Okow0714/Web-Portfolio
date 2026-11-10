@@ -1164,6 +1164,25 @@ async function startVoiceGate() {
     const recent = [];
 
     levelTimer = setInterval(() => {
+        // A FROZEN METER IS A DEAD GATE, AND A DEAD GATE REJECTS EVERYTHING. If the recognizer
+        // takes the microphone back -- which it does on a restart, and restarts are routine --
+        // our track ends and the analyser reads zeros for the rest of the session. The meter
+        // stops moving, which is the visible half; the damaging half is that lastVoiceAt stops
+        // updating, so voiceGateActive() then discards every transcript as room noise and the
+        // cursor stops even though recognition is working perfectly. Reported exactly that way:
+        // the volume stops moving and reading the word again a few times eventually gets
+        // through, which is the reject latch slowly giving up.
+        // So notice it directly rather than waiting for the latch: a track that has ended, or a
+        // context that is no longer running, means this gate has nothing left to say.
+        const track = micStream && micStream.getAudioTracks()[0];
+        if (!track || track.readyState === 'ended' || (audioCtx && audioCtx.state === 'closed')) {
+            // stopVoiceGate() clears voiceGateReady, and voiceGateActive() needs it -- so the
+            // gate is open from here on and every transcript passes. Setting voiceGateDisabled
+            // as well would read as the belt to that braces and is not: stopVoiceGate() resets
+            // it to false on its way out.
+            stopVoiceGate();
+            return;
+        }
         analyser.getFloatTimeDomainData(buf);
         let sum = 0;
         for (let i = 0; i < buf.length; i++) sum += buf[i] * buf[i];
