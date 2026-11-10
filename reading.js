@@ -1112,6 +1112,18 @@ function renderLevel(rms) {
 async function startVoiceGate() {
     const Ctx = window.AudioContext || window.webkitAudioContext;
     if (!Ctx || !navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) return;
+    // NOT ON A PHONE. This gate opens its OWN getUserMedia stream and holds it for the whole
+    // session, alongside the one SpeechRecognition needs. Desktop Chrome lets two consumers
+    // share a microphone; Android effectively does not -- the gate takes it and the recognizer
+    // is handed silence. The symptom is exact and was reported that way: the level meter moves,
+    // so the mic is plainly working, and the cursor never advances, because no transcript ever
+    // arrives. Recognition is the feature; this is a filter on top of it, and the file already
+    // says a filter must never be a prerequisite (see noteGateReject). So on a touch device the
+    // gate simply does not run, and the reader gets its microphone back.
+    // Checked on pointer coarseness rather than a user-agent string: what matters is whether
+    // this is the kind of device whose mic is exclusive, and a desktop with a touchscreen
+    // losing the gate costs only some noise rejection.
+    if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) return;
     const generation = recognitionGeneration;
     let stream;
     try {
