@@ -38,8 +38,17 @@ const MAX_ALTERNATIVES = 5;      // ASR's runner-up transcripts get checked too,
 const MIN_JUMP_TOKEN_LEN = 2;    // see the note on `distinctive` in onresult
 // ...except for a lone kanji, which is exempt from that minimum. See the same note.
 const KANJI_CHAR = /[\u4E00-\u9FAF\u3005]/;
-const MAX_RESTART_ATTEMPTS = 4;  // consecutive rapid onend restarts before we stop and say so
+// Consecutive RAPID onend restarts before we stop and say so. Raised from 4: on a phone
+// `continuous` is ignored, so onend fires after every utterance and a reader speaking in short
+// bursts -- which is how anyone reads a sentence aloud -- can legitimately produce several
+// restarts inside the streak window without anything being wrong. Any result arriving resets
+// this to 0 (see onresult), so a genuinely dead service still stops quickly: nothing comes back.
+const MAX_RESTART_ATTEMPTS = 10;
 const RESTART_STREAK_WINDOW_MS = 2000; // restarts further apart than this are silence gaps, not a failure loop
+// start() must not be called from inside onend: the previous session is still releasing and the
+// call throws InvalidStateError. These two give it room, then give it more room once.
+const RESTART_DELAY_MS = 250;
+const RESTART_RETRY_MS = 900;
 
 // Voice gate. Chrome's recognizer will turn room noise -- a fan, a keyboard, a cough, a chair
 // -- into a short plausible utterance, and short is all it takes to do damage here: the word
@@ -63,7 +72,15 @@ const VOICE_FLOOR_MIN = 0.008;    // ...and this absolute RMS, so a silent room 
 const VOICE_FLOOR_CAP = 0.02;     // ...and the floor itself is capped, so calibrating while someone
                                   //    is already talking can't ratchet the gate shut
 const VOICE_LEVEL_POLL_MS = 50;
-const VOICE_MAX_REJECTS = 5;      // consecutive rejections before the gate assumes it is the broken one
+// Consecutive rejections before the gate assumes it is the broken one. Lowered from 5, to match
+// what noteGateReject()'s own comment already argues: a reader who cannot advance at all is far
+// worse off than one who occasionally skips a word. Five rejections is five utterances read
+// aloud and ignored, which is long enough to look broken rather than fussy -- and the case that
+// produces them is common on a phone. Calibration samples the room for VOICE_CALIBRATION_MS
+// (700ms) after Start, and a phone reader taps Start and begins reading straight away, so the
+// floor gets learned from their own voice; every later utterance then sits below a threshold
+// derived from it. Standing down after two is still a filter, just a faster-failing one.
+const VOICE_MAX_REJECTS = 2;
 const MIN_CONFIDENCE = 0.3;       // Chrome scores finals (interim are 0); a very low one is usually noise
 const ANCHOR_WORDS = 2;           // words behind the cursor consumed before matching; see matchTranscript()
 // How many breaks -- a word missing from the transcript, or one found but not where the phrase
@@ -1315,11 +1332,31 @@ function startRecognition() {
             return;
         }
         restartAttempts++;
-        try {
-            recognition.start();
-        } catch (e) {
-            failListening(window.t('reading.speechStalled'));
-        }
+        // THE RESTART IS DEFERRED, AND A THROW IS NOT FATAL -- this is what made the reader
+        // give up almost immediately on a phone. Android Chrome does not honour
+        // `continuous = true`: it ends the session after each utterance, so onend fires
+        // constantly rather than only after a long silence. Calling start() synchronously from
+        // inside onend then lands while the previous session is still releasing, which throws
+        // InvalidStateError -- and the old code treated that one throw as permanent failure.
+        // On a desktop, where onend is rare, it almost never happened; on a phone it is the
+        // normal path, which is why the reader "works even less on mobile".
+        // So: let the engine finish tearing down, then start; and if it is still not ready,
+        // wait longer and try once more before saying anything to the reader.
+        window.setTimeout(() => {
+            if (generation !== recognitionGeneration || !listening) return;
+            try {
+                recognition.start();
+            } catch (e) {
+                window.setTimeout(() => {
+                    if (generation !== recognitionGeneration || !listening) return;
+                    try {
+                        recognition.start();
+                    } catch (e2) {
+                        failListening(window.t('reading.speechStalled'));
+                    }
+                }, RESTART_RETRY_MS);
+            }
+        }, RESTART_DELAY_MS);
     };
 
     recognition.onerror = (event) => {
