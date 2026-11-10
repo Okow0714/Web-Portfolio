@@ -14,6 +14,14 @@ paths:
      globs match. -->
 
 **The hue is never the resting fill.** Word Match puts white on the solid hue, which measures
+**2.40:1** on the N4 gold; here each hue is mixed towards white (light) or the page ground (dark)
+and the ink is solved against the *harder* of the two gradient stops -- the darker one in light,
+the lighter one in dark. The mix is pushed as far as that solve allows rather than to a round
+number: the first attempt used a flat 16% tint for all four and the bands were not tellable apart
+on paper, which defeats the point. The cleared/picked state IS the hue, the same in both themes,
+and **N3 is the one that has to be lightened 18%** -- at its own lightness no ink, dark or pale,
+clears 4.5 on both stops of a gradient around it. The ink direction is per band too (N4/N3 dark,
+N2/N1 pale), so `on-solid` is four values rather than one. Worst measured label: **4.77:1**.
 **Word Match's `--text-muted` was solved against the wrong surface**: `#6f6554` measured 4.19:1
 on six labels of the PLAY screen (stat keys, hand counter, preview hint, tour button), whose
 ground is the board's straw `rgb(228,220,199)` and not the paper the token was picked against.

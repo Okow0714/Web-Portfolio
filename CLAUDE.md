@@ -563,14 +563,6 @@ Either wrap the text in one element or pin it with `grid-column`.
 **The hedge is now a tilde, not a word** (2026-10-24): the notes read `~N4`, `~N4-N3`, `~N2`,
 `~N1` where they used to read "mostly N4" / "ихэвчлэн N4". The hedge itself cannot be dropped --
 these are halves of a track, not JLPT tiers -- but one character says it in both languages.
-**2.40:1** on the N4 gold; here each hue is mixed towards white (light) or the page ground (dark)
-and the ink is solved against the *harder* of the two gradient stops -- the darker one in light,
-the lighter one in dark. The mix is pushed as far as that solve allows rather than to a round
-number: the first attempt used a flat 16% tint for all four and the bands were not tellable apart
-on paper, which defeats the point. The cleared/picked state IS the hue, the same in both themes,
-and **N3 is the one that has to be lightened 18%** -- at its own lightness no ink, dark or pale,
-clears 4.5 on both stops of a gradient around it. The ink direction is per band too (N4/N3 dark,
-N2/N1 pale), so `on-solid` is four values rather than one. Worst measured label: **4.77:1**.
 **The gate pieces are vivid; the level tiles are not** (2026-10-24). Four JLPT buttons should
 read as their colour the way Word Match's dial does, and ten tiles under a heading should not,
 so a closed piece wears `--band-*-dim-*` -- the hue only **6% lighter**, which is the least that
