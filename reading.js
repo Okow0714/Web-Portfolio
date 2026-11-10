@@ -560,9 +560,23 @@ function renderPassage() {
         if (!w.sym) {
             span.tabIndex = 0;
             span.setAttribute('role', 'button');
-            span.addEventListener('click', () => jumpToWord(i));
+            // A WORD IN THE PASSAGE NOW SPEAKS WHEN YOU TAP IT. The speak buttons existed only
+            // inside the skipped-words list, so the only word you could hear was one the
+            // matcher had already failed on -- a word you are simply unsure of had no button
+            // anywhere, and tapping it in the passage only moved the cursor. Tapping the word
+            // you are CURRENTLY on did nothing at all, since jumpToWord() returns early when
+            // the target is the cursor, which is the most natural thing to try.
+            // Both behaviours now: speak always, jump only when the target is ahead, which is
+            // what jumpToWord already decides for itself. speak() is a no-op when the device
+            // has no Japanese voice, so nothing misleading plays.
+            // Safe beside the open microphone: speak() raises ttsSpeaking, and onresult drops
+            // everything while that is set, so the page cannot hear its own playback and walk
+            // the cursor forward on it.
+            const tap = () => { speakWord(w); jumpToWord(i); };
+            span.title = window.t('reading.hearWord');
+            span.addEventListener('click', tap);
             span.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); jumpToWord(i); }
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tap(); }
             });
         }
         passageEl.appendChild(span);
