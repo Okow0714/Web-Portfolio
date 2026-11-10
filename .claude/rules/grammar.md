@@ -42,13 +42,32 @@ one `--bt-*` set that the gate piece and the ten tiles then share.
 **Nothing clipped may carry an `outline`.** An outline follows the border box; `clip-path` then
 keeps only the part of it inside the silhouette, so a ring becomes a bracket -- a stray angle
 floating in the triangle, which is exactly what shipped for one commit as the "picked" mark.
-Every mark on these shapes is a **filter**: the lift, the open-band halo and the keyboard ring
-(`--focus-halo`) are all stacked `drop-shadow()`s, which have no spread parameter, so a ring is
-two or three of them at the same offset. `tests/`-adjacent `scratchpad/gc-bandcheck.js` now fails
-on any clipped element with a non-zero outline, in any state.
-(An earlier note here said the `:focus-visible` ring "stays `--shu-light`". It never did -- that
-edit was in a script that exited before writing -- and the question is moot now that no outline
-survives anywhere on these shapes.)
+`tests/`-adjacent `scratchpad/gc-bandcheck.js` fails on any clipped element with a non-zero
+outline, in any state.
+**AND A `drop-shadow` IS NOT THE ANSWER EITHER, though this file said it was for months.**
+CSS Masking applies `clip-path` AFTER `filter`, so a drop-shadow drawn outside the silhouette
+is removed with everything else out there. Proved in isolation, one shadow in four
+arrangements, as the peak luminance drop 1px beside the shape: on the clipped element **0.0**,
+on an unclipped wrapper **47.8**, no filter 0.0, filter with the clip removed 57.4. A filter
+follows the clipped silhouette only when it is applied to an ancestor of the clipped element,
+never on the element itself. The sentence that used to sit here claimed the opposite and was
+followed everywhere -- it is the single root cause of Word Match's two gold bars, its missing
+card shadow, and the focus rings below.
+**So `--focus-halo` painted NOTHING, and these controls had no keyboard focus indicator at
+all** (2026-11-10). Measured as changed pixels in a box around each control, both themes, with
+`:focus-visible` confirmed matching: gate piece **0**, level tile **0**, against 149 for the
+help button beside them. The ring is a pair of clipped layers now, the same pair that draws
+Word Match's card rim -- `::before` the ring colour over the whole shape, `::after` the shape's
+own `background: inherit` three pixels in, both clipped to that shape's polygon. What a clip
+removes is what lies OUTSIDE it, so anything drawn inside survives. 0 -> ~1,750 changed pixels.
+`--focus-ring` is the colour; `--focus-halo` and `--gate-open-halo` are still declared and the
+open-band one still paints nothing, which is a separate thing to fix.
+**The start button's ring failed for an unrelated reason**: `outline-color` defaults to
+`currentColor`, and `.gc-rec-cta` carries a cream label, so the browser drew a cream ring on
+the cream record panel. `.gc-rec-cta:focus-visible` states the colour now, solved against the
+PANEL the ring lands on rather than the button it surrounds. Scoped to this button on purpose
+-- `.auth-btn` is shared across eighteen pages and each instance needs measuring on its own
+ground before a shared rule is written.
 **The ground is a plain wash, not a photograph**, so the light ground had to drop a step
 (`#d9cdb0`) for near-white tiles to sit *on* it rather than in it -- and `body:has(.grammar-main)`
 must match `.gc-night-sky`'s end stop or a seam shows.

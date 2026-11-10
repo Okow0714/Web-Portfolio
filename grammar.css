@@ -246,6 +246,10 @@ body:has(.grammar-main) {
     --focus-halo: drop-shadow(0 0 2px light-dark(#17171f, #fff6e8))
                   drop-shadow(0 0 2px light-dark(#17171f, #fff6e8))
                   drop-shadow(0 0 1px light-dark(#17171f, #fff6e8));
+    /* The ring that actually paints. Neutral for the same reason --focus-halo was: it has to
+       show on all four band hues, on the cleared and picked fills, and against the three
+       neighbours a gate piece shares an edge with. */
+    --focus-ring: light-dark(#17171f, #fff6e8);
     /* The open band. Neutral for the same reason the focus ring is: it has to show against all
        four hues AND against the three neighbours it shares an edge with. */
     --gate-open-halo: drop-shadow(0 0 5px #fff2dd) drop-shadow(0 0 4px #fff2dd) drop-shadow(0 0 2px #fff2dd);
@@ -476,9 +480,11 @@ body:has(.grammar-main) {
     filter: drop-shadow(0 5px 8px var(--tri-shadow));
 }
 .gc-gate-tri.is-inverted:hover { background: linear-gradient(22deg, var(--bt-solid-a, var(--tri-a-hot)) 0%, var(--bt-solid-b, var(--tri-b-hot)) 100%); }
+/* outline: 0 stays -- an outline on a clipped shape is a bracket, not a ring. The halo is
+   gone because it never painted; the ring below is what replaces it. */
 .gc-gate-tri:focus-visible {
     outline: 0;
-    filter: drop-shadow(0 5px 8px var(--tri-shadow)) var(--focus-halo);
+    filter: drop-shadow(0 5px 8px var(--tri-shadow));
 }
 /* The open band. All four pieces are already their hue, so what marks this one is the halo, not
    a different colour -- it used to be the page's shu for all four, which made the gate say
@@ -773,8 +779,53 @@ body:has(.grammar-main) {
 }
 .gc-tri:focus-visible {
     outline: 0;
-    filter: drop-shadow(0 2px 3px var(--tri-shadow)) var(--focus-halo);
+    filter: drop-shadow(0 2px 3px var(--tri-shadow));
 }
+/* THE FOCUS RING, DRAWN INSIDE THE SHAPE -- because a clip keeps what is inside it.
+   --focus-halo is three stacked drop-shadows, and its own comment claims a drop-shadow
+   "follows the clipped silhouette". It does not: CSS Masking applies clip-path AFTER filter,
+   so a shadow drawn outside the silhouette is removed with everything else out there. These
+   controls therefore had NO visible focus indicator at all -- measured at 0 changed pixels in
+   a box around each one, in both themes, with :focus-visible confirmed matching, against 149
+   for the help button beside them that works.
+   An outline cannot replace it either: an outline follows the rectangular border box and the
+   clip keeps only the slivers of it inside the shape, which drew a bracket inside the picked
+   triangle once already (see the note above .gc-tri.done).
+   What survives a clip is anything drawn INSIDE it. So the ring is a pair of clipped layers,
+   the same pair that draws Word Match's card rim: ::before is the ring colour over the whole
+   shape, ::after lays the shape's own background back over it a few pixels in. `inherit`
+   carries whichever gradient that piece currently has -- its band hue, its cleared fill, its
+   picked fill -- so no state rule has to know this exists.
+   The two negative z-indexes sit above the element's own background and below its label; both
+   shapes carry a `filter`, which creates a stacking context, so they cannot fall behind the
+   board. pointer-events stay off: the ring must never take a click meant for the shape. */
+.gc-gate-tri:focus-visible::before,
+.gc-gate-tri:focus-visible::after,
+.gc-tri:focus-visible::before,
+.gc-tri:focus-visible::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+}
+.gc-gate-tri:focus-visible::before,
+.gc-tri:focus-visible::before {
+    inset: 0;
+    z-index: -2;
+    background: var(--focus-ring);
+}
+.gc-gate-tri:focus-visible::after,
+.gc-tri:focus-visible::after {
+    inset: 3px;
+    z-index: -1;
+    background: inherit;
+}
+.gc-gate-tri:focus-visible::before { clip-path: polygon(50% 0%, 100% 100%, 0% 100%); }
+.gc-gate-tri:focus-visible::after { clip-path: polygon(50% 0%, 100% 100%, 0% 100%); }
+.gc-gate-tri.is-inverted:focus-visible::before,
+.gc-gate-tri.is-inverted:focus-visible::after { clip-path: polygon(0% 0%, 100% 0%, 50% 100%); }
+.gc-tri:focus-visible::before,
+.gc-tri:focus-visible::after { clip-path: polygon(0% 0%, 100% 50%, 0% 100%); }
+
 /* Cleared: the band's hue filled in. Picked: the same fill, haloed in its own hue and lifted
    clear of the row, so the two states stay apart now that both are in-hue.
    The halo is NOT an outline. An outline follows the border box, and clip-path cuts all of it
@@ -891,6 +942,18 @@ body:has(.grammar-main) {
    start and result modals use, and the button is dark-on-dye in both themes. */
 /* The top stop is #b3412e, not --shu's #bc4430: the cream label measures 4.17:1 on #bc4430 and
    4.50 on this, and the lightest stop of a gradient is the one the floor has to clear. */
+/* THE DEFAULT FOCUS RING ON THIS BUTTON IS INVISIBLE, and not for the clipping reason the
+   shapes above had. `outline-color` defaults to `currentColor`, and this button carries a
+   cream label on a dark red gradient -- so the browser drew a cream ring on the cream record
+   panel behind it. Measured at 15 changed pixels in light and 0 in dark, against 149 for the
+   help button beside it. The colour has to be stated, and stated against the PANEL the ring
+   lands on rather than against the button it surrounds.
+   Scoped to this button on purpose: `.auth-btn` is shared across eighteen pages and every
+   other instance needs measuring on its own ground before a shared rule is written. */
+.gc-rec-cta:focus-visible {
+    outline: 3px solid var(--ink);
+    outline-offset: 2px;
+}
 .gc-rec-cta { background: linear-gradient(135deg, #b3412e, #8f3122); }
 .gc-rec-cta:hover { background: linear-gradient(135deg, #b04331, #a3381f); }
 
