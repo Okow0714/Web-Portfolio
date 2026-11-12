@@ -1,420 +1,416 @@
-# Gloss worklist — 401 kanji
+# グロス一覧 — 401 kanji
 
-The glosses the English–Mongolian corpus does not support, **most-used kanji first**.
-Fill in `new gloss`. Leave it blank to keep what is there.
+Mongolian glosses the corpus does not support, **most-used kanji first**.
+Written from the Japanese: the readings and a real word from this site’s own data.
+Fill in `新しい訳`. Leave it blank to keep the current gloss.
 
-Corpus hints are **stems** from 66,684 human-translated lines: `гарт-` means the root
-гар, not a finished word. Most hints are noise — they come from subtitles, so `бака-` and
-`маги-` turn up for "master". Ignore them freely; they are evidence, not instructions.
+Two senses can both be right — separate them with a comma, as хил, зааг already does.
 
-Two senses can both be right (1,349 of 1,550 kanji carry more than one English meaning).
-Separate them with a comma, as хил, зааг and зүүд, мөрөөдөл already do.
-
-| # | kanji | english | current gloss | new gloss | used | corpus hints |
-|---|---|---|---|---|---|---|
-| 1 | 手 | hand | савар |  | 173 | атга-(125× hand) гарт-(77× hand) сунг-(43× hand) |
-| 2 | 合 | fit; suit | нийлэх |  | 113 | хосл-(629× suit) өмсө-(294× suit) багт-(46× fit) |
-| 3 | 達 | accomplished; reach | гүйцэлдэх |  | 104 | хүрн-(98× reach) хүрч-(48× reach) маши-(42× arrive) |
-| 4 | 主 | lord; chief | эзэн |  | 99 | маги-(292× master) бака-(141× master) үүрг-(106× chief) |
-| 5 | 料 | fee; materials | хураамж |  | 98 | төлб-(499× fee) мате-(142× materials) бүрт-(85× fee) |
-| 6 | 結 | tie; bind | холбох |  | 91 | гэрэ-(94× contract) нэгд-(26× join) орох-(22× join) |
-| 7 | 切 | cut; cutoff | огтлох |  | 88 | оос-(92× cut) бохи-(42× cut) таса-(40× cut) |
-| 8 | 発 | departure; discharge | хөдлөх цаг |  | 79 | цацр-(544× emit) өнги-(418× emit) хала-(171× emit) |
-| 9 | 場 | location; place | талбай |  | 79 | огно-(350× location) бака-(77× location) талу-(72× location) |
-| 10 | 交 | mingle; mixing | холилдох |  | 78 | спор-(113× association) сагс-(90× association) азий-(60× association) |
-| 11 | 経 | sutra; longitude | судар |  | 77 | нисл-(109× pass) таса-(52× pass) шалг-(49× pass) |
-| 12 | 付 | adhere; attach | наалдах |  | 76 | дурд-(52× refer) зэрг-(51× refer) нэрл-(27× refer) |
-| 13 | 面 | mask; face | сэнжтэй аяга |  | 75 | амьс-(148× mask) цара-(117× face) онцл-(116× features) |
-| 14 | 身 | somebody; person | бие |  | 70 | цагд-(264× station) нисг-(219× station) дүгн-(82× one's) |
-| 15 | 図 | map; drawing | схем |  | 69 | зурж-(229× drawing) зурс-(73× drawing) ээлж-(72× extraordinary) |
-| 16 | 乗 | ride; power | унаанд суух |  | 64 | жинг-(659× ride) хонх-(349× ride) бичд-(333× multiplication) |
-| 17 | 直 | straightaway; honesty | удахгүй |  | 59 | шуда-(220× honesty) шоко-(143× fix) эвдэ-(136× fix) |
-| 18 | 点 | spot; point | оноо |  | 59 | марк-(128× mark) цэг-(60× point) цэгэ-(58× point) |
-| 19 | 過 | overdo; exceed | хэтрүүлэх |  | 58 | олдс-(133× error) дадл-(80× beyond) алда-(69× error) |
-| 20 | 文 | sentence; literature | захидал |  | 58 | хэв-(153× style) уран-(136× literature) өгүү-(131× sentence) |
-| 21 | 験 | verification; effect | баталгаажуулалт |  | 51 | өмсө-(90× testing) ньют-(83× effect) эгнэ-(80× effect) |
-| 22 | 然 | sort of thing; so | тийм |  | 50 | сийл-(53× sort) фэйс-(43× sort) тэхд-(30× sort) |
-| 23 | 命 | fate; command | амь |  | 48 | заяа-(421× fate) цэрг-(81× command) түрү-(77× command) |
-| 24 | 進 | advance; proceed | ахих |  | 47 | ахиц-(471× progress) дэмж-(73× promote) ний-(72× progress) |
-| 25 | 習 | learn | дадлагажих |  | 46 | сурд-(82× learn) сура-(34× learn) сурч-(32× learn) |
-| | | | | | | **↑ reviewing to here covers 33% of all appearances** |
-| 26 | 帰 | homecoming; arrive at | буцах |  | 45 | огно-(115× result) дүнд-(102× result) үсрэ-(62× lead) |
-| 27 | 断 | severance; decline | таслах |  | 43 | гуйх-(595× apologize) уучл-(456× apologize) огцо-(296× decline) |
-| 28 | 曜 | weekday | гараг |  | 41 | өдри-(180× weekday) цага-(104× weekday) ажлы-(80× weekday) |
-| 29 | 参 | nonplussed; three (in documents) | оролцох |  | 41 | вирт-(198× documents) бичг-(133× documents) реда-(84× documents) |
-| 30 | 頼 | trust; request | гуйх |  | 39 | итгэ-(60× trust) хүсэ-(44× request) төрч-(25× trust) |
-| 31 | 野 | plains; field | хээр |  | 39 | кван-(75× field) салб-(66× field) дэрг-(55× field) |
-| 32 | 降 | descend; precipitate | буух |  | 37 | бууж-(344× surrender) татг-(286× surrender) унах-(105× fall) |
-| 33 | 構 | posture; stance | байрлал |  | 37 | төрх-(294× appearance) дүр-(95× appearance) лего-(89× build) |
-| 34 | 望 | ambition; full moon | тэмүүлэл |  | 35 | барх-(337× moon) эрмэ-(170× desire) сарн-(152× moon) |
-| 35 | 士 | gentleman; scholar | эрхэм |  | 35 | ради-(181× radical) шанк-(172× scholar) язгу-(103× radical) |
-| 36 | 腹 | abdomen; belly | хэвлий |  | 34 | өвдө-(170× stomach) шинг-(66× stomach) зүрх-(44× stomach) |
-| 37 | 確 | assurance; firm | баттай |  | 34 | лам-(205× firm) номл-(187× firm) жон-(144× firm) |
-| 38 | 態 | attitude; condition | төлөв |  | 34 | төрх-(294× appearance) томч-(177× attitude) цент-(127× condition) |
-| 39 | 器 | utensil; vessel | сав |  | 34 | бичг-(82× implement) өргө-(37× implement) аюул-(30× implement) |
-| 40 | 便 | convenience; facility | тохь |  | 34 | тав-(295× convenience) дэлг-(52× convenience) бари-(30× facility) |
-| 41 | 破 | rend; rip | урах |  | 33 | таса-(295× tear) эвдэ-(108× break) ханы-(98× break) |
-| 42 | 嫌 | dislike; detest | таагүй |  | 33 | ядда-(751× hate) үзэн-(501× hate) дурт-(17× hate) |
-| 43 | 運 | carry; luck | зөөх |  | 32 | заяа-(655× destiny) тави-(46× fate) хувь-(39× destiny) |
-| 44 | 説 | opinion; theory | цуу яриа |  | 32 | орчл-(451× opinion) стри-(281× theory) кван-(236× theory) |
-| 45 | 記 | scribe; account | бичигч |  | 31 | хүүр-(896× narrative) төлб-(70× account) банк-(62× account) |
-| 46 | 離 | detach; separation | салах |  | 30 | зай-(72× separation) тусг-(57× separation) хуга-(23× separation) |
-| 47 | 御 | honorable; manipulate | хүндэтгэл |  | 30 | биеи-(250× govern) хэл-(122× govern) захи-(79× govern) |
-| 48 | 向 | yonder; facing | зүг |  | 29 | тула-(90× facing) дадл-(80× beyond) тулг-(67× facing) |
-| 49 | 収 | income; obtain | хураах |  | 29 | орло-(264× income) баял-(101× income) цали-(83× pay) |
-| 50 | 脱 | undress; removing | мултрах |  | 28 | манд-(222× escape) зугт-(152× escape) арил-(109× rid) |
-| | | | | | | **↑ reviewing to here covers 48% of all appearances** |
-| 51 | 祖 | ancestor; pioneer | өвөг дээдэс |  | 28 | ххк-(155× founder) үүсг-(83× founder) тэмц-(74× pioneer) |
-| 52 | 隣 | neighboring | хажуу |  | 27 | хөрш-(656× neighboring) дүрв-(289× neighboring) орну-(49× neighboring) |
-| 53 | 従 | accompany; obey | дагах |  | 27 | бэлэ-(96× submit) хичэ-(56× submit) багш-(42× submit) |
-| 54 | 争 | contend; dispute | тэмцэх |  | 27 | марг-(175× dispute) жил-(41× dispute) төри-(26× argue) |
-| 55 | 認 | acknowledge; witness | хүлээн зөвшөөрөх |  | 26 | гэрч-(715× witness) ёсто-(29× acknowledge) хүни-(26× acknowledge) |
-| 56 | 礼 | salute; bow | ёсолол |  | 26 | занг-(324× bow) мунд-(232× bow) ачаа-(83× thanks) |
-| 57 | 除 | exclude; division (x/3) | хасах |  | 25 | зинд-(357× division) арил-(81× remove) нээс-(48× division) |
-| 58 | 常 | usual; ordinary | байнгын |  | 25 | ерди-(255× usual) жири-(146× ordinary) хэви-(139× normal) |
-| 59 | 兄 | elder brother; big brother | ах (даруу) |  | 25 | дүүг-(115× brother) дүүс-(110× brother) дүү-(110× brother) |
-| 60 | 供 | submit; offer | өргөх |  | 25 | зага-(104× meal) бэлэ-(96× submit) бялу-(81× serve) |
-| 61 | 優 | tenderness; excel | шилдэг |  | 24 | жүжи-(471× actor) энэр-(266× tenderness) теле-(97× actor) |
-| 62 | 賛 | approve; praise | дэмжих |  | 23 | магт-(978× praise) цол-(277× title) меда-(178× title) |
-| 63 | 片 | one-sided; leaf | хэлтэрхий |  | 23 | навч-(1621× leaf) модн-(370× leaf) ориг-(233× sheet) |
-| 64 | 囲 | surround; besiege | хүрээлэх |  | 23 | дэлг-(84× store) код-(67× store) апп-(64× store) |
-| 65 | 困 | quandary; become distressed | гачигдах |  | 23 | гоём-(23× become) дүрү-(19× become) сарм-(16× become) |
-| 66 | 緒 | thong; beginning | оосор |  | 22 | эхэн-(55× beginning) дөнг-(43× beginning) өрнө-(35× beginning) |
-| 67 | 留 | detain; fasten | саатуулах |  | 22 | боли-(88× stop) зогс-(52× stop) эелд-(43× stop) |
-| 68 | 激 | violent; get excited | ширүүн |  | 22 | догд-(333× excited) хэрг-(141× violent) гран-(77× excited) |
-| 69 | 刻 | engrave; cut fine | сийлэх |  | 22 | оос-(92× cut) бялу-(79× fine) акад-(44× fine) |
-| 70 | 筆 | writing brush; writing | бийр |  | 21 | баар-(261× painting) моде-(161× painting) хүүр-(133× writing) |
-| 71 | 段 | grade; steps | шат |  | 21 | шатн-(674× stairs) алхм-(280× steps) хийв-(101× steps) |
-| 72 | 昇 | rise up | дээшлэх |  | 21 | уган-(114× rise) ятга-(91× rise) марк-(58× rise) |
-| 73 | 夕 | evening | үдэш |  | 21 | орой-(222× evening) өглө-(51× evening) гарс-(23× evening) |
-| 74 | 固 | harden; set | хатуурах |  | 21 | багц-(61× set) жиши-(38× set) тодр-(32× set) |
-| 75 | 散 | scatter; disperse | тарах |  | 20 | зарц-(84× spend) багу-(50× spend) юунд-(43× spend) |
-| 76 | 塩 | salt | натрийн хлорид |  | 20 | давс-(823× salt) чихэ-(262× salt) зуур-(189× salt) |
-| 77 | 凡 | commonplace; ordinary | дундаж |  | 20 | жири-(146× ordinary) энги-(86× ordinary) ард-(64× ordinary) |
-| 78 | 蒸 | steam; heat | уурших |  | 19 | ууры-(805× steam) цацр-(181× heat) реак-(147× heat) |
-| 79 | 田 | rice field; rice paddy | тариалан |  | 19 | буда-(633× rice) тоол-(149× rice) кван-(75× field) |
-| 80 | 映 | reflect; reflection | тусах |  | 19 | толь-(214× reflect) тусг-(49× reflect) бүри-(28× reflect) |
-| 81 | 整 | organize; arranging | цэгцлэх |  | 19 | өнгө-(29× tone) зохи-(19× organize) бага-(7× organize) |
-| 82 | 官 | bureaucrat; the government | түшмэл |  | 19 | эрхт-(214× organ) засг-(106× government) яамн-(55× government) |
-| 83 | 万 | ten thousand; 10,000 | түм |  | 19 | мянг-(127× thousand) морь-(91× ten) арва-(82× ten) |
-| 84 | 述 | mention; state | өгүүлэх |  | 18 | дурд-(255× mention) унад-(253× mention) атей-(152× mention) |
-| 85 | 縮 | shrink; contract | агшаах |  | 18 | гэрэ-(94× contract) |
-| 86 | 節 | node; season | зангилаа |  | 18 | улир-(274× season) цаца-(96× season) цувр-(75× season) |
-| 87 | 爆 | bomb; burst open | тэсрэх |  | 18 | хорг-(595× bomb) унаг-(208× bomb) бөмб-(134× bomb) |
-| 88 | 探 | grope; search | эрэх |  | 18 | хайл-(303× search) эмчл-(193× search) хайх-(175× search) |
-| 89 | 姿 | figure; form | дүр төрх |  | 18 | ханз-(89× shape) чичи-(84× shape) бичэ-(63× shape) |
-| 90 | 勉 | exertion; endeavour | хичээх |  | 18 | уриа-(86× encourage) үзээ-(53× encourage) дэмж-(37× encourage) |
-| 91 | 般 | carrier; carry | зөөгч |  | 17 | ман-(109× general) гене-(97× general) бичг-(75× general) |
-| 92 | 粉 | flour; powder | гурил |  | 17 | тоос-(1034× dust) одод-(542× dust) зуур-(284× powder) |
-| 93 | 沢 | swamp; marsh | хөндий |  | 17 | билэ-(54× grace) шүү-(32× grace) ганц-(31× grace) |
-| 94 | 包 | wrap; pack up | боох |  | 17 | зайт-(328× pack) хөнг-(194× pack) мэлх-(174× cover) |
-| 95 | 飼 | domesticate; raise | гэршүүлэх |  | 16 | сохо-(287× feed) шил-(248× feed) сара-(131× feed) |
-| 96 | 逆 | inverted; reverse | урвуу |  | 16 | томь-(280× reverse) гипо-(96× opposite) жарг-(58× reverse) |
-| 97 | 追 | chase; drive away | хөөх |  | 16 | тэмү-(170× pursue) араа-(148× pursue) жоло-(132× drive) |
-| 98 | 焼 | bake; burning | шарах |  | 16 | шата-(267× burning) түлш-(228× burning) гал-(127× burning) |
-| 99 | 操 | maneuver; manipulate | жолоодох |  | 16 | уурх-(163× operate) тэдг-(61× manipulate) удир-(56× manipulate) |
-| 100 | 快 | cheerful; pleasant | тааламжтай |  | 16 | тухт-(263× comfortable) таат-(111× comfortable) каме-(40× comfortable) |
-| | | | | | | **↑ reviewing to here covers 66% of all appearances** |
-| 101 | 床 | bed; counter for beds | шал |  | 16 | шала-(511× floor) ёроо-(184× floor) кофе-(172× counter) |
-| 102 | 効 | merit; efficacy | үр дүн |  | 16 | одон-(766× merit) гавь-(556× merit) шагн-(144× merit) |
-| 103 | 耕 | till; plow | тариалах |  | 15 | жүжи-(99× till) болт-(97× till) дүр-(46× till) |
-| 104 | 磨 | grind; polish | нунтаглах |  | 15 | поль-(1632× polish) сайж-(125× improve) дасг-(28× improve) |
-| 105 | 渡 | transit; ford | гатлах |  | 15 | зага-(140× cross) кинг-(119× cross) төмө-(78× cross) |
-| 106 | 景 | scenery; view | байгалийн үзэсгэлэн |  | 15 | хүнл-(49× view) үзэл-(45× view) үзли-(45× view) |
-| 107 | 掘 | dig; delve | малтах |  | 15 | худа-(37× dig) жил-(30× dig) зөвш-(24× dig) |
-| 108 | 完 | perfect; completion | гүйцэд |  | 15 | төгс-(71× perfect) квад-(48× perfect) зада-(27× perfect) |
-| 109 | 削 | plane; sharpen | хусах |  | 15 | онго-(192× plane) бууг-(168× plane) нисч-(140× plane) |
-| 110 | 凝 | congeal; freeze | өтгөрөх |  | 15 | шинг-(121× absorbed) хүнд-(20× absorbed) тэд-(7× absorbed) |
-| 111 | 額 | forehead; tablet | дух |  | 14 | хант-(926× tablet) таам-(143× framed) алив-(117× framed) |
-| 112 | 震 | quake; shake | чичрэх |  | 14 | сэгс-(1078× shake) нуга-(110× shake) үзэг-(51× shake) |
-| 113 | 険 | precipitous; inaccessible place | эгц |  | 14 | туша-(69× position) цонх-(52× position) барх-(32× place) |
-| 114 | 邪 | wicked; injustice | бузар |  | 14 | шудр-(459× injustice) шуда-(426× injustice) бус-(113× injustice) |
-| 115 | 跡 | tracks; mark | ул мөр |  | 14 | ген-(154× print) дуса-(143× print) марк-(128× mark) |
-| 116 | 致 | doth; do | хүргэн өгөх |  | 14 | илгэ-(167× send) ураг-(166× forward) тан-(93× send) |
-| 117 | 築 | fabricate; build | цогцлоох |  | 14 | лего-(89× build) эвлү-(70× build) хөлс-(39× build) |
-| 118 | 益 | benefit; gain | өгөөж |  | 14 | талт-(180× advantage) анхд-(100× advantage) түрэ-(84× benefit) |
-| 119 | 照 | illuminate; shine | гэрэлтүүлэх |  | 14 | жиши-(178× compare) уган-(110× compare) харь-(77× compare) |
-| 120 | 焦 | char; hurry | түлэгдэх |  | 14 | хурд-(26× hurry) тэд-(8× hurry) |
-| 121 | 柔 | tender; weakness | зөөлөн |  | 14 | сул-(337× weakness) наса-(161× tender) тал-(58× weakness) |
-| 122 | 柄 | design; pattern | хээ |  | 14 | диза-(184× design) цар-(108× pattern) хант-(104× pattern) |
-| 123 | 杯 | counter for cupfuls; wine glass | хундага |  | 14 | дарс-(1078× wine) айра-(768× wine) шил-(284× glass) |
-| 124 | 担 | shouldering; carry | үүрэх |  | 14 | тэвч-(266× bear) өсгө-(125× raise) бугу-(105× raise) |
-| 125 | 怖 | dreadful; be frightened | аймшигтай |  | 14 | айж-(563× frightened) тэд-(14× frightened) |
-| 126 | 審 | hearing; judge | шүүн таслах |  | 14 | шүүг-(520× judge) сохо-(217× hearing) шүүх-(168× trial) |
-| 127 | 嬉 | glad; pleased | хөгжилтэй |  | 14 | баяр-(29× glad) эхлэ-(26× glad) ингэ-(14× glad) |
-| 128 | 処 | dispose; manage | шийдвэрлэх |  | 14 | өгүү-(131× sentence) цор-(59× deal) оффи-(48× deal) |
-| 129 | 被 | incur; cover | хүлээх |  | 13 | мэлх-(174× cover) бүрх-(77× cover) хавт-(69× cover) |
-| 130 | 蔵 | storehouse; hide | хөмрөг |  | 13 | нууг-(369× hide) араа-(136× hide) найм-(53× hide) |
-| 131 | 突 | stab; protruding | хатгах |  | 13 | пууж-(528× thrust) түлх-(267× thrust) хөдө-(56× thrust) |
-| 132 | 眼 | eyeball | нүд |  | 13 | нүдэ-(232× eyeball) |
-| 133 | 昆 | descendants; elder brother | хорхой шавж |  | 13 | удам-(926× descendants) овги-(780× descendants) дүүг-(115× brother) |
-| 134 | 弁 | valve; petal | хавхлага |  | 13 | илтг-(87× speech) яриа-(47× speech) эсэх-(32× speech) |
-| 135 | 帽 | cap; headgear | малгай |  | 13 | аркт-(727× cap) мөсө-(418× cap) туйл-(88× cap) |
-| 136 | 守 | guard; protect | сахих |  | 13 | нанд-(331× guard) цэрг-(50× guard) өвчн-(47× protect) |
-| 137 | 善 | virtuous; good | буянтай |  | 13 | ариу-(365× virtuous) цэвэ-(196× virtuous) бурх-(105× goodness) |
-| 138 | 頑 | stubborn; foolish | зөрүүд |  | 12 | итгэ-(33× firmly) болс-(16× firmly) тэд-(12× firmly) |
-| 139 | 隙 | crevice; fissure | завсар |  | 12 | мөри-(49× opportunity) завш-(49× opportunity) ялал-(41× opportunity) |
-| 140 | 辺 | environs; boundary | орчим |  | 12 | хили-(511× border) зааг-(499× boundary) хил-(326× border) |
-| 141 | 複 | duplicate; double | хуулбар |  | 12 | хос-(200× double) ихэс-(109× double) тусм-(81× multiple) |
-| 142 | 臭 | stinking; ill-smelling | өмхий |  | 12 | хайд-(48× looking) хайж-(46× looking) хайс-(42× looking) |
-| 143 | 絶 | discontinue; sever | тасрах |  | 12 | оос-(92× cut) унтр-(77× off) бууг-(44× off) |
-| 144 | 砂 | sand | элс |  | 12 | тавх-(970× sand) элсэ-(299× sand) туул-(95× sand) |
-| 145 | 省 | government ministry; conserve | анхаарал төвлөрүүлэх |  | 12 | засг-(106× government) яамн-(55× government) томи-(51× government) |
-| 146 | 測 | fathom; plan | гүнзгийрүүлэх |  | 12 | явда-(49× scheme) төлө-(47× plan) довт-(43× plan) |
-| 147 | 涼 | refreshing; nice and cool | сэргээгч |  | 12 | мунд-(110× cool) таат-(109× nice) догд-(86× cool) |
-| 148 | 暮 | evening; twilight | амьжиргаа |  | 12 | орой-(222× evening) өглө-(51× evening) төгс-(31× end) |
-| 149 | 推 | conjecture; infer | дүгнэх |  | 12 | гээч-(50× guess) үзэл-(48× suppose) квад-(43× suppose) |
-| 150 | 専 | specialty; exclusive | мэргэжил |  | 12 | голч-(465× mainly) зама-(39× mainly) оноо-(26× mainly) |
-| 151 | 奥 | heart; interior | гүн |  | 12 | шигд-(262× heart) зүрх-(178× heart) гүнд-(91× heart) |
-| 152 | 占 | fortune-telling; divining | мэргэ төлөг |  | 12 | эзлэ-(426× occupy) байх-(6× occupy) |
-| 153 | 努 | toil; diligent | хөдөлмөрлөх |  | 12 | холд-(24× possible) үүрг-(23× possible) тэнэ-(23× possible) |
-| 154 | 典 | code; ceremony | эмхтгэл |  | 12 | коды-(451× code) код-(451× code) манж-(98× rule) |
-| 155 | 覆 | capsize; cover | хөмрөх |  | 11 | мэлх-(174× cover) бүрх-(77× cover) хавт-(69× cover) |
-| 156 | 裏 | back; amidst | ар тал |  | 11 | томь-(280× reverse) жарг-(58× reverse) ухра-(43× back) |
-| 157 | 祭 | ritual; offer prayers | наадам |  | 11 | эмма-(418× celebrate) улам-(91× ritual) бака-(75× offer) |
-| 158 | 甘 | sweet; coax | чихэрлэг |  | 11 | эелд-(296× sweet) амтт-(267× sweet) цэцэ-(62× content) |
-| 159 | 灰 | ashes; puckery juice | үнс |  | 11 | унда-(686× juice) нэг-(8× juice) |
-| 160 | 滑 | slippery; slide | гулгамтгай |  | 11 | тан-(333× slide) гээг-(198× slide) шалг-(121× exam) |
-| 161 | 標 | signpost; seal | заавар самбар |  | 11 | тамг-(1411× seal) гран-(523× stamp) адам-(481× stamp) |
-| 162 | 属 | belong; genus | харьяалагдах |  | 11 | ёсны-(197× official) алба-(98× official) ёсоо-(87× official) |
-| 163 | 侵 | encroach; invade | халдах |  | 11 | дайр-(336× raid) байс-(8× raid) |
-| 164 | 迎 | welcome; meet | угтах |  | 10 | тавт-(887× welcome) мори-(469× welcome) таат-(67× meet) |
-| 165 | 薄 | dilute; thin | шингэлэх |  | 10 | цай-(706× tea) цайн-(368× tea) сул-(281× weak) |
-| 166 | 蔑 | ignore; despise | жигших |  | 10 | үүни-(6× ignore) бол-(6× neglect) тэгэ-(5× ignore) |
-| 167 | 脈 | vein; pulse | судас |  | 10 | найд-(138× hope) гоо-(50× hope) удах-(40× hope) |
-| 168 | 罪 | guilt; sin | гэм |  | 10 | хилэ-(879× sin) гэмт-(299× crime) хэрг-(260× crime) |
-| 169 | 畳 | tatami mat; counter for tatami mats | татами |  | 10 | нуга-(473× fold) сэгс-(335× fold) унтр-(271× shut) |
-| 170 | 牧 | breed; care for | мал аж ахуй |  | 10 | сохо-(287× feed) шил-(248× feed) тэжэ-(208× feed) |
-| 171 | 潔 | undefiled; pure | ариун |  | 10 | карл-(212× pure) гэгч-(140× clean) цэвэ-(103× pure) |
-| 172 | 浴 | bathe; be favored with | усанд орох |  | 10 | хамт-(5× with) |
-| 173 | 斎 | purification; Buddhist food | ариусал |  | 10 | будд-(899× buddhist) хүнс-(156× food) өрөө-(110× room) |
-| 174 | 懸 | state of suspension; hang | дүүжлэх |  | 10 | түр-(83× hang) хама-(60× depend) төвш-(60× state) |
-| 175 | 懲 | penal; chastise | шийтгэх |  | 10 | сахи-(390× discipline) бат-(292× discipline) зарч-(100× discipline) |
-| 176 | 尋 | inquire; fathom | асуун сурвалжлах |  | 10 | харц-(20× look) харъ-(19× look) харв-(17× look) |
-| 177 | 威 | intimidate; dignity | сүр хүч |  | 10 | гээг-(276× dignity) төр-(142× dignity) нэр-(65× dignity) |
-| 178 | 太 | plump; thick | бүдүүн |  | 10 | зуза-(1068× thick) бүрх-(135× thick) хэвэ-(56× thick) |
-| 179 | 噛 | chew; bite | зажлах |  | 10 | бие-(34× bite) хоол-(25× bite) байх-(5× bite) |
-| 180 | 喫 | consume; eat | эдлэх |  | 10 | утаа-(1889× smoke) ууж-(324× drink) татд-(247× smoke) |
-| 181 | 創 | genesis; wound | бүтээн байгуулах |  | 10 | шарх-(264× hurt) гэмт-(173× injury) өвдө-(147× hurt) |
-| 182 | 侍 | waiter; samurai | самурай |  | 10 | тэсэ-(94× wait) бялу-(81× serve) үйлч-(73× serve) |
-| 183 | 養 | foster; bring up | тэжээх |  | 9 | авчр-(82× bring) энх-(42× bring) доту-(40× bring) |
-| 184 | 趣 | purport; gist | амт шимт |  | 9 | татд-(80× interest) түнш-(72× interest) шхаб-(44× interest) |
-| 185 | 識 | discriminating; know | ялгах чадвартай |  | 9 | бичч-(102× write) бичь-(76× write) бичн-(65× write) |
-| 186 | 補 | supplement; supply | нөхөх |  | 9 | гинж-(185× supply) эрэл-(98× supply) үзэм-(96× supply) |
-| 187 | 裁 | tailor; judge | оёдолчин |  | 9 | шүүг-(520× judge) чарл-(135× decision) цар-(108× pattern) |
-| 188 | 衝 | collide; brunt | мөргөлдөх |  | 9 | нам-(227× opposition) эсэр-(207× opposition) намы-(144× opposition) |
-| 189 | 糸 | thread | утас |  | 9 | хэлх-(474× thread) тоон-(64× thread) чана-(47× thread) |
-| 190 | 添 | annexed; accompany | хавсаргах |  | 9 | хосл-(629× suit) өмсө-(294× suit) шүгэ-(244× marry) |
-| 191 | 沈 | sink; be submerged | живэх |  | 9 | гута-(226× depressed) угаа-(170× sink) унас-(167× depressed) |
-| 192 | 掲 | put up (a notice); put up | нийтлэх |  | 9 | анза-(182× notice) чичи-(73× notice) өдрө-(43× notice) |
-| 193 | 徒 | on foot; junior | шавь |  | 9 | фийт-(240× foot) хөлд-(214× foot) хөлө-(111× foot) |
-| 194 | 尊 | revered; valuable | эрхэм |  | 9 | цэнэ-(186× valuable) үнэ-(129× valuable) хово-(84× valuable) |
-| 195 | 単 | simple; one | нэгж |  | 9 | энги-(90× simple) жири-(51× simple) хаая-(38× simple) |
-| 196 | 剣 | sabre; sword | сэлэм |  | 9 | хутг-(1352× blade) сэрү-(226× clock) атга-(125× hand) |
-| 197 | 麗 | lovely; beautiful | гоолиг |  | 8 | үзэс-(166× beautiful) сайх-(51× lovely) алек-(47× beautiful) |
-| 198 | 継 | inherit; succeed | залгамжлах |  | 8 | хүрн-(187× succeed) амжи-(71× succeed) үргэ-(49× continue) |
-| 199 | 粋 | chic; style | гоёмсог |  | 8 | хэв-(153× style) маяг-(108× style) чана-(54× essence) |
-| 200 | 盤 | tray; shallow bowl | тавиур |  | 8 | нуур-(416× shallow) усна-(366× shallow) ихий-(115× shallow) |
-| | | | | | | **↑ reviewing to here covers 87% of all appearances** |
-| 201 | 皿 | dish; a helping | таваг |  | 8 | цай-(121× helping) туса-(39× helping) тусл-(34× helping) |
-| 202 | 環 | ring; circle | цагираг |  | 8 | жинг-(282× ring) доа-(278× ring) дугу-(238× circle) |
-| 203 | 渉 | ford; go cross | гатлах |  | 8 | зага-(140× cross) кинг-(119× cross) төмө-(78× cross) |
-| 204 | 汁 | soup; juice | шөл |  | 8 | унда-(686× juice) нэг-(8× juice) |
-| 205 | 永 | eternity; long | мөнхжилт |  | 8 | урт-(45× long) урты-(31× long) угср-(27× long) |
-| 206 | 撲 | slap; strike | алгадах |  | 8 | зодо-(162× beat) дарж-(123× hit) мөрг-(86× hit) |
-| 207 | 招 | beckon; invite | дуудах |  | 8 | нээх-(158× invite) ард-(63× engage) бусд-(38× invite) |
-| 208 | 寄 | draw near; stop in | ойртох |  | 8 | цугл-(182× gather) зуръ-(178× draw) ойро-(116× near) |
-| 209 | 妥 | gentle; peace | зохистой |  | 8 | эелд-(635× gentle) энх-(367× peace) амга-(363× peace) |
-| 210 | 垂 | droop; suspend | унжих |  | 8 | түр-(83× hang) хүсэ-(21× hang) хүлэ-(20× hang) |
-| 211 | 吹 | blow; breathe | үлээх |  | 8 | цацр-(544× emit) өнги-(418× emit) амьс-(350× breathe) |
-| 212 | 兼 | concurrently; and | зэрэг |  | 8 | урьд-(55× advance) дэвш-(28× advance) тэмц-(22× advance) |
-| 213 | 麦 | barley; wheat | арвай |  | 7 | тари-(374× wheat) буур-(65× wheat) дэлх-(12× wheat) |
-| 214 | 迫 | urge; force | яаравчлах |  | 7 | уриа-(246× urge) соро-(127× force) грав-(127× force) |
-| 215 | 輩 | comrade; fellow | нөхөр |  | 7 | найд-(73× fellow) эрдэ-(29× fellow) залу-(19× fellow) |
-| 216 | 蹴 | kick | өшиглөх |  | 7 | цохи-(82× kick) дуу-(41× kick) чинь-(19× kick) |
-| 217 | 踏 | step; trample | гишгэх |  | 7 | алхм-(208× step) шат-(97× step) алха-(88× step) |
-| 218 | 豊 | bountiful; excellent | элбэг |  | 7 | баян-(227× rich) хөнг-(115× excellent) чинэ-(106× rich) |
-| 219 | 誠 | sincerity; admonish | чин сэтгэл |  | 7 | анха-(65× warn) мэдэ-(9× warn) байд-(6× warn) |
-| 220 | 観 | outlook; look | үзэл бодол |  | 7 | цент-(127× condition) өгөг-(98× outlook) нөхц-(79× condition) |
-| 221 | 蓄 | amass; raise | нөөцлөх |  | 7 | өсгө-(125× raise) бугу-(105× raise) дэлг-(84× store) |
-| 222 | 網 | netting; network | тор |  | 7 | сүлж-(175× network) сувг-(59× network) теле-(37× network) |
-| 223 | 瞬 | wink; blink | агшин |  | 7 | гээд-(58× blink) учир-(24× blink) болс-(16× blink) |
-| 224 | 甲 | armor; high (voice) | хясаа |  | 7 | дуут-(181× voice) ахла-(92× high) хоол-(55× voice) |
-| 225 | 毒 | poison; virus | хор |  | 7 | виру-(602× virus) эсүү-(128× virus) халд-(89× virus) |
-| 226 | 揺 | swing; shake | найгах |  | 7 | сэгс-(1078× shake) чулу-(337× rock) нуга-(110× shake) |
-| 227 | 崩 | crumble; die | нурах |  | 7 | үхэх-(166× die) үхэж-(164× die) түвш-(70× level) |
-| 228 | 封 | seal; closing | лацдах |  | 7 | тамг-(1411× seal) эзэн-(230× seal) төгс-(79× closing) |
-| 229 | 寸 | measurement; tenth of a shaku | ялимгүй |  | 7 | цөөх-(60× small) ногд-(54× small) бүлт-(49× small) |
-| 230 | 募 | recruit; campaign | элсүүлэх |  | 7 | камп-(311× campaign) нэмр-(285× contributions) гавь-(285× contributions) |
-| 231 | 傾 | lean; incline | хазайх |  | 7 | чиг-(257× trend) дава-(85× trend) ханд-(33× trend) |
-| 232 | 鼓 | drum; beat | бөмбөр |  | 6 | зодо-(162× beat) цохи-(101× beat) хожи-(56× beat) |
-| 233 | 騰 | leaping up; jumping up | инфляц |  | 6 | үсэр-(866× jumping) огцо-(200× rising) орги-(144× rising) |
-| 234 | 闇 | get dark; gloom | бүрэнхий |  | 6 | эмгэ-(248× disorder) нарц-(247× disorder) эмчл-(203× disorder) |
-| 235 | 鋭 | pointed; sharpness | хурц |  | 6 | ирмэ-(492× edge) терр-(242× weapon) зэвс-(217× weapon) |
-| 236 | 醤 | a kind of miso | шар буурцагны амтлагч |  | 6 | тѳрл-(26× kind) мухл-(26× kind) эелд-(15× kind) |
-| 237 | 酢 | vinegar; sour | цуу |  | 6 | хүчл-(684× acid) мөчл-(303× acid) цикл-(164× acid) |
-| 238 | 軌 | rut; wheel | тэрэгний мөр |  | 6 | жоло-(415× wheel) моде-(178× model) загв-(79× model) |
-| 239 | 跳 | hop; leap up | үсрэх |  | 6 | хава-(769× spring) урсг-(245× hop) араб-(110× spring) |
-| 240 | 賦 | levy; ode | татвар |  | 6 | шүлэ-(515× poem) шүлг-(412× poem) яруу-(195× poem) |
-| 241 | 貨 | freight; goods | ачаа тээш |  | 6 | өмчи-(381× property) эксп-(175× goods) бара-(75× goods) |
-| 242 | 詐 | lie; falsehood | залилах |  | 6 | худл-(256× lie) худа-(49× lie) ярьд-(44× lie) |
-| 243 | 董 | correct | хянах |  | 6 | агно-(112× correct) зөв-(81× correct) зарч-(35× correct) |
-| 244 | 菌 | germ; fungus | нян |  | 6 | бакт-(949× bacteria) эмчл-(126× bacteria) үнэр-(95× bacteria) |
-| 245 | 荒 | laid waste; rough | эзгүйрэх |  | 6 | зэрл-(606× wild) дэми-(344× waste) хог-(211× waste) |
-| 246 | 興 | entertain; revive | сэргээх |  | 6 | татд-(80× interest) түнш-(72× interest) тогл-(45× entertain) |
-| 247 | 耗 | decrease | элэгдэх |  | 6 | ихэс-(157× decrease) буур-(106× decrease) нэмэ-(30× decrease) |
-| 248 | 綺 | figured cloth; beautiful | хээтэй торго |  | 6 | үзэс-(166× beautiful) алек-(47× beautiful) мэдс-(40× figured) |
-| 249 | 維 | fiber; tie | ширхэг |  | 6 | бакт-(323× fiber) ного-(119× fiber) |
-| 250 | 紛 | distract; be mistaken for | сарних |  | 6 | минь-(54× mistaken) байн-(5× mistaken) |
-| 251 | 稽 | think; consider | дасгал сургуулилт |  | 6 | урсг-(34× consider) үзээ-(32× consider) төвл-(25× consider) |
-| 252 | 獣 | animal; beast | араатан |  | 6 | амьт-(137× animal) мал-(94× animal) уура-(85× animal) |
-| 253 | 漫 | cartoon; involuntarily | хошин зураг |  | 6 | харг-(116× spite) жилд-(58× spite) орну-(25× spite) |
-| 254 | 漏 | leak; escape | гоожих |  | 6 | манд-(222× escape) зугт-(152× escape) агаа-(93× escape) |
-| 255 | 漂 | drift; float (on liquid) | хөвөх |  | 6 | шинг-(299× liquid) олно-(88× liquid) түлш-(56× liquid) |
-| 256 | 滴 | drip; drop | дуслах |  | 6 | дуса-(473× drop) мууд-(93× drop) болч-(40× drop) |
-| 257 | 洪 | deluge; flood | үер |  | 6 | ууда-(267× vast) орчл-(225× vast) асар-(68× vast) |
-| 258 | 欺 | deceit; cheat | хуурах |  | 6 | таны-(45× cheat) мага-(39× cheat) илүү-(15× cheat) |
-| 259 | 棋 | chess piece; Japanese chess | шатрын хүү |  | 6 | япон-(298× japanese) аним-(94× japanese) хали-(78× japanese) |
-| 260 | 桟 | scaffold; cleat | шат мод |  | 6 | унад-(245× frame) секу-(73× frame) дугу-(63× frame) |
-| 261 | 栓 | plug; bolt | бөглөө |  | 6 | болх-(494× plug) залг-(140× plug) аваа-(53× plug) |
-| 262 | 札 | tag; paper money | хөзөр |  | 6 | цаас-(193× paper) кофе-(172× counter) алчу-(150× paper) |
-| 263 | 摘 | pinch; pick | чимхэх |  | 6 | сонг-(27× pick) дура-(25× pick) орчн-(22× pick) |
-| 264 | 搬 | conveyor; carry | зөөгч |  | 6 | хэлх-(160× transport) морь-(124× transport) явцы-(104× transport) |
-| 265 | 扱 | handle; entertain | харьцах |  | 6 | зурв-(542× strip) элек-(158× strip) тогл-(45× entertain) |
-| 266 | 怠 | neglect; laziness | үл тоомсорлох |  | 6 | бол-(6× neglect) |
-| 267 | 徐 | gradually; slowly | аажмаар |  | 6 | дута-(79× slowly) заса-(32× slowly) удаа-(26× slowly) |
-| 268 | 干 | dry; parch | хатаах |  | 6 | баяж-(280× dry) соёо-(273× dry) төмр-(225× dry) |
-| 269 | 妙 | exquisite; strange | гайхамшигтай |  | 6 | хачи-(273× strange) этгэ-(139× strange) уран-(92× mystery) |
-| 270 | 堅 | strict; hard | бат бөх |  | 6 | хату-(191× strict) шарг-(79× hard) шинг-(58× solid) |
-| 271 | 埋 | bury; be filled up | булах |  | 6 | адал-(147× filled) дүүр-(114× filled) төхө-(77× embedded) |
-| 272 | 坂 | slope; incline | энгэр |  | 6 | налу-(808× slope) уулы-(227× hill) шулу-(215× slope) |
-| 273 | 咳 | cough; clear throat | ханиад |  | 6 | хоол-(60× throat) хэль-(32× clear) цэвэ-(24× clear) |
-| 274 | 匂 | fragrant; stink | анхилам |  | 6 | устө-(417× glow) энэ-(6× glow) |
-| 275 | 凄 | uncanny; weird | аймаар |  | 6 | зана-(828× threatening) хачи-(253× weird) аймш-(194× horrible) |
-| 276 | 倹 | frugal; economy | хэмнэлттэй |  | 6 | эдий-(141× economy) унал-(90× economy) заса-(70× economy) |
-| 277 | 侮 | scorn; despise | басамжлах |  | 6 | чийд-(100× light) анив-(74× light) гэрл-(72× light) |
-| 278 | 躍 | leap; dance | үсрэх |  | 5 | бүжг-(351× dance) бүжи-(300× dance) үдэш-(182× dance) |
-| 279 | 貼 | stick; paste | наах |  | 5 | залг-(55× stick) хуул-(49× paste) зарч-(36× apply) |
-| 280 | 訂 | revise; correct | засварлах |  | 5 | агно-(112× correct) зөв-(81× correct) эсэх-(57× decide) |
-| 281 | 臣 | retainer; subject | түшмэд |  | 5 | шууг-(151× subject) цөм-(98× subject) сэдэ-(81× subject) |
-| 282 | 繕 | darning; repair | оёх |  | 5 | засв-(453× repair) эвдэ-(235× repair) сэрг-(49× repair) |
-| 283 | 砕 | smash; break | бутлах |  | 5 | эвдэ-(108× break) ханы-(98× break) завс-(77× break) |
-| 284 | 濃 | concentrated; thick | өтгөн |  | 5 | зуза-(1068× thick) төвл-(230× concentrated) бүрх-(135× thick) |
-| 285 | 渇 | thirst; dry up | цангах |  | 5 | баяж-(280× dry) соёо-(273× dry) төмр-(225× dry) |
-| 286 | 枝 | bough; branch | мөчир |  | 5 | салб-(115× branch) кали-(101× branch) камп-(87× branch) |
-| 287 | 擦 | grate; rub | үрэх |  | 5 | нэгн-(99× scratch) эхнэ-(89× scratch) бүхн-(36× scratch) |
-| 288 | 弾 | bullet; twang | сум |  | 5 | зоос-(353× flip) дура-(129× flip) шидэ-(126× flip) |
-| 289 | 宇 | eaves; roof | огторгуй |  | 5 | дээв-(1578× roof) дива-(854× heaven) хавт-(236× roof) |
-| 290 | 似 | becoming; resemble | төстэй |  | 5 | вьет-(100× becoming) нура-(76× becoming) түнш-(72× becoming) |
-| 291 | 乱 | riot; war | эмх замбараагүй |  | 5 | эмгэ-(248× disorder) нарц-(247× disorder) эмчл-(203× disorder) |
-| 292 | 丘 | hill; knoll | толгод |  | 5 | уулы-(227× hill) орой-(63× hill) байв-(13× hill) |
-| 293 | 鋳 | casting; mint | цутгах |  | 4 | хүни-(21× casting) бид-(5× casting) |
-| 294 | 衰 | decline; wane | доройтох |  | 4 | огцо-(296× decline) амын-(98× decline) өсөл-(85× decline) |
-| 295 | 萎 | wither; droop | гандах |  | 4 | дуту-(433× lame) тахи-(321× lame) бэрх-(151× lame) |
-| 296 | 索 | cord; rope | хайлт |  | 4 | хайж-(167× searching) олох-(25× searching) үргэ-(22× searching) |
-| 297 | 房 | tassel; tuft | занга |  | 4 | лабо-(47× bunch) жоох-(46× bunch) бичл-(16× bunch) |
-| 298 | 戯 | frolic; play | наадах |  | 4 | тогл-(54× play) гүйж-(39× play) соро-(23× play) |
-| 299 | 吸 | suck; imbibe | сорох |  | 4 | бүтэ-(14× suck) |
-| 300 | 鎮 | tranquilize; ancient peace-preservation centers | номхотгох |  | 3 | эртн-(393× ancient) хатг-(274× centers) мэө-(222× ancient) |
-| | | | | | | **↑ reviewing to here covers 97% of all appearances** |
-| 301 | 醒 | awake; be disillusioned | сэрэлт |  | 3 | сэрү-(752× awake) унта-(110× awake) бодо-(11× awake) |
-| 302 | 迅 | swift; fast | шуурхай |  | 3 | миль-(84× fast) хурд-(79× fast) урса-(59× fast) |
-| 303 | 責 | blame; condemn | зэмлэх |  | 3 | буру-(112× blame) өглө-(81× blame) хэн-(16× blame) |
-| 304 | 膜 | membrane | бүрхэвч |  | 3 | мемб-(880× membrane) шаха-(160× membrane) устө-(128× membrane) |
-| 305 | 翻 | flip; turn over | орчуулах |  | 3 | зоос-(353× flip) дура-(129× flip) шидэ-(126× flip) |
-| 306 | 繰 | winding; reel | ороох |  | 3 | эргү-(341× spin) хууд-(183× pages) зуза-(180× pages) |
-| 307 | 締 | tighten; tie | чангалах |  | 3 | файл-(560× lock) форм-(515× lock) унтр-(271× shut) |
-| 308 | 獲 | seize; get | олз |  | 3 | бодд-(34× earn) олох-(28× find) гаж-(23× find) |
-| 309 | 洩 | leak; escape | нэвчих |  | 3 | манд-(222× escape) зугт-(152× escape) агаа-(93× escape) |
-| 310 | 依 | reliant; depend on | түшиглэх |  | 3 | агно-(133× therefore) ерөө-(78× therefore) хама-(60× depend) |
-| 311 | 靭 | soft; pliable | уян |  | 2 | зөөл-(404× soft) амар-(60× soft) |
-| 312 | 豆 | beans; pea | буурцаг |  | 2 | чихэ-(366× beans) гэж-(5× beans) |
-| 313 | 譲 | defer; turnover | хойшлуулах |  | 2 | илэр-(91× convey) шилж-(62× transfer) дамж-(46× transfer) |
-| 314 | 蔽 | cover; shade | халхлах |  | 2 | мэлх-(174× cover) бүрх-(77× cover) хавт-(69× cover) |
-| 315 | 胆 | gall bladder; courage | цөс |  | 2 | шээс-(1099× bladder) давс-(806× bladder) булч-(479× bladder) |
-| 316 | 綻 | be rent; ripped | задрах |  | 2 | түрэ-(702× rent) гүйж-(116× run) гүйх-(82× run) |
-| 317 | 粛 | solemn; quietly | төвшин |  | 2 | зөөл-(505× softly) чимэ-(336× quietly) аяла-(219× softly) |
-| 318 | 秀 | excel; excellence | гойд |  | 2 | гоо-(602× beauty) үзэс-(179× beauty) шилд-(133× excellence) |
-| 319 | 矯 | rectify; straighten | засч залруулах |  | 2 | олдс-(163× reform) агно-(112× correct) намы-(90× reform) |
-| 320 | 疾 | rapidly | түргэн |  | 2 | урсг-(76× rapidly) санс-(75× rapidly) өсөл-(68× rapidly) |
-| 321 | 牽 | pull; tug | чирэх |  | 2 | атга-(125× hand) занг-(102× pull) буул-(97× pull) |
-| 322 | 燥 | parch; dry up | хатах |  | 2 | баяж-(280× dry) соёо-(273× dry) төмр-(225× dry) |
-| 323 | 潤 | wet; be watered | чийгших |  | 2 | талу-(232× benefits) даву-(126× benefits) орло-(52× profit) |
-| 324 | 滅 | destroy; ruin | мөхөх |  | 2 | сүсэ-(228× destroy) бишр-(156× destroy) устг-(118× destroy) |
-| 325 | 没 | drown; sink | үгүй болох |  | 2 | нууг-(369× hide) угаа-(170× sink) араа-(136× hide) |
-| 326 | 毀 | break; destroy | эвдрэх |  | 2 | сүсэ-(228× destroy) бишр-(156× destroy) устг-(118× destroy) |
-| 327 | 梁 | weir; fish trap | дам нуруу |  | 2 | зага-(459× fish) занг-(256× trap) тахи-(94× fish) |
-| 328 | 桁 | beam; girder | жонш |  | 2 | нягт-(343× accounting) нэгж-(201× unit) хөрв-(102× unit) |
-| 329 | 枢 | hinge; pivot | гол тэнхлэг |  | 2 | хаал-(281× door) төви-(132× center) төвд-(126× center) |
-| 330 | 曖 | dark; not clear | бүрхэг |  | 2 | тив-(132× dark) хөх-(109× dark) өвли-(88× dark) |
-| 331 | 昧 | dark; foolish | бүрхэг |  | 2 | тив-(132× dark) хөх-(109× dark) өвли-(88× dark) |
-| 332 | 旦 | daybreak; dawn | шөнийн төгсгөл |  | 2 | өглө-(280× morning) үүрэ-(119× dawn) сэрэ-(81× morning) |
-| 333 | 敷 | spread; pave | дэвсэх |  | 2 | суун-(145× sit) суух-(116× sit) виру-(97× spread) |
-| 334 | 攻 | aggression; attack | түрэмгийлэл |  | 2 | поль-(1632× polish) шигд-(654× attack) дайр-(139× attack) |
-| 335 | 撤 | remove; withdraw | татан буулгах |  | 2 | арил-(81× remove) хийс-(17× remove) энэх-(15× remove) |
-| 336 | 摩 | chafe; rub | үрэх |  | 2 | поль-(1632× polish) зохи-(19× polish) |
-| 337 | 挫 | crush; break | бэртэх |  | 2 | эвдэ-(108× break) ханы-(98× break) завс-(77× break) |
-| 338 | 慌 | disconcerted; be confused | сандрах |  | 2 | хожи-(96× lose) дүгн-(82× one's) ялаг-(66× lose) |
-| 339 | 愕 | surprised; frightened | цочих |  | 2 | айж-(563× frightened) гарв-(307× surprised) яваг-(56× surprised) |
-| 340 | 怪 | suspicious; mystery | сэжигтэй |  | 2 | уран-(92× mystery) сэтг-(17× mystery) бодо-(16× mystery) |
-| 341 | 廉 | bargain; reason | хямдхан |  | 2 | цэнэ-(175× charge) прот-(116× charge) тээв-(67× charge) |
-| 342 | 幼 | infancy; childhood | нялх |  | 2 | алис-(62× childhood) насн-(61× childhood) нас-(57× childhood) |
-| 343 | 尺 | shaku; Japanese foot | шаку |  | 2 | япон-(298× japanese) фийт-(240× foot) хөлд-(214× foot) |
-| 344 | 契 | pledge; promise | гэрээ |  | 2 | амла-(679× promise) сонс-(15× promise) гэсэ-(4× promise) |
-| 345 | 墓 | grave; tomb | бунхан |  | 2 | бол-(6× grave) |
-| 346 | 唱 | chant; recite | дуулах |  | 2 | нуру-(44× upon) үүн-(43× upon) дууд-(42× call) |
-| 347 | 叶 | grant; answer | биелэх |  | 2 | гран-(1038× grant) адам-(424× grant) олго-(46× grant) |
-| 348 | 副 | vice-; assistant | орлогч |  | 2 | доод-(131× assistant) проф-(109× assistant) дэд-(107× assistant) |
-| 349 | 刀 | sword; saber | илд |  | 2 | хутг-(1690× knife) цус-(260× knife) гар-(66× knife) |
-| 350 | 伏 | prostrated; bend down | бөхийх |  | 2 | занг-(324× bow) мунд-(232× bow) мэлх-(174× cover) |
-| 351 | 介 | jammed in; shellfish | зуучлах |  | 2 | хавт-(151× concern) диза-(145× concern) хэрг-(126× concern) |
-| 352 | 髄 | marrow; pith | чөмөг |  | 1 | чана-(54× essence) бурх-(37× essence) түвш-(31× essence) |
-| 353 | 骸 | bone; body | үлдэгдэл |  | 1 | биеи-(102× body) биед-(71× body) махб-(53× body) |
-| 354 | 駐 | stop-over; reside in | зогсох |  | 1 | тэмц-(77× resident) авса-(46× resident) хүүх-(25× resident) |
-| 355 | 頻 | repeatedly; recur | байн байн |  | 1 | дэмж-(43× repeatedly) амжи-(34× repeatedly) удаа-(26× repeatedly) |
-| 356 | 露 | dew; tears | шүүдэр |  | 1 | нули-(1270× tears) оху-(328× russia) хөлс-(307× tears) |
-| 357 | 陵 | mausoleum; imperial tomb | бунхан |  | 1 | эзэн-(287× imperial) ван-(245× imperial) уулы-(227× hill) |
-| 358 | 鎌 | sickle; scythe | хадуур |  | 1 | заль-(386× trick) зург-(17× trick) таны-(10× trick) |
-| 359 | 軒 | flats; counter for houses | хөмсөг |  | 1 | байш-(199× houses) кофе-(172× counter) гэрт-(77× houses) |
-| 360 | 謨 | plan; deliberate | зураглал |  | 1 | төлө-(47× plan) довт-(43× plan) маги-(32× plan) |
-| 361 | 薩 | salvation; Buddha | бодьсадва |  | 1 | будд-(881× buddha) гэгэ-(220× buddha) сори-(109× buddha) |
-| 362 | 舐 | lick; lap up | долоох |  | 1 | шата-(275× burn) амта-(227× taste) айра-(187× taste) |
-| 363 | 膝 | knee; lap | өвдөг |  | 1 | тойр-(74× lap) дээр-(10× lap) |
-| 364 | 腓 | calf (of leg) | тахим |  | 1 | хрис-(723× calf) шашн-(255× calf) хөл-(167× leg) |
-| 365 | 脊 | stature; height | нурууны яс |  | 1 | өндр-(221× height) функ-(88× height) харг-(55× height) |
-| 366 | 翼 | wing; plane | жигүүр |  | 1 | сала-(208× wing) онго-(192× plane) бууг-(168× plane) |
-| 367 | 綱 | hawser; class (genus) | зузаан татлага |  | 1 | манс-(49× class) гаж-(44× class) анги-(44× class) |
-| 368 | 紋 | family crest; figures | сүлд хээ |  | 1 | гарв-(170× figures) тѳрл-(164× figures) бүлд-(122× family) |
-| 369 | 笛 | flute; clarinet | цуур |  | 1 | шүгэ-(1368× whistle) хоол-(88× pipe) ашиг-(17× pipe) |
-| 370 | 禿 | become bald; bare | халзан |  | 1 | дэми-(344× waste) доту-(298× wear) өмсө-(270× wear) |
-| 371 | 看 | watch over; see | асрах |  | 1 | үзэц-(78× watch) шидт-(76× watch) секс-(72× watch) |
-| 372 | 癧 | swollen neck glands | булчирхайн хавдар |  | 1 | хүзү-(1196× neck) минь-(40× neck) хоол-(18× neck) |
-| 373 | 癌 | cancer; cancerous evil | мэлхий |  | 1 | хавд-(535× cancer) хорт-(426× cancer) хоро-(115× evil) |
-| 374 | 瓦 | tile; gram | ваар |  | 1 | грам-(969× gram) милл-(227× gram) |
-| 375 | 玉 | jewel; ball | эрдэнэ |  | 1 | бөмб-(208× ball) дагу-(53× ball) цааш-(32× ball) |
-| 376 | 牡 | male | эр амьтан |  | 1 | эрэг-(155× male) шагн-(32× male) эмэг-(29× male) |
-| 377 | 沙 | sand | элс |  | 1 | тавх-(970× sand) элсэ-(299× sand) туул-(95× sand) |
-| 378 | 汰 | washing; sieving | шигших |  | 1 | угаа-(424× washing) гара-(16× washing) зэрэ-(15× washing) |
-| 379 | 殿 | Mr.; hall | эрхэм дээдэс |  | 1 | конц-(229× hall) танх-(226× hall) ордо-(154× palace) |
-| 380 | 斑 | spot; blemish | толбо |  | 1 | гэв-(21× spot) явж-(18× spot) энэх-(11× spot) |
-| 381 | 挽 | saw; turn (lathe) | нунтаглах |  | 1 | ээлж-(100× turn) унтр-(63× turn) харс-(58× saw) |
-| 382 | 挨 | approach; draw near | дөхөх |  | 1 | зуръ-(178× draw) ойро-(116× near) дайч-(110× push) |
-| 383 | 憩 | recess; rest | завсарлага |  | 1 | бүлт-(63× rest) үлдс-(61× rest) сүсэ-(41× rest) |
-| 384 | 恩 | grace; kindness | алба |  | 1 | энэр-(139× kindness) танх-(126× favor) бурх-(105× goodness) |
-| 385 | 恒 | constancy; always | тогтмол |  | 1 | данд-(57× always) үргэ-(37× always) асси-(28× always) |
-| 386 | 弦 | bowstring; chord | хөвч |  | 1 | гипт-(720× hypotenuse) гипо-(539× hypotenuse) нэмс-(122× hypotenuse) |
-| 387 | 廊 | corridor; hall | коридор |  | 1 | конц-(229× hall) танх-(226× hall) заал-(148× hall) |
-| 388 | 巫 | sorcerer; medium | бөө |  | 1 | дунд-(31× medium) гурв-(28× medium) өндө-(19× medium) |
-| 389 | 展 | unfold; expand | дэлгэх |  | 1 | үгий-(40× expand) санг-(40× expand) нэмэ-(21× expand) |
-| 390 | 寂 | loneliness; quietly | эзгүй |  | 1 | чимэ-(336× quietly) эцэг-(74× quietly) нада-(15× quietly) |
-| 391 | 孫 | grandchild; descendants | ач зээ |  | 1 | удам-(926× descendants) овги-(780× descendants) хаан-(44× descendants) |
-| 392 | 嫁 | marry into; bride | бэр |  | 1 | шүгэ-(244× marry) гэрл-(148× marry) хаан-(14× marry) |
-| 393 | 奮 | stirred up; be invigorated | хөөрөх |  | 1 | цэцэ-(213× flourish) төрө-(56× flourish) дунд-(26× flourish) |
-| 394 | 堪 | withstand; endure | тэвчих |  | 1 | дэмж-(95× support) коды-(51× support) намы-(30× support) |
-| 395 | 堤 | dike; bank | дэл |  | 1 | банк-(257× bank) мост-(107× bank) атм-(91× bank) |
-| 396 | 執 | tenacious; take hold | зүтгэх |  | 1 | шигд-(262× heart) мөсө-(219× grasp) зүрх-(178× heart) |
-| 397 | 嘴 | beak; bill | хошуу |  | 1 | билл-(599× bill) төлб-(67× bill) өмсө-(41× bill) |
-| 398 | 召 | seduce; call | татах |  | 1 | доту-(298× wear) өмсө-(270× wear) илгэ-(167× send) |
-| 399 | 卑 | lowly; base | дорой |  | 1 | коор-(176× base) урты-(68× base) суур-(51× base) |
-| 400 | 剥 | come off; peel | хальслах |  | 1 | унтр-(77× off) бууг-(44× off) атла-(24× off) |
-| 401 | 乞 | beg; invite | гуйлга |  | 1 | нээх-(158× invite) хүсь-(56× ask) бусд-(38× invite) |
+| # | 漢字 | 音 | 訓 | 例 | 現在の訳 | 新しい訳 | 使用 | english |
+|---|---|---|---|---|---|---|---|---|
+| 1 | 手 | シュ、ズ | て、て-、-て | 切手（きって） | савар |  | 173 | hand |
+| 2 | 合 | ゴウ、ガッ、カッ | あ.う、-あ.う、あ.い | 都合（つごう） | нийлэх |  | 113 | fit; suit |
+| 3 | 達 | タツ、ダ | -たち | 上達（じょうたつ） | гүйцэлдэх |  | 104 | accomplished; reach |
+| 4 | 主 | シュ、ス、シュウ | ぬし、おも、あるじ | 主婦（しゅふ） | эзэн |  | 99 | lord; chief |
+| 5 | 料 | リョウ | — | 食料（しょくりょう） | хураамж |  | 98 | fee; materials |
+| 6 | 結 | ケツ、ケチ | むす.ぶ、ゆ.う、ゆ.わえる | 結婚（けっこん (する)） | холбох |  | 91 | tie; bind |
+| 7 | 切 | セツ、サイ | き.る、-き.る、き.り | 切る（きる） | огтлох |  | 88 | cut; cutoff |
+| 8 | 発 | ハツ、ホツ | た.つ、あば.く、おこ.る | 発音（はつおん） | хөдлөх цаг |  | 79 | departure; discharge |
+| 9 | 場 | ジョウ、チョウ | ば | 場所（ばしょ） | талбай |  | 79 | location; place |
+| 10 | 交 | コウ | まじ.わる、まじ.える、ま.じる | 交番（こうばん） | холилдох |  | 78 | mingle; mixing |
+| 11 | 経 | ケイ、キョウ、キン | へ.る、た.つ、たていと | 神経（しんけい） | судар |  | 77 | sutra; longitude |
+| 12 | 付 | フ | つ.ける、-つ.ける、-づ.ける | 受付（うけつけ） | наалдах |  | 76 | adhere; attach |
+| 13 | 面 | メン、ベン | おも、おもて、つら | 面積（めんせき） | сэнжтэй аяга |  | 75 | mask; face |
+| 14 | 身 | シン | み | 身体（しんたい） | бие |  | 70 | somebody; person |
+| 15 | 図 | ズ、ト | え、はか.る | 図形（ずけい） | схем |  | 69 | map; drawing |
+| 16 | 乗 | ジョウ、ショウ | の.る、-の.り、の.せる | 乗客（じょうきゃく） | унаанд суух |  | 64 | ride; power |
+| 17 | 直 | チョク、ジキ、ジカ | ただ.ちに、なお.す、-なお.す | 直に（じかに） | удахгүй |  | 59 | straightaway; honesty |
+| 18 | 点 | テン | つ.ける、つ.く、た.てる | 焦点（しょうてん） | оноо |  | 59 | spot; point |
+| 19 | 過 | カ | す.ぎる、す.ごす、あやま.ち | 過去（かこ） | хэтрүүлэх |  | 58 | overdo; exceed |
+| 20 | 文 | ブン、モン | ふみ、あや | 作文（さくぶん） | захидал |  | 58 | sentence; literature |
+| 21 | 験 | ケン、ゲン | あかし、しるし、ため.す | 試験（しけん） | баталгаажуулалт |  | 51 | verification; effect |
+| 22 | 然 | ゼン、ネン | しか、しか.り、しか.し | 自然（しぜん） | тийм |  | 50 | sort of thing; so |
+| 23 | 命 | メイ、ミョウ | いのち | 寿命（じゅみょう） | амь |  | 48 | fate; command |
+| 24 | 進 | シン | すす.む、すす.める | 進歩（しんぽ） | ахих |  | 47 | advance; proceed |
+| 25 | 習 | シュウ、ジュ | なら.う、なら.い | 予習（よしゅう） | дадлагажих |  | 46 | learn |
+| | | | | | | | | **↑ 33% of all appearances covered to here** |
+| 26 | 帰 | キ | かえ.る、かえ.す、おく.る | 帰る（かえる） | буцах |  | 45 | homecoming; arrive at |
+| 27 | 断 | ダン | た.つ、ことわ.る、さだ.める | 診断（しんだん） | таслах |  | 43 | severance; decline |
+| 28 | 曜 | ヨウ | — | 火曜（かよう） | гараг |  | 41 | weekday |
+| 29 | 参 | サン、シン | まい.る、まい-、まじわる | 参加（さんか） | оролцох |  | 41 | nonplussed; three (in documents) |
+| 30 | 頼 | ライ | たの.む、たの.もしい、たよ.る | 信頼（しんらい） | гуйх |  | 39 | trust; request |
+| 31 | 野 | ヤ、ショ | の、の- | 野菜（やさい） | хээр |  | 39 | plains; field |
+| 32 | 降 | コウ、ゴ | お.りる、お.ろす、ふ.る | 降水（こうすい） | буух |  | 37 | descend; precipitate |
+| 33 | 構 | コウ | かま.える、かま.う | 結構（けっこう） | байрлал |  | 37 | posture; stance |
+| 34 | 望 | ボウ、モウ | のぞ.む、もち | 希望（きぼう） | тэмүүлэл |  | 35 | ambition; full moon |
+| 35 | 士 | シ | さむらい | 学士号（がくしごう） | эрхэм |  | 35 | gentleman; scholar |
+| 36 | 腹 | フク | はら | お腹（おなか） | хэвлий |  | 34 | abdomen; belly |
+| 37 | 確 | カク、コウ | たし.か、たし.かめる | 確か（たしか） | баттай |  | 34 | assurance; firm |
+| 38 | 態 | タイ | わざ.と | 状態（じょうたい） | төлөв |  | 34 | attitude; condition |
+| 39 | 器 | キ | うつわ | 食器（しょっき） | сав |  | 34 | utensil; vessel |
+| 40 | 便 | ベン、ビン | たよ.り | 便箋（びんせん） | тохь |  | 34 | convenience; facility |
+| 41 | 破 | ハ | やぶ.る、やぶ.れる、わ.れる | 破産（はさん） | урах |  | 33 | rend; rip |
+| 42 | 嫌 | ケン、ゲン | きら.う、きら.い、いや | 嫌い（きらい） | таагүй |  | 33 | dislike; detest |
+| 43 | 運 | ウン | はこ.ぶ | 運動（うんどう） | зөөх |  | 32 | carry; luck |
+| 44 | 説 | セツ、ゼイ | と.く | 小説（しょうせつ） | цуу яриа |  | 32 | opinion; theory |
+| 45 | 記 | キ | しる.す | 記す（しるす） | бичигч |  | 31 | scribe; account |
+| 46 | 離 | リ | はな.れる、はな.す | 離す（はなす） | салах |  | 30 | detach; separation |
+| 47 | 御 | ギョ、ゴ | おん-、お-、み- | 御飯（ごはん） | хүндэтгэл |  | 30 | honorable; manipulate |
+| 48 | 向 | コウ | む.く、む.い、-む.き | 向上（こうじょう） | зүг |  | 29 | yonder; facing |
+| 49 | 収 | シュウ | おさ.める、おさ.まる | 収入（しゅうにゅう） | хураах |  | 29 | income; obtain |
+| 50 | 脱 | ダツ | ぬ.ぐ、ぬ.げる | 脱線（だっせん） | мултрах |  | 28 | undress; removing |
+| | | | | | | | | **↑ 48% of all appearances covered to here** |
+| 51 | 祖 | ソ | — | 祖母（そぼ） | өвөг дээдэс |  | 28 | ancestor; pioneer |
+| 52 | 隣 | リン | とな.る、となり | 隣人（りんじん） | хажуу |  | 27 | neighboring |
+| 53 | 従 | ジュウ、ショウ、ジュ | したが.う、したが.える、より | 従う（したがう） | дагах |  | 27 | accompany; obey |
+| 54 | 争 | ソウ | あらそ.う、いか.でか | 戦争（せんそう） | тэмцэх |  | 27 | contend; dispute |
+| 55 | 認 | ニン | みと.める、したた.める | 承認（しょうにん） | хүлээн зөвшөөрөх |  | 26 | acknowledge; witness |
+| 56 | 礼 | レイ、ライ | — | 失礼（しつれい） | ёсолол |  | 26 | salute; bow |
+| 57 | 除 | ジョ、ジ | のぞ.く、-よ.け | 掃除（そうじ (する)） | хасах |  | 25 | exclude; division (x/3) |
+| 58 | 常 | ジョウ | つね、とこ- | 常識（じょうしき） | байнгын |  | 25 | usual; ordinary |
+| 59 | 兄 | ケイ、キョウ | あに | 兄弟（きょうだい） | ах (даруу) |  | 25 | elder brother; big brother |
+| 60 | 供 | キョウ、ク、クウ | そな.える、とも、-ども | 子供（こども） | өргөх |  | 25 | submit; offer |
+| 61 | 優 | ユウ、ウ | やさ.しい、すぐ.れる、まさ.る | 女優（じょゆう） | шилдэг |  | 24 | tenderness; excel |
+| 62 | 賛 | サン | たす.ける、たた.える | 賛成（さんせい） | дэмжих |  | 23 | approve; praise |
+| 63 | 片 | ヘン | かた-、かた | 片道（かたみち） | хэлтэрхий |  | 23 | one-sided; leaf |
+| 64 | 囲 | イ | かこ.む、かこ.う、かこ.い | 周囲（しゅうい） | хүрээлэх |  | 23 | surround; besiege |
+| 65 | 困 | コン | こま.る | 困る（こまる） | гачигдах |  | 23 | quandary; become distressed |
+| 66 | 緒 | ショ、チョ | お、いとぐち | 一緒（いっしょ） | оосор |  | 22 | thong; beginning |
+| 67 | 留 | リュウ、ル | と.める、と.まる、とど.める | 留守（るす） | саатуулах |  | 22 | detain; fasten |
+| 68 | 激 | ゲキ | はげ.しい | 刺激（しげき） | ширүүн |  | 22 | violent; get excited |
+| 69 | 刻 | コク | きざ.む、きざ.み | 時刻（じこく） | сийлэх |  | 22 | engrave; cut fine |
+| 70 | 筆 | ヒツ | ふで | 鉛筆（えんぴつ） | бийр |  | 21 | writing brush; writing |
+| 71 | 段 | ダン、タン | — | 階段（かいだん） | шат |  | 21 | grade; steps |
+| 72 | 昇 | ショウ | のぼ.る | 昇温する（しょうおんする） | дээшлэх |  | 21 | rise up |
+| 73 | 夕 | セキ | ゆう | 夕方（ゆうがた） | үдэш |  | 21 | evening |
+| 74 | 固 | コ | かた.める、かた.まる、かた.まり | 固有（こゆう） | хатуурах |  | 21 | harden; set |
+| 75 | 散 | サン | ち.る、ち.らす、-ち.らす | 散歩（さんぽ (する)） | тарах |  | 20 | scatter; disperse |
+| 76 | 塩 | エン | しお | 食塩（しょくえん） | натрийн хлорид |  | 20 | salt |
+| 77 | 凡 | ボン、ハン | およ.そ、おうよ.そ、すべ.て | 非凡な（ひぼんな） | дундаж |  | 20 | commonplace; ordinary |
+| 78 | 蒸 | ジョウ、セイ | む.す、む.れる、む.らす | 蒸気（じょうき） | уурших |  | 19 | steam; heat |
+| 79 | 田 | デン | た | 田舎（いなか） | тариалан |  | 19 | rice field; rice paddy |
+| 80 | 映 | エイ | うつ.る、うつ.す、は.える | 映画（えいが） | тусах |  | 19 | reflect; reflection |
+| 81 | 整 | セイ | ととの.える、ととの.う | 整数（せいすう） | цэгцлэх |  | 19 | organize; arranging |
+| 82 | 官 | カン | — | 警官（けいかん） | түшмэл |  | 19 | bureaucrat; the government |
+| 83 | 万 | マン、バン | よろず | 万年筆（まんねんひつ） | түм |  | 19 | ten thousand; 10,000 |
+| 84 | 述 | ジュツ | の.べる | 述語（じゅつご） | өгүүлэх |  | 18 | mention; state |
+| 85 | 縮 | シュク | ちぢ.む、ちぢ.まる、ちぢ.める | 縮小（しゅくしょう） | агшаах |  | 18 | shrink; contract |
+| 86 | 節 | セツ、セチ | ふし、-ぶし、のっと | 季節（きせつ） | зангилаа |  | 18 | node; season |
+| 87 | 爆 | バク | は.ぜる | 原爆（げんばく） | тэсрэх |  | 18 | bomb; burst open |
+| 88 | 探 | タン | さぐ.る、さが.す | 探す（さがす） | эрэх |  | 18 | grope; search |
+| 89 | 姿 | シ | すがた | 姿勢（しせい） | дүр төрх |  | 18 | figure; form |
+| 90 | 勉 | ベン | つと.める | 勉強（べんきょう） | хичээх |  | 18 | exertion; endeavour |
+| 91 | 般 | ハン | — | 一般（いっぱん） | зөөгч |  | 17 | carrier; carry |
+| 92 | 粉 | フン | デシメートル、こ、こな | 粉々（こなごな） | гурил |  | 17 | flour; powder |
+| 93 | 沢 | タク | さわ、うるお.い、うるお.す | 沢山（たくさん） | хөндий |  | 17 | swamp; marsh |
+| 94 | 包 | ホウ | つつ.む、くる.む | 包む（つつむ） | боох |  | 17 | wrap; pack up |
+| 95 | 飼 | シ | か.う | 飼う（かう） | гэршүүлэх |  | 16 | domesticate; raise |
+| 96 | 逆 | ギャク、ゲキ | さか、さか.さ、さか.らう | 逆立ち（さかだち） | урвуу |  | 16 | inverted; reverse |
+| 97 | 追 | ツイ | お.う | 追う（おう） | хөөх |  | 16 | chase; drive away |
+| 98 | 焼 | ショウ | や.く、や.き、や.き- | 焼く（やく） | шарах |  | 16 | bake; burning |
+| 99 | 操 | ソウ、サン | みさお、あやつ.る | 体操（たいそう） | жолоодох |  | 16 | maneuver; manipulate |
+| 100 | 快 | カイ | こころよ.い | 快い（こころよい） | тааламжтай |  | 16 | cheerful; pleasant |
+| | | | | | | | | **↑ 66% of all appearances covered to here** |
+| 101 | 床 | ショウ | とこ、ゆか | 床屋（とこや） | шал |  | 16 | bed; counter for beds |
+| 102 | 効 | コウ | き.く、ききめ、なら.う | 効率（こうりつ） | үр дүн |  | 16 | merit; efficacy |
+| 103 | 耕 | コウ | たがや.す | 耕す（たがやす） | тариалах |  | 15 | till; plow |
+| 104 | 磨 | マ | みが.く、す.る | 磨く（みがく） | нунтаглах |  | 15 | grind; polish |
+| 105 | 渡 | ト | わた.る、-わた.る、わた.す | 渡す（わたす） | гатлах |  | 15 | transit; ford |
+| 106 | 景 | ケイ | — | 景色（けしき） | байгалийн үзэсгэлэн |  | 15 | scenery; view |
+| 107 | 掘 | クツ | ほ.る | 掘る（ほる） | малтах |  | 15 | dig; delve |
+| 108 | 完 | カン | — | 完全（かんぜん） | гүйцэд |  | 15 | perfect; completion |
+| 109 | 削 | サク | けず.る、はつ.る、そ.ぐ | 削減（さくげん） | хусах |  | 15 | plane; sharpen |
+| 110 | 凝 | ギョウ | こ.る、こ.らす、こご.らす | 凝る（こる） | өтгөрөх |  | 15 | congeal; freeze |
+| 111 | 額 | ガク | ひたい | 差額（さがく） | дух |  | 14 | forehead; tablet |
+| 112 | 震 | シン | ふる.う、ふる.える、ふる.わせる | 地震（じしん） | чичрэх |  | 14 | quake; shake |
+| 113 | 険 | ケン | けわ.しい | 危険（きけん） | эгц |  | 14 | precipitous; inaccessible place |
+| 114 | 邪 | ジャ | よこし.ま | 風邪（かぜ） | бузар |  | 14 | wicked; injustice |
+| 115 | 跡 | セキ | あと | 追跡する（ついせきする） | ул мөр |  | 14 | tracks; mark |
+| 116 | 致 | チ | いた.す | 致す（いたす） | хүргэн өгөх |  | 14 | doth; do |
+| 117 | 築 | チク | きず.く | 築く（きずく） | цогцлоох |  | 14 | fabricate; build |
+| 118 | 益 | エキ、ヤク | ま.す | 利益（りえき） | өгөөж |  | 14 | benefit; gain |
+| 119 | 照 | ショウ | て.る、て.らす、て.れる | 参照（さんしょう） | гэрэлтүүлэх |  | 14 | illuminate; shine |
+| 120 | 焦 | ショウ | こ.げる、こ.がす、こ.がれる | 焦点（しょうてん） | түлэгдэх |  | 14 | char; hurry |
+| 121 | 柔 | ジュウ、ニュウ | やわ.らか、やわ.らかい、やわ | 柔道（じゅうどう） | зөөлөн |  | 14 | tender; weakness |
+| 122 | 柄 | ヘイ | がら、え、つか | 事柄（ことがら） | хээ |  | 14 | design; pattern |
+| 123 | 杯 | ハイ | さかずき | 杯（さかずき） | хундага |  | 14 | counter for cupfuls; wine glass |
+| 124 | 担 | タン | かつ.ぐ、にな.う | 担う（になう） | үүрэх |  | 14 | shouldering; carry |
+| 125 | 怖 | フ、ホ | こわ.い、こわ.がる、お.じる | 怖い（こわい） | аймшигтай |  | 14 | dreadful; be frightened |
+| 126 | 審 | シン | つまび.らか、つぶさ.に | 審判（しんぱん） | шүүн таслах |  | 14 | hearing; judge |
+| 127 | 嬉 | キ | うれ.しい、たの.しむ | 嬉しい（うれしい） | хөгжилтэй |  | 14 | glad; pleased |
+| 128 | 処 | ショ | ところ、-こ、お.る | 処理（しょり） | шийдвэрлэх |  | 14 | dispose; manage |
+| 129 | 被 | ヒ | こうむ.る、おお.う、かぶ.る | 被せる（かぶせる） | хүлээх |  | 13 | incur; cover |
+| 130 | 蔵 | ゾウ、ソウ | くら、おさ.める、かく.れる | 冷蔵庫（れいぞうこ） | хөмрөг |  | 13 | storehouse; hide |
+| 131 | 突 | トツ、カ | つ.く | 衝突（しょうとつ） | хатгах |  | 13 | stab; protruding |
+| 132 | 眼 | ガン、ゲン | まなこ、め | 眼鏡（めがね） | нүд |  | 13 | eyeball |
+| 133 | 昆 | コン | — | 昆虫（こんちゅう） | хорхой шавж |  | 13 | descendants; elder brother |
+| 134 | 弁 | ベン、ヘン | かんむり、わきま.える、わ.ける | 弁当（べんとう） | хавхлага |  | 13 | valve; petal |
+| 135 | 帽 | ボウ、モウ | ずきん、おお.う | 帽子（ぼうし） | малгай |  | 13 | cap; headgear |
+| 136 | 守 | シュ、ス | まも.る、まも.り、もり | 守る（まもる） | сахих |  | 13 | guard; protect |
+| 137 | 善 | ゼン | よ.い、い.い、よ.く | 最善（さいぜん） | буянтай |  | 13 | virtuous; good |
+| 138 | 頑 | ガン | かたく.な | 頑張る（がんばる） | зөрүүд |  | 12 | stubborn; foolish |
+| 139 | 隙 | ゲキ、キャク、ケキ | すき、す.く、す.かす | 隙間（すきま） | завсар |  | 12 | crevice; fissure |
+| 140 | 辺 | ヘン | あた.り、ほと.り、-べ | 周辺（しゅうへん） | орчим |  | 12 | environs; boundary |
+| 141 | 複 | フク | — | 複雑（ふくざつ） | хуулбар |  | 12 | duplicate; double |
+| 142 | 臭 | シュウ | くさ.い、-くさ.い、にお.う | 臭気（しゅうき） | өмхий |  | 12 | stinking; ill-smelling |
+| 143 | 絶 | ゼツ | た.える、た.やす、た.つ | 絶えず（たえず） | тасрах |  | 12 | discontinue; sever |
+| 144 | 砂 | サ、シャ | すな | 砂糖（さとう） | элс |  | 12 | sand |
+| 145 | 省 | セイ、ショウ | かえり.みる、はぶ.く | 省略（しょうりゃく） | анхаарал төвлөрүүлэх |  | 12 | government ministry; conserve |
+| 146 | 測 | ソク | はか.る | 測定（そくてい） | гүнзгийрүүлэх |  | 12 | fathom; plan |
+| 147 | 涼 | リョウ | すず.しい、すず.む、すず.やか | 涼む（すずむ） | сэргээгч |  | 12 | refreshing; nice and cool |
+| 148 | 暮 | ボ | く.れる、く.らす | 暮れる（くれる） | амьжиргаа |  | 12 | evening; twilight |
+| 149 | 推 | スイ | お.す | 推薦（すいせん） | дүгнэх |  | 12 | conjecture; infer |
+| 150 | 専 | セン | もっぱ.ら | 専制（せんせい） | мэргэжил |  | 12 | specialty; exclusive |
+| 151 | 奥 | オウ | おく、おく.まる、くま | 奥付（おくづけ） | гүн |  | 12 | heart; interior |
+| 152 | 占 | セン | し.める、うらな.う | 占術（せんじゅつ） | мэргэ төлөг |  | 12 | fortune-telling; divining |
+| 153 | 努 | ド | つと.める | 努力（どりょく） | хөдөлмөрлөх |  | 12 | toil; diligent |
+| 154 | 典 | テン、デン | ふみ、のり | 辞典（じてん） | эмхтгэл |  | 12 | code; ceremony |
+| 155 | 覆 | フク | おお.う、くつがえ.す、くつがえ.る | 覆す（くつがえす） | хөмрөх |  | 11 | capsize; cover |
+| 156 | 裏 | リ | うら | 裏金（うらがね） | ар тал |  | 11 | back; amidst |
+| 157 | 祭 | サイ | まつ.る、まつ.り、まつり | お祭り（おまつり） | наадам |  | 11 | ritual; offer prayers |
+| 158 | 甘 | カン | あま.い、あま.える、あま.やかす | 甘い（あまい） | чихэрлэг |  | 11 | sweet; coax |
+| 159 | 灰 | カイ | はい | 石灰（せっかい） | үнс |  | 11 | ashes; puckery juice |
+| 160 | 滑 | カツ、コツ | すべ.る、なめ.らか | 滑稽（こっけい） | гулгамтгай |  | 11 | slippery; slide |
+| 161 | 標 | ヒョウ | しるべ、しるし | 墓標（ぼひょう） | заавар самбар |  | 11 | signpost; seal |
+| 162 | 属 | ゾク、ショク | さかん、つく、やから | 属する（ぞくする） | харьяалагдах |  | 11 | belong; genus |
+| 163 | 侵 | シン | おか.す | 侵入（しんにゅう） | халдах |  | 11 | encroach; invade |
+| 164 | 迎 | ゲイ | むか.える | 迎える（むかえる） | угтах |  | 10 | welcome; meet |
+| 165 | 薄 | ハク | うす.い、うす-、-うす | 薄い（うすい） | шингэлэх |  | 10 | dilute; thin |
+| 166 | 蔑 | ベツ | ないがしろ、なみ.する、くらい | 軽蔑（けいべつ） | жигших |  | 10 | ignore; despise |
+| 167 | 脈 | ミャク | すじ | 山脈（さんみゃく） | судас |  | 10 | vein; pulse |
+| 168 | 罪 | ザイ | つみ | 謝罪する（しゃざいする） | гэм |  | 10 | guilt; sin |
+| 169 | 畳 | ジョウ、チョウ | たた.む、たたみ、かさ.なる | 畳（たたみ） | татами |  | 10 | tatami mat; counter for tatami mats |
+| 170 | 牧 | ボク | まき | 牧人（ぼくじん） | мал аж ахуй |  | 10 | breed; care for |
+| 171 | 潔 | ケツ | いさぎよ.い | 簡潔（かんけつ） | ариун |  | 10 | undefiled; pure |
+| 172 | 浴 | ヨク | あ.びる、あ.びせる | 浴びる（あびる） | усанд орох |  | 10 | bathe; be favored with |
+| 173 | 斎 | サイ | とき、つつし.む、ものいみ | 書斎（しょさい） | ариусал |  | 10 | purification; Buddhist food |
+| 174 | 懸 | ケン、ケ | か.ける、か.かる | 一生懸命（いっしょうけんめい） | дүүжлэх |  | 10 | state of suspension; hang |
+| 175 | 懲 | チョウ | こ.りる、こ.らす、こ.らしめる | 懲りる（こりる） | шийтгэх |  | 10 | penal; chastise |
+| 176 | 尋 | ジン | たず.ねる、ひろ | 尋ねる（たずねる） | асуун сурвалжлах |  | 10 | inquire; fathom |
+| 177 | 威 | イ | おど.す、おど.し、おど.かす | 権威（けんい） | сүр хүч |  | 10 | intimidate; dignity |
+| 178 | 太 | タイ、タ | ふと.い、ふと.る | 太鼓（たいこ） | бүдүүн |  | 10 | plump; thick |
+| 179 | 噛 | コウ、ゴウ | か.む、か.じる | 噛む（かむ） | зажлах |  | 10 | chew; bite |
+| 180 | 喫 | キツ | の.む | 喫茶店（きっさてん） | эдлэх |  | 10 | consume; eat |
+| 181 | 創 | ソウ、ショウ | つく.る、はじ.める、きず | 創作（そうさく） | бүтээн байгуулах |  | 10 | genesis; wound |
+| 182 | 侍 | ジ、シ | さむらい、はべ.る | 侍（さむらい） | самурай |  | 10 | waiter; samurai |
+| 183 | 養 | ヨウ、リョウ | やしな.う | 養う（やしなう） | тэжээх |  | 9 | foster; bring up |
+| 184 | 趣 | シュ | おもむき、おもむ.く | 趣味（しゅみ） | амт шимт |  | 9 | purport; gist |
+| 185 | 識 | シキ | し.る、しる.す | 常識（じょうしき） | ялгах чадвартай |  | 9 | discriminating; know |
+| 186 | 補 | ホ | おぎな.う | 補う（おぎなう） | нөхөх |  | 9 | supplement; supply |
+| 187 | 裁 | サイ | た.つ、さば.く | 独裁者（どくさいしゃ） | оёдолчин |  | 9 | tailor; judge |
+| 188 | 衝 | ショウ | つ.く | 衝突（しょうとつ） | мөргөлдөх |  | 9 | collide; brunt |
+| 189 | 糸 | シ | いと | 糸（いと） | утас |  | 9 | thread |
+| 190 | 添 | テン | そ.える、そ.う | 添付（てんぷ） | хавсаргах |  | 9 | annexed; accompany |
+| 191 | 沈 | チン、ジン | しず.む、しず.める | 沈む（しずむ） | живэх |  | 9 | sink; be submerged |
+| 192 | 掲 | ケイ | かか.げる | 掲げる（かかげる） | нийтлэх |  | 9 | put up (a notice); put up |
+| 193 | 徒 | ト | いたずら、あだ | 生徒（せいと） | шавь |  | 9 | on foot; junior |
+| 194 | 尊 | ソン | たっと.い、とうと.い、たっと.ぶ | 尊ぶ（とうとぶ） | эрхэм |  | 9 | revered; valuable |
+| 195 | 単 | タン | ひとえ | 簡単（かんたん） | нэгж |  | 9 | simple; one |
+| 196 | 剣 | ケン | つるぎ | 真剣（しんけん） | сэлэм |  | 9 | sabre; sword |
+| 197 | 麗 | レイ | うるわ.しい、うら.らか | 綺麗（きれい） | гоолиг |  | 8 | lovely; beautiful |
+| 198 | 継 | ケイ | つ.ぐ、まま- | 継続（けいぞく） | залгамжлах |  | 8 | inherit; succeed |
+| 199 | 粋 | スイ | いき | 純粋（じゅんすい） | гоёмсог |  | 8 | chic; style |
+| 200 | 盤 | バン | — | 算盤（そろばん） | тавиур |  | 8 | tray; shallow bowl |
+| | | | | | | | | **↑ 87% of all appearances covered to here** |
+| 201 | 皿 | ベイ | さら | お皿（おさら） | таваг |  | 8 | dish; a helping |
+| 202 | 環 | カン | わ | 循環（じゅんかん） | цагираг |  | 8 | ring; circle |
+| 203 | 渉 | ショウ | わた.る | 交渉（こうしょう） | гатлах |  | 8 | ford; go cross |
+| 204 | 汁 | ジュウ | しる、-しる、つゆ | 汁物（しるもの） | шөл |  | 8 | soup; juice |
+| 205 | 永 | エイ | なが.い | 永遠（えいえん） | мөнхжилт |  | 8 | eternity; long |
+| 206 | 撲 | ボク | — | 相撲（すもう） | алгадах |  | 8 | slap; strike |
+| 207 | 招 | ショウ | まね.く | 招く（まねく） | дуудах |  | 8 | beckon; invite |
+| 208 | 寄 | キ | よ.る、-よ.り、よ.せる | 寄る（よる） | ойртох |  | 8 | draw near; stop in |
+| 209 | 妥 | ダ | — | 妥当（だとう） | зохистой |  | 8 | gentle; peace |
+| 210 | 垂 | スイ | た.れる、た.らす、た.れ | 垂直（すいちょく） | унжих |  | 8 | droop; suspend |
+| 211 | 吹 | スイ | ふ.く | 吹く（ふく） | үлээх |  | 8 | blow; breathe |
+| 212 | 兼 | ケン | か.ねる、-か.ねる | 兼用（けんよう） | зэрэг |  | 8 | concurrently; and |
+| 213 | 麦 | バク | むぎ | 小麦（こむぎ） | арвай |  | 7 | barley; wheat |
+| 214 | 迫 | ハク | せま.る | 迫る（せまる） | яаравчлах |  | 7 | urge; force |
+| 215 | 輩 | ハイ | -ばら、やから、やかい | 先輩（せんぱい） | нөхөр |  | 7 | comrade; fellow |
+| 216 | 蹴 | シュク、シュウ | け.る | 玉蹴り（たまけり） | өшиглөх |  | 7 | kick |
+| 217 | 踏 | トウ | ふ.む、ふ.まえる | 踏む（ふむ） | гишгэх |  | 7 | step; trample |
+| 218 | 豊 | ホウ、ブ | ゆた.か、とよ | 豊か（ゆたか） | элбэг |  | 7 | bountiful; excellent |
+| 219 | 誠 | セイ | まこと | 誠実（せいじつ） | чин сэтгэл |  | 7 | sincerity; admonish |
+| 220 | 観 | カン | み.る、しめ.す | 観点（かんてん） | үзэл бодол |  | 7 | outlook; look |
+| 221 | 蓄 | チク | たくわ.える | 蓄える（たくわえる） | нөөцлөх |  | 7 | amass; raise |
+| 222 | 網 | モウ | あみ | 漁網（ぎょもう） | тор |  | 7 | netting; network |
+| 223 | 瞬 | シュン | またた.く、まじろ.ぐ | 瞬間（しゅんかん） | агшин |  | 7 | wink; blink |
+| 224 | 甲 | コウ、カン | きのえ | 甲虫（こうちゅう） | хясаа |  | 7 | armor; high (voice) |
+| 225 | 毒 | ドク | — | 消毒（しょうどく） | хор |  | 7 | poison; virus |
+| 226 | 揺 | ヨウ | ゆ.れる、ゆ.る、ゆ.らぐ | 揺れ（ゆれ） | найгах |  | 7 | swing; shake |
+| 227 | 崩 | ホウ | くず.れる、-くず.れ、くず.す | 崩す（くずす） | нурах |  | 7 | crumble; die |
+| 228 | 封 | フウ、ホウ | — | 封筒（ふうとう） | лацдах |  | 7 | seal; closing |
+| 229 | 寸 | スン | — | 寸法（すんぽう） | ялимгүй |  | 7 | measurement; tenth of a shaku |
+| 230 | 募 | ボ | つの.る | 公募（こうぼ） | элсүүлэх |  | 7 | recruit; campaign |
+| 231 | 傾 | ケイ | かたむ.く、かたむ.ける、かたぶ.く | 傾ける（かたむける） | хазайх |  | 7 | lean; incline |
+| 232 | 鼓 | コ | つづみ | 太鼓（たいこ） | бөмбөр |  | 6 | drum; beat |
+| 233 | 騰 | トウ | あが.る、のぼ.る | 沸騰する（ふっとうする） | инфляц |  | 6 | leaping up; jumping up |
+| 234 | 闇 | アン、オン | やみ、くら.い | 闇雲（やみくも） | бүрэнхий |  | 6 | get dark; gloom |
+| 235 | 鋭 | エイ | するど.い | 鋭い（するどい） | хурц |  | 6 | pointed; sharpness |
+| 236 | 醤 | ショウ | ひしお | 醤油（しょうゆ） | шар буурцагны амтлагч |  | 6 | a kind of miso |
+| 237 | 酢 | サク | す | 酢（す） | цуу |  | 6 | vinegar; sour |
+| 238 | 軌 | キ | — | 軌道（きどう） | тэрэгний мөр |  | 6 | rut; wheel |
+| 239 | 跳 | チョウ | は.ねる、と.ぶ、-と.び | 跳ねる（はねる） | үсрэх |  | 6 | hop; leap up |
+| 240 | 賦 | フ、ブ | — | 月賦（げっぷ） | татвар |  | 6 | levy; ode |
+| 241 | 貨 | カ | たから | 雑貨（ざっか） | ачаа тээш |  | 6 | freight; goods |
+| 242 | 詐 | サ | いつわ.る | 詐欺（さぎ） | залилах |  | 6 | lie; falsehood |
+| 243 | 董 | トウ | ただ.す | 骨董品（こっとうひん） | хянах |  | 6 | correct |
+| 244 | 菌 | キン | — | 細菌（さいきん） | нян |  | 6 | germ; fungus |
+| 245 | 荒 | コウ | あ.らす、あ.れる、あら.い | 荒れ（あれ） | эзгүйрэх |  | 6 | laid waste; rough |
+| 246 | 興 | コウ、キョウ | おこ.る、おこ.す | 興味（きょうみ） | сэргээх |  | 6 | entertain; revive |
+| 247 | 耗 | モウ、コウ | — | 消耗（しょうもう） | элэгдэх |  | 6 | decrease |
+| 248 | 綺 | キ | あや | 綺麗（きれい） | хээтэй торго |  | 6 | figured cloth; beautiful |
+| 249 | 維 | イ | — | 維新（いしん） | ширхэг |  | 6 | fiber; tie |
+| 250 | 紛 | フン | まぎ.れる、-まぎ.れ、まぎ.らす | 紛失する（ふんしつする） | сарних |  | 6 | distract; be mistaken for |
+| 251 | 稽 | ケイ | かんが.える、とど.める | 滑稽（こっけい） | дасгал сургуулилт |  | 6 | think; consider |
+| 252 | 獣 | ジュウ | けもの、けだもの | 獣（けだもの） | араатан |  | 6 | animal; beast |
+| 253 | 漫 | マン | みだり.に、そぞ.ろ | 漫画（まんが） | хошин зураг |  | 6 | cartoon; involuntarily |
+| 254 | 漏 | ロウ | も.る、も.れる、も.らす | 漏る（もる） | гоожих |  | 6 | leak; escape |
+| 255 | 漂 | ヒョウ | ただよ.う | 漂う（ただよう） | хөвөх |  | 6 | drift; float (on liquid) |
+| 256 | 滴 | テキ | しずく、したた.る | 水滴（すいてき） | дуслах |  | 6 | drip; drop |
+| 257 | 洪 | コウ | — | 洪水（こうずい） | үер |  | 6 | deluge; flood |
+| 258 | 欺 | ギ | あざむ.く | 詐欺（さぎ） | хуурах |  | 6 | deceit; cheat |
+| 259 | 棋 | キ | ご | 将棋（しょうぎ） | шатрын хүү |  | 6 | chess piece; Japanese chess |
+| 260 | 桟 | サン、セン | かけはし | 桟橋（さんばし） | шат мод |  | 6 | scaffold; cleat |
+| 261 | 栓 | セン | — | 栓（せん） | бөглөө |  | 6 | plug; bolt |
+| 262 | 札 | サツ | ふだ | 改札（かいさつ） | хөзөр |  | 6 | tag; paper money |
+| 263 | 摘 | テキ | つ.む | 摘む（つむ） | чимхэх |  | 6 | pinch; pick |
+| 264 | 搬 | ハン | — | 運搬する（うんぱんする） | зөөгч |  | 6 | conveyor; carry |
+| 265 | 扱 | ソウ、キュウ | あつか.い、あつか.う、あつか.る | 取り扱う（とりあつかう） | харьцах |  | 6 | handle; entertain |
+| 266 | 怠 | タイ | おこた.る、なま.ける | 怠る（おこたる） | үл тоомсорлох |  | 6 | neglect; laziness |
+| 267 | 徐 | ジョ | おもむ.ろに | 徐々に（じょじょに） | аажмаар |  | 6 | gradually; slowly |
+| 268 | 干 | カン | ほ.す、ほ.し-、-ぼ.し | 干し（ほし） | хатаах |  | 6 | dry; parch |
+| 269 | 妙 | ミョウ、ビョウ | たえ | 巧妙（こうみょう） | гайхамшигтай |  | 6 | exquisite; strange |
+| 270 | 堅 | ケン | かた.い、-がた.い | 堅い（かたい） | бат бөх |  | 6 | strict; hard |
+| 271 | 埋 | マイ | う.める、う.まる、う.もれる | 埋める（うずめる） | булах |  | 6 | bury; be filled up |
+| 272 | 坂 | ハン | さか | 坂（さか） | энгэр |  | 6 | slope; incline |
+| 273 | 咳 | カイ、ガイ | せ.く、しわぶ.く、せき | 咳く（しわぶく） | ханиад |  | 6 | cough; clear throat |
+| 274 | 匂 | — | にお.う、にお.い、にお.わせる | 匂い（におい） | анхилам |  | 6 | fragrant; stink |
+| 275 | 凄 | セイ、サイ | さむ.い、すご.い、すさ.まじい | 凄い（すごい） | аймаар |  | 6 | uncanny; weird |
+| 276 | 倹 | ケン | つま.しい、つづまやか | 倹約（けんやく） | хэмнэлттэй |  | 6 | frugal; economy |
+| 277 | 侮 | ブ | あなど.る、あなず.る | 侮る（あなどる） | басамжлах |  | 6 | scorn; despise |
+| 278 | 躍 | ヤク | おど.る | 跳躍する（ちょうやくする） | үсрэх |  | 5 | leap; dance |
+| 279 | 貼 | テン、チョウ | は.る、つ.く | 貼る（はる） | наах |  | 5 | stick; paste |
+| 280 | 訂 | テイ | ただ.す | 訂正する（ていせいする） | засварлах |  | 5 | revise; correct |
+| 281 | 臣 | シン、ジン | — | 臣民（しんみん） | түшмэд |  | 5 | retainer; subject |
+| 282 | 繕 | ゼン | つくろ.う | 繕う（つくろう） | оёх |  | 5 | darning; repair |
+| 283 | 砕 | サイ | くだ.く、くだ.ける | 砕く（くだく） | бутлах |  | 5 | smash; break |
+| 284 | 濃 | ノウ | こ.い | 濃青色（のうせいしょく） | өтгөн |  | 5 | concentrated; thick |
+| 285 | 渇 | カツ | かわ.く | 渇望（かつぼう） | цангах |  | 5 | thirst; dry up |
+| 286 | 枝 | シ | えだ | 枝（えだ） | мөчир |  | 5 | bough; branch |
+| 287 | 擦 | サツ | す.る、す.れる、-ず.れ | 擦る（こする） | үрэх |  | 5 | grate; rub |
+| 288 | 弾 | ダン、タン | ひ.く、-ひ.き、はず.む | 弾く（ひく） | сум |  | 5 | bullet; twang |
+| 289 | 宇 | ウ | — | 宇宙（うちゅう） | огторгуй |  | 5 | eaves; roof |
+| 290 | 似 | ジ | に.る、ひ.る | 似る（にる） | төстэй |  | 5 | becoming; resemble |
+| 291 | 乱 | ラン、ロン | みだ.れる、みだ.る、みだ.す | 乱れ（みだれ） | эмх замбараагүй |  | 5 | riot; war |
+| 292 | 丘 | キュウ | おか | 丘陵（きゅうりょう） | толгод |  | 5 | hill; knoll |
+| 293 | 鋳 | チュウ、イ、シュ | い.る | 鋳る（いる） | цутгах |  | 4 | casting; mint |
+| 294 | 衰 | スイ | おとろ.える | 衰える（おとろえる） | доройтох |  | 4 | decline; wane |
+| 295 | 萎 | イ | な、しお.れる、しな.びる | 萎む（しぼむ） | гандах |  | 4 | wither; droop |
+| 296 | 索 | サク | — | 検索（けんさく） | хайлт |  | 4 | cord; rope |
+| 297 | 房 | ボウ | ふさ | 冷房（れいぼう） | занга |  | 4 | tassel; tuft |
+| 298 | 戯 | ギ、ゲ | たわむ.れる、ざ.れる、じゃ.れる | 戯れる（たわむれる） | наадах |  | 4 | frolic; play |
+| 299 | 吸 | キュウ | す.う | 吸う（すう） | сорох |  | 4 | suck; imbibe |
+| 300 | 鎮 | チン | しず.める、しず.まる、おさえ | 鎮静する（ちんせいする） | номхотгох |  | 3 | tranquilize; ancient peace-preservation centers |
+| | | | | | | | | **↑ 97% of all appearances covered to here** |
+| 301 | 醒 | セイ | さ.ます、さ.める | 覚醒する（かくせいする） | сэрэлт |  | 3 | awake; be disillusioned |
+| 302 | 迅 | ジン | — | 迅速な（じんそくな） | шуурхай |  | 3 | swift; fast |
+| 303 | 責 | セキ | せ.める | 責任（せきにん） | зэмлэх |  | 3 | blame; condemn |
+| 304 | 膜 | マク | — | 角膜（かくまく） | бүрхэвч |  | 3 | membrane |
+| 305 | 翻 | ホン、ハン | ひるがえ.る、ひるがえ.す | 翻訳（ほんやく） | орчуулах |  | 3 | flip; turn over |
+| 306 | 繰 | ソウ | く.る | 繰る（くる） | ороох |  | 3 | winding; reel |
+| 307 | 締 | テイ | し.まる、し.まり、し.める | 締切（しめきり） | чангалах |  | 3 | tighten; tie |
+| 308 | 獲 | カク | え.る | 獲る（とる） | олз |  | 3 | seize; get |
+| 309 | 洩 | エイ、セツ | も.らす、の.びる、も.れる | 漏洩する（ろうえいする） | нэвчих |  | 3 | leak; escape |
+| 310 | 依 | イ、エ | よ.る | 依頼する（いらいする） | түшиглэх |  | 3 | reliant; depend on |
+| 311 | 靭 | ジン、ニン、サ | うつぼ、しな.やか、ゆぎ | 強靭な（きょうじんな） | уян |  | 2 | soft; pliable |
+| 312 | 豆 | トウ、ズ | まめ、まめ- | 豆腐（とうふ） | буурцаг |  | 2 | beans; pea |
+| 313 | 譲 | ジョウ | ゆず.る | 譲る（ゆずる） | хойшлуулах |  | 2 | defer; turnover |
+| 314 | 蔽 | ヘイ、ヘツ、フツ | おお.う、おお.い | 隠蔽する（いんぺいする） | халхлах |  | 2 | cover; shade |
+| 315 | 胆 | タン | きも | 落胆する（らくたんする） | цөс |  | 2 | gall bladder; courage |
+| 316 | 綻 | タン | ほころ.びる | 破綻する（はたんする） | задрах |  | 2 | be rent; ripped |
+| 317 | 粛 | シュク、スク | つつし.む | 静粛な（せいしゅくな） | төвшин |  | 2 | solemn; quietly |
+| 318 | 秀 | シュウ | ひい.でる | 優秀な（ゆうしゅうな） | гойд |  | 2 | excel; excellence |
+| 319 | 矯 | キョウ | た.める | 矯正する（きょうせいする） | засч залруулах |  | 2 | rectify; straighten |
+| 320 | 疾 | シツ | はや.い | 疾病（しっぺい） | түргэн |  | 2 | rapidly |
+| 321 | 牽 | ケン | ひ.く | 牽引する（けんいんする） | чирэх |  | 2 | pull; tug |
+| 322 | 燥 | ソウ | はしゃ.ぐ | 乾燥する（かんそうする） | хатах |  | 2 | parch; dry up |
+| 323 | 潤 | ジュン | うるお.う、うるお.す、うる.む | 湿潤する（しつじゅんする） | чийгших |  | 2 | wet; be watered |
+| 324 | 滅 | メツ | ほろ.びる、ほろ.ぶ、ほろ.ぼす | 消滅する（しょうめつする） | мөхөх |  | 2 | destroy; ruin |
+| 325 | 没 | ボツ、モツ | おぼ.れる、しず.む、ない | 出没する（しゅつぼつする） | үгүй болох |  | 2 | drown; sink |
+| 326 | 毀 | キ | こぼ.つ、こわ.す、こぼ.れる | 毀損する（きそんする） | эвдрэх |  | 2 | break; destroy |
+| 327 | 梁 | リョウ | はり、うつばり、うちばり | 橋梁（きょうりょう） | дам нуруу |  | 2 | weir; fish trap |
+| 328 | 桁 | コウ | けた | 桁（けた） | жонш |  | 2 | beam; girder |
+| 329 | 枢 | スウ、シュ | とぼそ、からくり | 中枢（ちゅうすう） | гол тэнхлэг |  | 2 | hinge; pivot |
+| 330 | 曖 | アイ | くら.い | 曖昧な（あいまいな） | бүрхэг |  | 2 | dark; not clear |
+| 331 | 昧 | マイ、バイ | くら.い、むさぼ.る | 曖昧な（あいまいな） | бүрхэг |  | 2 | dark; foolish |
+| 332 | 旦 | タン、ダン | あき.らか、あきら、ただし | 巴旦杏（はたんきょう） | шөнийн төгсгөл |  | 2 | daybreak; dawn |
+| 333 | 敷 | フ | し.く、-し.き | 敷金（しききん） | дэвсэх |  | 2 | spread; pave |
+| 334 | 攻 | コウ | せ.める | 攻める（せめる） | түрэмгийлэл |  | 2 | aggression; attack |
+| 335 | 撤 | テツ | — | 撤去する（てっきょする） | татан буулгах |  | 2 | remove; withdraw |
+| 336 | 摩 | マ | ま.する、さす.る、す.る | 摩擦する（まさつする） | үрэх |  | 2 | chafe; rub |
+| 337 | 挫 | ザ、サ | くじ.く、くじ.ける | 捻挫する（ねんざする） | бэртэх |  | 2 | crush; break |
+| 338 | 慌 | コウ | あわ.てる、あわ.ただしい | 慌ただしい（あわただしい） | сандрах |  | 2 | disconcerted; be confused |
+| 339 | 愕 | ガク | おどろ.く | 驚愕（きょうがく） | цочих |  | 2 | surprised; frightened |
+| 340 | 怪 | カイ、ケ | あや.しい、あや.しむ | 怪我（けが） | сэжигтэй |  | 2 | suspicious; mystery |
+| 341 | 廉 | レン | — | 廉価な（れんかな） | хямдхан |  | 2 | bargain; reason |
+| 342 | 幼 | ヨウ | おさな.い | 幼少（ようしょう） | нялх |  | 2 | infancy; childhood |
+| 343 | 尺 | シャク、セキ | さし | 尺度（しゃくど） | шаку |  | 2 | shaku; Japanese foot |
+| 344 | 契 | ケイ | ちぎ.る | 契約（けいやく） | гэрээ |  | 2 | pledge; promise |
+| 345 | 墓 | ボ | はか | 墳墓（ふんぼ） | бунхан |  | 2 | grave; tomb |
+| 346 | 唱 | ショウ | とな.える | 歌唱する（かしょうする） | дуулах |  | 2 | chant; recite |
+| 347 | 叶 | キョウ | かな.える、かな.う | 叶える（かなえる） | биелэх |  | 2 | grant; answer |
+| 348 | 副 | フク | — | 副詞（ふくし） | орлогч |  | 2 | vice-; assistant |
+| 349 | 刀 | トウ | かたな、そり | 刀剣（とうけん） | илд |  | 2 | sword; saber |
+| 350 | 伏 | フク | ふ.せる、ふ.す | 説き伏せる（ときふせる） | бөхийх |  | 2 | prostrated; bend down |
+| 351 | 介 | カイ | — | 紹介（しょうかい） | зуучлах |  | 2 | jammed in; shellfish |
+| 352 | 髄 | ズイ | — | 骨髄（こつずい） | чөмөг |  | 1 | marrow; pith |
+| 353 | 骸 | ガイ、カイ | むくろ | 遺骸（いがい） | үлдэгдэл |  | 1 | bone; body |
+| 354 | 駐 | チュウ | — | 駐車場（ちゅうしゃじょう） | зогсох |  | 1 | stop-over; reside in |
+| 355 | 頻 | ヒン | しき.りに | 頻りに（しきりに） | байн байн |  | 1 | repeatedly; recur |
+| 356 | 露 | ロ、ロウ | つゆ | 露（つゆ） | шүүдэр |  | 1 | dew; tears |
+| 357 | 陵 | リョウ | みささぎ | 丘陵（きゅうりょう） | бунхан |  | 1 | mausoleum; imperial tomb |
+| 358 | 鎌 | レン、ケン | かま | 鎌（かま） | хадуур |  | 1 | sickle; scythe |
+| 359 | 軒 | ケン | のき | 軒（のき） | хөмсөг |  | 1 | flats; counter for houses |
+| 360 | 謨 | ボ、モ | はか.る | 護謨（ゴム） | зураглал |  | 1 | plan; deliberate |
+| 361 | 薩 | サツ、サチ | — | 菩薩（ぼさつ） | бодьсадва |  | 1 | salvation; Buddha |
+| 362 | 舐 | シ | ねぶ.る、な.める | 舐める（なめる） | долоох |  | 1 | lick; lap up |
+| 363 | 膝 | シツ | ひざ | 膝を折る（ひざをおる） | өвдөг |  | 1 | knee; lap |
+| 364 | 腓 | ヒ | ふくらはぎ、こむら、こぶら | 腓腹（ひふく） | тахим |  | 1 | calf (of leg) |
+| 365 | 脊 | セキ | せ、せい | 脊索動物（せきさくどうぶつ） | нурууны яс |  | 1 | stature; height |
+| 366 | 翼 | ヨク | つばさ | 翼（つばさ） | жигүүр |  | 1 | wing; plane |
+| 367 | 綱 | コウ | つな | 手綱（たづな） | зузаан татлага |  | 1 | hawser; class (genus) |
+| 368 | 紋 | モン | — | 紋章（もんしょう） | сүлд хээ |  | 1 | family crest; figures |
+| 369 | 笛 | テキ | ふえ | 笛（ふえ） | цуур |  | 1 | flute; clarinet |
+| 370 | 禿 | トク | ちび.る、かむろ、は.げる | 禿鷹（はげたか） | халзан |  | 1 | become bald; bare |
+| 371 | 看 | カン | み.る | 看護婦（かんごふ） | асрах |  | 1 | watch over; see |
+| 372 | 癧 | レキ | — | 瘰癧（るいれき） | булчирхайн хавдар |  | 1 | swollen neck glands |
+| 373 | 癌 | ガン | — | 癌（がん） | мэлхий |  | 1 | cancer; cancerous evil |
+| 374 | 瓦 | ガ | かわら、ぐらむ | 煉瓦（れんが） | ваар |  | 1 | tile; gram |
+| 375 | 玉 | ギョク | たま、たま-、-だま | 玉蹴り（たまけり） | эрдэнэ |  | 1 | jewel; ball |
+| 376 | 牡 | ボ、ボウ | おす、お-、おん- | 牡蠣（かき） | эр амьтан |  | 1 | male |
+| 377 | 沙 | サ、シャ | すな、よなげる | 沙汰（さた） | элс |  | 1 | sand |
+| 378 | 汰 | タ、タイ | おご.る、にご.る、よな.げる | 沙汰（さた） | шигших |  | 1 | washing; sieving |
+| 379 | 殿 | デン、テン | との、-どの | 御殿（ごてん） | эрхэм дээдэс |  | 1 | Mr.; hall |
+| 380 | 斑 | ハン | ふ、まだら | 雀斑（そばかす） | толбо |  | 1 | spot; blemish |
+| 381 | 挽 | バン | ひ.く | 挽く（ひく） | нунтаглах |  | 1 | saw; turn (lathe) |
+| 382 | 挨 | アイ | ひら.く | 挨拶（あいさつ） | дөхөх |  | 1 | approach; draw near |
+| 383 | 憩 | ケイ | いこ.い、いこ.う | 休憩（きゅうけい） | завсарлага |  | 1 | recess; rest |
+| 384 | 恩 | オン | — | 恩（おん） | алба |  | 1 | grace; kindness |
+| 385 | 恒 | コウ | つね、つねに | 恒星（こうせい） | тогтмол |  | 1 | constancy; always |
+| 386 | 弦 | ゲン | つる | 弦（げん） | хөвч |  | 1 | bowstring; chord |
+| 387 | 廊 | ロウ | — | 廊下（ろうか） | коридор |  | 1 | corridor; hall |
+| 388 | 巫 | フ | みこ、かんなぎ | 巫女（みこ） | бөө |  | 1 | sorcerer; medium |
+| 389 | 展 | テン | — | 展覧会（てんらんかい） | дэлгэх |  | 1 | unfold; expand |
+| 390 | 寂 | ジャク、セキ | さび、さび.しい、さび.れる | 寂しい（さびしい） | эзгүй |  | 1 | loneliness; quietly |
+| 391 | 孫 | ソン | まご | 孫息子（まごむすこ） | ач зээ |  | 1 | grandchild; descendants |
+| 392 | 嫁 | カ | よめ、とつ.ぐ、い.く | 嫁（よめ） | бэр |  | 1 | marry into; bride |
+| 393 | 奮 | フン | ふる.う | 獅子奮迅（ししふんじん） | хөөрөх |  | 1 | stirred up; be invigorated |
+| 394 | 堪 | カン、タン | た.える、たま.る、こら.える | 堪忍（かんにん） | тэвчих |  | 1 | withstand; endure |
+| 395 | 堤 | テイ | つつみ | 堤（つつみ） | дэл |  | 1 | dike; bank |
+| 396 | 執 | シツ、シュウ | と.る | 執筆（しっぴつ） | зүтгэх |  | 1 | tenacious; take hold |
+| 397 | 嘴 | シ | くちばし、はし | 嘴（くちばし） | хошуу |  | 1 | beak; bill |
+| 398 | 召 | ショウ | め.す | 召し上がる（めしあがる） | татах |  | 1 | seduce; call |
+| 399 | 卑 | ヒ | いや.しい、いや.しむ、いや.しめる | 卑劣漢（ひれつかん） | дорой |  | 1 | lowly; base |
+| 400 | 剥 | ハク、ホク | へ.ぐ、へず.る、む.く | 剥ぐ（はぐ） | хальслах |  | 1 | come off; peel |
+| 401 | 乞 | コツ、キツ、キ | こ.う | 乞食（こじき） | гуйлга |  | 1 | beg; invite |
