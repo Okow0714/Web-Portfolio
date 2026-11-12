@@ -189,6 +189,20 @@ function kanjiMeaning(rec) {
     return rec.mn || en || '';
 }
 
+// THE FIRST SENSE CARRIES THE CARD; the rest are detail. The hand-written glosses separate
+// senses with a semicolon and run to 73 characters at the longest -- 合 is five senses -- so
+// setting the whole string in the heading weight gave three bold lines that outweighed the
+// readings beneath them and pushed them off the first glance. Measured: the median gloss went
+// from 6 characters to 27 when these landed, so this is the normal case now, not an outlier.
+// Everything is still shown, in full and in order; only the weight changes after the first
+// semicolon. A gloss with no semicolon is unaffected, which is most of the other 1,149.
+function kanjiMeanHtml(text) {
+    const cut = (text || '').indexOf(';');
+    if (cut === -1) return escapeHtml(text || '');
+    return escapeHtml(text.slice(0, cut))
+        + '<span class="kj-mean-rest">' + escapeHtml(text.slice(cut + 1).trim()) + '</span>';
+}
+
 function kanjiCardsHtml(word) {
     if (typeof KANJI_INDEX === 'undefined' || !word) return '';
     // Deduped, but in the order they appear in the word -- 人人 shows one card, and 飛行場
@@ -217,7 +231,7 @@ function kanjiCardsHtml(word) {
         cards.push(`<div class="kj-card">
             <span class="kj-glyph" aria-hidden="true">${escapeHtml(ch)}</span>
             <span class="kj-body">
-                <span class="kj-mean">${escapeHtml(kanjiMeaning(rec))}</span>
+                <span class="kj-mean">${kanjiMeanHtml(kanjiMeaning(rec))}</span>
                 ${lines.join('')}
                 ${foot.length ? `<span class="kj-foot">${foot.join('')}</span>` : ''}
             </span>

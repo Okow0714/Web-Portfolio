@@ -375,6 +375,18 @@ body:has(.dictionary-main) {
     color: var(--ink);
     overflow-wrap: anywhere;
 }
+/* The senses after the first. Lighter and a shade smaller, so the card still reads as "this
+   kanji means X" at a glance while keeping every sense the author wrote. Not opacity: that is
+   how this project has twice produced a 2:1 ratio -- --ink-soft is solved against this card's
+   own ground. `display: block` puts it on its own line, which is what makes the first sense
+   scannable rather than buried in a run-on. */
+.kj-mean-rest {
+    display: block;
+    font-weight: 400;
+    font-size: 0.84rem;
+    color: var(--ink-soft);
+    margin-top: 1px;
+}
 
 .kj-read {
     font-size: 0.78rem;
