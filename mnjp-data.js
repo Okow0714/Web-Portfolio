@@ -30579,11 +30579,11 @@ const MNJP_ENTRIES = [
     {
         "jp": "手",
         "reading": "て",
-        "mn": "савар",
+        "mn": "гар",
         "sources": [
             "bridge"
         ],
-        "glosses": "claw (a foot or paw equipped with a sharp nail); a fork used for collecting dry dung; hand"
+        "glosses": "hand"
     },
     {
         "jp": "定員",
