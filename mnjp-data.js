@@ -5403,11 +5403,11 @@ const MNJP_ENTRIES = [
     {
         "jp": "恩",
         "reading": "おん",
-        "mn": "алба",
+        "mn": "ач тус",
         "sources": [
             "bridge"
         ],
-        "glosses": "service, work, duty, job; obligation"
+        "glosses": "kindness, favor"
     },
     {
         "jp": "音楽",
@@ -7410,11 +7410,11 @@ const MNJP_ENTRIES = [
     {
         "jp": "皮",
         "reading": "かわ",
-        "mn": "үс",
+        "mn": "арьс",
         "sources": [
             "bridge"
         ],
-        "glosses": "hair (both as a single filament or collectively); scalp hair; body hair; fur; pile, nap (fuzzy surface of a fabric)"
+        "glosses": "skin, hide, leather"
     },
     {
         "jp": "可愛い",
@@ -7490,11 +7490,11 @@ const MNJP_ENTRIES = [
     {
         "jp": "癌",
         "reading": "がん",
-        "mn": "мэлхий",
+        "mn": "хорт хавдар",
         "sources": [
             "bridge"
         ],
-        "glosses": "frog, toad; small; cancer"
+        "glosses": "cancer"
     },
     {
         "jp": "考える",
@@ -10413,11 +10413,11 @@ const MNJP_ENTRIES = [
     {
         "jp": "桁",
         "reading": "けた",
-        "mn": "жонш",
+        "mn": "дам нуруу",
         "sources": [
             "bridge"
         ],
-        "glosses": "spar"
+        "glosses": "beam, girder"
     },
     {
         "jp": "獣",
@@ -16194,11 +16194,11 @@ const MNJP_ENTRIES = [
     {
         "jp": "沢",
         "reading": "さわ",
-        "mn": "хөндий",
+        "mn": "намаг",
         "sources": [
             "bridge"
         ],
-        "glosses": "empty, hollow; spacious; away, apart; aloof; unsociable, withdrawn, arrogant, cold"
+        "glosses": "swamp, marsh"
     },
     {
         "jp": "騒がしい",
@@ -16947,11 +16947,11 @@ const MNJP_ENTRIES = [
     {
         "jp": "鱰",
         "reading": "しいら",
-        "mn": "далайн гахай",
+        "mn": "шиира загас",
         "sources": [
             "bridge"
         ],
-        "glosses": "dolphin"
+        "glosses": "mahi-mahi, dolphinfish"
     },
     {
         "jp": "仕入れる",
@@ -30358,11 +30358,11 @@ const MNJP_ENTRIES = [
     {
         "jp": "堤",
         "reading": "つつみ",
-        "mn": "дэл",
+        "mn": "далан",
         "sources": [
             "bridge"
         ],
-        "glosses": "mane (of a horse); only used in дэл сул (del sul); dike; sesame"
+        "glosses": "dike, embankment"
     },
     {
         "jp": "包む",
@@ -30460,11 +30460,11 @@ const MNJP_ENTRIES = [
     {
         "jp": "爪",
         "reading": "つめ",
-        "mn": "туурай",
+        "mn": "хумс",
         "sources": [
             "bridge"
         ],
-        "glosses": "hoof"
+        "glosses": "claw, nail"
     },
     {
         "jp": "冷たい",
@@ -30524,11 +30524,11 @@ const MNJP_ENTRIES = [
     {
         "jp": "面",
         "reading": "つら",
-        "mn": "сэнжтэй аяга",
+        "mn": "нүүр",
         "sources": [
             "bridge"
         ],
-        "glosses": "mug"
+        "glosses": "face"
     },
     {
         "jp": "連ねる",
@@ -33436,11 +33436,11 @@ const MNJP_ENTRIES = [
     {
         "jp": "軒",
         "reading": "のき",
-        "mn": "хөмсөг",
+        "mn": "дээврийн саравч",
         "sources": [
             "bridge"
         ],
-        "glosses": "brow, eyebrow; eaves"
+        "glosses": "eaves"
     },
     {
         "jp": "鋸",
