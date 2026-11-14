@@ -147,11 +147,10 @@ const MNJP_ENTRIES = [
     {
         "jp": "合う",
         "reading": "あう",
-        "mn": "эвсэх",
+        "mn": "тохирох",
         "sources": [
             "bridge"
-        ],
-        "glosses": "to reconcile; to unite; to join in doing something"
+        ]
     },
     {
         "jp": "敢えて",
@@ -2089,11 +2088,10 @@ const MNJP_ENTRIES = [
     {
         "jp": "一連",
         "reading": "いちれん",
-        "mn": "гинж",
+        "mn": "цуврал",
         "sources": [
             "bridge"
-        ],
-        "glosses": "chain; fetters; caterpillar track"
+        ]
     },
     {
         "jp": "いつ",
@@ -4197,11 +4195,10 @@ const MNJP_ENTRIES = [
     {
         "jp": "奥付",
         "reading": "おくづけ",
-        "mn": "ором",
+        "mn": "хэвлэлийн мэдээлэл",
         "sources": [
             "bridge"
-        ],
-        "glosses": "imprint; mark, trace; news, rumours; water stream"
+        ]
     },
     {
         "jp": "奥歯",
@@ -4791,12 +4788,11 @@ const MNJP_ENTRIES = [
     {
         "jp": "落とす",
         "reading": "おとす",
-        "mn": "хаях",
+        "mn": "унагах",
         "sources": [
             "bridge",
             "kangowago"
         ],
-        "glosses": "to throw; to throw away (to discard); to abandon, to quit (a habit, schooling, work, ...); to lose; to miscarry (of animals)",
         "kangowago": {
             "text": "脱落する",
             "role": "kango"
@@ -8344,11 +8340,10 @@ const MNJP_ENTRIES = [
     {
         "jp": "軌道",
         "reading": "きどう",
-        "mn": "тойрог",
+        "mn": "тойрог зам",
         "sources": [
             "bridge"
-        ],
-        "glosses": "circumference; circle; orbit; district (an administrative division)"
+        ]
     },
     {
         "jp": "企図する",
@@ -8878,11 +8873,10 @@ const MNJP_ENTRIES = [
     {
         "jp": "行政",
         "reading": "ぎょうせい",
-        "mn": "засаг",
+        "mn": "захиргаа",
         "sources": [
             "bridge"
-        ],
-        "glosses": "government; rule, power; administration, state, regime; a political system; law"
+        ]
     },
     {
         "jp": "矯正する",
@@ -9215,11 +9209,10 @@ const MNJP_ENTRIES = [
     {
         "jp": "極み",
         "reading": "きわみ",
-        "mn": "үзүүр",
+        "mn": "туйл",
         "sources": [
             "bridge"
-        ],
-        "glosses": "point, tip; extremity; peak; the final round"
+        ]
     },
     {
         "jp": "禁煙",
@@ -13913,11 +13906,10 @@ const MNJP_ENTRIES = [
     {
         "jp": "呉服",
         "reading": "ごふく",
-        "mn": "эд",
+        "mn": "даавуу",
         "sources": [
             "bridge"
-        ],
-        "glosses": "material (substance out of which a thing is made); matter, substance; textile; goods, property; item"
+        ]
     },
     {
         "jp": "拳",
@@ -17060,11 +17052,10 @@ const MNJP_ENTRIES = [
     {
         "jp": "司会",
         "reading": "しかい",
-        "mn": "эзэн",
+        "mn": "хөтлөгч",
         "sources": [
             "bridge"
-        ],
-        "glosses": "master, lord; host; owner, proprietor"
+        ]
     },
     {
         "jp": "四角",
@@ -17602,11 +17593,10 @@ const MNJP_ENTRIES = [
     {
         "jp": "獅子奮迅",
         "reading": "ししふんじん",
-        "mn": "зэрлэг",
+        "mn": "догшин",
         "sources": [
             "bridge"
-        ],
-        "glosses": "wild (not domesticated); savage, barbaric; ferocious"
+        ]
     },
     {
         "jp": "支出",
@@ -17651,11 +17641,10 @@ const MNJP_ENTRIES = [
     {
         "jp": "支障",
         "reading": "ししょう",
-        "mn": "даваа",
+        "mn": "саад",
         "sources": [
             "bridge"
-        ],
-        "glosses": "mountain pass, mountain range; difficulty; obstacle; round (stage of difficulty); hard time"
+        ]
     },
     {
         "jp": "事情",
@@ -18997,11 +18986,10 @@ const MNJP_ENTRIES = [
     {
         "jp": "麝香腺",
         "reading": "じゃこうせん",
-        "mn": "заарь",
+        "mn": "заар",
         "sources": [
             "bridge"
-        ],
-        "glosses": "musk (odour, secretion); musk gland; body odour"
+        ]
     },
     {
         "jp": "謝罪する",
@@ -21047,11 +21035,10 @@ const MNJP_ENTRIES = [
     {
         "jp": "称号",
         "reading": "しょうごう",
-        "mn": "нэр",
+        "mn": "цол",
         "sources": [
             "bridge"
-        ],
-        "glosses": "name; title; reputation, renown; nominal (part of speech that shares features with nouns and adjectives)"
+        ]
     },
     {
         "jp": "称賛する",
@@ -23364,11 +23351,10 @@ const MNJP_ENTRIES = [
     {
         "jp": "臣民",
         "reading": "しんみん",
-        "mn": "иргэн",
+        "mn": "харьяат",
         "sources": [
             "bridge"
-        ],
-        "glosses": "citizen; people; civilian (non-military person); subject; country, state"
+        ]
     },
     {
         "jp": "人命",
@@ -24254,12 +24240,11 @@ const MNJP_ENTRIES = [
     {
         "jp": "少ない",
         "reading": "すくない",
-        "mn": "дутуу",
+        "mn": "цөөн",
         "sources": [
             "bridge",
             "kangowago"
         ],
-        "glosses": "insufficient; incomplete, unfinished; lacking, absent",
         "kangowago": {
             "text": "希少な",
             "role": "kango"
@@ -25581,11 +25566,10 @@ const MNJP_ENTRIES = [
     {
         "jp": "正則",
         "reading": "せいそく",
-        "mn": "журамлах",
+        "mn": "ердийн",
         "sources": [
             "bridge"
-        ],
-        "glosses": "to regulate; systematic; prescriptive; normative"
+        ]
     },
     {
         "jp": "生存",
@@ -29454,11 +29438,10 @@ const MNJP_ENTRIES = [
     {
         "jp": "近々",
         "reading": "ちかぢか",
-        "mn": "орчим",
+        "mn": "удахгүй",
         "sources": [
             "bridge"
-        ],
-        "glosses": "around, about (approximately); nearby; around, about; near"
+        ]
     },
     {
         "jp": "近づく",
@@ -29961,11 +29944,10 @@ const MNJP_ENTRIES = [
     {
         "jp": "ちんちん",
         "reading": "ちんちん",
-        "mn": "эрхтэн",
+        "mn": "шодой",
         "sources": [
             "bridge"
-        ],
-        "glosses": "organ; limb; penis."
+        ]
     },
     {
         "jp": "陳腐な",
@@ -31329,11 +31311,10 @@ const MNJP_ENTRIES = [
     {
         "jp": "陶酔",
         "reading": "とうすい",
-        "mn": "шартах",
+        "mn": "мансуурах",
         "sources": [
             "bridge"
-        ],
-        "glosses": "hangover, katzenjammer, morning after; intoxication; to be hungover; to have heartburn"
+        ]
     },
     {
         "jp": "当選する",
@@ -32163,11 +32144,10 @@ const MNJP_ENTRIES = [
     {
         "jp": "取り替える",
         "reading": "とりかえる",
-        "mn": "худалдах",
+        "mn": "солих",
         "sources": [
             "bridge"
-        ],
-        "glosses": "to trade; to sell; to betray, to sell out"
+        ]
     },
     {
         "jp": "鶏肉",
@@ -32840,11 +32820,10 @@ const MNJP_ENTRIES = [
     {
         "jp": "逃がす",
         "reading": "にがす",
-        "mn": "гаргах",
+        "mn": "суллах",
         "sources": [
             "bridge"
-        ],
-        "glosses": "to release; to emit, take out, move away, reveal; to express, create; to issue, publish"
+        ]
     },
     {
         "jp": "面皰",
@@ -33419,11 +33398,10 @@ const MNJP_ENTRIES = [
     {
         "jp": "濃青色",
         "reading": "のうせいしょく",
-        "mn": "хөх",
+        "mn": "хар хөх",
         "sources": [
             "bridge"
-        ],
-        "glosses": "dark blue; green, grue; weak; weakened; breast (of a woman); teat (of an animal)"
+        ]
     },
     {
         "jp": "ノート",
@@ -35090,11 +35068,10 @@ const MNJP_ENTRIES = [
     {
         "jp": "引き継ぐ",
         "reading": "ひきつぐ",
-        "mn": "залгах",
+        "mn": "залгамжлах",
         "sources": [
             "bridge"
-        ],
-        "glosses": "to attach, to graft, to unite; to link, to connect; to restock, to refill (a meal, a fire); to continue; to inherit, to accede (to a position)"
+        ]
     },
     {
         "jp": "引き取る",
@@ -36053,11 +36030,10 @@ const MNJP_ENTRIES = [
     {
         "jp": "含ます",
         "reading": "ふくます",
-        "mn": "хөхөх",
+        "mn": "хөхүүлэх",
         "sources": [
             "bridge"
-        ],
-        "glosses": "to suckle; to suck; to hug the chest; to be enlivened; to get excited"
+        ]
     },
     {
         "jp": "袋",
@@ -37252,11 +37228,10 @@ const MNJP_ENTRIES = [
     {
         "jp": "保護者",
         "reading": "ほごしゃ",
-        "mn": "аврагч",
+        "mn": "асран хамгаалагч",
         "sources": [
             "bridge"
-        ],
-        "glosses": "rescuer; saviour; protector"
+        ]
     },
     {
         "jp": "保護する",
@@ -38014,11 +37989,10 @@ const MNJP_ENTRIES = [
     {
         "jp": "丸め込む",
         "reading": "まるめこむ",
-        "mn": "авайлах",
+        "mn": "аргадах",
         "sources": [
             "bridge"
-        ],
-        "glosses": "to commiserate; to seduce; to have a disposition for; to favour; to sympathize with (generally)"
+        ]
     },
     {
         "jp": "回す",
@@ -38173,11 +38147,10 @@ const MNJP_ENTRIES = [
     {
         "jp": "味方",
         "reading": "みかた",
-        "mn": "ил",
+        "mn": "холбоотон",
         "sources": [
             "bridge"
-        ],
-        "glosses": "fawn (a young deer); clear, obvious, perceptible; out in the open (not hidden; not inside); known (not secret); publicly, openly"
+        ]
     },
     {
         "jp": "右",
@@ -38655,11 +38628,10 @@ const MNJP_ENTRIES = [
     {
         "jp": "群がる",
         "reading": "むらがる",
-        "mn": "түүх",
+        "mn": "бөөгнөрөх",
         "sources": [
             "bridge"
-        ],
-        "glosses": "to gather; to pick; history (aggregate of past events); history (branch of knowledge); history (form of writing)"
+        ]
     },
     {
         "jp": "無理",

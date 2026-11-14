@@ -1,0 +1,443 @@
+{
+  "note": "All 73 multi-character bridge rows whose English carried three or more senses, reviewed by hand 2026-11-14. 28 were corrected and 45 were examined and kept. The kept half is why this file exists: nothing in mnjp-data.js distinguishes a row that was checked and found right from one nobody has read, so without this record the same 45 would be offered for review again. Same argument as mnjp-reviewed-data.js. Build-time only -- no page reads this.",
+  "reviewed": [
+    {
+      "jp": "味方",
+      "reading": "みかた",
+      "was": "ил",
+      "corrected": "холбоотон"
+    },
+    {
+      "jp": "濃青色",
+      "reading": "のうせいしょく",
+      "was": "хөх",
+      "corrected": "хар хөх"
+    },
+    {
+      "jp": "となる",
+      "reading": "となる",
+      "was": "болох",
+      "kept": true
+    },
+    {
+      "jp": "どちらからとも無く",
+      "reading": "どちらからともなく",
+      "was": "зэрэг",
+      "kept": true
+    },
+    {
+      "jp": "中枢",
+      "reading": "ちゅうすう",
+      "was": "төв",
+      "kept": true
+    },
+    {
+      "jp": "丸め込む",
+      "reading": "まるめこむ",
+      "was": "авайлах",
+      "corrected": "аргадах"
+    },
+    {
+      "jp": "含ます",
+      "reading": "ふくます",
+      "was": "хөхөх",
+      "corrected": "хөхүүлэх"
+    },
+    {
+      "jp": "呉服",
+      "reading": "ごふく",
+      "was": "эд",
+      "corrected": "даавуу"
+    },
+    {
+      "jp": "圧する",
+      "reading": "あっする",
+      "was": "шахах",
+      "kept": true
+    },
+    {
+      "jp": "座する",
+      "reading": "ざする",
+      "was": "суух",
+      "kept": true
+    },
+    {
+      "jp": "引き継ぐ",
+      "reading": "ひきつぐ",
+      "was": "залгах",
+      "corrected": "залгамжлах"
+    },
+    {
+      "jp": "御覧じゃる",
+      "reading": "ごろんじゃる",
+      "was": "үзэх",
+      "kept": true
+    },
+    {
+      "jp": "愛する",
+      "reading": "あいする",
+      "was": "хайрлах",
+      "kept": true
+    },
+    {
+      "jp": "手のひら",
+      "reading": "てのひら",
+      "was": "алга",
+      "kept": true
+    },
+    {
+      "jp": "掻く",
+      "reading": "かく",
+      "was": "маажих",
+      "kept": true
+    },
+    {
+      "jp": "支障",
+      "reading": "ししょう",
+      "was": "даваа",
+      "corrected": "саад"
+    },
+    {
+      "jp": "最初",
+      "reading": "さいしょ",
+      "was": "анх",
+      "kept": true
+    },
+    {
+      "jp": "沙汰",
+      "reading": "さた",
+      "was": "мэдээ",
+      "kept": true
+    },
+    {
+      "jp": "群がる",
+      "reading": "むらがる",
+      "was": "түүх",
+      "corrected": "бөөгнөрөх"
+    },
+    {
+      "jp": "臣民",
+      "reading": "しんみん",
+      "was": "иргэн",
+      "corrected": "харьяат"
+    },
+    {
+      "jp": "落とす",
+      "reading": "おとす",
+      "was": "хаях",
+      "corrected": "унагах"
+    },
+    {
+      "jp": "行政",
+      "reading": "ぎょうせい",
+      "was": "засаг",
+      "corrected": "захиргаа"
+    },
+    {
+      "jp": "起き上がる",
+      "reading": "おきあがる",
+      "was": "босох",
+      "kept": true
+    },
+    {
+      "jp": "こね回す",
+      "reading": "こねまわす",
+      "was": "зуурах",
+      "kept": true
+    },
+    {
+      "jp": "ワン子",
+      "reading": "ワンこ",
+      "was": "нохой",
+      "kept": true
+    },
+    {
+      "jp": "奥付",
+      "reading": "おくづけ",
+      "was": "ором",
+      "corrected": "хэвлэлийн мэдээлэл"
+    },
+    {
+      "jp": "奴隷",
+      "reading": "どれい",
+      "was": "боол",
+      "kept": true
+    },
+    {
+      "jp": "寝ぼすけ",
+      "reading": "ねぼすけ",
+      "was": "унтаахай",
+      "kept": true
+    },
+    {
+      "jp": "極み",
+      "reading": "きわみ",
+      "was": "үзүүр",
+      "corrected": "туйл"
+    },
+    {
+      "jp": "横丁",
+      "reading": "よこちょう",
+      "was": "гудамж",
+      "kept": true
+    },
+    {
+      "jp": "正則",
+      "reading": "せいそく",
+      "was": "журамлах",
+      "corrected": "ердийн"
+    },
+    {
+      "jp": "琥珀",
+      "reading": "こはく",
+      "was": "хув",
+      "kept": true
+    },
+    {
+      "jp": "称号",
+      "reading": "しょうごう",
+      "was": "нэр",
+      "corrected": "цол"
+    },
+    {
+      "jp": "荷物",
+      "reading": "にもつ",
+      "was": "ачаа",
+      "kept": true
+    },
+    {
+      "jp": "落ちる",
+      "reading": "おちる",
+      "was": "унах",
+      "kept": true
+    },
+    {
+      "jp": "軌道",
+      "reading": "きどう",
+      "was": "тойрог",
+      "corrected": "тойрог зам"
+    },
+    {
+      "jp": "近々",
+      "reading": "ちかぢか",
+      "was": "орчим",
+      "corrected": "удахгүй"
+    },
+    {
+      "jp": "逃がす",
+      "reading": "にがす",
+      "was": "гаргах",
+      "corrected": "суллах"
+    },
+    {
+      "jp": "陶酔",
+      "reading": "とうすい",
+      "was": "шартах",
+      "corrected": "мансуурах"
+    },
+    {
+      "jp": "いざこざ",
+      "reading": "いざこざ",
+      "was": "хэрүүл",
+      "kept": true
+    },
+    {
+      "jp": "お客様",
+      "reading": "おきゃくさま",
+      "was": "зочин",
+      "kept": true
+    },
+    {
+      "jp": "ちんちん",
+      "reading": "ちんちん",
+      "was": "эрхтэн",
+      "corrected": "шодой"
+    },
+    {
+      "jp": "に就いて",
+      "reading": "について",
+      "was": "тухай",
+      "kept": true
+    },
+    {
+      "jp": "一連",
+      "reading": "いちれん",
+      "was": "гинж",
+      "corrected": "цуврал"
+    },
+    {
+      "jp": "二連",
+      "reading": "にれん",
+      "was": "давхар",
+      "kept": true
+    },
+    {
+      "jp": "保護者",
+      "reading": "ほごしゃ",
+      "was": "аврагч",
+      "corrected": "асран хамгаалагч"
+    },
+    {
+      "jp": "取り替える",
+      "reading": "とりかえる",
+      "was": "худалдах",
+      "corrected": "солих"
+    },
+    {
+      "jp": "台車",
+      "reading": "だいしゃ",
+      "was": "тэрэг",
+      "kept": true
+    },
+    {
+      "jp": "司会",
+      "reading": "しかい",
+      "was": "эзэн",
+      "corrected": "хөтлөгч"
+    },
+    {
+      "jp": "合う",
+      "reading": "あう",
+      "was": "эвсэх",
+      "corrected": "тохирох"
+    },
+    {
+      "jp": "同様",
+      "reading": "どうよう",
+      "was": "адил",
+      "kept": true
+    },
+    {
+      "jp": "嗅ぐ",
+      "reading": "かぐ",
+      "was": "үнэрлэх",
+      "kept": true
+    },
+    {
+      "jp": "太い",
+      "reading": "ふとい",
+      "was": "зузаан",
+      "kept": true
+    },
+    {
+      "jp": "太陽",
+      "reading": "たいよう",
+      "was": "нар",
+      "kept": true
+    },
+    {
+      "jp": "寄りかかる",
+      "reading": "よりかかる",
+      "was": "түших",
+      "kept": true
+    },
+    {
+      "jp": "少ない",
+      "reading": "すくない",
+      "was": "дутуу",
+      "corrected": "цөөн"
+    },
+    {
+      "jp": "弁明",
+      "reading": "べんめい",
+      "was": "тайлбар",
+      "kept": true
+    },
+    {
+      "jp": "強張る",
+      "reading": "こわばる",
+      "was": "хөших",
+      "kept": true
+    },
+    {
+      "jp": "惑星",
+      "reading": "わくせい",
+      "was": "гараг",
+      "kept": true
+    },
+    {
+      "jp": "意地を張る",
+      "reading": "いじをはる",
+      "was": "хэдэрлэх",
+      "kept": true
+    },
+    {
+      "jp": "日記",
+      "reading": "にっき",
+      "was": "журнал",
+      "kept": true
+    },
+    {
+      "jp": "月間",
+      "reading": "げっかん",
+      "was": "сар",
+      "kept": true
+    },
+    {
+      "jp": "獅子奮迅",
+      "reading": "ししふんじん",
+      "was": "зэрлэг",
+      "corrected": "догшин"
+    },
+    {
+      "jp": "祝う",
+      "reading": "いわう",
+      "was": "баярлах",
+      "kept": true
+    },
+    {
+      "jp": "称する",
+      "reading": "しょうする",
+      "was": "нэрлэх",
+      "kept": true
+    },
+    {
+      "jp": "結ぶ",
+      "reading": "むすぶ",
+      "was": "уях",
+      "kept": true
+    },
+    {
+      "jp": "結婚式",
+      "reading": "けっこんしき",
+      "was": "хурим",
+      "kept": true
+    },
+    {
+      "jp": "耳垢",
+      "reading": "みみあか",
+      "was": "хулхи",
+      "kept": true
+    },
+    {
+      "jp": "茶室",
+      "reading": "ちゃしつ",
+      "was": "цайны газар",
+      "kept": true
+    },
+    {
+      "jp": "蘇維埃",
+      "reading": "ソビエト",
+      "was": "зөвлөл",
+      "kept": true
+    },
+    {
+      "jp": "音写",
+      "reading": "おんしゃ",
+      "was": "галиг",
+      "kept": true
+    },
+    {
+      "jp": "骨髄",
+      "reading": "こつずい",
+      "was": "чөмөг",
+      "kept": true
+    },
+    {
+      "jp": "麝香腺",
+      "reading": "じゃこうせん",
+      "was": "заарь",
+      "corrected": "заар"
+    }
+  ]
+}
