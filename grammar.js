@@ -191,134 +191,11 @@ const Sfx = (function () {
     return d;
 })();
 
-// Music-only subset of game.js's GameAudio module -- the synthesized effects that go with it
-// are DeskSfx above, which arrived on 2026-11-01; this half is still just the background
-// track. Same fade-in/out-via-plain-HTMLAudioElement approach, same reasoning throughout.
-const GrammarAudio = (function () {
-    // 0 muted … 3 full, shared with Word Match through khanjp-volume.
-    const VOLUME_STEPS = [0, 0.30, 0.60, 1];
-    const VOLUME_KEY = 'khanjp-volume';
-    function storedLevel() {
-        try {
-            const v = parseInt(localStorage.getItem(VOLUME_KEY), 10);
-            return (v >= 0 && v <= 3) ? v : 3;
-        } catch (e) { return 3; }
-    }
-    let level = storedLevel();
-    let enabled = level > 0;
-    let musicEl = null;
-    let musicFadeTimer = null;
-    const MUSIC_VOLUME = 0.35;   // ceiling at level 3
-    function musicTarget() { return MUSIC_VOLUME * VOLUME_STEPS[level]; }
+// The background track. The player is music-player.js, shared with Word Match and loaded
+// before this file; the effects that go with it are DeskSfx above.
+const GrammarAudio = window.createMusicPlayer();
 
-    function ensureMusicEl() {
-        if (musicEl) return musicEl;
-        musicEl = new Audio();
-        musicEl.loop = true;
-        musicEl.volume = 0;
-        musicEl.preload = 'none';
-        return musicEl;
-    }
-
-    function fadeMusicTo(target, ms) {
-        if (musicFadeTimer) { window.clearInterval(musicFadeTimer); musicFadeTimer = null; }
-        const el = ensureMusicEl();
-        const start = el.volume;
-        const steps = Math.max(1, Math.round(ms / 50));
-        let i = 0;
-        musicFadeTimer = window.setInterval(() => {
-            i++;
-            el.volume = start + (target - start) * (i / steps);
-            if (i >= steps) {
-                el.volume = target;
-                window.clearInterval(musicFadeTimer);
-                musicFadeTimer = null;
-                if (target === 0) el.pause();
-            }
-        }, 50);
-    }
-
-    function setTrack(src) {
-        const el = ensureMusicEl();
-        const absoluteSrc = new URL(src, window.location.href).href;
-        if (el.src === absoluteSrc && !el.paused) return;
-        el.src = src;
-        el.currentTime = 0;
-        if (enabled) {
-            el.volume = 0;
-            el.play().catch(() => {});
-            fadeMusicTo(musicTarget(), 900);
-        }
-    }
-
-    function startAmbient() {
-        if (!musicEl || !musicEl.src) return;
-        musicEl.play().catch(() => {});
-        fadeMusicTo(musicTarget(), 900);
-    }
-
-    function stopAmbient() {
-        if (!musicEl) return;
-        fadeMusicTo(0, 400);
-    }
-
-    // Same first-gesture retry as GameAudio -- browsers block the level-select track's very
-    // first play() call since it fires before any click has happened.
-    (function retryOnFirstGesture() {
-        const kick = () => {
-            if (enabled && musicEl && musicEl.paused && musicEl.src) {
-                musicEl.play().catch(() => {});
-            }
-            document.removeEventListener('pointerdown', kick);
-            document.removeEventListener('keydown', kick);
-        };
-        document.addEventListener('pointerdown', kick, { once: true });
-        document.addEventListener('keydown', kick, { once: true });
-    })();
-
-    function setLevel(next) {
-        level = Math.max(0, Math.min(VOLUME_STEPS.length - 1, next | 0));
-        enabled = level > 0;
-        try { localStorage.setItem(VOLUME_KEY, String(level)); } catch (e) { /* private mode */ }
-        if (enabled) startAmbient(); else stopAmbient();   // startAmbient re-fades to the new target
-        return level;
-    }
-    function cycleLevel() { return setLevel(level <= 0 ? VOLUME_STEPS.length - 1 : level - 1); }
-    function setEnabled(next) {
-        setLevel(next ? (level || VOLUME_STEPS.length - 1) : 0);
-        return enabled;
-    }
-
-    return {
-        toggle: () => setEnabled(!enabled),
-        isEnabled: () => enabled,
-        setLevel: setLevel,
-        cycleLevel: cycleLevel,
-        getLevel: () => level,
-        setLevelTrack: setTrack,
-    };
-})();
-
-function escapeHtml(str) {
-    const div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
-}
-
-function formatTime(totalSeconds) {
-    const m = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
-    const s = (totalSeconds % 60).toString().padStart(2, '0');
-    return `${m}:${s}`;
-}
-
-function shuffleArray(arr) {
-    const a = arr.slice();
-    for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-}
+// escapeHtml, formatTime and shuffleArray are in shared-utils.js.
 
 function getLevelData(track, levelNum) {
     return (GRAMMAR_LEVELS[track] || []).find(l => l.level === levelNum) || null;
@@ -805,7 +682,7 @@ function openLevel(track, levelNum) {
 
     const jlptTier = levelToJlptTier(track, levelNum);
     const musicPool = MUSIC_POOLS[jlptTier];
-    GrammarAudio.setLevelTrack(musicPool[withinTierIndex(track, levelNum) % musicPool.length]);
+    GrammarAudio.setTrack(musicPool[withinTierIndex(track, levelNum) % musicPool.length]);
 
     document.getElementById('gc-cleared-list').innerHTML = `<p class="gc-cleared-empty">${escapeHtml(window.t('grammar.clearedEmptyHint'))}</p>`;
     document.getElementById('gc-level-label').textContent = window.tf('grammar.bandLevel',
@@ -908,7 +785,7 @@ function openReviewLevel(sentences) {
     clearedCount = 0;
     timeRemaining = MATCH_DURATION;
 
-    GrammarAudio.setLevelTrack(LEVEL_SELECT_TRACK);
+    GrammarAudio.setTrack(LEVEL_SELECT_TRACK);
     document.getElementById('gc-cleared-list').innerHTML = `<p class="gc-cleared-empty">${escapeHtml(window.t('grammar.clearedEmptyHint'))}</p>`;
     document.getElementById('gc-level-label').textContent = window.t('grammar.reviewTitle');
     updateTopStats();
@@ -925,7 +802,7 @@ function backToLevels() {
     stopTimer();
     hideEl(document.getElementById('gc-match-section'));
     showEl(document.getElementById('gc-select-section'));
-    GrammarAudio.setLevelTrack(LEVEL_SELECT_TRACK);
+    GrammarAudio.setTrack(LEVEL_SELECT_TRACK);
     renderLevelSelect();
 }
 
@@ -1418,23 +1295,11 @@ if (gcParams.get('review') === '1') {
         startGrammarReview(session);
     });
 }
-GrammarAudio.setLevelTrack(LEVEL_SELECT_TRACK); // level-select screen's own ambient track
+GrammarAudio.setTrack(LEVEL_SELECT_TRACK); // level-select screen's own ambient track
 
-// Opening a level swaps a long level list for a short board, and the browser keeps the scroll
-// offset -- on a phone that leaves you staring at the footer, which is exactly what was reported.
-// Any *-section shown from here starts at the top. showEl is a function declaration in
-// auth-shared.js, so it is a property of the global object and wrapping it catches the bare
-// showEl(...) calls in this file too.
+// A section shown with showEl starts at the top of the page (see showEl in auth-shared.js);
+// this stops the browser restoring an old offset over that on a reload or a Back.
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-(function keepSectionSwitchesAtTop() {
-    var inner = window.showEl;
-    if (typeof inner !== 'function') return;
-    window.showEl = function (el) {
-        var out = inner.apply(this, arguments);
-        if (el && el.id && el.id.slice(-8) === '-section') window.scrollTo(0, 0);
-        return out;
-    };
-})();
 
 // An AudioContext constructed outside a gesture comes back suspended and stays silent for the
 // session, so the first pointerdown anywhere on the page is what starts it. once:true -- after

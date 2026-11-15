@@ -31,12 +31,6 @@ function furigana(text, reading) {
     return escapeHtml(prefix) + `<ruby>${escapeHtml(kanjiPart)}<rp>(</rp><rt>${escapeHtml(readingPart)}</rt><rp>)</rp></ruby>` + escapeHtml(suffix);
 }
 
-function escapeHtml(str) {
-    const div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
-}
-
 // ---------------------------------------------------------------------------
 // Tab switching
 // ---------------------------------------------------------------------------

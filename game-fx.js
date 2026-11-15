@@ -1,9 +1,8 @@
-// Word Match — board DOM handles, the particle canvases, and the effect helpers
+// Word Match — board DOM handles, the particle canvases, the floating text and the sound
+// toggles.
 //
-// (tween, floating score text) plus the sound toggles.
-//
-// Word Match is split across game-core.js, game-fx.js, game-board.js, game-play.js,
-// game-wakan.js and game.js, loaded in that order by game.html. They are classic scripts
+// Word Match is split across game-core.js, game-fx.js, game-gate.js, game-memory.js and
+// game.js, loaded in that order by game.html. They are classic scripts
 // sharing one global scope, so each can read and assign the others’ top-level `let`s and
 // call their functions. The one rule is load order: code that runs while a file is loading
 // may only use what an EARLIER file defined. Listeners and requestAnimationFrame callbacks run
@@ -38,23 +37,12 @@ function centerOf(el) {
     return { x: r.left + r.width / 2 - mainRect.left, y: r.top + r.height / 2 - mainRect.top };
 }
 
-function tween(from, to, duration, onUpdate) {
-    const start = performance.now();
-    const ease = t => 1 - Math.pow(1 - t, 3);
-    function step(now) {
-        const t = Math.min((now - start) / duration, 1);
-        onUpdate(from + (to - from) * ease(t));
-        if (t < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-}
-
-function floatText(x, y, text, big, lightning, extraClass) {
+function floatText(x, y, text) {
     const el = document.createElement('div');
-    el.className = 'float-text' + (big ? ' streak-text' : '') + (lightning ? ' lightning-text' : '') + (extraClass ? ' ' + extraClass : '');
+    el.className = 'float-text';
     el.style.left = x + 'px';
     el.style.top = y + 'px';
-    el.style.fontSize = big ? '1.5rem' : '1.05rem';
+    el.style.fontSize = '1.05rem';
     el.textContent = text;
     fxTextLayer.appendChild(el);
     window.setTimeout(() => el.remove(), 1150);

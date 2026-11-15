@@ -225,12 +225,6 @@ body {
 .project-tech { font-size: var(--text-xs); color: var(--accent-dark); font-weight: 700; letter-spacing: 0.02em; }
 .bookmark-btn { background: none; border: none; cursor: pointer; font-size: var(--text-md); line-height: 1; padding: 2px; opacity: 0.55; transition: opacity 0.2s ease; }
 .bookmark-btn:hover, .bookmark-btn.bookmarked { opacity: 1; }
-.about-btn {
-    align-self: flex-start; font-family: inherit; font-size: var(--text-sm); font-weight: 700;
-    padding: 8px 16px; border-radius: 4px; border: none; background: var(--accent); color: var(--bg-page);
-    cursor: pointer; transition: background 0.2s ease;
-}
-.about-btn:hover { background: var(--accent-dark); }
 .auth-btn {
     display: inline-block; padding: 10px 20px; background: var(--accent); border: 1px solid var(--accent-dark);
     border-radius: 4px; color: var(--bg-page); font-family: inherit; font-weight: 600; font-size: var(--text-sm);
@@ -585,7 +579,6 @@ body {
 /* Same reason as the rule of this name in style.css: main carries tabindex="-1" only so the skip
    link can focus it, and a ring around the whole page is not useful feedback. Here it also catches
    the index-rail targets, which about.js now focuses for the same reason. */
-main[tabindex="-1"]:focus,
-.about-section[tabindex="-1"]:focus {
+main[tabindex="-1"]:focus {
     outline: none;
 }

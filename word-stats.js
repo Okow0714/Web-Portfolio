@@ -91,26 +91,19 @@
     // tool, and a second tool passing furigana would otherwise reintroduce it silently.
     // <rp> first: its content is the fallback parenthesis, which must go WITH the reading, not be
     // left behind as a stray "()" once <rt> is removed.
-    function plainText(s) {
-        return String(s)
-            .replace(/<rp>[\s\S]*?<\/rp>/gi, '')
-            .replace(/<rt>[\s\S]*?<\/rt>/gi, '')
-            .replace(/<\/?ruby>/gi, '')
-            .replace(/<[^>]*>/g, '')
-            .trim();
-    }
+    // stripFurigana itself is in shared-utils.js, which every page loading this file loads first.
 
     // The one call the tools make. Fire-and-forget on purpose: a learner mid-level must never
     // wait on, or be interrupted by, a statistics write.
     window.recordWordAttempt = function (row) {
         if (!row || !row.word || !row.source) return;
-        const word = plainText(row.word).slice(0, 120);
+        const word = stripFurigana(row.word).slice(0, 120);
         if (!word) return;   // markup and nothing else is not a word
         const clean = {
             source: row.source,
             word: word,
             correct: !!row.correct,
-            confusedWith: row.confusedWith ? plainText(row.confusedWith).slice(0, 120) || null : null,
+            confusedWith: row.confusedWith ? stripFurigana(row.confusedWith).slice(0, 120) || null : null,
         };
         if (!window.supabaseReady || !session) {
             const buf = readBuffer();

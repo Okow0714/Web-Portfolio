@@ -48,12 +48,6 @@ const Sfx = (function () {
     return d;
 })();
 
-function escapeHtml(str) {
-    const div = document.createElement('div');
-    div.textContent = str == null ? '' : String(str);
-    return div.innerHTML;
-}
-
 const toHira = s => (s || '').replace(/[ァ-ヶ]/g, c => String.fromCharCode(c.charCodeAt(0) - 0x60));
 
 // The JLPT hues are declared once, on :root in style.css. Reading them here keeps a level the

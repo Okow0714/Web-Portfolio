@@ -165,23 +165,5 @@ let timeLeft = 0;          // Time Attack only
 let livesLeft = 0;         // Perfectionist only
 let levelOver = false;     // set when a run ends, so nothing on the board responds afterwards
 
-function escapeHtml(str) {
-    const div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
-}
-
-function formatTime(totalSeconds) {
-    const m = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
-    const s = (totalSeconds % 60).toString().padStart(2, '0');
-    return `${m}:${s}`;
-}
-
-function shuffleArray(arr) {
-    for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-    return arr;
-}
+// escapeHtml, formatTime and shuffleArray are in shared-utils.js.
 

@@ -212,14 +212,6 @@ body {
     position: relative;
 }
 
-/* Display face for headline-weight text — a warm, characterful serif in
-   place of running the whole site through one workhorse sans, used with
-   restraint on names/section titles/big numbers rather than everywhere. */
-.main-name,
-.section-title h2,
-.stat-number {
-    font-family: var(--font-display);
-}
 
 .container {
     max-width: 1200px;
@@ -969,11 +961,6 @@ html[data-theme="dark"] { color-scheme: dark; }
     color: var(--accent);
 }
 
-/* Rectangle with the left edge cut on a diagonal: long side on top, short side on bottom */
-.auth-btn-cut {
-    padding-left: 28px;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 16px 100%);
-}
 
 .auth-btn-outline:hover {
     background: var(--accent-gradient);
@@ -1674,51 +1661,6 @@ html[data-theme="dark"] { color-scheme: dark; }
         padding: 11px 0;
     }
 }
-
-/* ---------------------------------------------------------------------
-   JLPT level color system — shared across every page that shows level
-   cards (Word Match, Phonetics Family) or a level dropdown (the header
-   nav), via the data-jlpt attribute on each link (NOT [href*="level="] -- that is a
-   substring match, so "level=1" also matched "level=11" and shifted every tier by one)
-   page's own JS/HTML rather than duplicating this block per stylesheet.
-   Colors come from --jlpt-n5..--jlpt-n1 defined in :root above.
-   --------------------------------------------------------------------- */
-.level-card[data-level="N5"] .level-badge { background: var(--jlpt-n5-tint); color: var(--jlpt-n5-ink); }
-.level-card[data-level="N4"] .level-badge { background: var(--jlpt-n4-tint); color: var(--jlpt-n4-ink); }
-.level-card[data-level="N3"] .level-badge { background: var(--jlpt-n3-tint); color: var(--jlpt-n3-ink); }
-.level-card[data-level="N2"] .level-badge { background: var(--jlpt-n2-tint); color: var(--jlpt-n2-ink); }
-.level-card[data-level="N1"] .level-badge { background: var(--jlpt-n1-tint); color: var(--jlpt-n1-ink); }
-
-.level-card[data-level="N5"] { border-top: 3px solid var(--jlpt-n5); }
-.level-card[data-level="N4"] { border-top: 3px solid var(--jlpt-n4); }
-.level-card[data-level="N3"] { border-top: 3px solid var(--jlpt-n3); }
-.level-card[data-level="N2"] { border-top: 3px solid var(--jlpt-n2); }
-.level-card[data-level="N1"] { border-top: 3px solid var(--jlpt-n1); }
-
-.level-card[data-level="N5"]:hover { border-color: var(--jlpt-n5); }
-.level-card[data-level="N4"]:hover { border-color: var(--jlpt-n4); }
-.level-card[data-level="N3"]:hover { border-color: var(--jlpt-n3); }
-.level-card[data-level="N2"]:hover { border-color: var(--jlpt-n2); }
-.level-card[data-level="N1"]:hover { border-color: var(--jlpt-n1); }
-
-/* Header nav dropdown ("Word Game" -> N5..N1): a colored left rule per
-   level link, matching the same spectrum, so the dropdown itself hints
-   at difficulty before a card is ever opened. */
-.nav-dropdown a[data-jlpt="N5"] { border-left-color: var(--jlpt-n5); }
-.nav-dropdown a[data-jlpt="N4"] { border-left-color: var(--jlpt-n4); }
-.nav-dropdown a[data-jlpt="N3"] { border-left-color: var(--jlpt-n3); }
-.nav-dropdown a[data-jlpt="N2"] { border-left-color: var(--jlpt-n2); }
-.nav-dropdown a[data-jlpt="N1"] { border-left-color: var(--jlpt-n1); }
-
-/* The light pastel --jlpt-*-tint backgrounds were designed for the site's light pages — on the
-   header's own dark panel they'd read as a washed-out pale patch, so hover uses a low-opacity
-   mix of the level's own hue against the dark panel instead, keeping the same per-level color
-   language without fighting the masthead's own palette. */
-.nav-dropdown a[data-jlpt="N5"]:hover { background: color-mix(in srgb, var(--jlpt-n5) 22%, transparent); border-left-color: var(--jlpt-n5); color: var(--jlpt-n5); }
-.nav-dropdown a[data-jlpt="N4"]:hover { background: color-mix(in srgb, var(--jlpt-n4) 22%, transparent); border-left-color: var(--jlpt-n4); color: var(--jlpt-n4); }
-.nav-dropdown a[data-jlpt="N3"]:hover { background: color-mix(in srgb, var(--jlpt-n3) 22%, transparent); border-left-color: var(--jlpt-n3); color: var(--jlpt-n3); }
-.nav-dropdown a[data-jlpt="N2"]:hover { background: color-mix(in srgb, var(--jlpt-n2) 22%, transparent); border-left-color: var(--jlpt-n2); color: var(--jlpt-n2); }
-.nav-dropdown a[data-jlpt="N1"]:hover { background: color-mix(in srgb, var(--jlpt-n1) 22%, transparent); border-left-color: var(--jlpt-n1); color: var(--jlpt-n1); }
 
 /* Darker ground (Settings -> Darker theme). The masthead and footer bookend every page, so they
    move with it; the gold border and text are untouched. */

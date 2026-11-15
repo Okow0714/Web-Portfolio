@@ -226,12 +226,6 @@
         });
     }
 
-    function escapeHtml(str) {
-        const d = document.createElement('div');
-        d.textContent = str == null ? '' : String(str);
-        return d.innerHTML;
-    }
-
     // word_stats rows are keys, and keys hold no markup -- word-stats.js strips furigana before
     // anything is written. Rows written BEFORE that fix still carry it, though, and escapeHtml
     // prints those tags literally: this panel showed `<ruby>目<rp>(</rp><rt>め</rt>...` where it
@@ -239,18 +233,11 @@
     // existing rows legible without a migration; it is also the right place for it, since the
     // alternative -- handing DB text to innerHTML so the ruby renders -- is a habit worth not
     // having, even where the row can only be your own.
-    function plainText(str) {
-        return String(str == null ? '' : str)
-            .replace(/<rp>[\s\S]*?<\/rp>/gi, '')
-            .replace(/<rt>[\s\S]*?<\/rt>/gi, '')
-            .replace(/<\/?ruby>/gi, '')
-            .replace(/<[^>]*>/g, '')
-            .trim();
-    }
+    // (stripFurigana, like escapeHtml, is in shared-utils.js.)
 
-    // Escaped, always: plainText drops the tags this data is known to carry, not every shape a
+    // Escaped, always: stripFurigana drops the tags this data is known to carry, not every shape a
     // string could take, and it is the escape that makes it safe rather than the stripping.
-    const safe = (str) => escapeHtml(plainText(str));
+    const safe = (str) => escapeHtml(stripFurigana(str));
 
     async function refreshDashboard(session) {
         renderStaticStrings();

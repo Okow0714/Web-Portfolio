@@ -143,12 +143,6 @@ function firstNonSymbolIndex(list, from) {
     return i;
 }
 
-function escapeHtml(str) {
-    const div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
-}
-
 // ---------------------------------------------------------------------------
 // Progress: load on auth change, save on text completion
 // ---------------------------------------------------------------------------
@@ -1565,21 +1559,9 @@ window.onAuthChange(async (session) => {
     }
 });
 
-// Opening a level swaps a long level list for a short board, and the browser keeps the scroll
-// offset -- on a phone that leaves you staring at the footer, which is exactly what was reported.
-// Any *-section shown from here starts at the top. showEl is a function declaration in
-// auth-shared.js, so it is a property of the global object and wrapping it catches the bare
-// showEl(...) calls in this file too.
+// A section shown with showEl starts at the top of the page (see showEl in auth-shared.js);
+// this stops the browser restoring an old offset over that on a reload or a Back.
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-(function keepSectionSwitchesAtTop() {
-    var inner = window.showEl;
-    if (typeof inner !== 'function') return;
-    window.showEl = function (el) {
-        var out = inner.apply(this, arguments);
-        if (el && el.id && el.id.slice(-8) === '-section') window.scrollTo(0, 0);
-        return out;
-    };
-})();
 
 // ---------------------------------------------------------------------------
 // Deep link from the dictionary's cross-tool badges: reading.html?text=<id> opens that passage

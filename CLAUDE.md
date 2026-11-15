@@ -109,8 +109,8 @@ not a link and touch has no hover, the chrome carries a small inline script that
 twelve pages); `style.css` matches `.nav-item.open .nav-dropdown` alongside `:hover` and
 `:focus-within`. **The per-level dropdowns are gone** — Word Match and Grammar Connect both open on
 their own level select, so the nav listed twelve links to states the page offers anyway. The
-`?level=` and `?track=` URLs still work; `nav.allLevels` and the JLPT/track strings are now unused
-but kept. **The `@media (max-width: 1280px)` block went with them**: it existed only because seven
+`?level=` and `?track=` URLs still work. (`nav.allLevels` and the track strings were kept unused
+until the 2026-11-15 audit removed them.) **The `@media (max-width: 1280px)` block went with them**: it existed only because seven
 Mongolian labels overflowed a 1280px bar, and made every dropdown a full-width fixed sheet at
 laptop widths. Measured after the change: zero overflow down to 861px in both languages, where the
 860px block (which re-declares the scrolling strip and the sheet itself) takes over. **"Vocabulary"
@@ -1645,6 +1645,36 @@ study-tools column is not repeated, because the drawer above that row already IS
 giving them one. The hub hid `.site-brand` and `.header-nav` outright, which on a phone meant
 no logo to tap and so no drawer; below 861px `hub.css` puts the seal back top-left for that.
 Desktop keeps its footer and is unchanged. `scratchpad/mobile/verify2.js` taps through all of it.
+
+**Shared helpers are written once** (2026-11-15 code audit). `shared-utils.js` holds
+`escapeHtml`, `formatTime`, `shuffleArray` and `stripFurigana`; it is loaded before
+`auth-shared.js` on the six pages that use any of them (game, grammar, dashboard, dictionary,
+phonetics, reading). Before it, `escapeHtml` existed as six private copies and the two
+`shuffleArray`s had drifted: Word Match's shuffled in place, Grammar Connect's shuffled a copy.
+The shared one is IN PLACE and returns the array. **A page script must not declare any of
+those four names again** -- in a classic script a second function declaration silently
+replaces the shared one for the whole page.
+`music-player.js` is `createMusicPlayer()`, the looping track plus the four-step
+`khanjp-volume` control, which used to be written out twice (inside `game-audio.js` and
+inside `grammar.js`). `game-audio.js` is now only that player plus the two phrases that end
+a level; the ten effects it carried for the pre-2026-10-21 board had no callers and are gone,
+as are `ParticleField`'s bolt, ring, sparkle and dust.
+"A section shown starts at the top of the page" is in `showEl` itself (`auth-shared.js`);
+game.js, grammar.js and reading.js each used to wrap `window.showEl` to do it.
+**`grammar.js`, `dictionary.js`, `phonetics.js`, `reading.js`, `origins.js` and
+`about.js` are `type="module"`**, so their top-level names are NOT globals: a probe cannot
+read `GrammarAudio` from `page.evaluate`, and a duplicate-name scan across files means
+nothing for them. Only Word Match's scripts, `dashboard.js` and the shared files are classic.
+The audit's scripts are in the scratchpad's `audit/`: `static.js` (unused strings),
+`deadcss.js` (classes no class attribute or script uses -- **an id of the same name does not
+count**, which is how `.phonetics-title-trigger` survived earlier audits), `unused.js`,
+`smells.js` (same function name in two files, long functions, repeated blocks),
+`runtime.js` (missing keys, declarations the browser drops, console noise on all 20 pages),
+`prune-css.js` (brace-matching rule removal, not a regex) and `snapcmp.js`, which shot every
+page on the previous commit and on the working tree in two themes at two sizes: 72 identical,
+0 changed, 8 nondeterministic (Word Match and the hub, which the specs cover instead).
+**`DEMO_MARKS_ON_LEVEL` in `game-gate.js` is still on**: level 1 of every tier shows both
+mode marks as earned for every visitor. Left for the site owner to switch off.
 
 ## Working conventions
 

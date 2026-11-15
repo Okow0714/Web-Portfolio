@@ -168,11 +168,6 @@ body:has(.path-stage-main) {
     color: var(--ink-faint);
 }
 
-.path-stage.is-start .path-chip {
-    border-color: var(--saffron-bright);
-    color: var(--saffron);
-    background: var(--saffron-tint);
-}
 
 .path-hours {
     margin-left: auto;
@@ -256,37 +251,6 @@ a.path-tool:hover {
     font-family: 'Fraunces', Georgia, serif;
     color: var(--saffron);
     font-weight: 600;
-}
-
-/* ---------------------------------------------------------------------
-   Closing note
-   --------------------------------------------------------------------- */
-.path-outro {
-    margin-top: 40px;
-    padding: 22px 24px;
-    border: 1px solid var(--edge);
-    background: var(--paper-raised);
-}
-
-.path-outro h3 {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin: 0 0 10px;
-}
-
-.path-outro p {
-    margin: 0 0 10px;
-    color: var(--ink-soft);
-    font-size: 0.94rem;
-}
-
-.path-outro p:last-child {
-    margin-bottom: 0;
-}
-
-.path-outro a {
-    color: var(--saffron);
 }
 
 /* ---------------------------------------------------------------------

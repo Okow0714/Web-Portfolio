@@ -37,14 +37,8 @@ window.I18N_STRINGS = {
     'game.levelN': { en: 'Level {n}', mn: '{n}-р шат' },
 
     'nav.portfolio': { en: 'About Me', mn: 'Миний тухай' },
-    'nav.hobbies': { en: 'Hobbies', mn: 'Сонирхол' },
-    'nav.mySkills': { en: 'My Skills', mn: 'Миний ур чадвар' },
-    'nav.projectLearning': { en: 'Project & Learning', mn: 'Төсөл ба сургалт' },
     'nav.qualifications': { en: 'Qualifications', mn: 'Мэргэшил' },
-    'nav.academicHistory': { en: 'Academic History', mn: 'Боловсролын түүх' },
-    'nav.writingCreativity': { en: 'Writing & Creativity', mn: 'Бичвэр ба бүтээлч байдал' },
     'nav.resume': { en: 'Resume', mn: 'Намтар' },
-    'nav.getInTouch': { en: 'Get In Touch', mn: 'Холбоо барих' },
     // Study Path is linked from the hub and the footer, not the masthead nav: it is a route through
     // the tools rather than a tool. (The row was also full until the 2026-09-16 regrouping.)
     'nav.studyPath': { en: 'Study Path', mn: 'Сурах зам' },
@@ -52,7 +46,6 @@ window.I18N_STRINGS = {
     'nav.home': { en: 'Home', mn: 'Нүүр' },
     'nav.kanaOrigins': { en: 'Kana Origins', mn: 'Канагийн үүсэл' },
     'nav.wordGame': { en: 'Word Match', mn: 'Үг холбох дасгал' },
-    'nav.allLevels': { en: 'All Levels', mn: 'Бүх шат' },
     'nav.n5Beginner': { en: 'N5 · Beginner', mn: 'N5 · Анхан шат' },
     'nav.n4Elementary': { en: 'N4 · Elementary', mn: 'N4 · Суурь шат' },
     'nav.n3Intermediate': { en: 'N3 · Intermediate', mn: 'N3 · Дунд шат' },
@@ -61,8 +54,6 @@ window.I18N_STRINGS = {
     'nav.dokkaiReader': { en: 'Dokkai Reader', mn: 'Уншлагын дадлага' },
     'nav.phoneticsFamily': { en: 'Phonetics Family', mn: 'Дуудлагын бүлэг' },
     'nav.grammarConnect': { en: 'Grammar Connect', mn: 'Дүрэм холбох' },
-    'nav.foundationN5N3': { en: 'Foundation · N5-N3', mn: 'Суурь · N5-N3' },
-    'nav.advancedN2N1': { en: 'Advanced · N2-N1', mn: 'Ахисан · N2-N1' },
     'nav.dictionary': { en: 'Dictionary', mn: 'Толь бичиг' },
     // Menu label only. The page itself stays "Монгол-Япон толь бичиг" in its title, description
     // and share card: "толь бичиг" is what people search for, and the heading above it already
@@ -127,7 +118,6 @@ window.I18N_STRINGS = {
     'account.tutorialsDone': { en: 'They will show again', mn: 'Дахин гарч ирнэ' },
 
     'account.settings': { en: 'Settings', mn: 'Тохиргоо' },
-    'account.yourAccount': { en: 'Your Account', mn: 'Таны бүртгэл' },
     'account.dangerZone': { en: 'Danger Zone', mn: 'Аюултай бүс' },
 
     // Reset study progress. Kept distinct from account deletion in wording as well as in
@@ -153,7 +143,6 @@ window.I18N_STRINGS = {
 
     // Level-card stat rail, shared by Word Match and Grammar Connect.
     'stat.bestTime': { en: 'Best time', mn: 'Шилдэг хугацаа' },
-    'stat.moves': { en: 'Moves', mn: 'Хөдөлгөөн' },
     'stat.mistakes': { en: 'Mistakes', mn: 'Алдаа' },
     'account.deleteWarning': { en: "Deleting your account permanently removes your profile, bookmarks, messages, and study progress. This can't be undone.", mn: 'Бүртгэлээ устгавал профайл, тэмдэглэгээ, зурвас, суралцах явц бүрмөсөн устана. Үүнийг буцаах боломжгүй.' },
     'account.deleteMyAccount': { en: 'Delete My Account', mn: 'Бүртгэлээ устгах' },

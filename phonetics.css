@@ -142,54 +142,11 @@ body:has(.phonetics-main) {
     color: var(--text-primary);
 }
 
-.phonetics-title {
-    font-family: var(--font-display);
-    font-size: 2.4rem;
-    font-weight: 700;
-    margin: 0 0 12px;
-}
-
-.phonetics-subtitle {
-    color: var(--text-secondary);
-    max-width: 720px;
-    line-height: 1.6;
-    margin: 0 0 8px;
-}
-
 /* (.phonetics-credit is gone — the Kanjium / Tatoeba / kanji-frequency attributions it held
    are now in the sitewide footer, since Word Match ships the same Tatoeba sentences and the
    CC BY / CC BY-SA credit is a license obligation on every page, not just this one.) */
 
-.phonetics-section.hidden {
-    display: none;
-}
-
-/* ---------------------------------------------------------------------
-   Content-pane transitions (family-list <-> family-tree)
-   0.28s / ease matches the site's existing 0.2s-0.3s ease transition
-   convention (see .pick, .node, .modal-card usage in this file/style.css).
-   `.hidden` still does the final display:none (kept for a11y / no layout
-   cost when off-screen); these classes drive the opacity/transform tween
-   that happens before `.hidden` is (re)applied.
-   --------------------------------------------------------------------- */
-.phonetics-section {
-    transition: opacity 0.28s ease, transform 0.28s ease;
-    opacity: 1;
-    transform: translateY(0) scale(1);
-}
-
-.phonetics-section.phonetics-section-enter {
-    opacity: 0;
-    transform: translateY(14px) scale(0.98);
-}
-
-.phonetics-section.phonetics-section-leave {
-    opacity: 0;
-    transform: translateY(-10px) scale(0.98);
-}
-
 @media (prefers-reduced-motion: reduce) {
-    .phonetics-section,
     .tchip,
     .troot,
     .lv,
@@ -204,44 +161,6 @@ body:has(.phonetics-main) {
 /* ---------------------------------------------------------------------
    Clickable page title -> explainer modal trigger
    --------------------------------------------------------------------- */
-.phonetics-title-trigger {
-    background: none;
-    border: none;
-    padding: 8px 0;
-    margin: -8px 0 4px;
-    display: inline-flex;
-    align-items: baseline;
-    gap: 10px;
-    cursor: pointer;
-    font-family: inherit;
-    color: inherit;
-    text-align: left;
-}
-
-.phonetics-title-trigger .phonetics-title {
-    margin: 0;
-    transition: color 0.2s ease;
-}
-
-/* Light-flip: --accent-light on the page ground is 2.59:1. --accent-dark is 6.07:1. */
-.phonetics-title-trigger:hover .phonetics-title {
-    color: var(--accent-dark);
-}
-
-.phonetics-title-info {
-    font-size: 1.3rem;
-    color: var(--text-muted);
-    transition: color 0.2s ease;
-}
-
-.phonetics-title-trigger:hover .phonetics-title-info {
-    color: var(--accent-dark);
-}
-
-.phonetics-info-btn {
-    margin: 4px 0 20px;
-    display: inline-block;
-}
 
 /* Light-flip: --border against the page ground is only 1.30:1, so a 1px --border outline left
    this button with no perceptible edge at all. --text-muted gives 3.74:1, which is the 3:1
@@ -1172,8 +1091,6 @@ html[data-contrast="darker"] .site-footer {
     --header-bg: #123e30;
     --header-bg-elevated: #1f6b52;
 }
-
-
 
 /* tutorial.js inserts its help button straight after #phonetics-title-trigger, which is a flex
    child of .phon-app — so without this it stretches to the full width of the page and

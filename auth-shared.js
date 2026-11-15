@@ -101,6 +101,12 @@ function isModal(el) {
 function showEl(el) {
     const opening = isModal(el) && el.classList.contains('hidden');
     el.classList.remove('hidden');
+    // A tool's views are <section id="...-section"> blocks swapped with showEl/hideEl. Opening a
+    // level replaces a long level list with a short board and the browser keeps the scroll
+    // offset -- on a phone that leaves you staring at the footer, which is what was reported.
+    // So a section shown starts at the top. (Word Match, Grammar Connect and Dokkai Reader are
+    // the three pages with such sections; each used to wrap this function to do the same.)
+    if (el.id && el.id.slice(-8) === '-section') window.scrollTo(0, 0);
     if (!opening) return;
     focusBeforeModal = document.activeElement;
     // Let the entrance animation start before taking focus, or the browser scrolls to an element

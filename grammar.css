@@ -743,7 +743,6 @@ body:has(.grammar-main) {
     fill: light-dark(#ddd3b8, #12192b);
 }
 
-.gc-trail-ink { display: none; }   /* nothing is drawn under the tiles any more */
 
 .gc-tri {
     /* A flex item, not an absolutely positioned one. It was absolute while the lattice placed
