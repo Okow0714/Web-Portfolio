@@ -70,6 +70,7 @@ window.I18N_STRINGS = {
     'nav.vocabulary': { en: 'Vocabulary', mn: 'Үгсийн сан' },
     // "Practice", not "Games": Word Match was deliberately renamed away from тоглоом.
     'nav.practice': { en: 'Practice', mn: 'Дасгал ажил' },
+    'nav.tools': { en: 'Main tools', mn: 'Үндсэн туслахууд' },
     // The page's own heading is the full "Чөлөөт цагаараа"; the bar has room for two words at most
     // in Mongolian, and "Чөлөөт цаг" is the phrase on its own.
     'dash.titleSub': { en: 'Dashboard', mn: 'Хянах самбар' },

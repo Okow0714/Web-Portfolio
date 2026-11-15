@@ -182,6 +182,22 @@
                     <div class="nav-item nav-drawer-only">
                         <a href="path.html" class="nav-trigger"><svg class="nav-ico nav-ico-top" aria-hidden="true"><use href="#i-path"/></svg><span data-i18n="nav.studyPath">Study Path</span></a>
                     </div>
+                    <!-- Drawer-only, last row: on a phone the footer is not shown (the tab bar owns
+                         the bottom edge), so what it carried lives here. The study tools are the
+                         drawer itself; this row holds the rest: About Me and the legal links. -->
+                    <div class="nav-item nav-drawer-only nav-more">
+                        <button type="button" class="nav-trigger nav-more-toggle" aria-expanded="false" aria-controls="nav-more-list"><span data-i18n="nav.portfolio">About Me</span><span class="nav-more-caret" aria-hidden="true">&#9662;</span></button>
+                        <div class="nav-more-list" id="nav-more-list">
+                            <a href="about.html#portfolio" data-i18n="footer.projectsLearning">Projects &amp; learning</a>
+                            <a href="about.html#qualifications" data-i18n="nav.qualifications">Qualifications</a>
+                            <a href="about.html#resume" data-i18n="nav.resume">Resume</a>
+                            <a href="about.html#contact" data-i18n="footer.getInTouch">Get in touch</a>
+                            <a href="credits.html" data-i18n="footer.dataLicensing">Data &amp; licensing</a>
+                            <a href="privacy.html" data-i18n="footer.privacyPolicy">Privacy Policy</a>
+                            <a href="terms.html" data-i18n="footer.termsOfService">Terms of Service</a>
+                            <p class="nav-more-copy">&copy; 2026 Khan Japanese</p>
+                        </div>
+                    </div>
                 </nav>
 
                 <!-- Backdrop for the phone drawer. Inert until body.nav-drawer-open. -->
@@ -220,6 +236,18 @@
                             if (hit('.site-brand') && isDrawer()) {
                                 e.preventDefault();
                                 setDrawer(!document.body.classList.contains('nav-drawer-open'));
+                                return;
+                            }
+                            var more = hit('.nav-more-toggle');
+                            if (more) {
+                                var box = more.parentNode;
+                                var nowOpen = !box.classList.contains('open');
+                                box.classList.toggle('open', nowOpen);
+                                more.setAttribute('aria-expanded', String(nowOpen));
+                                // the row sits at the bottom of a scrolling drawer, so what it
+                                // opens would otherwise appear below the fold
+                                var nav = document.getElementById('site-nav');
+                                if (nowOpen && nav) nav.scrollTop = nav.scrollHeight;
                                 return;
                             }
                             if (hit('.nav-scrim')) { setDrawer(false); return; }
@@ -569,23 +597,21 @@
     <nav class="tabbar" id="tabbar" aria-label="Sections">
         <a class="tab" href="index.html" data-tab-pages="index.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-home"/></svg><span class="tab-label" data-i18n="nav.home">Home</span></a>
         <span class="tab-group">
-            <button type="button" class="tab" data-tab-pages="game.html reading.html grammar.html" aria-expanded="false" aria-controls="tab-sheet-practice"><svg class="tab-ico" aria-hidden="true"><use href="#i-wordmatch"/></svg><span class="tab-label" data-i18n="nav.practice">Practice</span></button>
-            <span class="tab-sheet" id="tab-sheet-practice">
-                <a href="game.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-wordmatch"/></svg><span data-i18n="nav.wordGame">Word Match</span></a>
-                <a href="reading.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-reader"/></svg><span data-i18n="nav.dokkaiReader">Dokkai Reader</span></a>
-                <a href="grammar.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-grammar"/></svg><span data-i18n="nav.grammarConnect">Grammar Connect</span></a>
-            </span>
-        </span>
-        <span class="tab-group">
-            <button type="button" class="tab tab-on" data-tab-pages="dictionary.html origins.html phonetics.html" aria-expanded="false" aria-controls="tab-sheet-dictionary"><svg class="tab-ico" aria-hidden="true"><use href="#i-vocabulary"/></svg><span class="tab-label" data-i18n="nav.dictionary">Dictionary</span></button>
-            <span class="tab-sheet" id="tab-sheet-dictionary">
-                <a href="dictionary.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-vocabulary"/></svg><span data-i18n="nav.vocabulary">Vocabulary</span></a>
+            <button type="button" class="tab tab-on" data-tab-pages="origins.html game.html phonetics.html grammar.html reading.html dictionary.html" aria-expanded="false" aria-controls="tab-sheet-tools"><svg class="tab-ico" aria-hidden="true"><use href="#i-wordmatch"/></svg><span class="tab-label" data-i18n="nav.tools">Main tools</span></button>
+            <span class="tab-sheet" id="tab-sheet-tools">
                 <a href="origins.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-origins"/></svg><span data-i18n="nav.kanaOrigins">Kana Origins</span></a>
+                <a href="game.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-wordmatch"/></svg><span data-i18n="nav.wordGame">Word Match</span></a>
                 <a href="phonetics.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-phonetics"/></svg><span data-i18n="nav.phoneticsFamily">Phonetics Family</span></a>
+                <a href="grammar.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-grammar"/></svg><span data-i18n="nav.grammarConnect">Grammar Connect</span></a>
+                <a href="reading.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-reader"/></svg><span data-i18n="nav.dokkaiReader">Dokkai Reader</span></a>
+                <a href="dictionary.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-vocabulary"/></svg><span data-i18n="nav.vocabulary">Vocabulary</span></a>
             </span>
         </span>
         <a class="tab" href="path.html" data-tab-pages="path.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-path"/></svg><span class="tab-label" data-i18n="nav.studyPath">Study Path</span></a>
         <a class="tab" href="dashboard.html" data-tab-pages="dashboard.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-dashboard"/></svg><span class="tab-label" data-i18n="dash.titleSub">Dashboard</span></a>
+        <!-- Settings is not a page: it opens the same modal the account panel's Settings row
+             does, by pressing that row's own button, so there is one handler and not two. -->
+        <button type="button" class="tab" id="tab-settings"><svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" d="M4 7h9M17 7h3M4 12h3M11 12h9M4 17h11M19 17h1"/><circle fill="none" stroke="currentColor" stroke-width="1.9" cx="15" cy="7" r="2"/><circle fill="none" stroke="currentColor" stroke-width="1.9" cx="9" cy="12" r="2"/><circle fill="none" stroke="currentColor" stroke-width="1.9" cx="17" cy="17" r="2"/></svg><span class="tab-label" data-i18n="account.settings">Settings</span></button>
     </nav>
     <script>
         (function () {
@@ -601,6 +627,15 @@
                 }
             };
             document.addEventListener('click', function (e) {
+                if (e.target.closest && e.target.closest('#tab-settings')) {
+                    closeAll();
+                    // two buttons, one per account state; the signed-in one refuses without a session
+                    var anon = document.getElementById('auth-anon');
+                    var signedOut = anon && !anon.classList.contains('hidden');
+                    var real = document.getElementById(signedOut ? 'account-settings-btn-anon' : 'account-settings-btn');
+                    if (real) real.click();
+                    return;
+                }
                 var btn = e.target.closest ? e.target.closest('.tab-group > .tab') : null;
                 if (!btn || !bar.contains(btn)) { closeAll(); return; }
                 var group = btn.parentNode;

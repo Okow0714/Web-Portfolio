@@ -786,3 +786,26 @@ body:has(.hub-main) #theme-switch:focus-visible {
         white-space: nowrap;
     }
 }
+
+/* Phone: the hub gets the brand mark back, top-left, because on a phone the mark is the
+   button that opens the menu drawer -- and with the footer gone on phones the drawer is the only
+   way to About Me and the legal pages. Seal only; the page prints its own wordmark. */
+@media (max-width: 860px) {
+    body:has(.hub-main) .site-brand {
+        display: flex;
+    }
+
+    body:has(.hub-main) .brand-text {
+        display: none;
+    }
+
+    body:has(.hub-main) .header-nav {
+        display: flex;
+        top: 0;
+    }
+
+    body:has(.hub-main) .header {
+        padding-top: 12px;
+        align-items: center;
+    }
+}

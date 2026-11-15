@@ -1629,6 +1629,23 @@ included). `PLAY-STORE.md` has what version 3 ships and the three commands that 
 `tools/icon-maskable/make-seal.js` regenerates the round "any" seal and the monochrome icon and
 fails if the seal's corners are opaque or the monochrome ink leaves the safe circle.
 
+**The tab bar was reshaped the same day, at the owner's direction**: Practice and Dictionary
+became ONE group tab, `nav.tools` "Үндсэн туслахууд" (his wording), whose sheet lists all six
+tools, and the freed slot is Тохиргоо. So the five are Home, tools, Study Path, Dashboard,
+Settings. **Settings is not a page**: `#tab-settings` presses the account panel's own Settings
+button, and there are TWO of those -- `#account-settings-btn` returns early without a session
+and `#account-settings-btn-anon` is the signed-out one -- so the tab picks by whether
+`#auth-anon` is hidden. Pressing only the first shipped for ten minutes and did nothing signed
+out, which is the state every probe runs in.
+**There is no footer below 861px.** `.site-footer` is `display: none` there; what it carried is
+the drawer's last row, `.nav-more` (label `nav.portfolio`, closed at rest, parked at the bottom
+with `margin-top: auto`): the four About Me links, Data & licensing, Privacy and Terms. The
+study-tools column is not repeated, because the drawer above that row already IS that list.
+**Those two legal links have no other route on a phone**, so do not remove the row without
+giving them one. The hub hid `.site-brand` and `.header-nav` outright, which on a phone meant
+no logo to tap and so no drawer; below 861px `hub.css` puts the seal back top-left for that.
+Desktop keeps its footer and is unchanged. `scratchpad/mobile/verify2.js` taps through all of it.
+
 ## Working conventions
 
 - **Standing authorization to `git commit` and `git push` to `main`.** No need to ask first —
