@@ -37,12 +37,12 @@ function centerOf(el) {
     return { x: r.left + r.width / 2 - mainRect.left, y: r.top + r.height / 2 - mainRect.top };
 }
 
-function floatText(x, y, text) {
+// big: the "hand 2 of 4" announcement between hands, set larger and heavier than a "+10s".
+function floatText(x, y, text, big) {
     const el = document.createElement('div');
-    el.className = 'float-text';
+    el.className = 'float-text' + (big ? ' float-text-big' : '');
     el.style.left = x + 'px';
     el.style.top = y + 'px';
-    el.style.fontSize = '1.05rem';
     el.textContent = text;
     fxTextLayer.appendChild(el);
     window.setTimeout(() => el.remove(), 1150);

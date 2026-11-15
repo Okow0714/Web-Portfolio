@@ -447,138 +447,157 @@ function relinkSameAnswer(a, b) {
     return true;
 }
 
+// One click on the board. This only decides which round the click belongs to; what a pick
+// DOES is in playPick() and bonusPick() below.
 function onTile(e) {
     if (levelOver) return;
     const el = e.target.closest ? e.target.closest('.mem-tile') : null;
     if (!el || boardBusy) return;
-    const t = tiles[+el.dataset.i];
+    const idx = +el.dataset.i;
+    const t = tiles[idx];
     if (!t || t.state === 'gone') return;
+    if (phase === 'play') playPick(t, idx);
+    else if (phase === 'bonus') bonusPick(t, idx);
+}
 
-    if (phase === 'play') {
-        const idx = +el.dataset.i;
-        // Clicking your own first pick again puts it back. Until now the only way out of a
-        // misclick was to spend a second pick you already knew was wrong and take the miss for
-        // it, so an undo is strictly cheaper than what it replaces -- which is why it COSTS a
-        // click like every other action rather than being free. The score is clicks, a level's
-        // perfect score is derived (MAIN_PAIRS * HANDS_PER_LEVEL * 2) and a flawless run never
-        // puts a card back, so a free undo would stop that number meaning what it says.
-        // This has to come BEFORE the face-up guard below, which would otherwise swallow it.
-        if (idx === firstPick) {
-            clicks++; updateStats();
-            firstPick = -1;
-            // the lift lives on the SLOT, not the card -- a clipped element cannot show a cast
-            t.slot.classList.remove('sel');
-            if (!t.revealed) turn(t, 'down');
-            say('game.mem.putBack');
-            return;
-        }
-        // A revealed meaning is face up on purpose and must stay clickable; every other face-up
-        // tile is one you are already looking at.
-        if (t.state === 'up' && !t.revealed) return;
+// ---- the main round ----
+
+function playPick(t, idx) {
+    // Clicking your own first pick again puts it back. Until now the only way out of a
+    // misclick was to spend a second pick you already knew was wrong and take the miss for
+    // it, so an undo is strictly cheaper than what it replaces -- which is why it COSTS a
+    // click like every other action rather than being free. The score is clicks, a level's
+    // perfect score is derived (MAIN_PAIRS * HANDS_PER_LEVEL * 2) and a flawless run never
+    // puts a card back, so a free undo would stop that number meaning what it says.
+    // This has to come BEFORE the face-up guard below, which would otherwise swallow it.
+    if (idx === firstPick) {
         clicks++; updateStats();
-        if (!t.revealed) turn(t, 'up');
-        if (firstPick < 0) {
-            firstPick = idx;
-            t.slot.classList.add('sel');
-            CardSfx.pick();
-            say('game.mem.findPartner');
-            return;
-        }
-        const a = tiles[firstPick], b = t;
         firstPick = -1;
-        // The lift comes off the moment the pair resolves, so .sel can never collide with the
-        // hit/miss fills or outlive a tile into `gone`.
-        a.slot.classList.remove('sel');
-        // (`a === b` needed no guard here any more: the undo above catches it by index first.)
-        boardBusy = true;
-        if (a.pair !== b.pair && sameAnswer(a, b)) relinkSameAnswer(a, b);
-        if (a.pair === b.pair) {
-            CardSfx.match();
-            recordHit(a.word);
-            showLastPair(a.word);
-            window.setTimeout(() => {
-                a.el.classList.add('hit'); b.el.classList.add('hit');
-                window.setTimeout(() => {
-                    a.el.classList.add('gone'); b.el.classList.add('gone');
-                    a.state = b.state = 'gone';
-                    pairsThisHand++;
-                    boardBusy = false;
-                    if (modeTimeAttack) {
-                        timeLeft += TIME_BONUS_PER_PAIR;
-                        const c = centerOf(boardEl());
-                        floatText(c.x, c.y, '+' + TIME_BONUS_PER_PAIR + 's');
-                    }
-                    updateStats();
-                    if (pairsThisHand === handWords.length) finishHand();
-                    else say('game.mem.pairOf',
-                        { n: pairsThisHand, total: handWords.length }, 'good');
-                }, 420);
-            }, 170);
-        } else {
-            misses++;
-            // Only the main round costs a life. Bonus clicks are free by design, and a round
-            // that exists to be a reward should not be the thing that ends the run.
-            if (modePerfect) livesLeft--;
-            updateStats();
-            CardSfx.miss();
-            recordMiss(a.word, b.word); recordMiss(b.word, a.word);
-            if (modePerfect && livesLeft <= 0) {
-                window.setTimeout(() => failLevel('lives'), 900);
-                return;
-            }
-            window.setTimeout(() => {
-                a.el.classList.add('miss'); b.el.classList.add('miss');
-                window.setTimeout(() => {
-                    a.el.classList.remove('miss'); b.el.classList.remove('miss');
-                    if (!a.revealed) turn(a, 'down');
-                    if (!b.revealed) turn(b, 'down');
-                    boardBusy = false;
-                    say('game.mem.notAPair', { n: misses }, 'bad');
-                }, 620);
-            }, 170);
-        }
-    } else if (phase === 'bonus') {
-        if (t.state === 'gone') return;
-        // The same undo. No clicks++ -- bonus clicks are free by design, which is also why the
-        // bonus keeps its own gold .peek as the selected mark instead of taking .sel: these
-        // tiles already rock on a transform of their own, and a scale would fight it.
-        if (t.picked) {
-            t.picked = false;
-            t.el.classList.remove('peek');
-            firstPick = -1;
-            CardSfx.flip();
-            return;
-        }
-        if (firstPick < 0) {
-            firstPick = +el.dataset.i;
-            t.picked = true;
-            t.el.classList.add('peek');
-            CardSfx.pick();
-            return;
-        }
-        const x = tiles[firstPick], y = t;
-        firstPick = -1;
-        x.picked = false; x.el.classList.remove('peek');
-        if (x === y) return;
-        if (x.pair !== y.pair && sameAnswer(x, y)) relinkSameAnswer(x, y);
-        if (x.pair === y.pair) {
-            CardSfx.bonusMatch(bonusPairs);
-            x.el.classList.add('hit'); y.el.classList.add('hit');
-            window.setTimeout(() => {
-                x.el.classList.add('gone'); y.el.classList.add('gone');
-                x.state = y.state = 'gone';
-            }, 260);
-            bonusPairs++;
-            updateStats();
-            const cleared = tiles.filter(t2 => t2.state === 'gone').length / 2;
-            say('game.mem.bonusPair', { n: bonusPairs }, 'good');
-            if (cleared >= BONUS_PAIRS) window.setTimeout(endBonus, 320);
-        } else {
-            misses++; updateStats(); CardSfx.miss();
-            y.el.classList.add('miss');
-            window.setTimeout(() => y.el.classList.remove('miss'), 300);
-        }
+        // the lift lives on the SLOT, not the card -- a clipped element cannot show a cast
+        t.slot.classList.remove('sel');
+        if (!t.revealed) turn(t, 'down');
+        say('game.mem.putBack');
+        return;
     }
+    // A revealed meaning is face up on purpose and must stay clickable; every other face-up
+    // tile is one you are already looking at.
+    if (t.state === 'up' && !t.revealed) return;
+    clicks++; updateStats();
+    if (!t.revealed) turn(t, 'up');
+    if (firstPick < 0) {
+        firstPick = idx;
+        t.slot.classList.add('sel');
+        CardSfx.pick();
+        say('game.mem.findPartner');
+        return;
+    }
+    const a = tiles[firstPick], b = t;
+    firstPick = -1;
+    // The lift comes off the moment the pair resolves, so .sel can never collide with the
+    // hit/miss fills or outlive a tile into `gone`.
+    a.slot.classList.remove('sel');
+    // (`a === b` needs no guard: the undo above catches it by index first.)
+    boardBusy = true;
+    if (a.pair !== b.pair && sameAnswer(a, b)) relinkSameAnswer(a, b);
+    if (a.pair === b.pair) playHit(a, b);
+    else playMiss(a, b);
+}
+
+function playHit(a, b) {
+    CardSfx.match();
+    recordHit(a.word);
+    showLastPair(a.word);
+    window.setTimeout(() => {
+        a.el.classList.add('hit'); b.el.classList.add('hit');
+        window.setTimeout(() => {
+            a.el.classList.add('gone'); b.el.classList.add('gone');
+            a.state = b.state = 'gone';
+            pairsThisHand++;
+            boardBusy = false;
+            if (modeTimeAttack) {
+                timeLeft += TIME_BONUS_PER_PAIR;
+                const c = centerOf(boardEl());
+                floatText(c.x, c.y, '+' + TIME_BONUS_PER_PAIR + 's');
+            }
+            updateStats();
+            if (pairsThisHand === handWords.length) finishHand();
+            else say('game.mem.pairOf',
+                { n: pairsThisHand, total: handWords.length }, 'good');
+        }, 420);
+    }, 170);
+}
+
+function playMiss(a, b) {
+    misses++;
+    // Only the main round costs a life. Bonus clicks are free by design, and a round
+    // that exists to be a reward should not be the thing that ends the run.
+    if (modePerfect) livesLeft--;
+    updateStats();
+    CardSfx.miss();
+    recordMiss(a.word, b.word); recordMiss(b.word, a.word);
+    if (modePerfect && livesLeft <= 0) {
+        window.setTimeout(() => failLevel('lives'), 900);
+        return;
+    }
+    window.setTimeout(() => {
+        a.el.classList.add('miss'); b.el.classList.add('miss');
+        window.setTimeout(() => {
+            a.el.classList.remove('miss'); b.el.classList.remove('miss');
+            if (!a.revealed) turn(a, 'down');
+            if (!b.revealed) turn(b, 'down');
+            boardBusy = false;
+            say('game.mem.notAPair', { n: misses }, 'bad');
+        }, 620);
+    }, 170);
+}
+
+// ---- the bonus round ----
+
+function bonusPick(t, idx) {
+    // The same undo. No clicks++ -- bonus clicks are free by design, which is also why the
+    // bonus keeps its own gold .peek as the selected mark instead of taking .sel: these
+    // tiles already rock on a transform of their own, and a scale would fight it.
+    if (t.picked) {
+        t.picked = false;
+        t.el.classList.remove('peek');
+        firstPick = -1;
+        CardSfx.flip();
+        return;
+    }
+    if (firstPick < 0) {
+        firstPick = idx;
+        t.picked = true;
+        t.el.classList.add('peek');
+        CardSfx.pick();
+        return;
+    }
+    const x = tiles[firstPick], y = t;
+    firstPick = -1;
+    x.picked = false; x.el.classList.remove('peek');
+    if (x === y) return;
+    if (x.pair !== y.pair && sameAnswer(x, y)) relinkSameAnswer(x, y);
+    if (x.pair !== y.pair) {
+        misses++; updateStats(); CardSfx.miss();
+        y.el.classList.add('miss');
+        window.setTimeout(() => y.el.classList.remove('miss'), 300);
+        return;
+    }
+    CardSfx.bonusMatch(bonusPairs);
+    x.el.classList.add('hit'); y.el.classList.add('hit');
+    // Marked now, shown a beat later. The STATE used to be set inside that timeout too, so the
+    // count below never included the pair just made: after the fourth it read three, the
+    // round was never ended early, and a player who had cleared everything sat looking at an
+    // empty board until the clock ran out. A tile that is already 'gone' is also refused by
+    // onTile, which stops a third click landing on a pair that is on its way out.
+    x.state = y.state = 'gone';
+    window.setTimeout(() => {
+        x.el.classList.add('gone'); y.el.classList.add('gone');
+    }, 260);
+    bonusPairs++;
+    updateStats();
+    say('game.mem.bonusPair', { n: bonusPairs }, 'good');
+    const cleared = tiles.filter(t2 => t2.state === 'gone').length / 2;
+    if (cleared >= BONUS_PAIRS) window.setTimeout(endBonus, 320);
 }
 
 // ---------------------------------------------------------------------------

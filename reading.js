@@ -328,6 +328,52 @@ function pentState(track, level, position) {
     return done === total ? 'done' : 'open';
 }
 
+const SVG_NS = 'http://www.w3.org/2000/svg';
+
+function pentText(cls, x, y, text) {
+    const el = document.createElementNS(SVG_NS, 'text');
+    el.setAttribute('class', cls);
+    el.setAttribute('x', x);
+    el.setAttribute('y', y.toFixed(1));
+    el.setAttribute('text-anchor', 'middle');
+    el.textContent = text;
+    return el;
+}
+
+// One pentagon: its face, its number, its hint, and (unless locked) the click that opens it.
+function pentNode(track, level, i, t, state) {
+    const { done, total } = levelCompletion(track, level);
+    const label = window.tf('reading.levelAria', {
+        n: level.levelNum, hint: level.hint,
+        state: window.t('reading.state' + state.charAt(0).toUpperCase() + state.slice(1)),
+        done, total,
+    });
+    // A real <a>/<button> even inside the SVG: a <g> with a click handler is skipped by Tab.
+    const node = document.createElementNS(SVG_NS, state === 'locked' ? 'g' : 'a');
+    node.setAttribute('class', 'pent is-' + state);
+    // Its place in the stagger. reading.css turns this into an animation-delay; the pack
+    // develops in reading order rather than all at once.
+    node.style.setProperty('--i', String(i));
+    if (state === 'locked') { node.setAttribute('role', 'img'); node.setAttribute('aria-label', label); }
+    else { node.setAttribute('tabindex', '0'); node.setAttribute('role', 'button'); node.setAttribute('aria-label', label); }
+
+    const face = document.createElementNS(SVG_NS, 'path');
+    face.setAttribute('class', 'pent-face');
+    face.setAttribute('d', t.d);
+    node.appendChild(face);
+    node.appendChild(pentText('pent-n', t.cx, t.cy + (t.down ? -2 : 8.6), String(level.levelNum).padStart(2, '0')));
+    node.appendChild(pentText('pent-hint', t.cx, t.cy + (t.down ? 15 : 25.6), level.hint));
+
+    if (state !== 'locked') {
+        const open = () => showTextList(track, level);
+        node.addEventListener('click', (e) => { e.preventDefault(); open(); });
+        node.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
+        });
+    }
+    return node;
+}
+
 function showLevelSelect(track) {
     currentTrack = track;
     document.getElementById('level-select-title').textContent = trackTitle(track);
@@ -338,62 +384,16 @@ function showLevelSelect(track) {
     let next = -1;
     levels.forEach((lv, i) => { if (next < 0 && pentState(track, lv, i) === 'open') next = i; });
 
-    const svgNS = 'http://www.w3.org/2000/svg';
-    const svg = document.createElementNS(svgNS, 'svg');
+    const svg = document.createElementNS(SVG_NS, 'svg');
     svg.setAttribute('viewBox', `-4 -4 ${w + 8} ${h + 8}`);
     svg.setAttribute('role', 'group');
     svg.setAttribute('aria-label', window.t('reading.pickLevel'));
-
     levels.forEach((level, i) => {
-        const t = tiles[i];
         // One state class, never two: `is-open` is declared after `is-next` in the stylesheet,
         // so a tile carrying both was painted as merely open and the next level lost its mark.
         // Same shape as grammar.css's `done` beating `:hover`.
         const state = i === next ? 'next' : pentState(track, level, i);
-        const { done, total } = levelCompletion(track, level);
-        const label = window.tf('reading.levelAria', {
-            n: level.levelNum, hint: level.hint,
-            state: window.t('reading.state' + state.charAt(0).toUpperCase() + state.slice(1)),
-            done, total,
-        });
-        // A real <a>/<button> even inside the SVG: a <g> with a click handler is skipped by Tab.
-        const node = document.createElementNS(svgNS, state === 'locked' ? 'g' : 'a');
-        node.setAttribute('class', 'pent is-' + state);
-        // Its place in the stagger. reading.css turns this into an animation-delay; the pack
-        // develops in reading order rather than all at once.
-        node.style.setProperty('--i', String(i));
-        if (state === 'locked') { node.setAttribute('role', 'img'); node.setAttribute('aria-label', label); }
-        else { node.setAttribute('tabindex', '0'); node.setAttribute('role', 'button'); node.setAttribute('aria-label', label); }
-
-        const face = document.createElementNS(svgNS, 'path');
-        face.setAttribute('class', 'pent-face');
-        face.setAttribute('d', t.d);
-        node.appendChild(face);
-
-        const num = document.createElementNS(svgNS, 'text');
-        num.setAttribute('class', 'pent-n');
-        num.setAttribute('x', t.cx);
-        num.setAttribute('y', (t.cy + (t.down ? -2 : 8.6)).toFixed(1));
-        num.setAttribute('text-anchor', 'middle');
-        num.textContent = String(level.levelNum).padStart(2, '0');
-        node.appendChild(num);
-
-        const hint = document.createElementNS(svgNS, 'text');
-        hint.setAttribute('class', 'pent-hint');
-        hint.setAttribute('x', t.cx);
-        hint.setAttribute('y', (t.cy + (t.down ? 15 : 25.6)).toFixed(1));
-        hint.setAttribute('text-anchor', 'middle');
-        hint.textContent = level.hint;
-        node.appendChild(hint);
-
-        if (state !== 'locked') {
-            const open = () => showTextList(track, level);
-            node.addEventListener('click', (e) => { e.preventDefault(); open(); });
-            node.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
-            });
-        }
-        svg.appendChild(node);
+        svg.appendChild(pentNode(track, level, i, tiles[i], state));
     });
 
     const grid = document.getElementById('reading-level-grid');
@@ -1117,9 +1117,17 @@ function renderLevel(rms) {
     if (cur) cur.style.setProperty('--v', Math.max(0, Math.min(1, rms / (threshold * 2))).toFixed(3));
 }
 
-async function startVoiceGate() {
-    const Ctx = window.AudioContext || window.webkitAudioContext;
-    if (!Ctx || !navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) return;
+// Sorted-sample estimate of the background level; see VOICE_FLOOR_PERCENTILE.
+function quietLevel(samples) {
+    if (!samples.length) return 0;
+    const sorted = samples.slice().sort((a, b) => a - b);
+    return sorted[Math.min(sorted.length - 1, Math.floor(sorted.length * VOICE_FLOOR_PERCENTILE))];
+}
+
+// The gate's own microphone stream, or null when there is to be no gate: no Web Audio, a
+// phone, permission refused, or the reader stopped while the permission prompt was open.
+async function openGateStream() {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) return null;
     // NOT ON A PHONE. This gate opens its OWN getUserMedia stream and holds it for the whole
     // session, alongside the one SpeechRecognition needs. Desktop Chrome lets two consumers
     // share a microphone; Android effectively does not -- the gate takes it and the recognizer
@@ -1131,7 +1139,7 @@ async function startVoiceGate() {
     // Checked on pointer coarseness rather than a user-agent string: what matters is whether
     // this is the kind of device whose mic is exclusive, and a desktop with a touchscreen
     // losing the gate costs only some noise rejection.
-    if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) return;
+    if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) return null;
     const generation = recognitionGeneration;
     let stream;
     try {
@@ -1141,12 +1149,41 @@ async function startVoiceGate() {
             audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: false },
         });
     } catch (e) {
-        return; // no gate, and recognition carries on exactly as it did before
+        return null; // no gate, and recognition carries on exactly as it did before
     }
     if (generation !== recognitionGeneration || !listening) {
         stream.getTracks().forEach(t => t.stop()); // stopped while we were awaiting permission
-        return;
+        return null;
     }
+    return stream;
+}
+
+// A FROZEN METER IS A DEAD GATE, AND A DEAD GATE REJECTS EVERYTHING. If the recognizer
+// takes the microphone back -- which it does on a restart, and restarts are routine --
+// our track ends and the analyser reads zeros for the rest of the session. The meter
+// stops moving, which is the visible half; the damaging half is that lastVoiceAt stops
+// updating, so voiceGateActive() then discards every transcript as room noise and the
+// cursor stops even though recognition is working perfectly. Reported exactly that way:
+// the volume stops moving and reading the word again a few times eventually gets
+// through, which is the reject latch slowly giving up.
+// So notice it directly rather than waiting for the latch: a track that has ended, or a
+// context that is no longer running, means this gate has nothing left to say.
+function gateHasDied() {
+    const track = micStream && micStream.getAudioTracks()[0];
+    return !track || track.readyState === 'ended' || (audioCtx && audioCtx.state === 'closed');
+}
+
+function rmsOf(buf) {
+    let sum = 0;
+    for (let i = 0; i < buf.length; i++) sum += buf[i] * buf[i];
+    return Math.sqrt(sum / buf.length);
+}
+
+async function startVoiceGate() {
+    const Ctx = window.AudioContext || window.webkitAudioContext;
+    if (!Ctx) return;
+    const stream = await openGateStream();
+    if (!stream) return;
     micStream = stream;
     audioCtx = new Ctx();
     if (audioCtx.state === 'suspended') audioCtx.resume();
@@ -1162,28 +1199,11 @@ async function startVoiceGate() {
     const calibrationEndsAt = Date.now() + VOICE_CALIBRATION_MS;
     document.getElementById('reader-level').classList.add('active');
 
-    // Sorted-sample estimate of the background level; see VOICE_FLOOR_PERCENTILE.
-    const quietLevel = (samples) => {
-        if (!samples.length) return 0;
-        const sorted = samples.slice().sort((a, b) => a - b);
-        return sorted[Math.min(sorted.length - 1, Math.floor(sorted.length * VOICE_FLOOR_PERCENTILE))];
-    };
     const calibrationSamples = [];
     const recent = [];
 
     levelTimer = setInterval(() => {
-        // A FROZEN METER IS A DEAD GATE, AND A DEAD GATE REJECTS EVERYTHING. If the recognizer
-        // takes the microphone back -- which it does on a restart, and restarts are routine --
-        // our track ends and the analyser reads zeros for the rest of the session. The meter
-        // stops moving, which is the visible half; the damaging half is that lastVoiceAt stops
-        // updating, so voiceGateActive() then discards every transcript as room noise and the
-        // cursor stops even though recognition is working perfectly. Reported exactly that way:
-        // the volume stops moving and reading the word again a few times eventually gets
-        // through, which is the reject latch slowly giving up.
-        // So notice it directly rather than waiting for the latch: a track that has ended, or a
-        // context that is no longer running, means this gate has nothing left to say.
-        const track = micStream && micStream.getAudioTracks()[0];
-        if (!track || track.readyState === 'ended' || (audioCtx && audioCtx.state === 'closed')) {
+        if (gateHasDied()) {
             // stopVoiceGate() clears voiceGateReady, and voiceGateActive() needs it -- so the
             // gate is open from here on and every transcript passes. Setting voiceGateDisabled
             // as well would read as the belt to that braces and is not: stopVoiceGate() resets
@@ -1192,9 +1212,7 @@ async function startVoiceGate() {
             return;
         }
         analyser.getFloatTimeDomainData(buf);
-        let sum = 0;
-        for (let i = 0; i < buf.length; i++) sum += buf[i] * buf[i];
-        const rms = Math.sqrt(sum / buf.length);
+        const rms = rmsOf(buf);
         const now = Date.now();
         if (now < calibrationEndsAt) {
             calibrationSamples.push(rms);
@@ -1256,24 +1274,182 @@ function stopVoiceGate() {
 // ---------------------------------------------------------------------------
 // Speech recognition
 // ---------------------------------------------------------------------------
-function startRecognition() {
-    if (!SpeechRecognitionCtor) return;
+// False, having told the reader why, when recognition cannot work here at all.
+function recognitionCanStart() {
     // SpeechRecognition needs a secure origin. Served over plain http on a LAN address the
     // constructor still exists and start() fails as 'not-allowed' -- which reads as "you denied
     // the microphone" and sends people into their browser settings for a permission that was
     // never the problem. Checking up front lets us name the actual cause.
     if (!window.isSecureContext) {
         failListening(window.t('reading.insecureOrigin'));
-        return;
+        return false;
     }
     // Chrome streams the audio out to a remote service, so offline there is nothing to
     // recognize -- and the PWA means this page opens offline perfectly happily.
     if (navigator.onLine === false) {
         failListening(window.t('reading.speechOffline'));
+        return false;
+    }
+    return true;
+}
+
+// What the recognizer heard, as normalized strings: its best guess first, then the runners-up.
+// null when the transcript should be ignored outright.
+function heardChunks(event) {
+    let primary = '';
+    const alternates = [];
+    let isFinal = false;
+    let confidence = 0;
+    for (let i = event.resultIndex; i < event.results.length; i++) {
+        const result = event.results[i];
+        isFinal = result.isFinal;
+        confidence = Math.max(confidence, result[0].confidence || 0);
+        primary += result[0].transcript;
+        for (let a = 1; a < result.length; a++) alternates.push(normalizeForMatch(result[a].transcript));
+    }
+    // Chrome scores finals and leaves interim at 0, so this only ever judges a committed
+    // transcript -- and only a badly unsure one, which is the shape noise takes.
+    if (isFinal && confidence > 0 && confidence < MIN_CONFIDENCE) return null;
+    return { chunks: [normalizeForMatch(primary), ...alternates], isFinal };
+}
+
+// Only file a passed-over word as skipped if this transcript doesn't contain it
+// either. Jumping to the furthest match is right, but the words between the cursor
+// and that match were usually spoken in the very same breath -- the panel is
+// headed "words the voice matcher jumps past without hearing directly", and
+// recording ones it demonstrably did hear made it useless: reading the opening
+// line of the first passage perfectly filed its first two words as skipped.
+function recordUnheardBefore(matchPos, chunks) {
+    let idx = currentIdx;
+    while (idx < matchPos) {
+        const w = words[idx];
+        if (!w.sym) {
+            const surface = normalizeForMatch(w.surface);
+            const reading = normalizeForMatch(w.reading || '');
+            const heard = chunks.some(c => (surface && c.includes(surface)) || (reading && c.includes(reading)));
+            if (!heard) recordSkippedAt(idx);
+        }
+        idx = firstNonSymbolIndex(words, idx + 1);
+    }
+    renderSkippedList();
+}
+
+function onSpeechResult(event) {
+    restartAttempts = 0; // audio is flowing, so the restart budget is not being spent
+
+    if (ttsSpeaking) return; // that is the page's own playback, not the reader
+
+    // Nothing was actually said recently enough to explain this transcript, so it is the
+    // room, not the reader. Drop it rather than walk the cursor forward on a cough.
+    if (voiceGateActive() && Date.now() - lastVoiceAt > VOICE_GRACE_MS) {
+        noteGateReject();
         return;
     }
+    consecutiveGateRejects = 0;
 
+    const heard = heardChunks(event);
+    if (!heard) return;
+    const { chunks, isFinal } = heard;
+
+    // Interim results are the recognizer's still-changing, speculative guess about an
+    // utterance in progress -- it can predict text ahead of what's actually been said yet.
+    // Searching several words ahead against THAT was causing the cursor to fast-forward
+    // mid-word, before the reader had even finished speaking. So: while a result is still
+    // interim, only match the exact current word (the original, conservative behavior).
+    // Only once the recognizer commits to a final transcript for a phrase do we widen the
+    // search and catch up on anything genuinely missed within it -- a single word ASR
+    // misheard (an unusual kanji reading, an okurigana form it didn't expect) would
+    // otherwise stall the reader forever even after reading straight past it out loud.
+    const windowSize = isFinal ? READ_AHEAD_WORDS : 1;
+    const positions = nextWordPositions(currentIdx, windowSize);
+    let matchPos = matchTranscript(chunks[0], positions, isFinal);
+    // The runner-up transcripts are a rescue for a script mismatch (コーヒー heard for a
+    // passage's こうひい), so they are only consulted when the recognizer's own best guess
+    // matched nothing, and they are never allowed to drive a multi-word jump.
+    if (matchPos === -1) {
+        for (let i = 1; i < chunks.length && matchPos === -1; i++) {
+            matchPos = matchTranscript(chunks[i], positions, false);
+        }
+    }
+    if (matchPos === -1) return;
+    recordUnheardBefore(matchPos, chunks);
+    advanceTo(matchPos + 1);
+}
+
+// Chrome ends continuous recognition after a silence gap, so restarting is normal and
+// is what keeps a session alive. It used to be unconditional, which turned any
+// permanently failing service (offline, no input device) into a silent infinite restart
+// loop with the button still cheerfully reading "Listening...". Only *rapid* restarts
+// count against the budget -- a reader pausing to work out a kanji leaves seconds
+// between them, a failure loop leaves milliseconds.
+function onSpeechEnd(generation) {
+    const stale = () => generation !== recognitionGeneration || !listening;
+    const now = Date.now();
+    if (now - lastRestartAt > RESTART_STREAK_WINDOW_MS) restartAttempts = 0;
+    lastRestartAt = now;
+    if (restartAttempts >= MAX_RESTART_ATTEMPTS) {
+        failListening(window.t('reading.speechStalled'));
+        return;
+    }
+    restartAttempts++;
+    // THE RESTART IS DEFERRED, AND A THROW IS NOT FATAL -- this is what made the reader
+    // give up almost immediately on a phone. Android Chrome does not honour
+    // `continuous = true`: it ends the session after each utterance, so onend fires
+    // constantly rather than only after a long silence. Calling start() synchronously from
+    // inside onend then lands while the previous session is still releasing, which throws
+    // InvalidStateError -- and the old code treated that one throw as permanent failure.
+    // On a desktop, where onend is rare, it almost never happened; on a phone it is the
+    // normal path, which is why the reader "works even less on mobile".
+    // So: let the engine finish tearing down, then start; and if it is still not ready,
+    // wait longer and try once more before saying anything to the reader.
+    window.setTimeout(() => {
+        if (stale()) return;
+        try {
+            recognition.start();
+        } catch (e) {
+            window.setTimeout(() => {
+                if (stale()) return;
+                try {
+                    recognition.start();
+                } catch (e2) {
+                    failListening(window.t('reading.speechStalled'));
+                }
+            }, RESTART_RETRY_MS);
+        }
+    }, RESTART_DELAY_MS);
+}
+
+function onSpeechError(event) {
+    switch (event.error) {
+        case 'aborted':
+            break; // our own stop(), or a navigation -- nothing worth reporting
+        case 'no-speech':
+            // Not fatal (onend restarts us), but worth saying: a muted mic, or one pointed
+            // at the wrong input device, looks exactly like "listening" otherwise.
+            document.getElementById('reader-status').textContent = window.t('reading.noSpeech');
+            break;
+        case 'not-allowed':
+        case 'service-not-allowed':
+            failListening(window.t('reading.micDenied'));
+            break;
+        case 'audio-capture':
+            failListening(window.t('reading.noMic'));
+            break;
+        case 'network':
+            failListening(window.t('reading.speechOffline'));
+            break;
+        default:
+            failListening(window.tf('reading.speechError', { error: event.error }));
+    }
+}
+
+function startRecognition() {
+    if (!SpeechRecognitionCtor || !recognitionCanStart()) return;
+
+    // Every handler checks this first: a session that has been stopped or replaced must not
+    // act on an event that was already on its way.
     const generation = ++recognitionGeneration;
+    const current = () => generation === recognitionGeneration;
     recognition = new SpeechRecognitionCtor();
     recognition.lang = 'ja-JP';
     recognition.continuous = true;
@@ -1282,146 +1458,9 @@ function startRecognition() {
     // reading correctly but writes it in the wrong script, or picks the commoner homophone.
     recognition.maxAlternatives = MAX_ALTERNATIVES;
 
-    recognition.onresult = (event) => {
-        if (generation !== recognitionGeneration) return;
-        restartAttempts = 0; // audio is flowing, so the restart budget is not being spent
-
-        if (ttsSpeaking) return; // that is the page's own playback, not the reader
-
-        // Nothing was actually said recently enough to explain this transcript, so it is the
-        // room, not the reader. Drop it rather than walk the cursor forward on a cough.
-        if (voiceGateActive() && Date.now() - lastVoiceAt > VOICE_GRACE_MS) {
-            noteGateReject();
-            return;
-        }
-        consecutiveGateRejects = 0;
-
-        let primary = '';
-        const alternates = [];
-        let isFinal = false;
-        let confidence = 0;
-        for (let i = event.resultIndex; i < event.results.length; i++) {
-            const result = event.results[i];
-            isFinal = result.isFinal;
-            confidence = Math.max(confidence, result[0].confidence || 0);
-            primary += result[0].transcript;
-            for (let a = 1; a < result.length; a++) alternates.push(normalizeForMatch(result[a].transcript));
-        }
-        // Chrome scores finals and leaves interim at 0, so this only ever judges a committed
-        // transcript -- and only a badly unsure one, which is the shape noise takes.
-        if (isFinal && confidence > 0 && confidence < MIN_CONFIDENCE) return;
-        const chunks = [normalizeForMatch(primary), ...alternates];
-
-        // Interim results are the recognizer's still-changing, speculative guess about an
-        // utterance in progress -- it can predict text ahead of what's actually been said yet.
-        // Searching several words ahead against THAT was causing the cursor to fast-forward
-        // mid-word, before the reader had even finished speaking. So: while a result is still
-        // interim, only match the exact current word (the original, conservative behavior).
-        // Only once the recognizer commits to a final transcript for a phrase do we widen the
-        // search and catch up on anything genuinely missed within it -- a single word ASR
-        // misheard (an unusual kanji reading, an okurigana form it didn't expect) would
-        // otherwise stall the reader forever even after reading straight past it out loud.
-        const windowSize = isFinal ? READ_AHEAD_WORDS : 1;
-        const positions = nextWordPositions(currentIdx, windowSize);
-        let matchPos = matchTranscript(chunks[0], positions, isFinal);
-        // The runner-up transcripts are a rescue for a script mismatch (コーヒー heard for a
-        // passage's こうひい), so they are only consulted when the recognizer's own best guess
-        // matched nothing, and they are never allowed to drive a multi-word jump.
-        if (matchPos === -1) {
-            for (let i = 1; i < chunks.length && matchPos === -1; i++) {
-                matchPos = matchTranscript(chunks[i], positions, false);
-            }
-        }
-        if (matchPos !== -1) {
-            // Only file a passed-over word as skipped if this transcript doesn't contain it
-            // either. Jumping to the furthest match is right, but the words between the cursor
-            // and that match were usually spoken in the very same breath -- the panel is
-            // headed "words the voice matcher jumps past without hearing directly", and
-            // recording ones it demonstrably did hear made it useless: reading the opening
-            // line of the first passage perfectly filed its first two words as skipped.
-            let idx = currentIdx;
-            while (idx < matchPos) {
-                const w = words[idx];
-                if (!w.sym) {
-                    const surface = normalizeForMatch(w.surface);
-                    const reading = normalizeForMatch(w.reading || '');
-                    const heard = chunks.some(c => (surface && c.includes(surface)) || (reading && c.includes(reading)));
-                    if (!heard) recordSkippedAt(idx);
-                }
-                idx = firstNonSymbolIndex(words, idx + 1);
-            }
-            renderSkippedList();
-            advanceTo(matchPos + 1);
-        }
-    };
-
-    recognition.onend = () => {
-        if (generation !== recognitionGeneration || !listening) return;
-        // Chrome ends continuous recognition after a silence gap, so restarting is normal and
-        // is what keeps a session alive. It used to be unconditional, which turned any
-        // permanently failing service (offline, no input device) into a silent infinite restart
-        // loop with the button still cheerfully reading "Listening...". Only *rapid* restarts
-        // count against the budget -- a reader pausing to work out a kanji leaves seconds
-        // between them, a failure loop leaves milliseconds.
-        const now = Date.now();
-        if (now - lastRestartAt > RESTART_STREAK_WINDOW_MS) restartAttempts = 0;
-        lastRestartAt = now;
-        if (restartAttempts >= MAX_RESTART_ATTEMPTS) {
-            failListening(window.t('reading.speechStalled'));
-            return;
-        }
-        restartAttempts++;
-        // THE RESTART IS DEFERRED, AND A THROW IS NOT FATAL -- this is what made the reader
-        // give up almost immediately on a phone. Android Chrome does not honour
-        // `continuous = true`: it ends the session after each utterance, so onend fires
-        // constantly rather than only after a long silence. Calling start() synchronously from
-        // inside onend then lands while the previous session is still releasing, which throws
-        // InvalidStateError -- and the old code treated that one throw as permanent failure.
-        // On a desktop, where onend is rare, it almost never happened; on a phone it is the
-        // normal path, which is why the reader "works even less on mobile".
-        // So: let the engine finish tearing down, then start; and if it is still not ready,
-        // wait longer and try once more before saying anything to the reader.
-        window.setTimeout(() => {
-            if (generation !== recognitionGeneration || !listening) return;
-            try {
-                recognition.start();
-            } catch (e) {
-                window.setTimeout(() => {
-                    if (generation !== recognitionGeneration || !listening) return;
-                    try {
-                        recognition.start();
-                    } catch (e2) {
-                        failListening(window.t('reading.speechStalled'));
-                    }
-                }, RESTART_RETRY_MS);
-            }
-        }, RESTART_DELAY_MS);
-    };
-
-    recognition.onerror = (event) => {
-        if (generation !== recognitionGeneration) return;
-        switch (event.error) {
-            case 'aborted':
-                break; // our own stop(), or a navigation -- nothing worth reporting
-            case 'no-speech':
-                // Not fatal (onend restarts us), but worth saying: a muted mic, or one pointed
-                // at the wrong input device, looks exactly like "listening" otherwise.
-                document.getElementById('reader-status').textContent = window.t('reading.noSpeech');
-                break;
-            case 'not-allowed':
-            case 'service-not-allowed':
-                failListening(window.t('reading.micDenied'));
-                break;
-            case 'audio-capture':
-                failListening(window.t('reading.noMic'));
-                break;
-            case 'network':
-                failListening(window.t('reading.speechOffline'));
-                break;
-            default:
-                failListening(window.tf('reading.speechError', { error: event.error }));
-        }
-    };
+    recognition.onresult = (event) => { if (current()) onSpeechResult(event); };
+    recognition.onend = () => { if (current() && listening) onSpeechEnd(generation); };
+    recognition.onerror = (event) => { if (current()) onSpeechError(event); };
 
     try {
         recognition.start();

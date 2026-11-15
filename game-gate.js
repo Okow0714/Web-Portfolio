@@ -154,11 +154,6 @@ function honeycomb(rows, cols) {
     return { slots, totalH: (rows.length - 1) * vStep + h };
 }
 
-// DEMO ONLY -- delete this constant and the two lines that read it (search for DEMO_MARKS) to
-// stop faking marks. It paints the Time Attack and Perfectionist treatments onto one level so
-// both can be seen without playing a level under each mode first.
-const DEMO_MARKS_ON_LEVEL = 1;
-
 function showLevelField(jlpt) {
     const panel = document.getElementById('gate-levels');
     const field = document.getElementById('gate-field');
@@ -186,9 +181,8 @@ function showLevelField(jlpt) {
         // gold; Time Attack sets sparks going inside it. They stack, because a level can be
         // taken under both.
         const marks = marksFor(level.level);
-        const demo = level.level === DEMO_MARKS_ON_LEVEL;          // DEMO_MARKS
-        const gotTime = !!marks.timeAttack || demo;                // DEMO_MARKS
-        const gotPerfect = !!marks.perfectionist || demo;
+        const gotTime = !!marks.timeAttack;
+        const gotPerfect = !!marks.perfectionist;
 
         const node = document.createElement('button');
         node.type = 'button';

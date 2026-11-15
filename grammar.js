@@ -202,201 +202,14 @@ function getLevelData(track, levelNum) {
 }
 
 // ---------------------------------------------------------------------------
-// Effects — a small canvas particle field plus floating text, scoped to #gc-match-section
-// (see .gc-fx-canvas/.gc-fx-text-layer in grammar.css). Mirrors the shape of Word Match's own
-// particle system (game.js's ParticleField -- rings/bursts/sparkles/dust) since that's a proven
-// pattern for "each event gets its own readable silhouette, not just a different color," but
-// this is its own smaller, independent copy rather than a shared import: Grammar Connect only
-// ever needs two event families (a correct tap, a wrong tap), not Word Match's whole roster
-// (lightning chains, powerups, a Wakan blast), so reusing the bigger engine as-is would carry
-// a lot of unused surface area for what this page actually does.
-function GcParticleField(canvas, container) {
-    this.canvas = canvas;
-    this.container = container;
-    this.ctx = canvas.getContext('2d');
-    this.particles = [];
-    this.rings = [];
-    this.dpr = Math.min(window.devicePixelRatio || 1, 2);
-    this.resize();
-}
-
-GcParticleField.prototype.resize = function () {
-    const rect = this.container.getBoundingClientRect();
-    this.w = Math.max(rect.width, 1);
-    this.h = Math.max(rect.height, 1);
-    this.canvas.width = this.w * this.dpr;
-    this.canvas.height = this.h * this.dpr;
-    this.ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
-};
-
-// A correct tap's "hanko stamp" -- an expanding ring echoing the page's own "ink on dyed
-// cloth" identity (see grammar.css's header comment), distinct from Word Match's plain gold
-// ripple by being square-ish/stamped rather than a perfect circle when opts.shape is 'stamp'.
-GcParticleField.prototype.spawnRing = function (x, y, opts) {
-    opts = opts || {};
-    this.rings.push({
-        x, y,
-        shape: opts.shape || 'circle',
-        r0: opts.r0 != null ? opts.r0 : 6,
-        r1: opts.r1 != null ? opts.r1 : 70,
-        width: opts.width || 3,
-        color: opts.color || '127,191,158',
-        life: opts.life || 0.5,
-        age: 0,
-    });
-};
-
-GcParticleField.prototype.spawnBurst = function (x, y, opts) {
-    opts = opts || {};
-    const count = opts.count || 20;
-    const colors = opts.colors || ['127,191,158'];
-    const speed = opts.speed || 160;
-    const life = opts.life || 0.8;
-    for (let i = 0; i < count; i++) {
-        const angle = Math.random() * Math.PI * 2;
-        const v = speed * (0.35 + Math.random() * 0.75);
-        this.particles.push({
-            kind: 'burst',
-            x, y,
-            vx: Math.cos(angle) * v,
-            vy: Math.sin(angle) * v - 40,
-            gravity: 380,
-            r: 1.4 + Math.random() * 2.4,
-            color: colors[Math.floor(Math.random() * colors.length)],
-            life: life * (0.7 + Math.random() * 0.6),
-            age: 0,
-        });
-    }
-};
-
-// Four-point glints (a star/spark silhouette) for the underlined text's own "the answer just
-// landed" moment -- distinct from the round tap-point burst above.
-GcParticleField.prototype.spawnSparkle = function (x, y, opts) {
-    opts = opts || {};
-    const count = opts.count || 10;
-    const spread = opts.spread || 40;
-    const size = opts.size || 9;
-    const color = opts.color || '236,229,211';
-    const life = opts.life || 0.6;
-    for (let i = 0; i < count; i++) {
-        const angle = Math.random() * Math.PI * 2;
-        const dist = Math.random() * spread;
-        this.particles.push({
-            kind: 'sparkle',
-            x: x + Math.cos(angle) * dist,
-            y: y + Math.sin(angle) * dist,
-            rot: Math.random() * Math.PI,
-            spin: (Math.random() - 0.5) * 5,
-            size: size * (0.6 + Math.random() * 0.8),
-            color,
-            life: life * (0.75 + Math.random() * 0.5),
-            age: 0,
-        });
-    }
-};
-
-// Heavier motes falling mostly downward -- the wrong-tap family's signature (a setback reads
-// as things falling, not popping), recolored to embers/ash instead of Word Match's dust.
-GcParticleField.prototype.spawnDust = function (x, y, opts) {
-    opts = opts || {};
-    const count = opts.count || 12;
-    const colors = opts.colors || ['188,68,48'];
-    const spread = opts.spread || 26;
-    const speed = opts.speed || 50;
-    const life = opts.life || 0.6;
-    for (let i = 0; i < count; i++) {
-        const angle = Math.PI * 0.5 + (Math.random() - 0.5) * 1.4;
-        const v = speed * (0.4 + Math.random() * 0.9);
-        this.particles.push({
-            kind: 'burst',
-            x: x + (Math.random() - 0.5) * spread,
-            y,
-            vx: Math.cos(angle) * v * 0.4,
-            vy: Math.sin(angle) * v,
-            gravity: 200,
-            r: 1.6 + Math.random() * 2,
-            color: colors[Math.floor(Math.random() * colors.length)],
-            life: life * (0.7 + Math.random() * 0.5),
-            age: 0,
-        });
-    }
-};
-
-GcParticleField.prototype.update = function (dt) {
-    const next = [];
-    for (let i = 0; i < this.particles.length; i++) {
-        const p = this.particles[i];
-        p.age += dt;
-        if (p.age >= p.life) continue;
-        if (p.kind !== 'sparkle') {
-            p.vy += p.gravity * dt;
-            p.x += p.vx * dt;
-            p.y += p.vy * dt;
-        }
-        next.push(p);
-    }
-    this.particles = next;
-    this.rings = this.rings.filter(r => { r.age += dt; return r.age < r.life; });
-};
-
-GcParticleField.prototype.draw = function () {
-    const ctx = this.ctx;
-    ctx.clearRect(0, 0, this.w, this.h);
-    this.particles.forEach(p => {
-        const t = p.age / p.life;
-        const alpha = Math.max(1 - t, 0);
-        if (p.kind === 'sparkle') {
-            const scale = Math.sin(Math.min(t * 3, 1) * Math.PI / 2) * (1 - t * 0.25);
-            const s = p.size;
-            ctx.save();
-            ctx.translate(p.x, p.y);
-            ctx.rotate(p.rot + p.spin * p.age);
-            ctx.scale(scale, scale);
-            ctx.fillStyle = `rgba(${p.color},${alpha})`;
-            ctx.beginPath();
-            ctx.moveTo(0, -s); ctx.lineTo(s * 0.28, -s * 0.28); ctx.lineTo(s, 0); ctx.lineTo(s * 0.28, s * 0.28);
-            ctx.lineTo(0, s); ctx.lineTo(-s * 0.28, s * 0.28); ctx.lineTo(-s, 0); ctx.lineTo(-s * 0.28, -s * 0.28);
-            ctx.closePath();
-            ctx.fill();
-            ctx.restore();
-            return;
-        }
-        ctx.beginPath();
-        ctx.fillStyle = `rgba(${p.color},${alpha})`;
-        ctx.arc(p.x, p.y, Math.max(p.r * (1 - t * 0.4), 0), 0, Math.PI * 2);
-        ctx.fill();
-    });
-    this.rings.forEach(r => {
-        const t = r.age / r.life;
-        const rad = r.r0 + (r.r1 - r.r0) * t;
-        const alpha = Math.max(1 - t, 0);
-        ctx.save();
-        ctx.strokeStyle = `rgba(${r.color},${alpha})`;
-        ctx.lineWidth = r.width;
-        ctx.shadowColor = `rgba(${r.color},${Math.min(alpha + 0.3, 1)})`;
-        ctx.shadowBlur = 12;
-        ctx.beginPath();
-        if (r.shape === 'stamp') {
-            // A slightly squared-off ring, like a hanko seal's rounded-square outline, instead
-            // of a perfect circle -- the correct-answer family's own silhouette.
-            const k = rad * 0.78;
-            ctx.moveTo(r.x - k, r.y - rad);
-            ctx.quadraticCurveTo(r.x + rad, r.y - rad, r.x + rad, r.y - k);
-            ctx.quadraticCurveTo(r.x + rad, r.y + rad, r.x + k, r.y + rad);
-            ctx.quadraticCurveTo(r.x - rad, r.y + rad, r.x - rad, r.y + k);
-            ctx.quadraticCurveTo(r.x - rad, r.y - rad, r.x - k, r.y - rad);
-            ctx.closePath();
-        } else {
-            ctx.arc(r.x, r.y, Math.max(rad, 0), 0, Math.PI * 2);
-        }
-        ctx.stroke();
-        ctx.restore();
-    });
-};
-
+// Effects — a canvas particle field plus floating text, scoped to #gc-match-section (see
+// .gc-fx-canvas/.gc-fx-text-layer in grammar.css). The field is ParticleField from
+// particles.js, shared with Word Match and loaded before this file. Each event has its own
+// silhouette rather than just its own colour: a stamped ring and sparkles for a right answer,
+// falling dust for a wrong one, a burst when the level is cleared.
 const gcMatchSection = document.getElementById('gc-match-section');
 const gcFxTextLayer = document.getElementById('gc-fx-text-layer');
-const gcFx = new GcParticleField(document.getElementById('gc-fx-canvas'), gcMatchSection);
+const gcFx = new ParticleField(document.getElementById('gc-fx-canvas'), gcMatchSection);
 
 function gcResizeCanvas() { gcFx.resize(); }
 window.addEventListener('resize', gcResizeCanvas);
@@ -988,7 +801,7 @@ function onTileClick(btn, opt, s) {
         // section before a burst spawned there ever got to play.
         if (currentSentenceIndex >= currentLevel.sentences.length - 1) {
             const cardC = gcCenterOf(document.querySelector('.gc-sentence-card'));
-            gcFx.spawnBurst(cardC.x, cardC.y, { count: 50, speed: 240, life: 1.1, colors: ['127,191,158', '224,112,90', '236,229,211'] });
+            gcFx.spawnBurst(cardC.x, cardC.y, { count: 50, speed: 240, life: 1.1, lift: 40, gravity: 380, grain: 2.4, colors: ['127,191,158', '224,112,90', '236,229,211'] });
         }
 
         window.setTimeout(() => advanceSentence(), 900);

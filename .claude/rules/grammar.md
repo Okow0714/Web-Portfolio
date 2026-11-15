@@ -125,7 +125,7 @@ token would have to be re-solved against both state fills. It is `aria-hidden`, 
 accessible name stays the answer alone.
 **`.gc-fx-canvas` needed `width`/`height`, not just `inset: 0`** (pre-existing, found here). A
 `<canvas>` is a REPLACED element, so `width: auto` resolves to its intrinsic size -- the width
-and height ATTRIBUTES, which `GcParticleField.resize()` sets in DEVICE pixels -- and `inset: 0`
+and height ATTRIBUTES, which `ParticleField.resize()` (`particles.js`) sets in DEVICE pixels -- and `inset: 0`
 does not stretch it the way it stretches a div. On a 390px phone at dpr 2 that left a 708px
 canvas in a 390px viewport and the whole play screen scrolled sideways. Verified against the
 previous commit before blaming the tile change: 726/708 on both, so it was never a regression.

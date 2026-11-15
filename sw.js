@@ -20,7 +20,7 @@
 // stale-while-revalidate, so it serves the cached copy first and only refreshes behind it --
 // without a bump, a returning PWA user runs the previous version of a fixed file for one more
 // visit. Whether that matters is a judgement call; for a correctness fix it generally does.
-const CACHE_VERSION = 'khan-japanese-v227';
+const CACHE_VERSION = 'khan-japanese-v228';
 
 const APP_SHELL = [
     './',
@@ -99,7 +99,7 @@ const APP_SHELL = [
     './supabase-app.js',
     './progress-shared.js',
     './about.js',
-    './game-particles.js',
+    './particles.js',
     './music-player.js',
     './game-audio.js',
     './game-core.js',

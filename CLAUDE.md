@@ -804,7 +804,7 @@ play column in a `100dvh` frame was tried and is worse: it splits the dead space
 detaches the board from its own toolbar, while the side panel floats alone at the top. Don't.
 
 **Word Match is five classic scripts, not one** (`game-core.js` → `game-fx.js` → `game-gate.js`
-→ `game-memory.js` → `game.js`, after `game-particles.js`/`game-audio.js`). They share one
+→ `game-memory.js` → `game.js`, after `particles.js`/`music-player.js`/`game-audio.js`). They share one
 global scope: a top-level `let`, `const` or `function` in one classic script can be read,
 assigned and called from any other on the page. It is just not a `window.` property, which is
 why `window.GameAudio` was undefined while bare `GameAudio` worked. That was misread once as
@@ -1657,8 +1657,10 @@ replaces the shared one for the whole page.
 `music-player.js` is `createMusicPlayer()`, the looping track plus the four-step
 `khanjp-volume` control, which used to be written out twice (inside `game-audio.js` and
 inside `grammar.js`). `game-audio.js` is now only that player plus the two phrases that end
-a level; the ten effects it carried for the pre-2026-10-21 board had no callers and are gone,
-as are `ParticleField`'s bolt, ring, sparkle and dust.
+a level; the ten effects it carried for the pre-2026-10-21 board had no callers and are gone.
+`particles.js` (was `game-particles.js`) is ONE `ParticleField` for both tools: Grammar Connect's
+private copy, `GcParticleField`, differed only in a few default numbers, which are options now
+(`lift`, `gravity`, `grain`) that its one burst call passes. The lightning bolt is gone.
 "A section shown starts at the top of the page" is in `showEl` itself (`auth-shared.js`);
 game.js, grammar.js and reading.js each used to wrap `window.showEl` to do it.
 **`grammar.js`, `dictionary.js`, `phonetics.js`, `reading.js`, `origins.js` and
@@ -1673,8 +1675,22 @@ count**, which is how `.phonetics-title-trigger` survived earlier audits), `unus
 `prune-css.js` (brace-matching rule removal, not a regex) and `snapcmp.js`, which shot every
 page on the previous commit and on the working tree in two themes at two sizes: 72 identical,
 0 changed, 8 nondeterministic (Word Match and the hub, which the specs cover instead).
-**`DEMO_MARKS_ON_LEVEL` in `game-gate.js` is still on**: level 1 of every tier shows both
-mode marks as earned for every visitor. Left for the site owner to switch off.
+**`DEMO_MARKS_ON_LEVEL` is gone** (2026-11-16): it painted both mode marks on level 1 of every
+tier for every visitor. A mark now shows only where one was earned.
+**The bonus round never ended early, and reading the code is what found it.** The check counted
+tiles already `gone`, but a matched bonus pair was marked `gone` inside a 260ms timeout, so after
+the fourth pair it read three and the player waited out the clock on an empty board. Measured on
+the two builds with the same script: 4,846ms after the last pair before, 340ms after. The state
+is set at once now and only the class waits.
+**A search that prints one line per match hides the arguments on the next line.**
+`floatText(c.x, c.y, window.tf(...),` continues onto a second line carrying `true`, the flag for
+the large between-hands text; grep showed the first line, the parameter looked unused, and it
+was removed with its CSS rule for one commit. Read the whole call before deleting a parameter.
+The long functions were split the same day: `onTile` into `playPick`/`playHit`/`playMiss`/
+`bonusPick`, and in `reading.js` `showLevelSelect`, `startVoiceGate` and `startRecognition` into
+named steps. `scratchpad/audit/verify3.js` drives the reader with a FAKE `SpeechRecognition`
+(the only way to test it without a microphone): a wrong transcript, a low-confidence final, the
+right word, `onend`, `no-speech` and `not-allowed`.
 
 ## Working conventions
 

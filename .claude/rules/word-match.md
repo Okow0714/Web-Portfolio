@@ -138,9 +138,8 @@ wanted sparks spilling past its edge and had to use siblings.
 stops trying for the session. That dance is not optional: **an upsert naming a column PostgREST
 does not know fails the whole row**, so without it a cosmetic badge would take every player's
 progress down with it. A mark is only ever written `true` — a later plain run never removes one.
-**`DEMO_MARKS_ON_LEVEL` in `game-gate.js` fakes both marks on N5-1** so the two treatments can
-be seen without playing a level under each mode. It is a demo, not a feature: delete the
-constant and the two lines reading it (grep `DEMO_MARKS`) to stop it.
+(`DEMO_MARKS_ON_LEVEL`, which faked both marks on level 1 so the treatments could be seen
+without playing, was removed on 2026-11-16.)
 
 **A separate file, not a reuse of `CardSfx`.** Word Match's five scripts share one global scope
 and a load order that breaks if a name is declared twice; reaching into it from two other pages
