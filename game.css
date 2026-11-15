@@ -1288,3 +1288,16 @@ html[data-contrast="darker"] .site-footer {
 #level-select-section.game-section:not([hidden]) {
     animation: khanjpFadeIn var(--dur-3, 0.42s) var(--ease-out, ease) both;
 }
+
+/* Phone (2026-11-15 audit, 390x844): labels measured 10-11px, the back button 31px tall. */
+@media (max-width: 860px) {
+    .hexnode-sub,
+    .hexnode-count,
+    .hexnode-theme {
+        font-size: 11.5px;
+    }
+
+    .gate-back {
+        min-height: 44px;
+    }
+}

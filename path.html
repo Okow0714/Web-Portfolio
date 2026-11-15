@@ -498,6 +498,60 @@
             </div>
         </div>
     </footer>
+    <!-- Phone tab bar (display:none above 860px, see style.css). A sibling of .container and
+         .site-footer, never a child of either, so neither stacking context can trap it. A group
+         tab is a <button> that opens the group's three tools in a sheet above the bar; the other
+         three are plain links. build-chrome.js marks the open page from data-tab-pages. -->
+    <nav class="tabbar" id="tabbar" aria-label="Sections">
+        <a class="tab" href="index.html" data-tab-pages="index.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-home"/></svg><span class="tab-label" data-i18n="nav.home">Home</span></a>
+        <span class="tab-group">
+            <button type="button" class="tab" data-tab-pages="game.html reading.html grammar.html" aria-expanded="false" aria-controls="tab-sheet-practice"><svg class="tab-ico" aria-hidden="true"><use href="#i-wordmatch"/></svg><span class="tab-label" data-i18n="nav.practice">Practice</span></button>
+            <span class="tab-sheet" id="tab-sheet-practice">
+                <a href="game.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-wordmatch"/></svg><span data-i18n="nav.wordGame">Word Match</span></a>
+                <a href="reading.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-reader"/></svg><span data-i18n="nav.dokkaiReader">Dokkai Reader</span></a>
+                <a href="grammar.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-grammar"/></svg><span data-i18n="nav.grammarConnect">Grammar Connect</span></a>
+            </span>
+        </span>
+        <span class="tab-group">
+            <button type="button" class="tab" data-tab-pages="dictionary.html origins.html phonetics.html" aria-expanded="false" aria-controls="tab-sheet-dictionary"><svg class="tab-ico" aria-hidden="true"><use href="#i-vocabulary"/></svg><span class="tab-label" data-i18n="nav.dictionary">Dictionary</span></button>
+            <span class="tab-sheet" id="tab-sheet-dictionary">
+                <a href="dictionary.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-vocabulary"/></svg><span data-i18n="nav.vocabulary">Vocabulary</span></a>
+                <a href="origins.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-origins"/></svg><span data-i18n="nav.kanaOrigins">Kana Origins</span></a>
+                <a href="phonetics.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-phonetics"/></svg><span data-i18n="nav.phoneticsFamily">Phonetics Family</span></a>
+            </span>
+        </span>
+        <a class="tab tab-on" aria-current="page" href="path.html" data-tab-pages="path.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-path"/></svg><span class="tab-label" data-i18n="nav.studyPath">Study Path</span></a>
+        <a class="tab" href="dashboard.html" data-tab-pages="dashboard.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-dashboard"/></svg><span class="tab-label" data-i18n="dash.titleSub">Dashboard</span></a>
+    </nav>
+    <script>
+        (function () {
+            if (window.__khanjpTabs) return;
+            window.__khanjpTabs = true;
+            var bar = document.getElementById('tabbar');
+            if (!bar) return;
+            var closeAll = function () {
+                var open = bar.querySelectorAll('.tab-group.open');
+                for (var i = 0; i < open.length; i++) {
+                    open[i].classList.remove('open');
+                    open[i].querySelector('.tab').setAttribute('aria-expanded', 'false');
+                }
+            };
+            document.addEventListener('click', function (e) {
+                var btn = e.target.closest ? e.target.closest('.tab-group > .tab') : null;
+                if (!btn || !bar.contains(btn)) { closeAll(); return; }
+                var group = btn.parentNode;
+                var wasOpen = group.classList.contains('open');
+                closeAll();
+                if (!wasOpen) {
+                    group.classList.add('open');
+                    btn.setAttribute('aria-expanded', 'true');
+                }
+            });
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') closeAll();
+            });
+        })();
+    </script>
     <!-- /chrome:footer -->
 
     <script src="i18n-strings-shared.js"></script>

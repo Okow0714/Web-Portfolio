@@ -752,7 +752,6 @@ html[data-theme="dark"] { color-scheme: dark; }
     max-width: 86vw;
     background: var(--header-bg-elevated);
     border-left: 1px solid var(--header-border);
-    box-shadow: -24px 0 50px rgba(0, 0, 0, 0.4);
     display: flex;
     flex-direction: column;
     padding: 76px 22px 22px;
@@ -763,7 +762,10 @@ html[data-theme="dark"] { color-scheme: dark; }
     z-index: 1000;
 }
 
+/* The shadow belongs to the OPEN panel. On the closed one it was cast from just past the right
+   edge back onto the page: a 74px dark band down every screen, measured on a 390px phone. */
 .account-menu.open .account-menu-panel {
+    box-shadow: -24px 0 50px rgba(0, 0, 0, 0.4);
     transform: translateX(0);
     pointer-events: auto;
 }
@@ -1581,7 +1583,6 @@ html[data-theme="dark"] { color-scheme: dark; }
         padding-bottom: 24px;
         background: var(--header-bg);
         border-right: 1px solid var(--header-border);
-        box-shadow: 8px 0 28px rgba(0, 0, 0, 0.35);
         overflow-y: auto;
         overscroll-behavior: contain;
         transform: translateX(-100%);
@@ -1589,7 +1590,10 @@ html[data-theme="dark"] { color-scheme: dark; }
         z-index: 2;
     }
 
+    /* Shadow on the open drawer only, for the reason the account panel's is: closed, it
+       darkened the left 36px of every page. */
     body.nav-drawer-open .header-nav {
+        box-shadow: 8px 0 28px rgba(0, 0, 0, 0.35);
         transform: translateX(0);
     }
 
@@ -1981,5 +1985,165 @@ body:has(.khanjp-loader) .container {
 @media (prefers-reduced-motion: reduce) {
     @view-transition {
         navigation: none;
+    }
+}
+
+/* ---------------------------------------------------------------------------------------------
+   Phone tab bar (2026-11-15). Markup in _chrome.html's footer block, so it is on every page that
+   carries the chrome. Five places always under the thumb: Home, the two groups the desktop bar
+   has, Study Path and the Dashboard. A group tab opens its three tools in a sheet above the bar
+   rather than going to the first of them, so Dokkai Reader is not hidden behind Word Match.
+   The bar wears the brand's own wine on every page, like the mark: it is the app's frame, not
+   the tool's. z-index 800 keeps it under the tour (900) and the masthead's panels (1000). A
+   modal lives inside .container and cannot outrank a body-level bar, so the bar steps aside
+   while one is open instead.
+   --------------------------------------------------------------------------------------------- */
+.tabbar {
+    display: none;
+}
+
+@media (max-width: 860px) {
+    :root {
+        --tabbar-h: calc(64px + env(safe-area-inset-bottom, 0px));
+    }
+
+    body:has(.tabbar) {
+        padding-bottom: var(--tabbar-h);
+    }
+
+    .tabbar {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 800;
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        height: var(--tabbar-h);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+        background: var(--brand-ink);
+        border-top: 1px solid rgba(232, 189, 109, 0.32);
+        view-transition-name: khanjp-tabbar;
+    }
+
+    html[data-contrast="darker"] .tabbar {
+        background: #2b1a22;
+    }
+
+    /* The masthead is a child of .container too, so its z-index 1000 is sealed inside that
+       level-2 context and the account panel and the drawer cannot outrank this bar either:
+       measured, the bar painted over the bottom 64px of the open account panel. */
+    body:has(.modal-overlay:not(.hidden)) .tabbar,
+    body:has(.account-menu.open) .tabbar,
+    body.nav-drawer-open .tabbar {
+        display: none;
+    }
+
+    .tab-group {
+        display: contents;
+    }
+
+    .tab {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        min-width: 0;
+        padding: 6px 2px 0;
+        margin: 0;
+        border: 0;
+        background: none;
+        color: #dccbd3;
+        font-family: var(--font-body);
+        font-size: 11.5px;
+        font-weight: 500;
+        line-height: 1.15;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Two of the five labels need two lines at 360-390px. Every label reserves both, so the five
+       icons stay on one line instead of the long names pushing theirs up. */
+    .tab-label {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        min-height: 2.3em;
+        text-wrap: balance;
+    }
+
+    .tab-ico {
+        width: 22px;
+        height: 22px;
+        flex: none;
+    }
+
+    .tab-on,
+    .tab-group.open > .tab {
+        color: var(--brand-gold);
+    }
+
+    .tab-on::before {
+        content: "";
+        position: absolute;
+        top: -1px;
+        left: 50%;
+        width: 40px;
+        height: 3px;
+        margin-left: -20px;
+        background: var(--brand-gold);
+    }
+
+    .tab:focus-visible,
+    .tab-sheet a:focus-visible {
+        outline: 2px solid var(--brand-gold);
+        outline-offset: -4px;
+    }
+
+    /* Absolute against the bar, which is fixed and so is its containing block. */
+    .tab-sheet {
+        position: absolute;
+        left: 10px;
+        right: 10px;
+        bottom: calc(100% + 8px);
+        display: none;
+        flex-direction: column;
+        padding: 6px 0;
+        background: #5c3a49;
+        border: 1px solid rgba(232, 189, 109, 0.32);
+        border-radius: 6px;
+        box-shadow: 0 -10px 34px rgba(0, 0, 0, 0.34);
+    }
+
+    .tab-group.open > .tab-sheet {
+        display: flex;
+        animation: khanjpFadeIn var(--dur-1) var(--ease-out) both;
+    }
+
+    .tab-sheet a {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        min-height: 52px;
+        padding: 0 18px;
+        color: #f9efe3;
+        font-family: var(--font-body);
+        font-size: 0.98rem;
+        text-decoration: none;
+    }
+
+    .tab-sheet a .tab-ico {
+        color: var(--brand-gold);
+    }
+}
+
+/* Phone type and target floor for the shared chrome (2026-11-15 audit, 390x844). */
+@media (max-width: 860px) {
+    .lang-switch .lang-switch-code {
+        font-size: 12px;
     }
 }

@@ -735,3 +735,19 @@ html[data-contrast="darker"] .path-stage-main {
     .pstage-mark { width: 60px; height: 60px; font-size: 1.2rem; }
     .pstage-mark.jp { font-size: 0.95rem; }
 }
+
+/* Phone (2026-11-15 audit, 390x844): the stage back link was 33px tall and four labels sat
+   between 9.9 and 10.2px. */
+@media (max-width: 860px) {
+    .path-stop-no,
+    .pstage-minimap-cap,
+    .pstage-dir {
+        font-size: 11.5px;
+    }
+
+    .pstage-back {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+    }
+}

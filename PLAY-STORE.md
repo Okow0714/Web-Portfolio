@@ -96,3 +96,33 @@ sizes), and submit.
 - **Offline is the shell, not the content.** The big word-data files are deliberately out of
   `APP_SHELL`, so a cold offline launch opens the app but the tools have no words. Worth knowing
   before someone reports it as a bug.
+
+## Shipping a new icon (2026-11-15)
+
+The launcher icon, the splash screen and the notification icon are **baked into the Android
+package** when Bubblewrap builds it. Changing a PNG in this repo changes the installed app's
+icon only after the package is rebuilt and uploaded. Checked in the version 3 package
+(`khan-japanese-android/app/src/main/res`):
+
+| Resource | What version 3 ships | Why it looks wrong |
+|---|---|---|
+| `drawable-*/splash.png` | the old square `icon-512.png`, 1200px | a hard-cornered gold block on the wine splash |
+| `drawable-*/ic_notification_icon.png` | the colour icon, opaque edge to edge | Android draws notification icons from alpha only, so this is a solid block |
+| `mipmap-anydpi-v26/ic_launcher.xml` | no `<monochrome>` layer | no themed icon on Android 13+ |
+
+The repo side is done: `icons/icon-512.png` and `icon-192.png` are a round seal on a transparent
+ground, and `icons/icon-512-monochrome.png` (the mark alone, white) is in `manifest.json`.
+Regenerate them with `node tools/icon-maskable/make-seal.js`.
+
+To put them in the app, **after this commit is live on khan-japanese.org**, from
+`khan-japanese-android/`:
+
+```
+bubblewrap merge      # pulls the manifest's new monochrome icon into twa-manifest.json
+bubblewrap update     # re-downloads the icons, regenerates the resources, bumps the version
+bubblewrap build      # asks for the keystore password, writes app-release-bundle.aab
+```
+
+Check `twa-manifest.json` afterwards: `monochromeIconUrl` should now be set. While there,
+`navigationColor` is `#000000`; `#4A2C3A` makes Android's own navigation bar match the tab bar
+the site now draws above it. Then upload the new `.aab` in Play Console as a new release.

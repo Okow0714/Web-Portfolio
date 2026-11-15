@@ -636,3 +636,153 @@ body:has(.hub-main) #theme-switch:focus-visible {
         transform: none;
     }
 }
+
+/* ---------------------------------------------------------------------------------------------
+   Phone: the hub is a launcher (2026-11-15). Last in the file on purpose, so it outranks the
+   (hover: none) block above at equal specificity.
+   That block opened every seal permanently on touch -- 250px each, picture and description
+   showing -- which made the home page 3,083px tall on a 390x844 phone: six screens of scrolling
+   to see six tools. A phone's home screen is where you pick, not where you read, so each tool is
+   an icon tile in its own seal colour with its name under it, all six on the first screen, and
+   Study Path follows directly instead of waiting below a 100dvh fold. The descriptions are not
+   lost: each tool's own page and tour still carry them.
+   --------------------------------------------------------------------------------------------- */
+@media (max-width: 860px) {
+    .hub-stage {
+        min-height: 0;
+        justify-content: flex-start;
+        padding-top: 84px;
+        padding-bottom: 6px;
+    }
+
+    .hub-mark {
+        opacity: 0.22;
+    }
+
+    .hub-tagline {
+        font-size: 12px;
+        letter-spacing: 0.18em;
+    }
+
+    .hub-intro {
+        margin-bottom: 22px;
+    }
+
+    .hub-sheet {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px 10px;
+        max-width: 440px;
+        margin-inline: auto;
+        width: 100%;
+        padding-bottom: 0;
+    }
+
+    .hub-seal {
+        aspect-ratio: auto;
+        min-height: 0;
+        overflow: visible;
+        container-type: normal;
+        isolation: auto;
+        background: none;
+        box-shadow: none;
+        color: var(--hub-ink);
+    }
+
+    .hub-seal:hover,
+    .hub-seal:focus-visible {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .hub-seal::before,
+    .hub-seal-shot,
+    .hub-seal-stat,
+    .hub-seal-desc {
+        display: none;
+    }
+
+    .hub-seal-in {
+        position: static;
+        height: auto;
+        padding: 0;
+        align-items: center;
+        gap: 9px;
+    }
+
+    /* The tile IS the seal now: the same --seal the tool's own masthead wears. */
+    .hub-seal-ico,
+    .hub-seal:hover .hub-seal-ico,
+    .hub-seal:focus-visible .hub-seal-ico {
+        width: 84px;
+        height: 84px;
+        margin: 0;
+        padding: 19px;
+        box-sizing: border-box;
+        border-radius: 22px;
+        background: linear-gradient(158deg, var(--seal), color-mix(in srgb, var(--seal) 78%, #1b1319) 100%);
+        opacity: 1;
+        filter: none;
+        transform: none;
+        box-shadow: 0 6px 14px -8px light-dark(rgba(30, 18, 26, 0.6), rgba(0, 0, 0, 0.8));
+    }
+
+    .hub-seal:active .hub-seal-ico {
+        transform: scale(0.94);
+    }
+
+    .hub-seal-txt {
+        margin: 0;
+        align-items: center;
+    }
+
+    .hub-seal-name {
+        align-self: auto;
+        font-family: var(--font-body);
+        font-size: 13.5px;
+        font-weight: 600;
+        line-height: 1.25;
+        letter-spacing: 0;
+        text-align: center;
+        text-shadow: none;
+        text-wrap: balance;
+        color: var(--hub-ink);
+    }
+
+    /* Study Path, straight under the launcher as one card. */
+    .hub-path {
+        width: auto;
+        max-width: 440px;
+        margin: 26px max(20px, calc(50% - 220px)) 28px;
+        padding: 16px 18px;
+        flex-wrap: nowrap;
+        gap: 14px;
+        background: var(--hub-sunk);
+        border: 1px solid var(--hub-rule);
+        border-radius: 6px;
+    }
+
+    .hub-path-glyph,
+    .hub-path-desc {
+        display: none;
+    }
+
+    .hub-path-text {
+        flex: 1 1 auto;
+    }
+
+    .hub-path-kicker {
+        font-size: 11.5px;
+        letter-spacing: 0.14em;
+        margin-bottom: 4px;
+    }
+
+    .hub-path-name {
+        font-size: 17px;
+        margin: 0;
+    }
+
+    .hub-path-cta {
+        padding: 13px 14px;
+        white-space: nowrap;
+    }
+}

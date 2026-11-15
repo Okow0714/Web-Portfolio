@@ -80,6 +80,23 @@ function withCurrent(header, page) {
     return header.replace(needle, 'href="' + page + '" class="nav-trigger nav-current"');
 }
 
+// The phone tab bar lives in the footer block. Same idea as withCurrent: the canonical copy
+// marks nothing, and the tab whose data-tab-pages lists this page gets tab-on. A page in no
+// tab (the legal pages, credits) correctly lights none.
+function withTab(footer, page) {
+    if (/^path-[a-z0-9]+\.html$/.test(page)) page = 'path.html';
+    return footer.replace(
+        /class="tab" data-tab-pages="([^"]+)"/g,
+        (whole, pages) => pages.split(' ').includes(page)
+            ? 'class="tab tab-on" data-tab-pages="' + pages + '"'
+            : whole)
+        .replace(
+            /class="tab" href="([^"]+)" data-tab-pages="([^"]+)"/g,
+            (whole, href, pages) => pages.split(' ').includes(page)
+                ? 'class="tab tab-on" aria-current="page" href="' + href + '" data-tab-pages="' + pages + '"'
+                : whole);
+}
+
 function divBalance(html) {
     const open = (html.match(/<div\b/g) || []).length;
     const close = (html.match(/<\/div>/g) || []).length;
@@ -112,7 +129,7 @@ function build() {
             // Reuse the opening marker's own indentation for the closing one, so the generated
             // block sits at the depth the page already had it at.
             const indent = out.slice(out.lastIndexOf('\n', i) + 1, i);
-            const body = name === 'header' ? withCurrent(header, page) : footer;
+            const body = name === 'header' ? withCurrent(header, page) : withTab(footer, page);
             out = out.slice(0, i + open.length) + '\n' + body + '\n' + indent + out.slice(j);
         }
 

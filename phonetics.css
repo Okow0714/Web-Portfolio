@@ -1212,3 +1212,30 @@ html[data-contrast="darker"] .site-footer {
 #phonetics-node-detail > * {
     animation: khanjpFadeIn var(--dur-2, 0.22s) var(--ease-out, ease) both;
 }
+
+/* Phone (2026-11-15). The gate's level names were 8.3px at 0.86 opacity on a 390px phone -- the
+   clamp above is tuned for discs on a dial, and below 620px the discs are rows with room for real
+   type. The page also leaves the bottom of the window to the tab bar, so the field measures the
+   height that is actually visible. */
+@media (max-width: 860px) {
+    .phonetics-main {
+        min-height: calc(100dvh - var(--tabbar-h, 0px));
+    }
+}
+
+@media (max-width: 620px) {
+    .lv {
+        min-height: 60px;
+    }
+
+    .lv-n {
+        font-size: 1.5rem;
+    }
+
+    .lv-t {
+        font-size: 0.88rem;
+        padding: 0;
+        text-align: left;
+        opacity: 1;
+    }
+}

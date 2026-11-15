@@ -1663,3 +1663,42 @@ html[data-contrast="darker"] .site-footer {
 #gc-level-record > * {
     animation: khanjpFadeIn var(--dur-2, 0.22s) var(--ease-out, ease) both;
 }
+
+/* Phone (2026-11-15). The speaker sat alone in its own row above the title, which opened the page
+   on an 80px empty band. It shares the title's row instead. */
+@media (max-width: 620px) {
+    .gc-hud-row {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+    }
+
+    .gc-title {
+        padding-right: 56px;
+    }
+}
+
+/* Phone (2026-11-15 audit, 390x844): the speaker was 38px, the board's back button 21px tall,
+   and four labels sat between 9.6 and 11.2px. */
+@media (max-width: 860px) {
+    .grammar-main .sound-toggle {
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .grammar-main .ghost-btn {
+        min-height: 44px;
+    }
+
+    .gc-gate-tri .gt-note {
+        font-size: 11.5px;
+        opacity: 1;
+    }
+
+    .gc-rec-stat .k,
+    .gc-stat .k,
+    .gc-award-name {
+        font-size: 11.5px;
+    }
+}

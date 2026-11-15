@@ -678,3 +678,9 @@ html[data-contrast="darker"] .site-footer {
 #kana-desk > * {
     animation: khanjpFadeIn var(--dur-2, 0.22s) var(--ease-out, ease) both;
 }
+
+@media (max-width: 860px) {
+    .origins-eyebrow {
+        font-size: 11.5px;
+    }
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Seal and monochrome icon generator</title>
+</head>
+
+<body>
+    <!--
+      Regenerates icons/icon-512.png, icons/icon-192.png and icons/icon-512-monochrome.png.
+      (make-maskable.html beside this one owns icons/icon-512-maskable.png.)
+
+      WHY THE "ANY" ICON IS A ROUND SEAL ON A TRANSPARENT GROUND. Bubblewrap builds the Android
+      splash screen from the manifest's "any" icon, centred on background_color. The old one was
+      an opaque gold SQUARE, so the app opened on a hard-cornered 300dp block on wine. Corners
+      that are transparent let the splash show a seal instead. Nothing else that reads this icon
+      (desktop install, the legacy pre-Android-8 launcher) wants the square either.
+
+      WHY THERE IS A MONOCHROME ICON AT ALL. Android draws a notification icon from its ALPHA
+      channel only. With no monochrome icon in the manifest Bubblewrap falls back to the colour
+      one, which is opaque edge to edge, so the status bar shows a solid block. The same layer is
+      what Android 13+ uses for themed icons. It is the mark alone, white, on nothing, held inside
+      the same safe circle the maskable icon uses.
+
+      Drawn from brand-mark.svg rather than the PNG, so nothing is upscaled. Served over http,
+      never opened as file:// (a tainted canvas throws on getImageData and toDataURL).
+      Run by tools/icon-maskable/make-seal.js.
+    -->
+    <script>
+        const INK = '#4a2c3a';                       // --brand-ink
+        const GOLD_A = '#e8bd6d', GOLD_B = '#c99a45'; // --brand-gold, --brand-gold-dark
+
+        async function markImage(fill) {
+            // The mark is drawn in currentColor, which resolves to black inside an <img>.
+            const raw = await (await fetch('/icons/brand-mark.svg')).text();
+            if (!raw.includes('fill="currentColor"')) throw new Error('brand-mark.svg no longer uses currentColor');
+            const svg = raw.split('fill="currentColor"').join('fill="' + fill + '"');
+            const sized = svg.replace('<svg ', '<svg width="1024" height="1024" ');
+            const url = URL.createObjectURL(new Blob([sized], { type: 'image/svg+xml' }));
+            const img = new Image();
+            await new Promise((res, rej) => { img.onload = res; img.onerror = rej; img.src = url; });
+            return img;
+        }
+
+        // Bounding box of actual ink: the artwork's own margins are not symmetric.
+        function inkBounds(img) {
+            const c = document.createElement('canvas');
+            c.width = c.height = 1024;
+            const x = c.getContext('2d');
+            x.drawImage(img, 0, 0, 1024, 1024);
+            const d = x.getImageData(0, 0, 1024, 1024).data;
+            let minX = 1024, minY = 1024, maxX = -1, maxY = -1;
+            for (let y = 0; y < 1024; y++) {
+                for (let px = 0; px < 1024; px++) {
+                    if (d[(y * 1024 + px) * 4 + 3] > 16) {
+                        if (px < minX) minX = px;
+                        if (px > maxX) maxX = px;
+                        if (y < minY) minY = y;
+                        if (y > maxY) maxY = y;
+                    }
+                }
+            }
+            return { minX, minY, maxX, maxY, w: maxX - minX + 1, h: maxY - minY + 1 };
+        }
+
+        // Draws the mark so its ink DIAGONAL is `diag` pixels and its ink is centred.
+        function drawMark(ctx, img, ink, size, diag) {
+            const scale = diag / Math.sqrt(ink.w * ink.w + ink.h * ink.h);
+            const cx = (ink.minX + ink.maxX + 1) / 2 * scale;
+            const cy = (ink.minY + ink.maxY + 1) / 2 * scale;
+            ctx.drawImage(img, size / 2 - cx, size / 2 - cy, 1024 * scale, 1024 * scale);
+        }
+
+        function canvas(size) {
+            const c = document.createElement('canvas');
+            c.width = c.height = size;
+            document.body.appendChild(c);
+            return c;
+        }
+
+        window.build = async function () {
+            const dark = await markImage(INK);
+            const white = await markImage('#ffffff');
+            const ink = inkBounds(dark);
+            const out = {};
+
+            for (const size of [512, 192]) {
+                const c = canvas(size), ctx = c.getContext('2d');
+                const g = ctx.createLinearGradient(0, 0, size, size);
+                g.addColorStop(0, GOLD_A);
+                g.addColorStop(1, GOLD_B);
+                ctx.fillStyle = g;
+                ctx.beginPath();
+                ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
+                ctx.fill();
+                // 0.78 of the diameter: the mark's furthest corner stays 11% of the radius
+                // inside the seal's edge.
+                drawMark(ctx, dark, ink, size, size * 0.78);
+                out['icon-' + size + '.png'] = c.toDataURL('image/png');
+            }
+
+            // Same geometry as the maskable icon: 92% of the 80% safe circle.
+            const m = canvas(512), mctx = m.getContext('2d');
+            drawMark(mctx, white, ink, 512, 512 * 0.8 * 0.92);
+            out['icon-512-monochrome.png'] = m.toDataURL('image/png');
+            return out;
+        };
+    </script>
+</body>
+
+</html>

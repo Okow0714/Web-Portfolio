@@ -250,7 +250,8 @@
 
 @media (max-width: 560px) {
     .tour-help-btn .tour-help-label { display: none; }
-    .tour-help-btn { padding: 5px; gap: 0; }
+    /* 29x29 measured on a phone; the disc keeps its size and the hit area grows round it */
+    .tour-help-btn { padding: 5px; gap: 0; min-width: 44px; min-height: 44px; justify-content: center; }
     .tour-key-row { grid-template-columns: 70px 1fr; gap: 10px; }
 }
 

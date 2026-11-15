@@ -1585,6 +1585,50 @@ every click on Start Reading and Skip Word. Fixed page-scoped via
 overlay, check it with `document.elementFromPoint` at the element's own centre — Playwright
 reports this as "…subtree intercepts pointer events", which is easy to dismiss as a test bug.
 
+**On a phone the site is an app: a launcher and a tab bar** (2026-11-15). Below 861px
+`index.html` is a launcher -- six 84px icon tiles in their own `--seal`, Study Path as one card
+straight under them, all on the first screen -- and every chrome page carries `.tabbar`, five
+tabs fixed to the bottom edge (Home, Practice, Dictionary, Study Path, Dashboard). It replaced a
+home page that was **3,083px tall on a 390x844 phone**, because `hub.css`'s `(hover: none)`
+block opened every seal permanently at 250px. The launcher block is LAST in `hub.css` on
+purpose: it has to outrank that block at equal specificity.
+**The tab bar's markup is in `_chrome.html`'s FOOTER block**, after `</footer>`, so it is a
+sibling of `.container` and `.site-footer` and neither stacking context can trap it.
+`build-chrome.js`'s `withTab()` lights the tab whose `data-tab-pages` lists the page, the way
+`withCurrent()` does for the nav. A group tab is a `<button>` that opens its three tools in a
+`.tab-sheet` above the bar instead of going to the first of them, or Dokkai Reader would sit
+hidden behind Word Match; the script beside the markup is guarded by `window.__khanjpTabs`.
+**Its five labels are existing strings** (`nav.home`, `nav.practice`, `nav.dictionary`,
+`nav.studyPath`, `dash.titleSub`) -- no Mongolian was written for it. Two of them need two lines
+at 360-390px, so `.tab-label` reserves two lines on all five and the icons stay on one row.
+**The bar is body-level at z-index 800 and still cannot be covered by the account panel, the
+drawer or a modal**, because all three live inside `.container` (level 2 or 3) -- the masthead's
+own z-index 1000 is sealed in there with them. Measured: the bar painted over the bottom 64px
+of the open account panel. So it is `display: none` while any of the three is open, by state
+(`:has(.modal-overlay:not(.hidden))`, `:has(.account-menu.open)`, `body.nav-drawer-open`).
+**`--tabbar-h` exists only below 861px**, declared on `:root` inside the media block, so
+`var(--tabbar-h, 0px)` is how anything else makes room: `body` pads by it, `.phonetics-main`
+subtracts it from the `100dvh` its field measures against, and the reader's fixed
+`.reader-controls` sits above it. A new bottom-fixed element needs the same.
+**A closed off-canvas panel still casts its shadow.** `.account-menu-panel` and the phone
+`.header-nav` are parked just past the screen edge with `translateX`, and their box-shadows
+reached back in: a 74px dark band down the right of every page and 36px down the left. The
+shadow is on the OPEN state now. The first hunt for it went through the background gradients;
+painting `<main>` white and listing the fixed elements is what found it.
+**The per-page repairs were found by `scratchpad/mobile/audit.js`, not by eye**: the dictionary
+gave its Japanese column `24px` (the first column's `24ch` was a desktop number), so every word
+wrapped one character per line; the Phonetics gate's level names were 8.3px; Grammar Connect
+opened on an 80px band holding only the speaker; and a dozen controls were under 44px. Each is
+a phone-only block at the END of its own stylesheet. `verify.js` beside it drives the result
+with real taps -- sheet opens and closes, a sheet link navigates, the Phonetics board ends
+above the bar, Skip Word takes a tap with the bar present -- and `narrow.js` re-checks 320, 360,
+412 and 768.
+**The app icon is baked into the Android package**, which is why fixing a PNG here never fixed
+the app. The project is `D:\Okow0714\khan-japanese-android` (outside this repo, keystore
+included). `PLAY-STORE.md` has what version 3 ships and the three commands that rebuild it;
+`tools/icon-maskable/make-seal.js` regenerates the round "any" seal and the monochrome icon and
+fails if the seal's corners are opaque or the monochrome ink leaves the safe circle.
+
 ## Working conventions
 
 - **Standing authorization to `git commit` and `git push` to `main`.** No need to ask first —
