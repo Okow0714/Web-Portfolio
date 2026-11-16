@@ -1646,6 +1646,28 @@ giving them one. The hub hid `.site-brand` and `.header-nav` outright, which on 
 no logo to tap and so no drawer; below 861px `hub.css` puts the seal back top-left for that.
 Desktop keeps its footer and is unchanged. `scratchpad/mobile/verify2.js` taps through all of it.
 
+**The hub has a scene behind it** (2026-11-16): `images/hub/bg-day.jpg` by day and
+`bg-night.jpg` at night, on a FIXED `body:has(.hub-main)::before` at z-index 0 in `hub.css`.
+The day picture is a Canva design ("realistic" pair, design `DAHa_3Fs0Us`) with its ground raised
+120px; **the night picture is generated FROM it**, a tone map rather than a second design, so the
+pagoda, temple, mountain, torii and trees are the same shapes in the same places and switching theme
+changes only the sky. The generator is `scratchpad/canva-bg/pair4.js` (brightness against the row's
+sky decides how far a pixel goes from night sky to silhouette black; no thresholds, so no hard edges).
+Two Canva-made night versions were tried first and rejected for being a different scene.
+**Fixed, not a body background**: a body background anchors to the bottom of the DOCUMENT, which on a
+phone hid the ground and left the top flat. The raised ground is what shows above the phone tab bar
+(~94px of ground against the 64px bar at 390x844). On a phone the picture is anchored at 15% so the
+pagoda is in view. `url()` cannot go through `light-dark()`, so the night rule is written for both
+dark states. The K watermark stays at 0.16 / 0.2 so the scene shows through it.
+**`.hub-tagline` and `.hub-sub` have their own colour now**: `--hub-soft` was solved against flat
+paper and measured ~3:1 over the washed day sky on the real composited pixels.
+`scratchpad/canva-bg/verify-hub.js` measures every line against the pixels under it in all four theme
+states on desktop and phone, checks the ground above the tab bar, and clicks a seal. Two traps it hit:
+a block-level child (the tagline inside the h1) widens the heading's range rect to the full row, so
+the wordmark is measured by its own text node only; and the night ground has to be compared with the
+BAR, since it is as dark as the night sky. A neon glow on the seals was tried and dropped at the
+owner's direction.
+
 **Shared helpers are written once** (2026-11-15 code audit). `shared-utils.js` holds
 `escapeHtml`, `formatTime`, `shuffleArray` and `stripFurigana`; it is loaded before
 `auth-shared.js` on the six pages that use any of them (game, grammar, dashboard, dictionary,

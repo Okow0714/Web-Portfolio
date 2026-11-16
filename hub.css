@@ -809,3 +809,66 @@ body:has(.hub-main) #theme-switch:focus-visible {
         align-items: center;
     }
 }
+
+
+/* ---------------------------------------------------------------------------------------------
+   The scene behind the hub (2026-11-16): one landscape, day and night. images/hub/bg-day.jpg is
+   a Canva picture with the ground raised 120px; bg-night.jpg is made FROM it (tone-mapped, same
+   silhouettes in the same places, a plain moon), so switching theme changes only the sky.
+   It is a FIXED pseudo-element, not a body background: a body background on a page longer than
+   the window anchors to the bottom of the document, which on a phone put the ground out of sight
+   and left the top of the page a flat colour. Fixed to the viewport, the ground always sits at
+   the bottom of the screen -- and the raised strip of it is tall enough to show above the
+   phone's tab bar (64px against ~94px of ground at a 390x844 phone's scale).
+   z-index 0 keeps it under .container (2) and .site-footer (2); the paper colour under it stays
+   as the fallback while the image loads.
+   url() cannot go through light-dark(), so the night picture is written out for both dark
+   states: an explicit choice stamps data-theme, the follow-the-device setting stamps nothing.
+   --------------------------------------------------------------------------------------------- */
+body:has(.hub-main)::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    /* The day picture is washed a third of the way toward the paper so it sits behind the type. */
+    background:
+        linear-gradient(rgba(253, 251, 247, 0.32), rgba(253, 251, 247, 0.32)),
+        url("images/hub/bg-day.jpg") center bottom / cover no-repeat;
+}
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) body:has(.hub-main)::before {
+        background: url("images/hub/bg-night.jpg") center bottom / cover no-repeat;
+    }
+}
+:root[data-theme="dark"] body:has(.hub-main)::before {
+    background: url("images/hub/bg-night.jpg") center bottom / cover no-repeat;
+}
+
+/* On a phone the picture is far wider than the screen; anchored at 15% the pagoda and the temple
+   are in view rather than open sky. Both themes, so the same buildings stand in the same place. */
+@media (max-width: 860px) {
+    body:has(.hub-main)::before { background-position: 15% bottom; }
+    :root[data-theme="dark"] body:has(.hub-main)::before { background-position: 15% bottom; }
+}
+@media (max-width: 860px) and (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) body:has(.hub-main)::before { background-position: 15% bottom; }
+}
+
+/* The K watermark stays, faint enough for the scene to show through it. After the launcher block
+   on purpose, so it also replaces that block's phone opacity. */
+.hub-mark { opacity: 0.16; }
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .hub-mark { opacity: 0.2; }
+}
+:root[data-theme="dark"] .hub-mark { opacity: 0.2; }
+
+/* The two small lines over the scene. --hub-soft was solved against flat paper (5.3:1) and drops
+   to ~3:1 over the washed day sky, measured on the real composited pixels; the night value only
+   just cleared, so it moves up a step too. Scoped to these two lines: --hub-soft is used on the
+   seals and elsewhere, over grounds that did not change. */
+.hub-tagline,
+.hub-sub {
+    color: #55464f;
+    color: light-dark(#55464f, #b8a8b3);
+}
