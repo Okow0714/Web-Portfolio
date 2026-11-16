@@ -2080,35 +2080,37 @@ body:has(.khanjp-loader) .container {
    browser tabs, each sits on the slanted side of the one before it (rising z-index), and the
    open tab is in front of everything. Desktop only: below 861px these are rows in the drawer.
    ============================================================================================= */
+.site-header-wrap { --bar: var(--header-bg); }
 @media (min-width: 861px) {
     .header-nav {
         align-items: flex-end;
-        gap: 11px;
+        gap: 9px;
         padding-right: 14px;   /* the last tab's slant reaches past its box */
     }
     .nav-tool-item { align-items: flex-end; }
+    /* Flat, like Phonetics Family's tiles and Word Match's cards (2026-11-16): one solid colour,
+       square corners, no gradient, highlight or shadow. A closed tab is low and quiet, half its own
+       colour and half the bar's; hover gives it its full colour back. The open tab is sized up and
+       is the SAME colour as the bar it stands on -- by day that is its own colour, since each tool
+       page's bar is its seal; at night it is the shaded bar -- so the two read as one piece. */
     .header-nav .nav-tool {
-        --h: 38px;
+        --h: 32px;
         --slant: 15px;
         position: relative;
         isolation: isolate;
         z-index: var(--i, 1);
         height: var(--h);
         align-self: flex-end;
-        gap: 7px;
-        padding: 0 8px 0 14px;
+        gap: 6px;
+        padding: 0 6px 0 12px;
         border: 0;
-        border-radius: 8px 0 0 0;
-        color: #fff;
-        font-size: 0.84rem;
-        /* lit at the top, a touch deeper towards the bar */
-        background: linear-gradient(180deg, color-mix(in srgb, var(--tab) 82%, #fff) 0%, var(--tab) 38%, color-mix(in srgb, var(--tab) 88%, #000) 100%);
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.38);
-        /* the shadow falls left, onto the slant of the tab underneath */
-        filter: drop-shadow(0 -1px 0 rgba(0, 0, 0, 0.16)) drop-shadow(-3px -1px 4px rgba(0, 0, 0, 0.3));
-        transition: height 0.2s var(--ease-out);
+        border-radius: 0;
+        font-size: 0.8rem;
+        background: color-mix(in srgb, var(--tab) 48%, var(--bar));
+        color: color-mix(in srgb, #fff 86%, var(--bar));
+        transition: height 0.18s var(--ease-out), background-color 0.18s, color 0.18s;
     }
-    /* the slanted right side, shaded exactly like the face so no seam shows */
+    /* the slanted right side, the same fill as the face so no seam shows */
     .header-nav .nav-tool::before {
         content: "";
         position: absolute;
@@ -2119,32 +2121,31 @@ body:has(.khanjp-loader) .container {
         width: calc(var(--slant) * 2);
         transform: skewX(20deg);
         transform-origin: bottom;
-        border-radius: 0 8px 0 0;
         background: inherit;
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
     }
     .header-nav .nav-tool .nav-ico {
-        width: 18px;
-        height: 18px;
+        width: 16px;
+        height: 16px;
         opacity: 1;
         margin-right: 0;   /* the shared .nav-ico margin; the tab's own gap spaces it */
         position: relative;
     }
     .header-nav .nav-tool span { position: relative; }
     .header-nav .nav-tool:hover {
-        --h: 42px;
-        background: linear-gradient(180deg, color-mix(in srgb, var(--tab) 82%, #fff) 0%, var(--tab) 38%, color-mix(in srgb, var(--tab) 88%, #000) 100%);
+        --h: 37px;
+        background: var(--tab);
         color: #fff;
     }
     .header-nav .nav-tool.nav-current {
         --h: 48px;
         z-index: 20;
-        padding: 0 10px 0 17px;
+        gap: 8px;
+        padding: 0 10px 0 18px;
+        font-size: 0.92rem;
         color: #fff;
-        border: 0;
-        background: linear-gradient(180deg, color-mix(in srgb, var(--tab) 82%, #fff) 0%, var(--tab) 38%, color-mix(in srgb, var(--tab) 88%, #000) 100%);
-        filter: drop-shadow(0 -1px 0 rgba(0, 0, 0, 0.18)) drop-shadow(-3px -2px 6px rgba(0, 0, 0, 0.32)) drop-shadow(3px -2px 6px rgba(0, 0, 0, 0.32));
+        background: var(--bar);
     }
+    .header-nav .nav-tool.nav-current .nav-ico { width: 20px; height: 20px; }
     .header-nav .nav-tool:focus-visible {
         outline: 2px solid #fff;
         outline-offset: -5px;
@@ -2157,20 +2158,15 @@ body:has(.khanjp-loader) .container {
     .nav-tool[href="dictionary.html"] { --tab: #23405f; --i: 6; }
 }
 
-/* Short of room, the logo keeps its seal and drops the words beside it (it still goes home);
-   narrower still, the closed tabs show only their icons. Measured per language -- the Mongolian
-   names are about 80px longer -- with scratchpad/tabs/fit-check.js. */
-@media (min-width: 861px) and (max-width: 1519px) {
-    html[lang="mn"] .site-brand .brand-text { display: none; }
-}
-@media (min-width: 861px) and (max-width: 1399px) {
-    html[lang="en"] .site-brand .brand-text { display: none; }
-}
-@media (min-width: 861px) and (max-width: 1279px) {
+/* The wordmark beside the logo stays at every width. Short of room, the closed tabs show only
+   their icons instead. Measured per language -- the Mongolian names are about 80px longer --
+   with scratchpad/tabs/fit-check.js: all six names fit beside the wordmark down to 1360px (mn)
+   and 1270px (en). */
+@media (min-width: 861px) and (max-width: 1359px) {
     html[lang="mn"] .header-nav .nav-tool:not(.nav-current) span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
     html[lang="mn"] .header-nav .nav-tool:not(.nav-current) { padding: 0 4px 0 12px; }
 }
-@media (min-width: 861px) and (max-width: 1199px) {
+@media (min-width: 861px) and (max-width: 1269px) {
     html[lang="en"] .header-nav .nav-tool:not(.nav-current) span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
     html[lang="en"] .header-nav .nav-tool:not(.nav-current) { padding: 0 4px 0 12px; }
 }
@@ -2186,3 +2182,8 @@ body:has(.khanjp-loader) .container {
 :root[data-theme="dark"] body:not(:has(.hub-main)) .site-header-wrap .header {
     background: linear-gradient(rgba(8, 4, 6, 0.42), rgba(8, 4, 6, 0.42)), var(--header-bg);
 }
+/* the same shade as a flat colour, for the tabs: the open one is the bar, the closed ones blend into it */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) body:not(:has(.hub-main)) .site-header-wrap { --bar: color-mix(in srgb, var(--header-bg) 58%, rgb(8, 4, 6)); }
+}
+:root[data-theme="dark"] body:not(:has(.hub-main)) .site-header-wrap { --bar: color-mix(in srgb, var(--header-bg) 58%, rgb(8, 4, 6)); }

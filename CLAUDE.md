@@ -105,12 +105,20 @@ slant a skewed `::before` with `background: inherit` (NOT a clip-path, which wou
 shadow); each tab sits on the slant of the one before it by rising `z-index`, and the open one
 (`.nav-current`, `aria-current="page"`, both added by `build-chrome.js` matching
 `href="page" class="nav-trigger nav-tool"` -- keep that attribute order) is in front. No gold edge,
-no grey closed tabs, no folded corner: all tried and rejected on sight.
-**Room is measured, per language**: the Mongolian names are ~80px longer. The words beside the logo
-step aside below 1520px (mn) / 1400px (en) -- the seal stays and still goes home -- and the closed
-tabs drop to icons below 1280px (mn) / 1200px (en). The first numbers taken from the preview were
-40px optimistic at every edge; `scratchpad/tabs/fit-check.js` found it (18 widths x 2 languages x
-3 pages, open tab on all 18 pages, a real click, the night shade, the phone drawer).
+no folded corner: tried and rejected on sight.
+**The tabs are FLAT** (same day, at the owner's direction): one solid fill, square corners, no
+gradient, highlight or shadow, like Phonetics Family's tiles. A closed tab is 32px and quiet --
+`color-mix(--tab 48%, --bar)` -- and hover gives back its full colour at 37px. The open tab is sized
+up (48px, larger type and icon) and filled with **`--bar`, the bar's own colour**, so the two read as
+one piece: by day `--bar` is `--header-bg` (each tool page's bar already IS its seal), at night it is
+the same 42% shade the bar's gradient overlay paints, written as a flat `color-mix`. `--bar` is
+declared on `.site-header-wrap`, where `--header-bg` lives -- on `:root` it would resolve to the
+shared wine on every page. A gradient fading the open tab into the page was previewed and dropped.
+**Room is measured, per language**: the Mongolian names are ~80px longer. The wordmark beside the
+logo stays at EVERY width (it was hidden below 1520px for a day, on numbers that were too cautious);
+instead the closed tabs drop to icons below 1360px (mn) / 1270px (en). `scratchpad/tabs/fit-check.js`
+checks 20 widths x 2 languages x 3 pages and fails if the wordmark is hidden; `flat2/verify.js`
+checks pixel by pixel that the open tab matches the bar in day, night and follow-the-device dark.
 **At night the bar is 42% darker** on every page but the hub, whose masthead is transparent over its
 scene. The phone drawer uses the same markup and shows the tools as rows; the tab sheet's dictionary
 label is now "Толь бичиг" like everywhere else (`nav.vocabulary` and `nav.practice` are deleted).
