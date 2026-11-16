@@ -1692,6 +1692,28 @@ the wordmark is measured by its own text node only; and the night ground has to 
 BAR, since it is as dark as the night sky. A neon glow on the seals was tried and dropped at the
 owner's direction.
 
+**No kanji is used as a logo any more** (2026-11-16, at the owner's direction). Where a kanji stood
+for a TOOL, the tool's own icon took its place: Kana Origins' three next cards (遊 音 讀 became
+`#i-wordmatch` `#i-phonetics` `#i-reader`), the reader's rail seal (読 became `#i-reader`) and the
+dashboard rows, whose kanji box now holds the `#t-*` icon that used to sit faded beside it. **The K
+brand mark and the tool icons are the owner's own and stay as they are.** Every other kanji logo is
+a hand-drawn mark in `icons/marks.svg`: 道 a road between hills (the hub's Study Path card), 時 an
+hourglass and 心 a heart (Word Match's modes and its failed-run seal), 合 two fitted pieces and 皆 an
+ensō (the result seal), 境 a shimenawa (About Me). `setPopSeal(id)` in `game.js` is the one place the
+result seal is set, and `tests/word-match.spec.js` checks a flawless level really gets the ensō.
+Kanji that are lesson CONTENT stay: the あい furigana sample, 相/想, the かな stage label.
+**Two traps in an external SVG sprite**, both of which drew NOTHING and reported nothing: a `<style>`
+inside the file does not reach the copies `<use>` draws (the strokes are presentation attributes
+now), and a double hyphen inside an XML comment makes the whole file invalid.
+**Kana Origins' next-card seals were 2.46:1 in dark**, white on an `--indigo` that lightens to
+`#8fa6cf` (the kanji had the same fault); they take `#14223a` there now, 6.46:1.
+`scratchpad/marks-verify.js` shoots each seal with and without its mark and fails if the two images
+match, and measures the mark against its seal with translucent grounds blended -- the dashboard's
+tint read 1.14:1 raw and 7.97:1 composited. Canva drew none of these: its AI allowance ran out and
+the owner chose hand-drawn vectors over waiting (Canva Free's allowance resets at 00:00 UTC on the
+1st of each month). The fuller drawn set -- settings, theme, language, account, and marks for the
+tools -- is in the scratchpad as `marks-full-set.svg`, not shipped.
+
 **Shared helpers are written once** (2026-11-15 code audit). `shared-utils.js` holds
 `escapeHtml`, `formatTime`, `shuffleArray` and `stripFurigana`; it is loaded before
 `auth-shared.js` on the six pages that use any of them (game, grammar, dashboard, dictionary,

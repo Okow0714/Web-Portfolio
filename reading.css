@@ -1139,3 +1139,6 @@ html[data-contrast="darker"] .site-footer {
         bottom: calc(var(--tabbar-h, 0px) + 12px);
     }
 }
+
+/* seal marks (2026-11-16): the rail seal wears the reader's own icon, not 読 */
+.rail-seal .seal-mark { width: 24px; height: 24px; }

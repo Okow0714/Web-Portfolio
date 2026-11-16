@@ -1301,3 +1301,7 @@ html[data-contrast="darker"] .site-footer {
         min-height: 44px;
     }
 }
+
+/* seal marks (2026-11-16): 時 心 合 皆 are drawn marks now; each fills its hexagon as the kanji did */
+.mode-mark .seal-mark { width: 22px; height: 22px; }
+.pop-seal .seal-mark { width: 42px; height: 42px; }

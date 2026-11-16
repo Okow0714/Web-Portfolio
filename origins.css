@@ -684,3 +684,9 @@ html[data-contrast="darker"] .site-footer {
         font-size: 11.5px;
     }
 }
+
+/* seal marks (2026-11-16): each next card's seal wears its tool's own icon, not a kanji */
+.nc-seal .seal-mark { width: 17px; height: 17px; }
+/* In dark mode --indigo lightens to #8fa6cf and white on it measured 2.46:1 (the kanji had the same
+   fault); the mark takes a deep navy there instead. */
+.nc-seal { color: #fff; color: light-dark(#fff, #14223a); }

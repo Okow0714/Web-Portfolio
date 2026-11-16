@@ -20,7 +20,7 @@
 // stale-while-revalidate, so it serves the cached copy first and only refreshes behind it --
 // without a bump, a returning PWA user runs the previous version of a fixed file for one more
 // visit. Whether that matters is a judgement call; for a correctness fix it generally does.
-const CACHE_VERSION = 'khan-japanese-v230';
+const CACHE_VERSION = 'khan-japanese-v231';
 
 const APP_SHELL = [
     './',
@@ -78,6 +78,7 @@ const APP_SHELL = [
     './manifest.json',
     './favicon.svg',
     './icons/brand-mark.svg',
+    './icons/marks.svg',
     './icons/icon-192.png',
     './icons/icon-512.png',
     './icons/icon-512-maskable.png',

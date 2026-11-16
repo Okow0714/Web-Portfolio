@@ -582,3 +582,6 @@ body {
 main[tabindex="-1"]:focus {
     outline: none;
 }
+
+/* seal marks (2026-11-16): 境 is a drawn shimenawa now */
+.about-rail-seal .seal-mark { width: 28px; height: 28px; }

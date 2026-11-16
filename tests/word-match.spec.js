@@ -230,13 +230,14 @@ module.exports = async function (page, assert, baseUrl) {
         clicks: +document.getElementById('pop-clicks').textContent,
         misses: +document.getElementById('pop-misses').textContent,
         grade: document.getElementById('pop-grade').textContent,
-        seal: document.getElementById('pop-seal').textContent,
+        seal: (document.querySelector('#pop-seal use') || { getAttribute: () => '' }).getAttribute('href'),
     }));
     assert.ok(done.popup, 'finishing the fourth hand opens the level-complete pop-up');
     assert.strictEqual(done.clicks, perfect,
         `perfect play is ${perfect} clicks, got ${done.clicks}`);
     assert.strictEqual(done.misses, 0, 'perfect play records no misses');
-    assert.strictEqual(done.seal, '皆', 'a flawless level gets the 皆 seal');
+    // The seal was the kanji 皆 until 2026-11-16; it is a drawn ensō now (icons/marks.svg).
+    assert.ok(/marks\.svg#m-perfect$/.test(done.seal), `a flawless level gets the ensō seal, got "${done.seal}"`);
     assert.ok(done.grade.length > 0, 'the pop-up names a grade');
 
     assert.strictEqual(errs.length, 0, `page errors: ${JSON.stringify(errs)}`);

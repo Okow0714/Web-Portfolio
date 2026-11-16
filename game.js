@@ -267,9 +267,17 @@ function failLevel(reason) {
     showFailPop(reason);
 }
 
+// The seal on the result pop-up carries a hand-drawn mark (icons/marks.svg): an hourglass or a heart
+// for a run that ran out of time or lives, an ensō for a perfect level, two fitted pieces otherwise.
+// These replaced the kanji 時 心 皆 合 on 2026-11-16.
+function setPopSeal(id) {
+    document.getElementById('pop-seal').innerHTML =
+        '<svg class="seal-mark" aria-hidden="true"><use href="icons/marks.svg#' + id + '"/></svg>';
+}
+
 function showFailPop(reason) {
     document.getElementById('pop-grade').textContent = window.t('game.mode.runOver');
-    document.getElementById('pop-seal').textContent = reason === 'time' ? '時' : '心';
+    setPopSeal(reason === 'time' ? 'm-time' : 'm-heart');
     document.getElementById('pop-seal').classList.add('is-fail');
     document.getElementById('result-title').textContent = window.t(
         reason === 'time' ? 'game.mode.outOfTime' : 'game.mode.outOfLives');
@@ -336,8 +344,7 @@ let resultNextLevel = null;
 function showResultPop(result) {
     document.getElementById('pop-grade').textContent = window.t(gradeKey(result));
     document.getElementById('pop-seal').classList.remove('is-fail');
-    document.getElementById('pop-seal').textContent =
-        gradeKey(result) === 'game.grade.perfect' ? '皆' : '合';
+    setPopSeal(gradeKey(result) === 'game.grade.perfect' ? 'm-perfect' : 'm-match');
 
     // The marks earned, named rather than left as a colour the player has to decode on the
     // level select later.

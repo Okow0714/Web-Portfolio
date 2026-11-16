@@ -872,3 +872,7 @@ body:has(.hub-main)::before {
     color: #55464f;
     color: light-dark(#55464f, #b8a8b3);
 }
+
+/* seal marks (2026-11-16): the Study Path card's 道 is now a drawn road, sized as the glyph was */
+.hub-path-glyph { display: inline-flex; }
+.hub-path-glyph .seal-mark { width: 54px; height: 54px; }

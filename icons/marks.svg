@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+<!--
+  Khan Japanese marks (2026-11-16): hand-drawn objects that replace kanji once used as logos.
+  Each carries the kanji's meaning: 道 road, a path between two hills; 時 time, an hourglass;
+  心 heart, a heart; 合 match, two pieces that fit; 皆 all, an ensō; 境 boundary, a shimenawa
+  rope with paper streamers. Where a kanji stood for a TOOL, the tool's own icon replaced it
+  instead (the #i-* and #t-* symbols), at the site owner's direction.
+  Drawn on a 48 grid in currentColor, so a mark takes its place's colour and turns with the theme.
+  Strokes are presentation attributes, not a style block: CSS inside an external file does not
+  reach the copies a use element draws. And no double hyphen in a comment: it makes the whole file
+  invalid XML, which draws nothing and reports nothing.
+  Used as svg use href="icons/marks.svg#m-road".
+-->
+<symbol id="m-road" viewBox="0 0 48 48">
+  <!-- two low hills, and between them a path that widens as it winds towards you, its centre line dashed -->
+  <path fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" d="M3.4 27.4 C7.6 21.2 13.2 20.2 17.8 23.6"/>
+  <path fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" d="M30.2 23.4 C34.8 20 40.4 21 44.6 27.2"/>
+  <path fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" d="M22.8 14.6 C21.2 19.4 22.4 23.8 20.2 28.6 C17.8 33.8 10 37.6 6.6 43.6"/>
+  <path fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" d="M25.4 14.6 C25.8 19.2 28.4 23.4 28 28.6 C27.6 34 33.4 38.8 36.4 43.6"/>
+  <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="2.6 4.2" d="M24.2 19 C23.6 23 25.2 26.6 24 30.4 C22.6 34.6 20.4 38.6 21.4 43.4"/>
+</symbol>
+
+<symbol id="m-time" viewBox="0 0 48 48">
+  <path fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" d="M10.6 5.6 C18 4.8 30.2 4.8 37.6 5.8"/>
+  <path fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" d="M10.4 42.4 C18 43.4 30.2 43.2 37.8 42.2"/>
+  <path fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" d="M13.4 6 C13.8 14.6 20.6 19.4 23.6 23.8 C20.4 28.4 13.8 33.4 13.6 42"/>
+  <path fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" d="M34.8 6.2 C34.2 14.8 27.6 19.6 24.6 24 C27.6 28.4 34.2 33.6 34.4 42"/>
+  <path fill="currentColor" d="M18.4 13.2 C21.6 14.4 26.6 14.4 29.6 13.2 C28.4 16.6 25.8 19 24 21 C22.2 19 19.6 16.6 18.4 13.2 Z"/>
+  <path fill="currentColor" d="M16.8 40.4 C18.6 35.6 21.6 33.4 24 32.6 C26.6 33.4 29.6 35.8 31.2 40.4 C26.4 41 21.6 41 16.8 40.4 Z"/>
+</symbol>
+
+<symbol id="m-heart" viewBox="0 0 48 48">
+  <path fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" d="M24.2 41.4 C16.4 35.6 6.2 28.2 5.6 18.6 C5.2 12 10 7.4 15.4 7.6 C19.6 7.8 22.6 10.6 24 14.2 C25.6 10.4 28.8 7.6 33.2 7.6 C38.8 7.8 43 12.4 42.4 18.8 C41.6 27.6 32.8 35 25.6 40.4"/>
+</symbol>
+
+<symbol id="m-match" viewBox="0 0 48 48">
+  <path fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" d="M5.6 9 L22.4 8.8 L22.6 17.2 C19.6 17 17.8 19.4 18 22 C18.2 24.6 20.2 26.6 22.8 26.4 L23 39.4 L5.8 39.6 Z"/>
+  <path fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" d="M28.2 8.8 L42.6 9 L42.4 39.4 L28.6 39.6 L28.4 30.2 C31.8 30.6 34 28 33.8 24.8 C33.6 21.8 31.2 19.6 28.2 20 Z"/>
+</symbol>
+
+<symbol id="m-border" viewBox="0 0 48 48">
+  <!-- a shimenawa: a rope sagging between two posts with paper streamers hanging from it, the mark of a boundary -->
+  <path fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" d="M7.4 8 L7.8 43.4"/>
+  <path fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" d="M40.6 8 L40.2 43.4"/>
+  <path fill="none" stroke="currentColor" stroke-width="4.6" stroke-linecap="round" d="M7.6 12.6 C17.8 21.4 30.2 21.6 40.4 12.6"/>
+  <path fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" d="M17.4 19 L17.4 22.6 L14.6 24.6 L17.6 27.4 L14.8 30.6"/>
+  <path fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" d="M24 20.6 L24 24.2 L21.2 26.2 L24.2 29 L21.4 32.2"/>
+  <path fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" d="M30.6 19 L30.6 22.6 L27.8 24.6 L30.8 27.4 L28 30.6"/>
+</symbol>
+
+<symbol id="m-perfect" viewBox="0 0 48 48">
+  <!-- 皆 all: an ensō, the brushed circle of something whole, left just open where the brush lifted -->
+  <path fill="currentColor" d="M27.6 6.6 C37.4 7.6 43.6 15.6 42.8 25.2 C42 35.4 33.4 42.6 23.4 42 C13.6 41.4 5.8 33.4 6.4 23.4 C6.8 16.6 10.6 11 16.2 8.2 C15 10.6 14.2 12.4 13.2 15 C10.6 18.8 10 23 10.6 26.6 C11.8 33.6 17.6 38.4 24.2 38.4 C31.8 38.4 38.6 32.2 38.6 24.6 C38.8 17.2 34.4 11.8 27.4 9.8 Z"/>
+</symbol>
+</svg>
