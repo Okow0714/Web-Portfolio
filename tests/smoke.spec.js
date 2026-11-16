@@ -16,12 +16,13 @@ module.exports = async function run(page, assert, baseUrl) {
 
         assert.strictEqual(errs.length, 0, `${path} had console/page errors: ${JSON.stringify(errs)}`);
 
-        // The dictionary link now sits inside the Dictionary group and reads "Vocabulary"
-        // everywhere -- catches a stale/renamed nav label regressing silently.
+        // The dictionary has its own tool tab (2026-11-16, replacing the Dictionary menu, inside
+        // which it read "Vocabulary"); it reads "Dictionary" / "Толь бичиг" everywhere -- catches
+        // a stale or renamed nav label regressing silently.
         const navLabel = await page.locator('.header-nav a[href="dictionary.html"]').first().textContent().catch(() => null);
         if (navLabel !== null) {
             assert.ok(
-                navLabel.trim() === 'Vocabulary' || navLabel.trim() === 'Үгсийн сан',
+                navLabel.trim() === 'Dictionary' || navLabel.trim() === 'Толь бичиг',
                 `${path} nav Dictionary label was "${navLabel.trim()}"`
             );
         }

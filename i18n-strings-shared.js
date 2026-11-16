@@ -55,12 +55,6 @@ window.I18N_STRINGS = {
     'nav.phoneticsFamily': { en: 'Phonetics Family', mn: 'Дуудлагын бүлэг' },
     'nav.grammarConnect': { en: 'Grammar Connect', mn: 'Дүрэм холбох' },
     'nav.dictionary': { en: 'Dictionary', mn: 'Толь бичиг' },
-    // Menu label only. The page itself stays "Монгол-Япон толь бичиг" in its title, description
-    // and share card: "толь бичиг" is what people search for, and the heading above it already
-    // says Dictionary, so repeating it in the menu is what needed fixing.
-    'nav.vocabulary': { en: 'Vocabulary', mn: 'Үгсийн сан' },
-    // "Practice", not "Games": Word Match was deliberately renamed away from тоглоом.
-    'nav.practice': { en: 'Practice', mn: 'Дасгал ажил' },
     'nav.tools': { en: 'Main tools', mn: 'Үндсэн туслахууд' },
     // The page's own heading is the full "Чөлөөт цагаараа"; the bar has room for two words at most
     // in Mongolian, and "Чөлөөт цаг" is the phrase on its own.

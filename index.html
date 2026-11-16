@@ -134,26 +134,18 @@
                     <div class="nav-item nav-drawer-only">
                         <a href="index.html" class="nav-trigger nav-current"><svg class="nav-ico nav-ico-top" aria-hidden="true"><use href="#i-home"/></svg><span data-i18n="nav.home">Home</span></a>
                     </div>
-                    <!-- Two groups instead of seven items. The heading is a <button>, not a link:
-                         it names a group, not a page. .nav-trigger already resets background,
-                         border and font, so it styles identically to the anchors beside it.
-                         data-group-pages is what build-chrome.js reads to mark the open page. -->
-                    <div class="nav-item">
-                        <button type="button" class="nav-trigger" data-group-pages="game.html reading.html grammar.html"><span data-i18n="nav.practice">Practice</span><span class="nav-caret" aria-hidden="true">&#9662;</span></button>
-                        <div class="nav-dropdown">
-                            <a href="game.html"><svg class="nav-ico" aria-hidden="true"><use href="#i-wordmatch"/></svg><span data-i18n="nav.wordGame">Word Match</span></a>
-                            <a href="reading.html"><svg class="nav-ico" aria-hidden="true"><use href="#i-reader"/></svg><span data-i18n="nav.dokkaiReader">Dokkai Reader</span></a>
-                            <a href="grammar.html"><svg class="nav-ico" aria-hidden="true"><use href="#i-grammar"/></svg><span data-i18n="nav.grammarConnect">Grammar Connect</span></a>
-                        </div>
-                    </div>
-                    <div class="nav-item">
-                        <button type="button" class="nav-trigger" data-group-pages="dictionary.html origins.html phonetics.html"><span data-i18n="nav.dictionary">Dictionary</span><span class="nav-caret" aria-hidden="true">&#9662;</span></button>
-                        <div class="nav-dropdown">
-                            <a href="dictionary.html"><svg class="nav-ico" aria-hidden="true"><use href="#i-vocabulary"/></svg><span data-i18n="nav.vocabulary">Vocabulary</span></a>
-                            <a href="origins.html"><svg class="nav-ico" aria-hidden="true"><use href="#i-origins"/></svg><span data-i18n="nav.kanaOrigins">Kana Origins</span></a>
-                            <a href="phonetics.html"><svg class="nav-ico" aria-hidden="true"><use href="#i-phonetics"/></svg><span data-i18n="nav.phoneticsFamily">Phonetics Family</span></a>
-                        </div>
-                    </div>
+                    <!-- One tab per tool, in the home page's order (2026-11-16; this replaced the Practice and
+                         Dictionary menus). On a wide screen each is a folder tab in its tool's own colour -- see
+                         .nav-tool in style.css; in the phone drawer they are ordinary rows. build-chrome.js marks
+                         the open one by matching href="page" class="nav-trigger nav-tool" -- keep that attribute order.
+                         The names stay in the markup even when a narrow bar shows only icons: they are the
+                         accessible names and the tooltips. -->
+                    <div class="nav-item nav-tool-item"><a href="origins.html" class="nav-trigger nav-tool"><svg class="nav-ico" aria-hidden="true"><use href="#i-origins"/></svg><span data-i18n="nav.kanaOrigins">Kana Origins</span></a></div>
+                    <div class="nav-item nav-tool-item"><a href="game.html" class="nav-trigger nav-tool"><svg class="nav-ico" aria-hidden="true"><use href="#i-wordmatch"/></svg><span data-i18n="nav.wordGame">Word Match</span></a></div>
+                    <div class="nav-item nav-tool-item"><a href="phonetics.html" class="nav-trigger nav-tool"><svg class="nav-ico" aria-hidden="true"><use href="#i-phonetics"/></svg><span data-i18n="nav.phoneticsFamily">Phonetics Family</span></a></div>
+                    <div class="nav-item nav-tool-item"><a href="grammar.html" class="nav-trigger nav-tool"><svg class="nav-ico" aria-hidden="true"><use href="#i-grammar"/></svg><span data-i18n="nav.grammarConnect">Grammar Connect</span></a></div>
+                    <div class="nav-item nav-tool-item"><a href="reading.html" class="nav-trigger nav-tool"><svg class="nav-ico" aria-hidden="true"><use href="#i-reader"/></svg><span data-i18n="nav.dokkaiReader">Dokkai Reader</span></a></div>
+                    <div class="nav-item nav-tool-item"><a href="dictionary.html" class="nav-trigger nav-tool"><svg class="nav-ico" aria-hidden="true"><use href="#i-vocabulary"/></svg><span data-i18n="nav.dictionary">Dictionary</span></a></div>
                     <div class="nav-item nav-drawer-only">
                         <a href="path.html" class="nav-trigger"><svg class="nav-ico nav-ico-top" aria-hidden="true"><use href="#i-path"/></svg><span data-i18n="nav.studyPath">Study Path</span></a>
                     </div>
@@ -178,18 +170,18 @@
                 <!-- Backdrop for the phone drawer. Inert until body.nav-drawer-open. -->
                 <div class="nav-scrim" id="nav-scrim"></div>
 
-                <!-- Touch has no hover, and a group heading is not a link, so without this a phone
-                     could never open a group. Desktop still uses :hover / :focus-within from
-                     style.css; this only toggles a class. Guarded because the chrome is copied
-                     into twelve pages and must bind once. -->
+                <!-- The phone drawer: the brand opens it, a link or the scrim closes it, and the About
+                     row at its foot folds open. (Until 2026-11-16 this also opened the two menu
+                     groups on a tap; the groups are gone, replaced by one link per tool.) Guarded
+                     because the chrome is copied into every page and must bind once. -->
                 <script>
                     (function () {
                         if (window.__khanjpNav) return;
                         window.__khanjpNav = true;
 
                         // Below 860 the nav is a drawer (see style.css) and the brand opens it rather
-                        // than going home; Home is the drawer's first link. Above 860 nothing changes:
-                        // the two groups open on hover, and this only handles taps.
+                        // than going home; Home is the drawer's first link. Above 860 the nav is the
+                        // row of tool tabs and needs nothing from here.
                         var isDrawer = function () { return window.matchMedia('(max-width: 860px)').matches; };
                         var brand = document.querySelector('.site-brand');
 
@@ -227,16 +219,7 @@
                             }
                             if (hit('.nav-scrim')) { setDrawer(false); return; }
                             if (hit('.header-nav a')) { setDrawer(false); return; }   // leaving anyway
-                            var trigger = hit('.nav-trigger[data-group-pages]');
-                            if (trigger && !isDrawer()) {
-                                // a tap on a touch laptop: the group heading is not a link
-                                var item = trigger.parentNode;
-                                var wasOpen = item.classList.contains('open');
-                                closeGroups();
-                                if (!wasOpen) item.classList.add('open');
-                                return;
-                            }
-                            if (!trigger) closeGroups();
+                            closeGroups();   // a click anywhere else folds the About row again
                         });
 
                         document.addEventListener('keydown', function (e) {
@@ -584,7 +567,7 @@
                 <a href="phonetics.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-phonetics"/></svg><span data-i18n="nav.phoneticsFamily">Phonetics Family</span></a>
                 <a href="grammar.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-grammar"/></svg><span data-i18n="nav.grammarConnect">Grammar Connect</span></a>
                 <a href="reading.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-reader"/></svg><span data-i18n="nav.dokkaiReader">Dokkai Reader</span></a>
-                <a href="dictionary.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-vocabulary"/></svg><span data-i18n="nav.vocabulary">Vocabulary</span></a>
+                <a href="dictionary.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-vocabulary"/></svg><span data-i18n="nav.dictionary">Dictionary</span></a>
             </span>
         </span>
         <a class="tab" href="path.html" data-tab-pages="path.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-path"/></svg><span class="tab-label" data-i18n="nav.studyPath">Study Path</span></a>

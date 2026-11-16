@@ -66,15 +66,11 @@ function withCurrent(header, page) {
     // lights path.html's instead -- otherwise the bar shows nothing on six of the pages.
     if (/^path-[a-z0-9]+\.html$/.test(page)) page = 'path.html';
 
-    // A page inside a group: mark the group's heading, so the bar still shows where you are.
-    const grouped = header.replace(
-        /class="nav-trigger" data-group-pages="([^"]+)"/g,
-        (whole, pages) => pages.split(' ').includes(page)
-            ? 'class="nav-trigger nav-current" data-group-pages="' + pages + '"'
-            : whole);
-    if (grouped !== header) return grouped;
+    // A tool page: its own tab in the bar is the open one.
+    const tool = 'href="' + page + '" class="nav-trigger nav-tool"';
+    if (header.includes(tool)) return header.replace(tool, 'href="' + page + '" class="nav-trigger nav-tool nav-current" aria-current="page"');
 
-    // A page with its own entry (dashboard.html).
+    // A page with its own drawer entry (the home page, Study Path).
     const needle = 'href="' + page + '" class="nav-trigger"';
     if (!header.includes(needle)) return header;
     return header.replace(needle, 'href="' + page + '" class="nav-trigger nav-current"');

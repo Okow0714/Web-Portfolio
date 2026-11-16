@@ -94,6 +94,30 @@ menu down, and `build-chrome.js` throws on a page missing its markers anyway. Th
 are drawn light-on-wine for the masthead, so the hub re-colours them: measured at **1.62:1** against
 the light ground before that override.
 
+**THE MASTHEAD NAV IS NOW SIX TOOL TABS** (2026-11-16, at the owner's direction, after five
+previews: folder tabs, then per-section, then named, then one row, then the shape). The two groups,
+their drop-downs and the tap-to-open script are gone; the paragraph below is history. One
+`a.nav-trigger.nav-tool` per tool, in the home page's order (origins, game, phonetics, grammar,
+reading, dictionary) -- Home is the logo, Study Path stays on the home page and in the footer. Each
+tab wears its tool's `--seal`, set per `href` in `style.css`, **so that literal now lives in three
+places** (the hub tile, the tool's own `--header-bg`, the tab). Shape: a right trapezoid, the
+slant a skewed `::before` with `background: inherit` (NOT a clip-path, which would take the drop
+shadow); each tab sits on the slant of the one before it by rising `z-index`, and the open one
+(`.nav-current`, `aria-current="page"`, both added by `build-chrome.js` matching
+`href="page" class="nav-trigger nav-tool"` -- keep that attribute order) is in front. No gold edge,
+no grey closed tabs, no folded corner: all tried and rejected on sight.
+**Room is measured, per language**: the Mongolian names are ~80px longer. The words beside the logo
+step aside below 1520px (mn) / 1400px (en) -- the seal stays and still goes home -- and the closed
+tabs drop to icons below 1280px (mn) / 1200px (en). The first numbers taken from the preview were
+40px optimistic at every edge; `scratchpad/tabs/fit-check.js` found it (18 widths x 2 languages x
+3 pages, open tab on all 18 pages, a real click, the night shade, the phone drawer).
+**At night the bar is 42% darker** on every page but the hub, whose masthead is transparent over its
+scene. The phone drawer uses the same markup and shows the tools as rows; the tab sheet's dictionary
+label is now "Толь бичиг" like everywhere else (`nav.vocabulary` and `nav.practice` are deleted).
+**`prune-css.js` once split a selector list on a comma INSIDE a comment** and left an unclosed `/*`
+that would have swallowed the rules after it -- the 2026-09-08 failure shape. Caught by eye in its
+own output; it now strips comments before splitting. Check comment balance after any CSS removal.
+
 **The masthead nav is two groups** (2026-09-16, replacing seven flat items; it was two groups and
 a link until Freetime was removed on 2026-10-12): **Practice** (Word Match, Dokkai Reader, Grammar
 Connect) and **Dictionary** (Vocabulary, Kana Origins, Phonetics
