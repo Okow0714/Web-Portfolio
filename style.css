@@ -638,8 +638,8 @@ html[data-theme="dark"] { color-scheme: dark; }
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     border: 1px solid var(--header-border);
     background: var(--header-bg-elevated);
@@ -699,7 +699,11 @@ html[data-theme="dark"] { color-scheme: dark; }
     overflow-y: auto;
     transform: translateX(100%);
     pointer-events: none;
-    transition: transform 0.32s var(--ease-pop);
+    /* Hidden, not just slid away: a panel parked off-screen still put its buttons in the Tab
+       order, so a keyboard user's focus vanished for two presses on every page (a11y audit,
+       2026-11-18). visibility waits for the slide-out to finish before it hides. */
+    visibility: hidden;
+    transition: transform 0.32s var(--ease-pop), visibility 0s linear 0.32s;
     z-index: 1000;
 }
 
@@ -709,6 +713,8 @@ html[data-theme="dark"] { color-scheme: dark; }
     box-shadow: -24px 0 50px rgba(0, 0, 0, 0.4);
     transform: translateX(0);
     pointer-events: auto;
+    visibility: visible;
+    transition: transform 0.32s var(--ease-pop), visibility 0s;
 }
 
 /* --header-text, NOT --header-text-muted. This is the one piece of muted chrome text sitting

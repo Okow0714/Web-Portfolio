@@ -269,9 +269,9 @@
                         <div id="auth-anon">
                             <p class="account-menu-note" data-i18n="auth.loginHint">Log in to save your progress across visits.</p>
                             <button id="auth-login-btn" class="auth-btn account-menu-cta" type="button" data-i18n="auth.logIn">Log In</button>
-                            <nav class="account-menu-nav">
+                            <div class="account-menu-nav">
                                 <button type="button" class="account-menu-nav-item" id="account-settings-btn-anon" data-i18n="account.settings">Settings</button>
-                            </nav>
+                            </div>
                         </div>
                         <div id="auth-authed" class="hidden">
                             <div class="account-menu-profile">
@@ -281,11 +281,11 @@
                                     <p id="auth-user-email" class="auth-user-email"></p>
                                 </div>
                             </div>
-                            <nav class="account-menu-nav">
+                            <div class="account-menu-nav">
                                 <a href="dashboard.html" class="account-menu-nav-item"><svg class="acct-ico" aria-hidden="true"><use href="#i-dashboard"/></svg><span data-i18n="dash.titleSub">Dashboard</span></a>
                                 <button type="button" class="account-menu-nav-item" id="account-details-btn" data-i18n="account.details">Account details</button>
                                 <button type="button" class="account-menu-nav-item" id="account-settings-btn" data-i18n="account.settings">Settings</button>
-                            </nav>
+                            </div>
                             <button id="auth-logout-btn" class="account-menu-logout" type="button" data-i18n="auth.logOut">Log Out</button>
                         </div>
                     </div>
@@ -410,7 +410,7 @@
                 <span class="hub-markclip" aria-hidden="true"><span class="hub-mark"></span></span>
 
                 <div class="hub-top">
-                    <h1 class="hub-wordmark">Khan Japanese<span class="hub-tagline" data-i18n="hub.tagline">Япон хэл сурах хэрэгсэл</span></h1>
+                    <h1 class="hub-wordmark">Khan Japanese <span class="hub-tagline" data-i18n="hub.tagline">Япон хэл сурах хэрэгсэл</span></h1>
                 </div>
 
                 <div class="hub-col">
@@ -420,74 +420,74 @@
                     </div>
 
                     <nav class="hub-sheet" aria-label="Хэрэгслүүд">
-                        <a class="hub-seal" href="origins.html" style="--seal:#a8431f">
+                        <a class="hub-seal" href="origins.html" aria-labelledby="seal-origins-name" aria-describedby="seal-origins-stat seal-origins-desc" style="--seal:#a8431f">
                             <span class="hub-seal-shot" aria-hidden="true" style="background-image:url(images/hub/origins-timeline.jpg)"></span>
                             <span class="hub-seal-in">
                                 <svg class="hub-seal-ico" aria-hidden="true"><use href="#t-origins"/></svg>
                                 <span class="hub-seal-txt">
-                                    <span class="hub-seal-name" data-i18n="hub.origins.name">Кана үсэг</span>
-                                    <span class="hub-seal-stat" data-i18n="hub.origins.tag">46 КАНА · 9 ҮЕ ШАТ</span>
-                                    <span class="hub-seal-desc" data-i18n="hub.origins.short">Япон бичиг хоорондоо ямар ч хамааралгүй олон үсэг, ханзны бөөгнөрөл мэт санагдаж байна уу? Тэгвэл эндээс эхэл!</span>
+                                    <span class="hub-seal-name" id="seal-origins-name" data-i18n="hub.origins.name">Кана үсэг</span>
+                                    <span class="hub-seal-stat" id="seal-origins-stat" data-i18n="hub.origins.tag">46 КАНА · 9 ҮЕ ШАТ</span>
+                                    <span class="hub-seal-desc" id="seal-origins-desc" data-i18n="hub.origins.short">Япон бичиг хоорондоо ямар ч хамааралгүй олон үсэг, ханзны бөөгнөрөл мэт санагдаж байна уу? Тэгвэл эндээс эхэл!</span>
                                 </span>
                             </span>
                         </a>
 
-                        <a class="hub-seal" href="game.html" style="--seal:#5a55b0">
+                        <a class="hub-seal" href="game.html" aria-labelledby="seal-game-name" aria-describedby="seal-game-stat seal-game-desc" style="--seal:#5a55b0">
                             <span class="hub-seal-shot" aria-hidden="true" style="background-image:url(images/hub/game-match.jpg)"></span>
                             <span class="hub-seal-in">
                                 <svg class="hub-seal-ico" aria-hidden="true"><use href="#t-wordmatch"/></svg>
                                 <span class="hub-seal-txt">
-                                    <span class="hub-seal-name" data-i18n="hub.game.name">Үг холбох дасгал</span>
-                                    <span class="hub-seal-stat" data-i18n="hub.game.tag">~1500 ҮГ · 60 ШАТ</span>
-                                    <span class="hub-seal-desc" data-i18n="hub.game.short">Хөзрөө эргүүлээд шинэ үгийн мастер бол</span>
+                                    <span class="hub-seal-name" id="seal-game-name" data-i18n="hub.game.name">Үг холбох дасгал</span>
+                                    <span class="hub-seal-stat" id="seal-game-stat" data-i18n="hub.game.tag">~1500 ҮГ · 60 ШАТ</span>
+                                    <span class="hub-seal-desc" id="seal-game-desc" data-i18n="hub.game.short">Хөзрөө эргүүлээд шинэ үгийн мастер бол</span>
                                 </span>
                             </span>
                         </a>
 
-                        <a class="hub-seal" href="phonetics.html" style="--seal:#1f6b52">
+                        <a class="hub-seal" href="phonetics.html" aria-labelledby="seal-phonetics-name" aria-describedby="seal-phonetics-stat seal-phonetics-desc" style="--seal:#1f6b52">
                             <span class="hub-seal-shot" aria-hidden="true" style="background-image:url(images/hub/phonetics-tree.jpg)"></span>
                             <span class="hub-seal-in">
                                 <svg class="hub-seal-ico" aria-hidden="true"><use href="#t-phonetics"/></svg>
                                 <span class="hub-seal-txt">
-                                    <span class="hub-seal-name" data-i18n="hub.phonetics.name">Дуудлагаар цээжлэхүй</span>
-                                    <span class="hub-seal-stat" data-i18n="hub.phonetics.tag">1128 ХАНЗ</span>
-                                    <span class="hub-seal-desc" data-i18n="hub.phonetics.short">Ханзуудыг дуудлагын язгуураар нь бүлэглэчихвэл нэг ханзаар олон ханзыг уншиж сурах болно</span>
+                                    <span class="hub-seal-name" id="seal-phonetics-name" data-i18n="hub.phonetics.name">Дуудлагаар цээжлэхүй</span>
+                                    <span class="hub-seal-stat" id="seal-phonetics-stat" data-i18n="hub.phonetics.tag">1128 ХАНЗ</span>
+                                    <span class="hub-seal-desc" id="seal-phonetics-desc" data-i18n="hub.phonetics.short">Ханзуудыг дуудлагын язгуураар нь бүлэглэчихвэл нэг ханзаар олон ханзыг уншиж сурах болно</span>
                                 </span>
                             </span>
                         </a>
 
-                        <a class="hub-seal" href="grammar.html" style="--seal:#b0432f">
+                        <a class="hub-seal" href="grammar.html" aria-labelledby="seal-grammar-name" aria-describedby="seal-grammar-stat seal-grammar-desc" style="--seal:#b0432f">
                             <span class="hub-seal-shot" aria-hidden="true" style="background-image:url(images/hub/grammar-swap.jpg)"></span>
                             <span class="hub-seal-in">
                                 <svg class="hub-seal-ico" aria-hidden="true"><use href="#t-grammar"/></svg>
                                 <span class="hub-seal-txt">
-                                    <span class="hub-seal-name" data-i18n="hub.grammar.name">Дүрэм нөхцөл</span>
-                                    <span class="hub-seal-stat" data-i18n="hub.grammar.tag">400 ӨГҮҮЛБЭР</span>
-                                    <span class="hub-seal-desc" data-i18n="hub.grammar.short">Япон хэлний өгүүлбэр дэх нөхцөлийн хэрэглээг ойлгох нь</span>
+                                    <span class="hub-seal-name" id="seal-grammar-name" data-i18n="hub.grammar.name">Дүрэм нөхцөл</span>
+                                    <span class="hub-seal-stat" id="seal-grammar-stat" data-i18n="hub.grammar.tag">400 ӨГҮҮЛБЭР</span>
+                                    <span class="hub-seal-desc" id="seal-grammar-desc" data-i18n="hub.grammar.short">Япон хэлний өгүүлбэр дэх нөхцөлийн хэрэглээг ойлгох нь</span>
                                 </span>
                             </span>
                         </a>
 
-                        <a class="hub-seal" href="reading.html" style="--seal:#6b1f52">
+                        <a class="hub-seal" href="reading.html" aria-labelledby="seal-reading-name" aria-describedby="seal-reading-stat seal-reading-desc" style="--seal:#6b1f52">
                             <span class="hub-seal-shot" aria-hidden="true" style="background-image:url(images/hub/reading-enter.jpg)"></span>
                             <span class="hub-seal-in">
                                 <svg class="hub-seal-ico" aria-hidden="true"><use href="#t-reader"/></svg>
                                 <span class="hub-seal-txt">
-                                    <span class="hub-seal-name" data-i18n="hub.reading.name">Унших дадлага</span>
-                                    <span class="hub-seal-stat" data-i18n="hub.reading.tag">72 БИЧВЭР</span>
-                                    <span class="hub-seal-desc" data-i18n="hub.reading.short">Унших дадлага хийж дуудлагаа сайжруулаарай</span>
+                                    <span class="hub-seal-name" id="seal-reading-name" data-i18n="hub.reading.name">Унших дадлага</span>
+                                    <span class="hub-seal-stat" id="seal-reading-stat" data-i18n="hub.reading.tag">72 БИЧВЭР</span>
+                                    <span class="hub-seal-desc" id="seal-reading-desc" data-i18n="hub.reading.short">Унших дадлага хийж дуудлагаа сайжруулаарай</span>
                                 </span>
                             </span>
                         </a>
 
-                        <a class="hub-seal" href="dictionary.html" style="--seal:#23405f">
+                        <a class="hub-seal" href="dictionary.html" aria-labelledby="seal-dictionary-name" aria-describedby="seal-dictionary-stat seal-dictionary-desc" style="--seal:#23405f">
                             <span class="hub-seal-shot" aria-hidden="true" style="background-image:url(images/hub/dictionary-search.jpg)"></span>
                             <span class="hub-seal-in">
                                 <svg class="hub-seal-ico" aria-hidden="true"><use href="#t-vocabulary"/></svg>
                                 <span class="hub-seal-txt">
-                                    <span class="hub-seal-name" data-i18n="hub.dictionary.name">Монгол-Япон толь бичиг</span>
-                                    <span class="hub-seal-stat" data-i18n="hub.dictionary.tag">3537 ҮГ</span>
-                                    <span class="hub-seal-desc" data-i18n="hub.dictionary.short">Монгол, ханз, кана, англи, хирагана</span>
+                                    <span class="hub-seal-name" id="seal-dictionary-name" data-i18n="hub.dictionary.name">Монгол-Япон толь бичиг</span>
+                                    <span class="hub-seal-stat" id="seal-dictionary-stat" data-i18n="hub.dictionary.tag">3537 ҮГ</span>
+                                    <span class="hub-seal-desc" id="seal-dictionary-desc" data-i18n="hub.dictionary.short">Монгол, ханз, кана, англи, хирагана</span>
                                 </span>
                             </span>
                         </a>

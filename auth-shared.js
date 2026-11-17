@@ -603,15 +603,35 @@ const accountMenuAvatar = document.getElementById('account-menu-avatar');
 const accountMenuProfileAvatar = document.getElementById('account-menu-profile-avatar');
 const GUEST_AVATAR_HTML = accountMenuAvatar.innerHTML; // the generic person icon, to restore on logout
 
-function closeAccountMenu() {
+// restoreFocus is only ever the literal true (from Escape): this is also an event listener, and
+// an event object must not count. The other closers open a modal next, which takes focus itself.
+function closeAccountMenu(restoreFocus) {
+    const focusWasInside = accountMenu.contains(document.activeElement) && document.activeElement !== accountMenuTrigger;
     accountMenu.classList.remove('open');
     accountMenuTrigger.setAttribute('aria-expanded', 'false');
+    if (restoreFocus === true && focusWasInside) accountMenuTrigger.focus();
 }
 
 accountMenuTrigger.addEventListener('click', () => {
     const nowOpen = !accountMenu.classList.contains('open');
     accountMenu.classList.toggle('open', nowOpen);
     accountMenuTrigger.setAttribute('aria-expanded', String(nowOpen));
+    // Focus goes to the panel's first control, so a keyboard user lands where the menu is
+    // rather than tabbing through the page to reach it (a11y audit, 2026-11-18).
+    // The closed panel is visibility: hidden, and focus() on a hidden element is silently
+    // ignored -- measured: one frame after opening it still read hidden. So wait, frame by frame
+    // (half a second at most), until the control is really visible.
+    if (nowOpen) {
+        let frames = 0;
+        const focusFirst = () => {
+            const panel = document.getElementById('account-menu-panel');
+            const first = panel && [...panel.querySelectorAll('a[href], button')].find(el => el.offsetParent !== null);
+            if (!first || !accountMenu.classList.contains('open')) return;
+            if (getComputedStyle(first).visibility !== 'visible' && frames++ < 30) { requestAnimationFrame(focusFirst); return; }
+            first.focus();
+        };
+        requestAnimationFrame(focusFirst);
+    }
 });
 
 // Not every page's account menu has a full-viewport scrim (about.html's is a small popover off
@@ -622,7 +642,7 @@ document.addEventListener('click', (e) => {
     if (!accountMenu.contains(e.target)) closeAccountMenu();
 });
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeAccountMenu();
+    if (e.key === 'Escape' && accountMenu.classList.contains('open')) closeAccountMenu(true);
 });
 
 // Opening the auth modal, a details/settings modal, or logging out should all close the side

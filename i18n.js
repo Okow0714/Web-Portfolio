@@ -64,6 +64,7 @@
             const label = other === 'mn' ? 'Монгол хэл рүү шилжих' : 'Switch to English';
             btn.setAttribute('aria-label', label);
             btn.setAttribute('title', label);
+            btn.setAttribute('lang', other);
         });
 
         document.dispatchEvent(new CustomEvent('sitelangchange', { detail: { lang } }));

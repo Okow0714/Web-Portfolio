@@ -876,3 +876,6 @@ body:has(.hub-main)::before {
 /* seal marks (2026-11-16): the Study Path card's 道 is now a drawn road, sized as the glyph was */
 .hub-path-glyph { display: inline-flex; }
 .hub-path-glyph .seal-mark { width: 54px; height: 54px; }
+
+/* A tap target of at least 44px (a11y audit, 2026-11-18): the Study Path button measured 40. */
+.hub-path-cta { min-height: 44px; }

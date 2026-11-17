@@ -356,7 +356,13 @@ wires up `#account-menu` / `#account-menu-trigger` / `#account-menu-scrim` /
 not a button) / `#account-details-btn` / `#account-settings-btn`, plus `#auth-modal`,
 `#account-details-modal`, and `#account-settings-modal`. These IDs and their nesting
 (`#auth-anon`/`#auth-authed` inside `#account-menu-panel`) are load-bearing — don't rename or
-re-nest without updating `auth-shared.js`. The panel's signed-in state is a profile header
+re-nest without updating `auth-shared.js`. **The closed panel is `visibility: hidden`** (2026-11-18
+a11y audit): parked off-screen by `translateX` alone, its buttons stayed in the Tab order and a
+keyboard user's focus vanished for two presses on every page. Opening moves focus to the panel's
+first control and Escape returns it to the trigger -- and that focus has to WAIT for visibility
+(`focusFirst()` retries per frame), because one frame after opening the button still read
+`hidden` and `focus()` on a hidden element is silently ignored. The panel's button groups are
+`div.account-menu-nav`, not `<nav>`: they were two unlabelled landmarks. The panel's signed-in state is a profile header
 (avatar + email) then real navigation: a `Dashboard` link, `Account details` (opens
 `#account-details-modal` — just the email), and `Settings` (opens `#account-settings-modal` —
 the language toggle, now with flag emoji, plus the delete-account danger zone), with Log Out
