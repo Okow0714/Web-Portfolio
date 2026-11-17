@@ -114,6 +114,10 @@ one piece: by day `--bar` is `--header-bg` (each tool page's bar already IS its 
 the same 42% shade the bar's gradient overlay paints, written as a flat `color-mix`. `--bar` is
 declared on `.site-header-wrap`, where `--header-bg` lives -- on `:root` it would resolve to the
 shared wine on every page. A gradient fading the open tab into the page was previewed and dropped.
+**Every tab has a thin outline** (2026-11-17, owner's call): 1.5px, `light-dark(#3a3a3a, #fff)` --
+dark gray by day, white at night -- along the top, the straight side (the face's inset shadows)
+and the slant (the `::before`'s), none along the bottom where the tab stands on the bar. It is
+inset `box-shadow`, not `border`, because a border would change each tab's measured width.
 **Room is measured, per language**: the Mongolian names are ~80px longer. The wordmark beside the
 logo stays at EVERY width (it was hidden below 1520px for a day, on numbers that were too cautious);
 instead the closed tabs drop to icons below 1360px (mn) / 1270px (en). `scratchpad/tabs/fit-check.js`
