@@ -1156,3 +1156,9 @@ html[data-contrast="darker"] .site-footer {
         opacity: 1;
     }
 }
+
+/* Disc text is the hue mixed toward the ink, not the bare hue (axe scan, 2026-11-18): N4 gold
+   measured 2.03:1 by day and N1 1.74:1 at night. 55% is the most hue that clears 4.5 for all
+   five levels in both themes (worst: N4 by day, 4.87). The ring keeps the full colour. */
+.lv-n, .lv-t { color: color-mix(in srgb, var(--hue) 55%, var(--text-primary)); }
+.lv-t { opacity: 1; }

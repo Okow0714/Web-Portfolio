@@ -293,11 +293,12 @@ function renderDiffTabs() {
         btn.style.top = slot[1] + 'px';
         btn.style.width = (S / 2) + 'px';
         btn.style.height = (SH / 2) + 'px';
-        btn.setAttribute('aria-label', bandLabel(i) + ', '
-            + window.tf('grammar.levelsCount', { n: BAND_SIZE }) + ', ' + window.t(band.note));
+        // Named by what it shows plus a spoken count, not by an aria-label that hid the visible
+        // words from voice control (WCAG 2.5.3).
         btn.innerHTML = `<span class="gt-lab"><span class="gt-n">${escapeHtml(band.key)}</span>`
             + `<span class="gt-name">${escapeHtml(bandLabel(i))}</span>`
-            + `<span class="gt-note">${escapeHtml(window.t(band.note))}</span></span>`;
+            + `<span class="gt-note">${escapeHtml(window.t(band.note))}</span></span>`
+            + `<span class="sr-only">, ${escapeHtml(window.tf('grammar.levelsCount', { n: BAND_SIZE }))}</span>`;
         btn.addEventListener('click', () => {
             if (activeBand === i) return;
             Sfx.tap();
@@ -407,9 +408,9 @@ function renderLevelGrid() {
         tile.dataset.level = String(levelNum);
         const state = bloomed ? window.t('grammar.clearedFlawless')
             : done ? window.t('grammar.cleared') : '';
-        tile.setAttribute('aria-label', (state ? state + ', ' : '')
-            + window.tf('grammar.bandLevel', { band: bandLabel(activeBand), n: k + 1 }));
-        tile.innerHTML = `<span class="gc-tri-n">${shown}</span>`;
+        tile.innerHTML = `<span class="gc-tri-n">${shown}</span>`
+            + `<span class="sr-only">, ${escapeHtml(window.tf('grammar.bandLevel', { band: bandLabel(activeBand), n: k + 1 }))}`
+            + `${state ? ', ' + escapeHtml(state) : ''}</span>`;
 
         if (levelObj) {
             tile.addEventListener('click', () => {

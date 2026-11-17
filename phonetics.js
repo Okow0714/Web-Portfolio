@@ -250,10 +250,12 @@ function renderGateDial() {
         // nav.n5Beginner already reads "N5 · Beginner" and the disc prints the key itself, so
         // the label takes only the description half.
         const desc = level.title.replace(/^\s*N\d\s*(?:·|&middot;|-)\s*/, '');
+        // The count is spoken, not shown: an aria-label replacing the visible words would hide
+        // them from voice control, which goes by what is on screen (WCAG 2.5.3).
         btn.innerHTML = '<span class="lv-n">' + escapeHtml(level.key) + '</span>'
-            + '<span class="lv-t">' + escapeHtml(desc) + '</span>';
-        btn.setAttribute('aria-label', window.tf('phonetics.gateAria',
-            { level: level.key, n: (QUIZ[level.key] || []).length }));
+            + '<span class="lv-t">' + escapeHtml(desc) + '</span>'
+            + '<span class="sr-only">, ' + escapeHtml(window.tf('phonetics.gateAria',
+                { level: level.key, n: (QUIZ[level.key] || []).length })) + '</span>';
         btn.addEventListener('click', () => { Sfx.chunk(); chooseLevel(level, btn); });
         dial.appendChild(btn);
     });

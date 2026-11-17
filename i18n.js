@@ -61,7 +61,8 @@
             // regional-indicator pairs render as bare letters on Windows.
             const flag = btn.querySelector('.lang-switch-flag');
             if (flag) flag.innerHTML = other === 'mn' ? FLAG_MN : FLAG_GB;
-            const label = other === 'mn' ? 'Монгол хэл рүү шилжих' : 'Switch to English';
+            // Starts with the code the button shows (EN / МН), so voice control can say it (WCAG 2.5.3).
+            const label = other === 'mn' ? 'МН, Монгол хэл рүү шилжих' : 'EN, Switch to English';
             btn.setAttribute('aria-label', label);
             btn.setAttribute('title', label);
             btn.setAttribute('lang', other);

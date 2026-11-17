@@ -1789,6 +1789,17 @@ right word, `onend`, `no-speech` and `not-allowed`.
   tessellation gap, invisible tree spokes after a theme flip, a malformed CSS comment eating
   the rule after it, unstyled footers on five of six pages). Screenshot key states, don't just
   assert.
+- **axe-core is in the test tooling** (2026-11-18): `npm install --no-save axe-core@4 playwright`,
+  like Playwright, never committed. `scratchpad/a11y/axe-all.js` injects
+  `node_modules/axe-core/axe.min.js` into every page (desktop light/dark, phone) and groups the
+  WCAG 2.1 A/AA violations by rule. Its first run found what the hand audit had not reached:
+  Kana Origins' phone section bar with four NAMELESS buttons (labels `display:none`), Phonetics'
+  disc text drawn in the bare JLPT hue (1.74-3.86:1; now 55% hue toward the ink), the Origins
+  eyebrow at 3.68:1 at night, and 136 controls whose `aria-label` did not contain the text they
+  show (WCAG 2.5.3 -- voice control goes by what is on screen). **A spoken-only extra goes in an
+  `.sr-only` span after the visible text, never in an `aria-label` that replaces it.** axe's
+  "contrast needs review" list (text over images and gradients) is what the pixel checks cover.
+  Upgrading Playwright through npm needs `npx playwright install chromium` after it.
 - **Distrust your own test scripts too, not just the product.** Several "bugs" this project
   turned out to be my own script's fault — clicking the wrong element, checking
   `background-color` on an SVG that uses `stroke`, a fixed delay racing an animation,

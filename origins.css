@@ -197,7 +197,9 @@ body:has(.origins-main) { background: var(--bg-page); }
 .ob-mark.why { font-size: 1rem; font-weight: 700; color: var(--text-secondary); }
 .ob[aria-current="true"] .ob-mark.why { color: #fff; }
 .ob-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-@media (max-width: 620px) { .ob-label { display: none; } .ob { padding: 10px 6px; } }
+/* Visually hidden, never display:none: with the label gone the four buttons had no name at all
+   (axe scan, 2026-11-18). The same clip as style.css's .sr-only. */
+@media (max-width: 620px) { .ob-label { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; } .ob { padding: 10px 6px; } }
 
 /* ------------------------------------------------------------------ sections */
 .origins-section { padding-block: 52px 0; scroll-margin-top: 136px; }
@@ -690,3 +692,8 @@ html[data-contrast="darker"] .site-footer {
 /* In dark mode --indigo lightens to #8fa6cf and white on it measured 2.46:1 (the kanji had the same
    fault); the mark takes a deep navy there instead. */
 .nc-seal { color: #fff; color: light-dark(#fff, #14223a); }
+
+/* The eyebrow holds the LIGHT seal in dark mode too (axe scan, 2026-11-18): --seal lightens to
+   #d2663c there and white on it measured 3.68:1; on #a8431f it is 6.02:1. The section bar chip
+   learned the same thing earlier. */
+.origins-eyebrow { background: #a8431f; }
