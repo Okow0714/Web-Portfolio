@@ -11,51 +11,51 @@
 // used instead of a coined one.
 Object.assign(window.I18N_STRINGS, {
 
-    'origins.eyebrow': { en: 'Start here · for absolute beginners', mn: 'Эндээс эхэлнэ үү · шинэ суралцагчдад' },
-    'origins.title': { en: 'Where kana came from', mn: 'Кана бичиг хаанаас үүссэн бэ?' },
+    'origins.eyebrow': { en: 'Start here · for absolute beginners', mn: 'Шинэ суралцагчид · эндээс эхэлнэ үү' },
+    'origins.title': { en: 'Where kana came from', mn: 'Япон бичиг хаанаас үүссэн бэ?' },
     'origins.standfirst': {
         en: "Japanese uses three scripts at once, and every beginner is told to just accept that. You don't have to. Each one arrived for a reason, at a datable moment, and once you know the reasons the rules stop needing to be memorised — <em>including why English words are written in katakana</em>.",
-        mn: 'Япон хэл гурван өөр бичгийг зэрэг хэрэглэдэг ба шинэ суралцагч бүрд «ийм л юм, дассан нь дээр» гэж хэлдэг. Гэтэл дасах шаардлагагүй. Бичиг бүр тодорхой шалтгаанаар, тодорхой цагт бий болсон. Тэр шалтгааныг нь мэдвэл дүрмийг нь цээжлэх хэрэггүй болно — <em>англи үгсийг яагаад катаканагаар бичдэг нь ч бас ойлгомжтой болно</em>.'
+        mn: 'Орчин үеийн япон хэлэнд гурван өөр бичгийг хослуулан хэрэглэдэг. Гэхдээ шинээр сурч байгаа суралцагчдад яагаад гэдгийг төдийлөн сайн тайлбарлаж өгдөггүй. Бичиг бүр тодорхой шалтгаанаар, тодорхой цагт бий болсон байдаг. Тэрхүү шалтгааныг ойлгочихвол дүрмийг нь харанхуйгаар цээжлэх шаардлагагүй болно — <em>англи үгсийг яагаад катаканагаар бичдэг нь ч бас ойлгомжтой болно</em>.'
     },
 
     // --- the three scripts, up front ------------------------------------------
     'origins.scripts.h': { en: '1 · The three scripts', mn: '1 · Гурван бичиг' },
     'origins.scripts.sub': {
         en: 'Before any history: what the three actually are, and what each one does inside a sentence. This is the whole system in about a minute.',
-        mn: 'Түүх рүү орохын өмнө: энэ гурав яг юу вэ, өгүүлбэр дотор ямар үүрэг гүйцэтгэдэг вэ? Бүх систем нь ойролцоогоор нэг минутад багтана.'
+        mn: 'Үүсэл гарлын тухай ярихаас өмнө энэхүү гурван бичиг нь өгүүлбэрт ямар ямар үүрэг гүйцэтгэдэг тухай нэг минутад багтаан танилцацгаая.'
     },
     'origins.scripts.jobLabel': { en: 'Carries:', mn: 'Үүрэг:' },
 
     'origins.scripts.kanji.name': { en: 'kanji', mn: 'ханз' },
     'origins.scripts.kanji.what': {
         en: 'Characters borrowed from Chinese. Each one carries a meaning of its own, and most carry more than one reading.',
-        mn: 'Хятадаас зээлж авсан тэмдэгтүүд. Тус бүр нь өөрийн гэсэн утгатай бөгөөд ихэнх нь нэгээс олон уншлагатай.'
+        mn: 'Хятадаас зээлж авсан тэмдэг үсгүүд. Ханз тус бүр нь өөр өөр утгыг илэрхийлэх бөгөөд ихэнх нь нэгээс олон уншлагатай.'
     },
     'origins.scripts.kanji.job': {
         en: 'the meaning — nouns, and the stem of verbs and adjectives.',
-        mn: 'утгыг — нэр үг, мөн үйл ба тэмдэг нэрийн үндэс.'
+        mn: 'утга заах — нэр үг, үйл үг, тэмдэг нэрийн үндэс байна'
     },
-    'origins.scripts.kanji.count': { en: '2,136 in daily use', mn: 'Өдөр тутам 2,136' },
+    'origins.scripts.kanji.count': { en: '2,136 in daily use', mn: 'Өдөр тутам 2136' },
 
     'origins.scripts.hira.name': { en: 'hiragana', mn: 'хирагана' },
     'origins.scripts.hira.what': {
         en: 'Forty-six curved signs, one per sound. They mean nothing on their own — a kana is pure pronunciation.',
-        mn: 'Дуудлага тус бүрд нэг, нийт дөчин зургаан муруй тэмдэг. Өөрсдөө ямар ч утгагүй — кана бол цэвэр дуудлага.'
+        mn: 'Дуудлага тус бүрд нэг, нийт 46 бичмэл үсэг. Ямар нэг утга илэрхийлэхгүй — кана бол цэвэр дуудлага.'
     },
     'origins.scripts.hira.job': {
         en: 'the grammar — particles, endings, and any Japanese word not written in kanji.',
-        mn: 'дүрмийг — нөхцөл, сул үг, мөн ханзаар бичдэггүй бүх япон үг.'
+        mn: 'дүрэм заах — ханзыг дуудлагаар нь орлуулан бичихэд болон нөхцөл, сул үг зэрэг ханзаар бичдэггүй бүх япон үгийг бичихэд хэрэглэнэ'
     },
     'origins.scripts.hira.count': { en: '46 signs', mn: '46 тэмдэг' },
 
     'origins.scripts.kata.name': { en: 'katakana', mn: 'катакана' },
     'origins.scripts.kata.what': {
         en: 'The same forty-six sounds again, drawn in straight lines. A second set of signs for sounds hiragana already covers.',
-        mn: 'Яг тэр дөчин зургаан дуудлага, гэхдээ шулуун шугамаар. Хирагана аль хэдийн бичдэг дуудлагуудад зориулсан хоёр дахь багц тэмдэг.'
+        mn: 'Хираганатай адил дуудлагатай 46 үсэг бүхий дармал цагаан толгой.'
     },
     'origins.scripts.kata.job': {
         en: 'anything set apart — foreign words, names, sound effects, emphasis.',
-        mn: 'тусад нь ялгах бүхнийг — гадаад үг, нэр, дуу дуурайх үг, онцлол.'
+        mn: 'онцгой дуудлага — гадаад үг, гадаад нэр, дуурайх язгуурт хэрэглэнэ'
     },
     'origins.scripts.kata.count': { en: '46 signs', mn: '46 тэмдэг' },
 
@@ -66,77 +66,77 @@ Object.assign(window.I18N_STRINGS, {
     'origins.demo.gloss': { en: '“I study Japanese in Mongolia.”', mn: '«Би Монголд япон хэл сурдаг.»' },
     'origins.demo.read': {
         en: 'The <b class="ss-kanji">kanji</b> carry the meanings — <em>I</em>, <em>Japanese</em>, <em>study</em>. The <b class="ss-hira">hiragana</b> between them say who is doing what to what. The one <b class="ss-kata">katakana</b> word is the one that came from outside. Every Japanese sentence you will ever read is this same division of labour.',
-        mn: '<b class="ss-kanji">Ханз</b> нь утгыг үүрнэ — <em>би</em>, <em>япон хэл</em>, <em>сурах</em>. Хооронд нь орсон <b class="ss-hira">хирагана</b> хэн юуг яаж хийж байгааг заана. Ганц <b class="ss-kata">катакана</b> үг нь гаднаас орж ирсэн үг. Таны цаашид унших бүх япон өгүүлбэр яг ийм үүрэг хуваарилалттай байна.'
+        mn: '<b class="ss-kanji">Ханз</b> нь утгыг заана — <em>би</em>, <em>япон хэл</em>, <em>сурах</em>. <b class="ss-hira">Хирагана</b> нөхцөлийг заана. <b class="ss-kata">Катакана</b> үсгээр гадаад хэлнээс орж ирсэн онцгой үгийг бичдэг. Таны цаашид унших бүх япон өгүүлбэр яг ийм үүрэг хуваарилалттай байна.'
     },
 
-    'origins.chronology.h': { en: '2 · The chronology', mn: '2 · Он цагийн дараалал' },
+    'origins.chronology.h': { en: '2 · The chronology', mn: '2 · Он цагийн товчоон' },
     'origins.chronology.sub': {
         en: 'Nine moments, each adding exactly one piece of the modern writing system. Click a title to open it.',
-        mn: 'Есөн үе шат. Тус бүр нь өнөөгийн бичигт яг нэг зүйл нэмж өгсөн. Гарчиг дээр дарж дэлгэрэнгүйг үзнэ үү.'
+        mn: 'Япон бичгийн хөгжлийн есөн үе шат.'
     },
 
     // --- eras -----------------------------------------------------------------
-    'origins.era1.when': { en: 'before 400', mn: '400-аас өмнө' },
+    'origins.era1.when': { en: 'before 400', mn: 'НТ 400-аад он хүртэл' },
     'origins.era1.sub': { en: 'Yayoi–Kofun', mn: 'Яёи–Кофун' },
     'origins.era1.title': { en: 'Japanese had no writing at all', mn: 'Япон хэлэнд огт бичиг байгаагүй' },
     'origins.era1.p1': {
         en: 'Spoken Japanese existed for centuries with nothing to write it in. This matters more than it sounds: the script was never designed for the language. Everything that follows is an adaptation of somebody else\'s system.',
-        mn: 'Япон хэл олон зууны турш зөвхөн амаар яригдаж, бичиг үсэггүй байсан. Энэ нь өнгөц сонсогдож болох ч үнэндээ чухал: япон бичиг гэдэг анхнаасаа энэ хэлэнд зориулж зохиосон зүйл биш. Цаашдын бүх түүх бол өөр хэлний бичгийг япон хэлэндээ тааруулж өөрчилсөн түүх.'
+        mn: 'Япон хэл олон зууны турш зөвхөн амаар яригдаж, бичиг үсэггүй байжээ. Япон "бичиг" гэдэг анхнаасаа өөрийн хэлтэй зэрэг зохиогдсон бичиг биш. Япон бичгийн бүх түүх өөр хэлний бичгийг өөрийн хэлэндээ тааруулж өөрчилсөн түүх аж.'
     },
     'origins.era1.cap': {
         en: 'Haniwa figure, Kofun period. Grave goods like these are most of what survives from a Japan that kept no written records. <em>Wikimedia Commons, CC0.</em>',
-        mn: 'Ханива хэмээх шавар дүрс, Кофун үе. Бичгийн баримт үлдээгээгүй тэр цагийн Японоос ийм булшны эдлэл л голдуу үлдсэн байдаг. <em>Wikimedia Commons, CC0.</em>'
+        mn: 'Ханива хэмээх шавар дүрс, Кофун үе. Японоос олдсон энэ үеийн олдворуудад ямар ч бичгийн баримт байдаггүй. <em>Wikimedia Commons, CC0.</em>'
     },
 
-    'origins.era2.when': { en: 'c. 400s', mn: '400-аад он' },
-    'origins.era2.sub': { en: 'via Baekje', mn: 'Пэкжэгээр дамжин' },
+    'origins.era2.when': { en: 'c. 400s', mn: 'НТ 400-аад он' },
+    'origins.era2.sub': { en: 'via Baekje', mn: 'Пэкжэгээр дамжин орж ирэв' },
     'origins.era2.title': { en: 'Chinese characters arrive', mn: 'Хятад ханз нэвтэрлээ' },
     'origins.era2.p1': {
         en: 'Kanji came with Buddhism and Chinese statecraft, carried through the Korean kingdom of Baekje. Educated Japanese learned to read and write <em>Chinese</em> — not Japanese written down, but a foreign language on the page.',
-        mn: 'Ханз буддын шашин, хятад төрийн ёсны хамт Солонгосын Пэкжэ улсаар дамжиж ирсэн. Боловсролтой япончууд <em>хятад хэл</em> уншиж бичиж сурсан юм — өөрсдийн хэлээ бичиж байсан хэрэг биш, цаасан дээр огт өөр хэл байлаа.'
+        mn: 'Ханз үсэг анх буддын шашин, хятад соёлын хамт Солонгосын Пэкжэ улсаар дамжиж ирсэн. Боловсролтой япончууд <em>хятад хэл</em> уншиж бичиж сурч байв — гаднын бичгийг тэмдэглэж ашиглаж байжээ.'
     },
     'origins.era2.pull': {
         en: 'The inscription on this sword spells a Japanese name, 獲加多支鹵 — <b>ва-ка-та-кэ-ру</b> — using Chinese characters purely for their sound. The trick that becomes man\'yōgana is already here, in 471.',
-        mn: 'Энэ сэлэм дээрх бичээст 獲加多支鹵 — <b>ва-ка-та-кэ-ру</b> хэмээх япон нэрийг ханзны дуудлагыг нь л ашиглан сийлжээ. Хожим манъёгана болох арга 471 онд аль хэдийн энд байна.'
+        mn: 'Энэ сэлэм дээрх бичээст 獲加多支鹵 — <b>ва-ка-та-кэ-ру</b> хэмээх япон нэрийг хятад ханзны дуудлагыг ашиглан сийлсэн байна. Япон дуудлагыг хятад ханзаар тэмдэглэх болсон арга 471 онд бий болжээ.'
     },
     'origins.era2.cap': {
         en: 'Inariyama sword, inscribed 471 CE — among the oldest writing found in Japan. <em>Wikimedia Commons, CC0.</em>',
         mn: 'Инариямагийн сэлэм, 471 онд сийлсэн — Японоос олдсон хамгийн эртний бичээсийн нэг. <em>Wikimedia Commons, CC0.</em>'
     },
 
-    'origins.era3.when': { en: 'c. 600s', mn: '600-аад он' },
-    'origins.era3.sub': { en: 'the mismatch', mn: 'тохирохгүй нь' },
+    'origins.era3.when': { en: 'c. 600s', mn: 'НТ 600-аад он' },
+    'origins.era3.sub': { en: 'the mismatch', mn: 'хэл хоорондын зөрүү' },
     'origins.era3.title': { en: "The system doesn't fit the language", mn: 'Бичиг нь хэлэндээ таарсангүй' },
     'origins.era3.p1': {
         en: 'Chinese barely inflects: characters sit in order and the order carries the grammar. Japanese glues endings onto stems — 書く, 書いた, 書かない, 書かせられる. Chinese characters have no way to write が, を, ました.',
-        mn: 'Хятад хэлэнд үг бараг хувирдаггүй: ханзууд дараалан жагсах ба тэр дараалал нь өөрөө дүрмийн үүргийг гүйцэтгэдэг. Япон хэл харин үндэс дээрээ нөхцөл залгасаар явдаг — 書く, 書いた, 書かない, 書かせられる. Харин が, を, ました гэх мэтийг ханзаар бичих ямар ч арга байхгүй.'
+        mn: 'Хятад хэлэнд үг нөхцөлөөр хувирдаггүй. Ханзууд дараалан орох ба тэрхүү дараалал нь өөрөө дүрмийн үүргийг гүйцэтгэдэг. Япон хэл харин үндэс дээрээ нөхцөл залгаж хувирдаг зүй тогтолтой. — 書く, 書いた, 書かない, 書かせられる. Харин が, を, ました гэх мэт нөхцөлийг ханзаар бичих ямар ч аргагүй байв.'
     },
     'origins.era3.p2': {
         en: 'Japanese readers coped by inventing <em>kaeriten</em> — little marks telling you to jump backwards and read the characters out of order, in Japanese sequence. An entire notation, just to make somebody else\'s writing system survivable.',
-        mn: 'Япон уншигчид аргагүй эрхэнд <em>каэритэн</em> буюу «буцах тэмдэг» зохиожээ — ханзыг бичсэн дарааллаар нь биш, япон дарааллаар нь ухраад унших ёстойг заасан жижиг тэмдэг. Өөр хэлний бичгийг ашиглах гэсэн болохоор л бүтэн нэг тэмдэглэгээний тогтолцоо зохиох хэрэг гарсан.'
+        mn: 'Тиймээс япончууд аргагүй эрхэнд <em>каэритэн</em> буюу «буцах тэмдэг» зохиожээ. Энэ нь ханзыг бичсэн дарааллаар нь биш, япон дарааллаар нь ухрааж унших ёстой жижиг тэмдэгт юм. Өөр хэлний бичгийг ашиглах гэсэн оролдлого бүтэн нэг тэмдэглэгээний тогтолцоо зохиоход хүргэжээ.'
     },
     'origins.era3.pull': {
         en: 'Mongolian has exactly this shape too — endings stacked on a stem, particles doing the grammatical work. The problem Japanese hit in the 600s is one Mongolian would have hit with the same borrowed system.',
-        mn: 'Монгол хэл ч яг ийм бүтэцтэй — үг үндэс дээрээ нөхцөл дараалан залгаж, дүрмийн үүргийг нөхцөл, сул үг гүйцэтгэдэг. 600-аад онд япончуудад тулгарсан асуудал, хэрэв бид монгол хэлээ ханзаар бичих гэсэн бол яг адилхан тулгарах байсан.'
+        mn: 'Монгол хэл ч гэсэн яг ийм бүтэцтэй. Үндэс дээрээ нөхцөл залгаж, дүрмийн үүргийг нөхцөл гүйцэтгэдэг. Хэрэв бид ч бас монгол хэлээ ханзаар бичих гэж оролдсон бол 600-аад онд япончуудад тулгарсан асуудал яг адилхан тулгарах байсан.'
     },
     'origins.era3.cap': {
         en: 'A line from the Han Feizi, written in Chinese order. The numbers are the order a Japanese reader has to take the characters in — <strong>1 2 8 6 3 5 4 7</strong>. Redrawn after the diagram on Wikimedia Commons, public domain.',
-        mn: '«Хан Фэйзи»-гээс авсан өгүүлбэр, хятад дарааллаар бичсэн. Тоонууд нь япон уншигч ханзыг ямар дарааллаар унших ёстойг заана — <strong>1 2 8 6 3 5 4 7</strong>. Wikimedia Commons дээрх зургийг үндэслэн дахин зурав, нийтийн эзэмшил.'
+        mn: '«Хан Фэйзи» дэх хятад дарааллаар бичсэн өгүүлбэр. Тоонууд нь япон хүн ханзыг ямар дарааллаар унших ёстойг заана — <strong>1 2 8 6 3 5 4 7</strong>. Wikimedia Commons дээрх зургийг үндэслэн дахин зурав.'
     },
 
-    'origins.era4.when': { en: 'c. 700s', mn: '700-аад он' },
+    'origins.era4.when': { en: 'c. 700s', mn: 'НТ 700-аад он' },
     'origins.era4.sub': { en: 'Kojiki · Man\'yōshū', mn: 'Кожики · Манъёшю' },
     'origins.era4.title': { en: "Man'yōgana: kanji used only for sound", mn: 'Манъёгана: ханзыг зөвхөн дуудлагаар нь' },
     'origins.era4.p1': {
         en: 'Scribes started ignoring what a character <em>meant</em> and using it purely for its sound — 阿 for <b>а</b>, 伊 for <b>и</b>. It worked, but it was heavy: every syllable needed a full character, and different writers picked different ones.',
-        mn: 'Бичээчид ханзны <em>утгыг</em> нь тоохоо больж, зөвхөн дуудлагыг нь авч хэрэглэж эхэлсэн — 阿 гэвэл <b>а</b>, 伊 гэвэл <b>и</b>. Арга нь болсон ч төвөгтэй байлаа: үе тутамд бүтэн ханз хэрэгтэй, дээр нь бичээч бүр өөр өөр ханз сонгоно.'
+        mn: 'Бичээчид ханзны <em>утгыг</em> нь үл харгалзаж, зөвхөн дуудлагыг нь авч хэрэглэж эхэлсэн. 阿 гэвэл <b>а</b>, 伊 гэвэл <b>и</b>. Бичихэд хялбар хэдий ч төвөгтэй хэвээр байлаа. Бичээч бүр ижил дуудлагатай өөр өөр ханзыг ямар ч тогтсон журамгүйгээр хэрэглэж байв.'
     },
     'origins.era4.cap': {
         en: 'The Kojiki, 712 — Japan\'s oldest surviving book, and a text you cannot read as Chinese: much of it is characters standing in for Japanese sounds. Shown in the Shinpukuji manuscript, copied 1371–72. <em>Wikimedia Commons, public domain.</em>',
-        mn: '«Кожики», 712 он — Японд өнөөг хүртэл хадгалагдан үлдсэн хамгийн эртний ном. Үүнийг хятад бичвэр мэт уншиж болохгүй: ихэнх ханз нь япон дуудлагыг орлож байгаа юм. Зурагт 1371–72 онд хуулсан Шинпүкүжийн гар бичмэл байна. <em>Wikimedia Commons, нийтийн эзэмшил.</em>'
+        mn: '«Кожики», 712 он — Японд өнөөг хүртэл хадгалагдан үлдсэн хамгийн эртний судар. Хятад ханзаар бичигдсэн хэдий ч хятад хэлээр уншигдахгүй. Ихэнх ханз нь япон дуудлагыг орлож байгаа аж. Зурагт 1371–1372 онд хуулсан Шинпүкүжийн гар бичмэл байна. <em>Wikimedia Commons.</em>'
     },
 
-    'origins.era5.when': { en: 'c. 800s', mn: '800-аад он' },
+    'origins.era5.when': { en: 'c. 800s', mn: 'НТ 800-аад он' },
     'origins.era5.sub': { en: 'Heian court', mn: 'Хэйаны ордон' },
     'origins.era5.title': { en: 'Hiragana: the cursive hand', mn: 'Хирагана: бийрийн гүйлгэн бичиг' },
     'origins.era5.p1': {
@@ -152,7 +152,7 @@ Object.assign(window.I18N_STRINGS, {
         mn: '«Гэнжи моногатари эмаки». Кана бичгээр ч жинхэнэ уран зохиол туурвиж болохыг нотолсон роман. <em>Wikimedia Commons, нийтийн эзэмшил.</em>'
     },
 
-    'origins.era6.when': { en: 'c. 800s', mn: '800-аад он' },
+    'origins.era6.when': { en: 'c. 800s', mn: 'НТ 800-аад он' },
     'origins.era6.sub': { en: 'temple margins', mn: 'сүмийн тэмдэглэл' },
     'origins.era6.title': { en: "Katakana: the monks' shorthand", mn: 'Катакана: лам нарын товчлол' },
     'origins.era6.p1': {
@@ -168,7 +168,7 @@ Object.assign(window.I18N_STRINGS, {
         mn: 'Лотус судрын гар бичмэл. Ийм нягт хятад бичвэрийн захад тэмдэглэл хийхийн тулд л катакана бий болсон юм. <em>Wikimedia Commons, CC0.</em>'
     },
 
-    'origins.era7.when': { en: '800s–1868', mn: '800-аад–1868' },
+    'origins.era7.when': { en: '800s–1868', mn: 'НТ 800–1868 он' },
     'origins.era7.sub': { en: 'a thousand years', mn: 'мянган жил' },
     'origins.era7.title': { en: 'The two scripts keep their jobs', mn: 'Хоёр бичиг үүргээ хадгалсаар' },
     'origins.era7.p1': {
@@ -180,7 +180,7 @@ Object.assign(window.I18N_STRINGS, {
         mn: 'Мянган жил бол зуршил тогтоход хангалттай урт хугацаа. Япончуудад гадаад үг бичих бичиг хэрэгтэй болох үед катакана дөчин үеийн турш «энгийн бичвэр биш» гэдгийг заасаар ирсэн байлаа.'
     },
 
-    'origins.era8.when': { en: '1868–1945', mn: '1868–1945' },
+    'origins.era8.when': { en: '1868–1945', mn: 'НТ 1868–1945 он' },
     'origins.era8.sub': { en: 'Meiji onward', mn: 'Мэйжигээс хойш' },
     'origins.era8.title': { en: 'Foreign words arrive in bulk', mn: 'Гадаад үгс бөөнөөрөө ирлээ' },
     'origins.era8.p1': {
@@ -222,7 +222,7 @@ Object.assign(window.I18N_STRINGS, {
     // The section bar, and the wall's own controls.
     'origins.bar.label': { en: 'Page sections', mn: 'Хуудасны хэсгүүд' },
     'origins.bar.scripts': { en: 'Three scripts', mn: 'Гурван бичиг' },
-    'origins.bar.chronology': { en: 'Chronology', mn: 'Он цагийн дараалал' },
+    'origins.bar.chronology': { en: 'Chronology', mn: 'Он цагийн товчоон' },
     'origins.bar.kana': { en: 'The kana wall', mn: 'Канагийн хана' },
     'origins.bar.why': { en: 'Why katakana', mn: 'Яагаад катакана' },
     'origins.kana.show': { en: 'Shown on the wall', mn: 'Ханан дээр харуулах' },

@@ -33,14 +33,14 @@ Object.assign(window.I18N_STRINGS, {
     },
 
     'hub.game.name': { en: 'Word Match', mn: 'Үг холбох дасгал' },
-    'hub.game.tag': { en: '~1,500 WORDS · 60 LEVELS', mn: '~1,500 ҮГ · 60 ШАТ' },
+    'hub.game.tag': { en: '~1,500 WORDS · 60 LEVELS', mn: '~1500 ҮГ · 60 ШАТ' },
     'hub.game.short': {
         en: 'Twelve cards, six pairs, turned face down. Find them from memory, four hands to a level.',
         mn: 'Хөзрөө эргүүлээд шинэ үгийн мастер бол'
     },
 
     'hub.phonetics.name': { en: 'Phonetics Family', mn: 'Дуудлагаар цээжлэхүй' },
-    'hub.phonetics.tag': { en: '1,128 KANJI', mn: '1,128 ХАНЗ' },
+    'hub.phonetics.tag': { en: '1,128 KANJI', mn: '1128 ХАНЗ' },
     'hub.phonetics.short': {
         en: 'Kanji grouped by the phonetic component they share. Learn one and you can guess the rest.',
         mn: 'Ханзуудыг дуудлагын язгуураар нь бүлэглэчихвэл нэг ханзаар олон ханзыг уншиж сурах болно'
@@ -54,14 +54,14 @@ Object.assign(window.I18N_STRINGS, {
     },
 
     'hub.reading.name': { en: 'Dokkai Reader', mn: 'Унших дадлага' },
-    'hub.reading.tag': { en: '72 TEXTS', mn: '72 ТЕКСТ' },
+    'hub.reading.tag': { en: '72 TEXTS', mn: '72 бичвэр' },
     'hub.reading.short': {
         en: 'Read aloud and it follows your voice, highlighting the word you are on.',
-        mn: 'Чангаар уншихад дуу хоолойг чинь таньж, уншиж яваа үгийг дагаад тодруулна.'
+        mn: 'Унших дадлага хийж дуудлагаа сайжруулаарай'
     },
 
     'hub.dictionary.name': { en: 'Mongol-Japan Dictionary', mn: 'Монгол-Япон толь бичиг' },
-    'hub.dictionary.tag': { en: '3,537 WORDS', mn: '3,537 ҮГ' },
+    'hub.dictionary.tag': { en: '3,537 WORDS', mn: '3537 ҮГ' },
     'hub.dictionary.short': {
         en: 'Search in Mongolian or Japanese and the counterpart comes back. It merges five sources.',
         mn: 'Монгол, ханз, кана, англи, хирагана'
