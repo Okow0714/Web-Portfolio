@@ -43,7 +43,7 @@
     /* Reading measure. A line past about 85 characters loses the eye on the return sweep,
        and .container is 1200px wide with nothing capping prose inside it. Applied by the
        page files to the specific blocks that measured long, not blanket to every <p>. */
-    --measure: 68ch;
+    --measure: 68ch;
     --bg-page: #f9f4ef;
     --bg-page: light-dark(#f9f4ef, #1a1412);
     --bg-surface: #fffdfb;
