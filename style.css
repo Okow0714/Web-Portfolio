@@ -2151,6 +2151,9 @@ body:has(.khanjp-loader) .container {
         background: var(--bar);
     }
     .header-nav .nav-tool.nav-current .nav-ico { width: 20px; height: 20px; }
+    /* the open tab is one piece with the bar, so it carries no outline */
+    .header-nav .nav-tool.nav-current,
+    .header-nav .nav-tool.nav-current::before { box-shadow: none; }
     .header-nav .nav-tool:focus-visible {
         outline: 2px solid #fff;
         outline-offset: -5px;

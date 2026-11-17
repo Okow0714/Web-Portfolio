@@ -54,7 +54,7 @@ Object.assign(window.I18N_STRINGS, {
     },
 
     'hub.reading.name': { en: 'Dokkai Reader', mn: 'Унших дадлага' },
-    'hub.reading.tag': { en: '72 TEXTS', mn: '72 бичвэр' },
+    'hub.reading.tag': { en: '72 TEXTS', mn: '72 БИЧВЭР' },
     'hub.reading.short': {
         en: 'Read aloud and it follows your voice, highlighting the word you are on.',
         mn: 'Унших дадлага хийж дуудлагаа сайжруулаарай'
