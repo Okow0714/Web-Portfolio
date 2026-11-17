@@ -2109,9 +2109,9 @@ body:has(.khanjp-loader) .container {
         background: color-mix(in srgb, var(--tab) 48%, var(--bar));
         color: color-mix(in srgb, #fff 86%, var(--bar));
         /* a thin outline along the top and the straight side (the slanted side is the ::before's):
-           dark gray by day, white at night; none along the bottom, where the tab stands on the bar */
-        --tab-line: light-dark(#3a3a3a, #fff);
-        box-shadow: inset 1.5px 0 0 var(--tab-line), inset 0 1.5px 0 var(--tab-line);
+           1px of white at 30% in both themes; none along the bottom, where the tab stands on the bar */
+        --tab-line: rgba(255, 255, 255, 0.3);
+        box-shadow: inset 1px 0 0 var(--tab-line), inset 0 1px 0 var(--tab-line);
         transition: height 0.18s var(--ease-out), background-color 0.18s, color 0.18s;
     }
     /* the slanted right side, the same fill as the face so no seam shows */
@@ -2126,7 +2126,7 @@ body:has(.khanjp-loader) .container {
         transform: skewX(20deg);
         transform-origin: bottom;
         background: inherit;
-        box-shadow: inset -1.5px 0 0 var(--tab-line), inset 0 1.5px 0 var(--tab-line);
+        box-shadow: inset -1px 0 0 var(--tab-line), inset 0 1px 0 var(--tab-line);
     }
     .header-nav .nav-tool .nav-ico {
         width: 16px;

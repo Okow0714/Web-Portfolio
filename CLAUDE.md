@@ -115,8 +115,8 @@ the same 42% shade the bar's gradient overlay paints, written as a flat `color-m
 declared on `.site-header-wrap`, where `--header-bg` lives -- on `:root` it would resolve to the
 shared wine on every page. A gradient fading the open tab into the page was previewed and dropped.
 **Every CLOSED tab has a thin outline** (2026-11-17, owner's call; the open tab has none, being one
-piece with the bar): 1.5px, `light-dark(#3a3a3a, #fff)` --
-dark gray by day, white at night -- along the top, the straight side (the face's inset shadows)
+piece with the bar): 1px of `rgba(255, 255, 255, 0.3)` in both themes (it was dark gray by
+day and solid white at night for one build) -- along the top, the straight side (the face's inset shadows)
 and the slant (the `::before`'s), none along the bottom where the tab stands on the bar. It is
 inset `box-shadow`, not `border`, because a border would change each tab's measured width.
 **Room is measured, per language**: the Mongolian names are ~80px longer. The wordmark beside the
