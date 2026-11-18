@@ -110,6 +110,7 @@ body:has(.hub-main) .site-header-wrap {
 body:has(.hub-main) .header {
     background: none;
     border-bottom: 0;
+    box-shadow: none;   /* the tool pages' line under the tabs; this page has no tabs */
     min-height: 0;
     padding: 18px clamp(20px, 3vw, 40px) 0;
     justify-content: flex-end;
@@ -123,23 +124,32 @@ body:has(.hub-main) .header-nav {
 
 /* The masthead's controls are drawn light-on-wine. On this page the bar is transparent over
    paper, so they have to take the page's own ink instead -- measured at 1.62:1 against the light
-   ground before this rule, against a 4.5:1 minimum. */
-body:has(.hub-main) .account-menu-trigger,
-body:has(.hub-main) .lang-switch,
-body:has(.hub-main) #theme-switch {
-    color: var(--hub-ink);
-    background: var(--hub-sunk);
-    border-color: var(--hub-rule);
-}
+   ground before this rule, against a 4.5:1 minimum. Phone only since 2026-11-19: on a desktop
+   they are the stamp, the seal imprint and the bookmark (style.css), which carry their own
+   paper and gold, and only the imprint, printed straight onto the ground, needs this page's ink. */
+@media (max-width: 860px) {
+    body:has(.hub-main) .account-menu-trigger,
+    body:has(.hub-main) .lang-switch,
+    body:has(.hub-main) #theme-switch {
+        color: var(--hub-ink);
+        background: var(--hub-sunk);
+        border-color: var(--hub-rule);
+    }
 
-body:has(.hub-main) .account-menu-trigger:hover,
-body:has(.hub-main) .lang-switch:hover,
-body:has(.hub-main) #theme-switch:hover,
-body:has(.hub-main) .account-menu-trigger:focus-visible,
-body:has(.hub-main) .lang-switch:focus-visible,
-body:has(.hub-main) #theme-switch:focus-visible {
-    border-color: var(--hub-gold);
-    color: var(--hub-ink);
+    body:has(.hub-main) .account-menu-trigger:hover,
+    body:has(.hub-main) .lang-switch:hover,
+    body:has(.hub-main) #theme-switch:hover,
+    body:has(.hub-main) .account-menu-trigger:focus-visible,
+    body:has(.hub-main) .lang-switch:focus-visible,
+    body:has(.hub-main) #theme-switch:focus-visible {
+        border-color: var(--hub-gold);
+        color: var(--hub-ink);
+    }
+}
+@media (min-width: 861px) {
+    body:has(.hub-main) .theme-switch { --print: var(--hub-ink); }
+    /* the bookmark hangs from the very top of the window, as on every other page */
+    body:has(.hub-main) .account-menu { margin-top: -18px; }
 }
 
 /* ---------------------------------------------------------------------------------------------

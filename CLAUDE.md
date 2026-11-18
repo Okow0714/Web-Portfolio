@@ -131,6 +131,30 @@ label is now "Толь бичиг" like everywhere else (`nav.vocabulary` and `n
 that would have swallowed the rules after it -- the 2026-09-08 failure shape. Caught by eye in its
 own output; it now strips comments before splitting. Check comment balance after any CSS removal.
 
+**THE TABS WERE RESHAPED AND THE RIGHT-HAND CONTROLS REDRAWN** (2026-11-19, at the owner's direction,
+after a long run of previews in one mock-up artifact). The paragraphs above describe the 11-16/17 version;
+where they disagree, this one wins. **Tabs:** each is a FULL trapezoid now -- `::before` the right slant,
+`::after` the left, skewed 18deg, 10px -- in its tool's full colour (no more 48% mix), 33px closed and 38px on
+hover, STACKED so each sits on the right slant of the one before it (rising `--i`). The open tab is the bar's
+colour, 50px, 1.06rem with a 25px icon, and sits BEHIND its neighbours (`z-index: 0`) so neither of their
+slants is cut. A 4px line in `--bar` runs under the strip (`.header`'s inset box-shadow) and the open tab
+reaches down through it. Closed tabs drop to icons below **1400px (mn) / 1320px (en)**, up from 1360/1270,
+for the larger open tab and the controls. **Controls, desktop only:** the language switch is a cream
+POSTAGE STAMP (perforation = a hole-grid mask unioned with a solid inner rectangle) showing the flag alone --
+`.lang-switch-code` is visually hidden, not removed, because `i18n.js`'s `aria-label` must still contain
+the code it names (WCAG 2.5.3); light/dark is a SEAL IMPRINT, an inline `<svg class="im">` in
+`_chrome.html` (wavy rim, two rings, fourteen stars, a sun whose crescent is a masked bite translated per
+theme state -- the bite is `.im-bite` inside `<mask id="im-bite">`); the account is a gold BOOKMARK hanging
+from the top edge 20px into the page, absolutely positioned inside a fixed 58px `.account-menu` so its
+hover growth moves nothing (asserted). **"Seal stamp" meant the imprint, not the tool** -- two rounds were
+spent drawing a hand stamp and a wax stamper before the owner sent a reference picture; ask for one sooner.
+**The phone is untouched**: the imprint is `display: none` below 861px and the glyph `auth-shared.js`
+writes into `.theme-switch-icon` is hidden only above it. **The hub needed two things**: its old rule
+filling all three buttons with `--hub-sunk` is now phone-only (it turned the bookmark white), and on a
+desktop the imprint prints in `--hub-ink`, since cream vanishes over the day sky. The checker is
+`scratchpad/ds/build/verify.js`: shots, each control clicked, the hover shift, fit at 12 widths x 2
+languages x 3 pages, and the phone.
+
 **The masthead nav is two groups** (2026-09-16, replacing seven flat items; it was two groups and
 a link until Freetime was removed on 2026-10-12): **Practice** (Word Match, Dokkai Reader, Grammar
 Connect) and **Dictionary** (Vocabulary, Kana Origins, Phonetics

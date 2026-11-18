@@ -2076,63 +2076,75 @@ body:has(.khanjp-loader) .container {
 
 
 /* =============================================================================================
-   Tool tabs in the masthead (2026-11-16). One tab per tool, in the home page's order, replacing
-   the Practice and Dictionary menus; Home is the logo and Study Path lives on the home page and
-   in the footer. Each tab wears its tool's --seal -- the same literal index.html gives the tile
-   and the tool page gives its own --header-bg, so it is now written in THREE places: change one
-   and change all three.
-   The shape is a right trapezoid: a straight left side, and the right side a skewed ::before.
-   Not a clip-path, which would take the drop shadow with it (CLAUDE.md, grammar.md). Like
-   browser tabs, each sits on the slanted side of the one before it (rising z-index), and the
-   open tab is in front of everything. Desktop only: below 861px these are rows in the drawer.
+   Tool tabs in the masthead (2026-11-16, reshaped 2026-11-19). One tab per tool, in the home
+   page's order; Home is the logo and Study Path lives on the home page and in the footer. Each
+   tab wears its tool's --seal -- the same literal index.html gives the tile and the tool page
+   gives its own --header-bg, so it is now written in THREE places: change one and change all three.
+   Each tab is a full trapezoid: two skewed pseudo-elements make its slanted sides (::before the
+   right, ::after the left). Not a clip-path, which would take the outline with it. The tabs are
+   STACKED: each sits on the right slant of the one before it, by rising z-index. The open tab is
+   the bar's own colour and sits BEHIND its neighbours (z-index 0), so neither of their slants is
+   cut by it, and it reaches down through the line under the strip so the two read as one piece.
+   A 4px line in the bar's colour runs the width of the header under the tabs; on a tool page by
+   day it is the bar itself, at night the same shade the bar is. Desktop only: below 861px these
+   are rows in the drawer.
    ============================================================================================= */
 .site-header-wrap { --bar: var(--header-bg); }
 @media (min-width: 861px) {
+    .site-header-wrap { --line-h: 4px; }
+    .header {
+        border-bottom: 0;
+        box-shadow: inset 0 calc(var(--line-h) * -1) 0 var(--bar);
+    }
     .header-nav {
         align-items: flex-end;
-        gap: 9px;
-        padding-right: 14px;   /* the last tab's slant reaches past its box */
+        gap: 2px;
+        padding: 0 18px var(--line-h);
     }
     .nav-tool-item { align-items: flex-end; }
-    /* Flat, like Phonetics Family's tiles and Word Match's cards (2026-11-16): one solid colour,
-       square corners, no gradient, highlight or shadow. A closed tab is low and quiet, half its own
-       colour and half the bar's; hover gives it its full colour back. The open tab is sized up and
-       is the SAME colour as the bar it stands on -- by day that is its own colour, since each tool
-       page's bar is its seal; at night it is the shaded bar -- so the two read as one piece. */
+    /* Flat, like Phonetics Family's tiles and Word Match's cards: one solid colour, square
+       corners, no gradient or shadow. A closed tab is its tool's full colour; hover raises it. */
     .header-nav .nav-tool {
-        --h: 32px;
-        --slant: 15px;
+        --h: 33px;
+        --slant: 10px;
+        --tab-line: rgba(255, 255, 255, 0.3);
         position: relative;
         isolation: isolate;
         z-index: var(--i, 1);
         height: var(--h);
         align-self: flex-end;
         gap: 6px;
-        padding: 0 6px 0 12px;
+        padding: 0 15px 0 6px;   /* room on the right for the next tab's slant, which sits on top */
         border: 0;
         border-radius: 0;
         font-size: 0.8rem;
-        background: color-mix(in srgb, var(--tab) 48%, var(--bar));
-        color: color-mix(in srgb, #fff 86%, var(--bar));
-        /* a thin outline along the top and the straight side (the slanted side is the ::before's):
-           1px of white at 30% in both themes; none along the bottom, where the tab stands on the bar */
-        --tab-line: rgba(255, 255, 255, 0.3);
-        box-shadow: inset 1px 0 0 var(--tab-line), inset 0 1px 0 var(--tab-line);
+        background: var(--tab);
+        color: #fff;
+        /* a thin outline along the top; the slants carry their own. None along the bottom. */
+        box-shadow: inset 0 1px 0 var(--tab-line);
         transition: height 0.18s var(--ease-out), background-color 0.18s, color 0.18s;
     }
-    /* the slanted right side, the same fill as the face so no seam shows */
-    .header-nav .nav-tool::before {
+    /* the two slanted sides, the same fill as the face so no seam shows */
+    .header-nav .nav-tool::before,
+    .header-nav .nav-tool::after {
         content: "";
         position: absolute;
         z-index: -1;
         top: 0;
         bottom: 0;
-        right: calc(var(--slant) * -1);
         width: calc(var(--slant) * 2);
-        transform: skewX(20deg);
         transform-origin: bottom;
         background: inherit;
+    }
+    .header-nav .nav-tool::before {
+        right: calc(var(--slant) * -1);
+        transform: skewX(18deg);
         box-shadow: inset -1px 0 0 var(--tab-line), inset 0 1px 0 var(--tab-line);
+    }
+    .header-nav .nav-tool::after {
+        left: calc(var(--slant) * -1);
+        transform: skewX(-18deg);
+        box-shadow: inset 1px 0 0 var(--tab-line), inset 0 1px 0 var(--tab-line);
     }
     .header-nav .nav-tool .nav-ico {
         width: 16px;
@@ -2142,24 +2154,24 @@ body:has(.khanjp-loader) .container {
         position: relative;
     }
     .header-nav .nav-tool span { position: relative; }
-    .header-nav .nav-tool:hover {
-        --h: 37px;
-        background: var(--tab);
-        color: #fff;
-    }
+    .header-nav .nav-tool:not(.nav-current):hover { --h: 38px; }
+    /* The open tab: the bar's own colour, larger type and icon, BEHIND its neighbours. */
     .header-nav .nav-tool.nav-current {
-        --h: 48px;
-        z-index: 20;
-        gap: 8px;
-        padding: 0 10px 0 18px;
-        font-size: 0.92rem;
+        --h: 50px;
+        z-index: 0;
+        margin-bottom: calc(var(--line-h) * -1);
+        gap: 9px;
+        padding: 0 18px;
+        font-size: 1.06rem;
+        letter-spacing: 0.005em;
         color: #fff;
         background: var(--bar);
     }
-    .header-nav .nav-tool.nav-current .nav-ico { width: 20px; height: 20px; }
+    .header-nav .nav-tool.nav-current .nav-ico { width: 25px; height: 25px; }
     /* the open tab is one piece with the bar, so it carries no outline */
     .header-nav .nav-tool.nav-current,
-    .header-nav .nav-tool.nav-current::before { box-shadow: none; }
+    .header-nav .nav-tool.nav-current::before,
+    .header-nav .nav-tool.nav-current::after { box-shadow: none; }
     .header-nav .nav-tool:focus-visible {
         outline: 2px solid #fff;
         outline-offset: -5px;
@@ -2174,15 +2186,126 @@ body:has(.khanjp-loader) .container {
 
 /* The wordmark beside the logo stays at every width. Short of room, the closed tabs show only
    their icons instead. Measured per language -- the Mongolian names are about 80px longer --
-   with scratchpad/tabs/fit-check.js: all six names fit beside the wordmark down to 1360px (mn)
-   and 1270px (en). */
-@media (min-width: 861px) and (max-width: 1359px) {
+   against the larger open tab and the three controls below: all six names fit beside the
+   wordmark down to 1400px (mn) and 1320px (en). */
+@media (min-width: 861px) and (max-width: 1399px) {
     html[lang="mn"] .header-nav .nav-tool:not(.nav-current) span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
     html[lang="mn"] .header-nav .nav-tool:not(.nav-current) { padding: 0 4px 0 12px; }
 }
-@media (min-width: 861px) and (max-width: 1269px) {
+@media (min-width: 861px) and (max-width: 1319px) {
     html[lang="en"] .header-nav .nav-tool:not(.nav-current) span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
     html[lang="en"] .header-nav .nav-tool:not(.nav-current) { padding: 0 4px 0 12px; }
+}
+
+/* =============================================================================================
+   The three controls on the right (2026-11-19, at the owner's direction): a postage stamp for the
+   language, a seal imprint for light/dark, a bookmark for the account. Desktop only -- the phone
+   keeps its plain buttons, which is why the imprint's <svg> is hidden below 861px and the glyph
+   that auth-shared.js writes into .theme-switch-icon is hidden above it.
+   ============================================================================================= */
+.theme-switch .im { display: none; }
+@media (min-width: 861px) {
+    .header { padding-right: 10px; gap: 16px; }
+
+    /* The stamp: cream paper, a perforated edge (a grid of holes unioned with a solid inner
+       rectangle, so the holes survive only along the edge), a fine inner frame, tilted a little.
+       Only the flag shows; the code ("EN") is kept for screen readers, so the button's spoken
+       name still contains what it says. */
+    .lang-switch:not(.theme-switch) {
+        width: 48px;
+        height: 36px;
+        padding: 0;
+        justify-content: center;
+        border: 0;
+        border-radius: 0;
+        background: #f4ecdb;
+        color: #4a2c3a;
+        transform: rotate(-7deg);
+        transition: transform 0.2s ease;
+        -webkit-mask: radial-gradient(circle 2.1px, transparent 96%, #000) -3px -3px / 6px 6px round, linear-gradient(#000 0 0) 4px 4px / calc(100% - 8px) calc(100% - 8px) no-repeat;
+                mask: radial-gradient(circle 2.1px, transparent 96%, #000) -3px -3px / 6px 6px round, linear-gradient(#000 0 0) 4px 4px / calc(100% - 8px) calc(100% - 8px) no-repeat;
+        box-shadow: inset 0 0 0 5px #f4ecdb, inset 0 0 0 6px rgba(74, 44, 58, 0.35);
+    }
+    .lang-switch:not(.theme-switch):hover,
+    .lang-switch:not(.theme-switch):focus-visible { transform: rotate(0deg) scale(1.08); color: #4a2c3a; }
+    .lang-switch:not(.theme-switch):active { transform: rotate(0deg) scale(0.96); }
+    .lang-switch:not(.theme-switch) .lang-switch-flag svg { width: 34px; height: 22px; border-radius: 0; box-shadow: none; }
+    .lang-switch:not(.theme-switch) .lang-switch-code { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+    /* The seal imprint: the round mark a seal stamp leaves -- a wavy rim, a double ring with a
+       band of stars, the sun or moon in the open middle -- printed in cream straight onto the
+       bar. The crescent is the sun masked by a bite that slides across it: off the disc by day,
+       most of the way over at night, part of the way when following the device. */
+    .theme-switch {
+        --print: #f4ecdb;
+        position: relative;
+        width: 48px;
+        height: 48px;
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        background: none;
+        transform: rotate(-12deg);
+        transition: transform 0.25s cubic-bezier(0.3, 0.7, 0.4, 1.3);
+    }
+    html[data-theme="dark"] .theme-switch { --print: #e6dcc6; }
+    .theme-switch .theme-switch-icon { display: none; }
+    .theme-switch .im { display: block; width: 48px; height: 48px; fill: var(--print); }
+    .theme-switch .im-ring { fill: none; stroke: var(--print); stroke-width: 1; }
+    .theme-switch .im-bite { transform: translate(19px, -8px); transition: transform 0.6s cubic-bezier(0.45, 0.05, 0.3, 1); }
+    html[data-theme="dark"] .theme-switch .im-bite { transform: translate(4.6px, -2.8px); }
+    html:not([data-theme]) .theme-switch .im-bite { transform: translate(8.2px, -3.1px); }
+    .theme-switch:hover,
+    .theme-switch:focus-visible { transform: rotate(0deg) scale(1.08); border: 0; }
+    .theme-switch:active { transform: rotate(0deg) scale(0.94); }
+
+    /* The bookmark: a gold ribbon hanging from the header's top edge and past its bottom into
+       the page, V-notched at its foot, with an inner frame of the same shape. It is positioned
+       inside a fixed-size holder, so its growing on hover moves nothing else in the header. */
+    .account-menu { align-self: stretch; position: relative; width: 58px; display: block; }
+    .account-menu-trigger {
+        position: absolute;
+        top: 0;
+        left: 0;
+        isolation: isolate;
+        width: 58px;
+        height: 84px;
+        padding: 0 0 16px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        border: 0;
+        border-radius: 0;
+        background: #e8bd6d;
+        color: #4a2c3a;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 11px), 0 100%);
+        transition: height 0.2s cubic-bezier(0.3, 0.7, 0.4, 1.2), background-color 0.15s ease;
+    }
+    .account-menu-trigger:hover,
+    .account-menu-trigger:focus-visible,
+    .account-menu.open .account-menu-trigger {
+        height: 94px;
+        background: #f0cd87;
+        color: #4a2c3a;
+        border: 0;
+        box-shadow: none;
+    }
+    .account-menu-trigger #account-menu-avatar { position: relative; z-index: 1; }
+    .account-menu-trigger svg { width: 24px; height: 24px; fill: currentColor; stroke: none; display: block; }
+    .account-menu-trigger::before,
+    .account-menu-trigger::after {
+        content: "";
+        position: absolute;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 9px), 0 100%);
+    }
+    .account-menu-trigger::before { inset: -1px 4px 4px 4px; background: color-mix(in srgb, #4a2c3a 40%, #e8bd6d); }
+    .account-menu-trigger::after { inset: -1px 5.5px 5.8px 5.5px; background: inherit; }
+
+    /* A clip-path or mask also clips an outline, so these two show focus by the same lift the
+       pointer gives them plus a ring drawn around the holder's box instead. */
+    .lang-switch:not(.theme-switch):focus-visible,
+    .theme-switch:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+    .account-menu:has(.account-menu-trigger:focus-visible) { outline: 2px solid #fff; outline-offset: -2px; }
 }
 
 /* At night the bar steps down towards black: a 42% shade over whichever seal the page wears.
