@@ -193,7 +193,16 @@ const Sfx = (function () {
 
 // The background track. The player is music-player.js, shared with Word Match and loaded
 // before this file; the effects that go with it are DeskSfx above.
-const GrammarAudio = window.createMusicPlayer();
+const GrammarAudio = window.createMusicPlayer({ tool: 'grammar' });
+// The toolbar's speaker steps the music and the desk sounds together; Settings sets them apart.
+function grammarLevel() { return Math.max(GrammarAudio.getLevel(), window.KhanAudio ? KhanAudio.level('grammar', 'sfx') : 0); }
+function cycleGrammarSound() {
+    const now = grammarLevel();
+    const next = now <= 0 ? 3 : now - 1;
+    GrammarAudio.setLevel(next);
+    if (window.KhanAudio) KhanAudio.setLevel('grammar', 'sfx', next);
+    return next;
+}
 
 // escapeHtml, formatTime and shuffleArray are in shared-utils.js.
 
@@ -496,7 +505,7 @@ function openLevel(track, levelNum) {
 
     const jlptTier = levelToJlptTier(track, levelNum);
     const musicPool = MUSIC_POOLS[jlptTier];
-    GrammarAudio.setTrack(musicPool[withinTierIndex(track, levelNum) % musicPool.length]);
+    GrammarAudio.setTrack(musicPool[withinTierIndex(track, levelNum) % musicPool.length], 'level');
 
     document.getElementById('gc-cleared-list').innerHTML = `<p class="gc-cleared-empty">${escapeHtml(window.t('grammar.clearedEmptyHint'))}</p>`;
     document.getElementById('gc-level-label').textContent = window.tf('grammar.bandLevel',
@@ -1044,9 +1053,10 @@ function syncSoundButtons(level) {
         btn.setAttribute('aria-label', label);
     });
 }
-document.getElementById('gc-sound-toggle').addEventListener('click', () => syncSoundButtons(GrammarAudio.cycleLevel()));
-document.getElementById('gc-board-sound-toggle').addEventListener('click', () => syncSoundButtons(GrammarAudio.cycleLevel()));
-syncSoundButtons(GrammarAudio.getLevel());
+document.getElementById('gc-sound-toggle').addEventListener('click', () => syncSoundButtons(cycleGrammarSound()));
+document.getElementById('gc-board-sound-toggle').addEventListener('click', () => syncSoundButtons(cycleGrammarSound()));
+syncSoundButtons(grammarLevel());
+document.addEventListener('audioprefchange', e => { if ((e.detail || {}).tool === 'grammar') syncSoundButtons(grammarLevel()); });
 
 document.getElementById('gc-start-modal-btn').addEventListener('click', () => {
     Sfx.page();

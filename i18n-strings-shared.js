@@ -67,6 +67,13 @@ window.I18N_STRINGS = {
     'auth.logOut': { en: 'Log Out', mn: 'Гарах' },
     'auth.email': { en: 'Email', mn: 'И-мэйл' },
     'auth.password': { en: 'Password', mn: 'Нууц үг' },
+    // Two-step verification at sign-in (2026-11-19). Mongolian drafted by Claude, to be rewritten.
+    'auth.mfaTitle': { en: 'Two-step verification', mn: 'Хоёр шаттай баталгаажуулалт' },
+    'auth.mfaNote': { en: 'Enter the 6-digit code from your authenticator app.', mn: 'Баталгаажуулах аппаас 6 оронтой кодоо оруулна уу.' },
+    'auth.mfaCode': { en: 'Code', mn: 'Код' },
+    'auth.mfaVerify': { en: 'Verify', mn: 'Баталгаажуулах' },
+    'auth.mfaCancel': { en: 'Use another account', mn: 'Өөр бүртгэлээр нэвтрэх' },
+    'auth.mfaWrong': { en: 'That code did not work. Check the app and try the newest code.', mn: 'Код тохирсонгүй. Аппаас хамгийн сүүлийн кодыг аваад дахин оролдоно уу.' },
     'auth.forgotPassword': { en: 'Forgot password?', mn: 'Нууц үгээ мартсан уу?' },
     'auth.agreeToTerms': {
         en: 'I agree to the <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>',

@@ -1034,7 +1034,9 @@ if (deepLinkTarget) {
 // nothing and cannot go stale.
 const VOLUME_KEY = 'khanjp-volume';
 
+// Its own level since 2026-11-19 (audio-prefs.js); the old shared key is only the fallback.
 function volumeLevel() {
+    if (window.KhanAudio) return KhanAudio.level('phonetics', 'sfx');
     try {
         const v = parseInt(localStorage.getItem(VOLUME_KEY), 10);
         return (v >= 0 && v <= 3) ? v : 3;
@@ -1074,7 +1076,8 @@ document.addEventListener('click', (e) => {
     const btn = e.target.closest ? e.target.closest('.sound-toggle') : null;
     if (!btn) return;
     const next = volumeLevel() <= 0 ? 3 : volumeLevel() - 1;
-    try { localStorage.setItem(VOLUME_KEY, String(next)); } catch (e2) { /* private mode */ }
+    if (window.KhanAudio) KhanAudio.setLevel('phonetics', 'sfx', next);
+    else try { localStorage.setItem(VOLUME_KEY, String(next)); } catch (e2) { /* private mode */ }
     paintSpeakers(next);
     // Play the new level, so the button demonstrates what it just did -- except at 0, where
     // the only honest confirmation is silence.

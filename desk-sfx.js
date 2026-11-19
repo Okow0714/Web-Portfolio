@@ -30,7 +30,11 @@
 
     let ctx = null, master = null, noiseBuf = null;
 
+    // Since 2026-11-19 each tool has its own sounds level (audio-prefs.js); the old shared key is
+    // only the fallback for a page that has not loaded it.
+    const TOOL = document.querySelector('.grammar-main') ? 'grammar' : 'phonetics';
     function storedLevel() {
+        if (window.KhanAudio) return KhanAudio.level(TOOL, 'sfx');
         try {
             const v = parseInt(localStorage.getItem(VOLUME_KEY), 10);
             return (v >= 0 && v <= 3) ? v : 3;
@@ -45,6 +49,7 @@
         const AC = window.AudioContext || window.webkitAudioContext;
         if (!AC) return null;
         try { ctx = new AC(); } catch (e) { return null; }
+        if (window.KhanAudio) KhanAudio.useSpeaker(ctx);
         master = ctx.createGain();
         master.connect(ctx.destination);
         return ctx;

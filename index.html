@@ -274,7 +274,7 @@
                             <p class="account-menu-note" data-i18n="auth.loginHint">Log in to save your progress across visits.</p>
                             <button id="auth-login-btn" class="auth-btn account-menu-cta" type="button" data-i18n="auth.logIn">Log In</button>
                             <div class="account-menu-nav">
-                                <button type="button" class="account-menu-nav-item" id="account-settings-btn-anon" data-i18n="account.settings">Settings</button>
+                                <a href="settings.html" class="account-menu-nav-item" id="account-settings-btn-anon"><span data-i18n="account.settings">Settings</span></a>
                             </div>
                         </div>
                         <div id="auth-authed" class="hidden">
@@ -287,8 +287,7 @@
                             </div>
                             <div class="account-menu-nav">
                                 <a href="dashboard.html" class="account-menu-nav-item"><svg class="acct-ico" aria-hidden="true"><use href="#i-dashboard"/></svg><span data-i18n="dash.titleSub">Dashboard</span></a>
-                                <button type="button" class="account-menu-nav-item" id="account-details-btn" data-i18n="account.details">Account details</button>
-                                <button type="button" class="account-menu-nav-item" id="account-settings-btn" data-i18n="account.settings">Settings</button>
+                                <a href="settings.html" class="account-menu-nav-item" id="account-settings-btn"><span data-i18n="account.settings">Settings</span></a>
                             </div>
                             <button id="auth-logout-btn" class="account-menu-logout" type="button" data-i18n="auth.logOut">Log Out</button>
                         </div>
@@ -322,69 +321,17 @@
                     <button type="submit" id="auth-submit-btn" class="auth-btn" data-i18n="auth.logIn">Log In</button>
                 </form>
                 <button id="auth-mode-toggle" class="auth-mode-toggle" type="button" data-i18n="auth.needAccount">Need an account? Sign up</button>
-            </div>
-        </div>
-
-        <!-- Account Details Modal -->
-        <div id="account-details-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="account-details-modal-title">
-            <div class="modal-card">
-                <button id="account-details-modal-close" class="modal-close" type="button" aria-label="Close">&times;</button>
-                <h3 id="account-details-modal-title" data-i18n="account.details">Account details</h3>
-                <p class="modal-label" data-i18n="auth.email">Email</p>
-                <p id="account-details-email" class="account-email"></p>
-            </div>
-        </div>
-
-        <!-- Settings Modal -->
-        <div id="account-settings-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="account-settings-modal-title">
-            <div class="modal-card">
-                <button id="account-settings-modal-close" class="modal-close" type="button" aria-label="Close">&times;</button>
-                <h3 id="account-settings-modal-title" data-i18n="account.settings">Settings</h3>
-                <div class="settings-row">
-                    <div>
-                        <p class="modal-label" data-i18n="account.readingLabel">Furigana shown as</p>
-                        <p class="settings-row-note" data-i18n="account.readingNote">The small readings above kanji. Useful if you are still learning kana &mdash; the Japanese itself never changes.</p>
-                    </div>
-                    <div class="pref-seg" role="group" id="reading-style-group">
-                        <button type="button" class="pref-seg-btn" data-reading-style="kana" lang="ja">あい</button>
-                        <button type="button" class="pref-seg-btn" data-reading-style="romaji">romaji</button>
-                        <button type="button" class="pref-seg-btn" data-reading-style="cyrillic">кирилл</button>
-                    </div>
-                </div>
-                <div class="settings-row">
-                    <div>
-                        <p class="modal-label" data-i18n="account.darkerLabel">Darker theme</p>
-                        <p class="settings-row-note" data-i18n="account.darkerNote">Drops the dark pages and the site header to a midnight version of the same colours. Pages that are already light keep their own colours.</p>
-                    </div>
-                    <button type="button" class="auth-btn auth-btn-outline" id="darker-toggle-btn" aria-pressed="false" data-i18n="account.darkerOff">Off</button>
-                </div>
-                <div class="settings-row">
-                    <div>
-                        <p class="modal-label" data-i18n="account.tutorialsLabel">Page tutorials</p>
-                        <p class="settings-row-note" data-i18n="account.tutorialsNote">The first-visit walkthroughs on each tool. Showing them again also brings back the notation key.</p>
-                    </div>
-                    <button type="button" class="auth-btn auth-btn-outline" id="tutorial-reset-btn" data-i18n="account.tutorialsReset">Show again</button>
-                </div>
-                <div class="account-danger-zone hidden" id="account-danger-zone">
-                    <h4 data-i18n="account.dangerZone">Danger Zone</h4>
-                    <p data-i18n="account.resetWarning">Resetting your study progress clears your Word Match times, Grammar Connect results, the texts you have read, and every word attempt behind the dashboard and the Phonetics map. Your account, name and bookmarks stay. This can&#39;t be undone.</p>
-                    <button id="progress-reset-start-btn" class="auth-btn auth-btn-outline" type="button" data-i18n="account.resetProgress">Reset study progress</button>
-                    <div id="progress-reset-confirm" class="hidden">
-                        <p class="settings-row-note" data-i18n="account.resetConfirmAsk">Clear all study progress? There is no way back.</p>
-                        <button id="progress-reset-confirm-btn" class="auth-btn account-delete-btn" type="button" data-i18n="account.resetConfirmYes">Yes, clear my progress</button>
-                        <button id="progress-reset-cancel-btn" class="auth-btn auth-btn-outline" type="button" data-i18n="account.cancel">Cancel</button>
-                    </div>
-                    <p id="progress-reset-status" class="account-delete-status hidden"></p>
-                    <hr class="danger-sep">
-                    <p data-i18n="account.deleteWarning">Deleting your account permanently removes your profile, bookmarks, messages, and study progress. This can't be undone.</p>
-                    <button id="account-delete-start-btn" class="auth-btn account-delete-btn" type="button" data-i18n="account.deleteMyAccount">Delete My Account</button>
-                    <div id="account-delete-confirm" class="account-delete-confirm hidden">
-                        <label for="account-delete-input" data-i18n="account.typeDeleteToConfirm">Type DELETE to confirm:</label>
-                        <input type="text" id="account-delete-input" autocomplete="off">
-                        <button id="account-delete-confirm-btn" class="auth-btn account-delete-btn" type="button" disabled data-i18n="account.yesPermanentlyDelete">Yes, permanently delete my account</button>
-                    </div>
-                    <p id="account-delete-status" class="account-delete-status hidden"></p>
-                </div>
+                <!-- Two-step verification (2026-11-19): after the password, or after "Continue with
+                     Google", an account that has turned it on is asked for the 6-digit code from its
+                     authenticator app. auth-shared.js shows this and hides the form above. -->
+                <form id="auth-mfa-form" class="auth-mfa hidden">
+                    <p class="auth-mfa-note" data-i18n="auth.mfaNote">Enter the 6-digit code from your authenticator app.</p>
+                    <label for="auth-mfa-code" data-i18n="auth.mfaCode">Code</label>
+                    <input type="text" id="auth-mfa-code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required>
+                    <p id="auth-mfa-error" class="auth-error hidden"></p>
+                    <button type="submit" class="auth-btn" data-i18n="auth.mfaVerify">Verify</button>
+                    <button type="button" id="auth-mfa-cancel" class="auth-mode-toggle" data-i18n="auth.mfaCancel">Use another account</button>
+                </form>
             </div>
         </div>
         <!-- /chrome:header -->
@@ -578,7 +525,7 @@
         <a class="tab" href="dashboard.html" data-tab-pages="dashboard.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-dashboard"/></svg><span class="tab-label" data-i18n="dash.titleSub">Dashboard</span></a>
         <!-- Settings is not a page: it opens the same modal the account panel's Settings row
              does, by pressing that row's own button, so there is one handler and not two. -->
-        <button type="button" class="tab" id="tab-settings"><svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" d="M4 7h9M17 7h3M4 12h3M11 12h9M4 17h11M19 17h1"/><circle fill="none" stroke="currentColor" stroke-width="1.9" cx="15" cy="7" r="2"/><circle fill="none" stroke="currentColor" stroke-width="1.9" cx="9" cy="12" r="2"/><circle fill="none" stroke="currentColor" stroke-width="1.9" cx="17" cy="17" r="2"/></svg><span class="tab-label" data-i18n="account.settings">Settings</span></button>
+        <a class="tab" href="settings.html" data-tab-pages="settings.html" id="tab-settings"><svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" d="M4 7h9M17 7h3M4 12h3M11 12h9M4 17h11M19 17h1"/><circle fill="none" stroke="currentColor" stroke-width="1.9" cx="15" cy="7" r="2"/><circle fill="none" stroke="currentColor" stroke-width="1.9" cx="9" cy="12" r="2"/><circle fill="none" stroke="currentColor" stroke-width="1.9" cx="17" cy="17" r="2"/></svg><span class="tab-label" data-i18n="account.settings">Settings</span></a>
     </nav>
     <script>
         (function () {
@@ -594,15 +541,6 @@
                 }
             };
             document.addEventListener('click', function (e) {
-                if (e.target.closest && e.target.closest('#tab-settings')) {
-                    closeAll();
-                    // two buttons, one per account state; the signed-in one refuses without a session
-                    var anon = document.getElementById('auth-anon');
-                    var signedOut = anon && !anon.classList.contains('hidden');
-                    var real = document.getElementById(signedOut ? 'account-settings-btn-anon' : 'account-settings-btn');
-                    if (real) real.click();
-                    return;
-                }
                 var btn = e.target.closest ? e.target.closest('.tab-group > .tab') : null;
                 if (!btn || !bar.contains(btn)) { closeAll(); return; }
                 var group = btn.parentNode;

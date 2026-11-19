@@ -19,8 +19,8 @@ const CONTRACT = [
     'account-menu', 'account-menu-trigger', 'account-menu-panel',
     'auth-anon', 'auth-authed', 'account-menu-profile-avatar',
     'auth-login-btn', 'auth-logout-btn', 'auth-user-email',
-    'account-details-btn', 'account-settings-btn',
-    'auth-modal', 'account-details-modal', 'account-settings-modal',
+    'account-settings-btn',
+    'auth-modal',
 ];
 
 // Deliberately NOT in CONTRACT. auth-shared.js reaches the scrim through optional chaining --
@@ -171,18 +171,17 @@ module.exports = async function run(page, assert, BASE_URL) {
     await page.waitForTimeout(1200);
     await page.click('#account-menu-trigger');
     await page.waitForTimeout(400);
-    await page.click('#account-settings-btn-anon');
-    await page.waitForTimeout(500);
-
-    const settings = await page.evaluate(() => {
-        const m = document.getElementById('account-settings-modal');
-        return {
-            open: !m.classList.contains('hidden'),
-            controls: m.querySelectorAll('button, input, select').length,
-        };
-    });
-    // Settings is offered signed out on purpose -- it holds the tutorial reset, and the language
-    // switch lives in the masthead precisely so it is reachable without an account.
-    assert.ok(settings.open, 'the settings modal should open for a signed-out visitor');
-    assert.ok(settings.controls > 0, 'the settings modal should contain controls, not just a heading');
+    // Settings has been its own page since 2026-11-19 (it was a pop-up). It is offered signed out
+    // on purpose: two of its three tabs need no account.
+    await Promise.all([page.waitForURL(/settings\.html/), page.click('#account-settings-btn-anon')]);
+    await page.waitForTimeout(600);
+    const settings = await page.evaluate(() => ({
+        tabs: document.querySelectorAll('[role="tab"]').length,
+        open: !document.getElementById('set-display').hidden,
+        controls: document.getElementById('set-display').querySelectorAll('button, input, select').length,
+        accountAsks: !document.getElementById('set-signedout').hidden,
+    }));
+    assert.strictEqual(settings.tabs, 3, 'the settings page should have three tabs');
+    assert.ok(settings.open && settings.controls > 0, 'the first tab should be open and hold controls');
+    assert.ok(settings.accountAsks, 'signed out, the account tab should ask the visitor to log in');
 };

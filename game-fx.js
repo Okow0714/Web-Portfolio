@@ -71,4 +71,5 @@ document.getElementById('board-sound-toggle').addEventListener('click', () => sy
 // The stored level is read in game-audio.js before this runs, so the buttons start correct even
 // when it is not the 3 the markup ships with.
 syncSoundButtons(GameAudio.getLevel());
+document.addEventListener('audioprefchange', e => { if ((e.detail || {}).tool === 'game') syncSoundButtons(GameAudio.getLevel()); });
 

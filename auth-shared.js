@@ -358,8 +358,73 @@ authForm.addEventListener('submit', async (e) => {
         return;
     }
 
+    // An account with two-step verification is signed in only to the first level by the password;
+    // the code from its authenticator app is what lets its data be read (migration 013).
+    if (await needsSecondStep()) { showMfaStep(); return; }
     closeAuthModal();
 });
+
+// ---------------------------------------------------------------------------
+// Two-step verification (2026-11-19): Supabase's built-in TOTP. Settings turns it on; here, after
+// the password or after a provider sign-in, an account that has it is asked for the code. Until it
+// is entered the session is at assurance level aal1, and migration 013's restrictive policies hand
+// that session none of the account's data -- which is what makes the second step real.
+// ---------------------------------------------------------------------------
+const authMfaForm = document.getElementById('auth-mfa-form');
+async function needsSecondStep() {
+    try {
+        const { data, error } = await supabaseClient.auth.mfa.getAuthenticatorAssuranceLevel();
+        return !error && data && data.nextLevel === 'aal2' && data.currentLevel !== 'aal2';
+    } catch (e) { return false; }   // no client, or an old library: no second step to ask for
+}
+function showMfaStep() {
+    if (!authMfaForm) return;
+    [authForm, document.getElementById('auth-oauth'), authModeToggle].forEach(el => el && el.classList.add('hidden'));
+    authMfaForm.classList.remove('hidden');
+    hideEl(document.getElementById('auth-mfa-error'));
+    // by key, not by text: i18n.js rewrites every data-i18n element on a language change
+    const title = document.getElementById('auth-modal-title');
+    title.setAttribute('data-i18n', 'auth.mfaTitle');
+    title.textContent = tr('auth.mfaTitle', 'Two-step verification');
+    if (authModal.classList.contains('hidden')) showEl(authModal);
+    const code = document.getElementById('auth-mfa-code'); code.value = ''; code.focus();
+}
+function hideMfaStep() {
+    if (!authMfaForm) return;
+    authMfaForm.classList.add('hidden');
+    document.getElementById('auth-modal-title').setAttribute('data-i18n', 'auth.logIn');
+    authForm.classList.remove('hidden');
+    authModeToggle.classList.remove('hidden');
+    setAuthMode(authMode);
+}
+if (authMfaForm) {
+    authMfaForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const err = document.getElementById('auth-mfa-error');
+        const code = document.getElementById('auth-mfa-code').value.replace(/\D/g, '');
+        hideEl(err);
+        try {
+            const { data: factors } = await supabaseClient.auth.mfa.listFactors();
+            const factor = factors && (factors.totp || []).find(x => x.status === 'verified');
+            if (!factor) throw new Error('no factor');
+            const { data: ch, error: chErr } = await supabaseClient.auth.mfa.challenge({ factorId: factor.id });
+            if (chErr) throw chErr;
+            const { error: vErr } = await supabaseClient.auth.mfa.verify({ factorId: factor.id, challengeId: ch.id, code });
+            if (vErr) throw vErr;
+        } catch (ex) {
+            err.textContent = tr('auth.mfaWrong', 'That code did not work. Check the app and try the newest code.');
+            showEl(err);
+            return;
+        }
+        hideMfaStep();
+        closeAuthModal();
+    });
+    document.getElementById('auth-mfa-cancel').addEventListener('click', async () => {
+        await supabaseClient.auth.signOut();
+        hideMfaStep();
+    });
+}
+window.khanjpNeedsSecondStep = needsSecondStep;
 
 document.getElementById('auth-logout-btn').addEventListener('click', async () => {
     await supabaseClient.auth.signOut();
@@ -367,12 +432,10 @@ document.getElementById('auth-logout-btn').addEventListener('click', async () =>
 
 // ---------------------------------------------------------------------------
 // Account details modal (view email) + Settings modal (language, delete account)
-// -- split from the single "Your Account" modal this used to be, so the account panel's
-// "Account details" and "Settings" nav items each open something specific rather than both
-// landing on the same everything-in-one-place screen.
+// -- these controls lived in a Settings pop-up until 2026-11-19 and are now on settings.html, the
+// account's own page. The ids did not change, so the same code below drives them there; on every
+// other page they are absent and each block checks before binding.
 // ---------------------------------------------------------------------------
-const accountDetailsModal = document.getElementById('account-details-modal');
-const accountSettingsModal = document.getElementById('account-settings-modal');
 const accountDeleteStartBtn = document.getElementById('account-delete-start-btn');
 const accountDeleteConfirmRow = document.getElementById('account-delete-confirm');
 const accountDeleteInput = document.getElementById('account-delete-input');
@@ -380,6 +443,7 @@ const accountDeleteConfirmBtn = document.getElementById('account-delete-confirm-
 const accountDeleteStatus = document.getElementById('account-delete-status');
 
 function resetAccountDeleteUI() {
+    if (!accountDeleteStartBtn) return;
     hideEl(accountDeleteConfirmRow);
     hideEl(accountDeleteStatus);
     accountDeleteInput.value = '';
@@ -387,16 +451,6 @@ function resetAccountDeleteUI() {
     showEl(accountDeleteStartBtn);
 }
 
-// Settings is offered signed out as well as signed in: with language now in the masthead the
-// only thing behind it for a visitor without an account is the tutorial reset, but hiding a
-// settings screen from people who have not signed up is its own small hostility.
-const accountSettingsBtnAnon = document.getElementById('account-settings-btn-anon');
-if (accountSettingsBtnAnon) {
-    accountSettingsBtnAnon.addEventListener('click', () => {
-        closeAccountMenu();
-        showEl(accountSettingsModal);
-    });
-}
 
 // Furigana style. reading-style.js owns the preference and the transliteration; this is the
 // control, and it re-renders itself on a language change like every other label here.
@@ -486,26 +540,7 @@ if (tutorialResetBtn) {
     });
 }
 
-document.getElementById('account-details-btn').addEventListener('click', () => {
-    if (!currentSession) return;
-    document.getElementById('account-details-email').textContent = currentSession.user.email;
-    showEl(accountDetailsModal);
-});
-document.getElementById('account-details-modal-close').addEventListener('click', () => hideEl(accountDetailsModal));
-accountDetailsModal.addEventListener('click', (e) => {
-    if (e.target === accountDetailsModal) hideEl(accountDetailsModal);
-});
-
-document.getElementById('account-settings-btn').addEventListener('click', () => {
-    if (!currentSession) return;
-    resetAccountDeleteUI();
-    showEl(accountSettingsModal);
-});
-document.getElementById('account-settings-modal-close').addEventListener('click', () => hideEl(accountSettingsModal));
-accountSettingsModal.addEventListener('click', (e) => {
-    if (e.target === accountSettingsModal) hideEl(accountSettingsModal);
-});
-
+if (accountDeleteStartBtn) {
 accountDeleteStartBtn.addEventListener('click', () => {
     hideEl(accountDeleteStartBtn);
     showEl(accountDeleteConfirmRow);
@@ -528,9 +563,9 @@ accountDeleteConfirmBtn.addEventListener('click', async () => {
         return;
     }
     await supabaseClient.auth.signOut();
-    hideEl(accountSettingsModal);
     window.location.href = 'index.html';
 });
+}
 
 // ---------------------------------------------------------------------------
 // Reset study progress — everything the dashboard and the level grids show,
@@ -648,8 +683,6 @@ document.addEventListener('keydown', (e) => {
 // Opening the auth modal, a details/settings modal, or logging out should all close the side
 // panel first rather than leaving it open behind whatever comes next.
 document.getElementById('auth-login-btn').addEventListener('click', closeAccountMenu);
-document.getElementById('account-details-btn').addEventListener('click', closeAccountMenu);
-document.getElementById('account-settings-btn').addEventListener('click', closeAccountMenu);
 document.getElementById('auth-logout-btn').addEventListener('click', closeAccountMenu);
 
 // ---------------------------------------------------------------------------
@@ -676,6 +709,13 @@ function updateAuthUI(session) {
         const initial = session.user.email.charAt(0).toUpperCase();
         accountMenuAvatar.textContent = initial;
         accountMenuProfileAvatar.textContent = initial;
+        paintAvatar(session.user.id);
+        refreshAvatar(session.user.id);
+        // After "Continue with Google", or a reload half-way through, the code may still be owed.
+        if (secondStepAskedFor !== session.access_token) {
+            secondStepAskedFor = session.access_token;
+            needsSecondStep().then(need => { if (need) showMfaStep(); });
+        }
     } else {
         showEl(anonEl);
         hideEl(authedEl);
@@ -685,9 +725,45 @@ function updateAuthUI(session) {
         resetAccountDeleteUI();
         resetProgressUI();
         accountMenuAvatar.innerHTML = GUEST_AVATAR_HTML;
+        paintAvatar(null);
     }
 
     authChangeListeners.forEach(fn => fn(session));
+}
+
+// The profile picture (Settings, migration 013) is a small data URL on the account's own
+// user_settings row. This device keeps a copy so the bookmark shows it at once on every page; the
+// account's copy is fetched behind it and wins. An error (migration not run yet) changes nothing.
+const AVATAR_KEY = 'khanjp-avatar';
+let secondStepAskedFor = null;
+function paintAvatar(uid) {
+    let src = null;
+    try { const c = JSON.parse(localStorage.getItem(AVATAR_KEY) || 'null'); if (c && uid && c.uid === uid) src = c.src; } catch (e) { /* private mode */ }
+    [accountMenuAvatar, accountMenuProfileAvatar].forEach(el => {
+        if (!el) return;
+        el.classList.toggle('has-pic', !!src);
+        el.style.backgroundImage = src ? 'url("' + src.replace(/"/g, '') + '")' : '';
+        if (src) el.textContent = '';
+    });
+    document.dispatchEvent(new CustomEvent('avatarchange', { detail: { src } }));
+}
+window.khanjpSetAvatar = function (uid, src) {
+    try { if (src) localStorage.setItem(AVATAR_KEY, JSON.stringify({ uid, src })); else localStorage.removeItem(AVATAR_KEY); } catch (e) { /* private mode */ }
+    if (!src && currentSession) {
+        const initial = currentSession.user.email.charAt(0).toUpperCase();
+        accountMenuAvatar.textContent = initial; accountMenuProfileAvatar.textContent = initial;
+    }
+    paintAvatar(uid);
+};
+async function refreshAvatar(uid) {
+    if (!window.supabaseReady) return;
+    try {
+        const { data, error } = await supabaseClient.from('user_settings').select('avatar').eq('user_id', uid).maybeSingle();
+        if (error) return;
+        const src = data && data.avatar;
+        let have = null; try { have = JSON.parse(localStorage.getItem(AVATAR_KEY) || 'null'); } catch (e) { /* private mode */ }
+        if ((have && have.uid === uid ? have.src : null) !== (src || null)) window.khanjpSetAvatar(uid, src || null);
+    } catch (e) { /* offline */ }
 }
 
 supabaseClient.auth.getSession().then(({ data }) => updateAuthUI(data.session));
@@ -710,6 +786,9 @@ supabaseClient.auth.onAuthStateChange((_event, session) => updateAuthUI(session)
 // ---------------------------------------------------------------------------
 (function () {
     const PREF_KEYS = { lang: 'site-lang', darker: 'khanjp-darker', readingStyle: 'khanjp-reading-style', theme: 'khanjp-theme', volume: 'khanjp-volume' };
+    // Settings page sound choices (2026-11-19). Stored as they are, under their own keys.
+    const AUDIO_KEYS = ['khanjp-vol-game-music', 'khanjp-vol-game-sfx', 'khanjp-vol-grammar-music', 'khanjp-vol-grammar-sfx',
+        'khanjp-vol-phonetics-sfx', 'khanjp-music-select', 'khanjp-music-flow', 'khanjp-tts-rate'];
     const TOUR_PREFIX = 'khanjp-tour-';
     const SYNCED_KEY = 'khanjp-settings-account';   // which account this device last synced with
     const PUSH_DELAY = 800;
@@ -738,6 +817,9 @@ supabaseClient.auth.onAuthStateChange((_event, session) => updateAuthUI(session)
             const v = ls(PREF_KEYS[name]);
             if (v !== null) s[name] = v;
         });
+        const audio = {};
+        AUDIO_KEYS.forEach(k => { const v = ls(k); if (v !== null) audio[k] = v; });
+        if (Object.keys(audio).length) s.audio = audio;
         return s;
     }
 
@@ -756,6 +838,9 @@ supabaseClient.auth.onAuthStateChange((_event, session) => updateAuthUI(session)
         } finally {
             // the setters fire their change events synchronously; let them land before re-arming
             setTimeout(() => { applying = false; }, 0);
+        }
+        if (remote.audio && typeof remote.audio === 'object') {
+            AUDIO_KEYS.forEach(k => { if (typeof remote.audio[k] === 'string') lsSet(k, remote.audio[k]); });
         }
         // tours are merged, not replaced: seen anywhere is seen
         (remote.tours || []).forEach(k => { if (typeof k === 'string' && k.indexOf(TOUR_PREFIX) === 0) lsSet(k, '1'); });
@@ -784,7 +869,7 @@ supabaseClient.auth.onAuthStateChange((_event, session) => updateAuthUI(session)
         pushTimer = setTimeout(push, PUSH_DELAY);
     }
 
-    ['sitelangchange', 'displayprefchange', 'readingstylechange', 'themechange'].forEach(evt =>
+    ['sitelangchange', 'displayprefchange', 'readingstylechange', 'themechange', 'audioprefchange'].forEach(evt =>
         document.addEventListener(evt, schedulePush));
 
     window.onAuthChange(async (session) => {

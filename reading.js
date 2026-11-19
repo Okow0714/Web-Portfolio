@@ -978,7 +978,8 @@ function speak(text, rate) {
         const utter = new SpeechSynthesisUtterance(TTS_LEAD_IN + text);
         utter.lang = 'ja-JP';
         if (jaVoice) utter.voice = jaVoice;
-        utter.rate = rate;
+        // the page's own rate for this kind of read-aloud, times the speed chosen in Settings
+        utter.rate = rate * (window.KhanAudio ? KhanAudio.ttsRate() : 1);
         utter.onend = endPlayback;
         utter.onerror = endPlayback;
 
@@ -1145,9 +1146,10 @@ async function openGateStream() {
     try {
         // autoGainControl off deliberately: it pulls quiet noise up toward speech level, which
         // is the exact distinction this gate exists to make.
-        stream = await navigator.mediaDevices.getUserMedia({
-            audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: false },
-        });
+        const chosen = window.KhanAudio ? KhanAudio.mic() : '';
+        const audio = { echoCancellation: true, noiseSuppression: true, autoGainControl: false };
+        if (chosen) audio.deviceId = { ideal: chosen };
+        stream = await navigator.mediaDevices.getUserMedia({ audio });
     } catch (e) {
         return null; // no gate, and recognition carries on exactly as it did before
     }
@@ -1405,12 +1407,12 @@ function onSpeechEnd(generation) {
     window.setTimeout(() => {
         if (stale()) return;
         try {
-            recognition.start();
+            startRecognizer();
         } catch (e) {
             window.setTimeout(() => {
                 if (stale()) return;
                 try {
-                    recognition.start();
+                    startRecognizer();
                 } catch (e2) {
                     failListening(window.t('reading.speechStalled'));
                 }
@@ -1443,6 +1445,36 @@ function onSpeechError(event) {
     }
 }
 
+// THE CHOSEN MICROPHONE (Settings, 2026-11-19). Speech recognition listens to the device's default
+// microphone unless start() is handed an audio track, which recent Chrome and Edge accept. So when
+// a microphone has been chosen, its track is opened once and every start and restart is given it.
+// Not on a phone: there one app has the microphone at a time (the voice gate already stands down
+// there for that reason), so a second stream would hand the recogniser silence.
+let chosenMicTrack = null;
+async function openChosenMic() {
+    const id = window.KhanAudio ? KhanAudio.mic() : '';
+    if (!id || !navigator.mediaDevices || (window.matchMedia && window.matchMedia('(pointer: coarse)').matches)) return null;
+    if (chosenMicTrack && chosenMicTrack.readyState === 'live') return chosenMicTrack;
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: { deviceId: { exact: id } } });
+        chosenMicTrack = stream.getAudioTracks()[0] || null;
+    } catch (e) {
+        chosenMicTrack = null;   // the device has gone, or permission was refused: use the default
+    }
+    return chosenMicTrack;
+}
+function closeChosenMic() {
+    if (chosenMicTrack) { try { chosenMicTrack.stop(); } catch (e) { /* already ended */ } chosenMicTrack = null; }
+}
+// start() with the chosen track where there is one. A browser that does not take a track ignores
+// the argument; one that rejects it (a TypeError) is started the old way instead.
+function startRecognizer() {
+    if (chosenMicTrack && chosenMicTrack.readyState === 'live') {
+        try { recognition.start(chosenMicTrack); return; } catch (e) { if (!(e instanceof TypeError)) throw e; }
+    }
+    recognition.start();
+}
+
 function startRecognition() {
     if (!SpeechRecognitionCtor || !recognitionCanStart()) return;
 
@@ -1462,13 +1494,17 @@ function startRecognition() {
     recognition.onend = () => { if (current() && listening) onSpeechEnd(generation); };
     recognition.onerror = (event) => { if (current()) onSpeechError(event); };
 
-    try {
-        recognition.start();
-    } catch (e) {
-        failListening(window.t('reading.speechStalled'));
-        return;
-    }
-    startVoiceGate(); // async, deliberately not awaited: recognition must not wait on it
+    // Opening the chosen microphone is quick but asynchronous; with none chosen it resolves at once.
+    openChosenMic().then(() => {
+        if (!current()) return;
+        try {
+            startRecognizer();
+        } catch (e) {
+            failListening(window.t('reading.speechStalled'));
+            return;
+        }
+        startVoiceGate(); // async, deliberately not awaited: recognition must not wait on it
+    });
 }
 
 function stopRecognition() {
@@ -1485,6 +1521,7 @@ function stopRecognition() {
         recognition = null;
     }
     stopVoiceGate();
+    closeChosenMic();
     clearTimeout(stallTimer);
     hideEl(document.getElementById('hint-popup'));
     updateMicButton();

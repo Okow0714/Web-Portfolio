@@ -23,8 +23,10 @@ const THEMES = ['light', 'dark'];
 // surfaces a visitor can actually reach without an account.
 const SURFACES = [
     { name: 'auth modal', open: ['#account-menu-trigger', '#auth-login-btn'], sel: '#auth-modal', type: true },
-    { name: 'settings modal', open: ['#account-menu-trigger', '#account-settings-btn-anon'], sel: '#account-settings-modal' },
     { name: 'account panel', open: ['#account-menu-trigger'], sel: '#account-menu-panel' },
+    // Settings was a pop-up measured here until 2026-11-19; it is a page now, measured the same way.
+    { name: 'settings: display', page: 'settings.html', open: [], sel: '#set-display' },
+    { name: 'settings: audio', page: 'settings.html', open: ['#set-t-audio'], sel: '#set-audio' },
 ];
 
 function auditFn() {
@@ -102,7 +104,7 @@ module.exports = async function run(page, assert, BASE_URL) {
 
     for (const theme of THEMES) {
         for (const s of SURFACES) {
-            await page.goto(`${BASE_URL}/index.html`, { waitUntil: 'load' });
+            await page.goto(`${BASE_URL}/${s.page || 'index.html'}`, { waitUntil: 'load' });
             // Set the theme the way the masthead switch does; style.css turns data-theme into
             // color-scheme, which is what the light-dark() tokens resolve against.
             await page.evaluate(t => document.documentElement.setAttribute('data-theme', t), theme);

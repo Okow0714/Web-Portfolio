@@ -1,50 +1,56 @@
-// The background track and the four-step volume, for Word Match and Grammar Connect.
+// The background track and its four-step volume, for Word Match and Grammar Connect.
 //
-// Both tools play a looping licensed track under the level select and the board, and both
-// drive it from one speaker button that steps 3 -> 2 -> 1 -> 0. This used to be written out
-// twice, once inside game-audio.js and once inside grammar.js, line for line. It is one
-// factory now; each page makes its own player from it.
+// Both tools play a licensed track under the level select and the board. This used to be written
+// out twice, once inside game-audio.js and once inside grammar.js, line for line. It is one factory
+// now; each page makes its own player from it.
 //
-// A plain HTMLAudioElement, not the Web Audio graph the synthesised effects use: the two mix
-// at the OS level, so the file never needs routing through an AudioContext, and fading
-// .volume gives a fade rather than a hard cut when the sound is switched.
+// A plain HTMLAudioElement, not the Web Audio graph the synthesised effects use: the two mix at the
+// OS level, so the file never needs routing through an AudioContext, and fading .volume gives a
+// fade rather than a hard cut when the sound is switched.
 //
-//   const music = createMusicPlayer({ onLevel(level, gain) { ... } });
-//   music.setTrack('sound/x.mp3');   music.cycleLevel();   music.getLevel();
+//   const music = createMusicPlayer({ tool: 'game' });
+//   music.setTrack('sound/x.mp3', 'select');   // or 'level'
+//   music.setLevel(2);   music.cycleLevel();   music.getLevel();
 //
-// onLevel is optional and is called with the new step and its gain (0..1) whenever the level
-// changes -- Word Match uses it to move its effects' master gain in step with the music.
+// SINCE 2026-11-19 each tool has its OWN music level (audio-prefs.js), and two choices from the
+// Settings page shape when it plays:
+//   * 'select' music can be muted, so the level select is quiet and the music starts with a level;
+//   * 'level' music can play "now and then": the track once, then a quiet spell of one to four
+//     minutes chosen at random, then again -- music that arrives and leaves rather than looping
+//     under every minute of practice.
 window.createMusicPlayer = function (options) {
-    const onLevel = (options && options.onLevel) || function () {};
+    const tool = (options && options.tool) || 'game';
+    const MUSIC_VOLUME = 0.35;            // the element's volume at level 3
+    const QUIET_MIN = 60 * 1000, QUIET_MAX = 240 * 1000;
+    const A = window.KhanAudio;           // audio-prefs.js, loaded first on every page that plays
 
-    // Four levels, not a flag: 0 muted, 3 full. Not evenly spaced because loudness is not
-    // linear -- 0.30 / 0.60 / 1.00 reads as three even steps.
-    const VOLUME_STEPS = [0, 0.30, 0.60, 1];
-    const MAX_LEVEL = VOLUME_STEPS.length - 1;
-    // Shared by every tool that makes a sound (desk-sfx.js reads it too) and synced to the
-    // account by auth-shared.js.
-    const VOLUME_KEY = 'khanjp-volume';
-    const MUSIC_VOLUME = 0.35;   // the element's volume at level 3
-
-    function storedLevel() {
-        try {
-            const v = parseInt(localStorage.getItem(VOLUME_KEY), 10);
-            return (v >= 0 && v <= MAX_LEVEL) ? v : MAX_LEVEL;
-        } catch (e) { return MAX_LEVEL; }   // private mode
-    }
-
-    let level = storedLevel();
+    let level = A ? A.level(tool, 'music') : 3;
+    let context = 'select';
     let el = null;
     let fadeTimer = null;
+    let quietTimer = null;
 
-    function target() { return MUSIC_VOLUME * VOLUME_STEPS[level]; }
+    const gain = n => A ? A.gain(n) : [0, 0.30, 0.60, 1][n];
+    function target() { return MUSIC_VOLUME * gain(level); }
+    function wanted() { return level > 0 && !(context === 'select' && A && A.selectMusic() === 'mute'); }
+    function sparse() { return context === 'level' && A && A.flow() === 'sparse'; }
 
     function element() {
         if (el) return el;
         el = new Audio();
-        el.loop = true;
         el.volume = 0;
         el.preload = 'none';
+        if (A) A.useSpeaker(el);
+        // "Now and then": when a track ends in a level, wait a random while and play it again.
+        el.addEventListener('ended', () => {
+            if (!sparse()) return;
+            clearTimeout(quietTimer);
+            quietTimer = setTimeout(() => {
+                quietTimer = null;
+                if (!sparse() || !wanted()) return;
+                el.currentTime = 0; el.volume = 0; play(); fadeTo(target(), 2500);
+            }, QUIET_MIN + Math.random() * (QUIET_MAX - QUIET_MIN));
+        });
         return el;
     }
 
@@ -67,48 +73,58 @@ window.createMusicPlayer = function (options) {
     }
 
     function play() {
-        // Rejected until the visitor has interacted with the page; the gesture retry below
-        // covers that, so the rejection itself is not an error.
+        // Rejected until the visitor has interacted with the page; the gesture retry below covers
+        // that, so the rejection itself is not an error.
         element().play().catch(() => {});
     }
 
-    // Always restarts the chosen track from its beginning, unless that very track is already
-    // playing -- re-entering the level select must not restart its music.
-    function setTrack(src) {
+    // Starts the chosen track from its beginning, unless that very track is already playing in the
+    // same place -- re-entering the level select must not restart its music.
+    function setTrack(src, where) {
         const a = element();
-        if (a.src === new URL(src, window.location.href).href && !a.paused) return;
+        const nextContext = where === 'level' ? 'level' : 'select';
+        const same = a.src === new URL(src, window.location.href).href && !a.paused && nextContext === context;
+        context = nextContext;
+        a.loop = !sparse();
+        clearTimeout(quietTimer);
+        quietTimer = null;
+        if (same) return;
         a.src = src;
         a.currentTime = 0;
-        if (level > 0) {
-            a.volume = 0;
-            play();
-            fadeTo(target(), 900);
-        }
+        if (wanted()) { a.volume = 0; play(); fadeTo(target(), 900); }
+        else if (!a.paused) fadeTo(0, 400);
     }
 
-    // The single entry point for volume, so the stored preference, the fade and whatever the
-    // page hangs on onLevel can never drift apart.
+    // The single entry point for volume, so the stored preference and the fade cannot drift apart.
     function setLevel(next) {
-        level = Math.max(0, Math.min(MAX_LEVEL, next | 0));
-        try { localStorage.setItem(VOLUME_KEY, String(level)); } catch (e) { /* private mode */ }
-        onLevel(level, VOLUME_STEPS[level]);
-        if (level > 0) {
-            // Re-fades to the new target even when already playing. Nothing to start before a
-            // track has been chosen.
-            if (el && el.src) { play(); fadeTo(target(), 900); }
-        } else if (el) {
-            fadeTo(0, 400);
-        }
+        level = Math.max(0, Math.min(3, next | 0));
+        if (A) A.setLevel(tool, 'music', level);
+        refresh();
         return level;
     }
 
-    // Browsers block the very first play() without a user gesture, and the level select asks
-    // for its track at page load, before any click. Retry once on the first real interaction
-    // so the page is not stuck silent all session.
+    // Re-reads every choice and brings the playing track into line: called after the level
+    // changes and whenever the Settings page (or another control) changes a sound preference.
+    function refresh() {
+        if (A) level = A.level(tool, 'music');
+        if (!el || !el.src) return;
+        el.loop = !sparse();
+        if (wanted()) { if (el.paused && !quietTimer) play(); fadeTo(target(), 900); }
+        else fadeTo(0, 400);
+    }
+    document.addEventListener('audioprefchange', e => {
+        const d = e.detail || {};
+        if (d.speaker !== undefined && el && A) A.useSpeaker(el);
+        if (d.tool === undefined || d.tool === tool) refresh();
+    });
+
+    // Browsers block the very first play() without a user gesture, and the level select asks for
+    // its track at page load, before any click. Retry once on the first real interaction so the
+    // page is not stuck silent all session.
     const kick = () => {
         document.removeEventListener('pointerdown', kick);
         document.removeEventListener('keydown', kick);
-        if (level > 0 && el && el.paused && el.src) play();
+        if (wanted() && el && el.paused && el.src) play();
     };
     document.addEventListener('pointerdown', kick);
     document.addEventListener('keydown', kick);
@@ -117,9 +133,9 @@ window.createMusicPlayer = function (options) {
         setTrack: setTrack,
         setLevel: setLevel,
         getLevel: () => level,
-        gain: () => VOLUME_STEPS[level],
-        // Down first, because someone reaching for the speaker mid-level almost always wants
-        // it quieter.
-        cycleLevel: () => setLevel(level <= 0 ? MAX_LEVEL : level - 1),
+        gain: () => gain(level),
+        // Down first, because someone reaching for the speaker mid-level almost always wants it
+        // quieter.
+        cycleLevel: () => setLevel(level <= 0 ? 3 : level - 1),
     };
 };

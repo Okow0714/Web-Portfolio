@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="mn" data-default-lang="mn">
+
+<head>
+    <meta charset="UTF-8">
+    <title data-en="Settings - Khan Japanese">Тохиргоо — Khan Japanese</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Khan Japanese-ийн хэл, харагдах байдал, дуу, бүртгэлийн тохиргоо.">
+    <!-- An account page: nothing here for a search engine, and nothing to share. -->
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://khan-japanese.org/settings.html">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4a2c3a">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="settings.css">
+    <link rel="stylesheet" href="fonts/fonts.css">
+    <!-- In <head> on purpose: it sets the ground colour before the first paint. -->
+    <script src="display-prefs.js"></script>
+    <!-- Also in <head>, and before every other script: an error in a page script is
+         what it exists to catch. See its own header. -->
+    <script src="error-report.js"></script>
+</head>
+
+<body>
+    <div class="background-animation">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+        <div class="floating-shape shape-4"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header: one row - brand (home link), section nav, account menu -->
+        <!-- chrome:header -->
+    <!-- Nav icon sprite, defined once per page and referenced by <use> below. The drawn set in
+         icons/tools/ is the large-format counterpart: those carry kana and kanji and stop being
+         readable under about 40px, which is why this plainer set exists.
+
+         Every label below sits in its own <span data-i18n>. That is load-bearing -- i18n.js
+         assigns textContent, so an icon inside the translated element is erased on load. -->
+    <svg class="icon-sprite" aria-hidden="true" focusable="false">
+        <symbol id="i-wordmatch" viewBox="0 0 24 24"><path fill="currentColor" d="M12.00 12.00 L9.50 16.33 L4.50 16.33 L2.00 12.00 L4.50 7.67 L9.50 7.67 Z"/><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square" stroke-linejoin="miter" d="M22.00 12.00 L19.50 16.33 L14.50 16.33 L12.00 12.00 L14.50 7.67 L19.50 7.67 Z"/></symbol>
+        <symbol id="i-reader" viewBox="0 0 24 24"><rect fill="currentColor" x="3.5" y="4.6" width="17" height="2"/><rect fill="currentColor" x="3.5" y="9.2" width="11.5" height="2"/><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square" stroke-linejoin="miter" d="M3.5 16.8 q2.6 -3.2 5.2 0 t5.2 0 t5.2 0"/></symbol>
+        <symbol id="i-grammar" viewBox="0 0 24 24"><rect fill="currentColor" x="3" y="3.2" width="18" height="2.2"/><rect fill="currentColor" x="3" y="18.6" width="18" height="2.2"/><rect fill="currentColor" x="11.1" y="9.4" width="1.8" height="5.2"/><path fill="currentColor" d="M12 7 L8.9 10.9 L15.1 10.9 Z"/><path fill="currentColor" d="M12 17 L8.9 13.1 L15.1 13.1 Z"/></symbol>
+        <symbol id="i-vocabulary" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square" stroke-linejoin="miter" d="M5.2 9.6 A7.6 7.6 0 0 1 17.6 7.4"/><path fill="currentColor" d="M3 6.4 L8.3 7.2 L4.6 11.4 Z"/><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square" stroke-linejoin="miter" d="M18.8 14.4 A7.6 7.6 0 0 1 6.4 16.6"/><path fill="currentColor" d="M21 17.6 L15.7 16.8 L19.4 12.6 Z"/></symbol>
+        <symbol id="i-origins" viewBox="0 0 24 24"><rect fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square" stroke-linejoin="miter" x="2" y="8.8" width="6.4" height="6.4"/><rect fill="currentColor" x="9.4" y="11.2" width="3.4" height="1.6"/><path fill="currentColor" d="M15 12 L11.6 9.6 L11.6 14.4 Z"/><circle fill="currentColor" cx="19" cy="12" r="3.4"/></symbol>
+        <symbol id="i-phonetics" viewBox="0 0 24 24"><circle fill="currentColor" cx="12" cy="12" r="4"/><circle fill="currentColor" cx="4.6" cy="5.6" r="2.8"/><circle fill="currentColor" cx="19.4" cy="5.6" r="2.8"/><circle fill="currentColor" cx="12" cy="20.6" r="2.8"/><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square" stroke-linejoin="miter" d="M6.6 7.6 L9.6 10.2 M17.4 7.6 L14.4 10.2"/></symbol>
+        <symbol id="i-path" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square" stroke-linejoin="miter" d="M4 19.5 L10 12.5 L15 15.5 L20 4.5"/><circle fill="currentColor" cx="4" cy="19.5" r="2.6"/><circle fill="currentColor" cx="20" cy="4.5" r="3.2"/></symbol>
+        <symbol id="i-home" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square" stroke-linejoin="miter" d="M2.5 12 L12 4 L21.5 12"/><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square" stroke-linejoin="miter" d="M5 11 V20 H19 V11"/><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square" stroke-linejoin="miter" d="M9.8 20 V15 H14.2 V20"/></symbol>
+        <symbol id="i-dashboard" viewBox="0 0 24 24"><rect fill="currentColor" x="3.5" y="6.2" width="17" height="2"/><rect fill="currentColor" x="3.5" y="11" width="12" height="2"/><rect fill="currentColor" x="3.5" y="15.8" width="7" height="2"/></symbol>
+    </svg>
+
+        <!-- The loading screen. First thing in the page so it paints before anything else, and
+             styled to hold itself back 0.6s (see .khanjp-loader in style.css) so a page that is
+             ready quickly never shows it at all. aria-hidden because it says nothing a screen
+             reader needs: it is a cover over a page that is still being built. -->
+        <div class="khanjp-loader" id="khanjp-loader" aria-hidden="true">
+            <span class="khanjp-loader-seal"><img src="icons/brand-mark.png" alt="" width="64" height="64"></span>
+            <p class="khanjp-loader-name">Khan Japanese</p>
+            <span class="khanjp-loader-bar"><i></i></span>
+        </div>
+
+        <!-- First focusable thing on the page. The loader above it is aria-hidden and takes no
+             pointer or keyboard focus, so this is what a Tab press reaches first. Invisible until
+             focused, then it drops into view over the masthead. Its target is the id "main", which
+             every page's main landmark now carries.
+             Deliberately no literal tag name in this comment: it is copied into thirteen pages, so
+             anything here that looks like markup shows up as a false match to every tool that
+             greps them. One did, within the hour. -->
+        <a class="skip-link" href="#main" data-i18n="a11y.skipToContent">Үндсэн хэсэг рүү шилжих</a>
+
+        <script>
+            (function () {
+                if (window.__khanjpLoader) return;   // the chrome is copied into twelve pages
+                window.__khanjpLoader = true;
+                var done = function () {
+                    var el = document.getElementById('khanjp-loader');
+                    if (!el || el.classList.contains('is-done')) return;
+                    el.classList.add('is-done');
+                    window.setTimeout(function () {
+                        if (el.parentNode) el.parentNode.removeChild(el);
+                    }, 460);
+                };
+                // DOMContentLoaded is the signal that matters here: the big word-data files are
+                // plain "script src" tags at the end of the body, so it does not fire until they are
+                // parsed. Two frames after it, because this listener is registered first and so
+                // runs first -- the page's own listeners, which build the content, run in between.
+                document.addEventListener('DOMContentLoaded', function () {
+                    requestAnimationFrame(function () { requestAnimationFrame(done); });
+                });
+                // And never leave it up: if something throws before the page renders, the page
+                // underneath is still better than a cover that never lifts.
+                window.setTimeout(done, 8000);
+            })();
+        </script>
+        <div class="site-header-wrap">
+            <header class="header">
+                <a href="index.html" class="site-brand" aria-label="Khan Japanese, Japanese study tools: home">
+                    <span class="brand-seal" aria-hidden="true"><img src="icons/brand-mark.png" alt=""></span>
+                    <span class="brand-text">
+                        <span class="brand-name">Khan Japanese</span>
+                        <span class="brand-role">Japanese study tools</span>
+                    </span>
+                </a>
+
+                <nav class="header-nav" id="site-nav" aria-label="Main">
+                    <!-- Drawer-only: on a phone the brand opens this list instead of going home,
+                         so Home lives here; Study Path was only ever left out of the bar for room. -->
+                    <div class="nav-item nav-drawer-only">
+                        <a href="index.html" class="nav-trigger"><svg class="nav-ico nav-ico-top" aria-hidden="true"><use href="#i-home"/></svg><span data-i18n="nav.home">Home</span></a>
+                    </div>
+                    <!-- One tab per tool, in the home page's order (2026-11-16; this replaced the Practice and
+                         Dictionary menus). On a wide screen each is a folder tab in its tool's own colour -- see
+                         .nav-tool in style.css; in the phone drawer they are ordinary rows. build-chrome.js marks
+                         the open one by matching href="page" class="nav-trigger nav-tool" -- keep that attribute order.
+                         The names stay in the markup even when a narrow bar shows only icons: they are the
+                         accessible names and the tooltips. -->
+                    <div class="nav-item nav-tool-item"><a href="origins.html" class="nav-trigger nav-tool"><svg class="nav-ico" aria-hidden="true"><use href="#i-origins"/></svg><span data-i18n="nav.kanaOrigins">Kana Origins</span></a></div>
+                    <div class="nav-item nav-tool-item"><a href="game.html" class="nav-trigger nav-tool"><svg class="nav-ico" aria-hidden="true"><use href="#i-wordmatch"/></svg><span data-i18n="nav.wordGame">Word Match</span></a></div>
+                    <div class="nav-item nav-tool-item"><a href="phonetics.html" class="nav-trigger nav-tool"><svg class="nav-ico" aria-hidden="true"><use href="#i-phonetics"/></svg><span data-i18n="nav.phoneticsFamily">Phonetics Family</span></a></div>
+                    <div class="nav-item nav-tool-item"><a href="grammar.html" class="nav-trigger nav-tool"><svg class="nav-ico" aria-hidden="true"><use href="#i-grammar"/></svg><span data-i18n="nav.grammarConnect">Grammar Connect</span></a></div>
+                    <div class="nav-item nav-tool-item"><a href="reading.html" class="nav-trigger nav-tool"><svg class="nav-ico" aria-hidden="true"><use href="#i-reader"/></svg><span data-i18n="nav.dokkaiReader">Dokkai Reader</span></a></div>
+                    <div class="nav-item nav-tool-item"><a href="dictionary.html" class="nav-trigger nav-tool"><svg class="nav-ico" aria-hidden="true"><use href="#i-vocabulary"/></svg><span data-i18n="nav.dictionary">Dictionary</span></a></div>
+                    <div class="nav-item nav-drawer-only">
+                        <a href="path.html" class="nav-trigger"><svg class="nav-ico nav-ico-top" aria-hidden="true"><use href="#i-path"/></svg><span data-i18n="nav.studyPath">Study Path</span></a>
+                    </div>
+                    <!-- Drawer-only, last row: on a phone the footer is not shown (the tab bar owns
+                         the bottom edge), so what it carried lives here. The study tools are the
+                         drawer itself; this row holds the rest: About Me and the legal links. -->
+                    <div class="nav-item nav-drawer-only nav-more">
+                        <button type="button" class="nav-trigger nav-more-toggle" aria-expanded="false" aria-controls="nav-more-list"><span data-i18n="nav.portfolio">About Me</span><span class="nav-more-caret" aria-hidden="true">&#9662;</span></button>
+                        <div class="nav-more-list" id="nav-more-list">
+                            <a href="about.html#portfolio" data-i18n="footer.projectsLearning">Projects &amp; learning</a>
+                            <a href="about.html#qualifications" data-i18n="nav.qualifications">Qualifications</a>
+                            <a href="about.html#resume" data-i18n="nav.resume">Resume</a>
+                            <a href="about.html#contact" data-i18n="footer.getInTouch">Get in touch</a>
+                            <a href="credits.html" data-i18n="footer.dataLicensing">Data &amp; licensing</a>
+                            <a href="privacy.html" data-i18n="footer.privacyPolicy">Privacy Policy</a>
+                            <a href="terms.html" data-i18n="footer.termsOfService">Terms of Service</a>
+                            <p class="nav-more-copy">&copy; 2026 Khan Japanese</p>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Backdrop for the phone drawer. Inert until body.nav-drawer-open. -->
+                <div class="nav-scrim" id="nav-scrim"></div>
+
+                <!-- The phone drawer: the brand opens it, a link or the scrim closes it, and the About
+                     row at its foot folds open. (Until 2026-11-16 this also opened the two menu
+                     groups on a tap; the groups are gone, replaced by one link per tool.) Guarded
+                     because the chrome is copied into every page and must bind once. -->
+                <script>
+                    (function () {
+                        if (window.__khanjpNav) return;
+                        window.__khanjpNav = true;
+
+                        // Below 860 the nav is a drawer (see style.css) and the brand opens it rather
+                        // than going home; Home is the drawer's first link. Above 860 the nav is the
+                        // row of tool tabs and needs nothing from here.
+                        var isDrawer = function () { return window.matchMedia('(max-width: 860px)').matches; };
+                        var brand = document.querySelector('.site-brand');
+
+                        var closeGroups = function () {
+                            var open = document.querySelectorAll('.nav-item.open');
+                            for (var i = 0; i < open.length; i++) open[i].classList.remove('open');
+                        };
+                        var setDrawer = function (open) {
+                            document.body.classList.toggle('nav-drawer-open', open);
+                            if (brand) brand.setAttribute('aria-expanded', String(open));
+                        };
+                        if (brand && isDrawer()) {
+                            brand.setAttribute('aria-controls', 'site-nav');
+                            brand.setAttribute('aria-expanded', 'false');
+                        }
+
+                        document.addEventListener('click', function (e) {
+                            var hit = function (sel) { return e.target.closest && e.target.closest(sel); };
+                            if (hit('.site-brand') && isDrawer()) {
+                                e.preventDefault();
+                                setDrawer(!document.body.classList.contains('nav-drawer-open'));
+                                return;
+                            }
+                            var more = hit('.nav-more-toggle');
+                            if (more) {
+                                var box = more.parentNode;
+                                var nowOpen = !box.classList.contains('open');
+                                box.classList.toggle('open', nowOpen);
+                                more.setAttribute('aria-expanded', String(nowOpen));
+                                // the row sits at the bottom of a scrolling drawer, so what it
+                                // opens would otherwise appear below the fold
+                                var nav = document.getElementById('site-nav');
+                                if (nowOpen && nav) nav.scrollTop = nav.scrollHeight;
+                                return;
+                            }
+                            if (hit('.nav-scrim')) { setDrawer(false); return; }
+                            if (hit('.header-nav a')) { setDrawer(false); return; }   // leaving anyway
+                            closeGroups();   // a click anywhere else folds the About row again
+                        });
+
+                        document.addEventListener('keydown', function (e) {
+                            if (e.key !== 'Escape') return;
+                            closeGroups();
+                            setDrawer(false);
+                        });
+
+                        // Rotating to landscape can cross the breakpoint with the drawer open.
+                        window.addEventListener('resize', function () {
+                            if (!isDrawer()) {
+                                setDrawer(false);
+                                if (brand) brand.removeAttribute('aria-expanded');
+                            } else if (brand && !brand.hasAttribute('aria-expanded')) {
+                                brand.setAttribute('aria-controls', 'site-nav');
+                                brand.setAttribute('aria-expanded', 'false');
+                            }
+                        });
+                    })();
+                </script>
+
+                <!-- Language lives here, not behind the account menu: it is the one setting a
+                     visitor needs before they have decided whether to sign up at all. -->
+                <button type="button" class="lang-switch" id="lang-switch" data-lang-switch>
+                    <span class="lang-switch-flag" aria-hidden="true"><svg viewBox="0 0 20 14"><rect width="20" height="14" fill="#012169"/><path d="M0 0 L20 14 M20 0 L0 14" stroke="#fff" stroke-width="2.8"/><path d="M0 0 L20 14 M20 0 L0 14" stroke="#C8102E" stroke-width="1.5"/><path d="M10 0 V14 M0 7 H20" stroke="#fff" stroke-width="4.4"/><path d="M10 0 V14 M0 7 H20" stroke="#C8102E" stroke-width="2.4"/></svg></span><span class="lang-switch-code"></span>
+                </button>
+
+                <!-- Light/dark sits beside the language switch for the same reason: a visitor on a
+                     phone at night needs it before deciding whether to sign up, and it must not be
+                     buried in the account menu. Three states -- follow the device, light, dark --
+                     cycled by this one button; see display-prefs.js. -->
+                <button type="button" class="lang-switch theme-switch" id="theme-switch">
+                    <span class="theme-switch-icon" aria-hidden="true">◐</span>
+                    <!-- Desktop only (style.css): the round mark a seal stamp leaves, with the sun in its
+                         middle; a bite masked across the sun makes the crescent. Drawn by a script once,
+                         2026-11-19 -- a wavy rim, two rings, fourteen small stars. -->
+                    <svg class="im" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><defs><mask id="im-bite"><rect width="48" height="48" fill="#fff"/><circle class="im-bite" cx="24" cy="24" r="8.2" fill="#000"/></mask></defs><path fill-rule="evenodd" d="M47.9 24L47.64 24.83L46.95 25.6L46.08 26.32L45.34 27L44.98 27.7L45.08 28.48L45.54 29.37L46.11 30.34L46.49 31.31L46.46 32.17L45.93 32.86L45.01 33.36L43.95 33.73L43.03 34.12L42.45 34.65L42.27 35.42L42.4 36.41L42.61 37.52L42.64 38.56L42.31 39.36L41.58 39.83L40.55 39.98L39.42 39.97L38.42 40.01L37.69 40.32L37.27 40.98L37.05 41.96L36.86 43.07L36.53 44.06L35.95 44.7L35.1 44.88L34.08 44.67L33.03 44.28L32.07 43.98L31.29 44.02L30.66 44.49L30.12 45.34L29.56 46.32L28.92 47.13L28.15 47.54L27.29 47.42L26.4 46.88L25.55 46.14L24.75 45.54L24 45.3L23.25 45.54L22.45 46.14L21.6 46.88L20.71 47.42L19.85 47.54L19.08 47.13L18.44 46.32L17.88 45.34L17.34 44.49L16.71 44.02L15.93 43.98L14.97 44.28L13.92 44.67L12.9 44.88L12.05 44.7L11.47 44.06L11.14 43.07L10.95 41.96L10.73 40.98L10.31 40.32L9.58 40.01L8.58 39.97L7.45 39.98L6.42 39.83L5.69 39.36L5.36 38.56L5.39 37.52L5.6 36.41L5.73 35.42L5.55 34.65L4.97 34.12L4.05 33.73L2.99 33.36L2.07 32.86L1.54 32.17L1.51 31.31L1.89 30.34L2.46 29.37L2.92 28.48L3.02 27.7L2.66 27L1.92 26.32L1.05 25.6L0.36 24.83L0.1 24L0.36 23.17L1.05 22.4L1.92 21.68L2.66 21L3.02 20.3L2.92 19.52L2.46 18.63L1.89 17.66L1.51 16.69L1.54 15.83L2.07 15.14L2.99 14.64L4.05 14.27L4.97 13.88L5.55 13.35L5.73 12.58L5.6 11.59L5.39 10.48L5.36 9.44L5.69 8.64L6.42 8.17L7.45 8.02L8.58 8.03L9.58 7.99L10.31 7.68L10.73 7.02L10.95 6.04L11.14 4.93L11.47 3.94L12.05 3.3L12.9 3.12L13.92 3.33L14.97 3.72L15.93 4.02L16.71 3.98L17.34 3.51L17.88 2.66L18.44 1.68L19.08 0.87L19.85 0.46L20.71 0.58L21.6 1.12L22.45 1.86L23.25 2.46L24 2.7L24.75 2.46L25.55 1.86L26.4 1.12L27.29 0.58L28.15 0.46L28.92 0.87L29.56 1.68L30.12 2.66L30.66 3.51L31.29 3.98L32.07 4.02L33.03 3.72L34.08 3.33L35.1 3.12L35.95 3.3L36.53 3.94L36.86 4.93L37.05 6.04L37.27 7.02L37.69 7.68L38.42 7.99L39.42 8.03L40.55 8.02L41.58 8.17L42.31 8.64L42.64 9.44L42.61 10.48L42.4 11.59L42.27 12.58L42.45 13.35L43.03 13.88L43.95 14.27L45.01 14.64L45.93 15.14L46.46 15.83L46.49 16.69L46.11 17.66L45.54 18.63L45.08 19.52L44.98 20.3L45.34 21L46.08 21.68L46.95 22.4L47.64 23.17ZM43.4 24A19.4 19.4 0 1 0 4.6 24A19.4 19.4 0 1 0 43.4 24Z"/><circle class="im-ring" cx="24" cy="24" r="18"/><path d="M24 6.9L24.45 7.95L25.5 8.4L24.45 8.85L24 9.9L23.55 8.85L22.5 8.4L23.55 7.95ZM30.77 8.44L31.22 9.49L32.27 9.94L31.22 10.39L30.77 11.44L30.32 10.39L29.27 9.94L30.32 9.49ZM36.2 12.77L36.65 13.82L37.7 14.27L36.65 14.72L36.2 15.77L35.75 14.72L34.7 14.27L35.75 13.82ZM39.21 19.03L39.66 20.08L40.71 20.53L39.66 20.98L39.21 22.03L38.76 20.98L37.71 20.53L38.76 20.08ZM39.21 25.97L39.66 27.02L40.71 27.47L39.66 27.92L39.21 28.97L38.76 27.92L37.71 27.47L38.76 27.02ZM36.2 32.23L36.65 33.28L37.7 33.73L36.65 34.18L36.2 35.23L35.75 34.18L34.7 33.73L35.75 33.28ZM30.77 36.56L31.22 37.61L32.27 38.06L31.22 38.51L30.77 39.56L30.32 38.51L29.27 38.06L30.32 37.61ZM24 38.1L24.45 39.15L25.5 39.6L24.45 40.05L24 41.1L23.55 40.05L22.5 39.6L23.55 39.15ZM17.23 36.56L17.68 37.61L18.73 38.06L17.68 38.51L17.23 39.56L16.78 38.51L15.73 38.06L16.78 37.61ZM11.8 32.23L12.25 33.28L13.3 33.73L12.25 34.18L11.8 35.23L11.35 34.18L10.3 33.73L11.35 33.28ZM8.79 25.97L9.24 27.02L10.29 27.47L9.24 27.92L8.79 28.97L8.34 27.92L7.29 27.47L8.34 27.02ZM8.79 19.03L9.24 20.08L10.29 20.53L9.24 20.98L8.79 22.03L8.34 20.98L7.29 20.53L8.34 20.08ZM11.8 12.77L12.25 13.82L13.3 14.27L12.25 14.72L11.8 15.77L11.35 14.72L10.3 14.27L11.35 13.82ZM17.23 8.44L17.68 9.49L18.73 9.94L17.68 10.39L17.23 11.44L16.78 10.39L15.73 9.94L16.78 9.49Z"/><circle class="im-ring" cx="24" cy="24" r="12.8"/><circle cx="24" cy="24" r="8.2" mask="url(#im-bite)"/></svg>
+                </button>
+
+                <div class="account-menu" id="account-menu">
+                    <button class="account-menu-trigger" id="account-menu-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Account menu">
+                        <span id="account-menu-avatar">
+                            <!-- Decorative: the button around it already carries aria-label="Account
+                                 menu". Without aria-hidden a screen reader announces the graphic as
+                                 well, so the control is read twice. -->
+                            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9Zm0 2c-4 0-8 2-8 5v2h16v-2c0-3-4-5-8-5Z"/></svg>
+                        </span>
+                    </button>
+                    <div class="account-menu-scrim" id="account-menu-scrim"></div>
+                    <div class="account-menu-panel" id="account-menu-panel">
+                        <div id="auth-anon">
+                            <p class="account-menu-note" data-i18n="auth.loginHint">Log in to save your progress across visits.</p>
+                            <button id="auth-login-btn" class="auth-btn account-menu-cta" type="button" data-i18n="auth.logIn">Log In</button>
+                            <div class="account-menu-nav">
+                                <a href="settings.html" class="account-menu-nav-item" id="account-settings-btn-anon"><span data-i18n="account.settings">Settings</span></a>
+                            </div>
+                        </div>
+                        <div id="auth-authed" class="hidden">
+                            <div class="account-menu-profile">
+                                <div class="account-menu-profile-avatar" id="account-menu-profile-avatar"></div>
+                                <div class="account-menu-profile-text">
+                                    <p class="account-menu-label" data-i18n="auth.signedInAs">Signed in as</p>
+                                    <p id="auth-user-email" class="auth-user-email"></p>
+                                </div>
+                            </div>
+                            <div class="account-menu-nav">
+                                <a href="dashboard.html" class="account-menu-nav-item"><svg class="acct-ico" aria-hidden="true"><use href="#i-dashboard"/></svg><span data-i18n="dash.titleSub">Dashboard</span></a>
+                                <a href="settings.html" class="account-menu-nav-item" id="account-settings-btn"><span data-i18n="account.settings">Settings</span></a>
+                            </div>
+                            <button id="auth-logout-btn" class="account-menu-logout" type="button" data-i18n="auth.logOut">Log Out</button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+
+        <!-- Auth Modal -->
+        <!-- role/aria-modal so assistive tech announces this as a dialog and treats the page behind
+             it as inert. The focus trap that makes that true in practice lives in auth-shared.js,
+             hooked into showEl/hideEl so all three modals get it. -->
+        <div id="auth-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
+            <div class="modal-card">
+                <button id="auth-modal-close" class="modal-close" type="button" aria-label="Close">&times;</button>
+                <h3 id="auth-modal-title" data-i18n="auth.logIn">Log In</h3>
+                <div id="auth-oauth" class="auth-oauth hidden"></div>
+                <form id="auth-form">
+                    <label for="auth-email" data-i18n="auth.email">Email</label>
+                    <input type="email" id="auth-email" required autocomplete="email">
+                    <label for="auth-password" data-i18n="auth.password">Password</label>
+                    <input type="password" id="auth-password" required autocomplete="current-password" minlength="6">
+                    <button type="button" id="auth-forgot-btn" class="auth-forgot-link" data-i18n="auth.forgotPassword">Forgot password?</button>
+                    <div id="auth-terms-row" class="auth-terms-row hidden">
+                        <label class="auth-checkbox-label">
+                            <input type="checkbox" id="auth-terms-checkbox">
+                            <span data-i18n-html="auth.agreeToTerms">I agree to the <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a></span>
+                        </label>
+                    </div>
+                    <p id="auth-error" class="auth-error hidden"></p>
+                    <button type="submit" id="auth-submit-btn" class="auth-btn" data-i18n="auth.logIn">Log In</button>
+                </form>
+                <button id="auth-mode-toggle" class="auth-mode-toggle" type="button" data-i18n="auth.needAccount">Need an account? Sign up</button>
+                <!-- Two-step verification (2026-11-19): after the password, or after "Continue with
+                     Google", an account that has turned it on is asked for the 6-digit code from its
+                     authenticator app. auth-shared.js shows this and hides the form above. -->
+                <form id="auth-mfa-form" class="auth-mfa hidden">
+                    <p class="auth-mfa-note" data-i18n="auth.mfaNote">Enter the 6-digit code from your authenticator app.</p>
+                    <label for="auth-mfa-code" data-i18n="auth.mfaCode">Code</label>
+                    <input type="text" id="auth-mfa-code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required>
+                    <p id="auth-mfa-error" class="auth-error hidden"></p>
+                    <button type="submit" class="auth-btn" data-i18n="auth.mfaVerify">Verify</button>
+                    <button type="button" id="auth-mfa-cancel" class="auth-mode-toggle" data-i18n="auth.mfaCancel">Use another account</button>
+                </form>
+            </div>
+        </div>
+        <!-- /chrome:header -->
+
+        <main tabindex="-1" id="main" class="settings-main">
+            <h1 class="set-title" data-i18n="account.settings">Тохиргоо</h1>
+
+            <!-- Three tabs, cut like the masthead's: a full trapezoid each, the slant computed from
+                 the height (settings.css). Arrow keys move between them; the URL hash remembers one. -->
+            <div class="set-tabs" role="tablist" aria-labelledby="set-tablist-label">
+                <span id="set-tablist-label" class="sr-only" data-i18n="account.settings">Тохиргоо</span>
+                <button class="set-tab" role="tab" id="set-t-display" aria-controls="set-display" aria-selected="true" style="--i:3" data-i18n="set.tabDisplay">Хэл ба харагдах байдал</button>
+                <button class="set-tab" role="tab" id="set-t-audio" aria-controls="set-audio" aria-selected="false" tabindex="-1" style="--i:2" data-i18n="set.tabAudio">Дуу ба яриа</button>
+                <button class="set-tab" role="tab" id="set-t-account" aria-controls="set-account" aria-selected="false" tabindex="-1" style="--i:1" data-i18n="set.tabAccount">Бүртгэл ба холбоо барих</button>
+            </div>
+
+            <!-- ============================================================ Language and display -->
+            <section class="set-panel" role="tabpanel" id="set-display" aria-labelledby="set-t-display" tabindex="0">
+                <div class="set-row">
+                    <div class="set-text"><h2 class="set-label" data-i18n="set.lang">Сайтын хэл</h2><p data-i18n="set.langNote">Толгой хэсгийн маркаас ч сольж болно.</p></div>
+                    <div class="set-seg" role="group" aria-labelledby="set-lang-l" id="set-lang">
+                        <span id="set-lang-l" class="sr-only" data-i18n="set.lang">Сайтын хэл</span>
+                        <button type="button" data-v="mn" lang="mn">Монгол</button><button type="button" data-v="en" lang="en">English</button>
+                    </div>
+                </div>
+                <div class="set-row">
+                    <div class="set-text"><h2 class="set-label" data-i18n="set.theme">Өдөр эсвэл шөнө</h2><p data-i18n="set.themeNote">Төхөөрөмжийг дагавал утас, компьютерийнхээ тохиргоотой хамт солигдоно.</p></div>
+                    <div class="set-seg" role="group" aria-label="Өдөр эсвэл шөнө" data-aria="set.theme" id="set-theme">
+                        <button type="button" data-v="" data-i18n="set.themeDevice">Төхөөрөмжийг дагах</button><button type="button" data-v="light" data-i18n="set.themeDay">Өдөр</button><button type="button" data-v="dark" data-i18n="set.themeNight">Шөнө</button>
+                    </div>
+                </div>
+                <div class="set-row">
+                    <div class="set-text"><h2 class="set-label" data-i18n="account.darkerLabel">Илүү бараан загвар</h2><p data-i18n="account.darkerNote">Бараан хуудсууд болон сайтын толгойг ижил өнгөнийх нь шөнийн хувилбар руу гүнзгийрүүлнэ. Аль хэдийн цайвар хуудсууд өөрийн өнгөө хадгална.</p></div>
+                    <!-- auth-shared.js drives this one by id, as it did in the old pop-up -->
+                    <button type="button" class="set-btn set-quiet" id="darker-toggle-btn" aria-pressed="false" data-i18n="account.darkerOff">Унтраалттай</button>
+                </div>
+                <div class="set-row">
+                    <div class="set-text"><h2 class="set-label" data-i18n="account.readingLabel">Фуригана юугаар харагдах</h2><p data-i18n="account.readingNote">Ханзны дээр гарах жижиг уншлага. Кана сурч байгаа бол тустай — япон бичвэр өөрөө огт өөрчлөгдөхгүй.</p>
+                        <p class="set-sample" aria-hidden="true"><ruby>日本語<rt>にほんご</rt></ruby>を<ruby>勉強<rt>べんきょう</rt></ruby>する</p></div>
+                    <!-- auth-shared.js drives these by data-reading-style, as it did in the old pop-up -->
+                    <div class="set-seg" role="group" aria-label="Фуригана юугаар харагдах" data-aria="account.readingLabel">
+                        <button type="button" data-reading-style="kana" lang="ja">あい</button><button type="button" data-reading-style="romaji">romaji</button><button type="button" data-reading-style="cyrillic">кирилл</button>
+                    </div>
+                </div>
+                <div class="set-row">
+                    <div class="set-text"><h2 class="set-label" data-i18n="account.tutorialsLabel">Хуудасны заавар</h2><p data-i18n="account.tutorialsNote">Хэрэгсэл бүр дээр анх ороход гарч ирдэг заавар. Дахин үзвэл тэмдэглэгээний тайлбар ч мөн эргэж гарна.</p></div>
+                    <button type="button" class="set-btn" id="tutorial-reset-btn" data-i18n="account.tutorialsReset">Дахин үзүүлэх</button>
+                </div>
+            </section>
+
+            <!-- ============================================================ Audio and speech -->
+            <section class="set-panel" role="tabpanel" id="set-audio" aria-labelledby="set-t-audio" tabindex="0" hidden>
+                <h2 class="set-h" data-i18n="set.volByTool">Хэрэгсэл тус бүрийн дуу</h2>
+                <div class="set-row">
+                    <div class="set-text"><h3 class="set-label" data-i18n="nav.wordGame">Үг холбох дасгал</h3><p data-i18n="set.gameNote">Хөгжим ба картын дууг тусад нь тохируулна.</p></div>
+                    <div class="set-mix">
+                        <span data-i18n="set.music">Хөгжим</span><span class="set-seg" role="group" data-vol="game:music" aria-label="Үг холбох дасгал: Хөгжим"><button type="button" data-v="0" data-i18n="set.step0">Унтраах</button><button type="button" data-v="1" data-i18n="set.step1">Бага</button><button type="button" data-v="2" data-i18n="set.step2">Дунд</button><button type="button" data-v="3" data-i18n="set.step3">Их</button></span>
+                        <span data-i18n="set.sounds">Дуу</span><span class="set-seg" role="group" data-vol="game:sfx" aria-label="Үг холбох дасгал: Дуу"><button type="button" data-v="0" data-i18n="set.step0">Унтраах</button><button type="button" data-v="1" data-i18n="set.step1">Бага</button><button type="button" data-v="2" data-i18n="set.step2">Дунд</button><button type="button" data-v="3" data-i18n="set.step3">Их</button></span>
+                    </div>
+                </div>
+                <div class="set-row">
+                    <div class="set-text"><h3 class="set-label" data-i18n="nav.grammarConnect">Дүрэм холбох</h3><p data-i18n="set.grammarNote">Хөгжим ба ширээний дууг тусад нь тохируулна.</p></div>
+                    <div class="set-mix">
+                        <span data-i18n="set.music">Хөгжим</span><span class="set-seg" role="group" data-vol="grammar:music" aria-label="Дүрэм холбох: Хөгжим"><button type="button" data-v="0" data-i18n="set.step0">Унтраах</button><button type="button" data-v="1" data-i18n="set.step1">Бага</button><button type="button" data-v="2" data-i18n="set.step2">Дунд</button><button type="button" data-v="3" data-i18n="set.step3">Их</button></span>
+                        <span data-i18n="set.sounds">Дуу</span><span class="set-seg" role="group" data-vol="grammar:sfx" aria-label="Дүрэм холбох: Дуу"><button type="button" data-v="0" data-i18n="set.step0">Унтраах</button><button type="button" data-v="1" data-i18n="set.step1">Бага</button><button type="button" data-v="2" data-i18n="set.step2">Дунд</button><button type="button" data-v="3" data-i18n="set.step3">Их</button></span>
+                    </div>
+                </div>
+                <div class="set-row">
+                    <div class="set-text"><h3 class="set-label" data-i18n="nav.phoneticsFamily">Дуудлагын бүлэг</h3><p data-i18n="set.phonNote">Зөвхөн ширээний дуу; энэ хэрэгсэлд хөгжим байхгүй.</p></div>
+                    <div class="set-mix">
+                        <span data-i18n="set.sounds">Дуу</span><span class="set-seg" role="group" data-vol="phonetics:sfx" aria-label="Дуудлагын бүлэг: Дуу"><button type="button" data-v="0" data-i18n="set.step0">Унтраах</button><button type="button" data-v="1" data-i18n="set.step1">Бага</button><button type="button" data-v="2" data-i18n="set.step2">Дунд</button><button type="button" data-v="3" data-i18n="set.step3">Их</button></span>
+                    </div>
+                </div>
+
+                <h2 class="set-h" data-i18n="set.musicH">Хөгжим</h2>
+                <div class="set-row">
+                    <div class="set-text"><h3 class="set-label" data-i18n="set.select">Түвшин сонгох үед</h3><p data-i18n="set.selectNote">Түвшин сонгох дэлгэцийг чимээгүй байлгаж, хөгжмийг түвшин эхлэхэд эхлүүлнэ.</p></div>
+                    <div class="set-seg" role="group" aria-label="Түвшин сонгох үед" data-aria="set.select" id="set-select">
+                        <button type="button" data-v="play" data-i18n="set.selectPlay">Тоглуулах</button><button type="button" data-v="mute" data-i18n="set.selectMute">Чимээгүй</button>
+                    </div>
+                </div>
+                <div class="set-row">
+                    <div class="set-text"><h3 class="set-label" data-i18n="set.flow">Түвшний үеэр</h3><p id="set-flow-note" data-i18n="set.flowLoopNote">Аяыг эхнээс нь дуустал тоглуулаад дахин эхлүүлнэ.</p></div>
+                    <div class="set-seg" role="group" aria-label="Түвшний үеэр" data-aria="set.flow" id="set-flow">
+                        <button type="button" data-v="loop" data-i18n="set.flowLoop">Үргэлж</button><button type="button" data-v="sparse" data-i18n="set.flowSparse">Хааяа</button>
+                    </div>
+                </div>
+
+                <h2 class="set-h" data-i18n="set.micH">Микрофон (оролт)</h2>
+                <div class="set-row">
+                    <div class="set-text"><h3 class="set-label"><label for="set-mic" data-i18n="set.mic">Микрофон</label></h3><p data-i18n="set.micNote">Чанга уншихад тань Уншлагын дадлага сонсох микрофон. Хөтөч микрофон ашиглахыг зөвшөөрсний дараа төхөөрөмжүүдийн нэр гарч ирнэ.</p>
+                        <div class="set-meter" aria-hidden="true"><i id="set-meter"></i></div>
+                        <p class="set-status" id="set-mic-msg" aria-live="polite" data-i18n="set.micIdle">Шалгах товчийг дараад ярина уу: зурвас сонгосон микрофоны сонссоныг харуулна.</p></div>
+                    <div class="set-dev">
+                        <select class="set-sel" id="set-mic"><option value="" data-i18n="set.deviceDefault">Төхөөрөмжийн үндсэн</option></select>
+                        <span class="set-line"><button type="button" class="set-btn set-quiet" id="set-mic-allow" data-i18n="set.showDevices">Төхөөрөмжүүдээ харуулах</button><button type="button" class="set-btn" id="set-mic-test" data-i18n="set.test">Шалгах</button></span>
+                    </div>
+                </div>
+                <h2 class="set-h" data-i18n="set.spkH">Чанга яригч (гаралт)</h2>
+                <div class="set-row">
+                    <div class="set-text"><h3 class="set-label"><label for="set-spk" data-i18n="set.spk">Чанга яригч эсвэл чихэвч</label></h3><p data-i18n="set.spkNote">Хөгжим болон Үг холбох дасгал, Дүрэм холбох, Дуудлагын бүлгийн дуу хаанаас гарах вэ.</p>
+                        <p class="set-status" id="set-spk-msg" aria-live="polite"></p></div>
+                    <div class="set-dev">
+                        <select class="set-sel" id="set-spk"><option value="" data-i18n="set.deviceDefault">Төхөөрөмжийн үндсэн</option></select>
+                        <button type="button" class="set-btn" id="set-ping" data-i18n="set.ping">Туршилтын дуу тоглуулах</button>
+                    </div>
+                </div>
+                <p class="set-limit" data-i18n="set.limit">Сайт биш, хөтөч шийддэг хоёр зүйл бий: Уншлагын дадлагын чанга унших дуу үргэлж компьютерийн үндсэн чанга яригчаас гарна; микрофон сонгоход компьютер дээрх Chrome эсвэл Edge-ийн шинэ хувилбар хэрэгтэй, бусад хөтөч дээр үндсэн микрофоныг ашиглана.</p>
+                <div class="set-row">
+                    <div class="set-text"><h3 class="set-label" data-i18n="set.tts">Чанга унших хурд</h3><p data-i18n="set.ttsNote">Өгүүлбэрийг сонсохыг хүсэхэд Уншлагын дадлага хэр хурдан ярих вэ.</p></div>
+                    <div class="set-seg" role="group" aria-label="Чанга унших хурд" data-aria="set.tts" id="set-tts">
+                        <button type="button" data-v="slow" data-i18n="set.ttsSlow">Удаан</button><button type="button" data-v="normal" data-i18n="set.ttsNormal">Хэвийн</button><button type="button" data-v="fast" data-i18n="set.ttsFast">Хурдан</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================================ Account and contact -->
+            <section class="set-panel" role="tabpanel" id="set-account" aria-labelledby="set-t-account" tabindex="0" hidden>
+                <div class="set-signedout" id="set-signedout">
+                    <p data-i18n="set.signedOut">Профайл, нэвтрэлт, аюулгүй байдлын тохиргоогоо харахын тулд нэвтэрнэ үү.</p>
+                    <button type="button" class="set-btn" id="set-login" data-i18n="auth.logIn">Нэвтрэх</button>
+                </div>
+                <div id="set-signedin" hidden>
+                    <h2 class="set-h" data-i18n="set.profileH">Профайл</h2>
+                    <div class="set-row">
+                        <div class="set-text set-pic"><span class="set-ava" id="set-ava" aria-hidden="true"></span>
+                            <div><h3 class="set-label" data-i18n="set.pic">Профайл зураг</h3><p data-i18n="set.picNote">Хажуугийн цэс, хавчуурга, хяналтын самбарт харагдана. Дөрвөлжин зураг хамгийн тохиромжтой.</p>
+                                <p class="set-status" id="set-pic-msg" aria-live="polite"></p></div></div>
+                        <span class="set-line">
+                            <label class="set-btn" for="set-pic-file"><span data-i18n="set.picUpload">Зураг оруулах</span></label>
+                            <input type="file" id="set-pic-file" accept="image/*" class="sr-only">
+                            <button type="button" class="set-btn set-quiet" id="set-pic-rm" data-i18n="set.picRemove">Устгах</button>
+                        </span>
+                    </div>
+                    <div class="set-row">
+                        <div class="set-text"><h3 class="set-label"><label for="set-name" data-i18n="set.name">Дэлгэцийн нэр</label></h3><p data-i18n="set.nameNote">Хяналтын самбар таныг ингэж дуудна. Өөр хэн ч үүнийг харахгүй.</p>
+                            <p class="set-status" id="set-name-msg" aria-live="polite"></p></div>
+                        <span class="set-line"><input class="set-in" id="set-name" maxlength="40" autocomplete="nickname"><button type="button" class="set-btn" id="set-name-save" data-i18n="dash.save">Хадгалах</button></span>
+                    </div>
+
+                    <h2 class="set-h" data-i18n="set.signInH">Нэвтрэлт</h2>
+                    <div class="set-row">
+                        <div class="set-text"><h3 class="set-label" data-i18n="auth.email">И-мэйл</h3><p class="set-strong" id="set-email-now"></p><p data-i18n="set.emailNote">Шинэ хаягаасаа баталгаажуулсны дараа өөрчлөлт хүчинтэй болно.</p>
+                            <p class="set-status" id="set-email-msg" aria-live="polite"></p></div>
+                        <span class="set-line"><input class="set-in" id="set-email" type="email" autocomplete="email" aria-label="Шинэ и-мэйл" data-aria="set.emailNew" placeholder="Шинэ и-мэйл" data-i18n-placeholder="set.emailNew"><button type="button" class="set-btn" id="set-email-save" data-i18n="set.emailChange">И-мэйл солих</button></span>
+                    </div>
+                    <div class="set-row">
+                        <div class="set-text"><h3 class="set-label" data-i18n="auth.password">Нууц үг</h3><p id="set-pass-note" data-i18n="set.passNote">Хамгийн багадаа 6 тэмдэгт. Хоёр удаа бичнэ үү.</p>
+                            <p class="set-status" id="set-pass-msg" aria-live="polite"></p></div>
+                        <span class="set-line set-pass">
+                            <input class="set-in" id="set-pass1" type="password" autocomplete="new-password" minlength="6" aria-label="Шинэ нууц үг" data-aria="set.passNew" placeholder="Шинэ нууц үг" data-i18n-placeholder="set.passNew">
+                            <input class="set-in" id="set-pass2" type="password" autocomplete="new-password" minlength="6" aria-label="Дахин" data-aria="set.passAgain" placeholder="Дахин" data-i18n-placeholder="set.passAgain">
+                            <button type="button" class="set-btn" id="set-pass-save" data-i18n="set.passChange">Нууц үг солих</button>
+                        </span>
+                    </div>
+                    <div class="set-row">
+                        <div class="set-text"><h3 class="set-label" data-i18n="set.linked">Нэвтэрсэн арга</h3></div>
+                        <span class="set-line" id="set-linked"></span>
+                    </div>
+
+                    <h2 class="set-h" data-i18n="set.contactH">Холбоо барих ба аюулгүй байдал</h2>
+                    <div class="set-row">
+                        <div class="set-text"><h3 class="set-label"><label for="set-phone" data-i18n="set.phone">Утасны дугаар</label></h3><p data-i18n="set.phoneNote">Заавал биш. Зөвхөн бүртгэлтэй тань холбоотой асуудлаар холбогдоход хадгална. Өөр хэн ч харахгүй.</p>
+                            <p class="set-status" id="set-phone-msg" aria-live="polite"></p></div>
+                        <span class="set-line"><input class="set-in" id="set-phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="24" placeholder="+976 9911 2233"><button type="button" class="set-btn" id="set-phone-save" data-i18n="dash.save">Хадгалах</button></span>
+                    </div>
+                    <div class="set-row">
+                        <div class="set-text"><h3 class="set-label" data-i18n="set.mfa">Хоёр шаттай баталгаажуулалт</h3><p data-i18n="set.mfaNote">Нууц үгийн дараа утсан дээрх баталгаажуулах аппаас 6 оронтой код асууна. Нууц үг алдагдсан ч бүртгэл аюулгүй хэвээр үлдэнэ.</p>
+                            <div class="set-mfa-setup" id="set-mfa-setup" hidden>
+                                <p data-i18n="set.mfaScan">Энэ кодыг Google Authenticator, Authy зэрэг баталгаажуулах аппаар уншуулаад, гарч ирсэн 6 оронтой кодыг бичнэ үү.</p>
+                                <img id="set-mfa-qr" alt="" width="180" height="180">
+                                <p class="set-key"><span data-i18n="set.mfaKey">Эсвэл энэ түлхүүрийг гараар оруулна уу:</span> <code id="set-mfa-secret"></code></p>
+                                <span class="set-line"><input class="set-in set-code" id="set-mfa-code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" aria-label="Код" data-aria="auth.mfaCode" placeholder="123456"><button type="button" class="set-btn" id="set-mfa-confirm" data-i18n="set.mfaConfirm">Баталгаажуулах</button></span>
+                            </div>
+                            <p class="set-status" id="set-mfa-msg" aria-live="polite"></p></div>
+                        <span class="set-line"><span class="set-chip" id="set-mfa-state" data-i18n="set.mfaOff">Унтраалттай</span><button type="button" class="set-btn" id="set-mfa-toggle" data-i18n="set.mfaTurnOn">Асаах</button></span>
+                    </div>
+
+                    <!-- The danger zone keeps the ids auth-shared.js has always driven; it is shown only
+                         for a real session, so a destructive control is never what shows by default. -->
+                    <div class="account-danger-zone set-danger hidden" id="account-danger-zone">
+                        <h2 class="set-h set-danger-h" data-i18n="account.dangerZone">Аюултай бүс</h2>
+                        <p data-i18n="account.resetWarning">Явцаа тэглэвэл Үг холбохын хугацаа, Дүрэм холбохын дүн, уншиж дуусгасан бичвэрүүд, мөн хяналтын самбар болон Авианы зураглалыг тэжээж буй үгийн оролдлого бүр арилна. Бүртгэл, нэр, тэмдэглэгээ чинь хэвээр үлдэнэ. Үүнийг буцаах боломжгүй.</p>
+                        <button id="progress-reset-start-btn" class="set-btn set-quiet" type="button" data-i18n="account.resetProgress">Сурсан явцаа тэглэх</button>
+                        <div id="progress-reset-confirm" class="hidden">
+                            <p class="set-status" data-i18n="account.resetConfirmAsk">Сурсан явцаа бүхэлд нь арилгах уу? Буцах зам байхгүй.</p>
+                            <button id="progress-reset-confirm-btn" class="set-btn set-del" type="button" data-i18n="account.resetConfirmYes">Тийм, явцыг минь арилга</button>
+                            <button id="progress-reset-cancel-btn" class="set-btn set-quiet" type="button" data-i18n="account.cancel">Болих</button>
+                        </div>
+                        <p id="progress-reset-status" class="set-status hidden"></p>
+                        <hr class="set-sep">
+                        <p data-i18n="account.deleteWarning">Бүртгэлээ устгавал профайл, тэмдэглэгээ, зурвас, суралцах явц бүрмөсөн устана. Үүнийг буцаах боломжгүй.</p>
+                        <button id="account-delete-start-btn" class="set-btn set-del" type="button" data-i18n="account.deleteMyAccount">Бүртгэлээ устгах</button>
+                        <div id="account-delete-confirm" class="set-confirm hidden">
+                            <label for="account-delete-input" data-i18n="account.typeDeleteToConfirm">Баталгаажуулахын тулд DELETE гэж бичнэ үү:</label>
+                            <input type="text" id="account-delete-input" class="set-in" autocomplete="off">
+                            <button id="account-delete-confirm-btn" class="set-btn set-del" type="button" disabled data-i18n="account.yesPermanentlyDelete">Тийм, бүртгэлээ бүрмөсөн устгана</button>
+                        </div>
+                        <p id="account-delete-status" class="set-status hidden"></p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- chrome:footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="footer-brand" aria-label="Khan Japanese - home">
+                        <span class="brand-seal" aria-hidden="true"><img src="icons/brand-mark.png" alt="" loading="lazy" decoding="async"></span>
+                        <span class="footer-brand-name">Khan Japanese</span>
+                    </a>
+                    <p class="footer-blurb" data-i18n="footer.blurb">System engineering student in Japan, building tools for learning the language.</p>
+                </div>
+                <div class="footer-col">
+                    <h2 class="footer-heading" data-i18n="footer.studyTools">Study tools</h2>
+                    <ul class="footer-list">
+                        <li><a href="path.html"><svg class="foot-ico" aria-hidden="true"><use href="#i-path"/></svg><span data-i18n="nav.studyPath">Study Path</span></a></li>
+                        <li><a href="origins.html"><svg class="foot-ico" aria-hidden="true"><use href="#i-origins"/></svg><span data-i18n="nav.kanaOrigins">Kana Origins</span></a></li>
+                        <li><a href="game.html"><svg class="foot-ico" aria-hidden="true"><use href="#i-wordmatch"/></svg><span data-i18n="nav.wordGame">Word Game</span></a></li>
+                        <li><a href="reading.html"><svg class="foot-ico" aria-hidden="true"><use href="#i-reader"/></svg><span data-i18n="nav.dokkaiReader">Dokkai Reader</span></a></li>
+                        <li><a href="phonetics.html"><svg class="foot-ico" aria-hidden="true"><use href="#i-phonetics"/></svg><span data-i18n="nav.phoneticsFamily">Phonetics Family</span></a></li>
+                        <li><a href="grammar.html"><svg class="foot-ico" aria-hidden="true"><use href="#i-grammar"/></svg><span data-i18n="nav.grammarConnect">Grammar Connect</span></a></li>
+                        <li><a href="dictionary.html"><svg class="foot-ico" aria-hidden="true"><use href="#i-vocabulary"/></svg><span data-i18n="nav.dictionary">Dictionary</span></a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h2 class="footer-heading" data-i18n="nav.portfolio">About Me</h2>
+                    <ul class="footer-list">
+                        <li><a href="about.html#portfolio" data-i18n="footer.projectsLearning">Projects &amp; learning</a></li>
+                        <li><a href="about.html#qualifications" data-i18n="nav.qualifications">Qualifications</a></li>
+                        <li><a href="about.html#resume" data-i18n="nav.resume">Resume</a></li>
+                        <li><a href="about.html#contact" data-i18n="footer.getInTouch">Get in touch</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bar">
+                <p class="footer-copy">&copy; 2026 Khan Japanese</p>
+                <div class="footer-links">
+                    <a href="credits.html" data-i18n="footer.dataLicensing">Data &amp; licensing</a>
+                    <a href="privacy.html" data-i18n="footer.privacyPolicy">Privacy Policy</a>
+                    <a href="terms.html" data-i18n="footer.termsOfService">Terms of Service</a>
+                    <a href="about.html#contact" data-i18n="footer.contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Phone tab bar (display:none above 860px, see style.css). A sibling of .container and
+         .site-footer, never a child of either, so neither stacking context can trap it. A group
+         tab is a <button> that opens the group's three tools in a sheet above the bar; the other
+         three are plain links. build-chrome.js marks the open page from data-tab-pages. -->
+    <nav class="tabbar" id="tabbar" aria-label="Sections">
+        <a class="tab" href="index.html" data-tab-pages="index.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-home"/></svg><span class="tab-label" data-i18n="nav.home">Home</span></a>
+        <span class="tab-group">
+            <button type="button" class="tab" data-tab-pages="origins.html game.html phonetics.html grammar.html reading.html dictionary.html" aria-expanded="false" aria-controls="tab-sheet-tools"><svg class="tab-ico" aria-hidden="true"><use href="#i-wordmatch"/></svg><span class="tab-label" data-i18n="nav.tools">Main tools</span></button>
+            <span class="tab-sheet" id="tab-sheet-tools">
+                <a href="origins.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-origins"/></svg><span data-i18n="nav.kanaOrigins">Kana Origins</span></a>
+                <a href="game.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-wordmatch"/></svg><span data-i18n="nav.wordGame">Word Match</span></a>
+                <a href="phonetics.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-phonetics"/></svg><span data-i18n="nav.phoneticsFamily">Phonetics Family</span></a>
+                <a href="grammar.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-grammar"/></svg><span data-i18n="nav.grammarConnect">Grammar Connect</span></a>
+                <a href="reading.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-reader"/></svg><span data-i18n="nav.dokkaiReader">Dokkai Reader</span></a>
+                <a href="dictionary.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-vocabulary"/></svg><span data-i18n="nav.dictionary">Dictionary</span></a>
+            </span>
+        </span>
+        <a class="tab" href="path.html" data-tab-pages="path.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-path"/></svg><span class="tab-label" data-i18n="nav.studyPath">Study Path</span></a>
+        <a class="tab" href="dashboard.html" data-tab-pages="dashboard.html"><svg class="tab-ico" aria-hidden="true"><use href="#i-dashboard"/></svg><span class="tab-label" data-i18n="dash.titleSub">Dashboard</span></a>
+        <!-- Settings is not a page: it opens the same modal the account panel's Settings row
+             does, by pressing that row's own button, so there is one handler and not two. -->
+        <a class="tab tab-on" aria-current="page" href="settings.html" data-tab-pages="settings.html" id="tab-settings"><svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" d="M4 7h9M17 7h3M4 12h3M11 12h9M4 17h11M19 17h1"/><circle fill="none" stroke="currentColor" stroke-width="1.9" cx="15" cy="7" r="2"/><circle fill="none" stroke="currentColor" stroke-width="1.9" cx="9" cy="12" r="2"/><circle fill="none" stroke="currentColor" stroke-width="1.9" cx="17" cy="17" r="2"/></svg><span class="tab-label" data-i18n="account.settings">Settings</span></a>
+    </nav>
+    <script>
+        (function () {
+            if (window.__khanjpTabs) return;
+            window.__khanjpTabs = true;
+            var bar = document.getElementById('tabbar');
+            if (!bar) return;
+            var closeAll = function () {
+                var open = bar.querySelectorAll('.tab-group.open');
+                for (var i = 0; i < open.length; i++) {
+                    open[i].classList.remove('open');
+                    open[i].querySelector('.tab').setAttribute('aria-expanded', 'false');
+                }
+            };
+            document.addEventListener('click', function (e) {
+                var btn = e.target.closest ? e.target.closest('.tab-group > .tab') : null;
+                if (!btn || !bar.contains(btn)) { closeAll(); return; }
+                var group = btn.parentNode;
+                var wasOpen = group.classList.contains('open');
+                closeAll();
+                if (!wasOpen) {
+                    group.classList.add('open');
+                    btn.setAttribute('aria-expanded', 'true');
+                }
+            });
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') closeAll();
+            });
+        })();
+    </script>
+    <!-- /chrome:footer -->
+
+    <script src="i18n-strings-shared.js"></script>
+    <script src="dashboard-i18n-strings.js"></script>
+    <script src="settings-i18n-strings.js"></script>
+    <script src="i18n.js"></script>
+    <script src="reading-style.js"></script>
+    <script src="audio-prefs.js"></script>
+    <script src="vendor/supabase.min.js"></script>
+    <script src="supabase-config.js"></script>
+    <script src="auth-shared.js"></script>
+    <script type="module" src="settings.js"></script>
+    <script src="pwa-register.js"></script>
+</body>
+
+</html>

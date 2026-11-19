@@ -21,6 +21,7 @@ Supabase (Postgres + Auth). Hosted on GitHub Pages. Git repo on `main`.
 | `dictionary.html` | Mongol-Japan Dictionary — two tabs: primary Монгол⇄日本語 (`mnjp-data.js`), secondary 漢語⇄和語 Kango/Wago (`dictionary-data.js`, lazy-loaded only when that tab opens). Reads a `?q=` URL param on load to pre-fill/filter the primary tab — the target of the home page's search bar. `<main class="dictionary-main">` / `dictionary.css`. **A picked word opens in a panel beside the list as of 2026-11-01** (see The kanji breakdown below), not in a strip under its own row, and the page has no display title or description. |
 | `origins.html` | Kana Origins — where hiragana and katakana came from, for a beginner who knows no kanji. `<main class="origins-main">` / `origins.css`. **Rebuilt 2026-10-23** (see Kana Origins below): four sections behind a sticky section bar, and the gojuon laid out as a wall of five vowel rows of eleven rather than the printed eleven of five. |
 | `dashboard.html` | Signed-in-only progress page — profile (avatar, editable display name), score vs. site average, per-tool level/text completion, and a link into the Settings modal for account management. `<main class="dash-main">` / `dashboard.css` (**"seal and wine" as of 2026-11-01** — the brand mark's own gold and wine on warm parchment, replacing a cool slate/blue scheme; see The dashboard wears the mark below). This is now the **only** page showing those bars — `index.html` carried a condensed copy until the 2026-10-11 hub rebuild removed it, along with `hub-home.js`, and `tests/progress-totals.spec.js` lost its three index.html placeholder rows at the same time. |
+| `settings.html` | **Settings, the account's own page (2026-11-19)**, three tabs cut like the masthead's: Language and display, Audio and speech, Account and contact. `<main class="settings-main">` / `settings.css` (the dashboard's seal-and-wine tokens) / `settings.js` (module) / `settings-i18n-strings.js`. `noindex`. Replaced the Settings and Account details pop-ups -- see Settings is a page below. |
 | `privacy.html`, `terms.html` | Legal pages, plain styling via `legal.css`. |
 | `credits.html` | Full data/photo/music credits for every tool, one page, `legal.css` styling like the pages above — the destination for every page's footer "Data & licensing" link. Sectioned with anchor ids (`#word-game-photos`, `#word-game-music`, `#grammar-connect-photos`, `#grammar-connect-music`) in case a page ever wants to deep-link to one part instead of the whole page. |
 | `reset-password.html` | Standalone, no shared header/footer. |
@@ -426,6 +427,49 @@ the right weight: it is the sentence explaining why the Log in button under it e
 **That probe only sees the SIGNED-OUT panel.** The signed-in items -- the profile header, the
 email line, the Dashboard/Account/Settings rows -- need a real session and are not covered. `about.html` mirrors this same ID contract (it shares `auth-shared.js`) but with its own
 compact `.about-account*` markup/CSS sized for its sidebar rail rather than a full drawer.
+
+**SETTINGS IS A PAGE, NOT A POP-UP** (2026-11-19, at the owner's direction, previewed in the mock-up
+artifact first). The side menu lost "Account details"; its Settings item, signed in or out, and the phone
+tab bar's Settings tab are plain links to `settings.html` (`#display`, `#audio`, `#account` open a tab). The
+two pop-ups left `_chrome.html`, so `#account-details-modal`, `#account-settings-modal` and
+`#account-details-btn` exist nowhere now (`tests/auth-ui.spec.js`'s CONTRACT says so). **The controls that
+were in the pop-up kept their ids and moved to the page**, so `auth-shared.js` still drives them unchanged:
+`[data-reading-style]`, `#darker-toggle-btn`, `#tutorial-reset-btn`, `#account-danger-zone` and every
+`progress-reset-*` / `account-delete-*` id. Each of those blocks now checks the element exists, since every
+other page lacks them. **Inline text is Mongolian, generated**: the page is built from
+`tools/settings-page/settings.template.html` by `node tools/settings-page/make-settings.js` (then `node build-chrome.js`), which fills `{{key}}` from the strings
+files so the inline copy cannot drift from them; edit the strings and rerun it rather than the HTML by hand.
+**THE MONGOLIAN OF EVERY NEW `set.*` AND `auth.mfa*` STRING IS A DRAFT BY CLAUDE**, written so the page could
+ship, which the owner said they will rewrite -- like `tools/grammar-foundation.json`, the one other place the
+author's own words are not. Rows the pop-up had keep the author's existing `account.*` strings.
+**Two-step verification is Supabase's TOTP (authenticator app), chosen because it is free**; text messages
+would need a paid SMS provider. Settings enrols it (QR code + key, then one code); `auth-shared.js` asks for
+the code after a password sign-in AND on any restored or provider session whose assurance level is still
+aal1 (`needsSecondStep()`, `#auth-mfa-form` inside `#auth-modal`, title swapped BY KEY so `i18n.js` cannot
+rewrite it back to "Log in"). **What makes it real is migration 013**: a RESTRICTIVE policy on every user
+table refuses an aal1 session of an account that has a verified factor. Without that migration the second
+step is a screen only. SECURITY DEFINER functions (`delete_own_account`, `reset_own_progress`) bypass RLS
+and are not covered by it.
+**Profile picture and phone number live on `user_settings`** (owner-only since migration 009; columns
+added by 013). The picture is resized on the device to a 160px JPEG data URL (~5-15 KB), so there is no
+storage bucket; `auth-shared.js` keeps this device's copy in `khanjp-avatar`, paints it on the bookmark
+and panel (`.has-pic`) and fires `avatarchange` (the dashboard listens). Before 013 is run, saving either
+fails politely and nothing else breaks -- the sync's own select never names the new columns.
+**Sound is per tool now** (`audio-prefs.js`, `window.KhanAudio`, loaded before every page script that makes
+a sound): `khanjp-vol-<game|grammar|phonetics>-<music|sfx>`, falling back to the old shared
+`khanjp-volume` so nobody's level resets. A tool's toolbar speaker steps ITS music and sounds together;
+Settings sets them apart. `music-player.js` takes `{ tool }` and `setTrack(src, 'select'|'level')`:
+`khanjp-music-select=mute` keeps the level select silent, `khanjp-music-flow=sparse` plays a level's track
+once then waits 1-4 minutes at random. The chosen speaker (`khanjp-speaker`) routes the music element and
+every AudioContext through `KhanAudio.useSpeaker()`; the chosen microphone (`khanjp-mic`) feeds the reader's
+voice gate and is handed to `recognition.start(track)` on a computer (Chrome/Edge 133+; elsewhere ignored).
+The read-aloud voice cannot be routed by any page and stays on the default speaker. Volumes and music
+choices sync with the account; the two device ids deliberately do not.
+**Checkers**: `scratchpad/ds/build/settings-check.js` (49 checks; a planted session and every Supabase
+call answered by the test, so the signed-in tab, each save's payload, two-step setup and the code prompt
+are exercised without a real account) and `audio-tools-check.js` (the music element captured in each tool).
+**A display rule outranks [hidden] here too**: `.set-signedout` is `display: grid` and stayed on screen for a
+signed-in visitor until it answered `[hidden]` -- the check now reads computed display, not the attribute.
 
 **Page tours** (`tutorial.js` + `tutorial.css` + `tutorial-i18n-strings.js`, on the five tools
 and `dashboard.html`): first-visit coach marks that spotlight a page's real controls one at a

@@ -31,13 +31,14 @@ const CardSfx = (function () {
         // that enforces autoplay, and then stays silent for the whole session. This is only ever
         // reached from a click.
         try { ctx = new AC(); } catch (e) { return null; }
+        if (window.KhanAudio) KhanAudio.useSpeaker(ctx);
         master = ctx.createGain();
         master.connect(ctx.destination);
         return ctx;
     }
 
     function live() {
-        const lvl = window.GameAudio ? GameAudio.getLevel() : 3;
+        const lvl = window.GameAudio ? GameAudio.getSfxLevel() : 3;
         if (!lvl || !boot()) return false;
         master.gain.value = 0.2 * (lvl / 3);
         return true;

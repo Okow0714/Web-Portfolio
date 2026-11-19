@@ -37,8 +37,20 @@ Object.assign(window.I18N_STRINGS, {
     },
 
     'privacy.whatICollect.settings': {
-        en: '<strong>Your display settings</strong> — the site language, the darker-theme toggle, the reading-style choice and which page tours you have already seen, so a second device starts the way you left the first one. Preferences only; nothing about what you studied.',
-        mn: '<strong>Таны харагдах байдлын тохиргоо</strong> — сайтын хэл, бараан загварын сонголт, уншлагын хэлбэр, мөн аль хуудасны танилцуулгыг үзсэн зэрэг. Ингэснээр хоёр дахь төхөөрөмж дээр та өмнөх байдлаараа үргэлжлүүлнэ. Зөвхөн тохиргоо; юу сурсан тухай мэдээлэл агуулахгүй.'
+        en: '<strong>Your display settings</strong> — the site language, the darker-theme toggle, the reading-style choice, your sound choices (each tool’s volume and when its music plays) and which page tours you have already seen, so a second device starts the way you left the first one. Preferences only; nothing about what you studied. The microphone and speaker you choose stay on the device you chose them on.',
+        mn: '<strong>Таны харагдах байдлын тохиргоо</strong> — сайтын хэл, бараан загварын сонголт, уншлагын хэлбэр, дууны сонголт (хэрэгсэл тус бүрийн дуу, хөгжим хэзээ тоглох), мөн аль хуудасны танилцуулгыг үзсэн зэрэг. Ингэснээр хоёр дахь төхөөрөмж дээр та өмнөх байдлаараа үргэлжлүүлнэ. Зөвхөн тохиргоо; юу сурсан тухай мэдээлэл агуулахгүй. Сонгосон микрофон, чанга яригч нь сонгосон төхөөрөмж дээрээ л үлдэнэ.'
+    },
+    'privacy.whatICollect.picture': {
+        en: "<strong>A profile picture, if you add one</strong> — shrunk on your own device to a small square before it is sent, kept with your account, and shown only to you: in the account menu, the bookmark and the dashboard. Remove it in Settings at any time.",
+        mn: "<strong>Профайл зураг, хэрэв нэмбэл</strong> — илгээхээс өмнө таны төхөөрөмж дээр жижиг дөрвөлжин болгон багасгаж, бүртгэлтэй тань хамт хадгална. Зөвхөн танд харагдана: бүртгэлийн цэс, хавчуурга, хяналтын самбар дээр. Тохиргооноос хүссэн үедээ устгаж болно.",
+    },
+    'privacy.whatICollect.phone': {
+        en: "<strong>A phone number, if you add one</strong> — optional, kept with your account only so I can reach you about it. Never shown to anyone else, never used for marketing and never shared. Remove it in Settings at any time.",
+        mn: "<strong>Утасны дугаар, хэрэв нэмбэл</strong> — заавал биш; зөвхөн бүртгэлтэй тань холбоотой асуудлаар холбогдоход бүртгэлтэй тань хамт хадгална. Өөр хэнд ч харагдахгүй, сурталчилгаанд ашиглахгүй, хэнтэй ч хуваалцахгүй. Тохиргооноос хүссэн үедээ устгаж болно.",
+    },
+    'privacy.whatICollect.twoStep': {
+        en: "<strong>Two-step verification, if you turn it on</strong> — the secret behind your 6-digit codes is held by the sign-in service (Supabase) with your account, the same way your password is. I never see it, and turning two-step off deletes it.",
+        mn: "<strong>Хоёр шаттай баталгаажуулалт, хэрэв асаавал</strong> — 6 оронтой кодын нууц түлхүүрийг нууц үгийн адил нэвтрэлтийн үйлчилгээ (Supabase) бүртгэлтэй тань хамт хадгална. Би үүнийг хэзээ ч харахгүй; хоёр шаттай баталгаажуулалтыг унтраахад устана.",
     },
 
     'privacy.whatICollect.days': {
@@ -105,8 +117,8 @@ Object.assign(window.I18N_STRINGS, {
         mn: '<strong>Зөвхөн сурсан явцаа устгах:</strong> бүртгэлийн цэсээ нээж, «Тохиргоо» дотроос «Сурсан явцаа цэвэрлэх»-ийг сонгоно уу. Ингэснээр «Үг холбох»-ын хугацаа, «Дүрэм холбох»-ын дүн, уншсан текстүүд, хянах самбар дээрх үг бүрийн оролдлого, суралцсан өдрийн цуваа тань цэвэрлэгдэнэ. Бүртгэл, и-мэйл, харагдах нэр, тохиргоо тань хэвээр үлдэх бөгөөд дараа нь шууд үргэлжлүүлэн ашиглаж болно.'
     },
     'privacy.deleteAccount.whatGoes': {
-        en: '<strong>What is deleted:</strong> your account and everything tied to it — your profile and display name, saved bookmarks, any message you sent through the contact form, your Word Match, Dokkai Reader and Grammar Connect progress, the per-word counts behind your review list, the record of which days you studied, and your display settings. It is a single database deletion that cascades to all of them; nothing is held back.',
-        mn: '<strong>Юу устах вэ:</strong> таны бүртгэл, түүнд холбоотой бүх зүйл — хувийн мэдээлэл, харагдах нэр, хадгалсан хавчуургууд, холбоо барих маягтаар илгээсэн захидал, «Үг холбох дасгал», «Уншлагын дадлага», «Дүрэм холбох»-ын явц, давтах жагсаалтын ард байгаа үг тус бүрийн тоолол, суралцсан өдрүүдийн бүртгэл, мөн харагдах байдлын тохиргоо. Энэ бол өгөгдлийн сангийн ганц удаагийн устгал бөгөөд бүгдэд нь дамжин үйлчилнэ; юу ч үлдэхгүй.'
+        en: '<strong>What is deleted:</strong> your account and everything tied to it — your profile and display name, saved bookmarks, any message you sent through the contact form, your Word Match, Dokkai Reader and Grammar Connect progress, the per-word counts behind your review list, the record of which days you studied, your display settings, and your profile picture and phone number if you added them. It is a single database deletion that cascades to all of them; nothing is held back.',
+        mn: '<strong>Юу устах вэ:</strong> таны бүртгэл, түүнд холбоотой бүх зүйл — хувийн мэдээлэл, харагдах нэр, хадгалсан хавчуургууд, холбоо барих маягтаар илгээсэн захидал, «Үг холбох дасгал», «Уншлагын дадлага», «Дүрэм холбох»-ын явц, давтах жагсаалтын ард байгаа үг тус бүрийн тоолол, суралцсан өдрүүдийн бүртгэл, харагдах байдлын тохиргоо, мөн нэмсэн бол профайл зураг, утасны дугаар. Энэ бол өгөгдлийн сангийн ганц удаагийн устгал бөгөөд бүгдэд нь дамжин үйлчилнэ; юу ч үлдэхгүй.'
     },
     'privacy.deleteAccount.whatStays': {
         en: '<strong>What isn’t mine to delete:</strong> my web host’s standard request logs and my database provider’s routine backups, which age out on their own schedules. I don’t read either one and can’t pick your rows out of them. Crash reports are the same: they record which page failed and on what kind of browser, carry no account and no IP address, and so cannot be traced back to you by anyone, me included.',

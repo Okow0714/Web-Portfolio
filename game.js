@@ -107,7 +107,7 @@ function beginLevel(level) {
     // and N5 each start their own pass through the shared pool rather than picking up wherever
     // the other left off.
     const pool = MUSIC_POOLS[level.jlpt];
-    GameAudio.setLevelTrack(pool[(cycleIndex % levelsPerTier()) % pool.length]);
+    GameAudio.setLevelTrack(pool[(cycleIndex % levelsPerTier()) % pool.length], 'level');
 
     document.getElementById('board-level-label').textContent = levelTitle(level);
     resetLastPair();

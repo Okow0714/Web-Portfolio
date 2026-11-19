@@ -23,6 +23,17 @@
         return (text || '?').trim().charAt(0).toUpperCase();
     }
 
+    // The profile picture from Settings (2026-11-19), when there is one: auth-shared.js keeps this
+    // device's copy and fires avatarchange whenever it changes, so the circle follows it.
+    function paintPicture() {
+        let src = null;
+        try { const c = JSON.parse(localStorage.getItem('khanjp-avatar') || 'null'); const s = window.getCurrentSession && window.getCurrentSession(); if (c && s && c.uid === s.user.id) src = c.src; } catch (e) { /* private mode */ }
+        avatarEl.classList.toggle('has-pic', !!src);
+        avatarEl.style.backgroundImage = src ? 'url("' + src.replace(/"/g, '') + '")' : '';
+        if (src) avatarEl.textContent = '';
+    }
+    document.addEventListener('avatarchange', paintPicture);
+
     function setBar(fillEl, numEl, value, max) {
         const pct = max > 0 ? Math.min(100, (value / max) * 100) : 0;
         fillEl.style.width = pct + '%';
@@ -41,6 +52,7 @@
             (window.t ? window.t('account.defaultName') : 'Reader');
         nameDisplayEl.textContent = displayName;
         avatarEl.textContent = initials(displayName);
+        paintPicture();
         emailEl.textContent = email;
         nameInputEl.value = displayName;
     }

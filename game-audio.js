@@ -3,8 +3,10 @@
 // out. Both phrases are built on the Japanese "in" (陰) pentatonic scale (semitone offsets
 // 0,1,5,7,8 from the root) with the Web Audio API, so there are no effect files to ship.
 //
-// The card-handling sounds are not here: they are CardSfx in game-memory.js, which reads its
-// volume from GameAudio.getLevel() so the one speaker button governs music and cards alike.
+// The card-handling sounds are not here: they are CardSfx in game-memory.js. Since 2026-11-19
+// Word Match has its own music level and its own sounds level (audio-prefs.js): the phrases here
+// and CardSfx follow the sounds level, the track follows the music level, and the toolbar's
+// speaker button steps the two together.
 // This file once also carried ten effects for the pre-2026-10-21 board (tile select, match,
 // streak, lightning chain, powerups, the Wakan flyer); that board is gone and nothing called
 // them, so they went too.
@@ -18,13 +20,18 @@ window.GameAudio = (function () {
     let masterGain = null;
     let sfxGain = null;
 
-    const music = window.createMusicPlayer({
-        onLevel(level, gain) {
-            ensureContext();
-            if (!ctx) return;
-            masterGain.gain.value = gain;
-            if (level > 0 && ctx.state === 'suspended') ctx.resume();
-        },
+    const music = window.createMusicPlayer({ tool: 'game' });
+    const sfxLevel = () => window.KhanAudio ? KhanAudio.level('game', 'sfx') : music.getLevel();
+    function applySfxLevel() {
+        ensureContext();
+        if (!ctx) return;
+        masterGain.gain.value = window.KhanAudio ? KhanAudio.gain(sfxLevel()) : music.gain();
+        if (sfxLevel() > 0 && ctx.state === 'suspended') ctx.resume();
+    }
+    document.addEventListener('audioprefchange', e => {
+        const d = e.detail || {};
+        if (d.speaker !== undefined && ctx && window.KhanAudio) KhanAudio.useSpeaker(ctx);
+        if (d.tool === 'game' && d.kind === 'sfx') applySfxLevel();
     });
 
     // The context can be constructed without a user gesture; it just starts 'suspended' until
@@ -34,8 +41,9 @@ window.GameAudio = (function () {
         const AC = window.AudioContext || window.webkitAudioContext;
         if (!AC) return;
         ctx = new AC();
+        if (window.KhanAudio) KhanAudio.useSpeaker(ctx);
         masterGain = ctx.createGain();
-        masterGain.gain.value = music.gain();
+        masterGain.gain.value = window.KhanAudio ? KhanAudio.gain(sfxLevel()) : music.gain();
         masterGain.connect(ctx.destination);
         sfxGain = ctx.createGain();
         sfxGain.gain.value = 0.5;
@@ -77,7 +85,7 @@ window.GameAudio = (function () {
     }
 
     // Silent when muted, and on a browser with no Web Audio at all.
-    function audible() { return ctx && music.getLevel() > 0; }
+    function audible() { return ctx && sfxLevel() > 0; }
 
     function sfxWin() {
         if (!audible()) return;
@@ -99,8 +107,17 @@ window.GameAudio = (function () {
     }
 
     return {
-        getLevel: music.getLevel,
-        cycleLevel: music.cycleLevel,
+        // What the toolbar's speaker shows: the louder of the two, since it steps both.
+        getLevel: () => Math.max(music.getLevel(), sfxLevel()),
+        getSfxLevel: sfxLevel,
+        cycleLevel() {
+            const now = Math.max(music.getLevel(), sfxLevel());
+            const next = now <= 0 ? 3 : now - 1;
+            music.setLevel(next);
+            if (window.KhanAudio) KhanAudio.setLevel('game', 'sfx', next);
+            applySfxLevel();
+            return next;
+        },
         setLevelTrack: music.setTrack,
         win: sfxWin,
         timeUp: sfxTimeUp,

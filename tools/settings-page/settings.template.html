@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="mn" data-default-lang="mn">
+
+<head>
+    <meta charset="UTF-8">
+    <title data-en="Settings - Khan Japanese">Тохиргоо — Khan Japanese</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Khan Japanese-ийн хэл, харагдах байдал, дуу, бүртгэлийн тохиргоо.">
+    <!-- An account page: nothing here for a search engine, and nothing to share. -->
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://khan-japanese.org/settings.html">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4a2c3a">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="settings.css">
+    <link rel="stylesheet" href="fonts/fonts.css">
+    <!-- In <head> on purpose: it sets the ground colour before the first paint. -->
+    <script src="display-prefs.js"></script>
+    <!-- Also in <head>, and before every other script: an error in a page script is
+         what it exists to catch. See its own header. -->
+    <script src="error-report.js"></script>
+</head>
+
+<body>
+    <div class="background-animation">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+        <div class="floating-shape shape-4"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header: one row - brand (home link), section nav, account menu -->
+        <!-- chrome:header -->
+        <!-- /chrome:header -->
+
+        <main tabindex="-1" id="main" class="settings-main">
+            <h1 class="set-title" data-i18n="account.settings">{{account.settings}}</h1>
+
+            <!-- Three tabs, cut like the masthead's: a full trapezoid each, the slant computed from
+                 the height (settings.css). Arrow keys move between them; the URL hash remembers one. -->
+            <div class="set-tabs" role="tablist" aria-labelledby="set-tablist-label">
+                <span id="set-tablist-label" class="sr-only" data-i18n="account.settings">{{account.settings}}</span>
+                <button class="set-tab" role="tab" id="set-t-display" aria-controls="set-display" aria-selected="true" style="--i:3" data-i18n="set.tabDisplay">{{set.tabDisplay}}</button>
+                <button class="set-tab" role="tab" id="set-t-audio" aria-controls="set-audio" aria-selected="false" tabindex="-1" style="--i:2" data-i18n="set.tabAudio">{{set.tabAudio}}</button>
+                <button class="set-tab" role="tab" id="set-t-account" aria-controls="set-account" aria-selected="false" tabindex="-1" style="--i:1" data-i18n="set.tabAccount">{{set.tabAccount}}</button>
+            </div>
+
+            <!-- ============================================================ Language and display -->
+            <section class="set-panel" role="tabpanel" id="set-display" aria-labelledby="set-t-display" tabindex="0">
+                <div class="set-row">
+                    <div class="set-text"><h2 class="set-label" data-i18n="set.lang">{{set.lang}}</h2><p data-i18n="set.langNote">{{set.langNote}}</p></div>
+                    <div class="set-seg" role="group" aria-labelledby="set-lang-l" id="set-lang">
+                        <span id="set-lang-l" class="sr-only" data-i18n="set.lang">{{set.lang}}</span>
+                        <button type="button" data-v="mn" lang="mn">Монгол</button><button type="button" data-v="en" lang="en">English</button>
+                    </div>
+                </div>
+                <div class="set-row">
+                    <div class="set-text"><h2 class="set-label" data-i18n="set.theme">{{set.theme}}</h2><p data-i18n="set.themeNote">{{set.themeNote}}</p></div>
+                    <div class="set-seg" role="group" aria-label="{{set.theme}}" id="set-theme">
+                        <button type="button" data-v="" data-i18n="set.themeDevice">{{set.themeDevice}}</button><button type="button" data-v="light" data-i18n="set.themeDay">{{set.themeDay}}</button><button type="button" data-v="dark" data-i18n="set.themeNight">{{set.themeNight}}</button>
+                    </div>
+                </div>
+                <div class="set-row">
+                    <div class="set-text"><h2 class="set-label" data-i18n="account.darkerLabel">{{account.darkerLabel}}</h2><p data-i18n="account.darkerNote">{{account.darkerNote}}</p></div>
+                    <!-- auth-shared.js drives this one by id, as it did in the old pop-up -->
+                    <button type="button" class="set-btn set-quiet" id="darker-toggle-btn" aria-pressed="false" data-i18n="account.darkerOff">{{account.darkerOff}}</button>
+                </div>
+                <div class="set-row">
+                    <div class="set-text"><h2 class="set-label" data-i18n="account.readingLabel">{{account.readingLabel}}</h2><p data-i18n="account.readingNote">{{account.readingNote}}</p>
+                        <p class="set-sample" aria-hidden="true"><ruby>日本語<rt>にほんご</rt></ruby>を<ruby>勉強<rt>べんきょう</rt></ruby>する</p></div>
+                    <!-- auth-shared.js drives these by data-reading-style, as it did in the old pop-up -->
+                    <div class="set-seg" role="group" aria-label="{{account.readingLabel}}">
+                        <button type="button" data-reading-style="kana" lang="ja">あい</button><button type="button" data-reading-style="romaji">romaji</button><button type="button" data-reading-style="cyrillic">кирилл</button>
+                    </div>
+                </div>
+                <div class="set-row">
+                    <div class="set-text"><h2 class="set-label" data-i18n="account.tutorialsLabel">{{account.tutorialsLabel}}</h2><p data-i18n="account.tutorialsNote">{{account.tutorialsNote}}</p></div>
+                    <button type="button" class="set-btn" id="tutorial-reset-btn" data-i18n="account.tutorialsReset">{{account.tutorialsReset}}</button>
+                </div>
+            </section>
+
+            <!-- ============================================================ Audio and speech -->
+            <section class="set-panel" role="tabpanel" id="set-audio" aria-labelledby="set-t-audio" tabindex="0" hidden>
+                <h2 class="set-h" data-i18n="set.volByTool">{{set.volByTool}}</h2>
+                <div class="set-row">
+                    <div class="set-text"><h3 class="set-label" data-i18n="nav.wordGame">{{nav.wordGame}}</h3><p data-i18n="set.gameNote">{{set.gameNote}}</p></div>
+                    <div class="set-mix">
+                        <span data-i18n="set.music">{{set.music}}</span>{{STEPS game music}}
+                        <span data-i18n="set.sounds">{{set.sounds}}</span>{{STEPS game sfx}}
+                    </div>
+                </div>
+                <div class="set-row">
+                    <div class="set-text"><h3 class="set-label" data-i18n="nav.grammarConnect">{{nav.grammarConnect}}</h3><p data-i18n="set.grammarNote">{{set.grammarNote}}</p></div>
+                    <div class="set-mix">
+                        <span data-i18n="set.music">{{set.music}}</span>{{STEPS grammar music}}
+                        <span data-i18n="set.sounds">{{set.sounds}}</span>{{STEPS grammar sfx}}
+                    </div>
+                </div>
+                <div class="set-row">
+                    <div class="set-text"><h3 class="set-label" data-i18n="nav.phoneticsFamily">{{nav.phoneticsFamily}}</h3><p data-i18n="set.phonNote">{{set.phonNote}}</p></div>
+                    <div class="set-mix">
+                        <span data-i18n="set.sounds">{{set.sounds}}</span>{{STEPS phonetics sfx}}
+                    </div>
+                </div>
+
+                <h2 class="set-h" data-i18n="set.musicH">{{set.musicH}}</h2>
+                <div class="set-row">
+                    <div class="set-text"><h3 class="set-label" data-i18n="set.select">{{set.select}}</h3><p data-i18n="set.selectNote">{{set.selectNote}}</p></div>
+                    <div class="set-seg" role="group" aria-label="{{set.select}}" id="set-select">
+                        <button type="button" data-v="play" data-i18n="set.selectPlay">{{set.selectPlay}}</button><button type="button" data-v="mute" data-i18n="set.selectMute">{{set.selectMute}}</button>
+                    </div>
+                </div>
+                <div class="set-row">
+                    <div class="set-text"><h3 class="set-label" data-i18n="set.flow">{{set.flow}}</h3><p id="set-flow-note" data-i18n="set.flowLoopNote">{{set.flowLoopNote}}</p></div>
+                    <div class="set-seg" role="group" aria-label="{{set.flow}}" id="set-flow">
+                        <button type="button" data-v="loop" data-i18n="set.flowLoop">{{set.flowLoop}}</button><button type="button" data-v="sparse" data-i18n="set.flowSparse">{{set.flowSparse}}</button>
+                    </div>
+                </div>
+
+                <h2 class="set-h" data-i18n="set.micH">{{set.micH}}</h2>
+                <div class="set-row">
+                    <div class="set-text"><h3 class="set-label"><label for="set-mic" data-i18n="set.mic">{{set.mic}}</label></h3><p data-i18n="set.micNote">{{set.micNote}}</p>
+                        <div class="set-meter" aria-hidden="true"><i id="set-meter"></i></div>
+                        <p class="set-status" id="set-mic-msg" aria-live="polite" data-i18n="set.micIdle">{{set.micIdle}}</p></div>
+                    <div class="set-dev">
+                        <select class="set-sel" id="set-mic"><option value="" data-i18n="set.deviceDefault">{{set.deviceDefault}}</option></select>
+                        <span class="set-line"><button type="button" class="set-btn set-quiet" id="set-mic-allow" data-i18n="set.showDevices">{{set.showDevices}}</button><button type="button" class="set-btn" id="set-mic-test" data-i18n="set.test">{{set.test}}</button></span>
+                    </div>
+                </div>
+                <h2 class="set-h" data-i18n="set.spkH">{{set.spkH}}</h2>
+                <div class="set-row">
+                    <div class="set-text"><h3 class="set-label"><label for="set-spk" data-i18n="set.spk">{{set.spk}}</label></h3><p data-i18n="set.spkNote">{{set.spkNote}}</p>
+                        <p class="set-status" id="set-spk-msg" aria-live="polite"></p></div>
+                    <div class="set-dev">
+                        <select class="set-sel" id="set-spk"><option value="" data-i18n="set.deviceDefault">{{set.deviceDefault}}</option></select>
+                        <button type="button" class="set-btn" id="set-ping" data-i18n="set.ping">{{set.ping}}</button>
+                    </div>
+                </div>
+                <p class="set-limit" data-i18n="set.limit">{{set.limit}}</p>
+                <div class="set-row">
+                    <div class="set-text"><h3 class="set-label" data-i18n="set.tts">{{set.tts}}</h3><p data-i18n="set.ttsNote">{{set.ttsNote}}</p></div>
+                    <div class="set-seg" role="group" aria-label="{{set.tts}}" id="set-tts">
+                        <button type="button" data-v="slow" data-i18n="set.ttsSlow">{{set.ttsSlow}}</button><button type="button" data-v="normal" data-i18n="set.ttsNormal">{{set.ttsNormal}}</button><button type="button" data-v="fast" data-i18n="set.ttsFast">{{set.ttsFast}}</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================================ Account and contact -->
+            <section class="set-panel" role="tabpanel" id="set-account" aria-labelledby="set-t-account" tabindex="0" hidden>
+                <div class="set-signedout" id="set-signedout">
+                    <p data-i18n="set.signedOut">{{set.signedOut}}</p>
+                    <button type="button" class="set-btn" id="set-login" data-i18n="auth.logIn">{{auth.logIn}}</button>
+                </div>
+                <div id="set-signedin" hidden>
+                    <h2 class="set-h" data-i18n="set.profileH">{{set.profileH}}</h2>
+                    <div class="set-row">
+                        <div class="set-text set-pic"><span class="set-ava" id="set-ava" aria-hidden="true"></span>
+                            <div><h3 class="set-label" data-i18n="set.pic">{{set.pic}}</h3><p data-i18n="set.picNote">{{set.picNote}}</p>
+                                <p class="set-status" id="set-pic-msg" aria-live="polite"></p></div></div>
+                        <span class="set-line">
+                            <label class="set-btn" for="set-pic-file"><span data-i18n="set.picUpload">{{set.picUpload}}</span></label>
+                            <input type="file" id="set-pic-file" accept="image/*" class="sr-only">
+                            <button type="button" class="set-btn set-quiet" id="set-pic-rm" data-i18n="set.picRemove">{{set.picRemove}}</button>
+                        </span>
+                    </div>
+                    <div class="set-row">
+                        <div class="set-text"><h3 class="set-label"><label for="set-name" data-i18n="set.name">{{set.name}}</label></h3><p data-i18n="set.nameNote">{{set.nameNote}}</p>
+                            <p class="set-status" id="set-name-msg" aria-live="polite"></p></div>
+                        <span class="set-line"><input class="set-in" id="set-name" maxlength="40" autocomplete="nickname"><button type="button" class="set-btn" id="set-name-save" data-i18n="dash.save">{{dash.save}}</button></span>
+                    </div>
+
+                    <h2 class="set-h" data-i18n="set.signInH">{{set.signInH}}</h2>
+                    <div class="set-row">
+                        <div class="set-text"><h3 class="set-label" data-i18n="auth.email">{{auth.email}}</h3><p class="set-strong" id="set-email-now"></p><p data-i18n="set.emailNote">{{set.emailNote}}</p>
+                            <p class="set-status" id="set-email-msg" aria-live="polite"></p></div>
+                        <span class="set-line"><input class="set-in" id="set-email" type="email" autocomplete="email" aria-label="{{set.emailNew}}" placeholder="{{set.emailNew}}" data-i18n-placeholder="set.emailNew"><button type="button" class="set-btn" id="set-email-save" data-i18n="set.emailChange">{{set.emailChange}}</button></span>
+                    </div>
+                    <div class="set-row">
+                        <div class="set-text"><h3 class="set-label" data-i18n="auth.password">{{auth.password}}</h3><p id="set-pass-note" data-i18n="set.passNote">{{set.passNote}}</p>
+                            <p class="set-status" id="set-pass-msg" aria-live="polite"></p></div>
+                        <span class="set-line set-pass">
+                            <input class="set-in" id="set-pass1" type="password" autocomplete="new-password" minlength="6" aria-label="{{set.passNew}}" placeholder="{{set.passNew}}" data-i18n-placeholder="set.passNew">
+                            <input class="set-in" id="set-pass2" type="password" autocomplete="new-password" minlength="6" aria-label="{{set.passAgain}}" placeholder="{{set.passAgain}}" data-i18n-placeholder="set.passAgain">
+                            <button type="button" class="set-btn" id="set-pass-save" data-i18n="set.passChange">{{set.passChange}}</button>
+                        </span>
+                    </div>
+                    <div class="set-row">
+                        <div class="set-text"><h3 class="set-label" data-i18n="set.linked">{{set.linked}}</h3></div>
+                        <span class="set-line" id="set-linked"></span>
+                    </div>
+
+                    <h2 class="set-h" data-i18n="set.contactH">{{set.contactH}}</h2>
+                    <div class="set-row">
+                        <div class="set-text"><h3 class="set-label"><label for="set-phone" data-i18n="set.phone">{{set.phone}}</label></h3><p data-i18n="set.phoneNote">{{set.phoneNote}}</p>
+                            <p class="set-status" id="set-phone-msg" aria-live="polite"></p></div>
+                        <span class="set-line"><input class="set-in" id="set-phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="24" placeholder="+976 9911 2233"><button type="button" class="set-btn" id="set-phone-save" data-i18n="dash.save">{{dash.save}}</button></span>
+                    </div>
+                    <div class="set-row">
+                        <div class="set-text"><h3 class="set-label" data-i18n="set.mfa">{{set.mfa}}</h3><p data-i18n="set.mfaNote">{{set.mfaNote}}</p>
+                            <div class="set-mfa-setup" id="set-mfa-setup" hidden>
+                                <p data-i18n="set.mfaScan">{{set.mfaScan}}</p>
+                                <img id="set-mfa-qr" alt="" width="180" height="180">
+                                <p class="set-key"><span data-i18n="set.mfaKey">{{set.mfaKey}}</span> <code id="set-mfa-secret"></code></p>
+                                <span class="set-line"><input class="set-in set-code" id="set-mfa-code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" aria-label="{{auth.mfaCode}}" placeholder="123456"><button type="button" class="set-btn" id="set-mfa-confirm" data-i18n="set.mfaConfirm">{{set.mfaConfirm}}</button></span>
+                            </div>
+                            <p class="set-status" id="set-mfa-msg" aria-live="polite"></p></div>
+                        <span class="set-line"><span class="set-chip" id="set-mfa-state" data-i18n="set.mfaOff">{{set.mfaOff}}</span><button type="button" class="set-btn" id="set-mfa-toggle" data-i18n="set.mfaTurnOn">{{set.mfaTurnOn}}</button></span>
+                    </div>
+
+                    <!-- The danger zone keeps the ids auth-shared.js has always driven; it is shown only
+                         for a real session, so a destructive control is never what shows by default. -->
+                    <div class="account-danger-zone set-danger hidden" id="account-danger-zone">
+                        <h2 class="set-h set-danger-h" data-i18n="account.dangerZone">{{account.dangerZone}}</h2>
+                        <p data-i18n="account.resetWarning">{{account.resetWarning}}</p>
+                        <button id="progress-reset-start-btn" class="set-btn set-quiet" type="button" data-i18n="account.resetProgress">{{account.resetProgress}}</button>
+                        <div id="progress-reset-confirm" class="hidden">
+                            <p class="set-status" data-i18n="account.resetConfirmAsk">{{account.resetConfirmAsk}}</p>
+                            <button id="progress-reset-confirm-btn" class="set-btn set-del" type="button" data-i18n="account.resetConfirmYes">{{account.resetConfirmYes}}</button>
+                            <button id="progress-reset-cancel-btn" class="set-btn set-quiet" type="button" data-i18n="account.cancel">{{account.cancel}}</button>
+                        </div>
+                        <p id="progress-reset-status" class="set-status hidden"></p>
+                        <hr class="set-sep">
+                        <p data-i18n="account.deleteWarning">{{account.deleteWarning}}</p>
+                        <button id="account-delete-start-btn" class="set-btn set-del" type="button" data-i18n="account.deleteMyAccount">{{account.deleteMyAccount}}</button>
+                        <div id="account-delete-confirm" class="set-confirm hidden">
+                            <label for="account-delete-input" data-i18n="account.typeDeleteToConfirm">{{account.typeDeleteToConfirm}}</label>
+                            <input type="text" id="account-delete-input" class="set-in" autocomplete="off">
+                            <button id="account-delete-confirm-btn" class="set-btn set-del" type="button" disabled data-i18n="account.yesPermanentlyDelete">{{account.yesPermanentlyDelete}}</button>
+                        </div>
+                        <p id="account-delete-status" class="set-status hidden"></p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- chrome:footer -->
+    <!-- /chrome:footer -->
+
+    <script src="i18n-strings-shared.js"></script>
+    <script src="dashboard-i18n-strings.js"></script>
+    <script src="settings-i18n-strings.js"></script>
+    <script src="i18n.js"></script>
+    <script src="reading-style.js"></script>
+    <script src="audio-prefs.js"></script>
+    <script src="vendor/supabase.min.js"></script>
+    <script src="supabase-config.js"></script>
+    <script src="auth-shared.js"></script>
+    <script type="module" src="settings.js"></script>
+    <script src="pwa-register.js"></script>
+</body>
+
+</html>

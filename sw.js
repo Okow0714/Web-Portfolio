@@ -20,7 +20,7 @@
 // stale-while-revalidate, so it serves the cached copy first and only refreshes behind it --
 // without a bump, a returning PWA user runs the previous version of a fixed file for one more
 // visit. Whether that matters is a judgement call; for a correctness fix it generally does.
-const CACHE_VERSION = 'khan-japanese-v240';
+const CACHE_VERSION = 'khan-japanese-v241';
 
 const APP_SHELL = [
     './',
@@ -40,6 +40,7 @@ const APP_SHELL = [
     './grammar.html',
     './dictionary.html',
     './dashboard.html',
+    './settings.html',
     './credits.html',
     './privacy.html',
     './terms.html',
@@ -74,6 +75,7 @@ const APP_SHELL = [
     './grammar.css',
     './dictionary.css',
     './dashboard.css',
+    './settings.css',
     './legal.css',
     './manifest.json',
     './favicon.svg',
@@ -102,6 +104,7 @@ const APP_SHELL = [
     './about.js',
     './particles.js',
     './music-player.js',
+    './audio-prefs.js',
     './game-audio.js',
     './game-core.js',
     './game-fx.js',
@@ -116,6 +119,7 @@ const APP_SHELL = [
     './grammar.js',
     './dictionary.js',
     './dashboard.js',
+    './settings.js',
     './hub-i18n-strings.js',
     './game-i18n-strings.js',
     './phonetics-i18n-strings.js',
@@ -123,6 +127,7 @@ const APP_SHELL = [
     './grammar-i18n-strings.js',
     './dictionary-i18n-strings.js',
     './dashboard-i18n-strings.js',
+    './settings-i18n-strings.js',
     './credits-i18n-strings.js',
     './privacy-i18n-strings.js',
     './terms-i18n-strings.js',
