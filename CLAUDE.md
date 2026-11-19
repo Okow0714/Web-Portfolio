@@ -135,7 +135,10 @@ own output; it now strips comments before splitting. Check comment balance after
 after a long run of previews in one mock-up artifact). The paragraphs above describe the 11-16/17 version;
 where they disagree, this one wins. **Tabs:** each is a FULL trapezoid now -- `::before` the right slant,
 `::after` the left, skewed 18deg, 10px -- in its tool's full colour (no more 48% mix), 33px closed and 38px on
-hover, STACKED so each sits on the right slant of the one before it (rising `--i`). The open tab is the bar's
+hover, STACKED so each sits on the right slant of the one before it (rising `--i`). **The slant is the height times
+tan(18deg)** (`--slant: calc(var(--h) * 0.32492)`), not a fixed width: a fixed 10px left the flat top's corners
+standing past the slant (0.7px closed, 2.3px hovered, a 6px block each side of the 50px open tab, reported as
+"a weird rectangle on top"). `--h` is an `@property` `<length>` so it animates and the slant follows it. The open tab is the bar's
 colour, 50px, 1.06rem with a 25px icon, and sits BEHIND its neighbours (`z-index: 0`) so neither of their
 slants is cut. A 4px line in `--bar` runs under the strip (`.header`'s inset box-shadow) and the open tab
 reaches down through it. Closed tabs drop to icons below **1400px (mn) / 1320px (en)**, up from 1360/1270,

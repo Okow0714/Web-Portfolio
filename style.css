@@ -2090,6 +2090,9 @@ body:has(.khanjp-loader) .container {
    are rows in the drawer.
    ============================================================================================= */
 .site-header-wrap { --bar: var(--header-bg); }
+/* A tab's height is registered so it can animate: the slant is computed from it (below), and an
+   unregistered property would jump to its end value while the height was still moving. */
+@property --h { syntax: "<length>"; inherits: false; initial-value: 33px; }
 @media (min-width: 861px) {
     .site-header-wrap { --line-h: 4px; }
     .header {
@@ -2106,7 +2109,10 @@ body:has(.khanjp-loader) .container {
        corners, no gradient or shadow. A closed tab is its tool's full colour; hover raises it. */
     .header-nav .nav-tool {
         --h: 33px;
-        --slant: 10px;
+        /* The slant is the HEIGHT times tan(18deg), so the skewed sides end exactly at the face's top
+           corners whatever the tab's height. A fixed 10px left the face's corners standing out past the
+           slant: 0.7px closed, 2.3px on hover, and a 6px block each side on the 50px open tab. */
+        --slant: calc(var(--h) * 0.32492);
         --tab-line: rgba(255, 255, 255, 0.3);
         position: relative;
         isolation: isolate;
@@ -2122,7 +2128,7 @@ body:has(.khanjp-loader) .container {
         color: #fff;
         /* a thin outline along the top; the slants carry their own. None along the bottom. */
         box-shadow: inset 0 1px 0 var(--tab-line);
-        transition: height 0.18s var(--ease-out), background-color 0.18s, color 0.18s;
+        transition: --h 0.18s var(--ease-out), background-color 0.18s, color 0.18s;
     }
     /* the two slanted sides, the same fill as the face so no seam shows */
     .header-nav .nav-tool::before,
