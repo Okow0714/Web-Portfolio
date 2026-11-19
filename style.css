@@ -2270,9 +2270,12 @@ body:has(.khanjp-loader) .container {
         isolation: isolate;
         width: 58px;
         height: 84px;
-        padding: 0 0 16px;
+        /* the icon (or, signed in, the initial) sits centred on the BAR, not at the ribbon's foot:
+           at the foot it hung across the bar's bottom edge. Fixed from the top, so the ribbon
+           dropping on hover leaves it where it is. */
+        padding: 18px 0 0;
         display: flex;
-        align-items: flex-end;
+        align-items: flex-start;
         justify-content: center;
         border: 0;
         border-radius: 0;
