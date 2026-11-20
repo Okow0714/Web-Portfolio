@@ -1549,9 +1549,23 @@ long after that file was renamed to `hub.css`, and `dashboard.html`/`about.html`
 plus their CSS/JS were simply never added when those pages shipped. **Adding a new page means
 adding it (and its CSS/JS/i18n-strings file) to `APP_SHELL` and bumping `CACHE_VERSION`** — the
 version bump forces every client through a fresh install with the corrected list rather than
-silently keeping whatever (possibly broken) cache they already had. Bump it for a significant
-*content* change as well: `fetch` is stale-while-revalidate (serve cached, refresh behind it),
-so without a bump a returning PWA user runs the old copy of a fixed file for one more visit.
+silently keeping whatever (possibly broken) cache they already had.
+**`fetch` is NETWORK FIRST since 2026-11-20** (it was stale-while-revalidate, which showed every
+page's OLD version once after each deploy, so the owner had to refresh each page by hand). Online,
+every same-origin GET is revalidated with `cache: 'no-cache'` -- which also skips GitHub Pages'
+10-minute max-age; an unchanged file costs one 304 -- and the cache is only the offline fallback,
+or what shows if the network has not answered in `NET_TIMEOUT` (4s). A content change therefore
+needs NO version bump any more. **`activate()` reloads every open page once when it replaces an
+older worker** (an old cache exists; a first install reloads nothing). That has to live in the
+worker: the first page after a deploy is still the OLD worker's, carrying the old copy of
+`pwa-register.js`, so a page-side `controllerchange` reload never runs on the one transition it is
+for -- measured. **The reload is fired, not awaited**: awaiting `client.navigate()` inside
+`waitUntil` deadlocks, because the reload's own request waits for activation to finish.
+`pwa-register.js` calls `reg.update()` when a tab becomes visible again. The deploy simulation is
+`scratchpad/swtest/run.js` (old worker -> new worker -> content change -> offline). It must WRITE
+files, not copy them: Windows keeps a copied file's old mtime, Python's server then answers the
+worker's update check with 304, and the new worker never installs -- which looked like a bug in
+the worker and was the test.
 
 **A CENTRED FLEX CHILD TALLER THAN ITS CONTAINER IS CLIPPED AT BOTH ENDS** (2026-11-01), and
 neither end can be scrolled to. `.modal-overlay` was `position: fixed` + `align-items: center`

@@ -16,11 +16,17 @@
 // actually installed rather than installed-but-slightly-stale. A version bump forces every
 // client through a fresh install with the corrected list; activate() then deletes the old,
 // possibly-broken cache.
-// Bump it for a meaningful *content* change too, not just a list change: fetch() below is
-// stale-while-revalidate, so it serves the cached copy first and only refreshes behind it --
-// without a bump, a returning PWA user runs the previous version of a fixed file for one more
-// visit. Whether that matters is a judgement call; for a correctness fix it generally does.
-const CACHE_VERSION = 'khan-japanese-v243';
+// NETWORK FIRST (2026-11-20). fetch() below used to be stale-while-revalidate: the cached copy
+// was served first and refreshed behind it, so every page showed its OLD version once after
+// each deploy and needed its own manual refresh. Now an online visitor always gets the current
+// file (revalidated with `cache: 'no-cache'`, which also skips GitHub Pages' 10-minute
+// max-age -- an unchanged file costs one 304), and the cache is only the offline fallback, or
+// what is shown if the network has not answered within NET_TIMEOUT. activate() reloads open
+// pages once when a new worker replaces an old one, so a visitor still on the old worker is
+// moved across without touching anything. Bumping CACHE_VERSION is no longer needed for content
+// changes, only for APP_SHELL list changes.
+const CACHE_VERSION = 'khan-japanese-v244';
+const NET_TIMEOUT = 4000;
 
 const APP_SHELL = [
     './',
@@ -137,24 +143,30 @@ const APP_SHELL = [
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_VERSION)
-            .then((cache) => cache.addAll(APP_SHELL))
+            .then((cache) => cache.addAll(APP_SHELL.map((u) => new Request(u, { cache: 'reload' }))))
             .then(() => self.skipWaiting())
     );
 });
 
+// Replacing an OLDER worker (an old cache exists) reloads every open page once, so a visitor
+// moves to the new version without refreshing. It has to happen here, not in pwa-register.js:
+// the first page after a deploy is still the old worker's, carrying the old copy of that file.
+// A first-ever install finds no old cache and reloads nothing.
 self.addEventListener('activate', (event) => {
-    event.waitUntil(
-        caches.keys()
-            .then((names) => Promise.all(
-                names.filter((n) => n !== CACHE_VERSION).map((n) => caches.delete(n))
-            ))
-            .then(() => self.clients.claim())
-    );
+    event.waitUntil((async () => {
+        const old = (await caches.keys()).filter((n) => n !== CACHE_VERSION);
+        await Promise.all(old.map((n) => caches.delete(n)));
+        await self.clients.claim();
+        if (!old.length) return;
+        // Not awaited: a reload's own request waits for this activation to finish, so waiting
+        // for the reload here would deadlock (it did, in testing).
+        const pages = await self.clients.matchAll({ type: 'window' });
+        pages.forEach((c) => c.navigate(c.url).catch(() => {}));
+    })());
 });
 
-// Stale-while-revalidate: serve from cache immediately if we have it (fast, works offline),
-// then quietly re-fetch in the background to keep the cache fresh for next time. Falls through
-// to network-only for anything not GET (Supabase auth/API calls) or cross-origin.
+// Network first, cache as the fallback. Non-GET (Supabase auth/API calls) and cross-origin
+// requests are left to the browser.
 self.addEventListener('fetch', (event) => {
     const { request } = event;
     if (request.method !== 'GET') return;
@@ -164,11 +176,15 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
         caches.open(CACHE_VERSION).then(async (cache) => {
             const cached = await cache.match(request);
-            const network = fetch(request).then((response) => {
+            const network = fetch(new Request(request, { cache: 'no-cache' })).then((response) => {
                 if (response && response.ok) cache.put(request, response.clone());
                 return response;
-            }).catch(() => cached);
-            return cached || network;
+            });
+            if (!cached) return network;
+            // A slow connection still gets the page: whichever comes first, the network or the
+            // timeout. A network failure falls back to the cached copy.
+            const timeout = new Promise((resolve) => setTimeout(() => resolve(cached), NET_TIMEOUT));
+            return Promise.race([network.catch(() => cached), timeout]);
         })
     );
 });
