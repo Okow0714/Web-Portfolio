@@ -22,10 +22,11 @@ window.GameAudio = (function () {
 
     const music = window.createMusicPlayer({ tool: 'game' });
     const sfxLevel = () => window.KhanAudio ? KhanAudio.level('game', 'sfx') : music.getLevel();
+    const sfxGain01 = () => window.KhanAudio ? KhanAudio.volume('game', 'sfx') / 100 : music.gain();
     function applySfxLevel() {
         ensureContext();
         if (!ctx) return;
-        masterGain.gain.value = window.KhanAudio ? KhanAudio.gain(sfxLevel()) : music.gain();
+        masterGain.gain.value = sfxGain01();
         if (sfxLevel() > 0 && ctx.state === 'suspended') ctx.resume();
     }
     document.addEventListener('audioprefchange', e => {
@@ -43,7 +44,7 @@ window.GameAudio = (function () {
         ctx = new AC();
         if (window.KhanAudio) KhanAudio.useSpeaker(ctx);
         masterGain = ctx.createGain();
-        masterGain.gain.value = window.KhanAudio ? KhanAudio.gain(sfxLevel()) : music.gain();
+        masterGain.gain.value = sfxGain01();
         masterGain.connect(ctx.destination);
         sfxGain = ctx.createGain();
         sfxGain.gain.value = 0.5;
@@ -110,6 +111,7 @@ window.GameAudio = (function () {
         // What the toolbar's speaker shows: the louder of the two, since it steps both.
         getLevel: () => Math.max(music.getLevel(), sfxLevel()),
         getSfxLevel: sfxLevel,
+        getSfxGain: sfxGain01,
         cycleLevel() {
             const now = Math.max(music.getLevel(), sfxLevel());
             const next = now <= 0 ? 3 : now - 1;

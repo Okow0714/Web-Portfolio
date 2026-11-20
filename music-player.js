@@ -31,7 +31,7 @@ window.createMusicPlayer = function (options) {
     let quietTimer = null;
 
     const gain = n => A ? A.gain(n) : [0, 0.30, 0.60, 1][n];
-    function target() { return MUSIC_VOLUME * gain(level); }
+    function target() { return MUSIC_VOLUME * (A ? A.volume(tool, 'music') / 100 : gain(level)); }
     function wanted() { return level > 0 && !(context === 'select' && A && A.selectMusic() === 'mute'); }
     function sparse() { return context === 'level' && A && A.flow() === 'sparse'; }
 

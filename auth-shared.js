@@ -787,8 +787,8 @@ supabaseClient.auth.onAuthStateChange((_event, session) => updateAuthUI(session)
 (function () {
     const PREF_KEYS = { lang: 'site-lang', darker: 'khanjp-darker', readingStyle: 'khanjp-reading-style', theme: 'khanjp-theme', volume: 'khanjp-volume' };
     // Settings page sound choices (2026-11-19). Stored as they are, under their own keys.
-    const AUDIO_KEYS = ['khanjp-vol-game-music', 'khanjp-vol-game-sfx', 'khanjp-vol-grammar-music', 'khanjp-vol-grammar-sfx',
-        'khanjp-vol-phonetics-sfx', 'khanjp-music-select', 'khanjp-music-flow', 'khanjp-tts-rate'];
+    const AUDIO_KEYS = ['khanjp-volp-game-music', 'khanjp-volp-game-sfx', 'khanjp-volp-grammar-music', 'khanjp-volp-grammar-sfx',
+        'khanjp-volp-phonetics-sfx', 'khanjp-music-select', 'khanjp-music-flow', 'khanjp-tts-rate'];
     const TOUR_PREFIX = 'khanjp-tour-';
     const SYNCED_KEY = 'khanjp-settings-account';   // which account this device last synced with
     const PUSH_DELAY = 800;

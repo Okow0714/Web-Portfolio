@@ -8,9 +8,10 @@ for (const f of ['i18n-strings-shared.js', 'dashboard-i18n-strings.js', 'setting
 const S = ctx.window.I18N_STRINGS;
 const esc = t => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 let html = fs.readFileSync(__dirname + '/settings.template.html', 'utf8');
+// a volume is a slider, 0-100% in steps of 5, with its value printed beside it; settings.js also
+// lets the mouse wheel move it
 html = html.replace(/\{\{STEPS (\w+) (\w+)\}\}/g, (_, tool, kind) =>
-  `<span class="set-seg" role="group" data-vol="${tool}:${kind}" aria-label="${esc(S[tool === 'game' ? 'nav.wordGame' : tool === 'grammar' ? 'nav.grammarConnect' : 'nav.phoneticsFamily'].mn)}: ${esc(S[kind === 'music' ? 'set.music' : 'set.sounds'].mn)}">`
-  + [0, 1, 2, 3].map(n => `<button type="button" data-v="${n}" data-i18n="set.step${n}">${esc(S['set.step' + n].mn)}</button>`).join('') + '</span>');
+  `<span class="set-vol"><input type="range" min="0" max="100" step="5" value="100" data-vol="${tool}:${kind}" aria-label="${esc(S[tool === 'game' ? 'nav.wordGame' : tool === 'grammar' ? 'nav.grammarConnect' : 'nav.phoneticsFamily'].mn)}: ${esc(S[kind === 'music' ? 'set.music' : 'set.sounds'].mn)}"><output>100%</output></span>`);
 const missing = new Set();
 // a spoken name carries its key too, so settings.js can swap it when the language changes
 html = html.replace(/aria-label="\{\{([\w.]+)\}\}"/g, (_, k) => { if (!S[k]) { missing.add(k); return ''; } return `aria-label="${esc(S[k].mn)}" data-aria="${k}"`; });

@@ -94,6 +94,38 @@ body:has(.settings-main) { background: var(--bg-page); }
 .set-seg button:hover { color: var(--ink); }
 .set-seg button[aria-pressed="true"] { background: var(--wine); color: var(--on-wine); }
 .set-seg button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+/* the volume sliders: a flat track filled in wine up to the value, a square thumb in gold */
+.set-vol { display: inline-flex; align-items: center; gap: 10px; }
+.set-vol output { min-width: 3.2em; text-align: right; font: 700 0.86rem var(--font-body); font-variant-numeric: tabular-nums; color: var(--ink); }
+.set-vol input[type="range"] {
+    --pct: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 220px;
+    max-width: 52vw;
+    height: 28px;
+    margin: 0;
+    background: transparent;
+    cursor: pointer;
+}
+.set-vol input[type="range"]::-webkit-slider-runnable-track {
+    height: 8px;
+    background: linear-gradient(to right, var(--wine) var(--pct), var(--sunk) var(--pct));
+    box-shadow: inset 0 0 0 1px var(--rule);
+}
+.set-vol input[type="range"]::-moz-range-track { height: 8px; background: var(--sunk); box-shadow: inset 0 0 0 1px var(--rule); }
+.set-vol input[type="range"]::-moz-range-progress { height: 8px; background: var(--wine); }
+.set-vol input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 22px;
+    margin-top: -7px;
+    border: 0;
+    background: var(--gold);
+    box-shadow: inset 0 0 0 2px var(--wine);
+}
+.set-vol input[type="range"]::-moz-range-thumb { width: 18px; height: 22px; border: 0; border-radius: 0; background: var(--gold); box-shadow: inset 0 0 0 2px var(--wine); }
+.set-vol input[type="range"]:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 .set-mix { display: grid; grid-template-columns: auto auto; gap: 6px 12px; align-items: center; justify-items: start; }
 .set-mix > span:not(.set-seg) { font: 700 0.74rem var(--font-body); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); }
 .set-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 0 16px; border: 0; background: var(--gold); color: var(--brand-ink, #4a2c3a); font: 600 0.9rem var(--font-body); cursor: pointer; }

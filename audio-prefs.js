@@ -5,10 +5,11 @@
 // level and its own sounds level, plus two music choices and the two devices. Everything that makes
 // a sound reads from here, so a tool never needs to know which other tools exist.
 //
-//   KhanAudio.level('game', 'music')      0..3   Word Match's music
-//   KhanAudio.level('grammar', 'sfx')     0..3   Grammar Connect's desk sounds
-//   KhanAudio.setLevel(tool, kind, n)     stores it and fires 'audioprefchange'
-//   KhanAudio.gain(n)                     the 0..1 gain for a step (not linear: 0 / .3 / .6 / 1)
+//   KhanAudio.volume('game', 'music')     0..100  Word Match's music, a percentage (Settings' slider)
+//   KhanAudio.setVolume(tool, kind, pct)  stores it and fires 'audioprefchange'
+//   KhanAudio.level(tool, kind)           0..3    the same, as the toolbar speaker's four steps
+//   KhanAudio.setLevel(tool, kind, n)     a step: 0 / 30 / 60 / 100 %
+//   KhanAudio.gain(n)                     the 0..1 gain for a step
 //   KhanAudio.selectMusic()               'play' | 'mute'   music while choosing a level
 //   KhanAudio.flow()                      'loop' | 'sparse' music during a level
 //   KhanAudio.speaker() / mic()           a deviceId, or '' for the device's default
@@ -22,6 +23,7 @@
     'use strict';
 
     const STEPS = [0, 0.30, 0.60, 1];
+    const STEP_PCT = [0, 30, 60, 100];
     const LEGACY = 'khanjp-volume';
     const K = {
         select: 'khanjp-music-select',   // 'mute' or absent
@@ -35,24 +37,40 @@
     const read = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
     const write = (k, v) => { try { if (v === null || v === '') localStorage.removeItem(k); else localStorage.setItem(k, String(v)); } catch (e) { /* private mode */ } };
     const announce = detail => document.dispatchEvent(new CustomEvent('audioprefchange', { detail }));
+    // 'khanjp-vol-*' held a step (0..3) for one day; 'khanjp-volp-*' holds the percentage.
     const key = (tool, kind) => 'khanjp-vol-' + tool + '-' + kind;
+    const pkey = (tool, kind) => 'khanjp-volp-' + tool + '-' + kind;
 
     function asStep(v) { const n = parseInt(v, 10); return n >= 0 && n <= 3 ? n : null; }
 
     window.KhanAudio = {
         TOOLS,
-        keys: () => Object.values(K).concat(...Object.keys(TOOLS).map(t => TOOLS[t].map(k => key(t, k)))),
-        level(tool, kind) {
+        keys: () => Object.values(K).concat(...Object.keys(TOOLS).map(t => TOOLS[t].map(k => pkey(t, k)))),
+        // a percentage; older stores (a step on the day-old key, or the site-wide step) are read
+        // through STEP_PCT, so nobody's level changes when they first open the slider
+        volume(tool, kind) {
+            const p = parseInt(read(pkey(tool, kind)), 10);
+            if (p >= 0 && p <= 100) return p;
             const own = asStep(read(key(tool, kind)));
-            if (own !== null) return own;
+            if (own !== null) return STEP_PCT[own];
             const old = asStep(read(LEGACY));
-            return old !== null ? old : 3;
+            return old !== null ? STEP_PCT[old] : 100;
+        },
+        setVolume(tool, kind, pct) {
+            const v = Math.max(0, Math.min(100, Math.round(+pct || 0)));
+            write(pkey(tool, kind), v);
+            write(key(tool, kind), null);
+            announce({ tool, kind, volume: v, level: this.level(tool, kind) });
+            return v;
+        },
+        level(tool, kind) {
+            const v = this.volume(tool, kind);
+            return v === 0 ? 0 : v <= 40 ? 1 : v <= 75 ? 2 : 3;
         },
         setLevel(tool, kind, n) {
-            const v = Math.max(0, Math.min(3, n | 0));
-            write(key(tool, kind), v);
-            announce({ tool, kind, level: v });
-            return v;
+            const step = Math.max(0, Math.min(3, n | 0));
+            this.setVolume(tool, kind, STEP_PCT[step]);
+            return step;
         },
         gain: n => STEPS[Math.max(0, Math.min(3, n | 0))],
         selectMusic: () => read(K.select) === 'mute' ? 'mute' : 'play',

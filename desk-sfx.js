@@ -61,7 +61,7 @@
         // 0.17 rather than CardSfx's 0.2: these pages have no music under them on Phonetics and
         // a quiet ambient track on Grammar, so the same peak reads louder than it does on the
         // game's board.
-        master.gain.value = 0.17 * VOLUME_STEPS[lvl];
+        master.gain.value = 0.17 * (window.KhanAudio ? KhanAudio.volume(TOOL, 'sfx') / 100 : VOLUME_STEPS[lvl]);
         return true;
     }
 

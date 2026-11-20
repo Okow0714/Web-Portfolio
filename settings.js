@@ -68,9 +68,22 @@ document.addEventListener('themechange', () => paint(themeGroup, (window.getThem
 
 // ------------------------------------------------------------------ audio
 const flowNote = $('set-flow-note');
-document.querySelectorAll('[data-vol]').forEach(g => {
-    const [tool, kind] = g.dataset.vol.split(':');
-    onPick(g, (v) => { A.setLevel(tool, kind, +v); paint(g, v); });
+// Each volume is a slider. Dragging it, the arrow keys, or the mouse wheel over it all set it; the
+// wheel moves it 5% a notch and keeps the page still while the pointer is on the slider.
+function showVol(input) {
+    input.nextElementSibling.textContent = input.value + '%';
+    input.style.setProperty('--pct', input.value + '%');
+}
+document.querySelectorAll('input[data-vol]').forEach(input => {
+    const [tool, kind] = input.dataset.vol.split(':');
+    const save = () => { A.setVolume(tool, kind, +input.value); showVol(input); };
+    input.addEventListener('input', save);
+    input.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const step = e.deltaY < 0 || e.deltaX > 0 ? 5 : -5;
+        input.value = Math.max(0, Math.min(100, +input.value + step));
+        save();
+    }, { passive: false });
 });
 onPick($('set-select'), (v) => { A.setSelectMusic(v); paint($('set-select'), v); });
 onPick($('set-flow'), (v) => { A.setFlow(v); paintAll(); });
@@ -80,7 +93,7 @@ function paintAll() {
     paint(langGroup, window.siteLang ? window.siteLang() : 'mn');
     paint(themeGroup, (window.getTheme && window.getTheme()) || '');
     if (!A) return;
-    document.querySelectorAll('[data-vol]').forEach(g => { const [tool, kind] = g.dataset.vol.split(':'); paint(g, A.level(tool, kind)); });
+    document.querySelectorAll('input[data-vol]').forEach(input => { const [tool, kind] = input.dataset.vol.split(':'); input.value = A.volume(tool, kind); showVol(input); });
     paint($('set-select'), A.selectMusic());
     paint($('set-flow'), A.flow());
     flowNote.textContent = t(A.flow() === 'sparse' ? 'set.flowSparseNote' : 'set.flowLoopNote');

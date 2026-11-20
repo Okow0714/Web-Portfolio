@@ -40,7 +40,7 @@ const CardSfx = (function () {
     function live() {
         const lvl = window.GameAudio ? GameAudio.getSfxLevel() : 3;
         if (!lvl || !boot()) return false;
-        master.gain.value = 0.2 * (lvl / 3);
+        master.gain.value = 0.2 * (window.GameAudio && GameAudio.getSfxGain ? GameAudio.getSfxGain() : lvl / 3);
         return true;
     }
 

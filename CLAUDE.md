@@ -139,7 +139,15 @@ where they disagree, this one wins. **Tabs:** each is a FULL trapezoid now -- `:
 hover, STACKED so each sits on the right slant of the one before it (rising `--i`). **The slant is the height times
 tan(18deg)** (`--slant: calc(var(--h) * 0.32492)`), not a fixed width: a fixed 10px left the flat top's corners
 standing past the slant (0.7px closed, 2.3px hovered, a 6px block each side of the 50px open tab, reported as
-"a weird rectangle on top"). `--h` is an `@property` `<length>` so it animates and the slant follows it. The open tab is the bar's
+"a weird rectangle on top"). `--h` is an `@property` `<length>` so it animates and the slant follows it.
+**Each tab is ONE clip-path shape now (2026-11-20), not a rectangle plus two skewed pseudo-elements.** Where
+those pieces met, edge smoothing let the bar show through as hairline seams -- reported as two thin lines
+beside the open tab that vanished on zooming in, which is the signature of a seam on a fractional pixel. The
+element is cut to the trapezoid and painted `--edge` (30% white over the tab colour); `::before` is the same
+trapezoid 1px inside, in `--fill`. Its box includes both slants and equal negative margins give the room back,
+so layout and label coverage are unchanged (re-checked). A clip-path clips the outline too, so keyboard
+focus turns the edge white instead. `scratchpad/ds/build/seam.js` scans the line under the open tab at six
+zooms, both themes, four pages. The open tab is the bar's
 colour, 50px, 1.06rem with a 25px icon, and sits BEHIND its neighbours (`z-index: 0`) so neither of their
 slants is cut. A 4px line in `--bar` runs under the strip (`.header`'s inset box-shadow) and the open tab
 reaches down through it. Closed tabs drop to icons below **1400px (mn) / 1320px (en)**, up from 1360/1270,
@@ -456,8 +464,11 @@ storage bucket; `auth-shared.js` keeps this device's copy in `khanjp-avatar`, pa
 and panel (`.has-pic`) and fires `avatarchange` (the dashboard listens). Before 013 is run, saving either
 fails politely and nothing else breaks -- the sync's own select never names the new columns.
 **Sound is per tool now** (`audio-prefs.js`, `window.KhanAudio`, loaded before every page script that makes
-a sound): `khanjp-vol-<game|grammar|phonetics>-<music|sfx>`, falling back to the old shared
-`khanjp-volume` so nobody's level resets. A tool's toolbar speaker steps ITS music and sounds together;
+a sound). **Volumes are PERCENTAGES** (2026-11-20, Settings shows them as sliders that also take the mouse
+wheel, 5% a notch): `khanjp-volp-<game|grammar|phonetics>-<music|sfx>`, read through `KhanAudio.volume()`.
+Older stores are read through 0/30/60/100 -- the day-old step keys `khanjp-vol-*` and the site-wide
+`khanjp-volume` -- so nobody's level resets. The toolbar speakers keep four steps: `level()` derives a step
+from the percentage and `setLevel(step)` writes 0/30/60/100. A tool's toolbar speaker steps ITS music and sounds together;
 Settings sets them apart. `music-player.js` takes `{ tool }` and `setTrack(src, 'select'|'level')`:
 `khanjp-music-select=mute` keeps the level select silent, `khanjp-music-flow=sparse` plays a level's track
 once then waits 1-4 minutes at random. The chosen speaker (`khanjp-speaker`) routes the music element and

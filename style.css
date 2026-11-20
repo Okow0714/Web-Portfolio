@@ -2117,52 +2117,50 @@ body:has(.khanjp-loader) .container {
         padding: 0 18px var(--line-h);
     }
     .nav-tool-item { align-items: flex-end; }
-    /* Flat, like Phonetics Family's tiles and Word Match's cards: one solid colour, square
-       corners, no gradient or shadow. A closed tab is its tool's full colour; hover raises it. */
+    /* Flat, like Phonetics Family's tiles and Word Match's cards: one solid colour, square corners,
+       no gradient or shadow. A closed tab is its tool's full colour; hover raises it.
+       ONE SHAPE PER TAB (2026-11-19). A tab was a rectangle plus two skewed pseudo-elements for its
+       slants, and where those pieces met the browser's edge smoothing let the bar show through as
+       hairline seams -- visible at 100% on a screen with fractional scaling and gone on zooming in,
+       which is exactly how they were reported. Now the element itself is cut to the trapezoid with
+       clip-path and painted in the edge colour, and ::before is the same trapezoid 1px inside it in
+       the fill colour: two whole shapes, one on the other, no joins. The box includes both slants
+       and equal negative margins give the room back, so the row lays out exactly as before. A
+       clip-path also clips the hit area, so the overlapping boxes never steal each other's clicks. */
     .header-nav .nav-tool {
         --h: 33px;
-        /* The slant is the HEIGHT times tan(18deg), so the skewed sides end exactly at the face's top
-           corners whatever the tab's height. A fixed 10px left the face's corners standing out past the
-           slant: 0.7px closed, 2.3px on hover, and a 6px block each side on the 50px open tab. */
+        /* The slant is the HEIGHT times tan(18deg): the angle stays the same at every height. A
+           fixed 10px left the top corners standing past the slant (0.7px closed, 2.3px on hover,
+           a 6px block each side of the 50px open tab). */
         --slant: calc(var(--h) * 0.32492);
-        --tab-line: rgba(255, 255, 255, 0.3);
+        --fill: var(--tab);
+        --edge: color-mix(in srgb, #fff 30%, var(--tab));   /* the old 1px of white at 30% */
         position: relative;
         isolation: isolate;
         z-index: var(--i, 1);
         height: var(--h);
         align-self: flex-end;
         gap: 6px;
-        padding: 0 15px 0 6px;   /* room on the right for the next tab's slant, which sits on top */
+        margin: 0 calc(var(--slant) * -1);
+        /* 15px on the right: room for the next tab's slant, which sits on top */
+        padding: 0 calc(15px + var(--slant)) 0 calc(6px + var(--slant));
         border: 0;
         border-radius: 0;
         font-size: 0.8rem;
-        background: var(--tab);
+        background: var(--edge);
         color: #fff;
-        /* a thin outline along the top; the slants carry their own. None along the bottom. */
-        box-shadow: inset 0 1px 0 var(--tab-line);
-        transition: --h 0.18s var(--ease-out), background-color 0.18s, color 0.18s;
+        clip-path: polygon(var(--slant) 0, calc(100% - var(--slant)) 0, 100% 100%, 0 100%);
+        transition: --h 0.18s var(--ease-out), color 0.18s;
     }
-    /* the two slanted sides, the same fill as the face so no seam shows */
-    .header-nav .nav-tool::before,
-    .header-nav .nav-tool::after {
+    /* the face: the same trapezoid 1px in along the top and both slants (1.05px across, since a
+       slant at 18deg needs 1/cos 18 to stand 1px off), and flush along the bottom */
+    .header-nav .nav-tool::before {
         content: "";
         position: absolute;
+        inset: 0;
         z-index: -1;
-        top: 0;
-        bottom: 0;
-        width: calc(var(--slant) * 2);
-        transform-origin: bottom;
-        background: inherit;
-    }
-    .header-nav .nav-tool::before {
-        right: calc(var(--slant) * -1);
-        transform: skewX(18deg);
-        box-shadow: inset -1px 0 0 var(--tab-line), inset 0 1px 0 var(--tab-line);
-    }
-    .header-nav .nav-tool::after {
-        left: calc(var(--slant) * -1);
-        transform: skewX(-18deg);
-        box-shadow: inset 1px 0 0 var(--tab-line), inset 0 1px 0 var(--tab-line);
+        background: var(--fill);
+        clip-path: polygon(calc(var(--slant) + 0.73px) 1px, calc(100% - var(--slant) - 0.73px) 1px, calc(100% - 1.05px) 100%, 1.05px 100%);
     }
     .header-nav .nav-tool .nav-ico {
         width: 16px;
@@ -2173,26 +2171,25 @@ body:has(.khanjp-loader) .container {
     }
     .header-nav .nav-tool span { position: relative; }
     .header-nav .nav-tool:not(.nav-current):hover { --h: 38px; }
-    /* The open tab: the bar's own colour, larger type and icon, BEHIND its neighbours. */
+    /* The open tab: the bar's own colour, larger type and icon, BEHIND its neighbours, and one
+       piece with the bar, so its edge is the bar's colour too (no outline). */
     .header-nav .nav-tool.nav-current {
         --h: 50px;
+        --fill: var(--bar);
+        --edge: var(--bar);
         z-index: 0;
-        margin-bottom: calc(var(--line-h) * -1);
+        margin: 0 calc(var(--slant) * -1) calc(var(--line-h) * -1);
         gap: 9px;
-        padding: 0 18px;
+        padding: 0 calc(18px + var(--slant));
         font-size: 1.06rem;
         letter-spacing: 0.005em;
         color: #fff;
-        background: var(--bar);
     }
     .header-nav .nav-tool.nav-current .nav-ico { width: 25px; height: 25px; }
-    /* the open tab is one piece with the bar, so it carries no outline */
-    .header-nav .nav-tool.nav-current,
-    .header-nav .nav-tool.nav-current::before,
-    .header-nav .nav-tool.nav-current::after { box-shadow: none; }
+    /* a clip-path clips an outline as well, so focus turns the tab's own edge white instead */
     .header-nav .nav-tool:focus-visible {
-        outline: 2px solid #fff;
-        outline-offset: -5px;
+        outline: none;
+        --edge: #fff;
     }
     .nav-tool[href="origins.html"] { --tab: #a8431f; --i: 1; }
     .nav-tool[href="game.html"] { --tab: #5a55b0; --i: 2; }
