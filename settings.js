@@ -273,7 +273,9 @@ async function toAvatar(file) {
 }
 async function saveAvatar(src) {
     const { error } = await sb.from('user_settings').upsert({ user_id: uid, avatar: src }, { onConflict: 'user_id' });
-    if (error) { say('set-pic-msg', t('set.picFailed')); return false; }
+    // The database's own reason goes after the message: a failed save is otherwise impossible to
+    // diagnose from outside the signed-in session (2026-11-20, a save failing after migration 013).
+    if (error) { console.warn('avatar save', error); say('set-pic-msg', t('set.picFailed') + ' (' + [error.code, error.message].filter(Boolean).join(': ') + ')'); return false; }
     window.khanjpSetAvatar(uid, src);
     say('set-pic-msg', t('set.saved'));
     return true;
