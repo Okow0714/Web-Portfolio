@@ -2326,19 +2326,25 @@ body:has(.khanjp-loader) .container {
     .account-menu:has(.account-menu-trigger:focus-visible) { outline: 2px solid #fff; outline-offset: -2px; }
 }
 
-/* At night the bar steps down towards black: a 42% shade over whichever seal the page wears.
-   Both dark states written out (data-theme, and follow-the-device which stamps nothing). Not on
-   the home page, whose masthead is transparent over its own scene. */
+/* At night the bar steps down towards black. It used to be one 42% shade for every page, which
+   took Grammar Connect's red to brown and the Dictionary's sumi to near-black (2026-11-20). Each
+   tool now keeps --night-keep of its colour: darkened only down to a common lightness (CIELAB L*
+   30, or 34 for Grammar Connect and the Dictionary, the owner's pick from a preview) and never
+   further, so the colours already darker than that -- the reader's plum, the Dictionary's sumi --
+   keep their day shade at night. Text cannot lose contrast from this: the night bar is still the
+   day colour or darker, and every day bar already clears with its light text. Pages that are not
+   a tool keep the old 58%. --bar is both the bar's fill and the open tab's, so they stay one
+   piece. Both dark states written out (data-theme, and follow-the-device which stamps nothing).
+   Not on the home page, whose masthead is transparent over its own scene. */
+body:has(.origins-main) { --night-keep: 70%; }
+body:has(.game-main) { --night-keep: 72%; }
+body:has(.phonetics-main) { --night-keep: 73%; }
+body:has(.grammar-main) { --night-keep: 77%; }
+body:has(.reading-main) { --night-keep: 100%; }
+body:has(.dictionary-main) { --night-keep: 100%; }
 @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) body:not(:has(.hub-main)) .site-header-wrap .header {
-        background: linear-gradient(rgba(8, 4, 6, 0.42), rgba(8, 4, 6, 0.42)), var(--header-bg);
-    }
+    :root:not([data-theme="light"]) body:not(:has(.hub-main)) .site-header-wrap { --bar: color-mix(in srgb, var(--header-bg) var(--night-keep, 58%), rgb(8, 4, 6)); }
+    :root:not([data-theme="light"]) body:not(:has(.hub-main)) .site-header-wrap .header { background: var(--bar); }
 }
-:root[data-theme="dark"] body:not(:has(.hub-main)) .site-header-wrap .header {
-    background: linear-gradient(rgba(8, 4, 6, 0.42), rgba(8, 4, 6, 0.42)), var(--header-bg);
-}
-/* the same shade as a flat colour, for the tabs: the open one is the bar, the closed ones blend into it */
-@media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) body:not(:has(.hub-main)) .site-header-wrap { --bar: color-mix(in srgb, var(--header-bg) 58%, rgb(8, 4, 6)); }
-}
-:root[data-theme="dark"] body:not(:has(.hub-main)) .site-header-wrap { --bar: color-mix(in srgb, var(--header-bg) 58%, rgb(8, 4, 6)); }
+:root[data-theme="dark"] body:not(:has(.hub-main)) .site-header-wrap { --bar: color-mix(in srgb, var(--header-bg) var(--night-keep, 58%), rgb(8, 4, 6)); }
+:root[data-theme="dark"] body:not(:has(.hub-main)) .site-header-wrap .header { background: var(--bar); }

@@ -131,8 +131,15 @@ logo stays at EVERY width (it was hidden below 1520px for a day, on numbers that
 instead the closed tabs drop to icons below 1360px (mn) / 1270px (en). `scratchpad/tabs/fit-check.js`
 checks 20 widths x 2 languages x 3 pages and fails if the wordmark is hidden; `flat2/verify.js`
 checks pixel by pixel that the open tab matches the bar in day, night and follow-the-device dark.
-**At night the bar is 42% darker** on every page but the hub, whose masthead is transparent over its
-scene. The phone drawer uses the same markup and shows the tools as rows; the tab sheet's dictionary
+**At night each TOOL's bar keeps `--night-keep` of its colour** (2026-11-20, set per page in
+`style.css`): darkened only down to CIELAB L* 30 (L* 34 for Grammar Connect and the Dictionary, the
+owner's pick from a preview) and never further -- origins 70%, game 72%, phonetics 73%, grammar 77%,
+reading and dictionary 100%, since those two are already darker than the target. It was one 42%
+shade for all, which took grammar's red to brown and the sumi to near-black. Non-tool pages keep
+58%. The bar is painted `var(--bar)` flat (no overlay gradient now), so it and the open tab are one
+colour by construction. Text cannot lose contrast from a lighter night shade: the night bar is still
+the day colour or darker. `scratchpad/night-check.js` reads the real pixels in three dark states.
+The hub is exempt, its masthead being transparent over its scene. The phone drawer uses the same markup and shows the tools as rows; the tab sheet's dictionary
 label is now "Толь бичиг" like everywhere else (`nav.vocabulary` and `nav.practice` are deleted).
 **`prune-css.js` once split a selector list on a comma INSIDE a comment** and left an unclosed `/*`
 that would have swallowed the rules after it -- the 2026-09-08 failure shape. Caught by eye in its
