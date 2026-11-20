@@ -2191,12 +2191,12 @@ body:has(.khanjp-loader) .container {
         outline: none;
         --edge: #fff;
     }
-    .nav-tool[href="origins.html"] { --tab: #a8431f; --i: 1; }
+    .nav-tool[href="origins.html"] { --tab: #0e6c83; --i: 1; }
     .nav-tool[href="game.html"] { --tab: #5a55b0; --i: 2; }
     .nav-tool[href="phonetics.html"] { --tab: #1f6b52; --i: 3; }
     .nav-tool[href="grammar.html"] { --tab: #b0432f; --i: 4; }
     .nav-tool[href="reading.html"] { --tab: #6b1f52; --i: 5; }
-    .nav-tool[href="dictionary.html"] { --tab: #23405f; --i: 6; }
+    .nav-tool[href="dictionary.html"] { --tab: #222939; --i: 6; }
 }
 
 /* The wordmark beside the logo stays at every width. Short of room, the closed tabs show only

@@ -54,9 +54,15 @@ pages that carry them (every page above except `about.html`, which has no shared
 at all, and `reset-password.html`); `credits.html` itself carries the masthead+footer too.
 **Their colour is per-tool, though** (2026-10-24): each of the six tool pages puts
 `--header-bg` on `.site-header-wrap`/`.site-footer` set to **exactly the `--seal` that
-`index.html` gives that page** -- origins `#a8431f`, game `#5a55b0`, phonetics `#1f6b52`,
-grammar `#b0432f`, reading `#6b1f52`, dictionary `#23405f` -- so the button pressed on the home
-page and the page it opens are the same colour. The seal and the page's own `--header-bg` are
+`index.html` gives that page** -- origins `#0e6c83` (teal), game `#5a55b0`, phonetics `#1f6b52`,
+grammar `#b0432f`, reading `#6b1f52`, dictionary `#222939` (sumi ink) -- so the button pressed on the home
+page and the page it opens are the same colour. **Origins and dictionary changed on 2026-11-20** (they were
+`#a8431f` and `#23405f`): measured with CIEDE2000, origins sat **4.8** from grammar's red by day and **3.5**
+in the night header -- one colour to the eye -- and dictionary 15 / 12 from game's violet. Five options were
+previewed and the owner chose teal + sumi. The teal is the searched `#11809c` DEEPENED to `#0e6c83`, because
+on the lighter one even white reached only 4.57:1 and no gold header text could clear. Closest pair of the
+six is now game/reading at 16.8 (night). `scratchpad/ds/colors/solve.js` is the search, `contrast.js` the
+per-element check (68 measurements, four theme states). The seal and the page's own `--header-bg` are
 two separate literals: change one without the other and they drift apart silently. Four of them already did this but with the seal
 *deepened to 68%*, which is what made them not match, and game/origins had no block at all.
 **The ground is now fixed, so the text on it had to move**: `--header-accent` is TEXT in nine
@@ -668,8 +674,11 @@ The detail opens in a **desk beside the wall**, not under it: the right of that 
 empty, and a panel underneath means scrolling back on every pick.
 
 **The page wears its own button.** `index.html` gives every tool a `--seal`; this page's is
-`#a8431f`, and that colour runs through its accents so the button pressed on the home page and
-the page it opens match. **The masthead and footer carry it too** as of 2026-10-24 -- see the
+`#0e6c83` (teal since 2026-11-20, was `#a8431f`), and that colour runs through its accents so the button
+pressed on the home page and the page it opens match. **Hiragana keeps the old red as its own token,
+`--hira`**: the three scripts are colour-coded (hiragana red, katakana indigo, kanji slate) and a teal
+hiragana would have put all three in blue-greys (19.3 from indigo, 15.3 at night, against 38.9). The
+script code is content and the seal is identity, so they are two tokens. **The masthead and footer carry it too** as of 2026-10-24 -- see the
 per-tool masthead note under Shared `style.css`; the markup is still generated once from
 `_chrome.html` and only the colour tokens are per-page.
 One trap that measurement caught and a screenshot did not: `--seal` *lightens* in dark mode

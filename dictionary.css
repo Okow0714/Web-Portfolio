@@ -820,7 +820,8 @@ body:has(.dictionary-main) {
 
 /* ---------------------------------------------------------------------------------------------
    Masthead and footer carry this tool's own colour: exactly the seal index.html gives this page
-   (#23405f), so the button pressed on the home page and the page it opens are the same colour.
+   (#222939, sumi ink since 2026-11-20; it was navy #23405f, CIEDE2000 15 from Word Match's violet
+   and 12 in the night header), so the button pressed on the home page and the page it opens match.
    This used to be that seal DEEPENED to 68%, which is precisely what made them not match.
 
    The ground is therefore fixed now, so everything set on it had to move instead. --header-accent
@@ -829,7 +830,7 @@ body:has(.dictionary-main) {
    it clears 4.5. --header-accent-dark deliberately stays BELOW accent: it is the far stop of the
    brand seal's gradient and a border colour, never text, so 3:1 is its bar, and lifting it on its
    own inverted that gradient on four of the six pages.
-   Measured here: cream 9.38:1 and accent 6.06:1 -- this is the one seal dark enough to keep the shared gold untouched -- elevated 4.64:1.
+   Measured here: cream 12.80:1 and accent 8.26:1 -- this is the one seal dark enough to keep the shared gold untouched -- cream on the elevated fill 4.55:1.
 
    Declared on .site-header-wrap/.site-footer because that is where style.css declares
    --header-bg, and repeated under html[data-contrast="darker"] because style.css re-declares it
@@ -837,16 +838,16 @@ body:has(.dictionary-main) {
    --------------------------------------------------------------------------------------------- */
 .site-header-wrap,
 .site-footer {
-    --header-bg: #23405f;
-    --header-bg-elevated: #586e85;
+    --header-bg: #222939;
+    --header-bg-elevated: #696d78;
     --header-accent: #e8bd6d;
     --header-accent-dark: #c8a35e;
 }
 
 html[data-contrast="darker"] .site-header-wrap,
 html[data-contrast="darker"] .site-footer {
-    --header-bg: #142537;
-    --header-bg-elevated: #23405f;
+    --header-bg: #141821;
+    --header-bg-elevated: #222939;
 }
 
 /* ---------------------------------------------------------------------------------------------
