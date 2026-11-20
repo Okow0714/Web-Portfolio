@@ -487,7 +487,12 @@ Settings sets them apart. `music-player.js` takes `{ tool }` and `setTrack(src, 
 once then waits 1-4 minutes at random. The chosen speaker (`khanjp-speaker`) routes the music element and
 every AudioContext through `KhanAudio.useSpeaker()`; the chosen microphone (`khanjp-mic`) feeds the reader's
 voice gate and is handed to `recognition.start(track)` on a computer (Chrome/Edge 133+; elsewhere ignored).
-The read-aloud voice cannot be routed by any page and stays on the default speaker. Volumes and music
+The read-aloud voice cannot be routed by any page and stays on the default speaker. **Volume is LIVE** (2026-11-20): `audioprefchange` is a DOM event and reached only the page that
+fired it, so a tool tab left open behind Settings kept its old level until reloaded. `audio-prefs.js`
+now turns another tab's `storage` event on any of its keys into the same event, the music player
+fades in 150ms when the change is a volume, and the effects read the volume per cue. Settings also
+PREVIEWS: dragging a music slider plays that tool's track at the new level (fading out 1.2s after
+the hand stops), a sounds slider a short paper tick. `scratchpad/vol-live.js` drives two tabs. Volumes and music
 choices sync with the account; the two device ids deliberately do not.
 **Checkers**: `scratchpad/ds/build/settings-check.js` (49 checks; a planted session and every Supabase
 call answered by the test, so the signed-in tab, each save's payload, two-step setup and the code prompt

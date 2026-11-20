@@ -74,9 +74,51 @@ function showVol(input) {
     input.nextElementSibling.textContent = input.value + '%';
     input.style.setProperty('--pct', input.value + '%');
 }
+// PREVIEW: dragging a slider plays what it controls at the new level, so the level can be heard
+// while it is chosen -- a music slider plays that tool's own first track and fades it out 1.2s
+// after the hand stops; a sounds slider plays a short paper tick, at most every 90ms. Both go to
+// the speaker chosen below. (Any open tool tab follows too: see the storage listener in
+// audio-prefs.js.)
+const PREVIEW_TRACK = { game: 'sound/game-music/lofi-jazz-study.mp3', grammar: 'sound/grammar-music/n5-zen-drift.mp3' };
+const previewEls = {};
+let previewStop = null, tickCtx = null, lastTick = 0;
+function previewMusic(tool, pct) {
+    if (!PREVIEW_TRACK[tool]) return;
+    Object.keys(previewEls).forEach(k => { if (k !== tool) previewEls[k].pause(); });
+    let el = previewEls[tool];
+    if (!el) { el = previewEls[tool] = new Audio(PREVIEW_TRACK[tool]); el.loop = true; el.currentTime = 20; }
+    if (A.useSpeaker) A.useSpeaker(el);
+    el.volume = 0.35 * pct / 100;                       // the same ceiling music-player.js uses
+    if (pct > 0 && el.paused) el.play().catch(() => {});
+    if (pct === 0) el.pause();
+    clearTimeout(previewStop);
+    previewStop = setTimeout(() => {
+        const start = el.volume, t0 = performance.now();
+        const step = () => { const k = Math.min(1, (performance.now() - t0) / 500); el.volume = start * (1 - k); if (k < 1) requestAnimationFrame(step); else el.pause(); };
+        requestAnimationFrame(step);
+    }, 1200);
+}
+function previewTick(pct) {
+    const now = performance.now();
+    if (pct === 0 || now - lastTick < 90) return;
+    lastTick = now;
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    if (!tickCtx) { try { tickCtx = new AC(); } catch (e) { return; } if (A.useSpeaker) A.useSpeaker(tickCtx); }
+    if (tickCtx.state === 'suspended') tickCtx.resume();
+    const len = Math.floor(tickCtx.sampleRate * 0.03), buf = tickCtx.createBuffer(1, len, tickCtx.sampleRate), d = buf.getChannelData(0);
+    for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 3);
+    const src = tickCtx.createBufferSource(), bp = tickCtx.createBiquadFilter(), g = tickCtx.createGain();
+    bp.type = 'bandpass'; bp.frequency.value = 2400; bp.Q.value = 0.9;
+    g.gain.value = 0.9 * pct / 100;
+    src.buffer = buf; src.connect(bp); bp.connect(g); g.connect(tickCtx.destination); src.start();
+}
 document.querySelectorAll('input[data-vol]').forEach(input => {
     const [tool, kind] = input.dataset.vol.split(':');
-    const save = () => { A.setVolume(tool, kind, +input.value); showVol(input); };
+    const save = () => {
+        A.setVolume(tool, kind, +input.value); showVol(input);
+        if (kind === 'music') previewMusic(tool, +input.value); else previewTick(+input.value);
+    };
     input.addEventListener('input', save);
     input.addEventListener('wheel', (e) => {
         e.preventDefault();

@@ -97,4 +97,18 @@
             if (p && p.catch) p.catch(() => { try { target.setSinkId(''); } catch (e) { /* stay on default */ } });
         },
     };
+    // LIVE ACROSS TABS. 'audioprefchange' is a DOM event, so it only ever reached the page that
+    // made the change -- a Word Match tab left open behind Settings kept its old volume until it
+    // was reloaded. Another tab writing one of these keys fires 'storage' here, which is turned
+    // into the same event, so every listener (the music player, the sound effects, the toolbar
+    // speakers) follows a slider while it is being dragged.
+    window.addEventListener('storage', (e) => {
+        if (!e.key) return;
+        const m = /^khanjp-volp-([a-z]+)-(music|sfx)$/.exec(e.key);
+        if (m) { const A = window.KhanAudio; announce({ tool: m[1], kind: m[2], volume: A.volume(m[1], m[2]), level: A.level(m[1], m[2]) }); return; }
+        if (e.key === K.select) announce({ select: e.newValue || '' });
+        else if (e.key === K.flow) announce({ flow: e.newValue || '' });
+        else if (e.key === K.speaker) announce({ speaker: e.newValue || '' });
+        else if (e.key === K.tts) announce({ tts: e.newValue || '' });
+    });
 })();

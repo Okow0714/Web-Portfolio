@@ -105,17 +105,18 @@ window.createMusicPlayer = function (options) {
 
     // Re-reads every choice and brings the playing track into line: called after the level
     // changes and whenever the Settings page (or another control) changes a sound preference.
-    function refresh() {
+    // A volume slider being dragged wants the level to follow the hand, so `quick` fades in 150ms.
+    function refresh(quick) {
         if (A) level = A.level(tool, 'music');
         if (!el || !el.src) return;
         el.loop = !sparse();
-        if (wanted()) { if (el.paused && !quietTimer) play(); fadeTo(target(), 900); }
-        else fadeTo(0, 400);
+        if (wanted()) { if (el.paused && !quietTimer) play(); fadeTo(target(), quick ? 150 : 900); }
+        else fadeTo(0, quick ? 150 : 400);
     }
     document.addEventListener('audioprefchange', e => {
         const d = e.detail || {};
         if (d.speaker !== undefined && el && A) A.useSpeaker(el);
-        if (d.tool === undefined || d.tool === tool) refresh();
+        if (d.tool === undefined || d.tool === tool) refresh(d.volume !== undefined);
     });
 
     // Browsers block the very first play() without a user gesture, and the level select asks for
