@@ -468,7 +468,15 @@ would need a paid SMS provider. Settings enrols it (QR code + key, then one code
 the code after a password sign-in AND on any restored or provider session whose assurance level is still
 aal1 (`needsSecondStep()`, `#auth-mfa-form` inside `#auth-modal`, title swapped BY KEY so `i18n.js` cannot
 rewrite it back to "Log in"). **What makes it real is migration 013**: a RESTRICTIVE policy on every user
-table refuses an aal1 session of an account that has a verified factor. Without that migration the second
+table refuses an aal1 session of an account that has a verified factor.
+**013 AS WRITTEN LOCKED EVERY SIGNED-IN VISITOR OUT, and 014 fixes it** (2026-11-20): its policy read
+`auth.mfa_factors` directly, as Supabase's MFA guide shows, but in this project `authenticated` has no
+SELECT on that table, so the policy itself raised `42501` on EVERY signed-in query on all ten tables.
+Found only because a profile picture would not save. `supabase-migration-014-two-step-fix.sql` routes
+the check through `public.allowed_aal()`, SECURITY DEFINER, which answers for the caller only; if even
+its owner cannot read the table it DROPS the policies instead (two-step becomes a screen only) rather
+than leave accounts unusable. Never point a policy at a table in `auth` without checking the role can
+read it -- an RLS expression that errors fails the whole query, not just the row. Without that migration the second
 step is a screen only. SECURITY DEFINER functions (`delete_own_account`, `reset_own_progress`) bypass RLS
 and are not covered by it.
 **Profile picture and phone number live on `user_settings`** (owner-only since migration 009; columns
