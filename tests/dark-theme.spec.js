@@ -74,7 +74,9 @@ function auditFn() {
             const own = [...el.childNodes]
                 .filter(n => n.nodeType === 3 && n.textContent.trim())
                 .map(n => n.textContent.trim()).join(' ');
-            const typed = el.tagName === 'INPUT' && el.value ? el.value : '';
+            // A slider's value is not drawn as text (the number beside it is its own element, measured on
+            // its own), so a range input has no typed text to read.
+            const typed = el.tagName === 'INPUT' && el.type !== 'range' && el.value ? el.value : '';
             if (!own && !typed) continue;
 
             const fg = parse(st.color);

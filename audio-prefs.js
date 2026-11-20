@@ -90,6 +90,9 @@
         useSpeaker(target) {
             const id = this.speaker();
             if (!target || typeof target.setSinkId !== 'function') return;
+            // Nothing chosen and nothing routed yet: leave it alone. Calling setSinkId('') anyway
+            // made Chrome log an audio-device error on a machine with no speaker (CI, every load).
+            if (!id && !target.sinkId) return;
             const p = target.setSinkId(id || '');
             if (p && p.catch) p.catch(() => { try { target.setSinkId(''); } catch (e) { /* stay on default */ } });
         },
